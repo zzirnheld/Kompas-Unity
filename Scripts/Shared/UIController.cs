@@ -10,7 +10,7 @@ public class UIController : MonoBehaviour {
 
     //normal UI
     //pips
-    public Text pipsText;
+    public Text friendlyPipsText;
     public Text enemyPipsText;
     //show selected card data
     public Text selectedCardNameText;
@@ -37,9 +37,51 @@ public class UIController : MonoBehaviour {
     //current state text (reminds the player what's happening right now)
     public Text currentStateText;
 
+    //selection variables
+    private Card selectedCard;
+    private CharacterCard selectedChar; //keeps track of last selected character for updating stats in debug, etc.
+    private SpellCard selectedSpell;
+
+    public Card SelectedCard { get { return selectedCard; } }
+    public CharacterCard SelectedChar { get { return selectedChar; } }
+    public SpellCard SelectedSpell { get { return selectedSpell; } }
+
+    private void Awake()
+    {
+        deckInputField.lineType = InputField.LineType.MultiLineNewline;
+    }
 
     public void SelectCard(Card card)
     {
+        selectedCard = card;
+
+        //if the card is null, deselect everything
+        if(card == null)
+        {
+            selectedCardNameText.text = "No Card Selected";
+            selectedCardImage.sprite = Resources.Load<Sprite>("Kompas Circle Background");
+            selectedCardStatsText.text = "";
+            selectedCardSubtypesText.text = "";
+            selectedCardEffText.text = "";
+            return;
+        }
+
+        //do something based on what type the card is
+        if(card is CharacterCard)
+        {
+            selectedChar = card as CharacterCard;
+            selectedCardStatsText.text = selectedChar.GetStatsString();
+            selectedCardSubtypesText.text = selectedChar.Subtypes;
+        }
+        else if(card is SpellCard)
+        {
+            selectedSpell = selectedCard as SpellCard;
+        }
+
+        //set all common values
+        selectedCardNameText.text = card.CardName;
+        selectedCardImage.sprite = card.DetailedSprite;
+        selectedCardEffText.text = card.EffText;
 
     }
 

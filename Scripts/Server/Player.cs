@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player {
 
     //game mechanics data
+    int pips = 3;
 
     //other game data
     public bool friendly;

@@ -10,8 +10,8 @@ public class Card : KompasObject {
     //constants
     public const float minBoardLocalX = -0.45f;
     public const float maxBoardLocalX = 0.45f;
-    public const float minBoardLocalZ = -0.45f;
-    public const float maxBoardLocalZ = 0.45f;
+    public const float minBoardLocalY = -0.45f;
+    public const float maxBoardLocalY = 0.45f;
     public const float minDiscardX = 4.5f;
     public const float maxDiscardX = 5.5f;
     public const float minDiscardZ = -3.5f;
@@ -257,6 +257,10 @@ public class Card : KompasObject {
     {
         return position.x > minX && position.x < maxX && position.z > minZ && position.z < maxZ;
     }
+    public bool WithinIgnoreZ(Vector3 position, float minX, float maxX, float minY, float maxY)
+    {
+        return position.x > minX && position.x < maxX && position.y > minY && position.y < maxY;
+    }
 
     //actual interaction
     public override void OnClick()
@@ -282,14 +286,14 @@ public class Card : KompasObject {
     }
     public override void OnDragEnd(Vector3 mousePos)
     {
-        Debug.Log("Drag ended at absolute position: " + transform.position);
+        Debug.Log("Drag ended at absolute position: " + transform.position + ", local position: " + transform.localPosition);
         dragging = false; //dragging has ended
 
         //to be able to use local coordinates to see if you're on the board, set parent to game board
         transform.parent = Game.mainGame.boardObject.transform;
 
         //then, check if it's on the board, accodring to the local coordinates of the game board)
-        if (WithinIgnoreY(transform.localPosition, minBoardLocalX, maxBoardLocalX, minBoardLocalZ, maxBoardLocalZ))
+        if (WithinIgnoreZ(transform.localPosition, minBoardLocalX, maxBoardLocalX, minBoardLocalY, maxBoardLocalY))
         {
             Debug.Log(cardName + " ended drag on the field");
             //if the card is being moved on the field, that means it's just being moved

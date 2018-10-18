@@ -13,6 +13,7 @@ public class AugmentCard : Card {
     }
 
     //game mechanics
+    //TODO prevent z fighting
     public override void MoveTo(int toX, int toY)
     {
         boardX = toX;

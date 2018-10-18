@@ -4,6 +4,30 @@ using UnityEngine;
 
 public class ClientGame : Game {
 
+
+    private bool friendlyTurn; //TODO should it start with a value? should be init by server
+    private int friendlyPips = 3;
+    private int enemyPips = 3;
+
+    public int FriendlyPips
+    {
+        get { return friendlyPips; }
+        set
+        {
+            friendlyPips = value;
+            uiCtrl.friendlyPipsText.text = "Pips: " + friendlyPips;
+        }
+    }
+    public int EnemyPips
+    {
+        get { return enemyPips; }
+        set
+        {
+            enemyPips = value;
+            uiCtrl.enemyPipsText.text = "Enemy Pips: " + enemyPips;
+        }
+    }
+
     private void Awake()
     {
         mainGame = this;
