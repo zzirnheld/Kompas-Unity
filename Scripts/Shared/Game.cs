@@ -26,10 +26,6 @@ public class Game : MonoBehaviour {
     public GameObject handObject;
 
     //game data
-    /// <summary>
-    /// Whether all cards, only chars, only spells, or only augs are visible
-    /// </summary>
-    private int visibleCards = 0;
 
 
     private void Update()
@@ -47,30 +43,25 @@ public class Game : MonoBehaviour {
         mouseCtrl.NormalClickObject();
     }
 
-    //forwarding calls to correct controller
+    #region forwarding calls to correct controller
     //move cards between locations
-    //TODO make sure these all remove the card from wherever it was
     public void Discard(Card card)
     {
-        //TODO
         Remove(card);
         discardCtrl.AddToDiscard(card);
     }
     public void Topdeck(Card card)
     {
-        //TODO
         Remove(card);
         deckCtrl.PushTopdeck(card);
     }
     public void Rehand(Card card)
     {
-        //TODO
         Remove(card);
         handCtrl.AddToHand(card);
     }
     public void Play(Card card, int toX, int toY)
     {
-        //TODO
         Remove(card);
         boardCtrl.Play(card, toX, toY);
     }
@@ -116,7 +107,7 @@ public class Game : MonoBehaviour {
 
     //ui
     public virtual void SelectCard(Card card) { uiCtrl.SelectCard(card); }
-
+    #endregion forwarding
 
     //game mechanics
 

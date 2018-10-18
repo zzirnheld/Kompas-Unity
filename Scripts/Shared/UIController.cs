@@ -36,6 +36,16 @@ public class UIController : MonoBehaviour {
     private int searchIndex = 0;
     //current state text (reminds the player what's happening right now)
     public Text currentStateText;
+    private string currentStateString;
+    public string CurrentStateString
+    {
+        get { return currentStateString; }
+        set
+        {
+            currentStateString = value;
+            currentStateText.text = currentStateString;
+        }
+    }
 
     //selection variables
     private Card selectedCard;
@@ -85,5 +95,134 @@ public class UIController : MonoBehaviour {
 
     }
 
+    #region searching deck or discard
+    public void ImportDeckPressed()
+    {
+        deckInputField.gameObject.SetActive(true);
+        importDeckButton.gameObject.SetActive(false);
+        confirmDeckImportButton.gameObject.SetActive(true);
+    }
+
+    public void ConfirmDeckImport()
+    {
+        string decklist = deckInputField.text;
+        deckInputField.gameObject.SetActive(false);
+        confirmDeckImportButton.gameObject.SetActive(false);
+        importDeckButton.gameObject.SetActive(true);
+        Game.mainGame.deckCtrl.ImportDeck(decklist);
+    }
+
+    //TODO assign all of these methods to buttons
+    public void StartDeckSearch()
+    {
+        if (searchingDiscard) return;
+        searchingDeck = true;
+        cardSearchView.SetActive(true);
+        //set buttons to their correct states
+        discardSearchButton.gameObject.SetActive(false);
+        deckSearchButton.gameObject.SetActive(false);
+        searchDeckToHand.gameObject.SetActive(true);
+        cancelDeckSearch.gameObject.SetActive(true);
+        //initiate search process
+        searchIndex = 0;
+        if (Game.mainGame.deckCtrl.DeckSize() > 0)
+            cardSearchImage.sprite = Game.mainGame.deckCtrl.CardAt(0, false, false).DetailedSprite;
+        else
+            cardSearchImage.sprite = Resources.Load<Sprite>("Card Sprites/Square Kompas Logo");
+    }
+
+    public void SearchDeckToHand()
+    {
+        if (!searchingDeck) return;
+        Game.mainGame.handCtrl.AddToHand(Game.mainGame.deckCtrl.CardAt(searchIndex, true));
+        EndDeckSearch();
+    }
+
+    public void EndDeckSearch()
+    {
+        cardSearchView.SetActive(false);
+        //set buttons to their correct states
+        discardSearchButton.gameObject.SetActive(true);
+        deckSearchButton.gameObject.SetActive(true);
+        searchDeckToHand.gameObject.SetActive(false);
+        cancelDeckSearch.gameObject.SetActive(false);
+        searchingDeck = false;
+    }
+
+    public void StartDiscardSearch()
+    {
+        if (searchingDeck) return;
+        searchingDiscard = true;
+        cardSearchView.SetActive(true);
+        //set buttons to their correct states
+        discardSearchButton.gameObject.SetActive(false);
+        deckSearchButton.gameObject.SetActive(false);
+        searchDiscardToHand.gameObject.SetActive(true);
+        cancelDiscardSearch.gameObject.SetActive(true);
+        //intiate process of searching
+        searchIndex = 0;
+        if (Game.mainGame.discardCtrl.DiscardSize() > 0)
+            cardSearchImage.sprite = Game.mainGame.discardCtrl.CardAt(0, false).DetailedSprite;
+        else
+            cardSearchImage.sprite = Resources.Load<Sprite>("Card Sprites/Square Kompas Logo");
+    }
+
+    public void SearchDiscardToHand()
+    {
+        if (!searchingDiscard) return;
+        Game.mainGame.handCtrl.AddToHand(Game.mainGame.discardCtrl.CardAt(searchIndex, true));
+        EndDiscardSearch();
+    }
+
+    public void EndDiscardSearch()
+    {
+        cardSearchView.SetActive(false);
+        //set buttons to their correct states
+        discardSearchButton.gameObject.SetActive(true);
+        deckSearchButton.gameObject.SetActive(true);
+        searchDiscardToHand.gameObject.SetActive(false);
+        cancelDiscardSearch.gameObject.SetActive(false);
+        //intiate process of searching
+        searchingDiscard = false;
+    }
+
+    public void NextCardSearch()
+    {
+        searchIndex++;
+        if (searchingDeck)
+        {
+            if (Game.mainGame.deckCtrl.DeckSize() > 0)
+            {
+                searchIndex %= Game.mainGame.deckCtrl.DeckSize();
+                cardSearchImage.sprite = Game.mainGame.deckCtrl.CardAt(searchIndex, false).DetailedSprite;
+            }
+        }
+        else if (searchingDiscard)
+        {
+            if (Game.mainGame.discardCtrl.DiscardSize() > 0)
+            {
+                searchIndex %= Game.mainGame.discardCtrl.DiscardSize();
+                cardSearchImage.sprite = Game.mainGame.discardCtrl.CardAt(searchIndex, false).DetailedSprite;
+            }
+        }
+    }
+
+    public void PrevCardSearch()
+    {
+        searchIndex--;
+        if (searchingDeck)
+        {
+            if (searchIndex < 0) searchIndex += Game.mainGame.deckCtrl.DeckSize();
+            if (Game.mainGame.deckCtrl.DeckSize() > 0)
+                cardSearchImage.sprite = Game.mainGame.deckCtrl.CardAt(searchIndex, false, false).DetailedSprite;
+        }
+        else if (searchingDiscard)
+        {
+            if (searchIndex < 0) searchIndex += Game.mainGame.discardCtrl.DiscardSize();
+            if (Game.mainGame.discardCtrl.DiscardSize() > 0)
+                cardSearchImage.sprite = Game.mainGame.discardCtrl.CardAt(searchIndex, false).DetailedSprite;
+        }
+    }
+    #endregion
 
 }
