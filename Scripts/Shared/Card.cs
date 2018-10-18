@@ -69,7 +69,56 @@ public class Card : KompasObject {
         meshRenderer = GetComponent<MeshRenderer>();
     }
 
-    //set game mechanics data
+    //set data
+    /// <summary>
+    /// Updates the location variable and sets the parent transform.
+    /// </summary>
+    /// <param name="location">Where the card is going</param>
+    public void SetLocation(CardLocation location)
+    {
+        Debug.Log("Attempting to move " + cardName + " from " + this.location + " to " + location);
+
+        //if we're leaving somewhere, do something about it
+        if (location != this.location)
+        {
+            switch (this.location)
+            {
+                case CardLocation.Field:
+                    Game.mainGame.boardCtrl.RemoveFromBoard(this);
+                    break;
+                case CardLocation.Discard:
+                    Game.mainGame.discardCtrl.RemoveFromDiscard(this);
+                    break;
+                case CardLocation.Hand:
+                    Game.mainGame.handCtrl.RemoveFromHand(this);
+                    break;
+                case CardLocation.Deck:
+                    Game.mainGame.deckCtrl.RemoveFromDeck(this);
+                    break;
+            }
+        }
+
+        //set the location
+        this.location = location;
+
+        //set the parent to where we're going
+        switch (location)
+        {
+            case CardLocation.Field:
+                transform.SetParent(Game.mainGame.boardObject.transform);
+                break;
+            case CardLocation.Discard:
+                transform.SetParent(Game.mainGame.discardObject.transform);
+                break;
+            case CardLocation.Hand:
+                transform.SetParent(Game.mainGame.handObject.transform);
+                break;
+            case CardLocation.Deck:
+                transform.SetParent(Game.mainGame.deckObject.transform);
+                break;
+        }
+    }
+
     /// <summary>
     /// Set the sprites of this card and gameobject
     /// </summary>
@@ -141,6 +190,20 @@ public class Card : KompasObject {
         return DistanceTo(x, y) <= numSlots;
     }
 
+    //card moving methods
+    public void Discard()
+    {
+        Game.mainGame.Discard(this);
+    }
+    public void Topdeck()
+    {
+        Game.mainGame.Topdeck(this);
+    }
+    public void Rehand()
+    {
+        Game.mainGame.Rehand(this);
+    }
+
     //misc mechanics methods
     public void ChangeController(Player newController)
     {
@@ -148,12 +211,27 @@ public class Card : KompasObject {
         transform.localRotation = newController.CardRotation;
         //TODO anything else?
     }
+    public virtual int GetCost() { return 0; }
 
     //playing cards
+    /// <summary>
+    /// sets this card's x and y values and updates where its gameobject is.
+    /// </summary>
+    public virtual void MoveTo(int toX, int toY)
+    {
+        boardX = toX;
+        boardY = toY;
+
+        /* for setting where the gameobject is, it would be x and z, except that the quad is turned 90 degrees
+         * so we change the local x and y. the z coordinate also therefore needs to be negative
+         * to show the card above the game board on the screen. */
+        transform.localPosition = new Vector3(GridIndexToPos(toX), GridIndexToPos(toY), -0.1f);
+        transform.localRotation = controller.CardRotation;
+    }
 
     //interaction methods
     //helper methods
-    public bool Within(Vector3 position, float minX, float maxX, float minZ, float maxZ)
+    public bool WithinIgnoreY(Vector3 position, float minX, float maxX, float minZ, float maxZ)
     {
         return position.x > minX && position.x < maxX && position.z > minZ && position.z < maxZ;
     }
@@ -175,11 +253,52 @@ public class Card : KompasObject {
         if (!dragging)
         {
             dragging = true;
-            transform.parent = Game.mainGame.fieldObject.transform;
+            transform.parent = Game.mainGame.boardObject.transform;
         }
         
         transform.position = mousePos;
     }
+    public override void OnDragEnd(Vector3 mousePos)
+    {
+        Debug.Log("Drag ended at absolute position: " + transform.position);
+        dragging = false; //dragging has ended
 
+        //to be able to use local coordinates to see if you're on the board, set parent to game board
+        transform.parent = Game.mainGame.boardObject.transform;
+
+        //then, check if it's on the board, accodring to the local coordinates of the game board)
+        if (WithinIgnoreY(transform.localPosition, minBoardLocalX, maxBoardLocalX, minBoardLocalZ, maxBoardLocalZ))
+        {
+            Debug.Log(cardName + " ended drag on the field");
+            //if the card is being moved on the field, that means it's just being moved
+            if (location == CardLocation.Field)
+                Game.mainGame.RequestMove(this,
+                    PosToGridIndex(transform.localPosition.x), PosToGridIndex(transform.localPosition.y));
+            //otherwise, it is being played from somewhere like the hand or discard
+            else
+                Game.mainGame.RequestPlay(this,
+                    PosToGridIndex(transform.localPosition.x), PosToGridIndex(transform.localPosition.y));
+        }
+        //if it's not on the board, maybe it's on top of the discard
+        else if (WithinIgnoreY(transform.position, minDiscardX, maxDiscardX, minDiscardZ, maxDiscardZ))
+        {
+            Debug.Log(cardName + " ended drag on discard");
+            //in that case, discard it
+            Discard();
+        }
+        //maybe it's on top of the deck
+        else if (WithinIgnoreY(transform.position, minDeckX, maxDeckX, minDeckZ, maxDeckZ))
+        {
+            Debug.Log(cardName + " ended drag on the deck");
+            //in that case, topdeck it
+            Topdeck();
+        }
+        //if it's not in any of those, probably should go back in the hand.
+        else
+        {
+            Debug.Log(cardName + " ended drag nowhere. putting it in the hand");
+            Rehand();
+        }
+    }
 
 }

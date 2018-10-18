@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeckController : KompasObject
+public class BoardController : KompasObject
 {
-    public void RemoveFromDeck(Card card)
+    public void RemoveFromBoard(Card card)
     {
         //TODO
         throw new NotImplementedException();
