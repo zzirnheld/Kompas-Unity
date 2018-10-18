@@ -94,7 +94,8 @@ public class CharacterCard : Card {
             location = location,
             friendly = friendly,
             BoardX = boardX,
-            BoardY = boardY
+            BoardY = boardY,
+            subtypeText = subtypeText
         };
         return serializableChar;
     }

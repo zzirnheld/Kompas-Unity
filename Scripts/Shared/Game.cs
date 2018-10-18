@@ -8,6 +8,11 @@ public class Game : MonoBehaviour {
 
     public static Game mainGame;
 
+    //other scripts
+    public MouseController mouseCtrl;
+    public NetworkController networkCtrl;
+    public UIController uiCtrl;
+
     //game mechanics
     public BoardController boardCtrl;
     public DeckController deckCtrl;
@@ -20,10 +25,8 @@ public class Game : MonoBehaviour {
     public GameObject discardObject;
     public GameObject handObject;
 
-    //ui
 
-
-    //game mechanics
+    //forwarding calls to correct controller
     //move cards between locations
     public void Discard(Card card)
     {
@@ -47,12 +50,16 @@ public class Game : MonoBehaviour {
     {
         //TODO
     }
-    
+
+    //ui
+    public virtual void SelectCard(Card card) { uiCtrl.SelectCard(card); }
+
+
+    //game mechanics
+
     //requesting
     public virtual void RequestMove(Card card, int toX, int toY) { }
     public virtual void RequestPlay(Card card, int toX, int toY) { }
     
-    //ui
-    public virtual void SelectCard(Card card) { }
 
 }
