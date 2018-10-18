@@ -27,4 +27,9 @@ public class AugmentCard : Card {
         else transform.localEulerAngles = new Vector3(0, 0, 180);
 
     }
+
+    public void Detach()
+    {
+        ThisCharacter = null;
+    }
 }

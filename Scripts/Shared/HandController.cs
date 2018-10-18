@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class HandController : KompasObject
 {
+
+    public void AddToHand(Card card)
+    {
+        //TODO
+        throw new NotImplementedException();
+    }
+
     public void RemoveFromHand(Card card)
     {
         //TODO

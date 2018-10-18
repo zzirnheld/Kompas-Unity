@@ -49,27 +49,69 @@ public class Game : MonoBehaviour {
 
     //forwarding calls to correct controller
     //move cards between locations
+    //TODO make sure these all remove the card from wherever it was
     public void Discard(Card card)
     {
         //TODO
+        Remove(card);
+        discardCtrl.AddToDiscard(card);
     }
     public void Topdeck(Card card)
     {
         //TODO
+        Remove(card);
+        deckCtrl.PushTopdeck(card);
     }
     public void Rehand(Card card)
     {
         //TODO
+        Remove(card);
+        handCtrl.AddToHand(card);
     }
     public void Play(Card card, int toX, int toY)
     {
         //TODO
+        Remove(card);
+        boardCtrl.Play(card, toX, toY);
     }
 
+    public void Draw()
+    {
+        handCtrl.AddToHand(deckCtrl.PopTopdeck());
+    }
+
+    /// <summary>
+    /// Remove the card from wherever it is
+    /// </summary>
+    public void Remove(Card toRemove)
+    {
+        switch (toRemove.Location)
+        {
+            case Card.CardLocation.Field:
+                boardCtrl.RemoveFromBoard(toRemove);
+                break;
+            case Card.CardLocation.Discard:
+                discardCtrl.RemoveFromDiscard(toRemove);
+                break;
+            case Card.CardLocation.Hand:
+                handCtrl.RemoveFromHand(toRemove);
+                break;
+            case Card.CardLocation.Deck:
+                deckCtrl.RemoveFromDeck(toRemove);
+                break;
+        }
+    }
+    
     //moving
     public void Move(Card card, int toX, int toY)
     {
         //TODO
+        boardCtrl.Move(card, toX, toY);
+    }
+    public void Swap(Card card, int toX, int toY)
+    {
+        //TODO
+        boardCtrl.Swap(card, toX, toY);
     }
 
     //ui
@@ -81,6 +123,6 @@ public class Game : MonoBehaviour {
     //requesting
     public virtual void RequestMove(Card card, int toX, int toY) { }
     public virtual void RequestPlay(Card card, int toX, int toY) { }
-    
+
 
 }
