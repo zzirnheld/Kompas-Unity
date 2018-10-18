@@ -28,7 +28,8 @@ public class Card : KompasObject {
     protected int boardY;
     protected string cardName;
     protected string effText;
-    protected Player controller;
+    protected string subtypeText;
+    protected bool friendly;
     protected CardLocation location;
 
     //other game data
@@ -52,7 +53,12 @@ public class Card : KompasObject {
         get { return effText; }
         set { effText = value; }
     }
-    public Player Controller { get { return controller; } }
+    public string SubtypeText
+    {
+        get { return subtypeText; }
+        set { subtypeText = value; }
+    }
+    public bool Friendly { get { return friendly; } }
     public CardLocation Location { get { return location; } }
     //other game data
     public string CardFileName {
@@ -61,8 +67,7 @@ public class Card : KompasObject {
     }
     public Sprite DetailedSprite { get { return detailedSprite; } }
     public Sprite SimpleSprite { get { return simpleSprite; } }
-
-
+    
     //unity methods
     private void Awake()
     {
@@ -143,6 +148,21 @@ public class Card : KompasObject {
         SetImage(cardFileName);
     }
 
+    public virtual void SetInfo(SerializableCard serializedCard)
+    {
+        cardName = serializedCard.cardName;
+        effText = serializedCard.effText;
+        subtypeText = serializedCard.subtypeText;
+        location = serializedCard.location;
+        ChangeController(serializedCard.friendly);
+        if (location == CardLocation.Field) MoveTo(serializedCard.BoardX, serializedCard.BoardY);
+        else
+        {
+            boardX = serializedCard.BoardX;
+            boardY = serializedCard.BoardY;
+        }
+    }
+
     //game mechanics
     //helper methods
     protected int PosToGridIndex(float pos)
@@ -205,10 +225,11 @@ public class Card : KompasObject {
     }
 
     //misc mechanics methods
-    public void ChangeController(Player newController)
+    public void ChangeController(bool friendly)
     {
-        controller = newController;
-        transform.localRotation = newController.CardRotation;
+        this.friendly = friendly;
+        if (friendly) transform.localEulerAngles = Vector3.zero;
+        else transform.localEulerAngles = new Vector3(0, 0, 180);
         //TODO anything else?
     }
     public virtual int GetCost() { return 0; }
@@ -226,7 +247,8 @@ public class Card : KompasObject {
          * so we change the local x and y. the z coordinate also therefore needs to be negative
          * to show the card above the game board on the screen. */
         transform.localPosition = new Vector3(GridIndexToPos(toX), GridIndexToPos(toY), -0.1f);
-        transform.localRotation = controller.CardRotation;
+        if (friendly) transform.localEulerAngles = Vector3.zero;
+        else transform.localEulerAngles = new Vector3(0, 0, 180);
     }
 
     //interaction methods

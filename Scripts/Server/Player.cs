@@ -7,6 +7,7 @@ public class Player {
     //game mechanics data
 
     //other game data
+    public bool friendly;
     private Quaternion cardRotation;
 
     //getters and setters
