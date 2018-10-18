@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,7 +7,11 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour {
 
     //debug UI
-
+    public InputField debugNInputField;
+    public InputField debugEInputField;
+    public InputField debugSInputField;
+    public InputField debugWInputField;
+    public InputField debugPipsField;
 
     //normal UI
     //pips
@@ -224,5 +229,34 @@ public class UIController : MonoBehaviour {
         }
     }
     #endregion
+
+    #region debug
+    public void DebugUpdateStats()
+    {
+        if (debugNInputField.text != "")
+            SelectedChar.N = Int32.Parse(debugNInputField.text);
+        if (debugEInputField.text != "")
+            SelectedChar.E = Int32.Parse(debugEInputField.text);
+        if (debugSInputField.text != "")
+            SelectedChar.S = Int32.Parse(debugSInputField.text);
+        if (debugWInputField.text != "")
+            SelectedChar.W = Int32.Parse(debugWInputField.text);
+    }
+
+    public void DebugUpdatePips()
+    {
+        if (debugPipsField.text != "")
+        {
+            if(Game.mainGame is ClientGame)
+                (Game.mainGame as ClientGame).FriendlyPips = Int32.Parse(debugPipsField.text);
+            //TODO update if is server
+        }
+    }
+
+    public void DebugUpdateEnemyPips(int num)
+    {
+        enemyPipsText.text = "Enemy Pips: " + num;
+    }
+    #endregion debug
 
 }
