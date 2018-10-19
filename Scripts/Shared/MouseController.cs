@@ -82,8 +82,12 @@ public class MouseController : MonoBehaviour {
         if (raycastHit.transform != null) gameObjectHit = raycastHit.transform.gameObject;
         else gameObjectHit = null;
 
+        //if (Input.GetMouseButtonDown(0)) Debug.Log("Hit null?" + (gameObjectHit == null));
+
         if (gameObjectHit != null) kompasObjectHit = gameObjectHit.GetComponent<KompasObject>();
         else kompasObjectHit = null;
+
+        //if (Input.GetMouseButtonDown(0)) Debug.Log("Object clicked: " + (kompasObjectHit == null));
 
         if (kompasObjectHit == null) ClearHits();
         else if (kompasObjectHit is Card)
@@ -98,6 +102,7 @@ public class MouseController : MonoBehaviour {
         }
         else if (kompasObjectHit is DeckController)
         {
+            //Debug.Log("Deck Hit");
             deckHit = kompasObjectHit as DeckController;
             if (Input.GetMouseButtonDown(0))
                 deckHit.OnClick();

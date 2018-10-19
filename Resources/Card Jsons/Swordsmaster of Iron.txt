@@ -1,4 +1,5 @@
 {
+"cardType":67,
 "x":0,
 "y":0,
 "cardName":"Swordsmaster of Iron",
@@ -13,15 +14,11 @@
 	"values":[]
 	}],
 "secondarySerializeableEffect":[],
-"minDragX":-4.5,
-"maxDragX":4.5,
-"minDragZ":-4.5,
-"maxDragZ":4.5,
 "n":2,
 "e":2,
 "s":3,
 "w":3,
 "m":2,
-"subtype":"Humanoid Warrior",
+"subtype":"Swordsmaster Warrior",
 "augments":[]
 }

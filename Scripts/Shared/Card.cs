@@ -142,7 +142,11 @@ public class Card : KompasObject {
             return;
         }
         //set this gameobject's texture to the simple sprite (by default, TODO change on zoom level change)
-        meshRenderer.material.SetTexture("_MainTex", simpleSprite.texture);
+        Texture2D spriteTexture = simpleSprite.texture;
+        spriteTexture.alphaIsTransparency = true;
+        meshRenderer.material.SetTexture("_MainTex", spriteTexture);
+        //then make unity know it's a sprite so that it'll make the alpha transparent
+        meshRenderer.material.shader = Shader.Find("Sprites/Default");
     }
     /// <summary>
     /// Set image by stored card file name
@@ -176,7 +180,7 @@ public class Card : KompasObject {
         * are 7 game board slots for the board's local length of 1). 
         * Then add 0.5 so that the cast to int effectively rounds instead of flooring.
         */
-        return (int)((pos + boardLenOffset) * spacesInGrid + 0.5f);
+        return (int)((pos + boardLenOffset) * spacesInGrid);
     }
     protected float GridIndexToPos(int gridIndex)
     {

@@ -163,7 +163,7 @@ public class DeckController : KompasObject
 
     public override void OnClick()
     {
-        Game.mainGame.Draw();
+        if(deck.Count > 0) Game.mainGame.Draw();
     }
 
 }
