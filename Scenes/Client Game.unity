@@ -4377,30 +4377,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c03ac2ae60b6a234a82ec07d9602a53b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugNInputField: {fileID: 0}
-  debugEInputField: {fileID: 0}
-  debugSInputField: {fileID: 0}
-  debugWInputField: {fileID: 0}
+  debugNInputField: {fileID: 2050283944}
+  debugEInputField: {fileID: 1484816972}
+  debugSInputField: {fileID: 1547115773}
+  debugWInputField: {fileID: 598976412}
   debugPipsField: {fileID: 0}
-  friendlyPipsText: {fileID: 0}
-  enemyPipsText: {fileID: 0}
-  selectedCardNameText: {fileID: 0}
-  selectedCardImage: {fileID: 0}
-  selectedCardStatsText: {fileID: 0}
-  selectedCardSubtypesText: {fileID: 0}
-  selectedCardEffText: {fileID: 0}
-  deckInputField: {fileID: 0}
-  importDeckButton: {fileID: 0}
-  confirmDeckImportButton: {fileID: 0}
-  cardSearchView: {fileID: 0}
-  cardSearchImage: {fileID: 0}
-  deckSearchButton: {fileID: 0}
-  discardSearchButton: {fileID: 0}
-  searchDeckToHand: {fileID: 0}
-  searchDiscardToHand: {fileID: 0}
-  cancelDeckSearch: {fileID: 0}
-  cancelDiscardSearch: {fileID: 0}
-  currentStateText: {fileID: 0}
+  friendlyPipsText: {fileID: 1418310388}
+  enemyPipsText: {fileID: 1365698564}
+  selectedCardNameText: {fileID: 1506310831}
+  selectedCardImage: {fileID: 1107342531}
+  selectedCardStatsText: {fileID: 655305226}
+  selectedCardSubtypesText: {fileID: 1605335655}
+  selectedCardEffText: {fileID: 1948538060}
+  deckInputField: {fileID: 381743809}
+  importDeckButton: {fileID: 1982168175}
+  confirmDeckImportButton: {fileID: 848667606}
+  cardSearchView: {fileID: 588346723}
+  cardSearchImage: {fileID: 728813001}
+  deckSearchButton: {fileID: 973346152}
+  discardSearchButton: {fileID: 577061474}
+  searchDeckToHand: {fileID: 147990114}
+  searchDiscardToHand: {fileID: 1877150509}
+  cancelDeckSearch: {fileID: 442461731}
+  cancelDiscardSearch: {fileID: 314474553}
+  currentStateText: {fileID: 1029930859}
 --- !u!114 &1615817256
 MonoBehaviour:
   m_ObjectHideFlags: 0
