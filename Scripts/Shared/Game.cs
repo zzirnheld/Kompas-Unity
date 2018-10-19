@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,15 +16,21 @@ public class Game : MonoBehaviour {
 
     //game mechanics
     public BoardController boardCtrl;
-    public DeckController deckCtrl;
-    public DiscardController discardCtrl;
-    public HandController handCtrl;
+    //friendly
+    public DeckController friendlyDeckCtrl;
+    public DiscardController friendlyDiscardCtrl;
+    public HandController friendlyHandCtrl;
+    //enemy
+    public DeckController enemyDeckCtrl;
+    public DiscardController enemyDiscardCtrl;
+    public HandController enemyHandCtrl;
 
     //game objects
     public GameObject boardObject;
-    public GameObject deckObject;
-    public GameObject discardObject;
-    public GameObject handObject;
+    //friendly
+    public GameObject friendlyDeckObject;
+    public GameObject friendlyDiscardObject;
+    public GameObject friendlyHandObject;
 
     //game data
 
@@ -45,36 +52,40 @@ public class Game : MonoBehaviour {
 
     #region forwarding calls to correct controller
     //move cards between locations
-    public void Discard(Card card)
+    public void Discard(Card card, bool friendly = true)
     {
-        Remove(card);
-        discardCtrl.AddToDiscard(card);
+        Remove(card, friendly);
+        if (friendly) friendlyDiscardCtrl.AddToDiscard(card);
+        else enemyDiscardCtrl.AddToDiscard(card);
     }
-    public void Topdeck(Card card)
+    public void Topdeck(Card card, bool friendly = true)
     {
-        Remove(card);
-        deckCtrl.PushTopdeck(card);
+        Remove(card, friendly);
+        if (friendly) friendlyDeckCtrl.PushTopdeck(card);
+        else enemyDeckCtrl.PushTopdeck(card);
     }
-    public void Rehand(Card card)
+    public void Rehand(Card card, bool friendly = true)
     {
-        Remove(card);
-        handCtrl.AddToHand(card);
+        Remove(card, friendly);
+        if (friendly) friendlyHandCtrl.AddToHand(card);
+        else enemyHandCtrl.AddToHand(card);
     }
-    public void Play(Card card, int toX, int toY)
+    public void Play(Card card, int toX, int toY, bool friendly = true)
     {
-        Remove(card);
-        boardCtrl.Play(card, toX, toY);
+        Remove(card, friendly);
+        boardCtrl.Play(card, toX, toY, friendly);
     }
 
-    public void Draw()
+    public void Draw(bool friendly = true)
     {
-        handCtrl.AddToHand(deckCtrl.PopTopdeck());
+        if (friendly) friendlyHandCtrl.AddToHand(friendlyDeckCtrl.PopTopdeck());
+        else enemyHandCtrl.AddToHand(enemyDeckCtrl.PopTopdeck());
     }
 
     /// <summary>
     /// Remove the card from wherever it is
     /// </summary>
-    public void Remove(Card toRemove)
+    public void Remove(Card toRemove, bool friendly = true)
     {
         switch (toRemove.Location)
         {
@@ -82,13 +93,16 @@ public class Game : MonoBehaviour {
                 boardCtrl.RemoveFromBoard(toRemove);
                 break;
             case Card.CardLocation.Discard:
-                discardCtrl.RemoveFromDiscard(toRemove);
+                if (friendly) friendlyDiscardCtrl.RemoveFromDiscard(toRemove);
+                else enemyDiscardCtrl.RemoveFromDiscard(toRemove);
                 break;
             case Card.CardLocation.Hand:
-                handCtrl.RemoveFromHand(toRemove);
+                if (friendly) friendlyHandCtrl.RemoveFromHand(toRemove);
+                else enemyHandCtrl.RemoveFromHand(toRemove);
                 break;
             case Card.CardLocation.Deck:
-                deckCtrl.RemoveFromDeck(toRemove);
+                if (friendly) friendlyDeckCtrl.RemoveFromDeck(toRemove);
+                else enemyDeckCtrl.RemoveFromDeck(toRemove);
                 break;
         }
     }
@@ -96,12 +110,10 @@ public class Game : MonoBehaviour {
     //moving
     public void Move(Card card, int toX, int toY)
     {
-        //TODO
         boardCtrl.Move(card, toX, toY);
     }
     public void Swap(Card card, int toX, int toY)
     {
-        //TODO
         boardCtrl.Swap(card, toX, toY);
     }
 
@@ -112,8 +124,16 @@ public class Game : MonoBehaviour {
     //game mechanics
 
     //requesting
-    public virtual void RequestMove(Card card, int toX, int toY) { }
-    public virtual void RequestPlay(Card card, int toX, int toY) { }
+    public virtual void RequestMove(Card card, int toX, int toY)
+    {
+        if (DEBUG_MODE) { Debug.Log("Debug Mode, not checking with server to move"); Move(card, toX, toY); }
+        else throw new NotImplementedException();
+    }
+    public virtual void RequestPlay(Card card, int toX, int toY)
+    {
+        if (DEBUG_MODE) { Debug.Log("Debug Mode, not checking with server to play"); Play(card, toX, toY); }
+        else throw new NotImplementedException();
+    }
 
 
 }

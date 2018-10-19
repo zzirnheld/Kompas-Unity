@@ -9,26 +9,28 @@ public class DiscardController : KompasObject {
 
     //info about discard
     public int DiscardSize() { return discard.Count; }
+    public Card GetLastDiscarded() { return discard[discard.Count - 1]; }
 
-    public Card CardAt(int index, bool pop)
+    public Card CardAt(int index, bool remove)
     {
         if (index >= discard.Count) return null;
         Card card = discard[index];
-        if (pop) discard.RemoveAt(index);
+        if (remove) discard.RemoveAt(index);
         return card;
     }
 
     //adding/removing cards
 	public void AddToDiscard(Card card)
     {
-        //TODO
+        Debug.Assert(card != null);
+        discard.Add(card);
         card.SetLocation(Card.CardLocation.Discard);
-        throw new NotImplementedException();
+        card.transform.localPosition = new Vector3(0, 0, (float)discard.Count / -60f);
     }
 
     public void RemoveFromDiscard(Card card)
     {
-        //TODO
-        throw new NotImplementedException();
+        Debug.Assert(card != null);
+        discard.Remove(card);
     }
 }

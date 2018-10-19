@@ -76,7 +76,7 @@ public class Card : KompasObject {
 
     //set data
     /// <summary>
-    /// Updates the location variable and sets the parent transform.
+    /// Updates the location variable, sets active or not, and sets the parent transform.
     /// </summary>
     /// <param name="location">Where the card is going</param>
     public void SetLocation(CardLocation location)
@@ -92,13 +92,13 @@ public class Card : KompasObject {
                     Game.mainGame.boardCtrl.RemoveFromBoard(this);
                     break;
                 case CardLocation.Discard:
-                    Game.mainGame.discardCtrl.RemoveFromDiscard(this);
+                    Game.mainGame.friendlyDiscardCtrl.RemoveFromDiscard(this);
                     break;
                 case CardLocation.Hand:
-                    Game.mainGame.handCtrl.RemoveFromHand(this);
+                    Game.mainGame.friendlyHandCtrl.RemoveFromHand(this);
                     break;
                 case CardLocation.Deck:
-                    Game.mainGame.deckCtrl.RemoveFromDeck(this);
+                    Game.mainGame.friendlyDeckCtrl.RemoveFromDeck(this);
                     break;
             }
         }
@@ -111,15 +111,19 @@ public class Card : KompasObject {
         {
             case CardLocation.Field:
                 transform.SetParent(Game.mainGame.boardObject.transform);
+                gameObject.SetActive(true);
                 break;
             case CardLocation.Discard:
-                transform.SetParent(Game.mainGame.discardObject.transform);
+                transform.SetParent(Game.mainGame.friendlyDiscardObject.transform);
+                gameObject.SetActive(true);
                 break;
             case CardLocation.Hand:
-                transform.SetParent(Game.mainGame.handObject.transform);
+                transform.SetParent(Game.mainGame.friendlyHandObject.transform);
+                gameObject.SetActive(true);
                 break;
             case CardLocation.Deck:
-                transform.SetParent(Game.mainGame.deckObject.transform);
+                transform.SetParent(Game.mainGame.friendlyDeckObject.transform);
+                gameObject.SetActive(false);
                 break;
         }
     }

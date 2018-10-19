@@ -114,7 +114,7 @@ public class UIController : MonoBehaviour {
         deckInputField.gameObject.SetActive(false);
         confirmDeckImportButton.gameObject.SetActive(false);
         importDeckButton.gameObject.SetActive(true);
-        Game.mainGame.deckCtrl.ImportDeck(decklist);
+        Game.mainGame.friendlyDeckCtrl.ImportDeck(decklist);
     }
 
     //TODO assign all of these methods to buttons
@@ -130,8 +130,8 @@ public class UIController : MonoBehaviour {
         cancelDeckSearch.gameObject.SetActive(true);
         //initiate search process
         searchIndex = 0;
-        if (Game.mainGame.deckCtrl.DeckSize() > 0)
-            cardSearchImage.sprite = Game.mainGame.deckCtrl.CardAt(0, false, false).DetailedSprite;
+        if (Game.mainGame.friendlyDeckCtrl.DeckSize() > 0)
+            cardSearchImage.sprite = Game.mainGame.friendlyDeckCtrl.CardAt(0, false, false).DetailedSprite;
         else
             cardSearchImage.sprite = Resources.Load<Sprite>("Card Sprites/Square Kompas Logo");
     }
@@ -139,7 +139,7 @@ public class UIController : MonoBehaviour {
     public void SearchDeckToHand()
     {
         if (!searchingDeck) return;
-        Game.mainGame.handCtrl.AddToHand(Game.mainGame.deckCtrl.CardAt(searchIndex, true));
+        Game.mainGame.friendlyHandCtrl.AddToHand(Game.mainGame.friendlyDeckCtrl.CardAt(searchIndex, true));
         EndDeckSearch();
     }
 
@@ -166,8 +166,8 @@ public class UIController : MonoBehaviour {
         cancelDiscardSearch.gameObject.SetActive(true);
         //intiate process of searching
         searchIndex = 0;
-        if (Game.mainGame.discardCtrl.DiscardSize() > 0)
-            cardSearchImage.sprite = Game.mainGame.discardCtrl.CardAt(0, false).DetailedSprite;
+        if (Game.mainGame.friendlyDiscardCtrl.DiscardSize() > 0)
+            cardSearchImage.sprite = Game.mainGame.friendlyDiscardCtrl.CardAt(0, false).DetailedSprite;
         else
             cardSearchImage.sprite = Resources.Load<Sprite>("Card Sprites/Square Kompas Logo");
     }
@@ -175,7 +175,7 @@ public class UIController : MonoBehaviour {
     public void SearchDiscardToHand()
     {
         if (!searchingDiscard) return;
-        Game.mainGame.handCtrl.AddToHand(Game.mainGame.discardCtrl.CardAt(searchIndex, true));
+        Game.mainGame.friendlyHandCtrl.AddToHand(Game.mainGame.friendlyDiscardCtrl.CardAt(searchIndex, true));
         EndDiscardSearch();
     }
 
@@ -196,18 +196,18 @@ public class UIController : MonoBehaviour {
         searchIndex++;
         if (searchingDeck)
         {
-            if (Game.mainGame.deckCtrl.DeckSize() > 0)
+            if (Game.mainGame.friendlyDeckCtrl.DeckSize() > 0)
             {
-                searchIndex %= Game.mainGame.deckCtrl.DeckSize();
-                cardSearchImage.sprite = Game.mainGame.deckCtrl.CardAt(searchIndex, false).DetailedSprite;
+                searchIndex %= Game.mainGame.friendlyDeckCtrl.DeckSize();
+                cardSearchImage.sprite = Game.mainGame.friendlyDeckCtrl.CardAt(searchIndex, false).DetailedSprite;
             }
         }
         else if (searchingDiscard)
         {
-            if (Game.mainGame.discardCtrl.DiscardSize() > 0)
+            if (Game.mainGame.friendlyDiscardCtrl.DiscardSize() > 0)
             {
-                searchIndex %= Game.mainGame.discardCtrl.DiscardSize();
-                cardSearchImage.sprite = Game.mainGame.discardCtrl.CardAt(searchIndex, false).DetailedSprite;
+                searchIndex %= Game.mainGame.friendlyDiscardCtrl.DiscardSize();
+                cardSearchImage.sprite = Game.mainGame.friendlyDiscardCtrl.CardAt(searchIndex, false).DetailedSprite;
             }
         }
     }
@@ -217,15 +217,15 @@ public class UIController : MonoBehaviour {
         searchIndex--;
         if (searchingDeck)
         {
-            if (searchIndex < 0) searchIndex += Game.mainGame.deckCtrl.DeckSize();
-            if (Game.mainGame.deckCtrl.DeckSize() > 0)
-                cardSearchImage.sprite = Game.mainGame.deckCtrl.CardAt(searchIndex, false, false).DetailedSprite;
+            if (searchIndex < 0) searchIndex += Game.mainGame.friendlyDeckCtrl.DeckSize();
+            if (Game.mainGame.friendlyDeckCtrl.DeckSize() > 0)
+                cardSearchImage.sprite = Game.mainGame.friendlyDeckCtrl.CardAt(searchIndex, false, false).DetailedSprite;
         }
         else if (searchingDiscard)
         {
-            if (searchIndex < 0) searchIndex += Game.mainGame.discardCtrl.DiscardSize();
-            if (Game.mainGame.discardCtrl.DiscardSize() > 0)
-                cardSearchImage.sprite = Game.mainGame.discardCtrl.CardAt(searchIndex, false).DetailedSprite;
+            if (searchIndex < 0) searchIndex += Game.mainGame.friendlyDiscardCtrl.DiscardSize();
+            if (Game.mainGame.friendlyDiscardCtrl.DiscardSize() > 0)
+                cardSearchImage.sprite = Game.mainGame.friendlyDiscardCtrl.CardAt(searchIndex, false).DetailedSprite;
         }
     }
     #endregion

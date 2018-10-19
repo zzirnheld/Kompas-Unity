@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class DeckController : KompasObject
 {
+    //one of these for each player
+
     //rng for shuffling
     private static System.Random rng = new System.Random();
 
@@ -88,14 +90,14 @@ public class DeckController : KompasObject
     /// Gets the card at the designated index.
     /// </summary>
     /// <param name="index">Index of the card to get</param>
-    /// <param name="pop">Whether or not to remove the card</param>
+    /// <param name="remove">Whether or not to remove the card</param>
     /// <param name="shuffle">Whether or not to shuffle the deck after getting the card</param>
     /// <returns></returns>
-    public Card CardAt(int index, bool pop, bool shuffle = false)
+    public Card CardAt(int index, bool remove, bool shuffle = false)
     {
         if (index > deck.Count) return null;
         Card card = deck[index];
-        if (pop) deck.RemoveAt(index);
+        if (remove) deck.RemoveAt(index);
         if (shuffle) Shuffle();
         return card;
     }
@@ -103,15 +105,38 @@ public class DeckController : KompasObject
     //adding and removing cards
     public void PushTopdeck(Card card)
     {
-        //TODO
+        deck.Insert(0, card);
         card.SetLocation(Card.CardLocation.Deck);
-        card.gameObject.SetActive(false); //do this in setlocation?
+    }
+
+    public void PushBottomdeck(Card card)
+    {
+        deck.Add(card);
+        card.SetLocation(Card.CardLocation.Deck);
+    }
+
+    public void ShuffleIn(Card card)
+    {
+        deck.Add(card);
+        Shuffle();
     }
 
     public Card PopTopdeck()
     {
-        //TODO
-        return null;
+        if (deck.Count == 0) return null;
+
+        Card card = deck[0];
+        deck.RemoveAt(0);
+        return card;
+    }
+
+    public Card PopBottomdeck()
+    {
+        if (deck.Count == 0) return null;
+
+        Card card = deck[deck.Count - 1];
+        deck.RemoveAt(deck.Count - 1);
+        return card;
     }
 
     /// <summary>
@@ -119,8 +144,7 @@ public class DeckController : KompasObject
     /// </summary>
     public void RemoveFromDeck(Card card)
     {
-        //TODO
-        throw new NotImplementedException();
+        deck.Remove(card);
     }
 
     //misc
@@ -135,6 +159,11 @@ public class DeckController : KompasObject
             deck[k] = deck[n];
             deck[n] = value;
         }
+    }
+
+    public override void OnClick()
+    {
+        Game.mainGame.Draw();
     }
 
 }

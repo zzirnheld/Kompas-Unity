@@ -90,11 +90,11 @@ public class BoardController : KompasObject
     /// <param name="toPlay">Card to be played</param>
     /// <param name="toX">X coordinate to play the card to</param>
     /// <param name="toY">Y coordinate to play the card to</param>
-    public void Play(Card toPlay, int toX, int toY)
+    public void Play(Card toPlay, int toX, int toY, bool friendly = true)
     {
-        if (toPlay is CharacterCard) Summon(toPlay as CharacterCard, toX, toY);
-        else if (toPlay is AugmentCard) Augment(toPlay as AugmentCard, toX, toY);
-        else if (toPlay is SpellCard) Cast(toPlay as SpellCard, toX, toY);
+        if (toPlay is CharacterCard) Summon(toPlay as CharacterCard, toX, toY, friendly);
+        else if (toPlay is AugmentCard) Augment(toPlay as AugmentCard, toX, toY, friendly);
+        else if (toPlay is SpellCard) Cast(toPlay as SpellCard, toX, toY, friendly);
         else Debug.Log("Can't play a card that isn't a character, augment, or spell.");
     }
 
