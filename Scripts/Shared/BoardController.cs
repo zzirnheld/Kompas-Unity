@@ -37,7 +37,7 @@ public class BoardController : KompasObject
         return spells[x, y];
     }
 
-    //game mechanics
+    #region game mechanics
     public void RemoveFromBoard(Card toRemove)
     {
         if (toRemove.Location != Card.CardLocation.Field) return;
@@ -50,23 +50,55 @@ public class BoardController : KompasObject
             spells[toRemove.BoardX, toRemove.BoardY] = null;
     }
 
-    public void Play(Card toPlay, int toX, int toY)
+    //playing
+    /// <summary>
+    /// Actually summons the card. DO NOT call directly from player interaction
+    /// </summary>
+    public void Summon(CharacterCard toSummon, int toX, int toY, bool friendly = true)
     {
-        //TODO split into summon, augment, and cast
-    }
-    public void Summon(CharacterCard toSummon, int toX, int toY)
-    {
-        //TODO
-    }
-    public void Augment(AugmentCard toAugment, int toX, int toY)
-    {
-        //TODO
-    }
-    public void Cast(SpellCard toCast, int toX, int toY)
-    {
-        //TODO
+        characters[toX, toY] = toSummon;
+        toSummon.SetLocation(Card.CardLocation.Field);
+        toSummon.MoveTo(toX, toY);
+        toSummon.ChangeController(friendly);
     }
 
+    /// <summary>
+    /// Actually augments the card. DO NOT call directly from player interaction
+    /// </summary>
+    public void Augment(AugmentCard toAugment, int toX, int toY, bool friendly = true)
+    {
+        characters[toX, toY].AddAugment(toAugment);
+        toAugment.SetLocation(Card.CardLocation.Field);
+        toAugment.MoveTo(toX, toY);
+        toAugment.ChangeController(friendly);
+    }
+
+    /// <summary>
+    /// Actually casts the card. DO NOT call directly from player interaction
+    /// </summary>
+    public void Cast(SpellCard toCast, int toX, int toY, bool friendly = true)
+    {
+        spells[toX, toY] = toCast;
+        toCast.SetLocation(Card.CardLocation.Field);
+        toCast.MoveTo(toX, toY);
+        toCast.ChangeController(friendly);
+    }
+
+    /// <summary>
+    /// Calls the appropriate summon/augment/cast method for the card
+    /// </summary>
+    /// <param name="toPlay">Card to be played</param>
+    /// <param name="toX">X coordinate to play the card to</param>
+    /// <param name="toY">Y coordinate to play the card to</param>
+    public void Play(Card toPlay, int toX, int toY)
+    {
+        if (toPlay is CharacterCard) Summon(toPlay as CharacterCard, toX, toY);
+        else if (toPlay is AugmentCard) Augment(toPlay as AugmentCard, toX, toY);
+        else if (toPlay is SpellCard) Cast(toPlay as SpellCard, toX, toY);
+        else Debug.Log("Can't play a card that isn't a character, augment, or spell.");
+    }
+
+    //movement
     public void Swap(Card card, int toX, int toY)
     {
         if (!ValidIndices(toX, toY) || card == null) return;
@@ -76,15 +108,15 @@ public class BoardController : KompasObject
         int tempY;
         if (card is CharacterCard)
         {
-            temp = characters[toX, toY];
-            characters[toX, toY] = card as CharacterCard;
+            temp                                 = characters[toX, toY];
+            characters[toX, toY]                 = card as CharacterCard;
             characters[card.BoardX, card.BoardY] = temp as CharacterCard;
         }
         else if (card is AugmentCard) return; //TODO swap lists of augs
         else if (card is SpellCard)
         {
-            temp = spells[toX, toY];
-            spells[toX, toY] = card as SpellCard;
+            temp                             = spells[toX, toY];
+            spells[toX, toY]                 = card as SpellCard;
             spells[card.BoardX, card.BoardY] = temp as SpellCard;
         }
 
@@ -99,31 +131,16 @@ public class BoardController : KompasObject
     {
         if (!ValidIndices(toX, toY)) return;
 
-        if (card is CharacterCard)
+        if (card is AugmentCard)
         {
-            //movement for characters always means swapping
-            Swap(card, toX, toY);
-            return;
-        }
-        else if (card is AugmentCard)
-        {
-            //moving an augment means attaching it to a different character, because 
-            //it automatically moves with any character that it is attached to
+            (card as AugmentCard).Detach();
             characters[toX, toY].AddAugment(card as AugmentCard);
+            card.MoveTo(toX, toY);
         }
-        else if (card is SpellCard)
-        {
-            //if there is a spell in the target locationt to move to, do nothing
-            if (spells[toX, toY] != null) return;
-
-            //but if there isn't go ahead and move the card there
-            spells[toX, toY] = card as SpellCard;
-            //and tell the game that there isn't anything where this card was.
-            spells[card.BoardX, card.BoardY] = null;
-        }
-        //then let the card know it's been moved, for its x, y values and for its position
-        card.MoveTo(toX, toY);
+        else Swap(card, toX, toY);
     }
+
+    #endregion game mechanics
 
     #region cycling visible cards
     private void WhichCardsVisible(bool charsActive, bool spellsActive, bool augsActive)

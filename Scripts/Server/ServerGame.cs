@@ -18,4 +18,6 @@ public class ServerGame : Game {
         mainGame = this;
     }
 
+    //TODO: change turn
+
 }
