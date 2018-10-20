@@ -31,6 +31,10 @@ public class Game : MonoBehaviour {
     public GameObject friendlyDeckObject;
     public GameObject friendlyDiscardObject;
     public GameObject friendlyHandObject;
+    //enemy
+    public GameObject enemyDeckObject;
+    public GameObject enemyDiscardObject;
+    public GameObject enemyHandObject;
 
     //game data
 

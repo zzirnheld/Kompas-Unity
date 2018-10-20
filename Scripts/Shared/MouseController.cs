@@ -94,7 +94,10 @@ public class MouseController : MonoBehaviour {
         {
             cardHit = kompasObjectHit as Card;
             if (Input.GetMouseButtonDown(0))
+            {
+                Debug.Log("Clicking card");
                 cardHit.OnClick();
+            }
             else if (Input.GetMouseButton(0))
                 cardHit.OnDrag(raycastHit.point);
             else if (Input.GetMouseButtonUp(0))

@@ -431,7 +431,7 @@ GameObject:
   - component: {fileID: 60475904}
   - component: {fileID: 60475903}
   m_Layer: 0
-  m_Name: Enemy Hand (Enemy Parent Object)
+  m_Name: Enemy Hand (Empty Parent Object)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5881,6 +5881,9 @@ MonoBehaviour:
   friendlyDeckObject: {fileID: 562958693}
   friendlyDiscardObject: {fileID: 540378487}
   friendlyHandObject: {fileID: 1921547572}
+  enemyDeckObject: {fileID: 343499437}
+  enemyDiscardObject: {fileID: 116530640}
+  enemyHandObject: {fileID: 60475902}
 --- !u!114 &2127347773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5892,6 +5895,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9955109e001cd5478a2e4bb683529fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hosting: 0
+  connected: 0
+  characterPrefab: {fileID: 0}
+  spellPrefab: {fileID: 0}
+  augmentPrefab: {fileID: 0}
 --- !u!114 &2127347774
 MonoBehaviour:
   m_ObjectHideFlags: 0

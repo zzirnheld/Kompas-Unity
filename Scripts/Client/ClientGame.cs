@@ -58,7 +58,7 @@ public class ClientGame : Game {
     //ui
     public override void SelectCard(Card card)
     {
-        //TODO
+        uiCtrl.SelectCard(card);
     }
 
 }

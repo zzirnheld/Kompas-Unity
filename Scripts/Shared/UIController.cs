@@ -68,6 +68,8 @@ public class UIController : MonoBehaviour {
 
     public void SelectCard(Card card)
     {
+        if (card == null) Debug.Log("Selecting Null");
+        else Debug.Log("Selecting " + card.CardName);
         selectedCard = card;
 
         //if the card is null, deselect everything

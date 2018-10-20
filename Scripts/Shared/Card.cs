@@ -67,12 +67,13 @@ public class Card : KompasObject {
     }
     public Sprite DetailedSprite { get { return detailedSprite; } }
     public Sprite SimpleSprite { get { return simpleSprite; } }
-    
+
     //unity methods
     private void Awake()
     {
         meshRenderer = GetComponent<MeshRenderer>();
     }
+
 
     //set data
     /// <summary>
