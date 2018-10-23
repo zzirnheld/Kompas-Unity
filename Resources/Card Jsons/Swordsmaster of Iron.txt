@@ -19,6 +19,7 @@
 "s":3,
 "w":3,
 "m":2,
-"subtype":"Swordsmaster Warrior",
+"subtypes":["Swordsmaster","Warrior"],
+"subtypeText":"Swordsmaster Warrior",
 "augments":[]
 }

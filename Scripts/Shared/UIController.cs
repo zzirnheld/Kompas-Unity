@@ -88,7 +88,7 @@ public class UIController : MonoBehaviour {
         {
             selectedChar = card as CharacterCard;
             selectedCardStatsText.text = selectedChar.GetStatsString();
-            selectedCardSubtypesText.text = selectedChar.Subtypes;
+            selectedCardSubtypesText.text = selectedChar.SubtypeText;
         }
         else if(card is SpellCard)
         {

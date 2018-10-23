@@ -11,12 +11,13 @@ public class CharacterCard : Card {
     private int w;
     private int m;
 
-    private string subtypes;
+    private string[] subtypes;
     private List<AugmentCard> augments = new List<AugmentCard>();
 
     //stat getters TODO take into account tags here
     //reminder: don't need separate setters because you don't notify because you'll only change stats when server tells you to
     //all of these will return 0 if their value is < 0
+    #region stats
     public int N
     {
         get {
@@ -70,8 +71,9 @@ public class CharacterCard : Card {
         }
         set { m = value; }
     }
+    #endregion stats
 
-    public string Subtypes { get { return subtypes; } }
+    public string[] Subtypes { get { return subtypes; } }
     public List<AugmentCard> Augments { get { return augments; } }
 
     //get other information
