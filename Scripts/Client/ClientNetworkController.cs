@@ -5,11 +5,14 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 public class ClientNetworkController : NetworkController {
-
+    
     private int connectionID;
 
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    // reason that this code is in client/server is because client only needs the connection ID of server,
+    // server needs to listen to both clients
+    void Update()
+    {
         if (!hosting) return;
         //the "out" arguments in the following method mean that the things are being passed by reference,
         //and will be changed by the function

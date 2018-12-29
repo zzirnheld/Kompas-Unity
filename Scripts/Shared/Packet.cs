@@ -20,6 +20,11 @@ public class Packet : MonoBehaviour {
     public int y;
     public int num;
 
+    /// <summary>
+    /// Creates a packet
+    /// </summary>
+    /// <param name="charCard">test584269713</param>
+    /// <param name="command"></param>
     public Packet(CharacterCard charCard, string command)
     {
         this.command = command;

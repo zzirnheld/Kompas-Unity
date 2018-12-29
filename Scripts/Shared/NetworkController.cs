@@ -36,6 +36,7 @@ public class NetworkController : MonoBehaviour {
     public GameObject spellPrefab;
     public GameObject augmentPrefab;
 
+    //When any controller is initialized, initiate Unity's transport layer API
     private void Awake() { NetworkTransport.Init(); }
 
     /// <summary>
@@ -53,7 +54,7 @@ public class NetworkController : MonoBehaviour {
         //then you create a topology, which defines how your networking is gonna work
         HostTopology topology = new HostTopology(config, 1);
 
-        //adds a new host on port 8888, with the defined topology, for any ip addresses
+        //adds a new host on port "socket" (currently 8888), with the defined topology, for any ip addresses to connect to
         hostID = NetworkTransport.AddHost(topology, socket);
         hosting = true;
 

@@ -15,7 +15,7 @@ public class BoardController : KompasObject
     private int visibleCards = 0;
 
     //helper methods
-    private bool ValidIndices(int x, int y)
+    public bool ValidIndices(int x, int y)
     {
         return x >= 0 && y >= 0 && x < 7 && y < 7;
     }

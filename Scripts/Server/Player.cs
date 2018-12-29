@@ -11,9 +11,20 @@ public class Player {
     public bool friendly;
     private Quaternion cardRotation;
 
+    private int connectionID;
+
     //getters and setters
     //game mechanics data
     //other game data 
     public Quaternion CardRotation { get { return cardRotation; } }
-	
+
+    public int ConnectionID
+    {
+        get { return connectionID; }
+    }
+
+    public Player(int connectionID)
+    {
+        this.connectionID = connectionID;
+    }
 }
