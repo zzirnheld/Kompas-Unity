@@ -30,7 +30,7 @@ public class ServerNetworkController : NetworkController {
                 break;
             //they've actually sent something
             case NetworkEventType.DataEvent:
-                ParseRequest(recBuffer);
+                ParseRequest(recBuffer, recievedConnectionID);
                 break;
             //the person has disconnected
             case NetworkEventType.DisconnectEvent:
@@ -42,7 +42,7 @@ public class ServerNetworkController : NetworkController {
 
     }
 
-    private void ParseRequest(byte[] buffer)
+    private void ParseRequest(byte[] buffer, int connectionID)
     {
         Packet packet = Deserialize(buffer);
         if (packet == null) return;
@@ -57,6 +57,29 @@ public class ServerNetworkController : NetworkController {
                 charCard.SetInfo(packet.serializedChar);
 
                 //check if it's a valid location
+                ServerGame serverGame = Game.mainGame as ServerGame;
+                if (serverGame.ValidSummon(charCard, packet.x, packet.y))
+                {
+                    //if so, summon the character there
+                    serverGame.Play(charCard, packet.x, packet.y);
+
+                    //then notify the client that sent the request
+                    //create a packet with the normal version of the character and the inverted one
+                    Packet outPacket = new Packet(charCard, "Summon");
+                    Packet outPacketInverted = new Packet(charCard, "Summon");
+                    //send the normal one to the player that queried you
+                    Send(outPacket, connectionID);
+                    //if the one that queried you is player 0,
+                    if (connectionID == serverGame.Players[0].ConnectionID)
+                        //send the inverted one to player 1.
+                        Send(outPacketInverted, serverGame.Players[1].ConnectionID);
+                    //if the one that queried you is player 1,
+                    else
+                        //send the inverted one to player 0.
+                        Send(outPacketInverted, serverGame.Players[0].ConnectionID);
+                }
+                break;
+            case "Request Cast":
                 break;
             default:
                 break;
