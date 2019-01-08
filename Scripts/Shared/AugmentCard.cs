@@ -19,7 +19,10 @@ public class AugmentCard : Card {
     public CharacterCard ThisCharacter
     {
         get { return thisCharacter; }
-        set { thisCharacter = value; }
+        set {
+            thisCharacter = value;
+            MoveTo(thisCharacter.BoardX, thisCharacter.BoardY);
+        }
     }
 
     //get data

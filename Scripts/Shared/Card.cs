@@ -181,7 +181,8 @@ public class Card : KompasObject {
         * are 7 game board slots for the board's local length of 1). 
         * Then add 0.5 so that the cast to int effectively rounds instead of flooring.
         */
-        return (int)((pos + boardLenOffset) * spacesInGrid);
+        Debug.Log(pos + " translates to " + ((int)((pos + boardLenOffset) * spacesInGrid)));
+        return (int)((pos + boardLenOffset) * spacesInGrid / 0.9f);
     }
     protected float GridIndexToPos(int gridIndex)
     {
@@ -192,6 +193,7 @@ public class Card : KompasObject {
          * in the actual board's context of values (-0.45, 0.45) (legal local coordinates)
          * finally, add 0.025 to account for the 0.05 space on either side of the legal 0.45 area
          */
+        Debug.Log(gridIndex + " index becomes " + ((((float)gridIndex) / spacesInGrid - boardLenOffset + 0.025f)));
         return (((float)gridIndex) / spacesInGrid - boardLenOffset + 0.025f);
     }
 

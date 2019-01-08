@@ -136,7 +136,6 @@ public class BoardController : KompasObject
         {
             (card as AugmentCard).Detach();
             GetCharAt(toX, toY).AddAugment(card as AugmentCard);
-            card.MoveTo(toX, toY);
         }
         else Swap(card, toX, toY);
     }
