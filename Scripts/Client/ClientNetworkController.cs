@@ -73,7 +73,7 @@ public class ClientNetworkController : NetworkController {
                 AugmentCard augCard = Instantiate(augmentPrefab).GetComponent<AugmentCard>();
                 augCard.SetInfo(packet.serializedSpell);
                 augCard.SetImage(augCard.CardName);
-                Game.mainGame.boardCtrl.Cast(augCard, augCard.BoardX, augCard.BoardY, augCard.Friendly);
+                Game.mainGame.boardCtrl.Augment(augCard, augCard.BoardX, augCard.BoardY, augCard.Friendly);
                 augCard.transform.localScale = absCardScale;
                 break;
             case "MoveChar":

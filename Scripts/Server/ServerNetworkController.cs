@@ -47,6 +47,8 @@ public class ServerNetworkController : NetworkController {
         Packet packet = Deserialize(buffer);
         if (packet == null) return;
 
+        ServerGame serverGame = Game.mainGame as ServerGame;
+
         //switch between all the possible requests for the server to handle.
         switch (packet.command)
         {
@@ -57,8 +59,7 @@ public class ServerNetworkController : NetworkController {
                 charCard.SetInfo(packet.serializedChar);
 
                 //check if it's a valid location
-                ServerGame serverGame = Game.mainGame as ServerGame;
-                if (serverGame.ValidSummon(charCard, packet.x, packet.y))
+                if (serverGame.ValidBoardPlay(charCard, packet.x, packet.y))
                 {
                     //if so, summon the character there
                     serverGame.Play(charCard, packet.x, packet.y);
@@ -66,7 +67,7 @@ public class ServerNetworkController : NetworkController {
                     //then notify the client that sent the request
                     //create a packet with the normal version of the character and the inverted one
                     Packet outPacket = new Packet(charCard, "Summon");
-                    Packet outPacketInverted = new Packet(charCard, "Summon");
+                    Packet outPacketInverted = new Packet(charCard, "Summon", true);
                     //send the normal one to the player that queried you
                     Send(outPacket, connectionID);
                     //if the one that queried you is player 0,
@@ -80,6 +81,60 @@ public class ServerNetworkController : NetworkController {
                 }
                 break;
             case "Request Cast":
+                //first create a new spell card from the prefab
+                SpellCard spellCard = Instantiate(spellPrefab).GetComponent<SpellCard>();
+                //set the image and information of the new spell from the packet's info
+                spellCard.SetInfo(packet.serializedSpell);
+
+                //check if it's a valid location
+                if (serverGame.ValidBoardPlay(spellCard, packet.x, packet.y))
+                {
+                    //if so, cast the spell there
+                    serverGame.Play(spellCard, packet.x, packet.y);
+
+                    //then notify the client that sent the request
+                    //create a packet with the normal version of the spell and the inverted one
+                    Packet outPacket = new Packet(spellCard, "Cast");
+                    Packet outPacketInverted = new Packet(spellCard, "Cast", true);
+                    //send the normal one to the player that queried you
+                    Send(outPacket, connectionID);
+                    //if the one that queried you is player 0,
+                    if (connectionID == serverGame.Players[0].ConnectionID)
+                        //send the inverted one to player 1.
+                        Send(outPacketInverted, serverGame.Players[1].ConnectionID);
+                    //if the one that queried you is player 1,
+                    else
+                        //send the inverted one to player 0.
+                        Send(outPacketInverted, serverGame.Players[0].ConnectionID);
+                }
+                break;
+            case "Request Augment":
+                //first create a new augment card from the prefab
+                AugmentCard augmentCard = Instantiate(augmentPrefab).GetComponent<AugmentCard>();
+                //set the image and information of the new spell from the packet's info
+                augmentCard.SetInfo(packet.serializedAug);
+
+                //check if it's a valid location
+                if (serverGame.ValidBoardPlay(augmentCard, packet.x, packet.y))
+                {
+                    //if so, apply the augment there
+                    serverGame.Play(augmentCard, packet.x, packet.y);
+
+                    //then notify the client that sent the request
+                    //create a packet with the normal version of the augment and the inverted one
+                    Packet outPacket = new Packet(augmentCard, "Augment");
+                    Packet outPacketInverted = new Packet(augmentCard, "Augment", true);
+                    //send the normal one to the player that queried you
+                    Send(outPacket, connectionID);
+                    //if the one that queried you is player 0,
+                    if (connectionID == serverGame.Players[0].ConnectionID)
+                        //send the inverted one to player 1.
+                        Send(outPacketInverted, serverGame.Players[1].ConnectionID);
+                    //if the one that queried you is player 1,
+                    else
+                        //send the inverted one to player 0.
+                        Send(outPacketInverted, serverGame.Players[0].ConnectionID);
+                }
                 break;
             default:
                 break;

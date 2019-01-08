@@ -23,11 +23,17 @@ public class DeckController : KompasObject
     public Card InstantiateCard(string json)
     {
 
+        //already allocated serializable cards
         SerializableCharCard serializableChar;
         SerializableSpellCard serializableSpell;
+        SerializableAugCard serializableAug;
         SerializableCard serializableCard;
-        SpellCard spellCard;
+        //and non serializable cards
         CharacterCard charCard;
+        SpellCard spellCard;
+        AugmentCard augCard;
+
+        //first deserialize it to tell the card's type
         serializableCard = JsonUtility.FromJson<SerializableCard>(json);
         switch (serializableCard.cardType)
         {
@@ -48,15 +54,15 @@ public class DeckController : KompasObject
                 spellCard.SetImage(spellCard.CardName);
                 return spellCard;
             case 'A':
-                serializableSpell = JsonUtility.FromJson<SerializableSpellCard>(json);
-                spellCard = Instantiate(augmentCardPrefab).GetComponent<AugmentCard>();
-                spellCard.gameObject.SetActive(false);
-                spellCard.SetInfo(serializableSpell);
+                serializableAug = JsonUtility.FromJson<SerializableAugCard>(json);
+                augCard = Instantiate(augmentCardPrefab).GetComponent<AugmentCard>();
+                augCard.gameObject.SetActive(false);
+                augCard.SetInfo(serializableAug);
                 //set image for the card by the name. this method gets the sprite with the given name
-                spellCard.SetImage(spellCard.CardName);
-                return spellCard;
+                augCard.SetImage(augCard.CardName);
+                return augCard;
             default:
-                Debug.Log("Unrecognized type character in " + json);
+                Debug.Log("Unrecognized type character " + serializableCard.cardType + " in " + json);
                 return null;
         }
     }

@@ -7,8 +7,9 @@ public class BoardController : KompasObject
 {
     public const int spacesOnBoard = 7;
 
-    private CharacterCard[,] characters = new CharacterCard[spacesOnBoard, spacesOnBoard];
-    private SpellCard[,] spells = new SpellCard[spacesOnBoard, spacesOnBoard];
+    //private CharacterCard[,] characters = new CharacterCard[spacesOnBoard, spacesOnBoard];
+    //private SpellCard[,] spells = new SpellCard[spacesOnBoard, spacesOnBoard];
+    private Card[,] cards = new Card[spacesOnBoard, spacesOnBoard];
     /// <summary>
     /// Whether all cards, only chars, only spells, or only augs are visible
     /// </summary>
@@ -21,20 +22,28 @@ public class BoardController : KompasObject
     }
 
     //get game data
+    public Card GetCardAt(int x, int y)
+    {
+        if (!ValidIndices(x, y)) return null;
+        return cards[x, y];
+    }
+
     public CharacterCard GetCharAt(int x, int y)
     {
-        if (!ValidIndices(x, y)) return null;
-        return characters[x, y];
+        if (!ValidIndices(x, y) || !(cards[x, y] is CharacterCard)) return null;
+        return cards[x, y] as CharacterCard;
     }
-    public List<AugmentCard> GetAugmentsAt(int x, int y)
-    {
-        if (!ValidIndices(x, y)) return null;
-        return characters[x, y].Augments;
-    }
+
     public SpellCard GetSpellAt(int x, int y)
     {
-        if (!ValidIndices(x, y)) return null;
-        return spells[x, y];
+        if (!ValidIndices(x, y) || !(cards[x, y] is SpellCard)) return null;
+        return cards[x, y] as SpellCard;
+    }
+
+    public List<AugmentCard> GetAugmentsAt(int x, int y)
+    {
+        if (!ValidIndices(x, y) || !(cards[x, y] is CharacterCard)) return null;
+        return (cards[x, y] as CharacterCard).Augments;
     }
 
     #region game mechanics
@@ -42,12 +51,10 @@ public class BoardController : KompasObject
     {
         if (toRemove.Location != Card.CardLocation.Field) return;
 
-        if (toRemove is CharacterCard)
-            characters[toRemove.BoardX, toRemove.BoardY] = null;
+        if (toRemove is CharacterCard || toRemove is SpellCard)
+            cards[toRemove.BoardX, toRemove.BoardY] = null;
         else if (toRemove is AugmentCard)
             (toRemove as AugmentCard).Detach();
-        else if (toRemove is SpellCard)
-            spells[toRemove.BoardX, toRemove.BoardY] = null;
     }
 
     //playing
@@ -56,7 +63,7 @@ public class BoardController : KompasObject
     /// </summary>
     public void Summon(CharacterCard toSummon, int toX, int toY, bool friendly = true)
     {
-        characters[toX, toY] = toSummon;
+        cards[toX, toY] = toSummon;
         toSummon.SetLocation(Card.CardLocation.Field);
         toSummon.MoveTo(toX, toY);
         toSummon.ChangeController(friendly);
@@ -67,7 +74,7 @@ public class BoardController : KompasObject
     /// </summary>
     public void Augment(AugmentCard toAugment, int toX, int toY, bool friendly = true)
     {
-        characters[toX, toY].AddAugment(toAugment);
+        GetCharAt(toX, toY).AddAugment(toAugment);
         toAugment.SetLocation(Card.CardLocation.Field);
         toAugment.MoveTo(toX, toY);
         toAugment.ChangeController(friendly);
@@ -78,7 +85,7 @@ public class BoardController : KompasObject
     /// </summary>
     public void Cast(SpellCard toCast, int toX, int toY, bool friendly = true)
     {
-        spells[toX, toY] = toCast;
+        cards[toX, toY] = toCast;
         toCast.SetLocation(Card.CardLocation.Field);
         toCast.MoveTo(toX, toY);
         toCast.ChangeController(friendly);
@@ -106,19 +113,13 @@ public class BoardController : KompasObject
         Card temp = null;
         int tempX;
         int tempY;
-        if (card is CharacterCard)
+        if (card is CharacterCard || card is SpellCard)
         {
-            temp                                 = characters[toX, toY];
-            characters[toX, toY]                 = card as CharacterCard;
-            characters[card.BoardX, card.BoardY] = temp as CharacterCard;
+            temp                            = cards[toX, toY];
+            cards[toX, toY]                 = card;
+            cards[card.BoardX, card.BoardY] = temp;
         }
         else if (card is AugmentCard) return; //TODO swap lists of augs
-        else if (card is SpellCard)
-        {
-            temp                             = spells[toX, toY];
-            spells[toX, toY]                 = card as SpellCard;
-            spells[card.BoardX, card.BoardY] = temp as SpellCard;
-        }
 
         tempX = card.BoardX;
         tempY = card.BoardY;
@@ -134,7 +135,7 @@ public class BoardController : KompasObject
         if (card is AugmentCard)
         {
             (card as AugmentCard).Detach();
-            characters[toX, toY].AddAugment(card as AugmentCard);
+            GetCharAt(toX, toY).AddAugment(card as AugmentCard);
             card.MoveTo(toX, toY);
         }
         else Swap(card, toX, toY);
@@ -145,14 +146,18 @@ public class BoardController : KompasObject
     #region cycling visible cards
     private void WhichCardsVisible(bool charsActive, bool spellsActive, bool augsActive)
     {
-        foreach (CharacterCard charCard in characters)
-            if (charCard != null)
+        //TODO check if this works
+        foreach (Card card in cards)
+        {
+            if (card == null) continue;
+
+            if (card is CharacterCard)
             {
-                charCard.gameObject.SetActive(charsActive);
-                foreach (AugmentCard augment in charCard.Augments) augment.gameObject.SetActive(augsActive);
+                card.gameObject.SetActive(charsActive);
+                foreach (AugmentCard augment in (card as CharacterCard).Augments) augment.gameObject.SetActive(augsActive);
             }
-        foreach (SpellCard spellCard in spells)
-            if (spellCard != null) spellCard.gameObject.SetActive(spellsActive);
+            else if (card is SpellCard) card.gameObject.SetActive(spellsActive);
+        }
     }
 
     public void CycleVisibleCards()

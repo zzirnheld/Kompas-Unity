@@ -2,15 +2,59 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AugmentCard : SpellCard {
+public class AugmentCard : Card {
 
     private CharacterCard thisCharacter;
+
+    private int d; //TODO refactor this to A
+    private string subtext;
+    private bool fast;
+
+    public int D
+    {
+        get { return d; }
+        set { d = value; }
+    }
 
     public CharacterCard ThisCharacter
     {
         get { return thisCharacter; }
         set { thisCharacter = value; }
     }
+
+    //get data
+    public SerializableAugCard GetSerializableVersion()
+    {
+        SerializableAugCard serializableSpell = new SerializableAugCard
+        {
+            cardName = cardName,
+            effText = effText,
+            subtext = subtext,
+            d = d,
+
+            location = location,
+            friendly = friendly,
+            BoardX = boardX,
+            BoardY = boardY,
+            subtypeText = subtypeText
+        };
+        return serializableSpell;
+    }
+
+    //set data
+    public override void SetInfo(SerializableCard serializedCard)
+    {
+        if (!(serializedCard is SerializableAugCard)) return;
+        SerializableAugCard serializedSpell = serializedCard as SerializableAugCard;
+
+        d = serializedSpell.d;
+        subtext = serializedSpell.subtext;
+        fast = serializedSpell.fast;
+
+        base.SetInfo(serializedCard);
+    }
+    
+    public override int GetCost() { return D; }
 
     //game mechanics
     //TODO prevent z fighting

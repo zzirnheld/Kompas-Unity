@@ -7,7 +7,7 @@ public class SpellCard : Card
 
     public enum SpellType { Simple, Enchant, Augment, Terraform, Delayed };
 
-    private int d;
+    private int d; //TODO refactor this to C
     private SpellType subtype;
     private string subtext;
     private bool fast;
@@ -57,6 +57,9 @@ public class SpellCard : Card
 
         base.SetInfo(serializedCard);
     }
+
+
+    public override int GetCost() { return D; }
 
     //game mechanics
     public override void MoveTo(int toX, int toY)
