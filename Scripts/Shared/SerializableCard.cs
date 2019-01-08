@@ -20,4 +20,13 @@ public class SerializableCard
     public int BoardX;
     public int BoardY;
 
+    /// <summary>
+    /// Flip board position
+    /// </summary>
+    public void Invert()
+    {
+        BoardX = 6 - BoardX;
+        BoardY = 6 - BoardY;
+    }
+
 }

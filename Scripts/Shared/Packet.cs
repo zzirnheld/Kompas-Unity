@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class Packet : MonoBehaviour {
+public class Packet {
 
     /// <summary>
     /// Contains the command that is sent.
@@ -20,10 +20,16 @@ public class Packet : MonoBehaviour {
     public int y;
     public int num;
 
-    public Packet(CharacterCard charCard, string command)
+    /// <summary>
+    /// Creates a packet. make invert true to 
+    /// </summary>
+    /// <param name="charCard">test584269713</param>
+    /// <param name="command"></param>
+    public Packet(CharacterCard charCard, string command, bool invert = false)
     {
         this.command = command;
         serializedChar = charCard.GetSerializableVersion();
+        if(invert)
     }
 
     public Packet(SpellCard spellCard, string command)
