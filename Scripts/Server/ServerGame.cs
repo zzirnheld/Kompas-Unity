@@ -32,9 +32,20 @@ public class ServerGame : Game {
     }
 
     //later, upgrade this with checking if the square is valid (adj or special case)
-    public bool ValidSummon(CharacterCard character, int toX, int toY)
+    public bool ValidBoardPlay(Card card, int toX, int toY)
     {
-        return character != null && boardCtrl.ValidIndices(toX, toY);
+        return card != null 
+            && (card is CharacterCard || card is SpellCard)
+            && boardCtrl.ValidIndices(toX, toY) 
+            && boardCtrl.GetCardAt(toX, toY) == null;
+    }
+
+    public bool ValidAugment(Card card, int toX, int toY)
+    {
+        return card != null
+            && card is AugmentCard
+            && boardCtrl.ValidIndices(toX, toY)
+            && boardCtrl.GetCharAt(toX, toY) != null;
     }
     //TODO: change turn
 
