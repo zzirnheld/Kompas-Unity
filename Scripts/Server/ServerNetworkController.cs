@@ -42,12 +42,32 @@ public class ServerNetworkController : NetworkController {
 
     }
 
+
+    private void SendPackets(Packet outPacket, Packet outPacketInverted, ServerGame serverGame, int connectionID)
+    {
+        //if it's not null, send the normal packet to the player that queried you
+        if (outPacket != null)
+            Send(outPacket, connectionID);
+
+        //if the inverted packet isn't null, send the packet to the 
+        //if the one that queried you is player 0,
+        if (connectionID == serverGame.Players[0].ConnectionID)
+            //send the inverted one to player 1.
+            Send(outPacketInverted, serverGame.Players[1].ConnectionID);
+        //if the one that queried you is player 1,
+        else
+            //send the inverted one to player 0.
+            Send(outPacketInverted, serverGame.Players[0].ConnectionID);
+    }
+
     private void ParseRequest(byte[] buffer, int connectionID)
     {
         Packet packet = Deserialize(buffer);
         if (packet == null) return;
 
         ServerGame serverGame = Game.mainGame as ServerGame;
+        Packet outPacket = null;
+        Packet outPacketInverted = null;
 
         //switch between all the possible requests for the server to handle.
         switch (packet.command)
@@ -66,18 +86,9 @@ public class ServerNetworkController : NetworkController {
 
                     //then notify the client that sent the request
                     //create a packet with the normal version of the character and the inverted one
-                    Packet outPacket = new Packet(charCard, "Summon");
-                    Packet outPacketInverted = new Packet(charCard, "Summon", true);
-                    //send the normal one to the player that queried you
-                    Send(outPacket, connectionID);
-                    //if the one that queried you is player 0,
-                    if (connectionID == serverGame.Players[0].ConnectionID)
-                        //send the inverted one to player 1.
-                        Send(outPacketInverted, serverGame.Players[1].ConnectionID);
-                    //if the one that queried you is player 1,
-                    else
-                        //send the inverted one to player 0.
-                        Send(outPacketInverted, serverGame.Players[0].ConnectionID);
+                    outPacket = new Packet(charCard, "Summon");
+                    outPacketInverted = new Packet(charCard, "Summon", true);
+                    SendPackets(outPacket, outPacketInverted, serverGame, connectionID);
                 }
                 break;
             case "Request Cast":
@@ -94,18 +105,9 @@ public class ServerNetworkController : NetworkController {
 
                     //then notify the client that sent the request
                     //create a packet with the normal version of the spell and the inverted one
-                    Packet outPacket = new Packet(spellCard, "Cast");
-                    Packet outPacketInverted = new Packet(spellCard, "Cast", true);
-                    //send the normal one to the player that queried you
-                    Send(outPacket, connectionID);
-                    //if the one that queried you is player 0,
-                    if (connectionID == serverGame.Players[0].ConnectionID)
-                        //send the inverted one to player 1.
-                        Send(outPacketInverted, serverGame.Players[1].ConnectionID);
-                    //if the one that queried you is player 1,
-                    else
-                        //send the inverted one to player 0.
-                        Send(outPacketInverted, serverGame.Players[0].ConnectionID);
+                    outPacket = new Packet(spellCard, "Cast");
+                    outPacketInverted = new Packet(spellCard, "Cast", true);
+                    SendPackets(outPacket, outPacketInverted, serverGame, connectionID);
                 }
                 break;
             case "Request Augment":
@@ -122,23 +124,67 @@ public class ServerNetworkController : NetworkController {
 
                     //then notify the client that sent the request
                     //create a packet with the normal version of the augment and the inverted one
-                    Packet outPacket = new Packet(augmentCard, "Augment");
-                    Packet outPacketInverted = new Packet(augmentCard, "Augment", true);
-                    //send the normal one to the player that queried you
-                    Send(outPacket, connectionID);
-                    //if the one that queried you is player 0,
-                    if (connectionID == serverGame.Players[0].ConnectionID)
-                        //send the inverted one to player 1.
-                        Send(outPacketInverted, serverGame.Players[1].ConnectionID);
-                    //if the one that queried you is player 1,
-                    else
-                        //send the inverted one to player 0.
-                        Send(outPacketInverted, serverGame.Players[0].ConnectionID);
+                    outPacket = new Packet(augmentCard, "Augment");
+                    outPacketInverted = new Packet(augmentCard, "Augment", true);
+                    SendPackets(outPacket, outPacketInverted, serverGame, connectionID);
                 }
                 break;
+            case "Request Move Char":
+                //first get who's moving
+                CharacterCard toMove = serverGame.boardCtrl.GetCharAt(packet.serializedChar.BoardX, packet.serializedChar.BoardY);
+                CharacterCard charAtDest = serverGame.boardCtrl.GetCharAt(packet.x, packet.y);
+                //then check if legal move
+                if (serverGame.ValidMove(toMove, packet.x, packet.y))
+                    //if legal, do the move
+                    serverGame.Move(toMove, packet.x, packet.y);
+
+                //create and send notification packets
+                //for first char
+                outPacket = new Packet(toMove, "MoveChar");
+                outPacketInverted = new Packet(toMove, "MoveChar", true); //true for inverted
+                SendPackets(outPacket, outPacketInverted, serverGame, connectionID);
+
+                //for second char, if was a swap
+                if(charAtDest != null)
+                {
+                    outPacket = new Packet(charAtDest, "MoveChar");
+                    outPacketInverted = new Packet(charAtDest, "MoveChar", true);
+                    SendPackets(outPacket, outPacketInverted, serverGame, connectionID);
+                }
+
+                break;
+            case "Request Move Spell":
+                //first get who's moving
+                SpellCard spellToMove = serverGame.boardCtrl.GetSpellAt(packet.serializedSpell.BoardX, packet.serializedSpell.BoardY);
+                SpellCard spellAtDest = serverGame.boardCtrl.GetSpellAt(packet.x, packet.y);
+                //then check if legal move
+                if (serverGame.ValidMove(spellToMove, packet.x, packet.y))
+                    //if legal, do the move
+                    serverGame.Move(spellToMove, packet.x, packet.y);
+
+                //create and send notification packets
+                //for first spell
+                outPacket = new Packet(spellToMove, "MoveSpell");
+                outPacketInverted = new Packet(spellToMove, "MoveSpell", true); //true for inverted
+                SendPackets(outPacket, outPacketInverted, serverGame, connectionID);
+
+                //for second spell, if was a swap
+                if (spellAtDest != null)
+                {
+                    outPacket = new Packet(spellAtDest, "MoveChar");
+                    outPacketInverted = new Packet(spellAtDest, "MoveChar", true);
+                    SendPackets(outPacket, outPacketInverted, serverGame, connectionID);
+                }
+
+                break;
+                //TODO do for augment?
             default:
                 break;
         }
+
+
+        
+
     }
     
 

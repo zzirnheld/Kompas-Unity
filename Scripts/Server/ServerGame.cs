@@ -47,6 +47,19 @@ public class ServerGame : Game {
             && boardCtrl.ValidIndices(toX, toY)
             && boardCtrl.GetCharAt(toX, toY) != null;
     }
+
+    public bool ValidMove(Card toMove, int toX, int toY)
+    {
+        //when make automated, add logic to determine if it's a valid move
+        //for now, tho, just allow
+        return true;
+
+        /*(Card fromCard = boardCtrl.GetCardAt(fromX, fromY);
+        Card toCard = boardCtrl.GetCardAt(toX, toY);
+        return toCard == null ||
+            (fromCard is CharacterCard && toCard is CharacterCard);*/
+    }
+
     //TODO: change turn
 
 }

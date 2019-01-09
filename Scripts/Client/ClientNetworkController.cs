@@ -95,6 +95,12 @@ public class ClientNetworkController : NetworkController {
             case "SetFriendlyPips":
                 if(Game.mainGame is ClientGame) (Game.mainGame as ClientGame).FriendlyPips = packet.num;
                 break;
+            case "SetEnemyPips":
+                if (Game.mainGame is ClientGame) (Game.mainGame as ClientGame).EnemyPips = packet.num;
+                break;
+            default:
+                Debug.Log("Unrecognized command sent to client");
+                break;
         }
     }
 

@@ -2547,7 +2547,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: bd1a8926c1751d543be7c51d1a0807e9, type: 2}
+  - {fileID: 2100000, guid: 289448fdf53f91744a704bb42dc30714, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5322,7 +5322,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1921547572}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -6}
+  m_LocalPosition: {x: 0, y: 0, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5897,9 +5897,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hosting: 0
   connected: 0
-  characterPrefab: {fileID: 0}
-  spellPrefab: {fileID: 0}
-  augmentPrefab: {fileID: 0}
+  characterPrefab: {fileID: 1867480149614592, guid: 3a1c99b156d4dfe4f87489a1b6147b56,
+    type: 2}
+  spellPrefab: {fileID: 1656078229824318, guid: c11b9e0eff225ef42b29ef33bacc3186,
+    type: 2}
+  augmentPrefab: {fileID: 1960667190934142, guid: 57bc0faf22439474b8ad57c3a6a0bbcb,
+    type: 2}
 --- !u!114 &2127347774
 MonoBehaviour:
   m_ObjectHideFlags: 0
