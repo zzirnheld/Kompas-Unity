@@ -5871,19 +5871,14 @@ MonoBehaviour:
   networkCtrl: {fileID: 2127347773}
   uiCtrl: {fileID: 1615817255}
   boardCtrl: {fileID: 665162530}
+  boardObject: {fileID: 665162525}
+  turnPlayer: 0
+  friendlyHandCtrl: {fileID: 1921547573}
   friendlyDeckCtrl: {fileID: 562958699}
   friendlyDiscardCtrl: {fileID: 540378492}
-  friendlyHandCtrl: {fileID: 1921547573}
-  enemyDeckCtrl: {fileID: 562958699}
-  enemyDiscardCtrl: {fileID: 540378492}
-  enemyHandCtrl: {fileID: 1921547573}
-  boardObject: {fileID: 665162525}
-  friendlyDeckObject: {fileID: 562958693}
-  friendlyDiscardObject: {fileID: 540378487}
-  friendlyHandObject: {fileID: 1921547572}
-  enemyDeckObject: {fileID: 343499437}
-  enemyDiscardObject: {fileID: 116530640}
-  enemyHandObject: {fileID: 60475902}
+  friendlyHandObj: {fileID: 60475902}
+  friendlyDeckObj: {fileID: 343499437}
+  friendlyDiscardObj: {fileID: 116530640}
 --- !u!114 &2127347773
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public class SerializableCard
 
     //in game values
     public Card.CardLocation location;
-    public bool friendly;
+    public int owner;
     public int BoardX;
     public int BoardY;
 

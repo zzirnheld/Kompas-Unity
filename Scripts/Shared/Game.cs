@@ -16,25 +16,13 @@ public class Game : MonoBehaviour {
 
     //game mechanics
     public BoardController boardCtrl;
-    //friendly
-    public DeckController friendlyDeckCtrl;
-    public DiscardController friendlyDiscardCtrl;
-    public HandController friendlyHandCtrl;
-    //enemy
-    public DeckController enemyDeckCtrl;
-    public DiscardController enemyDiscardCtrl;
-    public HandController enemyHandCtrl;
-
     //game objects
     public GameObject boardObject;
-    //friendly
-    public GameObject friendlyDeckObject;
-    public GameObject friendlyDiscardObject;
-    public GameObject friendlyHandObject;
-    //enemy
-    public GameObject enemyDeckObject;
-    public GameObject enemyDiscardObject;
-    public GameObject enemyHandObject;
+
+    
+    public int turnPlayer;
+    protected Player[] players = new Player[2];
+    public Player[] Players { get { return players; } }
 
     //game data
 
@@ -56,40 +44,36 @@ public class Game : MonoBehaviour {
 
     #region forwarding calls to correct controller
     //move cards between locations
-    public void Discard(Card card, bool friendly = true)
+    public void Discard(Card card, int player = 0)
     {
-        Remove(card, friendly);
-        if (friendly) friendlyDiscardCtrl.AddToDiscard(card);
-        else enemyDiscardCtrl.AddToDiscard(card);
+        Remove(card, player);
+        players[player].discardCtrl.AddToDiscard(card);
     }
-    public void Topdeck(Card card, bool friendly = true)
+    public void Topdeck(Card card, int player = 0)
     {
-        Remove(card, friendly);
-        if (friendly) friendlyDeckCtrl.PushTopdeck(card);
-        else enemyDeckCtrl.PushTopdeck(card);
+        Remove(card, player);
+        players[player].deckCtrl.PushTopdeck(card);
     }
-    public void Rehand(Card card, bool friendly = true)
+    public void Rehand(Card card, int player = 0)
     {
-        Remove(card, friendly);
-        if (friendly) friendlyHandCtrl.AddToHand(card);
-        else enemyHandCtrl.AddToHand(card);
+        Remove(card, player);
+        players[player].handCtrl.AddToHand(card);
     }
-    public void Play(Card card, int toX, int toY, bool friendly = true)
+    public void Play(Card card, int toX, int toY, int player = 0)
     {
-        Remove(card, friendly);
-        boardCtrl.Play(card, toX, toY, friendly);
+        Remove(card, player);
+        boardCtrl.Play(card, toX, toY, player);
     }
 
-    public void Draw(bool friendly = true)
+    public void Draw(int player = 0)
     {
-        if (friendly) friendlyHandCtrl.AddToHand(friendlyDeckCtrl.PopTopdeck());
-        else enemyHandCtrl.AddToHand(enemyDeckCtrl.PopTopdeck());
+        players[player].handCtrl.AddToHand(players[player].deckCtrl.PopTopdeck());
     }
 
     /// <summary>
     /// Remove the card from wherever it is
     /// </summary>
-    public void Remove(Card toRemove, bool friendly = true)
+    public void Remove(Card toRemove, int player = 0)
     {
         switch (toRemove.Location)
         {
@@ -97,16 +81,13 @@ public class Game : MonoBehaviour {
                 boardCtrl.RemoveFromBoard(toRemove);
                 break;
             case Card.CardLocation.Discard:
-                if (friendly) friendlyDiscardCtrl.RemoveFromDiscard(toRemove);
-                else enemyDiscardCtrl.RemoveFromDiscard(toRemove);
+                players[player].discardCtrl.RemoveFromDiscard(toRemove);
                 break;
             case Card.CardLocation.Hand:
-                if (friendly) friendlyHandCtrl.RemoveFromHand(toRemove);
-                else enemyHandCtrl.RemoveFromHand(toRemove);
+                players[player].handCtrl.RemoveFromHand(toRemove);
                 break;
             case Card.CardLocation.Deck:
-                if (friendly) friendlyDeckCtrl.RemoveFromDeck(toRemove);
-                else enemyDeckCtrl.RemoveFromDeck(toRemove);
+                players[player].deckCtrl.RemoveFromDeck(toRemove);
                 break;
         }
     }

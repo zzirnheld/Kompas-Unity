@@ -94,7 +94,7 @@ public class CharacterCard : Card {
 
             m = m,
             location = location,
-            friendly = friendly,
+            owner = owner,
             BoardX = boardX,
             BoardY = boardY,
             subtypeText = subtypeText

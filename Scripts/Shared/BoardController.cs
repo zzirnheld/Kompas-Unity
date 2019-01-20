@@ -63,34 +63,34 @@ public class BoardController : KompasObject
     /// <summary>
     /// Actually summons the card. DO NOT call directly from player interaction
     /// </summary>
-    public void Summon(CharacterCard toSummon, int toX, int toY, bool friendly = true)
+    public void Summon(CharacterCard toSummon, int toX, int toY, int owner = 0)
     {
         cards[toX, toY] = toSummon;
         toSummon.SetLocation(Card.CardLocation.Field);
         toSummon.MoveTo(toX, toY);
-        toSummon.ChangeController(friendly);
+        toSummon.ChangeController(owner);
     }
 
     /// <summary>
     /// Actually augments the card. DO NOT call directly from player interaction
     /// </summary>
-    public void Augment(AugmentCard toAugment, int toX, int toY, bool friendly = true)
+    public void Augment(AugmentCard toAugment, int toX, int toY, int owner = 0)
     {
         GetCharAt(toX, toY).AddAugment(toAugment);
         toAugment.SetLocation(Card.CardLocation.Field);
         toAugment.MoveTo(toX, toY);
-        toAugment.ChangeController(friendly);
+        toAugment.ChangeController(owner);
     }
 
     /// <summary>
     /// Actually casts the card. DO NOT call directly from player interaction
     /// </summary>
-    public void Cast(SpellCard toCast, int toX, int toY, bool friendly = true)
+    public void Cast(SpellCard toCast, int toX, int toY, int owner = 0)
     {
         cards[toX, toY] = toCast;
         toCast.SetLocation(Card.CardLocation.Field);
         toCast.MoveTo(toX, toY);
-        toCast.ChangeController(friendly);
+        toCast.ChangeController(owner);
     }
 
     /// <summary>
@@ -99,11 +99,11 @@ public class BoardController : KompasObject
     /// <param name="toPlay">Card to be played</param>
     /// <param name="toX">X coordinate to play the card to</param>
     /// <param name="toY">Y coordinate to play the card to</param>
-    public void Play(Card toPlay, int toX, int toY, bool friendly = true)
+    public void Play(Card toPlay, int toX, int toY, int owner = 0)
     {
-        if (toPlay is CharacterCard) Summon(toPlay as CharacterCard, toX, toY, friendly);
-        else if (toPlay is AugmentCard) Augment(toPlay as AugmentCard, toX, toY, friendly);
-        else if (toPlay is SpellCard) Cast(toPlay as SpellCard, toX, toY, friendly);
+        if (toPlay is CharacterCard) Summon(toPlay as CharacterCard, toX, toY, owner);
+        else if (toPlay is AugmentCard) Augment(toPlay as AugmentCard, toX, toY, owner);
+        else if (toPlay is SpellCard) Cast(toPlay as SpellCard, toX, toY, owner);
         else Debug.Log("Can't play a card that isn't a character, augment, or spell.");
     }
 

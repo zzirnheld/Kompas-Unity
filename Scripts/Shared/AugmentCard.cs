@@ -36,7 +36,7 @@ public class AugmentCard : Card {
             d = d,
 
             location = location,
-            friendly = friendly,
+            owner = owner,
             BoardX = boardX,
             BoardY = boardY,
             subtypeText = subtypeText
@@ -70,7 +70,7 @@ public class AugmentCard : Card {
          * so we change the local x and y. the z coordinate also therefore needs to be negative
          * to show the card above the game board on the screen. */
         transform.localPosition = new Vector3(GridIndexToPos(toX), GridIndexToPos(toY), -0.05f);
-        if (friendly) transform.localEulerAngles = Vector3.zero;
+        if (owner == 0) transform.localEulerAngles = Vector3.zero;
         else transform.localEulerAngles = new Vector3(0, 0, 180);
 
     }

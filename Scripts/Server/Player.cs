@@ -11,6 +11,16 @@ public class Player {
     public bool friendly;
     private Quaternion cardRotation;
 
+    //friendly
+    public DeckController deckCtrl;
+    public DiscardController discardCtrl;
+    public HandController handCtrl;
+
+    //friendly
+    public GameObject deckObject;
+    public GameObject discardObject;
+    public GameObject handObject;
+    
     private int connectionID;
 
     //getters and setters

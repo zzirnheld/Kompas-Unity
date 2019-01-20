@@ -29,7 +29,7 @@ public class Card : KompasObject {
     protected string cardName;
     protected string effText;
     protected string subtypeText;
-    protected bool friendly;
+    protected int owner;
     protected CardLocation location;
 
     //other game data
@@ -58,7 +58,7 @@ public class Card : KompasObject {
         get { return subtypeText; }
         set { subtypeText = value; }
     }
-    public bool Friendly { get { return friendly; } }
+    public int Owner { get { return owner; } }
     public CardLocation Location { get { return location; } }
     //other game data
     public string CardFileName {
@@ -93,13 +93,13 @@ public class Card : KompasObject {
                     Game.mainGame.boardCtrl.RemoveFromBoard(this);
                     break;
                 case CardLocation.Discard:
-                    Game.mainGame.friendlyDiscardCtrl.RemoveFromDiscard(this);
+                    Game.mainGame.Players[owner].discardCtrl.RemoveFromDiscard(this);
                     break;
                 case CardLocation.Hand:
-                    Game.mainGame.friendlyHandCtrl.RemoveFromHand(this);
+                    Game.mainGame.Players[owner].handCtrl.RemoveFromHand(this);
                     break;
                 case CardLocation.Deck:
-                    Game.mainGame.friendlyDeckCtrl.RemoveFromDeck(this);
+                    Game.mainGame.Players[owner].deckCtrl.RemoveFromDeck(this);
                     break;
             }
         }
@@ -115,15 +115,15 @@ public class Card : KompasObject {
                 gameObject.SetActive(true);
                 break;
             case CardLocation.Discard:
-                transform.SetParent(Game.mainGame.friendlyDiscardObject.transform);
+                transform.SetParent(Game.mainGame.Players[owner].discardObject.transform);
                 gameObject.SetActive(true);
                 break;
             case CardLocation.Hand:
-                transform.SetParent(Game.mainGame.friendlyHandObject.transform);
+                transform.SetParent(Game.mainGame.Players[owner].handObject.transform);
                 gameObject.SetActive(true);
                 break;
             case CardLocation.Deck:
-                transform.SetParent(Game.mainGame.friendlyDeckObject.transform);
+                transform.SetParent(Game.mainGame.Players[owner].deckObject.transform);
                 gameObject.SetActive(false);
                 break;
         }
@@ -163,7 +163,7 @@ public class Card : KompasObject {
         effText = serializedCard.effText;
         subtypeText = serializedCard.subtypeText;
         location = serializedCard.location;
-        ChangeController(serializedCard.friendly);
+        ChangeController(serializedCard.owner);
         if (location == CardLocation.Field) MoveTo(serializedCard.BoardX, serializedCard.BoardY);
         else
         {
@@ -235,10 +235,10 @@ public class Card : KompasObject {
     }
 
     //misc mechanics methods
-    public void ChangeController(bool friendly)
+    public void ChangeController(int owner)
     {
-        this.friendly = friendly;
-        if (friendly) transform.localEulerAngles = Vector3.zero;
+        this.owner = owner;
+        if (owner == 0) transform.localEulerAngles = Vector3.zero;
         else transform.localEulerAngles = new Vector3(0, 0, 180);
         //TODO anything else?
     }
@@ -257,7 +257,7 @@ public class Card : KompasObject {
          * so we change the local x and y. the z coordinate also therefore needs to be negative
          * to show the card above the game board on the screen. */
         transform.localPosition = new Vector3(GridIndexToPos(toX), GridIndexToPos(toY), -0.1f);
-        if (friendly) transform.localEulerAngles = Vector3.zero;
+        if (owner == 0) transform.localEulerAngles = Vector3.zero;
         else transform.localEulerAngles = new Vector3(0, 0, 180);
     }
 

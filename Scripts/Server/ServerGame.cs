@@ -9,12 +9,7 @@ public class ServerGame : Game {
     //if server oks, it tells all players to do the thing
     //if server doesn't ok, it sends to all players a "hold up reset everything to how it should be"
 
-    public int turnPlayer;
-
-    private Player[] players = new Player[2];
     int currPlayerCount = 0; //current number of players. shouldn't exceed 2
-
-    public Player[] Players { get { return players; } }
 
     private void Awake()
     {

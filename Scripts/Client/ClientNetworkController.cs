@@ -79,7 +79,7 @@ public class ClientNetworkController : NetworkController {
                 charCard.SetInfo(packet.serializedChar);
                 charCard.SetImage(charCard.CardName);
                 //play the character to the board
-                Game.mainGame.boardCtrl.Summon(charCard, charCard.BoardX, charCard.BoardY, charCard.Friendly);
+                Game.mainGame.boardCtrl.Summon(charCard, charCard.BoardX, charCard.BoardY, charCard.Owner);
                 //make sure the card scales correctly
                 charCard.transform.localScale = absCardScale;
                 break;
@@ -90,14 +90,14 @@ public class ClientNetworkController : NetworkController {
                 spellCard.SetInfo(packet.serializedSpell);
                 spellCard.SetImage(spellCard.CardName);
                 //play the char to the board TODO have server send reversed indices
-                Game.mainGame.boardCtrl.Cast(spellCard, spellCard.BoardX, spellCard.BoardY, spellCard.Friendly);
+                Game.mainGame.boardCtrl.Cast(spellCard, spellCard.BoardX, spellCard.BoardY, spellCard.Owner);
                 spellCard.transform.localScale = absCardScale;
                 break;
             case "Augment":
                 AugmentCard augCard = Instantiate(augmentPrefab).GetComponent<AugmentCard>();
                 augCard.SetInfo(packet.serializedSpell);
                 augCard.SetImage(augCard.CardName);
-                Game.mainGame.boardCtrl.Augment(augCard, augCard.BoardX, augCard.BoardY, augCard.Friendly);
+                Game.mainGame.boardCtrl.Augment(augCard, augCard.BoardX, augCard.BoardY, augCard.Owner);
                 augCard.transform.localScale = absCardScale;
                 break;
             case "MoveChar":
@@ -126,15 +126,15 @@ public class ClientNetworkController : NetworkController {
                 Game.mainGame.boardCtrl.RemoveFromBoard(packet.x, packet.y);
                 break;
             case "RemoveFromHand": //num is the index in the hand to remove at
-                Game.mainGame.friendlyHandCtrl.RemoveFromHandAt(packet.num);
+                ClientGame.mainClientGame.friendlyHandCtrl.RemoveFromHandAt(packet.num);
                 break;
             case "AddToDiscard":
                 Card toDiscard = GetCorrectCardType(packet);
-                Game.mainGame.Discard(toDiscard);
+                ClientGame.mainClientGame.Discard(toDiscard);
                 break;
             case "AddToHand":
                 Card toHand = GetCorrectCardType(packet);
-                Game.mainGame.friendlyHandCtrl.AddToHand(toHand);
+                ClientGame.mainClientGame.friendlyHandCtrl.AddToHand(toHand);
                 break;
             //case "DecrementEnemyCardsInHand":
                 //Game.mainGame.enemyHandCtrl
