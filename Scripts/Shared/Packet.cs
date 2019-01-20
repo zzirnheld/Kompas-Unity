@@ -20,6 +20,7 @@ public class Packet {
     public int x;
     public int y;
     public int num;
+    public char cardType;
 
     /// <summary>
     /// Creates a packet. make invert true to 

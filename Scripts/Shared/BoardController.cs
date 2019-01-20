@@ -49,13 +49,15 @@ public class BoardController : KompasObject
     #region game mechanics
     public void RemoveFromBoard(Card toRemove)
     {
-        if (toRemove.Location != Card.CardLocation.Field) return;
+        if (toRemove == null || toRemove.Location != Card.CardLocation.Field) return;
 
         if (toRemove is CharacterCard || toRemove is SpellCard)
             cards[toRemove.BoardX, toRemove.BoardY] = null;
         else if (toRemove is AugmentCard)
             (toRemove as AugmentCard).Detach();
     }
+
+    public void RemoveFromBoard(int x, int y) { RemoveFromBoard(GetCardAt(x, y)); }
 
     //playing
     /// <summary>

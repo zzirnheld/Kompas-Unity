@@ -42,6 +42,30 @@ public class ClientNetworkController : NetworkController {
         }
     }
 
+    public Card GetCorrectCardType(Packet packet)
+    {
+        Card toReturn = null;
+        switch (packet.cardType)
+        {
+            case 'C':
+                toReturn = Instantiate(characterPrefab).GetComponent<CharacterCard>();
+                (toReturn as CharacterCard).SetInfo(packet.serializedChar);
+                break;
+            case 'S':
+                toReturn = Instantiate(spellPrefab).GetComponent<SpellCard>();
+                (toReturn as SpellCard).SetInfo(packet.serializedSpell);
+                break;
+            case 'A':
+                toReturn = Instantiate(augmentPrefab).GetComponent<AugmentCard>();
+                (toReturn as AugmentCard).SetInfo(packet.serializedAug);
+                break;
+            default:
+                Debug.Log("AddToDiscard recieved unknown type in packet.cardType");
+                break;
+        }
+        return toReturn;
+    }
+
     public void ParseCommand(byte[] buffer)
     {
         Packet packet = Deserialize(buffer);
@@ -98,6 +122,22 @@ public class ClientNetworkController : NetworkController {
             case "SetEnemyPips":
                 if (Game.mainGame is ClientGame) (Game.mainGame as ClientGame).EnemyPips = packet.num;
                 break;
+            case "RemoveFromBoard":
+                Game.mainGame.boardCtrl.RemoveFromBoard(packet.x, packet.y);
+                break;
+            case "RemoveFromHand": //num is the index in the hand to remove at
+                Game.mainGame.friendlyHandCtrl.RemoveFromHandAt(packet.num);
+                break;
+            case "AddToDiscard":
+                Card toDiscard = GetCorrectCardType(packet);
+                Game.mainGame.Discard(toDiscard);
+                break;
+            case "AddToHand":
+                Card toHand = GetCorrectCardType(packet);
+                Game.mainGame.friendlyHandCtrl.AddToHand(toHand);
+                break;
+            //case "DecrementEnemyCardsInHand":
+                //Game.mainGame.enemyHandCtrl
             default:
                 Debug.Log("Unrecognized command sent to client");
                 break;

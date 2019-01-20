@@ -179,8 +179,15 @@ public class ServerNetworkController : NetworkController {
                 break;
             //TODO do for augment?
             case "Request Update Pips":
+                outPacket = new Packet("SetFriendlyPips", packet.num);
+                outPacketInverted = new Packet("SetEnemyPips", packet.num);
+                SendPackets(outPacket, outPacketInverted, serverGame, connectionID);
                 break;
-                //TODO discarding a card, rehanding, reshuffling, topdecking, bottomdecking
+            //TODO discarding a card, rehanding, reshuffling, topdecking, bottomdecking
+            case "Request Discard From Hand":
+                outPacket = new Packet("RemoveFromHand", packet.num);
+                outPacketInverted
+                
             default:
                 break;
         }
