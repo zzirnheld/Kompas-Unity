@@ -177,7 +177,10 @@ public class ServerNetworkController : NetworkController {
                 }
 
                 break;
-                //TODO do for augment?
+            //TODO do for augment?
+            case "Request Update Pips":
+                break;
+                //TODO discarding a card, rehanding, reshuffling, topdecking, bottomdecking
             default:
                 break;
         }

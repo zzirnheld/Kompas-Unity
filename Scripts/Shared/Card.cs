@@ -319,7 +319,7 @@ public class Card : KompasObject {
         else if (WithinIgnoreY(transform.position, minDiscardX, maxDiscardX, minDiscardZ, maxDiscardZ))
         {
             Debug.Log(cardName + " ended drag on discard");
-            //in that case, discard it
+            //in that case, discard it //TODO do this by raycasting along another layer to see if you hit deck/discard
             Discard();
         }
         //maybe it's on top of the deck
@@ -332,7 +332,7 @@ public class Card : KompasObject {
         //if it's not in any of those, probably should go back in the hand.
         else
         {
-            Debug.Log(cardName + " ended drag nowhere. putting it in the hand");
+            Debug.Log(cardName + " ended drag nowhere. putting it in the hand. was at " + transform.position);
             Rehand();
         }
     }
