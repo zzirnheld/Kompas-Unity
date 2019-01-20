@@ -125,7 +125,7 @@ public class ClientNetworkController : NetworkController {
             case "RemoveFromBoard":
                 Game.mainGame.boardCtrl.RemoveFromBoard(packet.x, packet.y);
                 break;
-            case "RemoveFromHand": //num is the index in the hand to remove at
+            case "RemoveFromHand": //num is the index in the hand to remove at TODO for enemy hand
                 ClientGame.mainClientGame.friendlyHandCtrl.RemoveFromHandAt(packet.num);
                 break;
             case "AddToDiscard":
@@ -136,8 +136,6 @@ public class ClientNetworkController : NetworkController {
                 Card toHand = GetCorrectCardType(packet);
                 ClientGame.mainClientGame.friendlyHandCtrl.AddToHand(toHand);
                 break;
-            //case "DecrementEnemyCardsInHand":
-                //Game.mainGame.enemyHandCtrl
             default:
                 Debug.Log("Unrecognized command sent to client");
                 break;

@@ -184,10 +184,10 @@ public class ServerNetworkController : NetworkController {
                 SendPackets(outPacket, outPacketInverted, serverGame, connectionID);
                 break;
             //TODO discarding a card, rehanding, reshuffling, topdecking, bottomdecking
-            //case "Request Discard From Hand":
-                //outPacket = new Packet("RemoveFromHand", packet.num);
-                //outPacketInverted
-                
+            case "Request Discard From Hand":
+                outPacket = new Packet("RemoveFromHand", packet.num);
+                outPacketInverted
+                break;
             default:
                 break;
         }
