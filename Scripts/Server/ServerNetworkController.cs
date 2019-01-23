@@ -64,8 +64,7 @@ public class ServerNetworkController : NetworkController {
     {
         Packet packet = Deserialize(buffer);
         if (packet == null) return;
-
-        ServerGame serverGame = Game.mainGame as ServerGame;
+        
         Packet outPacket = null;
         Packet outPacketInverted = null;
 
@@ -79,16 +78,16 @@ public class ServerNetworkController : NetworkController {
                 charCard.SetInfo(packet.serializedChar);
 
                 //check if it's a valid location
-                if (serverGame.ValidBoardPlay(charCard, packet.x, packet.y))
+                if (ServerGame.mainServerGame.ValidBoardPlay(charCard, packet.x, packet.y))
                 {
                     //if so, summon the character there
-                    serverGame.Play(charCard, packet.x, packet.y);
+                    ServerGame.mainServerGame.Play(charCard, packet.x, packet.y);
 
                     //then notify the client that sent the request
                     //create a packet with the normal version of the character and the inverted one
                     outPacket = new Packet(charCard, "Summon");
                     outPacketInverted = new Packet(charCard, "Summon", true);
-                    SendPackets(outPacket, outPacketInverted, serverGame, connectionID);
+                    SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 }
                 break;
             case "Request Cast":
@@ -98,16 +97,16 @@ public class ServerNetworkController : NetworkController {
                 spellCard.SetInfo(packet.serializedSpell);
 
                 //check if it's a valid location
-                if (serverGame.ValidBoardPlay(spellCard, packet.x, packet.y))
+                if (ServerGame.mainServerGame.ValidBoardPlay(spellCard, packet.x, packet.y))
                 {
                     //if so, cast the spell there
-                    serverGame.Play(spellCard, packet.x, packet.y);
+                    ServerGame.mainServerGame.Play(spellCard, packet.x, packet.y);
 
                     //then notify the client that sent the request
                     //create a packet with the normal version of the spell and the inverted one
                     outPacket = new Packet(spellCard, "Cast");
                     outPacketInverted = new Packet(spellCard, "Cast", true);
-                    SendPackets(outPacket, outPacketInverted, serverGame, connectionID);
+                    SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 }
                 break;
             case "Request Augment":
@@ -117,82 +116,76 @@ public class ServerNetworkController : NetworkController {
                 augmentCard.SetInfo(packet.serializedAug);
 
                 //check if it's a valid location
-                if (serverGame.ValidBoardPlay(augmentCard, packet.x, packet.y))
+                if (ServerGame.mainServerGame.ValidBoardPlay(augmentCard, packet.x, packet.y))
                 {
                     //if so, apply the augment there
-                    serverGame.Play(augmentCard, packet.x, packet.y);
+                    ServerGame.mainServerGame.Play(augmentCard, packet.x, packet.y);
 
                     //then notify the client that sent the request
                     //create a packet with the normal version of the augment and the inverted one
                     outPacket = new Packet(augmentCard, "Augment");
                     outPacketInverted = new Packet(augmentCard, "Augment", true);
-                    SendPackets(outPacket, outPacketInverted, serverGame, connectionID);
+                    SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 }
                 break;
             case "Request Move Char":
                 //first get who's moving
-                CharacterCard toMove = serverGame.boardCtrl.GetCharAt(packet.serializedChar.BoardX, packet.serializedChar.BoardY);
-                CharacterCard charAtDest = serverGame.boardCtrl.GetCharAt(packet.x, packet.y);
+                CharacterCard toMove = ServerGame.mainServerGame.boardCtrl.GetCharAt(packet.serializedChar.BoardX, packet.serializedChar.BoardY);
                 //then check if legal move
-                if (serverGame.ValidMove(toMove, packet.x, packet.y))
-                    //if legal, do the move
-                    serverGame.Move(toMove, packet.x, packet.y);
-
-                //create and send notification packets
-                //for first char
-                outPacket = new Packet(toMove, "MoveChar");
-                outPacketInverted = new Packet(toMove, "MoveChar", true); //true for inverted
-                SendPackets(outPacket, outPacketInverted, serverGame, connectionID);
-
-                //for second char, if was a swap
-                if(charAtDest != null)
+                if (ServerGame.mainServerGame.ValidMove(toMove, packet.x, packet.y))
                 {
-                    outPacket = new Packet(charAtDest, "MoveChar");
-                    outPacketInverted = new Packet(charAtDest, "MoveChar", true);
-                    SendPackets(outPacket, outPacketInverted, serverGame, connectionID);
+                    //create notification packets
+                    outPacket = new Packet(toMove, "MoveChar", packet.x, packet.y);
+                    outPacketInverted = new Packet(toMove, "MoveChar", packet.x, packet.y, true); //true for inverted
+                    //if legal, do the move
+                    ServerGame.mainServerGame.Move(toMove, packet.x, packet.y);
+                    //send packets
+                    SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 }
-
                 break;
             case "Request Move Spell":
                 //first get who's moving
-                SpellCard spellToMove = serverGame.boardCtrl.GetSpellAt(packet.serializedSpell.BoardX, packet.serializedSpell.BoardY);
-                SpellCard spellAtDest = serverGame.boardCtrl.GetSpellAt(packet.x, packet.y);
+                SpellCard spellToMove = ServerGame.mainServerGame.boardCtrl.GetSpellAt(packet.serializedSpell.BoardX, packet.serializedSpell.BoardY);
                 //then check if legal move
-                if (serverGame.ValidMove(spellToMove, packet.x, packet.y))
-                    //if legal, do the move
-                    serverGame.Move(spellToMove, packet.x, packet.y);
-
-                //create and send notification packets
-                //for first spell
-                outPacket = new Packet(spellToMove, "MoveSpell");
-                outPacketInverted = new Packet(spellToMove, "MoveSpell", true); //true for inverted
-                SendPackets(outPacket, outPacketInverted, serverGame, connectionID);
-
-                //for second spell, if was a swap
-                if (spellAtDest != null)
+                if (ServerGame.mainServerGame.ValidMove(spellToMove, packet.x, packet.y))
                 {
-                    outPacket = new Packet(spellAtDest, "MoveChar");
-                    outPacketInverted = new Packet(spellAtDest, "MoveChar", true);
-                    SendPackets(outPacket, outPacketInverted, serverGame, connectionID);
+                    //create otification packets
+                    outPacket = new Packet(spellToMove, "MoveSpell", packet.x, packet.y);
+                    outPacketInverted = new Packet(spellToMove, "MoveSpell", packet.x, packet.y, true); //true for inverted
+                    //if legal, do the move
+                    ServerGame.mainServerGame.Move(spellToMove, packet.x, packet.y);
+                    //and send packets
+                    SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 }
-
                 break;
             //TODO do for augment?
             case "Request Update Pips":
+                //actually update the pips
+                ServerGame.mainServerGame.SetPipsGivenPlayerID(connectionID, packet.num);
                 outPacket = new Packet("SetFriendlyPips", packet.num);
                 outPacketInverted = new Packet("SetEnemyPips", packet.num);
-                SendPackets(outPacket, outPacketInverted, serverGame, connectionID);
+                SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 break;
             //TODO discarding a card, rehanding, reshuffling, topdecking, bottomdecking
             case "Request Discard From Hand":
+                ServerGame.mainServerGame.DiscardCardGivenPlayerID(connectionID, packet.num);
                 outPacket = new Packet("RemoveFromHand", packet.num);
-                outPacketInverted
+                outPacketInverted = new Packet("DecrementEnemyHand");
+                SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
+                break;
+            case "Request Remove From Board":
+                ServerGame.mainServerGame.boardCtrl.RemoveFromBoard(packet.x, packet.y);
+                outPacket = new Packet("RemoveFromBoard", packet.x, packet.y);
+                outPacketInverted = new Packet("RemoveFromBoard", packet.x, packet.y, true);
+                break;
+            case "Request Draw":
+                Card drawn = ServerGame.mainServerGame.DrawGivenPlayerID(connectionID);
                 break;
             default:
                 break;
         }
 
-
+        //TODO make client send all these requests!
         
 
     }

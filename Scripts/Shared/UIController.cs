@@ -120,6 +120,7 @@ public class UIController : MonoBehaviour {
     }
 
     //TODO assign all of these methods to buttons
+    //TODO rework this to take into get deck from server before searching
     public void StartDeckSearch()
     {
         if (searchingDiscard) return;

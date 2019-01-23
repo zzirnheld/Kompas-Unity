@@ -9,11 +9,14 @@ public class ServerGame : Game {
     //if server oks, it tells all players to do the thing
     //if server doesn't ok, it sends to all players a "hold up reset everything to how it should be"
 
+    public static ServerGame mainServerGame;
+
     int currPlayerCount = 0; //current number of players. shouldn't exceed 2
 
     private void Awake()
     {
         mainGame = this;
+        mainServerGame = this;
     }
 
     public bool AddPlayer(int connectionID)
@@ -24,6 +27,38 @@ public class ServerGame : Game {
         currPlayerCount++;
 
         return true;
+    }
+
+    public int GetPlayerIndexFromID(int connectionID)
+    {
+        if (currPlayerCount < 2) return -1;
+
+        if (players[0].ConnectionID == connectionID) return 0;
+        else return 1;
+    }
+
+    public Player GetPlayerFromID(int connectionID)
+    {
+        if (currPlayerCount < 2) return null;
+
+        if (players[0].ConnectionID == connectionID) return players[0];
+        else return players[1];
+    }
+
+    //do action given id
+    public void SetPipsGivenPlayerID(int connectionID, int numPips)
+    {
+        GetPlayerFromID(connectionID).pips = numPips;
+    }
+
+    public void DiscardCardGivenPlayerID(int connectionID, int index)
+    {
+        GetPlayerFromID(connectionID).handCtrl.RemoveFromHandAt(index);
+    }
+
+    public Card DrawGivenPlayerID(int connectionID)
+    {
+        return Draw(GetPlayerIndexFromID(connectionID));
     }
 
     //later, upgrade this with checking if the square is valid (adj or special case)

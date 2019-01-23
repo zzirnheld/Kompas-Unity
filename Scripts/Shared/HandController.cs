@@ -8,6 +8,9 @@ public class HandController : KompasObject
 
     List<Card> hand = new List<Card>();
 
+    //rng for shuffling
+    private static System.Random rng = new System.Random();
+
     public void AddToHand(Card card)
     {
         hand.Add(card);
@@ -26,6 +29,14 @@ public class HandController : KompasObject
     {
         if (index < 0 || index >= hand.Count) return;
         hand.RemoveAt(index);
+    }
+
+    public Card RemoveRandomCard()
+    {
+        int randomIndex = rng.Next(hand.Count);
+        Card toReturn = hand[randomIndex];
+        RemoveFromHandAt(randomIndex);
+        return toReturn;
     }
 
     public void SpreadOutCards()

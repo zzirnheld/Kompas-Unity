@@ -136,6 +136,13 @@ public class ClientNetworkController : NetworkController {
                 Card toHand = GetCorrectCardType(packet);
                 ClientGame.mainClientGame.friendlyHandCtrl.AddToHand(toHand);
                 break;
+            case "IncrementEnemyHand":
+                Card toEnemyHand = ClientGame.mainClientGame.enemyDeckCtrl.InstantiateBlankCard();
+                ClientGame.mainClientGame.enemyHandCtrl.AddToHand(toEnemyHand);
+                break;
+            case "DecrementEnemyHand":
+                ClientGame.mainClientGame.enemyHandCtrl.RemoveRandomCard();
+                break;
             default:
                 Debug.Log("Unrecognized command sent to client");
                 break;

@@ -42,6 +42,9 @@ public class Game : MonoBehaviour {
         mouseCtrl.NormalClickObject();
     }
 
+    public static bool IsServerGame() { return mainGame is ServerGame; }
+    public static bool IsClientGame() { return mainGame is ClientGame; }
+
     #region forwarding calls to correct controller
     //move cards between locations
     public void Discard(Card card, int player = 0)
@@ -65,9 +68,11 @@ public class Game : MonoBehaviour {
         boardCtrl.Play(card, toX, toY, player);
     }
 
-    public void Draw(int player = 0)
+    public Card Draw(int player = 0)
     {
-        players[player].handCtrl.AddToHand(players[player].deckCtrl.PopTopdeck());
+        Card toDraw = players[player].deckCtrl.PopTopdeck();
+        players[player].handCtrl.AddToHand(toDraw);
+        return toDraw;
     }
 
     /// <summary>

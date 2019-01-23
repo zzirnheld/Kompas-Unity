@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class DeckController : KompasObject
 {
+    public const string BLANK_CARD_PATH = "Card Jsons/Blank Card";
+
     //one of these for each player
 
     //rng for shuffling
@@ -65,6 +67,11 @@ public class DeckController : KompasObject
                 Debug.Log("Unrecognized type character " + serializableCard.cardType + " in " + json);
                 return null;
         }
+    }
+
+    public Card InstantiateBlankCard()
+    {
+        return InstantiateCard(Resources.Load<TextAsset>(BLANK_CARD_PATH).text);
     }
 
     public void ImportDeck(string decklist)

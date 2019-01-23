@@ -27,6 +27,7 @@ public class SerializableCard
     {
         BoardX = 6 - BoardX;
         BoardY = 6 - BoardY;
+        owner = 1 - owner;
     }
 
 }

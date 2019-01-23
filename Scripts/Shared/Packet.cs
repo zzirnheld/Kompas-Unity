@@ -77,6 +77,7 @@ public class Packet {
         this.command = command;
         this.x = x;
         this.y = y;
+        if (invert) { this.x = 7 - x; this.y = 7 - y; }
         serializedChar = charCard.GetSerializableVersion();
         if (invert) serializedChar.Invert();
     }
@@ -86,6 +87,7 @@ public class Packet {
         this.command = command;
         this.x = x;
         this.y = y;
+        if (invert) { this.x = 7 - x; this.y = 7 - y; }
         serializedSpell = spellCard.GetSerializableVersion();
         if (invert) serializedSpell.Invert();
     }
@@ -95,6 +97,7 @@ public class Packet {
         this.command = command;
         this.x = x;
         this.y = y;
+        if (invert) { this.x = 7 - x; this.y = 7 - y; }
         serializedAug = augCard.GetSerializableVersion();
         if (invert) serializedAug.Invert();
     }
@@ -103,6 +106,19 @@ public class Packet {
     {
         this.command = command;
         this.num = num;
+    }
+
+    public Packet(string command)
+    {
+        this.command = command;
+    }
+
+    public Packet(string command, int x, int y, bool invert = false)
+    {
+        this.command = command;
+        if (invert) { this.x = 7 - x; this.y = 7 - y; }
+        else { this.x = x; this.y = y; }
+
     }
 
 }
