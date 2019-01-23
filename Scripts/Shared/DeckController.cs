@@ -154,7 +154,17 @@ public class DeckController : KompasObject
 
     public Card RemoveCardWithName(string name)
     {
-
+        Card toReturn;
+        for(int i = 0; i < deck.Count; i++)
+        {
+            if (deck[i].CardName.Equals(name))
+            {
+                toReturn = deck[i];
+                deck.RemoveAt(i);
+                return toReturn;
+            }
+        }
+        return null;
     }
 
     /// <summary>

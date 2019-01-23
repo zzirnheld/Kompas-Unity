@@ -168,7 +168,6 @@ public class ServerNetworkController : NetworkController {
                 outPacketInverted = new Packet("SetEnemyPips", packet.num);
                 SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 break;
-            //TODO discarding a card, rehanding, reshuffling, topdecking, bottomdecking
             case "Request Remove From Hand":
                 ServerGame.mainServerGame.RemoveFromHandGivenPlayerID(connectionID, packet.num);
                 outPacket = new Packet("RemoveFromHand", packet.num);
@@ -204,7 +203,7 @@ public class ServerNetworkController : NetworkController {
                 outPacketInverted = new Packet(toDiscard, "AddToDiscard", true); //addtodiscard will check the owner of the serialized card
                 SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 break;
-                //TODO request of discard from hand, kill, reshuffle, rehand, 
+                //TODO request kill, reshuffle, rehand, topdck, bottomdeck (with new client-has-unordered-copy paradigm)
             default:
                 break;
         }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class Card : KompasObject {
+public abstract class Card : KompasObject {
 
     public enum CardLocation { Field, Discard, Hand, Deck };
 
