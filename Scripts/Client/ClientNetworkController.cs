@@ -42,7 +42,7 @@ public class ClientNetworkController : NetworkController {
         }
     }
 
-    public Card GetCorrectCardType(Packet packet)
+    public Card GetCardFromPacket(Packet packet)
     {
         Card toReturn = null;
         switch (packet.cardType)
@@ -128,12 +128,12 @@ public class ClientNetworkController : NetworkController {
             case "RemoveFromHand": //num is the index in the hand to remove at TODO for enemy hand
                 ClientGame.mainClientGame.friendlyHandCtrl.RemoveFromHandAt(packet.num);
                 break;
-            case "AddToDiscard":
-                Card toDiscard = GetCorrectCardType(packet);
+            case "AddToDiscard": //don't need an enemy version because .Discard puts it in the correct one given the owner of toDiscard
+                Card toDiscard = GetCardFromPacket(packet);
                 ClientGame.mainClientGame.Discard(toDiscard);
                 break;
             case "AddToHand":
-                Card toHand = GetCorrectCardType(packet);
+                Card toHand = GetCardFromPacket(packet);
                 ClientGame.mainClientGame.friendlyHandCtrl.AddToHand(toHand);
                 break;
             case "IncrementEnemyHand":
@@ -142,6 +142,16 @@ public class ClientNetworkController : NetworkController {
                 break;
             case "DecrementEnemyHand":
                 ClientGame.mainClientGame.enemyHandCtrl.RemoveRandomCard();
+                break;
+            case "RemoveFromFriendlyDeck":
+                ClientGame.mainClientGame.friendlyDeckCtrl.RemoveCardWithName(packet.args);
+                break;
+            case "RemoveFromEnemyDeck":
+                ClientGame.mainClientGame.enemyDeckCtrl.RemoveCardWithName(packet.args);
+                break;
+            case "Draw":
+                ClientGame.mainClientGame.friendlyDeckCtrl.RemoveCardWithName(packet.args);
+                ClientGame.mainClientGame.friendlyHandCtrl.AddToHand(GetCardFromPacket(packet));
                 break;
             default:
                 Debug.Log("Unrecognized command sent to client");

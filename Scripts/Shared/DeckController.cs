@@ -152,6 +152,11 @@ public class DeckController : KompasObject
         return card;
     }
 
+    public Card RemoveCardWithName(string name)
+    {
+
+    }
+
     /// <summary>
     /// Random access remove from deck
     /// </summary>

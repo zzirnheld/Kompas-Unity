@@ -49,7 +49,9 @@ public class ServerNetworkController : NetworkController {
         if (outPacket != null)
             Send(outPacket, connectionID);
 
-        //if the inverted packet isn't null, send the packet to the 
+
+        //if the inverted packet isn't null, send the packet to the correct player
+        if (outPacketInverted == null) return;
         //if the one that queried you is player 0,
         if (connectionID == serverGame.Players[0].ConnectionID)
             //send the inverted one to player 1.
@@ -167,8 +169,8 @@ public class ServerNetworkController : NetworkController {
                 SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 break;
             //TODO discarding a card, rehanding, reshuffling, topdecking, bottomdecking
-            case "Request Discard From Hand":
-                ServerGame.mainServerGame.DiscardCardGivenPlayerID(connectionID, packet.num);
+            case "Request Remove From Hand":
+                ServerGame.mainServerGame.RemoveFromHandGivenPlayerID(connectionID, packet.num);
                 outPacket = new Packet("RemoveFromHand", packet.num);
                 outPacketInverted = new Packet("DecrementEnemyHand");
                 SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
@@ -180,7 +182,29 @@ public class ServerNetworkController : NetworkController {
                 break;
             case "Request Draw":
                 Card drawn = ServerGame.mainServerGame.DrawGivenPlayerID(connectionID);
+                //TODO think about this. i think i want for the client to have the list of cards in their deck, but just not in the right order
+                //tell the client who's drawing to draw the card we think is right for them to draw
+                outPacket = new Packet(drawn, "Draw", drawn.CardName);
+                //other player gets told to remove that card from enemy deck TODO make other player not have this info, only num cards
+                outPacketInverted = new Packet("RemoveFromEnemyDeck", drawn.CardName);
+                SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
+                //and make sure that the other player also knows to increment their enemy's hand size
+                outPacketInverted = new Packet("IncrementEnemyHand");
+                SendPackets(null, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 break;
+            case "Request Discard From Hand":
+                //remove it from the hand
+                Card toDiscard = ServerGame.mainServerGame.RemoveFromHandGivenPlayerID(connectionID, packet.num);
+                outPacket = new Packet("RemoveFromHand", packet.num);
+                outPacketInverted = new Packet("DecrementEnemyHand");
+                SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
+                //and add it to the discard
+                ServerGame.mainServerGame.AddToDiscardGivenPlayerID(connectionID, toDiscard);
+                outPacket = new Packet(toDiscard, "AddToDiscard");
+                outPacketInverted = new Packet(toDiscard, "AddToDiscard", true); //addtodiscard will check the owner of the serialized card
+                SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
+                break;
+                //TODO request of discard from hand, kill, reshuffle, rehand, 
             default:
                 break;
         }

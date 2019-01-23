@@ -61,6 +61,9 @@ public class UIController : MonoBehaviour {
     public CharacterCard SelectedChar { get { return selectedChar; } }
     public SpellCard SelectedSpell { get { return selectedSpell; } }
 
+    //deck search vars
+    public List<Card> thingToSearch;
+
     private void Awake()
     {
         deckInputField.lineType = InputField.LineType.MultiLineNewline;

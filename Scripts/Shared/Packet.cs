@@ -29,6 +29,7 @@ public class Packet {
     /// <param name="command"></param>
     public Packet(CharacterCard charCard, string command, bool invert = false)
     {
+        cardType = 'C';
         this.command = command;
         serializedChar = charCard.GetSerializableVersion();
         if (invert) serializedChar.Invert();
@@ -36,6 +37,7 @@ public class Packet {
 
     public Packet(SpellCard spellCard, string command, bool invert = false)
     {
+        cardType = 'S';
         this.command = command;
         serializedSpell = spellCard.GetSerializableVersion();
         if (invert) serializedSpell.Invert();
@@ -43,6 +45,7 @@ public class Packet {
 
     public Packet(AugmentCard augCard, string command, bool invert = false)
     {
+        cardType = 'A';
         this.command = command;
         serializedAug = augCard.GetSerializableVersion();
         if (invert) serializedAug.Invert();
@@ -50,6 +53,7 @@ public class Packet {
 
     public Packet(CharacterCard charCard, string command, string args, bool invert = false)
     {
+        cardType = 'C';
         this.command = command;
         this.args = args;
         serializedChar = charCard.GetSerializableVersion();
@@ -58,6 +62,7 @@ public class Packet {
 
     public Packet(SpellCard spellCard, string command, string args, bool invert = false)
     {
+        cardType = 'S';
         this.command = command;
         this.args = args;
         serializedSpell = spellCard.GetSerializableVersion();
@@ -66,14 +71,46 @@ public class Packet {
 
     public Packet(AugmentCard augCard, string command, string args, bool invert = false)
     {
+        cardType = 'A';
         this.command = command;
         this.args = args;
         serializedAug = augCard.GetSerializableVersion();
         if (invert) serializedAug.Invert();
     }
 
+    public Packet(Card card, string command, bool invert = false)
+    {
+        if (card is CharacterCard)
+        {
+            cardType = 'C';
+            serializedChar = (card as CharacterCard).GetSerializableVersion();
+            if (invert) serializedChar.Invert();
+        }
+        else if (card is SpellCard)
+        {
+            cardType = 'S';
+            serializedSpell = (card as SpellCard).GetSerializableVersion();
+            if (invert) serializedSpell.Invert();
+        }
+        else if (card is AugmentCard)
+        {
+            cardType = 'A';
+            serializedAug = (card as AugmentCard).GetSerializableVersion();
+            if (invert) serializedAug.Invert();
+        }
+
+
+        this.command = command;
+    }
+
+    public Packet(Card card, string command, string args, bool invert = false) : this(card, command, invert)
+    {
+        this.args = args;
+    }
+
     public Packet(CharacterCard charCard, string command, int x, int y, bool invert = false)
     {
+        cardType = 'C';
         this.command = command;
         this.x = x;
         this.y = y;
@@ -84,6 +121,7 @@ public class Packet {
 
     public Packet(SpellCard spellCard, string command, int x, int y, bool invert = false)
     {
+        cardType = 'S';
         this.command = command;
         this.x = x;
         this.y = y;
@@ -94,6 +132,7 @@ public class Packet {
 
     public Packet(AugmentCard augCard, string command, int x, int y, bool invert = false)
     {
+        cardType = 'A';
         this.command = command;
         this.x = x;
         this.y = y;
@@ -119,6 +158,12 @@ public class Packet {
         if (invert) { this.x = 7 - x; this.y = 7 - y; }
         else { this.x = x; this.y = y; }
 
+    }
+
+    public Packet(string command, string args)
+    {
+        this.command = command;
+        this.args = args;
     }
 
 }

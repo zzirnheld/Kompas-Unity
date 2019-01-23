@@ -46,20 +46,27 @@ public class ServerGame : Game {
     }
 
     //do action given id
+    #region playerIDActions
     public void SetPipsGivenPlayerID(int connectionID, int numPips)
     {
         GetPlayerFromID(connectionID).pips = numPips;
     }
 
-    public void DiscardCardGivenPlayerID(int connectionID, int index)
+    public Card RemoveFromHandGivenPlayerID(int connectionID, int index)
     {
-        GetPlayerFromID(connectionID).handCtrl.RemoveFromHandAt(index);
+        return GetPlayerFromID(connectionID).handCtrl.RemoveFromHandAt(index);
     }
 
     public Card DrawGivenPlayerID(int connectionID)
     {
         return Draw(GetPlayerIndexFromID(connectionID));
     }
+
+    public void AddToDiscardGivenPlayerID(int connectionID, Card card)
+    {
+        GetPlayerFromID(connectionID).discardCtrl.AddToDiscard(card);
+    }
+    #endregion
 
     //later, upgrade this with checking if the square is valid (adj or special case)
     public bool ValidBoardPlay(Card card, int toX, int toY)

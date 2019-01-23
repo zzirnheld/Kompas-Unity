@@ -25,10 +25,12 @@ public class HandController : KompasObject
         hand.Remove(card);
     }
 
-    public void RemoveFromHandAt(int index)
+    public Card RemoveFromHandAt(int index)
     {
-        if (index < 0 || index >= hand.Count) return;
+        if (index < 0 || index >= hand.Count) return null;
+        Card toReturn = hand[index];
         hand.RemoveAt(index);
+        return toReturn;
     }
 
     public Card RemoveRandomCard()

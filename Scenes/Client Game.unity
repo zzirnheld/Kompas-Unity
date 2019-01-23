@@ -5879,12 +5879,12 @@ MonoBehaviour:
   friendlyHandObj: {fileID: 60475902}
   friendlyDeckObj: {fileID: 343499437}
   friendlyDiscardObj: {fileID: 116530640}
-  enemyHandCtrl: {fileID: 0}
-  enemyDeckCtrl: {fileID: 0}
-  enemyDiscardCtrl: {fileID: 0}
-  enemyHandObj: {fileID: 0}
-  enemyDeckObj: {fileID: 0}
-  enemyDiscardObj: {fileID: 0}
+  enemyHandCtrl: {fileID: 60475903}
+  enemyDeckCtrl: {fileID: 343499438}
+  enemyDiscardCtrl: {fileID: 116530641}
+  enemyHandObj: {fileID: 60475902}
+  enemyDeckObj: {fileID: 343499437}
+  enemyDiscardObj: {fileID: 116530640}
 --- !u!114 &2127347773
 MonoBehaviour:
   m_ObjectHideFlags: 0
