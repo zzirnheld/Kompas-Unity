@@ -57,6 +57,16 @@ public class ServerGame : Game {
         return GetPlayerFromID(connectionID).handCtrl.RemoveFromHandAt(index);
     }
 
+    public Card RemoveFromDiscardGivenPlayerID(int connectionID, int index)
+    {
+        return GetPlayerFromID(connectionID).discardCtrl.CardAt(index, true); //true for remove
+    }
+
+    public Card RemoveFromDeckGivenPlayerID(int connectionID, string name)
+    {
+        return GetPlayerFromID(connectionID).deckCtrl.RemoveCardWithName(name);
+    }
+
     public Card DrawGivenPlayerID(int connectionID)
     {
         return Draw(GetPlayerIndexFromID(connectionID));

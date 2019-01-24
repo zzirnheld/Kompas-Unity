@@ -39,7 +39,7 @@ public class DiscardController : KompasObject {
         discard.Remove(card);
     }
 
-    public void RemoveFromDiscardAt(int index)
+    public Card RemoveFromDiscardAt(int index)
     {
         Debug.Assert(index < discard.Count);
         discard.RemoveAt(index);

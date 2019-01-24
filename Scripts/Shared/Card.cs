@@ -220,6 +220,14 @@ public abstract class Card : KompasObject {
         return DistanceTo(x, y) <= numSlots;
     }
 
+    public int GetIndexInList()
+    {
+        if (location == CardLocation.Discard) return Game.mainGame.Players[owner].discardCtrl.IndexOf(this);
+        else if (location == CardLocation.Hand) return Game.mainGame.Players[owner].handCtrl.IndexOf(this);
+        else if (location == CardLocation.Deck && Game.IsServerGame()) return Game.mainGame.Players[owner].deckCtrl.IndexOf(this);
+        else return -1;
+    }
+
     //card moving methods
     public void Discard()
     {

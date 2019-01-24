@@ -69,7 +69,7 @@ public class ClientGame : Game {
         players[1].discardObject = enemyDiscardObj;
     }
 
-    public override void Remove(Card toRemove, int player = 0)
+    public override void Remove(Card toRemove, int player = 0, bool ignoreClientServer = false)
     {
         switch (toRemove.Location)
         {

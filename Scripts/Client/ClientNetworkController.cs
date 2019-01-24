@@ -115,7 +115,7 @@ public class ClientNetworkController : NetworkController {
                 break;
             case "AddToDiscard": //don't need an enemy version because .Discard puts it in the correct one given the owner of toDiscard
                 Card toDiscard = GetCardFromPacket(packet);
-                ClientGame.mainClientGame.Discard(toDiscard);
+                ClientGame.mainClientGame.Discard(toDiscard, toDiscard.Owner, true);
                 break;
             case "AddToHand":
                 Card toHand = GetCardFromPacket(packet);
@@ -146,6 +146,9 @@ public class ClientNetworkController : NetworkController {
                 break;
             case "RemoveFromDiscard":
                 ClientGame.mainClientGame.friendlyDiscardCtrl.RemoveFromDiscardAt(packet.num);
+                break;
+            case "RemoveFromEnemyDiscard":
+                ClientGame.mainClientGame.enemyDiscardCtrl.RemoveFromDiscardAt(packet.num);
                 break;
             case "Remove":
                 RemoveCard(GetSerializableCardFromPacket(packet));
@@ -201,6 +204,39 @@ public class ClientNetworkController : NetworkController {
         else if (card is SpellCard) RequestMoveSpell(card as SpellCard, toX, toY);
         else throw new NotImplementedException();
     }
+
+    public void RequestRemoveFromHand(Card card)
+    {
+        Packet packet = new Packet("Request Remove From Hand", card.GetIndexInList());
+        Send(packet, connectionID);
+    }
+
+    public void RequestRemoveFromBoard(Card card)
+    {
+        Packet packet = new Packet("Request Remove From Hand", card.BoardX, card.BoardY);
+        Send(packet, connectionID);
+    }
+
+    public void RequestRemoveFromDiscard(Card card)
+    {
+        Packet packet = new Packet("Request Remove From Discard", card.GetIndexInList());
+        Send(packet, connectionID);
+    }
+
+    public void RequestRemoveFromDeck(Card card)
+    {
+        Packet packet = new Packet("Request Remove From Deck", card.CardName);
+        Send(packet, connectionID);
+    }
+
+    public void RequestRemove(Card card)
+    {
+        if (card.Location == Card.CardLocation.Hand) RequestRemoveFromHand(card);
+        else if (card.Location == Card.CardLocation.Field) RequestRemoveFromBoard(card);
+        else if (card.Location == Card.CardLocation.Discard) RequestRemoveFromDiscard(card);
+        else if (card.Location == Card.CardLocation.Deck) RequestRemoveFromDeck(card);
+    }
+
 #endregion
 
 }

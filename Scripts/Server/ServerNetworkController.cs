@@ -185,6 +185,19 @@ public class ServerNetworkController : NetworkController {
                 ServerGame.mainServerGame.boardCtrl.RemoveFromBoard(packet.x, packet.y);
                 outPacket = new Packet("RemoveFromBoard", packet.x, packet.y);
                 outPacketInverted = new Packet("RemoveFromBoard", packet.x, packet.y, true);
+                SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
+                break;
+            case "Request Remove From Discard":
+                ServerGame.mainServerGame.RemoveFromDiscardGivenPlayerID(connectionID, packet.num);
+                outPacket = new Packet("RemoveFromDiscard", packet.num);
+                outPacketInverted = new Packet("RemoveFromEnemyDiscard", packet.num);
+                SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
+                break;
+            case "Request Remove From Deck":
+                ServerGame.mainServerGame.RemoveFromDeckGivenPlayerID(connectionID, packet.args);
+                outPacket = new Packet("RemoveFromFriendlyDeck", packet.args);
+                outPacketInverted = new Packet("RemoveFromEnemyDeck", packet.args);
+                SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 break;
             case "Request Draw":
                 Card drawn = ServerGame.mainServerGame.DrawGivenPlayerID(connectionID);

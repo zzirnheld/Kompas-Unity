@@ -4743,6 +4743,7 @@ MonoBehaviour:
   cancelDeckSearch: {fileID: 442461731}
   cancelDiscardSearch: {fileID: 314474553}
   currentStateText: {fileID: 1029930859}
+  thingToSearch: []
 --- !u!114 &1615817256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5868,7 +5869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseCtrl: {fileID: 2127347774}
-  networkCtrl: {fileID: 2127347773}
+  networkCtrl: {fileID: 0}
   uiCtrl: {fileID: 1615817255}
   boardCtrl: {fileID: 665162530}
   boardObject: {fileID: 665162525}
@@ -5885,6 +5886,7 @@ MonoBehaviour:
   enemyHandObj: {fileID: 60475902}
   enemyDeckObj: {fileID: 343499437}
   enemyDiscardObj: {fileID: 116530640}
+  clientNetworkCtrl: {fileID: 0}
 --- !u!114 &2127347773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5893,7 +5895,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2127347768}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9955109e001cd5478a2e4bb683529fa, type: 3}
+  m_Script: {fileID: 11500000, guid: ca924281e977d994c925629f43f1a3b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hosting: 0
@@ -5904,6 +5906,7 @@ MonoBehaviour:
     type: 2}
   augmentPrefab: {fileID: 1960667190934142, guid: 57bc0faf22439474b8ad57c3a6a0bbcb,
     type: 2}
+  ip: 
 --- !u!114 &2127347774
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -20,6 +20,10 @@ public class DeckController : KompasObject
     //actual factual deck list
     private List<Card> deck = new List<Card>();
 
+    public int IndexOf(Card card)
+    {
+        return deck.IndexOf(card);
+    }
 
     //importing deck
     public Card InstantiateCard(string json)
