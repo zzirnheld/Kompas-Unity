@@ -26,6 +26,8 @@ public class ClientGame : Game {
     public GameObject enemyDeckObj;
     public GameObject enemyDiscardObj;
 
+    public ClientNetworkController clientNetworkCtrl;
+
     public int FriendlyPips
     {
         get { return friendlyPips; }
@@ -97,22 +99,12 @@ public class ClientGame : Game {
     //requesting
     public override void RequestMove(Card card, int toX, int toY)
     {
-        //TODO
-        if (DEBUG_MODE)
-        {
-            Move(card, toX, toY);
-            return;
-        }
+        clientNetworkCtrl.RequestMove(card, toX, toY);
     }
 
     public override void RequestPlay(Card card, int toX, int toY)
     {
-        //TODO
-        if (DEBUG_MODE)
-        {
-            Play(card, toX, toY);
-            return;
-        }
+            clientNetworkCtrl.RequestPlay(card, toX, toY);
     }
 
     //ui

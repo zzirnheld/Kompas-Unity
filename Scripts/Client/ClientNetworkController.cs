@@ -7,6 +7,8 @@ using UnityEngine.Networking;
 public class ClientNetworkController : NetworkController {
     
     private int connectionID;
+    public const int SOCKET = 8888;
+    public string ip;
 
     // Update is called once per frame
     // reason that this code is in client/server is because client only needs the connection ID of server,
@@ -40,6 +42,13 @@ public class ClientNetworkController : NetworkController {
             case NetworkEventType.BroadcastEvent:
                 break;
         }
+    }
+
+    public void Connect()
+    {
+        Host(8888);
+        connectionID = NetworkTransport.Connect(hostID, ip, SOCKET, 0, out error);
+        //TODO cast error to NetworkError and see if was NetworkError.OK
     }
 
     public void ParseCommand(byte[] buffer)
@@ -146,5 +155,52 @@ public class ClientNetworkController : NetworkController {
                 break;
         }
     }
+
+    #region Request Actions
+    public void RequestSummon(CharacterCard card, int toX, int toY)
+    {
+        Packet packet = new Packet(card, "Request Summon", toX, toY);
+        Send(packet, connectionID);
+    }
+
+    public void RequestCast(SpellCard card, int toX, int toY)
+    {
+        Packet packet = new Packet(card, "Request Cast", toX, toY);
+        Send(packet, connectionID);
+    }
+
+    public void RequestAugment(AugmentCard card, int toX, int toY)
+    {
+        Packet packet = new Packet(card, "Request Augment", toX, toY);
+        Send(packet, connectionID);
+    }
+
+    public void RequestPlay(Card card, int toX, int toY)
+    {
+        if (card is CharacterCard) RequestSummon(card as CharacterCard, toX, toY);
+        else if (card is SpellCard) RequestCast(card as SpellCard, toX, toY);
+        else if (card is AugmentCard) RequestAugment(card as AugmentCard, toX, toY);
+        else throw new NotImplementedException();
+    }
+
+    public void RequestMoveChar(CharacterCard card, int toX, int toY)
+    {
+        Packet packet = new Packet(card, "Request Move Char", toX, toY);
+        Send(packet, connectionID);
+    }
+
+    public void RequestMoveSpell(SpellCard card, int toX, int toY)
+    {
+        Packet packet = new Packet(card, "Request Move Spell", toX, toY);
+        Send(packet, connectionID);
+    }
+
+    public void RequestMove(Card card, int toX, int toY)
+    {
+        if (card is CharacterCard) RequestMoveChar(card as CharacterCard, toX, toY);
+        else if (card is SpellCard) RequestMoveSpell(card as SpellCard, toX, toY);
+        else throw new NotImplementedException();
+    }
+#endregion
 
 }

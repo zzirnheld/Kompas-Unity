@@ -65,7 +65,9 @@ public class Game : MonoBehaviour {
     public void Play(Card card, int toX, int toY, int player = 0, bool remove = true)
     {
         if(remove) Remove(card, player);
-        boardCtrl.Play(card, toX, toY, player);
+
+        if (IsServerGame() || DEBUG_MODE) boardCtrl.Play(card, toX, toY, player);
+        else if (IsClientGame()) ClientGame.mainClientGame.RequestPlay(card, toX, toY);
     }
 
     public Card Draw(int player = 0)
@@ -100,7 +102,8 @@ public class Game : MonoBehaviour {
     //moving
     public void Move(Card card, int toX, int toY)
     {
-        boardCtrl.Move(card, toX, toY);
+        if (IsServerGame() || DEBUG_MODE) boardCtrl.Move(card, toX, toY);
+        else if (IsClientGame()) ClientGame.mainClientGame.RequestMove(card, toX, toY);
     }
     public void Swap(Card card, int toX, int toY)
     {

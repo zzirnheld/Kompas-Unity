@@ -308,11 +308,11 @@ public abstract class Card : KompasObject {
             Debug.Log(cardName + " ended drag on the field");
             //if the card is being moved on the field, that means it's just being moved
             if (location == CardLocation.Field)
-                Game.mainGame.RequestMove(this,
+                Game.mainGame.Move(this,
                     PosToGridIndex(transform.localPosition.x), PosToGridIndex(transform.localPosition.y));
             //otherwise, it is being played from somewhere like the hand or discard
             else
-                Game.mainGame.RequestPlay(this,
+                Game.mainGame.Play(this,
                     PosToGridIndex(transform.localPosition.x), PosToGridIndex(transform.localPosition.y));
         }
         //if it's not on the board, maybe it's on top of the discard

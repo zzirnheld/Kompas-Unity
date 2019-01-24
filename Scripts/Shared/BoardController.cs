@@ -59,7 +59,8 @@ public class BoardController : KompasObject
 
     public void RemoveFromBoard(int x, int y) { RemoveFromBoard(GetCardAt(x, y)); }
 
-    //playing
+    //playing. these methods don't check whether it's client or server. that's the Game methods' jobs. 
+    // these just do it (they're called by ClientNetworkController when ordered by the server)
     /// <summary>
     /// Actually summons the card. DO NOT call directly from player interaction
     /// </summary>

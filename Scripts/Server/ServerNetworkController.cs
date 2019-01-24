@@ -143,7 +143,7 @@ public class ServerNetworkController : NetworkController {
                 //then check if legal move
                 if (ServerGame.mainServerGame.ValidMove(toMove, packet.x, packet.y))
                 {
-                    //create notification packets
+                    //create notification packets before charToMove's x/y become packet.x and packet.y
                     outPacket = new Packet(toMove, "MoveChar", packet.x, packet.y);
                     outPacketInverted = new Packet(toMove, "MoveChar", packet.x, packet.y, true); //true for inverted
                     //if legal, do the move
@@ -158,7 +158,7 @@ public class ServerNetworkController : NetworkController {
                 //then check if legal move
                 if (ServerGame.mainServerGame.ValidMove(spellToMove, packet.x, packet.y))
                 {
-                    //create otification packets
+                    //create notification packets before spellToMove's x/y become packet.x and packet.y
                     outPacket = new Packet(spellToMove, "MoveSpell", packet.x, packet.y);
                     outPacketInverted = new Packet(spellToMove, "MoveSpell", packet.x, packet.y, true); //true for inverted
                     //if legal, do the move
@@ -188,7 +188,7 @@ public class ServerNetworkController : NetworkController {
                 break;
             case "Request Draw":
                 Card drawn = ServerGame.mainServerGame.DrawGivenPlayerID(connectionID);
-                //TODO think about this. i think i want for the client to have the list of cards in their deck, but just not in the right order
+                //i want for the client to have the list of cards in their deck, but just not in the right order
                 //tell the client who's drawing to draw the card we think is right for them to draw
                 outPacket = new Packet(drawn, "Draw", drawn.CardName);
                 //other player gets told to remove that card from enemy deck TODO make other player not have this info, only num cards

@@ -177,13 +177,13 @@ public class Packet {
         switch (cardType)
         {
             case 'C':
-                serializedChar.owner = serializedChar.owner ^ playerIndex;
+                if (playerIndex == 1) serializedChar.Invert();
                 break;
             case 'S':
-                serializedSpell.owner = serializedSpell.owner ^ playerIndex;
+                if (playerIndex == 1) serializedSpell.Invert();
                 break;
             case 'A':
-                serializedAug.owner = serializedAug.owner ^ playerIndex;
+                if (playerIndex == 1) serializedAug.Invert();
                 break;
         }
     }
