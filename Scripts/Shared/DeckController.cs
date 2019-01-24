@@ -74,6 +74,11 @@ public class DeckController : KompasObject
         return InstantiateCard(Resources.Load<TextAsset>(BLANK_CARD_PATH).text);
     }
 
+    public void AddBlankCard()
+    {
+        PushTopdeck(InstantiateBlankCard());
+    }
+
     public void ImportDeck(string decklist)
     {
         string[] cards = decklist.Split('\n');

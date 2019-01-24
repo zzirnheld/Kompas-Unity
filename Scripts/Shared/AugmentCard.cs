@@ -28,6 +28,7 @@ public class AugmentCard : Card {
     //get data
     public SerializableAugCard GetSerializableVersion()
     {
+        int index = thisCharacter.Augments.IndexOf(this);
         SerializableAugCard serializableSpell = new SerializableAugCard
         {
             cardName = cardName,
@@ -39,7 +40,8 @@ public class AugmentCard : Card {
             owner = owner,
             BoardX = boardX,
             BoardY = boardY,
-            subtypeText = subtypeText
+            subtypeText = subtypeText,
+            index = index
         };
         return serializableSpell;
     }

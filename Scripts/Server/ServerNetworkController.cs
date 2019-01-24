@@ -60,19 +60,23 @@ public class ServerNetworkController : NetworkController {
         else
             //send the inverted one to player 0.
             Send(outPacketInverted, serverGame.Players[0].ConnectionID);
+
     }
 
     private void ParseRequest(byte[] buffer, int connectionID)
     {
         Packet packet = Deserialize(buffer);
         if (packet == null) return;
-        
+
         Packet outPacket = null;
         Packet outPacketInverted = null;
+        int playerIndex = ServerGame.mainServerGame.GetPlayerIndexFromID(connectionID);
+        packet.RepairOwner(playerIndex);
 
         //switch between all the possible requests for the server to handle.
         switch (packet.command)
         {
+            //all of the request things include a former request to remove?
             case "Request Summon":
                 //first create a new character card from the prefab
                 CharacterCard charCard = Instantiate(characterPrefab).GetComponent<CharacterCard>();
@@ -82,8 +86,9 @@ public class ServerNetworkController : NetworkController {
                 //check if it's a valid location
                 if (ServerGame.mainServerGame.ValidBoardPlay(charCard, packet.x, packet.y))
                 {
-                    //if so, summon the character there
-                    ServerGame.mainServerGame.Play(charCard, packet.x, packet.y);
+                    //if so, remove the character from where it is, summon the character there
+                    RemoveCard(packet.serializedChar);
+                    ServerGame.mainServerGame.Play(charCard, packet.x, packet.y, playerIndex, false);
 
                     //then notify the client that sent the request
                     //create a packet with the normal version of the character and the inverted one
@@ -102,7 +107,8 @@ public class ServerNetworkController : NetworkController {
                 if (ServerGame.mainServerGame.ValidBoardPlay(spellCard, packet.x, packet.y))
                 {
                     //if so, cast the spell there
-                    ServerGame.mainServerGame.Play(spellCard, packet.x, packet.y);
+                    RemoveCard(packet.serializedSpell);
+                    ServerGame.mainServerGame.Play(spellCard, packet.x, packet.y, playerIndex, false);
 
                     //then notify the client that sent the request
                     //create a packet with the normal version of the spell and the inverted one
@@ -121,7 +127,8 @@ public class ServerNetworkController : NetworkController {
                 if (ServerGame.mainServerGame.ValidBoardPlay(augmentCard, packet.x, packet.y))
                 {
                     //if so, apply the augment there
-                    ServerGame.mainServerGame.Play(augmentCard, packet.x, packet.y);
+                    RemoveCard(packet.serializedAug);
+                    ServerGame.mainServerGame.Play(augmentCard, packet.x, packet.y, playerIndex, false);
 
                     //then notify the client that sent the request
                     //create a packet with the normal version of the augment and the inverted one
@@ -203,7 +210,22 @@ public class ServerNetworkController : NetworkController {
                 outPacketInverted = new Packet(toDiscard, "AddToDiscard", true); //addtodiscard will check the owner of the serialized card
                 SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 break;
-                //TODO request kill, reshuffle, rehand, topdck, bottomdeck (with new client-has-unordered-copy paradigm)
+            //TODO request kill, reshuffle, rehand, topdck, bottomdeck (with new client-has-unordered-copy paradigm)
+            case "Request Reshuffle":
+                //remove it from where it is
+                RemoveCard(GetSerializableCardFromPacket(packet));
+
+                Card toReshuffle = GetCardFromPacket(packet);
+                //and shuffle it in
+                ServerGame.mainServerGame.Players[toReshuffle.Owner].deckCtrl.ShuffleIn(toReshuffle);
+                //then let everyone know
+                outPacket = new Packet(toReshuffle, "Remove");
+                outPacketInverted = new Packet(toReshuffle, "Remove", true);
+                SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
+                outPacket = new Packet(toReshuffle, "AddToDeck");
+                outPacketInverted = new Packet("AddToEnemyDeck");
+                SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
+                break;
             default:
                 break;
         }
@@ -212,6 +234,6 @@ public class ServerNetworkController : NetworkController {
         
 
     }
-    
+
 
 }

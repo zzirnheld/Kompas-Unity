@@ -19,6 +19,7 @@ public class SerializableCard
     public int owner;
     public int BoardX;
     public int BoardY;
+    public int index;
 
     /// <summary>
     /// Flip board position

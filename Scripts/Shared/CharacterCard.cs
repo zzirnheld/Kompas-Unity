@@ -82,6 +82,10 @@ public class CharacterCard : Card {
     
     public SerializableCharCard GetSerializableVersion()
     {
+        int index = -1;
+        if (location == CardLocation.Hand) index = Game.mainGame.Players[owner].handCtrl.IndexOf(this);
+        else if(location == CardLocation.Discard) index = Game.mainGame.Players[owner].discardCtrl.IndexOf(this);
+
         SerializableCharCard serializableChar = new SerializableCharCard
         {
             cardName = cardName,
@@ -97,7 +101,9 @@ public class CharacterCard : Card {
             owner = owner,
             BoardX = boardX,
             BoardY = boardY,
-            subtypeText = subtypeText
+            subtypeText = subtypeText,
+            index = index
+            
         };
         return serializableChar;
     }
@@ -146,6 +152,12 @@ public class CharacterCard : Card {
     {
         augments.Remove(augment);
         augment.ThisCharacter = null;
+    }
+    public void RemoveAugmentAt(int index)
+    {
+        AugmentCard aug = augments[index];
+        augments.RemoveAt(index);
+        aug.ThisCharacter = null;
     }
 
 

@@ -42,30 +42,6 @@ public class ClientNetworkController : NetworkController {
         }
     }
 
-    public Card GetCardFromPacket(Packet packet)
-    {
-        Card toReturn = null;
-        switch (packet.cardType)
-        {
-            case 'C':
-                toReturn = Instantiate(characterPrefab).GetComponent<CharacterCard>();
-                (toReturn as CharacterCard).SetInfo(packet.serializedChar);
-                break;
-            case 'S':
-                toReturn = Instantiate(spellPrefab).GetComponent<SpellCard>();
-                (toReturn as SpellCard).SetInfo(packet.serializedSpell);
-                break;
-            case 'A':
-                toReturn = Instantiate(augmentPrefab).GetComponent<AugmentCard>();
-                (toReturn as AugmentCard).SetInfo(packet.serializedAug);
-                break;
-            default:
-                Debug.Log("AddToDiscard recieved unknown type in packet.cardType");
-                break;
-        }
-        return toReturn;
-    }
-
     public void ParseCommand(byte[] buffer)
     {
         Packet packet = Deserialize(buffer);
@@ -152,6 +128,18 @@ public class ClientNetworkController : NetworkController {
             case "Draw":
                 ClientGame.mainClientGame.friendlyDeckCtrl.RemoveCardWithName(packet.args);
                 ClientGame.mainClientGame.friendlyHandCtrl.AddToHand(GetCardFromPacket(packet));
+                break;
+            case "AddToDeck":
+                ClientGame.mainClientGame.friendlyDeckCtrl.PushTopdeck(GetCardFromPacket(packet));
+                break;
+            case "AddToEnemyDeck":
+                ClientGame.mainClientGame.enemyDeckCtrl.AddBlankCard();
+                break;
+            case "RemoveFromDiscard":
+                ClientGame.mainClientGame.friendlyDiscardCtrl.RemoveFromDiscardAt(packet.num);
+                break;
+            case "Remove":
+                RemoveCard(GetSerializableCardFromPacket(packet));
                 break;
             default:
                 Debug.Log("Unrecognized command sent to client");

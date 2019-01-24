@@ -102,6 +102,67 @@ public class NetworkController : MonoBehaviour {
         return null;
     }
     #endregion serialization
+    
+    public Card GetCardFromPacket(Packet packet)
+    {
+        Card toReturn = null;
+        switch (packet.cardType)
+        {
+            case 'C':
+                toReturn = Instantiate(characterPrefab).GetComponent<CharacterCard>();
+                (toReturn as CharacterCard).SetInfo(packet.serializedChar);
+                break;
+            case 'S':
+                toReturn = Instantiate(spellPrefab).GetComponent<SpellCard>();
+                (toReturn as SpellCard).SetInfo(packet.serializedSpell);
+                break;
+            case 'A':
+                toReturn = Instantiate(augmentPrefab).GetComponent<AugmentCard>();
+                (toReturn as AugmentCard).SetInfo(packet.serializedAug);
+                break;
+            default:
+                Debug.Log("AddToDiscard recieved unknown type in packet.cardType");
+                break;
+        }
+        return toReturn;
+    }
+
+    protected void RemoveCard(SerializableCard toRemove)
+    {
+        switch (toRemove.location)
+        {
+            case Card.CardLocation.Field:
+                if (toRemove.cardType == 'A')
+                {
+                    CharacterCard thisChar = Game.mainGame.boardCtrl.GetCharAt(toRemove.BoardX, toRemove.BoardY);
+                    thisChar.RemoveAugmentAt(toRemove.index);
+                }
+                else Game.mainGame.boardCtrl.RemoveFromBoard(toRemove.BoardX, toRemove.BoardY);
+                break;
+            case Card.CardLocation.Discard:
+                Game.mainGame.Players[toRemove.owner].discardCtrl.RemoveFromDiscardAt(toRemove.index);
+                break;
+            case Card.CardLocation.Hand:
+                Game.mainGame.Players[toRemove.owner].handCtrl.RemoveFromHandAt(toRemove.index);
+                break;
+            case Card.CardLocation.Deck:
+                Game.mainGame.Players[toRemove.owner].deckCtrl.RemoveCardWithName(toRemove.cardName);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public SerializableCard GetSerializableCardFromPacket(Packet packet)
+    {
+        switch (packet.cardType)
+        {
+            case 'C': return packet.serializedChar;
+            case 'S': return packet.serializedSpell;
+            case 'A': return packet.serializedAug;
+            default: return null;
+        }
+    }
 
     /// <summary>
     /// Sends the packet to the other computer.

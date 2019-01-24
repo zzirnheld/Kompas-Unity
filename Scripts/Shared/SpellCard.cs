@@ -27,6 +27,10 @@ public class SpellCard : Card
     //get data
     public SerializableSpellCard GetSerializableVersion()
     {
+        int index = -1;
+        if (location == CardLocation.Hand) index = Game.mainGame.Players[owner].handCtrl.IndexOf(this);
+        else if (location == CardLocation.Discard) index = Game.mainGame.Players[owner].discardCtrl.IndexOf(this);
+
         SerializableSpellCard serializableSpell = new SerializableSpellCard
         {
             cardName = cardName,
@@ -39,7 +43,8 @@ public class SpellCard : Card
             owner = owner,
             BoardX = boardX,
             BoardY = boardY,
-            subtypeText = subtypeText
+            subtypeText = subtypeText,
+            index = index
         };
         return serializableSpell;
     }

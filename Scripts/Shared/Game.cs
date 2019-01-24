@@ -62,9 +62,9 @@ public class Game : MonoBehaviour {
         Remove(card, player);
         players[player].handCtrl.AddToHand(card);
     }
-    public void Play(Card card, int toX, int toY, int player = 0)
+    public void Play(Card card, int toX, int toY, int player = 0, bool remove = true)
     {
-        Remove(card, player);
+        if(remove) Remove(card, player);
         boardCtrl.Play(card, toX, toY, player);
     }
 
@@ -78,7 +78,7 @@ public class Game : MonoBehaviour {
     /// <summary>
     /// Remove the card from wherever it is
     /// </summary>
-    public void Remove(Card toRemove, int player = 0)
+    public virtual void Remove(Card toRemove, int player = 0)
     {
         switch (toRemove.Location)
         {

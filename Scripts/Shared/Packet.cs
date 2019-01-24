@@ -166,4 +166,26 @@ public class Packet {
         this.args = args;
     }
 
+    public void RepairOwner(int playerIndex)
+    {
+        //explanation: if the player index (our assignment for that connection id) is 0, then we take their owner number at face value
+        //  if we treat them as player 1, then we invert their assignment of player index
+        //         owner
+        // sender  0  1
+        //      0  0  1
+        //      1  1  0
+        switch (cardType)
+        {
+            case 'C':
+                serializedChar.owner = serializedChar.owner ^ playerIndex;
+                break;
+            case 'S':
+                serializedSpell.owner = serializedSpell.owner ^ playerIndex;
+                break;
+            case 'A':
+                serializedAug.owner = serializedAug.owner ^ playerIndex;
+                break;
+        }
+    }
+
 }

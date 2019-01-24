@@ -28,9 +28,20 @@ public class DiscardController : KompasObject {
         card.transform.localPosition = new Vector3(0, 0, (float)discard.Count / -60f);
     }
 
+    public int IndexOf(Card card)
+    {
+        return discard.IndexOf(card);
+    }
+
     public void RemoveFromDiscard(Card card)
     {
         Debug.Assert(card != null);
         discard.Remove(card);
+    }
+
+    public void RemoveFromDiscardAt(int index)
+    {
+        Debug.Assert(index < discard.Count);
+        discard.RemoveAt(index);
     }
 }

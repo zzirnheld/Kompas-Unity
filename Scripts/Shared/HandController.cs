@@ -20,6 +20,11 @@ public class HandController : KompasObject
         SpreadOutCards();
     }
 
+    public int IndexOf(Card card)
+    {
+        return hand.IndexOf(card);
+    }
+
     public void RemoveFromHand(Card card)
     {
         hand.Remove(card);
