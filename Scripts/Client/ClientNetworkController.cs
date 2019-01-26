@@ -138,7 +138,7 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.mainClientGame.friendlyDeckCtrl.RemoveCardWithName(packet.args);
                 ClientGame.mainClientGame.friendlyHandCtrl.AddToHand(GetCardFromPacket(packet));
                 break;
-            case "AddToDeck":
+            case "PushTopdeck":
                 ClientGame.mainClientGame.friendlyDeckCtrl.PushTopdeck(GetCardFromPacket(packet));
                 break;
             case "AddToEnemyDeck":
@@ -235,6 +235,17 @@ public class ClientNetworkController : NetworkController {
         else if (card.Location == Card.CardLocation.Field) RequestRemoveFromBoard(card);
         else if (card.Location == Card.CardLocation.Discard) RequestRemoveFromDiscard(card);
         else if (card.Location == Card.CardLocation.Deck) RequestRemoveFromDeck(card);
+    }
+
+    public void RequestTopdeck(Card card)
+    {
+        Packet packet = new Packet(card, "Request Topdeck");
+        Send(packet, connectionID);
+    }
+
+    public void RequestAddToDiscard(Card card)
+    {
+
     }
 
 #endregion

@@ -230,7 +230,7 @@ public class ServerNetworkController : NetworkController {
 
                 Card toReshuffle = GetCardFromPacket(packet);
                 //and shuffle it in
-                ServerGame.mainServerGame.Players[toReshuffle.Owner].deckCtrl.ShuffleIn(toReshuffle);
+                ServerGame.mainServerGame.Players[toReshuffle.Owner].deckCtrl.ShuffleIn(toReshuffle); //todo account for ctrl change
                 //then let everyone know
                 outPacket = new Packet(toReshuffle, "Remove");
                 outPacketInverted = new Packet(toReshuffle, "Remove", true);
@@ -239,11 +239,27 @@ public class ServerNetworkController : NetworkController {
                 outPacketInverted = new Packet("AddToEnemyDeck");
                 SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 break;
+            case "Request Topdeck":
+                Card toTopdeck = GetCardFromPacket(packet);
+                //topdeck it
+                ServerGame.mainServerGame.Players[toTopdeck.Owner].deckCtrl.PushTopdeck(toTopdeck);
+                //then let everyone know
+                outPacket = new Packet(toTopdeck, "PushTopdeck");
+                outPacketInverted = new Packet("AddToEnemyDeck");
+                SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
+                break;
+            case "Request Add To Discard":
+                Card toAddToDiscard = GetCardFromPacket(packet);
+                ServerGame.mainServerGame.Players[toAddToDiscard.Owner].discardCtrl.AddToDiscard(toAddToDiscard);
+                outPacket = new Packet(toAddToDiscard, "PushTopdeck");
+                outPacketInverted = new Packet("AddToEnemyDeck");
+                SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
+                break;
             default:
                 break;
         }
 
-        //TODO make client send all these requests!
+        //TODO change to using a card ID system for once i make tags, so that it just references the card itself
         
 
     }

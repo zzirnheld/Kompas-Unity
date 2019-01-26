@@ -51,12 +51,14 @@ public class Game : MonoBehaviour {
     public void Discard(Card card, int player = 0, bool ignoreClientServer = false)
     {
         Remove(card, player, ignoreClientServer);
-        players[player].discardCtrl.AddToDiscard(card);
+        if (IsServerGame()) players[player].discardCtrl.AddToDiscard(card);
+        else if (IsClientGame()) 
     }
     public void Topdeck(Card card, int player = 0)
     {
         Remove(card, player);
-        players[player].deckCtrl.PushTopdeck(card);
+        if (IsServerGame()) players[player].deckCtrl.PushTopdeck(card);
+        else if(IsClientGame()) ClientGame.mainClientGame.clientNetworkCtrl.RequestTopdeck(card);
     }
     public void Rehand(Card card, int player = 0)
     {
