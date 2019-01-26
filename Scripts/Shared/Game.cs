@@ -61,10 +61,17 @@ public class Game : MonoBehaviour {
         players[player].discardCtrl.AddToDiscard(card);
     }
 
+
+
     public void Topdeck(Card card, int player = 0)
     {
         Remove(card, player);
         players[player].deckCtrl.PushTopdeck(card);
+    }
+
+    public void Topdeck(int cardID)
+    {
+        Topdeck(GetCardFromID(cardID));
     }
 
     public void Rehand(Card card, int player = 0)
@@ -123,6 +130,12 @@ public class Game : MonoBehaviour {
     {
         boardCtrl.Move(card, toX, toY);
     }
+
+    public void Move(int cardID, int toX, int toY)
+    {
+        boardCtrl.Move(GetCardFromID(cardID), toX, toY);
+    }
+
     public void Swap(Card card, int toX, int toY)
     {
         boardCtrl.Swap(card, toX, toY);

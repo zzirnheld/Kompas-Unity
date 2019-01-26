@@ -57,8 +57,24 @@ public class ClientNetworkController : NetworkController {
         if (packet == null) return;
         switch (packet.command)
         {
+            case Packet.Command.AddToDeck:
+                ClientGame.mainClientGame.friendlyDeckCtrl.AddCard(packet.args);
+                break;
+            case Packet.Command.AddToEnemyDeck:
+                ClientGame.mainClientGame.enemyDeckCtrl.AddCard(packet.args); //TODO make it always ask for cards from enemy deck
+                break;
             case Packet.Command.Play:
                 ClientGame.mainClientGame.Play(packet.cardID, packet.x, packet.y);
+                break;
+            case Packet.Command.Move:
+                ClientGame.mainClientGame.Move(packet.cardID, packet.x, packet.y);
+                break;
+            case Packet.Command.Topdeck:
+                ClientGame.mainClientGame.Topdeck(packet.cardID);
+                break;
+            case Packet.Command.Discard:
+                break;
+            case Packet.Command.Rehand:
                 break;
             default:
                 Debug.Log("Unrecognized command sent to client");
@@ -97,109 +113,19 @@ public class ClientNetworkController : NetworkController {
         Send(packet, connectionID);
     }
 
+    public void RequestAddToDeck(string cardName)
+    {
+        Packet packet = new Packet(Packet.Command.AddToDeck, cardName);
+        Send(packet, connectionID);
+    }
+
     public void RequestDecklistImport(string decklist)
     {
-        //TODO
+        string[] cardNames = decklist.Split('\n');
+        foreach(string cardName in cardNames){
+            RequestAddToDeck(cardName);
+        }
     }
 
     #endregion
-
-
-    /*case "Summon":
-                //first create a new character card from the prefab
-                CharacterCard charCard = Instantiate(characterPrefab).GetComponent<CharacterCard>();
-                //set the image and information of the new character from the packet's info
-                charCard.SetInfo(packet.serializedChar);
-                charCard.SetImage(charCard.CardName);
-                //play the character to the board
-                Game.mainGame.boardCtrl.Summon(charCard, charCard.BoardX, charCard.BoardY, charCard.Owner);
-                //make sure the card scales correctly
-                charCard.transform.localScale = absCardScale;
-                break;
-            case "Cast":
-                //create a spell card from the prefab
-                SpellCard spellCard = Instantiate(spellPrefab).GetComponent<SpellCard>();
-                //set its info and image
-                spellCard.SetInfo(packet.serializedSpell);
-                spellCard.SetImage(spellCard.CardName);
-                //play the char to the board TODO have server send reversed indices
-                Game.mainGame.boardCtrl.Cast(spellCard, spellCard.BoardX, spellCard.BoardY, spellCard.Owner);
-                spellCard.transform.localScale = absCardScale;
-                break;
-            case "Augment":
-                AugmentCard augCard = Instantiate(augmentPrefab).GetComponent<AugmentCard>();
-                augCard.SetInfo(packet.serializedSpell);
-                augCard.SetImage(augCard.CardName);
-                Game.mainGame.boardCtrl.Augment(augCard, augCard.BoardX, augCard.BoardY, augCard.Owner);
-                augCard.transform.localScale = absCardScale;
-                break;
-            case "MoveChar":
-                Game.mainGame.boardCtrl.Move(
-                    Game.mainGame.boardCtrl.GetCharAt(6 - packet.serializedChar.BoardX, 6 - packet.serializedChar.BoardY),
-                    6 - packet.x, 
-                    6 - packet.y);
-                break;
-            case "MoveSpell":
-                Game.mainGame.Move(
-                    Game.mainGame.boardCtrl.GetSpellAt(6 - packet.serializedSpell.BoardX, 6 - packet.serializedSpell.BoardY),
-                    6 - packet.x, 
-                    6 - packet.y);
-                break;
-            case "SetNESW":
-                Game.mainGame.boardCtrl.GetCharAt(6 - packet.serializedChar.BoardX, 6 - packet.serializedChar.BoardY)
-                    .SetNESW(packet.serializedChar.n, packet.serializedChar.e, packet.serializedChar.s, packet.serializedChar.w);
-                break;
-            case "SetFriendlyPips":
-                if(Game.mainGame is ClientGame) (Game.mainGame as ClientGame).FriendlyPips = packet.num;
-                break;
-            case "SetEnemyPips":
-                if (Game.mainGame is ClientGame) (Game.mainGame as ClientGame).EnemyPips = packet.num;
-                break;
-            case "RemoveFromBoard":
-                Game.mainGame.boardCtrl.RemoveFromBoard(packet.x, packet.y);
-                break;
-            case "RemoveFromHand": //num is the index in the hand to remove at TODO for enemy hand
-                ClientGame.mainClientGame.friendlyHandCtrl.RemoveFromHandAt(packet.num);
-                break;
-            case "AddToDiscard": //don't need an enemy version because .Discard puts it in the correct one given the owner of toDiscard
-                Card toDiscard = GetCardFromPacket(packet);
-                ClientGame.mainClientGame.Discard(toDiscard, toDiscard.Owner, true);
-                break;
-            case "AddToHand":
-                Card toHand = GetCardFromPacket(packet);
-                ClientGame.mainClientGame.friendlyHandCtrl.AddToHand(toHand);
-                break;
-            case "IncrementEnemyHand":
-                Card toEnemyHand = ClientGame.mainClientGame.enemyDeckCtrl.InstantiateBlankCard();
-                ClientGame.mainClientGame.enemyHandCtrl.AddToHand(toEnemyHand);
-                break;
-            case "DecrementEnemyHand":
-                ClientGame.mainClientGame.enemyHandCtrl.RemoveRandomCard();
-                break;
-            case "RemoveFromFriendlyDeck":
-                ClientGame.mainClientGame.friendlyDeckCtrl.RemoveCardWithName(packet.args);
-                break;
-            case "RemoveFromEnemyDeck":
-                ClientGame.mainClientGame.enemyDeckCtrl.RemoveCardWithName(packet.args);
-                break;
-            case "Draw":
-                ClientGame.mainClientGame.friendlyDeckCtrl.RemoveCardWithName(packet.args);
-                ClientGame.mainClientGame.friendlyHandCtrl.AddToHand(GetCardFromPacket(packet));
-                break;
-            case "PushTopdeck":
-                ClientGame.mainClientGame.friendlyDeckCtrl.PushTopdeck(GetCardFromPacket(packet));
-                break;
-            case "AddToEnemyDeck":
-                ClientGame.mainClientGame.enemyDeckCtrl.AddBlankCard();
-                break;
-            case "RemoveFromDiscard":
-                ClientGame.mainClientGame.friendlyDiscardCtrl.RemoveFromDiscardAt(packet.num);
-                break;
-            case "RemoveFromEnemyDiscard":
-                ClientGame.mainClientGame.enemyDiscardCtrl.RemoveFromDiscardAt(packet.num);
-                break;
-            case "Remove":
-                RemoveCard(GetSerializableCardFromPacket(packet));
-                break;*/
-
 }

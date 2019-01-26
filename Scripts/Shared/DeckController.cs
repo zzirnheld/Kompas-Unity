@@ -83,27 +83,32 @@ public class DeckController : KompasObject
         PushTopdeck(InstantiateBlankCard());
     }
 
-    public void ImportDeck(string decklist)
+    public void AddCard(string cardName)
     {
-        string[] cards = decklist.Split('\n');
+        Card newCard;
         string folder = "Card Jsons/";
         string path;
         string fileContents = "";
-        Card newCard;
+        path = folder + cardName;
+        fileContents = Resources.Load<TextAsset>(path).text;
+
+        Debug.Log("Loading:\n" + fileContents);
+
+        newCard = InstantiateCard(fileContents);
+        newCard.SetLocation(Card.CardLocation.Deck);
+        deck.Add(newCard);
+    }
+
+    public void ImportDeck(string decklist)
+    {
+        string[] cards = decklist.Split('\n');
 
         foreach (string card in cards)
         {
-            path = folder + card;
-            fileContents = Resources.Load<TextAsset>(path).text;
-
-            Debug.Log("Loading:\n" + fileContents);
-
-            newCard = InstantiateCard(fileContents);
-            newCard.SetLocation(Card.CardLocation.Deck);
-            deck.Add(newCard);
-            // end switch
+            AddCard(card);
         } //end for each card in the array of cards
     }
+
 
     //info about deck
     public int DeckSize() { return deck.Count; }

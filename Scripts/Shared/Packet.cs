@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public class Packet {
 
-    public enum Command { Play, Move, Topdeck, Discard, Rehand, AddToDeck, ImportDecklist}
+    public enum Command { Play, Move, Topdeck, Discard, Rehand, AddToDeck, AddToEnemyDeck}
 
     /// <summary>
     /// Contains the command that is sent.
@@ -43,10 +43,18 @@ public class Packet {
         this.num = num;
     }
 
-    public Packet(Command command, Card card, int x, int y) : this(command, card)
+    public Packet(Command command, Card card, int x, int y, bool invert = false) : this(command, card)
     {
-        this.x = x;
-        this.y = y;
+        if (invert)
+        {
+            this.x = 7 - x;
+            this.y = 7 - y;
+        }
+        else
+        {
+            this.x = x;
+            this.y = y;
+        }
     }
 
     public void Invert()
