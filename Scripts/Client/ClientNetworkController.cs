@@ -57,7 +57,55 @@ public class ClientNetworkController : NetworkController {
         if (packet == null) return;
         switch (packet.command)
         {
-            case "Summon":
+            case Packet.Command.Play:
+                ClientGame.mainClientGame.Play(packet.cardID, packet.x, packet.y);
+                break;
+            default:
+                Debug.Log("Unrecognized command sent to client");
+                break;
+        }
+    }
+
+    #region Request Actions
+    public void RequestPlay(Card card, int toX, int toY)
+    {
+        Packet packet = new Packet(Packet.Command.Play, card, toX, toY);
+        Send(packet, connectionID);
+    }
+
+    public void RequestMove(Card card, int toX, int toY)
+    {
+        Packet packet = new Packet(Packet.Command.Move, card, toX, toY);
+        Send(packet, connectionID);
+    }
+
+    public void RequestTopdeck(Card card)
+    {
+        Packet packet = new Packet(Packet.Command.Topdeck, card);
+        Send(packet, connectionID);
+    }
+
+    public void RequestDiscard(Card card)
+    {
+        Packet packet = new Packet(Packet.Command.Discard, card);
+        Send(packet, connectionID);
+    }
+
+    public void RequestRehand(Card card)
+    {
+        Packet packet = new Packet(Packet.Command.Rehand, card);
+        Send(packet, connectionID);
+    }
+
+    public void RequestDecklistImport(string decklist)
+    {
+        //TODO
+    }
+
+    #endregion
+
+
+    /*case "Summon":
                 //first create a new character card from the prefab
                 CharacterCard charCard = Instantiate(characterPrefab).GetComponent<CharacterCard>();
                 //set the image and information of the new character from the packet's info
@@ -152,102 +200,6 @@ public class ClientNetworkController : NetworkController {
                 break;
             case "Remove":
                 RemoveCard(GetSerializableCardFromPacket(packet));
-                break;
-            default:
-                Debug.Log("Unrecognized command sent to client");
-                break;
-        }
-    }
-
-    #region Request Actions
-    public void RequestSummon(CharacterCard card, int toX, int toY)
-    {
-        Packet packet = new Packet(card, "Request Summon", toX, toY);
-        Send(packet, connectionID);
-    }
-
-    public void RequestCast(SpellCard card, int toX, int toY)
-    {
-        Packet packet = new Packet(card, "Request Cast", toX, toY);
-        Send(packet, connectionID);
-    }
-
-    public void RequestAugment(AugmentCard card, int toX, int toY)
-    {
-        Packet packet = new Packet(card, "Request Augment", toX, toY);
-        Send(packet, connectionID);
-    }
-
-    public void RequestPlay(Card card, int toX, int toY)
-    {
-        if (card is CharacterCard) RequestSummon(card as CharacterCard, toX, toY);
-        else if (card is SpellCard) RequestCast(card as SpellCard, toX, toY);
-        else if (card is AugmentCard) RequestAugment(card as AugmentCard, toX, toY);
-        else throw new NotImplementedException();
-    }
-
-    public void RequestMoveChar(CharacterCard card, int toX, int toY)
-    {
-        Packet packet = new Packet(card, "Request Move Char", toX, toY);
-        Send(packet, connectionID);
-    }
-
-    public void RequestMoveSpell(SpellCard card, int toX, int toY)
-    {
-        Packet packet = new Packet(card, "Request Move Spell", toX, toY);
-        Send(packet, connectionID);
-    }
-
-    public void RequestMove(Card card, int toX, int toY)
-    {
-        if (card is CharacterCard) RequestMoveChar(card as CharacterCard, toX, toY);
-        else if (card is SpellCard) RequestMoveSpell(card as SpellCard, toX, toY);
-        else throw new NotImplementedException();
-    }
-
-    public void RequestRemoveFromHand(Card card)
-    {
-        Packet packet = new Packet("Request Remove From Hand", card.GetIndexInList());
-        Send(packet, connectionID);
-    }
-
-    public void RequestRemoveFromBoard(Card card)
-    {
-        Packet packet = new Packet("Request Remove From Hand", card.BoardX, card.BoardY);
-        Send(packet, connectionID);
-    }
-
-    public void RequestRemoveFromDiscard(Card card)
-    {
-        Packet packet = new Packet("Request Remove From Discard", card.GetIndexInList());
-        Send(packet, connectionID);
-    }
-
-    public void RequestRemoveFromDeck(Card card)
-    {
-        Packet packet = new Packet("Request Remove From Deck", card.CardName);
-        Send(packet, connectionID);
-    }
-
-    public void RequestRemove(Card card)
-    {
-        if (card.Location == Card.CardLocation.Hand) RequestRemoveFromHand(card);
-        else if (card.Location == Card.CardLocation.Field) RequestRemoveFromBoard(card);
-        else if (card.Location == Card.CardLocation.Discard) RequestRemoveFromDiscard(card);
-        else if (card.Location == Card.CardLocation.Deck) RequestRemoveFromDeck(card);
-    }
-
-    public void RequestTopdeck(Card card)
-    {
-        Packet packet = new Packet(card, "Request Topdeck");
-        Send(packet, connectionID);
-    }
-
-    public void RequestAddToDiscard(Card card)
-    {
-
-    }
-
-#endregion
+                break;*/
 
 }

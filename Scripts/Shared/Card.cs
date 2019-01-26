@@ -29,8 +29,9 @@ public abstract class Card : KompasObject {
     protected string cardName;
     protected string effText;
     protected string subtypeText;
-    protected int owner;
+    protected int owner; //TODO differentiate betw owner & ctrler
     protected CardLocation location;
+    protected int id;
 
     //other game data
     protected string cardFileName;
@@ -60,6 +61,7 @@ public abstract class Card : KompasObject {
     }
     public int Owner { get { return owner; } }
     public CardLocation Location { get { return location; } }
+    public int ID { get { return id; } }
     //other game data
     public string CardFileName {
         get { return cardFileName; }
@@ -316,11 +318,11 @@ public abstract class Card : KompasObject {
             Debug.Log(cardName + " ended drag on the field");
             //if the card is being moved on the field, that means it's just being moved
             if (location == CardLocation.Field)
-                Game.mainGame.Move(this,
+                ClientGame.mainClientGame.clientNetworkCtrl.RequestMove(this,
                     PosToGridIndex(transform.localPosition.x), PosToGridIndex(transform.localPosition.y));
             //otherwise, it is being played from somewhere like the hand or discard
             else
-                Game.mainGame.Play(this,
+                ClientGame.mainClientGame.clientNetworkCtrl.RequestPlay(this,
                     PosToGridIndex(transform.localPosition.x), PosToGridIndex(transform.localPosition.y));
         }
         //if it's not on the board, maybe it's on top of the discard
@@ -328,20 +330,20 @@ public abstract class Card : KompasObject {
         {
             Debug.Log(cardName + " ended drag on discard");
             //in that case, discard it //TODO do this by raycasting along another layer to see if you hit deck/discard
-            Discard();
+            ClientGame.mainClientGame.clientNetworkCtrl.RequestDiscard(this);
         }
         //maybe it's on top of the deck
         else if (WithinIgnoreY(transform.position, minDeckX, maxDeckX, minDeckZ, maxDeckZ))
         {
             Debug.Log(cardName + " ended drag on the deck");
             //in that case, topdeck it
-            Topdeck();
+            ClientGame.mainClientGame.clientNetworkCtrl.RequestTopdeck(this);
         }
         //if it's not in any of those, probably should go back in the hand.
         else
         {
             Debug.Log(cardName + " ended drag nowhere. putting it in the hand. was at " + transform.position);
-            Rehand();
+            ClientGame.mainClientGame.clientNetworkCtrl.RequestRehand(this);
         }
     }
 

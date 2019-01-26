@@ -119,7 +119,9 @@ public class UIController : MonoBehaviour {
         deckInputField.gameObject.SetActive(false);
         confirmDeckImportButton.gameObject.SetActive(false);
         importDeckButton.gameObject.SetActive(true);
-        ClientGame.mainClientGame.friendlyDeckCtrl.ImportDeck(decklist);
+        //TODO change this to ask the server for import deck
+        //ClientGame.mainClientGame.friendlyDeckCtrl.ImportDeck(decklist);
+        ClientGame.mainClientGame.clientNetworkCtrl.RequestDecklistImport(decklist);
     }
 
     //TODO assign all of these methods to buttons

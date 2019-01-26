@@ -31,18 +31,22 @@ public class ServerGame : Game {
 
     public int GetPlayerIndexFromID(int connectionID)
     {
-        if (currPlayerCount < 2) return -1;
+        for(int i = 0; i < currPlayerCount; i++)
+        {
+            if (players[i].ConnectionID == connectionID) return i;
+        }
 
-        if (players[0].ConnectionID == connectionID) return 0;
-        else return 1;
+        return -1;
     }
 
     public Player GetPlayerFromID(int connectionID)
     {
-        if (currPlayerCount < 2) return null;
+        for (int i = 0; i < currPlayerCount; i++)
+        {
+            if (players[i].ConnectionID == connectionID) return players[i];
+        }
 
-        if (players[0].ConnectionID == connectionID) return players[0];
-        else return players[1];
+        return null;
     }
 
     //do action given id

@@ -25,7 +25,7 @@ public class Game : MonoBehaviour {
     public Player[] Players { get { return players; } }
 
     //game data
-
+    List<Card> cards = new List<Card>();
 
     private void Update()
     {
@@ -42,8 +42,15 @@ public class Game : MonoBehaviour {
         mouseCtrl.NormalClickObject();
     }
 
-    public static bool IsServerGame() { return mainGame is ServerGame; }
-    public static bool IsClientGame() { return mainGame is ClientGame; }
+    //public static bool IsServerGame() { return mainGame is ServerGame; }
+    //public static bool IsClientGame() { return mainGame is ClientGame; }
+
+    public Card GetCardFromID(int id)
+    {
+        if (id > cards.Count) return null;
+
+        return cards[id];
+    }
 
     #region forwarding calls to correct controller
     //move cards between locations
@@ -51,26 +58,32 @@ public class Game : MonoBehaviour {
     public void Discard(Card card, int player = 0, bool ignoreClientServer = false)
     {
         Remove(card, player, ignoreClientServer);
-        if (IsServerGame()) players[player].discardCtrl.AddToDiscard(card);
-        else if (IsClientGame()) 
+        players[player].discardCtrl.AddToDiscard(card);
     }
+
     public void Topdeck(Card card, int player = 0)
     {
         Remove(card, player);
-        if (IsServerGame()) players[player].deckCtrl.PushTopdeck(card);
-        else if(IsClientGame()) ClientGame.mainClientGame.clientNetworkCtrl.RequestTopdeck(card);
+        players[player].deckCtrl.PushTopdeck(card);
     }
+
     public void Rehand(Card card, int player = 0)
     {
         Remove(card, player);
         players[player].handCtrl.AddToHand(card);
     }
+
     public void Play(Card card, int toX, int toY, int player = 0, bool remove = true)
     {
         if(remove) Remove(card, player);
 
-        if (IsServerGame() || DEBUG_MODE) boardCtrl.Play(card, toX, toY, player);
-        else if (IsClientGame()) ClientGame.mainClientGame.RequestPlay(card, toX, toY);
+        boardCtrl.Play(card, toX, toY, player);
+        ClientGame.mainClientGame.RequestPlay(card, toX, toY);
+    }
+
+    public void Play(int cardID, int toX, int toY)
+    {
+        Play(GetCardFromID(cardID), toX, toY);
     }
 
     public Card Draw(int player = 0)
@@ -85,38 +98,30 @@ public class Game : MonoBehaviour {
     /// </summary>
     public virtual void Remove(Card toRemove, int player = 0, bool ignoreClientServer = false)
     {
-        if (IsServerGame() || DEBUG_MODE || ignoreClientServer)
+        switch (toRemove.Location)
         {
-            switch (toRemove.Location)
-            {
-                case Card.CardLocation.Field:
-                    boardCtrl.RemoveFromBoard(toRemove);
-                    break;
-                case Card.CardLocation.Discard:
-                    players[player].discardCtrl.RemoveFromDiscard(toRemove);
-                    break;
-                case Card.CardLocation.Hand:
-                    players[player].handCtrl.RemoveFromHand(toRemove);
-                    break;
-                case Card.CardLocation.Deck:
-                    players[player].deckCtrl.RemoveFromDeck(toRemove);
-                    break;
-                default:
-                    Debug.Log("Don't know how to remove " + toRemove.CardName);
-                    break;
+        case Card.CardLocation.Field:
+            boardCtrl.RemoveFromBoard(toRemove);
+                break;
+            case Card.CardLocation.Discard:
+                players[player].discardCtrl.RemoveFromDiscard(toRemove);
+                break;
+            case Card.CardLocation.Hand:
+                players[player].handCtrl.RemoveFromHand(toRemove);
+                break;
+            case Card.CardLocation.Deck:
+                players[player].deckCtrl.RemoveFromDeck(toRemove);
+                break;
+            default:
+                Debug.Log("Don't know how to remove " + toRemove.CardName);
+                break;
             }
-        }
-        else if(IsClientGame())
-        {
-            ClientGame.mainClientGame.clientNetworkCtrl.RequestRemove(toRemove);
-        }
     }
 
     //moving
     public void Move(Card card, int toX, int toY)
     {
-        if (IsServerGame() || DEBUG_MODE) boardCtrl.Move(card, toX, toY);
-        else if (IsClientGame()) ClientGame.mainClientGame.RequestMove(card, toX, toY);
+        boardCtrl.Move(card, toX, toY);
     }
     public void Swap(Card card, int toX, int toY)
     {

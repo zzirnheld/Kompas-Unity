@@ -71,12 +71,40 @@ public class ServerNetworkController : NetworkController {
         Packet outPacket = null;
         Packet outPacketInverted = null;
         int playerIndex = ServerGame.mainServerGame.GetPlayerIndexFromID(connectionID);
-        packet.RepairOwner(playerIndex);
+        packet.InvertForController(playerIndex);
 
         //switch between all the possible requests for the server to handle.
         switch (packet.command)
         {
-            //all of the request things include a former request to remove?
+            case Packet.Command.Play:
+
+                break;
+            case Packet.Command.Move:
+                break;
+            case Packet.Command.Topdeck:
+                break;
+            case Packet.Command.Discard:
+                break;
+            case Packet.Command.Rehand:
+                break;
+            case Packet.Command.AddToDeck:
+                break;
+            case Packet.Command.ImportDecklist:
+                break;
+            default:
+                break;
+        }
+
+        //TODO change to using a card ID system for once i make tags, so that it just references the card itself
+
+
+    }
+
+
+}
+
+
+/*//all of the request things include a former request to remove?
             case "Request Summon":
                 //first create a new character card from the prefab
                 CharacterCard charCard = Instantiate(characterPrefab).GetComponent<CharacterCard>();
@@ -254,15 +282,4 @@ public class ServerNetworkController : NetworkController {
                 outPacket = new Packet(toAddToDiscard, "PushTopdeck");
                 outPacketInverted = new Packet("AddToEnemyDeck");
                 SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
-                break;
-            default:
-                break;
-        }
-
-        //TODO change to using a card ID system for once i make tags, so that it just references the card itself
-        
-
-    }
-
-
-}
+                break;*/
