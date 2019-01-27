@@ -61,7 +61,10 @@ public class Game : MonoBehaviour {
         players[player].discardCtrl.AddToDiscard(card);
     }
 
-
+    public void Discard(int cardID)
+    {
+        Discard(GetCardFromID(cardID));
+    }
 
     public void Topdeck(Card card, int player = 0)
     {
@@ -78,6 +81,11 @@ public class Game : MonoBehaviour {
     {
         Remove(card, player);
         players[player].handCtrl.AddToHand(card);
+    }
+
+    public void Rehand(int cardID)
+    {
+        Rehand(GetCardFromID(cardID));
     }
 
     public void Play(Card card, int toX, int toY, int player = 0, bool remove = true)

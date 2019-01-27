@@ -12,6 +12,7 @@ public class ServerGame : Game {
     public static ServerGame mainServerGame;
 
     int currPlayerCount = 0; //current number of players. shouldn't exceed 2
+    public int cardCount = 0;
 
     private void Awake()
     {

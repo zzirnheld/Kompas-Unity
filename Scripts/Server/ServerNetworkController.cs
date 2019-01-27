@@ -79,11 +79,11 @@ public class ServerNetworkController : NetworkController {
             case Packet.Command.AddToDeck:
                 //figure out who's getting the card to their deck
                 Player owner = ServerGame.mainServerGame.Players[playerIndex];
-                owner.deckCtrl.AddCard(packet.args);
-                //TODO card index
+                //add the card in, with the cardCount being the card id, then increment the card count
+                Card added = owner.deckCtrl.AddCard(packet.args, ServerGame.mainServerGame.cardCount++);
                 //let everyone know
-                outPacket = new Packet(Packet.Command.AddToDeck, packet.args);
-                outPacketInverted = new Packet(Packet.Command.AddToEnemyDeck, packet.args);
+                outPacket = new Packet(Packet.Command.AddToDeck, packet.args, added.ID);
+                outPacketInverted = new Packet(Packet.Command.AddToEnemyDeck, packet.args, added.ID);
                 SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 break;
             case Packet.Command.Play:

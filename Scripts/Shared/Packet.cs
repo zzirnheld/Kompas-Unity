@@ -32,6 +32,11 @@ public class Packet {
         args = cardName;
     }
 
+    public Packet(Command command, string cardName, int num) : this(command, cardName)
+    {
+        this.num = num;
+    }
+
     public Packet(Command command, Card card)
     {
         cardID = card.ID;

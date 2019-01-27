@@ -83,7 +83,7 @@ public class DeckController : KompasObject
         PushTopdeck(InstantiateBlankCard());
     }
 
-    public void AddCard(string cardName)
+    public Card AddCard(string cardName, int id)
     {
         Card newCard;
         string folder = "Card Jsons/";
@@ -97,6 +97,8 @@ public class DeckController : KompasObject
         newCard = InstantiateCard(fileContents);
         newCard.SetLocation(Card.CardLocation.Deck);
         deck.Add(newCard);
+        newCard.ID = id;
+        return newCard;
     }
 
     public void ImportDeck(string decklist)
@@ -105,7 +107,7 @@ public class DeckController : KompasObject
 
         foreach (string card in cards)
         {
-            AddCard(card);
+            AddCard(card, 0);
         } //end for each card in the array of cards
     }
 

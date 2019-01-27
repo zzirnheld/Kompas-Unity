@@ -61,7 +61,17 @@ public abstract class Card : KompasObject {
     }
     public int Owner { get { return owner; } }
     public CardLocation Location { get { return location; } }
-    public int ID { get { return id; } }
+    public int ID
+    {
+        set
+        {
+            id = value;
+        }
+        get
+        {
+            return id;
+        }
+    }
     //other game data
     public string CardFileName {
         get { return cardFileName; }

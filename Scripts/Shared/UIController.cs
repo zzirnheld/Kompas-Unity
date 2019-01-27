@@ -105,7 +105,7 @@ public class UIController : MonoBehaviour {
 
     }
 
-    #region searching deck or discard
+    #region importing/searching deck or discard
     public void ImportDeckPressed()
     {
         deckInputField.gameObject.SetActive(true);
@@ -120,8 +120,8 @@ public class UIController : MonoBehaviour {
         confirmDeckImportButton.gameObject.SetActive(false);
         importDeckButton.gameObject.SetActive(true);
         //TODO change this to ask the server for import deck
-        //ClientGame.mainClientGame.friendlyDeckCtrl.ImportDeck(decklist);
-        ClientGame.mainClientGame.clientNetworkCtrl.RequestDecklistImport(decklist);
+        if(Game.DEBUG_MODE) ClientGame.mainClientGame.friendlyDeckCtrl.ImportDeck(decklist);
+        else ClientGame.mainClientGame.clientNetworkCtrl.RequestDecklistImport(decklist);
     }
 
     //TODO assign all of these methods to buttons

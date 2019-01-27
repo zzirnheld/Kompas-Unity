@@ -58,10 +58,10 @@ public class ClientNetworkController : NetworkController {
         switch (packet.command)
         {
             case Packet.Command.AddToDeck:
-                ClientGame.mainClientGame.friendlyDeckCtrl.AddCard(packet.args);
+                ClientGame.mainClientGame.friendlyDeckCtrl.AddCard(packet.args, packet.num);
                 break;
             case Packet.Command.AddToEnemyDeck:
-                ClientGame.mainClientGame.enemyDeckCtrl.AddCard(packet.args); //TODO make it always ask for cards from enemy deck
+                ClientGame.mainClientGame.enemyDeckCtrl.AddCard(packet.args, packet.num); //TODO make it always ask for cards from enemy deck
                 break;
             case Packet.Command.Play:
                 ClientGame.mainClientGame.Play(packet.cardID, packet.x, packet.y);
@@ -73,8 +73,10 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.mainClientGame.Topdeck(packet.cardID);
                 break;
             case Packet.Command.Discard:
+                ClientGame.mainClientGame.Discard(packet.cardID);
                 break;
             case Packet.Command.Rehand:
+                ClientGame.mainClientGame.Rehand(packet.cardID);
                 break;
             default:
                 Debug.Log("Unrecognized command sent to client");
