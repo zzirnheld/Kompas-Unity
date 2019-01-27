@@ -25,7 +25,7 @@ public class Game : MonoBehaviour {
     public Player[] Players { get { return players; } }
 
     //game data
-    List<Card> cards = new List<Card>();
+    Card[] cards = new Card[50]; //tODO bETTER sOLUTION
 
     private void Update()
     {
@@ -47,7 +47,7 @@ public class Game : MonoBehaviour {
 
     public Card GetCardFromID(int id)
     {
-        if (id > cards.Count) return null;
+        if (id > cards.Length) return null;
 
         return cards[id];
     }

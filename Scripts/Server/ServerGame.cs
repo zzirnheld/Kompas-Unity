@@ -34,6 +34,9 @@ public class ServerGame : Game {
     {
         mainGame = this;
         mainServerGame = this;
+        /*
+        players[0] = new Player(0);
+        players[1] = new Player(1);
         //set your stuff
         players[0].handCtrl = player1HandCtrl;
         players[0].deckCtrl = player1DeckCtrl;
@@ -47,7 +50,7 @@ public class ServerGame : Game {
         players[1].discardCtrl = player2DiscardCtrl;
         players[1].handObject = player2HandObj;
         players[1].deckObject = player2DeckObj;
-        players[1].discardObject = player2DiscardObj;
+        players[1].discardObject = player2DiscardObj;*/
     }
 
     public int AddPlayer(int connectionID)
@@ -55,6 +58,24 @@ public class ServerGame : Game {
         if (currPlayerCount >= 2) return -1;
 
         players[currPlayerCount] = new Player(connectionID);
+        if(currPlayerCount == 0)
+        {
+            players[0].handCtrl = player1HandCtrl;
+            players[0].deckCtrl = player1DeckCtrl;
+            players[0].discardCtrl = player1DiscardCtrl;
+            players[0].handObject = player1HandObj;
+            players[0].deckObject = player1DeckObj;
+            players[0].discardObject = player1DiscardObj;
+        }
+        else if(currPlayerCount == 1)
+        {
+            players[1].handCtrl = player2HandCtrl;
+            players[1].deckCtrl = player2DeckCtrl;
+            players[1].discardCtrl = player2DiscardCtrl;
+            players[1].handObject = player2HandObj;
+            players[1].deckObject = player2DeckObj;
+            players[1].discardObject = player2DiscardObj;
+        }
         currPlayerCount++;
         return currPlayerCount;
     }
@@ -77,6 +98,11 @@ public class ServerGame : Game {
         }
 
         return null;
+    }
+
+    public bool HasPlayer2()
+    {
+        return currPlayerCount >= 2;
     }
 
     //do action given id

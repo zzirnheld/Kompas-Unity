@@ -103,7 +103,7 @@ public class NetworkController : MonoBehaviour {
     }
     #endregion serialization
     
-    public Card GetCardFromPacket(Packet packet)
+    /*public Card GetCardFromPacket(Packet packet)
     {
         Card toReturn = null;
         switch (packet.cardType)
@@ -125,7 +125,7 @@ public class NetworkController : MonoBehaviour {
                 break;
         }
         return toReturn;
-    }
+    }*/
 
     protected void RemoveCard(SerializableCard toRemove)
     {
@@ -153,7 +153,7 @@ public class NetworkController : MonoBehaviour {
         }
     }
 
-    public SerializableCard GetSerializableCardFromPacket(Packet packet)
+    /*public SerializableCard GetSerializableCardFromPacket(Packet packet)
     {
         switch (packet.cardType)
         {
@@ -162,7 +162,7 @@ public class NetworkController : MonoBehaviour {
             case 'A': return packet.serializedAug;
             default: return null;
         }
-    }
+    }*/
 
     /// <summary>
     /// Sends the packet to the other computer.

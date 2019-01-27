@@ -7,7 +7,8 @@ using UnityEngine.Networking;
 public class ClientNetworkController : NetworkController {
     
     private int connectionID;
-    public const int SOCKET = 8888;
+    public int SOCKET = 0;
+    public const int SERVER_PORT = 8888;
     public string ip;
 
     // Update is called once per frame
@@ -33,6 +34,7 @@ public class ClientNetworkController : NetworkController {
                 break;
             //they've actually sent something
             case NetworkEventType.DataEvent:
+                Debug.Log("Recieved data event");
                 ParseCommand(recBuffer);
                 break;
             //the person has disconnected
@@ -43,11 +45,17 @@ public class ClientNetworkController : NetworkController {
                 break;
         }
     }
-
+    
     public void Connect()
     {
-        Host(8888);
-        connectionID = NetworkTransport.Connect(hostID, ip, SOCKET, 0, out error);
+        //TODO get ip from ui
+        Host(0);
+        if (ip == "localhost")
+        {
+            Debug.Log("renaming ");
+            ip = "127.0.0.1";
+        }
+        connectionID = NetworkTransport.Connect(hostID, ip, SERVER_PORT, 0, out error);
         //TODO cast error to NetworkError and see if was NetworkError.OK
     }
 
@@ -123,6 +131,7 @@ public class ClientNetworkController : NetworkController {
 
     public void RequestDecklistImport(string decklist)
     {
+        Debug.Log("Requesting Deck import of " + decklist);
         string[] cardNames = decklist.Split('\n');
         foreach(string cardName in cardNames){
             RequestAddToDeck(cardName);

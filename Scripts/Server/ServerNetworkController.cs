@@ -27,16 +27,16 @@ public class ServerNetworkController : NetworkController {
                 //yay someone connected to me with the connectionID that was just set
                 Debug.Log("Connected!");
                 connected = true;
-                //add the player. if it's the second player, tell each player the other is here
+                //add the player. if it's the second player, do i need to tell each player the other is here?
                 if (ServerGame.mainServerGame.AddPlayer(recievedConnectionID) == 2)
                 {
 
                 }
-                //TODO on second player connect, notify both players of their opponent also TODO change server scene to have correct things attached to main cam
 
                 break;
             //they've actually sent something
             case NetworkEventType.DataEvent:
+                Debug.Log("Recieved Data Event");
                 ParseRequest(recBuffer, recievedConnectionID);
                 break;
             //the person has disconnected
@@ -58,7 +58,7 @@ public class ServerNetworkController : NetworkController {
 
 
         //if the inverted packet isn't null, send the packet to the correct player
-        if (outPacketInverted == null) return;
+        if (outPacketInverted == null || !ServerGame.mainServerGame.HasPlayer2()) return;
         //if the one that queried you is player 0,
         if (connectionID == serverGame.Players[0].ConnectionID)
             //send the inverted one to player 1.
@@ -72,8 +72,11 @@ public class ServerNetworkController : NetworkController {
 
     private void ParseRequest(byte[] buffer, int connectionID)
     {
+        Debug.Log("recieved packet");
         Packet packet = Deserialize(buffer);
         if (packet == null) return;
+
+        Debug.Log("packet command is " + packet.command);
 
         Packet outPacket = null;
         Packet outPacketInverted = null;
@@ -86,6 +89,8 @@ public class ServerNetworkController : NetworkController {
             case Packet.Command.AddToDeck:
                 //figure out who's getting the card to their deck
                 Player owner = ServerGame.mainServerGame.Players[playerIndex];
+                Debug.Log("owner is " + owner + ", server game is " + ServerGame.mainServerGame + ", packet is " + packet + ", owner index is " + playerIndex);
+                Debug.Log("deck ctrl is " + (owner.deckCtrl == null));
                 //add the card in, with the cardCount being the card id, then increment the card count
                 Card added = owner.deckCtrl.AddCard(packet.args, ServerGame.mainServerGame.cardCount++);
                 //let everyone know

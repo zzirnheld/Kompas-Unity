@@ -14,9 +14,9 @@ public class Packet {
     /// </summary>
     public Command command;
 
-    public SerializableCharCard serializedChar;
+    /*public SerializableCharCard serializedChar;
     public SerializableSpellCard serializedSpell;
-    public SerializableAugCard serializedAug;
+    public SerializableAugCard serializedAug;*/
     public int cardID;
 
     public string args;
