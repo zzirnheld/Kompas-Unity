@@ -14,20 +14,49 @@ public class ServerGame : Game {
     int currPlayerCount = 0; //current number of players. shouldn't exceed 2
     public int cardCount = 0;
 
+    public HandController player1HandCtrl;
+    public DeckController player1DeckCtrl;
+    public DiscardController player1DiscardCtrl;
+
+    public GameObject player1HandObj;
+    public GameObject player1DeckObj;
+    public GameObject player1DiscardObj;
+
+    public HandController player2HandCtrl;
+    public DeckController player2DeckCtrl;
+    public DiscardController player2DiscardCtrl;
+
+    public GameObject player2HandObj;
+    public GameObject player2DeckObj;
+    public GameObject player2DiscardObj;
+
     private void Awake()
     {
         mainGame = this;
         mainServerGame = this;
+        //set your stuff
+        players[0].handCtrl = player1HandCtrl;
+        players[0].deckCtrl = player1DeckCtrl;
+        players[0].discardCtrl = player1DiscardCtrl;
+        players[0].handObject = player1HandObj;
+        players[0].deckObject = player1DeckObj;
+        players[0].discardObject = player1DiscardObj;
+        //and the player2 stuff
+        players[1].handCtrl = player2HandCtrl;
+        players[1].deckCtrl = player2DeckCtrl;
+        players[1].discardCtrl = player2DiscardCtrl;
+        players[1].handObject = player2HandObj;
+        players[1].deckObject = player2DeckObj;
+        players[1].discardObject = player2DiscardObj;
     }
 
-    public bool AddPlayer(int connectionID)
+    public int AddPlayer(int connectionID)
     {
-        if (currPlayerCount >= 2) return false;
+        if (currPlayerCount >= 2) return -1;
 
         players[currPlayerCount] = new Player(connectionID);
         currPlayerCount++;
-
-        return true;
+        return currPlayerCount;
     }
 
     public int GetPlayerIndexFromID(int connectionID)

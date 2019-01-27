@@ -120,8 +120,8 @@ public class UIController : MonoBehaviour {
         confirmDeckImportButton.gameObject.SetActive(false);
         importDeckButton.gameObject.SetActive(true);
         //TODO change this to ask the server for import deck
-        if(Game.DEBUG_MODE) ClientGame.mainClientGame.friendlyDeckCtrl.ImportDeck(decklist);
-        else ClientGame.mainClientGame.clientNetworkCtrl.RequestDecklistImport(decklist);
+        //if(Game.DEBUG_MODE) ClientGame.mainClientGame.friendlyDeckCtrl.ImportDeck(decklist);
+        ClientGame.mainClientGame.clientNetworkCtrl.RequestDecklistImport(decklist);
     }
 
     //TODO assign all of these methods to buttons
@@ -255,8 +255,9 @@ public class UIController : MonoBehaviour {
     {
         if (debugPipsField.text != "")
         {
-             ClientGame.mainClientGame.FriendlyPips = Int32.Parse(debugPipsField.text);
+            //ClientGame.mainClientGame.FriendlyPips = Int32.Parse(debugPipsField.text);
             //TODO update if is server
+            throw new NotImplementedException();
         }
     }
 
@@ -265,5 +266,6 @@ public class UIController : MonoBehaviour {
         enemyPipsText.text = "Enemy Pips: " + num;
     }
     #endregion debug
+    
 
 }

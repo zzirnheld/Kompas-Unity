@@ -156,7 +156,7 @@ public abstract class Card : KompasObject {
         }
         //set this gameobject's texture to the simple sprite (by default, TODO change on zoom level change)
         Texture2D spriteTexture = simpleSprite.texture;
-        spriteTexture.alphaIsTransparency = true;
+        //spriteTexture.alphaIsTransparency = true;
         meshRenderer.material.SetTexture("_MainTex", spriteTexture);
         //then make unity know it's a sprite so that it'll make the alpha transparent
         meshRenderer.material.shader = Shader.Find("Sprites/Default");

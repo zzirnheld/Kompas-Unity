@@ -7,8 +7,8 @@ public class ClientGame : Game {
     public static ClientGame mainClientGame;
 
     private bool friendlyTurn; //TODO should it start with a value? should be init by server
-    private int friendlyPips = 3;
-    private int enemyPips = 3;
+    //private int friendlyPips = 3;
+    //private int enemyPips = 3;
 
     public HandController friendlyHandCtrl;
     public DeckController friendlyDeckCtrl;
@@ -28,25 +28,6 @@ public class ClientGame : Game {
 
     public ClientNetworkController clientNetworkCtrl;
 
-    public int FriendlyPips
-    {
-        get { return friendlyPips; }
-        set
-        {
-            friendlyPips = value;
-            uiCtrl.friendlyPipsText.text = "Pips: " + friendlyPips;
-        }
-    }
-    public int EnemyPips
-    {
-        get { return enemyPips; }
-        set
-        {
-            enemyPips = value;
-            uiCtrl.enemyPipsText.text = "Enemy Pips: " + enemyPips;
-        }
-    }
-
     private void Awake()
     {
         mainGame = this;
@@ -60,7 +41,7 @@ public class ClientGame : Game {
         players[0].handObject = friendlyHandObj;
         players[0].deckObject = friendlyDeckObj;
         players[0].discardObject = friendlyDiscardObj;
-        //and the enemy stuff
+        //and the player2 stuff
         players[1].handCtrl = enemyHandCtrl;
         players[1].deckCtrl = enemyDeckCtrl;
         players[1].discardCtrl = enemyDiscardCtrl;
@@ -97,12 +78,12 @@ public class ClientGame : Game {
 
     //game mechanics
     //requesting
-    public override void RequestMove(Card card, int toX, int toY)
+    public void RequestMove(Card card, int toX, int toY)
     {
         clientNetworkCtrl.RequestMove(card, toX, toY);
     }
 
-    public override void RequestPlay(Card card, int toX, int toY)
+    public void RequestPlay(Card card, int toX, int toY)
     {
             clientNetworkCtrl.RequestPlay(card, toX, toY);
     }

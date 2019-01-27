@@ -61,7 +61,7 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.mainClientGame.friendlyDeckCtrl.AddCard(packet.args, packet.num);
                 break;
             case Packet.Command.AddToEnemyDeck:
-                ClientGame.mainClientGame.enemyDeckCtrl.AddCard(packet.args, packet.num); //TODO make it always ask for cards from enemy deck
+                ClientGame.mainClientGame.enemyDeckCtrl.AddCard(packet.args, packet.num, 1); //TODO make it always ask for cards from enemy deck
                 break;
             case Packet.Command.Play:
                 ClientGame.mainClientGame.Play(packet.cardID, packet.x, packet.y);

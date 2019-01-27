@@ -27,6 +27,13 @@ public class ServerNetworkController : NetworkController {
                 //yay someone connected to me with the connectionID that was just set
                 Debug.Log("Connected!");
                 connected = true;
+                //add the player. if it's the second player, tell each player the other is here
+                if (ServerGame.mainServerGame.AddPlayer(recievedConnectionID) == 2)
+                {
+
+                }
+                //TODO on second player connect, notify both players of their opponent also TODO change server scene to have correct things attached to main cam
+
                 break;
             //they've actually sent something
             case NetworkEventType.DataEvent:

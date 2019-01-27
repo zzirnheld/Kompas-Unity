@@ -45,7 +45,7 @@ public class NetworkController : MonoBehaviour {
     /// If you're connecting to a server, you still need to connect.
     /// </summary>
     /// <param name="socket"></param>
-    protected void Host(int socket)
+    public void Host(int socket)
     {
         //then make a config to add whatever channels you wanna do
         ConnectionConfig config = new ConnectionConfig();

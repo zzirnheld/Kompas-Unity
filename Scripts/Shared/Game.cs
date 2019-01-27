@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Game : MonoBehaviour {
     
-    public const bool DEBUG_MODE = true;
+    //public const bool DEBUG_MODE = true;
 
     public static Game mainGame;
 
@@ -98,7 +98,8 @@ public class Game : MonoBehaviour {
 
     public void Play(int cardID, int toX, int toY)
     {
-        Play(GetCardFromID(cardID), toX, toY);
+        Card toPlay = GetCardFromID(cardID);
+        Play(toPlay, toX, toY, toPlay.Owner);
     }
 
     public Card Draw(int player = 0)
@@ -156,7 +157,7 @@ public class Game : MonoBehaviour {
     //game mechanics
 
     //requesting
-    public virtual void RequestMove(Card card, int toX, int toY)
+    /*public virtual void RequestMove(Card card, int toX, int toY)
     {
         if (DEBUG_MODE) { Debug.Log("Debug Mode, not checking with server to move"); Move(card, toX, toY); }
         else throw new NotImplementedException();
@@ -165,7 +166,7 @@ public class Game : MonoBehaviour {
     {
         if (DEBUG_MODE) { Debug.Log("Debug Mode, not checking with server to play"); Play(card, toX, toY); }
         else throw new NotImplementedException();
-    }
+    }*/
 
 
 }
