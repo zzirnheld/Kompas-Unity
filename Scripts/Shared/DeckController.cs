@@ -98,6 +98,7 @@ public class DeckController : KompasObject
         newCard.SetLocation(Card.CardLocation.Deck);
         deck.Add(newCard);
         newCard.ID = id;
+        Game.mainGame.cards[id] = newCard;
         newCard.ChangeController(owner);
         return newCard;
     }

@@ -25,7 +25,7 @@ public class Game : MonoBehaviour {
     public Player[] Players { get { return players; } }
 
     //game data
-    Card[] cards = new Card[50]; //tODO bETTER sOLUTION
+    public Card[] cards = new Card[50]; //tODO bETTER sOLUTION
 
     private void Update()
     {
@@ -96,7 +96,6 @@ public class Game : MonoBehaviour {
         if(remove) Remove(card, player);
 
         boardCtrl.Play(card, toX, toY, player);
-        ClientGame.mainClientGame.RequestPlay(card, toX, toY);
     }
 
     public void Play(int cardID, int toX, int toY)

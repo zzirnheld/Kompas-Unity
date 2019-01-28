@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 public class ClientNetworkController : NetworkController {
     
     private int connectionID;
-    public int SOCKET = 0;
+    public int SOCKET = 0; //TODo make something else so can test 2 clients
     public const int SERVER_PORT = 8888;
     public string ip;
 
@@ -63,6 +63,8 @@ public class ClientNetworkController : NetworkController {
     {
         Packet packet = Deserialize(buffer);
         if (packet == null) return;
+        Debug.Log("Parsing command " + packet.command + " for " + packet.cardID);
+
         switch (packet.command)
         {
             case Packet.Command.AddToDeck:
