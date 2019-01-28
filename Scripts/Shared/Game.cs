@@ -63,7 +63,8 @@ public class Game : MonoBehaviour {
 
     public void Discard(int cardID)
     {
-        Discard(GetCardFromID(cardID));
+        Card toDiscard = GetCardFromID(cardID);
+        Discard(toDiscard, toDiscard.Owner);
     }
 
     public void Topdeck(Card card, int player = 0)
@@ -74,7 +75,8 @@ public class Game : MonoBehaviour {
 
     public void Topdeck(int cardID)
     {
-        Topdeck(GetCardFromID(cardID));
+        Card toTopdeck = GetCardFromID(cardID);
+        Topdeck(toTopdeck, toTopdeck.Owner);
     }
 
     public void Rehand(Card card, int player = 0)
@@ -85,7 +87,8 @@ public class Game : MonoBehaviour {
 
     public void Rehand(int cardID)
     {
-        Rehand(GetCardFromID(cardID));
+        Card toRehand = GetCardFromID(cardID);
+        Rehand(toRehand, toRehand.Owner);
     }
 
     public void Play(Card card, int toX, int toY, int player = 0, bool remove = true)

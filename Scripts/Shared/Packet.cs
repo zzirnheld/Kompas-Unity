@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public class Packet {
 
-    public enum Command { Play, Move, Topdeck, Discard, Rehand, AddToDeck, AddToEnemyDeck}
+    public enum Command { Play, Move, Topdeck, Discard, Rehand, AddToDeck, AddToEnemyDeck, Draw}
 
     /// <summary>
     /// Contains the command that is sent.
@@ -25,10 +25,14 @@ public class Packet {
     public int num;
     public char cardType;
 
-    //used only for adding cards to deck
-    public Packet(Command command, string cardName)
+    public Packet(Command command)
     {
         this.command = command;
+    }
+
+    //used only for adding cards to deck
+    public Packet(Command command, string cardName) : this(command)
+    {
         args = cardName;
     }
 
@@ -37,10 +41,9 @@ public class Packet {
         this.num = num;
     }
 
-    public Packet(Command command, Card card)
+    public Packet(Command command, Card card) : this(command)
     {
         cardID = card.ID;
-        this.command = command;
     }
 
     public Packet(Command command, Card card, int num) : this(command, card)

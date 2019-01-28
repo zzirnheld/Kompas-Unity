@@ -208,7 +208,9 @@ public class DeckController : KompasObject
 
     public override void OnClick()
     {
-        if(deck.Count > 0) Game.mainGame.Draw();
+        //if(deck.Count > 0) Game.mainGame.Draw();
+        //request a draw
+        ClientGame.mainClientGame.clientNetworkCtrl.RequestDraw();
     }
 
 }

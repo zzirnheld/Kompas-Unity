@@ -138,5 +138,11 @@ public class ClientNetworkController : NetworkController {
         }
     }
 
+    public void RequestDraw()
+    {
+        Packet packet = new Packet(Packet.Command.Draw);
+        Send(packet, connectionID);
+    }
+
     #endregion
 }

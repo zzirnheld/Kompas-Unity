@@ -149,6 +149,14 @@ public class ServerNetworkController : NetworkController {
                 outPacketInverted = outPacket;
                 SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 break;
+            case Packet.Command.Draw:
+                //draw and store what was drawn
+                Card toDraw = ServerGame.mainServerGame.Draw(playerIndex);
+                //let everyone know to add that character to the correct hand
+                outPacket = new Packet(Packet.Command.Rehand, toDraw);
+                outPacketInverted = new Packet(Packet.Command.Rehand, toDraw);
+                SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
+                break;
             default:
                 Debug.Log("Invalid command " + packet.command + " to server from " + connectionID);
                 break;
