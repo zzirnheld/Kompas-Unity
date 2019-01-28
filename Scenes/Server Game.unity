@@ -1194,7 +1194,7 @@ GameObject:
   - component: {fileID: 342733588}
   - component: {fileID: 342733587}
   m_Layer: 5
-  m_Name: Connect
+  m_Name: Host Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1250,7 +1250,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Connect
+  m_Text: 'Host Server
 
 '
 --- !u!222 &342733588
@@ -2298,7 +2298,7 @@ GameObject:
   - component: {fileID: 711040367}
   - component: {fileID: 711040366}
   m_Layer: 5
-  m_Name: Connect Button
+  m_Name: Host Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4052,12 +4052,12 @@ GameObject:
   - component: {fileID: 1414608096}
   - component: {fileID: 1414608095}
   m_Layer: 5
-  m_Name: IP Input Field
+  m_Name: IP Input Field (probably not necessary)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1414608094
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4802,6 +4802,57 @@ MonoBehaviour:
   boardCtrl: {fileID: 104529769}
   boardObject: {fileID: 104529768}
   turnPlayer: 0
+  cards:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   cardCount: 0
   player1HandCtrl: {fileID: 749374658}
   player1DeckCtrl: {fileID: 2000623533}

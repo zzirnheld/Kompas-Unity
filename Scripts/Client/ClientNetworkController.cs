@@ -49,10 +49,11 @@ public class ClientNetworkController : NetworkController {
     public void Connect()
     {
         //TODO get ip from ui
+        ip = ClientGame.mainClientGame.uiCtrl.ipInputField.text;
         Host(0);
-        if (ip == "localhost")
+        if (ip == "localhost" || ip == "")
         {
-            Debug.Log("renaming ");
+            Debug.Log("renaming " + ip);
             ip = "127.0.0.1";
         }
         connectionID = NetworkTransport.Connect(hostID, ip, SERVER_PORT, 0, out error);

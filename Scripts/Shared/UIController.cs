@@ -42,6 +42,9 @@ public class UIController : MonoBehaviour {
     //current state text (reminds the player what's happening right now)
     public Text currentStateText;
     private string currentStateString;
+    //networking
+    public InputField ipInputField;
+
     public string CurrentStateString
     {
         get { return currentStateString; }

@@ -4743,6 +4743,7 @@ MonoBehaviour:
   cancelDeckSearch: {fileID: 442461731}
   cancelDiscardSearch: {fileID: 314474553}
   currentStateText: {fileID: 1029930859}
+  ipInputField: {fileID: 132124413}
   thingToSearch: []
 --- !u!114 &1615817256
 MonoBehaviour:
@@ -5885,6 +5886,57 @@ MonoBehaviour:
   boardCtrl: {fileID: 665162530}
   boardObject: {fileID: 665162525}
   turnPlayer: 0
+  cards:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   friendlyHandCtrl: {fileID: 1921547573}
   friendlyDeckCtrl: {fileID: 562958699}
   friendlyDiscardCtrl: {fileID: 540378492}
