@@ -150,7 +150,9 @@ public class UIController : MonoBehaviour {
     public void SearchDeckToHand()
     {
         if (!searchingDeck) return;
-        ClientGame.mainClientGame.friendlyHandCtrl.AddToHand(ClientGame.mainClientGame.friendlyDeckCtrl.CardAt(searchIndex, true));
+        //and request get the card you're currently at for searching
+        ClientGame.mainClientGame.clientNetworkCtrl.RequestRehand(ClientGame.mainClientGame.friendlyDeckCtrl.CardAt(searchIndex, false));
+        //then be done searching
         EndDeckSearch();
     }
 
@@ -186,7 +188,9 @@ public class UIController : MonoBehaviour {
     public void SearchDiscardToHand()
     {
         if (!searchingDiscard) return;
-        ClientGame.mainClientGame.friendlyHandCtrl.AddToHand(ClientGame.mainClientGame.friendlyDiscardCtrl.CardAt(searchIndex, true));
+        //request to add the card that you've searched for
+        ClientGame.mainClientGame.clientNetworkCtrl.RequestRehand(ClientGame.mainClientGame.friendlyDiscardCtrl.CardAt(searchIndex, false));
+        //and end the search
         EndDiscardSearch();
     }
 

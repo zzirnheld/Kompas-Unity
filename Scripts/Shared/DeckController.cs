@@ -211,7 +211,8 @@ public class DeckController : KompasObject
     {
         //if(deck.Count > 0) Game.mainGame.Draw();
         //request a draw
-        ClientGame.mainClientGame.clientNetworkCtrl.RequestDraw();
+        if(ClientGame.mainClientGame.friendlyDeckCtrl == this)
+            ClientGame.mainClientGame.clientNetworkCtrl.RequestDraw();
     }
 
 }

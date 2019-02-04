@@ -44,4 +44,10 @@ public class DiscardController : KompasObject {
         Debug.Assert(index < discard.Count);
         discard.RemoveAt(index);
     }
+
+    public override void OnClick()
+    {
+        if (ClientGame.mainClientGame.friendlyDiscardCtrl == this)
+            ClientGame.mainClientGame.clientNetworkCtrl.RequestRehand(GetLastDiscarded());
+    }
 }
