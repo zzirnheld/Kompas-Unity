@@ -157,6 +157,13 @@ public class ServerNetworkController : NetworkController {
                 outPacketInverted = new Packet(Packet.Command.Rehand, toDraw);
                 SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 break;
+            case Packet.Command.SetNESW:
+                Card toSetNESW = ServerGame.mainServerGame.SetNESW(packet.cardID, packet.n, packet.e, packet.s, packet.w);
+                //let everyone know to set NESW
+                outPacket = new Packet(Packet.Command.SetNESW, toSetNESW, packet.n, packet.e, packet.s, packet.w);
+                outPacketInverted = new Packet(Packet.Command.SetNESW, toSetNESW, packet.n, packet.e, packet.s, packet.w);
+                SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
+                break;
             default:
                 Debug.Log("Invalid command " + packet.command + " to server from " + connectionID);
                 break;

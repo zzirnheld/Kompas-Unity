@@ -152,6 +152,15 @@ public class Game : MonoBehaviour {
         boardCtrl.Swap(card, toX, toY);
     }
 
+    public Card SetNESW(int cardID, int n, int e, int s, int w)
+    {
+        Card toSet = GetCardFromID(cardID);
+        if (!(toSet is CharacterCard)) return null;
+        CharacterCard charToSet = toSet as CharacterCard;
+        charToSet.SetNESW(n, e, s, w);
+        return charToSet;
+    }
+
     //ui
     public virtual void SelectCard(Card card) { uiCtrl.SelectCard(card); }
     #endregion forwarding

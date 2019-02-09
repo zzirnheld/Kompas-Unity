@@ -89,6 +89,9 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.Rehand:
                 ClientGame.mainClientGame.Rehand(packet.cardID);
                 break;
+            case Packet.Command.SetNESW:
+                ClientGame.mainClientGame.SetNESW(packet.cardID, packet.n, packet.e, packet.s, packet.w);
+                break;
             default:
                 Debug.Log("Unrecognized command sent to client");
                 break;
@@ -144,6 +147,12 @@ public class ClientNetworkController : NetworkController {
     public void RequestDraw()
     {
         Packet packet = new Packet(Packet.Command.Draw);
+        Send(packet, connectionID);
+    }
+
+    public void RequestSetNESW(Card card, int n, int e, int s, int w)
+    {
+        Packet packet = new Packet(Packet.Command.SetNESW, card, n, e, s, w);
         Send(packet, connectionID);
     }
 
