@@ -9,7 +9,7 @@ public class Player {
 
     //other game data
     public bool friendly;
-    private Quaternion cardRotation;
+    public int index;
 
     //friendly
     public DeckController deckCtrl;
@@ -26,15 +26,15 @@ public class Player {
     //getters and setters
     //game mechanics data
     //other game data 
-    public Quaternion CardRotation { get { return cardRotation; } }
 
     public int ConnectionID
     {
         get { return connectionID; }
     }
 
-    public Player(int connectionID)
+    public Player(int connectionID, int index)
     {
         this.connectionID = connectionID;
+        this.index = index;
     }
 }

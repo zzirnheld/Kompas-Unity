@@ -30,7 +30,7 @@ public class ServerNetworkController : NetworkController {
                 //add the player. if it's the second player, do i need to tell each player the other is here?
                 if (ServerGame.mainServerGame.AddPlayer(recievedConnectionID) == 2)
                 {
-
+                    //TODO figure out if this if is necessary
                 }
 
                 break;
@@ -163,6 +163,13 @@ public class ServerNetworkController : NetworkController {
                 outPacket = new Packet(Packet.Command.SetNESW, toSetNESW, packet.n, packet.e, packet.s, packet.w);
                 outPacketInverted = new Packet(Packet.Command.SetNESW, toSetNESW, packet.n, packet.e, packet.s, packet.w);
                 SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
+                break;
+            case Packet.Command.SetPips:
+                Player toSetPipsOf = ServerGame.mainServerGame.GetPlayerFromID(connectionID);
+                toSetPipsOf.pips = packet.num;
+                //let everyone know
+                outPacket = new Packet(Packet.Command.SetPips, packet.num);
+                outPacketInverted = new Packet(Packet.Command.SetEnemyPips, packet.num);
                 break;
             default:
                 Debug.Log("Invalid command " + packet.command + " to server from " + connectionID);

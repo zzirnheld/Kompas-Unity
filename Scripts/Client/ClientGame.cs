@@ -32,8 +32,8 @@ public class ClientGame : Game {
     {
         mainGame = this;
         mainClientGame = this;
-        players[0] = new Player(0);
-        players[1] = new Player(1);
+        players[0] = new Player(0, 0);
+        players[1] = new Player(1, 1);
         //set your stuff
         players[0].handCtrl = friendlyHandCtrl;
         players[0].deckCtrl = friendlyDeckCtrl;
@@ -77,6 +77,20 @@ public class ClientGame : Game {
     }
 
     //game mechanics
+    #region setting pips
+    public void SetFriendlyPips(int num)
+    {
+        players[0].pips = num;
+        uiCtrl.UpdateFriendlyPips(num);
+    }
+
+    public void SetEnemyPips(int num)
+    {
+        players[1].pips = num;
+        uiCtrl.UpdateEnemyPips(num);
+    }
+    #endregion
+
     //requesting
     public void RequestMove(Card card, int toX, int toY)
     {
@@ -85,7 +99,7 @@ public class ClientGame : Game {
 
     public void RequestPlay(Card card, int toX, int toY)
     {
-            clientNetworkCtrl.RequestPlay(card, toX, toY);
+        clientNetworkCtrl.RequestPlay(card, toX, toY);
     }
 
     //ui
@@ -93,5 +107,6 @@ public class ClientGame : Game {
     {
         uiCtrl.SelectCard(card);
     }
+
 
 }

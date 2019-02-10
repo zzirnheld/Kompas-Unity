@@ -108,6 +108,18 @@ public class UIController : MonoBehaviour {
 
     }
 
+    #region updating pips
+    public void UpdateFriendlyPips(int num)
+    {
+        friendlyPipsText.text = "Friendly Pips: " + num;
+    }
+
+    public void UpdateEnemyPips(int num)
+    {
+        enemyPipsText.text = "Enemy Pips: " + num;
+    }
+    #endregion
+
     #region importing/searching deck or discard
     public void ImportDeckPressed()
     {
@@ -248,6 +260,7 @@ public class UIController : MonoBehaviour {
     #region debug
     public void DebugUpdateStats()
     {
+        /* old, without checking with server
         if (debugNInputField.text != "")
             SelectedChar.N = Int32.Parse(debugNInputField.text);
         if (debugEInputField.text != "")
@@ -256,6 +269,20 @@ public class UIController : MonoBehaviour {
             SelectedChar.S = Int32.Parse(debugSInputField.text);
         if (debugWInputField.text != "")
             SelectedChar.W = Int32.Parse(debugWInputField.text);
+            */
+        //get current ones, in case the input fields are empty
+        int nToUpdate = SelectedChar.N;
+        int eToUpdate = SelectedChar.E;
+        int sToUpdate = SelectedChar.S;
+        int wToUpdate = SelectedChar.W;
+
+        //if any of the input fields have a value, update the values you want to update 
+        if (debugNInputField.text != "") nToUpdate = Int32.Parse(debugNInputField.text);
+        if (debugEInputField.text != "") eToUpdate = Int32.Parse(debugEInputField.text);
+        if (debugSInputField.text != "") sToUpdate = Int32.Parse(debugSInputField.text);
+        if (debugWInputField.text != "") wToUpdate = Int32.Parse(debugWInputField.text);
+
+        ClientGame.mainClientGame.clientNetworkCtrl.RequestSetNESW(SelectedChar, nToUpdate, eToUpdate, sToUpdate, wToUpdate);
     }
 
     public void DebugUpdatePips()

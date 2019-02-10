@@ -92,6 +92,12 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.SetNESW:
                 ClientGame.mainClientGame.SetNESW(packet.cardID, packet.n, packet.e, packet.s, packet.w);
                 break;
+            case Packet.Command.SetPips:
+                ClientGame.mainClientGame.SetFriendlyPips(packet.num);
+                break;
+            case Packet.Command.SetEnemyPips:
+                ClientGame.mainClientGame.SetEnemyPips(packet.num);
+                break;
             default:
                 Debug.Log("Unrecognized command sent to client");
                 break;

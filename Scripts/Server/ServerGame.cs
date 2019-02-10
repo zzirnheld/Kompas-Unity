@@ -57,7 +57,7 @@ public class ServerGame : Game {
     {
         if (currPlayerCount >= 2) return -1;
 
-        players[currPlayerCount] = new Player(connectionID);
+        players[currPlayerCount] = new Player(connectionID, currPlayerCount);
         if(currPlayerCount == 0)
         {
             players[0].handCtrl = player1HandCtrl;
