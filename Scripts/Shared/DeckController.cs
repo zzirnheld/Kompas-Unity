@@ -215,4 +215,13 @@ public class DeckController : KompasObject
             ClientGame.mainClientGame.clientNetworkCtrl.RequestDraw();
     }
 
+
+    #region debug
+    public void DEBUGCreateCard()
+    {
+        AddCard("Swordsmaster of Iron", 0);
+        Game.mainGame.Draw();
+    }
+    #endregion
+
 }
