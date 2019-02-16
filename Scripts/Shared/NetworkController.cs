@@ -52,7 +52,7 @@ public class NetworkController : MonoBehaviour {
         channelID = config.AddChannel(QosType.Reliable);
 
         //then you create a topology, which defines how your networking is gonna work
-        HostTopology topology = new HostTopology(config, 1);
+        HostTopology topology = new HostTopology(config, 2);
 
         //adds a new host on port "socket" (currently 8888), with the defined topology, for any ip addresses to connect to
         hostID = NetworkTransport.AddHost(topology, socket);

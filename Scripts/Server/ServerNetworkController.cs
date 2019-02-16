@@ -165,11 +165,14 @@ public class ServerNetworkController : NetworkController {
                 SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 break;
             case Packet.Command.SetPips:
-                Player toSetPipsOf = ServerGame.mainServerGame.GetPlayerFromID(connectionID);
-                toSetPipsOf.pips = packet.num;
+                int indexToSetPipsOf = ServerGame.mainServerGame.GetPlayerIndexFromID(connectionID);
+                ServerGame.mainServerGame.Players[indexToSetPipsOf].pips = packet.num;
+                if (indexToSetPipsOf == 0) ServerGame.mainServerGame.uiCtrl.UpdateFriendlyPips(packet.num);
+                else ServerGame.mainServerGame.uiCtrl.UpdateEnemyPips(packet.num);
                 //let everyone know
                 outPacket = new Packet(Packet.Command.SetPips, packet.num);
                 outPacketInverted = new Packet(Packet.Command.SetEnemyPips, packet.num);
+                SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 break;
             default:
                 Debug.Log("Invalid command " + packet.command + " to server from " + connectionID);

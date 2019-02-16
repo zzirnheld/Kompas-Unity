@@ -5408,7 +5408,7 @@ MonoBehaviour:
   debugEInputField: {fileID: 1484816972}
   debugSInputField: {fileID: 1547115773}
   debugWInputField: {fileID: 598976412}
-  debugPipsField: {fileID: 0}
+  debugPipsField: {fileID: 485200469}
   friendlyPipsText: {fileID: 1418310388}
   enemyPipsText: {fileID: 1365698564}
   selectedCardNameText: {fileID: 1506310831}
@@ -5938,7 +5938,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1790570692}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1615817255}
+        m_MethodName: DebugUpdatePips
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1790570692

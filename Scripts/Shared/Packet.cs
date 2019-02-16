@@ -64,8 +64,8 @@ public class Packet {
     {
         if (invert)
         {
-            this.x = 7 - x;
-            this.y = 7 - y;
+            this.x = 6 - x;
+            this.y = 6 - y;
         }
         else
         {
@@ -84,8 +84,8 @@ public class Packet {
 
     public void Invert()
     {
-        x = 7 - x;
-        y = 7 - y;
+        x = 6 - x;
+        y = 6 - y;
     }
 
     public void InvertForController(int playerFrom)

@@ -289,9 +289,8 @@ public class UIController : MonoBehaviour {
     {
         if (debugPipsField.text != "")
         {
-            //ClientGame.mainClientGame.FriendlyPips = Int32.Parse(debugPipsField.text);
-            //TODO update if is server
-            throw new NotImplementedException();
+            int toSetPips = Int32.Parse(debugPipsField.text);
+            ClientGame.mainClientGame.clientNetworkCtrl.RequestUpdatePips(toSetPips);
         }
     }
 

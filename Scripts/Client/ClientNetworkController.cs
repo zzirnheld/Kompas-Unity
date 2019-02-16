@@ -162,5 +162,12 @@ public class ClientNetworkController : NetworkController {
         Send(packet, connectionID);
     }
 
+    public void RequestUpdatePips(int num)
+    {
+        Packet packet = new Packet(Packet.Command.SetPips, num);
+        Send(packet, connectionID);
+        Debug.Log("requesting updating pips to " + num);
+    }
+
     #endregion
 }
