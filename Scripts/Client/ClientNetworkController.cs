@@ -31,6 +31,7 @@ public class ClientNetworkController : NetworkController {
                 //yay someone connected to me with the connectionID that was just set
                 Debug.Log("Connected!");
                 connected = true;
+                ClientGame.mainClientGame.uiCtrl.CurrentStateString = "Connected to Server!";
                 break;
             //they've actually sent something
             case NetworkEventType.DataEvent:
@@ -75,6 +76,7 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.mainClientGame.enemyDeckCtrl.AddCard(packet.args, packet.num, 1); //TODO make it always ask for cards from enemy deck
                 break;
             case Packet.Command.Play:
+                Debug.Log("Client ordered to play to " + packet.x + ", " + packet.y);
                 ClientGame.mainClientGame.Play(packet.cardID, packet.x, packet.y);
                 break;
             case Packet.Command.Move:

@@ -30,7 +30,11 @@ public class ServerNetworkController : NetworkController {
                 //add the player. if it's the second player, do i need to tell each player the other is here?
                 if (ServerGame.mainServerGame.AddPlayer(recievedConnectionID) == 2)
                 {
-                    //TODO figure out if this if is necessary
+                    ServerGame.mainServerGame.uiCtrl.CurrentStateString = "Two Players Connected";
+                }
+                else
+                {
+                    ServerGame.mainServerGame.uiCtrl.CurrentStateString = "One Player Connected";
                 }
 
                 break;
@@ -105,6 +109,8 @@ public class ServerNetworkController : NetworkController {
                 if (!ServerGame.mainServerGame.ValidBoardPlay(toPlay, packet.x, packet.y)) return;
                 //play the card here
                 ServerGame.mainServerGame.Play(toPlay, packet.x, packet.y);
+                //re/de-invert the packet so it gets sent back correctly
+                packet.InvertForController(playerIndex);
                 //tell everyone to do it
                 outPacket = new Packet(Packet.Command.Play, toPlay, packet.x, packet.y);
                 outPacketInverted = new Packet(Packet.Command.Play, toPlay, packet.x, packet.y, true);
@@ -117,6 +123,8 @@ public class ServerNetworkController : NetworkController {
                 if (!ServerGame.mainServerGame.ValidMove(toMove, packet.x, packet.y)) return;
                 //play the card here
                 ServerGame.mainServerGame.Move(toMove, packet.x, packet.y);
+                //re/de-invert the packet so it gets sent back correctly
+                packet.InvertForController(playerIndex);
                 //tell everyone to do it
                 outPacket = new Packet(Packet.Command.Move, toMove, packet.x, packet.y);
                 outPacketInverted = new Packet(Packet.Command.Move, toMove, packet.x, packet.y, true);
@@ -165,9 +173,8 @@ public class ServerNetworkController : NetworkController {
                 SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 break;
             case Packet.Command.SetPips:
-                int indexToSetPipsOf = ServerGame.mainServerGame.GetPlayerIndexFromID(connectionID);
-                ServerGame.mainServerGame.Players[indexToSetPipsOf].pips = packet.num;
-                if (indexToSetPipsOf == 0) ServerGame.mainServerGame.uiCtrl.UpdateFriendlyPips(packet.num);
+                ServerGame.mainServerGame.Players[playerIndex].pips = packet.num;
+                if (playerIndex == 0) ServerGame.mainServerGame.uiCtrl.UpdateFriendlyPips(packet.num);
                 else ServerGame.mainServerGame.uiCtrl.UpdateEnemyPips(packet.num);
                 //let everyone know
                 outPacket = new Packet(Packet.Command.SetPips, packet.num);
