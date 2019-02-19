@@ -59,6 +59,7 @@ public class NetworkController : MonoBehaviour {
         hosting = true;
 
         Debug.Log("Hosting on " + socket);
+        Game.mainGame.uiCtrl.CurrentStateString = "Hosting";
     }
 
     #region serialization
