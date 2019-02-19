@@ -1,0 +1,15 @@
+{
+"cardType":65,
+"x":0,
+"y":0,
+"cardName":"Gramr",
+"effText":"I give this character +3W. When your turns start, you can echocast me.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"d":3,
+"subtext":"Sword Augment Warrior",
+"fast":false
+"augments":[]
+}

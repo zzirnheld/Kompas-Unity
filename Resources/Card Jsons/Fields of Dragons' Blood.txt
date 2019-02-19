@@ -1,0 +1,16 @@
+{
+"cardType":83,
+"x":0,
+"y":0,
+"cardName":"Fields of Dragons' Blood",
+"effText":"When a Dragon here gives themselves -XE, gain X pips.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"d":4,
+"subtype":3,
+"subtext":"Terraform radius 1",
+"fast":true
+"augments":[]
+}

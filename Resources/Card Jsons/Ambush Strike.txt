@@ -1,0 +1,16 @@
+{
+"cardType":83,
+"x":0,
+"y":0,
+"cardName":"Ambush Strike",
+"effText":"Cast when a character arrives adjacent to a friendly Warrior wielding a Sword. Give the former -4W. The latter attacks the former.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"d":2,
+"subtype":0,
+"subtext":"Fast Simple",
+"fast":true
+"augments":[]
+}

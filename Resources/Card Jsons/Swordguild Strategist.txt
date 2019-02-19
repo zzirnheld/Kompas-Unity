@@ -1,0 +1,19 @@
+{
+"cardType":67,
+"x":0,
+"y":0,
+"cardName":"Swordguild Strategist",
+"effText":"Once each friendly turn, I can kill a friendly Warrior with XS, then kill a character with S ≤ X.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"n":2,
+"e":7,
+"s":9,
+"w":9,
+"m":2,
+"subtypes":["Swordguild","Warrior"],
+"subtypeText":"Swordguild Warrior",
+"augments":[]
+}

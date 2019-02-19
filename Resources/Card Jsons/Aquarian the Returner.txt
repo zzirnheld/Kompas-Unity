@@ -1,0 +1,19 @@
+{
+"cardType":67,
+"x":0,
+"y":0,
+"cardName":"Aquarian the Returner",
+"effText":"Territorial: When turns end, kill an adjacent friendly Dragon. When I attack, I can give myself -1E to give another Dragon +2E.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"n":1,
+"e":4,
+"s":4,
+"w":5,
+"m":1,
+"subtypes":["Dragon"],
+"subtypeText":"Dragon",
+"augments":[]
+}

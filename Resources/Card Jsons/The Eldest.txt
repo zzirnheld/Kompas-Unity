@@ -1,0 +1,19 @@
+{
+"cardType":67,
+"x":0,
+"y":0,
+"cardName":"The Eldest",
+"effText":"Unique: Limited to 1 per deck. Territorial: When turns end, kill an adjacent friendly Dragon. When I attack, kill my target.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"n":2,
+"e":7,
+"s":9,
+"w":4,
+"m":2,
+"subtypes":["Dragon"],
+"subtypeText":"Dragon",
+"augments":[]
+}

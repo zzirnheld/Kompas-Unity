@@ -1,0 +1,19 @@
+{
+"cardType":67,
+"x":0,
+"y":0,
+"cardName":"Swordguild Quartermaster",
+"effText":"Once each friendly turn, if I'm adjacent to at least 2X Warriors, you can gain X pips.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"n":2,
+"e":7,
+"s":9,
+"w":9,
+"m":2,
+"subtypes":["Swordguild","Warrior"],
+"subtypeText":"Swordguild Warrior",
+"augments":[]
+}

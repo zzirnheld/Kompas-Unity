@@ -1,0 +1,15 @@
+{
+"cardType":65,
+"x":0,
+"y":0,
+"cardName":"Yarawaki-Te",
+"effText":"While equipped, I give my wielder +4W. Instead of attacking, I can give an adjacent character +4E.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"d":4,
+"subtext":"Sword Augment S ≥ 5 Warrior",
+"fast":false
+"augments":[]
+}

@@ -1,0 +1,19 @@
+{
+"cardType":67,
+"x":0,
+"y":0,
+"cardName":"Master of Amber",
+"effText":"Once each friendly turn, if there's X friendly Swords, you can give a character -XEW.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"n":2,
+"e":6,
+"s":6,
+"w":5,
+"m":2,
+"subtypes":["Swordsmaster","Warrior"],
+"subtypeText":"Swordsmaster Warrior",
+"augments":[]
+}

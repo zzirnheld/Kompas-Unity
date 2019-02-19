@@ -1,0 +1,19 @@
+{
+"cardType":67,
+"x":0,
+"y":0,
+"cardName":"Swordguild Trainee",
+"effText":"If I'm adjacent to X Warriors, you can tribute me to decksummon an S ≤ X Swordguild Warrior.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"n":1,
+"e":2,
+"s":2,
+"w":2,
+"m":1,
+"subtypes":["Swordguild","Warrior"],
+"subtypeText":"Swordguild Warrior",
+"augments":[]
+}

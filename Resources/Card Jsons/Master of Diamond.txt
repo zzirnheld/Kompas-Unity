@@ -1,0 +1,19 @@
+{
+"cardType":67,
+"x":0,
+"y":0,
+"cardName":"Master of Diamond",
+"effText":"When a friendly Warrior wielding a Sword(s) dies, you can pip deck-summon a Warrior and discard-apply that Sword(s) on them.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"n":2,
+"e":8,
+"s":7,
+"w":5,
+"m":2,
+"subtypes":["Swordsmaster","Warrior"],
+"subtypeText":"Swordsmaster Warrior",
+"augments":[]
+}

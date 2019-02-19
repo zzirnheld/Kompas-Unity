@@ -1,0 +1,19 @@
+{
+"cardType":67,
+"x":0,
+"y":0,
+"cardName":"Swordmaster",
+"effText":"Once each friendly turn, I can give an adjacent Warrior +2EW.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"n":2,
+"e":5,
+"s":6,
+"w":6,
+"m":2,
+"subtypes":["Swordguild","Warrior"],
+"subtypeText":"Swordguild Warrior",
+"augments":[]
+}

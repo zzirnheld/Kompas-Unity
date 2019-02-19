@@ -1,0 +1,15 @@
+{
+"cardType":65,
+"x":0,
+"y":0,
+"cardName":"Thuan Thien",
+"effText":"Once each round, when this character with X printed W battles, I can give them +XW for the battle.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"d":3,
+"subtext":"Sword Augment Warrior",
+"fast":false
+"augments":[]
+}

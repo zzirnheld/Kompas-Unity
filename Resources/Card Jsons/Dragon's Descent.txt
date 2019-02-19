@@ -1,0 +1,16 @@
+{
+"cardType":83,
+"x":0,
+"y":0,
+"cardName":"Dragon's Descent",
+"effText":"Move a Dragon 3 spaces.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"d":2,
+"subtype":0,
+"subtext":"Fast Simple",
+"fast":true
+"augments":[]
+}

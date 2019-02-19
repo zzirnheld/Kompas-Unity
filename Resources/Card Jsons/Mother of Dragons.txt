@@ -1,0 +1,19 @@
+{
+"cardType":67,
+"x":0,
+"y":0,
+"cardName":"Mother of Dragons",
+"effText":"Once each friendly turn, you can hand-reshuffle a Dragon to draw 2.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"n":1,
+"e":0,
+"s":9,
+"w":6,
+"m":1,
+"subtypes":[],
+"subtypeText":"",
+"augments":[]
+}

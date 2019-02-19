@@ -1,0 +1,19 @@
+{
+"cardType":67,
+"x":0,
+"y":0,
+"cardName":"Masamune",
+"effText":"Once each round, you can pip hand-apply a Sword for half cost. This turn, it can't be destroyed",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"n":1,
+"e":8,
+"s":7,
+"w":5,
+"m":1,
+"subtypes":["Swordsmaster","Craftsman"],
+"subtypeText":"Swordsmaster Craftsman",
+"augments":[]
+}

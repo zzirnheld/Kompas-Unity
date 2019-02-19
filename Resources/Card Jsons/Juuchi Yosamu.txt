@@ -1,0 +1,15 @@
+{
+"cardType":65,
+"x":0,
+"y":0,
+"cardName":"Juuchi Yosamu",
+"effText":"When this character duels another, I give the target -4E.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"d":4,
+"subtext":"Sword Augment Warrior",
+"fast":false
+"augments":[]
+}

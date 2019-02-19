@@ -1,0 +1,15 @@
+{
+"cardType":65,
+"x":0,
+"y":0,
+"cardName":"Sumarbrandr",
+"effText":"When this character attacks, I give th target -1ESW and this character +1ESW.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"d":3,
+"subtext":"Sword Augment Warrior",
+"fast":false
+"augments":[]
+}

@@ -1,0 +1,15 @@
+{
+"cardType":65,
+"x":0,
+"y":0,
+"cardName":"Kusanagi",
+"effText":"When this character duels a character in front of them, I can swap their places and give the enemy -5W.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"d":3,
+"subtext":"Sword Augment Warrior",
+"fast":false
+"augments":[]
+}

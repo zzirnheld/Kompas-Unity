@@ -1,0 +1,16 @@
+{
+"cardType":83,
+"x":0,
+"y":0,
+"cardName":"Damascus-Steel Forge",
+"effText":"The first time each turn you can a Sword on a character here, I can give them +3W.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"d":2,
+"subtype":3,
+"subtext":"Terraform 0",
+"fast":true
+"augments":[]
+}

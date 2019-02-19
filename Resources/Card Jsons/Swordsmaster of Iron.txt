@@ -6,20 +6,14 @@
 "effText":"Once each turn, you can give an adjacent Warrior +1W.",
 "location":2,
 "controller":0,
-"primarySerializeableEffect":
-	[{
-	"effectType":"TargetCharEffect",
-	"count":"",
-	"restrictions":[],
-	"values":[]
-	}],
+"primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "n":2,
 "e":2,
 "s":3,
 "w":3,
 "m":2,
-"subtypes":["Swordsmaster","Warrior"],
-"subtypeText":"Swordsmaster Warrior",
+"subtypes":["Swordguild","Warrior"],
+"subtypeText":"Swordguild Warrior",
 "augments":[]
 }

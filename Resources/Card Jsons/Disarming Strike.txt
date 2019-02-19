@@ -1,0 +1,16 @@
+{
+"cardType":83,
+"x":0,
+"y":0,
+"cardName":"Disarming Strike",
+"effText":"Cast when a friendly Warrior wielding a Sword attacks. I give their target -5W.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"d":1,
+"subtype":0,
+"subtext":"Fast Simple",
+"fast":true
+"augments":[]
+}

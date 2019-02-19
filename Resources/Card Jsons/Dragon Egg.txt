@@ -1,0 +1,19 @@
+{
+"cardType":67,
+"x":0,
+"y":0,
+"cardName":"Dragon Egg",
+"effText":"After I'm summoned, delay 2 turns, then tribute me and deck-summon a Dragon.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"n":0,
+"e":2,
+"s":2,
+"w":0,
+"m":0,
+"subtypes":["Dragon"],
+"subtypeText":"Dragon",
+"augments":[]
+}
