@@ -1,0 +1,19 @@
+{
+"cardType":67,
+"x":0,
+"y":0,
+"cardName":"Mage of the Discotron",
+"effText":"Once each turn, you can hand-summon a character with S < 3.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"n":2,
+"e":5,
+"s":7,
+"w":7,
+"m":2,
+"subtypes":["Mage"],
+"subtypeText":"Mage",
+"augments":[]
+}

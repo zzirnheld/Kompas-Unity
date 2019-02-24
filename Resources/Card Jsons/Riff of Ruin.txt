@@ -1,0 +1,15 @@
+{
+"cardType":83,
+"x":0,
+"y":0,
+"cardName":"Riff of Ruin",
+"effText":"Our Song: When I'm cast, dispel all friendly Themes. Draw 1. When I'm cast, annihilate a character. When I'm dispelled, put them back.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"d":3,
+"subtype":1,
+"subtext":"Theme Enchant",
+"fast":false
+}

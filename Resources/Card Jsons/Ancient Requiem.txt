@@ -1,0 +1,15 @@
+{
+"cardType":83,
+"x":0,
+"y":0,
+"cardName":"Ancient Requiem",
+"effText":"Our Song: When I'm cast, dispel all friendly Themes. Draw 1. You can tribute a Bard to pipe revive another Bard for half cost.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"d":2,
+"subtype":1,
+"subtext":"Theme Enchant",
+"fast":false
+}

@@ -1,0 +1,13 @@
+{
+	"cardType":67,
+	"cardName":"Bard of the West",
+	"effText":"While a CX Theme is active, give me +XW.",
+	"primarySerializeableEffect":[],
+	"secondarySerializeableEffect":[],
+	"n":2,
+	"e":4,
+	"s":4,
+	"w":2,
+	"subtypes":["Bard", "Mage"],
+	"subtypeText":"Bard Mage",
+}

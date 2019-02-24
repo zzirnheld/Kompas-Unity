@@ -1,16 +1,11 @@
 {
 "cardType":83,
-"x":0,
-"y":0,
 "cardName":"Runesaga",
 "effText":"Give a summoned Runer +25ESW. Handcast any number of Runes.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "d":25,
 "subtype":0,
 "subtext":"Runer Simple",
 "fast":false
-"augments":[]
 }

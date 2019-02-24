@@ -1,0 +1,11 @@
+{
+"cardType":83,
+"cardName":"Beat Drop",
+"effText":"Dispel a friendly Theme. Deckcast a Theme.",
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"d":1,
+"subtype":0,
+"subtext":"Fast Simple Musical Element",
+"fast":true
+}

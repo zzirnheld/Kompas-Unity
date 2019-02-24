@@ -1,0 +1,11 @@
+{
+"cardType":83,
+"cardName":"Lyrical Introduction",
+"effText":"Search your deck for a Bard and a Musical Element.",
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"d":1,
+"subtype":0,
+"subtext":"Simple Musical Element",
+"fast":false
+}
