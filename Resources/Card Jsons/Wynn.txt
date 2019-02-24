@@ -2,15 +2,15 @@
 "cardType":83,
 "x":0,
 "y":0,
-"cardName":"Haglaz",
-"effText":"Runic: Can't be cast normally.",
+"cardName":"Wynn",
+"effText":"Runic: Can't be cast normally. Dispel a spell",
 "location":2,
 "controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
-"d":2,
-"subtype":3,
-"subtext":"Terraform 0",
-"fast":true
+"d":3,
+"subtype":0,
+"subtext":"Rune Simple",
+"fast":false
 "augments":[]
 }

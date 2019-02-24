@@ -1,0 +1,19 @@
+{
+"cardType":67,
+"x":0,
+"y":0,
+"cardName":"Runespeaker",
+"effText":"Once each friendly turn, you can hand-reshuffle a Rune to draw 2.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"n":2,
+"e":4,
+"s":5,
+"w":4,
+"m":2,
+"subtypes":["Runer", "Mage"],
+"subtypeText":"Runer Mage",
+"augments":[]
+}

@@ -1,0 +1,19 @@
+{
+"cardType":67,
+"x":0,
+"y":0,
+"cardName":"Runechanneler",
+"effText":"Once each friendly turn, you can reshuffle X of your discarded Runes to hand-cast a CX Rune.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"n":2,
+"e":4,
+"s":6,
+"w":4,
+"m":2,
+"subtypes":["Runer", "Mage"],
+"subtypeText":"Runer Mage",
+"augments":[]
+}

@@ -1,0 +1,19 @@
+{
+"cardType":67,
+"x":0,
+"y":0,
+"cardName":"Runewriter",
+"effText":"Once each friendly turn, you can hand-reshuffle a Rune to search your deck for a Runer.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"n":1,
+"e":3,
+"s":3,
+"w":3,
+"m":1,
+"subtypes":["Runer", "Mage"],
+"subtypeText":"Runer Mage",
+"augments":[]
+}

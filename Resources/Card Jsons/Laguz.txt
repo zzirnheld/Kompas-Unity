@@ -1,0 +1,16 @@
+{
+"cardType":83,
+"x":0,
+"y":0,
+"cardName":"Laguz",
+"effText":"Runic: Can't be cast normally. When a character moves themselves adjacent to me, you can move them 1 space.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"d":2,
+"subtype":3,
+"subtext":"Terraform radius 0",
+"fast":false
+"augments":[]
+}

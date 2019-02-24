@@ -1,0 +1,16 @@
+{
+"cardType":83,
+"x":0,
+"y":0,
+"cardName":"Naudiz",
+"effText":"Runic: Can't be cast normally. I give all enemy characters -2E.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"d":5,
+"subtype":0,
+"subtext":"Rune Simple",
+"fast":false
+"augments":[]
+}

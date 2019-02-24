@@ -1,0 +1,19 @@
+{
+"cardType":67,
+"x":0,
+"y":0,
+"cardName":"Runeloremaster",
+"effText":"Once each friendly turn, you can pip hand-cast two Runes.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"n":1,
+"e":5,
+"s":7,
+"w":7,
+"m":1,
+"subtypes":["Runer", "Mage"],
+"subtypeText":"Runer Mage",
+"augments":[]
+}

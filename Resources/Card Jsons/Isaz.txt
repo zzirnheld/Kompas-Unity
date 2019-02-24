@@ -1,0 +1,16 @@
+{
+"cardType":83,
+"x":0,
+"y":0,
+"cardName":"Isaz",
+"effText":"Runic: Can't be cast normally. I set any adjacent characters' N to 0.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"d":2,
+"subtype":0,
+"subtext":"Rune Simple",
+"fast":false
+"augments":[]
+}

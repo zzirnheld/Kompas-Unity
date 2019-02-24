@@ -2,15 +2,15 @@
 "cardType":83,
 "x":0,
 "y":0,
-"cardName":"Haglaz",
-"effText":"Runic: Can't be cast normally.",
+"cardName":"Kaunan",
+"effText":"Runic: Can't be cast normally. I give a character -3EW.",
 "location":2,
 "controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "d":2,
-"subtype":3,
-"subtext":"Terraform 0",
-"fast":true
+"subtype":0,
+"subtext":"Rune Simple",
+"fast":false
 "augments":[]
 }

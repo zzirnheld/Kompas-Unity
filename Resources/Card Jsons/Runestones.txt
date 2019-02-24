@@ -1,0 +1,16 @@
+{
+"cardType":83,
+"x":0,
+"y":0,
+"cardName":"Runebinding",
+"effText":"Once each turn, when you cast a Rune, you can search your deck for a Rune.",
+"location":2,
+"controller":0,
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"d":2,
+"subtype":1,
+"subtext":"Runer Enchant",
+"fast":false
+"augments":[]
+}

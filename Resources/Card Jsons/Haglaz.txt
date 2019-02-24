@@ -3,14 +3,14 @@
 "x":0,
 "y":0,
 "cardName":"Haglaz",
-"effText":"Runic: Can't be cast normally.",
+"effText":"Runic: Can't be cast normally. When a turn ends, I give all characters here -1E.",
 "location":2,
 "controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
-"d":2,
+"d":4,
 "subtype":3,
-"subtext":"Terraform 0",
-"fast":true
+"subtext":"Terraform 1",
+"fast":false
 "augments":[]
 }
