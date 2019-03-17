@@ -109,35 +109,35 @@ public class ClientNetworkController : NetworkController {
     #region Request Actions
     public void RequestPlay(Card card, int toX, int toY)
     {
-        card.PutBack();
+        //card.PutBack();
         Packet packet = new Packet(Packet.Command.Play, card, toX, toY);
         Send(packet, connectionID);
     }
 
     public void RequestMove(Card card, int toX, int toY)
     {
-        card.PutBack();
+        //card.PutBack();
         Packet packet = new Packet(Packet.Command.Move, card, toX, toY);
         Send(packet, connectionID);
     }
 
     public void RequestTopdeck(Card card)
     {
-        card.PutBack();
+        //card.PutBack();
         Packet packet = new Packet(Packet.Command.Topdeck, card);
         Send(packet, connectionID);
     }
 
     public void RequestDiscard(Card card)
     {
-        card.PutBack();
+        //card.PutBack();
         Packet packet = new Packet(Packet.Command.Discard, card);
         Send(packet, connectionID);
     }
 
     public void RequestRehand(Card card)
     {
-        card.PutBack();
+        //card.PutBack();
         Packet packet = new Packet(Packet.Command.Rehand, card);
         Send(packet, connectionID);
     }

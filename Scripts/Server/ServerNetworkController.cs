@@ -106,28 +106,42 @@ public class ServerNetworkController : NetworkController {
                 //get the card to play
                 Card toPlay = ServerGame.mainServerGame.GetCardFromID(packet.cardID);
                 //if it's not a valid place to do, return
-                if (!ServerGame.mainServerGame.ValidBoardPlay(toPlay, packet.x, packet.y)) return;
-                //play the card here
-                ServerGame.mainServerGame.Play(toPlay, packet.x, packet.y);
-                //re/de-invert the packet so it gets sent back correctly
-                packet.InvertForController(playerIndex);
-                //tell everyone to do it
-                outPacket = new Packet(Packet.Command.Play, toPlay, packet.x, packet.y);
-                outPacketInverted = new Packet(Packet.Command.Play, toPlay, packet.x, packet.y, true);
+                if (ServerGame.mainServerGame.ValidBoardPlay(toPlay, packet.x, packet.y))
+                {
+                    //play the card here
+                    ServerGame.mainServerGame.Play(toPlay, packet.x, packet.y);
+                    //re/de-invert the packet so it gets sent back correctly
+                    packet.InvertForController(playerIndex);
+                    //tell everyone to do it
+                    outPacket = new Packet(Packet.Command.Play, toPlay, packet.x, packet.y);
+                    outPacketInverted = new Packet(Packet.Command.Play, toPlay, packet.x, packet.y, true);
+                }
+                else
+                {
+                    outPacket = new Packet(Packet.Command.PutBack);
+                    outPacketInverted = null;
+                }
                 SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 break;
             case Packet.Command.Move:
                 //get the card to move
                 Card toMove = ServerGame.mainServerGame.GetCardFromID(packet.cardID);
                 //if it's not a valid place to do, return
-                if (!ServerGame.mainServerGame.ValidMove(toMove, packet.x, packet.y)) return;
-                //play the card here
-                ServerGame.mainServerGame.Move(toMove, packet.x, packet.y);
-                //re/de-invert the packet so it gets sent back correctly
-                packet.InvertForController(playerIndex);
-                //tell everyone to do it
-                outPacket = new Packet(Packet.Command.Move, toMove, packet.x, packet.y);
-                outPacketInverted = new Packet(Packet.Command.Move, toMove, packet.x, packet.y, true);
+                if (ServerGame.mainServerGame.ValidMove(toMove, packet.x, packet.y))
+                {
+                    //play the card here
+                    ServerGame.mainServerGame.Move(toMove, packet.x, packet.y);
+                    //re/de-invert the packet so it gets sent back correctly
+                    packet.InvertForController(playerIndex);
+                    //tell everyone to do it
+                    outPacket = new Packet(Packet.Command.Move, toMove, packet.x, packet.y);
+                    outPacketInverted = new Packet(Packet.Command.Move, toMove, packet.x, packet.y, true);
+                }
+                else
+                {
+                    outPacket = new Packet(Packet.Command.PutBack);
+                    outPacketInverted = null;
+                }
                 SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 break;
             case Packet.Command.Topdeck:
