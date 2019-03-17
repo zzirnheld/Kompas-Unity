@@ -277,8 +277,21 @@ public abstract class Card : KompasObject {
          * so we change the local x and y. the z coordinate also therefore needs to be negative
          * to show the card above the game board on the screen. */
         transform.localPosition = new Vector3(GridIndexToPos(toX), GridIndexToPos(toY), -0.1f);
-        if (owner == 0) transform.localEulerAngles = Vector3.zero;
-        else transform.localEulerAngles = new Vector3(0, 0, 180);
+        ChangeController(owner);
+        //if (owner == 0) transform.localEulerAngles = Vector3.zero;
+        //else transform.localEulerAngles = new Vector3(0, 0, 180);
+    }
+
+    public void PutBack()
+    {
+        if (location == CardLocation.Deck)
+            gameObject.SetActive(false);
+        else if (location == CardLocation.Discard)
+            transform.localPosition = new Vector3(0, 0, (float) Game.mainGame.Players[owner].discardCtrl.IndexOf(this) / -60f);
+        else if (location == CardLocation.Field)
+            transform.localPosition = new Vector3(GridIndexToPos(boardX), GridIndexToPos(boardY), -0.1f);
+        else if (location == CardLocation.Hand)
+            Game.mainGame.Players[owner].handCtrl.SpreadOutCards();
     }
 
     //interaction methods
