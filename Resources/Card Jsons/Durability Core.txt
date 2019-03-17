@@ -1,0 +1,10 @@
+{
+"cardType":65,
+"cardName":"Durability Core",
+"effText":"While equipped, activate this character and give them +5E.",
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"d":3,
+"subtext":"Golem Core Augment",
+"fast":false
+}

@@ -1,0 +1,13 @@
+{
+	"cardType":67,
+	"cardName":"Metal Golem",
+	"effText":"Golem: While I'm inactive, I can't attack or move. When I'm activated, I move an enemy their set two characters' N to 0. They don't regain N for a round.",
+	"primarySerializeableEffect":[],
+	"secondarySerializeableEffect":[],
+	"n":1,
+	"e":6,
+	"s":5,
+	"w":6,
+	"subtypes":["Golem"],
+	"subtypeText":"Golem",
+}

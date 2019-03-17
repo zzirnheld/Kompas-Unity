@@ -1,0 +1,9 @@
+{
+"cardType":83,
+"cardName":"Slight Golemodifications",
+"effText":"Tribute an SX Golem. Hand-summon or revive a Golem with S < X and activate it.",
+"d":2,
+"subtype":0,
+"subtext":"Fast Simple",
+"fast":true
+}

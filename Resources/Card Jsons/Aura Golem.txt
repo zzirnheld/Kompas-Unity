@@ -1,0 +1,13 @@
+{
+	"cardType":67,
+	"cardName":"Aura Golem",
+	"effText":"Golem: While I'm inactive, I can't attack or move. When I'm activated, look at an enemy hand and discard a card from it.",
+	"primarySerializeableEffect":[],
+	"secondarySerializeableEffect":[],
+	"n":1,
+	"e":3,
+	"s":3,
+	"w":3,
+	"subtypes":["Golem"],
+	"subtypeText":"Golem",
+}

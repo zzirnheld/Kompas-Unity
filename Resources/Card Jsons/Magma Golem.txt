@@ -1,0 +1,13 @@
+{
+	"cardType":67,
+	"cardName":"Magma Golem",
+	"effText":"Golem: While I'm inactive, I can't attack or move. When I'm activated, I give all adjacent characters -2E.",
+	"primarySerializeableEffect":[],
+	"secondarySerializeableEffect":[],
+	"n":2,
+	"e":4,
+	"s":4,
+	"w":4,
+	"subtypes":["Golem"],
+	"subtypeText":"Golem",
+}

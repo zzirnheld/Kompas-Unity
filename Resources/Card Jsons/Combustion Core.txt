@@ -1,0 +1,10 @@
+{
+"cardType":65,
+"cardName":"Combustion Core",
+"effText":"Activate this character during enemy turns. When your turn starts, pay one pip or dispel me.",
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"d":3,
+"subtext":"Golem Core Augment",
+"fast":false
+}

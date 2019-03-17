@@ -1,0 +1,13 @@
+{
+	"cardType":67,
+	"cardName":"Clay Golem",
+	"effText":"Golem: While I'm inactive, I can't attack or move. When I'm activated, tribute me, pay 2 pips, and deck-summon a Golem.",
+	"primarySerializeableEffect":[],
+	"secondarySerializeableEffect":[],
+	"n":1,
+	"e":2,
+	"s":2,
+	"w":2,
+	"subtypes":["Golem"],
+	"subtypeText":"Golem",
+}

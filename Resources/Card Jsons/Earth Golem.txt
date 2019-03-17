@@ -1,0 +1,13 @@
+{
+	"cardType":67,
+	"cardName":"Earth Golem",
+	"effText":"Golem: While I'm inactive, I can't attack or move. When I'm activated, I give a character ±1ESW.",
+	"primarySerializeableEffect":[],
+	"secondarySerializeableEffect":[],
+	"n":2,
+	"e":5,
+	"s":4,
+	"w":4,
+	"subtypes":["Golem"],
+	"subtypeText":"Golem",
+}

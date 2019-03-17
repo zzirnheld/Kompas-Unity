@@ -1,0 +1,12 @@
+{
+"cardType":83,
+"cardName":"Golem Workshop",
+"effText":"Must be cast adjacent to a Golem. The first Golem you summon here each turn costs 1 less.",
+"primarySerializeableEffect":[],
+"secondarySerializeableEffect":[],
+"d":3,
+"subtype":3,
+"subtext":"Terraform radius 1",
+"fast":false
+"augments":[]
+}

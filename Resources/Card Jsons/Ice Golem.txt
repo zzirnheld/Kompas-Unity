@@ -1,0 +1,13 @@
+{
+	"cardType":67,
+	"cardName":"Ice Golem",
+	"effText":"Golem: While I'm inactive, I can't attack or move. When I'm activated, I negate a character for the round.",
+	"primarySerializeableEffect":[],
+	"secondarySerializeableEffect":[],
+	"n":2,
+	"e":2,
+	"s":3,
+	"w":4,
+	"subtypes":["Golem"],
+	"subtypeText":"Golem",
+}
