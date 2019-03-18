@@ -12,7 +12,7 @@ using UdpCNetworkDriver = Unity.Networking.Transport.BasicNetworkDriver<Unity.Ne
 
 public class NetworkController : MonoBehaviour {
 
-    protected const int BUFFER_SIZE = 1024;
+    protected const int BUFFER_SIZE = sizeof(int) * 5 + sizeof(Packet.Command);
     /*
     protected Vector3 absCardScale = new Vector3(1f / 9f, 1f / 9f, 1f / 9f);
 

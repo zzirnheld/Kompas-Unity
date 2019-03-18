@@ -19,13 +19,31 @@ public class Game : MonoBehaviour {
     //game objects
     public GameObject boardObject;
 
-    
+    //list of cards
+    public static List<string> CardNames;
+    public static Dictionary<string, int> CardNameIndices;
+
     public int turnPlayer;
     protected Player[] players = new Player[2];
     public Player[] Players { get { return players; } }
 
     //game data
     public Card[] cards = new Card[50]; //tODO bETTER sOLUTION
+
+    private void Start()
+    {
+        CardNames = new List<string>();
+        CardNameIndices = new Dictionary<string, int>();
+        string cardListPath = "Card Jsons/Card List";
+        string cardList = Resources.Load<TextAsset>(cardListPath).text;
+        string[] cardNames = cardList.Split('\n');
+        
+        for(int i = 0; i < cardNames.Length; i++)
+        {
+            CardNames.Add(cardNames[i]);
+            CardNameIndices.Add(cardNames[i], i);
+        }
+    }
 
     private void Update()
     {

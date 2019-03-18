@@ -19,35 +19,38 @@ public class Packet {
     public SerializableAugCard serializedAug;*/
     public int cardID;
 
-    public string args;
-    public int x;
-    public int y;
-    public int n;
-    public int e;
-    public int s;
-    public int w;
-    public int num;
-    public char cardType;
+    public int[] args;
+
+    //public string args;
+    //public int x;
+    //public int y;
+    //public int n;
+    //public int e;
+    //public int s;
+    //public int w;
+    //public int num;
+    //public char cardType;
 
     public Packet(Command command)
     {
         this.command = command;
+        args = new int[4];
     }
 
     //used only for adding cards to deck
     public Packet(Command command, string cardName) : this(command)
     {
-        args = cardName;
+        args[0] = Game.CardNameIndices[cardName];
     }
 
     public Packet(Command command, int num) : this(command)
     {
-        this.num = num;
+        args[0] = num;
     }
 
     public Packet(Command command, string cardName, int num) : this(command, cardName)
     {
-        this.num = num;
+        args[0] = num;
     }
 
     public Packet(Command command, Card card) : this(command)
@@ -57,35 +60,35 @@ public class Packet {
 
     public Packet(Command command, Card card, int num) : this(command, card)
     {
-        this.num = num;
+        args[0] = num;
     }
 
     public Packet(Command command, Card card, int x, int y, bool invert = false) : this(command, card)
     {
         if (invert)
         {
-            this.x = 6 - x;
-            this.y = 6 - y;
+            args[0] = 6 - x;
+            args[1] = 6 - y;
         }
         else
         {
-            this.x = x;
-            this.y = y;
+            args[0] = x;
+            args[1] = y;
         }
     }
 
     public Packet(Command command, Card card, int n, int e, int s, int w) : this(command, card)
     {
-        this.n = n;
-        this.e = e;
-        this.s = s;
-        this.w = w;
+        args[0] = n;
+        args[1] = e;
+        args[2] = s;
+        args[3] = w;
     }
 
     public void Invert()
     {
-        x = 6 - x;
-        y = 6 - y;
+        args[0] = 6 - args[0];
+        args[1] = 6 - args[1];
     }
 
     public void InvertForController(int playerFrom)
