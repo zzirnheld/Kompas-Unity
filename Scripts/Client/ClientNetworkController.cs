@@ -1,12 +1,72 @@
 ﻿using System;
+using System.Net;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
+using Unity.Networking.Transport;
+using NetworkConnection = Unity.Networking.Transport.NetworkConnection;
+using UdpCNetworkDriver = Unity.Networking.Transport.BasicNetworkDriver<Unity.Networking.Transport.IPv4UDPSocket>;
+
 
 public class ClientNetworkController : NetworkController {
-    
-    private int connectionID;
+
+    public UdpCNetworkDriver mDriver;
+    public NetworkConnection mConnection;
+    public bool Done;
+
+    void Start()
+    {
+        mDriver = new UdpCNetworkDriver(new INetworkParameter[0]);
+        mConnection = default(NetworkConnection);
+
+        //this code is the connection code. dont do until client hits connect button?
+        var endpoint = new IPEndPoint(IPAddress.Loopback, 8888);
+        mConnection = mDriver.Connect(endpoint);
+    }
+
+    private void OnDestroy()
+    {
+        mDriver.Dispose();
+    }
+
+    void Update()
+    {
+        mDriver.ScheduleUpdate().Complete();
+        if (!mConnection.IsCreated)
+        {
+            if (!Done) Debug.Log("Something went wrong in connection");
+            else return;
+        }
+
+        DataStreamReader reader;
+        NetworkEvent.Type cmd;
+        while((cmd = mConnection.PopEvent(mDriver, out reader)) != NetworkEvent.Type.Empty)
+        {
+            if(cmd == NetworkEvent.Type.Connect)
+            {
+                //connected to server
+                Debug.Log("connected to server");
+                //how to send stuff:
+                /*using (var writer = new DataStreamWriter(4, Unity.Collections.Allocator.Temp))
+                {
+                    writer.Write(byte array, length);
+                    mConnection.Send(mDriver, writer);
+                }*/
+            }
+            if (cmd == NetworkEvent.Type.Data)
+            {
+                var readerCtxt = default(DataStreamReader.Context);
+                byte[] packetBuffer = reader.ReadBytesAsArray(ref readerCtxt, BUFFER_SIZE);
+            }
+            else if (cmd == NetworkEvent.Type.Disconnect)
+            {
+                Debug.Log("Client disconnected from server");
+                mConnection = default(NetworkConnection); //default gets the default value of whatever type
+            }
+        }
+    }
+
+    /*private int connectionID;
     public int SOCKET = 0; //TODo make something else so can test 2 clients
     public const int SERVER_PORT = 8888;
     public string ip;
@@ -176,5 +236,5 @@ public class ClientNetworkController : NetworkController {
         Debug.Log("requesting updating pips to " + num);
     }
 
-    #endregion
+    #endregion*/
 }

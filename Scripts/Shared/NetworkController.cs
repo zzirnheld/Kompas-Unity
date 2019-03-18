@@ -1,15 +1,19 @@
 ﻿using System;
+using System.Net;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
-using UnityEngine.Networking;
+using Unity.Networking.Transport;
+using NetworkConnection = Unity.Networking.Transport.NetworkConnection;
+using UdpCNetworkDriver = Unity.Networking.Transport.BasicNetworkDriver<Unity.Networking.Transport.IPv4UDPSocket>;
 
 public class NetworkController : MonoBehaviour {
 
     protected const int BUFFER_SIZE = 1024;
+    /*
     protected Vector3 absCardScale = new Vector3(1f / 9f, 1f / 9f, 1f / 9f);
 
     //flags
@@ -103,30 +107,6 @@ public class NetworkController : MonoBehaviour {
         return null;
     }
     #endregion serialization
-    
-    /*public Card GetCardFromPacket(Packet packet)
-    {
-        Card toReturn = null;
-        switch (packet.cardType)
-        {
-            case 'C':
-                toReturn = Instantiate(characterPrefab).GetComponent<CharacterCard>();
-                (toReturn as CharacterCard).SetInfo(packet.serializedChar);
-                break;
-            case 'S':
-                toReturn = Instantiate(spellPrefab).GetComponent<SpellCard>();
-                (toReturn as SpellCard).SetInfo(packet.serializedSpell);
-                break;
-            case 'A':
-                toReturn = Instantiate(augmentPrefab).GetComponent<AugmentCard>();
-                (toReturn as AugmentCard).SetInfo(packet.serializedAug);
-                break;
-            default:
-                Debug.Log("AddToDiscard recieved unknown type in packet.cardType");
-                break;
-        }
-        return toReturn;
-    }*/
 
     protected void RemoveCard(SerializableCard toRemove)
     {
@@ -154,17 +134,6 @@ public class NetworkController : MonoBehaviour {
         }
     }
 
-    /*public SerializableCard GetSerializableCardFromPacket(Packet packet)
-    {
-        switch (packet.cardType)
-        {
-            case 'C': return packet.serializedChar;
-            case 'S': return packet.serializedSpell;
-            case 'A': return packet.serializedAug;
-            default: return null;
-        }
-    }*/
-
     /// <summary>
     /// Sends the packet to the other computer.
     /// </summary>
@@ -173,6 +142,6 @@ public class NetworkController : MonoBehaviour {
         if (!connected) return;
         byte[] arr = Serialize(packet);
         NetworkTransport.Send(hostID, connectionID, channelID, arr, arr.Length, out error);
-    }
+    }*/
 
 }

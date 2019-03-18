@@ -1,11 +1,87 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿//using System.Collections;
+//using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
-using UnityEngine.Networking;
+using Unity.Collections;
+using Unity.Networking.Transport;
+using NetworkConnection = Unity.Networking.Transport.NetworkConnection;
+using UdpCNetworkDriver = Unity.Networking.Transport.BasicNetworkDriver<Unity.Networking.Transport.IPv4UDPSocket>;
+
 
 public class ServerNetworkController : NetworkController {
 
-    private int recievedConnectionID; //the connection id that is recieved with the network transport layer packet
+    public UdpCNetworkDriver mDriver;
+    public NativeList<NetworkConnection> mConnections;
+
+    void Start()
+    {
+        mDriver = new UdpCNetworkDriver(new INetworkParameter[0]);
+        if (mDriver.Bind(new IPEndPoint(IPAddress.Any, 8888)) != 0) Debug.Log("Failed to bind to port 8888");
+        else mDriver.Listen();
+
+        mConnections = new NativeList<NetworkConnection>(16, Allocator.Persistent);
+    }
+
+    void OnDestroy()
+    {
+        mDriver.Dispose();
+        mConnections.Dispose();
+    }
+
+    void Update()
+    {
+        mDriver.ScheduleUpdate().Complete();
+
+        //remove dead connections
+        for(int i = 0; i < mConnections.Length; i++)
+        {
+            if (!mConnections[i].IsCreated)
+            {
+                mConnections.RemoveAtSwapBack(i);
+                i--;
+            }
+        }
+
+        //add any and all new connections to accept
+        NetworkConnection c;
+        while((c = mDriver.Accept()) != default(NetworkConnection))
+        {
+            mConnections.Add(c);
+            Debug.Log("Accepted connection");
+        }
+
+        //query driver for events
+        DataStreamReader reader;
+        //loop through each connection
+        for(int i = 0; i < mConnections.Length; i++)
+        {
+            //if the connection doesn't exist, skip to the next connection
+            if (!mConnections[i].IsCreated) continue;
+
+            NetworkEvent.Type cmd;
+            //for each event for this connection (until you get an empty one), do stuff
+            while((cmd = mDriver.PopEventForConnection(mConnections[i], out reader)) != NetworkEvent.Type.Empty)
+            {
+                if (cmd == NetworkEvent.Type.Data) {
+                    var readerCtxt = default(DataStreamReader.Context);
+                    byte[] packetBuffer = reader.ReadBytesAsArray(ref readerCtxt, BUFFER_SIZE);
+
+                    /*using (var writer = new DataStreamWriter(4, Allocator.Temp)) //make the number large enough to contain entire byte array to be sent
+                    {
+                        writer.Write(byte array, length of array or leave out);
+                        mDriver.Send(mConnections[i], writer);
+                    }*/
+                }
+                else if(cmd == NetworkEvent.Type.Disconnect)
+                {
+                    Debug.Log("Client disconnected from server");
+                    mConnections[i] = default(NetworkConnection); //default gets the default value of whatever type
+                }
+            }
+        }
+    }
+
+    /*private int recievedConnectionID; //the connection id that is recieved with the network transport layer packet
 
     void Update()
     {
@@ -199,5 +275,5 @@ public class ServerNetworkController : NetworkController {
                 Debug.Log("Invalid command " + packet.command + " to server from " + connectionID);
                 break;
         }
-    }
+    }*/
 }
