@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NetworkConnection = Unity.Networking.Transport.NetworkConnection;
 
 public class Player {
 
@@ -20,19 +21,19 @@ public class Player {
     public GameObject deckObject;
     public GameObject discardObject;
     public GameObject handObject;
-    
-    private int connectionID;
+
+    private NetworkConnection connectionID;
 
     //getters and setters
     //game mechanics data
     //other game data 
 
-    public int ConnectionID
+    public NetworkConnection ConnectionID
     {
         get { return connectionID; }
     }
 
-    public Player(int connectionID, int index)
+    public Player(NetworkConnection connectionID, int index)
     {
         this.connectionID = connectionID;
         this.index = index;

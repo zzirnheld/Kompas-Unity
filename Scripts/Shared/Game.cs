@@ -28,10 +28,13 @@ public class Game : MonoBehaviour {
     public Player[] Players { get { return players; } }
 
     //game data
-    public Card[] cards = new Card[50]; //tODO bETTER sOLUTION
+    //public Card[] cards = new Card[50]; //tODO bETTER sOLUTION
+    //public List<Card> cards;
+    public Dictionary<int, Card> cards;
 
     private void Start()
     {
+        cards = new Dictionary<int, Card>();
         CardNames = new List<string>();
         CardNameIndices = new Dictionary<string, int>();
         string cardListPath = "Card Jsons/Card List";
@@ -65,7 +68,7 @@ public class Game : MonoBehaviour {
 
     public Card GetCardFromID(int id)
     {
-        if (id > cards.Length) return null;
+        if (id > cards.Count) return null;
 
         return cards[id];
     }

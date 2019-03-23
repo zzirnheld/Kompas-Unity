@@ -20,6 +20,15 @@ public class Packet {
     public int cardID;
 
     public int[] args;
+    public string CardName { get { return Game.CardNames[args[0]]; } }
+    public int CardIDToBe { get { return args[0]; } }
+    public int Pips { get { return args[0]; } }
+    public int X { get { return args[0]; } }
+    public int Y { get { return args[1]; } }
+    public int N { get { return args[0]; } }
+    public int E { get { return args[1]; } }
+    public int S { get { return args[2]; } }
+    public int W { get { return args[3]; } }
 
     //public string args;
     //public int x;
@@ -40,7 +49,7 @@ public class Packet {
     //used only for adding cards to deck
     public Packet(Command command, string cardName) : this(command)
     {
-        args[0] = Game.CardNameIndices[cardName];
+        args[1] = Game.CardNameIndices[cardName];
     }
 
     public Packet(Command command, int num) : this(command)
@@ -55,6 +64,7 @@ public class Packet {
 
     public Packet(Command command, Card card) : this(command)
     {
+        if(card != null)
         cardID = card.ID;
     }
 

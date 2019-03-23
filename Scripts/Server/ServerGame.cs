@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NetworkConnection = Unity.Networking.Transport.NetworkConnection;
 
 public class ServerGame : Game {
 
@@ -53,7 +54,7 @@ public class ServerGame : Game {
         players[1].discardObject = player2DiscardObj;*/
     }
 
-    public int AddPlayer(int connectionID)
+    public int AddPlayer(NetworkConnection connectionID)
     {
         if (currPlayerCount >= 2) return -1;
 
@@ -80,7 +81,7 @@ public class ServerGame : Game {
         return currPlayerCount;
     }
 
-    public int GetPlayerIndexFromID(int connectionID)
+    public int GetPlayerIndexFromID(NetworkConnection connectionID)
     {
         for(int i = 0; i < currPlayerCount; i++)
         {
@@ -90,7 +91,7 @@ public class ServerGame : Game {
         return -1;
     }
 
-    public Player GetPlayerFromID(int connectionID)
+    public Player GetPlayerFromID(NetworkConnection connectionID)
     {
         for (int i = 0; i < currPlayerCount; i++)
         {
@@ -107,32 +108,32 @@ public class ServerGame : Game {
 
     //do action given id
     #region playerIDActions
-    public void SetPipsGivenPlayerID(int connectionID, int numPips)
+    public void SetPipsGivenPlayerID(NetworkConnection connectionID, int numPips)
     {
         GetPlayerFromID(connectionID).pips = numPips;
     }
 
-    public Card RemoveFromHandGivenPlayerID(int connectionID, int index)
+    public Card RemoveFromHandGivenPlayerID(NetworkConnection connectionID, int index)
     {
         return GetPlayerFromID(connectionID).handCtrl.RemoveFromHandAt(index);
     }
 
-    public Card RemoveFromDiscardGivenPlayerID(int connectionID, int index)
+    public Card RemoveFromDiscardGivenPlayerID(NetworkConnection connectionID, int index)
     {
         return GetPlayerFromID(connectionID).discardCtrl.CardAt(index, true); //true for remove
     }
 
-    public Card RemoveFromDeckGivenPlayerID(int connectionID, string name)
+    public Card RemoveFromDeckGivenPlayerID(NetworkConnection connectionID, string name)
     {
         return GetPlayerFromID(connectionID).deckCtrl.RemoveCardWithName(name);
     }
 
-    public Card DrawGivenPlayerID(int connectionID)
+    public Card DrawGivenPlayerID(NetworkConnection connectionID)
     {
         return Draw(GetPlayerIndexFromID(connectionID));
     }
 
-    public void AddToDiscardGivenPlayerID(int connectionID, Card card)
+    public void AddToDiscardGivenPlayerID(NetworkConnection connectionID, Card card)
     {
         GetPlayerFromID(connectionID).discardCtrl.AddToDiscard(card);
     }

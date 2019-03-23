@@ -13,11 +13,12 @@ public class ServerNetworkController : NetworkController {
     public UdpCNetworkDriver mDriver;
     public NativeList<NetworkConnection> mConnections;
 
-    void Start()
+    public override void Start()
     {
+        base.Start();
         mDriver = new UdpCNetworkDriver(new INetworkParameter[0]);
         if (mDriver.Bind(new IPEndPoint(IPAddress.Any, 8888)) != 0) Debug.Log("Failed to bind to port 8888");
-        else mDriver.Listen();
+        else{ mDriver.Listen(); Debug.Log("listening");}
 
         mConnections = new NativeList<NetworkConnection>(16, Allocator.Persistent);
     }
@@ -48,6 +49,15 @@ public class ServerNetworkController : NetworkController {
         {
             mConnections.Add(c);
             Debug.Log("Accepted connection");
+            //add the player. if it's the second player, do i need to tell each player the other is here?
+            if (ServerGame.mainServerGame.AddPlayer(c) == 2)
+            {
+                ServerGame.mainServerGame.uiCtrl.CurrentStateString = "Two Players Connected";
+            }
+            else
+            {
+                ServerGame.mainServerGame.uiCtrl.CurrentStateString = "One Player Connected";
+            }
         }
 
         //query driver for events
@@ -63,8 +73,10 @@ public class ServerNetworkController : NetworkController {
             while((cmd = mDriver.PopEventForConnection(mConnections[i], out reader)) != NetworkEvent.Type.Empty)
             {
                 if (cmd == NetworkEvent.Type.Data) {
+                    Debug.Log("Recieved Data Event");
                     var readerCtxt = default(DataStreamReader.Context);
                     byte[] packetBuffer = reader.ReadBytesAsArray(ref readerCtxt, BUFFER_SIZE);
+                    ParseRequest(packetBuffer, mConnections[i]);
 
                     /*using (var writer = new DataStreamWriter(4, Allocator.Temp)) //make the number large enough to contain entire byte array to be sent
                     {
@@ -80,61 +92,12 @@ public class ServerNetworkController : NetworkController {
             }
         }
     }
-
-    /*private int recievedConnectionID; //the connection id that is recieved with the network transport layer packet
-
-    void Update()
-    {
-        if (!hosting) return; //self-explanatory
-        if (!(Game.mainGame is ServerGame)) return; //this controller should only deal with the networking if the current game is a server game.
-
-        //the "out" arguments in the following method mean that the things are being passed by reference,
-        //and will be changed by the function
-
-        recData = NetworkTransport.Receive(out hostID, out recievedConnectionID, out channelID,
-            recBuffer, BUFFER_SIZE, out dataSize, out error);
-        switch (recData)
-        {
-            //nothing
-            case NetworkEventType.Nothing:
-                break;
-            //someone has tried to connect to me
-            case NetworkEventType.ConnectEvent:
-                //yay someone connected to me with the connectionID that was just set
-                Debug.Log("Connected!");
-                connected = true;
-                //add the player. if it's the second player, do i need to tell each player the other is here?
-                if (ServerGame.mainServerGame.AddPlayer(recievedConnectionID) == 2)
-                {
-                    ServerGame.mainServerGame.uiCtrl.CurrentStateString = "Two Players Connected";
-                }
-                else
-                {
-                    ServerGame.mainServerGame.uiCtrl.CurrentStateString = "One Player Connected";
-                }
-
-                break;
-            //they've actually sent something
-            case NetworkEventType.DataEvent:
-                Debug.Log("Recieved Data Event");
-                ParseRequest(recBuffer, recievedConnectionID);
-                break;
-            //the person has disconnected
-            case NetworkEventType.DisconnectEvent:
-                break;
-            //i don't know what this does and i don't 
-            case NetworkEventType.BroadcastEvent:
-                break;
-        }
-
-    }
-
-
-    private void SendPackets(Packet outPacket, Packet outPacketInverted, ServerGame serverGame, int connectionID)
+    
+    private void SendPackets(Packet outPacket, Packet outPacketInverted, ServerGame serverGame, NetworkConnection connectionID)
     {
         //if it's not null, send the normal packet to the player that queried you
         if (outPacket != null)
-            Send(outPacket, connectionID);
+            Send(outPacket, mDriver, connectionID);
 
 
         //if the inverted packet isn't null, send the packet to the correct player
@@ -142,15 +105,15 @@ public class ServerNetworkController : NetworkController {
         //if the one that queried you is player 0,
         if (connectionID == serverGame.Players[0].ConnectionID)
             //send the inverted one to player 1.
-            Send(outPacketInverted, serverGame.Players[1].ConnectionID);
+            Send(outPacketInverted, mDriver, serverGame.Players[1].ConnectionID);
         //if the one that queried you is player 1,
         else
             //send the inverted one to player 0.
-            Send(outPacketInverted, serverGame.Players[0].ConnectionID);
+            Send(outPacketInverted, mDriver, serverGame.Players[0].ConnectionID);
 
     }
 
-    private void ParseRequest(byte[] buffer, int connectionID)
+    private void ParseRequest(byte[] buffer, NetworkConnection connectionID)
     {
         Debug.Log("recieved packet");
         Packet packet = Deserialize(buffer);
@@ -172,25 +135,25 @@ public class ServerNetworkController : NetworkController {
                 Debug.Log("owner is " + owner + ", server game is " + ServerGame.mainServerGame + ", packet is " + packet + ", owner index is " + playerIndex);
                 Debug.Log("deck ctrl is " + (owner.deckCtrl == null));
                 //add the card in, with the cardCount being the card id, then increment the card count
-                Card added = owner.deckCtrl.AddCard(packet.args, ServerGame.mainServerGame.cardCount++, playerIndex);
+                Card added = owner.deckCtrl.AddCard(packet.CardName, ServerGame.mainServerGame.cardCount++, playerIndex);
                 //let everyone know
-                outPacket = new Packet(Packet.Command.AddToDeck, packet.args, added.ID);
-                outPacketInverted = new Packet(Packet.Command.AddToEnemyDeck, packet.args, added.ID);
+                outPacket = new Packet(Packet.Command.AddToDeck, packet.CardName, added.ID);
+                outPacketInverted = new Packet(Packet.Command.AddToEnemyDeck, packet.CardName, added.ID);
                 SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 break;
             case Packet.Command.Play:
                 //get the card to play
                 Card toPlay = ServerGame.mainServerGame.GetCardFromID(packet.cardID);
                 //if it's not a valid place to do, return
-                if (ServerGame.mainServerGame.ValidBoardPlay(toPlay, packet.x, packet.y))
+                if (ServerGame.mainServerGame.ValidBoardPlay(toPlay, packet.X, packet.Y))
                 {
                     //play the card here
-                    ServerGame.mainServerGame.Play(toPlay, packet.x, packet.y);
+                    ServerGame.mainServerGame.Play(toPlay, packet.X, packet.Y);
                     //re/de-invert the packet so it gets sent back correctly
                     packet.InvertForController(playerIndex);
                     //tell everyone to do it
-                    outPacket = new Packet(Packet.Command.Play, toPlay, packet.x, packet.y);
-                    outPacketInverted = new Packet(Packet.Command.Play, toPlay, packet.x, packet.y, true);
+                    outPacket = new Packet(Packet.Command.Play, toPlay, packet.X, packet.Y);
+                    outPacketInverted = new Packet(Packet.Command.Play, toPlay, packet.X, packet.Y, true);
                 }
                 else
                 {
@@ -203,15 +166,15 @@ public class ServerNetworkController : NetworkController {
                 //get the card to move
                 Card toMove = ServerGame.mainServerGame.GetCardFromID(packet.cardID);
                 //if it's not a valid place to do, return
-                if (ServerGame.mainServerGame.ValidMove(toMove, packet.x, packet.y))
+                if (ServerGame.mainServerGame.ValidMove(toMove, packet.X, packet.Y))
                 {
                     //play the card here
-                    ServerGame.mainServerGame.Move(toMove, packet.x, packet.y);
+                    ServerGame.mainServerGame.Move(toMove, packet.X, packet.Y);
                     //re/de-invert the packet so it gets sent back correctly
                     packet.InvertForController(playerIndex);
                     //tell everyone to do it
-                    outPacket = new Packet(Packet.Command.Move, toMove, packet.x, packet.y);
-                    outPacketInverted = new Packet(Packet.Command.Move, toMove, packet.x, packet.y, true);
+                    outPacket = new Packet(Packet.Command.Move, toMove, packet.X, packet.Y);
+                    outPacketInverted = new Packet(Packet.Command.Move, toMove, packet.X, packet.Y, true);
                 }
                 else
                 {
@@ -256,24 +219,24 @@ public class ServerNetworkController : NetworkController {
                 SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 break;
             case Packet.Command.SetNESW:
-                Card toSetNESW = ServerGame.mainServerGame.SetNESW(packet.cardID, packet.n, packet.e, packet.s, packet.w);
+                Card toSetNESW = ServerGame.mainServerGame.SetNESW(packet.cardID, packet.N, packet.E, packet.S, packet.W);
                 //let everyone know to set NESW
-                outPacket = new Packet(Packet.Command.SetNESW, toSetNESW, packet.n, packet.e, packet.s, packet.w);
-                outPacketInverted = new Packet(Packet.Command.SetNESW, toSetNESW, packet.n, packet.e, packet.s, packet.w);
+                outPacket = new Packet(Packet.Command.SetNESW, toSetNESW, packet.N, packet.E, packet.S, packet.W);
+                outPacketInverted = new Packet(Packet.Command.SetNESW, toSetNESW, packet.N, packet.E, packet.S, packet.W);
                 SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 break;
             case Packet.Command.SetPips:
-                ServerGame.mainServerGame.Players[playerIndex].pips = packet.num;
-                if (playerIndex == 0) ServerGame.mainServerGame.uiCtrl.UpdateFriendlyPips(packet.num);
-                else ServerGame.mainServerGame.uiCtrl.UpdateEnemyPips(packet.num);
+                ServerGame.mainServerGame.Players[playerIndex].pips = packet.Pips;
+                if (playerIndex == 0) ServerGame.mainServerGame.uiCtrl.UpdateFriendlyPips(packet.Pips);
+                else ServerGame.mainServerGame.uiCtrl.UpdateEnemyPips(packet.Pips);
                 //let everyone know
-                outPacket = new Packet(Packet.Command.SetPips, packet.num);
-                outPacketInverted = new Packet(Packet.Command.SetEnemyPips, packet.num);
+                outPacket = new Packet(Packet.Command.SetPips, packet.Pips);
+                outPacketInverted = new Packet(Packet.Command.SetEnemyPips, packet.Pips);
                 SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 break;
             default:
                 Debug.Log("Invalid command " + packet.command + " to server from " + connectionID);
                 break;
         }
-    }*/
+    }
 }
