@@ -27,6 +27,7 @@ public class ServerNetworkController : NetworkController {
 
         mConnections = new NativeList<NetworkConnection>(16, Allocator.Persistent);
         Hosting = true;
+        ServerGame.mainServerGame.uiCtrl.CurrentStateString = "Hosting";
     }
 
     void OnDestroy()
@@ -146,6 +147,26 @@ public class ServerNetworkController : NetworkController {
                 //let everyone know
                 outPacket = new Packet(Packet.Command.AddToDeck, packet.CardName, added.ID);
                 outPacketInverted = new Packet(Packet.Command.AddToEnemyDeck, packet.CardName, added.ID);
+                SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
+                break;
+            case Packet.Command.Augment:
+                Card toAugment = ServerGame.mainServerGame.GetCardFromID(packet.cardID);
+                //if it's not a valid place to do, return
+                if (ServerGame.mainServerGame.ValidAugment(toAugment, packet.X, packet.Y))
+                {
+                    //play the card here
+                    ServerGame.mainServerGame.Play(toAugment, packet.X, packet.Y);
+                    //re/de-invert the packet so it gets sent back correctly
+                    packet.InvertForController(playerIndex);
+                    //tell everyone to do it
+                    outPacket = new Packet(Packet.Command.Augment, toAugment, packet.X, packet.Y);
+                    outPacketInverted = new Packet(Packet.Command.Augment, toAugment, packet.X, packet.Y, true);
+                }
+                else
+                {
+                    outPacket = new Packet(Packet.Command.PutBack);
+                    outPacketInverted = null;
+                }
                 SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 break;
             case Packet.Command.Play:

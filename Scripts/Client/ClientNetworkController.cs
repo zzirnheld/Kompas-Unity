@@ -28,6 +28,7 @@ public class ClientNetworkController : NetworkController {
         //this code is the connection code. dont do until client hits connect button?
         var endpoint = new IPEndPoint(IPAddress.Loopback, 8888);
         mConnection = mDriver.Connect(endpoint);
+        Hosting = true;
     }
 
     private void OnDestroy()
@@ -88,6 +89,7 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.AddToEnemyDeck:
                 ClientGame.mainClientGame.enemyDeckCtrl.AddCard(packet.CardName, packet.CardIDToBe, 1); //TODO make it always ask for cards from enemy deck
                 break;
+            case Packet.Command.Augment: //the play method calls augment if the card is an augment
             case Packet.Command.Play:
                 Debug.Log("Client ordered to play to " + packet.X + ", " + packet.Y);
                 ClientGame.mainClientGame.Play(packet.cardID, packet.X, packet.Y);
@@ -113,6 +115,9 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.SetEnemyPips:
                 ClientGame.mainClientGame.SetEnemyPips(packet.Pips);
                 break;
+            case Packet.Command.PutBack:
+                //TODO make it put back all cards?
+                break;
             default:
                 Debug.Log("Unrecognized command sent to client");
                 break;
@@ -123,7 +128,9 @@ public class ClientNetworkController : NetworkController {
     public void RequestPlay(Card card, int toX, int toY)
     {
         //card.PutBack();
-        Packet packet = new Packet(Packet.Command.Play, card, toX, toY);
+        Packet packet;
+        if (card is AugmentCard) packet = new Packet(Packet.Command.Augment, card, toX, toY);
+        else packet = new Packet(Packet.Command.Play, card, toX, toY);
         Send(packet, mDriver, mConnection);
     }
 
