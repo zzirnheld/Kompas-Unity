@@ -13,10 +13,15 @@ public class ClientNetworkController : NetworkController {
     public UdpCNetworkDriver mDriver;
     public NetworkConnection mConnection;
     public bool Done;
+    private bool Hosting = false;
 
-    public override void Start()
+    public void Start()
     {
-        base.Start();
+        
+    }
+
+    public void Connect()
+    {
         mDriver = new UdpCNetworkDriver(new INetworkParameter[0]);
         mConnection = default(NetworkConnection);
 
@@ -32,6 +37,7 @@ public class ClientNetworkController : NetworkController {
 
     void Update()
     {
+        if (!Hosting) return;
         mDriver.ScheduleUpdate().Complete();
         if (!mConnection.IsCreated)
         {

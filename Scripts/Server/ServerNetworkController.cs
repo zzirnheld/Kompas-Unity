@@ -12,15 +12,21 @@ public class ServerNetworkController : NetworkController {
 
     public UdpCNetworkDriver mDriver;
     public NativeList<NetworkConnection> mConnections;
+    private bool Hosting = false;
 
-    public override void Start()
+    public void Start()
     {
-        base.Start();
+        
+    }
+
+    public void Host(int port)
+    {
         mDriver = new UdpCNetworkDriver(new INetworkParameter[0]);
-        if (mDriver.Bind(new IPEndPoint(IPAddress.Any, 8888)) != 0) Debug.Log("Failed to bind to port 8888");
-        else{ mDriver.Listen(); Debug.Log("listening");}
+        if (mDriver.Bind(new IPEndPoint(IPAddress.Any, port)) != 0) Debug.Log("Failed to bind to port 8888");
+        else { mDriver.Listen(); Debug.Log("listening"); }
 
         mConnections = new NativeList<NetworkConnection>(16, Allocator.Persistent);
+        Hosting = true;
     }
 
     void OnDestroy()
@@ -31,6 +37,7 @@ public class ServerNetworkController : NetworkController {
 
     void Update()
     {
+        if (!Hosting) return;
         mDriver.ScheduleUpdate().Complete();
 
         //remove dead connections

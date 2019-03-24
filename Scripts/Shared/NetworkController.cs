@@ -10,20 +10,11 @@ using Unity.Networking.Transport;
 using NetworkConnection = Unity.Networking.Transport.NetworkConnection;
 using UdpCNetworkDriver = Unity.Networking.Transport.BasicNetworkDriver<Unity.Networking.Transport.IPv4UDPSocket>;
 
-public class NetworkController : MonoBehaviour {
+public class NetworkController : MonoBehaviour
+{
 
     //protected int BUFFER_SIZE = sizeof(int) * 5 + sizeof(Packet.Command);
-    protected const int BUFFER_SIZE = 236; //see start() for how this was calculated
-
-    public virtual void Start()
-    {
-        /*Packet testPacket = new Packet(Packet.Command.SetNESW, null, 0, 0, 0, 0);
-        Stream stream = new MemoryStream(reusableBuffer);
-        new BinaryFormatter().Serialize(stream, testPacket);
-        stream.Flush();
-        BUFFER_SIZE = (int) stream.Position + 1;
-        Debug.Log("Buffer size is actually " + BUFFER_SIZE + ", not " + (sizeof(int) * 5 + sizeof(Packet.Command)) + " ya dum");*/
-    }
+    protected const int BUFFER_SIZE = 236; //size of serialized Packet()
 
     #region serialization
     //protected byte[] reusableBuffer = new byte[REUSABLE_BUFFER_SIZE];
@@ -74,95 +65,4 @@ public class NetworkController : MonoBehaviour {
             mDriver.Send(connection, writer);
         }
     }
-
-    /*
-    protected Vector3 absCardScale = new Vector3(1f / 9f, 1f / 9f, 1f / 9f);
-
-    //flags
-    public bool hosting = false;
-    public bool connected = false;
-
-    //IDs
-    protected int channelID;
-    protected int hostID;
-
-    protected byte error;
-    protected NetworkEventType recData;
-    //holds the data for the buffer
-    protected byte[] recBuffer = new byte[BUFFER_SIZE];
-    protected int dataSize;
-    protected string recievedMessage;
-    protected string[] msgTokens;
-
-    //buffer used for serialization
-
-    //prefabs
-    public GameObject characterPrefab;
-    public GameObject spellPrefab;
-    public GameObject augmentPrefab;
-
-    //When any controller is initialized, initiate Unity's transport layer API
-    private void Awake() { NetworkTransport.Init(); }
-
-    /// <summary>
-    /// Opens your port to allow you to connect. 
-    /// If you're hosting a server, no further action is needed.
-    /// If you're connecting to a server, you still need to connect.
-    /// </summary>
-    /// <param name="socket"></param>
-    public void Host(int socket)
-    {
-        //then make a config to add whatever channels you wanna do
-        ConnectionConfig config = new ConnectionConfig();
-        channelID = config.AddChannel(QosType.Reliable);
-
-        //then you create a topology, which defines how your networking is gonna work
-        HostTopology topology = new HostTopology(config, 2);
-
-        //adds a new host on port "socket" (currently 8888), with the defined topology, for any ip addresses to connect to
-        hostID = NetworkTransport.AddHost(topology, socket);
-        hosting = true;
-
-        Debug.Log("Hosting on " + socket);
-        Game.mainGame.uiCtrl.CurrentStateString = "Hosting";
-    }
-
-    
-
-    protected void RemoveCard(SerializableCard toRemove)
-    {
-        switch (toRemove.location)
-        {
-            case Card.CardLocation.Field:
-                if (toRemove.cardType == 'A')
-                {
-                    CharacterCard thisChar = Game.mainGame.boardCtrl.GetCharAt(toRemove.BoardX, toRemove.BoardY);
-                    thisChar.RemoveAugmentAt(toRemove.index);
-                }
-                else Game.mainGame.boardCtrl.RemoveFromBoard(toRemove.BoardX, toRemove.BoardY);
-                break;
-            case Card.CardLocation.Discard:
-                Game.mainGame.Players[toRemove.owner].discardCtrl.RemoveFromDiscardAt(toRemove.index);
-                break;
-            case Card.CardLocation.Hand:
-                Game.mainGame.Players[toRemove.owner].handCtrl.RemoveFromHandAt(toRemove.index);
-                break;
-            case Card.CardLocation.Deck:
-                Game.mainGame.Players[toRemove.owner].deckCtrl.RemoveCardWithName(toRemove.cardName);
-                break;
-            default:
-                break;
-        }
-    }
-
-    /// <summary>
-    /// Sends the packet to the other computer.
-    /// </summary>
-    protected void Send(Packet packet, int connectionID)
-    {
-        if (!connected) return;
-        byte[] arr = Serialize(packet);
-        NetworkTransport.Send(hostID, connectionID, channelID, arr, arr.Length, out error);
-    }*/
-
 }
