@@ -12,5 +12,4 @@
 "subtype":0,
 "subtext":"Simple",
 "fast":false
-"augments":[]
 }

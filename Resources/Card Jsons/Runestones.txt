@@ -12,5 +12,4 @@
 "subtype":1,
 "subtext":"Runer Enchant",
 "fast":false
-"augments":[]
 }

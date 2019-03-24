@@ -20,7 +20,7 @@ public class Packet {
     public int cardID;
 
     public int[] args;
-    public string CardName { get { return Game.CardNames[args[0]]; } }
+    public string CardName { get { return Game.CardNames[args[1]]; } }
     public int CardIDToBe { get { return args[0]; } }
     public int Pips { get { return args[0]; } }
     public int X { get { return args[0]; } }
@@ -49,7 +49,13 @@ public class Packet {
     //used only for adding cards to deck
     public Packet(Command command, string cardName) : this(command)
     {
-        args[1] = Game.CardNameIndices[cardName];
+        try {
+            args[1] = Game.CardNameIndices[cardName];
+        }
+        catch(KeyNotFoundException e)
+        {
+            Debug.Log("Could not find card with name \"" + cardName + "\", length " + cardName.Length);
+        }
     }
 
     public Packet(Command command, int num) : this(command)

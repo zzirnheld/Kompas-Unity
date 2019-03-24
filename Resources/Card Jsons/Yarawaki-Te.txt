@@ -9,5 +9,4 @@
 "d":4,
 "subtext":"Sword Augment S ≥ 5 Warrior",
 "fast":false
-"augments":[]
 }

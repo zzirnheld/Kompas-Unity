@@ -12,5 +12,4 @@
 "subtype":1,
 "subtext":"Rune Enchant",
 "fast":false
-"augments":[]
 }

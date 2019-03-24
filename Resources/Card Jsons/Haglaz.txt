@@ -12,5 +12,4 @@
 "subtype":3,
 "subtext":"Terraform 1",
 "fast":false
-"augments":[]
 }

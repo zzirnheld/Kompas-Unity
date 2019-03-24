@@ -12,5 +12,4 @@
 "subtype":3,
 "subtext":"Terraform radius 1",
 "fast":true
-"augments":[]
 }

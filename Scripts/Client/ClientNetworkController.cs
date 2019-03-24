@@ -151,13 +151,14 @@ public class ClientNetworkController : NetworkController {
 
     public void RequestAddToDeck(string cardName)
     {
+        Debug.Log("Requesting add \"" + cardName + "\" to deck, length " + cardName.Length);
         Packet packet = new Packet(Packet.Command.AddToDeck, cardName);
         Send(packet, mDriver, mConnection);
     }
 
     public void RequestDecklistImport(string decklist)
     {
-        Debug.Log("Requesting Deck import of " + decklist);
+        Debug.Log("Requesting Deck import of \"" + decklist + "\"");
         string[] cardNames = decklist.Split('\n');
         foreach(string cardName in cardNames){
             RequestAddToDeck(cardName);

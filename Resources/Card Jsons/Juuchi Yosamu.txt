@@ -11,5 +11,4 @@
 "d":4,
 "subtext":"Sword Augment Warrior",
 "fast":false
-"augments":[]
 }

@@ -11,6 +11,6 @@
 "d":2,
 "subtype":0,
 "subtext":"Fast Simple",
-"fast":true
+"fast":true,
 "augments":[]
 }

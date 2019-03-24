@@ -11,6 +11,6 @@
 "d":8,
 "subtype":0,
 "subtext":"Rune Simple",
-"fast":false
+"fast":false,
 "augments":[]
 }

@@ -12,5 +12,4 @@
 "subtype":0,
 "subtext":"Rune Simple",
 "fast":false
-"augments":[]
 }

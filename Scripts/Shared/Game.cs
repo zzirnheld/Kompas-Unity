@@ -20,7 +20,7 @@ public class Game : MonoBehaviour {
     public GameObject boardObject;
 
     //list of cards
-    public static List<string> CardNames;
+    public static Dictionary<int, string> CardNames;
     public static Dictionary<string, int> CardNameIndices;
 
     public int turnPlayer;
@@ -35,7 +35,7 @@ public class Game : MonoBehaviour {
     private void Start()
     {
         cards = new Dictionary<int, Card>();
-        CardNames = new List<string>();
+        CardNames = new Dictionary<int, string>();
         CardNameIndices = new Dictionary<string, int>();
         string cardListPath = "Card Jsons/Card List";
         string cardList = Resources.Load<TextAsset>(cardListPath).text;
@@ -43,8 +43,9 @@ public class Game : MonoBehaviour {
         
         for(int i = 0; i < cardNames.Length; i++)
         {
-            CardNames.Add(cardNames[i]);
-            CardNameIndices.Add(cardNames[i], i);
+            //Debug.Log("Adding \"" + cardNames[i] + "\", length " + cardNames[i].Length);
+            CardNames.Add(i, cardNames[i].Substring(0, cardNames[i].Length - 1)); //because line endings
+            CardNameIndices.Add(cardNames[i].Substring(0, cardNames[i].Length - 1), i);
         }
     }
 

@@ -11,6 +11,6 @@
 "d":2,
 "subtype":3,
 "subtext":"Terraform 0",
-"fast":true
+"fast":false,
 "augments":[]
 }

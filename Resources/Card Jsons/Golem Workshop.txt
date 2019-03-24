@@ -8,5 +8,4 @@
 "subtype":3,
 "subtext":"Terraform radius 1",
 "fast":false
-"augments":[]
 }
