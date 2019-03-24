@@ -197,5 +197,11 @@ public class ClientNetworkController : NetworkController {
         Debug.Log("requesting updating pips to " + num);
     }
 
+    public void RequestEndTurn()
+    {
+        Packet packet = new Packet(Packet.Command.EndTurn);
+        Send(packet, mDriver, mConnection);
+    }
+
     #endregion
 }

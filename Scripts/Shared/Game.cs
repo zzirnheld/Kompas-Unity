@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Game : MonoBehaviour {
-    
-    //public const bool DEBUG_MODE = true;
 
     public static Game mainGame;
 
@@ -19,18 +17,17 @@ public class Game : MonoBehaviour {
     //game objects
     public GameObject boardObject;
 
-    //list of cards
+    //list of card names 
     public static Dictionary<int, string> CardNames;
     public static Dictionary<string, int> CardNameIndices;
 
-    public int turnPlayer;
+    public int turnPlayer = 0;
     protected Player[] players = new Player[2];
     public Player[] Players { get { return players; } }
 
     //game data
-    //public Card[] cards = new Card[50]; //tODO bETTER sOLUTION
-    //public List<Card> cards;
     public Dictionary<int, Card> cards;
+    public int MaxCardsOnField = 0; //for pip generation purposes
 
     private void Start()
     {
@@ -63,9 +60,6 @@ public class Game : MonoBehaviour {
         //then, check if you've clicked anything
         mouseCtrl.NormalClickObject();
     }
-
-    //public static bool IsServerGame() { return mainGame is ServerGame; }
-    //public static bool IsClientGame() { return mainGame is ClientGame; }
 
     public Card GetCardFromID(int id)
     {
@@ -187,19 +181,9 @@ public class Game : MonoBehaviour {
     public virtual void SelectCard(Card card) { uiCtrl.SelectCard(card); }
     #endregion forwarding
 
-    //game mechanics
 
-    //requesting
-    /*public virtual void RequestMove(Card card, int toX, int toY)
-    {
-        if (DEBUG_MODE) { Debug.Log("Debug Mode, not checking with server to move"); Move(card, toX, toY); }
-        else throw new NotImplementedException();
-    }
-    public virtual void RequestPlay(Card card, int toX, int toY)
-    {
-        if (DEBUG_MODE) { Debug.Log("Debug Mode, not checking with server to play"); Play(card, toX, toY); }
-        else throw new NotImplementedException();
-    }*/
+
+    //game mechanics
 
 
 }

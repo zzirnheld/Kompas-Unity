@@ -101,7 +101,7 @@ public class ServerNetworkController : NetworkController {
         }
     }
     
-    private void SendPackets(Packet outPacket, Packet outPacketInverted, ServerGame serverGame, NetworkConnection connectionID)
+    public void SendPackets(Packet outPacket, Packet outPacketInverted, ServerGame serverGame, NetworkConnection connectionID)
     {
         //if it's not null, send the normal packet to the player that queried you
         if (outPacket != null)
@@ -239,12 +239,7 @@ public class ServerNetworkController : NetworkController {
                 SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 break;
             case Packet.Command.Draw:
-                //draw and store what was drawn
-                Card toDraw = ServerGame.mainServerGame.Draw(playerIndex);
-                //let everyone know to add that character to the correct hand
-                outPacket = new Packet(Packet.Command.Rehand, toDraw);
-                outPacketInverted = new Packet(Packet.Command.Rehand, toDraw);
-                SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
+                AttemptToDraw(playerIndex, connectionID);
                 break;
             case Packet.Command.SetNESW:
                 Card toSetNESW = ServerGame.mainServerGame.SetNESW(packet.cardID, packet.N, packet.E, packet.S, packet.W);
@@ -254,17 +249,36 @@ public class ServerNetworkController : NetworkController {
                 SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 break;
             case Packet.Command.SetPips:
-                ServerGame.mainServerGame.Players[playerIndex].pips = packet.Pips;
-                if (playerIndex == 0) ServerGame.mainServerGame.uiCtrl.UpdateFriendlyPips(packet.Pips);
-                else ServerGame.mainServerGame.uiCtrl.UpdateEnemyPips(packet.Pips);
-                //let everyone know
-                outPacket = new Packet(Packet.Command.SetPips, packet.Pips);
-                outPacketInverted = new Packet(Packet.Command.SetEnemyPips, packet.Pips);
-                SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
+                SetPips(playerIndex, connectionID, packet.Pips);
+                break;
+            case Packet.Command.EndTurn:
+                ServerGame.mainServerGame.SwitchTurn();
                 break;
             default:
                 Debug.Log("Invalid command " + packet.command + " to server from " + connectionID);
                 break;
         }
+    }
+
+    public void AttemptToDraw(int playerIndex, NetworkConnection connectionID)
+    {
+        //draw and store what was drawn
+        Card toDraw = ServerGame.mainServerGame.Draw(playerIndex);
+        if (toDraw == null) return; //deck was empty
+        //let everyone know to add that character to the correct hand
+        Packet outPacket = new Packet(Packet.Command.Rehand, toDraw);
+        Packet outPacketInverted = new Packet(Packet.Command.Rehand, toDraw);
+        SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
+    }
+
+    public void SetPips(int playerIndex, NetworkConnection connectionID, int pipsToSet)
+    {
+        ServerGame.mainServerGame.Players[playerIndex].pips = pipsToSet;
+        if (playerIndex == 0) ServerGame.mainServerGame.uiCtrl.UpdateFriendlyPips(pipsToSet);
+        else ServerGame.mainServerGame.uiCtrl.UpdateEnemyPips(pipsToSet);
+        //let everyone know
+        Packet outPacket = new Packet(Packet.Command.SetPips, pipsToSet);
+        Packet outPacketInverted = new Packet(Packet.Command.SetEnemyPips, pipsToSet);
+        SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
     }
 }

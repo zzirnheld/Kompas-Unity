@@ -16,6 +16,7 @@ public class BoardController : KompasObject
     private int visibleCards = 0;
 
     //helper methods
+    #region helper methods
     public bool ValidIndices(int x, int y)
     {
         return x >= 0 && y >= 0 && x < 7 && y < 7;
@@ -45,6 +46,16 @@ public class BoardController : KompasObject
         if (!ValidIndices(x, y) || !(cards[x, y] is CharacterCard)) return null;
         return (cards[x, y] as CharacterCard).Augments;
     }
+
+    public int GetNumCardsOnBoard()
+    {
+        int i = 0;
+        foreach (Card card in cards){
+            if (card != null) i++;
+        }
+        return i;
+    }
+    #endregion
 
     #region game mechanics
     public void RemoveFromBoard(Card toRemove)
@@ -106,6 +117,9 @@ public class BoardController : KompasObject
         else if (toPlay is AugmentCard) Augment(toPlay as AugmentCard, toX, toY, owner);
         else if (toPlay is SpellCard) Cast(toPlay as SpellCard, toX, toY, owner);
         else Debug.Log("Can't play a card that isn't a character, augment, or spell.");
+
+        int i = GetNumCardsOnBoard();
+        if (i > Game.mainGame.MaxCardsOnField) Game.mainGame.MaxCardsOnField = i;
     }
 
     //movement

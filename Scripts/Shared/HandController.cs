@@ -13,6 +13,7 @@ public class HandController : KompasObject
 
     public void AddToHand(Card card)
     {
+        if (card == null) return;
         hand.Add(card);
         card.SetLocation(Card.CardLocation.Hand);
 

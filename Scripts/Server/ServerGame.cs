@@ -106,6 +106,11 @@ public class ServerGame : Game {
         return currPlayerCount >= 2;
     }
 
+    public void GiveTurnPlayerPips()
+    {
+        (networkCtrl as ServerNetworkController).SetPips(turnPlayer, players[turnPlayer].ConnectionID, players[turnPlayer].pips + MaxCardsOnField);
+    }
+
     //do action given id
     #region playerIDActions
     public void SetPipsGivenPlayerID(NetworkConnection connectionID, int numPips)
@@ -140,6 +145,7 @@ public class ServerGame : Game {
     #endregion
 
     //later, upgrade this with checking if the square is valid (adj or special case)
+    #region check validity
     public bool ValidBoardPlay(Card card, int toX, int toY)
     {
         return card != null 
@@ -168,6 +174,14 @@ public class ServerGame : Game {
             (fromCard is CharacterCard && toCard is CharacterCard);*/
     }
 
-    //TODO: change turn
+    #endregion
+    
+    public void SwitchTurn()
+    {
+        turnPlayer = 1 - turnPlayer;
+        GiveTurnPlayerPips();
 
+        //draw for turn and store what was drawn
+        (networkCtrl as ServerNetworkController).AttemptToDraw(turnPlayer, players[turnPlayer].ConnectionID);
+    }
 }
