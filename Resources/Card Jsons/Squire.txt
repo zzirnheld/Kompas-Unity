@@ -1,11 +1,7 @@
 {
 "cardType":67,
-"x":0,
-"y":0,
 "cardName":"Squire",
 "effText":"When you summon a Warrior, you can tribute me to gain a pip.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "n":3,
@@ -14,6 +10,5 @@
 "w":1,
 "m":3,
 "subtypes":["Warrior"],
-"subtypeText":"Warrior",
-"augments":[]
+"subtypeText":"Warrior"
 }

@@ -1,11 +1,7 @@
 {
 "cardType":83,
-"x":0,
-"y":0,
 "cardName":"Grandswordsmanship",
 "effText":"Cast when a friendly Warrior wielding a Sword dies. Hand-summon a Swordsmaster.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "d":3,

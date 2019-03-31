@@ -1,11 +1,7 @@
 {
 "cardType":83,
-"x":0,
-"y":0,
 "cardName":"Thurisaz",
 "effText":"Runic: Can't be cast normally. I double a character's W.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "d":4,

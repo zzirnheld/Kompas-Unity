@@ -1,11 +1,7 @@
 {
 "cardType":83,
-"x":0,
-"y":0,
 "cardName":"Raido",
 "effText":"Runic: Can't be cast normally. I move a character anywhere.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "d":3,

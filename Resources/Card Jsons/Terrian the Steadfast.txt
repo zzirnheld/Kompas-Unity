@@ -1,11 +1,7 @@
 {
 "cardType":67,
-"x":0,
-"y":0,
 "cardName":"Terrian the Steadfast",
 "effText":"Territorial: When turns end, kill an adjacent friendly Dragon. When I attack, I can give myself -XE to give my target -2XW.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "n":1,
@@ -14,6 +10,5 @@
 "w":4,
 "m":1,
 "subtypes":["Dragon"],
-"subtypeText":"Dragon",
-"augments":[]
+"subtypeText":"Dragon"
 }

@@ -1,11 +1,7 @@
 {
 "cardType":83,
-"x":0,
-"y":0,
 "cardName":"Sowilo",
 "effText":"Runic: Can't be cast normally. I give a character -1E and another +1E. Draw 1 and gain a pip.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "d":1,

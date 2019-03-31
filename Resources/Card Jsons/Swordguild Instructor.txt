@@ -1,11 +1,7 @@
 {
 "cardType":67,
-"x":0,
-"y":0,
 "cardName":"Swordguild Instructor",
 "effText":"Once each friendly turn, you can give an adjacent Warrior +1W.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "n":2,
@@ -14,6 +10,5 @@
 "w":3,
 "m":2,
 "subtypes":["Swordguild","Warrior"],
-"subtypeText":"Swordguild Warrior",
-"augments":[]
+"subtypeText":"Swordguild Warrior"
 }

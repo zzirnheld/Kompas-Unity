@@ -5,7 +5,7 @@ using UnityEngine.Assertions;
 
 public abstract class Card : KompasObject {
 
-    public enum CardLocation { Field, Discard, Hand, Deck, Nowhere };
+    public enum CardLocation { Nowhere, Field, Discard, Hand, Deck };
 
     //constants
     public const float minBoardLocalX = -0.45f;

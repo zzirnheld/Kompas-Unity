@@ -1,11 +1,7 @@
 {
 "cardType":67,
-"x":0,
-"y":0,
 "cardName":"Muramasa",
 "effText":"Once each round, you can pip hand-apply or discard-apply a Sword for half cost. Give its wielder -1ES and +3W.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "n":1,
@@ -14,6 +10,5 @@
 "w":7,
 "m":1,
 "subtypes":["Swordsmaster","Craftsman"],
-"subtypeText":"Swordsmaster Craftsman",
-"augments":[]
+"subtypeText":"Swordsmaster Craftsman"
 }

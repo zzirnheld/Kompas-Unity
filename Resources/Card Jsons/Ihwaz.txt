@@ -1,11 +1,7 @@
 {
 "cardType":83,
-"x":0,
-"y":0,
 "cardName":"Ihwaz",
 "effText":"Runic: Can't be cast normally. A friendly Runer duels a character within 3 slots of them.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "d":3,

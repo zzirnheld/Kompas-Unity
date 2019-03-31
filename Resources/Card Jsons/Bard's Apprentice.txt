@@ -9,5 +9,5 @@
 	"s":1,
 	"w":1,
 	"subtypes":["Bard", "Mage"],
-	"subtypeText":"Bard Mage",
+	"subtypeText":"Bard Mage"
 }

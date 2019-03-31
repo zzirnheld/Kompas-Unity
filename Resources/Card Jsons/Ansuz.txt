@@ -1,16 +1,11 @@
 {
 "cardType":83,
-"x":0,
-"y":0,
 "cardName":"Ansuz",
 "effText":"Runic: Can't be cast normally. I set a character's N to 1 and ESW to 10.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "d":5,
 "subtype":0,
 "subtext":"Rune Simple",
-"fast":false,
-"augments":[]
+"fast":false
 }

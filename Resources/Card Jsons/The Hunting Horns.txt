@@ -2,8 +2,6 @@
 "cardType":83,
 "cardName":"The Hunting Horns",
 "effText":"Our Song: When I'm cast, dispel all friendly Themes. Draw 1. While it's your turn, give friendly Bards +2NW.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "d":3,

@@ -9,5 +9,5 @@
 	"s":3,
 	"w":3,
 	"subtypes":["Golem"],
-	"subtypeText":"Golem",
+	"subtypeText":"Golem"
 }

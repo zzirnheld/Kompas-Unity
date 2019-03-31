@@ -2,8 +2,6 @@
 "cardType":65,
 "cardName":"Yarawaki-Te",
 "effText":"While equipped, I give my wielder +4W. Instead of attacking, I can give an adjacent character +4E.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "d":4,

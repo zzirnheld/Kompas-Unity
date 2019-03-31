@@ -1,11 +1,7 @@
 {
 "cardType":65,
-"x":0,
-"y":0,
 "cardName":"Dragon's Tear",
 "effText":"When this character gives themselves -E, give them +1E.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "d":2,

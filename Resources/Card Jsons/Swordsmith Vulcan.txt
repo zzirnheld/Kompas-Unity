@@ -1,11 +1,7 @@
 {
 "cardType":67,
-"x":0,
-"y":0,
 "cardName":"Swordsmith Vulcan",
 "effText":"Once each friendly turn, you can search your deck for a Sword.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "n":1,
@@ -14,6 +10,5 @@
 "w":5,
 "m":1,
 "subtypes":["Warrior", "Craftsman"],
-"subtypeText":"Warrior Craftsman",
-"augments":[]
+"subtypeText":"Warrior Craftsman"
 }

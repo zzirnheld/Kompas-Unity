@@ -1,16 +1,11 @@
 {
 "cardType":83,
-"x":0,
-"y":0,
 "cardName":"Haglaz",
 "effText":"Runic: Can't be cast normally.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "d":2,
 "subtype":3,
 "subtext":"Terraform 0",
-"fast":false,
-"augments":[]
+"fast":false
 }

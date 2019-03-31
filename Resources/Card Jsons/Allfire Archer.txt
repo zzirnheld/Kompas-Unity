@@ -1,11 +1,7 @@
 {
 "cardType":67,
-"x":0,
-"y":0,
 "cardName":"Allfire Archer",
 "effText":"Range 2: Instead of attacking, I can give a nonadjacent character within 2 spaces -XE (X = my W). When I attack, give all characters adjacent to the target -1E.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "n":2,
@@ -14,6 +10,5 @@
 "w":6,
 "m":2,
 "subtypes":["Archer"],
-"subtypeText":"Archer",
-"augments":[]
+"subtypeText":"Archer"
 }

@@ -1,11 +1,7 @@
 {
 "cardType":67,
-"x":0,
-"y":0,
 "cardName":"Runespeaker",
 "effText":"Once each friendly turn, you can pip handcast a Rune, then search your deck for another Rune.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "n":1,
@@ -14,6 +10,5 @@
 "w":4,
 "m":1,
 "subtypes":["Runer", "Mage"],
-"subtypeText":"Runer Mage",
-"augments":[]
+"subtypeText":"Runer Mage"
 }

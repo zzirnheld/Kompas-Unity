@@ -10,5 +10,5 @@
 	"w":4,
 	"m":3,
 	"subtypes":["Bard", "Mage"],
-	"subtypeText":"Bard Mage",
+	"subtypeText":"Bard Mage"
 }

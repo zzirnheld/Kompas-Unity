@@ -1,11 +1,7 @@
 {
 "cardType":67,
-"x":0,
-"y":0,
 "cardName":"Runewritten",
 "effText":"When you cast a Rune, I give myself +1EW.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "n":3,
@@ -14,6 +10,5 @@
 "w":2,
 "m":3,
 "subtypes":["Runer", "Mage"],
-"subtypeText":"Runer Mage",
-"augments":[]
+"subtypeText":"Runer Mage"
 }

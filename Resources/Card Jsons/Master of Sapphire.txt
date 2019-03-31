@@ -1,11 +1,7 @@
 {
 "cardType":67,
-"x":0,
-"y":0,
 "cardName":"Master of Sapphire",
 "effText":"Once each round, you can give a Warrior wield a Sword +5E.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "n":2,
@@ -14,6 +10,5 @@
 "w":4,
 "m":2,
 "subtypes":["Swordsmaster","Warrior"],
-"subtypeText":"Swordsmaster Warrior",
-"augments":[]
+"subtypeText":"Swordsmaster Warrior"
 }

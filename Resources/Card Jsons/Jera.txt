@@ -1,11 +1,7 @@
 {
 "cardType":83,
-"x":0,
-"y":0,
 "cardName":"Jera",
 "effText":"Runic: Can't be cast normally. If it's your turn, gain 5 pips and your turn ends.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "d":2,

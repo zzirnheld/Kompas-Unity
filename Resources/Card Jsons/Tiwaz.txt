@@ -1,11 +1,7 @@
 {
 "cardType":83,
-"x":0,
-"y":0,
 "cardName":"Tiwaz",
 "effText":"Runic: Can't be cast normally. When a friendly character attacks, I give them +2EW.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "d":1,

@@ -1,11 +1,7 @@
 {
 "cardType":67,
-"x":0,
-"y":0,
 "cardName":"Caligo the Quick",
 "effText":"Territorial: When turns end, kill an adjacent friendly Dragon. Before I attack, you can give me -XE to move me X spaces.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "n":4,
@@ -14,6 +10,5 @@
 "w":5,
 "m":4,
 "subtypes":["Dragon"],
-"subtypeText":"Dragon",
-"augments":[]
+"subtypeText":"Dragon"
 }

@@ -143,7 +143,8 @@ public class ServerNetworkController : NetworkController {
                 Debug.Log("owner is " + owner + ", server game is " + ServerGame.mainServerGame + ", packet is " + packet + ", owner index is " + playerIndex);
                 Debug.Log("deck ctrl is " + (owner.deckCtrl == null));
                 //add the card in, with the cardCount being the card id, then increment the card count
-                Card added = owner.deckCtrl.AddCard(packet.CardName, ServerGame.mainServerGame.cardCount++, playerIndex);
+                Card added = owner.deckCtrl.AddCard(packet.CardName, ServerGame.mainServerGame.cardCount, playerIndex);
+                ServerGame.mainServerGame.cardCount++;
                 //let everyone know
                 outPacket = new Packet(Packet.Command.AddToDeck, packet.CardName, added.ID);
                 outPacketInverted = new Packet(Packet.Command.AddToEnemyDeck, packet.CardName, added.ID);

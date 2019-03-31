@@ -1,11 +1,7 @@
 {
 "cardType":67,
-"x":0,
-"y":0,
 "cardName":"Pseudodragon",
 "effText":"When I attack, give me and my target -1E.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "n":3,
@@ -14,6 +10,5 @@
 "w":1,
 "m":3,
 "subtypes":[],
-"subtypeText":"",
-"augments":[]
+"subtypeText":""
 }

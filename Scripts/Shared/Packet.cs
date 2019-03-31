@@ -24,8 +24,8 @@ public class Packet {
     public string CardName { get { return Game.CardNames[args[1]]; } }
     public int CardIDToBe { get { return args[0]; } }
     public int Pips { get { return args[0]; } }
-    public int X { get { return args[0]; } }
-    public int Y { get { return args[1]; } }
+    public int X { get { return args[2]; } }
+    public int Y { get { return args[3]; } }
     public int N { get { return args[0]; } }
     public int E { get { return args[1]; } }
     public int S { get { return args[2]; } }
@@ -84,13 +84,13 @@ public class Packet {
     {
         if (invert)
         {
-            args[0] = 6 - x;
-            args[1] = 6 - y;
+            args[2] = 6 - x;
+            args[3] = 6 - y;
         }
         else
         {
-            args[0] = x;
-            args[1] = y;
+            args[2] = x;
+            args[3] = y;
         }
     }
 
@@ -104,8 +104,8 @@ public class Packet {
 
     public void Invert()
     {
-        args[0] = 6 - args[0];
-        args[1] = 6 - args[1];
+        args[2] = 6 - args[2];
+        args[3] = 6 - args[3];
     }
 
     public void InvertForController(int playerFrom)

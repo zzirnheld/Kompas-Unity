@@ -1,15 +1,10 @@
 {
 "cardType":83,
-"x":0,
-"y":0,
 "cardName":"Dance to the Beating",
 "effText":"Our Song: When I'm cast, dispel all friendly Themes. Draw 1. Give all friendly characters +1NW and all enemy characters -1NW.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "d":4,
 "subtype":1,
-"subtext":"Theme Enchant",
-"fast":false
+"subtext":"Theme Enchant"
 }

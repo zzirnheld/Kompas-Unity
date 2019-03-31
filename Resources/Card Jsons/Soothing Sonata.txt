@@ -2,8 +2,6 @@
 "cardType":83,
 "cardName":"Soothing Sonata",
 "effText":"Our Song: When I'm cast, dispel all friendly Themes. Draw 1. While there's a friendly Bard, give all enemy characters -2W.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "d":3,

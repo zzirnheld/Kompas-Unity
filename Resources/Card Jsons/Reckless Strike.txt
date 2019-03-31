@@ -1,11 +1,7 @@
 {
 "cardType":83,
-"x":0,
-"y":0,
 "cardName":"Reckless Strike",
 "effText":"Cast when a friendly Warrior wielding a Sword attacks. I give them and their target +5W.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "d":2,

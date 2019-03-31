@@ -1,11 +1,7 @@
 {
 "cardType":83,
-"x":0,
-"y":0,
 "cardName":"Odal",
 "effText":"Runic: Can't be cast normally. If a CS Runer died this turn, decksummon an SX Runer.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "d":1,

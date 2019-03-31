@@ -1,11 +1,7 @@
 {
 "cardType":67,
-"x":0,
-"y":0,
 "cardName":"Auram the Greedy",
 "effText":"Territorial: When turns end, kill an adjacent friendly Dragon. When I attack, you can give me -XE to draw X.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "n":1,
@@ -14,6 +10,5 @@
 "w":8,
 "m":1,
 "subtypes":["Dragon"],
-"subtypeText":"Dragon",
-"augments":[]
+"subtypeText":"Dragon"
 }

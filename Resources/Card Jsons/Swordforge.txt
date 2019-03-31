@@ -1,11 +1,7 @@
 {
 "cardType":83,
-"x":0,
-"y":0,
 "cardName":"Swordforge",
 "effText":"Hand-reshuffle a Warrior. Search your deck for a Warrior and a Sword.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "d":1,

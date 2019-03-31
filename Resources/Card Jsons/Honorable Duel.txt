@@ -1,11 +1,7 @@
 {
 "cardType":83,
-"x":0,
-"y":0,
 "cardName":"Honorable Duel",
 "effText":"Your summoned Warrior with the most W attacks the summoned enemy with the most W. This is a duel. Inflict backlash.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "d":1,

@@ -1,16 +1,11 @@
 {
 "cardType":83,
-"x":0,
-"y":0,
 "cardName":"Berkanan",
 "effText":"Runic: Can't be cast normally. If it's your turn, take control of an enemy character and your turn ends.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "d":8,
 "subtype":0,
 "subtext":"Rune Simple",
-"fast":false,
-"augments":[]
+"fast":false
 }

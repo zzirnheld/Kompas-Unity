@@ -1,11 +1,7 @@
 {
 "cardType":83,
-"x":0,
-"y":0,
 "cardName":"Heroic Leitmotif",
 "effText":"Our Song: When I'm cast, dispel all friendly Themes. Draw 1. While there's a friendly Bard, give friendly characters +1NESW.",
-"location":2,
-"controller":0,
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
 "d":4,
