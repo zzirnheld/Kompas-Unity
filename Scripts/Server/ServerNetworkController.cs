@@ -203,13 +203,30 @@ public class ServerNetworkController : NetworkController {
                     //tell everyone to do it
                     outPacket = new Packet(Packet.Command.Move, toMove, packet.X, packet.Y);
                     outPacketInverted = new Packet(Packet.Command.Move, toMove, packet.X, packet.Y, true);
+                    SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
+                }
+                //try to see if it's a valid attack, if it's not a valid move
+                else if(ServerGame.mainServerGame.ValidAttack(toMove, packet.X, packet.Y))
+                {
+                    //then resolve the attack
+                    //TODO allow for activation of abilities, fast cards
+                    CharacterCard attacker = toMove as CharacterCard;
+                    CharacterCard defender = ServerGame.mainServerGame.boardCtrl.GetCharAt(packet.X, packet.Y);
+                    attacker.Attack(defender);
+
+                    outPacket = new Packet(Packet.Command.SetNESW, attacker, attacker.N, attacker.E, attacker.S, attacker.W);
+                    outPacketInverted = new Packet(Packet.Command.SetNESW, attacker, attacker.N, attacker.E, attacker.S, attacker.W);
+                    SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
+                    outPacket = new Packet(Packet.Command.SetNESW, defender, defender.N, defender.E, defender.S, defender.W);
+                    outPacketInverted = new Packet(Packet.Command.SetNESW, defender, defender.N, defender.E, defender.S, defender.W);
+                    SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 }
                 else
                 {
                     outPacket = new Packet(Packet.Command.PutBack);
                     outPacketInverted = null;
+                    SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 }
-                SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 break;
             case Packet.Command.Topdeck:
                 Card toTopdeck = ServerGame.mainServerGame.GetCardFromID(packet.cardID);
@@ -279,6 +296,13 @@ public class ServerNetworkController : NetworkController {
         //let everyone know
         Packet outPacket = new Packet(Packet.Command.SetPips, pipsToSet);
         Packet outPacketInverted = new Packet(Packet.Command.SetEnemyPips, pipsToSet);
+        SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
+    }
+
+    public void SetTurn(NetworkConnection connectionID, int indexToSet)
+    {
+        Packet outPacket = new Packet(Packet.Command.EndTurn, indexToSet);
+        Packet outPacketInverted = new Packet(Packet.Command.EndTurn, indexToSet);
         SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
     }
 }

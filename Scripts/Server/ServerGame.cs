@@ -35,23 +35,6 @@ public class ServerGame : Game {
     {
         mainGame = this;
         mainServerGame = this;
-        /*
-        players[0] = new Player(0);
-        players[1] = new Player(1);
-        //set your stuff
-        players[0].handCtrl = player1HandCtrl;
-        players[0].deckCtrl = player1DeckCtrl;
-        players[0].discardCtrl = player1DiscardCtrl;
-        players[0].handObject = player1HandObj;
-        players[0].deckObject = player1DeckObj;
-        players[0].discardObject = player1DiscardObj;
-        //and the player2 stuff
-        players[1].handCtrl = player2HandCtrl;
-        players[1].deckCtrl = player2DeckCtrl;
-        players[1].discardCtrl = player2DiscardCtrl;
-        players[1].handObject = player2HandObj;
-        players[1].deckObject = player2DeckObj;
-        players[1].discardObject = player2DiscardObj;*/
     }
 
     public int AddPlayer(NetworkConnection connectionID)
@@ -164,14 +147,15 @@ public class ServerGame : Game {
 
     public bool ValidMove(Card toMove, int toX, int toY)
     {
-        //when make automated, add logic to determine if it's a valid move
-        //for now, tho, just allow
-        return true;
+        if (!(toMove is CharacterCard)) return false;
+        return toMove.DistanceTo(toX, toY) < (toMove as CharacterCard).M
+            && (boardCtrl.GetCardAt(toX, toY) == null || boardCtrl.GetCardAt(toX, toY).Owner == toMove.Owner);
+    }
 
-        /*(Card fromCard = boardCtrl.GetCardAt(fromX, fromY);
-        Card toCard = boardCtrl.GetCardAt(toX, toY);
-        return toCard == null ||
-            (fromCard is CharacterCard && toCard is CharacterCard);*/
+    public bool ValidAttack(Card toMove, int toX, int toY)
+    {
+        if (!(toMove is CharacterCard)) return false;
+        return toMove.DistanceTo(toX, toY) == 1;
     }
 
     #endregion
@@ -181,7 +165,11 @@ public class ServerGame : Game {
         turnPlayer = 1 - turnPlayer;
         GiveTurnPlayerPips();
 
+        //reset everyone's M
+        boardCtrl.ResetCardsM();
+
         //draw for turn and store what was drawn
         (networkCtrl as ServerNetworkController).AttemptToDraw(turnPlayer, players[turnPlayer].ConnectionID);
+        (networkCtrl as ServerNetworkController).SetTurn(players[turnPlayer].ConnectionID, turnPlayer);
     }
 }

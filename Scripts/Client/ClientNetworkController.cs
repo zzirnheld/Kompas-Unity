@@ -118,6 +118,10 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.PutBack:
                 //TODO make it put back all cards?
                 break;
+            case Packet.Command.EndTurn:
+                ClientGame.mainClientGame.turnPlayer = 1 - ClientGame.mainClientGame.turnPlayer;
+                ClientGame.mainClientGame.boardCtrl.ResetCardsM();
+                break;
             default:
                 Debug.Log("Unrecognized command sent to client");
                 break;

@@ -74,38 +74,37 @@ public class UIController : MonoBehaviour {
 
     public void SelectCard(Card card)
     {
-        if (card == null) Debug.Log("Selecting Null");
-        else Debug.Log("Selecting " + card.CardName);
-        selectedCard = card;
-
         //if the card is null, deselect everything
-        if(card == null)
+        if (card == null)
         {
+            Debug.Log("Selecting Null");
             selectedCardNameText.text = "No Card Selected";
             selectedCardImage.sprite = Resources.Load<Sprite>("Kompas Circle Background");
             selectedCardStatsText.text = "";
             selectedCardSubtypesText.text = "";
             selectedCardEffText.text = "";
-            return;
         }
+
+        Debug.Log("Selecting " + card.CardName);
+        selectedCard = card;
 
         //do something based on what type the card is
         if(card is CharacterCard)
         {
             selectedChar = card as CharacterCard;
             selectedCardStatsText.text = selectedChar.GetStatsString();
-            selectedCardSubtypesText.text = selectedChar.SubtypeText;
         }
         else if(card is SpellCard)
         {
             selectedSpell = selectedCard as SpellCard;
+            selectedCardStatsText.text = "";
         }
 
         //set all common values
+        selectedCardSubtypesText.text = card.SubtypeText;
         selectedCardNameText.text = card.CardName;
         selectedCardImage.sprite = card.DetailedSprite;
         selectedCardEffText.text = card.EffText;
-
     }
 
     #region updating pips

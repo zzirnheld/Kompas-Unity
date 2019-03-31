@@ -55,6 +55,14 @@ public class BoardController : KompasObject
         }
         return i;
     }
+
+    public void ResetCardsM()
+    {
+        foreach(Card c in cards)
+        {
+            if (c is CharacterCard) (c as CharacterCard).ResetM();
+        }
+    }
     #endregion
 
     #region game mechanics

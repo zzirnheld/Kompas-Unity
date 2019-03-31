@@ -134,6 +134,21 @@ public class CharacterCard : Card {
         W = w;
     }
 
+    public void ResetM()
+    {
+        M = N;
+    }
+
+    public int GetCombatDamage()
+    {
+        return W;
+    }
+
+    public void DealCombatDamage(int dmg)
+    {
+        E -= dmg;
+    }
+
     //game mechanics
     public override void MoveTo(int toX, int toY)
     {
@@ -158,6 +173,15 @@ public class CharacterCard : Card {
         AugmentCard aug = augments[index];
         augments.RemoveAt(index);
         aug.ThisCharacter = null;
+    }
+
+    public void Attack(CharacterCard defender)
+    {
+        int attackerDmg = GetCombatDamage();
+        int defenderDmg = defender.GetCombatDamage();
+
+        defender.DealCombatDamage(attackerDmg);
+        DealCombatDamage(defenderDmg);
     }
 
 

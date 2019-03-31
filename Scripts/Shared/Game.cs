@@ -178,7 +178,12 @@ public class Game : MonoBehaviour {
     }
 
     //ui
-    public virtual void SelectCard(Card card) { uiCtrl.SelectCard(card); }
+    public virtual void SelectCard(Card card)
+    {
+        uiCtrl.SelectCard(card);
+
+        //if we're targeting, 
+    }
     #endregion forwarding
 
 
