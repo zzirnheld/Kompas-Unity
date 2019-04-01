@@ -107,11 +107,16 @@ public class Game : MonoBehaviour {
         Rehand(toRehand, toRehand.Owner);
     }
 
-    public void Play(Card card, int toX, int toY, int player = 0, bool remove = true)
+    public void Play(Card card, int toX, int toY, int player, bool remove = true)
     {
         if(remove) Remove(card, player);
 
         boardCtrl.Play(card, toX, toY, player);
+    }
+
+    public void Play(Card card, int toX, int toY)
+    {
+        Play(card, toX, toY, card.Owner);
     }
 
     public void Play(int cardID, int toX, int toY)

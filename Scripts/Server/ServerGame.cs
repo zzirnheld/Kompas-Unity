@@ -131,6 +131,7 @@ public class ServerGame : Game {
     #region check validity
     public bool ValidBoardPlay(Card card, int toX, int toY)
     {
+        Debug.Log("Trying to play " + card.CardName + " to " + toX + ", " + toY);
         return card != null 
             && (card is CharacterCard || card is SpellCard)
             && boardCtrl.ValidIndices(toX, toY) 
@@ -147,8 +148,9 @@ public class ServerGame : Game {
 
     public bool ValidMove(Card toMove, int toX, int toY)
     {
+        Debug.Log("validmove checking move " + toMove.CardName + " to " + boardCtrl.GetCardAt(toX, toY) + "boardctrl " + boardCtrl.GetCardAt(toX, toY).Owner + " tomove owner " + toMove.Owner);
         if (!(toMove is CharacterCard)) return false;
-        return toMove.DistanceTo(toX, toY) < (toMove as CharacterCard).M
+        return toMove.DistanceTo(toX, toY) <= (toMove as CharacterCard).M
             && (boardCtrl.GetCardAt(toX, toY) == null || boardCtrl.GetCardAt(toX, toY).Owner == toMove.Owner);
     }
 

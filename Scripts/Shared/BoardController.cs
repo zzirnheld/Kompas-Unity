@@ -165,6 +165,14 @@ public class BoardController : KompasObject
         else Swap(card, toX, toY);
     }
 
+    public void PutCardsBack()
+    {
+        foreach(Card card in cards)
+        {
+            if(card != null) card.PutBack();
+        }
+    }
+
     #endregion game mechanics
 
     #region cycling visible cards

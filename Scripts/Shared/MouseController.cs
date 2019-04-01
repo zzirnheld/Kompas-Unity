@@ -115,7 +115,7 @@ public class MouseController : MonoBehaviour {
             handHit = kompasObjectHit as HandController;
             //this might get clicked if the player misses clicking a card to target. do anything?
         }
-        else Debug.Log("IDK what we hit. it wasn't null and it wasn't a card.");
+        //else Debug.Log("IDK what we hit. it wasn't null and it wasn't a card.");
     }
 
 

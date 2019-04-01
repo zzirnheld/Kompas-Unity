@@ -81,7 +81,7 @@ public class ServerNetworkController : NetworkController {
             while((cmd = mDriver.PopEventForConnection(mConnections[i], out reader)) != NetworkEvent.Type.Empty)
             {
                 if (cmd == NetworkEvent.Type.Data) {
-                    Debug.Log("Recieved Data Event");
+                    //Debug.Log("Recieved Data Event");
                     var readerCtxt = default(DataStreamReader.Context);
                     byte[] packetBuffer = reader.ReadBytesAsArray(ref readerCtxt, BUFFER_SIZE);
                     ParseRequest(packetBuffer, mConnections[i]);
@@ -123,16 +123,16 @@ public class ServerNetworkController : NetworkController {
 
     private void ParseRequest(byte[] buffer, NetworkConnection connectionID)
     {
-        Debug.Log("recieved packet");
+        //Debug.Log("recieved packet");
         Packet packet = Deserialize(buffer);
         if (packet == null) return;
 
-        Debug.Log("packet command is " + packet.command);
 
         Packet outPacket = null;
         Packet outPacketInverted = null;
         int playerIndex = ServerGame.mainServerGame.GetPlayerIndexFromID(connectionID);
         packet.InvertForController(playerIndex);
+        Debug.Log("packet command is " + packet.command + " for player index " + playerIndex);
 
         //switch between all the possible requests for the server to handle.
         switch (packet.command)
@@ -141,9 +141,11 @@ public class ServerNetworkController : NetworkController {
                 //figure out who's getting the card to their deck
                 Player owner = ServerGame.mainServerGame.Players[playerIndex];
                 Debug.Log("owner is " + owner + ", server game is " + ServerGame.mainServerGame + ", packet is " + packet + ", owner index is " + playerIndex);
-                Debug.Log("deck ctrl is " + (owner.deckCtrl == null));
+                //.Log("deck ctrl is " + (owner.deckCtrl == null));
                 //add the card in, with the cardCount being the card id, then increment the card count
                 Card added = owner.deckCtrl.AddCard(packet.CardName, ServerGame.mainServerGame.cardCount, playerIndex);
+                Debug.Log("added info is " + added.Owner + " and id: " + added.ID);
+                Debug.Log("new get card id owner is " + ServerGame.mainServerGame.GetCardFromID(ServerGame.mainServerGame.cardCount).Owner + " and id is " + ServerGame.mainServerGame.cardCount);
                 ServerGame.mainServerGame.cardCount++;
                 //let everyone know
                 outPacket = new Packet(Packet.Command.AddToDeck, packet.CardName, added.ID);
@@ -194,9 +196,11 @@ public class ServerNetworkController : NetworkController {
             case Packet.Command.Move:
                 //get the card to move
                 Card toMove = ServerGame.mainServerGame.GetCardFromID(packet.cardID);
+                Debug.Log("packet card id is " + packet.cardID + "; its owner is " + toMove.Owner);
                 //if it's not a valid place to do, return
                 if (ServerGame.mainServerGame.ValidMove(toMove, packet.X, packet.Y))
                 {
+                    Debug.Log("move");
                     //play the card here
                     ServerGame.mainServerGame.Move(toMove, packet.X, packet.Y);
                     //re/de-invert the packet so it gets sent back correctly
@@ -209,6 +213,11 @@ public class ServerNetworkController : NetworkController {
                 //try to see if it's a valid attack, if it's not a valid move
                 else if(ServerGame.mainServerGame.ValidAttack(toMove, packet.X, packet.Y))
                 {
+                    Debug.Log("attack");
+                    //tell the players to put cards down where they were
+                    outPacket = new Packet(Packet.Command.PutBack);
+                    outPacketInverted = new Packet(Packet.Command.PutBack);
+                    SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                     //then resolve the attack
                     //TODO allow for activation of abilities, fast cards
                     CharacterCard attacker = toMove as CharacterCard;
@@ -224,6 +233,7 @@ public class ServerNetworkController : NetworkController {
                 }
                 else
                 {
+                    Debug.Log("putback");
                     outPacket = new Packet(Packet.Command.PutBack);
                     outPacketInverted = null;
                     SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);

@@ -116,7 +116,7 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.mainClientGame.SetEnemyPips(packet.Pips);
                 break;
             case Packet.Command.PutBack:
-                //TODO make it put back all cards?
+                ClientGame.mainClientGame.boardCtrl.PutCardsBack();
                 break;
             case Packet.Command.EndTurn:
                 ClientGame.mainClientGame.turnPlayer = 1 - ClientGame.mainClientGame.turnPlayer;

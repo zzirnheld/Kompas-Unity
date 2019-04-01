@@ -14,33 +14,25 @@ public class Packet {
     /// <para>Possible commands include: Summon, Cast, Augment, SetNESW, SetMyPips, SetYourPips, MoveChar, MoveSpell</para>
     /// </summary>
     public Command command;
-
-    /*public SerializableCharCard serializedChar;
-    public SerializableSpellCard serializedSpell;
-    public SerializableAugCard serializedAug;*/
+    
     public int cardID;
 
     public int[] args;
+
     public string CardName { get { return Game.CardNames[args[1]]; } }
     public int CardIDToBe { get { return args[0]; } }
+
     public int Pips { get { return args[0]; } }
+
     public int X { get { return args[2]; } }
     public int Y { get { return args[3]; } }
+
     public int N { get { return args[0]; } }
     public int E { get { return args[1]; } }
     public int S { get { return args[2]; } }
     public int W { get { return args[3]; } }
 
-    //public string args;
-    //public int x;
-    //public int y;
-    //public int n;
-    //public int e;
-    //public int s;
-    //public int w;
-    //public int num;
-    //public char cardType;
-
+    #region constuctors 
     public Packet(Command command)
     {
         this.command = command;
@@ -71,8 +63,7 @@ public class Packet {
 
     public Packet(Command command, Card card) : this(command)
     {
-        if(card != null)
-        cardID = card.ID;
+        if(card != null) cardID = card.ID;
     }
 
     public Packet(Command command, Card card, int num) : this(command, card)
@@ -101,6 +92,8 @@ public class Packet {
         args[2] = s;
         args[3] = w;
     }
+#endregion 
+
 
     public void Invert()
     {
