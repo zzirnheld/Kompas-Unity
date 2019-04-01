@@ -121,6 +121,14 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.EndTurn:
                 ClientGame.mainClientGame.turnPlayer = 1 - ClientGame.mainClientGame.turnPlayer;
                 ClientGame.mainClientGame.boardCtrl.ResetCardsM();
+                if(ClientGame.mainClientGame.turnPlayer == 0) ClientGame.mainClientGame.uiCtrl.CurrentStateString = "Your Turn";
+                else ClientGame.mainClientGame.uiCtrl.CurrentStateString = "Enemy Turn";
+                break;
+            case Packet.Command.YoureFirst:
+                ClientGame.mainClientGame.turnPlayer = 0;
+                break;
+            case Packet.Command.YoureSecond:
+                ClientGame.mainClientGame.turnPlayer = 1;
                 break;
             default:
                 Debug.Log("Unrecognized command sent to client");

@@ -7,7 +7,7 @@ using UnityEngine;
 public class Packet {
 
     public enum Command { Play, Augment, Move, Topdeck, Discard, Rehand, AddToDeck, AddToEnemyDeck,
-        Draw, SetNESW, SetPips, SetEnemyPips, PutBack, EndTurn, GetAttackTarget}
+        Draw, SetNESW, SetPips, SetEnemyPips, PutBack, EndTurn, GetAttackTarget, YoureFirst, YoureSecond}
 
     /// <summary>
     /// Contains the command that is sent.
@@ -97,13 +97,14 @@ public class Packet {
 
     public void Invert()
     {
+
         args[2] = 6 - args[2];
         args[3] = 6 - args[3];
     }
 
     public void InvertForController(int playerFrom)
     {
-        if (playerFrom == 1) Invert();
+        if (playerFrom == 1 && command != Command.SetNESW) Invert();
     }
 
 }

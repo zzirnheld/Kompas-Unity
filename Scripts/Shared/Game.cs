@@ -97,6 +97,7 @@ public class Game : MonoBehaviour {
 
     public void Rehand(Card card, int player = 0)
     {
+
         Remove(card, player);
         players[player].handCtrl.AddToHand(card);
     }
