@@ -54,12 +54,7 @@ public class ClientNetworkController : NetworkController {
             {
                 //connected to server
                 Debug.Log("connected to server");
-                //how to send stuff:
-                /*using (var writer = new DataStreamWriter(4, Unity.Collections.Allocator.Temp))
-                {
-                    writer.Write(byte array, length);
-                    mConnection.Send(mDriver, writer);
-                }*/
+                ClientGame.mainClientGame.uiCtrl.CurrentStateString = "Connected to Server";
             }
             if (cmd == NetworkEvent.Type.Data)
             {
@@ -139,7 +134,6 @@ public class ClientNetworkController : NetworkController {
     #region Request Actions
     public void RequestPlay(Card card, int toX, int toY)
     {
-        //card.PutBack();
         Packet packet;
         if (card is AugmentCard) packet = new Packet(Packet.Command.Augment, card, toX, toY);
         else packet = new Packet(Packet.Command.Play, card, toX, toY);
@@ -148,28 +142,24 @@ public class ClientNetworkController : NetworkController {
 
     public void RequestMove(Card card, int toX, int toY)
     {
-        //card.PutBack();
         Packet packet = new Packet(Packet.Command.Move, card, toX, toY);
         Send(packet, mDriver, mConnection);
     }
 
     public void RequestTopdeck(Card card)
     {
-        //card.PutBack();
         Packet packet = new Packet(Packet.Command.Topdeck, card);
         Send(packet, mDriver, mConnection);
     }
 
     public void RequestDiscard(Card card)
     {
-        //card.PutBack();
         Packet packet = new Packet(Packet.Command.Discard, card);
         Send(packet, mDriver, mConnection);
     }
 
     public void RequestRehand(Card card)
     {
-        //card.PutBack();
         Packet packet = new Packet(Packet.Command.Rehand, card);
         Send(packet, mDriver, mConnection);
     }
