@@ -60,7 +60,7 @@ public class BoardController : KompasObject
     {
         foreach(Card c in cards)
         {
-            if (c is CharacterCard) (c as CharacterCard).ResetM();
+            if (c is CharacterCard charC) charC.ResetM();
         }
     }
     #endregion
@@ -72,8 +72,7 @@ public class BoardController : KompasObject
 
         if (toRemove is CharacterCard || toRemove is SpellCard)
             cards[toRemove.BoardX, toRemove.BoardY] = null;
-        else if (toRemove is AugmentCard)
-            (toRemove as AugmentCard).Detach();
+        else if (toRemove is AugmentCard augToRemove) augToRemove.Detach();
     }
 
     public void RemoveFromBoard(int x, int y) { RemoveFromBoard(GetCardAt(x, y)); }
@@ -123,7 +122,7 @@ public class BoardController : KompasObject
     {
         if (toPlay is CharacterCard charToPlay) Summon(charToPlay, toX, toY, owner);
         else if (toPlay is AugmentCard augmentToPlay) Augment(augmentToPlay, toX, toY, owner);
-        else if (toPlay is SpellCard spellToPlay) Cast(spellToPlay as SpellCard, toX, toY, owner);
+        else if (toPlay is SpellCard spellToPlay) Cast(spellToPlay, toX, toY, owner);
         else Debug.Log("Can't play a card that isn't a character, augment, or spell.");
 
         int i = GetNumCardsOnBoard();
@@ -163,7 +162,7 @@ public class BoardController : KompasObject
         if (card is AugmentCard augCard)
         {
             augCard.Detach();
-            GetCharAt(toX, toY).AddAugment(card as AugmentCard);
+            GetCharAt(toX, toY).AddAugment(augCard);
         }
         else Swap(card, toX, toY);
     }
@@ -186,10 +185,11 @@ public class BoardController : KompasObject
         {
             if (card == null) continue;
 
-            if (card is CharacterCard)
+            if (card is CharacterCard charCard)
             {
                 card.gameObject.SetActive(charsActive);
-                foreach (AugmentCard augment in (card as CharacterCard).Augments) augment.gameObject.SetActive(augsActive);
+                foreach (AugmentCard augment in charCard.Augments)
+                    augment.gameObject.SetActive(augsActive);
             }
             else if (card is SpellCard) card.gameObject.SetActive(spellsActive);
         }

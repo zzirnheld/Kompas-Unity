@@ -52,8 +52,7 @@ public class SpellCard : Card
     //set data
     public override void SetInfo(SerializableCard serializedCard)
     {
-        if (!(serializedCard is SerializableSpellCard)) return;
-        SerializableSpellCard serializedSpell = serializedCard as SerializableSpellCard;
+        if (!(serializedCard is SerializableSpellCard serializedSpell)) return;
 
         d = serializedSpell.d;
         subtext = serializedSpell.subtext;

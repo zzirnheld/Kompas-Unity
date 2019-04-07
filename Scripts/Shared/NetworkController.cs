@@ -51,7 +51,7 @@ public class NetworkController : MonoBehaviour
         //close the stream
         stream.Close();
         //if the object you deserialized is a packet, great! return it
-        if (o is Packet) return o as Packet;
+        if (o is Packet packet) return packet;
         //otherwise don't return anything
         return null;
     }

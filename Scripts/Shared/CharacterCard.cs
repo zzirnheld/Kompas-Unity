@@ -100,8 +100,7 @@ public class CharacterCard : Card {
     //set information
     public override void SetInfo(SerializableCard serializedCard)
     {
-        if (!(serializedCard is SerializableCharCard)) return;
-        SerializableCharCard serializedChar = serializedCard as SerializableCharCard;
+        if (!(serializedCard is SerializableCharCard serializedChar)) return;
 
         n = serializedChar.n;
         e = serializedChar.e;
