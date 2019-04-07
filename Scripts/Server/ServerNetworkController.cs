@@ -200,7 +200,7 @@ public class ServerNetworkController : NetworkController {
                 if (ServerGame.mainServerGame.ValidMove(toMove, packet.X, packet.Y))
                 {
                     Debug.Log("move");
-                    //play the card here
+                    //move the card there
                     ServerGame.mainServerGame.Move(toMove, packet.X, packet.Y);
                     //re/de-invert the packet so it gets sent back correctly
                     packet.InvertForController(playerIndex);

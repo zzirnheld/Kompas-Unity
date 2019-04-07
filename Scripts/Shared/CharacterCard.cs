@@ -9,7 +9,7 @@ public class CharacterCard : Card {
     private int e;
     private int s;
     private int w;
-    private int m;
+    private int baseN;
 
     private string[] subtypes;
     private List<AugmentCard> augments = new List<AugmentCard>();
@@ -28,7 +28,6 @@ public class CharacterCard : Card {
         {
             n = value;
             //update movement: if you gain n, gain that much m, if you lose n, lose that much n
-            M += n - this.n;
         }
     }
     public int E
@@ -62,15 +61,6 @@ public class CharacterCard : Card {
         }
         set { w = value; }
     }
-    public int M
-    {
-        get
-        {
-            if (m < 0) return 0;
-            return m;
-        }
-        set { m = value; }
-    }
     #endregion stats
 
     public string[] Subtypes { get { return subtypes; } }
@@ -95,8 +85,7 @@ public class CharacterCard : Card {
             s = s,
             w = w,
             subtypes = subtypes,
-
-            m = m,
+            
             location = location,
             owner = owner,
             BoardX = boardX,
@@ -119,7 +108,7 @@ public class CharacterCard : Card {
         s = serializedChar.s;
         w = serializedChar.w;
         subtypes = serializedChar.subtypes;
-        m = serializedChar.m;
+        baseN = serializedChar.n;
 
         base.SetInfo(serializedCard);
     }
@@ -136,7 +125,7 @@ public class CharacterCard : Card {
 
     public void ResetM()
     {
-        M = N;
+        N = baseN;
     }
 
     public int GetCombatDamage()

@@ -121,9 +121,9 @@ public class BoardController : KompasObject
     /// <param name="toY">Y coordinate to play the card to</param>
     public void Play(Card toPlay, int toX, int toY, int owner = 0)
     {
-        if (toPlay is CharacterCard) Summon(toPlay as CharacterCard, toX, toY, owner);
-        else if (toPlay is AugmentCard) Augment(toPlay as AugmentCard, toX, toY, owner);
-        else if (toPlay is SpellCard) Cast(toPlay as SpellCard, toX, toY, owner);
+        if (toPlay is CharacterCard charToPlay) Summon(charToPlay, toX, toY, owner);
+        else if (toPlay is AugmentCard augmentToPlay) Augment(augmentToPlay, toX, toY, owner);
+        else if (toPlay is SpellCard spellToPlay) Cast(spellToPlay as SpellCard, toX, toY, owner);
         else Debug.Log("Can't play a card that isn't a character, augment, or spell.");
 
         int i = GetNumCardsOnBoard();
@@ -133,21 +133,24 @@ public class BoardController : KompasObject
     //movement
     public void Swap(Card card, int toX, int toY)
     {
-        if (!ValidIndices(toX, toY) || card == null) return;
+        if (!ValidIndices(toX, toY) || card == null || card is AugmentCard) return;
+
 
         Card temp = null;
         int tempX;
         int tempY;
-        if (card is CharacterCard || card is SpellCard)
-        {
-            temp                            = cards[toX, toY];
-            cards[toX, toY]                 = card;
-            cards[card.BoardX, card.BoardY] = temp;
-        }
-        else if (card is AugmentCard) return; //TODO swap lists of augs
-
+        temp                            = cards[toX, toY];
+        cards[toX, toY]                 = card;
+        cards[card.BoardX, card.BoardY] = temp;
+        
         tempX = card.BoardX;
         tempY = card.BoardY;
+
+        //set N if cards are characters
+        if (card is CharacterCard charCard) charCard.N -= charCard.DistanceTo(toX, toY);
+        if (temp is CharacterCard charTemp) charTemp.N -= charTemp.DistanceTo(tempX, tempY);
+        //note 
+
         //then let the cards know they've been moved
         card.MoveTo(toX, toY);
         if (temp != null) temp.MoveTo(tempX, tempY);
@@ -157,9 +160,9 @@ public class BoardController : KompasObject
     {
         if (!ValidIndices(toX, toY)) return;
 
-        if (card is AugmentCard)
+        if (card is AugmentCard augCard)
         {
-            (card as AugmentCard).Detach();
+            augCard.Detach();
             GetCharAt(toX, toY).AddAugment(card as AugmentCard);
         }
         else Swap(card, toX, toY);

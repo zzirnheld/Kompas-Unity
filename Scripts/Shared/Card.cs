@@ -267,6 +267,7 @@ public abstract class Card : KompasObject {
     //playing cards
     /// <summary>
     /// sets this card's x and y values and updates where its gameobject is.
+    /// does NOT set M if the card is a character
     /// </summary>
     public virtual void MoveTo(int toX, int toY)
     {
