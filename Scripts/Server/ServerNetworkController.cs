@@ -73,6 +73,7 @@ public class ServerNetworkController : NetworkController {
         //loop through each connection
         for(int i = 0; i < mConnections.Length; i++)
         {
+            if (i > 2) Debug.Log("WEE WOO " + mConnections.Length);
             //if the connection doesn't exist, skip to the next connection
             if (!mConnections[i].IsCreated) continue;
 
@@ -85,16 +86,11 @@ public class ServerNetworkController : NetworkController {
                     var readerCtxt = default(DataStreamReader.Context);
                     byte[] packetBuffer = reader.ReadBytesAsArray(ref readerCtxt, BUFFER_SIZE);
                     ParseRequest(packetBuffer, mConnections[i]);
-
-                    /*using (var writer = new DataStreamWriter(4, Allocator.Temp)) //make the number large enough to contain entire byte array to be sent
-                    {
-                        writer.Write(byte array, length of array or leave out);
-                        mDriver.Send(mConnections[i], writer);
-                    }*/
                 }
                 else if(cmd == NetworkEvent.Type.Disconnect)
                 {
                     Debug.Log("Client disconnected from server");
+                    ServerGame.mainServerGame.uiCtrl.CurrentStateString = "Player " + i + " disconnected";
                     mConnections[i] = default(NetworkConnection); //default gets the default value of whatever type
                 }
             }
@@ -132,11 +128,14 @@ public class ServerNetworkController : NetworkController {
         Packet outPacketInverted = null;
         int playerIndex = ServerGame.mainServerGame.GetPlayerIndexFromID(connectionID);
         packet.InvertForController(playerIndex);
-        Debug.Log("packet command is " + packet.command + " for player index " + playerIndex);
+        //Debug.Log("packet command is " + packet.command + " for player index " + playerIndex);
 
         //switch between all the possible requests for the server to handle.
         switch (packet.command)
         {
+            case Packet.Command.Nothing:
+                SendPackets(new Packet(Packet.Command.Nothing), new Packet(Packet.Command.Nothing), ServerGame.mainServerGame, connectionID);
+                break;
             case Packet.Command.AddToDeck:
                 //figure out who's getting the card to their deck
                 Player owner = ServerGame.mainServerGame.Players[playerIndex];

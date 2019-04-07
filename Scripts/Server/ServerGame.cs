@@ -148,7 +148,7 @@ public class ServerGame : Game {
 
     public bool ValidMove(Card toMove, int toX, int toY)
     {
-        Debug.Log("validmove checking move " + toMove.CardName + " to " + boardCtrl.GetCardAt(toX, toY) + "boardctrl " + boardCtrl.GetCardAt(toX, toY).Owner + " tomove owner " + toMove.Owner);
+        //Debug.Log("validmove checking move " + toMove.CardName + " to " + boardCtrl.GetCardAt(toX, toY) + "boardctrl " + boardCtrl.GetCardAt(toX, toY).Owner + " tomove owner " + toMove.Owner);
         if (!(toMove is CharacterCard)) return false;
         return toMove.DistanceTo(toX, toY) <= (toMove as CharacterCard).M
             && (boardCtrl.GetCardAt(toX, toY) == null || boardCtrl.GetCardAt(toX, toY).Owner == toMove.Owner);

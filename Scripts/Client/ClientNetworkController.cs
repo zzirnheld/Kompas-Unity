@@ -12,7 +12,6 @@ public class ClientNetworkController : NetworkController {
 
     public UdpCNetworkDriver mDriver;
     public NetworkConnection mConnection;
-    public bool Done;
     private bool Hosting = false;
 
     public void Start()
@@ -42,9 +41,11 @@ public class ClientNetworkController : NetworkController {
         mDriver.ScheduleUpdate().Complete();
         if (!mConnection.IsCreated)
         {
-            if (!Done) Debug.Log("Something went wrong in connection");
-            else return;
+            Debug.Log("Something went wrong in connection");
+            return;
         }
+
+        Send(new Packet(Packet.Command.Nothing), mDriver, mConnection);
 
         DataStreamReader reader;
         NetworkEvent.Type cmd;
@@ -65,7 +66,9 @@ public class ClientNetworkController : NetworkController {
             else if (cmd == NetworkEvent.Type.Disconnect)
             {
                 Debug.Log("Client disconnected from server");
+                ClientGame.mainClientGame.uiCtrl.CurrentStateString = "Disconnected from server";
                 mConnection = default(NetworkConnection); //default gets the default value of whatever type
+                Hosting = false;
             }
         }
     }
@@ -78,6 +81,8 @@ public class ClientNetworkController : NetworkController {
 
         switch (packet.command)
         {
+            case Packet.Command.Nothing:
+                break;
             case Packet.Command.AddToDeck:
                 ClientGame.mainClientGame.friendlyDeckCtrl.AddCard(packet.CardName, packet.CardIDToBe);
                 break;

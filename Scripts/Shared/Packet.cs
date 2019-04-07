@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public class Packet {
 
-    public enum Command { Play, Augment, Move, Topdeck, Discard, Rehand, AddToDeck, AddToEnemyDeck,
+    public enum Command { Nothing, Play, Augment, Move, Topdeck, Discard, Rehand, AddToDeck, AddToEnemyDeck,
         Draw, SetNESW, SetPips, SetEnemyPips, PutBack, EndTurn, GetAttackTarget, YoureFirst, YoureSecond}
 
     /// <summary>
