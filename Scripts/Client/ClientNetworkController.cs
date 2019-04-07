@@ -96,6 +96,8 @@ public class ClientNetworkController : NetworkController {
                 break;
             case Packet.Command.Move:
                 ClientGame.mainClientGame.Move(packet.cardID, packet.X, packet.Y);
+                //make the ui show the updated n (and other values)
+                ClientGame.mainClientGame.uiCtrl.SelectCard(ClientGame.mainClientGame.uiCtrl.SelectedCard);
                 break;
             case Packet.Command.Topdeck:
                 ClientGame.mainClientGame.Topdeck(packet.cardID);
