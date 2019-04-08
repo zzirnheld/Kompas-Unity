@@ -13,8 +13,47 @@ using UdpCNetworkDriver = Unity.Networking.Transport.BasicNetworkDriver<Unity.Ne
 public class NetworkController : MonoBehaviour
 {
 
-    //protected int BUFFER_SIZE = sizeof(int) * 5 + sizeof(Packet.Command);
     protected const int BUFFER_SIZE = 236; //size of serialized Packet()
+
+    /*struct SentThing
+    {
+        public Packet packet;
+        public UdpCNetworkDriver networkDriver;
+        public NetworkConnection connection;
+        public int count;
+
+        public SentThing(Packet p, UdpCNetworkDriver d, NetworkConnection c)
+        {
+            packet = p;
+            networkDriver = d;
+            connection = c;
+            count = 0;
+        }
+    }
+
+    //protected int BUFFER_SIZE = sizeof(int) * 5 + sizeof(Packet.Command);
+
+    List<SentThing> sentPackets;
+
+    void Awake()
+    {
+        sentPackets = new List<SentThing>();
+    }
+
+    void Update()
+    {
+        for(int i = 0; i < sentPackets.Count; i++)
+        {
+            SentThing s = sentPackets[i];
+            s.count++;
+            if(s.count > 100)
+            {
+                sentPackets.Remove(s);
+                i--;
+                Send(s.packet, s.networkDriver, s.connection);
+            }
+        }
+    }*/
 
     #region serialization
     //protected byte[] reusableBuffer = new byte[REUSABLE_BUFFER_SIZE];
@@ -26,6 +65,7 @@ public class NetworkController : MonoBehaviour
         Stream stream = new MemoryStream(arr);
         //the binary formatter serializes the packet into the stream (in the resuable buffer)
         new BinaryFormatter().Serialize(stream, packet);
+        //Debug.Log(stream.Position);
         //once the stream has been filled with the serialized thing, flush it
         stream.Flush();
         //close the stream now that you're done with it
@@ -57,6 +97,12 @@ public class NetworkController : MonoBehaviour
     }
     #endregion serialization
 
+    /// <summary>
+    /// adds a packet to the queue of things to send
+    /// </summary>
+    /// <param name="packet"></param>
+    /// <param name="mDriver"></param>
+    /// <param name="connection"></param>
     protected void Send(Packet packet, UdpCNetworkDriver mDriver, NetworkConnection connection)
     {
         using (var writer = new DataStreamWriter(BUFFER_SIZE, Allocator.Temp)) //make the number large enough to contain entire byte array to be sent
@@ -64,5 +110,7 @@ public class NetworkController : MonoBehaviour
             writer.Write(Serialize(packet));
             mDriver.Send(connection, writer);
         }
+
+        //if (packet.command != Packet.Command.Confirm) sentPackets.Add(new SentThing(packet, mDriver, connection));
     }
 }

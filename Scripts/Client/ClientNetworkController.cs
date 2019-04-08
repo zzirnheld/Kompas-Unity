@@ -82,6 +82,8 @@ public class ClientNetworkController : NetworkController {
         switch (packet.command)
         {
             case Packet.Command.Nothing:
+            //case Packet.Command.Confirm:
+                //return;
                 break;
             case Packet.Command.AddToDeck:
                 ClientGame.mainClientGame.friendlyDeckCtrl.AddCard(packet.CardName, packet.CardIDToBe);
@@ -136,6 +138,8 @@ public class ClientNetworkController : NetworkController {
                 Debug.Log("Unrecognized command sent to client");
                 break;
         }
+
+        //Send(new Packet(Packet.Command.Confirm))
     }
 
     #region Request Actions

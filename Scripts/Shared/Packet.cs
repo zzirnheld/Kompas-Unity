@@ -6,6 +6,8 @@ using UnityEngine;
 [Serializable]
 public class Packet {
 
+    //public static int id = 0;
+
     public enum Command { Nothing, Play, Augment, Move, Topdeck, Discard, Rehand, AddToDeck, AddToEnemyDeck,
         Draw, SetNESW, SetPips, SetEnemyPips, PutBack, EndTurn, GetAttackTarget, YoureFirst, YoureSecond}
 
@@ -16,6 +18,7 @@ public class Packet {
     public Command command;
     
     public int cardID;
+    //public int packetID;
 
     public int[] args;
 
@@ -36,6 +39,8 @@ public class Packet {
     public Packet(Command command)
     {
         this.command = command;
+        //this.packetID = id;
+        //id = (id + 1) % 1000;
         args = new int[4];
     }
 
