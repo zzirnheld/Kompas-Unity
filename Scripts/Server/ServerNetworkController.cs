@@ -61,6 +61,7 @@ public class ServerNetworkController : NetworkController {
             if (ServerGame.mainServerGame.AddPlayer(c) == 2)
             {
                 ServerGame.mainServerGame.uiCtrl.CurrentStateString = "Two Players Connected";
+                SendPackets(new Packet(Packet.Command.YoureFirst), new Packet(Packet.Command.YoureSecond), ServerGame.mainServerGame, mConnections[mConnections.Length - 1]);
             }
             else
             {
@@ -122,7 +123,6 @@ public class ServerNetworkController : NetworkController {
         //Debug.Log("recieved packet");
         Packet packet = Deserialize(buffer);
         if (packet == null) return;
-
 
         Packet outPacket = null;
         Packet outPacketInverted = null;

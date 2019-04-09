@@ -15,46 +15,6 @@ public class NetworkController : MonoBehaviour
 
     protected const int BUFFER_SIZE = 236; //size of serialized Packet()
 
-    /*struct SentThing
-    {
-        public Packet packet;
-        public UdpCNetworkDriver networkDriver;
-        public NetworkConnection connection;
-        public int count;
-
-        public SentThing(Packet p, UdpCNetworkDriver d, NetworkConnection c)
-        {
-            packet = p;
-            networkDriver = d;
-            connection = c;
-            count = 0;
-        }
-    }
-
-    //protected int BUFFER_SIZE = sizeof(int) * 5 + sizeof(Packet.Command);
-
-    List<SentThing> sentPackets;
-
-    void Awake()
-    {
-        sentPackets = new List<SentThing>();
-    }
-
-    void Update()
-    {
-        for(int i = 0; i < sentPackets.Count; i++)
-        {
-            SentThing s = sentPackets[i];
-            s.count++;
-            if(s.count > 100)
-            {
-                sentPackets.Remove(s);
-                i--;
-                Send(s.packet, s.networkDriver, s.connection);
-            }
-        }
-    }*/
-
     #region serialization
     //protected byte[] reusableBuffer = new byte[REUSABLE_BUFFER_SIZE];
     protected byte[] Serialize(Packet packet)
@@ -110,7 +70,5 @@ public class NetworkController : MonoBehaviour
             writer.Write(Serialize(packet));
             mDriver.Send(connection, writer);
         }
-
-        //if (packet.command != Packet.Command.Confirm) sentPackets.Add(new SentThing(packet, mDriver, connection));
     }
 }
