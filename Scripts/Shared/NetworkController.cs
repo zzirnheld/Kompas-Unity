@@ -65,6 +65,8 @@ public class NetworkController : MonoBehaviour
     /// <param name="connection"></param>
     protected void Send(Packet packet, UdpCNetworkDriver mDriver, NetworkConnection connection)
     {
+        if (!connection.IsCreated) return;
+
         using (var writer = new DataStreamWriter(BUFFER_SIZE, Allocator.Temp)) //make the number large enough to contain entire byte array to be sent
         {
             writer.Write(Serialize(packet));
