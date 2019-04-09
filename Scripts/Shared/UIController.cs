@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour {
 
     //debug UI
+    public GameObject debugParent;
     public InputField debugNInputField;
     public InputField debugEInputField;
     public InputField debugSInputField;
@@ -18,6 +19,7 @@ public class UIController : MonoBehaviour {
     public Text friendlyPipsText;
     public Text enemyPipsText;
     //show selected card data
+    public GameObject selectedUIParent;
     public Text selectedCardNameText;
     public Image selectedCardImage;
     public Text selectedCardStatsText;
@@ -44,6 +46,7 @@ public class UIController : MonoBehaviour {
     private string currentStateString;
     //networking
     public InputField ipInputField;
+    public GameObject networkingParent;
 
     public string CurrentStateString
     {
@@ -72,19 +75,28 @@ public class UIController : MonoBehaviour {
         deckInputField.lineType = InputField.LineType.MultiLineNewline;
     }
 
+    /// <summary>
+    /// updates the ui with the given selection. if the selection is null, hides the ui.
+    /// </summary>
+    /// <param name="card">make this null to deselect</param>
     public void SelectCard(Card card)
     {
         //if the card is null, deselect everything
         if (card == null)
         {
+            selectedUIParent.SetActive(false);
+            debugParent.SetActive(false);
             Debug.Log("Selecting Null");
             selectedCardNameText.text = "No Card Selected";
             selectedCardImage.sprite = Resources.Load<Sprite>("Kompas Circle Background");
             selectedCardStatsText.text = "";
             selectedCardSubtypesText.text = "";
             selectedCardEffText.text = "";
+            return;
         }
 
+        selectedUIParent.SetActive(true);
+        debugParent.SetActive(true);
         Debug.Log("Selecting " + card.CardName);
         selectedCard = card;
 
@@ -105,6 +117,11 @@ public class UIController : MonoBehaviour {
         selectedCardNameText.text = card.CardName;
         selectedCardImage.sprite = card.DetailedSprite;
         selectedCardEffText.text = card.EffText;
+    }
+
+    public void HideNetworkingUI()
+    {
+        networkingParent.SetActive(false);
     }
 
     #region updating pips

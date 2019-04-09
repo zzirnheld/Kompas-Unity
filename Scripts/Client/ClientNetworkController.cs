@@ -56,6 +56,7 @@ public class ClientNetworkController : NetworkController {
                 //connected to server
                 Debug.Log("connected to server");
                 ClientGame.mainClientGame.uiCtrl.CurrentStateString = "Connected to Server";
+                ClientGame.mainClientGame.uiCtrl.HideNetworkingUI();
             }
             if (cmd == NetworkEvent.Type.Data)
             {
@@ -77,7 +78,7 @@ public class ClientNetworkController : NetworkController {
     {
         Packet packet = Deserialize(buffer);
         if (packet == null) return;
-        Debug.Log("Parsing command " + packet.command + " for " + packet.cardID);
+        if(packet.command != Packet.Command.Nothing) Debug.Log("Parsing command " + packet.command + " for " + packet.cardID);
 
         switch (packet.command)
         {

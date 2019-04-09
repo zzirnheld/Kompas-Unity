@@ -57,22 +57,17 @@ public class MouseController : MonoBehaviour {
     public void DragBeforeRaycast()
     {
         rayIntersectBoard = GetRayIntersectBoard(mouseRay);
-        if (Input.GetMouseButton(0)) //ok see if we're dragging something
+        //if mouse button is held down and we're currently dragging a card, then keep dragging the card
+        //if for some reason i end up letting people drag other stuff, i can change this to be nested ifs, but for now, this is more readable
+        if (Input.GetMouseButton(0) && cardHit != null)
         {
-            if (cardHit != null) //if it hasn't been set to null yet we're still dragging it
-            { //ok so we are dragging something
-                cardHit.OnDrag(rayIntersectBoard);
-                //return;
-            }
+            cardHit.OnDrag(rayIntersectBoard);
         }
-        else if (Input.GetMouseButtonUp(0)) //maybe we just stopped dragging something
+        //if the mouse button was just lifted and we havent yet ended the drag, deal with that
+        else if (Input.GetMouseButtonUp(0) && cardHit != null)
         {
-            if (cardHit != null)
-            { //ok so we just stopped dragging something
-                cardHit.OnDragEnd(rayIntersectBoard);
-                cardHit = null;
-                //return;
-            }
+            cardHit.OnDragEnd(rayIntersectBoard);
+            cardHit = null;
         }
     }
 
@@ -89,33 +84,22 @@ public class MouseController : MonoBehaviour {
 
         //if (Input.GetMouseButtonDown(0)) Debug.Log("Object clicked: " + (kompasObjectHit == null));
 
-        if (kompasObjectHit == null) ClearHits();
-        else if (kompasObjectHit is Card)
+        if (kompasObjectHit == null)
         {
-            cardHit = kompasObjectHit as Card;
-            if (Input.GetMouseButtonDown(0))
-            {
-                Debug.Log("Clicking card");
-                cardHit.OnClick();
-            }
-            else if (Input.GetMouseButton(0))
-                cardHit.OnDrag(raycastHit.point);
-            else if (Input.GetMouseButtonUp(0))
-                cardHit.OnDragEnd(raycastHit.point);
+            ClearHits();
+            //if we clicked on nothing, select nothing
+            if(Input.GetMouseButtonDown(0)) Game.mainGame.uiCtrl.SelectCard(null);
         }
-        else if (kompasObjectHit is DeckController)
+        else
         {
-            //Debug.Log("Deck Hit");
-            deckHit = kompasObjectHit as DeckController;
-            if (Input.GetMouseButtonDown(0))
-                deckHit.OnClick();
+            //if click, do click, otherwise do hover. drag is taken care of before this
+            if (Input.GetMouseButtonDown(0)) kompasObjectHit.OnClick();
+            else kompasObjectHit.OnHover();
+
+            if (kompasObjectHit is Card) cardHit = kompasObjectHit as Card;
+            else if (kompasObjectHit is DeckController) deckHit = kompasObjectHit as DeckController;
+            else if (kompasObjectHit is HandController) handHit = kompasObjectHit as HandController;
         }
-        else if (kompasObjectHit is HandController)
-        {
-            handHit = kompasObjectHit as HandController;
-            //this might get clicked if the player misses clicking a card to target. do anything?
-        }
-        //else Debug.Log("IDK what we hit. it wasn't null and it wasn't a card.");
     }
 
 

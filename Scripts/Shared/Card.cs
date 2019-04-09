@@ -325,7 +325,7 @@ public abstract class Card : KompasObject {
             dragging = true;
             transform.parent = Game.mainGame.boardObject.transform;
         }
-        
+
         transform.position = mousePos;
     }
     public override void OnDragEnd(Vector3 mousePos)
