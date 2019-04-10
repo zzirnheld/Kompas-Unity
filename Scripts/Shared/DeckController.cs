@@ -6,6 +6,8 @@ using UnityEngine;
 public class DeckController : KompasObject
 {
     public const string BLANK_CARD_PATH = "Card Jsons/Blank Card";
+    
+    private ClientGame clientGame;
 
     //one of these for each player
 
@@ -19,6 +21,11 @@ public class DeckController : KompasObject
 
     //actual factual deck list
     private List<Card> deck = new List<Card>();
+
+    private void Awake()
+    {
+        clientGame = game as ClientGame;
+    }
 
     public int IndexOf(Card card)
     {
@@ -47,7 +54,7 @@ public class DeckController : KompasObject
                 serializableChar = JsonUtility.FromJson<SerializableCharCard>(json);
                 charCard = Instantiate(characterCardPrefab).GetComponent<CharacterCard>();
                 charCard.gameObject.SetActive(false);
-                charCard.SetInfo(serializableChar);
+                charCard.SetInfo(serializableChar, game);
                 //set image for the card by the name. this method gets the sprite with the given name
                 charCard.SetImage(charCard.CardName);
                 return charCard;
@@ -55,7 +62,7 @@ public class DeckController : KompasObject
                 serializableSpell = JsonUtility.FromJson<SerializableSpellCard>(json);
                 spellCard = Instantiate(spellCardPrefab).GetComponent<SpellCard>();
                 spellCard.gameObject.SetActive(false);
-                spellCard.SetInfo(serializableSpell);
+                spellCard.SetInfo(serializableSpell, game);
                 //set image for the card by the name. this method gets the sprite with the given name
                 spellCard.SetImage(spellCard.CardName);
                 return spellCard;
@@ -63,7 +70,7 @@ public class DeckController : KompasObject
                 serializableAug = JsonUtility.FromJson<SerializableAugCard>(json);
                 augCard = Instantiate(augmentCardPrefab).GetComponent<AugmentCard>();
                 augCard.gameObject.SetActive(false);
-                augCard.SetInfo(serializableAug);
+                augCard.SetInfo(serializableAug, game);
                 //set image for the card by the name. this method gets the sprite with the given name
                 augCard.SetImage(augCard.CardName);
                 return augCard;
@@ -98,7 +105,7 @@ public class DeckController : KompasObject
         newCard.SetLocation(Card.CardLocation.Deck);
         deck.Add(newCard);
         newCard.ID = id;
-        Game.mainGame.cards.Add(id, newCard);
+        game.cards.Add(id, newCard);
         //Game.mainGame.cards[id] = newCard;
         newCard.ChangeController(owner);
         return newCard;
@@ -212,8 +219,8 @@ public class DeckController : KompasObject
     {
         //if(deck.Count > 0) Game.mainGame.Draw();
         //request a draw
-        if(ClientGame.mainClientGame.friendlyDeckCtrl == this)
-            ClientGame.mainClientGame.clientNetworkCtrl.RequestDraw();
+        if(clientGame.friendlyDeckCtrl == this)
+            clientGame.clientNetworkCtrl.RequestDraw();
     }
 
 
@@ -221,7 +228,7 @@ public class DeckController : KompasObject
     public void DEBUGCreateCard()
     {
         AddCard("Swordsmaster of Iron", 0);
-        Game.mainGame.Draw();
+        game.Draw();
     }
     #endregion
 

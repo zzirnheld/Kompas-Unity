@@ -7,6 +7,8 @@ public abstract class Card : KompasObject {
 
     public enum CardLocation { Nowhere, Field, Discard, Hand, Deck };
 
+    private ClientGame clientGame;
+
     //constants
     public const float minBoardLocalX = -0.45f;
     public const float maxBoardLocalX = 0.45f;
@@ -102,16 +104,16 @@ public abstract class Card : KompasObject {
             switch (this.location)
             {
                 case CardLocation.Field:
-                    Game.mainGame.boardCtrl.RemoveFromBoard(this);
+                    game.boardCtrl.RemoveFromBoard(this);
                     break;
                 case CardLocation.Discard:
-                    Game.mainGame.Players[owner].discardCtrl.RemoveFromDiscard(this);
+                    game.Players[owner].discardCtrl.RemoveFromDiscard(this);
                     break;
                 case CardLocation.Hand:
-                    Game.mainGame.Players[owner].handCtrl.RemoveFromHand(this);
+                    game.Players[owner].handCtrl.RemoveFromHand(this);
                     break;
                 case CardLocation.Deck:
-                    Game.mainGame.Players[owner].deckCtrl.RemoveFromDeck(this);
+                    game.Players[owner].deckCtrl.RemoveFromDeck(this);
                     break;
             }
         }
@@ -123,19 +125,19 @@ public abstract class Card : KompasObject {
         switch (location)
         {
             case CardLocation.Field:
-                transform.SetParent(Game.mainGame.boardObject.transform);
+                transform.SetParent(game.boardObject.transform);
                 gameObject.SetActive(true);
                 break;
             case CardLocation.Discard:
-                transform.SetParent(Game.mainGame.Players[owner].discardObject.transform);
+                transform.SetParent(game.Players[owner].discardObject.transform);
                 gameObject.SetActive(true);
                 break;
             case CardLocation.Hand:
-                transform.SetParent(Game.mainGame.Players[owner].handObject.transform);
+                transform.SetParent(game.Players[owner].handObject.transform);
                 gameObject.SetActive(true);
                 break;
             case CardLocation.Deck:
-                transform.SetParent(Game.mainGame.Players[owner].deckObject.transform);
+                transform.SetParent(game.Players[owner].deckObject.transform);
                 gameObject.SetActive(false);
                 break;
         }
@@ -169,8 +171,10 @@ public abstract class Card : KompasObject {
         SetImage(cardFileName);
     }
 
-    public virtual void SetInfo(SerializableCard serializedCard)
+    public virtual void SetInfo(SerializableCard serializedCard, Game game)
     {
+        this.game = game;
+        clientGame = game as ClientGame;
         cardName = serializedCard.cardName;
         effText = serializedCard.effText;
         subtypeText = serializedCard.subtypeText;
@@ -243,15 +247,15 @@ public abstract class Card : KompasObject {
     //card moving methods
     public void Discard()
     {
-        Game.mainGame.Discard(this);
+        game.Discard(this);
     }
     public void Topdeck()
     {
-        Game.mainGame.Topdeck(this);
+        game.Topdeck(this);
     }
     public void Rehand()
     {
-        Game.mainGame.Rehand(this);
+        game.Rehand(this);
     }
 
     //misc mechanics methods
@@ -288,11 +292,11 @@ public abstract class Card : KompasObject {
         if (location == CardLocation.Deck)
             gameObject.SetActive(false);
         else if (location == CardLocation.Discard)
-            transform.localPosition = new Vector3(0, 0, (float) Game.mainGame.Players[owner].discardCtrl.IndexOf(this) / -60f);
+            transform.localPosition = new Vector3(0, 0, (float) game.Players[owner].discardCtrl.IndexOf(this) / -60f);
         else if (location == CardLocation.Field)
             transform.localPosition = new Vector3(GridIndexToPos(boardX), GridIndexToPos(boardY), -0.1f);
         else if (location == CardLocation.Hand)
-            Game.mainGame.Players[owner].handCtrl.SpreadOutCards();
+            game.Players[owner].handCtrl.SpreadOutCards();
     }
 
     //interaction methods
@@ -309,7 +313,7 @@ public abstract class Card : KompasObject {
     //actual interaction
     public override void OnClick()
     {
-        Game.mainGame.SelectCard(this);
+        game.SelectCard(this);
     }
     public override void OnHover()
     {
@@ -323,7 +327,7 @@ public abstract class Card : KompasObject {
         if (!dragging)
         {
             dragging = true;
-            transform.parent = Game.mainGame.boardObject.transform;
+            transform.parent = game.boardObject.transform;
         }
 
         transform.position = mousePos;
@@ -334,7 +338,7 @@ public abstract class Card : KompasObject {
         dragging = false; //dragging has ended
 
         //to be able to use local coordinates to see if you're on the board, set parent to game board
-        transform.parent = Game.mainGame.boardObject.transform;
+        transform.parent = game.boardObject.transform;
 
         //then, check if it's on the board, accodring to the local coordinates of the game board)
         if (WithinIgnoreZ(transform.localPosition, minBoardLocalX, maxBoardLocalX, minBoardLocalY, maxBoardLocalY))
@@ -343,12 +347,12 @@ public abstract class Card : KompasObject {
             //if the card is being moved on the field, that means it's just being moved
             if (location == CardLocation.Field)
             {
-                ClientGame.mainClientGame.clientNetworkCtrl.RequestMove(this,
+                clientGame.clientNetworkCtrl.RequestMove(this,
                     PosToGridIndex(transform.localPosition.x), PosToGridIndex(transform.localPosition.y));
             }
             //otherwise, it is being played from somewhere like the hand or discard
             else
-                ClientGame.mainClientGame.clientNetworkCtrl.RequestPlay(this,
+                clientGame.clientNetworkCtrl.RequestPlay(this,
                     PosToGridIndex(transform.localPosition.x), PosToGridIndex(transform.localPosition.y));
         }
         //if it's not on the board, maybe it's on top of the discard
@@ -356,20 +360,20 @@ public abstract class Card : KompasObject {
         {
             Debug.Log(cardName + " ended drag on discard");
             //in that case, discard it //TODO do this by raycasting along another layer to see if you hit deck/discard
-            ClientGame.mainClientGame.clientNetworkCtrl.RequestDiscard(this);
+            clientGame.clientNetworkCtrl.RequestDiscard(this);
         }
         //maybe it's on top of the deck
         else if (WithinIgnoreY(transform.position, minDeckX, maxDeckX, minDeckZ, maxDeckZ))
         {
             Debug.Log(cardName + " ended drag on the deck");
             //in that case, topdeck it
-            ClientGame.mainClientGame.clientNetworkCtrl.RequestTopdeck(this);
+            clientGame.clientNetworkCtrl.RequestTopdeck(this);
         }
         //if it's not in any of those, probably should go back in the hand.
         else
         {
             Debug.Log(cardName + " ended drag nowhere. putting it in the hand. was at " + transform.position);
-            ClientGame.mainClientGame.clientNetworkCtrl.RequestRehand(this);
+            clientGame.clientNetworkCtrl.RequestRehand(this);
         }
     }
 

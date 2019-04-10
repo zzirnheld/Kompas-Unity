@@ -4,12 +4,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DiscardController : KompasObject {
+    
+    private ClientGame clientGame;
 
     List<Card> discard = new List<Card>();
 
     //info about discard
     public int DiscardSize() { return discard.Count; }
     public Card GetLastDiscarded() { return discard[discard.Count - 1]; }
+
+    private void Awake()
+    {
+        clientGame = game as ClientGame;
+    }
 
     public Card CardAt(int index, bool remove)
     {
@@ -47,7 +54,7 @@ public class DiscardController : KompasObject {
 
     public override void OnClick()
     {
-        if (ClientGame.mainClientGame.friendlyDiscardCtrl == this)
-            ClientGame.mainClientGame.clientNetworkCtrl.RequestRehand(GetLastDiscarded());
+        if (clientGame.friendlyDiscardCtrl == this)
+            clientGame.clientNetworkCtrl.RequestRehand(GetLastDiscarded());
     }
 }

@@ -47,7 +47,7 @@ public class AugmentCard : Card {
     }
 
     //set data
-    public override void SetInfo(SerializableCard serializedCard)
+    public override void SetInfo(SerializableCard serializedCard, Game game)
     {
         if (!(serializedCard is SerializableAugCard)) return;
         SerializableAugCard serializedSpell = serializedCard as SerializableAugCard;
@@ -56,7 +56,7 @@ public class AugmentCard : Card {
         subtext = serializedSpell.subtext;
         fast = serializedSpell.fast;
 
-        base.SetInfo(serializedCard);
+        base.SetInfo(serializedCard, game);
     }
     
     public override int GetCost() { return D; }

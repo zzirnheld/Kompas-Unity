@@ -126,7 +126,7 @@ public class BoardController : KompasObject
         else Debug.Log("Can't play a card that isn't a character, augment, or spell.");
 
         int i = GetNumCardsOnBoard();
-        if (i > Game.mainGame.MaxCardsOnField) Game.mainGame.MaxCardsOnField = i;
+        if (i > game.MaxCardsOnField) game.MaxCardsOnField = i;
     }
 
     //movement

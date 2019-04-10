@@ -28,8 +28,8 @@ public class SpellCard : Card
     public SerializableSpellCard GetSerializableVersion()
     {
         int index = -1;
-        if (location == CardLocation.Hand) index = Game.mainGame.Players[owner].handCtrl.IndexOf(this);
-        else if (location == CardLocation.Discard) index = Game.mainGame.Players[owner].discardCtrl.IndexOf(this);
+        if (location == CardLocation.Hand) index = game.Players[owner].handCtrl.IndexOf(this);
+        else if (location == CardLocation.Discard) index = game.Players[owner].discardCtrl.IndexOf(this);
 
         SerializableSpellCard serializableSpell = new SerializableSpellCard
         {
@@ -50,7 +50,7 @@ public class SpellCard : Card
     }
 
     //set data
-    public override void SetInfo(SerializableCard serializedCard)
+    public override void SetInfo(SerializableCard serializedCard, Game game)
     {
         if (!(serializedCard is SerializableSpellCard serializedSpell)) return;
 
@@ -59,7 +59,7 @@ public class SpellCard : Card
         subtype = serializedSpell.subtype;
         fast = serializedSpell.fast;
 
-        base.SetInfo(serializedCard);
+        base.SetInfo(serializedCard, game);
     }
 
 
