@@ -135,7 +135,10 @@ public class ServerNetworkController : NetworkController {
         {
             case Packet.Command.Nothing:
                 SendPackets(new Packet(Packet.Command.Nothing), new Packet(Packet.Command.Nothing), ServerGame.mainServerGame, connectionID);
-                break;
+                return;
+            case Packet.Command.Confirm:
+                ReceiveAcknowledgement(packet, connectionID);
+                return;
             case Packet.Command.AddToDeck:
                 //figure out who's getting the card to their deck
                 Player owner = ServerGame.mainServerGame.Players[playerIndex];
@@ -296,6 +299,9 @@ public class ServerNetworkController : NetworkController {
                 Debug.Log("Invalid command " + packet.command + " to server from " + connectionID);
                 break;
         }
+
+        //then, unless the packet was one of the commands for which we return, send an acknowledgement
+        SendAcknowledgement(packet.packetID, connectionID, mDriver);
     }
 
     public void AttemptToDraw(int playerIndex, NetworkConnection connectionID)

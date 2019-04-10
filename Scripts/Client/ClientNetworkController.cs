@@ -85,7 +85,10 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.Nothing:
             //case Packet.Command.Confirm:
                 //return;
-                break;
+                return;
+            case Packet.Command.Confirm:
+                ReceiveAcknowledgement(packet, mConnection);
+                return;
             case Packet.Command.AddAsFriendly:
                 ClientGame.mainClientGame.friendlyDeckCtrl.AddCard(packet.CardName, packet.CardIDToBe);
                 break;
@@ -150,8 +153,9 @@ public class ClientNetworkController : NetworkController {
                 Debug.Log("Unrecognized command sent to client");
                 break;
         }
-
-        //Send(new Packet(Packet.Command.Confirm))
+        
+        //then, unless the packet was one of the commands for which we return, send an acknowledgement
+        SendAcknowledgement(packet.packetID, mConnection, mDriver);
     }
 
     #region Request Actions

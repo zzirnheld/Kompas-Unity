@@ -6,10 +6,12 @@ using UnityEngine;
 [Serializable]
 public class Packet {
 
-    //public static int id = 0;
+    public static int id = 0;
 
-    public enum Command { Nothing, Play, Augment, Move, Topdeck, Discard, Rehand, AddAsFriendly, AddAsEnemy, IncrementEnemyDeck, AddToDeck, Delete,
-        Draw, SetNESW, SetPips, SetEnemyPips, PutBack, EndTurn, GetAttackTarget, YoureFirst, YoureSecond}
+    public enum Command { Nothing, Confirm,
+        Play, Augment, Move, EndTurn,
+        Topdeck, Discard, Rehand, AddAsFriendly, AddAsEnemy, IncrementEnemyDeck, AddToDeck, Delete,
+        Draw, SetNESW, SetPips, SetEnemyPips, PutBack, GetAttackTarget, YoureFirst, YoureSecond}
 
     /// <summary>
     /// Contains the command that is sent.
@@ -18,7 +20,7 @@ public class Packet {
     public Command command;
     
     public int cardID;
-    //public int packetID;
+    public int packetID;
 
     public int[] args;
 
@@ -38,11 +40,24 @@ public class Packet {
     public int W { get { return args[3]; } }
 
     #region constuctors 
+    /// <summary>
+    /// Use only for confirm packet
+    /// </summary>
+    /// <param name="packetID"></param>
+    public Packet(int packetID)
+    {
+        command = Command.Confirm;
+        this.packetID = packetID;
+    }
+
     public Packet(Command command)
     {
         this.command = command;
-        //this.packetID = id;
-        //id = (id + 1) % 1000;
+        if (command != Command.Nothing)
+        {
+            packetID = id;
+            id = (id + 1) % 1000;
+        }
         args = new int[4];
     }
 

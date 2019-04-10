@@ -13,7 +13,42 @@ using UdpCNetworkDriver = Unity.Networking.Transport.BasicNetworkDriver<Unity.Ne
 public class NetworkController : MonoBehaviour
 {
 
-    protected const int BUFFER_SIZE = 236; //size of serialized Packet()
+    protected const int BUFFER_SIZE = 250; //size of serialized Packet()
+
+    public struct SentItem
+    {
+        public Packet packet;
+        public NetworkConnection connectionID;
+        public UdpCNetworkDriver driver;
+        public int count;
+
+        public SentItem(Packet packet, NetworkConnection networkConnection, UdpCNetworkDriver networkDriver)
+        {
+            this.packet = packet;
+            connectionID = networkConnection;
+            driver = networkDriver;
+            count = 0;
+        }
+    }
+
+    private List<SentItem> sentItems = new List<SentItem>();
+
+    private void Update()
+    {
+        //iterate through the list of sent items
+        for (int i = 0; i < sentItems.Count; i++)
+        {
+            SentItem sentItem = sentItems[i];
+            //increment each one's count
+            sentItem.count++;
+            //if the count is greater than 500, resend it
+            if(sentItem.count > 500)
+            {
+                Send(sentItem.packet, sentItem.driver, sentItem.connectionID, false);
+                sentItem.count = 0;
+            }
+        }
+    }
 
     #region serialization
     //protected byte[] reusableBuffer = new byte[REUSABLE_BUFFER_SIZE];
@@ -63,7 +98,7 @@ public class NetworkController : MonoBehaviour
     /// <param name="packet"></param>
     /// <param name="mDriver"></param>
     /// <param name="connection"></param>
-    protected void Send(Packet packet, UdpCNetworkDriver mDriver, NetworkConnection connection)
+    protected void Send(Packet packet, UdpCNetworkDriver mDriver, NetworkConnection connection, bool addToList = true)
     {
         if (!connection.IsCreated) return;
 
@@ -71,6 +106,36 @@ public class NetworkController : MonoBehaviour
         {
             writer.Write(Serialize(packet));
             mDriver.Send(connection, writer);
+        }
+
+        if (addToList)
+        {
+            sentItems.Add(new SentItem(packet, connection, mDriver));
+        }
+    }
+
+    protected void SendAcknowledgement(int packetID, NetworkConnection connection, UdpCNetworkDriver driver)
+    {
+        //send a confirmation packet
+        Send(new Packet(packetID), driver, connection, false);
+    }
+
+    /// <summary>
+    /// Removes the packet with matching id and conneciton from the list of sent items, so that it won't be resent.
+    /// </summary>
+    /// <param name="packet">The packet whose id we should remove</param>
+    /// <param name="connection">The connection id this packet is from</param>
+    protected void ReceiveAcknowledgement(Packet packet, NetworkConnection connection)
+    {
+        Debug.Log("Acknoledging " + packet.packetID); //TODO actually acknowledge
+
+        foreach(SentItem item in sentItems)
+        {
+            if(item.packet.packetID == packet.packetID && item.connectionID == connection)
+            {
+                sentItems.Remove(item);
+                break;
+            }
         }
     }
 }
