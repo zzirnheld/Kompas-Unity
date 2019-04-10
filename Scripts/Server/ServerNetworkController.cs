@@ -161,7 +161,7 @@ public class ServerNetworkController : NetworkController {
                     outPacket = new Packet(Packet.Command.Augment, toAugment, packet.X, packet.Y);
                     if (toAugment.Location == Card.CardLocation.Discard || toAugment.Location == Card.CardLocation.Field)
                         outPacketInverted = new Packet(Packet.Command.Augment, toAugment, packet.X, packet.Y, true);
-                    else outPacketInverted = new Packet(Packet.Command.AddAsEnemy, toAugment.CardName, (int) Card.CardLocation.Field, toAugment.ID, toAugment.BoardX, toAugment.BoardY);
+                    else outPacketInverted = new Packet(Packet.Command.AddAsEnemy, toAugment.CardName, (int) Card.CardLocation.Field, toAugment.ID, packet.X, packet.Y, true);
                     //play the card here
                     packet.InvertForController(playerIndex);
                     ServerGame.mainServerGame.Play(toAugment, packet.X, packet.Y);
@@ -184,7 +184,7 @@ public class ServerNetworkController : NetworkController {
                     outPacket = new Packet(Packet.Command.Play, toPlay, packet.X, packet.Y);
                     if (toPlay.Location == Card.CardLocation.Discard || toPlay.Location == Card.CardLocation.Field)
                         outPacketInverted = new Packet(Packet.Command.Play, toPlay, packet.X, packet.Y, true);
-                    else outPacketInverted = new Packet(Packet.Command.AddAsEnemy, toPlay.CardName, (int) Card.CardLocation.Field, toPlay.ID, toPlay.BoardX, toPlay.BoardY);
+                    else outPacketInverted = new Packet(Packet.Command.AddAsEnemy, toPlay.CardName, (int) Card.CardLocation.Field, toPlay.ID, packet.X, packet.Y, true);
                     //play the card here
                     packet.InvertForController(playerIndex);
                     ServerGame.mainServerGame.Play(toPlay, packet.X, packet.Y);

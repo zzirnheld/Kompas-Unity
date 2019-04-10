@@ -127,6 +127,8 @@ public class BoardController : KompasObject
 
         int i = GetNumCardsOnBoard();
         if (i > game.MaxCardsOnField) game.MaxCardsOnField = i;
+
+        toPlay.gameObject.transform.localScale = new Vector3(1f / 9f, 1f / 9f, 1);
     }
 
     //movement

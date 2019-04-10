@@ -69,10 +69,18 @@ public class Packet {
         cardID = cardIDtoBe;
     }
 
-    public Packet(Command command, string cardName, int cardLocation, int cardIDtoBe, int x, int y) : this(command, cardName, cardLocation, cardIDtoBe)
+    public Packet(Command command, string cardName, int cardLocation, int cardIDtoBe, int x, int y, bool invert) : this(command, cardName, cardLocation, cardIDtoBe)
     {
-        args[2] = x;
-        args[3] = y;
+        if (invert)
+        {
+            args[2] = 6 - x;
+            args[3] = 6 - y;
+        }
+        else
+        {
+            args[2] = x;
+            args[3] = y;
+        }
     }
 
     public Packet(Command command, Card card) : this(command)
