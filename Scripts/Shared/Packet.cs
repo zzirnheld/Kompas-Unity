@@ -8,7 +8,7 @@ public class Packet {
 
     //public static int id = 0;
 
-    public enum Command { Nothing, Play, Augment, Move, Topdeck, Discard, Rehand, AddToDeck, AddToEnemyDeck,
+    public enum Command { Nothing, Play, Augment, Move, Topdeck, Discard, Rehand, AddAsFriendly, AddAsEnemy, IncrementEnemyDeck, AddToDeck, Delete,
         Draw, SetNESW, SetPips, SetEnemyPips, PutBack, EndTurn, GetAttackTarget, YoureFirst, YoureSecond}
 
     /// <summary>
@@ -23,9 +23,11 @@ public class Packet {
     public int[] args;
 
     public string CardName { get { return Game.CardNames[args[1]]; } }
-    public int CardIDToBe { get { return args[0]; } }
+    public int CardIDToBe { get { return cardID; } }
 
     public int Pips { get { return args[0]; } }
+
+    public Card.CardLocation Location { get { return (Card.CardLocation)args[0]; } }
 
     public int X { get { return args[2]; } }
     public int Y { get { return args[3]; } }
@@ -61,9 +63,16 @@ public class Packet {
         args[0] = num;
     }
 
-    public Packet(Command command, string cardName, int num) : this(command, cardName)
+    public Packet(Command command, string cardName, int cardLocation, int cardIDtoBe) : this(command, cardName)
     {
-        args[0] = num;
+        args[0] = cardLocation;
+        cardID = cardIDtoBe;
+    }
+
+    public Packet(Command command, string cardName, int cardLocation, int cardIDtoBe, int x, int y) : this(command, cardName, cardLocation, cardIDtoBe)
+    {
+        args[2] = x;
+        args[3] = y;
     }
 
     public Packet(Command command, Card card) : this(command)

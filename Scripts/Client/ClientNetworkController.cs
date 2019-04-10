@@ -86,11 +86,20 @@ public class ClientNetworkController : NetworkController {
             //case Packet.Command.Confirm:
                 //return;
                 break;
-            case Packet.Command.AddToDeck:
+            case Packet.Command.AddAsFriendly:
                 ClientGame.mainClientGame.friendlyDeckCtrl.AddCard(packet.CardName, packet.CardIDToBe);
                 break;
-            case Packet.Command.AddToEnemyDeck:
-                ClientGame.mainClientGame.enemyDeckCtrl.AddCard(packet.CardName, packet.CardIDToBe, 1); //TODO make it always ask for cards from enemy deck
+            case Packet.Command.AddAsEnemy:
+                Card added = ClientGame.mainClientGame.enemyDeckCtrl.AddCard(packet.CardName, packet.CardIDToBe, 1); //TODO make it always ask for cards from enemy deck
+                switch (packet.Location)
+                {
+                    case Card.CardLocation.Field:
+                        ClientGame.mainClientGame.Play(packet.CardIDToBe, packet.X, packet.Y);
+                        break;
+                    case Card.CardLocation.Discard:
+                        ClientGame.mainClientGame.Discard(packet.CardIDToBe);
+                        break;
+                }
                 break;
             case Packet.Command.Augment: //the play method calls augment if the card is an augment
             case Packet.Command.Play:
