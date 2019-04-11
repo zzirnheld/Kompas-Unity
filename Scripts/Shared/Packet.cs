@@ -58,6 +58,7 @@ public class Packet {
             packetID = id;
             id = (id + 1) % 1000;
         }
+
         args = new int[4];
     }
 

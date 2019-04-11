@@ -63,6 +63,8 @@ public class UIController : MonoBehaviour {
     private CharacterCard selectedChar; //keeps track of last selected character for updating stats in debug, etc.
     private SpellCard selectedSpell;
 
+    private Card hoveredCard;
+
     public Card SelectedCard { get { return selectedCard; } }
     public CharacterCard SelectedChar { get { return selectedChar; } }
     public SpellCard SelectedSpell { get { return selectedSpell; } }
@@ -111,6 +113,37 @@ public class UIController : MonoBehaviour {
             selectedSpell = selectedCard as SpellCard;
             selectedCardStatsText.text = "";
         }
+
+        //set all common values
+        selectedCardSubtypesText.text = card.SubtypeText;
+        selectedCardNameText.text = card.CardName;
+        selectedCardImage.sprite = card.DetailedSprite;
+        selectedCardEffText.text = card.EffText;
+    }
+
+    public void StopHovering()
+    {
+        SelectCard(selectedCard);
+    }
+
+    public void HoverOver(Card card)
+    {
+        if(card == null)
+        {
+            StopHovering();
+            return;
+        }
+
+        if (card == hoveredCard) return;
+
+        selectedUIParent.SetActive(true);
+        hoveredCard = card;
+
+        //do something based on what type the card is
+        if (card is CharacterCard hoveredChar)
+            selectedCardStatsText.text = hoveredChar.GetStatsString();
+        else if (card is SpellCard)
+            selectedCardStatsText.text = "";
 
         //set all common values
         selectedCardSubtypesText.text = card.SubtypeText;
