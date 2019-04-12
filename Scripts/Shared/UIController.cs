@@ -13,6 +13,7 @@ public class UIController : MonoBehaviour {
     public InputField debugSInputField;
     public InputField debugWInputField;
     public InputField debugPipsField;
+    public Toggle debugToggle;
 
     //normal UI
     //pips
@@ -69,6 +70,8 @@ public class UIController : MonoBehaviour {
     public CharacterCard SelectedChar { get { return selectedChar; } }
     public SpellCard SelectedSpell { get { return selectedSpell; } }
 
+    public bool DebugMode { get { return debugToggle.isOn; } }
+
     //deck search vars
     public List<Card> thingToSearch;
 
@@ -88,7 +91,7 @@ public class UIController : MonoBehaviour {
         {
             selectedUIParent.SetActive(false);
             debugParent.SetActive(false);
-            Debug.Log("Selecting Null");
+            //Debug.Log("Selecting Null");
             selectedCardNameText.text = "No Card Selected";
             selectedCardImage.sprite = Resources.Load<Sprite>("Kompas Circle Background");
             selectedCardStatsText.text = "";
@@ -124,6 +127,7 @@ public class UIController : MonoBehaviour {
     public void StopHovering()
     {
         SelectCard(selectedCard);
+        hoveredCard = null;
     }
 
     public void HoverOver(Card card)
@@ -143,6 +147,7 @@ public class UIController : MonoBehaviour {
         if (card is CharacterCard hoveredChar)
             selectedCardStatsText.text = hoveredChar.GetStatsString();
         else if (card is SpellCard)
+
             selectedCardStatsText.text = "";
 
         //set all common values

@@ -6051,6 +6051,7 @@ MonoBehaviour:
   debugSInputField: {fileID: 1547115773}
   debugWInputField: {fileID: 598976412}
   debugPipsField: {fileID: 485200469}
+  debugToggle: {fileID: 0}
   friendlyPipsText: {fileID: 1418310388}
   enemyPipsText: {fileID: 1365698564}
   selectedUIParent: {fileID: 2098225059}

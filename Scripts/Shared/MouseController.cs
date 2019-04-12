@@ -87,6 +87,7 @@ public class MouseController : MonoBehaviour {
         if (kompasObjectHit == null)
         {
             ClearHits();
+            Game.mainGame.uiCtrl.StopHovering();
             //if we clicked on nothing, select nothing
             if(Input.GetMouseButtonDown(0)) Game.mainGame.uiCtrl.SelectCard(null);
         }

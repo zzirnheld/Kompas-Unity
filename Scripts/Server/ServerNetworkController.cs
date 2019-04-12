@@ -157,7 +157,7 @@ public class ServerNetworkController : NetworkController {
             case Packet.Command.Augment:
                 Card toAugment = ServerGame.mainServerGame.GetCardFromID(packet.cardID);
                 //if it's not a valid place to do, return
-                if (ServerGame.mainServerGame.ValidAugment(toAugment, packet.X, packet.Y))
+                if (ServerGame.mainServerGame.uiCtrl.DebugMode || ServerGame.mainServerGame.ValidAugment(toAugment, packet.X, packet.Y))
                 {
                     packet.InvertForController(playerIndex);
                     //tell everyone to do it
@@ -181,7 +181,7 @@ public class ServerNetworkController : NetworkController {
                 //get the card to play
                 Card toPlay = ServerGame.mainServerGame.GetCardFromID(packet.cardID);
                 //if it's not a valid place to do, return
-                if (ServerGame.mainServerGame.ValidBoardPlay(toPlay, packet.X, packet.Y))
+                if (ServerGame.mainServerGame.uiCtrl.DebugMode || ServerGame.mainServerGame.ValidBoardPlay(toPlay, packet.X, packet.Y))
                 {
                     packet.InvertForController(playerIndex);
                     //tell everyone to do it
@@ -205,6 +205,7 @@ public class ServerNetworkController : NetworkController {
                 Card toMove = ServerGame.mainServerGame.GetCardFromID(packet.cardID);
                 Debug.Log("packet card id is " + packet.cardID + "; its owner is " + toMove.Owner);
                 //if it's not a valid place to do, return
+                //NOTE: there is no debug to override moves because of how checking if attack works
                 if (ServerGame.mainServerGame.ValidMove(toMove, packet.X, packet.Y))
                 {
                     Debug.Log("move");
@@ -247,6 +248,8 @@ public class ServerNetworkController : NetworkController {
                 }
                 break;
             case Packet.Command.Topdeck:
+                if (!ServerGame.mainServerGame.uiCtrl.DebugMode) break;
+
                 Card toTopdeck = ServerGame.mainServerGame.GetCardFromID(packet.cardID);
                 //and let everyone know
                 outPacket = new Packet(Packet.Command.Topdeck, toTopdeck);
@@ -258,6 +261,8 @@ public class ServerNetworkController : NetworkController {
                 SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 break;
             case Packet.Command.Discard:
+                if (!ServerGame.mainServerGame.uiCtrl.DebugMode) break;
+
                 Card toDiscard = ServerGame.mainServerGame.GetCardFromID(packet.cardID);
                 //and let everyone know
                 outPacket = new Packet(Packet.Command.Discard, toDiscard);
@@ -269,6 +274,8 @@ public class ServerNetworkController : NetworkController {
                 SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 break;
             case Packet.Command.Rehand:
+                if (!ServerGame.mainServerGame.uiCtrl.DebugMode) break;
+
                 Card toRehand = ServerGame.mainServerGame.GetCardFromID(packet.cardID);
                 //and let everyone know
                 outPacket = new Packet(Packet.Command.Rehand, toRehand);
@@ -280,9 +287,13 @@ public class ServerNetworkController : NetworkController {
                 SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 break;
             case Packet.Command.Draw:
+                if (!ServerGame.mainServerGame.uiCtrl.DebugMode) break;
+
                 AttemptToDraw(playerIndex, connectionID);
                 break;
             case Packet.Command.SetNESW:
+                if (!ServerGame.mainServerGame.uiCtrl.DebugMode) break;
+
                 Card toSetNESW = ServerGame.mainServerGame.SetNESW(packet.cardID, packet.N, packet.E, packet.S, packet.W);
                 //let everyone know to set NESW
                 outPacket = new Packet(Packet.Command.SetNESW, toSetNESW, packet.N, packet.E, packet.S, packet.W);
@@ -290,6 +301,8 @@ public class ServerNetworkController : NetworkController {
                 SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 break;
             case Packet.Command.SetPips:
+                if (!ServerGame.mainServerGame.uiCtrl.DebugMode) break;
+
                 SetPips(playerIndex, connectionID, packet.Pips);
                 break;
             case Packet.Command.EndTurn:

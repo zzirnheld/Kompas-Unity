@@ -48,6 +48,7 @@ public class Packet {
     {
         command = Command.Confirm;
         this.packetID = packetID;
+        args = new int[4];
     }
 
     public Packet(Command command)
@@ -135,7 +136,11 @@ public class Packet {
 
     public void Invert()
     {
-
+        if(args == null)
+        {
+            Debug.Log("args is null");
+            return;
+        }
         args[2] = 6 - args[2];
         args[3] = 6 - args[3];
     }

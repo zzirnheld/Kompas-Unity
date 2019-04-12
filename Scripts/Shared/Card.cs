@@ -317,7 +317,7 @@ public abstract class Card : KompasObject {
     }
     public override void OnHover()
     {
-        //TODO show enlarged detailed sprite
+        game.uiCtrl.HoverOver(this);
     }
     /// <summary>
     /// The mouse position contains x and z values of the absolute position of where the ray intersects whatever it hits, and y = 2.
