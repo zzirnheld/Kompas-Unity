@@ -175,6 +175,7 @@ public abstract class Card : KompasObject {
     {
         this.game = game;
         clientGame = game as ClientGame;
+
         cardName = serializedCard.cardName;
         effText = serializedCard.effText;
         subtypeText = serializedCard.subtypeText;

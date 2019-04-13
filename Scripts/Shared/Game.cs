@@ -28,6 +28,7 @@ public class Game : MonoBehaviour {
     //game data
     public Dictionary<int, Card> cards;
     public int MaxCardsOnField = 0; //for pip generation purposes
+    public Effect curretlyResolvingEffect;
 
     private void Start()
     {
