@@ -346,4 +346,10 @@ public class ServerNetworkController : NetworkController {
         Packet outPacketInverted = new Packet(Packet.Command.EndTurn, indexToSet);
         SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
     }
+
+    public void AskClientForTarget(int playerIndex, Card card, int effectIndex, int subeffectIndex)
+    {
+        Packet outPacket = new Packet(Packet.Command.RequestTarget, card, effectIndex, subeffectIndex);
+        SendPackets(outPacket, null, ServerGame.mainServerGame, ServerGame.mainServerGame.Players[playerIndex].ConnectionID);
+    }
 }

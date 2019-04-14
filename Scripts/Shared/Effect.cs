@@ -22,6 +22,10 @@ public class Effect
 
     [System.NonSerialized] public List<Card> targets;
 
+    /*
+     * Effects will only be resolved on server. clients will just get to know what effects they can use
+     */ 
+
     public void SetSubeffectsParents()
     {
         for(int i = 0; i < subeffects.Length; i++)

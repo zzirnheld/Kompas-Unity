@@ -11,7 +11,8 @@ public class Packet {
     public enum Command { Nothing, Confirm,
         Play, Augment, Move, EndTurn,
         Topdeck, Discard, Rehand, AddAsFriendly, AddAsEnemy, IncrementEnemyDeck, AddToDeck, Delete,
-        Draw, SetNESW, SetPips, SetEnemyPips, PutBack, GetAttackTarget, YoureFirst, YoureSecond}
+        Draw, SetNESW, SetPips, SetEnemyPips, PutBack, GetAttackTarget, YoureFirst, YoureSecond,
+        RequestTarget}
 
     /// <summary>
     /// Contains the command that is sent.
