@@ -8,7 +8,7 @@ public class SpellCard : Card
     public enum SpellType { Simple, Enchant, Augment, Terraform, Delayed };
 
     private int d; //TODO refactor this to C
-    private SpellType subtype;
+    private SpellType spellSubtype;
     private string subtext;
     private bool fast;
 
@@ -22,7 +22,7 @@ public class SpellCard : Card
         get { return subtext; }
         set { subtext = value; }
     }
-    public SpellType Subtype { get { return subtype; } }
+    public SpellType SpellSubtype { get { return spellSubtype; } }
 
     //get data
     public SerializableSpellCard GetSerializableVersion()
@@ -35,7 +35,7 @@ public class SpellCard : Card
         {
             cardName = cardName,
             effText = effText,
-            subtype = subtype,
+            subtype = spellSubtype,
             subtext = subtext,
             d = d,
 
@@ -56,7 +56,7 @@ public class SpellCard : Card
 
         d = serializedSpell.d;
         subtext = serializedSpell.subtext;
-        subtype = serializedSpell.subtype;
+        spellSubtype = serializedSpell.subtype;
         fast = serializedSpell.fast;
 
         base.SetInfo(serializedCard, game);

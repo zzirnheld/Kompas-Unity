@@ -29,6 +29,13 @@ public class Game : MonoBehaviour {
     public Dictionary<int, Card> cards;
     public int MaxCardsOnField = 0; //for pip generation purposes
     public Effect curretlyResolvingEffect;
+    
+    private Effect currentlyResolvingEffect;
+    public Effect CurrentlyResolvingEffect
+    {
+        get => currentlyResolvingEffect;
+        set => currentlyResolvingEffect = value;
+    }
 
     private void Start()
     {
@@ -195,6 +202,15 @@ public class Game : MonoBehaviour {
 
 
     //game mechanics
+    //checking for valid target
+    public bool ExistsValidCardOnBoardTarget(CardRestriction restriction)
+    {
+        return boardCtrl.ExistsCardOnBoard(restriction);
+    }
 
+    public bool NoValidCardOnBoardTarget(CardRestriction restriction)
+    {
+        return !boardCtrl.ExistsCardOnBoard(restriction);
+    }
 
 }

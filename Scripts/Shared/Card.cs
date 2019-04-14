@@ -34,6 +34,7 @@ public abstract class Card : KompasObject {
     protected int owner; //TODO differentiate betw owner & ctrler
     protected CardLocation location;
     protected int id;
+    protected string[] subtypes;
 
     //other game data
     protected string cardFileName;
@@ -74,6 +75,7 @@ public abstract class Card : KompasObject {
             return id;
         }
     }
+    public string[] Subtypes { get { return subtypes; } }
     //other game data
     public string CardFileName {
         get { return cardFileName; }

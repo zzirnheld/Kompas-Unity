@@ -177,6 +177,15 @@ public class BoardController : KompasObject
         }
     }
 
+    public bool ExistsCardOnBoard(CardRestriction restriction)
+    {
+        foreach(Card c in cards)
+        {
+            if (restriction.Evaluate(c, false)) return true;
+        }
+
+        return false;
+    }
     #endregion game mechanics
 
     #region cycling visible cards

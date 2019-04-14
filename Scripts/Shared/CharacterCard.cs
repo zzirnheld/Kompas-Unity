@@ -11,7 +11,6 @@ public class CharacterCard : Card {
     private int w;
     private int baseN;
 
-    private string[] subtypes;
     private List<AugmentCard> augments = new List<AugmentCard>();
 
     //stat getters TODO take into account tags here
@@ -63,7 +62,6 @@ public class CharacterCard : Card {
     }
     #endregion stats
 
-    public string[] Subtypes { get { return subtypes; } }
     public List<AugmentCard> Augments { get { return augments; } }
 
     //get other information
