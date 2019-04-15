@@ -123,21 +123,7 @@ public class UIController : MonoBehaviour {
         selectedCardImage.sprite = card.DetailedSprite;
         selectedCardEffText.text = card.EffText;
 
-        if (!(card.game is ClientGame clientGame)) return;
-
-        //if the player is currently looking for a target on the board,
-        if(targetMode == Game.TargetMode.BoardTarget)
-        {
-            //check if the target fits the restriction, according to us
-            if(clientGame.clientNetworkCtrl.GetLastPacketRestriction().Evaluate(card, false))
-            {
-                //if it fits the restriction, send the proposed target to the server
-                clientGame.clientNetworkCtrl.RequestTarget(card);
-
-                //and change the game's target mode
-                clientGame.targetMode = Game.TargetMode.NoTargeting;
-            }
-        }
+        if (card.game is ClientGame clientGame) clientGame.TargetCard(card);
     }
 
     public void SelectCard(Card card)

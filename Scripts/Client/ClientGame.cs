@@ -109,5 +109,22 @@ public class ClientGame : Game {
         uiCtrl.SelectCard(card);
     }
 
+    public void TargetCard(Card card)
+    {
+        //if the player is currently looking for a target on the board,
+        if (targetMode == Game.TargetMode.BoardTarget)
+        {
+            //check if the target fits the restriction, according to us
+            if (clientNetworkCtrl.GetLastPacketRestriction().Evaluate(card, false))
+            {
+                //if it fits the restriction, send the proposed target to the server
+                clientNetworkCtrl.RequestTarget(card);
+
+                //and change the game's target mode
+                targetMode = Game.TargetMode.NoTargeting;
+            }
+        }
+    }
+
 
 }
