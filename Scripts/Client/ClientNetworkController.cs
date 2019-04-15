@@ -14,6 +14,21 @@ public class ClientNetworkController : NetworkController {
     public NetworkConnection mConnection;
     private bool Hosting = false;
 
+    public Packet lastPacket;
+
+    public CardRestriction GetLastPacketRestriction()
+    {
+        if(lastPacket.command == Packet.Command.RequestBoardTarget)
+        {
+            return (Game.mainGame.GetCardFromID(lastPacket.cardID)
+                .Effects[lastPacket.EffIndex]
+                .Subeffects[lastPacket.SubeffIndex] 
+                as TargetCardOnBoardSubeffect)
+                .cardRestriction;
+        }
+        return null;
+    }
+
     public void Start()
     {
         
@@ -79,6 +94,8 @@ public class ClientNetworkController : NetworkController {
         Packet packet = Deserialize(buffer);
         if (packet == null) return;
         if(packet.command != Packet.Command.Nothing) Debug.Log("Parsing command " + packet.command + " for " + packet.cardID);
+
+        lastPacket = packet;
 
         switch (packet.command)
         {
@@ -149,8 +166,8 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.mainClientGame.turnPlayer = 1;
                 ClientGame.mainClientGame.uiCtrl.CurrentStateString = "Enemy Turn";
                 break;
-            case Packet.Command.RequestTarget:
-
+            case Packet.Command.RequestBoardTarget:
+                ClientGame.mainClientGame.targetMode = Game.TargetMode.BoardTarget;
                 break;
             default:
                 Debug.Log("Unrecognized command sent to client");
@@ -235,5 +252,10 @@ public class ClientNetworkController : NetworkController {
         Send(packet, mDriver, mConnection);
     }
 
+    public void RequestTarget(Card card)
+    {
+        Packet packet = new Packet(Packet.Command.Target, card);
+        Send(packet, mDriver, mConnection);
+    }
     #endregion
 }

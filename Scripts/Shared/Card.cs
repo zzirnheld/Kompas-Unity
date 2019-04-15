@@ -36,6 +36,8 @@ public abstract class Card : KompasObject {
     protected int id;
     protected string[] subtypes;
 
+    protected Effect[] effects;
+
     //other game data
     protected string cardFileName;
     protected MeshRenderer meshRenderer;
@@ -76,6 +78,7 @@ public abstract class Card : KompasObject {
         }
     }
     public string[] Subtypes { get { return subtypes; } }
+    public Effect[] Effects { get => effects; }
     //other game data
     public string CardFileName {
         get { return cardFileName; }

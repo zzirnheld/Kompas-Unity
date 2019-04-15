@@ -84,7 +84,7 @@ public class UIController : MonoBehaviour {
     /// updates the ui with the given selection. if the selection is null, hides the ui.
     /// </summary>
     /// <param name="card">make this null to deselect</param>
-    public void SelectCard(Card card)
+    public void SelectCard(Card card, Game.TargetMode targetMode)
     {
         //if the card is null, deselect everything
         if (card == null)
@@ -122,6 +122,28 @@ public class UIController : MonoBehaviour {
         selectedCardNameText.text = card.CardName;
         selectedCardImage.sprite = card.DetailedSprite;
         selectedCardEffText.text = card.EffText;
+
+        if (!(card.game is ClientGame clientGame)) return;
+
+        //if the player is currently looking for a target on the board,
+        if(targetMode == Game.TargetMode.BoardTarget)
+        {
+            //check if the target fits the restriction, according to us
+            if(clientGame.clientNetworkCtrl.GetLastPacketRestriction().Evaluate(card, false))
+            {
+                //if it fits the restriction, send the proposed target to the server
+                clientGame.clientNetworkCtrl.RequestTarget(card);
+
+                //and change the game's target mode
+                clientGame.targetMode = Game.TargetMode.NoTargeting;
+            }
+        }
+    }
+
+    public void SelectCard(Card card)
+    {
+        if (card == null) SelectCard(card, Game.TargetMode.NoTargeting);
+        else SelectCard(card, card.game.targetMode);
     }
 
     public void StopHovering()

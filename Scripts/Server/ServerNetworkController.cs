@@ -308,6 +308,13 @@ public class ServerNetworkController : NetworkController {
             case Packet.Command.EndTurn:
                 ServerGame.mainServerGame.SwitchTurn();
                 break;
+            case Packet.Command.Target:
+                Card potentialTarget = ServerGame.mainServerGame.GetCardFromID(packet.cardID);
+                if(ServerGame.mainServerGame.CurrentlyResolvingEffect.CurrentlyResolvingSubeffect is TargetCardOnBoardSubeffect tcob)
+                {
+                    tcob.cardRestriction.Evaluate(potentialTarget, true);
+                }
+                break;
             default:
                 Debug.Log("Invalid command " + packet.command + " to server from " + connectionID);
                 break;
@@ -349,7 +356,7 @@ public class ServerNetworkController : NetworkController {
 
     public void AskClientForTarget(int playerIndex, Card card, int effectIndex, int subeffectIndex)
     {
-        Packet outPacket = new Packet(Packet.Command.RequestTarget, card, effectIndex, subeffectIndex);
+        Packet outPacket = new Packet(Packet.Command.RequestBoardTarget, card, effectIndex, subeffectIndex);
         SendPackets(outPacket, null, ServerGame.mainServerGame, ServerGame.mainServerGame.Players[playerIndex].ConnectionID);
     }
 }

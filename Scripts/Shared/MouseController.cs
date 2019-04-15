@@ -89,7 +89,7 @@ public class MouseController : MonoBehaviour {
             ClearHits();
             Game.mainGame.uiCtrl.StopHovering();
             //if we clicked on nothing, select nothing
-            if(Input.GetMouseButtonDown(0)) Game.mainGame.uiCtrl.SelectCard(null);
+            if(Input.GetMouseButtonDown(0)) Game.mainGame.uiCtrl.SelectCard(null, Game.TargetMode.NoTargeting);
         }
         else
         {

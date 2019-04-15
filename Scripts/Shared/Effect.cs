@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
+[System.Serializable]
 public class Effect
 {
     //card that this is the effect of. to be set at initialization
@@ -19,8 +18,12 @@ public class Effect
     public bool doneResolving = false;
 
     private Subeffect[] subeffects;
+    public Subeffect[] Subeffects { get => subeffects; }
 
     [System.NonSerialized] public List<Card> targets;
+    
+    //get the currently resolving subeffect
+    public Subeffect CurrentlyResolvingSubeffect { get { return subeffects[effectIndex]; } }
 
     /*
      * Effects will only be resolved on server. clients will just get to know what effects they can use

@@ -45,6 +45,13 @@ public class CardRestriction : Restriction
                     return false;
             }
         }
+
+        if (actuallyTargetThis)
+        {
+            subeffect.parent.targets.Add(potentialTarget);
+            subeffect.parent.ResolveSubeffect(subeffect.parent.effectIndex + 1);
+        }
+
         return true;
     }
 }

@@ -7,6 +7,8 @@ public class Game : MonoBehaviour {
 
     public static Game mainGame;
 
+    public enum TargetMode { NoTargeting, BoardTarget }
+
     //other scripts
     public MouseController mouseCtrl;
     public NetworkController networkCtrl;
@@ -28,14 +30,9 @@ public class Game : MonoBehaviour {
     //game data
     public Dictionary<int, Card> cards;
     public int MaxCardsOnField = 0; //for pip generation purposes
-    public Effect curretlyResolvingEffect;
-    
-    private Effect currentlyResolvingEffect;
-    public Effect CurrentlyResolvingEffect
-    {
-        get => currentlyResolvingEffect;
-        set => currentlyResolvingEffect = value;
-    }
+
+
+    public TargetMode targetMode = TargetMode.NoTargeting;
 
     private void Start()
     {
@@ -62,7 +59,7 @@ public class Game : MonoBehaviour {
         mouseCtrl.GetMouseRay();
         //for now, assume that you're not targeting anything. here is the correct sequence of methods:
         //first drag anything that you were dragging last frame, even if your ray isn't on it now
-        mouseCtrl.DragBeforeRaycast(); 
+        mouseCtrl.DragBeforeRaycast();
         //then, see if you've hit anything, whether or not you dragged anything
         mouseCtrl.GetRaycastHit();
         //then, check if you've clicked anything
@@ -193,9 +190,7 @@ public class Game : MonoBehaviour {
     //ui
     public virtual void SelectCard(Card card)
     {
-        uiCtrl.SelectCard(card);
-
-        //if we're targeting, 
+        uiCtrl.SelectCard(card, targetMode);
     }
     #endregion forwarding
 

@@ -10,9 +10,8 @@ public class Packet {
 
     public enum Command { Nothing, Confirm,
         Play, Augment, Move, EndTurn,
-        Topdeck, Discard, Rehand, AddAsFriendly, AddAsEnemy, IncrementEnemyDeck, AddToDeck, Delete,
-        Draw, SetNESW, SetPips, SetEnemyPips, PutBack, GetAttackTarget, YoureFirst, YoureSecond,
-        RequestTarget}
+        Topdeck, Discard, Rehand, AddAsFriendly, AddAsEnemy, IncrementEnemyDeck, AddToDeck, Delete, Target,
+        Draw, SetNESW, SetPips, SetEnemyPips, PutBack, GetAttackTarget, YoureFirst, YoureSecond, RequestBoardTarget}
 
     /// <summary>
     /// Contains the command that is sent.
@@ -39,6 +38,9 @@ public class Packet {
     public int E { get { return args[1]; } }
     public int S { get { return args[2]; } }
     public int W { get { return args[3]; } }
+
+    public int EffIndex { get => args[0]; }
+    public int SubeffIndex { get => args[1]; }
 
     #region constuctors 
     /// <summary>
