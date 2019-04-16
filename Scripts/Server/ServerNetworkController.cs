@@ -358,5 +358,6 @@ public class ServerNetworkController : NetworkController {
     {
         Packet outPacket = new Packet(Packet.Command.RequestBoardTarget, card, effectIndex, subeffectIndex);
         SendPackets(outPacket, null, ServerGame.mainServerGame, ServerGame.mainServerGame.Players[playerIndex].ConnectionID);
+        Debug.Log("Asking for target");
     }
 }

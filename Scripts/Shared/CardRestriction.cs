@@ -7,6 +7,8 @@ using UnityEngine;
 public class CardRestriction : Restriction
 {
     public enum CardRestrictions { CostsLessThanEqual, NameIs, SubtypesInclude}
+
+    //because JsonUtility will fill in all values with defaults if not present
     public CardRestrictions[] restrictionsToCheck;
 
     public int costsLessThan;
@@ -50,6 +52,7 @@ public class CardRestriction : Restriction
         {
             subeffect.parent.targets.Add(potentialTarget);
             subeffect.parent.ResolveSubeffect(subeffect.parent.effectIndex + 1);
+            Debug.Log("Adding " + potentialTarget.CardName + " as target");
         }
 
         return true;

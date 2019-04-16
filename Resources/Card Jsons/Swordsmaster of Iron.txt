@@ -2,6 +2,16 @@
 "cardType":67,
 "cardName":"Swordsmaster of Iron",
 "effText":"Once each turn, you can give an adjacent Warrior +1W.",
+"effects":[
+	{
+		"subeffectType":0
+		"subeffects":"{
+			\"cardRestriction\":{
+				\"restrictionsToCheck\":[]
+			}
+		}"
+	}
+],
 "n":2,
 "e":2,
 "s":3,

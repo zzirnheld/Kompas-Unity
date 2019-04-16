@@ -185,6 +185,9 @@ public abstract class Card : KompasObject {
         effText = serializedCard.effText;
         subtypeText = serializedCard.subtypeText;
         location = serializedCard.location;
+
+        //go through each of the serialized effects, 
+
         ChangeController(serializedCard.owner);
         if (location == CardLocation.Field) MoveTo(serializedCard.BoardX, serializedCard.BoardY);
         else

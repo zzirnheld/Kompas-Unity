@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class TargetCardOnBoardSubeffect : Subeffect
 {
     //there will be a different target effect for board, hand, discard, deck, and combos of these

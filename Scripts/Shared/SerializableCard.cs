@@ -21,6 +21,8 @@ public class SerializableCard
     public int BoardY;
     public int index;
 
+    public SerializableEffect[] effects;
+
     /// <summary>
     /// Flip board position
     /// </summary>

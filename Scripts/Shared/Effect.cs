@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
 public class Effect
 {
     //card that this is the effect of. to be set at initialization
-    [System.NonSerialized] public Card thisCard;
+    public Card thisCard;
 
     //who owns the effect. TODO set when a player activates an effect
     public int effectController;
@@ -17,21 +16,37 @@ public class Effect
     //checked by effect resolution to see if it should start resolving the next effect on the stack
     public bool doneResolving = false;
 
-    private Subeffect[] subeffects;
-    public Subeffect[] Subeffects { get => subeffects; }
+    private List<Subeffect> subeffects;
+    public List<Subeffect> Subeffects { get => subeffects; }
 
-    [System.NonSerialized] public List<Card> targets;
+    public List<Card> targets;
     
     //get the currently resolving subeffect
     public Subeffect CurrentlyResolvingSubeffect { get { return subeffects[effectIndex]; } }
 
+    public Effect(SerializableEffect se)
+    {
+        for (int i = 0; i < se.subeffectTypes.Length; i++)
+        {
+            switch (se.subeffectTypes[i])
+            {
+                case SerializableEffect.SubeffectType.TargetCardOnBoardSubeffect:
+                    subeffects.Add(JsonUtility.FromJson<TargetCardOnBoardSubeffect>(se.subeffects[i]));
+                    break;
+                default:
+                    Debug.Log("Unrecognized effect type enum for loading effect in effect constructor");
+                    break;
+            }
+        }
+    }
+
     /*
      * Effects will only be resolved on server. clients will just get to know what effects they can use
-     */ 
+     */
 
     public void SetSubeffectsParents()
     {
-        for(int i = 0; i < subeffects.Length; i++)
+        for(int i = 0; i < subeffects.Count; i++)
         {
             subeffects[i].parent = this;
         }
@@ -44,7 +59,7 @@ public class Effect
 
     public void ResolveSubeffect(int index)
     {
-        if(index >= subeffects.Length)
+        if(index >= subeffects.Count)
         {
             Finish();
             return;
