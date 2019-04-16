@@ -22,7 +22,7 @@ public class CardRestriction : Restriction
     /// <param name="potentialTarget"></param>
     /// <param name="actuallyTargetThis">Whether effect resolution should continue if this is a valid target</param>
     /// <returns></returns>
-    public virtual bool Evaluate(Card potentialTarget, bool actuallyTargetThis)
+    public override bool Evaluate(Card potentialTarget, bool actuallyTargetThis)
     {
         if (potentialTarget == null) return false;
 

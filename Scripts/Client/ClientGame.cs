@@ -104,9 +104,9 @@ public class ClientGame : Game {
     }
 
     //ui
-    public override void SelectCard(Card card)
+    public override void SelectCard(Card card, bool fromClick)
     {
-        uiCtrl.SelectCard(card);
+        uiCtrl.SelectCard(card, fromClick);
     }
 
     public void TargetCard(Card card)
@@ -115,7 +115,7 @@ public class ClientGame : Game {
         if (targetMode == Game.TargetMode.BoardTarget)
         {
             //check if the target fits the restriction, according to us
-            if (clientNetworkCtrl.GetLastPacketRestriction().Evaluate(card, false))
+            if (clientNetworkCtrl.lastRestriction.Evaluate(card, false))
             {
                 //if it fits the restriction, send the proposed target to the server
                 clientNetworkCtrl.RequestTarget(card);

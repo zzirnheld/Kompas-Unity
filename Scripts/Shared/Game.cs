@@ -30,7 +30,13 @@ public class Game : MonoBehaviour {
     //game data
     public Dictionary<int, Card> cards;
     public int MaxCardsOnField = 0; //for pip generation purposes
-
+    
+    protected Effect currentlyResolvingEffect;
+    public Effect CurrentlyResolvingEffect
+    {
+        get => currentlyResolvingEffect;
+        set => currentlyResolvingEffect = value;
+    }
 
     public TargetMode targetMode = TargetMode.NoTargeting;
 
@@ -188,9 +194,10 @@ public class Game : MonoBehaviour {
     }
 
     //ui
-    public virtual void SelectCard(Card card)
+    public virtual void SelectCard(Card card, bool fromClick)
     {
-        uiCtrl.SelectCard(card, targetMode);
+        Debug.Log("Selecting " + card.CardName + " in mode " + targetMode);
+        uiCtrl.SelectCard(card, targetMode, fromClick);
     }
     #endregion forwarding
 

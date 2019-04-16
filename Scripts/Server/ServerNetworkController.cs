@@ -310,10 +310,16 @@ public class ServerNetworkController : NetworkController {
                 break;
             case Packet.Command.Target:
                 Card potentialTarget = ServerGame.mainServerGame.GetCardFromID(packet.cardID);
+                Debug.Log("Client sent target " + potentialTarget.CardName);
                 if(ServerGame.mainServerGame.CurrentlyResolvingEffect.CurrentlyResolvingSubeffect is TargetCardOnBoardSubeffect tcob)
                 {
                     tcob.cardRestriction.Evaluate(potentialTarget, true);
                 }
+                break;
+            case Packet.Command.TestTargetEffect:
+                Card whoseEffToTest = ServerGame.mainServerGame.GetCardFromID(packet.cardID);
+                Debug.Log("Running eff of " + whoseEffToTest.CardName);
+                whoseEffToTest.Effects[0].StartResolution(playerIndex);
                 break;
             default:
                 Debug.Log("Invalid command " + packet.command + " to server from " + connectionID);

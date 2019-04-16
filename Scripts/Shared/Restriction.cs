@@ -13,4 +13,10 @@ public class Restriction
         Debug.Log("Parent restriction always returns true");
         return true;
     }
+
+    public virtual bool Evaluate(Card card, bool actuallyTargetThis)
+    {
+        Debug.Log("If there is no override method, the parent will return true for Evaluate");
+        return true;
+    }
 }

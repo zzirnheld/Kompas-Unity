@@ -16,18 +16,7 @@ public class ClientNetworkController : NetworkController {
 
     public Packet lastPacket;
 
-    public CardRestriction GetLastPacketRestriction()
-    {
-        if(lastPacket.command == Packet.Command.RequestBoardTarget)
-        {
-            return (Game.mainGame.GetCardFromID(lastPacket.cardID)
-                .Effects[lastPacket.EffIndex]
-                .Subeffects[lastPacket.SubeffIndex] 
-                as TargetCardOnBoardSubeffect)
-                .cardRestriction;
-        }
-        return null;
-    }
+    public Restriction lastRestriction;
 
     public void Start()
     {
@@ -129,7 +118,7 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.Move:
                 ClientGame.mainClientGame.Move(packet.cardID, packet.X, packet.Y);
                 //make the ui show the updated n (and other values)
-                ClientGame.mainClientGame.uiCtrl.SelectCard(ClientGame.mainClientGame.uiCtrl.SelectedCard);
+                ClientGame.mainClientGame.uiCtrl.SelectCard(ClientGame.mainClientGame.uiCtrl.SelectedCard, false);
                 break;
             case Packet.Command.Topdeck:
                 ClientGame.mainClientGame.Topdeck(packet.cardID);
@@ -168,6 +157,9 @@ public class ClientNetworkController : NetworkController {
                 break;
             case Packet.Command.RequestBoardTarget:
                 ClientGame.mainClientGame.targetMode = Game.TargetMode.BoardTarget;
+                lastRestriction = (Game.mainGame.GetCardFromID(packet.cardID)
+                                    .Effects[packet.EffIndex].Subeffects[packet.SubeffIndex] as TargetCardOnBoardSubeffect)
+                                    .cardRestriction;
                 break;
             default:
                 Debug.Log("Unrecognized command sent to client");
@@ -254,7 +246,14 @@ public class ClientNetworkController : NetworkController {
 
     public void RequestTarget(Card card)
     {
+        Debug.Log("Requesting target " + card.CardName);
         Packet packet = new Packet(Packet.Command.Target, card);
+        Send(packet, mDriver, mConnection);
+    }
+
+    public void RequestResolveEffect(Card card, int index)
+    {
+        Packet packet = new Packet(Packet.Command.TestTargetEffect, card, index);
         Send(packet, mDriver, mConnection);
     }
     #endregion

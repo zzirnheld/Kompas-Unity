@@ -16,27 +16,36 @@ public class Effect
     //checked by effect resolution to see if it should start resolving the next effect on the stack
     public bool doneResolving = false;
 
-    private List<Subeffect> subeffects;
-    public List<Subeffect> Subeffects { get => subeffects; }
+    private Subeffect[] subeffects;
+    public Subeffect[] Subeffects { get => subeffects; }
 
     public List<Card> targets;
     
     //get the currently resolving subeffect
     public Subeffect CurrentlyResolvingSubeffect { get { return subeffects[effectIndex]; } }
 
-    public Effect(SerializableEffect se)
+    public Effect(SerializableEffect se, Card thisCard)
     {
+        this.thisCard = thisCard;
+        subeffects = new Subeffect[se.subeffects.Length];
+        targets = new List<Card>();
+
         for (int i = 0; i < se.subeffectTypes.Length; i++)
         {
             switch (se.subeffectTypes[i])
             {
-                case SerializableEffect.SubeffectType.TargetCardOnBoardSubeffect:
-                    subeffects.Add(JsonUtility.FromJson<TargetCardOnBoardSubeffect>(se.subeffects[i]));
+                case SerializableEffect.SubeffectType.TargetCardOnBoard:
+                    TargetCardOnBoardSubeffect tcob = JsonUtility.FromJson<TargetCardOnBoardSubeffect>(se.subeffects[i]);
+                    tcob.cardRestriction.subeffect = tcob;
+                    subeffects[i] = tcob;
                     break;
                 default:
                     Debug.Log("Unrecognized effect type enum for loading effect in effect constructor");
+                    subeffects[i] = null;
                     break;
             }
+
+            if (subeffects[i] != null) subeffects[i].parent = this;
         }
     }
 
@@ -44,22 +53,16 @@ public class Effect
      * Effects will only be resolved on server. clients will just get to know what effects they can use
      */
 
-    public void SetSubeffectsParents()
+    public void StartResolution(int controller)
     {
-        for(int i = 0; i < subeffects.Count; i++)
-        {
-            subeffects[i].parent = this;
-        }
-    }
-
-    public void StartResolution()
-    {
+        effectController = controller;
+        thisCard.game.CurrentlyResolvingEffect = this;
         ResolveSubeffect(0);
     }
 
     public void ResolveSubeffect(int index)
     {
-        if(index >= subeffects.Count)
+        if(index >= subeffects.Length)
         {
             Finish();
             return;

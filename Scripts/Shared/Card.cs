@@ -186,7 +186,14 @@ public abstract class Card : KompasObject {
         subtypeText = serializedCard.subtypeText;
         location = serializedCard.location;
 
+        effects = new Effect[serializedCard.effects.Length];
+
         //go through each of the serialized effects, 
+        for(int i = 0; i < serializedCard.effects.Length; i++)
+        {
+            Debug.Log(serializedCard.effects[i] + ", " + serializedCard.effects[i].subeffects + ", " + serializedCard.effects[i].subeffectTypes);
+            effects[i] = new Effect(serializedCard.effects[i], this);
+        }
 
         ChangeController(serializedCard.owner);
         if (location == CardLocation.Field) MoveTo(serializedCard.BoardX, serializedCard.BoardY);
@@ -322,7 +329,7 @@ public abstract class Card : KompasObject {
     //actual interaction
     public override void OnClick()
     {
-        game.SelectCard(this);
+        game.SelectCard(this, true);
     }
     public override void OnHover()
     {
@@ -333,6 +340,8 @@ public abstract class Card : KompasObject {
     /// </summary>
     public override void OnDrag(Vector3 mousePos)
     {
+        if (game.targetMode != Game.TargetMode.NoTargeting) return;
+
         if (!dragging)
         {
             dragging = true;

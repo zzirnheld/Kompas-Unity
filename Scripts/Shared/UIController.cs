@@ -64,6 +64,7 @@ public class UIController : MonoBehaviour {
     private CharacterCard selectedChar; //keeps track of last selected character for updating stats in debug, etc.
     private SpellCard selectedSpell;
 
+    private bool hovering = false;
     private Card hoveredCard;
 
     public Card SelectedCard { get { return selectedCard; } }
@@ -84,7 +85,8 @@ public class UIController : MonoBehaviour {
     /// updates the ui with the given selection. if the selection is null, hides the ui.
     /// </summary>
     /// <param name="card">make this null to deselect</param>
-    public void SelectCard(Card card, Game.TargetMode targetMode)
+    /// <param name="fromClick">whether the selecting is from clicking, aka choosing a target</param>
+    public void SelectCard(Card card, Game.TargetMode targetMode, bool fromClick)
     {
         //if the card is null, deselect everything
         if (card == null)
@@ -123,19 +125,21 @@ public class UIController : MonoBehaviour {
         selectedCardImage.sprite = card.DetailedSprite;
         selectedCardEffText.text = card.EffText;
 
-        if (card.game is ClientGame clientGame) clientGame.TargetCard(card);
+        if (card.game is ClientGame clientGame && fromClick) clientGame.TargetCard(card);
     }
 
-    public void SelectCard(Card card)
+    public void SelectCard(Card card, bool fromClick)
     {
-        if (card == null) SelectCard(card, Game.TargetMode.NoTargeting);
-        else SelectCard(card, card.game.targetMode);
+        if (card == null) SelectCard(card, Game.TargetMode.NoTargeting, fromClick);
+        else SelectCard(card, card.game.targetMode, fromClick);
     }
 
     public void StopHovering()
     {
-        SelectCard(selectedCard);
+        if (!hovering) return;
+        SelectCard(selectedCard, false);
         hoveredCard = null;
+        hovering = false;
     }
 
     public void HoverOver(Card card)
@@ -147,6 +151,8 @@ public class UIController : MonoBehaviour {
         }
 
         if (card == hoveredCard) return;
+
+        hovering = true;
 
         selectedUIParent.SetActive(true);
         hoveredCard = card;
@@ -168,6 +174,18 @@ public class UIController : MonoBehaviour {
     public void HideNetworkingUI()
     {
         networkingParent.SetActive(false);
+    }
+
+    public void ActivateSelectedCardEff(int index)
+    {
+        if(selectedCard != null)
+        {
+            if(selectedCard.game is ClientGame cg)
+            {
+                cg.clientNetworkCtrl.RequestResolveEffect(selectedCard, index);
+            }
+        }
+
     }
 
     #region updating pips

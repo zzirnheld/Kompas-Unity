@@ -30,13 +30,6 @@ public class ServerGame : Game {
     public GameObject player2HandObj;
     public GameObject player2DeckObj;
     public GameObject player2DiscardObj;
-    
-    private Effect currentlyResolvingEffect;
-    public Effect CurrentlyResolvingEffect
-    {
-        get => currentlyResolvingEffect;
-        set => currentlyResolvingEffect = value;
-    }
 
     private void Awake()
     {
