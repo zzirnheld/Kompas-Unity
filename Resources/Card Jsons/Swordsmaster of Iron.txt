@@ -4,8 +4,11 @@
 "effText":"Once each turn, you can give an adjacent Warrior +1W.",
 "effects":[
 	{
-		"subeffectTypes":[0],
-		"subeffects":["{\"cardRestriction\":{\"restrictionsToCheck\":[]}}"]
+		"subeffectTypes":[0,1],
+		"subeffects":[
+			"{\"cardRestriction\":{\"restrictionsToCheck\":[]}}",
+			"{\"nChange\":0,\"eChange\":0,\"sChange\":0,\"wChange\":1,\"targetIndex\":0}"
+		]
 	}
 ],
 "n":2,

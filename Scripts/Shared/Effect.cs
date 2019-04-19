@@ -39,6 +39,9 @@ public class Effect
                     tcob.cardRestriction.subeffect = tcob;
                     subeffects[i] = tcob;
                     break;
+                case SerializableEffect.SubeffectType.ChangeNESW:
+                    subeffects[i] = JsonUtility.FromJson<ChangeNESWSubeffect>(se.subeffects[i]);
+                    break;
                 default:
                     Debug.Log("Unrecognized effect type enum for loading effect in effect constructor");
                     subeffects[i] = null;
@@ -58,6 +61,11 @@ public class Effect
         effectController = controller;
         thisCard.game.CurrentlyResolvingEffect = this;
         ResolveSubeffect(0);
+    }
+
+    public void ResolveNextSubeffect()
+    {
+        ResolveSubeffect(effectIndex + 1);
     }
 
     public void ResolveSubeffect(int index)

@@ -366,4 +366,12 @@ public class ServerNetworkController : NetworkController {
         SendPackets(outPacket, null, ServerGame.mainServerGame, ServerGame.mainServerGame.Players[playerIndex].ConnectionID);
         Debug.Log("Asking for target");
     }
+
+    public void SetNESW(CharacterCard card)
+    {
+        //let everyone know to set NESW
+        Packet outPacket = new Packet(Packet.Command.SetNESW, card, card.N, card.E, card.S, card.W);
+        Packet outPacketInverted = new Packet(Packet.Command.SetNESW, card, card.N, card.E, card.S, card.W);
+        SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, ServerGame.mainServerGame.Players[0].ConnectionID);
+    }
 }
