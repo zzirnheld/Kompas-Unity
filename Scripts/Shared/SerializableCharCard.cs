@@ -10,7 +10,6 @@ public class SerializableCharCard : SerializableCard {
     public int e;
     public int s;
     public int w;
-    public string[] subtypes;
     public int m;
 
 }

@@ -104,7 +104,6 @@ public class CharacterCard : Card {
         e = serializedChar.e;
         s = serializedChar.s;
         w = serializedChar.w;
-        subtypes = serializedChar.subtypes;
         baseN = serializedChar.n;
 
         base.SetInfo(serializedCard, game);

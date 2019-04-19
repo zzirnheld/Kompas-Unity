@@ -181,7 +181,7 @@ public class BoardController : KompasObject
     {
         foreach(Card c in cards)
         {
-            if (restriction.Evaluate(c, false)) return true;
+            if (c != null && restriction.Evaluate(c, false)) return true;
         }
 
         return false;

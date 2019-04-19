@@ -185,6 +185,7 @@ public abstract class Card : KompasObject {
         effText = serializedCard.effText;
         subtypeText = serializedCard.subtypeText;
         location = serializedCard.location;
+        subtypes = serializedCard.subtypes;
 
         effects = new Effect[serializedCard.effects.Length];
 
@@ -250,6 +251,10 @@ public abstract class Card : KompasObject {
     public bool WithinSlots(int numSlots, int x, int y)
     {
         return DistanceTo(x, y) <= numSlots;
+    }
+    public bool IsAdjacentTo(Card card)
+    {
+        return DistanceTo(card) == 1;
     }
 
     /*public int GetIndexInList()

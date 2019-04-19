@@ -8,7 +8,7 @@ public class Restriction
 {
     [System.NonSerialized] public Subeffect subeffect;
 
-    public virtual bool Evaluate()
+    public virtual bool Evaluate(bool actuallyTargetThis)
     {
         Debug.Log("Parent restriction always returns true");
         return true;

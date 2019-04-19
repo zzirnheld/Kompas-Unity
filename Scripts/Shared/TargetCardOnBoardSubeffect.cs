@@ -6,9 +6,8 @@ using UnityEngine;
 public class TargetCardOnBoardSubeffect : Subeffect
 {
     //there will be a different target effect for board, hand, discard, deck, and combos of these
-
-
-    public CardRestriction cardRestriction;
+    
+    public CardOnBoardRestriction cardRestriction;
 
     public override void Resolve()
     {
@@ -17,6 +16,7 @@ public class TargetCardOnBoardSubeffect : Subeffect
         //check first that there exist valid targets. if there exist no valid targets, finish resolution here
         if (parent.thisCard.game.NoValidCardOnBoardTarget(cardRestriction))
         {
+            Debug.Log("No target exists for " + parent.thisCard.CardName + " effect");
             parent.Finish();
             return;
         }
