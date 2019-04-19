@@ -57,20 +57,6 @@ public class Game : MonoBehaviour {
         }
     }
 
-    private void Update()
-    {
-        //tell the mouse controller to do stuff in the correct order
-        //(this is in the game class because what it does will depend on what the target mode is later)
-        //first, get the mouse ray (starts at the mouse, goes straight along direction camera points)
-        mouseCtrl.GetMouseRay();
-        //for now, assume that you're not targeting anything. here is the correct sequence of methods:
-        //first drag anything that you were dragging last frame, even if your ray isn't on it now
-        mouseCtrl.DragBeforeRaycast();
-        //then, see if you've hit anything, whether or not you dragged anything
-        mouseCtrl.GetRaycastHit();
-        //then, check if you've clicked anything
-        mouseCtrl.NormalClickObject();
-    }
 
     public Card GetCardFromID(int id)
     {
