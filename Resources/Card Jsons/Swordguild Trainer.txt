@@ -4,6 +4,15 @@
 "effText":"Once each friendly turn, I can give an adjacent Warrior +1N.",
 "primarySerializeableEffect":[],
 "secondarySerializeableEffect":[],
+"effects":[
+	{
+		"subeffectTypes":[0,1],
+		"subeffects":[
+			"{\"cardRestriction\":{\"restrictionsToCheck\":[2,3],\"subtypesInclude\":[\"Warrior\"],\"onBoardRestrictions\":[0]}}",
+			"{\"nChange\":1,\"eChange\":0,\"sChange\":0,\"wChange\":0,\"targetIndex\":0}"
+		]
+	}
+],
 "n":3,
 "e":3,
 "s":4,
