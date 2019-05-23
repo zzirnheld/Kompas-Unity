@@ -5,7 +5,14 @@ using UnityEngine.UI;
 
 public class ClientUIController : UIController
 {
-    ClientGame clientGame;
+    public ClientGame clientGame;
+    //debug UI
+    public GameObject debugParent;
+    public InputField debugNInputField;
+    public InputField debugEInputField;
+    public InputField debugSInputField;
+    public InputField debugWInputField;
+    public InputField debugPipsField;
     //deck importing
     public InputField deckInputField;
     public Button importDeckButton;
@@ -31,7 +38,7 @@ public class ClientUIController : UIController
     public override void SelectCard(Card card, Game.TargetMode targetMode, bool fromClick)
     {
         base.SelectCard(card, targetMode, fromClick);
-        if (fromClick) clientGame.TargetCard(card);
+        if (fromClick && card != null) clientGame.TargetCard(card);
     }
 
     public void ActivateSelectedCardEff(int index)
@@ -177,4 +184,37 @@ public class ClientUIController : UIController
         }
     }
     #endregion
+
+    #region debug
+    public void DebugUpdateStats()
+    {
+        //get current ones, in case the input fields are empty
+        int nToUpdate = SelectedChar.N;
+        int eToUpdate = SelectedChar.E;
+        int sToUpdate = SelectedChar.S;
+        int wToUpdate = SelectedChar.W;
+
+        //if any of the input fields have a value, update the values you want to update 
+        if (debugNInputField.text != "") nToUpdate = System.Int32.Parse(debugNInputField.text);
+        if (debugEInputField.text != "") eToUpdate = System.Int32.Parse(debugEInputField.text);
+        if (debugSInputField.text != "") sToUpdate = System.Int32.Parse(debugSInputField.text);
+        if (debugWInputField.text != "") wToUpdate = System.Int32.Parse(debugWInputField.text);
+
+        ClientGame.mainClientGame.clientNetworkCtrl.RequestSetNESW(SelectedChar, nToUpdate, eToUpdate, sToUpdate, wToUpdate);
+    }
+
+    public void DebugUpdatePips()
+    {
+        if (debugPipsField.text != "")
+        {
+            int toSetPips = System.Int32.Parse(debugPipsField.text);
+            ClientGame.mainClientGame.clientNetworkCtrl.RequestUpdatePips(toSetPips);
+        }
+    }
+
+    public void DebugUpdateEnemyPips(int num)
+    {
+        enemyPipsText.text = "Enemy Pips: " + num;
+    }
+    #endregion debug
 }

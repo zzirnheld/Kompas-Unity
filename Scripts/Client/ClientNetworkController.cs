@@ -55,8 +55,6 @@ public class ClientNetworkController : NetworkController {
             return;
         }
 
-        Send(new Packet(Packet.Command.Nothing), mDriver, mConnection, mPipeline);
-
         DataStreamReader reader;
         NetworkEvent.Type cmd;
         while((cmd = mConnection.PopEvent(mDriver, out reader)) != NetworkEvent.Type.Empty)

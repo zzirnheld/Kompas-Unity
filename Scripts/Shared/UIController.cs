@@ -6,13 +6,6 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour {
 
-    //debug UI
-    public GameObject debugParent;
-    public InputField debugNInputField;
-    public InputField debugEInputField;
-    public InputField debugSInputField;
-    public InputField debugWInputField;
-    public InputField debugPipsField;
     public Toggle debugToggle;
 
     //normal UI
@@ -71,7 +64,6 @@ public class UIController : MonoBehaviour {
         if (card == null)
         {
             selectedUIParent.SetActive(false);
-            debugParent.SetActive(false);
             //Debug.Log("Selecting Null");
             selectedCardNameText.text = "No Card Selected";
             selectedCardImage.sprite = Resources.Load<Sprite>("Kompas Circle Background");
@@ -82,7 +74,6 @@ public class UIController : MonoBehaviour {
         }
 
         selectedUIParent.SetActive(true);
-        debugParent.SetActive(true);
         Debug.Log("Selecting " + card.CardName);
         selectedCard = card;
 
@@ -163,39 +154,6 @@ public class UIController : MonoBehaviour {
         enemyPipsText.text = "Enemy Pips: " + num;
     }
     #endregion
-
-    #region debug
-    public void DebugUpdateStats()
-    {
-        //get current ones, in case the input fields are empty
-        int nToUpdate = SelectedChar.N;
-        int eToUpdate = SelectedChar.E;
-        int sToUpdate = SelectedChar.S;
-        int wToUpdate = SelectedChar.W;
-
-        //if any of the input fields have a value, update the values you want to update 
-        if (debugNInputField.text != "") nToUpdate = Int32.Parse(debugNInputField.text);
-        if (debugEInputField.text != "") eToUpdate = Int32.Parse(debugEInputField.text);
-        if (debugSInputField.text != "") sToUpdate = Int32.Parse(debugSInputField.text);
-        if (debugWInputField.text != "") wToUpdate = Int32.Parse(debugWInputField.text);
-
-        ClientGame.mainClientGame.clientNetworkCtrl.RequestSetNESW(SelectedChar, nToUpdate, eToUpdate, sToUpdate, wToUpdate);
-    }
-
-    public void DebugUpdatePips()
-    {
-        if (debugPipsField.text != "")
-        {
-            int toSetPips = Int32.Parse(debugPipsField.text);
-            ClientGame.mainClientGame.clientNetworkCtrl.RequestUpdatePips(toSetPips);
-        }
-    }
-
-    public void DebugUpdateEnemyPips(int num)
-    {
-        enemyPipsText.text = "Enemy Pips: " + num;
-    }
-    #endregion debug
     
 
 }

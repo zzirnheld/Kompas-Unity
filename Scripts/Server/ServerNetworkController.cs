@@ -10,7 +10,6 @@ using Unity.Networking.Transport.LowLevel.Unsafe;
 using NetworkConnection = Unity.Networking.Transport.NetworkConnection;
 //using UdpCNetworkDriver = Unity.Networking.Transport.BasicNetworkDriver<Unity.Networking.Transport.IPv4UDPSocket>;
 
-
 public class ServerNetworkController : NetworkController {
 
     public UdpNetworkDriver mDriver;
@@ -25,7 +24,6 @@ public class ServerNetworkController : NetworkController {
 
     public void Host(ushort port)
     {
-
         mDriver = new UdpNetworkDriver(new ReliableUtility.Parameters { WindowSize = 32 });
         mPipeline = mDriver.CreatePipeline(typeof(ReliableSequencedPipelineStage));
 
@@ -37,6 +35,11 @@ public class ServerNetworkController : NetworkController {
         mConnections = new NativeList<NetworkConnection>(16, Allocator.Persistent);
         Hosting = true;
         ServerGame.mainServerGame.uiCtrl.CurrentStateString = "Hosting";
+    }
+
+    public void HostIntPort(int port)
+    {
+        Host((ushort) port);
     }
 
     void OnDestroy()
