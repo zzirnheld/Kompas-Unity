@@ -175,4 +175,37 @@ public class ServerGame : Game {
         (networkCtrl as ServerNetworkController).AttemptToDraw(turnPlayer, players[turnPlayer].ConnectionID);
         (networkCtrl as ServerNetworkController).SetTurn(players[turnPlayer].ConnectionID, turnPlayer);
     }
+
+    #region the stack
+    public void PushToStack(StackableCommand cmd)
+    {
+        stack.Add(cmd);
+        stackIndex++;
+    }
+
+    public void PopFromStack()
+    {
+        if (stackIndex < 0) return;
+        stack.RemoveAt(stackIndex);
+        stackIndex--;
+    }
+
+    public void CancelStackEntry(int index)
+    {
+        if (index < 0) return;
+        //TODO move the relevant card to grave? call a cancel method?
+        stack.RemoveAt(index);
+        stackIndex--;
+
+    }
+
+    public void ResolveNextStackEntry()
+    {
+        if (stackIndex < 0) return; //done with this stack!
+        StackableCommand cmd = stack[stackIndex];
+        stack.RemoveAt(stackIndex);
+        stackIndex--;
+        cmd.StartResolution();
+    }
+    #endregion
 }

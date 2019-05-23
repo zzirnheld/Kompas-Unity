@@ -193,7 +193,7 @@ public abstract class Card : KompasObject {
         for(int i = 0; i < serializedCard.effects.Length; i++)
         {
             Debug.Log(serializedCard.effects[i] + ", " + serializedCard.effects[i].subeffects + ", " + serializedCard.effects[i].subeffectTypes);
-            effects[i] = new Effect(serializedCard.effects[i], this);
+            effects[i] = new Effect(serializedCard.effects[i], this, owner);
         }
 
         ChangeController(serializedCard.owner);

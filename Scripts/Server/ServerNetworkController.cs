@@ -130,6 +130,7 @@ public class ServerNetworkController : NetworkController {
 
     }
 
+    //TODO: move all these to separate methods
     private void ParseRequest(byte[] buffer, NetworkConnection connectionID)
     {
         //Debug.Log("recieved packet");
@@ -145,9 +146,6 @@ public class ServerNetworkController : NetworkController {
         //switch between all the possible requests for the server to handle.
         switch (packet.command)
         {
-            case Packet.Command.Nothing:
-                SendPackets(new Packet(Packet.Command.Nothing), new Packet(Packet.Command.Nothing), ServerGame.mainServerGame, connectionID);
-                return;
             case Packet.Command.AddToDeck:
                 //figure out who's getting the card to their deck
                 Player owner = ServerGame.mainServerGame.Players[playerIndex];
@@ -328,7 +326,7 @@ public class ServerNetworkController : NetworkController {
             case Packet.Command.TestTargetEffect:
                 Card whoseEffToTest = ServerGame.mainServerGame.GetCardFromID(packet.cardID);
                 Debug.Log("Running eff of " + whoseEffToTest.CardName);
-                whoseEffToTest.Effects[0].StartResolution(playerIndex);
+                whoseEffToTest.Effects[0].StartResolution();
                 break;
             default:
                 Debug.Log("Invalid command " + packet.command + " to server from " + connectionID);

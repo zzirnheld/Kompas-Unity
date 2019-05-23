@@ -30,7 +30,11 @@ public class Game : MonoBehaviour {
     //game data
     public Dictionary<int, Card> cards;
     public int MaxCardsOnField = 0; //for pip generation purposes
-    
+
+    //The Stack
+    protected List<StackableCommand> stack;
+    protected int stackIndex;
+
     protected Effect currentlyResolvingEffect;
     public Effect CurrentlyResolvingEffect
     {
@@ -55,6 +59,8 @@ public class Game : MonoBehaviour {
             CardNames.Add(i, cardNames[i].Substring(0, cardNames[i].Length - 1)); //because line endings
             CardNameIndices.Add(cardNames[i].Substring(0, cardNames[i].Length - 1), i);
         }
+
+        stackIndex = -1;
     }
 
 
@@ -200,5 +206,6 @@ public class Game : MonoBehaviour {
     {
         return !boardCtrl.ExistsCardOnBoard(restriction);
     }
+
 
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Effect
+public class Effect : StackableCommand
 {
     //card that this is the effect of. to be set at initialization
     public Card thisCard;
@@ -24,7 +24,7 @@ public class Effect
     //get the currently resolving subeffect
     public Subeffect CurrentlyResolvingSubeffect { get { return subeffects[effectIndex]; } }
 
-    public Effect(SerializableEffect se, Card thisCard)
+    public Effect(SerializableEffect se, Card thisCard, int controller)
     {
         this.thisCard = thisCard;
         subeffects = new Subeffect[se.subeffects.Length];
@@ -56,9 +56,8 @@ public class Effect
      * Effects will only be resolved on server. clients will just get to know what effects they can use
      */
 
-    public void StartResolution(int controller)
+    public override void StartResolution()
     {
-        effectController = controller;
         thisCard.game.CurrentlyResolvingEffect = this;
         ResolveSubeffect(0);
     }
@@ -72,7 +71,7 @@ public class Effect
     {
         if(index >= subeffects.Length)
         {
-            Finish();
+            FinishResolution();
             return;
         }
         effectIndex = index;
@@ -83,9 +82,10 @@ public class Effect
     /// If the effect finishes resolving, this method is called.
     /// Any function can also call this effect to finish resolution early.
     /// </summary>
-    public void Finish()
+    public override void FinishResolution()
     {
         doneResolving = true;
         effectIndex = 0;
+        base.FinishResolution();
     }
 }

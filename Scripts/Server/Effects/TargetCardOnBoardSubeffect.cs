@@ -17,7 +17,7 @@ public class TargetCardOnBoardSubeffect : Subeffect
         if (parent.thisCard.game.NoValidCardOnBoardTarget(cardRestriction))
         {
             Debug.Log("No target exists for " + parent.thisCard.CardName + " effect");
-            parent.Finish();
+            parent.FinishResolution();
             return;
         }
 
