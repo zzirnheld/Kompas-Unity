@@ -386,7 +386,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1615817255}
+      - m_Target: {fileID: 0}
         m_MethodName: PrevCardSearch
         m_Mode: 1
         m_Arguments:
@@ -1006,7 +1006,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1615817255}
+      - m_Target: {fileID: 0}
         m_MethodName: SearchDeckToHand
         m_Mode: 1
         m_Arguments:
@@ -1329,6 +1329,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251889662}
   m_CullTransparentMesh: 0
+--- !u!1 &302782318
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 302782319}
+  - component: {fileID: 302782321}
+  - component: {fileID: 302782320}
+  m_Layer: 5
+  m_Name: Label
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &302782319
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302782318}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2039823250}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 9, y: -0.5}
+  m_SizeDelta: {x: -28, y: -3}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &302782320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302782318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Debug
+--- !u!222 &302782321
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302782318}
+  m_CullTransparentMesh: 0
 --- !u!1 &314474551
 GameObject:
   m_ObjectHideFlags: 0
@@ -1408,7 +1487,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1615817255}
+      - m_Target: {fileID: 0}
         m_MethodName: EndDiscardSearch
         m_Mode: 1
         m_Arguments:
@@ -1827,7 +1906,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1615817255}
+      - m_Target: {fileID: 0}
         m_MethodName: EndDeckSearch
         m_Mode: 1
         m_Arguments:
@@ -2070,7 +2149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseCtrl: {fileID: 75480508}
   networkCtrl: {fileID: 2001968206}
-  uiCtrl: {fileID: 1615817255}
+  uiCtrl: {fileID: 1615817260}
   boardCtrl: {fileID: 665162530}
   boardObject: {fileID: 665162525}
   turnPlayer: 0
@@ -2089,6 +2168,7 @@ MonoBehaviour:
   enemyDeckObj: {fileID: 343499437}
   enemyDiscardObj: {fileID: 116530640}
   clientNetworkCtrl: {fileID: 2001968206}
+  clientUICtrl: {fileID: 1615817260}
 --- !u!1 &509972773
 GameObject:
   m_ObjectHideFlags: 0
@@ -2534,7 +2614,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1615817255}
+      - m_Target: {fileID: 0}
         m_MethodName: StartDiscardSearch
         m_Mode: 1
         m_Arguments:
@@ -3507,6 +3587,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 779058403}
   m_CullTransparentMesh: 0
+--- !u!1 &790053187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 790053188}
+  - component: {fileID: 790053190}
+  - component: {fileID: 790053189}
+  m_Layer: 5
+  m_Name: Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &790053188
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 790053187}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1959541194}
+  m_Father: {fileID: 2039823250}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 10, y: -10}
+  m_SizeDelta: {x: 20, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &790053189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 790053187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &790053190
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 790053187}
+  m_CullTransparentMesh: 0
 --- !u!1 &807120031
 GameObject:
   m_ObjectHideFlags: 0
@@ -3823,7 +3978,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1615817255}
+      - m_Target: {fileID: 0}
         m_MethodName: ConfirmDeckImport
         m_Mode: 1
         m_Arguments:
@@ -3989,7 +4144,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1615817255}
+      - m_Target: {fileID: 0}
         m_MethodName: NextCardSearch
         m_Mode: 1
         m_Arguments:
@@ -4197,7 +4352,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1615817255}
+      - m_Target: {fileID: 0}
         m_MethodName: StartDeckSearch
         m_Mode: 1
         m_Arguments:
@@ -5543,7 +5698,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1615817255}
+      - m_Target: {fileID: 0}
         m_MethodName: DebugUpdateStats
         m_Mode: 1
         m_Arguments:
@@ -6062,7 +6217,7 @@ GameObject:
   - component: {fileID: 1615817258}
   - component: {fileID: 1615817257}
   - component: {fileID: 1615817256}
-  - component: {fileID: 1615817255}
+  - component: {fileID: 1615817260}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -6070,48 +6225,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1615817255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1615817254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c03ac2ae60b6a234a82ec07d9602a53b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debugParent: {fileID: 653956728}
-  debugNInputField: {fileID: 2050283944}
-  debugEInputField: {fileID: 1484816972}
-  debugSInputField: {fileID: 1547115773}
-  debugWInputField: {fileID: 598976412}
-  debugPipsField: {fileID: 485200469}
-  debugToggle: {fileID: 0}
-  friendlyPipsText: {fileID: 1418310388}
-  enemyPipsText: {fileID: 1365698564}
-  selectedUIParent: {fileID: 2098225059}
-  selectedCardNameText: {fileID: 1506310831}
-  selectedCardImage: {fileID: 1107342531}
-  selectedCardStatsText: {fileID: 655305226}
-  selectedCardSubtypesText: {fileID: 1605335655}
-  selectedCardEffText: {fileID: 1948538060}
-  deckInputField: {fileID: 381743809}
-  importDeckButton: {fileID: 1982168175}
-  confirmDeckImportButton: {fileID: 848667606}
-  cardSearchView: {fileID: 588346723}
-  cardSearchImage: {fileID: 728813001}
-  deckSearchButton: {fileID: 973346152}
-  discardSearchButton: {fileID: 577061474}
-  searchDeckToHand: {fileID: 147990114}
-  searchDiscardToHand: {fileID: 1877150509}
-  cancelDeckSearch: {fileID: 442461731}
-  cancelDiscardSearch: {fileID: 314474553}
-  currentStateText: {fileID: 1029930859}
-  ipInputField: {fileID: 132124413}
-  networkingParent: {fileID: 878743552}
-  thingToSearch: []
 --- !u!114 &1615817256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6196,6 +6309,7 @@ RectTransform:
   - {fileID: 700527843}
   - {fileID: 1108898577}
   - {fileID: 174830316}
+  - {fileID: 2039823250}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6204,6 +6318,48 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1615817260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615817254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd73a85a5b32d9d41944fc022357a00d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugParent: {fileID: 653956728}
+  debugNInputField: {fileID: 2050283944}
+  debugEInputField: {fileID: 1484816972}
+  debugSInputField: {fileID: 1547115773}
+  debugWInputField: {fileID: 598976412}
+  debugPipsField: {fileID: 485200469}
+  debugToggle: {fileID: 2039823251}
+  friendlyPipsText: {fileID: 1418310388}
+  enemyPipsText: {fileID: 1365698564}
+  selectedUIParent: {fileID: 2098225059}
+  selectedCardNameText: {fileID: 1506310831}
+  selectedCardImage: {fileID: 1107342531}
+  selectedCardStatsText: {fileID: 655305226}
+  selectedCardSubtypesText: {fileID: 1605335655}
+  selectedCardEffText: {fileID: 1948538060}
+  deckInputField: {fileID: 381743809}
+  importDeckButton: {fileID: 1982168175}
+  confirmDeckImportButton: {fileID: 848667606}
+  cardSearchView: {fileID: 588346723}
+  cardSearchImage: {fileID: 728813001}
+  deckSearchButton: {fileID: 973346152}
+  discardSearchButton: {fileID: 577061474}
+  searchDeckToHand: {fileID: 147990114}
+  searchDiscardToHand: {fileID: 1877150509}
+  cancelDeckSearch: {fileID: 442461731}
+  cancelDiscardSearch: {fileID: 314474553}
+  currentStateText: {fileID: 1029930859}
+  ipInputField: {fileID: 132124413}
+  networkingParent: {fileID: 878743552}
+  thingToSearch: []
 --- !u!1 &1644621712
 GameObject:
   m_ObjectHideFlags: 0
@@ -6362,7 +6518,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1615817255}
+      - m_Target: {fileID: 0}
         m_MethodName: ActivateSelectedCardEff
         m_Mode: 3
         m_Arguments:
@@ -6778,7 +6934,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1615817255}
+      - m_Target: {fileID: 0}
         m_MethodName: DebugUpdatePips
         m_Mode: 1
         m_Arguments:
@@ -6986,7 +7142,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1615817255}
+      - m_Target: {fileID: 0}
         m_MethodName: SearchDiscardToHand
         m_Mode: 1
         m_Arguments:
@@ -7161,6 +7317,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1948538058}
   m_CullTransparentMesh: 0
+--- !u!1 &1959541193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1959541194}
+  - component: {fileID: 1959541196}
+  - component: {fileID: 1959541195}
+  m_Layer: 5
+  m_Name: Checkmark
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1959541194
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959541193}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 790053188}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 20, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1959541195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959541193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &1959541196
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959541193}
+  m_CullTransparentMesh: 0
 --- !u!1 &1982168173
 GameObject:
   m_ObjectHideFlags: 0
@@ -7240,7 +7470,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1615817255}
+      - m_Target: {fileID: 0}
         m_MethodName: ImportDeckPressed
         m_Mode: 1
         m_Arguments:
@@ -7338,6 +7568,90 @@ MonoBehaviour:
     cardID: 0
     packetID: 0
     args: 
+--- !u!1 &2039823249
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2039823250}
+  - component: {fileID: 2039823251}
+  m_Layer: 5
+  m_Name: DEBUG Toggle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2039823250
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039823249}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 790053188}
+  - {fileID: 302782319}
+  m_Father: {fileID: 1615817259}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -250}
+  m_SizeDelta: {x: 160, y: 20}
+  m_Pivot: {x: 1, y: 1}
+--- !u!114 &2039823251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039823249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 2109663825, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 790053189}
+  toggleTransition: 1
+  graphic: {fileID: 1959541195}
+  m_Group: {fileID: 0}
+  onValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_IsOn: 1
 --- !u!1 &2050283942
 GameObject:
   m_ObjectHideFlags: 0

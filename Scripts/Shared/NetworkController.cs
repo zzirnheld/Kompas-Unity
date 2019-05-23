@@ -1,6 +1,4 @@
-﻿using System;
-using System.Net;
-using Unity.Collections;
+﻿using Unity.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
@@ -8,7 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using Unity.Networking.Transport;
 using NetworkConnection = Unity.Networking.Transport.NetworkConnection;
-using UdpCNetworkDriver = Unity.Networking.Transport.BasicNetworkDriver<Unity.Networking.Transport.IPv4UDPSocket>;
+//using UdpCNetworkDriver = Unity.Networking.Transport.BasicNetworkDriver<Unity.Networking.Transport.IPv4UDPSocket>;
 
 public class NetworkController : MonoBehaviour
 {
@@ -19,10 +17,10 @@ public class NetworkController : MonoBehaviour
     {
         public Packet packet;
         public NetworkConnection connectionID;
-        public UdpCNetworkDriver driver;
+        public UdpNetworkDriver driver;
         public int count;
 
-        public SentItem(Packet packet, NetworkConnection networkConnection, UdpCNetworkDriver networkDriver)
+        public SentItem(Packet packet, NetworkConnection networkConnection, UdpNetworkDriver networkDriver)
         {
             this.packet = packet;
             connectionID = networkConnection;
@@ -35,7 +33,8 @@ public class NetworkController : MonoBehaviour
 
     private void Update()
     {
-        //iterate through the list of sent items
+        //using reliability pipeline instead of this
+        /*//iterate through the list of sent items
         for (int i = 0; i < sentItems.Count; i++)
         {
             SentItem sentItem = sentItems[i];
@@ -47,7 +46,7 @@ public class NetworkController : MonoBehaviour
                 Send(sentItem.packet, sentItem.driver, sentItem.connectionID, false);
                 sentItem.count = 0;
             }
-        }
+        }*/
     }
 
     #region serialization
@@ -82,6 +81,8 @@ public class NetworkController : MonoBehaviour
         //deserialize the contents of the buffer
         object o;
         try { o = formatter.Deserialize(stream); }
+
+
         catch (SerializationException e) { Debug.Log("Failed to deserialize"); throw; }
         //close the stream
         stream.Close();
@@ -98,22 +99,26 @@ public class NetworkController : MonoBehaviour
     /// <param name="packet"></param>
     /// <param name="mDriver"></param>
     /// <param name="connection"></param>
-    protected void Send(Packet packet, UdpCNetworkDriver mDriver, NetworkConnection connection, bool addToList = true)
+    protected void Send(Packet packet, UdpNetworkDriver mDriver, NetworkConnection connection, NetworkPipeline pipeline)
     {
         if (!connection.IsCreated) return;
 
         using (var writer = new DataStreamWriter(BUFFER_SIZE, Allocator.Temp)) //make the number large enough to contain entire byte array to be sent
         {
             writer.Write(Serialize(packet));
-            mDriver.Send(connection, writer);
+            mDriver.Send(pipeline, connection, writer);
         }
 
+        //replacing this with reliability pipeline
+        /*
         if (addToList)
         {
             sentItems.Add(new SentItem(packet, connection, mDriver));
-        }
+        }*/
     }
 
+    //using reliability pipeline instead of this
+    /*
     protected void SendAcknowledgement(int packetID, NetworkConnection connection, UdpCNetworkDriver driver)
     {
         //send a confirmation packet
@@ -137,5 +142,5 @@ public class NetworkController : MonoBehaviour
                 break;
             }
         }
-    }
+    }*/
 }

@@ -3,14 +3,18 @@
 using System.Net;
 using UnityEngine;
 using Unity.Collections;
+using Unity.Collections.LowLevel.Unsafe;
 using Unity.Networking.Transport;
+using Unity.Networking.Transport.Utilities;
+using Unity.Networking.Transport.LowLevel.Unsafe;
 using NetworkConnection = Unity.Networking.Transport.NetworkConnection;
-using UdpCNetworkDriver = Unity.Networking.Transport.BasicNetworkDriver<Unity.Networking.Transport.IPv4UDPSocket>;
+//using UdpCNetworkDriver = Unity.Networking.Transport.BasicNetworkDriver<Unity.Networking.Transport.IPv4UDPSocket>;
 
 
 public class ServerNetworkController : NetworkController {
 
-    public UdpCNetworkDriver mDriver;
+    public UdpNetworkDriver mDriver;
+    public NetworkPipeline mPipeline;
     public NativeList<NetworkConnection> mConnections;
     private bool Hosting = false;
 
@@ -19,10 +23,15 @@ public class ServerNetworkController : NetworkController {
         
     }
 
-    public void Host(int port)
+    public void Host(ushort port)
     {
-        mDriver = new UdpCNetworkDriver(new INetworkParameter[0]);
-        if (mDriver.Bind(new IPEndPoint(IPAddress.Any, port)) != 0) Debug.Log("Failed to bind to port 8888");
+
+        mDriver = new UdpNetworkDriver(new ReliableUtility.Parameters { WindowSize = 32 });
+        mPipeline = mDriver.CreatePipeline(typeof(ReliableSequencedPipelineStage));
+
+        var endpoint = new NetworkEndPoint();
+        endpoint = NetworkEndPoint.Parse("0.0.0.0", port);
+        if (mDriver.Bind(endpoint) != 0) Debug.Log("Failed to bind to port 8888");
         else { mDriver.Listen(); Debug.Log("listening"); }
 
         mConnections = new NativeList<NetworkConnection>(16, Allocator.Persistent);
@@ -102,7 +111,7 @@ public class ServerNetworkController : NetworkController {
     {
         //if it's not null, send the normal packet to the player that queried you
         if (outPacket != null)
-            Send(outPacket, mDriver, connectionID);
+            Send(outPacket, mDriver, connectionID, mPipeline);
 
 
         //if the inverted packet isn't null, send the packet to the correct player
@@ -110,11 +119,11 @@ public class ServerNetworkController : NetworkController {
         //if the one that queried you is player 0,
         if (connectionID == serverGame.Players[0].ConnectionID)
             //send the inverted one to player 1.
-            Send(outPacketInverted, mDriver, serverGame.Players[1].ConnectionID);
+            Send(outPacketInverted, mDriver, serverGame.Players[1].ConnectionID, mPipeline);
         //if the one that queried you is player 1,
         else
             //send the inverted one to player 0.
-            Send(outPacketInverted, mDriver, serverGame.Players[0].ConnectionID);
+            Send(outPacketInverted, mDriver, serverGame.Players[0].ConnectionID, mPipeline);
 
     }
 
@@ -135,9 +144,6 @@ public class ServerNetworkController : NetworkController {
         {
             case Packet.Command.Nothing:
                 SendPackets(new Packet(Packet.Command.Nothing), new Packet(Packet.Command.Nothing), ServerGame.mainServerGame, connectionID);
-                return;
-            case Packet.Command.Confirm:
-                ReceiveAcknowledgement(packet, connectionID);
                 return;
             case Packet.Command.AddToDeck:
                 //figure out who's getting the card to their deck
@@ -325,9 +331,6 @@ public class ServerNetworkController : NetworkController {
                 Debug.Log("Invalid command " + packet.command + " to server from " + connectionID);
                 break;
         }
-
-        //then, unless the packet was one of the commands for which we return, send an acknowledgement
-        SendAcknowledgement(packet.packetID, connectionID, mDriver);
     }
 
     public void AttemptToDraw(int playerIndex, NetworkConnection connectionID)

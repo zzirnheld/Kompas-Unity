@@ -28,6 +28,7 @@ public class ClientGame : Game {
     public GameObject enemyDiscardObj;
 
     public ClientNetworkController clientNetworkCtrl;
+    public ClientUIController clientUICtrl;
 
     private void Awake()
     {

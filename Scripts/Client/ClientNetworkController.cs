@@ -2,15 +2,19 @@
 using System.Net;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using Unity.Networking.Transport;
+using Unity.Networking.Transport.Utilities;
 using NetworkConnection = Unity.Networking.Transport.NetworkConnection;
-using UdpCNetworkDriver = Unity.Networking.Transport.BasicNetworkDriver<Unity.Networking.Transport.IPv4UDPSocket>;
+//using UdpCNetworkDriver = Unity.Networking.Transport.BasicNetworkDriver<Unity.Networking.Transport.IPv4UDPSocket>;
 
 
 public class ClientNetworkController : NetworkController {
 
-    public UdpCNetworkDriver mDriver;
+    public UdpNetworkDriver mDriver;
+    public NetworkPipeline mPipeline;
     public NetworkConnection mConnection;
     private bool Hosting = false;
 
@@ -25,11 +29,13 @@ public class ClientNetworkController : NetworkController {
 
     public void Connect()
     {
-        mDriver = new UdpCNetworkDriver(new INetworkParameter[0]);
+        mDriver = new UdpNetworkDriver(new ReliableUtility.Parameters { WindowSize = 32 });
+        mPipeline = mDriver.CreatePipeline(typeof(ReliableSequencedPipelineStage));
         mConnection = default(NetworkConnection);
 
         //this code is the connection code. dont do until client hits connect button?
-        var endpoint = new IPEndPoint(IPAddress.Loopback, 8888);
+        var endpoint = new NetworkEndPoint();
+        endpoint = NetworkEndPoint.Parse("127.0.0.1", 8888); //TODO get ip
         mConnection = mDriver.Connect(endpoint);
         Hosting = true;
     }
@@ -49,7 +55,7 @@ public class ClientNetworkController : NetworkController {
             return;
         }
 
-        Send(new Packet(Packet.Command.Nothing), mDriver, mConnection);
+        Send(new Packet(Packet.Command.Nothing), mDriver, mConnection, mPipeline);
 
         DataStreamReader reader;
         NetworkEvent.Type cmd;
@@ -91,9 +97,6 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.Nothing:
             //case Packet.Command.Confirm:
                 //return;
-                return;
-            case Packet.Command.Confirm:
-                ReceiveAcknowledgement(packet, mConnection);
                 return;
             case Packet.Command.AddAsFriendly:
                 ClientGame.mainClientGame.friendlyDeckCtrl.AddCard(packet.CardName, packet.CardIDToBe);
@@ -165,9 +168,6 @@ public class ClientNetworkController : NetworkController {
                 Debug.Log("Unrecognized command sent to client");
                 break;
         }
-        
-        //then, unless the packet was one of the commands for which we return, send an acknowledgement
-        SendAcknowledgement(packet.packetID, mConnection, mDriver);
     }
 
     #region Request Actions
@@ -176,38 +176,38 @@ public class ClientNetworkController : NetworkController {
         Packet packet;
         if (card is AugmentCard) packet = new Packet(Packet.Command.Augment, card, toX, toY);
         else packet = new Packet(Packet.Command.Play, card, toX, toY);
-        Send(packet, mDriver, mConnection);
+        Send(packet, mDriver, mConnection, mPipeline);
     }
 
     public void RequestMove(Card card, int toX, int toY)
     {
         Packet packet = new Packet(Packet.Command.Move, card, toX, toY);
-        Send(packet, mDriver, mConnection);
+        Send(packet, mDriver, mConnection, mPipeline);
     }
 
     public void RequestTopdeck(Card card)
     {
         Packet packet = new Packet(Packet.Command.Topdeck, card);
-        Send(packet, mDriver, mConnection);
+        Send(packet, mDriver, mConnection, mPipeline);
     }
 
     public void RequestDiscard(Card card)
     {
         Packet packet = new Packet(Packet.Command.Discard, card);
-        Send(packet, mDriver, mConnection);
+        Send(packet, mDriver, mConnection, mPipeline);
     }
 
     public void RequestRehand(Card card)
     {
         Packet packet = new Packet(Packet.Command.Rehand, card);
-        Send(packet, mDriver, mConnection);
+        Send(packet, mDriver, mConnection, mPipeline);
     }
 
     public void RequestAddToDeck(string cardName)
     {
         Debug.Log("Requesting add \"" + cardName + "\" to deck, length " + cardName.Length);
         Packet packet = new Packet(Packet.Command.AddToDeck, cardName);
-        Send(packet, mDriver, mConnection);
+        Send(packet, mDriver, mConnection, mPipeline);
     }
 
     public void RequestDecklistImport(string decklist)
@@ -222,39 +222,39 @@ public class ClientNetworkController : NetworkController {
     public void RequestDraw()
     {
         Packet packet = new Packet(Packet.Command.Draw);
-        Send(packet, mDriver, mConnection);
+        Send(packet, mDriver, mConnection, mPipeline);
     }
 
     public void RequestSetNESW(Card card, int n, int e, int s, int w)
     {
         Packet packet = new Packet(Packet.Command.SetNESW, card, n, e, s, w);
-        Send(packet, mDriver, mConnection);
+        Send(packet, mDriver, mConnection, mPipeline);
     }
 
     public void RequestUpdatePips(int num)
     {
         Packet packet = new Packet(Packet.Command.SetPips, num);
-        Send(packet, mDriver, mConnection);
+        Send(packet, mDriver, mConnection, mPipeline);
         Debug.Log("requesting updating pips to " + num);
     }
 
     public void RequestEndTurn()
     {
         Packet packet = new Packet(Packet.Command.EndTurn);
-        Send(packet, mDriver, mConnection);
+        Send(packet, mDriver, mConnection, mPipeline);
     }
 
     public void RequestTarget(Card card)
     {
         Debug.Log("Requesting target " + card.CardName);
         Packet packet = new Packet(Packet.Command.Target, card);
-        Send(packet, mDriver, mConnection);
+        Send(packet, mDriver, mConnection, mPipeline);
     }
 
     public void RequestResolveEffect(Card card, int index)
     {
         Packet packet = new Packet(Packet.Command.TestTargetEffect, card, index);
-        Send(packet, mDriver, mConnection);
+        Send(packet, mDriver, mConnection, mPipeline);
     }
     #endregion
 }
