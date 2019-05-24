@@ -84,6 +84,7 @@ public class ServerNetworkController : NetworkController {
                 currentGameToMatchmake.uiCtrl = uiCtrl;
                 currentGameToMatchmake.mouseCtrl = mouseCtrl;
                 currentGameToMatchmake.networkCtrl = this;
+                currentGameToMatchmake.serverNetworkCtrl = this;
                 gamesByConnectionID.Add(c, currentGameToMatchmake);
                 currentGameToMatchmake.AddPlayer(c);
             }
@@ -119,7 +120,7 @@ public class ServerNetworkController : NetworkController {
                 else if(cmd == NetworkEvent.Type.Disconnect)
                 {
                     Debug.Log("Client disconnected from server");
-                    ServerGame.mainServerGame.uiCtrl.CurrentStateString = "Player " + i + " disconnected";
+                    uiCtrl.CurrentStateString = "Player " + i + " disconnected";
                     mConnections[i] = default(NetworkConnection); //default gets the default value of whatever type
                 }
             }
@@ -155,9 +156,6 @@ public class ServerNetworkController : NetworkController {
         if (packet == null) return;
 
         ServerGame serverGame = gamesByConnectionID[connectionID];
-
-        Packet outPacket = null;
-        Packet outPacketInverted = null;
         int playerIndex = serverGame.GetPlayerIndexFromID(connectionID);
         //packet.InvertForController(playerIndex);
         //Debug.Log("packet command is " + packet.command + " for player index " + playerIndex);
@@ -169,151 +167,64 @@ public class ServerNetworkController : NetworkController {
                 AddCardToDeck(serverGame, playerIndex, packet.CardName, connectionID);
                 break;
             case Packet.Command.Augment:
+                Augment(serverGame, playerIndex, packet.cardID, packet.X, packet.Y, connectionID);
                 break;
             case Packet.Command.Play:
-                //get the card to play
-                Card toPlay = ServerGame.mainServerGame.GetCardFromID(packet.cardID);
-                //if it's not a valid place to do, return
-                if (ServerGame.mainServerGame.uiCtrl.DebugMode || ServerGame.mainServerGame.ValidBoardPlay(toPlay, packet.X, packet.Y))
-                {
-                    packet.InvertForController(playerIndex);
-                    //tell everyone to do it
-                    outPacket = new Packet(Packet.Command.Play, toPlay, packet.X, packet.Y);
-                    if (toPlay.Location == Card.CardLocation.Discard || toPlay.Location == Card.CardLocation.Field)
-                        outPacketInverted = new Packet(Packet.Command.Play, toPlay, packet.X, packet.Y, true);
-                    else outPacketInverted = new Packet(Packet.Command.AddAsEnemy, toPlay.CardName, (int) Card.CardLocation.Field, toPlay.ID, packet.X, packet.Y, true);
-                    //play the card here
-                    packet.InvertForController(playerIndex);
-                    ServerGame.mainServerGame.Play(toPlay, packet.X, packet.Y);
-                }
-                else
-                {
-                    outPacket = new Packet(Packet.Command.PutBack);
-                    outPacketInverted = null;
-                }
-                SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
+                Play(serverGame, playerIndex, packet.cardID, packet.X, packet.Y, connectionID);
                 break;
             case Packet.Command.Move:
-                //get the card to move
-                Card toMove = ServerGame.mainServerGame.GetCardFromID(packet.cardID);
-                Debug.Log("packet card id is " + packet.cardID + "; its owner is " + toMove.Owner);
-                //if it's not a valid place to do, return
-                //NOTE: there is no debug to override moves because of how checking if attack works
-                if (ServerGame.mainServerGame.ValidMove(toMove, packet.X, packet.Y))
-                {
-                    Debug.Log("move");
-                    //move the card there
-                    ServerGame.mainServerGame.Move(toMove, packet.X, packet.Y);
-                    //re/de-invert the packet so it gets sent back correctly
-                    packet.InvertForController(playerIndex);
-                    //tell everyone to do it
-                    outPacket = new Packet(Packet.Command.Move, toMove, packet.X, packet.Y);
-                    outPacketInverted = new Packet(Packet.Command.Move, toMove, packet.X, packet.Y, true);
-                    SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
-                }
-                //try to see if it's a valid attack, if it's not a valid move
-                else if(ServerGame.mainServerGame.ValidAttack(toMove, packet.X, packet.Y))
-                {
-                    Debug.Log("attack");
-                    //tell the players to put cards down where they were
-                    outPacket = new Packet(Packet.Command.PutBack);
-                    outPacketInverted = new Packet(Packet.Command.PutBack);
-                    SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
-                    //then resolve the attack
-                    //TODO allow for activation of abilities, fast cards
-                    CharacterCard attacker = toMove as CharacterCard;
-                    CharacterCard defender = ServerGame.mainServerGame.boardCtrl.GetCharAt(packet.X, packet.Y);
-                    attacker.Attack(defender);
-
-                    outPacket = new Packet(Packet.Command.SetNESW, attacker, attacker.N, attacker.E, attacker.S, attacker.W);
-                    outPacketInverted = new Packet(Packet.Command.SetNESW, attacker, attacker.N, attacker.E, attacker.S, attacker.W);
-                    SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
-                    outPacket = new Packet(Packet.Command.SetNESW, defender, defender.N, defender.E, defender.S, defender.W);
-                    outPacketInverted = new Packet(Packet.Command.SetNESW, defender, defender.N, defender.E, defender.S, defender.W);
-                    SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
-                }
-                else
-                {
-                    Debug.Log("putback");
-                    outPacket = new Packet(Packet.Command.PutBack);
-                    outPacketInverted = null;
-                    SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
-                }
-                break;
-            case Packet.Command.Topdeck:
-                if (!ServerGame.mainServerGame.uiCtrl.DebugMode) break;
-
-                Card toTopdeck = ServerGame.mainServerGame.GetCardFromID(packet.cardID);
-                //and let everyone know
-                outPacket = new Packet(Packet.Command.Topdeck, toTopdeck);
-                if (toTopdeck.Location == Card.CardLocation.Hand || toTopdeck.Location == Card.CardLocation.Deck)
-                    outPacketInverted = new Packet(Packet.Command.Delete, toTopdeck);
-                else outPacketInverted = null;
-                //eventually, this won't be necessary, because the player won't initiate this action
-                ServerGame.mainServerGame.Topdeck(toTopdeck);
-                SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
-                break;
-            case Packet.Command.Discard:
-                if (!ServerGame.mainServerGame.uiCtrl.DebugMode) break;
-
-                Card toDiscard = ServerGame.mainServerGame.GetCardFromID(packet.cardID);
-                //and let everyone know
-                outPacket = new Packet(Packet.Command.Discard, toDiscard);
-                if (toDiscard.Location == Card.CardLocation.Discard || toDiscard.Location == Card.CardLocation.Field)
-                    outPacketInverted = new Packet(Packet.Command.Discard, toDiscard);
-                else outPacketInverted = new Packet(Packet.Command.AddAsEnemy, toDiscard.CardName, (int)Card.CardLocation.Discard, toDiscard.ID);
-                //eventually, this won't be necessary, because the player won't initiate this action
-                ServerGame.mainServerGame.Discard(toDiscard);
-                SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
-                break;
-            case Packet.Command.Rehand:
-                if (!ServerGame.mainServerGame.uiCtrl.DebugMode) break;
-
-                Card toRehand = ServerGame.mainServerGame.GetCardFromID(packet.cardID);
-                //and let everyone know
-                outPacket = new Packet(Packet.Command.Rehand, toRehand);
-                if (toRehand.Location == Card.CardLocation.Hand || toRehand.Location == Card.CardLocation.Deck)
-                    outPacketInverted = new Packet(Packet.Command.Delete, toRehand);
-                else outPacketInverted = null; //TODO make this add a blank card
-                //eventually, this won't be necessary, because the player won't initiate this action
-                ServerGame.mainServerGame.Rehand(toRehand);
-                SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
-                break;
-            case Packet.Command.Draw:
-                if (!ServerGame.mainServerGame.uiCtrl.DebugMode) break;
-
-                AttemptToDraw(playerIndex, connectionID);
-                break;
-            case Packet.Command.SetNESW:
-                if (!ServerGame.mainServerGame.uiCtrl.DebugMode) break;
-
-                Card toSetNESW = ServerGame.mainServerGame.SetNESW(packet.cardID, packet.N, packet.E, packet.S, packet.W);
-                //let everyone know to set NESW
-                outPacket = new Packet(Packet.Command.SetNESW, toSetNESW, packet.N, packet.E, packet.S, packet.W);
-                outPacketInverted = new Packet(Packet.Command.SetNESW, toSetNESW, packet.N, packet.E, packet.S, packet.W);
-                SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
-                break;
-            case Packet.Command.SetPips:
-                if (!ServerGame.mainServerGame.uiCtrl.DebugMode) break;
-
-                SetPips(playerIndex, connectionID, packet.Pips);
+                MoveOrAttack(serverGame, playerIndex, packet.cardID, packet.X, packet.Y, connectionID);
                 break;
             case Packet.Command.EndTurn:
+                //TODO check to see if it was their turn bewfore swapping turns
                 ServerGame.mainServerGame.SwitchTurn();
                 break;
+            #region effect commands
             case Packet.Command.Target:
                 Card potentialTarget = ServerGame.mainServerGame.GetCardFromID(packet.cardID);
                 Debug.Log("Client sent target " + potentialTarget.CardName);
-                if(ServerGame.mainServerGame.CurrentlyResolvingEffect.CurrentlyResolvingSubeffect is TargetCardOnBoardSubeffect tcob)
+                if (ServerGame.mainServerGame.CurrentlyResolvingEffect.CurrentlyResolvingSubeffect is TargetCardOnBoardSubeffect tcob)
                 {
-                    tcob.cardRestriction.Evaluate(potentialTarget, true);
+                    //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
+                    tcob.cardRestriction.Evaluate(potentialTarget, true); //TODO does this need to change?
                 }
+                break;
+            #endregion
+            #region debug commands
+            case Packet.Command.Topdeck:
+                if (!uiCtrl.DebugMode) break;
+                DebugTopdeck(serverGame, packet.cardID, connectionID);
+                break;
+            case Packet.Command.Discard:
+                if (!uiCtrl.DebugMode) break;
+                DebugDiscard(serverGame, packet.cardID, connectionID);
+                break;
+            case Packet.Command.Rehand:
+                if (!uiCtrl.DebugMode) break;
+                DebugRehand(serverGame, packet.cardID, connectionID);
+                break;
+            case Packet.Command.Draw:
+                if (!uiCtrl.DebugMode) break;
+
+                DebugDraw(playerIndex, connectionID);
+                break;
+            case Packet.Command.SetNESW:
+                if (!uiCtrl.DebugMode) break;
+
+                CharacterCard toSetNESW = ServerGame.mainServerGame.SetNESW(packet.cardID, packet.N, packet.E, packet.S, packet.W);
+                NotifySetNESW(serverGame, toSetNESW);
+                break;
+            case Packet.Command.SetPips:
+                if (!uiCtrl.DebugMode) break;
+
+                DebugSetPips(serverGame, playerIndex, connectionID, packet.Pips);
                 break;
             case Packet.Command.TestTargetEffect:
                 Card whoseEffToTest = ServerGame.mainServerGame.GetCardFromID(packet.cardID);
                 Debug.Log("Running eff of " + whoseEffToTest.CardName);
                 whoseEffToTest.Effects[0].StartResolution();
                 break;
+#endregion
             default:
                 Debug.Log("Invalid command " + packet.command + " to server from " + connectionID);
                 break;
@@ -361,13 +272,10 @@ public class ServerNetworkController : NetworkController {
             //tell everyone to do it
             outPacket = new Packet(Packet.Command.Augment, toAugment, x, y);
             if (toAugment.Location == Card.CardLocation.Discard || toAugment.Location == Card.CardLocation.Field)
-            {
                 outPacketInverted = new Packet(Packet.Command.Augment, toAugment, x, y, true);
-            }
             else
-            {
                 outPacketInverted = new Packet(Packet.Command.AddAsEnemy, toAugment.CardName, (int)Card.CardLocation.Field, toAugment.ID, x, y, true);
-            }
+
             //play the card here
             ServerGame.mainServerGame.Play(toAugment, invertedX, invertedY);
         }
@@ -378,7 +286,140 @@ public class ServerNetworkController : NetworkController {
         SendPackets(outPacket, outPacketInverted, sGame, sourceID);
     }
 
-    public void AttemptToDraw(int playerIndex, NetworkConnection connectionID)
+    public void Play(ServerGame sGame, int playerIndex, int cardID, int x, int y, NetworkConnection sourceID)
+    {
+        //get the card to play
+        Card toPlay = sGame.GetCardFromID(cardID);
+        int invertedX = InvertIndexForController(x, playerIndex);
+        int invertedY = InvertIndexForController(y, playerIndex);
+        Packet outPacket = null;
+        Packet outPacketInverted = null;
+        //if it's not a valid place to do, return
+        if (uiCtrl.DebugMode || sGame.ValidBoardPlay(toPlay, invertedX, invertedY))
+        {
+            //tell everyone to do it
+            outPacket = new Packet(Packet.Command.Play, toPlay, x, y);
+            if (toPlay.Location == Card.CardLocation.Discard || toPlay.Location == Card.CardLocation.Field)
+                outPacketInverted = new Packet(Packet.Command.Play, toPlay, x, y, true);
+            else
+                outPacketInverted = new Packet(Packet.Command.AddAsEnemy, toPlay.CardName, (int)Card.CardLocation.Field, toPlay.ID, x, y, true);
+            //play the card here
+            ServerGame.mainServerGame.Play(toPlay, invertedX, invertedY);
+        }
+        else
+        {
+            outPacket = new Packet(Packet.Command.PutBack);
+        }
+        SendPackets(outPacket, outPacketInverted, sGame, sourceID);
+    }
+
+    public void MoveOrAttack(ServerGame sGame, int playerIndex, int cardID, int x, int y, NetworkConnection sourceID)
+    {
+        //get the card to move
+        Card toMove = sGame.GetCardFromID(cardID);
+        int invertedX = InvertIndexForController(x, playerIndex);
+        int invertedY = InvertIndexForController(y, playerIndex);
+        Packet outPacket = null;
+        Packet outPacketInverted = null;
+        //if it's not a valid place to do, return
+        //NOTE: there is no debug to override moves because of how checking if attack works
+        if (ServerGame.mainServerGame.ValidMove(toMove, invertedX, invertedY))
+        {
+            Debug.Log("move");
+            //move the card there
+            sGame.Move(toMove, invertedX, invertedY);
+            //tell everyone to do it
+            outPacket = new Packet(Packet.Command.Move, toMove, x, y);
+            outPacketInverted = new Packet(Packet.Command.Move, toMove, x, y, true);
+            SendPackets(outPacket, outPacketInverted, sGame, sourceID);
+        }
+        //try to see if it's a valid attack, if it's not a valid move
+        else if (ServerGame.mainServerGame.ValidAttack(toMove, invertedX, invertedY))
+        {
+            Debug.Log("attack");
+            //tell the players to put cards down where they were
+            outPacket = new Packet(Packet.Command.PutBack);
+            outPacketInverted = new Packet(Packet.Command.PutBack);
+            SendPackets(outPacket, outPacketInverted, sGame, sourceID);
+            //then resolve the attack
+            //TODO allow for activation of abilities, fast cards
+            CharacterCard attacker = toMove as CharacterCard;
+            CharacterCard defender = ServerGame.mainServerGame.boardCtrl.GetCharAt(invertedX, invertedY);
+            attacker.Attack(defender);
+
+            outPacket = new Packet(Packet.Command.SetNESW, attacker, attacker.N, attacker.E, attacker.S, attacker.W);
+            outPacketInverted = new Packet(Packet.Command.SetNESW, attacker, attacker.N, attacker.E, attacker.S, attacker.W);
+            SendPackets(outPacket, outPacketInverted, sGame, sourceID);
+            outPacket = new Packet(Packet.Command.SetNESW, defender, defender.N, defender.E, defender.S, defender.W);
+            outPacketInverted = new Packet(Packet.Command.SetNESW, defender, defender.N, defender.E, defender.S, defender.W);
+            SendPackets(outPacket, outPacketInverted, sGame, sourceID);
+        }
+        else
+        {
+            Debug.Log("putback");
+            outPacket = new Packet(Packet.Command.PutBack);
+            SendPackets(outPacket, outPacketInverted, sGame, sourceID);
+        }
+    }
+
+    public void NotifyTopdeck(ServerGame sGame, Card card, NetworkConnection sourceID)
+    {
+        Packet outPacket = null;
+        Packet outPacketInverted = null;
+        //and let everyone know
+        outPacket = new Packet(Packet.Command.Topdeck, card);
+        if (card.Location == Card.CardLocation.Hand || card.Location == Card.CardLocation.Deck)
+            outPacketInverted = new Packet(Packet.Command.Delete, card);
+        SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, sourceID);
+    }
+
+    public void DebugTopdeck(ServerGame sGame, int cardID, NetworkConnection sourceID)
+    {
+        Card toTopdeck = sGame.GetCardFromID(cardID);
+        sGame.Topdeck(toTopdeck);
+        NotifyTopdeck(sGame, toTopdeck, sourceID);
+    }
+
+    public void NotifyDiscard(ServerGame sGame, Card toDiscard, NetworkConnection sourceID)
+    {
+        Packet outPacket = null;
+        Packet outPacketInverted = null;
+        //and let everyone know
+        outPacket = new Packet(Packet.Command.Discard, toDiscard);
+        if (toDiscard.Location == Card.CardLocation.Discard || toDiscard.Location == Card.CardLocation.Field)
+            outPacketInverted = new Packet(Packet.Command.Discard, toDiscard);
+        else outPacketInverted = new Packet(Packet.Command.AddAsEnemy, toDiscard.CardName, (int)Card.CardLocation.Discard, toDiscard.ID);
+        SendPackets(outPacket, outPacketInverted,sGame, sourceID);
+    }
+
+    public void DebugDiscard(ServerGame sGame, int cardID, NetworkConnection sourceID)
+    {
+        Card toDiscard = ServerGame.mainServerGame.GetCardFromID(cardID);
+        sGame.Discard(toDiscard);
+        NotifyDiscard(sGame, toDiscard, sourceID);
+    }
+
+    public void NotifyRehand(ServerGame sGame, Card toRehand, NetworkConnection sourceID)
+    {
+        Packet outPacket = null;
+        Packet outPacketInverted = null;
+        //and let everyone know
+        outPacket = new Packet(Packet.Command.Rehand, toRehand);
+        if (toRehand.Location == Card.CardLocation.Hand || toRehand.Location == Card.CardLocation.Deck)
+            outPacketInverted = new Packet(Packet.Command.Delete, toRehand);
+        else outPacketInverted = null; //TODO make this add a blank card
+                                       //eventually, this won't be necessary, because the player won't initiate this action
+        SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, sourceID);
+    }
+
+    public void DebugRehand(ServerGame sGame, int cardID, NetworkConnection sourceID)
+    {
+        Card toRehand = sGame.GetCardFromID(cardID);
+        sGame.Rehand(toRehand);
+        NotifyRehand(sGame, toRehand, sourceID);
+    }
+
+    public void DebugDraw(int playerIndex, NetworkConnection connectionID)
     {
         //draw and store what was drawn
         Card toDraw = ServerGame.mainServerGame.Draw(playerIndex);
@@ -390,15 +431,20 @@ public class ServerNetworkController : NetworkController {
         SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
     }
 
-    public void SetPips(int playerIndex, NetworkConnection connectionID, int pipsToSet)
+    public void NotifySetPips(ServerGame sGame, int playerIndex, int pipsToSet, NetworkConnection sourceID)
     {
-        ServerGame.mainServerGame.Players[playerIndex].pips = pipsToSet;
-        if (playerIndex == 0) ServerGame.mainServerGame.uiCtrl.UpdateFriendlyPips(pipsToSet);
-        else ServerGame.mainServerGame.uiCtrl.UpdateEnemyPips(pipsToSet);
         //let everyone know
         Packet outPacket = new Packet(Packet.Command.SetPips, pipsToSet);
         Packet outPacketInverted = new Packet(Packet.Command.SetEnemyPips, pipsToSet);
-        SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
+        SendPackets(outPacket, outPacketInverted,sGame, sourceID);
+    }
+
+    public void DebugSetPips(ServerGame sGame, int playerIndex, NetworkConnection connectionID, int pipsToSet)
+    {
+        sGame.Players[playerIndex].pips = pipsToSet;
+        if (playerIndex == 0) uiCtrl.UpdateFriendlyPips(pipsToSet);
+        else uiCtrl.UpdateEnemyPips(pipsToSet);
+        NotifySetPips(sGame, playerIndex, pipsToSet, connectionID);
     }
 
     public void SetTurn(NetworkConnection connectionID, int indexToSet)
@@ -415,11 +461,11 @@ public class ServerNetworkController : NetworkController {
         Debug.Log("Asking for target");
     }
 
-    public void SetNESW(CharacterCard card)
+    public void NotifySetNESW(ServerGame sGame, CharacterCard card)
     {
         //let everyone know to set NESW
         Packet outPacket = new Packet(Packet.Command.SetNESW, card, card.N, card.E, card.S, card.W);
         Packet outPacketInverted = new Packet(Packet.Command.SetNESW, card, card.N, card.E, card.S, card.W);
-        SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, ServerGame.mainServerGame.Players[0].ConnectionID);
+        SendPackets(outPacket, outPacketInverted, sGame, sGame.Players[card.Owner].ConnectionID);
     }
 }

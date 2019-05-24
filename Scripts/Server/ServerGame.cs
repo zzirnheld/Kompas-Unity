@@ -12,6 +12,8 @@ public class ServerGame : Game {
 
     public static ServerGame mainServerGame;
 
+    public ServerNetworkController serverNetworkCtrl;
+
     int currPlayerCount = 0; //current number of players. shouldn't exceed 2
     public int cardCount = 0;
 
@@ -91,7 +93,11 @@ public class ServerGame : Game {
 
     public void GiveTurnPlayerPips()
     {
-        (networkCtrl as ServerNetworkController).SetPips(turnPlayer, players[turnPlayer].ConnectionID, players[turnPlayer].pips + MaxCardsOnField);
+        int pipsToSet = players[turnPlayer].pips + MaxCardsOnField;
+        Players[turnPlayer].pips = pipsToSet;
+        if (turnPlayer == 0) uiCtrl.UpdateFriendlyPips(pipsToSet);
+        else uiCtrl.UpdateEnemyPips(pipsToSet);
+        serverNetworkCtrl.NotifySetPips(this, turnPlayer, pipsToSet, players[turnPlayer].ConnectionID);
     }
 
     //do action given id
@@ -172,8 +178,8 @@ public class ServerGame : Game {
         boardCtrl.ResetCardsM();
 
         //draw for turn and store what was drawn
-        (networkCtrl as ServerNetworkController).AttemptToDraw(turnPlayer, players[turnPlayer].ConnectionID);
-        (networkCtrl as ServerNetworkController).SetTurn(players[turnPlayer].ConnectionID, turnPlayer);
+        serverNetworkCtrl.DebugDraw(turnPlayer, players[turnPlayer].ConnectionID);
+        serverNetworkCtrl.SetTurn(players[turnPlayer].ConnectionID, turnPlayer);
     }
 
     #region the stack

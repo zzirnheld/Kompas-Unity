@@ -81,8 +81,6 @@ public class NetworkController : MonoBehaviour
         //deserialize the contents of the buffer
         object o;
         try { o = formatter.Deserialize(stream); }
-
-
         catch (SerializationException e) { Debug.Log("Failed to deserialize"); throw; }
         //close the stream
         stream.Close();

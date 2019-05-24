@@ -22,7 +22,7 @@ public class ChangeNESWSubeffect : Subeffect
 
             if(parent.thisCard.game.networkCtrl is ServerNetworkController serverNet)
             {
-                serverNet.SetNESW(charCard);
+                serverNet.NotifySetNESW(charCard.game as ServerGame, charCard);
             }
         }
 

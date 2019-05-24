@@ -177,7 +177,7 @@ public class Game : MonoBehaviour {
         boardCtrl.Swap(card, toX, toY);
     }
 
-    public Card SetNESW(int cardID, int n, int e, int s, int w)
+    public CharacterCard SetNESW(int cardID, int n, int e, int s, int w)
     {
         Card toSet = GetCardFromID(cardID);
         if (!(toSet is CharacterCard charToSet)) return null;
