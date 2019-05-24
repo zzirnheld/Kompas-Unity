@@ -5,6 +5,8 @@ using NetworkConnection = Unity.Networking.Transport.NetworkConnection;
 
 public class Player {
 
+    public ServerGame serverGame;
+
     //game mechanics data
     public int pips = 3;
 
@@ -33,9 +35,10 @@ public class Player {
         get { return connectionID; }
     }
 
-    public Player(NetworkConnection connectionID, int index)
+    public Player(NetworkConnection connectionID, int index, ServerGame serverGame)
     {
         this.connectionID = connectionID;
         this.index = index;
+        this.serverGame = serverGame;
     }
 }

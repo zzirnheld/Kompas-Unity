@@ -8,22 +8,29 @@ using Unity.Networking.Transport;
 using Unity.Networking.Transport.Utilities;
 using Unity.Networking.Transport.LowLevel.Unsafe;
 using NetworkConnection = Unity.Networking.Transport.NetworkConnection;
+using System.Collections.Generic;
 //using UdpCNetworkDriver = Unity.Networking.Transport.BasicNetworkDriver<Unity.Networking.Transport.IPv4UDPSocket>;
 
 public class ServerNetworkController : NetworkController {
+
+    public GameObject ServerGamePrefab;
+    public ServerGame currentGameToMatchmake;
+
+    public UIController uiCtrl;
+    public MouseController mouseCtrl;
 
     public UdpNetworkDriver mDriver;
     public NetworkPipeline mPipeline;
     public NativeList<NetworkConnection> mConnections;
     private bool Hosting = false;
 
-    public void Start()
-    {
-        
-    }
+    private Dictionary<NetworkConnection, ServerGame> gamesByConnectionID;
 
     public void Host(ushort port)
     {
+        currentGameToMatchmake = null;
+        gamesByConnectionID = new Dictionary<NetworkConnection, ServerGame>();
+
         mDriver = new UdpNetworkDriver(new ReliableUtility.Parameters { WindowSize = 32 });
         mPipeline = mDriver.CreatePipeline(typeof(ReliableSequencedPipelineStage));
 
@@ -34,7 +41,7 @@ public class ServerNetworkController : NetworkController {
 
         mConnections = new NativeList<NetworkConnection>(16, Allocator.Persistent);
         Hosting = true;
-        ServerGame.mainServerGame.uiCtrl.CurrentStateString = "Hosting";
+        uiCtrl.CurrentStateString = "Hosting";
     }
 
     public void HostIntPort(int port)
@@ -70,14 +77,23 @@ public class ServerNetworkController : NetworkController {
             mConnections.Add(c);
             Debug.Log("Accepted connection");
             //add the player. if it's the second player, do i need to tell each player the other is here?
-            if (ServerGame.mainServerGame.AddPlayer(c) == 2)
+            if(currentGameToMatchmake == null)
             {
-                ServerGame.mainServerGame.uiCtrl.CurrentStateString = "Two Players Connected";
-                SendPackets(new Packet(Packet.Command.YoureFirst), new Packet(Packet.Command.YoureSecond), ServerGame.mainServerGame, mConnections[mConnections.Length - 1]);
+                uiCtrl.CurrentStateString = "One Player Connected";
+                currentGameToMatchmake = GameObject.Instantiate(ServerGamePrefab).GetComponent<ServerGame>();
+                currentGameToMatchmake.uiCtrl = uiCtrl;
+                currentGameToMatchmake.mouseCtrl = mouseCtrl;
+                currentGameToMatchmake.networkCtrl = this;
+                gamesByConnectionID.Add(c, currentGameToMatchmake);
+                currentGameToMatchmake.AddPlayer(c);
             }
             else
             {
-                ServerGame.mainServerGame.uiCtrl.CurrentStateString = "One Player Connected";
+                uiCtrl.CurrentStateString = "Two Players Connected";
+                SendPackets(new Packet(Packet.Command.YoureFirst), new Packet(Packet.Command.YoureSecond), ServerGame.mainServerGame, mConnections[mConnections.Length - 1]);
+                gamesByConnectionID.Add(c, currentGameToMatchmake);
+                currentGameToMatchmake.AddPlayer(c);
+                currentGameToMatchmake = null;
             }
         }
 
@@ -130,59 +146,29 @@ public class ServerNetworkController : NetworkController {
 
     }
 
-    //TODO: move all these to separate methods
+    //TODO: move all these to separate methods.
+    //TODO make code that checks if ready to resolve the stack (both players have no responses/have declined priority in a row)
     private void ParseRequest(byte[] buffer, NetworkConnection connectionID)
     {
         //Debug.Log("recieved packet");
         Packet packet = Deserialize(buffer);
         if (packet == null) return;
 
+        ServerGame serverGame = gamesByConnectionID[connectionID];
+
         Packet outPacket = null;
         Packet outPacketInverted = null;
-        int playerIndex = ServerGame.mainServerGame.GetPlayerIndexFromID(connectionID);
-        packet.InvertForController(playerIndex);
+        int playerIndex = serverGame.GetPlayerIndexFromID(connectionID);
+        //packet.InvertForController(playerIndex);
         //Debug.Log("packet command is " + packet.command + " for player index " + playerIndex);
 
         //switch between all the possible requests for the server to handle.
         switch (packet.command)
         {
             case Packet.Command.AddToDeck:
-                //figure out who's getting the card to their deck
-                Player owner = ServerGame.mainServerGame.Players[playerIndex];
-                Debug.Log("owner is " + owner + ", server game is " + ServerGame.mainServerGame + ", packet is " + packet + ", owner index is " + playerIndex);
-                //.Log("deck ctrl is " + (owner.deckCtrl == null));
-                //add the card in, with the cardCount being the card id, then increment the card count
-                Card added = owner.deckCtrl.AddCard(packet.CardName, ServerGame.mainServerGame.cardCount, playerIndex);
-                Debug.Log("added info is " + added.Owner + " and id: " + added.ID);
-                Debug.Log("new get card id owner is " + ServerGame.mainServerGame.GetCardFromID(ServerGame.mainServerGame.cardCount).Owner + " and id is " + ServerGame.mainServerGame.cardCount);
-                ServerGame.mainServerGame.cardCount++;
-                //let everyone know
-                outPacket = new Packet(Packet.Command.AddAsFriendly, packet.CardName, (int) Card.CardLocation.Deck, added.ID);
-                outPacketInverted = new Packet(Packet.Command.IncrementEnemyDeck);
-                SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
+                AddCardToDeck(serverGame, playerIndex, packet.CardName, connectionID);
                 break;
             case Packet.Command.Augment:
-                Card toAugment = ServerGame.mainServerGame.GetCardFromID(packet.cardID);
-                //if it's not a valid place to do, return
-                if (ServerGame.mainServerGame.uiCtrl.DebugMode || ServerGame.mainServerGame.ValidAugment(toAugment, packet.X, packet.Y))
-                {
-                    packet.InvertForController(playerIndex);
-                    //tell everyone to do it
-                    outPacket = new Packet(Packet.Command.Augment, toAugment, packet.X, packet.Y);
-                    if (toAugment.Location == Card.CardLocation.Discard || toAugment.Location == Card.CardLocation.Field)
-                        outPacketInverted = new Packet(Packet.Command.Augment, toAugment, packet.X, packet.Y, true);
-                    else outPacketInverted = new Packet(Packet.Command.AddAsEnemy, toAugment.CardName, (int) Card.CardLocation.Field, toAugment.ID, packet.
-                        X, packet.Y, true);
-                    //play the card here
-                    packet.InvertForController(playerIndex);
-                    ServerGame.mainServerGame.Play(toAugment, packet.X, packet.Y);
-                }
-                else
-                {
-                    outPacket = new Packet(Packet.Command.PutBack);
-                    outPacketInverted = null;
-                }
-                SendPackets(outPacket, outPacketInverted, ServerGame.mainServerGame, connectionID);
                 break;
             case Packet.Command.Play:
                 //get the card to play
@@ -332,6 +318,64 @@ public class ServerNetworkController : NetworkController {
                 Debug.Log("Invalid command " + packet.command + " to server from " + connectionID);
                 break;
         }
+    }
+
+    public void AddCardToDeck(ServerGame sGame, int playerIndex, string cardName, NetworkConnection sourceID)
+    {
+        //figure out who's getting the card to their deck
+        Player owner = sGame.Players[playerIndex];
+        //add the card in, with the cardCount being the card id, then increment the card count
+        Card added = owner.deckCtrl.AddCard(cardName, sGame.cardCount, playerIndex);
+        ServerGame.mainServerGame.cardCount++;
+        //let everyone know
+        Packet outPacket = new Packet(Packet.Command.AddAsFriendly, cardName, (int)Card.CardLocation.Deck, added.ID);
+        Packet outPacketInverted = new Packet(Packet.Command.IncrementEnemyDeck);
+        SendPackets(outPacket, outPacketInverted, sGame, sourceID);
+    }
+
+    public int InvertIndexForController(int index, int controller)
+    {
+        if (controller == 0) return index;
+        else return 6 - index;
+    }
+
+    /// <summary>
+    /// x and y here are from playerIndex's perspective
+    /// </summary>
+    /// <param name="sGame"></param>
+    /// <param name="playerIndex"></param>
+    /// <param name="cardID"></param>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
+    /// <param name="sourceID"></param>
+    public void Augment(ServerGame sGame, int playerIndex, int cardID, int x, int y, NetworkConnection sourceID)
+    {
+        Card toAugment = sGame.GetCardFromID(cardID);
+        int invertedX = InvertIndexForController(x, playerIndex);
+        int invertedY = InvertIndexForController(y, playerIndex);
+        Packet outPacket = null;
+        Packet outPacketInverted = null;
+        //if it's not a valid place to do, return
+        if (uiCtrl.DebugMode || sGame.ValidAugment(toAugment, invertedX, invertedY))
+        {
+            //tell everyone to do it
+            outPacket = new Packet(Packet.Command.Augment, toAugment, x, y);
+            if (toAugment.Location == Card.CardLocation.Discard || toAugment.Location == Card.CardLocation.Field)
+            {
+                outPacketInverted = new Packet(Packet.Command.Augment, toAugment, x, y, true);
+            }
+            else
+            {
+                outPacketInverted = new Packet(Packet.Command.AddAsEnemy, toAugment.CardName, (int)Card.CardLocation.Field, toAugment.ID, x, y, true);
+            }
+            //play the card here
+            ServerGame.mainServerGame.Play(toAugment, invertedX, invertedY);
+        }
+        else
+        {
+            outPacket = new Packet(Packet.Command.PutBack);
+        }
+        SendPackets(outPacket, outPacketInverted, sGame, sourceID);
     }
 
     public void AttemptToDraw(int playerIndex, NetworkConnection connectionID)

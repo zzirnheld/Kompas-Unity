@@ -23,8 +23,8 @@ public class MouseController : MonoBehaviour {
     
     private void Update()
     {
-        //tell the mouse controller to do stuff in the correct order
-        //(this is in the game class because what it does will depend on what the target mode is later)
+        if (Game.mainGame == null) return;
+
         //first, get the mouse ray (starts at the mouse, goes straight along direction camera points)
         GetMouseRay();
         //for now, assume that you're not targeting anything. here is the correct sequence of methods:
