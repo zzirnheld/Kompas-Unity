@@ -8,8 +8,9 @@ public class PlaySimpleCommand : StackableCommand
     int x;
     int y;
 
-    public PlaySimpleCommand(SpellCard simple, int x, int y)
+    public PlaySimpleCommand(ServerGame game, SpellCard simple, int x, int y)
     {
+        serverGame = game;
         this.simple = simple;
         this.x = x;
         this.y = y;

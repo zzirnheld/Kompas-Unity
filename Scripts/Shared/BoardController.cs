@@ -82,7 +82,7 @@ public class BoardController : KompasObject
     /// <summary>
     /// Actually summons the card. DO NOT call directly from player interaction
     /// </summary>
-    public void Summon(CharacterCard toSummon, int toX, int toY, int owner = 0)
+    public void Summon(CharacterCard toSummon, int toX, int toY, int owner)
     {
         cards[toX, toY] = toSummon;
         toSummon.SetLocation(Card.CardLocation.Field);
@@ -93,7 +93,7 @@ public class BoardController : KompasObject
     /// <summary>
     /// Actually augments the card. DO NOT call directly from player interaction
     /// </summary>
-    public void Augment(AugmentCard toAugment, int toX, int toY, int owner = 0)
+    public void Augment(AugmentCard toAugment, int toX, int toY, int owner)
     {
         GetCharAt(toX, toY).AddAugment(toAugment);
         toAugment.SetLocation(Card.CardLocation.Field);
@@ -104,7 +104,7 @@ public class BoardController : KompasObject
     /// <summary>
     /// Actually casts the card. DO NOT call directly from player interaction
     /// </summary>
-    public void Cast(SpellCard toCast, int toX, int toY, int owner = 0)
+    public void Cast(SpellCard toCast, int toX, int toY, int owner)
     {
         cards[toX, toY] = toCast;
         toCast.SetLocation(Card.CardLocation.Field);
@@ -118,7 +118,7 @@ public class BoardController : KompasObject
     /// <param name="toPlay">Card to be played</param>
     /// <param name="toX">X coordinate to play the card to</param>
     /// <param name="toY">Y coordinate to play the card to</param>
-    public void Play(Card toPlay, int toX, int toY, int owner = 0)
+    public void Play(Card toPlay, int toX, int toY, int owner)
     {
         if (toPlay is CharacterCard charToPlay) Summon(charToPlay, toX, toY, owner);
         else if (toPlay is AugmentCard augmentToPlay) Augment(augmentToPlay, toX, toY, owner);
@@ -129,6 +129,11 @@ public class BoardController : KompasObject
         if (i > game.MaxCardsOnField) game.MaxCardsOnField = i;
 
         toPlay.gameObject.transform.localScale = new Vector3(1f / 9f, 1f / 9f, 1);
+    }
+
+    public void Play(Card toPlay, int toX, int toY)
+    {
+        Play(toPlay, toX, toY, toPlay.Owner);
     }
 
     //movement

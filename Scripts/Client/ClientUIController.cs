@@ -47,6 +47,10 @@ public class ClientUIController : UIController
             clientGame.clientNetworkCtrl.RequestResolveEffect(selectedCard, index);
     }
 
+    public void ToggleHoldingPriority()
+    {
+        //TODO
+    }
 
     #region importing/searching deck or discard
     public void ImportDeckPressed()

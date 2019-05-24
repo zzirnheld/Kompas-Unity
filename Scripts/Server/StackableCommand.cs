@@ -14,7 +14,7 @@ public class StackableCommand
 
     public virtual void FinishResolution()
     {
-        serverGame.ResolveNextStackEntry();
+        serverGame.FinishStackEntryResolution();
     }
 
     public virtual void CancelResolution()

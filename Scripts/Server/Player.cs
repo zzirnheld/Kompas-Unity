@@ -26,9 +26,29 @@ public class Player {
 
     private NetworkConnection connectionID;
 
+
     //getters and setters
+
     //game mechanics data
+    /// <summary>
+    /// A list of potential fast cards and fast effects that the player has
+    /// </summary>
+    public List<StackableCommand> responses;
+
+    /// <summary>
+    /// Whether the player has yet passed priority
+    /// </summary>
+    public bool passedPriority = false;
+
     //other game data 
+    /// <summary>
+    /// The player can TODO click a checkbox to hold priority no matter what
+    /// </summary>
+    public bool holdPriority = false;
+    /// <summary>
+    /// The player TODO can uncheck a box to decline all fast effect activation opportunities
+    /// </summary>
+    public bool allowResponses = true;
 
     public NetworkConnection ConnectionID
     {
@@ -40,5 +60,11 @@ public class Player {
         this.connectionID = connectionID;
         this.index = index;
         this.serverGame = serverGame;
+        responses = new List<StackableCommand>();
+    }
+
+    public bool HoldsPriority()
+    {
+        return allowResponses && (holdPriority || responses.Count > 0);
     }
 }

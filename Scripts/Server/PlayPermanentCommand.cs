@@ -8,8 +8,9 @@ public class PlayPermanentCommand : StackableCommand
     int x;
     int y;
 
-    public PlayPermanentCommand(Card card, int x, int y)
+    public PlayPermanentCommand(ServerGame game, Card card, int x, int y)
     {
+        serverGame = game;
         this.card = card;
         this.x = x;
         this.y = y;

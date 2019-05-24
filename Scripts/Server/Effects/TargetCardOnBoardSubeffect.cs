@@ -25,6 +25,7 @@ public class TargetCardOnBoardSubeffect : Subeffect
         //give the card if whose effect it is, the index of the effect, and the index of the subeffect
         //since only the server resolves effects, this should never be called for a client.
         (parent.thisCard.game.networkCtrl as ServerNetworkController).AskClientForTarget(
+                                            parent.thisCard.game as ServerGame,
                                             parent.effectController, 
                                             parent.thisCard, 
                                             System.Array.IndexOf(parent.thisCard.Effects, this), 

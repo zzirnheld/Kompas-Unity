@@ -37,8 +37,10 @@ public class ServerGame : Game {
     {
         mainGame = this;
         mainServerGame = this;
+        stack = new List<StackableCommand>();
     }
 
+    #region players
     public int AddPlayer(NetworkConnection connectionID)
     {
         if (currPlayerCount >= 2) return -1;
@@ -90,6 +92,7 @@ public class ServerGame : Game {
     {
         return currPlayerCount >= 2;
     }
+    #endregion
 
     public void GiveTurnPlayerPips()
     {
@@ -178,8 +181,8 @@ public class ServerGame : Game {
         boardCtrl.ResetCardsM();
 
         //draw for turn and store what was drawn
-        serverNetworkCtrl.DebugDraw(turnPlayer, players[turnPlayer].ConnectionID);
-        serverNetworkCtrl.SetTurn(players[turnPlayer].ConnectionID, turnPlayer);
+        serverNetworkCtrl.DebugDraw(this, turnPlayer, players[turnPlayer].ConnectionID);
+        serverNetworkCtrl.SetTurn(this, players[turnPlayer].ConnectionID, turnPlayer);
     }
 
     #region the stack
@@ -213,5 +216,58 @@ public class ServerGame : Game {
         stackIndex--;
         cmd.StartResolution();
     }
-    #endregion
+
+    public void FinishStackEntryResolution()
+    {
+        //TODO give opportunity to add things to stack
+        //for now, just resolve the next stack entry
+        ResolveNextStackEntry();
+    }
+
+    public void ResetPassingPriority()
+    {
+        foreach(Player p in players)
+        {
+            p.passedPriority = false;
+        }
+    }
+
+    public void PushPlayCommand(Card card, int x, int y)
+    {
+        //put the correct command on the stack
+        if (card is SpellCard spell && spell.SpellSubtype == SpellCard.SpellType.Simple) PushSimpleCommand(spell, x, y);
+        else PushPermanentCommand(card, x, y);
+
+        //since a new thing is being put on the stack, mark both players as having not passed priority
+        ResetPassingPriority();
+
+        //check if responses exist. if not, resolve
+        if (players[turnPlayer].HoldsPriority())
+        {
+            //then send them a request to do something or pass priority
+            //TODO: send the stack entry encoded somehow?
+        }
+        else if(players[1 - turnPlayer].HoldsPriority()){
+            //then mark the turn player as having passed priority
+            players[turnPlayer].passedPriority = true;
+
+            //then ask the non turn player to do something or pass priority
+        }
+        else
+        {
+            //if neither player has anything to do, resolve the stack
+            ResolveNextStackEntry();
+        }
+    }
+
+    private void PushSimpleCommand(SpellCard simple, int x, int y)
+    {
+        PushToStack(new PlaySimpleCommand(this, simple, x, y));
+    }
+
+    private void PushPermanentCommand(Card card, int x, int y)
+    {
+        PushToStack(new PlayPermanentCommand(this, card, x, y));
+    }
+    #endregion the stack
 }
