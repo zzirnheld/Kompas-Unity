@@ -23,6 +23,7 @@ public class ClientUIController : UIController
     public Button deckSearchButton;
     public Button discardSearchButton;
     public Button searchToHandButton;
+    public Button searchTargetButton;
     public Button cancelSearchButton;
 
     private List<Card> toSearch;
@@ -85,8 +86,8 @@ public class ClientUIController : UIController
             //set buttons to their correct states
             discardSearchButton.gameObject.SetActive(false);
             deckSearchButton.gameObject.SetActive(false);
-            if (targeting) ;
-            //TODO
+            if (targeting)
+                searchTargetButton.gameObject.SetActive(true);
             else
                 searchToHandButton.gameObject.SetActive(true);
             cancelSearchButton.gameObject.SetActive(true);
@@ -100,11 +101,9 @@ public class ClientUIController : UIController
         if (toSearch.Count == 0) return;
 
         if (targeting)
-        {
-            //TODO call target this card method in network ctrl
-        }
+            clientGame.clientNetworkCtrl.RequestTarget(toSearch[searchIndex]);
         else //TODO remove the option for not a targeting deck search once everything's automated?
-            clientGame.clientNetworkCtrl.RequestRehand(clientGame.friendlyDeckCtrl.CardAt(searchIndex, false));
+            clientGame.clientNetworkCtrl.RequestRehand(toSearch[searchIndex]);
 
         EndSearch();
     }
@@ -121,6 +120,7 @@ public class ClientUIController : UIController
         //set buttons to their correct states
         discardSearchButton.gameObject.SetActive(true);
         deckSearchButton.gameObject.SetActive(true);
+        searchTargetButton.gameObject.SetActive(false);
         searchToHandButton.gameObject.SetActive(false);
         cancelSearchButton.gameObject.SetActive(false);
     }

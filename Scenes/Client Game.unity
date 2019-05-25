@@ -6388,6 +6388,7 @@ MonoBehaviour:
   deckSearchButton: {fileID: 973346152}
   discardSearchButton: {fileID: 577061474}
   searchToHandButton: {fileID: 752127815}
+  searchTargetButton: {fileID: 1518423575}
   cancelSearchButton: {fileID: 1717289247}
 --- !u!1 &1644621712
 GameObject:
