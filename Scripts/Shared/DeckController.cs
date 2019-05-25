@@ -21,6 +21,7 @@ public class DeckController : KompasObject
 
     //actual factual deck list
     private List<Card> deck = new List<Card>();
+    public List<Card> Deck { get { return deck; } }
 
     private void Awake()
     {
@@ -226,6 +227,31 @@ public class DeckController : KompasObject
             clientGame.clientNetworkCtrl.RequestDraw();
     }
 
+    /// <summary>
+    /// Checks if a card exists that fits the given restriction
+    /// </summary>
+    /// <param name="cardRestriction"></param>
+    /// <returns></returns>
+    public bool Exists(CardRestriction cardRestriction)
+    {
+        foreach(Card c in deck)
+        {
+            if (c != null && cardRestriction.Evaluate(c)) return true;
+        }
+
+        return false;
+    }
+
+    public List<Card> CardsThatFitRestriction(CardRestriction cardRestriction)
+    {
+        List<Card> cards = new List<Card>();
+        foreach(Card c in deck)
+        {
+            if (c != null && cardRestriction.Evaluate(c))
+                cards.Add(c);
+        }
+        return cards;
+    }
 
     #region debug
     public void DEBUGCreateCard()

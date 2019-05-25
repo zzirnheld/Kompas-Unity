@@ -35,11 +35,11 @@ public class Game : MonoBehaviour {
     protected List<Effect> stack;
     protected int stackIndex;
 
-    protected Effect currentlyResolvingEffect;
-    public Effect CurrentlyResolvingEffect
+    protected Effect currEffect;
+    public Effect CurrEffect
     {
-        get => currentlyResolvingEffect;
-        set => currentlyResolvingEffect = value;
+        get => currEffect;
+        set => currEffect = value;
     }
 
     public TargetMode targetMode = TargetMode.NoTargeting;
@@ -207,5 +207,15 @@ public class Game : MonoBehaviour {
         return !boardCtrl.ExistsCardOnBoard(restriction);
     }
 
+    /// <summary>
+    /// Checks if there exists a target in one player's deck that fits a given restriction.
+    /// </summary>
+    /// <param name="restriction">The restriction a card must fit</param>
+    /// <param name="player">The player index whose deck to look for cards in </param>
+    /// <returns></returns>
+    public bool ExistsDeckTarget(CardRestriction restriction, int player)
+    {
+        return players[player].deckCtrl.Exists(restriction);
+    }
 
 }

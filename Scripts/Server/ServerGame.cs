@@ -210,10 +210,10 @@ public class ServerGame : Game {
     public void ResolveNextStackEntry()
     {
         if (stackIndex < 0) return; //done with this stack!
-        StackableCommand cmd = stack[stackIndex];
+        Effect eff = stack[stackIndex];
         stack.RemoveAt(stackIndex);
         stackIndex--;
-        cmd.StartResolution();
+        eff.StartResolution();
     }
 
     public void FinishStackEntryResolution()

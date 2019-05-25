@@ -3,30 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class CardOnBoardRestriction : CardRestriction
+public class BoardRestriction : CardRestriction
 {
-    public enum OnBoardRestrictions { Adjacent, WithinXSpaces}
-    public OnBoardRestrictions[] onBoardRestrictions;
+    public enum BoardRestrictions { Adjacent, WithinXSpaces}
+    public BoardRestrictions[] onBoardRestrictions;
 
     public int xSpaces;
 
-    public override bool Evaluate(Card potentialTarget, bool actuallyTargetThis)
+    public override bool Evaluate(Card potentialTarget)
     {
         if (potentialTarget == null) return false;
-        foreach(OnBoardRestrictions r in onBoardRestrictions)
+
+        foreach(BoardRestrictions r in onBoardRestrictions)
         {
             switch (r)
             {
-                case OnBoardRestrictions.Adjacent:
+                case BoardRestrictions.Adjacent:
                     if(! potentialTarget.IsAdjacentTo(subeffect.parent.thisCard)) return false;
                     break;
-                case OnBoardRestrictions.WithinXSpaces:
+                case BoardRestrictions.WithinXSpaces:
                     if (!potentialTarget.WithinSlots(xSpaces, subeffect.parent.thisCard)) return false;
                     break;
             }
         }
 
-        return base.Evaluate(potentialTarget, actuallyTargetThis);
+        return base.Evaluate(potentialTarget);
     }
 
 }

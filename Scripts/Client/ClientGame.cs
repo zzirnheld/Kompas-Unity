@@ -116,7 +116,7 @@ public class ClientGame : Game {
         if (targetMode == Game.TargetMode.BoardTarget)
         {
             //check if the target fits the restriction, according to us
-            if (clientNetworkCtrl.lastRestriction.Evaluate(card, false))
+            if (clientNetworkCtrl.lastRestriction.Evaluate(card))
             {
                 //if it fits the restriction, send the proposed target to the server
                 clientNetworkCtrl.RequestTarget(card);

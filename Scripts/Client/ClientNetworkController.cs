@@ -159,8 +159,15 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.RequestBoardTarget:
                 ClientGame.mainClientGame.targetMode = Game.TargetMode.BoardTarget;
                 lastRestriction = (Game.mainGame.GetCardFromID(packet.cardID)
-                                    .Effects[packet.EffIndex].Subeffects[packet.SubeffIndex] as TargetCardOnBoardSubeffect)
+                                    .Effects[packet.EffIndex].Subeffects[packet.SubeffIndex] as BoardTargetSubeffect)
                                     .cardRestriction;
+                break;
+            case Packet.Command.RequestDeckTarget:
+                CardRestriction deckRestriction = (Game.mainGame.GetCardFromID(packet.cardID)
+                                    .Effects[packet.EffIndex].Subeffects[packet.SubeffIndex] as DeckTargetSubeffect)
+                                    .cardRestriction;
+                List<Card> toSearch = ClientGame.mainClientGame.friendlyDeckCtrl.CardsThatFitRestriction(deckRestriction);
+                ClientGame.mainClientGame.clientUICtrl.StartSearch(toSearch, true);
                 break;
             default:
                 Debug.Log("Unrecognized command sent to client");

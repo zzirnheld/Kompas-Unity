@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Effect : StackableCommand
+public class Effect
 {
     //card that this is the effect of. to be set at initialization
     public Card thisCard;
@@ -22,7 +22,7 @@ public class Effect : StackableCommand
     public List<Card> targets;
     
     //get the currently resolving subeffect
-    public Subeffect CurrentlyResolvingSubeffect { get { return subeffects[effectIndex]; } }
+    public Subeffect CurrSubeffect { get { return subeffects[effectIndex]; } }
 
     public Effect(SerializableEffect se, Card thisCard, int controller)
     {
@@ -35,7 +35,7 @@ public class Effect : StackableCommand
             switch (se.subeffectTypes[i])
             {
                 case SerializableEffect.SubeffectType.TargetCardOnBoard:
-                    TargetCardOnBoardSubeffect tcob = JsonUtility.FromJson<TargetCardOnBoardSubeffect>(se.subeffects[i]);
+                    BoardTargetSubeffect tcob = JsonUtility.FromJson<BoardTargetSubeffect>(se.subeffects[i]);
                     tcob.cardRestriction.subeffect = tcob;
                     subeffects[i] = tcob;
                     break;
@@ -56,9 +56,9 @@ public class Effect : StackableCommand
      * Effects will only be resolved on server. clients will just get to know what effects they can use
      */
 
-    public override void StartResolution()
+    public void StartResolution()
     {
-        thisCard.game.CurrentlyResolvingEffect = this;
+        thisCard.game.CurrEffect = this;
         ResolveSubeffect(0);
     }
 
@@ -82,10 +82,10 @@ public class Effect : StackableCommand
     /// If the effect finishes resolving, this method is called.
     /// Any function can also call this effect to finish resolution early.
     /// </summary>
-    public override void FinishResolution()
+    public void FinishResolution()
     {
         doneResolving = true;
         effectIndex = 0;
-        base.FinishResolution();
+        (thisCard.game as ServerGame).FinishStackEntryResolution();
     }
 }

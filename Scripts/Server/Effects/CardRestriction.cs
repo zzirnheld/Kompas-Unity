@@ -22,7 +22,7 @@ public class CardRestriction : Restriction
     /// <param name="potentialTarget"></param>
     /// <param name="actuallyTargetThis">Whether effect resolution should continue if this is a valid target</param>
     /// <returns></returns>
-    public override bool Evaluate(Card potentialTarget, bool actuallyTargetThis)
+    public override bool Evaluate(Card potentialTarget)
     {
         if (potentialTarget == null) return false;
 
@@ -56,14 +56,6 @@ public class CardRestriction : Restriction
                     return false;
             }
         }
-
-        if (actuallyTargetThis)
-        {
-            subeffect.parent.targets.Add(potentialTarget);
-            subeffect.parent.ResolveSubeffect(subeffect.parent.effectIndex + 1);
-            Debug.Log("Adding " + potentialTarget.CardName + " as target");
-        }
-
         return true;
     }
 }

@@ -181,12 +181,15 @@ public class ServerNetworkController : NetworkController {
                 break;
             #region effect commands
             case Packet.Command.Target:
-                Card potentialTarget = serverGame.GetCardFromID(packet.cardID);
-                Debug.Log("Client sent target " + potentialTarget.CardName);
-                if (serverGame.CurrentlyResolvingEffect.CurrentlyResolvingSubeffect is TargetCardOnBoardSubeffect tcob)
+                if (serverGame.CurrEffect.CurrSubeffect is BoardTargetSubeffect tcob)
                 {
                     //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
-                    tcob.cardRestriction.Evaluate(potentialTarget, true); //TODO does this need to change?
+                    if (tcob.cardRestriction.Evaluate(serverGame.GetCardFromID(packet.cardID)))
+                    {
+                        serverGame.CurrEffect.targets.Add(serverGame.GetCardFromID(packet.cardID));
+                        serverGame.CurrEffect.ResolveNextSubeffect();
+                        Debug.Log("Adding " + serverGame.GetCardFromID(packet.cardID).CardName + " as target");
+                    }
                 }
                 break;
             #endregion
@@ -454,11 +457,18 @@ public class ServerNetworkController : NetworkController {
         SendPackets(outPacket, outPacketInverted, sGame, connectionID);
     }
 
-    public void AskClientForTarget(ServerGame sGame, int playerIndex, Card card, int effectIndex, int subeffectIndex)
+    public void GetBoardTarget(ServerGame sGame, int playerIndex, Card card, int effectIndex, int subeffectIndex)
     {
         Packet outPacket = new Packet(Packet.Command.RequestBoardTarget, card, effectIndex, subeffectIndex);
         SendPackets(outPacket, null, sGame, sGame.Players[playerIndex].ConnectionID);
-        Debug.Log("Asking for target");
+        Debug.Log("Asking for board target");
+    }
+
+    public void GetDeckTarget(ServerGame sGame, int playerIndex, Card card, int effectIndex, int subeffectIndex)
+    {
+        Packet outPacket = new Packet(Packet.Command.RequestDeckTarget, card, effectIndex, subeffectIndex);
+        SendPackets(outPacket, null, sGame, sGame.Players[playerIndex].ConnectionID);
+        Debug.Log("Asking for deck target");
     }
 
     public void NotifySetNESW(ServerGame sGame, CharacterCard card)

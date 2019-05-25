@@ -33,7 +33,8 @@ public class Player {
     /// <summary>
     /// A list of potential fast cards and fast effects that the player has
     /// </summary>
-    public List<StackableCommand> responses;
+    public List<Effect> responses;
+    public List<Card> fastCards;
 
     /// <summary>
     /// Whether the player has yet passed priority
@@ -60,11 +61,12 @@ public class Player {
         this.connectionID = connectionID;
         this.index = index;
         this.serverGame = serverGame;
-        responses = new List<StackableCommand>();
+        responses = new List<Effect>();
+        fastCards = new List<Card>();
     }
 
     public bool HoldsPriority()
     {
-        return allowResponses && (holdPriority || responses.Count > 0);
+        return allowResponses && (holdPriority || responses.Count > 0 || fastCards.Count > 0);
     }
 }

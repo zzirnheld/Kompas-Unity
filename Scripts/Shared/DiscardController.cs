@@ -7,7 +7,8 @@ public class DiscardController : KompasObject {
     
     private ClientGame clientGame;
 
-    List<Card> discard = new List<Card>();
+    private List<Card> discard = new List<Card>();
+    public List<Card> Discard { get { return discard; } }
 
     //info about discard
     public int DiscardSize() { return discard.Count; }

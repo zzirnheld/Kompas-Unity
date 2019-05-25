@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class TargetCardOnBoardSubeffect : Subeffect
+public class BoardTargetSubeffect : Subeffect
 {
     //there will be a different target effect for board, hand, discard, deck, and combos of these
     
-    public CardOnBoardRestriction cardRestriction;
+    public BoardRestriction cardRestriction;
 
     public override void Resolve()
     {
@@ -24,7 +24,7 @@ public class TargetCardOnBoardSubeffect : Subeffect
         //ask the client that is this effect's controller for a target. 
         //give the card if whose effect it is, the index of the effect, and the index of the subeffect
         //since only the server resolves effects, this should never be called for a client.
-        (parent.thisCard.game.networkCtrl as ServerNetworkController).AskClientForTarget(
+        (parent.thisCard.game.networkCtrl as ServerNetworkController).GetBoardTarget(
                                             parent.thisCard.game as ServerGame,
                                             parent.effectController, 
                                             parent.thisCard, 
