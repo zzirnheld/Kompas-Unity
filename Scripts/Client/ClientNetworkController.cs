@@ -190,6 +190,12 @@ public class ClientNetworkController : NetworkController {
         Send(packet, mDriver, mConnection, mPipeline);
     }
 
+    public void RequestAttack(Card card, int toX, int toY)
+    {
+        Packet packet = new Packet(Packet.Command.Attack, card, toX, toY);
+        Send(packet, mDriver, mConnection, mPipeline);
+    }
+
     public void RequestTopdeck(Card card)
     {
         Packet packet = new Packet(Packet.Command.Topdeck, card);

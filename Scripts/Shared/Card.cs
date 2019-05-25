@@ -370,8 +370,13 @@ public abstract class Card : KompasObject {
             //if the card is being moved on the field, that means it's just being moved
             if (location == CardLocation.Field)
             {
-                clientGame.clientNetworkCtrl.RequestMove(this,
-                    PosToGridIndex(transform.localPosition.x), PosToGridIndex(transform.localPosition.y));
+                int x = PosToGridIndex(transform.localPosition.x);
+                int y = PosToGridIndex(transform.localPosition.y);
+                //then check if it's an attack or not
+                if (game.boardCtrl.GetCharAt(x, y) != null && game.boardCtrl.GetCharAt(x, y).Owner != owner)
+                    clientGame.clientNetworkCtrl.RequestAttack(this, x, y);
+                else
+                    clientGame.clientNetworkCtrl.RequestMove(this, x, y);
             }
             //otherwise, it is being played from somewhere like the hand or discard
             else

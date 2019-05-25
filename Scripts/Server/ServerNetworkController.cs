@@ -173,7 +173,10 @@ public class ServerNetworkController : NetworkController {
                 Play(serverGame, playerIndex, packet.cardID, packet.X, packet.Y, connectionID);
                 break;
             case Packet.Command.Move:
-                MoveOrAttack(serverGame, playerIndex, packet.cardID, packet.X, packet.Y, connectionID);
+                Move(serverGame, playerIndex, packet.cardID, packet.X, packet.Y, connectionID);
+                break;
+            case Packet.Command.Attack:
+                Attack(serverGame, playerIndex, packet.cardID, packet.X, packet.Y, connectionID);
                 break;
             case Packet.Command.EndTurn:
                 //TODO check to see if it was their turn bewfore swapping turns
@@ -309,8 +312,8 @@ public class ServerNetworkController : NetworkController {
         }
         SendPackets(outPacket, outPacketInverted, sGame, sourceID);
     }
-
-    public void MoveOrAttack(ServerGame sGame, int playerIndex, int cardID, int x, int y, NetworkConnection sourceID)
+    
+    public void Move(ServerGame sGame, int playerIndex, int cardID, int x, int y, NetworkConnection sourceID)
     {
         //get the card to move
         Card toMove = sGame.GetCardFromID(cardID);
@@ -320,7 +323,7 @@ public class ServerNetworkController : NetworkController {
         Packet outPacketInverted = null;
         //if it's not a valid place to do, return
         //NOTE: there is no debug to override moves because of how checking if attack works
-        if (sGame.ValidMove(toMove, invertedX, invertedY))
+        if (uiCtrl.DebugMode || sGame.ValidMove(toMove, invertedX, invertedY))
         {
             Debug.Log("move");
             //move the card there
@@ -330,8 +333,23 @@ public class ServerNetworkController : NetworkController {
             outPacketInverted = new Packet(Packet.Command.Move, toMove, x, y, true);
             SendPackets(outPacket, outPacketInverted, sGame, sourceID);
         }
-        //try to see if it's a valid attack, if it's not a valid move
-        else if (sGame.ValidAttack(toMove, invertedX, invertedY))
+        else
+        {
+            Debug.Log("putback");
+            outPacket = new Packet(Packet.Command.PutBack);
+            SendPackets(outPacket, outPacketInverted, sGame, sourceID);
+        }
+    }
+
+    public void Attack(ServerGame sGame, int playerIndex, int cardID, int x, int y, NetworkConnection sourceID)
+    {
+        //get the card to move
+        Card toMove = sGame.GetCardFromID(cardID);
+        int invertedX = InvertIndexForController(x, playerIndex);
+        int invertedY = InvertIndexForController(y, playerIndex);
+        Packet outPacket = null;
+        Packet outPacketInverted = null;
+        if (uiCtrl.DebugMode || sGame.ValidAttack(toMove, invertedX, invertedY))
         {
             Debug.Log("attack");
             //tell the players to put cards down where they were
