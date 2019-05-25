@@ -6,8 +6,20 @@
 	{
 		"subeffectTypes":[0,1],
 		"subeffects":[
-			"{\"cardRestriction\":{\"restrictionsToCheck\":[2,3],\"subtypesInclude\":[\"Warrior\"],\"onBoardRestrictions\":[0]}}",
-			"{\"nChange\":0,\"eChange\":0,\"sChange\":0,\"wChange\":1,\"targetIndex\":0}"
+			"{\"cardRestriction\":
+				{
+					\"restrictionsToCheck\":[2,3],
+					\"subtypesInclude\":[\"Warrior\"],
+					\"onBoardRestrictions\":[0]
+				}
+			}",
+			"{
+				\"nChange\":0,
+				\"eChange\":0,
+				\"sChange\":0,
+				\"wChange\":1,
+				\"targetIndex\":0
+			}"
 		]
 	}
 ],

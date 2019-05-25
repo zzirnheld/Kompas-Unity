@@ -37,7 +37,7 @@ public class ServerGame : Game {
     {
         mainGame = this;
         mainServerGame = this;
-        stack = new List<StackableCommand>();
+        stack = new List<Effect>();
     }
 
     #region players
@@ -186,9 +186,9 @@ public class ServerGame : Game {
     }
 
     #region the stack
-    public void PushToStack(StackableCommand cmd)
+    public void PushToStack(Effect eff)
     {
-        stack.Add(cmd);
+        stack.Add(eff);
         stackIndex++;
     }
 
@@ -205,7 +205,6 @@ public class ServerGame : Game {
         //TODO move the relevant card to grave? call a cancel method?
         stack.RemoveAt(index);
         stackIndex--;
-
     }
 
     public void ResolveNextStackEntry()
@@ -232,12 +231,8 @@ public class ServerGame : Game {
         }
     }
 
-    public void PushPlayCommand(Card card, int x, int y)
+    public void CheckForResponse()
     {
-        //put the correct command on the stack
-        if (card is SpellCard spell && spell.SpellSubtype == SpellCard.SpellType.Simple) PushSimpleCommand(spell, x, y);
-        else PushPermanentCommand(card, x, y);
-
         //since a new thing is being put on the stack, mark both players as having not passed priority
         ResetPassingPriority();
 
@@ -258,16 +253,6 @@ public class ServerGame : Game {
             //if neither player has anything to do, resolve the stack
             ResolveNextStackEntry();
         }
-    }
-
-    private void PushSimpleCommand(SpellCard simple, int x, int y)
-    {
-        PushToStack(new PlaySimpleCommand(this, simple, x, y));
-    }
-
-    private void PushPermanentCommand(Card card, int x, int y)
-    {
-        PushToStack(new PlayPermanentCommand(this, card, x, y));
     }
     #endregion the stack
 }

@@ -75,7 +75,7 @@ public class Packet {
         }
         catch(KeyNotFoundException e)
         {
-            Debug.Log("Could not find card with name \"" + cardName + "\", length " + cardName.Length);
+            Debug.Log("Could not find card with name \"" + cardName + "\", length " + cardName.Length + "\n" + e.StackTrace);
         }
     }
 

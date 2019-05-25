@@ -277,7 +277,7 @@ public class ServerNetworkController : NetworkController {
                 outPacketInverted = new Packet(Packet.Command.AddAsEnemy, toAugment.CardName, (int)Card.CardLocation.Field, toAugment.ID, x, y, true);
 
             //play the card here
-            sGame.PushPlayCommand(toAugment, invertedX, invertedY);
+            sGame.Play(toAugment, invertedX, invertedY);
         }
         else
         {
@@ -304,7 +304,7 @@ public class ServerNetworkController : NetworkController {
             else
                 outPacketInverted = new Packet(Packet.Command.AddAsEnemy, toPlay.CardName, (int)Card.CardLocation.Field, toPlay.ID, x, y, true);
             //play the card here
-           sGame.PushPlayCommand(toPlay, invertedX, invertedY);
+           sGame.Play(toPlay, invertedX, invertedY);
         }
         else
         {

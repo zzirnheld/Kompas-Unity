@@ -32,7 +32,7 @@ public class Game : MonoBehaviour {
     public int MaxCardsOnField = 0; //for pip generation purposes
 
     //The Stack
-    protected List<StackableCommand> stack;
+    protected List<Effect> stack;
     protected int stackIndex;
 
     protected Effect currentlyResolvingEffect;
