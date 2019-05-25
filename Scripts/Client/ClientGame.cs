@@ -113,7 +113,7 @@ public class ClientGame : Game {
     public void TargetCard(Card card)
     {
         //if the player is currently looking for a target on the board,
-        if (targetMode == Game.TargetMode.BoardTarget)
+        if (targetMode == TargetMode.BoardTarget || targetMode == TargetMode.HandTarget)
         {
             //check if the target fits the restriction, according to us
             if (clientNetworkCtrl.lastRestriction.Evaluate(card))
@@ -122,7 +122,7 @@ public class ClientGame : Game {
                 clientNetworkCtrl.RequestTarget(card);
 
                 //and change the game's target mode
-                targetMode = Game.TargetMode.NoTargeting;
+                targetMode = TargetMode.NoTargeting;
             }
         }
     }

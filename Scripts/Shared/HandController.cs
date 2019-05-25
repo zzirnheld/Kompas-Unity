@@ -55,4 +55,14 @@ public class HandController : KompasObject
             hand[i].transform.localPosition = new Vector3((-0.5f * ((float)hand.Count)) + ((float)i) + 0.5f, 0, 0);
         }
     }
+
+    public bool Exists(CardRestriction cardRestriction)
+    {
+        foreach(Card c in hand)
+        {
+            if (cardRestriction.Evaluate(c)) return true;
+        }
+
+        return false;
+    }
 }

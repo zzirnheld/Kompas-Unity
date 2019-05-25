@@ -7,7 +7,7 @@ public class Game : MonoBehaviour {
 
     public static Game mainGame;
 
-    public enum TargetMode { NoTargeting, BoardTarget }
+    public enum TargetMode { NoTargeting, BoardTarget, HandTarget }
 
     //other scripts
     public MouseController mouseCtrl;
@@ -216,6 +216,16 @@ public class Game : MonoBehaviour {
     public bool ExistsDeckTarget(CardRestriction restriction, int player)
     {
         return players[player].deckCtrl.Exists(restriction);
+    }
+
+    public bool ExistsDiscardTarget(CardRestriction cardRestriction, int player)
+    {
+        return players[player].discardCtrl.Exists(cardRestriction);
+    }
+
+    public bool ExistsHandTarget(CardRestriction cardRestriction, int player)
+    {
+        return players[player].handCtrl.Exists(cardRestriction);
     }
 
 }

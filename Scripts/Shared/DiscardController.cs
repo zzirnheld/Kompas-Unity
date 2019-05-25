@@ -58,4 +58,26 @@ public class DiscardController : KompasObject {
         if (clientGame.friendlyDiscardCtrl == this)
             clientGame.clientNetworkCtrl.RequestRehand(GetLastDiscarded());
     }
+
+    public bool Exists(CardRestriction cardRestriction)
+    {
+        foreach(Card c in discard)
+        {
+            if (cardRestriction.Evaluate(c)) return true;
+        }
+
+        return false;
+    }
+
+    public List<Card> CardsThatFitRestriction(CardRestriction cardRestriction)
+    {
+        List<Card> cards = new List<Card>();
+
+        foreach(Card c in discard)
+        {
+            if (cardRestriction.Evaluate(c)) cards.Add(c);
+        }
+
+        return cards;
+    }
 }

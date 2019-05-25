@@ -469,18 +469,32 @@ public class ServerNetworkController : NetworkController {
         SendPackets(outPacket, outPacketInverted, sGame, connectionID);
     }
 
-    public void GetBoardTarget(ServerGame sGame, int playerIndex, Card card, int effectIndex, int subeffectIndex)
+    public void GetBoardTarget(ServerGame sGame, int playerIndex, Card effectSource, int effectIndex, int subeffectIndex)
     {
-        Packet outPacket = new Packet(Packet.Command.RequestBoardTarget, card, effectIndex, subeffectIndex);
+        Packet outPacket = new Packet(Packet.Command.RequestBoardTarget, effectSource, effectIndex, subeffectIndex);
         SendPackets(outPacket, null, sGame, sGame.Players[playerIndex].ConnectionID);
         Debug.Log("Asking for board target");
     }
 
-    public void GetDeckTarget(ServerGame sGame, int playerIndex, Card card, int effectIndex, int subeffectIndex)
+    public void GetDeckTarget(ServerGame sGame, int playerIndex, Card effectSource, int effectIndex, int subeffectIndex)
     {
-        Packet outPacket = new Packet(Packet.Command.RequestDeckTarget, card, effectIndex, subeffectIndex);
+        Packet outPacket = new Packet(Packet.Command.RequestDeckTarget, effectSource, effectIndex, subeffectIndex);
         SendPackets(outPacket, null, sGame, sGame.Players[playerIndex].ConnectionID);
         Debug.Log("Asking for deck target");
+    }
+
+    public void GetDiscardTarget(ServerGame sGame, int playerIndex, Card effectSource, int effectIndex, int subeffectIndex)
+    {
+        Packet outPacket = new Packet(Packet.Command.RequestDiscardTarget, effectSource, effectIndex, subeffectIndex);
+        SendPackets(outPacket, null, sGame, sGame.Players[playerIndex].ConnectionID);
+        Debug.Log("Asking for discard target");
+    }
+
+    public void GetHandTarget(ServerGame sGame, int playerIndex, Card effectSource, int effectIndex, int subeffectIndex)
+    {
+        Packet outPacket = new Packet(Packet.Command.RequestHandTarget, effectSource, effectIndex, subeffectIndex);
+        SendPackets(outPacket, null, sGame, sGame.Players[playerIndex].ConnectionID);
+        Debug.Log("Asking for hand target");
     }
 
     public void NotifySetNESW(ServerGame sGame, CharacterCard card)

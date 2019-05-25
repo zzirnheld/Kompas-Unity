@@ -160,6 +160,12 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.mainClientGame.targetMode = Game.TargetMode.BoardTarget;
                 lastRestriction = (Game.mainGame.GetCardFromID(packet.cardID)
                                     .Effects[packet.EffIndex].Subeffects[packet.SubeffIndex] as BoardTargetSubeffect)
+                                    .boardRestriction;
+                break;
+            case Packet.Command.RequestHandTarget:
+                ClientGame.mainClientGame.targetMode = Game.TargetMode.HandTarget;
+                lastRestriction = (Game.mainGame.GetCardFromID(packet.cardID)
+                                    .Effects[packet.EffIndex].Subeffects[packet.SubeffIndex] as HandTargetSubeffect)
                                     .cardRestriction;
                 break;
             case Packet.Command.RequestDeckTarget:
@@ -168,6 +174,13 @@ public class ClientNetworkController : NetworkController {
                                     .cardRestriction;
                 List<Card> toSearch = ClientGame.mainClientGame.friendlyDeckCtrl.CardsThatFitRestriction(deckRestriction);
                 ClientGame.mainClientGame.clientUICtrl.StartSearch(toSearch, true);
+                break;
+            case Packet.Command.RequestDiscardTarget:
+                CardRestriction discardRestriction = (Game.mainGame.GetCardFromID(packet.cardID)
+                                    .Effects[packet.EffIndex].Subeffects[packet.SubeffIndex] as DiscardTargetSubeffect)
+                                    .cardRestriction;
+                List<Card> discardToSearch = ClientGame.mainClientGame.friendlyDiscardCtrl.CardsThatFitRestriction(discardRestriction);
+                ClientGame.mainClientGame.clientUICtrl.StartSearch(discardToSearch, true);
                 break;
             default:
                 Debug.Log("Unrecognized command sent to client");
