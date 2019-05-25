@@ -181,15 +181,9 @@ public class ServerNetworkController : NetworkController {
                 break;
             #region effect commands
             case Packet.Command.Target:
-                if (serverGame.CurrEffect.CurrSubeffect is BoardTargetSubeffect tcob)
+                if (serverGame.CurrEffect.CurrSubeffect is CardTargetSubeffect targetEff)
                 {
-                    //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
-                    if (tcob.cardRestriction.Evaluate(serverGame.GetCardFromID(packet.cardID)))
-                    {
-                        serverGame.CurrEffect.targets.Add(serverGame.GetCardFromID(packet.cardID));
-                        serverGame.CurrEffect.ResolveNextSubeffect();
-                        Debug.Log("Adding " + serverGame.GetCardFromID(packet.cardID).CardName + " as target");
-                    }
+                    targetEff.Target(serverGame.GetCardFromID(packet.cardID));
                 }
                 break;
             #endregion

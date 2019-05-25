@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Effect
 {
+    //if this effect is resolving on a server, this is the server game it's resolving on
+    public ServerGame serverGame;
+
     //card that this is the effect of. to be set at initialization
     public Card thisCard;
 

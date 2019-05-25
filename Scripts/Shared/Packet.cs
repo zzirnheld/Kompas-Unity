@@ -116,6 +116,10 @@ public class Packet {
 
     public Packet(Command command, Card card, int x, int y, bool invert = false) : this(command, card)
     {
+        //this is used for the target packet
+        args[0] = x;
+        args[1] = y;
+
         if (invert)
         {
             args[2] = 6 - x;

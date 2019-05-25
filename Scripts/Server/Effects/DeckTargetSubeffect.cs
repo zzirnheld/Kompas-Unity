@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeckTargetSubeffect : Subeffect
+public class DeckTargetSubeffect : CardTargetSubeffect
 {
-    public CardRestriction cardRestriction;
 
     public override void Resolve()
     {

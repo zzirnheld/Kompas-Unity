@@ -188,6 +188,7 @@ public class ServerGame : Game {
     #region the stack
     public void PushToStack(Effect eff)
     {
+        eff.serverGame = this;
         stack.Add(eff);
         stackIndex++;
     }

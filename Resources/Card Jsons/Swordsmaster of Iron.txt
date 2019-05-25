@@ -6,7 +6,7 @@
 	{
 		"subeffectTypes":[0,1],
 		"subeffects":[
-			"{\"cardRestriction\":
+			"{\"boardRestriction\":
 				{
 					\"restrictionsToCheck\":[2,3],
 					\"subtypesInclude\":[\"Warrior\"],
