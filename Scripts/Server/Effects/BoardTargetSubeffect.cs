@@ -25,8 +25,9 @@ public class BoardTargetSubeffect : CardTargetSubeffect
         //give the card if whose effect it is, the index of the effect, and the index of the subeffect
         //since only the server resolves effects, this should never be called for a client.
        parent.serverGame.serverNetworkCtrl
-            .GetBoardTarget(parent.serverGame, parent.effectController,  parent.thisCard, 
-            System.Array.IndexOf(parent.thisCard.Effects, parent), parent.effectIndex);
+            .GetBoardTarget(parent.serverGame, parent.effectController,  parent.thisCard,
+                                            System.Array.IndexOf(parent.thisCard.Effects, parent),
+                                            parent.effectIndex);
 
         //then wait for the network controller to call the continue method
     }

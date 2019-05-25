@@ -73,7 +73,9 @@ public class ClientUIController : UIController
 
     public void StartSearch(List<Card> list, bool targeting)
     {
+        Debug.Log("Start search called");
         if (toSearch.Count != 0) return;
+        Debug.Log("To search count nonzero");
 
         toSearch = list;
 

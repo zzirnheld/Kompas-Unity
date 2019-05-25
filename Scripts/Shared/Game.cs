@@ -51,13 +51,14 @@ public class Game : MonoBehaviour {
         CardNameIndices = new Dictionary<string, int>();
         string cardListPath = "Card Jsons/Card List";
         string cardList = Resources.Load<TextAsset>(cardListPath).text;
+        cardList = cardList.Replace('\r', '\n');
         string[] cardNames = cardList.Split('\n');
         
         for(int i = 0; i < cardNames.Length; i++)
         {
             //Debug.Log("Adding \"" + cardNames[i] + "\", length " + cardNames[i].Length);
-            CardNames.Add(i, cardNames[i].Substring(0, cardNames[i].Length - 1)); //because line endings
-            CardNameIndices.Add(cardNames[i].Substring(0, cardNames[i].Length - 1), i);
+            CardNames.Add(i, cardNames[i].Substring(0, cardNames[i].Length)); //because line endings
+            CardNameIndices.Add(cardNames[i].Substring(0, cardNames[i].Length), i);
         }
 
         stackIndex = -1;

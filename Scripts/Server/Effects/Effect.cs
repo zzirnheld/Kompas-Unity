@@ -45,6 +45,21 @@ public class Effect
                 case SerializableEffect.SubeffectType.ChangeNESW:
                     subeffects[i] = JsonUtility.FromJson<ChangeNESWSubeffect>(se.subeffects[i]);
                     break;
+                case SerializableEffect.SubeffectType.DeckTarget:
+                    DeckTargetSubeffect deckTarget = JsonUtility.FromJson<DeckTargetSubeffect>(se.subeffects[i]);
+                    deckTarget.cardRestriction.subeffect = deckTarget;
+                    subeffects[i] = deckTarget;
+                    break;
+                case SerializableEffect.SubeffectType.DiscardTarget:
+                    DiscardTargetSubeffect discardTarget = JsonUtility.FromJson<DiscardTargetSubeffect>(se.subeffects[i]);
+                    discardTarget.cardRestriction.subeffect = discardTarget;
+                    subeffects[i] = discardTarget;
+                    break;
+                case SerializableEffect.SubeffectType.HandTarget:
+                    HandTargetSubeffect handTarget = JsonUtility.FromJson<HandTargetSubeffect>(se.subeffects[i]);
+                    handTarget.cardRestriction.subeffect = handTarget;
+                    subeffects[i] = handTarget;
+                    break;
                 default:
                     Debug.Log("Unrecognized effect type enum for loading effect in effect constructor");
                     subeffects[i] = null;

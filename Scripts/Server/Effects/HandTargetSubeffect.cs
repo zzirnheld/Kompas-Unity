@@ -23,7 +23,7 @@ public class HandTargetSubeffect : CardTargetSubeffect
                                             parent.serverGame,
                                             parent.effectController,
                                             parent.thisCard,
-                                            System.Array.IndexOf(parent.thisCard.Effects, this),
+                                            System.Array.IndexOf(parent.thisCard.Effects, parent),
                                             parent.effectIndex);
 
         //then wait for the network controller to call the continue method

@@ -130,4 +130,7 @@ Tiwaz
 Uruz
 Wynn
 Yarawaki-Te
+Test Deck Searcher
+Test Discard Searcher
+Test Hand Searcher
 lulthisdontexistmydood

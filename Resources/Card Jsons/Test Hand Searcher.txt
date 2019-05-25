@@ -1,0 +1,24 @@
+{
+"cardType":67,
+"cardName":"Test Hand Searcher",
+"effText":"Once each turn, you can give an adjacent Warrior +1W.",
+"effects":[
+	{
+		"subeffectTypes":[4],
+		"subeffects":[
+			"{
+				\"cardRestriction\":{
+					\"restrictionsToCheck\":[6]
+				}
+			}"
+		]
+	}
+],
+"n":2,
+"e":2,
+"s":3,
+"w":3,
+"m":2,
+"subtypes":["Swordguild","Warrior"],
+"subtypeText":"Swordguild Warrior"
+}

@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public class CardRestriction : Restriction
 {
-    public enum CardRestrictions { CostsLessThanEqual, NameIs, SubtypesInclude, IsCharacter, IsSpell, IsAugment} //to add later: N/E/S/W <=
+    public enum CardRestrictions { CostsLessThanEqual, NameIs, SubtypesInclude, IsCharacter, IsSpell, IsAugment, Hand, Discard, Deck, Board} //to add later: N/E/S/W <=
 
     //because JsonUtility will fill in all values with defaults if not present
     public CardRestrictions[] restrictionsToCheck;
@@ -50,6 +50,15 @@ public class CardRestriction : Restriction
                     break;
                 case CardRestrictions.IsAugment:
                     if (!(potentialTarget is AugmentCard)) return false;
+                    break;
+                case CardRestrictions.Hand:
+                    if (potentialTarget.Location != Card.CardLocation.Hand) return false;
+                    break;
+                case CardRestrictions.Deck:
+                    if (potentialTarget.Location != Card.CardLocation.Deck) return false;
+                    break;
+                case CardRestrictions.Discard:
+                    if (potentialTarget.Location != Card.CardLocation.Discard) return false;
                     break;
                 default:
                     Debug.Log("You forgot to check for " + c);

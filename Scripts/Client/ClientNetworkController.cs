@@ -17,6 +17,7 @@ public class ClientNetworkController : NetworkController {
     public NetworkPipeline mPipeline;
     public NetworkConnection mConnection;
     private bool Hosting = false;
+    private bool Connected = false;
 
     public Packet lastPacket;
 
@@ -31,7 +32,7 @@ public class ClientNetworkController : NetworkController {
     {
         mDriver = new UdpNetworkDriver(new ReliableUtility.Parameters { WindowSize = 32 });
         mPipeline = mDriver.CreatePipeline(typeof(ReliableSequencedPipelineStage));
-        mConnection = default(NetworkConnection);
+        mConnection = default;
 
         //this code is the connection code. dont do until client hits connect button?
         var endpoint = new NetworkEndPoint();
@@ -55,6 +56,9 @@ public class ClientNetworkController : NetworkController {
             return;
         }
 
+        //keeps the connection alive
+        //
+
         DataStreamReader reader;
         NetworkEvent.Type cmd;
         while((cmd = mConnection.PopEvent(mDriver, out reader)) != NetworkEvent.Type.Empty)
@@ -65,6 +69,7 @@ public class ClientNetworkController : NetworkController {
                 Debug.Log("connected to server");
                 ClientGame.mainClientGame.uiCtrl.CurrentStateString = "Connected to Server";
                 ClientGame.mainClientGame.uiCtrl.HideNetworkingUI();
+                Connected = true;
             }
             if (cmd == NetworkEvent.Type.Data)
             {
@@ -78,14 +83,21 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.mainClientGame.uiCtrl.CurrentStateString = "Disconnected from server";
                 mConnection = default(NetworkConnection); //default gets the default value of whatever type
                 Hosting = false;
+                Connected = false;
             }
         }
+        
+        if(Connected) Send(new Packet(Packet.Command.Nothing), mDriver, mConnection, mPipeline);
     }
 
-    public void ParseCommand(byte[] buffer)
+    public void ParseCommand(byte[] buffer) //KEEP CONNECTION ALIVE
     {
         Packet packet = Deserialize(buffer);
-        if (packet == null) return;
+        if (packet == null)
+        {
+            Debug.Log("Null packet");
+            return;
+        }
         if(packet.command != Packet.Command.Nothing) Debug.Log("Parsing command " + packet.command + " for " + packet.cardID);
 
         lastPacket = packet;
@@ -169,6 +181,7 @@ public class ClientNetworkController : NetworkController {
                                     .cardRestriction;
                 break;
             case Packet.Command.RequestDeckTarget:
+                Debug.Log("Eff index: " + packet.EffIndex + " subeff index " + packet.SubeffIndex);
                 CardRestriction deckRestriction = (Game.mainGame.GetCardFromID(packet.cardID)
                                     .Effects[packet.EffIndex].Subeffects[packet.SubeffIndex] as DeckTargetSubeffect)
                                     .cardRestriction;

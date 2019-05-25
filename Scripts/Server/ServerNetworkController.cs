@@ -91,9 +91,9 @@ public class ServerNetworkController : NetworkController {
             else
             {
                 uiCtrl.CurrentStateString = "Two Players Connected";
-                SendPackets(new Packet(Packet.Command.YoureFirst), new Packet(Packet.Command.YoureSecond), currentGameToMatchmake, mConnections[mConnections.Length - 1]);
                 gamesByConnectionID.Add(c, currentGameToMatchmake);
                 currentGameToMatchmake.AddPlayer(c);
+                SendPackets(new Packet(Packet.Command.YoureFirst), new Packet(Packet.Command.YoureSecond), currentGameToMatchmake, mConnections[mConnections.Length - 1]);
                 currentGameToMatchmake = null;
             }
         }
@@ -129,6 +129,10 @@ public class ServerNetworkController : NetworkController {
     
     public void SendPackets(Packet outPacket, Packet outPacketInverted, ServerGame serverGame, NetworkConnection connectionID)
     {
+        if (outPacketInverted == null)
+            Debug.Log("Sending only one packet with command " + outPacket.command);
+        else if(outPacket.command != Packet.Command.Nothing)
+            Debug.Log("Sending packets with commands " + outPacket.command + " and " + outPacketInverted.command);
         //if it's not null, send the normal packet to the player that queried you
         if (outPacket != null)
             Send(outPacket, mDriver, connectionID, mPipeline);
@@ -138,12 +142,16 @@ public class ServerNetworkController : NetworkController {
         if (outPacketInverted == null || !serverGame.HasPlayer2()) return;
         //if the one that queried you is player 0,
         if (connectionID == serverGame.Players[0].ConnectionID)
+        {
             //send the inverted one to player 1.
             Send(outPacketInverted, mDriver, serverGame.Players[1].ConnectionID, mPipeline);
+        }
         //if the one that queried you is player 1,
         else
+        {
             //send the inverted one to player 0.
             Send(outPacketInverted, mDriver, serverGame.Players[0].ConnectionID, mPipeline);
+        }
 
     }
 
@@ -163,6 +171,9 @@ public class ServerNetworkController : NetworkController {
         //switch between all the possible requests for the server to handle.
         switch (packet.command)
         {
+            case Packet.Command.Nothing: //keeps the connection alive
+                SendPackets(new Packet(Packet.Command.Nothing), new Packet(Packet.Command.Nothing), ServerGame.mainServerGame, connectionID);
+                break;
             case Packet.Command.AddToDeck:
                 AddCardToDeck(serverGame, playerIndex, packet.CardName, connectionID);
                 break;
@@ -219,9 +230,10 @@ public class ServerNetworkController : NetworkController {
 
                 DebugSetPips(serverGame, playerIndex, connectionID, packet.Pips);
                 break;
-            case Packet.Command.TestTargetEffect:
+            case Packet.Command.TestTargetEffect: //TODO use the stack
                 Card whoseEffToTest = serverGame.GetCardFromID(packet.cardID);
                 Debug.Log("Running eff of " + whoseEffToTest.CardName);
+                whoseEffToTest.Effects[0].serverGame = serverGame;
                 whoseEffToTest.Effects[0].StartResolution();
                 break;
 #endregion
