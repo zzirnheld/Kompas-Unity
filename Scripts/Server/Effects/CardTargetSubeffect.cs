@@ -9,7 +9,7 @@ public class CardTargetSubeffect : Subeffect
     /// <summary>
     /// Check if the card passed is a valid target, and if it is, continue the effect
     /// </summary>
-    public virtual void Target(Card card)
+    public virtual bool Target(Card card)
     {
         //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
         if (cardRestriction.Evaluate(card))
@@ -17,6 +17,9 @@ public class CardTargetSubeffect : Subeffect
             parent.targets.Add(card);
             parent.ResolveNextSubeffect();
             Debug.Log("Adding " + card.CardName + " as target");
+            return true;
         }
+
+        return false;
     }
 }

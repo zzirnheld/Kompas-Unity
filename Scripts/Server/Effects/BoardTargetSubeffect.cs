@@ -32,7 +32,7 @@ public class BoardTargetSubeffect : CardTargetSubeffect
         //then wait for the network controller to call the continue method
     }
 
-    public override void Target(Card card)
+    public override bool Target(Card card)
     {
         //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
         if (boardRestriction.Evaluate(card))
@@ -40,7 +40,10 @@ public class BoardTargetSubeffect : CardTargetSubeffect
             parent.targets.Add(card);
             parent.ResolveNextSubeffect();
             Debug.Log("Adding " + card.CardName + " as target");
+            return true;
         }
+
+        return false;
     }
 
 }

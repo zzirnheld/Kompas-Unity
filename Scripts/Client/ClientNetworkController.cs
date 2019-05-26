@@ -199,6 +199,9 @@ public class ClientNetworkController : NetworkController {
                 List<Card> discardToSearch = ClientGame.mainClientGame.friendlyDiscardCtrl.CardsThatFitRestriction(discardRestriction);
                 ClientGame.mainClientGame.clientUICtrl.StartSearch(discardToSearch, true);
                 break;
+            case Packet.Command.TargetAccepted:
+                ClientGame.mainClientGame.targetMode = Game.TargetMode.NoTargeting;
+                break;
             default:
                 Debug.Log("Unrecognized command sent to client");
                 break;

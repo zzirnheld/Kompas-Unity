@@ -191,6 +191,17 @@ public class BoardController : KompasObject
 
         return false;
     }
+
+    public void DiscardSimples()
+    {
+        foreach(Card c in cards)
+        {
+            if(c != null && c is SpellCard spellC && spellC.SpellSubtype == SpellCard.SpellType.Simple)
+            {
+                spellC.Discard();
+            }
+        }
+    }
     #endregion game mechanics
 
     #region cycling visible cards

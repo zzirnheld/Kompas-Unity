@@ -357,6 +357,7 @@ public abstract class Card : KompasObject {
     }
     public override void OnDragEnd(Vector3 mousePos)
     {
+        if (game.targetMode != Game.TargetMode.NoTargeting) return;
         Debug.Log("Drag ended at absolute position: " + transform.position + ", local position: " + transform.localPosition);
         dragging = false; //dragging has ended
 

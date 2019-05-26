@@ -75,7 +75,7 @@ public class Game : MonoBehaviour {
     #region forwarding calls to correct controller
     //move cards between locations
     //TODO add is server checks to discard, topdeck, rehand
-    public void Discard(Card card, int player = 0, bool ignoreClientServer = false)
+    public virtual void Discard(Card card, int player = 0, bool ignoreClientServer = false)
     {
         Remove(card, player, ignoreClientServer);
         players[player].discardCtrl.AddToDiscard(card);
@@ -87,7 +87,7 @@ public class Game : MonoBehaviour {
         Discard(toDiscard, toDiscard.Owner);
     }
 
-    public void Topdeck(Card card, int player = 0)
+    public virtual void Topdeck(Card card, int player = 0)
     {
         Remove(card, player);
         players[player].deckCtrl.PushTopdeck(card);
@@ -99,7 +99,7 @@ public class Game : MonoBehaviour {
         Topdeck(toTopdeck, toTopdeck.Owner);
     }
 
-    public void Rehand(Card card, int player = 0)
+    public virtual void Rehand(Card card, int player = 0)
     {
 
         Remove(card, player);
@@ -112,7 +112,7 @@ public class Game : MonoBehaviour {
         Rehand(toRehand, toRehand.Owner);
     }
 
-    public void Play(Card card, int toX, int toY, int player, bool remove = true)
+    public virtual void Play(Card card, int toX, int toY, int player, bool remove = true)
     {
         if(remove) Remove(card, player);
 
@@ -130,7 +130,7 @@ public class Game : MonoBehaviour {
         Play(toPlay, toX, toY, toPlay.Owner);
     }
 
-    public Card Draw(int player = 0)
+    public virtual Card Draw(int player = 0)
     {
         Card toDraw = players[player].deckCtrl.PopTopdeck();
         players[player].handCtrl.AddToHand(toDraw);
@@ -163,22 +163,22 @@ public class Game : MonoBehaviour {
     }
 
     //moving
-    public void Move(Card card, int toX, int toY)
+    public virtual void Move(Card card, int toX, int toY)
     {
         boardCtrl.Move(card, toX, toY);
     }
 
     public void Move(int cardID, int toX, int toY)
     {
-        boardCtrl.Move(GetCardFromID(cardID), toX, toY);
+        Move(GetCardFromID(cardID), toX, toY);
     }
 
-    public void Swap(Card card, int toX, int toY)
+    public virtual void Swap(Card card, int toX, int toY)
     {
         boardCtrl.Swap(card, toX, toY);
     }
 
-    public CharacterCard SetNESW(int cardID, int n, int e, int s, int w)
+    public virtual CharacterCard SetNESW(int cardID, int n, int e, int s, int w)
     {
         Card toSet = GetCardFromID(cardID);
         if (!(toSet is CharacterCard charToSet)) return null;
