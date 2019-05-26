@@ -23,6 +23,11 @@ public class Effect
     public Subeffect[] Subeffects { get => subeffects; }
 
     public List<Card> targets;
+
+    /// <summary>
+    /// X value as listed on cards
+    /// </summary>
+    public int X;
     
     //get the currently resolving subeffect
     public Subeffect CurrSubeffect { get { return subeffects[effectIndex]; } }
@@ -104,6 +109,7 @@ public class Effect
     {
         doneResolving = true;
         effectIndex = 0;
+        targets.Clear();
         (thisCard.game as ServerGame).FinishStackEntryResolution();
     }
 }

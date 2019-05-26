@@ -286,7 +286,9 @@ public class ServerGame : Game {
     public override void Play(Card card, int toX, int toY, int player, bool remove = true)
     {
         base.Play(card, toX, toY, player, remove);
-        serverNetworkCtrl.NotifyPlay(this, card, toX, toY, players[player].ConnectionID);
+        int invertedX = serverNetworkCtrl.InvertIndexForController(toX, player);
+        int invertedY = serverNetworkCtrl.InvertIndexForController(toY, player);
+        serverNetworkCtrl.NotifyPlay(this, card, invertedX, invertedY, players[player].ConnectionID);
     }
 
     public override void Rehand(Card card, int player = 0)

@@ -322,8 +322,9 @@ public class ServerNetworkController : NetworkController {
         //if it's not a valid place to do, return
         if (uiCtrl.DebugMode || sGame.ValidBoardPlay(toPlay, invertedX, invertedY))
         {
+            NotifyPlay(sGame, toPlay, x, y, sourceID);
             //play the card here
-           sGame.Play(toPlay, invertedX, invertedY);
+            sGame.Play(toPlay, invertedX, invertedY);
         }
         else
         {
