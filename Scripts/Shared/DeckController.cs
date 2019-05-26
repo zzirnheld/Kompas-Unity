@@ -100,7 +100,7 @@ public class DeckController : KompasObject
         path = folder + cardName;
         fileContents = Resources.Load<TextAsset>(path).text;
         fileContents = fileContents.Replace('\n', ' ');
-        fileContents = fileContents.Replace('\r', ' ');
+        fileContents = fileContents.Replace("\r", "");
         fileContents = fileContents.Replace("\t", "");
 
         Debug.Log("Loading:\n" + fileContents);

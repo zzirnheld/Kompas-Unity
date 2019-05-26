@@ -233,8 +233,10 @@ public class ServerNetworkController : NetworkController {
             case Packet.Command.TestTargetEffect: //TODO use the stack
                 Card whoseEffToTest = serverGame.GetCardFromID(packet.cardID);
                 Debug.Log("Running eff of " + whoseEffToTest.CardName);
-                whoseEffToTest.Effects[0].serverGame = serverGame;
-                whoseEffToTest.Effects[0].StartResolution();
+                //whoseEffToTest.Effects[0].serverGame = serverGame;
+                //whoseEffToTest.Effects[0].StartResolution();
+                serverGame.PushToStack(whoseEffToTest.Effects[0], playerIndex);
+                serverGame.CheckForResponse();
                 break;
 #endregion
             default:
@@ -493,6 +495,7 @@ public class ServerNetworkController : NetworkController {
         Packet outPacket = new Packet(Packet.Command.RequestDeckTarget, effectSource, effectIndex, subeffectIndex);
         SendPackets(outPacket, null, sGame, sGame.Players[playerIndex].ConnectionID);
         Debug.Log("Asking for deck target");
+        uiCtrl.CurrentStateString = "Asking for deck target";
     }
 
     public void GetDiscardTarget(ServerGame sGame, int playerIndex, Card effectSource, int effectIndex, int subeffectIndex)

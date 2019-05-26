@@ -6,6 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using Unity.Networking.Transport;
 using NetworkConnection = Unity.Networking.Transport.NetworkConnection;
+using Unity.Networking.Transport.Utilities;
 //using UdpCNetworkDriver = Unity.Networking.Transport.BasicNetworkDriver<Unity.Networking.Transport.IPv4UDPSocket>;
 
 public class NetworkController : MonoBehaviour
@@ -99,6 +100,10 @@ public class NetworkController : MonoBehaviour
     /// <param name="connection"></param>
     protected void Send(Packet packet, UdpNetworkDriver mDriver, NetworkConnection connection, NetworkPipeline pipeline)
     {
+        if(packet.command != Packet.Command.Nothing)
+        {
+            Debug.Log("Sending a packet with command " + packet.command + " to " + connection.InternalId);
+        }
         if (!connection.IsCreated) return;
 
         using (var writer = new DataStreamWriter(BUFFER_SIZE, Allocator.Temp)) //make the number large enough to contain entire byte array to be sent
@@ -106,13 +111,6 @@ public class NetworkController : MonoBehaviour
             writer.Write(Serialize(packet));
             mDriver.Send(pipeline, connection, writer);
         }
-
-        //replacing this with reliability pipeline
-        /*
-        if (addToList)
-        {
-            sentItems.Add(new SentItem(packet, connection, mDriver));
-        }*/
     }
 
     //using reliability pipeline instead of this

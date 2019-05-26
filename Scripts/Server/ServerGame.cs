@@ -186,9 +186,10 @@ public class ServerGame : Game {
     }
 
     #region the stack
-    public void PushToStack(Effect eff)
+    public void PushToStack(Effect eff, int controller)
     {
         eff.serverGame = this;
+        eff.effectController = controller;
         stack.Add(eff);
         stackIndex++;
     }

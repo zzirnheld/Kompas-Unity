@@ -98,7 +98,11 @@ public class ClientNetworkController : NetworkController {
             Debug.Log("Null packet");
             return;
         }
-        if(packet.command != Packet.Command.Nothing) Debug.Log("Parsing command " + packet.command + " for " + packet.cardID);
+        if (packet.command != Packet.Command.Nothing)
+        {
+            Debug.Log("Parsing command " + packet.command + " for " + packet.cardID);
+            ClientGame.mainClientGame.uiCtrl.CurrentStateString = "Parsing command " + packet.command + " for " + packet.cardID;
+        }
 
         lastPacket = packet;
 
@@ -290,6 +294,7 @@ public class ClientNetworkController : NetworkController {
 
     public void RequestResolveEffect(Card card, int index)
     {
+        Debug.Log("Requesting effect of " + card.CardName + " number" + index);
         Packet packet = new Packet(Packet.Command.TestTargetEffect, card, index);
         Send(packet, mDriver, mConnection, mPipeline);
     }
