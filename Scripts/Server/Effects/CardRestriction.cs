@@ -28,6 +28,7 @@ public class CardRestriction : Restriction
 
         foreach(CardRestrictions c in restrictionsToCheck)
         {
+            Debug.Log("Considering restriction " + c);
             switch (c)
             {
                 case CardRestrictions.CostsLessThanEqual:

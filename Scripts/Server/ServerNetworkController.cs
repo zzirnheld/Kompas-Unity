@@ -405,7 +405,7 @@ public class ServerNetworkController : NetworkController {
     public void DebugTopdeck(ServerGame sGame, int cardID, NetworkConnection sourceID)
     {
         Card toTopdeck = sGame.GetCardFromID(cardID);
-        sGame.Topdeck(toTopdeck);
+        sGame.Topdeck(toTopdeck, toTopdeck.Owner);
         NotifyTopdeck(sGame, toTopdeck, sourceID);
     }
 
@@ -424,7 +424,7 @@ public class ServerNetworkController : NetworkController {
     public void DebugDiscard(ServerGame sGame, int cardID, NetworkConnection sourceID)
     {
         Card toDiscard = sGame.GetCardFromID(cardID);
-        sGame.Discard(toDiscard);
+        sGame.AddToDiscardGivenPlayerID(sourceID, toDiscard);
         NotifyDiscard(sGame, toDiscard, sourceID);
     }
 
@@ -444,7 +444,7 @@ public class ServerNetworkController : NetworkController {
     public void DebugRehand(ServerGame sGame, int cardID, NetworkConnection sourceID)
     {
         Card toRehand = sGame.GetCardFromID(cardID);
-        sGame.Rehand(toRehand);
+        sGame.Rehand(toRehand, toRehand.Owner);
         NotifyRehand(sGame, toRehand, sourceID);
     }
 

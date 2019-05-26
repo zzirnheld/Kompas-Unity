@@ -132,6 +132,7 @@ public class ServerGame : Game {
 
     public void AddToDiscardGivenPlayerID(NetworkConnection connectionID, Card card)
     {
+        Debug.Log("Discarding to discard of " + GetPlayerFromID(connectionID).index + ", card owner " + card.Owner);
         GetPlayerFromID(connectionID).discardCtrl.AddToDiscard(card);
     }
     #endregion

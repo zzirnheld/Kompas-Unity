@@ -9,7 +9,7 @@ public class DiscardTargetSubeffect : CardTargetSubeffect
         cardRestriction.subeffect = this;
 
         //check first that there exist valid targets. if there exist no valid targets, finish resolution here
-        if (!parent.thisCard.game.ExistsDiscardTarget(cardRestriction, parent.thisCard.Owner))
+        if (!parent.thisCard.game.ExistsDiscardTarget(cardRestriction, parent.effectController))
         {
             Debug.Log("No target exists for " + parent.thisCard.CardName + " effect");
             parent.FinishResolution();
