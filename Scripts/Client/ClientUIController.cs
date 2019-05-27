@@ -25,6 +25,10 @@ public class ClientUIController : UIController
     public Button searchToHandButton;
     public Button searchTargetButton;
     public Button cancelSearchButton;
+    //effects
+    public InputField xInput;
+    public GameObject setXView;
+    public GameObject declineAnotherTargetView;
 
     private List<Card> toSearch;
     private int searchIndex = 0;
@@ -41,6 +45,7 @@ public class ClientUIController : UIController
         if (fromClick && card != null) clientGame.TargetCard(card);
     }
 
+    #region effects
     public void ActivateSelectedCardEff(int index)
     {
         if (selectedCard != null)
@@ -51,6 +56,38 @@ public class ClientUIController : UIController
     {
         //TODO
     }
+
+    public void GetXForEffect()
+    {
+        setXView.SetActive(true);
+    }
+
+    /// <summary>
+    /// Sets the value for X in an effect that uses X
+    /// </summary>
+    public void SetXForEffect()
+    {
+        int x = System.Int32.Parse(xInput.text); //TODO sanitize input
+        clientGame.clientNetworkCtrl.RequestSetX(x);
+        setXView.SetActive(false);
+    }
+
+    public void EnableDecliningTarget()
+    {
+        declineAnotherTargetView.SetActive(true);
+    }
+
+    public void DisableDecliningTarget()
+    {
+        declineAnotherTargetView.SetActive(false);
+    }
+
+    public void DeclineAnotherTarget()
+    {
+        DisableDecliningTarget();
+        clientGame.clientNetworkCtrl.DeclineAnotherTarget();
+    }
+    #endregion effects
 
     #region importing/searching deck or discard
     public void ImportDeckPressed()

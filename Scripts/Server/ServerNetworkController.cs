@@ -193,16 +193,25 @@ public class ServerNetworkController : NetworkController {
                 //TODO check to see if it was their turn bewfore swapping turns
                 serverGame.SwitchTurn();
                 break;
-            #region effect commands
+#region effect commands
             case Packet.Command.Target:
-                if (serverGame.CurrEffect.CurrSubeffect is CardTargetSubeffect targetEff)
+                if (serverGame.CurrEffect != null && serverGame.CurrEffect.CurrSubeffect is CardTargetSubeffect targetEff)
                 {
                     if (targetEff.Target(serverGame.GetCardFromID(packet.cardID)))
                         AcceptTarget(serverGame, connectionID);
                 }
                 break;
-            #endregion
-            #region debug commands
+            case Packet.Command.X:
+                SetXForEffect(serverGame, packet.EffectX);
+                break;
+            case Packet.Command.DeclineAnotherTarget:
+                if(serverGame.CurrEffect != null)
+                {
+                    serverGame.CurrEffect.DeclineAnotherTarget();
+                }
+                break;
+#endregion
+#region debug commands
             case Packet.Command.Topdeck:
                 if (!uiCtrl.DebugMode) break;
                 DebugTopdeck(serverGame, packet.cardID, connectionID);
@@ -542,5 +551,33 @@ public class ServerNetworkController : NetworkController {
     public void AcceptTarget(ServerGame sGame, NetworkConnection connectionID)
     {
         SendPackets(new Packet(Packet.Command.TargetAccepted), null, sGame, connectionID);
+    }
+
+    public void GetXForEffect(ServerGame sGame, int playerIndex, Card effSource, int effIndex, int subeffIndex)
+    {
+        Packet outPacket = new Packet(Packet.Command.X, effSource, effIndex, subeffIndex);
+        SendPackets(outPacket, null, sGame, sGame.Players[playerIndex].ConnectionID);
+        Debug.Log("Asking for X");
+    }
+
+    public void SetXForEffect(ServerGame sGame, int x)
+    {
+        //TODO sanitize
+        sGame.CurrEffect.X = x;
+        sGame.CurrEffect.ResolveNextSubeffect();
+    }
+
+    public void EnableDecliningTarget(ServerGame sGame, int playerIndex)
+    {
+        Packet packet = new Packet(Packet.Command.EnableDecliningTarget);
+        Debug.Log("Enabling declining target");
+        SendPackets(packet, null, sGame, sGame.Players[playerIndex].ConnectionID);
+    }
+
+    public void DisableDecliningTarget(ServerGame sGame, int playerIndex)
+    {
+        Packet packet = new Packet(Packet.Command.DisableDecliningTarget);
+        Debug.Log("Disabling declining target");
+        SendPackets(packet, null, sGame, sGame.Players[playerIndex].ConnectionID);
     }
 }

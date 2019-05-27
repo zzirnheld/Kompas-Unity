@@ -10,7 +10,8 @@ public class Packet {
 
     public enum Command { Nothing, Confirm,
         Play, Augment, Move, EndTurn, Attack,
-        Topdeck, Discard, Rehand, AddAsFriendly, AddAsEnemy, IncrementEnemyDeck, AddToDeck, Delete, Target, Response, TargetAccepted,
+        Topdeck, Discard, Rehand, AddAsFriendly, AddAsEnemy, IncrementEnemyDeck, AddToDeck, Delete, Target, Response, TargetAccepted, X, DeclineAnotherTarget,
+        EnableDecliningTarget, DisableDecliningTarget,
         Draw, SetNESW, SetPips, SetEnemyPips, PutBack, GetAttackTarget, YoureFirst, YoureSecond, RequestBoardTarget, RequestDeckTarget, RequestDiscardTarget, RequestHandTarget,
         TestTargetEffect}
 
@@ -29,6 +30,7 @@ public class Packet {
     public int CardIDToBe { get { return cardID; } }
 
     public int Pips { get { return args[0]; } }
+    public int EffectX { get => args[0]; }
 
     public Card.CardLocation Location { get { return (Card.CardLocation)args[0]; } }
 

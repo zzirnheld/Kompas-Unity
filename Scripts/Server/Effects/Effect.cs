@@ -19,6 +19,8 @@ public class Effect
     //checked by effect resolution to see if it should start resolving the next effect on the stack
     public bool doneResolving = false;
 
+    public CountXLoopSubeffect loopSubeffect = null;
+
     private Subeffect[] subeffects;
     public Subeffect[] Subeffects { get => subeffects; }
 
@@ -27,7 +29,7 @@ public class Effect
     /// <summary>
     /// X value as listed on cards
     /// </summary>
-    public int X;
+    public int X = 0;
     
     //get the currently resolving subeffect
     public Subeffect CurrSubeffect { get { return subeffects[effectIndex]; } }
@@ -109,7 +111,20 @@ public class Effect
     {
         doneResolving = true;
         effectIndex = 0;
+        X = 0;
         targets.Clear();
         (thisCard.game as ServerGame).FinishStackEntryResolution();
+    }
+
+    //could eventually be renamed, because this same logic could be used for other things that become impossible, while a loop could be going
+    public void NoTargetExists()
+    {
+        if (loopSubeffect == null) FinishResolution();
+        else loopSubeffect.ExitLoop();
+    }
+
+    public void DeclineAnotherTarget()
+    {
+        if (loopSubeffect != null) loopSubeffect.ExitLoop();
     }
 }

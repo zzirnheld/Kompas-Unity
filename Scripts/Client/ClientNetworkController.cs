@@ -199,8 +199,17 @@ public class ClientNetworkController : NetworkController {
                 List<Card> discardToSearch = ClientGame.mainClientGame.friendlyDiscardCtrl.CardsThatFitRestriction(discardRestriction);
                 ClientGame.mainClientGame.clientUICtrl.StartSearch(discardToSearch, true);
                 break;
+            case Packet.Command.X:
+                ClientGame.mainClientGame.clientUICtrl.GetXForEffect();
+                break;
             case Packet.Command.TargetAccepted:
                 ClientGame.mainClientGame.targetMode = Game.TargetMode.NoTargeting;
+                break;
+            case Packet.Command.EnableDecliningTarget:
+                ClientGame.mainClientGame.clientUICtrl.EnableDecliningTarget();
+                break;
+            case Packet.Command.DisableDecliningTarget:
+                ClientGame.mainClientGame.clientUICtrl.DisableDecliningTarget();
                 break;
             default:
                 Debug.Log("Unrecognized command sent to client");
@@ -299,6 +308,20 @@ public class ClientNetworkController : NetworkController {
     {
         Debug.Log("Requesting effect of " + card.CardName + " number" + index);
         Packet packet = new Packet(Packet.Command.TestTargetEffect, card, index);
+        Send(packet, mDriver, mConnection, mPipeline);
+    }
+
+    public void RequestSetX(int x)
+    {
+        Debug.Log("Requesting to set X to " + x);
+        Packet packet = new Packet(Packet.Command.X, x);
+        Send(packet, mDriver, mConnection, mPipeline);
+    }
+
+    public void DeclineAnotherTarget()
+    {
+        Debug.Log("Declining to select another target");
+        Packet packet = new Packet(Packet.Command.DeclineAnotherTarget);
         Send(packet, mDriver, mConnection, mPipeline);
     }
     #endregion

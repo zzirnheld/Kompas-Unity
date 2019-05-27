@@ -12,7 +12,7 @@ public class HandTargetSubeffect : CardTargetSubeffect
         if (!parent.thisCard.game.ExistsHandTarget(cardRestriction, parent.thisCard.Owner))
         {
             Debug.Log("No target exists for " + parent.thisCard.CardName + " effect");
-            parent.FinishResolution();
+            parent.NoTargetExists();
             return;
         }
 
