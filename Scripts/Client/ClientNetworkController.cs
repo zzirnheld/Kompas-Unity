@@ -146,6 +146,9 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.Rehand:
                 ClientGame.mainClientGame.Rehand(packet.cardID);
                 break;
+            case Packet.Command.Reshuffle:
+                ClientGame.mainClientGame.Reshuffle(packet.cardID);
+                break;
             case Packet.Command.SetNESW:
                 ClientGame.mainClientGame.SetNESW(packet.cardID, packet.N, packet.E, packet.S, packet.W);
                 break;

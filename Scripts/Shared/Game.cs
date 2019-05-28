@@ -112,6 +112,17 @@ public class Game : MonoBehaviour {
         Rehand(toRehand, toRehand.Owner);
     }
 
+    public virtual void Reshuffle(Card card, int player)
+    {
+        players[player].deckCtrl.ShuffleIn(card);
+    }
+
+    public void Reshuffle(int cardID)
+    {
+        Card toReshuffle = GetCardFromID(cardID);
+        Reshuffle(toReshuffle, toReshuffle.Owner);
+    }
+
     public virtual void Play(Card card, int toX, int toY, int player, bool remove = true)
     {
         if(remove) Remove(card, player);

@@ -25,6 +25,7 @@ public class Effect
     public Subeffect[] Subeffects { get => subeffects; }
 
     public List<Card> targets;
+    public List<Vector2Int> coords;
 
     /// <summary>
     /// X value as listed on cards

@@ -466,6 +466,17 @@ public class ServerNetworkController : NetworkController {
         NotifyRehand(sGame, toRehand, sourceID);
     }
 
+    public void NotifyReshuffle(ServerGame sGame, Card toReshuffle, NetworkConnection sourceID)
+    {
+        Packet outPacket = null;
+        Packet outPacketInverted = null;
+        //and let everyone know
+        outPacket = new Packet(Packet.Command.Reshuffle, toReshuffle);
+        if (toReshuffle.Location == Card.CardLocation.Hand || toReshuffle.Location == Card.CardLocation.Deck)
+            outPacketInverted = new Packet(Packet.Command.Delete, toReshuffle);
+        SendPackets(outPacket, outPacketInverted, sGame, sourceID);
+    }
+
     public void NotifyDraw(ServerGame sGame, Card toDraw, NetworkConnection sourceID)
     {
         //let everyone know to add that character to the correct hand
