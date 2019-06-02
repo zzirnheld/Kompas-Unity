@@ -246,7 +246,7 @@ public class Game : MonoBehaviour {
         {
             for(int y = 0; y < 7; y++)
             {
-                if (restriction.Evalutate(x, y)) return true;
+                if (restriction.Evaluate(x, y)) return true;
             }
         }
 
