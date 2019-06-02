@@ -202,6 +202,13 @@ public class ClientNetworkController : NetworkController {
                 List<Card> discardToSearch = ClientGame.mainClientGame.friendlyDiscardCtrl.CardsThatFitRestriction(discardRestriction);
                 ClientGame.mainClientGame.clientUICtrl.StartSearch(discardToSearch, true);
                 break;
+            case Packet.Command.SpaceTarget:
+                ClientGame.mainClientGame.targetMode = Game.TargetMode.SpaceTarget;
+                lastRestriction = (Game.mainGame.GetCardFromID(packet.cardID)
+                                    .Effects[packet.EffIndex].Subeffects[packet.SubeffIndex] as SpaceTargetSubeffect)
+                                    .spaceRestriction;
+                //TODO display based on that space
+                break;
             case Packet.Command.X:
                 ClientGame.mainClientGame.clientUICtrl.GetXForEffect();
                 break;
@@ -325,6 +332,13 @@ public class ClientNetworkController : NetworkController {
     {
         Debug.Log("Declining to select another target");
         Packet packet = new Packet(Packet.Command.DeclineAnotherTarget);
+        Send(packet, mDriver, mConnection, mPipeline);
+    }
+
+    public void RequestSpaceTarget(int x, int y)
+    {
+        Debug.Log("Requesting a space target of " + x + ", " + y);
+        Packet packet = new Packet(Packet.Command.SpaceTarget, x, y);
         Send(packet, mDriver, mConnection, mPipeline);
     }
     #endregion

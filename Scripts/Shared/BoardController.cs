@@ -61,7 +61,7 @@ public class BoardController : KompasObject
     {
         foreach(Card c in cards)
         {
-            if (c is CharacterCard charC) charC.ResetM();
+            if (c is CharacterCard charC) charC.ResetN();
         }
     }
     #endregion
@@ -73,7 +73,8 @@ public class BoardController : KompasObject
 
         if (toRemove is CharacterCard || toRemove is SpellCard)
             cards[toRemove.BoardX, toRemove.BoardY] = null;
-        else if (toRemove is AugmentCard augToRemove) augToRemove.Detach();
+        else if (toRemove is AugmentCard augToRemove)
+            augToRemove.Detach();
     }
 
     public void RemoveFromBoard(int x, int y) { RemoveFromBoard(GetCardAt(x, y)); }
@@ -248,6 +249,17 @@ public class BoardController : KompasObject
         }
     }
     #endregion
+
+    public override void OnClick()
+    {
+        if (game.targetMode != Game.TargetMode.SpaceTarget) return;
+        //if someone wants a space target, get the x/y coordinates clicked
+        Vector3 intersection = game.mouseCtrl.GetRayIntersectBoard();
+        int xIntersection = PosToGridIndex(intersection.x);
+        int yIntersection = PosToGridIndex(intersection.y);
+        //then, if the game is a clientgame, request a space target
+        (game as ClientGame)?.clientNetworkCtrl.RequestSpaceTarget(xIntersection, yIntersection);
+    }
 
 
 }

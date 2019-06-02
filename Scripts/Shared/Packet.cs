@@ -11,7 +11,7 @@ public class Packet {
     public enum Command { Nothing, Confirm,
         Play, Augment, Move, EndTurn, Attack,
         Topdeck, Discard, Rehand, Reshuffle, AddAsFriendly, AddAsEnemy, IncrementEnemyDeck, AddToDeck, Delete, Target, Response, TargetAccepted, X, DeclineAnotherTarget,
-        EnableDecliningTarget, DisableDecliningTarget,
+        EnableDecliningTarget, DisableDecliningTarget, SpaceTarget,
         Draw, SetNESW, SetPips, SetEnemyPips, PutBack, GetAttackTarget, YoureFirst, YoureSecond, RequestBoardTarget, RequestDeckTarget, RequestDiscardTarget, RequestHandTarget,
         TestTargetEffect}
 
@@ -114,6 +114,27 @@ public class Packet {
     public Packet(Command command, Card card, int num) : this(command, card)
     {
         args[0] = num;
+    }
+
+    /// <summary>
+    /// Used for choosing coordinates/spaces
+    /// </summary>
+    public Packet(Command command, int x, int y, bool invert = false)
+    {
+        //this is used for the target packet
+        args[0] = x;
+        args[1] = y;
+
+        if (invert)
+        {
+            args[2] = 6 - x;
+            args[3] = 6 - y;
+        }
+        else
+        {
+            args[2] = x;
+            args[3] = y;
+        }
     }
 
     public Packet(Command command, Card card, int x, int y, bool invert = false) : this(command, card)

@@ -26,7 +26,6 @@ public class CharacterCard : Card {
         set
         {
             n = value;
-            //update movement: if you gain n, gain that much m, if you lose n, lose that much n
         }
     }
     public int E
@@ -119,7 +118,10 @@ public class CharacterCard : Card {
         W = w;
     }
 
-    public void ResetM()
+    /// <summary>
+    /// Resets this card's N to its printed/base N
+    /// </summary>
+    public void ResetN()
     {
         N = baseN;
     }

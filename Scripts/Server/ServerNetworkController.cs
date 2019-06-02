@@ -201,6 +201,14 @@ public class ServerNetworkController : NetworkController {
                         AcceptTarget(serverGame, connectionID);
                 }
                 break;
+            case Packet.Command.SpaceTarget:
+                if(serverGame.CurrEffect != null && serverGame.CurrEffect.CurrSubeffect is SpaceTargetSubeffect spaceEff)
+                {
+                    packet.InvertForController(playerIndex);
+                    if (spaceEff.Target(packet.X, packet.Y))
+                        AcceptTarget(serverGame, connectionID);
+                }
+                break;
             case Packet.Command.X:
                 SetXForEffect(serverGame, packet.EffectX);
                 break;
@@ -240,11 +248,9 @@ public class ServerNetworkController : NetworkController {
 
                 DebugSetPips(serverGame, playerIndex, connectionID, packet.Pips);
                 break;
-            case Packet.Command.TestTargetEffect: //TODO use the stack
+            case Packet.Command.TestTargetEffect:
                 Card whoseEffToTest = serverGame.GetCardFromID(packet.cardID);
                 Debug.Log("Running eff of " + whoseEffToTest.CardName);
-                //whoseEffToTest.Effects[0].serverGame = serverGame;
-                //whoseEffToTest.Effects[0].StartResolution();
                 serverGame.PushToStack(whoseEffToTest.Effects[0], playerIndex);
                 serverGame.CheckForResponse();
                 break;
@@ -546,6 +552,13 @@ public class ServerNetworkController : NetworkController {
         Debug.Log("Asking for hand target");
     }
 
+    public void GetSpaceTarget(ServerGame sGame, int playerIndex, Card effSrc, int effIndex, int subeffIndex)
+    {
+        Packet outPacket = new Packet(Packet.Command.SpaceTarget, effSrc, effIndex, subeffIndex);
+        SendPackets(outPacket, null, sGame, sGame.Players[playerIndex].ConnectionID);
+        Debug.Log("Asking for hand target");
+    }
+
     public void NotifySetNESW(ServerGame sGame, CharacterCard card)
     {
         //let everyone know to set NESW
@@ -559,6 +572,9 @@ public class ServerNetworkController : NetworkController {
         Packet outPacket = new Packet(Packet.Command.Response);
     }
 
+    /// <summary>
+    /// Lets that player know their target has been accepted. called if the Target method returns True
+    /// </summary>
     public void AcceptTarget(ServerGame sGame, NetworkConnection connectionID)
     {
         SendPackets(new Packet(Packet.Command.TargetAccepted), null, sGame, connectionID);

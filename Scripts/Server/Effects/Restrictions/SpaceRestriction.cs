@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public class SpaceRestriction : MonoBehaviour
+public class SpaceRestriction : Restriction
 {
-    
+    public bool Evaluate(int x, int y)
+    {
+        throw new NotImplementedException();
+    }
 }
