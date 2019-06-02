@@ -52,32 +52,6 @@ public class ClientGame : Game {
         players[1].discardObject = enemyDiscardObj;
     }
 
-    public override void Remove(Card toRemove, int player = 0, bool ignoreClientServer = false)
-    {
-        switch (toRemove.Location)
-        {
-            case Card.CardLocation.Field:
-                boardCtrl.RemoveFromBoard(toRemove);
-                break;
-            case Card.CardLocation.Discard:
-                players[player].discardCtrl.RemoveFromDiscard(toRemove);
-                break;
-            case Card.CardLocation.Hand:
-                //if it's our card, remove the exact card from our hand
-                if (player == 0) friendlyHandCtrl.RemoveFromHand(toRemove);
-                //if it's not, remove a random card (because it doesn't matter)
-                else enemyHandCtrl.RemoveRandomCard(); //TODO remove the correct index
-                break;
-            case Card.CardLocation.Deck:
-                if (player == 0) friendlyDeckCtrl.RemoveFromDeck(toRemove);
-                else enemyDeckCtrl.PopTopdeck();
-                break;
-            default:
-                Debug.Log("Unknown CardLocation to remove card from in ClientGame");
-                break;
-        }
-    }
-
     //game mechanics
     #region setting pips
     public void SetFriendlyPips(int num)

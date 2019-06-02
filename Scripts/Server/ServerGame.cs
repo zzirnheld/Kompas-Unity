@@ -264,9 +264,9 @@ public class ServerGame : Game {
     #endregion the stack
 
     #region override game mechanics
-    public override void Discard(Card card, int player = 0, bool ignoreClientServer = false)
+    public override void Discard(Card card, int player = 0)
     {
-        base.Discard(card, player, ignoreClientServer);
+        base.Discard(card, player);
         serverNetworkCtrl.NotifyDiscard(this, card, players[player].ConnectionID);
     }
 

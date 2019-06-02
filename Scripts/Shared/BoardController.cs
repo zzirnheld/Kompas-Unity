@@ -139,8 +139,8 @@ public class BoardController : KompasObject
     //movement
     public void Swap(Card card, int toX, int toY)
     {
-        if (!ValidIndices(toX, toY) || card == null || card is AugmentCard) return;
-
+        if (!ValidIndices(toX, toY) || card == null) return;
+        if (card is AugmentCard) throw new NotImplementedException();
 
         Card temp = null;
         int tempX;
@@ -152,9 +152,9 @@ public class BoardController : KompasObject
         tempX = card.BoardX;
         tempY = card.BoardY;
 
-        //set N if cards are characters
-        if (card is CharacterCard charCard) charCard.N -= charCard.DistanceTo(toX, toY);
-        if (temp is CharacterCard charTemp) charTemp.N -= charTemp.DistanceTo(tempX, tempY);
+        //set N if cards are characters?
+        //if (card is CharacterCard charCard) charCard.N -= charCard.DistanceTo(toX, toY);
+        //if (temp is CharacterCard charTemp) charTemp.N -= charTemp.DistanceTo(tempX, tempY);
         //note 
 
         //then let the cards know they've been moved
@@ -198,7 +198,7 @@ public class BoardController : KompasObject
         {
             if(c != null && c is SpellCard spellC && spellC.SpellSubtype == SpellCard.SpellType.Simple)
             {
-                spellC.Discard();
+                game.Discard(spellC, spellC.Owner);
             }
         }
     }

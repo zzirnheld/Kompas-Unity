@@ -75,9 +75,9 @@ public class Game : MonoBehaviour {
     #region forwarding calls to correct controller
     //move cards between locations
     //TODO add is server checks to discard, topdeck, rehand
-    public virtual void Discard(Card card, int player = 0, bool ignoreClientServer = false)
+    public virtual void Discard(Card card, int player = 0)
     {
-        Remove(card, player, ignoreClientServer);
+        Remove(card, player);
         players[player].discardCtrl.AddToDiscard(card);
     }
 
@@ -151,7 +151,7 @@ public class Game : MonoBehaviour {
     /// <summary>
     /// Remove the card from wherever it is
     /// </summary>
-    public virtual void Remove(Card toRemove, int player = 0, bool ignoreClientServer = false)
+    public void Remove(Card toRemove, int player = 0)
     {
         switch (toRemove.Location)
         {

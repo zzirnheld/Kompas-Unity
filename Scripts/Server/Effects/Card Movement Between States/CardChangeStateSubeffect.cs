@@ -11,9 +11,12 @@ public class CardChangeStateSubeffect : Subeffect
     /// </summary>
     public int TargetIndex;
 
-    protected Card GetTarget()
+    protected Card Target
     {
-        if (TargetIndex < 0) return parent.targets[parent.targets.Count + TargetIndex];
-        else return parent.targets[TargetIndex];
+        get
+        {
+            if (TargetIndex < 0) return parent.targets[parent.targets.Count + TargetIndex];
+            else return parent.targets[TargetIndex];
+        }
     }
 }
