@@ -280,6 +280,7 @@ public class ServerGame : Game {
     public override void Move(Card card, int toX, int toY)
     {
         base.Move(card, toX, toY);
+        //TODO change N
         serverNetworkCtrl.NotifyMove(this, card, toX, toY, players[card.Owner].ConnectionID);
     }
 
@@ -307,6 +308,7 @@ public class ServerGame : Game {
     public override void Swap(Card card, int toX, int toY)
     {
         base.Swap(card, toX, toY);
+        //TODO change N
         serverNetworkCtrl.NotifyMove(this, card, toX, toY, players[card.Owner].ConnectionID);
     }
 

@@ -31,20 +31,21 @@ public class BoardController : KompasObject
 
     public CharacterCard GetCharAt(int x, int y)
     {
-        if (!ValidIndices(x, y) || !(cards[x, y] is CharacterCard)) return null;
+        if (!ValidIndices(x, y)) return null;
         return cards[x, y] as CharacterCard;
     }
 
     public SpellCard GetSpellAt(int x, int y)
     {
-        if (!ValidIndices(x, y) || !(cards[x, y] is SpellCard)) return null;
-        return cards[x, y] as SpellCard;
+        if (!ValidIndices(x, y)) return null;
+        return cards[x, y] as SpellCard; //returns null if the card there isn't a spell
     }
 
     public List<AugmentCard> GetAugmentsAt(int x, int y)
     {
-        if (!ValidIndices(x, y) || !(cards[x, y] is CharacterCard)) return null;
-        return (cards[x, y] as CharacterCard).Augments;
+        if (!ValidIndices(x, y)) return null;
+        //if the card at x y is null, or not a character card, returns null
+        return (cards[x, y] as CharacterCard)?.Augments;
     }
 
     public int GetNumCardsOnBoard()
