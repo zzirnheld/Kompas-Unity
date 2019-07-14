@@ -58,8 +58,7 @@ public class Effect
 
         for (int i = 0; i < se.subeffectTypes.Length; i++)
         {
-            subeffects[i] = Subeffect.FromJson(se.subeffectTypes[i], se.subeffects[i]);
-            if (subeffects[i] != null) subeffects[i].parent = this;
+            subeffects[i] = Subeffect.FromJson(se.subeffectTypes[i], se.subeffects[i], this);
         }
     }
 

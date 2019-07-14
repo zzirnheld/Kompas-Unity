@@ -29,9 +29,10 @@ public abstract class Subeffect
 
     }
 
-    public static Subeffect FromJson(SerializableEffect.SubeffectType seType, string subeffJson)
+    public static Subeffect FromJson(SerializableEffect.SubeffectType seType, string subeffJson, Effect parent)
     {
         Subeffect toReturn = null;
+
         switch (seType)
         {
             case SerializableEffect.SubeffectType.TargetCardOnBoard:
@@ -47,13 +48,19 @@ public abstract class Subeffect
                 toReturn = JsonUtility.FromJson<DiscardTargetSubeffect>(subeffJson);
                 break;
             case SerializableEffect.SubeffectType.HandTarget:
-                HandTargetSubeffect handTarget = JsonUtility.FromJson<HandTargetSubeffect>(subeffJson);
+                toReturn = JsonUtility.FromJson<HandTargetSubeffect>(subeffJson);
                 break;
             default:
                 Debug.Log("Unrecognized effect type enum for loading effect in effect constructor");
                 break;
         }
-        toReturn?.Initialize();
+
+        if(toReturn != null)
+        {
+            toReturn.parent = parent;
+            toReturn.Initialize();
+        }
+
         return toReturn;
     }
 }
