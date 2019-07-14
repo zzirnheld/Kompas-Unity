@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class SpaceTargetSubeffect : Subeffect
 {
-
     public SpaceRestriction spaceRestriction;
 
     public override void Resolve()
     {
         if (!parent.serverGame.ExistsSpaceTarget(spaceRestriction))
         {
-            Debug.Log("No target exists for " + parent.thisCard.CardName + " effect");
+            Debug.Log("No coords exist for " + parent.thisCard.CardName + " effect");
             parent.NoTargetExists();
             return;
         }
