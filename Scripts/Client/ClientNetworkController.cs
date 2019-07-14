@@ -163,7 +163,7 @@ public class ClientNetworkController : NetworkController {
                 break;
             case Packet.Command.EndTurn:
                 ClientGame.mainClientGame.turnPlayer = 1 - ClientGame.mainClientGame.turnPlayer;
-                ClientGame.mainClientGame.boardCtrl.ResetCardsM();
+                ClientGame.mainClientGame.boardCtrl.ResetCardsForTurn();
                 if(ClientGame.mainClientGame.turnPlayer == 0) ClientGame.mainClientGame.uiCtrl.CurrentStateString = "Your Turn";
                 else ClientGame.mainClientGame.uiCtrl.CurrentStateString = "Enemy Turn";
                 break;

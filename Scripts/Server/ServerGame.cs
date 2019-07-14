@@ -179,7 +179,7 @@ public class ServerGame : Game {
         GiveTurnPlayerPips();
 
         //reset everyone's M
-        boardCtrl.ResetCardsM();
+        boardCtrl.ResetCardsForTurn();
 
         //draw for turn and store what was drawn
         serverNetworkCtrl.DebugDraw(this, turnPlayer, players[turnPlayer].ConnectionID);
