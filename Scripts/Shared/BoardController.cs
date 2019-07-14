@@ -57,11 +57,11 @@ public class BoardController : KompasObject
         return i;
     }
 
-    public void ResetCardsM()
+    public void ResetCardsForTurn()
     {
         foreach(Card c in cards)
         {
-            if (c is CharacterCard charC) charC.ResetN();
+            c?.ResetForTurn();
         }
     }
     #endregion

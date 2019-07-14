@@ -284,6 +284,17 @@ public abstract class Card : KompasObject {
         return position.x > minX && position.x < maxX && position.y > minY && position.y < maxY;
     }
 
+    /// <summary>
+    /// Resets anything that needs to be reset for the start of the turn.
+    /// </summary>
+    public virtual void ResetForTurn()
+    {
+        foreach(Effect e in effects)
+        {
+            e.ResetForTurn();
+        }
+    }
+
     #region MouseStuff
     //actual interaction
     public override void OnClick()

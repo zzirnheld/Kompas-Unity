@@ -60,6 +60,19 @@ public class Effect
         {
             subeffects[i] = Subeffect.FromJson(se.subeffectTypes[i], se.subeffects[i], this);
         }
+
+        maxTimesCanUsePerTurn = se.maxTimesCanUsePerTurn;
+        timesUsedThisTurn = 0;
+    }
+
+    public void ResetForTurn()
+    {
+        timesUsedThisTurn = 0;
+    }
+
+    public bool CanUse()
+    {
+        return timesUsedThisTurn < maxTimesCanUsePerTurn;
     }
 
     public void StartResolution()

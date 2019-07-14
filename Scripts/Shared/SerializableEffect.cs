@@ -12,4 +12,6 @@ public class SerializableEffect
 
     //array of strings that will get deserialized
     public string[] subeffects;
+
+    public int maxTimesCanUsePerTurn;
 }

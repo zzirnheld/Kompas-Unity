@@ -136,6 +136,12 @@ public class CharacterCard : Card {
         E -= dmg;
     }
 
+    public override void ResetForTurn()
+    {
+        base.ResetForTurn();
+        ResetN();
+    }
+
     //game mechanics
     public override void MoveTo(int toX, int toY)
     {
