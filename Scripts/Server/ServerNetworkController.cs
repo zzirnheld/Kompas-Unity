@@ -197,7 +197,7 @@ public class ServerNetworkController : NetworkController {
             case Packet.Command.Target:
                 if (serverGame.CurrEffect != null && serverGame.CurrEffect.CurrSubeffect is CardTargetSubeffect targetEff)
                 {
-                    if (targetEff.Target(serverGame.GetCardFromID(packet.cardID)))
+                    if (targetEff.AddTargetIfLegal(serverGame.GetCardFromID(packet.cardID)))
                         AcceptTarget(serverGame, connectionID);
                 }
                 break;

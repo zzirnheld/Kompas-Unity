@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Effects will only be resolved on server. Clients will just get to know what effects they can use
+/// </summary>
 public class Effect
 {
     //if this effect is resolving on a server, this is the server game it's resolving on
@@ -31,7 +34,19 @@ public class Effect
     /// X value as listed on cards
     /// </summary>
     public int X = 0;
-    
+
+    private int timesUsedThisTurn;
+    /// <summary>
+    /// The number of times this effect has been used this turn
+    /// </summary>
+    public int TimesUsedThisTurn { get => timesUsedThisTurn; }
+
+    private int maxTimesCanUsePerTurn;
+    /// <summary>
+    /// The maximum number of times this effect can be used in a turn
+    /// </summary>
+    public int MaxTimesCanUsePerTurn { get => maxTimesCanUsePerTurn; }
+
     //get the currently resolving subeffect
     public Subeffect CurrSubeffect { get { return subeffects[effectIndex]; } }
 
@@ -43,44 +58,10 @@ public class Effect
 
         for (int i = 0; i < se.subeffectTypes.Length; i++)
         {
-            switch (se.subeffectTypes[i])
-            {
-                case SerializableEffect.SubeffectType.TargetCardOnBoard:
-                    BoardTargetSubeffect tcob = JsonUtility.FromJson<BoardTargetSubeffect>(se.subeffects[i]);
-                    tcob.cardRestriction.subeffect = tcob;
-                    subeffects[i] = tcob;
-                    break;
-                case SerializableEffect.SubeffectType.ChangeNESW:
-                    subeffects[i] = JsonUtility.FromJson<ChangeNESWSubeffect>(se.subeffects[i]);
-                    break;
-                case SerializableEffect.SubeffectType.DeckTarget:
-                    DeckTargetSubeffect deckTarget = JsonUtility.FromJson<DeckTargetSubeffect>(se.subeffects[i]);
-                    deckTarget.cardRestriction.subeffect = deckTarget;
-                    subeffects[i] = deckTarget;
-                    break;
-                case SerializableEffect.SubeffectType.DiscardTarget:
-                    DiscardTargetSubeffect discardTarget = JsonUtility.FromJson<DiscardTargetSubeffect>(se.subeffects[i]);
-                    discardTarget.cardRestriction.subeffect = discardTarget;
-                    subeffects[i] = discardTarget;
-                    break;
-                case SerializableEffect.SubeffectType.HandTarget:
-                    HandTargetSubeffect handTarget = JsonUtility.FromJson<HandTargetSubeffect>(se.subeffects[i]);
-                    handTarget.cardRestriction.subeffect = handTarget;
-                    subeffects[i] = handTarget;
-                    break;
-                default:
-                    Debug.Log("Unrecognized effect type enum for loading effect in effect constructor");
-                    subeffects[i] = null;
-                    break;
-            }
-
+            subeffects[i] = Subeffect.FromJson(se.subeffectTypes[i], se.subeffects[i]);
             if (subeffects[i] != null) subeffects[i].parent = this;
         }
     }
-
-    /*
-     * Effects will only be resolved on server. clients will just get to know what effects they can use
-     */
 
     public void StartResolution()
     {
@@ -114,7 +95,7 @@ public class Effect
         effectIndex = 0;
         X = 0;
         targets.Clear();
-        (thisCard.game as ServerGame).FinishStackEntryResolution();
+        serverGame.FinishStackEntryResolution();
     }
 
     //could eventually be renamed, because this same logic could be used for other things that become impossible, while a loop could be going

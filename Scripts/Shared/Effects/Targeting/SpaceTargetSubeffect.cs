@@ -6,6 +6,12 @@ public class SpaceTargetSubeffect : Subeffect
 {
     public SpaceRestriction spaceRestriction;
 
+    public override void Initialize()
+    {
+        base.Initialize();
+        spaceRestriction.subeffect = this;
+    }
+
     public override void Resolve()
     {
         if (!parent.serverGame.ExistsSpaceTarget(spaceRestriction))

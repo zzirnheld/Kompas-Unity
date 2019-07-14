@@ -223,6 +223,9 @@ public class ServerGame : Game {
         eff.StartResolution();
     }
 
+    /// <summary>
+    /// The last effect that resolved is now done.
+    /// </summary>
     public void FinishStackEntryResolution()
     {
         //TODO give opportunity to add things to stack

@@ -2,14 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardTargetSubeffect : Subeffect
+public abstract class CardTargetSubeffect : Subeffect
 {
     public CardRestriction cardRestriction;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+        cardRestriction.subeffect = this;
+    }
 
     /// <summary>
     /// Check if the card passed is a valid target, and if it is, continue the effect
     /// </summary>
-    public virtual bool Target(Card card)
+    public virtual bool AddTargetIfLegal(Card card)
     {
         //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
         if (cardRestriction.Evaluate(card))

@@ -190,7 +190,6 @@ public abstract class Card : KompasObject {
         //go through each of the serialized effects, 
         for(int i = 0; i < serializedCard.effects.Length; i++)
         {
-            Debug.Log(serializedCard.effects[i] + ", " + serializedCard.effects[i].subeffects + ", " + serializedCard.effects[i].subeffectTypes);
             effects[i] = new Effect(serializedCard.effects[i], this, owner);
         }
 
@@ -234,20 +233,6 @@ public abstract class Card : KompasObject {
     }
     #endregion distance/adjacency
 
-    //card moving methods
-    /*public void Discard()
-    {
-        game.Discard(this);
-    }
-    public void Topdeck()
-    {
-        game.Topdeck(this);
-    }
-    public void Rehand()
-    {
-        game.Rehand(this);
-    }*/
-
     //misc mechanics methods
     public void ChangeController(int owner)
     {
@@ -258,7 +243,6 @@ public abstract class Card : KompasObject {
     }
     public virtual int GetCost() { return 0; }
 
-    //playing cards
     /// <summary>
     /// sets this card's x and y values and updates where its gameobject is.
     /// does NOT set M if the card is a character
@@ -300,6 +284,7 @@ public abstract class Card : KompasObject {
         return position.x > minX && position.x < maxX && position.y > minY && position.y < maxY;
     }
 
+    #region MouseStuff
     //actual interaction
     public override void OnClick()
     {
@@ -327,7 +312,6 @@ public abstract class Card : KompasObject {
     public override void OnDragEnd(Vector3 mousePos)
     {
         if (game.targetMode != Game.TargetMode.NoTargeting) return;
-        Debug.Log("Drag ended at absolute position: " + transform.position + ", local position: " + transform.localPosition);
         dragging = false; //dragging has ended
 
         //to be able to use local coordinates to see if you're on the board, set parent to game board
@@ -336,7 +320,6 @@ public abstract class Card : KompasObject {
         //then, check if it's on the board, accodring to the local coordinates of the game board)
         if (WithinIgnoreZ(transform.localPosition, minBoardLocalX, maxBoardLocalX, minBoardLocalY, maxBoardLocalY))
         {
-            Debug.Log(cardName + " ended drag on the field");
             //if the card is being moved on the field, that means it's just being moved
             if (location == CardLocation.Field)
             {
@@ -356,23 +339,20 @@ public abstract class Card : KompasObject {
         //if it's not on the board, maybe it's on top of the discard
         else if (WithinIgnoreY(transform.position, minDiscardX, maxDiscardX, minDiscardZ, maxDiscardZ))
         {
-            Debug.Log(cardName + " ended drag on discard");
             //in that case, discard it //TODO do this by raycasting along another layer to see if you hit deck/discard
             clientGame.clientNetworkCtrl.RequestDiscard(this);
         }
         //maybe it's on top of the deck
         else if (WithinIgnoreY(transform.position, minDeckX, maxDeckX, minDeckZ, maxDeckZ))
         {
-            Debug.Log(cardName + " ended drag on the deck");
             //in that case, topdeck it
             clientGame.clientNetworkCtrl.RequestTopdeck(this);
         }
         //if it's not in any of those, probably should go back in the hand.
         else
         {
-            Debug.Log(cardName + " ended drag nowhere. putting it in the hand. was at " + transform.position);
             clientGame.clientNetworkCtrl.RequestRehand(this);
         }
     }
-
+#endregion MouseStuff
 }

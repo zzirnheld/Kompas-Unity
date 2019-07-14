@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardChangeStateSubeffect : Subeffect
+/// <summary>
+/// Moves cards between discard/field/etc
+/// </summary>
+public abstract class CardChangeStateSubeffect : Subeffect
 {
     /// <summary>
     /// The index in the Effect.targets array for which target this effect uses.
@@ -15,8 +18,9 @@ public class CardChangeStateSubeffect : Subeffect
     {
         get
         {
-            if (TargetIndex < 0) return parent.targets[parent.targets.Count + TargetIndex];
-            else return parent.targets[TargetIndex];
+            return TargetIndex < 0 ?
+                parent.targets[parent.targets.Count + TargetIndex] :
+                parent.targets[TargetIndex];
         }
     }
 }

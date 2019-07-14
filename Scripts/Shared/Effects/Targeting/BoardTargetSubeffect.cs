@@ -9,6 +9,12 @@ public class BoardTargetSubeffect : CardTargetSubeffect
     
     public BoardRestriction boardRestriction;
 
+    public override void Initialize()
+    {
+        base.Initialize();
+        boardRestriction.subeffect = this;
+    }
+
     public override void Resolve()
     {
         boardRestriction.subeffect = this;
@@ -32,7 +38,7 @@ public class BoardTargetSubeffect : CardTargetSubeffect
         //then wait for the network controller to call the continue method
     }
 
-    public override bool Target(Card card)
+    public override bool AddTargetIfLegal(Card card)
     {
         //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
         if (boardRestriction.Evaluate(card))

@@ -6,8 +6,6 @@ public class HandTargetSubeffect : CardTargetSubeffect
 {
     public override void Resolve()
     {
-        cardRestriction.subeffect = this;
-
         //check first that there exist valid targets. if there exist no valid targets, finish resolution here
         if (!parent.thisCard.game.ExistsHandTarget(cardRestriction, parent.thisCard.Owner))
         {
