@@ -204,6 +204,7 @@ public abstract class Card : KompasObject {
 
         this.owner = game.Players[ownerIndex];
         this.ownerIndex = ownerIndex;
+        this.augments = new List<AugmentCard>();
         if (location == CardLocation.Field) MoveTo(serializedCard.BoardX, serializedCard.BoardY);
         else
         {

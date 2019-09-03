@@ -5,7 +5,10 @@ using UnityEngine;
 [System.Serializable]
 public class BoardRestriction : CardRestriction
 {
-    public enum BoardRestrictions { Adjacent, WithinXSpaces}
+    public enum BoardRestrictions {
+        Adjacent = 0,
+        WithinXSpaces = 1
+    }
     public BoardRestrictions[] onBoardRestrictions;
 
     public int xSpaces;
@@ -19,7 +22,7 @@ public class BoardRestriction : CardRestriction
             switch (r)
             {
                 case BoardRestrictions.Adjacent:
-                    if(! potentialTarget.IsAdjacentTo(subeffect.parent.thisCard)) return false;
+                    if(!potentialTarget.IsAdjacentTo(subeffect.parent.thisCard)) return false;
                     break;
                 case BoardRestrictions.WithinXSpaces:
                     if (!potentialTarget.WithinSlots(xSpaces, subeffect.parent.thisCard)) return false;

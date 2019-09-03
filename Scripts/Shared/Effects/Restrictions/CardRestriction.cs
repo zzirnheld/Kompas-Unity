@@ -6,7 +6,25 @@ using UnityEngine;
 [Serializable]
 public class CardRestriction : Restriction
 {
-    public enum CardRestrictions { CostsLessThanEqual, NameIs, SubtypesInclude, IsCharacter, IsSpell, IsAugment, Hand, Discard, Deck, Board} //to add later: N/E/S/W <=
+    public enum CardRestrictions {
+        NameIs = 1,
+        SubtypesInclude = 2,
+        IsCharacter = 3,
+        IsSpell = 4,
+        IsAugment = 5,
+        Hand = 100,
+        Discard = 101,
+        Deck = 102,
+        Board = 103,
+        NLTEX = 200, //N <= X
+        ELTEX = 201,
+        SLTEX = 202,
+        WLTEX = 203,
+        NLTEC = 300, //N <= constant
+        ELTEC = 302,
+        SLTEC = 303,
+        WLTEC = 304
+    } //to add later: N/E/S/W <=
 
     //because JsonUtility will fill in all values with defaults if not present
     public CardRestrictions[] restrictionsToCheck;
@@ -14,7 +32,7 @@ public class CardRestriction : Restriction
     public int costsLessThan;
     public string nameIs;
     public string[] subtypesInclude;
-
+    public int constant;
 
     /// <summary>
     /// 
@@ -31,14 +49,11 @@ public class CardRestriction : Restriction
             Debug.Log("Considering restriction " + c);
             switch (c)
             {
-                case CardRestrictions.CostsLessThanEqual:
-                    if (potentialTarget.GetCost() > costsLessThan) return false;
-                    break;
                 case CardRestrictions.NameIs:
                     if (potentialTarget.CardName != nameIs) return false;
                     break;
                 case CardRestrictions.SubtypesInclude:
-                    foreach(string s in subtypesInclude)
+                    foreach (string s in subtypesInclude)
                     {
                         if (Array.IndexOf(potentialTarget.Subtypes, s) == -1) return false;
                     }
@@ -60,6 +75,27 @@ public class CardRestriction : Restriction
                     break;
                 case CardRestrictions.Discard:
                     if (potentialTarget.Location != Card.CardLocation.Discard) return false;
+                    break;
+                case CardRestrictions.Board:
+                    if (potentialTarget.Location != Card.CardLocation.Field) return false;
+                    break;
+                case CardRestrictions.NLTEX:
+                    if (!(potentialTarget is CharacterCard charC)) return false;
+                    if (charC.N > subeffect.parent.X) return false; //TODO set x as command
+                    break;
+                case CardRestrictions.ELTEX:
+                    break;
+                case CardRestrictions.SLTEX:
+                    break;
+                case CardRestrictions.WLTEX:
+                    break;
+                case CardRestrictions.NLTEC:
+                    break;
+                case CardRestrictions.ELTEC:
+                    break;
+                case CardRestrictions.SLTEC:
+                    break;
+                case CardRestrictions.WLTEC:
                     break;
                 default:
                     Debug.Log("You forgot to check for " + c);

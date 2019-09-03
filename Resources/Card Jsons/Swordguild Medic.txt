@@ -4,7 +4,7 @@
 "effText":"Once each friendly turn, I can give an adjacent Warrior +1E.",
 "effects":[
 	{
-		"subeffectTypes":[0,1],
+		"subeffectTypes":[0,100],
 		"subeffects":[
 			"{\"boardRestriction\":{\"restrictionsToCheck\":[2,3],\"subtypesInclude\":[\"Warrior\"],\"onBoardRestrictions\":[0]}}",
 			"{\"nChange\":0,\"eChange\":1,\"sChange\":0,\"wChange\":0,\"targetIndex\":0}"

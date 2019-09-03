@@ -40,9 +40,6 @@ public abstract class Subeffect
             case SerializableEffect.SubeffectType.TargetCardOnBoard:
                 toReturn = JsonUtility.FromJson<BoardTargetSubeffect>(subeffJson);
                 break;
-            case SerializableEffect.SubeffectType.ChangeNESW:
-                toReturn = JsonUtility.FromJson<ChangeNESWSubeffect>(subeffJson);
-                break;
             case SerializableEffect.SubeffectType.DeckTarget:
                 toReturn = JsonUtility.FromJson<DeckTargetSubeffect>(subeffJson);
                 break;
@@ -51,6 +48,15 @@ public abstract class Subeffect
                 break;
             case SerializableEffect.SubeffectType.HandTarget:
                 toReturn = JsonUtility.FromJson<HandTargetSubeffect>(subeffJson);
+                break;
+            case SerializableEffect.SubeffectType.ChangeNESW:
+                toReturn = JsonUtility.FromJson<ChangeNESWSubeffect>(subeffJson);
+                break;
+            case SerializableEffect.SubeffectType.AddPips:
+                toReturn = JsonUtility.FromJson<AddPipsSubeffect>(subeffJson);
+                break;
+            case SerializableEffect.SubeffectType.SetXByBoardCount:
+                toReturn = JsonUtility.FromJson<SetXBoardRestrictionSubeffect>(subeffJson);
                 break;
             default:
                 Debug.Log("Unrecognized effect type enum for loading effect in effect constructor");
