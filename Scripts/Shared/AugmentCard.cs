@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AugmentCard : Card {
 
-    private CharacterCard thisCharacter;
+    private Card thisCard;
 
     private int d; //TODO refactor this to A
     private string subtext;
@@ -16,19 +16,19 @@ public class AugmentCard : Card {
         set { d = value; }
     }
 
-    public CharacterCard ThisCharacter
+    public Card ThisCard
     {
-        get { return thisCharacter; }
+        get { return thisCard; }
         set {
-            thisCharacter = value;
-            MoveTo(thisCharacter.BoardX, thisCharacter.BoardY);
+            thisCard = value;
+            MoveTo(thisCard.BoardX, thisCard.BoardY);
         }
     }
 
     //get data
     public SerializableAugCard GetSerializableVersion()
     {
-        int index = thisCharacter.Augments.IndexOf(this);
+        int index = thisCard.Augments.IndexOf(this);
         SerializableAugCard serializableSpell = new SerializableAugCard
         {
             cardName = cardName,
@@ -79,6 +79,6 @@ public class AugmentCard : Card {
 
     public void Detach()
     {
-        ThisCharacter = null;
+        ThisCard = null;
     }
 }

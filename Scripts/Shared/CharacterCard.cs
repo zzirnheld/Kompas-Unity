@@ -11,8 +11,6 @@ public class CharacterCard : Card {
     private int w;
     private int baseN;
 
-    private List<AugmentCard> augments = new List<AugmentCard>();
-
     //stat getters TODO take into account tags here
     //reminder: don't need separate setters because you don't notify because you'll only change stats when server tells you to
     //all of these will return 0 if their value is < 0
@@ -60,8 +58,6 @@ public class CharacterCard : Card {
         set { w = value; }
     }
     #endregion stats
-
-    public List<AugmentCard> Augments { get { return augments; } }
 
     //get other information
     public override int GetCost() { return S; }
@@ -143,31 +139,6 @@ public class CharacterCard : Card {
     }
 
     //game mechanics
-    public override void MoveTo(int toX, int toY)
-    {
-        base.MoveTo(toX, toY);
-        foreach (AugmentCard aug in augments) aug.MoveTo(toX, toY);
-    }
-
-    public void AddAugment(AugmentCard augment)
-    {
-        if (augment == null) return;
-        augments.Add(augment);
-        augment.ThisCharacter = this;
-    }
-    public bool HasAugment(AugmentCard augment) { return augments.Contains(augment); }
-    public void RemoveAugment(AugmentCard augment)
-    {
-        augments.Remove(augment);
-        augment.ThisCharacter = null;
-    }
-    public void RemoveAugmentAt(int index)
-    {
-        AugmentCard aug = augments[index];
-        augments.RemoveAt(index);
-        aug.ThisCharacter = null;
-    }
-
     public void Attack(CharacterCard defender)
     {
         int attackerDmg = GetCombatDamage();

@@ -36,6 +36,8 @@ public abstract class Card : KompasObject {
     protected CardLocation location;
     protected int id;
     protected string[] subtypes;
+    private List<AugmentCard> augments = new List<AugmentCard>();
+    public List<AugmentCard> Augments { get { return augments; } }
 
     protected Effect[] effects;
 
@@ -263,6 +265,7 @@ public abstract class Card : KompasObject {
          * to show the card above the game board on the screen. */
         transform.localPosition = new Vector3(GridIndexToPos(toX), GridIndexToPos(toY), -0.1f);
         ChangeController(controllerIndex);
+        foreach (AugmentCard aug in augments) aug.MoveTo(toX, toY);
     }
 
     public void PutBack()
@@ -368,6 +371,27 @@ public abstract class Card : KompasObject {
         game.boardCtrl.Move(this, toX, toY);
     }
     #endregion move card between areas
+
+    #region augments
+    public void AddAugment(AugmentCard augment)
+    {
+        if (augment == null) return;
+        augments.Add(augment);
+        augment.ThisCard = this;
+    }
+    public bool HasAugment(AugmentCard augment) { return augments.Contains(augment); }
+    public void RemoveAugment(AugmentCard augment)
+    {
+        augments.Remove(augment);
+        augment.ThisCard = null;
+    }
+    public void RemoveAugmentAt(int index)
+    {
+        AugmentCard aug = augments[index];
+        augments.RemoveAt(index);
+        aug.ThisCard = null;
+    }
+    #endregion augments
 
     #region MouseStuff
     //actual interaction
