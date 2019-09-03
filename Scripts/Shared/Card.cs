@@ -242,6 +242,10 @@ public abstract class Card : KompasObject {
     {
         return DistanceTo(card) == 1;
     }
+    public bool IsAdjacentTo(int x, int y)
+    {
+        return DistanceTo(x, y) == 1;
+    }
     #endregion distance/adjacency
 
     //misc mechanics methods
@@ -251,7 +255,7 @@ public abstract class Card : KompasObject {
         this.controller = game.Players[controllerIndex];
         transform.localEulerAngles = new Vector3(0, 0, 180 * owner);
     }
-    public virtual int GetCost() { return 0; }
+    public abstract int GetCost();
 
     /// <summary>
     /// Sets this card's x and y values and updates its transform

@@ -10,9 +10,18 @@ public class SerializableEffect
         DeckTarget = 1,
         DiscardTarget = 2,
         HandTarget = 3,
+        SpaceTarget = 4,
         ChangeNESW = 100,
         AddPips = 101,
-        SetXByBoardCount = 200
+        PayPips = 102,
+        PayPipsByTargetCost = 150,
+        SetXByBoardCount = 200,
+        //SetXByTargetN = 250,
+        //SetXByTargetE = 251,
+        SetXByTargetS = 252,
+        //SetXByTargetW = 253,
+        SetXByTargetCost = 254,
+        PlayCard = 300
     }
 
     //used for knowing what effect type to deserialize as

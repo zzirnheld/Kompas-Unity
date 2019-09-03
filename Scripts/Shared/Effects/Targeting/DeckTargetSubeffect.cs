@@ -10,7 +10,7 @@ public class DeckTargetSubeffect : CardTargetSubeffect
         if (!parent.thisCard.game.ExistsDeckTarget(cardRestriction, parent.thisCard.ControllerIndex))
         {
             Debug.Log("No target exists for " + parent.thisCard.CardName + " effect");
-            parent.NoTargetExists();
+            parent.EffectImpossible();
             return;
         }
 
@@ -19,7 +19,7 @@ public class DeckTargetSubeffect : CardTargetSubeffect
         //since only the server resolves effects, this should never be called for a client. 
         parent.serverGame.serverNetworkCtrl.GetDeckTarget(
                                             parent.serverGame,
-                                            parent.effectController,
+                                            parent.effectControllerIndex,
                                             parent.thisCard,
                                             System.Array.IndexOf(parent.thisCard.Effects, parent),
                                             parent.effectIndex);

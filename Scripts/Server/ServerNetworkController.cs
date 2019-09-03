@@ -197,19 +197,17 @@ public class ServerNetworkController : NetworkController {
             case Packet.Command.Target:
                 if (serverGame.CurrEffect != null && serverGame.CurrEffect.CurrSubeffect is CardTargetSubeffect targetEff)
                 {
-                    if (targetEff.AddTargetIfLegal(serverGame.GetCardFromID(packet.cardID)))
-                        AcceptTarget(serverGame, connectionID);
+                    targetEff.AddTargetIfLegal(serverGame.GetCardFromID(packet.cardID));
                 }
                 break;
             case Packet.Command.SpaceTarget:
                 if(serverGame.CurrEffect != null && serverGame.CurrEffect.CurrSubeffect is SpaceTargetSubeffect spaceEff)
                 {
                     packet.InvertForController(playerIndex);
-                    if (spaceEff.Target(packet.X, packet.Y))
-                        AcceptTarget(serverGame, connectionID);
+                    spaceEff.SetTargetIfValid(packet.X, packet.Y);
                 }
                 break;
-            case Packet.Command.X:
+            case Packet.Command.PlayerSetX:
                 SetXForEffect(serverGame, packet.EffectX);
                 break;
             case Packet.Command.DeclineAnotherTarget:
@@ -580,14 +578,19 @@ public class ServerNetworkController : NetworkController {
     /// <summary>
     /// Lets that player know their target has been accepted. called if the Target method returns True
     /// </summary>
-    public void AcceptTarget(ServerGame sGame, NetworkConnection connectionID)
+    public void AcceptTarget(ServerGame sGame, Card target, NetworkConnection connectionID)
     {
-        SendPackets(new Packet(Packet.Command.TargetAccepted), null, sGame, connectionID);
+        SendPackets(new Packet(Packet.Command.TargetAccepted, target), null, sGame, connectionID);
+    }
+
+    public void AcceptSpaceTarget(ServerGame sGame, int x, int y, NetworkConnection connectionID)
+    {
+        SendPackets(new Packet(Packet.Command.SpaceTargetAccepted, x, y), null, sGame, connectionID);
     }
 
     public void GetXForEffect(ServerGame sGame, int playerIndex, Card effSource, int effIndex, int subeffIndex)
     {
-        Packet outPacket = new Packet(Packet.Command.X, effSource, effIndex, subeffIndex);
+        Packet outPacket = new Packet(Packet.Command.PlayerSetX, effSource, effIndex, subeffIndex);
         SendPackets(outPacket, null, sGame, sGame.Players[playerIndex].ConnectionID);
         Debug.Log("Asking for X");
     }
@@ -597,6 +600,14 @@ public class ServerNetworkController : NetworkController {
         //TODO sanitize
         sGame.CurrEffect.X = x;
         sGame.CurrEffect.ResolveNextSubeffect();
+    }
+
+    public void NotifyEffectX(ServerGame sGame, Card effSrc, int effIndex, int x)
+    {
+        //this puts the cardid in the right place, eff index in right place, x in packet.X
+        Packet outPacket = new Packet(Packet.Command.SetEffectsX, effSrc, effIndex, 0, x, 0);
+        SendPackets(outPacket, outPacket, sGame, effSrc.Controller.ConnectionID);
+        Debug.Log("Sending value of X to client");
     }
 
     public void EnableDecliningTarget(ServerGame sGame, int playerIndex)

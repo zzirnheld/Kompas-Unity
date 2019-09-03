@@ -9,10 +9,10 @@ public class DiscardTargetSubeffect : CardTargetSubeffect
         cardRestriction.subeffect = this;
 
         //check first that there exist valid targets. if there exist no valid targets, finish resolution here
-        if (!parent.thisCard.game.ExistsDiscardTarget(cardRestriction, parent.effectController))
+        if (!parent.thisCard.game.ExistsDiscardTarget(cardRestriction, parent.effectControllerIndex))
         {
             Debug.Log("No target exists for " + parent.thisCard.CardName + " effect");
-            parent.NoTargetExists();
+            parent.EffectImpossible();
             return;
         }
 
@@ -21,7 +21,7 @@ public class DiscardTargetSubeffect : CardTargetSubeffect
         //since only the server resolves effects, this should never be called for a client. 
         parent.serverGame.serverNetworkCtrl.GetDiscardTarget(
                                             parent.serverGame,
-                                            parent.effectController,
+                                            parent.effectControllerIndex,
                                             parent.thisCard,
                                             System.Array.IndexOf(parent.thisCard.Effects, parent),
                                             parent.effectIndex);

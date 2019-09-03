@@ -27,6 +27,7 @@ public class SetXBoardRestrictionSubeffect : Subeffect
                 }
             }
         }
+        Debug.Log("Setting X to " + parent.X);
         parent.ResolveNextSubeffect();
     }
 }

@@ -80,22 +80,36 @@ public class CardRestriction : Restriction
                     if (potentialTarget.Location != Card.CardLocation.Field) return false;
                     break;
                 case CardRestrictions.NLTEX:
-                    if (!(potentialTarget is CharacterCard charC)) return false;
-                    if (charC.N > subeffect.parent.X) return false; //TODO set x as command
+                    if (!(potentialTarget is CharacterCard charC1)) return false;
+                    if (charC1.N > subeffect.parent.X) return false;
                     break;
                 case CardRestrictions.ELTEX:
+                    if (!(potentialTarget is CharacterCard charC2)) return false;
+                    if (charC2.E > subeffect.parent.X) return false;
                     break;
                 case CardRestrictions.SLTEX:
+                    if (!(potentialTarget is CharacterCard charC3)) return false;
+                    if (charC3.S > subeffect.parent.X) return false;
                     break;
                 case CardRestrictions.WLTEX:
+                    if (!(potentialTarget is CharacterCard charC4)) return false;
+                    if (charC4.N > subeffect.parent.X) return false;
                     break;
                 case CardRestrictions.NLTEC:
+                    if (!(potentialTarget is CharacterCard charC5)) return false;
+                    if (charC5.N > constant) return false;
                     break;
                 case CardRestrictions.ELTEC:
+                    if (!(potentialTarget is CharacterCard charC6)) return false;
+                    if (charC6.E > constant) return false;
                     break;
                 case CardRestrictions.SLTEC:
+                    if (!(potentialTarget is CharacterCard charC7)) return false;
+                    if (charC7.S > constant) return false;
                     break;
                 case CardRestrictions.WLTEC:
+                    if (!(potentialTarget is CharacterCard charC8)) return false;
+                    if (charC8.W > constant) return false;
                     break;
                 default:
                     Debug.Log("You forgot to check for " + c);

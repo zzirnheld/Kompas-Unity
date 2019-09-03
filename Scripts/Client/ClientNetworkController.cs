@@ -213,7 +213,10 @@ public class ClientNetworkController : NetworkController {
                                     .spaceRestriction;
                 //TODO display based on that space
                 break;
-            case Packet.Command.X:
+            case Packet.Command.SetEffectsX:
+                Game.mainGame.GetCardFromID(packet.cardID).Effects[packet.EffIndex].X = packet.X;
+                break;
+            case Packet.Command.PlayerSetX:
                 ClientGame.mainClientGame.clientUICtrl.GetXForEffect();
                 break;
             case Packet.Command.TargetAccepted:
@@ -328,7 +331,7 @@ public class ClientNetworkController : NetworkController {
     public void RequestSetX(int x)
     {
         Debug.Log("Requesting to set X to " + x);
-        Packet packet = new Packet(Packet.Command.X, x);
+        Packet packet = new Packet(Packet.Command.PlayerSetX, x);
         Send(packet, mDriver, mConnection, mPipeline);
     }
 

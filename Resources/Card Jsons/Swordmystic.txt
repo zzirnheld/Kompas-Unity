@@ -2,8 +2,39 @@
 "cardType":67,
 "cardName":"Swordmystic",
 "effText":"Once each friendly turn, if I'm adjacent to X Warriors, you can pip revive an S ≤ X Warrior.",
-"primarySerializeableEffect":[],
-"secondarySerializeableEffect":[],
+"effects":[
+	{
+		"subeffectTypes":[200,2,150,4,300],
+		"subeffects":[
+			"{
+				\"boardRestriction\":
+				{
+					\"restrictionsToCheck\":[2,3],
+					\"subtypesInclude\":[\"Warrior\"],
+					\"onBoardRestrictions\":[0]
+				}
+			}",
+			"{
+				\"cardRestriction\":
+				{
+					\"restrictionsToCheck\":[3,101,202]
+				}
+			}",
+			"{
+				\"TargetIndex\":-1
+			}",
+			"{
+				\"spaceRestriction\":
+				{
+					\"restrictionsToCheck\":[0]
+				}
+			}",
+			"{
+				\"spaceIndex\":-1
+			}"
+		]
+	}
+],
 "n":3,
 "e":4,
 "s":5,

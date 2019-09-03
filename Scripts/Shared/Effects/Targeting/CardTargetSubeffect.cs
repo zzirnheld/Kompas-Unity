@@ -21,6 +21,7 @@ public abstract class CardTargetSubeffect : Subeffect
         if (cardRestriction.Evaluate(card))
         {
             parent.targets.Add(card);
+            parent.serverGame.serverNetworkCtrl.AcceptTarget(parent.serverGame, card, parent.EffectController.ConnectionID);
             parent.ResolveNextSubeffect();
             Debug.Log("Adding " + card.CardName + " as target");
             return true;

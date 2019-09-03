@@ -10,7 +10,7 @@ public class HandTargetSubeffect : CardTargetSubeffect
         if (!parent.thisCard.game.ExistsHandTarget(cardRestriction, parent.thisCard.ControllerIndex))
         {
             Debug.Log("No target exists for " + parent.thisCard.CardName + " effect");
-            parent.NoTargetExists();
+            parent.EffectImpossible();
             return;
         }
 
@@ -19,7 +19,7 @@ public class HandTargetSubeffect : CardTargetSubeffect
         //since only the server resolves effects, this should never be called for a client. 
         parent.serverGame.serverNetworkCtrl.GetHandTarget(
                                             parent.serverGame,
-                                            parent.effectController,
+                                            parent.effectControllerIndex,
                                             parent.thisCard,
                                             System.Array.IndexOf(parent.thisCard.Effects, parent),
                                             parent.effectIndex);

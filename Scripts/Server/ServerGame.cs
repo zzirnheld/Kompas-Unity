@@ -156,7 +156,7 @@ public class ServerGame : Game {
     public void PushToStack(Effect eff, int controller)
     {
         eff.serverGame = this;
-        eff.effectController = controller;
+        eff.effectControllerIndex = controller;
         stack.Add(eff);
         stackIndex++;
     }

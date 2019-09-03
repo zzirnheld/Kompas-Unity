@@ -14,7 +14,8 @@ public class Effect
     public Card thisCard;
 
     //who owns the effect. TODO set when a player activates an effect
-    public int effectController;
+    public int effectControllerIndex;
+    public Player EffectController { get { return serverGame.Players[effectControllerIndex]; } }
 
     //current subeffect that's resolving
     public int effectIndex;
@@ -101,7 +102,7 @@ public class Effect
     /// If the effect finishes resolving, this method is called.
     /// Any function can also call this effect to finish resolution early.
     /// </summary>
-    public void FinishResolution()
+    private void FinishResolution()
     {
         doneResolving = true;
         effectIndex = 0;
@@ -111,7 +112,7 @@ public class Effect
     }
 
     //could eventually be renamed, because this same logic could be used for other things that become impossible, while a loop could be going
-    public void NoTargetExists()
+    public void EffectImpossible()
     {
         if (loopSubeffect == null) FinishResolution();
         else loopSubeffect.ExitLoop();

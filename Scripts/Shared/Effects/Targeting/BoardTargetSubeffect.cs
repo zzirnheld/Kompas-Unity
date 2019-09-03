@@ -23,7 +23,7 @@ public class BoardTargetSubeffect : CardTargetSubeffect
         if (parent.thisCard.game.NoValidCardOnBoardTarget(boardRestriction))
         {
             Debug.Log("No target exists for " + parent.thisCard.CardName + " effect");
-            parent.NoTargetExists();
+            parent.EffectImpossible();
             return;
         }
 
@@ -31,7 +31,7 @@ public class BoardTargetSubeffect : CardTargetSubeffect
         //give the card if whose effect it is, the index of the effect, and the index of the subeffect
         //since only the server resolves effects, this should never be called for a client.
        parent.serverGame.serverNetworkCtrl
-            .GetBoardTarget(parent.serverGame, parent.effectController,  parent.thisCard,
+            .GetBoardTarget(parent.serverGame, parent.effectControllerIndex,  parent.thisCard,
                                             System.Array.IndexOf(parent.thisCard.Effects, parent),
                                             parent.effectIndex);
 
