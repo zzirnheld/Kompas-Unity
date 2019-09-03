@@ -34,7 +34,7 @@ public class DeckController : KompasObject
     }
 
     //importing deck
-    public Card InstantiateCard(string json)
+    public Card InstantiateCard(string json, int owner)
     {
 
         //already allocated serializable cards
@@ -55,7 +55,7 @@ public class DeckController : KompasObject
                 serializableChar = JsonUtility.FromJson<SerializableCharCard>(json);
                 charCard = Instantiate(characterCardPrefab).GetComponent<CharacterCard>();
                 charCard.gameObject.SetActive(false);
-                charCard.SetInfo(serializableChar, game);
+                charCard.SetInfo(serializableChar, game, owner);
                 //set image for the card by the name. this method gets the sprite with the given name
                 charCard.SetImage(charCard.CardName);
                 return charCard;
@@ -63,7 +63,7 @@ public class DeckController : KompasObject
                 serializableSpell = JsonUtility.FromJson<SerializableSpellCard>(json);
                 spellCard = Instantiate(spellCardPrefab).GetComponent<SpellCard>();
                 spellCard.gameObject.SetActive(false);
-                spellCard.SetInfo(serializableSpell, game);
+                spellCard.SetInfo(serializableSpell, game, owner);
                 //set image for the card by the name. this method gets the sprite with the given name
                 spellCard.SetImage(spellCard.CardName);
                 return spellCard;
@@ -71,7 +71,7 @@ public class DeckController : KompasObject
                 serializableAug = JsonUtility.FromJson<SerializableAugCard>(json);
                 augCard = Instantiate(augmentCardPrefab).GetComponent<AugmentCard>();
                 augCard.gameObject.SetActive(false);
-                augCard.SetInfo(serializableAug, game);
+                augCard.SetInfo(serializableAug, game, owner);
                 //set image for the card by the name. this method gets the sprite with the given name
                 augCard.SetImage(augCard.CardName);
                 return augCard;
@@ -81,9 +81,9 @@ public class DeckController : KompasObject
         }
     }
 
-    public Card InstantiateBlankCard()
+    public Card InstantiateBlankCard(int owner = 1)
     {
-        return InstantiateCard(Resources.Load<TextAsset>(BLANK_CARD_PATH).text);
+        return InstantiateCard(Resources.Load<TextAsset>(BLANK_CARD_PATH).text, owner);
     }
 
     public void AddBlankCard()
@@ -105,7 +105,7 @@ public class DeckController : KompasObject
 
         Debug.Log("Loading:\n" + fileContents);
 
-        newCard = InstantiateCard(fileContents);
+        newCard = InstantiateCard(fileContents, owner);
         newCard.SetLocation(Card.CardLocation.Deck);
         deck.Add(newCard);
         newCard.ID = id;

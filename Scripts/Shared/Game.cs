@@ -64,7 +64,6 @@ public class Game : MonoBehaviour {
         stackIndex = -1;
     }
 
-
     public Card GetCardFromID(int id)
     {
         if (id > cards.Count) return null;
@@ -72,129 +71,11 @@ public class Game : MonoBehaviour {
         return cards[id];
     }
 
-    #region forwarding calls to correct controller
-    //move cards between locations
-    //TODO add is server checks to discard, topdeck, rehand
-    public virtual void Discard(Card card, int player = 0)
-    {
-        Remove(card, player);
-        players[player].discardCtrl.AddToDiscard(card);
-    }
-
-    public void Discard(int cardID)
-    {
-        Card toDiscard = GetCardFromID(cardID);
-        Discard(toDiscard, toDiscard.Owner);
-    }
-
-    public virtual void Topdeck(Card card, int player = 0)
-    {
-        Remove(card, player);
-        players[player].deckCtrl.PushTopdeck(card);
-    }
-
-    public void Topdeck(int cardID)
-    {
-        Card toTopdeck = GetCardFromID(cardID);
-        Topdeck(toTopdeck, toTopdeck.Owner);
-    }
-
-    public virtual void Rehand(Card card, int player = 0)
-    {
-
-        Remove(card, player);
-        players[player].handCtrl.AddToHand(card);
-    }
-
-    public void Rehand(int cardID)
-    {
-        Card toRehand = GetCardFromID(cardID);
-        Rehand(toRehand, toRehand.Owner);
-    }
-
-    public virtual void Reshuffle(Card card, int player)
-    {
-        players[player].deckCtrl.ShuffleIn(card);
-    }
-
-    public void Reshuffle(int cardID)
-    {
-        Card toReshuffle = GetCardFromID(cardID);
-        Reshuffle(toReshuffle, toReshuffle.Owner);
-    }
-
-    public virtual void Play(Card card, int toX, int toY, int player, bool remove = true)
-    {
-        if(remove) Remove(card, player);
-
-        boardCtrl.Play(card, toX, toY, player);
-    }
-
-    public void Play(Card card, int toX, int toY)
-    {
-        Play(card, toX, toY, card.Owner);
-    }
-
-    public void Play(int cardID, int toX, int toY)
-    {
-        Card toPlay = GetCardFromID(cardID);
-        Play(toPlay, toX, toY, toPlay.Owner);
-    }
-
-    public virtual Card Draw(int player = 0)
+    public Card Draw(int player = 0)
     {
         Card toDraw = players[player].deckCtrl.PopTopdeck();
         players[player].handCtrl.AddToHand(toDraw);
         return toDraw;
-    }
-
-    /// <summary>
-    /// Remove the card from wherever it is
-    /// </summary>
-    public void Remove(Card toRemove, int player = 0)
-    {
-        switch (toRemove.Location)
-        {
-        case Card.CardLocation.Field:
-            boardCtrl.RemoveFromBoard(toRemove);
-                break;
-            case Card.CardLocation.Discard:
-                players[player].discardCtrl.RemoveFromDiscard(toRemove);
-                break;
-            case Card.CardLocation.Hand:
-                players[player].handCtrl.RemoveFromHand(toRemove);
-                break;
-            case Card.CardLocation.Deck:
-                players[player].deckCtrl.RemoveFromDeck(toRemove);
-                break;
-            default:
-                Debug.Log("Don't know how to remove " + toRemove.CardName);
-                break;
-            }
-    }
-
-    //moving
-    public virtual void Move(Card card, int toX, int toY)
-    {
-        boardCtrl.Move(card, toX, toY);
-    }
-
-    public void Move(int cardID, int toX, int toY)
-    {
-        Move(GetCardFromID(cardID), toX, toY);
-    }
-
-    public virtual void Swap(Card card, int toX, int toY)
-    {
-        boardCtrl.Swap(card, toX, toY);
-    }
-
-    public virtual CharacterCard SetNESW(int cardID, int n, int e, int s, int w)
-    {
-        Card toSet = GetCardFromID(cardID);
-        if (!(toSet is CharacterCard charToSet)) return null;
-        charToSet.SetNESW(n, e, s, w);
-        return charToSet;
     }
 
     //ui
@@ -203,8 +84,6 @@ public class Game : MonoBehaviour {
         Debug.Log("Selecting " + card.CardName + " in mode " + targetMode);
         uiCtrl.SelectCard(card, targetMode, fromClick);
     }
-    #endregion forwarding
-
 
 
     //game mechanics

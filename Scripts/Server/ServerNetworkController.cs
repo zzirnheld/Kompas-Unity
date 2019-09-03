@@ -234,18 +234,14 @@ public class ServerNetworkController : NetworkController {
                 break;
             case Packet.Command.Draw:
                 if (!uiCtrl.DebugMode) break;
-
                 DebugDraw(serverGame, playerIndex, connectionID);
                 break;
             case Packet.Command.SetNESW:
                 if (!uiCtrl.DebugMode) break;
-
-                CharacterCard toSetNESW = serverGame.SetNESW(packet.cardID, packet.N, packet.E, packet.S, packet.W);
-                NotifySetNESW(serverGame, toSetNESW);
+                DebugSetNESW(serverGame, packet.cardID, connectionID, packet.N, packet.E, packet.S, packet.W);
                 break;
             case Packet.Command.SetPips:
                 if (!uiCtrl.DebugMode) break;
-
                 DebugSetPips(serverGame, playerIndex, connectionID, packet.Pips);
                 break;
             case Packet.Command.TestTargetEffect:
@@ -307,7 +303,7 @@ public class ServerNetworkController : NetworkController {
                 outPacketInverted = new Packet(Packet.Command.AddAsEnemy, toAugment.CardName, (int)Card.CardLocation.Field, toAugment.ID, x, y, true);
 
             //play the card here
-            sGame.Play(toAugment, invertedX, invertedY);
+            toAugment.Play(invertedX, invertedY, playerIndex);
         }
         else
         {
@@ -339,7 +335,7 @@ public class ServerNetworkController : NetworkController {
         {
             NotifyPlay(sGame, toPlay, x, y, sourceID);
             //play the card here
-            sGame.Play(toPlay, invertedX, invertedY);
+            toPlay.Play(invertedX, invertedY, playerIndex);
         }
         else
         {
@@ -368,7 +364,7 @@ public class ServerNetworkController : NetworkController {
         {
             Debug.Log("move");
             //move the card there
-            sGame.Move(toMove, invertedX, invertedY);
+            toMove.MoveOnBoard(invertedX, invertedY);
             NotifyMove(sGame, toMove, x, y, sourceID);
         }
         else
@@ -429,7 +425,7 @@ public class ServerNetworkController : NetworkController {
     public void DebugTopdeck(ServerGame sGame, int cardID, NetworkConnection sourceID)
     {
         Card toTopdeck = sGame.GetCardFromID(cardID);
-        sGame.Topdeck(toTopdeck, toTopdeck.Owner);
+        toTopdeck.Topdeck();
         NotifyTopdeck(sGame, toTopdeck, sourceID);
     }
 
@@ -448,7 +444,7 @@ public class ServerNetworkController : NetworkController {
     public void DebugDiscard(ServerGame sGame, int cardID, NetworkConnection sourceID)
     {
         Card toDiscard = sGame.GetCardFromID(cardID);
-        sGame.AddToDiscardGivenPlayerID(sourceID, toDiscard);
+        toDiscard.Discard();
         NotifyDiscard(sGame, toDiscard, sourceID);
     }
 
@@ -468,7 +464,7 @@ public class ServerNetworkController : NetworkController {
     public void DebugRehand(ServerGame sGame, int cardID, NetworkConnection sourceID)
     {
         Card toRehand = sGame.GetCardFromID(cardID);
-        sGame.Rehand(toRehand, toRehand.Owner);
+        toRehand.Rehand();
         NotifyRehand(sGame, toRehand, sourceID);
     }
 
@@ -559,12 +555,21 @@ public class ServerNetworkController : NetworkController {
         Debug.Log("Asking for hand target");
     }
 
+    public void DebugSetNESW(ServerGame sGame, int cardID, NetworkConnection connectionID, int n, int e, int s, int w)
+    {
+        Card toSet = sGame.GetCardFromID(cardID);
+        if(!(toSet is CharacterCard charToSet)) return;
+        charToSet.SetNESW(n, e, s, w);
+        NotifySetNESW(sGame, charToSet);
+    }
+
     public void NotifySetNESW(ServerGame sGame, CharacterCard card)
     {
+        if (card == null) return;
         //let everyone know to set NESW
         Packet outPacket = new Packet(Packet.Command.SetNESW, card, card.N, card.E, card.S, card.W);
         Packet outPacketInverted = new Packet(Packet.Command.SetNESW, card, card.N, card.E, card.S, card.W);
-        SendPackets(outPacket, outPacketInverted, sGame, sGame.Players[card.Owner].ConnectionID);
+        SendPackets(outPacket, outPacketInverted, sGame, sGame.Players[card.ControllerIndex].ConnectionID);
     }
 
     public void RequestResponse(ServerGame sGame, int playerIndex)

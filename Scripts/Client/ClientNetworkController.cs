@@ -120,37 +120,41 @@ public class ClientNetworkController : NetworkController {
                 switch (packet.Location)
                 {
                     case Card.CardLocation.Field:
-                        ClientGame.mainClientGame.Play(packet.CardIDToBe, packet.X, packet.Y);
+                        added.Play(packet.X, packet.Y, 1);
                         break;
                     case Card.CardLocation.Discard:
-                        ClientGame.mainClientGame.Discard(packet.CardIDToBe);
+                        added.Discard();
+                        break;
+                    default:
+                        Debug.Log("Tried to add an enemy card to " + packet.Location);
                         break;
                 }
                 break;
             case Packet.Command.Augment: //the play method calls augment if the card is an augment
             case Packet.Command.Play:
                 Debug.Log("Client ordered to play to " + packet.X + ", " + packet.Y);
-                ClientGame.mainClientGame.Play(packet.cardID, packet.X, packet.Y);
+                ClientGame.mainClientGame.GetCardFromID(packet.cardID).Play(packet.X, packet.Y);
                 break;
             case Packet.Command.Move:
-                ClientGame.mainClientGame.Move(packet.cardID, packet.X, packet.Y);
+                ClientGame.mainClientGame.GetCardFromID(packet.cardID).MoveOnBoard(packet.X, packet.Y);
                 //make the ui show the updated n (and other values)
                 ClientGame.mainClientGame.uiCtrl.SelectCard(ClientGame.mainClientGame.uiCtrl.SelectedCard, false);
                 break;
             case Packet.Command.Topdeck:
-                ClientGame.mainClientGame.Topdeck(packet.cardID);
+                ClientGame.mainClientGame.GetCardFromID(packet.cardID).Topdeck();
                 break;
             case Packet.Command.Discard:
-                ClientGame.mainClientGame.Discard(packet.cardID);
+                ClientGame.mainClientGame.GetCardFromID(packet.cardID).Discard();
                 break;
             case Packet.Command.Rehand:
-                ClientGame.mainClientGame.Rehand(packet.cardID);
+                ClientGame.mainClientGame.GetCardFromID(packet.cardID).Rehand();
                 break;
             case Packet.Command.Reshuffle:
-                ClientGame.mainClientGame.Reshuffle(packet.cardID);
+                ClientGame.mainClientGame.GetCardFromID(packet.cardID).Reshuffle();
                 break;
             case Packet.Command.SetNESW:
-                ClientGame.mainClientGame.SetNESW(packet.cardID, packet.N, packet.E, packet.S, packet.W);
+                Card toSet = ClientGame.mainClientGame.GetCardFromID(packet.cardID);
+                (toSet as CharacterCard)?.SetNESW(packet.N, packet.E, packet.S, packet.W);
                 break;
             case Packet.Command.SetPips:
                 ClientGame.mainClientGame.SetFriendlyPips(packet.Pips);

@@ -29,7 +29,10 @@ public abstract class Card : KompasObject {
     protected string cardName;
     protected string effText;
     protected string subtypeText;
-    protected int owner; //TODO differentiate betw owner & ctrler
+    protected int controllerIndex;
+    protected Player controller;
+    protected int ownerIndex;
+    protected Player owner;
     protected CardLocation location;
     protected int id;
     protected string[] subtypes;
@@ -62,7 +65,10 @@ public abstract class Card : KompasObject {
         get { return subtypeText; }
         set { subtypeText = value; }
     }
-    public int Owner { get { return owner; } }
+    public Player Controller { get { return controller; } }
+    public int ControllerIndex { get { return controllerIndex; } }
+    public Player Owner { get { return owner; } }
+    public int OwnerIndex { get { return ownerIndex; } }
     public CardLocation Location { get { return location; } }
     public int ID
     {
@@ -110,13 +116,13 @@ public abstract class Card : KompasObject {
                     game.boardCtrl.RemoveFromBoard(this);
                     break;
                 case CardLocation.Discard:
-                    game.Players[owner].discardCtrl.RemoveFromDiscard(this);
+                    game.Players[controllerIndex].discardCtrl.RemoveFromDiscard(this);
                     break;
                 case CardLocation.Hand:
-                    game.Players[owner].handCtrl.RemoveFromHand(this);
+                    game.Players[controllerIndex].handCtrl.RemoveFromHand(this);
                     break;
                 case CardLocation.Deck:
-                    game.Players[owner].deckCtrl.RemoveFromDeck(this);
+                    game.Players[controllerIndex].deckCtrl.RemoveFromDeck(this);
                     break;
             }
         }
@@ -132,15 +138,15 @@ public abstract class Card : KompasObject {
                 gameObject.SetActive(true);
                 break;
             case CardLocation.Discard:
-                transform.SetParent(game.Players[owner].discardObject.transform);
+                transform.SetParent(game.Players[controllerIndex].discardObject.transform);
                 gameObject.SetActive(true);
                 break;
             case CardLocation.Hand:
-                transform.SetParent(game.Players[owner].handObject.transform);
+                transform.SetParent(game.Players[controllerIndex].handObject.transform);
                 gameObject.SetActive(true);
                 break;
             case CardLocation.Deck:
-                transform.SetParent(game.Players[owner].deckObject.transform);
+                transform.SetParent(game.Players[controllerIndex].deckObject.transform);
                 gameObject.SetActive(false);
                 break;
         }
@@ -174,7 +180,7 @@ public abstract class Card : KompasObject {
         SetImage(cardFileName);
     }
 
-    public virtual void SetInfo(SerializableCard serializedCard, Game game)
+    public virtual void SetInfo(SerializableCard serializedCard, Game game, int ownerIndex)
     {
         this.game = game;
         clientGame = game as ClientGame;
@@ -190,10 +196,11 @@ public abstract class Card : KompasObject {
         //go through each of the serialized effects, 
         for(int i = 0; i < serializedCard.effects.Length; i++)
         {
-            effects[i] = new Effect(serializedCard.effects[i], this, owner);
+            effects[i] = new Effect(serializedCard.effects[i], this, controllerIndex);
         }
 
-        ChangeController(serializedCard.owner);
+        this.owner = game.Players[ownerIndex];
+        this.ownerIndex = ownerIndex;
         if (location == CardLocation.Field) MoveTo(serializedCard.BoardX, serializedCard.BoardY);
         else
         {
@@ -236,10 +243,9 @@ public abstract class Card : KompasObject {
     //misc mechanics methods
     public void ChangeController(int owner)
     {
-        this.owner = owner;
-        if (owner == 0) transform.localEulerAngles = Vector3.zero;
-        else transform.localEulerAngles = new Vector3(0, 0, 180);
-        //TODO anything else?
+        this.controllerIndex = owner;
+        this.controller = game.Players[controllerIndex];
+        transform.eulerAngles = new Vector3(0, 0, 180 * owner);
     }
     public virtual int GetCost() { return 0; }
 
@@ -256,7 +262,7 @@ public abstract class Card : KompasObject {
          * so we change the local x and y. the z coordinate also therefore needs to be negative
          * to show the card above the game board on the screen. */
         transform.localPosition = new Vector3(GridIndexToPos(toX), GridIndexToPos(toY), -0.1f);
-        ChangeController(owner);
+        ChangeController(controllerIndex);
         //if (owner == 0) transform.localEulerAngles = Vector3.zero;
         //else transform.localEulerAngles = new Vector3(0, 0, 180);
     }
@@ -266,11 +272,11 @@ public abstract class Card : KompasObject {
         if (location == CardLocation.Deck)
             gameObject.SetActive(false);
         else if (location == CardLocation.Discard)
-            transform.localPosition = new Vector3(0, 0, (float) game.Players[owner].discardCtrl.IndexOf(this) / -60f);
+            transform.localPosition = new Vector3(0, 0, (float) game.Players[controllerIndex].discardCtrl.IndexOf(this) / -60f);
         else if (location == CardLocation.Field)
             transform.localPosition = new Vector3(GridIndexToPos(boardX), GridIndexToPos(boardY), -0.1f);
         else if (location == CardLocation.Hand)
-            game.Players[owner].handCtrl.SpreadOutCards();
+            game.Players[controllerIndex].handCtrl.SpreadOutCards();
     }
 
     //interaction methods
@@ -294,6 +300,76 @@ public abstract class Card : KompasObject {
             e.ResetForTurn();
         }
     }
+
+    #region move card between areas
+    private void Remove()
+    {
+        switch (location)
+        {
+            case CardLocation.Field:
+                game.boardCtrl.RemoveFromBoard(this);
+                break;
+            case CardLocation.Discard:
+                controller.discardCtrl.RemoveFromDiscard(this);
+                break;
+            case CardLocation.Hand:
+                controller.handCtrl.RemoveFromHand(this);
+                break;
+            case CardLocation.Deck:
+                controller.deckCtrl.RemoveFromDeck(this);
+                break;
+            default:
+                Debug.Log("Tried to remove card from " + location);
+                break;
+        }
+    }
+
+    public void Discard()
+    {
+        Remove();
+        controller.discardCtrl.AddToDiscard(this);
+    }
+
+    public void Rehand(int controllerIndex)
+    {
+        Remove();
+        ChangeController(controllerIndex);
+        controller.handCtrl.AddToHand(this);
+    }
+
+    public void Rehand()
+    {
+        Rehand(controllerIndex);
+    }
+
+    public void Reshuffle()
+    {
+        Remove();
+        controller.deckCtrl.ShuffleIn(this);
+    }
+
+    public void Topdeck()
+    {
+        Remove();
+        controller.deckCtrl.PushTopdeck(this);
+    }
+
+    public void Play(int toX, int toY, int controllerIndex)
+    {
+        Remove();
+        game.boardCtrl.Play(this, toX, toY, controllerIndex);
+    }
+
+    public void Play(int toX, int toY)
+    {
+        Play(toX, toY, controllerIndex);
+    }
+
+    public void MoveOnBoard(int toX, int toY)
+    {
+        game.boardCtrl.Move(this, toX, toY);
+    }
+    #endregion move card between areas
 
     #region MouseStuff
     //actual interaction
@@ -337,7 +413,7 @@ public abstract class Card : KompasObject {
                 int x = PosToGridIndex(transform.localPosition.x);
                 int y = PosToGridIndex(transform.localPosition.y);
                 //then check if it's an attack or not
-                if (game.boardCtrl.GetCharAt(x, y) != null && game.boardCtrl.GetCharAt(x, y).Owner != owner)
+                if (game.boardCtrl.GetCharAt(x, y) != null && game.boardCtrl.GetCharAt(x, y).ControllerIndex != controllerIndex)
                     clientGame.clientNetworkCtrl.RequestAttack(this, x, y);
                 else
                     clientGame.clientNetworkCtrl.RequestMove(this, x, y);
@@ -365,5 +441,5 @@ public abstract class Card : KompasObject {
             clientGame.clientNetworkCtrl.RequestRehand(this);
         }
     }
-#endregion MouseStuff
+    #endregion MouseStuff
 }

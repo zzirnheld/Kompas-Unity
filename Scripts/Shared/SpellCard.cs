@@ -28,8 +28,8 @@ public class SpellCard : Card
     public SerializableSpellCard GetSerializableVersion()
     {
         int index = -1;
-        if (location == CardLocation.Hand) index = game.Players[owner].handCtrl.IndexOf(this);
-        else if (location == CardLocation.Discard) index = game.Players[owner].discardCtrl.IndexOf(this);
+        if (location == CardLocation.Hand) index = game.Players[controllerIndex].handCtrl.IndexOf(this);
+        else if (location == CardLocation.Discard) index = game.Players[controllerIndex].discardCtrl.IndexOf(this);
 
         SerializableSpellCard serializableSpell = new SerializableSpellCard
         {
@@ -40,7 +40,7 @@ public class SpellCard : Card
             d = d,
 
             location = location,
-            owner = owner,
+            owner = controllerIndex,
             BoardX = boardX,
             BoardY = boardY,
             subtypeText = subtypeText,
@@ -50,7 +50,7 @@ public class SpellCard : Card
     }
 
     //set data
-    public override void SetInfo(SerializableCard serializedCard, Game game)
+    public override void SetInfo(SerializableCard serializedCard, Game game, int ownerIndex)
     {
         if (!(serializedCard is SerializableSpellCard serializedSpell)) return;
 
@@ -59,7 +59,7 @@ public class SpellCard : Card
         spellSubtype = serializedSpell.subtype;
         fast = serializedSpell.fast;
 
-        base.SetInfo(serializedCard, game);
+        base.SetInfo(serializedCard, game, ownerIndex);
     }
 
 
@@ -75,7 +75,7 @@ public class SpellCard : Card
          * so we change the local x and y. the z coordinate also therefore needs to be negative
          * to show the card above the game board on the screen. */
         transform.localPosition = new Vector3(GridIndexToPos(toX), GridIndexToPos(toY), -0.03f);
-        if (owner == 0) transform.localEulerAngles = new Vector3(0, 0, 90);
+        if (controllerIndex == 0) transform.localEulerAngles = new Vector3(0, 0, 90);
         else transform.localEulerAngles = new Vector3(0, 0, 270);
 
     }

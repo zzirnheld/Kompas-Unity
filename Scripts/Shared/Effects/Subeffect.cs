@@ -7,6 +7,8 @@ public abstract class Subeffect
 {
     [System.NonSerialized] public Effect parent;
 
+    public ServerGame ServerGame { get { return parent.serverGame; } }
+
     /// <summary>
     /// parent resolve method. at the end, needs to call resolve subeffect in parent
     /// if it's an if, it does a specific index

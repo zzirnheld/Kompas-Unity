@@ -6,7 +6,8 @@ public class Reshuffle : CardChangeStateSubeffect
 {
     public override void Resolve()
     {
-        parent.serverGame.Reshuffle(Target, parent.effectController);
+        Target.Reshuffle();
+        ServerGame?.serverNetworkCtrl.NotifyReshuffle(ServerGame, Target, Target.Controller.ConnectionID);
         parent.ResolveNextSubeffect();
     }
 }

@@ -135,7 +135,7 @@ public class BoardController : KompasObject
 
     public void Play(Card toPlay, int toX, int toY)
     {
-        Play(toPlay, toX, toY, toPlay.Owner);
+        Play(toPlay, toX, toY, toPlay.ControllerIndex);
     }
 
     //movement
@@ -200,7 +200,7 @@ public class BoardController : KompasObject
         {
             if(c != null && c is SpellCard spellC && spellC.SpellSubtype == SpellCard.SpellType.Simple)
             {
-                game.Discard(spellC, spellC.Owner);
+                spellC.Discard();
             }
         }
     }

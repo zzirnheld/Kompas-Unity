@@ -103,40 +103,6 @@ public class ServerGame : Game {
         serverNetworkCtrl.NotifySetPips(this, turnPlayer, pipsToSet, players[turnPlayer].ConnectionID);
     }
 
-    //do action given id
-    #region playerIDActions
-    public void SetPipsGivenPlayerID(NetworkConnection connectionID, int numPips)
-    {
-        GetPlayerFromID(connectionID).pips = numPips;
-    }
-
-    public Card RemoveFromHandGivenPlayerID(NetworkConnection connectionID, int index)
-    {
-        return GetPlayerFromID(connectionID).handCtrl.RemoveFromHandAt(index);
-    }
-
-    public Card RemoveFromDiscardGivenPlayerID(NetworkConnection connectionID, int index)
-    {
-        return GetPlayerFromID(connectionID).discardCtrl.CardAt(index, true); //true for remove
-    }
-
-    public Card RemoveFromDeckGivenPlayerID(NetworkConnection connectionID, string name)
-    {
-        return GetPlayerFromID(connectionID).deckCtrl.RemoveCardWithName(name);
-    }
-
-    public Card DrawGivenPlayerID(NetworkConnection connectionID)
-    {
-        return Draw(GetPlayerIndexFromID(connectionID));
-    }
-
-    public void AddToDiscardGivenPlayerID(NetworkConnection connectionID, Card card)
-    {
-        Debug.Log("Discarding to discard of " + GetPlayerFromID(connectionID).index + ", card owner " + card.Owner);
-        GetPlayerFromID(connectionID).discardCtrl.AddToDiscard(card);
-    }
-    #endregion
-
     //later, upgrade this with checking if the square is valid (adj or special case)
     #region check validity
     public bool ValidBoardPlay(Card card, int toX, int toY)
@@ -162,7 +128,7 @@ public class ServerGame : Game {
         //+ boardCtrl.GetCardAt(toX, toY).Owner + " tomove owner " + toMove.Owner);
         if (!(toMove is CharacterCard charToMove)) return false;
         return toMove.DistanceTo(toX, toY) <= charToMove.N
-            && (boardCtrl.GetCardAt(toX, toY) == null || boardCtrl.GetCardAt(toX, toY).Owner == toMove.Owner);
+            && (boardCtrl.GetCardAt(toX, toY) == null || boardCtrl.GetCardAt(toX, toY).ControllerIndex == toMove.ControllerIndex);
     }
 
     public bool ValidAttack(Card toMove, int toX, int toY)
@@ -265,60 +231,4 @@ public class ServerGame : Game {
         }
     }
     #endregion the stack
-
-    #region override game mechanics
-    public override void Discard(Card card, int player = 0)
-    {
-        base.Discard(card, player);
-        serverNetworkCtrl.NotifyDiscard(this, card, players[player].ConnectionID);
-    }
-
-    public override Card Draw(int player = 0)
-    {
-        Card c = base.Draw(player);
-        serverNetworkCtrl.NotifyDraw(this, c, players[player].ConnectionID);
-        return c;
-    }
-
-    public override void Move(Card card, int toX, int toY)
-    {
-        base.Move(card, toX, toY);
-        //TODO change N
-        serverNetworkCtrl.NotifyMove(this, card, toX, toY, players[card.Owner].ConnectionID);
-    }
-
-    public override void Play(Card card, int toX, int toY, int player, bool remove = true)
-    {
-        base.Play(card, toX, toY, player, remove);
-        int invertedX = serverNetworkCtrl.InvertIndexForController(toX, player);
-        int invertedY = serverNetworkCtrl.InvertIndexForController(toY, player);
-        serverNetworkCtrl.NotifyPlay(this, card, invertedX, invertedY, players[player].ConnectionID);
-    }
-
-    public override void Rehand(Card card, int player = 0)
-    {
-        base.Rehand(card, player);
-        serverNetworkCtrl.NotifyRehand(this, card, players[player].ConnectionID);
-    }
-
-    public override CharacterCard SetNESW(int cardID, int n, int e, int s, int w)
-    {
-        CharacterCard c =  base.SetNESW(cardID, n, e, s, w);
-        if(c != null) serverNetworkCtrl.NotifySetNESW(this, c);
-        return c;
-    }
-
-    public override void Swap(Card card, int toX, int toY)
-    {
-        base.Swap(card, toX, toY);
-        //TODO change N
-        serverNetworkCtrl.NotifyMove(this, card, toX, toY, players[card.Owner].ConnectionID);
-    }
-
-    public override void Topdeck(Card card, int player = 0)
-    {
-        base.Topdeck(card, player);
-        serverNetworkCtrl.NotifyTopdeck(this, card, players[player].ConnectionID);
-    }
-    #endregion override game mechanics
 }
