@@ -245,13 +245,12 @@ public abstract class Card : KompasObject {
     {
         this.controllerIndex = owner;
         this.controller = game.Players[controllerIndex];
-        transform.eulerAngles = new Vector3(0, 0, 180 * owner);
+        transform.localEulerAngles = new Vector3(0, 0, 180 * owner);
     }
     public virtual int GetCost() { return 0; }
 
     /// <summary>
-    /// sets this card's x and y values and updates where its gameobject is.
-    /// does NOT set M if the card is a character
+    /// Sets this card's x and y values and updates its transform
     /// </summary>
     public virtual void MoveTo(int toX, int toY)
     {
@@ -263,8 +262,6 @@ public abstract class Card : KompasObject {
          * to show the card above the game board on the screen. */
         transform.localPosition = new Vector3(GridIndexToPos(toX), GridIndexToPos(toY), -0.1f);
         ChangeController(controllerIndex);
-        //if (owner == 0) transform.localEulerAngles = Vector3.zero;
-        //else transform.localEulerAngles = new Vector3(0, 0, 180);
     }
 
     public void PutBack()
