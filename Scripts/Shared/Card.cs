@@ -191,10 +191,11 @@ public abstract class Card : KompasObject {
         location = serializedCard.location;
         subtypes = serializedCard.subtypes;
 
-        effects = new Effect[serializedCard.effects.Length];
+        //could also be      serializedCard.effects == null ? serializedCard.effects.Length : 0
+        effects = new Effect[serializedCard.effects?.Length ?? 0];
 
         //go through each of the serialized effects, 
-        for(int i = 0; i < serializedCard.effects.Length; i++)
+        for(int i = 0; i < (serializedCard.effects?.Length ?? 0); i++)
         {
             effects[i] = new Effect(serializedCard.effects[i], this, controllerIndex);
         }

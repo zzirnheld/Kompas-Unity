@@ -2,8 +2,9 @@
 "cardType":67,
 "cardName":"Swordguild Bannerman",
 "effText":"When I die, reshuffle a dead Warrior for each Warrior adjacent to where I died.",
-"primarySerializeableEffect":[],
-"secondarySerializeableEffect":[],
+"effects":[
+	
+],
 "n":3,
 "e":4,
 "s":4,

@@ -2,8 +2,6 @@
 "cardType":67,
 "cardName":"Swordguild Medic",
 "effText":"Once each friendly turn, I can give an adjacent Warrior +1E.",
-"primarySerializeableEffect":[],
-"secondarySerializeableEffect
 "effects":[
 	{
 		"subeffectTypes":[0,1],
