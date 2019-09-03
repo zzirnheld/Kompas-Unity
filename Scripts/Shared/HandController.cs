@@ -29,23 +29,19 @@ public class HandController : KompasObject
     public void RemoveFromHand(Card card)
     {
         hand.Remove(card);
+        SpreadOutCards();
     }
 
     public Card RemoveFromHandAt(int index)
     {
         if (index < 0 || index >= hand.Count) return null;
-        Card toReturn = hand[index];
-        hand.RemoveAt(index);
-        SpreadOutCards();
-        return toReturn;
+        return RemoveFromHand(hand[index]);
     }
 
     public Card RemoveRandomCard()
     {
         int randomIndex = rng.Next(hand.Count);
-        Card toReturn = hand[randomIndex];
-        RemoveFromHandAt(randomIndex);
-        return toReturn;
+        return RemoveFromHandAt(randomIndex);
     }
 
     public void SpreadOutCards()
