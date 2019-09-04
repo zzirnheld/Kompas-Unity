@@ -6,8 +6,9 @@ public class DiscardSubeffect : CardChangeStateSubeffect
 {
     public override void Resolve()
     {
-        Target.Discard();
+        Debug.Log("Resolving discard subeffect");
         ServerGame?.serverNetworkCtrl.NotifyDiscard(ServerGame, Target, Target.Controller.ConnectionID);
+        Target.Discard();
         parent.ResolveNextSubeffect();
     }
 }

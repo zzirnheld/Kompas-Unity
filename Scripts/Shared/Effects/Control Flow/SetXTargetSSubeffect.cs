@@ -13,6 +13,7 @@ public class SetXTargetSSubeffect : Subeffect
         }
 
         parent.X = charTarget.S;
+        ServerGame.serverNetworkCtrl.NotifyEffectX(ServerGame, parent.thisCard, parent.EffectIndex, parent.X);
         parent.ResolveNextSubeffect();
     }
 }

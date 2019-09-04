@@ -28,4 +28,17 @@ public class DiscardTargetSubeffect : CardTargetSubeffect
 
         //then wait for the network controller to call the continue method
     }
+
+    public override bool AddTargetIfLegal(Card card)
+    {
+        if (base.AddTargetIfLegal(card)) return true;
+
+        parent.serverGame.serverNetworkCtrl.GetDiscardTarget(
+                                            parent.serverGame,
+                                            parent.effectControllerIndex,
+                                            parent.thisCard,
+                                            parent.EffectIndex,
+                                            parent.subeffectIndex);
+        return false;
+    }
 }

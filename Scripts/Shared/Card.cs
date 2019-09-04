@@ -402,7 +402,7 @@ public abstract class Card : KompasObject {
     //actual interaction
     public override void OnClick()
     {
-        game.SelectCard(this, true);
+        game.uiCtrl.SelectCard(this, true);
     }
     public override void OnHover()
     {
@@ -413,7 +413,7 @@ public abstract class Card : KompasObject {
     /// </summary>
     public override void OnDrag(Vector3 mousePos)
     {
-        if (game.targetMode != Game.TargetMode.NoTargeting) return;
+        if (game.targetMode != Game.TargetMode.Free) return;
 
         if (!dragging)
         {
@@ -425,7 +425,7 @@ public abstract class Card : KompasObject {
     }
     public override void OnDragEnd(Vector3 mousePos)
     {
-        if (game.targetMode != Game.TargetMode.NoTargeting) return;
+        if (game.targetMode != Game.TargetMode.Free) return;
         dragging = false; //dragging has ended
 
         //to be able to use local coordinates to see if you're on the board, set parent to game board

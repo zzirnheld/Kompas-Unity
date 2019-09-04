@@ -19,13 +19,16 @@ public class ClientNetworkController : NetworkController {
     private bool Hosting = false;
     private bool Connected = false;
 
+    private long timeTargetAccepted;
+    private bool changeTargetMode = false;
+
     public Packet lastPacket;
 
     public Restriction lastRestriction;
 
     public void Start()
     {
-        
+        timeTargetAccepted = DateTime.Now.Ticks;
     }
 
     public void Connect()
@@ -56,8 +59,11 @@ public class ClientNetworkController : NetworkController {
             return;
         }
 
-        //keeps the connection alive
-        //
+        if (changeTargetMode && DateTime.Now.Ticks - timeTargetAccepted >= 5000000)
+        {
+            ClientGame.mainClientGame.targetMode = Game.TargetMode.Free;
+            changeTargetMode = false;
+        }
 
         DataStreamReader reader;
         NetworkEvent.Type cmd;
@@ -221,7 +227,8 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.mainClientGame.clientUICtrl.GetXForEffect();
                 break;
             case Packet.Command.TargetAccepted:
-                ClientGame.mainClientGame.targetMode = Game.TargetMode.NoTargeting;
+                timeTargetAccepted = DateTime.Now.Ticks;
+                changeTargetMode = true;
                 break;
             case Packet.Command.EnableDecliningTarget:
                 ClientGame.mainClientGame.clientUICtrl.EnableDecliningTarget();

@@ -34,7 +34,6 @@ public class SpaceTargetSubeffect : Subeffect
         if (spaceRestriction.Evaluate(x, y))
         {
             parent.coords.Add(new Vector2Int(x, y));
-            parent.serverGame.serverNetworkCtrl.AcceptSpaceTarget(parent.serverGame, x, y, parent.EffectController.ConnectionID);
             parent.ResolveNextSubeffect();
             Debug.Log("Adding " + x + ", " + y + " as coords");
             return true;

@@ -78,12 +78,6 @@ public class ClientGame : Game {
         clientNetworkCtrl.RequestPlay(card, toX, toY);
     }
 
-    //ui
-    public override void SelectCard(Card card, bool fromClick)
-    {
-        uiCtrl.SelectCard(card, fromClick);
-    }
-
     public void TargetCard(Card card)
     {
         //if the player is currently looking for a target on the board,
@@ -95,8 +89,8 @@ public class ClientGame : Game {
                 //if it fits the restriction, send the proposed target to the server
                 clientNetworkCtrl.RequestTarget(card);
 
-                //and change the game's target mode
-                targetMode = TargetMode.NoTargeting;
+                //and change the game's target mode TODO should this do this
+                targetMode = TargetMode.OnHold;
             }
         }
     }

@@ -40,6 +40,7 @@ public class BoardTargetSubeffect : CardTargetSubeffect
 
     public override bool AddTargetIfLegal(Card card)
     {
+        Debug.Log("Adding target if legal board target subeff " + card.CardName);
         //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
         if (boardRestriction.Evaluate(card))
         {
@@ -47,6 +48,15 @@ public class BoardTargetSubeffect : CardTargetSubeffect
             parent.ResolveNextSubeffect();
             Debug.Log("Adding " + card.CardName + " as target");
             return true;
+        }
+        else
+        {
+            parent.serverGame.serverNetworkCtrl.GetBoardTarget(
+                                                 parent.serverGame, 
+                                                 parent.effectControllerIndex, 
+                                                 parent.thisCard,
+                                                 parent.EffectIndex,
+                                                 parent.subeffectIndex);
         }
 
         return false;

@@ -7,7 +7,7 @@ public class Game : MonoBehaviour {
 
     public static Game mainGame;
 
-    public enum TargetMode { NoTargeting, BoardTarget, HandTarget, SpaceTarget }
+    public enum TargetMode { Free, OnHold, BoardTarget, HandTarget, SpaceTarget }
 
     //other scripts
     public MouseController mouseCtrl;
@@ -42,7 +42,7 @@ public class Game : MonoBehaviour {
         set => currEffect = value;
     }
 
-    public TargetMode targetMode = TargetMode.NoTargeting;
+    public TargetMode targetMode = TargetMode.Free;
 
     private void Start()
     {
@@ -77,14 +77,6 @@ public class Game : MonoBehaviour {
         players[player].handCtrl.AddToHand(toDraw);
         return toDraw;
     }
-
-    //ui
-    public virtual void SelectCard(Card card, bool fromClick)
-    {
-        Debug.Log("Selecting " + card.CardName + " in mode " + targetMode);
-        uiCtrl.SelectCard(card, targetMode, fromClick);
-    }
-
 
     //game mechanics
     //checking for valid target

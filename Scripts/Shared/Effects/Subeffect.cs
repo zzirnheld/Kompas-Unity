@@ -97,6 +97,9 @@ public abstract class Subeffect
             case SerializableEffect.SubeffectType.PayPipsByTargetCost:
                 toReturn = JsonUtility.FromJson<PayPipsTargetCostSubeffect>(subeffJson);
                 break;
+            case SerializableEffect.SubeffectType.DiscardCard:
+                toReturn = JsonUtility.FromJson<DiscardSubeffect>(subeffJson);
+                break;
             default:
                 Debug.Log("Unrecognized effect type enum for loading effect in effect constructor");
                 break;

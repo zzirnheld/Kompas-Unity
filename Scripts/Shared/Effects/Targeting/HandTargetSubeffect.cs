@@ -21,9 +21,22 @@ public class HandTargetSubeffect : CardTargetSubeffect
                                             parent.serverGame,
                                             parent.effectControllerIndex,
                                             parent.thisCard,
-                                            System.Array.IndexOf(parent.thisCard.Effects, parent),
+                                            parent.EffectIndex,
                                             parent.subeffectIndex);
 
         //then wait for the network controller to call the continue method
+    }
+
+    public override bool AddTargetIfLegal(Card card)
+    {
+        if (base.AddTargetIfLegal(card)) return true;
+
+        parent.serverGame.serverNetworkCtrl.GetHandTarget(
+                                            parent.serverGame,
+                                            parent.effectControllerIndex,
+                                            parent.thisCard,
+                                            parent.EffectIndex,
+                                            parent.subeffectIndex);
+        return false;
     }
 }

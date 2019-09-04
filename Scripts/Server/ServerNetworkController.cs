@@ -166,7 +166,7 @@ public class ServerNetworkController : NetworkController {
         ServerGame serverGame = gamesByConnectionID[connectionID];
         int playerIndex = serverGame.GetPlayerIndexFromID(connectionID);
         //packet.InvertForController(playerIndex);
-        //Debug.Log("packet command is " + packet.command + " for player index " + playerIndex);
+        if(packet.command != Packet.Command.Nothing) Debug.Log("packet command is " + packet.command + " for player index " + playerIndex);
 
         //switch between all the possible requests for the server to handle.
         switch (packet.command)
@@ -583,14 +583,9 @@ public class ServerNetworkController : NetworkController {
     /// <summary>
     /// Lets that player know their target has been accepted. called if the Target method returns True
     /// </summary>
-    public void AcceptTarget(ServerGame sGame, Card target, NetworkConnection connectionID)
+    public void AcceptTarget(ServerGame sGame, NetworkConnection connectionID)
     {
-        SendPackets(new Packet(Packet.Command.TargetAccepted, target), null, sGame, connectionID);
-    }
-
-    public void AcceptSpaceTarget(ServerGame sGame, int x, int y, NetworkConnection connectionID)
-    {
-        SendPackets(new Packet(Packet.Command.SpaceTargetAccepted, x, y), null, sGame, connectionID);
+        SendPackets(new Packet(Packet.Command.TargetAccepted), null, sGame, connectionID);
     }
 
     public void GetXForEffect(ServerGame sGame, int playerIndex, Card effSource, int effIndex, int subeffIndex)
