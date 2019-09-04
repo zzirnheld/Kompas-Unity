@@ -119,7 +119,7 @@ public class Packet {
     /// <summary>
     /// Used for choosing coordinates/spaces
     /// </summary>
-    public Packet(Command command, int x, int y, bool invert = false)
+    public Packet(Command command, int x, int y, bool invert = false) : this(command)
     {
         //this is used for the target packet
         args[0] = x;

@@ -3202,7 +3202,7 @@ GameObject:
   - component: {fileID: 665162527}
   - component: {fileID: 665162526}
   - component: {fileID: 665162530}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Board
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4909,7 +4909,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -20}
-  m_SizeDelta: {x: 300, y: 30}
+  m_SizeDelta: {x: 400, y: 30}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1029930859
 MonoBehaviour:

@@ -201,11 +201,13 @@ public class ServerNetworkController : NetworkController {
                 }
                 break;
             case Packet.Command.SpaceTarget:
-                if(serverGame.CurrEffect != null && serverGame.CurrEffect.CurrSubeffect is SpaceTargetSubeffect spaceEff)
+                Debug.Log("Receieved space target " + packet.X + packet.Y);
+                if (serverGame.CurrEffect != null && serverGame.CurrEffect.CurrSubeffect is SpaceTargetSubeffect spaceEff)
                 {
                     packet.InvertForController(playerIndex);
                     spaceEff.SetTargetIfValid(packet.X, packet.Y);
                 }
+                else Debug.Log("curr effect null? " + (serverGame.CurrEffect == null) + " or not spacetgtsubeff? " + (serverGame.CurrEffect.CurrSubeffect is SpaceTargetSubeffect));
                 break;
             case Packet.Command.PlayerSetX:
                 SetXForEffect(serverGame, packet.EffectX);
@@ -268,7 +270,7 @@ public class ServerNetworkController : NetworkController {
         SendPackets(outPacket, outPacketInverted, sGame, sourceID);
     }
 
-    public int InvertIndexForController(int index, int controller)
+    public static int InvertIndexForController(int index, int controller)
     {
         if (controller == 0) return index;
         else return 6 - index;
@@ -310,7 +312,7 @@ public class ServerNetworkController : NetworkController {
         SendPackets(outPacket, outPacketInverted, sGame, sourceID);
     }
 
-    public void NotifyPlay(ServerGame sGame, Card toPlay, int x, int y, NetworkConnection sourceID)
+    public void NotifyPlay(ServerGame sGame, int controller, Card toPlay, int x, int y, NetworkConnection sourceID)
     {
         //tell everyone to do it
         Packet outPacket = new Packet(Packet.Command.Play, toPlay, x, y);
@@ -319,6 +321,9 @@ public class ServerNetworkController : NetworkController {
             outPacketInverted = new Packet(Packet.Command.Play, toPlay, x, y, true);
         else
             outPacketInverted = new Packet(Packet.Command.AddAsEnemy, toPlay.CardName, (int)Card.CardLocation.Field, toPlay.ID, x, y, true);
+
+        outPacket.InvertForController(controller);
+        outPacketInverted.InvertForController(controller);
         SendPackets(outPacket, outPacketInverted, sGame, sourceID);
     }
 
@@ -331,7 +336,7 @@ public class ServerNetworkController : NetworkController {
         //if it's not a valid place to do, return
         if (uiCtrl.DebugMode || sGame.ValidBoardPlay(toPlay, invertedX, invertedY))
         {
-            NotifyPlay(sGame, toPlay, x, y, sourceID);
+            NotifyPlay(sGame, playerIndex, toPlay, invertedX, invertedY, sourceID);
             //play the card here
             toPlay.Play(invertedX, invertedY, playerIndex);
         }
@@ -550,7 +555,7 @@ public class ServerNetworkController : NetworkController {
     {
         Packet outPacket = new Packet(Packet.Command.SpaceTarget, effSrc, effIndex, subeffIndex);
         SendPackets(outPacket, null, sGame, sGame.Players[playerIndex].ConnectionID);
-        Debug.Log("Asking for hand target");
+        Debug.Log("Asking for space target");
     }
 
     public void DebugSetNESW(ServerGame sGame, int cardID, NetworkConnection connectionID, int n, int e, int s, int w)

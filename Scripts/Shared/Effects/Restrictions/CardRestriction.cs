@@ -46,7 +46,7 @@ public class CardRestriction : Restriction
 
         foreach(CardRestrictions c in restrictionsToCheck)
         {
-            Debug.Log("Considering restriction " + c);
+            Debug.Log("Considering restriction " + c + " when X equals " + subeffect.parent.X);
             switch (c)
             {
                 case CardRestrictions.NameIs:
@@ -116,6 +116,8 @@ public class CardRestriction : Restriction
                     return false;
             }
         }
+
+        Debug.Log(potentialTarget.CardName + " fits the restriction");
         return true;
     }
 }

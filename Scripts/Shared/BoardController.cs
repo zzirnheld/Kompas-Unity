@@ -194,6 +194,16 @@ public class BoardController : KompasObject
         return false;
     }
 
+    public bool CanSummonTo(int playerIndex, int x, int y)
+    {
+        foreach(Card c in cards)
+        {
+            if (c != null && c.IsAdjacentTo(x, y) && c.ControllerIndex == playerIndex) return true;
+        }
+
+        return false;
+    }
+
     public void DiscardSimples()
     {
         foreach(Card c in cards)
@@ -254,7 +264,7 @@ public class BoardController : KompasObject
     {
         if (game.targetMode != Game.TargetMode.SpaceTarget) return;
         //if someone wants a space target, get the x/y coordinates clicked
-        Vector3 intersection = game.mouseCtrl.GetRayIntersectBoard();
+        Vector3 intersection = transform.InverseTransformPoint(game.mouseCtrl.GetRayIntersectBoard());
         int xIntersection = PosToGridIndex(intersection.x);
         int yIntersection = PosToGridIndex(intersection.y);
         //then, if the game is a clientgame, request a space target

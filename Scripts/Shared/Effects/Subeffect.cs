@@ -24,7 +24,7 @@ public abstract class Subeffect
     public void ContinueResolutionWith(Card card)
     {
         parent.targets.Add(card);
-        parent.ResolveSubeffect(parent.effectIndex + 1);
+        parent.ResolveSubeffect(parent.subeffectIndex + 1);
     }
 
     public virtual void Initialize()

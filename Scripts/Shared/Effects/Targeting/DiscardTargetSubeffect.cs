@@ -23,8 +23,8 @@ public class DiscardTargetSubeffect : CardTargetSubeffect
                                             parent.serverGame,
                                             parent.effectControllerIndex,
                                             parent.thisCard,
-                                            System.Array.IndexOf(parent.thisCard.Effects, parent),
-                                            parent.effectIndex);
+                                            parent.EffectIndex,
+                                            parent.subeffectIndex);
 
         //then wait for the network controller to call the continue method
     }

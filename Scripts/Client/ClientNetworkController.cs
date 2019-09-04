@@ -101,7 +101,7 @@ public class ClientNetworkController : NetworkController {
         if (packet.command != Packet.Command.Nothing)
         {
             Debug.Log("Parsing command " + packet.command + " for " + packet.cardID);
-            ClientGame.mainClientGame.uiCtrl.CurrentStateString = "Parsing command " + packet.command + " for " + packet.cardID;
+            ClientGame.mainClientGame.uiCtrl.CurrentStateString = "Parsing command " + packet.command + " for card id" + packet.cardID;
         }
 
         lastPacket = packet;
@@ -214,6 +214,7 @@ public class ClientNetworkController : NetworkController {
                 //TODO display based on that space
                 break;
             case Packet.Command.SetEffectsX:
+                Debug.Log("Setting X to " + packet.X);
                 Game.mainGame.GetCardFromID(packet.cardID).Effects[packet.EffIndex].X = packet.X;
                 break;
             case Packet.Command.PlayerSetX:

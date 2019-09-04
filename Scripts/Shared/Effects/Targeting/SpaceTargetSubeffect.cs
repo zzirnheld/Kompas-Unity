@@ -25,7 +25,7 @@ public class SpaceTargetSubeffect : Subeffect
         parent.serverGame.serverNetworkCtrl
             .GetSpaceTarget(parent.serverGame, parent.effectControllerIndex, parent.thisCard,
                                             System.Array.IndexOf(parent.thisCard.Effects, parent),
-                                            parent.effectIndex);
+                                            parent.subeffectIndex);
     }
 
     public bool SetTargetIfValid(int x, int y)
@@ -39,6 +39,7 @@ public class SpaceTargetSubeffect : Subeffect
             Debug.Log("Adding " + x + ", " + y + " as coords");
             return true;
         }
+        else Debug.Log(x + ", " + y + " not valid");
 
         return false;
     }

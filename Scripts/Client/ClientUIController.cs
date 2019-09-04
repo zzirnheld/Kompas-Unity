@@ -110,8 +110,12 @@ public class ClientUIController : UIController
 
     public void StartSearch(List<Card> list, bool targeting)
     {
-        Debug.Log("Start search called");
+        Game.mainGame.uiCtrl.currentStateText.text += ", Starting search";
+        Debug.Log("Start search called for list of length " + list.Count);
+        //if already searching, dont start another search?
         if (toSearch.Count != 0) return;
+        //if the list is empty, don't search
+        if (list.Count == 0) return;
         Debug.Log("To search count nonzero");
 
         toSearch = list;

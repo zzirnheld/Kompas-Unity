@@ -18,7 +18,9 @@ public class Effect
     public Player EffectController { get { return serverGame.Players[effectControllerIndex]; } }
 
     //current subeffect that's resolving
-    public int effectIndex;
+    public int subeffectIndex;
+
+    public int EffectIndex { get { return System.Array.IndexOf(thisCard.Effects, this); } }
 
     //checked by effect resolution to see if it should start resolving the next effect on the stack
     public bool doneResolving = false;
@@ -49,13 +51,14 @@ public class Effect
     public int MaxTimesCanUsePerTurn { get => maxTimesCanUsePerTurn; }
 
     //get the currently resolving subeffect
-    public Subeffect CurrSubeffect { get { return subeffects[effectIndex]; } }
+    public Subeffect CurrSubeffect { get { return subeffects[subeffectIndex]; } }
 
     public Effect(SerializableEffect se, Card thisCard, int controller)
     {
         this.thisCard = thisCard;
         subeffects = new Subeffect[se.subeffects.Length];
         targets = new List<Card>();
+        coords = new List<Vector2Int>();
 
         for (int i = 0; i < se.subeffectTypes.Length; i++)
         {
@@ -84,7 +87,7 @@ public class Effect
 
     public void ResolveNextSubeffect()
     {
-        ResolveSubeffect(effectIndex + 1);
+        ResolveSubeffect(subeffectIndex + 1);
     }
 
     public void ResolveSubeffect(int index)
@@ -94,7 +97,7 @@ public class Effect
             FinishResolution();
             return;
         }
-        effectIndex = index;
+        subeffectIndex = index;
         subeffects[index].Resolve();
     }
 
@@ -105,7 +108,7 @@ public class Effect
     private void FinishResolution()
     {
         doneResolving = true;
-        effectIndex = 0;
+        subeffectIndex = 0;
         X = 0;
         targets.Clear();
         serverGame.FinishStackEntryResolution();

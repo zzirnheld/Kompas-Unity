@@ -34,6 +34,7 @@ public class SpaceRestriction : Restriction
 
     public bool Evaluate(int x, int y)
     {
+        Debug.Log("Evaluating " + x + ", " + y);
         if (!subeffect.parent.serverGame.boardCtrl.ValidIndices(x, y)) return false;
 
         foreach(SpaceRestrictions r in restrictionsToCheck)
@@ -41,7 +42,7 @@ public class SpaceRestriction : Restriction
             switch (r)
             {
                 case SpaceRestrictions.CanSummonTarget:
-                    if (!subeffect.Target.IsAdjacentTo(x, y)) return false;
+                    if (!subeffect.parent.serverGame.boardCtrl.CanSummonTo(subeffect.parent.effectControllerIndex, x, y)) return false;
                     break;
                 case SpaceRestrictions.AdjacentToThisCard:
                     if (!subeffect.parent.thisCard.IsAdjacentTo(x, y)) return false;

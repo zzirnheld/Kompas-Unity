@@ -22,7 +22,7 @@ public class HandTargetSubeffect : CardTargetSubeffect
                                             parent.effectControllerIndex,
                                             parent.thisCard,
                                             System.Array.IndexOf(parent.thisCard.Effects, parent),
-                                            parent.effectIndex);
+                                            parent.subeffectIndex);
 
         //then wait for the network controller to call the continue method
     }
