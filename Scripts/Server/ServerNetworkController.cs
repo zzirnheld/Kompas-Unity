@@ -428,8 +428,8 @@ public class ServerNetworkController : NetworkController {
     public void DebugTopdeck(ServerGame sGame, int cardID, NetworkConnection sourceID)
     {
         Card toTopdeck = sGame.GetCardFromID(cardID);
-        toTopdeck.Topdeck();
         NotifyTopdeck(sGame, toTopdeck, sourceID);
+        toTopdeck.Topdeck();
     }
 
     public void NotifyDiscard(ServerGame sGame, Card toDiscard, NetworkConnection sourceID)
@@ -447,8 +447,8 @@ public class ServerNetworkController : NetworkController {
     public void DebugDiscard(ServerGame sGame, int cardID, NetworkConnection sourceID)
     {
         Card toDiscard = sGame.GetCardFromID(cardID);
-        toDiscard.Discard();
         NotifyDiscard(sGame, toDiscard, sourceID);
+        toDiscard.Discard();
     }
 
     public void NotifyRehand(ServerGame sGame, Card toRehand, NetworkConnection sourceID)
@@ -467,8 +467,8 @@ public class ServerNetworkController : NetworkController {
     public void DebugRehand(ServerGame sGame, int cardID, NetworkConnection sourceID)
     {
         Card toRehand = sGame.GetCardFromID(cardID);
-        toRehand.Rehand();
         NotifyRehand(sGame, toRehand, sourceID);
+        toRehand.Rehand();
     }
 
     public void NotifyReshuffle(ServerGame sGame, Card toReshuffle, NetworkConnection sourceID)
