@@ -2,8 +2,32 @@
 "cardType":67,
 "cardName":"The General",
 "effText":"Once each friendly turn, you can pip decksummon a Warrior.",
-"primarySerializeableEffect":[],
-"secondarySerializeableEffect":[],
+"effects":[
+	{
+		"subeffectTypes":[1,150,4,300],
+		"subeffects":[
+			"{
+				\"cardRestriction\":
+				{
+					\"restrictionsToCheck\":[2,3],
+					\"subtypesInclude\":[\"Warrior\"]
+				}
+			}",
+			"{
+				\"TargetIndex\":-1
+			}",
+			"{
+				\"spaceRestriction\":
+				{
+					\"restrictionsToCheck\":[0]
+				}
+			}",
+			"{
+				\"spaceIndex\":-1
+			}"
+		]
+	}
+],
 "n":2,
 "e":10,
 "s":10,
