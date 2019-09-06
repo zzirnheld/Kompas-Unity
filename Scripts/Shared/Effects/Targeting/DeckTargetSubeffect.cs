@@ -29,7 +29,11 @@ public class DeckTargetSubeffect : CardTargetSubeffect
 
     public override bool AddTargetIfLegal(Card card)
     {
-        if (base.AddTargetIfLegal(card)) return true;
+        if (base.AddTargetIfLegal(card))
+        {
+            card.Controller.deckCtrl.Shuffle();
+            return true;
+        }
 
         parent.serverGame.serverNetworkCtrl.GetDeckTarget(
                                             parent.serverGame,
