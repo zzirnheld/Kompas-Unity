@@ -233,13 +233,13 @@ public class ServerGame : Game {
     #endregion the stack
 
     #region triggers
-    public void Trigger(TriggerCondition condition, Effect source)
+    public void Trigger(TriggerCondition condition, Effect source, int x)
     {
         List<Trigger> triggersToCheck = triggerMap[condition];
         if (triggersToCheck == null) return;
         foreach(Trigger t in triggersToCheck)
         {
-            t.TriggerIfValid(source);
+            t.TriggerIfValid(source, x);
         }
     }
 
