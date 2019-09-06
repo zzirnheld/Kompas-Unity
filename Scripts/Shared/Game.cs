@@ -35,6 +35,9 @@ public class Game : MonoBehaviour {
     protected List<Effect> stack;
     protected int stackIndex;
 
+    //trigger map
+    protected Dictionary<TriggerCondition, List<Trigger>> triggerMap;
+
     protected Effect currEffect;
     public Effect CurrEffect
     {

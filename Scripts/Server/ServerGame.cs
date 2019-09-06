@@ -231,4 +231,27 @@ public class ServerGame : Game {
         }
     }
     #endregion the stack
+
+    #region triggers
+    public void Trigger(TriggerCondition condition, Effect source)
+    {
+        List<Trigger> triggersToCheck = triggerMap[condition];
+        if (triggersToCheck == null) return;
+        foreach(Trigger t in triggersToCheck)
+        {
+            t.TriggerIfValid(source);
+        }
+    }
+
+    public void RegisterTrigger(TriggerCondition condition, Trigger trigger)
+    {
+        List<Trigger> triggers = triggerMap[condition];
+        if (triggers == null)
+        {
+            triggers = new List<Trigger>();
+            triggerMap.Add(condition, triggers);
+        }
+        triggers.Add(trigger);
+    }
+    #endregion triggers
 }
