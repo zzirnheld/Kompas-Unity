@@ -30,6 +30,9 @@ public class Effect
     private Subeffect[] subeffects;
     public Subeffect[] Subeffects { get => subeffects; }
 
+    private Trigger trigger;
+    public Trigger Trigger { get => trigger; }
+
     public List<Card> targets;
     public List<Vector2Int> coords;
 
@@ -59,6 +62,11 @@ public class Effect
         subeffects = new Subeffect[se.subeffects.Length];
         targets = new List<Card>();
         coords = new List<Vector2Int>();
+
+        if (!string.IsNullOrEmpty(se.trigger))
+        {
+            trigger = Trigger.FromJson(se.triggerCondition, se.trigger, this);
+        }
 
         for (int i = 0; i < se.subeffectTypes.Length; i++)
         {
