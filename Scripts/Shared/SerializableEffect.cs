@@ -11,6 +11,8 @@ public class SerializableEffect
         DiscardTarget = 2,
         HandTarget = 3,
         SpaceTarget = 4,
+        TargetThis = 5,
+        TargetThisSpace = 6,
         ChangeNESW = 100,
         AddPips = 101,
         PayPips = 102,

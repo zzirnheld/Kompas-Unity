@@ -150,6 +150,13 @@ public class ServerGame : Game {
         //draw for turn and store what was drawn
         serverNetworkCtrl.DebugDraw(this, turnPlayer, players[turnPlayer].ConnectionID);
         serverNetworkCtrl.SetTurn(this, players[turnPlayer].ConnectionID, turnPlayer);
+
+        //trigger turn start effects
+        //TODO ask jerry if foreach gets iterator to start with
+        foreach (Trigger t in triggerMap[TriggerCondition.TurnStart])
+        {
+            t.TriggerIfValid(null, null);
+        }
     }
 
     #region the stack

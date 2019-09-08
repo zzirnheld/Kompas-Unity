@@ -69,6 +69,9 @@ public abstract class Subeffect
             case SerializableEffect.SubeffectType.HandTarget:
                 toReturn = JsonUtility.FromJson<HandTargetSubeffect>(subeffJson);
                 break;
+            case SerializableEffect.SubeffectType.TargetThis:
+                toReturn = JsonUtility.FromJson<TargetThisSubeffect>(subeffJson);
+                break;
             case SerializableEffect.SubeffectType.ChangeNESW:
                 toReturn = JsonUtility.FromJson<ChangeNESWSubeffect>(subeffJson);
                 break;

@@ -264,6 +264,13 @@ public class ServerNetworkController : NetworkController {
         //add the card in, with the cardCount being the card id, then increment the card count
         Card added = owner.deckCtrl.AddCard(cardName, sGame.cardCount, playerIndex);
         sGame.cardCount++;
+        foreach(Effect eff in added.Effects)
+        {
+            if(eff.Trigger != null)
+            {
+                sGame.RegisterTrigger(eff.Trigger.TriggerCondition, eff.Trigger);
+            }
+        }
         //let everyone know
         Packet outPacket = new Packet(Packet.Command.AddAsFriendly, cardName, (int)Card.CardLocation.Deck, added.ID);
         Packet outPacketInverted = new Packet(Packet.Command.IncrementEnemyDeck);
