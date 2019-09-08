@@ -11,7 +11,6 @@ using Unity.Networking.Transport.Utilities;
 
 public class NetworkController : MonoBehaviour
 {
-
     protected const int BUFFER_SIZE = 250; //size of serialized Packet()
 
     public struct SentItem
