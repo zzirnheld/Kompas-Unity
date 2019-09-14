@@ -197,6 +197,16 @@ public class ClientUIController : UIController
     }
     #endregion
 
+    #region flow control
+    public void PassTurn()
+    {
+        if(clientGame.turnPlayer == 0)
+        {
+            clientGame.clientNetworkCtrl.RequestEndTurn();
+        }
+    }
+    #endregion flow control
+
     #region debug
     public void DebugUpdateStats()
     {

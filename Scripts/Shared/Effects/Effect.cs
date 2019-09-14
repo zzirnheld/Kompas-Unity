@@ -87,6 +87,11 @@ public class Effect
         return timesUsedThisTurn < maxTimesCanUsePerTurn;
     }
 
+    public void PushToStack(bool checkForResponses)
+    {
+        serverGame.PushToStack(this, effectControllerIndex, checkForResponses);
+    }
+
     public void StartResolution()
     {
         thisCard.game.CurrEffect = this;

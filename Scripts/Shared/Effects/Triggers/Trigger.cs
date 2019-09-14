@@ -38,7 +38,7 @@ public class Trigger
     protected void TriggerEffect(Effect trigger, int? x)
     {
         if (x.HasValue) effToTrigger.X = x.Value;
-        effToTrigger.serverGame.PushToStack(effToTrigger, effToTrigger.thisCard.ControllerIndex);
+        effToTrigger.PushToStack(false);
     }
 
     protected bool CheckTriggerRestrictions(Effect trigger, int? x)
@@ -49,5 +49,6 @@ public class Trigger
 
     public virtual void TriggerIfValid(Effect trigger, int? x)
     {
+        if (triggerRestriction.Evaluate()) TriggerEffect(trigger, x);
     }
 }

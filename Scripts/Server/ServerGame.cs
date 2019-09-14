@@ -157,20 +157,22 @@ public class ServerGame : Game {
         serverNetworkCtrl.SetTurn(this, players[turnPlayer].ConnectionID, turnPlayer);
 
         //trigger turn start effects
-        //TODO ask jerry if foreach gets iterator to start with
         foreach (Trigger t in triggerMap[TriggerCondition.TurnStart])
         {
             t.TriggerIfValid(null, null);
         }
+        //then check for responses
+        CheckForResponse();
     }
 
     #region the stack
-    public void PushToStack(Effect eff, int controller)
+    public void PushToStack(Effect eff, int controller, bool checkForResponses)
     {
         eff.serverGame = this;
         eff.effectControllerIndex = controller;
         stack.Add(eff);
         stackIndex++;
+        if(checkForResponses) CheckForResponse();
     }
 
     public void PopFromStack()
@@ -206,9 +208,7 @@ public class ServerGame : Game {
     /// </summary>
     public void FinishStackEntryResolution()
     {
-        //TODO give opportunity to add things to stack
-        //for now, just resolve the next stack entry
-        ResolveNextStackEntry();
+        CheckForResponse();
     }
 
     public void ResetPassingPriority()
@@ -253,6 +253,7 @@ public class ServerGame : Game {
         {
             t.TriggerIfValid(source, x);
         }
+        CheckForResponse();
     }
 
     public void RegisterTrigger(TriggerCondition condition, Trigger trigger)
