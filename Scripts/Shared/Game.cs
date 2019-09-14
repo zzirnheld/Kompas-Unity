@@ -59,9 +59,11 @@ public class Game : MonoBehaviour {
         
         for(int i = 0; i < cardNames.Length; i++)
         {
-            //Debug.Log("Adding \"" + cardNames[i] + "\", length " + cardNames[i].Length);
-            CardNames.Add(i, cardNames[i].Substring(0, cardNames[i].Length)); //because line endings
-            CardNameIndices.Add(cardNames[i].Substring(0, cardNames[i].Length), i);
+            string toAdd = cardNames[i].Substring(0, cardNames[i].Length);
+            if (CardNameIndices.ContainsKey(toAdd)) continue;
+            Debug.Log("Adding \"" + cardNames[i] + "\", length " + cardNames[i].Length);
+            CardNames.Add(i, toAdd); //because line endings
+            CardNameIndices.Add(toAdd, i);
         }
 
         stackIndex = -1;

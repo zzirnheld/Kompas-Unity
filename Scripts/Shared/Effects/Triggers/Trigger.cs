@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public abstract class Trigger
+public class Trigger
 {
     public TriggerCondition TriggerCondition;
     public Effect effToTrigger;
@@ -13,6 +13,7 @@ public abstract class Trigger
     {
         Trigger toReturn = null;
 
+        Debug.Log("Deserializing trigger \n" + json);
         switch (c)
         {
             case TriggerCondition.TurnStart:

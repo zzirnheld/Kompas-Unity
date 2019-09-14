@@ -2,20 +2,19 @@
 "cardType":67,
 "cardName":"Swordguild Trainee",
 "effText":"When turns start, if I'm adjacent to X Warriors, you can tribute me to decksummon an S ≤ X Swordguild Warrior where I was.",
-"effects":[
-{
+"effects":[{
 	"trigger":"{
-		"triggerRestriction":{
-			"triggerRestrictions":[100],
-			"effParentRestriction":
-				"{
-					\"restrictionsToCheck\":[2,3,103],
-					\"subtypesInclude\":[\"Warrior\"]
-				}"
+		\"triggerRestriction\":{
+			\"triggerRestrictions\":[100],
+			\"effParentRestriction\":
+				\"{
+					\\\"restrictionsToCheck\\\":[2,3,103],
+					\\\"subtypesInclude\\\":[\\\"Warrior\\\"]
+				}\"
 		}
 	}",
 	"subeffectTypes":[200,5,6,301,1,300],
-	"subeffects":"[
+	"subeffects":[
 		"{
 			\"boardRestriction\":
 				{
@@ -39,9 +38,8 @@
 		"{
 			\"spaceIndex\":-1
 		}"
-	]"
-}
-]
+	]
+}],
 "n":1,
 "e":2,
 "s":2,

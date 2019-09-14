@@ -38,6 +38,11 @@ public class ServerGame : Game {
         mainGame = this;
         mainServerGame = this;
         stack = new List<Effect>();
+        triggerMap = new Dictionary<TriggerCondition, List<Trigger>>();
+        foreach(TriggerCondition c in System.Enum.GetValues(typeof(TriggerCondition)))
+        {
+            triggerMap.Add(c, new List<Trigger>());
+        }
     }
 
     #region players
