@@ -72,6 +72,9 @@ public abstract class Subeffect
             case SerializableEffect.SubeffectType.TargetThis:
                 toReturn = JsonUtility.FromJson<TargetThisSubeffect>(subeffJson);
                 break;
+            case SerializableEffect.SubeffectType.TargetThisSpace:
+                toReturn = JsonUtility.FromJson<TargetThisSpaceSubeffect>(subeffJson);
+                break;
             case SerializableEffect.SubeffectType.ChangeNESW:
                 toReturn = JsonUtility.FromJson<ChangeNESWSubeffect>(subeffJson);
                 break;
@@ -104,7 +107,7 @@ public abstract class Subeffect
                 toReturn = JsonUtility.FromJson<DiscardSubeffect>(subeffJson);
                 break;
             default:
-                Debug.Log("Unrecognized effect type enum for loading effect in effect constructor");
+                Debug.LogError("Unrecognized effect type enum for loading effect in effect constructor");
                 break;
         }
 

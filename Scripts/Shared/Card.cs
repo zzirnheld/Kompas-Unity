@@ -195,15 +195,16 @@ public abstract class Card : KompasObject {
 
         //could also be      serializedCard.effects == null ? serializedCard.effects.Length : 0
         effects = new Effect[serializedCard.effects?.Length ?? 0];
+        this.owner = game.Players[ownerIndex];
+        this.ownerIndex = ownerIndex;
+        ChangeController(ownerIndex);
 
         //go through each of the serialized effects, 
-        for(int i = 0; i < (serializedCard.effects?.Length ?? 0); i++)
+        for (int i = 0; i < (serializedCard.effects?.Length ?? 0); i++)
         {
             effects[i] = new Effect(serializedCard.effects[i], this, controllerIndex);
         }
 
-        this.owner = game.Players[ownerIndex];
-        this.ownerIndex = ownerIndex;
         this.augments = new List<AugmentCard>();
         if (location == CardLocation.Field) MoveTo(serializedCard.BoardX, serializedCard.BoardY);
         else

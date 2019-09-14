@@ -59,6 +59,7 @@ public class Effect
     public Effect(SerializableEffect se, Card thisCard, int controller)
     {
         this.thisCard = thisCard;
+        serverGame = thisCard.Controller.serverGame;
         subeffects = new Subeffect[se.subeffects.Length];
         targets = new List<Card>();
         coords = new List<Vector2Int>();

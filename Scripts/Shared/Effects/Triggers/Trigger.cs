@@ -29,6 +29,15 @@ public class Trigger
             {
                 toReturn.triggerRestriction.thisTrigger = toReturn;
                 toReturn.triggerRestriction.thisCard = parent.thisCard;
+                if(toReturn.triggerRestriction.effParentRestriction != null)
+                {
+                    DummySubeffect dummy = new DummySubeffect
+                    {
+                        parent = parent
+                    };
+                    toReturn.triggerRestriction.effParentRestriction.subeffect = dummy;
+                    
+                }
             }
         }
 

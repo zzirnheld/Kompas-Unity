@@ -7,10 +7,10 @@
 		\"triggerRestriction\":{
 			\"triggerRestrictions\":[100],
 			\"effParentRestriction\":
-				\"{
-					\\\"restrictionsToCheck\\\":[2,3,103],
-					\\\"subtypesInclude\\\":[\\\"Warrior\\\"]
-				}\"
+				{
+					\"restrictionsToCheck\":[2,3,103],
+					\"subtypesInclude\":[\"Warrior\"]
+				}
 		}
 	}",
 	"subeffectTypes":[200,5,6,301,1,300],

@@ -247,8 +247,7 @@ public class ServerNetworkController : NetworkController {
             case Packet.Command.TestTargetEffect:
                 Card whoseEffToTest = serverGame.GetCardFromID(packet.cardID);
                 Debug.Log("Running eff of " + whoseEffToTest.CardName);
-                serverGame.PushToStack(whoseEffToTest.Effects[0], playerIndex);
-                serverGame.CheckForResponse();
+                serverGame.PushToStack(whoseEffToTest.Effects[0], playerIndex, true);
                 break;
 #endregion
             default:
