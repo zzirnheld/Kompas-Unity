@@ -22,10 +22,7 @@ public class SpaceTargetSubeffect : Subeffect
             return;
         }
 
-        parent.serverGame.serverNetworkCtrl
-            .GetSpaceTarget(parent.serverGame, parent.effectControllerIndex, parent.thisCard,
-                                            System.Array.IndexOf(parent.thisCard.Effects, parent),
-                                            parent.subeffectIndex);
+        ServerGame.serverNotifier.GetSpaceTarget(parent.EffectController, parent.thisCard, parent.EffectIndex, parent.subeffectIndex);
     }
 
     public bool SetTargetIfValid(int x, int y)

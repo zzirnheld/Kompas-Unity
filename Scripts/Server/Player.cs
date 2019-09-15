@@ -6,6 +6,7 @@ using NetworkConnection = Unity.Networking.Transport.NetworkConnection;
 public class Player {
 
     public ServerGame serverGame;
+    public Player enemy;
 
     //game mechanics data
     public int pips = 3;

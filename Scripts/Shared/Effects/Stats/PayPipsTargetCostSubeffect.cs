@@ -15,7 +15,7 @@ public class PayPipsTargetCostSubeffect : Subeffect
 
         Debug.Log("Paying " + toPay + " pips for target cost");
         parent.EffectController.pips -= toPay;
-        ServerGame.serverNetworkCtrl.NotifySetPips(ServerGame, parent.effectControllerIndex, parent.EffectController.pips);
+        ServerGame?.serverNotifier.NotifySetPips(parent.EffectController, parent.EffectController.pips);
         parent.ResolveNextSubeffect();
     }
 }

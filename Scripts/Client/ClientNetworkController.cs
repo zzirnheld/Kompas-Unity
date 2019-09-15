@@ -123,6 +123,9 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.Nothing:
                 //discard
                 return;
+            case Packet.Command.Delete:
+                ClientGame.mainClientGame.Delete(ClientGame.mainClientGame.GetCardFromID(packet.cardID));
+                break;
             case Packet.Command.AddAsFriendly:
                 ClientGame.mainClientGame.friendlyDeckCtrl.AddCard(packet.CardName, packet.CardIDToBe);
                 break;

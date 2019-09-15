@@ -43,6 +43,7 @@ public class ClientGame : Game {
         players[0].handObject = friendlyHandObj;
         players[0].deckObject = friendlyDeckObj;
         players[0].discardObject = friendlyDiscardObj;
+        players[0].enemy = players[1];
         //and the player2 stuff
         players[1].handCtrl = enemyHandCtrl;
         players[1].deckCtrl = enemyDeckCtrl;
@@ -50,6 +51,7 @@ public class ClientGame : Game {
         players[1].handObject = enemyHandObj;
         players[1].deckObject = enemyDeckObj;
         players[1].discardObject = enemyDiscardObj;
+        players[1].enemy = players[0];
     }
 
     //game mechanics
@@ -66,6 +68,13 @@ public class ClientGame : Game {
         uiCtrl.UpdateEnemyPips(num);
     }
     #endregion
+
+    public void Delete(Card card)
+    {
+        Destroy(card.gameObject);
+        //probably destroy and not set inactive because a card that is deleted and played again will just be created anew
+        //card.gameObject.SetActive(false);
+    }
 
     //requesting
     public void RequestMove(Card card, int toX, int toY)

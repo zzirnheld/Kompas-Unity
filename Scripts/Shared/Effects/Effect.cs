@@ -125,7 +125,7 @@ public class Effect
         subeffectIndex = 0;
         X = 0;
         targets.Clear();
-        serverGame.serverNetworkCtrl.AcceptTarget(serverGame, EffectController.ConnectionID);
+        serverGame?.serverNotifier.AcceptTarget(EffectController.ConnectionID);
         serverGame.FinishStackEntryResolution();
     }
 
