@@ -26,6 +26,7 @@ public class Game : MonoBehaviour {
     public int turnPlayer = 0;
     protected Player[] players = new Player[2];
     public Player[] Players { get { return players; } }
+    public Player TurnPlayer { get { return players[turnPlayer]; } }
 
     //game data
     public Dictionary<int, Card> cards;

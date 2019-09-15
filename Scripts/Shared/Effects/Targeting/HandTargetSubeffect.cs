@@ -17,12 +17,7 @@ public class HandTargetSubeffect : CardTargetSubeffect
         //ask the client that is this effect's controller for a target. 
         //give the card if whose effect it is, the index of the effect, and the index of the subeffect
         //since only the server resolves effects, this should never be called for a client. 
-        parent.serverGame.serverNetworkCtrl.GetHandTarget(
-                                            parent.serverGame,
-                                            parent.effectControllerIndex,
-                                            parent.thisCard,
-                                            parent.EffectIndex,
-                                            parent.subeffectIndex);
+        ServerGame.serverNotifier.GetHandTarget(parent.EffectController, parent.thisCard, parent.EffectIndex, parent.subeffectIndex);
 
         //then wait for the network controller to call the continue method
     }
@@ -31,12 +26,7 @@ public class HandTargetSubeffect : CardTargetSubeffect
     {
         if (base.AddTargetIfLegal(card)) return true;
 
-        parent.serverGame.serverNetworkCtrl.GetHandTarget(
-                                            parent.serverGame,
-                                            parent.effectControllerIndex,
-                                            parent.thisCard,
-                                            parent.EffectIndex,
-                                            parent.subeffectIndex);
+        ServerGame.serverNotifier.GetHandTarget(parent.EffectController, parent.thisCard, parent.EffectIndex, parent.subeffectIndex);
         return false;
     }
 }

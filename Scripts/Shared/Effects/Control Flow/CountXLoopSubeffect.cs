@@ -12,7 +12,7 @@ public class CountXLoopSubeffect : Subeffect
         parent.X++;
 
         //tell the client to enable the button to exit the loop
-        parent.serverGame.serverNetworkCtrl.EnableDecliningTarget(parent.serverGame, parent.effectControllerIndex);
+        ServerGame.serverNotifier.EnableDecliningTarget(parent.EffectController);
 
         //and resolve the next effect
         parent.ResolveNextSubeffect();
@@ -28,7 +28,7 @@ public class CountXLoopSubeffect : Subeffect
         parent.X--;
 
         //make the "no other targets" button disappear
-        parent.serverGame.serverNetworkCtrl.DisableDecliningTarget(parent.serverGame, parent.effectControllerIndex);
+        ServerGame.serverNotifier.DisableDecliningTarget(parent.EffectController);
 
         //then skip to after the loop
         parent.ResolveSubeffect(IndexToJumpTo);

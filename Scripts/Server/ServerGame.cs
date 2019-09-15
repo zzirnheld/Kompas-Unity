@@ -13,6 +13,7 @@ public class ServerGame : Game {
     public static ServerGame mainServerGame;
 
     public ServerNetworkController serverNetworkCtrl;
+    public ServerNotifier serverNotifier;
 
     int currPlayerCount = 0; //current number of players. shouldn't exceed 2
     public int cardCount = 0;
@@ -68,6 +69,8 @@ public class ServerGame : Game {
             players[1].handObject = player2HandObj;
             players[1].deckObject = player2DeckObj;
             players[1].discardObject = player2DiscardObj;
+            players[0].enemy = players[1];
+            players[1].enemy = players[0];
         }
         currPlayerCount++;
         return currPlayerCount;
@@ -101,11 +104,11 @@ public class ServerGame : Game {
 
     public void GiveTurnPlayerPips()
     {
-        int pipsToSet = players[turnPlayer].pips + MaxCardsOnField;
-        Players[turnPlayer].pips = pipsToSet;
+        int pipsToSet = TurnPlayer.pips + MaxCardsOnField;
+        TurnPlayer.pips = pipsToSet;
         if (turnPlayer == 0) uiCtrl.UpdateFriendlyPips(pipsToSet);
         else uiCtrl.UpdateEnemyPips(pipsToSet);
-        serverNetworkCtrl.NotifySetPips(this, turnPlayer, pipsToSet);
+        serverNotifier.NotifySetPips(TurnPlayer, pipsToSet);
     }
 
     //later, upgrade this with checking if the square is valid (adj or special case)
@@ -154,7 +157,7 @@ public class ServerGame : Game {
 
         //draw for turn and store what was drawn
         serverNetworkCtrl.DebugDraw(this, turnPlayer);
-        serverNetworkCtrl.SetTurn(this, players[turnPlayer].ConnectionID, turnPlayer);
+        serverNotifier.NotifySetTurn(this, turnPlayer);
 
         //trigger turn start effects
         foreach (Trigger t in triggerMap[TriggerCondition.TurnStart])
