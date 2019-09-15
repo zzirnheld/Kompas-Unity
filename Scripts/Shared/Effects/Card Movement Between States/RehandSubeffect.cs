@@ -7,7 +7,7 @@ public class RehandSubeffect : CardChangeStateSubeffect
     public override void Resolve()
     {
         Target.Rehand(Target.OwnerIndex);
-        ServerGame?.serverNetworkCtrl.NotifyRehand(ServerGame, Target, Target.Controller.ConnectionID);
+        ServerGame?.serverNetworkCtrl.NotifyRehand(ServerGame, Target);
         parent.ResolveNextSubeffect();
     }
 }

@@ -93,7 +93,10 @@ public class ServerNetworkController : NetworkController {
                 uiCtrl.CurrentStateString = "Two Players Connected";
                 gamesByConnectionID.Add(c, currentGameToMatchmake);
                 currentGameToMatchmake.AddPlayer(c);
-                SendPackets(new Packet(Packet.Command.YoureFirst), new Packet(Packet.Command.YoureSecond), currentGameToMatchmake, mConnections[mConnections.Length - 1]);
+                SendPackets(new Packet(Packet.Command.YoureFirst), 
+                    new Packet(Packet.Command.YoureSecond), 
+                    currentGameToMatchmake.Players[0].ConnectionID, 
+                    currentGameToMatchmake.Players[1].ConnectionID);
                 currentGameToMatchmake = null;
             }
         }
@@ -125,33 +128,28 @@ public class ServerNetworkController : NetworkController {
                 }
             }
         }
+
+        //keep connection alive by sending packets to each connection
+        timeChange += Time.deltaTime;
+        if(timeChange >= 1f)
+        {
+            for(int i = 0; i < mConnections.Length; i++)
+            {
+                Send(new Packet(Packet.Command.Nothing), mDriver, mConnections[i], mPipeline);
+            }
+            timeChange = 0f;
+        }
     }
     
-    public void SendPackets(Packet outPacket, Packet outPacketInverted, ServerGame serverGame, NetworkConnection connectionID)
+    public void SendPackets(Packet outPacket, Packet outPacketInverted, NetworkConnection connectionID, NetworkConnection connectionIDInverted)
     {
-        if (outPacketInverted == null)
-            Debug.Log("Sending only one packet with command " + outPacket.command);
-        else if(outPacket.command != Packet.Command.Nothing)
-            Debug.Log("Sending packets with commands " + outPacket.command + " and " + outPacketInverted.command);
+        Debug.Log("Sending packets with commands " + outPacket?.command + " and " + outPacketInverted?.command);
+
         //if it's not null, send the normal packet to the player that queried you
         if (outPacket != null)
             Send(outPacket, mDriver, connectionID, mPipeline);
-
-
-        //if the inverted packet isn't null, send the packet to the correct player
-        if (outPacketInverted == null || !serverGame.HasPlayer2()) return;
-        //if the one that queried you is player 0,
-        if (connectionID == serverGame.Players[0].ConnectionID)
-        {
-            //send the inverted one to player 1.
-            Send(outPacketInverted, mDriver, serverGame.Players[1].ConnectionID, mPipeline);
-        }
-        //if the one that queried you is player 1,
-        else
-        {
-            //send the inverted one to player 0.
-            Send(outPacketInverted, mDriver, serverGame.Players[0].ConnectionID, mPipeline);
-        }
+        if (outPacketInverted != null)
+            Send(outPacketInverted, mDriver, connectionIDInverted, mPipeline);
 
     }
 
@@ -171,23 +169,23 @@ public class ServerNetworkController : NetworkController {
         //switch between all the possible requests for the server to handle.
         switch (packet.command)
         {
-            case Packet.Command.Nothing: //keeps the connection alive
-                SendPackets(new Packet(Packet.Command.Nothing), new Packet(Packet.Command.Nothing), ServerGame.mainServerGame, connectionID);
+            case Packet.Command.Nothing: 
+                //do nothing, keeps the connection alive
                 break;
             case Packet.Command.AddToDeck:
-                AddCardToDeck(serverGame, playerIndex, packet.CardName, connectionID);
+                AddCardToDeck(serverGame, playerIndex, packet.CardName);
                 break;
             case Packet.Command.Augment:
-                Augment(serverGame, playerIndex, packet.cardID, packet.X, packet.Y, connectionID);
+                Augment(serverGame, playerIndex, packet.cardID, packet.X, packet.Y);
                 break;
             case Packet.Command.Play: //TODO push to stack
-                Play(serverGame, playerIndex, packet.cardID, packet.X, packet.Y, connectionID);
+                Play(serverGame, playerIndex, packet.cardID, packet.X, packet.Y);
                 break;
             case Packet.Command.Move:
-                Move(serverGame, playerIndex, packet.cardID, packet.X, packet.Y, connectionID);
+                Move(serverGame, playerIndex, packet.cardID, packet.X, packet.Y);
                 break;
             case Packet.Command.Attack:
-                Attack(serverGame, playerIndex, packet.cardID, packet.X, packet.Y, connectionID);
+                Attack(serverGame, playerIndex, packet.cardID, packet.X, packet.Y);
                 break;
             case Packet.Command.EndTurn:
                 //TODO check to see if it was their turn bewfore swapping turns
@@ -222,27 +220,27 @@ public class ServerNetworkController : NetworkController {
 #region debug commands
             case Packet.Command.Topdeck:
                 if (!uiCtrl.DebugMode) break;
-                DebugTopdeck(serverGame, packet.cardID, connectionID);
+                DebugTopdeck(serverGame, packet.cardID);
                 break;
             case Packet.Command.Discard:
                 if (!uiCtrl.DebugMode) break;
-                DebugDiscard(serverGame, packet.cardID, connectionID);
+                DebugDiscard(serverGame, packet.cardID);
                 break;
             case Packet.Command.Rehand:
                 if (!uiCtrl.DebugMode) break;
-                DebugRehand(serverGame, packet.cardID, connectionID);
+                DebugRehand(serverGame, packet.cardID);
                 break;
             case Packet.Command.Draw:
                 if (!uiCtrl.DebugMode) break;
-                DebugDraw(serverGame, playerIndex, connectionID);
+                DebugDraw(serverGame, playerIndex);
                 break;
             case Packet.Command.SetNESW:
                 if (!uiCtrl.DebugMode) break;
-                DebugSetNESW(serverGame, packet.cardID, connectionID, packet.N, packet.E, packet.S, packet.W);
+                DebugSetNESW(serverGame, packet.cardID, packet.N, packet.E, packet.S, packet.W);
                 break;
             case Packet.Command.SetPips:
                 if (!uiCtrl.DebugMode) break;
-                DebugSetPips(serverGame, playerIndex, connectionID, packet.Pips);
+                DebugSetPips(serverGame, playerIndex, packet.Pips);
                 break;
             case Packet.Command.TestTargetEffect:
                 Card whoseEffToTest = serverGame.GetCardFromID(packet.cardID);
@@ -256,7 +254,7 @@ public class ServerNetworkController : NetworkController {
         }
     }
 
-    public void AddCardToDeck(ServerGame sGame, int playerIndex, string cardName, NetworkConnection sourceID)
+    public void AddCardToDeck(ServerGame sGame, int playerIndex, string cardName)
     {
         //figure out who's getting the card to their deck
         Player owner = sGame.Players[playerIndex];
@@ -273,7 +271,7 @@ public class ServerNetworkController : NetworkController {
         //let everyone know
         Packet outPacket = new Packet(Packet.Command.AddAsFriendly, cardName, (int)Card.CardLocation.Deck, added.ID);
         Packet outPacketInverted = new Packet(Packet.Command.IncrementEnemyDeck);
-        SendPackets(outPacket, outPacketInverted, sGame, sourceID);
+        SendPackets(outPacket, outPacketInverted, sGame.Players[playerIndex].ConnectionID, sGame.Players[1 - playerIndex].ConnectionID);
     }
 
     public static int InvertIndexForController(int index, int controller)
@@ -291,7 +289,7 @@ public class ServerNetworkController : NetworkController {
     /// <param name="x"></param>
     /// <param name="y"></param>
     /// <param name="sourceID"></param>
-    public void Augment(ServerGame sGame, int playerIndex, int cardID, int x, int y, NetworkConnection sourceID)
+    public void Augment(ServerGame sGame, int playerIndex, int cardID, int x, int y)
     {
         Card toAugment = sGame.GetCardFromID(cardID);
         int invertedX = InvertIndexForController(x, playerIndex);
@@ -315,10 +313,10 @@ public class ServerNetworkController : NetworkController {
         {
             outPacket = new Packet(Packet.Command.PutBack);
         }
-        SendPackets(outPacket, outPacketInverted, sGame, sourceID);
+        SendPackets(outPacket, outPacketInverted, sGame.Players[playerIndex].ConnectionID, sGame.Players[1 - playerIndex].ConnectionID);
     }
 
-    public void NotifyPlay(ServerGame sGame, int controller, Card toPlay, int x, int y, NetworkConnection sourceID)
+    public void NotifyPlay(ServerGame sGame, int controller, Card toPlay, int x, int y)
     {
         //tell everyone to do it
         Packet outPacket = new Packet(Packet.Command.Play, toPlay, x, y);
@@ -330,10 +328,10 @@ public class ServerNetworkController : NetworkController {
 
         outPacket.InvertForController(controller);
         outPacketInverted.InvertForController(controller);
-        SendPackets(outPacket, outPacketInverted, sGame, sourceID);
+        SendPackets(outPacket, outPacketInverted, sGame.Players[controller].ConnectionID, sGame.Players[1 - controller].ConnectionID);
     }
 
-    public void Play(ServerGame sGame, int playerIndex, int cardID, int x, int y, NetworkConnection sourceID)
+    public void Play(ServerGame sGame, int playerIndex, int cardID, int x, int y)
     {
         //get the card to play
         Card toPlay = sGame.GetCardFromID(cardID);
@@ -342,26 +340,26 @@ public class ServerNetworkController : NetworkController {
         //if it's not a valid place to do, return
         if (uiCtrl.DebugMode || sGame.ValidBoardPlay(toPlay, invertedX, invertedY))
         {
-            NotifyPlay(sGame, playerIndex, toPlay, invertedX, invertedY, sourceID);
+            NotifyPlay(sGame, playerIndex, toPlay, invertedX, invertedY);
             //play the card here
             toPlay.Play(invertedX, invertedY, playerIndex);
         }
         else
         {
             Packet outPacket = new Packet(Packet.Command.PutBack);
-            SendPackets(outPacket, null, sGame, sourceID);
+            SendPackets(outPacket, null, sGame.Players[playerIndex].ConnectionID, default);
         }
     }
     
-    public void NotifyMove(ServerGame sGame, Card toMove, int x, int y, NetworkConnection sourceID)
+    public void NotifyMove(ServerGame sGame, int playerIndex, Card toMove, int x, int y)
     {
         //tell everyone to do it
         Packet outPacket = new Packet(Packet.Command.Move, toMove, x, y);
         Packet outPacketInverted = new Packet(Packet.Command.Move, toMove, x, y, true);
-        SendPackets(outPacket, outPacketInverted, sGame, sourceID);
+        SendPackets(outPacket, outPacketInverted, sGame.Players[playerIndex].ConnectionID, sGame.Players[1 - playerIndex].ConnectionID);
     }
 
-    public void Move(ServerGame sGame, int playerIndex, int cardID, int x, int y, NetworkConnection sourceID)
+    public void Move(ServerGame sGame, int playerIndex, int cardID, int x, int y)
     {
         //get the card to move
         Card toMove = sGame.GetCardFromID(cardID);
@@ -374,17 +372,17 @@ public class ServerNetworkController : NetworkController {
             Debug.Log("move");
             //move the card there
             toMove.MoveOnBoard(invertedX, invertedY);
-            NotifyMove(sGame, toMove, x, y, sourceID);
+            NotifyMove(sGame, playerIndex, toMove, x, y);
         }
         else
         {
             Debug.Log("putback");
             Packet outPacket = new Packet(Packet.Command.PutBack);
-            SendPackets(outPacket, null, sGame, sourceID);
+            SendPackets(outPacket, null, sGame.Players[playerIndex].ConnectionID, default);
         }
     }
 
-    public void Attack(ServerGame sGame, int playerIndex, int cardID, int x, int y, NetworkConnection sourceID)
+    public void Attack(ServerGame sGame, int playerIndex, int cardID, int x, int y)
     {
         //get the card to move
         Card toMove = sGame.GetCardFromID(cardID);
@@ -398,7 +396,7 @@ public class ServerNetworkController : NetworkController {
             //tell the players to put cards down where they were
             outPacket = new Packet(Packet.Command.PutBack);
             outPacketInverted = new Packet(Packet.Command.PutBack);
-            SendPackets(outPacket, outPacketInverted, sGame, sourceID);
+            SendPackets(outPacket, outPacketInverted, sGame.Players[playerIndex].ConnectionID, sGame.Players[1 - playerIndex].ConnectionID);
             //then resolve the attack
             //TODO allow for activation of abilities, fast cards
             CharacterCard attacker = toMove as CharacterCard;
@@ -407,138 +405,140 @@ public class ServerNetworkController : NetworkController {
 
             outPacket = new Packet(Packet.Command.SetNESW, attacker, attacker.N, attacker.E, attacker.S, attacker.W);
             outPacketInverted = new Packet(Packet.Command.SetNESW, attacker, attacker.N, attacker.E, attacker.S, attacker.W);
-            SendPackets(outPacket, outPacketInverted, sGame, sourceID);
+            SendPackets(outPacket, outPacketInverted, sGame.Players[playerIndex].ConnectionID, sGame.Players[1 - playerIndex].ConnectionID);
             outPacket = new Packet(Packet.Command.SetNESW, defender, defender.N, defender.E, defender.S, defender.W);
             outPacketInverted = new Packet(Packet.Command.SetNESW, defender, defender.N, defender.E, defender.S, defender.W);
-            SendPackets(outPacket, outPacketInverted, sGame, sourceID);
+            SendPackets(outPacket, outPacketInverted, sGame.Players[playerIndex].ConnectionID, sGame.Players[1 - playerIndex].ConnectionID);
         }
         else
         {
             Debug.Log("putback");
             outPacket = new Packet(Packet.Command.PutBack);
-            SendPackets(outPacket, outPacketInverted, sGame, sourceID);
+            SendPackets(outPacket, null, sGame.Players[playerIndex].ConnectionID, default);
         }
     }
 
-    public void NotifyTopdeck(ServerGame sGame, Card card, NetworkConnection sourceID)
+    public void NotifyTopdeck(ServerGame sGame, Card card)
     {
         Packet outPacket = null;
         Packet outPacketInverted = null;
+        int playerIndex = card.OwnerIndex;
         //and let everyone know
         outPacket = new Packet(Packet.Command.Topdeck, card);
         if (card.Location == Card.CardLocation.Hand || card.Location == Card.CardLocation.Deck)
             outPacketInverted = new Packet(Packet.Command.Delete, card);
-        SendPackets(outPacket, outPacketInverted, sGame, sourceID);
+        SendPackets(outPacket, outPacketInverted, sGame.Players[playerIndex].ConnectionID, sGame.Players[1 - playerIndex].ConnectionID);
     }
 
-    public void DebugTopdeck(ServerGame sGame, int cardID, NetworkConnection sourceID)
+    public void DebugTopdeck(ServerGame sGame, int cardID)
     {
         Card toTopdeck = sGame.GetCardFromID(cardID);
-        NotifyTopdeck(sGame, toTopdeck, sourceID);
+        NotifyTopdeck(sGame, toTopdeck);
         toTopdeck.Topdeck();
     }
 
-    public void NotifyDiscard(ServerGame sGame, Card toDiscard, NetworkConnection sourceID)
+    public void NotifyDiscard(ServerGame sGame, Card toDiscard)
     {
         Packet outPacket = null;
         Packet outPacketInverted = null;
+        int playerIndex = toDiscard.OwnerIndex;
         //and let everyone know
         outPacket = new Packet(Packet.Command.Discard, toDiscard);
         if (toDiscard.Location == Card.CardLocation.Discard || toDiscard.Location == Card.CardLocation.Field)
             outPacketInverted = new Packet(Packet.Command.Discard, toDiscard);
         else outPacketInverted = new Packet(Packet.Command.AddAsEnemy, toDiscard.CardName, (int)Card.CardLocation.Discard, toDiscard.ID);
-        SendPackets(outPacket, outPacketInverted,sGame, sourceID);
+        SendPackets(outPacket, outPacketInverted, sGame.Players[playerIndex].ConnectionID, sGame.Players[1 - playerIndex].ConnectionID);
     }
 
-    public void DebugDiscard(ServerGame sGame, int cardID, NetworkConnection sourceID)
+    public void DebugDiscard(ServerGame sGame, int cardID)
     {
         Card toDiscard = sGame.GetCardFromID(cardID);
-        NotifyDiscard(sGame, toDiscard, sourceID);
+        NotifyDiscard(sGame, toDiscard);
         toDiscard.Discard();
     }
 
-    public void NotifyRehand(ServerGame sGame, Card toRehand, NetworkConnection sourceID)
+    public void NotifyRehand(ServerGame sGame, Card toRehand)
     {
         Packet outPacket = null;
         Packet outPacketInverted = null;
+        int playerIndex = toRehand.OwnerIndex;
         //and let everyone know
         outPacket = new Packet(Packet.Command.Rehand, toRehand);
         if (toRehand.Location == Card.CardLocation.Hand || toRehand.Location == Card.CardLocation.Deck)
             outPacketInverted = new Packet(Packet.Command.Delete, toRehand);
         else outPacketInverted = null; //TODO make this add a blank card
                                        //eventually, this won't be necessary, because the player won't initiate this action
-        SendPackets(outPacket, outPacketInverted, sGame, sourceID);
+        SendPackets(outPacket, outPacketInverted, sGame.Players[playerIndex].ConnectionID, sGame.Players[1 - playerIndex].ConnectionID);
     }
 
-    public void DebugRehand(ServerGame sGame, int cardID, NetworkConnection sourceID)
+    public void DebugRehand(ServerGame sGame, int cardID)
     {
         Card toRehand = sGame.GetCardFromID(cardID);
-        NotifyRehand(sGame, toRehand, sourceID);
+        NotifyRehand(sGame, toRehand);
         toRehand.Rehand();
     }
 
-    public void NotifyReshuffle(ServerGame sGame, Card toReshuffle, NetworkConnection sourceID)
+    public void NotifyReshuffle(ServerGame sGame, Card toReshuffle)
     {
         Packet outPacket = null;
         Packet outPacketInverted = null;
+        int playerIndex = toReshuffle.OwnerIndex;
         //and let everyone know
         outPacket = new Packet(Packet.Command.Reshuffle, toReshuffle);
         if (toReshuffle.Location == Card.CardLocation.Hand || toReshuffle.Location == Card.CardLocation.Deck)
             outPacketInverted = new Packet(Packet.Command.Delete, toReshuffle);
-        SendPackets(outPacket, outPacketInverted, sGame, sourceID);
+        SendPackets(outPacket, outPacketInverted, sGame.Players[playerIndex].ConnectionID, sGame.Players[1 - playerIndex].ConnectionID);
     }
 
-    public void NotifyDraw(ServerGame sGame, Card toDraw, NetworkConnection sourceID)
+    public void NotifyDraw(ServerGame sGame, Card toDraw)
     {
         //let everyone know to add that character to the correct hand
         Packet outPacket = new Packet(Packet.Command.Rehand, toDraw);
-        //Packet outPacketInverted = new Packet(Packet.Command.Rehand, toDraw);
-        Packet outPacketInverted = null;
-        SendPackets(outPacket, outPacketInverted, sGame, sourceID);
+        SendPackets(outPacket, null, toDraw.Controller.ConnectionID, default);
     }
 
-    public void DebugDraw(ServerGame sGame, int playerIndex, NetworkConnection connectionID)
+    public void DebugDraw(ServerGame sGame, int playerIndex)
     {
         //draw and store what was drawn
         Card toDraw = sGame.Draw(playerIndex);
         if (toDraw == null) return; //deck was empty
-        NotifyDraw(sGame, toDraw, connectionID);
+        NotifyDraw(sGame, toDraw);
     }
 
-    public void NotifySetPips(ServerGame sGame, int playerIndex, int pipsToSet, NetworkConnection sourceID)
+    public void NotifySetPips(ServerGame sGame, int playerIndex, int pipsToSet)
     {
         //let everyone know
         Packet outPacket = new Packet(Packet.Command.SetPips, pipsToSet);
         Packet outPacketInverted = new Packet(Packet.Command.SetEnemyPips, pipsToSet);
-        SendPackets(outPacket, outPacketInverted,sGame, sourceID);
+        SendPackets(outPacket, outPacketInverted, sGame.Players[playerIndex].ConnectionID, sGame.Players[1 - playerIndex].ConnectionID);
     }
 
-    public void DebugSetPips(ServerGame sGame, int playerIndex, NetworkConnection connectionID, int pipsToSet)
+    public void DebugSetPips(ServerGame sGame, int playerIndex, int pipsToSet)
     {
         sGame.Players[playerIndex].pips = pipsToSet;
         if (playerIndex == 0) uiCtrl.UpdateFriendlyPips(pipsToSet);
         else uiCtrl.UpdateEnemyPips(pipsToSet);
-        NotifySetPips(sGame, playerIndex, pipsToSet, connectionID);
+        NotifySetPips(sGame, playerIndex, pipsToSet);
     }
 
     public void SetTurn(ServerGame sGame, NetworkConnection connectionID, int indexToSet)
     {
         Packet outPacket = new Packet(Packet.Command.EndTurn, indexToSet);
         Packet outPacketInverted = new Packet(Packet.Command.EndTurn, indexToSet);
-        SendPackets(outPacket, outPacketInverted, sGame, connectionID);
+        SendPackets(outPacket, outPacketInverted, sGame.Players[indexToSet].ConnectionID, sGame.Players[1 - indexToSet].ConnectionID);
     }
 
     public void GetBoardTarget(ServerGame sGame, int playerIndex, Card effectSource, int effectIndex, int subeffectIndex)
     {
         Packet outPacket = new Packet(Packet.Command.RequestBoardTarget, effectSource, effectIndex, subeffectIndex);
-        SendPackets(outPacket, null, sGame, sGame.Players[playerIndex].ConnectionID);
+        SendPackets(outPacket, null, sGame.Players[playerIndex].ConnectionID, default);
         Debug.Log("Asking for board target");
     }
 
     public void GetDeckTarget(ServerGame sGame, int playerIndex, Card effectSource, int effectIndex, int subeffectIndex)
     {
         Packet outPacket = new Packet(Packet.Command.RequestDeckTarget, effectSource, effectIndex, subeffectIndex);
-        SendPackets(outPacket, null, sGame, sGame.Players[playerIndex].ConnectionID);
+        SendPackets(outPacket, null, sGame.Players[playerIndex].ConnectionID, default);
         Debug.Log("Asking for deck target");
         uiCtrl.CurrentStateString = "Asking for deck target";
     }
@@ -546,25 +546,25 @@ public class ServerNetworkController : NetworkController {
     public void GetDiscardTarget(ServerGame sGame, int playerIndex, Card effectSource, int effectIndex, int subeffectIndex)
     {
         Packet outPacket = new Packet(Packet.Command.RequestDiscardTarget, effectSource, effectIndex, subeffectIndex);
-        SendPackets(outPacket, null, sGame, sGame.Players[playerIndex].ConnectionID);
+        SendPackets(outPacket, null, sGame.Players[playerIndex].ConnectionID, default);
         Debug.Log("Asking for discard target");
     }
 
     public void GetHandTarget(ServerGame sGame, int playerIndex, Card effectSource, int effectIndex, int subeffectIndex)
     {
         Packet outPacket = new Packet(Packet.Command.RequestHandTarget, effectSource, effectIndex, subeffectIndex);
-        SendPackets(outPacket, null, sGame, sGame.Players[playerIndex].ConnectionID);
+        SendPackets(outPacket, null, sGame.Players[playerIndex].ConnectionID, default);
         Debug.Log("Asking for hand target");
     }
 
     public void GetSpaceTarget(ServerGame sGame, int playerIndex, Card effSrc, int effIndex, int subeffIndex)
     {
         Packet outPacket = new Packet(Packet.Command.SpaceTarget, effSrc, effIndex, subeffIndex);
-        SendPackets(outPacket, null, sGame, sGame.Players[playerIndex].ConnectionID);
+        SendPackets(outPacket, null, sGame.Players[playerIndex].ConnectionID, default);
         Debug.Log("Asking for space target");
     }
 
-    public void DebugSetNESW(ServerGame sGame, int cardID, NetworkConnection connectionID, int n, int e, int s, int w)
+    public void DebugSetNESW(ServerGame sGame, int cardID, int n, int e, int s, int w)
     {
         Card toSet = sGame.GetCardFromID(cardID);
         if(!(toSet is CharacterCard charToSet)) return;
@@ -575,10 +575,11 @@ public class ServerNetworkController : NetworkController {
     public void NotifySetNESW(ServerGame sGame, CharacterCard card)
     {
         if (card == null) return;
+        int playerIndex = card.ControllerIndex;
         //let everyone know to set NESW
         Packet outPacket = new Packet(Packet.Command.SetNESW, card, card.N, card.E, card.S, card.W);
         Packet outPacketInverted = new Packet(Packet.Command.SetNESW, card, card.N, card.E, card.S, card.W);
-        SendPackets(outPacket, outPacketInverted, sGame, sGame.Players[card.ControllerIndex].ConnectionID);
+        SendPackets(outPacket, outPacketInverted, sGame.Players[playerIndex].ConnectionID, sGame.Players[1 - playerIndex].ConnectionID);
     }
 
     public void RequestResponse(ServerGame sGame, int playerIndex)
@@ -591,13 +592,13 @@ public class ServerNetworkController : NetworkController {
     /// </summary>
     public void AcceptTarget(ServerGame sGame, NetworkConnection connectionID)
     {
-        SendPackets(new Packet(Packet.Command.TargetAccepted), null, sGame, connectionID);
+        SendPackets(new Packet(Packet.Command.TargetAccepted), null, connectionID, default);
     }
 
     public void GetXForEffect(ServerGame sGame, int playerIndex, Card effSource, int effIndex, int subeffIndex)
     {
         Packet outPacket = new Packet(Packet.Command.PlayerSetX, effSource, effIndex, subeffIndex);
-        SendPackets(outPacket, null, sGame, sGame.Players[playerIndex].ConnectionID);
+        SendPackets(outPacket, null, sGame.Players[playerIndex].ConnectionID, default);
         Debug.Log("Asking for X");
     }
 
@@ -612,7 +613,7 @@ public class ServerNetworkController : NetworkController {
     {
         //this puts the cardid in the right place, eff index in right place, x in packet.X
         Packet outPacket = new Packet(Packet.Command.SetEffectsX, effSrc, effIndex, 0, x, 0);
-        SendPackets(outPacket, outPacket, sGame, effSrc.Controller.ConnectionID);
+        SendPackets(outPacket, outPacket, effSrc.Controller.ConnectionID, sGame.Players[1 - effSrc.ControllerIndex].ConnectionID);
         Debug.Log("Sending value of X to client");
     }
 
@@ -620,13 +621,13 @@ public class ServerNetworkController : NetworkController {
     {
         Packet packet = new Packet(Packet.Command.EnableDecliningTarget);
         Debug.Log("Enabling declining target");
-        SendPackets(packet, null, sGame, sGame.Players[playerIndex].ConnectionID);
+        SendPackets(packet, null, sGame.Players[playerIndex].ConnectionID, default);
     }
 
     public void DisableDecliningTarget(ServerGame sGame, int playerIndex)
     {
         Packet packet = new Packet(Packet.Command.DisableDecliningTarget);
         Debug.Log("Disabling declining target");
-        SendPackets(packet, null, sGame, sGame.Players[playerIndex].ConnectionID);
+        SendPackets(packet, null, sGame.Players[playerIndex].ConnectionID, default);
     }
 }

@@ -92,8 +92,14 @@ public class ClientNetworkController : NetworkController {
                 Connected = false;
             }
         }
-        
-        if(Connected) Send(new Packet(Packet.Command.Nothing), mDriver, mConnection, mPipeline);
+
+        if (!Connected) return;
+        timeChange += Time.deltaTime;
+        if(timeChange >= 1f)
+        {
+            Send(new Packet(Packet.Command.Nothing), mDriver, mConnection, mPipeline);
+            timeChange = 0f;
+        }
     }
 
     public void ParseCommand(byte[] buffer) //KEEP CONNECTION ALIVE
@@ -115,8 +121,7 @@ public class ClientNetworkController : NetworkController {
         switch (packet.command)
         {
             case Packet.Command.Nothing:
-            //case Packet.Command.Confirm:
-                //return;
+                //discard
                 return;
             case Packet.Command.AddAsFriendly:
                 ClientGame.mainClientGame.friendlyDeckCtrl.AddCard(packet.CardName, packet.CardIDToBe);

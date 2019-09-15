@@ -105,7 +105,7 @@ public class ServerGame : Game {
         Players[turnPlayer].pips = pipsToSet;
         if (turnPlayer == 0) uiCtrl.UpdateFriendlyPips(pipsToSet);
         else uiCtrl.UpdateEnemyPips(pipsToSet);
-        serverNetworkCtrl.NotifySetPips(this, turnPlayer, pipsToSet, players[turnPlayer].ConnectionID);
+        serverNetworkCtrl.NotifySetPips(this, turnPlayer, pipsToSet);
     }
 
     //later, upgrade this with checking if the square is valid (adj or special case)
@@ -153,7 +153,7 @@ public class ServerGame : Game {
         boardCtrl.ResetCardsForTurn();
 
         //draw for turn and store what was drawn
-        serverNetworkCtrl.DebugDraw(this, turnPlayer, players[turnPlayer].ConnectionID);
+        serverNetworkCtrl.DebugDraw(this, turnPlayer);
         serverNetworkCtrl.SetTurn(this, players[turnPlayer].ConnectionID, turnPlayer);
 
         //trigger turn start effects

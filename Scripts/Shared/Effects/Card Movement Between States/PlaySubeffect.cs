@@ -27,7 +27,7 @@ public class PlaySubeffect : CardChangeStateSubeffect
 
     public override void Resolve()
     {
-        ServerGame?.serverNetworkCtrl.NotifyPlay(ServerGame, parent.effectControllerIndex, Target, X, Y, Target.Controller.ConnectionID);
+        ServerGame?.serverNetworkCtrl.NotifyPlay(ServerGame, parent.effectControllerIndex, Target, X, Y);
         Target.Play(X, Y, parent.effectControllerIndex);
         parent.ResolveNextSubeffect();
     }

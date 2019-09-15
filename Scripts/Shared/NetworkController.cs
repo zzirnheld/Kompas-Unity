@@ -13,41 +13,7 @@ public class NetworkController : MonoBehaviour
 {
     protected const int BUFFER_SIZE = 250; //size of serialized Packet()
 
-    public struct SentItem
-    {
-        public Packet packet;
-        public NetworkConnection connectionID;
-        public UdpNetworkDriver driver;
-        public int count;
-
-        public SentItem(Packet packet, NetworkConnection networkConnection, UdpNetworkDriver networkDriver)
-        {
-            this.packet = packet;
-            connectionID = networkConnection;
-            driver = networkDriver;
-            count = 0;
-        }
-    }
-
-    private List<SentItem> sentItems = new List<SentItem>();
-
-    private void Update()
-    {
-        //using reliability pipeline instead of this
-        /*//iterate through the list of sent items
-        for (int i = 0; i < sentItems.Count; i++)
-        {
-            SentItem sentItem = sentItems[i];
-            //increment each one's count
-            sentItem.count++;
-            //if the count is greater than 500, resend it
-            if(sentItem.count > 500)
-            {
-                Send(sentItem.packet, sentItem.driver, sentItem.connectionID, false);
-                sentItem.count = 0;
-            }
-        }*/
-    }
+    protected float timeChange = 0f;
 
     #region serialization
     //protected byte[] reusableBuffer = new byte[REUSABLE_BUFFER_SIZE];
@@ -111,31 +77,4 @@ public class NetworkController : MonoBehaviour
             mDriver.Send(pipeline, connection, writer);
         }
     }
-
-    //using reliability pipeline instead of this
-    /*
-    protected void SendAcknowledgement(int packetID, NetworkConnection connection, UdpCNetworkDriver driver)
-    {
-        //send a confirmation packet
-        Send(new Packet(packetID), driver, connection, false);
-    }
-
-    /// <summary>
-    /// Removes the packet with matching id and conneciton from the list of sent items, so that it won't be resent.
-    /// </summary>
-    /// <param name="packet">The packet whose id we should remove</param>
-    /// <param name="connection">The connection id this packet is from</param>
-    protected void ReceiveAcknowledgement(Packet packet, NetworkConnection connection)
-    {
-        Debug.Log("Acknoledging " + packet.packetID); //TODO actually acknowledge
-
-        foreach(SentItem item in sentItems)
-        {
-            if(item.packet.packetID == packet.packetID && item.connectionID == connection)
-            {
-                sentItems.Remove(item);
-                break;
-            }
-        }
-    }*/
 }
