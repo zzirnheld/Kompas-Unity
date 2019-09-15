@@ -411,6 +411,7 @@ public class ServerNetworkController : NetworkController {
         Card toDiscard = sGame.GetCardFromID(cardID);
         serverNotifier.NotifyDiscard(toDiscard);
         toDiscard.Discard();
+        sGame.CheckForResponse();
     }
 
     public void DebugRehand(ServerGame sGame, int cardID)

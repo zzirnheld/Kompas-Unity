@@ -160,12 +160,7 @@ public class ServerGame : Game {
         serverNotifier.NotifySetTurn(this, turnPlayer);
 
         //trigger turn start effects
-        foreach (Trigger t in triggerMap[TriggerCondition.TurnStart])
-        {
-            t.TriggerIfValid(null, null);
-        }
-        //then check for responses
-        CheckForResponse();
+        Trigger(TriggerCondition.TurnStart, null, null, true);
     }
 
     #region the stack
@@ -248,15 +243,13 @@ public class ServerGame : Game {
     #endregion the stack
 
     #region triggers
-    public void Trigger(TriggerCondition condition, Effect source, int x)
+    public void Trigger(TriggerCondition condition, Effect source, int? x, bool checkForResponse)
     {
-        List<Trigger> triggersToCheck = triggerMap[condition];
-        if (triggersToCheck == null) return;
-        foreach(Trigger t in triggersToCheck)
+        foreach(Trigger t in triggerMap[condition])
         {
             t.TriggerIfValid(source, x);
         }
-        CheckForResponse();
+        if(checkForResponse) CheckForResponse();
     }
 
     public void RegisterTrigger(TriggerCondition condition, Trigger trigger)

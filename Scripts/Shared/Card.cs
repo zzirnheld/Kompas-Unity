@@ -7,7 +7,8 @@ public abstract class Card : KompasObject {
 
     public enum CardLocation { Nowhere, Field, Discard, Hand, Deck };
 
-    private ClientGame clientGame;
+    protected ClientGame clientGame;
+    protected ServerGame serverGame;
 
     //constants
     public const float minBoardLocalX = -0.45f;
@@ -186,6 +187,7 @@ public abstract class Card : KompasObject {
     {
         this.game = game;
         clientGame = game as ClientGame;
+        serverGame = game as ServerGame;
 
         cardName = serializedCard.cardName;
         effText = serializedCard.effText;
@@ -335,6 +337,8 @@ public abstract class Card : KompasObject {
     {
         Remove();
         controller.discardCtrl.AddToDiscard(this);
+        //if server game, trigger effects for this being discarded
+        serverGame?.Trigger(TriggerCondition.ThisDiscarded, null, null, false);
     }
 
     public void Rehand(int controllerIndex)

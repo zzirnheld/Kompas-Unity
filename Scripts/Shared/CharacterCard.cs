@@ -146,6 +146,7 @@ public class CharacterCard : Card {
 
         defender.DealCombatDamage(attackerDmg);
         DealCombatDamage(defenderDmg);
+        serverGame?.CheckForResponse();
     }
 
 
