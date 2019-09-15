@@ -78,7 +78,7 @@ public class ServerNotifier : MonoBehaviour
         Packet outPacketInverted = null;
         //and let everyone know
         outPacket = new Packet(Packet.Command.Rehand, toRehand);
-        if (toRehand.Location == Card.CardLocation.Hand || toRehand.Location == Card.CardLocation.Deck)
+        if (toRehand.Location == Card.CardLocation.Discard || toRehand.Location == Card.CardLocation.Field)
             outPacketInverted = new Packet(Packet.Command.Delete, toRehand);
         else outPacketInverted = null; //TODO make this add a blank card
         SendPackets(outPacket, outPacketInverted, toRehand.Owner);
