@@ -38,7 +38,7 @@ public class ServerGame : Game {
     {
         mainGame = this;
         mainServerGame = this;
-        stack = new List<Effect>();
+        stack = new List<IStackable>();
         triggerMap = new Dictionary<TriggerCondition, List<Trigger>>();
         foreach(TriggerCondition c in System.Enum.GetValues(typeof(TriggerCondition)))
         {
@@ -111,6 +111,16 @@ public class ServerGame : Game {
         serverNotifier.NotifySetPips(TurnPlayer, pipsToSet);
     }
 
+    public void CheckForDeath(CharacterCard toCheck, Effect effSrc, Attack atkSrc)
+    {
+        if(toCheck.E <= 0)
+        {
+            serverNotifier.NotifyDiscard(toCheck);
+            toCheck.Discard();
+            Trigger(TriggerCondition.Discard, toCheck, effSrc, atkSrc, null);
+        }
+    }
+
     //later, upgrade this with checking if the square is valid (adj or special case)
     #region check validity
     public bool ValidBoardPlay(Card card, int toX, int toY)
@@ -160,17 +170,23 @@ public class ServerGame : Game {
         serverNotifier.NotifySetTurn(this, turnPlayer);
 
         //trigger turn start effects
-        Trigger(TriggerCondition.TurnStart, null, null, true);
+        Trigger(TriggerCondition.TurnStart, null, null, null, null);
+        CheckForResponse();
     }
 
     #region the stack
+    public void PushToStack(IStackable eff, int controller, bool checkForResponses)
+    {
+        stack.Add(eff);
+        stackIndex++;
+        if(checkForResponses) CheckForResponse();
+    }
+
     public void PushToStack(Effect eff, int controller, bool checkForResponses)
     {
         eff.serverGame = this;
         eff.effectControllerIndex = controller;
-        stack.Add(eff);
-        stackIndex++;
-        if(checkForResponses) CheckForResponse();
+        PushToStack(eff, controller, checkForResponses);
     }
 
     public void PopFromStack()
@@ -195,7 +211,7 @@ public class ServerGame : Game {
             boardCtrl.DiscardSimples();
             return; //done with this stack!
         }
-        Effect eff = stack[stackIndex];
+        IStackable eff = stack[stackIndex];
         stack.RemoveAt(stackIndex);
         stackIndex--;
         eff.StartResolution();
@@ -243,13 +259,12 @@ public class ServerGame : Game {
     #endregion the stack
 
     #region triggers
-    public void Trigger(TriggerCondition condition, Effect source, int? x, bool checkForResponse)
+    public void Trigger(TriggerCondition condition, Card triggerer, Effect effSource, Attack atkSource, int? x)
     {
         foreach(Trigger t in triggerMap[condition])
         {
-            t.TriggerIfValid(source, x);
+            t.TriggerIfValid(triggerer, effSource, atkSource, x);
         }
-        if(checkForResponse) CheckForResponse();
     }
 
     public void RegisterTrigger(TriggerCondition condition, Trigger trigger)

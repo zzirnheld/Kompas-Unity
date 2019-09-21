@@ -39,5 +39,5 @@ public class SerializableEffect
     //string to be deserialized
     public string trigger;
 
-    public int maxTimesCanUsePerTurn;
+    public int? maxTimesCanUsePerTurn;
 }

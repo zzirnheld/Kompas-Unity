@@ -6,7 +6,12 @@ public enum TriggerCondition
 {
     TurnStart = 0,
     Draw = 100,
-    ThisPlayed = 101,
-    ThisDiscarded = 102,
-    Arrive = 150
+    NESWChange = 200,
+    Defends = 300,
+    Attacks = 301,
+    TakeCombatDamage = 302,
+    DealCombatDamage = 303,
+    Arrive = 400,
+    Play = 401,
+    Discard = 402
 }

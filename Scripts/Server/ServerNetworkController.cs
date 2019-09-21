@@ -382,14 +382,7 @@ public class ServerNetworkController : NetworkController {
             //TODO allow for activation of abilities, fast cards
             CharacterCard attacker = toMove as CharacterCard;
             CharacterCard defender = sGame.boardCtrl.GetCharAt(invertedX, invertedY);
-            attacker.Attack(defender);
-
-            outPacket = new Packet(Packet.Command.SetNESW, attacker, attacker.N, attacker.E, attacker.S, attacker.W);
-            outPacketInverted = new Packet(Packet.Command.SetNESW, attacker, attacker.N, attacker.E, attacker.S, attacker.W);
-            SendPackets(outPacket, outPacketInverted, sGame.Players[playerIndex].ConnectionID, sGame.Players[1 - playerIndex].ConnectionID);
-            outPacket = new Packet(Packet.Command.SetNESW, defender, defender.N, defender.E, defender.S, defender.W);
-            outPacketInverted = new Packet(Packet.Command.SetNESW, defender, defender.N, defender.E, defender.S, defender.W);
-            SendPackets(outPacket, outPacketInverted, sGame.Players[playerIndex].ConnectionID, sGame.Players[1 - playerIndex].ConnectionID);
+            sGame.PushToStack(new Attack(sGame, attacker, defender), playerIndex, true);
         }
         else
         {

@@ -10,6 +10,9 @@ public class CharacterCard : Card {
     private int s;
     private int w;
     private int baseN;
+    private int baseE;
+    private int baseS;
+    private int baseW;
 
     //stat getters TODO take into account tags here
     //reminder: don't need separate setters because you don't notify because you'll only change stats when server tells you to
@@ -36,7 +39,6 @@ public class CharacterCard : Card {
         set
         {
             e = value;
-            //TODO when e goes to 0, die
         }
     }
     public int S
@@ -95,11 +97,10 @@ public class CharacterCard : Card {
     {
         if (!(serializedCard is SerializableCharCard serializedChar)) return;
 
-        n = serializedChar.n;
-        e = serializedChar.e;
-        s = serializedChar.s;
-        w = serializedChar.w;
-        baseN = serializedChar.n;
+        baseN = n = serializedChar.n;
+        baseE = e = serializedChar.e;
+        baseS = s = serializedChar.s;
+        baseW = w = serializedChar.w;
 
         base.SetInfo(serializedCard, game, ownerIndex);
     }
@@ -121,15 +122,13 @@ public class CharacterCard : Card {
     {
         N = baseN;
     }
-
-    public int GetCombatDamage()
+    
+    public override void ResetCard()
     {
-        return W;
-    }
-
-    public void DealCombatDamage(int dmg)
-    {
-        E -= dmg;
+        n = baseN;
+        e = baseE;
+        s = baseS;
+        w = baseW;
     }
 
     public override void ResetForTurn()
@@ -137,17 +136,4 @@ public class CharacterCard : Card {
         base.ResetForTurn();
         ResetN();
     }
-
-    //game mechanics
-    public void Attack(CharacterCard defender)
-    {
-        int attackerDmg = GetCombatDamage();
-        int defenderDmg = defender.GetCombatDamage();
-
-        defender.DealCombatDamage(attackerDmg);
-        DealCombatDamage(defenderDmg);
-        serverGame?.CheckForResponse();
-    }
-
-
 }

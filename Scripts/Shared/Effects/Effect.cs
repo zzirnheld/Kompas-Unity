@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Effects will only be resolved on server. Clients will just get to know what effects they can use
 /// </summary>
-public class Effect
+public class Effect : IStackable
 {
     //if this effect is resolving on a server, this is the server game it's resolving on
     public ServerGame serverGame;
@@ -47,11 +47,11 @@ public class Effect
     /// </summary>
     public int TimesUsedThisTurn { get => timesUsedThisTurn; }
 
-    private int maxTimesCanUsePerTurn;
+    private int? maxTimesCanUsePerTurn;
     /// <summary>
     /// The maximum number of times this effect can be used in a turn
     /// </summary>
-    public int MaxTimesCanUsePerTurn { get => maxTimesCanUsePerTurn; }
+    public int? MaxTimesCanUsePerTurn { get => maxTimesCanUsePerTurn; }
 
     //get the currently resolving subeffect
     public Subeffect CurrSubeffect { get { return subeffects[subeffectIndex]; } }

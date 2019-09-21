@@ -120,6 +120,7 @@ public abstract class Card : KompasObject {
                     break;
                 case CardLocation.Discard:
                     game.Players[controllerIndex].discardCtrl.RemoveFromDiscard(this);
+                    ResetCard();
                     break;
                 case CardLocation.Hand:
                     game.Players[controllerIndex].handCtrl.RemoveFromHand(this);
@@ -147,10 +148,12 @@ public abstract class Card : KompasObject {
             case CardLocation.Hand:
                 transform.SetParent(game.Players[controllerIndex].handObject.transform);
                 gameObject.SetActive(true);
+                ResetCard();
                 break;
             case CardLocation.Deck:
                 transform.SetParent(game.Players[controllerIndex].deckObject.transform);
                 gameObject.SetActive(false);
+                ResetCard();
                 break;
         }
     }
@@ -288,6 +291,12 @@ public abstract class Card : KompasObject {
             game.Players[controllerIndex].handCtrl.SpreadOutCards();
     }
 
+    /// <summary>
+    /// Resets any of the card's values that might be different from their originals.
+    /// Should be called when cards move out the discard, or into the hand, deck, or annihilation
+    /// </summary>
+    public virtual void ResetCard() { }
+
     //interaction methods
     //helper methods
     public bool WithinIgnoreY(Vector3 position, float minX, float maxX, float minZ, float maxZ)
@@ -337,8 +346,6 @@ public abstract class Card : KompasObject {
     {
         Remove();
         controller.discardCtrl.AddToDiscard(this);
-        //if server game, trigger effects for this being discarded
-        serverGame?.Trigger(TriggerCondition.ThisDiscarded, null, null, false);
     }
 
     public void Rehand(int controllerIndex)

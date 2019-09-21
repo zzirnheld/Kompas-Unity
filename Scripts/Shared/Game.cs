@@ -33,7 +33,7 @@ public class Game : MonoBehaviour {
     public int MaxCardsOnField = 0; //for pip generation purposes
 
     //The Stack
-    protected List<Effect> stack;
+    protected List<IStackable> stack;
     protected int stackIndex;
 
     //trigger map

@@ -44,20 +44,23 @@ public class Trigger
         return toReturn;
     }
 
-    protected void TriggerEffect(Effect trigger, int? x)
+    protected void TriggerEffect(int? x)
     {
         if (x.HasValue) effToTrigger.X = x.Value;
         effToTrigger.PushToStack(false);
     }
 
-    protected bool CheckTriggerRestrictions(Effect trigger, int? x)
+    protected bool CheckTriggerRestrictions(Card triggerer, Effect effTrigger, Attack attackTrigger, int? x)
     {
-        if (trigger.TimesUsedThisTurn >= trigger.MaxTimesCanUsePerTurn) return false;
+        if (effToTrigger.MaxTimesCanUsePerTurn.HasValue &&
+            effToTrigger.TimesUsedThisTurn >= effToTrigger.MaxTimesCanUsePerTurn)
+            return false;
         return triggerRestriction.Evaluate();
     }
 
-    public virtual void TriggerIfValid(Effect trigger, int? x)
+    public virtual void TriggerIfValid(Card triggerer, Effect effTrigger, Attack attackTrigger, int? x)
     {
-        if (triggerRestriction.Evaluate()) TriggerEffect(trigger, x);
+        if (CheckTriggerRestrictions(triggerer, effTrigger, attackTrigger, x))
+            TriggerEffect(x);
     }
 }
