@@ -186,7 +186,7 @@ public class ServerGame : Game {
     {
         eff.serverGame = this;
         eff.effectControllerIndex = controller;
-        PushToStack(eff, controller, checkForResponses);
+        PushToStack(eff as IStackable, controller, checkForResponses);
     }
 
     public void PopFromStack()
