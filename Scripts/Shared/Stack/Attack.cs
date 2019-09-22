@@ -17,6 +17,7 @@ public class Attack : IStackable
     /// <param name="defender"></param>
     public Attack(ServerGame serverGame, CharacterCard attacker, CharacterCard defender)
     {
+        this.serverGame = serverGame;
         this.attacker = attacker;
         this.defender = defender;
         serverGame.Trigger(TriggerCondition.Attacks, attacker, null, this, null);
