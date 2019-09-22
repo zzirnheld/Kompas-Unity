@@ -72,7 +72,9 @@ public class Game : MonoBehaviour {
 
     public Card GetCardFromID(int id)
     {
-        if (id > cards.Count) return null;
+        Debug.Log("Getting card with id " + id + " is it in the dictionary? " + cards.ContainsKey(id));
+
+        if (!cards.ContainsKey(id)) return null;
 
         return cards[id];
     }
