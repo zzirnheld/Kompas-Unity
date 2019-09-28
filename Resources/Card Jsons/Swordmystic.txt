@@ -17,7 +17,8 @@
 			"{
 				\"cardRestriction\":
 				{
-					\"restrictionsToCheck\":[3,101,202]
+					\"restrictionsToCheck\":[2,3,101,202],
+					\"subtypesInclude\":[\"Warrior\"]
 				}
 			}",
 			"{
@@ -30,6 +31,7 @@
 				}
 			}",
 			"{
+				\"TargetIndex\":-1
 				\"spaceIndex\":-1
 			}"
 		]

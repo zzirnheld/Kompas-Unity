@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Trigger
 {
-    public TriggerCondition TriggerCondition;
+    public TriggerCondition triggerCondition;
     public Effect effToTrigger;
     public TriggerRestriction triggerRestriction;
 
@@ -17,13 +17,17 @@ public class Trigger
         switch (c)
         {
             case TriggerCondition.TurnStart:
+            case TriggerCondition.Discard:
                 toReturn = JsonUtility.FromJson<Trigger>(json);
+                break;
+            default:
+                Debug.Log("unrecognized trigger conditoin for " + parent.thisCard.CardName);
                 break;
         }
 
         if(toReturn != null)
         {
-            toReturn.TriggerCondition = c;
+            toReturn.triggerCondition = c;
             toReturn.effToTrigger = parent;
             if(toReturn.triggerRestriction != null)
             {

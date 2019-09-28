@@ -24,7 +24,9 @@ public class SerializableEffect
         //SetXByTargetW = 253,
         SetXByTargetCost = 254,
         PlayCard = 300,
-        DiscardCard = 301
+        DiscardCard = 301,
+        ReshuffleCard = 303,
+        XTimesLoop = 400
     }
 
     //used for knowing what effect type to deserialize as

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Reshuffle : CardChangeStateSubeffect
+public class ReshuffleSubeffect : CardChangeStateSubeffect
 {
     public override void Resolve()
     {

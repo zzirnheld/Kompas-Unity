@@ -232,7 +232,6 @@ public abstract class Card : KompasObject {
     }
     public int DistanceTo(Card card)
     {
-        if (Location != CardLocation.Field || card.Location != CardLocation.Field) return 0;
         return DistanceTo(card.BoardX, card.BoardY);
     }
     public bool WithinSlots(int numSlots, Card card)

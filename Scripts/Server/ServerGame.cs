@@ -115,9 +115,12 @@ public class ServerGame : Game {
     {
         if(toCheck.E <= 0)
         {
-            serverNotifier.NotifyDiscard(toCheck);
-            toCheck.Discard();
+            //first, trigger anything that would go off of this thing dying, so it knows it's about to die (moving from field)
             Trigger(TriggerCondition.Discard, toCheck, effSrc, atkSrc, null);
+            //then notify the players
+            serverNotifier.NotifyDiscard(toCheck);
+            //then actually discard it
+            toCheck.Discard();
         }
     }
 

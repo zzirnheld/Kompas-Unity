@@ -23,6 +23,7 @@
 				}
 			}",
 			"{
+				\"TargetIndex\":-1
 				\"spaceIndex\":-1
 			}"
 		]

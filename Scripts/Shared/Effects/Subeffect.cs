@@ -106,6 +106,12 @@ public abstract class Subeffect
             case SerializableEffect.SubeffectType.DiscardCard:
                 toReturn = JsonUtility.FromJson<DiscardSubeffect>(subeffJson);
                 break;
+            case SerializableEffect.SubeffectType.ReshuffleCard:
+                toReturn = JsonUtility.FromJson<ReshuffleSubeffect>(subeffJson);
+                break;
+            case SerializableEffect.SubeffectType.XTimesLoop:
+                toReturn = JsonUtility.FromJson<XTimesSubeffect>(subeffJson);
+                break;
             default:
                 Debug.LogError("Unrecognized effect type enum for loading effect in effect constructor");
                 break;

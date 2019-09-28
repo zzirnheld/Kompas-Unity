@@ -267,10 +267,12 @@ public class ServerNetworkController : NetworkController {
         sGame.cardCount++;
         foreach(Effect eff in added.Effects)
         {
-            if(eff.Trigger != null)
+            if (eff.Trigger != null)
             {
-                sGame.RegisterTrigger(eff.Trigger.TriggerCondition, eff.Trigger);
+                Debug.Log("registering trigger for " + eff.Trigger.triggerCondition);
+                sGame.RegisterTrigger(eff.Trigger.triggerCondition, eff.Trigger);
             }
+            else Debug.Log("trigger is null");
         }
         //let everyone know
         Packet outPacket = new Packet(Packet.Command.AddAsFriendly, cardName, (int)Card.CardLocation.Deck, added.ID);

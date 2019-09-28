@@ -8,6 +8,9 @@ public class CountXLoopSubeffect : Subeffect
 
     public override void Resolve()
     {
+        //let the parent know there's a loop happening
+        parent.loopSubeffect = this;
+
         //count the number of times this happens
         parent.X++;
 
@@ -23,6 +26,9 @@ public class CountXLoopSubeffect : Subeffect
     /// </summary>
     public void ExitLoop()
     {
+        //let parent know the loop is over
+        parent.loopSubeffect = null;
+
         //we'll otherwise be off by one, 
         // since it increments every time the loop is entered, before the client gets a chance to leave
         parent.X--;
