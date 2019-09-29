@@ -10,9 +10,9 @@ public class XTimesSubeffect : Subeffect
 
     public override void Resolve()
     {
-        if(count < parent.X)
+        count++;
+        if (count < parent.X)
         {
-            count++;
             parent.ResolveSubeffect(JumpTo);
         }
         else

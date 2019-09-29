@@ -59,7 +59,7 @@ public class Trigger
         if (effToTrigger.MaxTimesCanUsePerTurn.HasValue &&
             effToTrigger.TimesUsedThisTurn >= effToTrigger.MaxTimesCanUsePerTurn)
             return false;
-        return triggerRestriction.Evaluate();
+        return triggerRestriction.Evaluate(triggerer, effTrigger, attackTrigger);
     }
 
     public virtual void TriggerIfValid(Card triggerer, Effect effTrigger, Attack attackTrigger, int? x)
