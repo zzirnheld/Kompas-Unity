@@ -9,7 +9,7 @@ public class TriggerRestriction : Restriction
     {
         ThisCardTriggered = 0,
         EffectParentRestriction = 100,
-        WasOnField = 400,
+        OnField = 400,
     }
 
     public TriggerRestrictions[] triggerRestrictions;
@@ -35,7 +35,7 @@ public class TriggerRestriction : Restriction
                     if (effParentRestriction == null) return false;
                     if (!effParentRestriction.Evaluate(thisCard)) return false;
                     break;
-                case TriggerRestrictions.WasOnField:
+                case TriggerRestrictions.OnField:
                     if (triggerer.Location != Card.CardLocation.Field) return false;
                     break;
             }

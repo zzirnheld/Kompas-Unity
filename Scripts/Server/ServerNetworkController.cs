@@ -334,6 +334,8 @@ public class ServerNetworkController : NetworkController {
             serverNotifier.NotifyPlay(toPlay, sGame.Players[playerIndex], invertedX, invertedY);
             //play the card here
             toPlay.Play(invertedX, invertedY, playerIndex);
+            //trigger effects
+            sGame.Trigger(TriggerCondition.Play, toPlay, null, null, null);
         }
         else
         {

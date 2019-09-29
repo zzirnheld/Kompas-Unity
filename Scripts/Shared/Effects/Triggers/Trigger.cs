@@ -17,6 +17,7 @@ public class Trigger
         switch (c)
         {
             case TriggerCondition.TurnStart:
+            case TriggerCondition.Play:
             case TriggerCondition.Discard:
                 toReturn = JsonUtility.FromJson<Trigger>(json);
                 break;

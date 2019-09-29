@@ -5,6 +5,12 @@
 "effects":
 [
 	{
+		"triggerCondition":401,
+		"trigger":"{
+			\"triggerRestriction\":{
+				\"triggerRestrictions\":[0,400]
+			}
+		}",
 		"subeffectTypes":[3,303,1,304,1,304],
 		"subeffects":[
 			"{
