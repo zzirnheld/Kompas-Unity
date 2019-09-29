@@ -29,7 +29,7 @@ public class Attack : IStackable
         //deal the damage
         DealDamage();
         //then finish the resolution
-        serverGame.CheckForResponse();
+        serverGame.FinishStackEntryResolution();
     }
     
     private void DealDamage()

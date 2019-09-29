@@ -7,8 +7,9 @@ public class TriggerRestriction : Restriction
 {
     public enum TriggerRestrictions
     {
+        ThisCardTriggered = 0,
         EffectParentRestriction = 100,
-        WasOnField = 400
+        WasOnField = 400,
     }
 
     public TriggerRestrictions[] triggerRestrictions;
@@ -27,6 +28,9 @@ public class TriggerRestriction : Restriction
         {
             switch (r)
             {
+                case TriggerRestrictions.ThisCardTriggered:
+                    if (triggerer != thisTrigger.effToTrigger.thisCard) return false;
+                    break;
                 case TriggerRestrictions.EffectParentRestriction:
                     if (effParentRestriction == null) return false;
                     if (!effParentRestriction.Evaluate(thisCard)) return false;

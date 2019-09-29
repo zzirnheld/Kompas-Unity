@@ -121,6 +121,8 @@ public class ServerGame : Game {
             serverNotifier.NotifyDiscard(toCheck);
             //then actually discard it
             toCheck.Discard();
+            //don't call check for response on stack because anything that causes things to die,
+            //attacks or effects, will call check for response once it's done resolving.
         }
     }
 
@@ -264,6 +266,7 @@ public class ServerGame : Game {
     #region triggers
     public void Trigger(TriggerCondition condition, Card triggerer, Effect effSource, Attack atkSource, int? x)
     {
+        Debug.Log("Triggering " + condition + ", from " + triggerer + ", " + effSource + ", " + atkSource + ", x=" + x);
         foreach(Trigger t in triggerMap[condition])
         {
             t.TriggerIfValid(triggerer, effSource, atkSource, x);
