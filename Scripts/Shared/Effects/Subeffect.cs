@@ -109,6 +109,9 @@ public abstract class Subeffect
             case SerializableEffect.SubeffectType.ReshuffleCard:
                 toReturn = JsonUtility.FromJson<ReshuffleSubeffect>(subeffJson);
                 break;
+            case SerializableEffect.SubeffectType.RehandCard:
+                toReturn = JsonUtility.FromJson<RehandSubeffect>(subeffJson);
+                break;
             case SerializableEffect.SubeffectType.XTimesLoop:
                 toReturn = JsonUtility.FromJson<XTimesSubeffect>(subeffJson);
                 break;

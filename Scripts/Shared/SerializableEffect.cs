@@ -26,6 +26,7 @@ public class SerializableEffect
         PlayCard = 300,
         DiscardCard = 301,
         ReshuffleCard = 303,
+        RehandCard = 304,
         XTimesLoop = 400
     }
 
