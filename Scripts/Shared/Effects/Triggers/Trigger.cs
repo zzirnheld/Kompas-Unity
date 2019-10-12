@@ -9,27 +9,37 @@ public class Trigger
     public Effect effToTrigger;
     public TriggerRestriction triggerRestriction;
 
-    public static Trigger FromJson(TriggerCondition c, string json, Effect parent)
+    /// <summary>
+    /// Creates a trigger from a json
+    /// </summary>
+    /// <param name="condition">The condition on which to trigger the effect.</param>
+    /// <param name="json">The json to create the object from.</param>
+    /// <param name="parent">The effect this trigger will trigger.</param>
+    /// <returns>The trigger with these characteristics.</returns>
+    public static Trigger FromJson(TriggerCondition condition, string json, Effect parent)
     {
         Trigger toReturn = null;
 
-        Debug.Log("Deserializing trigger \n" + json);
-        switch (c)
+        Debug.Log($"Deserializing trigger json \n{json}");
+        switch (condition)
         {
+            //So far, everything is just a normal trigger, but that could change for other types of trigger restrictions
             case TriggerCondition.TurnStart:
             case TriggerCondition.Play:
             case TriggerCondition.Discard:
                 toReturn = JsonUtility.FromJson<Trigger>(json);
                 break;
             default:
-                Debug.Log("unrecognized trigger conditoin for " + parent.thisCard.CardName);
+                Debug.Log($"Unrecognized trigger condition for {parent.thisCard.CardName}");
                 break;
         }
 
         if(toReturn != null)
         {
-            toReturn.triggerCondition = c;
+            //set all values shared by all triggers
+            toReturn.triggerCondition = condition;
             toReturn.effToTrigger = parent;
+            //if the trigger has any restriction, set its values
             if(toReturn.triggerRestriction != null)
             {
                 toReturn.triggerRestriction.thisTrigger = toReturn;
@@ -50,20 +60,45 @@ public class Trigger
         return toReturn;
     }
 
+    /// <summary>
+    /// Pushes this trigger's effect onto the stack with the value of X if applicable.
+    /// </summary>
+    /// <param name="x"></param>
     protected void TriggerEffect(int? x)
     {
         if (x.HasValue) effToTrigger.X = x.Value;
         effToTrigger.PushToStack(false, effToTrigger.thisCard.ControllerIndex);
     }
 
+    /// <summary>
+    /// Checks all relevant trigger restrictions
+    /// </summary>
+    /// <param name="triggerer">The card that triggered this, if any.</param>
+    /// <param name="effTrigger">The effect that triggered this, if any.</param>
+    /// <param name="attackTrigger">The attack that triggered this, if any.</param>
+    /// <param name="x">If the action that triggered this has a value of x, it goes here. Otherwise, null.</param>
+    /// <returns>Whether all restrictions of the trigger are fulfilled.</returns>
     protected bool CheckTriggerRestrictions(Card triggerer, Effect effTrigger, Attack attackTrigger, int? x)
     {
         if (effToTrigger.MaxTimesCanUsePerTurn.HasValue &&
             effToTrigger.TimesUsedThisTurn >= effToTrigger.MaxTimesCanUsePerTurn)
             return false;
+
+        if(triggerRestriction == null)
+        {
+            Debug.LogWarning($"Warning: null trigger restriction for effect of {effToTrigger.thisCard.CardName}");
+        }
+
         return triggerRestriction.Evaluate(triggerer, effTrigger, attackTrigger);
     }
 
+    /// <summary>
+    /// If the trigger for this effect applies to this trigger source, triggers this trigger's effect.
+    /// </summary>
+    /// <param name="triggerer">The card that triggered this, if any.</param>
+    /// <param name="effTrigger">The effect that triggered this, if any.</param>
+    /// <param name="attackTrigger">The attack that triggered this, if any.</param>
+    /// <param name="x">If the action that triggered this has a value of x, it goes here. Otherwise, null.</param>
     public virtual void TriggerIfValid(Card triggerer, Effect effTrigger, Attack attackTrigger, int? x)
     {
         Debug.Log($"Is trigger valid? {CheckTriggerRestrictions(triggerer, effTrigger, attackTrigger, x)}");

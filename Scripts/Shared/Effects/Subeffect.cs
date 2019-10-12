@@ -122,7 +122,7 @@ public abstract class Subeffect
 
         if (toReturn != null)
         {
-            Debug.Log("Toreturn was not null, but was " + toReturn);
+            Debug.Log($"Finishing setup for new effect of type {seType}");
             toReturn.parent = parent;
             toReturn.Initialize();
         }
