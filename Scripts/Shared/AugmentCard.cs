@@ -6,15 +6,15 @@ public class AugmentCard : Card {
 
     private Card thisCard;
 
-    private int d; //TODO refactor this to A
+    private int a; //TODO refactor this to A
     private string subtext;
     private string[] augSubtypes;
     private bool fast;
 
-    public int D
+    public int A
     {
-        get { return d; }
-        set { d = value; }
+        get { return a; }
+        set { a = value; }
     }
 
     public Card ThisCard
@@ -40,7 +40,7 @@ public class AugmentCard : Card {
             cardName = cardName,
             effText = effText,
             subtext = subtext,
-            d = d,
+            d = a,
             augSubtypes = augSubtypes,
 
             location = location,
@@ -59,7 +59,7 @@ public class AugmentCard : Card {
         if (!(serializedCard is SerializableAugCard)) return;
         SerializableAugCard serializedAug = serializedCard as SerializableAugCard;
 
-        d = serializedAug.d;
+        a = serializedAug.d;
         subtext = serializedAug.subtext;
         augSubtypes = serializedAug.augSubtypes;
         fast = serializedAug.fast;
@@ -67,7 +67,7 @@ public class AugmentCard : Card {
         base.SetInfo(serializedCard, game, ownerIndex);
     }
     
-    public override int GetCost() { return D; }
+    public override int GetCost() { return A; }
 
     //game mechanics
     //TODO prevent z fighting
