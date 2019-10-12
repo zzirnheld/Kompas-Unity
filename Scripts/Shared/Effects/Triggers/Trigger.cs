@@ -67,7 +67,7 @@ public class Trigger
     protected void TriggerEffect(int? x)
     {
         if (x.HasValue) effToTrigger.X = x.Value;
-        effToTrigger.PushToStack(false, effToTrigger.thisCard.ControllerIndex);
+        effToTrigger.PushToStack(effToTrigger.thisCard.ControllerIndex);
     }
 
     /// <summary>

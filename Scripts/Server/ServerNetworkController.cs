@@ -249,7 +249,8 @@ public class ServerNetworkController : NetworkController {
             case Packet.Command.TestTargetEffect:
                 Card whoseEffToTest = serverGame.GetCardFromID(packet.cardID);
                 Debug.Log("Running eff of " + whoseEffToTest.CardName);
-                serverGame.PushToStack(whoseEffToTest.Effects[0], playerIndex, true);
+                serverGame.PushToStack(whoseEffToTest.Effects[0], playerIndex);
+                serverGame.CheckForResponse();
                 break;
 #endregion
             default:
@@ -383,11 +384,12 @@ public class ServerNetworkController : NetworkController {
             outPacket = new Packet(Packet.Command.PutBack);
             outPacketInverted = new Packet(Packet.Command.PutBack);
             SendPackets(outPacket, outPacketInverted, sGame.Players[playerIndex].ConnectionID, sGame.Players[1 - playerIndex].ConnectionID);
-            //then resolve the attack
-            //TODO allow for activation of abilities, fast cards
+            //then push the attack tothe stack
             CharacterCard attacker = toMove as CharacterCard;
             CharacterCard defender = sGame.boardCtrl.GetCharAt(invertedX, invertedY);
-            sGame.PushToStack(new Attack(sGame, attacker, defender), playerIndex, true);
+            //push the attack to the stack, then check if any player wants to respond before resolving it
+            sGame.PushToStack(new Attack(sGame, attacker, defender), playerIndex);
+            sGame.CheckForResponse();
         }
         else
         {

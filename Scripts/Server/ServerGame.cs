@@ -180,18 +180,17 @@ public class ServerGame : Game {
     }
 
     #region the stack
-    public void PushToStack(IStackable eff, int controller, bool checkForResponses)
+    public void PushToStack(IStackable eff, int controller)
     {
         stack.Add(eff);
         stackIndex++;
-        if(checkForResponses) CheckForResponse();
     }
 
-    public void PushToStack(Effect eff, int controller, bool checkForResponses)
+    public void PushToStack(Effect eff, int controller)
     {
         eff.serverGame = this;
         eff.effectControllerIndex = controller;
-        PushToStack(eff as IStackable, controller, checkForResponses);
+        PushToStack(eff as IStackable, controller);
     }
 
     public void PopFromStack()
