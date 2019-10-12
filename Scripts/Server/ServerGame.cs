@@ -172,6 +172,12 @@ public class ServerGame : Game {
 
     public bool ValidAttack(Card toMove, int toX, int toY)
     {
+        if (uiCtrl.DebugMode)
+        {
+            Debug.LogWarning("Debug mode, always return true for valid attack");
+            return true;
+        }
+
         if (!(toMove is CharacterCard)) return false;
         return toMove.DistanceTo(toX, toY) == 1;
     }

@@ -266,15 +266,6 @@ public class ServerNetworkController : NetworkController {
         //add the card in, with the cardCount being the card id, then increment the card count
         Card added = owner.deckCtrl.AddCard(cardName, sGame.cardCount, playerIndex);
         sGame.cardCount++;
-        foreach(Effect eff in added.Effects)
-        {
-            if (eff.Trigger != null)
-            {
-                Debug.Log("registering trigger for " + eff.Trigger.triggerCondition);
-                sGame.RegisterTrigger(eff.Trigger.triggerCondition, eff.Trigger);
-            }
-            else Debug.Log("trigger is null");
-        }
         //let everyone know
         Packet outPacket = new Packet(Packet.Command.AddAsFriendly, cardName, (int)CardLocation.Deck, added.ID);
         Packet outPacketInverted = new Packet(Packet.Command.IncrementEnemyDeck);
@@ -376,9 +367,9 @@ public class ServerNetworkController : NetworkController {
         int invertedY = InvertIndexForController(y, playerIndex);
         Packet outPacket = null;
         Packet outPacketInverted = null;
-        if (uiCtrl.DebugMode || sGame.ValidAttack(toMove, invertedX, invertedY))
+        if (sGame.ValidAttack(toMove, invertedX, invertedY))
         {
-            Debug.Log("attack");
+            Debug.Log($"ServerNetworkController {toMove.CardName} attacking {invertedX}, {invertedY}");
             //tell the players to put cards down where they were
             outPacket = new Packet(Packet.Command.PutBack);
             outPacketInverted = new Packet(Packet.Command.PutBack);
@@ -392,7 +383,7 @@ public class ServerNetworkController : NetworkController {
         }
         else
         {
-            Debug.Log("putback");
+            Debug.Log($"ServerNetworkController putting back {toMove.CardName}");
             outPacket = new Packet(Packet.Command.PutBack);
             SendPackets(outPacket, null, sGame.Players[playerIndex].ConnectionID, default);
         }

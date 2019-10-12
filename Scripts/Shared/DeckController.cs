@@ -8,6 +8,7 @@ public class DeckController : KompasObject
     public const string BLANK_CARD_PATH = "Card Jsons/Blank Card";
     
     private ClientGame clientGame;
+    private ServerGame serverGame;
 
     //one of these for each player
 
@@ -26,6 +27,7 @@ public class DeckController : KompasObject
     private void Awake()
     {
         clientGame = game as ClientGame;
+        serverGame = game as ServerGame;
     }
 
     public int IndexOf(Card card)
@@ -112,6 +114,19 @@ public class DeckController : KompasObject
         game.cards.Add(id, newCard);
         //Game.mainGame.cards[id] = newCard;
         newCard.ChangeController(owner);
+
+        if (serverGame != null)
+        {
+            foreach (Effect eff in newCard.Effects)
+            {
+                if (eff.Trigger != null)
+                {
+                    Debug.Log("registering trigger for " + eff.Trigger.triggerCondition);
+                    serverGame.RegisterTrigger(eff.Trigger.triggerCondition, eff.Trigger);
+                }
+                else Debug.Log("trigger is null");
+            }
+        }
         return newCard;
     }
 

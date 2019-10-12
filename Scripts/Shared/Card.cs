@@ -272,7 +272,6 @@ public abstract class Card : KompasObject {
     /// </summary>
     public virtual void ResetCard() { }
 
-    //interaction methods
     //helper methods
     public bool WithinIgnoreY(Vector3 position, float minX, float maxX, float minZ, float maxZ)
     {
