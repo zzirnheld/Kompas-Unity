@@ -287,9 +287,9 @@ public abstract class Card : KompasObject {
     /// </summary>
     public virtual void ResetForTurn()
     {
-        foreach(Effect e in effects)
+        foreach(Effect eff in effects)
         {
-            e.ResetForTurn();
+            eff.ResetForTurn();
         }
     }
 
@@ -427,31 +427,31 @@ public abstract class Card : KompasObject {
                 int y = PosToGridIndex(transform.localPosition.y);
                 //then check if it's an attack or not
                 if (game.boardCtrl.GetCharAt(x, y) != null && game.boardCtrl.GetCharAt(x, y).ControllerIndex != controllerIndex)
-                    clientGame.clientNetworkCtrl.RequestAttack(this, x, y);
+                    clientGame.clientNotifier.RequestAttack(this, x, y);
                 else
-                    clientGame.clientNetworkCtrl.RequestMove(this, x, y);
+                    clientGame.clientNotifier.RequestMove(this, x, y);
             }
             //otherwise, it is being played from somewhere like the hand or discard
             else
-                clientGame.clientNetworkCtrl.RequestPlay(this,
+                clientGame.clientNotifier.RequestPlay(this,
                     PosToGridIndex(transform.localPosition.x), PosToGridIndex(transform.localPosition.y));
         }
         //if it's not on the board, maybe it's on top of the discard
         else if (WithinIgnoreY(transform.position, minDiscardX, maxDiscardX, minDiscardZ, maxDiscardZ))
         {
             //in that case, discard it //TODO do this by raycasting along another layer to see if you hit deck/discard
-            clientGame.clientNetworkCtrl.RequestDiscard(this);
+            clientGame.clientNotifier.RequestDiscard(this);
         }
         //maybe it's on top of the deck
         else if (WithinIgnoreY(transform.position, minDeckX, maxDeckX, minDeckZ, maxDeckZ))
         {
             //in that case, topdeck it
-            clientGame.clientNetworkCtrl.RequestTopdeck(this);
+            clientGame.clientNotifier.RequestTopdeck(this);
         }
         //if it's not in any of those, probably should go back in the hand.
         else
         {
-            clientGame.clientNetworkCtrl.RequestRehand(this);
+            clientGame.clientNotifier.RequestRehand(this);
         }
     }
     #endregion MouseStuff

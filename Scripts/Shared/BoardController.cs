@@ -268,7 +268,7 @@ public class BoardController : KompasObject
         int xIntersection = PosToGridIndex(intersection.x);
         int yIntersection = PosToGridIndex(intersection.y);
         //then, if the game is a clientgame, request a space target
-        (game as ClientGame)?.clientNetworkCtrl.RequestSpaceTarget(xIntersection, yIntersection);
+        (game as ClientGame)?.clientNotifier.RequestSpaceTarget(xIntersection, yIntersection);
     }
 
 

@@ -49,7 +49,7 @@ public class ClientUIController : UIController
     public void ActivateSelectedCardEff(int index)
     {
         if (selectedCard != null)
-            clientGame.clientNetworkCtrl.RequestResolveEffect(selectedCard, index);
+            clientGame.clientNotifier.RequestResolveEffect(selectedCard, index);
     }
 
     public void ToggleHoldingPriority()
@@ -68,7 +68,7 @@ public class ClientUIController : UIController
     public void SetXForEffect()
     {
         int x = System.Int32.Parse(xInput.text); //TODO sanitize input
-        clientGame.clientNetworkCtrl.RequestSetX(x);
+        clientGame.clientNotifier.RequestSetX(x);
         setXView.SetActive(false);
     }
 
@@ -85,7 +85,7 @@ public class ClientUIController : UIController
     public void DeclineAnotherTarget()
     {
         DisableDecliningTarget();
-        clientGame.clientNetworkCtrl.DeclineAnotherTarget();
+        clientGame.clientNotifier.DeclineAnotherTarget();
     }
     #endregion effects
 
@@ -105,7 +105,7 @@ public class ClientUIController : UIController
         importDeckButton.gameObject.SetActive(true);
         //TODO change this to ask the server for import deck
         //if(Game.DEBUG_MODE) clientGame.friendlyDeckCtrl.ImportDeck(decklist);
-        clientGame.clientNetworkCtrl.RequestDecklistImport(decklist);
+        clientGame.clientNotifier.RequestDecklistImport(decklist);
     }
 
     public void StartSearch(List<Card> list, bool targeting)
@@ -144,9 +144,9 @@ public class ClientUIController : UIController
         if (toSearch.Count == 0) return;
 
         if (targeting)
-            clientGame.clientNetworkCtrl.RequestTarget(toSearch[searchIndex]);
+            clientGame.clientNotifier.RequestTarget(toSearch[searchIndex]);
         else //TODO remove the option for not a targeting deck search once everything's automated?
-            clientGame.clientNetworkCtrl.RequestRehand(toSearch[searchIndex]);
+            clientGame.clientNotifier.RequestRehand(toSearch[searchIndex]);
 
         EndSearch();
     }
@@ -202,7 +202,7 @@ public class ClientUIController : UIController
     {
         if(clientGame.turnPlayer == 0)
         {
-            clientGame.clientNetworkCtrl.RequestEndTurn();
+            clientGame.clientNotifier.RequestEndTurn();
         }
     }
     #endregion flow control
@@ -222,7 +222,7 @@ public class ClientUIController : UIController
         if (debugSInputField.text != "") sToUpdate = System.Int32.Parse(debugSInputField.text);
         if (debugWInputField.text != "") wToUpdate = System.Int32.Parse(debugWInputField.text);
 
-        ClientGame.mainClientGame.clientNetworkCtrl.RequestSetNESW(SelectedChar, nToUpdate, eToUpdate, sToUpdate, wToUpdate);
+        ClientGame.mainClientGame.clientNotifier.RequestSetNESW(SelectedChar, nToUpdate, eToUpdate, sToUpdate, wToUpdate);
     }
 
     public void DebugUpdatePips()
@@ -230,7 +230,7 @@ public class ClientUIController : UIController
         if (debugPipsField.text != "")
         {
             int toSetPips = System.Int32.Parse(debugPipsField.text);
-            ClientGame.mainClientGame.clientNetworkCtrl.RequestUpdatePips(toSetPips);
+            ClientGame.mainClientGame.clientNotifier.RequestUpdatePips(toSetPips);
         }
     }
 

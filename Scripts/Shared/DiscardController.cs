@@ -58,7 +58,7 @@ public class DiscardController : KompasObject {
     public override void OnClick()
     {
         if (clientGame.friendlyDiscardCtrl == this)
-            clientGame.clientNetworkCtrl.RequestRehand(GetLastDiscarded());
+            clientGame.clientNotifier.RequestRehand(GetLastDiscarded());
     }
 
     public bool Exists(CardRestriction cardRestriction)

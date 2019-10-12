@@ -28,6 +28,7 @@ public class ClientGame : Game {
     public GameObject enemyDiscardObj;
 
     public ClientNetworkController clientNetworkCtrl;
+    public ClientNotifier clientNotifier;
     public ClientUIController clientUICtrl;
 
     private void Awake()
@@ -79,12 +80,12 @@ public class ClientGame : Game {
     //requesting
     public void RequestMove(Card card, int toX, int toY)
     {
-        clientNetworkCtrl.RequestMove(card, toX, toY);
+        clientNotifier.RequestMove(card, toX, toY);
     }
 
     public void RequestPlay(Card card, int toX, int toY)
     {
-        clientNetworkCtrl.RequestPlay(card, toX, toY);
+        clientNotifier.RequestPlay(card, toX, toY);
     }
 
     public void TargetCard(Card card)
@@ -96,7 +97,7 @@ public class ClientGame : Game {
             if (clientNetworkCtrl.lastRestriction.Evaluate(card))
             {
                 //if it fits the restriction, send the proposed target to the server
-                clientNetworkCtrl.RequestTarget(card);
+                clientNotifier.RequestTarget(card);
 
                 //and change the game's target mode TODO should this do this
                 targetMode = TargetMode.OnHold;
