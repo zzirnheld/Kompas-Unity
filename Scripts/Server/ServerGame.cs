@@ -130,6 +130,12 @@ public class ServerGame : Game {
     #region check validity
     public bool ValidBoardPlay(Card card, int toX, int toY)
     {
+        if (uiCtrl.DebugMode)
+        {
+            Debug.LogWarning("Debug mode, always return true for valid play");
+            return true;
+        }
+
         Debug.Log("Trying to play " + card.CardName + " to " + toX + ", " + toY);
         return card != null 
             && (card is CharacterCard || card is SpellCard)
@@ -139,6 +145,12 @@ public class ServerGame : Game {
 
     public bool ValidAugment(Card card, int toX, int toY)
     {
+        if (uiCtrl.DebugMode)
+        {
+            Debug.LogWarning("Debug mode, always return true for valid augment");
+            return true;
+        }
+
         return card != null
             && card is AugmentCard
             && boardCtrl.ValidIndices(toX, toY)
@@ -147,8 +159,12 @@ public class ServerGame : Game {
 
     public bool ValidMove(Card toMove, int toX, int toY)
     {
-        //Debug.Log("validmove checking move " + toMove.CardName + " to " + boardCtrl.GetCardAt(toX, toY) + "boardctrl " 
-        //+ boardCtrl.GetCardAt(toX, toY).Owner + " tomove owner " + toMove.Owner);
+        if (uiCtrl.DebugMode)
+        {
+            Debug.LogWarning("Debug mode, always return true for valid move");
+            return true;
+        }
+
         if (!(toMove is CharacterCard charToMove)) return false;
         return toMove.DistanceTo(toX, toY) <= charToMove.N
             && (boardCtrl.GetCardAt(toX, toY) == null || boardCtrl.GetCardAt(toX, toY).ControllerIndex == toMove.ControllerIndex);

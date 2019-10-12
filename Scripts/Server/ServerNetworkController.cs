@@ -303,8 +303,8 @@ public class ServerNetworkController : NetworkController {
         int invertedY = InvertIndexForController(y, playerIndex);
         Packet outPacket = null;
         Packet outPacketInverted = null;
-        //if it's not a valid place to do, return
-        if (uiCtrl.DebugMode || sGame.ValidAugment(toAugment, invertedX, invertedY))
+        //if it's not a valid place to do, put the cards back
+        if (sGame.ValidAugment(toAugment, invertedX, invertedY))
         {
             //tell everyone to do it
             outPacket = new Packet(Packet.Command.Augment, toAugment, x, y);
@@ -330,7 +330,7 @@ public class ServerNetworkController : NetworkController {
         int invertedX = InvertIndexForController(x, playerIndex);
         int invertedY = InvertIndexForController(y, playerIndex);
         //if it's not a valid place to do, return
-        if (uiCtrl.DebugMode || sGame.ValidBoardPlay(toPlay, invertedX, invertedY))
+        if (sGame.ValidBoardPlay(toPlay, invertedX, invertedY))
         {
             serverNotifier.NotifyPlay(toPlay, sGame.Players[playerIndex], invertedX, invertedY);
             //play the card here
@@ -352,9 +352,8 @@ public class ServerNetworkController : NetworkController {
         Card toMove = sGame.GetCardFromID(cardID);
         int invertedX = InvertIndexForController(x, playerIndex);
         int invertedY = InvertIndexForController(y, playerIndex);
-        //if it's not a valid place to do, return
-        //NOTE: there is no debug to override moves because of how checking if attack works
-        if (uiCtrl.DebugMode || sGame.ValidMove(toMove, invertedX, invertedY))
+        //if it's not a valid place to do, put the cards back
+        if (sGame.ValidMove(toMove, invertedX, invertedY))
         {
             Debug.Log("move");
             //move the card there
