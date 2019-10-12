@@ -30,6 +30,8 @@ public class AugmentCard : Card {
     {
         get => augSubtypes;
     }
+    
+    public override int Cost { get { return A; } }
 
     //get data
     public SerializableAugCard GetSerializableVersion()
@@ -66,8 +68,6 @@ public class AugmentCard : Card {
 
         base.SetInfo(serializedCard, game, ownerIndex);
     }
-    
-    public override int GetCost() { return A; }
 
     //game mechanics
     //TODO prevent z fighting

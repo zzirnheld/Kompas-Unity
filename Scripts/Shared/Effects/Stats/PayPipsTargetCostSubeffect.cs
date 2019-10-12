@@ -6,7 +6,7 @@ public class PayPipsTargetCostSubeffect : Subeffect
 {
     public override void Resolve()
     {
-        int toPay = Target.GetCost();
+        int toPay = Target.Cost;
         if (parent.EffectController.pips < toPay)
         {
             parent.EffectImpossible();

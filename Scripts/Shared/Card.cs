@@ -86,6 +86,7 @@ public abstract class Card : KompasObject {
     }
     public string[] Subtypes { get { return subtypes; } }
     public Effect[] Effects { get => effects; }
+    public abstract int Cost { get; }
     //other game data
     public string CardFileName {
         get { return cardFileName; }
@@ -260,7 +261,6 @@ public abstract class Card : KompasObject {
         this.controller = game.Players[controllerIndex];
         transform.localEulerAngles = new Vector3(0, 0, 180 * owner);
     }
-    public abstract int GetCost();
 
     /// <summary>
     /// Sets this card's x and y values and updates its transform

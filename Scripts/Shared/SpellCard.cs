@@ -7,15 +7,15 @@ public class SpellCard : Card
 
     public enum SpellType { Simple, Enchant, Augment, Terraform, Delayed };
 
-    private int d; //TODO refactor this to C
+    private int c; //TODO refactor this to C
     private SpellType spellSubtype;
     private string subtext;
     private bool fast;
 
-    public int D
+    public int C
     {
-        get { return d; }
-        set { d = value; }
+        get { return c; }
+        set { c = value; }
     }
     public string Subtext
     {
@@ -23,6 +23,8 @@ public class SpellCard : Card
         set { subtext = value; }
     }
     public SpellType SpellSubtype { get { return spellSubtype; } }
+
+    public override int Cost { get { return C; } }
 
     //get data
     public SerializableSpellCard GetSerializableVersion()
@@ -37,7 +39,7 @@ public class SpellCard : Card
             effText = effText,
             subtype = spellSubtype,
             subtext = subtext,
-            d = d,
+            d = c,
 
             location = location,
             owner = controllerIndex,
@@ -54,16 +56,13 @@ public class SpellCard : Card
     {
         if (!(serializedCard is SerializableSpellCard serializedSpell)) return;
 
-        d = serializedSpell.d;
+        c = serializedSpell.d;
         subtext = serializedSpell.subtext;
         spellSubtype = serializedSpell.subtype;
         fast = serializedSpell.fast;
 
         base.SetInfo(serializedCard, game, ownerIndex);
     }
-
-
-    public override int GetCost() { return D; }
 
     //game mechanics
     public override void MoveTo(int toX, int toY)
