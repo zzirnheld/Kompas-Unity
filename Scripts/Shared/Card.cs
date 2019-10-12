@@ -5,8 +5,6 @@ using UnityEngine.Assertions;
 
 public abstract class Card : KompasObject {
 
-    public enum CardLocation { Nowhere, Field, Discard, Hand, Deck };
-
     protected ClientGame clientGame;
     protected ServerGame serverGame;
 
@@ -110,7 +108,7 @@ public abstract class Card : KompasObject {
     /// <param name="location">Where the card is going</param>
     public void SetLocation(CardLocation location)
     {
-        Debug.Log("Attempting to move " + cardName + " from " + this.location + " to " + location);
+        Debug.Log($"Attempting to move {cardName} from {this.location} to {location}");
 
         //set the card's location variable
         this.location = location;

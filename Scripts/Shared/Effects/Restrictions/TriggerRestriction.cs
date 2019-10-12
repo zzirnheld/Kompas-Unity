@@ -36,7 +36,7 @@ public class TriggerRestriction : Restriction
                     if (!effParentRestriction.Evaluate(thisCard)) return false;
                     break;
                 case TriggerRestrictions.OnField:
-                    if (triggerer.Location != Card.CardLocation.Field) return false;
+                    if (triggerer.Location != CardLocation.Field) return false;
                     break;
             }
         }

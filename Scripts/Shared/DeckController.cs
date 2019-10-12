@@ -106,7 +106,7 @@ public class DeckController : KompasObject
         Debug.Log("Loading:\n" + fileContents);
 
         newCard = InstantiateCard(fileContents, owner);
-        newCard.SetLocation(Card.CardLocation.Deck);
+        newCard.SetLocation(CardLocation.Deck);
         deck.Add(newCard);
         newCard.ID = id;
         game.cards.Add(id, newCard);
@@ -150,21 +150,21 @@ public class DeckController : KompasObject
     {
         deck.Insert(0, card);
         card.ResetCard();
-        card.SetLocation(Card.CardLocation.Deck);
+        card.SetLocation(CardLocation.Deck);
     }
 
     public void PushBottomdeck(Card card)
     {
         deck.Add(card);
         card.ResetCard();
-        card.SetLocation(Card.CardLocation.Deck);
+        card.SetLocation(CardLocation.Deck);
     }
 
     public void ShuffleIn(Card card)
     {
         deck.Add(card);
         card.ResetCard();
-        card.SetLocation(Card.CardLocation.Deck);
+        card.SetLocation(CardLocation.Deck);
         Shuffle();
     }
 

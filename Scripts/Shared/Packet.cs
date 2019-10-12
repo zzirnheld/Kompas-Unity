@@ -32,7 +32,7 @@ public class Packet {
     public int Pips { get { return args[0]; } }
     public int EffectX { get => args[0]; }
 
-    public Card.CardLocation Location { get { return (Card.CardLocation)args[0]; } }
+    public CardLocation Location { get { return (CardLocation)args[0]; } }
 
     public int X { get { return args[2]; } }
     public int Y { get { return args[3]; } }

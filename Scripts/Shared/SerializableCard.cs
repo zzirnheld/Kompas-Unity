@@ -16,7 +16,7 @@ public class SerializableCard
     public string[] subtypes;
 
     //in game values
-    public Card.CardLocation location;
+    public CardLocation location;
     public int owner;
     public int BoardX;
     public int BoardY;

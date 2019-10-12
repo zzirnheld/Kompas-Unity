@@ -275,7 +275,7 @@ public class ServerNetworkController : NetworkController {
             else Debug.Log("trigger is null");
         }
         //let everyone know
-        Packet outPacket = new Packet(Packet.Command.AddAsFriendly, cardName, (int)Card.CardLocation.Deck, added.ID);
+        Packet outPacket = new Packet(Packet.Command.AddAsFriendly, cardName, (int)CardLocation.Deck, added.ID);
         Packet outPacketInverted = new Packet(Packet.Command.IncrementEnemyDeck);
         SendPackets(outPacket, outPacketInverted, sGame.Players[playerIndex].ConnectionID, sGame.Players[1 - playerIndex].ConnectionID);
     }
@@ -307,10 +307,10 @@ public class ServerNetworkController : NetworkController {
         {
             //tell everyone to do it
             outPacket = new Packet(Packet.Command.Augment, toAugment, x, y);
-            if (toAugment.Location == Card.CardLocation.Discard || toAugment.Location == Card.CardLocation.Field)
+            if (toAugment.Location == CardLocation.Discard || toAugment.Location == CardLocation.Field)
                 outPacketInverted = new Packet(Packet.Command.Augment, toAugment, x, y, true);
             else
-                outPacketInverted = new Packet(Packet.Command.AddAsEnemy, toAugment.CardName, (int)Card.CardLocation.Field, toAugment.ID, x, y, true);
+                outPacketInverted = new Packet(Packet.Command.AddAsEnemy, toAugment.CardName, (int)CardLocation.Field, toAugment.ID, x, y, true);
 
             //play the card here
             toAugment.Play(invertedX, invertedY, playerIndex);

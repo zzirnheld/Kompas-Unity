@@ -69,7 +69,7 @@ public class BoardController : KompasObject
     #region game mechanics
     public void RemoveFromBoard(Card toRemove)
     {
-        if (toRemove == null || toRemove.Location != Card.CardLocation.Field) return;
+        if (toRemove == null || toRemove.Location != CardLocation.Field) return;
 
         if (toRemove is CharacterCard || toRemove is SpellCard)
             cards[toRemove.BoardX, toRemove.BoardY] = null;
@@ -87,7 +87,7 @@ public class BoardController : KompasObject
     public void Summon(CharacterCard toSummon, int toX, int toY, int owner)
     {
         cards[toX, toY] = toSummon;
-        toSummon.SetLocation(Card.CardLocation.Field);
+        toSummon.SetLocation(CardLocation.Field);
         toSummon.MoveTo(toX, toY);
         toSummon.ChangeController(owner);
     }
@@ -98,7 +98,7 @@ public class BoardController : KompasObject
     public void Augment(AugmentCard toAugment, int toX, int toY, int owner)
     {
         GetCharAt(toX, toY).AddAugment(toAugment);
-        toAugment.SetLocation(Card.CardLocation.Field);
+        toAugment.SetLocation(CardLocation.Field);
         toAugment.MoveTo(toX, toY);
         toAugment.ChangeController(owner);
     }
@@ -109,7 +109,7 @@ public class BoardController : KompasObject
     public void Cast(SpellCard toCast, int toX, int toY, int owner)
     {
         cards[toX, toY] = toCast;
-        toCast.SetLocation(Card.CardLocation.Field);
+        toCast.SetLocation(CardLocation.Field);
         toCast.MoveTo(toX, toY);
         toCast.ChangeController(owner);
     }

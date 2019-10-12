@@ -33,7 +33,7 @@ public class DiscardController : KompasObject {
         Debug.Assert(card != null);
         Debug.Log("Adding to discard: " + card.CardName);
         discard.Add(card);
-        card.SetLocation(Card.CardLocation.Discard);
+        card.SetLocation(CardLocation.Discard);
         card.transform.localPosition = new Vector3(0, 0, (float)discard.Count / -60f);
     }
 

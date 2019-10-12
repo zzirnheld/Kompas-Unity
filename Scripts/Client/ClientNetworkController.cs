@@ -133,10 +133,10 @@ public class ClientNetworkController : NetworkController {
                 Card added = ClientGame.mainClientGame.enemyDeckCtrl.AddCard(packet.CardName, packet.CardIDToBe, 1); //TODO make it always ask for cards from enemy deck
                 switch (packet.Location)
                 {
-                    case Card.CardLocation.Field:
+                    case CardLocation.Field:
                         added.Play(packet.X, packet.Y, 1);
                         break;
-                    case Card.CardLocation.Discard:
+                    case CardLocation.Discard:
                         added.Discard();
                         break;
                     default:

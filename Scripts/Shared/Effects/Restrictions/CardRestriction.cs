@@ -68,16 +68,16 @@ public class CardRestriction : Restriction
                     if (!(potentialTarget is AugmentCard)) return false;
                     break;
                 case CardRestrictions.Hand:
-                    if (potentialTarget.Location != Card.CardLocation.Hand) return false;
+                    if (potentialTarget.Location != CardLocation.Hand) return false;
                     break;
                 case CardRestrictions.Deck:
-                    if (potentialTarget.Location != Card.CardLocation.Deck) return false;
+                    if (potentialTarget.Location != CardLocation.Deck) return false;
                     break;
                 case CardRestrictions.Discard:
-                    if (potentialTarget.Location != Card.CardLocation.Discard) return false;
+                    if (potentialTarget.Location != CardLocation.Discard) return false;
                     break;
                 case CardRestrictions.Board:
-                    if (potentialTarget.Location != Card.CardLocation.Field) return false;
+                    if (potentialTarget.Location != CardLocation.Field) return false;
                     break;
                 case CardRestrictions.NLTEX:
                     if (!(potentialTarget is CharacterCard charC1)) return false;

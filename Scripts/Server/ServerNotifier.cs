@@ -42,10 +42,10 @@ public class ServerNotifier : MonoBehaviour
         //tell everyone to do it
         Packet outPacket = new Packet(Packet.Command.Play, toPlay, x, y);
         Packet outPacketInverted;
-        if (toPlay.Location == Card.CardLocation.Discard || toPlay.Location == Card.CardLocation.Field)
+        if (toPlay.Location == CardLocation.Discard || toPlay.Location == CardLocation.Field)
             outPacketInverted = new Packet(Packet.Command.Play, toPlay, x, y, true);
         else
-            outPacketInverted = new Packet(Packet.Command.AddAsEnemy, toPlay.CardName, (int)Card.CardLocation.Field, toPlay.ID, x, y, true);
+            outPacketInverted = new Packet(Packet.Command.AddAsEnemy, toPlay.CardName, (int)CardLocation.Field, toPlay.ID, x, y, true);
 
         outPacket.InvertForController(controller.index);
         outPacketInverted.InvertForController(controller.index);
@@ -66,9 +66,9 @@ public class ServerNotifier : MonoBehaviour
         Packet outPacketInverted = null;
         //and let everyone know
         outPacket = new Packet(Packet.Command.Discard, toDiscard);
-        if (toDiscard.Location == Card.CardLocation.Discard || toDiscard.Location == Card.CardLocation.Field)
+        if (toDiscard.Location == CardLocation.Discard || toDiscard.Location == CardLocation.Field)
             outPacketInverted = new Packet(Packet.Command.Discard, toDiscard);
-        else outPacketInverted = new Packet(Packet.Command.AddAsEnemy, toDiscard.CardName, (int)Card.CardLocation.Discard, toDiscard.ID);
+        else outPacketInverted = new Packet(Packet.Command.AddAsEnemy, toDiscard.CardName, (int)CardLocation.Discard, toDiscard.ID);
         SendPackets(outPacket, outPacketInverted, toDiscard.Owner);
     }
 
@@ -78,7 +78,7 @@ public class ServerNotifier : MonoBehaviour
         Packet outPacketInverted = null;
         //and let everyone know
         outPacket = new Packet(Packet.Command.Rehand, toRehand);
-        if (toRehand.Location == Card.CardLocation.Discard || toRehand.Location == Card.CardLocation.Field)
+        if (toRehand.Location == CardLocation.Discard || toRehand.Location == CardLocation.Field)
             outPacketInverted = new Packet(Packet.Command.Delete, toRehand);
         else outPacketInverted = null; //TODO make this add a blank card
         SendPackets(outPacket, outPacketInverted, toRehand.Owner);
@@ -90,7 +90,7 @@ public class ServerNotifier : MonoBehaviour
         Packet outPacketInverted = null;
         //and let everyone know
         outPacket = new Packet(Packet.Command.Topdeck, card);
-        if (card.Location == Card.CardLocation.Hand || card.Location == Card.CardLocation.Deck)
+        if (card.Location == CardLocation.Hand || card.Location == CardLocation.Deck)
             outPacketInverted = new Packet(Packet.Command.Delete, card);
         SendPackets(outPacket, outPacketInverted, card.Owner);
     }
@@ -101,7 +101,7 @@ public class ServerNotifier : MonoBehaviour
         Packet outPacketInverted = null;
         //and let everyone know
         outPacket = new Packet(Packet.Command.Reshuffle, toReshuffle);
-        if (toReshuffle.Location == Card.CardLocation.Hand || toReshuffle.Location == Card.CardLocation.Deck)
+        if (toReshuffle.Location == CardLocation.Hand || toReshuffle.Location == CardLocation.Deck)
             outPacketInverted = new Packet(Packet.Command.Delete, toReshuffle);
         SendPackets(outPacket, outPacketInverted, toReshuffle.Owner);
     }
