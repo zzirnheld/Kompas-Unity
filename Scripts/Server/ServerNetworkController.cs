@@ -355,14 +355,14 @@ public class ServerNetworkController : NetworkController {
         //if it's not a valid place to do, put the cards back
         if (sGame.ValidMove(toMove, invertedX, invertedY))
         {
-            Debug.Log("move");
+            Debug.Log($"ServerNetworkController moving {toMove.CardName} from {invertedX} to {invertedY}");
             //move the card there
             toMove.MoveOnBoard(invertedX, invertedY);
             serverNotifier.NotifyMove(toMove, x, y);
         }
         else
         {
-            Debug.Log("putback");
+            Debug.Log($"ServerNetworkController putting back {toMove.CardName}");
             Packet outPacket = new Packet(Packet.Command.PutBack);
             SendPackets(outPacket, null, sGame.Players[playerIndex].ConnectionID, default);
         }
