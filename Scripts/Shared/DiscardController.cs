@@ -45,6 +45,7 @@ public class DiscardController : KompasObject {
     public void RemoveFromDiscard(Card card)
     {
         Debug.Assert(card != null);
+        card.ResetCard();
         discard.Remove(card);
     }
 

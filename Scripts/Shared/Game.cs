@@ -82,7 +82,7 @@ public class Game : MonoBehaviour {
     public Card Draw(int player = 0)
     {
         Card toDraw = players[player].deckCtrl.PopTopdeck();
-        players[player].handCtrl.AddToHand(toDraw);
+        toDraw.Rehand(player);
         return toDraw;
     }
 

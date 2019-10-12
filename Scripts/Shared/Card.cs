@@ -11,6 +11,7 @@ public abstract class Card : KompasObject {
     protected ServerGame serverGame;
 
     //constants
+    //minimum and maximum distances to the board, discard, and deck objects for dragging
     public const float minBoardLocalX = -0.45f;
     public const float maxBoardLocalX = 0.45f;
     public const float minBoardLocalY = -0.45f;
@@ -111,28 +112,7 @@ public abstract class Card : KompasObject {
     {
         Debug.Log("Attempting to move " + cardName + " from " + this.location + " to " + location);
 
-        //if we're leaving somewhere, do something about it
-        if (location != this.location)
-        {
-            switch (this.location)
-            {
-                case CardLocation.Field:
-                    game.boardCtrl.RemoveFromBoard(this);
-                    break;
-                case CardLocation.Discard:
-                    game.Players[controllerIndex].discardCtrl.RemoveFromDiscard(this);
-                    ResetCard();
-                    break;
-                case CardLocation.Hand:
-                    game.Players[controllerIndex].handCtrl.RemoveFromHand(this);
-                    break;
-                case CardLocation.Deck:
-                    game.Players[controllerIndex].deckCtrl.RemoveFromDeck(this);
-                    break;
-            }
-        }
-
-        //set the location
+        //set the card's location variable
         this.location = location;
 
         //set the parent to where we're going
@@ -149,12 +129,10 @@ public abstract class Card : KompasObject {
             case CardLocation.Hand:
                 transform.SetParent(game.Players[controllerIndex].handObject.transform);
                 gameObject.SetActive(true);
-                ResetCard();
                 break;
             case CardLocation.Deck:
                 transform.SetParent(game.Players[controllerIndex].deckObject.transform);
                 gameObject.SetActive(false);
-                ResetCard();
                 break;
         }
     }

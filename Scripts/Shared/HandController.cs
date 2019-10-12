@@ -15,6 +15,7 @@ public class HandController : KompasObject
     {
         if (card == null) return;
         hand.Add(card);
+        card.ResetCard();
         card.SetLocation(Card.CardLocation.Hand);
 
         card.transform.rotation = Quaternion.Euler(90, 0, 0);

@@ -149,18 +149,21 @@ public class DeckController : KompasObject
     public void PushTopdeck(Card card)
     {
         deck.Insert(0, card);
+        card.ResetCard();
         card.SetLocation(Card.CardLocation.Deck);
     }
 
     public void PushBottomdeck(Card card)
     {
         deck.Add(card);
+        card.ResetCard();
         card.SetLocation(Card.CardLocation.Deck);
     }
 
     public void ShuffleIn(Card card)
     {
         deck.Add(card);
+        card.ResetCard();
         card.SetLocation(Card.CardLocation.Deck);
         Shuffle();
     }
