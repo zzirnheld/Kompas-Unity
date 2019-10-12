@@ -1,10 +1,10 @@
 {
-"cardType":65,
-"cardName":"Durendal",
-"effText":"Once each round, I can give this character +5W for this turn.",
-"primarySerializeableEffect":[],
-"secondarySerializeableEffect":[],
-"d":3,
-"subtext":"Sword Augment Warrior",
-"fast":false
+	"cardType":65,
+	"cardName":"Durendal",
+	"effText":"Once each round, I can give this character +5W for this turn.",
+	"d":3,
+	"subtypes":["Sword"],
+	"subtext":"Sword Augment Warrior",
+	"augSubtypes":["Warrior"],
+	"fast":false
 }

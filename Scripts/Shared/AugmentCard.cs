@@ -8,6 +8,7 @@ public class AugmentCard : Card {
 
     private int d; //TODO refactor this to A
     private string subtext;
+    private string[] augSubtypes;
     private bool fast;
 
     public int D
@@ -25,6 +26,11 @@ public class AugmentCard : Card {
         }
     }
 
+    public string[] AugSubtypes
+    {
+        get => augSubtypes;
+    }
+
     //get data
     public SerializableAugCard GetSerializableVersion()
     {
@@ -35,6 +41,7 @@ public class AugmentCard : Card {
             effText = effText,
             subtext = subtext,
             d = d,
+            augSubtypes = augSubtypes,
 
             location = location,
             owner = controllerIndex,
@@ -50,11 +57,12 @@ public class AugmentCard : Card {
     public override void SetInfo(SerializableCard serializedCard, Game game, int ownerIndex)
     {
         if (!(serializedCard is SerializableAugCard)) return;
-        SerializableAugCard serializedSpell = serializedCard as SerializableAugCard;
+        SerializableAugCard serializedAug = serializedCard as SerializableAugCard;
 
-        d = serializedSpell.d;
-        subtext = serializedSpell.subtext;
-        fast = serializedSpell.fast;
+        d = serializedAug.d;
+        subtext = serializedAug.subtext;
+        augSubtypes = serializedAug.augSubtypes;
+        fast = serializedAug.fast;
 
         base.SetInfo(serializedCard, game, ownerIndex);
     }

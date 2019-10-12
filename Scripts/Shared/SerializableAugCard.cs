@@ -7,5 +7,5 @@ public class SerializableAugCard : SerializableCard {
     public int d;
     public bool fast;
     public string subtext;
-
+    public string[] augSubtypes;
 }

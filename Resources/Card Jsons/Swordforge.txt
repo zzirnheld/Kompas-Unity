@@ -21,7 +21,7 @@
 				}
 			}",
 			"{
-				\"TargetIndex\":-1
+				\"TargetIndex\":0
 			}",
 			"{
 				\"cardRestriction\":
@@ -31,17 +31,17 @@
 				}
 			}",
 			"{
-				\"TargetIndex\":-1
+				\"TargetIndex\":1
 			}",
 			"{
 				\"cardRestriction\":
 				{
-					\"restrictionsToCheck\":[2,4],
+					\"restrictionsToCheck\":[2,5],
 					\"subtypesInclude\":[\"Sword\"]
 				}
 			}",
 			"{
-				\"TargetIndex\":-1
+				\"TargetIndex\":2
 			}"		
 		]	
 	}

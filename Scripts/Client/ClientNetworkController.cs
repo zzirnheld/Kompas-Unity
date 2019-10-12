@@ -58,7 +58,7 @@ public class ClientNetworkController : NetworkController {
             Debug.Log("Something went wrong in connection");
             return;
         }
-
+        
         if (changeTargetMode && DateTime.Now.Ticks - timeTargetAccepted >= 5000000)
         {
             ClientGame.mainClientGame.targetMode = Game.TargetMode.Free;

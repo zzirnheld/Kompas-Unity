@@ -1,10 +1,10 @@
 {
-"cardType":65,
-"cardName":"Kusanagi",
-"effText":"When this character duels a character in front of them, I can swap their places and give the enemy -5W.",
-"primarySerializeableEffect":[],
-"secondarySerializeableEffect":[],
-"d":3,
-"subtext":"Sword Augment Warrior",
-"fast":false
+	"cardType":65,
+	"cardName":"Kusanagi",
+	"effText":"When this character duels a character in front of them, I can swap their places and give the enemy -5W.",
+	"d":3,
+	"subtypes":["Sword"],
+	"subtext":"Sword Augment Warrior",
+	"augSubtypes":["Warrior"],
+	"fast":false
 }
