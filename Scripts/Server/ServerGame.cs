@@ -266,7 +266,7 @@ public class ServerGame : Game {
     #region triggers
     public void Trigger(TriggerCondition condition, Card triggerer, Effect effSource, Attack atkSource, int? x)
     {
-        Debug.Log("Triggering " + condition + ", from " + triggerer + ", " + effSource + ", " + atkSource + ", x=" + x);
+        Debug.Log("Triggering " + condition + ", from " + triggerer + ", " + effSource + ", " + atkSource + ", x=" + x + "\n, number of triggers " + triggerMap[condition].Count);
         foreach(Trigger t in triggerMap[condition])
         {
             t.TriggerIfValid(triggerer, effSource, atkSource, x);

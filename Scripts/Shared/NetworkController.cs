@@ -67,7 +67,7 @@ public class NetworkController : MonoBehaviour
     {
         if(packet.command != Packet.Command.Nothing)
         {
-            Debug.Log("Sending a packet with command " + packet.command + " to " + connection.InternalId);
+            Debug.Log($"Sending a packet with command {packet.command} to {connection}");
         }
         if (!connection.IsCreated) return;
 

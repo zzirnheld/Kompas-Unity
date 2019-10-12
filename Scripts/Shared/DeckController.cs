@@ -161,6 +161,7 @@ public class DeckController : KompasObject
     public void ShuffleIn(Card card)
     {
         deck.Add(card);
+        card.SetLocation(Card.CardLocation.Deck);
         Shuffle();
     }
 

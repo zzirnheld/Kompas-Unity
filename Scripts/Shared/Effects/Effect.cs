@@ -88,9 +88,9 @@ public class Effect : IStackable
         return timesUsedThisTurn < maxTimesCanUsePerTurn;
     }
 
-    public void PushToStack(bool checkForResponses)
+    public void PushToStack(bool checkForResponses, int controller)
     {
-        serverGame.PushToStack(this, effectControllerIndex, checkForResponses);
+        serverGame.PushToStack(this, controller, checkForResponses);
     }
 
     public void StartResolution()

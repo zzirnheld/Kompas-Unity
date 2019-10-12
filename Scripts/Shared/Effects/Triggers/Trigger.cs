@@ -36,6 +36,7 @@ public class Trigger
                 toReturn.triggerRestriction.thisCard = parent.thisCard;
                 if(toReturn.triggerRestriction.effParentRestriction != null)
                 {
+                    //give a dummy subeffect to the trigger restriction since it's a trigger that's not bound to an eff
                     DummySubeffect dummy = new DummySubeffect
                     {
                         parent = parent
@@ -52,7 +53,7 @@ public class Trigger
     protected void TriggerEffect(int? x)
     {
         if (x.HasValue) effToTrigger.X = x.Value;
-        effToTrigger.PushToStack(false);
+        effToTrigger.PushToStack(false, effToTrigger.thisCard.ControllerIndex);
     }
 
     protected bool CheckTriggerRestrictions(Card triggerer, Effect effTrigger, Attack attackTrigger, int? x)
@@ -65,6 +66,7 @@ public class Trigger
 
     public virtual void TriggerIfValid(Card triggerer, Effect effTrigger, Attack attackTrigger, int? x)
     {
+        Debug.Log($"Is trigger valid? {CheckTriggerRestrictions(triggerer, effTrigger, attackTrigger, x)}");
         if (CheckTriggerRestrictions(triggerer, effTrigger, attackTrigger, x))
             TriggerEffect(x);
     }
