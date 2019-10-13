@@ -182,7 +182,7 @@ public class ServerNetworkController : NetworkController {
             case Packet.Command.Augment:
                 Augment(serverGame, playerIndex, packet.cardID, packet.X, packet.Y);
                 break;
-            case Packet.Command.Play: //TODO push to stack
+            case Packet.Command.Play:
                 Play(serverGame, playerIndex, packet.cardID, packet.X, packet.Y);
                 break;
             case Packet.Command.Move:

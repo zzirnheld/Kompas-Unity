@@ -88,9 +88,11 @@ public class DeckController : KompasObject
         return InstantiateCard(Resources.Load<TextAsset>(BLANK_CARD_PATH).text, owner);
     }
 
-    public void AddBlankCard()
+    public Card AddBlankCard()
     {
-        PushTopdeck(InstantiateBlankCard());
+        Card blank = InstantiateBlankCard();
+        PushTopdeck(blank);
+        return blank;
     }
 
     public Card AddCard(string cardName, int id, int owner = 0)

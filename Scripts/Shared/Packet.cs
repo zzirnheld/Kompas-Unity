@@ -10,7 +10,9 @@ public class Packet {
 
     public enum Command { Nothing, Confirm,
         Play, Augment, Move, EndTurn, Attack,
-        Topdeck, Discard, Rehand, Reshuffle, AddAsFriendly, AddAsEnemy, IncrementEnemyDeck, AddToDeck, Delete, Target, Response, TargetAccepted, SpaceTargetAccepted,
+        Topdeck, Discard, Rehand, Reshuffle, AddAsFriendly, AddAsEnemy, AddToDeck, Delete,
+        IncrementEnemyDeck, IncrementEnemyHand, DecrementEnemyDeck, DecrementEnemyHand,
+        Target, Response, TargetAccepted, SpaceTargetAccepted,
         PlayerSetX, DeclineAnotherTarget, EnableDecliningTarget, DisableDecliningTarget, SpaceTarget, SetEffectsX,
         Draw, SetNESW, SetPips, SetEnemyPips, PutBack, GetAttackTarget, YoureFirst, YoureSecond, RequestBoardTarget, RequestDeckTarget, RequestDiscardTarget, RequestHandTarget,
         TestTargetEffect}

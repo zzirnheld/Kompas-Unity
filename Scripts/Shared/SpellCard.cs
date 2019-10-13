@@ -7,7 +7,7 @@ public class SpellCard : Card
 
     public enum SpellType { Simple, Enchant, Augment, Terraform, Delayed };
 
-    private int c; //TODO refactor this to C
+    private int c;
     private SpellType spellSubtype;
     private string subtext;
     private bool fast;

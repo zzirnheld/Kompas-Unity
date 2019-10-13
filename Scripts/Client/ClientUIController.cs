@@ -67,9 +67,11 @@ public class ClientUIController : UIController
     /// </summary>
     public void SetXForEffect()
     {
-        int x = System.Int32.Parse(xInput.text); //TODO sanitize input
-        clientGame.clientNotifier.RequestSetX(x);
-        setXView.SetActive(false);
+        if (int.TryParse(xInput.text, out int x))
+        {
+            clientGame.clientNotifier.RequestSetX(x);
+            setXView.SetActive(false);
+        }
     }
 
     public void EnableDecliningTarget()
@@ -103,20 +105,17 @@ public class ClientUIController : UIController
         deckInputField.gameObject.SetActive(false);
         confirmDeckImportButton.gameObject.SetActive(false);
         importDeckButton.gameObject.SetActive(true);
-        //TODO change this to ask the server for import deck
-        //if(Game.DEBUG_MODE) clientGame.friendlyDeckCtrl.ImportDeck(decklist);
         clientGame.clientNotifier.RequestDecklistImport(decklist);
     }
 
     public void StartSearch(List<Card> list, bool targeting)
     {
-        Game.mainGame.uiCtrl.currentStateText.text += ", Starting search";
-        Debug.Log("Start search called for list of length " + list.Count);
         //if already searching, dont start another search?
         if (toSearch.Count != 0) return;
         //if the list is empty, don't search
         if (list.Count == 0) return;
-        Debug.Log("To search count nonzero");
+
+        Debug.Log($"Searching a list of {list.Count} cards, targeting? {targeting}");
 
         toSearch = list;
 

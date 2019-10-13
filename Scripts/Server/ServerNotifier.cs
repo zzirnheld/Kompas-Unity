@@ -198,7 +198,6 @@ public class ServerNotifier : MonoBehaviour
 
     public void SetXForEffect(ServerGame sGame, int x)
     {
-        //TODO sanitize
         sGame.CurrEffect.X = x;
         sGame.CurrEffect.ResolveNextSubeffect();
     }

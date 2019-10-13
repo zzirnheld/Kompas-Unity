@@ -144,6 +144,26 @@ public class ClientNetworkController : NetworkController {
                         break;
                 }
                 break;
+            case Packet.Command.IncrementEnemyDeck:
+                ClientGame.mainClientGame.enemyDeckCtrl.AddBlankCard();
+                break;
+            case Packet.Command.IncrementEnemyHand:
+                Card emptyHandAdd = ClientGame.mainClientGame.enemyDeckCtrl.AddBlankCard();
+                emptyHandAdd.Rehand();
+                break;
+            case Packet.Command.DecrementEnemyDeck:
+                //TODO make sure for both this and decrement hand that you're not deleting a revealedcard
+                if(ClientGame.mainClientGame.enemyDeckCtrl.DeckSize() > 0)
+                {
+                    ClientGame.mainClientGame.enemyDeckCtrl.PopBottomdeck();
+                }
+                break;
+            case Packet.Command.DecrementEnemyHand:
+                if(ClientGame.mainClientGame.enemyHandCtrl.HandSize > 0)
+                {
+                    ClientGame.mainClientGame.enemyHandCtrl.RemoveFromHandAt(0);
+                }
+                break;
             case Packet.Command.Augment: //the play method calls augment if the card is an augment
             case Packet.Command.Play:
                 Debug.Log("Client ordered to play to " + packet.X + ", " + packet.Y);

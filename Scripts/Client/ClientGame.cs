@@ -7,9 +7,7 @@ public class ClientGame : Game {
 
     public static ClientGame mainClientGame;
 
-    private bool friendlyTurn; //TODO should it start with a value? should be init by server
-    //private int friendlyPips = 3;
-    //private int enemyPips = 3;
+    private bool friendlyTurn;
 
     public HandController friendlyHandCtrl;
     public DeckController friendlyDeckCtrl;

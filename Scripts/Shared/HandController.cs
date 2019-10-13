@@ -6,7 +6,9 @@ using UnityEngine;
 public class HandController : KompasObject
 {
 
-    List<Card> hand = new List<Card>();
+    private List<Card> hand = new List<Card>();
+
+    public int HandSize { get { return hand.Count; } }
 
     //rng for shuffling
     private static System.Random rng = new System.Random();

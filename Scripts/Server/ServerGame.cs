@@ -5,7 +5,6 @@ using NetworkConnection = Unity.Networking.Transport.NetworkConnection;
 
 public class ServerGame : Game {
 
-    //TODO override all play, move, etc. methods to call base and tell players to do the same
     //model is basically: players request to the server to do something:
     //if server oks, it tells all players to do the thing
     //if server doesn't ok, it sends to all players a "hold up reset everything to how it should be"
@@ -225,7 +224,6 @@ public class ServerGame : Game {
     public void CancelStackEntry(int index)
     {
         if (index < 0) return;
-        //TODO move the relevant card to grave? call a cancel method?
         stack.RemoveAt(index);
         stackIndex--;
     }

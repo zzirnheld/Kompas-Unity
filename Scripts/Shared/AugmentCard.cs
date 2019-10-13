@@ -6,7 +6,7 @@ public class AugmentCard : Card {
 
     private Card thisCard;
 
-    private int a; //TODO refactor this to A
+    private int a;
     private string subtext;
     private string[] augSubtypes;
     private bool fast;
