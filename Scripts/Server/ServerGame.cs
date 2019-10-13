@@ -232,6 +232,7 @@ public class ServerGame : Game {
     {
         if (stackIndex < 0)
         {
+            serverNotifier.DiscardSimples(this);
             boardCtrl.DiscardSimples();
             return; //done with this stack!
         }

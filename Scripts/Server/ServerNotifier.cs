@@ -222,5 +222,11 @@ public class ServerNotifier : MonoBehaviour
         Debug.Log("Disabling declining target");
         SendPackets(packet, toDisable.ConnectionID);
     }
+
+    public void DiscardSimples(ServerGame inThisGame)
+    {
+        Packet packet = new Packet(Packet.Command.DiscardSimples);
+        SendPacketToBoth(packet, inThisGame);
+    }
     #endregion other effect stuff
 }

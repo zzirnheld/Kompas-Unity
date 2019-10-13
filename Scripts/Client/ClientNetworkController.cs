@@ -264,6 +264,9 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.DisableDecliningTarget:
                 ClientGame.mainClientGame.clientUICtrl.DisableDecliningTarget();
                 break;
+            case Packet.Command.DiscardSimples:
+                ClientGame.mainClientGame.boardCtrl.DiscardSimples();
+                break;
             default:
                 Debug.Log("Unrecognized command sent to client");
                 break;

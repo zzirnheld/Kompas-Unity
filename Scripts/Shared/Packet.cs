@@ -15,7 +15,8 @@ public class Packet {
         Target, Response, TargetAccepted, SpaceTargetAccepted,
         PlayerSetX, DeclineAnotherTarget, EnableDecliningTarget, DisableDecliningTarget, SpaceTarget, SetEffectsX,
         Draw, SetNESW, SetPips, SetEnemyPips, PutBack, GetAttackTarget, YoureFirst, YoureSecond, RequestBoardTarget, RequestDeckTarget, RequestDiscardTarget, RequestHandTarget,
-        TestTargetEffect}
+        DiscardSimples,
+        TestTargetEffect }
 
     /// <summary>
     /// Contains the command that is sent.
