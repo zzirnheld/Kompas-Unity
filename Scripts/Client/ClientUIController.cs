@@ -217,10 +217,10 @@ public class ClientUIController : UIController
         int wToUpdate = SelectedChar.W;
 
         //if any of the input fields have a value, update the values you want to update 
-        if (debugNInputField.text != "") nToUpdate = System.Int32.Parse(debugNInputField.text);
-        if (debugEInputField.text != "") eToUpdate = System.Int32.Parse(debugEInputField.text);
-        if (debugSInputField.text != "") sToUpdate = System.Int32.Parse(debugSInputField.text);
-        if (debugWInputField.text != "") wToUpdate = System.Int32.Parse(debugWInputField.text);
+        if (debugNInputField.text != "") nToUpdate = int.Parse(debugNInputField.text);
+        if (debugEInputField.text != "") eToUpdate = int.Parse(debugEInputField.text);
+        if (debugSInputField.text != "") sToUpdate = int.Parse(debugSInputField.text);
+        if (debugWInputField.text != "") wToUpdate = int.Parse(debugWInputField.text);
 
         ClientGame.mainClientGame.clientNotifier.RequestSetNESW(SelectedChar, nToUpdate, eToUpdate, sToUpdate, wToUpdate);
     }
@@ -229,7 +229,7 @@ public class ClientUIController : UIController
     {
         if (debugPipsField.text != "")
         {
-            int toSetPips = System.Int32.Parse(debugPipsField.text);
+            int toSetPips = int.Parse(debugPipsField.text);
             ClientGame.mainClientGame.clientNotifier.RequestUpdatePips(toSetPips);
         }
     }
