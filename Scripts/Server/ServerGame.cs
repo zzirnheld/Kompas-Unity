@@ -111,12 +111,12 @@ public class ServerGame : Game {
         serverNotifier.NotifySetPips(TurnPlayer, pipsToSet);
     }
 
-    public void CheckForDeath(CharacterCard toCheck, Effect effSrc, Attack atkSrc)
+    public void CheckForDeath(CharacterCard toCheck, IStackable stackSrc)
     {
         if(toCheck.E <= 0)
         {
             //first, trigger anything that would go off of this thing dying, so it knows it's about to die (moving from field)
-            Trigger(TriggerCondition.Discard, toCheck, effSrc, atkSrc, null);
+            Trigger(TriggerCondition.Discard, toCheck, stackSrc, null);
             //then notify the players
             serverNotifier.NotifyDiscard(toCheck);
             //then actually discard it
@@ -197,7 +197,7 @@ public class ServerGame : Game {
         serverNotifier.NotifySetTurn(this, turnPlayer);
 
         //trigger turn start effects
-        Trigger(TriggerCondition.TurnStart, null, null, null, null);
+        Trigger(TriggerCondition.TurnStart, null, null, null);
         CheckForResponse();
     }
 
@@ -285,12 +285,12 @@ public class ServerGame : Game {
     #endregion the stack
 
     #region triggers
-    public void Trigger(TriggerCondition condition, Card triggerer, Effect effSource, Attack atkSource, int? x)
+    public void Trigger(TriggerCondition condition, Card triggerer, IStackable stackTrigger, int? x)
     {
-        Debug.Log("Triggering " + condition + ", from " + triggerer + ", " + effSource + ", " + atkSource + ", x=" + x + "\n, number of triggers " + triggerMap[condition].Count);
-        foreach(Trigger t in triggerMap[condition])
+        Debug.Log($"Attempting to trigger {condition}, with triggerer {triggerer.CardName}, triggered by a null stacktrigger? {stackTrigger == null}, x={x}");
+        foreach (Trigger t in triggerMap[condition])
         {
-            t.TriggerIfValid(triggerer, effSource, atkSource, x);
+            t.TriggerIfValid(triggerer, stackTrigger, x);
         }
     }
 

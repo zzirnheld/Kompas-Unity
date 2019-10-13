@@ -327,7 +327,7 @@ public class ServerNetworkController : NetworkController {
             //play the card here
             toPlay.Play(invertedX, invertedY, playerIndex);
             //trigger effects
-            sGame.Trigger(TriggerCondition.Play, toPlay, null, null, null);
+            sGame.Trigger(TriggerCondition.Play, toPlay, null, null);
             sGame.CheckForResponse();
         }
         else

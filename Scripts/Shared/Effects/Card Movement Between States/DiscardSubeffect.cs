@@ -9,7 +9,7 @@ public class DiscardSubeffect : CardChangeStateSubeffect
         Debug.Log("Resolving discard subeffect");
         ServerGame?.serverNotifier.NotifyDiscard(Target);
         Target.Discard();
-        ServerGame?.Trigger(TriggerCondition.Discard, null, parent, null, null);
+        ServerGame?.Trigger(TriggerCondition.Discard, parent.thisCard, parent, null);
         parent.ResolveNextSubeffect();
     }
 }

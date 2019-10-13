@@ -22,7 +22,7 @@ public class TriggerRestriction : Restriction
     [System.NonSerialized]
     public Trigger thisTrigger;
 
-    public bool Evaluate(Card triggerer, Effect effTrigger, Attack atkTrigger)
+    public bool Evaluate(Card triggerer, IStackable stackTrigger)
     {
         foreach(TriggerRestrictions r in triggerRestrictions)
         {

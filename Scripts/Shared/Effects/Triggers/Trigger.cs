@@ -74,11 +74,10 @@ public class Trigger
     /// Checks all relevant trigger restrictions
     /// </summary>
     /// <param name="triggerer">The card that triggered this, if any.</param>
-    /// <param name="effTrigger">The effect that triggered this, if any.</param>
-    /// <param name="attackTrigger">The attack that triggered this, if any.</param>
+    /// <param name="stackTrigger">The effect or attack that triggered this, if any.</param>
     /// <param name="x">If the action that triggered this has a value of x, it goes here. Otherwise, null.</param>
     /// <returns>Whether all restrictions of the trigger are fulfilled.</returns>
-    protected bool CheckTriggerRestrictions(Card triggerer, Effect effTrigger, Attack attackTrigger, int? x)
+    protected bool CheckTriggerRestrictions(Card triggerer, IStackable stackTrigger, int? x)
     {
         if (effToTrigger.MaxTimesCanUsePerTurn.HasValue &&
             effToTrigger.TimesUsedThisTurn >= effToTrigger.MaxTimesCanUsePerTurn)
@@ -89,20 +88,19 @@ public class Trigger
             Debug.LogWarning($"Warning: null trigger restriction for effect of {effToTrigger.thisCard.CardName}");
         }
 
-        return triggerRestriction.Evaluate(triggerer, effTrigger, attackTrigger);
+        return triggerRestriction.Evaluate(triggerer, stackTrigger);
     }
 
     /// <summary>
     /// If the trigger for this effect applies to this trigger source, triggers this trigger's effect.
     /// </summary>
     /// <param name="triggerer">The card that triggered this, if any.</param>
-    /// <param name="effTrigger">The effect that triggered this, if any.</param>
-    /// <param name="attackTrigger">The attack that triggered this, if any.</param>
+    /// <param name="stackTrigger">The effect or attack that triggered this, if any.</param>
     /// <param name="x">If the action that triggered this has a value of x, it goes here. Otherwise, null.</param>
-    public virtual void TriggerIfValid(Card triggerer, Effect effTrigger, Attack attackTrigger, int? x)
+    public virtual void TriggerIfValid(Card triggerer, IStackable stackTrigger, int? x)
     {
-        Debug.Log($"Is trigger valid? {CheckTriggerRestrictions(triggerer, effTrigger, attackTrigger, x)}");
-        if (CheckTriggerRestrictions(triggerer, effTrigger, attackTrigger, x))
+        Debug.Log($"Is trigger valid? {CheckTriggerRestrictions(triggerer, stackTrigger, x)}");
+        if (CheckTriggerRestrictions(triggerer, stackTrigger, x))
             TriggerEffect(x);
     }
 }

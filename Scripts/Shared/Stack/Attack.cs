@@ -20,8 +20,8 @@ public class Attack : IStackable
         this.serverGame = serverGame;
         this.attacker = attacker;
         this.defender = defender;
-        serverGame.Trigger(TriggerCondition.Attacks, attacker, null, this, null);
-        serverGame.Trigger(TriggerCondition.Defends, defender, null, this, null);
+        serverGame.Trigger(TriggerCondition.Attacks, attacker, this, null);
+        serverGame.Trigger(TriggerCondition.Defends, defender, this, null);
     }
 
     public void StartResolution()
@@ -41,15 +41,15 @@ public class Attack : IStackable
         defender.E -= attackerDmg;
         attacker.E -= defenderDmg;
         //check for death
-        serverGame.CheckForDeath(attacker, null, this);
-        serverGame.CheckForDeath(defender, null, this);
+        serverGame.CheckForDeath(attacker, this);
+        serverGame.CheckForDeath(defender, this);
         //notify the players that cards' nesw have changed
         serverGame.serverNotifier.NotifySetNESW(defender);
         serverGame.serverNotifier.NotifySetNESW(attacker);
         //trigger effects based on combat damage
-        serverGame.Trigger(TriggerCondition.TakeCombatDamage, defender, null, this, attackerDmg);
-        serverGame.Trigger(TriggerCondition.TakeCombatDamage, attacker, null, this, defenderDmg);
-        serverGame.Trigger(TriggerCondition.DealCombatDamage, attacker, null, this, attackerDmg);
-        serverGame.Trigger(TriggerCondition.DealCombatDamage, defender, null, this, defenderDmg);
+        serverGame.Trigger(TriggerCondition.TakeCombatDamage, defender, this, attackerDmg);
+        serverGame.Trigger(TriggerCondition.TakeCombatDamage, attacker, this, defenderDmg);
+        serverGame.Trigger(TriggerCondition.DealCombatDamage, attacker, this, attackerDmg);
+        serverGame.Trigger(TriggerCondition.DealCombatDamage, defender, this, defenderDmg);
     }
 }
