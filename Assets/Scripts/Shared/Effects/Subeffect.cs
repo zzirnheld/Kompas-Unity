@@ -49,7 +49,7 @@ public abstract class Subeffect
         }
     }
 
-    public static Subeffect FromJson(SerializableEffect.SubeffectType seType, string subeffJson, Effect parent)
+    public static Subeffect FromJson(SubeffectType seType, string subeffJson, Effect parent)
     {
         Debug.Log("Creating subeffect from json of type " + seType + " json " + subeffJson);
 
@@ -57,62 +57,62 @@ public abstract class Subeffect
 
         switch (seType)
         {
-            case SerializableEffect.SubeffectType.TargetCardOnBoard:
+            case SubeffectType.TargetCardOnBoard:
                 toReturn = JsonUtility.FromJson<BoardTargetSubeffect>(subeffJson);
                 break;
-            case SerializableEffect.SubeffectType.DeckTarget:
+            case SubeffectType.DeckTarget:
                 toReturn = JsonUtility.FromJson<DeckTargetSubeffect>(subeffJson);
                 break;
-            case SerializableEffect.SubeffectType.DiscardTarget:
+            case SubeffectType.DiscardTarget:
                 toReturn = JsonUtility.FromJson<DiscardTargetSubeffect>(subeffJson);
                 break;
-            case SerializableEffect.SubeffectType.HandTarget:
+            case SubeffectType.HandTarget:
                 toReturn = JsonUtility.FromJson<HandTargetSubeffect>(subeffJson);
                 break;
-            case SerializableEffect.SubeffectType.TargetThis:
+            case SubeffectType.TargetThis:
                 toReturn = JsonUtility.FromJson<TargetThisSubeffect>(subeffJson);
                 break;
-            case SerializableEffect.SubeffectType.TargetThisSpace:
+            case SubeffectType.TargetThisSpace:
                 toReturn = JsonUtility.FromJson<TargetThisSpaceSubeffect>(subeffJson);
                 break;
-            case SerializableEffect.SubeffectType.ChangeNESW:
+            case SubeffectType.ChangeNESW:
                 toReturn = JsonUtility.FromJson<ChangeNESWSubeffect>(subeffJson);
                 break;
-            case SerializableEffect.SubeffectType.AddPips:
+            case SubeffectType.AddPips:
                 toReturn = JsonUtility.FromJson<AddPipsSubeffect>(subeffJson);
                 break;
-            case SerializableEffect.SubeffectType.SetXByBoardCount:
+            case SubeffectType.SetXByBoardCount:
                 toReturn = JsonUtility.FromJson<SetXBoardRestrictionSubeffect>(subeffJson);
                 break;
-            case SerializableEffect.SubeffectType.SpaceTarget:
+            case SubeffectType.SpaceTarget:
                 toReturn = JsonUtility.FromJson<SpaceTargetSubeffect>(subeffJson);
                 Debug.Log("Toreturn is null? " + (toReturn == null) + " here");
                 Debug.Log("Is the restriction null tho " + ((toReturn as SpaceTargetSubeffect).spaceRestriction == null));
                 break;
-            case SerializableEffect.SubeffectType.PayPips:
+            case SubeffectType.PayPips:
                 toReturn = JsonUtility.FromJson<PayPipsSubeffect>(subeffJson);
                 break;
-            case SerializableEffect.SubeffectType.SetXByTargetS:
+            case SubeffectType.SetXByTargetS:
                 toReturn = JsonUtility.FromJson<SetXTargetSSubeffect>(subeffJson);
                 break;
-            case SerializableEffect.SubeffectType.SetXByTargetCost:
+            case SubeffectType.SetXByTargetCost:
                 throw new NotImplementedException();
-            case SerializableEffect.SubeffectType.PlayCard:
+            case SubeffectType.PlayCard:
                 toReturn = JsonUtility.FromJson<PlaySubeffect>(subeffJson);
                 break;
-            case SerializableEffect.SubeffectType.PayPipsByTargetCost:
+            case SubeffectType.PayPipsByTargetCost:
                 toReturn = JsonUtility.FromJson<PayPipsTargetCostSubeffect>(subeffJson);
                 break;
-            case SerializableEffect.SubeffectType.DiscardCard:
+            case SubeffectType.DiscardCard:
                 toReturn = JsonUtility.FromJson<DiscardSubeffect>(subeffJson);
                 break;
-            case SerializableEffect.SubeffectType.ReshuffleCard:
+            case SubeffectType.ReshuffleCard:
                 toReturn = JsonUtility.FromJson<ReshuffleSubeffect>(subeffJson);
                 break;
-            case SerializableEffect.SubeffectType.RehandCard:
+            case SubeffectType.RehandCard:
                 toReturn = JsonUtility.FromJson<RehandSubeffect>(subeffJson);
                 break;
-            case SerializableEffect.SubeffectType.XTimesLoop:
+            case SubeffectType.XTimesLoop:
                 toReturn = JsonUtility.FromJson<XTimesSubeffect>(subeffJson);
                 break;
             default:

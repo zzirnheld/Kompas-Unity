@@ -22,6 +22,8 @@ public class Attack : IStackable
         this.defender = defender;
         serverGame.Trigger(TriggerCondition.Attacks, attacker, this, null);
         serverGame.Trigger(TriggerCondition.Defends, defender, this, null);
+        serverGame.Trigger(TriggerCondition.Battles, attacker, this, null);
+        serverGame.Trigger(TriggerCondition.Battles, defender, this, null);
     }
 
     public void StartResolution()

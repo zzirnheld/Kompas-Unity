@@ -11,6 +11,7 @@ public enum TriggerCondition
     Attacks = 301,
     TakeCombatDamage = 302,
     DealCombatDamage = 303,
+    Battles = 304,
     Arrive = 400,
     Play = 401,
     Discard = 402
