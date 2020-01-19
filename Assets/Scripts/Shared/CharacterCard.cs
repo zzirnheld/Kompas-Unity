@@ -6,7 +6,7 @@ public class CharacterCard : Card {
 
     //game mechanic data
     private int n;
-    private int e;
+    protected int e;
     private int s;
     private int w;
     private int baseN;
@@ -29,7 +29,7 @@ public class CharacterCard : Card {
             n = value;
         }
     }
-    public int E
+    public virtual int E
     {
         get
         {

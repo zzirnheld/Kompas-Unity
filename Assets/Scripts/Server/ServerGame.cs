@@ -101,6 +101,11 @@ public class ServerGame : Game {
     }
     #endregion
 
+    public void Lose(int playerIndex)
+    {
+        //TODO
+    }
+
     public void GiveTurnPlayerPips()
     {
         int pipsToSet = TurnPlayer.pips + MaxCardsOnField;
