@@ -8,6 +8,7 @@ public class CardSearch : MonoBehaviour
     public const string cardListFilePath = "Card Jsons/Card List";
     public const string cardJsonsFolderpath = "Card Jsons/";
 
+    public GameObject CardSearchPaneParentObj;
     public TMP_Text CardSearchName;
     public GameObject CharPrefab;
     public GameObject SpellPrefab;
@@ -16,9 +17,14 @@ public class CardSearch : MonoBehaviour
     private Dictionary<string, string> cardJsons;
     private List<string> cardNames;
 
+    protected List<DeckbuilderCard> shownCards;
+
     void Awake()
     {
+        shownCards = new List<DeckbuilderCard>();
+
         cardJsons = new Dictionary<string, string>();
+        cardNames = new List<string>();
         string cardList = Resources.Load<TextAsset>(cardListFilePath).text;
         cardList = cardList.Replace('\r', '\n');
         string[] cardNameArray = cardList.Split('\n');
@@ -27,12 +33,14 @@ public class CardSearch : MonoBehaviour
         {
             string nameClean = name.Substring(0, name.Length);
             //don't add duplicate cards
-            if (CardExists(nameClean)) continue;
+            if (string.IsNullOrWhiteSpace(nameClean) || CardExists(nameClean)) continue;
             //add the card's name to the list of card names
             cardNames.Add(nameClean);
 
             //load the json
-            string json = Resources.Load<TextAsset>(cardJsonsFolderpath + nameClean).text;
+            Debug.Log($"Loading json for name {nameClean}, path is {cardJsonsFolderpath + nameClean}");
+            string json = Resources.Load<TextAsset>(cardJsonsFolderpath + nameClean)?.text;
+            if (json == null) continue;
             //remove problematic chars for from json function
             json = json.Replace('\n', ' ');
             json = json.Replace("\r", "");
@@ -53,17 +61,20 @@ public class CardSearch : MonoBehaviour
         {
             case 'C':
                 SerializableCharCard serializableChar = JsonUtility.FromJson<SerializableCharCard>(json);
-                DeckbuilderCharCard charCard = Instantiate(CharPrefab).GetComponent<DeckbuilderCharCard>();
+                DeckbuilderCharCard charCard = Instantiate(CharPrefab, CardSearchPaneParentObj.transform)
+                    .GetComponent<DeckbuilderCharCard>();
                 charCard.SetInfo(serializableChar);
                 return charCard;
             case 'S':
                 SerializableSpellCard serializableSpell = JsonUtility.FromJson<SerializableSpellCard>(json);
-                DeckbuilderSpellCard spellCard = Instantiate(SpellPrefab).GetComponent<DeckbuilderSpellCard>();
+                DeckbuilderSpellCard spellCard = Instantiate(SpellPrefab, CardSearchPaneParentObj.transform)
+                    .GetComponent<DeckbuilderSpellCard>();
                 spellCard.SetInfo(serializableSpell);
                 return spellCard;
             case 'A':
                 SerializableAugCard serializableAug = JsonUtility.FromJson<SerializableAugCard>(json);
-                DeckbuilderAugCard augCard = Instantiate(AugPrefab).GetComponent<DeckbuilderAugCard>();
+                DeckbuilderAugCard augCard = Instantiate(AugPrefab, CardSearchPaneParentObj.transform)
+                    .GetComponent<DeckbuilderAugCard>();
                 augCard.SetInfo(serializableAug);
                 return augCard;
             default:
@@ -71,19 +82,26 @@ public class CardSearch : MonoBehaviour
                 return null;
         }
     }
-    private List<DeckbuilderCard> SearchCards()
+    public void SearchCards()
     {
-        List<DeckbuilderCard> list = new List<DeckbuilderCard>();
+        foreach(DeckbuilderCard card in shownCards)
+        {
+            Destroy(card.gameObject);
+        }
+
+        shownCards.Clear();
 
         //for now, only search by name
         string cardNameToSearchFor = CardSearchName.text;
-        foreach(string name in cardNames)
+        cardNameToSearchFor = cardNameToSearchFor.Replace("\u200B", "");
+        /*Debug.Log($"Search cards called for \"{cardNameToSearchFor}\", length {cardNameToSearchFor.Length}, first char" +
+            $"{(int) cardNameToSearchFor[0]} aka \"{cardNameToSearchFor[0]}\"");*/
+        foreach (string name in cardNames)
         {
-            if (name.Contains(cardNameToSearchFor)){
-                list.Add(InstantiateCard(cardJsons[name]));
+            if (name.Contains(cardNameToSearchFor) && cardJsons.ContainsKey(name)){
+                Debug.Log($"found a name {name} that contains {cardNameToSearchFor}");
+                shownCards.Add(InstantiateCard(cardJsons[name]));
             }
         }
-
-        return list;
     }
 }

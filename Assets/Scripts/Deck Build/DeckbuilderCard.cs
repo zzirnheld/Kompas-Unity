@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class DeckbuilderCard : MonoBehaviour
 {
@@ -9,13 +10,13 @@ public abstract class DeckbuilderCard : MonoBehaviour
     public string subtypeText;
     public string[] subtypes;
 
-    protected MeshRenderer meshRenderer;
+    protected Image image;
     protected Sprite detailedSprite;
     protected Sprite simpleSprite;
 
     public void Awake()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
+        image = GetComponent<Image>();
     }
 
     public void SetInfo(SerializableCard card)
@@ -37,11 +38,13 @@ public abstract class DeckbuilderCard : MonoBehaviour
             Debug.LogError("Could not find sprite with name " + cardFileName);
             return;
         }
+        image.sprite = simpleSprite;
+        /*
         //set this gameobject's texture to the simple sprite (by default, TODO change on zoom level change)
         Texture2D spriteTexture = simpleSprite.texture;
         //spriteTexture.alphaIsTransparency = true;
         meshRenderer.material.SetTexture("_MainTex", spriteTexture);
         //then make unity know it's a sprite so that it'll make the alpha transparent
-        meshRenderer.material.shader = Shader.Find("Sprites/Default");
+        meshRenderer.material.shader = Shader.Find("Sprites/Default");*/
     }
 }
