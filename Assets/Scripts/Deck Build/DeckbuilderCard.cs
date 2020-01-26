@@ -40,6 +40,9 @@ public abstract class DeckbuilderCard : MonoBehaviour
     public virtual void Show()
     {
         CardSearchController.CardImage.sprite = detailedSprite;
+        CardSearchController.CardNameText.text = CardName;
+        CardSearchController.SubtypesText.text = SubtypeText;
+        CardSearchController.EffectText.text = EffText;
     }
 
     public void Unshow()

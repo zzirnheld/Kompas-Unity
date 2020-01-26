@@ -15,12 +15,16 @@ public class CardSearch : MonoBehaviour
     public GameObject CharPrefab;
     public GameObject SpellPrefab;
     public GameObject AugPrefab;
-    public Sprite CardBack;
 
     public Image CardImage;
+    public TMP_Text CardNameText;
+    public TMP_Text StatsText;
+    public TMP_Text SubtypesText;
+    public TMP_Text EffectText;
 
     private Dictionary<string, string> cardJsons;
     private List<string> cardNames;
+    private Sprite CardBack;
 
     private DeckbuilderCard selectedCard;
 
@@ -57,6 +61,8 @@ public class CardSearch : MonoBehaviour
             //add the cleaned json to the dictionary
             cardJsons.Add(nameClean, json);
         }
+
+        ShowSelectedCard();
     }
 
     /// <summary>
@@ -67,7 +73,11 @@ public class CardSearch : MonoBehaviour
         if(selectedCard != null) selectedCard.Show();
         else
         {
-            CardImage.sprite = CardBack; 
+            CardImage.sprite = CardBack;
+            CardNameText.text = "";
+            StatsText.text = "";
+            SubtypesText.text = "";
+            EffectText.text = "";
         }
     }
 
