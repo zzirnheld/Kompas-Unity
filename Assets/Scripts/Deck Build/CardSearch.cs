@@ -114,9 +114,10 @@ public class CardSearch : MonoBehaviour
                 return null;
         }
     }
-    public void SearchCards()
+
+    public void SearchCards(string cardNameToSearchFor)
     {
-        foreach(DeckbuilderCard card in shownCards)
+        foreach (DeckbuilderCard card in shownCards)
         {
             Destroy(card.gameObject);
         }
@@ -124,19 +125,19 @@ public class CardSearch : MonoBehaviour
         shownCards.Clear();
 
         //for now, only search by name
-        string cardNameToSearchFor = CardSearchName.text;
         cardNameToSearchFor = cardNameToSearchFor.Replace("\u200B", "");
         /*Debug.Log($"Search cards called for \"{cardNameToSearchFor}\", length {cardNameToSearchFor.Length}, first char" +
             $"{(int) cardNameToSearchFor[0]} aka \"{cardNameToSearchFor[0]}\"");*/
         foreach (string name in cardNames)
         {
-            if (name.Contains(cardNameToSearchFor) && cardJsons.ContainsKey(name)){
+            if (name.Contains(cardNameToSearchFor) && cardJsons.ContainsKey(name))
+            {
                 Debug.Log($"found a name {name} that contains {cardNameToSearchFor}");
                 try
                 {
                     shownCards.Add(InstantiateCard(cardJsons[name]));
                 }
-                catch(System.ArgumentException argEx)
+                catch (System.ArgumentException argEx)
                 {
                     //Catch JSON parse error
                     Debug.LogError($"Failed to load {name}, argument exception with message {argEx.Message}");
