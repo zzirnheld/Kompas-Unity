@@ -9,6 +9,11 @@ public class DeckbuilderCharCard : DeckbuilderCard
     public int s;
     public int w;
 
+    public string StatsString
+    {
+        get { return $"N: {n}  E: {e}  S: {s}  W: {w}"; }
+    }
+
     public void SetInfo(CardSearch searchCtrl, SerializableCharCard charCard)
     {
         base.SetInfo(searchCtrl, charCard);
@@ -16,5 +21,11 @@ public class DeckbuilderCharCard : DeckbuilderCard
         e = charCard.e;
         s = charCard.s;
         w = charCard.w;
+    }
+
+    public override void Show()
+    {
+        base.Show();
+        CardSearchController.StatsText.text = StatsString;
     }
 }

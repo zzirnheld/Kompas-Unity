@@ -9,6 +9,11 @@ public class DeckbuilderAugCard : DeckbuilderCard
     public string subtext;
     public string[] augSubtypes;
 
+    public string StatsString
+    {
+        get { return $"A: {d}  Subtext: {subtext}"; }
+    }
+
     public void SetInfo(CardSearch searchCtrl, SerializableAugCard augCard)
     {
         base.SetInfo(searchCtrl, augCard);
@@ -16,5 +21,11 @@ public class DeckbuilderAugCard : DeckbuilderCard
         augSubtypes = augCard.augSubtypes;
         fast = augCard.fast;
         subtext = augCard.subtext;
+    }
+
+    public override void Show()
+    {
+        base.Show();
+        CardSearchController.StatsText.text = StatsString;
     }
 }

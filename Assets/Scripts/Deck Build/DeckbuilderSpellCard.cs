@@ -9,6 +9,11 @@ public class DeckbuilderSpellCard : DeckbuilderCard
     public bool fast;
     public string subtext;
 
+    public string StatsString
+    {
+        get { return $"D: {d}  Subtext: {subtext}"; }
+    }
+
     public void SetInfo(CardSearch searchCtrl, SerializableSpellCard spellCard)
     {
         base.SetInfo(searchCtrl, spellCard);
@@ -16,5 +21,11 @@ public class DeckbuilderSpellCard : DeckbuilderCard
         subtype = spellCard.subtype;
         fast = spellCard.fast;
         subtext = spellCard.subtext;
+    }
+
+    public override void Show()
+    {
+        base.Show();
+        CardSearchController.StatsText.text = StatsString;
     }
 }

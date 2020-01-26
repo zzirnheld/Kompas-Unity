@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public abstract class DeckbuilderCard : MonoBehaviour
 {
-    private CardSearch CardSearchController;
+    protected CardSearch CardSearchController;
 
     public char CardType;
     public string CardName;
