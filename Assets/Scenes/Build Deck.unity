@@ -416,12 +416,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardSearchPaneParentObj: {fileID: 1735891418}
   CardSearchName: {fileID: 765826606}
-  CharPrefab: {fileID: 7530064486675942167, guid: d6d2d5f374752f147a67e04c51bcc997,
+  CharPrefab: {fileID: 3989091764113213402, guid: 8a425cb37bcc0c545807a7aff1449f4b,
     type: 3}
-  SpellPrefab: {fileID: 2069147176145447213, guid: f780074a119a5fc4391eace3a4065a6a,
+  SpellPrefab: {fileID: 3211160473117395004, guid: b225db4bd9babeb43b973fc238150f70,
     type: 3}
-  AugPrefab: {fileID: 6488232561571610927, guid: 51057fce1e9b4b04189484d18ad679b4,
+  AugPrefab: {fileID: 6156539215506979954, guid: 104fae637567a2d41949672925893586,
     type: 3}
+  CardBack: {fileID: 0}
   CardImage: {fileID: 1435141108}
 --- !u!1 &127434907
 GameObject:

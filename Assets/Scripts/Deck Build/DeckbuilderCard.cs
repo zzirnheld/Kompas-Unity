@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public abstract class DeckbuilderCard : MonoBehaviour, IPointerEnterHandler
+public abstract class DeckbuilderCard : MonoBehaviour
 {
     private CardSearch CardSearchController;
 
@@ -37,9 +37,14 @@ public abstract class DeckbuilderCard : MonoBehaviour, IPointerEnterHandler
     /// <summary>
     /// Shows this card in the "selected card" area of the deckbuilder
     /// </summary>
-    public void Show()
+    public virtual void Show()
     {
         CardSearchController.CardImage.sprite = detailedSprite;
+    }
+
+    public void Unshow()
+    {
+        CardSearchController.ShowSelectedCard();
     }
 
     protected void SetImage(string cardFileName)
@@ -53,10 +58,5 @@ public abstract class DeckbuilderCard : MonoBehaviour, IPointerEnterHandler
             return;
         }
         image.sprite = simpleSprite;
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        Show();
     }
 }

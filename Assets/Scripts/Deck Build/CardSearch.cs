@@ -8,23 +8,29 @@ public class CardSearch : MonoBehaviour
 {
     public const string cardListFilePath = "Card Jsons/Card List";
     public const string cardJsonsFolderpath = "Card Jsons/";
+    public const string cardBackPath = "Detailed Sprites/Square Kompas Logo";
 
     public GameObject CardSearchPaneParentObj;
     public TMP_Text CardSearchName;
     public GameObject CharPrefab;
     public GameObject SpellPrefab;
     public GameObject AugPrefab;
+    public Sprite CardBack;
 
     public Image CardImage;
 
     private Dictionary<string, string> cardJsons;
     private List<string> cardNames;
 
+    private DeckbuilderCard selectedCard;
+
     protected List<DeckbuilderCard> shownCards;
 
     void Awake()
     {
         shownCards = new List<DeckbuilderCard>();
+
+        CardBack = Resources.Load<Sprite>(cardBackPath);
 
         cardJsons = new Dictionary<string, string>();
         cardNames = new List<string>();
@@ -50,6 +56,18 @@ public class CardSearch : MonoBehaviour
             json = json.Replace("\t", "");
             //add the cleaned json to the dictionary
             cardJsons.Add(nameClean, json);
+        }
+    }
+
+    /// <summary>
+    /// Show the card currently selected instead of another one.
+    /// </summary>
+    public void ShowSelectedCard()
+    {
+        if(selectedCard != null) selectedCard.Show();
+        else
+        {
+            CardImage.sprite = CardBack; 
         }
     }
 
