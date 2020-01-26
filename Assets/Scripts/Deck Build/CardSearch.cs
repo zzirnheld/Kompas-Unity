@@ -100,7 +100,15 @@ public class CardSearch : MonoBehaviour
         {
             if (name.Contains(cardNameToSearchFor) && cardJsons.ContainsKey(name)){
                 Debug.Log($"found a name {name} that contains {cardNameToSearchFor}");
-                shownCards.Add(InstantiateCard(cardJsons[name]));
+                try
+                {
+                    shownCards.Add(InstantiateCard(cardJsons[name]));
+                }
+                catch(System.ArgumentException argEx)
+                {
+                    //Catch JSON parse error
+                    Debug.LogError($"Failed to load {name}, argument exception with message {argEx.Message}");
+                }
             }
         }
     }
