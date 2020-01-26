@@ -9,9 +9,9 @@ public class DeckbuilderCharCard : DeckbuilderCard
     public int s;
     public int w;
 
-    public void SetInfo(SerializableCharCard charCard)
+    public void SetInfo(CardSearch searchCtrl, SerializableCharCard charCard)
     {
-        base.SetInfo(charCard);
+        base.SetInfo(searchCtrl, charCard);
         n = charCard.n;
         e = charCard.e;
         s = charCard.s;

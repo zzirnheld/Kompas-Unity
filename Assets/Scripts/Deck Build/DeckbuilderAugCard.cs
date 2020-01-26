@@ -9,9 +9,9 @@ public class DeckbuilderAugCard : DeckbuilderCard
     public string subtext;
     public string[] augSubtypes;
 
-    public void SetInfo(SerializableAugCard augCard)
+    public void SetInfo(CardSearch searchCtrl, SerializableAugCard augCard)
     {
-        base.SetInfo(augCard);
+        base.SetInfo(searchCtrl, augCard);
         d = augCard.d;
         augSubtypes = augCard.augSubtypes;
         fast = augCard.fast;

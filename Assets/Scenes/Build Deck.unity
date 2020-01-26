@@ -422,6 +422,7 @@ MonoBehaviour:
     type: 3}
   AugPrefab: {fileID: 6488232561571610927, guid: 51057fce1e9b4b04189484d18ad679b4,
     type: 3}
+  CardImage: {fileID: 1435141108}
 --- !u!1 &127434907
 GameObject:
   m_ObjectHideFlags: 0

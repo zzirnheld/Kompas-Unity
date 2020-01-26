@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class CardSearch : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class CardSearch : MonoBehaviour
     public GameObject CharPrefab;
     public GameObject SpellPrefab;
     public GameObject AugPrefab;
+
+    public Image CardImage;
 
     private Dictionary<string, string> cardJsons;
     private List<string> cardNames;
@@ -54,6 +57,7 @@ public class CardSearch : MonoBehaviour
     {
         return cardNames.Contains(cardName);
     }
+
     public DeckbuilderCard InstantiateCard(string json)
     {
         SerializableCard serializableCard = JsonUtility.FromJson<SerializableCard>(json);
@@ -63,19 +67,19 @@ public class CardSearch : MonoBehaviour
                 SerializableCharCard serializableChar = JsonUtility.FromJson<SerializableCharCard>(json);
                 DeckbuilderCharCard charCard = Instantiate(CharPrefab, CardSearchPaneParentObj.transform)
                     .GetComponent<DeckbuilderCharCard>();
-                charCard.SetInfo(serializableChar);
+                charCard.SetInfo(this, serializableChar);
                 return charCard;
             case 'S':
                 SerializableSpellCard serializableSpell = JsonUtility.FromJson<SerializableSpellCard>(json);
                 DeckbuilderSpellCard spellCard = Instantiate(SpellPrefab, CardSearchPaneParentObj.transform)
                     .GetComponent<DeckbuilderSpellCard>();
-                spellCard.SetInfo(serializableSpell);
+                spellCard.SetInfo(this, serializableSpell);
                 return spellCard;
             case 'A':
                 SerializableAugCard serializableAug = JsonUtility.FromJson<SerializableAugCard>(json);
                 DeckbuilderAugCard augCard = Instantiate(AugPrefab, CardSearchPaneParentObj.transform)
                     .GetComponent<DeckbuilderAugCard>();
-                augCard.SetInfo(serializableAug);
+                augCard.SetInfo(this, serializableAug);
                 return augCard;
             default:
                 Debug.LogError("Unrecognized type character " + serializableCard.cardType + " in " + json);

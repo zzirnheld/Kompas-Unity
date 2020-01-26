@@ -1,14 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public abstract class DeckbuilderCard : MonoBehaviour
+public abstract class DeckbuilderCard : MonoBehaviour, IPointerEnterHandler
 {
-    public string cardName;
-    public string effText;
-    public string subtypeText;
-    public string[] subtypes;
+    private CardSearch CardSearchController;
+
+    public char CardType;
+    public string CardName;
+    public string EffText;
+    public string SubtypeText;
+    public string[] Subtypes;
 
     protected Image image;
     protected Sprite detailedSprite;
@@ -19,13 +23,23 @@ public abstract class DeckbuilderCard : MonoBehaviour
         image = GetComponent<Image>();
     }
 
-    public void SetInfo(SerializableCard card)
+    public void SetInfo(CardSearch searchCtrl, SerializableCard card)
     {
-        cardName = card.cardName;
-        SetImage(cardName);
-        effText = card.effText;
-        subtypeText = card.subtypeText;
-        subtypes = card.subtypes;
+        CardType = card.cardType;
+        CardSearchController = searchCtrl;
+        CardName = card.cardName;
+        SetImage(CardName);
+        EffText = card.effText;
+        SubtypeText = card.subtypeText;
+        Subtypes = card.subtypes;
+    }
+
+    /// <summary>
+    /// Shows this card in the "selected card" area of the deckbuilder
+    /// </summary>
+    public void Show()
+    {
+        CardSearchController.CardImage.sprite = detailedSprite;
     }
 
     protected void SetImage(string cardFileName)
@@ -39,12 +53,10 @@ public abstract class DeckbuilderCard : MonoBehaviour
             return;
         }
         image.sprite = simpleSprite;
-        /*
-        //set this gameobject's texture to the simple sprite (by default, TODO change on zoom level change)
-        Texture2D spriteTexture = simpleSprite.texture;
-        //spriteTexture.alphaIsTransparency = true;
-        meshRenderer.material.SetTexture("_MainTex", spriteTexture);
-        //then make unity know it's a sprite so that it'll make the alpha transparent
-        meshRenderer.material.shader = Shader.Find("Sprites/Default");*/
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        Show();
     }
 }
