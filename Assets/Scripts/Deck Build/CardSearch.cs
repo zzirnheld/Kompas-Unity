@@ -81,6 +81,12 @@ public class CardSearch : MonoBehaviour
         }
     }
 
+    public void Select(DeckbuilderCard card)
+    {
+        selectedCard = card;
+        card.Show();
+    }
+
     private bool CardExists(string cardName)
     {
         return cardNames.Contains(cardName);

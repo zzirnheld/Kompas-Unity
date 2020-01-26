@@ -34,6 +34,11 @@ public abstract class DeckbuilderCard : MonoBehaviour
         Subtypes = card.subtypes;
     }
 
+    public void Select()
+    {
+        CardSearchController.Select(this);
+    }
+
     /// <summary>
     /// Shows this card in the "selected card" area of the deckbuilder
     /// </summary>
