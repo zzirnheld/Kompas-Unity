@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using TMPro;
 using UnityEngine;
 
 public class DeckbuilderController : MonoBehaviour
 {
-    private string deckFilesFolderPath = Application.persistentDataPath + "/Decks/";
+    private string deckFilesFolderPath = "";
 
+    public CardRespository CardRepo;
+    public CardSearchController CardSearchCtrl;
     public GameObject DeckViewScrollPane;
+    public TMP_Text DeckNameInput;
 
     private List<DeckbuilderCard> currDeck;
     private string currDeckName = "";
@@ -17,6 +21,10 @@ public class DeckbuilderController : MonoBehaviour
     {
         //for now, load an empty list. later, load a default deck?
         currDeck = new List<DeckbuilderCard>();
+        deckFilesFolderPath = Application.persistentDataPath + "/Decks";
+
+        //create the directory if doesn't exist
+        Directory.CreateDirectory(deckFilesFolderPath);
     }
 
     public void AddToDeck(DeckbuilderCard card)
@@ -27,8 +35,11 @@ public class DeckbuilderController : MonoBehaviour
 
     public void SaveDeck()
     {
+        //TODO temporary, but deck name input for now for testing? ideally a dropdown later
+        currDeckName = DeckNameInput.text;
+
         //write to a persistent file
-        string filePath =  deckFilesFolderPath + currDeckName + ".txt";
+        string filePath =  deckFilesFolderPath + "/" + currDeckName + ".txt";
 
         StringBuilder stringBuilder = new StringBuilder();
 
@@ -37,11 +48,24 @@ public class DeckbuilderController : MonoBehaviour
             stringBuilder.AppendLine(card.CardName);
         }
 
-        File.WriteAllText(deckFilesFolderPath, stringBuilder.ToString());
+        Debug.Log($"Saving deck to {filePath}\n{stringBuilder.ToString()}");
+
+        File.WriteAllText(filePath, stringBuilder.ToString());
     }
 
     public void LoadDeck(string deckName)
     {
+        //TODO temporary, but deck name input for now for testing? ideally a dropdown later
+        currDeckName = DeckNameInput.text;
 
+        string filePath = deckFilesFolderPath + deckName + ".txt";
+
+        string decklist = File.ReadAllText(filePath);
+        string[] cardNames = decklist.Split();
+
+        foreach(string cardName in cardNames)
+        {
+            //TODO add to deck an instantiated card
+        }
     }
 }
