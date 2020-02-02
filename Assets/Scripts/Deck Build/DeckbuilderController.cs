@@ -55,17 +55,21 @@ public class DeckbuilderController : MonoBehaviour
 
     public void LoadDeck(string deckName)
     {
-        //TODO temporary, but deck name input for now for testing? ideally a dropdown later
-        currDeckName = DeckNameInput.text;
-
-        string filePath = deckFilesFolderPath + deckName + ".txt";
+        string filePath = deckFilesFolderPath + "/" + deckName + ".txt";
 
         string decklist = File.ReadAllText(filePath);
-        string[] cardNames = decklist.Split();
+        List<string> cardNames = new List<string>(decklist.Split());
+        List<string> jsons = CardRepo.GetJsonsFromNameList(cardNames);
 
-        foreach(string cardName in cardNames)
+        foreach (string json in jsons)
         {
-            //TODO add to deck an instantiated card
+            DeckbuilderCard newCard = CardRepo.InstantiateCard(json, DeckViewScrollPane.transform);
+            if (newCard != null) AddToDeck(newCard);
         }
+    }
+
+    public void LoadDeck()
+    {
+        LoadDeck(DeckNameInput.text);
     }
 }
