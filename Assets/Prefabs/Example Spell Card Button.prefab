@@ -120,7 +120,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3211160473117395006}
-        m_MethodName: Select
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -142,11 +142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e14629c02f69f54fafa351ce0ec8c4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardType: 0
-  CardName: 
-  EffText: 
-  SubtypeText: 
-  Subtypes: []
   d: 0
   subtype: 0
   fast: 0

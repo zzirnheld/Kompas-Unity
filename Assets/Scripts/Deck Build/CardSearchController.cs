@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class CardSearch : MonoBehaviour
+public class CardSearchController : MonoBehaviour
 {
     public const string cardListFilePath = "Card Jsons/Card List";
     public const string cardJsonsFolderpath = "Card Jsons/";
@@ -27,8 +27,11 @@ public class CardSearch : MonoBehaviour
     private Sprite CardBack;
 
     private DeckbuilderCard selectedCard;
+    public DeckbuilderCard SelectedCard { get { return selectedCard; } }
 
     protected List<DeckbuilderCard> shownCards;
+
+    public DeckbuilderController DeckbuilderCtrl;
 
     void Awake()
     {
@@ -150,5 +153,10 @@ public class CardSearch : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void AddToDeck(DeckbuilderCard toAdd)
+    {
+        DeckbuilderCtrl.AddToDeck(toAdd);
     }
 }

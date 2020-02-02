@@ -6,13 +6,19 @@ using UnityEngine.UI;
 
 public abstract class DeckbuilderCard : MonoBehaviour
 {
-    protected CardSearch CardSearchController;
+    protected CardSearchController cardSearchController;
 
-    public char CardType;
-    public string CardName;
-    public string EffText;
-    public string SubtypeText;
-    public string[] Subtypes;
+    private char cardType;
+    private string cardName;
+    private string effText;
+    private string subtypeText;
+    private string[] subtypes;
+
+    public char CardType { get { return cardType; } }
+    public string CardName { get { return cardName; } }
+    public string EffText { get { return effText; } }
+    public string SubtypeText { get { return subtypeText; } }
+    public string[] Subtypes { get { return subtypes; } }
 
     protected Image image;
     protected Sprite detailedSprite;
@@ -23,20 +29,27 @@ public abstract class DeckbuilderCard : MonoBehaviour
         image = GetComponent<Image>();
     }
 
-    public void SetInfo(CardSearch searchCtrl, SerializableCard card)
+    public void SetInfo(CardSearchController searchCtrl, SerializableCard card)
     {
-        CardType = card.cardType;
-        CardSearchController = searchCtrl;
-        CardName = card.cardName;
+        cardType = card.cardType;
+        cardSearchController = searchCtrl;
+        cardName = card.cardName;
         SetImage(CardName);
-        EffText = card.effText;
-        SubtypeText = card.subtypeText;
-        Subtypes = card.subtypes;
+        effText = card.effText;
+        subtypeText = card.subtypeText;
+        subtypes = card.subtypes;
     }
 
     public void Select()
     {
-        CardSearchController.Select(this);
+        cardSearchController.Select(this);
+    }
+
+    public void OnClick()
+    {
+        if (cardSearchController.SelectedCard != this) Select();
+        else cardSearchController.AddToDeck(this);
+
     }
 
     /// <summary>
@@ -44,15 +57,15 @@ public abstract class DeckbuilderCard : MonoBehaviour
     /// </summary>
     public virtual void Show()
     {
-        CardSearchController.CardImage.sprite = detailedSprite;
-        CardSearchController.CardNameText.text = CardName;
-        CardSearchController.SubtypesText.text = SubtypeText;
-        CardSearchController.EffectText.text = EffText;
+        cardSearchController.CardImage.sprite = detailedSprite;
+        cardSearchController.CardNameText.text = CardName;
+        cardSearchController.SubtypesText.text = SubtypeText;
+        cardSearchController.EffectText.text = EffText;
     }
 
     public void Unshow()
     {
-        CardSearchController.ShowSelectedCard();
+        cardSearchController.ShowSelectedCard();
     }
 
     protected void SetImage(string cardFileName)

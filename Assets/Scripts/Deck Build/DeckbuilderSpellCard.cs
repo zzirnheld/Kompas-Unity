@@ -14,7 +14,7 @@ public class DeckbuilderSpellCard : DeckbuilderCard
         get { return $"D: {d}  Subtext: {subtext}"; }
     }
 
-    public void SetInfo(CardSearch searchCtrl, SerializableSpellCard spellCard)
+    public void SetInfo(CardSearchController searchCtrl, SerializableSpellCard spellCard)
     {
         base.SetInfo(searchCtrl, spellCard);
         d = spellCard.d;
@@ -26,6 +26,6 @@ public class DeckbuilderSpellCard : DeckbuilderCard
     public override void Show()
     {
         base.Show();
-        CardSearchController.StatsText.text = StatsString;
+        cardSearchController.StatsText.text = StatsString;
     }
 }

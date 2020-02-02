@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.48235297, g: 0.5529412, b: 0.6509804, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -120,7 +120,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6156539215506979967}
-        m_MethodName: Select
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -142,11 +142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c024f5836f9e564eb75c70aea97fb89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardType: 0
-  CardName: 
-  EffText: 
-  SubtypeText: 
-  Subtypes: []
   d: 0
   fast: 0
   subtext: 

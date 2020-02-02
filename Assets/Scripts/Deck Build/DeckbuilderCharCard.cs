@@ -14,7 +14,7 @@ public class DeckbuilderCharCard : DeckbuilderCard
         get { return $"N: {n}  E: {e}  S: {s}  W: {w}"; }
     }
 
-    public void SetInfo(CardSearch searchCtrl, SerializableCharCard charCard)
+    public void SetInfo(CardSearchController searchCtrl, SerializableCharCard charCard)
     {
         base.SetInfo(searchCtrl, charCard);
         n = charCard.n;
@@ -26,6 +26,6 @@ public class DeckbuilderCharCard : DeckbuilderCard
     public override void Show()
     {
         base.Show();
-        CardSearchController.StatsText.text = StatsString;
+        cardSearchController.StatsText.text = StatsString;
     }
 }
