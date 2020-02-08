@@ -14,9 +14,9 @@ public class DeckbuilderCharCard : DeckbuilderCard
         get { return $"N: {n}  E: {e}  S: {s}  W: {w}"; }
     }
 
-    public void SetInfo(CardSearchController searchCtrl, SerializableCharCard charCard)
+    public void SetInfo(CardSearchController searchCtrl, SerializableCharCard charCard, bool InDeck)
     {
-        base.SetInfo(searchCtrl, charCard);
+        base.SetInfo(searchCtrl, charCard, InDeck);
         n = charCard.n;
         e = charCard.e;
         s = charCard.s;

@@ -14,9 +14,9 @@ public class DeckbuilderSpellCard : DeckbuilderCard
         get { return $"D: {d}  Subtext: {subtext}"; }
     }
 
-    public void SetInfo(CardSearchController searchCtrl, SerializableSpellCard spellCard)
+    public void SetInfo(CardSearchController searchCtrl, SerializableSpellCard spellCard, bool inDeck)
     {
-        base.SetInfo(searchCtrl, spellCard);
+        base.SetInfo(searchCtrl, spellCard, inDeck);
         d = spellCard.d;
         subtype = spellCard.subtype;
         fast = spellCard.fast;

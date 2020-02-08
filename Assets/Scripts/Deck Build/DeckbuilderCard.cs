@@ -20,6 +20,8 @@ public abstract class DeckbuilderCard : MonoBehaviour
     public string SubtypeText { get { return subtypeText; } }
     public string[] Subtypes { get { return subtypes; } }
 
+    public bool InDeck;
+
     protected Image image;
     protected Sprite detailedSprite;
     protected Sprite simpleSprite;
@@ -29,7 +31,7 @@ public abstract class DeckbuilderCard : MonoBehaviour
         image = GetComponent<Image>();
     }
 
-    public void SetInfo(CardSearchController searchCtrl, SerializableCard card)
+    public void SetInfo(CardSearchController searchCtrl, SerializableCard card, bool inDeck)
     {
         cardType = card.cardType;
         cardSearchController = searchCtrl;
@@ -38,18 +40,12 @@ public abstract class DeckbuilderCard : MonoBehaviour
         effText = card.effText;
         subtypeText = card.subtypeText;
         subtypes = card.subtypes;
+        InDeck = inDeck;
     }
 
     public void Select()
     {
         cardSearchController.Select(this);
-    }
-
-    public void OnClick()
-    {
-        if (cardSearchController.SelectedCard != this) Select();
-        else cardSearchController.AddToDeck(this);
-
     }
 
     /// <summary>
@@ -79,5 +75,19 @@ public abstract class DeckbuilderCard : MonoBehaviour
             return;
         }
         image.sprite = simpleSprite;
+    }
+
+    public void OnClick()
+    {
+        Debug.Log($"Clicked {cardName}, in deck? {InDeck}");
+        if (InDeck)
+        {
+            cardSearchController.DeckbuilderCtrl.RemoveFromDeck(this);
+        }
+        else
+        {
+            if (cardSearchController.SelectedCard != this) Select();
+            else cardSearchController.DeckbuilderCtrl.AddToDeck(this);
+        }
     }
 }

@@ -29,8 +29,45 @@ public class DeckbuilderController : MonoBehaviour
 
     public void AddToDeck(DeckbuilderCard card)
     {
-        currDeck.Add(card);
-        card.transform.SetParent(DeckViewScrollPane.transform);
+        AddToDeck(card.CardName);
+    }
+
+    public void AddToDeck(string name)
+    {
+        string json = CardRepo.GetJsonFromName(name);
+        if (json == null)
+        {
+            Debug.LogError($"Somehow have a DeckbuilderCard with name {name} that doesn't have an assoc. json");
+            return;
+        }
+
+        DeckbuilderCard toAdd = CardRepo.InstantiateCard(json, DeckViewScrollPane.transform, true);
+        if (toAdd == null)
+        {
+            Debug.LogError($"Somehow have a DeckbuilderCard with name {name} couldn't be re-instantiated");
+            return;
+        }
+
+        currDeck.Add(toAdd);
+    }
+
+    public void ClearDeck()
+    {
+        Debug.Log("Clearing deck");
+        for (int i = currDeck.Count - 1; i >= 0; i--)
+        {
+            DeckbuilderCard c = currDeck[i];
+            currDeck.RemoveAt(i);
+            Destroy(c.gameObject);
+        }
+    }
+
+    public void RemoveFromDeck(DeckbuilderCard card)
+    {
+        if (currDeck.Remove(card))
+        {
+            Destroy(card.gameObject);
+        }
     }
 
     public void SaveDeck()
@@ -55,16 +92,20 @@ public class DeckbuilderController : MonoBehaviour
 
     public void LoadDeck(string deckName)
     {
+        //first clear deck
+        ClearDeck();
+
+        //then add new cards
         string filePath = deckFilesFolderPath + "/" + deckName + ".txt";
 
         string decklist = File.ReadAllText(filePath);
-        List<string> cardNames = new List<string>(decklist.Split());
-        List<string> jsons = CardRepo.GetJsonsFromNameList(cardNames);
+        decklist = decklist.Replace("\r", "");
+        decklist = decklist.Replace("\t", "");
+        List<string> cardNames = new List<string>(decklist.Split('\n'));
 
-        foreach (string json in jsons)
+        foreach (string name in cardNames)
         {
-            DeckbuilderCard newCard = CardRepo.InstantiateCard(json, DeckViewScrollPane.transform);
-            if (newCard != null) AddToDeck(newCard);
+            if(!string.IsNullOrWhiteSpace(name)) AddToDeck(name);
         }
     }
 

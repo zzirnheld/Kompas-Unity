@@ -46,7 +46,7 @@ public class CardRespository : MonoBehaviour
         return cardNames.Contains(cardName);
     }
 
-    public DeckbuilderCard InstantiateCard(string json, Transform parent)
+    public DeckbuilderCard InstantiateCard(string json, Transform parent, bool inDeck)
     {
         try
         {
@@ -57,19 +57,19 @@ public class CardRespository : MonoBehaviour
                     SerializableCharCard serializableChar = JsonUtility.FromJson<SerializableCharCard>(json);
                     DeckbuilderCharCard charCard = Instantiate(searchCtrl.CharPrefab, parent)
                         .GetComponent<DeckbuilderCharCard>();
-                    charCard.SetInfo(searchCtrl, serializableChar);
+                    charCard.SetInfo(searchCtrl, serializableChar, inDeck);
                     return charCard;
                 case 'S':
                     SerializableSpellCard serializableSpell = JsonUtility.FromJson<SerializableSpellCard>(json);
                     DeckbuilderSpellCard spellCard = Instantiate(searchCtrl.SpellPrefab, parent)
                         .GetComponent<DeckbuilderSpellCard>();
-                    spellCard.SetInfo(searchCtrl, serializableSpell);
+                    spellCard.SetInfo(searchCtrl, serializableSpell, inDeck);
                     return spellCard;
                 case 'A':
                     SerializableAugCard serializableAug = JsonUtility.FromJson<SerializableAugCard>(json);
                     DeckbuilderAugCard augCard = Instantiate(searchCtrl.AugPrefab, parent)
                         .GetComponent<DeckbuilderAugCard>();
-                    augCard.SetInfo(searchCtrl, serializableAug);
+                    augCard.SetInfo(searchCtrl, serializableAug, inDeck);
                     return augCard;
                 default:
                     Debug.LogError("Unrecognized type character " + serializableCard.cardType + " in " + json);
@@ -103,7 +103,7 @@ public class CardRespository : MonoBehaviour
         List<string> jsons = new List<string>();
         foreach(string name in names)
         {
-            Debug.Log($"Trying to get json for name \"{name}\"");
+            Debug.Log($"Trying to get json for name \"{name}\", string length {name.Length}");
             if(cardJsons.ContainsKey(name)) jsons.Add(cardJsons[name]);
         }
         return jsons;
@@ -112,5 +112,12 @@ public class CardRespository : MonoBehaviour
     public List<string> GetJsonsThatFit(string nameIncludes)
     {
         return GetJsonsFromNameList(GetCardsFromFilter(nameIncludes));
+    }
+
+    public string GetJsonFromName(string name)
+    {
+        if (cardJsons.ContainsKey(name)) return cardJsons[name];
+
+        return null;
     }
 }

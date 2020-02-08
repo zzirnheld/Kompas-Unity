@@ -14,9 +14,9 @@ public class DeckbuilderAugCard : DeckbuilderCard
         get { return $"A: {d}  Subtext: {subtext}"; }
     }
 
-    public void SetInfo(CardSearchController searchCtrl, SerializableAugCard augCard)
+    public void SetInfo(CardSearchController searchCtrl, SerializableAugCard augCard, bool inDeck)
     {
-        base.SetInfo(searchCtrl, augCard);
+        base.SetInfo(searchCtrl, augCard, inDeck);
         d = augCard.d;
         augSubtypes = augCard.augSubtypes;
         fast = augCard.fast;
