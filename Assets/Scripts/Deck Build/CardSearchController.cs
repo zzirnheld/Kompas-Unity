@@ -30,6 +30,9 @@ public class CardSearchController : MonoBehaviour
     public DeckbuilderController DeckbuilderCtrl;
     public CardRespository CardRepo;
 
+    private string cardNameToSearch = "";
+    private string subtypeToSearch = "";
+
     void Awake()
     {
         shownCards = new List<DeckbuilderCard>();
@@ -61,7 +64,7 @@ public class CardSearchController : MonoBehaviour
         card.Show();
     }
 
-    public void SearchCards(string cardNameToSearchFor)
+    private void SearchCards()
     {
         foreach (DeckbuilderCard card in shownCards)
         {
@@ -71,15 +74,27 @@ public class CardSearchController : MonoBehaviour
         shownCards.Clear();
 
         //for now, only search by name
-        cardNameToSearchFor = cardNameToSearchFor.Replace("\u200B", "");
         /*Debug.Log($"Search cards called for \"{cardNameToSearchFor}\", length {cardNameToSearchFor.Length}, first char" +
             $"{(int) cardNameToSearchFor[0]} aka \"{cardNameToSearchFor[0]}\"");*/
-        List<string> jsonsThatFit = CardRepo.GetJsonsThatFit(cardNameToSearchFor);
+        List<string> jsonsThatFit = CardRepo.GetJsonsThatFit(cardNameToSearch, subtypeToSearch);
 
-        foreach(string json in jsonsThatFit)
+        foreach (string json in jsonsThatFit)
         {
             DeckbuilderCard newCard = CardRepo.InstantiateCard(json, CardSearchPaneParentObj.transform, false);
             if (newCard != null) shownCards.Add(newCard);
         }
+    }
+
+    public void SearchCardsByName(string name)
+    {
+        cardNameToSearch = name.Replace("\u200B", "");
+        SearchCards();
+    }
+
+    public void SearchCardsBySubtype(string subtype)
+    {
+        subtypeToSearch = subtype.Replace("\u200B", "");
+        Debug.Log($"Searching for subtype \"{subtype}\"");
+        SearchCards();
     }
 }

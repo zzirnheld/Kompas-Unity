@@ -84,12 +84,27 @@ public class CardRespository : MonoBehaviour
         }
     }
 
-    public List<string> GetCardsFromFilter(string nameIncludes)
+    private bool SubtypesContain(string cardName, string subtypesInclude)
+    {
+        if (!cardJsons.ContainsKey(cardName)) return false;
+        try
+        {
+            SerializableCard card = JsonUtility.FromJson<SerializableCard>(cardJsons[cardName]);
+            if(card.subtypeText == null) return false;
+            return card.subtypeText.Contains(subtypesInclude);
+        }
+        catch(System.ArgumentException)
+        {
+            return false;
+        }
+    }
+
+    public List<string> GetCardsFromFilter(string nameIncludes, string subtypeIncludes)
     {
         List<string> cards = new List<string>();
         foreach (string name in cardNames)
         {
-            if (name.Contains(nameIncludes))
+            if (name.Contains(nameIncludes) && SubtypesContain(name, subtypeIncludes))
             {
                 Debug.Log($"found a name {name} that contains {nameIncludes}");
                 cards.Add(name);
@@ -109,9 +124,9 @@ public class CardRespository : MonoBehaviour
         return jsons;
     }
 
-    public List<string> GetJsonsThatFit(string nameIncludes)
+    public List<string> GetJsonsThatFit(string nameIncludes, string subtypesInclude)
     {
-        return GetJsonsFromNameList(GetCardsFromFilter(nameIncludes));
+        return GetJsonsFromNameList(GetCardsFromFilter(nameIncludes, subtypesInclude));
     }
 
     public string GetJsonFromName(string name)
