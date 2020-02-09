@@ -7,13 +7,17 @@ using UnityEngine;
 
 public class DeckbuilderController : MonoBehaviour
 {
+    public const int txtExtLen = 4;
+
     private string deckFilesFolderPath = "";
 
     public CardRespository CardRepo;
     public CardSearchController CardSearchCtrl;
     public GameObject DeckViewScrollPane;
+    public TMP_Dropdown DeckNameDropdown;
     public TMP_Text DeckNameInput;
 
+    private List<string> deckNames;
     private List<DeckbuilderCard> currDeck;
     private string currDeckName = "";
 
@@ -25,6 +29,19 @@ public class DeckbuilderController : MonoBehaviour
 
         //create the directory if doesn't exist
         Directory.CreateDirectory(deckFilesFolderPath);
+
+        //open the deck directory and add all text files to a decklist dropdown
+        DeckNameDropdown.options.Clear();
+        deckNames = new List<string>();
+        DirectoryInfo dirInfo = new DirectoryInfo(deckFilesFolderPath);
+        FileInfo[] files = dirInfo.GetFiles("*.txt");
+        foreach(FileInfo fi in files)
+        {
+            //add the file name without the ".txt" characters
+            string deckName = fi.Name.Substring(0, fi.Name.Length - txtExtLen);
+            deckNames.Add(deckName);
+            DeckNameDropdown.options.Add(new TMP_Dropdown.OptionData() { text = deckName });
+        }
     }
 
     public void AddToDeck(DeckbuilderCard card)
@@ -112,5 +129,10 @@ public class DeckbuilderController : MonoBehaviour
     public void LoadDeck()
     {
         LoadDeck(DeckNameInput.text);
+    }
+
+    public void LoadDeck(int i)
+    {
+        LoadDeck(deckNames[i]);
     }
 }
