@@ -91,7 +91,7 @@ public class CardRespository : MonoBehaviour
         {
             SerializableCard card = JsonUtility.FromJson<SerializableCard>(cardJsons[cardName]);
             if(card.subtypeText == null) return false;
-            return card.subtypeText.Contains(subtypesInclude);
+            return ContainsIgnoreCase(card.subtypeText, subtypesInclude);
         }
         catch(System.ArgumentException)
         {
@@ -99,12 +99,17 @@ public class CardRespository : MonoBehaviour
         }
     }
 
+    private bool ContainsIgnoreCase(string a, string b)
+    {
+        return a.ToLower().Contains(b.ToLower());
+    }
+
     public List<string> GetCardsFromFilter(string nameIncludes, string subtypeIncludes)
     {
         List<string> cards = new List<string>();
         foreach (string name in cardNames)
         {
-            if (name.Contains(nameIncludes) && SubtypesContain(name, subtypeIncludes))
+            if (ContainsIgnoreCase(name, nameIncludes) && SubtypesContain(name, subtypeIncludes))
             {
                 Debug.Log($"found a name {name} that contains {nameIncludes}");
                 cards.Add(name);

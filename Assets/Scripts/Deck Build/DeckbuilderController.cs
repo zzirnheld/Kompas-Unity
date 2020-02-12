@@ -4,6 +4,7 @@ using System.IO;
 using System.Text;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DeckbuilderController : MonoBehaviour
 {
@@ -15,11 +16,15 @@ public class DeckbuilderController : MonoBehaviour
     public CardSearchController CardSearchCtrl;
     public GameObject DeckViewScrollPane;
     public TMP_Dropdown DeckNameDropdown;
-    public TMP_Text DeckNameInput;
+    public TMP_InputField DeckNameInput;
+    public GameObject ConfirmLoadDeckParentObj;
+    public TMP_Text CardsInDeckText;
 
     private List<string> deckNames;
     private List<DeckbuilderCard> currDeck;
     private string currDeckName = "";
+    private string LastDeletedName = "";
+    private bool IsDeckDirty = false;
 
     public void Awake()
     {
@@ -39,9 +44,24 @@ public class DeckbuilderController : MonoBehaviour
         {
             //add the file name without the ".txt" characters
             string deckName = fi.Name.Substring(0, fi.Name.Length - txtExtLen);
+            if (string.IsNullOrWhiteSpace(deckName)) continue;
             deckNames.Add(deckName);
             DeckNameDropdown.options.Add(new TMP_Dropdown.OptionData() { text = deckName });
         }
+
+        //load initially selected deck
+        LoadDeck(0);
+    }
+
+    public void ToMainMenu()
+    {
+        //load the main menu scene
+        SceneManager.LoadScene(MainMenuUICtrl.MainMenuScene);
+    }
+
+    private void SetDeckCountText()
+    {
+        CardsInDeckText.text = $"Cards in Deck: {currDeck.Count}";
     }
 
     public void AddToDeck(DeckbuilderCard card)
@@ -54,7 +74,7 @@ public class DeckbuilderController : MonoBehaviour
         string json = CardRepo.GetJsonFromName(name);
         if (json == null)
         {
-            Debug.LogError($"Somehow have a DeckbuilderCard with name {name} that doesn't have an assoc. json");
+            Debug.LogError($"No json found for card name {name}");
             return;
         }
 
@@ -65,7 +85,9 @@ public class DeckbuilderController : MonoBehaviour
             return;
         }
 
+        IsDeckDirty = true;
         currDeck.Add(toAdd);
+        SetDeckCountText();
     }
 
     public void ClearDeck()
@@ -79,17 +101,32 @@ public class DeckbuilderController : MonoBehaviour
         }
     }
 
+    public void UndoLastDelete()
+    {
+        if (string.IsNullOrWhiteSpace(LastDeletedName)) return;
+        AddToDeck(LastDeletedName);
+    }
+
     public void RemoveFromDeck(DeckbuilderCard card)
     {
         if (currDeck.Remove(card))
         {
+            IsDeckDirty = true;
+            LastDeletedName = card.CardName;
             Destroy(card.gameObject);
         }
+
+        SetDeckCountText();
     }
 
     public void SaveDeck()
     {
-        //TODO temporary, but deck name input for now for testing? ideally a dropdown later
+        if(string.IsNullOrWhiteSpace(DeckNameInput.text))
+        {
+            Debug.Log("Tried to save blank deck name, ignoring");
+            return;
+        }
+
         currDeckName = DeckNameInput.text;
 
         //write to a persistent file
@@ -105,10 +142,25 @@ public class DeckbuilderController : MonoBehaviour
         Debug.Log($"Saving deck to {filePath}\n{stringBuilder.ToString()}");
 
         File.WriteAllText(filePath, stringBuilder.ToString());
+
+        if (!deckNames.Contains(currDeckName))
+        {
+            deckNames.Add(currDeckName);
+            DeckNameDropdown.options.Add(new TMP_Dropdown.OptionData() { text = currDeckName });
+            DeckNameDropdown.value = deckNames.Count - 1;
+        }
+
+        IsDeckDirty = false;
     }
 
     public void LoadDeck(string deckName)
     {
+        if (IsDeckDirty)
+        {
+            ConfirmLoadDeckParentObj.SetActive(true);
+            return;
+        }
+
         //first clear deck
         ClearDeck();
 
@@ -124,15 +176,33 @@ public class DeckbuilderController : MonoBehaviour
         {
             if(!string.IsNullOrWhiteSpace(name)) AddToDeck(name);
         }
+
+        currDeckName = deckName;
+        IsDeckDirty = false;
+        DeckNameInput.text = deckName;
+        SetDeckCountText();
     }
 
-    public void LoadDeck()
+    public void ConfirmLoadDeck()
     {
-        LoadDeck(DeckNameInput.text);
+        IsDeckDirty = false;
+        ConfirmLoadDeckParentObj.SetActive(false);
+        LoadDeck(DeckNameDropdown.value);
+    }
+
+    public void CancelLoadDeck()
+    {
+        int currDeckIndex = deckNames.IndexOf(currDeckName);
+        DeckNameDropdown.value = currDeckIndex < 0 ? 0 : currDeckIndex;
+        ConfirmLoadDeckParentObj.SetActive(false);
     }
 
     public void LoadDeck(int i)
     {
+        if (i >= deckNames.Count) {
+            Debug.LogError($"Tried to load deck at index {i} out of bounds");
+            return; 
+        }
         LoadDeck(deckNames[i]);
     }
 }

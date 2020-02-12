@@ -86,8 +86,8 @@ public abstract class DeckbuilderCard : MonoBehaviour
         }
         else
         {
-            if (cardSearchController.SelectedCard != this) Select();
-            else cardSearchController.DeckbuilderCtrl.AddToDeck(this);
+            Select();
+            cardSearchController.DeckbuilderCtrl.AddToDeck(this);
         }
     }
 }

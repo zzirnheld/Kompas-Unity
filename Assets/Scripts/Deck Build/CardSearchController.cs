@@ -72,6 +72,7 @@ public class CardSearchController : MonoBehaviour
         }
 
         shownCards.Clear();
+        if (string.IsNullOrWhiteSpace(cardNameToSearch) && string.IsNullOrWhiteSpace(subtypeToSearch)) return;
 
         //for now, only search by name
         /*Debug.Log($"Search cards called for \"{cardNameToSearchFor}\", length {cardNameToSearchFor.Length}, first char" +
