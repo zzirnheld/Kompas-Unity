@@ -465,7 +465,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1248521067}
   m_HandleRect: {fileID: 1248521066}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2882,8 +2882,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1011727659}
-        m_MethodName: CancelLoadDeck
+      - m_Target: {fileID: 93446815}
+        m_MethodName: Cancel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5871,7 +5871,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1280124297}
   m_HandleRect: {fileID: 1280124296}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
