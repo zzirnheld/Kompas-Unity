@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class DeckbuilderController : MonoBehaviour
 {
     public const int txtExtLen = 4;
+    private const string DeckDeleteFailedErrorMsg = "Failed to delete deck, sorry";
 
     private string deckFilesFolderPath = "";
 
@@ -19,7 +20,8 @@ public class DeckbuilderController : MonoBehaviour
     public TMP_InputField DeckNameInput;
     public GameObject ConfirmLoadDeckParentObj;
     public TMP_Text CardsInDeckText;
-    public ConfirmDialogController ConfirmController;
+    public ConfirmDialogController ConfirmDialog;
+    public ErrorDialogController ErrorDialog;
 
     private List<string> deckNames;
     private List<DeckbuilderCard> currDeck;
@@ -58,7 +60,7 @@ public class DeckbuilderController : MonoBehaviour
     {
         if (IsDeckDirty)
         {
-            ConfirmController.Enable(ConfirmDialogController.ConfirmAction.ToMainMenu);
+            ConfirmDialog.Enable(ConfirmDialogController.ConfirmAction.ToMainMenu);
             return;
         }
         //load the main menu scene
@@ -110,6 +112,48 @@ public class DeckbuilderController : MonoBehaviour
             DeckbuilderCard c = currDeck[i];
             currDeck.RemoveAt(i);
             Destroy(c.gameObject);
+        }
+    }
+
+    public void DeleteDeck()
+    {
+        int index = deckNames.IndexOf(currDeckName);
+
+        if (index != -1)
+        {
+            Debug.Log($"Deleting {currDeckName}");
+            string deckFilePath = deckFilesFolderPath + "/" + currDeckName + ".txt";
+            if (File.Exists(deckFilePath))
+            {
+                File.Delete(deckFilePath);
+            }
+
+            ClearDeck();
+            deckNames.RemoveAt(index);
+            DeckNameDropdown.options.Clear();
+
+            foreach(string name in deckNames)
+            {
+                DeckNameDropdown.options.Add(new TMP_Dropdown.OptionData() { text = name });
+            }
+
+            if (deckNames.Count > 0)
+            {
+                index = index < deckNames.Count ? index : 0;
+                currDeckName = deckNames[index];
+                DeckNameDropdown.value = index;
+                DeckNameInput.text = currDeckName;
+            }
+            else
+            {
+                currDeckName = "";
+                DeckNameInput.text = "";
+            }
+            DeckNameDropdown.RefreshShownValue();
+        }
+        else
+        {
+            ErrorDialog.ShowError(DeckDeleteFailedErrorMsg);
         }
     }
 
@@ -167,9 +211,12 @@ public class DeckbuilderController : MonoBehaviour
 
     public void LoadDeck(string deckName)
     {
+        Debug.Log($"Loading {deckName}");
+
         if (IsDeckDirty)
         {
-            ConfirmController.Enable(ConfirmDialogController.ConfirmAction.LoadDeck);
+            Debug.Log($"{deckName} is dirty, showing confirm dialog instead");
+            ConfirmDialog.Enable(ConfirmDialogController.ConfirmAction.LoadDeck);
             return;
         }
 
