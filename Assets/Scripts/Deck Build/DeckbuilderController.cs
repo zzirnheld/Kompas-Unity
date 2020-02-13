@@ -143,14 +143,14 @@ public class DeckbuilderController : MonoBehaviour
 
         File.WriteAllText(filePath, stringBuilder.ToString());
 
+        IsDeckDirty = false;
+
         if (!deckNames.Contains(currDeckName))
         {
             deckNames.Add(currDeckName);
             DeckNameDropdown.options.Add(new TMP_Dropdown.OptionData() { text = currDeckName });
             DeckNameDropdown.value = deckNames.Count - 1;
         }
-
-        IsDeckDirty = false;
     }
 
     public void LoadDeck(string deckName)
