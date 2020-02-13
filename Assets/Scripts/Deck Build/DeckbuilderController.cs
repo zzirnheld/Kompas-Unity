@@ -19,6 +19,7 @@ public class DeckbuilderController : MonoBehaviour
     public TMP_InputField DeckNameInput;
     public GameObject ConfirmLoadDeckParentObj;
     public TMP_Text CardsInDeckText;
+    public ConfirmDialogController ConfirmController;
 
     private List<string> deckNames;
     private List<DeckbuilderCard> currDeck;
@@ -54,6 +55,17 @@ public class DeckbuilderController : MonoBehaviour
     }
 
     public void ToMainMenu()
+    {
+        if (IsDeckDirty)
+        {
+            ConfirmController.Enable(ConfirmDialogController.ConfirmAction.ToMainMenu);
+            return;
+        }
+        //load the main menu scene
+        SceneManager.LoadScene(MainMenuUICtrl.MainMenuScene);
+    }
+
+    public void ConfirmToMainMenu()
     {
         //load the main menu scene
         SceneManager.LoadScene(MainMenuUICtrl.MainMenuScene);
@@ -157,7 +169,7 @@ public class DeckbuilderController : MonoBehaviour
     {
         if (IsDeckDirty)
         {
-            ConfirmLoadDeckParentObj.SetActive(true);
+            ConfirmController.Enable(ConfirmDialogController.ConfirmAction.LoadDeck);
             return;
         }
 
