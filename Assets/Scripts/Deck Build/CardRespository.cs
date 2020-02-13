@@ -9,11 +9,16 @@ public class CardRespository : MonoBehaviour
 
     private Dictionary<string, string> cardJsons;
     private List<string> cardNames;
+    private List<string> cardNamesToIgnore;
 
     public CardSearchController searchCtrl;
 
     void Awake()
     {
+        cardNamesToIgnore = new List<string>(new string[] {
+            "Square Kompas Logo"
+        });
+
         cardJsons = new Dictionary<string, string>();
         cardNames = new List<string>();
         string cardList = Resources.Load<TextAsset>(cardListFilePath).text;
@@ -24,7 +29,7 @@ public class CardRespository : MonoBehaviour
         {
             string nameClean = name.Substring(0, name.Length);
             //don't add duplicate cards
-            if (string.IsNullOrWhiteSpace(nameClean) || CardExists(nameClean)) continue;
+            if (IsCardToIgnore(nameClean) || CardExists(nameClean)) continue;
             //add the card's name to the list of card names
             cardNames.Add(nameClean);
 
@@ -39,6 +44,12 @@ public class CardRespository : MonoBehaviour
             //add the cleaned json to the dictionary
             cardJsons.Add(nameClean, json);
         }
+    }
+
+    private bool IsCardToIgnore(string name)
+    {
+        if (string.IsNullOrWhiteSpace(name)) return true;
+        return cardNamesToIgnore.Contains(name);
     }
 
     public bool CardExists(string cardName)
