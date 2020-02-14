@@ -8,17 +8,11 @@ public abstract class DeckbuilderCard : MonoBehaviour
 {
     protected CardSearchController cardSearchController;
 
-    private char cardType;
-    private string cardName;
-    private string effText;
-    private string subtypeText;
-    private string[] subtypes;
-
-    public char CardType { get { return cardType; } }
-    public string CardName { get { return cardName; } }
-    public string EffText { get { return effText; } }
-    public string SubtypeText { get { return subtypeText; } }
-    public string[] Subtypes { get { return subtypes; } }
+    public char CardType { get; private set; }
+    public string CardName { get; private set; }
+    public string EffText { get; private set; }
+    public string SubtypeText { get; private set; }
+    public string[] Subtypes { get; private set; }
 
     public bool InDeck;
 
@@ -33,13 +27,13 @@ public abstract class DeckbuilderCard : MonoBehaviour
 
     public void SetInfo(CardSearchController searchCtrl, SerializableCard card, bool inDeck)
     {
-        cardType = card.cardType;
+        CardType = card.cardType;
         cardSearchController = searchCtrl;
-        cardName = card.cardName;
+        CardName = card.cardName;
         SetImage(CardName);
-        effText = card.effText;
-        subtypeText = card.subtypeText;
-        subtypes = card.subtypes;
+        EffText = card.effText;
+        SubtypeText = card.subtypeText;
+        Subtypes = card.subtypes;
         InDeck = inDeck;
     }
 
@@ -79,7 +73,7 @@ public abstract class DeckbuilderCard : MonoBehaviour
 
     public void OnClick()
     {
-        Debug.Log($"Clicked {cardName}, in deck? {InDeck}");
+        Debug.Log($"Clicked {CardName}, in deck? {InDeck}");
         if (InDeck)
         {
             cardSearchController.DeckbuilderCtrl.RemoveFromDeck(this);
