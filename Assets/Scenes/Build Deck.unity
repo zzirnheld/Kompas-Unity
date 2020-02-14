@@ -1037,7 +1037,7 @@ MonoBehaviour:
   StatsText: {fileID: 1262430886}
   SubtypesText: {fileID: 20785741}
   EffectText: {fileID: 1609596040}
-  DeckbuilderCtrl: {fileID: 1011727659}
+  DeckbuilderCtrl: {fileID: 0}
   CardRepo: {fileID: 453664557}
 --- !u!114 &84113671
 MonoBehaviour:
@@ -1134,7 +1134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75ea0dc9678109545b6cdfc58cbdf169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deckbuildCtrl: {fileID: 1011727659}
+  deckbuildCtrl: {fileID: 1378237990}
   ConfirmText: {fileID: 767988782}
   SaveAndConfirmText: {fileID: 556942528}
   CancelText: {fileID: 2096248907}
@@ -1349,7 +1349,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1011727659}
+      - m_Target: {fileID: 1378237990}
         m_MethodName: UndoLastDelete
         m_Mode: 1
         m_Arguments:
@@ -3155,7 +3155,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1011727659}
+      - m_Target: {fileID: 1378237990}
         m_MethodName: DeleteDeck
         m_Mode: 1
         m_Arguments:
@@ -3415,7 +3415,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1011727659}
+      - m_Target: {fileID: 1378237990}
         m_MethodName: LoadDeck
         m_Mode: 0
         m_Arguments:
@@ -5210,7 +5210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed07c584e218ad64da7701ec92f0253f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeckbuildCtrl: {fileID: 1011727659}
+  DeckbuildCtrl: {fileID: 1378237990}
   ImportDeckField: {fileID: 1538562727}
   ImportDeckNameField: {fileID: 1011203438}
 --- !u!1 &765826604
@@ -5917,7 +5917,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1011727659}
+      - m_Target: {fileID: 1378237990}
         m_MethodName: ExportDeck
         m_Mode: 1
         m_Arguments:
@@ -6597,7 +6597,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1011727658}
-  - component: {fileID: 1011727659}
   - component: {fileID: 1011727660}
   - component: {fileID: 1011727661}
   m_Layer: 5
@@ -6628,28 +6627,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
---- !u!114 &1011727659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1011727657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a0144e7fc6f38145929803f8fa9982c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CardRepo: {fileID: 453664557}
-  CardSearchCtrl: {fileID: 84113670}
-  DeckViewScrollPane: {fileID: 747553270}
-  DeckNameDropdown: {fileID: 479898343}
-  DeckNameInput: {fileID: 688797105}
-  CardsInDeckText: {fileID: 109958566}
-  ConfirmDialog: {fileID: 93446815}
-  ErrorDialog: {fileID: 359598263}
-  ImportDialog: {fileID: 765227643}
-  ExportDialog: {fileID: 1861377603}
 --- !u!114 &1011727660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8493,9 +8470,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1378237988}
+  - component: {fileID: 1378237990}
   - component: {fileID: 1378237989}
   m_Layer: 5
-  m_Name: Overall Layout
+  m_Name: Main Deckbuilder Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8548,6 +8526,28 @@ MonoBehaviour:
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!114 &1378237990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378237987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a0144e7fc6f38145929803f8fa9982c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CardRepo: {fileID: 453664557}
+  CardSearchCtrl: {fileID: 84113670}
+  DeckViewScrollPane: {fileID: 747553270}
+  DeckNameDropdown: {fileID: 479898343}
+  DeckNameInput: {fileID: 688797105}
+  CardsInDeckText: {fileID: 109958566}
+  ConfirmDialog: {fileID: 93446815}
+  ErrorDialog: {fileID: 359598263}
+  ImportDialog: {fileID: 765227643}
+  ExportDialog: {fileID: 1861377603}
 --- !u!1 &1393889085
 GameObject:
   m_ObjectHideFlags: 0
@@ -10304,7 +10304,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1011727659}
+      - m_Target: {fileID: 1378237990}
         m_MethodName: ToMainMenu
         m_Mode: 1
         m_Arguments:
@@ -12062,7 +12062,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1011727659}
+      - m_Target: {fileID: 1378237990}
         m_MethodName: SaveDeck
         m_Mode: 1
         m_Arguments:
@@ -12191,7 +12191,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1011727659}
+      - m_Target: {fileID: 1378237990}
         m_MethodName: ClearDeck
         m_Mode: 1
         m_Arguments:
@@ -12677,7 +12677,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1011727659}
+      - m_Target: {fileID: 1378237990}
         m_MethodName: ImportDeck
         m_Mode: 1
         m_Arguments:

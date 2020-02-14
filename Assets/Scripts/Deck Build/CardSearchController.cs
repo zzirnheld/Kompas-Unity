@@ -8,37 +8,38 @@ public class CardSearchController : MonoBehaviour
 {
     public const string cardBackPath = "Detailed Sprites/Square Kompas Logo";
 
+    //card data pane ui elements
     public GameObject CardSearchPaneParentObj;
-    public TMP_Text CardSearchName;
-    public GameObject CharPrefab;
-    public GameObject SpellPrefab;
-    public GameObject AugPrefab;
-
     public Image CardImage;
     public TMP_Text CardNameText;
     public TMP_Text StatsText;
     public TMP_Text SubtypesText;
     public TMP_Text EffectText;
-
     private Sprite CardBack;
 
-    private DeckbuilderCard selectedCard;
-    public DeckbuilderCard SelectedCard { get { return selectedCard; } }
+    //card prefabs
+    public GameObject CharPrefab;
+    public GameObject SpellPrefab;
+    public GameObject AugPrefab;
 
-    protected List<DeckbuilderCard> shownCards;
-
+    //other scripts
     public DeckbuilderController DeckbuilderCtrl;
     public CardRespository CardRepo;
 
+    //search data
+    private DeckbuilderCard selectedCard;
+    private List<DeckbuilderCard> shownCards;
     private string cardNameToSearch = "";
     private string subtypeToSearch = "";
 
     void Awake()
     {
+        //initialize list
         shownCards = new List<DeckbuilderCard>();
 
+        //get image to show when no card is selected
         CardBack = Resources.Load<Sprite>(cardBackPath);
-
+        //show the blank card
         ShowSelectedCard();
     }
 
@@ -47,7 +48,9 @@ public class CardSearchController : MonoBehaviour
     /// </summary>
     public void ShowSelectedCard()
     {
+        //if there is a selected card, show it
         if(selectedCard != null) selectedCard.Show();
+        //otherwise, show data for no card, and show the card back as the sprite
         else
         {
             CardImage.sprite = CardBack;
@@ -66,19 +69,19 @@ public class CardSearchController : MonoBehaviour
 
     private void SearchCards()
     {
+        //first clear all shown cards
         foreach (DeckbuilderCard card in shownCards)
         {
             Destroy(card.gameObject);
         }
-
         shownCards.Clear();
+
+        //don't do anything if it's an invalid string to search with
         if (string.IsNullOrWhiteSpace(cardNameToSearch) && string.IsNullOrWhiteSpace(subtypeToSearch)) return;
 
-        //for now, only search by name
-        /*Debug.Log($"Search cards called for \"{cardNameToSearchFor}\", length {cardNameToSearchFor.Length}, first char" +
-            $"{(int) cardNameToSearchFor[0]} aka \"{cardNameToSearchFor[0]}\"");*/
+        //assuming everything is valid, get all the jsons that fit that
         List<string> jsonsThatFit = CardRepo.GetJsonsThatFit(cardNameToSearch, subtypeToSearch);
-
+        //for each of the jsons, add it to the shown cards to be added
         foreach (string json in jsonsThatFit)
         {
             DeckbuilderCard newCard = CardRepo.InstantiateCard(json, CardSearchPaneParentObj.transform, false);
@@ -86,16 +89,23 @@ public class CardSearchController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Called when the name input field has its data changed
+    /// </summary>
+    /// <param name="name">The string that should be in the name</param>
     public void SearchCardsByName(string name)
     {
         cardNameToSearch = name.Replace("\u200B", "");
         SearchCards();
     }
 
+    /// <summary>
+    /// Called when the subtype input field has its data changed
+    /// </summary>
+    /// <param name="subtype">The string that should be in the subtype</param>
     public void SearchCardsBySubtype(string subtype)
     {
         subtypeToSearch = subtype.Replace("\u200B", "");
-        Debug.Log($"Searching for subtype \"{subtype}\"");
         SearchCards();
     }
 }

@@ -13,17 +13,21 @@ public class DeckbuilderController : MonoBehaviour
 
     private string deckFilesFolderPath = "";
 
+    //other ui element controllersS
     public CardRespository CardRepo;
     public CardSearchController CardSearchCtrl;
-    public GameObject DeckViewScrollPane;
-    public TMP_Dropdown DeckNameDropdown;
-    public TMP_InputField DeckNameInput;
-    public TMP_Text CardsInDeckText;
     public ConfirmDialogController ConfirmDialog;
     public ErrorDialogController ErrorDialog;
     public ImportDeckController ImportDialog;
     public ExportDeckController ExportDialog;
 
+    //ui elements
+    public GameObject DeckViewScrollPane;
+    public TMP_Dropdown DeckNameDropdown;
+    public TMP_InputField DeckNameInput;
+    public TMP_Text CardsInDeckText;
+
+    //deck data
     private List<string> deckNames;
     private List<DeckbuilderCard> currDeck;
     private string currDeckName = "";
@@ -57,6 +61,7 @@ public class DeckbuilderController : MonoBehaviour
         LoadDeck(0);
     }
 
+    #region actions that need to be confirmed
     public void ToMainMenu()
     {
         if (IsDeckDirty)
@@ -74,7 +79,6 @@ public class DeckbuilderController : MonoBehaviour
         SceneManager.LoadScene(MainMenuUICtrl.MainMenuScene);
     }
 
-
     public void ImportDeck()
     {
         if (IsDeckDirty)
@@ -91,14 +95,80 @@ public class DeckbuilderController : MonoBehaviour
         ImportDialog.EnableDeckImport();
     }
 
-    public void ExportDeck()
+    public void LoadDeck(string deckName)
     {
-        ExportDialog.Show(GetCurrentDeckAsString());
+        Debug.Log($"Loading {deckName}");
+
+        if (IsDeckDirty)
+        {
+            Debug.Log($"{deckName} is dirty, showing confirm dialog instead");
+            ConfirmDialog.Enable(ConfirmDialogController.ConfirmAction.LoadDeck);
+            return;
+        }
+
+        //then add new cards
+        string filePath = deckFilesFolderPath + "/" + deckName + ".txt";
+
+        string decklist = File.ReadAllText(filePath);
+        ImportDeck(decklist, deckName);
     }
 
+    public void LoadDeck(int i)
+    {
+        if (i >= deckNames.Count)
+        {
+            Debug.LogError($"Tried to load deck at index {i} out of bounds");
+            return;
+        }
+        LoadDeck(deckNames[i]);
+    }
+
+    public void ConfirmLoadDeck()
+    {
+        IsDeckDirty = false;
+        LoadDeck(DeckNameDropdown.value);
+    }
+
+    public void CancelLoadDeck()
+    {
+        int currDeckIndex = deckNames.IndexOf(currDeckName);
+        DeckNameDropdown.value = currDeckIndex < 0 ? 0 : currDeckIndex;
+    }
+    #endregion
+
+    #region helper methods
     private void SetDeckCountText()
     {
         CardsInDeckText.text = $"Cards in Deck: {currDeck.Count}";
+    }
+
+    private void ClearDeck()
+    {
+        Debug.Log("Clearing deck");
+        for (int i = currDeck.Count - 1; i >= 0; i--)
+        {
+            DeckbuilderCard c = currDeck[i];
+            currDeck.RemoveAt(i);
+            Destroy(c.gameObject);
+        }
+    }
+
+    private string GetCurrentDeckAsString()
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        foreach (DeckbuilderCard card in currDeck)
+        {
+            stringBuilder.AppendLine(card.CardName);
+        }
+
+        return stringBuilder.ToString();
+    }
+    #endregion helper methods
+
+    public void ExportDeck()
+    {
+        ExportDialog.Show(GetCurrentDeckAsString());
     }
 
     public void AddToDeck(DeckbuilderCard card)
@@ -125,17 +195,6 @@ public class DeckbuilderController : MonoBehaviour
         IsDeckDirty = true;
         currDeck.Add(toAdd);
         SetDeckCountText();
-    }
-
-    public void ClearDeck()
-    {
-        Debug.Log("Clearing deck");
-        for (int i = currDeck.Count - 1; i >= 0; i--)
-        {
-            DeckbuilderCard c = currDeck[i];
-            currDeck.RemoveAt(i);
-            Destroy(c.gameObject);
-        }
     }
 
     public void DeleteDeck()
@@ -180,29 +239,12 @@ public class DeckbuilderController : MonoBehaviour
         }
     }
 
-    public void UndoLastDelete()
-    {
-        if (string.IsNullOrWhiteSpace(LastDeletedName)) return;
-        AddToDeck(LastDeletedName);
-    }
-
-    public void RemoveFromDeck(DeckbuilderCard card)
-    {
-        if (currDeck.Remove(card))
-        {
-            IsDeckDirty = true;
-            LastDeletedName = card.CardName;
-            Destroy(card.gameObject);
-        }
-
-        SetDeckCountText();
-    }
-
     public void ImportDeck(string decklist, string deckName)
     {
         //first clear deck
         ClearDeck();
 
+        decklist = decklist.Replace("\u200B", "");
         decklist = decklist.Replace("\r", "");
         decklist = decklist.Replace("\t", "");
         List<string> cardNames = new List<string>(decklist.Split('\n'));
@@ -218,18 +260,6 @@ public class DeckbuilderController : MonoBehaviour
         IsDeckDirty = false;
         DeckNameInput.text = deckName;
         SetDeckCountText();
-    }
-
-    private string GetCurrentDeckAsString()
-    {
-        StringBuilder stringBuilder = new StringBuilder();
-
-        foreach (DeckbuilderCard card in currDeck)
-        {
-            stringBuilder.AppendLine(card.CardName);
-        }
-
-        return stringBuilder.ToString();
     }
 
     public void SaveDeck()
@@ -259,42 +289,21 @@ public class DeckbuilderController : MonoBehaviour
         }
     }
 
-    public void LoadDeck(string deckName)
+    public void RemoveFromDeck(DeckbuilderCard card)
     {
-        Debug.Log($"Loading {deckName}");
-
-        if (IsDeckDirty)
+        if (currDeck.Remove(card))
         {
-            Debug.Log($"{deckName} is dirty, showing confirm dialog instead");
-            ConfirmDialog.Enable(ConfirmDialogController.ConfirmAction.LoadDeck);
-            return;
+            IsDeckDirty = true;
+            LastDeletedName = card.CardName;
+            Destroy(card.gameObject);
         }
 
-        //then add new cards
-        string filePath = deckFilesFolderPath + "/" + deckName + ".txt";
-
-        string decklist = File.ReadAllText(filePath);
-        ImportDeck(decklist, deckName);
+        SetDeckCountText();
     }
 
-    public void ConfirmLoadDeck()
+    public void UndoLastDelete()
     {
-        IsDeckDirty = false;
-        LoadDeck(DeckNameDropdown.value);
-    }
-
-    public void CancelLoadDeck()
-    {
-        int currDeckIndex = deckNames.IndexOf(currDeckName);
-        DeckNameDropdown.value = currDeckIndex < 0 ? 0 : currDeckIndex;
-    }
-
-    public void LoadDeck(int i)
-    {
-        if (i >= deckNames.Count) {
-            Debug.LogError($"Tried to load deck at index {i} out of bounds");
-            return; 
-        }
-        LoadDeck(deckNames[i]);
+        if (string.IsNullOrWhiteSpace(LastDeletedName)) return;
+        AddToDeck(LastDeletedName);
     }
 }
