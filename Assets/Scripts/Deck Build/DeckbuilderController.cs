@@ -18,10 +18,11 @@ public class DeckbuilderController : MonoBehaviour
     public GameObject DeckViewScrollPane;
     public TMP_Dropdown DeckNameDropdown;
     public TMP_InputField DeckNameInput;
-    public GameObject ConfirmLoadDeckParentObj;
     public TMP_Text CardsInDeckText;
     public ConfirmDialogController ConfirmDialog;
     public ErrorDialogController ErrorDialog;
+    public ImportDeckController ImportDialog;
+    public ExportDeckController ExportDialog;
 
     private List<string> deckNames;
     private List<DeckbuilderCard> currDeck;
@@ -71,6 +72,28 @@ public class DeckbuilderController : MonoBehaviour
     {
         //load the main menu scene
         SceneManager.LoadScene(MainMenuUICtrl.MainMenuScene);
+    }
+
+
+    public void ImportDeck()
+    {
+        if (IsDeckDirty)
+        {
+            ConfirmDialog.Enable(ConfirmDialogController.ConfirmAction.ImportDeck);
+            return;
+        }
+
+        ImportDialog.EnableDeckImport();
+    }
+
+    public void ConfirmImportDeck()
+    {
+        ImportDialog.EnableDeckImport();
+    }
+
+    public void ExportDeck()
+    {
+        ExportDialog.Show(GetCurrentDeckAsString());
     }
 
     private void SetDeckCountText()
@@ -175,6 +198,40 @@ public class DeckbuilderController : MonoBehaviour
         SetDeckCountText();
     }
 
+    public void ImportDeck(string decklist, string deckName)
+    {
+        //first clear deck
+        ClearDeck();
+
+        decklist = decklist.Replace("\r", "");
+        decklist = decklist.Replace("\t", "");
+        List<string> cardNames = new List<string>(decklist.Split('\n'));
+
+        if (deckName == null) deckName = cardNames[0];
+
+        foreach (string name in cardNames)
+        {
+            if (!string.IsNullOrWhiteSpace(name)) AddToDeck(name);
+        }
+
+        currDeckName = deckName;
+        IsDeckDirty = false;
+        DeckNameInput.text = deckName;
+        SetDeckCountText();
+    }
+
+    private string GetCurrentDeckAsString()
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        foreach (DeckbuilderCard card in currDeck)
+        {
+            stringBuilder.AppendLine(card.CardName);
+        }
+
+        return stringBuilder.ToString();
+    }
+
     public void SaveDeck()
     {
         if(string.IsNullOrWhiteSpace(DeckNameInput.text))
@@ -188,16 +245,9 @@ public class DeckbuilderController : MonoBehaviour
         //write to a persistent file
         string filePath =  deckFilesFolderPath + "/" + currDeckName + ".txt";
 
-        StringBuilder stringBuilder = new StringBuilder();
-
-        foreach(DeckbuilderCard card in currDeck)
-        {
-            stringBuilder.AppendLine(card.CardName);
-        }
-
-        Debug.Log($"Saving deck to {filePath}\n{stringBuilder.ToString()}");
-
-        File.WriteAllText(filePath, stringBuilder.ToString());
+        string decklist = GetCurrentDeckAsString();
+        Debug.Log($"Saving deck to {filePath}\n{decklist}");
+        File.WriteAllText(filePath, decklist);
 
         IsDeckDirty = false;
 
@@ -220,32 +270,16 @@ public class DeckbuilderController : MonoBehaviour
             return;
         }
 
-        //first clear deck
-        ClearDeck();
-
         //then add new cards
         string filePath = deckFilesFolderPath + "/" + deckName + ".txt";
 
         string decklist = File.ReadAllText(filePath);
-        decklist = decklist.Replace("\r", "");
-        decklist = decklist.Replace("\t", "");
-        List<string> cardNames = new List<string>(decklist.Split('\n'));
-
-        foreach (string name in cardNames)
-        {
-            if(!string.IsNullOrWhiteSpace(name)) AddToDeck(name);
-        }
-
-        currDeckName = deckName;
-        IsDeckDirty = false;
-        DeckNameInput.text = deckName;
-        SetDeckCountText();
+        ImportDeck(decklist, deckName);
     }
 
     public void ConfirmLoadDeck()
     {
         IsDeckDirty = false;
-        ConfirmLoadDeckParentObj.SetActive(false);
         LoadDeck(DeckNameDropdown.value);
     }
 
@@ -253,7 +287,6 @@ public class DeckbuilderController : MonoBehaviour
     {
         int currDeckIndex = deckNames.IndexOf(currDeckName);
         DeckNameDropdown.value = currDeckIndex < 0 ? 0 : currDeckIndex;
-        ConfirmLoadDeckParentObj.SetActive(false);
     }
 
     public void LoadDeck(int i)

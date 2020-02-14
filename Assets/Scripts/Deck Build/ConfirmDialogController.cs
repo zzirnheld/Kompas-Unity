@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class ConfirmDialogController : MonoBehaviour
 {
-    public enum ConfirmAction { None = 0, LoadDeck = 1, ToMainMenu = 2 };
+    public enum ConfirmAction { None = 0, LoadDeck = 1, ToMainMenu = 2, ImportDeck = 3 };
     public string[,] ConfirmButtonTexts = new string[,] {
         {"", "", "" },
-        {"Confirm Load", "Save and Load", "Cancel Load" },
-        {"Confirm Exit", "Save and Exit", "Cancel Exit" }
+        {"Load w/o Saving", "Save and Load", "Cancel Load" },
+        {"Exit w/o Saving", "Save and Exit", "Cancel Exit" },
+        {"Import w/o Saving", "Save and Import", "Cancel Import" }
     };
 
     public DeckbuilderController deckbuildCtrl;
@@ -38,6 +39,9 @@ public class ConfirmDialogController : MonoBehaviour
                 break;
             case ConfirmAction.ToMainMenu:
                 deckbuildCtrl.ConfirmToMainMenu();
+                break;
+            case ConfirmAction.ImportDeck:
+                deckbuildCtrl.ConfirmImportDeck();
                 break;
         }
 
