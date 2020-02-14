@@ -34,7 +34,7 @@ public class DeckbuilderController : MonoBehaviour
     private string LastDeletedName = "";
     private bool IsDeckDirty = false;
 
-    public void Awake()
+    public void Start()
     {
         //for now, load an empty list. later, load a default deck?
         currDeck = new List<DeckbuilderCard>();
@@ -58,6 +58,7 @@ public class DeckbuilderController : MonoBehaviour
         }
 
         //load initially selected deck
+        Debug.Log("Load initially selected deck");
         LoadDeck(0);
     }
 
