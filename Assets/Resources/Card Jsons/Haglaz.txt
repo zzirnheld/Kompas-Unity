@@ -6,6 +6,6 @@
 "secondarySerializeableEffect":[],
 "d":4,
 "subtype":3,
-"subtext":"Terraform 1",
+"subtypeText":"Terraform 1",
 "fast":false
 }

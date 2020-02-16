@@ -6,6 +6,6 @@
 "secondarySerializeableEffect":[],
 "d":3,
 "subtype":0,
-"subtext":"Rune Simple",
+"subtypeText":"Rune Simple",
 "fast":false
 }

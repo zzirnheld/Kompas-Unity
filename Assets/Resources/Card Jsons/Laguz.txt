@@ -6,6 +6,6 @@
 "secondarySerializeableEffect":[],
 "d":2,
 "subtype":3,
-"subtext":"Terraform radius 0",
+"subtypeText":"Terraform radius 0",
 "fast":false
 }

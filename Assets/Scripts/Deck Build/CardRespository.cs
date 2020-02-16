@@ -36,7 +36,11 @@ public class CardRespository : MonoBehaviour
             //load the json
             Debug.Log($"Loading json for name {nameClean}, path is {cardJsonsFolderpath + nameClean}");
             string json = Resources.Load<TextAsset>(cardJsonsFolderpath + nameClean)?.text;
-            if (json == null) continue;
+            if (json == null)
+            {
+                Debug.LogError($"Failed to load json for {nameClean}");
+                continue;
+            }
             //remove problematic chars for from json function
             json = json.Replace('\n', ' ');
             json = json.Replace("\r", "");
@@ -106,6 +110,7 @@ public class CardRespository : MonoBehaviour
         }
         catch(System.ArgumentException)
         {
+            Debug.LogError($"Arg ex when checking if subtypes of {cardName} contain {subtypesInclude}");
             return false;
         }
     }
