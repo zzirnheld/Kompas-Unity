@@ -1,0 +1,47 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Net;
+using System.Net.Sockets;
+using System.Threading.Tasks;
+using UnityEngine;
+
+namespace KompasNetworking
+{
+    public class ServerNetworkController : NetworkController
+    {
+        public GameObject GamePrefab;
+
+        private TcpListener listener;
+        private List<ServerGame> serverGames;
+        private ServerGame currGame = null;
+
+        private void Awake()
+        {
+            IPAddress ipAddress = Dns.GetHostEntry("localhost").AddressList[0];
+
+            serverGames = new List<ServerGame>();
+            try
+            {
+                listener = new TcpListener(ipAddress, port);
+            }
+            catch(System.Exception e)
+            {
+                Debug.LogError(e.Message);
+            }
+        }
+
+        public async Task Host()
+        {
+            listener.Start();
+
+            while (true)
+            {
+                if(currGame == null)
+                {
+                    currGame = Instantiate(GamePrefab).GetComponent<ServerGame>();
+                }
+                var client = await listener.AcceptTcpClientAsync();
+            }
+        }
+    }
+}

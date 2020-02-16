@@ -7,7 +7,6 @@ namespace KompasNetworking
 {
     public class Packet
     {
-
         public static int id = 0;
 
         public enum Command

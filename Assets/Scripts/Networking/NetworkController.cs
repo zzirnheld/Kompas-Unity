@@ -13,6 +13,8 @@ namespace KompasNetworking
     // got a lot of the basic code from https://gist.github.com/VisualMelon/9e1e8425b0e44012c79d932c2f1ca92b
     public class NetworkController : MonoBehaviour
     {
+        public const int port = 8888;
+
         #region serialization
         protected static byte[] Serialize(Packet packet)
         {
