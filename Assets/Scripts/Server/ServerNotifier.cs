@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Unity.Networking.Transport;
 using UnityEngine;
+using KompasNetworking;
 
 public class ServerNotifier : MonoBehaviour
 {

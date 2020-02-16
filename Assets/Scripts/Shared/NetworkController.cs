@@ -7,6 +7,7 @@ using UnityEngine;
 using Unity.Networking.Transport;
 using NetworkConnection = Unity.Networking.Transport.NetworkConnection;
 using Unity.Networking.Transport.Utilities;
+using KompasNetworking;
 //using UdpCNetworkDriver = Unity.Networking.Transport.BasicNetworkDriver<Unity.Networking.Transport.IPv4UDPSocket>;
 
 public class NetworkController : MonoBehaviour

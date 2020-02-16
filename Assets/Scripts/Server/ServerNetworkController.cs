@@ -9,6 +9,7 @@ using Unity.Networking.Transport.Utilities;
 using Unity.Networking.Transport.LowLevel.Unsafe;
 using NetworkConnection = Unity.Networking.Transport.NetworkConnection;
 using System.Collections.Generic;
+using KompasNetworking;
 //using UdpCNetworkDriver = Unity.Networking.Transport.BasicNetworkDriver<Unity.Networking.Transport.IPv4UDPSocket>;
 
 public class ServerNetworkController : NetworkController {
