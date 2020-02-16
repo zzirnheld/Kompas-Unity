@@ -1,47 +1,47 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Net;
 using System.Net.Sockets;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace KompasNetworking
 {
+    //handles networking and such for a server game
     public class ServerNetworkController : NetworkController
     {
-        public GameObject GamePrefab;
+        public bool Hosting { get; private set; }
 
-        private TcpListener listener;
-        private List<ServerGame> serverGames;
-        private ServerGame currGame = null;
+        private TcpClient[] clients;
+        private int numClients = 0;
 
-        private void Awake()
+        public bool Connect(TcpClient tcpClient)
         {
-            IPAddress ipAddress = Dns.GetHostEntry("localhost").AddressList[0];
-
-            serverGames = new List<ServerGame>();
-            try
+            if (numClients >= 2)
             {
-                listener = new TcpListener(ipAddress, port);
+                throw new System.IndexOutOfRangeException("Too many clients tried to connect to a single server network controller!");
             }
-            catch(System.Exception e)
+
+            clients[numClients] = tcpClient;
+            numClients++;
+
+            if(numClients >= 2)
             {
-                Debug.LogError(e.Message);
+
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
-        public async Task Host()
+        private void StartGame()
         {
-            listener.Start();
+            //TODO
+        }
 
-            while (true)
-            {
-                if(currGame == null)
-                {
-                    currGame = Instantiate(GamePrefab).GetComponent<ServerGame>();
-                }
-                var client = await listener.AcceptTcpClientAsync();
-            }
+        void Update()
+        {
+            //TODO
         }
     }
 }
