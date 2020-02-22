@@ -5,107 +5,36 @@ using System.Collections.Generic;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
-using Unity.Networking.Transport;
-using Unity.Networking.Transport.Utilities;
-using NetworkConnection = Unity.Networking.Transport.NetworkConnection;
 using KompasNetworking;
-//using UdpCNetworkDriver = Unity.Networking.Transport.BasicNetworkDriver<Unity.Networking.Transport.IPv4UDPSocket>;
 
 
-public class ClientNetworkController : NetworkController {
+public class ClientNetworkController : KompasNetworking.NetworkController {
 
-    public UdpNetworkDriver mDriver;
-    public NetworkPipeline mPipeline;
-    public NetworkConnection mConnection;
-    private bool Hosting = false;
-    private bool Connected = false;
-
-    private long timeTargetAccepted;
     private bool changeTargetMode = false;
+    private long timeTargetAccepted;
 
     public Packet lastPacket;
 
     public Restriction lastRestriction;
 
-    public void Start()
+    public void Awake()
     {
         timeTargetAccepted = DateTime.Now.Ticks;
     }
 
-    public void Connect()
+    public override void Update()
     {
-        mDriver = new UdpNetworkDriver(new ReliableUtility.Parameters { WindowSize = 32 });
-        mPipeline = mDriver.CreatePipeline(typeof(ReliableSequencedPipelineStage));
-        mConnection = default;
-
-        //this code is the connection code. dont do until client hits connect button?
-        var endpoint = new NetworkEndPoint();
-        endpoint = NetworkEndPoint.Parse("127.0.0.1", 8888); //TODO get ip
-        mConnection = mDriver.Connect(endpoint);
-        Hosting = true;
-    }
-
-    private void OnDestroy()
-    {
-        mDriver.Dispose();
-    }
-
-    void Update()
-    {
-        if (!Hosting) return;
-        mDriver.ScheduleUpdate().Complete();
-        if (!mConnection.IsCreated)
-        {
-            Debug.Log("Something went wrong in connection");
-            return;
-        }
-        
         if (changeTargetMode && DateTime.Now.Ticks - timeTargetAccepted >= 5000000)
         {
             ClientGame.mainClientGame.targetMode = Game.TargetMode.Free;
             changeTargetMode = false;
         }
 
-        DataStreamReader reader;
-        NetworkEvent.Type cmd;
-        while((cmd = mConnection.PopEvent(mDriver, out reader)) != NetworkEvent.Type.Empty)
-        {
-            if(cmd == NetworkEvent.Type.Connect)
-            {
-                //connected to server
-                Debug.Log("connected to server");
-                ClientGame.mainClientGame.uiCtrl.CurrentStateString = "Connected to Server";
-                ClientGame.mainClientGame.uiCtrl.HideNetworkingUI();
-                Connected = true;
-            }
-            if (cmd == NetworkEvent.Type.Data)
-            {
-                var readerCtxt = default(DataStreamReader.Context);
-                byte[] packetBuffer = reader.ReadBytesAsArray(ref readerCtxt, BUFFER_SIZE);
-                ParseCommand(packetBuffer);
-            }
-            else if (cmd == NetworkEvent.Type.Disconnect)
-            {
-                Debug.Log("Client disconnected from server");
-                ClientGame.mainClientGame.uiCtrl.CurrentStateString = "Disconnected from server";
-                mConnection = default(NetworkConnection); //default gets the default value of whatever type
-                Hosting = false;
-                Connected = false;
-            }
-        }
-
-        if (!Connected) return;
-        timeChange += Time.deltaTime;
-        if(timeChange >= 1f)
-        {
-            Send(new Packet(Packet.Command.Nothing), mDriver, mConnection, mPipeline);
-            timeChange = 0f;
-        }
+        base.Update();
     }
 
-    public void ParseCommand(byte[] buffer) //KEEP CONNECTION ALIVE
+    public override void ProcessPacket(Packet packet)
     {
-        Packet packet = Deserialize(buffer);
         if (packet == null)
         {
             Debug.Log("Null packet");
@@ -272,10 +201,5 @@ public class ClientNetworkController : NetworkController {
                 Debug.Log("Unrecognized command sent to client");
                 break;
         }
-    }
-
-    public void Send(Packet packet)
-    {
-        Send(packet, mDriver, mConnection, mPipeline);
     }
 }

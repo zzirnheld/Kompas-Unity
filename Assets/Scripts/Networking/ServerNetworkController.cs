@@ -14,19 +14,8 @@ namespace KompasNetworking
 
         public UIController uiCtrl;
 
-        public override void Update()
-        {
-            //first check to see if there's any data to read
-            base.Update();
-
-            if (Packets.Count == 0) return;
-
-            //process packet
-            ParseRequest(Packets.Dequeue());
-        }
-
         //TODO make code that checks if ready to resolve the stack (both players have no responses/have declined priority in a row)
-        private void ParseRequest(Packet packet)
+        public override void ProcessPacket(Packet packet)
         {
             if (packet == null) return;
             if (packet.command != Packet.Command.Nothing) Debug.Log($"packet command is {packet.command} for player index {Player.index}");

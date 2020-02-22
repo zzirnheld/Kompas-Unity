@@ -9,7 +9,7 @@ public class ClientNotifier : MonoBehaviour
 
     private void Send(Packet packet)
     {
-        clientNetworkCtrl.Send(packet);
+        clientNetworkCtrl.SendPacket(packet);
     }
 
     #region Request Actions

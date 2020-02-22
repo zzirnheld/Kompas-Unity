@@ -10,8 +10,7 @@ using UnityEngine;
 
 namespace KompasNetworking
 {
-    // got a lot of the basic code from https://gist.github.com/VisualMelon/9e1e8425b0e44012c79d932c2f1ca92b
-    public class NetworkController : MonoBehaviour
+    public abstract class NetworkController : MonoBehaviour
     {
         public const int port = 8888;
 
@@ -31,6 +30,21 @@ namespace KompasNetworking
         public void SetInfo(TcpClient tcpClient)
         {
             this.tcpClient = tcpClient;
+        }
+
+        public abstract void ProcessPacket(Packet p);
+
+        public virtual void Update()
+        {
+            NetworkStream networkStream = tcpClient.GetStream();
+            //if there's nothing to be read, return
+            if (!tcpClient.GetStream().DataAvailable) return;
+
+            if (awaitingInt) ReadInt(networkStream);
+            else ReadPacket(networkStream);
+            
+            if (Packets.Count == 0)
+                ProcessPacket(Packets.Dequeue());
         }
 
         #region serialization
@@ -122,16 +136,6 @@ namespace KompasNetworking
             {
                 throw new System.IO.IOException("Lost Connection during read");
             }
-        }
-
-        public virtual void Update()
-        {
-            NetworkStream networkStream = tcpClient.GetStream();
-            //if there's nothing to be read, return
-            if (!tcpClient.GetStream().DataAvailable) return;
-
-            if (awaitingInt) ReadInt(networkStream);
-            else ReadPacket(networkStream);
         }
         #endregion reading
     }
