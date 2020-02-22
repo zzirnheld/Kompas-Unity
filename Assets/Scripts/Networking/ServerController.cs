@@ -12,14 +12,15 @@ namespace KompasNetworking
         public GameObject GamePrefab;
 
         private TcpListener listener;
-        private List<ServerNetworkController> games;
-        private ServerNetworkController currGame = null;
+        private List<ServerGame> games;
+        private ServerGame currGame = null;
+        private int numClients = 0;
 
         private void Awake()
         {
             IPAddress ipAddress = Dns.GetHostEntry("localhost").AddressList[0];
 
-            games = new List<ServerNetworkController>();
+            games = new List<ServerGame>();
             try
             {
                 listener = new TcpListener(ipAddress, NetworkController.port);
@@ -30,6 +31,7 @@ namespace KompasNetworking
             }
 
             //for now, host on startup?
+            //Don't await, so execution continues instead of hanging waiting for connection
             Host();
         }
 
@@ -41,10 +43,10 @@ namespace KompasNetworking
             {
                 if(currGame == null)
                 {
-                    currGame = Instantiate(GamePrefab).GetComponent<ServerNetworkController>();
+                    currGame = Instantiate(GamePrefab).GetComponent<ServerGame>();
                 }
                 var client = await listener.AcceptTcpClientAsync();
-                currGame.Connect(client);
+                currGame.AddPlayer(client);
             }
         }
     }

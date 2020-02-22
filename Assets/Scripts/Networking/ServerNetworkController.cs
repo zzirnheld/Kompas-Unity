@@ -8,39 +8,16 @@ namespace KompasNetworking
     //handles networking and such for a server game
     public class ServerNetworkController : NetworkController
     {
-        public bool Hosting { get; private set; }
+        public Player Player;
 
-        private TcpClient[] clients;
-        private int numClients = 0;
-
-        public bool Connect(TcpClient tcpClient)
+        public override void Update()
         {
-            if (numClients >= 2)
-            {
-                throw new System.IndexOutOfRangeException("Too many clients tried to connect to a single server network controller!");
-            }
+            //first check to see if there's any data to read
+            base.Update();
 
-            clients[numClients] = tcpClient;
-            numClients++;
+            if (Packets.Count == 0) return;
 
-            if(numClients >= 2)
-            {
-
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        private void StartGame()
-        {
-            //TODO
-        }
-
-        void Update()
-        {
+            //process packet
             //TODO
         }
     }

@@ -1,56 +1,51 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Unity.Networking.Transport;
 using UnityEngine;
 using KompasNetworking;
 
 public class ServerNotifier : MonoBehaviour
 {
-    public ServerNetworkController serverNetworkController;
+    public KompasNetworking.ServerNetworkController ServerNetworkCtrl;
+    public ServerNotifier OtherNotifier;
 
-    #region packet sending overloads
-    public void SendPackets(Packet packetOne, Packet packetTwo, NetworkConnection connectionOne, NetworkConnection connectionTwo)
+    public void SendPacket(Packet packet)
     {
-        serverNetworkController.SendPackets(packetOne, packetTwo, connectionOne, connectionTwo);
+        ServerNetworkCtrl.SendPacket(packet);
     }
 
-    public void SendPackets(Packet packet, NetworkConnection connection)
+    private void SendPackets(Packet a, Packet b)
     {
-        serverNetworkController.SendPackets(packet, null, connection, default);
+        SendPacket(a);
+        OtherNotifier.SendPacket(b);
     }
 
-    public void SendPackets(Packet packetOne, Packet packetTwo, ServerGame sGame, int playerOne)
+    private void SendToBoth(Packet p)
     {
-        serverNetworkController.SendPackets(packetOne, packetTwo, 
-            sGame.Players[playerOne].ConnectionID, 
-            sGame.Players[1 - playerOne].ConnectionID);
+        SendPackets(p, p);
     }
-
-    public void SendPacketToBoth(Packet packet, ServerGame serverGame)
-    {
-        serverNetworkController.SendPackets(packet, packet, serverGame.Players[0].ConnectionID, serverGame.Players[1].ConnectionID);
-    }
-
-    public void SendPackets(Packet packetOne, Packet packetTwo, Player playerOne)
-    {
-        serverNetworkController.SendPackets(packetOne, packetTwo, playerOne.ConnectionID, playerOne.enemy.ConnectionID);
-    }
-    #endregion packet sending overloads
 
     #region notify
-    public void NotifyPlay(Card toPlay, Player controller, int x, int y)
+    /// <summary>
+    /// Notifies that the Player corresponding to this notifier played a given card
+    /// </summary>
+    public void NotifyPlay(Card toPlay, int x, int y)
     {
         //tell everyone to do it
         Packet outPacket = new Packet(Packet.Command.Play, toPlay, x, y);
         Packet outPacketInverted;
         if (toPlay.Location == CardLocation.Discard || toPlay.Location == CardLocation.Field)
+        {
             outPacketInverted = new Packet(Packet.Command.Play, toPlay, x, y, true);
+        }
         else
-            outPacketInverted = new Packet(Packet.Command.AddAsEnemy, toPlay.CardName, (int)CardLocation.Field, toPlay.ID, x, y, true);
+        {
+            outPacketInverted = new Packet(Packet.Command.AddAsEnemy, toPlay.CardName, 
+                (int)CardLocation.Field, toPlay.ID, x, y, true);
+        }
 
         outPacket.InvertForController(controller.index);
         outPacketInverted.InvertForController(controller.index);
-        SendPackets(outPacket, outPacketInverted, controller);
+        SendPackets(outPacket, outPacketInverted);
     }
     
     public void NotifyMove(Card toMove, int x, int y)
@@ -186,7 +181,7 @@ public class ServerNotifier : MonoBehaviour
     /// <summary>
     /// Lets that player know their target has been accepted. called if the Target method returns True
     /// </summary>
-    public void AcceptTarget(NetworkConnection connectionID)
+    public void AcceptTarget()
     {
         SendPackets(new Packet(Packet.Command.TargetAccepted), connectionID);
     }
@@ -194,7 +189,7 @@ public class ServerNotifier : MonoBehaviour
     public void GetXForEffect(Player toGetX, Card effSource, int effIndex, int subeffIndex)
     {
         Packet outPacket = new Packet(Packet.Command.PlayerSetX, effSource, effIndex, subeffIndex);
-        SendPackets(outPacket, toGetX.ConnectionID);
+        SendToBoth(outPacket);
     }
 
     public void SetXForEffect(ServerGame sGame, int x)

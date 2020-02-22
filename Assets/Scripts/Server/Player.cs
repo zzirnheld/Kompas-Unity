@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using UnityEngine;
-using NetworkConnection = Unity.Networking.Transport.NetworkConnection;
 
-public class Player {
+public class Player : MonoBehaviour{
 
     public ServerGame serverGame;
     public Player enemy;
@@ -25,10 +25,7 @@ public class Player {
     public GameObject discardObject;
     public GameObject handObject;
 
-    private NetworkConnection connectionID;
-
-
-    //getters and setters
+    public TcpClient TcpClient { get; private set; }
 
     //game mechanics data
     /// <summary>
@@ -52,18 +49,17 @@ public class Player {
     /// </summary>
     public bool allowResponses = true;
 
-    public NetworkConnection ConnectionID
+    private void Awake()
     {
-        get { return connectionID; }
-    }
-
-    public Player(NetworkConnection connectionID, int index, ServerGame serverGame)
-    {
-        this.connectionID = connectionID;
-        this.index = index;
-        this.serverGame = serverGame;
         responses = new List<Effect>();
         fastCards = new List<Card>();
+    }
+
+    public void SetInfo(TcpClient TcpClient, int index, ServerGame serverGame)
+    {
+        this.TcpClient = TcpClient;
+        this.index = index;
+        this.serverGame = serverGame;
     }
 
     public bool HoldsPriority()

@@ -15,6 +15,24 @@ namespace KompasNetworking
     {
         public const int port = 8888;
 
+        public Queue<Packet> Packets { get; private set; }
+
+        private bool awaitingInt = true;
+        private int numBytesToRead;
+        private int numBytesRead;
+        private byte[] bytesRead = new byte[sizeof(int)];
+        private TcpClient tcpClient;
+
+        private void Awake()
+        {
+            Packets = new Queue<Packet>();
+        }
+
+        public void SetInfo(TcpClient tcpClient)
+        {
+            this.tcpClient = tcpClient;
+        }
+
         #region serialization
         protected static byte[] Serialize(Packet packet)
         {
@@ -42,7 +60,7 @@ namespace KompasNetworking
         #endregion serialization
 
         #region writing
-        public void SendPacket(Packet packet, TcpClient tcpClient)
+        public void SendPacket(Packet packet)
         {
             NetworkStream networkStream = tcpClient.GetStream();
             // we won't use a binary writer, because the endianness is unhelpful
@@ -66,49 +84,48 @@ namespace KompasNetworking
         #endregion writing
 
         #region reading
-        /// <summary> Reads count bytes from the stream from tcpClient </summary>
-        private byte[] ReadBytes(TcpClient tcpClient, int count)
+        private void ReadInt(NetworkStream networkStream)
         {
-            NetworkStream networkStream = tcpClient.GetStream();
-
-            //this buffer will eventually be returned
-            byte[] bytes = new byte[count];
-            int readCount = 0;
-
-            //loop until we've read "count" bytes
-            while (readCount < count)
+            numBytesRead += networkStream.Read(bytesRead, numBytesRead, sizeof(int) - numBytesRead);
+            if (numBytesRead == sizeof(int))
             {
-                //want to read however many bytes are available, up to "count"
-                int askFor = count - readCount;
-                int numRead = networkStream.Read(bytes, readCount, askFor);
-
-                //if read 0 bytes, connection has been lost
-                if (numRead == 0)
-                {
-                    throw new System.IO.IOException("Lost Connection during read");
-                }
-
-                readCount += numRead; // advance by however many bytes we read
+                //if this system is little-endian, reverse the bytes read
+                if (System.BitConverter.IsLittleEndian) System.Array.Reverse(bytesRead);
+                // get length from bytes
+                numBytesToRead = System.BitConverter.ToInt32(bytesRead, 0);
+                awaitingInt = false;
+                bytesRead = new byte[numBytesToRead];
             }
-
-            return bytes;
+            else if (numBytesRead == 0)
+            {
+                throw new System.IO.IOException("Lost Connection during read");
+            }
         }
 
-        /// <summary> Reads the next message from the stream from tcpClient </summary>
-        public Packet ReadPacket(TcpClient tcpClient)
+        private void ReadPacket(NetworkStream networkStream)
         {
-            //first get the length of the message to be read
-            byte[] lengthBytes = ReadBytes(tcpClient, sizeof(int));
-            //if this system is little-endian, reverse the bytes read
-            if (System.BitConverter.IsLittleEndian) System.Array.Reverse(lengthBytes);
-            // get length from bytes
-            int length = System.BitConverter.ToInt32(lengthBytes, 0);
-            //TODO a sanity check on length? is that a security risk? 
+            numBytesRead += networkStream.Read(bytesRead, numBytesRead, numBytesToRead - numBytesRead);
+            if (numBytesRead == numBytesToRead)
+            {
+                Packet p = Deserialize(bytesRead);
+                if(p != null) Packets.Enqueue(p);
+                awaitingInt = true;
+                bytesRead = new byte[sizeof(int)];
+            }
+            else if (numBytesRead == 0)
+            {
+                throw new System.IO.IOException("Lost Connection during read");
+            }
+        }
 
-            // read the requested number of bytes
-            byte[] messageBytes = ReadBytes(tcpClient, length);
-            // get the packet that was sent
-            return Deserialize(messageBytes);
+        public virtual void Update()
+        {
+            NetworkStream networkStream = tcpClient.GetStream();
+            //if there's nothing to be read, return
+            if (!tcpClient.GetStream().DataAvailable) return;
+
+            if (awaitingInt) ReadInt(networkStream);
+            else ReadPacket(networkStream);
         }
         #endregion reading
     }

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using UnityEngine;
-using NetworkConnection = Unity.Networking.Transport.NetworkConnection;
 
 public class ServerGame : Game {
 
@@ -11,11 +11,10 @@ public class ServerGame : Game {
 
     public static ServerGame mainServerGame;
 
-    public ServerNetworkController serverNetworkCtrl;
-    public ServerNotifier serverNotifier;
-
     int currPlayerCount = 0; //current number of players. shouldn't exceed 2
     public int cardCount = 0;
+
+    public Player[] Players;
 
     public HandController player1HandCtrl;
     public DeckController player1DeckCtrl;
@@ -46,11 +45,11 @@ public class ServerGame : Game {
     }
 
     #region players
-    public int AddPlayer(NetworkConnection connectionID)
+    public int AddPlayer(TcpClient tcpClient)
     {
         if (currPlayerCount >= 2) return -1;
 
-        players[currPlayerCount] = new Player(connectionID, currPlayerCount, this);
+        players[currPlayerCount] = new Player(tcpClient, currPlayerCount, this);
         if(currPlayerCount == 0)
         {
             players[0].handCtrl = player1HandCtrl;
@@ -73,26 +72,6 @@ public class ServerGame : Game {
         }
         currPlayerCount++;
         return currPlayerCount;
-    }
-
-    public int GetPlayerIndexFromID(NetworkConnection connectionID)
-    {
-        for(int i = 0; i < currPlayerCount; i++)
-        {
-            if (players[i].ConnectionID == connectionID) return i;
-        }
-
-        return -1;
-    }
-
-    public Player GetPlayerFromID(NetworkConnection connectionID)
-    {
-        for (int i = 0; i < currPlayerCount; i++)
-        {
-            if (players[i].ConnectionID == connectionID) return players[i];
-        }
-
-        return null;
     }
 
     public bool HasPlayer2()

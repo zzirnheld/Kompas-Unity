@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using UnityEngine;
-using NetworkConnection = Unity.Networking.Transport.NetworkConnection;
 
 public class ClientGame : Game {
 
@@ -33,8 +33,8 @@ public class ClientGame : Game {
     {
         mainGame = this;
         mainClientGame = this;
-        players[0] = new Player(default(NetworkConnection), 0, null);
-        players[1] = new Player(default(NetworkConnection), 1, null);
+        players[0] = new Player(default(TcpClient), 0, null);
+        players[1] = new Player(default(TcpClient), 1, null);
         //set your stuff
         players[0].handCtrl = friendlyHandCtrl;
         players[0].deckCtrl = friendlyDeckCtrl;
