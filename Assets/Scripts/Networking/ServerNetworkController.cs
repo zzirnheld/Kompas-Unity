@@ -12,6 +12,8 @@ namespace KompasNetworking
         public ServerGame sGame;
         public ServerNotifier ServerNotifier;
 
+        public UIController uiCtrl;
+
         public override void Update()
         {
             //first check to see if there's any data to read
@@ -84,15 +86,15 @@ namespace KompasNetworking
                 #region debug commands
                 case Packet.Command.Topdeck:
                     if (!uiCtrl.DebugMode) break;
-                    DebugTopdeck(sGame, packet.cardID);
+                    DebugTopdeck(packet.cardID);
                     break;
                 case Packet.Command.Discard:
                     if (!uiCtrl.DebugMode) break;
-                    DebugDiscard(sGame, packet.cardID);
+                    DebugDiscard(packet.cardID);
                     break;
                 case Packet.Command.Rehand:
                     if (!uiCtrl.DebugMode) break;
-                    DebugRehand(sGame, packet.cardID);
+                    DebugRehand(packet.cardID);
                     break;
                 case Packet.Command.Draw:
                     if (!uiCtrl.DebugMode) break;
