@@ -2998,8 +2998,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f706130ccf62ef443b2f2f1fb727bf12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GamePrefab: {fileID: 5923331596896821561, guid: dd8cf138bfe711142b5d4c835facb6b6,
+  GamePrefab: {fileID: 4203116597298972716, guid: dd8cf138bfe711142b5d4c835facb6b6,
     type: 3}
+  MouseCtrl: {fileID: 1478809136}
+  UICtrl: {fileID: 700797938}
 --- !u!4 &1475313886
 Transform:
   m_ObjectHideFlags: 0

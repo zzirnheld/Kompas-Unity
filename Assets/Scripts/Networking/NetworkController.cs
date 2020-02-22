@@ -36,6 +36,7 @@ namespace KompasNetworking
 
         public virtual void Update()
         {
+            if (tcpClient == null) return;
             NetworkStream networkStream = tcpClient.GetStream();
             //if there's nothing to be read, return
             if (!tcpClient.GetStream().DataAvailable) return;

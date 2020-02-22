@@ -9,18 +9,15 @@ public class ServerGame : Game {
     //if server oks, it tells all players to do the thing
     //if server doesn't ok, it sends to all players a "hold up reset everything to how it should be"
 
-    public static ServerGame mainServerGame;
-
     public override Player[] Players => ServerPlayers;
     public ServerPlayer[] ServerPlayers;
     public ServerPlayer TurnServerPlayer { get { return ServerPlayers[turnPlayer]; } }
-    int currPlayerCount = 0; //current number of players. shouldn't exceed 2
     public int cardCount = 0;
+    private int currPlayerCount = 0; //current number of players. shouldn't exceed 2
 
     private void Awake()
     {
         mainGame = this;
-        mainServerGame = this;
         stack = new List<IStackable>();
         triggerMap = new Dictionary<TriggerCondition, List<Trigger>>();
         foreach(TriggerCondition c in System.Enum.GetValues(typeof(TriggerCondition)))
@@ -32,6 +29,7 @@ public class ServerGame : Game {
     #region players
     public int AddPlayer(TcpClient tcpClient)
     {
+        Debug.Log($"Adding player #{currPlayerCount}");
         if (currPlayerCount >= 2) return -1;
 
         Players[currPlayerCount].SetInfo(tcpClient, currPlayerCount);

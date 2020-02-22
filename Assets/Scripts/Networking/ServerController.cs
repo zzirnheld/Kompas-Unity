@@ -10,7 +10,10 @@ namespace KompasNetworking
     public class ServerController : MonoBehaviour
     {
         public GameObject GamePrefab;
+        public MouseController MouseCtrl;
+        public UIController UICtrl;
 
+        private IPAddress ipAddress;
         private TcpListener listener;
         private List<ServerGame> games;
         private ServerGame currGame = null;
@@ -18,7 +21,7 @@ namespace KompasNetworking
 
         private void Awake()
         {
-            IPAddress ipAddress = Dns.GetHostEntry("localhost").AddressList[0];
+            ipAddress = Dns.GetHostEntry("localhost").AddressList[0];
 
             games = new List<ServerGame>();
             try
@@ -37,6 +40,7 @@ namespace KompasNetworking
 
         public async Task Host()
         {
+            Debug.Log($"Hosting on {ipAddress.ToString()}");
             listener.Start();
 
             while (true)
@@ -44,6 +48,8 @@ namespace KompasNetworking
                 if(currGame == null)
                 {
                     currGame = Instantiate(GamePrefab).GetComponent<ServerGame>();
+                    currGame.mouseCtrl = MouseCtrl;
+                    currGame.uiCtrl = UICtrl;
                 }
                 var client = await listener.AcceptTcpClientAsync();
                 currGame.AddPlayer(client);
