@@ -8,7 +8,7 @@ namespace KompasNetworking
     //handles networking and such for a server game
     public class ServerNetworkController : NetworkController
     {
-        public Player Player;
+        public ServerPlayer Player;
         public ServerGame sGame;
         public ServerNotifier ServerNotifier;
 
@@ -113,7 +113,7 @@ namespace KompasNetworking
         public void AddCardToDeck(string cardName)
         {
             //add the card in, with the cardCount being the card id, then increment the card count
-            Card added = Player.deckCtrl.AddCard(cardName, sGame.cardCount, Player.index);
+            Card added = Player.deckCtrl.AddCard(cardName, sGame.cardCount, Player);
             sGame.cardCount++;
             ServerNotifier.NotifyAddToDeck(added);
         }
@@ -145,7 +145,7 @@ namespace KompasNetworking
                 ServerNotifier.NotifyPlay(toAugment, invertedX, invertedY);
 
                 //play the card here
-                toAugment.Play(invertedX, invertedY, Player.index);
+                toAugment.Play(invertedX, invertedY, Player);
             }
             else
             {
@@ -164,7 +164,7 @@ namespace KompasNetworking
             {
                 ServerNotifier.NotifyPlay(toPlay, invertedX, invertedY);
                 //play the card here
-                toPlay.Play(invertedX, invertedY, Player.index);
+                toPlay.Play(invertedX, invertedY, Player);
                 //trigger effects
                 sGame.Trigger(TriggerCondition.Play, toPlay, null, null);
                 sGame.CheckForResponse();

@@ -5,8 +5,8 @@ using UnityEngine.Assertions;
 
 public abstract class Card : KompasObject {
 
-    protected ClientGame clientGame;
-    protected ServerGame serverGame;
+    public ClientGame clientGame { get; protected set; }
+    public ServerGame serverGame { get; protected set; }
 
     //constants
     //minimum and maximum distances to the board, discard, and deck objects for dragging
@@ -121,15 +121,15 @@ public abstract class Card : KompasObject {
                 gameObject.SetActive(true);
                 break;
             case CardLocation.Discard:
-                transform.SetParent(game.Players[controllerIndex].discardObject.transform);
+                transform.SetParent(controller.discardObject.transform);
                 gameObject.SetActive(true);
                 break;
             case CardLocation.Hand:
-                transform.SetParent(game.Players[controllerIndex].handObject.transform);
+                transform.SetParent(controller.handObject.transform);
                 gameObject.SetActive(true);
                 break;
             case CardLocation.Deck:
-                transform.SetParent(game.Players[controllerIndex].deckObject.transform);
+                transform.SetParent(controller.deckObject.transform);
                 gameObject.SetActive(false);
                 break;
         }
@@ -163,7 +163,7 @@ public abstract class Card : KompasObject {
         SetImage(cardFileName);
     }
 
-    public virtual void SetInfo(SerializableCard serializedCard, Game game, int ownerIndex)
+    public virtual void SetInfo(SerializableCard serializedCard, Game game, Player owner)
     {
         this.game = game;
         clientGame = game as ClientGame;
@@ -177,9 +177,9 @@ public abstract class Card : KompasObject {
 
         //could also be      serializedCard.effects == null ? serializedCard.effects.Length : 0
         effects = new Effect[serializedCard.effects?.Length ?? 0];
-        this.owner = game.Players[ownerIndex];
-        this.ownerIndex = ownerIndex;
-        ChangeController(ownerIndex);
+        this.owner = owner;
+        this.ownerIndex = owner.index;
+        ChangeController(owner);
 
         //go through each of the serialized effects, 
         for (int i = 0; i < (serializedCard.effects?.Length ?? 0); i++)
@@ -231,11 +231,11 @@ public abstract class Card : KompasObject {
     #endregion distance/adjacency
 
     //misc mechanics methods
-    public void ChangeController(int owner)
+    public void ChangeController(Player newController)
     {
-        this.controllerIndex = owner;
-        this.controller = game.Players[controllerIndex];
-        transform.localEulerAngles = new Vector3(0, 0, 180 * owner);
+        controllerIndex = newController.index;
+        controller = newController;
+        transform.localEulerAngles = new Vector3(0, 0, 180 * controllerIndex);
     }
 
     /// <summary>
@@ -250,7 +250,7 @@ public abstract class Card : KompasObject {
          * so we change the local x and y. the z coordinate also therefore needs to be negative
          * to show the card above the game board on the screen. */
         transform.localPosition = new Vector3(GridIndexToPos(toX), GridIndexToPos(toY), -0.1f);
-        ChangeController(controllerIndex);
+        ChangeController(controller);
         foreach (AugmentCard aug in augments) aug.MoveTo(toX, toY);
     }
 
@@ -259,11 +259,11 @@ public abstract class Card : KompasObject {
         if (location == CardLocation.Deck)
             gameObject.SetActive(false);
         else if (location == CardLocation.Discard)
-            transform.localPosition = new Vector3(0, 0, (float) game.Players[controllerIndex].discardCtrl.IndexOf(this) / -60f);
+            transform.localPosition = new Vector3(0, 0, (float) controller.discardCtrl.IndexOf(this) / -60f);
         else if (location == CardLocation.Field)
             transform.localPosition = new Vector3(GridIndexToPos(boardX), GridIndexToPos(boardY), -0.1f);
         else if (location == CardLocation.Hand)
-            game.Players[controllerIndex].handCtrl.SpreadOutCards();
+            controller.handCtrl.SpreadOutCards();
     }
 
     /// <summary>
@@ -322,16 +322,16 @@ public abstract class Card : KompasObject {
         controller.discardCtrl.AddToDiscard(this);
     }
 
-    public void Rehand(int controllerIndex)
+    public void Rehand(Player controller)
     {
         Remove();
-        ChangeController(controllerIndex);
+        ChangeController(controller);
         controller.handCtrl.AddToHand(this);
     }
 
     public void Rehand()
     {
-        Rehand(controllerIndex);
+        Rehand(controller);
     }
 
     public void Reshuffle()
@@ -346,15 +346,10 @@ public abstract class Card : KompasObject {
         controller.deckCtrl.PushTopdeck(this);
     }
 
-    public void Play(int toX, int toY, int controllerIndex)
+    public void Play(int toX, int toY, Player controller)
     {
         Remove();
-        game.boardCtrl.Play(this, toX, toY, controllerIndex);
-    }
-
-    public void Play(int toX, int toY)
-    {
-        Play(toX, toY, controllerIndex);
+        game.boardCtrl.Play(this, toX, toY, controller);
     }
 
     public void MoveOnBoard(int toX, int toY)

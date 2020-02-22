@@ -67,10 +67,6 @@ public class CharacterCard : Card {
     
     public SerializableCharCard GetSerializableVersion()
     {
-        int index = -1;
-        if (location == CardLocation.Hand) index = game.Players[controllerIndex].handCtrl.IndexOf(this);
-        else if(location == CardLocation.Discard) index = game.Players[controllerIndex].discardCtrl.IndexOf(this);
-
         SerializableCharCard serializableChar = new SerializableCharCard
         {
             cardName = cardName,
@@ -85,15 +81,13 @@ public class CharacterCard : Card {
             owner = controllerIndex,
             BoardX = boardX,
             BoardY = boardY,
-            subtypeText = subtypeText,
-            index = index
-            
+            subtypeText = subtypeText
         };
         return serializableChar;
     }
 
     //set information
-    public override void SetInfo(SerializableCard serializedCard, Game game, int ownerIndex)
+    public override void SetInfo(SerializableCard serializedCard, Game game, Player owner)
     {
         if (!(serializedCard is SerializableCharCard serializedChar)) return;
 
@@ -102,7 +96,7 @@ public class CharacterCard : Card {
         baseS = s = serializedChar.s;
         baseW = w = serializedChar.w;
 
-        base.SetInfo(serializedCard, game, ownerIndex);
+        base.SetInfo(serializedCard, game, owner);
     }
     /// <summary>
     /// For convenience of not having to type out four lines

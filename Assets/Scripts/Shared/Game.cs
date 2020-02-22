@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Game : MonoBehaviour {
+public abstract class Game : MonoBehaviour {
 
     public static Game mainGame;
 
@@ -23,10 +23,9 @@ public class Game : MonoBehaviour {
     public static Dictionary<int, string> CardNames;
     public static Dictionary<string, int> CardNameIndices;
 
+    public abstract Player[] Players { get; }
     public int turnPlayer = 0;
-    protected Player[] players = new Player[2];
-    public Player[] Players { get { return players; } }
-    public Player TurnPlayer { get { return players[turnPlayer]; } }
+    public Player TurnPlayer { get { return Players[turnPlayer]; } }
 
     //game data
     public Dictionary<int, Card> cards;
@@ -79,13 +78,6 @@ public class Game : MonoBehaviour {
         return cards[id];
     }
 
-    public Card Draw(int player = 0)
-    {
-        Card toDraw = players[player].deckCtrl.PopTopdeck();
-        toDraw.Rehand(player);
-        return toDraw;
-    }
-
     //game mechanics
     //checking for valid target
     public bool ExistsValidCardOnBoardTarget(CardRestriction restriction)
@@ -104,19 +96,19 @@ public class Game : MonoBehaviour {
     /// <param name="restriction">The restriction a card must fit</param>
     /// <param name="player">The player index whose deck to look for cards in </param>
     /// <returns></returns>
-    public bool ExistsDeckTarget(CardRestriction restriction, int player)
+    public bool ExistsDeckTarget(CardRestriction restriction, Player player)
     {
-        return players[player].deckCtrl.Exists(restriction);
+        return player.deckCtrl.Exists(restriction);
     }
 
-    public bool ExistsDiscardTarget(CardRestriction cardRestriction, int player)
+    public bool ExistsDiscardTarget(CardRestriction cardRestriction, Player player)
     {
-        return players[player].discardCtrl.Exists(cardRestriction);
+        return player.discardCtrl.Exists(cardRestriction);
     }
 
-    public bool ExistsHandTarget(CardRestriction cardRestriction, int player)
+    public bool ExistsHandTarget(CardRestriction cardRestriction, Player player)
     {
-        return players[player].handCtrl.Exists(cardRestriction);
+        return player.handCtrl.Exists(cardRestriction);
     }
 
     public bool ExistsSpaceTarget(SpaceRestriction restriction)

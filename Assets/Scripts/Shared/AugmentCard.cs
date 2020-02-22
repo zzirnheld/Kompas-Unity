@@ -56,7 +56,7 @@ public class AugmentCard : Card {
     }
 
     //set data
-    public override void SetInfo(SerializableCard serializedCard, Game game, int ownerIndex)
+    public override void SetInfo(SerializableCard serializedCard, Game game, Player owner)
     {
         if (!(serializedCard is SerializableAugCard)) return;
         SerializableAugCard serializedAug = serializedCard as SerializableAugCard;
@@ -66,7 +66,7 @@ public class AugmentCard : Card {
         augSubtypes = serializedAug.augSubtypes;
         fast = serializedAug.fast;
 
-        base.SetInfo(serializedCard, game, ownerIndex);
+        base.SetInfo(serializedCard, game, owner);
     }
 
     //game mechanics

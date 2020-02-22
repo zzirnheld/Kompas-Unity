@@ -11,6 +11,9 @@ public class ServerGame : Game {
 
     public static ServerGame mainServerGame;
 
+    public override Player[] Players => ServerPlayers;
+    public ServerPlayer[] ServerPlayers;
+    public ServerPlayer TurnServerPlayer { get { return ServerPlayers[turnPlayer]; } }
     int currPlayerCount = 0; //current number of players. shouldn't exceed 2
     public int cardCount = 0;
 
@@ -31,7 +34,7 @@ public class ServerGame : Game {
     {
         if (currPlayerCount >= 2) return -1;
 
-        players[currPlayerCount].SetInfo(tcpClient, currPlayerCount, this);
+        Players[currPlayerCount].SetInfo(tcpClient, currPlayerCount);
         currPlayerCount++;
         return currPlayerCount;
     }
@@ -41,6 +44,13 @@ public class ServerGame : Game {
         return currPlayerCount >= 2;
     }
     #endregion
+    
+    public Card Draw(int player = 0)
+    {
+        Card toDraw = Players[player].deckCtrl.PopTopdeck();
+        toDraw.Rehand();
+        return toDraw;
+    }
 
     public void Lose(int playerIndex)
     {
@@ -52,7 +62,7 @@ public class ServerGame : Game {
         player.pips = pipsToSet;
         if (player.index == 0) uiCtrl.UpdateFriendlyPips(pipsToSet);
         else uiCtrl.UpdateEnemyPips(pipsToSet);
-        TurnPlayer.ServerNotifier.NotifySetPips(pipsToSet);
+        TurnServerPlayer.ServerNotifier.NotifySetPips(pipsToSet);
     }
 
     public void GiveTurnPlayerPips()
@@ -68,7 +78,7 @@ public class ServerGame : Game {
             //first, trigger anything that would go off of this thing dying, so it knows it's about to die (moving from field)
             Trigger(TriggerCondition.Discard, toCheck, stackSrc, null);
             //then notify the players
-            toCheck.Controller.ServerNotifier.NotifyDiscard(toCheck);
+            (toCheck.Controller as ServerPlayer).ServerNotifier.NotifyDiscard(toCheck);
             //then actually discard it
             toCheck.Discard();
             //don't call check for response on stack because anything that causes things to die,
@@ -144,8 +154,8 @@ public class ServerGame : Game {
 
         //draw for turn and store what was drawn
         Card drawn = Draw();
-        if(drawn != null) TurnPlayer.ServerNotifier.NotifyDraw(drawn);
-        TurnPlayer.ServerNotifier.NotifySetTurn(this, turnPlayer);
+        if(drawn != null) TurnServerPlayer.ServerNotifier.NotifyDraw(drawn);
+        TurnServerPlayer.ServerNotifier.NotifySetTurn(this, turnPlayer);
 
         //trigger turn start effects
         Trigger(TriggerCondition.TurnStart, null, null, null);
@@ -184,7 +194,7 @@ public class ServerGame : Game {
     {
         if (stackIndex < 0)
         {
-            TurnPlayer.ServerNotifier.DiscardSimples();
+            TurnServerPlayer.ServerNotifier.DiscardSimples();
             boardCtrl.DiscardSimples();
             return; //done with this stack!
         }
@@ -204,7 +214,7 @@ public class ServerGame : Game {
 
     public void ResetPassingPriority()
     {
-        foreach(Player p in players)
+        foreach(Player p in Players)
         {
             p.passedPriority = false;
         }
@@ -216,14 +226,14 @@ public class ServerGame : Game {
         ResetPassingPriority();
 
         //check if responses exist. if not, resolve
-        if (players[turnPlayer].HoldsPriority())
+        if (Players[turnPlayer].HoldsPriority())
         {
             //then send them a request to do something or pass priority
             //TODO: send the stack entry encoded somehow?
         }
-        else if(players[1 - turnPlayer].HoldsPriority()){
+        else if(Players[1 - turnPlayer].HoldsPriority()){
             //then mark the turn player as having passed priority
-            players[turnPlayer].passedPriority = true;
+            Players[turnPlayer].passedPriority = true;
 
             //then ask the non turn player to do something or pass priority
         }

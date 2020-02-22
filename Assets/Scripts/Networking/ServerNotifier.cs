@@ -5,7 +5,7 @@ using KompasNetworking;
 
 public class ServerNotifier : MonoBehaviour
 {
-    public Player Player;
+    public ServerPlayer Player;
     public ServerNetworkController ServerNetworkCtrl;
     public ServerNotifier OtherNotifier;
 

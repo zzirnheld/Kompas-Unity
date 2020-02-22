@@ -11,6 +11,7 @@ public class DeckController : KompasObject
     private ServerGame serverGame;
 
     //one of these for each player
+    public Player Owner;
 
     //rng for shuffling
     private static System.Random rng = new System.Random();
@@ -36,9 +37,8 @@ public class DeckController : KompasObject
     }
 
     //importing deck
-    public Card InstantiateCard(string json, int owner)
+    public Card InstantiateCard(string json, Player owner)
     {
-
         //already allocated serializable cards
         SerializableCharCard serializableChar;
         SerializableSpellCard serializableSpell;
@@ -83,19 +83,19 @@ public class DeckController : KompasObject
         }
     }
 
-    public Card InstantiateBlankCard(int owner = 1)
+    public Card InstantiateBlankCard(Player owner)
     {
         return InstantiateCard(Resources.Load<TextAsset>(BLANK_CARD_PATH).text, owner);
     }
 
     public Card AddBlankCard()
     {
-        Card blank = InstantiateBlankCard();
+        Card blank = InstantiateBlankCard(Owner);
         PushTopdeck(blank);
         return blank;
     }
 
-    public Card AddCard(string cardName, int id, int owner = 0)
+    public Card AddCard(string cardName, int id, Player owner)
     {
         Card newCard;
         string folder = "Card Jsons/";
@@ -131,17 +131,6 @@ public class DeckController : KompasObject
         }
         return newCard;
     }
-
-    public void ImportDeck(string decklist)
-    {
-        string[] cards = decklist.Split('\n');
-
-        foreach (string card in cards)
-        {
-            AddCard(card, 0);
-        } //end for each card in the array of cards
-    }
-
 
     //info about deck
     public int DeckSize() { return deck.Count; }
@@ -273,13 +262,4 @@ public class DeckController : KompasObject
         }
         return cards;
     }
-
-    #region debug
-    public void DEBUGCreateCard()
-    {
-        AddCard("Swordsmaster of Iron", 0);
-        game.Draw();
-    }
-    #endregion
-
 }

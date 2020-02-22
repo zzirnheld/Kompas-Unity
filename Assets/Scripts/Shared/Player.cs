@@ -6,9 +6,6 @@ using KompasNetworking;
 
 public class Player : MonoBehaviour{
 
-    public ServerGame serverGame;
-    public ServerNetworkController ServerNetworkCtrl;
-    public ServerNotifier ServerNotifier;
     public Player enemy;
 
     //game mechanics data
@@ -58,11 +55,10 @@ public class Player : MonoBehaviour{
         fastCards = new List<Card>();
     }
 
-    public void SetInfo(TcpClient TcpClient, int index, ServerGame serverGame)
+    public void SetInfo(TcpClient TcpClient, int index)
     {
         this.TcpClient = TcpClient;
         this.index = index;
-        this.serverGame = serverGame;
     }
 
     public bool HoldsPriority()

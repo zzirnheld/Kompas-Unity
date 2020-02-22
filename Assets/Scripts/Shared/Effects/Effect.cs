@@ -15,7 +15,7 @@ public class Effect : IStackable
 
     //who owns the effect. TODO set when a player activates an effect
     public int effectControllerIndex;
-    public Player EffectController { get { return serverGame.Players[effectControllerIndex]; } }
+    public ServerPlayer EffectController { get { return serverGame.ServerPlayers[effectControllerIndex]; } }
 
     //current subeffect that's resolving
     public int subeffectIndex;
@@ -59,7 +59,7 @@ public class Effect : IStackable
     public Effect(SerializableEffect se, Card thisCard, int controller)
     {
         this.thisCard = thisCard;
-        serverGame = thisCard.Controller.serverGame;
+        this.serverGame = thisCard.serverGame;
         subeffects = new Subeffect[se.subeffects.Length];
         targets = new List<Card>();
         coords = new List<Vector2Int>();

@@ -57,14 +57,15 @@ public class ClientNetworkController : KompasNetworking.NetworkController {
                 ClientGame.mainClientGame.Delete(ClientGame.mainClientGame.GetCardFromID(packet.cardID));
                 break;
             case Packet.Command.AddAsFriendly:
-                ClientGame.mainClientGame.friendlyDeckCtrl.AddCard(packet.CardName, packet.CardIDToBe);
+                ClientGame.mainClientGame.friendlyDeckCtrl.AddCard(packet.CardName, packet.CardIDToBe, ClientGame.mainClientGame.Players[0]);
                 break;
             case Packet.Command.AddAsEnemy:
-                Card added = ClientGame.mainClientGame.enemyDeckCtrl.AddCard(packet.CardName, packet.CardIDToBe, 1); //TODO make it always ask for cards from enemy deck
+                Card added = ClientGame.mainClientGame.enemyDeckCtrl.AddCard(packet.CardName, packet.CardIDToBe, ClientGame.mainClientGame.Players[1]);
+                //TODO make it always ask for cards from enemy deck
                 switch (packet.Location)
                 {
                     case CardLocation.Field:
-                        added.Play(packet.X, packet.Y, 1);
+                        added.Play(packet.X, packet.Y, added.Owner);
                         break;
                     case CardLocation.Discard:
                         added.Discard();
@@ -97,7 +98,8 @@ public class ClientNetworkController : KompasNetworking.NetworkController {
             case Packet.Command.Augment: //the play method calls augment if the card is an augment
             case Packet.Command.Play:
                 Debug.Log("Client ordered to play to " + packet.X + ", " + packet.Y);
-                ClientGame.mainClientGame.GetCardFromID(packet.cardID).Play(packet.X, packet.Y);
+                Card toPlay = ClientGame.mainClientGame.GetCardFromID(packet.cardID);
+                toPlay.Play(packet.X, packet.Y, toPlay.Owner);
                 break;
             case Packet.Command.Move:
                 ClientGame.mainClientGame.GetCardFromID(packet.cardID).MoveOnBoard(packet.X, packet.Y);

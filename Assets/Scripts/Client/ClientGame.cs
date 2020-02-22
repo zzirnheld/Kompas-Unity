@@ -7,6 +7,9 @@ public class ClientGame : Game {
 
     public static ClientGame mainClientGame;
 
+    public override Player[] Players => ClientPlayers;
+    public ClientPlayer[] ClientPlayers;
+
     private bool friendlyTurn;
 
     public HandController friendlyHandCtrl;
@@ -33,38 +36,19 @@ public class ClientGame : Game {
     {
         mainGame = this;
         mainClientGame = this;
-        //TODO host? connect? this changes with setting up games during proper networking
-        players[0].SetInfo(default(TcpClient), 0, null);
-        players[1].SetInfo(default(TcpClient), 1, null);
-        //set your stuff
-        players[0].handCtrl = friendlyHandCtrl;
-        players[0].deckCtrl = friendlyDeckCtrl;
-        players[0].discardCtrl = friendlyDiscardCtrl;
-        players[0].handObject = friendlyHandObj;
-        players[0].deckObject = friendlyDeckObj;
-        players[0].discardObject = friendlyDiscardObj;
-        players[0].enemy = players[1];
-        //and the player2 stuff
-        players[1].handCtrl = enemyHandCtrl;
-        players[1].deckCtrl = enemyDeckCtrl;
-        players[1].discardCtrl = enemyDiscardCtrl;
-        players[1].handObject = enemyHandObj;
-        players[1].deckObject = enemyDeckObj;
-        players[1].discardObject = enemyDiscardObj;
-        players[1].enemy = players[0];
     }
 
     //game mechanics
     #region setting pips
     public void SetFriendlyPips(int num)
     {
-        players[0].pips = num;
+        Players[0].pips = num;
         uiCtrl.UpdateFriendlyPips(num);
     }
 
     public void SetEnemyPips(int num)
     {
-        players[1].pips = num;
+        Players[1].pips = num;
         uiCtrl.UpdateEnemyPips(num);
     }
     #endregion
