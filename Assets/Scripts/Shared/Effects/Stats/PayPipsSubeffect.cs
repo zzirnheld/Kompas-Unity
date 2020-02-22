@@ -18,7 +18,7 @@ public class PayPipsSubeffect : Subeffect
         }
 
         parent.EffectController.pips -= toPay;
-        ServerGame?.serverNotifier.NotifySetPips(parent.EffectController, parent.EffectController.pips);
+        parent.EffectController.ServerNotifier.NotifySetPips(parent.EffectController.pips);
         parent.ResolveNextSubeffect();
     }
 }

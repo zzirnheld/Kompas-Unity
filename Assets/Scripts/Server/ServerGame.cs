@@ -14,8 +14,6 @@ public class ServerGame : Game {
     int currPlayerCount = 0; //current number of players. shouldn't exceed 2
     public int cardCount = 0;
 
-    public Player[] Players;
-
     public HandController player1HandCtrl;
     public DeckController player1DeckCtrl;
     public DiscardController player1DiscardCtrl;
@@ -49,7 +47,7 @@ public class ServerGame : Game {
     {
         if (currPlayerCount >= 2) return -1;
 
-        players[currPlayerCount] = new Player(tcpClient, currPlayerCount, this);
+        players[currPlayerCount].SetInfo(tcpClient, currPlayerCount, this);
         if(currPlayerCount == 0)
         {
             players[0].handCtrl = player1HandCtrl;
@@ -91,7 +89,7 @@ public class ServerGame : Game {
         TurnPlayer.pips = pipsToSet;
         if (turnPlayer == 0) uiCtrl.UpdateFriendlyPips(pipsToSet);
         else uiCtrl.UpdateEnemyPips(pipsToSet);
-        serverNotifier.NotifySetPips(TurnPlayer, pipsToSet);
+        TurnPlayer.ServerNotifier.NotifySetPips(pipsToSet);
     }
 
     public void CheckForDeath(CharacterCard toCheck, IStackable stackSrc)
@@ -101,7 +99,7 @@ public class ServerGame : Game {
             //first, trigger anything that would go off of this thing dying, so it knows it's about to die (moving from field)
             Trigger(TriggerCondition.Discard, toCheck, stackSrc, null);
             //then notify the players
-            serverNotifier.NotifyDiscard(toCheck);
+            toCheck.Controller.ServerNotifier.NotifyDiscard(toCheck);
             //then actually discard it
             toCheck.Discard();
             //don't call check for response on stack because anything that causes things to die,
@@ -176,8 +174,8 @@ public class ServerGame : Game {
         boardCtrl.ResetCardsForTurn();
 
         //draw for turn and store what was drawn
-        serverNetworkCtrl.DebugDraw(this, turnPlayer);
-        serverNotifier.NotifySetTurn(this, turnPlayer);
+        TurnPlayer.ServerNetworkCtrl.DebugDraw(this, turnPlayer);
+        TurnPlayer.ServerNotifier.NotifySetTurn(this, turnPlayer);
 
         //trigger turn start effects
         Trigger(TriggerCondition.TurnStart, null, null, null);
@@ -216,7 +214,7 @@ public class ServerGame : Game {
     {
         if (stackIndex < 0)
         {
-            serverNotifier.DiscardSimples(this);
+            TurnPlayer.ServerNotifier.DiscardSimples();
             boardCtrl.DiscardSimples();
             return; //done with this stack!
         }

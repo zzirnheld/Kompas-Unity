@@ -30,7 +30,7 @@ public class BoardTargetSubeffect : CardTargetSubeffect
         //ask the client that is this effect's controller for a target. 
         //give the card if whose effect it is, the index of the effect, and the index of the subeffect
         //since only the server resolves effects, this should never be called for a client.
-       ServerGame.serverNotifier.GetBoardTarget(parent.EffectController, parent.thisCard, parent.EffectIndex, parent.subeffectIndex);
+        parent.EffectController.ServerNotifier.GetBoardTarget(parent.thisCard, parent.EffectIndex, parent.subeffectIndex);
 
         //then wait for the network controller to call the continue method
     }
@@ -48,7 +48,7 @@ public class BoardTargetSubeffect : CardTargetSubeffect
         }
         else
         {
-            ServerGame.serverNotifier.GetBoardTarget(parent.EffectController, parent.thisCard, parent.EffectIndex, parent.subeffectIndex);
+            parent.EffectController.ServerNotifier.GetBoardTarget(parent.thisCard, parent.EffectIndex, parent.subeffectIndex);
         }
 
         return false;

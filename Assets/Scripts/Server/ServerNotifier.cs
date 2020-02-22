@@ -190,7 +190,7 @@ public class ServerNotifier : MonoBehaviour
         SendPacket(p);
     }
 
-    public void GetXForEffect(Player toGetX, Card effSource, int effIndex, int subeffIndex)
+    public void GetXForEffect(Card effSource, int effIndex, int subeffIndex)
     {
         Packet outPacket = new Packet(Packet.Command.PlayerSetX, effSource, effIndex, subeffIndex);
         SendToBoth(outPacket);

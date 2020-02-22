@@ -6,6 +6,8 @@ using UnityEngine;
 public class Player : MonoBehaviour{
 
     public ServerGame serverGame;
+    public ServerNetworkController ServerNetworkCtrl;
+    public ServerNotifier ServerNotifier;
     public Player enemy;
 
     //game mechanics data

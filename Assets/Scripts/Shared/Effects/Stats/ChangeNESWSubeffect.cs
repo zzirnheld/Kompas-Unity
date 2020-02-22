@@ -20,7 +20,7 @@ public class ChangeNESWSubeffect : Subeffect
             charCard.S += sChange;
             charCard.W += wChange;
 
-            ServerGame?.serverNotifier.NotifySetNESW(charCard);
+            parent.EffectController.ServerNotifier.NotifySetNESW(charCard);
         }
 
         parent.ResolveNextSubeffect();

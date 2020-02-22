@@ -28,7 +28,7 @@ public class SetXBoardRestrictionSubeffect : Subeffect
             }
         }
         Debug.Log("Setting X to " + parent.X);
-        ServerGame?.serverNotifier.NotifyEffectX(ServerGame, parent.thisCard, parent.EffectIndex, parent.X);
+        parent.EffectController.ServerNotifier.NotifyEffectX(parent.thisCard, parent.EffectIndex, parent.X);
         parent.ResolveNextSubeffect();
     }
 }
