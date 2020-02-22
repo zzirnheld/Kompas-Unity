@@ -125,7 +125,7 @@ public class Effect : IStackable
         subeffectIndex = 0;
         X = 0;
         targets.Clear();
-        serverGame.serverNotifier.AcceptTarget(EffectController.ConnectionID);
+        EffectController.ServerNotifier.AcceptTarget();
         serverGame.FinishStackEntryResolution();
     }
 

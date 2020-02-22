@@ -33,8 +33,9 @@ public class ClientGame : Game {
     {
         mainGame = this;
         mainClientGame = this;
-        players[0] = new Player(default(TcpClient), 0, null);
-        players[1] = new Player(default(TcpClient), 1, null);
+        //TODO host? connect? this changes with setting up games during proper networking
+        players[0].SetInfo(default(TcpClient), 0, null);
+        players[1].SetInfo(default(TcpClient), 1, null);
         //set your stuff
         players[0].handCtrl = friendlyHandCtrl;
         players[0].deckCtrl = friendlyDeckCtrl;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Sockets;
 using UnityEngine;
+using KompasNetworking;
 
 public class Player : MonoBehaviour{
 

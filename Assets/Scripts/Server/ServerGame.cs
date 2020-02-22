@@ -174,7 +174,8 @@ public class ServerGame : Game {
         boardCtrl.ResetCardsForTurn();
 
         //draw for turn and store what was drawn
-        TurnPlayer.ServerNetworkCtrl.DebugDraw(this, turnPlayer);
+        Card drawn = Draw();
+        if(drawn != null) TurnPlayer.ServerNotifier.NotifyDraw(drawn);
         TurnPlayer.ServerNotifier.NotifySetTurn(this, turnPlayer);
 
         //trigger turn start effects
