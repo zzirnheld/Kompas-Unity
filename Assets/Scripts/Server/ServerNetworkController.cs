@@ -213,7 +213,8 @@ public class ServerNetworkController : NetworkController {
                 else Debug.Log("curr effect null? " + (serverGame.CurrEffect == null) + " or not spacetgtsubeff? " + (serverGame.CurrEffect.CurrSubeffect is SpaceTargetSubeffect));
                 break;
             case Packet.Command.PlayerSetX:
-                serverNotifier.SetXForEffect(serverGame, packet.EffectX);
+                serverGame.CurrEffect.X = packet.EffectX;
+                serverGame.CurrEffect.ResolveNextSubeffect();
                 break;
             case Packet.Command.DeclineAnotherTarget:
                 if(serverGame.CurrEffect != null)

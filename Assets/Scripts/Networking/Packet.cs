@@ -34,6 +34,15 @@ namespace KompasNetworking
             TestTargetEffect
         }
 
+        public Packet Copy()
+        {
+            Packet p = new Packet(command);
+            Array.Copy(args, p.args, args.Length);
+            p.cardID = cardID;
+            p.stringArg = stringArg;
+            return p;
+        }
+
         /// <summary>
         /// Contains the command that is sent.
         /// </summary>

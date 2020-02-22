@@ -5,6 +5,7 @@ using KompasNetworking;
 
 public class ServerNotifier : MonoBehaviour
 {
+    public Player Player;
     public KompasNetworking.ServerNetworkController ServerNetworkCtrl;
     public ServerNotifier OtherNotifier;
 
@@ -19,9 +20,16 @@ public class ServerNotifier : MonoBehaviour
         OtherNotifier.SendPacket(b);
     }
 
+    private void SendPacketsAfterInverting(Packet a, Packet b)
+    {
+        a.InvertForController(Player.index);
+        b.InvertForController(Player.index);
+        SendPackets(a, b);
+    }
+
     private void SendToBoth(Packet p)
     {
-        SendPackets(p, p);
+        SendPackets(p, p.Copy());
     }
 
     #region notify
@@ -43,9 +51,7 @@ public class ServerNotifier : MonoBehaviour
                 (int)CardLocation.Field, toPlay.ID, x, y, true);
         }
 
-        outPacket.InvertForController(controller.index);
-        outPacketInverted.InvertForController(controller.index);
-        SendPackets(outPacket, outPacketInverted);
+        SendPacketsAfterInverting(outPacket, outPacketInverted);
     }
     
     public void NotifyMove(Card toMove, int x, int y)
@@ -53,7 +59,7 @@ public class ServerNotifier : MonoBehaviour
         //tell everyone to do it
         Packet outPacket = new Packet(Packet.Command.Move, toMove, x, y);
         Packet outPacketInverted = new Packet(Packet.Command.Move, toMove, x, y, true);
-        SendPackets(outPacket, outPacketInverted, toMove.Controller);
+        SendPackets(outPacket, outPacketInverted);
     }
 
     public void NotifyDiscard(Card toDiscard)
@@ -65,56 +71,52 @@ public class ServerNotifier : MonoBehaviour
         if (toDiscard.Location == CardLocation.Discard || toDiscard.Location == CardLocation.Field)
             outPacketInverted = new Packet(Packet.Command.Discard, toDiscard);
         else outPacketInverted = new Packet(Packet.Command.AddAsEnemy, toDiscard.CardName, (int)CardLocation.Discard, toDiscard.ID);
-        SendPackets(outPacket, outPacketInverted, toDiscard.Owner);
+        SendPackets(outPacket, outPacketInverted);
     }
 
     public void NotifyRehand(Card toRehand)
     {
-        Packet outPacket = null;
         Packet outPacketInverted = null;
         //and let everyone know
-        outPacket = new Packet(Packet.Command.Rehand, toRehand);
+        Packet outPacket = new Packet(Packet.Command.Rehand, toRehand);
         if (toRehand.Location == CardLocation.Discard || toRehand.Location == CardLocation.Field)
             outPacketInverted = new Packet(Packet.Command.Delete, toRehand);
         else outPacketInverted = null; //TODO make this add a blank card
-        SendPackets(outPacket, outPacketInverted, toRehand.Owner);
+        SendPackets(outPacket, outPacketInverted);
     }
 
     public void NotifyTopdeck(Card card)
     {
-        Packet outPacket = null;
         Packet outPacketInverted = null;
         //and let everyone know
-        outPacket = new Packet(Packet.Command.Topdeck, card);
+        Packet outPacket = new Packet(Packet.Command.Topdeck, card);
         if (card.Location == CardLocation.Hand || card.Location == CardLocation.Deck)
             outPacketInverted = new Packet(Packet.Command.Delete, card);
-        SendPackets(outPacket, outPacketInverted, card.Owner);
+        SendPackets(outPacket, outPacketInverted);
     }
 
     public void NotifyReshuffle(Card toReshuffle)
     {
-        Packet outPacket = null;
         Packet outPacketInverted = null;
         //and let everyone know
-        outPacket = new Packet(Packet.Command.Reshuffle, toReshuffle);
+        Packet outPacket = new Packet(Packet.Command.Reshuffle, toReshuffle);
         if (toReshuffle.Location == CardLocation.Hand || toReshuffle.Location == CardLocation.Deck)
             outPacketInverted = new Packet(Packet.Command.Delete, toReshuffle);
-        SendPackets(outPacket, outPacketInverted, toReshuffle.Owner);
+        SendPackets(outPacket, outPacketInverted);
     }
 
     public void NotifyDraw(Card toDraw)
     {
-        //let everyone know to add that character to the correct hand
-        Packet outPacket = new Packet(Packet.Command.Rehand, toDraw);
-        SendPackets(outPacket, toDraw.Controller.ConnectionID);
+        //I think it's equivalent?
+        NotifyRehand(toDraw);
     }
 
-    public void NotifySetPips(Player toSetPips, int pipsToSet)
+    public void NotifySetPips(int pipsToSet)
     {
         //let everyone know
         Packet outPacket = new Packet(Packet.Command.SetPips, pipsToSet);
         Packet outPacketInverted = new Packet(Packet.Command.SetEnemyPips, pipsToSet);
-        SendPackets(outPacket, outPacketInverted, toSetPips);
+        SendPackets(outPacket, outPacketInverted);
     }
 
     public void NotifySetNESW(CharacterCard card)
@@ -123,59 +125,60 @@ public class ServerNotifier : MonoBehaviour
         //let everyone know to set NESW
         Packet outPacket = new Packet(Packet.Command.SetNESW, card, card.N, card.E, card.S, card.W);
         Packet outPacketInverted = new Packet(Packet.Command.SetNESW, card, card.N, card.E, card.S, card.W);
-        SendPackets(outPacket, outPacketInverted, card.Controller);
+        SendPackets(outPacket, outPacketInverted);
     }
 
     public void NotifySetTurn(ServerGame sGame, int indexToSet)
     {
         Packet outPacket = new Packet(Packet.Command.EndTurn, indexToSet);
         Packet outPacketInverted = new Packet(Packet.Command.EndTurn, indexToSet);
-        SendPacketToBoth(outPacket, sGame);
+        SendToBoth(outPacket);
     }
     #endregion notify
 
     #region request targets
 
-    public void GetBoardTarget(Player toGetTarget, Card effectSource, int effectIndex, int subeffectIndex)
+    public void GetBoardTarget(Card effectSource, int effectIndex, int subeffectIndex)
     {
         Packet outPacket = new Packet(Packet.Command.RequestBoardTarget, effectSource, effectIndex, subeffectIndex);
-        SendPackets(outPacket, toGetTarget.ConnectionID);
+        SendPacket(outPacket);
         Debug.Log("Asking for board target");
     }
 
-    public void GetDeckTarget(Player toGetTarget, Card effectSource, int effectIndex, int subeffectIndex)
+    public void GetDeckTarget(Card effectSource, int effectIndex, int subeffectIndex)
     {
         Packet outPacket = new Packet(Packet.Command.RequestDeckTarget, effectSource, effectIndex, subeffectIndex);
-        SendPackets(outPacket, toGetTarget.ConnectionID);
+        SendPacket(outPacket);
         Debug.Log("Asking for deck target");
     }
 
-    public void GetDiscardTarget(Player toGetTarget, Card effectSource, int effectIndex, int subeffectIndex)
+    public void GetDiscardTarget(Card effectSource, int effectIndex, int subeffectIndex)
     {
         Packet outPacket = new Packet(Packet.Command.RequestDiscardTarget, effectSource, effectIndex, subeffectIndex);
-        SendPackets(outPacket, toGetTarget.ConnectionID);
+        SendPacket(outPacket);
         Debug.Log("Asking for discard target");
     }
 
-    public void GetHandTarget(Player toGetTarget, Card effectSource, int effectIndex, int subeffectIndex)
+    public void GetHandTarget(Card effectSource, int effectIndex, int subeffectIndex)
     {
         Packet outPacket = new Packet(Packet.Command.RequestHandTarget, effectSource, effectIndex, subeffectIndex);
-        SendPackets(outPacket, toGetTarget.ConnectionID);
+        SendPacket(outPacket);
         Debug.Log("Asking for hand target");
     }
 
-    public void GetSpaceTarget(Player toGetTarget, Card effSrc, int effIndex, int subeffIndex)
+    public void GetSpaceTarget(Card effSrc, int effIndex, int subeffIndex)
     {
         Packet outPacket = new Packet(Packet.Command.SpaceTarget, effSrc, effIndex, subeffIndex);
-        SendPackets(outPacket, toGetTarget.ConnectionID);
+        SendPacket(outPacket);
         Debug.Log("Asking for space target");
     }
     #endregion request targets
 
     #region other effect stuff
-    public void RequestResponse(ServerGame sGame, int playerIndex)
+    public void RequestResponse()
     {
         Packet outPacket = new Packet(Packet.Command.Response);
+        SendPacket(outPacket);
     }
 
     /// <summary>
@@ -183,7 +186,8 @@ public class ServerNotifier : MonoBehaviour
     /// </summary>
     public void AcceptTarget()
     {
-        SendPackets(new Packet(Packet.Command.TargetAccepted), connectionID);
+        Packet p = new Packet(Packet.Command.TargetAccepted);
+        SendPacket(p);
     }
 
     public void GetXForEffect(Player toGetX, Card effSource, int effIndex, int subeffIndex)
@@ -192,37 +196,31 @@ public class ServerNotifier : MonoBehaviour
         SendToBoth(outPacket);
     }
 
-    public void SetXForEffect(ServerGame sGame, int x)
-    {
-        sGame.CurrEffect.X = x;
-        sGame.CurrEffect.ResolveNextSubeffect();
-    }
-
-    public void NotifyEffectX(ServerGame sGame, Card effSrc, int effIndex, int x)
+    public void NotifyEffectX(Card effSrc, int effIndex, int x)
     {
         //this puts the cardid in the right place, eff index in right place, x in packet.X
         Packet outPacket = new Packet(Packet.Command.SetEffectsX, effSrc, effIndex, 0, x, 0);
-        SendPacketToBoth(outPacket, sGame);
+        SendToBoth(outPacket);
     }
 
-    public void EnableDecliningTarget(Player toEnable)
+    public void EnableDecliningTarget()
     {
         Packet packet = new Packet(Packet.Command.EnableDecliningTarget);
         Debug.Log("Enabling declining target");
-        SendPackets(packet, toEnable.ConnectionID);
+        SendPacket(packet);
     }
 
-    public void DisableDecliningTarget(Player toDisable)
+    public void DisableDecliningTarget()
     {
         Packet packet = new Packet(Packet.Command.DisableDecliningTarget);
         Debug.Log("Disabling declining target");
-        SendPackets(packet, toDisable.ConnectionID);
+        SendPacket(packet);
     }
 
-    public void DiscardSimples(ServerGame inThisGame)
+    public void DiscardSimples()
     {
         Packet packet = new Packet(Packet.Command.DiscardSimples);
-        SendPacketToBoth(packet, inThisGame);
+        SendToBoth(packet);
     }
     #endregion other effect stuff
 }
