@@ -1461,6 +1461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 492080563}
+  Owner: {fileID: 0}
   characterCardPrefab: {fileID: 1867480149614592, guid: 3a1c99b156d4dfe4f87489a1b6147b56,
     type: 3}
   spellCardPrefab: {fileID: 1656078229824318, guid: c11b9e0eff225ef42b29ef33bacc3186,
@@ -1986,16 +1987,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseCtrl: {fileID: 75480508}
-  networkCtrl: {fileID: 0}
+  networkCtrl: {fileID: 2001968206}
   uiCtrl: {fileID: 1615817260}
   boardCtrl: {fileID: 665162530}
   boardObject: {fileID: 665162525}
   turnPlayer: 0
-  Players:
-  - {fileID: 0}
-  - {fileID: 0}
   MaxCardsOnField: 0
   targetMode: 0
+  ClientPlayers:
+  - {fileID: 1829834588}
+  - {fileID: 1841194802}
   friendlyHandCtrl: {fileID: 1921547573}
   friendlyDeckCtrl: {fileID: 562958699}
   friendlyDiscardCtrl: {fileID: 540378492}
@@ -2443,6 +2444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 492080563}
+  Owner: {fileID: 0}
   characterCardPrefab: {fileID: 1867480149614592, guid: 3a1c99b156d4dfe4f87489a1b6147b56,
     type: 3}
   spellCardPrefab: {fileID: 1656078229824318, guid: c11b9e0eff225ef42b29ef33bacc3186,
@@ -7843,22 +7845,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1829834586}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea5da257178def249af1ba6fd25d29e4, type: 3}
+  m_Script: {fileID: 11500000, guid: a321c3cd7ec714449918746a18686773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serverGame: {fileID: 0}
-  ServerNetworkCtrl: {fileID: 0}
-  ServerNotifier: {fileID: 0}
   enemy: {fileID: 0}
   pips: 3
-  friendly: 0
+  friendly: 1
   index: 0
-  deckCtrl: {fileID: 0}
-  discardCtrl: {fileID: 0}
-  handCtrl: {fileID: 0}
-  deckObject: {fileID: 0}
-  discardObject: {fileID: 0}
-  handObject: {fileID: 0}
+  deckCtrl: {fileID: 562958699}
+  discardCtrl: {fileID: 540378492}
+  handCtrl: {fileID: 1921547573}
+  deckObject: {fileID: 562958693}
+  discardObject: {fileID: 540378487}
+  handObject: {fileID: 1921547572}
   fastCards: []
   passedPriority: 0
   holdPriority: 0
@@ -7872,6 +7871,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1841194801}
+  - component: {fileID: 1841194802}
   m_Layer: 0
   m_Name: Other Player
   m_TagString: Untagged
@@ -7893,6 +7893,32 @@ Transform:
   m_Father: {fileID: 492080562}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1841194802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841194800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a321c3cd7ec714449918746a18686773, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 1829834588}
+  pips: 3
+  friendly: 0
+  index: 1
+  deckCtrl: {fileID: 343499438}
+  discardCtrl: {fileID: 116530641}
+  handCtrl: {fileID: 60475903}
+  deckObject: {fileID: 343499437}
+  discardObject: {fileID: 116530640}
+  handObject: {fileID: 60475902}
+  fastCards: []
+  passedPriority: 0
+  holdPriority: 0
+  allowResponses: 1
 --- !u!1 &1848756420
 GameObject:
   m_ObjectHideFlags: 0

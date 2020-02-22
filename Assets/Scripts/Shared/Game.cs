@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using KompasNetworking;
 
 public abstract class Game : MonoBehaviour {
 
@@ -11,7 +12,6 @@ public abstract class Game : MonoBehaviour {
 
     //other scripts
     public MouseController mouseCtrl;
-    public NetworkController networkCtrl;
     public UIController uiCtrl;
 
     //game mechanics
