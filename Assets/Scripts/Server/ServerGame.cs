@@ -83,13 +83,18 @@ public class ServerGame : Game {
         //TODO
     }
 
+    public void GivePlayerPips(Player player, int pipsToSet)
+    {
+        player.pips = pipsToSet;
+        if (player.index == 0) uiCtrl.UpdateFriendlyPips(pipsToSet);
+        else uiCtrl.UpdateEnemyPips(pipsToSet);
+        TurnPlayer.ServerNotifier.NotifySetPips(pipsToSet);
+    }
+
     public void GiveTurnPlayerPips()
     {
         int pipsToSet = TurnPlayer.pips + MaxCardsOnField;
-        TurnPlayer.pips = pipsToSet;
-        if (turnPlayer == 0) uiCtrl.UpdateFriendlyPips(pipsToSet);
-        else uiCtrl.UpdateEnemyPips(pipsToSet);
-        TurnPlayer.ServerNotifier.NotifySetPips(pipsToSet);
+        GivePlayerPips(TurnPlayer, pipsToSet);
     }
 
     public void CheckForDeath(CharacterCard toCheck, IStackable stackSrc)

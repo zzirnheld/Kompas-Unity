@@ -33,6 +33,18 @@ public class ServerNotifier : MonoBehaviour
     }
 
     #region notify
+    public void NotifyPutBack()
+    {
+        Packet p = new Packet(Packet.Command.PutBack);
+        SendPacket(p);
+    }
+
+    public void NotifyBothPutBack()
+    {
+        Packet p = new Packet(Packet.Command.PutBack);
+        SendToBoth(p);
+    }
+
     /// <summary>
     /// Notifies that the Player corresponding to this notifier played a given card
     /// </summary>
@@ -109,6 +121,14 @@ public class ServerNotifier : MonoBehaviour
     {
         //I think it's equivalent?
         NotifyRehand(toDraw);
+    }
+
+    public void NotifyAddToDeck(Card added)
+    {
+        //let everyone know
+        Packet outPacket = new Packet(Packet.Command.AddAsFriendly, added.CardName, (int)CardLocation.Deck, added.ID);
+        Packet outPacketInverted = new Packet(Packet.Command.IncrementEnemyDeck);
+        SendPackets(outPacket, outPacketInverted);
     }
 
     public void NotifySetPips(int pipsToSet)
