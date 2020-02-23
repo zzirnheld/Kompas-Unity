@@ -108,7 +108,7 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.Play:
                 Debug.Log("Client ordered to play to " + packet.X + ", " + packet.Y);
                 Card toPlay = ClientGame.GetCardFromID(packet.cardID);
-                ClientGame.Play(toPlay, packet.X, packet.X, toPlay.Owner);
+                ClientGame.Play(toPlay, packet.X, packet.Y, toPlay.Owner);
                 break;
             case Packet.Command.Move:
                 ClientGame.MoveOnBoard(ClientGame.GetCardFromID(packet.cardID), packet.X, packet.Y);
