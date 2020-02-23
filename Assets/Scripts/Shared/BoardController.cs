@@ -210,7 +210,7 @@ public class BoardController : KompasObject
         {
             if(c != null && c is SpellCard spellC && spellC.SpellSubtype == SpellCard.SpellType.Simple)
             {
-                spellC.Discard();
+                game.Discard(c);
             }
         }
     }

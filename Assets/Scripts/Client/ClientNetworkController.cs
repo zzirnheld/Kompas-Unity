@@ -13,6 +13,8 @@ public class ClientNetworkController : NetworkController {
     private bool changeTargetMode = false;
     private long timeTargetAccepted;
 
+    public ClientGame ClientGame;
+
     public Packet lastPacket;
 
     public Restriction lastRestriction;
@@ -64,18 +66,18 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.mainClientGame.Delete(ClientGame.mainClientGame.GetCardFromID(packet.cardID));
                 break;
             case Packet.Command.AddAsFriendly:
-                ClientGame.mainClientGame.friendlyDeckCtrl.AddCard(packet.CardName, packet.CardIDToBe, ClientGame.mainClientGame.Players[0]);
+                ClientGame.friendlyDeckCtrl.AddCard(packet.CardName, packet.CardIDToBe, ClientGame.Players[0]);
                 break;
             case Packet.Command.AddAsEnemy:
-                Card added = ClientGame.mainClientGame.enemyDeckCtrl.AddCard(packet.CardName, packet.CardIDToBe, ClientGame.mainClientGame.Players[1]);
+                Card added = ClientGame.enemyDeckCtrl.AddCard(packet.CardName, packet.CardIDToBe, ClientGame.Players[1]);
                 //TODO make it always ask for cards from enemy deck
                 switch (packet.Location)
                 {
                     case CardLocation.Field:
-                        added.Play(packet.X, packet.Y, added.Owner);
+                        ClientGame.Play(added, packet.X, packet.Y, added.Owner);
                         break;
                     case CardLocation.Discard:
-                        added.Discard();
+                        ClientGame.Discard(added);
                         break;
                     default:
                         Debug.Log("Tried to add an enemy card to " + packet.Location);
@@ -86,8 +88,8 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.mainClientGame.enemyDeckCtrl.AddBlankCard();
                 break;
             case Packet.Command.IncrementEnemyHand:
-                Card emptyHandAdd = ClientGame.mainClientGame.enemyDeckCtrl.AddBlankCard();
-                emptyHandAdd.Rehand();
+                Card emptyHandAdd = ClientGame.enemyDeckCtrl.AddBlankCard();
+                ClientGame.Rehand(emptyHandAdd);
                 break;
             case Packet.Command.DecrementEnemyDeck:
                 //TODO make sure for both this and decrement hand that you're not deleting a revealedcard
@@ -105,25 +107,25 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.Augment: //the play method calls augment if the card is an augment
             case Packet.Command.Play:
                 Debug.Log("Client ordered to play to " + packet.X + ", " + packet.Y);
-                Card toPlay = ClientGame.mainClientGame.GetCardFromID(packet.cardID);
-                toPlay.Play(packet.X, packet.Y, toPlay.Owner);
+                Card toPlay = ClientGame.GetCardFromID(packet.cardID);
+                ClientGame.Play(toPlay, packet.X, packet.X, toPlay.Owner);
                 break;
             case Packet.Command.Move:
-                ClientGame.mainClientGame.GetCardFromID(packet.cardID).MoveOnBoard(packet.X, packet.Y);
+                ClientGame.MoveOnBoard(ClientGame.GetCardFromID(packet.cardID), packet.X, packet.Y);
                 //make the ui show the updated n (and other values)
                 ClientGame.mainClientGame.uiCtrl.SelectCard(ClientGame.mainClientGame.uiCtrl.SelectedCard, false);
                 break;
             case Packet.Command.Topdeck:
-                ClientGame.mainClientGame.GetCardFromID(packet.cardID).Topdeck();
+                ClientGame.Topdeck(ClientGame.GetCardFromID(packet.cardID));
                 break;
             case Packet.Command.Discard:
-                ClientGame.mainClientGame.GetCardFromID(packet.cardID).Discard();
+                ClientGame.Discard(ClientGame.GetCardFromID(packet.cardID));
                 break;
             case Packet.Command.Rehand:
-                ClientGame.mainClientGame.GetCardFromID(packet.cardID).Rehand();
+                ClientGame.Rehand(ClientGame.GetCardFromID(packet.cardID));
                 break;
             case Packet.Command.Reshuffle:
-                ClientGame.mainClientGame.GetCardFromID(packet.cardID).Reshuffle();
+                ClientGame.Reshuffle(ClientGame.GetCardFromID(packet.cardID));
                 break;
             case Packet.Command.SetNESW:
                 Card toSet = ClientGame.mainClientGame.GetCardFromID(packet.cardID);

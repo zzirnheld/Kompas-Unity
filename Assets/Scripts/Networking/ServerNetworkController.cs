@@ -139,11 +139,7 @@ namespace KompasNetworking
             //if it's not a valid place to do, put the cards back
             if (sGame.ValidAugment(toAugment, invertedX, invertedY))
             {
-                //tell everyone to 
-                ServerNotifier.NotifyPlay(toAugment, invertedX, invertedY);
-
-                //play the card here
-                toAugment.Play(invertedX, invertedY, Player);
+                sGame.Play(toAugment, invertedX, invertedY, Player);
             }
             else
             {
@@ -160,9 +156,7 @@ namespace KompasNetworking
             //if it's not a valid place to do, return
             if (sGame.ValidBoardPlay(toPlay, invertedX, invertedY))
             {
-                ServerNotifier.NotifyPlay(toPlay, invertedX, invertedY);
-                //play the card here
-                toPlay.Play(invertedX, invertedY, Player);
+                sGame.Play(toPlay, invertedX, invertedY, Player);
                 //trigger effects
                 sGame.Trigger(TriggerCondition.Play, toPlay, null, null);
                 sGame.CheckForResponse();
@@ -184,8 +178,7 @@ namespace KompasNetworking
             {
                 Debug.Log($"ServerNetworkController moving {toMove.CardName} from {invertedX} to {invertedY}");
                 //move the card there
-                toMove.MoveOnBoard(invertedX, invertedY);
-                ServerNotifier.NotifyMove(toMove, x, y);
+                sGame.MoveOnBoard(toMove, invertedX, invertedY);
             }
             else
             {
@@ -222,23 +215,19 @@ namespace KompasNetworking
         public void DebugTopdeck(int cardID)
         {
             Card toTopdeck = sGame.GetCardFromID(cardID);
-            ServerNotifier.NotifyTopdeck(toTopdeck);
-            toTopdeck.Topdeck();
+            sGame.Topdeck(toTopdeck);
         }
 
         public void DebugDiscard(int cardID)
         {
             Card toDiscard = sGame.GetCardFromID(cardID);
-            ServerNotifier.NotifyDiscard(toDiscard);
-            toDiscard.Discard();
-            sGame.CheckForResponse();
+            sGame.Discard(toDiscard);
         }
 
         public void DebugRehand(int cardID)
         {
             Card toRehand = sGame.GetCardFromID(cardID);
-            ServerNotifier.NotifyRehand(toRehand);
-            toRehand.Rehand();
+            sGame.Rehand(toRehand);
         }
 
         public void DebugDraw()

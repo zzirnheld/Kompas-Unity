@@ -42,17 +42,90 @@ public class ServerGame : Game {
         return currPlayerCount >= 2;
     }
     #endregion
-    
+
+    #region move card between areas
+    //so that notify stuff can be sent in the server
+    private void Remove(Card card)
+    {
+        switch (card.Location)
+        {
+            case CardLocation.Field:
+                boardCtrl.RemoveFromBoard(card);
+                break;
+            case CardLocation.Discard:
+                card.Controller.discardCtrl.RemoveFromDiscard(card);
+                break;
+            case CardLocation.Hand:
+                card.Controller.handCtrl.RemoveFromHand(card);
+                break;
+            case CardLocation.Deck:
+                card.Controller.deckCtrl.RemoveFromDeck(card);
+                break;
+            default:
+                Debug.LogError($"Tried to remove card from invalid location {card.Location}");
+                break;
+        }
+    }
+
+    public override void Discard(Card card)
+    {
+        ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyDiscard(card);
+        base.Discard(card);
+    }
+
+    public override void Rehand(Player controller, Card card)
+    {
+        if(controller != card.Controller)
+        {
+            Debug.LogError($"Card {card.CardName} is being added to the hand of " +
+                $"{controller.index} without the correct client being notified");
+        }
+        ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyRehand(card);
+        base.Rehand(controller, card);
+    }
+
+    public override void Rehand(Card card)
+    {
+        ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyRehand(card);
+        base.Rehand(card);
+    }
+
+    public override void Reshuffle(Card card)
+    {
+        ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyReshuffle(card);
+        base.Reshuffle(card);
+    }
+
+    public override void Topdeck(Card card)
+    {
+        ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyTopdeck(card);
+        base.Topdeck(card);
+    }
+
+    public override void Play(Card card, int toX, int toY, Player controller)
+    {
+        //note that it's serverPlayers[controller.index] because you can play to the field of someone whose card it isnt
+        ServerPlayers[controller.index].ServerNotifier.NotifyPlay(card, toX, toY);
+        base.Play(card, toX, toY, controller);
+    }
+
+    public override void MoveOnBoard(Card card, int toX, int toY)
+    {
+        ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyMove(card, toX, toY);
+        base.MoveOnBoard(card, toX, toY);
+    }
+    #endregion move card between areas
+
     public Card Draw(int player = 0)
     {
         Card toDraw = Players[player].deckCtrl.PopTopdeck();
-        toDraw.Rehand();
+        Rehand(toDraw);
         return toDraw;
     }
 
     public void Lose(int playerIndex)
     {
-        //TODO
+        throw new System.NotImplementedException();
     }
 
     public void GivePlayerPips(Player player, int pipsToSet)
@@ -75,10 +148,7 @@ public class ServerGame : Game {
         {
             //first, trigger anything that would go off of this thing dying, so it knows it's about to die (moving from field)
             Trigger(TriggerCondition.Discard, toCheck, stackSrc, null);
-            //then notify the players
-            (toCheck.Controller as ServerPlayer).ServerNotifier.NotifyDiscard(toCheck);
-            //then actually discard it
-            toCheck.Discard();
+            Discard(toCheck);
             //don't call check for response on stack because anything that causes things to die,
             //attacks or effects, will call check for response once it's done resolving.
         }

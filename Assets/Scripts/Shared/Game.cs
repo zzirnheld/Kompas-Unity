@@ -124,4 +124,70 @@ public abstract class Game : MonoBehaviour {
         return false;
     }
 
+    #region move card between areas
+    //so that notify stuff can be sent in the server
+    private void Remove(Card card)
+    {
+        switch (card.Location)
+        {
+            case CardLocation.Field:
+                boardCtrl.RemoveFromBoard(card);
+                break;
+            case CardLocation.Discard:
+                card.Controller.discardCtrl.RemoveFromDiscard(card);
+                break;
+            case CardLocation.Hand:
+                card.Controller.handCtrl.RemoveFromHand(card);
+                break;
+            case CardLocation.Deck:
+                card.Controller.deckCtrl.RemoveFromDeck(card);
+                break;
+            default:
+                Debug.LogError($"Tried to remove card from invalid location {card.Location}");
+                break;
+        }
+    }
+
+    public virtual void Discard(Card card)
+    {
+        Remove(card);
+        card.Controller.discardCtrl.AddToDiscard(card);
+    }
+
+    public virtual void Rehand(Player controller, Card card)
+    {
+        Remove(card);
+        //let the card know whose hand it'll be added
+        card.ChangeController(controller);
+        controller.handCtrl.AddToHand(card);
+    }
+
+    public virtual void Rehand(Card card)
+    {
+        Rehand(card.Controller, card);
+    }
+
+    public virtual void Reshuffle(Card card)
+    {
+        Remove(card);
+        card.Controller.deckCtrl.ShuffleIn(card);
+    }
+
+    public virtual void Topdeck(Card card)
+    {
+        Remove(card);
+        card.Controller.deckCtrl.PushTopdeck(card);
+    }
+
+    public virtual void Play(Card card, int toX, int toY, Player controller)
+    {
+        Remove(card);
+        boardCtrl.Play(card, toX, toY, controller);
+    }
+
+    public virtual void MoveOnBoard(Card card, int toX, int toY)
+    {
+        boardCtrl.Move(card, toX, toY);
+    }
+    #endregion move card between areas
 }

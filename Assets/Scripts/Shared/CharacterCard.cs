@@ -78,7 +78,7 @@ public class CharacterCard : Card {
             subtypes = subtypes,
             
             location = location,
-            owner = controllerIndex,
+            owner = ControllerIndex,
             BoardX = boardX,
             BoardY = boardY,
             subtypeText = subtypeText

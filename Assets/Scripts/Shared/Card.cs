@@ -29,7 +29,6 @@ public abstract class Card : KompasObject {
     protected string cardName;
     protected string effText;
     protected string subtypeText;
-    protected int controllerIndex;
     protected Player controller;
     protected int ownerIndex;
     protected Player owner;
@@ -68,7 +67,7 @@ public abstract class Card : KompasObject {
         set { subtypeText = value; }
     }
     public Player Controller { get { return controller; } }
-    public int ControllerIndex { get { return controllerIndex; } }
+    public int ControllerIndex { get { return Controller.index; } }
     public Player Owner { get { return owner; } }
     public int OwnerIndex { get { return ownerIndex; } }
     public CardLocation Location { get { return location; } }
@@ -184,7 +183,7 @@ public abstract class Card : KompasObject {
         //go through each of the serialized effects, 
         for (int i = 0; i < (serializedCard.effects?.Length ?? 0); i++)
         {
-            effects[i] = new Effect(serializedCard.effects[i], this, controllerIndex);
+            effects[i] = new Effect(serializedCard.effects[i], this, ControllerIndex);
         }
 
         this.augments = new List<AugmentCard>();
@@ -233,9 +232,8 @@ public abstract class Card : KompasObject {
     //misc mechanics methods
     public void ChangeController(Player newController)
     {
-        controllerIndex = newController.index;
         controller = newController;
-        transform.localEulerAngles = new Vector3(0, 0, 180 * controllerIndex);
+        transform.localEulerAngles = new Vector3(0, 0, 180 * ControllerIndex);
     }
 
     /// <summary>
@@ -292,71 +290,6 @@ public abstract class Card : KompasObject {
             eff.ResetForTurn();
         }
     }
-
-    #region move card between areas
-    private void Remove()
-    {
-        switch (location)
-        {
-            case CardLocation.Field:
-                game.boardCtrl.RemoveFromBoard(this);
-                break;
-            case CardLocation.Discard:
-                controller.discardCtrl.RemoveFromDiscard(this);
-                break;
-            case CardLocation.Hand:
-                controller.handCtrl.RemoveFromHand(this);
-                break;
-            case CardLocation.Deck:
-                controller.deckCtrl.RemoveFromDeck(this);
-                break;
-            default:
-                Debug.Log("Tried to remove card from " + location);
-                break;
-        }
-    }
-
-    public void Discard()
-    {
-        Remove();
-        controller.discardCtrl.AddToDiscard(this);
-    }
-
-    public void Rehand(Player controller)
-    {
-        Remove();
-        ChangeController(controller);
-        controller.handCtrl.AddToHand(this);
-    }
-
-    public void Rehand()
-    {
-        Rehand(controller);
-    }
-
-    public void Reshuffle()
-    {
-        Remove();
-        controller.deckCtrl.ShuffleIn(this);
-    }
-
-    public void Topdeck()
-    {
-        Remove();
-        controller.deckCtrl.PushTopdeck(this);
-    }
-
-    public void Play(int toX, int toY, Player controller)
-    {
-        Remove();
-        game.boardCtrl.Play(this, toX, toY, controller);
-    }
-
-    public void MoveOnBoard(int toX, int toY)
-    {
-        game.boardCtrl.Move(this, toX, toY);
-    }
-    #endregion move card between areas
 
     #region augments
     public void AddAugment(AugmentCard augment)
@@ -421,7 +354,7 @@ public abstract class Card : KompasObject {
                 int x = PosToGridIndex(transform.localPosition.x);
                 int y = PosToGridIndex(transform.localPosition.y);
                 //then check if it's an attack or not
-                if (game.boardCtrl.GetCharAt(x, y) != null && game.boardCtrl.GetCharAt(x, y).ControllerIndex != controllerIndex)
+                if (game.boardCtrl.GetCharAt(x, y) != null && game.boardCtrl.GetCharAt(x, y).ControllerIndex != ControllerIndex)
                     clientGame.clientNotifier.RequestAttack(this, x, y);
                 else
                     clientGame.clientNotifier.RequestMove(this, x, y);
