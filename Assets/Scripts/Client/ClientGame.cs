@@ -74,11 +74,17 @@ public class ClientGame : Game {
 
     public void TargetCard(Card card)
     {
+        CardRestriction cardRest = clientNetworkCtrl.Restriction as CardRestriction;
+        if(cardRest == null)
+        {
+            Debug.LogError($"Tried to target {card.CardName} while last restriction is null or not card restriction");
+        }
+
         //if the player is currently looking for a target on the board,
         if (targetMode == TargetMode.BoardTarget || targetMode == TargetMode.HandTarget)
         {
             //check if the target fits the restriction, according to us
-            if (clientNetworkCtrl.lastRestriction.Evaluate(card))
+            if (cardRest.Evaluate(card, clientNetworkCtrl.X))
             {
                 //if it fits the restriction, send the proposed target to the server
                 clientNotifier.RequestTarget(card);

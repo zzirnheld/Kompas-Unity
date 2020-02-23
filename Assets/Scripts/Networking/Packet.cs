@@ -55,6 +55,36 @@ namespace KompasNetworking
         public string stringArg;
 
         #region abstraction of args
+        public CardRestriction CardRestriction 
+        {
+            get 
+            {
+                try
+                {
+                    return JsonUtility.FromJson<CardRestriction>(stringArg);
+                }
+                catch (ArgumentException)
+                {
+                    Debug.LogError($"Could not deserialize {stringArg} to card restriction");
+                    return null;
+                }
+            } 
+        }
+        public BoardRestriction BoardRestriction
+        {
+            get
+            {
+                try
+                {
+                    return JsonUtility.FromJson<BoardRestriction>(stringArg);
+                }
+                catch (ArgumentException)
+                {
+                    Debug.LogError($"Could not deserialize {stringArg} to card restriction");
+                    return null;
+                }
+            }
+        }
         public string CardName { get { return Game.CardNames[args[1]]; } }
         public int CardIDToBe { get { return cardID; } }
 
@@ -97,6 +127,16 @@ namespace KompasNetworking
             }
 
             args = new int[4];
+        }
+
+        public Packet(Command command, BoardRestriction boardRestriction, int X) : this(command, X)
+        {
+            stringArg = JsonUtility.ToJson(boardRestriction);
+        }
+
+        public Packet(Command command, CardRestriction cardRestriction, int X) : this(command, X)
+        {
+            stringArg = JsonUtility.ToJson(cardRestriction);
         }
 
         //used only for adding cards to deck

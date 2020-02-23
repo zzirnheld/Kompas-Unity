@@ -17,7 +17,8 @@ public class ClientNetworkController : NetworkController {
 
     public Packet lastPacket;
 
-    public Restriction lastRestriction;
+    public Restriction Restriction;
+    public int X;
 
     public override void Awake()
     {
@@ -156,13 +157,11 @@ public class ClientNetworkController : NetworkController {
                 break;
             case Packet.Command.RequestBoardTarget:
                 ClientGame.targetMode = Game.TargetMode.BoardTarget;
-                lastRestriction = (Game.mainGame.GetCardFromID(packet.cardID)
-                                    .Effects[packet.EffIndex].Subeffects[packet.SubeffIndex] as BoardTargetSubeffect)
-                                    .boardRestriction;
+                Restriction = packet.CardRestriction;
                 break;
             case Packet.Command.RequestHandTarget:
                 ClientGame.targetMode = Game.TargetMode.HandTarget;
-                lastRestriction = (Game.mainGame.GetCardFromID(packet.cardID)
+                Restriction = (Game.mainGame.GetCardFromID(packet.cardID)
                                     .Effects[packet.EffIndex].Subeffects[packet.SubeffIndex] as HandTargetSubeffect)
                                     .cardRestriction;
                 break;
@@ -183,7 +182,7 @@ public class ClientNetworkController : NetworkController {
                 break;
             case Packet.Command.SpaceTarget:
                 ClientGame.targetMode = Game.TargetMode.SpaceTarget;
-                lastRestriction = (Game.mainGame.GetCardFromID(packet.cardID)
+                Restriction = (Game.mainGame.GetCardFromID(packet.cardID)
                                     .Effects[packet.EffIndex].Subeffects[packet.SubeffIndex] as SpaceTargetSubeffect)
                                     .spaceRestriction;
                 //TODO display based on that space

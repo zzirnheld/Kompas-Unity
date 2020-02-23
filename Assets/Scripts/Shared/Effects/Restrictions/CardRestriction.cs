@@ -34,19 +34,13 @@ public class CardRestriction : Restriction
     public string[] subtypesInclude;
     public int constant;
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="potentialTarget"></param>
-    /// <param name="actuallyTargetThis">Whether effect resolution should continue if this is a valid target</param>
-    /// <returns></returns>
-    public override bool Evaluate(Card potentialTarget)
+    public virtual bool Evaluate (Card potentialTarget, int x)
     {
         if (potentialTarget == null) return false;
 
-        foreach(CardRestrictions c in restrictionsToCheck)
+        foreach (CardRestrictions c in restrictionsToCheck)
         {
-            Debug.Log("Considering restriction " + c + " when X equals " + subeffect.parent.X);
+            Debug.Log("Considering restriction " + c + " when X equals " + x);
             switch (c)
             {
                 case CardRestrictions.NameIs:
@@ -81,19 +75,19 @@ public class CardRestriction : Restriction
                     break;
                 case CardRestrictions.NLTEX:
                     if (!(potentialTarget is CharacterCard charC1)) return false;
-                    if (charC1.N > subeffect.parent.X) return false;
+                    if (charC1.N > x) return false;
                     break;
                 case CardRestrictions.ELTEX:
                     if (!(potentialTarget is CharacterCard charC2)) return false;
-                    if (charC2.E > subeffect.parent.X) return false;
+                    if (charC2.E > x) return false;
                     break;
                 case CardRestrictions.SLTEX:
                     if (!(potentialTarget is CharacterCard charC3)) return false;
-                    if (charC3.S > subeffect.parent.X) return false;
+                    if (charC3.S > x) return false;
                     break;
                 case CardRestrictions.WLTEX:
                     if (!(potentialTarget is CharacterCard charC4)) return false;
-                    if (charC4.N > subeffect.parent.X) return false;
+                    if (charC4.N > x) return false;
                     break;
                 case CardRestrictions.NLTEC:
                     if (!(potentialTarget is CharacterCard charC5)) return false;
@@ -119,5 +113,16 @@ public class CardRestriction : Restriction
 
         Debug.Log(potentialTarget.CardName + " fits the restriction");
         return true;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="potentialTarget"></param>
+    /// <param name="actuallyTargetThis">Whether effect resolution should continue if this is a valid target</param>
+    /// <returns></returns>
+    public virtual bool Evaluate(Card potentialTarget)
+    {
+        return Evaluate(potentialTarget, subeffect.parent.X);
     }
 }

@@ -158,9 +158,9 @@ public class ServerNotifier : MonoBehaviour
 
     #region request targets
 
-    public void GetBoardTarget(Card effectSource, int effectIndex, int subeffectIndex)
+    public void GetBoardTarget(BoardRestriction restriction, int X)
     {
-        Packet outPacket = new Packet(Packet.Command.RequestBoardTarget, effectSource, effectIndex, subeffectIndex);
+        Packet outPacket = new Packet(Packet.Command.RequestBoardTarget, restriction, X);
         SendPacket(outPacket);
         Debug.Log("Asking for board target");
     }
