@@ -35,7 +35,7 @@ public class ClientNetworkController : NetworkController {
     {
         if (changeTargetMode && DateTime.Now.Ticks - timeTargetAccepted >= 5000000)
         {
-            ClientGame.mainClientGame.targetMode = Game.TargetMode.Free;
+            ClientGame.targetMode = Game.TargetMode.Free;
             changeTargetMode = false;
         }
 
@@ -51,8 +51,8 @@ public class ClientNetworkController : NetworkController {
         }
         if (packet.command != Packet.Command.Nothing)
         {
-            Debug.Log("Parsing command " + packet.command + " for " + packet.cardID);
-            ClientGame.mainClientGame.uiCtrl.CurrentStateString = "Parsing command " + packet.command + " for card id" + packet.cardID;
+            Debug.Log($"Parsing command {packet.command} for {packet.cardID}");
+            ClientGame.uiCtrl.CurrentStateString = $"Parsing command {packet.command} for card id {packet.cardID}";
         }
 
         lastPacket = packet;
@@ -63,7 +63,7 @@ public class ClientNetworkController : NetworkController {
                 //discard
                 return;
             case Packet.Command.Delete:
-                ClientGame.mainClientGame.Delete(ClientGame.mainClientGame.GetCardFromID(packet.cardID));
+                ClientGame.Delete(ClientGame.GetCardFromID(packet.cardID));
                 break;
             case Packet.Command.AddAsFriendly:
                 ClientGame.friendlyDeckCtrl.AddCard(packet.CardName, packet.CardIDToBe, ClientGame.Players[0]);
@@ -85,7 +85,7 @@ public class ClientNetworkController : NetworkController {
                 }
                 break;
             case Packet.Command.IncrementEnemyDeck:
-                ClientGame.mainClientGame.enemyDeckCtrl.AddBlankCard();
+                ClientGame.enemyDeckCtrl.AddBlankCard();
                 break;
             case Packet.Command.IncrementEnemyHand:
                 Card emptyHandAdd = ClientGame.enemyDeckCtrl.AddBlankCard();
@@ -93,15 +93,15 @@ public class ClientNetworkController : NetworkController {
                 break;
             case Packet.Command.DecrementEnemyDeck:
                 //TODO make sure for both this and decrement hand that you're not deleting a revealedcard
-                if(ClientGame.mainClientGame.enemyDeckCtrl.DeckSize() > 0)
+                if(ClientGame.enemyDeckCtrl.DeckSize() > 0)
                 {
-                    ClientGame.mainClientGame.enemyDeckCtrl.PopBottomdeck();
+                    ClientGame.enemyDeckCtrl.PopBottomdeck();
                 }
                 break;
             case Packet.Command.DecrementEnemyHand:
-                if(ClientGame.mainClientGame.enemyHandCtrl.HandSize > 0)
+                if(ClientGame.enemyHandCtrl.HandSize > 0)
                 {
-                    ClientGame.mainClientGame.enemyHandCtrl.RemoveFromHandAt(0);
+                    ClientGame.enemyHandCtrl.RemoveFromHandAt(0);
                 }
                 break;
             case Packet.Command.Augment: //the play method calls augment if the card is an augment
@@ -113,7 +113,7 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.Move:
                 ClientGame.MoveOnBoard(ClientGame.GetCardFromID(packet.cardID), packet.X, packet.Y);
                 //make the ui show the updated n (and other values)
-                ClientGame.mainClientGame.uiCtrl.SelectCard(ClientGame.mainClientGame.uiCtrl.SelectedCard, false);
+                ClientGame.uiCtrl.SelectCard(ClientGame.uiCtrl.SelectedCard, false);
                 break;
             case Packet.Command.Topdeck:
                 ClientGame.Topdeck(ClientGame.GetCardFromID(packet.cardID));
@@ -128,40 +128,40 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.Reshuffle(ClientGame.GetCardFromID(packet.cardID));
                 break;
             case Packet.Command.SetNESW:
-                Card toSet = ClientGame.mainClientGame.GetCardFromID(packet.cardID);
+                Card toSet = ClientGame.GetCardFromID(packet.cardID);
                 (toSet as CharacterCard)?.SetNESW(packet.N, packet.E, packet.S, packet.W);
                 break;
             case Packet.Command.SetPips:
-                ClientGame.mainClientGame.SetFriendlyPips(packet.Pips);
+                ClientGame.SetFriendlyPips(packet.Pips);
                 break;
             case Packet.Command.SetEnemyPips:
-                ClientGame.mainClientGame.SetEnemyPips(packet.Pips);
+                ClientGame.SetEnemyPips(packet.Pips);
                 break;
             case Packet.Command.PutBack:
-                ClientGame.mainClientGame.boardCtrl.PutCardsBack();
+                ClientGame.boardCtrl.PutCardsBack();
                 break;
             case Packet.Command.EndTurn:
-                ClientGame.mainClientGame.turnPlayer = 1 - ClientGame.mainClientGame.turnPlayer;
-                ClientGame.mainClientGame.boardCtrl.ResetCardsForTurn();
-                if(ClientGame.mainClientGame.turnPlayer == 0) ClientGame.mainClientGame.uiCtrl.CurrentStateString = "Your Turn";
-                else ClientGame.mainClientGame.uiCtrl.CurrentStateString = "Enemy Turn";
+                ClientGame.turnPlayer = 1 - ClientGame.turnPlayer;
+                ClientGame.boardCtrl.ResetCardsForTurn();
+                if(ClientGame.turnPlayer == 0) ClientGame.uiCtrl.CurrentStateString = "Your Turn";
+                else ClientGame.uiCtrl.CurrentStateString = "Enemy Turn";
                 break;
             case Packet.Command.YoureFirst:
-                ClientGame.mainClientGame.turnPlayer = 0;
-                ClientGame.mainClientGame.uiCtrl.CurrentStateString = "Your Turn";
+                ClientGame.turnPlayer = 0;
+                ClientGame.uiCtrl.CurrentStateString = "Your Turn";
                 break;
             case Packet.Command.YoureSecond:
-                ClientGame.mainClientGame.turnPlayer = 1;
-                ClientGame.mainClientGame.uiCtrl.CurrentStateString = "Enemy Turn";
+                ClientGame.turnPlayer = 1;
+                ClientGame.uiCtrl.CurrentStateString = "Enemy Turn";
                 break;
             case Packet.Command.RequestBoardTarget:
-                ClientGame.mainClientGame.targetMode = Game.TargetMode.BoardTarget;
+                ClientGame.targetMode = Game.TargetMode.BoardTarget;
                 lastRestriction = (Game.mainGame.GetCardFromID(packet.cardID)
                                     .Effects[packet.EffIndex].Subeffects[packet.SubeffIndex] as BoardTargetSubeffect)
                                     .boardRestriction;
                 break;
             case Packet.Command.RequestHandTarget:
-                ClientGame.mainClientGame.targetMode = Game.TargetMode.HandTarget;
+                ClientGame.targetMode = Game.TargetMode.HandTarget;
                 lastRestriction = (Game.mainGame.GetCardFromID(packet.cardID)
                                     .Effects[packet.EffIndex].Subeffects[packet.SubeffIndex] as HandTargetSubeffect)
                                     .cardRestriction;
@@ -171,18 +171,18 @@ public class ClientNetworkController : NetworkController {
                 CardRestriction deckRestriction = (Game.mainGame.GetCardFromID(packet.cardID)
                                     .Effects[packet.EffIndex].Subeffects[packet.SubeffIndex] as DeckTargetSubeffect)
                                     .cardRestriction;
-                List<Card> toSearch = ClientGame.mainClientGame.friendlyDeckCtrl.CardsThatFitRestriction(deckRestriction);
-                ClientGame.mainClientGame.clientUICtrl.StartSearch(toSearch, true);
+                List<Card> toSearch = ClientGame.friendlyDeckCtrl.CardsThatFitRestriction(deckRestriction);
+                ClientGame.clientUICtrl.StartSearch(toSearch, true);
                 break;
             case Packet.Command.RequestDiscardTarget:
                 CardRestriction discardRestriction = (Game.mainGame.GetCardFromID(packet.cardID)
                                     .Effects[packet.EffIndex].Subeffects[packet.SubeffIndex] as DiscardTargetSubeffect)
                                     .cardRestriction;
-                List<Card> discardToSearch = ClientGame.mainClientGame.friendlyDiscardCtrl.CardsThatFitRestriction(discardRestriction);
-                ClientGame.mainClientGame.clientUICtrl.StartSearch(discardToSearch, true);
+                List<Card> discardToSearch = ClientGame.friendlyDiscardCtrl.CardsThatFitRestriction(discardRestriction);
+                ClientGame.clientUICtrl.StartSearch(discardToSearch, true);
                 break;
             case Packet.Command.SpaceTarget:
-                ClientGame.mainClientGame.targetMode = Game.TargetMode.SpaceTarget;
+                ClientGame.targetMode = Game.TargetMode.SpaceTarget;
                 lastRestriction = (Game.mainGame.GetCardFromID(packet.cardID)
                                     .Effects[packet.EffIndex].Subeffects[packet.SubeffIndex] as SpaceTargetSubeffect)
                                     .spaceRestriction;
@@ -193,20 +193,20 @@ public class ClientNetworkController : NetworkController {
                 Game.mainGame.GetCardFromID(packet.cardID).Effects[packet.EffIndex].X = packet.X;
                 break;
             case Packet.Command.PlayerSetX:
-                ClientGame.mainClientGame.clientUICtrl.GetXForEffect();
+                ClientGame.clientUICtrl.GetXForEffect();
                 break;
             case Packet.Command.TargetAccepted:
                 timeTargetAccepted = DateTime.Now.Ticks;
                 changeTargetMode = true;
                 break;
             case Packet.Command.EnableDecliningTarget:
-                ClientGame.mainClientGame.clientUICtrl.EnableDecliningTarget();
+                ClientGame.clientUICtrl.EnableDecliningTarget();
                 break;
             case Packet.Command.DisableDecliningTarget:
-                ClientGame.mainClientGame.clientUICtrl.DisableDecliningTarget();
+                ClientGame.clientUICtrl.DisableDecliningTarget();
                 break;
             case Packet.Command.DiscardSimples:
-                ClientGame.mainClientGame.boardCtrl.DiscardSimples();
+                ClientGame.boardCtrl.DiscardSimples();
                 break;
             default:
                 Debug.Log("Unrecognized command sent to client");
