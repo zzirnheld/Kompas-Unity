@@ -45,6 +45,14 @@ public class ClientUIController : UIController
         if (fromClick && card != null) clientGame.TargetCard(card);
     }
 
+    public void Connect()
+    {
+        string ip = ipInputField.text;
+        if (string.IsNullOrEmpty(ip)) ip = "localhost";
+        ClientGame.mainClientGame?.clientNetworkCtrl.Connect(ip);
+        HideNetworkingUI();
+    }
+
     #region effects
     public void ActivateSelectedCardEff(int index)
     {

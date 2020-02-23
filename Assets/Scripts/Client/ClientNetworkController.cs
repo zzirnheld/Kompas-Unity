@@ -8,7 +8,7 @@ using UnityEngine;
 using KompasNetworking;
 
 
-public class ClientNetworkController : KompasNetworking.NetworkController {
+public class ClientNetworkController : NetworkController {
 
     private bool changeTargetMode = false;
     private long timeTargetAccepted;
@@ -17,9 +17,16 @@ public class ClientNetworkController : KompasNetworking.NetworkController {
 
     public Restriction lastRestriction;
 
-    public void Awake()
+    public override void Awake()
     {
+        base.Awake();
         timeTargetAccepted = DateTime.Now.Ticks;
+    }
+
+    public void Connect(string ip)
+    {
+        Debug.Log($"Connecting to {ip} on port {port}");
+        tcpClient = new System.Net.Sockets.TcpClient(ip, port);
     }
 
     public override void Update()

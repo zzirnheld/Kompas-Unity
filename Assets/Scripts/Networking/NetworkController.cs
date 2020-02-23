@@ -18,11 +18,11 @@ namespace KompasNetworking
 
         private bool awaitingInt = true;
         private int numBytesToRead;
-        private int numBytesRead;
+        private int numBytesRead = 0;
         private byte[] bytesRead = new byte[sizeof(int)];
-        private TcpClient tcpClient;
+        protected TcpClient tcpClient;
 
-        private void Awake()
+        public virtual void Awake()
         {
             Packets = new Queue<Packet>();
         }
@@ -41,11 +41,12 @@ namespace KompasNetworking
             //if there's nothing to be read, return
             if (!tcpClient.GetStream().DataAvailable) return;
 
+            Debug.Log("Data available");
+
             if (awaitingInt) ReadInt(networkStream);
             else ReadPacket(networkStream);
             
-            if (Packets.Count == 0)
-                ProcessPacket(Packets.Dequeue());
+            if (Packets.Count != 0) ProcessPacket(Packets.Dequeue());
         }
 
         #region serialization
@@ -67,7 +68,7 @@ namespace KompasNetworking
             catch (System.ArgumentException argEx)
             {
                 //Catch JSON parse error
-                Debug.LogError($"Failed to deserialize packet from json {json}, " +
+                Debug.LogError($"Failed to deserialize packet from json \"{json}\", " +
                     $"argument exception with message {argEx.Message}");
                 return null;
             }
@@ -116,6 +117,7 @@ namespace KompasNetworking
                 numBytesToRead = System.BitConverter.ToInt32(bytesRead, 0);
                 awaitingInt = false;
                 bytesRead = new byte[numBytesToRead];
+                numBytesRead = 0;
             }
             else if (numBytesRead == 0)
             {
@@ -132,6 +134,7 @@ namespace KompasNetworking
                 if(p != null) Packets.Enqueue(p);
                 awaitingInt = true;
                 bytesRead = new byte[sizeof(int)];
+                numBytesRead = 0;
             }
             else if (numBytesRead == 0)
             {

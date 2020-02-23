@@ -55,9 +55,9 @@ public class Player : MonoBehaviour{
         fastCards = new List<Card>();
     }
 
-    public void SetInfo(TcpClient TcpClient, int index)
+    public virtual void SetInfo(TcpClient tcpClient, int index)
     {
-        this.TcpClient = TcpClient;
+        TcpClient = tcpClient;
         this.index = index;
     }
 

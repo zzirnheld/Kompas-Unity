@@ -12,8 +12,6 @@ namespace KompasNetworking
         public ServerGame sGame;
         public ServerNotifier ServerNotifier;
 
-        public UIController uiCtrl;
-
         //TODO make code that checks if ready to resolve the stack (both players have no responses/have declined priority in a row)
         public override void ProcessPacket(Packet packet)
         {
@@ -74,27 +72,27 @@ namespace KompasNetworking
                 #endregion
                 #region debug commands
                 case Packet.Command.Topdeck:
-                    if (!uiCtrl.DebugMode) break;
+                    if (!sGame.uiCtrl.DebugMode) break;
                     DebugTopdeck(packet.cardID);
                     break;
                 case Packet.Command.Discard:
-                    if (!uiCtrl.DebugMode) break;
+                    if (!sGame.uiCtrl.DebugMode) break;
                     DebugDiscard(packet.cardID);
                     break;
                 case Packet.Command.Rehand:
-                    if (!uiCtrl.DebugMode) break;
+                    if (!sGame.uiCtrl.DebugMode) break;
                     DebugRehand(packet.cardID);
                     break;
                 case Packet.Command.Draw:
-                    if (!uiCtrl.DebugMode) break;
+                    if (!sGame.uiCtrl.DebugMode) break;
                     DebugDraw();
                     break;
                 case Packet.Command.SetNESW:
-                    if (!uiCtrl.DebugMode) break;
+                    if (!sGame.uiCtrl.DebugMode) break;
                     DebugSetNESW(packet.cardID, packet.N, packet.E, packet.S, packet.W);
                     break;
                 case Packet.Command.SetPips:
-                    if (!uiCtrl.DebugMode) break;
+                    if (!sGame.uiCtrl.DebugMode) break;
                     DebugSetPips(packet.Pips);
                     break;
                 case Packet.Command.TestTargetEffect:

@@ -1987,7 +1987,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseCtrl: {fileID: 75480508}
-  networkCtrl: {fileID: 2001968206}
   uiCtrl: {fileID: 1615817260}
   boardCtrl: {fileID: 665162530}
   boardObject: {fileID: 665162525}
@@ -7346,7 +7345,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2001968206}
+      - m_Target: {fileID: 1615817260}
         m_MethodName: Connect
         m_Mode: 1
         m_Arguments:
