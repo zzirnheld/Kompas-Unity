@@ -74,6 +74,8 @@ public class ClientGame : Game {
 
     public void TargetCard(Card card)
     {
+        if (clientNetworkCtrl.Restriction == null) return;
+
         CardRestriction cardRest = clientNetworkCtrl.Restriction as CardRestriction;
         if(cardRest == null)
         {

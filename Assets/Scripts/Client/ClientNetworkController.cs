@@ -157,34 +157,31 @@ public class ClientNetworkController : NetworkController {
                 break;
             case Packet.Command.RequestBoardTarget:
                 ClientGame.targetMode = Game.TargetMode.BoardTarget;
-                Restriction = packet.CardRestriction;
+                Restriction = packet.BoardRestriction;
+                new Effect(ClientGame.GetCardFromID(packet.cardID), Restriction, packet.X);
                 break;
             case Packet.Command.RequestHandTarget:
                 ClientGame.targetMode = Game.TargetMode.HandTarget;
-                Restriction = (Game.mainGame.GetCardFromID(packet.cardID)
-                                    .Effects[packet.EffIndex].Subeffects[packet.SubeffIndex] as HandTargetSubeffect)
-                                    .cardRestriction;
+                Restriction = packet.CardRestriction;
+                new Effect(ClientGame.GetCardFromID(packet.cardID), Restriction, packet.X);
                 break;
             case Packet.Command.RequestDeckTarget:
                 Debug.Log("Eff index: " + packet.EffIndex + " subeff index " + packet.SubeffIndex);
-                CardRestriction deckRestriction = (Game.mainGame.GetCardFromID(packet.cardID)
-                                    .Effects[packet.EffIndex].Subeffects[packet.SubeffIndex] as DeckTargetSubeffect)
-                                    .cardRestriction;
+                CardRestriction deckRestriction = packet.CardRestriction;
+                new Effect(ClientGame.GetCardFromID(packet.cardID), Restriction, packet.X);
                 List<Card> toSearch = ClientGame.friendlyDeckCtrl.CardsThatFitRestriction(deckRestriction);
                 ClientGame.clientUICtrl.StartSearch(toSearch, true);
                 break;
             case Packet.Command.RequestDiscardTarget:
-                CardRestriction discardRestriction = (Game.mainGame.GetCardFromID(packet.cardID)
-                                    .Effects[packet.EffIndex].Subeffects[packet.SubeffIndex] as DiscardTargetSubeffect)
-                                    .cardRestriction;
+                CardRestriction discardRestriction = packet.CardRestriction;
+                new Effect(ClientGame.GetCardFromID(packet.cardID), Restriction, packet.X);
                 List<Card> discardToSearch = ClientGame.friendlyDiscardCtrl.CardsThatFitRestriction(discardRestriction);
                 ClientGame.clientUICtrl.StartSearch(discardToSearch, true);
                 break;
             case Packet.Command.SpaceTarget:
                 ClientGame.targetMode = Game.TargetMode.SpaceTarget;
-                Restriction = (Game.mainGame.GetCardFromID(packet.cardID)
-                                    .Effects[packet.EffIndex].Subeffects[packet.SubeffIndex] as SpaceTargetSubeffect)
-                                    .spaceRestriction;
+                Restriction = packet.SpaceRestriction;
+                new Effect(ClientGame.GetCardFromID(packet.cardID), Restriction, packet.X);
                 //TODO display based on that space
                 break;
             case Packet.Command.SetEffectsX:

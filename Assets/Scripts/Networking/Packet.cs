@@ -85,6 +85,21 @@ namespace KompasNetworking
                 }
             }
         }
+        public SpaceRestriction SpaceRestriction
+        {
+            get
+            {
+                try
+                {
+                    return JsonUtility.FromJson<SpaceRestriction>(stringArg);
+                }
+                catch (ArgumentException)
+                {
+                    Debug.LogError($"Could not deserialize {stringArg} to card restriction");
+                    return null;
+                }
+            }
+        }
         public string CardName { get { return Game.CardNames[args[1]]; } }
         public int CardIDToBe { get { return cardID; } }
 
@@ -129,14 +144,19 @@ namespace KompasNetworking
             args = new int[4];
         }
 
-        public Packet(Command command, BoardRestriction boardRestriction, int X) : this(command, X)
+        public Packet(Command command, Card source, BoardRestriction boardRestriction, int X) : this(command, source, X)
         {
             stringArg = JsonUtility.ToJson(boardRestriction);
         }
 
-        public Packet(Command command, CardRestriction cardRestriction, int X) : this(command, X)
+        public Packet(Command command, Card source, CardRestriction cardRestriction, int X) : this(command, source, X)
         {
             stringArg = JsonUtility.ToJson(cardRestriction);
+        }
+
+        public Packet(Command command, Card source, SpaceRestriction spaceRestriction, int X) : this(command, source, X)
+        {
+            stringArg = JsonUtility.ToJson(spaceRestriction);
         }
 
         //used only for adding cards to deck
