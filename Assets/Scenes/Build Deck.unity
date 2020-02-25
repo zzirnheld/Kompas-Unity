@@ -465,7 +465,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1248521067}
   m_HandleRect: {fileID: 1248521066}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1025,19 +1025,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CardSearchPaneParentObj: {fileID: 1735891418}
-  CardSearchName: {fileID: 765826606}
+  CardImage: {fileID: 1435141108}
+  CardNameText: {fileID: 1173497120}
+  StatsText: {fileID: 1262430886}
+  SubtypesText: {fileID: 20785741}
+  EffectText: {fileID: 1609596040}
   CharPrefab: {fileID: 3989091764113213402, guid: 8a425cb37bcc0c545807a7aff1449f4b,
     type: 3}
   SpellPrefab: {fileID: 3211160473117395004, guid: b225db4bd9babeb43b973fc238150f70,
     type: 3}
   AugPrefab: {fileID: 6156539215506979954, guid: 104fae637567a2d41949672925893586,
     type: 3}
-  CardImage: {fileID: 1435141108}
-  CardNameText: {fileID: 1173497120}
-  StatsText: {fileID: 1262430886}
-  SubtypesText: {fileID: 20785741}
-  EffectText: {fileID: 1609596040}
-  DeckbuilderCtrl: {fileID: 0}
+  DeckbuilderCtrl: {fileID: 1378237990}
   CardRepo: {fileID: 453664557}
 --- !u!114 &84113671
 MonoBehaviour:
@@ -8540,14 +8539,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardRepo: {fileID: 453664557}
   CardSearchCtrl: {fileID: 84113670}
-  DeckViewScrollPane: {fileID: 747553270}
-  DeckNameDropdown: {fileID: 479898343}
-  DeckNameInput: {fileID: 688797105}
-  CardsInDeckText: {fileID: 109958566}
   ConfirmDialog: {fileID: 93446815}
   ErrorDialog: {fileID: 359598263}
   ImportDialog: {fileID: 765227643}
   ExportDialog: {fileID: 1861377603}
+  DeckViewScrollPane: {fileID: 747553270}
+  DeckNameDropdown: {fileID: 479898343}
+  DeckNameInput: {fileID: 688797105}
+  CardsInDeckText: {fileID: 109958566}
 --- !u!1 &1393889085
 GameObject:
   m_ObjectHideFlags: 0
@@ -8738,7 +8737,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1280124297}
   m_HandleRect: {fileID: 1280124296}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
