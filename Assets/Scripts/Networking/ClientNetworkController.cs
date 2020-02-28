@@ -50,19 +50,13 @@ public class ClientNetworkController : NetworkController {
             Debug.Log("Null packet");
             return;
         }
-        if (packet.command != Packet.Command.Nothing)
-        {
-            Debug.Log($"Parsing command {packet.command} for {packet.cardID}");
-            ClientGame.uiCtrl.CurrentStateString = $"Parsing command {packet.command} for card id {packet.cardID}";
-        }
-
+        Debug.Log($"Parsing command {packet.command} for {packet.cardID}");
+        ClientGame.uiCtrl.CurrentStateString = $"Parsing command {packet.command} for card id {packet.cardID}";
+        
         lastPacket = packet;
 
         switch (packet.command)
         {
-            case Packet.Command.Nothing:
-                //discard
-                return;
             case Packet.Command.Delete:
                 ClientGame.Delete(ClientGame.GetCardFromID(packet.cardID));
                 break;

@@ -11,8 +11,6 @@ namespace KompasNetworking
 
         public enum Command
         {
-            //no-op packets
-            Nothing, Confirm,
             //basic player commands
             Play, Augment, Move, EndTurn, Attack,
             //move cards around
@@ -121,25 +119,10 @@ namespace KompasNetworking
         #endregion abstraction of args
 
         #region constuctors 
-        /// <summary>
-        /// Use only for confirm packet
-        /// </summary>
-        /// <param name="packetID"></param>
-        public Packet(int packetID)
-        {
-            command = Command.Confirm;
-            this.packetID = packetID;
-            args = new int[4];
-        }
-
         public Packet(Command command)
         {
             this.command = command;
-            if (command != Command.Nothing)
-            {
-                packetID = id;
-                id = (id + 1) % 1000;
-            }
+            id = (id + 1) % 1000;
 
             args = new int[4];
         }

@@ -16,14 +16,11 @@ namespace KompasNetworking
         public override void ProcessPacket(Packet packet)
         {
             if (packet == null) return;
-            if (packet.command != Packet.Command.Nothing) Debug.Log($"packet command is {packet.command} for player index {Player.index}");
+            Debug.Log($"packet command is {packet.command} for player index {Player.index}");
 
             //switch between all the possible requests for the server to handle.
             switch (packet.command)
             {
-                case Packet.Command.Nothing:
-                    //do nothing, keeps the connection alive
-                    break;
                 case Packet.Command.AddToDeck:
                     AddCardToDeck(packet.CardName);
                     break;
