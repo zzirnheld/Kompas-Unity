@@ -61,7 +61,14 @@ public class CardRespository : MonoBehaviour
         return cardNames.Contains(cardName);
     }
 
-    public DeckbuilderCard InstantiateCard(string json, Transform parent, bool inDeck)
+    public SerializableCard GetCardFromName(string name)
+    {
+        if (!CardExists(name)) return null;
+
+        return JsonUtility.FromJson<SerializableCard>(cardJsons[name]);
+    }
+
+    public DeckbuilderCard InstantiateDeckbuilderCard(string json, Transform parent, bool inDeck)
     {
         try
         {

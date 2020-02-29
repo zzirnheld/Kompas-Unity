@@ -49,7 +49,7 @@ public class ClientUIController : UIController
     {
         string ip = ipInputField.text;
         if (string.IsNullOrEmpty(ip)) ip = "localhost";
-        ClientGame.mainClientGame?.clientNetworkCtrl.Connect(ip);
+        clientGame.clientNetworkCtrl.Connect(ip);
         HideNetworkingUI();
     }
 

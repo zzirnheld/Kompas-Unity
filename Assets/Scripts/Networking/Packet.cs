@@ -11,6 +11,8 @@ namespace KompasNetworking
 
         public enum Command
         {
+            //game start procedures
+            GetDeck, SetDeck,
             //basic player commands
             Play, Augment, Move, EndTurn, Attack,
             //move cards around

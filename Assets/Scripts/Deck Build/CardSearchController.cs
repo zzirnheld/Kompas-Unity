@@ -84,7 +84,7 @@ public class CardSearchController : MonoBehaviour
         //for each of the jsons, add it to the shown cards to be added
         foreach (string json in jsonsThatFit)
         {
-            DeckbuilderCard newCard = CardRepo.InstantiateCard(json, CardSearchPaneParentObj.transform, false);
+            DeckbuilderCard newCard = CardRepo.InstantiateDeckbuilderCard(json, CardSearchPaneParentObj.transform, false);
             if (newCard != null) shownCards.Add(newCard);
         }
     }

@@ -2979,6 +2979,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1475313886}
   - component: {fileID: 1475313885}
+  - component: {fileID: 1475313887}
   m_Layer: 0
   m_Name: Server Controller
   m_TagString: Untagged
@@ -3016,6 +3017,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1475313887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475313884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b60d4ae6071a59941b2efe049257d7dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  searchCtrl: {fileID: 0}
 --- !u!1 &1478809135
 GameObject:
   m_ObjectHideFlags: 0

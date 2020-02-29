@@ -29,7 +29,9 @@ public class ClientNetworkController : NetworkController {
     public void Connect(string ip)
     {
         Debug.Log($"Connecting to {ip} on port {port}");
+        ClientGame.uiCtrl.CurrentStateString = $"Connecting to {ip}";
         tcpClient = new System.Net.Sockets.TcpClient(ip, port);
+        ClientGame.uiCtrl.CurrentStateString = $"Connected to {ip}";
     }
 
     public override void Update()

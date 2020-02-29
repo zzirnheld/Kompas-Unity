@@ -9,11 +9,16 @@ public class ServerGame : Game {
     //if server oks, it tells all players to do the thing
     //if server doesn't ok, it sends to all players a "hold up reset everything to how it should be"
 
+    public readonly object SetAvatarLock = new object();
+
     public override Player[] Players => ServerPlayers;
     public ServerPlayer[] ServerPlayers;
     public ServerPlayer TurnServerPlayer { get { return ServerPlayers[turnPlayer]; } }
     public int cardCount = 0;
     private int currPlayerCount = 0; //current number of players. shouldn't exceed 2
+
+    //game startup flags
+    private bool haveAvatars = false;
 
     private void Awake()
     {
@@ -26,7 +31,14 @@ public class ServerGame : Game {
         }
     }
 
-    #region players
+    public void Init(MouseController mouseCtrl, UIController uiCtrl, CardRespository cardRepo)
+    {
+        this.mouseCtrl = mouseCtrl;
+        this.uiCtrl = uiCtrl;
+        CardRepo = cardRepo;
+    }
+
+    #region players and game starting
     public int AddPlayer(TcpClient tcpClient)
     {
         Debug.Log($"Adding player #{currPlayerCount}");
@@ -34,12 +46,69 @@ public class ServerGame : Game {
 
         Players[currPlayerCount].SetInfo(tcpClient, currPlayerCount);
         currPlayerCount++;
+
+        //if at least two players, start the game startup process by getting avatars
+        if (currPlayerCount >= 2) GetAvatars();
+
         return currPlayerCount;
     }
 
-    public bool HasPlayer2()
+    private void GetAvatarFrom(ServerPlayer player)
     {
-        return currPlayerCount >= 2;
+        //TODO
+    }
+
+    public void GetAvatars()
+    {
+        //ask the players for their avatars (and decks at the same time)
+        foreach(ServerPlayer p in ServerPlayers)
+        {
+            GetAvatarFrom(p);
+        }
+
+        //if avatars are returned, then set the pips to start with and start the game
+        //that should happen in server network controller
+    }
+
+    //for future logic like limited cards, etc.
+    private bool ValidDeck(List<string> deck)
+    {
+        if (deck.Count < 50) return false;
+        //first name should be that of the Avatar
+        if (CardRepo.GetCardFromName(deck[0]).cardType != 'C') return false;
+
+        return true;
+    }
+
+    public void SetDeck(ServerPlayer player, string decklist)
+    {
+        string[] cards = decklist.Split('\n');
+        List<string> deck = new List<string>();
+        foreach(string name in cards)
+        {
+            if (CardNameIndices.ContainsKey(name)) deck.Add(name);
+        }
+
+        if (!ValidDeck(deck))
+        {
+            //request deck again from that player
+            GetAvatarFrom(player);
+        }
+
+        //otherwise, set the deck
+        foreach(string name in deck)
+        {
+            Card card = player.deckCtrl.AddCard(name, cardCount, player);
+            cardCount++;
+            player.ServerNotifier.NotifyAddToDeck(card);
+        }
+    }
+
+    public void StartGame()
+    {
+        //set initial pips (based on avatars' S)
+
+        //determine who goes first and tell the players
     }
     #endregion
 
