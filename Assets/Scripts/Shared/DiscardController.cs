@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DiscardController : KompasObject {
-    
+public class DiscardController : MonoBehaviour, KompasObject {
+
+    public Game game;
+    public Game Game { get => game; set => game = value; }
     private ClientGame clientGame;
 
     private List<Card> discard = new List<Card>();
@@ -55,7 +57,7 @@ public class DiscardController : KompasObject {
         discard.RemoveAt(index);
     }
 
-    public override void OnClick()
+    public void OnClick()
     {
         if (clientGame.friendlyDiscardCtrl == this)
             clientGame.clientNotifier.RequestRehand(GetLastDiscarded());
@@ -82,4 +84,10 @@ public class DiscardController : KompasObject {
 
         return cards;
     }
+
+    public void OnHover() { }
+
+    public void OnDrag(Vector3 mousePos) { }
+
+    public void OnDragEnd(Vector3 mousePos) { }
 }

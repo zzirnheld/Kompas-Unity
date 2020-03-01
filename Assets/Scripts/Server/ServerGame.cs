@@ -31,7 +31,7 @@ public class ServerGame : Game {
         }
     }
 
-    public void Init(MouseController mouseCtrl, UIController uiCtrl, CardRespository cardRepo)
+    public void Init(MouseController mouseCtrl, UIController uiCtrl, CardRepository cardRepo)
     {
         this.mouseCtrl = mouseCtrl;
         this.uiCtrl = uiCtrl;
@@ -48,22 +48,22 @@ public class ServerGame : Game {
         currPlayerCount++;
 
         //if at least two players, start the game startup process by getting avatars
-        if (currPlayerCount >= 2) GetAvatars();
+        if (currPlayerCount >= 2) GetDecks();
 
         return currPlayerCount;
     }
 
-    private void GetAvatarFrom(ServerPlayer player)
+    private void GetDeckFrom(ServerPlayer player)
     {
-        //TODO
+        player.ServerNotifier.GetDecklist();
     }
 
-    public void GetAvatars()
+    public void GetDecks()
     {
         //ask the players for their avatars (and decks at the same time)
         foreach(ServerPlayer p in ServerPlayers)
         {
-            GetAvatarFrom(p);
+            GetDeckFrom(p);
         }
 
         //if avatars are returned, then set the pips to start with and start the game
@@ -92,7 +92,7 @@ public class ServerGame : Game {
         if (!ValidDeck(deck))
         {
             //request deck again from that player
-            GetAvatarFrom(player);
+            GetDeckFrom(player);
         }
 
         //otherwise, set the deck

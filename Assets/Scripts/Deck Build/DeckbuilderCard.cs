@@ -4,21 +4,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public abstract class DeckbuilderCard : MonoBehaviour
+public abstract class DeckbuilderCard : CardBase
 {
     protected CardSearchController cardSearchController;
 
-    public char CardType { get; private set; }
-    public string CardName { get; private set; }
-    public string EffText { get; private set; }
-    public string SubtypeText { get; private set; }
-    public string[] Subtypes { get; private set; }
-
-    public bool InDeck;
-
     protected Image image;
-    protected Sprite detailedSprite;
-    protected Sprite simpleSprite;
+    private bool InDeck;
 
     public void Awake()
     {
@@ -27,13 +18,8 @@ public abstract class DeckbuilderCard : MonoBehaviour
 
     public void SetInfo(CardSearchController searchCtrl, SerializableCard card, bool inDeck)
     {
-        CardType = card.cardType;
-        cardSearchController = searchCtrl;
-        CardName = card.cardName;
+        SetInfo(card);
         SetImage(CardName);
-        EffText = card.effText;
-        SubtypeText = card.subtypeText;
-        Subtypes = card.subtypes;
         InDeck = inDeck;
     }
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardRespository : MonoBehaviour
+public class CardRepository : MonoBehaviour
 {
     public const string cardListFilePath = "Card Jsons/Card List";
     public const string cardJsonsFolderpath = "Card Jsons/";
@@ -66,6 +66,44 @@ public class CardRespository : MonoBehaviour
         if (!CardExists(name)) return null;
 
         return JsonUtility.FromJson<SerializableCard>(cardJsons[name]);
+    }
+
+    public DeckSelectCard InstantiateDeckSelectCard(string json, Transform parent, GameObject[] prefabs)
+    {
+        try
+        {
+            SerializableCard serializableCard = JsonUtility.FromJson<SerializableCard>(json);
+            switch (serializableCard.cardType)
+            {
+                case 'C':
+                    SerializableCharCard serializableChar = JsonUtility.FromJson<SerializableCharCard>(json);
+                    DeckSelectCharCard charCard = Instantiate(prefabs[0], parent)
+                        .GetComponent<DeckSelectCharCard>();
+                    charCard.SetInfo(serializableChar);
+                    return charCard;
+                case 'S':
+                    SerializableSpellCard serializableSpell = JsonUtility.FromJson<SerializableSpellCard>(json);
+                    DeckSelectSpellCard spellCard = Instantiate(prefabs[1], parent)
+                        .GetComponent<DeckSelectSpellCard>();
+                    spellCard.SetInfo(serializableSpell);
+                    return spellCard;
+                case 'A':
+                    SerializableAugCard serializableAug = JsonUtility.FromJson<SerializableAugCard>(json);
+                    DeckSelectAugmentCard augCard = Instantiate(prefabs[2], parent)
+                        .GetComponent<DeckSelectAugmentCard>();
+                    augCard.SetInfo(serializableAug);
+                    return augCard;
+                default:
+                    Debug.LogError("Unrecognized type character " + serializableCard.cardType + " in " + json);
+                    return null;
+            }
+        }
+        catch (System.ArgumentException argEx)
+        {
+            //Catch JSON parse error
+            Debug.LogError($"Failed to load {name}, argument exception with message {argEx.Message}");
+            return null;
+        }
     }
 
     public DeckbuilderCard InstantiateDeckbuilderCard(string json, Transform parent, bool inDeck)

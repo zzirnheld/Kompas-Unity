@@ -32,6 +32,14 @@ public class ServerNotifier : MonoBehaviour
         SendPackets(p, p.Copy());
     }
 
+    #region game start
+    public void GetDecklist()
+    {
+        Packet p = new Packet(Packet.Command.GetDeck);
+        SendPacket(p);
+    }
+    #endregion game start
+
     #region notify
     public void NotifyPutBack()
     {
@@ -157,7 +165,6 @@ public class ServerNotifier : MonoBehaviour
     #endregion notify
 
     #region request targets
-
     public void GetBoardTarget(Card source, BoardRestriction restriction, int X)
     {
         Packet outPacket = new Packet(Packet.Command.RequestBoardTarget, source, restriction, X);

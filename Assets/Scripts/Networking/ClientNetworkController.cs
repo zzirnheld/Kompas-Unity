@@ -59,6 +59,11 @@ public class ClientNetworkController : NetworkController {
 
         switch (packet.command)
         {
+            #region game start
+            case Packet.Command.GetDeck:
+                //tell ui to get deck
+                break;
+            #endregion game start
             case Packet.Command.Delete:
                 ClientGame.Delete(ClientGame.GetCardFromID(packet.cardID));
                 break;

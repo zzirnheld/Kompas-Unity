@@ -22,7 +22,7 @@ public abstract class Game : MonoBehaviour {
     //list of card names 
     public static Dictionary<int, string> CardNames;
     public static Dictionary<string, int> CardNameIndices;
-    public CardRespository CardRepo;
+    public CardRepository CardRepo;
 
     public abstract Player[] Players { get; }
     public int turnPlayer = 0;

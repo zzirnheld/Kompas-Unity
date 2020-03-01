@@ -12,6 +12,7 @@ namespace KompasNetworking
         public GameObject GamePrefab;
         public MouseController MouseCtrl;
         public UIController UICtrl;
+        public CardRepository CardRepo;
 
         private IPAddress ipAddress;
         private TcpListener listener;
@@ -48,7 +49,7 @@ namespace KompasNetworking
                 if(currGame == null)
                 {
                     currGame = Instantiate(GamePrefab).GetComponent<ServerGame>();
-                    currGame.Init(MouseCtrl, UICtrl);
+                    currGame.Init(MouseCtrl, UICtrl, CardRepo);
                     games.Add(currGame);
                 }
                 var client = await listener.AcceptTcpClientAsync();

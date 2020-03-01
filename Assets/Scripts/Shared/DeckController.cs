@@ -3,10 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeckController : KompasObject
+public class DeckController : MonoBehaviour, KompasObject
 {
     public const string BLANK_CARD_PATH = "Card Jsons/Blank Card";
-    
+
+    public Game game;
+    public Game Game { get => game; set => game = value; }
+
     private ClientGame clientGame;
     private ServerGame serverGame;
 
@@ -229,7 +232,7 @@ public class DeckController : KompasObject
         }
     }
 
-    public override void OnClick()
+    public void OnClick()
     {
         //if(deck.Count > 0) Game.mainGame.Draw();
         //request a draw
@@ -262,4 +265,10 @@ public class DeckController : KompasObject
         }
         return cards;
     }
+
+    public void OnHover() { }
+
+    public void OnDrag(Vector3 mousePos) { }
+
+    public void OnDragEnd(Vector3 mousePos) { }
 }

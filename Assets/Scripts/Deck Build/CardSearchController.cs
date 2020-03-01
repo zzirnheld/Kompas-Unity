@@ -24,7 +24,7 @@ public class CardSearchController : MonoBehaviour
 
     //other scripts
     public DeckbuilderController DeckbuilderCtrl;
-    public CardRespository CardRepo;
+    public CardRepository CardRepo;
 
     //search data
     private DeckbuilderCard selectedCard;

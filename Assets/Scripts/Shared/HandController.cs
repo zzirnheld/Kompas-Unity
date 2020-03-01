@@ -3,9 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HandController : KompasObject
+public class HandController : MonoBehaviour
 {
-
     private List<Card> hand = new List<Card>();
 
     public int HandSize { get { return hand.Count; } }

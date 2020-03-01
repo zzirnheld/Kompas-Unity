@@ -14,7 +14,7 @@ public class DeckbuilderController : MonoBehaviour
     private string deckFilesFolderPath = "";
 
     //other ui element controllersS
-    public CardRespository CardRepo;
+    public CardRepository CardRepo;
     public CardSearchController CardSearchCtrl;
     public ConfirmDialogController ConfirmDialog;
     public ErrorDialogController ErrorDialog;

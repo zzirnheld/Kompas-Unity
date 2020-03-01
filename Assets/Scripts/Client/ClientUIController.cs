@@ -32,6 +32,9 @@ public class ClientUIController : UIController
 
     private List<Card> toSearch;
     private int searchIndex = 0;
+
+    //deck select ui
+    public DeckSelectUIController DeckSelectCtrl;
     
     private void Awake()
     {
@@ -51,6 +54,11 @@ public class ClientUIController : UIController
         if (string.IsNullOrEmpty(ip)) ip = "localhost";
         clientGame.clientNetworkCtrl.Connect(ip);
         HideNetworkingUI();
+    }
+
+    public void ShowGetDecklistUI()
+    {
+
     }
 
     #region effects
