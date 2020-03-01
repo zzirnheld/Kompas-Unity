@@ -68,6 +68,30 @@ public class CardRepository : MonoBehaviour
         return JsonUtility.FromJson<SerializableCard>(cardJsons[name]);
     }
 
+    public AvatarCard InstantiateAvatar(string cardName, GameObject avatarPrefab)
+    {
+        if (cardJsons.ContainsKey(cardName))
+        {
+            Debug.LogError($"Tried to create an avatar for a name that doesn't have a json");
+            return null;
+        }
+
+        try
+        {
+            SerializableCharCard charCard = JsonUtility.FromJson<SerializableCharCard>(cardJsons[cardName]);
+            if (charCard.cardType != 'C') return null;
+            AvatarCard avatar = Instantiate(avatarPrefab).GetComponent<AvatarCard>();
+            avatar.SetInfo(charCard);
+            return avatar;
+        }
+        catch (System.ArgumentException argEx)
+        {
+            //Catch JSON parse error
+            Debug.LogError($"Failed to load {name} as Avatar, argument exception with message {argEx.Message}");
+            return null;
+        }
+    }
+
     public DeckSelectCard InstantiateDeckSelectCard(string json, Transform parent, GameObject[] prefabs)
     {
         try

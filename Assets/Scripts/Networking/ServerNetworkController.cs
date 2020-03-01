@@ -21,6 +21,9 @@ namespace KompasNetworking
             //switch between all the possible requests for the server to handle.
             switch (packet.command)
             {
+                case Packet.Command.SetDeck:
+                    SetDeck(packet.stringArg);
+                    break;
                 case Packet.Command.AddToDeck:
                     AddCardToDeck(packet.CardName);
                     break;
@@ -103,6 +106,11 @@ namespace KompasNetworking
                     Debug.Log($"Invalid command {packet.command} to server from {Player.index}");
                     break;
             }
+        }
+
+        public void SetDeck(string decklist)
+        {
+            sGame.SetDeck(Player, decklist);
         }
 
         public void AddCardToDeck(string cardName)

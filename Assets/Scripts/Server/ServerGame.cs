@@ -11,6 +11,8 @@ public class ServerGame : Game {
 
     public readonly object SetAvatarLock = new object();
 
+    public GameObject AvatarPrefab;
+
     public override Player[] Players => ServerPlayers;
     public ServerPlayer[] ServerPlayers;
     public ServerPlayer TurnServerPlayer { get { return ServerPlayers[turnPlayer]; } }
@@ -93,22 +95,46 @@ public class ServerGame : Game {
         {
             //request deck again from that player
             GetDeckFrom(player);
+            return;
         }
 
-        //otherwise, set the deck
+        //otherwise, set the avatar and rest of the deck
+        AvatarCard avatar = CardRepo.InstantiateAvatar(deck[0], AvatarPrefab);
+        if(avatar == null)
+        {
+            GetDeckFrom(player);
+            return;
+        }
+
         foreach(string name in deck)
         {
             Card card = player.deckCtrl.AddCard(name, cardCount, player);
             cardCount++;
             player.ServerNotifier.NotifyAddToDeck(card);
         }
+
+        lock (SetAvatarLock)
+        {
+            //if both players have decks now, then start the game
+            foreach(Player p in Players)
+            {
+                if (p.Avatar = null) return;
+            }
+
+            StartGame();
+        }
     }
 
     public void StartGame()
     {
         //set initial pips (based on avatars' S)
+        Players[0].pips = Players[1].Avatar.S;
+        Players[1].pips = Players[0].Avatar.S;
 
         //determine who goes first and tell the players
+        int first = Random.value > 0.5f ? 0 : 1;
+        ServerPlayers[first].ServerNotifier.YoureFirst();
+        ServerPlayers[1 - first].ServerNotifier.YoureSecond();
     }
     #endregion
 

@@ -38,6 +38,18 @@ public class ServerNotifier : MonoBehaviour
         Packet p = new Packet(Packet.Command.GetDeck);
         SendPacket(p);
     }
+
+    public void YoureFirst()
+    {
+        Packet p = new Packet(Packet.Command.YoureFirst);
+        SendPacket(p);
+    }
+
+    public void YoureSecond()
+    {
+        Packet p = new Packet(Packet.Command.YoureSecond);
+        SendPacket(p);
+    }
     #endregion game start
 
     #region notify

@@ -35,6 +35,8 @@ public class ClientUIController : UIController
 
     //deck select ui
     public DeckSelectUIController DeckSelectCtrl;
+    public GameObject DeckSelectUIParent;
+    public GameObject ConnectToServerParent;
     
     private void Awake()
     {
@@ -58,7 +60,15 @@ public class ClientUIController : UIController
 
     public void ShowGetDecklistUI()
     {
+        ConnectToServerParent.SetActive(false);
+        DeckSelectUIParent.SetActive(true);
+    }
 
+    //TODO: something for if the decklist is rejected
+
+    public void HideGetDecklistUI()
+    {
+        DeckSelectUIParent.SetActive(false);
     }
 
     #region effects

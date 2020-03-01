@@ -26,7 +26,7 @@ public class CharacterCard : Card {
         }
         set
         {
-            n = value;
+            n = value > 0 ? value : 0;
         }
     }
     public virtual int E
@@ -38,7 +38,7 @@ public class CharacterCard : Card {
         }
         set
         {
-            e = value;
+            e = value > 0 ? value : 0;
         }
     }
     public int S
@@ -48,7 +48,7 @@ public class CharacterCard : Card {
             if (s < 0) return 0;
             return s;
         }
-        set { s = value; }
+        set { s = value > 0 ? value : 0 ; }
     }
     public int W
     {
@@ -57,7 +57,7 @@ public class CharacterCard : Card {
             if (w < 0) return 0;
             return w;
         }
-        set { w = value; }
+        set { w = value > 0 ? value : 0; }
     }
     #endregion stats
 

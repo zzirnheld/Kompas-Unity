@@ -10,6 +10,7 @@ public class Player : MonoBehaviour{
 
     //game mechanics data
     public int pips = 3;
+    public AvatarCard Avatar;
 
     //other game data
     public bool friendly;

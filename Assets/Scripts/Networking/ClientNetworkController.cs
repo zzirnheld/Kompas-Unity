@@ -31,6 +31,7 @@ public class ClientNetworkController : NetworkController {
         Debug.Log($"Connecting to {ip} on port {port}");
         ClientGame.uiCtrl.CurrentStateString = $"Connecting to {ip}";
         tcpClient = new System.Net.Sockets.TcpClient(ip, port);
+        Debug.Log("Connected");
         ClientGame.uiCtrl.CurrentStateString = $"Connected to {ip}";
     }
 
@@ -62,6 +63,17 @@ public class ClientNetworkController : NetworkController {
             #region game start
             case Packet.Command.GetDeck:
                 //tell ui to get deck
+                ClientGame.clientUICtrl.ShowGetDecklistUI();
+                break;
+            case Packet.Command.YoureFirst:
+                ClientGame.turnPlayer = 0;
+                ClientGame.uiCtrl.CurrentStateString = "Your Turn";
+                ClientGame.clientUICtrl.HideGetDecklistUI();
+                break;
+            case Packet.Command.YoureSecond:
+                ClientGame.turnPlayer = 1;
+                ClientGame.uiCtrl.CurrentStateString = "Enemy Turn";
+                ClientGame.clientUICtrl.HideGetDecklistUI();
                 break;
             #endregion game start
             case Packet.Command.Delete:
@@ -147,14 +159,6 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.boardCtrl.ResetCardsForTurn();
                 if(ClientGame.turnPlayer == 0) ClientGame.uiCtrl.CurrentStateString = "Your Turn";
                 else ClientGame.uiCtrl.CurrentStateString = "Enemy Turn";
-                break;
-            case Packet.Command.YoureFirst:
-                ClientGame.turnPlayer = 0;
-                ClientGame.uiCtrl.CurrentStateString = "Your Turn";
-                break;
-            case Packet.Command.YoureSecond:
-                ClientGame.turnPlayer = 1;
-                ClientGame.uiCtrl.CurrentStateString = "Enemy Turn";
                 break;
             case Packet.Command.RequestBoardTarget:
                 ClientGame.targetMode = Game.TargetMode.BoardTarget;

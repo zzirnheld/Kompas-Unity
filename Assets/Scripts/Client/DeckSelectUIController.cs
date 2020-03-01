@@ -8,7 +8,7 @@ public class DeckSelectUIController : MonoBehaviour
 {
     public const int txtExtLen = 4;
 
-    public ClientUIController ClientUICtrl;
+    public ClientNotifier ClientNotifier;
     public CardRepository CardRepo;
     public GameObject[] CardPrefabs = new GameObject[3];
 
@@ -21,6 +21,7 @@ public class DeckSelectUIController : MonoBehaviour
 
     private List<string> deckNames;
     private string deckFilesFolderPath;
+    private string currDecklist;
 
     // Start is called before the first frame update
     void Start()
@@ -105,6 +106,7 @@ public class DeckSelectUIController : MonoBehaviour
         decklist = decklist.Replace("\u200B", "");
         decklist = decklist.Replace("\r", "");
         decklist = decklist.Replace("\t", "");
+        currDecklist = decklist;
         List<string> cardNames = new List<string>(decklist.Split('\n'));
 
         if (deckName == null) deckName = cardNames[0];
@@ -116,5 +118,10 @@ public class DeckSelectUIController : MonoBehaviour
 
         SetDeckCountText();
         DeckNameDropdown.RefreshShownValue();
+    }
+
+    public void ConfirmSelectedDeck()
+    {
+        ClientNotifier.RequestDecklistImport(currDecklist);
     }
 }

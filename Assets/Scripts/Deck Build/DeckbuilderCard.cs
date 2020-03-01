@@ -21,6 +21,7 @@ public abstract class DeckbuilderCard : CardBase
         SetInfo(card);
         SetImage(CardName);
         InDeck = inDeck;
+        cardSearchController = searchCtrl;
     }
 
     public void Select()

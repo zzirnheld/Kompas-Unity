@@ -51,21 +51,15 @@ public class ClientNotifier : MonoBehaviour
         Send(packet);
     }
 
-    public void RequestAddToDeck(string cardName)
-    {
-        Debug.Log("Requesting add \"" + cardName + "\" to deck, length " + cardName.Length);
-        Packet packet = new Packet(Packet.Command.AddToDeck, cardName);
-        Send(packet);
-    }
-
     public void RequestDecklistImport(string decklist)
     {
         Debug.Log("Requesting Deck import of \"" + decklist + "\"");
         string[] cardNames = decklist.Split('\n');
-        foreach (string cardName in cardNames)
+        Packet packet = new Packet(Packet.Command.SetDeck)
         {
-            RequestAddToDeck(cardName);
-        }
+            stringArg = decklist
+        };
+        Send(packet);
     }
 
     public void RequestDraw()
