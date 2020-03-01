@@ -22,7 +22,7 @@ public class ServerGame : Game {
     //game startup flags
     private bool haveAvatars = false;
 
-    private void Awake()
+    private void Start()
     {
         mainGame = this;
         stack = new List<IStackable>();
@@ -93,6 +93,7 @@ public class ServerGame : Game {
 
         if (!ValidDeck(deck))
         {
+            Debug.LogError($"INVALID DECK {decklist}");
             //request deck again from that player
             GetDeckFrom(player);
             return;
@@ -102,19 +103,28 @@ public class ServerGame : Game {
         AvatarCard avatar = CardRepo.InstantiateAvatar(deck[0], AvatarPrefab);
         if(avatar == null)
         {
+            Debug.LogError($"Error in loading avatar for {decklist}");
             GetDeckFrom(player);
             return;
         }
+        player.Avatar = avatar;
+        player.ServerNotifier.NotifyPlay(avatar, 0, 0);
+
+        //take out avatar before telling player to add the rest of the deck
+        deck.RemoveAt(0);
 
         foreach(string name in deck)
         {
             Card card = player.deckCtrl.AddCard(name, cardCount, player);
+            Debug.Log($"For {name}, card is null? {card == null}. card name is {card?.CardName}");
             cardCount++;
             player.ServerNotifier.NotifyAddToDeck(card);
         }
 
         lock (SetAvatarLock)
         {
+            Debug.Log("Checking if avatars are both set");
+
             //if both players have decks now, then start the game
             foreach(Player p in Players)
             {

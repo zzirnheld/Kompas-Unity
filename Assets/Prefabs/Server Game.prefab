@@ -43,7 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeab49ffeeae71f42914a15bca5e0d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game: {fileID: 8823130477328388742}
 --- !u!1 &8823130477072372922
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,6 +89,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 8823130478785402358}
   pips: 3
+  Avatar: {fileID: 0}
   friendly: 1
   index: 0
   deckCtrl: {fileID: 8823130478258413239}
@@ -167,7 +167,6 @@ MonoBehaviour:
   Player: {fileID: 8823130477072372920}
   sGame: {fileID: 8823130477328388742}
   ServerNotifier: {fileID: 8823130477241876167}
-  uiCtrl: {fileID: 0}
 --- !u!1 &8823130477328388743
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,9 +223,12 @@ MonoBehaviour:
   uiCtrl: {fileID: 0}
   boardCtrl: {fileID: 8823130478725490029}
   boardObject: {fileID: 8823130478725490026}
+  CardRepo: {fileID: 0}
   turnPlayer: 0
   MaxCardsOnField: 0
   targetMode: 0
+  AvatarPrefab: {fileID: 3737252039058614834, guid: 6342a8b7ecbc4e94aa211dd4cf95f7c6,
+    type: 3}
   ServerPlayers:
   - {fileID: 8823130477072372920}
   - {fileID: 8823130478785402358}
@@ -293,7 +295,6 @@ MonoBehaviour:
   Player: {fileID: 8823130478785402358}
   sGame: {fileID: 8823130477328388742}
   ServerNotifier: {fileID: 8823130477637936683}
-  uiCtrl: {fileID: 0}
 --- !u!1 &8823130477775886205
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,7 +338,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeab49ffeeae71f42914a15bca5e0d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game: {fileID: 8823130477328388742}
 --- !u!1 &8823130478258413228
 GameObject:
   m_ObjectHideFlags: 0
@@ -882,7 +882,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ebd4d51462d09b43bf4e31715b0de05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game: {fileID: 8823130477328388742}
 --- !u!1 &8823130478785402359
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,6 +928,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 8823130477072372920}
   pips: 3
+  Avatar: {fileID: 0}
   friendly: 0
   index: 1
   deckCtrl: {fileID: 8823130478365236806}

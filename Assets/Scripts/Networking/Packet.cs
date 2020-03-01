@@ -153,8 +153,12 @@ namespace KompasNetworking
             }
             catch (KeyNotFoundException e)
             {
-                Debug.Log("Could not find card with name \"" + cardName + 
+                Debug.LogError("Could not find card with name \"" + cardName + 
                     "\", length " + cardName.Length + "\n" + e.StackTrace);
+            }
+            catch(ArgumentNullException e)
+            {
+                Debug.LogError($"{cardName} was null, {e.StackTrace}");
             }
         }
 

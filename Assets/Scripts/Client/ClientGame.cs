@@ -33,7 +33,7 @@ public class ClientGame : Game {
     public ClientNotifier clientNotifier;
     public ClientUIController clientUICtrl;
 
-    private void Awake()
+    private void Start()
     {
         mainGame = this;
         mainClientGame = this;

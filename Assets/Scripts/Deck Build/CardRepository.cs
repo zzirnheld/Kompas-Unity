@@ -34,7 +34,7 @@ public class CardRepository : MonoBehaviour
             cardNames.Add(nameClean);
 
             //load the json
-            Debug.Log($"Loading json for name {nameClean}, path is {cardJsonsFolderpath + nameClean}");
+            //Debug.Log($"Loading json for name {nameClean}, path is {cardJsonsFolderpath + nameClean}");
             string json = Resources.Load<TextAsset>(cardJsonsFolderpath + nameClean)?.text;
             if (json == null)
             {
@@ -70,7 +70,7 @@ public class CardRepository : MonoBehaviour
 
     public AvatarCard InstantiateAvatar(string cardName, GameObject avatarPrefab)
     {
-        if (cardJsons.ContainsKey(cardName))
+        if (!cardJsons.ContainsKey(cardName))
         {
             Debug.LogError($"Tried to create an avatar for a name that doesn't have a json");
             return null;

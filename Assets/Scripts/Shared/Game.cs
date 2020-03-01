@@ -48,7 +48,7 @@ public abstract class Game : MonoBehaviour {
 
     public TargetMode targetMode = TargetMode.Free;
 
-    private void Start()
+    private void Awake()
     {
         cards = new Dictionary<int, Card>();
         CardNames = new Dictionary<int, string>();
@@ -62,7 +62,7 @@ public abstract class Game : MonoBehaviour {
         {
             string toAdd = cardNames[i].Substring(0, cardNames[i].Length);
             if (CardNameIndices.ContainsKey(toAdd)) continue;
-            Debug.Log("Adding \"" + cardNames[i] + "\", length " + cardNames[i].Length);
+            //Debug.Log("Adding \"" + cardNames[i] + "\", length " + cardNames[i].Length);
             CardNames.Add(i, toAdd); //because line endings
             CardNameIndices.Add(toAdd, i);
         }

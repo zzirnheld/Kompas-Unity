@@ -172,15 +172,13 @@ public abstract class Card : CardBase, KompasObject {
 
     public virtual void SetInfo(SerializableCard serializedCard, Game game, Player owner)
     {
+        base.SetInfo(serializedCard);
+
         this.game = game;
         clientGame = game as ClientGame;
         serverGame = game as ServerGame;
 
-        cardName = serializedCard.cardName;
-        effText = serializedCard.effText;
-        subtypeText = serializedCard.subtypeText;
         location = serializedCard.location;
-        subtypes = serializedCard.subtypes;
 
         //could also be      serializedCard.effects == null ? serializedCard.effects.Length : 0
         effects = new Effect[serializedCard.effects?.Length ?? 0];

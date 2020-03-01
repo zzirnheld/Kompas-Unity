@@ -41,12 +41,14 @@ public class ServerNotifier : MonoBehaviour
 
     public void YoureFirst()
     {
+        Debug.Log("Sending you're first");
         Packet p = new Packet(Packet.Command.YoureFirst);
         SendPacket(p);
     }
 
     public void YoureSecond()
     {
+        Debug.Log("Sending you're second");
         Packet p = new Packet(Packet.Command.YoureSecond);
         SendPacket(p);
     }

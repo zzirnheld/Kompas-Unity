@@ -101,14 +101,7 @@ public class DeckController : MonoBehaviour, KompasObject
     public Card AddCard(string cardName, int id, Player owner)
     {
         Card newCard;
-        string folder = "Card Jsons/";
-        string path;
-        string fileContents = "";
-        path = folder + cardName;
-        fileContents = Resources.Load<TextAsset>(path).text;
-        fileContents = fileContents.Replace('\n', ' ');
-        fileContents = fileContents.Replace("\r", "");
-        fileContents = fileContents.Replace("\t", "");
+        string fileContents = game.CardRepo.GetJsonFromName(cardName);
 
         Debug.Log("Loading:\n" + fileContents);
 
