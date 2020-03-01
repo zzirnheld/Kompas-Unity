@@ -221,8 +221,11 @@ public class CardRepository : MonoBehaviour
 
     public string GetJsonFromName(string name)
     {
-        if (cardJsons.ContainsKey(name)) return cardJsons[name];
+        if (!cardJsons.ContainsKey(name))
+        {
+            Debug.LogError($"No json found for name \"{name ?? "null"}\"");
+        }
 
-        return null;
+        return cardJsons[name];
     }
 }

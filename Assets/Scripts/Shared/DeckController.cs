@@ -103,7 +103,7 @@ public class DeckController : MonoBehaviour, KompasObject
         Card newCard;
         string fileContents = game.CardRepo.GetJsonFromName(cardName);
 
-        Debug.Log("Loading:\n" + fileContents);
+        Debug.Log($"Loading:\n {fileContents ?? "null"}");
 
         newCard = InstantiateCard(fileContents, owner);
         newCard.SetLocation(CardLocation.Deck);

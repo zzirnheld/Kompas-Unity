@@ -82,14 +82,22 @@ public class ServerGame : Game {
         return true;
     }
 
-    public void SetDeck(ServerPlayer player, string decklist)
+    private List<string> SanitizeDeck(string decklist)
     {
         string[] cards = decklist.Split('\n');
         List<string> deck = new List<string>();
-        foreach(string name in cards)
+        foreach (string name in cards)
         {
+            if (string.IsNullOrWhiteSpace(name)) continue;
             if (CardNameIndices.ContainsKey(name)) deck.Add(name);
         }
+
+        return deck;
+    }
+
+    public void SetDeck(ServerPlayer player, string decklist)
+    {
+        List<string> deck = SanitizeDeck(decklist);
 
         if (!ValidDeck(deck))
         {
@@ -128,7 +136,7 @@ public class ServerGame : Game {
             //if both players have decks now, then start the game
             foreach(Player p in Players)
             {
-                if (p.Avatar = null) return;
+                if (p.Avatar == null) return;
             }
 
             StartGame();
@@ -138,6 +146,7 @@ public class ServerGame : Game {
     public void StartGame()
     {
         //set initial pips (based on avatars' S)
+        Debug.Log($"Starting game. Player 0 avatar is null? {Players[0].Avatar == null}. Player 1 is null? {Players[1].Avatar == null}.");
         Players[0].pips = Players[1].Avatar.S;
         Players[1].pips = Players[0].Avatar.S;
 
