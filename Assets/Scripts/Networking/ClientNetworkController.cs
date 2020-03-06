@@ -14,6 +14,8 @@ public class ClientNetworkController : NetworkController {
     private long timeTargetAccepted;
 
     public ClientGame ClientGame;
+    private Player friendly { get { return ClientGame.Players[0]; } }
+    private Player enemy { get { return ClientGame.Players[1]; } }
 
     public Packet lastPacket;
 
@@ -75,15 +77,21 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.uiCtrl.CurrentStateString = "Enemy Turn";
                 ClientGame.clientUICtrl.HideGetDecklistUI();
                 break;
+            case Packet.Command.SetFriendlyAvatar:
+                ClientGame.SetAvatar(0, packet.CardName, packet.CardIDToBe);
+                break;
+            case Packet.Command.SetEnemyAvatar:
+                ClientGame.SetAvatar(1, packet.CardName, packet.CardIDToBe);
+                break;
             #endregion game start
             case Packet.Command.Delete:
                 ClientGame.Delete(ClientGame.GetCardFromID(packet.cardID));
                 break;
             case Packet.Command.AddAsFriendly:
-                ClientGame.friendlyDeckCtrl.AddCard(packet.CardName, packet.CardIDToBe, ClientGame.Players[0]);
+                ClientGame.friendlyDeckCtrl.AddCard(packet.CardName, packet.CardIDToBe);
                 break;
             case Packet.Command.AddAsEnemy:
-                Card added = ClientGame.enemyDeckCtrl.AddCard(packet.CardName, packet.CardIDToBe, ClientGame.Players[1]);
+                Card added = ClientGame.enemyDeckCtrl.AddCard(packet.CardName, packet.CardIDToBe);
                 //TODO make it always ask for cards from enemy deck
                 switch (packet.Location)
                 {

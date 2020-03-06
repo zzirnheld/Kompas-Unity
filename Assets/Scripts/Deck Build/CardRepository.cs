@@ -68,7 +68,7 @@ public class CardRepository : MonoBehaviour
         return JsonUtility.FromJson<SerializableCard>(cardJsons[name]);
     }
 
-    public AvatarCard InstantiateAvatar(string cardName, GameObject avatarPrefab)
+    public AvatarCard InstantiateAvatar(string cardName, GameObject avatarPrefab, Game game, Player owner, int id)
     {
         if (!cardJsons.ContainsKey(cardName))
         {
@@ -81,7 +81,9 @@ public class CardRepository : MonoBehaviour
             SerializableCharCard charCard = JsonUtility.FromJson<SerializableCharCard>(cardJsons[cardName]);
             if (charCard.cardType != 'C') return null;
             AvatarCard avatar = Instantiate(avatarPrefab).GetComponent<AvatarCard>();
-            avatar.SetInfo(charCard);
+            avatar.SetInfo(charCard, game, owner);
+            avatar.ID = id;
+            game.cards.Add(id, avatar);
             return avatar;
         }
         catch (System.ArgumentException argEx)

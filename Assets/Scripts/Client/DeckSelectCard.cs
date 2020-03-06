@@ -7,7 +7,7 @@ public class DeckSelectCard : CardBase
 {
     public Image Image;
 
-    public override void SetInfo(SerializableCard card)
+    public new void SetInfo(SerializableCard card)
     {
         base.SetInfo(card);
         SetImage(CardName);

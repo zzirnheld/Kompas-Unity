@@ -14,7 +14,7 @@ public abstract class CardBase : MonoBehaviour
     protected Sprite detailedSprite;
     protected Sprite simpleSprite;
 
-    public virtual void SetInfo(SerializableCard card)
+    protected void SetInfo(SerializableCard card)
     {
         CardType = card.cardType;
         CardName = card.cardName;

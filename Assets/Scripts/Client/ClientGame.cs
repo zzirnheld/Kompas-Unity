@@ -8,6 +8,8 @@ public class ClientGame : Game {
 
     public static ClientGame mainClientGame;
 
+    public GameObject AvatarPrefab;
+
     public override Player[] Players => ClientPlayers;
     public ClientPlayer[] ClientPlayers;
 
@@ -53,6 +55,16 @@ public class ClientGame : Game {
         uiCtrl.UpdateEnemyPips(num);
     }
     #endregion
+
+    public void SetAvatar(int player, string avatarName, int avatarID)
+    {
+        if (player >= 2) throw new System.ArgumentException();
+
+        Player owner = Players[player];
+        AvatarCard avatar = CardRepo.InstantiateAvatar(avatarName, AvatarPrefab, this, owner, avatarID);
+        owner.Avatar = avatar;
+        Play(avatar, player * 7, player * 7, owner);
+    }
 
     public void Delete(Card card)
     {

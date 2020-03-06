@@ -173,18 +173,10 @@ public abstract class Card : CardBase, KompasObject {
     public virtual void SetInfo(SerializableCard serializedCard, Game game, Player owner)
     {
         base.SetInfo(serializedCard);
-
-        this.game = game;
-        clientGame = game as ClientGame;
-        serverGame = game as ServerGame;
-
         location = serializedCard.location;
 
         //could also be      serializedCard.effects == null ? serializedCard.effects.Length : 0
         effects = new Effect[serializedCard.effects?.Length ?? 0];
-        this.owner = owner;
-        this.ownerIndex = owner.index;
-        ChangeController(owner);
 
         //go through each of the serialized effects, 
         for (int i = 0; i < effects.Length; i++)
@@ -193,6 +185,15 @@ public abstract class Card : CardBase, KompasObject {
         }
 
         this.augments = new List<AugmentCard>();
+
+        this.game = game;
+        clientGame = game as ClientGame;
+        serverGame = game as ServerGame;
+
+        this.owner = owner;
+        this.ownerIndex = owner.index;
+        ChangeController(owner);
+
         if (location == CardLocation.Field) MoveTo(serializedCard.BoardX, serializedCard.BoardY);
         else
         {

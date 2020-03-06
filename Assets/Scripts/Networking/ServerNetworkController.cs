@@ -116,7 +116,7 @@ namespace KompasNetworking
         public void AddCardToDeck(string cardName)
         {
             //add the card in, with the cardCount being the card id, then increment the card count
-            Card added = Player.deckCtrl.AddCard(cardName, sGame.cardCount, Player);
+            Card added = Player.deckCtrl.AddCard(cardName, sGame.cardCount);
             sGame.cardCount++;
             ServerNotifier.NotifyAddToDeck(added);
         }

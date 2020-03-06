@@ -108,7 +108,7 @@ public class ServerGame : Game {
         }
 
         //otherwise, set the avatar and rest of the deck
-        AvatarCard avatar = CardRepo.InstantiateAvatar(deck[0], AvatarPrefab);
+        AvatarCard avatar = CardRepo.InstantiateAvatar(deck[0], AvatarPrefab, this, player, cardCount++);
         if(avatar == null)
         {
             Debug.LogError($"Error in loading avatar for {decklist}");
@@ -116,6 +116,7 @@ public class ServerGame : Game {
             return;
         }
         player.Avatar = avatar;
+        player.ServerNotifier.NotifyAddToDeck(avatar);
         player.ServerNotifier.NotifyPlay(avatar, 0, 0);
 
         //take out avatar before telling player to add the rest of the deck
@@ -123,7 +124,7 @@ public class ServerGame : Game {
 
         foreach(string name in deck)
         {
-            Card card = player.deckCtrl.AddCard(name, cardCount, player);
+            Card card = player.deckCtrl.AddCard(name, cardCount);
             Debug.Log($"For {name}, card is null? {card == null}. card name is {card?.CardName}");
             cardCount++;
             player.ServerNotifier.NotifyAddToDeck(card);

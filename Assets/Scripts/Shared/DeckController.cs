@@ -98,20 +98,20 @@ public class DeckController : MonoBehaviour, KompasObject
         return blank;
     }
 
-    public Card AddCard(string cardName, int id, Player owner)
+    public Card AddCard(string cardName, int id)
     {
         Card newCard;
         string fileContents = game.CardRepo.GetJsonFromName(cardName);
 
         Debug.Log($"Loading:\n {fileContents ?? "null"}");
 
-        newCard = InstantiateCard(fileContents, owner);
+        newCard = InstantiateCard(fileContents, Owner);
         newCard.SetLocation(CardLocation.Deck);
         deck.Add(newCard);
         newCard.ID = id;
         game.cards.Add(id, newCard);
         //Game.mainGame.cards[id] = newCard;
-        newCard.ChangeController(owner);
+        newCard.ChangeController(Owner);
 
         if (serverGame != null)
         {

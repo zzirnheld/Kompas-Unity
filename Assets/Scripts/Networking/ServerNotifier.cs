@@ -67,6 +67,11 @@ public class ServerNotifier : MonoBehaviour
         SendToBoth(p);
     }
 
+    public void NotifySetAvatar(CharacterCard avatar)
+    {
+
+    }
+
     /// <summary>
     /// Notifies that the Player corresponding to this notifier played a given card
     /// </summary>
