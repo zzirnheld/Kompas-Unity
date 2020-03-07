@@ -117,7 +117,7 @@ public class ServerGame : Game {
         }
         player.Avatar = avatar;
         player.ServerNotifier.NotifyAddToDeck(avatar);
-        player.ServerNotifier.NotifyPlay(avatar, 0, 0);
+        Play(avatar, player.index * 6, player.index * 6, player);
 
         //take out avatar before telling player to add the rest of the deck
         deck.RemoveAt(0);

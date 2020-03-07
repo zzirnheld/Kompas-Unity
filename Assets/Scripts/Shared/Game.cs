@@ -184,6 +184,7 @@ public abstract class Game : MonoBehaviour {
     {
         Remove(card);
         boardCtrl.Play(card, toX, toY, controller);
+        card.ChangeController(controller);
     }
 
     public virtual void MoveOnBoard(Card card, int toX, int toY)

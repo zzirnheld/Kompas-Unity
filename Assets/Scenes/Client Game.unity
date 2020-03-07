@@ -3284,6 +3284,8 @@ MonoBehaviour:
   turnPlayer: 0
   MaxCardsOnField: 0
   targetMode: 0
+  AvatarPrefab: {fileID: 3737252039058614834, guid: 6342a8b7ecbc4e94aa211dd4cf95f7c6,
+    type: 3}
   ClientPlayers:
   - {fileID: 1829834588}
   - {fileID: 1841194802}

@@ -63,7 +63,7 @@ public class ClientGame : Game {
         Player owner = Players[player];
         AvatarCard avatar = CardRepo.InstantiateAvatar(avatarName, AvatarPrefab, this, owner, avatarID);
         owner.Avatar = avatar;
-        Play(avatar, player * 7, player * 7, owner);
+        Play(avatar, player * 6, player * 6, owner);
     }
 
     public void Delete(Card card)
