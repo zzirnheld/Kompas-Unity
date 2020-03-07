@@ -8,7 +8,6 @@ public class DeckController : MonoBehaviour, KompasObject
     public const string BLANK_CARD_PATH = "Card Jsons/Blank Card";
 
     public Game game;
-    public Game Game { get => game; set => game = value; }
 
     private ClientGame clientGame;
     private ServerGame serverGame;
@@ -17,16 +16,14 @@ public class DeckController : MonoBehaviour, KompasObject
     public Player Owner;
 
     //rng for shuffling
-    private static System.Random rng = new System.Random();
+    private static readonly System.Random rng = new System.Random();
 
     //prefabs to instantiate in deck
     public GameObject characterCardPrefab;
     public GameObject spellCardPrefab;
     public GameObject augmentCardPrefab;
 
-    //actual factual deck list
-    private List<Card> deck = new List<Card>();
-    public List<Card> Deck { get { return deck; } }
+    public List<Card> Deck { get; } = new List<Card>();
 
     private void Awake()
     {
@@ -36,7 +33,7 @@ public class DeckController : MonoBehaviour, KompasObject
 
     public int IndexOf(Card card)
     {
-        return deck.IndexOf(card);
+        return Deck.IndexOf(card);
     }
 
     //importing deck
@@ -107,7 +104,7 @@ public class DeckController : MonoBehaviour, KompasObject
 
         newCard = InstantiateCard(fileContents, Owner);
         newCard.SetLocation(CardLocation.Deck);
-        deck.Add(newCard);
+        Deck.Add(newCard);
         newCard.ID = id;
         game.cards.Add(id, newCard);
         //Game.mainGame.cards[id] = newCard;
@@ -129,7 +126,7 @@ public class DeckController : MonoBehaviour, KompasObject
     }
 
     //info about deck
-    public int DeckSize() { return deck.Count; }
+    public int DeckSize() { return Deck.Count; }
     
     /// <summary>
     /// Gets the card at the designated index.
@@ -140,9 +137,9 @@ public class DeckController : MonoBehaviour, KompasObject
     /// <returns></returns>
     public Card CardAt(int index, bool remove, bool shuffle = false)
     {
-        if (index > deck.Count) return null;
-        Card card = deck[index];
-        if (remove) deck.RemoveAt(index);
+        if (index > Deck.Count) return null;
+        Card card = Deck[index];
+        if (remove) Deck.RemoveAt(index);
         if (shuffle) Shuffle();
         return card;
     }
@@ -150,21 +147,21 @@ public class DeckController : MonoBehaviour, KompasObject
     //adding and removing cards
     public void PushTopdeck(Card card)
     {
-        deck.Insert(0, card);
+        Deck.Insert(0, card);
         card.ResetCard();
         card.SetLocation(CardLocation.Deck);
     }
 
     public void PushBottomdeck(Card card)
     {
-        deck.Add(card);
+        Deck.Add(card);
         card.ResetCard();
         card.SetLocation(CardLocation.Deck);
     }
 
     public void ShuffleIn(Card card)
     {
-        deck.Add(card);
+        Deck.Add(card);
         card.ResetCard();
         card.SetLocation(CardLocation.Deck);
         Shuffle();
@@ -172,31 +169,31 @@ public class DeckController : MonoBehaviour, KompasObject
 
     public Card PopTopdeck()
     {
-        if (deck.Count == 0) return null;
+        if (Deck.Count == 0) return null;
 
-        Card card = deck[0];
-        deck.RemoveAt(0);
+        Card card = Deck[0];
+        Deck.RemoveAt(0);
         return card;
     }
 
     public Card PopBottomdeck()
     {
-        if (deck.Count == 0) return null;
+        if (Deck.Count == 0) return null;
 
-        Card card = deck[deck.Count - 1];
-        deck.RemoveAt(deck.Count - 1);
+        Card card = Deck[Deck.Count - 1];
+        Deck.RemoveAt(Deck.Count - 1);
         return card;
     }
 
     public Card RemoveCardWithName(string name)
     {
         Card toReturn;
-        for(int i = 0; i < deck.Count; i++)
+        for(int i = 0; i < Deck.Count; i++)
         {
-            if (deck[i].CardName.Equals(name))
+            if (Deck[i].CardName.Equals(name))
             {
-                toReturn = deck[i];
-                deck.RemoveAt(i);
+                toReturn = Deck[i];
+                Deck.RemoveAt(i);
                 return toReturn;
             }
         }
@@ -208,20 +205,20 @@ public class DeckController : MonoBehaviour, KompasObject
     /// </summary>
     public void RemoveFromDeck(Card card)
     {
-        deck.Remove(card);
+        Deck.Remove(card);
     }
 
     //misc
     public void Shuffle()
     {
-        int n = deck.Count;
+        int n = Deck.Count;
         while (n > 1)
         {
             n--;
             int k = rng.Next(n + 1);
-            Card value = deck[k];
-            deck[k] = deck[n];
-            deck[n] = value;
+            Card value = Deck[k];
+            Deck[k] = Deck[n];
+            Deck[n] = value;
         }
     }
 
@@ -240,7 +237,7 @@ public class DeckController : MonoBehaviour, KompasObject
     /// <returns></returns>
     public bool Exists(CardRestriction cardRestriction)
     {
-        foreach(Card c in deck)
+        foreach(Card c in Deck)
         {
             if (c != null && cardRestriction.Evaluate(c)) return true;
         }
@@ -251,7 +248,7 @@ public class DeckController : MonoBehaviour, KompasObject
     public List<Card> CardsThatFitRestriction(CardRestriction cardRestriction)
     {
         List<Card> cards = new List<Card>();
-        foreach(Card c in deck)
+        foreach(Card c in Deck)
         {
             if (c != null && cardRestriction.Evaluate(c))
                 cards.Add(c);
