@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BoardController : MonoBehaviour, KompasObject
 {
-    public Game game { get; set; }
+    public Game game;
 
     public const int spacesOnBoard = 7;
     public const float spacesInGrid = 7;
