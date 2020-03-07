@@ -148,6 +148,8 @@ public class BoardController : MonoBehaviour, KompasObject
     /// <param name="toY">Y coordinate to play the card to</param>
     public void Play(Card toPlay, int toX, int toY, Player controller)
     {
+        Debug.Log($"In boardctrl, playing {toPlay.CardName} to {toX}, {toY}");
+
         if (toPlay is CharacterCard charToPlay) Summon(charToPlay, toX, toY, controller);
         else if (toPlay is AugmentCard augmentToPlay) Augment(augmentToPlay, toX, toY, controller);
         else if (toPlay is SpellCard spellToPlay) Cast(spellToPlay, toX, toY, controller);
@@ -167,6 +169,8 @@ public class BoardController : MonoBehaviour, KompasObject
     //movement
     public void Swap(Card card, int toX, int toY)
     {
+        Debug.Log($"Swapping {card.CardName} to {toX}, {toY}");
+
         if (!ValidIndices(toX, toY) || card == null) return;
         if (card is AugmentCard) throw new NotImplementedException();
 
