@@ -48,7 +48,7 @@ namespace KompasNetworking
                 if(currGame == null)
                 {
                     currGame = Instantiate(GamePrefab).GetComponent<ServerGame>();
-                    currGame.Init(MouseCtrl, UICtrl, CardRepo);
+                    currGame.Init(UICtrl, CardRepo);
                     games.Add(currGame);
                 }
                 var client = await listener.AcceptTcpClientAsync();

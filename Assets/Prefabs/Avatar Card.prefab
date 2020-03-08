@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3737252039058614845}
   - component: {fileID: 3737252039058614791}
   - component: {fileID: 3737252039058614833}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Avatar Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}

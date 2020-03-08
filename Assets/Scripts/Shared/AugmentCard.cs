@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class AugmentCard : Card {
+public class AugmentCard : Card
+{
 
     private Card thisCard;
 

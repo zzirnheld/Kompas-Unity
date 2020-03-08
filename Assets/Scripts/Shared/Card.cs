@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.EventSystems;
 
-public abstract class Card : CardBase, IDragHandler, IBeginDragHandler, IEndDragHandler {
+public abstract class Card : CardBase {
     public Game game;
 
     public ClientGame clientGame { get; protected set; }
@@ -321,20 +321,48 @@ public abstract class Card : CardBase, IDragHandler, IBeginDragHandler, IEndDrag
     #endregion augments
 
     #region MouseStuff
+    private void GoToMouse()
+    {
+        //raycast to get point to drag to
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            transform.position = new Vector3(hit.point.x, 1f, hit.point.z);
+        }
+    }
+
     //actual interaction
-
-    public void OnDrag(PointerEventData eventData)
+    public void OnMouseDrag()
     {
-        transform.position = eventData.pointerCurrentRaycast.worldPosition;
+        Debug.Log("ondrag");
+        if (dragging == false)
+        {
+            dragging = true;
+            transform.parent = game.boardObject.transform;
+        }
+
+        GoToMouse();
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
+    public void OnMouseExit()
     {
-        transform.parent = game.boardObject.transform;
+        bool mouseDown = Input.GetMouseButton(0);
+        Debug.Log($"Mouse exited. mouse down? {mouseDown}");
+        if (dragging)
+        {
+            if (mouseDown) GoToMouse();
+            else OnMouseUp();
+        }
+
+        dragging = mouseDown;
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    public void OnMouseUp()
     {
+        Debug.Log("On end drag");
+        if (!dragging) return;
+        dragging = false;
+
         if (game.targetMode != Game.TargetMode.Free) return;
 
         //to be able to use local coordinates to see if you're on the board, set parent to game board
@@ -380,11 +408,13 @@ public abstract class Card : CardBase, IDragHandler, IBeginDragHandler, IEndDrag
 
     public void OnMouseEnter()
     {
+        Debug.Log("On mouse enter");
         game.uiCtrl.HoverOver(this);
     }
 
     public void OnMouseDown()
     {
+        Debug.Log("on mouse down");
         game.uiCtrl.SelectCard(this, true);
     }
     #endregion MouseStuff
