@@ -284,6 +284,10 @@ public class BoardController : MonoBehaviour
     public void OnMouseDown()
     {
         //select nothing
+        if(game?.uiCtrl == null)
+        {
+            Debug.LogError($"Game is null? {game == null}, ui ctrl is null? {game?.uiCtrl == null}");
+        }
         game.uiCtrl.SelectCard(null, true);
 
         if (game.targetMode != Game.TargetMode.SpaceTarget) return;
