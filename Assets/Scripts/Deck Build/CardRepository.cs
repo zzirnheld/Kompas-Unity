@@ -89,7 +89,7 @@ public class CardRepository : MonoBehaviour
         catch (System.ArgumentException argEx)
         {
             //Catch JSON parse error
-            Debug.LogError($"Failed to load {name} as Avatar, argument exception with message {argEx.Message}");
+            Debug.LogError($"Failed to load {cardName} as Avatar, argument exception with message {argEx.Message} \nJson was {cardJsons[cardName]}");
             return null;
         }
     }
