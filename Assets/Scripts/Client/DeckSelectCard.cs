@@ -1,15 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DeckSelectCard : CardBase
+public class DeckSelectCard : CardBase, IPointerDownHandler 
 {
+    public DeckSelectUIController UICtrl;
     public Image Image;
 
-    public new void SetInfo(SerializableCard card)
+    public void SetInfo(SerializableCard card, DeckSelectUIController uiCtrl)
     {
         base.SetInfo(card);
+        UICtrl = uiCtrl;
         SetImage(CardName);
     }
 
@@ -24,5 +27,10 @@ public class DeckSelectCard : CardBase
             return;
         }
         Image.sprite = simpleSprite;
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        UICtrl.SelectAsAvatar(this);
     }
 }

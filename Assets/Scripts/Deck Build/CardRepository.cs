@@ -94,13 +94,13 @@ public class CardRepository : MonoBehaviour
         }
     }
 
-    public DeckSelectCard InstantiateDeckSelectCard(string json, Transform parent, DeckSelectCard prefab)
+    public DeckSelectCard InstantiateDeckSelectCard(string json, Transform parent, DeckSelectCard prefab, DeckSelectUIController uiCtrl)
     {
         try
         {
             SerializableCard serializableCard = JsonUtility.FromJson<SerializableCard>(json);
             DeckSelectCard card = Instantiate(prefab, parent);
-            card.SetInfo(serializableCard);
+            card.SetInfo(serializableCard, uiCtrl);
             return card;
         }
         catch (System.ArgumentException argEx)

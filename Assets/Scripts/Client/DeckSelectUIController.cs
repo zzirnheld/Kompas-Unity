@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using TMPro;
+using System.Text;
 
 public class DeckSelectUIController : MonoBehaviour
 {
@@ -21,7 +22,6 @@ public class DeckSelectUIController : MonoBehaviour
 
     private List<string> deckNames;
     private string deckFilesFolderPath;
-    private string currDecklist;
 
     // Start is called before the first frame update
     void Start()
@@ -76,7 +76,7 @@ public class DeckSelectUIController : MonoBehaviour
             return;
         }
 
-        DeckSelectCard toAdd = CardRepo.InstantiateDeckSelectCard(json, DeckViewScrollPane.transform, CardPrefab);
+        DeckSelectCard toAdd = CardRepo.InstantiateDeckSelectCard(json, DeckViewScrollPane.transform, CardPrefab, this);
         if (toAdd == null)
         {
             Debug.LogError($"Somehow have a DeckbuilderCard with name {name} couldn't be re-instantiated");
@@ -106,7 +106,6 @@ public class DeckSelectUIController : MonoBehaviour
         decklist = decklist.Replace("\u200B", "");
         decklist = decklist.Replace("\r", "");
         decklist = decklist.Replace("\t", "");
-        currDecklist = decklist;
         List<string> cardNames = new List<string>(decklist.Split('\n'));
 
         if (deckName == null) deckName = cardNames[0];
@@ -122,6 +121,24 @@ public class DeckSelectUIController : MonoBehaviour
 
     public void ConfirmSelectedDeck()
     {
-        ClientNotifier.RequestDecklistImport(currDecklist);
+        StringBuilder sb = new StringBuilder();
+        foreach(DeckSelectCard card in currDeck)
+        {
+            sb.Append(card.CardName);
+            sb.Append("\n");
+        }
+
+        ClientNotifier.RequestDecklistImport(sb.ToString());
+    }
+
+    public void SelectAsAvatar(DeckSelectCard card)
+    {
+        if (card.CardType != 'C' || !currDeck.Contains(card)) return;
+
+        currDeck.Remove(card);
+        currDeck.Insert(0, card);
+
+        //then move it in the ui
+        card.transform.SetAsFirstSibling();
     }
 }
