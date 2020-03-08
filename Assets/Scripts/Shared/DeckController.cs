@@ -2,8 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class DeckController : MonoBehaviour, KompasObject
+public class DeckController : MonoBehaviour
 {
     public const string BLANK_CARD_PATH = "Card Jsons/Blank Card";
 
@@ -212,14 +213,6 @@ public class DeckController : MonoBehaviour, KompasObject
         }
     }
 
-    public void OnClick()
-    {
-        //if(deck.Count > 0) Game.mainGame.Draw();
-        //request a draw
-        if(clientGame.friendlyDeckCtrl == this)
-            clientGame.clientNotifier.RequestDraw();
-    }
-
     /// <summary>
     /// Checks if a card exists that fits the given restriction
     /// </summary>
@@ -246,9 +239,10 @@ public class DeckController : MonoBehaviour, KompasObject
         return cards;
     }
 
-    public void OnHover() { }
-
-    public void OnDrag(Vector3 mousePos) { }
-
-    public void OnDragEnd(Vector3 mousePos) { }
+    public void OnMouseDown()
+    {
+        //request a draw
+        if (clientGame.friendlyDeckCtrl == this)
+            clientGame.clientNotifier.RequestDraw();
+    }
 }

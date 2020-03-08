@@ -2,8 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class DiscardController : MonoBehaviour, KompasObject {
+public class DiscardController : MonoBehaviour {
 
     public Game game;
     public Game Game { get => game; set => game = value; }
@@ -57,12 +58,6 @@ public class DiscardController : MonoBehaviour, KompasObject {
         discard.RemoveAt(index);
     }
 
-    public void OnClick()
-    {
-        if (clientGame.friendlyDiscardCtrl == this)
-            clientGame.clientNotifier.RequestRehand(GetLastDiscarded());
-    }
-
     public bool Exists(CardRestriction cardRestriction)
     {
         foreach(Card c in discard)
@@ -85,9 +80,9 @@ public class DiscardController : MonoBehaviour, KompasObject {
         return cards;
     }
 
-    public void OnHover() { }
-
-    public void OnDrag(Vector3 mousePos) { }
-
-    public void OnDragEnd(Vector3 mousePos) { }
+    public void OnMouseDown()
+    {
+        if (clientGame.friendlyDiscardCtrl == this)
+            clientGame.clientNotifier.RequestRehand(GetLastDiscarded());
+    }
 }

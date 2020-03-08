@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.EventSystems;
 
-public abstract class Card : CardBase, KompasObject {
+public abstract class Card : CardBase, IDragHandler, IBeginDragHandler, IEndDragHandler {
     public Game game;
 
     public ClientGame clientGame { get; protected set; }
@@ -321,33 +322,20 @@ public abstract class Card : CardBase, KompasObject {
 
     #region MouseStuff
     //actual interaction
-    public void OnClick()
+
+    public void OnDrag(PointerEventData eventData)
     {
-        game.uiCtrl.SelectCard(this, true);
+        transform.position = eventData.pointerCurrentRaycast.worldPosition;
     }
-    public void OnHover()
+
+    public void OnBeginDrag(PointerEventData eventData)
     {
-        game.uiCtrl.HoverOver(this);
+        transform.parent = game.boardObject.transform;
     }
-    /// <summary>
-    /// The mouse position contains x and z values of the absolute position of where the ray intersects whatever it hits, and y = 2.
-    /// </summary>
-    public void OnDrag(Vector3 mousePos)
+
+    public void OnEndDrag(PointerEventData eventData)
     {
         if (game.targetMode != Game.TargetMode.Free) return;
-
-        if (!dragging)
-        {
-            dragging = true;
-            transform.parent = game.boardObject.transform;
-        }
-
-        transform.position = mousePos;
-    }
-    public void OnDragEnd(Vector3 mousePos)
-    {
-        if (game.targetMode != Game.TargetMode.Free) return;
-        dragging = false; //dragging has ended
 
         //to be able to use local coordinates to see if you're on the board, set parent to game board
         transform.parent = game.boardObject.transform;
@@ -388,6 +376,16 @@ public abstract class Card : CardBase, KompasObject {
         {
             clientGame.clientNotifier.RequestRehand(this);
         }
+    }
+
+    public void OnMouseEnter()
+    {
+        game.uiCtrl.HoverOver(this);
+    }
+
+    public void OnMouseDown()
+    {
+        game.uiCtrl.SelectCard(this, true);
     }
     #endregion MouseStuff
 }
