@@ -11,7 +11,6 @@ public abstract class Game : MonoBehaviour {
     public enum TargetMode { Free, OnHold, BoardTarget, HandTarget, SpaceTarget }
 
     //other scripts
-    public MouseController mouseCtrl;
     public UIController uiCtrl;
 
     //game mechanics

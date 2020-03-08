@@ -10,7 +10,6 @@ namespace KompasNetworking
     public class ServerController : MonoBehaviour
     {
         public GameObject GamePrefab;
-        public MouseController MouseCtrl;
         public UIController UICtrl;
         public CardRepository CardRepo;
 

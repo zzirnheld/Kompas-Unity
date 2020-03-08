@@ -33,9 +33,8 @@ public class ServerGame : Game {
         }
     }
 
-    public void Init(MouseController mouseCtrl, UIController uiCtrl, CardRepository cardRepo)
+    public void Init(UIController uiCtrl, CardRepository cardRepo)
     {
-        this.mouseCtrl = mouseCtrl;
         this.uiCtrl = uiCtrl;
         CardRepo = cardRepo;
     }
