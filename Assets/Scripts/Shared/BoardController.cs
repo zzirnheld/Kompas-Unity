@@ -161,11 +161,6 @@ public class BoardController : MonoBehaviour, KompasObject
         toPlay.gameObject.transform.localScale = new Vector3(1f / 9f, 1f / 9f, 1);
     }
 
-    /*public void Play(Card toPlay, int toX, int toY)
-    {
-        Play(toPlay, toX, toY, toPlay.Controller);
-    }*/
-
     //movement
     public void Swap(Card card, int toX, int toY)
     {
@@ -183,11 +178,6 @@ public class BoardController : MonoBehaviour, KompasObject
         
         tempX = card.BoardX;
         tempY = card.BoardY;
-
-        //set N if cards are characters?
-        //if (card is CharacterCard charCard) charCard.N -= charCard.DistanceTo(toX, toY);
-        //if (temp is CharacterCard charTemp) charTemp.N -= charTemp.DistanceTo(tempX, tempY);
-        //note 
 
         //then let the cards know they've been moved
         card.MoveTo(toX, toY);
@@ -301,7 +291,7 @@ public class BoardController : MonoBehaviour, KompasObject
         (game as ClientGame)?.clientNotifier.RequestSpaceTarget(xIntersection, yIntersection);
     }
 
-    public void OnHover() { }
+    public void OnHover() { game.uiCtrl.HoverOver(null); }
 
     public void OnDrag(Vector3 mousePos) { }
 

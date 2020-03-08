@@ -10,7 +10,7 @@ public class DeckSelectUIController : MonoBehaviour
 
     public ClientNotifier ClientNotifier;
     public CardRepository CardRepo;
-    public GameObject[] CardPrefabs = new GameObject[3];
+    public DeckSelectCard CardPrefab;
 
     //ui elements
     public TMP_Dropdown DeckNameDropdown;
@@ -76,7 +76,7 @@ public class DeckSelectUIController : MonoBehaviour
             return;
         }
 
-        DeckSelectCard toAdd = CardRepo.InstantiateDeckSelectCard(json, DeckViewScrollPane.transform, CardPrefabs);
+        DeckSelectCard toAdd = CardRepo.InstantiateDeckSelectCard(json, DeckViewScrollPane.transform, CardPrefab);
         if (toAdd == null)
         {
             Debug.LogError($"Somehow have a DeckbuilderCard with name {name} couldn't be re-instantiated");

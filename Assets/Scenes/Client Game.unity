@@ -2899,7 +2899,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &485933592
 MonoBehaviour:
@@ -12156,10 +12156,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClientNotifier: {fileID: 2001968207}
   CardRepo: {fileID: 492080564}
-  CardPrefabs:
-  - {fileID: 9191892696081201785, guid: cbe8a72a09564aa489b49c95d11b5996, type: 3}
-  - {fileID: 8651951787138205717, guid: b0bc7da56560c3945b207b05994cab01, type: 3}
-  - {fileID: 5426899749141525104, guid: 0f683271645e8d24b87cd16f69392791, type: 3}
+  CardPrefab: {fileID: 7327033155639361755, guid: 3701dcd9e71748a4781c867a9608c51d,
+    type: 3}
   DeckNameDropdown: {fileID: 1339296861}
   DeckViewScrollPane: {fileID: 485933590}
   CardsInDeckText: {fileID: 666658724}

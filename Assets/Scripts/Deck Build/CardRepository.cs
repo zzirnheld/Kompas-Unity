@@ -94,35 +94,14 @@ public class CardRepository : MonoBehaviour
         }
     }
 
-    public DeckSelectCard InstantiateDeckSelectCard(string json, Transform parent, GameObject[] prefabs)
+    public DeckSelectCard InstantiateDeckSelectCard(string json, Transform parent, DeckSelectCard prefab)
     {
         try
         {
             SerializableCard serializableCard = JsonUtility.FromJson<SerializableCard>(json);
-            switch (serializableCard.cardType)
-            {
-                case 'C':
-                    SerializableCharCard serializableChar = JsonUtility.FromJson<SerializableCharCard>(json);
-                    DeckSelectCharCard charCard = Instantiate(prefabs[0], parent)
-                        .GetComponent<DeckSelectCharCard>();
-                    charCard.SetInfo(serializableChar);
-                    return charCard;
-                case 'S':
-                    SerializableSpellCard serializableSpell = JsonUtility.FromJson<SerializableSpellCard>(json);
-                    DeckSelectSpellCard spellCard = Instantiate(prefabs[1], parent)
-                        .GetComponent<DeckSelectSpellCard>();
-                    spellCard.SetInfo(serializableSpell);
-                    return spellCard;
-                case 'A':
-                    SerializableAugCard serializableAug = JsonUtility.FromJson<SerializableAugCard>(json);
-                    DeckSelectAugmentCard augCard = Instantiate(prefabs[2], parent)
-                        .GetComponent<DeckSelectAugmentCard>();
-                    augCard.SetInfo(serializableAug);
-                    return augCard;
-                default:
-                    Debug.LogError("Unrecognized type character " + serializableCard.cardType + " in " + json);
-                    return null;
-            }
+            DeckSelectCard card = Instantiate(prefab, parent);
+            card.SetInfo(serializableCard);
+            return card;
         }
         catch (System.ArgumentException argEx)
         {
