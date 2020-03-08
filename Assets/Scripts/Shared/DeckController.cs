@@ -39,39 +39,29 @@ public class DeckController : MonoBehaviour, KompasObject
     //importing deck
     public Card InstantiateCard(string json, Player owner)
     {
-        //already allocated serializable cards
-        SerializableCharCard serializableChar;
-        SerializableSpellCard serializableSpell;
-        SerializableAugCard serializableAug;
-        SerializableCard serializableCard;
-        //and non serializable cards
-        CharacterCard charCard;
-        SpellCard spellCard;
-        AugmentCard augCard;
-
         //first deserialize it to tell the card's type
-        serializableCard = JsonUtility.FromJson<SerializableCard>(json);
+        var serializableCard = JsonUtility.FromJson<SerializableCard>(json);
         switch (serializableCard.cardType)
         {
             case 'C':
-                serializableChar = JsonUtility.FromJson<SerializableCharCard>(json);
-                charCard = Instantiate(characterCardPrefab).GetComponent<CharacterCard>();
+                var serializableChar = JsonUtility.FromJson<SerializableCharCard>(json);
+                var charCard = Instantiate(characterCardPrefab).GetComponent<CharacterCard>();
                 charCard.gameObject.SetActive(false);
                 charCard.SetInfo(serializableChar, game, owner);
                 //set image for the card by the name. this method gets the sprite with the given name
                 charCard.SetImage(charCard.CardName);
                 return charCard;
             case 'S':
-                serializableSpell = JsonUtility.FromJson<SerializableSpellCard>(json);
-                spellCard = Instantiate(spellCardPrefab).GetComponent<SpellCard>();
+                var serializableSpell = JsonUtility.FromJson<SerializableSpellCard>(json);
+                var spellCard = Instantiate(spellCardPrefab).GetComponent<SpellCard>();
                 spellCard.gameObject.SetActive(false);
                 spellCard.SetInfo(serializableSpell, game, owner);
                 //set image for the card by the name. this method gets the sprite with the given name
                 spellCard.SetImage(spellCard.CardName);
                 return spellCard;
             case 'A':
-                serializableAug = JsonUtility.FromJson<SerializableAugCard>(json);
-                augCard = Instantiate(augmentCardPrefab).GetComponent<AugmentCard>();
+                var serializableAug = JsonUtility.FromJson<SerializableAugCard>(json);
+                var augCard = Instantiate(augmentCardPrefab).GetComponent<AugmentCard>();
                 augCard.gameObject.SetActive(false);
                 augCard.SetInfo(serializableAug, game, owner);
                 //set image for the card by the name. this method gets the sprite with the given name
