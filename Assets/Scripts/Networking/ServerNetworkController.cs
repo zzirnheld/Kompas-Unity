@@ -16,7 +16,9 @@ namespace KompasNetworking
         public override void ProcessPacket(Packet packet)
         {
             if (packet == null) return;
-            Debug.Log($"packet command is {packet.command} for player index {Player.index}");
+            packet.InvertForController(Player.index);
+            Debug.Log($"packet command is {packet.command} for player index {Player.index}," +
+                $"numbers {packet.args[0]}, {packet.args[1]}, {packet.args[2]}, {packet.args[3]}");
 
             //switch between all the possible requests for the server to handle.
             switch (packet.command)
@@ -174,6 +176,7 @@ namespace KompasNetworking
 
         public void Move(int cardID, int x, int y)
         {
+            Debug.Log($"Requested move to {x}, {y}");
             //get the card to move
             Card toMove = sGame.GetCardFromID(cardID);
             int invertedX = InvertIndexForController(x, Player.index);

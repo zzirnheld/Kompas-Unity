@@ -47,7 +47,7 @@ public abstract class Card : CardBase {
     protected MeshRenderer meshRenderer;
     protected bool dragging = false;
 
-    public const float spacesInGrid = 7;
+    public const float spacesInGrid = 7f;
     public const float boardLenOffset = 0.45f;
 
     protected static int PosToGridIndex(float pos)
@@ -58,7 +58,7 @@ public abstract class Card : CardBase {
         * Divide by 0.9f because the range of accepted position values is 0 to 0.9f (0.45 - -0.45).
         * Then add 0.5 so that the cast to int effectively rounds instead of flooring.
         */
-        return (int)((pos + boardLenOffset) * spacesInGrid / 0.9f);
+        return (int)((pos + boardLenOffset) * (spacesInGrid - 1f) / (2 * boardLenOffset));
     }
     protected static float GridIndexToPos(int gridIndex)
     {
@@ -69,7 +69,7 @@ public abstract class Card : CardBase {
          * in the actual board's context of values (-0.45, 0.45) (legal local coordinates)
          * finally, add 0.025 to account for the 0.05 space on either side of the legal 0.45 area
          */
-        return (((float)gridIndex) / spacesInGrid - boardLenOffset + 0.025f);
+        return (((float)(gridIndex)) / (spacesInGrid - 1f) * (2 * boardLenOffset)) - boardLenOffset;
     }
 
     //getters and setters

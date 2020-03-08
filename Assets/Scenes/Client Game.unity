@@ -2992,7 +2992,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16d97135d0ca7ce449ae3f6fb9c84e36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseCtrl: {fileID: 75480508}
   uiCtrl: {fileID: 1615817260}
   boardCtrl: {fileID: 665162530}
   boardObject: {fileID: 665162525}

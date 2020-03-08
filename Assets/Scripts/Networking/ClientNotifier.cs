@@ -15,6 +15,8 @@ public class ClientNotifier : MonoBehaviour
     #region Request Actions
     public void RequestPlay(Card card, int toX, int toY)
     {
+        Debug.Log($"Requesting {card.CardName} to be played to {toX} {toY}");
+
         Packet packet;
         if (card is AugmentCard) packet = new Packet(Packet.Command.Augment, card, toX, toY);
         else packet = new Packet(Packet.Command.Play, card, toX, toY);
@@ -23,6 +25,7 @@ public class ClientNotifier : MonoBehaviour
 
     public void RequestMove(Card card, int toX, int toY)
     {
+        Debug.Log($"Requesting {card.CardName} to be moved to {toX} {toY}");
         Packet packet = new Packet(Packet.Command.Move, card, toX, toY);
         Send(packet);
     }
