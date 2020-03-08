@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class BoardController : MonoBehaviour, IPointerDownHandler
+public class BoardController : MonoBehaviour
 {
     public Game game;
 
@@ -281,18 +281,22 @@ public class BoardController : MonoBehaviour, IPointerDownHandler
     }
     #endregion
 
-    public void OnPointerDown(PointerEventData eventData)
+    public void OnMouseDown()
     {
         //select nothing
         game.uiCtrl.SelectCard(null, true);
 
         if (game.targetMode != Game.TargetMode.SpaceTarget) return;
 
-        //if someone wants a space target, get the x/y coordinates clicked
-        Vector3 intersection = transform.InverseTransformPoint(eventData.pointerCurrentRaycast.worldPosition);
-        int xIntersection = PosToGridIndex(intersection.x);
-        int yIntersection = PosToGridIndex(intersection.y);
-        //then, if the game is a clientgame, request a space target
-        (game as ClientGame)?.clientNotifier.RequestSpaceTarget(xIntersection, yIntersection);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            var intersection = transform.InverseTransformPoint(hit.point);
+
+            int xIntersection = PosToGridIndex(intersection.x);
+            int yIntersection = PosToGridIndex(intersection.y);
+            //then, if the game is a clientgame, request a space target
+            (game as ClientGame)?.clientNotifier.RequestSpaceTarget(xIntersection, yIntersection);
+        }
     }
 }
