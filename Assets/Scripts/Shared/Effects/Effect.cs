@@ -56,17 +56,6 @@ public class Effect : IStackable
     //get the currently resolving subeffect
     public Subeffect CurrSubeffect { get { return subeffects[subeffectIndex]; } }
 
-    /// <summary>
-    /// Creates a dummy effect for targeting purposes that just uses this restriction
-    /// </summary>
-    /// <param name="restriction"></param>
-    public Effect(Card thisCard, Restriction restriction, int X)
-    {
-        subeffects = new Subeffect[] { new DummyTargetSubeffect(restriction, this) };
-        this.X = X;
-        this.thisCard = thisCard;
-    }
-
     public Effect(SerializableEffect se, Card thisCard, int controller)
     {
         this.thisCard = thisCard;
