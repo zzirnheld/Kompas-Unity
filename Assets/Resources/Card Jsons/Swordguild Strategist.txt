@@ -1,41 +1,41 @@
 {
-"cardType":67,
-"cardName":"Swordguild Strategist",
-"effText":"Once each friendly turn, I can kill a friendly Warrior with XS, then kill a character with S ≤ X.",
-"effects":[
-	{
-		"subeffectTypes":[0,252,301,0,301],
-		"subeffects":[
-			"{
-				\"boardRestriction\":
-				{
-					\"restrictionsToCheck\":[2,3],
-					\"subtypesInclude\":[\"Warrior\"],
-					\"onBoardRestrictions\":[]
-				}
-			}",
-			"{}",
-			"{
-				\"TargetIndex\":-1
-			}",
-			"{
-				\"boardRestriction\":
-				{
-					\"restrictionsToCheck\":[3,103,202],
-					\"onBoardRestrictions\":[]
-				}
-			}",
-			"{
-				\"TargetIndex\":-1
-			}"
-		]
-	}
-],
-"n":2,
-"e":7,
-"s":9,
-"w":9,
-"m":2,
-"subtypes":["Swordguild","Warrior"],
-"subtypeText":"Swordguild Warrior"
+	"cardType":67,
+	"cardName":"Swordguild Strategist",
+	"effText":"Once each friendly turn, I can kill a friendly Warrior with XS, then kill a character with S ≤ X.",
+	"effects":[
+		{
+			"subeffectTypes":[0,252,301,0,301],
+			"subeffects":[
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,3],
+						\"subtypesInclude\":[\"Warrior\"],
+						\"onBoardRestrictions\":[]
+					}
+				}",
+				"{}",
+				"{
+					\"TargetIndex\":-1
+				}",
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[3,103,202],
+						\"onBoardRestrictions\":[]
+					}
+				}",
+				"{
+					\"TargetIndex\":-1
+				}"
+			]
+		}
+	],
+	"n":2,
+	"e":7,
+	"s":9,
+	"w":9,
+	"m":2,
+	"subtypes":["Swordguild","Warrior"],
+	"subtypeText":"Swordguild Warrior"
 }

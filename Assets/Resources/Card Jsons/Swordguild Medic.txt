@@ -1,21 +1,34 @@
 {
-"cardType":67,
-"cardName":"Swordguild Medic",
-"effText":"Once each friendly turn, I can give an adjacent Warrior +1E.",
-"effects":[
-	{
-		"subeffectTypes":[0,100],
-		"subeffects":[
-			"{\"boardRestriction\":{\"restrictionsToCheck\":[2,3],\"subtypesInclude\":[\"Warrior\"],\"onBoardRestrictions\":[0]}}",
-			"{\"nChange\":0,\"eChange\":1,\"sChange\":0,\"wChange\":0,\"targetIndex\":0}"
-		]
-	}
-],
-"n":2,
-"e":4,
-"s":4,
-"w":3,
-"m":2,
-"subtypes":["Swordguild","Warrior"],
-"subtypeText":"Swordguild Warrior"
+	"cardType":67,
+	"cardName":"Swordguild Medic",
+	"effText":"Once each friendly turn, I can give an adjacent Warrior +1E.",
+	"effects":[
+		{
+			"subeffectTypes":[0,100],
+			"subeffects":[
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,3],
+						\"subtypesInclude\":[\"Warrior\"],
+						\"onBoardRestrictions\":[0]
+					}
+				}",
+				"{
+					\"nChange\":0,
+					\"eChange\":1,
+					\"sChange\":0,
+					\"wChange\":0,
+					\"targetIndex\":0
+				}"
+			]
+		}
+	],
+	"n":2,
+	"e":4,
+	"s":4,
+	"w":3,
+	"m":2,
+	"subtypes":["Swordguild","Warrior"],
+	"subtypeText":"Swordguild Warrior"
 }

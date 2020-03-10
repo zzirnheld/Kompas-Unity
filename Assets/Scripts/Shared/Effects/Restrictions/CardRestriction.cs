@@ -24,7 +24,7 @@ public class CardRestriction : Restriction
         ELTEC = 302,
         SLTEC = 303,
         WLTEC = 304
-    } //to add later: N/E/S/W <=
+    } //to add later: N/E/S/W >=
 
     //because JsonUtility will fill in all values with defaults if not present
     public CardRestrictions[] restrictionsToCheck;

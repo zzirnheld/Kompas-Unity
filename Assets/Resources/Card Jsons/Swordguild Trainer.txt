@@ -1,21 +1,21 @@
 {
-"cardType":67,
-"cardName":"Swordguild Trainer",
-"effText":"Once each friendly turn, I can give an adjacent Warrior +1N.",
-"effects":[
-	{
-		"subeffectTypes":[0,100],
-		"subeffects":[
-			"{\"boardRestriction\":{\"restrictionsToCheck\":[2,3],\"subtypesInclude\":[\"Warrior\"],\"onBoardRestrictions\":[0]}}",
-			"{\"nChange\":1,\"eChange\":0,\"sChange\":0,\"wChange\":0,\"targetIndex\":0}"
-		]
-	}
-],
-"n":3,
-"e":3,
-"s":4,
-"w":3,
-"m":3,
-"subtypes":["Swordguild","Warrior"],
-"subtypeText":"Swordguild Warrior"
+	"cardType":67,
+	"cardName":"Swordguild Trainer",
+	"effText":"Once each friendly turn, I can give an adjacent Warrior +1N.",
+	"effects":[
+		{
+			"subeffectTypes":[0,100],
+			"subeffects":[
+				"{\"boardRestriction\":{\"restrictionsToCheck\":[2,3],\"subtypesInclude\":[\"Warrior\"],\"onBoardRestrictions\":[0]}}",
+				"{\"nChange\":1,\"eChange\":0,\"sChange\":0,\"wChange\":0,\"targetIndex\":0}"
+			]
+		}
+	],
+	"n":3,
+	"e":3,
+	"s":4,
+	"w":3,
+	"m":3,
+	"subtypes":["Swordguild","Warrior"],
+	"subtypeText":"Swordguild Warrior"
 }
