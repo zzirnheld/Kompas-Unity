@@ -22,7 +22,7 @@ public class SpaceTargetSubeffect : Subeffect
             return;
         }
 
-        parent.EffectController.ServerNotifier.GetSpaceTarget(parent.thisCard, spaceRestriction, parent.X);
+        parent.EffectController.ServerNotifier.GetSpaceTarget(parent.thisCard, this);
     }
 
     public bool SetTargetIfValid(int x, int y)

@@ -10,6 +10,8 @@ public abstract class Subeffect
 
     public ServerGame ServerGame { get { return parent.serverGame; } }
 
+    public int SubeffIndex;
+
     /// <summary>
     /// parent resolve method. at the end, needs to call resolve subeffect in parent
     /// if it's an if, it does a specific index

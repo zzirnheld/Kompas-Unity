@@ -84,19 +84,22 @@ namespace KompasNetworking
             args = new int[4];
         }
 
-        public Packet(Command command, Card source, BoardRestriction boardRestriction, int X) : this(command, source, X)
+        public Packet(Command command, Card source, BoardTargetSubeffect boardTargetSubeffect) : this(command, source)
         {
-            stringArg = JsonUtility.ToJson(boardRestriction);
+            args[0] = boardTargetSubeffect.parent.EffectIndex;
+            args[1] = boardTargetSubeffect.SubeffIndex;
         }
 
-        public Packet(Command command, Card source, CardRestriction cardRestriction, int X) : this(command, source, X)
+        public Packet(Command command, Card source, CardTargetSubeffect cardTargetSubeffect) : this(command, source)
         {
-            stringArg = JsonUtility.ToJson(cardRestriction);
+            args[0] = cardTargetSubeffect.parent.EffectIndex;
+            args[1] = cardTargetSubeffect.SubeffIndex;
         }
 
-        public Packet(Command command, Card source, SpaceRestriction spaceRestriction, int X) : this(command, source, X)
+        public Packet(Command command, Card source, SpaceTargetSubeffect spaceTargetSubeffect) : this(command, source)
         {
-            stringArg = JsonUtility.ToJson(spaceRestriction);
+            args[0] = spaceTargetSubeffect.parent.EffectIndex;
+            args[1] = spaceTargetSubeffect.SubeffIndex;
         }
 
         //used only for adding cards to deck

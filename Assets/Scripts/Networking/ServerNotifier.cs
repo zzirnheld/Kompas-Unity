@@ -184,37 +184,37 @@ public class ServerNotifier : MonoBehaviour
     #endregion notify
 
     #region request targets
-    public void GetBoardTarget(Card source, BoardRestriction restriction, int X)
+    public void GetBoardTarget(Card source, BoardTargetSubeffect boardTargetSubeffect)
     {
-        Packet outPacket = new Packet(Packet.Command.RequestBoardTarget, source, restriction, X);
+        Packet outPacket = new Packet(Packet.Command.RequestBoardTarget, source, boardTargetSubeffect);
         SendPacket(outPacket);
         Debug.Log("Asking for board target");
     }
 
-    public void GetDeckTarget(Card source, CardRestriction restriction, int X)
+    public void GetDeckTarget(Card source, CardTargetSubeffect cardTargetSubeffect)
     {
-        Packet outPacket = new Packet(Packet.Command.RequestDeckTarget, source, restriction, X);
+        Packet outPacket = new Packet(Packet.Command.RequestDeckTarget, source, cardTargetSubeffect);
         SendPacket(outPacket);
         Debug.Log("Asking for deck target");
     }
 
-    public void GetDiscardTarget(Card source, CardRestriction restriction, int X)
+    public void GetDiscardTarget(Card source, CardTargetSubeffect cardTargetSubeffect)
     {
-        Packet outPacket = new Packet(Packet.Command.RequestDiscardTarget, source, restriction, X);
+        Packet outPacket = new Packet(Packet.Command.RequestDiscardTarget, source, cardTargetSubeffect);
         SendPacket(outPacket);
         Debug.Log("Asking for discard target");
     }
 
-    public void GetHandTarget(Card source, CardRestriction restriction, int X)
+    public void GetHandTarget(Card source, CardTargetSubeffect cardTargetSubeffect)
     {
-        Packet outPacket = new Packet(Packet.Command.RequestHandTarget, source, restriction, X);
+        Packet outPacket = new Packet(Packet.Command.RequestHandTarget, source, cardTargetSubeffect);
         SendPacket(outPacket);
         Debug.Log("Asking for hand target");
     }
 
-    public void GetSpaceTarget(Card effSrc, SpaceRestriction restriction, int X)
+    public void GetSpaceTarget(Card effSrc, SpaceTargetSubeffect spaceTargetSubeffect)
     {
-        Packet outPacket = new Packet(Packet.Command.SpaceTarget, effSrc, restriction, X);
+        Packet outPacket = new Packet(Packet.Command.SpaceTarget, effSrc, spaceTargetSubeffect);
         SendPacket(outPacket);
         Debug.Log("Asking for space target");
     }

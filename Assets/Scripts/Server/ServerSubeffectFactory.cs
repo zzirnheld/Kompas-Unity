@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ServerSubeffectFactory : ISubeffectFactory
 {
-    public Subeffect FromJson(SubeffectType seType, string subeffJson, Effect parent)
+    public Subeffect FromJson(SubeffectType seType, string subeffJson, Effect parent, int subeffIndex)
     {
         Debug.Log("Creating subeffect from json of type " + seType + " json " + subeffJson);
 
@@ -80,6 +80,7 @@ public class ServerSubeffectFactory : ISubeffectFactory
             Debug.Log($"Finishing setup for new effect of type {seType}");
             toReturn.parent = parent;
             toReturn.Initialize();
+            toReturn.SubeffIndex = subeffIndex;
         }
 
         return toReturn;

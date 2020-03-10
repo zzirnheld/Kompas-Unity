@@ -4,21 +4,37 @@ using UnityEngine;
 
 public class ClientSubeffectFactory : ISubeffectFactory
 {
-    public Subeffect FromJson(SubeffectType subeffectType, string json, Effect parent)
+    public Subeffect FromJson(SubeffectType subeffectType, string json, Effect parent, int subeffIndex)
     {
+        Subeffect toReturn;
+
         switch (subeffectType)
         {
             case SubeffectType.TargetCardOnBoard:
-                return JsonUtility.FromJson<DummyBoardTargetSubeffect>(json);
+                toReturn = JsonUtility.FromJson<DummyBoardTargetSubeffect>(json);
+                break;
             case SubeffectType.DeckTarget:
             case SubeffectType.DiscardTarget:
             case SubeffectType.HandTarget:
-                return JsonUtility.FromJson<DummyCardTargetSubeffect>(json);
+                toReturn = JsonUtility.FromJson<DummyCardTargetSubeffect>(json);
+                break;
             case SubeffectType.SpaceTarget:
-                return JsonUtility.FromJson<DummySpaceTargetSubeffect>(json);
+                toReturn = JsonUtility.FromJson<DummySpaceTargetSubeffect>(json);
+                break;
             default:
                 Debug.Log("Creating client subeffect of a type other than one that has a specific dummy.");
-                return new DummySubeffect();
+                toReturn = new DummySubeffect();
+                break;
         }
+
+        if (toReturn != null)
+        {
+            Debug.Log($"Finishing setup for new effect of type {subeffectType}");
+            toReturn.parent = parent;
+            toReturn.Initialize();
+            toReturn.SubeffIndex = subeffIndex;
+        }
+
+        return toReturn;
     }
 }
