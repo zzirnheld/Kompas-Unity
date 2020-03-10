@@ -82,7 +82,7 @@ public class Effect : IStackable
 
         for (int i = 0; i < se.subeffectTypes.Length; i++)
         {
-            subeffects[i] = Subeffect.FromJson(se.subeffectTypes[i], se.subeffects[i], this);
+            subeffects[i] = thisCard.game.SubeffectFactory.FromJson(se.subeffectTypes[i], se.subeffects[i], this);
         }
 
         maxTimesCanUsePerTurn = se.maxTimesCanUsePerTurn;

@@ -39,6 +39,7 @@ public class ClientGame : Game {
     {
         mainGame = this;
         mainClientGame = this;
+        SubeffectFactory = new ClientSubeffectFactory();
     }
 
     //game mechanics

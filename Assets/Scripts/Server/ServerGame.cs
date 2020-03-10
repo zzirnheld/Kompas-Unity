@@ -31,6 +31,8 @@ public class ServerGame : Game {
         {
             triggerMap.Add(c, new List<Trigger>());
         }
+
+        SubeffectFactory = new ClientSubeffectFactory();
     }
 
     public void Init(UIController uiCtrl, CardRepository cardRepo)
