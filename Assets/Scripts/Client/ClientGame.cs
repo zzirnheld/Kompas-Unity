@@ -35,6 +35,10 @@ public class ClientGame : Game {
     public ClientNotifier clientNotifier;
     public ClientUIController clientUICtrl;
 
+    //targeting
+    public CardRestriction CurrCardRestriction;
+    public SpaceRestriction CurrSpaceRestriction;
+
     private void Start()
     {
         mainGame = this;
@@ -89,8 +93,7 @@ public class ClientGame : Game {
     {
         if (clientNetworkCtrl.Restriction == null) return;
 
-        CardRestriction cardRest = clientNetworkCtrl.Restriction as CardRestriction;
-        if(cardRest == null)
+        if(CurrCardRestriction == null)
         {
             Debug.LogError($"Tried to target {card.CardName} while last restriction is null or not card restriction");
         }
@@ -99,7 +102,7 @@ public class ClientGame : Game {
         if (targetMode == TargetMode.BoardTarget || targetMode == TargetMode.HandTarget)
         {
             //check if the target fits the restriction, according to us
-            if (cardRest.Evaluate(card, clientNetworkCtrl.X))
+            if (CurrCardRestriction.Evaluate(card, clientNetworkCtrl.X))
             {
                 //if it fits the restriction, send the proposed target to the server
                 clientNotifier.RequestTarget(card);
@@ -107,6 +110,10 @@ public class ClientGame : Game {
                 //and change the game's target mode TODO should this do this
                 targetMode = TargetMode.OnHold;
             }
+        }
+        else
+        {
+            Debug.LogError($"Tried to target while in not understood target mode {targetMode}");
         }
     }
 

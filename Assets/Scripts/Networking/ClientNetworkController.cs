@@ -170,31 +170,26 @@ public class ClientNetworkController : NetworkController {
                 break;
             case Packet.Command.RequestBoardTarget:
                 ClientGame.targetMode = Game.TargetMode.BoardTarget;
-                Restriction = packet.BoardRestriction;
-                new Effect(ClientGame.GetCardFromID(packet.cardID), Restriction, packet.X);
+                ClientGame.CurrCardRestriction = packet.GetCardRestriction(ClientGame);
                 break;
             case Packet.Command.RequestHandTarget:
                 ClientGame.targetMode = Game.TargetMode.HandTarget;
-                Restriction = packet.CardRestriction;
-                new Effect(ClientGame.GetCardFromID(packet.cardID), Restriction, packet.X);
+                ClientGame.CurrCardRestriction = packet.GetCardRestriction(ClientGame);
                 break;
             case Packet.Command.RequestDeckTarget:
                 Debug.Log("Eff index: " + packet.EffIndex + " subeff index " + packet.SubeffIndex);
-                CardRestriction deckRestriction = packet.CardRestriction;
-                new Effect(ClientGame.GetCardFromID(packet.cardID), Restriction, packet.X);
+                CardRestriction deckRestriction = packet.GetCardRestriction(ClientGame);
                 List<Card> toSearch = ClientGame.friendlyDeckCtrl.CardsThatFitRestriction(deckRestriction);
                 ClientGame.clientUICtrl.StartSearch(toSearch, true);
                 break;
             case Packet.Command.RequestDiscardTarget:
-                CardRestriction discardRestriction = packet.CardRestriction;
-                new Effect(ClientGame.GetCardFromID(packet.cardID), Restriction, packet.X);
+                CardRestriction discardRestriction = packet.GetCardRestriction(ClientGame);
                 List<Card> discardToSearch = ClientGame.friendlyDiscardCtrl.CardsThatFitRestriction(discardRestriction);
                 ClientGame.clientUICtrl.StartSearch(discardToSearch, true);
                 break;
             case Packet.Command.SpaceTarget:
                 ClientGame.targetMode = Game.TargetMode.SpaceTarget;
-                Restriction = packet.SpaceRestriction;
-                new Effect(ClientGame.GetCardFromID(packet.cardID), Restriction, packet.X);
+                ClientGame.CurrSpaceRestriction = packet.GetSpaceRestriction(ClientGame);
                 //TODO display based on that space
                 break;
             case Packet.Command.SetEffectsX:

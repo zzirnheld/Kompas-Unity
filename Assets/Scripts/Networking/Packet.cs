@@ -55,51 +55,6 @@ namespace KompasNetworking
         public string stringArg;
 
         #region abstraction of args
-        public CardRestriction CardRestriction 
-        {
-            get 
-            {
-                try
-                {
-                    return JsonUtility.FromJson<CardRestriction>(stringArg);
-                }
-                catch (ArgumentException)
-                {
-                    Debug.LogError($"Could not deserialize {stringArg} to card restriction");
-                    return null;
-                }
-            } 
-        }
-        public BoardRestriction BoardRestriction
-        {
-            get
-            {
-                try
-                {
-                    return JsonUtility.FromJson<BoardRestriction>(stringArg);
-                }
-                catch (ArgumentException)
-                {
-                    Debug.LogError($"Could not deserialize {stringArg} to card restriction");
-                    return null;
-                }
-            }
-        }
-        public SpaceRestriction SpaceRestriction
-        {
-            get
-            {
-                try
-                {
-                    return JsonUtility.FromJson<SpaceRestriction>(stringArg);
-                }
-                catch (ArgumentException)
-                {
-                    Debug.LogError($"Could not deserialize {stringArg} to card restriction");
-                    return null;
-                }
-            }
-        }
         public string CardName { get { return Game.CardNames[args[1]]; } }
         public int CardIDToBe { get { return cardID; } }
 
@@ -244,7 +199,54 @@ namespace KompasNetworking
             args[3] = w;
         }
         #endregion
+        
+        public CardRestriction GetCardRestriction(ClientGame clientGame)
+        {
+            Card thatHasEffect = clientGame.GetCardFromID(cardID);
+            Effect eff = thatHasEffect.Effects[args[0]];
+            DummyCardTargetSubeffect subeff = eff.Subeffects[args[1]] as DummyCardTargetSubeffect;
 
+            if(subeff == null)
+            {
+                Debug.LogError($"Tried to get effect from card {cardID}, eff index {args[0]}," +
+                    $"subeff index {args[1]} but it was null or not a card target subeff");
+                return null;
+            }
+
+            return subeff.cardRestriction;
+        }
+        
+        public BoardRestriction GetBoardRestriction(ClientGame clientGame)
+        {
+            Card thatHasEffect = clientGame.GetCardFromID(cardID);
+            Effect eff = thatHasEffect.Effects[args[0]];
+            DummyBoardTargetSubeffect subeff = eff.Subeffects[args[1]] as DummyBoardTargetSubeffect;
+
+            if (subeff == null)
+            {
+                Debug.LogError($"Tried to get effect from card {cardID}, eff index {args[0]}," +
+                    $"subeff index {args[1]} but it was null or not a card target subeff");
+                return null;
+            }
+
+            return subeff.boardRestriction;
+        }
+        
+        public SpaceRestriction GetSpaceRestriction(ClientGame clientGame)
+        {
+            Card thatHasEffect = clientGame.GetCardFromID(cardID);
+            Effect eff = thatHasEffect.Effects[args[0]];
+            DummySpaceTargetSubeffect subeff = eff.Subeffects[args[1]] as DummySpaceTargetSubeffect;
+
+            if (subeff == null)
+            {
+                Debug.LogError($"Tried to get effect from card {cardID}, eff index {args[0]}," +
+                    $"subeff index {args[1]} but it was null or not a card target subeff");
+                return null;
+            }
+
+            return subeff.spaceRestriction;
+        }
 
         public void Invert()
         {
