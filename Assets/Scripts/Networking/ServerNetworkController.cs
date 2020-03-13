@@ -185,8 +185,14 @@ namespace KompasNetworking
             if (sGame.ValidMove(toMove, invertedX, invertedY))
             {
                 Debug.Log($"ServerNetworkController moving {toMove.CardName} from {invertedX} to {invertedY}");
+                int fromX = toMove.BoardX;
+                int fromY = toMove.BoardY;
+                Card atTarget = sGame.boardCtrl.GetCardAt(fromX, fromY);
                 //move the card there
                 sGame.MoveOnBoard(toMove, invertedX, invertedY);
+                int moved = System.Math.Abs(invertedX - fromX) + System.Math.Abs(invertedY - fromY);
+                if (toMove is CharacterCard charMoved) charMoved.SpacesMoved += moved;
+                if (atTarget is CharacterCard charAtTarget) charAtTarget.SpacesMoved += moved;
             }
             else
             {

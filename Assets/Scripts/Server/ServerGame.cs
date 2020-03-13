@@ -310,7 +310,7 @@ public class ServerGame : Game {
         }
 
         if (!(toMove is CharacterCard charToMove)) return false;
-        return toMove.DistanceTo(toX, toY) <= charToMove.N
+        return toMove.DistanceTo(toX, toY) + charToMove.SpacesMoved <= charToMove.N
             && (boardCtrl.GetCardAt(toX, toY) == null || boardCtrl.GetCardAt(toX, toY).ControllerIndex == toMove.ControllerIndex);
     }
 
