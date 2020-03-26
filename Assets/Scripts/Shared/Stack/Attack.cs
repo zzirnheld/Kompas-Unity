@@ -17,9 +17,9 @@ public class Attack : IStackable
     /// <param name="defender"></param>
     public Attack(ServerGame serverGame, CharacterCard attacker, CharacterCard defender)
     {
-        this.serverGame = serverGame;
-        this.attacker = attacker;
-        this.defender = defender;
+        this.serverGame = serverGame ?? throw new System.ArgumentNullException("Cannot have null servergame");
+        this.attacker = attacker ?? throw new System.ArgumentNullException("Cannot have null attacker");
+        this.defender = defender ?? throw new System.ArgumentNullException("Cannot have null defender");
         serverGame.Trigger(TriggerCondition.Attacks, attacker, this, null);
         serverGame.Trigger(TriggerCondition.Defends, defender, this, null);
         serverGame.Trigger(TriggerCondition.Battles, attacker, this, null);

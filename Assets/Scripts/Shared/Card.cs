@@ -58,7 +58,7 @@ public abstract class Card : CardBase {
         * Divide by 0.9f because the range of accepted position values is 0 to 0.9f (0.45 - -0.45).
         * Then add 0.5 so that the cast to int effectively rounds instead of flooring.
         */
-        return (int)((pos + boardLenOffset) * (spacesInGrid - 1f) / (2 * boardLenOffset));
+        return (int)(((pos + boardLenOffset) * (spacesInGrid - 1f) / (2 * boardLenOffset)) + 0.5f);
     }
     protected static float GridIndexToPos(int gridIndex)
     {
@@ -189,10 +189,22 @@ public abstract class Card : CardBase {
         //could also be      serializedCard.effects == null ? serializedCard.effects.Length : 0
         effects = new Effect[serializedCard.effects?.Length ?? 0];
 
-        //go through each of the serialized effects, 
+        //go through each of the serialized effects, creating it
         for (int i = 0; i < effects.Length; i++)
         {
             effects[i] = new Effect(serializedCard.effects[i], this, ControllerIndex);
+        }
+        if (serverGame != null)
+        {
+            foreach (Effect eff in effects)
+            {
+                if (eff.Trigger != null)
+                {
+                    Debug.Log("registering trigger for " + eff.Trigger.triggerCondition);
+                    serverGame.RegisterTrigger(eff.Trigger.triggerCondition, eff.Trigger);
+                }
+                else Debug.Log("trigger is null");
+            }
         }
 
         if (location == CardLocation.Field) MoveTo(serializedCard.BoardX, serializedCard.BoardY);
@@ -374,10 +386,13 @@ public abstract class Card : CardBase {
             //if the card is being moved on the field, that means it's just being moved
             if (location == CardLocation.Field)
             {
+                Debug.Log($"Local position: {transform.localPosition.x}, {transform.localPosition.y}");
                 int x = PosToGridIndex(transform.localPosition.x);
                 int y = PosToGridIndex(transform.localPosition.y);
+                CharacterCard charThere = game.boardCtrl.GetCharAt(x, y);
+                Debug.Log($"Trying to move/attack to {x}, {y}, the controller index, if any, is {charThere?.ControllerIndex}");
                 //then check if it's an attack or not
-                if (game.boardCtrl.GetCharAt(x, y) != null && game.boardCtrl.GetCharAt(x, y).ControllerIndex != ControllerIndex)
+                if (charThere != null && charThere.ControllerIndex != ControllerIndex)
                     clientGame.clientNotifier.RequestAttack(this, x, y);
                 else
                     clientGame.clientNotifier.RequestMove(this, x, y);
