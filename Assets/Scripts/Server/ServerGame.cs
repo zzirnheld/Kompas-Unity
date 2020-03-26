@@ -32,7 +32,7 @@ public class ServerGame : Game {
             triggerMap.Add(c, new List<Trigger>());
         }
 
-        SubeffectFactory = new ClientSubeffectFactory();
+        SubeffectFactory = new ServerSubeffectFactory();
     }
 
     public void Init(UIController uiCtrl, CardRepository cardRepo)
@@ -76,6 +76,7 @@ public class ServerGame : Game {
     //for future logic like limited cards, etc.
     private bool ValidDeck(List<string> deck)
     {
+        if (uiCtrl.DebugMode) return true;
         if (deck.Count < 50) return false;
         //first name should be that of the Avatar
         if (CardRepo.GetCardFromName(deck[0]).cardType != 'C') return false;
@@ -432,7 +433,7 @@ public class ServerGame : Game {
     #region triggers
     public void Trigger(TriggerCondition condition, Card triggerer, IStackable stackTrigger, int? x)
     {
-        Debug.Log($"Attempting to trigger {condition}, with triggerer {triggerer.CardName}, triggered by a null stacktrigger? {stackTrigger == null}, x={x}");
+        Debug.Log($"Attempting to trigger {condition}, with triggerer {triggerer?.CardName}, triggered by a null stacktrigger? {stackTrigger == null}, x={x}");
         foreach (Trigger t in triggerMap[condition])
         {
             t.TriggerIfValid(triggerer, stackTrigger, x);
@@ -441,6 +442,7 @@ public class ServerGame : Game {
 
     public void RegisterTrigger(TriggerCondition condition, Trigger trigger)
     {
+        Debug.Log($"Registering a new trigger from card {trigger.effToTrigger.thisCard.CardName} to condition {condition}");
         List<Trigger> triggers = triggerMap[condition];
         if (triggers == null)
         {
