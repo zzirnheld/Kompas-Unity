@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -131,18 +130,10 @@ namespace KompasNetworking
             cardID = cardIDtoBe;
         }
 
-        public Packet(Command command, string cardName, int cardLocation, int cardIDtoBe, int x, int y, bool invert) : this(command, cardName, cardLocation, cardIDtoBe)
+        public Packet(Command command, string cardName, int cardLocation, int cardIDtoBe, int x, int y) : this(command, cardName, cardLocation, cardIDtoBe)
         {
-            if (invert)
-            {
-                args[2] = 6 - x;
-                args[3] = 6 - y;
-            }
-            else
-            {
-                args[2] = x;
-                args[3] = y;
-            }
+            args[2] = x;
+            args[3] = y;
         }
 
         public Packet(Command command, Card card) : this(command)
@@ -176,22 +167,13 @@ namespace KompasNetworking
             }
         }
 
-        public Packet(Command command, Card card, int x, int y, bool invert = false) : this(command, card)
+        public Packet(Command command, Card card, int x, int y) : this(command, card)
         {
             //this is used for the target packet
             args[0] = x;
             args[1] = y;
-
-            if (invert)
-            {
-                args[2] = 6 - x;
-                args[3] = 6 - y;
-            }
-            else
-            {
-                args[2] = x;
-                args[3] = y;
-            }
+            args[2] = x;
+            args[3] = y;
         }
 
         public Packet(Command command, Card card, int n, int e, int s, int w) : this(command, card)

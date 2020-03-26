@@ -18,7 +18,7 @@ namespace KompasNetworking
             if (packet == null) return;
             packet.InvertForController(Player.index);
             Debug.Log($"packet command is {packet.command} for player index {Player.index}," +
-                $"numbers {packet.args[0]}, {packet.args[1]}, {packet.args[2]}, {packet.args[3]}");
+                $"inverted numbers {packet.args[0]}, {packet.args[1]}, {packet.args[2]}, {packet.args[3]}");
 
             //switch between all the possible requests for the server to handle.
             switch (packet.command)
@@ -141,12 +141,10 @@ namespace KompasNetworking
         public void Augment(int cardID, int x, int y)
         {
             Card toAugment = sGame.GetCardFromID(cardID);
-            int invertedX = InvertIndexForController(x, Player.index);
-            int invertedY = InvertIndexForController(y, Player.index);
             //if it's not a valid place to do, put the cards back
-            if (sGame.ValidAugment(toAugment, invertedX, invertedY))
+            if (sGame.ValidAugment(toAugment, x, y))
             {
-                sGame.Play(toAugment, invertedX, invertedY, Player);
+                sGame.Play(toAugment, x, y, Player);
             }
             else
             {
@@ -158,12 +156,10 @@ namespace KompasNetworking
         {
             //get the card to play
             Card toPlay = sGame.GetCardFromID(cardID);
-            int invertedX = InvertIndexForController(x, Player.index);
-            int invertedY = InvertIndexForController(y, Player.index);
             //if it's not a valid place to do, return
-            if (sGame.ValidBoardPlay(toPlay, invertedX, invertedY))
+            if (sGame.ValidBoardPlay(toPlay, x, y))
             {
-                sGame.Play(toPlay, invertedX, invertedY, Player);
+                sGame.Play(toPlay, x, y, Player);
                 //trigger effects
                 sGame.Trigger(TriggerCondition.Play, toPlay, null, null);
                 sGame.CheckForResponse();
@@ -179,18 +175,16 @@ namespace KompasNetworking
             Debug.Log($"Requested move to {x}, {y}");
             //get the card to move
             Card toMove = sGame.GetCardFromID(cardID);
-            int invertedX = InvertIndexForController(x, Player.index);
-            int invertedY = InvertIndexForController(y, Player.index);
             //if it's not a valid place to do, put the cards back
-            if (sGame.ValidMove(toMove, invertedX, invertedY))
+            if (sGame.ValidMove(toMove, x, y))
             {
-                Debug.Log($"ServerNetworkController moving {toMove.CardName} from {invertedX} to {invertedY}");
                 int fromX = toMove.BoardX;
                 int fromY = toMove.BoardY;
+                Debug.Log($"ServerNetworkController moving {toMove.CardName} from {fromX}, {fromY} to {x}, {y}");
                 Card atTarget = sGame.boardCtrl.GetCardAt(fromX, fromY);
                 //move the card there
-                sGame.MoveOnBoard(toMove, invertedX, invertedY);
-                int moved = System.Math.Abs(invertedX - fromX) + System.Math.Abs(invertedY - fromY);
+                sGame.MoveOnBoard(toMove, x, y);
+                int moved = System.Math.Abs(x - fromX) + System.Math.Abs(y - fromY);
                 if (toMove is CharacterCard charMoved) charMoved.SpacesMoved += moved;
                 if (atTarget is CharacterCard charAtTarget) charAtTarget.SpacesMoved += moved;
             }
@@ -205,16 +199,14 @@ namespace KompasNetworking
         {
             //get the card to move
             Card toMove = sGame.GetCardFromID(cardID);
-            int invertedX = InvertIndexForController(x, Player.index);
-            int invertedY = InvertIndexForController(y, Player.index);
-            if (sGame.ValidAttack(toMove, invertedX, invertedY))
+            if (sGame.ValidAttack(toMove, x, y))
             {
-                Debug.Log($"ServerNetworkController {toMove.CardName} attacking {invertedX}, {invertedY}");
+                Debug.Log($"ServerNetworkController {toMove.CardName} attacking {x}, {y}");
                 //tell the players to put cards down where they were
                 ServerNotifier.NotifyBothPutBack();
                 //then push the attack tothe stack
                 CharacterCard attacker = toMove as CharacterCard;
-                CharacterCard defender = sGame.boardCtrl.GetCharAt(invertedX, invertedY);
+                CharacterCard defender = sGame.boardCtrl.GetCharAt(x, y);
                 //push the attack to the stack, then check if any player wants to respond before resolving it
                 sGame.PushToStack(new Attack(sGame, attacker, defender), Player.index);
                 sGame.CheckForResponse();

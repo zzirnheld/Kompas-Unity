@@ -20,10 +20,10 @@ public class ServerNotifier : MonoBehaviour
         OtherNotifier.SendPacket(b);
     }
 
-    private void SendPacketsAfterInverting(Packet a, Packet b)
+    private void SendPacketsAfterInverting(Packet a, Packet b, int aIndex, int bIndex)
     {
-        a.InvertForController(Player.index);
-        b.InvertForController(Player.index);
+        a.InvertForController(aIndex);
+        b.InvertForController(bIndex);
         SendPackets(a, b);
     }
 
@@ -82,23 +82,23 @@ public class ServerNotifier : MonoBehaviour
         Packet outPacketInverted;
         if (toPlay.Location == CardLocation.Discard || toPlay.Location == CardLocation.Field)
         {
-            outPacketInverted = new Packet(Packet.Command.Play, toPlay, x, y, true);
+            outPacketInverted = new Packet(Packet.Command.Play, toPlay, x, y);
         }
         else
         {
             outPacketInverted = new Packet(Packet.Command.AddAsEnemy, toPlay.CardName, 
-                (int)CardLocation.Field, toPlay.ID, x, y, true);
+                (int)CardLocation.Field, toPlay.ID, x, y);
         }
 
-        SendPacketsAfterInverting(outPacket, outPacketInverted);
+        SendPacketsAfterInverting(outPacket, outPacketInverted, Player.index, Player.enemy.index);
     }
     
     public void NotifyMove(Card toMove, int x, int y)
     {
         //tell everyone to do it
-        Packet outPacket = new Packet(Packet.Command.Move, toMove, x, y);
-        Packet outPacketInverted = new Packet(Packet.Command.Move, toMove, x, y, true);
-        SendPackets(outPacket, outPacketInverted);
+        Packet friendlyPacket = new Packet(Packet.Command.Move, toMove, x, y);
+        Packet enemyPacket = new Packet(Packet.Command.Move, toMove, x, y);
+        SendPacketsAfterInverting(friendlyPacket, enemyPacket, Player.index, Player.enemy.index);
     }
 
     public void NotifyDiscard(Card toDiscard)

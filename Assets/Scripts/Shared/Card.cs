@@ -346,7 +346,6 @@ public abstract class Card : CardBase {
     //actual interaction
     public void OnMouseDrag()
     {
-        Debug.Log("ondrag");
         if (dragging == false)
         {
             dragging = true;
@@ -359,7 +358,6 @@ public abstract class Card : CardBase {
     public void OnMouseExit()
     {
         bool mouseDown = Input.GetMouseButton(0);
-        Debug.Log($"Mouse exited. mouse down? {mouseDown}");
         if (dragging)
         {
             if (mouseDown) GoToMouse();
