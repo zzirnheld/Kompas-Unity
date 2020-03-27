@@ -10,4 +10,9 @@ public class DummyBoardTargetSubeffect : Subeffect
     {
         throw new System.NotImplementedException("Dummy Board Target Subeffect should never resolve.");
     }
+
+    public override void Initialize()
+    {
+        boardRestriction.subeffect = this;
+    }
 }

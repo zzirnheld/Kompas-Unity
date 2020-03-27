@@ -10,4 +10,9 @@ public class DummySpaceTargetSubeffect : Subeffect
     {
         throw new System.NotImplementedException("Dummy Space target subeffect should never resolve");
     }
+
+    public override void Initialize()
+    {
+        spaceRestriction.subeffect = this;
+    }
 }

@@ -10,4 +10,9 @@ public class DummyCardTargetSubeffect : Subeffect
     {
         throw new System.NotImplementedException("Dummy Card Target Subeffect should never resolve.");
     }
+
+    public override void Initialize()
+    {
+        cardRestriction.subeffect = this;
+    }
 }
