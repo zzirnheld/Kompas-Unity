@@ -1,0 +1,41 @@
+{
+	"cardType":67,
+	"cardName":"The General",
+	"effText":"Once each friendly turn, you can pip decksummon any number of Warriors from your deck’s top 5 cards. Bottomdeck the rest.",
+	"effects":[
+		{
+			"subeffectTypes":[9,4,300,400,303,402],
+			"subeffects":[
+				"{
+					\"cardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,3,102,501],
+						\"subtypesInclude\":[\"Warrior\"],
+						\"constant\":5
+					}
+				}",
+				"{
+					\"spaceRestriction\":
+					{
+						\"restrictionsToCheck\":[0]
+					}
+				}",
+				"{
+					\"TargetIndex\":-1
+					\"SpaceIndex\":-1
+				}"
+				"{}",
+				"{
+					\"TargetIndex\":-1
+				}"
+				"{}"
+			]
+		}
+	],
+	"n":1,
+	"e":9,
+	"s":10,
+	"w":11,
+	"subtypes":["Swordguild","Warrior"],
+	"subtypeText":"Swordguild Warrior"
+}

@@ -8,7 +8,9 @@ public class ChooseFromListSaveRestSubeffect : ChooseFromListSubeffect
     public override bool AddListIfLegal(List<Card> choices)
     {
         //check that there are no elements in choices that aren't in potential targets
-        if (choices.Intersect(potentialTargets).Count() != choices.Count)
+        //also check that, if a maximum number to choose has been specified, that many have been chosen
+        if ((MaxCanChoose > 0 && choices.Count > MaxCanChoose) ||
+            choices.Intersect(potentialTargets).Count() != choices.Count())
         {
             RequestTargets();
             return false;

@@ -6,6 +6,7 @@ using UnityEngine;
 public class ChooseFromListSubeffect : Subeffect
 {
     public CardRestriction CardRestriction;
+    public int MaxCanChoose = 0;
 
     protected List<Card> potentialTargets;
 
@@ -39,7 +40,9 @@ public class ChooseFromListSubeffect : Subeffect
     public virtual bool AddListIfLegal(List<Card> choices)
     {
         //check that there are no elements in choices that aren't in potential targets
-        if (choices.Intersect(potentialTargets).Count() != choices.Count())
+        //also check that, if a maximum number to choose has been specified, that many have been chosen
+        if ((MaxCanChoose > 0 && choices.Count > MaxCanChoose) ||
+            choices.Intersect(potentialTargets).Count() != choices.Count())
         {
             RequestTargets();
             return false;

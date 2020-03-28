@@ -33,5 +33,6 @@ public enum SubeffectType
     ReshuffleCard = 303,
     RehandCard = 304,
     XTimesLoop = 400,
-    TTimesLoop = 401
+    TTimesLoop = 401,
+    WhileHaveTargetsLoop = 402
 }
