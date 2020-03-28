@@ -67,11 +67,6 @@ public class ServerNotifier : MonoBehaviour
         SendToBoth(p);
     }
 
-    public void NotifySetAvatar(CharacterCard avatar)
-    {
-
-    }
-
     /// <summary>
     /// Notifies that the Player corresponding to this notifier played a given card
     /// </summary>
@@ -217,6 +212,19 @@ public class ServerNotifier : MonoBehaviour
         Packet outPacket = new Packet(Packet.Command.SpaceTarget, effSrc, spaceTargetSubeffect);
         SendPacket(outPacket);
         Debug.Log("Asking for space target");
+    }
+
+    public void GetChoicesFromList(List<Card> potentialTargets)
+    {
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        foreach(Card c in potentialTargets)
+        {
+            sb.Append(c.ID);
+            sb.Append(",");
+        }
+        Packet packet = new Packet(Packet.Command.GetChoicesFromList, sb.ToString());
+        SendPacket(packet);
+        Debug.Log($"Asking for targets from list of cardIDs {sb.ToString()}");
     }
     #endregion request targets
 

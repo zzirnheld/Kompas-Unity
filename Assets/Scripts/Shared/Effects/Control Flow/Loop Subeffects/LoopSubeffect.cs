@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class LoopSubeffect : Subeffect
 {
-    protected abstract bool ShouldContinueLoop();
     protected abstract void OnLoopExit();
+    protected abstract bool ShouldContinueLoop();
 
     public int JumpTo;
 

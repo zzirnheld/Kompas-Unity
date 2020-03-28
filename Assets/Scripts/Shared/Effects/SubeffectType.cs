@@ -12,6 +12,8 @@ public enum SubeffectType
     TargetThis = 5,
     TargetThisSpace = 6,
     TargetAugmentedCard = 7,
+    ChooseFromList = 8,
+    ChooseFromListSaveRest = 9,
     ChangeNESW = 100,
     AddPips = 101,
     PayPips = 102,
@@ -30,5 +32,6 @@ public enum SubeffectType
     DiscardCard = 301,
     ReshuffleCard = 303,
     RehandCard = 304,
-    XTimesLoop = 400
+    XTimesLoop = 400,
+    TTimesLoop = 401
 }

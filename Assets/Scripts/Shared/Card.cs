@@ -102,6 +102,27 @@ public abstract class Card : CardBase {
     public Sprite DetailedSprite { get { return detailedSprite; } }
     public Sprite SimpleSprite { get { return simpleSprite; } }
 
+    public int IndexInList
+    {
+        get
+        {
+            switch (location)
+            {
+                case CardLocation.Deck:
+                    return controller.deckCtrl.IndexOf(this);
+                case CardLocation.Discard:
+                    return controller.discardCtrl.IndexOf(this);
+                case CardLocation.Field:
+                    return boardX * 7 + boardY;
+                case CardLocation.Hand:
+                    return controller.handCtrl.IndexOf(this);
+                default:
+                    Debug.LogError($"Tried to ask for card index when in location {location}");
+                    return -1;
+            }
+        }
+    }
+
     //unity methods
     private void Awake()
     {

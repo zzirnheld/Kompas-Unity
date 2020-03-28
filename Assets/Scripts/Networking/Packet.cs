@@ -20,7 +20,7 @@ namespace KompasNetworking
             //change numbers of cards that you see of your opponent
             IncrementEnemyDeck, IncrementEnemyHand, DecrementEnemyDeck, DecrementEnemyHand,
             //server requesting a target of a client
-            GetAttackTarget, RequestBoardTarget, RequestDeckTarget, RequestDiscardTarget, RequestHandTarget,
+            GetAttackTarget, RequestBoardTarget, RequestDeckTarget, RequestDiscardTarget, RequestHandTarget, GetChoicesFromList,
             //client responding
             Target, SpaceTarget, Response, DeclineAnotherTarget,
             //server notifying if anything else is necessary

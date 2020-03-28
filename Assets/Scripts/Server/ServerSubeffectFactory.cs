@@ -41,8 +41,6 @@ public class ServerSubeffectFactory : ISubeffectFactory
                 break;
             case SubeffectType.SpaceTarget:
                 toReturn = JsonUtility.FromJson<SpaceTargetSubeffect>(subeffJson);
-                Debug.Log("Toreturn is null? " + (toReturn == null) + " here");
-                Debug.Log("Is the restriction null tho " + ((toReturn as SpaceTargetSubeffect).spaceRestriction == null));
                 break;
             case SubeffectType.PayPips:
                 toReturn = JsonUtility.FromJson<PayPipsSubeffect>(subeffJson);
@@ -69,6 +67,9 @@ public class ServerSubeffectFactory : ISubeffectFactory
                 break;
             case SubeffectType.XTimesLoop:
                 toReturn = JsonUtility.FromJson<XTimesSubeffect>(subeffJson);
+                break;
+            case SubeffectType.TTimesLoop:
+                toReturn = JsonUtility.FromJson<TTimesSubeffect>(subeffJson);
                 break;
             default:
                 Debug.LogError("Unrecognized effect type enum for loading effect in effect constructor");

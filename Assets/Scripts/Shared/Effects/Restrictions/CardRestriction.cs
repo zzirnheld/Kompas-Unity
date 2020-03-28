@@ -23,7 +23,9 @@ public class CardRestriction : Restriction
         NLTEC = 300, //N <= constant
         ELTEC = 302,
         SLTEC = 303,
-        WLTEC = 304
+        WLTEC = 304,
+        IndexInListGTEC = 500,
+        IndexInListLTEC = 501
     } //to add later: N/E/S/W >=
 
     //because JsonUtility will fill in all values with defaults if not present
@@ -104,6 +106,12 @@ public class CardRestriction : Restriction
                 case CardRestrictions.WLTEC:
                     if (!(potentialTarget is CharacterCard charC8)) return false;
                     if (charC8.W > constant) return false;
+                    break;
+                case CardRestrictions.IndexInListGTEC:
+                    if (potentialTarget.IndexInList < constant) return false;
+                    break;
+                case CardRestrictions.IndexInListLTEC:
+                    if (potentialTarget.IndexInList > constant) return false;
                     break;
                 default:
                     Debug.Log("You forgot to check for " + c);
