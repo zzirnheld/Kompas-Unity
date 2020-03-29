@@ -168,14 +168,17 @@ public class ClientUIController : UIController
         //if the list to search through is null, we're not searching atm.
         if (toSearch == null) return;
 
+        Card searchSelected = toSearch[searchIndex];
+
         if (numToSearch == 1)
         {
-            clientGame.clientNotifier.RequestTarget(toSearch[searchIndex]);
+            clientGame.clientNotifier.RequestTarget(searchSelected);
             ResetSearch();
         }
         else
         {
-            searched.Add(toSearch[searchIndex]);
+            if (searched.Contains(searchSelected)) return;
+            searched.Add(searchSelected);
             //TODO: mark that card as selected
             numSearched++;
             //if we were given a maximum number to be searched
