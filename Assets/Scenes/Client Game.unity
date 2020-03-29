@@ -8909,7 +8909,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1615817260}
-        m_MethodName: ConfirmSearch
+        m_MethodName: SearchSelectedCard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
