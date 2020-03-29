@@ -15,7 +15,6 @@
 	"e":3,
 	"s":4,
 	"w":3,
-	"m":3,
 	"subtypes":["Swordguild","Warrior"],
 	"subtypeText":"Swordguild Warrior"
 }

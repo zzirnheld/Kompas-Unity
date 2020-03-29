@@ -1,7 +1,7 @@
 {
 	"cardType":67,
-	"cardName":"Swordguild Medic",
-	"effText":"Once each friendly turn, I can give an adjacent Warrior +1E.",
+	"cardName":"Swordmaster",
+	"effText":"Once each friendly turn, you can give an adjacent Warrior +1W.",
 	"effects":[
 		{
 			"subeffectTypes":[0,100],
@@ -18,15 +18,15 @@
 					\"nChange\":0,
 					\"eChange\":1,
 					\"sChange\":0,
-					\"wChange\":0,
+					\"wChange\":1,
 					\"targetIndex\":0
 				}"
 			]
 		}
 	],
 	"n":2,
-	"e":4,
-	"s":4,
+	"e":2,
+	"s":3,
 	"w":3,
 	"subtypes":["Swordguild","Warrior"],
 	"subtypeText":"Swordguild Warrior"

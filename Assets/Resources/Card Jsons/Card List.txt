@@ -7,4 +7,5 @@ Swordguild Strategist
 Swordguild Tactician
 Swordguild Trainee
 Swordguild Trainer
+Swordmaster
 lulthisdontexistmydood
