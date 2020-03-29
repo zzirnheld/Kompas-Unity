@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class ChooseFromListSaveRestSubeffect : ChooseFromListSubeffect
 {
-    public override bool AddListIfLegal(List<Card> choices)
+    public override bool AddListIfLegal(IEnumerable<Card> choices)
     {
         //check that there are no elements in choices that aren't in potential targets
         //also check that, if a maximum number to choose has been specified, that many have been chosen
-        if ((MaxCanChoose > 0 && choices.Count > MaxCanChoose) ||
+        if ((MaxCanChoose > 0 && choices.Count() > MaxCanChoose) ||
             choices.Intersect(potentialTargets).Count() != choices.Count())
         {
             RequestTargets();
@@ -21,7 +21,7 @@ public class ChooseFromListSaveRestSubeffect : ChooseFromListSubeffect
         //add the rest of the cards to the list of targets first
         parent.targets.AddRange(others);
         //set the value of X to be the number of chosen cards
-        parent.X = choices.Count;
+        parent.X = choices.Count();
         //add the chosen cards on top
         parent.targets.AddRange(choices);
 

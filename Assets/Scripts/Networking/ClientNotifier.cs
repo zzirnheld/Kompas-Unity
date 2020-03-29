@@ -12,7 +12,7 @@ public class ClientNotifier : MonoBehaviour
         clientNetworkCtrl.SendPacket(packet);
     }
 
-    #region Request Actions
+    #region Normal Request Actions
     public void RequestPlay(Card card, int toX, int toY)
     {
         Debug.Log($"Requesting {card.CardName} to be played to {toX} {toY}");
@@ -36,24 +36,6 @@ public class ClientNotifier : MonoBehaviour
         Send(packet);
     }
 
-    public void RequestTopdeck(Card card)
-    {
-        Packet packet = new Packet(Packet.Command.Topdeck, card);
-        Send(packet);
-    }
-
-    public void RequestDiscard(Card card)
-    {
-        Packet packet = new Packet(Packet.Command.Discard, card);
-        Send(packet);
-    }
-
-    public void RequestRehand(Card card)
-    {
-        Packet packet = new Packet(Packet.Command.Rehand, card);
-        Send(packet);
-    }
-
     public void RequestDecklistImport(string decklist)
     {
         Debug.Log("Requesting Deck import of \"" + decklist + "\"");
@@ -63,25 +45,6 @@ public class ClientNotifier : MonoBehaviour
             stringArg = decklist
         };
         Send(packet);
-    }
-
-    public void RequestDraw()
-    {
-        Packet packet = new Packet(Packet.Command.Draw);
-        Send(packet);
-    }
-
-    public void RequestSetNESW(Card card, int n, int e, int s, int w)
-    {
-        Packet packet = new Packet(Packet.Command.SetNESW, card, n, e, s, w);
-        Send(packet);
-    }
-
-    public void RequestUpdatePips(int num)
-    {
-        Packet packet = new Packet(Packet.Command.SetPips, num);
-        Send(packet);
-        Debug.Log("requesting updating pips to " + num);
     }
 
     public void RequestEndTurn()
@@ -123,6 +86,62 @@ public class ClientNotifier : MonoBehaviour
         Debug.Log("Requesting a space target of " + x + ", " + y);
         Packet packet = new Packet(Packet.Command.SpaceTarget, x, y);
         Send(packet);
+    }
+
+    public void RequestListChoices(List<Card> choices)
+    {
+        int[] cardIDs = new int[choices.Count];
+        for(int i = 0; i < choices.Count; i++)
+        {
+            cardIDs[i] = choices[i].ID;
+        }
+        Packet packet = new Packet(Packet.Command.GetChoicesFromList, cardIDs);
+        Send(packet);
+    }
+
+    public void RequestCancelSearch()
+    {
+        Packet packet = new Packet(Packet.Command.CancelSearch);
+        Send(packet);
+    }
+    #endregion
+
+    #region Debug Request Actions
+    public void RequestTopdeck(Card card)
+    {
+        Packet packet = new Packet(Packet.Command.Topdeck, card);
+        Send(packet);
+    }
+
+    public void RequestDiscard(Card card)
+    {
+        Packet packet = new Packet(Packet.Command.Discard, card);
+        Send(packet);
+    }
+
+    public void RequestRehand(Card card)
+    {
+        Packet packet = new Packet(Packet.Command.Rehand, card);
+        Send(packet);
+    }
+
+    public void RequestDraw()
+    {
+        Packet packet = new Packet(Packet.Command.Draw);
+        Send(packet);
+    }
+
+    public void RequestSetNESW(Card card, int n, int e, int s, int w)
+    {
+        Packet packet = new Packet(Packet.Command.SetNESW, card, n, e, s, w);
+        Send(packet);
+    }
+
+    public void RequestUpdatePips(int num)
+    {
+        Packet packet = new Packet(Packet.Command.SetPips, num);
+        Send(packet);
+        Debug.Log("requesting updating pips to " + num);
     }
     #endregion
 }

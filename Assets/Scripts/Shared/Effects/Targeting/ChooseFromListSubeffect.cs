@@ -37,11 +37,11 @@ public class ChooseFromListSubeffect : Subeffect
         RequestTargets();
     }
 
-    public virtual bool AddListIfLegal(List<Card> choices)
+    public virtual bool AddListIfLegal(IEnumerable<Card> choices)
     {
         //check that there are no elements in choices that aren't in potential targets
         //also check that, if a maximum number to choose has been specified, that many have been chosen
-        if ((MaxCanChoose > 0 && choices.Count > MaxCanChoose) ||
+        if ((MaxCanChoose > 0 && choices.Count() > MaxCanChoose) ||
             choices.Intersect(potentialTargets).Count() != choices.Count())
         {
             RequestTargets();

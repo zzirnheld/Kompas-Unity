@@ -187,6 +187,17 @@ public class ClientNetworkController : NetworkController {
                 List<Card> discardToSearch = ClientGame.friendlyDiscardCtrl.CardsThatFitRestriction(discardRestriction);
                 ClientGame.clientUICtrl.StartSearch(discardToSearch, true);
                 break;
+            case Packet.Command.GetChoicesFromList:
+                int[] cardIDs = packet.specialArgs;
+                List<Card> choicesToPick = new List<Card>();
+                foreach(int id in cardIDs)
+                {
+                    Card c = ClientGame.GetCardFromID(id);
+                    if (c == null) Debug.LogError($"Tried to start a list search including card with invalid id {id}");
+                    else choicesToPick.Add(c);
+                }
+                ClientGame.clientUICtrl.StartSearch(choicesToPick, packet.normalArgs[0]);
+                break;
             case Packet.Command.SpaceTarget:
                 ClientGame.targetMode = Game.TargetMode.SpaceTarget;
                 ClientGame.CurrSpaceRestriction = packet.GetSpaceRestriction(ClientGame);

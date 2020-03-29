@@ -19,9 +19,6 @@ public class ServerGame : Game {
     public int cardCount = 0;
     private int currPlayerCount = 0; //current number of players. shouldn't exceed 2
 
-    //game startup flags
-    private bool haveAvatars = false;
-
     private void Start()
     {
         mainGame = this;

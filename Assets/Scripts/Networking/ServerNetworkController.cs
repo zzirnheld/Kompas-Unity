@@ -18,7 +18,7 @@ namespace KompasNetworking
             if (packet == null) return;
             packet.InvertForController(Player.index);
             Debug.Log($"packet command is {packet.command} for player index {Player.index}," +
-                $"inverted numbers {packet.args[0]}, {packet.args[1]}, {packet.args[2]}, {packet.args[3]}");
+                $"inverted numbers {packet.normalArgs[0]}, {packet.normalArgs[1]}, {packet.normalArgs[2]}, {packet.normalArgs[3]}");
 
             //switch between all the possible requests for the server to handle.
             switch (packet.command)
@@ -69,6 +69,20 @@ namespace KompasNetworking
                     if (sGame.CurrEffect != null)
                     {
                         sGame.CurrEffect.DeclineAnotherTarget();
+                    }
+                    break;
+                case Packet.Command.GetChoicesFromList:
+                    List<Card> choices = new List<Card>();
+                    foreach (int id in packet.specialArgs)
+                    {
+                        Card c = sGame.GetCardFromID(id);
+                        if (c == null) Debug.LogError($"Tried to start a list search including card with invalid id {id}");
+                        else choices.Add(c);
+                    }
+
+                    if (sGame.CurrEffect != null && sGame.CurrEffect.CurrSubeffect is ChooseFromListSubeffect listEff)
+                    {
+                        listEff.AddListIfLegal(choices);
                     }
                     break;
                 #endregion

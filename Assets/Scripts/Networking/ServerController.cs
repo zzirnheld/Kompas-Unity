@@ -17,7 +17,6 @@ namespace KompasNetworking
         private TcpListener listener;
         private List<ServerGame> games;
         private ServerGame currGame = null;
-        private int numClients = 0;
 
         private void Awake()
         {
@@ -33,12 +32,12 @@ namespace KompasNetworking
                 Debug.LogError(e.Message);
             }
 
-            //for now, host on startup?
+            //host on startup
             //Don't await, so execution continues instead of hanging waiting for connection
             Host();
         }
 
-        public async Task Host()
+        public async void Host()
         {
             Debug.Log($"Hosting on {ipAddress.ToString()}");
             listener.Start();

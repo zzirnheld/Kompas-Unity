@@ -214,17 +214,16 @@ public class ServerNotifier : MonoBehaviour
         Debug.Log("Asking for space target");
     }
 
-    public void GetChoicesFromList(List<Card> potentialTargets)
+    public void GetChoicesFromList(List<Card> potentialTargets, int maxNum)
     {
-        System.Text.StringBuilder sb = new System.Text.StringBuilder();
-        foreach(Card c in potentialTargets)
+        int[] cardIDs = new int[potentialTargets.Count];
+        for(int i = 0; i < potentialTargets.Count; i++)
         {
-            sb.Append(c.ID);
-            sb.Append(",");
+            cardIDs[i] = potentialTargets[i].ID;
         }
-        Packet packet = new Packet(Packet.Command.GetChoicesFromList, sb.ToString());
+        Packet packet = new Packet(Packet.Command.GetChoicesFromList, cardIDs);
         SendPacket(packet);
-        Debug.Log($"Asking for targets from list of cardIDs {sb.ToString()}");
+        Debug.Log($"Asking for targets from list of cardIDs {cardIDs}");
     }
     #endregion request targets
 

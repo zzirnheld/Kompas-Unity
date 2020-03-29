@@ -32,6 +32,9 @@ public class ClientUIController : UIController
 
     private List<Card> toSearch;
     private int searchIndex = 0;
+    private int numToSearch;
+    private int numSearched;
+    private List<Card> searched;
 
     //deck select ui
     public DeckSelectUIController DeckSelectCtrl;
@@ -134,55 +137,79 @@ public class ClientUIController : UIController
         clientGame.clientNotifier.RequestDecklistImport(decklist);
     }
 
-    public void StartSearch(List<Card> list, bool targeting)
+    public void StartSearch(List<Card> list, int numToChoose = 1)
     {
         //if already searching, dont start another search?
         if (toSearch.Count != 0) return;
         //if the list is empty, don't search
         if (list.Count == 0) return;
 
-        Debug.Log($"Searching a list of {list.Count} cards, targeting? {targeting}");
+        Debug.Log($"Searching a list of {list.Count} cards");
 
         toSearch = list;
+        numToSearch = numToChoose;
+        numSearched = 0;
+        searched = new List<Card>();
 
         //initiate search process
         searchIndex = 0;
-        if (toSearch.Count > 0)
-        {
-            cardSearchImage.sprite = toSearch[searchIndex].DetailedSprite;
-            cardSearchView.SetActive(true);
-            //set buttons to their correct states
-            discardSearchButton.gameObject.SetActive(false);
-            deckSearchButton.gameObject.SetActive(false);
-            if (targeting)
-                searchTargetButton.gameObject.SetActive(true);
-            else
-                searchToHandButton.gameObject.SetActive(true);
-            cancelSearchButton.gameObject.SetActive(true);
-        }
-        else EndSearch();
+        cardSearchImage.sprite = toSearch[searchIndex].DetailedSprite;
+        cardSearchView.SetActive(true);
+        //set buttons to their correct states
+        discardSearchButton.gameObject.SetActive(false);
+        deckSearchButton.gameObject.SetActive(false);
+        searchTargetButton.gameObject.SetActive(true);
+        cancelSearchButton.gameObject.SetActive(true);
     }
 
 
-    public void ConfirmSearch(bool targeting)
+    public void SearchSelectedCard()
     {
-        if (toSearch.Count == 0) return;
+        //if the list to search through is null, we're not searching atm.
+        if (toSearch == null) return;
 
-        if (targeting)
+        if (numToSearch == 1)
+        {
             clientGame.clientNotifier.RequestTarget(toSearch[searchIndex]);
-        else //TODO remove the option for not a targeting deck search once everything's automated?
-            clientGame.clientNotifier.RequestRehand(toSearch[searchIndex]);
+            ResetSearch();
+        }
+        else
+        {
+            searched.Add(toSearch[searchIndex]);
+            //TODO: mark that card as selected
+            numSearched++;
+            //if we were given a maximum number to be searched
+            if (numToSearch > 1 && numSearched >= numToSearch)
+            {
+                //then send the total list
+                clientGame.clientNotifier.RequestListChoices(searched);
+                //and reset searching
+                ResetSearch();
+            }
+        }
+    }
 
-        EndSearch();
+    public void EndSearch()
+    {
+        //if the list to search through is null, we're not searching atm.
+        if (toSearch == null) return;
+
+        //if we were told to look for any number of cards, send the final list of cards found
+        if(numToSearch == -1) clientGame.clientNotifier.RequestListChoices(searched);
+        //otherwise, tell the server that we'd like to cancel searching?
+        //if we're required to make a search, the server will insist that yes, actually, i need a search from you
+        else clientGame.clientNotifier.RequestCancelSearch();
+
+        ResetSearch();
     }
 
     /// <summary>
     /// Hides all buttons relevant to all searches
     /// </summary>
-    public void EndSearch()
+    private void ResetSearch()
     {
         //forget what we were searching through. don't just clear the list because that might clear the actual deck or discard
-        toSearch = new List<Card>();
+        toSearch = null;
 
         cardSearchView.SetActive(false);
         //set buttons to their correct states
