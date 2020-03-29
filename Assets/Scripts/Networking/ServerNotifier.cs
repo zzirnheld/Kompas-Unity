@@ -221,7 +221,7 @@ public class ServerNotifier : MonoBehaviour
         {
             cardIDs[i] = potentialTargets[i].ID;
         }
-        Packet packet = new Packet(Packet.Command.GetChoicesFromList, cardIDs);
+        Packet packet = new Packet(Packet.Command.GetChoicesFromList, cardIDs, maxNum);
         SendPacket(packet);
         Debug.Log($"Asking for targets from list of cardIDs {cardIDs}");
     }

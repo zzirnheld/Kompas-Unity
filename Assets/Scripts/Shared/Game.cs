@@ -144,7 +144,7 @@ public abstract class Game : MonoBehaviour {
                 card.Controller.deckCtrl.RemoveFromDeck(card);
                 break;
             default:
-                Debug.LogError($"Tried to remove card from invalid location {card.Location}");
+                Debug.LogWarning($"Tried to remove card from invalid location {card.Location}");
                 break;
         }
     }

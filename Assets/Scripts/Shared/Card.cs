@@ -28,9 +28,6 @@ public abstract class Card : CardBase {
     //game mechanics data
     protected int boardX;
     protected int boardY;
-    protected string cardName;
-    protected string effText;
-    protected string subtypeText;
     protected Player controller;
     protected int ownerIndex;
     protected Player owner;
@@ -137,7 +134,7 @@ public abstract class Card : CardBase {
     /// <param name="location">Where the card is going</param>
     public void SetLocation(CardLocation location)
     {
-        Debug.Log($"Attempting to move {cardName} from {this.location} to {location}");
+        Debug.Log($"Attempting to move {CardName} from {this.location} to {location}");
 
         //set the card's location variable
         this.location = location;

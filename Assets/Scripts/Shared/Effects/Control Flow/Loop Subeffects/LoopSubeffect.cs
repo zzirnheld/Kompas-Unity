@@ -15,7 +15,9 @@ public abstract class LoopSubeffect : Subeffect
         parent.loopSubeffect = this;
 
         //loop again if necessary
-        if(ShouldContinueLoop()) parent.ResolveSubeffect(JumpTo);
+        Debug.Log($"im in ur loop, the one that jumps to {JumpTo}");
+        if (ShouldContinueLoop()) parent.ResolveSubeffect(JumpTo);
+        else parent.ResolveNextSubeffect();
     }
 
     /// <summary>

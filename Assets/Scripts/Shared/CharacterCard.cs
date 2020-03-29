@@ -72,8 +72,8 @@ public class CharacterCard : Card {
     {
         SerializableCharCard serializableChar = new SerializableCharCard
         {
-            cardName = cardName,
-            effText = effText,
+            cardName = CardName,
+            effText = EffText,
             n = n,
             e = e,
             s = s,
@@ -84,7 +84,7 @@ public class CharacterCard : Card {
             owner = ControllerIndex,
             BoardX = boardX,
             BoardY = boardY,
-            subtypeText = subtypeText
+            subtypeText = SubtypeText
         };
         return serializableChar;
     }

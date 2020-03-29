@@ -36,6 +36,9 @@ public class ServerSubeffectFactory : ISubeffectFactory
             case SubeffectType.ChooseFromListSaveRest:
                 toReturn = JsonUtility.FromJson<ChooseFromListSaveRestSubeffect>(subeffJson);
                 break;
+            case SubeffectType.DeleteTargetFromList:
+                toReturn = JsonUtility.FromJson<DeleteTargetSubeffect>(subeffJson);
+                break;
             case SubeffectType.ChangeNESW:
                 toReturn = JsonUtility.FromJson<ChangeNESWSubeffect>(subeffJson);
                 break;

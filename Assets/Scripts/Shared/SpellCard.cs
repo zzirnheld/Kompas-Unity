@@ -32,8 +32,8 @@ public class SpellCard : Card
     {
         SerializableSpellCard serializableSpell = new SerializableSpellCard
         {
-            cardName = cardName,
-            effText = effText,
+            cardName = CardName,
+            effText = EffText,
             subtype = spellSubtype,
             subtext = subtext,
             d = c,
@@ -42,7 +42,7 @@ public class SpellCard : Card
             owner = ControllerIndex,
             BoardX = boardX,
             BoardY = boardY,
-            subtypeText = subtypeText
+            subtypeText = SubtypeText
         };
         return serializableSpell;
     }

@@ -14,6 +14,7 @@ public enum SubeffectType
     TargetAugmentedCard = 7,
     ChooseFromList = 8,
     ChooseFromListSaveRest = 9,
+    DeleteTargetFromList = 10,
     ChangeNESW = 100,
     AddPips = 101,
     PayPips = 102,

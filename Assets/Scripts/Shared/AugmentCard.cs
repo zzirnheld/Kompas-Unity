@@ -41,8 +41,8 @@ public class AugmentCard : Card
         int index = thisCard.Augments.IndexOf(this);
         SerializableAugCard serializableSpell = new SerializableAugCard
         {
-            cardName = cardName,
-            effText = effText,
+            cardName = CardName,
+            effText = EffText,
             subtext = subtext,
             d = a,
             augSubtypes = augSubtypes,
@@ -51,7 +51,7 @@ public class AugmentCard : Card
             owner = ControllerIndex,
             BoardX = boardX,
             BoardY = boardY,
-            subtypeText = subtypeText,
+            subtypeText = SubtypeText,
             index = index
         };
         return serializableSpell;
