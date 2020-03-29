@@ -160,7 +160,7 @@ public class CardRepository : MonoBehaviour
         }
         catch(System.ArgumentException)
         {
-            Debug.LogError($"Arg ex when checking if subtypes of {cardName} contain {subtypesInclude}");
+            Debug.LogError($"Arg ex when checking if subtypes of {cardName} contain {subtypesInclude}. Json is {cardJsons[cardName]}");
             return false;
         }
     }

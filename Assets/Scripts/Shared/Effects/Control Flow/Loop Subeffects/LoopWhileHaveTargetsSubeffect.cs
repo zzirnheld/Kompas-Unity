@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class LoopIfTargetsSubeffect : LoopSubeffect
+public class LoopWhileHaveTargetsSubeffect : LoopSubeffect
 {
     protected override void OnLoopExit() { }
 

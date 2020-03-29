@@ -40,37 +40,45 @@ public class DeckController : MonoBehaviour
     //importing deck
     public Card InstantiateCard(string json, Player owner)
     {
-        //first deserialize it to tell the card's type
-        var serializableCard = JsonUtility.FromJson<SerializableCard>(json);
-        switch (serializableCard.cardType)
+        try
         {
-            case 'C':
-                var serializableChar = JsonUtility.FromJson<SerializableCharCard>(json);
-                var charCard = Instantiate(characterCardPrefab).GetComponent<CharacterCard>();
-                charCard.gameObject.SetActive(false);
-                charCard.SetInfo(serializableChar, game, owner);
-                //set image for the card by the name. this method gets the sprite with the given name
-                charCard.SetImage(charCard.CardName);
-                return charCard;
-            case 'S':
-                var serializableSpell = JsonUtility.FromJson<SerializableSpellCard>(json);
-                var spellCard = Instantiate(spellCardPrefab).GetComponent<SpellCard>();
-                spellCard.gameObject.SetActive(false);
-                spellCard.SetInfo(serializableSpell, game, owner);
-                //set image for the card by the name. this method gets the sprite with the given name
-                spellCard.SetImage(spellCard.CardName);
-                return spellCard;
-            case 'A':
-                var serializableAug = JsonUtility.FromJson<SerializableAugCard>(json);
-                var augCard = Instantiate(augmentCardPrefab).GetComponent<AugmentCard>();
-                augCard.gameObject.SetActive(false);
-                augCard.SetInfo(serializableAug, game, owner);
-                //set image for the card by the name. this method gets the sprite with the given name
-                augCard.SetImage(augCard.CardName);
-                return augCard;
-            default:
-                Debug.Log("Unrecognized type character " + serializableCard.cardType + " in " + json);
-                return null;
+            //first deserialize it to tell the card's type
+            var serializableCard = JsonUtility.FromJson<SerializableCard>(json);
+            switch (serializableCard.cardType)
+            {
+                case 'C':
+                    var serializableChar = JsonUtility.FromJson<SerializableCharCard>(json);
+                    var charCard = Instantiate(characterCardPrefab).GetComponent<CharacterCard>();
+                    charCard.gameObject.SetActive(false);
+                    charCard.SetInfo(serializableChar, game, owner);
+                    //set image for the card by the name. this method gets the sprite with the given name
+                    charCard.SetImage(charCard.CardName);
+                    return charCard;
+                case 'S':
+                    var serializableSpell = JsonUtility.FromJson<SerializableSpellCard>(json);
+                    var spellCard = Instantiate(spellCardPrefab).GetComponent<SpellCard>();
+                    spellCard.gameObject.SetActive(false);
+                    spellCard.SetInfo(serializableSpell, game, owner);
+                    //set image for the card by the name. this method gets the sprite with the given name
+                    spellCard.SetImage(spellCard.CardName);
+                    return spellCard;
+                case 'A':
+                    var serializableAug = JsonUtility.FromJson<SerializableAugCard>(json);
+                    var augCard = Instantiate(augmentCardPrefab).GetComponent<AugmentCard>();
+                    augCard.gameObject.SetActive(false);
+                    augCard.SetInfo(serializableAug, game, owner);
+                    //set image for the card by the name. this method gets the sprite with the given name
+                    augCard.SetImage(augCard.CardName);
+                    return augCard;
+                default:
+                    Debug.Log("Unrecognized type character " + serializableCard.cardType + " in " + json);
+                    return null;
+            }
+        }
+        catch (ArgumentException)
+        {
+            Debug.LogError($"Failed to load json  {json}");
+            throw;
         }
     }
 

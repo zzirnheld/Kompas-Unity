@@ -66,12 +66,28 @@ public class Effect : IStackable
 
         if (!string.IsNullOrEmpty(se.trigger))
         {
-            trigger = Trigger.FromJson(se.triggerCondition, se.trigger, this);
+            try
+            {
+                trigger = Trigger.FromJson(se.triggerCondition, se.trigger, this);
+            }
+            catch(System.ArgumentException)
+            {
+                Debug.LogError($"Failed to load trigger of type {se.triggerCondition} from json {se.trigger}");
+                throw;
+            }
         }
 
         for (int i = 0; i < se.subeffectTypes.Length; i++)
         {
-            subeffects[i] = thisCard.game.SubeffectFactory.FromJson(se.subeffectTypes[i], se.subeffects[i], this, i);
+            try
+            {
+                subeffects[i] = thisCard.game.SubeffectFactory.FromJson(se.subeffectTypes[i], se.subeffects[i], this, i);
+            }
+            catch (System.ArgumentException)
+            {
+                Debug.LogError($"Failed to load subeffect of type {se.subeffectTypes[i]} from json {se.subeffects[i]}");
+                throw;
+            }
         }
 
         maxTimesCanUsePerTurn = se.maxTimesCanUsePerTurn;

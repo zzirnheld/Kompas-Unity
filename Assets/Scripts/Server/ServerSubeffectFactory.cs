@@ -30,6 +30,12 @@ public class ServerSubeffectFactory : ISubeffectFactory
             case SubeffectType.TargetThisSpace:
                 toReturn = JsonUtility.FromJson<TargetThisSpaceSubeffect>(subeffJson);
                 break;
+            case SubeffectType.ChooseFromList:
+                toReturn = JsonUtility.FromJson<ChooseFromListSubeffect>(subeffJson);
+                break;
+            case SubeffectType.ChooseFromListSaveRest:
+                toReturn = JsonUtility.FromJson<ChooseFromListSaveRestSubeffect>(subeffJson);
+                break;
             case SubeffectType.ChangeNESW:
                 toReturn = JsonUtility.FromJson<ChangeNESWSubeffect>(subeffJson);
                 break;
@@ -48,8 +54,6 @@ public class ServerSubeffectFactory : ISubeffectFactory
             case SubeffectType.SetXByTargetS:
                 toReturn = JsonUtility.FromJson<SetXTargetSSubeffect>(subeffJson);
                 break;
-            case SubeffectType.SetXByTargetCost:
-                throw new System.NotImplementedException();
             case SubeffectType.PlayCard:
                 toReturn = JsonUtility.FromJson<PlaySubeffect>(subeffJson);
                 break;
@@ -71,8 +75,11 @@ public class ServerSubeffectFactory : ISubeffectFactory
             case SubeffectType.TTimesLoop:
                 toReturn = JsonUtility.FromJson<TTimesSubeffect>(subeffJson);
                 break;
+            case SubeffectType.WhileHaveTargetsLoop:
+                toReturn = JsonUtility.FromJson<LoopWhileHaveTargetsSubeffect>(subeffJson);
+                break;
             default:
-                Debug.LogError("Unrecognized effect type enum for loading effect in effect constructor");
+                Debug.LogError($"Unrecognized effect type enum {seType} for loading effect in effect constructor");
                 break;
         }
 
