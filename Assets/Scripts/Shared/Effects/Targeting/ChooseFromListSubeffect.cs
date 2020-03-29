@@ -6,13 +6,13 @@ using UnityEngine;
 public class ChooseFromListSubeffect : Subeffect
 {
     public CardRestriction CardRestriction;
-    public int MaxCanChoose = 0;
+    public int MaxCanChoose = -1;
 
     protected List<Card> potentialTargets;
 
     protected void RequestTargets()
     {
-        parent.EffectController.ServerNotifier.GetChoicesFromList(potentialTargets);
+        parent.EffectController.ServerNotifier.GetChoicesFromList(potentialTargets, MaxCanChoose);
     }
 
     public override void Initialize()

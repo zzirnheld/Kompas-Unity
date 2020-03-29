@@ -224,12 +224,12 @@ public class ClientUIController : UIController
     //TODO rework this to take into get deck from server before searching?
     public void StartDeckSearch()
     {
-        StartSearch(clientGame.friendlyDeckCtrl.Deck, false);
+        StartSearch(clientGame.friendlyDeckCtrl.Deck);
     }
 
     public void StartDiscardSearch()
     {
-        StartSearch(clientGame.friendlyDiscardCtrl.Discard, false);
+        StartSearch(clientGame.friendlyDiscardCtrl.Discard);
     }
 
     public void NextCardSearch()

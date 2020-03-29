@@ -180,12 +180,12 @@ public class ClientNetworkController : NetworkController {
                 Debug.Log("Eff index: " + packet.EffIndex + " subeff index " + packet.SubeffIndex);
                 CardRestriction deckRestriction = packet.GetCardRestriction(ClientGame);
                 List<Card> toSearch = ClientGame.friendlyDeckCtrl.CardsThatFitRestriction(deckRestriction);
-                ClientGame.clientUICtrl.StartSearch(toSearch, true);
+                ClientGame.clientUICtrl.StartSearch(toSearch);
                 break;
             case Packet.Command.RequestDiscardTarget:
                 CardRestriction discardRestriction = packet.GetCardRestriction(ClientGame);
                 List<Card> discardToSearch = ClientGame.friendlyDiscardCtrl.CardsThatFitRestriction(discardRestriction);
-                ClientGame.clientUICtrl.StartSearch(discardToSearch, true);
+                ClientGame.clientUICtrl.StartSearch(discardToSearch);
                 break;
             case Packet.Command.GetChoicesFromList:
                 int[] cardIDs = packet.specialArgs;
