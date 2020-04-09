@@ -84,6 +84,9 @@ public class ServerSubeffectFactory : ISubeffectFactory
             case SubeffectType.WhileHaveTargetsLoop:
                 toReturn = JsonUtility.FromJson<LoopWhileHaveTargetsSubeffect>(subeffJson);
                 break;
+            case SubeffectType.ExitLoopIfEffectImpossible:
+                toReturn = JsonUtility.FromJson<ExitLoopIfEffectImpossibleSubeffect>(subeffJson);
+                break;
             default:
                 Debug.LogError($"Unrecognized effect type enum {seType} for loading effect in effect constructor");
                 break;

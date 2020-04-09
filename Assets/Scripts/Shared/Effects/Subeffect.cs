@@ -19,6 +19,7 @@ public abstract class Subeffect
     /// </summary>
     public abstract void Resolve();
 
+
     /// <summary>
     /// Called by restrictions that have found a valid target to add to the list
     /// </summary>
@@ -29,10 +30,9 @@ public abstract class Subeffect
         parent.ResolveSubeffect(parent.subeffectIndex + 1);
     }
 
-    public virtual void Initialize()
-    {
+    public virtual void Initialize() { }
 
-    }
+    public virtual void OnImpossible() { }
 
     /// <summary>
     /// The index in the Effect.targets array for which target this effect uses.

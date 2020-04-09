@@ -25,7 +25,7 @@ public class Effect : IStackable
     //checked by effect resolution to see if it should start resolving the next effect on the stack
     public bool doneResolving = false;
 
-    public LoopSubeffect loopSubeffect = null;
+    public Subeffect OnImpossible = null;
 
     private Subeffect[] subeffects;
     public Subeffect[] Subeffects { get => subeffects; }
@@ -141,7 +141,7 @@ public class Effect : IStackable
         subeffectIndex = 0;
         X = 0;
         targets.Clear();
-        loopSubeffect = null;
+        OnImpossible = null;
         EffectController.ServerNotifier.AcceptTarget();
         serverGame.FinishStackEntryResolution();
     }
@@ -150,12 +150,12 @@ public class Effect : IStackable
     public void EffectImpossible()
     {
         Debug.Log($"Effect of {thisCard.CardName} is being declared impossible");
-        if (loopSubeffect == null) FinishResolution();
-        else loopSubeffect.ExitLoop();
+        if (OnImpossible == null) FinishResolution();
+        else OnImpossible.OnImpossible();
     }
 
     public void DeclineAnotherTarget()
     {
-        if (loopSubeffect != null) loopSubeffect.ExitLoop();
+        OnImpossible?.OnImpossible();
     }
 }

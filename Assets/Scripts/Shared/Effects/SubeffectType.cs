@@ -36,5 +36,6 @@ public enum SubeffectType
     RehandCard = 304,
     XTimesLoop = 400,
     TTimesLoop = 401,
-    WhileHaveTargetsLoop = 402
+    WhileHaveTargetsLoop = 402,
+    ExitLoopIfEffectImpossible = 403
 }

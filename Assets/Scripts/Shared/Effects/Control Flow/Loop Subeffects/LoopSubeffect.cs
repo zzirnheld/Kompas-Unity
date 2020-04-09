@@ -11,13 +11,10 @@ public abstract class LoopSubeffect : Subeffect
 
     public override void Resolve()
     {
-        //let the parent know there's a loop happening
-        parent.loopSubeffect = this;
-
         //loop again if necessary
         Debug.Log($"im in ur loop, the one that jumps to {JumpTo}");
         if (ShouldContinueLoop()) parent.ResolveSubeffect(JumpTo);
-        else parent.ResolveNextSubeffect();
+        else ExitLoop();
     }
 
     /// <summary>
@@ -26,7 +23,7 @@ public abstract class LoopSubeffect : Subeffect
     public void ExitLoop()
     {
         //let parent know the loop is over
-        parent.loopSubeffect = null;
+        if(parent.OnImpossible == this) parent.OnImpossible = null;
 
         //do anything necessary to clean up the loop
         OnLoopExit();
