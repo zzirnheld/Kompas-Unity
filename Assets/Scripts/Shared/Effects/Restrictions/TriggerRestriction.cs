@@ -8,13 +8,14 @@ public class TriggerRestriction : Restriction
     public enum TriggerRestrictions
     {
         ThisCardTriggered = 0,
-        EffectParentRestriction = 100,
+        ThisCardFitsRestriction = 100,
+        TriggererFitsRestriction = 101,
         OnField = 400,
     }
 
     public TriggerRestrictions[] triggerRestrictions;
 
-    public CardRestriction effParentRestriction;
+    public CardRestriction cardRestriction;
 
     [System.NonSerialized]
     public Card thisCard;
@@ -31,9 +32,8 @@ public class TriggerRestriction : Restriction
                 case TriggerRestrictions.ThisCardTriggered:
                     if (triggerer != thisTrigger.effToTrigger.thisCard) return false;
                     break;
-                case TriggerRestrictions.EffectParentRestriction:
-                    if (effParentRestriction == null) return false;
-                    if (!effParentRestriction.Evaluate(thisCard)) return false;
+                case TriggerRestrictions.ThisCardFitsRestriction:
+                    if (!cardRestriction.Evaluate(thisCard)) return false;
                     break;
                 case TriggerRestrictions.OnField:
                     if (triggerer.Location != CardLocation.Field) return false;

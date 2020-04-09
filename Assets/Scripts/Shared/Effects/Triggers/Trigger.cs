@@ -44,14 +44,14 @@ public class Trigger
             {
                 toReturn.triggerRestriction.thisTrigger = toReturn;
                 toReturn.triggerRestriction.thisCard = parent.thisCard;
-                if(toReturn.triggerRestriction.effParentRestriction != null)
+                if(toReturn.triggerRestriction.cardRestriction != null)
                 {
                     //give a dummy subeffect to the trigger restriction since it's a trigger that's not bound to an eff
                     DummySubeffect dummy = new DummySubeffect
                     {
                         parent = parent
                     };
-                    toReturn.triggerRestriction.effParentRestriction.subeffect = dummy;
+                    toReturn.triggerRestriction.cardRestriction.subeffect = dummy;
                     
                 }
             }

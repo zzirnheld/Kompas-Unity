@@ -1,0 +1,39 @@
+{
+	"cardType":67,
+	"cardName":"Squire",
+	"effText":"When you summon a Warrior, you can tribute me to gain a pip.",
+	"effects":[
+		{
+			"triggerCondition":401,
+			"trigger":"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0,100,400],
+					\"cardRestriction\":
+					{
+						\"restrictionsToCheck\":[2],
+						\"subtypesInclude\":[\"Warrior\"]
+					}
+				}
+			}",
+			"subeffectTypes":[5,301,101],
+			"subeffects":[
+				"{}",
+				"{
+					\"TargetIndex\":-1
+				}",
+				"{
+					\"xMultiplier\":0,
+					\"xDivisor\":1,
+					\"modifier\":1,
+					\"playerOffset\":0
+				}"
+			]	
+		}
+	],
+	"n":3,
+	"e":4,
+	"s":4,
+	"w":4,
+	"subtypes":["Swordguild","Warrior"],
+	"subtypeText":"Swordguild Warrior"
+}
