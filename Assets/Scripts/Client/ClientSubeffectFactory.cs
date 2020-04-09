@@ -16,6 +16,7 @@ public class ClientSubeffectFactory : ISubeffectFactory
             case SubeffectType.DeckTarget:
             case SubeffectType.DiscardTarget:
             case SubeffectType.HandTarget:
+            case SubeffectType.TargetAll:
                 toReturn = JsonUtility.FromJson<DummyCardTargetSubeffect>(json);
                 break;
             case SubeffectType.SpaceTarget:

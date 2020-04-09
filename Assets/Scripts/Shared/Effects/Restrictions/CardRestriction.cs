@@ -35,6 +35,7 @@ public class CardRestriction : Restriction
     public int costsLessThan;
     public string nameIs;
     public string[] subtypesInclude;
+    public string[] subtypesExclude;
     public int constant;
 
     public virtual bool Evaluate (Card potentialTarget, int x)
@@ -65,7 +66,7 @@ public class CardRestriction : Restriction
                     if (!(potentialTarget is AugmentCard)) return false;
                     break;
                 case CardRestrictions.SubtypesExclude:
-                    foreach (string s in subtypesInclude)
+                    foreach (string s in subtypesExclude)
                     {
                         if (potentialTarget.SubtypeText.IndexOf(s) != -1) return false;
                     }

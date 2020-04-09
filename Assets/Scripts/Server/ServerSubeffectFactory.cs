@@ -39,6 +39,9 @@ public class ServerSubeffectFactory : ISubeffectFactory
             case SubeffectType.DeleteTargetFromList:
                 toReturn = JsonUtility.FromJson<DeleteTargetSubeffect>(subeffJson);
                 break;
+            case SubeffectType.TargetAll:
+                toReturn = JsonUtility.FromJson<TargetAllSubeffect>(subeffJson);
+                break;
             case SubeffectType.ChangeNESW:
                 toReturn = JsonUtility.FromJson<ChangeNESWSubeffect>(subeffJson);
                 break;

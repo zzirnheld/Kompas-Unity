@@ -15,6 +15,7 @@ public enum SubeffectType
     ChooseFromList = 8,
     ChooseFromListSaveRest = 9,
     DeleteTargetFromList = 10,
+    TargetAll = 11,
     ChangeNESW = 100,
     AddPips = 101,
     PayPips = 102,
