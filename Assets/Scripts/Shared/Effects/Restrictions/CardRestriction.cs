@@ -12,6 +12,7 @@ public class CardRestriction : Restriction
         IsCharacter = 3,
         IsSpell = 4,
         IsAugment = 5,
+        SubtypesExclude = 6,
         Hand = 100,
         Discard = 101,
         Deck = 102,
@@ -51,7 +52,7 @@ public class CardRestriction : Restriction
                 case CardRestrictions.SubtypesInclude:
                     foreach (string s in subtypesInclude)
                     {
-                        if (Array.IndexOf(potentialTarget.Subtypes, s) == -1) return false;
+                        if (potentialTarget.SubtypeText.IndexOf(s) == -1) return false;
                     }
                     break;
                 case CardRestrictions.IsCharacter:
@@ -62,6 +63,12 @@ public class CardRestriction : Restriction
                     break;
                 case CardRestrictions.IsAugment:
                     if (!(potentialTarget is AugmentCard)) return false;
+                    break;
+                case CardRestrictions.SubtypesExclude:
+                    foreach (string s in subtypesInclude)
+                    {
+                        if (potentialTarget.SubtypeText.IndexOf(s) != -1) return false;
+                    }
                     break;
                 case CardRestrictions.Hand:
                     if (potentialTarget.Location != CardLocation.Hand) return false;
