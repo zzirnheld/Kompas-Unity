@@ -55,8 +55,12 @@ public class ChooseFromListSubeffect : Subeffect
     {
         //check that there are no elements in choices that aren't in potential targets
         //also check that, if a maximum number to choose has been specified, that many have been chosen
-        if ((MaxCanChoose > 0 && choices.Count() > MaxCanChoose) ||
-            choices.Intersect(potentialTargets).Count() != choices.Count())
+        //also check that the list as a whole is allowable
+        bool invalidList = (MaxCanChoose > 0 && choices.Count() > MaxCanChoose) ||
+            choices.Intersect(potentialTargets).Count() != choices.Count() ||
+            !ListRestriction.Evaluate(choices);
+
+        if (invalidList)
         {
             RequestTargets();
             return false;
