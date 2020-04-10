@@ -8,7 +8,7 @@ public class ListRestriction
 
     public enum ListRestrictions
     {
-        CanPayCost = 0 //effect's controller is able to pay the cost of all of them together
+        CanPayCost = 1 //effect's controller is able to pay the cost of all of them together
     }
     public ListRestrictions[] Restrictions;
 
