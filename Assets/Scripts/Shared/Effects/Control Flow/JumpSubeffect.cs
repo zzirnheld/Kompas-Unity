@@ -9,6 +9,6 @@ public class JumpSubeffect : Subeffect
     public override void Resolve()
     {
         //this will always jump to the given subeffect index
-        parent.ResolveSubeffect(IndexToJumpTo);
+        Effect.ResolveSubeffect(IndexToJumpTo);
     }
 }

@@ -12,25 +12,25 @@ public class BoardTargetSubeffect : CardTargetSubeffect
     public override void Initialize()
     {
         base.Initialize();
-        boardRestriction.subeffect = this;
+        boardRestriction.Subeffect = this;
     }
 
     public override void Resolve()
     {
-        boardRestriction.subeffect = this;
+        boardRestriction.Subeffect = this;
 
         //check first that there exist valid targets. if there exist no valid targets, finish resolution here
-        if (parent.thisCard.game.NoValidCardOnBoardTarget(boardRestriction))
+        if (ThisCard.game.NoValidCardOnBoardTarget(boardRestriction))
         {
-            Debug.Log("No target exists for " + parent.thisCard.CardName + " effect");
-            parent.EffectImpossible();
+            Debug.Log("No target exists for " + ThisCard.CardName + " effect");
+            Effect.EffectImpossible();
             return;
         }
 
         //ask the client that is this effect's controller for a target. 
         //give the card if whose effect it is, the index of the effect, and the index of the subeffect
         //since only the server resolves effects, this should never be called for a client.
-        parent.EffectController.ServerNotifier.GetBoardTarget(parent.thisCard, this);
+        EffectController.ServerNotifier.GetBoardTarget(ThisCard, this);
 
         //then wait for the network controller to call the continue method
     }
@@ -41,14 +41,14 @@ public class BoardTargetSubeffect : CardTargetSubeffect
         //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
         if (boardRestriction.Evaluate(card))
         {
-            parent.targets.Add(card);
-            parent.ResolveNextSubeffect();
+            Effect.targets.Add(card);
+            Effect.ResolveNextSubeffect();
             Debug.Log("Adding " + card.CardName + " as target");
             return true;
         }
         else
         {
-            parent.EffectController.ServerNotifier.GetBoardTarget(parent.thisCard, this);
+            EffectController.ServerNotifier.GetBoardTarget(ThisCard, this);
         }
 
         return false;

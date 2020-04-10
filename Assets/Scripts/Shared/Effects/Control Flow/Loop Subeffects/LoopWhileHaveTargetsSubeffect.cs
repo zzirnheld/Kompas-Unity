@@ -9,6 +9,6 @@ public class LoopWhileHaveTargetsSubeffect : LoopSubeffect
 
     protected override bool ShouldContinueLoop()
     {
-        return parent.targets.Any();
+        return Effect.targets.Any();
     }
 }

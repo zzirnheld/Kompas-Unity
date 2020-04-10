@@ -95,7 +95,7 @@ public class ServerSubeffectFactory : ISubeffectFactory
         if (toReturn != null)
         {
             Debug.Log($"Finishing setup for new effect of type {seType}");
-            toReturn.parent = parent;
+            toReturn.Effect = parent;
             toReturn.Initialize();
             toReturn.SubeffIndex = subeffIndex;
         }

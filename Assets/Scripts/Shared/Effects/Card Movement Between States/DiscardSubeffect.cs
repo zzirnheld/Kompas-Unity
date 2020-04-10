@@ -8,6 +8,6 @@ public class DiscardSubeffect : CardChangeStateSubeffect
     {
         Debug.Log("Resolving discard subeffect");
         ServerGame.Discard(Target);
-        parent.ResolveNextSubeffect();
+        Effect.ResolveNextSubeffect();
     }
 }

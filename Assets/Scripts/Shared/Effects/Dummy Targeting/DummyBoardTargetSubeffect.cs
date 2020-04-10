@@ -13,6 +13,6 @@ public class DummyBoardTargetSubeffect : Subeffect
 
     public override void Initialize()
     {
-        boardRestriction.subeffect = this;
+        boardRestriction.Subeffect = this;
     }
 }

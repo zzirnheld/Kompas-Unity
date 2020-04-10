@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class CardRestriction : Restriction
+public class CardRestriction
 {
+    public Subeffect Subeffect;
+
     public enum CardRestrictions {
         NameIs = 1,
         SubtypesInclude = 2,
@@ -139,6 +141,6 @@ public class CardRestriction : Restriction
     /// <returns></returns>
     public virtual bool Evaluate(Card potentialTarget)
     {
-        return Evaluate(potentialTarget, subeffect.parent.X);
+        return Evaluate(potentialTarget, Subeffect.Effect.X);
     }
 }

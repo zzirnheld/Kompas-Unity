@@ -9,7 +9,7 @@ public abstract class CardTargetSubeffect : Subeffect
     public override void Initialize()
     {
         base.Initialize();
-        cardRestriction.subeffect = this;
+        cardRestriction.Subeffect = this;
     }
 
     /// <summary>
@@ -20,8 +20,8 @@ public abstract class CardTargetSubeffect : Subeffect
         //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
         if (cardRestriction.Evaluate(card))
         {
-            parent.targets.Add(card);
-            parent.ResolveNextSubeffect();
+            Effect.targets.Add(card);
+            Effect.ResolveNextSubeffect();
             Debug.Log("Adding " + card.CardName + " as target");
             return true;
         }

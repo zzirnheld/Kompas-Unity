@@ -13,7 +13,7 @@ public abstract class LoopSubeffect : Subeffect
     {
         //loop again if necessary
         Debug.Log($"im in ur loop, the one that jumps to {JumpTo}");
-        if (ShouldContinueLoop()) parent.ResolveSubeffect(JumpTo);
+        if (ShouldContinueLoop()) Effect.ResolveSubeffect(JumpTo);
         else ExitLoop();
     }
 
@@ -23,12 +23,12 @@ public abstract class LoopSubeffect : Subeffect
     public void ExitLoop()
     {
         //let parent know the loop is over
-        if(parent.OnImpossible == this) parent.OnImpossible = null;
+        if(Effect.OnImpossible == this) Effect.OnImpossible = null;
 
         //do anything necessary to clean up the loop
         OnLoopExit();
 
         //then skip to after the loop
-        parent.ResolveNextSubeffect();
+        Effect.ResolveNextSubeffect();
     }
 }

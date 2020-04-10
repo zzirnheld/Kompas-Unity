@@ -11,8 +11,8 @@ public class PlaySubeffect : CardChangeStateSubeffect
     {
         get
         {
-            if (SpaceIndex < 0) return parent.coords[parent.coords.Count + SpaceIndex].x;
-            else return parent.coords[SpaceIndex].x;
+            if (SpaceIndex < 0) return Effect.coords[Effect.coords.Count + SpaceIndex].x;
+            else return Effect.coords[SpaceIndex].x;
         }
     }
 
@@ -20,14 +20,14 @@ public class PlaySubeffect : CardChangeStateSubeffect
     {
         get
         {
-            if (SpaceIndex < 0) return parent.coords[parent.coords.Count + SpaceIndex].y;
-            else return parent.coords[SpaceIndex].y;
+            if (SpaceIndex < 0) return Effect.coords[Effect.coords.Count + SpaceIndex].y;
+            else return Effect.coords[SpaceIndex].y;
         }
     }
 
     public override void Resolve()
     {
-        parent.serverGame.Play(Target, X, Y, parent.EffectController);
-        parent.ResolveNextSubeffect();
+        Effect.serverGame.Play(Target, X, Y, EffectController);
+        Effect.ResolveNextSubeffect();
     }
 }

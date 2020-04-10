@@ -10,10 +10,11 @@ public class TargetAllSubeffect : CardTargetSubeffect
         {
             if (cardRestriction.Evaluate(pair.Value))
             {
-                parent.targets.Add(pair.Value);
+                Effect.targets.Add(pair.Value);
             }
         }
 
-        parent.ResolveNextSubeffect();
+        Effect.ResolveNextSubeffect();
     }
 }
+

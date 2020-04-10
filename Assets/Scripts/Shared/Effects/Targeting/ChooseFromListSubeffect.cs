@@ -5,20 +5,34 @@ using UnityEngine;
 
 public class ChooseFromListSubeffect : Subeffect
 {
+    /// <summary>
+    /// Restriction that each card must fulfill
+    /// </summary>
     public CardRestriction CardRestriction;
+
+    /// <summary>
+    /// Restriction that the list collectively must fulfill
+    /// </summary>
+    public ListRestriction ListRestriction;
+
+    /// <summary>
+    /// The maximum number of cards that can be chosen.
+    /// If this isn't specified in the json, allow unlimited cards to be chosen.
+    /// Represent this with -1
+    /// </summary>
     public int MaxCanChoose = -1;
 
     protected List<Card> potentialTargets;
 
     protected void RequestTargets()
     {
-        parent.EffectController.ServerNotifier.GetChoicesFromList(potentialTargets, MaxCanChoose);
+        EffectController.ServerNotifier.GetChoicesFromList(potentialTargets, MaxCanChoose);
     }
 
     public override void Initialize()
     {
         base.Initialize();
-        CardRestriction.subeffect = this;
+        CardRestriction.Subeffect = this;
     }
 
     public override void Resolve()
@@ -49,9 +63,9 @@ public class ChooseFromListSubeffect : Subeffect
         }
 
         //add all cards in the chosen list to targets
-        parent.targets.AddRange(choices);
+        Effect.targets.AddRange(choices);
         //everything's cool
-        parent.ResolveNextSubeffect();
+        Effect.ResolveNextSubeffect();
         return true;
     }
 

@@ -6,7 +6,7 @@ public class RehandSubeffect : CardChangeStateSubeffect
 {
     public override void Resolve()
     {
-        parent.serverGame.Rehand(Target);
-        parent.ResolveNextSubeffect();
+        Effect.serverGame.Rehand(Target);
+        Effect.ResolveNextSubeffect();
     }
 }

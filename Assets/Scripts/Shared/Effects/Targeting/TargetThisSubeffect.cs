@@ -6,7 +6,7 @@ public class TargetThisSubeffect : CardTargetSubeffect
 {
     public override void Resolve()
     {
-        parent.targets.Add(parent.thisCard);
-        parent.ResolveNextSubeffect();
+        Effect.targets.Add(ThisCard);
+        Effect.ResolveNextSubeffect();
     }
 }

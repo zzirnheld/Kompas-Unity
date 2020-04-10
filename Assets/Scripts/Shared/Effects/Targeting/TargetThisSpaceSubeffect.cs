@@ -6,7 +6,7 @@ public class TargetThisSpaceSubeffect : Subeffect
 {
     public override void Resolve()
     {
-        parent.coords.Add(new Vector2Int(parent.thisCard.BoardX, parent.thisCard.BoardY));
-        parent.ResolveNextSubeffect();
+        Effect.coords.Add(new Vector2Int(ThisCard.BoardX, ThisCard.BoardY));
+        Effect.ResolveNextSubeffect();
     }
 }

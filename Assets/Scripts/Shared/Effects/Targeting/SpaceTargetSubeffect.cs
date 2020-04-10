@@ -10,19 +10,19 @@ public class SpaceTargetSubeffect : Subeffect
     {
         base.Initialize();
         Debug.Log("Space restriction is null? " + (spaceRestriction == null));
-        spaceRestriction.subeffect = this;
+        spaceRestriction.Subeffect = this;
     }
 
     public override void Resolve()
     {
-        if (!parent.serverGame.ExistsSpaceTarget(spaceRestriction))
+        if (!Effect.serverGame.ExistsSpaceTarget(spaceRestriction))
         {
-            Debug.Log("No coords exist for " + parent.thisCard.CardName + " effect");
-            parent.EffectImpossible();
+            Debug.Log("No coords exist for " + ThisCard.CardName + " effect");
+            Effect.EffectImpossible();
             return;
         }
 
-        parent.EffectController.ServerNotifier.GetSpaceTarget(parent.thisCard, this);
+        EffectController.ServerNotifier.GetSpaceTarget(ThisCard, this);
     }
 
     public bool SetTargetIfValid(int x, int y)
@@ -30,8 +30,8 @@ public class SpaceTargetSubeffect : Subeffect
         //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
         if (spaceRestriction.Evaluate(x, y))
         {
-            parent.coords.Add(new Vector2Int(x, y));
-            parent.ResolveNextSubeffect();
+            Effect.coords.Add(new Vector2Int(x, y));
+            Effect.ResolveNextSubeffect();
             Debug.Log("Adding " + x + ", " + y + " as coords");
             return true;
         }

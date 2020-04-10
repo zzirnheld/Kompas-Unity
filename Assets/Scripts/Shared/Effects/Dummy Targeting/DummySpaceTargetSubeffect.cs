@@ -13,6 +13,6 @@ public class DummySpaceTargetSubeffect : Subeffect
 
     public override void Initialize()
     {
-        spaceRestriction.subeffect = this;
+        spaceRestriction.Subeffect = this;
     }
 }

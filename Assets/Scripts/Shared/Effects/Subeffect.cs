@@ -6,9 +6,11 @@ using UnityEngine;
 [System.Serializable]
 public abstract class Subeffect
 {
-    [System.NonSerialized] public Effect parent;
+    [System.NonSerialized] public Effect Effect;
 
-    public ServerGame ServerGame { get { return parent.serverGame; } }
+    public ServerGame ServerGame { get { return Effect.serverGame; } }
+    public ServerPlayer EffectController { get { return Effect.EffectController; } }
+    public Card ThisCard { get { return Effect.thisCard; } }
 
     public int SubeffIndex;
 
@@ -26,8 +28,8 @@ public abstract class Subeffect
     /// <param name="card"></param>
     public void ContinueResolutionWith(Card card)
     {
-        parent.targets.Add(card);
-        parent.ResolveSubeffect(parent.subeffectIndex + 1);
+        Effect.targets.Add(card);
+        Effect.ResolveSubeffect(Effect.subeffectIndex + 1);
     }
 
     public virtual void Initialize() { }
@@ -46,8 +48,8 @@ public abstract class Subeffect
         get
         {
             return TargetIndex < 0 ?
-                parent.targets[parent.targets.Count + TargetIndex] :
-                parent.targets[TargetIndex];
+                Effect.targets[Effect.targets.Count + TargetIndex] :
+                Effect.targets[TargetIndex];
         }
     }
 }

@@ -91,11 +91,10 @@ public class ClientGame : Game {
 
     public void TargetCard(Card card)
     {
-        if (clientNetworkCtrl.Restriction == null) return;
-
         if(CurrCardRestriction == null)
         {
-            Debug.LogError($"Tried to target {card.CardName} while last restriction is null or not card restriction");
+            Debug.Log($"Called target card on {card.CardName} while curr card restriction is null");
+            return;
         }
 
         //if the player is currently looking for a target on the board,

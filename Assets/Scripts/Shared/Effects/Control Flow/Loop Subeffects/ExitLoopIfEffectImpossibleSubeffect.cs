@@ -11,13 +11,13 @@ public class ExitLoopIfEffectImpossibleSubeffect : Subeffect
     public override void Initialize()
     {
         base.Initialize();
-        loopSubeffect = parent.Subeffects[LoopSubeffectIndex] as LoopSubeffect 
+        loopSubeffect = Effect.Subeffects[LoopSubeffectIndex] as LoopSubeffect 
             ?? throw new System.ArgumentNullException($"Subeffect at loop subeffect index {LoopSubeffectIndex} cannot be null");
     }
 
     public override void Resolve()
     {
-        parent.OnImpossible = this;
+        Effect.OnImpossible = this;
     }
 
     public override void OnImpossible()

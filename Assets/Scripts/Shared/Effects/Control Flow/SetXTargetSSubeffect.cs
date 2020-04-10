@@ -8,12 +8,12 @@ public class SetXTargetSSubeffect : Subeffect
     {
         if (!(Target is CharacterCard charTarget))
         {
-            parent.EffectImpossible();
+            Effect.EffectImpossible();
             return;
         }
 
-        parent.X = charTarget.S;
-        parent.EffectController.ServerNotifier.NotifyEffectX(parent.thisCard, parent.EffectIndex, parent.X);
-        parent.ResolveNextSubeffect();
+        Effect.X = charTarget.S;
+        EffectController.ServerNotifier.NotifyEffectX(ThisCard, Effect.EffectIndex, Effect.X);
+        Effect.ResolveNextSubeffect();
     }
 }

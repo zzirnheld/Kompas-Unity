@@ -10,15 +10,15 @@ public class PayPipsSubeffect : Subeffect
 
     public override void Resolve()
     {
-        int toPay = parent.X * xMultiplier / xDivisor + modifier;
-        if(parent.EffectController.pips < toPay)
+        int toPay = Effect.X * xMultiplier / xDivisor + modifier;
+        if(EffectController.pips < toPay)
         {
-            parent.EffectImpossible();
+            Effect.EffectImpossible();
             return;
         }
 
-        parent.EffectController.pips -= toPay;
-        parent.EffectController.ServerNotifier.NotifySetPips(parent.EffectController.pips);
-        parent.ResolveNextSubeffect();
+        EffectController.pips -= toPay;
+        EffectController.ServerNotifier.NotifySetPips(EffectController.pips);
+        Effect.ResolveNextSubeffect();
     }
 }

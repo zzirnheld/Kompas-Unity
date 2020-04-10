@@ -12,8 +12,8 @@ public class AddPipsSubeffect : Subeffect
     public override void Resolve()
     {
         //could also be                           playerOffest == parent.effectController ? 0 : 1
-        Player player = parent.serverGame.Players[playerOffset + parent.effectControllerIndex % 2];
-        player.pips += (xMultiplier * parent.X / xDivisor) + modifier;
-        parent.EffectController.ServerNotifier.NotifySetPips(player.pips);
+        Player player = Effect.serverGame.Players[playerOffset + Effect.effectControllerIndex % 2];
+        player.pips += (xMultiplier * Effect.X / xDivisor) + modifier;
+        EffectController.ServerNotifier.NotifySetPips(player.pips);
     }
 }

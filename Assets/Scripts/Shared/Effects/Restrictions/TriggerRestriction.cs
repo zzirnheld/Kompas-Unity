@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class TriggerRestriction : Restriction
+public class TriggerRestriction
 {
+    public Subeffect Subeffect;
+
     public enum TriggerRestrictions
     {
         ThisCardTriggered = 0,

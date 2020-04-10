@@ -8,9 +8,9 @@ public class DeleteTargetSubeffect : Subeffect
 
     public override void Resolve()
     {
-        if (DeleteIndex < 0) parent.targets.RemoveAt(parent.targets.Count + DeleteIndex);
-        else parent.targets.RemoveAt(DeleteIndex);
+        if (DeleteIndex < 0) Effect.targets.RemoveAt(Effect.targets.Count + DeleteIndex);
+        else Effect.targets.RemoveAt(DeleteIndex);
 
-        parent.ResolveNextSubeffect();
+        Effect.ResolveNextSubeffect();
     }
 }

@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class SpaceRestriction : Restriction
+public class SpaceRestriction
 {
+    public Subeffect Subeffect;
+
     public enum SpaceRestrictions
     {
         CanSummonTarget = 0,
@@ -24,7 +26,7 @@ public class SpaceRestriction : Restriction
         {
             for(int j = 0; j < 7; j++)
             {
-                adj = subeffect.parent.serverGame.boardCtrl.GetCardAt(i, j)?.IsAdjacentTo(x, y);
+                adj = Subeffect.Effect.serverGame.boardCtrl.GetCardAt(i, j)?.IsAdjacentTo(x, y);
                 if (adj.HasValue && adj.Value) return true; //if the card exists (so adj is not null) and the card is adjacent, return true
             }
         }
@@ -35,17 +37,17 @@ public class SpaceRestriction : Restriction
     public bool Evaluate(int x, int y)
     {
         Debug.Log("Evaluating " + x + ", " + y);
-        if (!subeffect.parent.serverGame.boardCtrl.ValidIndices(x, y)) return false;
+        if (!Subeffect.Effect.serverGame.boardCtrl.ValidIndices(x, y)) return false;
 
         foreach(SpaceRestrictions r in restrictionsToCheck)
         {
             switch (r)
             {
                 case SpaceRestrictions.CanSummonTarget:
-                    if (!subeffect.parent.serverGame.boardCtrl.CanSummonTo(subeffect.parent.effectControllerIndex, x, y)) return false;
+                    if (!Subeffect.Effect.serverGame.boardCtrl.CanSummonTo(Subeffect.Effect.effectControllerIndex, x, y)) return false;
                     break;
                 case SpaceRestrictions.AdjacentToThisCard:
-                    if (!subeffect.parent.thisCard.IsAdjacentTo(x, y)) return false;
+                    if (!Subeffect.ThisCard.IsAdjacentTo(x, y)) return false;
                     break;
                 case SpaceRestrictions.AdjacentToWithRestriction:
                     if (!ExistsCardWithRestrictionAdjacentToCoords(adjacencyRestriction, x, y)) return false;

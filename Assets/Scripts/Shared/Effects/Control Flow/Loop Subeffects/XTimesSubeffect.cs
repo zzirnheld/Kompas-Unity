@@ -9,7 +9,7 @@ public class XTimesSubeffect : LoopSubeffect
     protected override bool ShouldContinueLoop()
     {
         count++;
-        return count < parent.X;
+        return count < Effect.X;
     }
 
     protected override void OnLoopExit()

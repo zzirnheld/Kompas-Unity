@@ -13,6 +13,6 @@ public class DummyCardTargetSubeffect : Subeffect
 
     public override void Initialize()
     {
-        cardRestriction.subeffect = this;
+        cardRestriction.Subeffect = this;
     }
 }

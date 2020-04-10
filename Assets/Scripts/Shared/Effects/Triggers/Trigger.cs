@@ -46,12 +46,13 @@ public class Trigger
                 toReturn.triggerRestriction.thisCard = parent.thisCard;
                 if(toReturn.triggerRestriction.cardRestriction != null)
                 {
-                    //give a dummy subeffect to the trigger restriction since it's a trigger that's not bound to an eff
+                    //give a dummy subeffect to the trigger restriction's card restriction,
+                    //because the restriction isn't bound to a subeffect, only an effect
                     DummySubeffect dummy = new DummySubeffect
                     {
-                        parent = parent
+                        Effect = parent
                     };
-                    toReturn.triggerRestriction.cardRestriction.subeffect = dummy;
+                    toReturn.triggerRestriction.cardRestriction.Subeffect = dummy;
                     
                 }
             }

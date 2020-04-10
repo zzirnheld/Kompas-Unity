@@ -18,8 +18,7 @@ public class ClientNetworkController : NetworkController {
     private Player enemy { get { return ClientGame.Players[1]; } }
 
     public Packet lastPacket;
-
-    public Restriction Restriction;
+    
     public int X;
 
     public override void Awake()

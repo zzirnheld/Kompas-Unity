@@ -22,10 +22,10 @@ public class BoardRestriction : CardRestriction
             switch (r)
             {
                 case BoardRestrictions.Adjacent:
-                    if(!potentialTarget.IsAdjacentTo(subeffect.parent.thisCard)) return false;
+                    if(!potentialTarget.IsAdjacentTo(Subeffect.ThisCard)) return false;
                     break;
                 case BoardRestrictions.WithinXSpaces:
-                    if (!potentialTarget.WithinSlots(xSpaces, subeffect.parent.thisCard)) return false;
+                    if (!potentialTarget.WithinSlots(xSpaces, Subeffect.ThisCard)) return false;
                     break;
             }
         }

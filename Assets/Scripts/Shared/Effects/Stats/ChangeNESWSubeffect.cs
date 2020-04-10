@@ -13,16 +13,16 @@ public class ChangeNESWSubeffect : Subeffect
 
     public override void Resolve()
     {
-        if(parent.targets[targetIndex] is CharacterCard charCard)
+        if(Effect.targets[targetIndex] is CharacterCard charCard)
         {
             charCard.N += nChange;
             charCard.E += eChange;
             charCard.S += sChange;
             charCard.W += wChange;
 
-            parent.EffectController.ServerNotifier.NotifySetNESW(charCard);
+            EffectController.ServerNotifier.NotifySetNESW(charCard);
         }
 
-        parent.ResolveNextSubeffect();
+        Effect.ResolveNextSubeffect();
     }
 }

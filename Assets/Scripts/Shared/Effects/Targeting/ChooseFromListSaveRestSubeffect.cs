@@ -19,14 +19,14 @@ public class ChooseFromListSaveRestSubeffect : ChooseFromListSubeffect
         IEnumerable<Card> others = potentialTargets.Except(choices);
 
         //add the rest of the cards to the list of targets first
-        parent.targets.AddRange(others);
+        Effect.targets.AddRange(others);
         //set the value of X to be the number of chosen cards
-        parent.X = choices.Count();
+        Effect.X = choices.Count();
         //add the chosen cards on top
-        parent.targets.AddRange(choices);
+        Effect.targets.AddRange(choices);
 
         //everything's cool now, continue resolution
-        parent.ResolveNextSubeffect();
+        Effect.ResolveNextSubeffect();
         return true;
     }
 }
