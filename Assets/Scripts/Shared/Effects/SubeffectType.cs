@@ -37,5 +37,7 @@ public enum SubeffectType
     XTimesLoop = 400,
     TTimesLoop = 401,
     WhileHaveTargetsLoop = 402,
-    ExitLoopIfEffectImpossible = 403
+    ExitLoopIfEffectImpossible = 403,
+    JumpOnImpossible = 404,
+    ClearOnImpossible = 405
 }
