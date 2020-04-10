@@ -37,6 +37,15 @@ public class ChooseFromListSubeffect : Subeffect
 
     public override void Resolve()
     {
+        //TODO: somehow figure out a better way of checking if there exists a valid list?
+        //  maybe a method on list restriction that checks?
+        //  because otherwise enumerating lists and seeing if at least one fits would be exponential time
+        if(!ListRestriction.Evaluate(new List<Card>()))
+        {
+            Effect.EffectImpossible();
+            return;
+        }
+
         potentialTargets = new List<Card>();
 
         //get all cards that fulfill the cardrestriction
@@ -46,6 +55,14 @@ public class ChooseFromListSubeffect : Subeffect
             {
                 potentialTargets.Add(pair.Value);
             }
+        }
+
+        //if there are no possible targets, declare the effect impossible
+        //if you want to continue resolution anyway, add an if impossible check before this subeffect.
+        if(potentialTargets.Count == 0)
+        {
+            Effect.EffectImpossible();
+            return;
         }
 
         RequestTargets();
