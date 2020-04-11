@@ -23,6 +23,7 @@ public class CardRestriction
         ELTEX = 201,
         SLTEX = 202,
         WLTEX = 203,
+        CostLTEX = 204,
         NLTEC = 300, //N <= constant
         ELTEC = 302,
         SLTEC = 303,
@@ -100,6 +101,9 @@ public class CardRestriction
                 case CardRestrictions.WLTEX:
                     if (!(potentialTarget is CharacterCard charC4)) return false;
                     if (charC4.N > x) return false;
+                    break;
+                case CardRestrictions.CostLTEX:
+                    if (potentialTarget.Cost > x) return false;
                     break;
                 case CardRestrictions.NLTEC:
                     if (!(potentialTarget is CharacterCard charC5)) return false;

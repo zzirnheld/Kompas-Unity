@@ -1,0 +1,35 @@
+{
+	"cardType":67,
+	"cardName":"Dispeller By Sword",
+	"effText":"Once each friendly turn, if I'm adjacent to X Warriors, you can dispel a C <= X spell.",
+	"effects":[
+		{
+			"subeffectTypes":[200,0,301],
+			"subeffects":[
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,3],
+						\"subtypesInclude\":[\"Warrior\"],
+						\"onBoardRestrictions\":[0]
+					}
+				}",
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[4,204],
+					}
+				}",
+				"{
+					\"TargetIndex\":-1
+				}"
+			]
+		}
+	],
+	"n":3,
+	"e":5,
+	"s":6,
+	"w":6,
+	"subtypes":["Swordguild","Warrior","Mage"],
+	"subtypeText":"Swordguild Warrior Mage"
+}
