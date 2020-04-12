@@ -195,7 +195,8 @@ public class ClientNetworkController : NetworkController {
                     if (c == null) Debug.LogError($"Tried to start a list search including card with invalid id {id}");
                     else choicesToPick.Add(c);
                 }
-                ClientGame.clientUICtrl.StartSearch(choicesToPick, packet.normalArgs[0]);
+                var listRestriction = packet.GetListRestriction(ClientGame);
+                ClientGame.clientUICtrl.StartSearch(choicesToPick, listRestriction, packet.normalArgs[0]);
                 break;
             case Packet.Command.SpaceTarget:
                 ClientGame.targetMode = Game.TargetMode.SpaceTarget;

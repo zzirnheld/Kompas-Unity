@@ -36,6 +36,7 @@ public class ClientUIController : UIController
     private List<Card> toSearch;
     private int searchIndex = 0;
     private int numToSearch;
+    private ListRestriction searchListRestriction;
     private int numSearched;
     private List<Card> searched;
 
@@ -152,7 +153,7 @@ public class ClientUIController : UIController
         clientGame.clientNotifier.RequestDecklistImport(decklist);
     }
 
-    public void StartSearch(List<Card> list, int numToChoose = 1)
+    public void StartSearch(List<Card> list, ListRestriction listRestriction = null, int numToChoose = 1)
     {
         //if already searching, dont start another search?
         if (toSearch.Count != 0) return;
@@ -163,6 +164,7 @@ public class ClientUIController : UIController
 
         toSearch = list;
         numToSearch = numToChoose;
+        searchListRestriction = listRestriction;
         numSearched = 0;
         searched = new List<Card>();
 
@@ -194,9 +196,18 @@ public class ClientUIController : UIController
         {
             if (searched.Contains(searchSelected)) return;
             searched.Add(searchSelected);
-            //TODO: mark that card as selected
+
+            //if there is a list restriction, but it doesn't like this list, refuse to add that card
+            if(searchListRestriction != null && !searchListRestriction.Evaluate(searched))
+            {
+                searched.Remove(searchSelected);
+                return;
+            }
+
+            //TODO: if we didn't return, mark that card as selected
             numSearched++;
-            //if we were given a maximum number to be searched
+
+            //if we were given a maximum number to be searched, and hit that number, no reason to keep asking
             if (numToSearch > 1 && numSearched >= numToSearch)
             {
                 //then send the total list

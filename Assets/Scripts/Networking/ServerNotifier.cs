@@ -214,14 +214,14 @@ public class ServerNotifier : MonoBehaviour
         Debug.Log("Asking for space target");
     }
 
-    public void GetChoicesFromList(List<Card> potentialTargets, int maxNum)
+    public void GetChoicesFromList(List<Card> potentialTargets, int maxNum, ChooseFromListSubeffect src)
     {
         int[] cardIDs = new int[potentialTargets.Count];
         for(int i = 0; i < potentialTargets.Count; i++)
         {
             cardIDs[i] = potentialTargets[i].ID;
         }
-        Packet packet = new Packet(Packet.Command.GetChoicesFromList, cardIDs, maxNum);
+        Packet packet = new Packet(Packet.Command.GetChoicesFromList, src.ThisCard, cardIDs, maxNum, src.SubeffIndex, src.Effect.EffectIndex);
         SendPacket(packet);
         Debug.Log($"Asking for targets from list of cardIDs {cardIDs}");
     }

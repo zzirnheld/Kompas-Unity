@@ -37,6 +37,7 @@ namespace KompasNetworking
         {
             Packet p = new Packet(command);
             Array.Copy(normalArgs, p.normalArgs, normalArgs.Length);
+            Array.Copy(specialArgs, p.specialArgs, specialArgs.Length);
             p.cardID = cardID;
             p.stringArg = stringArg;
             return p;
@@ -195,6 +196,14 @@ namespace KompasNetworking
         {
             normalArgs[0] = arg;
         }
+
+        public Packet(Command command, Card card, int[] specialArgs, int arg0, int arg1, int arg2) : this(command, card)
+        {
+            this.specialArgs = specialArgs;
+            normalArgs[0] = arg0;
+            normalArgs[1] = arg1;
+            normalArgs[2] = arg2;
+        }
         #endregion
         
         public CardRestriction GetCardRestriction(ClientGame clientGame)
@@ -245,7 +254,23 @@ namespace KompasNetworking
             return subeff.spaceRestriction;
         }
 
-        public void Invert()
+        public ListRestriction GetListRestriction(ClientGame clientGame)
+        {
+            Card thatHasEffect = clientGame.GetCardFromID(cardID);
+            Effect eff = thatHasEffect.Effects[normalArgs[0]];
+            DummyListTargetSubeffect subeff = eff.Subeffects[normalArgs[1]] as DummyListTargetSubeffect;
+
+            if (subeff == null)
+            {
+                Debug.LogError($"Tried to get effect from card {cardID}, eff index {normalArgs[0]}," +
+                    $"subeff index {normalArgs[1]} but it was null or not a card target subeff");
+                return null;
+            }
+
+            return subeff.ListRestriction;
+        }
+
+        private void Invert()
         {
             if (normalArgs == null)
             {
@@ -256,9 +281,21 @@ namespace KompasNetworking
             normalArgs[3] = 6 - normalArgs[3];
         }
 
+        private bool IsInvertibleCommand(Command command)
+        {
+            switch (command)
+            {
+                case Command.SetNESW:
+                case Command.GetChoicesFromList:
+                    return false;
+                default:
+                    return true;
+            }
+        }
+
         public void InvertForController(int playerFrom)
         {
-            if (playerFrom == 1 && command != Command.SetNESW) Invert();
+            if (playerFrom == 1 && IsInvertibleCommand(command)) Invert();
         }
 
     }

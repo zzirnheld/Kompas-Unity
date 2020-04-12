@@ -419,10 +419,14 @@ public class ServerGame : Game {
                 return;
             }
 
-            var entry = OptionalTriggersToAsk.Pop();
+            Trigger t;
+            int? x;
+            Card cardTrigger;
+            IStackable stackTrigger;
+            (t, x, cardTrigger, stackTrigger) = OptionalTriggersToAsk.Pop();
             if (answer)
             {
-                entry.Item1.TriggerIfValid(entry.Item3, entry.Item4, entry.Item2, true);
+                t.TriggerIfValid(cardTrigger, stackTrigger, x, true);
                 CheckForResponse();
             }
         }
