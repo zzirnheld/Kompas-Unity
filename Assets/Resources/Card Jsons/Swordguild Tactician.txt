@@ -1,0 +1,46 @@
+{
+	"cardType":67,
+	"cardName":"Swordguild Trainee",
+	"effText":"Once each friendly turn, I can give an adjacent Warrior +5E or +5W.",
+	"effects":[
+		{
+			"subeffectTypes":[0,406,100,407,100],
+			"subeffects":[
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,3],
+						\"subtypesInclude\":[\"Warrior\"],
+						\"onBoardRestrictions\":[0]
+					}
+				}",
+				"{
+					\"ChoiceBlurb\":\"Give +5E or +5W?\",
+					\"OptionBlurbs\":[\"+5E\",\"+5W\"],
+					\"OptionJumpIndices\":[2,3]
+				}",
+				"{
+					\"nChange\":0,
+					\"eChange\":5,
+					\"sChange\":0,
+					\"wChange\":0,
+					\"targetIndex\":0
+				}",
+				"{}",
+				"{
+					\"nChange\":0,
+					\"eChange\":0,
+					\"sChange\":0,
+					\"wChange\":5,
+					\"targetIndex\":0
+				}"
+			]
+		}
+	],
+	"n":2,
+	"e":7,
+	"s":9,
+	"w":9,
+	"subtypes":["Swordguild","Warrior"],
+	"subtypeText":"Swordguild Warrior"
+}
