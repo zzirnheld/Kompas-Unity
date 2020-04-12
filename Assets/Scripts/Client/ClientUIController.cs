@@ -29,6 +29,9 @@ public class ClientUIController : UIController
     public InputField xInput;
     public GameObject setXView;
     public GameObject declineAnotherTargetView;
+    //confirm trigger
+    public GameObject ConfirmTriggerView;
+    public TMPro.TMP_Text TriggerBlurbText;
 
     private List<Card> toSearch;
     private int searchIndex = 0;
@@ -117,6 +120,17 @@ public class ClientUIController : UIController
     {
         DisableDecliningTarget();
         clientGame.clientNotifier.DeclineAnotherTarget();
+    }
+
+    public void ShowOptionalTrigger(Trigger t, int? x)
+    {
+        TriggerBlurbText.text = t.Blurb;
+        ConfirmTriggerView.SetActive(true);
+    }
+
+    public void RespondToTrigger(bool answer)
+    {
+        clientGame.clientNotifier.RequestTriggerReponse(answer);
     }
     #endregion effects
 

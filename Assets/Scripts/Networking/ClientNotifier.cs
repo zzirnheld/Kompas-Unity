@@ -104,6 +104,12 @@ public class ClientNotifier : MonoBehaviour
         Packet packet = new Packet(Packet.Command.CancelSearch);
         Send(packet);
     }
+
+    public void RequestTriggerReponse(bool answer)
+    {
+        Packet packet = new Packet(Packet.Command.OptionalTrigger, answer ? 1 : 0);
+        Send(packet);
+    }
     #endregion
 
     #region Debug Request Actions

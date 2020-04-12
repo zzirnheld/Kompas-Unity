@@ -275,5 +275,17 @@ public class ServerNotifier : MonoBehaviour
         Packet packet = new Packet(Packet.Command.DiscardSimples);
         SendToBoth(packet);
     }
+
+    public void AskForTrigger((Trigger, int?, Card, IStackable) triggerInfo)
+    {
+        Trigger t = triggerInfo.Item1;
+        int? x = triggerInfo.Item2;
+        
+        Card cardWhoseTrigger = t.effToTrigger.thisCard;
+        int effIndex = t.effToTrigger.EffectIndex;
+        //TODO: should the packet int be a nullable one? so that can represent nullable x in trigger to confirm
+        Packet packet = new Packet(Packet.Command.OptionalTrigger, cardWhoseTrigger, effIndex, 0, x ?? 0, 0);
+        SendPacket(packet);
+    }
     #endregion other effect stuff
 }

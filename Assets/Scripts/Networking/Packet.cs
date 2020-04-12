@@ -26,7 +26,7 @@ namespace KompasNetworking
             //server notifying if anything else is necessary
             TargetAccepted, SpaceTargetAccepted,
             //other effect technicalities
-            PlayerSetX, EnableDecliningTarget, DisableDecliningTarget, SetNESW, SetPips, SetEnemyPips, SetEffectsX,
+            PlayerSetX, EnableDecliningTarget, DisableDecliningTarget, SetNESW, SetPips, SetEnemyPips, SetEffectsX, OptionalTrigger,
             //miscellaneous
             DiscardSimples, PutBack, YoureFirst, YoureSecond,
             //debug
@@ -60,6 +60,7 @@ namespace KompasNetworking
 
         public int Pips { get { return normalArgs[0]; } }
         public int EffectX { get => normalArgs[0]; }
+        public bool Answer { get { return normalArgs[0] == 1; } }
 
         public CardLocation Location { get { return (CardLocation)normalArgs[0]; } }
 

@@ -85,6 +85,9 @@ namespace KompasNetworking
                         listEff.AddListIfLegal(choices);
                     }
                     break;
+                case Packet.Command.OptionalTrigger:
+                    sGame.OptionalTriggerAnswered(packet.Answer);
+                    break;
                 #endregion
                 #region debug commands
                 case Packet.Command.Topdeck:

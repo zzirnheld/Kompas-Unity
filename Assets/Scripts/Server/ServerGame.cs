@@ -10,6 +10,7 @@ public class ServerGame : Game {
     //if server doesn't ok, it sends to all players a "hold up reset everything to how it should be"
 
     public readonly object SetAvatarLock = new object();
+    public readonly object TriggerStackLock = new object();
 
     public GameObject AvatarPrefab;
 
@@ -18,6 +19,8 @@ public class ServerGame : Game {
     public ServerPlayer TurnServerPlayer { get { return ServerPlayers[turnPlayer]; } }
     public int cardCount = 0;
     private int currPlayerCount = 0; //current number of players. shouldn't exceed 2
+
+    public Stack<(Trigger, int?, Card, IStackable)> OptionalTriggersToAsk;
 
     private void Start()
     {
@@ -30,6 +33,7 @@ public class ServerGame : Game {
         }
 
         SubeffectFactory = new ServerSubeffectFactory();
+        OptionalTriggersToAsk = new Stack<(Trigger, int?, Card, IStackable)>();
     }
 
     public void Init(UIController uiCtrl, CardRepository cardRepo)
@@ -402,10 +406,43 @@ public class ServerGame : Game {
         }
     }
 
+    public void OptionalTriggerAnswered(bool answer)
+    {
+        //TODO: in theory, this would allow anyone to just send a packet that had true or false in it and answer for the player
+        //but they can kinda cheat like that with everything here...
+        
+        lock (TriggerStackLock)
+        {
+            if(OptionalTriggersToAsk.Count == 0)
+            {
+                Debug.LogError($"Tried to answer about a trigger when there weren't any triggers to answer about.");
+                return;
+            }
+
+            var entry = OptionalTriggersToAsk.Pop();
+            if (answer)
+            {
+                entry.Item1.TriggerIfValid(entry.Item3, entry.Item4, entry.Item2, true);
+                CheckForResponse();
+            }
+        }
+    }
+
     public void CheckForResponse()
     {
         //since a new thing is being put on the stack, mark both players as having not passed priority
         ResetPassingPriority();
+
+        if(OptionalTriggersToAsk.Count > 0)
+        {
+            //then ask the respective player about that trigger.
+            lock (TriggerStackLock)
+            {
+                var entry = OptionalTriggersToAsk.Peek();
+                entry.Item1.effToTrigger.EffectController.ServerNotifier.AskForTrigger(entry);
+            }
+            //if the player chooses to trigger it, it will be removed from the list
+        }
 
         //check if responses exist. if not, resolve
         if (Players[turnPlayer].HoldsPriority())
@@ -434,6 +471,20 @@ public class ServerGame : Game {
         foreach (Trigger t in triggerMap[condition])
         {
             t.TriggerIfValid(triggerer, stackTrigger, x);
+        }
+    }
+
+    /// <summary>
+    /// Adds this trigger to the list that, once a stack entry resolves,
+    /// asks the player whose trigger it is if they actually want to trigger that effect
+    /// </summary>
+    /// <param name="trigger"></param>
+    /// <param name="x"></param>
+    public void AskForTrigger(Trigger trigger, int? x, Card c, IStackable s)
+    {
+        lock (TriggerStackLock)
+        {
+            OptionalTriggersToAsk.Push((trigger, x, c, s));
         }
     }
 

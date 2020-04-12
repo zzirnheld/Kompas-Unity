@@ -9,6 +9,9 @@ public class Trigger
     public Effect effToTrigger;
     public TriggerRestriction triggerRestriction;
 
+    public bool Optional = false;
+    public string Blurb = "";
+
     /// <summary>
     /// Creates a trigger from a json
     /// </summary>
@@ -98,10 +101,18 @@ public class Trigger
     /// <param name="triggerer">The card that triggered this, if any.</param>
     /// <param name="stackTrigger">The effect or attack that triggered this, if any.</param>
     /// <param name="x">If the action that triggered this has a value of x, it goes here. Otherwise, null.</param>
-    public virtual void TriggerIfValid(Card triggerer, IStackable stackTrigger, int? x)
+    public virtual void TriggerIfValid(Card triggerer, IStackable stackTrigger, int? x, bool optionalConfirmed = false)
     {
         Debug.Log($"Is trigger valid? {CheckTriggerRestrictions(triggerer, stackTrigger, x)}");
         if (CheckTriggerRestrictions(triggerer, stackTrigger, x))
-            TriggerEffect(x);
+        {
+            //if the trigger is optional and this method isn't being called because the player confirmed the trigger,
+            //then ask for a trigger
+            if (Optional && !optionalConfirmed)
+            {
+                effToTrigger.serverGame.AskForTrigger(this, x, triggerer);
+            }
+            else TriggerEffect(x);
+        }
     }
 }
