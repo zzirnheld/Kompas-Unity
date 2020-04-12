@@ -198,6 +198,16 @@ public class ClientNetworkController : NetworkController {
                 var listRestriction = packet.GetListRestriction(ClientGame);
                 ClientGame.clientUICtrl.StartSearch(choicesToPick, listRestriction, packet.normalArgs[0]);
                 break;
+            case Packet.Command.ChooseEffectOption:
+                //TODO catch out of bounds errors, in case of malicious packets?
+                var subeff = ClientGame.GetCardFromID(packet.cardID).Effects[packet.normalArgs[0]].Subeffects[packet.normalArgs[1]]
+                    as DummyChooseOptionSubeffect;
+                if(subeff == null)
+                {
+                    Debug.LogError($"Subeffect for card id {packet.cardID}, effect index {packet.normalArgs[0]}, subeffect index {packet.normalArgs[1]} " +
+                        $"is null or not dummy choose option subeffect");
+                }
+                break;
             case Packet.Command.SpaceTarget:
                 ClientGame.targetMode = Game.TargetMode.SpaceTarget;
                 ClientGame.CurrSpaceRestriction = packet.GetSpaceRestriction(ClientGame);

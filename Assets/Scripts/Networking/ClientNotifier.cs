@@ -110,6 +110,12 @@ public class ClientNotifier : MonoBehaviour
         Packet packet = new Packet(Packet.Command.OptionalTrigger, answer ? 1 : 0);
         Send(packet);
     }
+
+    public void RequestChooseEffectOption(int option)
+    {
+        Packet packet = new Packet(Packet.Command.ChooseEffectOption, option);
+        Send(packet);
+    }
     #endregion
 
     #region Debug Request Actions

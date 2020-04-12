@@ -26,7 +26,8 @@ namespace KompasNetworking
             //server notifying if anything else is necessary
             TargetAccepted, SpaceTargetAccepted,
             //other effect technicalities
-            PlayerSetX, EnableDecliningTarget, DisableDecliningTarget, SetNESW, SetPips, SetEnemyPips, SetEffectsX, OptionalTrigger,
+            PlayerSetX, EnableDecliningTarget, DisableDecliningTarget, SetNESW, SetPips, SetEnemyPips, SetEffectsX,
+            OptionalTrigger, ChooseEffectOption,
             //miscellaneous
             DiscardSimples, PutBack, YoureFirst, YoureSecond,
             //debug

@@ -25,6 +25,9 @@ public class ClientSubeffectFactory : ISubeffectFactory
             case SubeffectType.SpaceTarget:
                 toReturn = JsonUtility.FromJson<DummySpaceTargetSubeffect>(json);
                 break;
+            case SubeffectType.ChooseEffectOption:
+                toReturn = JsonUtility.FromJson<DummyChooseOptionSubeffect>(json);
+                break;
             default:
                 Debug.Log("Creating client subeffect of a type other than one that has a specific dummy.");
                 toReturn = new DummySubeffect();

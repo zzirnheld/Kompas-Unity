@@ -39,5 +39,6 @@ public enum SubeffectType
     WhileHaveTargetsLoop = 402,
     ExitLoopIfEffectImpossible = 403,
     JumpOnImpossible = 404,
-    ClearOnImpossible = 405
+    ClearOnImpossible = 405,
+    ChooseEffectOption = 406
 }

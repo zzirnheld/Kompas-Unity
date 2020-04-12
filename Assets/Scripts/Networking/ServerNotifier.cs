@@ -221,9 +221,15 @@ public class ServerNotifier : MonoBehaviour
         {
             cardIDs[i] = potentialTargets[i].ID;
         }
-        Packet packet = new Packet(Packet.Command.GetChoicesFromList, src.ThisCard, cardIDs, maxNum, src.SubeffIndex, src.Effect.EffectIndex);
+        Packet packet = new Packet(Packet.Command.GetChoicesFromList, src.ThisCard, cardIDs, maxNum, src.Effect.EffectIndex, src.SubeffIndex);
         SendPacket(packet);
         Debug.Log($"Asking for targets from list of cardIDs {cardIDs}");
+    }
+
+    public void ChooseEffectOption(ChooseOptionSubeffect src)
+    {
+        Packet packet = new Packet(Packet.Command.ChooseEffectOption, src.ThisCard, src.Effect.EffectIndex, src.SubeffIndex);
+        SendPacket(packet);
     }
     #endregion request targets
 

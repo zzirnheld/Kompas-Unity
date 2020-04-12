@@ -32,13 +32,17 @@ public class ClientUIController : UIController
     //confirm trigger
     public GameObject ConfirmTriggerView;
     public TMPro.TMP_Text TriggerBlurbText;
-
+    //search
     private List<Card> toSearch;
     private int searchIndex = 0;
     private int numToSearch;
     private ListRestriction searchListRestriction;
     private int numSearched;
     private List<Card> searched;
+    //choose effect option
+    public GameObject ChooseOptionView;
+    public TMPro.TMP_Text ChoiceBlurbText;
+    public TMPro.TMP_Dropdown EffectOptionDropdown;
 
     //deck select ui
     public DeckSelectUIController DeckSelectCtrl;
@@ -134,9 +138,26 @@ public class ClientUIController : UIController
         clientGame.clientNotifier.RequestTriggerReponse(answer);
         ConfirmTriggerView.SetActive(false);
     }
+
+    public void ShowOptions(DummyChooseOptionSubeffect subeff)
+    {
+        ChoiceBlurbText.text = subeff.ChoiceBlurb;
+        EffectOptionDropdown.ClearOptions();
+        foreach(string blurb in subeff.OptionBlurbs)
+        {
+            EffectOptionDropdown.options.Add(new TMPro.TMP_Dropdown.OptionData() { text = blurb });
+        }
+        ChooseOptionView.SetActive(true);
+    }
+
+    public void ChooseOption(int optionIndex)
+    {
+        clientGame.clientNotifier.RequestChooseEffectOption(optionIndex);
+        ChooseOptionView.SetActive(false);
+    }
     #endregion effects
 
-    #region importing/searching deck or discard
+    #region import deck
     public void ImportDeckPressed()
     {
         deckInputField.gameObject.SetActive(true);
@@ -152,7 +173,9 @@ public class ClientUIController : UIController
         importDeckButton.gameObject.SetActive(true);
         clientGame.clientNotifier.RequestDecklistImport(decklist);
     }
+    #endregion import deck
 
+    #region search
     public void StartSearch(List<Card> list, ListRestriction listRestriction = null, int numToChoose = 1)
     {
         //if already searching, dont start another search?

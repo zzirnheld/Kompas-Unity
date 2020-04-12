@@ -93,6 +93,9 @@ public class ServerSubeffectFactory : ISubeffectFactory
             case SubeffectType.ClearOnImpossible:
                 toReturn = JsonUtility.FromJson<ClearOnImpossibleSubeffect>(subeffJson);
                 break;
+            case SubeffectType.ChooseEffectOption:
+                toReturn = JsonUtility.FromJson<ChooseOptionSubeffect>(subeffJson);
+                break;
             default:
                 Debug.LogError($"Unrecognized effect type enum {seType} for loading effect in effect constructor");
                 return null;
