@@ -131,6 +131,7 @@ public class ClientUIController : UIController
     public void RespondToTrigger(bool answer)
     {
         clientGame.clientNotifier.RequestTriggerReponse(answer);
+        ConfirmTriggerView.SetActive(false);
     }
     #endregion effects
 
