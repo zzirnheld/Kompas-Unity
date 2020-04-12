@@ -110,7 +110,7 @@ public class Trigger
             //then ask for a trigger
             if (Optional && !optionalConfirmed)
             {
-                effToTrigger.serverGame.AskForTrigger(this, x, triggerer);
+                effToTrigger.serverGame.AskForTrigger(this, x, triggerer, stackTrigger);
             }
             else TriggerEffect(x);
         }
