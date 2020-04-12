@@ -26,7 +26,7 @@ public class ChooseFromListSubeffect : Subeffect
 
     protected void RequestTargets()
     {
-        EffectController.ServerNotifier.GetChoicesFromList(potentialTargets, MaxCanChoose);
+        EffectController.ServerNotifier.GetChoicesFromList(potentialTargets, MaxCanChoose, this);
     }
 
     public override void Initialize()

@@ -1,11 +1,13 @@
-The General
+Dispeller by Sword
+Squire
 Swordguild Bannerman
 Swordguild Instructor
 Swordguild Medic
 Swordguild Quartermaster
 Swordguild Strategist
-Swordguild Tactician
 Swordguild Trainee
 Swordguild Trainer
 Swordmaster
+Swordmystic
+The General
 lulthisdontexistmydood
