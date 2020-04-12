@@ -6,6 +6,7 @@
 		{
 			"triggerCondition":401,
 			"trigger":"{
+				\"Optional\":true,
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[0,100,400],
 					\"cardRestriction\":

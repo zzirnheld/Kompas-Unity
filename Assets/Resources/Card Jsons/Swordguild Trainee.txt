@@ -5,7 +5,9 @@
 	"effects":[{
 		"triggerCondition":0,
 		"trigger":"{
-			\"triggerRestriction\":{
+			\"triggerRestriction\":
+			{
+				\"Optional\":true
 				\"triggerRestrictions\":[100],
 				\"effParentRestriction\":
 					{
