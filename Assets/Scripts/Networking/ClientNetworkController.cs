@@ -148,6 +148,9 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.Reshuffle:
                 ClientGame.Reshuffle(ClientGame.GetCardFromID(packet.cardID));
                 break;
+            case Packet.Command.Bottomdeck:
+                ClientGame.Bottomdeck(ClientGame.GetCardFromID(packet.cardID));
+                break;
             case Packet.Command.SetNESW:
                 Card toSet = ClientGame.GetCardFromID(packet.cardID);
                 (toSet as CharacterCard)?.SetNESW(packet.N, packet.E, packet.S, packet.W);

@@ -27,7 +27,7 @@ public class CardRepository : MonoBehaviour
 
         foreach (string name in cardNameArray)
         {
-            string nameClean = name.Substring(0, name.Length);
+            string nameClean = name.Substring(0, name.Length).Replace(":", "");
             //don't add duplicate cards
             if (IsCardToIgnore(nameClean) || CardExists(nameClean)) continue;
             //add the card's name to the list of card names

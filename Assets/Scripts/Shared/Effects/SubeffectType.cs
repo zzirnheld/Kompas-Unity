@@ -36,6 +36,7 @@ public enum SubeffectType
     RehandCard = 304,
     Draw = 305,
     DrawX = 306,
+    Bottomdeck = 307,
     XTimesLoop = 400,
     TTimesLoop = 401,
     WhileHaveTargetsLoop = 402,
@@ -43,5 +44,6 @@ public enum SubeffectType
     JumpOnImpossible = 404,
     ClearOnImpossible = 405,
     ChooseEffectOption = 406,
-    EndEffect = 407
+    EndEffect = 407,
+    CountXLoop = 408
 }

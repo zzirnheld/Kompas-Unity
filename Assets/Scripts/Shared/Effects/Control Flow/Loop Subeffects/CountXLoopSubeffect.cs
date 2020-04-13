@@ -12,6 +12,9 @@ public class CountXLoopSubeffect : LoopSubeffect
         //tell the client to enable the button to exit the loop
         EffectController.ServerNotifier.EnableDecliningTarget();
 
+        //let the effect know that if there are no more targets, then call this for loop exit
+        Effect.OnImpossible = this;
+
         //always return true, if another iteration is chosen not to happen exit loop will be called
         return true;
     }
@@ -24,5 +27,10 @@ public class CountXLoopSubeffect : LoopSubeffect
 
         //make the "no other targets" button disappear
         EffectController.ServerNotifier.DisableDecliningTarget();
+    }
+
+    public override void OnImpossible()
+    {
+        ExitLoop();
     }
 }

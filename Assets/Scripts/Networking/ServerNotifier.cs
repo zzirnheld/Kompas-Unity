@@ -129,6 +129,15 @@ public class ServerNotifier : MonoBehaviour
         SendPackets(outPacket, outPacketInverted);
     }
 
+    public void NotifyBottomdeck(Card card)
+    {
+        Packet packet = new Packet(Packet.Command.Bottomdeck, card);
+        Packet other = null;
+        if (card.Location == CardLocation.Hand || card.Location == CardLocation.Deck)
+            other = new Packet(Packet.Command.Delete, card);
+        SendPackets(packet, other);
+    }
+
     public void NotifyReshuffle(Card toReshuffle)
     {
         Packet outPacketInverted = null;

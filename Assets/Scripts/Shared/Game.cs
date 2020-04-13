@@ -180,6 +180,12 @@ public abstract class Game : MonoBehaviour {
         card.Controller.deckCtrl.PushTopdeck(card);
     }
 
+    public virtual void Bottomdeck(Card card)
+    {
+        Remove(card);
+        card.Controller.deckCtrl.PushBottomdeck(card);
+    }
+
     public virtual void Play(Card card, int toX, int toY, Player controller)
     {
         Remove(card);

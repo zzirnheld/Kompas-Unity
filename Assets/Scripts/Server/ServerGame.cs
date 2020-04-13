@@ -220,6 +220,12 @@ public class ServerGame : Game {
         base.Topdeck(card);
     }
 
+    public override void Bottomdeck(Card card)
+    {
+        ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyBottomdeck(card);
+        base.Bottomdeck(card);
+    }
+
     public override void Play(Card card, int toX, int toY, Player controller)
     {
         //note that it's serverPlayers[controller.index] because you can play to the field of someone whose card it isnt

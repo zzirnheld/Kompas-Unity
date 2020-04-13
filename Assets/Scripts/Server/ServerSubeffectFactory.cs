@@ -105,6 +105,9 @@ public class ServerSubeffectFactory : ISubeffectFactory
             case SubeffectType.EndEffect:
                 toReturn = JsonUtility.FromJson<EndResolutionSubeffect>(subeffJson);
                 break;
+            case SubeffectType.CountXLoop:
+                toReturn = JsonUtility.FromJson<CountXLoopSubeffect>(subeffJson);
+                break;
             default:
                 Debug.LogError($"Unrecognized effect type enum {seType} for loading effect in effect constructor");
                 return null;
