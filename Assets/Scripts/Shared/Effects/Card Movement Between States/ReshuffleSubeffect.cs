@@ -6,7 +6,7 @@ public class ReshuffleSubeffect : CardChangeStateSubeffect
 {
     public override void Resolve()
     {
-        Effect.serverGame.Reshuffle(Target);
+        ServerGame.Reshuffle(Target, Effect);
         Effect.ResolveNextSubeffect();
     }
 }

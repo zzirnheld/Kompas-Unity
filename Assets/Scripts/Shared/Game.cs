@@ -149,13 +149,13 @@ public abstract class Game : MonoBehaviour {
         }
     }
 
-    public virtual void Discard(Card card)
+    public virtual void Discard(Card card, IStackable stackSrc = null)
     {
         Remove(card);
         card.Controller.discardCtrl.AddToDiscard(card);
     }
 
-    public virtual void Rehand(Player controller, Card card)
+    public virtual void Rehand(Player controller, Card card, IStackable stackSrc = null)
     {
         Remove(card);
         //let the card know whose hand it'll be added
@@ -163,37 +163,37 @@ public abstract class Game : MonoBehaviour {
         controller.handCtrl.AddToHand(card);
     }
 
-    public virtual void Rehand(Card card)
+    public virtual void Rehand(Card card, IStackable stackSrc = null)
     {
         Rehand(card.Controller, card);
     }
 
-    public virtual void Reshuffle(Card card)
+    public virtual void Reshuffle(Card card, IStackable stackSrc = null)
     {
         Remove(card);
         card.Controller.deckCtrl.ShuffleIn(card);
     }
 
-    public virtual void Topdeck(Card card)
+    public virtual void Topdeck(Card card, IStackable stackSrc = null)
     {
         Remove(card);
         card.Controller.deckCtrl.PushTopdeck(card);
     }
 
-    public virtual void Bottomdeck(Card card)
+    public virtual void Bottomdeck(Card card, IStackable stackSrc = null)
     {
         Remove(card);
         card.Controller.deckCtrl.PushBottomdeck(card);
     }
 
-    public virtual void Play(Card card, int toX, int toY, Player controller)
+    public virtual void Play(Card card, int toX, int toY, Player controller, IStackable stackSrc = null)
     {
         Remove(card);
         boardCtrl.Play(card, toX, toY, controller);
         card.ChangeController(controller);
     }
 
-    public virtual void MoveOnBoard(Card card, int toX, int toY)
+    public virtual void MoveOnBoard(Card card, int toX, int toY, IStackable stackSrc = null)
     {
         boardCtrl.Move(card, toX, toY);
     }

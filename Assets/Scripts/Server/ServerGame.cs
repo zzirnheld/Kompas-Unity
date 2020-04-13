@@ -185,69 +185,81 @@ public class ServerGame : Game {
         }
     }
 
-    public override void Discard(Card card)
+    public override void Discard(Card card, IStackable stackSrc = null)
     {
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyDiscard(card);
+        Trigger(TriggerCondition.Discard, card, stackSrc, null);
         base.Discard(card);
     }
 
-    public override void Rehand(Player controller, Card card)
+    public override void Rehand(Player controller, Card card, IStackable stackSrc = null)
     {
         if(controller != card.Controller)
         {
             Debug.LogError($"Card {card.CardName} is being added to the hand of " +
-                $"{controller.index} without the correct client being notified");
+                $"{controller.index} without the correct client being notified." +
+                $"This wasn't a problem up until now, but now you need to implement owner index," +
+                $"ya numpty");
         }
+        Trigger(TriggerCondition.Rehand, card, stackSrc, null);
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyRehand(card);
         base.Rehand(controller, card);
     }
 
-    public override void Rehand(Card card)
+    public override void Rehand(Card card, IStackable stackSrc = null)
     {
-        ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyRehand(card);
-        base.Rehand(card);
+        Rehand(card.Controller, card);
     }
 
-    public override void Reshuffle(Card card)
+    public override void Reshuffle(Card card, IStackable stackSrc = null)
     {
+        Trigger(TriggerCondition.Reshuffle, card, stackSrc, null);
+        Trigger(TriggerCondition.ToDeck, card, stackSrc, null);
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyReshuffle(card);
         base.Reshuffle(card);
     }
 
-    public override void Topdeck(Card card)
+    public override void Topdeck(Card card, IStackable stackSrc = null)
     {
+        Trigger(TriggerCondition.Topdeck, card, stackSrc, null);
+        Trigger(TriggerCondition.ToDeck, card, stackSrc, null);
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyTopdeck(card);
         base.Topdeck(card);
     }
 
-    public override void Bottomdeck(Card card)
+    public override void Bottomdeck(Card card, IStackable stackSrc = null)
     {
+        Trigger(TriggerCondition.Bottomdeck, card, stackSrc, null);
+        Trigger(TriggerCondition.ToDeck, card, stackSrc, null);
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyBottomdeck(card);
         base.Bottomdeck(card);
     }
 
-    public override void Play(Card card, int toX, int toY, Player controller)
+    public override void Play(Card card, int toX, int toY, Player controller, IStackable stackSrc = null)
     {
+        Trigger(TriggerCondition.Play, card, stackSrc, null);
         //note that it's serverPlayers[controller.index] because you can play to the field of someone whose card it isnt
         ServerPlayers[controller.index].ServerNotifier.NotifyPlay(card, toX, toY);
         base.Play(card, toX, toY, controller);
     }
 
-    public override void MoveOnBoard(Card card, int toX, int toY)
+    public override void MoveOnBoard(Card card, int toX, int toY, IStackable stackSrc = null)
     {
+        Trigger(TriggerCondition.Move, card, stackSrc, null);
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyMove(card, toX, toY);
         base.MoveOnBoard(card, toX, toY);
     }
     #endregion move card between areas
 
-    public Card Draw(int player)
+    public Card Draw(int player, IStackable stackSrc = null)
     {
         Card toDraw = Players[player].deckCtrl.PopTopdeck();
+        Trigger(TriggerCondition.Draw, toDraw, stackSrc, null);
         Rehand(toDraw);
         return toDraw;
     }
 
-    public List<Card> DrawX(int player, int x)
+    public List<Card> DrawX(int player, int x, IStackable stackSrc = null)
     {
         List<Card> drawn = new List<Card>();
         for (int i = 0; i < x; i++)
@@ -256,6 +268,7 @@ public class ServerGame : Game {
             if (cardDrawn == null) break;
             drawn.Add(cardDrawn);
         }
+        Trigger(TriggerCondition.Draw, null, stackSrc, x);
         return drawn;
     }
 
@@ -282,9 +295,7 @@ public class ServerGame : Game {
     {
         if(toCheck.E <= 0)
         {
-            //first, trigger anything that would go off of this thing dying, so it knows it's about to die (moving from field)
-            Trigger(TriggerCondition.Discard, toCheck, stackSrc, null);
-            Discard(toCheck);
+            Discard(toCheck, stackSrc: stackSrc);
             //don't call check for response on stack because anything that causes things to die,
             //attacks or effects, will call check for response once it's done resolving.
         }

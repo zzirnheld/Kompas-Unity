@@ -14,5 +14,11 @@ public enum TriggerCondition
     Battles = 304,
     Arrive = 400,
     Play = 401,
-    Discard = 402
+    Discard = 402,
+    Rehand = 403,
+    Reshuffle = 404,
+    Topdeck = 405,
+    Bottomdeck = 406,
+    ToDeck = 407,
+    Move = 408,
 }
