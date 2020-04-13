@@ -75,6 +75,12 @@ public class ServerSubeffectFactory : ISubeffectFactory
             case SubeffectType.RehandCard:
                 toReturn = JsonUtility.FromJson<RehandSubeffect>(subeffJson);
                 break;
+            case SubeffectType.Draw:
+                toReturn = JsonUtility.FromJson<DrawSubeffect>(subeffJson);
+                break;
+            case SubeffectType.DrawX:
+                toReturn = JsonUtility.FromJson<DrawXSubeffect>(subeffJson);
+                break;
             case SubeffectType.XTimesLoop:
                 toReturn = JsonUtility.FromJson<XTimesSubeffect>(subeffJson);
                 break;

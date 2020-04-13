@@ -34,6 +34,8 @@ public enum SubeffectType
     DiscardCard = 301,
     ReshuffleCard = 303,
     RehandCard = 304,
+    Draw = 305,
+    DrawX = 306,
     XTimesLoop = 400,
     TTimesLoop = 401,
     WhileHaveTargetsLoop = 402,

@@ -234,11 +234,23 @@ public class ServerGame : Game {
     }
     #endregion move card between areas
 
-    public Card Draw(int player = 0)
+    public Card Draw(int player)
     {
         Card toDraw = Players[player].deckCtrl.PopTopdeck();
         Rehand(toDraw);
         return toDraw;
+    }
+
+    public List<Card> DrawX(int player, int x)
+    {
+        List<Card> drawn = new List<Card>();
+        for (int i = 0; i < x; i++)
+        {
+            var cardDrawn = Draw(player);
+            if (cardDrawn == null) break;
+            drawn.Add(cardDrawn);
+        }
+        return drawn;
     }
 
     public void Lose(int playerIndex)
@@ -339,7 +351,7 @@ public class ServerGame : Game {
         boardCtrl.ResetCardsForTurn();
 
         //draw for turn and store what was drawn
-        Card drawn = Draw();
+        Card drawn = Draw(turnPlayer);
         if(drawn != null) TurnServerPlayer.ServerNotifier.NotifyDraw(drawn);
         TurnServerPlayer.ServerNotifier.NotifySetTurn(this, turnPlayer);
 
