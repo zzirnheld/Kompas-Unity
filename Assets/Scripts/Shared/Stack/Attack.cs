@@ -40,8 +40,16 @@ public class Attack : IStackable
         int attackerDmg = attacker.W;
         int defenderDmg = defender.W;
         //deal the damage
-        defender.E -= attackerDmg;
-        attacker.E -= defenderDmg;
+        serverGame.SetStats(defender,
+            defender.N,
+            defender.E - attackerDmg,
+            defender.S,
+            defender.W);
+        serverGame.SetStats(attacker,
+            attacker.N,
+            attacker.E - defenderDmg,
+            attacker.S,
+            attacker.W);
         //check for death
         serverGame.CheckForDeath(attacker, this);
         serverGame.CheckForDeath(defender, this);

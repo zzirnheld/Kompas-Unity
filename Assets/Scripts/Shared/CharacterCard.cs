@@ -27,7 +27,7 @@ public class CharacterCard : Card {
             if (n < 0) return 0;
             return n;
         }
-        set
+        protected set
         {
             n = value > 0 ? value : 0;
         }
@@ -39,7 +39,7 @@ public class CharacterCard : Card {
             if (e < 0) return 0;
             return e;
         }
-        set
+        protected set
         {
             e = value > 0 ? value : 0;
         }
@@ -51,7 +51,7 @@ public class CharacterCard : Card {
             if (s < 0) return 0;
             return s;
         }
-        set { s = value > 0 ? value : 0 ; }
+        protected set { s = value > 0 ? value : 0 ; }
     }
     public int W
     {
@@ -60,7 +60,7 @@ public class CharacterCard : Card {
             if (w < 0) return 0;
             return w;
         }
-        set { w = value > 0 ? value : 0; }
+        protected set { w = value > 0 ? value : 0; }
     }
     #endregion stats
 

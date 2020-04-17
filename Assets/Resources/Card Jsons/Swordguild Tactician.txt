@@ -24,7 +24,7 @@
 					\"eChange\":5,
 					\"sChange\":0,
 					\"wChange\":0,
-					\"targetIndex\":0
+					\"TargetIndex\":0
 				}",
 				"{}",
 				"{
@@ -32,7 +32,7 @@
 					\"eChange\":0,
 					\"sChange\":0,
 					\"wChange\":5,
-					\"targetIndex\":0
+					\"TargetIndex\":0
 				}"
 			]
 		}

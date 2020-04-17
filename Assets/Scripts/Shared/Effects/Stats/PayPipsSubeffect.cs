@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PayPipsSubeffect : Subeffect
 {
-    public int xMultiplier;
-    public int xDivisor;
-    public int modifier;
+    public int xMultiplier = 1;
+    public int xDivisor = 1;
+    public int modifier = 0;
 
     public override void Resolve()
     {

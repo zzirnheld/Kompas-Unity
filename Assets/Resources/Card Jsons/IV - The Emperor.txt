@@ -1,0 +1,36 @@
+{
+	"cardType":67,
+	"cardName":"IV - The Emperor",
+	"effText":"When you draw X, I can give an adjacent Tarocco +XEW.",
+	"effects":[
+		{
+			"triggerCondition":101,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[]
+				}
+			}",
+			"subeffectTypes":[0,103],
+			"subeffects":[
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[3],
+						\"onBoardRestrictions\":[0]
+					}
+				}",
+				"{
+					\"eMult\":1,
+					\"wMult\":1
+				}"
+			]	
+		}
+	],
+	"n":1,
+	"e":3,
+	"s":5,
+	"w":7,
+	"subtypes":["Tarocco","Warrior"],
+	"subtypeText":"tarocco Warrior"
+}

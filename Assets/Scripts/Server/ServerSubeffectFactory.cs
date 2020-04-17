@@ -45,6 +45,9 @@ public class ServerSubeffectFactory : ISubeffectFactory
             case SubeffectType.ChangeNESW:
                 toReturn = JsonUtility.FromJson<ChangeNESWSubeffect>(subeffJson);
                 break;
+            case SubeffectType.XChangeNESW:
+                toReturn = JsonUtility.FromJson<XChangeNESWSubeffect>(subeffJson);
+                break;
             case SubeffectType.AddPips:
                 toReturn = JsonUtility.FromJson<AddPipsSubeffect>(subeffJson);
                 break;

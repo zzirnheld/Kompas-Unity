@@ -198,4 +198,9 @@ public abstract class Game : MonoBehaviour {
         boardCtrl.Move(card, toX, toY);
     }
     #endregion move card between areas
+
+    public virtual void SetStats(CharacterCard charCard, int n, int e, int s, int w)
+    {
+        charCard.SetNESW(n, e, s, w);
+    }
 }

@@ -1,0 +1,45 @@
+{
+	"cardType":67,
+	"cardName":"III - The Empress",
+	"effText":"When you draw X, you can pay half X pips to hand-summon a character with S <= X.",
+	"effects":[
+		{
+			"triggerCondition":101,
+			"trigger":
+			"{
+				\"Optional\":true,
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[]
+				}
+			}",
+			"subeffectTypes":[102,3,4,300],
+			"subeffects":[
+				"{
+					\"xDivisor\":2
+				}",
+				"{
+					\"cardRestriction\":
+					{
+						\"restrictionsToCheck\":[3,103,202],
+					}
+				}",
+				"{
+					\"spaceRestriction":
+					{
+						\"restrictionsToCheck\":[0]
+					}
+				}",
+				"{
+					\"TargetIndex\":-1,
+					\"SpaceIndex\":-1
+				}"
+			]	
+		}
+	],
+	"n":1,
+	"e":3,
+	"s":5,
+	"w":7,
+	"subtypes":["Tarocco","Mage"],
+	"subtypeText":"tarocco Mage"
+}

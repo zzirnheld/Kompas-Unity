@@ -12,7 +12,7 @@ public class AvatarCard : CharacterCard
             if (e < 0) return 0;
             return e;
         }
-        set
+        protected set
         {
             e = value > 0 ? value : 0;
             if (e < 0) serverGame?.Lose(ControllerIndex);

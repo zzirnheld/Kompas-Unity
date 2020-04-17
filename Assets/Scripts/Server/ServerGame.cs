@@ -251,24 +251,30 @@ public class ServerGame : Game {
     }
     #endregion move card between areas
 
-    public Card Draw(int player, IStackable stackSrc = null)
+    public override void SetStats(CharacterCard charCard, int n, int e, int s, int w)
     {
-        Card toDraw = Players[player].deckCtrl.PopTopdeck();
-        Trigger(TriggerCondition.Draw, toDraw, stackSrc, null);
-        Rehand(toDraw);
-        return toDraw;
+        base.SetStats(charCard, n, e, s, w);
+        ServerPlayers[charCard.ControllerIndex].ServerNotifier.NotifySetNESW(charCard);
     }
 
-    public List<Card> DrawX(int player, int x, IStackable stackSrc = null)
+    public Card Draw(int player, IStackable stackSrc = null)
+    {
+        var drawn = DrawX(player, null, stackSrc);
+        return drawn.Count > 0 ? drawn[0] : null;
+    }
+
+    public List<Card> DrawX(int player, int? x, IStackable stackSrc = null)
     {
         List<Card> drawn = new List<Card>();
         for (int i = 0; i < x; i++)
         {
-            var cardDrawn = Draw(player);
-            if (cardDrawn == null) break;
-            drawn.Add(cardDrawn);
+            Card toDraw = Players[player].deckCtrl.PopTopdeck();
+            if (toDraw == null) break;
+            Trigger(TriggerCondition.Draw, toDraw, stackSrc, null);
+            Rehand(toDraw);
+            drawn.Add(toDraw);
         }
-        Trigger(TriggerCondition.Draw, null, stackSrc, x);
+        Trigger(TriggerCondition.DrawX, null, stackSrc, x);
         return drawn;
     }
 
