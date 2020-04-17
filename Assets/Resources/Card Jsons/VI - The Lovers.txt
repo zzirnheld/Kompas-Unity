@@ -1,0 +1,41 @@
+{
+	"cardType":67,
+	"cardName":"VI - The Lovers",
+	"effText":"When you draw X, you can tribute me to deck-summon an S ≤ X Tarocco where I was.",
+	"effects":[
+		{
+			"triggerCondition":101,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[]
+				}
+			}",
+			"subeffectTypes":[6,5,301,1,300],
+			"subeffects":[
+				"{}",
+				"{}",
+				"{
+					\"TargetIndex\":-1
+				}",
+				"{
+					\"cardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,3,202],
+						\"subtypesInclude\":[\"Tarocco\"]
+					}
+				}",
+				"{
+					\"TargetIndex\":-1,
+					\"SpaceIndex\":-1
+				}"
+			]	
+		}
+	],
+	"n":1,
+	"e":3,
+	"s":3,
+	"w":2,
+	"subtypes":["Tarocco"],
+	"subtypeText":"tarocco"
+}

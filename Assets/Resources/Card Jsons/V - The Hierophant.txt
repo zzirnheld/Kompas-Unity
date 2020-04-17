@@ -1,0 +1,29 @@
+{
+	"cardType":67,
+	"cardName":"V - The Hierophant",
+	"effText":"When you draw X, I get +XW.",
+	"effects":[
+		{
+			"triggerCondition":101,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[]
+				}
+			}",
+			"subeffectTypes":[5,103],
+			"subeffects":[
+				"{}",
+				"{
+					\"wMult\":1
+				}"
+			]	
+		}
+	],
+	"n":3,
+	"e":3,
+	"s":4,
+	"w":4,
+	"subtypes":["Tarocco","Mage"],
+	"subtypeText":"tarocco Mage"
+}

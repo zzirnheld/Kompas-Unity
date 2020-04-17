@@ -270,7 +270,7 @@ public class ServerGame : Game {
         {
             Card toDraw = Players[player].deckCtrl.PopTopdeck();
             if (toDraw == null) break;
-            Trigger(TriggerCondition.Draw, toDraw, stackSrc, null);
+            Trigger(TriggerCondition.EachDraw, toDraw, stackSrc, null);
             Rehand(toDraw);
             drawn.Add(toDraw);
         }
