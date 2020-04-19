@@ -1,0 +1,63 @@
+{
+	"cardType":67,
+	"cardName":"VIII - Fortitude",
+	"effText":"Once each round, you can look at and rearrange the top 5 cards of your deck, then draw 1.",
+	"effects":[
+		{
+			"triggerCondition":301,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[]
+				}
+			}",
+			"subeffectTypes":[305],
+			"subeffects":["{}"]	
+		},
+		{
+			"triggerCondition":101,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[]
+				}
+			}",
+			"subeffectTypes":[0,406,100,407,100],
+			"subeffects":[
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[3],
+						\"onBoardRestrictions\":[0]
+					}
+				}",
+				"{
+					\"ChoiceBlurb\":\"Give +1E or +1W?\",
+					\"OptionBlurbs\":[\"+1E\",\"+1W\"],
+					\"OptionJumpIndices\":[2,3]
+				}",
+				"{
+					\"nChange\":0,
+					\"eChange\":1,
+					\"sChange\":0,
+					\"wChange\":0,
+					\"TargetIndex\":0
+				}",
+				"{}",
+				"{
+					\"nChange\":0,
+					\"eChange\":0,
+					\"sChange\":0,
+					\"wChange\":1,
+					\"TargetIndex\":0
+				}"
+			]
+		}
+	],
+	"n":1,
+	"e":3,
+	"s":5,
+	"w":7,
+	"subtypes":["Tarocco","Mage"],
+	"subtypeText":"Tarocco Mage"
+}
