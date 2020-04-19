@@ -12,7 +12,7 @@ public class ServerSubeffectFactory : ISubeffectFactory
 
         switch (seType)
         {
-            case SubeffectType.TargetCardOnBoard:
+            case SubeffectType.BoardTarget:
                 toReturn = JsonUtility.FromJson<BoardTargetSubeffect>(subeffJson);
                 break;
             case SubeffectType.DeckTarget:
@@ -83,6 +83,12 @@ public class ServerSubeffectFactory : ISubeffectFactory
                 break;
             case SubeffectType.DrawX:
                 toReturn = JsonUtility.FromJson<DrawXSubeffect>(subeffJson);
+                break;
+            case SubeffectType.Bottomdeck:
+                toReturn = JsonUtility.FromJson<BottomdeckSubeffect>(subeffJson);
+                break;
+            case SubeffectType.Topdeck:
+                toReturn = JsonUtility.FromJson<TopdeckSubeffect>(subeffJson);
                 break;
             case SubeffectType.XTimesLoop:
                 toReturn = JsonUtility.FromJson<XTimesSubeffect>(subeffJson);

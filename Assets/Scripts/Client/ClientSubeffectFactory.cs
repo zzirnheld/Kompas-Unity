@@ -10,7 +10,7 @@ public class ClientSubeffectFactory : ISubeffectFactory
 
         switch (subeffectType)
         {
-            case SubeffectType.TargetCardOnBoard:
+            case SubeffectType.BoardTarget:
                 toReturn = JsonUtility.FromJson<DummyBoardTargetSubeffect>(json);
                 break;
             case SubeffectType.DeckTarget:

@@ -15,10 +15,12 @@ public class CardRestriction
         IsSpell = 4,
         IsAugment = 5,
         SubtypesExclude = 6,
+        //location
         Hand = 100,
         Discard = 101,
         Deck = 102,
         Board = 103,
+        //stats
         NLTEX = 200, //N <= X
         ELTEX = 201,
         SLTEX = 202,
@@ -28,8 +30,11 @@ public class CardRestriction
         ELTEC = 302,
         SLTEC = 303,
         WLTEC = 304,
+        //index in list
         IndexInListGTEC = 500,
-        IndexInListLTEC = 501
+        IndexInListLTEC = 501,
+        //misc
+        NotAlreadyTarget = 600
     } //to add later: N/E/S/W >=
 
     //because JsonUtility will fill in all values with defaults if not present
@@ -126,6 +131,9 @@ public class CardRestriction
                     break;
                 case CardRestrictions.IndexInListLTEC:
                     if (potentialTarget.IndexInList > constant) return false;
+                    break;
+                case CardRestrictions.NotAlreadyTarget:
+                    if (Subeffect.Effect.targets.Contains(potentialTarget)) return false;
                     break;
                 default:
                     Debug.Log("You forgot to check for " + c);

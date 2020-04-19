@@ -41,7 +41,7 @@ public abstract class Subeffect
     /// If positive, just an index.
     /// If negative, it's Effect.targets.Count + targetIndex (aka that many back from the end)
     /// </summary>
-    public int TargetIndex;
+    public int TargetIndex = -1;
 
     public Card Target
     {

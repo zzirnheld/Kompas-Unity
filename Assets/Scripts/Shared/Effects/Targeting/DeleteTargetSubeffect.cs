@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DeleteTargetSubeffect : Subeffect
 {
-    public int DeleteIndex;
+    public int DeleteIndex = -1;
 
     public override void Resolve()
     {
