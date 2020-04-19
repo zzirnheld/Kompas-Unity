@@ -1,0 +1,37 @@
+{
+	"cardType":67,
+	"cardName":"IX - The Hermit",
+	"effText":"Once each friendly turn, when you draw X, you can move a character X slots.",
+	"effects":[
+		{
+			"triggerCondition":101,
+			"trigger":
+			"{
+				\"Optional\":true,
+				\"triggerRestriction\":{}
+			}",
+			"subeffectTypes":[0,4,309],
+			"subeffects":[
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[3]
+					}
+				}",
+				"{
+					\"spaceRestriction\":
+					{
+						\"restrictionsToCheck\":[201]
+					}
+				}",
+				"{}"
+			]
+		}
+	],
+	"n":2,
+	"e":2,
+	"s":4,
+	"w":4,
+	"subtypes":["Tarocco","Mage"],
+	"subtypeText":"Tarocco Mage"
+}

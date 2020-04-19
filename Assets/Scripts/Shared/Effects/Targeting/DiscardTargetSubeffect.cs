@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class DiscardTargetSubeffect : CardTargetSubeffect
 {
-    public override void Initialize()
+    public override void Initialize(Effect eff, int subeffIndex)
     {
+        base.Initialize(eff, subeffIndex);
         cardRestriction.Subeffect = this;
     }
 

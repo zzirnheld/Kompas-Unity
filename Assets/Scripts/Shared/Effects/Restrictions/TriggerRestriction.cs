@@ -15,7 +15,7 @@ public class TriggerRestriction
         OnField = 400,
     }
 
-    public TriggerRestrictions[] triggerRestrictions;
+    public TriggerRestrictions[] triggerRestrictions = new TriggerRestrictions[0];
 
     public CardRestriction cardRestriction;
 

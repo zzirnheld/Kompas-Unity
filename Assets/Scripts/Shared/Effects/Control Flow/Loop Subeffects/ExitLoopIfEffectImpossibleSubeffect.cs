@@ -8,9 +8,9 @@ public class ExitLoopIfEffectImpossibleSubeffect : Subeffect
 
     private LoopSubeffect loopSubeffect;
 
-    public override void Initialize()
+    public override void Initialize(Effect eff, int subeffIndex)
     {
-        base.Initialize();
+        base.Initialize(eff, subeffIndex);
         loopSubeffect = Effect.Subeffects[LoopSubeffectIndex] as LoopSubeffect 
             ?? throw new System.ArgumentNullException($"Subeffect at loop subeffect index {LoopSubeffectIndex} cannot be null");
     }

@@ -37,9 +37,7 @@ public class ClientSubeffectFactory : ISubeffectFactory
         if (toReturn != null)
         {
             Debug.Log($"Finishing setup for new effect of type {subeffectType}");
-            toReturn.Effect = parent;
-            toReturn.Initialize();
-            toReturn.SubeffIndex = subeffIndex;
+            toReturn.Initialize(parent, subeffIndex);
         }
 
         return toReturn;

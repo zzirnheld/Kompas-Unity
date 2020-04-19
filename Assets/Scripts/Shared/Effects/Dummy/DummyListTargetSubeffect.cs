@@ -19,8 +19,9 @@ public class DummyListTargetSubeffect : Subeffect
         throw new System.NotImplementedException(("Dummy List Target Subeffect should never resolve."));
     }
 
-    public override void Initialize()
+    public override void Initialize(Effect eff, int subeffIndex)
     {
+        base.Initialize(eff, subeffIndex);
         CardRestriction.Subeffect = this;
         ListRestriction.Subeffect = this;
     }

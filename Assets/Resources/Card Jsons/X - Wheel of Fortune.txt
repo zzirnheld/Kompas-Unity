@@ -1,0 +1,40 @@
+{
+	"cardType":67,
+	"cardName":"X - Wheel of Fortune",
+	"effText":"When you draw, I can swap two characters’ N.",
+	"effects":[
+		{
+			"triggerCondition":101,
+			"trigger":
+			"{
+				\"Optional\":true,
+				\"triggerRestriction\":{}
+			}",
+			"subeffectTypes":[0,0,104],
+			"subeffects":[
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[103]
+					}
+				}",
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[103,600]
+					}
+				}",
+				"{
+					\"TargetIndices\":[-1,-2],
+					\"SwapN\":true
+				}"
+			]
+		}
+	],
+	"n":1,
+	"e":4,
+	"s":5,
+	"w":5,
+	"subtypes":["Tarocco","Mage"],
+	"subtypeText":"Tarocco Mage"
+}

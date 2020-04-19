@@ -6,9 +6,9 @@ public class SpaceTargetSubeffect : Subeffect
 {
     public SpaceRestriction spaceRestriction;
 
-    public override void Initialize()
+    public override void Initialize(Effect eff, int subeffIndex)
     {
-        base.Initialize();
+        base.Initialize(eff, subeffIndex);
         Debug.Log("Space restriction is null? " + (spaceRestriction == null));
         spaceRestriction.Subeffect = this;
     }

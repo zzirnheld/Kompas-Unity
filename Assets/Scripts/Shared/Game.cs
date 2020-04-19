@@ -203,4 +203,18 @@ public abstract class Game : MonoBehaviour {
     {
         charCard.SetNESW(n, e, s, w);
     }
+
+    public void SwapStats(CharacterCard a, CharacterCard b, bool swapN = true, bool swapE = true, bool swapS = true, bool swapW = true)
+    {
+        int[] aNewStats = new int[4];
+        int[] bNewStats = new int[4];
+
+        (aNewStats[0], bNewStats[0]) = swapN ? (b.N, a.N) : (a.N, b.N);
+        (aNewStats[1], bNewStats[1]) = swapE ? (b.E, a.E) : (a.E, b.E);
+        (aNewStats[2], bNewStats[2]) = swapS ? (b.S, a.S) : (a.S, b.S);
+        (aNewStats[3], bNewStats[3]) = swapW ? (b.W, a.W) : (a.W, b.W);
+
+        SetStats(a, aNewStats[0], aNewStats[1], aNewStats[2], aNewStats[3]);
+        SetStats(b, bNewStats[0], bNewStats[1], bNewStats[2], bNewStats[3]);
+    }
 }

@@ -23,6 +23,7 @@ public enum SubeffectType
     AddPips = 101,
     PayPips = 102,
     XChangeNESW = 103,
+    SwapNESW = 104,
     PayPipsByTargetCost = 150,
 
     //effect x
@@ -42,6 +43,7 @@ public enum SubeffectType
     DrawX = 306,
     Bottomdeck = 307,
     Topdeck = 308,
+    Move = 309,
 
     //loops/control flow
     XTimesLoop = 400,

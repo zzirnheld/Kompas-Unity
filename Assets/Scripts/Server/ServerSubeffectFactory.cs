@@ -90,6 +90,9 @@ public class ServerSubeffectFactory : ISubeffectFactory
             case SubeffectType.Topdeck:
                 toReturn = JsonUtility.FromJson<TopdeckSubeffect>(subeffJson);
                 break;
+            case SubeffectType.Move:
+                toReturn = JsonUtility.FromJson<MoveSubeffect>(subeffJson);
+                break;
             case SubeffectType.XTimesLoop:
                 toReturn = JsonUtility.FromJson<XTimesSubeffect>(subeffJson);
                 break;
@@ -125,9 +128,7 @@ public class ServerSubeffectFactory : ISubeffectFactory
         if (toReturn != null)
         {
             Debug.Log($"Finishing setup for new effect of type {seType}");
-            toReturn.Effect = parent;
-            toReturn.Initialize();
-            toReturn.SubeffIndex = subeffIndex;
+            toReturn.Initialize(parent, subeffIndex);
         }
 
         return toReturn;

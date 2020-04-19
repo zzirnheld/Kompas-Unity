@@ -12,7 +12,9 @@ public class SpaceRestriction
     {
         CanSummonTarget = 0,
         AdjacentToThisCard = 100,
-        AdjacentToWithRestriction = 101
+        AdjacentToWithRestriction = 101,
+        DistanceX = 200,
+        DistanceToTargetX = 201
     }
 
     public SpaceRestrictions[] restrictionsToCheck;
@@ -36,7 +38,7 @@ public class SpaceRestriction
 
     public bool Evaluate(int x, int y)
     {
-        Debug.Log("Evaluating " + x + ", " + y);
+        Debug.Log($"Space restriction for {Subeffect.ThisCard.name} evaluating {x}, {y}");
         if (!Subeffect.Effect.serverGame.boardCtrl.ValidIndices(x, y)) return false;
 
         foreach(SpaceRestrictions r in restrictionsToCheck)
@@ -51,6 +53,15 @@ public class SpaceRestriction
                     break;
                 case SpaceRestrictions.AdjacentToWithRestriction:
                     if (!ExistsCardWithRestrictionAdjacentToCoords(adjacencyRestriction, x, y)) return false;
+                    break;
+                case SpaceRestrictions.DistanceX:
+                    if (Subeffect.ThisCard.DistanceTo(x, y) != Subeffect.Effect.X) return false;
+                    break;
+                case SpaceRestrictions.DistanceToTargetX:
+                    if (Subeffect.Target.DistanceTo(x, y) != Subeffect.Effect.X) return false;
+                    break;
+                default:
+                    Debug.LogError($"Unrecognized space restriction enum {r}");
                     break;
             }
         }

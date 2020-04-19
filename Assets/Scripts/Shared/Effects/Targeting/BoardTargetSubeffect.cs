@@ -9,9 +9,9 @@ public class BoardTargetSubeffect : CardTargetSubeffect
     
     public BoardRestriction boardRestriction;
 
-    public override void Initialize()
+    public override void Initialize(Effect eff, int subeffIndex)
     {
-        base.Initialize();
+        base.Initialize(eff, subeffIndex);
         boardRestriction.Subeffect = this;
     }
 

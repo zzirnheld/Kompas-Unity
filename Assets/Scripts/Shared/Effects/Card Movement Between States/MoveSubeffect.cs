@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlaySubeffect : CardChangeStateSubeffect
+public class MoveSubeffect : CardChangeStateSubeffect
 {
     public override void Resolve()
     {
-        ServerGame.Play(Target, X, Y, EffectController, Effect);
+        ServerGame.MoveOnBoard(Target, X, Y, Effect);
         Effect.ResolveNextSubeffect();
     }
 }

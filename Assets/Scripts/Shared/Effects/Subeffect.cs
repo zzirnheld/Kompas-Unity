@@ -12,7 +12,7 @@ public abstract class Subeffect
     public ServerPlayer EffectController { get { return Effect.EffectController; } }
     public Card ThisCard { get { return Effect.thisCard; } }
 
-    public int SubeffIndex;
+    public int SubeffIndex { get; private set; }
 
     /// <summary>
     /// parent resolve method. at the end, needs to call resolve subeffect in parent
@@ -32,7 +32,10 @@ public abstract class Subeffect
         Effect.ResolveSubeffect(Effect.subeffectIndex + 1);
     }
 
-    public virtual void Initialize() { }
+    public virtual void Initialize(Effect eff, int subeffIndex) {
+        this.Effect = eff;
+        this.SubeffIndex = subeffIndex;
+    }
 
     public virtual void OnImpossible() { }
 
