@@ -7,6 +7,7 @@
 			"triggerCondition":101,
 			"trigger":
 			"{
+				\"Optional\":true,
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[]
 				}
