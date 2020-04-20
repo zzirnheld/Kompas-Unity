@@ -36,6 +36,7 @@ public abstract class Card : CardBase {
     protected string[] subtypes;
     private List<AugmentCard> augments = new List<AugmentCard>();
     public List<AugmentCard> Augments { get { return augments; } }
+    public bool Negated { get; protected set; }
 
     protected Effect[] effects;
 
@@ -232,8 +233,7 @@ public abstract class Card : CardBase {
             boardY = serializedCard.BoardY;
         }
     }
-
-    //game mechanics
+    
     #region distance/adjacency
     public int DistanceTo(int x, int y)
     {
@@ -327,6 +327,12 @@ public abstract class Card : CardBase {
         {
             eff.ResetForTurn();
         }
+    }
+
+    public virtual void Negate()
+    {
+        Negated = true;
+        foreach(var e in effects)  e.Negate();
     }
 
     #region augments

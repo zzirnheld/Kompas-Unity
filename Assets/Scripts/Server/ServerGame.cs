@@ -257,6 +257,12 @@ public class ServerGame : Game {
         ServerPlayers[charCard.ControllerIndex].ServerNotifier.NotifySetNESW(charCard);
     }
 
+    public override void Negate(Card c)
+    {
+        base.Negate(c);
+        ServerPlayers[c.ControllerIndex].ServerNotifier.NotifyNegate(c);
+    }
+
     public Card Draw(int player, IStackable stackSrc = null)
     {
         var drawn = DrawX(player, 1, stackSrc);

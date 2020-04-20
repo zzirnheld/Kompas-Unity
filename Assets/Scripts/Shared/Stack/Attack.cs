@@ -6,6 +6,8 @@ public class Attack : IStackable
 {
     public ServerGame serverGame;
 
+    public Card Source { get { return attacker; } }
+
     public CharacterCard attacker;
     public CharacterCard defender;
 

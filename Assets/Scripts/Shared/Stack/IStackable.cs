@@ -5,4 +5,6 @@ using UnityEngine;
 public interface IStackable
 {
     void StartResolution();
+
+    Card Source { get; }
 }

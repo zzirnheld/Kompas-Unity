@@ -51,6 +51,12 @@ public class ServerSubeffectFactory : ISubeffectFactory
             case SubeffectType.AddPips:
                 toReturn = JsonUtility.FromJson<AddPipsSubeffect>(subeffJson);
                 break;
+            case SubeffectType.Negate:
+                toReturn = JsonUtility.FromJson<NegateSubeffect>(subeffJson);
+                break;
+            case SubeffectType.Dispel:
+                toReturn = JsonUtility.FromJson<DispelSubeffect>(subeffJson);
+                break;
             case SubeffectType.SetXByBoardCount:
                 toReturn = JsonUtility.FromJson<SetXBoardRestrictionSubeffect>(subeffJson);
                 break;

@@ -17,6 +17,8 @@ namespace KompasNetworking
             //move cards around
             Topdeck, Discard, Rehand, Reshuffle, AddAsFriendly, AddAsEnemy, AddToDeck, Bottomdeck,
             Draw, Delete,
+            //card properties
+            SetNESW, Negate,
             //change numbers of cards that you see of your opponent
             IncrementEnemyDeck, IncrementEnemyHand, DecrementEnemyDeck, DecrementEnemyHand,
             //server requesting a target of a client
@@ -26,7 +28,7 @@ namespace KompasNetworking
             //server notifying if anything else is necessary
             TargetAccepted, SpaceTargetAccepted,
             //other effect technicalities
-            PlayerSetX, EnableDecliningTarget, DisableDecliningTarget, SetNESW, SetPips, SetEnemyPips, SetEffectsX,
+            PlayerSetX, EnableDecliningTarget, DisableDecliningTarget, SetPips, SetEnemyPips, SetEffectsX,
             OptionalTrigger, ChooseEffectOption,
             //miscellaneous
             DiscardSimples, PutBack, YoureFirst, YoureSecond,

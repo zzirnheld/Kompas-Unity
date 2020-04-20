@@ -24,6 +24,8 @@ public enum SubeffectType
     PayPips = 102,
     XChangeNESW = 103,
     SwapNESW = 104,
+    Negate = 105,
+    Dispel = 106,
     PayPipsByTargetCost = 150,
 
     //effect x

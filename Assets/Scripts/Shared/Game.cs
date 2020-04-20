@@ -197,6 +197,12 @@ public abstract class Game : MonoBehaviour {
     {
         boardCtrl.Move(card, toX, toY);
     }
+
+    public virtual void Negate(Card c)
+    {
+        c.Negate();
+        stack.RemoveAll(s => s.Source == c);
+    }
     #endregion move card between areas
 
     public virtual void SetStats(CharacterCard charCard, int n, int e, int s, int w)
@@ -216,5 +222,11 @@ public abstract class Game : MonoBehaviour {
 
         SetStats(a, aNewStats[0], aNewStats[1], aNewStats[2], aNewStats[3]);
         SetStats(b, bNewStats[0], bNewStats[1], bNewStats[2], bNewStats[3]);
+    }
+
+    public virtual void Dispel(SpellCard spell)
+    {
+        Negate(spell);
+        Discard(spell);
     }
 }

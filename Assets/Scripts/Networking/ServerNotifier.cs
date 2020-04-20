@@ -179,6 +179,13 @@ public class ServerNotifier : MonoBehaviour
         SendPackets(outPacket, outPacketInverted);
     }
 
+    public void NotifyNegate(Card card)
+    {
+        if (card == null) return;
+        Packet packet = new Packet(Packet.Command.Negate, card);
+        SendToBoth(packet);
+    }
+
     public void NotifySetTurn(ServerGame sGame, int indexToSet)
     {
         Packet outPacket = new Packet(Packet.Command.EndTurn, indexToSet);

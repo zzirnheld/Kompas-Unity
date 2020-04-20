@@ -12,6 +12,7 @@ public class Effect : IStackable
 
     //card that this is the effect of. to be set at initialization
     public Card thisCard;
+    public Card Source { get { return thisCard; } }
 
     //who owns the effect. TODO set when a player activates an effect
     public int effectControllerIndex;
@@ -35,6 +36,8 @@ public class Effect : IStackable
 
     public List<Card> targets;
     public List<Vector2Int> coords;
+
+    public bool Negated { get; protected set; }
 
     /// <summary>
     /// X value as listed on cards
@@ -122,7 +125,7 @@ public class Effect : IStackable
 
     public void ResolveSubeffect(int index)
     {
-        if(index >= subeffects.Length)
+        if(index >= subeffects.Length || Negated)
         {
             FinishResolution();
             return;
@@ -157,5 +160,10 @@ public class Effect : IStackable
     public void DeclineAnotherTarget()
     {
         OnImpossible?.OnImpossible();
+    }
+
+    public void Negate()
+    {
+        Negated = true;
     }
 }

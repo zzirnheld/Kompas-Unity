@@ -155,6 +155,10 @@ public class ClientNetworkController : NetworkController {
                 Card toSet = ClientGame.GetCardFromID(packet.cardID);
                 (toSet as CharacterCard)?.SetNESW(packet.N, packet.E, packet.S, packet.W);
                 break;
+            case Packet.Command.Negate:
+                Card toNegate = ClientGame.GetCardFromID(packet.cardID);
+                ClientGame.Negate(toNegate);
+                break;
             case Packet.Command.SetPips:
                 ClientGame.SetFriendlyPips(packet.Pips);
                 break;
