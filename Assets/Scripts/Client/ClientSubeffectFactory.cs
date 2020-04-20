@@ -28,6 +28,9 @@ public class ClientSubeffectFactory : ISubeffectFactory
             case SubeffectType.ChooseEffectOption:
                 toReturn = JsonUtility.FromJson<DummyChooseOptionSubeffect>(json);
                 break;
+            case SubeffectType.PlayerChooseX:
+                toReturn = JsonUtility.FromJson<DummyPlayerChooseXSubeffect>(json);
+                break;
             default:
                 Debug.Log("Creating client subeffect of a type other than one that has a specific dummy.");
                 toReturn = new DummySubeffect();

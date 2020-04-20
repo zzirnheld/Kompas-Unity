@@ -60,6 +60,9 @@ public class ServerSubeffectFactory : ISubeffectFactory
             case SubeffectType.ChangeXByGamestateValue:
                 toReturn = JsonUtility.FromJson<ChangeXByGamestateSubeffect>(subeffJson);
                 break;
+            case SubeffectType.PlayerChooseX:
+                toReturn = JsonUtility.FromJson<PlayerChooseXSubeffect>(subeffJson);
+                break;
             case SubeffectType.SpaceTarget:
                 toReturn = JsonUtility.FromJson<SpaceTargetSubeffect>(subeffJson);
                 break;
