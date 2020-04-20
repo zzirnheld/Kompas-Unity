@@ -12,7 +12,8 @@ public class TriggerRestriction
         ThisCardTriggered = 0,
         ThisCardFitsRestriction = 100,
         TriggererFitsRestriction = 101,
-        OnField = 400,
+        FromField = 400,
+        FromDeck = 401
     }
 
     public TriggerRestrictions[] triggerRestrictions = new TriggerRestrictions[0];
@@ -37,8 +38,15 @@ public class TriggerRestriction
                 case TriggerRestrictions.ThisCardFitsRestriction:
                     if (!cardRestriction.Evaluate(thisCard)) return false;
                     break;
-                case TriggerRestrictions.OnField:
+                    //TODO make these into just something to do with triggered card fitting restriction
+                case TriggerRestrictions.FromField:
                     if (triggerer.Location != CardLocation.Field) return false;
+                    break;
+                case TriggerRestrictions.FromDeck:
+                    if (triggerer.Location != CardLocation.Deck) return false;
+                    break;
+                default:
+                    Debug.LogError($"Unrecognized trigger restriction {r}");
                     break;
             }
         }

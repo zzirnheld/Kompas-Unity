@@ -1,0 +1,25 @@
+{
+	"cardType":67,
+	"cardName":"XV - The Devil",
+	"effText":"When an enemy deck-rehands a card, you can draw 1.",
+	"effects":[
+		{
+			"triggerCondition":403,
+			"trigger":
+			"{
+				\"Optional\":true,
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[401]
+				}
+			}",
+			"subeffectTypes":[305],
+			"subeffects":["{}"]
+		}
+	],
+	"n":2,
+	"e":5,
+	"s":8,
+	"w":8,
+	"subtypes":["Tarocco","Mage"],
+	"subtypeText":"Tarocco Mage"
+}
