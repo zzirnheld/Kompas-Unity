@@ -1,0 +1,42 @@
+{
+	"cardType":67,
+	"cardName":"XII - The Hanged Man",
+	"effText":"When you draw X, I can give myself and a Summoned character -XE.",
+	"effects":[
+		{
+			"triggerCondition":101,
+			"trigger":
+			"{
+				\"Optional\":true,
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[]
+				}
+			}",
+			"subeffectTypes":[5,0,103,103],
+			"subeffects":[
+				"{}",
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[3],
+						\"onBoardRestrictions\":[200]
+					}
+				}",
+				"{
+					\"eMult\":1,
+					\"TargetIndex\":0
+				}",
+				"{
+					\"eMult\":1,
+					\"TargetIndex\":1
+				}"
+			]
+		}
+	],
+	"n":1,
+	"e":3,
+	"s":3,
+	"w":4,
+	"subtypes":["Tarocco","Mage"],
+	"subtypeText":"Tarocco Mage"
+}
