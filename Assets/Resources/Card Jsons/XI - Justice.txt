@@ -1,0 +1,31 @@
+{
+	"cardType":67,
+	"cardName":"XI - Justice",
+	"effText":"Once each friendly turn, if your hand is smaller than an enemy’s, you can draw half the difference.",
+	"effects":[
+		{
+			"subeffectTypes":[201,211,409,306],
+			"subeffects":[
+				"{
+					\"WhatToCount\":\"Hand Size\",
+					\"Divisor\":2,
+					\"PlayerIndex\":1
+				}",
+				"{
+					\"WhatToCount\":\"Hand Size\",
+					\"Divisor\":2,
+				}",
+				"{
+					\"Condition\":\"X<=0\"
+				}",
+				"{}"
+			]
+		}
+	],
+	"n":4,
+	"e":5,
+	"s":7,
+	"w":7,
+	"subtypes":["Tarocco","Mage"],
+	"subtypeText":"Tarocco Mage"
+}

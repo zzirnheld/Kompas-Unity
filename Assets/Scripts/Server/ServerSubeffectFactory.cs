@@ -54,6 +54,12 @@ public class ServerSubeffectFactory : ISubeffectFactory
             case SubeffectType.SetXByBoardCount:
                 toReturn = JsonUtility.FromJson<SetXBoardRestrictionSubeffect>(subeffJson);
                 break;
+            case SubeffectType.SetXByGamestateValue:
+                toReturn = JsonUtility.FromJson<SetXByGamestateSubeffect>(subeffJson);
+                break;
+            case SubeffectType.ChangeXByGamestateValue:
+                toReturn = JsonUtility.FromJson<ChangeXByGamestateSubeffect>(subeffJson);
+                break;
             case SubeffectType.SpaceTarget:
                 toReturn = JsonUtility.FromJson<SpaceTargetSubeffect>(subeffJson);
                 break;
@@ -119,6 +125,9 @@ public class ServerSubeffectFactory : ISubeffectFactory
                 break;
             case SubeffectType.CountXLoop:
                 toReturn = JsonUtility.FromJson<CountXLoopSubeffect>(subeffJson);
+                break;
+            case SubeffectType.ConditionalEndEffect:
+                toReturn = JsonUtility.FromJson<ConditionalEndSubeffect>(subeffJson);
                 break;
             default:
                 Debug.LogError($"Unrecognized effect type enum {seType} for loading effect in effect constructor");

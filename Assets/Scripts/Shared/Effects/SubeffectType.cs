@@ -28,6 +28,8 @@ public enum SubeffectType
 
     //effect x
     SetXByBoardCount = 200,
+    SetXByGamestateValue = 201,
+    ChangeXByGamestateValue = 211,
     //SetXByTargetN = 250,
     //SetXByTargetE = 251,
     SetXByTargetS = 252,
@@ -54,5 +56,6 @@ public enum SubeffectType
     ClearOnImpossible = 405,
     ChooseEffectOption = 406,
     EndEffect = 407,
-    CountXLoop = 408
+    CountXLoop = 408,
+    ConditionalEndEffect = 409
 }
