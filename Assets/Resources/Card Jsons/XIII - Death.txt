@@ -1,0 +1,49 @@
+{
+	"cardType":67,
+	"cardName":"XIII - Death",
+	"effText":"When you draw, I get +1S. I can pay XS to kill an adjacent SX character.",
+	"effects":[
+		{
+			"triggerCondition":101,
+			"trigger":
+			"{
+				\"Optional\":true,
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[]
+				}
+			}",
+			"subeffectTypes":[5,100],
+			"subeffects":[
+				"{}",
+				"{
+					\"sChange\":1
+				}"
+			]
+		},
+		{
+			"subeffectTypes":[5,103,0,301],
+			"subeffects":[
+				"{
+					\"Restrictions\":[\">0\",\"<=ThisCost\"]
+				}",
+				"{
+					\"sMult\":-1
+				}",
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[3,212],
+						\"onBoardRestrictions\":[0,200]
+					}
+				}",
+				"{}"
+			]
+		}
+	],
+	"n":5,
+	"e":3,
+	"s":7,
+	"w":1,
+	"subtypes":["Tarocco","Mage"],
+	"subtypeText":"Tarocco Mage"
+}

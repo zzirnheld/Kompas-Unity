@@ -35,6 +35,7 @@ public enum SubeffectType
     SetXByTargetS = 252,
     //SetXByTargetW = 253,
     //SetXByTargetCost = 254,
+    PlayerChooseX = 299,
 
     //move cards between states
     PlayCard = 300,

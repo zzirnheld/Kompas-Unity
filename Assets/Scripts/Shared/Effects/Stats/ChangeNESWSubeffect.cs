@@ -5,10 +5,10 @@ using UnityEngine;
 [System.Serializable]
 public class ChangeNESWSubeffect : Subeffect
 {
-    public int nChange;
-    public int eChange;
-    public int sChange;
-    public int wChange;
+    public int nChange = 0;
+    public int eChange = 0;
+    public int sChange = 0;
+    public int wChange = 0;
 
     public override void Resolve()
     {

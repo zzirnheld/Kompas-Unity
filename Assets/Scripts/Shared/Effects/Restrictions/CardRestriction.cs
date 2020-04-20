@@ -26,6 +26,10 @@ public class CardRestriction
         SLTEX = 202,
         WLTEX = 203,
         CostLTEX = 204,
+        NEX = 210, //N == X
+        EEX = 211,
+        SEX = 212,
+        WEX = 213,
         NLTEC = 300, //N <= constant
         ELTEC = 302,
         SLTEC = 303,
@@ -49,6 +53,8 @@ public class CardRestriction
     public virtual bool Evaluate (Card potentialTarget, int x)
     {
         if (potentialTarget == null) return false;
+
+        CharacterCard charCard = potentialTarget as CharacterCard;
 
         foreach (CardRestrictions c in restrictionsToCheck)
         {
@@ -92,39 +98,55 @@ public class CardRestriction
                     if (potentialTarget.Location != CardLocation.Field) return false;
                     break;
                 case CardRestrictions.NLTEX:
-                    if (!(potentialTarget is CharacterCard charC1)) return false;
-                    if (charC1.N > x) return false;
+                    if (charCard == null) return false;
+                    if (charCard.N > x) return false;
                     break;
                 case CardRestrictions.ELTEX:
-                    if (!(potentialTarget is CharacterCard charC2)) return false;
-                    if (charC2.E > x) return false;
+                    if (charCard == null) return false;
+                    if (charCard.E > x) return false;
                     break;
                 case CardRestrictions.SLTEX:
-                    if (!(potentialTarget is CharacterCard charC3)) return false;
-                    if (charC3.S > x) return false;
+                    if (charCard == null) return false;
+                    if (charCard.S > x) return false;
                     break;
                 case CardRestrictions.WLTEX:
-                    if (!(potentialTarget is CharacterCard charC4)) return false;
-                    if (charC4.N > x) return false;
+                    if (charCard == null) return false;
+                    if (charCard.W > x) return false;
                     break;
                 case CardRestrictions.CostLTEX:
                     if (potentialTarget.Cost > x) return false;
                     break;
+                case CardRestrictions.NEX:
+                    if (charCard == null) return false;
+                    if (charCard.N == x) return false;
+                    break;
+                case CardRestrictions.EEX:
+                    if (charCard == null) return false;
+                    if (charCard.E == x) return false;
+                    break;
+                case CardRestrictions.SEX:
+                    if (charCard == null) return false;
+                    if (charCard.S == x) return false;
+                    break;
+                case CardRestrictions.WEX:
+                    if (charCard == null) return false;
+                    if (charCard.W == x) return false;
+                    break;
                 case CardRestrictions.NLTEC:
-                    if (!(potentialTarget is CharacterCard charC5)) return false;
-                    if (charC5.N > constant) return false;
+                    if (charCard == null) return false;
+                    if (charCard.N > constant) return false;
                     break;
                 case CardRestrictions.ELTEC:
-                    if (!(potentialTarget is CharacterCard charC6)) return false;
-                    if (charC6.E > constant) return false;
+                    if (charCard == null) return false;
+                    if (charCard.E > constant) return false;
                     break;
                 case CardRestrictions.SLTEC:
-                    if (!(potentialTarget is CharacterCard charC7)) return false;
-                    if (charC7.S > constant) return false;
+                    if (charCard == null) return false;
+                    if (charCard.S > constant) return false;
                     break;
                 case CardRestrictions.WLTEC:
-                    if (!(potentialTarget is CharacterCard charC8)) return false;
-                    if (charC8.W > constant) return false;
+                    if (charCard == null) return false;
+                    if (charCard.W > constant) return false;
                     break;
                 case CardRestrictions.IndexInListGTEC:
                     if (potentialTarget.IndexInList < constant) return false;

@@ -47,23 +47,26 @@ namespace KompasNetworking
                     break;
                 #region effect commands
                 case Packet.Command.Target:
-                    if (sGame.CurrEffect != null && sGame.CurrEffect.CurrSubeffect is CardTargetSubeffect targetEff)
+                    if (sGame.CurrEffect?.CurrSubeffect is CardTargetSubeffect targetEff)
                     {
                         targetEff.AddTargetIfLegal(sGame.GetCardFromID(packet.cardID));
                     }
                     break;
                 case Packet.Command.SpaceTarget:
                     Debug.Log("Receieved space target " + packet.X + packet.Y);
-                    if (sGame.CurrEffect != null && sGame.CurrEffect.CurrSubeffect is SpaceTargetSubeffect spaceEff)
+                    if (sGame.CurrEffect?.CurrSubeffect is SpaceTargetSubeffect spaceEff)
                     {
                         packet.InvertForController(Player.index);
                         spaceEff.SetTargetIfValid(packet.X, packet.Y);
                     }
-                    else Debug.Log("curr effect null? " + (sGame.CurrEffect == null) + " or not spacetgtsubeff? " + (sGame.CurrEffect.CurrSubeffect is SpaceTargetSubeffect));
+                    else Debug.Log("curr effect null? " + (sGame.CurrEffect == null) + " or not spacetgtsubeff? " + (sGame.CurrEffect?.CurrSubeffect is SpaceTargetSubeffect));
                     break;
                 case Packet.Command.PlayerSetX:
-                    sGame.CurrEffect.X = packet.EffectX;
-                    sGame.CurrEffect.ResolveNextSubeffect();
+                    if (sGame.CurrEffect?.CurrSubeffect is PlayerChooseXSubeffect xEff)
+                    {
+                        xEff.SetXIfLegal(packet.EffectX);
+                    }
+                    else Debug.Log("curr effect null? " + (sGame.CurrEffect == null) + " or not player set x? " + (sGame.CurrEffect?.CurrSubeffect is SpaceTargetSubeffect));
                     break;
                 case Packet.Command.DeclineAnotherTarget:
                     if (sGame.CurrEffect != null)
