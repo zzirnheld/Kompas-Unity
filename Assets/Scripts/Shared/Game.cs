@@ -207,6 +207,11 @@ public abstract class Game : MonoBehaviour {
 
     public virtual void SetStats(CharacterCard charCard, int n, int e, int s, int w)
     {
+        if(charCard == null)
+        {
+            Debug.LogError("Tried to set stats on null character card");
+            return;
+        }
         charCard.SetNESW(n, e, s, w);
     }
 
@@ -215,6 +220,15 @@ public abstract class Game : MonoBehaviour {
         if (stats.Length != 4) throw new System.ArgumentException("Stats array length must be 4");
 
         SetStats(charCard, stats[0], stats[1], stats[2], stats[3]);
+    }
+
+    public void AddToStats(CharacterCard charCard, int nMod, int eMod, int sMod, int wMod)
+    {
+        SetStats(charCard,
+            charCard.N + nMod,
+            charCard.E + eMod,
+            charCard.S + sMod,
+            charCard.W + wMod);
     }
 
     public void SwapStats(CharacterCard a, CharacterCard b, bool swapN = true, bool swapE = true, bool swapS = true, bool swapW = true)

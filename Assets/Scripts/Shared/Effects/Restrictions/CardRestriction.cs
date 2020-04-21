@@ -15,6 +15,7 @@ public class CardRestriction
         IsSpell = 4,
         IsAugment = 5,
         SubtypesExclude = 6,
+        Friendly = 7,
         //location
         Hand = 100,
         Discard = 101,
@@ -42,7 +43,7 @@ public class CardRestriction
     } //to add later: N/E/S/W >=
 
     //because JsonUtility will fill in all values with defaults if not present
-    public CardRestrictions[] restrictionsToCheck;
+    public CardRestrictions[] restrictionsToCheck = new CardRestrictions[0];
 
     public int costsLessThan;
     public string nameIs;
