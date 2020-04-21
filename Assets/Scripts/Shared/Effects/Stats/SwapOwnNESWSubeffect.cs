@@ -16,6 +16,7 @@ public class SwapOwnNESWSubeffect : Subeffect
         int[] newStats = { charTarget.N, charTarget.E, charTarget.S, charTarget.W };
         (newStats[Stat1], newStats[Stat2]) = (newStats[Stat2], newStats[Stat1]);
         ServerGame.SetStats(charTarget, newStats);
+
         Effect.ResolveNextSubeffect();
     }
 }
