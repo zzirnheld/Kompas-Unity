@@ -210,6 +210,13 @@ public abstract class Game : MonoBehaviour {
         charCard.SetNESW(n, e, s, w);
     }
 
+    public void SetStats(CharacterCard charCard, int[] stats)
+    {
+        if (stats.Length != 4) throw new System.ArgumentException("Stats array length must be 4");
+
+        SetStats(charCard, stats[0], stats[1], stats[2], stats[3]);
+    }
+
     public void SwapStats(CharacterCard a, CharacterCard b, bool swapN = true, bool swapE = true, bool swapS = true, bool swapW = true)
     {
         int[] aNewStats = new int[4];

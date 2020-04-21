@@ -104,7 +104,7 @@ public class CharacterCard : Card {
         base.SetInfo(serializedCard, game, owner);
     }
     /// <summary>
-    /// For convenience of not having to type out four lines
+    /// Should only be called by Game, which does any triggering or notifying as necessary
     /// </summary>
     public void SetNESW(int n, int e, int s, int w)
     {

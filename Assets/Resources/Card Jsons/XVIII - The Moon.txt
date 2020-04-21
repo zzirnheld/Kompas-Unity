@@ -1,0 +1,37 @@
+{
+	"cardType":67,
+	"cardName":"XVI - The Moon",
+	"effText":"When you draw, I can swap the EW of a character.",
+	"effects":[
+		{
+			"triggerCondition":101,
+			"trigger":
+			"{
+				\"Optional\":true,
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[]
+				}
+			}",
+			"subeffectTypes":[0,107],
+			"subeffects":[
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[3]
+					}
+				}",
+				"{
+					\"Stat1\":2,
+					\"Stat2\":4
+				}"
+
+			]
+		}
+	],
+	"n":2,
+	"e":8,
+	"s":9,
+	"w":9,
+	"subtypes":["Tarocco","Mage"],
+	"subtypeText":"Tarocco Mage"
+}

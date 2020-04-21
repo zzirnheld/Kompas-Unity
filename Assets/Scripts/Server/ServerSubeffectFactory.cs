@@ -57,6 +57,9 @@ public class ServerSubeffectFactory : ISubeffectFactory
             case SubeffectType.Dispel:
                 toReturn = JsonUtility.FromJson<DispelSubeffect>(subeffJson);
                 break;
+            case SubeffectType.SwapOwnNESW:
+                toReturn = JsonUtility.FromJson<SwapOwnNESWSubeffect>(subeffJson);
+                break;
             case SubeffectType.SetXByBoardCount:
                 toReturn = JsonUtility.FromJson<SetXBoardRestrictionSubeffect>(subeffJson);
                 break;

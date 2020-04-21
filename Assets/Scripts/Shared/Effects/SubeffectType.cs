@@ -23,9 +23,10 @@ public enum SubeffectType
     AddPips = 101,
     PayPips = 102,
     XChangeNESW = 103,
-    SwapNESW = 104,
+    SwapNESW = 104, //swaps two character's n, e, s, or w
     Negate = 105,
     Dispel = 106,
+    SwapOwnNESW = 107, //swaps one character's n with e, etc.
     PayPipsByTargetCost = 150,
 
     //effect x
