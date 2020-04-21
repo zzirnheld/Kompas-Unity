@@ -1,0 +1,33 @@
+{
+	"cardType":67,
+	"cardName":"XX - Judgement",
+	"effText":"Once each turn, when you draw X, I can kill an S ≤ X character.",
+	"effects":[
+		{
+			"triggerCondition":101,
+			"trigger":
+			"{
+				\"Optional\":true,
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[]
+				}
+			}",
+			"subeffectTypes":[0,301],
+			"subeffects":[
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[3,202]
+					}
+				}",
+				"{}"
+			]
+		}
+	],
+	"n":4,
+	"e":9,
+	"s":12,
+	"w":10,
+	"subtypes":["Tarocco","Mage"],
+	"subtypeText":"Tarocco Mage"
+}

@@ -1,6 +1,6 @@
 {
 	"cardType":67,
-	"cardName":"XVI - The Sun",
+	"cardName":"XIX - The Sun",
 	"effText":"When you draw, I can give a character -1E and another +1E.",
 	"effects":[
 		{
