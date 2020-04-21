@@ -1,7 +1,7 @@
 {
 	"cardType":67,
-	"cardName":"XII - The Hanged Man",
-	"effText":"When you draw X, I can give myself and a Summoned character -XE.",
+	"cardName":"XVI - The Tower",
+	"effText":"When an enemy deck-rehands a card, you can draw 1.",
 	"effects":[
 		{
 			"triggerCondition":101,
@@ -12,8 +12,9 @@
 					\"triggerRestrictions\":[]
 				}
 			}",
-			"subeffectTypes":[5,0,103,103],
+			"subeffectTypes":[5,301,0,103,306],
 			"subeffects":[
+				"{}",
 				"{}",
 				"{
 					\"boardRestriction\":
@@ -24,19 +25,15 @@
 				}",
 				"{
 					\"eMult\":-1,
-					\"TargetIndex\":0
 				}",
-				"{
-					\"eMult\":-1,
-					\"TargetIndex\":1
-				}"
+				"{}"
 			]
 		}
 	],
-	"n":1,
-	"e":3,
-	"s":3,
-	"w":4,
-	"subtypes":["Tarocco","Mage"],
-	"subtypeText":"Tarocco Mage"
+	"n":0,
+	"e":7,
+	"s":5,
+	"w":5,
+	"subtypes":["Tarocco"],
+	"subtypeText":"Tarocco"
 }
