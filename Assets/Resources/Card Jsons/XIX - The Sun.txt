@@ -1,0 +1,45 @@
+{
+	"cardType":67,
+	"cardName":"XVI - The Sun",
+	"effText":"When you draw, I can give a character -1E and another +1E.",
+	"effects":[
+		{
+			"triggerCondition":101,
+			"trigger":
+			"{
+				\"Optional\":true,
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[]
+				}
+			}",
+			"subeffectTypes":[0,100,0,100],
+			"subeffects":[
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[3]
+					}
+				}",
+				"{
+					\"eChange\":-1
+				}",
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[3,600]
+					}
+				}",
+				"{
+					\"eChange\":1
+				}"
+
+			]
+		}
+	],
+	"n":2,
+	"e":9,
+	"s":9,
+	"w":9,
+	"subtypes":["Tarocco","Mage"],
+	"subtypeText":"Tarocco Mage"
+}
