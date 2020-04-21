@@ -1,0 +1,17 @@
+{
+	"cardType":67,
+	"cardName":"XVI - The Tower",
+	"effText":"Once each turn, you can draw 1.",
+	"effects":[
+		{
+			"subeffectTypes":[305],
+			"subeffects":["{}"]
+		}
+	],
+	"n":2,
+	"e":5,
+	"s":5,
+	"w":6,
+	"subtypes":["Tarocco","Mage"],
+	"subtypeText":"Tarocco Mage"
+}

@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"XVI - The Tower",
-	"effText":"When an enemy deck-rehands a card, you can draw 1.",
+	"effText":"When you draw X, you can tribute me, give a Summoned character -XE, and draw X.",
 	"effects":[
 		{
 			"triggerCondition":101,
