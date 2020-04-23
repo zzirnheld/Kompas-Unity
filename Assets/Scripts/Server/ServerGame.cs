@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Sockets;
 using UnityEngine;
 
@@ -25,12 +26,6 @@ public class ServerGame : Game {
     private void Start()
     {
         mainGame = this;
-        stack = new List<IStackable>();
-        triggerMap = new Dictionary<TriggerCondition, List<Trigger>>();
-        foreach(TriggerCondition c in System.Enum.GetValues(typeof(TriggerCondition)))
-        {
-            triggerMap.Add(c, new List<Trigger>());
-        }
 
         SubeffectFactory = new ServerSubeffectFactory();
         OptionalTriggersToAsk = new Stack<(Trigger, int?, Card, IStackable)>();
@@ -512,6 +507,19 @@ public class ServerGame : Game {
     #region triggers
     public void Trigger(TriggerCondition condition, Card triggerer, IStackable stackTrigger, int? x)
     {
+        List<TemporaryEffect> toRemove = new List<TemporaryEffect>();
+        foreach(TemporaryEffect t in temporaryEffectMap[condition])
+        {
+            if(t.EndIfApplicable(triggerer, stackTrigger))
+            {
+                toRemove.Add(t);
+            }
+        }
+        foreach(var t in toRemove)
+        {
+            temporaryEffectMap[condition].Remove(t);
+        }
+
         Debug.Log($"Attempting to trigger {condition}, with triggerer {triggerer?.CardName}, triggered by a null stacktrigger? {stackTrigger == null}, x={x}");
         foreach (Trigger t in triggerMap[condition])
         {
@@ -531,18 +539,6 @@ public class ServerGame : Game {
         {
             OptionalTriggersToAsk.Push((trigger, x, c, s));
         }
-    }
-
-    public void RegisterTrigger(TriggerCondition condition, Trigger trigger)
-    {
-        Debug.Log($"Registering a new trigger from card {trigger.effToTrigger.thisCard.CardName} to condition {condition}");
-        List<Trigger> triggers = triggerMap[condition];
-        if (triggers == null)
-        {
-            triggers = new List<Trigger>();
-            triggerMap.Add(condition, triggers);
-        }
-        triggers.Add(trigger);
     }
     #endregion triggers
 }

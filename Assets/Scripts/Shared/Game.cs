@@ -38,6 +38,7 @@ public abstract class Game : MonoBehaviour {
 
     //trigger map
     protected Dictionary<TriggerCondition, List<Trigger>> triggerMap;
+    protected Dictionary<TriggerCondition, List<TemporaryEffect>> temporaryEffectMap;
 
     protected Effect currEffect;
     public Effect CurrEffect
@@ -68,6 +69,18 @@ public abstract class Game : MonoBehaviour {
         }
 
         stackIndex = -1;
+        stack = new List<IStackable>();
+        triggerMap = new Dictionary<TriggerCondition, List<Trigger>>();
+        foreach (TriggerCondition c in System.Enum.GetValues(typeof(TriggerCondition)))
+        {
+            triggerMap.Add(c, new List<Trigger>());
+        }
+
+        temporaryEffectMap = new Dictionary<TriggerCondition, List<TemporaryEffect>>();
+        foreach (TriggerCondition c in System.Enum.GetValues(typeof(TriggerCondition)))
+        {
+            temporaryEffectMap.Add(c, new List<TemporaryEffect>());
+        }
     }
 
     public Card GetCardFromID(int id)
@@ -250,4 +263,25 @@ public abstract class Game : MonoBehaviour {
         Negate(spell);
         Discard(spell);
     }
+
+    #region triggers
+    public void RegisterTrigger(TriggerCondition condition, Trigger trigger)
+    {
+        Debug.Log($"Registering a new trigger from card {trigger.effToTrigger.thisCard.CardName} to condition {condition}");
+        List<Trigger> triggers = triggerMap[condition];
+        if (triggers == null)
+        {
+            triggers = new List<Trigger>();
+            triggerMap.Add(condition, triggers);
+        }
+        triggers.Add(trigger);
+    }
+
+    public void RegisterTemporaryEffect(TriggerCondition condition, TemporaryEffect temporaryEffect)
+    {
+        Debug.Log($"Registering a new temporary effect to condition {condition}");
+        List<TemporaryEffect> temporaryEffs = temporaryEffectMap[condition];
+        temporaryEffs.Add(temporaryEffect);
+    }
+    #endregion
 }
