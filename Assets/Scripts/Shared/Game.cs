@@ -38,7 +38,7 @@ public abstract class Game : MonoBehaviour {
 
     //trigger map
     protected Dictionary<TriggerCondition, List<Trigger>> triggerMap;
-    protected Dictionary<TriggerCondition, List<TemporaryEffect>> temporaryEffectMap;
+    protected Dictionary<TriggerCondition, List<HangingEffect>> hangingEffectMap;
 
     protected Effect currEffect;
     public Effect CurrEffect
@@ -76,10 +76,10 @@ public abstract class Game : MonoBehaviour {
             triggerMap.Add(c, new List<Trigger>());
         }
 
-        temporaryEffectMap = new Dictionary<TriggerCondition, List<TemporaryEffect>>();
+        hangingEffectMap = new Dictionary<TriggerCondition, List<HangingEffect>>();
         foreach (TriggerCondition c in System.Enum.GetValues(typeof(TriggerCondition)))
         {
-            temporaryEffectMap.Add(c, new List<TemporaryEffect>());
+            hangingEffectMap.Add(c, new List<HangingEffect>());
         }
     }
 
@@ -277,11 +277,11 @@ public abstract class Game : MonoBehaviour {
         triggers.Add(trigger);
     }
 
-    public void RegisterTemporaryEffect(TriggerCondition condition, TemporaryEffect temporaryEffect)
+    public void RegisterHangingEffect(TriggerCondition condition, HangingEffect hangingEff)
     {
-        Debug.Log($"Registering a new temporary effect to condition {condition}");
-        List<TemporaryEffect> temporaryEffs = temporaryEffectMap[condition];
-        temporaryEffs.Add(temporaryEffect);
+        Debug.Log($"Registering a new hanging effect to condition {condition}");
+        List<HangingEffect> hangingEffs = hangingEffectMap[condition];
+        hangingEffs.Add(hangingEff);
     }
     #endregion
 }

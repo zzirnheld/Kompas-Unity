@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TemporaryNESWBuff : TemporaryEffect
+public class TemporaryNESWBuff : HangingEffect
 {
     private readonly CharacterCard buffRecipient;
     private readonly int nBuff = 0;
@@ -22,5 +22,5 @@ public class TemporaryNESWBuff : TemporaryEffect
         buffRecipient.game.AddToStats(buffRecipient, nBuff, eBuff, sBuff, wBuff);
     }
 
-    protected override void Undo() => buffRecipient.game.AddToStats(buffRecipient, -1 * nBuff, -1 * eBuff, -1 * sBuff, -1 * wBuff);
+    protected override void Resolve() => buffRecipient.game.AddToStats(buffRecipient, -1 * nBuff, -1 * eBuff, -1 * sBuff, -1 * wBuff);
 }

@@ -62,5 +62,9 @@ public enum SubeffectType
     ChooseEffectOption = 406,
     EndEffect = 407,
     CountXLoop = 408,
-    ConditionalEndEffect = 409
+    ConditionalEndEffect = 409,
+
+    //hanging effects
+    DelaySubeffect = 500,
+    HangingNESWBuff = 501
 }

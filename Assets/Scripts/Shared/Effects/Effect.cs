@@ -115,7 +115,8 @@ public class Effect : IStackable
     public void StartResolution()
     {
         thisCard.game.CurrEffect = this;
-        ResolveSubeffect(0);
+        if (Negated) EffectImpossible();
+        else ResolveSubeffect(0);
     }
 
     public void ResolveNextSubeffect()
@@ -125,7 +126,7 @@ public class Effect : IStackable
 
     public void ResolveSubeffect(int index)
     {
-        if(index >= subeffects.Length || Negated)
+        if(index >= subeffects.Length)
         {
             FinishResolution();
             return;

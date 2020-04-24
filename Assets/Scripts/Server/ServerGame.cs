@@ -507,8 +507,8 @@ public class ServerGame : Game {
     #region triggers
     public void Trigger(TriggerCondition condition, Card triggerer, IStackable stackTrigger, int? x)
     {
-        List<TemporaryEffect> toRemove = new List<TemporaryEffect>();
-        foreach(TemporaryEffect t in temporaryEffectMap[condition])
+        List<HangingEffect> toRemove = new List<HangingEffect>();
+        foreach(HangingEffect t in hangingEffectMap[condition])
         {
             if(t.EndIfApplicable(triggerer, stackTrigger))
             {
@@ -517,7 +517,7 @@ public class ServerGame : Game {
         }
         foreach(var t in toRemove)
         {
-            temporaryEffectMap[condition].Remove(t);
+            hangingEffectMap[condition].Remove(t);
         }
 
         Debug.Log($"Attempting to trigger {condition}, with triggerer {triggerer?.CardName}, triggered by a null stacktrigger? {stackTrigger == null}, x={x}");
