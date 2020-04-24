@@ -9,7 +9,7 @@ public class SpellCard : Card
     public enum SpellType { Simple, Enchant, Augment, Terraform, Delayed };
 
     private int c;
-    private SpellType spellSubtype;
+    private SpellType spellType;
     private string subtext;
     private bool fast;
 
@@ -23,7 +23,7 @@ public class SpellCard : Card
         get { return subtext; }
         set { subtext = value; }
     }
-    public SpellType SpellSubtype { get { return spellSubtype; } }
+    public SpellType SpellSubtype { get { return spellType; } }
 
     public override int Cost { get { return C; } }
 
@@ -34,9 +34,9 @@ public class SpellCard : Card
         {
             cardName = CardName,
             effText = EffText,
-            subtype = spellSubtype,
+            spellType = spellType,
             subtext = subtext,
-            d = c,
+            c = c,
 
             location = location,
             owner = ControllerIndex,
@@ -52,9 +52,9 @@ public class SpellCard : Card
     {
         if (!(serializedCard is SerializableSpellCard serializedSpell)) return;
 
-        c = serializedSpell.d;
+        c = serializedSpell.c;
         subtext = serializedSpell.subtext;
-        spellSubtype = serializedSpell.subtype;
+        spellType = serializedSpell.spellType;
         fast = serializedSpell.fast;
 
         base.SetInfo(serializedCard, game, owner);

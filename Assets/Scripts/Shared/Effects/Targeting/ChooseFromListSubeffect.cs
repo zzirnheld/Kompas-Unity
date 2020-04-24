@@ -33,6 +33,7 @@ public class ChooseFromListSubeffect : Subeffect
     {
         base.Initialize(eff, subeffIndex);
         CardRestriction.Subeffect = this;
+        ListRestriction.Subeffect = this;
     }
 
     public override void Resolve()

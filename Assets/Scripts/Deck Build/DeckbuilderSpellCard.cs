@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class DeckbuilderSpellCard : DeckbuilderCard
 {
-    public int d;
-    public SpellCard.SpellType subtype;
+    public int c;
+    public SpellCard.SpellType spellType;
     public bool fast;
     public string subtext;
 
     public string StatsString
     {
-        get { return $"D: {d}  Subtext: {subtext}"; }
+        get { return $"D: {c}  Subtext: {subtext}"; }
     }
 
     public void SetInfo(CardSearchController searchCtrl, SerializableSpellCard spellCard, bool inDeck)
     {
         base.SetInfo(searchCtrl, spellCard, inDeck);
-        d = spellCard.d;
-        subtype = spellCard.subtype;
+        c = spellCard.c;
+        spellType = spellCard.spellType;
         fast = spellCard.fast;
         subtext = spellCard.subtext;
     }

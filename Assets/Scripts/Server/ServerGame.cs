@@ -123,7 +123,7 @@ public class ServerGame : Game {
         foreach(string name in deck)
         {
             Card card = player.deckCtrl.AddCard(name, cardCount);
-            Debug.Log($"For {name}, card is null? {card == null}. card name is {card?.CardName}");
+            Debug.Log($"For adding avatar {name}, card is null? {card == null}. card name is {card?.CardName}");
             cardCount++;
             player.ServerNotifier.NotifyAddToDeck(card);
         }

@@ -14,6 +14,7 @@ public class SerializableCard
     public string effText;
     public string subtypeText;
     public string[] subtypes;
+    public SerializableEffect[] effects;
 
     //in game values
     public CardLocation location;
@@ -21,8 +22,6 @@ public class SerializableCard
     public int BoardX;
     public int BoardY;
     public int index;
-
-    public SerializableEffect[] effects;
 
     /// <summary>
     /// Flip board position

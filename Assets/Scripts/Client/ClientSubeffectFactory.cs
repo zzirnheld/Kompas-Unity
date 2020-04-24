@@ -6,6 +6,7 @@ public class ClientSubeffectFactory : ISubeffectFactory
 {
     public Subeffect FromJson(SubeffectType subeffectType, string json, Effect parent, int subeffIndex)
     {
+        Debug.Log($"Creating subeffect from json {json}");
         Subeffect toReturn;
 
         switch (subeffectType)

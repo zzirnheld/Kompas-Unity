@@ -6,8 +6,8 @@ using UnityEngine;
 [Serializable]
 public class SerializableSpellCard : SerializableCard {
 
-    public int d;
-    public SpellCard.SpellType subtype;
+    public int c;
+    public SpellCard.SpellType spellType;
     public bool fast;
     public string subtext;
 
