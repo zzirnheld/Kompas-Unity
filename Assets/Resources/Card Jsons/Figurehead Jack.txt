@@ -1,0 +1,23 @@
+{
+	"cardType":83,
+	"cardName":"Figurehead Jack",
+	"effText":"Draw 1.",
+	"effects":[
+		{
+			"triggerCondition":401,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
+				}
+			}",
+			"subeffectTypes":[305],
+			"subeffects":["{}"]	
+		}
+	],
+	"fast":true,
+	"c":1,
+	"spellType":0,
+	"subtypes":["Tarocco","Simple"],
+	"subtypeText":"Tarocco Simple"
+}

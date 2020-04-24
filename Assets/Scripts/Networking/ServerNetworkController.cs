@@ -180,8 +180,6 @@ namespace KompasNetworking
             if (sGame.ValidBoardPlay(toPlay, x, y))
             {
                 sGame.Play(toPlay, x, y, Player);
-                //trigger effects
-                sGame.Trigger(TriggerCondition.Play, toPlay, null, null);
                 sGame.CheckForResponse();
             }
             else

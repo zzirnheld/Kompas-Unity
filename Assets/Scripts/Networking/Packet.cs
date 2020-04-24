@@ -87,6 +87,7 @@ namespace KompasNetworking
             id = (id + 1) % 1000;
 
             normalArgs = new int[4];
+            specialArgs = new int[0];
         }
 
         public Packet(Command command, Card source, BoardTargetSubeffect boardTargetSubeffect) : this(command, source)

@@ -103,7 +103,8 @@ public class Trigger
     /// <param name="x">If the action that triggered this has a value of x, it goes here. Otherwise, null.</param>
     public virtual void TriggerIfValid(Card triggerer, IStackable stackTrigger, int? x, bool optionalConfirmed = false)
     {
-        Debug.Log($"Is trigger valid? {CheckTriggerRestrictions(triggerer, stackTrigger, x)}");
+        Debug.Log($"Is trigger valid for effect of {effToTrigger.thisCard.CardName} with id {effToTrigger.thisCard.ID}? " +
+            $"{CheckTriggerRestrictions(triggerer, stackTrigger, x)}");
         if (CheckTriggerRestrictions(triggerer, stackTrigger, x))
         {
             //if the trigger is optional and this method isn't being called because the player confirmed the trigger,

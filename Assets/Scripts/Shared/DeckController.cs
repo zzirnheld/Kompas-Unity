@@ -108,19 +108,6 @@ public class DeckController : MonoBehaviour
         game.cards.Add(id, newCard);
         //Game.mainGame.cards[id] = newCard;
         newCard.ChangeController(Owner);
-
-        if (serverGame != null)
-        {
-            foreach (Effect eff in newCard.Effects)
-            {
-                if (eff.Trigger != null)
-                {
-                    Debug.Log("registering trigger for " + eff.Trigger.triggerCondition);
-                    serverGame.RegisterTrigger(eff.Trigger.triggerCondition, eff.Trigger);
-                }
-                else Debug.Log("trigger is null");
-            }
-        }
         return newCard;
     }
 
