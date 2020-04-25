@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class CardTargetSubeffect : Subeffect
 {
-    public CardRestriction cardRestriction;
+    public CardRestriction cardRestriction = new CardRestriction();
 
     public override void Initialize(Effect eff, int subeffIndex)
     {

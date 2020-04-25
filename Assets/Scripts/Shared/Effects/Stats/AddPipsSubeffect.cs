@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class AddPipsSubeffect : Subeffect
 {
-    public int xMultiplier;
-    public int xDivisor;
-    public int modifier;
-    public int playerOffset; //0 for controller, 1 for controller's enemy
+    public int xMultiplier = 0;
+    public int xDivisor = 1;
+    public int modifier = 0;
+    public int playerOffset = 0; //0 for controller, 1 for controller's enemy
 
     public override void Resolve()
     {

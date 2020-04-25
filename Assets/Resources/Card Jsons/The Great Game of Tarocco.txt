@@ -16,7 +16,7 @@
 				"{
 					\"boardRestriction\":
 					{
-						\"restrictionsToCheck\":[3,7],
+						\"restrictionsToCheck\":[2,7,103],
 						\"subtypesInclude\":[\"Tarocco\"]
 					}
 				}",
