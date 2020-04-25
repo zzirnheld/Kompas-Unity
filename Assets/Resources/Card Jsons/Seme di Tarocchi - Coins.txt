@@ -1,0 +1,27 @@
+{
+	"cardType":65,
+	"cardName":"Seme di Tarrochi - Coins",
+	"effText":"When you draw, I give this character +1N.",
+	"effects":[
+		{
+			"triggerCondition":101,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[]
+				}
+			}",
+			"subeffectTypes":[7,100],
+			"subeffects":[
+				"{}",
+				"{
+					\"nChange\":1
+				}"
+			]
+		}
+	],
+	"fast":false,
+	"a":2,
+	"subtypes":["Tarocco"],
+	"subtypeText":"Tarocco"
+}

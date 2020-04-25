@@ -343,19 +343,19 @@ public abstract class Card : CardBase {
     {
         if (augment == null) return;
         augments.Add(augment);
-        augment.ThisCard = this;
+        augment.AugmentedCard = this;
     }
     public bool HasAugment(AugmentCard augment) { return augments.Contains(augment); }
     public void RemoveAugment(AugmentCard augment)
     {
         augments.Remove(augment);
-        augment.ThisCard = null;
+        augment.AugmentedCard = null;
     }
     public void RemoveAugmentAt(int index)
     {
         AugmentCard aug = augments[index];
         augments.RemoveAt(index);
-        aug.ThisCard = null;
+        aug.AugmentedCard = null;
     }
     #endregion augments
 

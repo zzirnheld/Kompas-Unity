@@ -30,6 +30,9 @@ public class ServerSubeffectFactory : ISubeffectFactory
             case SubeffectType.TargetThisSpace:
                 toReturn = JsonUtility.FromJson<TargetThisSpaceSubeffect>(subeffJson);
                 break;
+            case SubeffectType.TargetAugmentedCard:
+                toReturn = JsonUtility.FromJson<TargetAugmentedCardSubeffect>(subeffJson);
+                break;
             case SubeffectType.ChooseFromList:
                 toReturn = JsonUtility.FromJson<ChooseFromListSubeffect>(subeffJson);
                 break;

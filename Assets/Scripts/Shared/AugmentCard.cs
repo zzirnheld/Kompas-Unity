@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class AugmentCard : Card
 {
 
-    private Card thisCard;
+    private Card augmentedCard;
 
     private int a;
     private string subtext;
@@ -19,12 +19,13 @@ public class AugmentCard : Card
         set { a = value; }
     }
 
-    public Card ThisCard
+    public Card AugmentedCard
     {
-        get { return thisCard; }
+        get { return augmentedCard; }
         set {
-            thisCard = value;
-            MoveTo(thisCard.BoardX, thisCard.BoardY);
+            augmentedCard = value;
+            if(boardX != augmentedCard.BoardX || boardY != augmentedCard.BoardY)
+                MoveTo(augmentedCard.BoardX, augmentedCard.BoardY);
         }
     }
 
@@ -38,13 +39,13 @@ public class AugmentCard : Card
     //get data
     public SerializableAugCard GetSerializableVersion()
     {
-        int index = thisCard.Augments.IndexOf(this);
+        int index = augmentedCard.Augments.IndexOf(this);
         SerializableAugCard serializableSpell = new SerializableAugCard
         {
             cardName = CardName,
             effText = EffText,
             subtext = subtext,
-            d = a,
+            a = a,
             augSubtypes = augSubtypes,
 
             location = location,
@@ -63,7 +64,7 @@ public class AugmentCard : Card
         if (!(serializedCard is SerializableAugCard)) return;
         SerializableAugCard serializedAug = serializedCard as SerializableAugCard;
 
-        a = serializedAug.d;
+        a = serializedAug.a;
         subtext = serializedAug.subtext;
         augSubtypes = serializedAug.augSubtypes;
         fast = serializedAug.fast;
@@ -89,6 +90,6 @@ public class AugmentCard : Card
 
     public void Detach()
     {
-        ThisCard = null;
+        AugmentedCard = null;
     }
 }

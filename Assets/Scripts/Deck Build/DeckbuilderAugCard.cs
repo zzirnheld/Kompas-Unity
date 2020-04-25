@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class DeckbuilderAugCard : DeckbuilderCard
 {
-    public int d;
+    public int a;
     public bool fast;
     public string subtext;
     public string[] augSubtypes;
 
     public string StatsString
     {
-        get { return $"A: {d}  Subtext: {subtext}"; }
+        get { return $"A: {a}  Subtext: {subtext}"; }
     }
 
     public void SetInfo(CardSearchController searchCtrl, SerializableAugCard augCard, bool inDeck)
     {
         base.SetInfo(searchCtrl, augCard, inDeck);
-        d = augCard.d;
+        a = augCard.a;
         augSubtypes = augCard.augSubtypes;
         fast = augCard.fast;
         subtext = augCard.subtext;

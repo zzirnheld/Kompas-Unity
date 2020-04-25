@@ -12,7 +12,7 @@ public enum SubeffectType
     SpaceTarget = 4,
     TargetThis = 5,
     TargetThisSpace = 6,
-    //TargetAugmentedCard = 7,
+    TargetAugmentedCard = 7,
     ChooseFromList = 8,
     ChooseFromListSaveRest = 9,
     DeleteTargetFromList = 10,
