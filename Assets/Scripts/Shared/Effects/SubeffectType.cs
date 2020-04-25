@@ -67,5 +67,6 @@ public enum SubeffectType
 
     //hanging effects
     DelaySubeffect = 500,
-    HangingNESWBuff = 501
+    HangingNESWBuff = 501,
+    HangingNESWBuffAll = 502
 }

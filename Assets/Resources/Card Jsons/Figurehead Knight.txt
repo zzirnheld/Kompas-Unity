@@ -1,0 +1,29 @@
+{
+	"cardType":83,
+	"cardName":"Figurehead Knight",
+	"effText":"When you draw, give each friendly character +1EW for the turn.",
+	"effects":[
+		{
+			"triggerCondition":101,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[]
+				}
+			}",
+			"subeffectTypes":[502],
+			"subeffects":[
+				"{
+					\"EBuff\":1,
+					\"WBuff\":1,
+					\"EndCondition\":0
+				}"
+			]
+		}
+	],
+	"fast":false,
+	"c":3,
+	"spellType":"Enchant",
+	"subtypes":["Tarocco","Enchant"],
+	"subtypeText":"Tarocco Enchant"
+}

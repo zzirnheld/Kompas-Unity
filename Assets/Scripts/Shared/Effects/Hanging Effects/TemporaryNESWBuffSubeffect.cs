@@ -9,7 +9,7 @@ public class TemporaryNESWBuffSubeffect : Subeffect
     public int SBuff;
     public int WBuff;
 
-    public TriggerRestriction TriggerRestriction;
+    public TriggerRestriction TriggerRestriction = new TriggerRestriction();
     public TriggerCondition EndCondition;
 
     public override void Resolve()

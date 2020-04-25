@@ -156,6 +156,9 @@ public class ServerSubeffectFactory : ISubeffectFactory
             case SubeffectType.DelaySubeffect:
                 toReturn = JsonUtility.FromJson<DelaySubeffect>(subeffJson);
                 break;
+            case SubeffectType.HangingNESWBuffAll:
+                toReturn = JsonUtility.FromJson<TemporaryNESWBuffAllSubeffect>(subeffJson);
+                break;
             default:
                 Debug.LogError($"Unrecognized effect type enum {seType} for loading effect in effect constructor");
                 return null;

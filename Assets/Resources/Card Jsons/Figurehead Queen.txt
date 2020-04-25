@@ -58,7 +58,7 @@
 		}
 	],
 	"fast":false,
-	"c":1,
+	"c":5,
 	"spellType":"Delayed",
 	"subtypes":["Tarocco","Delayed"],
 	"subtypeText":"Tarocco Delayed"
