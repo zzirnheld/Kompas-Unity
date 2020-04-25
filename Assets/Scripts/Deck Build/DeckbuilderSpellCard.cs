@@ -5,7 +5,7 @@ using UnityEngine;
 public class DeckbuilderSpellCard : DeckbuilderCard
 {
     public int c;
-    public SpellCard.SpellType spellType;
+    public string spellType;
     public bool fast;
     public string subtext;
 

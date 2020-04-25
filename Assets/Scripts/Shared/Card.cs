@@ -120,6 +120,9 @@ public abstract class Card : CardBase {
             }
         }
     }
+    
+    public ServerPlayer ServerController { get => controller as ServerPlayer; }
+    public ClientPlayer ClientController { get => controller as ClientPlayer; }
 
     //unity methods
     private void Awake()

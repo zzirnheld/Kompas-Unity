@@ -229,7 +229,7 @@ public class BoardController : MonoBehaviour
     {
         foreach(Card c in cards)
         {
-            if(c != null && c is SpellCard spellC && spellC.SpellSubtype == SpellCard.SpellType.Simple)
+            if(c != null && c is SpellCard spellC && spellC.SpellSubtype == SpellCard.SimpleSubtype)
             {
                 game.Discard(c);
             }

@@ -5,25 +5,13 @@ using UnityEngine.EventSystems;
 
 public class SpellCard : Card
 {
+    public const string SimpleSubtype = "Simple";
+    public const string DelayedSubtype = "Delayed";
 
-    public enum SpellType { Simple, Enchant, Augment, Terraform, Delayed };
-
-    private int c;
-    private SpellType spellType;
-    private string subtext;
-    private bool fast;
-
-    public int C
-    {
-        get { return c; }
-        set { c = value; }
-    }
-    public string Subtext
-    {
-        get { return subtext; }
-        set { subtext = value; }
-    }
-    public SpellType SpellSubtype { get { return spellType; } }
+    public bool Fast { get; private set; }
+    public int C { get; set; }
+    public string Subtext { get; private set; }
+    public string SpellSubtype { get; private set; }
 
     public override int Cost { get { return C; } }
 
@@ -34,9 +22,9 @@ public class SpellCard : Card
         {
             cardName = CardName,
             effText = EffText,
-            spellType = spellType,
-            subtext = subtext,
-            c = c,
+            spellType = SpellSubtype,
+            subtext = Subtext,
+            c = C,
 
             location = location,
             owner = ControllerIndex,
@@ -52,10 +40,10 @@ public class SpellCard : Card
     {
         if (!(serializedCard is SerializableSpellCard serializedSpell)) return;
 
-        c = serializedSpell.c;
-        subtext = serializedSpell.subtext;
-        spellType = serializedSpell.spellType;
-        fast = serializedSpell.fast;
+        C = serializedSpell.c;
+        Subtext = serializedSpell.subtext;
+        SpellSubtype = serializedSpell.spellType;
+        Fast = serializedSpell.fast;
 
         base.SetInfo(serializedCard, game, owner);
     }

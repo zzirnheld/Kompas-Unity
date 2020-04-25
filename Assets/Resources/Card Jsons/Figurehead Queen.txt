@@ -1,0 +1,65 @@
+{
+	"cardType":83,
+	"cardName":"Figurehead Queen",
+	"effText":"When you draw, give me +1C. Delay 1 turn. If my C ≥ 10, deck-summon a Tarocco.",
+	"effects":[
+		{
+			"triggerCondition":101,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[]
+				}
+			}",
+			"subeffectTypes":[5,108],
+			"subeffects":[
+				"{}",
+				"{
+					\"XModifier\":1
+				}"
+			]
+		},
+		{
+			"triggerCondition":401,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
+				}
+			}",
+			"subeffectTypes":[500,5,254,409,1,4,300],
+			"subeffects":[
+				"{
+					\"NumTimesToDelay\":0,
+					\"IndexToResume\":1,
+					\"TriggerCondition\":0
+				}",
+				"{}",
+				"{}",
+				"{
+					\"Condition\":\"X<C\",
+					\"C\":10
+				}",
+				"{
+					\"cardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,3],
+						\"subtypesInclude\":[\"Tarocco\"]
+					}
+				}",
+				"{
+					\"spaceRestriction\":
+					{
+						\"restrictionsToCheck\":[0]
+					}
+				}",
+				"{}"
+			]
+		}
+	],
+	"fast":false,
+	"c":1,
+	"spellType":"Delayed",
+	"subtypes":["Tarocco","Delayed"],
+	"subtypeText":"Tarocco Delayed"
+}

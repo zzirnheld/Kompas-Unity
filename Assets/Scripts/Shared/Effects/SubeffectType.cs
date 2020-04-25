@@ -27,6 +27,7 @@ public enum SubeffectType
     Negate = 105,
     Dispel = 106,
     SwapOwnNESW = 107, //swaps one character's n with e, etc.
+    ChangeSpellC = 108,
     ChangeAllNESW = 110,
     PayPipsByTargetCost = 150,
 
@@ -38,7 +39,7 @@ public enum SubeffectType
     //SetXByTargetE = 251,
     SetXByTargetS = 252,
     //SetXByTargetW = 253,
-    //SetXByTargetCost = 254,
+    SetXByTargetCost = 254,
     PlayerChooseX = 299,
 
     //move cards between states

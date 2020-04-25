@@ -52,12 +52,6 @@ public class Attack : IStackable
             attacker.E - defenderDmg,
             attacker.S,
             attacker.W);
-        //check for death
-        serverGame.CheckForDeath(attacker, this);
-        serverGame.CheckForDeath(defender, this);
-        //notify the players that cards' nesw have changed
-        (attacker.Controller as ServerPlayer).ServerNotifier.NotifySetNESW(defender);
-        (defender.Controller as ServerPlayer).ServerNotifier.NotifySetNESW(attacker);
         //trigger effects based on combat damage
         serverGame.Trigger(TriggerCondition.TakeCombatDamage, defender, this, attackerDmg);
         serverGame.Trigger(TriggerCondition.TakeCombatDamage, attacker, this, defenderDmg);

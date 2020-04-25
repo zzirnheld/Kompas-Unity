@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DelaySubeffect : Subeffect
 {
-    public int NumTimesToDelay;
+    public int NumTimesToDelay = 0;
     public int IndexToResume;
     public TriggerCondition TriggerCondition;
     public TriggerRestriction TriggerRestriction = new TriggerRestriction();

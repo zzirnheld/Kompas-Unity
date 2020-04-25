@@ -246,16 +246,28 @@ public class ServerGame : Game {
     }
     #endregion move card between areas
 
+    public override void SetStats(SpellCard spellCard, int c)
+    {
+        spellCard.ServerController.ServerNotifier.NotifySetSpellStats(spellCard, c);
+        base.SetStats(spellCard, c);
+    }
+
     public override void SetStats(CharacterCard charCard, int n, int e, int s, int w)
     {
+        ServerPlayers[charCard.ControllerIndex].ServerNotifier.NotifySetNESW(charCard, n, e, s, w);
         base.SetStats(charCard, n, e, s, w);
-        ServerPlayers[charCard.ControllerIndex].ServerNotifier.NotifySetNESW(charCard);
+        if (charCard.E <= 0)
+        {
+            Discard(charCard);
+            //don't call check for response on stack because anything that causes things to die,
+            //attacks or effects, will call check for response once it's done resolving.
+        }
     }
 
     public override void Negate(Card c)
     {
-        base.Negate(c);
         ServerPlayers[c.ControllerIndex].ServerNotifier.NotifyNegate(c);
+        base.Negate(c);
     }
 
     public Card Draw(int player, IStackable stackSrc = null)
@@ -267,7 +279,8 @@ public class ServerGame : Game {
     public List<Card> DrawX(int player, int x, IStackable stackSrc = null)
     {
         List<Card> drawn = new List<Card>();
-        for (int i = 0; i < x; i++)
+        int i;
+        for (i = 0; i < x; i++)
         {
             Card toDraw = Players[player].deckCtrl.PopTopdeck();
             if (toDraw == null) break;
@@ -275,7 +288,7 @@ public class ServerGame : Game {
             Rehand(toDraw);
             drawn.Add(toDraw);
         }
-        Trigger(TriggerCondition.DrawX, null, stackSrc, x);
+        Trigger(TriggerCondition.DrawX, null, stackSrc, i);
         return drawn;
     }
 
@@ -296,16 +309,6 @@ public class ServerGame : Game {
     {
         int pipsToSet = TurnPlayer.pips + MaxCardsOnField;
         GivePlayerPips(TurnPlayer, pipsToSet);
-    }
-
-    public void CheckForDeath(CharacterCard toCheck, IStackable stackSrc)
-    {
-        if(toCheck.E <= 0)
-        {
-            Discard(toCheck, stackSrc: stackSrc);
-            //don't call check for response on stack because anything that causes things to die,
-            //attacks or effects, will call check for response once it's done resolving.
-        }
     }
 
     //later, upgrade this with checking if the square is valid (adj or special case)

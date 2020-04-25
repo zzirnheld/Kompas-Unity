@@ -170,13 +170,19 @@ public class ServerNotifier : MonoBehaviour
         SendPackets(outPacket, outPacketInverted);
     }
 
-    public void NotifySetNESW(CharacterCard card)
+    public void NotifySetNESW(CharacterCard card, int n, int e, int s, int w)
     {
         if (card == null) return;
         //let everyone know to set NESW
-        Packet outPacket = new Packet(Packet.Command.SetNESW, card, card.N, card.E, card.S, card.W);
-        Packet outPacketInverted = new Packet(Packet.Command.SetNESW, card, card.N, card.E, card.S, card.W);
-        SendPackets(outPacket, outPacketInverted);
+        Packet p = new Packet(Packet.Command.SetNESW, card, n, e, s, w);
+        SendToBoth(p);
+    }
+
+    public void NotifySetSpellStats(SpellCard spell, int c)
+    {
+        if (spell == null) return;
+        Packet p = new Packet(Packet.Command.SetSpellStats, spell, c);
+        SendToBoth(p);
     }
 
     public void NotifyNegate(Card card)

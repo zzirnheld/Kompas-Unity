@@ -272,7 +272,6 @@ namespace KompasNetworking
             Card toSet = sGame.GetCardFromID(cardID);
             if (!(toSet is CharacterCard charToSet)) return;
             charToSet.SetNESW(n, e, s, w);
-            ServerNotifier.NotifySetNESW(charToSet);
         }
     }
 }

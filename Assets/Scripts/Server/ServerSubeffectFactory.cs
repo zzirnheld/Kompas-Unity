@@ -60,6 +60,9 @@ public class ServerSubeffectFactory : ISubeffectFactory
             case SubeffectType.SwapOwnNESW:
                 toReturn = JsonUtility.FromJson<SwapOwnNESWSubeffect>(subeffJson);
                 break;
+            case SubeffectType.ChangeSpellC:
+                toReturn = JsonUtility.FromJson<ChangeSpellCSubeffect>(subeffJson);
+                break;
             case SubeffectType.ChangeAllNESW:
                 toReturn = JsonUtility.FromJson<ChangeAllNESWSubeffect>(subeffJson);
                 break;
@@ -83,6 +86,9 @@ public class ServerSubeffectFactory : ISubeffectFactory
                 break;
             case SubeffectType.SetXByTargetS:
                 toReturn = JsonUtility.FromJson<SetXTargetSSubeffect>(subeffJson);
+                break;
+            case SubeffectType.SetXByTargetCost:
+                toReturn = JsonUtility.FromJson<SetXByTargetCostSubeffect>(subeffJson);
                 break;
             case SubeffectType.PlayCard:
                 toReturn = JsonUtility.FromJson<PlaySubeffect>(subeffJson);

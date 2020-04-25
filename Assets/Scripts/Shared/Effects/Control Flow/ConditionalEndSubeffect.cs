@@ -6,6 +6,10 @@ public class ConditionalEndSubeffect : Subeffect
 {
     public const string XLessThan0 = "X<0";
     public const string XLessThanEqual0 = "X<=0";
+    public const string XGreaterThanConst = "X>C";
+    public const string XLessThanConst = "X<C";
+
+    public int C = 0;
 
     public string Condition;
 
@@ -19,6 +23,12 @@ public class ConditionalEndSubeffect : Subeffect
                 break;
             case XLessThanEqual0:
                 end = Effect.X <= 0;
+                break;
+            case XGreaterThanConst:
+                end = Effect.X > C;
+                break;
+            case XLessThanConst:
+                end = Effect.X < C;
                 break;
             default:
                 throw new System.ArgumentException($"Condition {Condition} invalid for conditional end subeffect");

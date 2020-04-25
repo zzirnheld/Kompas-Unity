@@ -218,6 +218,16 @@ public abstract class Game : MonoBehaviour {
     }
     #endregion move card between areas
 
+    public virtual void SetStats(SpellCard spellCard, int c)
+    {
+        if(spellCard == null)
+        {
+            Debug.LogError("Tried to set stats on null spell card");
+            return;
+        }
+        spellCard.C = c;
+    }
+
     public virtual void SetStats(CharacterCard charCard, int n, int e, int s, int w)
     {
         if(charCard == null)
