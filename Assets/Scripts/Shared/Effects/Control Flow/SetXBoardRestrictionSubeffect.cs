@@ -28,7 +28,7 @@ public class SetXBoardRestrictionSubeffect : Subeffect
                 }
             }
         }
-        Debug.Log("Setting X to " + Effect.X);
+        Debug.Log("Setting X by board restriction to " + Effect.X);
         EffectController.ServerNotifier.NotifyEffectX(ThisCard, Effect.EffectIndex, Effect.X);
         Effect.ResolveNextSubeffect();
     }

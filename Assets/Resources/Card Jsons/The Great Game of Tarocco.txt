@@ -1,0 +1,32 @@
+{
+	"cardType":83,
+	"cardName":"The Great Game of Tarocco",
+	"effText":"Let X be the number of friendly Tarocco. Draw X.",
+	"effects":[
+		{
+			"triggerCondition":401,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
+				}
+			}",
+			"subeffectTypes":[200,306],
+			"subeffects":[
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[3,7],
+						\"subtypesInclude\":[\"Tarocco\"]
+					}
+				}",
+				"{}"
+			]
+		}
+	],
+	"fast":true,
+	"c":4,
+	"spellType":"Simple",
+	"subtypes":["Tarocco","Simple"],
+	"subtypeText":"Tarocco Simple"
+}
