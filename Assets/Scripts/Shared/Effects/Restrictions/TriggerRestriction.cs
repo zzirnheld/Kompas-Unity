@@ -19,7 +19,7 @@ public class TriggerRestriction
 
     public TriggerRestrictions[] triggerRestrictions = new TriggerRestrictions[0];
 
-    public CardRestriction cardRestriction;
+    public CardRestriction cardRestriction = new CardRestriction();
 
     [System.NonSerialized]
     public Card thisCard;
