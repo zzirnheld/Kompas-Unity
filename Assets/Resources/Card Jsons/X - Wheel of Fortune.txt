@@ -8,7 +8,9 @@
 			"trigger":
 			"{
 				\"Optional\":true,
-				\"triggerRestriction\":{}
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[1]
+				}
 			}",
 			"subeffectTypes":[0,0,104],
 			"subeffects":[

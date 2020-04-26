@@ -8,7 +8,7 @@
 			"trigger":"{
 				\"Optional\":true,
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0,100,400],
+					\"triggerRestrictions\":[0,1,100,400],
 					\"cardRestriction\":
 					{
 						\"restrictionsToCheck\":[2],

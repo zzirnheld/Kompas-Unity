@@ -9,7 +9,7 @@
 			"{
 				\"Optional\":true,
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[]
+					\"triggerRestrictions\":[1]
 				}
 			}",
 			"subeffectTypes":[102,3,4,300],

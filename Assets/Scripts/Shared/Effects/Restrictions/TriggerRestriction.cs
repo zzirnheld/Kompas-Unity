@@ -10,6 +10,7 @@ public class TriggerRestriction
     public enum TriggerRestrictions
     {
         ThisCardTriggered = 0,
+        ThisCardInPlay = 1,
         ThisCardFitsRestriction = 100,
         TriggererFitsRestriction = 101,
         FromField = 400,
@@ -40,6 +41,9 @@ public class TriggerRestriction
             {
                 case TriggerRestrictions.ThisCardTriggered:
                     if (triggerer != thisTrigger.effToTrigger.thisCard) return false;
+                    break;
+                case TriggerRestrictions.ThisCardInPlay:
+                    if (thisCard.Location != CardLocation.Field) return false;
                     break;
                 case TriggerRestrictions.ThisCardFitsRestriction:
                     if (!cardRestriction.Evaluate(thisCard)) return false;

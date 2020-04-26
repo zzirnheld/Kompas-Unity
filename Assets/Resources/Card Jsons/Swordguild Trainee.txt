@@ -8,7 +8,7 @@
 			\"triggerRestriction\":
 			{
 				\"Optional\":true
-				\"triggerRestrictions\":[100],
+				\"triggerRestrictions\":[1,100],
 				\"effParentRestriction\":
 					{
 						\"restrictionsToCheck\":[2,3,103],
