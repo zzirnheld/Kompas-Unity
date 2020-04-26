@@ -21,17 +21,6 @@ public abstract class Subeffect
     /// </summary>
     public abstract void Resolve();
 
-
-    /// <summary>
-    /// Called by restrictions that have found a valid target to add to the list
-    /// </summary>
-    /// <param name="card"></param>
-    public void ContinueResolutionWith(Card card)
-    {
-        Effect.targets.Add(card);
-        Effect.ResolveSubeffect(Effect.subeffectIndex + 1);
-    }
-
     public virtual void Initialize(Effect eff, int subeffIndex) {
         this.Effect = eff;
         this.SubeffIndex = subeffIndex;
@@ -50,9 +39,8 @@ public abstract class Subeffect
     {
         get
         {
-            return TargetIndex < 0 ?
-                Effect.targets[Effect.targets.Count + TargetIndex] :
-                Effect.targets[TargetIndex];
+            int trueIndex = TargetIndex < 0 ? TargetIndex + Effect.targets.Count : TargetIndex;
+            return trueIndex < 0 ? null : Effect.targets[trueIndex];
         }
     }
 }

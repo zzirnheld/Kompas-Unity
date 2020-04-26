@@ -6,6 +6,11 @@ public class DiscardSubeffect : CardChangeStateSubeffect
 {
     public override void Resolve()
     {
+        if (Target == null)
+        {
+            Effect.EffectImpossible();
+            return;
+        }
         Debug.Log("Resolving discard subeffect");
         ServerGame.Discard(Target, Effect);
         Effect.ResolveNextSubeffect();

@@ -40,7 +40,7 @@
 				"{}",
 				"{
 					\"CanDecline\":false,
-					\"JumpTo\":5
+					\"JumpTo\":4
 				}",
 				"{
 					\"xMultiplier\":1

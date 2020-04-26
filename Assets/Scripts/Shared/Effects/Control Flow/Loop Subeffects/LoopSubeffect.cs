@@ -29,6 +29,6 @@ public abstract class LoopSubeffect : Subeffect
         OnLoopExit();
 
         //then skip to after the loop
-        Effect.ResolveNextSubeffect();
+        Effect.ResolveSubeffect(SubeffIndex + 1);
     }
 }

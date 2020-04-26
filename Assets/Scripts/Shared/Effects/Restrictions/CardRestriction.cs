@@ -59,7 +59,7 @@ public class CardRestriction
 
         foreach (CardRestrictions c in restrictionsToCheck)
         {
-            Debug.Log("Considering restriction " + c + " when X equals " + x);
+            //Debug.Log("Considering restriction " + c + " when X equals " + x);
             switch (c)
             {
                 case CardRestrictions.NameIs:
