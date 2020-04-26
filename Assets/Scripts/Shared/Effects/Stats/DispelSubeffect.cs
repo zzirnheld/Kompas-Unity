@@ -6,7 +6,13 @@ public class DispelSubeffect : Subeffect
 {
     public override void Resolve()
     {
-        ServerGame.Dispel(Target as SpellCard);
+        //this checks if Target is null, and if non-null, if it's a spell
+        if(!(Target is SpellCard spellCard))
+        {
+            Effect.EffectImpossible();
+            return;
+        }
+        ServerGame.Dispel(spellCard);
         Effect.ResolveNextSubeffect();
     }
 }

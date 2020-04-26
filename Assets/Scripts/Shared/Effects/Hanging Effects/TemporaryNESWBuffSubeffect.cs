@@ -11,8 +11,14 @@ public class TemporaryNESWBuffSubeffect : TemporarySubeffect
 
     public override void Resolve()
     {
+        if(!(Target is CharacterCard charCard))
+        {
+            Effect.EffectImpossible();
+            return;
+        }
+
         var temp = new TemporaryNESWBuff(ServerGame, TriggerRestriction, EndCondition, 
-            Target as CharacterCard, NBuff, EBuff, SBuff, WBuff);
+            charCard, NBuff, EBuff, SBuff, WBuff);
         Effect.ResolveNextSubeffect();
     }
 }

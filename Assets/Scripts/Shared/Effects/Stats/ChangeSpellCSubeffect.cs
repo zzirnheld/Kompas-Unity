@@ -10,10 +10,13 @@ public class ChangeSpellCSubeffect : Subeffect
 
     public override void Resolve()
     {
-        if(Target is SpellCard spellTarget)
+        if(!(Target is SpellCard spellTarget))
         {
-            spellTarget.C = Effect.X * XMultiplier / XDivisor + XModifier;
+            Effect.EffectImpossible();
+            return;
         }
+
+        spellTarget.C = Effect.X * XMultiplier / XDivisor + XModifier;
         Effect.ResolveNextSubeffect();
     }
 }

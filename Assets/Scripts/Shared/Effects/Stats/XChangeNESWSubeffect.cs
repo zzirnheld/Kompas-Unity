@@ -16,15 +16,17 @@ public class XChangeNESWSubeffect : Subeffect
     
     public override void Resolve()
     {
-        if (Target is CharacterCard charCard)
+        if (!(Target is CharacterCard charCard))
         {
-            ServerGame.SetStats(charCard,
-                charCard.N * nMult + nMod,
-                charCard.E * eMult + eMod,
-                charCard.S * sMult + sMod,
-                charCard.W * wMult + wMod);
+            Effect.EffectImpossible();
+            return;
         }
 
+        ServerGame.SetStats(charCard,
+            charCard.N * nMult + nMod,
+            charCard.E * eMult + eMod,
+            charCard.S * sMult + sMod,
+            charCard.W * wMult + wMod);
         Effect.ResolveNextSubeffect();
     }
 }
