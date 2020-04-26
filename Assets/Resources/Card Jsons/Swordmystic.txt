@@ -22,7 +22,7 @@
 					}
 				}",
 				"{
-					\"spaceRestriction":
+					\"spaceRestriction\":
 					{
 						\"restrictionsToCheck\":[0]
 					}

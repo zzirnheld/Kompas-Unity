@@ -33,4 +33,11 @@ XIX - The Sun
 XX - Judgement
 XXI - The World
 Figurehead Jack
+Figurehead Queen
+Figurehead King
+Figurehead Knight
+Seme di Tarocchi - Coins
+Seme di Tarocchi - Cups
+Seme di Tarocchi - Swords
+Seme di Tarocchi - Wands
 lulthisdontexistmydood
