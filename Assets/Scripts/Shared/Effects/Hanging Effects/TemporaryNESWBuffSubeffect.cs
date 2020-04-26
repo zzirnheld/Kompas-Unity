@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TemporaryNESWBuffSubeffect : Subeffect
+public class TemporaryNESWBuffSubeffect : TemporarySubeffect
 {
     public int NBuff;
     public int EBuff;
     public int SBuff;
     public int WBuff;
-
-    public TriggerRestriction TriggerRestriction = new TriggerRestriction();
-    public TriggerCondition EndCondition;
 
     public override void Resolve()
     {

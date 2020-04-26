@@ -86,6 +86,9 @@ public class CardRestriction
                         if (potentialTarget.SubtypeText.IndexOf(s) != -1) return false;
                     }
                     break;
+                case CardRestrictions.Friendly:
+                    if (potentialTarget.Controller != Subeffect.EffectController) return false;
+                    break;
                 case CardRestrictions.Hand:
                     if (potentialTarget.Location != CardLocation.Hand) return false;
                     break;

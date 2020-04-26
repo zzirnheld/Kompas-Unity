@@ -9,6 +9,12 @@ public class DelaySubeffect : Subeffect
     public TriggerCondition TriggerCondition;
     public TriggerRestriction TriggerRestriction = new TriggerRestriction();
 
+    public override void Initialize(Effect eff, int subeffIndex)
+    {
+        base.Initialize(eff, subeffIndex);
+        TriggerRestriction.Initialize(this);
+    }
+
     public override void Resolve()
     {
         var eff = new DelayedHangingEffect(ServerGame, TriggerRestriction, TriggerCondition,

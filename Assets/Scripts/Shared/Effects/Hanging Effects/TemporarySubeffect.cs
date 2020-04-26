@@ -4,5 +4,12 @@ using UnityEngine;
 
 public abstract class TemporarySubeffect : Subeffect
 {
-    public TriggerRestriction TriggerRestriction;
+    public TriggerRestriction TriggerRestriction = new TriggerRestriction();
+    public TriggerCondition EndCondition;
+
+    public override void Initialize(Effect eff, int subeffIndex)
+    {
+        base.Initialize(eff, subeffIndex);
+        TriggerRestriction.Initialize(this);
+    }
 }

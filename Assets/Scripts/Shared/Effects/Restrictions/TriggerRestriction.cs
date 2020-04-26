@@ -26,6 +26,12 @@ public class TriggerRestriction
     [System.NonSerialized]
     public Trigger thisTrigger;
 
+    public void Initialize(Subeffect subeff)
+    {
+        Subeffect = subeff;
+        cardRestriction.Subeffect = subeff;
+    }
+
     public bool Evaluate(Card triggerer, IStackable stackTrigger)
     {
         foreach(TriggerRestrictions r in triggerRestrictions)
