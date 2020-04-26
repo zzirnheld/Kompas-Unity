@@ -16,6 +16,12 @@ public class ConditionalEndSubeffect : Subeffect
 
     public string Condition;
 
+    public override void Initialize(Effect eff, int subeffIndex)
+    {
+        base.Initialize(eff, subeffIndex);
+        CardRestriction.Subeffect = this;
+    }
+
     public override void Resolve()
     {
         bool end;
@@ -34,7 +40,7 @@ public class ConditionalEndSubeffect : Subeffect
                 end = Effect.X < C;
                 break;
             case NoneFitRestriction:
-                end = ServerGame.cards.Any(c => CardRestriction.Evaluate(c.Value));
+                end = !ServerGame.cards.Any(c => CardRestriction.Evaluate(c.Value));
                 break;
             default:
                 throw new System.ArgumentException($"Condition {Condition} invalid for conditional end subeffect");

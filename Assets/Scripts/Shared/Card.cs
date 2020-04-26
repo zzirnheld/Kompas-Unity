@@ -222,7 +222,7 @@ public abstract class Card : CardBase {
             {
                 if (eff.Trigger != null)
                 {
-                    Debug.Log("registering trigger for " + eff.Trigger.triggerCondition);
+                    //Debug.Log("registering trigger for " + eff.Trigger.triggerCondition);
                     serverGame.RegisterTrigger(eff.Trigger.triggerCondition, eff.Trigger);
                 }
                 else Debug.Log("trigger is null");
