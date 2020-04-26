@@ -1,6 +1,6 @@
 {
 	"cardType":65,
-	"cardName":"Seme di Tarrochi - Cups",
+	"cardName":"Seme di Tarocchi - Cups",
 	"effText":"When you draw, I give this character +1E.",
 	"effects":[
 		{

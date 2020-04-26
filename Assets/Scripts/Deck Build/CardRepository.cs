@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CardRepository : MonoBehaviour
@@ -46,6 +47,7 @@ public class CardRepository : MonoBehaviour
             json = json.Replace("\r", "");
             json = json.Replace("\t", "");
             //add the cleaned json to the dictionary
+            Debug.Log($"Adding json for \"{nameClean}\" of length {nameClean.Length} to dictionary");
             cardJsons.Add(nameClean, json);
         }
     }
@@ -177,7 +179,7 @@ public class CardRepository : MonoBehaviour
         {
             if (ContainsIgnoreCase(name, nameIncludes) && SubtypesContain(name, subtypeIncludes))
             {
-                Debug.Log($"found a name {name} that contains {nameIncludes}");
+                //Debug.Log($"found a name {name} that contains {nameIncludes}");
                 cards.Add(name);
             }
         }
@@ -189,7 +191,7 @@ public class CardRepository : MonoBehaviour
         List<string> jsons = new List<string>();
         foreach(string name in names)
         {
-            Debug.Log($"Trying to get json for name \"{name}\", string length {name.Length}");
+            //Debug.Log($"Trying to get json for name \"{name}\", string length {name.Length}");
             if(cardJsons.ContainsKey(name)) jsons.Add(cardJsons[name]);
         }
         return jsons;
@@ -204,7 +206,8 @@ public class CardRepository : MonoBehaviour
     {
         if (!cardJsons.ContainsKey(name))
         {
-            Debug.LogError($"No json found for name \"{name ?? "null"}\"");
+            Debug.LogError($"No json found for name \"{name ?? "null"}\" of length {name?.Length ?? 0}");
+            return null;
         }
 
         return cardJsons[name];

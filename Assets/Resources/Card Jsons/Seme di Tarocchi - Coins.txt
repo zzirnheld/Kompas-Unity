@@ -1,6 +1,6 @@
 {
 	"cardType":65,
-	"cardName":"Seme di Tarrochi - Coins",
+	"cardName":"Seme di Tarocchi - Coins",
 	"effText":"When you draw, I give this character +1N.",
 	"effects":[
 		{

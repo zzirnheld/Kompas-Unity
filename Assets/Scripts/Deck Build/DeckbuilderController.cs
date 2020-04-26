@@ -180,11 +180,7 @@ public class DeckbuilderController : MonoBehaviour
     public void AddToDeck(string name)
     {
         string json = CardRepo.GetJsonFromName(name);
-        if (json == null)
-        {
-            Debug.LogError($"No json found for card name {name}");
-            return;
-        }
+        if (json == null) return;
 
         DeckbuilderCard toAdd = CardRepo.InstantiateDeckbuilderCard(json, DeckViewScrollPane.transform, true);
         if (toAdd == null)

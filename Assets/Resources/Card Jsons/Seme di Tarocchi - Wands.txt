@@ -1,6 +1,6 @@
 {
 	"cardType":65,
-	"cardName":"Seme di Tarrochi - Wands",
+	"cardName":"Seme di Tarocchi - Wands",
 	"effText":"When you draw, I give this character +1S.",
 	"effects":[
 		{

@@ -1,6 +1,6 @@
 {
 	"cardType":67,
-	"cardName":"XVI - The Moon",
+	"cardName":"XVIII - The Moon",
 	"effText":"When you draw, I can swap the EW of a character.",
 	"effects":[
 		{
