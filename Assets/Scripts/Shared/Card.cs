@@ -303,6 +303,8 @@ public abstract class Card : CardBase {
             transform.localPosition = new Vector3(GridIndexToPos(boardX), GridIndexToPos(boardY), -0.1f);
         else if (location == CardLocation.Hand)
             controller.handCtrl.SpreadOutCards();
+
+        dragging = false;
     }
 
     /// <summary>

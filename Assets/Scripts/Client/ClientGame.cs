@@ -106,6 +106,9 @@ public class ClientGame : Game {
                 //if it fits the restriction, send the proposed target to the server
                 clientNotifier.RequestTarget(card);
 
+                //put the relevant card back
+                card.PutBack();
+
                 //and change the game's target mode TODO should this do this
                 targetMode = TargetMode.OnHold;
             }
