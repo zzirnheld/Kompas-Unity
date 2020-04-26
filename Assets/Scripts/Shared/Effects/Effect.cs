@@ -147,6 +147,7 @@ public class Effect : IStackable
         targets.Clear();
         OnImpossible = null;
         EffectController.ServerNotifier.AcceptTarget();
+        EffectController.ServerNotifier.NotifyBothPutBack();
         serverGame.FinishStackEntryResolution();
     }
 

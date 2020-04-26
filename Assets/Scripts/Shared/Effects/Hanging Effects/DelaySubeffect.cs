@@ -20,6 +20,6 @@ public class DelaySubeffect : Subeffect
         var eff = new DelayedHangingEffect(ServerGame, TriggerRestriction, TriggerCondition,
             NumTimesToDelay, Effect, IndexToResume);
         ServerGame.RegisterHangingEffect(TriggerCondition, eff);
-        Effect.ResolveNextSubeffect();
+        Effect.EffectImpossible();
     }
 }

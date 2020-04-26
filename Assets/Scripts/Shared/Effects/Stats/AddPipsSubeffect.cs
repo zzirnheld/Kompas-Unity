@@ -15,5 +15,6 @@ public class AddPipsSubeffect : Subeffect
         Player player = Effect.serverGame.Players[playerOffset + Effect.effectControllerIndex % 2];
         player.pips += (xMultiplier * Effect.X / xDivisor) + modifier;
         EffectController.ServerNotifier.NotifySetPips(player.pips);
+        Effect.ResolveNextSubeffect();
     }
 }

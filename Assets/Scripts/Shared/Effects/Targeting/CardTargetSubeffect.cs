@@ -21,6 +21,7 @@ public abstract class CardTargetSubeffect : Subeffect
         if (cardRestriction.Evaluate(card))
         {
             Effect.targets.Add(card);
+            EffectController.ServerNotifier.AcceptTarget();
             Effect.ResolveNextSubeffect();
             Debug.Log("Adding " + card.CardName + " as target");
             return true;
