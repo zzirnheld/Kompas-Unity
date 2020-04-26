@@ -30,10 +30,13 @@ public class Trigger
             case TriggerCondition.TurnStart:
             case TriggerCondition.Play:
             case TriggerCondition.Discard:
+            case TriggerCondition.DrawX:
+            case TriggerCondition.EachDraw:
                 toReturn = JsonUtility.FromJson<Trigger>(json);
                 break;
             default:
-                Debug.Log($"Unrecognized trigger condition for {parent.thisCard.CardName}");
+                Debug.LogError($"Unrecognized trigger condition for {parent.thisCard.CardName}");
+                toReturn = JsonUtility.FromJson<Trigger>(json);
                 break;
         }
 
