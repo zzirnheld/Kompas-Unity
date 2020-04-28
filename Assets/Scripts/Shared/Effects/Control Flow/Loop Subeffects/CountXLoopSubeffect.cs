@@ -23,16 +23,10 @@ public class CountXLoopSubeffect : LoopSubeffect
 
     protected override void OnLoopExit()
     {
-        //we'll otherwise be off by one, 
-        // since it increments every time the loop is entered, before the client gets a chance to leave
-        Effect.X--;
-
-        //make the "no other targets" button disappear
+        //make the "no other targets" button disappear (this will do nothing if we couldn't decline anyway)
         EffectController.ServerNotifier.DisableDecliningTarget();
     }
 
-    public override void OnImpossible()
-    {
-        ExitLoop();
-    }
+    //Specifically for this type of loop, if another target isn't found, that's when we exit the loop
+    public override void OnImpossible() => ExitLoop();
 }
