@@ -295,14 +295,27 @@ public abstract class Card : CardBase {
 
     public void PutBack()
     {
-        if (location == CardLocation.Deck)
-            gameObject.SetActive(false);
-        else if (location == CardLocation.Discard)
-            transform.localPosition = new Vector3(0, 0, (float) controller.discardCtrl.IndexOf(this) / -60f);
-        else if (location == CardLocation.Field)
-            transform.localPosition = new Vector3(GridIndexToPos(boardX), GridIndexToPos(boardY), -0.1f);
-        else if (location == CardLocation.Hand)
-            controller.handCtrl.SpreadOutCards();
+        Debug.Log($"Putting back {CardName} to {location}");
+
+        switch (location)
+        {
+            case CardLocation.Deck:
+                transform.SetParent(controller.deckObject.transform);
+                gameObject.SetActive(false);
+                break;
+            case CardLocation.Discard:
+                transform.SetParent(controller.discardObject.transform);
+                transform.localPosition = new Vector3(0, 0, (float)controller.discardCtrl.IndexOf(this) / -60f);
+                break;
+            case CardLocation.Field:
+                transform.SetParent(game.boardObject.transform);
+                transform.localPosition = new Vector3(GridIndexToPos(boardX), GridIndexToPos(boardY), -0.1f);
+                break;
+            case CardLocation.Hand:
+                transform.SetParent(controller.handObject.transform);
+                controller.handCtrl.SpreadOutCards();
+                break;
+        }
 
         dragging = false;
     }
@@ -375,10 +388,12 @@ public abstract class Card : CardBase {
     //actual interaction
     public void OnMouseDrag()
     {
+        //don't allow dragging cards if we're awaiting a target
+        if (game.targetMode != Game.TargetMode.Free) return;
+
         if (dragging == false)
         {
             dragging = true;
-            transform.parent = game.boardObject.transform;
         }
 
         GoToMouse();
@@ -386,6 +401,9 @@ public abstract class Card : CardBase {
 
     public void OnMouseExit()
     {
+        //don't allow dragging cards if we're awaiting a target
+        if (game.targetMode != Game.TargetMode.Free) return;
+
         bool mouseDown = Input.GetMouseButton(0);
         if (dragging)
         {
@@ -402,10 +420,11 @@ public abstract class Card : CardBase {
         if (!dragging) return;
         dragging = false;
 
+        //don't allow dragging cards if we're awaiting a target
         if (game.targetMode != Game.TargetMode.Free) return;
 
         //to be able to use local coordinates to see if you're on the board, set parent to game board
-        transform.parent = game.boardObject.transform;
+        transform.SetParent(game.boardObject.transform);
 
         //then, check if it's on the board, accodring to the local coordinates of the game board)
         if (WithinIgnoreZ(transform.localPosition, minBoardLocalX, maxBoardLocalX, minBoardLocalY, maxBoardLocalY))
@@ -446,6 +465,8 @@ public abstract class Card : CardBase {
         {
             clientGame.clientNotifier.RequestRehand(this);
         }
+
+        PutBack();
     }
 
     public void OnMouseEnter()
