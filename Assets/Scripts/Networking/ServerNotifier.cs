@@ -306,7 +306,6 @@ public class ServerNotifier : MonoBehaviour
 
     public void AskForTrigger(Trigger t, int? x, Card cardTriggerer, IStackable stackTriggerer)
     {
-        
         Card cardWhoseTrigger = t.effToTrigger.thisCard;
         int effIndex = t.effToTrigger.EffectIndex;
         //TODO: should the packet int be a nullable one? so that can represent nullable x in trigger to confirm

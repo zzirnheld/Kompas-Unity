@@ -391,11 +391,7 @@ public abstract class Card : CardBase {
         //don't allow dragging cards if we're awaiting a target
         if (game.targetMode != Game.TargetMode.Free) return;
 
-        if (dragging == false)
-        {
-            dragging = true;
-        }
-
+        dragging = true;
         GoToMouse();
     }
 
@@ -471,7 +467,6 @@ public abstract class Card : CardBase {
 
     public void OnMouseEnter()
     {
-        Debug.Log("On mouse enter");
         game.uiCtrl.HoverOver(this);
     }
     #endregion MouseStuff
