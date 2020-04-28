@@ -409,9 +409,9 @@ public abstract class Card : CardBase {
         {
             if (mouseDown) GoToMouse();
             else OnMouseUp();
-        }
 
-        dragging = mouseDown;
+            dragging = mouseDown;
+        }
     }
 
     public void OnMouseUp()
@@ -424,19 +424,19 @@ public abstract class Card : CardBase {
         if (game.targetMode != Game.TargetMode.Free) return;
 
         //to be able to use local coordinates to see if you're on the board, set parent to game board
-        transform.SetParent(game.boardObject.transform);
+        var boardLocalPosition = game.boardObject.transform.InverseTransformPoint(transform.position);
 
         //then, check if it's on the board, accodring to the local coordinates of the game board)
-        if (WithinIgnoreZ(transform.localPosition, minBoardLocalX, maxBoardLocalX, minBoardLocalY, maxBoardLocalY))
+        if (WithinIgnoreZ(boardLocalPosition, minBoardLocalX, maxBoardLocalX, minBoardLocalY, maxBoardLocalY))
         {
+            int x = PosToGridIndex(boardLocalPosition.x);
+            int y = PosToGridIndex(boardLocalPosition.y);
+
             //if the card is being moved on the field, that means it's just being moved
             if (location == CardLocation.Field)
             {
-                Debug.Log($"Local position: {transform.localPosition.x}, {transform.localPosition.y}");
-                int x = PosToGridIndex(transform.localPosition.x);
-                int y = PosToGridIndex(transform.localPosition.y);
                 CharacterCard charThere = game.boardCtrl.GetCharAt(x, y);
-                Debug.Log($"Trying to move/attack to {x}, {y}, the controller index, if any, is {charThere?.ControllerIndex}");
+                Debug.Log($"Trying to move/attack to {x}, {y}. The controller index, if any, is {charThere?.ControllerIndex}");
                 //then check if it's an attack or not
                 if (charThere != null && charThere.ControllerIndex != ControllerIndex)
                     clientGame.clientNotifier.RequestAttack(this, x, y);
@@ -444,9 +444,7 @@ public abstract class Card : CardBase {
                     clientGame.clientNotifier.RequestMove(this, x, y);
             }
             //otherwise, it is being played from somewhere like the hand or discard
-            else
-                clientGame.clientNotifier.RequestPlay(this,
-                    PosToGridIndex(transform.localPosition.x), PosToGridIndex(transform.localPosition.y));
+            else clientGame.clientNotifier.RequestPlay(this, x, y);
         }
         //if it's not on the board, maybe it's on top of the discard
         else if (WithinIgnoreY(transform.position, minDiscardX, maxDiscardX, minDiscardZ, maxDiscardZ))
@@ -465,8 +463,6 @@ public abstract class Card : CardBase {
         {
             clientGame.clientNotifier.RequestRehand(this);
         }
-
-        PutBack();
     }
 
     public void OnMouseEnter()

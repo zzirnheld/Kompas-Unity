@@ -84,6 +84,7 @@ public class CardRepository : MonoBehaviour
             if (charCard.cardType != 'C') return null;
             AvatarCard avatar = Instantiate(avatarPrefab).GetComponent<AvatarCard>();
             avatar.SetInfo(charCard, game, owner);
+            avatar.SetImage(charCard.cardName);
             avatar.ID = id;
             game.cards.Add(id, avatar);
             return avatar;
