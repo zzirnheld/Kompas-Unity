@@ -481,7 +481,7 @@ public class ServerGame : Game {
             //then ask the respective player about that trigger.
             lock (TriggerStackLock)
             {
-                (Trigger t, int? x, Card cardTriggerer, IStackable stackTriggerer) = OptionalTriggersToAsk.Peek();
+                var (t, x, cardTriggerer, stackTriggerer) = OptionalTriggersToAsk.Peek();
                 t.effToTrigger.EffectController.ServerNotifier.AskForTrigger(t, x, cardTriggerer, stackTriggerer);
             }
             //if the player chooses to trigger it, it will be removed from the list
