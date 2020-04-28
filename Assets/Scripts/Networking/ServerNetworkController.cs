@@ -260,6 +260,7 @@ namespace KompasNetworking
             Card toDraw = sGame.Draw(Player.index);
             if (toDraw == null) return; //deck was empty
             ServerNotifier.NotifyDraw(toDraw);
+            sGame.CheckForResponse();
         }
 
         public void DebugSetPips(int pipsToSet)
