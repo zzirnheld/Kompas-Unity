@@ -457,12 +457,8 @@ public class ServerGame : Game {
                 Debug.LogError($"Tried to answer about a trigger when there weren't any triggers to answer about.");
                 return;
             }
-
-            Trigger t;
-            int? x;
-            Card cardTrigger;
-            IStackable stackTrigger;
-            (t, x, cardTrigger, stackTrigger) = OptionalTriggersToAsk.Pop();
+            
+            var (t, x, cardTrigger, stackTrigger) = OptionalTriggersToAsk.Pop();
             if (answer)
             {
                 t.TriggerIfValid(cardTrigger, stackTrigger, x, true);
