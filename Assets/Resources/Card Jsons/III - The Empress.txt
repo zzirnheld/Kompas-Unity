@@ -20,7 +20,7 @@
 				"{
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[3,103,202],
+						\"restrictionsToCheck\":[3,103,202]
 					}
 				}",
 				"{
@@ -41,5 +41,5 @@
 	"s":5,
 	"w":7,
 	"subtypes":["Tarocco","Mage"],
-	"subtypeText":"tarocco Mage"
+	"subtypeText":"Tarocco Mage"
 }

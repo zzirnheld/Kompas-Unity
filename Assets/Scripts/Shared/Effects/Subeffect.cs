@@ -26,7 +26,14 @@ public abstract class Subeffect
         this.SubeffIndex = subeffIndex;
     }
 
-    public virtual void OnImpossible() { }
+    /// <summary>
+    /// Optional method. If implemented, does something when the effect is declared impossible.
+    /// Default implementation just finishes resolution of the effect
+    /// </summary>
+    public virtual void OnImpossible() {
+        Debug.Log($"On Impossible called for {GetType()} without an override");
+        Effect.ResolveSubeffect(Effect.Subeffects.Length);
+    }
 
     /// <summary>
     /// The index in the Effect.targets array for which target this effect uses.

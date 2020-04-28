@@ -131,6 +131,8 @@ public class Effect : IStackable
             FinishResolution();
             return;
         }
+
+        Debug.Log($"Resolving subeffect of type {subeffects[index].GetType()}");
         subeffectIndex = index;
         subeffects[index].Resolve();
     }

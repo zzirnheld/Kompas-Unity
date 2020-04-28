@@ -12,7 +12,7 @@ public abstract class LoopSubeffect : Subeffect
     public override void Resolve()
     {
         //loop again if necessary
-        Debug.Log($"im in ur loop, the one that jumps to {JumpTo}");
+        Debug.Log($"im in ur loop of type {GetType()}, the one that jumps to {JumpTo}");
         if (ShouldContinueLoop()) Effect.ResolveSubeffect(JumpTo);
         else ExitLoop();
     }

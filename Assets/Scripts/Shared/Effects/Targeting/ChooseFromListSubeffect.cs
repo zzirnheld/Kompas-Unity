@@ -8,12 +8,12 @@ public class ChooseFromListSubeffect : Subeffect
     /// <summary>
     /// Restriction that each card must fulfill
     /// </summary>
-    public CardRestriction CardRestriction;
+    public CardRestriction CardRestriction = new CardRestriction();
 
     /// <summary>
     /// Restriction that the list collectively must fulfill
     /// </summary>
-    public ListRestriction ListRestriction;
+    public ListRestriction ListRestriction = new ListRestriction();
 
     /// <summary>
     /// The maximum number of cards that can be chosen.

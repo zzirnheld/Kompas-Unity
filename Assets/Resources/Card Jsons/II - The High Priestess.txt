@@ -4,10 +4,11 @@
 	"effText":"Once each round, you can look at and rearrange the top 5 cards of your deck, then draw 1.",
 	"effects":[
 		{
-			"subeffectTypes":[6,401,308,10,401,305],
+			"subeffectTypes":[8,401,308,10,401,305],
 			"subeffects":[
 				"{
-					\"cardRestriction\":
+					\"MaxCanChoose\":1,
+					\"CardRestriction\":
 					{
 						\"restrictionsToCheck\":[102,501,600],
 						\"constant\":5

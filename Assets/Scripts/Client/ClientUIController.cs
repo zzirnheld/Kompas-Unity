@@ -22,7 +22,6 @@ public class ClientUIController : UIController
     public Image cardSearchImage;
     public Button deckSearchButton;
     public Button discardSearchButton;
-    public Button searchToHandButton;
     public Button searchTargetButton;
     public Button cancelSearchButton;
     //effects
@@ -179,7 +178,7 @@ public class ClientUIController : UIController
     public void StartSearch(List<Card> list, ListRestriction listRestriction = null, int numToChoose = 1)
     {
         //if already searching, dont start another search?
-        if (toSearch.Count != 0) return;
+        if (toSearch != null && toSearch.Count != 0) return;
         //if the list is empty, don't search
         if (list.Count == 0) return;
 
@@ -268,7 +267,6 @@ public class ClientUIController : UIController
         discardSearchButton.gameObject.SetActive(true);
         deckSearchButton.gameObject.SetActive(true);
         searchTargetButton.gameObject.SetActive(false);
-        searchToHandButton.gameObject.SetActive(false);
         cancelSearchButton.gameObject.SetActive(false);
     }
 
