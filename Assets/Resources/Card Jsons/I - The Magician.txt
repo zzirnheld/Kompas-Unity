@@ -16,7 +16,7 @@
 					\"TargetIndex\":-1
 				}",
 				"{
-					\"JumpTo\":3
+					\"JumpTo\":0
 				}",
 				"{}"
 			]	

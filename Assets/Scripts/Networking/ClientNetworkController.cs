@@ -38,11 +38,11 @@ public class ClientNetworkController : NetworkController {
 
     public override void Update()
     {
-        if (changeTargetMode && DateTime.Now.Ticks - timeTargetAccepted >= 5000000)
+        /*if (changeTargetMode && DateTime.Now.Ticks - timeTargetAccepted >= 5000000)
         {
             ClientGame.targetMode = Game.TargetMode.Free;
             changeTargetMode = false;
-        }
+        }*/
 
         base.Update();
     }
@@ -232,8 +232,7 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.clientUICtrl.GetXForEffect();
                 break;
             case Packet.Command.TargetAccepted:
-                timeTargetAccepted = DateTime.Now.Ticks;
-                changeTargetMode = true;
+                ClientGame.targetMode = Game.TargetMode.Free;
                 break;
             case Packet.Command.EnableDecliningTarget:
                 ClientGame.clientUICtrl.EnableDecliningTarget();

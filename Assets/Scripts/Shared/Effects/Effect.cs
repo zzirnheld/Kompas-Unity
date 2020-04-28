@@ -151,7 +151,10 @@ public class Effect : IStackable
         serverGame.FinishStackEntryResolution();
     }
 
-    //could eventually be renamed, because this same logic could be used for other things that become impossible, while a loop could be going
+    /// <summary>
+    /// Cancels resolution of the effect, 
+    /// or, if there is something pending if the effect becomes impossible, resolves that
+    /// </summary>
     public void EffectImpossible()
     {
         Debug.Log($"Effect of {thisCard.CardName} is being declared impossible");

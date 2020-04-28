@@ -416,7 +416,7 @@ public abstract class Card : CardBase {
 
     public void OnMouseUp()
     {
-        Debug.Log("On end drag");
+        Debug.Log($"On mouse up on {CardName} in target mode {game.targetMode}");
         if (!dragging) return;
         dragging = false;
 

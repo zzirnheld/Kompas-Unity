@@ -99,7 +99,7 @@ public class UIController : MonoBehaviour {
 
     public void SelectCard(Card card, bool fromClick)
     {
-        if (card == null) SelectCard(card, Game.TargetMode.Free, fromClick);
+        if (card == null) SelectCard(null, Game.TargetMode.Free, fromClick);
         else SelectCard(card, card.game.targetMode, fromClick);
     }
 
