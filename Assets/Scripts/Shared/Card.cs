@@ -417,6 +417,10 @@ public abstract class Card : CardBase {
     public void OnMouseUp()
     {
         Debug.Log($"On mouse up on {CardName} in target mode {game.targetMode}");
+
+        //select cards if the player releases the mouse button while over one
+        game.uiCtrl.SelectCard(this, true);
+
         if (!dragging) return;
         dragging = false;
 
@@ -469,12 +473,6 @@ public abstract class Card : CardBase {
     {
         Debug.Log("On mouse enter");
         game.uiCtrl.HoverOver(this);
-    }
-
-    public void OnMouseDown()
-    {
-        Debug.Log("on mouse down");
-        game.uiCtrl.SelectCard(this, true);
     }
     #endregion MouseStuff
 }
