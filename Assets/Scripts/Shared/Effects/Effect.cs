@@ -156,7 +156,11 @@ public class Effect : IStackable
     {
         Debug.Log($"Effect of {thisCard.CardName} is being declared impossible");
         if (OnImpossible == null) FinishResolution();
-        else OnImpossible.OnImpossible();
+        else
+        {
+            subeffectIndex = OnImpossible.SubeffIndex;
+            OnImpossible.OnImpossible();
+        }
     }
 
     public void DeclineAnotherTarget()
