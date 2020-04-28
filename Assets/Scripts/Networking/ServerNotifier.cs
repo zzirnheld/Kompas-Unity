@@ -304,10 +304,8 @@ public class ServerNotifier : MonoBehaviour
         SendToBoth(packet);
     }
 
-    public void AskForTrigger((Trigger, int?, Card, IStackable) triggerInfo)
+    public void AskForTrigger(Trigger t, int? x, Card cardTriggerer, IStackable stackTriggerer)
     {
-        Trigger t = triggerInfo.Item1;
-        int? x = triggerInfo.Item2;
         
         Card cardWhoseTrigger = t.effToTrigger.thisCard;
         int effIndex = t.effToTrigger.EffectIndex;
