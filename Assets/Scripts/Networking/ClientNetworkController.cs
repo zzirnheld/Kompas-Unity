@@ -180,7 +180,7 @@ public class ClientNetworkController : NetworkController {
                 break;
             case Packet.Command.RequestBoardTarget:
                 ClientGame.targetMode = Game.TargetMode.BoardTarget;
-                ClientGame.CurrCardRestriction = packet.GetCardRestriction(ClientGame);
+                ClientGame.CurrCardRestriction = packet.GetBoardRestriction(ClientGame);
                 break;
             case Packet.Command.RequestHandTarget:
                 ClientGame.targetMode = Game.TargetMode.HandTarget;

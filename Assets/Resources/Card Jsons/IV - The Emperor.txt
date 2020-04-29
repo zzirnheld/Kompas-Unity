@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"IV - The Emperor",
-	"effText":"When you draw X, I can give an adjacent Tarocco +XEW.",
+	"effText":"When you draw X, I give an adjacent Tarocco +XEW.",
 	"effects":[
 		{
 			"triggerCondition":101,
