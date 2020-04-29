@@ -10,8 +10,8 @@
 					\"MaxCanChoose\":1,
 					\"CardRestriction\":
 					{
-						\"restrictionsToCheck\":[102,501,600],
-						\"constant\":5
+						\"restrictionsToCheck\":[7,102,501,600],
+						\"constant\":4
 					}
 				}",
 				"{

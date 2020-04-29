@@ -245,7 +245,7 @@ public class ServerNotifier : MonoBehaviour
         }
         Packet packet = new Packet(Packet.Command.GetChoicesFromList, src.ThisCard, cardIDs, maxNum, src.Effect.EffectIndex, src.SubeffIndex);
         SendPacket(packet);
-        Debug.Log($"Asking for targets from list of cardIDs {cardIDs}");
+        Debug.Log($"Asking for targets from list of cardIDs {string.Join(",", cardIDs)}");
     }
 
     public void ChooseEffectOption(ChooseOptionSubeffect src)

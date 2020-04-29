@@ -16,6 +16,7 @@ public class CardRestriction
         IsAugment = 5,
         SubtypesExclude = 6,
         Friendly = 7,
+        SameOwner = 8,
         //location
         Hand = 100,
         Discard = 101,
@@ -88,6 +89,9 @@ public class CardRestriction
                     break;
                 case CardRestrictions.Friendly:
                     if (potentialTarget.Controller != Subeffect.EffectController) return false;
+                    break;
+                case CardRestrictions.SameOwner:
+                    if (potentialTarget.Owner != Subeffect.EffectController) return false;
                     break;
                 case CardRestrictions.Hand:
                     if (potentialTarget.Location != CardLocation.Hand) return false;

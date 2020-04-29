@@ -263,8 +263,8 @@ namespace KompasNetworking
         public ListRestriction GetListRestriction(ClientGame clientGame)
         {
             Card thatHasEffect = clientGame.GetCardFromID(cardID);
-            Effect eff = thatHasEffect.Effects[normalArgs[0]];
-            DummyListTargetSubeffect subeff = eff.Subeffects[normalArgs[1]] as DummyListTargetSubeffect;
+            Effect eff = thatHasEffect.Effects[normalArgs[1]];
+            DummyListTargetSubeffect subeff = eff.Subeffects[normalArgs[2]] as DummyListTargetSubeffect;
 
             if (subeff == null)
             {
