@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -182,7 +183,7 @@ public class ClientUIController : UIController
         //if the list is empty, don't search
         if (list.Count == 0) return;
 
-        Debug.Log($"Searching a list of {list.Count} cards");
+        Debug.Log($"Searching a list of {list.Count} cards: {string.Join(",", list.Select(c => c.CardName))}");
 
         toSearch = list;
         numToSearch = numToChoose;

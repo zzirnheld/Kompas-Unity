@@ -52,10 +52,10 @@ public class TriggerRestriction
                     break;
                 //TODO make these into just something to do with triggered card fitting restriction
                 case TriggerRestrictions.ControllerTriggered:
-                    if (triggerer != thisTrigger.effToTrigger.Controller) return false;
+                    if (triggerer != thisCard.Controller) return false;
                     break;
                 case TriggerRestrictions.EnemyTriggered:
-                    if (triggerer == thisTrigger.effToTrigger.Controller) return false;
+                    if (triggerer == thisCard.Controller) return false;
                     break;
                 case TriggerRestrictions.FromField:
                     if (cardTriggerer.Location != CardLocation.Field) return false;

@@ -47,9 +47,15 @@ namespace KompasNetworking
                     break;
                 #region effect commands
                 case Packet.Command.Target:
-                    if (sGame.CurrEffect?.CurrSubeffect is CardTargetSubeffect targetEff)
+                    var currSubeff = sGame.CurrEffect?.CurrSubeffect;
+                    if (currSubeff is CardTargetSubeffect targetEff)
                     {
                         targetEff.AddTargetIfLegal(sGame.GetCardFromID(packet.cardID));
+                    }
+                    else if(currSubeff is ChooseFromListSubeffect chooseListSubeff)
+                    {
+                        var choice = new List<Card>{ sGame.GetCardFromID(packet.cardID) };
+                        chooseListSubeff.AddListIfLegal(choice);
                     }
                     break;
                 case Packet.Command.SpaceTarget:
@@ -83,7 +89,7 @@ namespace KompasNetworking
                         else choices.Add(c);
                     }
 
-                    if (sGame.CurrEffect != null && sGame.CurrEffect.CurrSubeffect is ChooseFromListSubeffect listEff)
+                    if (sGame.CurrEffect?.CurrSubeffect is ChooseFromListSubeffect listEff)
                     {
                         listEff.AddListIfLegal(choices);
                     }
