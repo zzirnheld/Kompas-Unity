@@ -11,7 +11,7 @@ public class ListRestriction
     {
         CanPayCost = 1 //effect's controller is able to pay the cost of all of them together
     }
-    public ListRestrictions[] Restrictions;
+    public ListRestrictions[] Restrictions = new ListRestrictions[0];
 
     /// <summary>
     /// Checks the list of cards passed into see if they collectively fit a restriction.

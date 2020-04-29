@@ -33,14 +33,14 @@ public class TriggerRestriction
         cardRestriction.Subeffect = subeff;
     }
 
-    public bool Evaluate(Card triggerer, IStackable stackTrigger)
+    public bool Evaluate(Card cardTriggerer, IStackable stackTrigger, Player triggerer)
     {
         foreach(TriggerRestrictions r in triggerRestrictions)
         {
             switch (r)
             {
                 case TriggerRestrictions.ThisCardTriggered:
-                    if (triggerer != thisTrigger.effToTrigger.thisCard) return false;
+                    if (cardTriggerer != thisTrigger.effToTrigger.thisCard) return false;
                     break;
                 case TriggerRestrictions.ThisCardInPlay:
                     if (thisCard.Location != CardLocation.Field) return false;
@@ -50,10 +50,10 @@ public class TriggerRestriction
                     break;
                     //TODO make these into just something to do with triggered card fitting restriction
                 case TriggerRestrictions.FromField:
-                    if (triggerer.Location != CardLocation.Field) return false;
+                    if (cardTriggerer.Location != CardLocation.Field) return false;
                     break;
                 case TriggerRestrictions.FromDeck:
-                    if (triggerer.Location != CardLocation.Deck) return false;
+                    if (cardTriggerer.Location != CardLocation.Deck) return false;
                     break;
                 default:
                     Debug.LogError($"Unrecognized trigger restriction {r}");

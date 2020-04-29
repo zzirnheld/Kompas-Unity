@@ -26,7 +26,7 @@ public abstract class HangingEffect
 
     protected virtual bool ShouldEnd(Card triggerer, IStackable stackTrigger)
     {
-        return triggerRestriction.Evaluate(triggerer, stackTrigger);
+        return triggerRestriction.Evaluate(triggerer, stackTrigger, triggerRestriction.Subeffect.EffectController);
     }
 
     protected abstract void Resolve();

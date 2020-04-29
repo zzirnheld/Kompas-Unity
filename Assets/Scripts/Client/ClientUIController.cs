@@ -219,12 +219,14 @@ public class ClientUIController : UIController
             if (searched.Contains(searchSelected)) return;
             searched.Add(searchSelected);
 
+            //TODO a better way to evaluate the list restriction. a partial list might not fit the list restriction, but
+            //adding something to that list might make it fit.
             //if there is a list restriction, but it doesn't like this list, refuse to add that card
-            if(searchListRestriction != null && !searchListRestriction.Evaluate(searched))
+            /*if(searchListRestriction != null && !searchListRestriction.Evaluate(searched))
             {
                 searched.Remove(searchSelected);
                 return;
-            }
+            }*/
 
             //TODO: if we didn't return, mark that card as selected
             numSearched++;

@@ -6,5 +6,6 @@ public interface IStackable
 {
     void StartResolution();
 
+    Player Controller { get; }
     Card Source { get; }
 }

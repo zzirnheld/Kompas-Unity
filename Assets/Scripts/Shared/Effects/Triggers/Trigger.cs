@@ -80,11 +80,11 @@ public class Trigger
     /// <summary>
     /// Checks all relevant trigger restrictions
     /// </summary>
-    /// <param name="triggerer">The card that triggered this, if any.</param>
+    /// <param name="cardTriggerer">The card that triggered this, if any.</param>
     /// <param name="stackTrigger">The effect or attack that triggered this, if any.</param>
     /// <param name="x">If the action that triggered this has a value of x, it goes here. Otherwise, null.</param>
     /// <returns>Whether all restrictions of the trigger are fulfilled.</returns>
-    protected bool CheckTriggerRestrictions(Card triggerer, IStackable stackTrigger, int? x)
+    protected bool CheckTriggerRestrictions(Card cardTriggerer, IStackable stackTrigger, int? x, Player triggerer)
     {
         if (effToTrigger.MaxTimesCanUsePerTurn.HasValue &&
             effToTrigger.TimesUsedThisTurn >= effToTrigger.MaxTimesCanUsePerTurn)
@@ -95,27 +95,27 @@ public class Trigger
             Debug.LogWarning($"Warning: null trigger restriction for effect of {effToTrigger.thisCard.CardName}");
         }
 
-        return triggerRestriction.Evaluate(triggerer, stackTrigger);
+        return triggerRestriction.Evaluate(cardTriggerer, stackTrigger, triggerer);
     }
 
     /// <summary>
     /// If the trigger for this effect applies to this trigger source, triggers this trigger's effect.
     /// </summary>
-    /// <param name="triggerer">The card that triggered this, if any.</param>
+    /// <param name="cardTriggerer">The card that triggered this, if any.</param>
     /// <param name="stackTrigger">The effect or attack that triggered this, if any.</param>
     /// <param name="x">If the action that triggered this has a value of x, it goes here. Otherwise, null.</param>
-    public virtual void TriggerIfValid(Card triggerer, IStackable stackTrigger, int? x, bool optionalConfirmed = false)
+    public virtual void TriggerIfValid(Card cardTriggerer, IStackable stackTrigger, int? x, ServerPlayer triggerer, bool optionalConfirmed = false)
     {
         /*Debug.Log($"Is trigger valid for effect of {effToTrigger.thisCard.CardName} with id {effToTrigger.thisCard.ID}? " +
             $"{CheckTriggerRestrictions(triggerer, stackTrigger, x)}");*/
-        if (CheckTriggerRestrictions(triggerer, stackTrigger, x))
+        if (CheckTriggerRestrictions(cardTriggerer, stackTrigger, x, triggerer))
         {
             Debug.Log($"Trigger is valid for effect of {effToTrigger.thisCard.CardName} with id {effToTrigger.thisCard.ID}");
             //if the trigger is optional and this method isn't being called because the player confirmed the trigger,
             //then ask for a trigger
             if (Optional && !optionalConfirmed)
             {
-                effToTrigger.serverGame.AskForTrigger(this, x, triggerer, stackTrigger);
+                effToTrigger.serverGame.AskForTrigger(this, x, cardTriggerer, stackTrigger, triggerer);
             }
             else TriggerEffect(x);
         }

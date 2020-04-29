@@ -21,14 +21,14 @@ public class ServerGame : Game {
     public int cardCount = 0;
     private int currPlayerCount = 0; //current number of players. shouldn't exceed 2
 
-    public Stack<(Trigger, int?, Card, IStackable)> OptionalTriggersToAsk;
+    public Stack<(Trigger, int?, Card, IStackable, ServerPlayer)> OptionalTriggersToAsk;
 
     private void Start()
     {
         mainGame = this;
 
         SubeffectFactory = new ServerSubeffectFactory();
-        OptionalTriggersToAsk = new Stack<(Trigger, int?, Card, IStackable)>();
+        OptionalTriggersToAsk = new Stack<(Trigger, int?, Card, IStackable, ServerPlayer)>();
     }
 
     public void Init(UIController uiCtrl, CardRepository cardRepo)
@@ -183,7 +183,7 @@ public class ServerGame : Game {
     public override void Discard(Card card, IStackable stackSrc = null)
     {
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyDiscard(card);
-        Trigger(TriggerCondition.Discard, card, stackSrc, null);
+        Trigger(TriggerCondition.Discard, card, stackSrc, null, stackSrc?.Controller as ServerPlayer);
         base.Discard(card);
     }
 
@@ -196,7 +196,7 @@ public class ServerGame : Game {
                 $"This wasn't a problem up until now, but now you need to implement owner index," +
                 $"ya numpty");
         }
-        Trigger(TriggerCondition.Rehand, card, stackSrc, null);
+        Trigger(TriggerCondition.Rehand, card, stackSrc, null, stackSrc?.Controller as ServerPlayer);
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyRehand(card);
         base.Rehand(controller, card);
     }
@@ -208,31 +208,31 @@ public class ServerGame : Game {
 
     public override void Reshuffle(Card card, IStackable stackSrc = null)
     {
-        Trigger(TriggerCondition.Reshuffle, card, stackSrc, null);
-        Trigger(TriggerCondition.ToDeck, card, stackSrc, null);
+        Trigger(TriggerCondition.Reshuffle, card, stackSrc, null, stackSrc?.Controller as ServerPlayer);
+        Trigger(TriggerCondition.ToDeck, card, stackSrc, null, stackSrc?.Controller as ServerPlayer);
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyReshuffle(card);
         base.Reshuffle(card);
     }
 
     public override void Topdeck(Card card, IStackable stackSrc = null)
     {
-        Trigger(TriggerCondition.Topdeck, card, stackSrc, null);
-        Trigger(TriggerCondition.ToDeck, card, stackSrc, null);
+        Trigger(TriggerCondition.Topdeck, card, stackSrc, null, stackSrc?.Controller as ServerPlayer);
+        Trigger(TriggerCondition.ToDeck, card, stackSrc, null, stackSrc?.Controller as ServerPlayer);
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyTopdeck(card);
         base.Topdeck(card);
     }
 
     public override void Bottomdeck(Card card, IStackable stackSrc = null)
     {
-        Trigger(TriggerCondition.Bottomdeck, card, stackSrc, null);
-        Trigger(TriggerCondition.ToDeck, card, stackSrc, null);
+        Trigger(TriggerCondition.Bottomdeck, card, stackSrc, null, stackSrc?.Controller as ServerPlayer);
+        Trigger(TriggerCondition.ToDeck, card, stackSrc, null, stackSrc?.Controller as ServerPlayer);
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyBottomdeck(card);
         base.Bottomdeck(card);
     }
 
     public override void Play(Card card, int toX, int toY, Player controller, IStackable stackSrc = null)
     {
-        Trigger(TriggerCondition.Play, card, stackSrc, null);
+        Trigger(TriggerCondition.Play, card, stackSrc, null, stackSrc?.Controller as ServerPlayer);
         //note that it's serverPlayers[controller.index] because you can play to the field of someone whose card it isnt
         ServerPlayers[controller.index].ServerNotifier.NotifyPlay(card, toX, toY);
         base.Play(card, toX, toY, controller);
@@ -240,7 +240,7 @@ public class ServerGame : Game {
 
     public override void MoveOnBoard(Card card, int toX, int toY, IStackable stackSrc = null)
     {
-        Trigger(TriggerCondition.Move, card, stackSrc, null);
+        Trigger(TriggerCondition.Move, card, stackSrc, null, stackSrc?.Controller as ServerPlayer);
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyMove(card, toX, toY);
         base.MoveOnBoard(card, toX, toY);
     }
@@ -284,11 +284,11 @@ public class ServerGame : Game {
         {
             Card toDraw = Players[player].deckCtrl.PopTopdeck();
             if (toDraw == null) break;
-            Trigger(TriggerCondition.EachDraw, toDraw, stackSrc, null);
+            Trigger(TriggerCondition.EachDraw, toDraw, stackSrc, null, ServerPlayers[player]);
             Rehand(toDraw);
             drawn.Add(toDraw);
         }
-        Trigger(TriggerCondition.DrawX, null, stackSrc, i);
+        Trigger(TriggerCondition.DrawX, null, stackSrc, i, ServerPlayers[player]);
         return drawn;
     }
 
@@ -383,7 +383,7 @@ public class ServerGame : Game {
         TurnServerPlayer.ServerNotifier.NotifySetTurn(this, turnPlayer);
 
         //trigger turn start effects
-        Trigger(TriggerCondition.TurnStart, null, null, null);
+        Trigger(TriggerCondition.TurnStart, null, null, null, TurnPlayer as ServerPlayer);
         CheckForResponse();
     }
 
@@ -458,10 +458,10 @@ public class ServerGame : Game {
                 return;
             }
             
-            var (t, x, cardTrigger, stackTrigger) = OptionalTriggersToAsk.Pop();
+            var (t, x, cardTrigger, stackTrigger, triggerer) = OptionalTriggersToAsk.Pop();
             if (answer)
             {
-                t.TriggerIfValid(cardTrigger, stackTrigger, x, true);
+                t.TriggerIfValid(cardTrigger, stackTrigger, x, triggerer, true);
                 CheckForResponse();
             }
         }
@@ -477,8 +477,8 @@ public class ServerGame : Game {
             //then ask the respective player about that trigger.
             lock (TriggerStackLock)
             {
-                var (t, x, cardTriggerer, stackTriggerer) = OptionalTriggersToAsk.Peek();
-                t.effToTrigger.EffectController.ServerNotifier.AskForTrigger(t, x, cardTriggerer, stackTriggerer);
+                var (t, x, cardTriggerer, stackTriggerer, triggerer) = OptionalTriggersToAsk.Peek();
+                triggerer.ServerNotifier.AskForTrigger(t, x, cardTriggerer, stackTriggerer);
             }
             //if the player chooses to trigger it, it will be removed from the list
         }
@@ -504,12 +504,12 @@ public class ServerGame : Game {
     #endregion the stack
 
     #region triggers
-    public void Trigger(TriggerCondition condition, Card triggerer, IStackable stackTrigger, int? x)
+    public void Trigger(TriggerCondition condition, Card cardTriggerer, IStackable stackTrigger, int? x, ServerPlayer triggerer)
     {
         List<HangingEffect> toRemove = new List<HangingEffect>();
         foreach(HangingEffect t in hangingEffectMap[condition])
         {
-            if(t.EndIfApplicable(triggerer, stackTrigger))
+            if(t.EndIfApplicable(cardTriggerer, stackTrigger))
             {
                 toRemove.Add(t);
             }
@@ -519,10 +519,10 @@ public class ServerGame : Game {
             hangingEffectMap[condition].Remove(t);
         }
 
-        Debug.Log($"Attempting to trigger {condition}, with triggerer {triggerer?.CardName}, triggered by a null stacktrigger? {stackTrigger == null}, x={x}");
+        Debug.Log($"Attempting to trigger {condition}, with triggerer {cardTriggerer?.CardName}, triggered by a null stacktrigger? {stackTrigger == null}, x={x}");
         foreach (Trigger t in triggerMap[condition])
         {
-            t.TriggerIfValid(triggerer, stackTrigger, x);
+            t.TriggerIfValid(cardTriggerer, stackTrigger, x, triggerer);
         }
     }
 
@@ -532,11 +532,11 @@ public class ServerGame : Game {
     /// </summary>
     /// <param name="trigger"></param>
     /// <param name="x"></param>
-    public void AskForTrigger(Trigger trigger, int? x, Card c, IStackable s)
+    public void AskForTrigger(Trigger trigger, int? x, Card c, IStackable s, ServerPlayer p)
     {
         lock (TriggerStackLock)
         {
-            OptionalTriggersToAsk.Push((trigger, x, c, s));
+            OptionalTriggersToAsk.Push((trigger, x, c, s, p));
         }
     }
     #endregion triggers

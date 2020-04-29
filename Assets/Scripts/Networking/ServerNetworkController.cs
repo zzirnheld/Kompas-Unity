@@ -226,7 +226,7 @@ namespace KompasNetworking
                 CharacterCard attacker = toMove as CharacterCard;
                 CharacterCard defender = sGame.boardCtrl.GetCharAt(x, y);
                 //push the attack to the stack, then check if any player wants to respond before resolving it
-                sGame.PushToStack(new Attack(sGame, attacker, defender), Player.index);
+                sGame.PushToStack(new Attack(sGame, Player, attacker, defender), Player.index);
                 sGame.CheckForResponse();
             }
             else

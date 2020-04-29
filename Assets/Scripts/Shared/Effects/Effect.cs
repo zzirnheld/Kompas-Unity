@@ -17,6 +17,7 @@ public class Effect : IStackable
     //who owns the effect. TODO set when a player activates an effect
     public int effectControllerIndex;
     public ServerPlayer EffectController { get { return serverGame.ServerPlayers[effectControllerIndex]; } }
+    public Player Controller { get { return EffectController; } }
 
     //current subeffect that's resolving
     public int subeffectIndex;

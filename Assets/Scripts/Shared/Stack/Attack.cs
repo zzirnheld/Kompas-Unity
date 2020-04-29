@@ -7,6 +7,7 @@ public class Attack : IStackable
     public ServerGame serverGame;
 
     public Card Source { get { return attacker; } }
+    public Player Controller { get; private set; }
 
     public CharacterCard attacker;
     public CharacterCard defender;
@@ -17,15 +18,16 @@ public class Attack : IStackable
     /// <param name="serverGame"></param>
     /// <param name="attacker"></param>
     /// <param name="defender"></param>
-    public Attack(ServerGame serverGame, CharacterCard attacker, CharacterCard defender)
+    public Attack(ServerGame serverGame, Player controller, CharacterCard attacker, CharacterCard defender)
     {
         this.serverGame = serverGame ?? throw new System.ArgumentNullException("Cannot have null servergame");
+        this.Controller = controller ?? throw new System.ArgumentNullException("Cannot have null controller of attack");
         this.attacker = attacker ?? throw new System.ArgumentNullException("Cannot have null attacker");
         this.defender = defender ?? throw new System.ArgumentNullException("Cannot have null defender");
-        serverGame.Trigger(TriggerCondition.Attacks, attacker, this, null);
-        serverGame.Trigger(TriggerCondition.Defends, defender, this, null);
-        serverGame.Trigger(TriggerCondition.Battles, attacker, this, null);
-        serverGame.Trigger(TriggerCondition.Battles, defender, this, null);
+        serverGame.Trigger(TriggerCondition.Attacks, attacker, this, null, Controller as ServerPlayer);
+        serverGame.Trigger(TriggerCondition.Defends, defender, this, null, Controller as ServerPlayer);
+        serverGame.Trigger(TriggerCondition.Battles, attacker, this, null, Controller as ServerPlayer);
+        serverGame.Trigger(TriggerCondition.Battles, defender, this, null, Controller as ServerPlayer);
     }
 
     public void StartResolution()
@@ -53,9 +55,9 @@ public class Attack : IStackable
             attacker.S,
             attacker.W);
         //trigger effects based on combat damage
-        serverGame.Trigger(TriggerCondition.TakeCombatDamage, defender, this, attackerDmg);
-        serverGame.Trigger(TriggerCondition.TakeCombatDamage, attacker, this, defenderDmg);
-        serverGame.Trigger(TriggerCondition.DealCombatDamage, attacker, this, attackerDmg);
-        serverGame.Trigger(TriggerCondition.DealCombatDamage, defender, this, defenderDmg);
+        serverGame.Trigger(TriggerCondition.TakeCombatDamage, defender, this, attackerDmg, Controller as ServerPlayer);
+        serverGame.Trigger(TriggerCondition.TakeCombatDamage, attacker, this, defenderDmg, Controller as ServerPlayer);
+        serverGame.Trigger(TriggerCondition.DealCombatDamage, attacker, this, attackerDmg, Controller as ServerPlayer);
+        serverGame.Trigger(TriggerCondition.DealCombatDamage, defender, this, defenderDmg, Controller as ServerPlayer);
     }
 }
