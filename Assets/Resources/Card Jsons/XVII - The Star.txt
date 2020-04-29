@@ -4,7 +4,7 @@
 	"effText":"Once each turn, you can draw 1.",
 	"effects":[
 		{
-			"subeffectTypes":[305],
+			"subeffectTypes":[305,200],
 			"subeffects":["{}"]
 		}
 	],

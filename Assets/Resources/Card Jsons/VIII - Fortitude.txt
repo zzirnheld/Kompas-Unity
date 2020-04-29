@@ -8,7 +8,10 @@
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1]
+					\"triggerRestrictions\":[1,101],
+					\"cardRestriction\":{
+						\"restrictionsToCheck\":[7]
+					}
 				}
 			}",
 			"subeffectTypes":[305],
@@ -20,7 +23,7 @@
 			"{
 				\"Optional\":true,
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1]
+					\"triggerRestrictions\":[1,200]
 				}
 			}",
 			"subeffectTypes":[0,406,100,407,100],

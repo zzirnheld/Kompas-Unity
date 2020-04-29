@@ -13,6 +13,8 @@ public class TriggerRestriction
         ThisCardInPlay = 1,
         ThisCardFitsRestriction = 100,
         TriggererFitsRestriction = 101,
+        ControllerTriggered = 200,
+        EnemyTriggered = 201,
         FromField = 400,
         FromDeck = 401
     }
@@ -48,7 +50,13 @@ public class TriggerRestriction
                 case TriggerRestrictions.ThisCardFitsRestriction:
                     if (!cardRestriction.Evaluate(thisCard)) return false;
                     break;
-                    //TODO make these into just something to do with triggered card fitting restriction
+                //TODO make these into just something to do with triggered card fitting restriction
+                case TriggerRestrictions.ControllerTriggered:
+                    if (triggerer != thisTrigger.effToTrigger.Controller) return false;
+                    break;
+                case TriggerRestrictions.EnemyTriggered:
+                    if (triggerer == thisTrigger.effToTrigger.Controller) return false;
+                    break;
                 case TriggerRestrictions.FromField:
                     if (cardTriggerer.Location != CardLocation.Field) return false;
                     break;
