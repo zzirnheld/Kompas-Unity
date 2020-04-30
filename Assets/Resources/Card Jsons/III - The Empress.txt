@@ -9,7 +9,7 @@
 			"{
 				\"Optional\":true,
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1]
+					\"triggerRestrictions\":[1,200]
 				}
 			}",
 			"subeffectTypes":[102,3,4,300],
@@ -20,7 +20,7 @@
 				"{
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[3,103,202]
+						\"restrictionsToCheck\":[3,100,202]
 					}
 				}",
 				"{

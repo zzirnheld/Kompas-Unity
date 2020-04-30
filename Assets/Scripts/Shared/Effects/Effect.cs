@@ -28,12 +28,8 @@ public class Effect : IStackable
     public bool doneResolving = false;
 
     public Subeffect OnImpossible = null;
-
-    private Subeffect[] subeffects;
-    public Subeffect[] Subeffects { get => subeffects; }
-
-    private Trigger trigger;
-    public Trigger Trigger { get => trigger; }
+    public Subeffect[] Subeffects { get; }
+    public Trigger Trigger { get; }
 
     public List<Card> targets;
     public List<Vector2Int> coords;
@@ -44,27 +40,23 @@ public class Effect : IStackable
     /// X value as listed on cards
     /// </summary>
     public int X = 0;
-
-    private int timesUsedThisTurn;
     /// <summary>
     /// The number of times this effect has been used this turn
     /// </summary>
-    public int TimesUsedThisTurn { get => timesUsedThisTurn; }
-
-    private int? maxTimesCanUsePerTurn;
+    public int TimesUsedThisTurn { get; private set; }
     /// <summary>
     /// The maximum number of times this effect can be used in a turn
     /// </summary>
-    public int? MaxTimesCanUsePerTurn { get => maxTimesCanUsePerTurn; }
+    public int? MaxTimesCanUsePerTurn { get; }
 
     //get the currently resolving subeffect
-    public Subeffect CurrSubeffect { get { return subeffects[subeffectIndex]; } }
+    public Subeffect CurrSubeffect { get { return Subeffects[subeffectIndex]; } }
 
     public Effect(SerializableEffect se, Card thisCard, int controller)
     {
-        this.thisCard = thisCard;
+        this.thisCard = thisCard ?? throw new System.ArgumentNullException("Effect cannot be attached to null card");
         this.serverGame = thisCard.serverGame;
-        subeffects = new Subeffect[se.subeffects.Length];
+        Subeffects = new Subeffect[se.subeffects.Length];
         targets = new List<Card>();
         coords = new List<Vector2Int>();
 
@@ -72,7 +64,7 @@ public class Effect : IStackable
         {
             try
             {
-                trigger = Trigger.FromJson(se.triggerCondition, se.trigger, this);
+                Trigger = Trigger.FromJson(se.triggerCondition, se.trigger, this);
             }
             catch(System.ArgumentException)
             {
@@ -85,7 +77,7 @@ public class Effect : IStackable
         {
             try
             {
-                subeffects[i] = thisCard.game.SubeffectFactory.FromJson(se.subeffectTypes[i], se.subeffects[i], this, i);
+                Subeffects[i] = thisCard.game.SubeffectFactory.FromJson(se.subeffectTypes[i], se.subeffects[i], this, i);
             }
             catch (System.ArgumentException)
             {
@@ -94,18 +86,18 @@ public class Effect : IStackable
             }
         }
 
-        maxTimesCanUsePerTurn = se.maxTimesCanUsePerTurn;
-        timesUsedThisTurn = 0;
+        MaxTimesCanUsePerTurn = se.maxTimesCanUsePerTurn;
+        TimesUsedThisTurn = 0;
     }
 
     public void ResetForTurn()
     {
-        timesUsedThisTurn = 0;
+        TimesUsedThisTurn = 0;
     }
 
     public bool CanUse()
     {
-        return timesUsedThisTurn < maxTimesCanUsePerTurn;
+        return TimesUsedThisTurn < MaxTimesCanUsePerTurn;
     }
 
     public void PushToStack(int controller)
@@ -116,6 +108,7 @@ public class Effect : IStackable
     public void StartResolution()
     {
         thisCard.game.CurrEffect = this;
+        EffectController.ServerNotifier.NotifyEffectX(thisCard, EffectIndex, X);
         if (Negated) EffectImpossible();
         else ResolveSubeffect(0);
     }
@@ -127,15 +120,15 @@ public class Effect : IStackable
 
     public void ResolveSubeffect(int index)
     {
-        if(index >= subeffects.Length)
+        if(index >= Subeffects.Length)
         {
             FinishResolution();
             return;
         }
 
-        Debug.Log($"Resolving subeffect of type {subeffects[index].GetType()}");
+        Debug.Log($"Resolving subeffect of type {Subeffects[index].GetType()}");
         subeffectIndex = index;
-        subeffects[index].Resolve();
+        Subeffects[index].Resolve();
     }
 
     /// <summary>

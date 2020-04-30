@@ -19,7 +19,7 @@ public class ClientNetworkController : NetworkController {
 
     public Packet lastPacket;
     
-    public int X;
+    public int X { get; private set; }
 
     public override void Awake()
     {
@@ -226,7 +226,8 @@ public class ClientNetworkController : NetworkController {
                 break;
             case Packet.Command.SetEffectsX:
                 Debug.Log("Setting X to " + packet.X);
-                Game.mainGame.GetCardFromID(packet.cardID).Effects[packet.EffIndex].X = packet.EffectX;
+                ClientGame.GetCardFromID(packet.cardID).Effects[packet.EffIndex].X = packet.EffectX;
+                X = packet.EffectX;
                 break;
             case Packet.Command.PlayerSetX:
                 ClientGame.clientUICtrl.GetXForEffect();

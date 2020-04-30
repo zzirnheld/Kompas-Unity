@@ -70,7 +70,8 @@ public class ClientNotifier : MonoBehaviour
     public void RequestSetX(int x)
     {
         Debug.Log("Requesting to set X to " + x);
-        Packet packet = new Packet(Packet.Command.PlayerSetX, x);
+        Packet packet = new Packet(Packet.Command.PlayerSetX);
+        packet.normalArgs[2] = x;
         Send(packet);
     }
 

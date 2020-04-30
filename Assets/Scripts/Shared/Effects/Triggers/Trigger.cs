@@ -75,6 +75,9 @@ public class Trigger
     {
         Debug.Log($"Triggering effect of {effToTrigger.thisCard.CardName} for value of x={x}");
         if (x.HasValue) effToTrigger.X = x.Value;
+        //TODO should you notify right now about effect x? as of right now, no, because the important thing is the x value currently set in client network controller
+        //and either another effect could be currently resolving with a different value of x
+        //or the value of x could get changed between when this triggers and when the effect resolves
         effToTrigger.PushToStack(effToTrigger.thisCard.ControllerIndex);
     }
 
