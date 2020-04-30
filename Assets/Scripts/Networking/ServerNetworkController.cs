@@ -62,7 +62,6 @@ namespace KompasNetworking
                     Debug.Log("Receieved space target " + packet.X + packet.Y);
                     if (sGame.CurrEffect?.CurrSubeffect is SpaceTargetSubeffect spaceEff)
                     {
-                        packet.InvertForController(Player.index);
                         spaceEff.SetTargetIfValid(packet.X, packet.Y);
                     }
                     else Debug.Log("curr effect null? " + (sGame.CurrEffect == null) + " or not spacetgtsubeff? " + (sGame.CurrEffect?.CurrSubeffect is SpaceTargetSubeffect));
