@@ -3029,7 +3029,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9fb8748191d6744ab4316215e0b0131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  searchCtrl: {fileID: 0}
+  DeckSelectCardPrefab: {fileID: 0}
+  DeckbuilderCharPrefab: {fileID: 0}
+  DeckbuilderSpellPrefab: {fileID: 0}
+  DeckbuilderAugPrefab: {fileID: 0}
+  ClientAvatarPrefab: {fileID: 0}
+  ClientCharPrefab: {fileID: 0}
+  ClientSpellPrefab: {fileID: 0}
+  ClientAugPrefab: {fileID: 0}
+  ServerAvatarPrefab: {fileID: 3737252039058614834, guid: 6342a8b7ecbc4e94aa211dd4cf95f7c6,
+    type: 3}
+  ServerCharPrefab: {fileID: 1867480149614592, guid: 3a1c99b156d4dfe4f87489a1b6147b56,
+    type: 3}
+  ServerSpellPrefab: {fileID: 1656078229824318, guid: c11b9e0eff225ef42b29ef33bacc3186,
+    type: 3}
+  ServerAugPrefab: {fileID: 1960667190934142, guid: 57bc0faf22439474b8ad57c3a6a0bbcb,
+    type: 3}
 --- !u!1 &1515742811
 GameObject:
   m_ObjectHideFlags: 0

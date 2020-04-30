@@ -3404,7 +3404,7 @@ MonoBehaviour:
       subtypesExclude: []
       constant: 0
       onBoardRestrictions: 
-      xSpaces: 0
+      cSpaces: 0
 --- !u!114 &492080564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3417,7 +3417,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9fb8748191d6744ab4316215e0b0131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  searchCtrl: {fileID: 0}
+  DeckSelectCardPrefab: {fileID: 0}
+  DeckbuilderCharPrefab: {fileID: 0}
+  DeckbuilderSpellPrefab: {fileID: 0}
+  DeckbuilderAugPrefab: {fileID: 0}
+  ClientAvatarPrefab: {fileID: 5037485039548288679, guid: 3b79750c32898ab40a7fb5d4c8c4331f,
+    type: 3}
+  ClientCharPrefab: {fileID: 8521957960937469093, guid: 66944e4841d586044a0f9eaa9141439c,
+    type: 3}
+  ClientSpellPrefab: {fileID: 4378972355308882833, guid: 2ec5f4c28aeb279418065e9db513dac5,
+    type: 3}
+  ClientAugPrefab: {fileID: 2395110909353444324, guid: 902182d72f3b90d4084b23ff5b4da68f,
+    type: 3}
+  ServerAvatarPrefab: {fileID: 0}
+  ServerCharPrefab: {fileID: 0}
+  ServerSpellPrefab: {fileID: 0}
+  ServerAugPrefab: {fileID: 0}
 --- !u!1 &509972773
 GameObject:
   m_ObjectHideFlags: 0
@@ -11969,7 +11984,6 @@ MonoBehaviour:
   cardSearchImage: {fileID: 728813001}
   deckSearchButton: {fileID: 973346152}
   discardSearchButton: {fileID: 577061474}
-  searchToHandButton: {fileID: 0}
   searchTargetButton: {fileID: 1518423575}
   cancelSearchButton: {fileID: 1717289247}
   xInput: {fileID: 748852964}
@@ -13392,7 +13406,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ClientGame: {fileID: 492080563}
-  X: 0
 --- !u!114 &2001968207
 MonoBehaviour:
   m_ObjectHideFlags: 0

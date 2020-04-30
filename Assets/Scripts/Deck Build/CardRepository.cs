@@ -256,6 +256,7 @@ public class CardRepository : MonoBehaviour
             AvatarCard avatar = Instantiate(ClientAvatarPrefab).GetComponent<AvatarCard>();
             ClientEffect[] effects = CreateClientEffects(charCard.effects, avatar);
             avatar.SetInfo(charCard, clientGame, owner, effects);
+            avatar.gameObject.GetComponent<ClientCardMouseController>().ClientGame = clientGame;
             avatar.SetImage();
             avatar.ID = id;
             clientGame.cards.Add(id, avatar);
@@ -304,6 +305,7 @@ public class CardRepository : MonoBehaviour
                     return null;
             }
             card?.SetImage();
+            card.gameObject.GetComponent<ClientCardMouseController>().ClientGame = clientGame;
             return card;
         }
         catch (System.ArgumentException argEx)
