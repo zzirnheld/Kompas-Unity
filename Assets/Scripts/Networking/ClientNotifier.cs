@@ -62,6 +62,7 @@ public class ClientNotifier : MonoBehaviour
 
     public void RequestResolveEffect(Card card, int index)
     {
+        if (card == null) return;
         Debug.Log("Requesting effect of " + card.CardName + " number" + index);
         Packet packet = new Packet(Packet.Command.TestTargetEffect, card, index);
         Send(packet);

@@ -85,13 +85,12 @@ public class ClientUIController : UIController
     #region effects
     public void ActivateSelectedCardEff(int index)
     {
-        if (selectedCard != null)
-            clientGame.clientNotifier.RequestResolveEffect(selectedCard, index);
+        clientGame.clientNotifier.RequestResolveEffect(SelectedCard, index);
     }
 
     public void ToggleHoldingPriority()
     {
-        //TODO
+        throw new System.NotImplementedException();
     }
 
     public void GetXForEffect()
@@ -315,11 +314,13 @@ public class ClientUIController : UIController
     #region debug
     public void DebugUpdateStats()
     {
+        if (!(SelectedCard is CharacterCard charCard)) return;
+
         //get current ones, in case the input fields are empty
-        int nToUpdate = SelectedChar.N;
-        int eToUpdate = SelectedChar.E;
-        int sToUpdate = SelectedChar.S;
-        int wToUpdate = SelectedChar.W;
+        int nToUpdate = charCard.N;
+        int eToUpdate = charCard.E;
+        int sToUpdate = charCard.S;
+        int wToUpdate = charCard.W;
 
         //if any of the input fields have a value, update the values you want to update 
         if (debugNInputField.text != "") nToUpdate = int.Parse(debugNInputField.text);
@@ -327,7 +328,7 @@ public class ClientUIController : UIController
         if (debugSInputField.text != "") sToUpdate = int.Parse(debugSInputField.text);
         if (debugWInputField.text != "") wToUpdate = int.Parse(debugWInputField.text);
 
-        ClientGame.mainClientGame.clientNotifier.RequestSetNESW(SelectedChar, nToUpdate, eToUpdate, sToUpdate, wToUpdate);
+        ClientGame.mainClientGame.clientNotifier.RequestSetNESW(charCard, nToUpdate, eToUpdate, sToUpdate, wToUpdate);
     }
 
     public void DebugUpdatePips()

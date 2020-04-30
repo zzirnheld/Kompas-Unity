@@ -65,8 +65,8 @@ public class CharacterCard : Card {
     #endregion stats
 
     //get other information
-    public override int Cost { get { return S; } }
-    public string GetStatsString() { return "N: " + N + "\t\tE: " + E + "\t\tS: " + S + "\t\tW: " + W; }
+    public override int Cost => S;
+    public override string StatsString => "N: " + N + "\t\tE: " + E + "\t\tS: " + S + "\t\tW: " + W;
     
     public SerializableCharCard GetSerializableVersion()
     {

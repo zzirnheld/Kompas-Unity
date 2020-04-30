@@ -38,16 +38,10 @@ public class UIController : MonoBehaviour {
     }
 
     //selection variables
-    protected Card selectedCard;
-    private CharacterCard selectedChar; //keeps track of last selected character for updating stats in debug, etc.
-    private SpellCard selectedSpell;
+    public Card SelectedCard { get; protected set; }
 
     private bool hovering = false;
     private Card hoveredCard;
-
-    public Card SelectedCard { get { return selectedCard; } }
-    public CharacterCard SelectedChar { get { return selectedChar; } }
-    public SpellCard SelectedSpell { get { return selectedSpell; } }
 
     public bool DebugMode { get { return debugToggle.isOn; } }
 
@@ -76,19 +70,8 @@ public class UIController : MonoBehaviour {
 
         selectedUIParent.SetActive(true);
         Debug.Log("Selecting " + card.CardName);
-        selectedCard = card;
-
-        //do something based on what type the card is
-        if(card is CharacterCard)
-        {
-            selectedChar = card as CharacterCard;
-            selectedCardStatsText.text = selectedChar.GetStatsString();
-        }
-        else if(card is SpellCard)
-        {
-            selectedSpell = selectedCard as SpellCard;
-            selectedCardStatsText.text = "";
-        }
+        SelectedCard = card;
+        selectedCardStatsText.text = SelectedCard.StatsString;
 
         //set all common values
         selectedCardSubtypesText.text = card.SubtypeText;
@@ -106,7 +89,7 @@ public class UIController : MonoBehaviour {
     public void StopHovering()
     {
         if (!hovering) return;
-        SelectCard(selectedCard, false);
+        SelectCard(SelectedCard, false);
         hoveredCard = null;
         hovering = false;
     }
@@ -125,12 +108,7 @@ public class UIController : MonoBehaviour {
 
         selectedUIParent.SetActive(true);
         hoveredCard = card;
-
-        //do something based on what type the card is
-        if (card is CharacterCard hoveredChar)
-            selectedCardStatsText.text = hoveredChar.GetStatsString();
-        else if (card is SpellCard)
-            selectedCardStatsText.text = "";
+        selectedCardStatsText.text = hoveredCard.StatsString;
 
         //set all common values
         selectedCardSubtypesText.text = card.SubtypeText;

@@ -479,7 +479,7 @@ public class ServerGame : Game {
             lock (TriggerStackLock)
             {
                 var (t, x, cardTriggerer, stackTriggerer, triggerer) = OptionalTriggersToAsk.Peek();
-                triggerer.ServerNotifier.AskForTrigger(t, x, cardTriggerer, stackTriggerer);
+                (t.effToTrigger.thisCard.Controller as ServerPlayer)?.ServerNotifier.AskForTrigger(t, x, cardTriggerer, stackTriggerer);
             }
             //if the player chooses to trigger it, it will be removed from the list
         }

@@ -13,7 +13,8 @@ public class SpellCard : Card
     public string Subtext { get; private set; }
     public string SpellSubtype { get; private set; }
 
-    public override int Cost { get { return C; } }
+    public override int Cost => C;
+    public override string StatsString => Fast ? "Fast C" : "C" + C + " " + SpellSubtype;
 
     //get data
     public SerializableSpellCard GetSerializableVersion()

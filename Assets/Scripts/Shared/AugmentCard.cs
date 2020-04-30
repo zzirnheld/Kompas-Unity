@@ -33,8 +33,9 @@ public class AugmentCard : Card
     {
         get => augSubtypes;
     }
-    
-    public override int Cost { get { return A; } }
+
+    public override int Cost => A;
+    public override string StatsString => fast ? "Fast A" : "A"  + A;
 
     //get data
     public SerializableAugCard GetSerializableVersion()

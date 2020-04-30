@@ -100,6 +100,8 @@ public abstract class Card : CardBase {
     public Sprite DetailedSprite { get { return detailedSprite; } }
     public Sprite SimpleSprite { get { return simpleSprite; } }
 
+    public abstract string StatsString { get; }
+
     public int IndexInList
     {
         get
