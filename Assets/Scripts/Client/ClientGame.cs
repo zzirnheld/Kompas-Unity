@@ -46,6 +46,11 @@ public class ClientGame : Game {
         SubeffectFactory = new ClientSubeffectFactory();
     }
 
+    public override void OnClickBoard(int x, int y)
+    {
+        clientNotifier.RequestSpaceTarget(x, y);
+    }
+
     //game mechanics
     #region setting pips
     public void SetFriendlyPips(int num)

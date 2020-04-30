@@ -62,8 +62,7 @@ public class AugmentCard : Card
     //set data
     public override void SetInfo(SerializableCard serializedCard, Game game, Player owner)
     {
-        if (!(serializedCard is SerializableAugCard)) return;
-        SerializableAugCard serializedAug = serializedCard as SerializableAugCard;
+        if (!(serializedCard is SerializableAugCard serializedAug)) return;
 
         a = serializedAug.a;
         subtext = serializedAug.subtext;

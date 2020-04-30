@@ -152,8 +152,8 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.Bottomdeck(ClientGame.GetCardFromID(packet.cardID));
                 break;
             case Packet.Command.SetNESW:
-                Card toSet = ClientGame.GetCardFromID(packet.cardID);
-                (toSet as CharacterCard)?.SetNESW(packet.N, packet.E, packet.S, packet.W);
+                var charToSet = ClientGame.GetCardFromID(packet.cardID) as CharacterCard;
+                charToSet?.SetNESW(packet.N, packet.E, packet.S, packet.W);
                 break;
             case Packet.Command.SetSpellStats:
                 var spellToSet = ClientGame.GetCardFromID(packet.cardID) as SpellCard;
@@ -218,6 +218,7 @@ public class ClientNetworkController : NetworkController {
                     Debug.LogError($"Subeffect for card id {packet.cardID}, effect index {packet.normalArgs[0]}, subeffect index {packet.normalArgs[1]} " +
                         $"is null or not dummy choose option subeffect");
                 }
+                ClientGame.clientUICtrl.ShowOptions(subeff);
                 break;
             case Packet.Command.SpaceTarget:
                 ClientGame.targetMode = Game.TargetMode.SpaceTarget;

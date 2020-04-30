@@ -65,7 +65,7 @@ public class BoardController : MonoBehaviour
     public SpellCard GetSpellAt(int x, int y)
     {
         if (!ValidIndices(x, y)) return null;
-        return cards[x, y] as SpellCard; //returns null if the card there isn't a spell
+        return cards[x, y] as SpellCard;
     }
 
     public List<AugmentCard> GetAugmentsAt(int x, int y)
@@ -284,10 +284,6 @@ public class BoardController : MonoBehaviour
     public void OnMouseDown()
     {
         //select nothing
-        if(game?.uiCtrl == null)
-        {
-            Debug.LogError($"Game is null? {game == null}, ui ctrl is null? {game?.uiCtrl == null}");
-        }
         game.uiCtrl.SelectCard(null, true);
 
         if (game.targetMode != Game.TargetMode.SpaceTarget) return;
@@ -300,7 +296,7 @@ public class BoardController : MonoBehaviour
             int xIntersection = PosToGridIndex(intersection.x);
             int yIntersection = PosToGridIndex(intersection.y);
             //then, if the game is a clientgame, request a space target
-            (game as ClientGame)?.clientNotifier.RequestSpaceTarget(xIntersection, yIntersection);
+            game.OnClickBoard(xIntersection, yIntersection);
         }
     }
 }

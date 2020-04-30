@@ -83,6 +83,8 @@ public abstract class Game : MonoBehaviour {
         }
     }
 
+    public virtual void OnClickBoard(int x, int y) { }
+
     public Card GetCardFromID(int id)
     {
         Debug.Log("Getting card with id " + id + " is it in the dictionary? " + cards.ContainsKey(id));

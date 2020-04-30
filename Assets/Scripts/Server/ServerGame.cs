@@ -248,7 +248,7 @@ public class ServerGame : Game {
 
     public override void SetStats(SpellCard spellCard, int c)
     {
-        spellCard.ServerController.ServerNotifier.NotifySetSpellStats(spellCard, c);
+        ServerPlayers[spellCard.ControllerIndex].ServerNotifier.NotifySetSpellStats(spellCard, c);
         base.SetStats(spellCard, c);
     }
 
@@ -356,16 +356,16 @@ public class ServerGame : Game {
             && (boardCtrl.GetCardAt(toX, toY) == null || boardCtrl.GetCardAt(toX, toY).ControllerIndex == toMove.ControllerIndex);
     }
 
-    public bool ValidAttack(Card toMove, int toX, int toY)
+    public bool ValidAttack(CharacterCard attacker, CharacterCard defender)
     {
         if (uiCtrl.DebugMode)
         {
             Debug.LogWarning("Debug mode, always return true for valid attack");
-            return true;
+            return attacker != null && defender != null;
         }
 
-        if (!(toMove is CharacterCard)) return false;
-        return toMove.DistanceTo(toX, toY) == 1;
+        if (attacker == null || defender == null) return false;
+        return attacker.DistanceTo(defender) == 1;
     }
 
     #endregion

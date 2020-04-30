@@ -220,25 +220,18 @@ namespace KompasNetworking
 
         public void Attack(int cardID, int x, int y)
         {
-            //get the card to move
-            Card toMove = sGame.GetCardFromID(cardID);
-            if (sGame.ValidAttack(toMove, x, y))
+            var attacker = sGame.GetCardFromID(cardID) as CharacterCard;
+            var defender = sGame.boardCtrl.GetCharAt(x, y);
+            if (sGame.ValidAttack(attacker, defender))
             {
-                Debug.Log($"ServerNetworkController {toMove.CardName} attacking {x}, {y}");
+                Debug.Log($"ServerNetworkController {attacker.CardName} attacking {defender.CardName} at {x}, {y}");
                 //tell the players to put cards down where they were
                 ServerNotifier.NotifyBothPutBack();
-                //then push the attack tothe stack
-                CharacterCard attacker = toMove as CharacterCard;
-                CharacterCard defender = sGame.boardCtrl.GetCharAt(x, y);
                 //push the attack to the stack, then check if any player wants to respond before resolving it
                 sGame.PushToStack(new Attack(sGame, Player, attacker, defender), Player.index);
                 sGame.CheckForResponse();
             }
-            else
-            {
-                Debug.Log($"ServerNetworkController putting back {toMove.CardName}");
-                ServerNotifier.NotifyPutBack();
-            }
+            else ServerNotifier.NotifyPutBack();
         }
 
         public void DebugTopdeck(int cardID)
