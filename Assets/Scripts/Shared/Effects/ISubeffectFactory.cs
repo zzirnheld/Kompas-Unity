@@ -1,4 +1,4 @@
 ﻿public interface ISubeffectFactory
 {
-    Subeffect FromJson(SubeffectType subeffectType, string json, Effect parent, int subeffIndex);
+    ServerSubeffect FromJson(SubeffectType subeffectType, string json, Effect parent, int subeffIndex);
 }

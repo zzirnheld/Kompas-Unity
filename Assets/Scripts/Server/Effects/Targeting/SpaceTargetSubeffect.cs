@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpaceTargetSubeffect : Subeffect
+public class SpaceTargetSubeffect : ServerSubeffect
 {
     public SpaceRestriction spaceRestriction;
 
-    public override void Initialize(Effect eff, int subeffIndex)
+    public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
         Debug.Log("Space restriction is null? " + (spaceRestriction == null));
@@ -15,10 +15,10 @@ public class SpaceTargetSubeffect : Subeffect
 
     public override void Resolve()
     {
-        if (!Effect.serverGame.ExistsSpaceTarget(spaceRestriction))
+        if (!ServerEffect.serverGame.ExistsSpaceTarget(spaceRestriction))
         {
             Debug.Log("No coords exist for " + ThisCard.CardName + " effect");
-            Effect.EffectImpossible();
+            ServerEffect.EffectImpossible();
             return;
         }
 
@@ -30,8 +30,8 @@ public class SpaceTargetSubeffect : Subeffect
         //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
         if (spaceRestriction.Evaluate(x, y))
         {
-            Effect.coords.Add(new Vector2Int(x, y));
-            Effect.ResolveNextSubeffect();
+            ServerEffect.coords.Add(new Vector2Int(x, y));
+            ServerEffect.ResolveNextSubeffect();
             Debug.Log("Adding " + x + ", " + y + " as coords");
             return true;
         }

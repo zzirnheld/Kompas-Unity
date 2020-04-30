@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClientSubeffectFactory : ISubeffectFactory
+public class DummySubeffect : Subeffect
 {
-    public Subeffect FromJson(SubeffectType subeffectType, string json, Effect parent, int subeffIndex)
+    public override Effect Effect => ClientEffect;
+    public override Player Controller => throw new System.NotImplementedException();
+    
+    public ClientEffect ClientEffect { get; private set; }
+    public ClientPlayer ClientController => ClientEffect.ClientController;
+
+    public static DummySubeffect FromJson(SubeffectType subeffectType, string json, ClientEffect parent, int subeffIndex)
     {
         Debug.Log($"Creating subeffect from json {json}");
-        Subeffect toReturn;
+        DummySubeffect toReturn;
 
         switch (subeffectType)
         {
@@ -45,5 +51,11 @@ public class ClientSubeffectFactory : ISubeffectFactory
         }
 
         return toReturn;
+    }
+
+    public virtual void Initialize(ClientEffect eff, int subeffIndex)
+    {
+        this.ClientEffect = eff;
+        this.SubeffIndex = subeffIndex;
     }
 }

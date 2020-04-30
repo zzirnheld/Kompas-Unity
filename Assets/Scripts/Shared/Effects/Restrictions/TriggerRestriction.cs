@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class TriggerRestriction
 {
-    public Subeffect Subeffect;
+    public ServerSubeffect Subeffect;
 
     public enum TriggerRestrictions
     {
@@ -27,9 +27,9 @@ public class TriggerRestriction
     public Card thisCard;
 
     [System.NonSerialized]
-    public Trigger thisTrigger;
+    public ServerTrigger thisTrigger;
 
-    public void Initialize(Subeffect subeff)
+    public void Initialize(ServerSubeffect subeff)
     {
         Subeffect = subeff;
         cardRestriction.Subeffect = subeff;

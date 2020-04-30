@@ -9,7 +9,7 @@ public class BoardTargetSubeffect : CardTargetSubeffect
     
     public BoardRestriction boardRestriction;
 
-    public override void Initialize(Effect eff, int subeffIndex)
+    public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
         boardRestriction.Subeffect = this;
@@ -23,7 +23,7 @@ public class BoardTargetSubeffect : CardTargetSubeffect
         if (ThisCard.game.NoValidCardOnBoardTarget(boardRestriction))
         {
             Debug.Log("No target exists for " + ThisCard.CardName + " effect");
-            Effect.EffectImpossible();
+            ServerEffect.EffectImpossible();
             return;
         }
 
@@ -41,8 +41,8 @@ public class BoardTargetSubeffect : CardTargetSubeffect
         //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
         if (boardRestriction.Evaluate(card))
         {
-            Effect.targets.Add(card);
-            Effect.ResolveNextSubeffect();
+            ServerEffect.targets.Add(card);
+            ServerEffect.ResolveNextSubeffect();
             Debug.Log("Adding " + card.CardName + " as target");
             return true;
         }

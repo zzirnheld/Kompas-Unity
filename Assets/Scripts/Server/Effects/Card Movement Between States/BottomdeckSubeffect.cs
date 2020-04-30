@@ -8,10 +8,10 @@ public class BottomdeckSubeffect : CardChangeStateSubeffect
     {
         if (Target == null)
         {
-            Effect.EffectImpossible();
+            ServerEffect.EffectImpossible();
             return;
         }
-        ServerGame.Bottomdeck(Target, Effect);
-        Effect.ResolveNextSubeffect();
+        ServerGame.Bottomdeck(Target, ServerEffect);
+        ServerEffect.ResolveNextSubeffect();
     }
 }

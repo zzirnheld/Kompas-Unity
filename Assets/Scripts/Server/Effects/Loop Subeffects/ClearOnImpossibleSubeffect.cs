@@ -5,11 +5,11 @@ using UnityEngine;
 /// <summary>
 /// Removes any effect currently set to trigger if an effect is declared impossible.
 /// </summary>
-public class ClearOnImpossibleSubeffect : Subeffect
+public class ClearOnImpossibleSubeffect : ServerSubeffect
 {
     public override void Resolve()
     {
-        Effect.OnImpossible = null;
-        Effect.ResolveNextSubeffect();
+        ServerEffect.OnImpossible = null;
+        ServerEffect.ResolveNextSubeffect();
     }
 }

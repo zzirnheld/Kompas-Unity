@@ -8,10 +8,10 @@ public class RehandSubeffect : CardChangeStateSubeffect
     {
         if (Target == null)
         {
-            Effect.EffectImpossible();
+            ServerEffect.EffectImpossible();
             return;
         }
-        Effect.serverGame.Rehand(Target, Effect);
-        Effect.ResolveNextSubeffect();
+        ServerEffect.serverGame.Rehand(Target, ServerEffect);
+        ServerEffect.ResolveNextSubeffect();
     }
 }

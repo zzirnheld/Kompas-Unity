@@ -2,13 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ServerEffect : Effect
+public class ClientEffect : Effect
 {
-    public ServerEffect(SerializableEffect se, Card thisCard, int controller)
+    public override Player Controller => ClientController;
+
+    public ClientPlayer ClientController;
+    public ClientGame ClientGame { get; }
+    public DummySubeffect[] Subeffects { get; }
+    public ClientTrigger Trigger { get; }
+
+    public ClientEffect(SerializableEffect se, Card thisCard, int controller) : base(se.maxTimesCanUsePerTurn)
     {
         this.thisCard = thisCard ?? throw new System.ArgumentNullException("Effect cannot be attached to null card");
-        this.serverGame = thisCard.game as ServerGame;
-        Subeffects = new Subeffect[se.subeffects.Length];
+        this.ClientGame = thisCard.game as ClientGame;
+        Subeffects = new DummySubeffect[se.subeffects.Length];
         targets = new List<Card>();
         coords = new List<Vector2Int>();
 
@@ -16,7 +23,7 @@ public class ServerEffect : Effect
         {
             try
             {
-                Trigger = Trigger.FromJson(se.triggerCondition, se.trigger, this);
+                Trigger = ClientTrigger.FromJson(se.triggerCondition, se.trigger, this);
             }
             catch (System.ArgumentException)
             {
@@ -29,16 +36,12 @@ public class ServerEffect : Effect
         {
             try
             {
-                Subeffects[i] = thisCard.game.SubeffectFactory.FromJson(se.subeffectTypes[i], se.subeffects[i], this, i);
+                Subeffects[i] = DummySubeffect.FromJson(se.subeffectTypes[i], se.subeffects[i], this, i);
             }
             catch (System.ArgumentException)
             {
                 Debug.LogError($"Failed to load subeffect of type {se.subeffectTypes[i]} from json {se.subeffects[i]}");
-                throw;
             }
         }
-
-        MaxTimesCanUsePerTurn = se.maxTimesCanUsePerTurn;
-        TimesUsedThisTurn = 0;
     }
 }

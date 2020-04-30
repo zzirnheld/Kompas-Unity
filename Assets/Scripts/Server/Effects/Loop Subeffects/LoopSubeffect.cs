@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class LoopSubeffect : Subeffect
+public abstract class LoopSubeffect : ServerSubeffect
 {
     protected abstract void OnLoopExit();
     protected abstract bool ShouldContinueLoop();
@@ -13,7 +13,7 @@ public abstract class LoopSubeffect : Subeffect
     {
         //loop again if necessary
         Debug.Log($"im in ur loop of type {GetType()}, the one that jumps to {JumpTo}");
-        if (ShouldContinueLoop()) Effect.ResolveSubeffect(JumpTo);
+        if (ShouldContinueLoop()) ServerEffect.ResolveSubeffect(JumpTo);
         else ExitLoop();
     }
 
@@ -23,12 +23,12 @@ public abstract class LoopSubeffect : Subeffect
     public void ExitLoop()
     {
         //let parent know the loop is over
-        if(Effect.OnImpossible == this) Effect.OnImpossible = null;
+        if(ServerEffect.OnImpossible == this) ServerEffect.OnImpossible = null;
 
         //do anything necessary to clean up the loop
         OnLoopExit();
 
         //then skip to after the loop
-        Effect.ResolveSubeffect(SubeffIndex + 1);
+        ServerEffect.ResolveSubeffect(SubeffIndex + 1);
     }
 }

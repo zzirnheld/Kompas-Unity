@@ -8,10 +8,10 @@ public class PlaySubeffect : CardChangeStateSubeffect
     {
         if(Target == null)
         {
-            Effect.EffectImpossible();
+            ServerEffect.EffectImpossible();
             return;
         }
-        ServerGame.Play(Target, X, Y, EffectController, Effect);
-        Effect.ResolveNextSubeffect();
+        ServerGame.Play(Target, X, Y, EffectController, ServerEffect);
+        ServerEffect.ResolveNextSubeffect();
     }
 }

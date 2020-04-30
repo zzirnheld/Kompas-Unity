@@ -71,7 +71,7 @@ public class ClientGame : Game {
         if (player >= 2) throw new System.ArgumentException();
 
         Player owner = Players[player];
-        AvatarCard avatar = CardRepo.InstantiateAvatar(avatarName, AvatarPrefab, this, owner, avatarID);
+        AvatarCard avatar = CardRepo.InstantiateAvatar(avatarName, this, owner, avatarID);
         owner.Avatar = avatar;
         Play(avatar, player * 6, player * 6, owner);
     }

@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SetXByTargetCostSubeffect : Subeffect
+public class SetXByTargetCostSubeffect : ServerSubeffect
 {
     public override void Resolve()
     {
         if(Target == null)
         {
-            Effect.EffectImpossible();
+            ServerEffect.EffectImpossible();
             return;
         }
 
-        Effect.X = Target.Cost;
-        Effect.ResolveNextSubeffect();
+        ServerEffect.X = Target.Cost;
+        ServerEffect.ResolveNextSubeffect();
     }
 }

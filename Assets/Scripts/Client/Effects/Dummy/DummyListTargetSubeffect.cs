@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DummyListTargetSubeffect : Subeffect
+public class DummyListTargetSubeffect : DummySubeffect
 {
     /// <summary>
     /// Restriction that each card must fulfill
@@ -14,12 +14,7 @@ public class DummyListTargetSubeffect : Subeffect
     /// </summary>
     public ListRestriction ListRestriction;
 
-    public override void Resolve()
-    {
-        throw new System.NotImplementedException(("Dummy List Target Subeffect should never resolve."));
-    }
-
-    public override void Initialize(Effect eff, int subeffIndex)
+    public override void Initialize(ClientEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
         CardRestriction.Subeffect = this;

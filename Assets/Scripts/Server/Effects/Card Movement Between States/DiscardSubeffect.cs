@@ -8,11 +8,11 @@ public class DiscardSubeffect : CardChangeStateSubeffect
     {
         if (Target == null)
         {
-            Effect.EffectImpossible();
+            ServerEffect.EffectImpossible();
             return;
         }
         Debug.Log("Resolving discard subeffect");
-        ServerGame.Discard(Target, Effect);
-        Effect.ResolveNextSubeffect();
+        ServerGame.Discard(Target, ServerEffect);
+        ServerEffect.ResolveNextSubeffect();
     }
 }

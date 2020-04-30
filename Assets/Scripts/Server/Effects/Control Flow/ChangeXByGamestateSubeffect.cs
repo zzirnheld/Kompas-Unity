@@ -6,7 +6,7 @@ public class ChangeXByGamestateSubeffect : XByGamestateSubeffect
 {
     public override void Resolve()
     {
-        Effect.X += Count;
-        Effect.ResolveNextSubeffect();
+        ServerEffect.X += Count;
+        ServerEffect.ResolveNextSubeffect();
     }
 }

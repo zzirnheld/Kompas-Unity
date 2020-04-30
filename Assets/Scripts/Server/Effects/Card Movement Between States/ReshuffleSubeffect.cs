@@ -8,11 +8,11 @@ public class ReshuffleSubeffect : CardChangeStateSubeffect
     {
         if (Target == null)
         {
-            Effect.EffectImpossible();
+            ServerEffect.EffectImpossible();
             return;
         }
         Debug.Log($"Effect reshuffling {Target?.CardName ?? "nothing"}");
-        ServerGame.Reshuffle(Target, Effect);
-        Effect.ResolveNextSubeffect();
+        ServerGame.Reshuffle(Target, ServerEffect);
+        ServerEffect.ResolveNextSubeffect();
     }
 }

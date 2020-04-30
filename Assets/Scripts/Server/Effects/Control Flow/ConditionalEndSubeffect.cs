@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class ConditionalEndSubeffect : Subeffect
+public class ConditionalEndSubeffect : ServerSubeffect
 {
     public const string XLessThan0 = "X<0";
     public const string XLessThanEqual0 = "X<=0";
@@ -16,7 +16,7 @@ public class ConditionalEndSubeffect : Subeffect
 
     public string Condition;
 
-    public override void Initialize(Effect eff, int subeffIndex)
+    public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
         CardRestriction.Subeffect = this;
@@ -28,16 +28,16 @@ public class ConditionalEndSubeffect : Subeffect
         switch (Condition)
         {
             case XLessThan0:
-                end = Effect.X < 0;
+                end = ServerEffect.X < 0;
                 break;
             case XLessThanEqual0:
-                end = Effect.X <= 0;
+                end = ServerEffect.X <= 0;
                 break;
             case XGreaterThanConst:
-                end = Effect.X > C;
+                end = ServerEffect.X > C;
                 break;
             case XLessThanConst:
-                end = Effect.X < C;
+                end = ServerEffect.X < C;
                 break;
             case NoneFitRestriction:
                 end = !ServerGame.cards.Any(c => CardRestriction.Evaluate(c.Value));
@@ -46,7 +46,7 @@ public class ConditionalEndSubeffect : Subeffect
                 throw new System.ArgumentException($"Condition {Condition} invalid for conditional end subeffect");
         }
 
-        if (end) Effect.EffectImpossible();
-        else Effect.ResolveNextSubeffect();
+        if (end) ServerEffect.EffectImpossible();
+        else ServerEffect.ResolveNextSubeffect();
     }
 }

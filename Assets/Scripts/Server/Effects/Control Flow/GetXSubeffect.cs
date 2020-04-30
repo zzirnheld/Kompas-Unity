@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GetXSubeffect : Subeffect
+public class GetXSubeffect : ServerSubeffect
 {
     public override void Resolve()
     {
-        EffectController.ServerNotifier.GetXForEffect(ThisCard, Effect.EffectIndex, Effect.subeffectIndex);
+        EffectController.ServerNotifier.GetXForEffect(ThisCard, ServerEffect.EffectIndex, ServerEffect.subeffectIndex);
     }
 }

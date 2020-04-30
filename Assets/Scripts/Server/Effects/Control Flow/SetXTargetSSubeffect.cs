@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SetXTargetSSubeffect : Subeffect
+public class SetXTargetSSubeffect : ServerSubeffect
 {
     public override void Resolve()
     {
         if (!(Target is CharacterCard charTarget))
         {
-            Effect.EffectImpossible();
+            ServerEffect.EffectImpossible();
             return;
         }
 
-        Effect.X = charTarget.S;
-        EffectController.ServerNotifier.NotifyEffectX(ThisCard, Effect.EffectIndex, Effect.X);
-        Effect.ResolveNextSubeffect();
+        ServerEffect.X = charTarget.S;
+        EffectController.ServerNotifier.NotifyEffectX(ThisCard, ServerEffect.EffectIndex, ServerEffect.X);
+        ServerEffect.ResolveNextSubeffect();
     }
 }

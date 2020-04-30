@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EndResolutionSubeffect : Subeffect
+public class EndResolutionSubeffect : ServerSubeffect
 {
     public override void Resolve()
     {
-        Effect.EffectImpossible();
+        ServerEffect.EffectImpossible();
     }
 }

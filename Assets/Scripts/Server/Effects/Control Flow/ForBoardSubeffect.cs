@@ -9,7 +9,7 @@ using UnityEngine;
 /* removing "running"
  * having a condition in any subeff that requires targeting that just uses the last target in the list
  */ 
-public class ForBoardSubeffect : Subeffect
+public class ForBoardSubeffect : ServerSubeffect
 {
     public int JumpToWhenDone;
     public BoardRestriction restriction;
@@ -24,21 +24,21 @@ public class ForBoardSubeffect : Subeffect
         {
             for (; yCount < 7; yCount++)
             {
-                Card c = Effect.serverGame.boardCtrl.GetCardAt(xCount, yCount);
+                Card c = ServerEffect.serverGame.boardCtrl.GetCardAt(xCount, yCount);
                 if (restriction.Evaluate(c))
                 {
                     //if we haven't found a first target yet, add the first target to the list
                     if (!running)
                     {
-                        Effect.targets.Add(c);
+                        ServerEffect.targets.Add(c);
                         running = true;
                     }
                     else
                     {
-                        Effect.targets[Effect.targets.Count - 1] = c;
+                        ServerEffect.targets[ServerEffect.targets.Count - 1] = c;
                     }
                     //jump to the next effect to resolve
-                    Effect.ResolveNextSubeffect();
+                    ServerEffect.ResolveNextSubeffect();
                     //and return (in case there's a targeting effect in the looped section somewhere)
                     return;
                 } //end if card fits restriction
@@ -48,11 +48,11 @@ public class ForBoardSubeffect : Subeffect
         //if we ever found a valid target, remove it from the list of targets because it's not a real target
         if (running)
         {
-            Effect.targets.RemoveAt(Effect.targets.Count - 1);
+            ServerEffect.targets.RemoveAt(ServerEffect.targets.Count - 1);
         }
         //in case the effect runs again, reset the flag
         running = false;
         //then jump to the
-        Effect.ResolveSubeffect(JumpToWhenDone);
+        ServerEffect.ResolveSubeffect(JumpToWhenDone);
     } //end resolve
 }

@@ -9,13 +9,13 @@ public class CountXLoopSubeffect : LoopSubeffect
     protected override bool ShouldContinueLoop()
     {
         //count the number of times this happens
-        Effect.X++;
+        ServerEffect.X++;
 
         //tell the client to enable the button to exit the loop
         if(CanDecline) EffectController.ServerNotifier.EnableDecliningTarget();
 
         //let the effect know that if there are no more targets, then call this for loop exit
-        Effect.OnImpossible = this;
+        ServerEffect.OnImpossible = this;
 
         //always return true, if another iteration is chosen not to happen exit loop will be called
         return true;

@@ -10,7 +10,7 @@ public class DeckTargetSubeffect : CardTargetSubeffect
         if (!ThisCard.game.ExistsDeckTarget(cardRestriction, EffectController))
         {
             Debug.Log("No target exists for " + ThisCard.CardName + " effect");
-            Effect.EffectImpossible();
+            ServerEffect.EffectImpossible();
             return;
         }
 

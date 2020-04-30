@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChooseOptionSubeffect : Subeffect
+public class ChooseOptionSubeffect : ServerSubeffect
 {
     public string ChoiceBlurb;
     public string[] OptionBlurbs;
@@ -27,6 +27,6 @@ public class ChooseOptionSubeffect : Subeffect
             return;
         }
 
-        Effect.ResolveSubeffect(OptionJumpIndices[optionIndex]);
+        ServerEffect.ResolveSubeffect(OptionJumpIndices[optionIndex]);
     }
 }

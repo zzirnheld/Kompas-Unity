@@ -9,7 +9,7 @@ public class XTimesSubeffect : LoopSubeffect
     protected override bool ShouldContinueLoop()
     {
         count++;
-        return count < Effect.X;
+        return count < ServerEffect.X;
     }
 
     protected override void OnLoopExit()

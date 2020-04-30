@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public class CardRestriction
 {
-    public Subeffect Subeffect;
+    public Subeffect Subeffect { get; set; }
 
     public enum CardRestrictions {
         NameIs = 1,
@@ -163,7 +163,7 @@ public class CardRestriction
                     if (potentialTarget.IndexInList > constant) return false;
                     break;
                 case CardRestrictions.NotAlreadyTarget:
-                    if (Subeffect.Effect.targets.Contains(potentialTarget)) return false;
+                    if (Subeffect.ServerEffect.targets.Contains(potentialTarget)) return false;
                     break;
                 default:
                     Debug.Log("You forgot to check for " + c);
@@ -183,6 +183,6 @@ public class CardRestriction
     /// <returns></returns>
     public virtual bool Evaluate(Card potentialTarget)
     {
-        return Evaluate(potentialTarget, Subeffect.Effect.X);
+        return Evaluate(potentialTarget, Subeffect.ServerEffect.X);
     }
 }

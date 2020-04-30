@@ -94,19 +94,19 @@ namespace KompasNetworking
 
         public Packet(Command command, Card source, BoardTargetSubeffect boardTargetSubeffect) : this(command, source)
         {
-            normalArgs[0] = boardTargetSubeffect.Effect.EffectIndex;
+            normalArgs[0] = boardTargetSubeffect.ServerEffect.EffectIndex;
             normalArgs[1] = boardTargetSubeffect.SubeffIndex;
         }
 
         public Packet(Command command, Card source, CardTargetSubeffect cardTargetSubeffect) : this(command, source)
         {
-            normalArgs[0] = cardTargetSubeffect.Effect.EffectIndex;
+            normalArgs[0] = cardTargetSubeffect.ServerEffect.EffectIndex;
             normalArgs[1] = cardTargetSubeffect.SubeffIndex;
         }
 
         public Packet(Command command, Card source, SpaceTargetSubeffect spaceTargetSubeffect) : this(command, source)
         {
-            normalArgs[0] = spaceTargetSubeffect.Effect.EffectIndex;
+            normalArgs[0] = spaceTargetSubeffect.ServerEffect.EffectIndex;
             normalArgs[1] = spaceTargetSubeffect.SubeffIndex;
         }
 

@@ -9,6 +9,6 @@ public class LoopWhileHaveTargetsSubeffect : LoopSubeffect
 
     protected override bool ShouldContinueLoop()
     {
-        return Effect.targets.Any();
+        return ServerEffect.targets.Any();
     }
 }

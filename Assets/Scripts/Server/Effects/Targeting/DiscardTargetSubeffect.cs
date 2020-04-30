@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DiscardTargetSubeffect : CardTargetSubeffect
 {
-    public override void Initialize(Effect eff, int subeffIndex)
+    public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
         cardRestriction.Subeffect = this;
@@ -16,7 +16,7 @@ public class DiscardTargetSubeffect : CardTargetSubeffect
         if (!ThisCard.game.ExistsDiscardTarget(cardRestriction, EffectController))
         {
             Debug.Log("No target exists for " + ThisCard.CardName + " effect");
-            Effect.EffectImpossible();
+            ServerEffect.EffectImpossible();
             return;
         }
 

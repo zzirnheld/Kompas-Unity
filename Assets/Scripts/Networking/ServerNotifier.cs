@@ -243,14 +243,14 @@ public class ServerNotifier : MonoBehaviour
         {
             cardIDs[i] = potentialTargets[i].ID;
         }
-        Packet packet = new Packet(Packet.Command.GetChoicesFromList, src.ThisCard, cardIDs, maxNum, src.Effect.EffectIndex, src.SubeffIndex);
+        Packet packet = new Packet(Packet.Command.GetChoicesFromList, src.ThisCard, cardIDs, maxNum, src.ServerEffect.EffectIndex, src.SubeffIndex);
         SendPacket(packet);
         Debug.Log($"Asking for targets from list of cardIDs {string.Join(",", cardIDs)}");
     }
 
     public void ChooseEffectOption(ChooseOptionSubeffect src)
     {
-        Packet packet = new Packet(Packet.Command.ChooseEffectOption, src.ThisCard, src.Effect.EffectIndex, src.SubeffIndex);
+        Packet packet = new Packet(Packet.Command.ChooseEffectOption, src.ThisCard, src.ServerEffect.EffectIndex, src.SubeffIndex);
         SendPacket(packet);
     }
     #endregion request targets
@@ -304,7 +304,7 @@ public class ServerNotifier : MonoBehaviour
         SendToBoth(packet);
     }
 
-    public void AskForTrigger(Trigger t, int? x, Card cardTriggerer, IStackable stackTriggerer)
+    public void AskForTrigger(ServerTrigger t, int? x, Card cardTriggerer, IStackable stackTriggerer)
     {
         Card cardWhoseTrigger = t.effToTrigger.thisCard;
         int effIndex = t.effToTrigger.EffectIndex;

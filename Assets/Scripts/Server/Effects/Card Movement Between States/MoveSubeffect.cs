@@ -8,10 +8,10 @@ public class MoveSubeffect : CardChangeStateSubeffect
     {
         if (Target == null)
         {
-            Effect.EffectImpossible();
+            ServerEffect.EffectImpossible();
             return;
         }
-        ServerGame.MoveOnBoard(Target, X, Y, Effect);
-        Effect.ResolveNextSubeffect();
+        ServerGame.MoveOnBoard(Target, X, Y, ServerEffect);
+        ServerEffect.ResolveNextSubeffect();
     }
 }

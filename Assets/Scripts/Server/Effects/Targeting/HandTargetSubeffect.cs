@@ -10,7 +10,7 @@ public class HandTargetSubeffect : CardTargetSubeffect
         if (!ThisCard.game.ExistsHandTarget(cardRestriction, EffectController))
         {
             Debug.Log("No target exists for " + ThisCard.CardName + " effect");
-            Effect.EffectImpossible();
+            ServerEffect.EffectImpossible();
             return;
         }
 

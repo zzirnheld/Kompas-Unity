@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Swaps two values among one card's own NESW. E for W, for example.
 /// </summary>
-public class SwapOwnNESWSubeffect : Subeffect
+public class SwapOwnNESWSubeffect : ServerSubeffect
 {
     public int Stat1;
     public int Stat2;
@@ -14,7 +14,7 @@ public class SwapOwnNESWSubeffect : Subeffect
     {
         if(!(Target is CharacterCard charCard))
         {
-            Effect.EffectImpossible();
+            ServerEffect.EffectImpossible();
             return;
         }
 
@@ -22,6 +22,6 @@ public class SwapOwnNESWSubeffect : Subeffect
         (newStats[Stat1], newStats[Stat2]) = (newStats[Stat2], newStats[Stat1]);
         ServerGame.SetStats(charCard, newStats);
 
-        Effect.ResolveNextSubeffect();
+        ServerEffect.ResolveNextSubeffect();
     }
 }

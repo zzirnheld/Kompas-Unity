@@ -13,12 +13,12 @@ public class TemporaryNESWBuffSubeffect : TemporarySubeffect
     {
         if(!(Target is CharacterCard charCard))
         {
-            Effect.EffectImpossible();
+            ServerEffect.EffectImpossible();
             return;
         }
 
         var temp = new TemporaryNESWBuff(ServerGame, TriggerRestriction, EndCondition, 
             charCard, NBuff, EBuff, SBuff, WBuff);
-        Effect.ResolveNextSubeffect();
+        ServerEffect.ResolveNextSubeffect();
     }
 }

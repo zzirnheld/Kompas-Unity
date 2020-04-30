@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class XByGamestateSubeffect : Subeffect
+public abstract class XByGamestateSubeffect : ServerSubeffect
 {
     public const string HandSize = "Hand Size";
 
@@ -17,8 +17,8 @@ public abstract class XByGamestateSubeffect : Subeffect
     {
         get
         {
-            if (PlayerIndex == 0) return Effect.EffectController;
-            else return Effect.EffectController.enemy;
+            if (PlayerIndex == 0) return ServerEffect.EffectController;
+            else return ServerEffect.EffectController.enemy;
         }
     }
 

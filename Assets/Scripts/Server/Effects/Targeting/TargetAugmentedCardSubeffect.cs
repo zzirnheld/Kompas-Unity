@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetAugmentedCardSubeffect : Subeffect
+public class TargetAugmentedCardSubeffect : ServerSubeffect
 {
     public override void Resolve()
     {
-        if(Effect.thisCard is AugmentCard aug)
+        if(ServerEffect.thisCard is AugmentCard aug)
         {
-            Effect.targets.Add(aug.AugmentedCard);
+            ServerEffect.targets.Add(aug.AugmentedCard);
         }
-        Effect.ResolveNextSubeffect();
+        ServerEffect.ResolveNextSubeffect();
     }
 }

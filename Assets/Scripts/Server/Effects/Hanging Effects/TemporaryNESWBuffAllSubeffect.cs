@@ -19,7 +19,7 @@ public class TemporaryNESWBuffAllSubeffect : TemporarySubeffect
         }
     };
 
-    public override void Initialize(Effect eff, int subeffIndex)
+    public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
         CardRestriction.Subeffect = this;
@@ -36,6 +36,6 @@ public class TemporaryNESWBuffAllSubeffect : TemporarySubeffect
                 card as CharacterCard, NBuff, EBuff, SBuff, WBuff);
         }
 
-        Effect.ResolveNextSubeffect();
+        ServerEffect.ResolveNextSubeffect();
     }
 }

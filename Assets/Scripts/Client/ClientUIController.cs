@@ -126,7 +126,7 @@ public class ClientUIController : UIController
         clientGame.clientNotifier.DeclineAnotherTarget();
     }
 
-    public void ShowOptionalTrigger(Trigger t, int? x)
+    public void ShowOptionalTrigger(ServerTrigger t, int? x)
     {
         TriggerBlurbText.text = t.Blurb;
         ConfirmTriggerView.SetActive(true);

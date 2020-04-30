@@ -2,26 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PayPipsTargetCostSubeffect : Subeffect
+public class PayPipsTargetCostSubeffect : ServerSubeffect
 {
     public override void Resolve()
     {
         if(Target == null)
         {
-            Effect.EffectImpossible();
+            ServerEffect.EffectImpossible();
             return;
         }
 
         int toPay = Target.Cost;
         if (EffectController.pips < toPay)
         {
-            Effect.EffectImpossible();
+            ServerEffect.EffectImpossible();
             return;
         }
 
         Debug.Log("Paying " + toPay + " pips for target cost");
         EffectController.pips -= toPay;
         EffectController.ServerNotifier.NotifySetPips(EffectController.pips);
-        Effect.ResolveNextSubeffect();
+        ServerEffect.ResolveNextSubeffect();
     }
 }

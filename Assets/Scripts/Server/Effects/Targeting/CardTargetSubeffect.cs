@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class CardTargetSubeffect : Subeffect
+public abstract class CardTargetSubeffect : ServerSubeffect
 {
     public CardRestriction cardRestriction = new CardRestriction();
 
-    public override void Initialize(Effect eff, int subeffIndex)
+    public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
         cardRestriction.Subeffect = this;
@@ -20,9 +20,9 @@ public abstract class CardTargetSubeffect : Subeffect
         //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
         if (cardRestriction.Evaluate(card))
         {
-            Effect.targets.Add(card);
+            ServerEffect.targets.Add(card);
             EffectController.ServerNotifier.AcceptTarget();
-            Effect.ResolveNextSubeffect();
+            ServerEffect.ResolveNextSubeffect();
             Debug.Log("Adding " + card.CardName + " as target");
             return true;
         }

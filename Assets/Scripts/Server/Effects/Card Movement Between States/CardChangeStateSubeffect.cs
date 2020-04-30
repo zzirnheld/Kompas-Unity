@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Moves cards between discard/field/etc
 /// </summary>
-public abstract class CardChangeStateSubeffect : Subeffect
+public abstract class CardChangeStateSubeffect : ServerSubeffect
 {
     public int SpaceIndex = -1;
 
@@ -13,8 +13,8 @@ public abstract class CardChangeStateSubeffect : Subeffect
     {
         get
         {
-            if (SpaceIndex < 0) return Effect.coords[Effect.coords.Count + SpaceIndex].x;
-            else return Effect.coords[SpaceIndex].x;
+            if (SpaceIndex < 0) return ServerEffect.coords[ServerEffect.coords.Count + SpaceIndex].x;
+            else return ServerEffect.coords[SpaceIndex].x;
         }
     }
 
@@ -22,8 +22,8 @@ public abstract class CardChangeStateSubeffect : Subeffect
     {
         get
         {
-            if (SpaceIndex < 0) return Effect.coords[Effect.coords.Count + SpaceIndex].y;
-            else return Effect.coords[SpaceIndex].y;
+            if (SpaceIndex < 0) return ServerEffect.coords[ServerEffect.coords.Count + SpaceIndex].y;
+            else return ServerEffect.coords[SpaceIndex].y;
         }
     }
 }

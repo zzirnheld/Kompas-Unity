@@ -32,7 +32,7 @@ public class ListRestriction
                         //TODO: check each card's playability, once runes are in?
                         totalCost += card.Cost;
                     }
-                    if (Subeffect.EffectController.pips < totalCost) return false;
+                    if (Subeffect.Controller.pips < totalCost) return false;
                     break;
                 default:
                     Debug.LogError($"Could not check list restriction {restriction}");

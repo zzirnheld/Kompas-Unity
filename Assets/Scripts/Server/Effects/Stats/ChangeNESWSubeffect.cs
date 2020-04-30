@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class ChangeNESWSubeffect : Subeffect
+public class ChangeNESWSubeffect : ServerSubeffect
 {
     public int nChange = 0;
     public int eChange = 0;
@@ -14,7 +14,7 @@ public class ChangeNESWSubeffect : Subeffect
     {
         if(!(Target is CharacterCard charCard))
         {
-            Effect.EffectImpossible();
+            ServerEffect.EffectImpossible();
             return;
         }
 
@@ -24,6 +24,6 @@ public class ChangeNESWSubeffect : Subeffect
             charCard.E + eChange,
             charCard.S + sChange,
             charCard.W + wChange);
-        Effect.ResolveNextSubeffect();
+        ServerEffect.ResolveNextSubeffect();
     }
 }

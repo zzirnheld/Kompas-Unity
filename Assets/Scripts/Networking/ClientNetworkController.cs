@@ -246,7 +246,7 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.boardCtrl.DiscardSimples();
                 break;
             case Packet.Command.OptionalTrigger:
-                Trigger t = ClientGame.GetCardFromID(packet.cardID).Effects[packet.EffIndex].Trigger;
+                ServerTrigger t = ClientGame.GetCardFromID(packet.cardID).Effects[packet.EffIndex].Trigger;
                 ClientGame.clientUICtrl.ShowOptionalTrigger(t, packet.EffectX);
                 break;
             default:

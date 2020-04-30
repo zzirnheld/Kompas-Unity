@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NegateSubeffect : Subeffect
+public class NegateSubeffect : ServerSubeffect
 {
     public override void Resolve()
     {
         if(Target == null)
         {
-            Effect.EffectImpossible();
+            ServerEffect.EffectImpossible();
             return;
         }
 
         ServerGame.Negate(Target);
-        Effect.ResolveNextSubeffect();
+        ServerEffect.ResolveNextSubeffect();
     }
 }

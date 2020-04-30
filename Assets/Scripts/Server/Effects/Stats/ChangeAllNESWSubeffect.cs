@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChangeAllNESWSubeffect : Subeffect
+public class ChangeAllNESWSubeffect : ServerSubeffect
 {
     public int NMod = 0;
     public int EMod = 0;
@@ -27,6 +27,6 @@ public class ChangeAllNESWSubeffect : Subeffect
             }
         }
 
-        Effect.ResolveNextSubeffect();
+        ServerEffect.ResolveNextSubeffect();
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class ChooseFromListSubeffect : Subeffect
+public class ChooseFromListSubeffect : ServerSubeffect
 {
     /// <summary>
     /// Restriction that each card must fulfill
@@ -29,7 +29,7 @@ public class ChooseFromListSubeffect : Subeffect
         EffectController.ServerNotifier.GetChoicesFromList(potentialTargets, MaxCanChoose, this);
     }
 
-    public override void Initialize(Effect eff, int subeffIndex)
+    public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
         CardRestriction.Subeffect = this;
@@ -43,7 +43,7 @@ public class ChooseFromListSubeffect : Subeffect
         //  because otherwise enumerating lists and seeing if at least one fits would be exponential time
         if(!ListRestriction.Evaluate(new List<Card>()))
         {
-            Effect.EffectImpossible();
+            ServerEffect.EffectImpossible();
             return;
         }
 
@@ -62,7 +62,7 @@ public class ChooseFromListSubeffect : Subeffect
         //if you want to continue resolution anyway, add an if impossible check before this subeffect.
         if(potentialTargets.Count == 0)
         {
-            Effect.EffectImpossible();
+            ServerEffect.EffectImpossible();
             return;
         }
 
@@ -85,9 +85,9 @@ public class ChooseFromListSubeffect : Subeffect
         }
 
         //add all cards in the chosen list to targets
-        Effect.targets.AddRange(choices);
+        ServerEffect.targets.AddRange(choices);
         //everything's cool
-        Effect.ResolveNextSubeffect();
+        ServerEffect.ResolveNextSubeffect();
         return true;
     }
 

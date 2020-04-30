@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class XChangeNESWSubeffect : Subeffect
+public class XChangeNESWSubeffect : ServerSubeffect
 {
     public int nMult = 0;
     public int eMult = 0;
@@ -19,15 +19,15 @@ public class XChangeNESWSubeffect : Subeffect
     {
         if (!(Target is CharacterCard charCard))
         {
-            Effect.EffectImpossible();
+            ServerEffect.EffectImpossible();
             return;
         }
 
         ServerGame.SetStats(charCard,
-            charCard.N + Effect.X * nMult + nMod,
-            charCard.E + Effect.X * eMult + eMod,
-            charCard.S + Effect.X * sMult + sMod,
-            charCard.W + Effect.X * wMult + wMod);
-        Effect.ResolveNextSubeffect();
+            charCard.N + ServerEffect.X * nMult + nMod,
+            charCard.E + ServerEffect.X * eMult + eMod,
+            charCard.S + ServerEffect.X * sMult + sMod,
+            charCard.W + ServerEffect.X * wMult + wMod);
+        ServerEffect.ResolveNextSubeffect();
     }
 }

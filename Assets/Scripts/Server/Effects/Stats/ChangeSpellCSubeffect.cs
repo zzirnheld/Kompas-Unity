@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChangeSpellCSubeffect : Subeffect
+public class ChangeSpellCSubeffect : ServerSubeffect
 {
     public int XModifier = 0;
     public int XMultiplier = 0;
@@ -12,11 +12,11 @@ public class ChangeSpellCSubeffect : Subeffect
     {
         if(!(Target is SpellCard spellTarget))
         {
-            Effect.EffectImpossible();
+            ServerEffect.EffectImpossible();
             return;
         }
 
-        spellTarget.C = Effect.X * XMultiplier / XDivisor + XModifier;
-        Effect.ResolveNextSubeffect();
+        spellTarget.C = ServerEffect.X * XMultiplier / XDivisor + XModifier;
+        ServerEffect.ResolveNextSubeffect();
     }
 }

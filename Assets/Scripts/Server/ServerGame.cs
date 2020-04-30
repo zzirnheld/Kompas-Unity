@@ -21,14 +21,14 @@ public class ServerGame : Game {
     public int cardCount = 0;
     private int currPlayerCount = 0; //current number of players. shouldn't exceed 2
 
-    public Stack<(Trigger, int?, Card, IStackable, ServerPlayer)> OptionalTriggersToAsk;
+    public Stack<(ServerTrigger, int?, Card, IStackable, ServerPlayer)> OptionalTriggersToAsk;
 
     private void Start()
     {
         mainGame = this;
 
         SubeffectFactory = new ServerSubeffectFactory();
-        OptionalTriggersToAsk = new Stack<(Trigger, int?, Card, IStackable, ServerPlayer)>();
+        OptionalTriggersToAsk = new Stack<(ServerTrigger, int?, Card, IStackable, ServerPlayer)>();
     }
 
     public void Init(UIController uiCtrl, CardRepository cardRepo)
@@ -384,7 +384,7 @@ public class ServerGame : Game {
     }
 
     #region the stack
-    public void PushToStack(IStackable eff, int controller)
+    public void PushToStack(IStackable eff)
     {
         stack.Add(eff);
         stackIndex++;
@@ -516,7 +516,7 @@ public class ServerGame : Game {
         }
 
         Debug.Log($"Attempting to trigger {condition}, with triggerer {cardTriggerer?.CardName}, triggered by a null stacktrigger? {stackTrigger == null}, x={x}");
-        foreach (Trigger t in triggerMap[condition])
+        foreach (ServerTrigger t in triggerMap[condition])
         {
             t.TriggerIfValid(cardTriggerer, stackTrigger, x, triggerer);
         }
@@ -528,7 +528,7 @@ public class ServerGame : Game {
     /// </summary>
     /// <param name="trigger"></param>
     /// <param name="x"></param>
-    public void AskForTrigger(Trigger trigger, int? x, Card c, IStackable s, ServerPlayer p)
+    public void AskForTrigger(ServerTrigger trigger, int? x, Card c, IStackable s, ServerPlayer p)
     {
         lock (TriggerStackLock)
         {

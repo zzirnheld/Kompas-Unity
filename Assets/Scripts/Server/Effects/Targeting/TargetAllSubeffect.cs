@@ -11,13 +11,13 @@ public class TargetAllSubeffect : CardTargetSubeffect
         {
             if (cardRestriction.Evaluate(pair.Value))
             {
-                Effect.targets.Add(pair.Value);
+                ServerEffect.targets.Add(pair.Value);
                 found = true;
             }
         }
 
-        if (found) Effect.ResolveNextSubeffect();
-        else Effect.EffectImpossible();
+        if (found) ServerEffect.ResolveNextSubeffect();
+        else ServerEffect.EffectImpossible();
     }
 }
 

@@ -37,7 +37,7 @@ public abstract class Game : MonoBehaviour {
     protected int stackIndex;
 
     //trigger map
-    protected Dictionary<TriggerCondition, List<Trigger>> triggerMap;
+    protected Dictionary<TriggerCondition, List<ServerTrigger>> triggerMap;
     protected Dictionary<TriggerCondition, List<HangingEffect>> hangingEffectMap;
 
     protected Effect currEffect;
@@ -70,10 +70,10 @@ public abstract class Game : MonoBehaviour {
 
         stackIndex = -1;
         stack = new List<IStackable>();
-        triggerMap = new Dictionary<TriggerCondition, List<Trigger>>();
+        triggerMap = new Dictionary<TriggerCondition, List<ServerTrigger>>();
         foreach (TriggerCondition c in System.Enum.GetValues(typeof(TriggerCondition)))
         {
-            triggerMap.Add(c, new List<Trigger>());
+            triggerMap.Add(c, new List<ServerTrigger>());
         }
 
         hangingEffectMap = new Dictionary<TriggerCondition, List<HangingEffect>>();
@@ -278,13 +278,13 @@ public abstract class Game : MonoBehaviour {
     }
 
     #region triggers
-    public void RegisterTrigger(TriggerCondition condition, Trigger trigger)
+    public void RegisterTrigger(TriggerCondition condition, ServerTrigger trigger)
     {
         Debug.Log($"Registering a new trigger from card {trigger.effToTrigger.thisCard.CardName} to condition {condition}");
-        List<Trigger> triggers = triggerMap[condition];
+        List<ServerTrigger> triggers = triggerMap[condition];
         if (triggers == null)
         {
-            triggers = new List<Trigger>();
+            triggers = new List<ServerTrigger>();
             triggerMap.Add(condition, triggers);
         }
         triggers.Add(trigger);

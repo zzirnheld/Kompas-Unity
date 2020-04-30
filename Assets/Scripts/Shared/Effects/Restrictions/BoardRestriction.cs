@@ -30,7 +30,7 @@ public class BoardRestriction : CardRestriction
                     if (!potentialTarget.WithinSlots(cSpaces, Subeffect.ThisCard)) return false;
                     break;
                 case BoardRestrictions.ExactlyXSpaces:
-                    if (potentialTarget.DistanceTo(Subeffect.ThisCard) != Subeffect.Effect.X) return false;
+                    if (potentialTarget.DistanceTo(Subeffect.ThisCard) != Subeffect.ServerEffect.X) return false;
                     break;
                     //TODO also allow for summoned avatars, maybe with an overridden property Summoned?
                 case BoardRestrictions.Summoned:
