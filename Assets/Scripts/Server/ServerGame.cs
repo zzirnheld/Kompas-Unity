@@ -293,11 +293,6 @@ public class ServerGame : Game {
         return drawn;
     }
 
-    public void Lose(int playerIndex)
-    {
-        throw new System.NotImplementedException();
-    }
-
     public void GivePlayerPips(Player player, int pipsToSet)
     {
         player.pips = pipsToSet;

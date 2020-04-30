@@ -15,7 +15,7 @@ public class AvatarCard : CharacterCard
         protected set
         {
             e = value > 0 ? value : 0;
-            if (e < 0) serverGame?.Lose(ControllerIndex);
+            if (e < 0) game.Lose(ControllerIndex);
         }
     }
 }

@@ -84,6 +84,7 @@ public abstract class Game : MonoBehaviour {
     }
 
     public virtual void OnClickBoard(int x, int y) { }
+    public virtual void Lose(int controllerIndex) { }
 
     public Card GetCardFromID(int id)
     {

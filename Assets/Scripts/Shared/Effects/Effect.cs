@@ -55,7 +55,7 @@ public class Effect : IStackable
     public Effect(SerializableEffect se, Card thisCard, int controller)
     {
         this.thisCard = thisCard ?? throw new System.ArgumentNullException("Effect cannot be attached to null card");
-        this.serverGame = thisCard.serverGame;
+        this.serverGame = thisCard.game as ServerGame;
         Subeffects = new Subeffect[se.subeffects.Length];
         targets = new List<Card>();
         coords = new List<Vector2Int>();

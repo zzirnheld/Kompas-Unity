@@ -7,24 +7,6 @@ using UnityEngine.EventSystems;
 public abstract class Card : CardBase {
     public Game game;
 
-    public ClientGame clientGame { get; protected set; }
-    public ServerGame serverGame { get; protected set; }
-
-    //constants
-    //minimum and maximum distances to the board, discard, and deck objects for dragging
-    public const float minBoardLocalX = -0.45f;
-    public const float maxBoardLocalX = 0.45f;
-    public const float minBoardLocalY = -0.45f;
-    public const float maxBoardLocalY = 0.45f;
-    public const float minDiscardX = 4.5f;
-    public const float maxDiscardX = 5.5f;
-    public const float minDiscardZ = -3.5f;
-    public const float maxDiscardZ = -2.5f;
-    public const float minDeckX = 2.5f;
-    public const float maxDeckX = 3.5f;
-    public const float minDeckZ = -5.5f;
-    public const float maxDeckZ = -4.5f;
-
     //game mechanics data
     protected int boardX;
     protected int boardY;
@@ -43,32 +25,6 @@ public abstract class Card : CardBase {
     //other game data
     protected string cardFileName;
     protected MeshRenderer meshRenderer;
-    protected bool dragging = false;
-
-    public const float spacesInGrid = 7f;
-    public const float boardLenOffset = 0.45f;
-
-    protected static int PosToGridIndex(float pos)
-    {
-        /*first, add the offset to make the range of values from (-0.45, 0.45) to (0, 0.9).
-        * then, multiply by the grid length to board length ratio (currently 7, because there
-        * are 7 game board slots for the board's local length of 1). 
-        * Divide by 0.9f because the range of accepted position values is 0 to 0.9f (0.45 - -0.45).
-        * Then add 0.5 so that the cast to int effectively rounds instead of flooring.
-        */
-        return (int)(((pos + boardLenOffset) * (spacesInGrid - 1f) / (2 * boardLenOffset)) + 0.5f);
-    }
-    protected static float GridIndexToPos(int gridIndex)
-    {
-        /* first, cast the index to a float to make sure the math works out.
-         * then, divide by the grid length to board ratio to get a number (0,1) that makes
-         * sense in the context of the board's local lenth of one.
-         * then, subtract the board length offset to get a number that makes sense
-         * in the actual board's context of values (-0.45, 0.45) (legal local coordinates)
-         * finally, add 0.025 to account for the 0.05 space on either side of the legal 0.45 area
-         */
-        return (((float)(gridIndex)) / (spacesInGrid - 1f) * (2 * boardLenOffset)) - boardLenOffset;
-    }
 
     //getters and setters
     //game mechanics data
@@ -121,6 +77,21 @@ public abstract class Card : CardBase {
                     return -1;
             }
         }
+    }
+
+
+    public const float spacesInGrid = 7f;
+    public const float boardLenOffset = 0.45f;
+    protected static float GridIndexToPos(int gridIndex)
+    {
+        /* first, cast the index to a float to make sure the math works out.
+         * then, divide by the grid length to board ratio to get a number (0,1) that makes
+         * sense in the context of the board's local lenth of one.
+         * then, subtract the board length offset to get a number that makes sense
+         * in the actual board's context of values (-0.45, 0.45) (legal local coordinates)
+         * finally, add 0.025 to account for the 0.05 space on either side of the legal 0.45 area
+         */
+        return (((float)(gridIndex)) / (spacesInGrid - 1f) * (2 * boardLenOffset)) - boardLenOffset;
     }
 
     //unity methods
@@ -200,8 +171,6 @@ public abstract class Card : CardBase {
         this.augments = new List<AugmentCard>();
 
         this.game = game;
-        clientGame = game as ClientGame;
-        serverGame = game as ServerGame;
 
         this.owner = owner;
         this.ownerIndex = owner.index;
@@ -215,17 +184,15 @@ public abstract class Card : CardBase {
         {
             effects[i] = new Effect(serializedCard.effects[i], this, ControllerIndex);
         }
-        if (serverGame != null)
+
+        foreach (Effect eff in effects)
         {
-            foreach (Effect eff in effects)
+            if (eff.Trigger != null)
             {
-                if (eff.Trigger != null)
-                {
-                    //Debug.Log("registering trigger for " + eff.Trigger.triggerCondition);
-                    serverGame.RegisterTrigger(eff.Trigger.triggerCondition, eff.Trigger);
-                }
-                else Debug.Log("trigger is null");
+                Debug.Log($"Registering triggered effect of {CardName} to {eff.Trigger.triggerCondition}");
+                game.RegisterTrigger(eff.Trigger.triggerCondition, eff.Trigger);
             }
+            else Debug.Log($"Registering activated effect of {CardName}");
         }
 
         if (location == CardLocation.Field) MoveTo(serializedCard.BoardX, serializedCard.BoardY);
@@ -315,8 +282,6 @@ public abstract class Card : CardBase {
                 controller.handCtrl.SpreadOutCards();
                 break;
         }
-
-        dragging = false;
     }
 
     /// <summary>
@@ -324,16 +289,6 @@ public abstract class Card : CardBase {
     /// Should be called when cards move out the discard, or into the hand, deck, or annihilation
     /// </summary>
     public virtual void ResetCard() { }
-
-    //helper methods
-    public bool WithinIgnoreY(Vector3 position, float minX, float maxX, float minZ, float maxZ)
-    {
-        return position.x > minX && position.x < maxX && position.z > minZ && position.z < maxZ;
-    }
-    public bool WithinIgnoreZ(Vector3 position, float minX, float maxX, float minY, float maxY)
-    {
-        return position.x > minX && position.x < maxX && position.y > minY && position.y < maxY;
-    }
 
     /// <summary>
     /// Resets anything that needs to be reset for the start of the turn.
@@ -372,101 +327,4 @@ public abstract class Card : CardBase {
         aug.AugmentedCard = null;
     }
     #endregion augments
-
-    #region MouseStuff
-    private void GoToMouse()
-    {
-        //raycast to get point to drag to
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit))
-        {
-            transform.position = new Vector3(hit.point.x, 1f, hit.point.z);
-        }
-    }
-
-    //actual interaction
-    public void OnMouseDrag()
-    {
-        //don't allow dragging cards if we're awaiting a target
-        if (game.targetMode != Game.TargetMode.Free) return;
-
-        dragging = true;
-        GoToMouse();
-    }
-
-    public void OnMouseExit()
-    {
-        //don't allow dragging cards if we're awaiting a target
-        if (game.targetMode != Game.TargetMode.Free) return;
-
-        bool mouseDown = Input.GetMouseButton(0);
-        if (dragging)
-        {
-            if (mouseDown) GoToMouse();
-            else OnMouseUp();
-
-            dragging = mouseDown;
-        }
-    }
-
-    public void OnMouseUp()
-    {
-        Debug.Log($"On mouse up on {CardName} in target mode {game.targetMode}");
-
-        //select cards if the player releases the mouse button while over one
-        game.uiCtrl.SelectCard(this, true);
-
-        if (!dragging) return;
-        dragging = false;
-
-        //don't allow dragging cards if we're awaiting a target
-        if (game.targetMode != Game.TargetMode.Free) return;
-
-        //to be able to use local coordinates to see if you're on the board, set parent to game board
-        var boardLocalPosition = game.boardObject.transform.InverseTransformPoint(transform.position);
-
-        //then, check if it's on the board, accodring to the local coordinates of the game board)
-        if (WithinIgnoreZ(boardLocalPosition, minBoardLocalX, maxBoardLocalX, minBoardLocalY, maxBoardLocalY))
-        {
-            int x = PosToGridIndex(boardLocalPosition.x);
-            int y = PosToGridIndex(boardLocalPosition.y);
-
-            //if the card is being moved on the field, that means it's just being moved
-            if (location == CardLocation.Field)
-            {
-                CharacterCard charThere = game.boardCtrl.GetCharAt(x, y);
-                Debug.Log($"Trying to move/attack to {x}, {y}. The controller index, if any, is {charThere?.ControllerIndex}");
-                //then check if it's an attack or not
-                if (charThere != null && charThere.ControllerIndex != ControllerIndex)
-                    clientGame.clientNotifier.RequestAttack(this, x, y);
-                else
-                    clientGame.clientNotifier.RequestMove(this, x, y);
-            }
-            //otherwise, it is being played from somewhere like the hand or discard
-            else clientGame.clientNotifier.RequestPlay(this, x, y);
-        }
-        //if it's not on the board, maybe it's on top of the discard
-        else if (WithinIgnoreY(transform.position, minDiscardX, maxDiscardX, minDiscardZ, maxDiscardZ))
-        {
-            //in that case, discard it //TODO do this by raycasting along another layer to see if you hit deck/discard
-            clientGame.clientNotifier.RequestDiscard(this);
-        }
-        //maybe it's on top of the deck
-        else if (WithinIgnoreY(transform.position, minDeckX, maxDeckX, minDeckZ, maxDeckZ))
-        {
-            //in that case, topdeck it
-            clientGame.clientNotifier.RequestTopdeck(this);
-        }
-        //if it's not in any of those, probably should go back in the hand.
-        else
-        {
-            clientGame.clientNotifier.RequestRehand(this);
-        }
-    }
-
-    public void OnMouseEnter()
-    {
-        game.uiCtrl.HoverOver(this);
-    }
-    #endregion MouseStuff
 }
