@@ -463,8 +463,8 @@ public class ServerGame : Game {
             if (answer)
             {
                 t.TriggerIfValid(cardTrigger, stackTrigger, x, triggerer, true);
-                CheckForResponse();
             }
+            CheckForResponse();
         }
     }
 
