@@ -3417,7 +3417,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9fb8748191d6744ab4316215e0b0131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeckSelectCardPrefab: {fileID: 0}
+  DeckSelectCardPrefab: {fileID: 1316274561394776498, guid: 3701dcd9e71748a4781c867a9608c51d,
+    type: 3}
   DeckbuilderCharPrefab: {fileID: 0}
   DeckbuilderSpellPrefab: {fileID: 0}
   DeckbuilderAugPrefab: {fileID: 0}

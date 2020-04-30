@@ -3321,7 +3321,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9fb8748191d6744ab4316215e0b0131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  searchCtrl: {fileID: 84113670}
+  DeckSelectCardPrefab: {fileID: 0}
+  DeckbuilderCharPrefab: {fileID: 3989091764113213402, guid: 8a425cb37bcc0c545807a7aff1449f4b,
+    type: 3}
+  DeckbuilderSpellPrefab: {fileID: 3211160473117395004, guid: b225db4bd9babeb43b973fc238150f70,
+    type: 3}
+  DeckbuilderAugPrefab: {fileID: 6156539215506979954, guid: 104fae637567a2d41949672925893586,
+    type: 3}
+  ClientAvatarPrefab: {fileID: 0}
+  ClientCharPrefab: {fileID: 0}
+  ClientSpellPrefab: {fileID: 0}
+  ClientAugPrefab: {fileID: 0}
+  ServerAvatarPrefab: {fileID: 0}
+  ServerCharPrefab: {fileID: 0}
+  ServerSpellPrefab: {fileID: 0}
+  ServerAugPrefab: {fileID: 0}
 --- !u!1 &479898341
 GameObject:
   m_ObjectHideFlags: 0

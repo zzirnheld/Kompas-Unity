@@ -363,7 +363,7 @@ public class CardRepository : MonoBehaviour
         catch (System.ArgumentException argEx)
         {
             //Catch JSON parse error
-            Debug.LogError($"Failed to load {name}, argument exception with message {argEx.Message}");
+            Debug.LogError($"Failed to load {json}, argument exception with message {argEx.Message}");
             return null;
         }
     }
