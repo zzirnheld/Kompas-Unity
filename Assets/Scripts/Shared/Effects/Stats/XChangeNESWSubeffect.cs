@@ -23,10 +23,10 @@ public class XChangeNESWSubeffect : Subeffect
         }
 
         ServerGame.SetStats(charCard,
-            charCard.N * nMult + nMod,
-            charCard.E * eMult + eMod,
-            charCard.S * sMult + sMod,
-            charCard.W * wMult + wMod);
+            charCard.N + Effect.X * nMult + nMod,
+            charCard.E + Effect.X * eMult + eMod,
+            charCard.S + Effect.X * sMult + sMod,
+            charCard.W + Effect.X * wMult + wMod);
         Effect.ResolveNextSubeffect();
     }
 }
