@@ -254,6 +254,7 @@ public class ServerGame : Game {
 
     public override void SetStats(CharacterCard charCard, int n, int e, int s, int w)
     {
+        Debug.Log($"Setting stats of {charCard.CardName} to {n}/{e}/{s}/{w}");
         ServerPlayers[charCard.ControllerIndex].ServerNotifier.NotifySetNESW(charCard, n, e, s, w);
         base.SetStats(charCard, n, e, s, w);
         if (charCard.E <= 0)

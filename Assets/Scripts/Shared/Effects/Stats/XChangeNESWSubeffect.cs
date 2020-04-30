@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class XChangeNESWSubeffect : Subeffect
 {
-    int nMult = 0;
-    int eMult = 0;
-    int sMult = 0;
-    int wMult = 0;
+    public int nMult = 0;
+    public int eMult = 0;
+    public int sMult = 0;
+    public int wMult = 0;
 
-    int nMod = 0;
-    int eMod = 0;
-    int sMod = 0;
-    int wMod = 0;
+    public int nMod = 0;
+    public int eMod = 0;
+    public int sMod = 0;
+    public int wMod = 0;
     
     public override void Resolve()
     {

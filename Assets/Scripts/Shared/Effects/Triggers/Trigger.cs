@@ -73,6 +73,7 @@ public class Trigger
     /// <param name="x"></param>
     protected void TriggerEffect(int? x)
     {
+        Debug.Log($"Triggering effect of {effToTrigger.thisCard.CardName} for value of x={x}");
         if (x.HasValue) effToTrigger.X = x.Value;
         effToTrigger.PushToStack(effToTrigger.thisCard.ControllerIndex);
     }
