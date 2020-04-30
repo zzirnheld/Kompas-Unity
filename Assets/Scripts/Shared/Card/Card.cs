@@ -23,7 +23,6 @@ public abstract class Card : CardBase {
     protected Effect[] effects;
 
     //other game data
-    protected string cardFileName;
     protected MeshRenderer meshRenderer;
 
     //getters and setters
@@ -49,10 +48,6 @@ public abstract class Card : CardBase {
     public Effect[] Effects { get => effects; }
     public abstract int Cost { get; }
     //other game data
-    public string CardFileName {
-        get { return cardFileName; }
-        set { cardFileName = value; }
-    }
     public Sprite DetailedSprite { get { return detailedSprite; } }
     public Sprite SimpleSprite { get { return simpleSprite; } }
 
@@ -160,10 +155,10 @@ public abstract class Card : CardBase {
     /// </summary>
     public void SetImage()
     {
-        SetImage(cardFileName);
+        SetImage(CardName);
     }
 
-    public virtual void SetInfo(SerializableCard serializedCard, Game game, Player owner)
+    public virtual void SetInfo(SerializableCard serializedCard, Game game, Player owner, Effect[] effects)
     {
         base.SetInfo(serializedCard);
         location = serializedCard.location;
@@ -176,24 +171,7 @@ public abstract class Card : CardBase {
         this.ownerIndex = owner.index;
         ChangeController(owner);
 
-        //could also be      serializedCard.effects == null ? serializedCard.effects.Length : 0
-        effects = new Effect[serializedCard.effects?.Length ?? 0];
-
-        //go through each of the serialized effects, creating it
-        for (int i = 0; i < effects.Length; i++)
-        {
-            effects[i] = new Effect(serializedCard.effects[i], this, ControllerIndex);
-        }
-
-        foreach (Effect eff in effects)
-        {
-            if (eff.Trigger != null)
-            {
-                Debug.Log($"Registering triggered effect of {CardName} to {eff.Trigger.triggerCondition}");
-                game.RegisterTrigger(eff.Trigger.triggerCondition, eff.Trigger);
-            }
-            else Debug.Log($"Registering activated effect of {CardName}");
-        }
+        this.effects = effects;
 
         if (location == CardLocation.Field) MoveTo(serializedCard.BoardX, serializedCard.BoardY);
         else

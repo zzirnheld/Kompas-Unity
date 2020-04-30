@@ -4,22 +4,25 @@ using UnityEngine;
 
 public class ServerEffect : Effect, IStackable
 {
-    public ServerSubeffect[] Subeffects { get; }
-    public ServerTrigger Trigger { get; }
+    public ServerSubeffect[] ServerSubeffects { get; }
+    public ServerTrigger ServerTrigger { get; }
     
     public ServerGame serverGame;
 
+    public ServerSubeffect OnImpossible = null;
+
     //get the currently resolving subeffect
-    public ServerSubeffect CurrSubeffect { get { return Subeffects[subeffectIndex]; } }
     public ServerPlayer EffectController { get { return serverGame.ServerPlayers[effectControllerIndex]; } }
 
     public override Player Controller => EffectController;
+    public override Subeffect[] Subeffects => ServerSubeffects;
+    public override Trigger Trigger => ServerTrigger;
 
-    public ServerEffect(SerializableEffect se, Card thisCard, int controller) : base(se.maxTimesCanUsePerTurn)
+    public ServerEffect(SerializableEffect se, Card thisCard) : base(se.maxTimesCanUsePerTurn)
     {
         this.thisCard = thisCard ?? throw new System.ArgumentNullException("Effect cannot be attached to null card");
         this.serverGame = thisCard.game as ServerGame;
-        Subeffects = new ServerSubeffect[se.subeffects.Length];
+        ServerSubeffects = new ServerSubeffect[se.subeffects.Length];
         targets = new List<Card>();
         coords = new List<Vector2Int>();
 
@@ -27,7 +30,7 @@ public class ServerEffect : Effect, IStackable
         {
             try
             {
-                Trigger = ServerTrigger.FromJson(se.triggerCondition, se.trigger, this);
+                ServerTrigger = ServerTrigger.FromJson(se.triggerCondition, se.trigger, this);
             }
             catch (System.ArgumentException)
             {
@@ -40,7 +43,7 @@ public class ServerEffect : Effect, IStackable
         {
             try
             {
-                Subeffects[i] = ServerSubeffect.FromJson(se.subeffectTypes[i], se.subeffects[i], this, i);
+                ServerSubeffects[i] = ServerSubeffect.FromJson(se.subeffectTypes[i], se.subeffects[i], this, i);
             }
             catch (System.ArgumentException)
             {
@@ -69,15 +72,15 @@ public class ServerEffect : Effect, IStackable
 
     public void ResolveSubeffect(int index)
     {
-        if (index >= Subeffects.Length)
+        if (index >= ServerSubeffects.Length)
         {
             FinishResolution();
             return;
         }
 
-        Debug.Log($"Resolving subeffect of type {Subeffects[index].GetType()}");
+        Debug.Log($"Resolving subeffect of type {ServerSubeffects[index].GetType()}");
         subeffectIndex = index;
-        Subeffects[index].Resolve();
+        ServerSubeffects[index].Resolve();
     }
 
     /// <summary>
@@ -86,7 +89,6 @@ public class ServerEffect : Effect, IStackable
     /// </summary>
     private void FinishResolution()
     {
-        doneResolving = true;
         subeffectIndex = 0;
         X = 0;
         targets.Clear();

@@ -182,7 +182,7 @@ public class DeckbuilderController : MonoBehaviour
         string json = CardRepo.GetJsonFromName(name);
         if (json == null) return;
 
-        DeckbuilderCard toAdd = CardRepo.InstantiateDeckbuilderCard(json, DeckViewScrollPane.transform, true);
+        DeckbuilderCard toAdd = CardRepo.InstantiateDeckbuilderCard(json, CardSearchCtrl, DeckViewScrollPane.transform, true);
         if (toAdd == null)
         {
             Debug.LogError($"Somehow have a DeckbuilderCard with name {name} couldn't be re-instantiated");

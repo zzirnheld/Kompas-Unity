@@ -15,7 +15,7 @@ namespace KompasNetworking
             //basic player commands
             Play, Augment, Move, EndTurn, Attack,
             //move cards around
-            Topdeck, Discard, Rehand, Reshuffle, AddAsFriendly, AddAsEnemy, AddToDeck, Bottomdeck,
+            Topdeck, Discard, Rehand, Reshuffle, AddAsFriendly, AddAsEnemy, Bottomdeck,
             Draw, Delete,
             //card properties
             SetNESW, Negate, SetSpellStats,

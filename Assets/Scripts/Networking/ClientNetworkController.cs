@@ -87,10 +87,12 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.Delete(ClientGame.GetCardFromID(packet.cardID));
                 break;
             case Packet.Command.AddAsFriendly:
-                ClientGame.friendlyDeckCtrl.AddCard(packet.CardName, packet.CardIDToBe);
+                Card friendlyCard = ClientGame.CardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, friendly, packet.CardIDToBe);
+                ClientGame.friendlyDeckCtrl.AddCard(friendlyCard);
                 break;
             case Packet.Command.AddAsEnemy:
-                Card added = ClientGame.enemyDeckCtrl.AddCard(packet.CardName, packet.CardIDToBe);
+                Card added = ClientGame.CardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, enemy, packet.CardIDToBe);
+                ClientGame.enemyDeckCtrl.AddCard(added);
                 //TODO make it always ask for cards from enemy deck
                 switch (packet.Location)
                 {
@@ -106,11 +108,10 @@ public class ClientNetworkController : NetworkController {
                 }
                 break;
             case Packet.Command.IncrementEnemyDeck:
-                ClientGame.enemyDeckCtrl.AddBlankCard();
+                //TODO
                 break;
             case Packet.Command.IncrementEnemyHand:
-                Card emptyHandAdd = ClientGame.enemyDeckCtrl.AddBlankCard();
-                ClientGame.Rehand(emptyHandAdd);
+                //TODO
                 break;
             case Packet.Command.DecrementEnemyDeck:
                 //TODO make sure for both this and decrement hand that you're not deleting a revealedcard
@@ -246,7 +247,7 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.boardCtrl.DiscardSimples();
                 break;
             case Packet.Command.OptionalTrigger:
-                ServerTrigger t = ClientGame.GetCardFromID(packet.cardID).Effects[packet.EffIndex].Trigger;
+                Trigger t = ClientGame.GetCardFromID(packet.cardID).Effects[packet.EffIndex].Trigger;
                 ClientGame.clientUICtrl.ShowOptionalTrigger(t, packet.EffectX);
                 break;
             default:

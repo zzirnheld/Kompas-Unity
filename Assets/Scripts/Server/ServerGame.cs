@@ -26,8 +26,7 @@ public class ServerGame : Game {
     private void Start()
     {
         mainGame = this;
-
-        SubeffectFactory = new ServerSubeffectFactory();
+        
         OptionalTriggersToAsk = new Stack<(ServerTrigger, int?, Card, IStackable, ServerPlayer)>();
     }
 
@@ -106,7 +105,7 @@ public class ServerGame : Game {
         }
 
         //otherwise, set the avatar and rest of the deck
-        AvatarCard avatar = CardRepo.InstantiateAvatar(deck[0], AvatarPrefab, this, player, cardCount++);
+        AvatarCard avatar = CardRepo.InstantiateServerAvatar(deck[0], this, player, cardCount++);
         if(avatar == null)
         {
             Debug.LogError($"Error in loading avatar for {decklist}");
@@ -122,9 +121,11 @@ public class ServerGame : Game {
 
         foreach(string name in deck)
         {
-            Card card = player.deckCtrl.AddCard(name, cardCount);
-            Debug.Log($"For adding avatar {name}, card is null? {card == null}. card name is {card?.CardName}");
+            Card card = CardRepo.InstantiateServerNonAvatar(name, this, player, cardCount);
+            cards.Add(cardCount, card);
+            player.deckCtrl.AddCard(card);
             cardCount++;
+            if (card != null) Debug.Log($"Adding new card {card.CardName} with id {card.ID}");
             player.ServerNotifier.NotifyAddToDeck(card);
         }
 
@@ -390,11 +391,11 @@ public class ServerGame : Game {
         stackIndex++;
     }
 
-    public void PushToStack(Effect eff, int controller)
+    public void PushToStack(ServerEffect eff, int controller)
     {
         eff.serverGame = this;
         eff.effectControllerIndex = controller;
-        PushToStack(eff as IStackable, controller);
+        PushToStack(eff);
     }
 
     public void PopFromStack()

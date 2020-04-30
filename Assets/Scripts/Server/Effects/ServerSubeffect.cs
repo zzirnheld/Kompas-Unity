@@ -204,22 +204,6 @@ public abstract class ServerSubeffect : Subeffect
     /// </summary>
     public virtual void OnImpossible() {
         Debug.Log($"On Impossible called for {GetType()} without an override");
-        ServerEffect.ResolveSubeffect(ServerEffect.Subeffects.Length);
-    }
-
-    /// <summary>
-    /// The index in the Effect.targets array for which target this effect uses.
-    /// If positive, just an index.
-    /// If negative, it's Effect.targets.Count + targetIndex (aka that many back from the end)
-    /// </summary>
-    public int TargetIndex = -1;
-
-    public Card Target
-    {
-        get
-        {
-            int trueIndex = TargetIndex < 0 ? TargetIndex + ServerEffect.targets.Count : TargetIndex;
-            return trueIndex < 0 ? null : ServerEffect.targets[trueIndex];
-        }
+        ServerEffect.ResolveSubeffect(ServerEffect.ServerSubeffects.Length);
     }
 }

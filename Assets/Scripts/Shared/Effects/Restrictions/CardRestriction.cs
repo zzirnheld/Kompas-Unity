@@ -88,10 +88,10 @@ public class CardRestriction
                     }
                     break;
                 case CardRestrictions.Friendly:
-                    if (potentialTarget.Controller != Subeffect.EffectController) return false;
+                    if (potentialTarget.Controller != Subeffect.Controller) return false;
                     break;
                 case CardRestrictions.SameOwner:
-                    if (potentialTarget.Owner != Subeffect.EffectController) return false;
+                    if (potentialTarget.Owner != Subeffect.Controller) return false;
                     break;
                 case CardRestrictions.Hand:
                     if (potentialTarget.Location != CardLocation.Hand) return false;
@@ -163,7 +163,7 @@ public class CardRestriction
                     if (potentialTarget.IndexInList > constant) return false;
                     break;
                 case CardRestrictions.NotAlreadyTarget:
-                    if (Subeffect.ServerEffect.targets.Contains(potentialTarget)) return false;
+                    if (Subeffect.Effect.targets.Contains(potentialTarget)) return false;
                     break;
                 default:
                     Debug.Log("You forgot to check for " + c);
@@ -183,6 +183,6 @@ public class CardRestriction
     /// <returns></returns>
     public virtual bool Evaluate(Card potentialTarget)
     {
-        return Evaluate(potentialTarget, Subeffect.ServerEffect.X);
+        return Evaluate(potentialTarget, Subeffect.Effect.X);
     }
 }

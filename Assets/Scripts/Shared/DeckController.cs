@@ -37,12 +37,10 @@ public class DeckController : MonoBehaviour
         return Deck.IndexOf(card);
     }
 
-    public void AddCard(Card card, int id)
+    public void AddCard(Card card)
     {
         card.SetLocation(CardLocation.Deck);
         Deck.Add(card);
-        card.ID = id;
-        game.cards.Add(id, card);
         card.ChangeController(Owner);
     }
 

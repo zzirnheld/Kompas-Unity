@@ -90,7 +90,7 @@ public class CharacterCard : Card {
     }
 
     //set information
-    public override void SetInfo(SerializableCard serializedCard, Game game, Player owner)
+    public override void SetInfo(SerializableCard serializedCard, Game game, Player owner, Effect[] effects)
     {
         if (!(serializedCard is SerializableCharCard serializedChar)) return;
 
@@ -101,7 +101,7 @@ public class CharacterCard : Card {
 
         SpacesMoved = 0;
 
-        base.SetInfo(serializedCard, game, owner);
+        base.SetInfo(serializedCard, game, owner, effects);
     }
     /// <summary>
     /// Should only be called by Game, which does any triggering or notifying as necessary

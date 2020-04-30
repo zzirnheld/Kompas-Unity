@@ -24,13 +24,13 @@ public class BoardRestriction : CardRestriction
             switch (r)
             {
                 case BoardRestrictions.Adjacent:
-                    if(!potentialTarget.IsAdjacentTo(Subeffect.ThisCard)) return false;
+                    if(!potentialTarget.IsAdjacentTo(Subeffect.Source)) return false;
                     break;
                 case BoardRestrictions.WithinCSpaces:
-                    if (!potentialTarget.WithinSlots(cSpaces, Subeffect.ThisCard)) return false;
+                    if (!potentialTarget.WithinSlots(cSpaces, Subeffect.Source)) return false;
                     break;
                 case BoardRestrictions.ExactlyXSpaces:
-                    if (potentialTarget.DistanceTo(Subeffect.ThisCard) != Subeffect.ServerEffect.X) return false;
+                    if (potentialTarget.DistanceTo(Subeffect.Source) != Subeffect.Effect.X) return false;
                     break;
                     //TODO also allow for summoned avatars, maybe with an overridden property Summoned?
                 case BoardRestrictions.Summoned:

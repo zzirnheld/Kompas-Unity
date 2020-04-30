@@ -6,11 +6,11 @@ public class DelayedHangingEffect : HangingEffect
 {
     private int numTimesToDelay;
     private int numTimesDelayed;
-    private Effect toResume;
+    private ServerEffect toResume;
     private int indexToResumeResolution;
 
     public DelayedHangingEffect(Game game, TriggerRestriction triggerRestriction, TriggerCondition triggerCondition,
-        int numTimesToDelay, Effect toResume, int indexToResumeResolution)
+        int numTimesToDelay, ServerEffect toResume, int indexToResumeResolution)
         : base(game, triggerRestriction, triggerCondition)
     {
         this.numTimesToDelay = numTimesToDelay;

@@ -28,7 +28,7 @@ public class SpaceRestriction
         {
             for(int j = 0; j < 7; j++)
             {
-                adj = Subeffect.ServerEffect.serverGame.boardCtrl.GetCardAt(i, j)?.IsAdjacentTo(x, y);
+                adj = Subeffect.Effect.Game.boardCtrl.GetCardAt(i, j)?.IsAdjacentTo(x, y);
                 if (adj.HasValue && adj.Value) return true; //if the card exists (so adj is not null) and the card is adjacent, return true
             }
         }
@@ -38,27 +38,27 @@ public class SpaceRestriction
 
     public bool Evaluate(int x, int y)
     {
-        Debug.Log($"Space restriction for {Subeffect.ThisCard.name} evaluating {x}, {y}");
-        if (!Subeffect.ServerEffect.serverGame.boardCtrl.ValidIndices(x, y)) return false;
+        Debug.Log($"Space restriction for {Subeffect.Source.name} evaluating {x}, {y}");
+        if (!Subeffect.Effect.Game.boardCtrl.ValidIndices(x, y)) return false;
 
         foreach(SpaceRestrictions r in restrictionsToCheck)
         {
             switch (r)
             {
                 case SpaceRestrictions.CanSummonTarget:
-                    if (!Subeffect.ServerEffect.serverGame.boardCtrl.CanSummonTo(Subeffect.ServerEffect.effectControllerIndex, x, y)) return false;
+                    if (!Subeffect.Effect.Game.boardCtrl.CanSummonTo(Subeffect.Controller.index, x, y)) return false;
                     break;
                 case SpaceRestrictions.AdjacentToThisCard:
-                    if (!Subeffect.ThisCard.IsAdjacentTo(x, y)) return false;
+                    if (!Subeffect.Source.IsAdjacentTo(x, y)) return false;
                     break;
                 case SpaceRestrictions.AdjacentToWithRestriction:
                     if (!ExistsCardWithRestrictionAdjacentToCoords(adjacencyRestriction, x, y)) return false;
                     break;
                 case SpaceRestrictions.DistanceX:
-                    if (Subeffect.ThisCard.DistanceTo(x, y) != Subeffect.ServerEffect.X) return false;
+                    if (Subeffect.Source.DistanceTo(x, y) != Subeffect.Effect.X) return false;
                     break;
                 case SpaceRestrictions.DistanceToTargetX:
-                    if (Subeffect.Target.DistanceTo(x, y) != Subeffect.ServerEffect.X) return false;
+                    if (Subeffect.Target.DistanceTo(x, y) != Subeffect.Effect.X) return false;
                     break;
                 default:
                     Debug.LogError($"Unrecognized space restriction enum {r}");

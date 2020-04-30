@@ -26,9 +26,6 @@ namespace KompasNetworking
                 case Packet.Command.SetDeck:
                     SetDeck(packet.stringArg);
                     break;
-                case Packet.Command.AddToDeck:
-                    AddCardToDeck(packet.CardName);
-                    break;
                 case Packet.Command.Augment:
                     Augment(packet.cardID, packet.X, packet.Y);
                     break;
@@ -76,7 +73,7 @@ namespace KompasNetworking
                 case Packet.Command.DeclineAnotherTarget:
                     if (sGame.CurrEffect != null)
                     {
-                        sGame.CurrEffect.DeclineAnotherTarget();
+                        (sGame.CurrEffect as ServerEffect).DeclineAnotherTarget();
                     }
                     break;
                 case Packet.Command.GetChoicesFromList:
@@ -125,7 +122,7 @@ namespace KompasNetworking
                 case Packet.Command.TestTargetEffect:
                     Card whoseEffToTest = sGame.GetCardFromID(packet.cardID);
                     Debug.Log("Running eff of " + whoseEffToTest.CardName);
-                    sGame.PushToStack(whoseEffToTest.Effects[0], Player.index);
+                    sGame.PushToStack(whoseEffToTest.Effects[0] as ServerEffect, Player.index);
                     sGame.CheckForResponse();
                     break;
                 #endregion
@@ -138,14 +135,6 @@ namespace KompasNetworking
         public void SetDeck(string decklist)
         {
             sGame.SetDeck(Player, decklist);
-        }
-
-        public void AddCardToDeck(string cardName)
-        {
-            //add the card in, with the cardCount being the card id, then increment the card count
-            Card added = Player.deckCtrl.AddCard(cardName, sGame.cardCount);
-            sGame.cardCount++;
-            ServerNotifier.NotifyAddToDeck(added);
         }
 
         public static int InvertIndexForController(int index, int controller)
@@ -228,7 +217,7 @@ namespace KompasNetworking
                 //tell the players to put cards down where they were
                 ServerNotifier.NotifyBothPutBack();
                 //push the attack to the stack, then check if any player wants to respond before resolving it
-                sGame.PushToStack(new Attack(sGame, Player, attacker, defender), Player.index);
+                sGame.PushToStack(new Attack(sGame, Player, attacker, defender));
                 sGame.CheckForResponse();
             }
             else ServerNotifier.NotifyPutBack();

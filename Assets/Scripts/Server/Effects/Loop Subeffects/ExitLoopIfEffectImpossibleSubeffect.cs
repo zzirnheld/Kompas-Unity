@@ -11,7 +11,7 @@ public class ExitLoopIfEffectImpossibleSubeffect : ServerSubeffect
     public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        loopSubeffect = ServerEffect.Subeffects[LoopSubeffectIndex] as LoopSubeffect 
+        loopSubeffect = ServerEffect.ServerSubeffects[LoopSubeffectIndex] as LoopSubeffect 
             ?? throw new System.ArgumentNullException($"Subeffect at loop subeffect index {LoopSubeffectIndex} cannot be null");
     }
 

@@ -148,6 +148,16 @@ public class CardRepository : MonoBehaviour
         return JsonUtility.FromJson<SerializableCard>(cardJsons[name]);
     }
 
+    private ServerEffect[] CreateServerEffects(SerializableEffect[] serEffs, Card card)
+    {
+        ServerEffect[] effects = new ServerEffect[serEffs.Length];
+        for (int i = 0; i < effects.Length; i++)
+        {
+            effects[i] = new ServerEffect(serEffs[i], card);
+        }
+        return effects;
+    }
+
     public AvatarCard InstantiateServerAvatar(string cardName, ServerGame serverGame, Player owner, int id)
     {
         if (!cardJsons.ContainsKey(cardName))
@@ -161,8 +171,9 @@ public class CardRepository : MonoBehaviour
             SerializableCharCard charCard = JsonUtility.FromJson<SerializableCharCard>(cardJsons[cardName]);
             if (charCard.cardType != 'C') return null;
             AvatarCard avatar = Instantiate(ServerAvatarPrefab).GetComponent<AvatarCard>();
-            avatar.SetInfo(charCard, serverGame, owner);
-            avatar.SetImage(charCard.cardName);
+            ServerEffect[] effects = CreateServerEffects(charCard.effects, avatar);
+            avatar.SetInfo(charCard, serverGame, owner, effects);
+            avatar.SetImage();
             avatar.ID = id;
             serverGame.cards.Add(id, avatar);
             return avatar;
@@ -179,31 +190,38 @@ public class CardRepository : MonoBehaviour
     {
         string json = cardJsons[name] ?? throw new System.ArgumentException($"Name {name} not associated with json");
         Card card = null;
+        Effect[] effects;
 
         try
         {
+            //TODO later try setting serializableCard in the switch, and moving set info outside
             SerializableCard serializableCard = JsonUtility.FromJson<SerializableCard>(json);
             switch (serializableCard.cardType)
             {
                 case 'C':
                     SerializableCharCard serializableChar = JsonUtility.FromJson<SerializableCharCard>(json);
                     card = Instantiate(ServerCharPrefab).GetComponent<CharacterCard>();
+                    effects = CreateServerEffects(serializableCard.effects, card);
+                    card?.SetInfo(serializableChar, serverGame, owner, effects);
                     break;
                 case 'S':
                     SerializableSpellCard serializableSpell = JsonUtility.FromJson<SerializableSpellCard>(json);
                     card = Instantiate(ServerSpellPrefab).GetComponent<SpellCard>();
+                    effects = CreateServerEffects(serializableCard.effects, card);
+                    card?.SetInfo(serializableSpell, serverGame, owner, effects);
                     break;
                 case 'A':
                     SerializableAugCard serializableAug = JsonUtility.FromJson<SerializableAugCard>(json);
                     card = Instantiate(ServerSpellPrefab).GetComponent<AugmentCard>();
+                    effects = CreateServerEffects(serializableCard.effects, card);
+                    card?.SetInfo(serializableAug, serverGame, owner, effects);
                     break;
                 default:
                     Debug.LogError("Unrecognized type character " + serializableCard.cardType + " in " + json);
                     return null;
             }
-
-            ServerEffect[] effects = new ServerEffect[serializableCard.effects.Length];
-
+            card?.SetImage();
+            return card;
         }
         catch (System.ArgumentException argEx)
         {
@@ -211,9 +229,89 @@ public class CardRepository : MonoBehaviour
             Debug.LogError($"Failed to load {name}, argument exception with message {argEx.Message}");
             return null;
         }
+    }
 
-        card?.SetInfo(blabla);
-        return card;
+    private ClientEffect[] CreateClientEffects(SerializableEffect[] serEffs, Card card)
+    {
+        ClientEffect[] effects = new ClientEffect[serEffs.Length];
+        for (int i = 0; i < effects.Length; i++)
+        {
+            effects[i] = new ClientEffect(serEffs[i], card);
+        }
+        return effects;
+    }
+
+    public AvatarCard InstantiateClientAvatar(string cardName, ClientGame clientGame, Player owner, int id)
+    {
+        if (!cardJsons.ContainsKey(cardName))
+        {
+            Debug.LogError($"Tried to create an avatar for a name that doesn't have a json");
+            return null;
+        }
+
+        try
+        {
+            SerializableCharCard charCard = JsonUtility.FromJson<SerializableCharCard>(cardJsons[cardName]);
+            if (charCard.cardType != 'C') return null;
+            AvatarCard avatar = Instantiate(ClientAvatarPrefab).GetComponent<AvatarCard>();
+            ClientEffect[] effects = CreateClientEffects(charCard.effects, avatar);
+            avatar.SetInfo(charCard, clientGame, owner, effects);
+            avatar.SetImage();
+            avatar.ID = id;
+            clientGame.cards.Add(id, avatar);
+            return avatar;
+        }
+        catch (System.ArgumentException argEx)
+        {
+            //Catch JSON parse error
+            Debug.LogError($"Failed to load {cardName} as Avatar, argument exception with message {argEx.Message} \nJson was {cardJsons[cardName]}");
+            return null;
+        }
+    }
+
+    public Card InstantiateClientNonAvatar(string name, ClientGame clientGame, Player owner, int id)
+    {
+        string json = cardJsons[name] ?? throw new System.ArgumentException($"Name {name} not associated with json");
+        Card card = null;
+        Effect[] effects;
+
+        try
+        {
+            //TODO later try setting serializableCard in the switch, and moving set info outside
+            SerializableCard serializableCard = JsonUtility.FromJson<SerializableCard>(json);
+            switch (serializableCard.cardType)
+            {
+                case 'C':
+                    SerializableCharCard serializableChar = JsonUtility.FromJson<SerializableCharCard>(json);
+                    card = Instantiate(ClientCharPrefab).GetComponent<CharacterCard>();
+                    effects = CreateClientEffects(serializableCard.effects, card);
+                    card?.SetInfo(serializableChar, clientGame, owner, effects);
+                    break;
+                case 'S':
+                    SerializableSpellCard serializableSpell = JsonUtility.FromJson<SerializableSpellCard>(json);
+                    card = Instantiate(ClientSpellPrefab).GetComponent<SpellCard>();
+                    effects = CreateClientEffects(serializableCard.effects, card);
+                    card?.SetInfo(serializableSpell, clientGame, owner, effects);
+                    break;
+                case 'A':
+                    SerializableAugCard serializableAug = JsonUtility.FromJson<SerializableAugCard>(json);
+                    card = Instantiate(ClientAugPrefab).GetComponent<AugmentCard>();
+                    effects = CreateClientEffects(serializableCard.effects, card);
+                    card?.SetInfo(serializableAug, clientGame, owner, effects);
+                    break;
+                default:
+                    Debug.LogError("Unrecognized type character " + serializableCard.cardType + " in " + json);
+                    return null;
+            }
+            card?.SetImage();
+            return card;
+        }
+        catch (System.ArgumentException argEx)
+        {
+            //Catch JSON parse error
+            Debug.LogError($"Failed to load {name}, argument exception with message {argEx.Message}");
+            return null;
+        }
     }
 
     public DeckSelectCard InstantiateDeckSelectCard(string json, Transform parent, DeckSelectCard prefab, DeckSelectUIController uiCtrl)

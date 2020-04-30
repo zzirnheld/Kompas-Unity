@@ -37,7 +37,7 @@ public class SpellCard : Card
     }
 
     //set data
-    public override void SetInfo(SerializableCard serializedCard, Game game, Player owner)
+    public override void SetInfo(SerializableCard serializedCard, Game game, Player owner, Effect[] effects)
     {
         if (!(serializedCard is SerializableSpellCard serializedSpell)) return;
 
@@ -46,7 +46,7 @@ public class SpellCard : Card
         SpellSubtype = serializedSpell.spellType;
         Fast = serializedSpell.fast;
 
-        base.SetInfo(serializedCard, game, owner);
+        base.SetInfo(serializedCard, game, owner, effects);
     }
 
     //game mechanics

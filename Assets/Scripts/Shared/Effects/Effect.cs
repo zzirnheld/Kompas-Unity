@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public abstract class Effect
 {
+    public Game Game => Source.game;
+
     //card that this is the effect of. to be set at initialization
     public Card thisCard;
     public Card Source { get { return thisCard; } }
@@ -17,16 +19,17 @@ public abstract class Effect
 
     //current subeffect that's resolving
     public int subeffectIndex;
+    public Subeffect CurrSubeffect { get { return Subeffects[subeffectIndex]; } }
+
+    //subeffects
+    public abstract Subeffect[] Subeffects { get; }
 
     public int EffectIndex { get { return System.Array.IndexOf(thisCard.Effects, this); } }
 
-    //checked by effect resolution to see if it should start resolving the next effect on the stack
-    public bool doneResolving = false;
-
-    public ServerSubeffect OnImpossible = null;
-
     public List<Card> targets;
     public List<Vector2Int> coords;
+
+    public abstract Trigger Trigger { get; }
 
     public bool Negated { get; protected set; }
 
