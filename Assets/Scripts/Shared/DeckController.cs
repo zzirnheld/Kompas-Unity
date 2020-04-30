@@ -37,78 +37,13 @@ public class DeckController : MonoBehaviour
         return Deck.IndexOf(card);
     }
 
-    //importing deck
-    public Card InstantiateCard(string json, Player owner)
+    public void AddCard(Card card, int id)
     {
-        try
-        {
-            //first deserialize it to tell the card's type
-            var serializableCard = JsonUtility.FromJson<SerializableCard>(json);
-            switch (serializableCard.cardType)
-            {
-                case 'C':
-                    var serializableChar = JsonUtility.FromJson<SerializableCharCard>(json);
-                    var charCard = Instantiate(characterCardPrefab).GetComponent<CharacterCard>();
-                    charCard.gameObject.SetActive(false);
-                    charCard.SetInfo(serializableChar, game, owner);
-                    //set image for the card by the name. this method gets the sprite with the given name
-                    charCard.SetImage(charCard.CardName);
-                    return charCard;
-                case 'S':
-                    var serializableSpell = JsonUtility.FromJson<SerializableSpellCard>(json);
-                    var spellCard = Instantiate(spellCardPrefab).GetComponent<SpellCard>();
-                    spellCard.gameObject.SetActive(false);
-                    spellCard.SetInfo(serializableSpell, game, owner);
-                    //set image for the card by the name. this method gets the sprite with the given name
-                    spellCard.SetImage(spellCard.CardName);
-                    return spellCard;
-                case 'A':
-                    var serializableAug = JsonUtility.FromJson<SerializableAugCard>(json);
-                    var augCard = Instantiate(augmentCardPrefab).GetComponent<AugmentCard>();
-                    augCard.gameObject.SetActive(false);
-                    augCard.SetInfo(serializableAug, game, owner);
-                    //set image for the card by the name. this method gets the sprite with the given name
-                    augCard.SetImage(augCard.CardName);
-                    return augCard;
-                default:
-                    Debug.Log("Unrecognized type character " + serializableCard.cardType + " in " + json);
-                    return null;
-            }
-        }
-        catch (ArgumentException)
-        {
-            Debug.LogError($"Failed to load json  {json}");
-            throw;
-        }
-    }
-
-    public Card InstantiateBlankCard(Player owner)
-    {
-        return InstantiateCard(Resources.Load<TextAsset>(BLANK_CARD_PATH).text, owner);
-    }
-
-    public Card AddBlankCard()
-    {
-        Card blank = InstantiateBlankCard(Owner);
-        PushTopdeck(blank);
-        return blank;
-    }
-
-    public Card AddCard(string cardName, int id)
-    {
-        Card newCard;
-        string fileContents = game.CardRepo.GetJsonFromName(cardName);
-
-        Debug.Log($"Loading:\n {fileContents ?? "null"}");
-
-        newCard = InstantiateCard(fileContents, Owner);
-        newCard.SetLocation(CardLocation.Deck);
-        Deck.Add(newCard);
-        newCard.ID = id;
-        game.cards.Add(id, newCard);
-        //Game.mainGame.cards[id] = newCard;
-        newCard.ChangeController(Owner);
-        return newCard;
+        card.SetLocation(CardLocation.Deck);
+        Deck.Add(card);
+        card.ID = id;
+        game.cards.Add(id, card);
+        card.ChangeController(Owner);
     }
 
     //info about deck
