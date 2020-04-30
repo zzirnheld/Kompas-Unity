@@ -186,7 +186,7 @@ public class CardRepository : MonoBehaviour
         }
     }
 
-    public Card InstantiateServerNonAvatar(string name, ServerGame serverGame, Player owner, int id)
+    public Card InstantiateServerNonAvatar(string name, ServerGame serverGame, Player owner)
     {
         string json = cardJsons[name] ?? throw new System.ArgumentException($"Name {name} not associated with json");
         Card card = null;
@@ -270,7 +270,7 @@ public class CardRepository : MonoBehaviour
         }
     }
 
-    public Card InstantiateClientNonAvatar(string name, ClientGame clientGame, Player owner, int id)
+    public Card InstantiateClientNonAvatar(string name, ClientGame clientGame, Player owner)
     {
         string json = cardJsons[name] ?? throw new System.ArgumentException($"Name {name} not associated with json");
         Card card = null;

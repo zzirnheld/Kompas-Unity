@@ -121,8 +121,9 @@ public class ServerGame : Game {
 
         foreach(string name in deck)
         {
-            Card card = CardRepo.InstantiateServerNonAvatar(name, this, player, cardCount);
+            Card card = CardRepo.InstantiateServerNonAvatar(name, this, player);
             cards.Add(cardCount, card);
+            card.ID = cardCount;
             player.deckCtrl.AddCard(card);
             cardCount++;
             if (card != null) Debug.Log($"Adding new card {card.CardName} with id {card.ID}");
