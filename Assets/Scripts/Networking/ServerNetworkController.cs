@@ -24,7 +24,7 @@ namespace KompasNetworking
             switch (packet.command)
             {
                 case Packet.Command.SetDeck:
-                    SetDeck(packet.stringArg);
+                    sGame.SetDeck(Player, packet.stringArg);
                     break;
                 case Packet.Command.Augment:
                     Player.TryAugment(sGame.GetCardFromID(packet.cardID) as AugmentCard, packet.X, packet.Y);
@@ -127,11 +127,6 @@ namespace KompasNetworking
                     Debug.Log($"Invalid command {packet.command} to server from {Player.index}");
                     break;
             }
-        }
-
-        public void SetDeck(string decklist)
-        {
-            sGame.SetDeck(Player, decklist);
         }
 
         public static int InvertIndexForController(int index, int controller)

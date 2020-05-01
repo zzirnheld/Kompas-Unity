@@ -309,7 +309,7 @@ public class ServerGame : Game {
         EffectsController.CheckForResponse();
     }
 
-    //later, upgrade this with checking if the square is valid (adj or special case)
+    //TODO improve this with checking if the square is valid (adj or special case)
     #region check validity
     public bool ValidBoardPlay(Card card, int toX, int toY)
     {

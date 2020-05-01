@@ -30,6 +30,7 @@ public class ServerEffect : Effect, IServerStackable
             try
             {
                 ServerTrigger = ServerTrigger.FromJson(se.triggerCondition, se.trigger, this);
+                EffectsController.RegisterTrigger(se.triggerCondition, ServerTrigger);
             }
             catch (System.ArgumentException)
             {
