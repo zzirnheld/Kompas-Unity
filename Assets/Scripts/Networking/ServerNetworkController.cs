@@ -148,6 +148,7 @@ namespace KompasNetworking
                 Debug.LogError($"Tried to debug topdeck card with id {cardID} while NOT in debug mode!");
                 return;
             }
+            Debug.LogWarning($"Debug topdecking card with id {cardID}");
             Card toTopdeck = sGame.GetCardFromID(cardID);
             sGame.Topdeck(toTopdeck);
         }
@@ -159,6 +160,7 @@ namespace KompasNetworking
                 Debug.LogError($"Tried to debug discard card with id {cardID} while NOT in debug mode!");
                 return;
             }
+            Debug.LogWarning($"Debug discarding card with id {cardID}");
             Card toDiscard = sGame.GetCardFromID(cardID);
             sGame.Discard(toDiscard);
         }
@@ -170,6 +172,7 @@ namespace KompasNetworking
                 Debug.LogError($"Tried to debug rehand card with id {cardID} while NOT in debug mode!");
                 return;
             }
+            Debug.LogWarning($"Debug rehanding card with id {cardID}");
             Card toRehand = sGame.GetCardFromID(cardID);
             sGame.Rehand(toRehand);
         }
@@ -181,6 +184,7 @@ namespace KompasNetworking
                 Debug.LogError("Tried to debug draw card while NOT in debug mode!");
                 return;
             }
+            Debug.LogWarning("Debug drawing");
             //draw and store what was drawn
             Card toDraw = sGame.Draw(Player.index);
             if (toDraw == null) return; //deck was empty
@@ -195,6 +199,7 @@ namespace KompasNetworking
                 Debug.LogError($"Tried to debug give {pipsToSet} pips while NOT in debug mode!");
                 return;
             }
+            Debug.LogWarning($"Debug setting pips to {pipsToSet}");
             sGame.GivePlayerPips(Player, pipsToSet);
         }
 
@@ -205,6 +210,7 @@ namespace KompasNetworking
                 Debug.LogError($"Tried to debug set card with id {cardID} NESW while NOT in debug mode!");
                 return;
             }
+            Debug.LogWarning($"Debug setting NESW of card with id {cardID}");
             Card toSet = sGame.GetCardFromID(cardID);
             if (!(toSet is CharacterCard charToSet)) return;
             sGame.SetStats(charToSet, n, e, s, w);
