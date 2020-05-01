@@ -32,10 +32,6 @@ public abstract class Game : MonoBehaviour {
     public int MaxCardsOnField = 0; //for pip generation purposes
     public ISubeffectFactory SubeffectFactory;
 
-    //The Stack
-    protected List<IStackable> stack;
-    protected int stackIndex;
-
     //trigger map
     protected Dictionary<TriggerCondition, List<ServerTrigger>> triggerMap;
     protected Dictionary<TriggerCondition, List<HangingEffect>> hangingEffectMap;
@@ -62,9 +58,7 @@ public abstract class Game : MonoBehaviour {
             CardNames.Add(i, toAdd); //because line endings
             CardNameIndices.Add(toAdd, i);
         }
-
-        stackIndex = -1;
-        stack = new List<IStackable>();
+        
         triggerMap = new Dictionary<TriggerCondition, List<ServerTrigger>>();
         foreach (TriggerCondition c in System.Enum.GetValues(typeof(TriggerCondition)))
         {
@@ -212,7 +206,6 @@ public abstract class Game : MonoBehaviour {
     public void Negate(Card c, IStackable stackSrc = null)
     {
         c.Negate();
-        stack.RemoveAll(s => s.Source == c);
     }
     #endregion move card between areas
 

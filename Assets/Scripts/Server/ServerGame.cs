@@ -21,10 +21,14 @@ public class ServerGame : Game {
     public int cardCount = 0;
     private int currPlayerCount = 0; //current number of players. shouldn't exceed 2
 
+    protected ServerEffectStack stack;
+
     public Stack<(ServerTrigger, int?, Card, IStackable, ServerPlayer)> OptionalTriggersToAsk;
 
     private void Start()
     {
+        stack = new ServerEffectStack();
+
         mainGame = this;
         
         OptionalTriggersToAsk = new Stack<(ServerTrigger, int?, Card, IStackable, ServerPlayer)>();
@@ -386,10 +390,9 @@ public class ServerGame : Game {
     }
 
     #region the stack
-    public void PushToStack(IStackable eff)
+    public void PushToStack(IServerStackable eff)
     {
-        stack.Add(eff);
-        stackIndex++;
+        stack.Push(eff);
     }
 
     public void PushToStack(ServerEffect eff, ServerPlayer controller)
@@ -399,32 +402,25 @@ public class ServerGame : Game {
         PushToStack(eff);
     }
 
-    public void PopFromStack()
+    public IServerStackable PopFromStack()
     {
-        if (stackIndex < 0) return;
-        stack.RemoveAt(stackIndex);
-        stackIndex--;
+        return stack.Pop();
     }
 
-    public void CancelStackEntry(int index)
+    public IServerStackable CancelStackEntry(int index)
     {
-        if (index < 0) return;
-        stack.RemoveAt(index);
-        stackIndex--;
+        return stack.Cancel(index);
     }
 
     public void ResolveNextStackEntry()
     {
-        if (stackIndex < 0)
+        var eff = stack.Pop();
+        if (eff == null)
         {
             TurnServerPlayer.ServerNotifier.DiscardSimples();
             boardCtrl.DiscardSimples();
-            return; //done with this stack!
         }
-        IStackable eff = stack[stackIndex];
-        stack.RemoveAt(stackIndex);
-        stackIndex--;
-        eff.StartResolution();
+        else eff.StartResolution();
     }
 
     /// <summary>

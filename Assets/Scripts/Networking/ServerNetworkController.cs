@@ -214,7 +214,7 @@ namespace KompasNetworking
                 //tell the players to put cards down where they were
                 ServerNotifier.NotifyBothPutBack();
                 //push the attack to the stack, then check if any player wants to respond before resolving it
-                sGame.PushToStack(new Attack(sGame, Player, attacker, defender));
+                sGame.PushToStack(new ServerAttack(sGame, Player, attacker, defender));
                 sGame.CheckForResponse();
             }
             else ServerNotifier.NotifyPutBack();

@@ -56,6 +56,7 @@ public class CardRestriction
     {
         if (potentialTarget == null) return false;
 
+        //some restrictions require checking if the target is a character. no reason to check twice
         CharacterCard charCard = potentialTarget as CharacterCard;
 
         foreach (CardRestrictions c in restrictionsToCheck)
