@@ -395,8 +395,7 @@ MonoBehaviour:
   turnPlayer: 0
   MaxCardsOnField: 0
   targetMode: 0
-  AvatarPrefab: {fileID: 3737252039058614834, guid: 6342a8b7ecbc4e94aa211dd4cf95f7c6,
-    type: 3}
+  EffectsController: {fileID: 8703402414065478263}
   ServerPlayers:
   - {fileID: 6886641578586379215}
   - {fileID: 6886641577199914964}
@@ -413,6 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e98dbc48d1d0ed49abcc650e67b2d86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ServerGame: {fileID: 6886641577728179556}
 --- !u!1 &6886641577729361558
 GameObject:
   m_ObjectHideFlags: 0
