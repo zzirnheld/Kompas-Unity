@@ -7,6 +7,8 @@ public class ServerEffectStack
 {
     private readonly List<IServerStackable> stack;
 
+    public bool Empty => stack.Count == 0;
+
     public ServerEffectStack()
     {
         stack = new List<IServerStackable>();

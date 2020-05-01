@@ -57,6 +57,7 @@ public class ServerPlayer : Player
     /// <param name="controller"></param>
     public void TryActivateEffect(ServerEffect effect)
     {
+        Debug.Log($"Player {index} trying to activate effect of {effect?.thisCard?.CardName}");
         if (effect.CanBeActivatedBy(this))
             serverGame.EffectsController.PushToStack(effect, this);
     }

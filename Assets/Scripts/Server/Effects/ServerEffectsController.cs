@@ -38,7 +38,9 @@ public class ServerEffectsController : MonoBehaviour
     #region the stack
     public void PushToStack(IServerStackable eff)
     {
+        bool wasEmpty = stack.Empty;
         stack.Push(eff);
+        if (wasEmpty) CheckForResponse();
     }
 
     public void PushToStack(ServerEffect eff, ServerPlayer controller)

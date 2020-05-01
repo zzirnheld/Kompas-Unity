@@ -298,6 +298,7 @@ namespace KompasNetworking
             {
                 case Command.SetNESW:
                 case Command.GetChoicesFromList:
+                case Command.ActivateEffect:
                     return false;
                 default:
                     return true;
