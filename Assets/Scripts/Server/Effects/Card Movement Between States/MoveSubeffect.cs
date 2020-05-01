@@ -11,7 +11,7 @@ public class MoveSubeffect : CardChangeStateSubeffect
             ServerEffect.EffectImpossible();
             return;
         }
-        ServerGame.MoveOnBoard(Target, X, Y, ServerEffect);
+        ServerGame.MoveOnBoard(Target, X, Y, false, ServerEffect);
         ServerEffect.ResolveNextSubeffect();
     }
 }

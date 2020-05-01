@@ -115,7 +115,7 @@ public class BoardController : MonoBehaviour
     {
         cards[toX, toY] = toSummon;
         toSummon.SetLocation(CardLocation.Field);
-        toSummon.MoveTo(toX, toY);
+        toSummon.MoveTo(toX, toY, false);
         toSummon.ChangeController(controller);
     }
 
@@ -126,7 +126,7 @@ public class BoardController : MonoBehaviour
     {
         GetCharAt(toX, toY).AddAugment(toAugment);
         toAugment.SetLocation(CardLocation.Field);
-        toAugment.MoveTo(toX, toY);
+        toAugment.MoveTo(toX, toY, false);
         toAugment.ChangeController(controller);
     }
 
@@ -137,7 +137,7 @@ public class BoardController : MonoBehaviour
     {
         cards[toX, toY] = toCast;
         toCast.SetLocation(CardLocation.Field);
-        toCast.MoveTo(toX, toY);
+        toCast.MoveTo(toX, toY, false);
         toCast.ChangeController(controller);
     }
 
@@ -163,7 +163,7 @@ public class BoardController : MonoBehaviour
     }
 
     //movement
-    public void Swap(Card card, int toX, int toY)
+    public void Swap(Card card, int toX, int toY, bool playerInitiated)
     {
         Debug.Log($"Swapping {card.CardName} to {toX}, {toY}");
 
@@ -181,11 +181,11 @@ public class BoardController : MonoBehaviour
         tempY = card.BoardY;
 
         //then let the cards know they've been moved
-        card.MoveTo(toX, toY);
-        if (temp != null) temp.MoveTo(tempX, tempY);
+        card.MoveTo(toX, toY, playerInitiated);
+        if (temp != null) temp.MoveTo(tempX, tempY, playerInitiated);
     }
 
-    public void Move(Card card, int toX, int toY)
+    public void Move(Card card, int toX, int toY, bool playerInitiated)
     {
         if (!ValidIndices(toX, toY)) return;
 
@@ -194,7 +194,7 @@ public class BoardController : MonoBehaviour
             augCard.Detach();
             GetCharAt(toX, toY).AddAugment(augCard);
         }
-        else Swap(card, toX, toY);
+        else Swap(card, toX, toY, playerInitiated);
     }
 
     public void PutCardsBack()

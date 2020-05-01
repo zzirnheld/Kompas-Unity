@@ -14,7 +14,7 @@ public abstract class HangingEffect
         this.game = game;
         this.triggerRestriction = triggerRestriction;
         this.EndCondition = endCondition;
-        game.RegisterHangingEffect(EndCondition, this);
+        game.EffectsController.RegisterHangingEffect(EndCondition, this);
     }
 
     public virtual bool EndIfApplicable(Card triggerer, IStackable stackTrigger)

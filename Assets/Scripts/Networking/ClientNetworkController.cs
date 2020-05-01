@@ -137,7 +137,7 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.Play(toPlay, packet.X, packet.Y, toPlay.Owner);
                 break;
             case Packet.Command.Move:
-                ClientGame.MoveOnBoard(ClientGame.GetCardFromID(packet.cardID), packet.X, packet.Y);
+                ClientGame.MoveOnBoard(ClientGame.GetCardFromID(packet.cardID), packet.X, packet.Y, packet.Answer);
                 //make the ui show the updated n (and other values)
                 ClientGame.uiCtrl.SelectCard(ClientGame.uiCtrl.SelectedCard, false);
                 break;

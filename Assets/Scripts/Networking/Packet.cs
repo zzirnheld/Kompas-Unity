@@ -33,7 +33,7 @@ namespace KompasNetworking
             //miscellaneous
             DiscardSimples, PutBack, YoureFirst, YoureSecond,
             //debug
-            TestTargetEffect
+            ActivateEffect
         }
 
         public Packet Copy()
@@ -183,6 +183,11 @@ namespace KompasNetworking
             normalArgs[1] = y;
             normalArgs[2] = x;
             normalArgs[3] = y;
+        }
+
+        public Packet(Command command, Card card, int x, int y, bool boolean) : this(command, card, x, y)
+        {
+            normalArgs[0] = boolean ? 1 : 0;
         }
 
         public Packet(Command command, Card card, int n, int e, int s, int w) : this(command, card)

@@ -29,6 +29,7 @@ public abstract class Card : CardBase {
     //game mechanics data
     public int BoardX { get { return boardX; } }
     public int BoardY { get { return boardY; } }
+    public (int, int) Position { get => (boardX, boardY); }
     public Player Controller { get { return controller; } }
     public int ControllerIndex { get { return Controller.index; } }
     public Player Owner { get { return owner; } }
@@ -73,6 +74,8 @@ public abstract class Card : CardBase {
             }
         }
     }
+
+    public int SpacesMoved;
 
 
     public const float spacesInGrid = 7f;
@@ -173,12 +176,14 @@ public abstract class Card : CardBase {
 
         this.effects = effects;
 
-        if (location == CardLocation.Field) MoveTo(serializedCard.BoardX, serializedCard.BoardY);
+        if (location == CardLocation.Field) MoveTo(serializedCard.BoardX, serializedCard.BoardY, false);
         else
         {
             boardX = serializedCard.BoardX;
             boardY = serializedCard.BoardY;
         }
+
+        SpacesMoved = 0;
     }
     
     #region distance/adjacency
@@ -215,7 +220,7 @@ public abstract class Card : CardBase {
     #endregion distance/adjacency
 
     //misc mechanics methods
-    public void ChangeController(Player newController)
+    public virtual void ChangeController(Player newController)
     {
         controller = newController;
         transform.localEulerAngles = new Vector3(0, 0, 180 * ControllerIndex);
@@ -224,8 +229,11 @@ public abstract class Card : CardBase {
     /// <summary>
     /// Sets this card's x and y values and updates its transform
     /// </summary>
-    public virtual void MoveTo(int toX, int toY)
+    public virtual void MoveTo(int toX, int toY, bool playerInitiated)
     {
+        if(playerInitiated)
+            SpacesMoved += System.Math.Abs(boardX - toX) + System.Math.Abs(toY - toY);
+
         boardX = toX;
         boardY = toY;
 
@@ -234,7 +242,7 @@ public abstract class Card : CardBase {
          * to show the card above the game board on the screen. */
         transform.localPosition = new Vector3(GridIndexToPos(toX), GridIndexToPos(toY), -0.1f);
         ChangeController(controller);
-        foreach (AugmentCard aug in augments) aug.MoveTo(toX, toY);
+        foreach (AugmentCard aug in augments) aug.MoveTo(toX, toY, false);
     }
 
     public void PutBack()
@@ -277,6 +285,8 @@ public abstract class Card : CardBase {
         {
             eff.ResetForTurn();
         }
+
+        SpacesMoved = 0;
     }
 
     public virtual void Negate()

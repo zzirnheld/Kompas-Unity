@@ -50,17 +50,16 @@ public class SpellCard : Card
     }
 
     //game mechanics
-    public override void MoveTo(int toX, int toY)
+    public override void MoveTo(int toX, int toY, bool playerInitiated)
     {
-        boardX = toX;
-        boardY = toY;
+        base.MoveTo(toX, toY, playerInitiated);
 
-        /* for setting where the gameobject is, it would be x and z, except that the quad is turned 90 degrees
-         * so we change the local x and y. the z coordinate also therefore needs to be negative
-         * to show the card above the game board on the screen. */
         transform.localPosition = new Vector3(GridIndexToPos(toX), GridIndexToPos(toY), -0.03f);
-        if (ControllerIndex == 0) transform.localEulerAngles = new Vector3(0, 0, 90);
-        else transform.localEulerAngles = new Vector3(0, 0, 270);
+    }
 
+    public override void ChangeController(Player newController)
+    {
+        base.ChangeController(newController);
+        transform.localEulerAngles = new Vector3(0, 0, 90 + 180 * ControllerIndex);
     }
 }

@@ -8,15 +8,17 @@ public class ServerAttack : Attack, IServerStackable
 
     public ServerPlayer ServerController { get; }
 
+    private ServerEffectsController EffCtrl => serverGame.EffectsController;
+
     public ServerAttack(ServerGame serverGame, ServerPlayer controller, CharacterCard attacker, CharacterCard defender) 
         : base(controller, attacker, defender)
     {
         this.serverGame = serverGame ?? throw new System.ArgumentNullException("Server game cannot be null for attack");
         this.ServerController = controller ?? throw new System.ArgumentNullException("Attack must have a non-null controller");
-        serverGame.Trigger(TriggerCondition.Attacks, attacker, this, null, controller);
-        serverGame.Trigger(TriggerCondition.Defends, defender, this, null, controller);
-        serverGame.Trigger(TriggerCondition.Battles, attacker, this, null, controller);
-        serverGame.Trigger(TriggerCondition.Battles, defender, this, null, controller);
+        serverGame.EffectsController.Trigger(TriggerCondition.Attacks, attacker, this, null, controller);
+        serverGame.EffectsController.Trigger(TriggerCondition.Defends, defender, this, null, controller);
+        serverGame.EffectsController.Trigger(TriggerCondition.Battles, attacker, this, null, controller);
+        serverGame.EffectsController.Trigger(TriggerCondition.Battles, defender, this, null, controller);
     }
 
     public void StartResolution()
@@ -24,7 +26,7 @@ public class ServerAttack : Attack, IServerStackable
         //deal the damage
         DealDamage();
         //then finish the resolution
-        serverGame.FinishStackEntryResolution();
+        EffCtrl.FinishStackEntryResolution();
     }
 
     private void DealDamage()
@@ -44,9 +46,9 @@ public class ServerAttack : Attack, IServerStackable
             attacker.S,
             attacker.W);
         //trigger effects based on combat damage
-        serverGame.Trigger(TriggerCondition.TakeCombatDamage, defender, this, attackerDmg, ServerController);
-        serverGame.Trigger(TriggerCondition.TakeCombatDamage, attacker, this, defenderDmg, ServerController);
-        serverGame.Trigger(TriggerCondition.DealCombatDamage, attacker, this, attackerDmg, ServerController);
-        serverGame.Trigger(TriggerCondition.DealCombatDamage, defender, this, defenderDmg, ServerController);
+        EffCtrl.Trigger(TriggerCondition.TakeCombatDamage, defender, this, attackerDmg, ServerController);
+        EffCtrl.Trigger(TriggerCondition.TakeCombatDamage, attacker, this, defenderDmg, ServerController);
+        EffCtrl.Trigger(TriggerCondition.DealCombatDamage, attacker, this, attackerDmg, ServerController);
+        EffCtrl.Trigger(TriggerCondition.DealCombatDamage, defender, this, defenderDmg, ServerController);
     }
 }

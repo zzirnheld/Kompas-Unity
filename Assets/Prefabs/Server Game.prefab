@@ -345,6 +345,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6886641577728179559}
   - component: {fileID: 6886641577728179556}
+  - component: {fileID: 8703402414065478263}
   m_Layer: 0
   m_Name: Server Game
   m_TagString: Untagged
@@ -387,7 +388,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 982f74e1d17e85e4cacba2af9442c664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseCtrl: {fileID: 0}
   uiCtrl: {fileID: 0}
   boardCtrl: {fileID: 6886641578235750068}
   boardObject: {fileID: 6886641578235750065}
@@ -401,6 +401,18 @@ MonoBehaviour:
   - {fileID: 6886641578586379215}
   - {fileID: 6886641577199914964}
   cardCount: 0
+--- !u!114 &8703402414065478263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6886641577728179557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e98dbc48d1d0ed49abcc650e67b2d86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6886641577729361558
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,12 +563,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   game: {fileID: 6886641577728179556}
   Owner: {fileID: 6886641577199914964}
-  characterCardPrefab: {fileID: 1867480149614592, guid: 3a1c99b156d4dfe4f87489a1b6147b56,
-    type: 3}
-  spellCardPrefab: {fileID: 1656078229824318, guid: c11b9e0eff225ef42b29ef33bacc3186,
-    type: 3}
-  augmentCardPrefab: {fileID: 1960667190934142, guid: 57bc0faf22439474b8ad57c3a6a0bbcb,
-    type: 3}
 --- !u!1 &6886641578235750065
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,9 +945,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   game: {fileID: 6886641577728179556}
   Owner: {fileID: 6886641578586379215}
-  characterCardPrefab: {fileID: 1867480149614592, guid: 3a1c99b156d4dfe4f87489a1b6147b56,
-    type: 3}
-  spellCardPrefab: {fileID: 1656078229824318, guid: c11b9e0eff225ef42b29ef33bacc3186,
-    type: 3}
-  augmentCardPrefab: {fileID: 1960667190934142, guid: 57bc0faf22439474b8ad57c3a6a0bbcb,
-    type: 3}

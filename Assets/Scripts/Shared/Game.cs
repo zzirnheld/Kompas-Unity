@@ -181,9 +181,9 @@ public abstract class Game : MonoBehaviour {
         card.ChangeController(controller);
     }
 
-    public void MoveOnBoard(Card card, int toX, int toY, IStackable stackSrc = null)
+    public void MoveOnBoard(Card card, int toX, int toY, bool normalMove, IStackable stackSrc = null)
     {
-        boardCtrl.Move(card, toX, toY);
+        boardCtrl.Move(card, toX, toY, normalMove);
     }
 
     public void Negate(Card c, IStackable stackSrc = null)

@@ -93,7 +93,7 @@ public class ServerTrigger : Trigger
             //then ask for a trigger
             if (Optional && !optionalConfirmed)
             {
-                effToTrigger.serverGame.AskForTrigger(this, x, cardTriggerer, stackTrigger, triggerer);
+                effToTrigger.serverGame.EffectsController.AskForTrigger(this, x, cardTriggerer, stackTrigger, triggerer);
             }
             else TriggerEffect(x);
         }

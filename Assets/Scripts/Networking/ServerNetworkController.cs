@@ -27,16 +27,18 @@ namespace KompasNetworking
                     SetDeck(packet.stringArg);
                     break;
                 case Packet.Command.Augment:
-                    Augment(packet.cardID, packet.X, packet.Y);
+                    Player.TryAugment(sGame.GetCardFromID(packet.cardID) as AugmentCard, packet.X, packet.Y);
                     break;
                 case Packet.Command.Play:
-                    Play(packet.cardID, packet.X, packet.Y);
+                    Player.TryPlay(sGame.GetCardFromID(packet.cardID), packet.X, packet.Y);
                     break;
                 case Packet.Command.Move:
-                    Move(packet.cardID, packet.X, packet.Y);
+                    Player.TryMove(sGame.GetCardFromID(packet.cardID), packet.X, packet.Y);
                     break;
                 case Packet.Command.Attack:
-                    Attack(packet.cardID, packet.X, packet.Y);
+                    var attacker = sGame.GetCardFromID(packet.cardID) as CharacterCard;
+                    var defender = sGame.boardCtrl.GetCharAt(packet.X, packet.Y);
+                    Player.TryAttack(attacker, defender);
                     break;
                 case Packet.Command.EndTurn:
                     //TODO check to see if it was their turn bewfore swapping turns
@@ -88,7 +90,7 @@ namespace KompasNetworking
                     }
                     break;
                 case Packet.Command.OptionalTrigger:
-                    sGame.OptionalTriggerAnswered(packet.Answer);
+                    sGame.EffectsController.OptionalTriggerAnswered(packet.Answer);
                     break;
                 #endregion
                 #region debug commands
@@ -116,11 +118,9 @@ namespace KompasNetworking
                     if (!sGame.uiCtrl.DebugMode) break;
                     DebugSetPips(packet.Pips);
                     break;
-                case Packet.Command.TestTargetEffect:
-                    Card whoseEffToTest = sGame.GetCardFromID(packet.cardID);
-                    Debug.Log("Running eff of " + whoseEffToTest.CardName);
-                    sGame.PushToStack(whoseEffToTest.Effects[0] as ServerEffect, Player);
-                    sGame.CheckForResponse();
+                case Packet.Command.ActivateEffect:
+                    var eff = sGame.GetCardFromID(packet.cardID)?.Effects[packet.EffIndex] as ServerEffect;
+                    Player.TryActivateEffect(eff);
                     break;
                 #endregion
                 default:
@@ -138,86 +138,6 @@ namespace KompasNetworking
         {
             if (controller == 0) return index;
             else return 6 - index;
-        }
-
-        /// <summary>
-        /// x and y here are from playerIndex's perspective
-        /// </summary>
-        /// <param name="sGame"></param>
-        /// <param name="playerIndex"></param>
-        /// <param name="cardID"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="sourceID"></param>
-        public void Augment(int cardID, int x, int y)
-        {
-            Card toAugment = sGame.GetCardFromID(cardID);
-            //if it's not a valid place to do, put the cards back
-            if (sGame.ValidAugment(toAugment, x, y))
-            {
-                sGame.Play(toAugment, x, y, Player);
-            }
-            else
-            {
-                ServerNotifier.NotifyPutBack();
-            }
-        }
-
-        public void Play(int cardID, int x, int y)
-        {
-            //get the card to play
-            Card toPlay = sGame.GetCardFromID(cardID);
-            //if it's not a valid place to do, return
-            if (sGame.ValidBoardPlay(toPlay, x, y))
-            {
-                sGame.Play(toPlay, x, y, Player);
-                sGame.CheckForResponse();
-            }
-            else
-            {
-                ServerNotifier.NotifyPutBack();
-            }
-        }
-
-        public void Move(int cardID, int x, int y)
-        {
-            Debug.Log($"Requested move to {x}, {y}");
-            //get the card to move
-            Card toMove = sGame.GetCardFromID(cardID);
-            //if it's not a valid place to do, put the cards back
-            if (sGame.ValidMove(toMove, x, y))
-            {
-                int fromX = toMove.BoardX;
-                int fromY = toMove.BoardY;
-                Debug.Log($"ServerNetworkController moving {toMove.CardName} from {fromX}, {fromY} to {x}, {y}");
-                Card atTarget = sGame.boardCtrl.GetCardAt(fromX, fromY);
-                //move the card there
-                sGame.MoveOnBoard(toMove, x, y);
-                int moved = System.Math.Abs(x - fromX) + System.Math.Abs(y - fromY);
-                if (toMove is CharacterCard charMoved) charMoved.SpacesMoved += moved;
-                if (atTarget is CharacterCard charAtTarget) charAtTarget.SpacesMoved += moved;
-            }
-            else
-            {
-                Debug.Log($"ServerNetworkController putting back {toMove.CardName}");
-                ServerNotifier.NotifyPutBack();
-            }
-        }
-
-        public void Attack(int cardID, int x, int y)
-        {
-            var attacker = sGame.GetCardFromID(cardID) as CharacterCard;
-            var defender = sGame.boardCtrl.GetCharAt(x, y);
-            if (sGame.ValidAttack(attacker, defender))
-            {
-                Debug.Log($"ServerNetworkController {attacker.CardName} attacking {defender.CardName} at {x}, {y}");
-                //tell the players to put cards down where they were
-                ServerNotifier.NotifyBothPutBack();
-                //push the attack to the stack, then check if any player wants to respond before resolving it
-                sGame.PushToStack(new ServerAttack(sGame, Player, attacker, defender));
-                sGame.CheckForResponse();
-            }
-            else ServerNotifier.NotifyPutBack();
         }
 
         public void DebugTopdeck(int cardID)
@@ -244,7 +164,7 @@ namespace KompasNetworking
             Card toDraw = sGame.Draw(Player.index);
             if (toDraw == null) return; //deck was empty
             ServerNotifier.NotifyDraw(toDraw);
-            sGame.CheckForResponse();
+            sGame.EffectsController.CheckForResponse();
         }
 
         public void DebugSetPips(int pipsToSet)

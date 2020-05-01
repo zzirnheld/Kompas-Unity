@@ -25,7 +25,7 @@ public class AugmentCard : Card
         set {
             augmentedCard = value;
             if(boardX != augmentedCard.BoardX || boardY != augmentedCard.BoardY)
-                MoveTo(augmentedCard.BoardX, augmentedCard.BoardY);
+                MoveTo(augmentedCard.BoardX, augmentedCard.BoardY, false);
         }
     }
 
@@ -74,17 +74,11 @@ public class AugmentCard : Card
 
     //game mechanics
     //TODO prevent z fighting
-    public override void MoveTo(int toX, int toY)
+    public override void MoveTo(int toX, int toY, bool playerInitiated)
     {
-        boardX = toX;
-        boardY = toY;
+        base.MoveTo(toX, toY, playerInitiated);
 
-        /* for setting where the gameobject is, it would be x and z, except that the quad is turned 90 degrees
-         * so we change the local x and y. the z coordinate also therefore needs to be negative
-         * to show the card above the game board on the screen. */
         transform.localPosition = new Vector3(GridIndexToPos(toX), GridIndexToPos(toY), -0.05f);
-        if (ControllerIndex == 0) transform.localEulerAngles = Vector3.zero;
-        else transform.localEulerAngles = new Vector3(0, 0, 180);
 
     }
 

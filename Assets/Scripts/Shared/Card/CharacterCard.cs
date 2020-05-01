@@ -15,8 +15,6 @@ public class CharacterCard : Card {
     private int baseS;
     private int baseW;
 
-    public int SpacesMoved;
-
     //stat getters TODO take into account tags here
     //reminder: don't need separate setters because you don't notify because you'll only change stats when server tells you to
     //all of these will return 0 if their value is < 0
@@ -99,8 +97,6 @@ public class CharacterCard : Card {
         baseS = s = serializedChar.s;
         baseW = w = serializedChar.w;
 
-        SpacesMoved = 0;
-
         base.SetInfo(serializedCard, game, owner, effects);
     }
     /// <summary>
@@ -125,6 +121,5 @@ public class CharacterCard : Card {
     public override void ResetForTurn()
     {
         base.ResetForTurn();
-        SpacesMoved = 0;
     }
 }

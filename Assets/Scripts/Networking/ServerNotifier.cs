@@ -88,7 +88,7 @@ public class ServerNotifier : MonoBehaviour
         SendPacketsAfterInverting(outPacket, outPacketInverted, Player.index, Player.enemy.index);
     }
     
-    public void NotifyMove(Card toMove, int x, int y)
+    public void NotifyMove(Card toMove, int x, int y, bool playerInitiated)
     {
         //tell everyone to do it
         Packet friendlyPacket = new Packet(Packet.Command.Move, toMove, x, y);

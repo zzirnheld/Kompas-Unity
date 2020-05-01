@@ -8,6 +8,7 @@ public class ServerEffect : Effect, IServerStackable
     public ServerTrigger ServerTrigger { get; }
     
     public ServerGame serverGame;
+    public ServerEffectsController EffectsController => serverGame.EffectsController;
 
     public ServerSubeffect OnImpossible = null;
 
@@ -50,9 +51,15 @@ public class ServerEffect : Effect, IServerStackable
         }
     }
 
+    public bool CanBeActivatedBy(ServerPlayer controller)
+    {
+        return Trigger == null
+            && controller.index == thisCard.ControllerIndex;
+    }
+
     public void PushToStack(ServerPlayer controller)
     {
-        serverGame.PushToStack(this, controller);
+        EffectsController.PushToStack(this, controller);
     }
 
     public void StartResolution()
@@ -93,7 +100,7 @@ public class ServerEffect : Effect, IServerStackable
         OnImpossible = null;
         ServerController.ServerNotifier.AcceptTarget();
         ServerController.ServerNotifier.NotifyBothPutBack();
-        serverGame.FinishStackEntryResolution();
+        EffectsController.FinishStackEntryResolution();
     }
 
     /// <summary>
