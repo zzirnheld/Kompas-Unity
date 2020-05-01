@@ -385,7 +385,7 @@ public class ServerGame : Game {
         TurnServerPlayer.ServerNotifier.NotifySetTurn(this, turnPlayer);
 
         //trigger turn start effects
-        Trigger(TriggerCondition.TurnStart, null, null, null, TurnPlayer as ServerPlayer);
+        Trigger(TriggerCondition.TurnStart, null, null, null, TurnServerPlayer);
         CheckForResponse();
     }
 
