@@ -13,10 +13,6 @@ public abstract class Effect
     public Card thisCard;
     public Card Source { get { return thisCard; } }
 
-    //who owns the effect. TODO set when a player activates an effect
-    public int effectControllerIndex;
-    public abstract Player Controller { get; }
-
     //current subeffect that's resolving
     public int subeffectIndex;
     public Subeffect CurrSubeffect { get { return Subeffects[subeffectIndex]; } }

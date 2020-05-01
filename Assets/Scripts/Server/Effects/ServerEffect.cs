@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ServerEffect : Effect, IStackable
+public class ServerEffect : Effect, IServerStackable
 {
     public ServerSubeffect[] ServerSubeffects { get; }
     public ServerTrigger ServerTrigger { get; }
@@ -11,17 +11,15 @@ public class ServerEffect : Effect, IStackable
 
     public ServerSubeffect OnImpossible = null;
 
-    //get the currently resolving subeffect
-    public ServerPlayer EffectController { get { return serverGame.ServerPlayers[effectControllerIndex]; } }
-
-    public override Player Controller => EffectController;
+    public ServerPlayer ServerController { get; set; }
+    public Player Controller => ServerController;
     public override Subeffect[] Subeffects => ServerSubeffects;
     public override Trigger Trigger => ServerTrigger;
 
-    public ServerEffect(SerializableEffect se, Card thisCard) : base(se.maxTimesCanUsePerTurn)
+    public ServerEffect(SerializableEffect se, Card thisCard, ServerGame serverGame) : base(se.maxTimesCanUsePerTurn)
     {
         this.thisCard = thisCard ?? throw new System.ArgumentNullException("Effect cannot be attached to null card");
-        this.serverGame = thisCard.game as ServerGame;
+        this.serverGame = serverGame;
         ServerSubeffects = new ServerSubeffect[se.subeffects.Length];
         targets = new List<Card>();
         coords = new List<Vector2Int>();
@@ -52,7 +50,7 @@ public class ServerEffect : Effect, IStackable
         }
     }
 
-    public void PushToStack(int controller)
+    public void PushToStack(ServerPlayer controller)
     {
         serverGame.PushToStack(this, controller);
     }
@@ -60,7 +58,7 @@ public class ServerEffect : Effect, IStackable
     public void StartResolution()
     {
         thisCard.game.CurrEffect = this;
-        EffectController.ServerNotifier.NotifyEffectX(thisCard, EffectIndex, X);
+        ServerController.ServerNotifier.NotifyEffectX(thisCard, EffectIndex, X);
         if (Negated) EffectImpossible();
         else ResolveSubeffect(0);
     }
@@ -93,8 +91,8 @@ public class ServerEffect : Effect, IStackable
         X = 0;
         targets.Clear();
         OnImpossible = null;
-        EffectController.ServerNotifier.AcceptTarget();
-        EffectController.ServerNotifier.NotifyBothPutBack();
+        ServerController.ServerNotifier.AcceptTarget();
+        ServerController.ServerNotifier.NotifyBothPutBack();
         serverGame.FinishStackEntryResolution();
     }
 

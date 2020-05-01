@@ -5,7 +5,7 @@ using UnityEngine;
 public class DrawSubeffect : ServerSubeffect
 {
     public int Player = -1;
-    public int WhoDraws { get { return Player == -1 ? ServerEffect.effectControllerIndex : Player; } }
+    public int WhoDraws { get { return Player == -1 ? ServerEffect.ServerController.index : Player; } }
 
     public override void Resolve()
     {

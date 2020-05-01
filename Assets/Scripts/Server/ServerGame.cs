@@ -182,14 +182,14 @@ public class ServerGame : Game {
         }
     }
 
-    public override void Discard(Card card, IStackable stackSrc = null)
+    public void Discard(Card card, IServerStackable stackSrc = null)
     {
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyDiscard(card);
-        Trigger(TriggerCondition.Discard, card, stackSrc, null, stackSrc?.Controller as ServerPlayer);
-        base.Discard(card);
+        Trigger(TriggerCondition.Discard, card, stackSrc, null, stackSrc?.ServerController);
+        base.Discard(card, stackSrc);
     }
 
-    public override void Rehand(Player controller, Card card, IStackable stackSrc = null)
+    public void Rehand(Player controller, Card card, IServerStackable stackSrc = null)
     {
         if(controller != card.Controller)
         {
@@ -198,53 +198,53 @@ public class ServerGame : Game {
                 $"This wasn't a problem up until now, but now you need to implement owner index," +
                 $"ya numpty");
         }
-        Trigger(TriggerCondition.Rehand, card, stackSrc, null, stackSrc?.Controller as ServerPlayer);
+        Trigger(TriggerCondition.Rehand, card, stackSrc, null, stackSrc?.ServerController);
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyRehand(card);
-        base.Rehand(controller, card);
+        base.Rehand(controller, card, stackSrc);
     }
 
-    public override void Rehand(Card card, IStackable stackSrc = null)
+    public void Rehand(Card card, IServerStackable stackSrc = null)
     {
-        Rehand(card.Controller, card);
+        Rehand(card.Controller, card, stackSrc);
     }
 
-    public override void Reshuffle(Card card, IStackable stackSrc = null)
+    public void Reshuffle(Card card, IServerStackable stackSrc = null)
     {
-        Trigger(TriggerCondition.Reshuffle, card, stackSrc, null, stackSrc?.Controller as ServerPlayer);
-        Trigger(TriggerCondition.ToDeck, card, stackSrc, null, stackSrc?.Controller as ServerPlayer);
+        Trigger(TriggerCondition.Reshuffle, card, stackSrc, null, stackSrc?.ServerController);
+        Trigger(TriggerCondition.ToDeck, card, stackSrc, null, stackSrc?.ServerController);
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyReshuffle(card);
-        base.Reshuffle(card);
+        base.Reshuffle(card, stackSrc);
     }
 
-    public override void Topdeck(Card card, IStackable stackSrc = null)
+    public void Topdeck(Card card, IServerStackable stackSrc = null)
     {
-        Trigger(TriggerCondition.Topdeck, card, stackSrc, null, stackSrc?.Controller as ServerPlayer);
-        Trigger(TriggerCondition.ToDeck, card, stackSrc, null, stackSrc?.Controller as ServerPlayer);
+        Trigger(TriggerCondition.Topdeck, card, stackSrc, null, stackSrc?.ServerController);
+        Trigger(TriggerCondition.ToDeck, card, stackSrc, null, stackSrc?.ServerController);
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyTopdeck(card);
-        base.Topdeck(card);
+        base.Topdeck(card, stackSrc);
     }
 
-    public override void Bottomdeck(Card card, IStackable stackSrc = null)
+    public void Bottomdeck(Card card, IServerStackable stackSrc = null)
     {
-        Trigger(TriggerCondition.Bottomdeck, card, stackSrc, null, stackSrc?.Controller as ServerPlayer);
-        Trigger(TriggerCondition.ToDeck, card, stackSrc, null, stackSrc?.Controller as ServerPlayer);
+        Trigger(TriggerCondition.Bottomdeck, card, stackSrc, null, stackSrc?.ServerController);
+        Trigger(TriggerCondition.ToDeck, card, stackSrc, null, stackSrc?.ServerController);
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyBottomdeck(card);
-        base.Bottomdeck(card);
+        base.Bottomdeck(card, stackSrc);
     }
 
-    public override void Play(Card card, int toX, int toY, Player controller, IStackable stackSrc = null)
+    public void Play(Card card, int toX, int toY, Player controller, IServerStackable stackSrc = null)
     {
-        Trigger(TriggerCondition.Play, card, stackSrc, null, stackSrc?.Controller as ServerPlayer);
+        Trigger(TriggerCondition.Play, card, stackSrc, null, stackSrc?.ServerController);
         //note that it's serverPlayers[controller.index] because you can play to the field of someone whose card it isnt
         ServerPlayers[controller.index].ServerNotifier.NotifyPlay(card, toX, toY);
-        base.Play(card, toX, toY, controller);
+        base.Play(card, toX, toY, controller, stackSrc);
     }
 
-    public override void MoveOnBoard(Card card, int toX, int toY, IStackable stackSrc = null)
+    public void MoveOnBoard(Card card, int toX, int toY, IServerStackable stackSrc = null)
     {
-        Trigger(TriggerCondition.Move, card, stackSrc, null, stackSrc?.Controller as ServerPlayer);
+        Trigger(TriggerCondition.Move, card, stackSrc, null, stackSrc?.ServerController);
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyMove(card, toX, toY);
-        base.MoveOnBoard(card, toX, toY);
+        base.MoveOnBoard(card, toX, toY, stackSrc);
     }
     #endregion move card between areas
 
@@ -267,10 +267,10 @@ public class ServerGame : Game {
         }
     }
 
-    public override void Negate(Card c)
+    public void Negate(Card c, IServerStackable stackSrc = null)
     {
         ServerPlayers[c.ControllerIndex].ServerNotifier.NotifyNegate(c);
-        base.Negate(c);
+        base.Negate(c, stackSrc);
     }
 
     public Card Draw(int player, IStackable stackSrc = null)
@@ -392,10 +392,10 @@ public class ServerGame : Game {
         stackIndex++;
     }
 
-    public void PushToStack(ServerEffect eff, int controller)
+    public void PushToStack(ServerEffect eff, ServerPlayer controller)
     {
         eff.serverGame = this;
-        eff.effectControllerIndex = controller;
+        eff.ServerController = controller;
         PushToStack(eff);
     }
 
@@ -476,7 +476,7 @@ public class ServerGame : Game {
             lock (TriggerStackLock)
             {
                 var (t, x, cardTriggerer, stackTriggerer, triggerer) = OptionalTriggersToAsk.Peek();
-                (t.effToTrigger.thisCard.Controller as ServerPlayer)?.ServerNotifier.AskForTrigger(t, x, cardTriggerer, stackTriggerer);
+                t.effToTrigger.ServerController?.ServerNotifier.AskForTrigger(t, x, cardTriggerer, stackTriggerer);
             }
             //if the player chooses to trigger it, it will be removed from the list
         }

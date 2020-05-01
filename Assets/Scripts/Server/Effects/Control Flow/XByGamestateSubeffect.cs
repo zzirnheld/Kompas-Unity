@@ -17,8 +17,8 @@ public abstract class XByGamestateSubeffect : ServerSubeffect
     {
         get
         {
-            if (PlayerIndex == 0) return ServerEffect.EffectController;
-            else return ServerEffect.EffectController.enemy;
+            if (PlayerIndex == 0) return ServerEffect.ServerController;
+            else return ServerEffect.ServerController.enemy;
         }
     }
 

@@ -148,12 +148,12 @@ public class CardRepository : MonoBehaviour
         return JsonUtility.FromJson<SerializableCard>(cardJsons[name]);
     }
 
-    private ServerEffect[] CreateServerEffects(SerializableEffect[] serEffs, Card card)
+    private ServerEffect[] CreateServerEffects(SerializableEffect[] serEffs, Card card, ServerGame serverGame)
     {
         ServerEffect[] effects = new ServerEffect[serEffs.Length];
         for (int i = 0; i < effects.Length; i++)
         {
-            effects[i] = new ServerEffect(serEffs[i], card);
+            effects[i] = new ServerEffect(serEffs[i], card, serverGame);
         }
         return effects;
     }
@@ -171,7 +171,7 @@ public class CardRepository : MonoBehaviour
             SerializableCharCard charCard = JsonUtility.FromJson<SerializableCharCard>(cardJsons[cardName]);
             if (charCard.cardType != 'C') return null;
             AvatarCard avatar = Instantiate(ServerAvatarPrefab).GetComponent<AvatarCard>();
-            ServerEffect[] effects = CreateServerEffects(charCard.effects, avatar);
+            ServerEffect[] effects = CreateServerEffects(charCard.effects, avatar, serverGame);
             avatar.SetInfo(charCard, serverGame, owner, effects);
             avatar.SetImage();
             avatar.ID = id;
@@ -201,19 +201,19 @@ public class CardRepository : MonoBehaviour
                 case 'C':
                     SerializableCharCard serializableChar = JsonUtility.FromJson<SerializableCharCard>(json);
                     card = Instantiate(ServerCharPrefab).GetComponent<CharacterCard>();
-                    effects = CreateServerEffects(serializableCard.effects, card);
+                    effects = CreateServerEffects(serializableCard.effects, card, serverGame);
                     card?.SetInfo(serializableChar, serverGame, owner, effects);
                     break;
                 case 'S':
                     SerializableSpellCard serializableSpell = JsonUtility.FromJson<SerializableSpellCard>(json);
                     card = Instantiate(ServerSpellPrefab).GetComponent<SpellCard>();
-                    effects = CreateServerEffects(serializableCard.effects, card);
+                    effects = CreateServerEffects(serializableCard.effects, card, serverGame);
                     card?.SetInfo(serializableSpell, serverGame, owner, effects);
                     break;
                 case 'A':
                     SerializableAugCard serializableAug = JsonUtility.FromJson<SerializableAugCard>(json);
                     card = Instantiate(ServerSpellPrefab).GetComponent<AugmentCard>();
-                    effects = CreateServerEffects(serializableCard.effects, card);
+                    effects = CreateServerEffects(serializableCard.effects, card, serverGame);
                     card?.SetInfo(serializableAug, serverGame, owner, effects);
                     break;
                 default:
@@ -231,12 +231,12 @@ public class CardRepository : MonoBehaviour
         }
     }
 
-    private ClientEffect[] CreateClientEffects(SerializableEffect[] serEffs, Card card)
+    private ClientEffect[] CreateClientEffects(SerializableEffect[] serEffs, Card card, ClientGame clientGame)
     {
         ClientEffect[] effects = new ClientEffect[serEffs.Length];
         for (int i = 0; i < effects.Length; i++)
         {
-            effects[i] = new ClientEffect(serEffs[i], card);
+            effects[i] = new ClientEffect(serEffs[i], card, clientGame);
         }
         return effects;
     }
@@ -254,7 +254,7 @@ public class CardRepository : MonoBehaviour
             SerializableCharCard charCard = JsonUtility.FromJson<SerializableCharCard>(cardJsons[cardName]);
             if (charCard.cardType != 'C') return null;
             AvatarCard avatar = Instantiate(ClientAvatarPrefab).GetComponent<AvatarCard>();
-            ClientEffect[] effects = CreateClientEffects(charCard.effects, avatar);
+            ClientEffect[] effects = CreateClientEffects(charCard.effects, avatar, clientGame);
             avatar.SetInfo(charCard, clientGame, owner, effects);
             avatar.gameObject.GetComponent<ClientCardMouseController>().ClientGame = clientGame;
             avatar.SetImage();
@@ -285,19 +285,19 @@ public class CardRepository : MonoBehaviour
                 case 'C':
                     SerializableCharCard serializableChar = JsonUtility.FromJson<SerializableCharCard>(json);
                     card = Instantiate(ClientCharPrefab).GetComponent<CharacterCard>();
-                    effects = CreateClientEffects(serializableCard.effects, card);
+                    effects = CreateClientEffects(serializableCard.effects, card, clientGame);
                     card?.SetInfo(serializableChar, clientGame, owner, effects);
                     break;
                 case 'S':
                     SerializableSpellCard serializableSpell = JsonUtility.FromJson<SerializableSpellCard>(json);
                     card = Instantiate(ClientSpellPrefab).GetComponent<SpellCard>();
-                    effects = CreateClientEffects(serializableCard.effects, card);
+                    effects = CreateClientEffects(serializableCard.effects, card, clientGame);
                     card?.SetInfo(serializableSpell, clientGame, owner, effects);
                     break;
                 case 'A':
                     SerializableAugCard serializableAug = JsonUtility.FromJson<SerializableAugCard>(json);
                     card = Instantiate(ClientAugPrefab).GetComponent<AugmentCard>();
-                    effects = CreateClientEffects(serializableCard.effects, card);
+                    effects = CreateClientEffects(serializableCard.effects, card, clientGame);
                     card?.SetInfo(serializableAug, clientGame, owner, effects);
                     break;
                 default:

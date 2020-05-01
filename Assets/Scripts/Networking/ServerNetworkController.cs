@@ -71,10 +71,7 @@ namespace KompasNetworking
                     else Debug.Log("curr effect null? " + (sGame.CurrEffect == null) + " or not player set x? " + (sGame.CurrEffect?.CurrSubeffect is SpaceTargetSubeffect));
                     break;
                 case Packet.Command.DeclineAnotherTarget:
-                    if (sGame.CurrEffect != null)
-                    {
-                        (sGame.CurrEffect as ServerEffect).DeclineAnotherTarget();
-                    }
+                    sGame.CurrEffect?.DeclineAnotherTarget();
                     break;
                 case Packet.Command.GetChoicesFromList:
                     List<Card> choices = new List<Card>();
@@ -122,7 +119,7 @@ namespace KompasNetworking
                 case Packet.Command.TestTargetEffect:
                     Card whoseEffToTest = sGame.GetCardFromID(packet.cardID);
                     Debug.Log("Running eff of " + whoseEffToTest.CardName);
-                    sGame.PushToStack(whoseEffToTest.Effects[0] as ServerEffect, Player.index);
+                    sGame.PushToStack(whoseEffToTest.Effects[0] as ServerEffect, Player);
                     sGame.CheckForResponse();
                     break;
                 #endregion

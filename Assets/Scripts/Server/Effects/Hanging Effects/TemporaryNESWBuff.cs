@@ -13,7 +13,7 @@ public class TemporaryNESWBuff : HangingEffect
     public TemporaryNESWBuff(Game game, TriggerRestriction triggerRestriction, TriggerCondition EndCondition, CharacterCard buffRecipient, int nBuff, int eBuff, int sBuff, int wBuff) 
         : base(game, triggerRestriction, EndCondition)
     {
-        this.buffRecipient = buffRecipient;
+        this.buffRecipient = buffRecipient ?? throw new System.ArgumentNullException("Null characcter card in temporary nesw buff");
         this.nBuff = nBuff;
         this.eBuff = eBuff;
         this.sBuff = sBuff;
