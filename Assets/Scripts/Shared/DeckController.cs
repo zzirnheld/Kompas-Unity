@@ -10,27 +10,13 @@ public class DeckController : MonoBehaviour
 
     public Game game;
 
-    private ClientGame clientGame;
-    private ServerGame serverGame;
-
     //one of these for each player
     public Player Owner;
 
     //rng for shuffling
     private static readonly System.Random rng = new System.Random();
 
-    //prefabs to instantiate in deck
-    public GameObject characterCardPrefab;
-    public GameObject spellCardPrefab;
-    public GameObject augmentCardPrefab;
-
     public List<Card> Deck { get; } = new List<Card>();
-
-    private void Awake()
-    {
-        clientGame = game as ClientGame;
-        serverGame = game as ServerGame;
-    }
 
     public int IndexOf(Card card)
     {
@@ -165,12 +151,5 @@ public class DeckController : MonoBehaviour
                 cards.Add(c);
         }
         return cards;
-    }
-
-    public void OnMouseDown()
-    {
-        //request a draw
-        if (clientGame.friendlyDeckCtrl == this)
-            clientGame.clientNotifier.RequestDraw();
     }
 }
