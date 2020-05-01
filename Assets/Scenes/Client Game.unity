@@ -1126,10 +1126,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 116530640}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf8ce88bdb728924396eaf507c87bdaa, type: 3}
+  m_Script: {fileID: 11500000, guid: dd85a6630f870274e8b96a8fb6c70223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 492080563}
+  ClientGame: {fileID: 492080563}
 --- !u!65 &116530642
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3374,7 +3375,7 @@ MonoBehaviour:
   friendlyDeckObj: {fileID: 562958693}
   friendlyDiscardObj: {fileID: 540378487}
   enemyHandCtrl: {fileID: 60475903}
-  enemyDeckCtrl: {fileID: 0}
+  enemyDeckCtrl: {fileID: 343499438}
   enemyDiscardCtrl: {fileID: 116530641}
   enemyHandObj: {fileID: 60475902}
   enemyDeckObj: {fileID: 343499437}
@@ -3751,10 +3752,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 540378487}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf8ce88bdb728924396eaf507c87bdaa, type: 3}
+  m_Script: {fileID: 11500000, guid: dd85a6630f870274e8b96a8fb6c70223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 492080563}
+  ClientGame: {fileID: 492080563}
 --- !u!1 &553532377
 GameObject:
   m_ObjectHideFlags: 0
@@ -12848,7 +12850,7 @@ MonoBehaviour:
   friendly: 1
   index: 0
   deckCtrl: {fileID: 0}
-  discardCtrl: {fileID: 540378492}
+  discardCtrl: {fileID: 0}
   handCtrl: {fileID: 1921547573}
   deckObject: {fileID: 562958693}
   discardObject: {fileID: 540378487}
@@ -12906,7 +12908,7 @@ MonoBehaviour:
   friendly: 0
   index: 1
   deckCtrl: {fileID: 0}
-  discardCtrl: {fileID: 116530641}
+  discardCtrl: {fileID: 0}
   handCtrl: {fileID: 60475903}
   deckObject: {fileID: 343499437}
   discardObject: {fileID: 116530640}

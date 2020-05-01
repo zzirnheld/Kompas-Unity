@@ -7,8 +7,6 @@ using UnityEngine.EventSystems;
 public class DiscardController : MonoBehaviour {
 
     public Game game;
-    public Game Game { get => game; set => game = value; }
-    private ClientGame clientGame;
 
     private List<Card> discard = new List<Card>();
     public List<Card> Discard { get { return discard; } }
@@ -16,11 +14,6 @@ public class DiscardController : MonoBehaviour {
     //info about discard
     public int DiscardSize() { return discard.Count; }
     public Card GetLastDiscarded() { return discard[discard.Count - 1]; }
-
-    private void Awake()
-    {
-        clientGame = game as ClientGame;
-    }
 
     public Card CardAt(int index, bool remove)
     {
@@ -78,11 +71,5 @@ public class DiscardController : MonoBehaviour {
         }
 
         return cards;
-    }
-
-    public void OnMouseDown()
-    {
-        if (clientGame.friendlyDiscardCtrl == this)
-            clientGame.clientNotifier.RequestRehand(GetLastDiscarded());
     }
 }
