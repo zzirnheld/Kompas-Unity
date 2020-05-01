@@ -7,9 +7,9 @@ public abstract class HangingEffect
     public TriggerCondition EndCondition { get; }
 
     private TriggerRestriction triggerRestriction;
-    private Game game;
+    private ServerGame game;
 
-    public HangingEffect(Game game, TriggerRestriction triggerRestriction, TriggerCondition endCondition)
+    public HangingEffect(ServerGame game, TriggerRestriction triggerRestriction, TriggerCondition endCondition)
     {
         this.game = game;
         this.triggerRestriction = triggerRestriction;

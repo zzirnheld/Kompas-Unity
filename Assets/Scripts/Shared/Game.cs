@@ -30,11 +30,6 @@ public abstract class Game : MonoBehaviour {
     //game data
     public Dictionary<int, Card> cards;
     public int MaxCardsOnField = 0; //for pip generation purposes
-    public ISubeffectFactory SubeffectFactory;
-
-    //trigger map
-    protected Dictionary<TriggerCondition, List<ServerTrigger>> triggerMap;
-    protected Dictionary<TriggerCondition, List<HangingEffect>> hangingEffectMap;
     
     public ServerEffect CurrEffect { get; set; }
 
@@ -57,18 +52,6 @@ public abstract class Game : MonoBehaviour {
             //Debug.Log("Adding \"" + cardNames[i] + "\", length " + cardNames[i].Length);
             CardNames.Add(i, toAdd); //because line endings
             CardNameIndices.Add(toAdd, i);
-        }
-        
-        triggerMap = new Dictionary<TriggerCondition, List<ServerTrigger>>();
-        foreach (TriggerCondition c in System.Enum.GetValues(typeof(TriggerCondition)))
-        {
-            triggerMap.Add(c, new List<ServerTrigger>());
-        }
-
-        hangingEffectMap = new Dictionary<TriggerCondition, List<HangingEffect>>();
-        foreach (TriggerCondition c in System.Enum.GetValues(typeof(TriggerCondition)))
-        {
-            hangingEffectMap.Add(c, new List<HangingEffect>());
         }
     }
 
@@ -264,25 +247,4 @@ public abstract class Game : MonoBehaviour {
         Negate(spell);
         Discard(spell);
     }
-
-    #region triggers
-    public void RegisterTrigger(TriggerCondition condition, ServerTrigger trigger)
-    {
-        Debug.Log($"Registering a new trigger from card {trigger.effToTrigger.thisCard.CardName} to condition {condition}");
-        List<ServerTrigger> triggers = triggerMap[condition];
-        if (triggers == null)
-        {
-            triggers = new List<ServerTrigger>();
-            triggerMap.Add(condition, triggers);
-        }
-        triggers.Add(trigger);
-    }
-
-    public void RegisterHangingEffect(TriggerCondition condition, HangingEffect hangingEff)
-    {
-        Debug.Log($"Registering a new hanging effect to condition {condition}");
-        List<HangingEffect> hangingEffs = hangingEffectMap[condition];
-        hangingEffs.Add(hangingEff);
-    }
-    #endregion
 }
