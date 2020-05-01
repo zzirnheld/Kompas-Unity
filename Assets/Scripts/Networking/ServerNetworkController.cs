@@ -140,26 +140,47 @@ namespace KompasNetworking
             else return 6 - index;
         }
 
+        #region Debug Actions
         public void DebugTopdeck(int cardID)
         {
+            if (!sGame.uiCtrl.DebugMode)
+            {
+                Debug.LogError($"Tried to debug topdeck card with id {cardID} while NOT in debug mode!");
+                return;
+            }
             Card toTopdeck = sGame.GetCardFromID(cardID);
             sGame.Topdeck(toTopdeck);
         }
 
         public void DebugDiscard(int cardID)
         {
+            if (!sGame.uiCtrl.DebugMode)
+            {
+                Debug.LogError($"Tried to debug discard card with id {cardID} while NOT in debug mode!");
+                return;
+            }
             Card toDiscard = sGame.GetCardFromID(cardID);
             sGame.Discard(toDiscard);
         }
 
         public void DebugRehand(int cardID)
         {
+            if (!sGame.uiCtrl.DebugMode)
+            {
+                Debug.LogError($"Tried to debug rehand card with id {cardID} while NOT in debug mode!");
+                return;
+            }
             Card toRehand = sGame.GetCardFromID(cardID);
             sGame.Rehand(toRehand);
         }
 
         public void DebugDraw()
         {
+            if (!sGame.uiCtrl.DebugMode)
+            {
+                Debug.LogError("Tried to debug draw card while NOT in debug mode!");
+                return;
+            }
             //draw and store what was drawn
             Card toDraw = sGame.Draw(Player.index);
             if (toDraw == null) return; //deck was empty
@@ -169,14 +190,25 @@ namespace KompasNetworking
 
         public void DebugSetPips(int pipsToSet)
         {
+            if (!sGame.uiCtrl.DebugMode)
+            {
+                Debug.LogError($"Tried to debug give {pipsToSet} pips while NOT in debug mode!");
+                return;
+            }
             sGame.GivePlayerPips(Player, pipsToSet);
         }
 
         public void DebugSetNESW(int cardID, int n, int e, int s, int w)
         {
+            if (!sGame.uiCtrl.DebugMode)
+            {
+                Debug.LogError($"Tried to debug set card with id {cardID} NESW while NOT in debug mode!");
+                return;
+            }
             Card toSet = sGame.GetCardFromID(cardID);
             if (!(toSet is CharacterCard charToSet)) return;
-            charToSet.SetNESW(n, e, s, w);
+            sGame.SetStats(charToSet, n, e, s, w);
         }
+        #endregion Debug Actions
     }
 }
