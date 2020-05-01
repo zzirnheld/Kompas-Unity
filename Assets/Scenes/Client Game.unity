@@ -12849,8 +12849,8 @@ MonoBehaviour:
   Avatar: {fileID: 0}
   friendly: 1
   index: 0
-  deckCtrl: {fileID: 0}
-  discardCtrl: {fileID: 0}
+  deckCtrl: {fileID: 562958698}
+  discardCtrl: {fileID: 540378492}
   handCtrl: {fileID: 1921547573}
   deckObject: {fileID: 562958693}
   discardObject: {fileID: 540378487}
@@ -12907,8 +12907,8 @@ MonoBehaviour:
   Avatar: {fileID: 0}
   friendly: 0
   index: 1
-  deckCtrl: {fileID: 0}
-  discardCtrl: {fileID: 0}
+  deckCtrl: {fileID: 343499438}
+  discardCtrl: {fileID: 116530641}
   handCtrl: {fileID: 60475903}
   deckObject: {fileID: 343499437}
   discardObject: {fileID: 116530640}
