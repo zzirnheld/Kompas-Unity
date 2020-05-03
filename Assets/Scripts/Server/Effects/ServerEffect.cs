@@ -11,16 +11,17 @@ public class ServerEffect : Effect, IServerStackable
     public ServerEffectsController EffectsController => serverGame.EffectsController;
 
     public ServerSubeffect OnImpossible = null;
-
-    public ServerPlayer ServerController { get; set; }
+    
+    public ServerPlayer ServerController { get;  set; }
     public Player Controller => ServerController;
     public override Subeffect[] Subeffects => ServerSubeffects;
     public override Trigger Trigger => ServerTrigger;
 
-    public ServerEffect(SerializableEffect se, Card thisCard, ServerGame serverGame) : base(se.maxTimesCanUsePerTurn)
+    public ServerEffect(SerializableEffect se, Card thisCard, ServerGame serverGame, ServerPlayer controller) : base(se.maxTimesCanUsePerTurn)
     {
         this.thisCard = thisCard ?? throw new System.ArgumentNullException("Effect cannot be attached to null card");
         this.serverGame = serverGame;
+        this.ServerController = controller;
         ServerSubeffects = new ServerSubeffect[se.subeffects.Length];
         targets = new List<Card>();
         coords = new List<Vector2Int>();

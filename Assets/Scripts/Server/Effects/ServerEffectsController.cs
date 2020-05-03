@@ -196,6 +196,7 @@ public class ServerEffectsController : MonoBehaviour
     /// <param name="x"></param>
     public void AskForTrigger(ServerTrigger trigger, int? x, Card c, IStackable s, ServerPlayer p)
     {
+        Debug.Log($"Asking about trigger for effect of card {trigger.effToTrigger.thisCard.CardName}");
         lock (TriggerStackLock)
         {
             OptionalTriggersToAsk.Push((trigger, x, c, s, p));

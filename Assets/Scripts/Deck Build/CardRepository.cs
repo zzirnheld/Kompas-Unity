@@ -148,17 +148,17 @@ public class CardRepository : MonoBehaviour
         return JsonUtility.FromJson<SerializableCard>(cardJsons[name]);
     }
 
-    private ServerEffect[] CreateServerEffects(SerializableEffect[] serEffs, Card card, ServerGame serverGame)
+    private ServerEffect[] CreateServerEffects(SerializableEffect[] serEffs, Card card, ServerGame serverGame, ServerPlayer owner)
     {
         ServerEffect[] effects = new ServerEffect[serEffs.Length];
         for (int i = 0; i < effects.Length; i++)
         {
-            effects[i] = new ServerEffect(serEffs[i], card, serverGame);
+            effects[i] = new ServerEffect(serEffs[i], card, serverGame, owner);
         }
         return effects;
     }
 
-    public AvatarCard InstantiateServerAvatar(string cardName, ServerGame serverGame, Player owner, int id)
+    public AvatarCard InstantiateServerAvatar(string cardName, ServerGame serverGame, ServerPlayer owner, int id)
     {
         if (!cardJsons.ContainsKey(cardName))
         {
@@ -171,7 +171,7 @@ public class CardRepository : MonoBehaviour
             SerializableCharCard charCard = JsonUtility.FromJson<SerializableCharCard>(cardJsons[cardName]);
             if (charCard.cardType != 'C') return null;
             AvatarCard avatar = Instantiate(ServerAvatarPrefab).GetComponent<AvatarCard>();
-            ServerEffect[] effects = CreateServerEffects(charCard.effects, avatar, serverGame);
+            ServerEffect[] effects = CreateServerEffects(charCard.effects, avatar, serverGame, owner);
             avatar.SetInfo(charCard, serverGame, owner, effects);
             avatar.SetImage();
             avatar.ID = id;
@@ -186,7 +186,7 @@ public class CardRepository : MonoBehaviour
         }
     }
 
-    public Card InstantiateServerNonAvatar(string name, ServerGame serverGame, Player owner)
+    public Card InstantiateServerNonAvatar(string name, ServerGame serverGame, ServerPlayer owner)
     {
         string json = cardJsons[name] ?? throw new System.ArgumentException($"Name {name} not associated with json");
         Card card = null;
@@ -201,19 +201,19 @@ public class CardRepository : MonoBehaviour
                 case 'C':
                     SerializableCharCard serializableChar = JsonUtility.FromJson<SerializableCharCard>(json);
                     card = Instantiate(ServerCharPrefab).GetComponent<CharacterCard>();
-                    effects = CreateServerEffects(serializableCard.effects, card, serverGame);
+                    effects = CreateServerEffects(serializableCard.effects, card, serverGame, owner);
                     card?.SetInfo(serializableChar, serverGame, owner, effects);
                     break;
                 case 'S':
                     SerializableSpellCard serializableSpell = JsonUtility.FromJson<SerializableSpellCard>(json);
                     card = Instantiate(ServerSpellPrefab).GetComponent<SpellCard>();
-                    effects = CreateServerEffects(serializableCard.effects, card, serverGame);
+                    effects = CreateServerEffects(serializableCard.effects, card, serverGame, owner);
                     card?.SetInfo(serializableSpell, serverGame, owner, effects);
                     break;
                 case 'A':
                     SerializableAugCard serializableAug = JsonUtility.FromJson<SerializableAugCard>(json);
                     card = Instantiate(ServerSpellPrefab).GetComponent<AugmentCard>();
-                    effects = CreateServerEffects(serializableCard.effects, card, serverGame);
+                    effects = CreateServerEffects(serializableCard.effects, card, serverGame, owner);
                     card?.SetInfo(serializableAug, serverGame, owner, effects);
                     break;
                 default:
