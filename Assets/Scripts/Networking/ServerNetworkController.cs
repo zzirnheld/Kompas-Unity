@@ -92,6 +92,12 @@ namespace KompasNetworking
                 case Packet.Command.OptionalTrigger:
                     sGame.EffectsController.OptionalTriggerAnswered(packet.Answer);
                     break;
+                case Packet.Command.ChooseEffectOption:
+                    if(sGame.CurrEffect?.CurrSubeffect is ChooseOptionSubeffect optionSubeff)
+                    {
+                        optionSubeff.ChooseOption(packet.EffectOption);
+                    }
+                    break;
                 #endregion
                 #region debug commands
                 case Packet.Command.Topdeck:

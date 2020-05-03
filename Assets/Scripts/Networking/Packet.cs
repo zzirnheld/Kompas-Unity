@@ -65,6 +65,7 @@ namespace KompasNetworking
         public int Pips { get { return normalArgs[0]; } }
         public int EffectX { get => normalArgs[2]; }
         public bool Answer { get { return normalArgs[0] == 1; } }
+        public int EffectOption { get => normalArgs[0]; }
 
         public CardLocation Location { get { return (CardLocation)normalArgs[0]; } }
 

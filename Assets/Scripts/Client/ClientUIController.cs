@@ -138,7 +138,7 @@ public class ClientUIController : UIController
         ConfirmTriggerView.SetActive(false);
     }
 
-    public void ShowOptions(DummyChooseOptionSubeffect subeff)
+    public void ShowEffectOptions(DummyChooseOptionSubeffect subeff)
     {
         ChoiceBlurbText.text = subeff.ChoiceBlurb;
         EffectOptionDropdown.ClearOptions();
@@ -149,9 +149,9 @@ public class ClientUIController : UIController
         ChooseOptionView.SetActive(true);
     }
 
-    public void ChooseOption(int optionIndex)
+    public void ChooseSelectedEffectOption()
     {
-        clientGame.clientNotifier.RequestChooseEffectOption(optionIndex);
+        clientGame.clientNotifier.RequestChooseEffectOption(EffectOptionDropdown.value);
         ChooseOptionView.SetActive(false);
     }
     #endregion effects

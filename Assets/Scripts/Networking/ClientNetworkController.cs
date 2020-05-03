@@ -14,8 +14,8 @@ public class ClientNetworkController : NetworkController {
     private long timeTargetAccepted;
 
     public ClientGame ClientGame;
-    private Player friendly { get { return ClientGame.Players[0]; } }
-    private Player enemy { get { return ClientGame.Players[1]; } }
+    private ClientPlayer friendly { get { return ClientGame.ClientPlayers[0]; } }
+    private ClientPlayer enemy { get { return ClientGame.ClientPlayers[1]; } }
 
     public Packet lastPacket;
     
@@ -223,7 +223,7 @@ public class ClientNetworkController : NetworkController {
                     Debug.LogError($"Subeffect for card id {packet.cardID}, effect index {packet.normalArgs[0]}, subeffect index {packet.normalArgs[1]} " +
                         $"is null or not dummy choose option subeffect");
                 }
-                ClientGame.clientUICtrl.ShowOptions(subeff);
+                ClientGame.clientUICtrl.ShowEffectOptions(subeff);
                 break;
             case Packet.Command.SpaceTarget:
                 ClientGame.targetMode = Game.TargetMode.SpaceTarget;
@@ -251,7 +251,8 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.boardCtrl.DiscardSimples();
                 break;
             case Packet.Command.OptionalTrigger:
-                Trigger t = ClientGame.GetCardFromID(packet.cardID).Effects[packet.EffIndex].Trigger;
+                ClientTrigger t = ClientGame.GetCardFromID(packet.cardID).Effects[packet.EffIndex].Trigger as ClientTrigger;
+                t.ClientEffect.ClientController = friendly;
                 ClientGame.clientUICtrl.ShowOptionalTrigger(t, packet.EffectX);
                 break;
             default:
