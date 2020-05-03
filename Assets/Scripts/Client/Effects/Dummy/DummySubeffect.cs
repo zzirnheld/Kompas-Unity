@@ -5,7 +5,7 @@ using UnityEngine;
 public class DummySubeffect : Subeffect
 {
     public override Effect Effect => ClientEffect;
-    public override Player Controller => throw new System.NotImplementedException();
+    public override Player Controller => ClientController;
     
     public ClientEffect ClientEffect { get; private set; }
     public ClientPlayer ClientController => ClientEffect.ClientController;
