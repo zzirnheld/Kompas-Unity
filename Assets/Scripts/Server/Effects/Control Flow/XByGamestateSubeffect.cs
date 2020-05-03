@@ -13,12 +13,12 @@ public abstract class XByGamestateSubeffect : ServerSubeffect
     public int Modifier = 0;
 
     public int PlayerIndex = 0;
-    public Player Player
+    public ServerPlayer Player
     {
         get
         {
             if (PlayerIndex == 0) return ServerEffect.ServerController;
-            else return ServerEffect.ServerController.enemy;
+            else return ServerEffect.ServerController.ServerEnemy;
         }
     }
 

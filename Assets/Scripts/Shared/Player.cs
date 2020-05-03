@@ -4,9 +4,9 @@ using System.Net.Sockets;
 using UnityEngine;
 using KompasNetworking;
 
-public class Player : MonoBehaviour{
+public abstract class Player : MonoBehaviour{
 
-    public Player enemy;
+    public abstract Player Enemy { get; }
 
     //game mechanics data
     public int pips = 3;

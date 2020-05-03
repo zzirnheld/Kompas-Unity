@@ -6,9 +6,12 @@ using System.Net.Sockets;
 
 public class ServerPlayer : Player
 {
+    public ServerPlayer ServerEnemy;
     public ServerGame serverGame;
     public ServerNetworkController ServerNetworkCtrl;
     public ServerNotifier ServerNotifier;
+
+    public override Player Enemy => ServerEnemy;
 
     public override void SetInfo(TcpClient tcpClient, int index)
     {

@@ -131,10 +131,10 @@ public class ServerEffectsController : MonoBehaviour
             //then send them a request to do something or pass priority
             //TODO: send the stack entry encoded somehow?
         }
-        else if (ServerGame.TurnServerPlayer.enemy.HoldsPriority())
+        else if (ServerGame.TurnServerPlayer.ServerEnemy.HoldsPriority())
         {
             //then mark the turn player as having passed priority
-            ServerGame.TurnServerPlayer.enemy.passedPriority = true;
+            ServerGame.TurnServerPlayer.ServerEnemy.passedPriority = true;
 
             //then ask the non turn player to do something or pass priority
         }

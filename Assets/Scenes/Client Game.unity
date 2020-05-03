@@ -12844,7 +12844,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a321c3cd7ec714449918746a18686773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
   pips: 3
   Avatar: {fileID: 0}
   friendly: 1
@@ -12859,6 +12858,7 @@ MonoBehaviour:
   passedPriority: 0
   holdPriority: 0
   allowResponses: 1
+  ClientEnemy: {fileID: 1841194802}
 --- !u!1 &1841194800
 GameObject:
   m_ObjectHideFlags: 0
@@ -12902,7 +12902,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a321c3cd7ec714449918746a18686773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 1829834588}
   pips: 3
   Avatar: {fileID: 0}
   friendly: 0
@@ -12917,6 +12916,7 @@ MonoBehaviour:
   passedPriority: 0
   holdPriority: 0
   allowResponses: 1
+  ClientEnemy: {fileID: 1829834588}
 --- !u!1 &1848756420
 GameObject:
   m_ObjectHideFlags: 0

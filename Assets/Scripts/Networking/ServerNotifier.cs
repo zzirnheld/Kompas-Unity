@@ -85,7 +85,7 @@ public class ServerNotifier : MonoBehaviour
                 (int)CardLocation.Field, toPlay.ID, x, y);
         }
 
-        SendPacketsAfterInverting(outPacket, outPacketInverted, Player.index, Player.enemy.index);
+        SendPacketsAfterInverting(outPacket, outPacketInverted, Player.index, Player.Enemy.index);
     }
     
     public void NotifyMove(Card toMove, int x, int y, bool playerInitiated)
@@ -93,7 +93,7 @@ public class ServerNotifier : MonoBehaviour
         //tell everyone to do it
         Packet friendlyPacket = new Packet(Packet.Command.Move, toMove, x, y);
         Packet enemyPacket = new Packet(Packet.Command.Move, toMove, x, y);
-        SendPacketsAfterInverting(friendlyPacket, enemyPacket, Player.index, Player.enemy.index);
+        SendPacketsAfterInverting(friendlyPacket, enemyPacket, Player.index, Player.Enemy.index);
     }
 
     public void NotifyDiscard(Card toDiscard)
