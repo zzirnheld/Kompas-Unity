@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"VIII - Fortitude",
-	"effText":"When a friendly character attacks, draw 1. When you draw, I can give a character +1E or W.",
+	"effText":"When a friendly character attacks, draw 1. When you draw, I can give an adjacent friendly character +1E or W.",
 	"effects":[
 		{
 			"triggerCondition":301,
@@ -22,7 +22,7 @@
 			"trigger":
 			"{
 				\"Optional\":true,
-				\"Blurb\":\"Give friendly character +1E or W?\",
+				\"Blurb\":\"Give adjacent friendly character +1E or W?\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,200]
 				}
