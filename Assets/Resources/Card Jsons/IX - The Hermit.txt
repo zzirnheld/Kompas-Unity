@@ -8,6 +8,7 @@
 			"trigger":
 			"{
 				\"Optional\":true,
+				\"Blurb\":\"Move character X slots?\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,200]
 				}
@@ -23,7 +24,7 @@
 				"{
 					\"spaceRestriction\":
 					{
-						\"restrictionsToCheck\":[201]
+						\"restrictionsToCheck\":[1,201]
 					}
 				}",
 				"{}"

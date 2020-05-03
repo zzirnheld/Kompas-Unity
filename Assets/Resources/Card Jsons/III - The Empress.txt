@@ -7,6 +7,7 @@
 			"triggerCondition":101,
 			"trigger":
 			"{
+				\"Blurb\":\"Pay half X pips to hand-summon character with S <= X?\",
 				\"Optional\":true,
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,200]

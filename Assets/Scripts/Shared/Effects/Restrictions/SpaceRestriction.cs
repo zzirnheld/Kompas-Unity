@@ -11,6 +11,7 @@ public class SpaceRestriction
     public enum SpaceRestrictions
     {
         CanSummonTarget = 0,
+        Empty = 1,
         AdjacentToThisCard = 100,
         AdjacentToWithRestriction = 101,
         DistanceX = 200,
@@ -47,6 +48,9 @@ public class SpaceRestriction
             {
                 case SpaceRestrictions.CanSummonTarget:
                     if (!Subeffect.Effect.Game.boardCtrl.CanSummonTo(Subeffect.Controller.index, x, y)) return false;
+                    break;
+                case SpaceRestrictions.Empty:
+                    if (Subeffect.Effect.Game.boardCtrl.GetCardAt(x, y) != null) return false;
                     break;
                 case SpaceRestrictions.AdjacentToThisCard:
                     if (!Subeffect.Source.IsAdjacentTo(x, y)) return false;
