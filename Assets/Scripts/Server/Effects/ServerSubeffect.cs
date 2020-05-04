@@ -85,6 +85,9 @@ public abstract class ServerSubeffect : Subeffect
             case SubeffectType.SetXByGamestateValue:
                 toReturn = JsonUtility.FromJson<SetXByGamestateSubeffect>(subeffJson);
                 break;
+            case SubeffectType.SetXByMath:
+                toReturn = JsonUtility.FromJson<SetXSubeffect>(subeffJson);
+                break;
             case SubeffectType.ChangeXByGamestateValue:
                 toReturn = JsonUtility.FromJson<ChangeXByGamestateSubeffect>(subeffJson);
                 break;
