@@ -127,19 +127,19 @@ public class CardRestriction
                     break;
                 case CardRestrictions.NEX:
                     if (charCard == null) return false;
-                    if (charCard.N == x) return false;
+                    if (charCard.N != x) return false;
                     break;
                 case CardRestrictions.EEX:
                     if (charCard == null) return false;
-                    if (charCard.E == x) return false;
+                    if (charCard.E != x) return false;
                     break;
                 case CardRestrictions.SEX:
                     if (charCard == null) return false;
-                    if (charCard.S == x) return false;
+                    if (charCard.S != x) return false;
                     break;
                 case CardRestrictions.WEX:
                     if (charCard == null) return false;
-                    if (charCard.W == x) return false;
+                    if (charCard.W != x) return false;
                     break;
                 case CardRestrictions.NLTEC:
                     if (charCard == null) return false;

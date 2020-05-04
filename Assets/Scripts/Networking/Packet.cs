@@ -300,6 +300,8 @@ namespace KompasNetworking
                 case Command.SetNESW:
                 case Command.GetChoicesFromList:
                 case Command.ActivateEffect:
+                case Command.PlayerSetX:
+                case Command.SetEffectsX:
                     return false;
                 default:
                     return true;

@@ -7,7 +7,6 @@
 			"triggerCondition":101,
 			"trigger":
 			"{
-				\"Optional\":true,
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,200]
 				}
@@ -21,10 +20,13 @@
 			]
 		},
 		{
-			"subeffectTypes":[5,103,0,301],
+			"subeffectTypes":[5,299,103,0,301],
 			"subeffects":[
+				"{}",
 				"{
-					\"Restrictions\":[\">0\",\"<=ThisCost\"]
+					\"XRest\":{
+						\"Restrictions\":[\">0\",\"<=ThisCost\"]
+					}
 				}",
 				"{
 					\"sMult\":-1

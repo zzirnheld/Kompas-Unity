@@ -22,7 +22,7 @@ public class XRestriction
                     if (x <= 0) return false;
                     break;
                 case LessThanEqualThisCost:
-                    if (Subeffect.Source.Cost > x) return false;
+                    if (x > Subeffect.Source.Cost) return false;
                     break;
                 default:
                     throw new System.ArgumentException($"Invalid X restriction {r} in X Restriction.");

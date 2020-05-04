@@ -24,5 +24,6 @@ public class SwapNESWSubeffect : ServerSubeffect
         var char2 = target2 as CharacterCard ?? throw new System.ArgumentException($"Target {target2.CardName} is not a character");
 
         ServerGame.SwapStats(char1, char2, SwapN, SwapE, SwapS, SwapW);
+        ServerEffect.ResolveNextSubeffect();
     }
 }

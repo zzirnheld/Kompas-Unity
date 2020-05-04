@@ -274,7 +274,7 @@ public class ServerNotifier : MonoBehaviour
     public void GetXForEffect(Card effSource, int effIndex, int subeffIndex)
     {
         Packet outPacket = new Packet(Packet.Command.PlayerSetX, effSource, effIndex, subeffIndex);
-        SendToBoth(outPacket);
+        SendPacket(outPacket);
     }
 
     public void NotifyEffectX(Card effSrc, int effIndex, int x)

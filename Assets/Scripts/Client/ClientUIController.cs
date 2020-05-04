@@ -103,6 +103,7 @@ public class ClientUIController : UIController
     /// </summary>
     public void SetXForEffect()
     {
+        Debug.Log($"Trying to parse input {xInput.text} for x for effect");
         if (int.TryParse(xInput.text, out int x))
         {
             clientGame.clientNotifier.RequestSetX(x);

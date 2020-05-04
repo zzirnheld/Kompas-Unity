@@ -61,6 +61,9 @@ public abstract class ServerSubeffect : Subeffect
             case SubeffectType.XChangeNESW:
                 toReturn = JsonUtility.FromJson<XChangeNESWSubeffect>(subeffJson);
                 break;
+            case SubeffectType.SwapNESW:
+                toReturn = JsonUtility.FromJson<SwapNESWSubeffect>(subeffJson);
+                break;
             case SubeffectType.AddPips:
                 toReturn = JsonUtility.FromJson<AddPipsSubeffect>(subeffJson);
                 break;

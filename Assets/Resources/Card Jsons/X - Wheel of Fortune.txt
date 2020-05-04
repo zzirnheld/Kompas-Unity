@@ -8,6 +8,7 @@
 			"trigger":
 			"{
 				\"Optional\":true,
+				\"Blurb\":\"Swap two characters' N?\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,200]
 				}

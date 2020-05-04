@@ -10,7 +10,8 @@ public class ServerGame : Game {
     //if server oks, it tells all players to do the thing
     //if server doesn't ok, it sends to all players a "hold up reset everything to how it should be"
 
-    public readonly object SetAvatarLock = new object();
+    public readonly object AddCardsLock = new object();
+    public readonly object CheckAvatarsLock = new object();
 
     public ServerEffectsController EffectsController;
 
@@ -94,44 +95,50 @@ public class ServerGame : Game {
             return;
         }
 
-        //otherwise, set the avatar and rest of the deck
-        AvatarCard avatar = CardRepo.InstantiateServerAvatar(deck[0], this, player, cardCount++);
-        if(avatar == null)
+        AvatarCard avatar;
+        lock (AddCardsLock)
         {
-            Debug.LogError($"Error in loading avatar for {decklist}");
-            GetDeckFrom(player);
-            return;
+            //otherwise, set the avatar and rest of the deck
+            avatar = CardRepo.InstantiateServerAvatar(deck[0], this, player, cardCount++);
+            if (avatar == null)
+            {
+                Debug.LogError($"Error in loading avatar for {decklist}");
+                GetDeckFrom(player);
+                return;
+            }
         }
-        player.Avatar = avatar;
-        player.ServerNotifier.NotifyAddToDeck(avatar);
-        Play(avatar, player.index * 6, player.index * 6, player);
 
         //take out avatar before telling player to add the rest of the deck
         deck.RemoveAt(0);
 
         foreach(string name in deck)
         {
-            Card card = CardRepo.InstantiateServerNonAvatar(name, this, player);
-            cards.Add(cardCount, card);
-            card.ID = cardCount;
+            Card card;
+            lock (AddCardsLock)
+            {
+                card = CardRepo.InstantiateServerNonAvatar(name, this, player);
+                cards.Add(cardCount, card);
+                card.ID = cardCount;
+                cardCount++;
+            }
             player.deckCtrl.AddCard(card);
-            cardCount++;
             if (card != null) Debug.Log($"Adding new card {card.CardName} with id {card.ID}");
             player.ServerNotifier.NotifyAddToDeck(card);
         }
 
-        lock (SetAvatarLock)
+        Debug.Log($"Setting avatar for player {player.index}");
+        player.Avatar = avatar;
+        player.ServerNotifier.NotifyAddToDeck(avatar);
+        Play(avatar, player.index * 6, player.index * 6, player);
+        //if both players have decks now, then start the game
+        lock (CheckAvatarsLock)
         {
-            Debug.Log("Checking if avatars are both set");
-
-            //if both players have decks now, then start the game
-            foreach(Player p in Players)
+            foreach (Player p in Players)
             {
                 if (p.Avatar == null) return;
             }
-
-            StartGame();
         }
+        StartGame();
     }
 
     public void StartGame()
