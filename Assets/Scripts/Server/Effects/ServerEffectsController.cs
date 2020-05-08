@@ -10,7 +10,7 @@ public class ServerEffectsController : MonoBehaviour
 
     protected ServerEffectStack stack;
 
-    public Stack<(ServerTrigger, int?, Card, IStackable, ServerPlayer)> OptionalTriggersToAsk;
+    public Stack<(ServerTrigger, Card, IServerStackable, ServerPlayer, int?, ServerPlayer)> OptionalTriggersToAsk;
 
     //trigger map
     protected Dictionary<TriggerCondition, List<ServerTrigger>> triggerMap;
@@ -20,7 +20,7 @@ public class ServerEffectsController : MonoBehaviour
     {
         stack = new ServerEffectStack();
 
-        OptionalTriggersToAsk = new Stack<(ServerTrigger, int?, Card, IStackable, ServerPlayer)>();
+        OptionalTriggersToAsk = new Stack<(ServerTrigger, Card, IServerStackable, ServerPlayer, int?, ServerPlayer)>();
 
         triggerMap = new Dictionary<TriggerCondition, List<ServerTrigger>>();
         foreach (TriggerCondition c in System.Enum.GetValues(typeof(TriggerCondition)))
@@ -100,11 +100,8 @@ public class ServerEffectsController : MonoBehaviour
                 return;
             }
 
-            var (t, x, cardTrigger, stackTrigger, triggerer) = OptionalTriggersToAsk.Pop();
-            if (answer)
-            {
-                t.TriggerIfValid(cardTrigger, stackTrigger, x, triggerer, true);
-            }
+            var (t, cardTrigger, stackTrigger, triggeringPlayer, x, controller) = OptionalTriggersToAsk.Pop();
+            if (answer) t.OverrideTrigger(x, controller);
             CheckForResponse();
         }
     }
@@ -119,8 +116,8 @@ public class ServerEffectsController : MonoBehaviour
             //then ask the respective player about that trigger.
             lock (TriggerStackLock)
             {
-                var (t, x, cardTriggerer, stackTriggerer, triggerer) = OptionalTriggersToAsk.Peek();
-                t.effToTrigger.ServerController?.ServerNotifier.AskForTrigger(t, x, cardTriggerer, stackTriggerer);
+                var (t, cardTriggerer, stackTriggerer, triggeringPlayer, x, controller) = OptionalTriggersToAsk.Peek();
+                t.effToTrigger.ServerController?.ServerNotifier.AskForTrigger(t, x, cardTriggerer, stackTriggerer, triggeringPlayer);
             }
             //if the player chooses to trigger it, it will be removed from the list
         }
@@ -166,7 +163,7 @@ public class ServerEffectsController : MonoBehaviour
         hangingEffs.Add(hangingEff);
     }
 
-    public void Trigger(TriggerCondition condition, Card cardTriggerer, IStackable stackTrigger, int? x, ServerPlayer triggerer)
+    public void Trigger(TriggerCondition condition, Card cardTriggerer, IServerStackable stackTrigger, int? x, ServerPlayer triggerer)
     {
         List<HangingEffect> toRemove = new List<HangingEffect>();
         foreach (HangingEffect t in hangingEffectMap[condition])
@@ -194,12 +191,12 @@ public class ServerEffectsController : MonoBehaviour
     /// </summary>
     /// <param name="trigger"></param>
     /// <param name="x"></param>
-    public void AskForTrigger(ServerTrigger trigger, int? x, Card c, IStackable s, ServerPlayer p)
+    public void AskForTrigger(ServerTrigger trigger, int? x, Card cardTriggerer, IServerStackable stackTriggerer, ServerPlayer triggerer, ServerPlayer controller)
     {
         Debug.Log($"Asking about trigger for effect of card {trigger.effToTrigger.thisCard.CardName}");
         lock (TriggerStackLock)
         {
-            OptionalTriggersToAsk.Push((trigger, x, c, s, p));
+            OptionalTriggersToAsk.Push((trigger, cardTriggerer, stackTriggerer, triggerer, x, controller));
         }
     }
     #endregion triggers

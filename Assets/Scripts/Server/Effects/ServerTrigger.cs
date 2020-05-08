@@ -28,13 +28,8 @@ public class ServerTrigger : Trigger
             {
                 toReturn.triggerRestriction.thisTrigger = toReturn;
                 toReturn.triggerRestriction.thisCard = parent.thisCard;
-                if(toReturn.triggerRestriction.cardRestriction != null)
-                {
-                    //give a dummy subeffect to the trigger restriction's card restriction,
-                    //because the restriction isn't bound to a subeffect, only an effect
-                    TriggerDummySubeffect dummy = new TriggerDummySubeffect(parent);
-                    toReturn.triggerRestriction.cardRestriction.Subeffect = dummy;
-                }
+                TriggerDummySubeffect dummy = new TriggerDummySubeffect(parent);
+                toReturn.triggerRestriction.Initialize(dummy);
             }
         }
 
@@ -53,6 +48,12 @@ public class ServerTrigger : Trigger
         //and either another effect could be currently resolving with a different value of x
         //or the value of x could get changed between when this triggers and when the effect resolves
         effToTrigger.PushToStack(effToTrigger.serverGame.ServerPlayers[effToTrigger.thisCard.ControllerIndex]);
+    }
+
+    public void OverrideTrigger(int? x, ServerPlayer controller)
+    {
+        if (x.HasValue) effToTrigger.X = x.Value;
+        effToTrigger.PushToStack(controller);
     }
 
     /// <summary>
@@ -82,19 +83,15 @@ public class ServerTrigger : Trigger
     /// <param name="cardTriggerer">The card that triggered this, if any.</param>
     /// <param name="stackTrigger">The effect or attack that triggered this, if any.</param>
     /// <param name="x">If the action that triggered this has a value of x, it goes here. Otherwise, null.</param>
-    public virtual void TriggerIfValid(Card cardTriggerer, IStackable stackTrigger, int? x, ServerPlayer triggerer, bool optionalConfirmed = false)
+    public virtual void TriggerIfValid(Card cardTriggerer, IServerStackable stackTrigger, int? x, ServerPlayer triggerer)
     {
         /*Debug.Log($"Is trigger valid for effect of {effToTrigger.thisCard.CardName} with id {effToTrigger.thisCard.ID}? " +
             $"{CheckTriggerRestrictions(triggerer, stackTrigger, x)}");*/
         if (CheckTriggerRestrictions(cardTriggerer, stackTrigger, x, triggerer))
         {
             Debug.Log($"Trigger is valid for effect of {effToTrigger.thisCard.CardName} with id {effToTrigger.thisCard.ID}");
-            //if the trigger is optional and this method isn't being called because the player confirmed the trigger,
-            //then ask for a trigger
-            if (Optional && !optionalConfirmed)
-            {
-                effToTrigger.serverGame.EffectsController.AskForTrigger(this, x, cardTriggerer, stackTrigger, triggerer);
-            }
+            if (Optional) effToTrigger.serverGame.EffectsController
+                     .AskForTrigger(this, x, cardTriggerer, stackTrigger, triggerer, effToTrigger.serverGame.ServerPlayers[effToTrigger.thisCard.ControllerIndex]);
             else TriggerEffect(x);
         }
     }

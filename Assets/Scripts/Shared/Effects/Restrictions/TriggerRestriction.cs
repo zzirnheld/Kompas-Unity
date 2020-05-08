@@ -50,6 +50,9 @@ public class TriggerRestriction
                 case TriggerRestrictions.ThisCardFitsRestriction:
                     if (!cardRestriction.Evaluate(thisCard)) return false;
                     break;
+                case TriggerRestrictions.TriggererFitsRestriction:
+                    if (!cardRestriction.Evaluate(cardTriggerer)) return false;
+                    break;
                 //TODO make these into just something to do with triggered card fitting restriction
                 case TriggerRestrictions.ControllerTriggered:
                     if (triggerer != thisCard.Controller) return false;

@@ -272,13 +272,13 @@ public class ServerGame : Game {
         base.Negate(c, stackSrc);
     }
 
-    public Card Draw(int player, IStackable stackSrc = null)
+    public Card Draw(int player, IServerStackable stackSrc = null)
     {
         var drawn = DrawX(player, 1, stackSrc);
         return drawn.Count > 0 ? drawn[0] : null;
     }
 
-    public List<Card> DrawX(int player, int x, IStackable stackSrc = null)
+    public List<Card> DrawX(int player, int x, IServerStackable stackSrc = null)
     {
         List<Card> drawn = new List<Card>();
         int i;
@@ -287,7 +287,7 @@ public class ServerGame : Game {
             Card toDraw = Players[player].deckCtrl.PopTopdeck();
             if (toDraw == null) break;
             EffectsController.Trigger(TriggerCondition.EachDraw, toDraw, stackSrc, null, ServerPlayers[player]);
-            Rehand(toDraw);
+            Rehand(toDraw, stackSrc);
             drawn.Add(toDraw);
         }
         EffectsController.Trigger(TriggerCondition.DrawX, null, stackSrc, i, ServerPlayers[player]);

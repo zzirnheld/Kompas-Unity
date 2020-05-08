@@ -17,6 +17,7 @@ public class CardRestriction
         SubtypesExclude = 6,
         Friendly = 7,
         SameOwner = 8,
+        Enemy = 9,
         //location
         Hand = 100,
         Discard = 101,
@@ -90,6 +91,9 @@ public class CardRestriction
                     break;
                 case CardRestrictions.Friendly:
                     if (potentialTarget.Controller != Subeffect.Controller) return false;
+                    break;
+                case CardRestrictions.Enemy:
+                    if (potentialTarget.Controller == Subeffect.Controller) return false;
                     break;
                 case CardRestrictions.SameOwner:
                     if (potentialTarget.Owner != Subeffect.Controller) return false;

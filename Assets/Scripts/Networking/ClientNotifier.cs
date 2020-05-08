@@ -109,6 +109,7 @@ public class ClientNotifier : MonoBehaviour
 
     public void RequestTriggerReponse(bool answer)
     {
+        Debug.Log($"Requesting trigger response for {answer}");
         Packet packet = new Packet(Packet.Command.OptionalTrigger, answer ? 1 : 0);
         Send(packet);
     }

@@ -304,11 +304,11 @@ public class ServerNotifier : MonoBehaviour
         SendToBoth(packet);
     }
 
-    public void AskForTrigger(ServerTrigger t, int? x, Card cardTriggerer, IStackable stackTriggerer)
+    public void AskForTrigger(ServerTrigger t, int? x, Card cardTriggerer, IServerStackable stackTriggerer, ServerPlayer triggerer)
     {
         Card cardWhoseTrigger = t.effToTrigger.thisCard;
         int effIndex = t.effToTrigger.EffectIndex;
-        //TODO: should the packet int be a nullable one? so that can represent nullable x in trigger to confirm
+        //TODO send info about triggerer to display on client
         Packet packet = new Packet(Packet.Command.OptionalTrigger, cardWhoseTrigger, effIndex, 0, x ?? 0, 0);
         SendPacket(packet);
     }
