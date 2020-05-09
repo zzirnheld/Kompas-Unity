@@ -88,6 +88,12 @@ public class ClientUIController : UIController
         clientGame.clientNotifier.RequestResolveEffect(SelectedCard, index);
     }
 
+    public void ActivatedSelectedCardFirstActivatedEff()
+    {
+        int? index = SelectedCard.Effects.FirstOrDefault(e => e.Trigger == null)?.EffectIndex;
+        if (index.HasValue) ActivateSelectedCardEff(index.Value);
+    }
+
     public void ToggleHoldingPriority()
     {
         throw new System.NotImplementedException();
