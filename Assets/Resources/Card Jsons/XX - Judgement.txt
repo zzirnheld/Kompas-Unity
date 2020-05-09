@@ -8,6 +8,7 @@
 			"trigger":
 			"{
 				\"Optional\":true,
+				\"Blurb\":\"Kill an S <= X character? (X is the number of cards you just drew)\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,200]
 				}

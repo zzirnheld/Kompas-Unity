@@ -8,6 +8,7 @@
 			"trigger":
 			"{
 				\"Optional\":true,
+				\"Blurb\":\"Tribute me to give a Summoned character -XE and draw X? (X is the number of cards you just drew)\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,200]
 				}

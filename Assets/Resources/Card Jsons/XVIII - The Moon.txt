@@ -8,6 +8,7 @@
 			"trigger":
 			"{
 				\"Optional\":true,
+				\"Blurb\":\"Swap the NESW of a character?\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,200]
 				}

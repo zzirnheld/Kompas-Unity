@@ -8,6 +8,7 @@
 			"trigger":
 			"{
 				\"Optional\":true,
+				\"Blurb\":\"Dispel a C <= X spell? (X is the number of cards you just drew)\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,200]
 				}

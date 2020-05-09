@@ -8,6 +8,7 @@
 			"trigger":
 			"{
 				\"Optional\":true,
+				\"Blurb\":\"Give one character -1E and another +1E?\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,200]
 				}

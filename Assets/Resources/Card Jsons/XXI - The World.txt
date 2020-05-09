@@ -8,6 +8,7 @@
 			"trigger":
 			"{
 				\"Optional\":true,
+				\"Blurb\":\"Discard-bottomdeck a card to give all friendly characters +1EW?\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,200]
 				}
