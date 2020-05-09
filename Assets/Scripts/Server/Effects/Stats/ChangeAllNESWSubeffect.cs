@@ -17,6 +17,12 @@ public class ChangeAllNESWSubeffect : ServerSubeffect
         }
     };
 
+    public override void Initialize(ServerEffect eff, int subeffIndex)
+    {
+        base.Initialize(eff, subeffIndex);
+        CardRestriction.Subeffect = this;
+    }
+
     public override void Resolve()
     {
         foreach(KeyValuePair<int, Card> card in ServerGame.cards)

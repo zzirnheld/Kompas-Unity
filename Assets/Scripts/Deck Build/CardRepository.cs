@@ -188,6 +188,7 @@ public class CardRepository : MonoBehaviour
 
     public Card InstantiateServerNonAvatar(string name, ServerGame serverGame, ServerPlayer owner)
     {
+        Debug.Log($"Instantiating new server non avatar for name {name}");
         string json = cardJsons[name] ?? throw new System.ArgumentException($"Name {name} not associated with json");
         Card card = null;
         Effect[] effects;
