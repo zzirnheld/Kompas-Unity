@@ -241,10 +241,4 @@ public abstract class Game : MonoBehaviour {
         SetStats(a, aNewStats[0], aNewStats[1], aNewStats[2], aNewStats[3]);
         SetStats(b, bNewStats[0], bNewStats[1], bNewStats[2], bNewStats[3]);
     }
-
-    public virtual void Dispel(SpellCard spell)
-    {
-        Negate(spell);
-        Discard(spell);
-    }
 }

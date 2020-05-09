@@ -245,6 +245,12 @@ public class ServerGame : Game {
         base.MoveOnBoard(card, toX, toY, normalMove, stackSrc);
         if (stackSrc == null) EffectsController.CheckForResponse();
     }
+
+    public void Dispel(SpellCard spellCard, IServerStackable stackSrc = null)
+    {
+        Negate(spellCard, stackSrc);
+        Discard(spellCard, stackSrc);
+    }
     #endregion move card between areas
 
     public override void SetStats(SpellCard spellCard, int c)

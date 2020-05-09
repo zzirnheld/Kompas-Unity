@@ -12,7 +12,7 @@ public class DispelSubeffect : ServerSubeffect
             ServerEffect.EffectImpossible();
             return;
         }
-        ServerGame.Dispel(spellCard);
+        ServerGame.Dispel(spellCard, ServerEffect);
         ServerEffect.ResolveNextSubeffect();
     }
 }

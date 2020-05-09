@@ -121,9 +121,8 @@ public class ServerEffectsController : MonoBehaviour
             }
             //if the player chooses to trigger it, it will be removed from the list
         }
-
         //check if responses exist. if not, resolve
-        if (ServerGame.TurnServerPlayer.HoldsPriority())
+        else if (ServerGame.TurnServerPlayer.HoldsPriority())
         {
             //then send them a request to do something or pass priority
             //TODO: send the stack entry encoded somehow?
