@@ -16,9 +16,11 @@ public abstract class Card : CardBase {
     protected CardLocation location;
     protected int id;
     protected string[] subtypes;
-    private List<AugmentCard> augments = new List<AugmentCard>();
-    public List<AugmentCard> Augments { get { return augments; } }
+    public List<AugmentCard> Augments { get; private set; } = new List<AugmentCard>();
     public bool Negated { get; protected set; }
+
+    public int Activations = 0;
+    public bool Activated { get => Activations > 0; }
 
     protected Effect[] effects;
 
@@ -166,7 +168,7 @@ public abstract class Card : CardBase {
         base.SetInfo(serializedCard);
         location = serializedCard.location;
 
-        this.augments = new List<AugmentCard>();
+        this.Augments = new List<AugmentCard>();
 
         this.game = game;
 
@@ -242,7 +244,7 @@ public abstract class Card : CardBase {
          * to show the card above the game board on the screen. */
         transform.localPosition = new Vector3(GridIndexToPos(toX), GridIndexToPos(toY), -0.1f);
         ChangeController(controller);
-        foreach (AugmentCard aug in augments) aug.MoveTo(toX, toY, false);
+        foreach (AugmentCard aug in Augments) aug.MoveTo(toX, toY, false);
     }
 
     public void PutBack()
@@ -299,19 +301,19 @@ public abstract class Card : CardBase {
     public void AddAugment(AugmentCard augment)
     {
         if (augment == null) return;
-        augments.Add(augment);
+        Augments.Add(augment);
         augment.AugmentedCard = this;
     }
-    public bool HasAugment(AugmentCard augment) { return augments.Contains(augment); }
+    public bool HasAugment(AugmentCard augment) { return Augments.Contains(augment); }
     public void RemoveAugment(AugmentCard augment)
     {
-        augments.Remove(augment);
+        Augments.Remove(augment);
         augment.AugmentedCard = null;
     }
     public void RemoveAugmentAt(int index)
     {
-        AugmentCard aug = augments[index];
-        augments.RemoveAt(index);
+        AugmentCard aug = Augments[index];
+        Augments.RemoveAt(index);
         aug.AugmentedCard = null;
     }
     #endregion augments

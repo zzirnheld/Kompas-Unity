@@ -137,13 +137,13 @@ public abstract class Game : MonoBehaviour {
         }
     }
 
-    public void Discard(Card card, IStackable stackSrc = null)
+    public void Discard(Card card)
     {
         Remove(card);
         card.Controller.discardCtrl.AddToDiscard(card);
     }
 
-    public void Rehand(Player controller, Card card, IStackable stackSrc = null)
+    public void Rehand(Player controller, Card card)
     {
         Remove(card);
         //let the card know whose hand it'll be added
@@ -151,44 +151,54 @@ public abstract class Game : MonoBehaviour {
         controller.handCtrl.AddToHand(card);
     }
 
-    public void Rehand(Card card, IStackable stackSrc = null)
+    public void Rehand(Card card)
     {
         Rehand(card.Controller, card);
     }
 
-    public void Reshuffle(Card card, IStackable stackSrc = null)
+    public void Reshuffle(Card card)
     {
         Remove(card);
         card.Controller.deckCtrl.ShuffleIn(card);
     }
 
-    public void Topdeck(Card card, IStackable stackSrc = null)
+    public void Topdeck(Card card)
     {
         Remove(card);
         card.Controller.deckCtrl.PushTopdeck(card);
     }
 
-    public void Bottomdeck(Card card, IStackable stackSrc = null)
+    public void Bottomdeck(Card card)
     {
         Remove(card);
         card.Controller.deckCtrl.PushBottomdeck(card);
     }
 
-    public void Play(Card card, int toX, int toY, Player controller, IStackable stackSrc = null)
+    public void Play(Card card, int toX, int toY, Player controller)
     {
         Remove(card);
         boardCtrl.Play(card, toX, toY, controller);
         card.ChangeController(controller);
     }
 
-    public void MoveOnBoard(Card card, int toX, int toY, bool normalMove, IStackable stackSrc = null)
+    public void MoveOnBoard(Card card, int toX, int toY, bool normalMove)
     {
         boardCtrl.Move(card, toX, toY, normalMove);
     }
 
-    public void Negate(Card c, IStackable stackSrc = null)
+    public void Negate(Card c)
     {
         c.Negate();
+    }
+
+    public void Activate(Card c)
+    {
+        c.Activations++;
+    }
+
+    public void Deactivate(Card c)
+    {
+        c.Activations--;
     }
     #endregion move card between areas
 

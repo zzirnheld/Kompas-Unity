@@ -8,6 +8,8 @@ public enum TriggerCondition
     EachDraw = 100,
     DrawX = 101,
     NESWChange = 200,
+    Activate = 201,
+    Deactivate = 202,
     Defends = 300,
     Attacks = 301,
     TakeCombatDamage = 302,

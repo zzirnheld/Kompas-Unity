@@ -183,7 +183,7 @@ public class ServerGame : Game {
     {
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyDiscard(card);
         EffectsController.Trigger(TriggerCondition.Discard, card, stackSrc, null, stackSrc?.ServerController);
-        base.Discard(card, stackSrc);
+        base.Discard(card);
     }
 
     public void Rehand(Player controller, Card card, IServerStackable stackSrc = null)
@@ -197,7 +197,7 @@ public class ServerGame : Game {
         }
         EffectsController.Trigger(TriggerCondition.Rehand, card, stackSrc, null, stackSrc?.ServerController);
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyRehand(card);
-        base.Rehand(controller, card, stackSrc);
+        base.Rehand(controller, card);
     }
 
     public void Rehand(Card card, IServerStackable stackSrc = null)
@@ -210,7 +210,7 @@ public class ServerGame : Game {
         EffectsController.Trigger(TriggerCondition.Reshuffle, card, stackSrc, null, stackSrc?.ServerController);
         EffectsController.Trigger(TriggerCondition.ToDeck, card, stackSrc, null, stackSrc?.ServerController);
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyReshuffle(card);
-        base.Reshuffle(card, stackSrc);
+        base.Reshuffle(card);
     }
 
     public void Topdeck(Card card, IServerStackable stackSrc = null)
@@ -218,7 +218,7 @@ public class ServerGame : Game {
         EffectsController.Trigger(TriggerCondition.Topdeck, card, stackSrc, null, stackSrc?.ServerController);
         EffectsController.Trigger(TriggerCondition.ToDeck, card, stackSrc, null, stackSrc?.ServerController);
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyTopdeck(card);
-        base.Topdeck(card, stackSrc);
+        base.Topdeck(card);
     }
 
     public void Bottomdeck(Card card, IServerStackable stackSrc = null)
@@ -226,7 +226,7 @@ public class ServerGame : Game {
         EffectsController.Trigger(TriggerCondition.Bottomdeck, card, stackSrc, null, stackSrc?.ServerController);
         EffectsController.Trigger(TriggerCondition.ToDeck, card, stackSrc, null, stackSrc?.ServerController);
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyBottomdeck(card);
-        base.Bottomdeck(card, stackSrc);
+        base.Bottomdeck(card);
     }
 
     public void Play(Card card, int toX, int toY, Player controller, IServerStackable stackSrc = null)
@@ -234,7 +234,7 @@ public class ServerGame : Game {
         EffectsController.Trigger(TriggerCondition.Play, card, stackSrc, null, stackSrc?.ServerController);
         //note that it's serverPlayers[controller.index] because you can play to the field of someone whose card it isnt
         ServerPlayers[controller.index].ServerNotifier.NotifyPlay(card, toX, toY);
-        base.Play(card, toX, toY, controller, stackSrc);
+        base.Play(card, toX, toY, controller);
         if (stackSrc == null) EffectsController.CheckForResponse();
     }
 
@@ -242,7 +242,7 @@ public class ServerGame : Game {
     {
         EffectsController.Trigger(TriggerCondition.Move, card, stackSrc, null, stackSrc?.ServerController);
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyMove(card, toX, toY, normalMove);
-        base.MoveOnBoard(card, toX, toY, normalMove, stackSrc);
+        base.MoveOnBoard(card, toX, toY, normalMove);
         if (stackSrc == null) EffectsController.CheckForResponse();
     }
 
@@ -275,7 +275,23 @@ public class ServerGame : Game {
     public void Negate(Card c, IServerStackable stackSrc = null)
     {
         ServerPlayers[c.ControllerIndex].ServerNotifier.NotifyNegate(c);
-        base.Negate(c, stackSrc);
+        base.Negate(c);
+    }
+
+    public void Activate(Card c, IServerStackable stackSrc = null)
+    {
+        ServerPlayers[c.ControllerIndex].ServerNotifier.NotifyActivate(c);
+        base.Activate(c);
+        //If this is the first activation, trigger "activate"
+        if (c.Activations == 1) EffectsController.Trigger(TriggerCondition.Activate, c, stackSrc, null, stackSrc?.ServerController);
+    }
+
+    public void Deactivate(Card c, IServerStackable stackSrc = null)
+    {
+        ServerPlayers[c.ControllerIndex].ServerNotifier.NotifyDeactivate(c);
+        base.Deactivate(c);
+        //If this is the last deactivation, trigger "deactivate"
+        if (c.Activations == 0) EffectsController.Trigger(TriggerCondition.Deactivate, c, stackSrc, null, stackSrc?.ServerController);
     }
 
     public Card Draw(int player, IServerStackable stackSrc = null)

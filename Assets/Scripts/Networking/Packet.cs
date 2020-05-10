@@ -18,7 +18,7 @@ namespace KompasNetworking
             Topdeck, Discard, Rehand, Reshuffle, AddAsFriendly, AddAsEnemy, Bottomdeck,
             Draw, Delete,
             //card properties
-            SetNESW, Negate, SetSpellStats,
+            SetNESW, Negate, SetSpellStats, Activate, Deactivate,
             //change numbers of cards that you see of your opponent
             IncrementEnemyDeck, IncrementEnemyHand, DecrementEnemyDeck, DecrementEnemyHand,
             //server requesting a target of a client
