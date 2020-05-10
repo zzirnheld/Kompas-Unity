@@ -41,9 +41,10 @@ public class BoardTargetSubeffect : CardTargetSubeffect
         //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
         if (boardRestriction.Evaluate(card))
         {
-            ServerEffect.targets.Add(card);
-            ServerEffect.ResolveNextSubeffect();
             Debug.Log("Adding " + card.CardName + " as target");
+            ServerEffect.targets.Add(card);
+            EffectController.ServerNotifier.AcceptTarget();
+            ServerEffect.ResolveNextSubeffect();
             return true;
         }
         else

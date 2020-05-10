@@ -92,7 +92,6 @@ public class ServerEffect : Effect, IServerStackable
 
     /// <summary>
     /// If the effect finishes resolving, this method is called.
-    /// Any function can also call this effect to finish resolution early.
     /// </summary>
     private void FinishResolution()
     {
@@ -100,7 +99,6 @@ public class ServerEffect : Effect, IServerStackable
         X = 0;
         targets.Clear();
         OnImpossible = null;
-        ServerController.ServerNotifier.AcceptTarget();
         ServerController.ServerNotifier.NotifyBothPutBack();
         EffectsController.FinishStackEntryResolution();
     }

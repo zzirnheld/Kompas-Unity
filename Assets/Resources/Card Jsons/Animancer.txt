@@ -9,7 +9,7 @@
 				"{
 					\"ChoiceBlurb\":\"Search deck or activate golem?\",
 					\"OptionBlurbs\":[\"Search\",\"Activate\"],
-					\"OptionJumpIndices\":[1,3]
+					\"OptionJumpIndices\":[1,4]
 				}",
 				"{
 					\"cardRestriction\":
