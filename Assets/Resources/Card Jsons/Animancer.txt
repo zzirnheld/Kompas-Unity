@@ -1,0 +1,41 @@
+{
+	"cardType":67,
+	"cardName":"Animancer",
+	"effText":"Once each friendly turn, you can either: Search your deck for a Golem, or activate a Golem.",
+	"effects":[
+		{
+			"subeffectTypes":[406,1,304,407,0,120],
+			"subeffects":[
+				"{
+					\"ChoiceBlurb\":\"Search deck or activate golem?\",
+					\"OptionBlurbs\":[\"Search\",\"Activate\"],
+					\"OptionJumpIndices\":[1,3]
+				}",
+				"{
+					\"cardRestriction\":
+					{
+						\"restrictionsToCheck\":[2],
+						\"subtypesInclude\":[\"Golem\"]
+					}
+				}",
+				"{}",
+				"{}",
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[2],
+						\"subtypesInclude\":[\"Golem\"],
+						\"onBoardRestrictions\":[]
+					}
+				}",
+				"{}"
+			]
+		}
+	],
+	"n":1,
+	"e":7,
+	"s":7,
+	"w":3,
+	"subtypes":["Mage","Craftsman"],
+	"subtypeText":"Mage Craftsman"
+}

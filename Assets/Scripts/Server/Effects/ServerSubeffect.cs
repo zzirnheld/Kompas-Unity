@@ -70,6 +70,9 @@ public abstract class ServerSubeffect : Subeffect
             case SubeffectType.Negate:
                 toReturn = JsonUtility.FromJson<NegateSubeffect>(subeffJson);
                 break;
+            case SubeffectType.Activate:
+                toReturn = JsonUtility.FromJson<ActivateSubeffect>(subeffJson);
+                break;
             case SubeffectType.Dispel:
                 toReturn = JsonUtility.FromJson<DispelSubeffect>(subeffJson);
                 break;

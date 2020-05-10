@@ -29,6 +29,8 @@ public enum SubeffectType
     SwapOwnNESW = 107, //swaps one character's n with e, etc.
     ChangeSpellC = 108,
     ChangeAllNESW = 110,
+    Activate = 120,
+    //Deactivate = 121,
     PayPipsByTargetCost = 150,
 
     //effect x

@@ -1,0 +1,49 @@
+{
+	"cardType":67,
+	"cardName":"Earth Golem",
+	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, I give a character ±1EW.",
+	"effects":[
+		{
+			"triggerCondition":120,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
+				}
+			}",
+			"subeffectTypes":[0,406,100,407,100],
+			"subeffects":[
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[3]
+					}
+				}",
+				"{
+					\"ChoiceBlurb\":\"Give +1EW or -1EW?\",
+					\"OptionBlurbs\":[\"+1EW\",\"-1EW\"],
+					\"OptionJumpIndices\":[2,4]
+				}",
+				"{
+					\"nChange\":0,
+					\"eChange\":1,
+					\"sChange\":0,
+					\"wChange\":1
+				}",
+				"{}",
+				"{
+					\"nChange\":0,
+					\"eChange\":-1,
+					\"sChange\":0,
+					\"wChange\":-1
+				}"
+			]
+		}
+	],
+	"n":2,
+	"e":5,
+	"s":2,
+	"w":4,
+	"subtypes":["Golem"],
+	"subtypeText":"Golem"
+}
