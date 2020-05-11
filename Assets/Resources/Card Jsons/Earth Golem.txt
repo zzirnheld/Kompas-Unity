@@ -48,6 +48,15 @@
 			"Activated"
 		]
 	},
+	"AttackRestriction":{
+		"Restrictions":[
+			"This is Character",
+			"Defender is Character",
+			"Defender is Adjacent",
+			"Defender is Enemy",
+			"This is Activated"
+		]
+	},
 	"n":2,
 	"e":5,
 	"s":2,

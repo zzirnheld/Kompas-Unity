@@ -162,6 +162,7 @@ public abstract class Card : CardBase {
         MovementRestriction = serializedCard.MovementRestriction ?? new MovementRestriction();
         MovementRestriction.SetInfo(this);
         AttackRestriction = serializedCard.AttackRestriction ?? new AttackRestriction();
+        AttackRestriction.SetInfo(this);
     }
     
     #region distance/adjacency
