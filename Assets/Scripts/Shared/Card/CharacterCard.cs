@@ -65,7 +65,8 @@ public class CharacterCard : Card {
     //get other information
     public override int Cost => S;
     public override string StatsString => "N: " + N + "\t\tE: " + E + "\t\tS: " + S + "\t\tW: " + W;
-    
+    public override int SpacesCanMove => N - SpacesMoved;
+
     public SerializableCharCard GetSerializableVersion()
     {
         SerializableCharCard serializableChar = new SerializableCharCard
@@ -76,19 +77,13 @@ public class CharacterCard : Card {
             e = e,
             s = s,
             w = w,
-            subtypes = subtypes,
-            
-            location = location,
-            owner = ControllerIndex,
-            BoardX = boardX,
-            BoardY = boardY,
             subtypeText = SubtypeText
         };
         return serializableChar;
     }
 
     //set information
-    public override void SetInfo(SerializableCard serializedCard, Game game, Player owner, Effect[] effects)
+    public override void SetInfo(SerializableCard serializedCard, Game game, Player owner, Effect[] effects, int id)
     {
         if (!(serializedCard is SerializableCharCard serializedChar)) return;
 
@@ -97,7 +92,7 @@ public class CharacterCard : Card {
         baseS = s = serializedChar.s;
         baseW = w = serializedChar.w;
 
-        base.SetInfo(serializedCard, game, owner, effects);
+        base.SetInfo(serializedCard, game, owner, effects, id);
     }
     /// <summary>
     /// Should only be called by Game, which does any triggering or notifying as necessary

@@ -11,8 +11,8 @@ public abstract class CardBase : MonoBehaviour
     public string SubtypeText { get; private set; }
     public string[] Subtypes { get; private set; }
 
-    protected Sprite detailedSprite;
-    protected Sprite simpleSprite;
+    public Sprite detailedSprite;
+    public Sprite simpleSprite;
 
     protected void SetInfo(SerializableCard card)
     {

@@ -40,7 +40,7 @@ public class ClientCardMouseController : CardMouseController
         //don't allow dragging cards if we're awaiting a target
         if (Card.game.targetMode != Game.TargetMode.Free) return;
 
-        //to be able to use local coordinates to see if you're on the board, set parent to game board
+        //get coords w/r/t gameboard
         var boardLocalPosition = Game.boardObject.transform.InverseTransformPoint(transform.position);
 
         //then, check if it's on the board, accodring to the local coordinates of the game board)

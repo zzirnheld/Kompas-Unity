@@ -22,17 +22,11 @@ public class ServerPlayer : Player
 
     //If the player tries to do something, it goes here to check if it's ok, then do it if it is ok.
     #region Player Control Methods
-
-
     /// <summary>
     /// x and y here are from playerIndex's perspective
     /// </summary>
-    /// <param name="sGame"></param>
-    /// <param name="playerIndex"></param>
-    /// <param name="cardID"></param>
     /// <param name="x"></param>
     /// <param name="y"></param>
-    /// <param name="sourceID"></param>
     public void TryAugment(AugmentCard aug, int x, int y)
     {
         if (serverGame.ValidAugment(aug, x, y)) serverGame.Play(aug, x, y, this);

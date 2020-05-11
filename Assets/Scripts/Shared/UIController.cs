@@ -76,7 +76,7 @@ public class UIController : MonoBehaviour {
         //set all common values
         selectedCardSubtypesText.text = card.SubtypeText;
         selectedCardNameText.text = card.CardName;
-        selectedCardImage.sprite = card.DetailedSprite;
+        selectedCardImage.sprite = card.detailedSprite;
         selectedCardEffText.text = card.EffText;
     }
 
@@ -113,7 +113,7 @@ public class UIController : MonoBehaviour {
         //set all common values
         selectedCardSubtypesText.text = card.SubtypeText;
         selectedCardNameText.text = card.CardName;
-        selectedCardImage.sprite = card.DetailedSprite;
+        selectedCardImage.sprite = card.detailedSprite;
         selectedCardEffText.text = card.EffText;
     }
 
