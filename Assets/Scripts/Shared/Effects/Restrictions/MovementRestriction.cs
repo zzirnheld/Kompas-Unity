@@ -22,7 +22,7 @@ public class MovementRestriction
 
     //The actual list of restrictions, set by json.
     //Default restrictions are that only characters with enough n can move.
-    public string[] Restrictions = new string[] { IsCharacter, CanMoveEnoughSpaces };
+    public string[] Restrictions = new string[] { IsCharacter, CanMoveEnoughSpaces, DestinationCanMoveHere };
     
     public Card Card { get; private set; }
 
@@ -58,7 +58,7 @@ public class MovementRestriction
                     var atDest = Card.game.boardCtrl.GetCardAt(x, y);
                     if (atDest == null) break;
                     if (atDest.Controller != Card.Controller) return false;
-                    if (!atDest.MovementRestriction.Evaluate(Card.BoardX, Card.BoardY)) return false;
+                    if (!atDest.MovementRestriction.Evaluate(Card.BoardX, Card.BoardY, isSwapTarget: true)) return false;
                     break;
                 case IsActive:
                     if (!Card.Activated) return false;

@@ -16,4 +16,5 @@ public class SerializableCard
     public string[] subtypes;
     public SerializableEffect[] effects;
 
+    public MovementRestriction MovementRestriction;
 }
