@@ -8,7 +8,7 @@ public abstract class Card : CardBase {
     public Game game;
 
     //stats
-    public bool Negated { get; protected set; }
+    public bool Negated { get; private set; }
     public int Activations = 0;
     public bool Activated { get => Activations > 0; }
     public abstract int Cost { get; }

@@ -14,6 +14,7 @@ public class MovementRestriction
     //In other words, if we're swapping, can the other card also move here?
     //Also checks that that other card is friendly
     private const string DestinationCanMoveHere = "Destination is Empty or Friendly";
+    //TODO maybe a "destination can move here" to force swaps with enemy characters?
     #endregion Basic Movement Restrictions
 
     //Whether the character has been activated (for Golems)
@@ -56,6 +57,7 @@ public class MovementRestriction
                     if (isSwapTarget) break;
                     var atDest = Card.game.boardCtrl.GetCardAt(x, y);
                     if (atDest == null) break;
+                    if (atDest.Controller != Card.Controller) return false;
                     if (!atDest.MovementRestriction.Evaluate(Card.BoardX, Card.BoardY)) return false;
                     break;
                 case IsActive:

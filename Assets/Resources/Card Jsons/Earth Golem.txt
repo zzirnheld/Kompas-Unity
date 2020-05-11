@@ -40,6 +40,14 @@
 			]
 		}
 	],
+	"MovementRestriction"{
+		"Restrictions":[
+			"Is Character",
+			"Can Move Enough Spaces",
+			"Destination is Empty or Friendly",
+			"Activated"
+		]
+	}
 	"n":2,
 	"e":5,
 	"s":2,
