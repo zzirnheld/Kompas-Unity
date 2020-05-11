@@ -17,4 +17,5 @@ public class SerializableCard
     public SerializableEffect[] effects;
 
     public MovementRestriction MovementRestriction;
+    public AttackRestriction AttackRestriction;
 }

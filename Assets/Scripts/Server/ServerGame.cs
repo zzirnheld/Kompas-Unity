@@ -387,8 +387,7 @@ public class ServerGame : Game {
             return attacker != null && defender != null;
         }
 
-        if (attacker == null || defender == null) return false;
-        return attacker.DistanceTo(defender) == 1;
+        return attacker.AttackRestriction.Evaluate(defender);
     }
     #endregion
     

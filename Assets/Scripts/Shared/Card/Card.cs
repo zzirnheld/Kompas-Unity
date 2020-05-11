@@ -22,7 +22,10 @@ public abstract class Card : CardBase {
     //movement
     public int SpacesMoved { get; protected set; }
     public virtual int SpacesCanMove { get => 0; }
-    public MovementRestriction MovementRestriction;
+    public MovementRestriction MovementRestriction { get; private set; }
+
+    //attacking
+    public AttackRestriction AttackRestriction { get; private set; }
 
     //controller/owners
     public Player Controller { get; protected set; }
@@ -158,6 +161,7 @@ public abstract class Card : CardBase {
         SpacesMoved = 0;
         MovementRestriction = serializedCard.MovementRestriction ?? new MovementRestriction();
         MovementRestriction.SetInfo(this);
+        AttackRestriction = serializedCard.AttackRestriction ?? new AttackRestriction();
     }
     
     #region distance/adjacency
