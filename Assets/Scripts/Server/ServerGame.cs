@@ -376,9 +376,7 @@ public class ServerGame : Game {
             return true;
         }
 
-        if (!(toMove is CharacterCard charToMove)) return false;
-        return toMove.DistanceTo(toX, toY) + charToMove.SpacesMoved <= charToMove.N
-            && (boardCtrl.GetCardAt(toX, toY) == null || boardCtrl.GetCardAt(toX, toY).ControllerIndex == toMove.ControllerIndex);
+        return toMove.MovementRestriction.Evaluate(toX, toY);
     }
 
     public bool ValidAttack(CharacterCard attacker, CharacterCard defender, ServerPlayer instigator)

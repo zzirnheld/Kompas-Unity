@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class MovementRestriction
 {
+    #region Basic Movement Restrictions
     //Might seem a bit dumb, but it means that some spells will be able to move themselves
     private const string IsCharacter = "Is Character";
     //Does the character have enough N?
@@ -13,7 +14,9 @@ public class MovementRestriction
     //In other words, if we're swapping, can the other card also move here?
     //Also checks that that other card is friendly
     private const string DestinationCanMoveHere = "Destination is Empty or Friendly";
+    #endregion Basic Movement Restrictions
 
+    //Whether the character has been activated (for Golems)
     private const string IsActive = "Activated";
 
     //The actual list of restrictions, set by json.
@@ -53,7 +56,7 @@ public class MovementRestriction
                     if (isSwapTarget) break;
                     var atDest = Card.game.boardCtrl.GetCardAt(x, y);
                     if (atDest == null) break;
-
+                    if (!atDest.MovementRestriction.Evaluate(Card.BoardX, Card.BoardY)) return false;
                     break;
                 case IsActive:
                     if (!Card.Activated) return false;
