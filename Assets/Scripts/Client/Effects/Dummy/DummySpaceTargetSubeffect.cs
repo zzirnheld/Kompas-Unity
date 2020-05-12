@@ -9,6 +9,6 @@ public class DummySpaceTargetSubeffect : DummySubeffect
     public override void Initialize(ClientEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        spaceRestriction.Subeffect = this;
+        spaceRestriction.Initialize(this);
     }
 }

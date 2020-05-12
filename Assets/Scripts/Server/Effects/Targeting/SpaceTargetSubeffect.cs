@@ -10,7 +10,7 @@ public class SpaceTargetSubeffect : ServerSubeffect
     {
         base.Initialize(eff, subeffIndex);
         Debug.Log("Space restriction is null? " + (spaceRestriction == null));
-        spaceRestriction.Subeffect = this;
+        spaceRestriction.Initialize(this);
     }
 
     public override void Resolve()

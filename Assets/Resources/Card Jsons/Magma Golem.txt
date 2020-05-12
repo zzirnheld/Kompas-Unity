@@ -1,0 +1,50 @@
+{
+	"cardType":67,
+	"cardName":"Ice Golem",
+	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, I give all adjacent characters -3E.",
+	"effects":[
+		{
+			"triggerCondition":201,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
+				}
+			}",
+			"subeffectTypes":[110],
+			"subeffects":[
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[3],
+						\"onBoardRestrictions\":[0]
+					},
+					\"EMod\":-3
+				}"
+			]
+		}
+	],
+	"MovementRestriction":{
+		"Restrictions":[
+			"Is Character",
+			"Can Move Enough Spaces",
+			"Destination is Empty or Friendly",
+			"Activated"
+		]
+	},
+	"AttackRestriction":{
+		"Restrictions":[
+			"This is Character",
+			"Defender is Character",
+			"Defender is Adjacent",
+			"Defender is Enemy",
+			"This is Activated"
+		]
+	},
+	"n":3,
+	"e":4,
+	"s":3,
+	"w":5,
+	"subtypes":["Golem"],
+	"subtypeText":"Golem"
+}
