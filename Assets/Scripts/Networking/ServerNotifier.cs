@@ -185,24 +185,17 @@ public class ServerNotifier : MonoBehaviour
         SendToBoth(p);
     }
 
-    public void NotifyNegate(Card card)
+    public void NotifySetNegated(Card card, bool negated)
     {
         if (card == null) return;
-        Packet packet = new Packet(Packet.Command.Negate, card);
+        Packet packet = new Packet(Packet.Command.Negate, card, negated);
         SendToBoth(packet);
     }
 
-    public void NotifyActivate(Card card)
+    public void NotifyActivate(Card card, bool activated)
     {
         if (card == null) throw new System.ArgumentNullException($"Card must not be null to notify about activating");
-        Packet packet = new Packet(Packet.Command.Activate, card);
-        SendToBoth(packet);
-    }
-
-    public void NotifyDeactivate(Card card)
-    {
-        if (card == null) throw new System.ArgumentNullException($"Card must not be null to notify about deactivating");
-        Packet packet = new Packet(Packet.Command.Deactivate, card);
+        Packet packet = new Packet(Packet.Command.Activate, card, activated);
         SendToBoth(packet);
     }
 

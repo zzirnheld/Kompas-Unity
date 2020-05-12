@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class DelayedHangingEffect : HangingEffect
 {
-    private int numTimesToDelay;
+    private readonly int numTimesToDelay;
     private int numTimesDelayed;
     private ServerEffect toResume;
-    private int indexToResumeResolution;
+    private readonly int indexToResumeResolution;
 
     public DelayedHangingEffect(ServerGame game, TriggerRestriction triggerRestriction, TriggerCondition triggerCondition,
         int numTimesToDelay, ServerEffect toResume, int indexToResumeResolution)

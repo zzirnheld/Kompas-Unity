@@ -156,6 +156,11 @@ namespace KompasNetworking
             normalArgs[0] = num;
         }
 
+        public Packet(Command command, Card card, bool boolean) : this(command, card)
+        {
+            normalArgs[0] = boolean ? 1 : 0;
+        }
+
         /// <summary>
         /// Used for choosing coordinates/spaces
         /// </summary>

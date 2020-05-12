@@ -247,7 +247,7 @@ public class ServerGame : Game {
 
     public void Dispel(SpellCard spellCard, IServerStackable stackSrc = null)
     {
-        Negate(spellCard, stackSrc);
+        SetNegated(spellCard, true, stackSrc);
         Discard(spellCard, stackSrc);
     }
     #endregion move card between areas
@@ -271,26 +271,20 @@ public class ServerGame : Game {
         }
     }
 
-    public void Negate(Card c, IServerStackable stackSrc = null)
+    public void SetNegated(Card c, bool negated, IServerStackable stackSrc = null)
     {
-        ServerPlayers[c.ControllerIndex].ServerNotifier.NotifyNegate(c);
-        base.SetNegated(c, true);
+        ServerPlayers[c.ControllerIndex].ServerNotifier.NotifySetNegated(c, negated);
+        base.SetNegated(c, negated);
     }
 
-    public void Activate(Card c, IServerStackable stackSrc = null)
+    public void SetActivated(Card c, bool activated, IServerStackable stackSrc = null)
     {
-        ServerPlayers[c.ControllerIndex].ServerNotifier.NotifyActivate(c);
-        base.SetActivated(c, true);
+        ServerPlayers[c.ControllerIndex].ServerNotifier.NotifyActivate(c, activated);
+        base.SetActivated(c, activated);
         //If this is the first activation, trigger "activate"
         if (c.Activations == 1) EffectsController.Trigger(TriggerCondition.Activate, c, stackSrc, null, stackSrc?.ServerController);
-    }
-
-    public void Deactivate(Card c, IServerStackable stackSrc = null)
-    {
-        ServerPlayers[c.ControllerIndex].ServerNotifier.NotifyDeactivate(c);
-        base.SetActivated(c, false);
         //If this is the last deactivation, trigger "deactivate"
-        if (c.Activations == 0) EffectsController.Trigger(TriggerCondition.Deactivate, c, stackSrc, null, stackSrc?.ServerController);
+        else if (c.Activations == 0) EffectsController.Trigger(TriggerCondition.Deactivate, c, stackSrc, null, stackSrc?.ServerController);
     }
 
     public Card Draw(int player, IServerStackable stackSrc = null)

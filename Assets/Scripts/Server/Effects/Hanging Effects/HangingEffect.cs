@@ -6,15 +6,15 @@ public abstract class HangingEffect
 {
     public TriggerCondition EndCondition { get; }
 
-    private TriggerRestriction triggerRestriction;
-    private ServerGame game;
+    private readonly TriggerRestriction triggerRestriction;
+    protected readonly ServerGame serverGame;
 
-    public HangingEffect(ServerGame game, TriggerRestriction triggerRestriction, TriggerCondition endCondition)
+    public HangingEffect(ServerGame serverGame, TriggerRestriction triggerRestriction, TriggerCondition endCondition)
     {
-        this.game = game;
-        this.triggerRestriction = triggerRestriction;
+        this.serverGame = serverGame ?? throw new System.ArgumentNullException("ServerGame in HangingEffect must not be null");
+        this.triggerRestriction = triggerRestriction ?? throw new System.ArgumentNullException("Trigger Restriction in HangingEffect must not be null");
         this.EndCondition = endCondition;
-        game.EffectsController.RegisterHangingEffect(EndCondition, this);
+        serverGame.EffectsController.RegisterHangingEffect(EndCondition, this);
     }
 
     public virtual bool EndIfApplicable(Card triggerer, IStackable stackTrigger)

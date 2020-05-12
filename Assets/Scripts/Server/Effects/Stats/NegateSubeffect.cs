@@ -12,7 +12,7 @@ public class NegateSubeffect : ServerSubeffect
             return;
         }
 
-        ServerGame.Negate(Target);
+        ServerGame.SetNegated(Target, true, ServerEffect);
         ServerEffect.ResolveNextSubeffect();
     }
 }
