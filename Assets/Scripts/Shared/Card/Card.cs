@@ -8,9 +8,26 @@ public abstract class Card : CardBase {
     public Game game;
 
     //stats
-    public bool Negated { get; private set; }
-    public int Activations = 0;
-    public bool Activated { get => Activations > 0; }
+    public int Negations { get; private set; } = 0;
+    public bool Negated {
+        get => Negations > 0;
+        set {
+            if (value) Negations++;
+            else Negations--;
+
+            foreach (var e in Effects) e.Negated = value;
+        }
+    }
+    public int Activations { get; private set; } = 0;
+    public bool Activated
+    {
+        get => Activations > 0;
+        set
+        {
+            if (value) Activations++;
+            else Activations--;
+        }
+    }
     public abstract int Cost { get; }
     public abstract string StatsString { get; }
 
@@ -266,12 +283,6 @@ public abstract class Card : CardBase {
         }
 
         SpacesMoved = 0;
-    }
-
-    public virtual void Negate()
-    {
-        Negated = true;
-        foreach(var e in Effects)  e.Negate();
     }
 
     #region augments

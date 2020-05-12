@@ -164,15 +164,15 @@ public class ClientNetworkController : NetworkController {
                 break;
             case Packet.Command.Negate:
                 Card toNegate = ClientGame.GetCardFromID(packet.cardID);
-                ClientGame.Negate(toNegate);
+                ClientGame.SetNegated(toNegate, true);
                 break;
             case Packet.Command.Activate:
                 var toActivate = ClientGame.GetCardFromID(packet.cardID);
-                ClientGame.Activate(toActivate);
+                ClientGame.SetActivated(toActivate, true);
                 break;
             case Packet.Command.Deactivate:
                 var toDeactivate = ClientGame.GetCardFromID(packet.cardID);
-                ClientGame.Deactivate(toDeactivate);
+                ClientGame.SetActivated(toDeactivate, false);
                 break;
             case Packet.Command.SetPips:
                 ClientGame.SetFriendlyPips(packet.Pips);

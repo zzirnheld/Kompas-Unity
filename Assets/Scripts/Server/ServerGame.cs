@@ -274,13 +274,13 @@ public class ServerGame : Game {
     public void Negate(Card c, IServerStackable stackSrc = null)
     {
         ServerPlayers[c.ControllerIndex].ServerNotifier.NotifyNegate(c);
-        base.Negate(c);
+        base.SetNegated(c, true);
     }
 
     public void Activate(Card c, IServerStackable stackSrc = null)
     {
         ServerPlayers[c.ControllerIndex].ServerNotifier.NotifyActivate(c);
-        base.Activate(c);
+        base.SetActivated(c, true);
         //If this is the first activation, trigger "activate"
         if (c.Activations == 1) EffectsController.Trigger(TriggerCondition.Activate, c, stackSrc, null, stackSrc?.ServerController);
     }
@@ -288,7 +288,7 @@ public class ServerGame : Game {
     public void Deactivate(Card c, IServerStackable stackSrc = null)
     {
         ServerPlayers[c.ControllerIndex].ServerNotifier.NotifyDeactivate(c);
-        base.Deactivate(c);
+        base.SetActivated(c, false);
         //If this is the last deactivation, trigger "deactivate"
         if (c.Activations == 0) EffectsController.Trigger(TriggerCondition.Deactivate, c, stackSrc, null, stackSrc?.ServerController);
     }

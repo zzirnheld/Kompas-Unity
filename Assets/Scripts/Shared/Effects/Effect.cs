@@ -27,7 +27,15 @@ public abstract class Effect
 
     public abstract Trigger Trigger { get; }
 
-    public bool Negated { get; protected set; }
+    private int negations = 0;
+    public bool Negated {
+        get => negations > 0;
+        set
+        {
+            if (value) negations++;
+            else negations--;
+        }
+    }
 
     /// <summary>
     /// X value as listed on cards

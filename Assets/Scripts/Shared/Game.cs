@@ -185,22 +185,17 @@ public abstract class Game : MonoBehaviour {
     {
         boardCtrl.Move(card, toX, toY, normalMove);
     }
-
-    public void Negate(Card c)
-    {
-        c.Negate();
-    }
-
-    public void Activate(Card c)
-    {
-        c.Activations++;
-    }
-
-    public void Deactivate(Card c)
-    {
-        c.Activations--;
-    }
     #endregion move card between areas
+    
+    public void SetNegated(Card c, bool negated)
+    {
+        c.Negated = negated;
+    }
+
+    public void SetActivated(Card c, bool activated)
+    {
+        c.Activated = activated;
+    }
 
     public virtual void SetStats(SpellCard spellCard, int c)
     {
