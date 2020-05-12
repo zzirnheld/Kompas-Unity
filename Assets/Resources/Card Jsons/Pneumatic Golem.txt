@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Ice Golem",
-	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, I negate a character until your next turn.",
+	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, rehand a character within 3 spaces.",
 	"effects":[
 		{
 			"triggerCondition":201,
@@ -11,20 +11,17 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[0,503],
+			"subeffectTypes":[0,304],
 			"subeffects":[
 				"{
 					\"boardRestriction\":
 					{
-						\"restrictionsToCheck\":[3]
+						\"restrictionsToCheck\":[3],
+						\"onBoardRestrictions\":[1],
+						\"cSpaces\":3
 					}
 				}",
-				"{
-					\"EndCondition\":0,
-					\"TriggerRestriction\":{
-						\"triggerRestrictions\":[300]
-					}
-				}"
+				"{}"
 			]
 		}
 	],
@@ -45,10 +42,10 @@
 			"This is Activated"
 		]
 	},
-	"n":2,
-	"e":1,
-	"s":1,
-	"w":4,
+	"n":3,
+	"e":4,
+	"s":3,
+	"w":5,
 	"subtypes":["Golem"],
 	"subtypeText":"Golem"
 }
