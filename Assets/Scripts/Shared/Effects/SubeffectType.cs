@@ -28,6 +28,7 @@ public enum SubeffectType
     Dispel = 106,
     SwapOwnNESW = 107, //swaps one character's n with e, etc.
     ChangeSpellC = 108,
+    SetNESW = 109,
     ChangeAllNESW = 110,
     Activate = 120,
     //Deactivate = 121,

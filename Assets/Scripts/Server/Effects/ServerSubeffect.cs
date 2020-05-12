@@ -82,6 +82,9 @@ public abstract class ServerSubeffect : Subeffect
             case SubeffectType.ChangeSpellC:
                 toReturn = JsonUtility.FromJson<ChangeSpellCSubeffect>(subeffJson);
                 break;
+            case SubeffectType.SetNESW:
+                toReturn = JsonUtility.FromJson<SetNESWSubeffect>(subeffJson);
+                break;
             case SubeffectType.ChangeAllNESW:
                 toReturn = JsonUtility.FromJson<ChangeAllNESWSubeffect>(subeffJson);
                 break;

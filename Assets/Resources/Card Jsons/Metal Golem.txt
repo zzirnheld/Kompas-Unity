@@ -1,6 +1,6 @@
 {
 	"cardType":67,
-	"cardName":"Straw Golem",
+	"cardName":"Metal Golem",
 	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, move an enemy character 3 spaces.",
 	"effects":[
 		{
@@ -11,7 +11,7 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[0,4,309],
+			"subeffectTypes":[0,110,0,110],
 			"subeffects":[
 				"{
 					\"boardRestriction\":
@@ -20,13 +20,18 @@
 					}
 				}",
 				"{
-					\"spaceRestriction\":
-					{
-						\"restrictionsToCheck\":[1,251]
-					},
-					\"C\":3
+					\"NVal\":0
 				}",
-				"{}"
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[3,600]
+					}
+				}",
+				"{
+					\"NVal\":0
+				}"
+
 			]
 		}
 	],
