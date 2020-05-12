@@ -11,10 +11,22 @@ public class TriggerRestriction
     {
         ThisCardTriggered = 0,
         ThisCardInPlay = 1,
+
         ThisCardFitsRestriction = 100,
         TriggererFitsRestriction = 101,
+
         ControllerTriggered = 200,
         EnemyTriggered = 201,
+
+        //note: turns are the exception to the rule in that they are the only triggers where the triggering event
+        //(in their case, the turn passing)
+        //happens before the trigger is called, 
+        //instead of the trigger being called at the moment before it happens.
+        //in short, note that the turn will pass, then the trigger for turn start is called.
+        //this means that checking for friendly/enemy turn will check whose turn the current (just-changed-to) turn is.
+        FriendlyTurn = 300,
+        EnemyTurn = 301,
+
         FromField = 400,
         FromDeck = 401
     }
@@ -59,6 +71,12 @@ public class TriggerRestriction
                     break;
                 case TriggerRestrictions.EnemyTriggered:
                     if (triggerer == thisCard.Controller) return false;
+                    break;
+                case TriggerRestrictions.FriendlyTurn:
+                    if (Subeffect.ServerGame.TurnPlayer != thisCard.Controller) return false;
+                    break;
+                case TriggerRestrictions.EnemyTurn:
+                    if (Subeffect.ServerGame.TurnPlayer == thisCard.Controller) return false;
                     break;
                 case TriggerRestrictions.FromField:
                     if (cardTriggerer.Location != CardLocation.Field) return false;

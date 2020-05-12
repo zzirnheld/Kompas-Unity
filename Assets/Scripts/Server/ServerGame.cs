@@ -17,7 +17,7 @@ public class ServerGame : Game {
 
     public override Player[] Players => ServerPlayers;
     public ServerPlayer[] ServerPlayers;
-    public ServerPlayer TurnServerPlayer { get { return ServerPlayers[turnPlayer]; } }
+    public ServerPlayer TurnServerPlayer { get { return ServerPlayers[TurnPlayerIndex]; } }
     public int cardCount = 0;
     private int currPlayerCount = 0; //current number of players. shouldn't exceed 2
 
@@ -387,15 +387,15 @@ public class ServerGame : Game {
     
     public void SwitchTurn()
     {
-        turnPlayer = 1 - turnPlayer;
+        TurnPlayerIndex = 1 - TurnPlayerIndex;
         GiveTurnPlayerPips();
         
         boardCtrl.ResetCardsForTurn();
 
         //draw for turn and store what was drawn
-        Card drawn = Draw(turnPlayer);
+        Card drawn = Draw(TurnPlayerIndex);
         if(drawn != null) TurnServerPlayer.ServerNotifier.NotifyDraw(drawn);
-        TurnServerPlayer.ServerNotifier.NotifySetTurn(this, turnPlayer);
+        TurnServerPlayer.ServerNotifier.NotifySetTurn(this, TurnPlayerIndex);
 
         //trigger turn start effects
         EffectsController.Trigger(TriggerCondition.TurnStart, null, null, null, TurnServerPlayer);

@@ -67,14 +67,10 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.clientUICtrl.ShowGetDecklistUI();
                 break;
             case Packet.Command.YoureFirst:
-                ClientGame.turnPlayer = 0;
-                ClientGame.uiCtrl.CurrentStateString = "Your Turn";
-                ClientGame.clientUICtrl.HideGetDecklistUI();
+                ClientGame.SetFirstTurnPlayer(0);
                 break;
             case Packet.Command.YoureSecond:
-                ClientGame.turnPlayer = 1;
-                ClientGame.uiCtrl.CurrentStateString = "Enemy Turn";
-                ClientGame.clientUICtrl.HideGetDecklistUI();
+                ClientGame.SetFirstTurnPlayer(1);
                 break;
             case Packet.Command.SetFriendlyAvatar:
                 ClientGame.SetAvatar(0, packet.CardName, packet.CardIDToBe);
@@ -180,10 +176,7 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.boardCtrl.PutCardsBack();
                 break;
             case Packet.Command.EndTurn:
-                ClientGame.turnPlayer = 1 - ClientGame.turnPlayer;
-                ClientGame.boardCtrl.ResetCardsForTurn();
-                if(ClientGame.turnPlayer == 0) ClientGame.uiCtrl.CurrentStateString = "Your Turn";
-                else ClientGame.uiCtrl.CurrentStateString = "Enemy Turn";
+                ClientGame.EndTurn();
                 break;
             case Packet.Command.RequestBoardTarget:
                 ClientGame.targetMode = Game.TargetMode.BoardTarget;

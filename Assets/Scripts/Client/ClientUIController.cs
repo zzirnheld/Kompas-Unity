@@ -311,7 +311,7 @@ public class ClientUIController : UIController
     #region flow control
     public void PassTurn()
     {
-        if(clientGame.turnPlayer == 0)
+        if(clientGame.TurnPlayerIndex == 0)
         {
             clientGame.clientNotifier.RequestEndTurn();
         }

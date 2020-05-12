@@ -24,8 +24,8 @@ public abstract class Game : MonoBehaviour {
     public CardRepository CardRepo;
 
     public abstract Player[] Players { get; }
-    public int turnPlayer = 0;
-    public Player TurnPlayer { get { return Players[turnPlayer]; } }
+    public int TurnPlayerIndex { get; protected set; } = 0;
+    public Player TurnPlayer { get { return Players[TurnPlayerIndex]; } }
 
     //game data
     public Dictionary<int, Card> cards;
