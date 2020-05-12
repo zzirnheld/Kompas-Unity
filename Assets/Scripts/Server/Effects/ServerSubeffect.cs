@@ -181,17 +181,15 @@ public abstract class ServerSubeffect : Subeffect
             case SubeffectType.HangingNESWBuffAll:
                 toReturn = JsonUtility.FromJson<TemporaryNESWBuffAllSubeffect>(subeffJson);
                 break;
+            case SubeffectType.HangingNegate:
+                toReturn = JsonUtility.FromJson<TemporaryNegateSubeffect>(subeffJson);
+                break;
             default:
                 Debug.LogError($"Unrecognized effect type enum {seType} for loading effect in effect constructor");
                 return null;
         }
 
-        if (toReturn != null)
-        {
-            Debug.Log($"Finishing setup for new effect of type {seType}");
-            toReturn.Initialize(parent, subeffIndex);
-        }
-
+        if (toReturn != null) toReturn.Initialize(parent, subeffIndex);
         return toReturn;
     }
 
@@ -202,7 +200,9 @@ public abstract class ServerSubeffect : Subeffect
     /// </summary>
     public abstract void Resolve();
 
-    public virtual void Initialize(ServerEffect eff, int subeffIndex) {
+    public virtual void Initialize(ServerEffect eff, int subeffIndex)
+    {
+        Debug.Log($"Finishing setup for new effect of type {GetType()}");
         this.ServerEffect = eff;
         this.SubeffIndex = subeffIndex;
     }
