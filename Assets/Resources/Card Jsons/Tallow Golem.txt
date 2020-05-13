@@ -1,7 +1,7 @@
 {
 	"cardType":67,
-	"cardName":"Clay Golem",
-	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, tribute me and deck-summon a Golem.",
+	"cardName":"Tallow Golem",
+	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, I activate a character until your next turn.",
 	"effects":[
 		{
 			"triggerCondition":201,
@@ -11,21 +11,20 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[5,301,1,4,300],
+			"subeffectTypes":[0,504],
 			"subeffects":[
-				"{}",
-				"{}",
 				"{
-					\"cardRestriction\":
+					\"boardRestriction\":
 					{
-						\"restrictionsToCheck\":[2,3],
-						\"subtypesInclude\":[\"Golem\"]
+						\"restrictionsToCheck\":[3]
 					}
 				}",
 				"{
-					\"spaceRestriction\":[0]
-				}",
-				"{}"
+					\"EndCondition\":0,
+					\"TriggerRestriction\":{
+						\"triggerRestrictions\":[300]
+					}
+				}"
 			]
 		}
 	],
@@ -46,10 +45,10 @@
 			"This is Activated"
 		]
 	},
-	"n":1,
-	"e":2,
+	"n":2,
+	"e":3,
 	"s":1,
-	"w":2,
+	"w":3,
 	"subtypes":["Golem"],
 	"subtypeText":"Golem"
 }
