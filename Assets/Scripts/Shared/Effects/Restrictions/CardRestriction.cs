@@ -18,6 +18,7 @@ public class CardRestriction
         Friendly = 7,
         SameOwner = 8,
         Enemy = 9,
+        Summoned = 10,
         //location
         Hand = 100,
         Discard = 101,

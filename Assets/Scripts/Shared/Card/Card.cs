@@ -30,6 +30,7 @@ public abstract class Card : CardBase {
     }
     public abstract int Cost { get; }
     public abstract string StatsString { get; }
+    public virtual bool Summoned { get => false; }
 
     //positioning
     public int BoardX { get; protected set; }

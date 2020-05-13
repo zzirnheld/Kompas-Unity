@@ -47,4 +47,7 @@ Pneumatic Golem
 Magma Golem
 Straw Golem
 Metal Golem
+Clay Golem
+Obsidian Golem
+Tallow Golem
 lulthisdontexistmydood

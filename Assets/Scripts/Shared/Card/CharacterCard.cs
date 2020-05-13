@@ -66,6 +66,7 @@ public class CharacterCard : Card {
     public override int Cost => S;
     public override string StatsString => "N: " + N + "\t\tE: " + E + "\t\tS: " + S + "\t\tW: " + W;
     public override int SpacesCanMove => N - SpacesMoved;
+    public override bool Summoned => true;
 
     public SerializableCharCard GetSerializableVersion()
     {
