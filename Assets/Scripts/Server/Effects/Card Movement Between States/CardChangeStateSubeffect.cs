@@ -13,8 +13,8 @@ public abstract class CardChangeStateSubeffect : ServerSubeffect
     {
         get
         {
-            if (SpaceIndex < 0) return ServerEffect.coords[ServerEffect.coords.Count + SpaceIndex].x;
-            else return ServerEffect.coords[SpaceIndex].x;
+            if (SpaceIndex < 0) return ServerEffect.Coords[ServerEffect.Coords.Count + SpaceIndex].x;
+            else return ServerEffect.Coords[SpaceIndex].x;
         }
     }
 
@@ -22,8 +22,8 @@ public abstract class CardChangeStateSubeffect : ServerSubeffect
     {
         get
         {
-            if (SpaceIndex < 0) return ServerEffect.coords[ServerEffect.coords.Count + SpaceIndex].y;
-            else return ServerEffect.coords[SpaceIndex].y;
+            if (SpaceIndex < 0) return ServerEffect.Coords[ServerEffect.Coords.Count + SpaceIndex].y;
+            else return ServerEffect.Coords[SpaceIndex].y;
         }
     }
 }

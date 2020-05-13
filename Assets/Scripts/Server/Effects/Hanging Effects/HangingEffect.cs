@@ -17,6 +17,14 @@ public abstract class HangingEffect
         serverGame.EffectsController.RegisterHangingEffect(EndCondition, this);
     }
 
+    /// <summary>
+    /// Called when the trigger for this hanging effect occurs.
+    /// If the hanging effect should end (as determined by the ShouldEnd function),
+    /// ends the hanging effect (as determined by Resolve)
+    /// </summary>
+    /// <param name="triggerer">The card that triggered the triggering event</param>
+    /// <param name="stackTrigger">The item on the stack that triggered the event</param>
+    /// <returns><see langword="true"/> if the hanging effect is now ended, <see langword="false"/> otherwise.</returns>
     public virtual bool EndIfApplicable(Card triggerer, IStackable stackTrigger)
     {
         bool end = ShouldEnd(triggerer, stackTrigger);

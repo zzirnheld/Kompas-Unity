@@ -5,7 +5,7 @@ using UnityEngine;
 public class DeleteTargetSubeffect : ServerSubeffect
 {
     public int DeleteIndex = -1;
-    public int TrueDeleteIndex { get { return DeleteIndex < 0 ? ServerEffect.targets.Count + DeleteIndex : DeleteIndex; } }
+    public int TrueDeleteIndex { get { return DeleteIndex < 0 ? ServerEffect.Targets.Count + DeleteIndex : DeleteIndex; } }
 
     public override void Resolve()
     {
@@ -15,7 +15,7 @@ public class DeleteTargetSubeffect : ServerSubeffect
             return;
         }
 
-        ServerEffect.targets.RemoveAt(TrueDeleteIndex);
+        ServerEffect.Targets.RemoveAt(TrueDeleteIndex);
         ServerEffect.ResolveNextSubeffect();
     }
 }

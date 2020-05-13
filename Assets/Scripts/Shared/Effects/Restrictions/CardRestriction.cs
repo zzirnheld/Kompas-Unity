@@ -169,7 +169,7 @@ public class CardRestriction
                     if (potentialTarget.IndexInList > constant) return false;
                     break;
                 case CardRestrictions.NotAlreadyTarget:
-                    if (Subeffect.Effect.targets.Contains(potentialTarget)) return false;
+                    if (Subeffect.Effect.Targets.Contains(potentialTarget)) return false;
                     break;
                 default:
                     Debug.Log("You forgot to check for " + c);

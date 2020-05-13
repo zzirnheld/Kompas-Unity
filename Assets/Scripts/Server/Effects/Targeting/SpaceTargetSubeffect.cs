@@ -30,7 +30,7 @@ public class SpaceTargetSubeffect : ServerSubeffect
         //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
         if (spaceRestriction.Evaluate(x, y))
         {
-            ServerEffect.coords.Add(new Vector2Int(x, y));
+            ServerEffect.Coords.Add(new Vector2Int(x, y));
             ServerEffect.ResolveNextSubeffect();
             Debug.Log("Adding " + x + ", " + y + " as coords");
             return true;

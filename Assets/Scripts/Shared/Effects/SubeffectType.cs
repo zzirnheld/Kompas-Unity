@@ -17,6 +17,7 @@ public enum SubeffectType
     ChooseFromListSaveRest = 9,
     DeleteTargetFromList = 10,
     TargetAll = 11,
+    AddRest = 12,
 
     //changing values, esp. on cards
     ChangeNESW = 100,
@@ -56,6 +57,7 @@ public enum SubeffectType
     Bottomdeck = 307,
     Topdeck = 308,
     Move = 309,
+    BottomdeckRest = 350,
 
     //loops/control flow
     XTimesLoop = 400,

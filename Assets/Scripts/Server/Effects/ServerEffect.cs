@@ -23,8 +23,6 @@ public class ServerEffect : Effect, IServerStackable
         this.serverGame = serverGame;
         this.ServerController = controller;
         ServerSubeffects = new ServerSubeffect[se.subeffects.Length];
-        targets = new List<Card>();
-        coords = new List<Vector2Int>();
 
         if (!string.IsNullOrEmpty(se.trigger))
         {
@@ -74,7 +72,7 @@ public class ServerEffect : Effect, IServerStackable
 
     public void ResolveNextSubeffect()
     {
-        ResolveSubeffect(subeffectIndex + 1);
+        ResolveSubeffect(SubeffectIndex + 1);
     }
 
     public void ResolveSubeffect(int index)
@@ -86,7 +84,7 @@ public class ServerEffect : Effect, IServerStackable
         }
 
         Debug.Log($"Resolving subeffect of type {ServerSubeffects[index].GetType()}");
-        subeffectIndex = index;
+        SubeffectIndex = index;
         ServerSubeffects[index].Resolve();
     }
 
@@ -95,9 +93,9 @@ public class ServerEffect : Effect, IServerStackable
     /// </summary>
     private void FinishResolution()
     {
-        subeffectIndex = 0;
+        SubeffectIndex = 0;
         X = 0;
-        targets.Clear();
+        Targets.Clear();
         OnImpossible = null;
         ServerController.ServerNotifier.NotifyBothPutBack();
         EffectsController.FinishStackEntryResolution();
@@ -113,7 +111,7 @@ public class ServerEffect : Effect, IServerStackable
         if (OnImpossible == null) FinishResolution();
         else
         {
-            subeffectIndex = OnImpossible.SubeffIndex;
+            SubeffectIndex = OnImpossible.SubeffIndex;
             OnImpossible.OnImpossible();
         }
     }

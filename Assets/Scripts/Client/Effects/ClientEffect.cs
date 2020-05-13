@@ -17,8 +17,6 @@ public class ClientEffect : Effect
         this.thisCard = thisCard ?? throw new System.ArgumentNullException("Effect cannot be attached to null card");
         this.ClientGame = clientGame;
         DummySubeffects = new DummySubeffect[se.subeffects.Length];
-        targets = new List<Card>();
-        coords = new List<Vector2Int>();
 
         if (!string.IsNullOrEmpty(se.trigger))
         {

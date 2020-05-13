@@ -6,7 +6,7 @@ public class ThisSpaceTargetSubeffect : ServerSubeffect
 {
     public override void Resolve()
     {
-        ServerEffect.coords.Add(new Vector2Int(ThisCard.BoardX, ThisCard.BoardY));
+        ServerEffect.Coords.Add(new Vector2Int(ThisCard.BoardX, ThisCard.BoardY));
         ServerEffect.ResolveNextSubeffect();
     }
 }

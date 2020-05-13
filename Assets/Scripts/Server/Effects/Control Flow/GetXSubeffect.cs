@@ -6,6 +6,6 @@ public class GetXSubeffect : ServerSubeffect
 {
     public override void Resolve()
     {
-        EffectController.ServerNotifier.GetXForEffect(ThisCard, ServerEffect.EffectIndex, ServerEffect.subeffectIndex);
+        EffectController.ServerNotifier.GetXForEffect(ThisCard, ServerEffect.EffectIndex, ServerEffect.SubeffectIndex);
     }
 }

@@ -8,7 +8,7 @@ public class TargetAugmentedCardSubeffect : ServerSubeffect
     {
         if(ServerEffect.thisCard is AugmentCard aug)
         {
-            ServerEffect.targets.Add(aug.AugmentedCard);
+            ServerEffect.Targets.Add(aug.AugmentedCard);
         }
         ServerEffect.ResolveNextSubeffect();
     }

@@ -42,7 +42,7 @@ public class BoardTargetSubeffect : CardTargetSubeffect
         if (boardRestriction.Evaluate(card))
         {
             Debug.Log("Adding " + card.CardName + " as target");
-            ServerEffect.targets.Add(card);
+            ServerEffect.Targets.Add(card);
             EffectController.ServerNotifier.AcceptTarget();
             ServerEffect.ResolveNextSubeffect();
             return true;

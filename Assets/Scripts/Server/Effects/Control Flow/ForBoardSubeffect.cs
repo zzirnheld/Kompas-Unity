@@ -30,12 +30,12 @@ public class ForBoardSubeffect : ServerSubeffect
                     //if we haven't found a first target yet, add the first target to the list
                     if (!running)
                     {
-                        ServerEffect.targets.Add(c);
+                        ServerEffect.Targets.Add(c);
                         running = true;
                     }
                     else
                     {
-                        ServerEffect.targets[ServerEffect.targets.Count - 1] = c;
+                        ServerEffect.Targets[ServerEffect.Targets.Count - 1] = c;
                     }
                     //jump to the next effect to resolve
                     ServerEffect.ResolveNextSubeffect();
@@ -48,7 +48,7 @@ public class ForBoardSubeffect : ServerSubeffect
         //if we ever found a valid target, remove it from the list of targets because it's not a real target
         if (running)
         {
-            ServerEffect.targets.RemoveAt(ServerEffect.targets.Count - 1);
+            ServerEffect.Targets.RemoveAt(ServerEffect.Targets.Count - 1);
         }
         //in case the effect runs again, reset the flag
         running = false;

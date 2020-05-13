@@ -14,11 +14,11 @@ public class SwapNESWSubeffect : ServerSubeffect
     public override void Resolve()
     {
         var target1 = TargetIndices[0] < 0 ?
-                ServerEffect.targets[ServerEffect.targets.Count + TargetIndices[0]] :
-                ServerEffect.targets[TargetIndices[0]];
+                ServerEffect.Targets[ServerEffect.Targets.Count + TargetIndices[0]] :
+                ServerEffect.Targets[TargetIndices[0]];
         var target2 = TargetIndices[1] < 0 ?
-                ServerEffect.targets[ServerEffect.targets.Count + TargetIndices[1]] :
-                ServerEffect.targets[TargetIndices[1]];
+                ServerEffect.Targets[ServerEffect.Targets.Count + TargetIndices[1]] :
+                ServerEffect.Targets[TargetIndices[1]];
 
         var char1 = target1 as CharacterCard ?? throw new System.ArgumentException($"Target {target1.CardName} is not a character");
         var char2 = target2 as CharacterCard ?? throw new System.ArgumentException($"Target {target2.CardName} is not a character");

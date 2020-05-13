@@ -23,8 +23,8 @@ public abstract class Subeffect
     {
         get
         {
-            int trueIndex = TargetIndex < 0 ? TargetIndex + Effect.targets.Count : TargetIndex;
-            return trueIndex < 0 ? null : Effect.targets[trueIndex];
+            int trueIndex = TargetIndex < 0 ? TargetIndex + Effect.Targets.Count : TargetIndex;
+            return trueIndex < 0 ? null : Effect.Targets[trueIndex];
         }
     }
 }
