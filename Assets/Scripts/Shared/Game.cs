@@ -137,13 +137,13 @@ public abstract class Game : MonoBehaviour {
         }
     }
 
-    public void Discard(Card card)
+    public virtual void Discard(Card card)
     {
         Remove(card);
         card.Controller.discardCtrl.AddToDiscard(card);
     }
 
-    public void Rehand(Player controller, Card card)
+    public virtual void Rehand(Player controller, Card card)
     {
         Remove(card);
         //let the card know whose hand it'll be added
@@ -151,48 +151,48 @@ public abstract class Game : MonoBehaviour {
         controller.handCtrl.AddToHand(card);
     }
 
-    public void Rehand(Card card)
+    public virtual void Rehand(Card card)
     {
         Rehand(card.Controller, card);
     }
 
-    public void Reshuffle(Card card)
+    public virtual void Reshuffle(Card card)
     {
         Remove(card);
         card.Controller.deckCtrl.ShuffleIn(card);
     }
 
-    public void Topdeck(Card card)
+    public virtual void Topdeck(Card card)
     {
         Remove(card);
         card.Controller.deckCtrl.PushTopdeck(card);
     }
 
-    public void Bottomdeck(Card card)
+    public virtual void Bottomdeck(Card card)
     {
         Remove(card);
         card.Controller.deckCtrl.PushBottomdeck(card);
     }
 
-    public void Play(Card card, int toX, int toY, Player controller)
+    public virtual void Play(Card card, int toX, int toY, Player controller)
     {
         Remove(card);
         boardCtrl.Play(card, toX, toY, controller);
         card.ChangeController(controller);
     }
 
-    public void MoveOnBoard(Card card, int toX, int toY, bool normalMove)
+    public virtual void MoveOnBoard(Card card, int toX, int toY, bool normalMove)
     {
         boardCtrl.Move(card, toX, toY, normalMove);
     }
     #endregion move card between areas
     
-    public void SetNegated(Card c, bool negated)
+    public virtual void SetNegated(Card c, bool negated)
     {
         c.Negated = negated;
     }
 
-    public void SetActivated(Card c, bool activated)
+    public virtual void SetActivated(Card c, bool activated)
     {
         c.Activated = activated;
     }

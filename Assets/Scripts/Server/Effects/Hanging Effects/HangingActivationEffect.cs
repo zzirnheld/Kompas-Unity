@@ -12,6 +12,7 @@ public class HangingActivationEffect : HangingEffect
         : base(serverGame, triggerRestriction, endCondition)
     {
         this.target = target ?? throw new System.ArgumentNullException("Cannot target a null card for a hanging activation");
+        this.source = source ?? throw new System.ArgumentNullException("Cannot make a hanging activation effect from no subeffect");
         serverGame.SetActivated(target, true, source.ServerEffect);
     }
 

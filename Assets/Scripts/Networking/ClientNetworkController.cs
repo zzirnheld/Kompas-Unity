@@ -9,22 +9,15 @@ using KompasNetworking;
 
 
 public class ClientNetworkController : NetworkController {
-
-    private bool changeTargetMode = false;
-    private long timeTargetAccepted;
-
     public ClientGame ClientGame;
-    private ClientPlayer friendly { get { return ClientGame.ClientPlayers[0]; } }
-    private ClientPlayer enemy { get { return ClientGame.ClientPlayers[1]; } }
-
-    public Packet lastPacket;
+    private ClientPlayer Friendly => ClientGame.ClientPlayers[0];
+    private ClientPlayer Enemy => ClientGame.ClientPlayers[1];
     
     public int X { get; private set; }
 
     public override void Awake()
     {
         base.Awake();
-        timeTargetAccepted = DateTime.Now.Ticks;
     }
 
     public void Connect(string ip)
@@ -38,12 +31,6 @@ public class ClientNetworkController : NetworkController {
 
     public override void Update()
     {
-        /*if (changeTargetMode && DateTime.Now.Ticks - timeTargetAccepted >= 5000000)
-        {
-            ClientGame.targetMode = Game.TargetMode.Free;
-            changeTargetMode = false;
-        }*/
-
         base.Update();
     }
 
@@ -56,8 +43,6 @@ public class ClientNetworkController : NetworkController {
         }
         Debug.Log($"Parsing command {packet.command} for {packet.cardID}");
         ClientGame.uiCtrl.CurrentStateString = $"Parsing command {packet.command} for card id {packet.cardID}";
-        
-        lastPacket = packet;
 
         switch (packet.command)
         {
@@ -83,12 +68,12 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.Delete(ClientGame.GetCardFromID(packet.cardID));
                 break;
             case Packet.Command.AddAsFriendly:
-                Card friendlyCard = ClientGame.CardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, friendly, packet.CardIDToBe);
+                Card friendlyCard = ClientGame.CardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, Friendly, packet.CardIDToBe);
                 ClientGame.cards.Add(packet.CardIDToBe, friendlyCard);
                 ClientGame.friendlyDeckCtrl.AddCard(friendlyCard);
                 break;
             case Packet.Command.AddAsEnemy:
-                Card added = ClientGame.CardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, enemy, packet.CardIDToBe);
+                Card added = ClientGame.CardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, Enemy, packet.CardIDToBe);
                 ClientGame.cards.Add(packet.CardIDToBe, added);
                 ClientGame.enemyDeckCtrl.AddCard(added);
                 //TODO make it always ask for cards from enemy deck
@@ -247,7 +232,7 @@ public class ClientNetworkController : NetworkController {
                 break;
             case Packet.Command.OptionalTrigger:
                 ClientTrigger t = ClientGame.GetCardFromID(packet.cardID).Effects[packet.EffIndex].Trigger as ClientTrigger;
-                t.ClientEffect.ClientController = friendly;
+                t.ClientEffect.ClientController = Friendly;
                 ClientGame.clientUICtrl.ShowOptionalTrigger(t, packet.EffectX);
                 break;
             default:

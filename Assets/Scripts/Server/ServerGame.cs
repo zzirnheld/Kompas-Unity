@@ -156,36 +156,16 @@ public class ServerGame : Game {
 
     #region move card between areas
     //so that notify stuff can be sent in the server
-    private void Remove(Card card)
-    {
-        switch (card.Location)
-        {
-            case CardLocation.Field:
-                boardCtrl.RemoveFromBoard(card);
-                break;
-            case CardLocation.Discard:
-                card.Controller.discardCtrl.RemoveFromDiscard(card);
-                break;
-            case CardLocation.Hand:
-                card.Controller.handCtrl.RemoveFromHand(card);
-                break;
-            case CardLocation.Deck:
-                card.Controller.deckCtrl.RemoveFromDeck(card);
-                break;
-            default:
-                Debug.LogError($"Tried to remove card from invalid location {card.Location}");
-                break;
-        }
-    }
-
-    public void Discard(Card card, IServerStackable stackSrc = null)
+    public void Discard(Card card, IServerStackable stackSrc)
     {
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyDiscard(card);
         EffectsController.Trigger(TriggerCondition.Discard, card, stackSrc, null, stackSrc?.ServerController);
         base.Discard(card);
     }
 
-    public void Rehand(Player controller, Card card, IServerStackable stackSrc = null)
+    public override void Discard(Card card) => Discard(card, null);
+
+    public void Rehand(Player controller, Card card, IServerStackable stackSrc)
     {
         if(controller != card.Controller)
         {
@@ -199,12 +179,16 @@ public class ServerGame : Game {
         base.Rehand(controller, card);
     }
 
+    public override void Rehand(Player controller, Card card) => Rehand(controller, card, null);
+
     public void Rehand(Card card, IServerStackable stackSrc = null)
     {
         Rehand(card.Controller, card, stackSrc);
     }
 
-    public void Reshuffle(Card card, IServerStackable stackSrc = null)
+    public override void Rehand(Card card) => Rehand(card, null);
+
+    public void Reshuffle(Card card, IServerStackable stackSrc)
     {
         EffectsController.Trigger(TriggerCondition.Reshuffle, card, stackSrc, null, stackSrc?.ServerController);
         EffectsController.Trigger(TriggerCondition.ToDeck, card, stackSrc, null, stackSrc?.ServerController);
@@ -212,7 +196,9 @@ public class ServerGame : Game {
         base.Reshuffle(card);
     }
 
-    public void Topdeck(Card card, IServerStackable stackSrc = null)
+    public override void Reshuffle(Card card) => Reshuffle(card, null);
+
+    public void Topdeck(Card card, IServerStackable stackSrc)
     {
         EffectsController.Trigger(TriggerCondition.Topdeck, card, stackSrc, null, stackSrc?.ServerController);
         EffectsController.Trigger(TriggerCondition.ToDeck, card, stackSrc, null, stackSrc?.ServerController);
@@ -220,7 +206,9 @@ public class ServerGame : Game {
         base.Topdeck(card);
     }
 
-    public void Bottomdeck(Card card, IServerStackable stackSrc = null)
+    public override void Topdeck(Card card) => Topdeck(card, null);
+
+    public void Bottomdeck(Card card, IServerStackable stackSrc)
     {
         EffectsController.Trigger(TriggerCondition.Bottomdeck, card, stackSrc, null, stackSrc?.ServerController);
         EffectsController.Trigger(TriggerCondition.ToDeck, card, stackSrc, null, stackSrc?.ServerController);
@@ -228,7 +216,9 @@ public class ServerGame : Game {
         base.Bottomdeck(card);
     }
 
-    public void Play(Card card, int toX, int toY, Player controller, IServerStackable stackSrc = null)
+    public override void Bottomdeck(Card card) => Bottomdeck(card, null);
+
+    public void Play(Card card, int toX, int toY, Player controller, IServerStackable stackSrc)
     {
         EffectsController.Trigger(TriggerCondition.Play, card, stackSrc, null, stackSrc?.ServerController);
         //note that it's serverPlayers[controller.index] because you can play to the field of someone whose card it isnt
@@ -237,7 +227,9 @@ public class ServerGame : Game {
         if (stackSrc == null) EffectsController.CheckForResponse();
     }
 
-    public void MoveOnBoard(Card card, int toX, int toY, bool normalMove, IServerStackable stackSrc = null)
+    public override void Play(Card card, int toX, int toY, Player controller) => Play(card, toX, toY, controller, null);
+
+    public void MoveOnBoard(Card card, int toX, int toY, bool normalMove, IServerStackable stackSrc)
     {
         EffectsController.Trigger(TriggerCondition.Move, card, stackSrc, null, stackSrc?.ServerController);
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyMove(card, toX, toY, normalMove);
@@ -245,7 +237,9 @@ public class ServerGame : Game {
         if (stackSrc == null) EffectsController.CheckForResponse();
     }
 
-    public void Dispel(SpellCard spellCard, IServerStackable stackSrc = null)
+    public override void MoveOnBoard(Card card, int toX, int toY, bool normalMove) => MoveOnBoard(card, toX, toY, normalMove, null);
+
+    public void Dispel(SpellCard spellCard, IServerStackable stackSrc)
     {
         SetNegated(spellCard, true, stackSrc);
         Discard(spellCard, stackSrc);
@@ -271,13 +265,15 @@ public class ServerGame : Game {
         }
     }
 
-    public void SetNegated(Card c, bool negated, IServerStackable stackSrc = null)
+    public void SetNegated(Card c, bool negated, IServerStackable stackSrc)
     {
         ServerPlayers[c.ControllerIndex].ServerNotifier.NotifySetNegated(c, negated);
         base.SetNegated(c, negated);
     }
 
-    public void SetActivated(Card c, bool activated, IServerStackable stackSrc = null)
+    public override void SetNegated(Card c, bool negated) => SetNegated(c, negated, null);
+
+    public void SetActivated(Card c, bool activated, IServerStackable stackSrc)
     {
         ServerPlayers[c.ControllerIndex].ServerNotifier.NotifyActivate(c, activated);
         base.SetActivated(c, activated);
@@ -286,6 +282,8 @@ public class ServerGame : Game {
         //If this is the last deactivation, trigger "deactivate"
         else if (c.Activations == 0) EffectsController.Trigger(TriggerCondition.Deactivate, c, stackSrc, null, stackSrc?.ServerController);
     }
+
+    public override void SetActivated(Card c, bool activated) => SetActivated(c, activated, null);
 
     public Card Draw(int player, IServerStackable stackSrc = null)
     {
