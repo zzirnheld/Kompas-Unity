@@ -24,4 +24,6 @@ public enum TriggerCondition
     Bottomdeck = 406,
     ToDeck = 407,
     Move = 408,
+    AugmentAttached = 450,
+    AugmentDetached = 451
 }

@@ -161,6 +161,10 @@ public class ServerGame : Game {
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyDiscard(card);
         EffectsController.Trigger(TriggerCondition.Discard, card, stackSrc, null, stackSrc?.ServerController);
         base.Discard(card);
+
+        //if we just discarded an augment, note that, and trigger de-augment
+        if (card.CardType == 'A')
+            EffectsController.Trigger(TriggerCondition.AugmentDetached, card, stackSrc, null, stackSrc?.ServerController);
     }
 
     public override void Discard(Card card) => Discard(card, null);
@@ -224,6 +228,12 @@ public class ServerGame : Game {
         //note that it's serverPlayers[controller.index] because you can play to the field of someone whose card it isnt
         ServerPlayers[controller.index].ServerNotifier.NotifyPlay(card, toX, toY);
         base.Play(card, toX, toY, controller);
+
+        //if we just played an augment, note that, and trigger augment
+        if (card.CardType == 'A') 
+            EffectsController.Trigger(TriggerCondition.AugmentAttached, card, stackSrc, null, stackSrc?.ServerController);
+
+        //then, once everything was done, if this was a player-initiated action, check for responses
         if (stackSrc == null) EffectsController.CheckForResponse();
     }
 
