@@ -9,12 +9,16 @@ public class TTimesSubeffect : LoopSubeffect
 
     protected override void OnLoopExit()
     {
+        base.OnLoopExit();
         count = 0;
     }
 
-    protected override bool ShouldContinueLoop()
+    protected override bool ShouldContinueLoop
     {
-        count++;
-        return count < T;
+        get
+        {
+            count++;
+            return count < T;
+        }
     }
 }

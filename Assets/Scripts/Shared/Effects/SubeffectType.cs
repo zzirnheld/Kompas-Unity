@@ -45,6 +45,7 @@ public enum SubeffectType
     SetXByTargetS = 252,
     //SetXByTargetW = 253,
     SetXByTargetCost = 254,
+    ChangeXByTargetValue = 275,
     PlayerChooseX = 299,
 
     //move cards between states
@@ -70,6 +71,7 @@ public enum SubeffectType
     EndEffect = 407,
     CountXLoop = 408,
     ConditionalEndEffect = 409,
+    BasicLoop = 410,
 
     //hanging effects
     DelaySubeffect = 500,

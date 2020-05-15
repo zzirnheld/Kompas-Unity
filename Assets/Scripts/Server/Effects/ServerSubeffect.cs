@@ -100,6 +100,9 @@ public abstract class ServerSubeffect : Subeffect
             case SubeffectType.ChangeXByGamestateValue:
                 toReturn = JsonUtility.FromJson<ChangeXByGamestateSubeffect>(subeffJson);
                 break;
+            case SubeffectType.ChangeXByTargetValue:
+                toReturn = JsonUtility.FromJson<ChangeXByTargetValueSubeffect>(subeffJson);
+                break;
             case SubeffectType.PlayerChooseX:
                 toReturn = JsonUtility.FromJson<PlayerChooseXSubeffect>(subeffJson);
                 break;
@@ -174,6 +177,9 @@ public abstract class ServerSubeffect : Subeffect
                 break;
             case SubeffectType.ConditionalEndEffect:
                 toReturn = JsonUtility.FromJson<ConditionalEndSubeffect>(subeffJson);
+                break;
+            case SubeffectType.BasicLoop:
+                toReturn = JsonUtility.FromJson<LoopSubeffect>(subeffJson);
                 break;
             case SubeffectType.HangingNESWBuff:
                 toReturn = JsonUtility.FromJson<TemporaryNESWBuffSubeffect>(subeffJson);

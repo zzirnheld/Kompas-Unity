@@ -50,4 +50,5 @@ Metal Golem
 Clay Golem
 Obsidian Golem
 Tallow Golem
+Speed Core
 lulthisdontexistmydood
