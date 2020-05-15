@@ -1,0 +1,29 @@
+{
+	"cardType":65,
+	"cardName":"Speed Core",
+	"effText":"While equipped, activate this character. When turns start, give this character +1N.",
+	"effects":[
+		{
+			"triggerCondition":450,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
+				}
+			}",
+			"subeffectTypes":[7,504],
+			"subeffects":[
+				"{}",
+				"{
+					\"EndCondition\":451,
+					\"TriggerRestriction\":{
+						\"triggerRestrictions\":[0]
+					}
+				}"
+			]
+		}
+	],
+	"a":3,
+	"subtypes":["Golem","Core"],
+	"subtypeText":"Golem Core"
+}
