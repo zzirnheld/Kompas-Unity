@@ -1,33 +1,40 @@
 {
 	"cardType":67,
 	"cardName":"Animancer",
-	"effText":"Once each friendly turn, you can either: Search your deck for a Golem, or activate a Golem.",
+	"effText":"OEFT discard Golems total cost X, search top X for C <= X Golem.",
 	"effects":[
 		{
-			"subeffectTypes":[406,1,304,407,0,120],
+			"subeffectTypes":[3,275,10,410,1,12,304,350],
 			"subeffects":[
 				"{
-					\"ChoiceBlurb\":\"Search deck or activate golem?\",
-					\"OptionBlurbs\":[\"Search\",\"Activate\"],
-					\"OptionJumpIndices\":[1,4]
+					\"cardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,7,100],
+						\"subtypesInclude\":[\"Golem\"]
+					}
+				}",
+				"{
+					\"WhatToCount\":\"Cost\"
+				}",
+				"{}",
+				"{
+					\"CanDecline\":true,
+					\"JumpTo\":0
 				}",
 				"{
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[2],
+						\"restrictionsToCheck\":[2,102,204,551],
 						\"subtypesInclude\":[\"Golem\"]
 					}
 				}",
-				"{}",
-				"{}",
 				"{
-					\"boardRestriction\":
+					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[2],
-						\"subtypesInclude\":[\"Golem\"],
-						\"onBoardRestrictions\":[]
+						\"restrictionsToCheck\":[102,551]
 					}
 				}",
+				"{}",
 				"{}"
 			]
 		}

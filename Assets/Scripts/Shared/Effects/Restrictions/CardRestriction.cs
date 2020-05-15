@@ -41,6 +41,7 @@ public class CardRestriction
         //index in list
         IndexInListGTEC = 500,
         IndexInListLTEC = 501,
+        IndexInListLTEX = 551,
         //misc
         NotAlreadyTarget = 600
     } //to add later: N/E/S/W >=
@@ -167,6 +168,9 @@ public class CardRestriction
                     break;
                 case CardRestrictions.IndexInListLTEC:
                     if (potentialTarget.IndexInList > constant) return false;
+                    break;
+                case CardRestrictions.IndexInListLTEX:
+                    if (potentialTarget.IndexInList > Subeffect.Effect.X) return false;
                     break;
                 case CardRestrictions.NotAlreadyTarget:
                     if (Subeffect.Effect.Targets.Contains(potentialTarget)) return false;
