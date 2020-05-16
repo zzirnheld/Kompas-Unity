@@ -54,4 +54,5 @@ Speed Core
 Durability Core
 Strength Core
 Defense Core
+Combustion Core
 lulthisdontexistmydood
