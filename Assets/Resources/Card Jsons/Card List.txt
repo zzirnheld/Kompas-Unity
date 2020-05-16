@@ -51,4 +51,7 @@ Clay Golem
 Obsidian Golem
 Tallow Golem
 Speed Core
+Durability Core
+Strength Core
+Defense Core
 lulthisdontexistmydood

@@ -1,7 +1,7 @@
 {
 	"cardType":65,
-	"cardName":"Speed Core",
-	"effText":"While equipped, activate this character and give them +1N.",
+	"cardName":"Durability Core",
+	"effText":"While equipped, activate this character and give them +5E.",
 	"effects":[
 		{
 			"triggerCondition":450,
@@ -21,7 +21,7 @@
 					}
 				}",
 				"{
-					\"NBuff\":1,
+					\"EBuff\":5,
 					\"EndCondition\":451,
 					\"TriggerRestriction\":{
 						\"triggerRestrictions\":[0]
