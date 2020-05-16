@@ -184,6 +184,9 @@ public abstract class ServerSubeffect : Subeffect
             case SubeffectType.BasicLoop:
                 toReturn = JsonUtility.FromJson<LoopSubeffect>(subeffJson);
                 break;
+            case SubeffectType.Jump:
+                toReturn = JsonUtility.FromJson<JumpSubeffect>(subeffJson);
+                break;
             case SubeffectType.HangingNESWBuff:
                 toReturn = JsonUtility.FromJson<TemporaryNESWBuffSubeffect>(subeffJson);
                 break;

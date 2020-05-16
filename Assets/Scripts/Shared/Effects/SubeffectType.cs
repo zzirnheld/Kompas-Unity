@@ -72,6 +72,7 @@ public enum SubeffectType
     CountXLoop = 408,
     ConditionalEndEffect = 409,
     BasicLoop = 410,
+    Jump = 411,
 
     //hanging effects
     DelaySubeffect = 500,

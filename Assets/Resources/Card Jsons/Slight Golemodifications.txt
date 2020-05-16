@@ -1,0 +1,63 @@
+{
+	"cardType":83,
+	"cardName":"Slight Golemodifications",
+	"effText":"Tribute a friendly SX Golem. Hand-summon or revive a Golem with S < X and activate it.",
+	"effects":[
+		{
+			"triggerCondition":401,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
+				}
+			}",
+			"subeffectTypes":[0,254,301,406,2,411,3,4,300,120],
+			"subeffects":[
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,3,7,103],
+						\"subtypesInclude\":[\"Golem\"]
+					}
+				}",
+				"{}",
+				"{}",
+				"{
+					\"ChoiceBlurb\":\"Hand-summon or revive a Golem?\",
+					\"OptionBlurbs\":[\"Hand-summon\",\"Revive\"],
+					\"OptionJumpIndices\":[4,6]
+				}",
+				"{
+					\"cardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,3,100,222],
+						\"subtypesInclude\":[\"Golem\"]
+					}
+				}",
+				"{
+					\"IndexToJumpTo\":7
+				}",
+				"{
+					\"cardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,3,101,222],
+						\"subtypesInclude\":[\"Golem\"]
+					}
+				}",
+				"{
+					\"spaceRestriction\":
+					{
+						\"restrictionsToCheck\":[0]
+					}
+				}",
+				"{}",
+				"{}"
+			]	
+		}
+	],
+	"fast":true,
+	"c":1,
+	"spellType":"Simple",
+	"subtypes":["Simple"],
+	"subtypeText":"Simple"
+}

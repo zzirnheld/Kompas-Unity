@@ -34,6 +34,10 @@ public class CardRestriction
         EEX = 211,
         SEX = 212,
         WEX = 213,
+        NLTX = 220,
+        ELTX = 221,
+        SLTX = 222,
+        WLTX = 223,
         NLTEC = 300, //N <= constant
         ELTEC = 302,
         SLTEC = 303,
@@ -146,6 +150,22 @@ public class CardRestriction
                 case CardRestrictions.WEX:
                     if (charCard == null) return false;
                     if (charCard.W != x) return false;
+                    break;
+                case (CardRestrictions.NLTX):
+                    if (charCard == null) return false;
+                    if (charCard.N >= x) return false;
+                    break;
+                case (CardRestrictions.ELTX):
+                    if (charCard == null) return false;
+                    if (charCard.E >= x) return false;
+                    break;
+                case (CardRestrictions.SLTX):
+                    if (charCard == null) return false;
+                    if (charCard.S >= x) return false;
+                    break;
+                case (CardRestrictions.WLTX):
+                    if (charCard == null) return false;
+                    if (charCard.W >= x) return false;
                     break;
                 case CardRestrictions.NLTEC:
                     if (charCard == null) return false;

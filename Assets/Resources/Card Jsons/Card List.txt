@@ -55,4 +55,6 @@ Durability Core
 Strength Core
 Defense Core
 Combustion Core
+Modular Golem Cores
+Slight Golemodifications
 lulthisdontexistmydood
