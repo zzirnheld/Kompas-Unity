@@ -12,7 +12,7 @@ public class DelaySubeffect : ServerSubeffect
     public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        TriggerRestriction.Initialize(this);
+        TriggerRestriction.Initialize(this, ThisCard, null);
     }
 
     public override void Resolve()

@@ -36,16 +36,16 @@ public class TriggerRestriction
 
     public CardRestriction cardRestriction = new CardRestriction();
 
-    [System.NonSerialized]
-    public Card thisCard;
+    public Card thisCard { get; private set; }
 
-    [System.NonSerialized]
-    public ServerTrigger thisTrigger;
+    public ServerTrigger thisTrigger { get; private set; }
 
-    public void Initialize(ServerSubeffect subeff)
+    public void Initialize(ServerSubeffect subeff, Card thisCard, ServerTrigger thisTrigger)
     {
         Subeffect = subeff;
         cardRestriction.Subeffect = subeff;
+        this.thisCard = thisCard;
+        this.thisTrigger = thisTrigger;
     }
 
     public bool Evaluate(Card cardTriggerer, IStackable stackTrigger, Player triggerer)
@@ -55,7 +55,7 @@ public class TriggerRestriction
             switch (r)
             {
                 case TriggerRestrictions.ThisCardTriggered:
-                    if (cardTriggerer != thisTrigger.effToTrigger.thisCard) return false;
+                    if (cardTriggerer != thisCard) return false;
                     break;
                 case TriggerRestrictions.ThisCardInPlay:
                     if (thisCard.Location != CardLocation.Field) return false;
