@@ -8,7 +8,7 @@
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[301]
+					\"triggerRestrictions\":[1,301]
 				}
 			}",
 			"subeffectTypes":[7,504],
@@ -27,7 +27,7 @@
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[300]
+					\"triggerRestrictions\":[1,300]
 				}
 			}",
 			"subeffectTypes":[406,404,102,405,407,405,7,301],
