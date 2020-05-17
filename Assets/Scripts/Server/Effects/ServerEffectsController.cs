@@ -16,6 +16,8 @@ public class ServerEffectsController : MonoBehaviour
     protected Dictionary<TriggerCondition, List<ServerTrigger>> triggerMap;
     protected Dictionary<TriggerCondition, List<HangingEffect>> hangingEffectMap;
 
+    public IServerStackable CurrStackEntry { get; private set; }
+
     public void Start()
     {
         stack = new ServerEffectStack();
@@ -40,7 +42,7 @@ public class ServerEffectsController : MonoBehaviour
     {
         bool wasEmpty = stack.Empty;
         stack.Push(eff);
-        if (wasEmpty) CheckForResponse();
+        if (wasEmpty && CurrStackEntry == null) CheckForResponse();
     }
 
     public void PushToStack(ServerEffect eff, ServerPlayer controller)
@@ -68,7 +70,11 @@ public class ServerEffectsController : MonoBehaviour
             ServerGame.TurnServerPlayer.ServerNotifier.DiscardSimples();
             ServerGame.boardCtrl.DiscardSimples();
         }
-        else eff.StartResolution();
+        else
+        {
+            CurrStackEntry = eff;
+            eff.StartResolution();
+        }
     }
 
     /// <summary>
@@ -76,6 +82,7 @@ public class ServerEffectsController : MonoBehaviour
     /// </summary>
     public void FinishStackEntryResolution()
     {
+        CurrStackEntry = null;
         CheckForResponse();
     }
 

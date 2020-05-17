@@ -212,7 +212,7 @@ public class CardRepository : MonoBehaviour
                     break;
                 case 'A':
                     SerializableAugCard serializableAug = JsonUtility.FromJson<SerializableAugCard>(json);
-                    card = Instantiate(ServerSpellPrefab).GetComponent<AugmentCard>();
+                    card = Instantiate(ServerAugPrefab).GetComponent<AugmentCard>();
                     effects = CreateServerEffects(serializableCard.effects, card, serverGame, owner);
                     card?.SetInfo(serializableAug, serverGame, owner, effects, id);
                     break;
