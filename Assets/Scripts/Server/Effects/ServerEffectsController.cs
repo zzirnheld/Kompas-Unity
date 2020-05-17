@@ -40,9 +40,7 @@ public class ServerEffectsController : MonoBehaviour
     #region the stack
     public void PushToStack(IServerStackable eff)
     {
-        bool wasEmpty = stack.Empty;
         stack.Push(eff);
-        if (wasEmpty && CurrStackEntry == null) CheckForResponse();
     }
 
     public void PushToStack(ServerEffect eff, ServerPlayer controller)
@@ -115,6 +113,12 @@ public class ServerEffectsController : MonoBehaviour
 
     public void CheckForResponse()
     {
+        if (CurrStackEntry != null)
+        {
+            Debug.Log("Tried to check for response while something is resolving");
+            return;
+        }
+
         //since a new thing is being put on the stack, mark both players as having not passed priority
         ResetPassingPriority();
 

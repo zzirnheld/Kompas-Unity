@@ -56,7 +56,10 @@ public class ServerPlayer : Player
     {
         Debug.Log($"Player {index} trying to activate effect of {effect?.thisCard?.CardName}");
         if (effect.CanBeActivatedBy(this))
+        {
             serverGame.EffectsController.PushToStack(effect, this);
+            serverGame.EffectsController.CheckForResponse();
+        }
     }
 
     public void TryAttack(CharacterCard attacker, CharacterCard defender)
