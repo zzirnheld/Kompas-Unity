@@ -27,7 +27,7 @@
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[10]
 				}
 			}",
 			"subeffectTypes":[7,10],

@@ -11,6 +11,7 @@ public class TriggerRestriction
     {
         ThisCardTriggered = 0,
         ThisCardInPlay = 1,
+        AugmentedCardTriggered = 10,
 
         ThisCardFitsRestriction = 100,
         TriggererFitsRestriction = 101,
@@ -58,6 +59,10 @@ public class TriggerRestriction
                     break;
                 case TriggerRestrictions.ThisCardInPlay:
                     if (thisCard.Location != CardLocation.Field) return false;
+                    break;
+                case TriggerRestrictions.AugmentedCardTriggered:
+                    if (!(thisCard is AugmentCard aug)) return false;
+                    if (cardTriggerer != aug.AugmentedCard) return false;
                     break;
                 case TriggerRestrictions.ThisCardFitsRestriction:
                     if (!cardRestriction.Evaluate(thisCard)) return false;
