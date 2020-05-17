@@ -4,21 +4,29 @@ using UnityEngine;
 
 public class ServerAttack : Attack, IServerStackable
 {
-    public ServerGame serverGame;
+    public ServerGame ServerGame { get; }
 
     public ServerPlayer ServerController { get; }
 
-    private ServerEffectsController EffCtrl => serverGame.EffectsController;
+    private ServerEffectsController EffCtrl => ServerGame.EffectsController;
 
     public ServerAttack(ServerGame serverGame, ServerPlayer controller, CharacterCard attacker, CharacterCard defender) 
         : base(controller, attacker, defender)
     {
-        this.serverGame = serverGame ?? throw new System.ArgumentNullException("Server game cannot be null for attack");
+        this.ServerGame = serverGame ?? throw new System.ArgumentNullException("Server game cannot be null for attack");
         this.ServerController = controller ?? throw new System.ArgumentNullException("Attack must have a non-null controller");
-        serverGame.EffectsController.Trigger(TriggerCondition.Attacks, attacker, this, null, controller);
-        serverGame.EffectsController.Trigger(TriggerCondition.Defends, defender, this, null, controller);
-        serverGame.EffectsController.Trigger(TriggerCondition.Battles, attacker, this, null, controller);
-        serverGame.EffectsController.Trigger(TriggerCondition.Battles, defender, this, null, controller);
+    }
+
+    /// <summary>
+    /// Trigger the triggers related to attack declaration.
+    /// Should be called before the attack is resolved.
+    /// </summary>
+    public void Declare()
+    {
+        EffCtrl.Trigger(TriggerCondition.Attacks, attacker, this, null, ServerController);
+        EffCtrl.Trigger(TriggerCondition.Defends, defender, this, null, ServerController);
+        EffCtrl.Trigger(TriggerCondition.Battles, attacker, this, null, ServerController);
+        EffCtrl.Trigger(TriggerCondition.Battles, defender, this, null, ServerController);
     }
 
     public void StartResolution()
@@ -35,12 +43,12 @@ public class ServerAttack : Attack, IServerStackable
         int attackerDmg = attacker.W;
         int defenderDmg = defender.W;
         //deal the damage
-        serverGame.SetStats(defender,
+        ServerGame.SetStats(defender,
             defender.N,
             defender.E - attackerDmg,
             defender.S,
             defender.W);
-        serverGame.SetStats(attacker,
+        ServerGame.SetStats(attacker,
             attacker.N,
             attacker.E - defenderDmg,
             attacker.S,

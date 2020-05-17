@@ -335,7 +335,10 @@ public class ServerGame : Game {
     {
         Debug.Log($"ServerNetworkController {attacker.CardName} attacking {defender.CardName} at {defender.BoardX}, {defender.BoardY}");
         //push the attack to the stack, then check if any player wants to respond before resolving it
-        EffectsController.PushToStack(new ServerAttack(this, instigator, attacker, defender));
+        var attack = new ServerAttack(this, instigator, attacker, defender);
+        EffectsController.PushToStack(attack);
+        //check for triggers related to the attack (if this were in the constructor, the triggers would go on the stack under the attack
+        attack.Declare();
         EffectsController.CheckForResponse();
     }
 

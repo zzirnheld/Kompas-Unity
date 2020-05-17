@@ -30,7 +30,7 @@
 					\"triggerRestrictions\":[10]
 				}
 			}",
-			"subeffectTypes":[7,10],
+			"subeffectTypes":[7,100],
 			"subeffects":[
 				"{}",
 				"{
