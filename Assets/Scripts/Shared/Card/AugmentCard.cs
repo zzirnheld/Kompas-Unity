@@ -24,7 +24,7 @@ public class AugmentCard : Card
         get { return augmentedCard; }
         set {
             augmentedCard = value;
-            if(BoardX != augmentedCard.BoardX || BoardY != augmentedCard.BoardY)
+            if(value != null && (BoardX != augmentedCard.BoardX || BoardY != augmentedCard.BoardY))
                 MoveTo(augmentedCard.BoardX, augmentedCard.BoardY, false);
         }
     }

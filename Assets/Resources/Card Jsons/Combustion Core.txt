@@ -30,7 +30,7 @@
 					\"triggerRestrictions\":[1,300]
 				}
 			}",
-			"subeffectTypes":[406,404,102,405,407,405,7,301],
+			"subeffectTypes":[406,404,102,405,407,405,5,301],
 			"subeffects":[
 				"{
 					\"ChoiceBlurb\":\"Pay 1 pip or dispel this?\",
