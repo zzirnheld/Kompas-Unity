@@ -14,9 +14,9 @@
 			"subeffectTypes":[110],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"BoardRestriction\":
 					{
-						\"restrictionsToCheck\":[3],
+						\"restrictionsToCheck\":[3,103],
 						\"onBoardRestrictions\":[0]
 					},
 					\"EMod\":-3

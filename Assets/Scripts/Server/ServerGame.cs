@@ -17,7 +17,7 @@ public class ServerGame : Game {
 
     public override Player[] Players => ServerPlayers;
     public ServerPlayer[] ServerPlayers;
-    public ServerPlayer TurnServerPlayer { get { return ServerPlayers[TurnPlayerIndex]; } }
+    public ServerPlayer TurnServerPlayer => ServerPlayers[TurnPlayerIndex];
     public int cardCount = 0;
     private int currPlayerCount = 0; //current number of players. shouldn't exceed 2
 
