@@ -31,6 +31,7 @@ public class SpaceTargetSubeffect : ServerSubeffect
         if (spaceRestriction.Evaluate(x, y))
         {
             ServerEffect.Coords.Add(new Vector2Int(x, y));
+            EffectController.ServerNotifier.AcceptTarget();
             ServerEffect.ResolveNextSubeffect();
             Debug.Log("Adding " + x + ", " + y + " as coords");
             return true;

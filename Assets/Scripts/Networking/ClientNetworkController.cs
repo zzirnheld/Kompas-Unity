@@ -220,6 +220,8 @@ public class ClientNetworkController : NetworkController {
                 break;
             case Packet.Command.TargetAccepted:
                 ClientGame.targetMode = Game.TargetMode.Free;
+                ClientGame.CurrCardRestriction = null;
+                ClientGame.CurrSpaceRestriction = null;
                 break;
             case Packet.Command.EnableDecliningTarget:
                 ClientGame.clientUICtrl.EnableDecliningTarget();
