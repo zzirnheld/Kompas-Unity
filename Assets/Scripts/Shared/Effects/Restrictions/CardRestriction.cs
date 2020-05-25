@@ -104,6 +104,9 @@ public class CardRestriction
                 case CardRestrictions.SameOwner:
                     if (potentialTarget.Owner != Subeffect.Controller) return false;
                     break;
+                case CardRestrictions.Summoned:
+                    if (!potentialTarget.Summoned) return false;
+                    break;
                 case CardRestrictions.Hand:
                     if (potentialTarget.Location != CardLocation.Hand) return false;
                     break;
@@ -196,7 +199,7 @@ public class CardRestriction
                     if (Subeffect.Effect.Targets.Contains(potentialTarget)) return false;
                     break;
                 default:
-                    Debug.Log("You forgot to check for " + c);
+                    Debug.LogError($"You forgot to implement a check for {c}");
                     return false;
             }
         }
