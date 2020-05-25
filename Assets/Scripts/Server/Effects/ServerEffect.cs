@@ -102,6 +102,7 @@ public class ServerEffect : Effect, IServerStackable
         SubeffectIndex = 0;
         X = 0;
         Targets.Clear();
+        Rest.Clear();
         OnImpossible = null;
         ServerController.ServerNotifier.NotifyBothPutBack();
         EffectsController.FinishStackEntryResolution();

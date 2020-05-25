@@ -56,6 +56,7 @@ public abstract class Effect
         this.MaxTimesCanUsePerTurn = maxPerTurn;
         TimesUsedThisTurn = 0;
         Targets = new List<Card>();
+        Rest = new List<Card>();
         Coords = new List<Vector2Int>();
     }
 
