@@ -46,4 +46,10 @@ public class LoopSubeffect : ServerSubeffect
         //then skip to after the loop
         ServerEffect.ResolveSubeffect(SubeffIndex + 1);
     }
+
+    public override void OnImpossible()
+    {
+        if (CanDecline) ExitLoop();
+        else base.OnImpossible();
+    }
 }
