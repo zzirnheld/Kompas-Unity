@@ -22,9 +22,9 @@
 				"{
 					\"spaceRestriction\":
 					{
-						\"restrictionsToCheck\":[1,251]
-					},
-					\"C\":3
+						\"restrictionsToCheck\":[1,251],
+						\"C\":3
+					}
 				}",
 				"{}"
 			]
