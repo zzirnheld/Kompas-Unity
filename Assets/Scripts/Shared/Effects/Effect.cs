@@ -12,6 +12,7 @@ public abstract class Effect
     //card that this is the effect of. to be set at initialization
     public Card thisCard;
     public Card Source { get { return thisCard; } }
+    public abstract Player Controller { get; set; }
 
     //subeffects
     public abstract Subeffect[] Subeffects { get; }

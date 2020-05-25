@@ -29,7 +29,7 @@ namespace KompasNetworking
             TargetAccepted, SpaceTargetAccepted,
             //other effect technicalities
             PlayerSetX, EnableDecliningTarget, DisableDecliningTarget, SetPips, SetEnemyPips, SetEffectsX,
-            OptionalTrigger, ChooseEffectOption,
+            OptionalTrigger, ChooseEffectOption, EffectResolving,
             //miscellaneous
             DiscardSimples, PutBack, YoureFirst, YoureSecond,
             //debug
@@ -307,6 +307,7 @@ namespace KompasNetworking
                 case Command.ActivateEffect:
                 case Command.PlayerSetX:
                 case Command.SetEffectsX:
+                case Command.EffectResolving:
                     return false;
                 default:
                     return true;

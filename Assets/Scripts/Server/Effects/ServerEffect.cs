@@ -13,7 +13,11 @@ public class ServerEffect : Effect, IServerStackable
     public ServerSubeffect OnImpossible = null;
     
     public ServerPlayer ServerController { get;  set; }
-    public Player Controller => ServerController;
+    public override Player Controller
+    {
+        get { return ServerController; }
+        set { ServerController = value as ServerPlayer; }
+    }
     public override Subeffect[] Subeffects => ServerSubeffects;
     public override Trigger Trigger => ServerTrigger;
 
@@ -66,6 +70,7 @@ public class ServerEffect : Effect, IServerStackable
     {
         thisCard.game.CurrEffect = this;
         ServerController.ServerNotifier.NotifyEffectX(thisCard, EffectIndex, X);
+        ServerController.ServerNotifier.EffectResolving(this);
         if (Negated) EffectImpossible();
         else ResolveSubeffect(0);
     }

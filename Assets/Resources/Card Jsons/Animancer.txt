@@ -4,12 +4,12 @@
 	"effText":"OEFT discard Golems total cost X, search top X for C <= X Golem.",
 	"effects":[
 		{
-			"subeffectTypes":[3,275,10,410,404,1,405,12,304,350],
+			"subeffectTypes":[3,275,301,410,404,1,405,12,304,350],
 			"subeffects":[
 				"{
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[2,7,100],
+						\"restrictionsToCheck\":[2,7,100,600],
 						\"subtypesInclude\":[\"Golem\"]
 					}
 				}",
@@ -35,7 +35,7 @@
 				"{
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[102,551]
+						\"restrictionsToCheck\":[102,551,600]
 					}
 				}",
 				"{}",

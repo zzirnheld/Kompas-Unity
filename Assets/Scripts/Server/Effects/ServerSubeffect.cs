@@ -151,6 +151,9 @@ public abstract class ServerSubeffect : Subeffect
             case SubeffectType.Move:
                 toReturn = JsonUtility.FromJson<MoveSubeffect>(subeffJson);
                 break;
+            case SubeffectType.BottomdeckRest:
+                toReturn = JsonUtility.FromJson<BottomdeckRestSubeffect>(subeffJson);
+                break;
             case SubeffectType.XTimesLoop:
                 toReturn = JsonUtility.FromJson<XTimesSubeffect>(subeffJson);
                 break;

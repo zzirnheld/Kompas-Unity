@@ -232,6 +232,10 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.DiscardSimples:
                 ClientGame.boardCtrl.DiscardSimples();
                 break;
+            case Packet.Command.EffectResolving:
+                var eff = ClientGame.GetCardFromID(packet.cardID).Effects[packet.EffIndex];
+                eff.Controller = ClientGame.Players[packet.normalArgs[1]];
+                break;
             case Packet.Command.OptionalTrigger:
                 ClientTrigger t = ClientGame.GetCardFromID(packet.cardID).Effects[packet.EffIndex].Trigger as ClientTrigger;
                 t.ClientEffect.ClientController = Friendly;

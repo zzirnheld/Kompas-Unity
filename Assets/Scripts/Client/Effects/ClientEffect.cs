@@ -5,6 +5,11 @@ using UnityEngine;
 public class ClientEffect : Effect
 {
     public ClientPlayer ClientController;
+    public override Player Controller
+    {
+        get { return ClientController; }
+        set { ClientController = value as ClientPlayer; }
+    }
     public ClientGame ClientGame { get; }
     public DummySubeffect[] DummySubeffects { get; }
     public ClientTrigger ClientTrigger { get; }

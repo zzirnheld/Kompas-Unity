@@ -263,6 +263,12 @@ public class ServerNotifier : MonoBehaviour
     #endregion request targets
 
     #region other effect stuff
+    public void EffectResolving(ServerEffect eff)
+    {
+        Packet p = new Packet(Packet.Command.EffectResolving, eff.thisCard, eff.EffectIndex, eff.Controller.index, 0, 0);
+        SendToBoth(p);
+    }
+
     public void RequestResponse()
     {
         Packet outPacket = new Packet(Packet.Command.Response);
