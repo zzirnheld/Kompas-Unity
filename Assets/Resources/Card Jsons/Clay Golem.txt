@@ -23,7 +23,10 @@
 					}
 				}",
 				"{
-					\"spaceRestriction\":[0]
+					\"spaceRestriction\":
+					{
+						\"restrictionsToCheck\":[0]
+					}
 				}",
 				"{}"
 			]

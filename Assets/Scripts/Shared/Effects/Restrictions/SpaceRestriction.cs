@@ -31,14 +31,12 @@ public class SpaceRestriction
 
     private bool ExistsCardWithRestrictionAdjacentToCoords(BoardRestriction r, int x, int y)
     {
-        bool? adj;
-
         for (int i = 0; i < 7; i++)
         {
             for(int j = 0; j < 7; j++)
             {
-                adj = Subeffect.Effect.Game.boardCtrl.GetCardAt(i, j)?.IsAdjacentTo(x, y);
-                if (adj.HasValue && adj.Value) return true; //if the card exists (so adj is not null) and the card is adjacent, return true
+                Card c = Subeffect.Effect.Game.boardCtrl.GetCardAt(i, j);
+                if (c != null && c.IsAdjacentTo(x, y) && r.Evaluate(c)) return true;
             }
         }
 
