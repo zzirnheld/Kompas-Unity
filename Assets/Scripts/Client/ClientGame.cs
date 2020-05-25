@@ -119,7 +119,7 @@ public class ClientGame : Game {
         }
         else
         {
-            Debug.LogError($"Tried to target while in not understood target mode {targetMode}");
+            Debug.LogError($"Tried to target card {card.CardName} while in not understood target mode {targetMode}");
         }
     }
 

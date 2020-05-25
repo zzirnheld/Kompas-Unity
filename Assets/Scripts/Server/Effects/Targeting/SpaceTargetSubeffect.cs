@@ -9,7 +9,6 @@ public class SpaceTargetSubeffect : ServerSubeffect
     public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        Debug.Log("Space restriction is null? " + (spaceRestriction == null));
         spaceRestriction.Initialize(this);
     }
 
@@ -17,12 +16,10 @@ public class SpaceTargetSubeffect : ServerSubeffect
     {
         if (!ServerEffect.serverGame.ExistsSpaceTarget(spaceRestriction))
         {
-            Debug.Log("No coords exist for " + ThisCard.CardName + " effect");
+            Debug.Log($"No valid coords exist for {ThisCard.CardName} effect");
             ServerEffect.EffectImpossible();
-            return;
         }
-
-        EffectController.ServerNotifier.GetSpaceTarget(ThisCard, this);
+        else EffectController.ServerNotifier.GetSpaceTarget(ThisCard, this);
     }
 
     public bool SetTargetIfValid(int x, int y)
@@ -33,10 +30,10 @@ public class SpaceTargetSubeffect : ServerSubeffect
             ServerEffect.Coords.Add(new Vector2Int(x, y));
             EffectController.ServerNotifier.AcceptTarget();
             ServerEffect.ResolveNextSubeffect();
-            Debug.Log("Adding " + x + ", " + y + " as coords");
+            Debug.Log($"Adding {x}, {y} as coords");
             return true;
         }
-        else Debug.Log(x + ", " + y + " not valid");
+        else Debug.Log($"{x}, {y} not valid");
 
         return false;
     }
