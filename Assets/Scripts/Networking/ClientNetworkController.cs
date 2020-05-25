@@ -172,7 +172,7 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.CurrCardRestriction = packet.GetCardRestriction(ClientGame);
                 break;
             case Packet.Command.RequestDeckTarget:
-                Debug.Log("Eff index: " + packet.EffIndex + " subeff index " + packet.SubeffIndex);
+                Debug.Log($"Deck target for Eff index: {packet.EffIndex} subeff index {packet.SubeffIndex}");
                 CardRestriction deckRestriction = packet.GetCardRestriction(ClientGame);
                 List<Card> toSearch = ClientGame.friendlyDeckCtrl.CardsThatFitRestriction(deckRestriction);
                 ClientGame.clientUICtrl.StartSearch(toSearch);

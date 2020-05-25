@@ -265,8 +265,11 @@ public class ServerNotifier : MonoBehaviour
     #region other effect stuff
     public void EffectResolving(ServerEffect eff)
     {
-        Packet p = new Packet(Packet.Command.EffectResolving, eff.thisCard, eff.EffectIndex, eff.Controller.index, 0, 0);
-        SendToBoth(p);
+        Packet p = new Packet(Packet.Command.EffectResolving, eff.thisCard, eff.EffectIndex, 
+            eff.Controller == Player ? 0 : 1, 0, 0);
+        Packet q = new Packet(Packet.Command.EffectResolving, eff.thisCard, eff.EffectIndex,
+            eff.Controller == Player ? 1 : 0, 0, 0);
+        SendPackets(p, q);
     }
 
     public void RequestResponse()

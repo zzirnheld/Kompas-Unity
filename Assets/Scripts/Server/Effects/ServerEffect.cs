@@ -90,6 +90,7 @@ public class ServerEffect : Effect, IServerStackable
 
         Debug.Log($"Resolving subeffect of type {ServerSubeffects[index].GetType()}");
         SubeffectIndex = index;
+        ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
         ServerSubeffects[index].Resolve();
     }
 
