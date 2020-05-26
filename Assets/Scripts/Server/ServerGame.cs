@@ -401,7 +401,7 @@ public class ServerGame : Game {
         TurnPlayerIndex = 1 - TurnPlayerIndex;
         GiveTurnPlayerPips();
         
-        boardCtrl.ResetCardsForTurn();
+        boardCtrl.ResetCardsForTurn(TurnPlayer);
 
         //draw for turn and store what was drawn
         Card drawn = Draw(TurnPlayerIndex);

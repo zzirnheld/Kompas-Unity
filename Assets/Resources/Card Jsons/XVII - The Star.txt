@@ -4,6 +4,11 @@
 	"effText":"Once each turn, you can draw 1.",
 	"effects":[
 		{
+			"activationRestriction":{
+				"Restrictions":[
+					"Max Times Per Turn"
+				]
+			},
 			"subeffectTypes":[305],
 			"subeffects":["{}"]
 		}

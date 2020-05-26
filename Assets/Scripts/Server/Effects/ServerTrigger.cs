@@ -63,10 +63,6 @@ public class ServerTrigger : Trigger
     /// <returns>Whether all restrictions of the trigger are fulfilled.</returns>
     protected bool CheckTriggerRestrictions(Card cardTriggerer, IStackable stackTrigger, int? x, Player triggerer)
     {
-        if (effToTrigger.MaxTimesCanUsePerTurn.HasValue &&
-            effToTrigger.TimesUsedThisTurn >= effToTrigger.MaxTimesCanUsePerTurn)
-            return false;
-
         if(triggerRestriction == null)
         {
             Debug.LogWarning($"Warning: null trigger restriction for effect of {effToTrigger.thisCard.CardName}");

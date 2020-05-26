@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"XX - Judgement",
-	"effText":"Once each turn, when you draw X, I can kill an S ≤ X character.",
+	"effText":"When you draw X, I can kill an S ≤ X character.",
 	"effects":[
 		{
 			"triggerCondition":101,

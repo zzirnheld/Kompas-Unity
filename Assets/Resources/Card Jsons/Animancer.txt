@@ -4,6 +4,12 @@
 	"effText":"OEFT discard Golems total cost X, search top X for C <= X Golem.",
 	"effects":[
 		{
+			"activationRestriction":{
+				"Restrictions":[
+					"Max Times Per Turn",
+					"Friendly Turn"
+				]
+			},
 			"subeffectTypes":[3,275,301,410,404,1,405,12,304,350],
 			"subeffects":[
 				"{

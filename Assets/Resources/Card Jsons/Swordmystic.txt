@@ -4,7 +4,13 @@
 	"effText":"Once each friendly turn, if I'm adjacent to X Warriors, you can pip revive an S <= X Warrior.",
 	"effects":[
 		{
-			"subeffectTypes":[200,2,4,300],
+			"activationRestriction":{
+				"Restrictions":[
+					"Max Times Per Turn",
+					"Friendly Turn"
+				]
+			},
+			"subeffectTypes":[200,2,150,4,300],
 			"subeffects":[
 				"{
 					\"boardRestriction\":
@@ -21,6 +27,7 @@
 						\"subtypesInclude\":[\"Warrior\"]
 					}
 				}",
+				"{}",
 				"{
 					\"spaceRestriction\":
 					{

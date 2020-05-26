@@ -4,6 +4,12 @@
 	"effText":"Once each friendly turn, I can kill a friendly Warrior with XS, then kill a character with S ≤ X.",
 	"effects":[
 		{
+			"activationRestriction":{
+				"Restrictions":[
+					"Max Times Per Turn",
+					"Friendly Turn"
+				]
+			},
 			"subeffectTypes":[0,252,301,0,301],
 			"subeffects":[
 				"{

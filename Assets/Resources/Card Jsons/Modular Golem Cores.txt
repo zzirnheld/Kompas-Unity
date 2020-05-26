@@ -4,6 +4,11 @@
 	"effText":"Once each turn, you can detach a Golem Core to search your deck for a Golem Core.",
 	"effects":[
 		{
+			"activationRestriction":{
+				"Restrictions":[
+					"Max Times Per Turn"
+				]
+			},
 			"subeffectTypes":[0,301,1,304],
 			"subeffects":[
 				"{

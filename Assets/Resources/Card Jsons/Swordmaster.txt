@@ -4,6 +4,12 @@
 	"effText":"Once each friendly turn, you can give an adjacent Warrior +1W.",
 	"effects":[
 		{
+			"activationRestriction":{
+				"Restrictions":[
+					"Max Times Per Turn",
+					"Friendly Turn"
+				]
+			},
 			"subeffectTypes":[0,100],
 			"subeffects":[
 				"{

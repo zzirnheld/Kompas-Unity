@@ -4,6 +4,12 @@
 	"effText":"Once each friendly turn, if I'm adjacent to X Warriors, you can dispel a C <= X spell.",
 	"effects":[
 		{
+			"activationRestriction":{
+				"Restrictions":[
+					"Max Times Per Turn",
+					"Friendly Turn"
+				]
+			},
 			"subeffectTypes":[200,0,301],
 			"subeffects":[
 				"{

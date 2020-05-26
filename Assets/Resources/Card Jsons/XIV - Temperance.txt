@@ -4,6 +4,11 @@
 	"effText":"Once each round, when you draw X, I can dispel a C ≤ X spell.",
 	"effects":[
 		{
+			"activationRestriction":{
+				"Restrictions":[
+					"Max Times Per Round"
+				]
+			},
 			"triggerCondition":101,
 			"trigger":
 			"{

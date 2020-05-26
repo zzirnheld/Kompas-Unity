@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class TriggerRestriction
 {
-    public ServerSubeffect Subeffect;
+    public ServerSubeffect Subeffect { get; private set; }
 
     public enum TriggerRestrictions
     {
@@ -29,12 +29,14 @@ public class TriggerRestriction
         EnemyTurn = 301,
 
         FromField = 400,
-        FromDeck = 401
+        FromDeck = 401,
+
+        MaxPerTurn = 500
     }
 
     public TriggerRestrictions[] triggerRestrictions = new TriggerRestrictions[0];
-
     public CardRestriction cardRestriction = new CardRestriction();
+    public int maxTimesPerTurn = 1;
 
     public Card thisCard { get; private set; }
 
@@ -88,6 +90,9 @@ public class TriggerRestriction
                     break;
                 case TriggerRestrictions.FromDeck:
                     if (cardTriggerer.Location != CardLocation.Deck) return false;
+                    break;
+                case TriggerRestrictions.MaxPerTurn:
+                    if (thisTrigger.effToTrigger.TimesUsedThisTurn >= maxTimesPerTurn) return false;
                     break;
                 default:
                     Debug.LogError($"Unrecognized trigger restriction {r}");

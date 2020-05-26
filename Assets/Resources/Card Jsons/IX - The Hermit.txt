@@ -10,7 +10,7 @@
 				\"Optional\":true,
 				\"Blurb\":\"Move character X slots?\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,200]
+					\"triggerRestrictions\":[1,200,500]
 				}
 			}",
 			"subeffectTypes":[0,4,309],

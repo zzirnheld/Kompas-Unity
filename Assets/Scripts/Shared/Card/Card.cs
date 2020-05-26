@@ -276,11 +276,11 @@ public abstract class Card : CardBase {
     /// <summary>
     /// Resets anything that needs to be reset for the start of the turn.
     /// </summary>
-    public virtual void ResetForTurn()
+    public virtual void ResetForTurn(Player turnPlayer)
     {
         foreach(Effect eff in Effects)
         {
-            eff.ResetForTurn();
+            eff.ResetForTurn(turnPlayer);
         }
 
         SpacesMoved = 0;

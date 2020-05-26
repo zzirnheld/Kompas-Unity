@@ -113,9 +113,4 @@ public class CharacterCard : Card {
         s = baseS;
         w = baseW;
     }
-
-    public override void ResetForTurn()
-    {
-        base.ResetForTurn();
-    }
 }

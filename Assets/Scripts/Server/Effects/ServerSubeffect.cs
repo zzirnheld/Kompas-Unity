@@ -8,6 +8,7 @@ public abstract class ServerSubeffect : Subeffect
 {
     public override Player Controller => EffectController;
     public override Effect Effect => ServerEffect;
+    public override Game Game => ServerGame;
 
     public ServerEffect ServerEffect { get; protected set; }
     public ServerGame ServerGame { get { return ServerEffect.serverGame; } }

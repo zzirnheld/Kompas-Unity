@@ -4,6 +4,12 @@
 	"effText":"Once each friendly turn, I can give an adjacent Warrior +5E or +5W.",
 	"effects":[
 		{
+			"activationRestriction":{
+				"Restrictions":[
+					"Max Times Per Turn",
+					"Friendly Turn"
+				]
+			},
 			"subeffectTypes":[0,406,100,407,100],
 			"subeffects":[
 				"{

@@ -4,6 +4,12 @@
 	"effText":"Once each friendly turn, if your hand is smaller than an enemy’s, you can draw half the difference.",
 	"effects":[
 		{
+			"activationRestriction":{
+				"Restrictions":[
+					"Max Times Per Turn",
+					"Friendly Turn"
+				]
+			},
 			"subeffectTypes":[201,211,202,409,306],
 			"subeffects":[
 				"{

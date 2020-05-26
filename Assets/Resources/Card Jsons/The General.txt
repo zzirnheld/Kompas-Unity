@@ -4,6 +4,12 @@
 	"effText":"Once each friendly turn, you can pip decksummon any number of Warriors from your deck’s top 5 cards. Bottomdeck the rest.",
 	"effects":[
 		{
+			"activationRestriction":{
+				"Restrictions":[
+					"Max Times Per Turn",
+					"Friendly Turn"
+				]
+			},
 			"subeffectTypes":[11,404,9,405,4,300,10,400,303,10,402],
 			"subeffects":[
 				"{

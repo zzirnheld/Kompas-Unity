@@ -4,6 +4,12 @@
 	"effText":"Once each friendly turn, if I'm adjacent to at least 2X Warriors, you can gain X pips.",
 	"effects":[
 		{
+			"activationRestriction":{
+				"Restrictions":[
+					"Max Times Per Turn",
+					"Friendly Turn"
+				]
+			},
 			"subeffectTypes":[200,101],
 			"subeffects":[
 				"{

@@ -21,7 +21,8 @@ public class ServerEffect : Effect, IServerStackable
     public override Subeffect[] Subeffects => ServerSubeffects;
     public override Trigger Trigger => ServerTrigger;
 
-    public ServerEffect(SerializableEffect se, Card thisCard, ServerGame serverGame, ServerPlayer controller) : base(se.maxTimesCanUsePerTurn)
+    public ServerEffect(SerializableEffect se, Card thisCard, ServerGame serverGame, ServerPlayer controller) 
+        : base(se.activationRestriction ?? new ActivationRestriction())
     {
         this.thisCard = thisCard ?? throw new System.ArgumentNullException("Effect cannot be attached to null card");
         this.serverGame = serverGame;
@@ -58,7 +59,8 @@ public class ServerEffect : Effect, IServerStackable
     public bool CanBeActivatedBy(ServerPlayer controller)
     {
         return Trigger == null
-            && controller.index == thisCard.ControllerIndex;
+            && controller.index == thisCard.ControllerIndex
+            && ActivationRestriction.Evaluate(controller);
     }
 
     public void PushToStack(ServerPlayer controller)
@@ -69,6 +71,7 @@ public class ServerEffect : Effect, IServerStackable
     public void StartResolution()
     {
         thisCard.game.CurrEffect = this;
+        TimesUsedThisTurn++;
         ServerController.ServerNotifier.NotifyEffectX(thisCard, EffectIndex, X);
         ServerController.ServerNotifier.EffectResolving(this);
         if (Negated) EffectImpossible();

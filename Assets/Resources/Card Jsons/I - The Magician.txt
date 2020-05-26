@@ -4,6 +4,12 @@
 	"effText":"Once each friendly turn, you can hand-bottomdeck X cards to draw X.",
 	"effects":[
 		{
+			"activationRestriction":{
+				"Restrictions":[
+					"Max Times Per Turn",
+					"Friendly Turn"
+				]
+			},
 			"subeffectTypes":[3,307,408,306],
 			"subeffects":[
 				"{

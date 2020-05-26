@@ -17,7 +17,8 @@ public class ClientEffect : Effect
     public override Subeffect[] Subeffects => DummySubeffects;
     public override Trigger Trigger => ClientTrigger;
 
-    public ClientEffect(SerializableEffect se, Card thisCard, ClientGame clientGame) : base(se.maxTimesCanUsePerTurn)
+    public ClientEffect(SerializableEffect se, Card thisCard, ClientGame clientGame)
+        : base(se.activationRestriction ?? new ActivationRestriction())
     {
         this.thisCard = thisCard ?? throw new System.ArgumentNullException("Effect cannot be attached to null card");
         this.ClientGame = clientGame;

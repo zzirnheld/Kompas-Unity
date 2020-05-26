@@ -133,7 +133,7 @@ public class ClientGame : Game {
     public void EndTurn()
     {
         TurnPlayerIndex = 1 - TurnPlayerIndex;
-        boardCtrl.ResetCardsForTurn();
+        boardCtrl.ResetCardsForTurn(TurnPlayer);
         uiCtrl.CurrentStateString = TurnPlayerIndex == 0 ? "Your Turn" : "Enemy Turn";
     }
 }

@@ -6,7 +6,8 @@ public class DummySubeffect : Subeffect
 {
     public override Effect Effect => ClientEffect;
     public override Player Controller => ClientController;
-    
+    public override Game Game => ClientEffect.Game;
+
     public ClientEffect ClientEffect { get; private set; }
     public ClientPlayer ClientController => ClientEffect.ClientController;
 

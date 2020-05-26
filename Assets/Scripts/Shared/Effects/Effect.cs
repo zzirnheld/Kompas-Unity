@@ -27,6 +27,7 @@ public abstract class Effect
     public List<Card> Rest { get; private set; }
 
     public abstract Trigger Trigger { get; }
+    public ActivationRestriction ActivationRestriction { get; }
 
     private int negations = 0;
     public bool Negated {
@@ -39,30 +40,26 @@ public abstract class Effect
     }
 
     /// <summary>
-    /// X value as listed on cards
+    /// X value for card effect text (not coordinates)
     /// </summary>
     public int X = 0;
-    /// <summary>
-    /// The number of times this effect has been used this turn
-    /// </summary>
     public int TimesUsedThisTurn { get; protected set; }
-    /// <summary>
-    /// The maximum number of times this effect can be used in a turn
-    /// </summary>
-    public int? MaxTimesCanUsePerTurn { get; }
+    public int TimesUsedThisRound { get; protected set; }
 
-    public Effect(int? maxPerTurn)
+    public Effect(ActivationRestriction restriction)
     {
-        this.MaxTimesCanUsePerTurn = maxPerTurn;
+        ActivationRestriction = restriction;
+        ActivationRestriction.Initialize(this);
         TimesUsedThisTurn = 0;
         Targets = new List<Card>();
         Rest = new List<Card>();
         Coords = new List<Vector2Int>();
     }
 
-    public void ResetForTurn()
+    public void ResetForTurn(Player turnPlayer)
     {
         TimesUsedThisTurn = 0;
+        if (turnPlayer == Source.Controller) TimesUsedThisRound = 0;
     }
 
     public virtual void Negate()

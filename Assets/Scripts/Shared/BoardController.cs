@@ -84,11 +84,11 @@ public class BoardController : MonoBehaviour
         return i;
     }
 
-    public void ResetCardsForTurn()
+    public void ResetCardsForTurn(Player turnPlayer)
     {
         foreach(Card c in cards)
         {
-            c?.ResetForTurn();
+            c?.ResetForTurn(turnPlayer);
         }
     }
     #endregion

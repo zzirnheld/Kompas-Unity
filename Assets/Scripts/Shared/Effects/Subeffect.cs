@@ -7,6 +7,7 @@ public abstract class Subeffect
 {
     public abstract Effect Effect { get; }
     public abstract Player Controller { get; }
+    public abstract Game Game { get; }
 
     public int SubeffIndex { get; protected set; }
 
