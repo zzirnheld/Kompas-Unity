@@ -55,6 +55,9 @@ public abstract class ServerSubeffect : Subeffect
             case SubeffectType.TargetAll:
                 toReturn = JsonUtility.FromJson<TargetAllSubeffect>(subeffJson);
                 break;
+            case SubeffectType.AddRest:
+                toReturn = JsonUtility.FromJson<AddRestSubeffect>(subeffJson);
+                break;
             case SubeffectType.ChangeNESW:
                 toReturn = JsonUtility.FromJson<ChangeNESWSubeffect>(subeffJson);
                 break;
@@ -70,6 +73,9 @@ public abstract class ServerSubeffect : Subeffect
             case SubeffectType.Negate:
                 toReturn = JsonUtility.FromJson<NegateSubeffect>(subeffJson);
                 break;
+            case SubeffectType.Activate:
+                toReturn = JsonUtility.FromJson<ActivateSubeffect>(subeffJson);
+                break;
             case SubeffectType.Dispel:
                 toReturn = JsonUtility.FromJson<DispelSubeffect>(subeffJson);
                 break;
@@ -78,6 +84,9 @@ public abstract class ServerSubeffect : Subeffect
                 break;
             case SubeffectType.ChangeSpellC:
                 toReturn = JsonUtility.FromJson<ChangeSpellCSubeffect>(subeffJson);
+                break;
+            case SubeffectType.SetNESW:
+                toReturn = JsonUtility.FromJson<SetNESWSubeffect>(subeffJson);
                 break;
             case SubeffectType.ChangeAllNESW:
                 toReturn = JsonUtility.FromJson<ChangeAllNESWSubeffect>(subeffJson);
@@ -93,6 +102,9 @@ public abstract class ServerSubeffect : Subeffect
                 break;
             case SubeffectType.ChangeXByGamestateValue:
                 toReturn = JsonUtility.FromJson<ChangeXByGamestateSubeffect>(subeffJson);
+                break;
+            case SubeffectType.ChangeXByTargetValue:
+                toReturn = JsonUtility.FromJson<ChangeXByTargetValueSubeffect>(subeffJson);
                 break;
             case SubeffectType.PlayerChooseX:
                 toReturn = JsonUtility.FromJson<PlayerChooseXSubeffect>(subeffJson);
@@ -139,6 +151,9 @@ public abstract class ServerSubeffect : Subeffect
             case SubeffectType.Move:
                 toReturn = JsonUtility.FromJson<MoveSubeffect>(subeffJson);
                 break;
+            case SubeffectType.BottomdeckRest:
+                toReturn = JsonUtility.FromJson<BottomdeckRestSubeffect>(subeffJson);
+                break;
             case SubeffectType.XTimesLoop:
                 toReturn = JsonUtility.FromJson<XTimesSubeffect>(subeffJson);
                 break;
@@ -169,6 +184,12 @@ public abstract class ServerSubeffect : Subeffect
             case SubeffectType.ConditionalEndEffect:
                 toReturn = JsonUtility.FromJson<ConditionalEndSubeffect>(subeffJson);
                 break;
+            case SubeffectType.BasicLoop:
+                toReturn = JsonUtility.FromJson<LoopSubeffect>(subeffJson);
+                break;
+            case SubeffectType.Jump:
+                toReturn = JsonUtility.FromJson<JumpSubeffect>(subeffJson);
+                break;
             case SubeffectType.HangingNESWBuff:
                 toReturn = JsonUtility.FromJson<TemporaryNESWBuffSubeffect>(subeffJson);
                 break;
@@ -178,17 +199,18 @@ public abstract class ServerSubeffect : Subeffect
             case SubeffectType.HangingNESWBuffAll:
                 toReturn = JsonUtility.FromJson<TemporaryNESWBuffAllSubeffect>(subeffJson);
                 break;
+            case SubeffectType.HangingNegate:
+                toReturn = JsonUtility.FromJson<TemporaryNegateSubeffect>(subeffJson);
+                break;
+            case SubeffectType.HangingActivate:
+                toReturn = JsonUtility.FromJson<TemporaryActivationSubeffect>(subeffJson);
+                break;
             default:
                 Debug.LogError($"Unrecognized effect type enum {seType} for loading effect in effect constructor");
                 return null;
         }
 
-        if (toReturn != null)
-        {
-            Debug.Log($"Finishing setup for new effect of type {seType}");
-            toReturn.Initialize(parent, subeffIndex);
-        }
-
+        if (toReturn != null) toReturn.Initialize(parent, subeffIndex);
         return toReturn;
     }
 
@@ -199,7 +221,9 @@ public abstract class ServerSubeffect : Subeffect
     /// </summary>
     public abstract void Resolve();
 
-    public virtual void Initialize(ServerEffect eff, int subeffIndex) {
+    public virtual void Initialize(ServerEffect eff, int subeffIndex)
+    {
+        Debug.Log($"Finishing setup for new effect of type {GetType()}");
         this.ServerEffect = eff;
         this.SubeffIndex = subeffIndex;
     }

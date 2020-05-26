@@ -8,6 +8,8 @@ public enum TriggerCondition
     EachDraw = 100,
     DrawX = 101,
     NESWChange = 200,
+    Activate = 201,
+    Deactivate = 202,
     Defends = 300,
     Attacks = 301,
     TakeCombatDamage = 302,
@@ -22,4 +24,6 @@ public enum TriggerCondition
     Bottomdeck = 406,
     ToDeck = 407,
     Move = 408,
+    AugmentAttached = 450,
+    AugmentDetached = 451
 }

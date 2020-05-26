@@ -18,7 +18,7 @@ namespace KompasNetworking
             Topdeck, Discard, Rehand, Reshuffle, AddAsFriendly, AddAsEnemy, Bottomdeck,
             Draw, Delete,
             //card properties
-            SetNESW, Negate, SetSpellStats,
+            SetNESW, Negate, SetSpellStats, Activate, Deactivate,
             //change numbers of cards that you see of your opponent
             IncrementEnemyDeck, IncrementEnemyHand, DecrementEnemyDeck, DecrementEnemyHand,
             //server requesting a target of a client
@@ -29,7 +29,7 @@ namespace KompasNetworking
             TargetAccepted, SpaceTargetAccepted,
             //other effect technicalities
             PlayerSetX, EnableDecliningTarget, DisableDecliningTarget, SetPips, SetEnemyPips, SetEffectsX,
-            OptionalTrigger, ChooseEffectOption,
+            OptionalTrigger, ChooseEffectOption, EffectResolving,
             //miscellaneous
             DiscardSimples, PutBack, YoureFirst, YoureSecond,
             //debug
@@ -154,6 +154,11 @@ namespace KompasNetworking
         public Packet(Command command, Card card, int num) : this(command, card)
         {
             normalArgs[0] = num;
+        }
+
+        public Packet(Command command, Card card, bool boolean) : this(command, card)
+        {
+            normalArgs[0] = boolean ? 1 : 0;
         }
 
         /// <summary>
@@ -302,6 +307,7 @@ namespace KompasNetworking
                 case Command.ActivateEffect:
                 case Command.PlayerSetX:
                 case Command.SetEffectsX:
+                case Command.EffectResolving:
                     return false;
                 default:
                     return true;

@@ -40,4 +40,21 @@ Seme di Tarocchi - Coins
 Seme di Tarocchi - Cups
 Seme di Tarocchi - Swords
 Seme di Tarocchi - Wands
+Animancer
+Earth Golem
+Ice Golem
+Pneumatic Golem
+Magma Golem
+Straw Golem
+Metal Golem
+Clay Golem
+Obsidian Golem
+Tallow Golem
+Speed Core
+Durability Core
+Strength Core
+Defense Core
+Combustion Core
+Modular Golem Cores
+Slight Golemodifications
 lulthisdontexistmydood

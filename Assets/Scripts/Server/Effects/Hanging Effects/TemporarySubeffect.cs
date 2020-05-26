@@ -10,6 +10,6 @@ public abstract class TemporarySubeffect : ServerSubeffect
     public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        TriggerRestriction.Initialize(this);
+        TriggerRestriction.Initialize(this, ThisCard, null);
     }
 }

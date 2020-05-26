@@ -9,22 +9,15 @@ using KompasNetworking;
 
 
 public class ClientNetworkController : NetworkController {
-
-    private bool changeTargetMode = false;
-    private long timeTargetAccepted;
-
     public ClientGame ClientGame;
-    private ClientPlayer friendly { get { return ClientGame.ClientPlayers[0]; } }
-    private ClientPlayer enemy { get { return ClientGame.ClientPlayers[1]; } }
-
-    public Packet lastPacket;
+    private ClientPlayer Friendly => ClientGame.ClientPlayers[0];
+    private ClientPlayer Enemy => ClientGame.ClientPlayers[1];
     
     public int X { get; private set; }
 
     public override void Awake()
     {
         base.Awake();
-        timeTargetAccepted = DateTime.Now.Ticks;
     }
 
     public void Connect(string ip)
@@ -38,12 +31,6 @@ public class ClientNetworkController : NetworkController {
 
     public override void Update()
     {
-        /*if (changeTargetMode && DateTime.Now.Ticks - timeTargetAccepted >= 5000000)
-        {
-            ClientGame.targetMode = Game.TargetMode.Free;
-            changeTargetMode = false;
-        }*/
-
         base.Update();
     }
 
@@ -56,8 +43,6 @@ public class ClientNetworkController : NetworkController {
         }
         Debug.Log($"Parsing command {packet.command} for {packet.cardID}");
         ClientGame.uiCtrl.CurrentStateString = $"Parsing command {packet.command} for card id {packet.cardID}";
-        
-        lastPacket = packet;
 
         switch (packet.command)
         {
@@ -67,14 +52,10 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.clientUICtrl.ShowGetDecklistUI();
                 break;
             case Packet.Command.YoureFirst:
-                ClientGame.turnPlayer = 0;
-                ClientGame.uiCtrl.CurrentStateString = "Your Turn";
-                ClientGame.clientUICtrl.HideGetDecklistUI();
+                ClientGame.SetFirstTurnPlayer(0);
                 break;
             case Packet.Command.YoureSecond:
-                ClientGame.turnPlayer = 1;
-                ClientGame.uiCtrl.CurrentStateString = "Enemy Turn";
-                ClientGame.clientUICtrl.HideGetDecklistUI();
+                ClientGame.SetFirstTurnPlayer(1);
                 break;
             case Packet.Command.SetFriendlyAvatar:
                 ClientGame.SetAvatar(0, packet.CardName, packet.CardIDToBe);
@@ -87,14 +68,12 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.Delete(ClientGame.GetCardFromID(packet.cardID));
                 break;
             case Packet.Command.AddAsFriendly:
-                Card friendlyCard = ClientGame.CardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, friendly);
-                friendlyCard.ID = packet.CardIDToBe;
+                Card friendlyCard = ClientGame.CardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, Friendly, packet.CardIDToBe);
                 ClientGame.cards.Add(packet.CardIDToBe, friendlyCard);
                 ClientGame.friendlyDeckCtrl.AddCard(friendlyCard);
                 break;
             case Packet.Command.AddAsEnemy:
-                Card added = ClientGame.CardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, enemy);
-                added.ID = packet.CardIDToBe;
+                Card added = ClientGame.CardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, Enemy, packet.CardIDToBe);
                 ClientGame.cards.Add(packet.CardIDToBe, added);
                 ClientGame.enemyDeckCtrl.AddCard(added);
                 //TODO make it always ask for cards from enemy deck
@@ -166,7 +145,11 @@ public class ClientNetworkController : NetworkController {
                 break;
             case Packet.Command.Negate:
                 Card toNegate = ClientGame.GetCardFromID(packet.cardID);
-                ClientGame.Negate(toNegate);
+                ClientGame.SetNegated(toNegate, packet.Answer);
+                break;
+            case Packet.Command.Activate:
+                var toActivate = ClientGame.GetCardFromID(packet.cardID);
+                ClientGame.SetActivated(toActivate, packet.Answer);
                 break;
             case Packet.Command.SetPips:
                 ClientGame.SetFriendlyPips(packet.Pips);
@@ -178,10 +161,7 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.boardCtrl.PutCardsBack();
                 break;
             case Packet.Command.EndTurn:
-                ClientGame.turnPlayer = 1 - ClientGame.turnPlayer;
-                ClientGame.boardCtrl.ResetCardsForTurn();
-                if(ClientGame.turnPlayer == 0) ClientGame.uiCtrl.CurrentStateString = "Your Turn";
-                else ClientGame.uiCtrl.CurrentStateString = "Enemy Turn";
+                ClientGame.EndTurn();
                 break;
             case Packet.Command.RequestBoardTarget:
                 ClientGame.targetMode = Game.TargetMode.BoardTarget;
@@ -192,7 +172,7 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.CurrCardRestriction = packet.GetCardRestriction(ClientGame);
                 break;
             case Packet.Command.RequestDeckTarget:
-                Debug.Log("Eff index: " + packet.EffIndex + " subeff index " + packet.SubeffIndex);
+                Debug.Log($"Deck target for Eff index: {packet.EffIndex} subeff index {packet.SubeffIndex}");
                 CardRestriction deckRestriction = packet.GetCardRestriction(ClientGame);
                 List<Card> toSearch = ClientGame.friendlyDeckCtrl.CardsThatFitRestriction(deckRestriction);
                 ClientGame.clientUICtrl.StartSearch(toSearch);
@@ -240,6 +220,8 @@ public class ClientNetworkController : NetworkController {
                 break;
             case Packet.Command.TargetAccepted:
                 ClientGame.targetMode = Game.TargetMode.Free;
+                ClientGame.CurrCardRestriction = null;
+                ClientGame.CurrSpaceRestriction = null;
                 break;
             case Packet.Command.EnableDecliningTarget:
                 ClientGame.clientUICtrl.EnableDecliningTarget();
@@ -250,9 +232,13 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.DiscardSimples:
                 ClientGame.boardCtrl.DiscardSimples();
                 break;
+            case Packet.Command.EffectResolving:
+                var eff = ClientGame.GetCardFromID(packet.cardID).Effects[packet.EffIndex];
+                eff.Controller = ClientGame.Players[packet.normalArgs[1]];
+                break;
             case Packet.Command.OptionalTrigger:
                 ClientTrigger t = ClientGame.GetCardFromID(packet.cardID).Effects[packet.EffIndex].Trigger as ClientTrigger;
-                t.ClientEffect.ClientController = friendly;
+                t.ClientEffect.ClientController = Friendly;
                 ClientGame.clientUICtrl.ShowOptionalTrigger(t, packet.EffectX);
                 break;
             default:

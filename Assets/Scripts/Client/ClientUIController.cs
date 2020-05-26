@@ -199,7 +199,7 @@ public class ClientUIController : UIController
 
         //initiate search process
         searchIndex = 0;
-        cardSearchImage.sprite = toSearch[searchIndex].DetailedSprite;
+        cardSearchImage.sprite = toSearch[searchIndex].detailedSprite;
         cardSearchView.SetActive(true);
         //set buttons to their correct states
         discardSearchButton.gameObject.SetActive(false);
@@ -296,7 +296,7 @@ public class ClientUIController : UIController
         searchIndex++;
         searchIndex %= toSearch.Count;
 
-        cardSearchImage.sprite = toSearch[searchIndex].DetailedSprite;
+        cardSearchImage.sprite = toSearch[searchIndex].detailedSprite;
     }
 
     public void PrevCardSearch()
@@ -304,14 +304,14 @@ public class ClientUIController : UIController
         searchIndex--;
         if (searchIndex < 0) searchIndex += toSearch.Count;
 
-        cardSearchImage.sprite = toSearch[searchIndex].DetailedSprite;
+        cardSearchImage.sprite = toSearch[searchIndex].detailedSprite;
     }
     #endregion
 
     #region flow control
     public void PassTurn()
     {
-        if(clientGame.turnPlayer == 0)
+        if(clientGame.TurnPlayerIndex == 0)
         {
             clientGame.clientNotifier.RequestEndTurn();
         }

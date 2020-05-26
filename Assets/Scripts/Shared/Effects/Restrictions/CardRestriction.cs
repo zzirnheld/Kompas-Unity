@@ -18,6 +18,7 @@ public class CardRestriction
         Friendly = 7,
         SameOwner = 8,
         Enemy = 9,
+        Summoned = 10,
         //location
         Hand = 100,
         Discard = 101,
@@ -33,6 +34,10 @@ public class CardRestriction
         EEX = 211,
         SEX = 212,
         WEX = 213,
+        NLTX = 220,
+        ELTX = 221,
+        SLTX = 222,
+        WLTX = 223,
         NLTEC = 300, //N <= constant
         ELTEC = 302,
         SLTEC = 303,
@@ -40,6 +45,7 @@ public class CardRestriction
         //index in list
         IndexInListGTEC = 500,
         IndexInListLTEC = 501,
+        IndexInListLTEX = 551,
         //misc
         NotAlreadyTarget = 600
     } //to add later: N/E/S/W >=
@@ -98,6 +104,9 @@ public class CardRestriction
                 case CardRestrictions.SameOwner:
                     if (potentialTarget.Owner != Subeffect.Controller) return false;
                     break;
+                case CardRestrictions.Summoned:
+                    if (!potentialTarget.Summoned) return false;
+                    break;
                 case CardRestrictions.Hand:
                     if (potentialTarget.Location != CardLocation.Hand) return false;
                     break;
@@ -145,6 +154,22 @@ public class CardRestriction
                     if (charCard == null) return false;
                     if (charCard.W != x) return false;
                     break;
+                case (CardRestrictions.NLTX):
+                    if (charCard == null) return false;
+                    if (charCard.N >= x) return false;
+                    break;
+                case (CardRestrictions.ELTX):
+                    if (charCard == null) return false;
+                    if (charCard.E >= x) return false;
+                    break;
+                case (CardRestrictions.SLTX):
+                    if (charCard == null) return false;
+                    if (charCard.S >= x) return false;
+                    break;
+                case (CardRestrictions.WLTX):
+                    if (charCard == null) return false;
+                    if (charCard.W >= x) return false;
+                    break;
                 case CardRestrictions.NLTEC:
                     if (charCard == null) return false;
                     if (charCard.N > constant) return false;
@@ -167,11 +192,14 @@ public class CardRestriction
                 case CardRestrictions.IndexInListLTEC:
                     if (potentialTarget.IndexInList > constant) return false;
                     break;
+                case CardRestrictions.IndexInListLTEX:
+                    if (potentialTarget.IndexInList > Subeffect.Effect.X) return false;
+                    break;
                 case CardRestrictions.NotAlreadyTarget:
-                    if (Subeffect.Effect.targets.Contains(potentialTarget)) return false;
+                    if (Subeffect.Effect.Targets.Contains(potentialTarget)) return false;
                     break;
                 default:
-                    Debug.Log("You forgot to check for " + c);
+                    Debug.LogError($"You forgot to implement a check for {c}");
                     return false;
             }
         }

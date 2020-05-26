@@ -12,22 +12,31 @@ public abstract class Effect
     //card that this is the effect of. to be set at initialization
     public Card thisCard;
     public Card Source { get { return thisCard; } }
-
-    //current subeffect that's resolving
-    public int subeffectIndex;
-    public Subeffect CurrSubeffect { get { return Subeffects[subeffectIndex]; } }
+    public abstract Player Controller { get; set; }
 
     //subeffects
     public abstract Subeffect[] Subeffects { get; }
+    //current subeffect that's resolving
+    public int SubeffectIndex { get; protected set; }
+    public Subeffect CurrSubeffect => Subeffects[SubeffectIndex];
 
-    public int EffectIndex { get { return System.Array.IndexOf(thisCard.Effects, this); } }
+    public int EffectIndex => System.Array.IndexOf(thisCard.Effects, this);
 
-    public List<Card> targets;
-    public List<Vector2Int> coords;
+    public List<Card> Targets { get; private set; }
+    public List<Vector2Int> Coords { get; private set; }
+    public List<Card> Rest { get; private set; }
 
     public abstract Trigger Trigger { get; }
 
-    public bool Negated { get; protected set; }
+    private int negations = 0;
+    public bool Negated {
+        get => negations > 0;
+        set
+        {
+            if (value) negations++;
+            else negations--;
+        }
+    }
 
     /// <summary>
     /// X value as listed on cards
@@ -42,22 +51,18 @@ public abstract class Effect
     /// </summary>
     public int? MaxTimesCanUsePerTurn { get; }
 
-
     public Effect(int? maxPerTurn)
     {
         this.MaxTimesCanUsePerTurn = maxPerTurn;
         TimesUsedThisTurn = 0;
+        Targets = new List<Card>();
+        Rest = new List<Card>();
+        Coords = new List<Vector2Int>();
     }
-
 
     public void ResetForTurn()
     {
         TimesUsedThisTurn = 0;
-    }
-
-    public bool CanUse()
-    {
-        return TimesUsedThisTurn < MaxTimesCanUsePerTurn;
     }
 
     public virtual void Negate()

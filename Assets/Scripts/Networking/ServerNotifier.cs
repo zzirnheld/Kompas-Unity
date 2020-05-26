@@ -185,10 +185,17 @@ public class ServerNotifier : MonoBehaviour
         SendToBoth(p);
     }
 
-    public void NotifyNegate(Card card)
+    public void NotifySetNegated(Card card, bool negated)
     {
         if (card == null) return;
-        Packet packet = new Packet(Packet.Command.Negate, card);
+        Packet packet = new Packet(Packet.Command.Negate, card, negated);
+        SendToBoth(packet);
+    }
+
+    public void NotifyActivate(Card card, bool activated)
+    {
+        if (card == null) throw new System.ArgumentNullException($"Card must not be null to notify about activating");
+        Packet packet = new Packet(Packet.Command.Activate, card, activated);
         SendToBoth(packet);
     }
 
@@ -256,6 +263,15 @@ public class ServerNotifier : MonoBehaviour
     #endregion request targets
 
     #region other effect stuff
+    public void EffectResolving(ServerEffect eff)
+    {
+        Packet p = new Packet(Packet.Command.EffectResolving, eff.thisCard, eff.EffectIndex, 
+            eff.Controller == Player ? 0 : 1, 0, 0);
+        Packet q = new Packet(Packet.Command.EffectResolving, eff.thisCard, eff.EffectIndex,
+            eff.Controller == Player ? 1 : 0, 0, 0);
+        SendPackets(p, q);
+    }
+
     public void RequestResponse()
     {
         Packet outPacket = new Packet(Packet.Command.Response);

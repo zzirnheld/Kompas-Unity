@@ -18,4 +18,7 @@ public class AvatarCard : CharacterCard
             if (e < 0) game.Lose(ControllerIndex);
         }
     }
+
+    //TODO make this return whether the Avatar is summoned yet
+    public override bool Summoned => false;
 }

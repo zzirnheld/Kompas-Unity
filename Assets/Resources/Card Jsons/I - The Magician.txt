@@ -9,13 +9,14 @@
 				"{
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[100]
+						\"restrictionsToCheck\":[7,100]
 					}
 				}",
 				"{
 					\"TargetIndex\":-1
 				}",
 				"{
+					\"CanDecline\":true,
 					\"JumpTo\":0
 				}",
 				"{}"

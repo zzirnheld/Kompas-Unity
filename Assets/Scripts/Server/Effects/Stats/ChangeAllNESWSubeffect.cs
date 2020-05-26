@@ -9,7 +9,7 @@ public class ChangeAllNESWSubeffect : ServerSubeffect
     public int SMod = 0;
     public int WMod = 0;
     //default to making sure things are characters before changing their stats
-    public CardRestriction CardRestriction = new CardRestriction()
+    public BoardRestriction BoardRestriction = new BoardRestriction()
     {
         restrictionsToCheck = new CardRestriction.CardRestrictions[]
         {
@@ -20,14 +20,14 @@ public class ChangeAllNESWSubeffect : ServerSubeffect
     public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        CardRestriction.Subeffect = this;
+        BoardRestriction.Subeffect = this;
     }
 
     public override void Resolve()
     {
         foreach(KeyValuePair<int, Card> card in ServerGame.cards)
         {
-            if (CardRestriction.Evaluate(card.Value))
+            if (BoardRestriction.Evaluate(card.Value))
             {
                 ServerGame.AddToStats(card.Value as CharacterCard, NMod, EMod, SMod, WMod);
             }

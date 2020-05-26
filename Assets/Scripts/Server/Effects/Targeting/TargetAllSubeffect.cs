@@ -11,7 +11,7 @@ public class TargetAllSubeffect : CardTargetSubeffect
         {
             if (cardRestriction.Evaluate(pair.Value))
             {
-                ServerEffect.targets.Add(pair.Value);
+                ServerEffect.Targets.Add(pair.Value);
                 found = true;
             }
         }

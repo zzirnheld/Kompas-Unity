@@ -2,18 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class LoopSubeffect : ServerSubeffect
+public class LoopSubeffect : ServerSubeffect
 {
-    protected abstract void OnLoopExit();
-    protected abstract bool ShouldContinueLoop();
-
     public int JumpTo;
+    public bool CanDecline = false;
+
+    protected virtual void OnLoopExit()
+    {
+        //make the "no other targets" button disappear
+        if (CanDecline) EffectController.ServerNotifier.DisableDecliningTarget();
+    }
+
+    protected virtual bool ShouldContinueLoop => true;
 
     public override void Resolve()
     {
         //loop again if necessary
         Debug.Log($"im in ur loop of type {GetType()}, the one that jumps to {JumpTo}");
-        if (ShouldContinueLoop()) ServerEffect.ResolveSubeffect(JumpTo);
+        if (ShouldContinueLoop)
+        {
+            //tell the client to enable the button to exit the loop
+            if (CanDecline)
+            {
+                EffectController.ServerNotifier.EnableDecliningTarget();
+                ServerEffect.OnImpossible = this;
+            }
+            ServerEffect.ResolveSubeffect(JumpTo);
+        }
         else ExitLoop();
     }
 
@@ -30,5 +45,11 @@ public abstract class LoopSubeffect : ServerSubeffect
 
         //then skip to after the loop
         ServerEffect.ResolveSubeffect(SubeffIndex + 1);
+    }
+
+    public override void OnImpossible()
+    {
+        if (CanDecline) ExitLoop();
+        else base.OnImpossible();
     }
 }

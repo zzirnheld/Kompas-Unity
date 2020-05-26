@@ -24,7 +24,7 @@ public class AugmentCard : Card
         get { return augmentedCard; }
         set {
             augmentedCard = value;
-            if(boardX != augmentedCard.BoardX || boardY != augmentedCard.BoardY)
+            if(value != null && (BoardX != augmentedCard.BoardX || BoardY != augmentedCard.BoardY))
                 MoveTo(augmentedCard.BoardX, augmentedCard.BoardY, false);
         }
     }
@@ -48,19 +48,13 @@ public class AugmentCard : Card
             subtext = subtext,
             a = a,
             augSubtypes = augSubtypes,
-
-            location = location,
-            owner = ControllerIndex,
-            BoardX = boardX,
-            BoardY = boardY,
-            subtypeText = SubtypeText,
-            index = index
+            subtypeText = SubtypeText
         };
         return serializableSpell;
     }
 
     //set data
-    public override void SetInfo(SerializableCard serializedCard, Game game, Player owner, Effect[] effects)
+    public override void SetInfo(SerializableCard serializedCard, Game game, Player owner, Effect[] effects, int id)
     {
         if (!(serializedCard is SerializableAugCard serializedAug)) return;
 
@@ -69,7 +63,7 @@ public class AugmentCard : Card
         augSubtypes = serializedAug.augSubtypes;
         fast = serializedAug.fast;
 
-        base.SetInfo(serializedCard, game, owner, effects);
+        base.SetInfo(serializedCard, game, owner, effects, id);
     }
 
     //game mechanics

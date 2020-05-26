@@ -1,0 +1,61 @@
+{
+	"cardType":67,
+	"cardName":"Metal Golem",
+	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, move an enemy character 3 spaces.",
+	"effects":[
+		{
+			"triggerCondition":201,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
+				}
+			}",
+			"subeffectTypes":[0,109,0,109],
+			"subeffects":[
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[3]
+					}
+				}",
+				"{
+					\"NVal\":0
+				}",
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[3,600]
+					}
+				}",
+				"{
+					\"NVal\":0
+				}"
+
+			]
+		}
+	],
+	"MovementRestriction":{
+		"Restrictions":[
+			"Is Character",
+			"Can Move Enough Spaces",
+			"Destination is Empty or Friendly",
+			"Activated"
+		]
+	},
+	"AttackRestriction":{
+		"Restrictions":[
+			"This is Character",
+			"Defender is Character",
+			"Defender is Adjacent",
+			"Defender is Enemy",
+			"This is Activated"
+		]
+	},
+	"n":2,
+	"e":1,
+	"s":1,
+	"w":4,
+	"subtypes":["Golem"],
+	"subtypeText":"Golem"
+}

@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public class SpaceRestriction
 {
-    public Subeffect Subeffect;
+    public Subeffect Subeffect { get; private set; }
 
     public enum SpaceRestrictions
     {
@@ -15,22 +15,28 @@ public class SpaceRestriction
         AdjacentToThisCard = 100,
         AdjacentToWithRestriction = 101,
         DistanceX = 200,
-        DistanceToTargetX = 201
+        DistanceToTargetX = 201,
+        DistanceToTargetC = 251
     }
 
     public SpaceRestrictions[] restrictionsToCheck;
     public BoardRestriction adjacencyRestriction;
 
+    public int C;
+
+    public void Initialize(Subeffect subeffect)
+    {
+        this.Subeffect = subeffect;
+    }
+
     private bool ExistsCardWithRestrictionAdjacentToCoords(BoardRestriction r, int x, int y)
     {
-        bool? adj;
-
         for (int i = 0; i < 7; i++)
         {
             for(int j = 0; j < 7; j++)
             {
-                adj = Subeffect.Effect.Game.boardCtrl.GetCardAt(i, j)?.IsAdjacentTo(x, y);
-                if (adj.HasValue && adj.Value) return true; //if the card exists (so adj is not null) and the card is adjacent, return true
+                Card c = Subeffect.Effect.Game.boardCtrl.GetCardAt(i, j);
+                if (c != null && c.IsAdjacentTo(x, y) && r.Evaluate(c)) return true;
             }
         }
 
@@ -63,6 +69,9 @@ public class SpaceRestriction
                     break;
                 case SpaceRestrictions.DistanceToTargetX:
                     if (Subeffect.Target.DistanceTo(x, y) != Subeffect.Effect.X) return false;
+                    break;
+                case SpaceRestrictions.DistanceToTargetC:
+                    if (Subeffect.Target.DistanceTo(x, y) != C) return false;
                     break;
                 default:
                     Debug.LogError($"Unrecognized space restriction enum {r}");

@@ -26,10 +26,8 @@ public class ServerTrigger : Trigger
             //if the trigger has any restriction, set its values
             if(toReturn.triggerRestriction != null)
             {
-                toReturn.triggerRestriction.thisTrigger = toReturn;
-                toReturn.triggerRestriction.thisCard = parent.thisCard;
                 TriggerDummySubeffect dummy = new TriggerDummySubeffect(parent);
-                toReturn.triggerRestriction.Initialize(dummy);
+                toReturn.triggerRestriction.Initialize(dummy, parent.thisCard, toReturn);
             }
         }
 

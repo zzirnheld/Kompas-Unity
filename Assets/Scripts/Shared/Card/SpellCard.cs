@@ -26,18 +26,13 @@ public class SpellCard : Card
             spellType = SpellSubtype,
             subtext = Subtext,
             c = C,
-
-            location = location,
-            owner = ControllerIndex,
-            BoardX = boardX,
-            BoardY = boardY,
             subtypeText = SubtypeText
         };
         return serializableSpell;
     }
 
     //set data
-    public override void SetInfo(SerializableCard serializedCard, Game game, Player owner, Effect[] effects)
+    public override void SetInfo(SerializableCard serializedCard, Game game, Player owner, Effect[] effects, int id)
     {
         if (!(serializedCard is SerializableSpellCard serializedSpell)) return;
 
@@ -46,7 +41,7 @@ public class SpellCard : Card
         SpellSubtype = serializedSpell.spellType;
         Fast = serializedSpell.fast;
 
-        base.SetInfo(serializedCard, game, owner, effects);
+        base.SetInfo(serializedCard, game, owner, effects, id);
     }
 
     //game mechanics

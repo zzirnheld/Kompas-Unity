@@ -1,0 +1,36 @@
+{
+	"cardType":65,
+	"cardName":"Strength Core",
+	"effText":"While equipped, activate this character and give them +4W.",
+	"effects":[
+		{
+			"triggerCondition":450,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
+				}
+			}",
+			"subeffectTypes":[7,504,501],
+			"subeffects":[
+				"{}",
+				"{
+					\"EndCondition\":451,
+					\"TriggerRestriction\":{
+						\"triggerRestrictions\":[0]
+					}
+				}",
+				"{
+					\"WBuff\":4,
+					\"EndCondition\":451,
+					\"TriggerRestriction\":{
+						\"triggerRestrictions\":[0]
+					}
+				}"
+			]
+		}
+	],
+	"a":3,
+	"subtypes":["Golem","Core"],
+	"subtypeText":"Golem Core"
+}

@@ -17,7 +17,7 @@
 				"{
 					\"ChoiceBlurb\":\"Give +5E or +5W?\",
 					\"OptionBlurbs\":[\"+5E\",\"+5W\"],
-					\"OptionJumpIndices\":[2,3]
+					\"OptionJumpIndices\":[2,4]
 				}",
 				"{
 					\"nChange\":0,

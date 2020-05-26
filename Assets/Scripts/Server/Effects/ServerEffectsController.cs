@@ -16,6 +16,8 @@ public class ServerEffectsController : MonoBehaviour
     protected Dictionary<TriggerCondition, List<ServerTrigger>> triggerMap;
     protected Dictionary<TriggerCondition, List<HangingEffect>> hangingEffectMap;
 
+    public IServerStackable CurrStackEntry { get; private set; }
+
     public void Start()
     {
         stack = new ServerEffectStack();
@@ -38,9 +40,7 @@ public class ServerEffectsController : MonoBehaviour
     #region the stack
     public void PushToStack(IServerStackable eff)
     {
-        bool wasEmpty = stack.Empty;
         stack.Push(eff);
-        if (wasEmpty) CheckForResponse();
     }
 
     public void PushToStack(ServerEffect eff, ServerPlayer controller)
@@ -68,7 +68,11 @@ public class ServerEffectsController : MonoBehaviour
             ServerGame.TurnServerPlayer.ServerNotifier.DiscardSimples();
             ServerGame.boardCtrl.DiscardSimples();
         }
-        else eff.StartResolution();
+        else
+        {
+            CurrStackEntry = eff;
+            eff.StartResolution();
+        }
     }
 
     /// <summary>
@@ -76,6 +80,7 @@ public class ServerEffectsController : MonoBehaviour
     /// </summary>
     public void FinishStackEntryResolution()
     {
+        CurrStackEntry = null;
         CheckForResponse();
     }
 
@@ -108,6 +113,12 @@ public class ServerEffectsController : MonoBehaviour
 
     public void CheckForResponse()
     {
+        if (CurrStackEntry != null)
+        {
+            Debug.Log("Tried to check for response while something is resolving");
+            return;
+        }
+
         //since a new thing is being put on the stack, mark both players as having not passed priority
         ResetPassingPriority();
 

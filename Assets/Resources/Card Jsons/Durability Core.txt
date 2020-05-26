@@ -1,0 +1,36 @@
+{
+	"cardType":65,
+	"cardName":"Durability Core",
+	"effText":"While equipped, activate this character and give them +5E.",
+	"effects":[
+		{
+			"triggerCondition":450,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
+				}
+			}",
+			"subeffectTypes":[7,504,501],
+			"subeffects":[
+				"{}",
+				"{
+					\"EndCondition\":451,
+					\"TriggerRestriction\":{
+						\"triggerRestrictions\":[0]
+					}
+				}",
+				"{
+					\"EBuff\":5,
+					\"EndCondition\":451,
+					\"TriggerRestriction\":{
+						\"triggerRestrictions\":[0]
+					}
+				}"
+			]
+		}
+	],
+	"a":3,
+	"subtypes":["Golem","Core"],
+	"subtypeText":"Golem Core"
+}

@@ -7,76 +7,76 @@ using UnityEngine.EventSystems;
 public abstract class Card : CardBase {
     public Game game;
 
-    //game mechanics data
-    protected int boardX;
-    protected int boardY;
-    protected Player controller;
-    protected int ownerIndex;
-    protected Player owner;
-    protected CardLocation location;
-    protected int id;
-    protected string[] subtypes;
-    private List<AugmentCard> augments = new List<AugmentCard>();
-    public List<AugmentCard> Augments { get { return augments; } }
-    public bool Negated { get; protected set; }
+    //stats
+    public int Negations { get; private set; } = 0;
+    public bool Negated {
+        get => Negations > 0;
+        set {
+            if (value) Negations++;
+            else Negations--;
 
-    protected Effect[] effects;
-
-    //other game data
-    protected MeshRenderer meshRenderer;
-
-    //getters and setters
-    //game mechanics data
-    public int BoardX { get { return boardX; } }
-    public int BoardY { get { return boardY; } }
-    public (int, int) Position { get => (boardX, boardY); }
-    public Player Controller { get { return controller; } }
-    public int ControllerIndex { get { return Controller.index; } }
-    public Player Owner { get { return owner; } }
-    public int OwnerIndex { get { return ownerIndex; } }
-    public CardLocation Location { get { return location; } }
-    public int ID
-    {
-        set
-        {
-            id = value;
-        }
-        get
-        {
-            return id;
+            foreach (var e in Effects) e.Negated = value;
         }
     }
-    public Effect[] Effects { get => effects; }
+    public int Activations { get; private set; } = 0;
+    public bool Activated
+    {
+        get => Activations > 0;
+        set
+        {
+            if (value) Activations++;
+            else Activations--;
+        }
+    }
     public abstract int Cost { get; }
-    //other game data
-    public Sprite DetailedSprite { get { return detailedSprite; } }
-    public Sprite SimpleSprite { get { return simpleSprite; } }
-
     public abstract string StatsString { get; }
+    public virtual bool Summoned { get => false; }
 
+    //positioning
+    public int BoardX { get; protected set; }
+    public int BoardY { get; protected set; }
+    public (int, int) Position { get => (BoardX, BoardY); }
+
+    //movement
+    public int SpacesMoved { get; protected set; }
+    public virtual int SpacesCanMove { get => 0; }
+    public MovementRestriction MovementRestriction { get; private set; }
+
+    //attacking
+    public AttackRestriction AttackRestriction { get; private set; }
+
+    //controller/owners
+    public Player Controller { get; protected set; }
+    public int ControllerIndex { get { return Controller.index; } }
+    public Player Owner { get; private set; }
+    public int OwnerIndex { get => Owner.index; }
+
+    //misc
+    public CardLocation Location { get; private set; }
+    public int ID { get; private set; }
+    public Effect[] Effects { get; private set; }
+    public List<AugmentCard> Augments { get; private set; } = new List<AugmentCard>();
+    
     public int IndexInList
     {
         get
         {
-            switch (location)
+            switch (Location)
             {
                 case CardLocation.Deck:
-                    return controller.deckCtrl.IndexOf(this);
+                    return Controller.deckCtrl.IndexOf(this);
                 case CardLocation.Discard:
-                    return controller.discardCtrl.IndexOf(this);
+                    return Controller.discardCtrl.IndexOf(this);
                 case CardLocation.Field:
-                    return boardX * 7 + boardY;
+                    return BoardX * 7 + BoardY;
                 case CardLocation.Hand:
-                    return controller.handCtrl.IndexOf(this);
+                    return Controller.handCtrl.IndexOf(this);
                 default:
-                    Debug.LogError($"Tried to ask for card index when in location {location}");
+                    Debug.LogError($"Tried to ask for card index when in location {Location}");
                     return -1;
             }
         }
     }
-
-    public int SpacesMoved;
-
 
     public const float spacesInGrid = 7f;
     public const float boardLenOffset = 0.45f;
@@ -91,6 +91,9 @@ public abstract class Card : CardBase {
          */
         return (((float)(gridIndex)) / (spacesInGrid - 1f) * (2 * boardLenOffset)) - boardLenOffset;
     }
+    
+    //image
+    protected MeshRenderer meshRenderer;
 
     //unity methods
     private void Awake()
@@ -106,10 +109,10 @@ public abstract class Card : CardBase {
     /// <param name="location">Where the card is going</param>
     public void SetLocation(CardLocation location)
     {
-        Debug.Log($"Attempting to move {CardName} from {this.location} to {location}");
+        Debug.Log($"Attempting to move {CardName} from {this.Location} to {location}");
 
         //set the card's location variable
-        this.location = location;
+        this.Location = location;
 
         //set the parent to where we're going
         switch (location)
@@ -119,15 +122,15 @@ public abstract class Card : CardBase {
                 gameObject.SetActive(true);
                 break;
             case CardLocation.Discard:
-                transform.SetParent(controller.discardObject.transform);
+                transform.SetParent(Controller.discardObject.transform);
                 gameObject.SetActive(true);
                 break;
             case CardLocation.Hand:
-                transform.SetParent(controller.handObject.transform);
+                transform.SetParent(Controller.handObject.transform);
                 gameObject.SetActive(true);
                 break;
             case CardLocation.Deck:
-                transform.SetParent(controller.deckObject.transform);
+                transform.SetParent(Controller.deckObject.transform);
                 gameObject.SetActive(false);
                 break;
         }
@@ -161,29 +164,23 @@ public abstract class Card : CardBase {
         SetImage(CardName);
     }
 
-    public virtual void SetInfo(SerializableCard serializedCard, Game game, Player owner, Effect[] effects)
+    public virtual void SetInfo(SerializableCard serializedCard, Game game, Player owner, Effect[] effects, int id)
     {
         base.SetInfo(serializedCard);
-        location = serializedCard.location;
 
-        this.augments = new List<AugmentCard>();
-
+        this.Augments = new List<AugmentCard>();
         this.game = game;
-
-        this.owner = owner;
-        this.ownerIndex = owner.index;
+        this.Owner = owner;
+        this.ID = id;
         ChangeController(owner);
 
-        this.effects = effects;
-
-        if (location == CardLocation.Field) MoveTo(serializedCard.BoardX, serializedCard.BoardY, false);
-        else
-        {
-            boardX = serializedCard.BoardX;
-            boardY = serializedCard.BoardY;
-        }
+        this.Effects = effects;
 
         SpacesMoved = 0;
+        MovementRestriction = serializedCard.MovementRestriction ?? new MovementRestriction();
+        MovementRestriction.SetInfo(this);
+        AttackRestriction = serializedCard.AttackRestriction ?? new AttackRestriction();
+        AttackRestriction.SetInfo(this);
     }
     
     #region distance/adjacency
@@ -222,7 +219,7 @@ public abstract class Card : CardBase {
     //misc mechanics methods
     public virtual void ChangeController(Player newController)
     {
-        controller = newController;
+        Controller = newController;
         transform.localEulerAngles = new Vector3(0, 0, 180 * ControllerIndex);
     }
 
@@ -232,40 +229,40 @@ public abstract class Card : CardBase {
     public virtual void MoveTo(int toX, int toY, bool playerInitiated)
     {
         if(playerInitiated)
-            SpacesMoved += System.Math.Abs(boardX - toX) + System.Math.Abs(toY - toY);
+            SpacesMoved += System.Math.Abs(BoardX - toX) + System.Math.Abs(toY - toY);
 
-        boardX = toX;
-        boardY = toY;
+        BoardX = toX;
+        BoardY = toY;
 
         /* for setting where the gameobject is, it would be x and z, except that the quad is turned 90 degrees
          * so we change the local x and y. the z coordinate also therefore needs to be negative
          * to show the card above the game board on the screen. */
         transform.localPosition = new Vector3(GridIndexToPos(toX), GridIndexToPos(toY), -0.1f);
-        ChangeController(controller);
-        foreach (AugmentCard aug in augments) aug.MoveTo(toX, toY, false);
+        ChangeController(Controller);
+        foreach (AugmentCard aug in Augments) aug.MoveTo(toX, toY, false);
     }
 
     public void PutBack()
     {
-        Debug.Log($"Putting back {CardName} to {location}");
+        Debug.Log($"Putting back {CardName} to {Location}");
 
-        switch (location)
+        switch (Location)
         {
             case CardLocation.Deck:
-                transform.SetParent(controller.deckObject.transform);
+                transform.SetParent(Controller.deckObject.transform);
                 gameObject.SetActive(false);
                 break;
             case CardLocation.Discard:
-                transform.SetParent(controller.discardObject.transform);
-                transform.localPosition = new Vector3(0, 0, (float)controller.discardCtrl.IndexOf(this) / -60f);
+                transform.SetParent(Controller.discardObject.transform);
+                transform.localPosition = new Vector3(0, 0, (float)Controller.discardCtrl.IndexOf(this) / -60f);
                 break;
             case CardLocation.Field:
                 transform.SetParent(game.boardObject.transform);
-                transform.localPosition = new Vector3(GridIndexToPos(boardX), GridIndexToPos(boardY), -0.1f);
+                transform.localPosition = new Vector3(GridIndexToPos(BoardX), GridIndexToPos(BoardY), -0.1f);
                 break;
             case CardLocation.Hand:
-                transform.SetParent(controller.handObject.transform);
-                controller.handCtrl.SpreadOutCards();
+                transform.SetParent(Controller.handObject.transform);
+                Controller.handCtrl.SpreadOutCards();
                 break;
         }
     }
@@ -281,7 +278,7 @@ public abstract class Card : CardBase {
     /// </summary>
     public virtual void ResetForTurn()
     {
-        foreach(Effect eff in effects)
+        foreach(Effect eff in Effects)
         {
             eff.ResetForTurn();
         }
@@ -289,29 +286,23 @@ public abstract class Card : CardBase {
         SpacesMoved = 0;
     }
 
-    public virtual void Negate()
-    {
-        Negated = true;
-        foreach(var e in effects)  e.Negate();
-    }
-
     #region augments
     public void AddAugment(AugmentCard augment)
     {
         if (augment == null) return;
-        augments.Add(augment);
+        Augments.Add(augment);
         augment.AugmentedCard = this;
     }
-    public bool HasAugment(AugmentCard augment) { return augments.Contains(augment); }
+    public bool HasAugment(AugmentCard augment) { return Augments.Contains(augment); }
     public void RemoveAugment(AugmentCard augment)
     {
-        augments.Remove(augment);
+        Augments.Remove(augment);
         augment.AugmentedCard = null;
     }
     public void RemoveAugmentAt(int index)
     {
-        AugmentCard aug = augments[index];
-        augments.RemoveAt(index);
+        AugmentCard aug = Augments[index];
+        Augments.RemoveAt(index);
         aug.AugmentedCard = null;
     }
     #endregion augments

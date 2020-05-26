@@ -13,7 +13,11 @@ public class ServerEffect : Effect, IServerStackable
     public ServerSubeffect OnImpossible = null;
     
     public ServerPlayer ServerController { get;  set; }
-    public Player Controller => ServerController;
+    public override Player Controller
+    {
+        get { return ServerController; }
+        set { ServerController = value as ServerPlayer; }
+    }
     public override Subeffect[] Subeffects => ServerSubeffects;
     public override Trigger Trigger => ServerTrigger;
 
@@ -23,8 +27,6 @@ public class ServerEffect : Effect, IServerStackable
         this.serverGame = serverGame;
         this.ServerController = controller;
         ServerSubeffects = new ServerSubeffect[se.subeffects.Length];
-        targets = new List<Card>();
-        coords = new List<Vector2Int>();
 
         if (!string.IsNullOrEmpty(se.trigger))
         {
@@ -68,13 +70,14 @@ public class ServerEffect : Effect, IServerStackable
     {
         thisCard.game.CurrEffect = this;
         ServerController.ServerNotifier.NotifyEffectX(thisCard, EffectIndex, X);
+        ServerController.ServerNotifier.EffectResolving(this);
         if (Negated) EffectImpossible();
         else ResolveSubeffect(0);
     }
 
     public void ResolveNextSubeffect()
     {
-        ResolveSubeffect(subeffectIndex + 1);
+        ResolveSubeffect(SubeffectIndex + 1);
     }
 
     public void ResolveSubeffect(int index)
@@ -86,21 +89,21 @@ public class ServerEffect : Effect, IServerStackable
         }
 
         Debug.Log($"Resolving subeffect of type {ServerSubeffects[index].GetType()}");
-        subeffectIndex = index;
+        SubeffectIndex = index;
+        ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
         ServerSubeffects[index].Resolve();
     }
 
     /// <summary>
     /// If the effect finishes resolving, this method is called.
-    /// Any function can also call this effect to finish resolution early.
     /// </summary>
     private void FinishResolution()
     {
-        subeffectIndex = 0;
+        SubeffectIndex = 0;
         X = 0;
-        targets.Clear();
+        Targets.Clear();
+        Rest.Clear();
         OnImpossible = null;
-        ServerController.ServerNotifier.AcceptTarget();
         ServerController.ServerNotifier.NotifyBothPutBack();
         EffectsController.FinishStackEntryResolution();
     }
@@ -115,7 +118,7 @@ public class ServerEffect : Effect, IServerStackable
         if (OnImpossible == null) FinishResolution();
         else
         {
-            subeffectIndex = OnImpossible.SubeffIndex;
+            SubeffectIndex = OnImpossible.SubeffIndex;
             OnImpossible.OnImpossible();
         }
     }

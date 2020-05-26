@@ -16,21 +16,6 @@ public class SerializableCard
     public string[] subtypes;
     public SerializableEffect[] effects;
 
-    //in game values
-    public CardLocation location;
-    public int owner;
-    public int BoardX;
-    public int BoardY;
-    public int index;
-
-    /// <summary>
-    /// Flip board position
-    /// </summary>
-    public void Invert()
-    {
-        BoardX = 6 - BoardX;
-        BoardY = 6 - BoardY;
-        owner = 1 - owner;
-    }
-
+    public MovementRestriction MovementRestriction;
+    public AttackRestriction AttackRestriction;
 }

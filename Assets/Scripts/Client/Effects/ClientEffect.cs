@@ -5,6 +5,11 @@ using UnityEngine;
 public class ClientEffect : Effect
 {
     public ClientPlayer ClientController;
+    public override Player Controller
+    {
+        get { return ClientController; }
+        set { ClientController = value as ClientPlayer; }
+    }
     public ClientGame ClientGame { get; }
     public DummySubeffect[] DummySubeffects { get; }
     public ClientTrigger ClientTrigger { get; }
@@ -17,8 +22,6 @@ public class ClientEffect : Effect
         this.thisCard = thisCard ?? throw new System.ArgumentNullException("Effect cannot be attached to null card");
         this.ClientGame = clientGame;
         DummySubeffects = new DummySubeffect[se.subeffects.Length];
-        targets = new List<Card>();
-        coords = new List<Vector2Int>();
 
         if (!string.IsNullOrEmpty(se.trigger))
         {

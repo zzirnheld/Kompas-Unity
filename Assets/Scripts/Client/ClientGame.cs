@@ -119,9 +119,21 @@ public class ClientGame : Game {
         }
         else
         {
-            Debug.LogError($"Tried to target while in not understood target mode {targetMode}");
+            Debug.LogError($"Tried to target card {card.CardName} while in not understood target mode {targetMode}");
         }
     }
 
+    public void SetFirstTurnPlayer(int playerIndex)
+    {
+        TurnPlayerIndex = playerIndex;
+        uiCtrl.CurrentStateString = TurnPlayerIndex == 0 ? "Your Turn" : "Enemy Turn";
+        clientUICtrl.HideGetDecklistUI();
+    }
 
+    public void EndTurn()
+    {
+        TurnPlayerIndex = 1 - TurnPlayerIndex;
+        boardCtrl.ResetCardsForTurn();
+        uiCtrl.CurrentStateString = TurnPlayerIndex == 0 ? "Your Turn" : "Enemy Turn";
+    }
 }
