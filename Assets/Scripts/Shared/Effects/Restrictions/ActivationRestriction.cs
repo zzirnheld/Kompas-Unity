@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class ActivationRestriction
 {
     public Effect Effect { get; private set; }
@@ -18,7 +19,7 @@ public class ActivationRestriction
     public void Initialize(Effect eff)
     {
         Effect = eff;
-        Debug.Log($"Initializing activation restriction with restrictions {string.Join(", ", Restrictions)}");
+        Debug.Log($"Initializing activation restriction for {Card.CardName} with restrictions: {string.Join(", ", Restrictions)}");
     }
 
     public bool Evaluate(Player activator)

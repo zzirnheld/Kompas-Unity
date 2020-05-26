@@ -265,9 +265,9 @@ public class ServerNotifier : MonoBehaviour
     #region other effect stuff
     public void EffectResolving(ServerEffect eff)
     {
-        Packet p = new Packet(Packet.Command.EffectResolving, eff.thisCard, eff.EffectIndex, 
+        Packet p = new Packet(Packet.Command.EffectResolving, eff.Source, eff.EffectIndex, 
             eff.Controller == Player ? 0 : 1, 0, 0);
-        Packet q = new Packet(Packet.Command.EffectResolving, eff.thisCard, eff.EffectIndex,
+        Packet q = new Packet(Packet.Command.EffectResolving, eff.Source, eff.EffectIndex,
             eff.Controller == Player ? 1 : 0, 0, 0);
         SendPackets(p, q);
     }
@@ -322,7 +322,7 @@ public class ServerNotifier : MonoBehaviour
 
     public void AskForTrigger(ServerTrigger t, int? x, Card cardTriggerer, IServerStackable stackTriggerer, ServerPlayer triggerer)
     {
-        Card cardWhoseTrigger = t.effToTrigger.thisCard;
+        Card cardWhoseTrigger = t.effToTrigger.Source;
         int effIndex = t.effToTrigger.EffectIndex;
         //TODO send info about triggerer to display on client
         Packet packet = new Packet(Packet.Command.OptionalTrigger, cardWhoseTrigger, effIndex, 0, x ?? 0, 0);

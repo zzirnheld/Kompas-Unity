@@ -9,9 +9,7 @@ public abstract class Effect
 {
     public Game Game => Source.game;
 
-    //card that this is the effect of. to be set at initialization
-    public Card thisCard;
-    public Card Source { get { return thisCard; } }
+    public Card Source { get; }
     public abstract Player Controller { get; set; }
 
     //subeffects
@@ -20,7 +18,7 @@ public abstract class Effect
     public int SubeffectIndex { get; protected set; }
     public Subeffect CurrSubeffect => Subeffects[SubeffectIndex];
 
-    public int EffectIndex => System.Array.IndexOf(thisCard.Effects, this);
+    public int EffectIndex => System.Array.IndexOf(Source.Effects, this);
 
     public List<Card> Targets { get; private set; }
     public List<Vector2Int> Coords { get; private set; }
@@ -46,8 +44,9 @@ public abstract class Effect
     public int TimesUsedThisTurn { get; protected set; }
     public int TimesUsedThisRound { get; protected set; }
 
-    public Effect(ActivationRestriction restriction)
+    public Effect(ActivationRestriction restriction, Card source)
     {
+        Source = source ?? throw new System.ArgumentNullException($"Effect cannot be attached to null card");
         ActivationRestriction = restriction;
         ActivationRestriction.Initialize(this);
         TimesUsedThisTurn = 0;

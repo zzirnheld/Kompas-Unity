@@ -18,9 +18,8 @@ public class ClientEffect : Effect
     public override Trigger Trigger => ClientTrigger;
 
     public ClientEffect(SerializableEffect se, Card thisCard, ClientGame clientGame)
-        : base(se.activationRestriction ?? new ActivationRestriction())
+        : base(se.activationRestriction ?? new ActivationRestriction(), thisCard)
     {
-        this.thisCard = thisCard ?? throw new System.ArgumentNullException("Effect cannot be attached to null card");
         this.ClientGame = clientGame;
         DummySubeffects = new DummySubeffect[se.subeffects.Length];
 

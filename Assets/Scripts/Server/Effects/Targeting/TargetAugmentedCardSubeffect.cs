@@ -6,7 +6,7 @@ public class TargetAugmentedCardSubeffect : ServerSubeffect
 {
     public override void Resolve()
     {
-        if(ServerEffect.thisCard is AugmentCard aug)
+        if(ServerEffect.Source is AugmentCard aug)
         {
             ServerEffect.Targets.Add(aug.AugmentedCard);
         }

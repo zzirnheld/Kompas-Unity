@@ -156,7 +156,7 @@ public class ServerEffectsController : MonoBehaviour
     #region triggers
     public void RegisterTrigger(TriggerCondition condition, ServerTrigger trigger)
     {
-        Debug.Log($"Registering a new trigger from card {trigger.effToTrigger.thisCard.CardName} to condition {condition}");
+        Debug.Log($"Registering a new trigger from card {trigger.effToTrigger.Source.CardName} to condition {condition}");
         List<ServerTrigger> triggers = triggerMap[condition];
         if (triggers == null)
         {
@@ -203,7 +203,7 @@ public class ServerEffectsController : MonoBehaviour
     /// <param name="x"></param>
     public void AskForTrigger(ServerTrigger trigger, int? x, Card cardTriggerer, IServerStackable stackTriggerer, ServerPlayer triggerer, ServerPlayer controller)
     {
-        Debug.Log($"Asking about trigger for effect of card {trigger.effToTrigger.thisCard.CardName}");
+        Debug.Log($"Asking about trigger for effect of card {trigger.effToTrigger.Source.CardName}");
         lock (TriggerStackLock)
         {
             OptionalTriggersToAsk.Push((trigger, cardTriggerer, stackTriggerer, triggerer, x, controller));

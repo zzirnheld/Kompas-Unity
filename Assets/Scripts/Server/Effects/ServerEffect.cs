@@ -22,9 +22,8 @@ public class ServerEffect : Effect, IServerStackable
     public override Trigger Trigger => ServerTrigger;
 
     public ServerEffect(SerializableEffect se, Card thisCard, ServerGame serverGame, ServerPlayer controller) 
-        : base(se.activationRestriction ?? new ActivationRestriction())
+        : base(se.activationRestriction ?? new ActivationRestriction(), thisCard)
     {
-        this.thisCard = thisCard ?? throw new System.ArgumentNullException("Effect cannot be attached to null card");
         this.serverGame = serverGame;
         this.ServerController = controller;
         ServerSubeffects = new ServerSubeffect[se.subeffects.Length];
@@ -59,7 +58,7 @@ public class ServerEffect : Effect, IServerStackable
     public bool CanBeActivatedBy(ServerPlayer controller)
     {
         return Trigger == null
-            && controller.index == thisCard.ControllerIndex
+            && controller.index == Source.ControllerIndex
             && ActivationRestriction.Evaluate(controller);
     }
 
@@ -70,9 +69,9 @@ public class ServerEffect : Effect, IServerStackable
 
     public void StartResolution()
     {
-        thisCard.game.CurrEffect = this;
+        Source.game.CurrEffect = this;
         TimesUsedThisTurn++;
-        ServerController.ServerNotifier.NotifyEffectX(thisCard, EffectIndex, X);
+        ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
         ServerController.ServerNotifier.EffectResolving(this);
         if (Negated) EffectImpossible();
         else ResolveSubeffect(0);
@@ -117,7 +116,7 @@ public class ServerEffect : Effect, IServerStackable
     /// </summary>
     public void EffectImpossible()
     {
-        Debug.Log($"Effect of {thisCard.CardName} is being declared impossible");
+        Debug.Log($"Effect of {Source.CardName} is being declared impossible");
         if (OnImpossible == null) FinishResolution();
         else
         {

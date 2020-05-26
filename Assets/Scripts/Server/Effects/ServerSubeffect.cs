@@ -13,7 +13,7 @@ public abstract class ServerSubeffect : Subeffect
     public ServerEffect ServerEffect { get; protected set; }
     public ServerGame ServerGame { get { return ServerEffect.serverGame; } }
     public ServerPlayer EffectController { get { return ServerEffect.ServerController; } }
-    public Card ThisCard { get { return ServerEffect.thisCard; } }
+    public Card ThisCard { get { return ServerEffect.Source; } }
 
     public static ServerSubeffect FromJson(SubeffectType seType, string subeffJson, ServerEffect parent, int subeffIndex)
     {
