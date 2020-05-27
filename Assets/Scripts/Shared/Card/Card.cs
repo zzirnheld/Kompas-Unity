@@ -45,6 +45,9 @@ public abstract class Card : CardBase {
     //attacking
     public AttackRestriction AttackRestriction { get; private set; }
 
+    //playing
+    public PlayRestriction PlayRestriction { get; private set; }
+
     //controller/owners
     public Player Controller { get; protected set; }
     public int ControllerIndex { get { return Controller.index; } }
@@ -181,6 +184,8 @@ public abstract class Card : CardBase {
         MovementRestriction.SetInfo(this);
         AttackRestriction = serializedCard.AttackRestriction ?? new AttackRestriction();
         AttackRestriction.SetInfo(this);
+        PlayRestriction = serializedCard.PlayRestriction ?? new PlayRestriction();
+        PlayRestriction.SetInfo(this);
     }
     
     #region distance/adjacency

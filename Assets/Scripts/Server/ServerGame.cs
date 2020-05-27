@@ -342,9 +342,8 @@ public class ServerGame : Game {
         EffectsController.CheckForResponse();
     }
 
-    //TODO improve this with checking if the square is valid (adj or special case)
     #region check validity
-    public bool ValidBoardPlay(Card card, int toX, int toY)
+    public bool ValidBoardPlay(Card card, int toX, int toY, ServerPlayer player)
     {
         if (uiCtrl.DebugMode)
         {
@@ -354,12 +353,12 @@ public class ServerGame : Game {
 
         Debug.Log("Trying to play " + card.CardName + " to " + toX + ", " + toY);
         return card != null
-            && (card is CharacterCard || card is SpellCard)
             && boardCtrl.ValidIndices(toX, toY)
-            && boardCtrl.GetCardAt(toX, toY) == null;
+            && boardCtrl.GetCardAt(toX, toY) == null
+            && card.PlayRestriction.EvaluateNormalPlay(toX, toY, player);
     }
 
-    public bool ValidAugment(Card card, int toX, int toY)
+    public bool ValidAugment(Card card, int toX, int toY, ServerPlayer player)
     {
         if (uiCtrl.DebugMode)
         {
@@ -370,7 +369,8 @@ public class ServerGame : Game {
         return card != null
             && card is AugmentCard
             && boardCtrl.ValidIndices(toX, toY)
-            && boardCtrl.GetCharAt(toX, toY) != null;
+            && boardCtrl.GetCardAt(toX, toY) != null
+            && card.PlayRestriction.EvaluateNormalPlay(toX, toY, player);
     }
 
     public bool ValidMove(Card toMove, int toX, int toY)

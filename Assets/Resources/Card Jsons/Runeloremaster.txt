@@ -1,0 +1,60 @@
+{
+	"cardType":67,
+	"cardName":"Runeloremaster",
+	"effText":"Once each friendly turn, you can pip handcast two Runes.",
+	"effects":[
+		{
+			"activationRestriction":{
+				"Restrictions":[
+					"Max Times Per Turn",
+					"Friendly Turn"
+				]
+			},
+			"subeffectTypes":[3,4,150,300,3,4,150,300],
+			"subeffects":[
+				"{
+					\"cardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,100,601],
+						\"subtypesInclude\":[\"Rune\"]
+					}
+				}",
+				"{
+					\"spaceRestriction\":
+					{
+						\"restrictionsToCheck\":[0]
+					}
+				}",
+				"{}",
+				"{
+					\"TargetIndex\":-1,
+					\"SpaceIndex\":-1
+				}",
+				"{
+					\"cardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,100,600,601],
+						\"subtypesInclude\":[\"Rune\"]
+					}
+				}",
+				"{
+					\"spaceRestriction\":
+					{
+						\"restrictionsToCheck\":[0]
+					}
+				}",
+				"{}",
+				"{
+					\"TargetIndex\":-1,
+					\"SpaceIndex\":-1
+				}"
+			]
+		}
+	],
+	"n":1,
+	"e":5,
+	"s":7,
+	"w":7,
+	"subtypes":["Runer","Mage"],
+	"subtypeText":"Runer Mage"
+}

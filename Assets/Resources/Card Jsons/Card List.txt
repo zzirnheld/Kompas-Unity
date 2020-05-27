@@ -57,4 +57,10 @@ Defense Core
 Combustion Core
 Modular Golem Cores
 Slight Golemodifications
+Runeloremaster
+Runerunner
+Runecaller
+Runespeaker
+Runepainter
+Runechanneler
 lulthisdontexistmydood

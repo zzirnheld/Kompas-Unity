@@ -1,0 +1,55 @@
+{
+	"cardType":67,
+	"cardName":"Runechanneler",
+	"effText":"Once each friendly turn, you can reshuffle X of your discarded Runes to handcast a CX Rune.",
+	"effects":[
+		{
+			"activationRestriction":{
+				"Restrictions":[
+					"Max Times Per Turn",
+					"Friendly Turn"
+				]
+			},
+			"subeffectTypes":[2,303,408,3,4,150,300],
+			"subeffects":[
+				"{
+					\"cardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,7,101],
+						\"subtypesInclude\":[\"Rune\"]
+					}
+				}",
+				"{
+					\"TargetIndex\":-1
+				}",
+				"{
+					\"CanDecline\":true,
+					\"JumpTo\":0
+				}",
+					\"cardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,100,214,601],
+						\"subtypesInclude\":[\"Rune\"]
+					}
+				}",
+				"{
+					\"spaceRestriction\":
+					{
+						\"restrictionsToCheck\":[0]
+					}
+				}",
+				"{}",
+				"{
+					\"TargetIndex\":-1,
+					\"SpaceIndex\":-1
+				}"
+			]
+		}
+	],
+	"n":2,
+	"e":4,
+	"s":6,
+	"w":4,
+	"subtypes":["Runer","Mage"],
+	"subtypeText":"Runer Mage"
+}

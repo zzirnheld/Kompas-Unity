@@ -1,0 +1,40 @@
+{
+	"cardType":67,
+	"cardName":"Runecarver",
+	"effText":"Once each friendly turn, you can reshuffle a Rune from your hand, field, or discard to draw 2 cards.",
+	"effects":[
+		{
+			"activationRestriction":{
+				"Restrictions":[
+					"Max Times Per Turn",
+					"Friendly Turn"
+				]
+			},
+			"subeffectTypes":[8,303,202,306],
+			"subeffects":[
+				"{
+					\"CardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,7,103],
+						\"subtypesInclude\":[\"Rune\"]
+					},
+					\"MaxCanChoose\":1
+				}",
+				"{
+					\"TargetIndex\":-1
+				}",
+				"{
+					\"Multiplier\":0,
+					\"Modifier\":2
+				}",
+				"{}"
+			]
+		}
+	],
+	"n":2,
+	"e":4,
+	"s":5,
+	"w":4,
+	"subtypes":["Runer","Mage"],
+	"subtypeText":"Runer Mage"
+}

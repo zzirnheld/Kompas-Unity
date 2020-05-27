@@ -1,0 +1,42 @@
+{
+	"cardType":67,
+	"cardName":"Runecaller",
+	"effText":"Once each friendly turn, you can pip handcast a Rune.",
+	"effects":[
+		{
+			"activationRestriction":{
+				"Restrictions":[
+					"Max Times Per Turn",
+					"Friendly Turn"
+				]
+			},
+			"subeffectTypes":[3,4,150,300],
+			"subeffects":[
+				"{
+					\"cardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,100,601],
+						\"subtypesInclude\":[\"Rune\"]
+					}
+				}",
+				"{
+					\"spaceRestriction\":
+					{
+						\"restrictionsToCheck\":[0]
+					}
+				}",
+				"{}",
+				"{
+					\"TargetIndex\":-1,
+					\"SpaceIndex\":-1
+				}"
+			]
+		}
+	],
+	"n":3,
+	"e":3,
+	"s":3,
+	"w":3,
+	"subtypes":["Runer","Mage"],
+	"subtypeText":"Runer Mage"
+}
