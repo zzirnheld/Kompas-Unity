@@ -63,5 +63,8 @@ Runecaller
 Runespeaker
 Runepainter
 Runechanneler
+Runecarver
+Runewriter
+Runewritten
 Ansuz
 lulthisdontexistmydood

@@ -26,6 +26,7 @@
 					\"CanDecline\":true,
 					\"JumpTo\":0
 				}",
+				"{
 					\"cardRestriction\":
 					{
 						\"restrictionsToCheck\":[2,100,214,601],
