@@ -1,6 +1,6 @@
 {
 	"cardType":83,
-	"cardName":"Thurisaz",
+	"cardName":"Gyfu",
 	"effText":"Can’t be cast normally. Give X enemy characters +1EW. Gain X pips. ",
 	"effects":[
 		{

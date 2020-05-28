@@ -10,6 +10,7 @@ public class ConditionalEndSubeffect : ServerSubeffect
     public const string XGreaterThanConst = "X>C";
     public const string XLessThanConst = "X<C";
     public const string NoneFitRestriction = "None Fit Restriction";
+    public const string MustBeFriendlyTurn = "Must be Friendly Turn";
 
     public int C = 0;
     public CardRestriction CardRestriction = new CardRestriction();
@@ -41,6 +42,9 @@ public class ConditionalEndSubeffect : ServerSubeffect
                 break;
             case NoneFitRestriction:
                 end = !ServerGame.cards.Any(c => CardRestriction.Evaluate(c.Value));
+                break;
+            case MustBeFriendlyTurn:
+                end = ServerGame.TurnPlayer == Effect.Controller;
                 break;
             default:
                 throw new System.ArgumentException($"Condition {Condition} invalid for conditional end subeffect");

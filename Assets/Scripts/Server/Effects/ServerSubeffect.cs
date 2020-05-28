@@ -209,6 +209,9 @@ public abstract class ServerSubeffect : Subeffect
             case SubeffectType.HangingActivate:
                 toReturn = JsonUtility.FromJson<TemporaryActivationSubeffect>(subeffJson);
                 break;
+            case SubeffectType.EndTurn:
+                toReturn = JsonUtility.FromJson<EndTurnSubeffect>(subeffJson);
+                break;
             default:
                 Debug.LogError($"Unrecognized effect type enum {seType} for loading effect in effect constructor");
                 return null;

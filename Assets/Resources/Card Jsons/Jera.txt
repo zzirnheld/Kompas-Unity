@@ -1,7 +1,7 @@
 {
 	"cardType":83,
-	"cardName":"Thurisaz",
-	"effText":"Can’t be cast normally. Double a character's W.",
+	"cardName":"Jera",
+	"effText":"Can’t be cast normally. If it’s your turn, gain 5 pips and end your turn.",
 	"effects":[
 		{
 			"triggerCondition":401,
@@ -11,27 +11,22 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[0,203,103]
+			"subeffectTypes":[409,101,600]
 			"subeffects":[
 				"{
-						\"boardRestriction\":
-						{
-							\"restrictionsToCheck\":[3,103]
-						}
+					\"Condition\":\"Must be Friendly Turn\"
 				}",
 				"{
-					\"WhatToCount\":\"W\"
+					\"modifier\":5
 				}",
-				"{
-					\"wMult\":1
-				}"
+				"{}"
 			]	
 		}
 	],
 	"PlayRestriction":{
 		"NormalRestrictions":["Cannot be Played Normally"]
 	},
-	"c":4,
+	"c":1,
 	"spellType":"Simple",
 	"subtypes":["Rune","Simple"],
 	"subtypeText":"Rune Simple"
