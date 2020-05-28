@@ -1,0 +1,46 @@
+{
+	"cardType":83,
+	"cardName":"Mannaz",
+	"effText":"Can’t be cast normally. Search your deck’s top 10 cards for a character.",
+	"effects":[
+		{
+			"triggerCondition":401,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
+				}
+			}",
+			"subeffectTypes":[404,1,405,12,304,350]
+			"subeffects":[
+				"{
+					\"JumpTo\":3
+				}",
+				"{
+					\"cardRestriction\":
+					{
+						\"restrictionsToCheck\":[3,102,501],
+						\"constant\":10
+					}
+				}",
+				"{}",
+				"{
+					\"cardRestriction\":
+					{
+						\"restrictionsToCheck\":[102,501,600],
+						\"constant\":10
+					}
+				}",
+				"{}",
+				"{}"
+			]	
+		}
+	],
+	"PlayRestriction":{
+		"NormalRestrictions":["Cannot be Played Normally"]
+	},
+	"c":1,
+	"spellType":"Simple",
+	"subtypes":["Rune","Simple"],
+	"subtypeText":"Rune Simple"
+}
