@@ -39,6 +39,7 @@ public enum SubeffectType
     SetXByBoardCount = 200,
     SetXByGamestateValue = 201,
     SetXByMath = 202,
+    SetXByTargetValue = 203,
     ChangeXByGamestateValue = 211,
     //SetXByTargetN = 250,
     //SetXByTargetE = 251,
