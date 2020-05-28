@@ -52,7 +52,7 @@ public class PlayRestriction
 
     public bool EvaluateEffectPlay(int x, int y, Effect effect)
     {
-        foreach (string r in NormalRestrictions)
+        foreach (string r in EffectRestrictions)
         {
             switch (r)
             {
@@ -65,7 +65,7 @@ public class PlayRestriction
                 case MustNormally:
                     return false;
                 default:
-                    Debug.LogError($"You forgot to check for condition {r} in Normal Play for PlayRestriction");
+                    Debug.LogError($"You forgot to check for condition {r} in Effect Play for PlayRestriction");
                     return false;
             }
         }

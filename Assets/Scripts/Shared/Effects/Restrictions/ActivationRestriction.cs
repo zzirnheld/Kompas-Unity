@@ -31,6 +31,9 @@ public class ActivationRestriction
                 case TimesPerTurn:
                     if (Effect.TimesUsedThisTurn >= MaxTimes) return false;
                     break;
+                case TimesPerRound:
+                    if (Effect.TimesUsedThisRound >= MaxTimes) return false;
+                    break;
                 case FriendlyTurn:
                     if (Effect.Game.TurnPlayer != activator) return false;
                     break;
