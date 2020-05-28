@@ -1,7 +1,7 @@
 {
 	"cardType":83,
-	"cardName":"Ansuz",
-	"effText":"Can’t be cast normally. Set a character’s N to 0 and ESW to 10.",
+	"cardName":"Algiz",
+	"effText":"Can’t be cast normally. Give a character +5E.",
 	"effects":[
 		{
 			"triggerCondition":401,
@@ -11,7 +11,7 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[0,109],
+			"subeffectTypes":[0,100]
 			"subeffects":[
 				"{
 						\"boardRestriction\":
@@ -20,10 +20,7 @@
 						}
 				}",
 				"{
-					\"NVal\":1,
-					\"EVal\":10,
-					\"SVal\":10,
-					\"WVal\":10
+					\"eChange\":5
 				}"
 			]	
 		}

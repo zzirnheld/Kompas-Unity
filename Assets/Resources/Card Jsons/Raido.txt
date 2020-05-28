@@ -1,7 +1,7 @@
 {
 	"cardType":83,
-	"cardName":"Ansuz",
-	"effText":"Can’t be cast normally. Set a character’s N to 0 and ESW to 10.",
+	"cardName":"Raido",
+	"effText":"Can’t be cast normally. Move a card anywhere (that there isn't already a card).",
 	"effects":[
 		{
 			"triggerCondition":401,
@@ -11,20 +11,20 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[0,109],
+			"subeffectTypes":[0,4,309]
 			"subeffects":[
 				"{
 						\"boardRestriction\":
 						{
-							\"restrictionsToCheck\":[3,103]
+							\"restrictionsToCheck\":[103]
 						}
 				}",
 				"{
-					\"NVal\":1,
-					\"EVal\":10,
-					\"SVal\":10,
-					\"WVal\":10
-				}"
+					\"spaceRestriction\":{
+						\"restrictionsToCheck\":[1]
+					}
+				}",
+				"{}"
 			]	
 		}
 	],

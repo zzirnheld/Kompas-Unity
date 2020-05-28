@@ -67,4 +67,6 @@ Runecarver
 Runewriter
 Runewritten
 Ansuz
+Algiz
+Raido
 lulthisdontexistmydood
