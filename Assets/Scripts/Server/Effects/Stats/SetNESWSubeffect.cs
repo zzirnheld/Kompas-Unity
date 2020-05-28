@@ -9,7 +9,7 @@ public class SetNESWSubeffect : ServerSubeffect
     public int SVal = -1;
     public int WVal = -1;
 
-    public CharacterCard CharTarget { get => Target as CharacterCard; }
+    public CharacterCard CharTarget => Target as CharacterCard;
 
     public int RealNVal { get => NVal < 0 ? CharTarget.N : NVal; }
     public int RealEVal { get => EVal < 0 ? CharTarget.E : EVal; }

@@ -63,4 +63,5 @@ Runecaller
 Runespeaker
 Runepainter
 Runechanneler
+Ansuz
 lulthisdontexistmydood
