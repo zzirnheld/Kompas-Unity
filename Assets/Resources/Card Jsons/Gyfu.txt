@@ -1,0 +1,43 @@
+{
+	"cardType":83,
+	"cardName":"Thurisaz",
+	"effText":"Can’t be cast normally. Give X enemy characters +1EW. Gain X pips. ",
+	"effects":[
+		{
+			"triggerCondition":401,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
+				}
+			}",
+			"subeffectTypes":[0,100,408,101]
+			"subeffects":[
+				"{
+						\"boardRestriction\":
+						{
+							\"restrictionsToCheck\":[3,9,103]
+						}
+				}",
+				"{
+					\"eChange\":1,
+					\"wChange\":1
+				}",
+				"{
+					\"CanDecline\":true,
+					\"JumpTo\":0
+				}",
+				"{
+					\"xMultiplier\":1
+				}"
+			]	
+		}
+	],
+	"PlayRestriction":{
+		"NormalRestrictions":["Cannot be Played Normally"]
+	},
+	"c":1,
+	"spellType":"Simple",
+	"subtypes":["Rune","Simple"],
+	"subtypeText":"Rune Simple"
+}
