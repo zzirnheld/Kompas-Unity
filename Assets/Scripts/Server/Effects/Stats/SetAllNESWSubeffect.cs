@@ -1,14 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
+﻿using System.Linq;
 
-public class ChangeAllNESWSubeffect : ServerSubeffect
+public class SetAllNESWSubeffect : SetNESWSubeffect
 {
-    public int NMod = 0;
-    public int EMod = 0;
-    public int SMod = 0;
-    public int WMod = 0;
+    private (int, int, int, int) GetRealValues(CharacterCard c)
+    {
+        (int n, int e, int s, int w) = (
+            NVal > 0 ? NVal : c.N,
+            EVal > 0 ? EVal : c.E,
+            SVal > 0 ? SVal : c.S,
+            WVal > 0 ? WVal : c.W
+        );
+        return (n, e, s, w);
+    }
+
     //default to making sure things are characters before changing their stats
     public BoardRestriction BoardRestriction = new BoardRestriction()
     {
@@ -32,9 +36,8 @@ public class ChangeAllNESWSubeffect : ServerSubeffect
         {
             var charCard = c as CharacterCard;
             if (c == null) continue;
-            ServerGame.AddToStats(charCard, NMod, EMod, SMod, WMod);
+            var (n, e, s, w) = GetRealValues(charCard);
+            ServerGame.SetStats(charCard, n, e, s, w);
         }
-
-        ServerEffect.ResolveNextSubeffect();
     }
 }

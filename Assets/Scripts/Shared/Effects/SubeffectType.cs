@@ -31,6 +31,7 @@ public enum SubeffectType
     ChangeSpellC = 108,
     SetNESW = 109,
     ChangeAllNESW = 110,
+    SetAllNESW = 111,
     Activate = 120,
     TakeControl = 130,
     //Deactivate = 121,

@@ -92,6 +92,9 @@ public abstract class ServerSubeffect : Subeffect
             case SubeffectType.ChangeAllNESW:
                 toReturn = JsonUtility.FromJson<ChangeAllNESWSubeffect>(subeffJson);
                 break;
+            case SubeffectType.SetAllNESW:
+                toReturn = JsonUtility.FromJson<SetAllNESWSubeffect>(subeffJson);
+                break;
             case SubeffectType.TakeControl:
                 toReturn = JsonUtility.FromJson<TakeControlSubeffect>(subeffJson);
                 break;
