@@ -38,10 +38,11 @@ public class ServerTrigger : Trigger
     /// Pushes this trigger's effect onto the stack with the value of X if applicable.
     /// </summary>
     /// <param name="x"></param>
-    protected void TriggerEffect(int? x)
+    protected void TriggerEffect(int? x, Card triggerer)
     {
         Debug.Log($"Triggering effect of {effToTrigger.Source.CardName} for value of x={x}");
         if (x.HasValue) effToTrigger.X = x.Value;
+        if (triggerer != null) effToTrigger.Targets.Add(triggerer);
         //TODO should you notify right now about effect x? as of right now, no, because the important thing is the x value currently set in client network controller
         //and either another effect could be currently resolving with a different value of x
         //or the value of x could get changed between when this triggers and when the effect resolves
@@ -86,7 +87,7 @@ public class ServerTrigger : Trigger
             Debug.Log($"Trigger is valid for effect of {effToTrigger.Source.CardName} with id {effToTrigger.Source.ID}");
             if (Optional) effToTrigger.serverGame.EffectsController
                      .AskForTrigger(this, x, cardTriggerer, stackTrigger, triggerer, effToTrigger.serverGame.ServerPlayers[effToTrigger.Source.ControllerIndex]);
-            else TriggerEffect(x);
+            else TriggerEffect(x, cardTriggerer);
         }
     }
 }

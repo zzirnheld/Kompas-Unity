@@ -85,5 +85,6 @@ public enum SubeffectType
     HangingActivate = 504,
 
     //misc
-    EndTurn = 600
+    EndTurn = 600,
+    Attack = 601
 }

@@ -9,6 +9,7 @@ public class BoardRestriction : CardRestriction
         Adjacent = 0,
         WithinCSpaces = 1,
         InAOE = 2,
+        DistanceToTargetWithinCSpaces = 10,
         ExactlyXSpaces = 100,
         Summoned = 200
     }
@@ -32,6 +33,9 @@ public class BoardRestriction : CardRestriction
                     break;
                 case BoardRestrictions.InAOE:
                     if (!Subeffect.Source.CardInAOE(potentialTarget)) return false;
+                    break;
+                case BoardRestrictions.DistanceToTargetWithinCSpaces:
+                    if (potentialTarget.DistanceTo(Subeffect.Source) > cSpaces) return false;
                     break;
                 case BoardRestrictions.ExactlyXSpaces:
                     if (potentialTarget.DistanceTo(Subeffect.Source) != Subeffect.Effect.X) return false;

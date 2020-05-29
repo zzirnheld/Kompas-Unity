@@ -29,7 +29,8 @@
 		"NormalRestrictions":["Cannot be Played Normally"]
 	},
 	"c":4,
-	"spellType":"Simple",
-	"subtypes":["Rune","Simple"],
-	"subtypeText":"Rune Simple"
+	"spellType":"Terraform",
+	"subtypes":["Rune","Terraform"],
+	"subtypeText":"Rune Terraform",
+	"arg":1
 }
