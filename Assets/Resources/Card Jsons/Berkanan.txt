@@ -1,0 +1,37 @@
+{
+	"cardType":83,
+	"cardName":"Berkanan",
+	"effText":"Can’t be cast normally. If it’s your turn, take control of an enemy character and end your turn.",
+	"effects":[
+		{
+			"triggerCondition":401,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
+				}
+			}",
+			"subeffectTypes":[409,0,130,600]
+			"subeffects":[
+				"{
+					\"Condition\":\"Must be Friendly Turn\"
+				}",
+				"{
+						\"boardRestriction\":
+						{
+							\"restrictionsToCheck\":[3,9,103]
+						}
+				}",
+				"{}",
+				"{}"
+			]	
+		}
+	],
+	"PlayRestriction":{
+		"NormalRestrictions":["Cannot be Played Normally"]
+	},
+	"c":8
+	"spellType":"Simple",
+	"subtypes":["Rune","Simple"],
+	"subtypeText":"Rune Simple"
+}

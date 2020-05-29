@@ -295,6 +295,15 @@ public class ServerGame : Game {
 
     public override void SetActivated(Card c, bool activated) => SetActivated(c, activated, null);
 
+    public void ChangeControl(Card c, Player controller, IServerStackable stackSrc)
+    {
+        ServerPlayers[c.ControllerIndex].ServerNotifier.NotifyChangeController(c, controller);
+        base.ChangeControl(c, controller);
+        //TODO triggers?
+    }
+
+    public override void ChangeControl(Card c, Player controller) => ChangeControl(c, controller, null);
+
     public Card Draw(int player, IServerStackable stackSrc = null)
     {
         var drawn = DrawX(player, 1, stackSrc);

@@ -197,6 +197,11 @@ public abstract class Game : MonoBehaviour {
         c.Activated = activated;
     }
 
+    public virtual void ChangeControl(Card c, Player controller)
+    {
+        c.ChangeController(controller);
+    }
+
     public virtual void SetStats(SpellCard spellCard, int c)
     {
         if(spellCard == null)

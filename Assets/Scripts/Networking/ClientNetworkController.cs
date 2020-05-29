@@ -151,6 +151,11 @@ public class ClientNetworkController : NetworkController {
                 var toActivate = ClientGame.GetCardFromID(packet.cardID);
                 ClientGame.SetActivated(toActivate, packet.Answer);
                 break;
+            case Packet.Command.ChangeControl:
+                var toChangeCtrl = ClientGame.GetCardFromID(packet.cardID);
+                var player = ClientGame.Players[packet.ControllerIndex];
+                ClientGame.ChangeControl(toChangeCtrl, player);
+                break;
             case Packet.Command.SetPips:
                 ClientGame.SetFriendlyPips(packet.Pips);
                 break;
