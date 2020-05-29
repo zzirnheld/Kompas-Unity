@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PayPipsTargetCostSubeffect : ServerSubeffect
 {
+    public int Multiplier = 1;
+    public int Divisor = 1;
+    public int Modifier = 0;
+
     public override void Resolve()
     {
         if(Target == null)
@@ -12,7 +16,7 @@ public class PayPipsTargetCostSubeffect : ServerSubeffect
             return;
         }
 
-        int toPay = Target.Cost;
+        int toPay = Target.Cost * Multiplier / Divisor + Modifier;
         if (EffectController.pips < toPay)
         {
             ServerEffect.EffectImpossible();
@@ -20,8 +24,7 @@ public class PayPipsTargetCostSubeffect : ServerSubeffect
         }
 
         Debug.Log("Paying " + toPay + " pips for target cost");
-        EffectController.pips -= toPay;
-        EffectController.ServerNotifier.NotifySetPips(EffectController.pips);
+        ServerGame.GivePlayerPips(EffectController, EffectController.pips - toPay);
         ServerEffect.ResolveNextSubeffect();
     }
 }

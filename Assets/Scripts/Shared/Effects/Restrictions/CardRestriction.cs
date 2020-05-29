@@ -68,6 +68,8 @@ public class CardRestriction
     public string[] subtypesExclude;
     public int constant;
     public CardLocation[] locations;
+    public int costMultiplier = 1;
+    public int costDivisor = 1;
 
     public virtual bool Evaluate (Card potentialTarget, int x)
     {
@@ -236,7 +238,7 @@ public class CardRestriction
                     if (found) break;
                     else return false;
                 case CardRestrictions.EffectControllerCanPayCost:
-                    if (Subeffect.Effect.Controller.pips < potentialTarget.Cost) return false;
+                    if (Subeffect.Effect.Controller.pips < potentialTarget.Cost * costMultiplier / costDivisor) return false;
                     break;
                 default:
                     Debug.LogError($"You forgot to implement a check for {c}");
