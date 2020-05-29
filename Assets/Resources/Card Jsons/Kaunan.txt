@@ -1,0 +1,36 @@
+{
+	"cardType":83,
+	"cardName":"Kaunan",
+	"effText":"Can’t be cast normally. Give a character -3EW.",
+	"effects":[
+		{
+			"triggerCondition":401,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
+				}
+			}",
+			"subeffectTypes":[0,100]
+			"subeffects":[
+				"{
+						\"boardRestriction\":
+						{
+							\"restrictionsToCheck\":[3,103]
+						}
+				}",
+				"{
+					\"eChange\":-3,
+					\"wChange\":-3
+				}"
+			]	
+		}
+	],
+	"PlayRestriction":{
+		"NormalRestrictions":["Cannot be Played Normally"]
+	},
+	"c":2
+	"spellType":"Simple",
+	"subtypes":["Rune","Simple"],
+	"subtypeText":"Rune Simple"
+}
