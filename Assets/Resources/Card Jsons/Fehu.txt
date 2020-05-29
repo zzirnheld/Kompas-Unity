@@ -1,0 +1,31 @@
+{
+	"cardType":83,
+	"cardName":"Fehu",
+	"effText":"Can’t be cast normally. Draw 2.",
+	"effects":[
+		{
+			"triggerCondition":401,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
+				}
+			}",
+			"subeffectTypes":[202,306]
+			"subeffects":[
+				"{
+					\"Multiplier\":0,
+					\"Modifier\":2
+				}",
+				"{}"
+			]	
+		}
+	],
+	"PlayRestriction":{
+		"NormalRestrictions":["Cannot be Played Normally"]
+	},
+	"c":1
+	"spellType":"Simple",
+	"subtypes":["Rune","Simple"],
+	"subtypeText":"Rune Simple"
+}
