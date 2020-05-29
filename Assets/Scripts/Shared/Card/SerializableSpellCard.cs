@@ -10,5 +10,5 @@ public class SerializableSpellCard : SerializableCard {
     public string spellType;
     public bool fast;
     public string subtext;
-
+    public int arg;
 }

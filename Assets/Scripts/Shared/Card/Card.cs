@@ -189,36 +189,23 @@ public abstract class Card : CardBase {
     }
     
     #region distance/adjacency
-    public int DistanceTo(int x, int y)
-    {
-        return Mathf.Abs(x - BoardX) > Mathf.Abs(y - BoardY) ? Mathf.Abs(x - BoardX) : Mathf.Abs(y - BoardY);
+    public int DistanceTo(int x, int y) =>
+        Mathf.Abs(x - BoardX) > Mathf.Abs(y - BoardY) ? Mathf.Abs(x - BoardX) : Mathf.Abs(y - BoardY);
         /* equivalent to
          * if (Mathf.Abs(card.X - X) > Mathf.Abs(card.Y - Y)) return Mathf.Abs(card.X - X);
          * else return Mathf.Abs(card.Y - Y);
          * is card.X - X > card.Y - Y? If so, return card.X -X, otherwise return card.Y - Y
         */
-    }
-    public int DistanceTo(Card card)
-    {
-        return DistanceTo(card.BoardX, card.BoardY);
-    }
+    public int DistanceTo(Card card) => DistanceTo(card.BoardX, card.BoardY);
     public bool WithinSlots(int numSlots, Card card)
     {
         if (card == null) return false;
         return DistanceTo(card) <= numSlots;
     }
-    public bool WithinSlots(int numSlots, int x, int y)
-    {
-        return DistanceTo(x, y) <= numSlots;
-    }
-    public bool IsAdjacentTo(Card card)
-    {
-        return DistanceTo(card) == 1;
-    }
-    public bool IsAdjacentTo(int x, int y)
-    {
-        return DistanceTo(x, y) == 1;
-    }
+    public bool WithinSlots(int numSlots, int x, int y) => DistanceTo(x, y) <= numSlots;
+    public bool IsAdjacentTo(Card card) => DistanceTo(card) == 1;
+    public bool IsAdjacentTo(int x, int y) => DistanceTo(x, y) == 1;
+    public virtual bool CardInAOE(Card c) => false;
     #endregion distance/adjacency
 
     //misc mechanics methods
