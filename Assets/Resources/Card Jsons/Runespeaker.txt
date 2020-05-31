@@ -15,7 +15,8 @@
 				"{
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[3,100,601]
+						\"restrictionsToCheck\":[2,4,100,601,602],
+						\"subtypesInclude\":[\"Rune\"]
 					}
 				}",
 				"{
@@ -25,10 +26,7 @@
 					}
 				}",
 				"{}",
-				"{
-					\"TargetIndex\":-1,
-					\"SpaceIndex\":-1
-				}",
+				"{}",
 				"{
 					\"JumpTo\":7
 				}",

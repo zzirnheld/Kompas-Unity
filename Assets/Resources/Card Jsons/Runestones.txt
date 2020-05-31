@@ -1,0 +1,33 @@
+{
+	"cardType":83,
+	"cardName":"Runestones",
+	"effText":"Once each turn, when you cast a Rune, you can search your deck for a Rune spell.",
+	"effects":[
+		{
+			"triggerCondition":401,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[1,101,500],
+					\"cardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,4,103],
+						\"subtypesInclude\":[\"Rune\"]
+					}
+				}
+			}",
+			"subeffectTypes":[1,304],
+			"subeffects":[
+				"{
+					\"restrictionsToCheck\":[2,4,7,102],
+					\"subtypesInclude\":[\"Rune\"]
+				}",
+				"{}"
+			]
+		}
+	],
+	"c":2,
+	"spellType":"Enchant",
+	"subtypes":["Rune","Enchant"],
+	"subtypeText":"Rune Enchant"
+}

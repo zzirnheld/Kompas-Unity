@@ -24,6 +24,9 @@
 			]
 		}
 	],
+	"PlayRestriction":{
+		"NormalRestrictions":["Cannot be Played Normally"]
+	},
 	"c":1,
 	"spellType":"Enchant",
 	"subtypes":["Rune","Enchant"],

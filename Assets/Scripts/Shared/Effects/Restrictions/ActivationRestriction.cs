@@ -11,6 +11,7 @@ public class ActivationRestriction
     public const string TimesPerTurn = "Max Times Per Turn";
     public const string TimesPerRound = "Max Times Per Round";
     public const string FriendlyTurn = "Friendly Turn";
+    public const string EnemyTurn = "Enemy Turn";
 
     public int MaxTimes = 1;
 
@@ -35,6 +36,9 @@ public class ActivationRestriction
                     if (Effect.TimesUsedThisRound >= MaxTimes) return false;
                     break;
                 case FriendlyTurn:
+                    if (Effect.Game.TurnPlayer != activator) return false;
+                    break;
+                case EnemyTurn:
                     if (Effect.Game.TurnPlayer != activator) return false;
                     break;
                 default:

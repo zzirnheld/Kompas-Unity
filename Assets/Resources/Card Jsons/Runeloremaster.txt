@@ -15,7 +15,7 @@
 				"{
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[2,100,601],
+						\"restrictionsToCheck\":[2,4,100,601,602],
 						\"subtypesInclude\":[\"Rune\"]
 					}
 				}",
@@ -26,14 +26,11 @@
 					}
 				}",
 				"{}",
-				"{
-					\"TargetIndex\":-1,
-					\"SpaceIndex\":-1
-				}",
+				"{}",
 				"{
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[2,100,600,601],
+						\"restrictionsToCheck\":[2,4,100,600,601,602],
 						\"subtypesInclude\":[\"Rune\"]
 					}
 				}",
@@ -44,10 +41,7 @@
 					}
 				}",
 				"{}",
-				"{
-					\"TargetIndex\":-1,
-					\"SpaceIndex\":-1
-				}"
+				"{}"
 			]
 		}
 	],
