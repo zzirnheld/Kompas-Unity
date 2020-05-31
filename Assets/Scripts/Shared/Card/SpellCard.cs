@@ -8,6 +8,7 @@ public class SpellCard : Card
     public const string SimpleSubtype = "Simple";
     public const string DelayedSubtype = "Delayed";
     public const string TerraformSubtype = "Terraform";
+    public const string VanishingSubtype = "Vanishing";
 
     public bool Fast { get; private set; }
     public int C { get; set; }
@@ -62,4 +63,10 @@ public class SpellCard : Card
     }
 
     public override bool CardInAOE(Card c) => SpellSubtype == TerraformSubtype && DistanceTo(c) <= Arg;
+
+    public override void ResetForTurn(Player turnPlayer)
+    {
+        base.ResetForTurn(turnPlayer);
+        if (SpellSubtype == VanishingSubtype && TurnsOnBoard >= Arg) game.Discard(this);
+    }
 }

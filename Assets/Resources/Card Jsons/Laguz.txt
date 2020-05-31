@@ -1,0 +1,38 @@
+{
+	"cardType":83,
+	"cardName":"Laguz",
+	"effText":"Can’t be cast normally. When a character moves themselves adjacent to me, you can move them 1 space.",
+	"effects":[
+		{
+			"triggerCondition":408,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[1,101,501],
+					\"cardRestriction\":{
+						\"onBoardRestrictions\":[2]
+					}
+				}
+			}",
+			"subeffectTypes":[4,309],
+			"subeffects":[
+				"{
+					\"spaceRestriction\":
+					{
+						\"restrictionsToCheck\":[1,251],
+						\"C\":3
+					}
+				}",
+				"{}"
+			]	
+		}
+	],
+	"PlayRestriction":{
+		"NormalRestrictions":["Cannot be Played Normally"]
+	},
+	"c":2,
+	"spellType":"Terraform",
+	"subtypes":["Rune","Terraform"],
+	"subtypeText":"Rune Terraform",
+	"arg":1
+}

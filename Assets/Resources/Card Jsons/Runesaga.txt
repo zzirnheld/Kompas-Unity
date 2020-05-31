@@ -1,0 +1,50 @@
+{
+	"cardType":83,
+	"cardName":"Runesaga",
+	"effText":"Must be cast normally. Give a Summoned Runer +25ESW. Handcast any number of Runes.",
+	"effects":[
+		{
+			"triggerCondition":401,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
+				}
+			}",
+			"subeffectTypes":[0,100,3,303,410],
+			"subeffects":[
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,3,10,103],
+						\"subtypesInclude\":[\"Runer\"]
+					}
+				}",
+				"{
+					\"eChange\":25,
+					\"sChange\":25,
+					\"wChange\":25
+				}",
+				"{
+					\"cardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,4,7,100],
+						\"subtypesInclude\":[\"Rune\"]
+					}
+				}",
+				"{}",
+				"{
+					\"CanDecline\":true,
+					\"JumpTo\":2
+				}"
+			]
+		}
+	],
+	"PlayRestriction":{
+		"EffectRestrictions":["Must be Played Normally"]
+	},
+	"c":25,
+	"spellType":"Simple",
+	"subtypes":["Runer","Simple"],
+	"subtypeText":"Runer Simple"
+}

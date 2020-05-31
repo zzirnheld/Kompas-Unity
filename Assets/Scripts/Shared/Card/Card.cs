@@ -59,6 +59,7 @@ public abstract class Card : CardBase {
     public int ID { get; private set; }
     public Effect[] Effects { get; private set; }
     public List<AugmentCard> Augments { get; private set; } = new List<AugmentCard>();
+    public int TurnsOnBoard { get; private set; }
     
     public int IndexInList
     {
@@ -276,6 +277,7 @@ public abstract class Card : CardBase {
         }
 
         SpacesMoved = 0;
+        TurnsOnBoard++;
     }
 
     #region augments
