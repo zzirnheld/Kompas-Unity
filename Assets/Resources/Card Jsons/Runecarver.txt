@@ -15,7 +15,8 @@
 				"{
 					\"CardRestriction\":
 					{
-						\"restrictionsToCheck\":[2,7,103],
+						\"restrictionsToCheck\":[2,7,104],
+						\"locations\":[1,2,3],
 						\"subtypesInclude\":[\"Rune\"]
 					},
 					\"MaxCanChoose\":1

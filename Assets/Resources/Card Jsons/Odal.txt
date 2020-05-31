@@ -1,0 +1,48 @@
+{
+	"cardType":83,
+	"cardName":"Odal",
+	"effText":"Can’t be cast normally. Choose an SX character. Pay X pips. Kill the chosen character and deck-summon an SX Runer.",
+	"effects":[
+		{
+			"triggerCondition":401,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
+				}
+			}",
+			"subeffectTypes":[0,203,102,301,1,4,303]
+			"subeffects":[
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[3]
+					}
+				}",
+				"{
+					\"WhatToCount\":\"Cost\"
+				}",
+				"{}",
+				"{}",
+				"{
+					\"restrictionsToCheck\":[2,3,7,102],
+					\"subtypesInclude\":[\"Runer\"]
+				}",
+				"{
+					\"spaceRestriction\":
+					{
+						\"restrictionsToCheck\":[0]
+					}
+				}",
+				"{}"
+			]	
+		}
+	],
+	"PlayRestriction":{
+		"NormalRestrictions":["Cannot be Played Normally"]
+	},
+	"c":1,
+	"spellType":"Simple",
+	"subtypes":["Rune","Simple"],
+	"subtypeText":"Rune Simple"
+}
