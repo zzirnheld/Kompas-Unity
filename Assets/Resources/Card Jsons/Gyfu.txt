@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Gyfu",
-	"effText":"Can’t be cast normally. Give X enemy characters +1EW. Gain X pips. ",
+	"effText":"Can’t be cast normally. Give X enemy characters +1EW. Gain X pips.",
 	"effects":[
 		{
 			"triggerCondition":401,
@@ -16,7 +16,7 @@
 				"{
 						\"boardRestriction\":
 						{
-							\"restrictionsToCheck\":[3,9,103]
+							\"restrictionsToCheck\":[3,9,103,600]
 						}
 				}",
 				"{

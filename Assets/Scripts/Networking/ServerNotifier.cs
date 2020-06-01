@@ -292,6 +292,7 @@ public class ServerNotifier : MonoBehaviour
     /// </summary>
     public void AcceptTarget()
     {
+        Debug.Log($"Accepting target of {Player.index}");
         Packet p = new Packet(Packet.Command.TargetAccepted);
         SendPacket(p);
     }
