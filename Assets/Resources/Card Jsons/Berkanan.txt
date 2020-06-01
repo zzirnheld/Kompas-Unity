@@ -30,7 +30,7 @@
 	"PlayRestriction":{
 		"NormalRestrictions":["Cannot be Played Normally"]
 	},
-	"c":8
+	"c":8,
 	"spellType":"Simple",
 	"subtypes":["Rune","Simple"],
 	"subtypeText":"Rune Simple"
