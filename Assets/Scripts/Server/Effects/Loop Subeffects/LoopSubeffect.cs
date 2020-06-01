@@ -10,7 +10,11 @@ public class LoopSubeffect : ServerSubeffect
     protected virtual void OnLoopExit()
     {
         //make the "no other targets" button disappear
-        if (CanDecline) EffectController.ServerNotifier.DisableDecliningTarget();
+        if (CanDecline)
+        {
+            EffectController.ServerNotifier.DisableDecliningTarget();
+            EffectController.ServerNotifier.AcceptTarget(); // otherwise it keeps them in the now-irrelevant target mode
+        }
     }
 
     protected virtual bool ShouldContinueLoop => true;
