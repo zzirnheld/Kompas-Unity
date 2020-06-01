@@ -11,7 +11,7 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[0,203,103]
+			"subeffectTypes":[0,203,103],
 			"subeffects":[
 				"{
 						\"boardRestriction\":

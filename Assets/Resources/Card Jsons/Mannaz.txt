@@ -11,7 +11,7 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[404,1,405,12,304,350]
+			"subeffectTypes":[404,1,405,12,304,350],
 			"subeffects":[
 				"{
 					\"JumpTo\":3

@@ -11,7 +11,7 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[409,0,130,600]
+			"subeffectTypes":[409,0,130,600],
 			"subeffects":[
 				"{
 					\"Condition\":\"Must be Friendly Turn\"

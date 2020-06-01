@@ -11,7 +11,7 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[3,150,4,300]
+			"subeffectTypes":[3,150,4,300],
 			"subeffects":[
 				"{
 					\"cardRestriction\":
