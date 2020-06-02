@@ -16,7 +16,7 @@
 				"{
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[2,4,7,100,601,602],
+						\"restrictionsToCheck\":[2,4,7,101,601,602],
 						\"subtypesInclude\":[\"Rune\"],
 						\"costDivisor\":2
 					}
