@@ -148,9 +148,9 @@ public class ServerGame : Game {
         Players[1].pips = Players[0].Avatar.S;
 
         //determine who goes first and tell the players
-        int first = Random.value > 0.5f ? 0 : 1;
-        ServerPlayers[first].ServerNotifier.YoureFirst();
-        ServerPlayers[1 - first].ServerNotifier.YoureSecond();
+        TurnPlayerIndex = Random.value > 0.5f ? 0 : 1;
+        ServerPlayers[TurnPlayerIndex].ServerNotifier.YoureFirst();
+        ServerPlayers[1 - TurnPlayerIndex].ServerNotifier.YoureSecond();
     }
     #endregion
 

@@ -309,6 +309,8 @@ namespace KompasNetworking
                 case Command.PlayerSetX:
                 case Command.SetEffectsX:
                 case Command.EffectResolving:
+                case Command.SetEnemyPips:
+                case Command.SetPips:
                     return false;
                 default:
                     return true;

@@ -44,7 +44,7 @@ public class ConditionalEndSubeffect : ServerSubeffect
                 end = !ServerGame.cards.Any(c => CardRestriction.Evaluate(c.Value));
                 break;
             case MustBeFriendlyTurn:
-                end = ServerGame.TurnPlayer == Effect.Controller;
+                end = ServerGame.TurnPlayer != Effect.Controller;
                 break;
             default:
                 throw new System.ArgumentException($"Condition {Condition} invalid for conditional end subeffect");
