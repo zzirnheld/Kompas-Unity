@@ -11,12 +11,12 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[3,150,4,300],
+			"subeffectTypes":[2,150,4,300],
 			"subeffects":[
 				"{
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[2,4,100,601,602],
+						\"restrictionsToCheck\":[2,4,7,100,601,602],
 						\"subtypesInclude\":[\"Rune\"],
 						\"costDivisor\":2
 					}

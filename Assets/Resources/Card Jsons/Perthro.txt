@@ -11,15 +11,16 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[404,8,405,12,304,350],
+			"subeffectTypes":[10,404,8,405,12,304,10,402,350],
 			"subeffects":[
+				"{}",
 				"{
-					\"JumpTo\":3
+					\"JumpTo\":4
 				}",
 				"{
 					\"CardRestriction\":
 					{
-						\"restrictionsToCheck\":[4,102,501],
+						\"restrictionsToCheck\":[4,7,102,501],
 						\"constant\":10
 					},
 					\"MaxCanChoose\":3
@@ -28,11 +29,15 @@
 				"{
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[102,501,600],
+						\"restrictionsToCheck\":[7,102,501,600],
 						\"constant\":10
 					}
 				}",
 				"{}",
+				"{}",
+				"{
+					\"JumpTo\":5
+				}",
 				"{}"
 			]	
 		}

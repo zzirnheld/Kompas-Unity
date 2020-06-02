@@ -19,7 +19,7 @@
 				"{
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[3,102,501],
+						\"restrictionsToCheck\":[3,7,102,501],
 						\"constant\":10
 					}
 				}",
@@ -27,7 +27,7 @@
 				"{
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[102,501,600],
+						\"restrictionsToCheck\":[7,102,501,600],
 						\"constant\":10
 					}
 				}",
