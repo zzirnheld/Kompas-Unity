@@ -7,10 +7,12 @@
 			"triggerCondition":401,
 			"trigger":
 			"{
-				\"triggerRestrictions\":[1,101],
-				\"cardRestriction\":{
-					\"restrictionsToCheck\":[2],
-					\"subtypesInclude\":[\"Runer\"]
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[1,101],
+					\"cardRestriction\":{
+						\"restrictionsToCheck\":[2,4],
+						\"subtypesInclude\":[\"Rune\"]
+					}
 				}
 			}",
 			"subeffectTypes":[5,203,101,108],
