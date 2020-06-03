@@ -51,13 +51,8 @@ public class ChooseFromListSubeffect : ServerSubeffect
 
         //if there are no possible targets, declare the effect impossible
         //if you want to continue resolution anyway, add an if impossible check before this subeffect.
-        if(!potentialTargets.Any())
-        {
-            ServerEffect.EffectImpossible();
-            return;
-        }
-
-        RequestTargets();
+        if (potentialTargets.Any()) RequestTargets();
+        else ServerEffect.EffectImpossible();
     }
 
     public virtual bool AddListIfLegal(IEnumerable<Card> choices)
