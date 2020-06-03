@@ -5,10 +5,10 @@ public class SetAllNESWSubeffect : SetNESWSubeffect
     private (int, int, int, int) GetRealValues(CharacterCard c)
     {
         (int n, int e, int s, int w) = (
-            NVal > 0 ? NVal : c.N,
-            EVal > 0 ? EVal : c.E,
-            SVal > 0 ? SVal : c.S,
-            WVal > 0 ? WVal : c.W
+            NVal >= 0 ? NVal : c.N,
+            EVal >= 0 ? EVal : c.E,
+            SVal >= 0 ? SVal : c.S,
+            WVal >= 0 ? WVal : c.W
         );
         return (n, e, s, w);
     }
