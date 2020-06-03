@@ -29,7 +29,7 @@
 				"{
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[2,100,214,601],
+						\"restrictionsToCheck\":[2,7,100,214,601],
 						\"subtypesInclude\":[\"Rune\"]
 					}
 				}",

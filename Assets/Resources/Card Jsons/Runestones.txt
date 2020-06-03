@@ -11,7 +11,7 @@
 					\"triggerRestrictions\":[1,101,500],
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[2,4,103],
+						\"restrictionsToCheck\":[2,4,7,103],
 						\"subtypesInclude\":[\"Rune\"]
 					}
 				}
