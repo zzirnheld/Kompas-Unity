@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using KompasNetworking;
+using System.Linq;
 
 public class ServerNotifier : MonoBehaviour
 {
@@ -252,13 +253,11 @@ public class ServerNotifier : MonoBehaviour
         Debug.Log("Asking for space target");
     }
 
-    public void GetChoicesFromList(List<Card> potentialTargets, int maxNum, ChooseFromListSubeffect src)
+    public void GetChoicesFromList(IEnumerable<Card> potentialTargets, int maxNum, ChooseFromListSubeffect src)
     {
-        int[] cardIDs = new int[potentialTargets.Count];
-        for(int i = 0; i < potentialTargets.Count; i++)
-        {
-            cardIDs[i] = potentialTargets[i].ID;
-        }
+        int[] cardIDs = new int[potentialTargets.Count()];
+        int i = 0;
+        foreach(Card c in potentialTargets) cardIDs[i++] = c.ID;
         Packet packet = new Packet(Packet.Command.GetChoicesFromList, src.ThisCard, cardIDs, maxNum, src.ServerEffect.EffectIndex, src.SubeffIndex);
         SendPacket(packet);
         Debug.Log($"Asking for targets from list of cardIDs {string.Join(",", cardIDs)}");

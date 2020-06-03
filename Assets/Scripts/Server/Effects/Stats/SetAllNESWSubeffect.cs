@@ -31,13 +31,15 @@ public class SetAllNESWSubeffect : SetNESWSubeffect
 
     public override void Resolve()
     {
-        var targets = ServerGame.cards.Values.Where(c => BoardRestriction.Evaluate(c));
+        var targets = ServerGame.Cards.Where(c => BoardRestriction.Evaluate(c));
         foreach (Card c in targets)
         {
-            var charCard = c as CharacterCard;
-            if (c == null) continue;
-            var (n, e, s, w) = GetRealValues(charCard);
-            ServerGame.SetStats(charCard, n, e, s, w);
+            if (c is CharacterCard charCard)
+            {
+                var (n, e, s, w) = GetRealValues(charCard);
+                ServerGame.SetStats(charCard, n, e, s, w);
+            }
         }
+        ServerEffect.ResolveNextSubeffect();
     }
 }

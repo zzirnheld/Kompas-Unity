@@ -22,7 +22,7 @@ public class ChooseFromListSubeffect : ServerSubeffect
     /// </summary>
     public int MaxCanChoose = -1;
 
-    protected List<Card> potentialTargets;
+    protected IEnumerable<Card> potentialTargets;
 
     protected void RequestTargets()
     {
@@ -47,20 +47,11 @@ public class ChooseFromListSubeffect : ServerSubeffect
             return;
         }
 
-        potentialTargets = new List<Card>();
-
-        //get all cards that fulfill the cardrestriction
-        foreach(KeyValuePair<int, Card> pair in ServerGame.cards)
-        {
-            if (CardRestriction.Evaluate(pair.Value))
-            {
-                potentialTargets.Add(pair.Value);
-            }
-        }
+        potentialTargets = ServerGame.Cards.Where(c => CardRestriction.Evaluate(c));
 
         //if there are no possible targets, declare the effect impossible
         //if you want to continue resolution anyway, add an if impossible check before this subeffect.
-        if(potentialTargets.Count == 0)
+        if(!potentialTargets.Any())
         {
             ServerEffect.EffectImpossible();
             return;

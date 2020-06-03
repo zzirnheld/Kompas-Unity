@@ -41,7 +41,7 @@ public class ConditionalEndSubeffect : ServerSubeffect
                 end = ServerEffect.X < C;
                 break;
             case NoneFitRestriction:
-                end = !ServerGame.cards.Any(c => CardRestriction.Evaluate(c.Value));
+                end = !ServerGame.Cards.Any(c => CardRestriction.Evaluate(c));
                 break;
             case MustBeFriendlyTurn:
                 end = ServerGame.TurnPlayer != Effect.Controller;

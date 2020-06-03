@@ -117,7 +117,7 @@ public class ServerGame : Game {
             lock (AddCardsLock)
             {
                 card = CardRepo.InstantiateServerNonAvatar(name, this, player, cardCount);
-                cards.Add(cardCount, card);
+                cardsByID.Add(cardCount, card);
                 cardCount++;
             }
             player.deckCtrl.AddCard(card);

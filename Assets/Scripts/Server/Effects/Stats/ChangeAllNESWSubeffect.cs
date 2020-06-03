@@ -27,7 +27,7 @@ public class ChangeAllNESWSubeffect : ServerSubeffect
 
     public override void Resolve()
     {
-        var targets = ServerGame.cards.Values.Where(c => BoardRestriction.Evaluate(c));
+        var targets = ServerGame.Cards.Where(c => BoardRestriction.Evaluate(c));
         foreach (Card c in targets)
         {
             var charCard = c as CharacterCard;

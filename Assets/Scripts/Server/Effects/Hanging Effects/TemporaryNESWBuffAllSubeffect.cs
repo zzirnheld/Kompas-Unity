@@ -27,10 +27,9 @@ public class TemporaryNESWBuffAllSubeffect : TemporarySubeffect
 
     public override void Resolve()
     {
-        IEnumerable<Card> cards = ServerGame.cards.Values;
-        IEnumerable<Card> cardsThatFit = cards.Where(c => CardRestriction.Evaluate(c));
+        IEnumerable<Card> cards = ServerGame.Cards.Where(c => CardRestriction.Evaluate(c));
 
-        foreach(var card in cardsThatFit)
+        foreach(var card in cards)
         {
             var temp = new TemporaryNESWBuff(ServerGame, TriggerRestriction, EndCondition,
                 card as CharacterCard, NBuff, EBuff, SBuff, WBuff);

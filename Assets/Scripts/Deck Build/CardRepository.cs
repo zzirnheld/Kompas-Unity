@@ -174,7 +174,7 @@ public class CardRepository : MonoBehaviour
             ServerEffect[] effects = CreateServerEffects(charCard.effects, avatar, serverGame, owner);
             avatar.SetInfo(charCard, serverGame, owner, effects, id);
             avatar.SetImage();
-            serverGame.cards.Add(id, avatar);
+            serverGame.cardsByID.Add(id, avatar);
             return avatar;
         }
         catch (System.ArgumentException argEx)
@@ -258,7 +258,7 @@ public class CardRepository : MonoBehaviour
             avatar.SetInfo(charCard, clientGame, owner, effects, id);
             avatar.gameObject.GetComponent<ClientCardMouseController>().ClientGame = clientGame;
             avatar.SetImage();
-            clientGame.cards.Add(id, avatar);
+            clientGame.cardsByID.Add(id, avatar);
             return avatar;
         }
         catch (System.ArgumentException argEx)

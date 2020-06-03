@@ -69,12 +69,12 @@ public class ClientNetworkController : NetworkController {
                 break;
             case Packet.Command.AddAsFriendly:
                 Card friendlyCard = ClientGame.CardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, Friendly, packet.CardIDToBe);
-                ClientGame.cards.Add(packet.CardIDToBe, friendlyCard);
+                ClientGame.cardsByID.Add(packet.CardIDToBe, friendlyCard);
                 ClientGame.friendlyDeckCtrl.AddCard(friendlyCard);
                 break;
             case Packet.Command.AddAsEnemy:
                 Card added = ClientGame.CardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, Enemy, packet.CardIDToBe);
-                ClientGame.cards.Add(packet.CardIDToBe, added);
+                ClientGame.cardsByID.Add(packet.CardIDToBe, added);
                 ClientGame.enemyDeckCtrl.AddCard(added);
                 //TODO make it always ask for cards from enemy deck
                 switch (packet.Location)
