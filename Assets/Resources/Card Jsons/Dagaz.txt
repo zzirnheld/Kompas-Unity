@@ -25,7 +25,8 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"XMultiplier\":1
+					\"XMultiplier\":1,
+					\"XModifier\":1
 				}"
 			]	
 		}
