@@ -22,7 +22,7 @@
 				"{
 					\"boardRestriction\":
 					{
-						\"restrictionsToCheck\":[3,103,600],
+						\"restrictionsToCheck\":[3,103,600]
 					}
 				}",
 				"{}"

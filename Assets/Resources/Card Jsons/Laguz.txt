@@ -1,14 +1,14 @@
 {
 	"cardType":83,
 	"cardName":"Laguz",
-	"effText":"Can’t be cast normally. When a character moves themselves adjacent to me, you can move them 1 space.",
+	"effText":"Can’t be cast normally. Once each turn, when a character moves themselves adjacent to me, you can move them 1 space.",
 	"effects":[
 		{
 			"triggerCondition":408,
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,101,501],
+					\"triggerRestrictions\":[1,101,500,501],
 					\"cardRestriction\":{
 						\"onBoardRestrictions\":[2]
 					}
