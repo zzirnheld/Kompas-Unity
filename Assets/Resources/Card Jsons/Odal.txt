@@ -11,7 +11,7 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[0,203,102,301,1,4,303],
+			"subeffectTypes":[0,203,102,301,1,4,300],
 			"subeffects":[
 				"{
 					\"boardRestriction\":
@@ -25,8 +25,11 @@
 				"{}",
 				"{}",
 				"{
-					\"restrictionsToCheck\":[2,3,7,102],
-					\"subtypesInclude\":[\"Runer\"]
+					\"cardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,3,7,102],
+						\"subtypesInclude\":[\"Runer\"]
+					}
 				}",
 				"{
 					\"spaceRestriction\":

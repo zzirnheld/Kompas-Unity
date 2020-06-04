@@ -151,6 +151,8 @@ public class ServerGame : Game {
         TurnPlayerIndex = Random.value > 0.5f ? 0 : 1;
         ServerPlayers[TurnPlayerIndex].ServerNotifier.YoureFirst();
         ServerPlayers[1 - TurnPlayerIndex].ServerNotifier.YoureSecond();
+        ServerPlayers[0].ServerNotifier.NotifySetPips(ServerPlayers[0].pips);
+        ServerPlayers[1].ServerNotifier.NotifySetPips(ServerPlayers[1].pips);
     }
     #endregion
 
