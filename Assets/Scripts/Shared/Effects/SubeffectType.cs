@@ -61,6 +61,7 @@ public enum SubeffectType
     Bottomdeck = 307,
     Topdeck = 308,
     Move = 309,
+    Swap = 310,
     BottomdeckRest = 350,
 
     //loops/control flow

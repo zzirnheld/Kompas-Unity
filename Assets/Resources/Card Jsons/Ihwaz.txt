@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Ihwaz",
-	"effText":"Can’t be cast normally. A friendly Runer duels a character within 3 slots of them.",
+	"effText":"Can’t be cast normally. Swap two characters' positions",
 	"effects":[
 		{
 			"triggerCondition":401,
@@ -11,20 +11,18 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[0,0,601],
+			"subeffectTypes":[0,0,310],
 			"subeffects":[
 				"{
 					\"boardRestriction\":
 					{
-						\"restrictionsToCheck\":[3,7,103]
+						\"restrictionsToCheck\":[3,103]
 					}
 				}",
 				"{
 					\"boardRestriction\":
 					{
 						\"restrictionsToCheck\":[3,103,600],
-						\"onBoardRestrictions\":[10],
-						\"cSpaces\":3
 					}
 				}",
 				"{}"

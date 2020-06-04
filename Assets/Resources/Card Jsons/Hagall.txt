@@ -14,7 +14,7 @@
 			"subeffectTypes":[110],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"BoardRestriction\":
 					{
 						\"restrictionsToCheck\":[3,103],
 						\"onBoardRestrictions\":[2]
