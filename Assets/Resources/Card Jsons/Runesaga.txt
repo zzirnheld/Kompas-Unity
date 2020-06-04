@@ -11,7 +11,7 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[0,100,3,300,410],
+			"subeffectTypes":[0,100,3,4,300,410],
 			"subeffects":[
 				"{
 					\"boardRestriction\":
@@ -30,6 +30,12 @@
 					{
 						\"restrictionsToCheck\":[2,4,7,100,600],
 						\"subtypesInclude\":[\"Rune\"]
+					}
+				}",
+				"{
+					\"spaceRestriction\":
+					{
+						\"restrictionsToCheck\":[0]
 					}
 				}",
 				"{}",

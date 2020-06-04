@@ -20,7 +20,7 @@
 					\"spaceRestriction\":
 					{
 						\"restrictionsToCheck\":[1,251],
-						\"C\":3
+						\"C\":1
 					}
 				}",
 				"{}"
