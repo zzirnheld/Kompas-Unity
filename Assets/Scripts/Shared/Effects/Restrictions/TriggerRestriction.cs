@@ -15,6 +15,8 @@ public class TriggerRestriction
 
         ThisCardFitsRestriction = 100,
         TriggererFitsRestriction = 101,
+        CoordsFitRestriction = 120,
+        XFitsRestriction = 130,
 
         ControllerTriggered = 200,
         EnemyTriggered = 201,
@@ -37,6 +39,8 @@ public class TriggerRestriction
 
     public TriggerRestrictions[] triggerRestrictions = new TriggerRestrictions[0];
     public BoardRestriction cardRestriction = new BoardRestriction(); //TODO refactor boardrestrictions to be part of cardrestriction
+    public XRestriction xRestriction = new XRestriction();
+    public SpaceRestriction spaceRestriction = new SpaceRestriction();
     public int maxTimesPerTurn = 1;
 
     public Card ThisCard { get; private set; }
@@ -51,7 +55,7 @@ public class TriggerRestriction
         this.ThisTrigger = thisTrigger;
     }
 
-    public bool Evaluate(Card cardTriggerer, IStackable stackTrigger, Player triggerer)
+    public bool Evaluate(Card cardTriggerer, IStackable stackTrigger, Player triggerer, int? effX, (int x, int y)? space)
     {
         foreach(TriggerRestrictions r in triggerRestrictions)
         {
@@ -72,6 +76,12 @@ public class TriggerRestriction
                     break;
                 case TriggerRestrictions.TriggererFitsRestriction:
                     if (!cardRestriction.Evaluate(cardTriggerer)) return false;
+                    break;
+                case TriggerRestrictions.CoordsFitRestriction:
+                    if (space == null || !spaceRestriction.Evaluate(space.Value)) return false;
+                    break;
+                case TriggerRestrictions.XFitsRestriction:
+                    if (effX == null || !xRestriction.Evaluate(effX.Value)) return false;
                     break;
                 //TODO make these into just something to do with triggered card fitting restriction
                 case TriggerRestrictions.ControllerTriggered:

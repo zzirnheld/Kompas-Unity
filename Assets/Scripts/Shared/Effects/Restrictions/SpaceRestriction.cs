@@ -43,6 +43,8 @@ public class SpaceRestriction
         return false;
     }
 
+    public bool Evaluate((int x, int y) space) => Evaluate(space.x, space.y);
+
     public bool Evaluate(int x, int y)
     {
         Debug.Log($"Space restriction for {Subeffect.Source.name} evaluating {x}, {y}");

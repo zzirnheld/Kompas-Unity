@@ -19,10 +19,10 @@ public class DelayedHangingEffect : HangingEffect
         numTimesDelayed = 0;
     }
 
-    protected override bool ShouldEnd(Card triggerer, IStackable stackTrigger)
+    protected override bool ShouldEnd(Card cardTrigger, IStackable stackTrigger, Player triggerer, int? x, (int x, int y)? space)
     {
         //first check any other logic
-        if (!base.ShouldEnd(triggerer, stackTrigger)) return false;
+        if (!base.ShouldEnd(cardTrigger, stackTrigger, triggerer, x, space)) return false;
 
         //if it should otherwise be fine, but we haven't waited enough times, delay further
         if (numTimesDelayed < numTimesToDelay)
