@@ -1,0 +1,62 @@
+{
+	"cardType":67,
+	"cardName":"Aquarian the Returner",
+	"effText":"Territorial: When turns end, kill an adjacent friendly Dragon. When I attack, I can give myself -1E and another Dragon +2E.",
+	"effects":[
+		{
+			"triggerCondition":0,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[1]
+				}
+			}",
+			"subeffectTypes":[0,301],
+			"subeffects":[
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,3,7],
+						\"subtypesInclude\":[\"Dragon\"],
+						\"onBoardRestrictions\":[0]
+					}
+				}",
+				"{}"
+			]	
+		},
+		{
+			"triggerCondition":301,
+			"trigger":
+			"{
+				\"Blurb\":\"Give the attacking Aquarian -1E to give another Dragon +2E?\",
+				\"Optional\":true,
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0,1]
+				}
+			}",
+			"subeffectTypes":[5,100,0,100],
+			"subeffects":[
+				"{}",
+				"{
+					\"eChange\":-1
+				}",
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,3,7,99],
+						\"subtypesInclude\":[\"Dragon\"]
+					}
+				}",
+				"{
+					\"eChange\":2
+				}"
+			]	
+		}
+	],
+	"n":2,
+	"e":4,
+	"s":7,
+	"w":5,
+	"subtypes":["Dragon"],
+	"subtypeText":"Dragon"
+}
