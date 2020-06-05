@@ -1,0 +1,35 @@
+{
+	"cardType":83,
+	"cardName":"Algiz",
+	"effText":"Can’t be cast normally. Give a character +5E.",
+	"effects":[
+		{
+			"triggerCondition":401,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
+				}
+			}",
+			"subeffectTypes":[0,100],
+			"subeffects":[
+				"{
+						\"boardRestriction\":
+						{
+							\"restrictionsToCheck\":[3,103]
+						}
+				}",
+				"{
+					\"eChange\":5
+				}"
+			]	
+		}
+	],
+	"PlayRestriction":{
+		"NormalRestrictions":["Cannot be Played Normally"]
+	},
+	"c":1,
+	"spellType":"Simple",
+	"subtypes":["Rune","Simple"],
+	"subtypeText":"Rune Simple"
+}

@@ -1,0 +1,52 @@
+{
+	"cardType":83,
+	"cardName":"Perthro",
+	"effText":"Can’t be cast normally. Search your deck’s top 10 cards for 3 spells.",
+	"effects":[
+		{
+			"triggerCondition":401,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
+				}
+			}",
+			"subeffectTypes":[10,404,8,405,12,304,10,402,350],
+			"subeffects":[
+				"{}",
+				"{
+					\"JumpTo\":4
+				}",
+				"{
+					\"CardRestriction\":
+					{
+						\"restrictionsToCheck\":[4,7,102,501],
+						\"constant\":10
+					},
+					\"MaxCanChoose\":3
+				}",
+				"{}",
+				"{
+					\"cardRestriction\":
+					{
+						\"restrictionsToCheck\":[7,102,501,600],
+						\"constant\":10
+					}
+				}",
+				"{}",
+				"{}",
+				"{
+					\"JumpTo\":5
+				}",
+				"{}"
+			]	
+		}
+	],
+	"PlayRestriction":{
+		"NormalRestrictions":["Cannot be Played Normally"]
+	},
+	"c":3,
+	"spellType":"Simple",
+	"subtypes":["Rune","Simple"],
+	"subtypeText":"Rune Simple"
+}

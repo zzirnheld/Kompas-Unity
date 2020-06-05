@@ -1,0 +1,58 @@
+{
+	"cardType":67,
+	"cardName":"Runepainter",
+	"effText":"Once each friendly turn, you can pip handcast a Rune, then search your deck's top 10 cards for a copy of that Rune. Bottomdeck the rest.",
+	"effects":[
+		{
+			"activationRestriction":{
+				"Restrictions":[
+					"Max Times Per Turn",
+					"Friendly Turn"
+				]
+			},
+			"subeffectTypes":[3,4,150,300,404,1,405,12,304,350],
+			"subeffects":[
+				"{
+					\"cardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,4,7,100,601,602],
+						\"subtypesInclude\":[\"Rune\"]
+					}
+				}",
+				"{
+					\"spaceRestriction\":
+					{
+						\"restrictionsToCheck\":[0]
+					}
+				}",
+				"{}",
+				"{}",
+				"{
+					\"JumpTo\":7
+				}",
+				"{
+					\"cardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,7,12,102,551],
+						\"subtypesInclude\":[\"Rune\"]
+					}
+				}",
+				"{}",
+				"{
+					\"cardRestriction\":
+					{
+						\"restrictionsToCheck\":[7,102,551,600]
+					}
+				}",
+				"{}",
+				"{}"
+			]
+		}
+	],
+	"n":1,
+	"e":4,
+	"s":4,
+	"w":5,
+	"subtypes":["Runer","Mage"],
+	"subtypeText":"Runer Mage"
+}

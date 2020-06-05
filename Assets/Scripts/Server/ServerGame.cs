@@ -117,7 +117,7 @@ public class ServerGame : Game {
             lock (AddCardsLock)
             {
                 card = CardRepo.InstantiateServerNonAvatar(name, this, player, cardCount);
-                cards.Add(cardCount, card);
+                cardsByID.Add(cardCount, card);
                 cardCount++;
             }
             player.deckCtrl.AddCard(card);
@@ -148,9 +148,11 @@ public class ServerGame : Game {
         Players[1].pips = Players[0].Avatar.S;
 
         //determine who goes first and tell the players
-        int first = Random.value > 0.5f ? 0 : 1;
-        ServerPlayers[first].ServerNotifier.YoureFirst();
-        ServerPlayers[1 - first].ServerNotifier.YoureSecond();
+        TurnPlayerIndex = Random.value > 0.5f ? 0 : 1;
+        ServerPlayers[TurnPlayerIndex].ServerNotifier.YoureFirst();
+        ServerPlayers[1 - TurnPlayerIndex].ServerNotifier.YoureSecond();
+        ServerPlayers[0].ServerNotifier.NotifySetPips(ServerPlayers[0].pips);
+        ServerPlayers[1].ServerNotifier.NotifySetPips(ServerPlayers[1].pips);
     }
     #endregion
 
@@ -159,12 +161,13 @@ public class ServerGame : Game {
     public void Discard(Card card, IServerStackable stackSrc)
     {
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyDiscard(card);
-        EffectsController.Trigger(TriggerCondition.Discard, card, stackSrc, null, stackSrc?.ServerController);
+        EffectsController.Trigger(TriggerCondition.Discard, cardTriggerer: card, stackTrigger: stackSrc, triggerer: stackSrc?.ServerController);
         base.Discard(card);
 
         //if we just discarded an augment, note that, and trigger de-augment
         if (card.CardType == 'A')
-            EffectsController.Trigger(TriggerCondition.AugmentDetached, card, stackSrc, null, stackSrc?.ServerController);
+            EffectsController.Trigger(TriggerCondition.AugmentDetached, 
+                cardTriggerer: card, stackTrigger: stackSrc, triggerer: stackSrc?.ServerController);
     }
 
     public override void Discard(Card card) => Discard(card, null);
@@ -178,7 +181,7 @@ public class ServerGame : Game {
                 $"This wasn't a problem up until now, but now you need to implement owner index," +
                 $"ya numpty");
         }
-        EffectsController.Trigger(TriggerCondition.Rehand, card, stackSrc, null, stackSrc?.ServerController);
+        EffectsController.Trigger(TriggerCondition.Rehand, cardTriggerer: card, stackTrigger: stackSrc, triggerer: stackSrc?.ServerController);
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyRehand(card);
         base.Rehand(controller, card);
     }
@@ -194,8 +197,8 @@ public class ServerGame : Game {
 
     public void Reshuffle(Card card, IServerStackable stackSrc)
     {
-        EffectsController.Trigger(TriggerCondition.Reshuffle, card, stackSrc, null, stackSrc?.ServerController);
-        EffectsController.Trigger(TriggerCondition.ToDeck, card, stackSrc, null, stackSrc?.ServerController);
+        EffectsController.Trigger(TriggerCondition.Reshuffle, cardTriggerer: card, stackTrigger: stackSrc, triggerer: stackSrc?.ServerController);
+        EffectsController.Trigger(TriggerCondition.ToDeck, cardTriggerer: card, stackTrigger: stackSrc, triggerer: stackSrc?.ServerController);
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyReshuffle(card);
         base.Reshuffle(card);
     }
@@ -204,8 +207,8 @@ public class ServerGame : Game {
 
     public void Topdeck(Card card, IServerStackable stackSrc)
     {
-        EffectsController.Trigger(TriggerCondition.Topdeck, card, stackSrc, null, stackSrc?.ServerController);
-        EffectsController.Trigger(TriggerCondition.ToDeck, card, stackSrc, null, stackSrc?.ServerController);
+        EffectsController.Trigger(TriggerCondition.Topdeck, cardTriggerer: card, stackTrigger: stackSrc, triggerer: stackSrc?.ServerController);
+        EffectsController.Trigger(TriggerCondition.ToDeck, cardTriggerer: card, stackTrigger: stackSrc, triggerer: stackSrc?.ServerController);
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyTopdeck(card);
         base.Topdeck(card);
     }
@@ -214,8 +217,8 @@ public class ServerGame : Game {
 
     public void Bottomdeck(Card card, IServerStackable stackSrc)
     {
-        EffectsController.Trigger(TriggerCondition.Bottomdeck, card, stackSrc, null, stackSrc?.ServerController);
-        EffectsController.Trigger(TriggerCondition.ToDeck, card, stackSrc, null, stackSrc?.ServerController);
+        EffectsController.Trigger(TriggerCondition.Bottomdeck, cardTriggerer: card, stackTrigger: stackSrc, triggerer: stackSrc?.ServerController);
+        EffectsController.Trigger(TriggerCondition.ToDeck, cardTriggerer: card, stackTrigger: stackSrc, triggerer: stackSrc?.ServerController);
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyBottomdeck(card);
         base.Bottomdeck(card);
     }
@@ -224,14 +227,16 @@ public class ServerGame : Game {
 
     public void Play(Card card, int toX, int toY, Player controller, IServerStackable stackSrc)
     {
-        EffectsController.Trigger(TriggerCondition.Play, card, stackSrc, null, stackSrc?.ServerController);
+        EffectsController.Trigger(TriggerCondition.Play, 
+            cardTriggerer: card, stackTrigger: stackSrc, triggerer: stackSrc?.ServerController, space: (toX, toY));
         //note that it's serverPlayers[controller.index] because you can play to the field of someone whose card it isnt
         ServerPlayers[controller.index].ServerNotifier.NotifyPlay(card, toX, toY);
         base.Play(card, toX, toY, controller);
 
         //if we just played an augment, note that, and trigger augment
         if (card.CardType == 'A') 
-            EffectsController.Trigger(TriggerCondition.AugmentAttached, card, stackSrc, null, stackSrc?.ServerController);
+            EffectsController.Trigger(TriggerCondition.AugmentAttached, 
+                cardTriggerer: card, stackTrigger: stackSrc, triggerer: stackSrc?.ServerController);
 
         //then, once everything was done, if this was a player-initiated action, check for responses
         if (stackSrc == null) EffectsController.CheckForResponse();
@@ -241,7 +246,8 @@ public class ServerGame : Game {
 
     public void MoveOnBoard(Card card, int toX, int toY, bool normalMove, IServerStackable stackSrc)
     {
-        EffectsController.Trigger(TriggerCondition.Move, card, stackSrc, null, stackSrc?.ServerController);
+        EffectsController.Trigger(TriggerCondition.Move, 
+            cardTriggerer: card, stackTrigger: stackSrc, triggerer: stackSrc?.ServerController, space: (toX, toY));
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyMove(card, toX, toY, normalMove);
         base.MoveOnBoard(card, toX, toY, normalMove);
         if (stackSrc == null) EffectsController.CheckForResponse();
@@ -288,12 +294,25 @@ public class ServerGame : Game {
         ServerPlayers[c.ControllerIndex].ServerNotifier.NotifyActivate(c, activated);
         base.SetActivated(c, activated);
         //If this is the first activation, trigger "activate"
-        if (c.Activations == 1) EffectsController.Trigger(TriggerCondition.Activate, c, stackSrc, null, stackSrc?.ServerController);
+        if (c.Activations == 1) 
+            EffectsController.Trigger(TriggerCondition.Activate,
+                cardTriggerer: c, stackTrigger: stackSrc, triggerer: stackSrc?.ServerController);
         //If this is the last deactivation, trigger "deactivate"
-        else if (c.Activations == 0) EffectsController.Trigger(TriggerCondition.Deactivate, c, stackSrc, null, stackSrc?.ServerController);
+        else if (c.Activations == 0) 
+            EffectsController.Trigger(TriggerCondition.Deactivate,
+                cardTriggerer: c, stackTrigger: stackSrc, triggerer: stackSrc?.ServerController);
     }
 
     public override void SetActivated(Card c, bool activated) => SetActivated(c, activated, null);
+
+    public void ChangeControl(Card c, Player controller, IServerStackable stackSrc)
+    {
+        ServerPlayers[c.ControllerIndex].ServerNotifier.NotifyChangeController(c, controller);
+        base.ChangeControl(c, controller);
+        //TODO triggers?
+    }
+
+    public override void ChangeControl(Card c, Player controller) => ChangeControl(c, controller, null);
 
     public Card Draw(int player, IServerStackable stackSrc = null)
     {
@@ -309,11 +328,11 @@ public class ServerGame : Game {
         {
             Card toDraw = Players[player].deckCtrl.PopTopdeck();
             if (toDraw == null) break;
-            EffectsController.Trigger(TriggerCondition.EachDraw, toDraw, stackSrc, null, ServerPlayers[player]);
+            EffectsController.Trigger(TriggerCondition.EachDraw, cardTriggerer: toDraw, stackTrigger: stackSrc, triggerer: ServerPlayers[player]);
             Rehand(toDraw, stackSrc);
             drawn.Add(toDraw);
         }
-        EffectsController.Trigger(TriggerCondition.DrawX, null, stackSrc, i, ServerPlayers[player]);
+        EffectsController.Trigger(TriggerCondition.DrawX, stackTrigger: stackSrc, triggerer: ServerPlayers[player], x: i);
         return drawn;
     }
 
@@ -342,9 +361,8 @@ public class ServerGame : Game {
         EffectsController.CheckForResponse();
     }
 
-    //TODO improve this with checking if the square is valid (adj or special case)
     #region check validity
-    public bool ValidBoardPlay(Card card, int toX, int toY)
+    public bool ValidBoardPlay(Card card, int toX, int toY, ServerPlayer player)
     {
         if (uiCtrl.DebugMode)
         {
@@ -354,12 +372,12 @@ public class ServerGame : Game {
 
         Debug.Log("Trying to play " + card.CardName + " to " + toX + ", " + toY);
         return card != null
-            && (card is CharacterCard || card is SpellCard)
             && boardCtrl.ValidIndices(toX, toY)
-            && boardCtrl.GetCardAt(toX, toY) == null;
+            && boardCtrl.GetCardAt(toX, toY) == null
+            && card.PlayRestriction.EvaluateNormalPlay(toX, toY, player);
     }
 
-    public bool ValidAugment(Card card, int toX, int toY)
+    public bool ValidAugment(Card card, int toX, int toY, ServerPlayer player)
     {
         if (uiCtrl.DebugMode)
         {
@@ -370,7 +388,8 @@ public class ServerGame : Game {
         return card != null
             && card is AugmentCard
             && boardCtrl.ValidIndices(toX, toY)
-            && boardCtrl.GetCharAt(toX, toY) != null;
+            && boardCtrl.GetCardAt(toX, toY) != null
+            && card.PlayRestriction.EvaluateNormalPlay(toX, toY, player);
     }
 
     public bool ValidMove(Card toMove, int toX, int toY)
@@ -409,7 +428,7 @@ public class ServerGame : Game {
         TurnServerPlayer.ServerNotifier.NotifySetTurn(this, TurnPlayerIndex);
 
         //trigger turn start effects
-        EffectsController.Trigger(TriggerCondition.TurnStart, null, null, null, TurnServerPlayer);
+        EffectsController.Trigger(TriggerCondition.TurnStart, triggerer: TurnServerPlayer);
         EffectsController.CheckForResponse();
     }
 }

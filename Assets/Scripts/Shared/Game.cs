@@ -28,7 +28,8 @@ public abstract class Game : MonoBehaviour {
     public Player TurnPlayer { get { return Players[TurnPlayerIndex]; } }
 
     //game data
-    public Dictionary<int, Card> cards;
+    public Dictionary<int, Card> cardsByID;
+    public IEnumerable<Card> Cards => cardsByID.Values;
     public int MaxCardsOnField = 0; //for pip generation purposes
     
     public ServerEffect CurrEffect { get; set; }
@@ -37,7 +38,7 @@ public abstract class Game : MonoBehaviour {
 
     private void Awake()
     {
-        cards = new Dictionary<int, Card>();
+        cardsByID = new Dictionary<int, Card>();
         CardNames = new Dictionary<int, string>();
         CardNameIndices = new Dictionary<string, int>();
         string cardListPath = "Card Jsons/Card List";
@@ -60,11 +61,11 @@ public abstract class Game : MonoBehaviour {
 
     public Card GetCardFromID(int id)
     {
-        Debug.Log("Getting card with id " + id + " is it in the dictionary? " + cards.ContainsKey(id));
+        Debug.Log("Getting card with id " + id + " is it in the dictionary? " + cardsByID.ContainsKey(id));
 
-        if (!cards.ContainsKey(id)) return null;
+        if (!cardsByID.ContainsKey(id)) return null;
 
-        return cards[id];
+        return cardsByID[id];
     }
 
     //game mechanics
@@ -195,6 +196,11 @@ public abstract class Game : MonoBehaviour {
     public virtual void SetActivated(Card c, bool activated)
     {
         c.Activated = activated;
+    }
+
+    public virtual void ChangeControl(Card c, Player controller)
+    {
+        c.ChangeController(controller);
     }
 
     public virtual void SetStats(SpellCard spellCard, int c)

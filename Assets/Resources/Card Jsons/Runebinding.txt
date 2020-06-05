@@ -1,0 +1,36 @@
+{
+	"cardType":83,
+	"cardName":"Runebinding",
+	"effText":"Once each enemy turn, you can handcast a Rune (even if it isn’t Fast).",
+	"effects":[
+		{
+			"activationRestriction":{
+				"Restrictions":[
+					"Max Times Per Turn",
+					"Enemy Turn"
+				]
+			},
+			"subeffectTypes":[3,4,300],
+			"subeffects":[
+				"{
+					\"cardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,4,7,100,601],
+						\"subtypesInclude\":[\"Rune\"]
+					}
+				}",
+				"{
+					\"spaceRestriction\":
+					{
+						\"restrictionsToCheck\":[0]
+					}
+				}",
+				"{}"
+			]
+		}
+	],
+	"c":5,
+	"spellType":"Enchant",
+	"subtypes":["Rune","Enchant"],
+	"subtypeText":"Rune Enchant"
+}

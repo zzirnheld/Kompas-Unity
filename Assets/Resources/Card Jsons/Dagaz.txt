@@ -1,0 +1,42 @@
+{
+	"cardType":83,
+	"cardName":"Dagaz",
+	"effText":"Can’t be cast normally. When you cast a Rune while I have CX, gain X pips, then give me +1C.",
+	"effects":[
+		{
+			"triggerCondition":401,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[1,101],
+					\"cardRestriction\":{
+						\"restrictionsToCheck\":[2,4],
+						\"subtypesInclude\":[\"Rune\"]
+					}
+				}
+			}",
+			"subeffectTypes":[5,203,101,108],
+			"subeffects":[
+				"{}",
+				"{
+					\"WhatToCount\":\"C\"
+				}",
+				"{
+					\"xMultiplier\":1
+				}",
+				"{
+					\"XMultiplier\":1,
+					\"XModifier\":1
+				}"
+			]	
+		}
+	],
+	"PlayRestriction":{
+		"NormalRestrictions":["Cannot be Played Normally"]
+	},
+	"c":1,
+	"spellType":"Vanishing",
+	"subtypes":["Rune","Vanishing"],
+	"subtypeText":"Rune Vanishing",
+	"arg":1
+}

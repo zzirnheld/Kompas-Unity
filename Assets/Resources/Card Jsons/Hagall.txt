@@ -1,0 +1,36 @@
+{
+	"cardType":83,
+	"cardName":"Hagall",
+	"effText":"Can’t be cast normally. When turns start, I give all characters here -1NE.",
+	"effects":[
+		{
+			"triggerCondition":0,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[1]
+				}
+			}",
+			"subeffectTypes":[110],
+			"subeffects":[
+				"{
+					\"BoardRestriction\":
+					{
+						\"restrictionsToCheck\":[3,103],
+						\"onBoardRestrictions\":[2]
+					},
+					\"NMod\":-1,
+					\"EMod\":-1
+				}"
+			]	
+		}
+	],
+	"PlayRestriction":{
+		"NormalRestrictions":["Cannot be Played Normally"]
+	},
+	"c":4,
+	"spellType":"Terraform",
+	"subtypes":["Rune","Terraform"],
+	"subtypeText":"Rune Terraform",
+	"arg":1
+}

@@ -1,0 +1,33 @@
+{
+	"cardType":83,
+	"cardName":"Jera",
+	"effText":"Can’t be cast normally. If it’s your turn, gain 5 pips and end your turn.",
+	"effects":[
+		{
+			"triggerCondition":401,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
+				}
+			}",
+			"subeffectTypes":[409,101,600],
+			"subeffects":[
+				"{
+					\"Condition\":\"Must be Friendly Turn\"
+				}",
+				"{
+					\"modifier\":5
+				}",
+				"{}"
+			]	
+		}
+	],
+	"PlayRestriction":{
+		"NormalRestrictions":["Cannot be Played Normally"]
+	},
+	"c":1,
+	"spellType":"Simple",
+	"subtypes":["Rune","Simple"],
+	"subtypeText":"Rune Simple"
+}

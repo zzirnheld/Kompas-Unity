@@ -57,4 +57,40 @@ Defense Core
 Combustion Core
 Modular Golem Cores
 Slight Golemodifications
+Runeloremaster
+Runerunner
+Runecaller
+Runespeaker
+Runepainter
+Runechanneler
+Runecarver
+Runewriter
+Runewritten
+Ansuz
+Algiz
+Raido
+Thurisaz
+Gyfu
+Jera
+Naudiz
+Perthro
+Mannaz
+Ingwaz
+Kaunan
+Fehu
+Berkanan
+Isaz
+Hagall
+Sowilo
+Tiwaz
+Ihwaz
+Ehwaz
+Uruz
+Laguz
+Wynn
+Odal
+Dagaz
+Runesaga
+Runebinding
+Runestones
 lulthisdontexistmydood

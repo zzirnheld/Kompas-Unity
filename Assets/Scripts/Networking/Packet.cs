@@ -18,7 +18,7 @@ namespace KompasNetworking
             Topdeck, Discard, Rehand, Reshuffle, AddAsFriendly, AddAsEnemy, Bottomdeck,
             Draw, Delete,
             //card properties
-            SetNESW, Negate, SetSpellStats, Activate, Deactivate,
+            SetNESW, Negate, SetSpellStats, Activate, Deactivate, ChangeControl,
             //change numbers of cards that you see of your opponent
             IncrementEnemyDeck, IncrementEnemyHand, DecrementEnemyDeck, DecrementEnemyHand,
             //server requesting a target of a client
@@ -59,28 +59,29 @@ namespace KompasNetworking
         public int[] specialArgs;
 
         #region abstraction of args
-        public string CardName { get { return Game.CardNames[normalArgs[1]]; } }
-        public int CardIDToBe { get { return cardID; } }
+        public string CardName => Game.CardNames[normalArgs[1]];
+        public int CardIDToBe => cardID;
 
-        public int Pips { get { return normalArgs[0]; } }
-        public int EffectX { get => normalArgs[2]; }
-        public bool Answer { get { return normalArgs[0] == 1; } }
-        public int EffectOption { get => normalArgs[0]; }
+        public int Pips => normalArgs[0];
+        public int EffectX => normalArgs[2];
+        public bool Answer => normalArgs[0] == 1;
+        public int ControllerIndex => normalArgs[0];
+        public int EffectOption => normalArgs[0];
 
-        public CardLocation Location { get { return (CardLocation)normalArgs[0]; } }
+        public CardLocation Location => (CardLocation)normalArgs[0];
 
-        public int X { get { return normalArgs[2]; } }
-        public int Y { get { return normalArgs[3]; } }
+        public int X => normalArgs[2];
+        public int Y => normalArgs[3];
 
-        public int N { get { return normalArgs[0]; } }
-        public int E { get { return normalArgs[1]; } }
-        public int S { get { return normalArgs[2]; } }
-        public int W { get { return normalArgs[3]; } }
+        public int N => normalArgs[0];
+        public int E => normalArgs[1];
+        public int S => normalArgs[2];
+        public int W => normalArgs[3];
 
-        public int C { get { return normalArgs[0]; } }
+        public int C => normalArgs[0];
 
-        public int EffIndex { get => normalArgs[0]; }
-        public int SubeffIndex { get => normalArgs[1]; }
+        public int EffIndex => normalArgs[0];
+        public int SubeffIndex => normalArgs[1];
         #endregion abstraction of args
 
         #region constuctors 
@@ -308,6 +309,8 @@ namespace KompasNetworking
                 case Command.PlayerSetX:
                 case Command.SetEffectsX:
                 case Command.EffectResolving:
+                case Command.SetEnemyPips:
+                case Command.SetPips:
                     return false;
                 default:
                     return true;

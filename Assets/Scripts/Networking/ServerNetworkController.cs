@@ -80,7 +80,7 @@ namespace KompasNetworking
                     foreach (int id in packet.specialArgs)
                     {
                         Card c = sGame.GetCardFromID(id);
-                        if (c == null) Debug.LogError($"Tried to start a list search including card with invalid id {id}");
+                        if (c == null) Debug.LogError($"Player tried to search card to list with invalid id {id}");
                         else choices.Add(c);
                     }
 

@@ -20,12 +20,11 @@ public abstract class Subeffect
     /// </summary>
     public int TargetIndex = -1;
 
-    public Card Target
+    public Card GetTarget(int num)
     {
-        get
-        {
-            int trueIndex = TargetIndex < 0 ? TargetIndex + Effect.Targets.Count : TargetIndex;
-            return trueIndex < 0 ? null : Effect.Targets[trueIndex];
-        }
+        int trueIndex = num < 0 ? num + Effect.Targets.Count : num;
+        return trueIndex < 0 ? null : Effect.Targets[trueIndex];
     }
+
+    public Card Target => GetTarget(TargetIndex);
 }

@@ -1,0 +1,38 @@
+{
+	"cardType":83,
+	"cardName":"Ansuz",
+	"effText":"Can’t be cast normally. Set a character’s N to 0 and ESW to 10.",
+	"effects":[
+		{
+			"triggerCondition":401,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
+				}
+			}",
+			"subeffectTypes":[0,109],
+			"subeffects":[
+				"{
+						\"boardRestriction\":
+						{
+							\"restrictionsToCheck\":[3,103]
+						}
+				}",
+				"{
+					\"NVal\":1,
+					\"EVal\":10,
+					\"SVal\":10,
+					\"WVal\":10
+				}"
+			]	
+		}
+	],
+	"PlayRestriction":{
+		"NormalRestrictions":["Cannot be Played Normally"]
+	},
+	"c":5,
+	"spellType":"Simple",
+	"subtypes":["Rune","Simple"],
+	"subtypeText":"Rune Simple"
+}

@@ -235,7 +235,7 @@ public class ClientUIController : UIController
                 return;
             }*/
 
-            //TODO: if we didn't return, mark that card as selected
+            //TODO: if we didn't return (and so are looking for more cards), mark that card as selected (so the player can tell what they've selected so far)
             numSearched++;
 
             //if we were given a maximum number to be searched, and hit that number, no reason to keep asking

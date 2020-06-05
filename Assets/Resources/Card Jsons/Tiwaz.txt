@@ -1,0 +1,34 @@
+{
+	"cardType":83,
+	"cardName":"Tiwaz",
+	"effText":"Can't be cast normally. When a friendly character attacks, I give them +2ESW.",
+	"effects":[
+		{
+			"triggerCondition":301,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[101],
+					\"cardRestriction\":{
+						\"restrictionsToCheck\":[3,7,103]
+					}
+				}
+			}",
+			"subeffectTypes":[100],
+			"subeffects":[
+				"{
+					\"eChange\":2,
+					\"sChange\":2,
+					\"wChange\":2
+				}"
+			]
+		}
+	],
+	"PlayRestriction":{
+		"NormalRestrictions":["Cannot be Played Normally"]
+	},
+	"c":1,
+	"spellType":"Enchant",
+	"subtypes":["Rune","Enchant"],
+	"subtypeText":"Rune Enchant"
+}

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [Serializable]
@@ -8,6 +9,8 @@ public class CardRestriction
 {
     public Subeffect Subeffect { get; set; }
 
+    //TODO add "can summon" restriction that checks that there exists
+    //a space that the card can be played to
     public enum CardRestrictions {
         NameIs = 1,
         SubtypesInclude = 2,
@@ -19,11 +22,14 @@ public class CardRestriction
         SameOwner = 8,
         Enemy = 9,
         Summoned = 10,
+        DistinctName = 11,
+        SameName = 12,
         //location
         Hand = 100,
         Discard = 101,
         Deck = 102,
         Board = 103,
+        LocationInList = 104,
         //stats
         NLTEX = 200, //N <= X
         ELTEX = 201,
@@ -34,6 +40,7 @@ public class CardRestriction
         EEX = 211,
         SEX = 212,
         WEX = 213,
+        CostEX = 214,
         NLTX = 220,
         ELTX = 221,
         SLTX = 222,
@@ -47,7 +54,9 @@ public class CardRestriction
         IndexInListLTEC = 501,
         IndexInListLTEX = 551,
         //misc
-        NotAlreadyTarget = 600
+        NotAlreadyTarget = 600,
+        CanBePlayed = 601,
+        EffectControllerCanPayCost = 602
     } //to add later: N/E/S/W >=
 
     //because JsonUtility will fill in all values with defaults if not present
@@ -58,6 +67,9 @@ public class CardRestriction
     public string[] subtypesInclude;
     public string[] subtypesExclude;
     public int constant;
+    public CardLocation[] locations;
+    public int costMultiplier = 1;
+    public int costDivisor = 1;
 
     public virtual bool Evaluate (Card potentialTarget, int x)
     {
@@ -107,6 +119,13 @@ public class CardRestriction
                 case CardRestrictions.Summoned:
                     if (!potentialTarget.Summoned) return false;
                     break;
+                case CardRestrictions.DistinctName:
+                    //checks if any target shares a name with this one
+                    if (Subeffect.Effect.Targets.Where(card => card.CardName == potentialTarget.CardName).Any()) return false;
+                    break;
+                case CardRestrictions.SameName: //note: same name as this subeffect's target
+                    if (Subeffect.Target.CardName != potentialTarget.CardName) return false;
+                    break;
                 case CardRestrictions.Hand:
                     if (potentialTarget.Location != CardLocation.Hand) return false;
                     break;
@@ -118,6 +137,9 @@ public class CardRestriction
                     break;
                 case CardRestrictions.Board:
                     if (potentialTarget.Location != CardLocation.Field) return false;
+                    break;
+                case CardRestrictions.LocationInList:
+                    if (!locations.Contains(potentialTarget.Location)) return false;
                     break;
                 case CardRestrictions.NLTEX:
                     if (charCard == null) return false;
@@ -153,6 +175,9 @@ public class CardRestriction
                 case CardRestrictions.WEX:
                     if (charCard == null) return false;
                     if (charCard.W != x) return false;
+                    break;
+                case CardRestrictions.CostEX:
+                    if (potentialTarget.Cost != x) return false;
                     break;
                 case (CardRestrictions.NLTX):
                     if (charCard == null) return false;
@@ -197,6 +222,23 @@ public class CardRestriction
                     break;
                 case CardRestrictions.NotAlreadyTarget:
                     if (Subeffect.Effect.Targets.Contains(potentialTarget)) return false;
+                    break;
+                case CardRestrictions.CanBePlayed:
+                    bool found = false;
+                    for(int i = 0; i < 7 && !found; i++)
+                    {
+                        for(int j = 0; j < 7 && !found; j++)
+                        {
+                            if (potentialTarget.PlayRestriction.EvaluateEffectPlay(i, j, Subeffect.Effect))
+                            {
+                                found = true;
+                            }
+                        }
+                    }
+                    if (found) break;
+                    else return false;
+                case CardRestrictions.EffectControllerCanPayCost:
+                    if (Subeffect.Effect.Controller.pips < potentialTarget.Cost * costMultiplier / costDivisor) return false;
                     break;
                 default:
                     Debug.LogError($"You forgot to implement a check for {c}");

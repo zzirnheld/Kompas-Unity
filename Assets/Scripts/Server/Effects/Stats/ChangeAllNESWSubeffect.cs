@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ChangeAllNESWSubeffect : ServerSubeffect
@@ -13,7 +14,8 @@ public class ChangeAllNESWSubeffect : ServerSubeffect
     {
         restrictionsToCheck = new CardRestriction.CardRestrictions[]
         {
-            CardRestriction.CardRestrictions.IsCharacter
+            CardRestriction.CardRestrictions.IsCharacter,
+            CardRestriction.CardRestrictions.Board
         }
     };
 
@@ -25,12 +27,10 @@ public class ChangeAllNESWSubeffect : ServerSubeffect
 
     public override void Resolve()
     {
-        foreach(KeyValuePair<int, Card> card in ServerGame.cards)
+        var targets = ServerGame.Cards.Where(c => BoardRestriction.Evaluate(c));
+        foreach (Card c in targets)
         {
-            if (BoardRestriction.Evaluate(card.Value))
-            {
-                ServerGame.AddToStats(card.Value as CharacterCard, NMod, EMod, SMod, WMod);
-            }
+            if (c is CharacterCard charCard) ServerGame.AddToStats(charCard, NMod, EMod, SMod, WMod);
         }
 
         ServerEffect.ResolveNextSubeffect();

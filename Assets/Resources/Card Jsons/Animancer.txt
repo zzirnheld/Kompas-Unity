@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Animancer",
-	"effText":"OEFT discard Golems total cost X, search top X for C <= X Golem.",
+	"effText":"OEFT discard Golems total cost X, search top X for C <= X Golem. Bottomdeck the rest.",
 	"effects":[
 		{
 			"activationRestriction":{
@@ -33,7 +33,7 @@
 				"{
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[2,102,204,551],
+						\"restrictionsToCheck\":[2,7,102,204,551],
 						\"subtypesInclude\":[\"Golem\"]
 					}
 				}",
@@ -41,7 +41,7 @@
 				"{
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[102,551,600]
+						\"restrictionsToCheck\":[7,102,551,600]
 					}
 				}",
 				"{}",

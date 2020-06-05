@@ -173,12 +173,13 @@ public class ServerEffectsController : MonoBehaviour
         hangingEffs.Add(hangingEff);
     }
 
-    public void Trigger(TriggerCondition condition, Card cardTriggerer, IServerStackable stackTrigger, int? x, ServerPlayer triggerer)
+    public void Trigger(TriggerCondition condition, 
+        Card cardTriggerer = null, IServerStackable stackTrigger = null, ServerPlayer triggerer = null, int? x = null, (int, int)? space = null)
     {
         List<HangingEffect> toRemove = new List<HangingEffect>();
         foreach (HangingEffect t in hangingEffectMap[condition])
         {
-            if (t.EndIfApplicable(cardTriggerer, stackTrigger))
+            if (t.EndIfApplicable(cardTriggerer, stackTrigger, triggerer, x, space))
             {
                 toRemove.Add(t);
             }
@@ -191,7 +192,7 @@ public class ServerEffectsController : MonoBehaviour
         Debug.Log($"Attempting to trigger {condition}, with triggerer {cardTriggerer?.CardName}, triggered by a null stacktrigger? {stackTrigger == null}, x={x}");
         foreach (ServerTrigger t in triggerMap[condition])
         {
-            t.TriggerIfValid(cardTriggerer, stackTrigger, x, triggerer);
+            t.TriggerIfValid(cardTriggerer, stackTrigger, triggerer, x, space);
         }
     }
 

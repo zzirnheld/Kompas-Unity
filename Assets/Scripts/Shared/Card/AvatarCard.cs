@@ -7,11 +7,7 @@ public class AvatarCard : CharacterCard
 {
     public override int E
     {
-        get
-        {
-            if (e < 0) return 0;
-            return e;
-        }
+        get => e < 0 ? 0 : e;
         protected set
         {
             e = value > 0 ? value : 0;

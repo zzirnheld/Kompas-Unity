@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using KompasNetworking;
+using System.Linq;
 
 public class ServerNotifier : MonoBehaviour
 {
@@ -81,13 +82,13 @@ public class ServerNotifier : MonoBehaviour
         }
         else
         {
-            outPacketInverted = new Packet(Packet.Command.AddAsEnemy, toPlay.CardName, 
+            outPacketInverted = new Packet(Packet.Command.AddAsEnemy, toPlay.CardName,
                 (int)CardLocation.Field, toPlay.ID, x, y);
         }
 
         SendPacketsAfterInverting(outPacket, outPacketInverted, Player.index, Player.Enemy.index);
     }
-    
+
     public void NotifyMove(Card toMove, int x, int y, bool playerInitiated)
     {
         //tell everyone to do it
@@ -172,7 +173,7 @@ public class ServerNotifier : MonoBehaviour
 
     public void NotifySetNESW(CharacterCard card, int n, int e, int s, int w)
     {
-        if (card == null) return;
+        if (card == null) throw new System.ArgumentNullException($"Char must not be null to notify about setting stats");
         //let everyone know to set NESW
         Packet p = new Packet(Packet.Command.SetNESW, card, n, e, s, w);
         SendToBoth(p);
@@ -180,14 +181,14 @@ public class ServerNotifier : MonoBehaviour
 
     public void NotifySetSpellStats(SpellCard spell, int c)
     {
-        if (spell == null) return;
+        if (spell == null) throw new System.ArgumentNullException($"Spell must not be null to notify about setting stats");
         Packet p = new Packet(Packet.Command.SetSpellStats, spell, c);
         SendToBoth(p);
     }
 
     public void NotifySetNegated(Card card, bool negated)
     {
-        if (card == null) return;
+        if (card == null) throw new System.ArgumentNullException($"Card must not be null to notify about negating");
         Packet packet = new Packet(Packet.Command.Negate, card, negated);
         SendToBoth(packet);
     }
@@ -197,6 +198,15 @@ public class ServerNotifier : MonoBehaviour
         if (card == null) throw new System.ArgumentNullException($"Card must not be null to notify about activating");
         Packet packet = new Packet(Packet.Command.Activate, card, activated);
         SendToBoth(packet);
+    }
+
+    public void NotifyChangeController(Card card, Player controller)
+    {
+        if (card == null) throw new System.ArgumentNullException($"Card must not be null to notify about changing controller");
+        if (controller == null) throw new System.ArgumentNullException($"Player must not be null to notify about changing controller");
+        Packet p = new Packet(Packet.Command.ChangeControl, card, controller == Player ? 0 : 1);
+        Packet q = new Packet(Packet.Command.ChangeControl, card, controller == Player ? 1 : 0);
+        SendPackets(p, q);
     }
 
     public void NotifySetTurn(ServerGame sGame, int indexToSet)
@@ -243,13 +253,11 @@ public class ServerNotifier : MonoBehaviour
         Debug.Log("Asking for space target");
     }
 
-    public void GetChoicesFromList(List<Card> potentialTargets, int maxNum, ChooseFromListSubeffect src)
+    public void GetChoicesFromList(IEnumerable<Card> potentialTargets, int maxNum, ChooseFromListSubeffect src)
     {
-        int[] cardIDs = new int[potentialTargets.Count];
-        for(int i = 0; i < potentialTargets.Count; i++)
-        {
-            cardIDs[i] = potentialTargets[i].ID;
-        }
+        int[] cardIDs = new int[potentialTargets.Count()];
+        int i = 0;
+        foreach(Card c in potentialTargets) cardIDs[i++] = c.ID;
         Packet packet = new Packet(Packet.Command.GetChoicesFromList, src.ThisCard, cardIDs, maxNum, src.ServerEffect.EffectIndex, src.SubeffIndex);
         SendPacket(packet);
         Debug.Log($"Asking for targets from list of cardIDs {string.Join(",", cardIDs)}");
@@ -283,6 +291,7 @@ public class ServerNotifier : MonoBehaviour
     /// </summary>
     public void AcceptTarget()
     {
+        Debug.Log($"Accepting target of {Player.index}");
         Packet p = new Packet(Packet.Command.TargetAccepted);
         SendPacket(p);
     }

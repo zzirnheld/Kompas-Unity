@@ -38,10 +38,11 @@ public class ServerTrigger : Trigger
     /// Pushes this trigger's effect onto the stack with the value of X if applicable.
     /// </summary>
     /// <param name="x"></param>
-    protected void TriggerEffect(int? x)
+    protected void TriggerEffect(int? x, Card triggerer)
     {
         Debug.Log($"Triggering effect of {effToTrigger.Source.CardName} for value of x={x}");
         if (x.HasValue) effToTrigger.X = x.Value;
+        if (triggerer != null) effToTrigger.Targets.Add(triggerer);
         //TODO should you notify right now about effect x? as of right now, no, because the important thing is the x value currently set in client network controller
         //and either another effect could be currently resolving with a different value of x
         //or the value of x could get changed between when this triggers and when the effect resolves
@@ -61,14 +62,14 @@ public class ServerTrigger : Trigger
     /// <param name="stackTrigger">The effect or attack that triggered this, if any.</param>
     /// <param name="x">If the action that triggered this has a value of x, it goes here. Otherwise, null.</param>
     /// <returns>Whether all restrictions of the trigger are fulfilled.</returns>
-    protected bool CheckTriggerRestrictions(Card cardTriggerer, IStackable stackTrigger, int? x, Player triggerer)
+    protected bool CheckTriggerRestrictions(Card cardTriggerer, IStackable stackTrigger, Player triggerer, int? x, (int x, int y)? space)
     {
         if(triggerRestriction == null)
         {
             Debug.LogWarning($"Warning: null trigger restriction for effect of {effToTrigger.Source.CardName}");
         }
 
-        return triggerRestriction.Evaluate(cardTriggerer, stackTrigger, triggerer);
+        return triggerRestriction.Evaluate(cardTriggerer: cardTriggerer, stackTrigger: stackTrigger, triggerer: triggerer, effX: x, space: space);
     }
 
     /// <summary>
@@ -77,16 +78,16 @@ public class ServerTrigger : Trigger
     /// <param name="cardTriggerer">The card that triggered this, if any.</param>
     /// <param name="stackTrigger">The effect or attack that triggered this, if any.</param>
     /// <param name="x">If the action that triggered this has a value of x, it goes here. Otherwise, null.</param>
-    public virtual void TriggerIfValid(Card cardTriggerer, IServerStackable stackTrigger, int? x, ServerPlayer triggerer)
+    public virtual void TriggerIfValid(Card cardTriggerer, IServerStackable stackTrigger, ServerPlayer triggerer, int? x, (int, int)? space)
     {
         /*Debug.Log($"Is trigger valid for effect of {effToTrigger.thisCard.CardName} with id {effToTrigger.thisCard.ID}? " +
             $"{CheckTriggerRestrictions(triggerer, stackTrigger, x)}");*/
-        if (CheckTriggerRestrictions(cardTriggerer, stackTrigger, x, triggerer))
+        if (CheckTriggerRestrictions(cardTriggerer, stackTrigger, triggerer, x, space))
         {
             Debug.Log($"Trigger is valid for effect of {effToTrigger.Source.CardName} with id {effToTrigger.Source.ID}");
             if (Optional) effToTrigger.serverGame.EffectsController
                      .AskForTrigger(this, x, cardTriggerer, stackTrigger, triggerer, effToTrigger.serverGame.ServerPlayers[effToTrigger.Source.ControllerIndex]);
-            else TriggerEffect(x);
+            else TriggerEffect(x, cardTriggerer);
         }
     }
 }

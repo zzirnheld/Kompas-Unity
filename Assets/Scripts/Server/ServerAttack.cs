@@ -23,10 +23,10 @@ public class ServerAttack : Attack, IServerStackable
     /// </summary>
     public void Declare()
     {
-        EffCtrl.Trigger(TriggerCondition.Attacks, attacker, this, null, ServerController);
-        EffCtrl.Trigger(TriggerCondition.Defends, defender, this, null, ServerController);
-        EffCtrl.Trigger(TriggerCondition.Battles, attacker, this, null, ServerController);
-        EffCtrl.Trigger(TriggerCondition.Battles, defender, this, null, ServerController);
+        EffCtrl.Trigger(TriggerCondition.Attacks, cardTriggerer: attacker, stackTrigger: this, triggerer: ServerController);
+        EffCtrl.Trigger(TriggerCondition.Defends, cardTriggerer: defender, stackTrigger: this, triggerer: ServerController);
+        EffCtrl.Trigger(TriggerCondition.Battles, cardTriggerer: attacker, stackTrigger: this, triggerer: ServerController);
+        EffCtrl.Trigger(TriggerCondition.Battles, cardTriggerer: defender, stackTrigger: this, triggerer: ServerController);
     }
 
     public void StartResolution()
@@ -54,9 +54,9 @@ public class ServerAttack : Attack, IServerStackable
             attacker.S,
             attacker.W);
         //trigger effects based on combat damage
-        EffCtrl.Trigger(TriggerCondition.TakeCombatDamage, defender, this, attackerDmg, ServerController);
-        EffCtrl.Trigger(TriggerCondition.TakeCombatDamage, attacker, this, defenderDmg, ServerController);
-        EffCtrl.Trigger(TriggerCondition.DealCombatDamage, attacker, this, attackerDmg, ServerController);
-        EffCtrl.Trigger(TriggerCondition.DealCombatDamage, defender, this, defenderDmg, ServerController);
+        EffCtrl.Trigger(TriggerCondition.TakeCombatDamage, cardTriggerer: defender, stackTrigger: this, triggerer: ServerController, x: attackerDmg);
+        EffCtrl.Trigger(TriggerCondition.TakeCombatDamage, cardTriggerer: attacker, stackTrigger: this, triggerer: ServerController, x: defenderDmg);
+        EffCtrl.Trigger(TriggerCondition.DealCombatDamage, cardTriggerer: attacker, stackTrigger: this, triggerer: ServerController, x: attackerDmg);
+        EffCtrl.Trigger(TriggerCondition.DealCombatDamage, cardTriggerer: defender, stackTrigger: this, triggerer: ServerController, x: defenderDmg);
     }
 }

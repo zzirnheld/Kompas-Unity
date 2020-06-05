@@ -1,0 +1,38 @@
+{
+	"cardType":83,
+	"cardName":"Raido",
+	"effText":"Can’t be cast normally. Move a card anywhere (that there isn't already a card).",
+	"effects":[
+		{
+			"triggerCondition":401,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
+				}
+			}",
+			"subeffectTypes":[0,4,309],
+			"subeffects":[
+				"{
+						\"boardRestriction\":
+						{
+							\"restrictionsToCheck\":[103]
+						}
+				}",
+				"{
+					\"spaceRestriction\":{
+						\"restrictionsToCheck\":[1]
+					}
+				}",
+				"{}"
+			]	
+		}
+	],
+	"PlayRestriction":{
+		"NormalRestrictions":["Cannot be Played Normally"]
+	},
+	"c":6,
+	"spellType":"Simple",
+	"subtypes":["Rune","Simple"],
+	"subtypeText":"Rune Simple"
+}

@@ -7,9 +7,7 @@ public class AddRestSubeffect : CardTargetSubeffect
 {
     public override void Resolve()
     {
-        var cards = ServerGame.cards.Values;
-        Effect.Rest.AddRange(cards.Where(c => cardRestriction.Evaluate(c)));
-
+        Effect.Rest.AddRange(ServerGame.Cards.Where(c => cardRestriction.Evaluate(c)));
         ServerEffect.ResolveNextSubeffect();
     }
 }

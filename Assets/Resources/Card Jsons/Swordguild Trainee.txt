@@ -7,7 +7,7 @@
 		"trigger":"{
 			\"triggerRestriction\":
 			{
-				\"Optional\":true
+				\"Optional\":true,
 				\"triggerRestrictions\":[1,100],
 				\"effParentRestriction\":
 					{

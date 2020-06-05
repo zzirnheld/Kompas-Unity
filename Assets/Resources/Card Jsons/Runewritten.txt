@@ -1,0 +1,34 @@
+{
+	"cardType":67,
+	"cardName":"Runewritten",
+	"effText":"When you cast a Rune, I give myself +1EW.",
+	"effects":[
+		{
+			"triggerCondition":401,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[1,101,200],
+					\"cardRestriction\":{
+						\"restrictionsToCheck\":[2,4,7],
+						\"subtypesInclude\":[\"Rune\"]
+					}
+				}
+			}",
+			"subeffectTypes":[5,100],
+			"subeffects":[
+				"{}",
+				"{
+					\"eChange\":1,
+					\"wChange\":1
+				}"
+			]	
+		}
+	],
+	"n":3,
+	"e":2,
+	"s":5,
+	"w":2,
+	"subtypes":["Runer","Warrior"],
+	"subtypeText":"Runer Warrior"
+}

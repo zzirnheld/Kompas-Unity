@@ -7,11 +7,14 @@ public class SpellCard : Card
 {
     public const string SimpleSubtype = "Simple";
     public const string DelayedSubtype = "Delayed";
+    public const string TerraformSubtype = "Terraform";
+    public const string VanishingSubtype = "Vanishing";
 
     public bool Fast { get; private set; }
     public int C { get; set; }
     public string Subtext { get; private set; }
     public string SpellSubtype { get; private set; }
+    public int Arg { get; private set; }
 
     public override int Cost => C;
     public override string StatsString => Fast ? "Fast C" : "C" + C + " " + SpellSubtype;
@@ -40,6 +43,7 @@ public class SpellCard : Card
         Subtext = serializedSpell.subtext;
         SpellSubtype = serializedSpell.spellType;
         Fast = serializedSpell.fast;
+        Arg = serializedSpell.arg;
 
         base.SetInfo(serializedCard, game, owner, effects, id);
     }
@@ -56,5 +60,15 @@ public class SpellCard : Card
     {
         base.ChangeController(newController);
         transform.localEulerAngles = new Vector3(0, 0, 90 + 180 * ControllerIndex);
+    }
+
+    public override bool CardInAOE(Card c) => SpellSubtype == TerraformSubtype && DistanceTo(c) <= Arg;
+
+    public override bool SpaceInAOE(int x, int y) => SpellSubtype == TerraformSubtype && DistanceTo(x, y) <= Arg;
+
+    public override void ResetForTurn(Player turnPlayer)
+    {
+        base.ResetForTurn(turnPlayer);
+        if (SpellSubtype == VanishingSubtype && TurnsOnBoard >= Arg) game.Discard(this);
     }
 }

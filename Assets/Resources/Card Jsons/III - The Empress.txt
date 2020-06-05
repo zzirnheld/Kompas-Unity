@@ -21,7 +21,7 @@
 				"{
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[3,100,202]
+						\"restrictionsToCheck\":[3,7,100,202]
 					}
 				}",
 				"{

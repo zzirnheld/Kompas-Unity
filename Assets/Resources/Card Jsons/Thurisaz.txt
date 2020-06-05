@@ -1,0 +1,38 @@
+{
+	"cardType":83,
+	"cardName":"Thurisaz",
+	"effText":"Can’t be cast normally. Double a character's W.",
+	"effects":[
+		{
+			"triggerCondition":401,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
+				}
+			}",
+			"subeffectTypes":[0,203,103],
+			"subeffects":[
+				"{
+						\"boardRestriction\":
+						{
+							\"restrictionsToCheck\":[3,103]
+						}
+				}",
+				"{
+					\"WhatToCount\":\"W\"
+				}",
+				"{
+					\"wMult\":1
+				}"
+			]	
+		}
+	],
+	"PlayRestriction":{
+		"NormalRestrictions":["Cannot be Played Normally"]
+	},
+	"c":4,
+	"spellType":"Simple",
+	"subtypes":["Rune","Simple"],
+	"subtypeText":"Rune Simple"
+}

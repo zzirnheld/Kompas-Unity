@@ -51,6 +51,7 @@ public class ServerEffect : Effect, IServerStackable
             catch (System.ArgumentException)
             {
                 Debug.LogError($"Failed to load subeffect of type {se.subeffectTypes[i]} from json {se.subeffects[i]}");
+                throw;
             }
         }
     }

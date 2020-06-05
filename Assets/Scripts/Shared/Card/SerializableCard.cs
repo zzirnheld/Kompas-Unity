@@ -18,4 +18,5 @@ public class SerializableCard
 
     public MovementRestriction MovementRestriction;
     public AttackRestriction AttackRestriction;
+    public PlayRestriction PlayRestriction;
 }

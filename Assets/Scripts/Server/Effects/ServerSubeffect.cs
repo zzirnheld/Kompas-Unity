@@ -19,7 +19,7 @@ public abstract class ServerSubeffect : Subeffect
     {
         Debug.Log("Creating subeffect from json of type " + seType + " json " + subeffJson);
 
-        ServerSubeffect toReturn = null;
+        ServerSubeffect toReturn;
 
         switch (seType)
         {
@@ -92,6 +92,12 @@ public abstract class ServerSubeffect : Subeffect
             case SubeffectType.ChangeAllNESW:
                 toReturn = JsonUtility.FromJson<ChangeAllNESWSubeffect>(subeffJson);
                 break;
+            case SubeffectType.SetAllNESW:
+                toReturn = JsonUtility.FromJson<SetAllNESWSubeffect>(subeffJson);
+                break;
+            case SubeffectType.TakeControl:
+                toReturn = JsonUtility.FromJson<TakeControlSubeffect>(subeffJson);
+                break;
             case SubeffectType.SetXByBoardCount:
                 toReturn = JsonUtility.FromJson<SetXBoardRestrictionSubeffect>(subeffJson);
                 break;
@@ -100,6 +106,9 @@ public abstract class ServerSubeffect : Subeffect
                 break;
             case SubeffectType.SetXByMath:
                 toReturn = JsonUtility.FromJson<SetXSubeffect>(subeffJson);
+                break;
+            case SubeffectType.SetXByTargetValue:
+                toReturn = JsonUtility.FromJson<SetXByTargetValueSubeffect>(subeffJson);
                 break;
             case SubeffectType.ChangeXByGamestateValue:
                 toReturn = JsonUtility.FromJson<ChangeXByGamestateSubeffect>(subeffJson);
@@ -151,6 +160,9 @@ public abstract class ServerSubeffect : Subeffect
                 break;
             case SubeffectType.Move:
                 toReturn = JsonUtility.FromJson<MoveSubeffect>(subeffJson);
+                break;
+            case SubeffectType.Swap:
+                toReturn = JsonUtility.FromJson<SwapSubeffect>(subeffJson);
                 break;
             case SubeffectType.BottomdeckRest:
                 toReturn = JsonUtility.FromJson<BottomdeckRestSubeffect>(subeffJson);
@@ -205,6 +217,12 @@ public abstract class ServerSubeffect : Subeffect
                 break;
             case SubeffectType.HangingActivate:
                 toReturn = JsonUtility.FromJson<TemporaryActivationSubeffect>(subeffJson);
+                break;
+            case SubeffectType.EndTurn:
+                toReturn = JsonUtility.FromJson<EndTurnSubeffect>(subeffJson);
+                break;
+            case SubeffectType.Attack:
+                toReturn = JsonUtility.FromJson<AttackSubeffect>(subeffJson);
                 break;
             default:
                 Debug.LogError($"Unrecognized effect type enum {seType} for loading effect in effect constructor");

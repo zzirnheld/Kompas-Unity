@@ -1,0 +1,54 @@
+{
+	"cardType":67,
+	"cardName":"Runepainter",
+	"effText":"Once each friendly turn, you can hand-reshuffle a Rune to search your deck’s top 10 cards for a Runer.",
+	"effects":[
+		{
+			"activationRestriction":{
+				"Restrictions":[
+					"Max Times Per Turn",
+					"Friendly Turn"
+				]
+			},
+			"subeffectTypes":[8,303,404,1,405,12,304,350],
+			"subeffects":[
+				"{
+					\"CardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,7,103],
+						\"subtypesInclude\":[\"Rune\"]
+					},
+					\"MaxCanChoose\":1
+				}",
+				"{
+					\"TargetIndex\":-1
+				}",
+				"{
+					\"JumpTo\":5
+				}",
+				"{
+					\"cardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,7,102,551],
+						\"subtypesInclude\":[\"Runer\"]
+					}
+				}",
+				"{}",
+				"{
+					\"cardRestriction\":
+					{
+						\"restrictionsToCheck\":[7,102,551,600]
+					}
+				}",
+				"{}",
+				"{}"
+			]
+		}
+	],
+	"n":1,
+	"e":3,
+	"s":3,
+	"w":3,
+	"subtypes":["Runer","Mage"],
+	"subtypeText":"Runer Mage"
+}

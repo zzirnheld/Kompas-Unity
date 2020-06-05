@@ -31,7 +31,9 @@ public enum SubeffectType
     ChangeSpellC = 108,
     SetNESW = 109,
     ChangeAllNESW = 110,
+    SetAllNESW = 111,
     Activate = 120,
+    TakeControl = 130,
     //Deactivate = 121,
     PayPipsByTargetCost = 150,
 
@@ -39,6 +41,7 @@ public enum SubeffectType
     SetXByBoardCount = 200,
     SetXByGamestateValue = 201,
     SetXByMath = 202,
+    SetXByTargetValue = 203,
     ChangeXByGamestateValue = 211,
     //SetXByTargetN = 250,
     //SetXByTargetE = 251,
@@ -58,6 +61,7 @@ public enum SubeffectType
     Bottomdeck = 307,
     Topdeck = 308,
     Move = 309,
+    Swap = 310,
     BottomdeckRest = 350,
 
     //loops/control flow
@@ -79,5 +83,9 @@ public enum SubeffectType
     HangingNESWBuff = 501,
     HangingNESWBuffAll = 502,
     HangingNegate = 503,
-    HangingActivate = 504
+    HangingActivate = 504,
+
+    //misc
+    EndTurn = 600,
+    Attack = 601
 }

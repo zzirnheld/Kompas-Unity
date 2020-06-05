@@ -1,0 +1,41 @@
+{
+	"cardType":67,
+	"cardName":"Runerunner",
+	"effText":"Once each round, you can pip handcast a Rune.",
+	"effects":[
+		{
+			"activationRestriction":{
+				"Restrictions":[
+					"Max Times Per Round"
+				]
+			},
+			"subeffectTypes":[3,4,150,300],
+			"subeffects":[
+				"{
+					\"cardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,4,7,100,601,602],
+						\"subtypesInclude\":[\"Rune\"]
+					}
+				}",
+				"{
+					\"spaceRestriction\":
+					{
+						\"restrictionsToCheck\":[0]
+					}
+				}",
+				"{}",
+				"{
+					\"TargetIndex\":-1,
+					\"SpaceIndex\":-1
+				}"
+			]
+		}
+	],
+	"n":3,
+	"e":3,
+	"s":5,
+	"w":4,
+	"subtypes":["Runer","Mage"],
+	"subtypeText":"Runer Mage"
+}

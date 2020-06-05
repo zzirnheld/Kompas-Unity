@@ -1,0 +1,34 @@
+{
+	"cardType":83,
+	"cardName":"Isaz",
+	"effText":"Can’t be cast normally. I set any adjacent characters’ N to 0.",
+	"effects":[
+		{
+			"triggerCondition":401,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
+				}
+			}",
+			"subeffectTypes":[111],
+			"subeffects":[
+				"{
+					\"BoardRestriction\":
+					{
+						\"restrictionsToCheck\":[3,103],
+						\"onBoardRestrictions\":[0]
+					},
+					\"NVal\":0
+				}"
+			]	
+		}
+	],
+	"PlayRestriction":{
+		"NormalRestrictions":["Cannot be Played Normally"]
+	},
+	"c":2,
+	"spellType":"Simple",
+	"subtypes":["Rune","Simple"],
+	"subtypeText":"Rune Simple"
+}

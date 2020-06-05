@@ -9,12 +9,12 @@ public class SetNESWSubeffect : ServerSubeffect
     public int SVal = -1;
     public int WVal = -1;
 
-    public CharacterCard CharTarget { get => Target as CharacterCard; }
+    public CharacterCard CharTarget => Target as CharacterCard;
 
-    public int RealNVal { get => NVal < 0 ? CharTarget.N : NVal; }
-    public int RealEVal { get => EVal < 0 ? CharTarget.E : EVal; }
-    public int RealSVal { get => SVal < 0 ? CharTarget.S : SVal; }
-    public int RealWVal { get => WVal < 0 ? CharTarget.W : WVal; }
+    public int RealNVal => NVal <= 0 ? CharTarget.N : NVal;
+    public int RealEVal => EVal <= 0 ? CharTarget.E : EVal;
+    public int RealSVal => SVal <= 0 ? CharTarget.S : SVal;
+    public int RealWVal => WVal <= 0 ? CharTarget.W : WVal;
 
     public override void Resolve()
     {
