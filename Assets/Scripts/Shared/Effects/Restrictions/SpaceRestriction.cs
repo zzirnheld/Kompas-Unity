@@ -14,6 +14,7 @@ public class SpaceRestriction
         Empty = 1,
         AdjacentToThisCard = 100,
         AdjacentToWithRestriction = 101,
+        InAOE = 150,
         DistanceX = 200,
         DistanceToTargetX = 201,
         DistanceToTargetC = 251
@@ -65,6 +66,9 @@ public class SpaceRestriction
                     break;
                 case SpaceRestrictions.AdjacentToWithRestriction:
                     if (!ExistsCardWithRestrictionAdjacentToCoords(adjacencyRestriction, x, y)) return false;
+                    break;
+                case SpaceRestrictions.InAOE:
+                    if (!Subeffect.Source.SpaceInAOE(x, y)) return false;
                     break;
                 case SpaceRestrictions.DistanceX:
                     if (Subeffect.Source.DistanceTo(x, y) != Subeffect.Effect.X) return false;

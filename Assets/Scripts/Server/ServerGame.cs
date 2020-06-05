@@ -227,7 +227,8 @@ public class ServerGame : Game {
 
     public void Play(Card card, int toX, int toY, Player controller, IServerStackable stackSrc)
     {
-        EffectsController.Trigger(TriggerCondition.Play, cardTriggerer: card, stackTrigger: stackSrc, triggerer: stackSrc?.ServerController);
+        EffectsController.Trigger(TriggerCondition.Play, 
+            cardTriggerer: card, stackTrigger: stackSrc, triggerer: stackSrc?.ServerController, space: (toX, toY));
         //note that it's serverPlayers[controller.index] because you can play to the field of someone whose card it isnt
         ServerPlayers[controller.index].ServerNotifier.NotifyPlay(card, toX, toY);
         base.Play(card, toX, toY, controller);
@@ -245,7 +246,8 @@ public class ServerGame : Game {
 
     public void MoveOnBoard(Card card, int toX, int toY, bool normalMove, IServerStackable stackSrc)
     {
-        EffectsController.Trigger(TriggerCondition.Move, cardTriggerer: card, stackTrigger: stackSrc, triggerer: stackSrc?.ServerController);
+        EffectsController.Trigger(TriggerCondition.Move, 
+            cardTriggerer: card, stackTrigger: stackSrc, triggerer: stackSrc?.ServerController, space: (toX, toY));
         ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyMove(card, toX, toY, normalMove);
         base.MoveOnBoard(card, toX, toY, normalMove);
         if (stackSrc == null) EffectsController.CheckForResponse();

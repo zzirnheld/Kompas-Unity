@@ -64,6 +64,8 @@ public class SpellCard : Card
 
     public override bool CardInAOE(Card c) => SpellSubtype == TerraformSubtype && DistanceTo(c) <= Arg;
 
+    public override bool SpaceInAOE(int x, int y) => SpellSubtype == TerraformSubtype && DistanceTo(x, y) <= Arg;
+
     public override void ResetForTurn(Player turnPlayer)
     {
         base.ResetForTurn(turnPlayer);

@@ -207,6 +207,7 @@ public abstract class Card : CardBase {
     public bool IsAdjacentTo(Card card) => DistanceTo(card) == 1;
     public bool IsAdjacentTo(int x, int y) => DistanceTo(x, y) == 1;
     public virtual bool CardInAOE(Card c) => false;
+    public virtual bool SpaceInAOE(int x, int y) => false;
     #endregion distance/adjacency
 
     //misc mechanics methods

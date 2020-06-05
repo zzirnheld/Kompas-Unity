@@ -8,9 +8,9 @@
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,101,500,501],
-					\"cardRestriction\":{
-						\"onBoardRestrictions\":[2]
+					\"triggerRestrictions\":[1,120,500,501],
+					\"spaceRestriction\":{
+						\"restrictionsToCheck\":[150]
 					}
 				}
 			}",
