@@ -1,0 +1,48 @@
+{
+	"cardType":67,
+	"cardName":"The Eldest",
+	"effText":"Territorial: When turns start, kill an adjacent friendly Dragon. When I attack, I can give myself -1E and adjacent characters -2E.",
+	"effects":[
+		{
+			"triggerCondition":0,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[1]
+				}
+			}",
+			"subeffectTypes":[0,301],
+			"subeffects":[
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,3,7],
+						\"subtypesInclude\":[\"Dragon\"],
+						\"onBoardRestrictions\":[0]
+					}
+				}",
+				"{}"
+			]	
+		},
+		{
+			"triggerCondition":301,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0,1]
+				}
+			}",
+			"subeffectTypes":[50,301],
+			"subeffects":[
+				"{}",
+				"{}"
+			]	
+		}
+	],
+	"n":2,
+	"e":7,
+	"s":9,
+	"w":4,
+	"subtypes":["Dragon"],
+	"subtypeText":"Dragon"
+}

@@ -8,6 +8,7 @@ public class ChangeXByTargetValueSubeffect : ServerSubeffect
     public const string S = "S";
     public const string W = "W";
     public const string C = "C";
+    public const string DistanceToTarget = "Distance to Target";
 
     public string WhatToCount;
 
@@ -32,6 +33,8 @@ public class ChangeXByTargetValueSubeffect : ServerSubeffect
                 case C:
                     if (Target is SpellCard spellCTarget) return spellCTarget.C;
                     else throw new System.ArgumentException($"Asked for C of non-spell target");
+                case DistanceToTarget:
+                    return Source.DistanceTo(Target);
                 default:
                     throw new System.ArgumentException($"Invalid 'what to count' string {WhatToCount} in x by gamestate value subeffect");
             }

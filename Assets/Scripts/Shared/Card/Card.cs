@@ -188,15 +188,18 @@ public abstract class Card : CardBase {
         PlayRestriction = serializedCard.PlayRestriction ?? new PlayRestriction();
         PlayRestriction.SetInfo(this);
     }
-    
+
     #region distance/adjacency
-    public int DistanceTo(int x, int y) =>
-        Mathf.Abs(x - BoardX) > Mathf.Abs(y - BoardY) ? Mathf.Abs(x - BoardX) : Mathf.Abs(y - BoardY);
+    public int DistanceTo(int x, int y)
+    {
+        if (Location != CardLocation.Field) return -1;
+        return Mathf.Abs(x - BoardX) > Mathf.Abs(y - BoardY) ? Mathf.Abs(x - BoardX) : Mathf.Abs(y - BoardY);
         /* equivalent to
          * if (Mathf.Abs(card.X - X) > Mathf.Abs(card.Y - Y)) return Mathf.Abs(card.X - X);
          * else return Mathf.Abs(card.Y - Y);
          * is card.X - X > card.Y - Y? If so, return card.X -X, otherwise return card.Y - Y
         */
+    }
     public int DistanceTo(Card card) => DistanceTo(card.BoardX, card.BoardY);
     public bool WithinSlots(int numSlots, Card card)
     {
