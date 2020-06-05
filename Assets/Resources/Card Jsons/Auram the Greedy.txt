@@ -1,7 +1,7 @@
 {
 	"cardType":67,
-	"cardName":"Luxor the Blinding",
-	"effText":"Territorial: When turns start, kill an adjacent friendly Dragon. When I attack, I can give myself -1E and adjacent characters -2E.",
+	"cardName":"Auram the Greedy",
+	"effText":"Territorial: When turns start, kill an adjacent friendly Dragon. When I attack, I can give myself -XE to draw X.",
 	"effects":[
 		{
 			"triggerCondition":0,
@@ -28,33 +28,31 @@
 			"triggerCondition":301,
 			"trigger":
 			"{
-				\"Blurb\":\"Give the attacking Luxor -1E to give adjacent characters -2E?\",
+				\"Blurb\":\"Give the attacking Terrian -XE to give its taret -2XW? (You choose X)\",
 				\"Optional\":true,
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[0,1]
 				}
 			}",
-			"subeffectTypes":[5,100,110],
+			"subeffectTypes":[299,5,103,306],
 			"subeffects":[
+				"{
+					\"XRest\":{
+						\"Restrictions\":[\"<=ThisE\"]
+					}
+				}",
 				"{}",
 				"{
-					\"eChange\":-1
+					\"eMult\":-1
 				}",
-				"{
-					\"BoardRestriction\":
-					{
-						\"restrictionsToCheck\":[3,103],
-						\"onBoardRestrictions\":[0]
-					},
-					\"EMod\":-3
-				}"
+				"{}"
 			]	
 		}
 	],
 	"n":1,
 	"e":5,
 	"s":7,
-	"w":6,
+	"w":8,
 	"subtypes":["Dragon"],
 	"subtypeText":"Dragon"
 }

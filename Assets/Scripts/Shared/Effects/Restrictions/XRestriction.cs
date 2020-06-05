@@ -6,6 +6,7 @@ using UnityEngine;
 public class XRestriction
 {
     public const string LessThanEqualThisCost = "<=ThisCost";
+    public const string LessThanEqualThisE = "<=ThisE";
     public const string Positive = ">0";
 
     public string[] Restrictions = new string[0];
@@ -23,6 +24,13 @@ public class XRestriction
                     break;
                 case LessThanEqualThisCost:
                     if (x > Subeffect.Source.Cost) return false;
+                    break;
+                case LessThanEqualThisE:
+                    if (Subeffect.Source is CharacterCard charSource)
+                    {
+                        if (x > charSource.E) return false;
+                    }
+                    else return false;
                     break;
                 default:
                     throw new System.ArgumentException($"Invalid X restriction {r} in X Restriction.");
