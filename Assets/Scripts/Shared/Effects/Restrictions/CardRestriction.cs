@@ -24,6 +24,7 @@ public class CardRestriction
         Summoned = 10,
         DistinctName = 11,
         SameName = 12,
+        Avatar = 50,
         //location
         Hand = 100,
         Discard = 101,
@@ -125,6 +126,9 @@ public class CardRestriction
                     break;
                 case CardRestrictions.SameName: //note: same name as this subeffect's target
                     if (Subeffect.Target.CardName != potentialTarget.CardName) return false;
+                    break;
+                case CardRestrictions.Avatar:
+                    if (!(potentialTarget is AvatarCard)) return false;
                     break;
                 case CardRestrictions.Hand:
                     if (potentialTarget.Location != CardLocation.Hand) return false;

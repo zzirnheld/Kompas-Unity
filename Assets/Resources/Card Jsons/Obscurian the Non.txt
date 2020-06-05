@@ -1,0 +1,58 @@
+{
+	"cardType":67,
+	"cardName":"Obscurian the Non",
+	"effText":"Territorial: When turns end, kill an adjacent friendly Dragon. When I attack, I can give myself -1E and an Avatar -2E.",
+	"effects":[
+		{
+			"triggerCondition":0,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[1]
+				}
+			}",
+			"subeffectTypes":[0,301],
+			"subeffects":[
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,3,7],
+						\"subtypesInclude\":[\"Dragon\"],
+						\"onBoardRestrictions\":[0]
+					}
+				}",
+				"{}"
+			]	
+		},
+		{
+			"triggerCondition":301,
+			"trigger":
+			"{
+				\"Blurb\":\"Give the attacking Pyrian -1E to give their target -4E?\",
+				\"Optional\":true,
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0,1]
+				}
+			}",
+			"subeffectTypes":[5,100,0,100],
+			"subeffects":[
+				"{}",
+				"{
+					\"eChange\":-1
+				}",
+				"{
+					\"restrictionsToCheck\":[50]
+				}",
+				"{
+					\"eChange\":-2
+				}"
+			]	
+		}
+	],
+	"n":2,
+	"e":4,
+	"s":7,
+	"w":6,
+	"subtypes":["Dragon"],
+	"subtypeText":"Dragon"
+}

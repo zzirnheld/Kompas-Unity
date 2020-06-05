@@ -1,0 +1,57 @@
+{
+	"cardType":67,
+	"cardName":"Aerian the Heedless",
+	"effText":"Territorial: When turns start, kill an adjacent friendly Dragon. When I attack, I can all characters (including myself) within two spaces -2E.",
+	"effects":[
+		{
+			"triggerCondition":0,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[1]
+				}
+			}",
+			"subeffectTypes":[0,301],
+			"subeffects":[
+				"{
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,3,7],
+						\"subtypesInclude\":[\"Dragon\"],
+						\"onBoardRestrictions\":[0]
+					}
+				}",
+				"{}"
+			]	
+		},
+		{
+			"triggerCondition":301,
+			"trigger":
+			"{
+				\"Blurb\":\"Give the attacking Aerian and all other characters within 2 spaces -2E?\",
+				\"Optional\":true,
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0,1]
+				}
+			}",
+			"subeffectTypes":[110],
+			"subeffects":[
+				"{
+					\"BoardRestriction\":
+					{
+						\"restrictionsToCheck\":[3,103],
+						\"onBoardRestrictions\":[1],
+						\"cSpaces\":2
+					},
+					\"EMod\":-2
+				}"
+			]	
+		}
+	],
+	"n":3,
+	"e":5,
+	"s":7,
+	"w":3,
+	"subtypes":["Dragon"],
+	"subtypeText":"Dragon"
+}
