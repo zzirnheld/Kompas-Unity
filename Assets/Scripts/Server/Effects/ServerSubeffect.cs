@@ -59,6 +59,9 @@ public abstract class ServerSubeffect : Subeffect
             case SubeffectType.AddRest:
                 toReturn = JsonUtility.FromJson<AddRestSubeffect>(subeffJson);
                 break;
+            case SubeffectType.TargetDefender:
+                toReturn = JsonUtility.FromJson<TargetDefenderSubeffect>(subeffJson);
+                break;
             case SubeffectType.ChangeNESW:
                 toReturn = JsonUtility.FromJson<ChangeNESWSubeffect>(subeffJson);
                 break;

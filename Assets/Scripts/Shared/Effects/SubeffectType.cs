@@ -18,6 +18,7 @@ public enum SubeffectType
     DeleteTargetFromList = 10,
     TargetAll = 11,
     AddRest = 12,
+    TargetDefender = 50,
 
     //changing values, esp. on cards
     ChangeNESW = 100,
