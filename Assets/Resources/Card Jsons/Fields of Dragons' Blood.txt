@@ -1,0 +1,31 @@
+{
+	"cardType":83,
+	"cardName":"Fields of Dragons' Blood",
+	"effText":"When a Dragon here gives themselves -XE, gain a pip.",
+	"effects":[
+		{
+			"triggerCondition":200,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[101,149],
+					\"cardRestriction\":{
+						\"restrictionsToCheck\":[2,103],
+						\"onBoardRestrictions\":[2]
+					}
+				}
+			}",
+			"subeffectTypes":[101],
+			"subeffects":[
+				"{
+					\"modifier\":1
+				}"
+			]	
+		}
+	],
+	"c":3,
+	"spellType":"Terraform",
+	"subtypes":["Terraform"],
+	"subtypeText":"Terraform",
+	"arg":1
+}

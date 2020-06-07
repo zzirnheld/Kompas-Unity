@@ -1,0 +1,33 @@
+{
+	"cardType":67,
+	"cardName":"Pseudodragon",
+	"effText":"When I attack, give me and my target -1E.",
+	"effects":[
+		{
+			"triggerCondition":301,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0,1]
+				}
+			}",
+			"subeffectTypes":[5,100,50,100],
+			"subeffects":[
+				"{}",
+				"{
+					\"eChange\":-1
+				}",
+				"{}",
+				"{
+					\"eChange\":-1
+				}"
+			]	
+		}
+	],
+	"n":3,
+	"e":3,
+	"s":4,
+	"w":2,
+	"subtypes":[],
+	"subtypeText":""
+}

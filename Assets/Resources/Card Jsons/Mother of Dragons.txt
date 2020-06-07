@@ -1,0 +1,39 @@
+{
+	"cardType":67,
+	"cardName":"Runecarver",
+	"effText":"Once each friendly turn, you can hand-reshuffle a Dragon to draw 2.",
+	"effects":[
+		{
+			"activationRestriction":{
+				"Restrictions":[
+					"Max Times Per Turn",
+					"Friendly Turn"
+				]
+			},
+			"subeffectTypes":[3,303,202,306],
+			"subeffects":[
+				"{
+					\"cardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,7,100],
+						\"subtypesInclude\":[\"Dragon\"]
+					}
+				}",
+				"{
+					\"TargetIndex\":-1
+				}",
+				"{
+					\"Multiplier\":0,
+					\"Modifier\":2
+				}",
+				"{}"
+			]
+		}
+	],
+	"n":1,
+	"e":0,
+	"s":9,
+	"w":6,
+	"subtypes":[],
+	"subtypeText":""
+}

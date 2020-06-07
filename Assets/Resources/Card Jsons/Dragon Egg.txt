@@ -1,0 +1,45 @@
+{
+	"cardType":67,
+	"cardName":"Dragon Egg",
+	"effText":"After I’m summoned, delay 2 turns, then tribute me and deck-summon a Dragon where I was.",
+	"effects":[
+		{
+		"triggerCondition":401,
+		"trigger":
+		"{
+			\"triggerRestriction\":{
+				\"triggerRestrictions\":[0]
+			}
+		}",
+		"subeffectTypes":[500,5,6,301,1,300],
+		"subeffects":[
+			"{
+				\"NumTimesToDelay\":1,
+				\"IndexToResume\":1,
+				\"TriggerCondition\":0
+			}",
+			"{}",
+			"{}",
+			"{
+				\"TargetIndex\":-1
+			}",
+			"{
+				\"cardRestriction\":
+				{
+					\"restrictionsToCheck\":[2,3,202],
+					\"subtypesInclude\":[\"Warrior\"]
+				}
+			}",
+			"{
+				\"spaceIndex\":-1,
+				\"TargetIndex\":-1
+			}"
+		]
+	}],
+	"n":0,
+	"e":2,
+	"s":2,
+	"w":0,
+	"subtypes":[],
+	"subtypeText":""
+}
