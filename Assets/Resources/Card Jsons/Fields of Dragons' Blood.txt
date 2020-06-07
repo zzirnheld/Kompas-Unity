@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Fields of Dragons' Blood",
-	"effText":"When a Dragon here gives themselves -XE, gain a pip.",
+	"effText":"When a Dragon here changes their own stats by effect, gain a pip.",
 	"effects":[
 		{
 			"triggerCondition":200,
