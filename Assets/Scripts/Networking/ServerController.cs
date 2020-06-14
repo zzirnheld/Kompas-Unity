@@ -34,7 +34,7 @@ namespace KompasNetworking
             Host();
         }
 
-        public void Host()
+        public async void Host()
         {
             listener.Start();
 
