@@ -20,7 +20,7 @@ namespace KompasNetworking
 
         private void Awake()
         {
-            ipAddress = Dns.GetHostEntry("localhost").AddressList[0];
+            ipAddress = IPAddress.Parse("127.0.0.1");
 
             games = new List<ServerGame>();
             try
