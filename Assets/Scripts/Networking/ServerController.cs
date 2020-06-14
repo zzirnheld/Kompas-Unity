@@ -35,7 +35,7 @@ namespace KompasNetworking
             Host();
         }
 
-        public async void Host()
+        public void Host()
         {
             Debug.Log($"Hosting on {ipAddress.ToString()}");
             listener.Start();
