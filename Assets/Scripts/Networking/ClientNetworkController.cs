@@ -22,9 +22,11 @@ public class ClientNetworkController : NetworkController {
 
     public void Connect(string ip)
     {
-        Debug.Log($"Connecting to {ip} on port {port}");
+        Debug.Log($"Connecting to {ip} on a random port");
+        var address = IPAddress.Parse(ip);
+        var endpoint = new IPEndPoint(address, 0);
         ClientGame.uiCtrl.CurrentStateString = $"Connecting to {ip}";
-        tcpClient = new System.Net.Sockets.TcpClient(ip, port);
+        tcpClient = new System.Net.Sockets.TcpClient(endpoint);
         Debug.Log("Connected");
         ClientGame.uiCtrl.CurrentStateString = $"Connected to {ip}";
     }
