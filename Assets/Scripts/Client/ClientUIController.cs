@@ -64,7 +64,7 @@ public class ClientUIController : UIController
     public void Connect()
     {
         string ip = ipInputField.text;
-        if (string.IsNullOrEmpty(ip)) ip = "localhost";
+        if (string.IsNullOrEmpty(ip)) ip = "127.0.0.1";
         clientGame.clientNetworkCtrl.Connect(ip);
         HideNetworkingUI();
     }
