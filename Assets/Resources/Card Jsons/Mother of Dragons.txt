@@ -1,6 +1,6 @@
 {
 	"cardType":67,
-	"cardName":"Runecarver",
+	"cardName":"Mother of Dragons",
 	"effText":"Once each friendly turn, you can hand-reshuffle a Dragon to draw 2.",
 	"effects":[
 		{
