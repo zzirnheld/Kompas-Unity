@@ -47,7 +47,7 @@ namespace KompasNetworking
                     games.Add(currGame);
                 }
                 Debug.Log("Waiting for next client");
-                var client = listener.AcceptTcpClient();
+                var client = await listener.AcceptTcpClient();
                 Debug.Log("Connected to a client");
                 if(currGame.AddPlayer(client) >= 2) currGame = null;
             }
