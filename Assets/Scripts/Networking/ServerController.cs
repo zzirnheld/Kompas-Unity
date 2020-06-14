@@ -12,8 +12,7 @@ namespace KompasNetworking
         public GameObject GamePrefab;
         public UIController UICtrl;
         public CardRepository CardRepo;
-
-        private IPAddress ipAddress;
+        
         private TcpListener listener;
         private List<ServerGame> games;
         private ServerGame currGame = null;
@@ -37,7 +36,6 @@ namespace KompasNetworking
 
         public void Host()
         {
-            Debug.Log($"Hosting on {ipAddress.ToString()}");
             listener.Start();
 
             while (true)
