@@ -24,9 +24,9 @@ public class ClientNetworkController : NetworkController {
     {
         Debug.Log($"Connecting to {ip} on a random port");
         var address = IPAddress.Parse(ip);
-        var endpoint = new IPEndPoint(address, 0);
         ClientGame.uiCtrl.CurrentStateString = $"Connecting to {ip}";
-        tcpClient = new System.Net.Sockets.TcpClient(endpoint);
+        tcpClient = new System.Net.Sockets.TcpClient();
+        tcpClient.Connect(address, port);
         Debug.Log("Connected");
         ClientGame.uiCtrl.CurrentStateString = $"Connected to {ip}";
     }

@@ -20,12 +20,10 @@ namespace KompasNetworking
 
         private void Awake()
         {
-            ipAddress = IPAddress.Parse("127.0.0.1");
-
             games = new List<ServerGame>();
             try
             {
-                listener = new TcpListener(ipAddress, NetworkController.port);
+                listener = new TcpListener(IPAddress.Any, NetworkController.port);
             }
             catch(System.Exception e)
             {
@@ -50,7 +48,9 @@ namespace KompasNetworking
                     currGame.Init(UICtrl, CardRepo);
                     games.Add(currGame);
                 }
-                var client = await listener.AcceptTcpClientAsync();
+                Debug.Log("Waiting for next client");
+                var client = listener.AcceptTcpClient();
+                Debug.Log("Connected to a client");
                 if(currGame.AddPlayer(client) >= 2) currGame = null;
             }
         }
