@@ -10,7 +10,7 @@
 					"Friendly Turn"
 				]
 			},
-			"subeffectTypes":[3,275,301,410,404,1,405,12,304,350],
+			"subeffectTypes":[3,275,301,410,404,8,405,12,304,350],
 			"subeffects":[
 				"{
 					\"cardRestriction\":
@@ -31,7 +31,8 @@
 					\"JumpTo\":7
 				}",
 				"{
-					\"cardRestriction\":
+					\"MaxCanChoose\":1,
+					\"CardRestriction\":
 					{
 						\"restrictionsToCheck\":[2,7,102,204,551],
 						\"subtypesInclude\":[\"Golem\"]
