@@ -120,7 +120,7 @@ public class ServerGame : Game {
                 cardsByID.Add(cardCount, card);
                 cardCount++;
             }
-            player.deckCtrl.AddCard(card);
+            player.deckCtrl.ShuffleIn(card);
             if (card != null) Debug.Log($"Adding new card {card.CardName} with id {card.ID}");
             player.ServerNotifier.NotifyAddToDeck(card);
         }
@@ -336,18 +336,18 @@ public class ServerGame : Game {
         return drawn;
     }
 
-    public void GivePlayerPips(Player player, int pipsToSet)
+    public void GivePlayerPips(ServerPlayer player, int pipsToSet)
     {
         player.pips = pipsToSet;
         if (player.index == 0) uiCtrl.UpdateFriendlyPips(pipsToSet);
         else uiCtrl.UpdateEnemyPips(pipsToSet);
-        TurnServerPlayer.ServerNotifier.NotifySetPips(pipsToSet);
+        player.ServerNotifier.NotifySetPips(pipsToSet);
     }
 
     public void GiveTurnPlayerPips()
     {
         int pipsToSet = TurnPlayer.pips + MaxCardsOnField;
-        GivePlayerPips(TurnPlayer, pipsToSet);
+        GivePlayerPips(TurnServerPlayer, pipsToSet);
     }
 
     public void Attack(CharacterCard attacker, CharacterCard defender, ServerPlayer instigator)
