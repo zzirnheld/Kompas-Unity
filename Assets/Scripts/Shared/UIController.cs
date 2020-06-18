@@ -11,17 +11,17 @@ public class UIController : MonoBehaviour {
 
     //normal UI
     //pips
-    public Text friendlyPipsText;
-    public Text enemyPipsText;
+    public TMPro.TMP_Text friendlyPipsText;
+    public TMPro.TMP_Text enemyPipsText;
     //show selected card data
     public GameObject selectedUIParent;
-    public Text selectedCardNameText;
+    public TMPro.TMP_Text selectedCardNameText;
     public Image selectedCardImage;
-    public Text selectedCardStatsText;
-    public Text selectedCardSubtypesText;
-    public Text selectedCardEffText;
+    public TMPro.TMP_Text selectedCardStatsText;
+    public TMPro.TMP_Text selectedCardSubtypesText;
+    public TMPro.TMP_Text selectedCardEffText;
     //current state text (reminds the player what's happening right now)
-    public Text currentStateText;
+    public TMPro.TMP_Text currentStateText;
     private string currentStateString;
     //networking
     public TMP_InputField ipInputField;

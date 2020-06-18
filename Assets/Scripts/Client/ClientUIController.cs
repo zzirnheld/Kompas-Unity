@@ -7,24 +7,26 @@ using UnityEngine.UI;
 public class ClientUIController : UIController
 {
     public ClientGame clientGame;
-    //debug UI
+    //debug UI 
+    /*
     public GameObject debugParent;
     public InputField debugNInputField;
     public InputField debugEInputField;
     public InputField debugSInputField;
-    public InputField debugWInputField;
+    public InputField debugWInputField; */
     public InputField debugPipsField;
     //deck importing
+    /*
     public InputField deckInputField;
     public Button importDeckButton;
-    public Button confirmDeckImportButton;
+    public Button confirmDeckImportButton; */
     //card search
     public GameObject cardSearchView;
     public Image cardSearchImage;
+    /*
     public Button deckSearchButton;
-    public Button discardSearchButton;
+    public Button discardSearchButton;*/
     public Button searchTargetButton;
-    public Button cancelSearchButton;
     //effects
     public InputField xInput;
     public GameObject setXView;
@@ -51,7 +53,6 @@ public class ClientUIController : UIController
     
     private void Awake()
     {
-        deckInputField.lineType = InputField.LineType.MultiLineNewline;
         toSearch = new List<Card>();
     }
 
@@ -163,24 +164,6 @@ public class ClientUIController : UIController
     }
     #endregion effects
 
-    #region import deck
-    public void ImportDeckPressed()
-    {
-        deckInputField.gameObject.SetActive(true);
-        importDeckButton.gameObject.SetActive(false);
-        confirmDeckImportButton.gameObject.SetActive(true);
-    }
-
-    public void ConfirmDeckImport()
-    {
-        string decklist = deckInputField.text;
-        deckInputField.gameObject.SetActive(false);
-        confirmDeckImportButton.gameObject.SetActive(false);
-        importDeckButton.gameObject.SetActive(true);
-        clientGame.clientNotifier.RequestDecklistImport(decklist);
-    }
-    #endregion import deck
-
     #region search
     public void StartSearch(List<Card> list, ListRestriction listRestriction = null, int numToChoose = 1)
     {
@@ -202,10 +185,7 @@ public class ClientUIController : UIController
         cardSearchImage.sprite = toSearch[searchIndex].detailedSprite;
         cardSearchView.SetActive(true);
         //set buttons to their correct states
-        discardSearchButton.gameObject.SetActive(false);
-        deckSearchButton.gameObject.SetActive(false);
         searchTargetButton.gameObject.SetActive(true);
-        cancelSearchButton.gameObject.SetActive(true);
     }
 
 
@@ -273,10 +253,7 @@ public class ClientUIController : UIController
 
         cardSearchView.SetActive(false);
         //set buttons to their correct states
-        discardSearchButton.gameObject.SetActive(true);
-        deckSearchButton.gameObject.SetActive(true);
         searchTargetButton.gameObject.SetActive(false);
-        cancelSearchButton.gameObject.SetActive(false);
     }
 
 
@@ -328,12 +305,6 @@ public class ClientUIController : UIController
         int eToUpdate = charCard.E;
         int sToUpdate = charCard.S;
         int wToUpdate = charCard.W;
-
-        //if any of the input fields have a value, update the values you want to update 
-        if (debugNInputField.text != "") nToUpdate = int.Parse(debugNInputField.text);
-        if (debugEInputField.text != "") eToUpdate = int.Parse(debugEInputField.text);
-        if (debugSInputField.text != "") sToUpdate = int.Parse(debugSInputField.text);
-        if (debugWInputField.text != "") wToUpdate = int.Parse(debugWInputField.text);
 
         ClientGame.mainClientGame.clientNotifier.RequestSetNESW(charCard, nToUpdate, eToUpdate, sToUpdate, wToUpdate);
     }

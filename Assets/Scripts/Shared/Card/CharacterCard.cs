@@ -64,7 +64,7 @@ public class CharacterCard : Card {
 
     //get other information
     public override int Cost => S;
-    public override string StatsString => "N: " + N + "\t\tE: " + E + "\t\tS: " + S + "\t\tW: " + W;
+    public override string StatsString => "N: " + N + " / E: " + E + " / S: " + S + " / W: " + W;
     public override int SpacesCanMove => N - SpacesMoved;
     public override bool Summoned => true;
 
