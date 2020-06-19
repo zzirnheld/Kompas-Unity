@@ -39,7 +39,7 @@ public class CardController : MonoBehaviour
 
     public void SetRotation()
     {
-        card.gameObject.transform.localEulerAngles = new Vector3(90 + 180 * card.ControllerIndex, 0, 180 * card.ControllerIndex);
+        card.gameObject.transform.eulerAngles = new Vector3(0, 180 + 180 * card.ControllerIndex, 0);
     }
 
     /// <summary>
