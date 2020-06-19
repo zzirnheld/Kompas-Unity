@@ -9,7 +9,6 @@ public class ClientUIController : UIController
     public const string FriendlyTurn = "Friendly Turn";
     public const string EnemyTurn = "Enemy Turn";
 
-
     public ClientGame clientGame;
     //debug UI 
     /*

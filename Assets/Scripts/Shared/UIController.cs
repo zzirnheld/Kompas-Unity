@@ -43,10 +43,30 @@ public class UIController : MonoBehaviour {
     private bool hovering = false;
     private Card hoveredCard;
 
+    private Card shownCard;
+
     public bool DebugMode { get { return debugToggle.isOn; } }
 
     //deck search vars
     public List<Card> thingToSearch;
+
+
+    public void ShowInfoFor(Card card)
+    {
+        if (shownCard == card) return;
+
+        shownCard = card;
+
+        selectedUIParent.SetActive(true);
+        hoveredCard = card;
+        selectedCardStatsText.text = hoveredCard.StatsString;
+
+        //set all common values
+        selectedCardSubtypesText.text = card.SubtypeText;
+        selectedCardNameText.text = card.CardName;
+        selectedCardImage.sprite = card.detailedSprite;
+        selectedCardEffText.text = card.EffText;
+    }
 
     /// <summary>
     /// updates the ui with the given selection. if the selection is null, hides the ui.
@@ -68,16 +88,8 @@ public class UIController : MonoBehaviour {
             return;
         }
 
-        selectedUIParent.SetActive(true);
-        Debug.Log("Selecting " + card.CardName);
         SelectedCard = card;
-        selectedCardStatsText.text = SelectedCard.StatsString;
-
-        //set all common values
-        selectedCardSubtypesText.text = card.SubtypeText;
-        selectedCardNameText.text = card.CardName;
-        selectedCardImage.sprite = card.detailedSprite;
-        selectedCardEffText.text = card.EffText;
+        ShowInfoFor(card);
     }
 
     public void SelectCard(Card card, bool fromClick)
@@ -106,15 +118,7 @@ public class UIController : MonoBehaviour {
 
         hovering = true;
 
-        selectedUIParent.SetActive(true);
-        hoveredCard = card;
-        selectedCardStatsText.text = hoveredCard.StatsString;
-
-        //set all common values
-        selectedCardSubtypesText.text = card.SubtypeText;
-        selectedCardNameText.text = card.CardName;
-        selectedCardImage.sprite = card.detailedSprite;
-        selectedCardEffText.text = card.EffText;
+        ShowInfoFor(card);
     }
 
     public void HideNetworkingUI()
