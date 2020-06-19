@@ -25,7 +25,7 @@ public class BoardController : MonoBehaviour
 
     public static Vector3 GridIndicesFromPos(int x, int y)
     {
-        return new Vector3(GridIndexToPos(x), GridIndexToPos(y), 0.1f);
+        return new Vector3(GridIndexToPos(x), GridIndexToPos(y), 1f);
     }
 
     //private CharacterCard[,] characters = new CharacterCard[spacesOnBoard, spacesOnBoard];

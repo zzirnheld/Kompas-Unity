@@ -15,7 +15,7 @@ public abstract class CardMouseController : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            transform.position = new Vector3(hit.point.x, 1f, hit.point.z);
+            Card.gameObject.transform.position = new Vector3(hit.point.x, 1f, hit.point.z);
         }
     }
 

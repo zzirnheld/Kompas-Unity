@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public abstract class Card : CardBase {
     public Game game;
+    public CardController cardCtrl;
 
     //stats
     public int Negations { get; private set; } = 0;
@@ -81,16 +82,6 @@ public abstract class Card : CardBase {
             }
         }
     }
-    
-    //image
-    protected MeshRenderer meshRenderer;
-
-    //unity methods
-    private void Awake()
-    {
-        meshRenderer = GetComponent<MeshRenderer>();
-    }
-
 
     //set data
     /// <summary>
@@ -103,55 +94,15 @@ public abstract class Card : CardBase {
 
         //set the card's location variable
         this.Location = location;
-
-        //set the parent to where we're going
-        switch (location)
-        {
-            case CardLocation.Field:
-                transform.SetParent(game.boardObject.transform);
-                gameObject.SetActive(true);
-                break;
-            case CardLocation.Discard:
-                transform.SetParent(Controller.discardObject.transform);
-                gameObject.SetActive(true);
-                break;
-            case CardLocation.Hand:
-                transform.SetParent(Controller.handObject.transform);
-                gameObject.SetActive(true);
-                break;
-            case CardLocation.Deck:
-                transform.SetParent(Controller.deckObject.transform);
-                gameObject.SetActive(false);
-                break;
-        }
+        cardCtrl.SetPhysicalLocation(location);
     }
 
-    /// <summary>
-    /// Set the sprites of this card and gameobject
-    /// </summary>
-    public void SetImage(string cardFileName)
-    {
-        detailedSprite = Resources.Load<Sprite>("Detailed Sprites/" + cardFileName);
-        simpleSprite = Resources.Load<Sprite>("Simple Sprites/" + cardFileName);
-        //check if either is null. if so, log to debug and return
-        if(detailedSprite == null || simpleSprite == null)
-        {
-            Debug.Log("Could not find sprite with name " + cardFileName);
-            return;
-        }
-        //set this gameobject's texture to the simple sprite (by default, TODO change on zoom level change)
-        Texture2D spriteTexture = simpleSprite.texture;
-        //spriteTexture.alphaIsTransparency = true;
-        meshRenderer.material.SetTexture("_MainTex", spriteTexture);
-        //then make unity know it's a sprite so that it'll make the alpha transparent
-        meshRenderer.material.shader = Shader.Find("Sprites/Default");
-    }
     /// <summary>
     /// Set image by stored card file name
     /// </summary>
     public void SetImage()
     {
-        SetImage(CardName);
+        cardCtrl.SetImage(CardName);
     }
 
     public virtual void SetInfo(SerializableCard serializedCard, Game game, Player owner, Effect[] effects, int id)
@@ -203,7 +154,7 @@ public abstract class Card : CardBase {
     public virtual void ChangeController(Player newController)
     {
         Controller = newController;
-        transform.localEulerAngles = new Vector3(0, 0, 180 * ControllerIndex);
+        cardCtrl.SetRotation();
     }
 
     /// <summary>
@@ -229,25 +180,7 @@ public abstract class Card : CardBase {
     {
         Debug.Log($"Putting back {CardName} to {Location}");
 
-        switch (Location)
-        {
-            case CardLocation.Deck:
-                transform.SetParent(Controller.deckObject.transform);
-                gameObject.SetActive(false);
-                break;
-            case CardLocation.Discard:
-                transform.SetParent(Controller.discardObject.transform);
-                transform.localPosition = new Vector3(0, 0, (float)Controller.discardCtrl.IndexOf(this) / -60f);
-                break;
-            case CardLocation.Field:
-                transform.SetParent(game.boardObject.transform);
-                transform.localPosition = BoardController.GridIndicesFromPos(BoardX, BoardY);
-                break;
-            case CardLocation.Hand:
-                transform.SetParent(Controller.handObject.transform);
-                Controller.handCtrl.SpreadOutCards();
-                break;
-        }
+        cardCtrl.SetPhysicalLocation(Location);
     }
 
     /// <summary>
