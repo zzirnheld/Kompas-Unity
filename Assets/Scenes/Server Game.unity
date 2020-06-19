@@ -1337,15 +1337,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugToggle: {fileID: 1289263650}
-  friendlyPipsText: {fileID: 260658220}
-  enemyPipsText: {fileID: 1532991454}
+  friendlyPipsText: {fileID: 0}
+  enemyPipsText: {fileID: 0}
   selectedUIParent: {fileID: 255874121}
-  selectedCardNameText: {fileID: 610043599}
+  selectedCardNameText: {fileID: 0}
   selectedCardImage: {fileID: 1678456122}
-  selectedCardStatsText: {fileID: 265800162}
-  selectedCardSubtypesText: {fileID: 1341950338}
-  selectedCardEffText: {fileID: 1297197253}
-  currentStateText: {fileID: 636311503}
+  selectedCardStatsText: {fileID: 0}
+  selectedCardSubtypesText: {fileID: 0}
+  selectedCardEffText: {fileID: 0}
+  currentStateText: {fileID: 0}
   ipInputField: {fileID: 0}
   networkingParent: {fileID: 1929206214}
   thingToSearch: []
@@ -2999,7 +2999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f706130ccf62ef443b2f2f1fb727bf12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GamePrefab: {fileID: 6886641577728179557, guid: dd8cf138bfe711142b5d4c835facb6b6,
+  GamePrefab: {fileID: 3349460599440499644, guid: dd8cf138bfe711142b5d4c835facb6b6,
     type: 3}
   UICtrl: {fileID: 700797938}
   CardRepo: {fileID: 1475313887}
@@ -3037,13 +3037,13 @@ MonoBehaviour:
   ClientCharPrefab: {fileID: 0}
   ClientSpellPrefab: {fileID: 0}
   ClientAugPrefab: {fileID: 0}
-  ServerAvatarPrefab: {fileID: 3737252039058614834, guid: 6342a8b7ecbc4e94aa211dd4cf95f7c6,
+  ServerAvatarPrefab: {fileID: 4404581814192963609, guid: dc96b0f4072d6b346b16c25bb389096b,
     type: 3}
-  ServerCharPrefab: {fileID: 1867480149614592, guid: 3a1c99b156d4dfe4f87489a1b6147b56,
+  ServerCharPrefab: {fileID: 4792563830948402488, guid: 13d5ad9d91f212e4e8922fd8be8390d4,
     type: 3}
-  ServerSpellPrefab: {fileID: 1656078229824318, guid: c11b9e0eff225ef42b29ef33bacc3186,
+  ServerSpellPrefab: {fileID: 5380166087280040253, guid: ae48d254d3f37f240a93b38386608a7f,
     type: 3}
-  ServerAugPrefab: {fileID: 1960667190934142, guid: 57bc0faf22439474b8ad57c3a6a0bbcb,
+  ServerAugPrefab: {fileID: 6154761281434505768, guid: 63d407e8ed4ec024fb18638a9fd1f2db,
     type: 3}
 --- !u!1 &1515742811
 GameObject:
