@@ -55,6 +55,7 @@ public class HandController : MonoBehaviour
         for (int i = 0; i < hand.Count; i++)
         {
             hand[i].transform.localPosition = new Vector3((-0.5f * ((float)hand.Count)) + ((float)i) + 0.5f, 0, 0);
+            hand[i].transform.eulerAngles = new Vector3(0, 180, 0);
         }
     }
 

@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class UIController : MonoBehaviour {
 
     public Toggle debugToggle;
+    public GameObject augmentPrefab;
 
     //normal UI
     //pips
@@ -20,6 +22,8 @@ public class UIController : MonoBehaviour {
     public TMPro.TMP_Text selectedCardStatsText;
     public TMPro.TMP_Text selectedCardSubtypesText;
     public TMPro.TMP_Text selectedCardEffText;
+    public GameObject AugmentPanelParent;
+    public GameObject AugmentGridParent;
     //current state text (reminds the player what's happening right now)
     public TMPro.TMP_Text currentStateText;
     //networking
@@ -57,7 +61,6 @@ public class UIController : MonoBehaviour {
 
         shownCard = card;
 
-        selectedUIParent.SetActive(true);
         hoveredCard = card;
         selectedCardStatsText.text = hoveredCard.StatsString;
 
@@ -66,6 +69,23 @@ public class UIController : MonoBehaviour {
         selectedCardNameText.text = card.CardName;
         selectedCardImage.sprite = card.detailedSprite;
         selectedCardEffText.text = card.EffText;
+        if (card?.Augments != null && card.Augments.Any())
+        {
+            var children = new List<GameObject>();
+            foreach (Transform child in AugmentGridParent.transform) children.Add(child.gameObject);
+            foreach (var child in children) Destroy(child);
+
+            foreach(var aug in card.Augments)
+            {
+                var obj = Instantiate(augmentPrefab, AugmentGridParent.transform);
+                var img = obj.GetComponent<Image>();
+                img.sprite = aug.simpleSprite;
+            }
+
+            AugmentPanelParent.SetActive(true);
+        }
+        else AugmentPanelParent.SetActive(false);
+        selectedUIParent.SetActive(true);
     }
 
     /// <summary>
