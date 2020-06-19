@@ -53,7 +53,7 @@ public class SpellCard : Card
     {
         base.MoveTo(toX, toY, playerInitiated);
 
-        transform.localPosition = new Vector3(GridIndexToPos(toX), GridIndexToPos(toY), -0.03f);
+        transform.localPosition = BoardController.GridIndicesFromPos(toX, toY);
     }
 
     public override void ChangeController(Player newController)

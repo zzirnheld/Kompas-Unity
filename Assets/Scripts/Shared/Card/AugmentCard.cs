@@ -72,7 +72,7 @@ public class AugmentCard : Card
     {
         base.MoveTo(toX, toY, playerInitiated);
 
-        transform.localPosition = new Vector3(GridIndexToPos(toX), GridIndexToPos(toY), -0.05f);
+        transform.localPosition = new Vector3(BoardController.GridIndexToPos(toX), BoardController.GridIndexToPos(toY), -0.05f);
 
     }
 

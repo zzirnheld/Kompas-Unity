@@ -8,35 +8,29 @@ public class BoardController : MonoBehaviour
 {
     public Game game;
 
-    public const int spacesOnBoard = 7;
-    public const float spacesInGrid = 7;
-    public const float boardLenOffset = 0.45f;
+    public const int SpacesInGrid = 7;
+    public const float BoardLenOffset = 7f;
+    public const float LenOneSpace = 2f;
+    public const float SpaceOffset = LenOneSpace / 2;
 
-    protected static int PosToGridIndex(float pos)
+    public static int PosToGridIndex(float pos)
     {
-        /*first, add the offset to make the range of values from (-0.45, 0.45) to (0, 0.9).
-        * then, multiply by the grid length to board length ratio (currently 7, because there
-        * are 7 game board slots for the board's local length of 1). 
-        * Divide by 0.9f because the range of accepted position values is 0 to 0.9f (0.45 - -0.45).
-        * Then add 0.5 so that the cast to int effectively rounds instead of flooring.
-        */
-        return (int)((pos + boardLenOffset) * spacesInGrid / 0.9f);
+        return (int)((pos + BoardLenOffset) / (LenOneSpace));
     }
-    protected static float GridIndexToPos(int gridIndex)
+
+    public static float GridIndexToPos(int gridIndex)
     {
-        /* first, cast the index to a float to make sure the math works out.
-         * then, divide by the grid length to board ratio to get a number (0,1) that makes
-         * sense in the context of the board's local lenth of one.
-         * then, subtract the board length offset to get a number that makes sense
-         * in the actual board's context of values (-0.45, 0.45) (legal local coordinates)
-         * finally, add 0.025 to account for the 0.05 space on either side of the legal 0.45 area
-         */
-        return (((float)gridIndex) / spacesInGrid - boardLenOffset + 0.025f);
+        return (float)((gridIndex * LenOneSpace) + SpaceOffset - BoardLenOffset);
+    }
+
+    public static Vector3 GridIndicesFromPos(int x, int y)
+    {
+        return new Vector3(GridIndexToPos(x), GridIndexToPos(y), 0.1f);
     }
 
     //private CharacterCard[,] characters = new CharacterCard[spacesOnBoard, spacesOnBoard];
     //private SpellCard[,] spells = new SpellCard[spacesOnBoard, spacesOnBoard];
-    private Card[,] cards = new Card[spacesOnBoard, spacesOnBoard];
+    private readonly Card[,] cards = new Card[SpacesInGrid, SpacesInGrid];
     /// <summary>
     /// Whether all cards, only chars, only spells, or only augs are visible
     /// </summary>
@@ -159,7 +153,7 @@ public class BoardController : MonoBehaviour
         int i = GetNumCardsOnBoard();
         if (i > game.MaxCardsOnField) game.MaxCardsOnField = i;
 
-        toPlay.gameObject.transform.localScale = new Vector3(1f / 9f, 1f / 9f, 1);
+        toPlay.gameObject.transform.localScale = Vector3.one;
     }
 
     //movement

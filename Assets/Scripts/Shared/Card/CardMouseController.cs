@@ -8,20 +8,6 @@ public abstract class CardMouseController : MonoBehaviour
     public abstract Game Game { get; }
     protected bool dragging = false;
 
-    public const float spacesInGrid = 7f;
-    public const float boardLenOffset = 0.45f;
-
-    protected static int PosToGridIndex(float pos)
-    {
-        /*first, add the offset to make the range of values from (-0.45, 0.45) to (0, 0.9).
-        * then, multiply by the grid length to board length ratio (currently 7, because there
-        * are 7 game board slots for the board's local length of 1). 
-        * Divide by 0.9f because the range of accepted position values is 0 to 0.9f (0.45 - -0.45).
-        * Then add 0.5 so that the cast to int effectively rounds instead of flooring.
-        */
-        return (int)(((pos + boardLenOffset) * (spacesInGrid - 1f) / (2 * boardLenOffset)) + 0.5f);
-    }
-
     #region MouseStuff
     private void GoToMouse()
     {

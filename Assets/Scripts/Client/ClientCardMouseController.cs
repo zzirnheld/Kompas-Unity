@@ -6,10 +6,10 @@ public class ClientCardMouseController : CardMouseController
 {
     //constants
     //minimum and maximum distances to the board, discard, and deck objects for dragging
-    public const float minBoardLocalX = -0.45f;
-    public const float maxBoardLocalX = 0.45f;
-    public const float minBoardLocalY = -0.45f;
-    public const float maxBoardLocalY = 0.45f;
+    public const float minBoardLocalX = -7f;
+    public const float maxBoardLocalX = 7f;
+    public const float minBoardLocalY = -7f;
+    public const float maxBoardLocalY = 7f;
     public const float minDiscardX = 4.5f;
     public const float maxDiscardX = 5.5f;
     public const float minDiscardZ = -3.5f;
@@ -46,8 +46,8 @@ public class ClientCardMouseController : CardMouseController
         //then, check if it's on the board, accodring to the local coordinates of the game board)
         if (WithinIgnoreZ(boardLocalPosition, minBoardLocalX, maxBoardLocalX, minBoardLocalY, maxBoardLocalY))
         {
-            int x = PosToGridIndex(boardLocalPosition.x);
-            int y = PosToGridIndex(boardLocalPosition.y);
+            int x = BoardController.PosToGridIndex(boardLocalPosition.x);
+            int y = BoardController.PosToGridIndex(boardLocalPosition.y);
 
             //if the card is being moved on the field, that means it's just being moved
             if (Card.Location == CardLocation.Field)
