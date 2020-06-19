@@ -952,7 +952,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 93767718}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1615817260}
+        m_MethodName: PassTurn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &93767718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3035,6 +3046,7 @@ MonoBehaviour:
     locations: 
     costMultiplier: 1
     costDivisor: 1
+    Blurb: 
   CurrSpaceRestriction:
     restrictionsToCheck: 
     adjacencyRestriction:
@@ -3047,9 +3059,11 @@ MonoBehaviour:
       locations: 
       costMultiplier: 1
       costDivisor: 1
+      Blurb: 
       onBoardRestrictions: 
       cSpaces: 0
     C: 0
+    Blurb: 
 --- !u!114 &492080564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8959,7 +8973,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1216516877}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1615817260}
+        m_MethodName: ActivatedSelectedCardFirstActivatedEff
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1216516877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10971,6 +10996,11 @@ MonoBehaviour:
   thingToSearch: []
   clientGame: {fileID: 492080563}
   debugPipsField: {fileID: 485200469}
+  CurrTurnText: {fileID: 1554178927}
+  CurrStateOverallObj: {fileID: 0}
+  CurrStateText: {fileID: 0}
+  CurrStateBonusText: {fileID: 0}
+  CurrStateBonusObj: {fileID: 0}
   cardSearchView: {fileID: 588346723}
   cardSearchImage: {fileID: 728813001}
   searchTargetButton: {fileID: 1518423575}

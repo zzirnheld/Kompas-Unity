@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class ClientUIController : UIController
 {
+    public const string FriendlyTurn = "Friendly Turn";
+    public const string EnemyTurn = "Enemy Turn";
+
+
     public ClientGame clientGame;
     //debug UI 
     /*
@@ -20,6 +24,16 @@ public class ClientUIController : UIController
     public InputField deckInputField;
     public Button importDeckButton;
     public Button confirmDeckImportButton; */
+
+    //gamestate values
+    public TMPro.TMP_Text CurrTurnText;
+
+    //current state
+    public GameObject CurrStateOverallObj;
+    public TMPro.TMP_Text CurrStateText;
+    public TMPro.TMP_Text CurrStateBonusText;
+    public GameObject CurrStateBonusObj;
+
     //card search
     public GameObject cardSearchView;
     public Image cardSearchImage;
@@ -81,6 +95,19 @@ public class ClientUIController : UIController
     public void HideGetDecklistUI()
     {
         DeckSelectUIParent.SetActive(false);
+    }
+
+    public void ChangeTurn(int index)
+    {
+        CurrTurnText.text = index == 0 ? FriendlyTurn : EnemyTurn;
+    }
+
+    public void SetCurrState(string primaryState, string secondaryState = "")
+    {
+        CurrStateOverallObj.SetActive(true);
+        CurrStateText.text = primaryState;
+        CurrStateBonusText.text = secondaryState;
+        if(secondaryState == "") CurrStateBonusObj.SetActive(false);
     }
 
     #region effects

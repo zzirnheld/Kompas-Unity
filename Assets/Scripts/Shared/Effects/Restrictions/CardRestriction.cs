@@ -73,6 +73,8 @@ public class CardRestriction
     public int costMultiplier = 1;
     public int costDivisor = 1;
 
+    public string Blurb = "";
+
     public virtual bool Evaluate (Card potentialTarget, int x)
     {
         if (potentialTarget == null) return false;

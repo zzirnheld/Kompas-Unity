@@ -42,7 +42,6 @@ public class ClientNetworkController : NetworkController {
             return;
         }
         Debug.Log($"Parsing command {packet.command} for {packet.cardID}");
-        ClientGame.uiCtrl.CurrentStateString = $"Parsing command {packet.command} for card id {packet.cardID}";
 
         switch (packet.command)
         {
@@ -171,21 +170,25 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.RequestBoardTarget:
                 ClientGame.targetMode = Game.TargetMode.BoardTarget;
                 ClientGame.CurrCardRestriction = packet.GetBoardRestriction(ClientGame);
+                ClientGame.clientUICtrl.SetCurrState("Choose Board Target", ClientGame.CurrCardRestriction.Blurb);
                 break;
             case Packet.Command.RequestHandTarget:
                 ClientGame.targetMode = Game.TargetMode.HandTarget;
                 ClientGame.CurrCardRestriction = packet.GetCardRestriction(ClientGame);
+                ClientGame.clientUICtrl.SetCurrState("Choose Hand Target", ClientGame.CurrCardRestriction.Blurb);
                 break;
             case Packet.Command.RequestDeckTarget:
                 Debug.Log($"Deck target for Eff index: {packet.EffIndex} subeff index {packet.SubeffIndex}");
                 CardRestriction deckRestriction = packet.GetCardRestriction(ClientGame);
                 List<Card> toSearch = ClientGame.friendlyDeckCtrl.CardsThatFitRestriction(deckRestriction);
                 ClientGame.clientUICtrl.StartSearch(toSearch);
+                ClientGame.clientUICtrl.SetCurrState("Choose Deck Target", ClientGame.CurrCardRestriction.Blurb);
                 break;
             case Packet.Command.RequestDiscardTarget:
                 CardRestriction discardRestriction = packet.GetCardRestriction(ClientGame);
                 List<Card> discardToSearch = ClientGame.friendlyDiscardCtrl.CardsThatFitRestriction(discardRestriction);
                 ClientGame.clientUICtrl.StartSearch(discardToSearch);
+                ClientGame.clientUICtrl.SetCurrState("Choose Discard Target", ClientGame.CurrCardRestriction.Blurb);
                 break;
             case Packet.Command.GetChoicesFromList:
                 int[] cardIDs = packet.specialArgs;
@@ -198,6 +201,7 @@ public class ClientNetworkController : NetworkController {
                 }
                 var listRestriction = packet.GetListRestriction(ClientGame);
                 ClientGame.clientUICtrl.StartSearch(choicesToPick, listRestriction, packet.normalArgs[0]);
+                ClientGame.clientUICtrl.SetCurrState("Choose Target", ClientGame.CurrCardRestriction.Blurb);
                 break;
             case Packet.Command.ChooseEffectOption:
                 //TODO catch out of bounds errors, in case of malicious packets?
@@ -214,6 +218,7 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.targetMode = Game.TargetMode.SpaceTarget;
                 ClientGame.CurrSpaceRestriction = packet.GetSpaceRestriction(ClientGame);
                 //TODO display based on that space
+                ClientGame.clientUICtrl.SetCurrState("Choose Space Target", ClientGame.CurrSpaceRestriction.Blurb);
                 break;
             case Packet.Command.SetEffectsX:
                 Debug.Log("Setting X to " + packet.X);
@@ -227,6 +232,7 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.targetMode = Game.TargetMode.Free;
                 ClientGame.CurrCardRestriction = null;
                 ClientGame.CurrSpaceRestriction = null;
+                ClientGame.clientUICtrl.SetCurrState("Target Accepted");
                 break;
             case Packet.Command.EnableDecliningTarget:
                 ClientGame.clientUICtrl.EnableDecliningTarget();

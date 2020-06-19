@@ -22,14 +22,14 @@ public class UIController : MonoBehaviour {
     public TMPro.TMP_Text selectedCardEffText;
     //current state text (reminds the player what's happening right now)
     public TMPro.TMP_Text currentStateText;
-    private string currentStateString;
     //networking
     public TMP_InputField ipInputField;
     public GameObject networkingParent;
 
+    private string currentStateString;
     public string CurrentStateString
     {
-        get { return currentStateString; }
+        get => currentStateString;
         set
         {
             currentStateString = value;
@@ -125,12 +125,12 @@ public class UIController : MonoBehaviour {
     #region updating pips
     public void UpdateFriendlyPips(int num)
     {
-        friendlyPipsText.text = "Friendly Pips: " + num;
+        friendlyPipsText.text = $"{num} Friendly Pips";
     }
 
     public void UpdateEnemyPips(int num)
     {
-        enemyPipsText.text = "Enemy Pips: " + num;
+        enemyPipsText.text = $"{num} Enemy Pips";
     }
     #endregion
     

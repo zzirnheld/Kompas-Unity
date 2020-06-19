@@ -126,7 +126,7 @@ public class ClientGame : Game {
     public void SetFirstTurnPlayer(int playerIndex)
     {
         TurnPlayerIndex = playerIndex;
-        uiCtrl.CurrentStateString = TurnPlayerIndex == 0 ? "Your Turn" : "Enemy Turn";
+        clientUICtrl.ChangeTurn(playerIndex);
         clientUICtrl.HideGetDecklistUI();
     }
 
@@ -134,6 +134,6 @@ public class ClientGame : Game {
     {
         TurnPlayerIndex = 1 - TurnPlayerIndex;
         boardCtrl.ResetCardsForTurn(TurnPlayer);
-        uiCtrl.CurrentStateString = TurnPlayerIndex == 0 ? "Your Turn" : "Enemy Turn";
+        clientUICtrl.ChangeTurn(TurnPlayerIndex);
     }
 }
