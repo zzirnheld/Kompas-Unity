@@ -22,7 +22,7 @@ public class ServerEffect : Effect, IServerStackable
     public override Trigger Trigger => ServerTrigger;
 
     public ServerEffect(SerializableEffect se, Card thisCard, ServerGame serverGame, ServerPlayer controller) 
-        : base(se.activationRestriction ?? new ActivationRestriction(), thisCard)
+        : base(se.activationRestriction ?? new ActivationRestriction(), thisCard, se.blurb)
     {
         this.serverGame = serverGame;
         this.ServerController = controller;

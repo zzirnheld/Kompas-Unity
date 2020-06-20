@@ -69,10 +69,39 @@ public class ClientUIController : UIController
         toSearch = new List<Card>();
     }
 
+    public override void ShowInfoFor(Card card)
+    {
+        base.ShowInfoFor(card);
+
+        if (card?.Effects != null && card.Effects.Where(eff => eff.Trigger == null).Any())
+        {
+            var children = new List<GameObject>();
+            foreach (Transform child in UseEffectGridParent.transform) children.Add(child.gameObject);
+            foreach (var child in children) Destroy(child);
+
+            foreach (var eff in card.Effects)
+            {
+                if (eff.Trigger != null) continue;
+
+                var obj = Instantiate(useEffectButtonPrefab, UseEffectGridParent.transform);
+                var btn = obj.GetComponent<ClientUseEffectButtonController>();
+                btn.Initialize(eff, this);
+            }
+
+            UseEffectParent.SetActive(true);
+        }
+        else UseEffectParent.SetActive(false);
+    }
+
     public override void SelectCard(Card card, Game.TargetMode targetMode, bool fromClick)
     {
         base.SelectCard(card, targetMode, fromClick);
         if (fromClick && card != null) clientGame.TargetCard(card);
+    }
+
+    public void ReselectSelectedCard(bool fromClick)
+    {
+        SelectCard(SelectedCard, fromClick);
     }
 
     public void Connect()
@@ -113,12 +142,6 @@ public class ClientUIController : UIController
     public void ActivateSelectedCardEff(int index)
     {
         clientGame.clientNotifier.RequestResolveEffect(SelectedCard, index);
-    }
-
-    public void ActivatedSelectedCardFirstActivatedEff()
-    {
-        int? index = SelectedCard.Effects.FirstOrDefault(e => e.Trigger == null)?.EffectIndex;
-        if (index.HasValue) ActivateSelectedCardEff(index.Value);
     }
 
     public void ToggleHoldingPriority()

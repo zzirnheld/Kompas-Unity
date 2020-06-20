@@ -26,6 +26,7 @@ public abstract class Effect
 
     public abstract Trigger Trigger { get; }
     public ActivationRestriction ActivationRestriction { get; }
+    public string Blurb { get; }
 
     private int negations = 0;
     public bool Negated {
@@ -44,11 +45,12 @@ public abstract class Effect
     public int TimesUsedThisTurn { get; protected set; }
     public int TimesUsedThisRound { get; protected set; }
 
-    public Effect(ActivationRestriction restriction, Card source)
+    public Effect(ActivationRestriction restriction, Card source, string blurb)
     {
         Source = source ?? throw new System.ArgumentNullException($"Effect cannot be attached to null card");
         ActivationRestriction = restriction;
         ActivationRestriction.Initialize(this);
+        Blurb = blurb;
         TimesUsedThisTurn = 0;
         Targets = new List<Card>();
         Rest = new List<Card>();

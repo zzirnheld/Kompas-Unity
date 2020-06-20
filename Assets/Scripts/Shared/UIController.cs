@@ -10,6 +10,7 @@ public class UIController : MonoBehaviour {
 
     public Toggle debugToggle;
     public GameObject augmentPrefab;
+    public GameObject useEffectButtonPrefab;
 
     //normal UI
     //pips
@@ -22,6 +23,8 @@ public class UIController : MonoBehaviour {
     public TMPro.TMP_Text selectedCardStatsText;
     public TMPro.TMP_Text selectedCardSubtypesText;
     public TMPro.TMP_Text selectedCardEffText;
+    public GameObject UseEffectParent;
+    public GameObject UseEffectGridParent;
     public GameObject AugmentPanelParent;
     public GameObject AugmentGridParent;
     //current state text (reminds the player what's happening right now)
@@ -54,8 +57,9 @@ public class UIController : MonoBehaviour {
     //deck search vars
     public List<Card> thingToSearch;
 
+    public virtual void ResetShownInfo() => ShowInfoFor(hovering ? hoveredCard : SelectedCard);
 
-    public void ShowInfoFor(Card card)
+    public virtual void ShowInfoFor(Card card)
     {
         if (shownCard == card) return;
 
@@ -69,6 +73,7 @@ public class UIController : MonoBehaviour {
         selectedCardNameText.text = card.CardName;
         selectedCardImage.sprite = card.detailedSprite;
         selectedCardEffText.text = card.EffText;
+
         if (card?.Augments != null && card.Augments.Any())
         {
             var children = new List<GameObject>();
@@ -78,8 +83,8 @@ public class UIController : MonoBehaviour {
             foreach(var aug in card.Augments)
             {
                 var obj = Instantiate(augmentPrefab, AugmentGridParent.transform);
-                var img = obj.GetComponent<Image>();
-                img.sprite = aug.simpleSprite;
+                var img = obj.GetComponent<AugmentImageController>();
+                img.Initialize(aug, this);
             }
 
             AugmentPanelParent.SetActive(true);
