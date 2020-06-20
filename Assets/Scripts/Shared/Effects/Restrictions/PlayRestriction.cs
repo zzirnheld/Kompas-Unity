@@ -16,13 +16,24 @@ public class PlayRestriction
     public string[] NormalRestrictions = { PlayedByCardOwner, FromHand, AdjacentToFriendlyCard, FriendlyTurn };
     public string[] EffectRestrictions = { AdjacentToFriendlyCard };
 
+    private int x;
+    private int y;
+    
     public void SetInfo(Card card)
     {
         Card = card;
     }
 
+    private bool CardIsAdjToCoordsAndFriendly(Card c)
+    {
+        return c != null && c.IsAdjacentTo(x, y) && c.Controller == Card.Controller;
+    }
+
     public bool EvaluateNormalPlay(int x, int y, Player player)
     {
+        this.x = x;
+        this.y = y;
+
         foreach(string r in NormalRestrictions)
         {
             switch (r)
@@ -34,7 +45,7 @@ public class PlayRestriction
                     if (Card.Location != CardLocation.Hand) return false;
                     break;
                 case AdjacentToFriendlyCard:
-                    if (!Card.game.boardCtrl.ExistsCardOnBoard(c => c != null && c.IsAdjacentTo(x, y) && c.Controller == Card.Controller)) return false;
+                    if (!Card.game.boardCtrl.ExistsCardOnBoard(c => CardIsAdjToCoordsAndFriendly(c))) return false;
                     break;
                 case FriendlyTurn:
                     if (Card.game.TurnPlayer != Card.Controller) return false;
