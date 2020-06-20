@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -48,6 +49,15 @@ public class BoardController : MonoBehaviour
     {
         if (!ValidIndices(x, y)) return null;
         return cards[x, y];
+    }
+    
+    public bool ExistsCardOnBoard(Func<Card, bool> predicate)
+    {
+        foreach (var c in cards)
+        {
+            if (predicate(c)) return true;
+        }
+        return false;
     }
 
     public CharacterCard GetCharAt(int x, int y)

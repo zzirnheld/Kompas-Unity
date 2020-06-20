@@ -34,7 +34,7 @@ public class PlayRestriction
                     if (Card.Location != CardLocation.Hand) return false;
                     break;
                 case AdjacentToFriendlyCard:
-                    if (!Card.IsAdjacentTo(x, y)) return false;
+                    if (!Card.game.boardCtrl.ExistsCardOnBoard(c => c != null && c.IsAdjacentTo(x, y) && c.Controller == Card.Controller)) return false;
                     break;
                 case FriendlyTurn:
                     if (Card.game.TurnPlayer != Card.Controller) return false;

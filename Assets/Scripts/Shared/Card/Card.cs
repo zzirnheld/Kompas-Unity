@@ -144,7 +144,7 @@ public abstract class Card : CardBase {
         return DistanceTo(card) <= numSlots;
     }
     public bool WithinSlots(int numSlots, int x, int y) => DistanceTo(x, y) <= numSlots;
-    public bool IsAdjacentTo(Card card) => DistanceTo(card) == 1;
+    public bool IsAdjacentTo(Card card) => card != null && DistanceTo(card) == 1;
     public bool IsAdjacentTo(int x, int y) => DistanceTo(x, y) == 1;
     public virtual bool CardInAOE(Card c) => false;
     public virtual bool SpaceInAOE(int x, int y) => false;
