@@ -58,6 +58,7 @@ public class ServerEffect : Effect, IServerStackable
 
     public bool CanBeActivatedBy(ServerPlayer controller)
     {
+        if (serverGame.uiCtrl.DebugMode) return true;
         return Trigger == null
             && controller.index == Source.ControllerIndex
             && ActivationRestriction.Evaluate(controller);
