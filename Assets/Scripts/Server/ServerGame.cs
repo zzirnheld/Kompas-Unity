@@ -153,6 +153,12 @@ public class ServerGame : Game {
         ServerPlayers[1 - TurnPlayerIndex].ServerNotifier.YoureSecond();
         ServerPlayers[0].ServerNotifier.NotifySetPips(ServerPlayers[0].pips);
         ServerPlayers[1].ServerNotifier.NotifySetPips(ServerPlayers[1].pips);
+
+        foreach(var player in ServerPlayers)
+        {
+            DrawX(player.index, 5);
+        }
+        GiveTurnPlayerPips();
     }
     #endregion
 
