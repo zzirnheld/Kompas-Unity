@@ -70,11 +70,18 @@ public class ClientUIController : UIController
         toSearch = new List<Card>();
     }
 
+    private bool ShowEffect(Effect eff)
+    {
+        return eff.Trigger == null &&
+                    eff.Source.Controller == clientGame.Players[0] && //TODO make this instead be part of activation restriction
+                    eff.ActivationRestriction.Evaluate(clientGame.Players[0]);
+    }
+
     public override void ShowInfoFor(Card card, bool refresh = false)
     {
         base.ShowInfoFor(card);
 
-        if (card?.Effects != null && card.Effects.Where(eff => eff.Trigger == null).Any())
+        if (card?.Effects != null && card.Effects.Where(eff => ShowEffect(eff)).Any())
         {
             var children = new List<GameObject>();
             foreach (Transform child in UseEffectGridParent.transform) children.Add(child.gameObject);
@@ -82,9 +89,7 @@ public class ClientUIController : UIController
 
             foreach (var eff in card.Effects)
             {
-                if (eff.Trigger != null ||
-                    eff.Controller != clientGame.Players[0] || //TODO make this instead be part of activation restriction
-                    !eff.ActivationRestriction.Evaluate(clientGame.Players[0])) continue;
+                if (!ShowEffect(eff)) continue;
 
                 var obj = Instantiate(useEffectButtonPrefab, UseEffectGridParent.transform);
                 var btn = obj.GetComponent<ClientUseEffectButtonController>();
