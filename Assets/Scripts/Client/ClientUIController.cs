@@ -70,7 +70,7 @@ public class ClientUIController : UIController
         toSearch = new List<Card>();
     }
 
-    public override void ShowInfoFor(Card card)
+    public override void ShowInfoFor(Card card, bool refresh = false)
     {
         base.ShowInfoFor(card);
 
