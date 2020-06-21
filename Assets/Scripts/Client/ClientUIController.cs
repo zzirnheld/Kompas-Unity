@@ -37,6 +37,7 @@ public class ClientUIController : UIController
     //card search
     public GameObject cardSearchView;
     public Image cardSearchImage;
+    public GameObject alreadySelectedText;
     /*
     public Button deckSearchButton;
     public Button discardSearchButton;*/
@@ -117,6 +118,7 @@ public class ClientUIController : UIController
         SelectCard(SelectedCard, fromClick);
     }
 
+    #region connection/game start
     public void Connect()
     {
         string ip = ipInputField.text;
@@ -165,6 +167,7 @@ public class ClientUIController : UIController
     {
         DeckSelectUIParent.SetActive(false);
     }
+    #endregion connection/game start
 
     public void ChangeTurn(int index)
     {
@@ -279,7 +282,6 @@ public class ClientUIController : UIController
         searchTargetButton.gameObject.SetActive(true);
     }
 
-
     public void SearchSelectedCard()
     {
         //if the list to search through is null, we're not searching atm.
@@ -292,10 +294,11 @@ public class ClientUIController : UIController
             clientGame.clientNotifier.RequestTarget(searchSelected);
             ResetSearch();
         }
-        else
+        else if(!searched.Contains(searchSelected))
         {
-            if (searched.Contains(searchSelected)) return;
             searched.Add(searchSelected);
+
+            alreadySelectedText.SetActive(true);
 
             //TODO a better way to evaluate the list restriction. a partial list might not fit the list restriction, but
             //adding something to that list might make it fit.
@@ -317,6 +320,13 @@ public class ClientUIController : UIController
                 //and reset searching
                 ResetSearch();
             }
+        }
+        else
+        {
+            //deselect
+            searched.Remove(searchSelected);
+            numSearched--;
+            alreadySelectedText.SetActive(false);
         }
     }
 
@@ -365,6 +375,7 @@ public class ClientUIController : UIController
         searchIndex %= toSearch.Count;
 
         cardSearchImage.sprite = toSearch[searchIndex].detailedSprite;
+        alreadySelectedText.SetActive(searched.Contains(toSearch[searchIndex]));
     }
 
     public void PrevCardSearch()
@@ -373,6 +384,7 @@ public class ClientUIController : UIController
         if (searchIndex < 0) searchIndex += toSearch.Count;
 
         cardSearchImage.sprite = toSearch[searchIndex].detailedSprite;
+        alreadySelectedText.SetActive(searched.Contains(toSearch[searchIndex]));
     }
     #endregion
 
