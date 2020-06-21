@@ -137,6 +137,7 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.SetNESW:
                 var charToSet = ClientGame.GetCardFromID(packet.cardID) as CharacterCard;
                 charToSet?.SetNESW(packet.N, packet.E, packet.S, packet.W);
+                ClientGame.clientUICtrl.ShowInfoFor(ClientGame.clientUICtrl.SelectedCard, true);
                 break;
             case Packet.Command.SetSpellStats:
                 var spellToSet = ClientGame.GetCardFromID(packet.cardID) as SpellCard;

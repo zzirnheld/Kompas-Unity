@@ -8,6 +8,8 @@ using System.Linq;
 
 public class UIController : MonoBehaviour {
 
+    public const string NoSubtypesUIString = "(No Subtypes)";
+
     public Toggle debugToggle;
     public GameObject augmentPrefab;
     public GameObject useEffectButtonPrefab;
@@ -59,9 +61,9 @@ public class UIController : MonoBehaviour {
 
     public virtual void ResetShownInfo() => ShowInfoFor(hovering ? hoveredCard : SelectedCard);
 
-    public virtual void ShowInfoFor(Card card)
+    public virtual void ShowInfoFor(Card card, bool refresh = false)
     {
-        if (shownCard == card) return;
+        if (shownCard == card && !refresh) return;
 
         shownCard = card;
 
@@ -69,7 +71,7 @@ public class UIController : MonoBehaviour {
         selectedCardStatsText.text = hoveredCard.StatsString;
 
         //set all common values
-        selectedCardSubtypesText.text = card.SubtypeText;
+        selectedCardSubtypesText.text = string.IsNullOrEmpty(card.SubtypeText) ? "(No Subtypes)" : card.SubtypeText;
         selectedCardNameText.text = card.CardName;
         selectedCardImage.sprite = card.detailedSprite;
         selectedCardEffText.text = card.EffText;

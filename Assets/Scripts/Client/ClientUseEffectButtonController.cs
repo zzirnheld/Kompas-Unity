@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ClientUseEffectButtonController : MonoBehaviour
 {
+    public const string EffDefaultUIString = "Use Effect";
+
     public TMPro.TMP_Text buttonText;
 
     private Effect eff;
@@ -12,7 +14,7 @@ public class ClientUseEffectButtonController : MonoBehaviour
     public void Initialize(Effect eff, ClientUIController clientUICtrl)
     {
         this.eff = eff;
-        buttonText.text = eff.Blurb;
+        buttonText.text = string.IsNullOrEmpty(eff.Blurb) ? EffDefaultUIString : eff.Blurb;
         this.clientUICtrl = clientUICtrl;
     }
 

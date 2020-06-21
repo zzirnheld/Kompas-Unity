@@ -26,6 +26,7 @@ public class ClientUIController : UIController
 
     //gamestate values
     public TMPro.TMP_Text CurrTurnText;
+    public GameObject EndTurnButton;
 
     //current state
     public GameObject CurrStateOverallObj;
@@ -81,7 +82,9 @@ public class ClientUIController : UIController
 
             foreach (var eff in card.Effects)
             {
-                if (eff.Trigger != null) continue;
+                if (eff.Trigger != null ||
+                    eff.Controller != clientGame.Players[0] || //TODO make this instead be part of activation restriction
+                    !eff.ActivationRestriction.Evaluate(clientGame.Players[0])) continue;
 
                 var obj = Instantiate(useEffectButtonPrefab, UseEffectGridParent.transform);
                 var btn = obj.GetComponent<ClientUseEffectButtonController>();
@@ -135,6 +138,8 @@ public class ClientUIController : UIController
     public void ChangeTurn(int index)
     {
         CurrTurnText.text = index == 0 ? FriendlyTurn : EnemyTurn;
+        if (index != 0) EndTurnButton.SetActive(false);
+        else EndTurnButton.SetActive(true);
     }
 
     public void SetCurrState(string primaryState, string secondaryState = "")
