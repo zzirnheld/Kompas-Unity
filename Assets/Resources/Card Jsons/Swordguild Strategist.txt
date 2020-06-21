@@ -15,6 +15,7 @@
 				"{
 					\"boardRestriction\":
 					{
+						\"Blurb\":\"Warrior for Strategist to sacrifice\",
 						\"restrictionsToCheck\":[2,3],
 						\"subtypesInclude\":[\"Warrior\"],
 						\"onBoardRestrictions\":[]
@@ -27,6 +28,7 @@
 				"{
 					\"boardRestriction\":
 					{
+						\"Blurb\":\"Warrior for Strategist to kill\",
 						\"restrictionsToCheck\":[3,103,202],
 						\"onBoardRestrictions\":[]
 					}

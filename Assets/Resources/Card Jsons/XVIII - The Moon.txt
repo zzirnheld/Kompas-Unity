@@ -18,6 +18,7 @@
 				"{
 					\"boardRestriction\":
 					{
+						\"Blurb\":\"character for Moon to swap EW\",
 						\"restrictionsToCheck\":[3]
 					}
 				}",

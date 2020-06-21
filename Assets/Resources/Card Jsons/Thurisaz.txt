@@ -14,10 +14,11 @@
 			"subeffectTypes":[0,203,103],
 			"subeffects":[
 				"{
-						\"boardRestriction\":
-						{
-							\"restrictionsToCheck\":[3,103]
-						}
+					\"boardRestriction\":
+					{
+						\"Blurb\":\"character for Thurisaz to double W\",
+						\"restrictionsToCheck\":[3,103]
+					}
 				}",
 				"{
 					\"WhatToCount\":\"W\"

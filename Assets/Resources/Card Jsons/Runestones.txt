@@ -19,8 +19,12 @@
 			"subeffectTypes":[1,304],
 			"subeffects":[
 				"{
-					\"restrictionsToCheck\":[2,4,7,102],
-					\"subtypesInclude\":[\"Rune\"]
+					\"cardRestriction\":
+					{
+						\"Blurb\":\"Rune for Runestones to search\",
+						\"restrictionsToCheck\":[2,4,7,102],
+						\"subtypesInclude\":[\"Rune\"]
+					}
 				}",
 				"{}"
 			]
