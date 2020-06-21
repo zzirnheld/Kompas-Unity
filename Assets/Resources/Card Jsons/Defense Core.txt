@@ -1,7 +1,7 @@
 {
 	"cardType":65,
 	"cardName":"Defense Core",
-	"effText":"While equipped, activate this character. When they defend, give them +4EW.",
+	"effText":"While equipped, activate this character. When they defend, give them +4EW. When they die (while I'm equipped), rehand me.",
 	"effects":[
 		{
 			"triggerCondition":450,
@@ -38,6 +38,20 @@
 					\"wChange\":4
 				}"
 			]	
+		},
+		{
+			"triggerCondition":402,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[1,10]
+				}
+			}",
+			"subeffectTypes":[5,304],
+			"subeffects":[
+				"{}",
+				"{}"
+			]
 		}
 	],
 	"a":3,

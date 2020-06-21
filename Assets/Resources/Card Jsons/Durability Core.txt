@@ -1,7 +1,7 @@
 {
 	"cardType":65,
 	"cardName":"Durability Core",
-	"effText":"While equipped, activate this character and give them +5E.",
+	"effText":"While equipped, activate this character and give them +5E. When they die (while I'm equipped), rehand me.",
 	"effects":[
 		{
 			"triggerCondition":450,
@@ -27,6 +27,20 @@
 						\"triggerRestrictions\":[0]
 					}
 				}"
+			]
+		},
+		{
+			"triggerCondition":402,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[1,10]
+				}
+			}",
+			"subeffectTypes":[5,304],
+			"subeffects":[
+				"{}",
+				"{}"
 			]
 		}
 	],

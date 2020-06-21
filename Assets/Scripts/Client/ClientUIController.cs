@@ -356,9 +356,7 @@ public class ClientUIController : UIController
         //set buttons to their correct states
         searchTargetButton.gameObject.SetActive(false);
     }
-
-
-    //TODO rework this to take into get deck from server before searching?
+    
     public void StartDeckSearch()
     {
         StartSearch(clientGame.friendlyDeckCtrl.Deck);

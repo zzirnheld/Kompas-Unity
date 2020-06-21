@@ -1,7 +1,7 @@
 {
 	"cardType":65,
 	"cardName":"Combustion Core",
-	"effText":"Activate this character during enemy turns. (They deactivate on your turn.) When your turn starts, pay a pip or dispel me.",
+	"effText":"Activate this character during enemy turns. (They deactivate on your turn.) When they die (while I'm equipped), rehand me. When your turn starts, pay a pip or dispel me.",
 	"effects":[
 		{
 			"triggerCondition":0,
@@ -47,6 +47,20 @@
 				"{}",
 				"{}",
 				"{}",
+				"{}",
+				"{}"
+			]
+		},
+		{
+			"triggerCondition":402,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[1,10]
+				}
+			}",
+			"subeffectTypes":[5,304],
+			"subeffects":[
 				"{}",
 				"{}"
 			]
