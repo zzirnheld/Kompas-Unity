@@ -68,7 +68,7 @@ public class PlayRestriction
             switch (r)
             {
                 case AdjacentToFriendlyCard:
-                    if (!Card.IsAdjacentTo(x, y)) return false;
+                    if (!Card.game.boardCtrl.ExistsCardOnBoard(c => CardIsAdjToCoordsAndFriendly(c))) return false;
                     break;
                 case FriendlyTurn:
                     if (Card.game.TurnPlayer != Card.Controller) return false;

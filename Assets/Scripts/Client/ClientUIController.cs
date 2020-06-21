@@ -224,7 +224,7 @@ public class ClientUIController : UIController
         Debug.Log($"Searching a list of {list.Count} cards: {string.Join(",", list.Select(c => c.CardName))}");
 
         toSearch = list;
-        numToSearch = numToChoose;
+        numToSearch = list.Count < numToChoose ? list.Count : numToChoose;
         searchListRestriction = listRestriction;
         numSearched = 0;
         searched = new List<Card>();

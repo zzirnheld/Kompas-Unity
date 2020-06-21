@@ -201,7 +201,8 @@ public class ClientNetworkController : NetworkController {
                 }
                 var listRestriction = packet.GetListRestriction(ClientGame);
                 ClientGame.clientUICtrl.StartSearch(choicesToPick, listRestriction, packet.normalArgs[0]);
-                ClientGame.clientUICtrl.SetCurrState("Choose Target", ClientGame.CurrCardRestriction.Blurb);
+                ClientGame.clientUICtrl.SetCurrState($"Choose Target for Effect of {listRestriction.Subeffect.Source.CardName}", 
+                    ClientGame.CurrCardRestriction.Blurb);
                 break;
             case Packet.Command.ChooseEffectOption:
                 //TODO catch out of bounds errors, in case of malicious packets?

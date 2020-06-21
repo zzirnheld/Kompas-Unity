@@ -56,12 +56,6 @@ public class SpellCard : Card
         transform.localPosition = BoardController.GridIndicesFromPos(toX, toY);
     }
 
-    public override void ChangeController(Player newController)
-    {
-        base.ChangeController(newController);
-        transform.localEulerAngles = new Vector3(0, 0, 90 + 180 * ControllerIndex);
-    }
-
     public override bool CardInAOE(Card c) => SpellSubtype == TerraformSubtype && DistanceTo(c) <= Arg;
 
     public override bool SpaceInAOE(int x, int y) => SpellSubtype == TerraformSubtype && DistanceTo(x, y) <= Arg;
