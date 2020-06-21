@@ -239,6 +239,7 @@ public class ServerGame : Game {
         //note that it's serverPlayers[controller.index] because you can play to the field of someone whose card it isnt
         ServerPlayers[controller.index].ServerNotifier.NotifyPlay(card, toX, toY);
         base.Play(card, toX, toY, controller, payCost);
+        ServerPlayers[controller.index].ServerNotifier.NotifySetPips(controller.pips);
 
         //if we just played an augment, note that, and trigger augment
         if (card.CardType == 'A') 
