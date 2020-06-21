@@ -248,6 +248,9 @@ public class ClientNetworkController : NetworkController {
                 var eff = ClientGame.GetCardFromID(packet.cardID).Effects[packet.EffIndex];
                 eff.Controller = ClientGame.Players[packet.normalArgs[1]];
                 break;
+            case Packet.Command.EffectImpossible:
+                ClientGame.clientUICtrl.SetCurrState("Effect Impossible");
+                break;
             case Packet.Command.OptionalTrigger:
                 ClientTrigger t = ClientGame.GetCardFromID(packet.cardID).Effects[packet.EffIndex].Trigger as ClientTrigger;
                 t.ClientEffect.ClientController = Friendly;

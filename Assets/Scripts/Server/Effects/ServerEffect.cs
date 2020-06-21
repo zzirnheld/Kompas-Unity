@@ -119,7 +119,11 @@ public class ServerEffect : Effect, IServerStackable
     public void EffectImpossible()
     {
         Debug.Log($"Effect of {Source.CardName} is being declared impossible");
-        if (OnImpossible == null) FinishResolution();
+        if (OnImpossible == null)
+        {
+            FinishResolution();
+            ServerController.ServerNotifier.EffectImpossible();
+        }
         else
         {
             SubeffectIndex = OnImpossible.SubeffIndex;

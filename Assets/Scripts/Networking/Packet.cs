@@ -29,7 +29,7 @@ namespace KompasNetworking
             TargetAccepted, SpaceTargetAccepted,
             //other effect technicalities
             PlayerSetX, EnableDecliningTarget, DisableDecliningTarget, SetPips, SetEnemyPips, SetEffectsX,
-            OptionalTrigger, ChooseEffectOption, EffectResolving,
+            OptionalTrigger, ChooseEffectOption, EffectResolving, EffectImpossible,
             //miscellaneous
             DiscardSimples, PutBack, YoureFirst, YoureSecond,
             //debug

@@ -280,6 +280,12 @@ public class ServerNotifier : MonoBehaviour
         SendPackets(p, q);
     }
 
+    public void EffectImpossible()
+    {
+        Packet p = new Packet(Packet.Command.EffectImpossible);
+        SendToBoth(p);
+    }
+
     public void RequestResponse()
     {
         Packet outPacket = new Packet(Packet.Command.Response);

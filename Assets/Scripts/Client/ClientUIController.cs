@@ -108,8 +108,15 @@ public class ClientUIController : UIController
     {
         string ip = ipInputField.text;
         if (string.IsNullOrEmpty(ip)) ip = "127.0.0.1";
-        clientGame.clientNetworkCtrl.Connect(ip);
-        HideNetworkingUI();
+        try
+        {
+            clientGame.clientNetworkCtrl.Connect(ip);
+            HideNetworkingUI();
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Failed to connect, stack trace: {e.StackTrace}");
+        }
     }
 
     public void ShowGetDecklistUI()
