@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Obscurian the Non",
-	"effText":"Territorial: When turns end, kill an adjacent friendly Dragon. When I attack, I can give myself -1E and an Avatar -2E.",
+	"effText":"Territorial: When turns start, kill an adjacent friendly Dragon. When I attack, I can give myself -1E and an Avatar -2E.",
 	"effects":[
 		{
 			"triggerCondition":0,

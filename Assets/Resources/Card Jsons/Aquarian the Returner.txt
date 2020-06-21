@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Aquarian the Returner",
-	"effText":"Territorial: When turns end, kill an adjacent friendly Dragon. When I attack, I can give myself -1E and another Dragon +2E.",
+	"effText":"Territorial: When turns start, kill an adjacent friendly Dragon. When I attack, I can give myself -1E and another Dragon +2E.",
 	"effects":[
 		{
 			"triggerCondition":0,

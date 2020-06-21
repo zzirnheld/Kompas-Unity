@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Caligo the Quick",
-	"effText":"Territorial: When turns end, kill an adjacent friendly Dragon. You can choose a character X spaces from me. Give me -XE, move me adjacent to them, and I attack them.",
+	"effText":"Territorial: When turns start, kill an adjacent friendly Dragon. You can choose a character X spaces from me. Give me -XE, move me adjacent to them, and I attack them.",
 	"effects":[
 		{
 			"triggerCondition":0,
