@@ -15,6 +15,7 @@
 				"{
 					\"cardRestriction\":
 					{
+						\"Blurb\":\"Dragon to hand-reshuffle\",
 						\"restrictionsToCheck\":[2,7,100],
 						\"subtypesInclude\":[\"Dragon\"]
 					}

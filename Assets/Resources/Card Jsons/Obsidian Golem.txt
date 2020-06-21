@@ -16,6 +16,7 @@
 				"{
 					\"boardRestriction\":
 					{
+						\"Blurb\":\"Summoned character for Obsidian Golem to give -4E\",
 						\"restrictionsToCheck\":[3,10]
 					}
 				}",

@@ -16,6 +16,7 @@
 				"{
 					\"boardRestriction\":
 					{
+						\"Blurb\":\"character for Odal to kill\",
 						\"restrictionsToCheck\":[3]
 					}
 				}",
@@ -27,6 +28,7 @@
 				"{
 					\"cardRestriction\":
 					{
+						\"Blurb\":\"Runer for Odal to deck-summon\",
 						\"restrictionsToCheck\":[2,3,7,102],
 						\"subtypesInclude\":[\"Runer\"]
 					}
@@ -34,6 +36,7 @@
 				"{
 					\"spaceRestriction\":
 					{
+						\"Blurb\":\"where for Odal to deck-summon its target\",
 						\"restrictionsToCheck\":[0]
 					}
 				}",

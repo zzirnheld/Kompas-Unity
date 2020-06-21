@@ -14,13 +14,15 @@
 			"subeffectTypes":[0,4,309],
 			"subeffects":[
 				"{
-						\"boardRestriction\":
-						{
-							\"restrictionsToCheck\":[103]
-						}
+					\"boardRestriction\":
+					{
+						\"Blurb\":\"card for Raido to move\",
+						\"restrictionsToCheck\":[103]
+					}
 				}",
 				"{
 					\"spaceRestriction\":{
+						\"Blurb\":\"where for Raido to move it starget\",
 						\"restrictionsToCheck\":[1]
 					}
 				}",

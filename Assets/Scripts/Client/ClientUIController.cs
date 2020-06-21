@@ -97,6 +97,8 @@ public class ClientUIController : UIController
             }
 
             UseEffectParent.SetActive(true);
+            selectedUIParent.SetActive(false);
+            selectedUIParent.SetActive(true);
         }
         else UseEffectParent.SetActive(false);
     }
@@ -152,7 +154,8 @@ public class ClientUIController : UIController
         CurrStateOverallObj.SetActive(true);
         CurrStateText.text = primaryState;
         CurrStateBonusText.text = secondaryState;
-        if(secondaryState == "") CurrStateBonusObj.SetActive(false);
+        if (secondaryState == "") CurrStateBonusObj.SetActive(false);
+        else CurrStateBonusObj.SetActive(true);
     }
 
     #region effects

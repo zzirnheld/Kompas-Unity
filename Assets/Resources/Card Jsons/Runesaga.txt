@@ -16,6 +16,7 @@
 				"{
 					\"boardRestriction\":
 					{
+						\"Blurb\":\"Runer for Runesaga to give +25ESW\",
 						\"restrictionsToCheck\":[2,3,10,103],
 						\"subtypesInclude\":[\"Runer\"]
 					}
@@ -28,6 +29,7 @@
 				"{
 					\"cardRestriction\":
 					{
+						\"Blurb\":\"Rune for Runesaga to cast\",
 						\"restrictionsToCheck\":[2,4,7,100,600],
 						\"subtypesInclude\":[\"Rune\"]
 					}
@@ -35,6 +37,7 @@
 				"{
 					\"spaceRestriction\":
 					{
+						\"Blurb\":\"where for Runesaga to cast its target Rune\",
 						\"restrictionsToCheck\":[0]
 					}
 				}",

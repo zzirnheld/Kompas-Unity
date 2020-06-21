@@ -15,6 +15,7 @@
 				"{
 					\"cardRestriction\":
 					{
+						\"Blurb\":\"Rune for Runebinding to cast\",
 						\"restrictionsToCheck\":[2,4,7,100,601],
 						\"subtypesInclude\":[\"Rune\"]
 					}
@@ -22,6 +23,7 @@
 				"{
 					\"spaceRestriction\":
 					{
+						\"Blurb\":\"where for Runebinding to cast its target Rune\",
 						\"restrictionsToCheck\":[0]
 					}
 				}",
