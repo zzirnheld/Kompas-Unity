@@ -15,6 +15,7 @@
 					\"MaxCanChoose\":1,
 					\"CardRestriction\":
 					{
+						\"Blurb\":\"for High Priestess to put on top next\",
 						\"restrictionsToCheck\":[7,102,501,600],
 						\"constant\":4
 					}

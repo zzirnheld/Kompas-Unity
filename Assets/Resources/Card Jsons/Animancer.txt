@@ -15,6 +15,7 @@
 				"{
 					\"cardRestriction\":
 					{
+						\"Blurb\":\"for Animancer to discard\",
 						\"restrictionsToCheck\":[2,7,100,600],
 						\"subtypesInclude\":[\"Golem\"]
 					}
@@ -34,6 +35,7 @@
 					\"MaxCanChoose\":1,
 					\"CardRestriction\":
 					{
+						\"Blurb\":\"for Animancer to search\",
 						\"restrictionsToCheck\":[2,7,102,204,551],
 						\"subtypesInclude\":[\"Golem\"]
 					}

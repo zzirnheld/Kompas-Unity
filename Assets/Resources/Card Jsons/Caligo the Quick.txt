@@ -16,6 +16,7 @@
 				"{
 					\"boardRestriction\":
 					{
+						\"Blurb\":\"adjacent Dragon for Caligo to kill\",
 						\"restrictionsToCheck\":[2,3,7,103],
 						\"subtypesInclude\":[\"Dragon\"],
 						\"onBoardRestrictions\":[0]
@@ -30,6 +31,7 @@
 				"{
 					\"boardRestriction\":
 					{
+						\"Blurb\":\"enemy character for Caligo to attack\",
 						\"restrictionsToCheck\":[3,103],
 						\"onBoardRestrictions\":[0]
 					}
@@ -43,6 +45,7 @@
 				"{
 					\"spaceRestriction\":
 					{
+						\"Blurb\":\"to move Caligo to\",
 						\"restrictionsToCheck\":[102]
 					}
 				}",

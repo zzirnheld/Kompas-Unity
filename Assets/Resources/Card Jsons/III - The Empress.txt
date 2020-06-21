@@ -21,12 +21,14 @@
 				"{
 					\"cardRestriction\":
 					{
+						\"Blurb\":\"for Empress to hand-summon\",
 						\"restrictionsToCheck\":[3,7,100,202]
 					}
 				}",
 				"{
 					\"spaceRestriction\":
 					{
+						\"Blurb\":\"where Empress to hand-summon\",
 						\"restrictionsToCheck\":[0]
 					}
 				}",

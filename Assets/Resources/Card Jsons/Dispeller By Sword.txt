@@ -15,6 +15,7 @@
 				"{
 					\"boardRestriction\":
 					{
+						\"Blurb\":\"spell for Dispeller by Sword to dispel\",
 						\"restrictionsToCheck\":[2,3],
 						\"subtypesInclude\":[\"Warrior\"],
 						\"onBoardRestrictions\":[0]

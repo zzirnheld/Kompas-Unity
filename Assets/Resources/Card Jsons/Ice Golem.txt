@@ -16,6 +16,7 @@
 				"{
 					\"boardRestriction\":
 					{
+						\"Blurb\":\"for Ice Golem to temporarily negate\",
 						\"restrictionsToCheck\":[3]
 					}
 				}",
