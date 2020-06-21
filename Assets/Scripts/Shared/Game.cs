@@ -175,10 +175,11 @@ public abstract class Game : MonoBehaviour {
         card.Controller.deckCtrl.PushBottomdeck(card);
     }
 
-    public virtual void Play(Card card, int toX, int toY, Player controller)
+    public virtual void Play(Card card, int toX, int toY, Player controller, bool payCost = false)
     {
         Remove(card);
         boardCtrl.Play(card, toX, toY, controller);
+        if (payCost) controller.pips -= card.Cost;
         card.ChangeController(controller);
     }
 

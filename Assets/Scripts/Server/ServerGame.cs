@@ -231,13 +231,13 @@ public class ServerGame : Game {
 
     public override void Bottomdeck(Card card) => Bottomdeck(card, null);
 
-    public void Play(Card card, int toX, int toY, Player controller, IServerStackable stackSrc)
+    public void Play(Card card, int toX, int toY, Player controller, IServerStackable stackSrc, bool payCost = false)
     {
         EffectsController.Trigger(TriggerCondition.Play, 
             cardTriggerer: card, stackTrigger: stackSrc, triggerer: stackSrc?.ServerController, space: (toX, toY));
         //note that it's serverPlayers[controller.index] because you can play to the field of someone whose card it isnt
         ServerPlayers[controller.index].ServerNotifier.NotifyPlay(card, toX, toY);
-        base.Play(card, toX, toY, controller);
+        base.Play(card, toX, toY, controller, payCost);
 
         //if we just played an augment, note that, and trigger augment
         if (card.CardType == 'A') 
@@ -248,7 +248,7 @@ public class ServerGame : Game {
         if (stackSrc == null) EffectsController.CheckForResponse();
     }
 
-    public override void Play(Card card, int toX, int toY, Player controller) => Play(card, toX, toY, controller, null);
+    public override void Play(Card card, int toX, int toY, Player controller, bool payCost = false) => Play(card, toX, toY, controller, null, payCost);
 
     public void MoveOnBoard(Card card, int toX, int toY, bool normalMove, IServerStackable stackSrc)
     {

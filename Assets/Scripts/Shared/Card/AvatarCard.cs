@@ -17,4 +17,10 @@ public class AvatarCard : CharacterCard
 
     //TODO make this return whether the Avatar is summoned yet
     public override bool Summoned => false;
+
+    public override void SetInfo(SerializableCard serializedCard, Game game, Player owner, Effect[] effects, int id)
+    {
+        base.SetInfo(serializedCard, game, owner, effects, id);
+        E *= 2;
+    }
 }

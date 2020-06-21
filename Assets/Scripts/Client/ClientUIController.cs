@@ -145,8 +145,7 @@ public class ClientUIController : UIController
     public void ChangeTurn(int index)
     {
         CurrTurnText.text = index == 0 ? FriendlyTurn : EnemyTurn;
-        if (index != 0) EndTurnButton.SetActive(false);
-        else EndTurnButton.SetActive(true);
+        EndTurnButton.SetActive(index == 0);
     }
 
     public void SetCurrState(string primaryState, string secondaryState = "")
@@ -154,8 +153,7 @@ public class ClientUIController : UIController
         CurrStateOverallObj.SetActive(true);
         CurrStateText.text = primaryState;
         CurrStateBonusText.text = secondaryState;
-        if (secondaryState == "") CurrStateBonusObj.SetActive(false);
-        else CurrStateBonusObj.SetActive(true);
+        CurrStateBonusObj.SetActive(secondaryState == "");
     }
 
     #region effects

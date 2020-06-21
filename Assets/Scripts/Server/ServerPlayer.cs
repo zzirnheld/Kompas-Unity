@@ -29,13 +29,13 @@ public class ServerPlayer : Player
     /// <param name="y"></param>
     public void TryAugment(AugmentCard aug, int x, int y)
     {
-        if (serverGame.ValidAugment(aug, x, y, this)) serverGame.Play(aug, x, y, this);
+        if (serverGame.ValidAugment(aug, x, y, this)) serverGame.Play(aug, x, y, this, true);
         else ServerNotifier.NotifyPutBack();
     }
 
     public void TryPlay(Card card, int x, int y)
     {
-        if (serverGame.ValidBoardPlay(card, x, y, this)) serverGame.Play(card, x, y, this);
+        if (serverGame.ValidBoardPlay(card, x, y, this)) serverGame.Play(card, x, y, this, true);
         else ServerNotifier.NotifyPutBack();
     }
 
