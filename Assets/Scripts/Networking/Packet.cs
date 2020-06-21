@@ -11,29 +11,73 @@ namespace KompasNetworking
         public enum Command
         {
             //game start procedures
-            GetDeck, SetDeck, SetFriendlyAvatar, SetEnemyAvatar,
+            GetDeck = 0,
+            SetDeck = 1,
+            DeckAccepted = 2,
+            SetFriendlyAvatar = 10,
+            SetEnemyAvatar = 11,
             //basic player commands
-            Play, Augment, Move, EndTurn, Attack,
+            Play = 100,
+            Augment = 101,
+            Move = 102,
+            Attack = 103,
+            EndTurn = 150,
             //move cards around
-            Topdeck, Discard, Rehand, Reshuffle, AddAsFriendly, AddAsEnemy, Bottomdeck,
-            Draw, Delete,
+            Topdeck = 200,
+            Discard = 201,
+            Rehand = 202,
+            Reshuffle = 203,
+            AddAsFriendly = 204,
+            AddAsEnemy = 205,
+            Bottomdeck = 206,
+            Draw = 207,
+            Delete = 208,
             //card properties
-            SetNESW, Negate, SetSpellStats, Activate, Deactivate, ChangeControl,
+            SetNESW = 301,
+            Negate = 302,
+            SetSpellStats = 303,
+            Activate = 304,
+            Deactivate = 305,
+            ChangeControl = 306,
             //change numbers of cards that you see of your opponent
-            IncrementEnemyDeck, IncrementEnemyHand, DecrementEnemyDeck, DecrementEnemyHand,
+            IncrementEnemyDeck = 400,
+            IncrementEnemyHand = 401,
+            DecrementEnemyDeck = 402,
+            DecrementEnemyHand = 403,
             //server requesting a target of a client
-            GetAttackTarget, RequestBoardTarget, RequestDeckTarget, RequestDiscardTarget, RequestHandTarget, GetChoicesFromList,
+            GetAttackTarget = 500,
+            RequestBoardTarget = 501,
+            RequestDeckTarget = 502,
+            RequestDiscardTarget = 503,
+            RequestHandTarget = 504,
+            GetChoicesFromList = 505,
             //client responding
-            Target, SpaceTarget, Response, DeclineAnotherTarget, CancelSearch,
+            Target = 550,
+            SpaceTarget = 551,
+            Response = 552,
+            DeclineAnotherTarget = 553,
+            CancelSearch = 554,
             //server notifying if anything else is necessary
-            TargetAccepted, SpaceTargetAccepted,
+            TargetAccepted = 575,
+            SpaceTargetAccepted = 576,
             //other effect technicalities
-            PlayerSetX, EnableDecliningTarget, DisableDecliningTarget, SetPips, SetEnemyPips, SetEffectsX,
-            OptionalTrigger, ChooseEffectOption, EffectResolving, EffectImpossible,
+            PlayerSetX = 600,
+            EnableDecliningTarget = 601,
+            DisableDecliningTarget = 602,
+            SetPips = 603,
+            SetEnemyPips = 604,
+            SetEffectsX = 605,
+            OptionalTrigger = 606,
+            ChooseEffectOption = 607,
+            EffectResolving = 608,
+            EffectImpossible = 609,
             //miscellaneous
-            DiscardSimples, PutBack, YoureFirst, YoureSecond,
+            DiscardSimples = 700,
+            PutBack = 701,
+            YoureFirst = 702,
+            YoureSecond = 703,
             //debug
-            ActivateEffect
+            ActivateEffect = 800
         }
 
         public Packet Copy()

@@ -50,6 +50,9 @@ public class ClientNetworkController : NetworkController {
                 //tell ui to get deck
                 ClientGame.clientUICtrl.ShowGetDecklistUI();
                 break;
+            case Packet.Command.DeckAccepted:
+                ClientGame.clientUICtrl.ShowDeckAcceptedUI();
+                break;
             case Packet.Command.YoureFirst:
                 ClientGame.SetFirstTurnPlayer(0);
                 break;

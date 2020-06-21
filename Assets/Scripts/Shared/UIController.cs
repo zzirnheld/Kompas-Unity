@@ -148,11 +148,6 @@ public class UIController : MonoBehaviour {
         ShowInfoFor(card);
     }
 
-    public void HideNetworkingUI()
-    {
-        networkingParent.SetActive(false);
-    }
-
     #region updating pips
     public void UpdateFriendlyPips(int num)
     {

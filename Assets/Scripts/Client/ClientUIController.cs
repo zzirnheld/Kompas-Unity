@@ -64,6 +64,9 @@ public class ClientUIController : UIController
     public DeckSelectUIController DeckSelectCtrl;
     public GameObject DeckSelectUIParent;
     public GameObject ConnectToServerParent;
+    public GameObject DeckSelectorParent;
+    public GameObject DeckAcceptedParent;
+    public GameObject ConnectedWaitingParent;
     
     private void Awake()
     {
@@ -120,13 +123,30 @@ public class ClientUIController : UIController
         if (string.IsNullOrEmpty(ip)) ip = "127.0.0.1";
         try
         {
+            HideConnectUI();
             clientGame.clientNetworkCtrl.Connect(ip);
-            HideNetworkingUI();
+            ShowConnectedWaitingUI();
         }
         catch (System.Exception e)
         {
             Debug.LogError($"Failed to connect, stack trace: {e.StackTrace}");
+            ShowConnectUI();
         }
+    }
+
+    public void HideConnectUI()
+    {
+        networkingParent.SetActive(false);
+    }
+
+    public void ShowConnectedWaitingUI()
+    {
+        ConnectedWaitingParent.SetActive(true);
+    }
+
+    public void ShowConnectUI()
+    {
+        networkingParent.SetActive(true);
     }
 
     public void ShowGetDecklistUI()
@@ -135,7 +155,11 @@ public class ClientUIController : UIController
         DeckSelectUIParent.SetActive(true);
     }
 
-    //TODO: something for if the decklist is rejected
+    public void ShowDeckAcceptedUI()
+    {
+        DeckSelectorParent.SetActive(false);
+        DeckAcceptedParent.SetActive(true);
+    }
 
     public void HideGetDecklistUI()
     {

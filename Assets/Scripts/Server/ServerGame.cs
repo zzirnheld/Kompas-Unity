@@ -94,6 +94,7 @@ public class ServerGame : Game {
             GetDeckFrom(player);
             return;
         }
+        else player.ServerNotifier.DeckAccepted();
 
         AvatarCard avatar;
         lock (AddCardsLock)

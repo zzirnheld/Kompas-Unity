@@ -40,6 +40,12 @@ public class ServerNotifier : MonoBehaviour
         SendPacket(p);
     }
 
+    public void DeckAccepted()
+    {
+        Packet p = new Packet(Packet.Command.DeckAccepted);
+        SendPacket(p);
+    }
+
     public void YoureFirst()
     {
         Debug.Log("Sending you're first");
