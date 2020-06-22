@@ -186,7 +186,7 @@ public class ClientUIController : UIController
     #region effects
     public void ActivateSelectedCardEff(int index)
     {
-        clientGame.clientNotifier.RequestResolveEffect(SelectedCard, index);
+        clientGame.clientNotifier.RequestResolveEffect(shownCard, index);
     }
 
     public void ToggleHoldingPriority()

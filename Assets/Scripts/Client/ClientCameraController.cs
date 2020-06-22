@@ -21,8 +21,9 @@ public class ClientCameraController : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.F)) transform.Translate(Forward);
-        if (Input.GetKey(KeyCode.R)) transform.Translate(Backward);
+        if (Input.GetKey(KeyCode.F) && transform.position.y > 1) transform.Translate(Forward);
+        if (Input.GetKey(KeyCode.R) && transform.position.y < 20) transform.Translate(Backward);
+
         if (Input.GetKey(KeyCode.W)) transform.Translate(Up);
         if (Input.GetKey(KeyCode.S)) transform.Translate(Down);
         if (Input.GetKey(KeyCode.A)) transform.Translate(Left);

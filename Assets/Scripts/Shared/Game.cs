@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using KompasNetworking;
+using System.Linq;
 
 public abstract class Game : MonoBehaviour {
 
@@ -70,14 +71,10 @@ public abstract class Game : MonoBehaviour {
 
     //game mechanics
     //checking for valid target
-    public bool ExistsValidCardOnBoardTarget(CardRestriction restriction)
-    {
-        return boardCtrl.ExistsCardOnBoard(restriction);
-    }
 
-    public bool NoValidCardOnBoardTarget(CardRestriction restriction)
+    public bool ExistsBoardTarget(CardRestriction restriction)
     {
-        return !boardCtrl.ExistsCardOnBoard(restriction);
+        return Cards.Any(c => c.Location == CardLocation.Field && restriction.Evaluate(c));
     }
 
     /// <summary>

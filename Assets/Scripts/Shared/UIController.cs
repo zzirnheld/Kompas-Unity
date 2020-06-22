@@ -52,7 +52,7 @@ public class UIController : MonoBehaviour {
     private bool hovering = false;
     private Card hoveredCard;
 
-    private Card shownCard;
+    protected Card shownCard;
 
     public bool DebugMode { get { return debugToggle.isOn; } }
 

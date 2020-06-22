@@ -7,7 +7,8 @@
 			"activationRestriction":{
 				"Restrictions":[
 					"Max Times Per Turn",
-					"Friendly Turn"
+					"Friendly Turn",
+					"In Play"
 				]
 			},
 			"subeffectTypes":[8,303,404,1,405,12,304,350],

@@ -26,6 +26,11 @@
 			]	
 		},
 		{
+			"activationRestriction":{
+				"Restrictions":[
+					"In Play"
+				]
+			},
 			"subeffectTypes":[0,203,103,4,5,309,601],
 			"subeffects":[
 				"{

@@ -78,8 +78,6 @@ public class ClientGame : Game {
     public void Delete(Card card)
     {
         Destroy(card.gameObject);
-        //probably destroy and not set inactive because a card that is deleted and played again will just be created anew
-        //card.gameObject.SetActive(false);
     }
 
     //requesting

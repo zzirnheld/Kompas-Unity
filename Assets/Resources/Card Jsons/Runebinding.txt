@@ -7,7 +7,8 @@
 			"activationRestriction":{
 				"Restrictions":[
 					"Max Times Per Turn",
-					"Enemy Turn"
+					"Enemy Turn",
+					"In Play"
 				]
 			},
 			"subeffectTypes":[3,4,300],

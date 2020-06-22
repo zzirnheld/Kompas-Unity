@@ -4,18 +4,13 @@
 	"effText":"Once each round, when you draw X, I can dispel a C ≤ X spell.",
 	"effects":[
 		{
-			"activationRestriction":{
-				"Restrictions":[
-					"Max Times Per Round"
-				]
-			},
 			"triggerCondition":101,
 			"trigger":
 			"{
 				\"Optional\":true,
 				\"Blurb\":\"Dispel a C <= X spell? (X is the number of cards you just drew)\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,200]
+					\"triggerRestrictions\":[1,200,502]
 				}
 			}",
 			"subeffectTypes":[0,106],

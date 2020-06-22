@@ -14,7 +14,7 @@
 		"subeffectTypes":[500,5,6,301,1,300],
 		"subeffects":[
 			"{
-				\"NumTimesToDelay\":1,
+				\"NumTimesToDelay\":2,
 				\"IndexToResume\":1,
 				\"TriggerCondition\":0
 			}",
@@ -27,8 +27,8 @@
 				\"cardRestriction\":
 				{
 					\"Blurb\":\"for Dragon Egg to become\",
-					\"restrictionsToCheck\":[2,3,202],
-					\"subtypesInclude\":[\"Warrior\"]
+					\"restrictionsToCheck\":[2,3,601],
+					\"subtypesInclude\":[\"Dragon\"]
 				}
 			}",
 			"{

@@ -35,7 +35,8 @@ public class TriggerRestriction
         FromDeck = 401,
 
         MaxPerTurn = 500,
-        NotFromEffect = 501
+        NotFromEffect = 501,
+        MaxPerRound = 502
     }
 
     public TriggerRestrictions[] triggerRestrictions = new TriggerRestrictions[0];
@@ -43,6 +44,7 @@ public class TriggerRestriction
     public XRestriction xRestriction = new XRestriction();
     public SpaceRestriction spaceRestriction = new SpaceRestriction();
     public int maxTimesPerTurn = 1;
+    public int maxPerRound = 1;
 
     public Card ThisCard { get; private set; }
 
@@ -110,6 +112,9 @@ public class TriggerRestriction
                     else return false;
                 case TriggerRestrictions.NotFromEffect:
                     if (stackTrigger == null) continue;
+                    else return false;
+                case TriggerRestrictions.MaxPerRound:
+                    if (ThisTrigger.effToTrigger.TimesUsedThisRound < maxPerRound) continue;
                     else return false;
                 default:
                     Debug.LogError($"Unrecognized trigger restriction {r}");

@@ -6,7 +6,8 @@
 		{
 			"activationRestriction":{
 				"Restrictions":[
-					"Max Times Per Round"
+					"Max Times Per Round",
+					"In Play"
 				]
 			},
 			"subeffectTypes":[8,401,308,10,401,305],

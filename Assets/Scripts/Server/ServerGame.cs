@@ -276,9 +276,11 @@ public class ServerGame : Game {
         base.SetStats(spellCard, c);
     }
 
-    public override void SetStats(CharacterCard charCard, int n, int e, int s, int w)
+    public void SetStats(CharacterCard charCard, int n, int e, int s, int w, IServerStackable stackSrc)
     {
         Debug.Log($"Setting stats of {charCard.CardName} to {n}/{e}/{s}/{w}");
+        EffectsController.Trigger(TriggerCondition.NESWChange, 
+            cardTriggerer: charCard, stackTrigger: stackSrc, triggerer: stackSrc?.ServerController);
         ServerPlayers[charCard.ControllerIndex].ServerNotifier.NotifySetNESW(charCard, n, e, s, w);
         base.SetStats(charCard, n, e, s, w);
         if (charCard.E <= 0)
@@ -288,6 +290,9 @@ public class ServerGame : Game {
             //attacks or effects, will call check for response once it's done resolving.
         }
     }
+
+    public override void SetStats(CharacterCard charCard, int n, int e, int s, int w)
+        => SetStats(charCard, n, e, s, w, null);
 
     public void SetNegated(Card c, bool negated, IServerStackable stackSrc)
     {
