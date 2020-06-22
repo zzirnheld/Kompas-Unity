@@ -71,6 +71,7 @@ public class ServerEffect : Effect, IServerStackable
 
     public void StartResolution()
     {
+        Debug.Log($"Resolving effect {EffectIndex} of {Source.CardName}");
         Source.game.CurrEffect = this;
         TimesUsedThisTurn++;
         ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
