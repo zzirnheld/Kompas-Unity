@@ -35,17 +35,6 @@ public class UIController : MonoBehaviour {
     public TMP_InputField ipInputField;
     public GameObject networkingParent;
 
-    private string currentStateString;
-    public string CurrentStateString
-    {
-        get => currentStateString;
-        set
-        {
-            currentStateString = value;
-            currentStateText.text = currentStateString;
-        }
-    }
-
     //selection variables
     public Card SelectedCard { get; protected set; }
 
@@ -106,6 +95,9 @@ public class UIController : MonoBehaviour {
         if (card == null)
         {
             selectedUIParent.SetActive(false);
+            SelectedCard = null;
+            hoveredCard = null;
+            shownCard = null;
             //Debug.Log("Selecting Null");
             selectedCardNameText.text = "No Card Selected";
             selectedCardImage.sprite = Resources.Load<Sprite>("Kompas Circle Background");

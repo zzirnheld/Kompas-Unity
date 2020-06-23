@@ -63,6 +63,9 @@ public class PlayRestriction
 
     public bool EvaluateEffectPlay(int x, int y, Effect effect)
     {
+        this.x = x;
+        this.y = y;
+
         foreach (string r in EffectRestrictions)
         {
             switch (r)
