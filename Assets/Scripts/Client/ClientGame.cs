@@ -39,6 +39,17 @@ public class ClientGame : Game {
     public CardRestriction CurrCardRestriction;
     public SpaceRestriction CurrSpaceRestriction;
 
+    //gamestate
+    public override int Leyload
+    {
+        get => base.Leyload;
+        set
+        {
+            base.Leyload = value;
+            clientUICtrl.Leyload = Leyload;
+        }
+    }
+
     private void Start()
     {
         mainGame = this;

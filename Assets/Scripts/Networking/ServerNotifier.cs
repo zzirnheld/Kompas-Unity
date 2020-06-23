@@ -169,6 +169,12 @@ public class ServerNotifier : MonoBehaviour
         SendPackets(outPacket, outPacketInverted);
     }
 
+    public void NotifySetLeyload(int leyload)
+    {
+        Packet p = new Packet(Packet.Command.Leyload, leyload);
+        SendToBoth(p);
+    }
+
     public void NotifySetPips(int pipsToSet)
     {
         //let everyone know

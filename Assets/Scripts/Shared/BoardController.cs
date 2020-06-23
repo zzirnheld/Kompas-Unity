@@ -161,7 +161,7 @@ public class BoardController : MonoBehaviour
         else Debug.Log("Can't play a card that isn't a character, augment, or spell.");
 
         int i = GetNumCardsOnBoard();
-        if (i > game.MaxCardsOnField) game.MaxCardsOnField = i;
+        if (i > game.Leyload) game.Leyload = i;
 
         toPlay.gameObject.transform.localScale = Vector3.one;
     }

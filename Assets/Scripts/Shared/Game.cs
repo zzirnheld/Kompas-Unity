@@ -31,7 +31,12 @@ public abstract class Game : MonoBehaviour {
     //game data
     public Dictionary<int, Card> cardsByID;
     public IEnumerable<Card> Cards => cardsByID.Values;
-    public int MaxCardsOnField = 0; //for pip generation purposes
+    public int maxCardsOnField = 0; //for pip generation purposes
+    public virtual int Leyload
+    {
+        get => maxCardsOnField;
+        set => maxCardsOnField = value;
+    }
     
     public ServerEffect CurrEffect { get; set; }
 

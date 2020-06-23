@@ -22,6 +22,7 @@ namespace KompasNetworking
             Move = 102,
             Attack = 103,
             EndTurn = 150,
+            Leyload = 151,
             //move cards around
             Topdeck = 200,
             Discard = 201,
@@ -111,6 +112,7 @@ namespace KompasNetworking
         public bool Answer => normalArgs[0] == 1;
         public int ControllerIndex => normalArgs[0];
         public int EffectOption => normalArgs[0];
+        public int Leyload => normalArgs[0];
 
         public CardLocation Location => (CardLocation)normalArgs[0];
 
@@ -355,6 +357,7 @@ namespace KompasNetworking
                 case Command.EffectResolving:
                 case Command.SetEnemyPips:
                 case Command.SetPips:
+                case Command.Leyload:
                     return false;
                 default:
                     return true;

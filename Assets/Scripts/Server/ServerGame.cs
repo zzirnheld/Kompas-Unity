@@ -21,6 +21,16 @@ public class ServerGame : Game {
     public int cardCount = 0;
     private int currPlayerCount = 0; //current number of players. shouldn't exceed 2
 
+    public override int Leyload
+    {
+        get => base.Leyload;
+        set
+        {
+            base.Leyload = value;
+            ServerPlayers[0].ServerNotifier.NotifySetLeyload(Leyload);
+        }
+    }
+
     public void Init(UIController uiCtrl, CardRepository cardRepo)
     {
         this.uiCtrl = uiCtrl;
@@ -359,7 +369,7 @@ public class ServerGame : Game {
 
     public void GiveTurnPlayerPips()
     {
-        int pipsToSet = TurnPlayer.pips + MaxCardsOnField;
+        int pipsToSet = TurnPlayer.pips + Leyload;
         GivePlayerPips(TurnServerPlayer, pipsToSet);
     }
 

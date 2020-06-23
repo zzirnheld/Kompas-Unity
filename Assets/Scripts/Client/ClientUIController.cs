@@ -11,22 +11,16 @@ public class ClientUIController : UIController
 
     public ClientGame clientGame;
     //debug UI 
-    /*
-    public GameObject debugParent;
-    public InputField debugNInputField;
-    public InputField debugEInputField;
-    public InputField debugSInputField;
-    public InputField debugWInputField; */
     public InputField debugPipsField;
-    //deck importing
-    /*
-    public InputField deckInputField;
-    public Button importDeckButton;
-    public Button confirmDeckImportButton; */
 
     //gamestate values
     public TMPro.TMP_Text CurrTurnText;
     public GameObject EndTurnButton;
+    public TMPro.TMP_Text LeyloadText;
+    public int Leyload
+    {
+        set => LeyloadText.text = $"{value} Pips Leyload";
+    }
 
     //current state
     public GameObject CurrStateOverallObj;
@@ -38,9 +32,6 @@ public class ClientUIController : UIController
     public GameObject cardSearchView;
     public Image cardSearchImage;
     public GameObject alreadySelectedText;
-    /*
-    public Button deckSearchButton;
-    public Button discardSearchButton;*/
     public Button searchTargetButton;
     //effects
     public InputField xInput;
