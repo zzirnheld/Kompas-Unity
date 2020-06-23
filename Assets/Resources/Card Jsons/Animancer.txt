@@ -7,7 +7,8 @@
 			"activationRestriction":{
 				"Restrictions":[
 					"Max Times Per Turn",
-					"Friendly Turn"
+					"Friendly Turn",
+					"In Play"
 				]
 			},
 			"subeffectTypes":[3,275,301,410,404,8,405,12,304,350],
@@ -15,6 +16,7 @@
 				"{
 					\"cardRestriction\":
 					{
+						\"Blurb\":\"for Animancer to discard\",
 						\"restrictionsToCheck\":[2,7,100,600],
 						\"subtypesInclude\":[\"Golem\"]
 					}
@@ -34,6 +36,7 @@
 					\"MaxCanChoose\":1,
 					\"CardRestriction\":
 					{
+						\"Blurb\":\"for Animancer to search\",
 						\"restrictionsToCheck\":[2,7,102,204,551],
 						\"subtypesInclude\":[\"Golem\"]
 					}

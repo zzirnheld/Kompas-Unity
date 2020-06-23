@@ -7,7 +7,8 @@
 			"activationRestriction":{
 				"Restrictions":[
 					"Max Times Per Turn",
-					"Friendly Turn"
+					"Friendly Turn",
+					"In Play"
 				]
 			},
 			"subeffectTypes":[3,303,202,306],
@@ -15,6 +16,7 @@
 				"{
 					\"cardRestriction\":
 					{
+						\"Blurb\":\"Dragon to hand-reshuffle\",
 						\"restrictionsToCheck\":[2,7,100],
 						\"subtypesInclude\":[\"Dragon\"]
 					}
@@ -31,7 +33,7 @@
 		}
 	],
 	"n":1,
-	"e":0,
+	"e":10,
 	"s":9,
 	"w":6,
 	"subtypes":[],

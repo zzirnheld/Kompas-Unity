@@ -7,7 +7,8 @@
 			"activationRestriction":{
 				"Restrictions":[
 					"Max Times Per Turn",
-					"Friendly Turn"
+					"Friendly Turn",
+					"In Play"
 				]
 			},
 			"subeffectTypes":[0,252,301,0,301],
@@ -15,6 +16,7 @@
 				"{
 					\"boardRestriction\":
 					{
+						\"Blurb\":\"Warrior for Strategist to sacrifice\",
 						\"restrictionsToCheck\":[2,3],
 						\"subtypesInclude\":[\"Warrior\"],
 						\"onBoardRestrictions\":[]
@@ -27,6 +29,7 @@
 				"{
 					\"boardRestriction\":
 					{
+						\"Blurb\":\"Warrior for Strategist to kill\",
 						\"restrictionsToCheck\":[3,103,202],
 						\"onBoardRestrictions\":[]
 					}

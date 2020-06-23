@@ -16,12 +16,14 @@
 				"{
 					\"boardRestriction\":
 					{
+						\"Blurb\":\"for Ihwaz to swap (1/2)\",
 						\"restrictionsToCheck\":[3,103]
 					}
 				}",
 				"{
 					\"boardRestriction\":
 					{
+						\"Blurb\":\"for Ihwaz to swap (2/2)\",
 						\"restrictionsToCheck\":[3,103,600]
 					}
 				}",

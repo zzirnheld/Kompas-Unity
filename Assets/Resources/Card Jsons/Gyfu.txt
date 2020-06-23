@@ -14,10 +14,11 @@
 			"subeffectTypes":[0,100,408,101],
 			"subeffects":[
 				"{
-						\"boardRestriction\":
-						{
-							\"restrictionsToCheck\":[3,9,103,600]
-						}
+					\"boardRestriction\":
+					{
+						\"Blurb\":\"for Gyfu to give +1EW\",
+						\"restrictionsToCheck\":[3,9,103,600]
+					}
 				}",
 				"{
 					\"eChange\":1,

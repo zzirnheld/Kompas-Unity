@@ -6,10 +6,10 @@ public class ClientCardMouseController : CardMouseController
 {
     //constants
     //minimum and maximum distances to the board, discard, and deck objects for dragging
-    public const float minBoardLocalX = -0.45f;
-    public const float maxBoardLocalX = 0.45f;
-    public const float minBoardLocalY = -0.45f;
-    public const float maxBoardLocalY = 0.45f;
+    public const float minBoardLocalX = -7f;
+    public const float maxBoardLocalX = 7f;
+    public const float minBoardLocalY = -7f;
+    public const float maxBoardLocalY = 7f;
     public const float minDiscardX = 4.5f;
     public const float maxDiscardX = 5.5f;
     public const float minDiscardZ = -3.5f;
@@ -21,7 +21,6 @@ public class ClientCardMouseController : CardMouseController
 
     public ClientGame ClientGame;
     public override Game Game => ClientGame;
-
 
     //helper methods
     public bool WithinIgnoreY(Vector3 position, float minX, float maxX, float minZ, float maxZ)
@@ -41,13 +40,13 @@ public class ClientCardMouseController : CardMouseController
         if (Card.game.targetMode != Game.TargetMode.Free) return;
 
         //get coords w/r/t gameboard
-        var boardLocalPosition = Game.boardObject.transform.InverseTransformPoint(transform.position);
+        var boardLocalPosition = Game.boardObject.transform.InverseTransformPoint(Card.gameObject.transform.position);
 
         //then, check if it's on the board, accodring to the local coordinates of the game board)
         if (WithinIgnoreZ(boardLocalPosition, minBoardLocalX, maxBoardLocalX, minBoardLocalY, maxBoardLocalY))
         {
-            int x = PosToGridIndex(boardLocalPosition.x);
-            int y = PosToGridIndex(boardLocalPosition.y);
+            int x = BoardController.PosToGridIndex(boardLocalPosition.x);
+            int y = BoardController.PosToGridIndex(boardLocalPosition.y);
 
             //if the card is being moved on the field, that means it's just being moved
             if (Card.Location == CardLocation.Field)
@@ -64,13 +63,13 @@ public class ClientCardMouseController : CardMouseController
             else ClientGame.clientNotifier.RequestPlay(Card, x, y);
         }
         //if it's not on the board, maybe it's on top of the discard
-        else if (WithinIgnoreY(transform.position, minDiscardX, maxDiscardX, minDiscardZ, maxDiscardZ))
+        else if (WithinIgnoreY(Card.gameObject.transform.position, minDiscardX, maxDiscardX, minDiscardZ, maxDiscardZ))
         {
             //in that case, discard it //TODO do this by raycasting along another layer to see if you hit deck/discard
             ClientGame.clientNotifier.RequestDiscard(Card);
         }
         //maybe it's on top of the deck
-        else if (WithinIgnoreY(transform.position, minDeckX, maxDeckX, minDeckZ, maxDeckZ))
+        else if (WithinIgnoreY(Card.gameObject.transform.position, minDeckX, maxDeckX, minDeckZ, maxDeckZ))
         {
             //in that case, topdeck it
             ClientGame.clientNotifier.RequestTopdeck(Card);

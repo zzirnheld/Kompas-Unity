@@ -16,6 +16,7 @@
 				"{
 					\"boardRestriction\":
 					{
+						\"Blurb\":\"adjacent Dragon for the Eldest to kill\",
 						\"restrictionsToCheck\":[2,3,7],
 						\"subtypesInclude\":[\"Dragon\"],
 						\"onBoardRestrictions\":[0]

@@ -4,38 +4,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class UIController : MonoBehaviour {
 
+    public const string NoSubtypesUIString = "(No Subtypes)";
+
     public Toggle debugToggle;
+    public GameObject augmentPrefab;
+    public GameObject useEffectButtonPrefab;
 
     //normal UI
     //pips
-    public Text friendlyPipsText;
-    public Text enemyPipsText;
+    public TMPro.TMP_Text friendlyPipsText;
+    public TMPro.TMP_Text enemyPipsText;
     //show selected card data
     public GameObject selectedUIParent;
-    public Text selectedCardNameText;
+    public TMPro.TMP_Text selectedCardNameText;
     public Image selectedCardImage;
-    public Text selectedCardStatsText;
-    public Text selectedCardSubtypesText;
-    public Text selectedCardEffText;
+    public TMPro.TMP_Text selectedCardStatsText;
+    public TMPro.TMP_Text selectedCardSubtypesText;
+    public TMPro.TMP_Text selectedCardEffText;
+    public GameObject UseEffectParent;
+    public GameObject UseEffectGridParent;
+    public GameObject AugmentPanelParent;
+    public GameObject AugmentGridParent;
     //current state text (reminds the player what's happening right now)
-    public Text currentStateText;
-    private string currentStateString;
+    public TMPro.TMP_Text currentStateText;
     //networking
     public TMP_InputField ipInputField;
     public GameObject networkingParent;
-
-    public string CurrentStateString
-    {
-        get { return currentStateString; }
-        set
-        {
-            currentStateString = value;
-            currentStateText.text = currentStateString;
-        }
-    }
 
     //selection variables
     public Card SelectedCard { get; protected set; }
@@ -43,10 +41,48 @@ public class UIController : MonoBehaviour {
     private bool hovering = false;
     private Card hoveredCard;
 
+    protected Card shownCard;
+
     public bool DebugMode { get { return debugToggle.isOn; } }
 
     //deck search vars
     public List<Card> thingToSearch;
+
+    public virtual void ResetShownInfo() => ShowInfoFor(hovering ? hoveredCard : SelectedCard);
+
+    public virtual void ShowInfoFor(Card card, bool refresh = false)
+    {
+        if (shownCard == card && !refresh) return;
+
+        shownCard = card;
+
+        hoveredCard = card;
+        selectedCardStatsText.text = hoveredCard.StatsString;
+
+        //set all common values
+        selectedCardSubtypesText.text = string.IsNullOrEmpty(card.SubtypeText) ? "(No Subtypes)" : card.SubtypeText;
+        selectedCardNameText.text = card.CardName;
+        selectedCardImage.sprite = card.detailedSprite;
+        selectedCardEffText.text = card.EffText;
+
+        if (card?.Augments != null && card.Augments.Any())
+        {
+            var children = new List<GameObject>();
+            foreach (Transform child in AugmentGridParent.transform) children.Add(child.gameObject);
+            foreach (var child in children) Destroy(child);
+
+            foreach(var aug in card.Augments)
+            {
+                var obj = Instantiate(augmentPrefab, AugmentGridParent.transform);
+                var img = obj.GetComponent<AugmentImageController>();
+                img.Initialize(aug, this);
+            }
+
+            AugmentPanelParent.SetActive(true);
+        }
+        else AugmentPanelParent.SetActive(false);
+        selectedUIParent.SetActive(true);
+    }
 
     /// <summary>
     /// updates the ui with the given selection. if the selection is null, hides the ui.
@@ -59,6 +95,9 @@ public class UIController : MonoBehaviour {
         if (card == null)
         {
             selectedUIParent.SetActive(false);
+            SelectedCard = null;
+            hoveredCard = null;
+            shownCard = null;
             //Debug.Log("Selecting Null");
             selectedCardNameText.text = "No Card Selected";
             selectedCardImage.sprite = Resources.Load<Sprite>("Kompas Circle Background");
@@ -68,16 +107,8 @@ public class UIController : MonoBehaviour {
             return;
         }
 
-        selectedUIParent.SetActive(true);
-        Debug.Log("Selecting " + card.CardName);
         SelectedCard = card;
-        selectedCardStatsText.text = SelectedCard.StatsString;
-
-        //set all common values
-        selectedCardSubtypesText.text = card.SubtypeText;
-        selectedCardNameText.text = card.CardName;
-        selectedCardImage.sprite = card.detailedSprite;
-        selectedCardEffText.text = card.EffText;
+        ShowInfoFor(card);
     }
 
     public void SelectCard(Card card, bool fromClick)
@@ -106,31 +137,18 @@ public class UIController : MonoBehaviour {
 
         hovering = true;
 
-        selectedUIParent.SetActive(true);
-        hoveredCard = card;
-        selectedCardStatsText.text = hoveredCard.StatsString;
-
-        //set all common values
-        selectedCardSubtypesText.text = card.SubtypeText;
-        selectedCardNameText.text = card.CardName;
-        selectedCardImage.sprite = card.detailedSprite;
-        selectedCardEffText.text = card.EffText;
-    }
-
-    public void HideNetworkingUI()
-    {
-        networkingParent.SetActive(false);
+        ShowInfoFor(card);
     }
 
     #region updating pips
     public void UpdateFriendlyPips(int num)
     {
-        friendlyPipsText.text = "Friendly Pips: " + num;
+        friendlyPipsText.text = $"{num} Friendly Pips";
     }
 
     public void UpdateEnemyPips(int num)
     {
-        enemyPipsText.text = "Enemy Pips: " + num;
+        enemyPipsText.text = $"{num} Enemy Pips";
     }
     #endregion
     

@@ -18,6 +18,7 @@
 				"{
 					\"boardRestriction\":
 					{
+						\"Blurb\":\"character for Judgement to kill\",
 						\"restrictionsToCheck\":[3,202]
 					}
 				}",

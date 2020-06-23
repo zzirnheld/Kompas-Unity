@@ -18,12 +18,14 @@
 				"{
 					\"boardRestriction\":
 					{
+						\"Blurb\":\"for Hermit to move\",
 						\"restrictionsToCheck\":[3]
 					}
 				}",
 				"{
 					\"spaceRestriction\":
 					{
+						\"Blurb\":\"where Hermit to move its target\",
 						\"restrictionsToCheck\":[1,201]
 					}
 				}",

@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public abstract class Card : CardBase {
     public Game game;
+    public CardController cardCtrl;
 
     //stats
     public int Negations { get; private set; } = 0;
@@ -82,30 +83,6 @@ public abstract class Card : CardBase {
         }
     }
 
-    public const float spacesInGrid = 7f;
-    public const float boardLenOffset = 0.45f;
-    protected static float GridIndexToPos(int gridIndex)
-    {
-        /* first, cast the index to a float to make sure the math works out.
-         * then, divide by the grid length to board ratio to get a number (0,1) that makes
-         * sense in the context of the board's local lenth of one.
-         * then, subtract the board length offset to get a number that makes sense
-         * in the actual board's context of values (-0.45, 0.45) (legal local coordinates)
-         * finally, add 0.025 to account for the 0.05 space on either side of the legal 0.45 area
-         */
-        return (((float)(gridIndex)) / (spacesInGrid - 1f) * (2 * boardLenOffset)) - boardLenOffset;
-    }
-    
-    //image
-    protected MeshRenderer meshRenderer;
-
-    //unity methods
-    private void Awake()
-    {
-        meshRenderer = GetComponent<MeshRenderer>();
-    }
-
-
     //set data
     /// <summary>
     /// Updates the location variable, sets active or not, and sets the parent transform.
@@ -117,55 +94,15 @@ public abstract class Card : CardBase {
 
         //set the card's location variable
         this.Location = location;
-
-        //set the parent to where we're going
-        switch (location)
-        {
-            case CardLocation.Field:
-                transform.SetParent(game.boardObject.transform);
-                gameObject.SetActive(true);
-                break;
-            case CardLocation.Discard:
-                transform.SetParent(Controller.discardObject.transform);
-                gameObject.SetActive(true);
-                break;
-            case CardLocation.Hand:
-                transform.SetParent(Controller.handObject.transform);
-                gameObject.SetActive(true);
-                break;
-            case CardLocation.Deck:
-                transform.SetParent(Controller.deckObject.transform);
-                gameObject.SetActive(false);
-                break;
-        }
+        cardCtrl.SetPhysicalLocation(location);
     }
 
-    /// <summary>
-    /// Set the sprites of this card and gameobject
-    /// </summary>
-    public void SetImage(string cardFileName)
-    {
-        detailedSprite = Resources.Load<Sprite>("Detailed Sprites/" + cardFileName);
-        simpleSprite = Resources.Load<Sprite>("Simple Sprites/" + cardFileName);
-        //check if either is null. if so, log to debug and return
-        if(detailedSprite == null || simpleSprite == null)
-        {
-            Debug.Log("Could not find sprite with name " + cardFileName);
-            return;
-        }
-        //set this gameobject's texture to the simple sprite (by default, TODO change on zoom level change)
-        Texture2D spriteTexture = simpleSprite.texture;
-        //spriteTexture.alphaIsTransparency = true;
-        meshRenderer.material.SetTexture("_MainTex", spriteTexture);
-        //then make unity know it's a sprite so that it'll make the alpha transparent
-        meshRenderer.material.shader = Shader.Find("Sprites/Default");
-    }
     /// <summary>
     /// Set image by stored card file name
     /// </summary>
     public void SetImage()
     {
-        SetImage(CardName);
+        cardCtrl.SetImage(CardName);
     }
 
     public virtual void SetInfo(SerializableCard serializedCard, Game game, Player owner, Effect[] effects, int id)
@@ -207,7 +144,7 @@ public abstract class Card : CardBase {
         return DistanceTo(card) <= numSlots;
     }
     public bool WithinSlots(int numSlots, int x, int y) => DistanceTo(x, y) <= numSlots;
-    public bool IsAdjacentTo(Card card) => DistanceTo(card) == 1;
+    public bool IsAdjacentTo(Card card) => card != null && DistanceTo(card) == 1;
     public bool IsAdjacentTo(int x, int y) => DistanceTo(x, y) == 1;
     public virtual bool CardInAOE(Card c) => false;
     public virtual bool SpaceInAOE(int x, int y) => false;
@@ -217,7 +154,7 @@ public abstract class Card : CardBase {
     public virtual void ChangeController(Player newController)
     {
         Controller = newController;
-        transform.localEulerAngles = new Vector3(0, 0, 180 * ControllerIndex);
+        cardCtrl.SetRotation();
     }
 
     /// <summary>
@@ -234,7 +171,7 @@ public abstract class Card : CardBase {
         /* for setting where the gameobject is, it would be x and z, except that the quad is turned 90 degrees
          * so we change the local x and y. the z coordinate also therefore needs to be negative
          * to show the card above the game board on the screen. */
-        transform.localPosition = new Vector3(GridIndexToPos(toX), GridIndexToPos(toY), -0.1f);
+        transform.localPosition = BoardController.GridIndicesFromPos(toX, toY);
         ChangeController(Controller);
         foreach (AugmentCard aug in Augments) aug.MoveTo(toX, toY, false);
     }
@@ -243,25 +180,7 @@ public abstract class Card : CardBase {
     {
         Debug.Log($"Putting back {CardName} to {Location}");
 
-        switch (Location)
-        {
-            case CardLocation.Deck:
-                transform.SetParent(Controller.deckObject.transform);
-                gameObject.SetActive(false);
-                break;
-            case CardLocation.Discard:
-                transform.SetParent(Controller.discardObject.transform);
-                transform.localPosition = new Vector3(0, 0, (float)Controller.discardCtrl.IndexOf(this) / -60f);
-                break;
-            case CardLocation.Field:
-                transform.SetParent(game.boardObject.transform);
-                transform.localPosition = new Vector3(GridIndexToPos(BoardX), GridIndexToPos(BoardY), -0.1f);
-                break;
-            case CardLocation.Hand:
-                transform.SetParent(Controller.handObject.transform);
-                Controller.handCtrl.SpreadOutCards();
-                break;
-        }
+        cardCtrl.SetPhysicalLocation(Location);
     }
 
     /// <summary>

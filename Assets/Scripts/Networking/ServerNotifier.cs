@@ -40,6 +40,12 @@ public class ServerNotifier : MonoBehaviour
         SendPacket(p);
     }
 
+    public void DeckAccepted()
+    {
+        Packet p = new Packet(Packet.Command.DeckAccepted);
+        SendPacket(p);
+    }
+
     public void YoureFirst()
     {
         Debug.Log("Sending you're first");
@@ -163,6 +169,12 @@ public class ServerNotifier : MonoBehaviour
         SendPackets(outPacket, outPacketInverted);
     }
 
+    public void NotifySetLeyload(int leyload)
+    {
+        Packet p = new Packet(Packet.Command.Leyload, leyload);
+        SendToBoth(p);
+    }
+
     public void NotifySetPips(int pipsToSet)
     {
         //let everyone know
@@ -278,6 +290,12 @@ public class ServerNotifier : MonoBehaviour
         Packet q = new Packet(Packet.Command.EffectResolving, eff.Source, eff.EffectIndex,
             eff.Controller == Player ? 1 : 0, 0, 0);
         SendPackets(p, q);
+    }
+
+    public void EffectImpossible()
+    {
+        Packet p = new Packet(Packet.Command.EffectImpossible);
+        SendToBoth(p);
     }
 
     public void RequestResponse()

@@ -7,7 +7,8 @@
 			"activationRestriction":{
 				"Restrictions":[
 					"Max Times Per Turn",
-					"Friendly Turn"
+					"Friendly Turn",
+					"In Play"
 				]
 			},
 			"subeffectTypes":[11,404,9,405,4,300,10,400,303,10,402],
@@ -15,6 +16,7 @@
 				"{
 					\"cardRestriction\":
 					{
+						\"Blurb\":\"Warrior for the General to deck-summon\",
 						\"restrictionsToCheck\":[6,3,102,501],
 						\"subtypesExclude\":[\"Warrior\"],
 						\"constant\":5

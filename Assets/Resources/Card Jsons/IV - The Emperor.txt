@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"IV - The Emperor",
-	"effText":"When you draw X, I give an adjacent Tarocco +XEW.",
+	"effText":"When you draw X, I give an adjacent character +XEW.",
 	"effects":[
 		{
 			"triggerCondition":101,
@@ -16,6 +16,7 @@
 				"{
 					\"boardRestriction\":
 					{
+						\"Blurb\":\"for Emperor to buff\",
 						\"restrictionsToCheck\":[3],
 						\"onBoardRestrictions\":[0]
 					}

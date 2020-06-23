@@ -6,7 +6,8 @@
 		{
 			"activationRestriction":{
 				"Restrictions":[
-					"Max Times Per Round"
+					"Max Times Per Round",
+					"In Play"
 				]
 			},
 			"subeffectTypes":[3,4,150,300],
@@ -14,6 +15,7 @@
 				"{
 					\"cardRestriction\":
 					{
+						\"Blurb\":\"Rune for Runerunner to cast\",
 						\"restrictionsToCheck\":[2,4,7,100,601,602],
 						\"subtypesInclude\":[\"Rune\"]
 					}
@@ -21,6 +23,7 @@
 				"{
 					\"spaceRestriction\":
 					{
+						\"Blurb\":\"where for Runerunner to cast its target Rune\",
 						\"restrictionsToCheck\":[0]
 					}
 				}",

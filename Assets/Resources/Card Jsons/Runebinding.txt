@@ -7,7 +7,8 @@
 			"activationRestriction":{
 				"Restrictions":[
 					"Max Times Per Turn",
-					"Enemy Turn"
+					"Enemy Turn",
+					"In Play"
 				]
 			},
 			"subeffectTypes":[3,4,300],
@@ -15,6 +16,7 @@
 				"{
 					\"cardRestriction\":
 					{
+						\"Blurb\":\"Rune for Runebinding to cast\",
 						\"restrictionsToCheck\":[2,4,7,100,601],
 						\"subtypesInclude\":[\"Rune\"]
 					}
@@ -22,6 +24,7 @@
 				"{
 					\"spaceRestriction\":
 					{
+						\"Blurb\":\"where for Runebinding to cast its target Rune\",
 						\"restrictionsToCheck\":[0]
 					}
 				}",

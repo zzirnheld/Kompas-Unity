@@ -18,7 +18,7 @@ public class ClientEffect : Effect
     public override Trigger Trigger => ClientTrigger;
 
     public ClientEffect(SerializableEffect se, Card thisCard, ClientGame clientGame)
-        : base(se.activationRestriction ?? new ActivationRestriction(), thisCard)
+        : base(se.activationRestriction ?? new ActivationRestriction(), thisCard, se.blurb)
     {
         this.ClientGame = clientGame;
         DummySubeffects = new DummySubeffect[se.subeffects.Length];

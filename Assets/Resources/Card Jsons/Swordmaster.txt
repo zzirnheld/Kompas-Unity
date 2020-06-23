@@ -1,13 +1,14 @@
 {
 	"cardType":67,
 	"cardName":"Swordmaster",
-	"effText":"Once each friendly turn, you can give an adjacent Warrior +1W.",
+	"effText":"Once each friendly turn, you can give an adjacent Warrior +1EW.",
 	"effects":[
 		{
 			"activationRestriction":{
 				"Restrictions":[
 					"Max Times Per Turn",
-					"Friendly Turn"
+					"Friendly Turn",
+					"In Play"
 				]
 			},
 			"subeffectTypes":[0,100],
@@ -15,6 +16,7 @@
 				"{
 					\"boardRestriction\":
 					{
+						\"Blurb\":\"adjacent Warrior for Swordmaster to give +1EW\",
 						\"restrictionsToCheck\":[2,3],
 						\"subtypesInclude\":[\"Warrior\"],
 						\"onBoardRestrictions\":[0]

@@ -32,6 +32,7 @@
 				"{
 					\"boardRestriction\":
 					{
+						\"Blurb\":\"adjacent friendly character for Fortitude to give +1E or +1W\",
 						\"restrictionsToCheck\":[3,7],
 						\"onBoardRestrictions\":[0]
 					}

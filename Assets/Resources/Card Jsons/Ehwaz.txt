@@ -14,10 +14,11 @@
 			"subeffectTypes":[0,100],
 			"subeffects":[
 				"{
-						\"boardRestriction\":
-						{
-							\"restrictionsToCheck\":[3,103]
-						}
+					\"boardRestriction\":
+					{
+						\"Blurb\":\"for Ehwaz to give +2N\",
+						\"restrictionsToCheck\":[3,103]
+					}
 				}",
 				"{
 					\"nChange\":2

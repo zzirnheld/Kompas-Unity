@@ -23,6 +23,7 @@
 				"{
 					\"cardRestriction\":
 					{
+						\"Blurb\":\"dead Warrior for Bannerman to reshuffle\",
 						\"restrictionsToCheck\":[2,3,101],
 						\"subtypesInclude\":[\"Warrior\"]
 					}

@@ -16,6 +16,7 @@
 				"{
 					\"boardRestriction\":
 					{
+						\"Blurb\":\"character within 3 spaces of Pneumatic Golem for it to rehand\",
 						\"restrictionsToCheck\":[3],
 						\"onBoardRestrictions\":[1],
 						\"cSpaces\":3
@@ -44,7 +45,7 @@
 	},
 	"n":3,
 	"e":4,
-	"s":3,
+	"s":5,
 	"w":5,
 	"subtypes":["Golem"],
 	"subtypeText":"Golem"

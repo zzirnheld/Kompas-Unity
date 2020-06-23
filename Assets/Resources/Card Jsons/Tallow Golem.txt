@@ -16,6 +16,7 @@
 				"{
 					\"boardRestriction\":
 					{
+						\"Blurb\":\"character for Tallow Golem to temporarily activate\",
 						\"restrictionsToCheck\":[3]
 					}
 				}",
@@ -47,7 +48,7 @@
 	},
 	"n":2,
 	"e":3,
-	"s":1,
+	"s":3,
 	"w":3,
 	"subtypes":["Golem"],
 	"subtypeText":"Golem"

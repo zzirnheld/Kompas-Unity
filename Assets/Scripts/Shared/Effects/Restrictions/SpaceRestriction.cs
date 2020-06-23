@@ -26,6 +26,8 @@ public class SpaceRestriction
 
     public int C;
 
+    public string Blurb = "";
+
     public void Initialize(Subeffect subeffect)
     {
         this.Subeffect = subeffect;

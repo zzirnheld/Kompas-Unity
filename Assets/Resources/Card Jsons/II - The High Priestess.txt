@@ -6,7 +6,8 @@
 		{
 			"activationRestriction":{
 				"Restrictions":[
-					"Max Times Per Round"
+					"Max Times Per Round",
+					"In Play"
 				]
 			},
 			"subeffectTypes":[8,401,308,10,401,305],
@@ -15,6 +16,7 @@
 					\"MaxCanChoose\":1,
 					\"CardRestriction\":
 					{
+						\"Blurb\":\"for High Priestess to put on top next\",
 						\"restrictionsToCheck\":[7,102,501,600],
 						\"constant\":4
 					}

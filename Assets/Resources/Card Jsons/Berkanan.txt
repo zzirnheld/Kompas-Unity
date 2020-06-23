@@ -17,10 +17,11 @@
 					\"Condition\":\"Must be Friendly Turn\"
 				}",
 				"{
-						\"boardRestriction\":
-						{
-							\"restrictionsToCheck\":[3,9,103]
-						}
+					\"boardRestriction\":
+					{
+						\"Blurb\":\"enemy for Berkanan to charm\",
+						\"restrictionsToCheck\":[3,9,103]
+					}
 				}",
 				"{}",
 				"{}"

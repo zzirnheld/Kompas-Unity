@@ -7,7 +7,8 @@
 			"activationRestriction":{
 				"Restrictions":[
 					"Max Times Per Turn",
-					"Friendly Turn"
+					"Friendly Turn",
+					"In Play"
 				]
 			},
 			"subeffectTypes":[200,2,150,4,300],
@@ -23,6 +24,7 @@
 				"{
 					\"cardRestriction\":
 					{
+						\"Blurb\":\"Warrior for Swordmystic to revive\",
 						\"restrictionsToCheck\":[2,3,202],
 						\"subtypesInclude\":[\"Warrior\"]
 					}
@@ -31,6 +33,7 @@
 				"{
 					\"spaceRestriction\":
 					{
+						\"Blurb\":\"where for Swordmystic to revive target Warrior\",
 						\"restrictionsToCheck\":[0]
 					}
 				}",

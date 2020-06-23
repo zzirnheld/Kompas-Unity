@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using KompasNetworking;
+using System.Linq;
 
 public abstract class Game : MonoBehaviour {
 
@@ -30,7 +31,12 @@ public abstract class Game : MonoBehaviour {
     //game data
     public Dictionary<int, Card> cardsByID;
     public IEnumerable<Card> Cards => cardsByID.Values;
-    public int MaxCardsOnField = 0; //for pip generation purposes
+    public int maxCardsOnField = 0; //for pip generation purposes
+    public virtual int Leyload
+    {
+        get => maxCardsOnField;
+        set => maxCardsOnField = value;
+    }
     
     public ServerEffect CurrEffect { get; set; }
 
@@ -70,14 +76,10 @@ public abstract class Game : MonoBehaviour {
 
     //game mechanics
     //checking for valid target
-    public bool ExistsValidCardOnBoardTarget(CardRestriction restriction)
-    {
-        return boardCtrl.ExistsCardOnBoard(restriction);
-    }
 
-    public bool NoValidCardOnBoardTarget(CardRestriction restriction)
+    public bool ExistsBoardTarget(CardRestriction restriction)
     {
-        return !boardCtrl.ExistsCardOnBoard(restriction);
+        return Cards.Any(c => c.Location == CardLocation.Field && restriction.Evaluate(c));
     }
 
     /// <summary>
@@ -175,10 +177,11 @@ public abstract class Game : MonoBehaviour {
         card.Controller.deckCtrl.PushBottomdeck(card);
     }
 
-    public virtual void Play(Card card, int toX, int toY, Player controller)
+    public virtual void Play(Card card, int toX, int toY, Player controller, bool payCost = false)
     {
         Remove(card);
         boardCtrl.Play(card, toX, toY, controller);
+        if (payCost) controller.pips -= card.Cost;
         card.ChangeController(controller);
     }
 

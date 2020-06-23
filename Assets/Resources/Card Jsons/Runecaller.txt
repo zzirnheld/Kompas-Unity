@@ -7,7 +7,8 @@
 			"activationRestriction":{
 				"Restrictions":[
 					"Max Times Per Turn",
-					"Friendly Turn"
+					"Friendly Turn",
+					"In Play"
 				]
 			},
 			"subeffectTypes":[3,4,150,300],
@@ -15,6 +16,7 @@
 				"{
 					\"cardRestriction\":
 					{
+						\"Blurb\":\"Rune for Runecaller to cast\",
 						\"restrictionsToCheck\":[2,4,7,100,601,602],
 						\"subtypesInclude\":[\"Rune\"]
 					}
@@ -22,6 +24,7 @@
 				"{
 					\"spaceRestriction\":
 					{
+						\"Blurb\":\"where for Runecaller to cast its target Rune\",
 						\"restrictionsToCheck\":[0]
 					}
 				}",

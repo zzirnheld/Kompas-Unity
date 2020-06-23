@@ -16,6 +16,7 @@
 				"{
 					\"cardRestriction\":
 					{
+						\"Blurb\":\"for Ingwaz to recast\",
 						\"restrictionsToCheck\":[2,4,7,101,601,602],
 						\"subtypesInclude\":[\"Rune\"],
 						\"costDivisor\":2
@@ -27,6 +28,7 @@
 				"{
 					\"spaceRestriction\":
 					{
+						\"Blurb\":\"where Ingwaz to recast\",
 						\"restrictionsToCheck\":[0]
 					}
 				}",

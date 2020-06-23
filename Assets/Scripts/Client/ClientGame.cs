@@ -39,6 +39,17 @@ public class ClientGame : Game {
     public CardRestriction CurrCardRestriction;
     public SpaceRestriction CurrSpaceRestriction;
 
+    //gamestate
+    public override int Leyload
+    {
+        get => base.Leyload;
+        set
+        {
+            base.Leyload = value;
+            clientUICtrl.Leyload = Leyload;
+        }
+    }
+
     private void Start()
     {
         mainGame = this;
@@ -78,8 +89,6 @@ public class ClientGame : Game {
     public void Delete(Card card)
     {
         Destroy(card.gameObject);
-        //probably destroy and not set inactive because a card that is deleted and played again will just be created anew
-        //card.gameObject.SetActive(false);
     }
 
     //requesting
@@ -126,7 +135,7 @@ public class ClientGame : Game {
     public void SetFirstTurnPlayer(int playerIndex)
     {
         TurnPlayerIndex = playerIndex;
-        uiCtrl.CurrentStateString = TurnPlayerIndex == 0 ? "Your Turn" : "Enemy Turn";
+        clientUICtrl.ChangeTurn(playerIndex);
         clientUICtrl.HideGetDecklistUI();
     }
 
@@ -134,6 +143,6 @@ public class ClientGame : Game {
     {
         TurnPlayerIndex = 1 - TurnPlayerIndex;
         boardCtrl.ResetCardsForTurn(TurnPlayer);
-        uiCtrl.CurrentStateString = TurnPlayerIndex == 0 ? "Your Turn" : "Enemy Turn";
+        clientUICtrl.ChangeTurn(TurnPlayerIndex);
     }
 }

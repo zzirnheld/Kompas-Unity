@@ -16,6 +16,7 @@
 				"{
 					\"boardRestriction\":
 					{
+						\"Blurb\":\"enemy character for Straw Golem to move.\",
 						\"restrictionsToCheck\":[3]
 					}
 				}",
@@ -49,7 +50,7 @@
 	},
 	"n":2,
 	"e":1,
-	"s":1,
+	"s":3,
 	"w":4,
 	"subtypes":["Golem"],
 	"subtypeText":"Golem"

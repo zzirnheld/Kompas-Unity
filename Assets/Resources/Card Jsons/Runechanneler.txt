@@ -7,7 +7,8 @@
 			"activationRestriction":{
 				"Restrictions":[
 					"Max Times Per Turn",
-					"Friendly Turn"
+					"Friendly Turn",
+					"In Play"
 				]
 			},
 			"subeffectTypes":[2,303,408,3,4,150,300],
@@ -15,6 +16,7 @@
 				"{
 					\"cardRestriction\":
 					{
+						\"Blurb\":\"Rune for Runechanneler to reshuffle\",
 						\"restrictionsToCheck\":[2,7,101],
 						\"subtypesInclude\":[\"Rune\"]
 					}
@@ -29,6 +31,7 @@
 				"{
 					\"cardRestriction\":
 					{
+						\"Blurb\":\"Rune for Runechanneler to cast\",
 						\"restrictionsToCheck\":[2,7,100,214,601],
 						\"subtypesInclude\":[\"Rune\"]
 					}
@@ -36,6 +39,7 @@
 				"{
 					\"spaceRestriction\":
 					{
+						\"Blurb\":\"where for Runechanneler to cast its target Rune\",
 						\"restrictionsToCheck\":[0]
 					}
 				}",

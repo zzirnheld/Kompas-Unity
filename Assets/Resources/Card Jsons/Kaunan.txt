@@ -14,10 +14,11 @@
 			"subeffectTypes":[0,100],
 			"subeffects":[
 				"{
-						\"boardRestriction\":
-						{
-							\"restrictionsToCheck\":[3,10,103]
-						}
+					\"boardRestriction\":
+					{
+						\"Blurb\":\"for Kaunan to give -3EW\",
+						\"restrictionsToCheck\":[3,10,103]
+					}
 				}",
 				"{
 					\"eChange\":-3,

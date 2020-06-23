@@ -18,4 +18,6 @@ public class SerializableEffect
     public string trigger;
 
     public ActivationRestriction activationRestriction;
+
+    public string blurb;
 }

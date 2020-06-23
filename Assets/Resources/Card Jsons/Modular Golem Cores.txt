@@ -6,7 +6,8 @@
 		{
 			"activationRestriction":{
 				"Restrictions":[
-					"Max Times Per Turn"
+					"Max Times Per Turn",
+					"In Play"
 				]
 			},
 			"subeffectTypes":[0,301,1,304],
@@ -14,6 +15,7 @@
 				"{
 					\"boardRestriction\":
 					{
+						\"Blurb\":\"Golem Core for Modular Golem Cores to detach\",
 						\"restrictionsToCheck\":[2,5],
 						\"subtypesInclude\":[\"Golem\", \"Core\"]
 					}
@@ -22,6 +24,7 @@
 				"{
 					\"cardRestriction\":
 					{
+						\"Blurb\":\"Golem core for Modular Golem Cores to search\",
 						\"restrictionsToCheck\":[2,5],
 						\"subtypesInclude\":[\"Golem\", \"Core\"]
 					}

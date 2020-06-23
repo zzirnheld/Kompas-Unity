@@ -12,6 +12,7 @@ public class ActivationRestriction
     public const string TimesPerRound = "Max Times Per Round";
     public const string FriendlyTurn = "Friendly Turn";
     public const string EnemyTurn = "Enemy Turn";
+    public const string InPlay = "In Play";
 
     public int MaxTimes = 1;
 
@@ -40,6 +41,9 @@ public class ActivationRestriction
                     break;
                 case EnemyTurn:
                     if (Effect.Game.TurnPlayer != activator) return false;
+                    break;
+                case InPlay:
+                    if (Effect.Source.Location != CardLocation.Field) return false;
                     break;
                 default:
                     Debug.LogError($"You forgot to check for {r} in Activation Restriction switch");

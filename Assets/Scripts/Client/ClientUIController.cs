@@ -6,25 +6,33 @@ using UnityEngine.UI;
 
 public class ClientUIController : UIController
 {
+    public const string FriendlyTurn = "Friendly Turn";
+    public const string EnemyTurn = "Enemy Turn";
+
     public ClientGame clientGame;
-    //debug UI
-    public GameObject debugParent;
-    public InputField debugNInputField;
-    public InputField debugEInputField;
-    public InputField debugSInputField;
-    public InputField debugWInputField;
+    //debug UI 
     public InputField debugPipsField;
-    //deck importing
-    public InputField deckInputField;
-    public Button importDeckButton;
-    public Button confirmDeckImportButton;
+
+    //gamestate values
+    public TMPro.TMP_Text CurrTurnText;
+    public GameObject EndTurnButton;
+    public TMPro.TMP_Text LeyloadText;
+    public int Leyload
+    {
+        set => LeyloadText.text = $"{value} Pips Leyload";
+    }
+
+    //current state
+    public GameObject CurrStateOverallObj;
+    public TMPro.TMP_Text CurrStateText;
+    public TMPro.TMP_Text CurrStateBonusText;
+    public GameObject CurrStateBonusObj;
+
     //card search
     public GameObject cardSearchView;
     public Image cardSearchImage;
-    public Button deckSearchButton;
-    public Button discardSearchButton;
+    public GameObject alreadySelectedText;
     public Button searchTargetButton;
-    public Button cancelSearchButton;
     //effects
     public InputField xInput;
     public GameObject setXView;
@@ -48,11 +56,46 @@ public class ClientUIController : UIController
     public DeckSelectUIController DeckSelectCtrl;
     public GameObject DeckSelectUIParent;
     public GameObject ConnectToServerParent;
+    public GameObject DeckSelectorParent;
+    public GameObject DeckAcceptedParent;
+    public GameObject ConnectedWaitingParent;
     
     private void Awake()
     {
-        deckInputField.lineType = InputField.LineType.MultiLineNewline;
         toSearch = new List<Card>();
+    }
+
+    private bool ShowEffect(Effect eff)
+    {
+        return eff.Trigger == null &&
+                    eff.Source.Controller == clientGame.Players[0] && //TODO make this instead be part of activation restriction
+                    eff.ActivationRestriction.Evaluate(clientGame.Players[0]);
+    }
+
+    public override void ShowInfoFor(Card card, bool refresh = false)
+    {
+        base.ShowInfoFor(card);
+
+        if (card?.Effects != null && card.Effects.Where(eff => ShowEffect(eff)).Any())
+        {
+            var children = new List<GameObject>();
+            foreach (Transform child in UseEffectGridParent.transform) children.Add(child.gameObject);
+            foreach (var child in children) Destroy(child);
+
+            foreach (var eff in card.Effects)
+            {
+                if (!ShowEffect(eff)) continue;
+
+                var obj = Instantiate(useEffectButtonPrefab, UseEffectGridParent.transform);
+                var btn = obj.GetComponent<ClientUseEffectButtonController>();
+                btn.Initialize(eff, this);
+            }
+
+            UseEffectParent.SetActive(true);
+            selectedUIParent.SetActive(false);
+            selectedUIParent.SetActive(true);
+        }
+        else UseEffectParent.SetActive(false);
     }
 
     public override void SelectCard(Card card, Game.TargetMode targetMode, bool fromClick)
@@ -61,12 +104,42 @@ public class ClientUIController : UIController
         if (fromClick && card != null) clientGame.TargetCard(card);
     }
 
+    public void ReselectSelectedCard(bool fromClick)
+    {
+        SelectCard(SelectedCard, fromClick);
+    }
+
+    #region connection/game start
     public void Connect()
     {
         string ip = ipInputField.text;
         if (string.IsNullOrEmpty(ip)) ip = "127.0.0.1";
-        clientGame.clientNetworkCtrl.Connect(ip);
-        HideNetworkingUI();
+        try
+        {
+            HideConnectUI();
+            clientGame.clientNetworkCtrl.Connect(ip);
+            ShowConnectedWaitingUI();
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Failed to connect, stack trace: {e.StackTrace}");
+            ShowConnectUI();
+        }
+    }
+
+    public void HideConnectUI()
+    {
+        networkingParent.SetActive(false);
+    }
+
+    public void ShowConnectedWaitingUI()
+    {
+        ConnectedWaitingParent.SetActive(true);
+    }
+
+    public void ShowConnectUI()
+    {
+        networkingParent.SetActive(true);
     }
 
     public void ShowGetDecklistUI()
@@ -75,23 +148,36 @@ public class ClientUIController : UIController
         DeckSelectUIParent.SetActive(true);
     }
 
-    //TODO: something for if the decklist is rejected
+    public void ShowDeckAcceptedUI()
+    {
+        DeckSelectorParent.SetActive(false);
+        DeckAcceptedParent.SetActive(true);
+    }
 
     public void HideGetDecklistUI()
     {
         DeckSelectUIParent.SetActive(false);
     }
+    #endregion connection/game start
+
+    public void ChangeTurn(int index)
+    {
+        CurrTurnText.text = index == 0 ? FriendlyTurn : EnemyTurn;
+        EndTurnButton.SetActive(index == 0);
+    }
+
+    public void SetCurrState(string primaryState, string secondaryState = "")
+    {
+        CurrStateOverallObj.SetActive(true);
+        CurrStateText.text = primaryState;
+        CurrStateBonusText.text = secondaryState;
+        CurrStateBonusObj.SetActive(secondaryState == "");
+    }
 
     #region effects
     public void ActivateSelectedCardEff(int index)
     {
-        clientGame.clientNotifier.RequestResolveEffect(SelectedCard, index);
-    }
-
-    public void ActivatedSelectedCardFirstActivatedEff()
-    {
-        int? index = SelectedCard.Effects.FirstOrDefault(e => e.Trigger == null)?.EffectIndex;
-        if (index.HasValue) ActivateSelectedCardEff(index.Value);
+        clientGame.clientNotifier.RequestResolveEffect(shownCard, index);
     }
 
     public void ToggleHoldingPriority()
@@ -163,24 +249,6 @@ public class ClientUIController : UIController
     }
     #endregion effects
 
-    #region import deck
-    public void ImportDeckPressed()
-    {
-        deckInputField.gameObject.SetActive(true);
-        importDeckButton.gameObject.SetActive(false);
-        confirmDeckImportButton.gameObject.SetActive(true);
-    }
-
-    public void ConfirmDeckImport()
-    {
-        string decklist = deckInputField.text;
-        deckInputField.gameObject.SetActive(false);
-        confirmDeckImportButton.gameObject.SetActive(false);
-        importDeckButton.gameObject.SetActive(true);
-        clientGame.clientNotifier.RequestDecklistImport(decklist);
-    }
-    #endregion import deck
-
     #region search
     public void StartSearch(List<Card> list, ListRestriction listRestriction = null, int numToChoose = 1)
     {
@@ -192,7 +260,7 @@ public class ClientUIController : UIController
         Debug.Log($"Searching a list of {list.Count} cards: {string.Join(",", list.Select(c => c.CardName))}");
 
         toSearch = list;
-        numToSearch = numToChoose;
+        numToSearch = list.Count < numToChoose ? list.Count : numToChoose;
         searchListRestriction = listRestriction;
         numSearched = 0;
         searched = new List<Card>();
@@ -202,12 +270,8 @@ public class ClientUIController : UIController
         cardSearchImage.sprite = toSearch[searchIndex].detailedSprite;
         cardSearchView.SetActive(true);
         //set buttons to their correct states
-        discardSearchButton.gameObject.SetActive(false);
-        deckSearchButton.gameObject.SetActive(false);
         searchTargetButton.gameObject.SetActive(true);
-        cancelSearchButton.gameObject.SetActive(true);
     }
-
 
     public void SearchSelectedCard()
     {
@@ -221,10 +285,11 @@ public class ClientUIController : UIController
             clientGame.clientNotifier.RequestTarget(searchSelected);
             ResetSearch();
         }
-        else
+        else if(!searched.Contains(searchSelected))
         {
-            if (searched.Contains(searchSelected)) return;
             searched.Add(searchSelected);
+
+            alreadySelectedText.SetActive(true);
 
             //TODO a better way to evaluate the list restriction. a partial list might not fit the list restriction, but
             //adding something to that list might make it fit.
@@ -246,6 +311,13 @@ public class ClientUIController : UIController
                 //and reset searching
                 ResetSearch();
             }
+        }
+        else
+        {
+            //deselect
+            searched.Remove(searchSelected);
+            numSearched--;
+            alreadySelectedText.SetActive(false);
         }
     }
 
@@ -273,14 +345,9 @@ public class ClientUIController : UIController
 
         cardSearchView.SetActive(false);
         //set buttons to their correct states
-        discardSearchButton.gameObject.SetActive(true);
-        deckSearchButton.gameObject.SetActive(true);
         searchTargetButton.gameObject.SetActive(false);
-        cancelSearchButton.gameObject.SetActive(false);
     }
-
-
-    //TODO rework this to take into get deck from server before searching?
+    
     public void StartDeckSearch()
     {
         StartSearch(clientGame.friendlyDeckCtrl.Deck);
@@ -297,6 +364,7 @@ public class ClientUIController : UIController
         searchIndex %= toSearch.Count;
 
         cardSearchImage.sprite = toSearch[searchIndex].detailedSprite;
+        alreadySelectedText.SetActive(searched.Contains(toSearch[searchIndex]));
     }
 
     public void PrevCardSearch()
@@ -305,6 +373,7 @@ public class ClientUIController : UIController
         if (searchIndex < 0) searchIndex += toSearch.Count;
 
         cardSearchImage.sprite = toSearch[searchIndex].detailedSprite;
+        alreadySelectedText.SetActive(searched.Contains(toSearch[searchIndex]));
     }
     #endregion
 
@@ -328,12 +397,6 @@ public class ClientUIController : UIController
         int eToUpdate = charCard.E;
         int sToUpdate = charCard.S;
         int wToUpdate = charCard.W;
-
-        //if any of the input fields have a value, update the values you want to update 
-        if (debugNInputField.text != "") nToUpdate = int.Parse(debugNInputField.text);
-        if (debugEInputField.text != "") eToUpdate = int.Parse(debugEInputField.text);
-        if (debugSInputField.text != "") sToUpdate = int.Parse(debugSInputField.text);
-        if (debugWInputField.text != "") wToUpdate = int.Parse(debugWInputField.text);
 
         ClientGame.mainClientGame.clientNotifier.RequestSetNESW(charCard, nToUpdate, eToUpdate, sToUpdate, wToUpdate);
     }

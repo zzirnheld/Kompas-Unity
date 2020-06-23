@@ -20,6 +20,7 @@
 				"{
 					\"CardRestriction\":
 					{
+						\"Blurb\":\"spell for Perthro to search (to hand)\",
 						\"restrictionsToCheck\":[4,7,102,501],
 						\"constant\":10
 					},

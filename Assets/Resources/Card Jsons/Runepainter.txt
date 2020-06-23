@@ -7,7 +7,8 @@
 			"activationRestriction":{
 				"Restrictions":[
 					"Max Times Per Turn",
-					"Friendly Turn"
+					"Friendly Turn",
+					"In Play"
 				]
 			},
 			"subeffectTypes":[3,4,150,300,404,1,405,12,304,350],
@@ -15,6 +16,7 @@
 				"{
 					\"cardRestriction\":
 					{
+						\"Blurb\":\"Rune for Runepainter to cast\",
 						\"restrictionsToCheck\":[2,4,7,100,601,602],
 						\"subtypesInclude\":[\"Rune\"]
 					}
@@ -22,6 +24,7 @@
 				"{
 					\"spaceRestriction\":
 					{
+						\"Blurb\":\"where for Runepainter to cast its target Rune\",
 						\"restrictionsToCheck\":[0]
 					}
 				}",
@@ -33,6 +36,7 @@
 				"{
 					\"cardRestriction\":
 					{
+						\"Blurb\":\"Rune for Runepainter to search (to hand)\",
 						\"restrictionsToCheck\":[2,7,12,102,551],
 						\"subtypesInclude\":[\"Rune\"]
 					}

@@ -21,6 +21,16 @@ public class ServerGame : Game {
     public int cardCount = 0;
     private int currPlayerCount = 0; //current number of players. shouldn't exceed 2
 
+    public override int Leyload
+    {
+        get => base.Leyload;
+        set
+        {
+            base.Leyload = value;
+            ServerPlayers[0].ServerNotifier.NotifySetLeyload(Leyload);
+        }
+    }
+
     public void Init(UIController uiCtrl, CardRepository cardRepo)
     {
         this.uiCtrl = uiCtrl;
@@ -94,6 +104,7 @@ public class ServerGame : Game {
             GetDeckFrom(player);
             return;
         }
+        else player.ServerNotifier.DeckAccepted();
 
         AvatarCard avatar;
         lock (AddCardsLock)
@@ -153,6 +164,12 @@ public class ServerGame : Game {
         ServerPlayers[1 - TurnPlayerIndex].ServerNotifier.YoureSecond();
         ServerPlayers[0].ServerNotifier.NotifySetPips(ServerPlayers[0].pips);
         ServerPlayers[1].ServerNotifier.NotifySetPips(ServerPlayers[1].pips);
+
+        foreach(var player in ServerPlayers)
+        {
+            DrawX(player.index, 5);
+        }
+        GiveTurnPlayerPips();
     }
     #endregion
 
@@ -225,13 +242,14 @@ public class ServerGame : Game {
 
     public override void Bottomdeck(Card card) => Bottomdeck(card, null);
 
-    public void Play(Card card, int toX, int toY, Player controller, IServerStackable stackSrc)
+    public void Play(Card card, int toX, int toY, Player controller, IServerStackable stackSrc, bool payCost = false)
     {
         EffectsController.Trigger(TriggerCondition.Play, 
             cardTriggerer: card, stackTrigger: stackSrc, triggerer: stackSrc?.ServerController, space: (toX, toY));
         //note that it's serverPlayers[controller.index] because you can play to the field of someone whose card it isnt
         ServerPlayers[controller.index].ServerNotifier.NotifyPlay(card, toX, toY);
-        base.Play(card, toX, toY, controller);
+        base.Play(card, toX, toY, controller, payCost);
+        ServerPlayers[controller.index].ServerNotifier.NotifySetPips(controller.pips);
 
         //if we just played an augment, note that, and trigger augment
         if (card.CardType == 'A') 
@@ -242,7 +260,7 @@ public class ServerGame : Game {
         if (stackSrc == null) EffectsController.CheckForResponse();
     }
 
-    public override void Play(Card card, int toX, int toY, Player controller) => Play(card, toX, toY, controller, null);
+    public override void Play(Card card, int toX, int toY, Player controller, bool payCost = false) => Play(card, toX, toY, controller, null, payCost);
 
     public void MoveOnBoard(Card card, int toX, int toY, bool normalMove, IServerStackable stackSrc)
     {
@@ -268,9 +286,11 @@ public class ServerGame : Game {
         base.SetStats(spellCard, c);
     }
 
-    public override void SetStats(CharacterCard charCard, int n, int e, int s, int w)
+    public void SetStats(CharacterCard charCard, int n, int e, int s, int w, IServerStackable stackSrc)
     {
         Debug.Log($"Setting stats of {charCard.CardName} to {n}/{e}/{s}/{w}");
+        EffectsController.Trigger(TriggerCondition.NESWChange, 
+            cardTriggerer: charCard, stackTrigger: stackSrc, triggerer: stackSrc?.ServerController);
         ServerPlayers[charCard.ControllerIndex].ServerNotifier.NotifySetNESW(charCard, n, e, s, w);
         base.SetStats(charCard, n, e, s, w);
         if (charCard.E <= 0)
@@ -280,6 +300,9 @@ public class ServerGame : Game {
             //attacks or effects, will call check for response once it's done resolving.
         }
     }
+
+    public override void SetStats(CharacterCard charCard, int n, int e, int s, int w)
+        => SetStats(charCard, n, e, s, w, null);
 
     public void SetNegated(Card c, bool negated, IServerStackable stackSrc)
     {
@@ -346,7 +369,7 @@ public class ServerGame : Game {
 
     public void GiveTurnPlayerPips()
     {
-        int pipsToSet = TurnPlayer.pips + MaxCardsOnField;
+        int pipsToSet = TurnPlayer.pips + Leyload;
         GivePlayerPips(TurnServerPlayer, pipsToSet);
     }
 

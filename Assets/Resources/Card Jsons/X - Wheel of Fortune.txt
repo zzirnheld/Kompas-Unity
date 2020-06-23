@@ -18,12 +18,14 @@
 				"{
 					\"boardRestriction\":
 					{
+						\"Blurb\":\"character for Wheel of Fortune to swap N of (1/2)\",
 						\"restrictionsToCheck\":[103]
 					}
 				}",
 				"{
 					\"boardRestriction\":
 					{
+						\"Blurb\":\"character for Wheel of Fortune to swap N of (2/2)\",
 						\"restrictionsToCheck\":[103,600]
 					}
 				}",

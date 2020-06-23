@@ -1,13 +1,14 @@
 {
 	"cardType":67,
-	"cardName":"Swordguild Trainee",
+	"cardName":"Swordguild Tactician",
 	"effText":"Once each friendly turn, I can give an adjacent Warrior +5E or +5W.",
 	"effects":[
 		{
 			"activationRestriction":{
 				"Restrictions":[
 					"Max Times Per Turn",
-					"Friendly Turn"
+					"Friendly Turn",
+					"In Play"
 				]
 			},
 			"subeffectTypes":[0,406,100,407,100],
@@ -15,6 +16,7 @@
 				"{
 					\"boardRestriction\":
 					{
+						\"Blurb\":\"adjacent Warrior for Tactician to give +5E or +5W\",
 						\"restrictionsToCheck\":[2,3],
 						\"subtypesInclude\":[\"Warrior\"],
 						\"onBoardRestrictions\":[0]

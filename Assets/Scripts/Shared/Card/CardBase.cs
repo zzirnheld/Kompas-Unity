@@ -21,5 +21,8 @@ public abstract class CardBase : MonoBehaviour
         EffText = card.effText;
         SubtypeText = card.subtypeText;
         Subtypes = card.subtypes;
+
+        detailedSprite = Resources.Load<Sprite>("Detailed Sprites/" + CardName);
+        simpleSprite = Resources.Load<Sprite>("Simple Sprites/" + CardName);
     }
 }
