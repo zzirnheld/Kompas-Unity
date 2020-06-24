@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public abstract class DeckController : MonoBehaviour
+public class DeckController : MonoBehaviour
 {
     public const string BLANK_CARD_PATH = "Card Jsons/Blank Card";
 
@@ -17,12 +17,10 @@ public abstract class DeckController : MonoBehaviour
     //rng for shuffling
     private static readonly System.Random rng = new System.Random();
 
-    public abstract IEnumerable<GameCard> Deck { get; }
+    public List<GameCard> Deck { get; }
 
-    public abstract int IndexOf(GameCard card);
-    public int DeckSize => Deck.Count();
-    public abstract void InsertAt(GameCard card, int index);
-    public abstract void RemoveAt(int index);
+    public int IndexOf(GameCard card) => Deck.IndexOf(card);
+    public int DeckSize => Deck.Count;
 
     /// <summary>
     /// Gets the card at the designated index.
@@ -35,7 +33,7 @@ public abstract class DeckController : MonoBehaviour
     {
         if (index > Deck.Count()) return null;
         GameCard card = Deck.ElementAt(index);
-        if (remove) RemoveAt(index);
+        if (remove) Deck.RemoveAt(index);
         if (shuffle) Shuffle();
         return card;
     }
@@ -49,13 +47,13 @@ public abstract class DeckController : MonoBehaviour
     //adding and removing cards
     public void PushTopdeck(GameCard card)
     {
-        InsertAt(card, 0);
+        Deck.Insert(0, card);
         AddCard(card);
     }
 
     public void PushBottomdeck(GameCard card)
     {
-        Deck.Append(card);
+        Deck.Add(card);
         AddCard(card);
     }
 

@@ -71,7 +71,7 @@ public class TriggerRestriction
                     if (ThisCard.Location == CardLocation.Field) continue;
                     else return false;
                 case TriggerRestrictions.AugmentedCardTriggered:
-                    if (ThisCard is AugmentCard aug && aug.AugmentedCard == cardTriggerer) continue;
+                    if (ThisCard.AugmentedCard == cardTriggerer) continue;
                     else return false;
                 case TriggerRestrictions.ThisCardFitsRestriction:
                     if (cardRestriction.Evaluate(ThisCard)) continue;

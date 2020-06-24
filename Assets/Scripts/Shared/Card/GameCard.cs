@@ -24,7 +24,7 @@ public abstract class GameCard : CardBase {
     public int Negations { get; private set; } = 0;
     public virtual bool Negated {
         get => Negations > 0;
-        set {
+        private set {
             if (value) Negations++;
             else Negations--;
 
@@ -35,7 +35,7 @@ public abstract class GameCard : CardBase {
     public virtual bool Activated
     {
         get => Activations > 0;
-        set
+        private set
         {
             if (value) Activations++;
             else Activations--;
@@ -243,28 +243,31 @@ public abstract class GameCard : CardBase {
     #endregion augments
 
     #region statfuncs
-    public virtual void SetN(int n) => N = n;
-    public virtual void SetE(int e) => E = e;
-    public virtual void SetS(int s) => S = s;
-    public virtual void SetW(int w) => W = w;
-    public virtual void SetC(int c) => C = c;
-    public virtual void SetA(int a) => A = a;
+    public virtual void SetN(int n, IStackable stackSrc = null) => N = n;
+    public virtual void SetE(int e, IStackable stackSrc = null) => E = e;
+    public virtual void SetS(int s, IStackable stackSrc = null) => S = s;
+    public virtual void SetW(int w, IStackable stackSrc = null) => W = w;
+    public virtual void SetC(int c, IStackable stackSrc = null) => C = c;
+    public virtual void SetA(int a, IStackable stackSrc = null) => A = a;
 
-    public void SetCharStats(int n, int e, int s, int w)
+    public void SetCharStats(int n, int e, int s, int w, IStackable stackSrc = null)
     {
-        SetN(n);
-        SetE(e);
-        SetS(s);
-        SetW(w);
+        SetN(n, stackSrc);
+        SetE(e, stackSrc);
+        SetS(s, stackSrc);
+        SetW(w, stackSrc);
     }
 
-    public void AddToCharStats(int n, int e, int s, int w)
+    public void AddToCharStats(int n, int e, int s, int w, IStackable stackSrc = null)
     {
-        SetN(N + n);
-        SetE(E + e);
-        SetS(S + s);
-        SetW(W + w);
+        SetN(N + n, stackSrc);
+        SetE(E + e, stackSrc);
+        SetS(S + s, stackSrc);
+        SetW(W + w, stackSrc);
     }
+
+    public virtual void SetNegated(bool negated, IStackable stackSrc = null) => Negated = negated;
+    public virtual void SetActivated(bool activated, IStackable stackSrc = null) => Activated = activated;
     #endregion statfuncs
 
     #region moveCard
@@ -291,48 +294,48 @@ public abstract class GameCard : CardBase {
         }
     }
 
-    protected void Discard()
+    public virtual void Discard(IStackable stackSrc = null)
     {
         Remove();
         Controller.discardCtrl.AddToDiscard(this);
     }
 
-    protected void Rehand(Player controller)
+    public virtual void Rehand(Player controller, IStackable stackSrc = null)
     {
         Remove();
         controller.handCtrl.AddToHand(this);
     }
     public void Rehand() => Rehand(Controller);
 
-    protected void Reshuffle(Player controller)
+    public virtual void Reshuffle(Player controller, IStackable stackSrc = null)
     {
         Remove();
         controller.deckCtrl.ShuffleIn(this);
     }
     public void Reshuffle() => Reshuffle(Controller);
 
-    protected void Topdeck(Player controller)
+    public virtual void Topdeck(Player controller, IStackable stackSrc = null)
     {
         Remove();
         controller.deckCtrl.PushTopdeck(this);
     }
     public void Topdeck() => Topdeck(Controller);
 
-    protected void Bottomdeck(Player controller)
+    public virtual void Bottomdeck(Player controller, IStackable stackSrc = null)
     {
         Remove();
         controller.deckCtrl.PushBottomdeck(this);
     }
     public void Bottomdeck() => Bottomdeck(Controller);
 
-    protected void Play(int toX, int toY, Player controller, bool payCost = false)
+    public virtual void Play(int toX, int toY, Player controller, IStackable stackSrc = null, bool payCost = false)
     {
         Remove();
         Game.boardCtrl.Play(this, toX, toY, controller);
         if (payCost) controller.pips -= Cost;
     }
 
-    protected void Move(int toX, int toY, bool normalMove)
+    public virtual void Move(int toX, int toY, bool normalMove, IStackable stackSrc = null)
     {
         Game.boardCtrl.Move(this, toX, toY, normalMove);
     }

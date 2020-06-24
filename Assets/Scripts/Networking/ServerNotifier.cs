@@ -183,7 +183,7 @@ public class ServerNotifier : MonoBehaviour
         SendPackets(outPacket, outPacketInverted);
     }
 
-    public void NotifySetNESW(CharacterCard card, int n, int e, int s, int w)
+    public void NotifySetNESW(ServerGameCard card, int n, int e, int s, int w)
     {
         if (card == null) throw new System.ArgumentNullException($"Char must not be null to notify about setting stats");
         //let everyone know to set NESW
@@ -227,7 +227,7 @@ public class ServerNotifier : MonoBehaviour
         SendToBoth(p);
     }
 
-    public void NotifySetSpellStats(SpellCard spell, int c)
+    public void NotifySetSpellStats(ServerGameCard spell, int c)
     {
         if (spell == null) throw new System.ArgumentNullException($"Spell must not be null to notify about setting stats");
         Packet p = new Packet(Packet.Command.SetSpellStats, spell, c);

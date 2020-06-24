@@ -180,13 +180,14 @@ public class ServerGame : Game {
     public List<GameCard> DrawX(int player, int x, IServerStackable stackSrc = null)
     {
         List<GameCard> drawn = new List<GameCard>();
+        Player controller = Players[player]
         int i;
         for (i = 0; i < x; i++)
         {
-            ServerGameCard toDraw = Players[player].deckCtrl.PopTopdeck();
+            var toDraw = controller.deckCtrl.PopTopdeck();
             if (toDraw == null) break;
             EffectsController.Trigger(TriggerCondition.EachDraw, cardTriggerer: toDraw, stackTrigger: stackSrc, triggerer: ServerPlayers[player]);
-            toDraw.Rehand(stackSrc);
+            toDraw.Rehand(controller, stackSrc);
             drawn.Add(toDraw);
         }
         EffectsController.Trigger(TriggerCondition.DrawX, stackTrigger: stackSrc, triggerer: ServerPlayers[player], x: i);
