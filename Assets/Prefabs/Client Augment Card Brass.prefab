@@ -326,7 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13351909bd3483f4e98c4d1696cf3e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Card: {fileID: 8126270345339244768}
+  Card: {fileID: 4430921952392228149}
   ClientGame: {fileID: 0}
 --- !u!64 &7572760237318116094
 MeshCollider:
@@ -507,8 +507,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5088247394477957836}
-  - component: {fileID: 8126270345339244768}
   - component: {fileID: 8126270345339244764}
+  - component: {fileID: 4430921952392228149}
   m_Layer: 0
   m_Name: Client Augment Card Brass
   m_TagString: Untagged
@@ -536,22 +536,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8126270345339244768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8126270345339244767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0a52a84b597e4f4480c324b17702d69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detailedSprite: {fileID: 0}
-  simpleSprite: {fileID: 0}
-  game: {fileID: 0}
-  cardCtrl: {fileID: 8126270345339244764}
 --- !u!114 &8126270345339244764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -564,5 +548,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6075e39016768b143af40ac75b10bc93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 8126270345339244768}
+  card: {fileID: 4430921952392228149}
   cardFaceRenderer: {fileID: 9069893258225624362}
+--- !u!114 &4430921952392228149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8126270345339244767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5eaf700679447a438067b5b33bda12a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detailedSprite: {fileID: 0}
+  simpleSprite: {fileID: 0}
+  cardCtrl: {fileID: 8126270345339244764}

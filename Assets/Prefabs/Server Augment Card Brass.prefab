@@ -336,8 +336,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7147567881330204731}
-  - component: {fileID: 6154761281434505751}
   - component: {fileID: 6154761281434505771}
+  - component: {fileID: 2601417576869762746}
   m_Layer: 0
   m_Name: Server Augment Card Brass
   m_TagString: Untagged
@@ -365,22 +365,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6154761281434505751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6154761281434505768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0a52a84b597e4f4480c324b17702d69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detailedSprite: {fileID: 0}
-  simpleSprite: {fileID: 0}
-  game: {fileID: 0}
-  cardCtrl: {fileID: 6154761281434505771}
 --- !u!114 &6154761281434505771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,8 +377,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6075e39016768b143af40ac75b10bc93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 6154761281434505751}
+  card: {fileID: 2601417576869762746}
   cardFaceRenderer: {fileID: 6373418968072873949}
+--- !u!114 &2601417576869762746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6154761281434505768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bcb8e7268d0fa643be59da4e538ebf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detailedSprite: {fileID: 0}
+  simpleSprite: {fileID: 0}
+  cardCtrl: {fileID: 6154761281434505771}
 --- !u!1 &7703816480723791186
 GameObject:
   m_ObjectHideFlags: 0

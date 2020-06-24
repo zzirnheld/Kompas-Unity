@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ServerGameCard : GameCard
+public class ServerGameCard : GameCard
 {
     public ServerGame ServerGame { get; private set; }
     public override Game Game => ServerGame;
