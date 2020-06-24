@@ -22,17 +22,10 @@ public class ChangeXByTargetValueSubeffect : ServerSubeffect
         {
             switch (WhatToCount)
             {
-                case Cost:
-                    return Target.Cost;
-                case S:
-                    if (Target is CharacterCard charSTarget) return charSTarget.S;
-                    else throw new System.ArgumentException($"Asked for S of non-character target");
-                case W:
-                    if (Target is CharacterCard charWTarget) return charWTarget.W;
-                    else throw new System.ArgumentException($"Asked for W of non-character target");
-                case C:
-                    if (Target is SpellCard spellCTarget) return spellCTarget.C;
-                    else throw new System.ArgumentException($"Asked for C of non-spell target");
+                case Cost: return Target.Cost;
+                case S: return Target.S;
+                case W: return Target.W;
+                case C: return Target.C;
                 case DistanceToTarget:
                     return Source.DistanceTo(Target);
                 default:

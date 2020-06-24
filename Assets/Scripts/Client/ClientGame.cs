@@ -84,10 +84,10 @@ public class ClientGame : Game {
     {
         if (player >= 2) throw new System.ArgumentException();
 
-        Player owner = Players[player];
-        AvatarCard avatar = CardRepo.InstantiateClientAvatar(avatarName, this, owner, avatarID);
+        var owner = ClientPlayers[player];
+        var avatar = CardRepo.InstantiateClientAvatar(avatarName, this, owner, avatarID);
         owner.Avatar = avatar;
-        Play(avatar, player * 6, player * 6, owner);
+        avatar.Play(player * 6, player * 6, owner);
     }
 
     public void Delete(GameCard card)

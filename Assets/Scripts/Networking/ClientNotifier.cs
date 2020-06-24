@@ -18,7 +18,7 @@ public class ClientNotifier : MonoBehaviour
         Debug.Log($"Requesting {card.CardName} to be played to {toX} {toY}");
 
         Packet packet;
-        if (card is AugmentCard) packet = new Packet(Packet.Command.Augment, card, toX, toY);
+        if (card.CardType == 'A') packet = new Packet(Packet.Command.Augment, card, toX, toY);
         else packet = new Packet(Packet.Command.Play, card, toX, toY);
         Send(packet);
     }

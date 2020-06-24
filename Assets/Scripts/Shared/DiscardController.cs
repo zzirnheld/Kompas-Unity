@@ -29,7 +29,7 @@ public class DiscardController : MonoBehaviour {
         Debug.Assert(card != null);
         Debug.Log("Adding to discard: " + card.CardName);
         discard.Add(card);
-        card.SetLocation(CardLocation.Discard);
+        card.Location = CardLocation.Discard;
         card.transform.localPosition = new Vector3(0, 0, (float)discard.Count / -60f);
     }
 

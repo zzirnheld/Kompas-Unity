@@ -29,7 +29,7 @@ public class ServerPlayer : Player
     /// <param name="y"></param>
     public void TryAugment(GameCard aug, int x, int y)
     {
-        if (serverGame.ValidAugment(aug, x, y, this)) serverGame.Play(aug, x, y, this, true);
+        if (serverGame.ValidAugment(aug, x, y, this)) aug.Play(x, y, this, payCost: true);
         else ServerNotifier.NotifyPutBack();
 
         serverGame.EffectsController.CheckForResponse();
@@ -37,7 +37,7 @@ public class ServerPlayer : Player
 
     public void TryPlay(GameCard card, int x, int y)
     {
-        if (serverGame.ValidBoardPlay(card, x, y, this)) serverGame.Play(card, x, y, this, true);
+        if (serverGame.ValidBoardPlay(card, x, y, this)) card.Play(x, y, this, payCost: true);
         else ServerNotifier.NotifyPutBack();
 
         serverGame.EffectsController.CheckForResponse();
@@ -47,7 +47,7 @@ public class ServerPlayer : Player
     {
         Debug.Log($"Requested move {toMove?.CardName} to {x}, {y}");
         //if it's not a valid place to do, put the cards back
-        if (serverGame.ValidMove(toMove, x, y)) serverGame.MoveOnBoard(toMove, x, y, true);
+        if (serverGame.ValidMove(toMove, x, y)) toMove.Move(x, y, true);
         else ServerNotifier.NotifyPutBack();
 
         serverGame.EffectsController.CheckForResponse();

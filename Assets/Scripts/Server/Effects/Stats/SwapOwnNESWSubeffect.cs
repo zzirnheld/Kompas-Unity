@@ -12,15 +12,9 @@ public class SwapOwnNESWSubeffect : ServerSubeffect
 
     public override void Resolve()
     {
-        if(!(Target is CharacterCard charCard))
-        {
-            ServerEffect.EffectImpossible();
-            return;
-        }
-
-        int[] newStats = { charCard.N, charCard.E, charCard.S, charCard.W };
+        int[] newStats = { Target.N, Target.E, Target.S, Target.W };
         (newStats[Stat1], newStats[Stat2]) = (newStats[Stat2], newStats[Stat1]);
-        ServerGame.SetStats(charCard, newStats);
+        Target.SetCharStats(newStats[0], newStats[1], newStats[2], newStats[3]);
 
         ServerEffect.ResolveNextSubeffect();
     }

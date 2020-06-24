@@ -6,10 +6,11 @@ public class TargetAugmentedCardSubeffect : ServerSubeffect
 {
     public override void Resolve()
     {
-        if(ServerEffect.Source is AugmentCard aug)
+        if (ServerEffect.Source.AugmentedCard == null) ServerEffect.EffectImpossible();
+        else
         {
-            ServerEffect.Targets.Add(aug.AugmentedCard);
+            ServerEffect.Targets.Add(Source.AugmentedCard);
+            ServerEffect.ResolveNextSubeffect();
         }
-        ServerEffect.ResolveNextSubeffect();
     }
 }

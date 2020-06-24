@@ -261,7 +261,7 @@ public class CardRepository : MonoBehaviour
         }
     }
 
-    public GameCard InstantiateClientNonAvatar(string name, ClientGame clientGame, ClientPlayer owner, int id)
+    public ClientGameCard InstantiateClientNonAvatar(string name, ClientGame clientGame, ClientPlayer owner, int id)
     {
         string json = cardJsons[name] ?? throw new System.ArgumentException($"Name {name} not associated with json");
         ClientGameCard card = null;

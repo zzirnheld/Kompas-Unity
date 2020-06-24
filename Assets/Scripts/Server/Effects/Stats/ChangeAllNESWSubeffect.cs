@@ -30,7 +30,7 @@ public class ChangeAllNESWSubeffect : ServerSubeffect
         var targets = ServerGame.Cards.Where(c => BoardRestriction.Evaluate(c));
         foreach (GameCard c in targets)
         {
-            if (c is CharacterCard charCard) ServerGame.AddToStats(charCard, NMod, EMod, SMod, WMod);
+            c.AddToCharStats(NMod, EMod, SMod, WMod);
         }
 
         ServerEffect.ResolveNextSubeffect();

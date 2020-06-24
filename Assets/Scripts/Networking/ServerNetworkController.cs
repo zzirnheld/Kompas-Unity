@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using System.Net.Sockets;
 using UnityEngine;
@@ -27,16 +28,16 @@ namespace KompasNetworking
                     sGame.SetDeck(Player, packet.stringArg);
                     break;
                 case Packet.Command.Augment:
-                    Player.TryAugment(sGame.GetCardFromID(packet.cardID) as AugmentCard, packet.X, packet.Y);
+                    Player.TryAugment(sGame.GetCardWithID(packet.cardID), packet.X, packet.Y);
                     break;
                 case Packet.Command.Play:
-                    Player.TryPlay(sGame.GetCardFromID(packet.cardID), packet.X, packet.Y);
+                    Player.TryPlay(sGame.GetCardWithID(packet.cardID), packet.X, packet.Y);
                     break;
                 case Packet.Command.Move:
-                    Player.TryMove(sGame.GetCardFromID(packet.cardID), packet.X, packet.Y);
+                    Player.TryMove(sGame.GetCardWithID(packet.cardID), packet.X, packet.Y);
                     break;
                 case Packet.Command.Attack:
-                    var attacker = sGame.GetCardFromID(packet.cardID);
+                    var attacker = sGame.GetCardWithID(packet.cardID);
                     var defender = sGame.boardCtrl.GetCardAt(packet.X, packet.Y);
                     Player.TryAttack(attacker, defender);
                     break;
@@ -49,11 +50,11 @@ namespace KompasNetworking
                     var currSubeff = sGame.CurrEffect?.CurrSubeffect;
                     if (currSubeff is CardTargetSubeffect targetEff)
                     {
-                        targetEff.AddTargetIfLegal(sGame.GetCardFromID(packet.cardID));
+                        targetEff.AddTargetIfLegal(sGame.GetCardWithID(packet.cardID));
                     }
                     else if(currSubeff is ChooseFromListSubeffect chooseListSubeff)
                     {
-                        var choice = new List<GameCard>{ sGame.GetCardFromID(packet.cardID) };
+                        var choice = new List<GameCard>{ sGame.GetCardWithID(packet.cardID) };
                         chooseListSubeff.AddListIfLegal(choice);
                     }
                     break;
@@ -79,7 +80,7 @@ namespace KompasNetworking
                     List<GameCard> choices = new List<GameCard>();
                     foreach (int id in packet.specialArgs)
                     {
-                        GameCard c = sGame.GetCardFromID(id);
+                        GameCard c = sGame.GetCardWithID(id);
                         if (c == null) Debug.LogError($"Player tried to search card to list with invalid id {id}");
                         else choices.Add(c);
                     }
@@ -118,14 +119,15 @@ namespace KompasNetworking
                     break;
                 case Packet.Command.SetNESW:
                     if (!sGame.uiCtrl.DebugMode) break;
-                    DebugSetNESW(packet.cardID, packet.N, packet.E, packet.S, packet.W);
+                    var (n, e, s, w) = packet.Stats;
+                    DebugSetNESW(packet.cardID, n, e, s, w);
                     break;
                 case Packet.Command.SetPips:
                     if (!sGame.uiCtrl.DebugMode) break;
                     DebugSetPips(packet.Pips);
                     break;
                 case Packet.Command.ActivateEffect:
-                    var eff = sGame.GetCardFromID(packet.cardID)?.Effects[packet.EffIndex] as ServerEffect;
+                    var eff = sGame.GetCardWithID(packet.cardID)?.Effects.ElementAt(packet.EffIndex) as ServerEffect;
                     Player.TryActivateEffect(eff);
                     break;
                 #endregion
@@ -151,8 +153,7 @@ namespace KompasNetworking
                 return;
             }
             Debug.LogWarning($"Debug topdecking card with id {cardID}");
-            GameCard toTopdeck = sGame.GetCardFromID(cardID);
-            sGame.Topdeck(toTopdeck);
+            sGame.GetCardWithID(cardID).Topdeck();
         }
 
         public void DebugDiscard(int cardID)
@@ -164,8 +165,7 @@ namespace KompasNetworking
                 return;
             }
             Debug.LogWarning($"Debug discarding card with id {cardID}");
-            GameCard toDiscard = sGame.GetCardFromID(cardID);
-            sGame.Discard(toDiscard);
+            sGame.GetCardWithID(cardID).Discard();
         }
 
         public void DebugRehand(int cardID)
@@ -177,8 +177,7 @@ namespace KompasNetworking
                 return;
             }
             Debug.LogWarning($"Debug rehanding card with id {cardID}");
-            GameCard toRehand = sGame.GetCardFromID(cardID);
-            sGame.Rehand(toRehand);
+            sGame.GetCardWithID(cardID).Rehand();
         }
 
         public void DebugDraw()
@@ -211,16 +210,8 @@ namespace KompasNetworking
 
         public void DebugSetNESW(int cardID, int n, int e, int s, int w)
         {
-            if (!sGame.uiCtrl.DebugMode)
-            {
-                Debug.LogError($"Tried to debug set card with id {cardID} NESW while NOT in debug mode!");
-                ServerNotifier.NotifyPutBack();
-                return;
-            }
             Debug.LogWarning($"Debug setting NESW of card with id {cardID}");
-            GameCard toSet = sGame.GetCardFromID(cardID);
-            if (!(toSet is CharacterCard charToSet)) return;
-            sGame.SetStats(charToSet, n, e, s, w);
+            sGame.GetCardWithID(cardID).SetCharStats(n, e, s, w);
         }
         #endregion Debug Actions
     }

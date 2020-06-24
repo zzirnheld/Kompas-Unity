@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// Effects will only be resolved on server. Clients will just get to know what effects they can use
 /// </summary>
-public abstract class Effect
+public abstract class Effect : IStackable
 {
     public Game Game => Source.Game;
 

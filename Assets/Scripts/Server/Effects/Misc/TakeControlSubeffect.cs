@@ -11,7 +11,7 @@ public class TakeControlSubeffect : ServerSubeffect
 
     public override void Resolve()
     {
-        ServerGame.ChangeControl(Target, NewController);
+        Target.Controller = NewController;
         ServerEffect.ResolveNextSubeffect();
     }
 }

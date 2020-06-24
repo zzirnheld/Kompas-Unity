@@ -40,11 +40,11 @@ public class ServerAttack : Attack, IServerStackable
     private void DealDamage()
     {
         //get damage from both, before either takes any damage, in case effects matter on hp
-        int attackerDmg = attacker.W;
-        int defenderDmg = defender.W;
+        int attackerDmg = attacker.CombatDamage;
+        int defenderDmg = defender.CombatDamage;
         //deal the damage
-        defender.E -= attackerDmg;
-        attacker.E -= defenderDmg;
+        defender.SetE(defender.E - attackerDmg);
+        attacker.SetE(attacker.E - defenderDmg);
         //trigger effects based on combat damage
         EffCtrl.Trigger(TriggerCondition.TakeCombatDamage, cardTriggerer: defender, stackTrigger: this, triggerer: ServerController, x: attackerDmg);
         EffCtrl.Trigger(TriggerCondition.TakeCombatDamage, cardTriggerer: attacker, stackTrigger: this, triggerer: ServerController, x: defenderDmg);

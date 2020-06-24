@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Net;
 using System.Collections;
 using System.Collections.Generic;
@@ -42,7 +43,7 @@ public class ClientNetworkController : NetworkController {
             return;
         }
         Debug.Log($"Parsing command {packet.command} for {packet.cardID}");
-        var card = ClientGame.GetCardFromID(packet.cardID);
+        var card = ClientGame.GetCardWithID(packet.cardID);
 
         switch (packet.command)
         {
@@ -71,22 +72,21 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.Delete(card);
                 break;
             case Packet.Command.AddAsFriendly:
-                GameCard friendlyCard = ClientGame.CardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, Friendly, packet.CardIDToBe);
+                var friendlyCard = ClientGame.CardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, Friendly, packet.CardIDToBe);
                 ClientGame.cardsByID.Add(packet.CardIDToBe, friendlyCard);
-                ClientGame.friendlyDeckCtrl.AddCard(friendlyCard);
+                ClientGame.friendlyDeckCtrl.PushTopdeck(friendlyCard);
                 break;
             case Packet.Command.AddAsEnemy:
-                GameCard added = ClientGame.CardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, Enemy, packet.CardIDToBe);
+                var added = ClientGame.CardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, Enemy, packet.CardIDToBe);
                 ClientGame.cardsByID.Add(packet.CardIDToBe, added);
-                ClientGame.enemyDeckCtrl.AddCard(added);
                 //TODO make it always ask for cards from enemy deck
                 switch (packet.Location)
                 {
                     case CardLocation.Field:
-                        ClientGame.Play(added, packet.X, packet.Y, added.Owner);
+                        added.Play(packet.X, packet.Y, added.Owner);
                         break;
                     case CardLocation.Discard:
-                        ClientGame.Discard(added);
+                        added.Discard();
                         break;
                     default:
                         Debug.Log("Tried to add an enemy card to " + packet.Location);
@@ -101,7 +101,7 @@ public class ClientNetworkController : NetworkController {
                 break;
             case Packet.Command.DecrementEnemyDeck:
                 //TODO make sure for both this and decrement hand that you're not deleting a revealedcard
-                if(ClientGame.enemyDeckCtrl.DeckSize() > 0)
+                if(ClientGame.enemyDeckCtrl.DeckSize > 0)
                 {
                     ClientGame.enemyDeckCtrl.PopBottomdeck();
                 }
@@ -115,28 +115,27 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.Augment: //the play method calls augment if the card is an augment
             case Packet.Command.Play:
                 Debug.Log("Client ordered to play to " + packet.X + ", " + packet.Y);
-                GameCard toPlay = card;
-                ClientGame.Play(toPlay, packet.X, packet.Y, toPlay.Owner);
+                card.Play(packet.X, packet.Y, card.Owner);
                 break;
             case Packet.Command.Move:
-                ClientGame.MoveOnBoard(card, packet.X, packet.Y, packet.Answer);
+                card.Move(packet.X, packet.Y, packet.Answer);
                 //make the ui show the updated n (and other values)
                 ClientGame.uiCtrl.SelectCard(ClientGame.uiCtrl.SelectedCard, false);
                 break;
             case Packet.Command.Topdeck:
-                ClientGame.Topdeck(card);
+                card.Topdeck();
                 break;
             case Packet.Command.Discard:
-                ClientGame.Discard(card);
+                card.Discard();
                 break;
             case Packet.Command.Rehand:
-                ClientGame.Rehand(card);
+                card.Rehand();
                 break;
             case Packet.Command.Reshuffle:
-                ClientGame.Reshuffle(card);
+                card.Reshuffle();
                 break;
             case Packet.Command.Bottomdeck:
-                ClientGame.Bottomdeck(card);
+                card.Bottomdeck();
                 break;
             case Packet.Command.SetN:
                 card.SetN(packet.Stat);
@@ -157,17 +156,13 @@ public class ClientNetworkController : NetworkController {
                 card.SetA(packet.Stat);
                 break;
             case Packet.Command.Negate:
-                GameCard toNegate = card;
-                ClientGame.SetNegated(toNegate, packet.Answer);
+                card.SetNegated(packet.Answer);
                 break;
             case Packet.Command.Activate:
-                var toActivate = card;
-                ClientGame.SetActivated(toActivate, packet.Answer);
+                card.SetActivated(packet.Answer);
                 break;
             case Packet.Command.ChangeControl:
-                var toChangeCtrl = card;
-                var player = ClientGame.Players[packet.ControllerIndex];
-                ClientGame.ChangeControl(toChangeCtrl, player);
+                card.Controller = ClientGame.Players[packet.ControllerIndex];
                 break;
             case Packet.Command.SetPips:
                 ClientGame.SetFriendlyPips(packet.Pips);
@@ -212,7 +207,7 @@ public class ClientNetworkController : NetworkController {
                 List<GameCard> choicesToPick = new List<GameCard>();
                 foreach(int id in cardIDs)
                 {
-                    GameCard c = ClientGame.GetCardFromID(id);
+                    GameCard c = ClientGame.GetCardWithID(id);
                     if (c == null) Debug.LogError($"Tried to start a list search including card with invalid id {id}");
                     else choicesToPick.Add(c);
                 }
@@ -223,7 +218,7 @@ public class ClientNetworkController : NetworkController {
                 break;
             case Packet.Command.ChooseEffectOption:
                 //TODO catch out of bounds errors, in case of malicious packets?
-                var subeff = card.Effects[packet.normalArgs[0]].Subeffects[packet.normalArgs[1]]
+                var subeff = card.Effects.ElementAt(packet.normalArgs[0]).Subeffects[packet.normalArgs[1]]
                     as DummyChooseOptionSubeffect;
                 if(subeff == null)
                 {
@@ -240,7 +235,7 @@ public class ClientNetworkController : NetworkController {
                 break;
             case Packet.Command.SetEffectsX:
                 Debug.Log("Setting X to " + packet.X);
-                card.Effects[packet.EffIndex].X = packet.EffectX;
+                card.Effects.ElementAt(packet.EffectX).X = packet.EffectX;
                 X = packet.EffectX;
                 break;
             case Packet.Command.PlayerSetX:
@@ -262,14 +257,13 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.boardCtrl.DiscardSimples();
                 break;
             case Packet.Command.EffectResolving:
-                var eff = card.Effects[packet.EffIndex];
-                eff.Controller = ClientGame.Players[packet.normalArgs[1]];
+                card.Effects.ElementAt(packet.EffIndex).Controller = ClientGame.Players[packet.normalArgs[1]];
                 break;
             case Packet.Command.EffectImpossible:
                 ClientGame.clientUICtrl.SetCurrState("Effect Impossible");
                 break;
             case Packet.Command.OptionalTrigger:
-                ClientTrigger t = card.Effects[packet.EffIndex].Trigger as ClientTrigger;
+                ClientTrigger t = card.Effects.ElementAt(packet.EffIndex).Trigger as ClientTrigger;
                 t.ClientEffect.ClientController = Friendly;
                 ClientGame.clientUICtrl.ShowOptionalTrigger(t, packet.EffectX);
                 break;

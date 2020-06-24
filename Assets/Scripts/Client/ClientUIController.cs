@@ -388,19 +388,6 @@ public class ClientUIController : UIController
     #endregion flow control
 
     #region debug
-    public void DebugUpdateStats()
-    {
-        if (!(SelectedCard is CharacterCard charCard)) return;
-
-        //get current ones, in case the input fields are empty
-        int nToUpdate = charCard.N;
-        int eToUpdate = charCard.E;
-        int sToUpdate = charCard.S;
-        int wToUpdate = charCard.W;
-
-        ClientGame.mainClientGame.clientNotifier.RequestSetNESW(charCard, nToUpdate, eToUpdate, sToUpdate, wToUpdate);
-    }
-
     public void DebugUpdatePips()
     {
         if (debugPipsField.text != "")

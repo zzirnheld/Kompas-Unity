@@ -24,7 +24,7 @@ public class BottomdeckRestSubeffect : ServerSubeffect
     {
         //TODO better shuffling algorithm
         var list = Shuffle(Effect.Rest);
-        foreach (GameCard c in list) ServerGame.Bottomdeck(c, ServerEffect);
+        foreach (GameCard c in list) c.Bottomdeck(c.Owner, Effect);
 
         ServerEffect.ResolveNextSubeffect();
     }

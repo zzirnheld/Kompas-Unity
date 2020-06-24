@@ -173,7 +173,7 @@ public abstract class ServerGameCard : GameCard
     public override void Move(int toX, int toY, bool normalMove, IStackable stackSrc = null)
     {
         EffectsController.Trigger(TriggerCondition.Move,
-            cardTriggerer: this, stackTrigger: stackSrc, triggerer: controller, space: (toX, toY));
+            cardTriggerer: this, stackTrigger: stackSrc, triggerer: Controller, space: (toX, toY));
         ServerNotifier.NotifyMove(this, toX, toY, normalMove);
         base.Move(toX, toY, normalMove, stackSrc);
     }

@@ -6,13 +6,7 @@ public class SetXTargetSSubeffect : ServerSubeffect
 {
     public override void Resolve()
     {
-        if (!(Target is CharacterCard charTarget))
-        {
-            ServerEffect.EffectImpossible();
-            return;
-        }
-
-        ServerEffect.X = charTarget.S;
+        ServerEffect.X = Target.S;
         EffectController.ServerNotifier.NotifyEffectX(ThisCard, ServerEffect.EffectIndex, ServerEffect.X);
         ServerEffect.ResolveNextSubeffect();
     }

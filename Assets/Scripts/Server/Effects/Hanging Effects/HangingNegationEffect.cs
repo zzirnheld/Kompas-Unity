@@ -13,11 +13,11 @@ public class HangingNegationEffect : HangingEffect
     {
         this.target = target ?? throw new System.ArgumentNullException("Cannot target a null card for a hanging negation");
         this.source = source ?? throw new System.ArgumentNullException("Cannot have a null source subeffect for hanging negatione effect");
-        serverGame.SetNegated(target, true, source.ServerEffect);
+        target.SetNegated(true, source.ServerEffect);
     }
 
     protected override void Resolve()
     {
-        serverGame.SetNegated(target, false, source.ServerEffect);
+        target.SetNegated(false, source.ServerEffect);
     }
 }

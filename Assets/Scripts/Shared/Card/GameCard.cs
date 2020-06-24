@@ -341,18 +341,24 @@ public abstract class GameCard : CardBase {
         Game.boardCtrl.Move(this, toX, toY, normalMove);
     }
 
-    public void SwapCharStats(GameCard a, GameCard b, bool swapN = true, bool swapE = true, bool swapS = true, bool swapW = true)
+    public void SwapCharStats(GameCard other, bool swapN = true, bool swapE = true, bool swapS = true, bool swapW = true)
     {
         int[] aNewStats = new int[4];
         int[] bNewStats = new int[4];
 
-        (aNewStats[0], bNewStats[0]) = swapN ? (b.N, a.N) : (a.N, b.N);
-        (aNewStats[1], bNewStats[1]) = swapE ? (b.E, a.E) : (a.E, b.E);
-        (aNewStats[2], bNewStats[2]) = swapS ? (b.S, a.S) : (a.S, b.S);
-        (aNewStats[3], bNewStats[3]) = swapW ? (b.W, a.W) : (a.W, b.W);
+        (aNewStats[0], bNewStats[0]) = swapN ? (other.N, N) : (N, other.N);
+        (aNewStats[1], bNewStats[1]) = swapE ? (other.E, E) : (E, other.E);
+        (aNewStats[2], bNewStats[2]) = swapS ? (other.S, S) : (S, other.S);
+        (aNewStats[3], bNewStats[3]) = swapW ? (other.W, W) : (W, other.W);
 
-        a.SetCharStats(aNewStats[0], aNewStats[1], aNewStats[2], aNewStats[3]);
-        b.SetCharStats(bNewStats[0], bNewStats[1], bNewStats[2], bNewStats[3]);
+        SetCharStats(aNewStats[0], aNewStats[1], aNewStats[2], aNewStats[3]);
+        other.SetCharStats(bNewStats[0], bNewStats[1], bNewStats[2], bNewStats[3]);
+    }
+
+    public void Dispel(IStackable stackSrc = null)
+    {
+        SetNegated(true, stackSrc);
+        Discard(stackSrc);
     }
     #endregion moveCard
 }

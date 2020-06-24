@@ -42,7 +42,7 @@ public class BoardRestriction : CardRestriction
                     break;
                     //TODO also allow for summoned avatars, maybe with an overridden property Summoned?
                 case BoardRestrictions.Summoned:
-                    if (potentialTarget is AvatarCard) return false;
+                    if (!potentialTarget.Summoned) return false;
                     break;
             }
         }

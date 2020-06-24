@@ -32,7 +32,7 @@ public class TemporaryNESWBuffAllSubeffect : TemporarySubeffect
         foreach(var card in cards)
         {
             var temp = new TemporaryNESWBuff(ServerGame, TriggerRestriction, EndCondition,
-                card as CharacterCard, NBuff, EBuff, SBuff, WBuff);
+                card, NBuff, EBuff, SBuff, WBuff);
         }
 
         ServerEffect.ResolveNextSubeffect();

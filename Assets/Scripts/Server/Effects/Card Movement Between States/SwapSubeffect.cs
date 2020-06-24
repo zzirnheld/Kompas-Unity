@@ -9,7 +9,7 @@ public class SwapSubeffect : ServerSubeffect
 
     public override void Resolve()
     {
-        ServerGame.MoveOnBoard(Target, SecondTarget.BoardX, SecondTarget.BoardY, false, ServerEffect);
+        Target.Move(SecondTarget.BoardX, SecondTarget.BoardY, false, ServerEffect);
         ServerEffect.ResolveNextSubeffect();
     }
 }

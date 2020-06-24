@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,17 +7,10 @@ public class TargetAllSubeffect : CardTargetSubeffect
 {
     public override void Resolve()
     {
-        bool found = false;
-        foreach (KeyValuePair<int, GameCard> pair in ServerGame.cardsByID)
-        {
-            if (cardRestriction.Evaluate(pair.Value))
-            {
-                ServerEffect.Targets.Add(pair.Value);
-                found = true;
-            }
-        }
+        var targets = ServerGame.Cards.Where(c => cardRestriction.Evaluate(c));
+        Effect.Targets.AddRange(targets);
 
-        if (found) ServerEffect.ResolveNextSubeffect();
+        if (targets.Any()) ServerEffect.ResolveNextSubeffect();
         else ServerEffect.EffectImpossible();
     }
 }

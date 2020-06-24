@@ -10,13 +10,7 @@ public class ChangeSpellCSubeffect : ServerSubeffect
 
     public override void Resolve()
     {
-        if(!(Target is SpellCard spellTarget))
-        {
-            ServerEffect.EffectImpossible();
-            return;
-        }
-
-        spellTarget.C = ServerEffect.X * XMultiplier / XDivisor + XModifier;
+        Target.SetC(ServerEffect.X * XMultiplier / XDivisor + XModifier, Effect);
         ServerEffect.ResolveNextSubeffect();
     }
 }
