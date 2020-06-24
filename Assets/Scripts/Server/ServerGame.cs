@@ -180,7 +180,7 @@ public class ServerGame : Game {
     public List<GameCard> DrawX(int player, int x, IServerStackable stackSrc = null)
     {
         List<GameCard> drawn = new List<GameCard>();
-        Player controller = Players[player]
+        Player controller = Players[player];
         int i;
         for (i = 0; i < x; i++)
         {

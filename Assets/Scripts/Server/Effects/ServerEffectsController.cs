@@ -10,7 +10,8 @@ public class ServerEffectsController : MonoBehaviour
 
     protected ServerEffectStack stack;
 
-    public Stack<(ServerTrigger, GameCard, IStackable, Player, int?, ServerPlayer)> OptionalTriggersToAsk;
+    public Stack<(ServerTrigger, GameCard, IStackable, Player, int?, ServerPlayer)> OptionalTriggersToAsk
+        = new Stack<(ServerTrigger, GameCard, IStackable, Player, int?, ServerPlayer)>();
 
     //trigger map
     protected Dictionary<TriggerCondition, List<ServerTrigger>> triggerMap;
@@ -21,8 +22,6 @@ public class ServerEffectsController : MonoBehaviour
     public void Start()
     {
         stack = new ServerEffectStack();
-
-        OptionalTriggersToAsk = new Stack<(ServerTrigger, GameCard, IServerStackable, ServerPlayer, int?, ServerPlayer)>();
 
         triggerMap = new Dictionary<TriggerCondition, List<ServerTrigger>>();
         foreach (TriggerCondition c in System.Enum.GetValues(typeof(TriggerCondition)))
@@ -174,7 +173,7 @@ public class ServerEffectsController : MonoBehaviour
     }
 
     public void Trigger(TriggerCondition condition, 
-        ServerGameCard cardTriggerer = null, IStackable stackTrigger = null, Player triggerer = null, int? x = null, (int, int)? space = null)
+        GameCard cardTriggerer = null, IStackable stackTrigger = null, Player triggerer = null, int? x = null, (int, int)? space = null)
     {
         List<HangingEffect> toRemove = new List<HangingEffect>();
         foreach (HangingEffect t in hangingEffectMap[condition])

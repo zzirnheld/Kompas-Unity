@@ -40,11 +40,11 @@ public class ServerTrigger : Trigger
     /// Pushes this trigger's effect onto the stack with the value of X if applicable.
     /// </summary>
     /// <param name="x"></param>
-    protected void TriggerEffect(ServerGameCard triggerer, IStackable stackable, Player player, int? x, (int, int)? space)
+    protected void TriggerEffect(GameCard triggerer, IStackable stackable, Player player, int? x, (int, int)? space)
     {
         Debug.Log($"Triggering effect of {effToTrigger.Source.CardName} for value of x={x}");
         if (x.HasValue) effToTrigger.X = x.Value;
-        if (triggerer != null) effToTrigger.ServerTargets.Add(triggerer);
+        if (triggerer is ServerGameCard serverTriggerCard) effToTrigger.ServerTargets.Add(serverTriggerCard);
         //TODO should you notify right now about effect x? as of right now, no, because the important thing is the x value currently set in client network controller
         //and either another effect could be currently resolving with a different value of x
         //or the value of x could get changed between when this triggers and when the effect resolves
@@ -81,7 +81,7 @@ public class ServerTrigger : Trigger
     /// <param name="cardTriggerer">The card that triggered this, if any.</param>
     /// <param name="stackTrigger">The effect or attack that triggered this, if any.</param>
     /// <param name="x">If the action that triggered this has a value of x, it goes here. Otherwise, null.</param>
-    public virtual void TriggerIfValid(ServerGameCard cardTriggerer, IStackable stackTrigger, Player triggerer, int? x, (int, int)? space)
+    public virtual void TriggerIfValid(GameCard cardTriggerer, IStackable stackTrigger, Player triggerer, int? x, (int, int)? space)
     {
         /*Debug.Log($"Is trigger valid for effect of {effToTrigger.thisCard.CardName} with id {effToTrigger.thisCard.ID}? " +
             $"{CheckTriggerRestrictions(triggerer, stackTrigger, x)}");*/

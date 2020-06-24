@@ -383,7 +383,7 @@ public class ServerNotifier : MonoBehaviour
         SendToBoth(packet);
     }
 
-    public void AskForTrigger(ServerTrigger t, int? x, GameCard cardTriggerer, IServerStackable stackTriggerer, ServerPlayer triggerer)
+    public void AskForTrigger(ServerTrigger t, int? x, GameCard cardTriggerer, IStackable stackTriggerer, Player triggerer)
     {
         GameCard cardWhoseTrigger = t.effToTrigger.Source;
         int effIndex = t.effToTrigger.EffectIndex;
