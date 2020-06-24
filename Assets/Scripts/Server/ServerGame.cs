@@ -110,7 +110,7 @@ public class ServerGame : Game {
         }
         else player.ServerNotifier.DeckAccepted();
 
-        AvatarCard avatar;
+        AvatarServerGameCard avatar;
         lock (AddCardsLock)
         {
             //otherwise, set the avatar and rest of the deck
@@ -128,7 +128,7 @@ public class ServerGame : Game {
 
         foreach(string name in deck)
         {
-            GameCard card;
+            ServerGameCard card;
             lock (AddCardsLock)
             {
                 card = CardRepo.InstantiateServerNonAvatar(name, this, player, cardCount);
@@ -143,7 +143,7 @@ public class ServerGame : Game {
         Debug.Log($"Setting avatar for player {player.index}");
         player.Avatar = avatar;
         player.ServerNotifier.NotifyAddToDeck(avatar);
-        Play(avatar, player.index * 6, player.index * 6, player);
+        avatar.Play(player.index * 6, player.index * 6, player, null);
         //if both players have decks now, then start the game
         lock (CheckAvatarsLock)
         {
@@ -177,7 +177,7 @@ public class ServerGame : Game {
     }
     #endregion
 
-    public List<GameCard> DrawX(int player, int x, IServerStackable stackSrc = null)
+    public List<GameCard> DrawX(int player, int x, IStackable stackSrc = null)
     {
         List<GameCard> drawn = new List<GameCard>();
         Player controller = Players[player];
@@ -192,6 +192,11 @@ public class ServerGame : Game {
         }
         EffectsController.Trigger(TriggerCondition.DrawX, stackTrigger: stackSrc, triggerer: ServerPlayers[player], x: i);
         return drawn;
+    }
+    public GameCard Draw(int player, IStackable stackSrc = null)
+    {
+        var drawn = DrawX(player, 1, stackSrc);
+        return drawn.Count > 0 ? drawn[0] : null;
     }
 
     public void GivePlayerPips(ServerPlayer player, int pipsToSet)
@@ -244,7 +249,7 @@ public class ServerGame : Game {
         }
 
         return card != null
-            && card is AugmentCard
+            && card.CardType == 'A'
             && boardCtrl.ValidIndices(toX, toY)
             && boardCtrl.GetCardAt(toX, toY) != null
             && card.PlayRestriction.EvaluateNormalPlay(toX, toY, player);

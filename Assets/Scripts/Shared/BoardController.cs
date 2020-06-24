@@ -98,7 +98,7 @@ public class BoardController : MonoBehaviour
         if (toPlay.CardType == 'A') cards[toX, toY].AddAugment(toPlay);
         else cards[toX, toY] = toPlay;
 
-        toPlay.SetLocation(CardLocation.Field);
+        toPlay.Location = CardLocation.Field;
         toPlay.Position = (toX, toY);
         toPlay.Controller = controller;
 
@@ -114,7 +114,7 @@ public class BoardController : MonoBehaviour
         Debug.Log($"Swapping {card?.CardName} to {toX}, {toY}");
 
         if (!ValidIndices(toX, toY) || card == null) return;
-        if (card is AugmentCard) throw new NotImplementedException();
+        if (card.AugmentedCard != null) throw new NotImplementedException();
 
         var (tempX, tempY) = card.Position;
         GameCard temp = cards[toX, toY];
@@ -175,10 +175,7 @@ public class BoardController : MonoBehaviour
     {
         foreach(GameCard c in cards)
         {
-            if(c != null && c is SpellCard spellC && spellC.SpellSubtype == SpellCard.SimpleSubtype)
-            {
-                game.Discard(c);
-            }
+            if (c != null && c.SpellSubtype == CardBase.SimpleSubtype) c.Discard();
         }
     }
     #endregion game mechanics
@@ -191,13 +188,13 @@ public class BoardController : MonoBehaviour
         {
             if (card == null) continue;
 
-            if (card is CharacterCard charCard)
+            if (card.CardType == 'C')
             {
                 card.gameObject.SetActive(charsActive);
-                foreach (AugmentCard augment in charCard.Augments)
+                foreach (var augment in card.Augments)
                     augment.gameObject.SetActive(augsActive);
             }
-            else if (card is SpellCard) card.gameObject.SetActive(spellsActive);
+            else if (card.CardType == 'S') card.gameObject.SetActive(spellsActive);
         }
     }
 

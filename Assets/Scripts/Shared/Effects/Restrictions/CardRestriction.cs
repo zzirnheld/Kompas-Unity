@@ -79,9 +79,6 @@ public class CardRestriction
     {
         if (potentialTarget == null) return false;
 
-        //some restrictions require checking if the target is a character. no reason to check twice
-        CharacterCard charCard = potentialTarget as CharacterCard;
-
         foreach (CardRestrictions c in restrictionsToCheck)
         {
             //Debug.Log("Considering restriction " + c + " when X equals " + x);
@@ -97,13 +94,13 @@ public class CardRestriction
                     }
                     break;
                 case CardRestrictions.IsCharacter:
-                    if (!(potentialTarget is CharacterCard)) return false;
+                    if (potentialTarget.CardType != 'C') return false;
                     break;
                 case CardRestrictions.IsSpell:
-                    if (!(potentialTarget is SpellCard)) return false;
+                    if (potentialTarget.CardType != 'S') return false;
                     break;
                 case CardRestrictions.IsAugment:
-                    if (!(potentialTarget is AugmentCard)) return false;
+                    if (potentialTarget.CardType != 'A') return false;
                     break;
                 case CardRestrictions.SubtypesExclude:
                     foreach (string s in subtypesExclude)
@@ -152,74 +149,58 @@ public class CardRestriction
                     if (!locations.Contains(potentialTarget.Location)) return false;
                     break;
                 case CardRestrictions.NLTEX:
-                    if (charCard == null) return false;
-                    if (charCard.N > x) return false;
+                    if (potentialTarget.N > x) return false;
                     break;
                 case CardRestrictions.ELTEX:
-                    if (charCard == null) return false;
-                    if (charCard.E > x) return false;
+                    if (potentialTarget.E > x) return false;
                     break;
                 case CardRestrictions.SLTEX:
-                    if (charCard == null) return false;
-                    if (charCard.S > x) return false;
+                    if (potentialTarget.S > x) return false;
                     break;
                 case CardRestrictions.WLTEX:
-                    if (charCard == null) return false;
-                    if (charCard.W > x) return false;
+                    if (potentialTarget.W > x) return false;
                     break;
                 case CardRestrictions.CostLTEX:
                     if (potentialTarget.Cost > x) return false;
                     break;
                 case CardRestrictions.NEX:
-                    if (charCard == null) return false;
-                    if (charCard.N != x) return false;
+                    if (potentialTarget.N != x) return false;
                     break;
                 case CardRestrictions.EEX:
-                    if (charCard == null) return false;
-                    if (charCard.E != x) return false;
+                    if (potentialTarget.E != x) return false;
                     break;
                 case CardRestrictions.SEX:
-                    if (charCard == null) return false;
-                    if (charCard.S != x) return false;
+                    if (potentialTarget.S != x) return false;
                     break;
                 case CardRestrictions.WEX:
-                    if (charCard == null) return false;
-                    if (charCard.W != x) return false;
+                    if (potentialTarget.W != x) return false;
                     break;
                 case CardRestrictions.CostEX:
                     if (potentialTarget.Cost != x) return false;
                     break;
                 case (CardRestrictions.NLTX):
-                    if (charCard == null) return false;
-                    if (charCard.N >= x) return false;
+                    if (potentialTarget.N >= x) return false;
                     break;
                 case (CardRestrictions.ELTX):
-                    if (charCard == null) return false;
-                    if (charCard.E >= x) return false;
+                    if (potentialTarget.E >= x) return false;
                     break;
                 case (CardRestrictions.SLTX):
-                    if (charCard == null) return false;
-                    if (charCard.S >= x) return false;
+                    if (potentialTarget.S >= x) return false;
                     break;
                 case (CardRestrictions.WLTX):
-                    if (charCard == null) return false;
-                    if (charCard.W >= x) return false;
+                    if (potentialTarget.W >= x) return false;
                     break;
                 case CardRestrictions.NLTEC:
-                    if (charCard == null) return false;
-                    if (charCard.N > constant) return false;
+                    if (potentialTarget.N > constant) return false;
                     break;
                 case CardRestrictions.ELTEC:
-                    if (charCard == null) return false;
-                    if (charCard.E > constant) return false;
+                    if (potentialTarget.E > constant) return false;
                     break;
                 case CardRestrictions.SLTEC:
-                    if (charCard == null) return false;
-                    if (charCard.S > constant) return false;
+                    if (potentialTarget.S > constant) return false;
                     break;
                 case CardRestrictions.WLTEC:
-                    if (charCard == null) return false;
-                    if (charCard.W > constant) return false;
+                    if (potentialTarget.W > constant) return false;
                     break;
                 case CardRestrictions.IndexInListGTEC:
                     if (potentialTarget.IndexInList < constant) return false;

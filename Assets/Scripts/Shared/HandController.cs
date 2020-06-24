@@ -19,7 +19,7 @@ public class HandController : MonoBehaviour
         if (card == null) return;
         hand.Add(card);
         card.ResetCard();
-        card.SetLocation(CardLocation.Hand);
+        card.Location = CardLocation.Hand;
         card.Controller = Owner;
 
         card.transform.rotation = Quaternion.Euler(90, 0, 0);

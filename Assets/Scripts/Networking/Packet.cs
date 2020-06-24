@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -276,8 +277,8 @@ namespace KompasNetworking
         
         public CardRestriction GetCardRestriction(ClientGame clientGame)
         {
-            GameCard thatHasEffect = clientGame.GetCardFromID(cardID);
-            Effect eff = thatHasEffect.Effects[normalArgs[0]];
+            GameCard thatHasEffect = clientGame.GetCardWithID(cardID);
+            Effect eff = thatHasEffect.Effects.ElementAt(normalArgs[0]);
             DummyCardTargetSubeffect subeff = eff.Subeffects[normalArgs[1]] as DummyCardTargetSubeffect;
 
             if(subeff == null)
@@ -292,8 +293,8 @@ namespace KompasNetworking
         
         public BoardRestriction GetBoardRestriction(ClientGame clientGame)
         {
-            GameCard thatHasEffect = clientGame.GetCardFromID(cardID);
-            Effect eff = thatHasEffect.Effects[normalArgs[0]];
+            GameCard thatHasEffect = clientGame.GetCardWithID(cardID);
+            Effect eff = thatHasEffect.Effects.ElementAt(normalArgs[0]);
             DummyBoardTargetSubeffect subeff = eff.Subeffects[normalArgs[1]] as DummyBoardTargetSubeffect;
 
             if (subeff == null)
@@ -308,8 +309,8 @@ namespace KompasNetworking
         
         public SpaceRestriction GetSpaceRestriction(ClientGame clientGame)
         {
-            GameCard thatHasEffect = clientGame.GetCardFromID(cardID);
-            Effect eff = thatHasEffect.Effects[normalArgs[0]];
+            GameCard thatHasEffect = clientGame.GetCardWithID(cardID);
+            Effect eff = thatHasEffect.Effects.ElementAt(normalArgs[0]);
             DummySpaceTargetSubeffect subeff = eff.Subeffects[normalArgs[1]] as DummySpaceTargetSubeffect;
 
             if (subeff == null)
@@ -324,8 +325,8 @@ namespace KompasNetworking
 
         public ListRestriction GetListRestriction(ClientGame clientGame)
         {
-            GameCard thatHasEffect = clientGame.GetCardFromID(cardID);
-            Effect eff = thatHasEffect.Effects[normalArgs[1]];
+            GameCard thatHasEffect = clientGame.GetCardWithID(cardID);
+            Effect eff = thatHasEffect.Effects.ElementAt(normalArgs[0]);
             DummyListTargetSubeffect subeff = eff.Subeffects[normalArgs[2]] as DummyListTargetSubeffect;
 
             if (subeff == null)

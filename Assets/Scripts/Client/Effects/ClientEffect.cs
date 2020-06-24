@@ -17,11 +17,9 @@ public class ClientEffect : Effect
     public override Subeffect[] Subeffects => DummySubeffects;
     public override Trigger Trigger => ClientTrigger;
 
-    public List<ClientGameCard> ClientTargets { get; } = new List<ClientGameCard>();
-    public override IEnumerable<GameCard> Targets => ClientTargets;
 
-    public ClientEffect(SerializableEffect se, GameCard thisCard, ClientGame clientGame)
-        : base(se.activationRestriction ?? new ActivationRestriction(), thisCard, se.blurb)
+    public ClientEffect(SerializableEffect se, GameCard thisCard, ClientGame clientGame, int effectIndex)
+        : base(se.activationRestriction ?? new ActivationRestriction(), thisCard, se.blurb, effectIndex)
     {
         this.ClientGame = clientGame;
         DummySubeffects = new DummySubeffect[se.subeffects.Length];

@@ -15,14 +15,6 @@ public abstract class ServerSubeffect : Subeffect
     public ServerPlayer EffectController { get { return ServerEffect.ServerController; } }
     public GameCard ThisCard { get { return ServerEffect.Source; } }
 
-    public ServerGameCard GetTarget(int num)
-    {
-        int trueIndex = num < 0 ? num + ServerEffect.ServerTargets.Count : num;
-        return trueIndex < 0 ? null : ServerEffect.ServerTargets[trueIndex];
-    }
-
-    public ServerGameCard Target => GetTarget(TargetIndex);
-
     public static ServerSubeffect FromJson(SubeffectType seType, string subeffJson, ServerEffect parent, int subeffIndex)
     {
         Debug.Log("Creating subeffect from json of type " + seType + " json " + subeffJson);

@@ -19,4 +19,12 @@ public abstract class Subeffect
     /// If negative, it's Effect.targets.Count + targetIndex (aka that many back from the end)
     /// </summary>
     public int TargetIndex = -1;
+
+    public GameCard GetTarget(int num)
+    {
+        int trueIndex = num < 0 ? num + Effect.Targets.Count : num;
+        return trueIndex < 0 ? null : Effect.Targets[trueIndex];
+    }
+
+    public GameCard Target => GetTarget(TargetIndex);
 }
