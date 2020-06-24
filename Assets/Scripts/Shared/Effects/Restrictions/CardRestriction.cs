@@ -131,7 +131,7 @@ public class CardRestriction
                     if (Subeffect.Target.CardName != potentialTarget.CardName) return false;
                     break;
                 case CardRestrictions.Avatar:
-                    if (!(potentialTarget is AvatarCard)) return false;
+                    if (!(potentialTarget.IsAvatar)) return false;
                     break;
                 case CardRestrictions.Distinct:
                     if (potentialTarget == Subeffect.Source) return false;

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,9 +19,9 @@ public abstract class Effect
     public int SubeffectIndex { get; protected set; }
     public Subeffect CurrSubeffect => Subeffects[SubeffectIndex];
 
-    public int EffectIndex => System.Array.IndexOf(Source.Effects, this);
+    public readonly int EffectIndex;
 
-    public abstract IEnumerable<GameCard> Targets { get; }
+    public List<GameCard> Targets { get; } = new List<GameCard>();
     public List<Vector2Int> Coords { get; private set; }
     public List<GameCard> Rest { get; private set; }
 
@@ -45,12 +46,13 @@ public abstract class Effect
     public int TimesUsedThisTurn { get; protected set; }
     public int TimesUsedThisRound { get; protected set; }
 
-    public Effect(ActivationRestriction restriction, GameCard source, string blurb)
+    public Effect(ActivationRestriction restriction, GameCard source, string blurb, int effIndex)
     {
         Source = source ?? throw new System.ArgumentNullException($"Effect cannot be attached to null card");
         ActivationRestriction = restriction;
         ActivationRestriction.Initialize(this);
         Blurb = blurb;
+        EffectIndex = effIndex;
         TimesUsedThisTurn = 0;
         Targets = new List<GameCard>();
         Rest = new List<GameCard>();

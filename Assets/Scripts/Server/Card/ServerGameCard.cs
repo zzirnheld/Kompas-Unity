@@ -33,6 +33,8 @@ public abstract class ServerGameCard : GameCard
     public ServerEffect[] ServerEffects { get; private set; }
     public override IEnumerable<Effect> Effects => ServerEffects;
 
+    public override bool IsAvatar => false;
+
     public virtual void SetInfo(SerializableCard serializedCard, ServerGame game, ServerPlayer owner, ServerEffect[] effects, int id)
     {
         base.SetInfo(serializedCard, id);

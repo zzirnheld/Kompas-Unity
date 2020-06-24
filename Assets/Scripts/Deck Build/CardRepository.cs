@@ -153,7 +153,7 @@ public class CardRepository : MonoBehaviour
         ServerEffect[] effects = new ServerEffect[serEffs.Length];
         for (int i = 0; i < effects.Length; i++)
         {
-            effects[i] = new ServerEffect(serEffs[i], card, serverGame, owner);
+            effects[i] = new ServerEffect(serEffs[i], card, serverGame, owner, i);
         }
         return effects;
     }

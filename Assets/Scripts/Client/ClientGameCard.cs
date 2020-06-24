@@ -28,6 +28,7 @@ public class ClientGameCard : GameCard
 
     public ClientEffect[] ClientEffects { get; private set; }
     public override IEnumerable<Effect> Effects => ClientEffects;
+    public override bool IsAvatar => false;
 
     public void SetInfo(SerializableCard serializedCard, ClientGame game, ClientPlayer owner, ClientEffect[] effects, int id)
     {

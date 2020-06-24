@@ -20,16 +20,12 @@ public class ServerEffect : Effect, IServerStackable
     }
     public override Subeffect[] Subeffects => ServerSubeffects;
     public override Trigger Trigger => ServerTrigger;
-    
-    public List<ServerGameCard> ServerTargets { get; }
-    public override IEnumerable<GameCard> Targets => ServerTargets;
 
-    public ServerEffect(SerializableEffect se, GameCard thisCard, ServerGame serverGame, ServerPlayer controller) 
-        : base(se.activationRestriction ?? new ActivationRestriction(), thisCard, se.blurb)
+    public ServerEffect(SerializableEffect se, GameCard thisCard, ServerGame serverGame, ServerPlayer controller, int effectIndex) 
+        : base(se.activationRestriction ?? new ActivationRestriction(), thisCard, se.blurb, effectIndex)
     {
         this.serverGame = serverGame;
         this.ServerController = controller;
-        ServerTargets = new List<ServerGameCard>();
         ServerSubeffects = new ServerSubeffect[se.subeffects.Length];
 
         if (!string.IsNullOrEmpty(se.trigger))

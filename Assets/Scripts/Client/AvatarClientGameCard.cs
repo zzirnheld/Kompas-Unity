@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class AvatarClientGameCard : ClientGameCard
 {
-    
+    public override bool IsAvatar => true;
 }

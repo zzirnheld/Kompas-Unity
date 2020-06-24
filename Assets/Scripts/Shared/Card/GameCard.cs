@@ -129,9 +129,10 @@ public abstract class GameCard : CardBase {
     public abstract IEnumerable<Effect> Effects { get; }
     public List<GameCard> Augments { get; private set; } = new List<GameCard>();
     public int TurnsOnBoard { get; private set; }
+    public abstract bool IsAvatar { get; }
 
     public abstract Game Game { get; }
-    
+
     public int IndexInList
     {
         get
