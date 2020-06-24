@@ -148,7 +148,7 @@ public class CardRepository : MonoBehaviour
         return JsonUtility.FromJson<SerializableCard>(cardJsons[name]);
     }
 
-    private ServerEffect[] CreateServerEffects(SerializableEffect[] serEffs, Card card, ServerGame serverGame, ServerPlayer owner)
+    private ServerEffect[] CreateServerEffects(SerializableEffect[] serEffs, GameCard card, ServerGame serverGame, ServerPlayer owner)
     {
         ServerEffect[] effects = new ServerEffect[serEffs.Length];
         for (int i = 0; i < effects.Length; i++)
@@ -158,7 +158,7 @@ public class CardRepository : MonoBehaviour
         return effects;
     }
 
-    public AvatarCard InstantiateServerAvatar(string cardName, ServerGame serverGame, ServerPlayer owner, int id)
+    public AvatarServerGameCard InstantiateServerAvatar(string cardName, ServerGame serverGame, ServerPlayer owner, int id)
     {
         if (!cardJsons.ContainsKey(cardName))
         {
@@ -168,9 +168,8 @@ public class CardRepository : MonoBehaviour
 
         try
         {
-            SerializableCharCard charCard = JsonUtility.FromJson<SerializableCharCard>(cardJsons[cardName]);
-            if (charCard.cardType != 'C') return null;
-            AvatarCard avatar = Instantiate(ServerAvatarPrefab).GetComponent<AvatarCard>();
+            SerializableCard charCard = JsonUtility.FromJson<SerializableCard>(cardJsons[cardName]);
+            AvatarServerGameCard avatar = Instantiate(ServerAvatarPrefab).GetComponent<AvatarServerGameCard>();
             ServerEffect[] effects = CreateServerEffects(charCard.effects, avatar, serverGame, owner);
             avatar.SetInfo(charCard, serverGame, owner, effects, id);
             avatar.SetImage();
@@ -185,11 +184,11 @@ public class CardRepository : MonoBehaviour
         }
     }
 
-    public Card InstantiateServerNonAvatar(string name, ServerGame serverGame, ServerPlayer owner, int id)
+    public GameCard InstantiateServerNonAvatar(string name, ServerGame serverGame, ServerPlayer owner, int id)
     {
         Debug.Log($"Instantiating new server non avatar for name {name}");
         string json = cardJsons[name] ?? throw new System.ArgumentException($"Name {name} not associated with json");
-        Card card = null;
+        GameCard card = null;
         Effect[] effects;
 
         try
@@ -231,7 +230,7 @@ public class CardRepository : MonoBehaviour
         }
     }
 
-    private ClientEffect[] CreateClientEffects(SerializableEffect[] serEffs, Card card, ClientGame clientGame)
+    private ClientEffect[] CreateClientEffects(SerializableEffect[] serEffs, GameCard card, ClientGame clientGame)
     {
         ClientEffect[] effects = new ClientEffect[serEffs.Length];
         for (int i = 0; i < effects.Length; i++)
@@ -241,7 +240,7 @@ public class CardRepository : MonoBehaviour
         return effects;
     }
 
-    public AvatarCard InstantiateClientAvatar(string cardName, ClientGame clientGame, Player owner, int id)
+    public AvatarClientGameCard InstantiateClientAvatar(string cardName, ClientGame clientGame, Player owner, int id)
     {
         if (!cardJsons.ContainsKey(cardName))
         {
@@ -253,7 +252,7 @@ public class CardRepository : MonoBehaviour
         {
             SerializableCharCard charCard = JsonUtility.FromJson<SerializableCharCard>(cardJsons[cardName]);
             if (charCard.cardType != 'C') return null;
-            AvatarCard avatar = Instantiate(ClientAvatarPrefab).GetComponent<AvatarCard>();
+            AvatarClientGameCard avatar = Instantiate(ClientAvatarPrefab).GetComponent<AvatarClientGameCard>();
             ClientEffect[] effects = CreateClientEffects(charCard.effects, avatar, clientGame);
             avatar.SetInfo(charCard, clientGame, owner, effects, id);
             avatar.gameObject.GetComponentInChildren<ClientCardMouseController>().ClientGame = clientGame;
@@ -269,10 +268,10 @@ public class CardRepository : MonoBehaviour
         }
     }
 
-    public Card InstantiateClientNonAvatar(string name, ClientGame clientGame, Player owner, int id)
+    public GameCard InstantiateClientNonAvatar(string name, ClientGame clientGame, Player owner, int id)
     {
         string json = cardJsons[name] ?? throw new System.ArgumentException($"Name {name} not associated with json");
-        Card card = null;
+        GameCard card = null;
         Effect[] effects;
 
         try

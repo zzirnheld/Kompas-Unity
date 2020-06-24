@@ -46,11 +46,11 @@ public class TriggerRestriction
     public int maxTimesPerTurn = 1;
     public int maxPerRound = 1;
 
-    public Card ThisCard { get; private set; }
+    public GameCard ThisCard { get; private set; }
 
     public ServerTrigger ThisTrigger { get; private set; }
 
-    public void Initialize(ServerSubeffect subeff, Card thisCard, ServerTrigger thisTrigger)
+    public void Initialize(ServerSubeffect subeff, GameCard thisCard, ServerTrigger thisTrigger)
     {
         Subeffect = subeff;
         cardRestriction.Subeffect = subeff;
@@ -58,7 +58,7 @@ public class TriggerRestriction
         this.ThisTrigger = thisTrigger;
     }
 
-    public bool Evaluate(Card cardTriggerer, IStackable stackTrigger, Player triggerer, int? effX, (int x, int y)? space)
+    public bool Evaluate(GameCard cardTriggerer, IStackable stackTrigger, Player triggerer, int? effX, (int x, int y)? space)
     {
         foreach(TriggerRestrictions r in triggerRestrictions)
         {

@@ -42,6 +42,7 @@ public class ClientNetworkController : NetworkController {
             return;
         }
         Debug.Log($"Parsing command {packet.command} for {packet.cardID}");
+        var card = ClientGame.GetCardFromID(packet.cardID);
 
         switch (packet.command)
         {
@@ -67,15 +68,15 @@ public class ClientNetworkController : NetworkController {
                 break;
             #endregion game start
             case Packet.Command.Delete:
-                ClientGame.Delete(ClientGame.GetCardFromID(packet.cardID));
+                ClientGame.Delete(card);
                 break;
             case Packet.Command.AddAsFriendly:
-                Card friendlyCard = ClientGame.CardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, Friendly, packet.CardIDToBe);
+                GameCard friendlyCard = ClientGame.CardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, Friendly, packet.CardIDToBe);
                 ClientGame.cardsByID.Add(packet.CardIDToBe, friendlyCard);
                 ClientGame.friendlyDeckCtrl.AddCard(friendlyCard);
                 break;
             case Packet.Command.AddAsEnemy:
-                Card added = ClientGame.CardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, Enemy, packet.CardIDToBe);
+                GameCard added = ClientGame.CardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, Enemy, packet.CardIDToBe);
                 ClientGame.cardsByID.Add(packet.CardIDToBe, added);
                 ClientGame.enemyDeckCtrl.AddCard(added);
                 //TODO make it always ask for cards from enemy deck
@@ -114,48 +115,57 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.Augment: //the play method calls augment if the card is an augment
             case Packet.Command.Play:
                 Debug.Log("Client ordered to play to " + packet.X + ", " + packet.Y);
-                Card toPlay = ClientGame.GetCardFromID(packet.cardID);
+                GameCard toPlay = card;
                 ClientGame.Play(toPlay, packet.X, packet.Y, toPlay.Owner);
                 break;
             case Packet.Command.Move:
-                ClientGame.MoveOnBoard(ClientGame.GetCardFromID(packet.cardID), packet.X, packet.Y, packet.Answer);
+                ClientGame.MoveOnBoard(card, packet.X, packet.Y, packet.Answer);
                 //make the ui show the updated n (and other values)
                 ClientGame.uiCtrl.SelectCard(ClientGame.uiCtrl.SelectedCard, false);
                 break;
             case Packet.Command.Topdeck:
-                ClientGame.Topdeck(ClientGame.GetCardFromID(packet.cardID));
+                ClientGame.Topdeck(card);
                 break;
             case Packet.Command.Discard:
-                ClientGame.Discard(ClientGame.GetCardFromID(packet.cardID));
+                ClientGame.Discard(card);
                 break;
             case Packet.Command.Rehand:
-                ClientGame.Rehand(ClientGame.GetCardFromID(packet.cardID));
+                ClientGame.Rehand(card);
                 break;
             case Packet.Command.Reshuffle:
-                ClientGame.Reshuffle(ClientGame.GetCardFromID(packet.cardID));
+                ClientGame.Reshuffle(card);
                 break;
             case Packet.Command.Bottomdeck:
-                ClientGame.Bottomdeck(ClientGame.GetCardFromID(packet.cardID));
+                ClientGame.Bottomdeck(card);
                 break;
-            case Packet.Command.SetNESW:
-                var charToSet = ClientGame.GetCardFromID(packet.cardID) as CharacterCard;
-                charToSet?.SetNESW(packet.N, packet.E, packet.S, packet.W);
-                ClientGame.clientUICtrl.ShowInfoFor(ClientGame.clientUICtrl.SelectedCard, true);
+            case Packet.Command.SetN:
+                card.SetN(packet.Stat);
                 break;
-            case Packet.Command.SetSpellStats:
-                var spellToSet = ClientGame.GetCardFromID(packet.cardID) as SpellCard;
-                if (spellToSet != null) spellToSet.C = packet.C;
+            case Packet.Command.SetE:
+                card.SetE(packet.Stat);
+                break;
+            case Packet.Command.SetS:
+                card.SetS(packet.Stat);
+                break;
+            case Packet.Command.SetW:
+                card.SetW(packet.Stat);
+                break;
+            case Packet.Command.SetC:
+                card.SetC(packet.Stat);
+                break;
+            case Packet.Command.SetA:
+                card.SetA(packet.Stat);
                 break;
             case Packet.Command.Negate:
-                Card toNegate = ClientGame.GetCardFromID(packet.cardID);
+                GameCard toNegate = card;
                 ClientGame.SetNegated(toNegate, packet.Answer);
                 break;
             case Packet.Command.Activate:
-                var toActivate = ClientGame.GetCardFromID(packet.cardID);
+                var toActivate = card;
                 ClientGame.SetActivated(toActivate, packet.Answer);
                 break;
             case Packet.Command.ChangeControl:
-                var toChangeCtrl = ClientGame.GetCardFromID(packet.cardID);
+                var toChangeCtrl = card;
                 var player = ClientGame.Players[packet.ControllerIndex];
                 ClientGame.ChangeControl(toChangeCtrl, player);
                 break;
@@ -187,22 +197,22 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.RequestDeckTarget:
                 Debug.Log($"Deck target for Eff index: {packet.EffIndex} subeff index {packet.SubeffIndex}");
                 CardRestriction deckRestriction = packet.GetCardRestriction(ClientGame);
-                List<Card> toSearch = ClientGame.friendlyDeckCtrl.CardsThatFitRestriction(deckRestriction);
+                List<GameCard> toSearch = ClientGame.friendlyDeckCtrl.CardsThatFitRestriction(deckRestriction);
                 ClientGame.clientUICtrl.StartSearch(toSearch);
                 ClientGame.clientUICtrl.SetCurrState("Choose Deck Target", ClientGame.CurrCardRestriction.Blurb);
                 break;
             case Packet.Command.RequestDiscardTarget:
                 CardRestriction discardRestriction = packet.GetCardRestriction(ClientGame);
-                List<Card> discardToSearch = ClientGame.friendlyDiscardCtrl.CardsThatFitRestriction(discardRestriction);
+                List<GameCard> discardToSearch = ClientGame.friendlyDiscardCtrl.CardsThatFitRestriction(discardRestriction);
                 ClientGame.clientUICtrl.StartSearch(discardToSearch);
                 ClientGame.clientUICtrl.SetCurrState("Choose Discard Target", ClientGame.CurrCardRestriction.Blurb);
                 break;
             case Packet.Command.GetChoicesFromList:
                 int[] cardIDs = packet.specialArgs;
-                List<Card> choicesToPick = new List<Card>();
+                List<GameCard> choicesToPick = new List<GameCard>();
                 foreach(int id in cardIDs)
                 {
-                    Card c = ClientGame.GetCardFromID(id);
+                    GameCard c = ClientGame.GetCardFromID(id);
                     if (c == null) Debug.LogError($"Tried to start a list search including card with invalid id {id}");
                     else choicesToPick.Add(c);
                 }
@@ -213,7 +223,7 @@ public class ClientNetworkController : NetworkController {
                 break;
             case Packet.Command.ChooseEffectOption:
                 //TODO catch out of bounds errors, in case of malicious packets?
-                var subeff = ClientGame.GetCardFromID(packet.cardID).Effects[packet.normalArgs[0]].Subeffects[packet.normalArgs[1]]
+                var subeff = card.Effects[packet.normalArgs[0]].Subeffects[packet.normalArgs[1]]
                     as DummyChooseOptionSubeffect;
                 if(subeff == null)
                 {
@@ -230,7 +240,7 @@ public class ClientNetworkController : NetworkController {
                 break;
             case Packet.Command.SetEffectsX:
                 Debug.Log("Setting X to " + packet.X);
-                ClientGame.GetCardFromID(packet.cardID).Effects[packet.EffIndex].X = packet.EffectX;
+                card.Effects[packet.EffIndex].X = packet.EffectX;
                 X = packet.EffectX;
                 break;
             case Packet.Command.PlayerSetX:
@@ -252,14 +262,14 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.boardCtrl.DiscardSimples();
                 break;
             case Packet.Command.EffectResolving:
-                var eff = ClientGame.GetCardFromID(packet.cardID).Effects[packet.EffIndex];
+                var eff = card.Effects[packet.EffIndex];
                 eff.Controller = ClientGame.Players[packet.normalArgs[1]];
                 break;
             case Packet.Command.EffectImpossible:
                 ClientGame.clientUICtrl.SetCurrState("Effect Impossible");
                 break;
             case Packet.Command.OptionalTrigger:
-                ClientTrigger t = ClientGame.GetCardFromID(packet.cardID).Effects[packet.EffIndex].Trigger as ClientTrigger;
+                ClientTrigger t = card.Effects[packet.EffIndex].Trigger as ClientTrigger;
                 t.ClientEffect.ClientController = Friendly;
                 ClientGame.clientUICtrl.ShowOptionalTrigger(t, packet.EffectX);
                 break;

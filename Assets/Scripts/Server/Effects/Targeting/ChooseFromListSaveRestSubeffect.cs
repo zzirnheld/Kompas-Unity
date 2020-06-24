@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ChooseFromListSaveRestSubeffect : ChooseFromListSubeffect
 {
-    public override bool AddListIfLegal(IEnumerable<Card> choices)
+    public override bool AddListIfLegal(IEnumerable<GameCard> choices)
     {
         //check that there are no elements in choices that aren't in potential targets
         //also check that, if a maximum number to choose has been specified, that many have been chosen
@@ -16,7 +16,7 @@ public class ChooseFromListSaveRestSubeffect : ChooseFromListSubeffect
             return false;
         }
 
-        IEnumerable<Card> others = potentialTargets.Except(choices);
+        IEnumerable<GameCard> others = potentialTargets.Except(choices);
 
         //add the rest of the cards to the list of targets first
         ServerEffect.Targets.AddRange(others);

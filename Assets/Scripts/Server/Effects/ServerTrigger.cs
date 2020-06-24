@@ -7,7 +7,7 @@ public class ServerTrigger : Trigger
 {
     public ServerEffect effToTrigger;
 
-    public (Card card, IStackable stack, Player player, int? x, (int, int)? space) LastTriggerInfo { get; private set; }
+    public (GameCard card, IStackable stack, Player player, int? x, (int, int)? space) LastTriggerInfo { get; private set; }
 
     /// <summary>
     /// Creates a trigger from a json
@@ -40,7 +40,7 @@ public class ServerTrigger : Trigger
     /// Pushes this trigger's effect onto the stack with the value of X if applicable.
     /// </summary>
     /// <param name="x"></param>
-    protected void TriggerEffect(Card triggerer, IStackable stackable, Player player, int? x, (int, int)? space)
+    protected void TriggerEffect(GameCard triggerer, IStackable stackable, Player player, int? x, (int, int)? space)
     {
         Debug.Log($"Triggering effect of {effToTrigger.Source.CardName} for value of x={x}");
         if (x.HasValue) effToTrigger.X = x.Value;
@@ -65,7 +65,7 @@ public class ServerTrigger : Trigger
     /// <param name="stackTrigger">The effect or attack that triggered this, if any.</param>
     /// <param name="x">If the action that triggered this has a value of x, it goes here. Otherwise, null.</param>
     /// <returns>Whether all restrictions of the trigger are fulfilled.</returns>
-    protected bool CheckTriggerRestrictions(Card cardTriggerer, IStackable stackTrigger, Player triggerer, int? x, (int x, int y)? space)
+    protected bool CheckTriggerRestrictions(GameCard cardTriggerer, IStackable stackTrigger, Player triggerer, int? x, (int x, int y)? space)
     {
         if(triggerRestriction == null)
         {
@@ -81,7 +81,7 @@ public class ServerTrigger : Trigger
     /// <param name="cardTriggerer">The card that triggered this, if any.</param>
     /// <param name="stackTrigger">The effect or attack that triggered this, if any.</param>
     /// <param name="x">If the action that triggered this has a value of x, it goes here. Otherwise, null.</param>
-    public virtual void TriggerIfValid(Card cardTriggerer, IServerStackable stackTrigger, ServerPlayer triggerer, int? x, (int, int)? space)
+    public virtual void TriggerIfValid(GameCard cardTriggerer, IServerStackable stackTrigger, ServerPlayer triggerer, int? x, (int, int)? space)
     {
         /*Debug.Log($"Is trigger valid for effect of {effToTrigger.thisCard.CardName} with id {effToTrigger.thisCard.ID}? " +
             $"{CheckTriggerRestrictions(triggerer, stackTrigger, x)}");*/

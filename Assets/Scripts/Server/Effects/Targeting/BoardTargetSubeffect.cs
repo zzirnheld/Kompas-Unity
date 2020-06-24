@@ -20,7 +20,7 @@ public class BoardTargetSubeffect : CardTargetSubeffect
         boardRestriction.Subeffect = this;
 
         //check first that there exist valid targets. if there exist no valid targets, finish resolution here
-        if (!ThisCard.game.ExistsBoardTarget(boardRestriction))
+        if (!ThisCard.Game.ExistsBoardTarget(boardRestriction))
         {
             Debug.Log("No target exists for " + ThisCard.CardName + " effect");
             ServerEffect.EffectImpossible();
@@ -35,7 +35,7 @@ public class BoardTargetSubeffect : CardTargetSubeffect
         //then wait for the network controller to call the continue method
     }
 
-    public override bool AddTargetIfLegal(Card card)
+    public override bool AddTargetIfLegal(GameCard card)
     {
         Debug.Log("Adding target if legal board target subeff " + card.CardName);
         //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)

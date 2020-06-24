@@ -10,7 +10,7 @@ public class ServerAttack : Attack, IServerStackable
 
     private ServerEffectsController EffCtrl => ServerGame.EffectsController;
 
-    public ServerAttack(ServerGame serverGame, ServerPlayer controller, CharacterCard attacker, CharacterCard defender) 
+    public ServerAttack(ServerGame serverGame, ServerPlayer controller, GameCard attacker, GameCard defender) 
         : base(controller, attacker, defender)
     {
         this.ServerGame = serverGame ?? throw new System.ArgumentNullException("Server game cannot be null for attack");
@@ -43,16 +43,8 @@ public class ServerAttack : Attack, IServerStackable
         int attackerDmg = attacker.W;
         int defenderDmg = defender.W;
         //deal the damage
-        ServerGame.SetStats(defender,
-            defender.N,
-            defender.E - attackerDmg,
-            defender.S,
-            defender.W);
-        ServerGame.SetStats(attacker,
-            attacker.N,
-            attacker.E - defenderDmg,
-            attacker.S,
-            attacker.W);
+        defender.E -= attackerDmg;
+        attacker.E -= defenderDmg;
         //trigger effects based on combat damage
         EffCtrl.Trigger(TriggerCondition.TakeCombatDamage, cardTriggerer: defender, stackTrigger: this, triggerer: ServerController, x: attackerDmg);
         EffCtrl.Trigger(TriggerCondition.TakeCombatDamage, cardTriggerer: attacker, stackTrigger: this, triggerer: ServerController, x: defenderDmg);

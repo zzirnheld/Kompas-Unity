@@ -19,4 +19,16 @@ public class SerializableCard
     public MovementRestriction MovementRestriction;
     public AttackRestriction AttackRestriction;
     public PlayRestriction PlayRestriction;
+
+    public int n;
+    public int e;
+    public int s;
+    public int w;
+    public int c;
+    public string spellType;
+    public int arg;
+    public int a;
+    public bool fast;
+    public string subtext;
+    public string[] augSubtypes;
 }

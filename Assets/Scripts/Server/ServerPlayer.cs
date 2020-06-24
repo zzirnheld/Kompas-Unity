@@ -27,24 +27,30 @@ public class ServerPlayer : Player
     /// </summary>
     /// <param name="x"></param>
     /// <param name="y"></param>
-    public void TryAugment(AugmentCard aug, int x, int y)
+    public void TryAugment(GameCard aug, int x, int y)
     {
         if (serverGame.ValidAugment(aug, x, y, this)) serverGame.Play(aug, x, y, this, true);
         else ServerNotifier.NotifyPutBack();
+
+        serverGame.EffectsController.CheckForResponse();
     }
 
-    public void TryPlay(Card card, int x, int y)
+    public void TryPlay(GameCard card, int x, int y)
     {
         if (serverGame.ValidBoardPlay(card, x, y, this)) serverGame.Play(card, x, y, this, true);
         else ServerNotifier.NotifyPutBack();
+
+        serverGame.EffectsController.CheckForResponse();
     }
 
-    public void TryMove(Card toMove, int x, int y)
+    public void TryMove(GameCard toMove, int x, int y)
     {
         Debug.Log($"Requested move {toMove?.CardName} to {x}, {y}");
         //if it's not a valid place to do, put the cards back
         if (serverGame.ValidMove(toMove, x, y)) serverGame.MoveOnBoard(toMove, x, y, true);
         else ServerNotifier.NotifyPutBack();
+
+        serverGame.EffectsController.CheckForResponse();
     }
 
     /// <summary>
@@ -62,12 +68,14 @@ public class ServerPlayer : Player
         }
     }
 
-    public void TryAttack(CharacterCard attacker, CharacterCard defender)
+    public void TryAttack(GameCard attacker, GameCard defender)
     {
         ServerNotifier.NotifyBothPutBack();
 
         if (serverGame.ValidAttack(attacker, defender, this))
             serverGame.Attack(attacker, defender, this);
+
+        serverGame.EffectsController.CheckForResponse();
     }
     #endregion Player Control Methods
 }

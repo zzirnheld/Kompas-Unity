@@ -17,7 +17,7 @@ public class BoardRestriction : CardRestriction
 
     public int cSpaces;
 
-    public override bool Evaluate(Card potentialTarget)
+    public override bool Evaluate(GameCard potentialTarget)
     {
         if (potentialTarget == null) return false;
 

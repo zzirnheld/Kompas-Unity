@@ -6,15 +6,15 @@ public class AttackSubeffect : ServerSubeffect
 {
     public int AttackerIndex = -2;
 
-    private CharacterCard Attacker
+    private ServerGameCard Attacker
     {
         get
         {
             int trueIndex = AttackerIndex < 0 ? AttackerIndex + Effect.Targets.Count : AttackerIndex;
-            return trueIndex < 0 ? null : Effect.Targets[trueIndex] as CharacterCard;
+            return trueIndex < 0 ? null : Effect.Targets[trueIndex] as ServerGameCard;
         }
     }
-    private CharacterCard Defender => Target as CharacterCard;
+    private ServerGameCard Defender => Target;
 
     public override void Resolve()
     {

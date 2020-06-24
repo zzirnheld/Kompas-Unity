@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class CardController : MonoBehaviour
 {
-    public Card card;
+    public GameCard card;
     public MeshRenderer cardFaceRenderer;
 
     public void SetPhysicalLocation(CardLocation location)
@@ -24,7 +24,7 @@ public class CardController : MonoBehaviour
                 gameObject.SetActive(true);
                 break;
             case CardLocation.Field:
-                card.gameObject.transform.SetParent(card.game.boardObject.transform);
+                card.gameObject.transform.SetParent(card.Game.boardObject.transform);
                 card.gameObject.transform.localPosition = BoardController.GridIndicesFromPos(card.BoardX, card.BoardY);
                 SetRotation();
                 gameObject.SetActive(true);
@@ -56,5 +56,13 @@ public class CardController : MonoBehaviour
         }
 
         cardFaceRenderer.material.mainTexture = detailed;
+    }
+
+    /// <summary>
+    /// Sets this card's x and y values and updates its transform
+    /// </summary>
+    public void MoveTo((int x, int y) to)
+    {
+        transform.localPosition = BoardController.GridIndicesFromPos(to.x, to.y);
     }
 }

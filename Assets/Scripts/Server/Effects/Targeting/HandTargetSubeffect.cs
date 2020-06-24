@@ -7,7 +7,7 @@ public class HandTargetSubeffect : CardTargetSubeffect
     public override void Resolve()
     {
         //check first that there exist valid targets. if there exist no valid targets, finish resolution here
-        if (!ThisCard.game.ExistsHandTarget(cardRestriction, EffectController))
+        if (!ThisCard.Game.ExistsHandTarget(cardRestriction, EffectController))
         {
             Debug.Log("No target exists for " + ThisCard.CardName + " effect");
             ServerEffect.EffectImpossible();
@@ -22,7 +22,7 @@ public class HandTargetSubeffect : CardTargetSubeffect
         //then wait for the network controller to call the continue method
     }
 
-    public override bool AddTargetIfLegal(Card card)
+    public override bool AddTargetIfLegal(GameCard card)
     {
         if (base.AddTargetIfLegal(card)) return true;
 

@@ -3,16 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class AvatarCard : CharacterCard
+public class AvatarServerGameCard : ServerGameCard
 {
-    public override int E
+    public override void SetE(int e)
     {
-        get => e < 0 ? 0 : e;
-        protected set
-        {
-            e = value > 0 ? value : 0;
-            if (e < 0) game.Lose(ControllerIndex);
-        }
+        base.SetE(e);
+        if (E < 0) ServerGame.Lose(ControllerIndex);
     }
 
     //TODO make this return whether the Avatar is summoned yet
@@ -21,6 +17,6 @@ public class AvatarCard : CharacterCard
     public override void SetInfo(SerializableCard serializedCard, Game game, Player owner, Effect[] effects, int id)
     {
         base.SetInfo(serializedCard, game, owner, effects, id);
-        E *= 2;
+        SetE(E * 2);
     }
 }

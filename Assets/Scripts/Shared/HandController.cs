@@ -5,45 +5,48 @@ using UnityEngine;
 
 public class HandController : MonoBehaviour
 {
-    private List<Card> hand = new List<Card>();
+    public Player Owner;
+
+    private List<GameCard> hand = new List<GameCard>();
 
     public int HandSize { get { return hand.Count; } }
 
     //rng for shuffling
     private static System.Random rng = new System.Random();
 
-    public void AddToHand(Card card)
+    public void AddToHand(GameCard card)
     {
         if (card == null) return;
         hand.Add(card);
         card.ResetCard();
         card.SetLocation(CardLocation.Hand);
+        card.Controller = Owner;
 
         card.transform.rotation = Quaternion.Euler(90, 0, 0);
         SpreadOutCards();
     }
 
-    public int IndexOf(Card card)
+    public int IndexOf(GameCard card)
     {
         return hand.IndexOf(card);
     }
 
-    public void RemoveFromHand(Card card)
+    public void RemoveFromHand(GameCard card)
     {
         hand.Remove(card);
         SpreadOutCards();
     }
 
-    public Card RemoveFromHandAt(int index)
+    public GameCard RemoveFromHandAt(int index)
     {
         if (index < 0 || index >= hand.Count) return null;
-        Card toReturn = hand[index];
+        GameCard toReturn = hand[index];
         hand.RemoveAt(index);
         SpreadOutCards();
         return toReturn;
     }
 
-    public Card RemoveRandomCard()
+    public GameCard RemoveRandomCard()
     {
         int randomIndex = rng.Next(hand.Count);
         return RemoveFromHandAt(randomIndex);
@@ -61,7 +64,7 @@ public class HandController : MonoBehaviour
 
     public bool Exists(CardRestriction cardRestriction)
     {
-        foreach(Card c in hand)
+        foreach(GameCard c in hand)
         {
             if (cardRestriction.Evaluate(c)) return true;
         }

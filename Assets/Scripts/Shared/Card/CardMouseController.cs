@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class CardMouseController : MonoBehaviour
 {
-    public Card Card;
+    public GameCard Card;
     public abstract Game Game { get; }
     protected bool dragging = false;
 

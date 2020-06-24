@@ -2,7 +2,7 @@
 
 public class SetAllNESWSubeffect : SetNESWSubeffect
 {
-    private (int, int, int, int) GetRealValues(CharacterCard c)
+    private (int, int, int, int) GetRealValues(GameCard c)
     {
         (int n, int e, int s, int w) = (
             NVal >= 0 ? NVal : c.N,
@@ -32,13 +32,13 @@ public class SetAllNESWSubeffect : SetNESWSubeffect
     public override void Resolve()
     {
         var targets = ServerGame.Cards.Where(c => BoardRestriction.Evaluate(c));
-        foreach (Card c in targets)
+        foreach (ServerGameCard c in targets)
         {
-            if (c is CharacterCard charCard)
-            {
-                var (n, e, s, w) = GetRealValues(charCard);
-                ServerGame.SetStats(charCard, n, e, s, w);
-            }
+            var (n, e, s, w) = GetRealValues(c);
+            c.SetN(e, ServerEffect);
+            c.SetE(e, ServerEffect);
+            c.SetE(e, ServerEffect);
+            c.SetE(e, ServerEffect);
         }
         ServerEffect.ResolveNextSubeffect();
     }

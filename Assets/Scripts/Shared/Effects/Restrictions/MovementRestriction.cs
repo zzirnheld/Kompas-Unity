@@ -24,9 +24,9 @@ public class MovementRestriction
     //Default restrictions are that only characters with enough n can move.
     public string[] Restrictions = new string[] { IsCharacter, CanMoveEnoughSpaces, DestinationCanMoveHere };
     
-    public Card Card { get; private set; }
+    public GameCard Card { get; private set; }
 
-    public void SetInfo(Card card)
+    public void SetInfo(GameCard card)
     {
         Card = card;
     }
@@ -55,7 +55,7 @@ public class MovementRestriction
                     break;
                 case DestinationCanMoveHere:
                     if (isSwapTarget) break;
-                    var atDest = Card.game.boardCtrl.GetCardAt(x, y);
+                    var atDest = Card.Game.boardCtrl.GetCardAt(x, y);
                     if (atDest == null) break;
                     if (atDest.Controller != Card.Controller) return false;
                     if (!atDest.MovementRestriction.Evaluate(Card.BoardX, Card.BoardY, isSwapTarget: true)) return false;

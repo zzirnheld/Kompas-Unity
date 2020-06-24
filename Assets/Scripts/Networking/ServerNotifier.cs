@@ -77,7 +77,7 @@ public class ServerNotifier : MonoBehaviour
     /// <summary>
     /// Notifies that the Player corresponding to this notifier played a given card
     /// </summary>
-    public void NotifyPlay(Card toPlay, int x, int y)
+    public void NotifyPlay(GameCard toPlay, int x, int y)
     {
         //tell everyone to do it
         Packet outPacket = new Packet(Packet.Command.Play, toPlay, x, y);
@@ -95,7 +95,7 @@ public class ServerNotifier : MonoBehaviour
         SendPacketsAfterInverting(outPacket, outPacketInverted, Player.index, Player.Enemy.index);
     }
 
-    public void NotifyMove(Card toMove, int x, int y, bool playerInitiated)
+    public void NotifyMove(GameCard toMove, int x, int y, bool playerInitiated)
     {
         //tell everyone to do it
         Packet friendlyPacket = new Packet(Packet.Command.Move, toMove, x, y);
@@ -103,7 +103,7 @@ public class ServerNotifier : MonoBehaviour
         SendPacketsAfterInverting(friendlyPacket, enemyPacket, Player.index, Player.Enemy.index);
     }
 
-    public void NotifyDiscard(Card toDiscard)
+    public void NotifyDiscard(GameCard toDiscard)
     {
         Packet outPacket = null;
         Packet outPacketInverted = null;
@@ -115,7 +115,7 @@ public class ServerNotifier : MonoBehaviour
         SendPackets(outPacket, outPacketInverted);
     }
 
-    public void NotifyRehand(Card toRehand)
+    public void NotifyRehand(GameCard toRehand)
     {
         Packet outPacketInverted = null;
         //and let everyone know
@@ -126,7 +126,7 @@ public class ServerNotifier : MonoBehaviour
         SendPackets(outPacket, outPacketInverted);
     }
 
-    public void NotifyTopdeck(Card card)
+    public void NotifyTopdeck(GameCard card)
     {
         Packet outPacketInverted = null;
         //and let everyone know
@@ -136,7 +136,7 @@ public class ServerNotifier : MonoBehaviour
         SendPackets(outPacket, outPacketInverted);
     }
 
-    public void NotifyBottomdeck(Card card)
+    public void NotifyBottomdeck(GameCard card)
     {
         Packet packet = new Packet(Packet.Command.Bottomdeck, card);
         Packet other = null;
@@ -145,7 +145,7 @@ public class ServerNotifier : MonoBehaviour
         SendPackets(packet, other);
     }
 
-    public void NotifyReshuffle(Card toReshuffle)
+    public void NotifyReshuffle(GameCard toReshuffle)
     {
         Packet outPacketInverted = null;
         //and let everyone know
@@ -155,13 +155,13 @@ public class ServerNotifier : MonoBehaviour
         SendPackets(outPacket, outPacketInverted);
     }
 
-    public void NotifyDraw(Card toDraw)
+    public void NotifyDraw(GameCard toDraw)
     {
         //I think it's equivalent?
         NotifyRehand(toDraw);
     }
 
-    public void NotifyAddToDeck(Card added)
+    public void NotifyAddToDeck(GameCard added)
     {
         //let everyone know
         Packet outPacket = new Packet(Packet.Command.AddAsFriendly, added.CardName, (int)CardLocation.Deck, added.ID);
@@ -191,6 +191,42 @@ public class ServerNotifier : MonoBehaviour
         SendToBoth(p);
     }
 
+    public void NotifySetN(GameCard card)
+    {
+        Packet p = new Packet(Packet.Command.SetN, card, card.N);
+        SendToBoth(p);
+    }
+
+    public void NotifySetE(GameCard card)
+    {
+        Packet p = new Packet(Packet.Command.SetE, card, card.N);
+        SendToBoth(p);
+    }
+
+    public void NotifySetS(GameCard card)
+    {
+        Packet p = new Packet(Packet.Command.SetS, card, card.N);
+        SendToBoth(p);
+    }
+
+    public void NotifySetW(GameCard card)
+    {
+        Packet p = new Packet(Packet.Command.SetW, card, card.N);
+        SendToBoth(p);
+    }
+
+    public void NotifySetC(GameCard card)
+    {
+        Packet p = new Packet(Packet.Command.SetC, card, card.N);
+        SendToBoth(p);
+    }
+
+    public void NotifySetA(GameCard card)
+    {
+        Packet p = new Packet(Packet.Command.SetA, card, card.N);
+        SendToBoth(p);
+    }
+
     public void NotifySetSpellStats(SpellCard spell, int c)
     {
         if (spell == null) throw new System.ArgumentNullException($"Spell must not be null to notify about setting stats");
@@ -198,21 +234,21 @@ public class ServerNotifier : MonoBehaviour
         SendToBoth(p);
     }
 
-    public void NotifySetNegated(Card card, bool negated)
+    public void NotifySetNegated(GameCard card, bool negated)
     {
         if (card == null) throw new System.ArgumentNullException($"Card must not be null to notify about negating");
         Packet packet = new Packet(Packet.Command.Negate, card, negated);
         SendToBoth(packet);
     }
 
-    public void NotifyActivate(Card card, bool activated)
+    public void NotifyActivate(GameCard card, bool activated)
     {
         if (card == null) throw new System.ArgumentNullException($"Card must not be null to notify about activating");
         Packet packet = new Packet(Packet.Command.Activate, card, activated);
         SendToBoth(packet);
     }
 
-    public void NotifyChangeController(Card card, Player controller)
+    public void NotifyChangeController(GameCard card, Player controller)
     {
         if (card == null) throw new System.ArgumentNullException($"Card must not be null to notify about changing controller");
         if (controller == null) throw new System.ArgumentNullException($"Player must not be null to notify about changing controller");
@@ -230,46 +266,46 @@ public class ServerNotifier : MonoBehaviour
     #endregion notify
 
     #region request targets
-    public void GetBoardTarget(Card source, BoardTargetSubeffect boardTargetSubeffect)
+    public void GetBoardTarget(GameCard source, BoardTargetSubeffect boardTargetSubeffect)
     {
         Packet outPacket = new Packet(Packet.Command.RequestBoardTarget, source, boardTargetSubeffect);
         SendPacket(outPacket);
         Debug.Log("Asking for board target");
     }
 
-    public void GetDeckTarget(Card source, CardTargetSubeffect cardTargetSubeffect)
+    public void GetDeckTarget(GameCard source, CardTargetSubeffect cardTargetSubeffect)
     {
         Packet outPacket = new Packet(Packet.Command.RequestDeckTarget, source, cardTargetSubeffect);
         SendPacket(outPacket);
         Debug.Log("Asking for deck target");
     }
 
-    public void GetDiscardTarget(Card source, CardTargetSubeffect cardTargetSubeffect)
+    public void GetDiscardTarget(GameCard source, CardTargetSubeffect cardTargetSubeffect)
     {
         Packet outPacket = new Packet(Packet.Command.RequestDiscardTarget, source, cardTargetSubeffect);
         SendPacket(outPacket);
         Debug.Log("Asking for discard target");
     }
 
-    public void GetHandTarget(Card source, CardTargetSubeffect cardTargetSubeffect)
+    public void GetHandTarget(GameCard source, CardTargetSubeffect cardTargetSubeffect)
     {
         Packet outPacket = new Packet(Packet.Command.RequestHandTarget, source, cardTargetSubeffect);
         SendPacket(outPacket);
         Debug.Log("Asking for hand target");
     }
 
-    public void GetSpaceTarget(Card effSrc, SpaceTargetSubeffect spaceTargetSubeffect)
+    public void GetSpaceTarget(GameCard effSrc, SpaceTargetSubeffect spaceTargetSubeffect)
     {
         Packet outPacket = new Packet(Packet.Command.SpaceTarget, effSrc, spaceTargetSubeffect);
         SendPacket(outPacket);
         Debug.Log("Asking for space target");
     }
 
-    public void GetChoicesFromList(IEnumerable<Card> potentialTargets, int maxNum, ChooseFromListSubeffect src)
+    public void GetChoicesFromList(IEnumerable<GameCard> potentialTargets, int maxNum, ChooseFromListSubeffect src)
     {
         int[] cardIDs = new int[potentialTargets.Count()];
         int i = 0;
-        foreach(Card c in potentialTargets) cardIDs[i++] = c.ID;
+        foreach(GameCard c in potentialTargets) cardIDs[i++] = c.ID;
         Packet packet = new Packet(Packet.Command.GetChoicesFromList, src.ThisCard, cardIDs, maxNum, src.ServerEffect.EffectIndex, src.SubeffIndex);
         SendPacket(packet);
         Debug.Log($"Asking for targets from list of cardIDs {string.Join(",", cardIDs)}");
@@ -314,13 +350,13 @@ public class ServerNotifier : MonoBehaviour
         SendPacket(p);
     }
 
-    public void GetXForEffect(Card effSource, int effIndex, int subeffIndex)
+    public void GetXForEffect(GameCard effSource, int effIndex, int subeffIndex)
     {
         Packet outPacket = new Packet(Packet.Command.PlayerSetX, effSource, effIndex, subeffIndex);
         SendPacket(outPacket);
     }
 
-    public void NotifyEffectX(Card effSrc, int effIndex, int x)
+    public void NotifyEffectX(GameCard effSrc, int effIndex, int x)
     {
         //this puts the cardid in the right place, eff index in right place, x in packet.X
         Packet outPacket = new Packet(Packet.Command.SetEffectsX, effSrc, effIndex, 0, x, 0);
@@ -347,9 +383,9 @@ public class ServerNotifier : MonoBehaviour
         SendToBoth(packet);
     }
 
-    public void AskForTrigger(ServerTrigger t, int? x, Card cardTriggerer, IServerStackable stackTriggerer, ServerPlayer triggerer)
+    public void AskForTrigger(ServerTrigger t, int? x, GameCard cardTriggerer, IServerStackable stackTriggerer, ServerPlayer triggerer)
     {
-        Card cardWhoseTrigger = t.effToTrigger.Source;
+        GameCard cardWhoseTrigger = t.effToTrigger.Source;
         int effIndex = t.effToTrigger.EffectIndex;
         //TODO send info about triggerer to display on client
         Packet packet = new Packet(Packet.Command.OptionalTrigger, cardWhoseTrigger, effIndex, 0, x ?? 0, 0);

@@ -39,7 +39,7 @@ public class SpaceRestriction
         {
             for(int j = 0; j < 7; j++)
             {
-                Card c = Subeffect.Effect.Game.boardCtrl.GetCardAt(i, j);
+                GameCard c = Subeffect.Effect.Game.boardCtrl.GetCardAt(i, j);
                 if (c != null && c.IsAdjacentTo(x, y) && r.Evaluate(c)) return true;
             }
         }

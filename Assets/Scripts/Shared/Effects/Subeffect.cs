@@ -11,7 +11,7 @@ public abstract class Subeffect
 
     public int SubeffIndex { get; protected set; }
 
-    public Card Source => Effect.Source;
+    public GameCard Source => Effect.Source;
 
     /// <summary>
     /// The index in the Effect.targets array for which target this effect uses.
@@ -19,12 +19,4 @@ public abstract class Subeffect
     /// If negative, it's Effect.targets.Count + targetIndex (aka that many back from the end)
     /// </summary>
     public int TargetIndex = -1;
-
-    public Card GetTarget(int num)
-    {
-        int trueIndex = num < 0 ? num + Effect.Targets.Count : num;
-        return trueIndex < 0 ? null : Effect.Targets[trueIndex];
-    }
-
-    public Card Target => GetTarget(TargetIndex);
 }

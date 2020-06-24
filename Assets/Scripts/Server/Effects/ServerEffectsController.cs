@@ -10,7 +10,7 @@ public class ServerEffectsController : MonoBehaviour
 
     protected ServerEffectStack stack;
 
-    public Stack<(ServerTrigger, Card, IServerStackable, ServerPlayer, int?, ServerPlayer)> OptionalTriggersToAsk;
+    public Stack<(ServerTrigger, GameCard, IServerStackable, ServerPlayer, int?, ServerPlayer)> OptionalTriggersToAsk;
 
     //trigger map
     protected Dictionary<TriggerCondition, List<ServerTrigger>> triggerMap;
@@ -22,7 +22,7 @@ public class ServerEffectsController : MonoBehaviour
     {
         stack = new ServerEffectStack();
 
-        OptionalTriggersToAsk = new Stack<(ServerTrigger, Card, IServerStackable, ServerPlayer, int?, ServerPlayer)>();
+        OptionalTriggersToAsk = new Stack<(ServerTrigger, GameCard, IServerStackable, ServerPlayer, int?, ServerPlayer)>();
 
         triggerMap = new Dictionary<TriggerCondition, List<ServerTrigger>>();
         foreach (TriggerCondition c in System.Enum.GetValues(typeof(TriggerCondition)))
@@ -174,7 +174,7 @@ public class ServerEffectsController : MonoBehaviour
     }
 
     public void Trigger(TriggerCondition condition, 
-        Card cardTriggerer = null, IServerStackable stackTrigger = null, ServerPlayer triggerer = null, int? x = null, (int, int)? space = null)
+        GameCard cardTriggerer = null, IServerStackable stackTrigger = null, ServerPlayer triggerer = null, int? x = null, (int, int)? space = null)
     {
         List<HangingEffect> toRemove = new List<HangingEffect>();
         foreach (HangingEffect t in hangingEffectMap[condition])
@@ -202,7 +202,7 @@ public class ServerEffectsController : MonoBehaviour
     /// </summary>
     /// <param name="trigger"></param>
     /// <param name="x"></param>
-    public void AskForTrigger(ServerTrigger trigger, int? x, Card cardTriggerer, IServerStackable stackTriggerer, ServerPlayer triggerer, ServerPlayer controller)
+    public void AskForTrigger(ServerTrigger trigger, int? x, GameCard cardTriggerer, IServerStackable stackTriggerer, ServerPlayer triggerer, ServerPlayer controller)
     {
         Debug.Log($"Asking about trigger for effect of card {trigger.effToTrigger.Source.CardName}");
         lock (TriggerStackLock)

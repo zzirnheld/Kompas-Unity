@@ -7,9 +7,9 @@ using UnityEngine;
 /// </summary>
 public abstract class Effect
 {
-    public Game Game => Source.game;
+    public Game Game => Source.Game;
 
-    public Card Source { get; }
+    public GameCard Source { get; }
     public abstract Player Controller { get; set; }
 
     //subeffects
@@ -20,9 +20,9 @@ public abstract class Effect
 
     public int EffectIndex => System.Array.IndexOf(Source.Effects, this);
 
-    public List<Card> Targets { get; private set; }
+    public abstract IEnumerable<GameCard> Targets { get; }
     public List<Vector2Int> Coords { get; private set; }
-    public List<Card> Rest { get; private set; }
+    public List<GameCard> Rest { get; private set; }
 
     public abstract Trigger Trigger { get; }
     public ActivationRestriction ActivationRestriction { get; }
@@ -45,15 +45,15 @@ public abstract class Effect
     public int TimesUsedThisTurn { get; protected set; }
     public int TimesUsedThisRound { get; protected set; }
 
-    public Effect(ActivationRestriction restriction, Card source, string blurb)
+    public Effect(ActivationRestriction restriction, GameCard source, string blurb)
     {
         Source = source ?? throw new System.ArgumentNullException($"Effect cannot be attached to null card");
         ActivationRestriction = restriction;
         ActivationRestriction.Initialize(this);
         Blurb = blurb;
         TimesUsedThisTurn = 0;
-        Targets = new List<Card>();
-        Rest = new List<Card>();
+        Targets = new List<GameCard>();
+        Rest = new List<GameCard>();
         Coords = new List<Vector2Int>();
     }
 

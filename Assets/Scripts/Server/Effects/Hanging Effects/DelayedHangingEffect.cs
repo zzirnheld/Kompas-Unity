@@ -19,7 +19,7 @@ public class DelayedHangingEffect : HangingEffect
         numTimesDelayed = 0;
     }
 
-    protected override bool ShouldEnd(Card cardTrigger, IStackable stackTrigger, Player triggerer, int? x, (int x, int y)? space)
+    protected override bool ShouldEnd(GameCard cardTrigger, IStackable stackTrigger, Player triggerer, int? x, (int x, int y)? space)
     {
         //first check any other logic
         if (!base.ShouldEnd(cardTrigger, stackTrigger, triggerer, x, space)) return false;

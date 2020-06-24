@@ -5,7 +5,7 @@ using UnityEngine;
 public class SwapSubeffect : ServerSubeffect
 {
     public int SecondTargetIndex = -2;
-    public Card SecondTarget => GetTarget(SecondTargetIndex);
+    public GameCard SecondTarget => GetTarget(SecondTargetIndex);
 
     public override void Resolve()
     {

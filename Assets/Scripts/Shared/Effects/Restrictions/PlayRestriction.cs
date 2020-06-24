@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayRestriction
 {
-    public Card Card { get; private set; }
+    public GameCard Card { get; private set; }
 
     public const string PlayedByCardOwner = "Played By Card Owner";
     public const string FromHand = "From Hand";
@@ -19,12 +19,12 @@ public class PlayRestriction
     private int x;
     private int y;
     
-    public void SetInfo(Card card)
+    public void SetInfo(GameCard card)
     {
         Card = card;
     }
 
-    private bool CardIsAdjToCoordsAndFriendly(Card c)
+    private bool CardIsAdjToCoordsAndFriendly(GameCard c)
     {
         return c != null && c.IsAdjacentTo(x, y) && c.Controller == Card.Controller;
     }
@@ -45,10 +45,10 @@ public class PlayRestriction
                     if (Card.Location != CardLocation.Hand) return false;
                     break;
                 case AdjacentToFriendlyCard:
-                    if (!Card.game.boardCtrl.ExistsCardOnBoard(c => CardIsAdjToCoordsAndFriendly(c))) return false;
+                    if (!Card.Game.boardCtrl.ExistsCardOnBoard(c => CardIsAdjToCoordsAndFriendly(c))) return false;
                     break;
                 case FriendlyTurn:
-                    if (Card.game.TurnPlayer != Card.Controller) return false;
+                    if (Card.Game.TurnPlayer != Card.Controller) return false;
                     break;
                 case NotNormally:
                     return false;
@@ -71,10 +71,10 @@ public class PlayRestriction
             switch (r)
             {
                 case AdjacentToFriendlyCard:
-                    if (!Card.game.boardCtrl.ExistsCardOnBoard(c => CardIsAdjToCoordsAndFriendly(c))) return false;
+                    if (!Card.Game.boardCtrl.ExistsCardOnBoard(c => CardIsAdjToCoordsAndFriendly(c))) return false;
                     break;
                 case FriendlyTurn:
-                    if (Card.game.TurnPlayer != Card.Controller) return false;
+                    if (Card.Game.TurnPlayer != Card.Controller) return false;
                     break;
                 case MustNormally:
                     return false;

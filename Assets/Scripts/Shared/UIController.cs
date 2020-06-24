@@ -36,21 +36,21 @@ public class UIController : MonoBehaviour {
     public GameObject networkingParent;
 
     //selection variables
-    public Card SelectedCard { get; protected set; }
+    public GameCard SelectedCard { get; protected set; }
 
     private bool hovering = false;
-    private Card hoveredCard;
+    private GameCard hoveredCard;
 
-    protected Card shownCard;
+    protected GameCard shownCard;
 
     public bool DebugMode { get { return debugToggle.isOn; } }
 
     //deck search vars
-    public List<Card> thingToSearch;
+    public List<GameCard> thingToSearch;
 
     public virtual void ResetShownInfo() => ShowInfoFor(hovering ? hoveredCard : SelectedCard);
 
-    public virtual void ShowInfoFor(Card card, bool refresh = false)
+    public virtual void ShowInfoFor(GameCard card, bool refresh = false)
     {
         if (shownCard == card && !refresh) return;
 
@@ -89,7 +89,7 @@ public class UIController : MonoBehaviour {
     /// </summary>
     /// <param name="card">make this null to deselect</param>
     /// <param name="fromClick">whether the selecting is from clicking, aka choosing a target</param>
-    public virtual void SelectCard(Card card, Game.TargetMode targetMode, bool fromClick)
+    public virtual void SelectCard(GameCard card, Game.TargetMode targetMode, bool fromClick)
     {
         //if the card is null, deselect everything
         if (card == null)
@@ -111,10 +111,10 @@ public class UIController : MonoBehaviour {
         ShowInfoFor(card);
     }
 
-    public void SelectCard(Card card, bool fromClick)
+    public void SelectCard(GameCard card, bool fromClick)
     {
         if (card == null) SelectCard(null, Game.TargetMode.Free, fromClick);
-        else SelectCard(card, card.game.targetMode, fromClick);
+        else SelectCard(card, card.Game.targetMode, fromClick);
     }
 
     public void StopHovering()
@@ -125,7 +125,7 @@ public class UIController : MonoBehaviour {
         hovering = false;
     }
 
-    public void HoverOver(Card card)
+    public void HoverOver(GameCard card)
     {
         if(card == null)
         {

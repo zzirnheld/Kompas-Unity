@@ -25,14 +25,14 @@ public abstract class HangingEffect
     /// <param name="cardTrigger">The card that triggered the triggering event</param>
     /// <param name="stackTrigger">The item on the stack that triggered the event</param>
     /// <returns><see langword="true"/> if the hanging effect is now ended, <see langword="false"/> otherwise.</returns>
-    public virtual bool EndIfApplicable(Card cardTrigger, IStackable stackTrigger, Player triggerer, int? x, (int x, int y)? space)
+    public virtual bool EndIfApplicable(GameCard cardTrigger, IStackable stackTrigger, Player triggerer, int? x, (int x, int y)? space)
     {
         bool end = ShouldEnd(cardTrigger, stackTrigger, triggerer, x, space);
         if (end) Resolve();
         return end;
     }
 
-    protected virtual bool ShouldEnd(Card cardTrigger, IStackable stackTrigger, Player triggerer, int? x, (int x, int y)? space)
+    protected virtual bool ShouldEnd(GameCard cardTrigger, IStackable stackTrigger, Player triggerer, int? x, (int x, int y)? space)
     {
         return triggerRestriction.Evaluate(cardTrigger, stackTrigger, triggerer, x, space);
     }

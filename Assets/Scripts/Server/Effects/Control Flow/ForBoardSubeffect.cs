@@ -24,7 +24,7 @@ public class ForBoardSubeffect : ServerSubeffect
         {
             for (; yCount < 7; yCount++)
             {
-                Card c = ServerEffect.serverGame.boardCtrl.GetCardAt(xCount, yCount);
+                GameCard c = ServerEffect.serverGame.boardCtrl.GetCardAt(xCount, yCount);
                 if (restriction.Evaluate(c))
                 {
                     //if we haven't found a first target yet, add the first target to the list

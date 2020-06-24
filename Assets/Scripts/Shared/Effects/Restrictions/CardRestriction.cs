@@ -75,7 +75,7 @@ public class CardRestriction
 
     public string Blurb = "";
 
-    public virtual bool Evaluate (Card potentialTarget, int x)
+    public virtual bool Evaluate (GameCard potentialTarget, int x)
     {
         if (potentialTarget == null) return false;
 
@@ -266,7 +266,7 @@ public class CardRestriction
     /// <param name="potentialTarget"></param>
     /// <param name="actuallyTargetThis">Whether effect resolution should continue if this is a valid target</param>
     /// <returns></returns>
-    public virtual bool Evaluate(Card potentialTarget)
+    public virtual bool Evaluate(GameCard potentialTarget)
     {
         return Evaluate(potentialTarget, Subeffect.Effect.X);
     }
