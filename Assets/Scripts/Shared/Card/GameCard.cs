@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 public abstract class GameCard : CardBase {
     public CardController cardCtrl;
 
+    private SerializableCard serializedCard;
+
     #region stats
     public int N { get; private set; }
     public int E { get; protected set; }
@@ -155,6 +157,7 @@ public abstract class GameCard : CardBase {
         base.SetInfo(serializedCard);
 
         this.ID = id;
+        this.serializedCard = serializedCard;
         
         N = serializedCard.n;
         E = serializedCard.e;
@@ -212,7 +215,7 @@ public abstract class GameCard : CardBase {
     /// Resets any of the card's values that might be different from their originals.
     /// Should be called when cards move out the discard, or into the hand, deck, or annihilation
     /// </summary>
-    public virtual void ResetCard() { }
+    public virtual void ResetCard() { if (serializedCard != null) SetInfo(serializedCard, ID); }
 
     /// <summary>
     /// Resets anything that needs to be reset for the start of the turn.
@@ -245,7 +248,11 @@ public abstract class GameCard : CardBase {
 
     #region statfuncs
     public virtual void SetN(int n, IStackable stackSrc = null) => N = n;
-    public virtual void SetE(int e, IStackable stackSrc = null) => E = e;
+    public virtual void SetE(int e, IStackable stackSrc = null)
+    {
+        E = e;
+        if (E < 0) Discard(stackSrc);
+    }
     public virtual void SetS(int s, IStackable stackSrc = null) => S = s;
     public virtual void SetW(int w, IStackable stackSrc = null) => W = w;
     public virtual void SetC(int c, IStackable stackSrc = null) => C = c;

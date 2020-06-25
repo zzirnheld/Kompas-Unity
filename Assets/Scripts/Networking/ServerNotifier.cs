@@ -199,31 +199,31 @@ public class ServerNotifier : MonoBehaviour
 
     public void NotifySetE(GameCard card)
     {
-        Packet p = new Packet(Packet.Command.SetE, card, card.N);
+        Packet p = new Packet(Packet.Command.SetE, card, card.E);
         SendToBoth(p);
     }
 
     public void NotifySetS(GameCard card)
     {
-        Packet p = new Packet(Packet.Command.SetS, card, card.N);
+        Packet p = new Packet(Packet.Command.SetS, card, card.S);
         SendToBoth(p);
     }
 
     public void NotifySetW(GameCard card)
     {
-        Packet p = new Packet(Packet.Command.SetW, card, card.N);
+        Packet p = new Packet(Packet.Command.SetW, card, card.W);
         SendToBoth(p);
     }
 
     public void NotifySetC(GameCard card)
     {
-        Packet p = new Packet(Packet.Command.SetC, card, card.N);
+        Packet p = new Packet(Packet.Command.SetC, card, card.C);
         SendToBoth(p);
     }
 
     public void NotifySetA(GameCard card)
     {
-        Packet p = new Packet(Packet.Command.SetA, card, card.N);
+        Packet p = new Packet(Packet.Command.SetA, card, card.A);
         SendToBoth(p);
     }
 
