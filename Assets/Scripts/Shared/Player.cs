@@ -9,7 +9,12 @@ public abstract class Player : MonoBehaviour{
     public abstract Player Enemy { get; }
 
     //game mechanics data
-    public int pips = 3;
+    private int pips = 3;
+    public virtual int Pips
+    {
+        get => pips;
+        set => pips = value;
+    }
     public GameCard Avatar;
 
     //other game data

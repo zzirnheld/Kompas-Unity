@@ -74,6 +74,14 @@ public class ServerNotifier : MonoBehaviour
         SendToBoth(p);
     }
 
+    public void NotifyAttach(GameCard toAttach, int x, int y)
+    {
+        Packet p = new Packet(Packet.Command.Attach, toAttach, x, y);
+        Packet q = toAttach.Location == CardLocation.Discard || toAttach.Location == CardLocation.Field ?
+            new Packet(Packet.Command.Attach, toAttach, x, y) : null;
+        SendPacketsAfterInverting(p, q, Player.index, Player.Enemy.index);
+    }
+
     /// <summary>
     /// Notifies that the Player corresponding to this notifier played a given card
     /// </summary>

@@ -7,8 +7,6 @@ namespace KompasNetworking
 {
     public class Packet
     {
-        public static int id = 0;
-
         public enum Command
         {
             //game start procedures
@@ -22,6 +20,7 @@ namespace KompasNetworking
             Augment = 101,
             Move = 102,
             Attack = 103,
+            Attach = 104,
             EndTurn = 150,
             Leyload = 151,
             //move cards around
@@ -104,7 +103,6 @@ namespace KompasNetworking
         public Command command;
 
         public int cardID;
-        public int packetID;
 
         public int[] normalArgs;
         public string stringArg;
@@ -139,7 +137,6 @@ namespace KompasNetworking
         public Packet(Command command)
         {
             this.command = command;
-            id = (id + 1) % 1000;
 
             normalArgs = new int[4];
             specialArgs = new int[0];

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HandController : MonoBehaviour
+public abstract class HandController : MonoBehaviour
 {
     public Player Owner;
 
@@ -14,9 +14,10 @@ public class HandController : MonoBehaviour
     //rng for shuffling
     private static System.Random rng = new System.Random();
 
-    public void AddToHand(GameCard card)
+    public virtual void AddToHand(GameCard card, IStackable stackSrc = null)
     {
         if (card == null) return;
+        card.Remove();
         hand.Add(card);
         card.ResetCard();
         card.Location = CardLocation.Hand;

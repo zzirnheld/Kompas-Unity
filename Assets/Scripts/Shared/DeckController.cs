@@ -38,26 +38,27 @@ public class DeckController : MonoBehaviour
         return card;
     }
 
-    private void AddCard(GameCard card)
+    protected virtual void AddCard(GameCard card, IStackable stackSrc = null)
     {
+        card.Remove();
         card.Location = CardLocation.Deck;
         card.Controller = Owner;
     }
 
     //adding and removing cards
-    public void PushTopdeck(GameCard card)
+    public virtual void PushTopdeck(GameCard card, IStackable stackSrc = null)
     {
         Deck.Insert(0, card);
         AddCard(card);
     }
 
-    public void PushBottomdeck(GameCard card)
+    public virtual void PushBottomdeck(GameCard card, IStackable stackSrc = null)
     {
         Deck.Add(card);
         AddCard(card);
     }
 
-    public void ShuffleIn(GameCard card)
+    public virtual void ShuffleIn(GameCard card, IStackable stackSrc = null)
     {
         Deck.Add(card);
         Shuffle();

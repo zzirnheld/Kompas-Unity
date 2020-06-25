@@ -229,7 +229,7 @@ public class CardRestriction
                     if (found) break;
                     else return false;
                 case CardRestrictions.EffectControllerCanPayCost:
-                    if (Subeffect.Effect.Controller.pips < potentialTarget.Cost * costMultiplier / costDivisor) return false;
+                    if (Subeffect.Effect.Controller.Pips < potentialTarget.Cost * costMultiplier / costDivisor) return false;
                     break;
                 default:
                     Debug.LogError($"You forgot to implement a check for {c}");

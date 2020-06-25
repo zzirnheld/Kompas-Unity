@@ -13,6 +13,16 @@ public class ServerPlayer : Player
 
     public override Player Enemy => ServerEnemy;
 
+    public override int Pips
+    {
+        get => base.Pips;
+        set
+        {
+            base.Pips = value;
+            ServerNotifier.NotifySetPips(Pips);
+        }
+    }
+
     public override void SetInfo(TcpClient tcpClient, int index)
     {
         base.SetInfo(tcpClient, index);

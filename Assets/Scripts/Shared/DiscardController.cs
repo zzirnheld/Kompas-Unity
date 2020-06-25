@@ -25,8 +25,9 @@ public class DiscardController : MonoBehaviour {
     }
 
     //adding/removing cards
-	public void AddToDiscard(GameCard card)
+	public virtual void AddToDiscard(GameCard card, IStackable stackSrc = null)
     {
+        card.Remove();
         Debug.Assert(card != null);
         Debug.Log("Adding to discard: " + card.CardName);
         discard.Add(card);

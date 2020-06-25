@@ -79,23 +79,25 @@ public class BoardController : MonoBehaviour
     public void RemoveFromBoard(GameCard toRemove)
     {
         if (toRemove == null || toRemove.Location != CardLocation.Field) return;
-        else if (toRemove.CardType == 'A') toRemove.Detach();
-        else RemoveFromBoard(toRemove.BoardX, toRemove.BoardY);
+
+        RemoveFromBoard(toRemove.BoardX, toRemove.BoardY);
     }
 
     public void RemoveFromBoard(int x, int y) => cards[x, y] = null;
-
+    
     /// <summary>
     /// Puts the card on the board
     /// </summary>
     /// <param name="toPlay">Card to be played</param>
     /// <param name="toX">X coordinate to play the card to</param>
     /// <param name="toY">Y coordinate to play the card to</param>
-    public void Play(GameCard toPlay, int toX, int toY, Player controller)
+    public virtual void Play(GameCard toPlay, int toX, int toY, Player controller, IStackable stackSrc = null)
     {
+        toPlay.Remove();
+
         Debug.Log($"In boardctrl, playing {toPlay.CardName} to {toX}, {toY}");
 
-        if (toPlay.CardType == 'A') cards[toX, toY].AddAugment(toPlay);
+        if (toPlay.CardType == 'A') cards[toX, toY].AddAugment(toPlay, stackSrc);
         else cards[toX, toY] = toPlay;
 
         toPlay.Location = CardLocation.Field;
@@ -109,7 +111,7 @@ public class BoardController : MonoBehaviour
     }
 
     //movement
-    public void Swap(GameCard card, int toX, int toY, bool playerInitiated)
+    public virtual void Swap(GameCard card, int toX, int toY, bool playerInitiated, IStackable stackSrc = null)
     {
         Debug.Log($"Swapping {card?.CardName} to {toX}, {toY}");
 
@@ -131,16 +133,12 @@ public class BoardController : MonoBehaviour
         if (temp != null) temp.Position = (tempX, tempY);
     }
 
-    public void Move(GameCard card, int toX, int toY, bool playerInitiated)
+    public void Move(GameCard card, int toX, int toY, bool playerInitiated, IStackable stackSrc = null)
     {
         if (!ValidIndices(toX, toY)) return;
 
-        if (card.AugmentedCard != null)
-        {
-            card.Detach();
-            cards[toX, toY].AddAugment(card);
-        }
-        else Swap(card, toX, toY, playerInitiated);
+        if (card.AugmentedCard != null) cards[toX, toY].AddAugment(card, stackSrc);
+        else Swap(card, toX, toY, playerInitiated, stackSrc);
     }
 
     public void PutCardsBack()

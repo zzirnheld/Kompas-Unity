@@ -69,13 +69,13 @@ public class ClientGame : Game {
     #region setting pips
     public void SetFriendlyPips(int num)
     {
-        Players[0].pips = num;
+        Players[0].Pips = num;
         uiCtrl.UpdateFriendlyPips(num);
     }
 
     public void SetEnemyPips(int num)
     {
-        Players[1].pips = num;
+        Players[1].Pips = num;
         uiCtrl.UpdateEnemyPips(num);
     }
     #endregion

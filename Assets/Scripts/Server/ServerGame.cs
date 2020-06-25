@@ -159,15 +159,13 @@ public class ServerGame : Game {
     {
         //set initial pips (based on avatars' S)
         Debug.Log($"Starting game. Player 0 avatar is null? {Players[0].Avatar == null}. Player 1 is null? {Players[1].Avatar == null}.");
-        Players[0].pips = Players[1].Avatar.S;
-        Players[1].pips = Players[0].Avatar.S;
+        Players[0].Pips = Players[1].Avatar.S;
+        Players[1].Pips = Players[0].Avatar.S;
 
         //determine who goes first and tell the players
         TurnPlayerIndex = Random.value > 0.5f ? 0 : 1;
         ServerPlayers[TurnPlayerIndex].ServerNotifier.YoureFirst();
         ServerPlayers[1 - TurnPlayerIndex].ServerNotifier.YoureSecond();
-        ServerPlayers[0].ServerNotifier.NotifySetPips(ServerPlayers[0].pips);
-        ServerPlayers[1].ServerNotifier.NotifySetPips(ServerPlayers[1].pips);
 
         foreach(var player in ServerPlayers)
         {
@@ -201,15 +199,14 @@ public class ServerGame : Game {
 
     public void GivePlayerPips(ServerPlayer player, int pipsToSet)
     {
-        player.pips = pipsToSet;
+        player.Pips = pipsToSet;
         if (player.index == 0) uiCtrl.UpdateFriendlyPips(pipsToSet);
         else uiCtrl.UpdateEnemyPips(pipsToSet);
-        player.ServerNotifier.NotifySetPips(pipsToSet);
     }
 
     public void GiveTurnPlayerPips()
     {
-        int pipsToSet = TurnPlayer.pips + Leyload;
+        int pipsToSet = TurnPlayer.Pips + Leyload;
         GivePlayerPips(TurnServerPlayer, pipsToSet);
     }
 

@@ -232,14 +232,15 @@ public abstract class GameCard : CardBase {
     }
 
     #region augments
-    public void AddAugment(GameCard augment)
+    public virtual void AddAugment(GameCard augment, IStackable stackSrc = null)
     {
         if (augment == null) return;
+        if (augment.AugmentedCard != null) augment.Detach(stackSrc);
         Augments.Add(augment);
         augment.AugmentedCard = this;
     }
 
-    public void Detach()
+    protected virtual void Detach(IStackable stackSrc = null)
     {
         AugmentedCard.Augments.Remove(this);
         AugmentedCard = null;
@@ -280,12 +281,13 @@ public abstract class GameCard : CardBase {
 
     #region moveCard
     //so that notify stuff can be sent in the server
-    private void Remove()
+    public void Remove()
     {
         switch (Location)
         {
             case CardLocation.Field:
-                Game.boardCtrl.RemoveFromBoard(this);
+                if (AugmentedCard != null) Detach();
+                else Game.boardCtrl.RemoveFromBoard(this);
                 break;
             case CardLocation.Discard:
                 Controller.discardCtrl.RemoveFromDiscard(this);
@@ -302,51 +304,28 @@ public abstract class GameCard : CardBase {
         }
     }
 
-    public virtual void Discard(IStackable stackSrc = null)
-    {
-        Remove();
-        Controller.discardCtrl.AddToDiscard(this);
-    }
+    public virtual void Discard(IStackable stackSrc = null) => Controller.discardCtrl.AddToDiscard(this, stackSrc);
 
-    public virtual void Rehand(Player controller, IStackable stackSrc = null)
-    {
-        Remove();
-        controller.handCtrl.AddToHand(this);
-    }
-    public void Rehand() => Rehand(Controller);
+    public virtual void Rehand(Player controller, IStackable stackSrc = null) => controller.handCtrl.AddToHand(this, stackSrc);
+    public void Rehand(IStackable stackSrc = null) => Rehand(Controller, stackSrc);
 
-    public virtual void Reshuffle(Player controller, IStackable stackSrc = null)
-    {
-        Remove();
-        controller.deckCtrl.ShuffleIn(this);
-    }
-    public void Reshuffle() => Reshuffle(Controller);
+    public virtual void Reshuffle(Player controller, IStackable stackSrc = null) => controller.deckCtrl.ShuffleIn(this, stackSrc);
+    public void Reshuffle(IStackable stackSrc = null) => Reshuffle(Controller, stackSrc);
 
-    public virtual void Topdeck(Player controller, IStackable stackSrc = null)
-    {
-        Remove();
-        controller.deckCtrl.PushTopdeck(this);
-    }
-    public void Topdeck() => Topdeck(Controller);
+    public virtual void Topdeck(Player controller, IStackable stackSrc = null) => controller.deckCtrl.PushTopdeck(this, stackSrc);
+    public void Topdeck(IStackable stackSrc = null) => Topdeck(Controller, stackSrc);
 
-    public virtual void Bottomdeck(Player controller, IStackable stackSrc = null)
-    {
-        Remove();
-        controller.deckCtrl.PushBottomdeck(this);
-    }
-    public void Bottomdeck() => Bottomdeck(Controller);
+    public virtual void Bottomdeck(Player controller, IStackable stackSrc = null) => controller.deckCtrl.PushBottomdeck(this, stackSrc);
+    public void Bottomdeck(IStackable stackSrc = null) => Bottomdeck(Controller, stackSrc);
 
     public virtual void Play(int toX, int toY, Player controller, IStackable stackSrc = null, bool payCost = false)
     {
-        Remove();
         Game.boardCtrl.Play(this, toX, toY, controller);
-        if (payCost) controller.pips -= Cost;
+        if (payCost) controller.Pips -= Cost;
     }
 
     public virtual void Move(int toX, int toY, bool normalMove, IStackable stackSrc = null)
-    {
-        Game.boardCtrl.Move(this, toX, toY, normalMove);
-    }
+        => Game.boardCtrl.Move(this, toX, toY, normalMove, stackSrc);
 
     public void SwapCharStats(GameCard other, bool swapN = true, bool swapE = true, bool swapS = true, bool swapW = true)
     {

@@ -43,6 +43,21 @@ public class ServerGameCard : GameCard
         ServerEffects = effects;
     }
 
+    public override void AddAugment(GameCard augment, IStackable stackSrc = null)
+    {
+        EffectsController.Trigger(TriggerCondition.AugmentAttached,
+            cardTriggerer: augment, stackTrigger: stackSrc, triggerer: stackSrc?.Controller ?? Controller);
+        ServerNotifier.NotifyAttach(augment, BoardX, BoardY);
+        base.AddAugment(augment, stackSrc);
+    }
+
+    protected override void Detach(IStackable stackSrc = null)
+    {
+        EffectsController.Trigger(TriggerCondition.AugmentDetached,
+            cardTriggerer: this, stackTrigger: stackSrc, triggerer: stackSrc?.Controller ?? Controller);
+        base.Detach(stackSrc);
+    }
+
     #region stats
     public override void SetN(int n, IStackable stackSrc = null)
     {
@@ -123,71 +138,4 @@ public class ServerGameCard : GameCard
         base.SetActivated(activated, stackSrc);
     }
     #endregion stats
-
-    #region MoveCards
-    public override void Discard(IStackable stackSrc = null)
-    {
-        EffectsController.Trigger(TriggerCondition.Discard, cardTriggerer: this, stackTrigger: stackSrc, triggerer: stackSrc?.Controller);
-        ServerNotifier.NotifyDiscard(this);
-        base.Discard(stackSrc);
-    }
-
-    public override void Rehand(Player controller, IStackable stackSrc = null)
-    {
-        EffectsController.Trigger(TriggerCondition.Rehand, cardTriggerer: this, stackTrigger: stackSrc, triggerer: controller);
-        ServerNotifier.NotifyRehand(this);
-        base.Rehand(controller, stackSrc);
-    }
-
-    public override void Reshuffle(Player controller, IStackable stackSrc = null)
-    {
-        EffectsController.Trigger(TriggerCondition.Reshuffle, cardTriggerer: this, stackTrigger: stackSrc, triggerer: controller);
-        ServerNotifier.NotifyReshuffle(this);
-        base.Reshuffle(controller, stackSrc);
-    }
-
-    public override void Topdeck(Player controller, IStackable stackSrc = null)
-    {
-        EffectsController.Trigger(TriggerCondition.Topdeck, cardTriggerer: this, stackTrigger: stackSrc, triggerer: controller);
-        ServerNotifier.NotifyTopdeck(this);
-        base.Topdeck(controller, stackSrc);
-    }
-
-    public override void Bottomdeck(Player controller, IStackable stackSrc = null)
-    {
-        EffectsController.Trigger(TriggerCondition.Bottomdeck, cardTriggerer: this, stackTrigger: stackSrc, triggerer: controller);
-        ServerNotifier.NotifyBottomdeck(this);
-        base.Bottomdeck(controller, stackSrc);
-    }
-
-    public override void Play(int toX, int toY, Player controller, IStackable stackSrc = null, bool payCost = false)
-    {
-        EffectsController.Trigger(TriggerCondition.Play,
-            cardTriggerer: this, stackTrigger: stackSrc, triggerer: controller, space: (toX, toY));
-        //notify from new controller because could be someone other than this controller
-        ServerGame.ServerPlayers[controller.index].ServerNotifier.NotifyPlay(this, toX, toY);
-        base.Play(toX, toY, controller, stackSrc, payCost);
-        ServerGame.ServerPlayers[controller.index].ServerNotifier.NotifySetPips(controller.pips);
-
-        //if we just played an augment, note that, and trigger augment
-        if (CardType == 'A')
-            EffectsController.Trigger(TriggerCondition.AugmentAttached,
-                cardTriggerer: this, stackTrigger: stackSrc, triggerer: controller);
-    }
-
-    public override void Move(int toX, int toY, bool normalMove, IStackable stackSrc = null)
-    {
-        EffectsController.Trigger(TriggerCondition.Move,
-            cardTriggerer: this, stackTrigger: stackSrc, triggerer: Controller, space: (toX, toY));
-        ServerNotifier.NotifyMove(this, toX, toY, normalMove);
-
-        var at = Game.boardCtrl.GetCardAt(toX, toY);
-        if (at != null)
-        {
-            EffectsController.Trigger(TriggerCondition.Move,
-                cardTriggerer: at, stackTrigger: stackSrc, triggerer: Controller, space: (BoardX, BoardY));
-        }
-        base.Move(toX, toY, normalMove, stackSrc);
-    }
-    #endregion MoveCards
 }
