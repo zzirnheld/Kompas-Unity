@@ -43,7 +43,7 @@
 				"{
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[2,3],
+						\"restrictionsToCheck\":[2,3,102],
 						\"subtypesInclude\":[\"Tarocco\"]
 					}
 				}",

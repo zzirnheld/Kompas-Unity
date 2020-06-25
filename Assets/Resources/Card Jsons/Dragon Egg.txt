@@ -27,7 +27,7 @@
 				\"cardRestriction\":
 				{
 					\"Blurb\":\"for Dragon Egg to become\",
-					\"restrictionsToCheck\":[2,3,601],
+					\"restrictionsToCheck\":[2,3,102,601],
 					\"subtypesInclude\":[\"Dragon\"]
 				}
 			}",

@@ -16,7 +16,7 @@
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"Golem Core for Modular Golem Cores to detach\",
-						\"restrictionsToCheck\":[2,5],
+						\"restrictionsToCheck\":[2,5,103],
 						\"subtypesInclude\":[\"Golem\", \"Core\"]
 					}
 				}",
@@ -25,7 +25,7 @@
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"Golem core for Modular Golem Cores to search\",
-						\"restrictionsToCheck\":[2,5],
+						\"restrictionsToCheck\":[2,5,102],
 						\"subtypesInclude\":[\"Golem\", \"Core\"]
 					}
 				}",

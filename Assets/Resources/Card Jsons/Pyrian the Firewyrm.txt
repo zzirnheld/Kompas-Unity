@@ -16,7 +16,7 @@
 				"{
 					\"boardRestriction\":
 					{
-						\"restrictionsToCheck\":[2,3,7],
+						\"restrictionsToCheck\":[2,3,7,103],
 						\"subtypesInclude\":[\"Dragon\"],
 						\"onBoardRestrictions\":[0]
 					}

@@ -19,7 +19,7 @@
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"C <= X spell for Temperance to dispel\",
-						\"restrictionsToCheck\":[4,204]
+						\"restrictionsToCheck\":[4,103,204]
 					}
 				}",
 				"{}"

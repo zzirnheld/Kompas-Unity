@@ -19,7 +19,7 @@
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"for Clay Golem to summon\",
-						\"restrictionsToCheck\":[2,3],
+						\"restrictionsToCheck\":[2,3,102],
 						\"subtypesInclude\":[\"Golem\"]
 					}
 				}",

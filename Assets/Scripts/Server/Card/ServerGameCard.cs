@@ -180,6 +180,13 @@ public class ServerGameCard : GameCard
         EffectsController.Trigger(TriggerCondition.Move,
             cardTriggerer: this, stackTrigger: stackSrc, triggerer: Controller, space: (toX, toY));
         ServerNotifier.NotifyMove(this, toX, toY, normalMove);
+
+        var at = Game.boardCtrl.GetCardAt(toX, toY);
+        if (at != null)
+        {
+            EffectsController.Trigger(TriggerCondition.Move,
+                cardTriggerer: at, stackTrigger: stackSrc, triggerer: Controller, space: (BoardX, BoardY));
+        }
         base.Move(toX, toY, normalMove, stackSrc);
     }
     #endregion MoveCards

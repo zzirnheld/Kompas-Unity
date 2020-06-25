@@ -17,7 +17,7 @@
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"for Earth Golem to buff or debuff\",
-						\"restrictionsToCheck\":[3]
+						\"restrictionsToCheck\":[3,103]
 					}
 				}",
 				"{

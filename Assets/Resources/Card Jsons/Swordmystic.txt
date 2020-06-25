@@ -16,7 +16,7 @@
 				"{
 					\"boardRestriction\":
 					{
-						\"restrictionsToCheck\":[2,3],
+						\"restrictionsToCheck\":[2,3,103],
 						\"subtypesInclude\":[\"Warrior\"],
 						\"onBoardRestrictions\":[0]
 					}
@@ -25,7 +25,7 @@
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"Warrior for Swordmystic to revive\",
-						\"restrictionsToCheck\":[2,3,202],
+						\"restrictionsToCheck\":[2,3,101,202],
 						\"subtypesInclude\":[\"Warrior\"]
 					}
 				}",

@@ -17,10 +17,7 @@
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"spell for Wynn to dispel\",
-						\"cardRestriction\":
-						{
-							\"restrictionsToCheck\":[4]
-						}
+						\"restrictionsToCheck\":[4,103]
 					}
 				}",
 				"{}"

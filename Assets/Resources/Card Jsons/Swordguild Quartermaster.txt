@@ -16,7 +16,7 @@
 				"{
 					\"boardRestriction\":
 						{
-							\"restrictionsToCheck\":[2,3],
+							\"restrictionsToCheck\":[2,3,103],
 							\"subtypesInclude\":[\"Warrior\"],
 							\"onBoardRestrictions\":[0]
 						}

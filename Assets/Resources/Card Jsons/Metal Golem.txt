@@ -17,7 +17,7 @@
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"character for Metal Golem to move\",
-						\"restrictionsToCheck\":[3]
+						\"restrictionsToCheck\":[3,103]
 					}
 				}",
 				"{
@@ -27,7 +27,7 @@
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"space for Metal Golem to move its target\",
-						\"restrictionsToCheck\":[3,600]
+						\"restrictionsToCheck\":[3,103,600]
 					}
 				}",
 				"{
