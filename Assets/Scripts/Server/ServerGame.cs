@@ -91,7 +91,7 @@ public class ServerGame : Game {
         foreach (string name in cards)
         {
             if (string.IsNullOrWhiteSpace(name)) continue;
-            if (CardNameIndices.ContainsKey(name)) deck.Add(name);
+            if (CardRepository.CardExists(name)) deck.Add(name);
         }
 
         return deck;

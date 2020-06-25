@@ -5,7 +5,9 @@ using UnityEngine;
 using KompasNetworking;
 using System.Linq;
 
-public abstract class Game : MonoBehaviour {
+public abstract class Game : MonoBehaviour
+{
+    public const string CardListPath = "Card Jsons/Card List";
 
     public static Game mainGame;
 
@@ -20,8 +22,6 @@ public abstract class Game : MonoBehaviour {
     public GameObject boardObject;
 
     //list of card names 
-    public static Dictionary<int, string> CardNames;
-    public static Dictionary<string, int> CardNameIndices;
     public CardRepository CardRepo;
 
     public abstract Player[] Players { get; }
@@ -41,25 +41,6 @@ public abstract class Game : MonoBehaviour {
 
     public TargetMode targetMode = TargetMode.Free;
 
-    private void Awake()
-    {
-        CardNames = new Dictionary<int, string>();
-        CardNameIndices = new Dictionary<string, int>();
-        string cardListPath = "Card Jsons/Card List";
-        string cardList = Resources.Load<TextAsset>(cardListPath).text;
-        cardList = cardList.Replace('\r', '\n');
-        string[] cardNames = cardList.Split('\n');
-        
-        for(int i = 0; i < cardNames.Length; i++)
-        {
-            string toAdd = cardNames[i].Substring(0, cardNames[i].Length);
-            if (CardNameIndices.ContainsKey(toAdd)) continue;
-            //Debug.Log("Adding \"" + cardNames[i] + "\", length " + cardNames[i].Length);
-            CardNames.Add(i, toAdd); //because line endings
-            CardNameIndices.Add(toAdd, i);
-        }
-    }
-
     public virtual void OnClickBoard(int x, int y) { }
     public virtual void Lose(int controllerIndex) { }
 
@@ -68,31 +49,7 @@ public abstract class Game : MonoBehaviour {
     //game mechanics
     //checking for valid target
 
-    public bool ExistsBoardTarget(CardRestriction restriction)
-    {
-        return Cards.Any(c => c.Location == CardLocation.Field && restriction.Evaluate(c));
-    }
-
-    /// <summary>
-    /// Checks if there exists a target in one player's deck that fits a given restriction.
-    /// </summary>
-    /// <param name="restriction">The restriction a card must fit</param>
-    /// <param name="player">The player index whose deck to look for cards in </param>
-    /// <returns></returns>
-    public bool ExistsDeckTarget(CardRestriction restriction, Player player)
-    {
-        return player.deckCtrl.Exists(restriction);
-    }
-
-    public bool ExistsDiscardTarget(CardRestriction cardRestriction, Player player)
-    {
-        return player.discardCtrl.Exists(cardRestriction);
-    }
-
-    public bool ExistsHandTarget(CardRestriction cardRestriction, Player player)
-    {
-        return player.handCtrl.Exists(cardRestriction);
-    }
+    public bool ExistsCardTarget(CardRestriction restriction) => Cards.Any(c => restriction.Evaluate(c));
 
     public bool ExistsSpaceTarget(SpaceRestriction restriction)
     {

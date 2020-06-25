@@ -8,9 +8,10 @@ public class CardRepository : MonoBehaviour
     public const string cardListFilePath = "Card Jsons/Card List";
     public const string cardJsonsFolderpath = "Card Jsons/";
 
-    private Dictionary<string, string> cardJsons;
-    private List<string> cardNames;
-    private List<string> cardNamesToIgnore;
+    private static Dictionary<string, string> cardJsons;
+    private static Dictionary<string, int> cardNameIDs;
+    private static List<string> cardNames;
+    private static List<string> cardNamesToIgnore;
 
     #region prefabs
     public GameObject DeckSelectCardPrefab;
@@ -37,6 +38,7 @@ public class CardRepository : MonoBehaviour
         });
 
         cardJsons = new Dictionary<string, string>();
+        cardNameIDs = new Dictionary<string, int>();
         cardNames = new List<string>();
         string cardList = Resources.Load<TextAsset>(cardListFilePath).text;
         cardList = cardList.Replace('\r', '\n');
@@ -48,6 +50,7 @@ public class CardRepository : MonoBehaviour
             //don't add duplicate cards
             if (IsCardToIgnore(nameClean) || CardExists(nameClean)) continue;
             //add the card's name to the list of card names
+            cardNameIDs.Add(name, cardNames.Count);
             cardNames.Add(nameClean);
 
             //load the json
@@ -73,10 +76,9 @@ public class CardRepository : MonoBehaviour
         return cardNamesToIgnore.Contains(name);
     }
 
-    public bool CardExists(string cardName)
-    {
-        return cardNames.Contains(cardName);
-    }
+    public static string CardName(int id) => cardNames[id];
+    public static int CardNameID(string cardName) => cardNameIDs[cardName];
+    public static bool CardExists(string cardName) => cardNameIDs.ContainsKey(cardName);
 
     private bool SubtypesContain(string cardName, string subtypesInclude)
     {

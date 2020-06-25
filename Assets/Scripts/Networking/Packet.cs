@@ -111,7 +111,7 @@ namespace KompasNetworking
         public int[] specialArgs;
 
         #region abstraction of args
-        public string CardName => Game.CardNames[normalArgs[1]];
+        public string CardName => CardRepository.CardName(normalArgs[1]);
         public int CardIDToBe => cardID;
 
         public int Pips => normalArgs[0];
@@ -168,7 +168,7 @@ namespace KompasNetworking
         {
             try
             {
-                normalArgs[1] = Game.CardNameIndices[cardName];
+                normalArgs[1] = CardRepository.CardNameID(cardName);
             }
             catch (KeyNotFoundException e)
             {

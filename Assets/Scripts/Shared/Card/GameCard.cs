@@ -251,7 +251,7 @@ public abstract class GameCard : CardBase {
     public virtual void SetE(int e, IStackable stackSrc = null)
     {
         E = e;
-        if (E < 0) Discard(stackSrc);
+        if (E <= 0) Discard(stackSrc);
     }
     public virtual void SetS(int s, IStackable stackSrc = null) => S = s;
     public virtual void SetW(int w, IStackable stackSrc = null) => W = w;

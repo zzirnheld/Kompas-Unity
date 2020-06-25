@@ -20,7 +20,7 @@ public class BoardTargetSubeffect : CardTargetSubeffect
         boardRestriction.Subeffect = this;
 
         //check first that there exist valid targets. if there exist no valid targets, finish resolution here
-        if (!ThisCard.Game.ExistsBoardTarget(boardRestriction))
+        if (!ThisCard.Game.ExistsCardTarget(boardRestriction))
         {
             Debug.Log("No target exists for " + ThisCard.CardName + " effect");
             ServerEffect.EffectImpossible();
