@@ -125,37 +125,42 @@ public class ServerGameCard : GameCard
     #endregion stats
 
     #region MoveCards
-    public override void Discard(IStackable stackSrc)
+    public override void Discard(IStackable stackSrc = null)
     {
         EffectsController.Trigger(TriggerCondition.Discard, cardTriggerer: this, stackTrigger: stackSrc, triggerer: stackSrc?.Controller);
+        ServerNotifier.NotifyDiscard(this);
         base.Discard(stackSrc);
     }
 
-    public override void Rehand(Player controller, IStackable stackSrc)
+    public override void Rehand(Player controller, IStackable stackSrc = null)
     {
         EffectsController.Trigger(TriggerCondition.Rehand, cardTriggerer: this, stackTrigger: stackSrc, triggerer: controller);
+        ServerNotifier.NotifyRehand(this);
         base.Rehand(controller, stackSrc);
     }
 
-    public override void Reshuffle(Player controller, IStackable stackSrc)
+    public override void Reshuffle(Player controller, IStackable stackSrc = null)
     {
         EffectsController.Trigger(TriggerCondition.Reshuffle, cardTriggerer: this, stackTrigger: stackSrc, triggerer: controller);
+        ServerNotifier.NotifyReshuffle(this);
         base.Reshuffle(controller, stackSrc);
     }
 
-    public override void Topdeck(Player controller, IStackable stackSrc)
+    public override void Topdeck(Player controller, IStackable stackSrc = null)
     {
         EffectsController.Trigger(TriggerCondition.Topdeck, cardTriggerer: this, stackTrigger: stackSrc, triggerer: controller);
+        ServerNotifier.NotifyTopdeck(this);
         base.Topdeck(controller, stackSrc);
     }
 
-    public override void Bottomdeck(Player controller, IStackable stackSrc)
+    public override void Bottomdeck(Player controller, IStackable stackSrc = null)
     {
         EffectsController.Trigger(TriggerCondition.Bottomdeck, cardTriggerer: this, stackTrigger: stackSrc, triggerer: controller);
+        ServerNotifier.NotifyBottomdeck(this);
         base.Bottomdeck(controller, stackSrc);
     }
 
-    public override void Play(int toX, int toY, Player controller, IStackable stackSrc, bool payCost = false)
+    public override void Play(int toX, int toY, Player controller, IStackable stackSrc = null, bool payCost = false)
     {
         EffectsController.Trigger(TriggerCondition.Play,
             cardTriggerer: this, stackTrigger: stackSrc, triggerer: controller, space: (toX, toY));

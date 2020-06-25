@@ -18,6 +18,6 @@ public class AvatarServerGameCard : ServerGameCard
     public override void SetInfo(SerializableCard serializedCard, ServerGame game, ServerPlayer owner, ServerEffect[] effects, int id)
     {
         base.SetInfo(serializedCard, game, owner, effects, id);
-        SetE(E * 2);
+        E *= 2;
     }
 }

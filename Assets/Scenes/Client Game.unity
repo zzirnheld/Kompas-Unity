@@ -723,6 +723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeab49ffeeae71f42914a15bca5e0d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Owner: {fileID: 1841194802}
 --- !u!4 &60475904
 Transform:
   m_ObjectHideFlags: 0
@@ -1357,6 +1358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 492080563}
+  Owner: {fileID: 1841194802}
   ClientGame: {fileID: 492080563}
 --- !u!65 &116530642
 BoxCollider:
@@ -4107,6 +4109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 492080563}
+  Owner: {fileID: 1829834588}
   ClientGame: {fileID: 492080563}
 --- !u!1 &553532377
 GameObject:
@@ -14292,6 +14295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeab49ffeeae71f42914a15bca5e0d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Owner: {fileID: 1829834588}
 --- !u!4 &1921547574
 Transform:
   m_ObjectHideFlags: 0

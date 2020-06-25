@@ -30,7 +30,7 @@ public class ClientGameCard : GameCard
     public override IEnumerable<Effect> Effects => ClientEffects;
     public override bool IsAvatar => false;
 
-    public void SetInfo(SerializableCard serializedCard, ClientGame game, ClientPlayer owner, ClientEffect[] effects, int id)
+    public virtual void SetInfo(SerializableCard serializedCard, ClientGame game, ClientPlayer owner, ClientEffect[] effects, int id)
     {
         base.SetInfo(serializedCard, id);
         ClientGame = game;

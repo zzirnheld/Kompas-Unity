@@ -141,7 +141,7 @@ public class ClientNetworkController : NetworkController {
                 card.SetN(packet.Stat);
                 break;
             case Packet.Command.SetE:
-                card.SetE(packet.Stat);
+                card?.SetE(packet.Stat);
                 break;
             case Packet.Command.SetS:
                 card.SetS(packet.Stat);
@@ -162,7 +162,7 @@ public class ClientNetworkController : NetworkController {
                 card.SetActivated(packet.Answer);
                 break;
             case Packet.Command.ChangeControl:
-                card.Controller = ClientGame.Players[packet.ControllerIndex];
+                if(card != null) card.Controller = ClientGame.Players[packet.ControllerIndex];
                 break;
             case Packet.Command.SetPips:
                 ClientGame.SetFriendlyPips(packet.Pips);

@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class DiscardController : MonoBehaviour {
 
     public Game game;
+    public Player Owner;
 
     private List<GameCard> discard = new List<GameCard>();
     public List<GameCard> Discard { get { return discard; } }
@@ -29,6 +30,7 @@ public class DiscardController : MonoBehaviour {
         Debug.Assert(card != null);
         Debug.Log("Adding to discard: " + card.CardName);
         discard.Add(card);
+        card.Controller = Owner;
         card.Location = CardLocation.Discard;
         card.transform.localPosition = new Vector3(0, 0, (float)discard.Count / -60f);
     }

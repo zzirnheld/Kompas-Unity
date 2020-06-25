@@ -240,6 +240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 3349460599440499645}
+  Owner: {fileID: 3349460600153624845}
 --- !u!1 &3349460599362718996
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,6 +346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeab49ffeeae71f42914a15bca5e0d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Owner: {fileID: 3349460599362718998}
 --- !u!1 &3349460599440499644
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,7 +404,7 @@ MonoBehaviour:
   boardCtrl: {fileID: 4511352182288948740}
   boardObject: {fileID: 5600903428081141519}
   CardRepo: {fileID: 0}
-  MaxCardsOnField: 0
+  maxCardsOnField: 0
   targetMode: 0
   EffectsController: {fileID: 657906863238247598}
   ServerPlayers:
@@ -821,6 +823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 3349460599440499645}
+  Owner: {fileID: 3349460599362718998}
 --- !u!1 &3349460600343111959
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,6 +867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeab49ffeeae71f42914a15bca5e0d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Owner: {fileID: 3349460600153624845}
 --- !u!1001 &4511352182288948742
 PrefabInstance:
   m_ObjectHideFlags: 0

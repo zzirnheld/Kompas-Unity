@@ -17,7 +17,7 @@ public class DeckController : MonoBehaviour
     //rng for shuffling
     private static readonly System.Random rng = new System.Random();
 
-    public List<GameCard> Deck { get; }
+    public List<GameCard> Deck { get; } = new List<GameCard>();
 
     public int IndexOf(GameCard card) => Deck.IndexOf(card);
     public int DeckSize => Deck.Count;

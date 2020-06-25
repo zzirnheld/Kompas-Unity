@@ -9,7 +9,7 @@ public abstract class GameCard : CardBase {
 
     #region stats
     public int N { get; private set; }
-    public int E { get; private set; }
+    public int E { get; protected set; }
     public int S { get; private set; }
     public int W { get; private set; }
     public int C { get; private set; }
@@ -110,9 +110,9 @@ public abstract class GameCard : CardBase {
 
     //controller/owners
     public abstract Player Controller { get; set; }
-    public int ControllerIndex { get { return Controller.index; } }
+    public int ControllerIndex => Controller?.index ?? 0;
     public abstract Player Owner { get; }
-    public int OwnerIndex { get => Owner.index; }
+    public int OwnerIndex => Owner.index;
 
     //misc
     private CardLocation location;
