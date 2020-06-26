@@ -235,7 +235,7 @@ public class ClientNetworkController : NetworkController {
                 break;
             case Packet.Command.SetEffectsX:
                 Debug.Log("Setting X to " + packet.X);
-                card.Effects.ElementAt(packet.EffectX).X = packet.EffectX;
+                card.Effects.ElementAt(packet.EffIndex).X = packet.EffectX;
                 X = packet.EffectX;
                 break;
             case Packet.Command.PlayerSetX:
@@ -265,7 +265,7 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.OptionalTrigger:
                 ClientTrigger t = card.Effects.ElementAt(packet.EffIndex).Trigger as ClientTrigger;
                 t.ClientEffect.ClientController = Friendly;
-                ClientGame.clientUICtrl.ShowOptionalTrigger(t, packet.EffectX);
+                ClientGame.clientUICtrl.ShowOptionalTrigger(t, packet.EffIndex);
                 break;
             default:
                 Debug.LogError($"Unrecognized command {packet.command} sent to client");

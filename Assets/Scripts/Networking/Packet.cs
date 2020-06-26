@@ -322,8 +322,9 @@ namespace KompasNetworking
 
         public ListRestriction GetListRestriction(ClientGame clientGame)
         {
+            Debug.Log($"Getting list restriction for {string.Join(", ", normalArgs)}");
             GameCard thatHasEffect = clientGame.GetCardWithID(cardID);
-            Effect eff = thatHasEffect.Effects.ElementAt(normalArgs[0]);
+            Effect eff = thatHasEffect.Effects.ElementAt(EffIndex);
             DummyListTargetSubeffect subeff = eff.Subeffects[normalArgs[2]] as DummyListTargetSubeffect;
 
             if (subeff == null)
@@ -366,6 +367,11 @@ namespace KompasNetworking
                 case Command.SetW:
                 case Command.SetC:
                 case Command.SetA:
+                case Command.GetAttackTarget:
+                case Command.RequestBoardTarget:
+                case Command.RequestDeckTarget:
+                case Command.RequestDiscardTarget:
+                case Command.RequestHandTarget:
                     return false;
                 default:
                     return true;
