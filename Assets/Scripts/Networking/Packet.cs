@@ -130,6 +130,7 @@ namespace KompasNetworking
 
         public int EffIndex => normalArgs[0];
         public int SubeffIndex => normalArgs[1];
+        public int MaxNum => normalArgs[2];
         public int Stat => normalArgs[0];
         #endregion abstraction of args
 

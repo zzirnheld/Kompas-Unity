@@ -314,7 +314,7 @@ public class ServerNotifier : MonoBehaviour
         int[] cardIDs = new int[potentialTargets.Count()];
         int i = 0;
         foreach(GameCard c in potentialTargets) cardIDs[i++] = c.ID;
-        Packet packet = new Packet(Packet.Command.GetChoicesFromList, src.ThisCard, cardIDs, maxNum, src.ServerEffect.EffectIndex, src.SubeffIndex);
+        Packet packet = new Packet(Packet.Command.GetChoicesFromList, src.ThisCard, cardIDs, src.ServerEffect.EffectIndex, src.SubeffIndex, maxNum);
         SendPacket(packet);
         Debug.Log($"Asking for targets from list of cardIDs {string.Join(",", cardIDs)}");
     }

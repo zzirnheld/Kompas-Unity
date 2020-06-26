@@ -212,7 +212,7 @@ public class ClientNetworkController : NetworkController {
                     else choicesToPick.Add(c);
                 }
                 var listRestriction = packet.GetListRestriction(ClientGame);
-                ClientGame.clientUICtrl.StartSearch(choicesToPick, listRestriction, packet.normalArgs[0]);
+                ClientGame.clientUICtrl.StartSearch(choicesToPick, listRestriction, packet.MaxNum);
                 ClientGame.clientUICtrl.SetCurrState($"Choose Target for Effect of {listRestriction.Subeffect.Source.CardName}", 
                     ClientGame.CurrCardRestriction.Blurb);
                 break;
@@ -234,7 +234,7 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.clientUICtrl.SetCurrState("Choose Space Target", ClientGame.CurrSpaceRestriction.Blurb);
                 break;
             case Packet.Command.SetEffectsX:
-                Debug.Log("Setting X to " + packet.X);
+                Debug.Log("Setting X to " + packet.EffectX);
                 card.Effects.ElementAt(packet.EffIndex).X = packet.EffectX;
                 X = packet.EffectX;
                 break;
