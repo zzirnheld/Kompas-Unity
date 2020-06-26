@@ -56,7 +56,7 @@
 	},
 	"n":2,
 	"e":1,
-	"s":3,
+	"s":5,
 	"w":4,
 	"subtypes":["Golem"],
 	"subtypeText":"Golem"

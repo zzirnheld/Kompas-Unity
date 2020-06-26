@@ -95,7 +95,7 @@ public class ServerGameCard : GameCard
             cardTriggerer: this, stackTrigger: stackSrc, triggerer: stackSrc?.Controller, x: w - W);
         EffectsController.Trigger(TriggerCondition.NESWChange,
             cardTriggerer: this, stackTrigger: stackSrc, triggerer: stackSrc?.Controller);
-        base.SetS(w);
+        base.SetW(w);
         ServerNotifier.NotifySetW(this);
     }
 

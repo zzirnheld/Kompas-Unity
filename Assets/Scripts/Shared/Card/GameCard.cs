@@ -64,13 +64,13 @@ public abstract class GameCard : CardBase {
             switch (CardType)
             {
                 case 'C': return $"N: {N} / E: {E} / S: {S} / W: {W}";
-                case 'S': return $"C {C} {SpellSubtype}";
+                case 'S': return $"C {C} {(Fast ? "Fast" : "")} {SpellSubtype}";
                 case 'A': return $"A {A}";
                 default: throw new System.NotImplementedException($"Stats string not implemented for card type {CardType}");
             }
         }
     }
-    public virtual bool Summoned { get => false; }
+    public virtual bool Summoned => CardType == 'C' && Location == CardLocation.Field;
     public int CombatDamage => W;
     public (int n, int e, int s, int w) CharStats => (N, E, S, W);
     #endregion stats
@@ -96,14 +96,14 @@ public abstract class GameCard : CardBase {
         set
         {
             augmentedCard = value;
-            if (Position != value?.Position) Position = value.Position;
+            if (value != null && Position != value.Position) Position = value.Position;
         }
     }
     #endregion positioning
 
     //movement
     public int SpacesMoved { get; protected set; }
-    public virtual int SpacesCanMove { get => 0; }
+    public int SpacesCanMove => N - SpacesMoved;
 
     //restrictions
     public MovementRestriction MovementRestriction { get; private set; }

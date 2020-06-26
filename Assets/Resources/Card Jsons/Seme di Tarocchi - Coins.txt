@@ -21,6 +21,15 @@
 		}
 	],
 	"fast":false,
+	"PlayRestriction":{
+		"Restrictions":[
+			"Played By Card Owner",
+			"From Hand",
+			"Friendly Turn",
+			"Has Cost in Pips",
+			"On Friendly Card"
+		]
+	},
 	"a":2,
 	"subtypes":["Tarocco"],
 	"subtypeText":"Tarocco"

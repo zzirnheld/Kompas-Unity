@@ -54,6 +54,15 @@
 			]
 		}
 	],
+	"PlayRestriction":{
+		"Restrictions":[
+			"Played By Card Owner",
+			"From Hand",
+			"Friendly Turn",
+			"Has Cost in Pips",
+			"On Friendly Card"
+		]
+	},
 	"a":3,
 	"subtypes":["Golem","Core"],
 	"subtypeText":"Golem Core"

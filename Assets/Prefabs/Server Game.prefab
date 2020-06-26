@@ -14,7 +14,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: -4331348096311849155, guid: a681ceefe758467418c8594726cb8c6c, type: 3}
---- !u!114 &4511352182288948740
+--- !u!114 &1207085433549217554
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -23,10 +23,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 502199802930213849}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ebd4d51462d09b43bf4e31715b0de05, type: 3}
+  m_Script: {fileID: 11500000, guid: 49f017abe78b3c54da0a3bf941eb26fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 3349460599440499645}
+  ServerGame: {fileID: 3349460599440499645}
 --- !u!1 &3349460598585194321
 GameObject:
   m_ObjectHideFlags: 0
@@ -39,7 +40,7 @@ GameObject:
   - component: {fileID: 3349460598585194324}
   - component: {fileID: 3349460598585194323}
   - component: {fileID: 3349460598585194322}
-  - component: {fileID: 3349460598585194326}
+  - component: {fileID: 4629559673417122968}
   m_Layer: 9
   m_Name: Player 1 Deck (Placeholder)
   m_TagString: Untagged
@@ -120,7 +121,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3349460598585194326
+--- !u!114 &4629559673417122968
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,11 +130,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3349460598585194321}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dcfe8f2e74e96247b7cc9c3e678eea3, type: 3}
+  m_Script: {fileID: 11500000, guid: 85a7a339f365ac74f90a68278a75bcdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 3349460599440499645}
   Owner: {fileID: 3349460599362718998}
+  ServerGame: {fileID: 3349460599440499645}
 --- !u!1 &3349460599359394084
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,7 +148,7 @@ GameObject:
   - component: {fileID: 3349460599359394087}
   - component: {fileID: 3349460599359394086}
   - component: {fileID: 3349460599359394085}
-  - component: {fileID: 3349460599359394089}
+  - component: {fileID: 9092473287471686709}
   m_Layer: 0
   m_Name: Player 2 Discard (Placeholder)
   m_TagString: Untagged
@@ -227,7 +229,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3349460599359394089
+--- !u!114 &9092473287471686709
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -236,11 +238,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3349460599359394084}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf8ce88bdb728924396eaf507c87bdaa, type: 3}
+  m_Script: {fileID: 11500000, guid: 76711d2bfe106e64aaa17133b22af34b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 3349460599440499645}
   Owner: {fileID: 3349460600153624845}
+  ServerGame: {fileID: 3349460599440499645}
 --- !u!1 &3349460599362718996
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,13 +288,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53a182c04b690a8499cb06c7f4e977ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pips: 3
   Avatar: {fileID: 0}
   friendly: 1
   index: 0
-  deckCtrl: {fileID: 3349460598585194326}
-  discardCtrl: {fileID: 3349460600222469964}
-  handCtrl: {fileID: 3349460599439595601}
+  deckCtrl: {fileID: 4629559673417122968}
+  discardCtrl: {fileID: 6519838488330749444}
+  handCtrl: {fileID: 2552304637567336340}
   deckObject: {fileID: 3349460598585194321}
   discardObject: {fileID: 3349460600222469959}
   handObject: {fileID: 3349460599439595599}
@@ -312,7 +314,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3349460599439595600}
-  - component: {fileID: 3349460599439595601}
+  - component: {fileID: 2552304637567336340}
   m_Layer: 0
   m_Name: Player 1 Hand (Empty Parent Object)
   m_TagString: Untagged
@@ -334,7 +336,7 @@ Transform:
   m_Father: {fileID: 3349460599440499646}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3349460599439595601
+--- !u!114 &2552304637567336340
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -343,10 +345,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3349460599439595599}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeab49ffeeae71f42914a15bca5e0d48, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a345a5d546b4fa479f1e4af75949ed9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Owner: {fileID: 3349460599362718998}
+  ServerGame: {fileID: 3349460599440499645}
 --- !u!1 &3349460599440499644
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,7 +404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiCtrl: {fileID: 0}
-  boardCtrl: {fileID: 4511352182288948740}
+  boardCtrl: {fileID: 1207085433549217554}
   boardObject: {fileID: 5600903428081141519}
   CardRepo: {fileID: 0}
   maxCardsOnField: 0
@@ -498,7 +501,7 @@ GameObject:
   - component: {fileID: 3349460599535151377}
   - component: {fileID: 3349460599535151376}
   - component: {fileID: 3349460599535151375}
-  - component: {fileID: 3349460599535151379}
+  - component: {fileID: 870672427626477826}
   m_Layer: 0
   m_Name: Player 2 Deck (Placeholder)
   m_TagString: Untagged
@@ -579,7 +582,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3349460599535151379
+--- !u!114 &870672427626477826
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -588,11 +591,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3349460599535151374}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dcfe8f2e74e96247b7cc9c3e678eea3, type: 3}
+  m_Script: {fileID: 11500000, guid: 85a7a339f365ac74f90a68278a75bcdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 3349460599440499645}
   Owner: {fileID: 3349460600153624845}
+  ServerGame: {fileID: 3349460599440499645}
 --- !u!1 &3349460600153624844
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,13 +641,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53a182c04b690a8499cb06c7f4e977ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pips: 3
   Avatar: {fileID: 0}
   friendly: 0
   index: 1
-  deckCtrl: {fileID: 3349460599535151379}
-  discardCtrl: {fileID: 3349460599359394089}
-  handCtrl: {fileID: 3349460600343111961}
+  deckCtrl: {fileID: 870672427626477826}
+  discardCtrl: {fileID: 9092473287471686709}
+  handCtrl: {fileID: 4159301479262946784}
   deckObject: {fileID: 3349460599535151374}
   discardObject: {fileID: 3349460599359394084}
   handObject: {fileID: 3349460600343111959}
@@ -729,7 +732,7 @@ GameObject:
   - component: {fileID: 3349460600222469962}
   - component: {fileID: 3349460600222469961}
   - component: {fileID: 3349460600222469960}
-  - component: {fileID: 3349460600222469964}
+  - component: {fileID: 6519838488330749444}
   m_Layer: 9
   m_Name: Player 1 Discard (Placeholder)
   m_TagString: Untagged
@@ -810,7 +813,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3349460600222469964
+--- !u!114 &6519838488330749444
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -819,11 +822,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3349460600222469959}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf8ce88bdb728924396eaf507c87bdaa, type: 3}
+  m_Script: {fileID: 11500000, guid: 76711d2bfe106e64aaa17133b22af34b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 3349460599440499645}
   Owner: {fileID: 3349460599362718998}
+  ServerGame: {fileID: 3349460599440499645}
 --- !u!1 &3349460600343111959
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,7 +837,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3349460600343111960}
-  - component: {fileID: 3349460600343111961}
+  - component: {fileID: 4159301479262946784}
   m_Layer: 0
   m_Name: Player 2 Hand (Empty Parent Object)
   m_TagString: Untagged
@@ -855,7 +859,7 @@ Transform:
   m_Father: {fileID: 3349460599440499646}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3349460600343111961
+--- !u!114 &4159301479262946784
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -864,10 +868,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3349460600343111959}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeab49ffeeae71f42914a15bca5e0d48, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a345a5d546b4fa479f1e4af75949ed9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Owner: {fileID: 3349460600153624845}
+  ServerGame: {fileID: 3349460599440499645}
 --- !u!1001 &4511352182288948742
 PrefabInstance:
   m_ObjectHideFlags: 0

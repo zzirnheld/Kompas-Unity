@@ -24,7 +24,7 @@ public class ServerNotifier : MonoBehaviour
     private void SendPacketsAfterInverting(Packet a, Packet b, int aIndex, int bIndex)
     {
         a.InvertForController(aIndex);
-        b.InvertForController(bIndex);
+        b?.InvertForController(bIndex);
         SendPackets(a, b);
     }
 

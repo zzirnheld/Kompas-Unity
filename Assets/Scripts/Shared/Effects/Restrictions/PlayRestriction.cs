@@ -9,11 +9,13 @@ public class PlayRestriction
     public const string PlayedByCardOwner = "Played By Card Owner";
     public const string FromHand = "From Hand";
     public const string AdjacentToFriendlyCard = "Adjacent to Friendly Card";
+    public const string OnFriendlyCard = "On Friendly Card";
     public const string FriendlyTurn = "Friendly Turn";
+    public const string HasCostInPips = "Has Cost in Pips";
     public const string NotNormally = "Cannot be Played Normally";
     public const string MustNormally = "Must be Played Normally";
 
-    public string[] NormalRestrictions = { PlayedByCardOwner, FromHand, AdjacentToFriendlyCard, FriendlyTurn };
+    public string[] NormalRestrictions = { PlayedByCardOwner, FromHand, AdjacentToFriendlyCard, FriendlyTurn, HasCostInPips };
     public string[] EffectRestrictions = { AdjacentToFriendlyCard };
 
     private int x;
@@ -46,6 +48,12 @@ public class PlayRestriction
                     break;
                 case AdjacentToFriendlyCard:
                     if (!Card.Game.boardCtrl.ExistsCardOnBoard(c => CardIsAdjToCoordsAndFriendly(c))) return false;
+                    break;
+                case OnFriendlyCard:
+                    if (Card.Game.boardCtrl.GetCardAt(x, y)?.Controller != Card.Controller) return false;
+                    break;
+                case HasCostInPips:
+                    if (Card.Controller.Pips < Card.Cost) return false;
                     break;
                 case FriendlyTurn:
                     if (Card.Game.TurnPlayer != Card.Controller) return false;
