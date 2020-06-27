@@ -12,6 +12,8 @@ public class ServerNotifier : MonoBehaviour
 
     public void SendPacket(Packet packet)
     {
+        Debug.Log($"Sending packet to {Player.index} with command {packet.command}, normal args {string.Join(",", packet.normalArgs)}, " +
+            $"special args {string.Join(",", packet.specialArgs)}, string arg {packet.stringArg}");
         ServerNetworkCtrl.SendPacket(packet);
     }
 

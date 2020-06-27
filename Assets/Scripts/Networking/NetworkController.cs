@@ -84,9 +84,6 @@ namespace KompasNetworking
                 return;
             }
 
-            Debug.Log($"Sending packet with command {packet.command}, normal args {string.Join(",", packet.normalArgs)}, " +
-                $"special args {string.Join(",", packet.specialArgs)}, string arg {packet.stringArg}");
-
             NetworkStream networkStream = tcpClient.GetStream();
             // we won't use a binary writer, because the endianness is unhelpful
 

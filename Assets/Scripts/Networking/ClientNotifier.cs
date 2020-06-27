@@ -9,6 +9,8 @@ public class ClientNotifier : MonoBehaviour
 
     private void Send(Packet packet)
     {
+        Debug.Log($"Sending packet with command {packet.command}, normal args {string.Join(",", packet.normalArgs)}, " +
+            $"special args {string.Join(",", packet.specialArgs)}, string arg {packet.stringArg}");
         clientNetworkCtrl.SendPacket(packet);
     }
 
