@@ -40,5 +40,5 @@
 	"s":3,
 	"w":2,
 	"subtypes":["Tarocco"],
-	"subtypeText":"tarocco"
+	"subtypeText":"Tarocco"
 }

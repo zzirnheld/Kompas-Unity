@@ -25,5 +25,5 @@
 	"s":5,
 	"w":5,
 	"subtypes":["Tarocco","Warrior"],
-	"subtypeText":"tarocco Warrior"
+	"subtypeText":"Tarocco Warrior"
 }
