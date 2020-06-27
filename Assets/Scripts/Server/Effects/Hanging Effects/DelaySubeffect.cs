@@ -18,7 +18,7 @@ public class DelaySubeffect : ServerSubeffect
     public override void Resolve()
     {
         var eff = new DelayedHangingEffect(ServerGame, TriggerRestriction, TriggerCondition,
-            NumTimesToDelay, ServerEffect, IndexToResume);
+            NumTimesToDelay, ServerEffect, IndexToResume, EffectController);
         ServerGame.EffectsController.RegisterHangingEffect(TriggerCondition, eff);
         ServerEffect.EffectImpossible();
     }

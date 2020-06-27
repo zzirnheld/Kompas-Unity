@@ -38,7 +38,7 @@ public class ServerAttack : Attack, IServerStackable
         }
     }
 
-    public void StartResolution()
+    public void StartResolution(int startIndex = 0)
     {
         //deal the damage
         if(StillValidAttack) DealDamage();

@@ -70,7 +70,7 @@ public class ServerEffect : Effect, IServerStackable
         EffectsController.PushToStack(this, controller);
     }
 
-    public void StartResolution()
+    public void StartResolution(int startIndex = 0)
     {
         Debug.Log($"Resolving effect {EffectIndex} of {Source.CardName}");
         serverGame.CurrEffect = this;
@@ -78,7 +78,7 @@ public class ServerEffect : Effect, IServerStackable
         ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
         ServerController.ServerNotifier.EffectResolving(this);
         if (Negated) EffectImpossible();
-        else ResolveSubeffect(0);
+        else ResolveSubeffect(startIndex);
     }
 
     public void ResolveNextSubeffect()

@@ -37,21 +37,16 @@ public class ServerEffectsController : MonoBehaviour
     }
 
     #region the stack
-    public void PushToStack(IServerStackable eff)
+    public void PushToStack(IServerStackable eff, int startIndex = 0)
     {
-        stack.Push(eff);
+        stack.Push((eff, startIndex));
     }
 
-    public void PushToStack(ServerEffect eff, ServerPlayer controller)
+    public void PushToStack(ServerEffect eff, ServerPlayer controller, int startIndex = 0)
     {
         eff.serverGame = ServerGame;
         eff.ServerController = controller;
-        PushToStack(eff);
-    }
-
-    public IServerStackable PopFromStack()
-    {
-        return stack.Pop();
+        PushToStack(eff, startIndex);
     }
 
     public IServerStackable CancelStackEntry(int index)
@@ -61,16 +56,16 @@ public class ServerEffectsController : MonoBehaviour
 
     public void ResolveNextStackEntry()
     {
-        var eff = stack.Pop();
-        if (eff == null)
+        var (stackable, startIndex) = stack.Pop();
+        if (stackable == null)
         {
             ServerGame.TurnServerPlayer.ServerNotifier.DiscardSimples();
             ServerGame.boardCtrl.DiscardSimples();
         }
         else
         {
-            CurrStackEntry = eff;
-            eff.StartResolution();
+            CurrStackEntry = stackable;
+            stackable.StartResolution(startIndex);
         }
     }
 
