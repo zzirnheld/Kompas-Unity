@@ -21,6 +21,7 @@ namespace KompasNetworking
             Move = 102,
             Attack = 103,
             Attach = 104,
+            AddAsEnemyAndAttach = 105,
             EndTurn = 150,
             Leyload = 151,
             //move cards around

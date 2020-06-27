@@ -15,7 +15,12 @@ public abstract class Player : MonoBehaviour{
         get => pips;
         set => pips = value;
     }
-    public GameCard Avatar;
+    private GameCard avatar;
+    public virtual GameCard Avatar
+    {
+        get => avatar;
+        set => avatar = value;
+    }
 
     //other game data
     public bool friendly;

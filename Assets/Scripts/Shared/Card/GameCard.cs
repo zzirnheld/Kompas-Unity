@@ -304,27 +304,27 @@ public abstract class GameCard : CardBase {
         }
     }
 
-    public virtual void Discard(IStackable stackSrc = null) => Controller.discardCtrl.AddToDiscard(this, stackSrc);
+    public void Discard(IStackable stackSrc = null) => Controller.discardCtrl.AddToDiscard(this, stackSrc);
 
-    public virtual void Rehand(Player controller, IStackable stackSrc = null) => controller.handCtrl.AddToHand(this, stackSrc);
+    public void Rehand(Player controller, IStackable stackSrc = null) => controller.handCtrl.AddToHand(this, stackSrc);
     public void Rehand(IStackable stackSrc = null) => Rehand(Controller, stackSrc);
 
-    public virtual void Reshuffle(Player controller, IStackable stackSrc = null) => controller.deckCtrl.ShuffleIn(this, stackSrc);
+    public void Reshuffle(Player controller, IStackable stackSrc = null) => controller.deckCtrl.ShuffleIn(this, stackSrc);
     public void Reshuffle(IStackable stackSrc = null) => Reshuffle(Controller, stackSrc);
 
-    public virtual void Topdeck(Player controller, IStackable stackSrc = null) => controller.deckCtrl.PushTopdeck(this, stackSrc);
+    public void Topdeck(Player controller, IStackable stackSrc = null) => controller.deckCtrl.PushTopdeck(this, stackSrc);
     public void Topdeck(IStackable stackSrc = null) => Topdeck(Controller, stackSrc);
 
-    public virtual void Bottomdeck(Player controller, IStackable stackSrc = null) => controller.deckCtrl.PushBottomdeck(this, stackSrc);
+    public void Bottomdeck(Player controller, IStackable stackSrc = null) => controller.deckCtrl.PushBottomdeck(this, stackSrc);
     public void Bottomdeck(IStackable stackSrc = null) => Bottomdeck(Controller, stackSrc);
 
-    public virtual void Play(int toX, int toY, Player controller, IStackable stackSrc = null, bool payCost = false)
+    public void Play(int toX, int toY, Player controller, IStackable stackSrc = null, bool payCost = false)
     {
         Game.boardCtrl.Play(this, toX, toY, controller);
         if (payCost) controller.Pips -= Cost;
     }
 
-    public virtual void Move(int toX, int toY, bool normalMove, IStackable stackSrc = null)
+    public void Move(int toX, int toY, bool normalMove, IStackable stackSrc = null)
         => Game.boardCtrl.Move(this, toX, toY, normalMove, stackSrc);
 
     public void SwapCharStats(GameCard other, bool swapN = true, bool swapE = true, bool swapS = true, bool swapW = true)

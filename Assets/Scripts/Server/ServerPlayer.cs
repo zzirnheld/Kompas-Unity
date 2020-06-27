@@ -23,6 +23,16 @@ public class ServerPlayer : Player
         }
     }
 
+    public override GameCard Avatar
+    {
+        get => base.Avatar;
+        set
+        {
+            base.Avatar = value;
+            ServerNotifier.SetFriendlyAvatar(value.CardName, value.ID);
+        }
+    }
+
     public override void SetInfo(TcpClient tcpClient, int index)
     {
         base.SetInfo(tcpClient, index);

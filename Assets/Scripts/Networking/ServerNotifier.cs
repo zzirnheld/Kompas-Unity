@@ -46,6 +46,13 @@ public class ServerNotifier : MonoBehaviour
         SendPacket(p);
     }
 
+    public void SetFriendlyAvatar(string cardName, int cardID)
+    {
+        Packet p = new Packet(Packet.Command.SetFriendlyAvatar, cardName) { cardID = cardID };
+        Packet q = new Packet(Packet.Command.SetEnemyAvatar, cardName) { cardID = cardID };
+        SendPackets(p, q);
+    }
+
     public void YoureFirst()
     {
         Debug.Log("Sending you're first");
@@ -78,7 +85,8 @@ public class ServerNotifier : MonoBehaviour
     {
         Packet p = new Packet(Packet.Command.Attach, toAttach, x, y);
         Packet q = toAttach.Location == CardLocation.Discard || toAttach.Location == CardLocation.Field ?
-            new Packet(Packet.Command.Attach, toAttach, x, y) : null;
+            new Packet(Packet.Command.Attach, toAttach, x, y) : 
+            new Packet(Packet.Command.AddAsEnemyAndAttach, toAttach.CardName, (int)CardLocation.Field, toAttach.ID, x, y);
         SendPacketsAfterInverting(p, q, Player.index, Player.Enemy.index);
     }
 
@@ -87,6 +95,9 @@ public class ServerNotifier : MonoBehaviour
     /// </summary>
     public void NotifyPlay(GameCard toPlay, int x, int y)
     {
+        //if this card is an augment, don't bother notifying about it. attach will take care of it.
+        if (toPlay.CardType == 'A') return;
+
         //tell everyone to do it
         Packet outPacket = new Packet(Packet.Command.Play, toPlay, x, y);
         Packet outPacketInverted;

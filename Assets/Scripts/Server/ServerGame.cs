@@ -145,7 +145,6 @@ public class ServerGame : Game {
 
         Debug.Log($"Setting avatar for player {player.index}");
         player.Avatar = avatar;
-        player.ServerNotifier.NotifyAddToDeck(avatar);
         avatar.Play(player.index * 6, player.index * 6, player, null);
         //if both players have decks now, then start the game
         lock (CheckAvatarsLock)

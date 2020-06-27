@@ -13,7 +13,7 @@ public class ServerBoardController : BoardController
     {
         EffectsController.Trigger(TriggerCondition.Play,
             cardTriggerer: toPlay, stackTrigger: stackSrc, triggerer: controller, space: (toX, toY));
-        ServerNotifierByIndex(toPlay.ControllerIndex).NotifyPlay(toPlay, toX, toY);
+        if (!toPlay.IsAvatar) ServerNotifierByIndex(toPlay.ControllerIndex).NotifyPlay(toPlay, toX, toY);
         base.Play(toPlay, toX, toY, controller);
     }
 

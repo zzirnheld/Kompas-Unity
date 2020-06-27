@@ -93,6 +93,11 @@ public class ClientNetworkController : NetworkController {
                         break;
                 }
                 break;
+            case Packet.Command.AddAsEnemyAndAttach:
+                var addAndAttach = ClientGame.CardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, Enemy, packet.CardIDToBe);
+                ClientGame.cardsByID.Add(packet.CardIDToBe, addAndAttach);
+                ClientGame.boardCtrl.GetCardAt(packet.X, packet.Y).AddAugment(addAndAttach);
+                break;
             case Packet.Command.IncrementEnemyDeck:
                 //TODO
                 break;
@@ -115,7 +120,10 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.Augment: //the play method calls augment if the card is an augment
             case Packet.Command.Play:
                 Debug.Log("Client ordered to play to " + packet.X + ", " + packet.Y);
-                card.Play(packet.X, packet.Y, card.Owner);
+                card?.Play(packet.X, packet.Y, card.Owner);
+                break;
+            case Packet.Command.Attach:
+                ClientGame.boardCtrl.GetCardAt(packet.X, packet.Y)?.AddAugment(card);
                 break;
             case Packet.Command.Move:
                 card.Move(packet.X, packet.Y, packet.Answer);
@@ -138,28 +146,28 @@ public class ClientNetworkController : NetworkController {
                 card?.Bottomdeck();
                 break;
             case Packet.Command.SetN:
-                card.SetN(packet.Stat);
+                card?.SetN(packet.Stat);
                 break;
             case Packet.Command.SetE:
                 card?.SetE(packet.Stat);
                 break;
             case Packet.Command.SetS:
-                card.SetS(packet.Stat);
+                card?.SetS(packet.Stat);
                 break;
             case Packet.Command.SetW:
-                card.SetW(packet.Stat);
+                card?.SetW(packet.Stat);
                 break;
             case Packet.Command.SetC:
-                card.SetC(packet.Stat);
+                card?.SetC(packet.Stat);
                 break;
             case Packet.Command.SetA:
-                card.SetA(packet.Stat);
+                card?.SetA(packet.Stat);
                 break;
             case Packet.Command.Negate:
-                card.SetNegated(packet.Answer);
+                card?.SetNegated(packet.Answer);
                 break;
             case Packet.Command.Activate:
-                card.SetActivated(packet.Answer);
+                card?.SetActivated(packet.Answer);
                 break;
             case Packet.Command.ChangeControl:
                 if(card != null) card.Controller = ClientGame.Players[packet.ControllerIndex];
@@ -238,7 +246,7 @@ public class ClientNetworkController : NetworkController {
                 break;
             case Packet.Command.SetEffectsX:
                 Debug.Log("Setting X to " + packet.EffectX);
-                card.Effects.ElementAt(packet.EffIndex).X = packet.EffectX;
+                if(card != null) card.Effects.ElementAt(packet.EffIndex).X = packet.EffectX;
                 X = packet.EffectX;
                 break;
             case Packet.Command.PlayerSetX:
