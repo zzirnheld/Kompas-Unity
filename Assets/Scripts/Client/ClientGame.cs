@@ -65,6 +65,11 @@ public class ClientGame : Game {
         clientNotifier.RequestSpaceTarget(x, y);
     }
 
+    public void PutCardsBack()
+    {
+        foreach (var c in Cards) c.PutBack();
+    }
+
     //game mechanics
     #region setting pips
     public void SetFriendlyPips(int num)

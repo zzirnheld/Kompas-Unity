@@ -129,13 +129,13 @@ public class ClientNetworkController : NetworkController {
                 card.Discard();
                 break;
             case Packet.Command.Rehand:
-                card.Rehand();
+                card?.Rehand();
                 break;
             case Packet.Command.Reshuffle:
-                card.Reshuffle();
+                card?.Reshuffle();
                 break;
             case Packet.Command.Bottomdeck:
-                card.Bottomdeck();
+                card?.Bottomdeck();
                 break;
             case Packet.Command.SetN:
                 card.SetN(packet.Stat);
@@ -174,7 +174,7 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.Leyload = packet.Leyload;
                 break;
             case Packet.Command.PutBack:
-                ClientGame.boardCtrl.PutCardsBack();
+                ClientGame.PutCardsBack();
                 break;
             case Packet.Command.EndTurn:
                 ClientGame.EndTurn();

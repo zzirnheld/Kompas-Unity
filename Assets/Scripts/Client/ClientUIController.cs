@@ -171,7 +171,7 @@ public class ClientUIController : UIController
         CurrStateOverallObj.SetActive(true);
         CurrStateText.text = primaryState;
         CurrStateBonusText.text = secondaryState;
-        CurrStateBonusObj.SetActive(secondaryState == "");
+        CurrStateBonusObj.SetActive(!string.IsNullOrWhiteSpace(secondaryState));
     }
 
     #region effects

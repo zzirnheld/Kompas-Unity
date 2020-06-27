@@ -10,11 +10,6 @@ public class CardController : MonoBehaviour
     public GameCard card;
     public MeshRenderer cardFaceRenderer;
 
-    private void SetFieldLocation()
-    {
-
-    }
-
     public void SetPhysicalLocation(CardLocation location)
     {
         switch (location)
@@ -69,6 +64,6 @@ public class CardController : MonoBehaviour
     public void MoveTo((int x, int y) to)
     {
         transform.localPosition = BoardController.GridIndicesFromPos(to.x, to.y);
-        if (card.AugmentedCard != null) gameObject.SetActive(false);
+        gameObject.SetActive(card.AugmentedCard == null);
     }
 }
