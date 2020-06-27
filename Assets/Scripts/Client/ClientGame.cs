@@ -97,6 +97,7 @@ public class ClientGame : Game {
 
     public void Delete(GameCard card)
     {
+        card.Remove();
         Destroy(card.gameObject);
     }
 
