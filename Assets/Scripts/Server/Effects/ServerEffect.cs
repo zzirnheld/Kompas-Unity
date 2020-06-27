@@ -61,6 +61,7 @@ public class ServerEffect : Effect, IServerStackable
         if (serverGame.uiCtrl.DebugMode) return true;
         return Trigger == null
             && controller.index == Source.ControllerIndex
+            && !Negated
             && ActivationRestriction.Evaluate(controller);
     }
 
@@ -72,7 +73,7 @@ public class ServerEffect : Effect, IServerStackable
     public void StartResolution()
     {
         Debug.Log($"Resolving effect {EffectIndex} of {Source.CardName}");
-        Source.Game.CurrEffect = this;
+        serverGame.CurrEffect = this;
         TimesUsedThisTurn++;
         ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
         ServerController.ServerNotifier.EffectResolving(this);

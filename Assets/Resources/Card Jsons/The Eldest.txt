@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"The Eldest",
-	"effText":"Territorial: When turns start, kill an adjacent friendly Dragon. When I attack, I can give myself -1E and adjacent characters -2E.",
+	"effText":"Territorial: When turns start, kill an adjacent friendly Dragon. When I attack, kill my target.",
 	"effects":[
 		{
 			"triggerCondition":0,

@@ -102,28 +102,22 @@ namespace KompasNetworking
                 #endregion
                 #region debug commands
                 case Packet.Command.Topdeck:
-                    if (!sGame.uiCtrl.DebugMode) break;
                     DebugTopdeck(packet.cardID);
                     break;
                 case Packet.Command.Discard:
-                    if (!sGame.uiCtrl.DebugMode) break;
                     DebugDiscard(packet.cardID);
                     break;
                 case Packet.Command.Rehand:
-                    if (!sGame.uiCtrl.DebugMode) break;
                     DebugRehand(packet.cardID);
                     break;
                 case Packet.Command.Draw:
-                    if (!sGame.uiCtrl.DebugMode) break;
                     DebugDraw();
                     break;
                 case Packet.Command.SetNESW:
-                    if (!sGame.uiCtrl.DebugMode) break;
                     var (n, e, s, w) = packet.Stats;
                     DebugSetNESW(packet.cardID, n, e, s, w);
                     break;
                 case Packet.Command.SetPips:
-                    if (!sGame.uiCtrl.DebugMode) break;
                     DebugSetPips(packet.Pips);
                     break;
                 case Packet.Command.ActivateEffect:

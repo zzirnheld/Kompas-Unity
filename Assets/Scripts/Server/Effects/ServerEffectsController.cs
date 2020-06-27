@@ -114,7 +114,7 @@ public class ServerEffectsController : MonoBehaviour
     {
         if (CurrStackEntry != null)
         {
-            Debug.Log("Tried to check for response while something is resolving");
+            Debug.Log($"Tried to check for response while {CurrStackEntry?.Source?.CardName} is resolving");
             return;
         }
 

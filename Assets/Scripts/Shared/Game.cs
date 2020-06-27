@@ -36,8 +36,6 @@ public abstract class Game : MonoBehaviour
         get => maxCardsOnField;
         set => maxCardsOnField = value;
     }
-    
-    public ServerEffect CurrEffect { get; set; }
 
     public TargetMode targetMode = TargetMode.Free;
 
@@ -45,6 +43,8 @@ public abstract class Game : MonoBehaviour
     public virtual void Lose(int controllerIndex) { }
 
     public abstract GameCard GetCardWithID(int id);
+
+    public virtual IStackable CurrStackEntry => null;
 
     //game mechanics
     //checking for valid target

@@ -25,6 +25,9 @@ public class ServerGame : Game {
     public int cardCount = 0;
     private int currPlayerCount = 0; //current number of players. shouldn't exceed 2
 
+    public ServerEffect CurrEffect { get; set; }
+    public override IStackable CurrStackEntry => EffectsController.CurrStackEntry;
+
     public override int Leyload
     {
         get => base.Leyload;

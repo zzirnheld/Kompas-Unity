@@ -26,6 +26,7 @@ public class ChooseFromListSaveRestSubeffect : ChooseFromListSubeffect
         ServerEffect.Targets.AddRange(choices);
 
         //everything's cool now, continue resolution
+        EffectController.ServerNotifier.AcceptTarget();
         ServerEffect.ResolveNextSubeffect();
         return true;
     }

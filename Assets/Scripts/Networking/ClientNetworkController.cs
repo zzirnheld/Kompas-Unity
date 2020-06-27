@@ -190,6 +190,7 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.clientUICtrl.SetCurrState("Choose Hand Target", ClientGame.CurrCardRestriction.Blurb);
                 break;
             case Packet.Command.RequestDeckTarget:
+                ClientGame.targetMode = Game.TargetMode.OnHold;
                 Debug.Log($"Deck target for Eff index: {packet.EffIndex} subeff index {packet.SubeffIndex}");
                 CardRestriction deckRestriction = packet.GetCardRestriction(ClientGame);
                 List<GameCard> toSearch = ClientGame.friendlyDeckCtrl.CardsThatFitRestriction(deckRestriction);
@@ -197,12 +198,14 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.clientUICtrl.SetCurrState("Choose Deck Target", ClientGame.CurrCardRestriction.Blurb);
                 break;
             case Packet.Command.RequestDiscardTarget:
+                ClientGame.targetMode = Game.TargetMode.OnHold;
                 CardRestriction discardRestriction = packet.GetCardRestriction(ClientGame);
                 List<GameCard> discardToSearch = ClientGame.friendlyDiscardCtrl.CardsThatFitRestriction(discardRestriction);
                 ClientGame.clientUICtrl.StartSearch(discardToSearch);
                 ClientGame.clientUICtrl.SetCurrState("Choose Discard Target", ClientGame.CurrCardRestriction.Blurb);
                 break;
             case Packet.Command.GetChoicesFromList:
+                ClientGame.targetMode = Game.TargetMode.OnHold;
                 int[] cardIDs = packet.specialArgs;
                 List<GameCard> choicesToPick = new List<GameCard>();
                 foreach(int id in cardIDs)
@@ -259,9 +262,9 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.EffectResolving:
                 card.Effects.ElementAt(packet.EffIndex).Controller = ClientGame.Players[packet.normalArgs[1]];
                 break;
-            case Packet.Command.EffectImpossible:
+            /*case Packet.Command.EffectImpossible:
                 ClientGame.clientUICtrl.SetCurrState("Effect Impossible");
-                break;
+                break;*/
             case Packet.Command.OptionalTrigger:
                 ClientTrigger t = card.Effects.ElementAt(packet.EffIndex).Trigger as ClientTrigger;
                 t.ClientEffect.ClientController = Friendly;

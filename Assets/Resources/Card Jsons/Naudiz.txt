@@ -16,7 +16,7 @@
 				"{
 					\"BoardRestriction\":
 					{
-						\"restrictionsToCheck\":[9,103]
+						\"restrictionsToCheck\":[3,9,103]
 					},
 					\"EMod\":-2
 				}"

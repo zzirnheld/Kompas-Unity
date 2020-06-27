@@ -29,10 +29,19 @@ public class ServerAttack : Attack, IServerStackable
         EffCtrl.Trigger(TriggerCondition.Battles, cardTriggerer: defender, stackTrigger: this, triggerer: ServerController);
     }
 
+    private bool StillValidAttack
+    {
+        get
+        {
+            return attacker.Location == CardLocation.Field &&
+                defender.Location == CardLocation.Field;
+        }
+    }
+
     public void StartResolution()
     {
         //deal the damage
-        DealDamage();
+        if(StillValidAttack) DealDamage();
         //then finish the resolution
         EffCtrl.FinishStackEntryResolution();
     }

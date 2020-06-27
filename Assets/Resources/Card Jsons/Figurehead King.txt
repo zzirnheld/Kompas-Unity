@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Figurehead King",
-	"effText":"Let X be the number of friendly Tarocco. Draw X.",
+	"effText":"Choose a card in your hand, then reshuffle the other X. Gain X pips.",
 	"effects":[
 		{
 			"triggerCondition":401,

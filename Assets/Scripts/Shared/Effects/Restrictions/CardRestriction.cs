@@ -66,8 +66,8 @@ public class CardRestriction
 
     public int costsLessThan;
     public string nameIs;
-    public string[] subtypesInclude;
-    public string[] subtypesExclude;
+    public string[] subtypesInclude = new string[0];
+    public string[] subtypesExclude = new string[0];
     public int constant;
     public CardLocation[] locations;
     public int costMultiplier = 1;

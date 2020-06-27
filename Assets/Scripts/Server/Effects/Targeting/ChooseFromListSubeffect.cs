@@ -73,6 +73,7 @@ public class ChooseFromListSubeffect : ServerSubeffect
         //add all cards in the chosen list to targets
         ServerEffect.Targets.AddRange(choices);
         //everything's cool
+        EffectController.ServerNotifier.AcceptTarget();
         ServerEffect.ResolveNextSubeffect();
         return true;
     }

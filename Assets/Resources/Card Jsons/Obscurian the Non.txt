@@ -45,7 +45,7 @@
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"Avatar for Obscurian to give -2E.\",
-						\"restrictionsToCheck\":[2,3,7,50,103],
+						\"restrictionsToCheck\":[3,7,50,103],
 						\"onBoardRestrictions\":[0]
 					}
 				}",

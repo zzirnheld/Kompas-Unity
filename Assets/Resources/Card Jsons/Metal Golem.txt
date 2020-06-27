@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Metal Golem",
-	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, move an enemy character 3 spaces.",
+	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, set two characters' N to 0.",
 	"effects":[
 		{
 			"triggerCondition":201,

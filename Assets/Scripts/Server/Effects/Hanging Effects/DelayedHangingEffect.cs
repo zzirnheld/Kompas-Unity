@@ -37,6 +37,7 @@ public class DelayedHangingEffect : HangingEffect
 
     protected override void Resolve()
     {
+        serverGame.CurrEffect = toResume;
         toResume.ResolveSubeffect(indexToResumeResolution);
     }
 }
