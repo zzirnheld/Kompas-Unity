@@ -96,7 +96,7 @@ public abstract class GameCard : CardBase {
         set
         {
             augmentedCard = value;
-            if (value != null && Position != value.Position) Position = value.Position;
+            if (value != null) Position = value.Position;
         }
     }
     #endregion positioning
@@ -235,7 +235,7 @@ public abstract class GameCard : CardBase {
     public virtual void AddAugment(GameCard augment, IStackable stackSrc = null)
     {
         if (augment == null) return;
-        if (augment.AugmentedCard != null) augment.Detach(stackSrc);
+        augment.Remove(stackSrc);
         Augments.Add(augment);
         augment.AugmentedCard = this;
     }
@@ -281,12 +281,14 @@ public abstract class GameCard : CardBase {
 
     #region moveCard
     //so that notify stuff can be sent in the server
-    public void Remove()
+    public void Remove(IStackable stackSrc = null)
     {
+        Debug.Log($"Removing {CardName} id {ID} from {Location}");
+
         switch (Location)
         {
             case CardLocation.Field:
-                if (AugmentedCard != null) Detach();
+                if (AugmentedCard != null) Detach(stackSrc);
                 else Game.boardCtrl.RemoveFromBoard(this);
                 break;
             case CardLocation.Discard:

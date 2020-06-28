@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class PlayRestriction
 {
     public GameCard Card { get; private set; }

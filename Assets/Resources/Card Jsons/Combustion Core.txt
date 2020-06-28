@@ -67,7 +67,7 @@
 		}
 	],
 	"PlayRestriction":{
-		"Restrictions":[
+		"NormalRestrictions":[
 			"Played By Card Owner",
 			"From Hand",
 			"Friendly Turn",

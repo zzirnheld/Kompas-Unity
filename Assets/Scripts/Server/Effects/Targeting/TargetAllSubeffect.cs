@@ -8,9 +8,12 @@ public class TargetAllSubeffect : CardTargetSubeffect
     public override void Resolve()
     {
         var targets = ServerGame.Cards.Where(c => cardRestriction.Evaluate(c));
-        Effect.Targets.AddRange(targets);
+        //check what targets there are now, before you add them, to not mess with NotAlreadyTarget restriction
+        //because Linq executes lazily, it would otherwise add the targets, then re-execute the query and not find any
+        bool any = targets.Any();
+        Effect.Targets.AddRange(targets);        
 
-        if (targets.Any()) ServerEffect.ResolveNextSubeffect();
+        if (any) ServerEffect.ResolveNextSubeffect();
         else ServerEffect.EffectImpossible();
     }
 }

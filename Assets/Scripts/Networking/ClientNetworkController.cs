@@ -42,8 +42,8 @@ public class ClientNetworkController : NetworkController {
             Debug.Log("Null packet");
             return;
         }
-        Debug.Log($"Parsing command {packet.command} for {packet.cardID}");
         var card = ClientGame.GetCardWithID(packet.cardID);
+        Debug.Log($"Parsing command {packet.command} for {packet.cardID}. That's the card {card?.CardName}");
 
         switch (packet.command)
         {
