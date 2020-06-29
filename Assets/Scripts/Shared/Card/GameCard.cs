@@ -93,7 +93,7 @@ public abstract class GameCard : CardBase {
     public GameCard AugmentedCard
     {
         get { return augmentedCard; }
-        set
+        private set
         {
             augmentedCard = value;
             if (value != null) Position = value.Position;
@@ -281,7 +281,7 @@ public abstract class GameCard : CardBase {
 
     #region moveCard
     //so that notify stuff can be sent in the server
-    public void Remove(IStackable stackSrc = null)
+    public virtual void Remove(IStackable stackSrc = null)
     {
         Debug.Log($"Removing {CardName} id {ID} from {Location}");
 

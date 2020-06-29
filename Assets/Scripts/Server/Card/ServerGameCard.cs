@@ -58,6 +58,12 @@ public class ServerGameCard : GameCard
         base.Detach(stackSrc);
     }
 
+    public override void Remove(IStackable stackSrc = null)
+    {
+        base.Remove(stackSrc);
+        foreach (var aug in Augments) aug.Discard();
+    }
+
     #region stats
     public override void SetN(int n, IStackable stackSrc = null)
     {
