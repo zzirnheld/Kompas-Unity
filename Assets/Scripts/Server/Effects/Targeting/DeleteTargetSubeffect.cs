@@ -9,7 +9,7 @@ public class DeleteTargetSubeffect : ServerSubeffect
 
     public override void Resolve()
     {
-        if (TrueDeleteIndex < 0)
+        if (TrueDeleteIndex < 0 || TrueDeleteIndex >= ServerEffect.Targets.Count)
         {
             ServerEffect.EffectImpossible();
             return;

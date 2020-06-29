@@ -7,7 +7,7 @@ public class ClientCameraController : MonoBehaviour
     public const float ZoomFactorBase = 0.5f;
     public const float PanFactorBase = 0.4f;
     public const float RotationFactorBase = 1f;
-    public const float MinCameraHeight = 1f;
+    public const float MinCameraHeight = 2f;
     public const float MaxCameraHeight = 30f;
     public const float MaxCameraPan = 12f;
 
@@ -27,10 +27,10 @@ public class ClientCameraController : MonoBehaviour
         if (Input.GetKey(KeyCode.F) && transform.position.y > MinCameraHeight) transform.Translate(Forward);
         if (Input.GetKey(KeyCode.R) && transform.position.y < MaxCameraHeight) transform.Translate(Backward);
 
-        if (Input.GetKey(KeyCode.W) && transform.position.z < MaxCameraHeight) transform.Translate(Up);
-        if (Input.GetKey(KeyCode.S) && transform.position.z > -1f * MaxCameraHeight) transform.Translate(Down);
-        if (Input.GetKey(KeyCode.A) && transform.position.x < MaxCameraHeight) transform.Translate(Left);
-        if (Input.GetKey(KeyCode.D) && transform.position.x > -1f * MaxCameraHeight) transform.Translate(Right);
+        if (Input.GetKey(KeyCode.W)) transform.Translate(Up);
+        if (Input.GetKey(KeyCode.S)) transform.Translate(Down);
+        if (Input.GetKey(KeyCode.A)) transform.Translate(Left);
+        if (Input.GetKey(KeyCode.D)) transform.Translate(Right);
 
         if (Input.GetKey(KeyCode.Q)) transform.Rotate(Vector3.back, RotationAngle);
         if (Input.GetKey(KeyCode.E)) transform.Rotate(Vector3.forward, RotationAngle);

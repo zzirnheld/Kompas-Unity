@@ -84,7 +84,7 @@ public abstract class GameCard : CardBase {
         set
         {
             (BoardX, BoardY) = value;
-            cardCtrl.MoveTo(value);
+            cardCtrl.SetPhysicalLocation(CardLocation.Field);
             foreach (var aug in Augments) aug.Position = value;
         }
     }
@@ -96,7 +96,11 @@ public abstract class GameCard : CardBase {
         private set
         {
             augmentedCard = value;
-            if (value != null) Position = value.Position;
+            if (value != null)
+            {
+                Position = value.Position;
+                Location = value.Location;
+            }
         }
     }
     #endregion positioning

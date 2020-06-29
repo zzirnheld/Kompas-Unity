@@ -10,6 +10,8 @@ public class TemporaryNESWBuff : HangingEffect
     private readonly int sBuff = 0;
     private readonly int wBuff = 0;
 
+    private bool ended = false;
+
     public TemporaryNESWBuff(ServerGame game, TriggerRestriction triggerRestriction, TriggerCondition EndCondition, 
         GameCard buffRecipient, int nBuff, int eBuff, int sBuff, int wBuff) 
         : base(game, triggerRestriction, EndCondition)
@@ -23,5 +25,12 @@ public class TemporaryNESWBuff : HangingEffect
         buffRecipient.AddToCharStats(nBuff, eBuff, sBuff, wBuff);
     }
 
-    protected override void Resolve() => buffRecipient.AddToCharStats(-1 * nBuff, -1 * eBuff, -1 * sBuff, -1 * wBuff);
+    protected override void Resolve()
+    {
+        if (!ended)
+        {
+            buffRecipient.AddToCharStats(-1 * nBuff, -1 * eBuff, -1 * sBuff, -1 * wBuff);
+            ended = true;
+        }
+    }
 }

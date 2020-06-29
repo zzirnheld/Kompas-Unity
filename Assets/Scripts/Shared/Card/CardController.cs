@@ -12,6 +12,7 @@ public class CardController : MonoBehaviour
 
     public void SetPhysicalLocation(CardLocation location)
     {
+        Debug.Log($"Card controller of {card.CardName} setting physical location in {card.Location} to {card.BoardX}, {card.BoardY}");
         switch (location)
         {
             case CardLocation.Deck:
@@ -27,7 +28,7 @@ public class CardController : MonoBehaviour
                 card.gameObject.transform.SetParent(card.Game.boardObject.transform);
                 MoveTo((card.BoardX, card.BoardY));
                 SetRotation();
-                gameObject.SetActive(true);
+                //Card game object active-ness is set in moveTo
                 break;
             case CardLocation.Hand:
                 card.gameObject.transform.SetParent(card.Controller.handObject.transform);
@@ -61,7 +62,7 @@ public class CardController : MonoBehaviour
     /// <summary>
     /// Sets this card's x and y values and updates its transform
     /// </summary>
-    public void MoveTo((int x, int y) to)
+    private void MoveTo((int x, int y) to)
     {
         transform.localPosition = BoardController.GridIndicesFromPos(to.x, to.y);
         gameObject.SetActive(card.AugmentedCard == null);

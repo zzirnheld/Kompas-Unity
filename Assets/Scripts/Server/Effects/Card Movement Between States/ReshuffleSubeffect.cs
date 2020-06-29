@@ -7,7 +7,7 @@ public class ReshuffleSubeffect : CardChangeStateSubeffect
     public override void Resolve()
     {
         Debug.Log($"Effect reshuffling {Target?.CardName ?? "nothing"}");
-        Target.Reshuffle(Target.Owner, Effect);
+        Target?.Reshuffle(Target.Owner, Effect);
         ServerEffect.ResolveNextSubeffect();
     }
 }

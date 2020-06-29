@@ -25,13 +25,13 @@
 				"{
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[100]
+						\"restrictionsToCheck\":[7,100]
 					}
 				}",
 				"{
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[100,600]
+						\"restrictionsToCheck\":[7,100,600]
 					}
 				}",
 				"{
