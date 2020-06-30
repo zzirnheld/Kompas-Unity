@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"XI - Justice",
-	"effText":"Once each friendly turn, if your hand is smaller than an enemy’s, you can draw half the difference.",
+	"effText":"Once each friendly turn, if your hand is smaller than an enemy’s, you can draw the difference.",
 	"effects":[
 		{
 			"activationRestriction":{
@@ -22,7 +22,7 @@
 					\"Multiplier\":-1
 				}",
 				"{
-					\"Divisor\":2
+					\"Divisor\":1
 				}",
 				"{
 					\"Condition\":\"X<=0\"

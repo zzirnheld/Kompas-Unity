@@ -16,7 +16,7 @@
 				"{
 					\"boardRestriction\":
 					{
-						\"Blurb\":\"character for Metal Golem to move\",
+						\"Blurb\":\"first character for Metal Golem to set N to 0\",
 						\"restrictionsToCheck\":[3,103]
 					}
 				}",
@@ -26,7 +26,7 @@
 				"{
 					\"boardRestriction\":
 					{
-						\"Blurb\":\"space for Metal Golem to move its target\",
+						\"Blurb\":\"second character for Metal Golem to set N to 0\",
 						\"restrictionsToCheck\":[3,103,600]
 					}
 				}",
