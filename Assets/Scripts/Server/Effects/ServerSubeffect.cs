@@ -98,6 +98,9 @@ public abstract class ServerSubeffect : Subeffect
             case SubeffectType.SetAllNESW:
                 toReturn = JsonUtility.FromJson<SetAllNESWSubeffect>(subeffJson);
                 break;
+            case SubeffectType.SpendMovement:
+                toReturn = JsonUtility.FromJson<SpendMovementSubeffect>(subeffJson);
+                break;
             case SubeffectType.TakeControl:
                 toReturn = JsonUtility.FromJson<TakeControlSubeffect>(subeffJson);
                 break;

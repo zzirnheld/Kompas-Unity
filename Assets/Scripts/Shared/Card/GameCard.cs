@@ -106,7 +106,7 @@ public abstract class GameCard : CardBase {
     #endregion positioning
 
     //movement
-    public int SpacesMoved { get; protected set; }
+    public int SpacesMoved { get; set; }
     public int SpacesCanMove => N - SpacesMoved;
 
     //restrictions
