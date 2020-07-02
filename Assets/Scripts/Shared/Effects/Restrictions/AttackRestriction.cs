@@ -14,14 +14,14 @@ public class AttackRestriction
 
     public string[] Restrictions = new string[] { ThisIsCharacter, DefenderIsCharacter, DefenderIsAdjacent, DefenderIsEnemy };
 
-    public Card Card { get; private set; }
+    public GameCard Card { get; private set; }
 
-    public void SetInfo(Card card)
+    public void SetInfo(GameCard card)
     {
         Card = card;
     }
 
-    public bool Evaluate(Card defender)
+    public bool Evaluate(GameCard defender)
     {
         if (defender == null) return false;
 

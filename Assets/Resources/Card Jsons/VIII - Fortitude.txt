@@ -33,7 +33,7 @@
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"adjacent friendly character for Fortitude to give +1E or +1W\",
-						\"restrictionsToCheck\":[3,7],
+						\"restrictionsToCheck\":[3,7,103],
 						\"onBoardRestrictions\":[0]
 					}
 				}",
@@ -60,10 +60,10 @@
 			]
 		}
 	],
-	"n":2,
-	"e":6,
+	"n":1,
+	"e":9,
 	"s":7,
-	"w":7,
+	"w":4,
 	"subtypes":["Tarocco","Mage"],
 	"subtypeText":"Tarocco Mage"
 }

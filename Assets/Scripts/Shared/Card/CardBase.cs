@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public abstract class CardBase : MonoBehaviour
 {
+    public const string SimpleSubtype = "Simple";
+    public const string DelayedSubtype = "Delayed";
+    public const string TerraformSubtype = "Terraform";
+    public const string VanishingSubtype = "Vanishing";
+
     public char CardType { get; private set; }
     public string CardName { get; private set; }
     public string EffText { get; private set; }

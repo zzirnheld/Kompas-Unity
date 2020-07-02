@@ -19,7 +19,7 @@
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"character for Sun to give -1E\",
-						\"restrictionsToCheck\":[3]
+						\"restrictionsToCheck\":[3,103]
 					}
 				}",
 				"{
@@ -29,7 +29,7 @@
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"character for Sun to give +1E\",
-						\"restrictionsToCheck\":[3,600]
+						\"restrictionsToCheck\":[3,103,600]
 					}
 				}",
 				"{

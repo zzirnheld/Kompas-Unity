@@ -7,38 +7,41 @@ using UnityEngine.EventSystems;
 public class DiscardController : MonoBehaviour {
 
     public Game game;
+    public Player Owner;
 
-    private List<Card> discard = new List<Card>();
-    public List<Card> Discard { get { return discard; } }
+    private List<GameCard> discard = new List<GameCard>();
+    public List<GameCard> Discard { get { return discard; } }
 
     //info about discard
     public int DiscardSize() { return discard.Count; }
-    public Card GetLastDiscarded() { return discard[discard.Count - 1]; }
+    public GameCard GetLastDiscarded() { return discard[discard.Count - 1]; }
 
-    public Card CardAt(int index, bool remove)
+    public GameCard CardAt(int index, bool remove)
     {
         if (index >= discard.Count) return null;
-        Card card = discard[index];
+        GameCard card = discard[index];
         if (remove) discard.RemoveAt(index);
         return card;
     }
 
     //adding/removing cards
-	public void AddToDiscard(Card card)
+	public virtual void AddToDiscard(GameCard card, IStackable stackSrc = null)
     {
+        card.Remove();
         Debug.Assert(card != null);
         Debug.Log("Adding to discard: " + card.CardName);
         discard.Add(card);
-        card.SetLocation(CardLocation.Discard);
+        card.Controller = Owner;
+        card.Location = CardLocation.Discard;
         card.transform.localPosition = new Vector3(0, 0, (float)discard.Count / -60f);
     }
 
-    public int IndexOf(Card card)
+    public int IndexOf(GameCard card)
     {
         return discard.IndexOf(card);
     }
 
-    public void RemoveFromDiscard(Card card)
+    public void RemoveFromDiscard(GameCard card)
     {
         Debug.Assert(card != null);
         card.ResetCard();
@@ -53,7 +56,7 @@ public class DiscardController : MonoBehaviour {
 
     public bool Exists(CardRestriction cardRestriction)
     {
-        foreach(Card c in discard)
+        foreach(GameCard c in discard)
         {
             if (cardRestriction.Evaluate(c)) return true;
         }
@@ -61,11 +64,11 @@ public class DiscardController : MonoBehaviour {
         return false;
     }
 
-    public List<Card> CardsThatFitRestriction(CardRestriction cardRestriction)
+    public List<GameCard> CardsThatFitRestriction(CardRestriction cardRestriction)
     {
-        List<Card> cards = new List<Card>();
+        List<GameCard> cards = new List<GameCard>();
 
-        foreach(Card c in discard)
+        foreach(GameCard c in discard)
         {
             if (cardRestriction.Evaluate(c)) cards.Add(c);
         }

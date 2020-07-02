@@ -24,7 +24,7 @@
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"Tarocco for Lovers to become\",
-						\"restrictionsToCheck\":[2,3,202],
+						\"restrictionsToCheck\":[2,3,102,202],
 						\"subtypesInclude\":[\"Tarocco\"]
 					}
 				}",
@@ -40,5 +40,5 @@
 	"s":3,
 	"w":2,
 	"subtypes":["Tarocco"],
-	"subtypeText":"tarocco"
+	"subtypeText":"Tarocco"
 }

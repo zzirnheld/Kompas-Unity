@@ -6,12 +6,7 @@ public class TopdeckSubeffect : CardChangeStateSubeffect
 {
     public override void Resolve()
     {
-        if (Target == null)
-        {
-            ServerEffect.EffectImpossible();
-            return;
-        }
-        ServerGame.Topdeck(Target, ServerEffect);
+        Target.Topdeck(Target.Owner, Effect);
         ServerEffect.ResolveNextSubeffect();
     }
 }

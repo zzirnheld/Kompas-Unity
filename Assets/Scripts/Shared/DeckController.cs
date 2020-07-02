@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -16,23 +17,11 @@ public class DeckController : MonoBehaviour
     //rng for shuffling
     private static readonly System.Random rng = new System.Random();
 
-    public List<Card> Deck { get; } = new List<Card>();
+    public List<GameCard> Deck { get; } = new List<GameCard>();
 
-    public int IndexOf(Card card)
-    {
-        return Deck.IndexOf(card);
-    }
+    public int IndexOf(GameCard card) => Deck.IndexOf(card);
+    public int DeckSize => Deck.Count;
 
-    public void AddCard(Card card)
-    {
-        card.SetLocation(CardLocation.Deck);
-        Deck.Add(card);
-        card.ChangeController(Owner);
-    }
-
-    //info about deck
-    public int DeckSize() { return Deck.Count; }
-    
     /// <summary>
     /// Gets the card at the designated index.
     /// </summary>
@@ -40,59 +29,63 @@ public class DeckController : MonoBehaviour
     /// <param name="remove">Whether or not to remove the card</param>
     /// <param name="shuffle">Whether or not to shuffle the deck after getting the card</param>
     /// <returns></returns>
-    public Card CardAt(int index, bool remove, bool shuffle = false)
+    public GameCard CardAt(int index, bool remove, bool shuffle = false)
     {
-        if (index > Deck.Count) return null;
-        Card card = Deck[index];
+        if (index > Deck.Count()) return null;
+        GameCard card = Deck.ElementAt(index);
         if (remove) Deck.RemoveAt(index);
         if (shuffle) Shuffle();
         return card;
     }
 
+    protected virtual void AddCard(GameCard card, IStackable stackSrc = null)
+    {
+        card.Remove();
+        card.Location = CardLocation.Deck;
+        card.Controller = Owner;
+    }
+
     //adding and removing cards
-    public void PushTopdeck(Card card)
+    public virtual void PushTopdeck(GameCard card, IStackable stackSrc = null)
     {
         Deck.Insert(0, card);
-        card.ResetCard();
-        card.SetLocation(CardLocation.Deck);
+        AddCard(card);
     }
 
-    public void PushBottomdeck(Card card)
+    public virtual void PushBottomdeck(GameCard card, IStackable stackSrc = null)
     {
         Deck.Add(card);
-        card.ResetCard();
-        card.SetLocation(CardLocation.Deck);
+        AddCard(card);
     }
 
-    public void ShuffleIn(Card card)
+    public virtual void ShuffleIn(GameCard card, IStackable stackSrc = null)
     {
         Deck.Add(card);
-        card.ResetCard();
-        card.SetLocation(CardLocation.Deck);
         Shuffle();
+        AddCard(card);
     }
 
-    public Card PopTopdeck()
+    public GameCard PopTopdeck()
     {
         if (Deck.Count == 0) return null;
 
-        Card card = Deck[0];
+        GameCard card = Deck[0];
         Deck.RemoveAt(0);
         return card;
     }
 
-    public Card PopBottomdeck()
+    public GameCard PopBottomdeck()
     {
         if (Deck.Count == 0) return null;
 
-        Card card = Deck[Deck.Count - 1];
+        GameCard card = Deck[Deck.Count - 1];
         Deck.RemoveAt(Deck.Count - 1);
         return card;
     }
 
-    public Card RemoveCardWithName(string name)
+    public GameCard RemoveCardWithName(string name)
     {
-        Card toReturn;
+        GameCard toReturn;
         for(int i = 0; i < Deck.Count; i++)
         {
             if (Deck[i].CardName.Equals(name))
@@ -108,7 +101,7 @@ public class DeckController : MonoBehaviour
     /// <summary>
     /// Random access remove from deck
     /// </summary>
-    public void RemoveFromDeck(Card card)
+    public void RemoveFromDeck(GameCard card)
     {
         Deck.Remove(card);
     }
@@ -121,7 +114,7 @@ public class DeckController : MonoBehaviour
         {
             n--;
             int k = rng.Next(n + 1);
-            Card value = Deck[k];
+            GameCard value = Deck[k];
             Deck[k] = Deck[n];
             Deck[n] = value;
         }
@@ -134,7 +127,7 @@ public class DeckController : MonoBehaviour
     /// <returns></returns>
     public bool Exists(CardRestriction cardRestriction)
     {
-        foreach(Card c in Deck)
+        foreach(GameCard c in Deck)
         {
             if (c != null && cardRestriction.Evaluate(c)) return true;
         }
@@ -142,10 +135,10 @@ public class DeckController : MonoBehaviour
         return false;
     }
 
-    public List<Card> CardsThatFitRestriction(CardRestriction cardRestriction)
+    public List<GameCard> CardsThatFitRestriction(CardRestriction cardRestriction)
     {
-        List<Card> cards = new List<Card>();
-        foreach(Card c in Deck)
+        List<GameCard> cards = new List<GameCard>();
+        foreach(GameCard c in Deck)
         {
             if (c != null && cardRestriction.Evaluate(c))
                 cards.Add(c);

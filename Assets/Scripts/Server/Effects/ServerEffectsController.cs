@@ -10,7 +10,8 @@ public class ServerEffectsController : MonoBehaviour
 
     protected ServerEffectStack stack;
 
-    public Stack<(ServerTrigger, Card, IServerStackable, ServerPlayer, int?, ServerPlayer)> OptionalTriggersToAsk;
+    public Stack<(ServerTrigger, GameCard, IStackable, Player, int?, ServerPlayer)> OptionalTriggersToAsk
+        = new Stack<(ServerTrigger, GameCard, IStackable, Player, int?, ServerPlayer)>();
 
     //trigger map
     protected Dictionary<TriggerCondition, List<ServerTrigger>> triggerMap;
@@ -21,8 +22,6 @@ public class ServerEffectsController : MonoBehaviour
     public void Start()
     {
         stack = new ServerEffectStack();
-
-        OptionalTriggersToAsk = new Stack<(ServerTrigger, Card, IServerStackable, ServerPlayer, int?, ServerPlayer)>();
 
         triggerMap = new Dictionary<TriggerCondition, List<ServerTrigger>>();
         foreach (TriggerCondition c in System.Enum.GetValues(typeof(TriggerCondition)))
@@ -38,21 +37,16 @@ public class ServerEffectsController : MonoBehaviour
     }
 
     #region the stack
-    public void PushToStack(IServerStackable eff)
+    public void PushToStack(IServerStackable eff, int startIndex = 0)
     {
-        stack.Push(eff);
+        stack.Push((eff, startIndex));
     }
 
-    public void PushToStack(ServerEffect eff, ServerPlayer controller)
+    public void PushToStack(ServerEffect eff, ServerPlayer controller, int startIndex = 0)
     {
         eff.serverGame = ServerGame;
         eff.ServerController = controller;
-        PushToStack(eff);
-    }
-
-    public IServerStackable PopFromStack()
-    {
-        return stack.Pop();
+        PushToStack(eff, startIndex);
     }
 
     public IServerStackable CancelStackEntry(int index)
@@ -62,16 +56,16 @@ public class ServerEffectsController : MonoBehaviour
 
     public void ResolveNextStackEntry()
     {
-        var eff = stack.Pop();
-        if (eff == null)
+        var (stackable, startIndex) = stack.Pop();
+        if (stackable == null)
         {
             ServerGame.TurnServerPlayer.ServerNotifier.DiscardSimples();
             ServerGame.boardCtrl.DiscardSimples();
         }
         else
         {
-            CurrStackEntry = eff;
-            eff.StartResolution();
+            CurrStackEntry = stackable;
+            stackable.StartResolution(startIndex);
         }
     }
 
@@ -115,7 +109,7 @@ public class ServerEffectsController : MonoBehaviour
     {
         if (CurrStackEntry != null)
         {
-            Debug.Log("Tried to check for response while something is resolving");
+            Debug.Log($"Tried to check for response while {CurrStackEntry?.Source?.CardName} is resolving");
             return;
         }
 
@@ -174,7 +168,7 @@ public class ServerEffectsController : MonoBehaviour
     }
 
     public void Trigger(TriggerCondition condition, 
-        Card cardTriggerer = null, IServerStackable stackTrigger = null, ServerPlayer triggerer = null, int? x = null, (int, int)? space = null)
+        GameCard cardTriggerer = null, IStackable stackTrigger = null, Player triggerer = null, int? x = null, (int, int)? space = null)
     {
         List<HangingEffect> toRemove = new List<HangingEffect>();
         foreach (HangingEffect t in hangingEffectMap[condition])
@@ -202,7 +196,7 @@ public class ServerEffectsController : MonoBehaviour
     /// </summary>
     /// <param name="trigger"></param>
     /// <param name="x"></param>
-    public void AskForTrigger(ServerTrigger trigger, int? x, Card cardTriggerer, IServerStackable stackTriggerer, ServerPlayer triggerer, ServerPlayer controller)
+    public void AskForTrigger(ServerTrigger trigger, int? x, GameCard cardTriggerer, IStackable stackTriggerer, Player triggerer, ServerPlayer controller)
     {
         Debug.Log($"Asking about trigger for effect of card {trigger.effToTrigger.Source.CardName}");
         lock (TriggerStackLock)

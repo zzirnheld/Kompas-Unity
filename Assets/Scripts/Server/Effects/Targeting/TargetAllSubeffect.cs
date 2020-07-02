@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,17 +7,13 @@ public class TargetAllSubeffect : CardTargetSubeffect
 {
     public override void Resolve()
     {
-        bool found = false;
-        foreach (KeyValuePair<int, Card> pair in ServerGame.cardsByID)
-        {
-            if (cardRestriction.Evaluate(pair.Value))
-            {
-                ServerEffect.Targets.Add(pair.Value);
-                found = true;
-            }
-        }
+        var targets = ServerGame.Cards.Where(c => cardRestriction.Evaluate(c));
+        //check what targets there are now, before you add them, to not mess with NotAlreadyTarget restriction
+        //because Linq executes lazily, it would otherwise add the targets, then re-execute the query and not find any
+        bool any = targets.Any();
+        Effect.Targets.AddRange(targets);        
 
-        if (found) ServerEffect.ResolveNextSubeffect();
+        if (any) ServerEffect.ResolveNextSubeffect();
         else ServerEffect.EffectImpossible();
     }
 }

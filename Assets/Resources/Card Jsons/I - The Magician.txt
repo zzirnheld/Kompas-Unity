@@ -31,10 +31,10 @@
 			]	
 		}
 	],
-	"n":3,
-	"e":4,
+	"n":1,
+	"e":5,
 	"s":5,
 	"w":2,
 	"subtypes":["Tarocco","Mage"],
-	"subtypeText":"tarocco Mage"
+	"subtypeText":"Tarocco Mage"
 }

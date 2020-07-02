@@ -12,6 +12,10 @@ public class ClientGame : Game {
 
     public override Player[] Players => ClientPlayers;
     public ClientPlayer[] ClientPlayers;
+    
+    public Dictionary<int, ClientGameCard> cardsByID = new Dictionary<int, ClientGameCard>();
+    public IEnumerable<ClientGameCard> ClientCards => cardsByID.Values;
+    public override IEnumerable<GameCard> Cards => ClientCards;
 
     private bool friendlyTurn;
 
@@ -61,17 +65,22 @@ public class ClientGame : Game {
         clientNotifier.RequestSpaceTarget(x, y);
     }
 
+    public void PutCardsBack()
+    {
+        foreach (var c in Cards) c.PutBack();
+    }
+
     //game mechanics
     #region setting pips
     public void SetFriendlyPips(int num)
     {
-        Players[0].pips = num;
+        Players[0].Pips = num;
         uiCtrl.UpdateFriendlyPips(num);
     }
 
     public void SetEnemyPips(int num)
     {
-        Players[1].pips = num;
+        Players[1].Pips = num;
         uiCtrl.UpdateEnemyPips(num);
     }
     #endregion
@@ -80,29 +89,30 @@ public class ClientGame : Game {
     {
         if (player >= 2) throw new System.ArgumentException();
 
-        Player owner = Players[player];
-        AvatarCard avatar = CardRepo.InstantiateClientAvatar(avatarName, this, owner, avatarID);
+        var owner = ClientPlayers[player];
+        var avatar = CardRepo.InstantiateClientAvatar(avatarName, this, owner, avatarID);
         owner.Avatar = avatar;
-        Play(avatar, player * 6, player * 6, owner);
+        avatar.Play(player * 6, player * 6, owner);
     }
 
-    public void Delete(Card card)
+    public void Delete(GameCard card)
     {
+        card.Remove();
         Destroy(card.gameObject);
     }
 
     //requesting
-    public void RequestMove(Card card, int toX, int toY)
+    public void RequestMove(GameCard card, int toX, int toY)
     {
         clientNotifier.RequestMove(card, toX, toY);
     }
 
-    public void RequestPlay(Card card, int toX, int toY)
+    public void RequestPlay(GameCard card, int toX, int toY)
     {
         clientNotifier.RequestPlay(card, toX, toY);
     }
 
-    public void TargetCard(Card card)
+    public void TargetCard(GameCard card)
     {
         if(CurrCardRestriction == null)
         {
@@ -144,5 +154,10 @@ public class ClientGame : Game {
         TurnPlayerIndex = 1 - TurnPlayerIndex;
         boardCtrl.ResetCardsForTurn(TurnPlayer);
         clientUICtrl.ChangeTurn(TurnPlayerIndex);
+    }
+
+    public override GameCard GetCardWithID(int id)
+    {
+        return cardsByID.ContainsKey(id) ? cardsByID[id] : null;
     }
 }

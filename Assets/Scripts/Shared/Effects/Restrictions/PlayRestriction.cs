@@ -2,29 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class PlayRestriction
 {
-    public Card Card { get; private set; }
+    public GameCard Card { get; private set; }
 
     public const string PlayedByCardOwner = "Played By Card Owner";
     public const string FromHand = "From Hand";
     public const string AdjacentToFriendlyCard = "Adjacent to Friendly Card";
+    public const string OnFriendlyCard = "On Friendly Card";
     public const string FriendlyTurn = "Friendly Turn";
+    public const string HasCostInPips = "Has Cost in Pips";
+    public const string NothingIsResolving = "Nothing is Resolving";
     public const string NotNormally = "Cannot be Played Normally";
     public const string MustNormally = "Must be Played Normally";
 
-    public string[] NormalRestrictions = { PlayedByCardOwner, FromHand, AdjacentToFriendlyCard, FriendlyTurn };
+    public string[] NormalRestrictions = { PlayedByCardOwner, FromHand, AdjacentToFriendlyCard, FriendlyTurn, HasCostInPips, NothingIsResolving };
     public string[] EffectRestrictions = { AdjacentToFriendlyCard };
 
     private int x;
     private int y;
     
-    public void SetInfo(Card card)
+    public void SetInfo(GameCard card)
     {
         Card = card;
     }
 
-    private bool CardIsAdjToCoordsAndFriendly(Card c)
+    private bool CardIsAdjToCoordsAndFriendly(GameCard c)
     {
         return c != null && c.IsAdjacentTo(x, y) && c.Controller == Card.Controller;
     }
@@ -45,10 +49,19 @@ public class PlayRestriction
                     if (Card.Location != CardLocation.Hand) return false;
                     break;
                 case AdjacentToFriendlyCard:
-                    if (!Card.game.boardCtrl.ExistsCardOnBoard(c => CardIsAdjToCoordsAndFriendly(c))) return false;
+                    if (!Card.Game.boardCtrl.ExistsCardOnBoard(c => CardIsAdjToCoordsAndFriendly(c))) return false;
+                    break;
+                case OnFriendlyCard:
+                    if (Card.Game.boardCtrl.GetCardAt(x, y)?.Controller != Card.Controller) return false;
+                    break;
+                case HasCostInPips:
+                    if (Card.Controller.Pips < Card.Cost) return false;
                     break;
                 case FriendlyTurn:
-                    if (Card.game.TurnPlayer != Card.Controller) return false;
+                    if (Card.Game.TurnPlayer != Card.Controller) return false;
+                    break;
+                case NothingIsResolving:
+                    if (Card.Game.CurrStackEntry != null) return false;
                     break;
                 case NotNormally:
                     return false;
@@ -71,10 +84,10 @@ public class PlayRestriction
             switch (r)
             {
                 case AdjacentToFriendlyCard:
-                    if (!Card.game.boardCtrl.ExistsCardOnBoard(c => CardIsAdjToCoordsAndFriendly(c))) return false;
+                    if (!Card.Game.boardCtrl.ExistsCardOnBoard(c => CardIsAdjToCoordsAndFriendly(c))) return false;
                     break;
                 case FriendlyTurn:
-                    if (Card.game.TurnPlayer != Card.Controller) return false;
+                    if (Card.Game.TurnPlayer != Card.Controller) return false;
                     break;
                 case MustNormally:
                     return false;

@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Metal Golem",
-	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, move an enemy character 3 spaces.",
+	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, set two characters' N to 0.",
 	"effects":[
 		{
 			"triggerCondition":201,
@@ -16,8 +16,8 @@
 				"{
 					\"boardRestriction\":
 					{
-						\"Blurb\":\"character for Metal Golem to move\",
-						\"restrictionsToCheck\":[3]
+						\"Blurb\":\"first character for Metal Golem to set N to 0\",
+						\"restrictionsToCheck\":[3,103]
 					}
 				}",
 				"{
@@ -26,8 +26,8 @@
 				"{
 					\"boardRestriction\":
 					{
-						\"Blurb\":\"space for Metal Golem to move its target\",
-						\"restrictionsToCheck\":[3,600]
+						\"Blurb\":\"second character for Metal Golem to set N to 0\",
+						\"restrictionsToCheck\":[3,103,600]
 					}
 				}",
 				"{
@@ -56,7 +56,7 @@
 	},
 	"n":2,
 	"e":1,
-	"s":3,
+	"s":5,
 	"w":4,
 	"subtypes":["Golem"],
 	"subtypeText":"Golem"

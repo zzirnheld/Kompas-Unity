@@ -7,6 +7,9 @@ public class ClientCameraController : MonoBehaviour
     public const float ZoomFactorBase = 0.5f;
     public const float PanFactorBase = 0.4f;
     public const float RotationFactorBase = 1f;
+    public const float MinCameraHeight = 2f;
+    public const float MaxCameraHeight = 30f;
+    public const float MaxCameraPan = 12f;
 
     public float ZoomFactor => Mathf.Log10(transform.position.y) * ZoomFactorBase;
     public float PanFactor => Mathf.Log10(transform.position.y) * PanFactorBase;
@@ -21,8 +24,8 @@ public class ClientCameraController : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.F) && transform.position.y > 1) transform.Translate(Forward);
-        if (Input.GetKey(KeyCode.R) && transform.position.y < 20) transform.Translate(Backward);
+        if (Input.GetKey(KeyCode.F) && transform.position.y > MinCameraHeight) transform.Translate(Forward);
+        if (Input.GetKey(KeyCode.R) && transform.position.y < MaxCameraHeight) transform.Translate(Backward);
 
         if (Input.GetKey(KeyCode.W)) transform.Translate(Up);
         if (Input.GetKey(KeyCode.S)) transform.Translate(Down);

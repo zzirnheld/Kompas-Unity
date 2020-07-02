@@ -1,0 +1,50 @@
+{
+	"cardType":67,
+	"cardName":"Unstable Soul",
+	"effText":"Fast Shape: You can use a space of movement and give me -XE to move me through X Ethereal characters.",
+	"effects":[
+		{
+			"blurb":"Shape",
+			"activationRestriction":{
+				"Restrictions":[
+					"In Play"
+				]
+			},
+			"subeffectTypes":[4,5,121,201,103,309],
+			"subeffects":[
+				"{
+					\"spaceRestriction\":
+					{
+						\"Blurb\":\"to move Unstable Soul to\",
+						\"restrictionsToCheck\":[110],
+						\"ConnectednessRestriction\":{
+							\"restrictionsToCheck\":[2,3,103],
+							\"subtypesInclude\":[\"Ethereal\"]
+						}
+					}
+				}",
+				"{}",
+				"{
+					\"Modifier\":1
+				}",
+				"{
+					\"WhatToCount\":\"Distance to Coords Through\",
+					\"ThroughRestriction\":{
+						\"restrictionsToCheck\":[2,3,103],
+						\"subtypesInclude\":[\"Ethereal\"]
+					}
+				}",
+				"{
+					\"eMult\":-1
+				}",
+				"{}"
+			]
+		}
+	],
+	"n":1,
+	"e":4,
+	"s":3,
+	"w":3,
+	"subtypes":["Ethereal","Shaper"],
+	"subtypeText":"Ethereal Shaper"
+}

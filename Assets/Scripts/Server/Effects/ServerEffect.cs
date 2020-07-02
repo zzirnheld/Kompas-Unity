@@ -21,8 +21,8 @@ public class ServerEffect : Effect, IServerStackable
     public override Subeffect[] Subeffects => ServerSubeffects;
     public override Trigger Trigger => ServerTrigger;
 
-    public ServerEffect(SerializableEffect se, Card thisCard, ServerGame serverGame, ServerPlayer controller) 
-        : base(se.activationRestriction ?? new ActivationRestriction(), thisCard, se.blurb)
+    public ServerEffect(SerializableEffect se, GameCard thisCard, ServerGame serverGame, ServerPlayer controller, int effectIndex) 
+        : base(se.activationRestriction ?? new ActivationRestriction(), thisCard, se.blurb, effectIndex)
     {
         this.serverGame = serverGame;
         this.ServerController = controller;
@@ -61,6 +61,7 @@ public class ServerEffect : Effect, IServerStackable
         if (serverGame.uiCtrl.DebugMode) return true;
         return Trigger == null
             && controller.index == Source.ControllerIndex
+            && !Negated
             && ActivationRestriction.Evaluate(controller);
     }
 
@@ -69,15 +70,15 @@ public class ServerEffect : Effect, IServerStackable
         EffectsController.PushToStack(this, controller);
     }
 
-    public void StartResolution()
+    public void StartResolution(int startIndex = 0)
     {
         Debug.Log($"Resolving effect {EffectIndex} of {Source.CardName}");
-        Source.game.CurrEffect = this;
+        serverGame.CurrEffect = this;
         TimesUsedThisTurn++;
         ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
         ServerController.ServerNotifier.EffectResolving(this);
         if (Negated) EffectImpossible();
-        else ResolveSubeffect(0);
+        else ResolveSubeffect(startIndex);
     }
 
     public void ResolveNextSubeffect()

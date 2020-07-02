@@ -6,7 +6,7 @@ using UnityEngine;
 public class ActivationRestriction
 {
     public Effect Effect { get; private set; }
-    public Card Card => Effect.Source;
+    public GameCard Card => Effect.Source;
 
     public const string TimesPerTurn = "Max Times Per Turn";
     public const string TimesPerRound = "Max Times Per Round";

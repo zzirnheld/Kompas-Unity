@@ -22,17 +22,17 @@ public class TemporaryNESWBuffAllSubeffect : TemporarySubeffect
     public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        CardRestriction.Subeffect = this;
+        CardRestriction.Initialize(this);
     }
 
     public override void Resolve()
     {
-        IEnumerable<Card> cards = ServerGame.Cards.Where(c => CardRestriction.Evaluate(c));
+        IEnumerable<GameCard> cards = ServerGame.Cards.Where(c => CardRestriction.Evaluate(c));
 
         foreach(var card in cards)
         {
             var temp = new TemporaryNESWBuff(ServerGame, TriggerRestriction, EndCondition,
-                card as CharacterCard, NBuff, EBuff, SBuff, WBuff);
+                card, NBuff, EBuff, SBuff, WBuff);
         }
 
         ServerEffect.ResolveNextSubeffect();

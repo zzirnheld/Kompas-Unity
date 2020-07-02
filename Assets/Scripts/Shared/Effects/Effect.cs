@@ -1,15 +1,16 @@
 ﻿using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
 /// Effects will only be resolved on server. Clients will just get to know what effects they can use
 /// </summary>
-public abstract class Effect
+public abstract class Effect : IStackable
 {
-    public Game Game => Source.game;
+    public Game Game => Source.Game;
 
-    public Card Source { get; }
+    public GameCard Source { get; }
     public abstract Player Controller { get; set; }
 
     //subeffects
@@ -18,11 +19,11 @@ public abstract class Effect
     public int SubeffectIndex { get; protected set; }
     public Subeffect CurrSubeffect => Subeffects[SubeffectIndex];
 
-    public int EffectIndex => System.Array.IndexOf(Source.Effects, this);
+    public readonly int EffectIndex;
 
-    public List<Card> Targets { get; private set; }
-    public List<Vector2Int> Coords { get; private set; }
-    public List<Card> Rest { get; private set; }
+    public List<GameCard> Targets { get; } = new List<GameCard>();
+    public List<(int x, int y)> Coords { get; private set; } = new List<(int x, int y)>();
+    public List<GameCard> Rest { get; private set; } = new List<GameCard>();
 
     public abstract Trigger Trigger { get; }
     public ActivationRestriction ActivationRestriction { get; }
@@ -45,16 +46,14 @@ public abstract class Effect
     public int TimesUsedThisTurn { get; protected set; }
     public int TimesUsedThisRound { get; protected set; }
 
-    public Effect(ActivationRestriction restriction, Card source, string blurb)
+    public Effect(ActivationRestriction restriction, GameCard source, string blurb, int effIndex)
     {
         Source = source ?? throw new System.ArgumentNullException($"Effect cannot be attached to null card");
         ActivationRestriction = restriction;
         ActivationRestriction.Initialize(this);
         Blurb = blurb;
+        EffectIndex = effIndex;
         TimesUsedThisTurn = 0;
-        Targets = new List<Card>();
-        Rest = new List<Card>();
-        Coords = new List<Vector2Int>();
     }
 
     public void ResetForTurn(Player turnPlayer)

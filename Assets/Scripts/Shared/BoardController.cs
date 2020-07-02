@@ -28,14 +28,8 @@ public class BoardController : MonoBehaviour
     {
         return new Vector3(GridIndexToPos(x), GridIndexToPos(y), 0.2f);
     }
-
-    //private CharacterCard[,] characters = new CharacterCard[spacesOnBoard, spacesOnBoard];
-    //private SpellCard[,] spells = new SpellCard[spacesOnBoard, spacesOnBoard];
-    private readonly Card[,] cards = new Card[SpacesInGrid, SpacesInGrid];
-    /// <summary>
-    /// Whether all cards, only chars, only spells, or only augs are visible
-    /// </summary>
-    private int visibleCards = 0;
+    
+    private readonly GameCard[,] cards = new GameCard[SpacesInGrid, SpacesInGrid];
 
     //helper methods
     #region helper methods
@@ -45,13 +39,87 @@ public class BoardController : MonoBehaviour
     }
 
     //get game data
-    public Card GetCardAt(int x, int y)
+    public GameCard GetCardAt(int x, int y)
     {
         if (!ValidIndices(x, y)) return null;
         return cards[x, y];
     }
-    
-    public bool ExistsCardOnBoard(Func<Card, bool> predicate)
+
+    public List<GameCard> CardsAdjacentTo(int x, int y)
+    {
+        var list = new List<GameCard>();
+
+        for (int i = x - 1; i <= x + 1; i++)
+        {
+            for (int j = y - 1; j <= y + 1; j++)
+            {
+                var card = GetCardAt(i, j);
+                if ((i, j) != (x, y) && card != null) list.Add(card);
+            }
+        }
+
+        return list;
+    }
+
+    public List<GameCard> CardsWhere(Func<GameCard, bool> predicate)
+    {
+        var list = new List<GameCard>();
+        foreach (var card in cards) if (predicate(card)) list.Add(card);
+        return list;
+    }
+
+    /// <summary>
+    /// A really bad Dijkstra's because this is a fun side project and I'm not feeling smart today
+    /// </summary>
+    /// <param name="src">The card to start looking from</param>
+    /// <param name="x">The x coordinate you want a distance to</param>
+    /// <param name="y">The y coordinate you want a distance to</param>
+    /// <param name="through">What all cards you go through must fit</param>
+    /// <returns></returns>
+    public int ShortestPath(GameCard src, int x, int y, CardRestriction through)
+    {
+        //record shortest distances to cards
+        var dist = new Dictionary<GameCard, int>();
+        //and if you've seen them
+        var seen = new HashSet<GameCard>();
+        //the queue of nodes to process next. things should only go on here once, the first time they're seen
+        var queue = new Queue<GameCard>();
+
+        //set up the structures with the source node
+        queue.Enqueue(src);
+        dist.Add(src, 0);
+        seen.Add(src);
+
+        //iterate until the queue is empty, in which case you'll have seen all connected cards that fit the restriction.
+        while (queue.Any())
+        {
+            //consider the next node's adjacent cards
+            var next = queue.Dequeue();
+            foreach (var card in next.AdjacentCards.Where(c => through.Evaluate(c)))
+            {
+                //if that adjacent card is never seen before, initialize its distance and add it to the structures
+                if (!seen.Contains(card))
+                {
+                    seen.Add(card);
+                    queue.Enqueue(card);
+                    dist[card] = dist[next] + 1;
+                }
+                //otherwise, relax its distance if appropriate
+                else if (dist[next] + 1 < dist[card]) dist[card] = dist[next] + 1;
+            }
+        }
+
+        //then, go through the list of cards adjacent to our target location
+        //choose the card that's closest to our source
+        int min = 50;
+        foreach (var card in CardsAdjacentTo(x, y))
+        {
+            if (dist.ContainsKey(card) && dist[card] < min) min = dist[card];
+        }
+        return min;
+    }
+
+    public bool ExistsCardOnBoard(Func<GameCard, bool> predicate)
     {
         foreach (var c in cards)
         {
@@ -60,29 +128,10 @@ public class BoardController : MonoBehaviour
         return false;
     }
 
-    public CharacterCard GetCharAt(int x, int y)
-    {
-        if (!ValidIndices(x, y)) return null;
-        return cards[x, y] as CharacterCard;
-    }
-
-    public SpellCard GetSpellAt(int x, int y)
-    {
-        if (!ValidIndices(x, y)) return null;
-        return cards[x, y] as SpellCard;
-    }
-
-    public List<AugmentCard> GetAugmentsAt(int x, int y)
-    {
-        if (!ValidIndices(x, y)) return null;
-        //if the card at x y is null, or not a character card, returns null
-        return (cards[x, y] as CharacterCard)?.Augments;
-    }
-
     public int GetNumCardsOnBoard()
     {
         int i = 0;
-        foreach (Card card in cards){
+        foreach (GameCard card in cards){
             if (card != null) i++;
         }
         return i;
@@ -90,75 +139,38 @@ public class BoardController : MonoBehaviour
 
     public void ResetCardsForTurn(Player turnPlayer)
     {
-        foreach(Card c in cards)
-        {
-            c?.ResetForTurn(turnPlayer);
-        }
+        foreach(GameCard c in cards) c?.ResetForTurn(turnPlayer);
     }
     #endregion
 
     #region game mechanics
-    public void RemoveFromBoard(Card toRemove)
+    public void RemoveFromBoard(GameCard toRemove)
     {
         if (toRemove == null || toRemove.Location != CardLocation.Field) return;
 
-        if (toRemove is CharacterCard || toRemove is SpellCard)
-            cards[toRemove.BoardX, toRemove.BoardY] = null;
-        else if (toRemove is AugmentCard augToRemove)
-            augToRemove.Detach();
+        RemoveFromBoard(toRemove.BoardX, toRemove.BoardY);
     }
 
-    public void RemoveFromBoard(int x, int y) { RemoveFromBoard(GetCardAt(x, y)); }
-
-    //playing. these methods don't check whether it's client or server. that's the Game methods' jobs. 
-    // these just do it (they're called by ClientNetworkController when ordered by the server)
+    public void RemoveFromBoard(int x, int y) => cards[x, y] = null;
+    
     /// <summary>
-    /// Actually summons the card. DO NOT call directly from player interaction
-    /// </summary>
-    public void Summon(CharacterCard toSummon, int toX, int toY, Player controller)
-    {
-        cards[toX, toY] = toSummon;
-        toSummon.SetLocation(CardLocation.Field);
-        toSummon.MoveTo(toX, toY, false);
-        toSummon.ChangeController(controller);
-    }
-
-    /// <summary>
-    /// Actually augments the card. DO NOT call directly from player interaction
-    /// </summary>
-    public void Augment(AugmentCard toAugment, int toX, int toY, Player controller)
-    {
-        GetCharAt(toX, toY).AddAugment(toAugment);
-        toAugment.SetLocation(CardLocation.Field);
-        toAugment.MoveTo(toX, toY, false);
-        toAugment.ChangeController(controller);
-    }
-
-    /// <summary>
-    /// Actually casts the card. DO NOT call directly from player interaction
-    /// </summary>
-    public void Cast(SpellCard toCast, int toX, int toY, Player controller)
-    {
-        cards[toX, toY] = toCast;
-        toCast.SetLocation(CardLocation.Field);
-        toCast.MoveTo(toX, toY, false);
-        toCast.ChangeController(controller);
-    }
-
-    /// <summary>
-    /// Calls the appropriate summon/augment/cast method for the card
+    /// Puts the card on the board
     /// </summary>
     /// <param name="toPlay">Card to be played</param>
     /// <param name="toX">X coordinate to play the card to</param>
     /// <param name="toY">Y coordinate to play the card to</param>
-    public void Play(Card toPlay, int toX, int toY, Player controller)
+    public virtual void Play(GameCard toPlay, int toX, int toY, Player controller, IStackable stackSrc = null)
     {
+        toPlay.Remove();
+
         Debug.Log($"In boardctrl, playing {toPlay.CardName} to {toX}, {toY}");
 
-        if (toPlay is CharacterCard charToPlay) Summon(charToPlay, toX, toY, controller);
-        else if (toPlay is AugmentCard augmentToPlay) Augment(augmentToPlay, toX, toY, controller);
-        else if (toPlay is SpellCard spellToPlay) Cast(spellToPlay, toX, toY, controller);
-        else Debug.Log("Can't play a card that isn't a character, augment, or spell.");
+        if (toPlay.CardType == 'A') cards[toX, toY].AddAugment(toPlay, stackSrc);
+        else cards[toX, toY] = toPlay;
+
+        toPlay.Location = CardLocation.Field;
+        toPlay.Position = (toX, toY);
+        toPlay.Controller = controller;
 
         int i = GetNumCardsOnBoard();
         if (i > game.Leyload) game.Leyload = i;
@@ -167,43 +179,39 @@ public class BoardController : MonoBehaviour
     }
 
     //movement
-    public void Swap(Card card, int toX, int toY, bool playerInitiated)
+    public virtual void Swap(GameCard card, int toX, int toY, bool playerInitiated, IStackable stackSrc = null)
     {
-        Debug.Log($"Swapping {card.CardName} to {toX}, {toY}");
+        Debug.Log($"Swapping {card?.CardName} to {toX}, {toY}");
 
         if (!ValidIndices(toX, toY) || card == null) return;
-        if (card is AugmentCard) throw new NotImplementedException();
+        if (card.AugmentedCard != null) throw new NotImplementedException();
 
-        Card temp = null;
-        int tempX;
-        int tempY;
-        temp                            = cards[toX, toY];
-        cards[toX, toY]                 = card;
-        cards[card.BoardX, card.BoardY] = temp;
-        
-        tempX = card.BoardX;
-        tempY = card.BoardY;
+        var (tempX, tempY) = card.Position;
+        GameCard temp = cards[toX, toY];
+        cards[toX, toY] = card;
+        cards[tempX, tempY] = temp;
 
         //then let the cards know they've been moved
-        card.MoveTo(toX, toY, playerInitiated);
-        if (temp != null) temp.MoveTo(tempX, tempY, playerInitiated);
+        if (playerInitiated)
+        {
+            card.CountSpacesMovedTo((toX, toY));
+            temp?.CountSpacesMovedTo((tempX, tempY));
+        }
+        card.Position = (toX, toY);
+        if (temp != null) temp.Position = (tempX, tempY);
     }
 
-    public void Move(Card card, int toX, int toY, bool playerInitiated)
+    public void Move(GameCard card, int toX, int toY, bool playerInitiated, IStackable stackSrc = null)
     {
         if (!ValidIndices(toX, toY)) return;
 
-        if (card is AugmentCard augCard)
-        {
-            augCard.Detach();
-            GetCharAt(toX, toY).AddAugment(augCard);
-        }
-        else Swap(card, toX, toY, playerInitiated);
+        if (card.AugmentedCard != null) cards[toX, toY].AddAugment(card, stackSrc);
+        else Swap(card, toX, toY, playerInitiated, stackSrc);
     }
 
     public void PutCardsBack()
     {
-        foreach(Card card in cards)
+        foreach(GameCard card in cards)
         {
             if(card != null) card.PutBack();
         }
@@ -211,7 +219,7 @@ public class BoardController : MonoBehaviour
 
     public bool ExistsCardOnBoard(CardRestriction restriction)
     {
-        foreach(Card c in cards)
+        foreach(GameCard c in cards)
         {
             if (c != null && restriction.Evaluate(c)) return true;
         }
@@ -221,7 +229,7 @@ public class BoardController : MonoBehaviour
 
     public bool CanSummonTo(int playerIndex, int x, int y)
     {
-        foreach(Card c in cards)
+        foreach(GameCard c in cards)
         {
             if (c != null && c.IsAdjacentTo(x, y) && c.ControllerIndex == playerIndex) return true;
         }
@@ -231,59 +239,12 @@ public class BoardController : MonoBehaviour
 
     public void DiscardSimples()
     {
-        foreach(Card c in cards)
+        foreach(GameCard c in cards)
         {
-            if(c != null && c is SpellCard spellC && spellC.SpellSubtype == SpellCard.SimpleSubtype)
-            {
-                game.Discard(c);
-            }
+            if (c != null && c.SpellSubtype == CardBase.SimpleSubtype) c.Discard();
         }
     }
     #endregion game mechanics
-
-    #region cycling visible cards
-    private void WhichCardsVisible(bool charsActive, bool spellsActive, bool augsActive)
-    {
-        //TODO check if this works
-        foreach (Card card in cards)
-        {
-            if (card == null) continue;
-
-            if (card is CharacterCard charCard)
-            {
-                card.gameObject.SetActive(charsActive);
-                foreach (AugmentCard augment in charCard.Augments)
-                    augment.gameObject.SetActive(augsActive);
-            }
-            else if (card is SpellCard) card.gameObject.SetActive(spellsActive);
-        }
-    }
-
-    public void CycleVisibleCards()
-    {
-        visibleCards = ++visibleCards % 4;
-
-        switch (visibleCards)
-        {
-            case 0:
-                //set all cards visible
-                WhichCardsVisible(true, true, true);
-                break;
-            case 1:
-                //hide all but characters
-                WhichCardsVisible(true, false, false);
-                break;
-            case 2:
-                //hide all but non-aug spells
-                WhichCardsVisible(false, true, false);
-                break;
-            case 3:
-                //hide all but augs
-                WhichCardsVisible(false, false, true);
-                break;
-        }
-    }
-    #endregion
 
     public void OnMouseDown()
     {

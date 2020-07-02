@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class TemporaryNESWBuff : HangingEffect
 {
-    private readonly CharacterCard buffRecipient;
+    private readonly GameCard buffRecipient;
     private readonly int nBuff = 0;
     private readonly int eBuff = 0;
     private readonly int sBuff = 0;
     private readonly int wBuff = 0;
 
-    public TemporaryNESWBuff(ServerGame game, TriggerRestriction triggerRestriction, TriggerCondition EndCondition, CharacterCard buffRecipient, int nBuff, int eBuff, int sBuff, int wBuff) 
+    private bool ended = false;
+
+    public TemporaryNESWBuff(ServerGame game, TriggerRestriction triggerRestriction, TriggerCondition EndCondition, 
+        GameCard buffRecipient, int nBuff, int eBuff, int sBuff, int wBuff) 
         : base(game, triggerRestriction, EndCondition)
     {
         this.buffRecipient = buffRecipient ?? throw new System.ArgumentNullException("Null characcter card in temporary nesw buff");
@@ -19,8 +22,15 @@ public class TemporaryNESWBuff : HangingEffect
         this.sBuff = sBuff;
         this.wBuff = wBuff;
 
-        buffRecipient.game.AddToStats(buffRecipient, nBuff, eBuff, sBuff, wBuff);
+        buffRecipient.AddToCharStats(nBuff, eBuff, sBuff, wBuff);
     }
 
-    protected override void Resolve() => buffRecipient.game.AddToStats(buffRecipient, -1 * nBuff, -1 * eBuff, -1 * sBuff, -1 * wBuff);
+    protected override void Resolve()
+    {
+        if (!ended)
+        {
+            buffRecipient.AddToCharStats(-1 * nBuff, -1 * eBuff, -1 * sBuff, -1 * wBuff);
+            ended = true;
+        }
+    }
 }

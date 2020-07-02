@@ -87,8 +87,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3440550091758160724}
-  - component: {fileID: 7693835754492354625}
   - component: {fileID: 7693835754492354624}
+  - component: {fileID: 1386507202922705490}
   m_Layer: 0
   m_Name: Client Character Card Brass
   m_TagString: Untagged
@@ -119,22 +119,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7693835754492354625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1865637914893367623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca59b615d531529409c2aafcf260553b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detailedSprite: {fileID: 0}
-  simpleSprite: {fileID: 0}
-  game: {fileID: 0}
-  cardCtrl: {fileID: 7693835754492354624}
 --- !u!114 &7693835754492354624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,8 +131,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6075e39016768b143af40ac75b10bc93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 7693835754492354625}
+  card: {fileID: 1386507202922705490}
   cardFaceRenderer: {fileID: 1512338398004317362}
+--- !u!114 &1386507202922705490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865637914893367623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5eaf700679447a438067b5b33bda12a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detailedSprite: {fileID: 0}
+  simpleSprite: {fileID: 0}
+  cardCtrl: {fileID: 7693835754492354624}
 --- !u!1 &2767318278355551805
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,7 +630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13351909bd3483f4e98c4d1696cf3e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Card: {fileID: 7693835754492354625}
+  Card: {fileID: 1386507202922705490}
   ClientGame: {fileID: 0}
 --- !u!64 &5299313183798471
 MeshCollider:

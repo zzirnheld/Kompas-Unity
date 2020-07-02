@@ -7,7 +7,7 @@ using UnityEngine;
 [Serializable]
 public class CardRestriction
 {
-    public Subeffect Subeffect { get; set; }
+    public Subeffect Subeffect { get; private set; }
 
     //TODO add "can summon" restriction that checks that there exists
     //a space that the card can be played to
@@ -66,8 +66,8 @@ public class CardRestriction
 
     public int costsLessThan;
     public string nameIs;
-    public string[] subtypesInclude;
-    public string[] subtypesExclude;
+    public string[] subtypesInclude = new string[0];
+    public string[] subtypesExclude = new string[0];
     public int constant;
     public CardLocation[] locations;
     public int costMultiplier = 1;
@@ -75,12 +75,14 @@ public class CardRestriction
 
     public string Blurb = "";
 
-    public virtual bool Evaluate (Card potentialTarget, int x)
+    public void Initialize(Subeffect subeff)
+    {
+        this.Subeffect = subeff;
+    }
+
+    public virtual bool Evaluate (GameCard potentialTarget, int x)
     {
         if (potentialTarget == null) return false;
-
-        //some restrictions require checking if the target is a character. no reason to check twice
-        CharacterCard charCard = potentialTarget as CharacterCard;
 
         foreach (CardRestrictions c in restrictionsToCheck)
         {
@@ -97,13 +99,13 @@ public class CardRestriction
                     }
                     break;
                 case CardRestrictions.IsCharacter:
-                    if (!(potentialTarget is CharacterCard)) return false;
+                    if (potentialTarget.CardType != 'C') return false;
                     break;
                 case CardRestrictions.IsSpell:
-                    if (!(potentialTarget is SpellCard)) return false;
+                    if (potentialTarget.CardType != 'S') return false;
                     break;
                 case CardRestrictions.IsAugment:
-                    if (!(potentialTarget is AugmentCard)) return false;
+                    if (potentialTarget.CardType != 'A') return false;
                     break;
                 case CardRestrictions.SubtypesExclude:
                     foreach (string s in subtypesExclude)
@@ -131,7 +133,7 @@ public class CardRestriction
                     if (Subeffect.Target.CardName != potentialTarget.CardName) return false;
                     break;
                 case CardRestrictions.Avatar:
-                    if (!(potentialTarget is AvatarCard)) return false;
+                    if (!(potentialTarget.IsAvatar)) return false;
                     break;
                 case CardRestrictions.Distinct:
                     if (potentialTarget == Subeffect.Source) return false;
@@ -152,74 +154,58 @@ public class CardRestriction
                     if (!locations.Contains(potentialTarget.Location)) return false;
                     break;
                 case CardRestrictions.NLTEX:
-                    if (charCard == null) return false;
-                    if (charCard.N > x) return false;
+                    if (potentialTarget.N > x) return false;
                     break;
                 case CardRestrictions.ELTEX:
-                    if (charCard == null) return false;
-                    if (charCard.E > x) return false;
+                    if (potentialTarget.E > x) return false;
                     break;
                 case CardRestrictions.SLTEX:
-                    if (charCard == null) return false;
-                    if (charCard.S > x) return false;
+                    if (potentialTarget.S > x) return false;
                     break;
                 case CardRestrictions.WLTEX:
-                    if (charCard == null) return false;
-                    if (charCard.W > x) return false;
+                    if (potentialTarget.W > x) return false;
                     break;
                 case CardRestrictions.CostLTEX:
                     if (potentialTarget.Cost > x) return false;
                     break;
                 case CardRestrictions.NEX:
-                    if (charCard == null) return false;
-                    if (charCard.N != x) return false;
+                    if (potentialTarget.N != x) return false;
                     break;
                 case CardRestrictions.EEX:
-                    if (charCard == null) return false;
-                    if (charCard.E != x) return false;
+                    if (potentialTarget.E != x) return false;
                     break;
                 case CardRestrictions.SEX:
-                    if (charCard == null) return false;
-                    if (charCard.S != x) return false;
+                    if (potentialTarget.S != x) return false;
                     break;
                 case CardRestrictions.WEX:
-                    if (charCard == null) return false;
-                    if (charCard.W != x) return false;
+                    if (potentialTarget.W != x) return false;
                     break;
                 case CardRestrictions.CostEX:
                     if (potentialTarget.Cost != x) return false;
                     break;
                 case (CardRestrictions.NLTX):
-                    if (charCard == null) return false;
-                    if (charCard.N >= x) return false;
+                    if (potentialTarget.N >= x) return false;
                     break;
                 case (CardRestrictions.ELTX):
-                    if (charCard == null) return false;
-                    if (charCard.E >= x) return false;
+                    if (potentialTarget.E >= x) return false;
                     break;
                 case (CardRestrictions.SLTX):
-                    if (charCard == null) return false;
-                    if (charCard.S >= x) return false;
+                    if (potentialTarget.S >= x) return false;
                     break;
                 case (CardRestrictions.WLTX):
-                    if (charCard == null) return false;
-                    if (charCard.W >= x) return false;
+                    if (potentialTarget.W >= x) return false;
                     break;
                 case CardRestrictions.NLTEC:
-                    if (charCard == null) return false;
-                    if (charCard.N > constant) return false;
+                    if (potentialTarget.N > constant) return false;
                     break;
                 case CardRestrictions.ELTEC:
-                    if (charCard == null) return false;
-                    if (charCard.E > constant) return false;
+                    if (potentialTarget.E > constant) return false;
                     break;
                 case CardRestrictions.SLTEC:
-                    if (charCard == null) return false;
-                    if (charCard.S > constant) return false;
+                    if (potentialTarget.S > constant) return false;
                     break;
                 case CardRestrictions.WLTEC:
-                    if (charCard == null) return false;
-                    if (charCard.W > constant) return false;
+                    if (potentialTarget.W > constant) return false;
                     break;
                 case CardRestrictions.IndexInListGTEC:
                     if (potentialTarget.IndexInList < constant) return false;
@@ -248,7 +234,7 @@ public class CardRestriction
                     if (found) break;
                     else return false;
                 case CardRestrictions.EffectControllerCanPayCost:
-                    if (Subeffect.Effect.Controller.pips < potentialTarget.Cost * costMultiplier / costDivisor) return false;
+                    if (Subeffect.Effect.Controller.Pips < potentialTarget.Cost * costMultiplier / costDivisor) return false;
                     break;
                 default:
                     Debug.LogError($"You forgot to implement a check for {c}");
@@ -266,7 +252,7 @@ public class CardRestriction
     /// <param name="potentialTarget"></param>
     /// <param name="actuallyTargetThis">Whether effect resolution should continue if this is a valid target</param>
     /// <returns></returns>
-    public virtual bool Evaluate(Card potentialTarget)
+    public virtual bool Evaluate(GameCard potentialTarget)
     {
         return Evaluate(potentialTarget, Subeffect.Effect.X);
     }

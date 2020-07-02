@@ -8,9 +8,10 @@ public class CardRepository : MonoBehaviour
     public const string cardListFilePath = "Card Jsons/Card List";
     public const string cardJsonsFolderpath = "Card Jsons/";
 
-    private Dictionary<string, string> cardJsons;
-    private List<string> cardNames;
-    private List<string> cardNamesToIgnore;
+    private static Dictionary<string, string> cardJsons;
+    private static Dictionary<string, int> cardNameIDs;
+    private static List<string> cardNames;
+    private static List<string> cardNamesToIgnore;
 
     #region prefabs
     public GameObject DeckSelectCardPrefab;
@@ -37,6 +38,7 @@ public class CardRepository : MonoBehaviour
         });
 
         cardJsons = new Dictionary<string, string>();
+        cardNameIDs = new Dictionary<string, int>();
         cardNames = new List<string>();
         string cardList = Resources.Load<TextAsset>(cardListFilePath).text;
         cardList = cardList.Replace('\r', '\n');
@@ -48,6 +50,7 @@ public class CardRepository : MonoBehaviour
             //don't add duplicate cards
             if (IsCardToIgnore(nameClean) || CardExists(nameClean)) continue;
             //add the card's name to the list of card names
+            cardNameIDs.Add(name, cardNames.Count);
             cardNames.Add(nameClean);
 
             //load the json
@@ -73,10 +76,9 @@ public class CardRepository : MonoBehaviour
         return cardNamesToIgnore.Contains(name);
     }
 
-    public bool CardExists(string cardName)
-    {
-        return cardNames.Contains(cardName);
-    }
+    public static string CardName(int id) => cardNames[id];
+    public static int CardNameID(string cardName) => cardNameIDs[cardName];
+    public static bool CardExists(string cardName) => cardNameIDs.ContainsKey(cardName);
 
     private bool SubtypesContain(string cardName, string subtypesInclude)
     {
@@ -148,17 +150,17 @@ public class CardRepository : MonoBehaviour
         return JsonUtility.FromJson<SerializableCard>(cardJsons[name]);
     }
 
-    private ServerEffect[] CreateServerEffects(SerializableEffect[] serEffs, Card card, ServerGame serverGame, ServerPlayer owner)
+    private ServerEffect[] CreateServerEffects(SerializableEffect[] serEffs, GameCard card, ServerGame serverGame, ServerPlayer owner)
     {
         ServerEffect[] effects = new ServerEffect[serEffs.Length];
         for (int i = 0; i < effects.Length; i++)
         {
-            effects[i] = new ServerEffect(serEffs[i], card, serverGame, owner);
+            effects[i] = new ServerEffect(serEffs[i], card, serverGame, owner, i);
         }
         return effects;
     }
 
-    public AvatarCard InstantiateServerAvatar(string cardName, ServerGame serverGame, ServerPlayer owner, int id)
+    public AvatarServerGameCard InstantiateServerAvatar(string cardName, ServerGame serverGame, ServerPlayer owner, int id)
     {
         if (!cardJsons.ContainsKey(cardName))
         {
@@ -168,12 +170,11 @@ public class CardRepository : MonoBehaviour
 
         try
         {
-            SerializableCharCard charCard = JsonUtility.FromJson<SerializableCharCard>(cardJsons[cardName]);
-            if (charCard.cardType != 'C') return null;
-            AvatarCard avatar = Instantiate(ServerAvatarPrefab).GetComponent<AvatarCard>();
+            SerializableCard charCard = JsonUtility.FromJson<SerializableCard>(cardJsons[cardName]);
+            AvatarServerGameCard avatar = Instantiate(ServerAvatarPrefab).GetComponent<AvatarServerGameCard>();
             ServerEffect[] effects = CreateServerEffects(charCard.effects, avatar, serverGame, owner);
             avatar.SetInfo(charCard, serverGame, owner, effects, id);
-            avatar.SetImage();
+            avatar.cardCtrl.SetImage(avatar.CardName);
             serverGame.cardsByID.Add(id, avatar);
             return avatar;
         }
@@ -185,12 +186,12 @@ public class CardRepository : MonoBehaviour
         }
     }
 
-    public Card InstantiateServerNonAvatar(string name, ServerGame serverGame, ServerPlayer owner, int id)
+    public ServerGameCard InstantiateServerNonAvatar(string name, ServerGame serverGame, ServerPlayer owner, int id)
     {
         Debug.Log($"Instantiating new server non avatar for name {name}");
         string json = cardJsons[name] ?? throw new System.ArgumentException($"Name {name} not associated with json");
-        Card card = null;
-        Effect[] effects;
+        ServerGameCard card = null;
+        ServerEffect[] effects;
 
         try
         {
@@ -198,29 +199,22 @@ public class CardRepository : MonoBehaviour
             SerializableCard serializableCard = JsonUtility.FromJson<SerializableCard>(json);
             switch (serializableCard.cardType)
             {
-                case 'C':
-                    SerializableCharCard serializableChar = JsonUtility.FromJson<SerializableCharCard>(json);
-                    card = Instantiate(ServerCharPrefab).GetComponent<CharacterCard>();
-                    effects = CreateServerEffects(serializableCard.effects, card, serverGame, owner);
-                    card?.SetInfo(serializableChar, serverGame, owner, effects, id);
+                case 'C': 
+                    card = Instantiate(ServerCharPrefab).GetComponent<ServerGameCard>();
                     break;
                 case 'S':
-                    SerializableSpellCard serializableSpell = JsonUtility.FromJson<SerializableSpellCard>(json);
-                    card = Instantiate(ServerSpellPrefab).GetComponent<SpellCard>();
-                    effects = CreateServerEffects(serializableCard.effects, card, serverGame, owner);
-                    card?.SetInfo(serializableSpell, serverGame, owner, effects, id);
+                    card = Instantiate(ServerSpellPrefab).GetComponent<ServerGameCard>();
                     break;
                 case 'A':
-                    SerializableAugCard serializableAug = JsonUtility.FromJson<SerializableAugCard>(json);
-                    card = Instantiate(ServerAugPrefab).GetComponent<AugmentCard>();
-                    effects = CreateServerEffects(serializableCard.effects, card, serverGame, owner);
-                    card?.SetInfo(serializableAug, serverGame, owner, effects, id);
+                    card = Instantiate(ServerAugPrefab).GetComponent<ServerGameCard>();
                     break;
                 default:
                     Debug.LogError("Unrecognized type character " + serializableCard.cardType + " in " + json);
                     return null;
             }
-            card?.SetImage();
+            effects = CreateServerEffects(serializableCard.effects, card, serverGame, owner);
+            card?.SetInfo(serializableCard, serverGame, owner, effects, id);
+            card?.cardCtrl?.SetImage(card.CardName);
             return card;
         }
         catch (System.ArgumentException argEx)
@@ -231,17 +225,17 @@ public class CardRepository : MonoBehaviour
         }
     }
 
-    private ClientEffect[] CreateClientEffects(SerializableEffect[] serEffs, Card card, ClientGame clientGame)
+    private ClientEffect[] CreateClientEffects(SerializableEffect[] serEffs, GameCard card, ClientGame clientGame)
     {
         ClientEffect[] effects = new ClientEffect[serEffs.Length];
         for (int i = 0; i < effects.Length; i++)
         {
-            effects[i] = new ClientEffect(serEffs[i], card, clientGame);
+            effects[i] = new ClientEffect(serEffs[i], card, clientGame, i);
         }
         return effects;
     }
 
-    public AvatarCard InstantiateClientAvatar(string cardName, ClientGame clientGame, Player owner, int id)
+    public AvatarClientGameCard InstantiateClientAvatar(string cardName, ClientGame clientGame, ClientPlayer owner, int id)
     {
         if (!cardJsons.ContainsKey(cardName))
         {
@@ -253,11 +247,11 @@ public class CardRepository : MonoBehaviour
         {
             SerializableCharCard charCard = JsonUtility.FromJson<SerializableCharCard>(cardJsons[cardName]);
             if (charCard.cardType != 'C') return null;
-            AvatarCard avatar = Instantiate(ClientAvatarPrefab).GetComponent<AvatarCard>();
+            AvatarClientGameCard avatar = Instantiate(ClientAvatarPrefab).GetComponent<AvatarClientGameCard>();
             ClientEffect[] effects = CreateClientEffects(charCard.effects, avatar, clientGame);
             avatar.SetInfo(charCard, clientGame, owner, effects, id);
             avatar.gameObject.GetComponentInChildren<ClientCardMouseController>().ClientGame = clientGame;
-            avatar.SetImage();
+            avatar.cardCtrl.SetImage(avatar.CardName);
             clientGame.cardsByID.Add(id, avatar);
             return avatar;
         }
@@ -269,11 +263,11 @@ public class CardRepository : MonoBehaviour
         }
     }
 
-    public Card InstantiateClientNonAvatar(string name, ClientGame clientGame, Player owner, int id)
+    public ClientGameCard InstantiateClientNonAvatar(string name, ClientGame clientGame, ClientPlayer owner, int id)
     {
         string json = cardJsons[name] ?? throw new System.ArgumentException($"Name {name} not associated with json");
-        Card card = null;
-        Effect[] effects;
+        ClientGameCard card = null;
+        ClientEffect[] effects;
 
         try
         {
@@ -282,28 +276,21 @@ public class CardRepository : MonoBehaviour
             switch (serializableCard.cardType)
             {
                 case 'C':
-                    SerializableCharCard serializableChar = JsonUtility.FromJson<SerializableCharCard>(json);
-                    card = Instantiate(ClientCharPrefab).GetComponent<CharacterCard>();
-                    effects = CreateClientEffects(serializableCard.effects, card, clientGame);
-                    card?.SetInfo(serializableChar, clientGame, owner, effects, id);
+                    card = Instantiate(ClientCharPrefab).GetComponent<ClientGameCard>();
                     break;
                 case 'S':
-                    SerializableSpellCard serializableSpell = JsonUtility.FromJson<SerializableSpellCard>(json);
-                    card = Instantiate(ClientSpellPrefab).GetComponent<SpellCard>();
-                    effects = CreateClientEffects(serializableCard.effects, card, clientGame);
-                    card?.SetInfo(serializableSpell, clientGame, owner, effects, id);
+                    card = Instantiate(ClientSpellPrefab).GetComponent<ClientGameCard>();
                     break;
                 case 'A':
-                    SerializableAugCard serializableAug = JsonUtility.FromJson<SerializableAugCard>(json);
-                    card = Instantiate(ClientAugPrefab).GetComponent<AugmentCard>();
-                    effects = CreateClientEffects(serializableCard.effects, card, clientGame);
-                    card?.SetInfo(serializableAug, clientGame, owner, effects, id);
+                    card = Instantiate(ClientAugPrefab).GetComponent<ClientGameCard>();
                     break;
                 default:
                     Debug.LogError("Unrecognized type character " + serializableCard.cardType + " in " + json);
                     return null;
             }
-            card?.SetImage();
+            effects = CreateClientEffects(serializableCard.effects, card, clientGame);
+            card.SetInfo(serializableCard, clientGame, owner, effects, id);
+            card.cardCtrl.SetImage(card.CardName);
             card.gameObject.GetComponentInChildren<ClientCardMouseController>().ClientGame = clientGame;
             return card;
         }

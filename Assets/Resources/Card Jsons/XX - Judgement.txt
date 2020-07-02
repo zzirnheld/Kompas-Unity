@@ -19,7 +19,7 @@
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"character for Judgement to kill\",
-						\"restrictionsToCheck\":[3,202]
+						\"restrictionsToCheck\":[3,103,202]
 					}
 				}",
 				"{}"
@@ -29,7 +29,7 @@
 	"n":4,
 	"e":9,
 	"s":12,
-	"w":10,
+	"w":15,
 	"subtypes":["Tarocco","Mage"],
 	"subtypeText":"Tarocco Mage"
 }

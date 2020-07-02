@@ -9,8 +9,18 @@ public abstract class Player : MonoBehaviour{
     public abstract Player Enemy { get; }
 
     //game mechanics data
-    public int pips = 3;
-    public AvatarCard Avatar;
+    private int pips = 3;
+    public virtual int Pips
+    {
+        get => pips;
+        set => pips = value;
+    }
+    private GameCard avatar;
+    public virtual GameCard Avatar
+    {
+        get => avatar;
+        set => avatar = value;
+    }
 
     //other game data
     public bool friendly;
@@ -33,7 +43,7 @@ public abstract class Player : MonoBehaviour{
     /// A list of potential fast cards and fast effects that the player has
     /// </summary>
     public List<Effect> responses;
-    public List<Card> fastCards;
+    public List<GameCard> fastCards;
 
     /// <summary>
     /// Whether the player has yet passed priority
@@ -53,7 +63,7 @@ public abstract class Player : MonoBehaviour{
     private void Awake()
     {
         responses = new List<Effect>();
-        fastCards = new List<Card>();
+        fastCards = new List<GameCard>();
     }
 
     public virtual void SetInfo(TcpClient tcpClient, int index)

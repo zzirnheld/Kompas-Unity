@@ -1,22 +1,23 @@
 {
 	"cardType":67,
 	"cardName":"XVII - The Star",
-	"effText":"Once each turn, you can draw 1.",
+	"effText":"Twice each turn, you can draw 1.",
 	"effects":[
 		{
 			"activationRestriction":{
 				"Restrictions":[
 					"Max Times Per Turn"
-				]
+				],
+				"MaxTimes":2
 			},
 			"subeffectTypes":[305],
 			"subeffects":["{}"]
 		}
 	],
 	"n":2,
-	"e":5,
-	"s":5,
-	"w":6,
+	"e":7,
+	"s":6,
+	"w":5,
 	"subtypes":["Tarocco","Mage"],
 	"subtypeText":"Tarocco Mage"
 }

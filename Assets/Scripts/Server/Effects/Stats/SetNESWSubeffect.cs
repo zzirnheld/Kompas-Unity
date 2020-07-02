@@ -9,16 +9,14 @@ public class SetNESWSubeffect : ServerSubeffect
     public int SVal = -1;
     public int WVal = -1;
 
-    public CharacterCard CharTarget => Target as CharacterCard;
-
-    public int RealNVal => NVal <= 0 ? CharTarget.N : NVal;
-    public int RealEVal => EVal <= 0 ? CharTarget.E : EVal;
-    public int RealSVal => SVal <= 0 ? CharTarget.S : SVal;
-    public int RealWVal => WVal <= 0 ? CharTarget.W : WVal;
+    public int RealNVal => NVal < 0 ? Target.N : NVal;
+    public int RealEVal => EVal < 0 ? Target.E : EVal;
+    public int RealSVal => SVal < 0 ? Target.S : SVal;
+    public int RealWVal => WVal < 0 ? Target.W : WVal;
 
     public override void Resolve()
     {
-        ServerGame.SetStats(CharTarget, RealNVal, RealEVal, RealSVal, RealWVal);
+        Target.SetCharStats(RealNVal, RealEVal, RealSVal, RealWVal);
         ServerEffect.ResolveNextSubeffect();
     }
 }

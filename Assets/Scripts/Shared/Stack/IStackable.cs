@@ -5,5 +5,5 @@ using UnityEngine;
 public interface IStackable
 {
     Player Controller { get; }
-    Card Source { get; }
+    GameCard Source { get; }
 }

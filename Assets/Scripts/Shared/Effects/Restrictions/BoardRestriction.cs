@@ -17,7 +17,7 @@ public class BoardRestriction : CardRestriction
 
     public int cSpaces;
 
-    public override bool Evaluate(Card potentialTarget)
+    public override bool Evaluate(GameCard potentialTarget)
     {
         if (potentialTarget == null) return false;
 
@@ -42,7 +42,7 @@ public class BoardRestriction : CardRestriction
                     break;
                     //TODO also allow for summoned avatars, maybe with an overridden property Summoned?
                 case BoardRestrictions.Summoned:
-                    if (potentialTarget is AvatarCard) return false;
+                    if (!potentialTarget.Summoned) return false;
                     break;
             }
         }

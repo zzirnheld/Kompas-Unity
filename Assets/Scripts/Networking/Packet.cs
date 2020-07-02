@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,8 +7,6 @@ namespace KompasNetworking
 {
     public class Packet
     {
-        public static int id = 0;
-
         public enum Command
         {
             //game start procedures
@@ -21,6 +20,8 @@ namespace KompasNetworking
             Augment = 101,
             Move = 102,
             Attack = 103,
+            Attach = 104,
+            AddAsEnemyAndAttach = 105,
             EndTurn = 150,
             Leyload = 151,
             //move cards around
@@ -40,6 +41,12 @@ namespace KompasNetworking
             Activate = 304,
             Deactivate = 305,
             ChangeControl = 306,
+            SetN = 350,
+            SetE = 351,
+            SetS = 352,
+            SetW = 353,
+            SetC = 354,
+            SetA = 355,
             //change numbers of cards that you see of your opponent
             IncrementEnemyDeck = 400,
             IncrementEnemyHand = 401,
@@ -97,14 +104,13 @@ namespace KompasNetworking
         public Command command;
 
         public int cardID;
-        public int packetID;
 
         public int[] normalArgs;
         public string stringArg;
         public int[] specialArgs;
 
         #region abstraction of args
-        public string CardName => Game.CardNames[normalArgs[1]];
+        public string CardName => CardRepository.CardName(normalArgs[1]);
         public int CardIDToBe => cardID;
 
         public int Pips => normalArgs[0];
@@ -119,40 +125,38 @@ namespace KompasNetworking
         public int X => normalArgs[2];
         public int Y => normalArgs[3];
 
-        public int N => normalArgs[0];
-        public int E => normalArgs[1];
-        public int S => normalArgs[2];
-        public int W => normalArgs[3];
+        public (int N, int E, int S, int W) Stats => (normalArgs[0], normalArgs[1], normalArgs[2], normalArgs[3]);
 
         public int C => normalArgs[0];
 
         public int EffIndex => normalArgs[0];
         public int SubeffIndex => normalArgs[1];
+        public int MaxNum => normalArgs[2];
+        public int Stat => normalArgs[0];
         #endregion abstraction of args
 
         #region constuctors 
         public Packet(Command command)
         {
             this.command = command;
-            id = (id + 1) % 1000;
 
             normalArgs = new int[4];
             specialArgs = new int[0];
         }
 
-        public Packet(Command command, Card source, BoardTargetSubeffect boardTargetSubeffect) : this(command, source)
+        public Packet(Command command, GameCard source, BoardTargetSubeffect boardTargetSubeffect) : this(command, source)
         {
             normalArgs[0] = boardTargetSubeffect.ServerEffect.EffectIndex;
             normalArgs[1] = boardTargetSubeffect.SubeffIndex;
         }
 
-        public Packet(Command command, Card source, CardTargetSubeffect cardTargetSubeffect) : this(command, source)
+        public Packet(Command command, GameCard source, CardTargetSubeffect cardTargetSubeffect) : this(command, source)
         {
             normalArgs[0] = cardTargetSubeffect.ServerEffect.EffectIndex;
             normalArgs[1] = cardTargetSubeffect.SubeffIndex;
         }
 
-        public Packet(Command command, Card source, SpaceTargetSubeffect spaceTargetSubeffect) : this(command, source)
+        public Packet(Command command, GameCard source, SpaceTargetSubeffect spaceTargetSubeffect) : this(command, source)
         {
             normalArgs[0] = spaceTargetSubeffect.ServerEffect.EffectIndex;
             normalArgs[1] = spaceTargetSubeffect.SubeffIndex;
@@ -163,7 +167,7 @@ namespace KompasNetworking
         {
             try
             {
-                normalArgs[1] = Game.CardNameIndices[cardName];
+                normalArgs[1] = CardRepository.CardNameID(cardName);
             }
             catch (KeyNotFoundException e)
             {
@@ -193,17 +197,17 @@ namespace KompasNetworking
             normalArgs[3] = y;
         }
 
-        public Packet(Command command, Card card) : this(command)
+        public Packet(Command command, GameCard card) : this(command)
         {
             if (card != null) cardID = card.ID;
         }
 
-        public Packet(Command command, Card card, int num) : this(command, card)
+        public Packet(Command command, GameCard card, int num) : this(command, card)
         {
             normalArgs[0] = num;
         }
 
-        public Packet(Command command, Card card, bool boolean) : this(command, card)
+        public Packet(Command command, GameCard card, bool boolean) : this(command, card)
         {
             normalArgs[0] = boolean ? 1 : 0;
         }
@@ -229,7 +233,7 @@ namespace KompasNetworking
             }
         }
 
-        public Packet(Command command, Card card, int x, int y) : this(command, card)
+        public Packet(Command command, GameCard card, int x, int y) : this(command, card)
         {
             //this is used for the target packet
             normalArgs[0] = x;
@@ -238,12 +242,12 @@ namespace KompasNetworking
             normalArgs[3] = y;
         }
 
-        public Packet(Command command, Card card, int x, int y, bool boolean) : this(command, card, x, y)
+        public Packet(Command command, GameCard card, int x, int y, bool boolean) : this(command, card, x, y)
         {
             normalArgs[0] = boolean ? 1 : 0;
         }
 
-        public Packet(Command command, Card card, int n, int e, int s, int w) : this(command, card)
+        public Packet(Command command, GameCard card, int n, int e, int s, int w) : this(command, card)
         {
             normalArgs[0] = n;
             normalArgs[1] = e;
@@ -261,7 +265,7 @@ namespace KompasNetworking
             normalArgs[0] = arg;
         }
 
-        public Packet(Command command, Card card, int[] specialArgs, int arg0, int arg1, int arg2) : this(command, card)
+        public Packet(Command command, GameCard card, int[] specialArgs, int arg0, int arg1, int arg2) : this(command, card)
         {
             this.specialArgs = specialArgs;
             normalArgs[0] = arg0;
@@ -272,8 +276,8 @@ namespace KompasNetworking
         
         public CardRestriction GetCardRestriction(ClientGame clientGame)
         {
-            Card thatHasEffect = clientGame.GetCardFromID(cardID);
-            Effect eff = thatHasEffect.Effects[normalArgs[0]];
+            GameCard thatHasEffect = clientGame.GetCardWithID(cardID);
+            Effect eff = thatHasEffect.Effects.ElementAt(normalArgs[0]);
             DummyCardTargetSubeffect subeff = eff.Subeffects[normalArgs[1]] as DummyCardTargetSubeffect;
 
             if(subeff == null)
@@ -288,8 +292,8 @@ namespace KompasNetworking
         
         public BoardRestriction GetBoardRestriction(ClientGame clientGame)
         {
-            Card thatHasEffect = clientGame.GetCardFromID(cardID);
-            Effect eff = thatHasEffect.Effects[normalArgs[0]];
+            GameCard thatHasEffect = clientGame.GetCardWithID(cardID);
+            Effect eff = thatHasEffect.Effects.ElementAt(normalArgs[0]);
             DummyBoardTargetSubeffect subeff = eff.Subeffects[normalArgs[1]] as DummyBoardTargetSubeffect;
 
             if (subeff == null)
@@ -304,8 +308,8 @@ namespace KompasNetworking
         
         public SpaceRestriction GetSpaceRestriction(ClientGame clientGame)
         {
-            Card thatHasEffect = clientGame.GetCardFromID(cardID);
-            Effect eff = thatHasEffect.Effects[normalArgs[0]];
+            GameCard thatHasEffect = clientGame.GetCardWithID(cardID);
+            Effect eff = thatHasEffect.Effects.ElementAt(normalArgs[0]);
             DummySpaceTargetSubeffect subeff = eff.Subeffects[normalArgs[1]] as DummySpaceTargetSubeffect;
 
             if (subeff == null)
@@ -320,8 +324,9 @@ namespace KompasNetworking
 
         public ListRestriction GetListRestriction(ClientGame clientGame)
         {
-            Card thatHasEffect = clientGame.GetCardFromID(cardID);
-            Effect eff = thatHasEffect.Effects[normalArgs[1]];
+            Debug.Log($"Getting list restriction for {string.Join(", ", normalArgs)}");
+            GameCard thatHasEffect = clientGame.GetCardWithID(cardID);
+            Effect eff = thatHasEffect.Effects.ElementAt(EffIndex);
             DummyListTargetSubeffect subeff = eff.Subeffects[normalArgs[2]] as DummyListTargetSubeffect;
 
             if (subeff == null)
@@ -358,6 +363,17 @@ namespace KompasNetworking
                 case Command.SetEnemyPips:
                 case Command.SetPips:
                 case Command.Leyload:
+                case Command.SetN:
+                case Command.SetE:
+                case Command.SetS:
+                case Command.SetW:
+                case Command.SetC:
+                case Command.SetA:
+                case Command.GetAttackTarget:
+                case Command.RequestBoardTarget:
+                case Command.RequestDeckTarget:
+                case Command.RequestDiscardTarget:
+                case Command.RequestHandTarget:
                     return false;
                 default:
                     return true;

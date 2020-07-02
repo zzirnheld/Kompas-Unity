@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class XByGamestateSubeffect : ServerSubeffect
 {
     public const string HandSize = "Hand Size";
+    public const string DistanceToCoordsThrough = "Distance to Coords Through";
 
     public string WhatToCount;
     
@@ -22,6 +23,14 @@ public abstract class XByGamestateSubeffect : ServerSubeffect
         }
     }
 
+    public BoardRestriction ThroughRestriction = new BoardRestriction();
+
+    public override void Initialize(ServerEffect eff, int subeffIndex)
+    {
+        base.Initialize(eff, subeffIndex);
+        ThroughRestriction.Initialize(this);
+    }
+
     private int BaseCount
     {
         get
@@ -30,6 +39,9 @@ public abstract class XByGamestateSubeffect : ServerSubeffect
             {
                 case HandSize:
                     return Player.handCtrl.HandSize;
+                case DistanceToCoordsThrough:
+                    var (x, y) = Space;
+                    return Game.boardCtrl.ShortestPath(Source, x, y, ThroughRestriction);
                 default:
                     throw new System.ArgumentException($"Invalid 'what to count' string {WhatToCount} in x by gamestate value subeffect");
             }

@@ -17,14 +17,12 @@ public class PayPipsTargetCostSubeffect : ServerSubeffect
         }
 
         int toPay = Target.Cost * Multiplier / Divisor + Modifier;
-        if (EffectController.pips < toPay)
+        if (EffectController.Pips < toPay) ServerEffect.EffectImpossible();
+        else
         {
-            ServerEffect.EffectImpossible();
-            return;
+            Debug.Log("Paying " + toPay + " pips for target cost");
+            ServerGame.GivePlayerPips(EffectController, EffectController.Pips - toPay);
+            ServerEffect.ResolveNextSubeffect();
         }
-
-        Debug.Log("Paying " + toPay + " pips for target cost");
-        ServerGame.GivePlayerPips(EffectController, EffectController.pips - toPay);
-        ServerEffect.ResolveNextSubeffect();
     }
 }

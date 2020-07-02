@@ -17,7 +17,7 @@
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"adjacent Dragon for Aquarian to kill\",
-						\"restrictionsToCheck\":[2,3,7],
+						\"restrictionsToCheck\":[2,3,7,103],
 						\"subtypesInclude\":[\"Dragon\"],
 						\"onBoardRestrictions\":[0]
 					}
@@ -45,7 +45,7 @@
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"another Dragon for Aquarian to heal\",
-						\"restrictionsToCheck\":[2,3,7,99],
+						\"restrictionsToCheck\":[2,3,7,99,103],
 						\"subtypesInclude\":[\"Dragon\"]
 					}
 				}",

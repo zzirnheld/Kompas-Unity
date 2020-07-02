@@ -17,7 +17,7 @@ public class DummyListTargetSubeffect : DummySubeffect
     public override void Initialize(ClientEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        CardRestriction.Subeffect = this;
+        CardRestriction.Initialize(this);
         ListRestriction.Subeffect = this;
     }
 }

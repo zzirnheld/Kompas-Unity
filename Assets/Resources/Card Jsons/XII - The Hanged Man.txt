@@ -20,7 +20,7 @@
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"Summoned character for Hanged Man to swap give -XE\",
-						\"restrictionsToCheck\":[3],
+						\"restrictionsToCheck\":[3,103],
 						\"onBoardRestrictions\":[200]
 					}
 				}",

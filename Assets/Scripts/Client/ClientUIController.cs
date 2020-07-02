@@ -41,12 +41,12 @@ public class ClientUIController : UIController
     public GameObject ConfirmTriggerView;
     public TMPro.TMP_Text TriggerBlurbText;
     //search
-    private List<Card> toSearch;
+    private List<GameCard> toSearch;
     private int searchIndex = 0;
     private int numToSearch;
     private ListRestriction searchListRestriction;
     private int numSearched;
-    private List<Card> searched;
+    private List<GameCard> searched;
     //choose effect option
     public GameObject ChooseOptionView;
     public TMPro.TMP_Text ChoiceBlurbText;
@@ -62,7 +62,7 @@ public class ClientUIController : UIController
     
     private void Awake()
     {
-        toSearch = new List<Card>();
+        toSearch = new List<GameCard>();
     }
 
     private bool ShowEffect(Effect eff)
@@ -72,7 +72,7 @@ public class ClientUIController : UIController
                     eff.ActivationRestriction.Evaluate(clientGame.Players[0]);
     }
 
-    public override void ShowInfoFor(Card card, bool refresh = false)
+    public override void ShowInfoFor(GameCard card, bool refresh = false)
     {
         base.ShowInfoFor(card);
 
@@ -98,7 +98,7 @@ public class ClientUIController : UIController
         else UseEffectParent.SetActive(false);
     }
 
-    public override void SelectCard(Card card, Game.TargetMode targetMode, bool fromClick)
+    public override void SelectCard(GameCard card, Game.TargetMode targetMode, bool fromClick)
     {
         base.SelectCard(card, targetMode, fromClick);
         if (fromClick && card != null) clientGame.TargetCard(card);
@@ -171,7 +171,7 @@ public class ClientUIController : UIController
         CurrStateOverallObj.SetActive(true);
         CurrStateText.text = primaryState;
         CurrStateBonusText.text = secondaryState;
-        CurrStateBonusObj.SetActive(secondaryState == "");
+        CurrStateBonusObj.SetActive(!string.IsNullOrWhiteSpace(secondaryState));
     }
 
     #region effects
@@ -250,7 +250,7 @@ public class ClientUIController : UIController
     #endregion effects
 
     #region search
-    public void StartSearch(List<Card> list, ListRestriction listRestriction = null, int numToChoose = 1)
+    public void StartSearch(List<GameCard> list, ListRestriction listRestriction = null, int numToChoose = 1)
     {
         //if already searching, dont start another search?
         if (toSearch != null && toSearch.Count != 0) return;
@@ -263,7 +263,7 @@ public class ClientUIController : UIController
         numToSearch = list.Count < numToChoose ? list.Count : numToChoose;
         searchListRestriction = listRestriction;
         numSearched = 0;
-        searched = new List<Card>();
+        searched = new List<GameCard>();
 
         //initiate search process
         searchIndex = 0;
@@ -278,7 +278,7 @@ public class ClientUIController : UIController
         //if the list to search through is null, we're not searching atm.
         if (toSearch == null) return;
 
-        Card searchSelected = toSearch[searchIndex];
+        GameCard searchSelected = toSearch[searchIndex];
 
         if (numToSearch == 1)
         {
@@ -388,19 +388,6 @@ public class ClientUIController : UIController
     #endregion flow control
 
     #region debug
-    public void DebugUpdateStats()
-    {
-        if (!(SelectedCard is CharacterCard charCard)) return;
-
-        //get current ones, in case the input fields are empty
-        int nToUpdate = charCard.N;
-        int eToUpdate = charCard.E;
-        int sToUpdate = charCard.S;
-        int wToUpdate = charCard.W;
-
-        ClientGame.mainClientGame.clientNotifier.RequestSetNESW(charCard, nToUpdate, eToUpdate, sToUpdate, wToUpdate);
-    }
-
     public void DebugUpdatePips()
     {
         if (debugPipsField.text != "")

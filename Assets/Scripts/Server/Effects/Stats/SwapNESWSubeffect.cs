@@ -20,10 +20,7 @@ public class SwapNESWSubeffect : ServerSubeffect
                 ServerEffect.Targets[ServerEffect.Targets.Count + TargetIndices[1]] :
                 ServerEffect.Targets[TargetIndices[1]];
 
-        var char1 = target1 as CharacterCard ?? throw new System.ArgumentException($"Target {target1.CardName} is not a character");
-        var char2 = target2 as CharacterCard ?? throw new System.ArgumentException($"Target {target2.CardName} is not a character");
-
-        ServerGame.SwapStats(char1, char2, SwapN, SwapE, SwapS, SwapW);
+        target1.SwapCharStats(target2, SwapN, SwapE, SwapS, SwapW);
         ServerEffect.ResolveNextSubeffect();
     }
 }

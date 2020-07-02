@@ -26,11 +26,7 @@ public class XRestriction
                     if (x > Subeffect.Source.Cost) return false;
                     break;
                 case LessThanEqualThisE:
-                    if (Subeffect.Source is CharacterCard charSource)
-                    {
-                        if (x > charSource.E) return false;
-                    }
-                    else return false;
+                    if (x > Subeffect.Source.E) return false;
                     break;
                 default:
                     throw new System.ArgumentException($"Invalid X restriction {r} in X Restriction.");

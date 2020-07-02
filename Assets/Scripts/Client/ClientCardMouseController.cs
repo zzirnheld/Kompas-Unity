@@ -37,7 +37,7 @@ public class ClientCardMouseController : CardMouseController
         base.OnMouseUp();
 
         //don't allow dragging cards if we're awaiting a target
-        if (Card.game.targetMode != Game.TargetMode.Free) return;
+        if (Card.Game.targetMode != Game.TargetMode.Free) return;
 
         //get coords w/r/t gameboard
         var boardLocalPosition = Game.boardObject.transform.InverseTransformPoint(Card.gameObject.transform.position);
@@ -51,10 +51,10 @@ public class ClientCardMouseController : CardMouseController
             //if the card is being moved on the field, that means it's just being moved
             if (Card.Location == CardLocation.Field)
             {
-                CharacterCard charThere = Game.boardCtrl.GetCharAt(x, y);
-                Debug.Log($"Trying to move/attack to {x}, {y}. The controller index, if any, is {charThere?.ControllerIndex}");
+                var cardThere = Game.boardCtrl.GetCardAt(x, y);
+                Debug.Log($"Trying to move/attack to {x}, {y}. The controller index, if any, is {cardThere?.ControllerIndex}");
                 //then check if it's an attack or not
-                if (charThere != null && charThere.Controller != Card.Controller)
+                if (cardThere != null && cardThere.Controller != Card.Controller)
                     ClientGame.clientNotifier.RequestAttack(Card, x, y);
                 else
                     ClientGame.clientNotifier.RequestMove(Card, x, y);

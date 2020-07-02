@@ -9,28 +9,30 @@ public class ClientNotifier : MonoBehaviour
 
     private void Send(Packet packet)
     {
+        if(packet != null) Debug.Log($"Sending packet with command {packet?.command}, normal args {string.Join(",", packet?.normalArgs)}, " +
+            $"special args {string.Join(",", packet?.specialArgs)}, string arg {packet?.stringArg}");
         clientNetworkCtrl.SendPacket(packet);
     }
 
     #region Normal Request Actions
-    public void RequestPlay(Card card, int toX, int toY)
+    public void RequestPlay(GameCard card, int toX, int toY)
     {
         Debug.Log($"Requesting {card.CardName} to be played to {toX} {toY}");
 
         Packet packet;
-        if (card is AugmentCard) packet = new Packet(Packet.Command.Augment, card, toX, toY);
+        if (card.CardType == 'A') packet = new Packet(Packet.Command.Augment, card, toX, toY);
         else packet = new Packet(Packet.Command.Play, card, toX, toY);
         Send(packet);
     }
 
-    public void RequestMove(Card card, int toX, int toY)
+    public void RequestMove(GameCard card, int toX, int toY)
     {
         Debug.Log($"Requesting {card.CardName} to be moved to {toX} {toY}");
         Packet packet = new Packet(Packet.Command.Move, card, toX, toY);
         Send(packet);
     }
 
-    public void RequestAttack(Card card, int toX, int toY)
+    public void RequestAttack(GameCard card, int toX, int toY)
     {
         Packet packet = new Packet(Packet.Command.Attack, card, toX, toY);
         Send(packet);
@@ -53,14 +55,14 @@ public class ClientNotifier : MonoBehaviour
         Send(packet);
     }
 
-    public void RequestTarget(Card card)
+    public void RequestTarget(GameCard card)
     {
         Debug.Log("Requesting target " + card.CardName);
         Packet packet = new Packet(Packet.Command.Target, card);
         Send(packet);
     }
 
-    public void RequestResolveEffect(Card card, int index)
+    public void RequestResolveEffect(GameCard card, int index)
     {
         if (card == null) return;
         Debug.Log("Requesting effect of " + card.CardName + " number" + index);
@@ -90,7 +92,7 @@ public class ClientNotifier : MonoBehaviour
         Send(packet);
     }
 
-    public void RequestListChoices(List<Card> choices)
+    public void RequestListChoices(List<GameCard> choices)
     {
         int[] cardIDs = new int[choices.Count];
         for(int i = 0; i < choices.Count; i++)
@@ -122,19 +124,19 @@ public class ClientNotifier : MonoBehaviour
     #endregion
 
     #region Debug Request Actions
-    public void RequestTopdeck(Card card)
+    public void RequestTopdeck(GameCard card)
     {
         Packet packet = new Packet(Packet.Command.Topdeck, card);
         Send(packet);
     }
 
-    public void RequestDiscard(Card card)
+    public void RequestDiscard(GameCard card)
     {
         Packet packet = new Packet(Packet.Command.Discard, card);
         Send(packet);
     }
 
-    public void RequestRehand(Card card)
+    public void RequestRehand(GameCard card)
     {
         Packet packet = new Packet(Packet.Command.Rehand, card);
         Send(packet);
@@ -146,7 +148,7 @@ public class ClientNotifier : MonoBehaviour
         Send(packet);
     }
 
-    public void RequestSetNESW(Card card, int n, int e, int s, int w)
+    public void RequestSetNESW(GameCard card, int n, int e, int s, int w)
     {
         Packet packet = new Packet(Packet.Command.SetNESW, card, n, e, s, w);
         Send(packet);

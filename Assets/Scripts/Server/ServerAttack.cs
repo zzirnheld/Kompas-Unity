@@ -10,7 +10,7 @@ public class ServerAttack : Attack, IServerStackable
 
     private ServerEffectsController EffCtrl => ServerGame.EffectsController;
 
-    public ServerAttack(ServerGame serverGame, ServerPlayer controller, CharacterCard attacker, CharacterCard defender) 
+    public ServerAttack(ServerGame serverGame, ServerPlayer controller, GameCard attacker, GameCard defender) 
         : base(controller, attacker, defender)
     {
         this.ServerGame = serverGame ?? throw new System.ArgumentNullException("Server game cannot be null for attack");
@@ -29,10 +29,19 @@ public class ServerAttack : Attack, IServerStackable
         EffCtrl.Trigger(TriggerCondition.Battles, cardTriggerer: defender, stackTrigger: this, triggerer: ServerController);
     }
 
-    public void StartResolution()
+    private bool StillValidAttack
+    {
+        get
+        {
+            return attacker.Location == CardLocation.Field &&
+                defender.Location == CardLocation.Field;
+        }
+    }
+
+    public void StartResolution(int startIndex = 0)
     {
         //deal the damage
-        DealDamage();
+        if(StillValidAttack) DealDamage();
         //then finish the resolution
         EffCtrl.FinishStackEntryResolution();
     }
@@ -40,19 +49,11 @@ public class ServerAttack : Attack, IServerStackable
     private void DealDamage()
     {
         //get damage from both, before either takes any damage, in case effects matter on hp
-        int attackerDmg = attacker.W;
-        int defenderDmg = defender.W;
+        int attackerDmg = attacker.CombatDamage;
+        int defenderDmg = defender.CombatDamage;
         //deal the damage
-        ServerGame.SetStats(defender,
-            defender.N,
-            defender.E - attackerDmg,
-            defender.S,
-            defender.W);
-        ServerGame.SetStats(attacker,
-            attacker.N,
-            attacker.E - defenderDmg,
-            attacker.S,
-            attacker.W);
+        defender.SetE(defender.E - attackerDmg);
+        attacker.SetE(attacker.E - defenderDmg);
         //trigger effects based on combat damage
         EffCtrl.Trigger(TriggerCondition.TakeCombatDamage, cardTriggerer: defender, stackTrigger: this, triggerer: ServerController, x: attackerDmg);
         EffCtrl.Trigger(TriggerCondition.TakeCombatDamage, cardTriggerer: attacker, stackTrigger: this, triggerer: ServerController, x: defenderDmg);

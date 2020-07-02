@@ -326,7 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13351909bd3483f4e98c4d1696cf3e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Card: {fileID: 6175093951283449652}
+  Card: {fileID: 6448668993980682549}
   ClientGame: {fileID: 0}
 --- !u!64 &4160289315798477596
 MeshCollider:
@@ -351,8 +351,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7199301850191838501}
-  - component: {fileID: 6175093951283449652}
   - component: {fileID: 6175093951283449653}
+  - component: {fileID: 6448668993980682549}
   m_Layer: 0
   m_Name: Client Spell Card Brass
   m_TagString: Untagged
@@ -380,22 +380,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6175093951283449652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6175093951283449654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27a8b3155c07bcd44a66a11e9e53bdea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detailedSprite: {fileID: 0}
-  simpleSprite: {fileID: 0}
-  game: {fileID: 0}
-  cardCtrl: {fileID: 6175093951283449653}
 --- !u!114 &6175093951283449653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,8 +392,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6075e39016768b143af40ac75b10bc93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 6175093951283449652}
+  card: {fileID: 6448668993980682549}
   cardFaceRenderer: {fileID: 6389098471041465027}
+--- !u!114 &6448668993980682549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6175093951283449654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5eaf700679447a438067b5b33bda12a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detailedSprite: {fileID: 0}
+  simpleSprite: {fileID: 0}
+  cardCtrl: {fileID: 6175093951283449653}
 --- !u!1 &7651960705146810444
 GameObject:
   m_ObjectHideFlags: 0

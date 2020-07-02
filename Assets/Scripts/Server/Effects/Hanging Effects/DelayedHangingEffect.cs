@@ -6,20 +6,22 @@ public class DelayedHangingEffect : HangingEffect
 {
     private readonly int numTimesToDelay;
     private int numTimesDelayed;
-    private ServerEffect toResume;
+    private readonly ServerEffect toResume;
     private readonly int indexToResumeResolution;
+    private readonly ServerPlayer controller;
 
     public DelayedHangingEffect(ServerGame game, TriggerRestriction triggerRestriction, TriggerCondition triggerCondition,
-        int numTimesToDelay, ServerEffect toResume, int indexToResumeResolution)
+        int numTimesToDelay, ServerEffect toResume, int indexToResumeResolution, ServerPlayer controller)
         : base(game, triggerRestriction, triggerCondition)
     {
         this.numTimesToDelay = numTimesToDelay;
         this.toResume = toResume;
         this.indexToResumeResolution = indexToResumeResolution;
+        this.controller = controller;
         numTimesDelayed = 0;
     }
 
-    protected override bool ShouldEnd(Card cardTrigger, IStackable stackTrigger, Player triggerer, int? x, (int x, int y)? space)
+    protected override bool ShouldEnd(GameCard cardTrigger, IStackable stackTrigger, Player triggerer, int? x, (int x, int y)? space)
     {
         //first check any other logic
         if (!base.ShouldEnd(cardTrigger, stackTrigger, triggerer, x, space)) return false;
@@ -37,6 +39,6 @@ public class DelayedHangingEffect : HangingEffect
 
     protected override void Resolve()
     {
-        toResume.ResolveSubeffect(indexToResumeResolution);
+        serverGame.EffectsController.PushToStack(toResume, controller, indexToResumeResolution);
     }
 }

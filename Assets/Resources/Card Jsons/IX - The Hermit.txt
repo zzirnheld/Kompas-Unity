@@ -19,7 +19,7 @@
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"for Hermit to move\",
-						\"restrictionsToCheck\":[3]
+						\"restrictionsToCheck\":[3,103]
 					}
 				}",
 				"{

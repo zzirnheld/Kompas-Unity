@@ -6,12 +6,12 @@ public class MoveSubeffect : CardChangeStateSubeffect
 {
     public override void Resolve()
     {
-        if (Target == null)
+        if (Target.Location == CardLocation.Field)
         {
-            ServerEffect.EffectImpossible();
-            return;
+            var (x, y) = Space;
+            Target.Move(x, y, false, Effect);
+            ServerEffect.ResolveNextSubeffect();
         }
-        ServerGame.MoveOnBoard(Target, X, Y, false, ServerEffect);
-        ServerEffect.ResolveNextSubeffect();
+        else ServerEffect.EffectImpossible();
     }
 }

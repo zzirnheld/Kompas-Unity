@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Figurehead King",
-	"effText":"Let X be the number of friendly Tarocco. Draw X.",
+	"effText":"Choose a card in your hand, then reshuffle the other X. Gain X pips.",
 	"effects":[
 		{
 			"triggerCondition":401,
@@ -11,8 +11,9 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[409,3,11,10,303,10,408,101],
+			"subeffectTypes":[10,409,3,11,10,303,10,408,101],
 			"subeffects":[
+				"{}",
 				"{
 					\"Condition\":\"None Fit Restriction\",
 					\"CardRestriction\":
@@ -24,13 +25,13 @@
 				"{
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[100]
+						\"restrictionsToCheck\":[7,100]
 					}
 				}",
 				"{
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[100,600]
+						\"restrictionsToCheck\":[7,100,600]
 					}
 				}",
 				"{

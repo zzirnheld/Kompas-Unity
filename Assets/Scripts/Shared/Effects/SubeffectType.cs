@@ -34,6 +34,7 @@ public enum SubeffectType
     ChangeAllNESW = 110,
     SetAllNESW = 111,
     Activate = 120,
+    SpendMovement = 121,
     TakeControl = 130,
     //Deactivate = 121,
     PayPipsByTargetCost = 150,

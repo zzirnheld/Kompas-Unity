@@ -15,8 +15,7 @@ public class AddPipsSubeffect : ServerSubeffect
 
     public override void Resolve()
     {
-        Player.pips += Count;
-        EffectController.ServerNotifier.NotifySetPips(Player.pips);
+        Player.Pips += Count;
         ServerEffect.ResolveNextSubeffect();
     }
 }

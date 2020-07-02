@@ -19,7 +19,7 @@
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"character for Moon to swap EW\",
-						\"restrictionsToCheck\":[3]
+						\"restrictionsToCheck\":[3,103]
 					}
 				}",
 				"{
@@ -30,10 +30,10 @@
 			]
 		}
 	],
-	"n":2,
-	"e":8,
+	"n":1,
+	"e":12,
 	"s":9,
-	"w":9,
+	"w":4,
 	"subtypes":["Tarocco","Mage"],
 	"subtypeText":"Tarocco Mage"
 }

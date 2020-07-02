@@ -17,7 +17,7 @@
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"adjacent Dragon for Obscurian to kill\",
-						\"restrictionsToCheck\":[2,3,7],
+						\"restrictionsToCheck\":[2,3,7,103],
 						\"subtypesInclude\":[\"Dragon\"],
 						\"onBoardRestrictions\":[0]
 					}
@@ -45,7 +45,7 @@
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"Avatar for Obscurian to give -2E.\",
-						\"restrictionsToCheck\":[2,3,7,50],
+						\"restrictionsToCheck\":[3,7,50,103],
 						\"onBoardRestrictions\":[0]
 					}
 				}",

@@ -9,6 +9,6 @@ public class DummyBoardTargetSubeffect : DummySubeffect
     public override void Initialize(ClientEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        boardRestriction.Subeffect = this;
+        boardRestriction.Initialize(this);
     }
 }

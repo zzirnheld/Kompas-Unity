@@ -19,7 +19,7 @@ public class ListRestriction
     /// <param name="cards">The list of cards to collectively evaluate.</param>
     /// <returns><see langword="true"/> if the cards fit all the required restrictions collectively, 
     /// <see langword="false"/> otherwise</returns>
-    public bool Evaluate(IEnumerable<Card> cards)
+    public bool Evaluate(IEnumerable<GameCard> cards)
     {
         foreach(var restriction in Restrictions)
         {
@@ -32,7 +32,7 @@ public class ListRestriction
                         //TODO: check each card's playability, once runes are in?
                         totalCost += card.Cost;
                     }
-                    if (Subeffect.Controller.pips < totalCost) return false;
+                    if (Subeffect.Controller.Pips < totalCost) return false;
                     break;
                 default:
                     Debug.LogError($"Could not check list restriction {restriction}");

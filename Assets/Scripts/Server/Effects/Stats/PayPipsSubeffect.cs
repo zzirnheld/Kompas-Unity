@@ -11,14 +11,13 @@ public class PayPipsSubeffect : ServerSubeffect
     public override void Resolve()
     {
         int toPay = ServerEffect.X * xMultiplier / xDivisor + modifier;
-        if(EffectController.pips < toPay)
+        if(EffectController.Pips < toPay)
         {
             ServerEffect.EffectImpossible();
             return;
         }
 
-        EffectController.pips -= toPay;
-        EffectController.ServerNotifier.NotifySetPips(EffectController.pips);
+        EffectController.Pips -= toPay;
         ServerEffect.ResolveNextSubeffect();
     }
 }

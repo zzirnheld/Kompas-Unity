@@ -13,7 +13,7 @@ public abstract class ServerSubeffect : Subeffect
     public ServerEffect ServerEffect { get; protected set; }
     public ServerGame ServerGame { get { return ServerEffect.serverGame; } }
     public ServerPlayer EffectController { get { return ServerEffect.ServerController; } }
-    public Card ThisCard { get { return ServerEffect.Source; } }
+    public GameCard ThisCard { get { return ServerEffect.Source; } }
 
     public static ServerSubeffect FromJson(SubeffectType seType, string subeffJson, ServerEffect parent, int subeffIndex)
     {
@@ -97,6 +97,9 @@ public abstract class ServerSubeffect : Subeffect
                 break;
             case SubeffectType.SetAllNESW:
                 toReturn = JsonUtility.FromJson<SetAllNESWSubeffect>(subeffJson);
+                break;
+            case SubeffectType.SpendMovement:
+                toReturn = JsonUtility.FromJson<SpendMovementSubeffect>(subeffJson);
                 break;
             case SubeffectType.TakeControl:
                 toReturn = JsonUtility.FromJson<TakeControlSubeffect>(subeffJson);

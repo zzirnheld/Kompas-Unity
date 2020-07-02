@@ -17,7 +17,7 @@
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"character for Sowilo to give -1E.\",
-						\"restrictionsToCheck\":[3]
+						\"restrictionsToCheck\":[3,103]
 					}
 				}",
 				"{
@@ -27,7 +27,7 @@
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"other character for Sowilo to give +1E.\",
-						\"restrictionsToCheck\":[3,600]
+						\"restrictionsToCheck\":[3,103,600]
 					}
 				}",
 				"{

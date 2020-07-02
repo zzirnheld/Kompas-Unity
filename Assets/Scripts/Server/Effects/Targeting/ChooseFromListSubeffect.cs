@@ -22,7 +22,7 @@ public class ChooseFromListSubeffect : ServerSubeffect
     /// </summary>
     public int MaxCanChoose = -1;
 
-    protected IEnumerable<Card> potentialTargets;
+    protected IEnumerable<GameCard> potentialTargets;
 
     protected void RequestTargets()
     {
@@ -32,7 +32,7 @@ public class ChooseFromListSubeffect : ServerSubeffect
     public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        CardRestriction.Subeffect = this;
+        CardRestriction.Initialize(this);
         ListRestriction.Subeffect = this;
     }
 
@@ -41,7 +41,7 @@ public class ChooseFromListSubeffect : ServerSubeffect
         //TODO: somehow figure out a better way of checking if there exists a valid list?
         //  maybe a method on list restriction that checks?
         //  because otherwise enumerating lists and seeing if at least one fits would be exponential time
-        if(!ListRestriction.Evaluate(new List<Card>()))
+        if(!ListRestriction.Evaluate(new List<GameCard>()))
         {
             ServerEffect.EffectImpossible();
             return;
@@ -55,7 +55,7 @@ public class ChooseFromListSubeffect : ServerSubeffect
         else ServerEffect.EffectImpossible();
     }
 
-    public virtual bool AddListIfLegal(IEnumerable<Card> choices)
+    public virtual bool AddListIfLegal(IEnumerable<GameCard> choices)
     {
         //check that there are no elements in choices that aren't in potential targets
         //also check that, if a maximum number to choose has been specified, that many have been chosen
@@ -73,6 +73,7 @@ public class ChooseFromListSubeffect : ServerSubeffect
         //add all cards in the chosen list to targets
         ServerEffect.Targets.AddRange(choices);
         //everything's cool
+        EffectController.ServerNotifier.AcceptTarget();
         ServerEffect.ResolveNextSubeffect();
         return true;
     }

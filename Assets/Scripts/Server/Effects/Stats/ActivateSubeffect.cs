@@ -6,7 +6,7 @@ public class ActivateSubeffect : ServerSubeffect
 {
     public override void Resolve()
     {
-        ServerGame.SetActivated(Target, true, ServerEffect);
+        Target.SetActivated(true, Effect);
         ServerEffect.ResolveNextSubeffect();
     }
 }
