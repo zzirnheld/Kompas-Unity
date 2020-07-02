@@ -6,7 +6,8 @@ public class PlaySubeffect : CardChangeStateSubeffect
 {
     public override void Resolve()
     {
-        Target.Play(X, Y, EffectController, Effect);
+        var (x, y) = Space;
+        Target.Play(x, y, EffectController, Effect);
         ServerEffect.ResolveNextSubeffect();
     }
 }

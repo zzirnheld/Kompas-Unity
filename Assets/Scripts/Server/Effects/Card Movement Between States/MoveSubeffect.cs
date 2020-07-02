@@ -6,7 +6,8 @@ public class MoveSubeffect : CardChangeStateSubeffect
 {
     public override void Resolve()
     {
-        Target.Move(X, Y, false, Effect);
+        var (x, y) = Space;
+        Target.Move(x, y, false, Effect);
         ServerEffect.ResolveNextSubeffect();
     }
 }

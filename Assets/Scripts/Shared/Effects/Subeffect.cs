@@ -20,11 +20,20 @@ public abstract class Subeffect
     /// </summary>
     public int TargetIndex = -1;
 
+    public int SpaceIndex = -1;
+
     public GameCard GetTarget(int num)
     {
         int trueIndex = num < 0 ? num + Effect.Targets.Count : num;
         return trueIndex < 0 ? null : Effect.Targets[trueIndex];
     }
 
+    public (int x, int y) GetSpace(int num)
+    {
+        var trueIndex = num < 0 ? num + Effect.Coords.Count : num;
+        return trueIndex < 0 ? (0, 0) : Effect.Coords[trueIndex];
+    }
+
     public GameCard Target => GetTarget(TargetIndex);
+    public (int x, int y) Space => GetSpace(SpaceIndex);
 }

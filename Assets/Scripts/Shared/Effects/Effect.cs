@@ -22,8 +22,8 @@ public abstract class Effect : IStackable
     public readonly int EffectIndex;
 
     public List<GameCard> Targets { get; } = new List<GameCard>();
-    public List<Vector2Int> Coords { get; private set; }
-    public List<GameCard> Rest { get; private set; }
+    public List<(int x, int y)> Coords { get; private set; } = new List<(int x, int y)>();
+    public List<GameCard> Rest { get; private set; } = new List<GameCard>();
 
     public abstract Trigger Trigger { get; }
     public ActivationRestriction ActivationRestriction { get; }
@@ -54,9 +54,6 @@ public abstract class Effect : IStackable
         Blurb = blurb;
         EffectIndex = effIndex;
         TimesUsedThisTurn = 0;
-        Targets = new List<GameCard>();
-        Rest = new List<GameCard>();
-        Coords = new List<Vector2Int>();
     }
 
     public void ResetForTurn(Player turnPlayer)

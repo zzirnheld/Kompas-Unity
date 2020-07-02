@@ -139,6 +139,8 @@ public abstract class GameCard : CardBase {
 
     public abstract Game Game { get; }
 
+    public List<GameCard> AdjacentCards => Game.boardCtrl.CardsAdjacentTo(BoardX, BoardY);
+
     public int IndexInList
     {
         get

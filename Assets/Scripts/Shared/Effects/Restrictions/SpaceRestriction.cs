@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [Serializable]
@@ -15,6 +16,7 @@ public class SpaceRestriction
         AdjacentToThisCard = 100,
         AdjacentToWithRestriction = 101,
         AdjacentToTarget = 102,
+        ConnectedToSourceBy = 110,
         InAOE = 150,
         DistanceX = 200,
         DistanceToTargetX = 201,
@@ -23,6 +25,7 @@ public class SpaceRestriction
 
     public SpaceRestrictions[] restrictionsToCheck;
     public BoardRestriction adjacencyRestriction;
+    public BoardRestriction ConnectednessRestriction = new BoardRestriction(); 
 
     public int C;
 
@@ -72,6 +75,9 @@ public class SpaceRestriction
                     break;
                 case SpaceRestrictions.AdjacentToTarget:
                     if (!Subeffect.Target.IsAdjacentTo(x, y)) return false;
+                    break;
+                case SpaceRestrictions.ConnectedToSourceBy:
+                    if (Subeffect.Game.boardCtrl.ShortestPath(Subeffect.Source, x, y, ConnectednessRestriction) >= 50) return false;
                     break;
                 case SpaceRestrictions.InAOE:
                     if (!Subeffect.Source.SpaceInAOE(x, y)) return false;

@@ -28,14 +28,8 @@ public class BoardController : MonoBehaviour
     {
         return new Vector3(GridIndexToPos(x), GridIndexToPos(y), 0.2f);
     }
-
-    //private CharacterCard[,] characters = new CharacterCard[spacesOnBoard, spacesOnBoard];
-    //private SpellCard[,] spells = new SpellCard[spacesOnBoard, spacesOnBoard];
+    
     private readonly GameCard[,] cards = new GameCard[SpacesInGrid, SpacesInGrid];
-    /// <summary>
-    /// Whether all cards, only chars, only spells, or only augs are visible
-    /// </summary>
-    private int visibleCards = 0;
 
     //helper methods
     #region helper methods
@@ -50,7 +44,81 @@ public class BoardController : MonoBehaviour
         if (!ValidIndices(x, y)) return null;
         return cards[x, y];
     }
-    
+
+    public List<GameCard> CardsAdjacentTo(int x, int y)
+    {
+        var list = new List<GameCard>();
+
+        for (int i = x - 1; i <= x + 1; i++)
+        {
+            for (int j = y - 1; j <= y + 1; j++)
+            {
+                var card = GetCardAt(i, j);
+                if (card != null) list.Add(card);
+            }
+        }
+
+        return list;
+    }
+
+    public List<GameCard> CardsWhere(Func<GameCard, bool> predicate)
+    {
+        var list = new List<GameCard>();
+        foreach (var card in cards) if (predicate(card)) list.Add(card);
+        return list;
+    }
+
+    /// <summary>
+    /// A really bad Dijkstra's because this is a fun side project and I'm not feeling smart today
+    /// </summary>
+    /// <param name="src">The card to start looking from</param>
+    /// <param name="x">The x coordinate you want a distance to</param>
+    /// <param name="y">The y coordinate you want a distance to</param>
+    /// <param name="through">What all cards you go through must fit</param>
+    /// <returns></returns>
+    public int ShortestPath(GameCard src, int x, int y, CardRestriction through)
+    {
+        //record shortest distances to cards
+        var dist = new Dictionary<GameCard, int>();
+        //and if you've seen them
+        var seen = new HashSet<GameCard>();
+        //the queue of nodes to process next. things should only go on here once, the first time they're seen
+        var queue = new Queue<GameCard>();
+
+        //set up the structures with the source node
+        queue.Enqueue(src);
+        dist.Add(src, 0);
+        seen.Add(src);
+
+        //iterate until the queue is empty, in which case you'll have seen all connected cards that fit the restriction.
+        while (queue.Any())
+        {
+            //consider the next node's adjacent cards
+            var next = queue.Dequeue();
+            foreach (var card in next.AdjacentCards.Where(c => through.Evaluate(c)))
+            {
+                //if that adjacent card is never seen before, initialize its distance and add it to the structures
+                if (!seen.Contains(card))
+                {
+                    seen.Add(card);
+                    queue.Enqueue(card);
+                    dist[card] = dist[next] + 1;
+                }
+                //otherwise, relax its distance if appropriate
+                else if (dist[next] + 1 < dist[card]) dist[card] = dist[next] + 1;
+            }
+        }
+
+        //then, go through the list of cards adjacent to our target location
+        //choose the card that's closest to our source
+        int min = 50;
+        foreach (var card in CardsAdjacentTo(x, y))
+        {
+            if (dist[card] < min) min = dist[card];
+        }
+        return min;
+    }
+
     public bool ExistsCardOnBoard(Func<GameCard, bool> predicate)
     {
         foreach (var c in cards)
