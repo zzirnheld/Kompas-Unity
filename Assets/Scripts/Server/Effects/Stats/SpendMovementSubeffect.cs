@@ -11,7 +11,7 @@ public class SpendMovementSubeffect : ServerSubeffect
     public override void Resolve()
     {
         var spaces = Effect.X * Multiplier / Divisor + Modifier;
-        if (Target.SpacesMoved >= spaces)
+        if (Target.SpacesCanMove >= spaces)
         {
             Target.SpacesMoved += spaces;
             ServerEffect.ResolveNextSubeffect();

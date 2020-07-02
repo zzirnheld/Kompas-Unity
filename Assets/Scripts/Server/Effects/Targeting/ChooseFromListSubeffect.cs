@@ -32,7 +32,7 @@ public class ChooseFromListSubeffect : ServerSubeffect
     public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        CardRestriction.Subeffect = this;
+        CardRestriction.Initialize(this);
         ListRestriction.Subeffect = this;
     }
 

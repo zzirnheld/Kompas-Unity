@@ -7,7 +7,7 @@ using UnityEngine;
 [Serializable]
 public class CardRestriction
 {
-    public Subeffect Subeffect { get; set; }
+    public Subeffect Subeffect { get; private set; }
 
     //TODO add "can summon" restriction that checks that there exists
     //a space that the card can be played to
@@ -74,6 +74,11 @@ public class CardRestriction
     public int costDivisor = 1;
 
     public string Blurb = "";
+
+    public void Initialize(Subeffect subeff)
+    {
+        this.Subeffect = subeff;
+    }
 
     public virtual bool Evaluate (GameCard potentialTarget, int x)
     {

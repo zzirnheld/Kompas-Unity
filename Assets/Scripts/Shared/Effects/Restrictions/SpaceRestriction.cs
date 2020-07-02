@@ -34,6 +34,8 @@ public class SpaceRestriction
     public void Initialize(Subeffect subeffect)
     {
         this.Subeffect = subeffect;
+        adjacencyRestriction.Initialize(subeffect);
+        ConnectednessRestriction.Initialize(subeffect);
     }
 
     private bool ExistsCardWithRestrictionAdjacentToCoords(BoardRestriction r, int x, int y)

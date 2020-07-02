@@ -25,6 +25,12 @@ public abstract class XByGamestateSubeffect : ServerSubeffect
 
     public BoardRestriction ThroughRestriction = new BoardRestriction();
 
+    public override void Initialize(ServerEffect eff, int subeffIndex)
+    {
+        base.Initialize(eff, subeffIndex);
+        ThroughRestriction.Initialize(this);
+    }
+
     private int BaseCount
     {
         get

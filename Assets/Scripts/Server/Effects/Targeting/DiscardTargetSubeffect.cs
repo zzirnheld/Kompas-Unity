@@ -7,7 +7,7 @@ public class DiscardTargetSubeffect : CardTargetSubeffect
     public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        cardRestriction.Subeffect = this;
+        cardRestriction.Initialize(this);
     }
 
     public override void Resolve()

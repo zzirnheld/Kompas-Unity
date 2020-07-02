@@ -54,7 +54,7 @@ public class BoardController : MonoBehaviour
             for (int j = y - 1; j <= y + 1; j++)
             {
                 var card = GetCardAt(i, j);
-                if (card != null) list.Add(card);
+                if ((i, j) != (x, y) && card != null) list.Add(card);
             }
         }
 
@@ -114,7 +114,7 @@ public class BoardController : MonoBehaviour
         int min = 50;
         foreach (var card in CardsAdjacentTo(x, y))
         {
-            if (dist[card] < min) min = dist[card];
+            if (dist.ContainsKey(card) && dist[card] < min) min = dist[card];
         }
         return min;
     }

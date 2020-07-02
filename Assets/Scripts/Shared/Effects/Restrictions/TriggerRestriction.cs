@@ -53,7 +53,7 @@ public class TriggerRestriction
     public void Initialize(ServerSubeffect subeff, GameCard thisCard, ServerTrigger thisTrigger)
     {
         Subeffect = subeff;
-        cardRestriction.Subeffect = subeff;
+        cardRestriction.Initialize(subeff);
         this.ThisCard = thisCard;
         this.ThisTrigger = thisTrigger;
     }

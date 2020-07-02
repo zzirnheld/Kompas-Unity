@@ -22,7 +22,7 @@ public class TemporaryNESWBuffAllSubeffect : TemporarySubeffect
     public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        CardRestriction.Subeffect = this;
+        CardRestriction.Initialize(this);
     }
 
     public override void Resolve()

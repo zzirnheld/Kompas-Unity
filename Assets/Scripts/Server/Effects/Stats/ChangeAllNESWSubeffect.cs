@@ -22,7 +22,7 @@ public class ChangeAllNESWSubeffect : ServerSubeffect
     public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        BoardRestriction.Subeffect = this;
+        BoardRestriction.Initialize(this);
     }
 
     public override void Resolve()

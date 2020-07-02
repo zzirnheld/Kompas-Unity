@@ -9,7 +9,7 @@ public abstract class CardTargetSubeffect : ServerSubeffect
     public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        cardRestriction.Subeffect = this;
+        cardRestriction.Initialize(this);
     }
 
     /// <summary>

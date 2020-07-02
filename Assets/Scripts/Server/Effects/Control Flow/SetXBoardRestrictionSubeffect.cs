@@ -9,7 +9,7 @@ public class SetXBoardRestrictionSubeffect : ServerSubeffect
     public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        boardRestriction.Subeffect = this;
+        boardRestriction.Initialize(this);
     }
 
     public override void Resolve()

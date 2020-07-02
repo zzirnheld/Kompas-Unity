@@ -9,6 +9,6 @@ public class DummyCardTargetSubeffect : DummySubeffect
     public override void Initialize(ClientEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        cardRestriction.Subeffect = this;
+        cardRestriction.Initialize(this);
     }
 }

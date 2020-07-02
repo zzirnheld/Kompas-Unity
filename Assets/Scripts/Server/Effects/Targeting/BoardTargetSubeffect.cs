@@ -12,13 +12,11 @@ public class BoardTargetSubeffect : CardTargetSubeffect
     public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        boardRestriction.Subeffect = this;
+        boardRestriction.Initialize(this);
     }
 
     public override void Resolve()
     {
-        boardRestriction.Subeffect = this;
-
         //check first that there exist valid targets. if there exist no valid targets, finish resolution here
         if (!ThisCard.Game.ExistsCardTarget(boardRestriction))
         {

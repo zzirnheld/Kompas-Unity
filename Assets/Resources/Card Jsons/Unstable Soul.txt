@@ -10,7 +10,7 @@
 					"In Play"
 				]
 			},
-			"subeffectTypes":[4,121,201,103,309],
+			"subeffectTypes":[4,5,121,201,103,309],
 			"subeffects":[
 				"{
 					\"spaceRestriction\":
@@ -23,6 +23,7 @@
 						}
 					}
 				}",
+				"{}",
 				"{
 					\"Modifier\":1
 				}",
