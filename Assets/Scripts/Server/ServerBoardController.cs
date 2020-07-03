@@ -20,7 +20,7 @@ public class ServerBoardController : BoardController
     public override void Swap(GameCard card, int toX, int toY, bool playerInitiated, IStackable stackSrc = null)
     {
         EffectsController.Trigger(TriggerCondition.Move,
-            cardTriggerer: card, stackTrigger: stackSrc, triggerer: card.Controller, space: (toX, toY));
+            cardTriggerer: card, stackTrigger: stackSrc, triggerer: card.Controller, space: (toX, toY), x: card.DistanceTo(toX, toY));
         ServerNotifierByIndex(card.ControllerIndex).NotifyMove(card, toX, toY, playerInitiated);
         var at = GetCardAt(toX, toY);
         if (at != null)
