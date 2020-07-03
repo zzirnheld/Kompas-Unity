@@ -15,8 +15,5 @@ public class AnnihilationController : MonoBehaviour
         card.Location = CardLocation.Annihilation;
     }
 
-    public void Remove(GameCard card)
-    {
-        Cards.Remove(card);
-    }
+    public void Remove(GameCard card) => Cards.Remove(card);
 }

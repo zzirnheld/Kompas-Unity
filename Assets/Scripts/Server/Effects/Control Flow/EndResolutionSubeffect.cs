@@ -6,6 +6,6 @@ public class EndResolutionSubeffect : ServerSubeffect
 {
     public override void Resolve()
     {
-        ServerEffect.EffectImpossible();
+        ServerEffect.ResolveSubeffect(ServerEffect.Subeffects.Length);
     }
 }
