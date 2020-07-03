@@ -161,7 +161,7 @@ public class BoardController : MonoBehaviour
     /// <param name="toY">Y coordinate to play the card to</param>
     public virtual void Play(GameCard toPlay, int toX, int toY, Player controller, IStackable stackSrc = null)
     {
-        toPlay.Remove();
+        toPlay.Remove(stackSrc);
 
         Debug.Log($"In boardctrl, playing {toPlay.CardName} to {toX}, {toY}");
 

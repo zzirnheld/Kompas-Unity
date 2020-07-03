@@ -35,6 +35,10 @@ public class CardController : MonoBehaviour
                 card.Controller.handCtrl.SpreadOutCards();
                 gameObject.SetActive(true);
                 break;
+            case CardLocation.Annihilation:
+                gameObject.SetActive(false);
+                break;
+            default: throw new System.ArgumentException($"Invalid card location {location} to put card physically at");
         }
     }
 

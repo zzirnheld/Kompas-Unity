@@ -34,6 +34,7 @@ namespace KompasNetworking
             Bottomdeck = 206,
             Draw = 207,
             Delete = 208,
+            Annihilate = 209,
             //card properties
             SetNESW = 301,
             Negate = 302,

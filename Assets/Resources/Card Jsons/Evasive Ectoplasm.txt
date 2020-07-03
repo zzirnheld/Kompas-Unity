@@ -1,7 +1,7 @@
 {
 	"cardType":67,
-	"cardName":"Who Searched For Grudges",
-	"effText":"Shape: During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters. When I'm summoned, discard 2. If you can't, tribute me.",
+	"cardName":"Evasive Ectoplasm",
+	"effText":"Shape: During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters. The first fight each round, if I’m fighting a WX character, give them -XW for the fight.",
 	"effects":[
 		{
 			"blurb":"Shape",
@@ -42,44 +42,33 @@
 			]
 		},
 		{
-			"triggerCondition":401,
+			"triggerCondition":304,
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[0,502]
 				}
 			}",
-			"subeffectTypes":[404,3,3,301,301,407,5,301],
+			"subeffectTypes":[50,203,501],
 			"subeffects":[
+				"{}",
 				"{
-					\"JumpTo\":4
+					\"WhatToCount\":\"W\"
 				}",
 				"{
-					\"cardRestriction\":{
-						\"Blurb\":\"for Who Searched For Grudges to discard (1/2)\",
-						\"restrictionsToCheck\":[7,100]
+					\"WMultiplier\":-1,
+					\"EndCondition\":305,
+					\"TriggerRestriction\":{
+						\"triggerRestrictions\":[0]
 					}
-				}",
-				"{
-					\"cardRestriction\":{
-						\"Blurb\":\"for Who Searched For Grudges to discard (2/2)\",
-						\"restrictionsToCheck\":[7,100,600]
-					}
-				}",
-				"{}",
-				"{
-					\"TargetIndex\":-1
-				}",
-				"{}",
-				"{}",
-				"{}"
+				}"
 			]	
 		}
 	],
 	"n":1,
-	"e":7,
+	"e":2,
 	"s":3,
-	"w":5
+	"w":2
 	"subtypes":["Ethereal","Shaper"],
 	"subtypeText":"Ethereal Shaper"
 }

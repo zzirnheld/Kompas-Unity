@@ -42,6 +42,8 @@ public class ServerAttack : Attack, IServerStackable
     {
         //deal the damage
         if(StillValidAttack) DealDamage();
+        EffCtrl.Trigger(TriggerCondition.BattleEnds, cardTriggerer: attacker, stackTrigger: this, triggerer: Controller);
+        EffCtrl.Trigger(TriggerCondition.BattleEnds, cardTriggerer: defender, stackTrigger: this, triggerer: Controller);
         //then finish the resolution
         EffCtrl.FinishStackEntryResolution();
     }

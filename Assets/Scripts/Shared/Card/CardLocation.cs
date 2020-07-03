@@ -4,5 +4,5 @@ using UnityEngine;
 
 public enum CardLocation
 {
-    Nowhere, Field, Discard, Hand, Deck
+    Nowhere, Field, Discard, Hand, Deck, Annihilation
 }

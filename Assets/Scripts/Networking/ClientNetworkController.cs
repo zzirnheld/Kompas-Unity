@@ -88,6 +88,9 @@ public class ClientNetworkController : NetworkController {
                     case CardLocation.Discard:
                         added.Discard();
                         break;
+                    case CardLocation.Annihilation:
+                        added.Game.AnnihilationCtrl.Annihilate(added);
+                        break;
                     default:
                         Debug.Log("Tried to add an enemy card to " + packet.Location);
                         break;

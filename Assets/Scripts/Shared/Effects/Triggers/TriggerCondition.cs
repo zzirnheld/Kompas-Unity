@@ -21,6 +21,7 @@ public enum TriggerCondition
     TakeCombatDamage = 302,
     DealCombatDamage = 303,
     Battles = 304,
+    BattleEnds = 305,
     Arrive = 400,
     Play = 401,
     Discard = 402,
@@ -30,6 +31,7 @@ public enum TriggerCondition
     Bottomdeck = 406,
     ToDeck = 407,
     Move = 408,
+    Annhilate = 409,
     AugmentAttached = 450,
     AugmentDetached = 451
 }

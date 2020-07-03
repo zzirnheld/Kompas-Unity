@@ -1,7 +1,7 @@
 {
 	"cardType":67,
-	"cardName":"Who Searched For Grudges",
-	"effText":"Shape: During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters. When I'm summoned, discard 2. If you can't, tribute me.",
+	"cardName":"Grudges Unforgotten",
+	"effText":"Shape: During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters. When I'm summoned, annhilate a Summoned SX Shaper and give me +XEW.",
 	"effects":[
 		{
 			"blurb":"Shape",

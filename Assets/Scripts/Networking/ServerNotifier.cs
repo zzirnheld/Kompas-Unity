@@ -147,6 +147,15 @@ public class ServerNotifier : MonoBehaviour
         SendPackets(outPacket, outPacketInverted);
     }
 
+    public void NotifyAnnhilate(GameCard toAnnhilate)
+    {
+        var p = new Packet(Packet.Command.Annihilate, toAnnhilate);
+        var q = toAnnhilate.Location == CardLocation.Discard || toAnnhilate.Location == CardLocation.Field ?
+            new Packet(Packet.Command.AddAsEnemy, toAnnhilate.CardName, (int)CardLocation.Annihilation, toAnnhilate.ID) :
+            new Packet(Packet.Command.Annihilate, toAnnhilate);
+        SendPackets(p, q);
+    }
+
     public void NotifyTopdeck(GameCard card)
     {
         Packet outPacketInverted = null;

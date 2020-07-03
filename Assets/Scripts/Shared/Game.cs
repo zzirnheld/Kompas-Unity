@@ -18,6 +18,7 @@ public abstract class Game : MonoBehaviour
 
     //game mechanics
     public BoardController boardCtrl;
+    public AnnihilationController AnnihilationCtrl;
     //game objects
     public GameObject boardObject;
 
