@@ -170,6 +170,9 @@ public abstract class ServerSubeffect : Subeffect
             case SubeffectType.Swap:
                 toReturn = JsonUtility.FromJson<SwapSubeffect>(subeffJson);
                 break;
+            case SubeffectType.Annihilate:
+                toReturn = JsonUtility.FromJson<AnnihilateSubeffect>(subeffJson);
+                break;
             case SubeffectType.BottomdeckRest:
                 toReturn = JsonUtility.FromJson<BottomdeckRestSubeffect>(subeffJson);
                 break;

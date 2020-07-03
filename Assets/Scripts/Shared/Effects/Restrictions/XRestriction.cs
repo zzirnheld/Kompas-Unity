@@ -8,6 +8,7 @@ public class XRestriction
     public const string LessThanEqualThisCost = "<=ThisCost";
     public const string LessThanEqualThisE = "<=ThisE";
     public const string Positive = ">0";
+    public const string Negative = "<0";
 
     public string[] Restrictions = new string[0];
 
@@ -21,6 +22,9 @@ public class XRestriction
             {
                 case Positive:
                     if (x <= 0) return false;
+                    break;
+                case Negative:
+                    if (x >= 0) return false;
                     break;
                 case LessThanEqualThisCost:
                     if (x > Subeffect.Source.Cost) return false;

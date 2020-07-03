@@ -11,7 +11,7 @@ public class SpaceRestriction
 
     public enum SpaceRestrictions
     {
-        CanSummonTarget = 0,
+        CanPlayTarget = 0,
         Empty = 1,
         AdjacentToThisCard = 100,
         AdjacentToWithRestriction = 101,
@@ -20,7 +20,8 @@ public class SpaceRestriction
         InAOE = 150,
         DistanceX = 200,
         DistanceToTargetX = 201,
-        DistanceToTargetC = 251
+        DistanceToTargetC = 251,
+        FurtherFromSourceThanTarget = 260
     }
 
     public SpaceRestrictions[] restrictionsToCheck;
@@ -63,8 +64,8 @@ public class SpaceRestriction
         {
             switch (r)
             {
-                case SpaceRestrictions.CanSummonTarget:
-                    if (!Subeffect.Effect.Game.boardCtrl.CanSummonTo(Subeffect.Controller.index, x, y)) return false;
+                case SpaceRestrictions.CanPlayTarget:
+                    if (!Subeffect.Effect.Game.boardCtrl.CanPlayTo(Subeffect.Controller.index, x, y)) return false;
                     break;
                 case SpaceRestrictions.Empty:
                     if (Subeffect.Effect.Game.boardCtrl.GetCardAt(x, y) != null) return false;
@@ -92,6 +93,9 @@ public class SpaceRestriction
                     break;
                 case SpaceRestrictions.DistanceToTargetC:
                     if (Subeffect.Target.DistanceTo(x, y) != C) return false;
+                    break;
+                case SpaceRestrictions.FurtherFromSourceThanTarget:
+                    if (Subeffect.Source.DistanceTo(x, y) > Subeffect.Source.DistanceTo(Subeffect.Target)) return false;
                     break;
                 default:
                     Debug.LogError($"Unrecognized space restriction enum {r}");

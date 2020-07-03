@@ -1,7 +1,7 @@
 {
 	"cardType":67,
-	"cardName":"Grudges Unforgotten",
-	"effText":"Shape: During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters. When I'm summoned, annhilate a Summoned SX Shaper and give me +XEW.",
+	"cardName":"Whose Past Disintegrates",
+	"effText":"Shape: During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters. When I lose XE, give me +XW.",
 	"effects":[
 		{
 			"blurb":"Shape",
@@ -42,40 +42,29 @@
 			]
 		},
 		{
-			"triggerCondition":401,
+			"triggerCondition":251,
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[0,130],
+					\"xRestriction\":{
+						\"Restrictions\":["<0"]
+					}
 				}
 			}",
-			"subeffectTypes":[0,203,311,5,103],
+			"subeffectTypes":[5,103],
 			"subeffects":[
-				"{
-					\"boardRestriction\":
-					{
-						\"Blurb\":\"Ethereal for Grudges Unforgotten to annihilate and absorb\",
-						\"restrictionsToCheck\":[2,3,103],
-						\"subtypesInclude\":[\"Ethereal\"]
-					}
-				}",
-				"{
-					\"WhatToCount\":\"Cost\"
-				}",
-				"{}",
 				"{}",
 				"{
-					\"eMult\":1,
-					\"sMult\":1,
-					\"wMult\":1
-				]"
+					\"eMult\":-1
+				}"
 			]	
 		}
 	],
 	"n":1,
-	"e":2,
+	"e":7,
 	"s":3,
-	"w":2
+	"w":0
 	"subtypes":["Ethereal","Shaper"],
 	"subtypeText":"Ethereal Shaper"
 }

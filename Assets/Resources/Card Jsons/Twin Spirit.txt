@@ -1,7 +1,7 @@
 {
 	"cardType":67,
-	"cardName":"Grudges Unforgotten",
-	"effText":"Shape: During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters. When I'm summoned, annhilate a Summoned SX Shaper and give me +XEW.",
+	"cardName":"Twin Spirit",
+	"effText":"Shape: During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters. When I'm hand-summoned, deck-summon a copy of me.",
 	"effects":[
 		{
 			"blurb":"Shape",
@@ -46,36 +46,35 @@
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[0,101],
+					\"cardRestriction\":{
+						\"restrictionsToCheck\":[100]
+					}
 				}
 			}",
-			"subeffectTypes":[0,203,311,5,103],
+			"subeffectTypes":[1,4,300],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
-					{
-						\"Blurb\":\"Ethereal for Grudges Unforgotten to annihilate and absorb\",
-						\"restrictionsToCheck\":[2,3,103],
-						\"subtypesInclude\":[\"Ethereal\"]
+					\"cardRestriction\":{
+						\"Blurb\":\"copy of Twin Spirit to decksummon\",
+						\"restrictionsToCheck\":[12]
 					}
 				}",
 				"{
-					\"WhatToCount\":\"Cost\"
+					\"spaceRestriction\":
+					{
+						\"Blurb\":\"where for Twin Spirit to decksummon a copy of itself\",
+						\"restrictionsToCheck\":[0]
+					}
 				}",
-				"{}",
-				"{}",
-				"{
-					\"eMult\":1,
-					\"sMult\":1,
-					\"wMult\":1
-				]"
+				"{}"
 			]	
 		}
 	],
 	"n":1,
 	"e":2,
-	"s":3,
-	"w":2
+	"s":4,
+	"w":3
 	"subtypes":["Ethereal","Shaper"],
 	"subtypeText":"Ethereal Shaper"
 }

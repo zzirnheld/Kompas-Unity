@@ -1,7 +1,7 @@
 {
 	"cardType":67,
-	"cardName":"Grudges Unforgotten",
-	"effText":"Shape: During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters. When I'm summoned, annhilate a Summoned SX Shaper and give me +XEW.",
+	"cardName":"Whose Anger Draws Fear",
+	"effText":"Shape: During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters. When I attack, move my target away from me one space. If you can't, annihilate them.",
 	"effects":[
 		{
 			"blurb":"Shape",
@@ -42,40 +42,36 @@
 			]
 		},
 		{
-			"triggerCondition":401,
+			"triggerCondition":301,
 			"trigger":
 			"{
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[0,203,311,5,103],
+			"subeffectTypes":[50,404,4,309,407,311],
 			"subeffects":[
+				"{}",
 				"{
-					\"boardRestriction\":
+					\"JumpTo\":5
+				}",
+				"{
+					\"spaceRestriction\":
 					{
-						\"Blurb\":\"Ethereal for Grudges Unforgotten to annihilate and absorb\",
-						\"restrictionsToCheck\":[2,3,103],
-						\"subtypesInclude\":[\"Ethereal\"]
+						\"Blurb\":\"to move Whose Anger Draws Fear's attack target to\",
+						\"restrictionsToCheck\":[251,260]
 					}
 				}",
-				"{
-					\"WhatToCount\":\"Cost\"
-				}",
 				"{}",
 				"{}",
-				"{
-					\"eMult\":1,
-					\"sMult\":1,
-					\"wMult\":1
-				]"
+				"{}"
 			]	
 		}
 	],
 	"n":1,
-	"e":2,
+	"e":7,
 	"s":3,
-	"w":2
+	"w":0
 	"subtypes":["Ethereal","Shaper"],
 	"subtypeText":"Ethereal Shaper"
 }

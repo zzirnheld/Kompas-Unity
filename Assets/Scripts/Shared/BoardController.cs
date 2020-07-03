@@ -227,7 +227,7 @@ public class BoardController : MonoBehaviour
         return false;
     }
 
-    public bool CanSummonTo(int playerIndex, int x, int y)
+    public bool CanPlayTo(int playerIndex, int x, int y)
     {
         foreach(GameCard c in cards)
         {

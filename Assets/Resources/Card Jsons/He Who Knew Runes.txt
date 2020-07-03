@@ -1,7 +1,7 @@
 {
 	"cardType":67,
-	"cardName":"Grudges Unforgotten",
-	"effText":"Shape: During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters. When I'm summoned, annhilate a Summoned SX Shaper and give me +XEW.",
+	"cardName":"He Who Knew Runes",
+	"effText":"Shape: During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters. When I move X, you can hand-cast a CX Shaping.",
 	"effects":[
 		{
 			"blurb":"Shape",
@@ -42,40 +42,38 @@
 			]
 		},
 		{
-			"triggerCondition":401,
+			"triggerCondition":408,
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[0,1]
 				}
 			}",
-			"subeffectTypes":[0,203,311,5,103],
+			"subeffectTypes":[3,4,300],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"Ethereal for Grudges Unforgotten to annihilate and absorb\",
-						\"restrictionsToCheck\":[2,3,103],
-						\"subtypesInclude\":[\"Ethereal\"]
+						\"Blurb\":\"Shaping for He Who Knew Runes to cast\",
+						\"restrictionsToCheck\":[2,4,7,100,214,601],
+						\"subtypesInclude\":[\"Shaping\"]
 					}
 				}",
 				"{
-					\"WhatToCount\":\"Cost\"
+					\"spaceRestriction\":
+					{
+						\"Blurb\":\"where for He Who Knew Runes to cast its target Shaping\",
+						\"restrictionsToCheck\":[0]
+					}
 				}",
-				"{}",
-				"{}",
-				"{
-					\"eMult\":1,
-					\"sMult\":1,
-					\"wMult\":1
-				]"
+				"{}"
 			]	
 		}
 	],
 	"n":1,
-	"e":2,
-	"s":3,
-	"w":2
-	"subtypes":["Ethereal","Shaper"],
-	"subtypeText":"Ethereal Shaper"
+	"e":6,
+	"s":5,
+	"w":4
+	"subtypes":["Ethereal","Shaper","Mage"],
+	"subtypeText":"Ethereal Shaper Mage"
 }
