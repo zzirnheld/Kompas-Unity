@@ -1,0 +1,35 @@
+{
+	"cardType":67,
+	"cardName":"Untethered Spirit",
+	"effText":"When I'm summoned adjacent to a Shaper, gain a pip.",
+	"effects":[
+		{
+			"triggerCondition":401,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0,120],
+					\"spaceRestriction\":{
+						\"restrictionsToCheck\":[101],
+						\"adjacencyRestriction\":{
+							\"restrictionsToCheck\":[2],
+							\"subtypesInclude\":[\"Ethereal\"]
+						}
+					}
+				}
+			}",
+			"subeffectTypes":[101],
+			"subeffects":[
+				"{
+					\"modifier\":1
+				}"
+			]	
+		}
+	],
+	"n":2,
+	"e":1,
+	"s":2,
+	"w":0
+	"subtypes":["Ethereal"],
+	"subtypeText":"Ethereal"
+}

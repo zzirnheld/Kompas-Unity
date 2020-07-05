@@ -6,7 +6,7 @@ public class MoveSubeffect : CardChangeStateSubeffect
 {
     public override void Resolve()
     {
-        if (Target.Location == CardLocation.Field)
+        if (Target.Location == CardLocation.Field && (Target.Summoned || Target.CardType != 'C'))
         {
             var (x, y) = Space;
             Target.Move(x, y, false, Effect);

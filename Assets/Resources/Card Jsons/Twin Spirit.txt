@@ -57,7 +57,7 @@
 				"{
 					\"cardRestriction\":{
 						\"Blurb\":\"copy of Twin Spirit to decksummon\",
-						\"restrictionsToCheck\":[12]
+						\"restrictionsToCheck\":[12,102]
 					}
 				}",
 				"{

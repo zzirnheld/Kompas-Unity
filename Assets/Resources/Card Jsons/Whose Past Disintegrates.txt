@@ -16,7 +16,7 @@
 				"{
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"to move Unstable Soul to\",
+						\"Blurb\":\"to move Whose Past Disintegrates to\",
 						\"restrictionsToCheck\":[110],
 						\"ConnectednessRestriction\":{
 							\"restrictionsToCheck\":[2,3,103],

@@ -39,20 +39,6 @@ public class SpaceRestriction
         ConnectednessRestriction.Initialize(subeffect);
     }
 
-    private bool ExistsCardWithRestrictionAdjacentToCoords(BoardRestriction r, int x, int y)
-    {
-        for (int i = 0; i < 7; i++)
-        {
-            for(int j = 0; j < 7; j++)
-            {
-                GameCard c = Subeffect.Effect.Game.boardCtrl.GetCardAt(i, j);
-                if (c != null && c.IsAdjacentTo(x, y) && r.Evaluate(c)) return true;
-            }
-        }
-
-        return false;
-    }
-
     public bool Evaluate((int x, int y) space) => Evaluate(space.x, space.y);
 
     public bool Evaluate(int x, int y)
@@ -74,7 +60,7 @@ public class SpaceRestriction
                     if (!Subeffect.Source.IsAdjacentTo(x, y)) return false;
                     break;
                 case SpaceRestrictions.AdjacentToWithRestriction:
-                    if (!ExistsCardWithRestrictionAdjacentToCoords(adjacencyRestriction, x, y)) return false;
+                    if (!Subeffect.Game.boardCtrl.CardsAdjacentTo(x,y).Any(c => adjacencyRestriction.Evaluate(c))) return false;
                     break;
                 case SpaceRestrictions.AdjacentToTarget:
                     if (!Subeffect.Target.IsAdjacentTo(x, y)) return false;
