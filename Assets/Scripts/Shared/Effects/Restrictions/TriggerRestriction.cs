@@ -17,6 +17,7 @@ public class TriggerRestriction
         TriggererFitsRestriction = 101,
         CoordsFitRestriction = 120,
         XFitsRestriction = 130,
+        EffectSourceIsThisCard = 140,
         EffectSourceIsTriggerer = 149,
 
         ControllerTriggered = 200,

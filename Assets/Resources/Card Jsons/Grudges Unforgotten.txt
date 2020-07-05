@@ -60,7 +60,7 @@
 					}
 				}",
 				"{
-					\"WhatToCount\":\"Cost\"
+					\"WhatToCount\":\"S\"
 				}",
 				"{}",
 				"{}",
