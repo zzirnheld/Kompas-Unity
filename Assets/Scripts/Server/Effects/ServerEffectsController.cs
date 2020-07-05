@@ -8,31 +8,26 @@ public class ServerEffectsController : MonoBehaviour
 
     public ServerGame ServerGame;
 
-    protected ServerEffectStack stack;
+    protected ServerEffectStack stack = new ServerEffectStack();
 
     public Stack<(ServerTrigger, GameCard, IStackable, Player, int?, ServerPlayer)> OptionalTriggersToAsk
         = new Stack<(ServerTrigger, GameCard, IStackable, Player, int?, ServerPlayer)>();
 
     //trigger map
-    protected Dictionary<TriggerCondition, List<ServerTrigger>> triggerMap;
-    protected Dictionary<TriggerCondition, List<HangingEffect>> hangingEffectMap;
+    protected Dictionary<TriggerCondition, List<ServerTrigger>> triggerMap = new Dictionary<TriggerCondition, List<ServerTrigger>>();
+    protected Dictionary<TriggerCondition, List<HangingEffect>> hangingEffectMap = new Dictionary<TriggerCondition, List<HangingEffect>>();
+    protected Dictionary<TriggerCondition, List<(HangingEffect, TriggerRestriction)>> hangingEffectFallOffMap 
+        = new Dictionary<TriggerCondition, List<(HangingEffect, TriggerRestriction)>>();
 
     public IServerStackable CurrStackEntry { get; private set; }
 
     public void Start()
-    {
-        stack = new ServerEffectStack();
-
-        triggerMap = new Dictionary<TriggerCondition, List<ServerTrigger>>();
+    {   
         foreach (TriggerCondition c in System.Enum.GetValues(typeof(TriggerCondition)))
         {
             triggerMap.Add(c, new List<ServerTrigger>());
-        }
-
-        hangingEffectMap = new Dictionary<TriggerCondition, List<HangingEffect>>();
-        foreach (TriggerCondition c in System.Enum.GetValues(typeof(TriggerCondition)))
-        {
             hangingEffectMap.Add(c, new List<HangingEffect>());
+            hangingEffectFallOffMap.Add(c, new List<(HangingEffect, TriggerRestriction)>());
         }
     }
 
@@ -167,6 +162,13 @@ public class ServerEffectsController : MonoBehaviour
         hangingEffs.Add(hangingEff);
     }
 
+    public void RegisterHangingEffectFallOff(TriggerCondition condition, TriggerRestriction restriction, HangingEffect hangingEff)
+    {
+        Debug.Log($"Registering a new hanging effect to condition {condition}");
+        var hangingEffs = hangingEffectFallOffMap[condition];
+        hangingEffs.Add((hangingEff, restriction));
+    }
+
     public void Trigger(TriggerCondition condition, 
         GameCard cardTriggerer = null, IStackable stackTrigger = null, Player triggerer = null, int? x = null, (int, int)? space = null)
     {
@@ -181,6 +183,12 @@ public class ServerEffectsController : MonoBehaviour
         foreach (var t in toRemove)
         {
             hangingEffectMap[condition].Remove(t);
+        }
+
+        foreach(var (eff, fallOffRestriction) in hangingEffectFallOffMap[condition])
+        {
+            if(fallOffRestriction.Evaluate(cardTriggerer, stackTrigger, triggerer, x, space))
+                hangingEffectMap[eff.EndCondition].Remove(eff);
         }
 
         Debug.Log($"Attempting to trigger {condition}, with triggerer {cardTriggerer?.CardName}, triggered by a null stacktrigger? {stackTrigger == null}, x={x}");

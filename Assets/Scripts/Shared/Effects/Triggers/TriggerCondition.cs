@@ -32,6 +32,7 @@ public enum TriggerCondition
     ToDeck = 407,
     Move = 408,
     Annhilate = 409,
+    Remove = 410,
     AugmentAttached = 450,
     AugmentDetached = 451
 }

@@ -60,6 +60,8 @@ public class ServerGameCard : GameCard
 
     public override void Remove(IStackable stackSrc = null)
     {
+        EffectsController.Trigger(TriggerCondition.Remove,
+            cardTriggerer: this, stackTrigger: stackSrc, triggerer: stackSrc?.Controller ?? Controller);
         base.Remove(stackSrc);
         foreach (var aug in Augments) aug.Discard();
     }

@@ -1,0 +1,57 @@
+{
+	"cardType":83,
+	"cardName":"Pseudopod",
+	"effText":"Choose a friendly Shaper. Move an enemy character to be adjacent to the chosen Shaper.",
+	"effects":[
+		{
+			"triggerCondition":401,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
+				}
+			}",
+			"subeffectTypes":[10,409,3,11,10,303,10,408,101],
+			"subeffects":[
+				"{}",
+				"{
+					\"Condition\":\"None Fit Restriction\",
+					\"CardRestriction\":
+					{
+						\"restrictionsToCheck\":[2,7,103],
+						\"subtypesInclude\":[\"Tarocco\"]
+					}
+				}",
+				"{
+					\"cardRestriction\":
+					{
+						\"restrictionsToCheck\":[7,100]
+					}
+				}",
+				"{
+					\"cardRestriction\":
+					{
+						\"restrictionsToCheck\":[7,100,600]
+					}
+				}",
+				"{
+					\"DeleteIndex\":0
+				}",
+				"{}",
+				"{}",
+				"{
+					\"CanDecline\":false,
+					\"JumpTo\":4
+				}",
+				"{
+					\"xMultiplier\":1
+				}"
+			]
+		}
+	],
+	"fast":false,
+	"c":1,
+	"spellType":"Simple",
+	"subtypes":["Tarocco","Simple"],
+	"subtypeText":"Tarocco Simple"
+}

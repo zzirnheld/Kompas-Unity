@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TemporaryNESWBuffSubeffect : TemporarySubeffect
+public class TemporaryNESWBuffSubeffect : TemporaryCardChangeSubeffect
 {
     public int NBuff = 0;
     public int EBuff = 0;
@@ -14,14 +14,15 @@ public class TemporaryNESWBuffSubeffect : TemporarySubeffect
     public int SMultiplier = 0;
     public int WMultiplier = 0;
 
-    public override void Resolve()
+    protected override IEnumerable<(HangingEffect, GameCard)> CreateHangingEffects()
     {
-        new TemporaryNESWBuff(ServerGame, TriggerRestriction, EndCondition, 
-            Target, 
+        var temp = new TemporaryNESWBuff(ServerGame, TriggerRestriction, EndCondition,
+            Target,
             NBuff + Effect.X * NMultiplier,
             EBuff + Effect.X * EMultiplier,
             SBuff + Effect.X * SMultiplier,
             WBuff + Effect.X * WMultiplier);
-        ServerEffect.ResolveNextSubeffect();
+
+        return new List<(HangingEffect, GameCard)>() { (temp, Target) };
     }
 }
