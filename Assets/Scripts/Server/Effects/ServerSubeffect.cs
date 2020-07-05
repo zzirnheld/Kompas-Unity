@@ -227,6 +227,9 @@ public abstract class ServerSubeffect : Subeffect
             case SubeffectType.HangingActivate:
                 toReturn = JsonUtility.FromJson<TemporaryActivationSubeffect>(subeffJson);
                 break;
+            case SubeffectType.HangingAnnihilate:
+                toReturn = JsonUtility.FromJson<HangingAnnihilationSubeffect>(subeffJson);
+                break;
             case SubeffectType.EndTurn:
                 toReturn = JsonUtility.FromJson<EndTurnSubeffect>(subeffJson);
                 break;

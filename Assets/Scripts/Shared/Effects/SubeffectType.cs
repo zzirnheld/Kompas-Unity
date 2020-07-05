@@ -87,6 +87,7 @@ public enum SubeffectType
     HangingNESWBuffAll = 502,
     HangingNegate = 503,
     HangingActivate = 504,
+    HangingAnnihilate = 550,
 
     //misc
     EndTurn = 600,
