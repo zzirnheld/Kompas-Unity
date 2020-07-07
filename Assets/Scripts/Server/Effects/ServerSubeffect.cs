@@ -104,6 +104,9 @@ public abstract class ServerSubeffect : Subeffect
             case SubeffectType.TakeControl:
                 toReturn = JsonUtility.FromJson<TakeControlSubeffect>(subeffJson);
                 break;
+            case SubeffectType.ResetStats:
+                toReturn = JsonUtility.FromJson<ResetStatsSubeffect>(subeffJson);
+                break;
             case SubeffectType.SetXByBoardCount:
                 toReturn = JsonUtility.FromJson<SetXBoardRestrictionSubeffect>(subeffJson);
                 break;

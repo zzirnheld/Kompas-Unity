@@ -10,6 +10,13 @@ public abstract class GameCard : CardBase {
     private SerializableCard serializedCard;
 
     #region stats
+    public int BaseN => serializedCard.n;
+    public int BaseE => serializedCard.e;
+    public int BaseS => serializedCard.s;
+    public int BaseW => serializedCard.w;
+    public int BaseC => serializedCard.c;
+    public int BaseA => serializedCard.a;
+
     public int N { get; private set; }
     public int E { get; protected set; }
     public int S { get; private set; }

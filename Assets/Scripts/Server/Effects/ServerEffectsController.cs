@@ -187,8 +187,11 @@ public class ServerEffectsController : MonoBehaviour
 
         foreach(var (eff, fallOffRestriction) in hangingEffectFallOffMap[condition])
         {
-            if(fallOffRestriction.Evaluate(cardTriggerer, stackTrigger, triggerer, x, space))
+            if (fallOffRestriction.Evaluate(cardTriggerer, stackTrigger, triggerer, x, space))
+            {
                 hangingEffectMap[eff.EndCondition].Remove(eff);
+                hangingEffectFallOffMap[condition].Remove((eff, fallOffRestriction));
+            }
         }
 
         Debug.Log($"Attempting to trigger {condition}, with triggerer {cardTriggerer?.CardName}, triggered by a null stacktrigger? {stackTrigger == null}, x={x}");

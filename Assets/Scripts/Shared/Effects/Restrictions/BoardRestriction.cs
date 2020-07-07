@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
@@ -10,12 +11,14 @@ public class BoardRestriction : CardRestriction
         WithinCSpaces = 1,
         InAOE = 2,
         DistanceToTargetWithinCSpaces = 10,
+        AdjacentToSubtype = 20,
         ExactlyXSpaces = 100,
         Summoned = 200
     }
     public BoardRestrictions[] onBoardRestrictions = new BoardRestrictions[0];
 
     public int cSpaces;
+    public string[] AdjacencySubtypes = new string[0];
 
     public override bool Evaluate(GameCard potentialTarget)
     {
@@ -36,6 +39,9 @@ public class BoardRestriction : CardRestriction
                     break;
                 case BoardRestrictions.DistanceToTargetWithinCSpaces:
                     if (potentialTarget.DistanceTo(Subeffect.Source) > cSpaces) return false;
+                    break;
+                case BoardRestrictions.AdjacentToSubtype:
+                    if (!potentialTarget.AdjacentCards.Any(c => AdjacencySubtypes.All(s => c.Subtypes.Contains(s)))) return false;
                     break;
                 case BoardRestrictions.ExactlyXSpaces:
                     if (potentialTarget.DistanceTo(Subeffect.Source) != Subeffect.Effect.X) return false;

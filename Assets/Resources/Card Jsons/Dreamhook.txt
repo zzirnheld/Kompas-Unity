@@ -1,7 +1,7 @@
 {
 	"cardType":83,
-	"cardName":"Pseudopod",
-	"effText":"Choose a friendly Shaper. Move an enemy character to be adjacent to the chosen Shaper.",
+	"cardName":"Dreamhook",
+	"effText":"Move a Shaper to be adjacent to an enemy character. They fight.",
 	"effects":[
 		{
 			"triggerCondition":401,
@@ -11,8 +11,15 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[0,0,4,309],
+			"subeffectTypes":[0,0,4,309,601],
 			"subeffects":[
+				"{
+					\"boardRestriction\":
+					{
+						\"Blurb\":\"enemy character to move adjacent to\",
+						\"restrictionsToCheck\":[3,9,103]
+					}
+				}",
 				"{
 					\"boardRestriction\":
 					{
@@ -22,20 +29,14 @@
 					}
 				}",
 				"{
-					\"boardRestriction\":
-					{
-						\"Blurb\":\"enemy character to move\",
-						\"restrictionsToCheck\":[3,9,103]
-					}
-				}",
-				"{
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"where to move the enemy character\",
+						\"Blurb\":\"where to move the Shaper\",
 						\"restrictionsToCheck\":[102]
 					},
 					\"TargetIndex\":-2
 				}",
+				"{}",
 				"{}"
 			]
 		}

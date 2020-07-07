@@ -33,6 +33,7 @@ public enum SubeffectType
     SetNESW = 109,
     ChangeAllNESW = 110,
     SetAllNESW = 111,
+    ResetStats = 112,
     Activate = 120,
     SpendMovement = 121,
     TakeControl = 130,
