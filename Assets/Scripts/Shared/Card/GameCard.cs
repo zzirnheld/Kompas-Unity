@@ -91,7 +91,7 @@ public abstract class GameCard : CardBase {
         set
         {
             (BoardX, BoardY) = value;
-            cardCtrl.SetPhysicalLocation(CardLocation.Field);
+            cardCtrl.SetPhysicalLocation(Location);
             foreach (var aug in Augments) aug.Position = value;
         }
     }

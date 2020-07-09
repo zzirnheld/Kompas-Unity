@@ -25,7 +25,7 @@ public class SpaceRestriction
     }
 
     public SpaceRestrictions[] restrictionsToCheck;
-    public BoardRestriction adjacencyRestriction;
+    public BoardRestriction adjacencyRestriction = new BoardRestriction();
     public BoardRestriction ConnectednessRestriction = new BoardRestriction(); 
 
     public int C;
@@ -43,7 +43,7 @@ public class SpaceRestriction
 
     public bool Evaluate(int x, int y)
     {
-        Debug.Log($"Space restriction for {Subeffect.Source.name} evaluating {x}, {y}");
+        Debug.Log($"Space restriction for {Subeffect.Source.CardName} evaluating {x}, {y}");
         if (!Subeffect.Effect.Game.boardCtrl.ValidIndices(x, y)) return false;
 
         foreach(SpaceRestrictions r in restrictionsToCheck)

@@ -137,4 +137,10 @@ public class ServerEffect : Effect, IServerStackable
     {
         OnImpossible?.OnImpossible();
     }
+
+    public override void AddTarget(GameCard card)
+    {
+        base.AddTarget(card);
+        serverGame.ServerPlayers[card.ControllerIndex].ServerNotifier.SetTarget(Source, EffectIndex, card);
+    }
 }

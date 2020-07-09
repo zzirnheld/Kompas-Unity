@@ -46,7 +46,7 @@
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,100],
+					\"triggerRestrictions\":[1,100,500],
 					\"cardRestriction\":{
 						\"restrictionsToCheck\":[2,7],
 						\"subtypesInclude\":[\"Shaper\"]
@@ -69,7 +69,7 @@
 	"n":2,
 	"e":8,
 	"s":10,
-	"w":5
+	"w":5,
 	"subtypes":["Ethereal","Shaper","Mage"],
 	"subtypeText":"Ethereal Shaper Mage"
 }

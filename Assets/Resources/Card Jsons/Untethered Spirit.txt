@@ -29,7 +29,7 @@
 	"n":2,
 	"e":1,
 	"s":2,
-	"w":0
+	"w":0,
 	"subtypes":["Ethereal"],
 	"subtypeText":"Ethereal"
 }

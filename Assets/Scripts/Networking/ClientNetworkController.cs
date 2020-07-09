@@ -261,6 +261,10 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.CurrSpaceRestriction = null;
                 ClientGame.clientUICtrl.SetCurrState("Target Accepted");
                 break;
+            case Packet.Command.Target:
+                var target = ClientGame.GetCardWithID(packet.normalArgs[1]);
+                if(target != null) card.Effects.ElementAt(packet.EffIndex).AddTarget(target);
+                break;
             case Packet.Command.EnableDecliningTarget:
                 ClientGame.clientUICtrl.EnableDecliningTarget();
                 break;

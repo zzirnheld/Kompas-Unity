@@ -52,13 +52,15 @@
 					}
 				}
 			}",
-			"subeffectTypes":[1,4,300],
+			"subeffectTypes":[5,8,4,300],
 			"subeffects":[
+				"{}",
 				"{
-					\"cardRestriction\":{
+					\"CardRestriction\":{
 						\"Blurb\":\"copy of Twin Spirit to decksummon\",
-						\"restrictionsToCheck\":[12,102]
-					}
+						\"restrictionsToCheck\":[7,12,102]
+					},
+					\"MaxCanChoose\":1
 				}",
 				"{
 					\"spaceRestriction\":
@@ -74,7 +76,7 @@
 	"n":1,
 	"e":2,
 	"s":4,
-	"w":3
+	"w":3,
 	"subtypes":["Ethereal","Shaper"],
 	"subtypeText":"Ethereal Shaper"
 }

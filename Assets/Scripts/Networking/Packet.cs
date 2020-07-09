@@ -328,7 +328,7 @@ namespace KompasNetworking
             Debug.Log($"Getting list restriction for {string.Join(", ", normalArgs)}");
             GameCard thatHasEffect = clientGame.GetCardWithID(cardID);
             Effect eff = thatHasEffect.Effects.ElementAt(EffIndex);
-            DummyListTargetSubeffect subeff = eff.Subeffects[normalArgs[2]] as DummyListTargetSubeffect;
+            DummyListTargetSubeffect subeff = eff.Subeffects[SubeffIndex] as DummyListTargetSubeffect;
 
             if (subeff == null)
             {

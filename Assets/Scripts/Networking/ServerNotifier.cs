@@ -380,6 +380,12 @@ public class ServerNotifier : MonoBehaviour
         SendPacket(p);
     }
 
+    public void SetTarget(GameCard card, int effIndex, GameCard target)
+    {
+        Packet p = new Packet(Packet.Command.Target, card, effIndex, target.ID);
+        SendPacket(p);
+    }
+
     public void GetXForEffect(GameCard effSource, int effIndex, int subeffIndex)
     {
         Packet outPacket = new Packet(Packet.Command.PlayerSetX, effSource, effIndex, subeffIndex);

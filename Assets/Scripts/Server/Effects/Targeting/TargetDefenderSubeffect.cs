@@ -4,7 +4,7 @@
     {
         if (ServerEffect.ServerTrigger.LastTriggerInfo.stack is Attack attack)
         {
-            ServerEffect.Targets.Add(attack.defender);
+            ServerEffect.AddTarget(attack.defender);
             ServerEffect.ResolveNextSubeffect();
         }
         else ServerEffect.EffectImpossible();

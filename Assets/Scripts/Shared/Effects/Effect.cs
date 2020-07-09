@@ -22,6 +22,7 @@ public abstract class Effect : IStackable
     public readonly int EffectIndex;
 
     public List<GameCard> Targets { get; } = new List<GameCard>();
+    public int NumTargets => Targets.Count;
     public List<(int x, int y)> Coords { get; private set; } = new List<(int x, int y)>();
     public List<GameCard> Rest { get; private set; } = new List<GameCard>();
 
@@ -65,5 +66,15 @@ public abstract class Effect : IStackable
     public virtual void Negate()
     {
         Negated = true;
+    }
+
+    public virtual void AddTarget(GameCard card)
+    {
+        Targets.Add(card);
+    }
+
+    public GameCard TargetAt(int index)
+    {
+        return Targets.ElementAt(index);
     }
 }

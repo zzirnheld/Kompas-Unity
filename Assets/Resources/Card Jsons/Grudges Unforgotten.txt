@@ -68,14 +68,14 @@
 					\"eMult\":1,
 					\"sMult\":1,
 					\"wMult\":1
-				]"
+				}"
 			]	
 		}
 	],
 	"n":1,
 	"e":2,
 	"s":3,
-	"w":2
+	"w":2,
 	"subtypes":["Ethereal","Shaper"],
 	"subtypeText":"Ethereal Shaper"
 }
