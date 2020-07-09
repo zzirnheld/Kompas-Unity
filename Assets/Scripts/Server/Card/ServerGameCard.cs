@@ -45,23 +45,23 @@ public class ServerGameCard : GameCard
 
     public override void AddAugment(GameCard augment, IStackable stackSrc = null)
     {
-        EffectsController.Trigger(TriggerCondition.AugmentAttached,
-            cardTriggerer: augment, stackTrigger: stackSrc, triggerer: stackSrc?.Controller ?? Controller);
+        var context = new ActivationContext(card: augment, stackable: stackSrc, triggerer: stackSrc?.Controller ?? Controller);
+        EffectsController.Trigger(TriggerCondition.AugmentAttached, context);
         ServerNotifier.NotifyAttach(augment, BoardX, BoardY);
         base.AddAugment(augment, stackSrc);
     }
 
     protected override void Detach(IStackable stackSrc = null)
     {
-        EffectsController.Trigger(TriggerCondition.AugmentDetached,
-            cardTriggerer: this, stackTrigger: stackSrc, triggerer: stackSrc?.Controller ?? Controller);
+        var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller ?? Controller);
+        EffectsController.Trigger(TriggerCondition.AugmentDetached, context);
         base.Detach(stackSrc);
     }
 
     public override void Remove(IStackable stackSrc = null)
     {
-        EffectsController.Trigger(TriggerCondition.Remove,
-            cardTriggerer: this, stackTrigger: stackSrc, triggerer: stackSrc?.Controller ?? Controller);
+        var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller ?? Controller);
+        EffectsController.Trigger(TriggerCondition.Remove, context);
         base.Remove(stackSrc);
         foreach (var aug in Augments) aug.Discard();
     }
@@ -69,60 +69,54 @@ public class ServerGameCard : GameCard
     #region stats
     public override void SetN(int n, IStackable stackSrc = null)
     {
-        EffectsController.Trigger(TriggerCondition.NChange, 
-            cardTriggerer: this, stackTrigger: stackSrc, triggerer: stackSrc?.Controller, x: n - N);
-        EffectsController.Trigger(TriggerCondition.NESWChange,
-            cardTriggerer: this, stackTrigger: stackSrc, triggerer: stackSrc?.Controller);
+        var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: n - N);
+        EffectsController.Trigger(TriggerCondition.NChange, context);
+        EffectsController.Trigger(TriggerCondition.NESWChange, context);
         base.SetN(n);
         ServerNotifier.NotifySetN(this);
     }
 
     public override void SetE(int e, IStackable stackSrc = null)
     {
-        EffectsController.Trigger(TriggerCondition.EChange,
-            cardTriggerer: this, stackTrigger: stackSrc, triggerer: stackSrc?.Controller, x: e - E);
-        EffectsController.Trigger(TriggerCondition.NESWChange,
-            cardTriggerer: this, stackTrigger: stackSrc, triggerer: stackSrc?.Controller);
+        var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: e - E);
+        EffectsController.Trigger(TriggerCondition.EChange, context);
+        EffectsController.Trigger(TriggerCondition.NESWChange, context);
         base.SetE(e);
         ServerNotifier.NotifySetE(this);
     }
 
     public override void SetS(int s, IStackable stackSrc = null)
     {
-        EffectsController.Trigger(TriggerCondition.SChange,
-            cardTriggerer: this, stackTrigger: stackSrc, triggerer: stackSrc?.Controller, x: s - S);
-        EffectsController.Trigger(TriggerCondition.NESWChange,
-            cardTriggerer: this, stackTrigger: stackSrc, triggerer: stackSrc?.Controller);
+        var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: s - S);
+        EffectsController.Trigger(TriggerCondition.SChange, context);
+        EffectsController.Trigger(TriggerCondition.NESWChange, context);
         base.SetS(s);
         ServerNotifier.NotifySetS(this);
     }
 
     public override void SetW(int w, IStackable stackSrc = null)
     {
-        EffectsController.Trigger(TriggerCondition.WChange,
-            cardTriggerer: this, stackTrigger: stackSrc, triggerer: stackSrc?.Controller, x: w - W);
-        EffectsController.Trigger(TriggerCondition.NESWChange,
-            cardTriggerer: this, stackTrigger: stackSrc, triggerer: stackSrc?.Controller);
+        var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: w - W);
+        EffectsController.Trigger(TriggerCondition.WChange, context);
+        EffectsController.Trigger(TriggerCondition.NESWChange, context);
         base.SetW(w);
         ServerNotifier.NotifySetW(this);
     }
 
     public override void SetC(int c, IStackable stackSrc = null)
     {
-        EffectsController.Trigger(TriggerCondition.CChange,
-            cardTriggerer: this, stackTrigger: stackSrc, triggerer: stackSrc?.Controller, x: c - C);
-        EffectsController.Trigger(TriggerCondition.NESWChange,
-            cardTriggerer: this, stackTrigger: stackSrc, triggerer: stackSrc?.Controller);
+        var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: c - C);
+        EffectsController.Trigger(TriggerCondition.CChange, context);
+        EffectsController.Trigger(TriggerCondition.NESWChange, context);
         base.SetC(c);
         ServerNotifier.NotifySetC(this);
     }
 
     public override void SetA(int a, IStackable stackSrc = null)
     {
-        EffectsController.Trigger(TriggerCondition.AChange,
-            cardTriggerer: this, stackTrigger: stackSrc, triggerer: stackSrc?.Controller, x: a - A);
-        EffectsController.Trigger(TriggerCondition.NESWChange,
-            cardTriggerer: this, stackTrigger: stackSrc, triggerer: stackSrc?.Controller);
+        var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: a - A);
+        EffectsController.Trigger(TriggerCondition.AChange, context);
+        EffectsController.Trigger(TriggerCondition.NESWChange, context);
         base.SetA(a);
         ServerNotifier.NotifySetA(this);
     }
@@ -135,13 +129,12 @@ public class ServerGameCard : GameCard
 
     public override void SetActivated(bool activated, IStackable stackSrc = null)
     {
+        var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller);
         if (Activated != activated)
         {
             ServerNotifier.NotifyActivate(this, activated);
-            if (activated) EffectsController.Trigger(TriggerCondition.Activate,
-                 cardTriggerer: this, stackTrigger: stackSrc, triggerer: stackSrc?.Controller);
-            else EffectsController.Trigger(TriggerCondition.Deactivate,
-                 cardTriggerer: this, stackTrigger: stackSrc, triggerer: stackSrc?.Controller);
+            if (activated) EffectsController.Trigger(TriggerCondition.Activate, context);
+            else EffectsController.Trigger(TriggerCondition.Deactivate, context);
         }
         base.SetActivated(activated, stackSrc);
     }

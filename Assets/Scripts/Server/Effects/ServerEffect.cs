@@ -65,20 +65,21 @@ public class ServerEffect : Effect, IServerStackable
             && ActivationRestriction.Evaluate(controller);
     }
 
-    public void PushToStack(ServerPlayer controller)
+    public void PushToStack(ServerPlayer controller, ActivationContext context)
     {
-        EffectsController.PushToStack(this, controller);
+        EffectsController.PushToStack(this, controller, context);
     }
 
-    public void StartResolution(int startIndex = 0)
+    public void StartResolution(ActivationContext context)
     {
-        Debug.Log($"Resolving effect {EffectIndex} of {Source.CardName}");
+        Debug.Log($"Resolving effect {EffectIndex} of {Source.CardName} in context {context}");
         serverGame.CurrEffect = this;
+        CurrActivationContext = context;
         TimesUsedThisTurn++;
         ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
         ServerController.ServerNotifier.EffectResolving(this);
         if (Negated) EffectImpossible();
-        else ResolveSubeffect(startIndex);
+        else ResolveSubeffect(context.StartIndex);
     }
 
     public void ResolveNextSubeffect()

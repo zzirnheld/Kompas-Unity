@@ -11,7 +11,8 @@ public class ServerDiscardController : DiscardController
 
     public override void AddToDiscard(GameCard card, IStackable stackSrc = null)
     {
-        EffectsController.Trigger(TriggerCondition.Discard, cardTriggerer: card, stackTrigger: stackSrc, triggerer: Owner);
+        var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
+        EffectsController.Trigger(TriggerCondition.Discard, context);
         ServerNotifier.NotifyDiscard(card);
         base.AddToDiscard(card);
     }

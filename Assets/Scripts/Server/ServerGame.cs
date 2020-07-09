@@ -186,11 +186,13 @@ public class ServerGame : Game {
         {
             var toDraw = controller.deckCtrl.PopTopdeck();
             if (toDraw == null) break;
-            EffectsController.Trigger(TriggerCondition.EachDraw, cardTriggerer: toDraw, stackTrigger: stackSrc, triggerer: ServerPlayers[player]);
+            var eachDrawContext = new ActivationContext(card: toDraw, stackable: stackSrc, triggerer: controller);
+            EffectsController.Trigger(TriggerCondition.EachDraw, eachDrawContext);
             toDraw.Rehand(controller, stackSrc);
             drawn.Add(toDraw);
         }
-        EffectsController.Trigger(TriggerCondition.DrawX, stackTrigger: stackSrc, triggerer: ServerPlayers[player], x: i);
+        var context = new ActivationContext(stackable: stackSrc, triggerer: controller, x: i);
+        EffectsController.Trigger(TriggerCondition.DrawX, context);
         return drawn;
     }
     public GameCard Draw(int player, IStackable stackSrc = null)
@@ -217,7 +219,7 @@ public class ServerGame : Game {
         Debug.Log($"ServerNetworkController {attacker.CardName} attacking {defender.CardName} at {defender.BoardX}, {defender.BoardY}");
         //push the attack to the stack, then check if any player wants to respond before resolving it
         var attack = new ServerAttack(this, instigator, attacker, defender);
-        EffectsController.PushToStack(attack);
+        EffectsController.PushToStack(attack, new ActivationContext());
         //check for triggers related to the attack (if this were in the constructor, the triggers would go on the stack under the attack
         attack.Declare();
         EffectsController.CheckForResponse();
@@ -290,7 +292,8 @@ public class ServerGame : Game {
         TurnServerPlayer.ServerNotifier.NotifySetTurn(this, TurnPlayerIndex);
 
         //trigger turn start effects
-        EffectsController.Trigger(TriggerCondition.TurnStart, triggerer: TurnServerPlayer);
+        var context = new ActivationContext(triggerer: TurnServerPlayer);
+        EffectsController.Trigger(TriggerCondition.TurnStart, context);
         EffectsController.CheckForResponse();
     }
 

@@ -5,19 +5,19 @@ using UnityEngine;
 
 public class ServerEffectStack
 {
-    private readonly List<(IServerStackable stackable, int startIndex)> stack 
-        = new List<(IServerStackable stackable, int startIndex)>();
+    private readonly List<(IServerStackable stackable, ActivationContext context)> stack 
+        = new List<(IServerStackable stackable, ActivationContext)>();
 
     public bool Empty => stack.Count == 0;
 
-    public void Push((IServerStackable, int) entry)
+    public void Push((IServerStackable, ActivationContext) entry)
     {
         stack.Add(entry);
     }
 
-    public (IServerStackable, int) Pop()
+    public (IServerStackable, ActivationContext) Pop()
     {
-        if (stack.Count == 0) return (null, 0);
+        if (stack.Count == 0) return (default, default);
 
         var last = stack.Last();
         stack.Remove(last);

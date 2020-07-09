@@ -2,7 +2,7 @@
 {
     public override void Resolve()
     {
-        if (ServerEffect.ServerTrigger.LastTriggerInfo.stack is Attack attack)
+        if (ServerEffect.CurrActivationContext.Stackable is Attack attack)
         {
             ServerEffect.AddTarget(attack.defender);
             ServerEffect.ResolveNextSubeffect();

@@ -21,10 +21,10 @@ public class DelayedHangingEffect : HangingEffect
         numTimesDelayed = 0;
     }
 
-    protected override bool ShouldEnd(GameCard cardTrigger, IStackable stackTrigger, Player triggerer, int? x, (int x, int y)? space)
+    protected override bool ShouldEnd(ActivationContext context)
     {
         //first check any other logic
-        if (!base.ShouldEnd(cardTrigger, stackTrigger, triggerer, x, space)) return false;
+        if (!base.ShouldEnd(context)) return false;
 
         //if it should otherwise be fine, but we haven't waited enough times, delay further
         if (numTimesDelayed < numTimesToDelay)
@@ -39,6 +39,7 @@ public class DelayedHangingEffect : HangingEffect
 
     protected override void Resolve()
     {
-        serverGame.EffectsController.PushToStack(toResume, controller, indexToResumeResolution);
+        var context = new ActivationContext(startIndex: indexToResumeResolution);
+        serverGame.EffectsController.PushToStack(toResume, controller, context);
     }
 }

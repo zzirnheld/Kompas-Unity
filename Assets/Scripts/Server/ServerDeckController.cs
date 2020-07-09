@@ -11,27 +11,31 @@ public class ServerDeckController : DeckController
 
     protected override void AddCard(GameCard card, IStackable stackSrc = null)
     {
-        EffectsController.Trigger(TriggerCondition.ToDeck, cardTriggerer: card, stackTrigger: stackSrc, triggerer: Owner);
+        var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
+        EffectsController.Trigger(TriggerCondition.ToDeck, context);
         base.AddCard(card);
     }
 
     public override void PushBottomdeck(GameCard card, IStackable stackSrc = null)
     {
-        EffectsController.Trigger(TriggerCondition.Bottomdeck, cardTriggerer: card, stackTrigger: stackSrc, triggerer: Owner);
+        var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
+        EffectsController.Trigger(TriggerCondition.Bottomdeck, context);
         ServerNotifier.NotifyBottomdeck(card);
         base.PushBottomdeck(card, stackSrc);
     }
 
     public override void PushTopdeck(GameCard card, IStackable stackSrc = null)
     {
-        EffectsController.Trigger(TriggerCondition.Topdeck, cardTriggerer: card, stackTrigger: stackSrc, triggerer: Owner);
+        var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
+        EffectsController.Trigger(TriggerCondition.Topdeck, context);
         ServerNotifier.NotifyTopdeck(card);
         base.PushTopdeck(card, stackSrc);
     }
 
     public override void ShuffleIn(GameCard card, IStackable stackSrc = null)
     {
-        EffectsController.Trigger(TriggerCondition.Reshuffle, cardTriggerer: card, stackTrigger: stackSrc, triggerer: Owner);
+        var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
+        EffectsController.Trigger(TriggerCondition.Reshuffle, context);
         ServerNotifier.NotifyReshuffle(card);
         base.ShuffleIn(card, stackSrc);
     }

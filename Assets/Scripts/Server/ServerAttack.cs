@@ -23,10 +23,11 @@ public class ServerAttack : Attack, IServerStackable
     /// </summary>
     public void Declare()
     {
-        EffCtrl.Trigger(TriggerCondition.Attacks, cardTriggerer: attacker, stackTrigger: this, triggerer: ServerController);
-        EffCtrl.Trigger(TriggerCondition.Defends, cardTriggerer: defender, stackTrigger: this, triggerer: ServerController);
-        EffCtrl.Trigger(TriggerCondition.Battles, cardTriggerer: attacker, stackTrigger: this, triggerer: ServerController);
-        EffCtrl.Trigger(TriggerCondition.Battles, cardTriggerer: defender, stackTrigger: this, triggerer: ServerController);
+        var attackerContext = new ActivationContext(card: attacker, stackable: this, triggerer: Controller);
+        var defenderContext = new ActivationContext(card: defender, stackable: this, triggerer: Controller);
+        EffCtrl.Trigger(TriggerCondition.Attacks, attackerContext);
+        EffCtrl.Trigger(TriggerCondition.Defends, defenderContext);
+        EffCtrl.Trigger(TriggerCondition.Battles, attackerContext, defenderContext);
     }
 
     private bool StillValidAttack
@@ -38,12 +39,13 @@ public class ServerAttack : Attack, IServerStackable
         }
     }
 
-    public void StartResolution(int startIndex = 0)
+    public void StartResolution(ActivationContext context)
     {
         //deal the damage
         if(StillValidAttack) DealDamage();
-        EffCtrl.Trigger(TriggerCondition.BattleEnds, cardTriggerer: attacker, stackTrigger: this, triggerer: Controller);
-        EffCtrl.Trigger(TriggerCondition.BattleEnds, cardTriggerer: defender, stackTrigger: this, triggerer: Controller);
+        var attackerContext = new ActivationContext(card: attacker, stackable: this, triggerer: Controller);
+        var defenderContext = new ActivationContext(card: defender, stackable: this, triggerer: Controller);
+        EffCtrl.Trigger(TriggerCondition.BattleEnds, attackerContext, defenderContext);
         //then finish the resolution
         EffCtrl.FinishStackEntryResolution();
     }
@@ -56,10 +58,12 @@ public class ServerAttack : Attack, IServerStackable
         //deal the damage
         defender.SetE(defender.E - attackerDmg);
         attacker.SetE(attacker.E - defenderDmg);
+        var attackerDealContext = new ActivationContext(card: attacker, stackable: this, triggerer: Controller, x: attackerDmg);
+        var defenderDealContext = new ActivationContext(card: defender, stackable: this, triggerer: Controller, x: defenderDmg);
+        var attackerTakeContext = new ActivationContext(card: attacker, stackable: this, triggerer: Controller, x: defenderDmg);
+        var defenderTakeContext = new ActivationContext(card: defender, stackable: this, triggerer: Controller, x: attackerDmg);
         //trigger effects based on combat damage
-        EffCtrl.Trigger(TriggerCondition.TakeCombatDamage, cardTriggerer: defender, stackTrigger: this, triggerer: ServerController, x: attackerDmg);
-        EffCtrl.Trigger(TriggerCondition.TakeCombatDamage, cardTriggerer: attacker, stackTrigger: this, triggerer: ServerController, x: defenderDmg);
-        EffCtrl.Trigger(TriggerCondition.DealCombatDamage, cardTriggerer: attacker, stackTrigger: this, triggerer: ServerController, x: attackerDmg);
-        EffCtrl.Trigger(TriggerCondition.DealCombatDamage, cardTriggerer: defender, stackTrigger: this, triggerer: ServerController, x: defenderDmg);
+        EffCtrl.Trigger(TriggerCondition.TakeCombatDamage, attackerTakeContext, defenderTakeContext);
+        EffCtrl.Trigger(TriggerCondition.DealCombatDamage, attackerDealContext, defenderDealContext);
     }
 }

@@ -11,7 +11,8 @@ public class ServerHandController : HandController
 
     public override void AddToHand(GameCard card, IStackable stackSrc = null)
     {
-        EffectsController.Trigger(TriggerCondition.Rehand, cardTriggerer: card, stackTrigger: stackSrc, triggerer: Owner);
+        var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
+        EffectsController.Trigger(TriggerCondition.Rehand, context);
         ServerNotifier.NotifyRehand(card);
         base.AddToHand(card);
     }

@@ -11,7 +11,7 @@ public class TargetAllSubeffect : CardTargetSubeffect
         //check what targets there are now, before you add them, to not mess with NotAlreadyTarget restriction
         //because Linq executes lazily, it would otherwise add the targets, then re-execute the query and not find any
         bool any = targets.Any();
-        Effect.AddTargetRange(targets);        
+        foreach (var t in targets) Effect.AddTarget(t);        
 
         if (any) ServerEffect.ResolveNextSubeffect();
         else ServerEffect.EffectImpossible();

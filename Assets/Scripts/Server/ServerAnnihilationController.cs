@@ -8,8 +8,8 @@ public class ServerAnnihilationController : AnnihilationController
 
     public override void Annihilate(GameCard card, IStackable stackSrc = null)
     {
-        ServerGame.EffectsController.Trigger(TriggerCondition.Annhilate,
-            cardTriggerer: card, stackTrigger: stackSrc);
+        var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: stackSrc?.Controller);
+        ServerGame.EffectsController.Trigger(TriggerCondition.Annhilate, context);
         ServerGame.ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyAnnhilate(card);
         base.Annihilate(card, stackSrc);
     }
