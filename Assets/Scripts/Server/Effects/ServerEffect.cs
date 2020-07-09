@@ -74,10 +74,19 @@ public class ServerEffect : Effect, IServerStackable
     {
         Debug.Log($"Resolving effect {EffectIndex} of {Source.CardName} in context {context}");
         serverGame.CurrEffect = this;
+
+        //set context parameters
         CurrActivationContext = context;
+        X = context.X ?? 0;
+        if (context.Card != null) AddTarget(context.Card);
+        if (context.Space.HasValue) Coords.Add(context.Space.Value);
         TimesUsedThisTurn++;
+
+        //notify relevant to this effect starting
         ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
         ServerController.ServerNotifier.EffectResolving(this);
+
+        //resolve the effect if possible
         if (Negated) EffectImpossible();
         else ResolveSubeffect(context.StartIndex);
     }
