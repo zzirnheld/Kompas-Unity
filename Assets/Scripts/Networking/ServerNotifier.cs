@@ -151,8 +151,8 @@ public class ServerNotifier : MonoBehaviour
     {
         var p = new Packet(Packet.Command.Annihilate, toAnnhilate);
         var q = toAnnhilate.Location == CardLocation.Discard || toAnnhilate.Location == CardLocation.Field ?
-            new Packet(Packet.Command.AddAsEnemy, toAnnhilate.CardName, (int)CardLocation.Annihilation, toAnnhilate.ID) :
-            new Packet(Packet.Command.Annihilate, toAnnhilate);
+            new Packet(Packet.Command.Annihilate, toAnnhilate) :
+        new Packet(Packet.Command.AddAsEnemy, toAnnhilate.CardName, (int)CardLocation.Annihilation, toAnnhilate.ID);
         SendPackets(p, q);
     }
 

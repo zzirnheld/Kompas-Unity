@@ -46,7 +46,7 @@
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,100,500],
+					\"triggerRestrictions\":[1,101,500],
 					\"cardRestriction\":{
 						\"restrictionsToCheck\":[2,7],
 						\"subtypesInclude\":[\"Shaper\"]

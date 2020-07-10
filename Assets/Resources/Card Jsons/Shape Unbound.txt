@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Shape Unbound",
-	"effText":"Annihilate a friendly Shaper. Deck-summon a Shaper, but annihilate them when turns start.",
+	"effText":"Annihilate a friendly Summoned Shaper. Deck-summon a Shaper, but annihilate them when turns start.",
 	"effects":[
 		{
 			"triggerCondition":401,
@@ -17,7 +17,7 @@
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"character to ANNIHILATE\",
-						\"restrictionsToCheck\":[2,7,103],
+						\"restrictionsToCheck\":[2,7,10,103],
 						\"subtypesInclude\":[\"Shaper\"]
 					}
 				}",

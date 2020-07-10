@@ -17,7 +17,8 @@
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"character to ANNIHILATE\",
-						\"restrictionsToCheck\":[20,103],
+						\"restrictionsToCheck\":[103],
+						\"onBoardRestrictions\":[20],
 						\"AdjacencySubtypes\":[\"Shaper\"]
 					}
 				}",

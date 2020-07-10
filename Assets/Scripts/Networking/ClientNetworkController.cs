@@ -148,6 +148,9 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.Bottomdeck:
                 card?.Bottomdeck();
                 break;
+            case Packet.Command.Annihilate:
+                ClientGame.AnnihilationCtrl.Annihilate(card);
+                break;
             case Packet.Command.SetN:
                 card?.SetN(packet.Stat);
                 break;

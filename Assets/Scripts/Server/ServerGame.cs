@@ -264,6 +264,7 @@ public class ServerGame : Game {
             return true;
         }
 
+        if (toMove.Position == (toX, toY)) return false;
         return toMove.MovementRestriction.Evaluate(toX, toY);
     }
 

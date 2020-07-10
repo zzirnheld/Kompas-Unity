@@ -39,8 +39,7 @@ public class ServerEffectsController : MonoBehaviour
 
     public void PushToStack(ServerEffect eff, ServerPlayer controller, ActivationContext context)
     {
-        eff.serverGame = ServerGame;
-        eff.ServerController = controller;
+        eff.PushedToStack(ServerGame, controller);
         PushToStack(eff, context);
     }
 

@@ -70,6 +70,14 @@ public class ServerEffect : Effect, IServerStackable
         EffectsController.PushToStack(this, controller, context);
     }
 
+    public void PushedToStack(ServerGame game, ServerPlayer ctrl)
+    {
+        TimesUsedThisRound++;
+        TimesUsedThisTurn++;
+        serverGame = game;
+        Controller = ctrl;
+    }
+
     public void StartResolution(ActivationContext context)
     {
         Debug.Log($"Resolving effect {EffectIndex} of {Source.CardName} in context {context}");
@@ -80,7 +88,6 @@ public class ServerEffect : Effect, IServerStackable
         X = context.X ?? 0;
         if (context.Card != null) AddTarget(context.Card);
         if (context.Space.HasValue) Coords.Add(context.Space.Value);
-        TimesUsedThisTurn++;
 
         //notify relevant to this effect starting
         ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
