@@ -192,6 +192,11 @@ public abstract class GameCard : CardBase {
         AttackRestriction.SetInfo(this);
         PlayRestriction = serializedCard.PlayRestriction ?? new PlayRestriction();
         PlayRestriction.SetInfo(this);
+
+        if(Effects != null) foreach (var eff in Effects) eff?.Reset();
+        //instead of setting negations or activations to 0, so that it updates the client correctly
+        while(Negated) Negated = false;
+        while (Activated) Activated = false;
     }
 
     #region distance/adjacency

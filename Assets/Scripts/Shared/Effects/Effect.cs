@@ -65,6 +65,12 @@ public abstract class Effect : IStackable
         if (turnPlayer == Source.Controller) TimesUsedThisRound = 0;
     }
 
+    public void Reset()
+    {
+        TimesUsedThisRound = 0;
+        TimesUsedThisTurn = 0;
+    }
+
     public virtual void Negate()
     {
         Negated = true;

@@ -81,7 +81,7 @@ public class SpaceRestriction
                     if (Subeffect.Target.DistanceTo(x, y) != C) return false;
                     break;
                 case SpaceRestrictions.FurtherFromSourceThanTarget:
-                    if (Subeffect.Source.DistanceTo(x, y) < Subeffect.Source.DistanceTo(Subeffect.Target)) return false;
+                    if (Subeffect.Source.DistanceTo(x, y) <= Subeffect.Source.DistanceTo(Subeffect.Target)) return false;
                     break;
                 default:
                     Debug.LogError($"Unrecognized space restriction enum {r}");

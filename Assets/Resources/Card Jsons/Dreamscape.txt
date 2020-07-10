@@ -8,7 +8,7 @@
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,100],
+					\"triggerRestrictions\":[1,101],
 					\"cardRestriction\":{
 						\"restrictionsToCheck\":[2,7],
 						\"subtypesInclude\":[\"Shaper\"]

@@ -136,11 +136,6 @@ public class BoardController : MonoBehaviour
         }
         return i;
     }
-
-    public void ResetCardsForTurn(Player turnPlayer)
-    {
-        foreach(GameCard c in cards) c?.ResetForTurn(turnPlayer);
-    }
     #endregion
 
     #region game mechanics

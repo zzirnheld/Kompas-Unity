@@ -152,7 +152,7 @@ public class ClientGame : Game {
     public void EndTurn()
     {
         TurnPlayerIndex = 1 - TurnPlayerIndex;
-        boardCtrl.ResetCardsForTurn(TurnPlayer);
+        ResetCardsForTurn();
         clientUICtrl.ChangeTurn(TurnPlayerIndex);
     }
 

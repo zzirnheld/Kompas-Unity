@@ -64,4 +64,10 @@ public abstract class Game : MonoBehaviour
 
         return false;
     }
+
+
+    protected void ResetCardsForTurn()
+    {
+        foreach (var c in Cards) c?.ResetForTurn(TurnPlayer);
+    }
 }

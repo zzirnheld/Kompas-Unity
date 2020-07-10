@@ -279,13 +279,13 @@ public class ServerGame : Game {
         return attacker.AttackRestriction.Evaluate(defender);
     }
     #endregion
-    
+
     public void SwitchTurn()
     {
         TurnPlayerIndex = 1 - TurnPlayerIndex;
         GiveTurnPlayerPips();
         
-        boardCtrl.ResetCardsForTurn(TurnPlayer);
+        ResetCardsForTurn();
 
         //draw for turn and store what was drawn
         GameCard drawn = Draw(TurnPlayerIndex);
