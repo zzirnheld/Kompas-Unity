@@ -59,7 +59,8 @@
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"to move Whose Anger Draws Fear's attack target to\",
-						\"restrictionsToCheck\":[251,260]
+						\"restrictionsToCheck\":[251,260],
+						\"C\":1
 					}
 				}",
 				"{}",

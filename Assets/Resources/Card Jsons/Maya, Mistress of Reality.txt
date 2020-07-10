@@ -57,6 +57,7 @@
 			"subeffects":[
 				"{
 					\"cardRestriction\":{
+						\"Blurb\":\"for Maya to discard\",
 						\"restrictionsToCheck\":[7,100]
 					}
 
