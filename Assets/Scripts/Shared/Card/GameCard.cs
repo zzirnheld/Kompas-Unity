@@ -51,6 +51,8 @@ public abstract class GameCard : CardBase {
         }
     }
 
+    public virtual bool CanRemove => true;
+
     public int Cost
     {
         get
@@ -300,10 +302,11 @@ public abstract class GameCard : CardBase {
 
     #region moveCard
     //so that notify stuff can be sent in the server
-    public virtual void Remove(IStackable stackSrc = null)
+    public virtual bool Remove(IStackable stackSrc = null)
     {
+        if (!CanRemove) return false;
         Debug.Log($"Removing {CardName} id {ID} from {Location}");
-
+        
         switch (Location)
         {
             case CardLocation.Field:
@@ -326,21 +329,23 @@ public abstract class GameCard : CardBase {
                 Debug.LogWarning($"Tried to remove card {CardName} from invalid location {Location}");
                 break;
         }
+
+        return true;
     }
 
-    public void Discard(IStackable stackSrc = null) => Controller.discardCtrl.AddToDiscard(this, stackSrc);
+    public bool Discard(IStackable stackSrc = null) => Controller.discardCtrl.AddToDiscard(this, stackSrc);
 
-    public void Rehand(Player controller, IStackable stackSrc = null) => controller.handCtrl.AddToHand(this, stackSrc);
-    public void Rehand(IStackable stackSrc = null) => Rehand(Controller, stackSrc);
+    public bool Rehand(Player controller, IStackable stackSrc = null) => controller.handCtrl.AddToHand(this, stackSrc);
+    public bool Rehand(IStackable stackSrc = null) => Rehand(Controller, stackSrc);
 
-    public void Reshuffle(Player controller, IStackable stackSrc = null) => controller.deckCtrl.ShuffleIn(this, stackSrc);
-    public void Reshuffle(IStackable stackSrc = null) => Reshuffle(Controller, stackSrc);
+    public bool Reshuffle(Player controller, IStackable stackSrc = null) => controller.deckCtrl.ShuffleIn(this, stackSrc);
+    public bool Reshuffle(IStackable stackSrc = null) => Reshuffle(Controller, stackSrc);
 
-    public void Topdeck(Player controller, IStackable stackSrc = null) => controller.deckCtrl.PushTopdeck(this, stackSrc);
-    public void Topdeck(IStackable stackSrc = null) => Topdeck(Controller, stackSrc);
+    public bool Topdeck(Player controller, IStackable stackSrc = null) => controller.deckCtrl.PushTopdeck(this, stackSrc);
+    public bool Topdeck(IStackable stackSrc = null) => Topdeck(Controller, stackSrc);
 
-    public void Bottomdeck(Player controller, IStackable stackSrc = null) => controller.deckCtrl.PushBottomdeck(this, stackSrc);
-    public void Bottomdeck(IStackable stackSrc = null) => Bottomdeck(Controller, stackSrc);
+    public bool Bottomdeck(Player controller, IStackable stackSrc = null) => controller.deckCtrl.PushBottomdeck(this, stackSrc);
+    public bool Bottomdeck(IStackable stackSrc = null) => Bottomdeck(Controller, stackSrc);
 
     public void Play(int toX, int toY, Player controller, IStackable stackSrc = null, bool payCost = false)
     {

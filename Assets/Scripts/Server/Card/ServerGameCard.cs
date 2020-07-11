@@ -58,12 +58,14 @@ public class ServerGameCard : GameCard
         base.Detach(stackSrc);
     }
 
-    public override void Remove(IStackable stackSrc = null)
+    public override bool Remove(IStackable stackSrc = null)
     {
+        if (!CanRemove) return false;
         var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller ?? Controller);
         EffectsController.Trigger(TriggerCondition.Remove, context);
         base.Remove(stackSrc);
         foreach (var aug in Augments) aug.Discard();
+        return true;
     }
 
     #region stats

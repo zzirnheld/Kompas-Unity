@@ -9,7 +9,7 @@ public class PlayRestriction
 
     public const string PlayedByCardOwner = "Played By Card Owner";
     public const string FromHand = "From Hand";
-    public const string AdjacentToFriendlyCard = "Adjacent to Friendly Card";
+    public const string StandardPlayRestriction = "Adjacent to Friendly Card";
     public const string OnFriendlyCard = "On Friendly Card";
     public const string FriendlyTurnIfNotFast = "Friendly Turn";
     public const string HasCostInPips = "Has Cost in Pips";
@@ -17,27 +17,16 @@ public class PlayRestriction
     public const string NotNormally = "Cannot be Played Normally";
     public const string MustNormally = "Must be Played Normally";
 
-    public string[] NormalRestrictions = { PlayedByCardOwner, FromHand, AdjacentToFriendlyCard, FriendlyTurnIfNotFast, HasCostInPips, NothingIsResolving };
-    public string[] EffectRestrictions = { AdjacentToFriendlyCard };
-
-    private int x;
-    private int y;
+    public string[] NormalRestrictions = { PlayedByCardOwner, FromHand, StandardPlayRestriction, FriendlyTurnIfNotFast, HasCostInPips, NothingIsResolving };
+    public string[] EffectRestrictions = { };
     
     public void SetInfo(GameCard card)
     {
         Card = card;
     }
 
-    private bool CardIsAdjToCoordsAndFriendly(GameCard c)
-    {
-        return c != null && c.IsAdjacentTo(x, y) && c.Controller == Card.Controller;
-    }
-
     public bool EvaluateNormalPlay(int x, int y, Player player)
     {
-        this.x = x;
-        this.y = y;
-
         foreach(string r in NormalRestrictions)
         {
             switch (r)
@@ -48,8 +37,8 @@ public class PlayRestriction
                 case FromHand:
                     if (Card.Location != CardLocation.Hand) return false;
                     break;
-                case AdjacentToFriendlyCard:
-                    if (!Card.Game.boardCtrl.ExistsCardOnBoard(c => CardIsAdjToCoordsAndFriendly(c))) return false;
+                case StandardPlayRestriction:
+                    if (!Card.Game.ValidStandardPlaySpace(x, y, Card.Controller)) return false;
                     break;
                 case OnFriendlyCard:
                     if (Card.Game.boardCtrl.GetCardAt(x, y)?.Controller != Card.Controller) return false;
@@ -76,15 +65,12 @@ public class PlayRestriction
 
     public bool EvaluateEffectPlay(int x, int y, Effect effect)
     {
-        this.x = x;
-        this.y = y;
-
         foreach (string r in EffectRestrictions)
         {
             switch (r)
             {
-                case AdjacentToFriendlyCard:
-                    if (!Card.Game.boardCtrl.ExistsCardOnBoard(c => CardIsAdjToCoordsAndFriendly(c))) return false;
+                case StandardPlayRestriction:
+                    if (!Card.Game.ValidStandardPlaySpace(x, y, Card.Controller)) return false;
                     break;
                 case FriendlyTurnIfNotFast:
                     if (!Card.Fast && Card.Game.TurnPlayer != Card.Controller) return false;

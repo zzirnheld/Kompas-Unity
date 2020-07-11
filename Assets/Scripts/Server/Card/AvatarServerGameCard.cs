@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class AvatarServerGameCard : ServerGameCard
 {
+    public override bool CanRemove => false;
+
     public override void SetE(int e, IStackable stackSrc = null)
     {
         base.SetE(e, stackSrc);

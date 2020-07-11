@@ -38,31 +38,47 @@ public class DeckController : MonoBehaviour
         return card;
     }
 
-    protected virtual void AddCard(GameCard card, IStackable stackSrc = null)
+    protected virtual bool AddCard(GameCard card, IStackable stackSrc = null)
     {
-        card.Remove();
-        card.Location = CardLocation.Deck;
-        card.Controller = Owner;
+        if (card.Remove())
+        {
+            card.Location = CardLocation.Deck;
+            card.Controller = Owner;
+            return true;
+        }
+        return false;
     }
 
     //adding and removing cards
-    public virtual void PushTopdeck(GameCard card, IStackable stackSrc = null)
+    public virtual bool PushTopdeck(GameCard card, IStackable stackSrc = null)
     {
-        Deck.Insert(0, card);
-        AddCard(card);
+        if (AddCard(card, stackSrc))
+        {
+            Deck.Insert(0, card);
+            return true;
+        }
+        return false;
     }
 
-    public virtual void PushBottomdeck(GameCard card, IStackable stackSrc = null)
+    public virtual bool PushBottomdeck(GameCard card, IStackable stackSrc = null)
     {
-        Deck.Add(card);
-        AddCard(card);
+        if (AddCard(card, stackSrc))
+        {
+            Deck.Add(card);
+            return true;
+        }
+        return false;
     }
 
-    public virtual void ShuffleIn(GameCard card, IStackable stackSrc = null)
+    public virtual bool ShuffleIn(GameCard card, IStackable stackSrc = null)
     {
-        Deck.Add(card);
-        Shuffle();
-        AddCard(card);
+        if (AddCard(card, stackSrc))
+        {
+            Deck.Add(card);
+            Shuffle();
+            return true;
+        }
+        return false;
     }
 
     public GameCard PopTopdeck()

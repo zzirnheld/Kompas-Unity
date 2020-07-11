@@ -6,7 +6,7 @@ public class AnnihilateSubeffect : CardChangeStateSubeffect
 {
     public override void Resolve()
     {
-        Game.AnnihilationCtrl.Annihilate(Target, Effect);
-        ServerEffect.ResolveNextSubeffect();
+        if (Game.AnnihilationCtrl.Annihilate(Target, Effect)) ServerEffect.ResolveNextSubeffect();
+        else ServerEffect.EffectImpossible();
     }
 }

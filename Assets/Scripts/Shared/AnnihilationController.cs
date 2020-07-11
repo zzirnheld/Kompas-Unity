@@ -8,11 +8,12 @@ public class AnnihilationController : MonoBehaviour
 
     public List<GameCard> Cards { get; } = new List<GameCard>();
 
-    public virtual void Annihilate(GameCard card, IStackable stackSrc = null)
+    public virtual bool Annihilate(GameCard card, IStackable stackSrc = null)
     {
         card.Remove();
         Cards.Add(card);
         card.Location = CardLocation.Annihilation;
+        return true;
     }
 
     public void Remove(GameCard card) => Cards.Remove(card);

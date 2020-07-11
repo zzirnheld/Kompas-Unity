@@ -21,4 +21,18 @@ public struct ActivationContext
         Space = space;
         StartIndex = startIndex;
     }
+
+    public override string ToString()
+    {
+        var sb = new System.Text.StringBuilder();
+
+        sb.Append(Card == null      ? "No triggering card, " : $"Card: {Card.CardName}");
+        sb.Append(Stackable == null ? "No triggering stackable, " : $"Stackable from: {Stackable.Source.CardName}");
+        sb.Append(Triggerer == null ? "No triggering player, " : $"Triggerer: {Triggerer.index}");
+        sb.Append(X == null         ? "No X, " : $"X: {X}");
+        sb.Append(Space == null     ? "No space, " : $"Space: {Space}");
+        sb.Append($"Starting at {StartIndex}");
+
+        return sb.ToString();
+    }
 }

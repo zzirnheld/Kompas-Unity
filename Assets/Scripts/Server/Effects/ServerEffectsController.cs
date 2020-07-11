@@ -188,13 +188,18 @@ public class ServerEffectsController : MonoBehaviour
             hangingEffectMap[condition].Remove(t);
         }
 
-        foreach(var (eff, fallOffRestriction) in hangingEffectFallOffMap[condition])
+        var fallOffToRemove = new List<(HangingEffect, TriggerRestriction)>();
+        foreach (var (eff, fallOffRestriction) in hangingEffectFallOffMap[condition])
         {
             if (fallOffRestriction.Evaluate(context))
             {
-                hangingEffectMap[eff.EndCondition].Remove(eff);
-                hangingEffectFallOffMap[condition].Remove((eff, fallOffRestriction));
+                fallOffToRemove.Add((eff, fallOffRestriction));
             }
+        }
+        foreach(var (eff, fallOffRestriction) in fallOffToRemove)
+        {
+            hangingEffectMap[eff.EndCondition].Remove(eff);
+            hangingEffectFallOffMap[condition].Remove((eff, fallOffRestriction));
         }
 
         Debug.Log($"Attempting to trigger {condition}, with context {context}");

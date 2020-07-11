@@ -12,7 +12,7 @@ public class DiscardSubeffect : CardChangeStateSubeffect
             return;
         }
         Debug.Log("Resolving discard subeffect");
-        Target.Discard(ServerEffect);
-        ServerEffect.ResolveNextSubeffect();
+        if (Target.Discard(ServerEffect)) ServerEffect.ResolveNextSubeffect();
+        else ServerEffect.EffectImpossible();
     }
 }
