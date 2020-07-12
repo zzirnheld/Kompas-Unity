@@ -155,7 +155,7 @@ public class ServerGame : Game {
         Players[1].Pips = Players[0].Avatar.S / 2;
 
         //determine who goes first and tell the players
-        TurnPlayerIndex = Random.value > 0.5f ? 0 : 1;
+        FirstTurnPlayer = TurnPlayerIndex = Random.value > 0.5f ? 0 : 1;
         ServerPlayers[TurnPlayerIndex].ServerNotifier.YoureFirst();
         ServerPlayers[1 - TurnPlayerIndex].ServerNotifier.YoureSecond();
 
@@ -200,7 +200,7 @@ public class ServerGame : Game {
 
     public void GiveTurnPlayerPips()
     {
-        Debug.Log($"Giving turn player pips when leyload is {Leyload} on turn {TurnCount}");
+        Debug.Log($"Giving turn player pips when leyload is {Leyload} on round {RoundCount}");
         int pipsToSet = TurnPlayer.Pips + Leyload;
         GivePlayerPips(TurnServerPlayer, pipsToSet);
     }
@@ -274,7 +274,7 @@ public class ServerGame : Game {
     public void SwitchTurn()
     {
         TurnPlayerIndex = 1 - TurnPlayerIndex;
-        TurnCount++;
+        if(TurnPlayerIndex == FirstTurnPlayer) RoundCount++;
         GiveTurnPlayerPips();
         
         ResetCardsForTurn();

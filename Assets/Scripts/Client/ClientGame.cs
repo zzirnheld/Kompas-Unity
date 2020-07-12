@@ -133,10 +133,10 @@ public class ClientGame : Game {
 
     public void SetFirstTurnPlayer(int playerIndex)
     {
-        TurnPlayerIndex = playerIndex;
+        FirstTurnPlayer = TurnPlayerIndex = playerIndex;
         clientUICtrl.ChangeTurn(playerIndex);
         clientUICtrl.HideGetDecklistUI();
-        TurnCount = 1;
+        RoundCount = 1;
         clientUICtrl.Leyload = Leyload;
     }
 
@@ -145,7 +145,7 @@ public class ClientGame : Game {
         TurnPlayerIndex = 1 - TurnPlayerIndex;
         ResetCardsForTurn();
         clientUICtrl.ChangeTurn(TurnPlayerIndex);
-        TurnCount++;
+        if(TurnPlayerIndex == FirstTurnPlayer) RoundCount++;
         clientUICtrl.Leyload = Leyload;
     }
 

@@ -19,7 +19,8 @@ public class ClientUIController : UIController
     public TMPro.TMP_Text LeyloadText;
     public int Leyload
     {
-        set => LeyloadText.text = $"{value} Pips Leyload";
+        set => LeyloadText.text = $"{value} Pips Leyload," +
+            $"\n{value + (clientGame.TurnPlayerIndex == clientGame.FirstTurnPlayer ? 0 : 1)} Next Turn";
     }
 
     //current state
