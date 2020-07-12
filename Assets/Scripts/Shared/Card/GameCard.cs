@@ -79,7 +79,7 @@ public abstract class GameCard : CardBase {
     }
     public virtual bool Summoned => CardType == 'C' && Location == CardLocation.Field;
     public virtual bool CanRemove => true;
-    public int CombatDamage => W;
+    public virtual int CombatDamage => W;
     public (int n, int e, int s, int w) CharStats => (N, E, S, W);
     #endregion stats
 
