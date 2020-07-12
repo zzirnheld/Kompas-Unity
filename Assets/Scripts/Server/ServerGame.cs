@@ -161,8 +161,8 @@ public class ServerGame : Game {
     {
         //set initial pips (based on avatars' S)
         Debug.Log($"Starting game. Player 0 avatar is null? {Players[0].Avatar == null}. Player 1 is null? {Players[1].Avatar == null}.");
-        Players[0].Pips = Players[1].Avatar.S;
-        Players[1].Pips = Players[0].Avatar.S;
+        Players[0].Pips = Players[1].Avatar.S / 2;
+        Players[1].Pips = Players[0].Avatar.S / 2;
 
         //determine who goes first and tell the players
         TurnPlayerIndex = Random.value > 0.5f ? 0 : 1;
