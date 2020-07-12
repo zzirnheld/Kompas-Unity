@@ -9,16 +9,22 @@ public class ServerBoardController : BoardController
     public ServerNotifier ServerNotifierByIndex(int index) => ServerGame.ServerPlayers[index].ServerNotifier;
     public ServerEffectsController EffectsController => ServerGame.EffectsController;
 
-    public override void Play(GameCard toPlay, int toX, int toY, Player controller, IStackable stackSrc = null)
+    public override bool Play(GameCard toPlay, int toX, int toY, Player controller, IStackable stackSrc = null)
     {
-        var context = new ActivationContext(card: toPlay, stackable: stackSrc, triggerer: controller, space: (toX, toY));
-        EffectsController.Trigger(TriggerCondition.Play, context);
-        if (!toPlay.IsAvatar) ServerNotifierByIndex(toPlay.ControllerIndex).NotifyPlay(toPlay, toX, toY);
-        base.Play(toPlay, toX, toY, controller);
+        if (toPlay.CanRemove)
+        {
+            var context = new ActivationContext(card: toPlay, stackable: stackSrc, triggerer: controller, space: (toX, toY));
+            EffectsController.Trigger(TriggerCondition.Play, context);
+            if (!toPlay.IsAvatar) ServerNotifierByIndex(toPlay.ControllerIndex).NotifyPlay(toPlay, toX, toY);
+            return base.Play(toPlay, toX, toY, controller);
+        }
+        return false;
     }
 
-    public override void Swap(GameCard card, int toX, int toY, bool playerInitiated, IStackable stackSrc = null)
+    public override bool Swap(GameCard card, int toX, int toY, bool playerInitiated, IStackable stackSrc = null)
     {
+        if (card.IsAvatar && !card.Summoned) return false;
+        if (card.Location != CardLocation.Field) return false;
         var contextA = new ActivationContext(card: card, stackable: stackSrc, space: (toX, toY),
             triggerer: playerInitiated ? card.Controller : stackSrc?.Controller, x: card.DistanceTo(toX, toY));
         EffectsController.Trigger(TriggerCondition.Move, contextA);
@@ -30,6 +36,6 @@ public class ServerBoardController : BoardController
                 triggerer: playerInitiated ? card.Controller : stackSrc?.Controller, x: at.DistanceTo(card.BoardX, card.BoardY));
             EffectsController.Trigger(TriggerCondition.Move, contextB);
         }
-        base.Swap(card, toX, toY, playerInitiated);
+        return base.Swap(card, toX, toY, playerInitiated);
     }
 }

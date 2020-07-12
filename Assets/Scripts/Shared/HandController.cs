@@ -17,18 +17,15 @@ public abstract class HandController : MonoBehaviour
     public virtual bool AddToHand(GameCard card, IStackable stackSrc = null)
     {
         if (card == null) return false;
-        if (card.Remove())
-        {
-            hand.Add(card);
-            card.ResetCard();
-            card.Location = CardLocation.Hand;
-            card.Controller = Owner;
+        card.Remove(stackSrc);
+        hand.Add(card);
+        card.ResetCard();
+        card.Location = CardLocation.Hand;
+        card.Controller = Owner;
 
-            card.transform.rotation = Quaternion.Euler(90, 0, 0);
-            SpreadOutCards();
-            return true;
-        }
-        return false;
+        card.transform.rotation = Quaternion.Euler(90, 0, 0);
+        SpreadOutCards();
+        return true;
     }
 
     public int IndexOf(GameCard card)

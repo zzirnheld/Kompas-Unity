@@ -14,7 +14,7 @@ public class DeckbuilderSpellCard : DeckbuilderCard
         get { return $"D: {c}  Subtext: {subtext}"; }
     }
 
-    public void SetInfo(CardSearchController searchCtrl, SerializableSpellCard spellCard, bool inDeck)
+    public override void SetInfo(CardSearchController searchCtrl, SerializableCard spellCard, bool inDeck)
     {
         base.SetInfo(searchCtrl, spellCard, inDeck);
         c = spellCard.c;

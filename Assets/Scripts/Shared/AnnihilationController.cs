@@ -10,7 +10,7 @@ public class AnnihilationController : MonoBehaviour
 
     public virtual bool Annihilate(GameCard card, IStackable stackSrc = null)
     {
-        card.Remove();
+        card.Remove(stackSrc);
         Cards.Add(card);
         card.Location = CardLocation.Annihilation;
         return true;

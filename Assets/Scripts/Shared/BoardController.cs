@@ -154,11 +154,10 @@ public class BoardController : MonoBehaviour
     /// <param name="toPlay">Card to be played</param>
     /// <param name="toX">X coordinate to play the card to</param>
     /// <param name="toY">Y coordinate to play the card to</param>
-    public virtual void Play(GameCard toPlay, int toX, int toY, Player controller, IStackable stackSrc = null)
+    public virtual bool Play(GameCard toPlay, int toX, int toY, Player controller, IStackable stackSrc = null)
     {
-        toPlay.Remove(stackSrc);
-
         Debug.Log($"In boardctrl, playing {toPlay.CardName} to {toX}, {toY}");
+        toPlay.Remove(stackSrc);
 
         if (toPlay.CardType == 'A') cards[toX, toY].AddAugment(toPlay, stackSrc);
         else cards[toX, toY] = toPlay;
@@ -170,15 +169,15 @@ public class BoardController : MonoBehaviour
         int i = GetNumCardsOnBoard();
         if (i > game.Leyload) game.Leyload = i;
 
-        toPlay.gameObject.transform.localScale = Vector3.one;
+        return true;
     }
 
     //movement
-    public virtual void Swap(GameCard card, int toX, int toY, bool playerInitiated, IStackable stackSrc = null)
+    public virtual bool Swap(GameCard card, int toX, int toY, bool playerInitiated, IStackable stackSrc = null)
     {
         Debug.Log($"Swapping {card?.CardName} to {toX}, {toY}");
 
-        if (!ValidIndices(toX, toY) || card == null) return;
+        if (!ValidIndices(toX, toY) || card == null) return false;
         if (card.AugmentedCard != null) throw new NotImplementedException();
 
         var (tempX, tempY) = card.Position;
@@ -194,14 +193,23 @@ public class BoardController : MonoBehaviour
         }
         card.Position = (toX, toY);
         if (temp != null) temp.Position = (tempX, tempY);
+        return true;
     }
 
-    public void Move(GameCard card, int toX, int toY, bool playerInitiated, IStackable stackSrc = null)
+    public bool Move(GameCard card, int toX, int toY, bool playerInitiated, IStackable stackSrc = null)
     {
-        if (!ValidIndices(toX, toY)) return;
+        if (!ValidIndices(toX, toY)) return false;
 
-        if (card.AugmentedCard != null) cards[toX, toY].AddAugment(card, stackSrc);
-        else Swap(card, toX, toY, playerInitiated, stackSrc);
+        if (card.AugmentedCard != null)
+        {
+            if (card.Remove(stackSrc))
+            {
+                cards[toX, toY].AddAugment(card, stackSrc);
+                return true;
+            }
+            return false;
+        }
+        else return Swap(card, toX, toY, playerInitiated, stackSrc);
     }
 
     public void PutCardsBack()

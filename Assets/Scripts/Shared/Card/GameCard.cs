@@ -51,8 +51,6 @@ public abstract class GameCard : CardBase {
         }
     }
 
-    public virtual bool CanRemove => true;
-
     public int Cost
     {
         get
@@ -80,6 +78,7 @@ public abstract class GameCard : CardBase {
         }
     }
     public virtual bool Summoned => CardType == 'C' && Location == CardLocation.Field;
+    public virtual bool CanRemove => true;
     public int CombatDamage => W;
     public (int n, int e, int s, int w) CharStats => (N, E, S, W);
     #endregion stats
@@ -304,7 +303,6 @@ public abstract class GameCard : CardBase {
     //so that notify stuff can be sent in the server
     public virtual bool Remove(IStackable stackSrc = null)
     {
-        if (!CanRemove) return false;
         Debug.Log($"Removing {CardName} id {ID} from {Location}");
         
         switch (Location)
@@ -347,13 +345,17 @@ public abstract class GameCard : CardBase {
     public bool Bottomdeck(Player controller, IStackable stackSrc = null) => controller.deckCtrl.PushBottomdeck(this, stackSrc);
     public bool Bottomdeck(IStackable stackSrc = null) => Bottomdeck(Controller, stackSrc);
 
-    public void Play(int toX, int toY, Player controller, IStackable stackSrc = null, bool payCost = false)
+    public bool Play(int toX, int toY, Player controller, IStackable stackSrc = null, bool payCost = false)
     {
-        Game.boardCtrl.Play(this, toX, toY, controller);
-        if (payCost) controller.Pips -= Cost;
+        if (Game.boardCtrl.Play(this, toX, toY, controller))
+        {
+            if (payCost) controller.Pips -= Cost;
+            return true;
+        }
+        return false;
     }
 
-    public void Move(int toX, int toY, bool normalMove, IStackable stackSrc = null)
+    public bool Move(int toX, int toY, bool normalMove, IStackable stackSrc = null)
         => Game.boardCtrl.Move(this, toX, toY, normalMove, stackSrc);
 
     public void SwapCharStats(GameCard other, bool swapN = true, bool swapE = true, bool swapS = true, bool swapW = true)

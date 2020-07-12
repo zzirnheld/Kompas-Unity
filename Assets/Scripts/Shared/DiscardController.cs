@@ -27,17 +27,13 @@ public class DiscardController : MonoBehaviour {
     //adding/removing cards
 	public virtual bool AddToDiscard(GameCard card, IStackable stackSrc = null)
     {
-        if (card.Remove())
-        {
-            Debug.Assert(card != null);
-            Debug.Log("Adding to discard: " + card.CardName);
-            discard.Add(card);
-            card.Controller = Owner;
-            card.Location = CardLocation.Discard;
-            return true;
-        }
-
-        return false;
+        Debug.Assert(card != null);
+        Debug.Log("Adding to discard: " + card.CardName);
+        card.Remove(stackSrc);
+        discard.Add(card);
+        card.Controller = Owner;
+        card.Location = CardLocation.Discard;
+        return true;
     }
 
     public int IndexOf(GameCard card)

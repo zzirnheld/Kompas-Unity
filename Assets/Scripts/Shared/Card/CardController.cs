@@ -25,6 +25,7 @@ public class CardController : MonoBehaviour
                 gameObject.SetActive(true);
                 break;
             case CardLocation.Field:
+                card.gameObject.transform.localScale = Vector3.one;
                 card.gameObject.transform.SetParent(card.Game.boardObject.transform);
                 MoveTo((card.BoardX, card.BoardY));
                 SetRotation();
