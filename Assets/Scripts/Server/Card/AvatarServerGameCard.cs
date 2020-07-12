@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class AvatarServerGameCard : ServerGameCard
 {
-    public override bool CanRemove => Summoned;
+    public override bool CanRemove => Summoned || Location == CardLocation.Nowhere;
 
     public override void SetE(int e, IStackable stackSrc = null)
     {

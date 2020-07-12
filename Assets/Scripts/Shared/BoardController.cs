@@ -141,7 +141,7 @@ public class BoardController : MonoBehaviour
     #region game mechanics
     public void RemoveFromBoard(GameCard toRemove)
     {
-        if (toRemove == null || toRemove.Location != CardLocation.Field) return;
+        if (toRemove?.Location != CardLocation.Field) return;
 
         RemoveFromBoard(toRemove.BoardX, toRemove.BoardY);
     }
@@ -165,9 +165,6 @@ public class BoardController : MonoBehaviour
         toPlay.Location = CardLocation.Field;
         toPlay.Position = (toX, toY);
         toPlay.Controller = controller;
-
-        int i = GetNumCardsOnBoard();
-        if (i > game.Leyload) game.Leyload = i;
 
         return true;
     }

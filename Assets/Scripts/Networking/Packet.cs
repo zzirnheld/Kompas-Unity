@@ -23,7 +23,7 @@ namespace KompasNetworking
             Attach = 104,
             AddAsEnemyAndAttach = 105,
             EndTurn = 150,
-            Leyload = 151,
+            //Leyload = 151,
             //move cards around
             Topdeck = 200,
             Discard = 201,
@@ -363,7 +363,6 @@ namespace KompasNetworking
                 case Command.EffectResolving:
                 case Command.SetEnemyPips:
                 case Command.SetPips:
-                case Command.Leyload:
                 case Command.SetN:
                 case Command.SetE:
                 case Command.SetS:

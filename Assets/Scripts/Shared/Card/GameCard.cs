@@ -130,7 +130,7 @@ public abstract class GameCard : CardBase {
 
     //misc
     private CardLocation location;
-    public CardLocation Location
+    public virtual CardLocation Location
     {
         get => location;
         set

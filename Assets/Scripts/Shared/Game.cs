@@ -31,12 +31,8 @@ public abstract class Game : MonoBehaviour
 
     //game data
     public abstract IEnumerable<GameCard> Cards { get; }
-    public int maxCardsOnField = 0; //for pip generation purposes
-    public virtual int Leyload
-    {
-        get => maxCardsOnField;
-        set => maxCardsOnField = value;
-    }
+    public int TurnCount = 1;
+    public int Leyload => TurnCount + boardCtrl.CardsWhere(c => c != null).Count;
 
     public TargetMode targetMode = TargetMode.Free;
 

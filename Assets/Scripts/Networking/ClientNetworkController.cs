@@ -184,9 +184,6 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.SetEnemyPips:
                 ClientGame.SetEnemyPips(packet.Pips);
                 break;
-            case Packet.Command.Leyload:
-                ClientGame.Leyload = packet.Leyload;
-                break;
             case Packet.Command.PutBack:
                 ClientGame.PutCardsBack();
                 break;

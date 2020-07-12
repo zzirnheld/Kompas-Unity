@@ -7,6 +7,16 @@ public class ClientGameCard : GameCard
     public ClientGame ClientGame { get; private set; }
     public override Game Game => ClientGame;
 
+    public override CardLocation Location
+    {
+        get => base.Location;
+        set
+        {
+            base.Location = value;
+            ClientGame.clientUICtrl.Leyload = Game.Leyload;
+        }
+    }
+
     private ClientPlayer clientController;
     public ClientPlayer ClientController
     {

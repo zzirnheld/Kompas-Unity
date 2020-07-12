@@ -43,17 +43,6 @@ public class ClientGame : Game {
     public CardRestriction CurrCardRestriction;
     public SpaceRestriction CurrSpaceRestriction;
 
-    //gamestate
-    public override int Leyload
-    {
-        get => base.Leyload;
-        set
-        {
-            base.Leyload = value;
-            clientUICtrl.Leyload = Leyload;
-        }
-    }
-
     private void Start()
     {
         mainGame = this;
@@ -147,6 +136,8 @@ public class ClientGame : Game {
         TurnPlayerIndex = playerIndex;
         clientUICtrl.ChangeTurn(playerIndex);
         clientUICtrl.HideGetDecklistUI();
+        TurnCount = 1;
+        clientUICtrl.Leyload = Leyload;
     }
 
     public void EndTurn()
@@ -154,6 +145,8 @@ public class ClientGame : Game {
         TurnPlayerIndex = 1 - TurnPlayerIndex;
         ResetCardsForTurn();
         clientUICtrl.ChangeTurn(TurnPlayerIndex);
+        TurnCount++;
+        clientUICtrl.Leyload = Leyload;
     }
 
     public override GameCard GetCardWithID(int id)

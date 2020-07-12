@@ -28,16 +28,6 @@ public class ServerGame : Game {
     public ServerEffect CurrEffect { get; set; }
     public override IStackable CurrStackEntry => EffectsController.CurrStackEntry;
 
-    public override int Leyload
-    {
-        get => base.Leyload;
-        set
-        {
-            base.Leyload = value;
-            ServerPlayers[0].ServerNotifier.NotifySetLeyload(Leyload);
-        }
-    }
-
     public void Init(UIController uiCtrl, CardRepository cardRepo)
     {
         this.uiCtrl = uiCtrl;
@@ -210,6 +200,7 @@ public class ServerGame : Game {
 
     public void GiveTurnPlayerPips()
     {
+        Debug.Log($"Giving turn player pips when leyload is {Leyload} on turn {TurnCount}");
         int pipsToSet = TurnPlayer.Pips + Leyload;
         GivePlayerPips(TurnServerPlayer, pipsToSet);
     }
@@ -264,7 +255,7 @@ public class ServerGame : Game {
             return true;
         }
 
-        if (toMove.Position == (toX, toY)) return false;
+        if (toMove.Position == (toX, toY) || (toMove.IsAvatar && !toMove.Summoned)) return false;
         return toMove.MovementRestriction.Evaluate(toX, toY);
     }
 
@@ -283,6 +274,7 @@ public class ServerGame : Game {
     public void SwitchTurn()
     {
         TurnPlayerIndex = 1 - TurnPlayerIndex;
+        TurnCount++;
         GiveTurnPlayerPips();
         
         ResetCardsForTurn();
