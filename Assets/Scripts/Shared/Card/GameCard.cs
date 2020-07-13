@@ -256,6 +256,7 @@ public abstract class GameCard : CardBase {
     {
         if (augment == null) return;
         augment.Remove(stackSrc);
+        augment.Location = CardLocation.Field;
         Augments.Add(augment);
         augment.AugmentedCard = this;
     }

@@ -36,7 +36,10 @@
 					},
 					\"TargetIndex\":-2
 				}",
-				"{}"
+				"{
+					\"AttackerIndex\":-1,
+					\"TargetIndex\":-1
+				}"
 			]
 		}
 	],

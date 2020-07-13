@@ -8,6 +8,7 @@
 			"trigger":
 			"{
 				\"Optional\":true,
+				\"Blurb\":\"Tribute Dreamfog to gain a pip?\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,100],
 					\"cardRestriction\":{
