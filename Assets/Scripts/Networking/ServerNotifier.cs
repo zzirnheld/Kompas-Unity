@@ -143,8 +143,16 @@ public class ServerNotifier : MonoBehaviour
         Packet outPacket = new Packet(Packet.Command.Rehand, toRehand);
         if (toRehand.Location == CardLocation.Discard || toRehand.Location == CardLocation.Field)
             outPacketInverted = new Packet(Packet.Command.Delete, toRehand);
-        else outPacketInverted = null; //TODO make this add a blank card
         SendPackets(outPacket, outPacketInverted);
+
+        var q = new Packet(Packet.Command.IncrementEnemyHand);
+        OtherNotifier.SendPacket(q);
+    }
+
+    public void NotifyDecrementHand()
+    {
+        var p = new Packet(Packet.Command.DecrementEnemyHand);
+        SendPacket(p);
     }
 
     public void NotifyAnnhilate(GameCard toAnnhilate)

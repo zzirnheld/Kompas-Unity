@@ -105,7 +105,7 @@ public class ClientNetworkController : NetworkController {
                 //TODO
                 break;
             case Packet.Command.IncrementEnemyHand:
-                //TODO
+                ClientGame.enemyHandCtrl.IncrementHand();
                 break;
             case Packet.Command.DecrementEnemyDeck:
                 //TODO make sure for both this and decrement hand that you're not deleting a revealedcard
@@ -115,10 +115,7 @@ public class ClientNetworkController : NetworkController {
                 }
                 break;
             case Packet.Command.DecrementEnemyHand:
-                if(ClientGame.enemyHandCtrl.HandSize > 0)
-                {
-                    ClientGame.enemyHandCtrl.RemoveFromHandAt(0);
-                }
+                ClientGame.enemyHandCtrl.DecrementHand();
                 break;
             case Packet.Command.Augment: //the play method calls augment if the card is an augment
             case Packet.Command.Play:

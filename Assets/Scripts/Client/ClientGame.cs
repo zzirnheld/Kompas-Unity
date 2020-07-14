@@ -27,7 +27,7 @@ public class ClientGame : Game {
     public GameObject friendlyDeckObj;
     public GameObject friendlyDiscardObj;
 
-    public HandController enemyHandCtrl;
+    public ClientDummyHandController enemyHandCtrl;
     public DeckController enemyDeckCtrl;
     public DiscardController enemyDiscardCtrl;
 

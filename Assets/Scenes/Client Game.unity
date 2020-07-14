@@ -720,10 +720,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 60475902}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfe783f7d25f4f24b803f3fb367884cc, type: 3}
+  m_Script: {fileID: 11500000, guid: 406b7c8f19796054b87a44b4481d8a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Owner: {fileID: 1841194802}
+  clientGame: {fileID: 492080563}
+  dummyCardPrefab: {fileID: 6108902677084055633, guid: cf7cb6ba3babefe409be8060db315fe6,
+    type: 3}
 --- !u!4 &60475904
 Transform:
   m_ObjectHideFlags: 0
@@ -731,13 +734,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 60475902}
-  m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2, z: 11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 492080562}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &72637579
 GameObject:
   m_ObjectHideFlags: 0
@@ -14353,6 +14356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Owner: {fileID: 1829834588}
+  clientGame: {fileID: 492080563}
 --- !u!4 &1921547574
 Transform:
   m_ObjectHideFlags: 0

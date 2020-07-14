@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ClientGameCard : GameCard
 {
-    public ClientGame ClientGame { get; private set; }
+    public ClientGame ClientGame { get; protected set; }
     public override Game Game => ClientGame;
 
     public override CardLocation Location
@@ -24,7 +24,7 @@ public class ClientGameCard : GameCard
         set
         {
             clientController = value;
-            cardCtrl.SetRotation();
+            cardCtrl?.SetRotation();
         }
     }
     public override Player Controller

@@ -33,25 +33,16 @@ public abstract class HandController : MonoBehaviour
         return hand.IndexOf(card);
     }
 
-    public void RemoveFromHand(GameCard card)
+    public virtual void RemoveFromHand(GameCard card)
     {
         hand.Remove(card);
         SpreadOutCards();
     }
 
-    public GameCard RemoveFromHandAt(int index)
+    public void RemoveFromHandAt(int index)
     {
-        if (index < 0 || index >= hand.Count) return null;
-        GameCard toReturn = hand[index];
-        hand.RemoveAt(index);
-        SpreadOutCards();
-        return toReturn;
-    }
-
-    public GameCard RemoveRandomCard()
-    {
-        int randomIndex = rng.Next(hand.Count);
-        return RemoveFromHandAt(randomIndex);
+        if (index < 0 || index >= hand.Count) return;
+        RemoveFromHand(hand[index]);
     }
 
     public void SpreadOutCards()

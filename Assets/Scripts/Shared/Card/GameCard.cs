@@ -92,7 +92,7 @@ public abstract class GameCard : CardBase {
         set
         {
             (BoardX, BoardY) = value;
-            cardCtrl.SetPhysicalLocation(Location);
+            cardCtrl?.SetPhysicalLocation(Location);
             foreach (var aug in Augments) aug.Position = value;
         }
     }
@@ -136,7 +136,8 @@ public abstract class GameCard : CardBase {
         set
         {
             location = value;
-            cardCtrl.SetPhysicalLocation(location);
+            if (cardCtrl == null) Debug.LogWarning($"Missing a card control. Is this a debug card?");
+            cardCtrl?.SetPhysicalLocation(location);
         }
     }
     public int ID { get; private set; }
@@ -224,7 +225,7 @@ public abstract class GameCard : CardBase {
     public virtual bool SpaceInAOE(int x, int y) => false;
     #endregion distance/adjacency
 
-    public void PutBack() => cardCtrl.SetPhysicalLocation(Location);
+    public void PutBack() => cardCtrl?.SetPhysicalLocation(Location);
 
     public void CountSpacesMovedTo((int x, int y) to)
     {

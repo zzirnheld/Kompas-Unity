@@ -35,6 +35,16 @@ public class ServerGameCard : GameCard
 
     public override bool IsAvatar => false;
 
+    public override CardLocation Location
+    {
+        get => base.Location;
+        set
+        {
+            if (Location == CardLocation.Hand) ServerController.ServerEnemy.ServerNotifier.NotifyDecrementHand();
+            base.Location = value;
+        }
+    }
+
     public virtual void SetInfo(SerializableCard serializedCard, ServerGame game, ServerPlayer owner, ServerEffect[] effects, int id)
     {
         base.SetInfo(serializedCard, id);
