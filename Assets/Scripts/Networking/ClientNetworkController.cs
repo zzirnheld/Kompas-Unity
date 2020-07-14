@@ -203,15 +203,15 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.RequestDeckTarget:
                 ClientGame.targetMode = Game.TargetMode.OnHold;
                 Debug.Log($"Deck target for Eff index: {packet.EffIndex} subeff index {packet.SubeffIndex}");
-                CardRestriction deckRestriction = packet.GetCardRestriction(ClientGame);
-                List<GameCard> toSearch = ClientGame.friendlyDeckCtrl.CardsThatFitRestriction(deckRestriction);
+                ClientGame.CurrCardRestriction = packet.GetCardRestriction(ClientGame);
+                List<GameCard> toSearch = ClientGame.friendlyDeckCtrl.CardsThatFitRestriction(ClientGame.CurrCardRestriction);
                 ClientGame.clientUICtrl.StartSearch(toSearch);
-                ClientGame.clientUICtrl.SetCurrState("Choose Deck Target", ClientGame.CurrCardRestriction.Blurb);
+                ClientGame.clientUICtrl.SetCurrState("Choose Deck Target", ClientGame?.CurrCardRestriction?.Blurb);
                 break;
             case Packet.Command.RequestDiscardTarget:
                 ClientGame.targetMode = Game.TargetMode.OnHold;
-                CardRestriction discardRestriction = packet.GetCardRestriction(ClientGame);
-                List<GameCard> discardToSearch = ClientGame.friendlyDiscardCtrl.CardsThatFitRestriction(discardRestriction);
+                ClientGame.CurrCardRestriction = packet.GetCardRestriction(ClientGame);
+                List<GameCard> discardToSearch = ClientGame.friendlyDiscardCtrl.CardsThatFitRestriction(ClientGame.CurrCardRestriction);
                 ClientGame.clientUICtrl.StartSearch(discardToSearch);
                 ClientGame.clientUICtrl.SetCurrState("Choose Discard Target", ClientGame.CurrCardRestriction.Blurb);
                 break;

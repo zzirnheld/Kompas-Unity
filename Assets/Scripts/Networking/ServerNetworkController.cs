@@ -89,6 +89,11 @@ namespace KompasNetworking
                     {
                         listEff.AddListIfLegal(choices);
                     }
+
+                    if(sGame.CurrEffect?.CurrSubeffect is DeckTargetSubeffect deckTgtSubeff)
+                    {
+                        deckTgtSubeff.AddTargetIfLegal(choices.FirstOrDefault());
+                    }
                     break;
                 case Packet.Command.OptionalTrigger:
                     sGame.EffectsController.OptionalTriggerAnswered(packet.Answer);
