@@ -49,11 +49,11 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[50,404,4,309,407,311],
+			"subeffectTypes":[50,404,4,309,407,405,311],
 			"subeffects":[
 				"{}",
 				"{
-					\"JumpTo\":4
+					\"JumpTo\":5
 				}",
 				"{
 					\"spaceRestriction\":
@@ -63,6 +63,8 @@
 						\"C\":1
 					}
 				}",
+				"{}",
+				"{}",
 				"{}",
 				"{}",
 				"{}"
