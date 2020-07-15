@@ -1,0 +1,39 @@
+{
+	"cardType":67,
+	"cardName":"Outpoured Anger",
+	"effText":"When a distinctly named Shaper moves, I can move adjacent to them.",
+	"effects":[
+		{
+			"triggerCondition":408,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[1,101],
+					\"cardRestriction\":{
+						\"restrictionsToCheck\":[2,7,11],
+						\"subtypesInclude\":[\"Shaper\"]
+					}
+				}
+			}",
+			"subeffectTypes":[5,4,309],
+			"subeffects":[
+				"{}",
+				"{
+					\"spaceRestriction\":
+					{
+						\"Blurb\":\"to move Outpoured Anger to\",
+						\"restrictionsToCheck\":[102]
+					},
+					\"TargetIndex\":-2
+				}",
+				"{}"
+			]	
+		}
+	],
+	"n":0,
+	"e":5,
+	"s":4,
+	"w":5,
+	"subtypes":["Ethereal","Shaper"],
+	"subtypeText":"Ethereal Shaper"
+}

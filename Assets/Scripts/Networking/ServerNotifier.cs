@@ -143,8 +143,25 @@ public class ServerNotifier : MonoBehaviour
         Packet outPacket = new Packet(Packet.Command.Rehand, toRehand);
         if (toRehand.Location == CardLocation.Discard || toRehand.Location == CardLocation.Field)
             outPacketInverted = new Packet(Packet.Command.Delete, toRehand);
-        else outPacketInverted = null; //TODO make this add a blank card
         SendPackets(outPacket, outPacketInverted);
+
+        var q = new Packet(Packet.Command.IncrementEnemyHand);
+        OtherNotifier.SendPacket(q);
+    }
+
+    public void NotifyDecrementHand()
+    {
+        var p = new Packet(Packet.Command.DecrementEnemyHand);
+        SendPacket(p);
+    }
+
+    public void NotifyAnnhilate(GameCard toAnnhilate)
+    {
+        var p = new Packet(Packet.Command.Annihilate, toAnnhilate);
+        var q = toAnnhilate.Location == CardLocation.Discard || toAnnhilate.Location == CardLocation.Field ?
+            new Packet(Packet.Command.Annihilate, toAnnhilate) :
+        new Packet(Packet.Command.AddAsEnemy, toAnnhilate.CardName, (int)CardLocation.Annihilation, toAnnhilate.ID);
+        SendPackets(p, q);
     }
 
     public void NotifyTopdeck(GameCard card)
@@ -176,24 +193,12 @@ public class ServerNotifier : MonoBehaviour
         SendPackets(outPacket, outPacketInverted);
     }
 
-    public void NotifyDraw(GameCard toDraw)
-    {
-        //I think it's equivalent?
-        NotifyRehand(toDraw);
-    }
-
     public void NotifyAddToDeck(GameCard added)
     {
         //let everyone know
         Packet outPacket = new Packet(Packet.Command.AddAsFriendly, added.CardName, (int)CardLocation.Deck, added.ID);
         Packet outPacketInverted = new Packet(Packet.Command.IncrementEnemyDeck);
         SendPackets(outPacket, outPacketInverted);
-    }
-
-    public void NotifySetLeyload(int leyload)
-    {
-        Packet p = new Packet(Packet.Command.Leyload, leyload);
-        SendToBoth(p);
     }
 
     public void NotifySetPips(int pipsToSet)
@@ -368,6 +373,12 @@ public class ServerNotifier : MonoBehaviour
     {
         Debug.Log($"Accepting target of {Player.index}");
         Packet p = new Packet(Packet.Command.TargetAccepted);
+        SendPacket(p);
+    }
+
+    public void SetTarget(GameCard card, int effIndex, GameCard target)
+    {
+        Packet p = new Packet(Packet.Command.Target, card, effIndex, target.ID);
         SendPacket(p);
     }
 

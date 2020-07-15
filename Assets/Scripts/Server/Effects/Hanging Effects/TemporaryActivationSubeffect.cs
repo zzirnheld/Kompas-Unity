@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TemporaryActivationSubeffect : TemporarySubeffect
+public class TemporaryActivationSubeffect : TemporaryCardChangeSubeffect
 {
-    public override void Resolve()
+    protected override IEnumerable<(HangingEffect, GameCard)> CreateHangingEffects()
     {
         var tempActivation = new HangingActivationEffect(ServerGame, TriggerRestriction, EndCondition,
             Target, this);
-        ServerEffect.ResolveNextSubeffect();
+        return new List<(HangingEffect, GameCard)>() { (tempActivation, Target) };
     }
 }

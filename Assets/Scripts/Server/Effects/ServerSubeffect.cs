@@ -104,6 +104,9 @@ public abstract class ServerSubeffect : Subeffect
             case SubeffectType.TakeControl:
                 toReturn = JsonUtility.FromJson<TakeControlSubeffect>(subeffJson);
                 break;
+            case SubeffectType.ResetStats:
+                toReturn = JsonUtility.FromJson<ResetStatsSubeffect>(subeffJson);
+                break;
             case SubeffectType.SetXByBoardCount:
                 toReturn = JsonUtility.FromJson<SetXBoardRestrictionSubeffect>(subeffJson);
                 break;
@@ -170,6 +173,9 @@ public abstract class ServerSubeffect : Subeffect
             case SubeffectType.Swap:
                 toReturn = JsonUtility.FromJson<SwapSubeffect>(subeffJson);
                 break;
+            case SubeffectType.Annihilate:
+                toReturn = JsonUtility.FromJson<AnnihilateSubeffect>(subeffJson);
+                break;
             case SubeffectType.BottomdeckRest:
                 toReturn = JsonUtility.FromJson<BottomdeckRestSubeffect>(subeffJson);
                 break;
@@ -223,6 +229,9 @@ public abstract class ServerSubeffect : Subeffect
                 break;
             case SubeffectType.HangingActivate:
                 toReturn = JsonUtility.FromJson<TemporaryActivationSubeffect>(subeffJson);
+                break;
+            case SubeffectType.HangingAnnihilate:
+                toReturn = JsonUtility.FromJson<HangingAnnihilationSubeffect>(subeffJson);
                 break;
             case SubeffectType.EndTurn:
                 toReturn = JsonUtility.FromJson<EndTurnSubeffect>(subeffJson);

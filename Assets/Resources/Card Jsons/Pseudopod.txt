@@ -1,0 +1,51 @@
+{
+	"cardType":83,
+	"cardName":"Pseudopod",
+	"effText":"Choose a friendly Shaper. Move an enemy character to be adjacent to the chosen Shaper.",
+	"effects":[
+		{
+			"triggerCondition":401,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
+				}
+			}",
+			"subeffectTypes":[0,0,4,309],
+			"subeffects":[
+				"{
+					\"boardRestriction\":
+					{
+						\"Blurb\":\"Friendly Shaper to move the enemy adjacent to\",
+						\"restrictionsToCheck\":[2,3,7,103],
+						\"subtypesInclude\":[\"Shaper\"]
+					}
+				}",
+				"{
+					\"boardRestriction\":
+					{
+						\"Blurb\":\"enemy character to move\",
+						\"restrictionsToCheck\":[3,9,103]
+					}
+				}",
+				"{
+					\"spaceRestriction\":
+					{
+						\"Blurb\":\"where to move the enemy character\",
+						\"restrictionsToCheck\":[102]
+					},
+					\"TargetIndex\":-2
+				}",
+				"{
+					\"AttackerIndex\":-1,
+					\"TargetIndex\":-1
+				}"
+			]
+		}
+	],
+	"fast":true,
+	"c":2,
+	"spellType":"Simple",
+	"subtypes":["Simple","Shaping"],
+	"subtypeText":"Simple Shaping"
+}

@@ -10,6 +10,13 @@ public abstract class GameCard : CardBase {
     private SerializableCard serializedCard;
 
     #region stats
+    public int BaseN => serializedCard.n;
+    public int BaseE => serializedCard.e;
+    public int BaseS => serializedCard.s;
+    public int BaseW => serializedCard.w;
+    public int BaseC => serializedCard.c;
+    public int BaseA => serializedCard.a;
+
     public int N { get; private set; }
     public int E { get; protected set; }
     public int S { get; private set; }
@@ -71,7 +78,8 @@ public abstract class GameCard : CardBase {
         }
     }
     public virtual bool Summoned => CardType == 'C' && Location == CardLocation.Field;
-    public int CombatDamage => W;
+    public virtual bool CanRemove => true;
+    public virtual int CombatDamage => W;
     public (int n, int e, int s, int w) CharStats => (N, E, S, W);
     #endregion stats
 
@@ -84,7 +92,7 @@ public abstract class GameCard : CardBase {
         set
         {
             (BoardX, BoardY) = value;
-            cardCtrl.SetPhysicalLocation(CardLocation.Field);
+            cardCtrl?.SetPhysicalLocation(Location);
             foreach (var aug in Augments) aug.Position = value;
         }
     }
@@ -109,6 +117,8 @@ public abstract class GameCard : CardBase {
     public int SpacesMoved { get; set; }
     public int SpacesCanMove => N - SpacesMoved;
 
+    public int AttacksThisTurn { get; set; } = 0;
+
     //restrictions
     public MovementRestriction MovementRestriction { get; private set; }
     public AttackRestriction AttackRestriction { get; private set; }
@@ -122,13 +132,14 @@ public abstract class GameCard : CardBase {
 
     //misc
     private CardLocation location;
-    public CardLocation Location
+    public virtual CardLocation Location
     {
         get => location;
         set
         {
             location = value;
-            cardCtrl.SetPhysicalLocation(location);
+            if (cardCtrl == null) Debug.LogWarning($"Missing a card control. Is this a debug card?");
+            cardCtrl?.SetPhysicalLocation(location);
         }
     }
     public int ID { get; private set; }
@@ -151,6 +162,7 @@ public abstract class GameCard : CardBase {
                 case CardLocation.Discard: return Controller.discardCtrl.IndexOf(this);
                 case CardLocation.Field: return BoardX * 7 + BoardY;
                 case CardLocation.Hand: return Controller.handCtrl.IndexOf(this);
+                case CardLocation.Annihilation: return Game.AnnihilationCtrl.Cards.IndexOf(this);
                 default:
                     Debug.LogError($"Tried to ask for card index when in location {Location}");
                     return -1;
@@ -184,6 +196,11 @@ public abstract class GameCard : CardBase {
         AttackRestriction.SetInfo(this);
         PlayRestriction = serializedCard.PlayRestriction ?? new PlayRestriction();
         PlayRestriction.SetInfo(this);
+
+        if(Effects != null) foreach (var eff in Effects) eff?.Reset();
+        //instead of setting negations or activations to 0, so that it updates the client correctly
+        while(Negated) Negated = false;
+        while (Activated) Activated = false;
     }
 
     #region distance/adjacency
@@ -210,7 +227,7 @@ public abstract class GameCard : CardBase {
     public virtual bool SpaceInAOE(int x, int y) => false;
     #endregion distance/adjacency
 
-    public void PutBack() => cardCtrl.SetPhysicalLocation(Location);
+    public void PutBack() => cardCtrl?.SetPhysicalLocation(Location);
 
     public void CountSpacesMovedTo((int x, int y) to)
     {
@@ -234,6 +251,7 @@ public abstract class GameCard : CardBase {
         }
 
         SpacesMoved = 0;
+        AttacksThisTurn = 0;
         TurnsOnBoard++;
     }
 
@@ -242,6 +260,7 @@ public abstract class GameCard : CardBase {
     {
         if (augment == null) return;
         augment.Remove(stackSrc);
+        augment.Location = CardLocation.Field;
         Augments.Add(augment);
         augment.AugmentedCard = this;
     }
@@ -287,10 +306,10 @@ public abstract class GameCard : CardBase {
 
     #region moveCard
     //so that notify stuff can be sent in the server
-    public virtual void Remove(IStackable stackSrc = null)
+    public virtual bool Remove(IStackable stackSrc = null)
     {
         Debug.Log($"Removing {CardName} id {ID} from {Location}");
-
+        
         switch (Location)
         {
             case CardLocation.Field:
@@ -306,33 +325,42 @@ public abstract class GameCard : CardBase {
             case CardLocation.Deck:
                 Controller.deckCtrl.RemoveFromDeck(this);
                 break;
+            case CardLocation.Annihilation:
+                Game.AnnihilationCtrl.Remove(this);
+                break;
             default:
                 Debug.LogWarning($"Tried to remove card {CardName} from invalid location {Location}");
                 break;
         }
+
+        return true;
     }
 
-    public void Discard(IStackable stackSrc = null) => Controller.discardCtrl.AddToDiscard(this, stackSrc);
+    public bool Discard(IStackable stackSrc = null) => Controller.discardCtrl.AddToDiscard(this, stackSrc);
 
-    public void Rehand(Player controller, IStackable stackSrc = null) => controller.handCtrl.AddToHand(this, stackSrc);
-    public void Rehand(IStackable stackSrc = null) => Rehand(Controller, stackSrc);
+    public bool Rehand(Player controller, IStackable stackSrc = null) => controller.handCtrl.AddToHand(this, stackSrc);
+    public bool Rehand(IStackable stackSrc = null) => Rehand(Controller, stackSrc);
 
-    public void Reshuffle(Player controller, IStackable stackSrc = null) => controller.deckCtrl.ShuffleIn(this, stackSrc);
-    public void Reshuffle(IStackable stackSrc = null) => Reshuffle(Controller, stackSrc);
+    public bool Reshuffle(Player controller, IStackable stackSrc = null) => controller.deckCtrl.ShuffleIn(this, stackSrc);
+    public bool Reshuffle(IStackable stackSrc = null) => Reshuffle(Controller, stackSrc);
 
-    public void Topdeck(Player controller, IStackable stackSrc = null) => controller.deckCtrl.PushTopdeck(this, stackSrc);
-    public void Topdeck(IStackable stackSrc = null) => Topdeck(Controller, stackSrc);
+    public bool Topdeck(Player controller, IStackable stackSrc = null) => controller.deckCtrl.PushTopdeck(this, stackSrc);
+    public bool Topdeck(IStackable stackSrc = null) => Topdeck(Controller, stackSrc);
 
-    public void Bottomdeck(Player controller, IStackable stackSrc = null) => controller.deckCtrl.PushBottomdeck(this, stackSrc);
-    public void Bottomdeck(IStackable stackSrc = null) => Bottomdeck(Controller, stackSrc);
+    public bool Bottomdeck(Player controller, IStackable stackSrc = null) => controller.deckCtrl.PushBottomdeck(this, stackSrc);
+    public bool Bottomdeck(IStackable stackSrc = null) => Bottomdeck(Controller, stackSrc);
 
-    public void Play(int toX, int toY, Player controller, IStackable stackSrc = null, bool payCost = false)
+    public bool Play(int toX, int toY, Player controller, IStackable stackSrc = null, bool payCost = false)
     {
-        Game.boardCtrl.Play(this, toX, toY, controller);
-        if (payCost) controller.Pips -= Cost;
+        if (Game.boardCtrl.Play(this, toX, toY, controller))
+        {
+            if (payCost) controller.Pips -= Cost;
+            return true;
+        }
+        return false;
     }
 
-    public void Move(int toX, int toY, bool normalMove, IStackable stackSrc = null)
+    public bool Move(int toX, int toY, bool normalMove, IStackable stackSrc = null)
         => Game.boardCtrl.Move(this, toX, toY, normalMove, stackSrc);
 
     public void SwapCharStats(GameCard other, bool swapN = true, bool swapE = true, bool swapS = true, bool swapW = true)

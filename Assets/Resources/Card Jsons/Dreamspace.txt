@@ -1,0 +1,41 @@
+{
+	"cardType":67,
+	"cardName":"Dreamspace",
+	"effText":"When I'm summoned, deck-summon a copy of me.",
+	"effects":[
+		{
+			"triggerCondition":401,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
+				}
+			}",
+			"subeffectTypes":[5,8,4,300],
+			"subeffects":[
+				"{}",
+				"{
+					\"CardRestriction\":{
+						\"Blurb\":\"copy of Dreamspace to decksummon\",
+						\"restrictionsToCheck\":[7,12,102]
+					},
+					\"MaxCanChoose\":1
+				}",
+				"{
+					\"spaceRestriction\":
+					{
+						\"Blurb\":\"where for Dreamspace to decksummon a copy of itself\",
+						\"restrictionsToCheck\":[0]
+					}
+				}",
+				"{}"
+			]	
+		}
+	],
+	"n":0,
+	"e":1,
+	"s":4,
+	"w":0,
+	"subtypes":["Ethereal"],
+	"subtypeText":"Ethereal"
+}

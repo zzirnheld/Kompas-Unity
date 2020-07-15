@@ -88,6 +88,9 @@ public class ClientNetworkController : NetworkController {
                     case CardLocation.Discard:
                         added.Discard();
                         break;
+                    case CardLocation.Annihilation:
+                        added.Game.AnnihilationCtrl.Annihilate(added);
+                        break;
                     default:
                         Debug.Log("Tried to add an enemy card to " + packet.Location);
                         break;
@@ -102,7 +105,7 @@ public class ClientNetworkController : NetworkController {
                 //TODO
                 break;
             case Packet.Command.IncrementEnemyHand:
-                //TODO
+                ClientGame.enemyHandCtrl.IncrementHand();
                 break;
             case Packet.Command.DecrementEnemyDeck:
                 //TODO make sure for both this and decrement hand that you're not deleting a revealedcard
@@ -112,10 +115,7 @@ public class ClientNetworkController : NetworkController {
                 }
                 break;
             case Packet.Command.DecrementEnemyHand:
-                if(ClientGame.enemyHandCtrl.HandSize > 0)
-                {
-                    ClientGame.enemyHandCtrl.RemoveFromHandAt(0);
-                }
+                ClientGame.enemyHandCtrl.DecrementHand();
                 break;
             case Packet.Command.Augment: //the play method calls augment if the card is an augment
             case Packet.Command.Play:
@@ -144,6 +144,9 @@ public class ClientNetworkController : NetworkController {
                 break;
             case Packet.Command.Bottomdeck:
                 card?.Bottomdeck();
+                break;
+            case Packet.Command.Annihilate:
+                ClientGame.AnnihilationCtrl.Annihilate(card);
                 break;
             case Packet.Command.SetN:
                 card?.SetN(packet.Stat);
@@ -178,9 +181,6 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.SetEnemyPips:
                 ClientGame.SetEnemyPips(packet.Pips);
                 break;
-            case Packet.Command.Leyload:
-                ClientGame.Leyload = packet.Leyload;
-                break;
             case Packet.Command.PutBack:
                 ClientGame.PutCardsBack();
                 break;
@@ -200,15 +200,15 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.RequestDeckTarget:
                 ClientGame.targetMode = Game.TargetMode.OnHold;
                 Debug.Log($"Deck target for Eff index: {packet.EffIndex} subeff index {packet.SubeffIndex}");
-                CardRestriction deckRestriction = packet.GetCardRestriction(ClientGame);
-                List<GameCard> toSearch = ClientGame.friendlyDeckCtrl.CardsThatFitRestriction(deckRestriction);
+                ClientGame.CurrCardRestriction = packet.GetCardRestriction(ClientGame);
+                List<GameCard> toSearch = ClientGame.friendlyDeckCtrl.CardsThatFitRestriction(ClientGame.CurrCardRestriction);
                 ClientGame.clientUICtrl.StartSearch(toSearch);
-                ClientGame.clientUICtrl.SetCurrState("Choose Deck Target", ClientGame.CurrCardRestriction.Blurb);
+                ClientGame.clientUICtrl.SetCurrState("Choose Deck Target", ClientGame?.CurrCardRestriction?.Blurb);
                 break;
             case Packet.Command.RequestDiscardTarget:
                 ClientGame.targetMode = Game.TargetMode.OnHold;
-                CardRestriction discardRestriction = packet.GetCardRestriction(ClientGame);
-                List<GameCard> discardToSearch = ClientGame.friendlyDiscardCtrl.CardsThatFitRestriction(discardRestriction);
+                ClientGame.CurrCardRestriction = packet.GetCardRestriction(ClientGame);
+                List<GameCard> discardToSearch = ClientGame.friendlyDiscardCtrl.CardsThatFitRestriction(ClientGame.CurrCardRestriction);
                 ClientGame.clientUICtrl.StartSearch(discardToSearch);
                 ClientGame.clientUICtrl.SetCurrState("Choose Discard Target", ClientGame.CurrCardRestriction.Blurb);
                 break;
@@ -257,6 +257,10 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.CurrCardRestriction = null;
                 ClientGame.CurrSpaceRestriction = null;
                 ClientGame.clientUICtrl.SetCurrState("Target Accepted");
+                break;
+            case Packet.Command.Target:
+                var target = ClientGame.GetCardWithID(packet.normalArgs[1]);
+                if(target != null) card.Effects.ElementAt(packet.EffIndex).AddTarget(target);
                 break;
             case Packet.Command.EnableDecliningTarget:
                 ClientGame.clientUICtrl.EnableDecliningTarget();

@@ -1,0 +1,81 @@
+{
+	"cardType":67,
+	"cardName":"Grudges Unforgotten",
+	"effText":"Shape: During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters. When I'm summoned, annhilate a Summoned SX Shaper and give me +XEW.",
+	"effects":[
+		{
+			"blurb":"Shape",
+			"activationRestriction":{
+				"Restrictions":[
+					"Friendly Turn",
+					"In Play"
+				]
+			},
+			"subeffectTypes":[4,5,121,201,103,309],
+			"subeffects":[
+				"{
+					\"spaceRestriction\":
+					{
+						\"Blurb\":\"to move Grudges Unforgotten to\",
+						\"restrictionsToCheck\":[110],
+						\"ConnectednessRestriction\":{
+							\"restrictionsToCheck\":[2,3,103],
+							\"subtypesInclude\":[\"Ethereal\"]
+						}
+					}
+				}",
+				"{}",
+				"{
+					\"Modifier\":1
+				}",
+				"{
+					\"WhatToCount\":\"Distance to Coords Through\",
+					\"ThroughRestriction\":{
+						\"restrictionsToCheck\":[2,3,103],
+						\"subtypesInclude\":[\"Ethereal\"]
+					}
+				}",
+				"{
+					\"eMult\":-1
+				}",
+				"{}"
+			]
+		},
+		{
+			"triggerCondition":401,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
+				}
+			}",
+			"subeffectTypes":[0,203,311,5,103],
+			"subeffects":[
+				"{
+					\"boardRestriction\":
+					{
+						\"Blurb\":\"Ethereal for Grudges Unforgotten to annihilate and absorb\",
+						\"restrictionsToCheck\":[2,3,103],
+						\"subtypesInclude\":[\"Ethereal\"]
+					}
+				}",
+				"{
+					\"WhatToCount\":\"S\"
+				}",
+				"{}",
+				"{}",
+				"{
+					\"eMult\":1,
+					\"sMult\":1,
+					\"wMult\":1
+				}"
+			]	
+		}
+	],
+	"n":1,
+	"e":3,
+	"s":3,
+	"w":3,
+	"subtypes":["Ethereal","Shaper"],
+	"subtypeText":"Ethereal Shaper"
+}

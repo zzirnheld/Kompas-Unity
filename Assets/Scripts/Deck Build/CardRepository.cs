@@ -245,7 +245,7 @@ public class CardRepository : MonoBehaviour
 
         try
         {
-            SerializableCharCard charCard = JsonUtility.FromJson<SerializableCharCard>(cardJsons[cardName]);
+            SerializableCard charCard = JsonUtility.FromJson<SerializableCard>(cardJsons[cardName]);
             if (charCard.cardType != 'C') return null;
             AvatarClientGameCard avatar = Instantiate(ClientAvatarPrefab).GetComponent<AvatarClientGameCard>();
             ClientEffect[] effects = CreateClientEffects(charCard.effects, avatar, clientGame);
@@ -327,17 +327,17 @@ public class CardRepository : MonoBehaviour
             switch (serializableCard.cardType)
             {
                 case 'C':
-                    SerializableCharCard serializableChar = JsonUtility.FromJson<SerializableCharCard>(json);
+                    SerializableCard serializableChar = JsonUtility.FromJson<SerializableCard>(json);
                     var charCard = Instantiate(DeckbuilderCharPrefab, parent).GetComponent<DeckbuilderCharCard>();
                     charCard.SetInfo(searchCtrl, serializableChar, inDeck);
                     return charCard;
                 case 'S':
-                    SerializableSpellCard serializableSpell = JsonUtility.FromJson<SerializableSpellCard>(json);
+                    SerializableCard serializableSpell = JsonUtility.FromJson<SerializableCard>(json);
                     var spellCard = Instantiate(DeckbuilderSpellPrefab, parent).GetComponent<DeckbuilderSpellCard>();
                     spellCard.SetInfo(searchCtrl, serializableSpell, inDeck);
                     return spellCard;
                 case 'A':
-                    SerializableAugCard serializableAug = JsonUtility.FromJson<SerializableAugCard>(json);
+                    SerializableCard serializableAug = JsonUtility.FromJson<SerializableCard>(json);
                     var augCard = Instantiate(DeckbuilderAugPrefab, parent).GetComponent<DeckbuilderAugCard>();
                     augCard.SetInfo(searchCtrl, serializableAug, inDeck);
                     return augCard;

@@ -1,0 +1,35 @@
+{
+	"cardType":67,
+	"cardName":"Dreamfog",
+	"effText":"When a character moves, you can tribute me to gain a pip.",
+	"effects":[
+		{
+			"triggerCondition":408,
+			"trigger":
+			"{
+				\"Optional\":true,
+				\"Blurb\":\"Tribute Dreamfog to gain a pip?\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[1,100],
+					\"cardRestriction\":{
+						\"restrictionsToCheck\":[3]
+					}
+				}
+			}",
+			"subeffectTypes":[5,301,101],
+			"subeffects":[
+				"{}",
+				"{}",
+				"{
+					\"modifier\":1
+				}"
+			]	
+		}
+	],
+	"n":1,
+	"e":1,
+	"s":1,
+	"w":1,
+	"subtypes":["Ethereal"],
+	"subtypeText":"Ethereal"
+}

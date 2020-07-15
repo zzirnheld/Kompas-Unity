@@ -11,7 +11,7 @@ public class SpaceRestriction
 
     public enum SpaceRestrictions
     {
-        CanSummonTarget = 0,
+        CanPlayTarget = 0,
         Empty = 1,
         AdjacentToThisCard = 100,
         AdjacentToWithRestriction = 101,
@@ -20,11 +20,12 @@ public class SpaceRestriction
         InAOE = 150,
         DistanceX = 200,
         DistanceToTargetX = 201,
-        DistanceToTargetC = 251
+        DistanceToTargetC = 251,
+        FurtherFromSourceThanTarget = 260
     }
 
     public SpaceRestrictions[] restrictionsToCheck;
-    public BoardRestriction adjacencyRestriction;
+    public BoardRestriction adjacencyRestriction = new BoardRestriction();
     public BoardRestriction ConnectednessRestriction = new BoardRestriction(); 
 
     public int C;
@@ -38,33 +39,19 @@ public class SpaceRestriction
         ConnectednessRestriction.Initialize(subeffect);
     }
 
-    private bool ExistsCardWithRestrictionAdjacentToCoords(BoardRestriction r, int x, int y)
-    {
-        for (int i = 0; i < 7; i++)
-        {
-            for(int j = 0; j < 7; j++)
-            {
-                GameCard c = Subeffect.Effect.Game.boardCtrl.GetCardAt(i, j);
-                if (c != null && c.IsAdjacentTo(x, y) && r.Evaluate(c)) return true;
-            }
-        }
-
-        return false;
-    }
-
     public bool Evaluate((int x, int y) space) => Evaluate(space.x, space.y);
 
     public bool Evaluate(int x, int y)
     {
-        Debug.Log($"Space restriction for {Subeffect.Source.name} evaluating {x}, {y}");
+        Debug.Log($"Space restriction for {Subeffect.Source.CardName} evaluating {x}, {y}");
         if (!Subeffect.Effect.Game.boardCtrl.ValidIndices(x, y)) return false;
 
         foreach(SpaceRestrictions r in restrictionsToCheck)
         {
             switch (r)
             {
-                case SpaceRestrictions.CanSummonTarget:
-                    if (!Subeffect.Effect.Game.boardCtrl.CanSummonTo(Subeffect.Controller.index, x, y)) return false;
+                case SpaceRestrictions.CanPlayTarget:
+                    if (!Subeffect.Effect.Game.boardCtrl.CanPlayTo(Subeffect.Controller.index, x, y)) return false;
                     break;
                 case SpaceRestrictions.Empty:
                     if (Subeffect.Effect.Game.boardCtrl.GetCardAt(x, y) != null) return false;
@@ -73,7 +60,7 @@ public class SpaceRestriction
                     if (!Subeffect.Source.IsAdjacentTo(x, y)) return false;
                     break;
                 case SpaceRestrictions.AdjacentToWithRestriction:
-                    if (!ExistsCardWithRestrictionAdjacentToCoords(adjacencyRestriction, x, y)) return false;
+                    if (!Subeffect.Game.boardCtrl.CardsAdjacentTo(x,y).Any(c => adjacencyRestriction.Evaluate(c))) return false;
                     break;
                 case SpaceRestrictions.AdjacentToTarget:
                     if (!Subeffect.Target.IsAdjacentTo(x, y)) return false;
@@ -92,6 +79,9 @@ public class SpaceRestriction
                     break;
                 case SpaceRestrictions.DistanceToTargetC:
                     if (Subeffect.Target.DistanceTo(x, y) != C) return false;
+                    break;
+                case SpaceRestrictions.FurtherFromSourceThanTarget:
+                    if (Subeffect.Source.DistanceTo(x, y) <= Subeffect.Source.DistanceTo(Subeffect.Target)) return false;
                     break;
                 default:
                     Debug.LogError($"Unrecognized space restriction enum {r}");

@@ -11,7 +11,7 @@
 					"In Play"
 				]
 			},
-			"subeffectTypes":[2,303,408,3,4,150,300],
+			"subeffectTypes":[2,303,408,3,4,300],
 			"subeffects":[
 				"{
 					\"cardRestriction\":
@@ -43,7 +43,6 @@
 						\"restrictionsToCheck\":[0]
 					}
 				}",
-				"{}",
 				"{
 					\"TargetIndex\":-1,
 					\"SpaceIndex\":-1

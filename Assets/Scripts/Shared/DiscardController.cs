@@ -25,15 +25,15 @@ public class DiscardController : MonoBehaviour {
     }
 
     //adding/removing cards
-	public virtual void AddToDiscard(GameCard card, IStackable stackSrc = null)
+	public virtual bool AddToDiscard(GameCard card, IStackable stackSrc = null)
     {
-        card.Remove();
         Debug.Assert(card != null);
         Debug.Log("Adding to discard: " + card.CardName);
+        card.Remove(stackSrc);
         discard.Add(card);
         card.Controller = Owner;
         card.Location = CardLocation.Discard;
-        card.transform.localPosition = new Vector3(0, 0, (float)discard.Count / -60f);
+        return true;
     }
 
     public int IndexOf(GameCard card)

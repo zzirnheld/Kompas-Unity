@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class ClientHandController : HandController
 {
-
+    public ClientGame clientGame;
 }

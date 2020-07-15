@@ -28,16 +28,6 @@ public class ServerGame : Game {
     public ServerEffect CurrEffect { get; set; }
     public override IStackable CurrStackEntry => EffectsController.CurrStackEntry;
 
-    public override int Leyload
-    {
-        get => base.Leyload;
-        set
-        {
-            base.Leyload = value;
-            ServerPlayers[0].ServerNotifier.NotifySetLeyload(Leyload);
-        }
-    }
-
     public void Init(UIController uiCtrl, CardRepository cardRepo)
     {
         this.uiCtrl = uiCtrl;
@@ -161,11 +151,11 @@ public class ServerGame : Game {
     {
         //set initial pips (based on avatars' S)
         Debug.Log($"Starting game. Player 0 avatar is null? {Players[0].Avatar == null}. Player 1 is null? {Players[1].Avatar == null}.");
-        Players[0].Pips = Players[1].Avatar.S;
-        Players[1].Pips = Players[0].Avatar.S;
+        Players[0].Pips = Players[1].Avatar.S / 2;
+        Players[1].Pips = Players[0].Avatar.S / 2;
 
         //determine who goes first and tell the players
-        TurnPlayerIndex = Random.value > 0.5f ? 0 : 1;
+        FirstTurnPlayer = TurnPlayerIndex = Random.value > 0.5f ? 0 : 1;
         ServerPlayers[TurnPlayerIndex].ServerNotifier.YoureFirst();
         ServerPlayers[1 - TurnPlayerIndex].ServerNotifier.YoureSecond();
 
@@ -186,11 +176,13 @@ public class ServerGame : Game {
         {
             var toDraw = controller.deckCtrl.PopTopdeck();
             if (toDraw == null) break;
-            EffectsController.Trigger(TriggerCondition.EachDraw, cardTriggerer: toDraw, stackTrigger: stackSrc, triggerer: ServerPlayers[player]);
+            var eachDrawContext = new ActivationContext(card: toDraw, stackable: stackSrc, triggerer: controller);
+            EffectsController.Trigger(TriggerCondition.EachDraw, eachDrawContext);
             toDraw.Rehand(controller, stackSrc);
             drawn.Add(toDraw);
         }
-        EffectsController.Trigger(TriggerCondition.DrawX, stackTrigger: stackSrc, triggerer: ServerPlayers[player], x: i);
+        var context = new ActivationContext(stackable: stackSrc, triggerer: controller, x: i);
+        EffectsController.Trigger(TriggerCondition.DrawX, context);
         return drawn;
     }
     public GameCard Draw(int player, IStackable stackSrc = null)
@@ -208,6 +200,7 @@ public class ServerGame : Game {
 
     public void GiveTurnPlayerPips()
     {
+        Debug.Log($"Giving turn player pips when leyload is {Leyload} on round {RoundCount}");
         int pipsToSet = TurnPlayer.Pips + Leyload;
         GivePlayerPips(TurnServerPlayer, pipsToSet);
     }
@@ -217,7 +210,7 @@ public class ServerGame : Game {
         Debug.Log($"ServerNetworkController {attacker.CardName} attacking {defender.CardName} at {defender.BoardX}, {defender.BoardY}");
         //push the attack to the stack, then check if any player wants to respond before resolving it
         var attack = new ServerAttack(this, instigator, attacker, defender);
-        EffectsController.PushToStack(attack);
+        EffectsController.PushToStack(attack, new ActivationContext());
         //check for triggers related to the attack (if this were in the constructor, the triggers would go on the stack under the attack
         attack.Declare();
         EffectsController.CheckForResponse();
@@ -262,6 +255,7 @@ public class ServerGame : Game {
             return true;
         }
 
+        if (toMove.Position == (toX, toY) || (toMove.IsAvatar && !toMove.Summoned)) return false;
         return toMove.MovementRestriction.Evaluate(toX, toY);
     }
 
@@ -276,21 +270,22 @@ public class ServerGame : Game {
         return attacker.AttackRestriction.Evaluate(defender);
     }
     #endregion
-    
+
     public void SwitchTurn()
     {
         TurnPlayerIndex = 1 - TurnPlayerIndex;
+        if(TurnPlayerIndex == FirstTurnPlayer) RoundCount++;
         GiveTurnPlayerPips();
         
-        boardCtrl.ResetCardsForTurn(TurnPlayer);
+        ResetCardsForTurn();
 
         //draw for turn and store what was drawn
         GameCard drawn = Draw(TurnPlayerIndex);
-        if(drawn != null) TurnServerPlayer.ServerNotifier.NotifyDraw(drawn);
         TurnServerPlayer.ServerNotifier.NotifySetTurn(this, TurnPlayerIndex);
 
         //trigger turn start effects
-        EffectsController.Trigger(TriggerCondition.TurnStart, triggerer: TurnServerPlayer);
+        var context = new ActivationContext(triggerer: TurnServerPlayer);
+        EffectsController.Trigger(TriggerCondition.TurnStart, context);
         EffectsController.CheckForResponse();
     }
 

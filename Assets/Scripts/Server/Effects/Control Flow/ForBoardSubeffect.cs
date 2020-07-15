@@ -30,7 +30,7 @@ public class ForBoardSubeffect : ServerSubeffect
                     //if we haven't found a first target yet, add the first target to the list
                     if (!running)
                     {
-                        ServerEffect.Targets.Add(c);
+                        ServerEffect.AddTarget(c);
                         running = true;
                     }
                     else

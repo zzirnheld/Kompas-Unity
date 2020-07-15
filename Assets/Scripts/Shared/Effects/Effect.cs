@@ -21,13 +21,16 @@ public abstract class Effect : IStackable
 
     public readonly int EffectIndex;
 
+    //Targets
     public List<GameCard> Targets { get; } = new List<GameCard>();
     public List<(int x, int y)> Coords { get; private set; } = new List<(int x, int y)>();
     public List<GameCard> Rest { get; private set; } = new List<GameCard>();
 
+    //Trigger
     public abstract Trigger Trigger { get; }
     public ActivationRestriction ActivationRestriction { get; }
     public string Blurb { get; }
+    public ActivationContext CurrActivationContext { get; protected set; }
 
     private int negations = 0;
     public bool Negated {
@@ -62,8 +65,24 @@ public abstract class Effect : IStackable
         if (turnPlayer == Source.Controller) TimesUsedThisRound = 0;
     }
 
+    public void Reset()
+    {
+        TimesUsedThisRound = 0;
+        TimesUsedThisTurn = 0;
+    }
+
     public virtual void Negate()
     {
         Negated = true;
+    }
+
+    public virtual void AddTarget(GameCard card)
+    {
+        Targets.Add(card);
+    }
+
+    public GameCard TargetAt(int index)
+    {
+        return Targets.ElementAt(index);
     }
 }

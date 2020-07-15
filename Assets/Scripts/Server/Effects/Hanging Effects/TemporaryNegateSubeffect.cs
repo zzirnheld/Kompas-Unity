@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TemporaryNegateSubeffect : TemporarySubeffect
+public class TemporaryNegateSubeffect : TemporaryCardChangeSubeffect
 {
-    public override void Resolve()
+    protected override IEnumerable<(HangingEffect, GameCard)> CreateHangingEffects()
     {
         var tempNegation = new HangingNegationEffect(ServerGame, TriggerRestriction, EndCondition,
             Target, this);
-        ServerEffect.ResolveNextSubeffect();
+        return new List<(HangingEffect, GameCard)>() { (tempNegation, Target) };
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IServerStackable : IStackable
 {
-    void StartResolution(int startIndex = 0);
+    void StartResolution(ActivationContext context);
 
     ServerPlayer ServerController { get; }
 }

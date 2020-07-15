@@ -1,0 +1,79 @@
+{
+	"cardType":67,
+	"cardName":"He Who Knew Runes",
+	"effText":"Shape: During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters. When I move X, you can hand-cast a CX Shaping.",
+	"effects":[
+		{
+			"blurb":"Shape",
+			"activationRestriction":{
+				"Restrictions":[
+					"Friendly Turn",
+					"In Play"
+				]
+			},
+			"subeffectTypes":[4,5,121,201,103,309],
+			"subeffects":[
+				"{
+					\"spaceRestriction\":
+					{
+						\"Blurb\":\"to move He Who Knew Runes to\",
+						\"restrictionsToCheck\":[110],
+						\"ConnectednessRestriction\":{
+							\"restrictionsToCheck\":[2,3,103],
+							\"subtypesInclude\":[\"Ethereal\"]
+						}
+					}
+				}",
+				"{}",
+				"{
+					\"Modifier\":1
+				}",
+				"{
+					\"WhatToCount\":\"Distance to Coords Through\",
+					\"ThroughRestriction\":{
+						\"restrictionsToCheck\":[2,3,103],
+						\"subtypesInclude\":[\"Ethereal\"]
+					}
+				}",
+				"{
+					\"eMult\":-1
+				}",
+				"{}"
+			]
+		},
+		{
+			"triggerCondition":408,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0,1]
+				}
+			}",
+			"subeffectTypes":[3,4,300],
+			"subeffects":[
+				"{
+					\"cardRestriction\":
+					{
+						\"Blurb\":\"Shaping for He Who Knew Runes to cast\",
+						\"restrictionsToCheck\":[2,4,7,100,214,601],
+						\"subtypesInclude\":[\"Shaping\"]
+					}
+				}",
+				"{
+					\"spaceRestriction\":
+					{
+						\"Blurb\":\"where for He Who Knew Runes to cast its target Shaping\",
+						\"restrictionsToCheck\":[0]
+					}
+				}",
+				"{}"
+			]	
+		}
+	],
+	"n":1,
+	"e":6,
+	"s":4,
+	"w":4,
+	"subtypes":["Ethereal","Shaper","Mage"],
+	"subtypeText":"Ethereal Shaper Mage"
+}

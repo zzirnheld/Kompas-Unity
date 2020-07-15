@@ -33,6 +33,7 @@ public enum SubeffectType
     SetNESW = 109,
     ChangeAllNESW = 110,
     SetAllNESW = 111,
+    ResetStats = 112,
     Activate = 120,
     SpendMovement = 121,
     TakeControl = 130,
@@ -64,6 +65,7 @@ public enum SubeffectType
     Topdeck = 308,
     Move = 309,
     Swap = 310,
+    Annihilate = 311,
     BottomdeckRest = 350,
 
     //loops/control flow
@@ -86,6 +88,7 @@ public enum SubeffectType
     HangingNESWBuffAll = 502,
     HangingNegate = 503,
     HangingActivate = 504,
+    HangingAnnihilate = 550,
 
     //misc
     EndTurn = 600,

@@ -9,7 +9,7 @@ public class TargetAugmentedCardSubeffect : ServerSubeffect
         if (ServerEffect.Source.AugmentedCard == null) ServerEffect.EffectImpossible();
         else
         {
-            ServerEffect.Targets.Add(Source.AugmentedCard);
+            ServerEffect.AddTarget(Source.AugmentedCard);
             ServerEffect.ResolveNextSubeffect();
         }
     }

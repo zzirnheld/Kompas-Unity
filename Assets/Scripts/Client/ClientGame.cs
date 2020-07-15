@@ -27,7 +27,7 @@ public class ClientGame : Game {
     public GameObject friendlyDeckObj;
     public GameObject friendlyDiscardObj;
 
-    public HandController enemyHandCtrl;
+    public ClientDummyHandController enemyHandCtrl;
     public DeckController enemyDeckCtrl;
     public DiscardController enemyDiscardCtrl;
 
@@ -42,17 +42,6 @@ public class ClientGame : Game {
     //targeting
     public CardRestriction CurrCardRestriction;
     public SpaceRestriction CurrSpaceRestriction;
-
-    //gamestate
-    public override int Leyload
-    {
-        get => base.Leyload;
-        set
-        {
-            base.Leyload = value;
-            clientUICtrl.Leyload = Leyload;
-        }
-    }
 
     private void Start()
     {
@@ -144,16 +133,20 @@ public class ClientGame : Game {
 
     public void SetFirstTurnPlayer(int playerIndex)
     {
-        TurnPlayerIndex = playerIndex;
+        FirstTurnPlayer = TurnPlayerIndex = playerIndex;
         clientUICtrl.ChangeTurn(playerIndex);
         clientUICtrl.HideGetDecklistUI();
+        RoundCount = 1;
+        clientUICtrl.Leyload = Leyload;
     }
 
     public void EndTurn()
     {
         TurnPlayerIndex = 1 - TurnPlayerIndex;
-        boardCtrl.ResetCardsForTurn(TurnPlayer);
+        ResetCardsForTurn();
         clientUICtrl.ChangeTurn(TurnPlayerIndex);
+        if(TurnPlayerIndex == FirstTurnPlayer) RoundCount++;
+        clientUICtrl.Leyload = Leyload;
     }
 
     public override GameCard GetCardWithID(int id)

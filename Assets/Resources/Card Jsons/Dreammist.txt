@@ -1,0 +1,33 @@
+{
+	"cardType":67,
+	"cardName":"Dreammist",
+	"effText":"When I'm summoned adjacent to a Shaper, draw 1.",
+	"effects":[
+		{
+			"triggerCondition":401,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0,120],
+					\"spaceRestriction\":{
+						\"restrictionsToCheck\":[101],
+						\"adjacencyRestriction\":{
+							\"restrictionsToCheck\":[2],
+							\"subtypesInclude\":[\"Ethereal\"]
+						}
+					}
+				}
+			}",
+			"subeffectTypes":[305],
+			"subeffects":[
+				"{}"
+			]	
+		}
+	],
+	"n":0,
+	"e":1,
+	"s":1,
+	"w":0,
+	"subtypes":["Ethereal"],
+	"subtypeText":"Ethereal"
+}

@@ -89,6 +89,11 @@ namespace KompasNetworking
                     {
                         listEff.AddListIfLegal(choices);
                     }
+
+                    if(sGame.CurrEffect?.CurrSubeffect is DeckTargetSubeffect deckTgtSubeff)
+                    {
+                        deckTgtSubeff.AddTargetIfLegal(choices.FirstOrDefault());
+                    }
                     break;
                 case Packet.Command.OptionalTrigger:
                     sGame.EffectsController.OptionalTriggerAnswered(packet.Answer);
@@ -186,7 +191,6 @@ namespace KompasNetworking
             //draw and store what was drawn
             GameCard toDraw = sGame.Draw(Player.index);
             if (toDraw == null) return; //deck was empty
-            ServerNotifier.NotifyDraw(toDraw);
             sGame.EffectsController.CheckForResponse();
         }
 

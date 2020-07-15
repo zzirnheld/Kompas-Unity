@@ -17,6 +17,7 @@ public class TriggerRestriction
         TriggererFitsRestriction = 101,
         CoordsFitRestriction = 120,
         XFitsRestriction = 130,
+        EffectSourceIsThisCard = 140,
         EffectSourceIsTriggerer = 149,
 
         ControllerTriggered = 200,
@@ -54,46 +55,48 @@ public class TriggerRestriction
     {
         Subeffect = subeff;
         cardRestriction.Initialize(subeff);
+        xRestriction.Subeffect = subeff;
+        spaceRestriction.Initialize(subeff);
         this.ThisCard = thisCard;
         this.ThisTrigger = thisTrigger;
     }
 
-    public bool Evaluate(GameCard cardTriggerer, IStackable stackTrigger, Player triggerer, int? effX, (int x, int y)? space)
+    public bool Evaluate(ActivationContext context)
     {
         foreach(TriggerRestrictions r in triggerRestrictions)
         {
             switch (r)
             {
                 case TriggerRestrictions.ThisCardTriggered:
-                    if (cardTriggerer == ThisCard) continue;
+                    if (context.Card == ThisCard) continue;
                     else return false;
                 case TriggerRestrictions.ThisCardInPlay:
                     if (ThisCard.Location == CardLocation.Field) continue;
                     else return false;
                 case TriggerRestrictions.AugmentedCardTriggered:
-                    if (ThisCard.AugmentedCard == cardTriggerer) continue;
+                    if (context.Card == ThisCard.AugmentedCard) continue;
                     else return false;
                 case TriggerRestrictions.ThisCardFitsRestriction:
                     if (cardRestriction.Evaluate(ThisCard)) continue;
                     else return false;
                 case TriggerRestrictions.TriggererFitsRestriction:
-                    if (cardRestriction.Evaluate(cardTriggerer)) continue;
+                    if (cardRestriction.Evaluate(context.Card)) continue;
                     else return false;
                 case TriggerRestrictions.CoordsFitRestriction:
-                    if (space != null && spaceRestriction.Evaluate(space.Value)) continue;
+                    if (context.Space != null && spaceRestriction.Evaluate(context.Space.Value)) continue;
                     else return false;
                 case TriggerRestrictions.XFitsRestriction:
-                    if (effX != null && xRestriction.Evaluate(effX.Value)) continue;
+                    if (context.X != null && xRestriction.Evaluate(context.X.Value)) continue;
                     else return false;
                 case TriggerRestrictions.EffectSourceIsTriggerer:
-                    if (stackTrigger is Effect eff && eff.Source == cardTriggerer) continue;
+                    if (context.Stackable is Effect eff && eff.Source == context.Card) continue;
                     else return false;
                 //TODO make these into just something to do with triggered card fitting restriction
                 case TriggerRestrictions.ControllerTriggered:
-                    if (triggerer == ThisCard.Controller) continue;
+                    if (context.Triggerer == ThisCard.Controller) continue;
                     else return false;
                 case TriggerRestrictions.EnemyTriggered:
-                    if (triggerer != ThisCard.Controller) continue;
+                    if (context.Triggerer != ThisCard.Controller) continue;
                     else return false;
                 case TriggerRestrictions.FriendlyTurn:
                     if (Subeffect.ServerGame.TurnPlayer == ThisCard.Controller) continue;
@@ -102,17 +105,17 @@ public class TriggerRestriction
                     if (Subeffect.ServerGame.TurnPlayer != ThisCard.Controller) continue;
                     else return false;
                 case TriggerRestrictions.FromField:
-                    if (cardTriggerer.Location == CardLocation.Field) continue;
+                    if (context.Card.Location == CardLocation.Field) continue;
                     else return false;
                 case TriggerRestrictions.FromDeck:
-                    if (cardTriggerer.Location == CardLocation.Deck) continue;
+                    if (context.Card.Location == CardLocation.Deck) continue;
                     else return false;
                 case TriggerRestrictions.MaxPerTurn:
                     if (ThisTrigger.effToTrigger.TimesUsedThisTurn < maxTimesPerTurn) continue;
                     else return false;
                 case TriggerRestrictions.NotFromEffect:
-                    if (stackTrigger == null) continue;
-                    else return false;
+                    if (context.Stackable is Effect) return false;
+                    break;
                 case TriggerRestrictions.MaxPerRound:
                     if (ThisTrigger.effToTrigger.TimesUsedThisRound < maxPerRound) continue;
                     else return false;

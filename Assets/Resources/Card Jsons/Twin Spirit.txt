@@ -1,0 +1,82 @@
+{
+	"cardType":67,
+	"cardName":"Twin Spirit",
+	"effText":"Shape: During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters. When I'm hand-summoned, deck-summon a copy of me.",
+	"effects":[
+		{
+			"blurb":"Shape",
+			"activationRestriction":{
+				"Restrictions":[
+					"Friendly Turn",
+					"In Play"
+				]
+			},
+			"subeffectTypes":[4,5,121,201,103,309],
+			"subeffects":[
+				"{
+					\"spaceRestriction\":
+					{
+						\"Blurb\":\"to move Unstable Soul to\",
+						\"restrictionsToCheck\":[110],
+						\"ConnectednessRestriction\":{
+							\"restrictionsToCheck\":[2,3,103],
+							\"subtypesInclude\":[\"Ethereal\"]
+						}
+					}
+				}",
+				"{}",
+				"{
+					\"Modifier\":1
+				}",
+				"{
+					\"WhatToCount\":\"Distance to Coords Through\",
+					\"ThroughRestriction\":{
+						\"restrictionsToCheck\":[2,3,103],
+						\"subtypesInclude\":[\"Ethereal\"]
+					}
+				}",
+				"{
+					\"eMult\":-1
+				}",
+				"{}"
+			]
+		},
+		{
+			"triggerCondition":401,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0,101],
+					\"cardRestriction\":{
+						\"restrictionsToCheck\":[100]
+					}
+				}
+			}",
+			"subeffectTypes":[5,8,4,300],
+			"subeffects":[
+				"{}",
+				"{
+					\"CardRestriction\":{
+						\"Blurb\":\"copy of Twin Spirit to decksummon\",
+						\"restrictionsToCheck\":[7,12,102]
+					},
+					\"MaxCanChoose\":1
+				}",
+				"{
+					\"spaceRestriction\":
+					{
+						\"Blurb\":\"where for Twin Spirit to decksummon a copy of itself\",
+						\"restrictionsToCheck\":[0]
+					}
+				}",
+				"{}"
+			]	
+		}
+	],
+	"n":1,
+	"e":2,
+	"s":4,
+	"w":3,
+	"subtypes":["Ethereal","Shaper"],
+	"subtypeText":"Ethereal Shaper"
+}

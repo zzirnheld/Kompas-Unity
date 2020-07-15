@@ -7,17 +7,17 @@ public abstract class HandController : MonoBehaviour
 {
     public Player Owner;
 
-    private List<GameCard> hand = new List<GameCard>();
+    protected List<GameCard> hand = new List<GameCard>();
 
     public int HandSize { get { return hand.Count; } }
 
     //rng for shuffling
     private static System.Random rng = new System.Random();
 
-    public virtual void AddToHand(GameCard card, IStackable stackSrc = null)
+    public virtual bool AddToHand(GameCard card, IStackable stackSrc = null)
     {
-        if (card == null) return;
-        card.Remove();
+        if (card == null) return false;
+        card.Remove(stackSrc);
         hand.Add(card);
         card.ResetCard();
         card.Location = CardLocation.Hand;
@@ -25,6 +25,7 @@ public abstract class HandController : MonoBehaviour
 
         card.transform.rotation = Quaternion.Euler(90, 0, 0);
         SpreadOutCards();
+        return true;
     }
 
     public int IndexOf(GameCard card)
@@ -32,28 +33,19 @@ public abstract class HandController : MonoBehaviour
         return hand.IndexOf(card);
     }
 
-    public void RemoveFromHand(GameCard card)
+    public virtual void RemoveFromHand(GameCard card)
     {
         hand.Remove(card);
         SpreadOutCards();
     }
 
-    public GameCard RemoveFromHandAt(int index)
+    public void RemoveFromHandAt(int index)
     {
-        if (index < 0 || index >= hand.Count) return null;
-        GameCard toReturn = hand[index];
-        hand.RemoveAt(index);
-        SpreadOutCards();
-        return toReturn;
+        if (index < 0 || index >= hand.Count) return;
+        RemoveFromHand(hand[index]);
     }
 
-    public GameCard RemoveRandomCard()
-    {
-        int randomIndex = rng.Next(hand.Count);
-        return RemoveFromHandAt(randomIndex);
-    }
-
-    public void SpreadOutCards()
+    public virtual void SpreadOutCards()
     {
         //iterate through children, set the z coord
         for (int i = 0; i < hand.Count; i++)

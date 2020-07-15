@@ -1,0 +1,80 @@
+{
+	"cardType":67,
+	"cardName":"Whose Anger Draws Fear",
+	"effText":"Shape: During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters. When I attack, move my target away from me one space. If you can't, annihilate them.",
+	"effects":[
+		{
+			"blurb":"Shape",
+			"activationRestriction":{
+				"Restrictions":[
+					"Friendly Turn",
+					"In Play"
+				]
+			},
+			"subeffectTypes":[4,5,121,201,103,309],
+			"subeffects":[
+				"{
+					\"spaceRestriction\":
+					{
+						\"Blurb\":\"to move Whose Anger Draws Fear to\",
+						\"restrictionsToCheck\":[110],
+						\"ConnectednessRestriction\":{
+							\"restrictionsToCheck\":[2,3,103],
+							\"subtypesInclude\":[\"Ethereal\"]
+						}
+					}
+				}",
+				"{}",
+				"{
+					\"Modifier\":1
+				}",
+				"{
+					\"WhatToCount\":\"Distance to Coords Through\",
+					\"ThroughRestriction\":{
+						\"restrictionsToCheck\":[2,3,103],
+						\"subtypesInclude\":[\"Ethereal\"]
+					}
+				}",
+				"{
+					\"eMult\":-1
+				}",
+				"{}"
+			]
+		},
+		{
+			"triggerCondition":301,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
+				}
+			}",
+			"subeffectTypes":[50,404,4,309,407,405,311],
+			"subeffects":[
+				"{}",
+				"{
+					\"JumpTo\":5
+				}",
+				"{
+					\"spaceRestriction\":
+					{
+						\"Blurb\":\"to move Whose Anger Draws Fear's attack target to\",
+						\"restrictionsToCheck\":[251,260],
+						\"C\":1
+					}
+				}",
+				"{}",
+				"{}",
+				"{}",
+				"{}",
+				"{}"
+			]	
+		}
+	],
+	"n":1,
+	"e":5,
+	"s":2,
+	"w":0,
+	"subtypes":["Ethereal","Shaper"],
+	"subtypeText":"Ethereal Shaper"
+}

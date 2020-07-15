@@ -65,20 +65,37 @@ public class ServerEffect : Effect, IServerStackable
             && ActivationRestriction.Evaluate(controller);
     }
 
-    public void PushToStack(ServerPlayer controller)
+    public void PushToStack(ServerPlayer controller, ActivationContext context)
     {
-        EffectsController.PushToStack(this, controller);
+        EffectsController.PushToStack(this, controller, context);
     }
 
-    public void StartResolution(int startIndex = 0)
+    public void PushedToStack(ServerGame game, ServerPlayer ctrl)
     {
-        Debug.Log($"Resolving effect {EffectIndex} of {Source.CardName}");
-        serverGame.CurrEffect = this;
+        TimesUsedThisRound++;
         TimesUsedThisTurn++;
+        serverGame = game;
+        Controller = ctrl;
+    }
+
+    public void StartResolution(ActivationContext context)
+    {
+        Debug.Log($"Resolving effect {EffectIndex} of {Source.CardName} in context {context}");
+        serverGame.CurrEffect = this;
+
+        //set context parameters
+        CurrActivationContext = context;
+        X = context.X ?? 0;
+        if (context.Card != null) AddTarget(context.Card);
+        if (context.Space.HasValue) Coords.Add(context.Space.Value);
+
+        //notify relevant to this effect starting
         ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
         ServerController.ServerNotifier.EffectResolving(this);
+
+        //resolve the effect if possible
         if (Negated) EffectImpossible();
-        else ResolveSubeffect(startIndex);
+        else ResolveSubeffect(context.StartIndex);
     }
 
     public void ResolveNextSubeffect()
@@ -136,5 +153,11 @@ public class ServerEffect : Effect, IServerStackable
     public void DeclineAnotherTarget()
     {
         OnImpossible?.OnImpossible();
+    }
+
+    public override void AddTarget(GameCard card)
+    {
+        base.AddTarget(card);
+        serverGame.ServerPlayers[card.ControllerIndex].ServerNotifier.SetTarget(Source, EffectIndex, card);
     }
 }

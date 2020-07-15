@@ -9,30 +9,50 @@ public class ServerDeckController : DeckController
     public ServerNotifier ServerNotifier => ServerGame.ServerPlayers[Owner.index].ServerNotifier;
     public ServerEffectsController EffectsController => ServerGame.EffectsController;
 
-    protected override void AddCard(GameCard card, IStackable stackSrc = null)
+    protected override bool AddCard(GameCard card, IStackable stackSrc = null)
     {
-        EffectsController.Trigger(TriggerCondition.ToDeck, cardTriggerer: card, stackTrigger: stackSrc, triggerer: Owner);
-        base.AddCard(card);
+        if (card.CanRemove)
+        {
+            var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
+            EffectsController.Trigger(TriggerCondition.ToDeck, context);
+            return base.AddCard(card);
+        }
+        return false;
     }
 
-    public override void PushBottomdeck(GameCard card, IStackable stackSrc = null)
+    public override bool PushBottomdeck(GameCard card, IStackable stackSrc = null)
     {
-        EffectsController.Trigger(TriggerCondition.Bottomdeck, cardTriggerer: card, stackTrigger: stackSrc, triggerer: Owner);
-        ServerNotifier.NotifyBottomdeck(card);
-        base.PushBottomdeck(card, stackSrc);
+        if (card.CanRemove)
+        {
+            var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
+            EffectsController.Trigger(TriggerCondition.Bottomdeck, context);
+            ServerNotifier.NotifyBottomdeck(card);
+            return base.PushBottomdeck(card, stackSrc);
+        }
+        return false;
     }
 
-    public override void PushTopdeck(GameCard card, IStackable stackSrc = null)
+    public override bool PushTopdeck(GameCard card, IStackable stackSrc = null)
     {
-        EffectsController.Trigger(TriggerCondition.Topdeck, cardTriggerer: card, stackTrigger: stackSrc, triggerer: Owner);
-        ServerNotifier.NotifyTopdeck(card);
-        base.PushTopdeck(card, stackSrc);
+        if (card.CanRemove)
+        {
+            var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
+            EffectsController.Trigger(TriggerCondition.Topdeck, context);
+            ServerNotifier.NotifyTopdeck(card);
+            return base.PushTopdeck(card, stackSrc);
+        }
+        return false;
     }
 
-    public override void ShuffleIn(GameCard card, IStackable stackSrc = null)
+    public override bool ShuffleIn(GameCard card, IStackable stackSrc = null)
     {
-        EffectsController.Trigger(TriggerCondition.Reshuffle, cardTriggerer: card, stackTrigger: stackSrc, triggerer: Owner);
-        ServerNotifier.NotifyReshuffle(card);
-        base.ShuffleIn(card, stackSrc);
+        if (card.CanRemove)
+        {
+            var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
+            EffectsController.Trigger(TriggerCondition.Reshuffle, context);
+            ServerNotifier.NotifyReshuffle(card);
+            return base.ShuffleIn(card, stackSrc);
+        }
+        return false;
     }
 }

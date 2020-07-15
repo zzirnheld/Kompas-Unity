@@ -9,10 +9,13 @@ public class AttackRestriction
     public const string DefenderIsCharacter = "Defender is Character";
     public const string DefenderIsAdjacent = "Defender is Adjacent";
     public const string DefenderIsEnemy = "Defender is Enemy";
+    public const string FriendlyTurn = "Friendly Turn";
+    public const string MaxPerTurn = "Maximum Per Turn";
 
     public const string ThisIsActive = "This is Activated";
 
-    public string[] Restrictions = new string[] { ThisIsCharacter, DefenderIsCharacter, DefenderIsAdjacent, DefenderIsEnemy };
+    public string[] Restrictions = new string[] { ThisIsCharacter, DefenderIsCharacter, DefenderIsAdjacent, DefenderIsEnemy, FriendlyTurn, MaxPerTurn };
+    public int maxAttacks = 1;
 
     public GameCard Card { get; private set; }
 
@@ -43,6 +46,12 @@ public class AttackRestriction
                     break;
                 case ThisIsActive:
                     if (!Card.Activated) return false;
+                    break;
+                case FriendlyTurn:
+                    if (Card.Controller != Card.Game.TurnPlayer) return false;
+                    break;
+                case MaxPerTurn:
+                    if (Card.AttacksThisTurn >= maxAttacks) return false;
                     break;
                 default:
                     throw new System.ArgumentException($"Could not understand attack restriction {r}");

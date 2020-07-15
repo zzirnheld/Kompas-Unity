@@ -18,6 +18,7 @@ public abstract class Game : MonoBehaviour
 
     //game mechanics
     public BoardController boardCtrl;
+    public AnnihilationController AnnihilationCtrl;
     //game objects
     public GameObject boardObject;
 
@@ -30,12 +31,9 @@ public abstract class Game : MonoBehaviour
 
     //game data
     public abstract IEnumerable<GameCard> Cards { get; }
-    public int maxCardsOnField = 0; //for pip generation purposes
-    public virtual int Leyload
-    {
-        get => maxCardsOnField;
-        set => maxCardsOnField = value;
-    }
+    public int FirstTurnPlayer { get; protected set; }
+    public int RoundCount = 1;
+    public int Leyload => RoundCount + boardCtrl.CardsWhere(c => c != null).Count;
 
     public TargetMode targetMode = TargetMode.Free;
 
@@ -62,5 +60,39 @@ public abstract class Game : MonoBehaviour
         }
 
         return false;
+    }
+    
+    private bool IsFriendlyAdjacentToCoords(int x, int y, GameCard potentialFriendly, Player friendly)
+    {
+        return boardCtrl.GetCardAt(x, y) == null
+            && potentialFriendly != null && potentialFriendly.IsAdjacentTo(x, y) 
+            && potentialFriendly.Controller == friendly;
+    }
+
+    public bool ValidStandardPlaySpace(int x, int y, Player friendly)
+    {
+        //first see if there's an adjacent friendly card to this space
+        if (boardCtrl.ExistsCardOnBoard(c => IsFriendlyAdjacentToCoords(x, y, c, friendly))) return true;
+        //if there isn't, check if the player is Surrounded
+        else
+        {
+            //iterate through all possible spaces
+            for (int i = 0; i < 7; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    //if there *is* a possible space to play it to, they're not surrounded
+                    if (boardCtrl.ExistsCardOnBoard(c => IsFriendlyAdjacentToCoords(i, j, c, friendly))) return false;
+                }
+            }
+            //if we didn't find a single place to play a card normally, any space is fair game, by the Surrounded rule
+            return true;
+        }
+    }
+
+
+    protected void ResetCardsForTurn()
+    {
+        foreach (var c in Cards) c?.ResetForTurn(TurnPlayer);
     }
 }

@@ -1,0 +1,34 @@
+{
+	"cardType":83,
+	"cardName":"Send Home",
+	"effText":"Annihilate a character adjacent to a Shaper.",
+	"effects":[
+		{
+			"triggerCondition":401,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
+				}
+			}",
+			"subeffectTypes":[0,311],
+			"subeffects":[
+				"{
+					\"boardRestriction\":
+					{
+						\"Blurb\":\"character to ANNIHILATE\",
+						\"restrictionsToCheck\":[103],
+						\"onBoardRestrictions\":[20],
+						\"AdjacencySubtypes\":[\"Shaper\"]
+					}
+				}",
+				"{}"
+			]
+		}
+	],
+	"fast":true,
+	"c":4,
+	"spellType":"Simple",
+	"subtypes":["Simple","Shaping"],
+	"subtypeText":"Simple Shaping"
+}

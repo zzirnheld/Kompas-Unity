@@ -83,7 +83,7 @@ public class ServerPlayer : Player
         Debug.Log($"Player {index} trying to activate effect of {effect?.Source?.CardName}");
         if (effect.CanBeActivatedBy(this))
         {
-            serverGame.EffectsController.PushToStack(effect, this);
+            serverGame.EffectsController.PushToStack(effect, this, new ActivationContext());
             serverGame.EffectsController.CheckForResponse();
         }
     }

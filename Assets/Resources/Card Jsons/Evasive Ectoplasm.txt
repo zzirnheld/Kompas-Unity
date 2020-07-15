@@ -1,0 +1,74 @@
+{
+	"cardType":67,
+	"cardName":"Evasive Ectoplasm",
+	"effText":"Shape: During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters. The first fight each round, if I’m fighting a WX character, give them -XW for the fight.",
+	"effects":[
+		{
+			"blurb":"Shape",
+			"activationRestriction":{
+				"Restrictions":[
+					"Friendly Turn",
+					"In Play"
+				]
+			},
+			"subeffectTypes":[4,5,121,201,103,309],
+			"subeffects":[
+				"{
+					\"spaceRestriction\":
+					{
+						\"Blurb\":\"to move Evasive Ectoplasm to\",
+						\"restrictionsToCheck\":[110],
+						\"ConnectednessRestriction\":{
+							\"restrictionsToCheck\":[2,3,103],
+							\"subtypesInclude\":[\"Ethereal\"]
+						}
+					}
+				}",
+				"{}",
+				"{
+					\"Modifier\":1
+				}",
+				"{
+					\"WhatToCount\":\"Distance to Coords Through\",
+					\"ThroughRestriction\":{
+						\"restrictionsToCheck\":[2,3,103],
+						\"subtypesInclude\":[\"Ethereal\"]
+					}
+				}",
+				"{
+					\"eMult\":-1
+				}",
+				"{}"
+			]
+		},
+		{
+			"triggerCondition":304,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0,502]
+				}
+			}",
+			"subeffectTypes":[50,203,501],
+			"subeffects":[
+				"{}",
+				"{
+					\"WhatToCount\":\"W\"
+				}",
+				"{
+					\"WMultiplier\":-1,
+					\"EndCondition\":305,
+					\"TriggerRestriction\":{
+						\"triggerRestrictions\":[0]
+					}
+				}"
+			]	
+		}
+	],
+	"n":1,
+	"e":2,
+	"s":3,
+	"w":3,
+	"subtypes":["Ethereal","Shaper"],
+	"subtypeText":"Ethereal Shaper"
+}

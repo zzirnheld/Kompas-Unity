@@ -1,0 +1,34 @@
+{
+	"cardType":83,
+	"cardName":"Dreamscape",
+	"effText":"The first time each turn a Shaper moves, reset their E and give them +1N.",
+	"effects":[
+		{
+			"triggerCondition":408,
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[1,101],
+					\"cardRestriction\":{
+						\"restrictionsToCheck\":[2,7],
+						\"subtypesInclude\":[\"Shaper\"]
+					}
+				}
+			}",
+			"subeffectTypes":[112,100],
+			"subeffects":[
+				"{
+					\"ResetE\":true
+				}",
+				"{
+					\"nChange\":1
+				}"
+			]	
+		}
+	],
+	"fast":true,
+	"c":2,
+	"spellType":"Enchant",
+	"subtypes":["Enchant","Shaping"],
+	"subtypeText":"Enchant Shaping"
+}

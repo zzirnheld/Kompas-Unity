@@ -3,7 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TemporaryNESWBuffAllSubeffect : TemporarySubeffect
+public class TemporaryNESWBuffAllSubeffect : TemporaryCardChangeSubeffect
 {
     public int NBuff;
     public int EBuff;
@@ -25,16 +25,19 @@ public class TemporaryNESWBuffAllSubeffect : TemporarySubeffect
         CardRestriction.Initialize(this);
     }
 
-    public override void Resolve()
+    protected override IEnumerable<(HangingEffect, GameCard)> CreateHangingEffects()
     {
+        var effs = new List<(HangingEffect, GameCard)>();
+
         IEnumerable<GameCard> cards = ServerGame.Cards.Where(c => CardRestriction.Evaluate(c));
 
         foreach(var card in cards)
         {
             var temp = new TemporaryNESWBuff(ServerGame, TriggerRestriction, EndCondition,
                 card, NBuff, EBuff, SBuff, WBuff);
+            effs.Add((temp, card));
         }
 
-        ServerEffect.ResolveNextSubeffect();
+        return effs;
     }
 }

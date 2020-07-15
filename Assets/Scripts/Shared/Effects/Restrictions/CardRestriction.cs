@@ -22,8 +22,9 @@ public class CardRestriction
         SameOwner = 8,
         Enemy = 9,
         Summoned = 10,
-        DistinctName = 11,
+        DistinctNameFromTargets = 11,
         SameName = 12,
+        DistinceNameFromSource = 13,
         Avatar = 50,
         Distinct = 99,
         //location
@@ -125,12 +126,15 @@ public class CardRestriction
                 case CardRestrictions.Summoned:
                     if (!potentialTarget.Summoned) return false;
                     break;
-                case CardRestrictions.DistinctName:
+                case CardRestrictions.DistinctNameFromTargets:
                     //checks if any target shares a name with this one
                     if (Subeffect.Effect.Targets.Where(card => card.CardName == potentialTarget.CardName).Any()) return false;
                     break;
                 case CardRestrictions.SameName: //note: same name as this subeffect's target
                     if (Subeffect.Target.CardName != potentialTarget.CardName) return false;
+                    break;
+                case CardRestrictions.DistinceNameFromSource:
+                    if (Subeffect.Source.CardName == potentialTarget.CardName) return false;
                     break;
                 case CardRestrictions.Avatar:
                     if (!(potentialTarget.IsAvatar)) return false;

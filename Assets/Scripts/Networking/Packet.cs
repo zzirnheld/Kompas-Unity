@@ -23,7 +23,7 @@ namespace KompasNetworking
             Attach = 104,
             AddAsEnemyAndAttach = 105,
             EndTurn = 150,
-            Leyload = 151,
+            //Leyload = 151,
             //move cards around
             Topdeck = 200,
             Discard = 201,
@@ -34,6 +34,7 @@ namespace KompasNetworking
             Bottomdeck = 206,
             Draw = 207,
             Delete = 208,
+            Annihilate = 209,
             //card properties
             SetNESW = 301,
             Negate = 302,
@@ -327,7 +328,7 @@ namespace KompasNetworking
             Debug.Log($"Getting list restriction for {string.Join(", ", normalArgs)}");
             GameCard thatHasEffect = clientGame.GetCardWithID(cardID);
             Effect eff = thatHasEffect.Effects.ElementAt(EffIndex);
-            DummyListTargetSubeffect subeff = eff.Subeffects[normalArgs[2]] as DummyListTargetSubeffect;
+            DummyListTargetSubeffect subeff = eff.Subeffects[SubeffIndex] as DummyListTargetSubeffect;
 
             if (subeff == null)
             {
@@ -362,7 +363,6 @@ namespace KompasNetworking
                 case Command.EffectResolving:
                 case Command.SetEnemyPips:
                 case Command.SetPips:
-                case Command.Leyload:
                 case Command.SetN:
                 case Command.SetE:
                 case Command.SetS:

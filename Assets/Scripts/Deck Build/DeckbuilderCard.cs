@@ -16,7 +16,7 @@ public abstract class DeckbuilderCard : CardBase
         image = GetComponent<Image>();
     }
 
-    public void SetInfo(CardSearchController searchCtrl, SerializableCard card, bool inDeck)
+    public virtual void SetInfo(CardSearchController searchCtrl, SerializableCard card, bool inDeck)
     {
         SetInfo(card);
         SetImage(CardName);

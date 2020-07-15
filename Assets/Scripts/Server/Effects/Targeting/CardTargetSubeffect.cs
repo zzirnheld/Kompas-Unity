@@ -20,10 +20,10 @@ public abstract class CardTargetSubeffect : ServerSubeffect
         //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
         if (cardRestriction.Evaluate(card))
         {
-            ServerEffect.Targets.Add(card);
+            Debug.Log("Adding " + card.CardName + " as target");
+            ServerEffect.AddTarget(card);
             EffectController.ServerNotifier.AcceptTarget();
             ServerEffect.ResolveNextSubeffect();
-            Debug.Log("Adding " + card.CardName + " as target");
             return true;
         }
 
