@@ -1,23 +1,20 @@
 {
 	"cardType":67,
 	"cardName":"III - The Empress",
-	"effText":"When you draw X, you can pay half X pips to hand-summon a character with S <= X.",
+	"effText":"When you draw X, you can hand-summon a character with S <= X.",
 	"effects":[
 		{
 			"triggerCondition":101,
 			"trigger":
 			"{
-				\"Blurb\":\"Pay half X pips to hand-summon character with S <= X?\",
+				\"Blurb\":\"Hand-summon character with S <= X?\",
 				\"Optional\":true,
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,200]
 				}
 			}",
-			"subeffectTypes":[102,3,4,300],
+			"subeffectTypes":[3,4,300],
 			"subeffects":[
-				"{
-					\"xDivisor\":2
-				}",
 				"{
 					\"cardRestriction\":
 					{
