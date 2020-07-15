@@ -28,8 +28,8 @@
 	],
 	"n":4,
 	"e":12,
-	"s":14,
-	"w":15,
+	"s":15,
+	"w":12,
 	"subtypes":["Tarocco","Mage"],
 	"subtypeText":"Tarocco Mage"
 }
