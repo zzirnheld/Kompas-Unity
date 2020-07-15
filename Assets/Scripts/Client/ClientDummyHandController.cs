@@ -34,4 +34,10 @@ public class ClientDummyHandController : ClientHandController
             Destroy(card.gameObject);
         }
     }
+
+    public override void SpreadOutCards()
+    {
+        base.SpreadOutCards();
+        foreach(var c in hand) c.transform.eulerAngles = new Vector3(0, 0, 180);
+    }
 }

@@ -7,7 +7,7 @@ public abstract class HandController : MonoBehaviour
 {
     public Player Owner;
 
-    private List<GameCard> hand = new List<GameCard>();
+    protected List<GameCard> hand = new List<GameCard>();
 
     public int HandSize { get { return hand.Count; } }
 
@@ -45,7 +45,7 @@ public abstract class HandController : MonoBehaviour
         RemoveFromHand(hand[index]);
     }
 
-    public void SpreadOutCards()
+    public virtual void SpreadOutCards()
     {
         //iterate through children, set the z coord
         for (int i = 0; i < hand.Count; i++)

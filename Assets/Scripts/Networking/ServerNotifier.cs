@@ -193,12 +193,6 @@ public class ServerNotifier : MonoBehaviour
         SendPackets(outPacket, outPacketInverted);
     }
 
-    public void NotifyDraw(GameCard toDraw)
-    {
-        //I think it's equivalent?
-        NotifyRehand(toDraw);
-    }
-
     public void NotifyAddToDeck(GameCard added)
     {
         //let everyone know

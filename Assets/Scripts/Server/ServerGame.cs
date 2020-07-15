@@ -281,7 +281,6 @@ public class ServerGame : Game {
 
         //draw for turn and store what was drawn
         GameCard drawn = Draw(TurnPlayerIndex);
-        if(drawn != null) TurnServerPlayer.ServerNotifier.NotifyDraw(drawn);
         TurnServerPlayer.ServerNotifier.NotifySetTurn(this, TurnPlayerIndex);
 
         //trigger turn start effects

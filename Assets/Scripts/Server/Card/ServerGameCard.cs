@@ -74,7 +74,9 @@ public class ServerGameCard : GameCard
         var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller ?? Controller);
         EffectsController.Trigger(TriggerCondition.Remove, context);
         base.Remove(stackSrc);
-        foreach (var aug in Augments) aug.Discard();
+        //copy the enumeration so that you can edit the original
+        var augments = new List<GameCard>(Augments);
+        foreach (var aug in augments) aug.Discard();
         return true;
     }
 

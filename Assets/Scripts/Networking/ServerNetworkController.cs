@@ -191,7 +191,6 @@ namespace KompasNetworking
             //draw and store what was drawn
             GameCard toDraw = sGame.Draw(Player.index);
             if (toDraw == null) return; //deck was empty
-            ServerNotifier.NotifyDraw(toDraw);
             sGame.EffectsController.CheckForResponse();
         }
 
