@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Unstable Dreaming",
-	"effText":"When I’m cast, handsummon a Shaper, but annihilate them when turns start.",
+	"effText":"When I’m cast, handsummon a Shaper, but annihilate them when your turns start.",
 	"effects":[
 		{
 			"triggerCondition":401,

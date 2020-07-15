@@ -1,22 +1,8 @@
 {
 	"cardType":67,
 	"cardName":"Dreamspace",
-	"effText":"Transient: When turns start, kill me. When I'm summoned, deck-summon a copy of me.",
+	"effText":"When I'm summoned, deck-summon a copy of me.",
 	"effects":[
-		{
-			"triggerCondition":0,
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1]
-				}
-			}",
-			"subeffectTypes":[5,301],
-			"subeffects":[
-				"{}",
-				"{}"
-			]
-		},
 		{
 			"triggerCondition":401,
 			"trigger":

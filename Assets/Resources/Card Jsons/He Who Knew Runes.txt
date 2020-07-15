@@ -72,7 +72,7 @@
 	],
 	"n":1,
 	"e":6,
-	"s":5,
+	"s":4,
 	"w":4,
 	"subtypes":["Ethereal","Shaper","Mage"],
 	"subtypeText":"Ethereal Shaper Mage"

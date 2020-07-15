@@ -8,7 +8,7 @@
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,100],
+					\"triggerRestrictions\":[1,101],
 					\"cardRestriction\":{
 						\"restrictionsToCheck\":[2,7,11],
 						\"subtypesInclude\":[\"Shaper\"]
@@ -32,7 +32,7 @@
 	],
 	"n":0,
 	"e":5,
-	"s":5,
+	"s":4,
 	"w":5,
 	"subtypes":["Ethereal","Shaper"],
 	"subtypeText":"Ethereal Shaper"
