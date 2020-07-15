@@ -55,7 +55,9 @@
 			"Defender is Character",
 			"Defender is Adjacent",
 			"Defender is Enemy",
-			"This is Activated"
+			"This is Activated",
+			"Friendly Turn",
+			"Maximum Per Turn"
 		]
 	},
 	"n":2,

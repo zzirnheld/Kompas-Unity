@@ -117,6 +117,8 @@ public abstract class GameCard : CardBase {
     public int SpacesMoved { get; set; }
     public int SpacesCanMove => N - SpacesMoved;
 
+    public int AttacksThisTurn { get; set; } = 0;
+
     //restrictions
     public MovementRestriction MovementRestriction { get; private set; }
     public AttackRestriction AttackRestriction { get; private set; }
@@ -249,6 +251,7 @@ public abstract class GameCard : CardBase {
         }
 
         SpacesMoved = 0;
+        AttacksThisTurn = 0;
         TurnsOnBoard++;
     }
 
