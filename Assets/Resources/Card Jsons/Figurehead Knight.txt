@@ -11,9 +11,9 @@
 					\"triggerRestrictions\":[1]
 				}
 			}",
-			"subeffectTypes":[502],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Temporary NESW Buff All\",
 					\"EBuff\":1,
 					\"WBuff\":1,
 					\"EndCondition\":0

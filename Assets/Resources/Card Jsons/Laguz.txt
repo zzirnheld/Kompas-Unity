@@ -14,16 +14,18 @@
 					}
 				}
 			}",
-			"subeffectTypes":[4,309],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
 						\"restrictionsToCheck\":[1,251],
 						\"C\":1
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Move\"
+				}"
 			]	
 		}
 	],

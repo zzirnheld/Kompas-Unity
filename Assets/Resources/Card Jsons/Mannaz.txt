@@ -11,29 +11,38 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[404,1,405,12,304,350],
+			"subeffectTypes":[404,8,405,12,304,350],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Jump on Effect Impossible\",
 					\"JumpTo\":3
 				}",
 				"{
-					\"cardRestriction\":
+					\"subeffType\":\"Choose From List\",
+					\"CardRestriction\":
 					{
 						\"Blurb\":\"character for Mannaz to search (to hand)\",
 						\"restrictionsToCheck\":[3,7,102,501],
 						\"constant\":10
 					}
 				}",
-				"{}",
 				"{
+					\"subeffType\":\"Clear Jump on Effect Impossible\",
+				}",
+				"{
+					\"subeffType\":\"Add Rest\",
 					\"cardRestriction\":
 					{
 						\"restrictionsToCheck\":[7,102,501,600],
 						\"constant\":10
 					}
 				}",
-				"{}",
-				"{}"
+				"{
+					\"subeffType\":\"Rehand\"
+				}",
+				"{
+					\"subeffType\":\"Bottomdeck Rest\"
+				}"
 			]	
 		}
 	],

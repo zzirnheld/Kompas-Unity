@@ -11,9 +11,9 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[0,203,102,301,1,4,300],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"character for Odal to kill\",
@@ -21,11 +21,17 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Set X by Target Value\",
 					\"WhatToCount\":\"S\"
 				}",
-				"{}",
-				"{}",
 				"{
+					\"subeffType\":\"Pay Pips\"
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Deck Target\"
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"Runer for Odal to deck-summon\",
@@ -34,13 +40,16 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"where for Odal to deck-summon its target\",
 						\"restrictionsToCheck\":[0]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Play\"
+				}"
 			]	
 		}
 	],

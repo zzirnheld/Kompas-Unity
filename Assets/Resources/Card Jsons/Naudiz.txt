@@ -11,9 +11,9 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[110],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Change NESW All\",
 					\"BoardRestriction\":
 					{
 						\"restrictionsToCheck\":[3,9,103]

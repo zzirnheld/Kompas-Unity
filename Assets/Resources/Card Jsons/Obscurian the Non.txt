@@ -11,9 +11,9 @@
 					\"triggerRestrictions\":[1]
 				}
 			}",
-			"subeffectTypes":[0,301],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"adjacent Dragon for Obscurian to kill\",
@@ -22,7 +22,9 @@
 						\"onBoardRestrictions\":[0]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Discard\"
+				}"
 			]	
 		},
 		{
@@ -35,13 +37,16 @@
 					\"triggerRestrictions\":[0,1]
 				}
 			}",
-			"subeffectTypes":[5,100,0,100],
 			"subeffects":[
-				"{}",
 				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
 					\"eChange\":-1
 				}",
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"Avatar for Obscurian to give -2E.\",
@@ -50,6 +55,7 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Change NESW\",
 					\"eChange\":-2
 				}"
 			]	

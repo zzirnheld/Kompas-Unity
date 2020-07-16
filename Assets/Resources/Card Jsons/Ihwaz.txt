@@ -11,9 +11,9 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[0,0,310],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"for Ihwaz to swap (1/2)\",
@@ -21,13 +21,16 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"for Ihwaz to swap (2/2)\",
 						\"restrictionsToCheck\":[3,103,600]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Swap\"
+				}"
 			]
 		}
 	],

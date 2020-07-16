@@ -10,28 +10,36 @@
 					"In Play"
 				]
 			},
-			"subeffectTypes":[8,401,308,10,401,305],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Choose From List\",
 					\"MaxCanChoose\":1,
 					\"CardRestriction\":
 					{
-						\"Blurb\":\"for High Priestess to put on top next\",
+						\"Blurb\":\"for High Priestess to put on top next (to end up under the last card you chose)\",
 						\"restrictionsToCheck\":[7,102,501,600],
 						\"constant\":4
 					}
 				}",
 				"{
+					\"subeffType\":\"Loop T Times\",
 					\"T\":5,
 					\"JumpTo\":0
 				}",
-				"{}",
-				"{}",
 				"{
+					\"subeffType\":\"Topdeck\"
+				}",
+				"{
+					\"subeffType\":\"Delete Target\"
+				}",
+				"{
+					\"subeffType\":\"Loop T Times\",
 					\"T\":5,
 					\"JumpTo\":2
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Draw\"
+				}"
 			]	
 		}
 	],

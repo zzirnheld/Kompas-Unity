@@ -13,11 +13,15 @@
 			}",
 			"subeffectTypes":[10,404,8,405,12,304,10,402,350],
 			"subeffects":[
-				"{}",
 				"{
+					\"subeffType\":\"Delete Target\"
+				}",
+				"{
+					\"subeffType\":\"Jump on Effect Impossible\",
 					\"JumpTo\":4
 				}",
 				"{
+					\"subeffType\":\"Choose From List\",
 					\"CardRestriction\":
 					{
 						\"Blurb\":\"spell for Perthro to search (to hand)\",
@@ -26,20 +30,30 @@
 					},
 					\"MaxCanChoose\":3
 				}",
-				"{}",
 				"{
+					\"subeffType\":\"Clear Jump on Effect Impossible\"
+				}",
+				"{
+					\"subeffType\":\"Add Rest\"
+				}"
+				"{
+					\"subeffType\":\"Rehand\",
 					\"cardRestriction\":
 					{
 						\"restrictionsToCheck\":[7,102,501,600],
 						\"constant\":10
 					}
 				}",
-				"{}",
-				"{}",
 				"{
+					\"subeffType\":\"Delete Target\"
+				}",
+				"{
+					\"subeffType\":\"Loop While Have Targets\",
 					\"JumpTo\":5
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Bottomdeck Rest\"
+				}"
 			]	
 		}
 	],

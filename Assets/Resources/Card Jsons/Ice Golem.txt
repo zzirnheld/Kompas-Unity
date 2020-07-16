@@ -11,9 +11,9 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[0,503],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"for Ice Golem to temporarily negate\",
@@ -21,6 +21,7 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Temporary Negate\",
 					\"EndCondition\":0,
 					\"TriggerRestriction\":{
 						\"triggerRestrictions\":[300]

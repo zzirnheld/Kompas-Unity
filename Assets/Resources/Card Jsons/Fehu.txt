@@ -14,10 +14,13 @@
 			"subeffectTypes":[202,306],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Set X by Math\",
 					\"Multiplier\":0,
 					\"Modifier\":2
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Draw X\"
+				}"
 			]	
 		}
 	],

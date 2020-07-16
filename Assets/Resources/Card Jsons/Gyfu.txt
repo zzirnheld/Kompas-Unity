@@ -11,9 +11,9 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[0,100,408,101],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"for Gyfu to give +1EW\",
@@ -21,14 +21,17 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Change NESW\",
 					\"eChange\":1,
 					\"wChange\":1
 				}",
 				"{
+					\"subeffType\":\"Count X Loop\",
 					\"CanDecline\":true,
 					\"JumpTo\":0
 				}",
 				"{
+					\"subeffType\":\"Add Pips\",
 					\"xMultiplier\":1
 				}"
 			]	

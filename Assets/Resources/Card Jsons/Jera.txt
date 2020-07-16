@@ -11,15 +11,18 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[409,101,600],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Conditionally End Effect Resolution\",
 					\"Condition\":\"Must be Friendly Turn\"
 				}",
 				"{
+					\"subeffType\":\"Add Pips\",
 					\"modifier\":5
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"End Turn\"
+				}"
 			]	
 		}
 	],

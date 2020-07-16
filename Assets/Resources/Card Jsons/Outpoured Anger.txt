@@ -17,8 +17,11 @@
 			}",
 			"subeffectTypes":[5,4,309],
 			"subeffects":[
-				"{}",
 				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"to move Outpoured Anger to\",
@@ -26,7 +29,9 @@
 					},
 					\"TargetIndex\":-2
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Move\"
+				}"
 			]	
 		}
 	],

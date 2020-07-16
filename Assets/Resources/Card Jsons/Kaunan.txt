@@ -11,9 +11,9 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[0,100],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"for Kaunan to give -3EW\",
@@ -21,6 +21,7 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Change NESW\",
 					\"eChange\":-3,
 					\"wChange\":-3
 				}"

@@ -11,9 +11,9 @@
 					"In Play"
 				]
 			},
-			"subeffectTypes":[3,307,408,306],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"for Magician to hand-bottomdeck\",
@@ -21,13 +21,16 @@
 					}
 				}",
 				"{
-					\"TargetIndex\":-1
+					\"subeffType\":\"Bottomdeck\"
 				}",
 				"{
+					\"subeffType\":\"Count X Loop\",
 					\"CanDecline\":true,
 					\"JumpTo\":0
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Draw X\"
+				}"
 			]	
 		}
 	],

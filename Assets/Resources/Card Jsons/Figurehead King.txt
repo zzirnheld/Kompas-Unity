@@ -11,39 +11,41 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[10,409,3,11,10,303,10,408,101],
 			"subeffects":[
-				"{}",
 				"{
-					\"Condition\":\"None Fit Restriction\",
-					\"CardRestriction\":
-					{
-						\"restrictionsToCheck\":[2,7,103],
-						\"subtypesInclude\":[\"Tarocco\"]
-					}
+					\"subeffType\":\"Delete Target\"
 				}",
 				"{
+					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
 						\"restrictionsToCheck\":[7,100]
 					}
 				}",
 				"{
+					\"subeffType\":\"Target All\",
 					\"cardRestriction\":
 					{
 						\"restrictionsToCheck\":[7,100,600]
 					}
 				}",
 				"{
+					\"subeffType\":\"Delete Target\",
 					\"DeleteIndex\":0
 				}",
-				"{}",
-				"{}",
 				"{
+					\"subeffType\":\"Reshuffle\"
+				}",
+				"{
+					\"subeffType\":\"Delete Target\"
+				}",
+				"{
+					\"subeffType\":\"Count X Loop\",
 					\"CanDecline\":false,
 					\"JumpTo\":5
 				}",
 				"{
+					\"subeffType\":\"Add Pips\",
 					\"xMultiplier\":1
 				}"
 			]
