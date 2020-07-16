@@ -205,7 +205,7 @@ public class ServerGame : Game {
         GivePlayerPips(TurnServerPlayer, pipsToSet);
     }
 
-    public void Attack(GameCard attacker, GameCard defender, ServerPlayer instigator)
+    public void Attack(GameCard attacker, GameCard defender, ServerPlayer instigator, bool playerInitiated = false)
     {
         Debug.Log($"ServerNetworkController {attacker.CardName} attacking {defender.CardName} at {defender.BoardX}, {defender.BoardY}");
         //push the attack to the stack, then check if any player wants to respond before resolving it
@@ -213,6 +213,7 @@ public class ServerGame : Game {
         EffectsController.PushToStack(attack, new ActivationContext());
         //check for triggers related to the attack (if this were in the constructor, the triggers would go on the stack under the attack
         attack.Declare();
+        if (playerInitiated) attacker.AttacksThisTurn++;
         EffectsController.CheckForResponse();
     }
 
