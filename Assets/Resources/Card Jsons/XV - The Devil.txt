@@ -17,7 +17,11 @@
 				}
 			}",
 			"subeffectTypes":[305],
-			"subeffects":["{}"]
+			"subeffects":[
+				"{
+					\"subeffType\":\"Draw\"
+				}"
+			]
 		}
 	],
 	"n":2,

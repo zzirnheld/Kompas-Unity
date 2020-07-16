@@ -11,9 +11,9 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[3,4,300,550],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":{
 						\"Blurb\":\"Shaper to hand-summon\",
 						\"restrictionsToCheck\":[2,3,7,100],
@@ -21,14 +21,18 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"where to handsummon the Shaper\",
 						\"restrictionsToCheck\":[0]
 					}
 				}",
-				"{}",
 				"{
+					\"subeffType\":\"Play\"
+				}",
+				"{
+					\"subeffType\":\"Hanging Annihilate\",
 					\"EndCondition\":0,
 					\"TriggerRestriction\":
 					{

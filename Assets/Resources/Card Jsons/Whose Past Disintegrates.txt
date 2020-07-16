@@ -14,6 +14,7 @@
 			"subeffectTypes":[4,5,121,201,103,309],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"to move Whose Past Disintegrates to\",
@@ -24,11 +25,15 @@
 						}
 					}
 				}",
-				"{}",
 				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Spend Movement\",
 					\"Modifier\":1
 				}",
 				"{
+					\"subeffType\":\"Set X by Gamestate Value\",
 					\"WhatToCount\":\"Distance to Coords Through\",
 					\"ThroughRestriction\":{
 						\"restrictionsToCheck\":[2,3,103],
@@ -36,9 +41,12 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"X Change NESW\",
 					\"eMult\":-1
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Move\"
+				}"
 			]
 		},
 		{
@@ -54,8 +62,11 @@
 			}",
 			"subeffectTypes":[5,103],
 			"subeffects":[
-				"{}",
 				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"X Change NESW\",
 					\"eMult\":-1
 				}"
 			]	

@@ -11,16 +11,19 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[7,504,501],
 			"subeffects":[
-				"{}",
 				"{
+					\"subeffType\":\"Target Augmented Card\"
+				}",
+				"{
+					\"subeffType\":\"Temporary Activate\",
 					\"EndCondition\":451,
 					\"TriggerRestriction\":{
 						\"triggerRestrictions\":[0]
 					}
 				}",
 				"{
+					\"subeffType\":\"Temporary NESW Buff\",
 					\"NBuff\":1,
 					\"EndCondition\":451,
 					\"TriggerRestriction\":{
@@ -37,10 +40,13 @@
 					\"triggerRestrictions\":[1,10]
 				}
 			}",
-			"subeffectTypes":[5,304],
 			"subeffects":[
-				"{}",
-				"{}"
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Rehand\"
+				}"
 			]
 		}
 	],

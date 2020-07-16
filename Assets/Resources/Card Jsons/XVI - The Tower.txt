@@ -15,9 +15,14 @@
 			}",
 			"subeffectTypes":[5,301,0,103,306],
 			"subeffects":[
-				"{}",
-				"{}",
 				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"Summoned character for Tower to give -XE\",
@@ -26,9 +31,12 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"X Change NESW\",
 					\"eMult\":-1
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Draw X\"
+				}"
 			]
 		}
 	],

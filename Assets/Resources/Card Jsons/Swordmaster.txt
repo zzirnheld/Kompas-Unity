@@ -11,9 +11,9 @@
 					"In Play"
 				]
 			},
-			"subeffectTypes":[0,100],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"adjacent Warrior for Swordmaster to give +1EW\",
@@ -23,6 +23,7 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Change NESW\",
 					\"nChange\":0,
 					\"eChange\":1,
 					\"sChange\":0,

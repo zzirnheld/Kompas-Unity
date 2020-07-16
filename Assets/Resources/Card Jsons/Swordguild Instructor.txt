@@ -11,9 +11,9 @@
 					"In Play"
 				]
 			},
-			"subeffectTypes":[0,100],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"Warrior for Instructor to give +1W\",
@@ -23,6 +23,7 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Change NESW\",
 					\"nChange\":0,
 					\"eChange\":0,
 					\"sChange\":0,

@@ -11,9 +11,9 @@
 					"In Play"
 				]
 			},
-			"subeffectTypes":[11,404,9,405,4,300,10,400,303,10,402],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Target All\",
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"Warrior for the General to deck-summon\",
@@ -23,9 +23,11 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Jump on Effect Impossible\",
 					\"JumpTo\":8
 				}",
 				"{
+					\"subeffType\":\"Choose From List Saving Rest\",
 					\"CardRestriction\":
 					{
 						\"restrictionsToCheck\":[2,3,102,501],
@@ -37,30 +39,37 @@
 						\"Restrictions\":[1]
 					}
 				}",
-				"{}",
 				"{
+					\"subeffType\":\"Clear Jump on Effect Impossible\"
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
 						\"restrictionsToCheck\":[0]
 					}
 				}",
 				"{
-					\"TargetIndex\":-1,
-					\"SpaceIndex\":-1
+					\"subeffType\":\"Play\"
 				}",
 				"{
+					\"subeffType\":\"Delete Target\",
 					\"DeleteIndex\":-1
 				}",
 				"{
+					\"subeffType\":\"Loop X Times\",
 					\"JumpTo\":4
 				}",
 				"{
+					\"subeffType\":\"Bottomdeck\",
 					\"TargetIndex\":-1
 				}",
 				"{
+					\"subeffType\":\"Delete Target\",
 					\"DeleteIndex\":-1
 				}",
 				"{
+					\"subeffType\":\"Loop While Have Targets\",
 					\"JumpTo\":8
 				}"
 			]

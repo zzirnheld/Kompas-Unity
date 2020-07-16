@@ -12,11 +12,13 @@
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,200]
 				}
-			}",
-			"subeffectTypes":[5,0,103,103],
+			}",=
 			"subeffects":[
-				"{}",
 				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"Summoned character for Hanged Man to swap give -XE\",
@@ -25,10 +27,12 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"X Change NESW\",
 					\"eMult\":-1,
 					\"TargetIndex\":0
 				}",
 				"{
+					\"subeffType\":\"X Change NESW\",
 					\"eMult\":-1,
 					\"TargetIndex\":1
 				}"

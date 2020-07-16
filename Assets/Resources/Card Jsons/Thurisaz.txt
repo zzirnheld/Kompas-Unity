@@ -11,9 +11,9 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[0,203,103],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"character for Thurisaz to double W\",
@@ -21,9 +21,11 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Set X by Target Value\",
 					\"WhatToCount\":\"W\"
 				}",
 				"{
+					\"subeffType\":\"X Change NESW\",
 					\"wMult\":1
 				}"
 			]	

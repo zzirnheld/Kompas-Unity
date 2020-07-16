@@ -13,9 +13,9 @@
 					\"triggerRestrictions\":[1,200]
 				}
 			}",
-			"subeffectTypes":[0,107],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"character for Moon to swap EW\",
@@ -23,6 +23,7 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Swap Target's Own NESW\",
 					\"Stat1\":1,
 					\"Stat2\":3
 				}"

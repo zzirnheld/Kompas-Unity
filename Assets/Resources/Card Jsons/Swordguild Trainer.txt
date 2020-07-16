@@ -11,10 +11,23 @@
 					"In Play"
 				]
 			},
-			"subeffectTypes":[0,100],
 			"subeffects":[
-				"{\"boardRestriction\":{\"restrictionsToCheck\":[2,3,103],\"subtypesInclude\":[\"Warrior\"],\"onBoardRestrictions\":[0]}}",
-				"{\"nChange\":1,\"eChange\":0,\"sChange\":0,\"wChange\":0,\"targetIndex\":0}"
+				"{
+					\"subeffType\":\"Board Target\",
+					\"boardRestriction\":{
+						\"restrictionsToCheck\":[2,3,103],
+						\"subtypesInclude\":[\"Warrior\"],
+						\"onBoardRestrictions\":[0]
+					}
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
+					\"nChange\":1,
+					\"eChange\":0,
+					\"sChange\":0,
+					\"wChange\":0,
+					\"targetIndex\":0
+				}"
 			]
 		}
 	],

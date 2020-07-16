@@ -11,9 +11,9 @@
 					"In Play"
 				]
 			},
-			"subeffectTypes":[0,406,100,407,100],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"adjacent Warrior for Tactician to give +5E or +5W\",
@@ -23,19 +23,24 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Choose Effect Option\",
 					\"ChoiceBlurb\":\"Give +5E or +5W?\",
 					\"OptionBlurbs\":[\"+5E\",\"+5W\"],
 					\"OptionJumpIndices\":[2,4]
 				}",
 				"{
+					\"subeffType\":\"Change NESW\",
 					\"nChange\":0,
 					\"eChange\":5,
 					\"sChange\":0,
 					\"wChange\":0,
 					\"TargetIndex\":0
 				}",
-				"{}",
 				"{
+					\"subeffType\":\"End Effect Resolution\"
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
 					\"nChange\":0,
 					\"eChange\":0,
 					\"sChange\":0,

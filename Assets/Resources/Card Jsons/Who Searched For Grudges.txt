@@ -11,9 +11,9 @@
 					"In Play"
 				]
 			},
-			"subeffectTypes":[4,5,121,201,103,309],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"to move Who Searched for Grudges to\",
@@ -24,11 +24,15 @@
 						}
 					}
 				}",
-				"{}",
 				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Spend Movement\",
 					\"Modifier\":1
 				}",
 				"{
+					\"subeffType\":\"Set X by Gamestate Value\",
 					\"WhatToCount\":\"Distance to Coords Through\",
 					\"ThroughRestriction\":{
 						\"restrictionsToCheck\":[2,3,103],
@@ -36,9 +40,12 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"X Change NESW\",
 					\"eMult\":-1
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Move\"
+				}"
 			]
 		},
 		{
@@ -49,30 +56,44 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[404,3,3,301,301,407,5,301],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Jump on Effect Impossible\",
 					\"JumpTo\":4
 				}",
 				"{
+					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":{
 						\"Blurb\":\"for Who Searched For Grudges to discard (1/2)\",
 						\"restrictionsToCheck\":[7,100]
 					}
 				}",
 				"{
+					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":{
 						\"Blurb\":\"for Who Searched For Grudges to discard (2/2)\",
 						\"restrictionsToCheck\":[7,100,600]
 					}
 				}",
-				"{}",
 				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Discard\",
 					\"TargetIndex\":-2
 				}",
-				"{}",
-				"{}",
-				"{}"
+				"{
+					\"subeffType\":\"End Effect Resolution\"
+				}",
+				"{
+					\"subeffType\":\"Clear Jump on Effect Impossible\"
+				}"
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}"
 			]	
 		}
 	],

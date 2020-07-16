@@ -14,8 +14,11 @@
 					}
 				}
 			}",
-			"subeffectTypes":[305],
-			"subeffects":["{}"]	
+			"subeffects":[
+				"{
+					\"subeffType\":\"Draw\"
+				}"
+			]	
 		},
 		{
 			"triggerCondition":101,
@@ -27,9 +30,9 @@
 					\"triggerRestrictions\":[1,200]
 				}
 			}",
-			"subeffectTypes":[0,406,100,407,100],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"adjacent friendly character for Fortitude to give +1E or +1W\",
@@ -38,19 +41,24 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Choose Effect Option\",
 					\"ChoiceBlurb\":\"Give +1E or +1W?\",
 					\"OptionBlurbs\":[\"+1E\",\"+1W\"],
 					\"OptionJumpIndices\":[2,4]
 				}",
 				"{
+					\"subeffType\":\"Change NESW\",
 					\"nChange\":0,
 					\"eChange\":1,
 					\"sChange\":0,
 					\"wChange\":0,
 					\"TargetIndex\":0
 				}",
-				"{}",
 				"{
+					\"subeffType\":\"End Effect Resolution\"
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
 					\"nChange\":0,
 					\"eChange\":0,
 					\"sChange\":0,

@@ -13,8 +13,11 @@
 			}",
 			"subeffectTypes":[5,103],
 			"subeffects":[
-				"{}",
 				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"X Change NESW\",
 					\"wMult\":1
 				}"
 			]	

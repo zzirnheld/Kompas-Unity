@@ -11,9 +11,9 @@
 					"In Play"
 				]
 			},
-			"subeffectTypes":[200,101],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Set X by Board Count\",
 					\"boardRestriction\":
 						{
 							\"restrictionsToCheck\":[2,3,103],
@@ -22,6 +22,7 @@
 						}
 				}",
 				"{
+					\"subeffType\":\"Add Pips\",
 					\"xMultiplier\":1,
 					\"xDivisor\":2,
 					\"modifier\":0,

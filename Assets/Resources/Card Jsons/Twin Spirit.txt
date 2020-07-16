@@ -11,9 +11,9 @@
 					"In Play"
 				]
 			},
-			"subeffectTypes":[4,5,121,201,103,309],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"to move Unstable Soul to\",
@@ -24,11 +24,15 @@
 						}
 					}
 				}",
-				"{}",
 				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Spend Movement\",
 					\"Modifier\":1
 				}",
 				"{
+					\"subeffType\":\"Set X by Gamestate Value\",
 					\"WhatToCount\":\"Distance to Coords Through\",
 					\"ThroughRestriction\":{
 						\"restrictionsToCheck\":[2,3,103],
@@ -36,9 +40,12 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"X Change NESW\",
 					\"eMult\":-1
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Move\"
+				}"
 			]
 		},
 		{
@@ -52,10 +59,12 @@
 					}
 				}
 			}",
-			"subeffectTypes":[5,8,4,300],
 			"subeffects":[
-				"{}",
 				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Choose From List\",
 					\"CardRestriction\":{
 						\"Blurb\":\"copy of Twin Spirit to decksummon\",
 						\"restrictionsToCheck\":[7,12,102]
@@ -63,13 +72,16 @@
 					\"MaxCanChoose\":1
 				}",
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"where for Twin Spirit to decksummon a copy of itself\",
 						\"restrictionsToCheck\":[0]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Play\"
+				}"
 			]	
 		}
 	],

@@ -11,9 +11,9 @@
 					"In Play"
 				]
 			},
-			"subeffectTypes":[0,252,301,0,301],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"Warrior for Strategist to sacrifice\",
@@ -22,11 +22,14 @@
 						\"onBoardRestrictions\":[]
 					}
 				}",
-				"{}",
 				"{
-					\"TargetIndex\":-1
+					\"subeffType\":\"Set X by Target S\"
 				}",
 				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"Warrior for Strategist to kill\",
@@ -35,7 +38,7 @@
 					}
 				}",
 				"{
-					\"TargetIndex\":-1
+					\"subeffType\":\"Discard\"
 				}"
 			]
 		}

@@ -11,9 +11,9 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[0,4,309],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"enemy character for Straw Golem to move.\",
@@ -21,13 +21,16 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
 						\"restrictionsToCheck\":[1,251],
 						\"C\":3
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Move\"
+				}"
 			]
 		}
 	],

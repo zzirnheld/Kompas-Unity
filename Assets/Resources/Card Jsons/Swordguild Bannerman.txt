@@ -10,9 +10,9 @@
 					\"triggerRestrictions\":[0,400]
 				}
 			}",
-			"subeffectTypes":[200,2,303,400],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Set X by Board Count\",
 					\"boardRestriction\":
 					{
 						\"restrictionsToCheck\":[2,3,103],
@@ -21,6 +21,7 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Discard\",
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"dead Warrior for Bannerman to reshuffle\",
@@ -29,9 +30,10 @@
 					}
 				}",
 				"{
-					\"TargetIndex\":-1
+					\"subeffType\":\"Reshuffle\"
 				}",
 				"{
+					\"subeffType\":\"Loop X Times\",
 					\"JumpTo\":1
 				}"
 			]	

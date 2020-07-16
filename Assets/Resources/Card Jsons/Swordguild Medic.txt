@@ -11,9 +11,9 @@
 					"In Play"
 				]
 			},
-			"subeffectTypes":[0,100],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"Warrior for Medic to give +1E\",
@@ -23,6 +23,7 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Change NESW\",
 					\"nChange\":0,
 					\"eChange\":1,
 					\"sChange\":0,

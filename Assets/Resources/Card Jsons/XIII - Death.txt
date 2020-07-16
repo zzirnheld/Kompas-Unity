@@ -11,10 +11,12 @@
 					\"triggerRestrictions\":[1,200]
 				}
 			}",
-			"subeffectTypes":[5,100],
 			"subeffects":[
-				"{}",
 				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
 					\"sChange\":1
 				}"
 			]
@@ -25,18 +27,22 @@
 					"In Play"
 				]
 			},
-			"subeffectTypes":[5,299,103,0,301],
 			"subeffects":[
-				"{}",
 				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Set X by Player Choice\",
 					\"XRest\":{
 						\"Restrictions\":[\">0\",\"<=ThisCost\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"X Change NESW\",
 					\"sMult\":-1
 				}",
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"adjacent SX character for Death to kill\",
@@ -44,7 +50,9 @@
 						\"onBoardRestrictions\":[0,200]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Discard\"
+				}"
 			]
 		}
 	],

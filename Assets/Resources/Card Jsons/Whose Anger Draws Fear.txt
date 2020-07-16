@@ -14,6 +14,7 @@
 			"subeffectTypes":[4,5,121,201,103,309],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"to move Whose Anger Draws Fear to\",
@@ -24,11 +25,15 @@
 						}
 					}
 				}",
-				"{}",
 				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Spend Movement\",
 					\"Modifier\":1
 				}",
 				"{
+					\"subeffType\":\"Set X by Gamestate Value\",
 					\"WhatToCount\":\"Distance to Coords Through\",
 					\"ThroughRestriction\":{
 						\"restrictionsToCheck\":[2,3,103],
@@ -36,9 +41,12 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"X Change NESW\",
 					\"eMult\":-1
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Move\"
+				}"
 			]
 		},
 		{
@@ -49,13 +57,16 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[50,404,4,309,407,405,311],
 			"subeffects":[
-				"{}",
 				"{
+					\"subeffType\":\"Target Defender\"
+				}",
+				"{
+					\"subeffType\":\"Jump on Effect Impossible\",
 					\"JumpTo\":5
 				}",
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"to move Whose Anger Draws Fear's attack target to\",
@@ -63,11 +74,18 @@
 						\"C\":1
 					}
 				}",
-				"{}",
-				"{}",
-				"{}",
-				"{}",
-				"{}"
+				"{
+					\"subeffType\":\"Move\"
+				}",
+				"{
+					\"subeffType\":\"End Effect Resolution\"
+				}",
+				"{
+					\"subeffType\":\"Clear Jump on Effect Impossible\"
+				}",
+				"{
+					\"subeffType\":\"Annihilate\"
+				}"
 			]	
 		}
 	],

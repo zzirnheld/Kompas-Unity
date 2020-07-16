@@ -17,6 +17,7 @@
 			"subeffectTypes":[100],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Change NESW\",
 					\"eChange\":2,
 					\"sChange\":2,
 					\"wChange\":2

@@ -2,49 +2,55 @@
 	"cardType":67,
 	"cardName":"Swordguild Trainee",
 	"effText":"When turns start, if I'm adjacent to X Warriors, you can tribute me to decksummon an S ≤ X Swordguild Warrior where I was.",
-	"effects":[{
-		"triggerCondition":0,
-		"trigger":"{
-			\"triggerRestriction\":
-			{
-				\"Optional\":true,
-				\"triggerRestrictions\":[1,100],
-				\"effParentRestriction\":
-					{
-						\"restrictionsToCheck\":[2,3,103],
-						\"subtypesInclude\":[\"Warrior\"]
-					}
-			}
-		}",
-		"subeffectTypes":[200,5,6,301,1,300],
-		"subeffects":[
-			"{
-				\"boardRestriction\":
-					{
-						\"restrictionsToCheck\":[2,3,103],
-						\"subtypesInclude\":[\"Warrior\"],
-						\"onBoardRestrictions\":[0]
-					}
-			}",
-			"{}",
-			"{}",
-			"{
-				\"TargetIndex\":-1
-			}",
-			"{
-				\"cardRestriction\":
+	"effects":[
+		{
+			"triggerCondition":0,
+			"trigger":"{
+				\"triggerRestriction\":
 				{
-					\"Blurb\":\"Swordguild Warrior for Trainee to become\",
-					\"restrictionsToCheck\":[2,3,102,202],
-					\"subtypesInclude\":[\"Warrior\"]
+					\"Optional\":true,
+					\"triggerRestrictions\":[1,100],
+					\"effParentRestriction\":
+						{
+							\"restrictionsToCheck\":[2,3,103],
+							\"subtypesInclude\":[\"Warrior\"]
+						}
 				}
 			}",
-			"{
-				\"spaceIndex\":-1,
-				\"TargetIndex\":-1
-			}"
-		]
-	}],
+			"subeffects":[
+				"{
+					\"subeffType\":\"Set X by Board Count\",
+					\"boardRestriction\":
+						{
+							\"restrictionsToCheck\":[2,3,103],
+							\"subtypesInclude\":[\"Warrior\"],
+							\"onBoardRestrictions\":[0]
+						}
+				}",
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Target This Space\"
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Deck Target\",
+					\"cardRestriction\":
+					{
+						\"Blurb\":\"Swordguild Warrior for Trainee to become\",
+						\"restrictionsToCheck\":[2,3,102,202],
+						\"subtypesInclude\":[\"Warrior\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Play\"
+				}"
+			]
+		}
+	],
 	"n":1,
 	"e":2,
 	"s":2,

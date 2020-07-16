@@ -16,6 +16,7 @@
 			"subeffectTypes":[0,0,104],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"character for Wheel of Fortune to swap N of (1/2)\",
@@ -23,6 +24,7 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"character for Wheel of Fortune to swap N of (2/2)\",
@@ -30,6 +32,7 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Swap NESW\",
 					\"TargetIndices\":[-1,-2],
 					\"SwapN\":true
 				}"

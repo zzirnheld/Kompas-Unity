@@ -15,12 +15,18 @@
 			}",
 			"subeffectTypes":[6,5,301,1,300],
 			"subeffects":[
-				"{}",
-				"{}",
 				"{
+					\"subeffType\":\"Target This Space\"
+				}",
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Discard\",
 					\"TargetIndex\":-1
 				}",
 				"{
+					\"subeffType\":\"Deck Target\",
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"Tarocco for Lovers to become\",
@@ -29,6 +35,7 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Play\",
 					\"TargetIndex\":-1,
 					\"SpaceIndex\":-1
 				}"

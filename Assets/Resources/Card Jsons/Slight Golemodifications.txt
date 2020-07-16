@@ -11,7 +11,6 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[0,254,301,406,2,411,3,4,300,120],
 			"subeffects":[
 				"{
 					\"subeffType\":\"Board Target\",

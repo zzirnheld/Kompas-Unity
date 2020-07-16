@@ -21,6 +21,7 @@
 			"subeffectTypes":[101],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Add Pips\",
 					\"modifier\":1
 				}"
 			]	

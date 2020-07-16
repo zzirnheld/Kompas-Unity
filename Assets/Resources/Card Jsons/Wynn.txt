@@ -11,16 +11,18 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[0,106],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"spell for Wynn to dispel\",
 						\"restrictionsToCheck\":[4,103]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Dispel\"
+				}"
 			]	
 		}
 	],

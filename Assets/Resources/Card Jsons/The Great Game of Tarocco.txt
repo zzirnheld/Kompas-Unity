@@ -11,16 +11,18 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[200,306],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Set X by Board Count\",
 					\"boardRestriction\":
 					{
 						\"restrictionsToCheck\":[2,7,103],
 						\"subtypesInclude\":[\"Tarocco\"]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Draw X\"
+				}"
 			]
 		}
 	],

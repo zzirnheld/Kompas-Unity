@@ -13,11 +13,15 @@
 					\"triggerRestrictions\":[1,200]
 				}
 			}",
-			"subeffectTypes":[2,307,110],
 			"subeffects":[
-				"{}",
-				"{}",
 				"{
+					\"subeffType\":\"Discard Target\"
+				}",
+				"{
+					\"subeffType\":\"Bottomdeck\"
+				}",
+				"{
+					\"subeffType\":\"Change NESW All\",
 					\"BoardRestriction\":
 					{
 						\"restrictionsToCheck\":[3,7,103]
