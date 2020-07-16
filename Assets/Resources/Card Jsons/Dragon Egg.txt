@@ -4,39 +4,46 @@
 	"effText":"After I’m summoned, delay 2 turns, then tribute me and deck-summon a Dragon where I was.",
 	"effects":[
 		{
-		"triggerCondition":401,
-		"trigger":
-		"{
-			\"triggerRestriction\":{
-				\"triggerRestrictions\":[0]
-			}
-		}",
-		"subeffectTypes":[500,5,6,301,1,300],
-		"subeffects":[
+			"triggerCondition":401,
+			"trigger":
 			"{
-				\"NumTimesToDelay\":2,
-				\"IndexToResume\":1,
-				\"TriggerCondition\":0
-			}",
-			"{}",
-			"{}",
-			"{
-				\"TargetIndex\":-1
-			}",
-			"{
-				\"cardRestriction\":
-				{
-					\"Blurb\":\"for Dragon Egg to become\",
-					\"restrictionsToCheck\":[2,3,102,601],
-					\"subtypesInclude\":[\"Dragon\"]
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[0]
 				}
 			}",
-			"{
-				\"spaceIndex\":-1,
-				\"TargetIndex\":-1
-			}"
-		]
-	}],
+			"subeffects":[
+				"{
+					\"subeffType\":\"Delay Effect Resolution\",
+					\"NumTimesToDelay\":2,
+					\"IndexToResume\":1,
+					\"TriggerCondition\":0
+				}",
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Target This Space\"
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Deck Target\",
+					\"cardRestriction\":
+					{
+						\"Blurb\":\"for Dragon Egg to become\",
+						\"restrictionsToCheck\":[2,3,102,601],
+						\"subtypesInclude\":[\"Dragon\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Play\",
+					\"spaceIndex\":-1,
+					\"TargetIndex\":-1
+				}"
+			]
+		}
+	],
 	"n":0,
 	"e":2,
 	"s":2,

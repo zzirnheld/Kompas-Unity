@@ -11,16 +11,19 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[7,504,501],
 			"subeffects":[
-				"{}",
 				"{
+					\"subeffType\":\"Target Augmented Card\"
+				}",
+				"{
+					\"subeffType\":\"Temporary Activate\",
 					\"EndCondition\":451,
 					\"TriggerRestriction\":{
 						\"triggerRestrictions\":[0]
 					}
 				}",
 				"{
+					\"subeffType\":\"Temporary NESW Buff\",
 					\"EBuff\":5,
 					\"EndCondition\":451,
 					\"TriggerRestriction\":{

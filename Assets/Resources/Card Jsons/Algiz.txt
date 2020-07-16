@@ -11,15 +11,16 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[0,100],
 			"subeffects":[
 				"{
-						\"boardRestriction\":
-						{
-							\"restrictionsToCheck\":[3,103]
-						}
+					\"subeffType\":\"Board Target\",
+					\"boardRestriction\":
+					{
+						\"restrictionsToCheck\":[3,103]
+					}
 				}",
 				"{
+					\"subeffType\":\"Change NESW\",
 					\"eChange\":5
 				}"
 			]	

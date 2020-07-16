@@ -11,20 +11,25 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[409,0,130,600],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Conditionally End Effect Resolution\",
 					\"Condition\":\"Must be Friendly Turn\"
 				}",
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"enemy for Berkanan to charm\",
 						\"restrictionsToCheck\":[3,9,103]
 					}
 				}",
-				"{}",
-				"{}"
+				"{
+					\"subeffType\":\"Take Control\"
+				}",
+				"{
+					\"subeffType\":\"End Turn\"
+				}"
 			]	
 		}
 	],

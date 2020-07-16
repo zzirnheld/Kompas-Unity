@@ -15,16 +15,20 @@
 					}
 				}
 			}",
-			"subeffectTypes":[5,203,101,108],
 			"subeffects":[
-				"{}",
 				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Set X by Target Value\",
 					\"WhatToCount\":\"C\"
 				}",
 				"{
+					\"subeffType\":\"Add Pips\",
 					\"xMultiplier\":1
 				}",
 				"{
+					\"subeffType\":\"Change C\",
 					\"XMultiplier\":1,
 					\"XModifier\":1
 				}"

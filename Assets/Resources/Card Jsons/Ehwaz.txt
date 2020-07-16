@@ -14,6 +14,7 @@
 			"subeffectTypes":[0,100],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"for Ehwaz to give +2N\",
@@ -21,6 +22,7 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Change NESW\",
 					\"nChange\":2
 				}"
 			]	

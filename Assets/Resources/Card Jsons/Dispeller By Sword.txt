@@ -11,9 +11,9 @@
 					"In Play"
 				]
 			},
-			"subeffectTypes":[200,0,301],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Set X by Board Count\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"spell for Dispeller by Sword to dispel\",
@@ -23,12 +23,14 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"restrictionsToCheck\":[4,204],
 					}
 				}",
 				"{
+					\"subeffType\":\"Dispel\",
 					\"TargetIndex\":-1
 				}"
 			]

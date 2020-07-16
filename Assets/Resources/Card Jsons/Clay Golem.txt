@@ -11,11 +11,15 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[5,301,1,4,300],
 			"subeffects":[
-				"{}",
-				"{}",
 				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Deck Target\",
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"for Clay Golem to summon\",
@@ -24,13 +28,16 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"to play the card you chose\",
 						\"restrictionsToCheck\":[0]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Play\"
+				}"
 			]
 		}
 	],

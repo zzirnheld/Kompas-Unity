@@ -15,12 +15,13 @@
 					}
 				}
 			}",
-			"subeffectTypes":[112,100],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Reset Stats\",
 					\"ResetE\":true
 				}",
 				"{
+					\"subeffType\":\"Change NESW\",
 					\"nChange\":1
 				}"
 			]	

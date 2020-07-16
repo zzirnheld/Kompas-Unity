@@ -16,11 +16,15 @@
 					}
 				}
 			}",
-			"subeffectTypes":[5,301,101],
 			"subeffects":[
-				"{}",
-				"{}",
 				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Add Pips\",
 					\"modifier\":1
 				}"
 			]	

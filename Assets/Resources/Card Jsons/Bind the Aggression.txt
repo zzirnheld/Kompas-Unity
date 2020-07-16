@@ -11,12 +11,13 @@
 					\"triggerRestrictions\":[1,140]
 				}
 			}",
-			"subeffectTypes":[203,101],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Set X by Target Value\",
 					\"WhatToCount\":\"S\"
 				}",
 				"{
+					\"subeffType\":\"Add Pips\",
 					\"xMultiplier\":1
 				}"
 			]

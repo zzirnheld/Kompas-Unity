@@ -11,10 +11,12 @@
 					\"triggerRestrictions\":[1,301]
 				}
 			}",
-			"subeffectTypes":[7,504],
 			"subeffects":[
-				"{}",
 				"{
+					\"subeffType\":\"Target Augmented Card\"
+				}",
+				"{
+					\"subeffType\":\"Temporary Activate\",
 					\"EndCondition\":0,
 					\"TriggerRestriction\":{
 						\"triggerRestrictions\":[300]
@@ -30,25 +32,34 @@
 					\"triggerRestrictions\":[1,300]
 				}
 			}",
-			"subeffectTypes":[406,404,102,405,407,405,5,301],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Choose Effect Option\",
 					\"ChoiceBlurb\":\"Pay 1 pip or dispel this?\",
 					\"OptionBlurbs\":[\"Pay 1 pip\",\"Dispel\"],
 					\"OptionJumpIndices\":[1,5]
 				}",
 				"{
-					\"JumpTo\":5
+					\"subeffType\":\"Jump on Effect Impossible\",
+					\"JumpTo\":4
 				}",
 				"{
+					\"subeffType\":\"Pay Pips\",
 					\"xMultiplier\":0,
 					\"modifier\":1
 				}",
-				"{}",
-				"{}",
-				"{}",
-				"{}",
-				"{}"
+				"{
+					\"subeffType\":\"End Effect Resolution\"
+				}",
+				"{
+					\"subeffType\":\"Clear Jump on Effect Impossible\"
+				}",
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}"
 			]
 		},
 		{
@@ -59,10 +70,13 @@
 					\"triggerRestrictions\":[1,10]
 				}
 			}",
-			"subeffectTypes":[5,304],
 			"subeffects":[
-				"{}",
-				"{}"
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Rehand\"
+				}"
 			]
 		}
 	],

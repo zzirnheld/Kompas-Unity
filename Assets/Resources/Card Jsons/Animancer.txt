@@ -11,9 +11,9 @@
 					"In Play"
 				]
 			},
-			"subeffectTypes":[3,275,301,410,404,8,405,12,304,350],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"for Animancer to discard\",
@@ -22,17 +22,23 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Change X by Target Value\",
 					\"WhatToCount\":\"Cost\"
 				}",
-				"{}",
 				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Loop\",
 					\"CanDecline\":true,
 					\"JumpTo\":0
 				}",
 				"{
+					\"subeffType\":\"Jump on Effect Impossible\",
 					\"JumpTo\":7
 				}",
 				"{
+					\"subeffType\":\"Choose From List\",
 					\"MaxCanChoose\":1,
 					\"CardRestriction\":
 					{
@@ -41,15 +47,22 @@
 						\"subtypesInclude\":[\"Golem\"]
 					}
 				}",
-				"{}",
 				"{
+					\"subeffType\":\"Clear Jump on Impossible\"
+				}",
+				"{
+					\"subeffType\":\"Add Rest\",
 					\"cardRestriction\":
 					{
 						\"restrictionsToCheck\":[7,102,551,600]
 					}
 				}",
-				"{}",
-				"{}"
+				"{
+					\"subeffType\":\"Rehand\"
+				}",
+				"{
+					\"subeffType\":\"Bottomdeck Rest\"
+				}"
 			]
 		}
 	],

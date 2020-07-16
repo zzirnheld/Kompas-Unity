@@ -42,15 +42,15 @@ public class ServerEffect : Effect, IServerStackable
             }
         }
 
-        for (int i = 0; i < se.subeffectTypes.Length; i++)
+        for (int i = 0; i < se.subeffects.Length; i++)
         {
             try
             {
-                ServerSubeffects[i] = ServerSubeffect.FromJson(se.subeffectTypes[i], se.subeffects[i], this, i);
+                ServerSubeffects[i] = ServerSubeffect.FromJson(se.subeffects[i], this, i);
             }
             catch (System.ArgumentException)
             {
-                Debug.LogError($"Failed to load subeffect of type {se.subeffectTypes[i]} from json {se.subeffects[i]}");
+                Debug.LogError($"Failed to load subeffect from json {se.subeffects[i]}");
                 throw;
             }
         }
