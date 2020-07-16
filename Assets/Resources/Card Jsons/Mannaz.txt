@@ -24,7 +24,8 @@
 						\"Blurb\":\"character for Mannaz to search (to hand)\",
 						\"restrictionsToCheck\":[3,7,102,501],
 						\"constant\":10
-					}
+					},
+					\"MaxCanChoose\":1
 				}",
 				"{
 					\"subeffType\":\"Clear Jump on Effect Impossible\",

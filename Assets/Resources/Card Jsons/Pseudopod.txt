@@ -11,9 +11,9 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[0,0,4,309],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"Friendly Shaper to move the enemy adjacent to\",
@@ -22,6 +22,7 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"enemy character to move\",
@@ -29,6 +30,7 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"where to move the enemy character\",
@@ -37,8 +39,7 @@
 					\"TargetIndex\":-2
 				}",
 				"{
-					\"AttackerIndex\":-1,
-					\"TargetIndex\":-1
+					\"subeffType\":\"Move\"
 				}"
 			]
 		}

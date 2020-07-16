@@ -11,10 +11,12 @@
 					\"triggerRestrictions\":[1,200]
 				}
 			}",
-			"subeffectTypes":[7,100],
 			"subeffects":[
-				"{}",
 				"{
+					\"subeffType\":\"Target Augmented Card\"
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
 					\"eChange\":1
 				}"
 			]

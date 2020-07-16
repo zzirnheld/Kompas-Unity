@@ -11,9 +11,9 @@
 					"In Play"
 				]
 			},
-			"subeffectTypes":[3,4,150,300,404,1,405,12,304,350],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"Rune for Runepainter to cast\",
@@ -22,34 +22,49 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"where for Runepainter to cast its target Rune\",
 						\"restrictionsToCheck\":[0]
 					}
 				}",
-				"{}",
-				"{}",
 				"{
+					\"subeffType\":\"Pay Target's Cost in Pips\"
+				}",
+				"{
+					\"subeffType\":\"Play\"
+				}",
+				"{
+					\"subeffType\":\"Jump on Effect Impossible\",
 					\"JumpTo\":7
 				}",
 				"{
-					\"cardRestriction\":
+					\"subeffType\":\"Choose From List\",
+					\"CardRestriction\":
 					{
 						\"Blurb\":\"Rune for Runepainter to search (to hand)\",
 						\"restrictionsToCheck\":[2,7,12,102,551],
 						\"subtypesInclude\":[\"Rune\"]
-					}
+					},
+					\"MaxCanChoose\":1
 				}",
-				"{}",
 				"{
+					\"subeffType\":\"Clear Jump on Effect Impossible\"
+				}",
+				"{
+					\"subeffType\":\"Add Rest\",
 					\"cardRestriction\":
 					{
 						\"restrictionsToCheck\":[7,102,551,600]
 					}
 				}",
-				"{}",
-				"{}"
+				"{
+					\"subeffType\":\"Rehand\"
+				}",
+				"{
+					\"subeffType\":\"Bottomdeck Rest\"
+				}"
 			]
 		}
 	],

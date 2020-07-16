@@ -11,9 +11,9 @@
 					"In Play"
 				]
 			},
-			"subeffectTypes":[3,4,150,300,3,4,150,300],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"Rune for Runeloremaster to cast\",
@@ -22,15 +22,21 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"where for Runeloremaster to cast its target Rune\",
 						\"restrictionsToCheck\":[0]
 					}
 				}",
-				"{}",
-				"{}",
 				"{
+					\"subeffType\":\"Pay Target's Cost in Pips\"
+				}",
+				"{
+					\"subeffType\":\"Play\"
+				}",
+				"{
+					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"Rune for Runeloremaster to cast\",
@@ -39,14 +45,19 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"where for Runeloremaster to cast its target Rune\",
 						\"restrictionsToCheck\":[0]
 					}
 				}",
-				"{}",
-				"{}"
+				"{
+					\"subeffType\":\"Pay Target's Cost in Pips\"
+				}",
+				"{
+					\"subeffType\":\"Play\"
+				}"
 			]
 		}
 	],

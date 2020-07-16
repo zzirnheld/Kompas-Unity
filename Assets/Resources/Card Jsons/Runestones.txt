@@ -16,9 +16,9 @@
 					}
 				}
 			}",
-			"subeffectTypes":[1,304],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Deck Target\",
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"Rune for Runestones to search\",
@@ -26,7 +26,9 @@
 						\"subtypesInclude\":[\"Rune\"]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Rehand\"
+				}"
 			]
 		}
 	],

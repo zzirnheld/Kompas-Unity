@@ -11,22 +11,27 @@
 					\"triggerRestrictions\":[0,1]
 				}
 			}",
-			"subeffectTypes":[5,100,50,100],
 			"subeffects":[
-				"{}",
 				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
 					\"eChange\":-1
 				}",
-				"{}",
 				"{
+					\"subeffType\":\"Target Defender\"
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
 					\"eChange\":-1
 				}"
 			]	
 		}
 	],
-	"n":3,
+	"n":2,
 	"e":3,
-	"s":4,
+	"s":3,
 	"w":2,
 	"subtypes":[],
 	"subtypeText":""

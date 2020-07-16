@@ -11,9 +11,9 @@
 					"In Play"
 				]
 			},
-			"subeffectTypes":[8,303,202,306],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Choose From List\",
 					\"CardRestriction\":
 					{
 						\"Blurb\":\"Rune for Runecarver to reshuffle\",
@@ -24,13 +24,17 @@
 					\"MaxCanChoose\":1
 				}",
 				"{
+					\"subeffType\":\"Reshuffle\",
 					\"TargetIndex\":-1
 				}",
 				"{
+					\"subeffType\":\"Set X by Math\",
 					\"Multiplier\":0,
 					\"Modifier\":2
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Draw X\"
+				}"
 			]
 		}
 	],

@@ -11,9 +11,9 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[0,311],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"character to ANNIHILATE\",
@@ -22,7 +22,9 @@
 						\"AdjacencySubtypes\":[\"Shaper\"]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Annihilate\"
+				}"
 			]
 		}
 	],

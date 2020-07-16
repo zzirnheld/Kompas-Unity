@@ -15,7 +15,6 @@
 					}
 				}
 			}",
-			"subeffectTypes":[5,4,309],
 			"subeffects":[
 				"{
 					\"subeffType\":\"Target This\"

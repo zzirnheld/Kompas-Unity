@@ -14,20 +14,27 @@
 			"subeffectTypes":[0,254,301,406,2,411,3,4,300,120],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"restrictionsToCheck\":[2,3,7,103],
 						\"subtypesInclude\":[\"Golem\"]
 					}
 				}",
-				"{}",
-				"{}",
 				"{
+					\"subeffType\":\"Set X by Target Cost\"
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Choose Effect Option\",
 					\"ChoiceBlurb\":\"Hand-summon or revive a Golem?\",
 					\"OptionBlurbs\":[\"Hand-summon\",\"Revive\"],
 					\"OptionJumpIndices\":[4,6]
 				}",
 				"{
+					\"subeffType\":\"Discard Target\",
 					\"cardRestriction\":
 					{
 						\"restrictionsToCheck\":[2,3,100,222],
@@ -35,9 +42,11 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Jump to Subeffect\",
 					\"IndexToJumpTo\":7
 				}",
 				"{
+					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
 						\"restrictionsToCheck\":[2,3,101,222],
@@ -45,13 +54,18 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
 						\"restrictionsToCheck\":[0]
 					}
 				}",
-				"{}",
-				"{}"
+				"{
+					\"subeffType\":\"Play\"
+				}",
+				"{
+					\"subeffType\":\"Activate\"
+				}"
 			]	
 		}
 	],

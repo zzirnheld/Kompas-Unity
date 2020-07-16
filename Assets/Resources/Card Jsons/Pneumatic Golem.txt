@@ -11,9 +11,9 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[0,304],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"character within 3 spaces of Pneumatic Golem for it to rehand\",
@@ -22,7 +22,9 @@
 						\"cSpaces\":3
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Rehand\"
+				}"
 			]
 		}
 	],

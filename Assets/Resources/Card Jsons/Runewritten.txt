@@ -15,10 +15,12 @@
 					}
 				}
 			}",
-			"subeffectTypes":[5,100],
 			"subeffects":[
-				"{}",
 				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
 					\"eChange\":1,
 					\"wChange\":1
 				}"

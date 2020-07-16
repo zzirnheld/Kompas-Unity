@@ -11,9 +11,9 @@
 					"In Play"
 				]
 			},
-			"subeffectTypes":[8,303,404,1,405,12,304,350],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Choose From List\",
 					\"CardRestriction\":
 					{
 						\"Blurb\":\"Rune for Runewriter to reshuffle\",
@@ -23,28 +23,38 @@
 					\"MaxCanChoose\":1
 				}",
 				"{
-					\"TargetIndex\":-1
+					\"subeffType\":\"Reshuffle\"
 				}",
 				"{
+					\"subeffType\":\"Jump on Effect Impossible\",
 					\"JumpTo\":5
 				}",
 				"{
-					\"cardRestriction\":
+					\"subeffType\":\"Choose From List\",
+					\"CardRestriction\":
 					{
 						\"Blurb\":\"Runer for Runewriter to search (to hand)\",
 						\"restrictionsToCheck\":[2,7,102,551],
 						\"subtypesInclude\":[\"Runer\"]
-					}
+					},
+					\"Max Can Choose\":1
 				}",
-				"{}",
 				"{
+					\"subeffType\":\"Clear Jump on Effect Impossible\"
+				}",
+				"{
+					\"subeffType\":\"Add Rest\",
 					\"cardRestriction\":
 					{
 						\"restrictionsToCheck\":[7,102,551,600]
 					}
 				}",
-				"{}",
-				"{}"
+				"{
+					\"subeffType\":\"Rehand\"
+				}",
+				"{
+					\"subeffType\":\"Bottomdeck Rest\"
+				}"
 			]
 		}
 	],

@@ -11,9 +11,9 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[0,100,3,4,300,410],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"Blurb\":\"Runer for Runesaga to give +25ESW\",
@@ -22,11 +22,13 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Change NESW\",
 					\"eChange\":25,
 					\"sChange\":25,
 					\"wChange\":25
 				}",
 				"{
+					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"Rune for Runesaga to cast\",
@@ -35,14 +37,18 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"where for Runesaga to cast its target Rune\",
 						\"restrictionsToCheck\":[0]
 					}
 				}",
-				"{}",
 				"{
+					\"subeffType\":\"Play\"
+				}",
+				"{
+					\"subeffType\":\"Loop\",
 					\"CanDecline\":true,
 					\"JumpTo\":2
 				}"

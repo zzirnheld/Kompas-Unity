@@ -11,9 +11,9 @@
 					"In Play"
 				]
 			},
-			"subeffectTypes":[2,303,408,3,4,300],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Discard\",
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"Rune for Runechanneler to reshuffle\",
@@ -22,13 +22,15 @@
 					}
 				}",
 				"{
-					\"TargetIndex\":-1
+					\"subeffType\":\"Reshuffle\"
 				}",
 				"{
+					\"subeffType\":\"Count X Loop\",
 					\"CanDecline\":true,
 					\"JumpTo\":0
 				}",
 				"{
+					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"Rune for Runechanneler to cast\",
@@ -37,6 +39,7 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"where for Runechanneler to cast its target Rune\",
@@ -44,8 +47,7 @@
 					}
 				}",
 				"{
-					\"TargetIndex\":-1,
-					\"SpaceIndex\":-1
+					\"subeffType\":\"Play\"
 				}"
 			]
 		}

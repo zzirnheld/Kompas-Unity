@@ -11,9 +11,9 @@
 					\"triggerRestrictions\":[1]
 				}
 			}",
-			"subeffectTypes":[0,301],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Board Target\",
 					\"boardRestriction\":
 					{
 						\"restrictionsToCheck\":[2,3,7,103],
@@ -21,7 +21,9 @@
 						\"onBoardRestrictions\":[0]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Discard\"
+				}"
 			]	
 		},
 		{
@@ -34,14 +36,19 @@
 					\"triggerRestrictions\":[0,1]
 				}
 			}",
-			"subeffectTypes":[5,100,50,100],
 			"subeffects":[
-				"{}",
 				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
 					\"eChange\":-1
 				}",
-				"{}",
 				"{
+					\"subeffType\":\"Target Defender\"
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
 					\"eChange\":-4
 				}"
 			]	
