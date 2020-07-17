@@ -8,12 +8,12 @@ public class ChooseFromListSubeffect : ServerSubeffect
     /// <summary>
     /// Restriction that each card must fulfill
     /// </summary>
-    public CardRestriction CardRestriction = new CardRestriction();
+    public CardRestriction cardRestriction = new CardRestriction();
 
     /// <summary>
     /// Restriction that the list collectively must fulfill
     /// </summary>
-    public ListRestriction ListRestriction = new ListRestriction();
+    public ListRestriction listRestriction = new ListRestriction();
 
     /// <summary>
     /// The maximum number of cards that can be chosen.
@@ -32,8 +32,8 @@ public class ChooseFromListSubeffect : ServerSubeffect
     public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        CardRestriction.Initialize(this);
-        ListRestriction.Subeffect = this;
+        cardRestriction.Initialize(this);
+        listRestriction.Subeffect = this;
     }
 
     public override void Resolve()
@@ -41,13 +41,13 @@ public class ChooseFromListSubeffect : ServerSubeffect
         //TODO: somehow figure out a better way of checking if there exists a valid list?
         //  maybe a method on list restriction that checks?
         //  because otherwise enumerating lists and seeing if at least one fits would be exponential time
-        if(!ListRestriction.Evaluate(new List<GameCard>()))
+        if(!listRestriction.Evaluate(new List<GameCard>()))
         {
             ServerEffect.EffectImpossible();
             return;
         }
 
-        potentialTargets = ServerGame.Cards.Where(c => CardRestriction.Evaluate(c));
+        potentialTargets = ServerGame.Cards.Where(c => cardRestriction.Evaluate(c));
 
         //if there are no possible targets, declare the effect impossible
         //if you want to continue resolution anyway, add an if impossible check before this subeffect.
@@ -62,7 +62,7 @@ public class ChooseFromListSubeffect : ServerSubeffect
         //also check that the list as a whole is allowable
         bool invalidList = (MaxCanChoose > 0 && choices.Count() > MaxCanChoose) ||
             choices.Intersect(potentialTargets).Count() != choices.Count() ||
-            !ListRestriction.Evaluate(choices);
+            !listRestriction.Evaluate(choices);
 
         if (invalidList)
         {

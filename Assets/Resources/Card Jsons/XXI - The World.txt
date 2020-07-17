@@ -22,9 +22,9 @@
 				}",
 				"{
 					\"subeffType\":\"Change NESW All\",
-					\"BoardRestriction\":
+					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[3,7,103]
+						\"restrictions\":[\"Is Character\",\"Board\",\"Friendly\"]
 					},
 					\"EMod\":1,
 					\"WMod\":1

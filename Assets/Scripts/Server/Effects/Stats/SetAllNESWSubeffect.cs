@@ -14,24 +14,24 @@ public class SetAllNESWSubeffect : SetNESWSubeffect
     }
 
     //default to making sure things are characters before changing their stats
-    public BoardRestriction BoardRestriction = new BoardRestriction()
+    public CardRestriction cardRestriction = new CardRestriction()
     {
-        restrictionsToCheck = new CardRestriction.CardRestrictions[]
+        restrictions = new string[]
         {
-            CardRestriction.CardRestrictions.IsCharacter,
-            CardRestriction.CardRestrictions.Board
+            CardRestriction.IsCharacter,
+            CardRestriction.Board
         }
     };
 
     public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        BoardRestriction.Initialize(this);
+        cardRestriction.Initialize(this);
     }
 
     public override void Resolve()
     {
-        var targets = ServerGame.Cards.Where(c => BoardRestriction.Evaluate(c));
+        var targets = ServerGame.Cards.Where(c => cardRestriction.Evaluate(c));
         foreach (ServerGameCard c in targets)
         {
             var (n, e, s, w) = GetRealValues(c);

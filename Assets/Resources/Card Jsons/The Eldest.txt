@@ -14,12 +14,12 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Board Target\",
-					\"boardRestriction\":
+					\"cardRestriction\":
 					{
 						\"Blurb\":\"adjacent Dragon for the Eldest to kill\",
-						\"restrictionsToCheck\":[2,3,7,103],
+						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\"],
 						\"subtypesInclude\":[\"Dragon\"],
-						\"onBoardRestrictions\":[0]
+						\"oncardRestrictions\":[0]
 					}
 				}",
 				"{

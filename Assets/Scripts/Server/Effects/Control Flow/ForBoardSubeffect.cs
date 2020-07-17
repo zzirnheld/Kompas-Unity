@@ -12,7 +12,7 @@ using UnityEngine;
 public class ForBoardSubeffect : ServerSubeffect
 {
     public int JumpToWhenDone;
-    public BoardRestriction restriction;
+    public CardRestriction cardRestriction;
 
     private int xCount = 0;
     private int yCount = 0;
@@ -25,7 +25,7 @@ public class ForBoardSubeffect : ServerSubeffect
             for (; yCount < 7; yCount++)
             {
                 GameCard c = ServerEffect.serverGame.boardCtrl.GetCardAt(xCount, yCount);
-                if (restriction.Evaluate(c))
+                if (cardRestriction.Evaluate(c))
                 {
                     //if we haven't found a first target yet, add the first target to the list
                     if (!running)

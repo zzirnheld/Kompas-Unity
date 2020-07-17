@@ -7,17 +7,17 @@ public class DummyListTargetSubeffect : DummySubeffect
     /// <summary>
     /// Restriction that each card must fulfill
     /// </summary>
-    public CardRestriction CardRestriction;
+    public CardRestriction cardRestriction;
 
     /// <summary>
     /// Restriction that the list collectively must fulfill
     /// </summary>
-    public ListRestriction ListRestriction;
+    public ListRestriction listRestriction;
 
     public override void Initialize(ClientEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        CardRestriction.Initialize(this);
-        ListRestriction.Subeffect = this;
+        cardRestriction.Initialize(this);
+        listRestriction.Subeffect = this;
     }
 }

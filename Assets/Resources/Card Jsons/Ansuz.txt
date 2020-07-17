@@ -14,9 +14,9 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Board Target\",
-					\"boardRestriction\":
+					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[3,103]
+						\"restrictions\":[\"Is Character\",\"Board\"]
 					}
 				}",
 				"{

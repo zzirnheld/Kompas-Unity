@@ -41,7 +41,7 @@ public class TriggerRestriction
     }
 
     public TriggerRestrictions[] triggerRestrictions = new TriggerRestrictions[0];
-    public BoardRestriction cardRestriction = new BoardRestriction(); //TODO refactor boardrestrictions to be part of cardrestriction
+    public CardRestriction cardRestriction = new CardRestriction(); //TODO refactor boardrestrictions to be part of cardrestriction
     public XRestriction xRestriction = new XRestriction();
     public SpaceRestriction spaceRestriction = new SpaceRestriction();
     public int maxTimesPerTurn = 1;

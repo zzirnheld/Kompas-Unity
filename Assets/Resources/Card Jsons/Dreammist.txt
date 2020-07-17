@@ -10,9 +10,9 @@
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[0,120],
 					\"spaceRestriction\":{
-						\"restrictionsToCheck\":[101],
+						\"restrictions\":[101],
 						\"adjacencyRestriction\":{
-							\"restrictionsToCheck\":[2],
+							\"restrictions\":[\"Subtypes Include\"],
 							\"subtypesInclude\":[\"Ethereal\"]
 						}
 					}

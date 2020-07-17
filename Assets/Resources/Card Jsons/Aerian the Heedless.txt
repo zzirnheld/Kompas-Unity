@@ -40,10 +40,9 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Change NESW All\",
-					\"BoardRestriction\":
+					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[3,103],
-						\"onBoardRestrictions\":[1],
+						\"restrictions\":[\"Is Character\",\"Board\",\"Within C Spaces\"],
 						\"cSpaces\":2
 					},
 					\"EMod\":-2

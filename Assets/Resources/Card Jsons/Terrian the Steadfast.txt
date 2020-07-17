@@ -14,11 +14,11 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Board Target\",
-					\"boardRestriction\":
+					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[2,3,7,103],
+						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\"],
 						\"subtypesInclude\":[\"Dragon\"],
-						\"onBoardRestrictions\":[0]
+						\"oncardRestrictions\":[0]
 					}
 				}",
 				"{

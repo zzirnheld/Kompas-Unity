@@ -23,12 +23,12 @@ public abstract class XByGamestateSubeffect : ServerSubeffect
         }
     }
 
-    public BoardRestriction ThroughRestriction = new BoardRestriction();
+    public CardRestriction throughRestriction = new CardRestriction();
 
     public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        ThroughRestriction.Initialize(this);
+        throughRestriction.Initialize(this);
     }
 
     private int BaseCount
@@ -41,7 +41,7 @@ public abstract class XByGamestateSubeffect : ServerSubeffect
                     return Player.handCtrl.HandSize;
                 case DistanceToCoordsThrough:
                     var (x, y) = Space;
-                    return Game.boardCtrl.ShortestPath(Source, x, y, ThroughRestriction);
+                    return Game.boardCtrl.ShortestPath(Source, x, y, throughRestriction);
                 default:
                     throw new System.ArgumentException($"Invalid 'what to count' string {WhatToCount} in x by gamestate value subeffect");
             }

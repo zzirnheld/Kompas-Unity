@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class SetXBoardRestrictionSubeffect : ServerSubeffect
 {
-    public BoardRestriction boardRestriction;
+    public CardRestriction cardRestriction;
 
     public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        boardRestriction.Initialize(this);
+        cardRestriction.Initialize(this);
     }
 
     public override void Resolve()
@@ -21,10 +21,10 @@ public class SetXBoardRestrictionSubeffect : ServerSubeffect
             {
                 GameCard c = ServerEffect.serverGame.boardCtrl.GetCardAt(i, j);
                 if (c == null) continue;
-                if (boardRestriction.Evaluate(c)) ServerEffect.X++;
+                if (cardRestriction.Evaluate(c)) ServerEffect.X++;
                 foreach(GameCard aug in c.Augments)
                 {
-                    if (boardRestriction.Evaluate(aug)) ServerEffect.X++;
+                    if (cardRestriction.Evaluate(aug)) ServerEffect.X++;
                 }
             }
         }

@@ -1,7 +1,5 @@
-﻿using System.Collections;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class TemporaryNESWBuffAllSubeffect : TemporaryCardChangeSubeffect
 {
@@ -11,25 +9,25 @@ public class TemporaryNESWBuffAllSubeffect : TemporaryCardChangeSubeffect
     public int WBuff;
 
     //default to making sure things are characters before changing their stats
-    public CardRestriction CardRestriction = new CardRestriction()
+    public CardRestriction cardRestriction = new CardRestriction()
     {
-        restrictionsToCheck = new CardRestriction.CardRestrictions[]
+        restrictions = new string[]
         {
-            CardRestriction.CardRestrictions.IsCharacter
+            CardRestriction.IsCharacter
         }
     };
 
     public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        CardRestriction.Initialize(this);
+        cardRestriction.Initialize(this);
     }
 
     protected override IEnumerable<(HangingEffect, GameCard)> CreateHangingEffects()
     {
         var effs = new List<(HangingEffect, GameCard)>();
 
-        IEnumerable<GameCard> cards = ServerGame.Cards.Where(c => CardRestriction.Evaluate(c));
+        IEnumerable<GameCard> cards = ServerGame.Cards.Where(c => cardRestriction.Evaluate(c));
 
         foreach(var card in cards)
         {

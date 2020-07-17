@@ -23,7 +23,7 @@
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"for Clay Golem to summon\",
-						\"restrictionsToCheck\":[2,3,102],
+						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Deck\"],
 						\"subtypesInclude\":[\"Golem\"]
 					}
 				}",
@@ -32,7 +32,7 @@
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"to play the card you chose\",
-						\"restrictionsToCheck\":[0]
+						\"restrictions\":[0]
 					}
 				}",
 				"{

@@ -17,9 +17,9 @@
 				}",
 				"{
 					\"subeffType\":\"Choose From List\",
-					\"CardRestriction\":{
+					\"cardRestriction\":{
 						\"Blurb\":\"copy of Dreamspace to decksummon\",
-						\"restrictionsToCheck\":[7,12,102]
+						\"restrictions\":[\"Friendly\",\"Same Name as Target\"]
 					},
 					\"MaxCanChoose\":1
 				}",
@@ -28,7 +28,7 @@
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"where for Dreamspace to decksummon a copy of itself\",
-						\"restrictionsToCheck\":[0]
+						\"restrictions\":[0]
 					}
 				}",
 				"{

@@ -14,19 +14,18 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Set X by Board Count\",
-					\"boardRestriction\":
+					\"cardRestriction\":
 					{
 						\"Blurb\":\"spell for Dispeller by Sword to dispel\",
-						\"restrictionsToCheck\":[2,3,103],
-						\"subtypesInclude\":[\"Warrior\"],
-						\"onBoardRestrictions\":[0]
+						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
+						\"subtypesInclude\":[\"Warrior\"]
 					}
 				}",
 				"{
 					\"subeffType\":\"Board Target\",
-					\"boardRestriction\":
+					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[4,204],
+						\"restrictions\":[\"Is Spell\",\"Cost<=X\"]
 					}
 				}",
 				"{

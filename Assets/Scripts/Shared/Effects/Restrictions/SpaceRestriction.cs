@@ -25,8 +25,8 @@ public class SpaceRestriction
     }
 
     public SpaceRestrictions[] restrictionsToCheck;
-    public BoardRestriction adjacencyRestriction = new BoardRestriction();
-    public BoardRestriction ConnectednessRestriction = new BoardRestriction(); 
+    public CardRestriction adjacencyRestriction = new CardRestriction();
+    public CardRestriction connectednessRestriction = new CardRestriction(); 
 
     public int C;
 
@@ -36,7 +36,7 @@ public class SpaceRestriction
     {
         this.Subeffect = subeffect;
         adjacencyRestriction.Initialize(subeffect);
-        ConnectednessRestriction.Initialize(subeffect);
+        connectednessRestriction.Initialize(subeffect);
     }
 
     public bool Evaluate((int x, int y) space) => Evaluate(space.x, space.y);
@@ -66,7 +66,7 @@ public class SpaceRestriction
                     if (!Subeffect.Target.IsAdjacentTo(x, y)) return false;
                     break;
                 case SpaceRestrictions.ConnectedToSourceBy:
-                    if (Subeffect.Game.boardCtrl.ShortestPath(Subeffect.Source, x, y, ConnectednessRestriction) >= 50) return false;
+                    if (Subeffect.Game.boardCtrl.ShortestPath(Subeffect.Source, x, y, connectednessRestriction) >= 50) return false;
                     break;
                 case SpaceRestrictions.InAOE:
                     if (!Subeffect.Source.SpaceInAOE(x, y)) return false;

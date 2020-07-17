@@ -13,14 +13,14 @@ public class ConditionalEndSubeffect : ServerSubeffect
     public const string MustBeFriendlyTurn = "Must be Friendly Turn";
 
     public int C = 0;
-    public CardRestriction CardRestriction = new CardRestriction();
+    public CardRestriction cardRestriction = new CardRestriction();
 
     public string Condition;
 
     public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        CardRestriction.Initialize(this);
+        cardRestriction.Initialize(this);
     }
 
     public override void Resolve()
@@ -41,7 +41,7 @@ public class ConditionalEndSubeffect : ServerSubeffect
                 end = ServerEffect.X < C;
                 break;
             case NoneFitRestriction:
-                end = !ServerGame.Cards.Any(c => CardRestriction.Evaluate(c));
+                end = !ServerGame.Cards.Any(c => cardRestriction.Evaluate(c));
                 break;
             case MustBeFriendlyTurn:
                 end = ServerGame.TurnPlayer != Effect.Controller;
