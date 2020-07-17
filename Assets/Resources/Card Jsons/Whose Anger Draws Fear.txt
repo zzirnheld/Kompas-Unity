@@ -18,9 +18,9 @@
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"to move Whose Anger Draws Fear to\",
-						\"restrictionsToCheck\":[110],
-						\"ConnectednessRestriction\":{
-							\"restrictionsToCheck\":[2,3,103],
+						\"restrictions\":[110],
+						\"connectednessRestriction\":{
+							\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
 							\"subtypesInclude\":[\"Ethereal\"]
 						}
 					}
@@ -35,8 +35,8 @@
 				"{
 					\"subeffType\":\"Set X by Gamestate Value\",
 					\"WhatToCount\":\"Distance to Coords Through\",
-					\"ThroughRestriction\":{
-						\"restrictionsToCheck\":[2,3,103],
+					\"throughRestriction\":{
+						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
 						\"subtypesInclude\":[\"Ethereal\"]
 					}
 				}",
@@ -70,7 +70,7 @@
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"to move Whose Anger Draws Fear's attack target to\",
-						\"restrictionsToCheck\":[251,260],
+						\"restrictions\":[251,260],
 						\"C\":1
 					}
 				}",

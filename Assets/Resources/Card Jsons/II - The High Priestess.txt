@@ -14,10 +14,10 @@
 				"{
 					\"subeffType\":\"Choose From List\",
 					\"MaxCanChoose\":1,
-					\"CardRestriction\":
+					\"cardRestriction\":
 					{
 						\"Blurb\":\"for High Priestess to put on top next (to end up under the last card you chose)\",
-						\"restrictionsToCheck\":[7,102,501,600],
+						\"restrictions\":[\"Friendly\",\"Deck\",\"Index<=C\",\"Not Already Target\"],
 						\"constant\":4
 					}
 				}",

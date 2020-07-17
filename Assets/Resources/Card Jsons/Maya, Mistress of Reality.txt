@@ -17,9 +17,9 @@
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"to move Maya to\",
-						\"restrictionsToCheck\":[110],
-						\"ConnectednessRestriction\":{
-							\"restrictionsToCheck\":[2,3,103],
+						\"restrictions\":[110],
+						\"connectednessRestriction\":{
+							\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
 							\"subtypesInclude\":[\"Ethereal\"]
 						}
 					}
@@ -34,8 +34,8 @@
 				"{
 					\"subeffType\":\"Set X by Gamestate Value\",
 					\"WhatToCount\":\"Distance to Coords Through\",
-					\"ThroughRestriction\":{
-						\"restrictionsToCheck\":[2,3,103],
+					\"throughRestriction\":{
+						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
 						\"subtypesInclude\":[\"Ethereal\"]
 					}
 				}",
@@ -55,7 +55,7 @@
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,101],
 					\"cardRestriction\":{
-						\"restrictionsToCheck\":[2,7],
+						\"restrictions\":[\"Subtypes Include\",\"Friendly\"],
 						\"subtypesInclude\":[\"Shaper\"]
 					}
 				}
@@ -65,7 +65,7 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":{
 						\"Blurb\":\"for Maya to discard\",
-						\"restrictionsToCheck\":[7,100]
+						\"restrictions\":[\"Friendly\",\"Hand\"]
 					}
 
 				}",

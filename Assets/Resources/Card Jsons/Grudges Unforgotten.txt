@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Grudges Unforgotten",
-	"effText":"Shape: During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters. When I'm summoned, annhilate a Summoned SX Shaper and give me +XEW.",
+	"effText":"Shape: During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters. When I'm summoned, annhilate a Summoned SX Ethereal and give me +XEW.",
 	"effects":[
 		{
 			"blurb":"Shape",
@@ -17,9 +17,9 @@
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"to move Grudges Unforgotten to\",
-						\"restrictionsToCheck\":[110],
-						\"ConnectednessRestriction\":{
-							\"restrictionsToCheck\":[2,3,103],
+						\"restrictions\":[110],
+						\"connectednessRestriction\":{
+							\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
 							\"subtypesInclude\":[\"Ethereal\"]
 						}
 					}
@@ -34,8 +34,8 @@
 				"{
 					\"subeffType\":\"Set X by Gamestate Value\",
 					\"WhatToCount\":\"Distance to Coords Through\",
-					\"ThroughRestriction\":{
-						\"restrictionsToCheck\":[2,3,103],
+					\"throughRestriction\":{
+						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
 						\"subtypesInclude\":[\"Ethereal\"]
 					}
 				}",
@@ -56,22 +56,28 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[0,203,311,5,103],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
 						\"Blurb\":\"Ethereal for Grudges Unforgotten to annihilate and absorb\",
-						\"restrictionsToCheck\":[2,3,103],
+						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Summoned\"],
 						\"subtypesInclude\":[\"Ethereal\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Set X by Target Value\",
 					\"WhatToCount\":\"S\"
 				}",
-				"{}",
-				"{}",
 				"{
+					\"subeffType\":\"Annihilate\"
+				}",
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"X Change NESW\",
 					\"eMult\":1,
 					\"sMult\":1,
 					\"wMult\":1

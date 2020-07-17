@@ -14,10 +14,10 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Board Target\",
-					\"boardRestriction\":
+					\"cardRestriction\":
 					{
 						\"Blurb\":\"for Gyfu to give +1EW\",
-						\"restrictionsToCheck\":[3,9,103,600]
+						\"restrictions\":[\"Is Character\",\"Enemy\",\"Board\",\"Not Already Target\"]
 					}
 				}",
 				"{

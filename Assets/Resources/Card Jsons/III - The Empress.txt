@@ -19,7 +19,7 @@
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"for Empress to hand-summon\",
-						\"restrictionsToCheck\":[3,7,100,202]
+						\"restrictions\":[\"Is Character\",\"Friendly\",\"Hand\",\"S<=X\"]
 					}
 				}",
 				"{
@@ -27,7 +27,7 @@
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"where Empress to hand-summon\",
-						\"restrictionsToCheck\":[0]
+						\"restrictions\":[0]
 					}
 				}",
 				"{

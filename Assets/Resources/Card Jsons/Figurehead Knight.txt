@@ -16,7 +16,10 @@
 					\"subeffType\":\"Temporary NESW Buff All\",
 					\"EBuff\":1,
 					\"WBuff\":1,
-					\"EndCondition\":0
+					\"EndCondition\":0,
+					\"cardRestriction\":{
+						\"restrictions\":[\"Friendly\",\"Is Character\"]
+					}
 				}"
 			]
 		}

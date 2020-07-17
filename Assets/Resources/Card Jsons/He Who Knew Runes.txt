@@ -17,9 +17,9 @@
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"to move He Who Knew Runes to\",
-						\"restrictionsToCheck\":[110],
-						\"ConnectednessRestriction\":{
-							\"restrictionsToCheck\":[2,3,103],
+						\"restrictions\":[110],
+						\"connectednessRestriction\":{
+							\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
 							\"subtypesInclude\":[\"Ethereal\"]
 						}
 					}
@@ -34,8 +34,8 @@
 				"{
 					\"subeffType\":\"Set X by Gamestate Value\",
 					\"WhatToCount\":\"Distance to Coords Through\",
-					\"ThroughRestriction\":{
-						\"restrictionsToCheck\":[2,3,103],
+					\"throughRestriction\":{
+							\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
 						\"subtypesInclude\":[\"Ethereal\"]
 					}
 				}",
@@ -62,7 +62,7 @@
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"Shaping for He Who Knew Runes to cast\",
-						\"restrictionsToCheck\":[2,4,7,100,214,601],
+						\"restrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Hand\",\"Cost==X\",\"Can Be Played\"],
 						\"subtypesInclude\":[\"Shaping\"]
 					}
 				}",
@@ -71,7 +71,7 @@
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"where for He Who Knew Runes to cast its target Shaping\",
-						\"restrictionsToCheck\":[0]
+						\"restrictions\":[0]
 					}
 				}",
 				"{

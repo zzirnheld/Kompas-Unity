@@ -17,9 +17,9 @@
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"to move Who Searched for Grudges to\",
-						\"restrictionsToCheck\":[110],
-						\"ConnectednessRestriction\":{
-							\"restrictionsToCheck\":[2,3,103],
+						\"restrictions\":[110],
+						\"connectednessRestriction\":{
+							\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
 							\"subtypesInclude\":[\"Ethereal\"]
 						}
 					}
@@ -34,8 +34,8 @@
 				"{
 					\"subeffType\":\"Set X by Gamestate Value\",
 					\"WhatToCount\":\"Distance to Coords Through\",
-					\"ThroughRestriction\":{
-						\"restrictionsToCheck\":[2,3,103],
+					\"throughRestriction\":{
+						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
 						\"subtypesInclude\":[\"Ethereal\"]
 					}
 				}",
@@ -65,14 +65,14 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":{
 						\"Blurb\":\"for Who Searched For Grudges to discard (1/2)\",
-						\"restrictionsToCheck\":[7,100]
+						\"restrictions\":[7,100]
 					}
 				}",
 				"{
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":{
 						\"Blurb\":\"for Who Searched For Grudges to discard (2/2)\",
-						\"restrictionsToCheck\":[7,100,600]
+						\"restrictions\":[7,100,600]
 					}
 				}",
 				"{

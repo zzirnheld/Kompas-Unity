@@ -11,7 +11,7 @@
 					\"triggerRestrictions\":[1,101,500],
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[2,4,7],
+						\"restrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}
 				}
@@ -22,7 +22,7 @@
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"Rune for Runestones to search\",
-						\"restrictionsToCheck\":[2,4,7,102],
+						\"restrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Deck\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}
 				}",

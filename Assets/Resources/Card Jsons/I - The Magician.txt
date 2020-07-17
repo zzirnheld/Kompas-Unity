@@ -17,7 +17,7 @@
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"for Magician to hand-bottomdeck\",
-						\"restrictionsToCheck\":[7,100]
+						\"restrictions\":[\"Friendly\",\"Hand\"]
 					}
 				}",
 				"{

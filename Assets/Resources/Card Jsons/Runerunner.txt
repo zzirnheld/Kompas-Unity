@@ -16,7 +16,7 @@
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"Rune for Runerunner to cast\",
-						\"restrictionsToCheck\":[2,4,7,100,601,602],
+						\"restrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Hand\",\"Can Be Played\",\"Effect Controller can Afford Cost\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}
 				}",
@@ -25,7 +25,7 @@
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"where for Runerunner to cast its target Rune\",
-						\"restrictionsToCheck\":[0]
+						\"restrictions\":[0]
 					}
 				}",
 				"{

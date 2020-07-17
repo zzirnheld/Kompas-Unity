@@ -15,6 +15,7 @@ public class CardRestriction
     public const string IsCharacter = "Is Character"; //3,
     public const string IsSpell = "Is Spell"; //4,
     public const string IsAugment = "Is Augment"; // 5,
+    public const string NotAugment = "Not Augment";
     public const string SubtypesExclude = "Subtypes Exclude"; // 6,
     public const string Friendly = "Friendly"; // 7,
     public const string SameOwner = "Same Owner as Source"; // 8,
@@ -120,6 +121,9 @@ public class CardRestriction
                     break;
                 case IsAugment:
                     if (potentialTarget.CardType != 'A') return false;
+                    break;
+                case NotAugment:
+                    if (potentialTarget.CardType == 'A') return false;
                     break;
                 case SubtypesExclude:
                     foreach (string s in subtypesExclude)

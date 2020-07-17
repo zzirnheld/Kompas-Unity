@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Runechanneler",
-	"effText":"Once each friendly turn, you can reshuffle X of your discarded Runes to handcast a CX Rune.",
+	"effText":"Once each friendly turn, you can reshuffle X of your discarded Runes to handcast a C<=X Rune.",
 	"effects":[
 		{
 			"activationRestriction":{
@@ -17,7 +17,7 @@
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"Rune for Runechanneler to reshuffle\",
-						\"restrictionsToCheck\":[2,7,101],
+						\"restrictions\":[\"Subtypes Include\",\"Friendly\",\"Discard\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}
 				}",
@@ -34,7 +34,7 @@
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"Rune for Runechanneler to cast\",
-						\"restrictionsToCheck\":[2,7,100,214,601],
+						\"restrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Hand\",\"Can Be Played\",\"Cost<=X\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}
 				}",
@@ -43,7 +43,7 @@
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"where for Runechanneler to cast its target Rune\",
-						\"restrictionsToCheck\":[0]
+						\"restrictions\":[0]
 					}
 				}",
 				"{

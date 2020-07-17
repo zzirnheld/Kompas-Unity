@@ -1,14 +1,14 @@
 {
 	"cardType":67,
 	"cardName":"IX - The Hermit",
-	"effText":"Once each friendly turn, when you draw X, you can move a character X slots.",
+	"effText":"Once each friendly turn, when you draw X, you can move a card X slots.",
 	"effects":[
 		{
 			"triggerCondition":101,
 			"trigger":
 			"{
 				\"Optional\":true,
-				\"Blurb\":\"Move character X slots?\",
+				\"Blurb\":\"Move card X slots?\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,200,500]
 				}
@@ -16,10 +16,10 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Board Target\",
-					\"boardRestriction\":
+					\"cardRestriction\":
 					{
 						\"Blurb\":\"for Hermit to move\",
-						\"restrictionsToCheck\":[3,103]
+						\"restrictions\":[\"Board\"]
 					}
 				}",
 				"{
@@ -27,7 +27,7 @@
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"where Hermit to move its target\",
-						\"restrictionsToCheck\":[1,201]
+						\"restrictions\":[1,201]
 					}
 				}",
 				"{

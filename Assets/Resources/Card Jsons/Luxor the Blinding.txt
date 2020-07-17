@@ -17,9 +17,8 @@
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"adjacent Dragon for Luxor to kill\",
-						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\"],
-						\"subtypesInclude\":[\"Dragon\"],
-						\"oncardRestrictions\":[0]
+						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"],
+						\"subtypesInclude\":[\"Dragon\"]
 					}
 				}",
 				"{
@@ -49,8 +48,7 @@
 					\"subeffType\":\"Change NESW All\",
 					\"cardRestriction\":
 					{
-						\"restrictions\":[3,103],
-						\"oncardRestrictions\":[0]
+						\"restrictions\":[\"Is Character\",\"Board\",\"Adjacent\"]
 					},
 					\"EMod\":-3
 				}"

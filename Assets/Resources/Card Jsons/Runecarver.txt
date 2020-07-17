@@ -14,10 +14,10 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Choose From List\",
-					\"CardRestriction\":
+					\"cardRestriction\":
 					{
 						\"Blurb\":\"Rune for Runecarver to reshuffle\",
-						\"restrictionsToCheck\":[2,7,104],
+						\"restrictions\":[\"Subtypes Include\",\"Friendly\",\"Multiple Possible Locations\"],
 						\"locations\":[1,2,3],
 						\"subtypesInclude\":[\"Rune\"]
 					},

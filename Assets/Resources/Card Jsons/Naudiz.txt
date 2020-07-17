@@ -14,9 +14,9 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Change NESW All\",
-					\"BoardRestriction\":
+					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[3,9,103]
+						\"restrictions\":[\"Is Character\",\"Enemy\",\"Board\"]
 					},
 					\"EMod\":-2
 				}"

@@ -14,10 +14,10 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Choose From List\",
-					\"CardRestriction\":
+					\"cardRestriction\":
 					{
 						\"Blurb\":\"Rune for Runewriter to reshuffle\",
-						\"restrictionsToCheck\":[2,7,103],
+						\"restrictions\":[\"Subtypes Include\",\"Friendly\",\"Hand\"],
 						\"subtypesInclude\":[\"Rune\"]
 					},
 					\"MaxCanChoose\":1
@@ -31,10 +31,10 @@
 				}",
 				"{
 					\"subeffType\":\"Choose From List\",
-					\"CardRestriction\":
+					\"cardRestriction\":
 					{
 						\"Blurb\":\"Runer for Runewriter to search (to hand)\",
-						\"restrictionsToCheck\":[2,7,102,551],
+						\"restrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Index<=X\"],
 						\"subtypesInclude\":[\"Runer\"]
 					},
 					\"Max Can Choose\":1
@@ -46,7 +46,7 @@
 					\"subeffType\":\"Add Rest\",
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[7,102,551,600]
+						\"restrictions\":[\"Friendly\",\"Deck\",\"Index<=X\",\"Not Already Target\"]
 					}
 				}",
 				"{

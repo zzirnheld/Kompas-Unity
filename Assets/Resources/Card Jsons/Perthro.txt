@@ -21,10 +21,10 @@
 				}",
 				"{
 					\"subeffType\":\"Choose From List\",
-					\"CardRestriction\":
+					\"cardRestriction\":
 					{
 						\"Blurb\":\"spell for Perthro to search (to hand)\",
-						\"restrictionsToCheck\":[4,7,102,501],
+						\"restrictions\":[\"Is Spell\",\"Friendly\",\"Deck\",\"Index>=C\"],
 						\"constant\":10
 					},
 					\"MaxCanChoose\":3
@@ -36,12 +36,13 @@
 					\"subeffType\":\"Add Rest\"
 				}"
 				"{
-					\"subeffType\":\"Rehand\",
+					\"subeffType\":\"Choose From List\",
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[7,102,501,600],
+						\"restrictions\":[\"Friendly\",\"Deck\",\"Index<=C\",\"Not Already Target\"],
 						\"constant\":10
-					}
+					},
+					\"MaxCanChoose\":1
 				}",
 				"{
 					\"subeffType\":\"Delete Target\"

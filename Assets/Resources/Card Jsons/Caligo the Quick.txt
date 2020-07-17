@@ -17,9 +17,8 @@
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"adjacent Dragon for Caligo to kill\",
-						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\"],
-						\"subtypesInclude\":[\"Dragon\"],
-						\"oncardRestrictions\":[0]
+						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"],
+						\"subtypesInclude\":[\"Dragon\"]
 					}
 				}",
 				"{

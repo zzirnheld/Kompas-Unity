@@ -10,7 +10,7 @@
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,101,200],
 					\"cardRestriction\":{
-						\"restrictionsToCheck\":[2,4,7],
+						\"restrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}
 				}

@@ -14,19 +14,19 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Board Target\",
-					\"boardRestriction\":
+					\"cardRestriction\":
 					{
 						\"Blurb\":\"Friendly Shaper to move the enemy adjacent to\",
-						\"restrictionsToCheck\":[2,3,7,103],
+						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\"],
 						\"subtypesInclude\":[\"Shaper\"]
 					}
 				}",
 				"{
 					\"subeffType\":\"Board Target\",
-					\"boardRestriction\":
+					\"cardRestriction\":
 					{
 						\"Blurb\":\"enemy character to move\",
-						\"restrictionsToCheck\":[3,9,103]
+						\"restrictions\":[\"Is Character\",\"Enemy\",\"Board\"]
 					}
 				}",
 				"{
@@ -34,7 +34,7 @@
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"where to move the enemy character\",
-						\"restrictionsToCheck\":[102]
+						\"restrictions\":[102]
 					},
 					\"TargetIndex\":-2
 				}",

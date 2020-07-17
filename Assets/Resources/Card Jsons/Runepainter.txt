@@ -17,7 +17,7 @@
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"Rune for Runepainter to cast\",
-						\"restrictionsToCheck\":[2,4,7,100,601,602],
+						\"restrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Hand\",\"Can Be Played\",\"Effect Controller can Afford Cost\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}
 				}",
@@ -26,7 +26,7 @@
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"where for Runepainter to cast its target Rune\",
-						\"restrictionsToCheck\":[0]
+						\"restrictions\":[0]
 					}
 				}",
 				"{
@@ -41,10 +41,10 @@
 				}",
 				"{
 					\"subeffType\":\"Choose From List\",
-					\"CardRestriction\":
+					\"cardRestriction\":
 					{
 						\"Blurb\":\"Rune for Runepainter to search (to hand)\",
-						\"restrictionsToCheck\":[2,7,12,102,551],
+						\"restrictions\":[\"Subtypes Include\",\"Friendly\",\"Same Name as Target\",\"Deck\",\"Index<=X\"],
 						\"subtypesInclude\":[\"Rune\"]
 					},
 					\"MaxCanChoose\":1
@@ -56,7 +56,7 @@
 					\"subeffType\":\"Add Rest\",
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[7,102,551,600]
+						\"restrictions\":[\"Friendly\",\"Deck\",\"Index<=X\",\"Not Already Target\"]
 					}
 				}",
 				"{

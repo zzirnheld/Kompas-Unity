@@ -17,7 +17,7 @@
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"Rune for Runespeaker to cast\",
-						\"restrictionsToCheck\":[2,4,7,100,601,602],
+						\"restrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Hand\",\"Can Be Played\",\"Effect Controller can Afford Cost\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}
 				}",
@@ -26,7 +26,7 @@
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"where for Runespeaker to cast its target Rune\",
-						\"restrictionsToCheck\":[0]
+						\"restrictions\":[0]
 					}
 				}",
 				"{
@@ -41,10 +41,10 @@
 				}",
 				"{
 					\"subeffType\":\"Choose From List\",
-					\"CardRestriction\":
+					\"cardRestriction\":
 					{
 						\"Blurb\":\"Rune for Runespeaker to search (to hand)\",
-						\"restrictionsToCheck\":[2,7,11,102,551],
+						\"restrictions\":[\"Subtypes Include\",\"Friendly\",\"Distinct Name from Other Targets\",\"Deck\",\"Index<=X\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}
 					\"MaxCanChoose\":1
@@ -56,7 +56,7 @@
 					\"subeffType\":\"Add Rest\",
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[7,102,551,600]
+						\"restrictions\":[\"Friendly\",\"Deck\",\"Index<=X\",\"Not Already Target\"]
 					}
 				}",
 				"{

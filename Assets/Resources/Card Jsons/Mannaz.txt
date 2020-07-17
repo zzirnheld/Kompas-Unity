@@ -11,7 +11,6 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[404,8,405,12,304,350],
 			"subeffects":[
 				"{
 					\"subeffType\":\"Jump on Effect Impossible\",
@@ -19,10 +18,10 @@
 				}",
 				"{
 					\"subeffType\":\"Choose From List\",
-					\"CardRestriction\":
+					\"cardRestriction\":
 					{
 						\"Blurb\":\"character for Mannaz to search (to hand)\",
-						\"restrictionsToCheck\":[3,7,102,501],
+						\"restrictions\":[\"Is Character\",\"Friendly\",\"Deck\",\"Index<=C\"],
 						\"constant\":10
 					},
 					\"MaxCanChoose\":1
@@ -34,7 +33,7 @@
 					\"subeffType\":\"Add Rest\",
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[7,102,501,600],
+						\"restrictions\":[\"Friendly\",\"Deck\",\"Index<=C\",\"Not Already Target\"],
 						\"constant\":10
 					}
 				}",

@@ -14,10 +14,9 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Set NESW All\",
-					\"BoardRestriction\":
+					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[3,103],
-						\"onBoardRestrictions\":[0]
+						\"restrictions\":[\"Is Character\",\"Board\",\"Adjacent\"]
 					},
 					\"NVal\":0
 				}"

@@ -14,10 +14,9 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Change NESW All\",
-					\"BoardRestriction\":
+					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[3,103],
-						\"onBoardRestrictions\":[2]
+						\"restrictions\":[\"Is Character\",\"Board\",\"In AOE\"]
 					},
 					\"NMod\":-1,
 					\"EMod\":-1

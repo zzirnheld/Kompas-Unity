@@ -18,7 +18,7 @@
 					\"cardRestriction\":
 					{
 						\"Blurb\":\"for Ingwaz to recast\",
-						\"restrictionsToCheck\":[2,4,7,101,601,602],
+						\"restrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Discard\",\"Can Be Played\",\"Effect Controller can Afford Cost\"],
 						\"subtypesInclude\":[\"Rune\"],
 						\"costDivisor\":2
 					}
@@ -32,7 +32,7 @@
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"where Ingwaz to recast\",
-						\"restrictionsToCheck\":[0]
+						\"restrictions\":[0]
 					}
 				}",
 				"{

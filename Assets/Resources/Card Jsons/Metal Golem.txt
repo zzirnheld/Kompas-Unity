@@ -11,14 +11,13 @@
 					\"triggerRestrictions\":[0]
 				}
 			}",
-			"subeffectTypes":[0,109,0,109],
 			"subeffects":[
 				"{
 					\"subeffType\":\"Board Target\",
-					\"boardRestriction\":
+					\"cardRestriction\":
 					{
 						\"Blurb\":\"first character for Metal Golem to set N to 0\",
-						\"restrictionsToCheck\":[3,103]
+						\"restrictions\":[\"Is Character\",\"Board\"]
 					}
 				}",
 				"{
@@ -27,10 +26,10 @@
 				}",
 				"{
 					\"subeffType\":\"Board Target\",
-					\"boardRestriction\":
+					\"cardRestriction\":
 					{
 						\"Blurb\":\"second character for Metal Golem to set N to 0\",
-						\"restrictionsToCheck\":[3,103,600]
+						\"restrictions\":[\"Is Character\",\"Board\",\"Not Already Target\"]
 					}
 				}",
 				"{

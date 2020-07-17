@@ -10,7 +10,7 @@
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,101],
 					\"cardRestriction\":{
-						\"restrictionsToCheck\":[2,7,11],
+						\"restrictions\":[\"Subtypes Include\",\"Friendly\",\"Distinct Name from Other Targets\"],
 						\"subtypesInclude\":[\"Shaper\"]
 					}
 				}
@@ -24,7 +24,7 @@
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"to move Outpoured Anger to\",
-						\"restrictionsToCheck\":[102]
+						\"restrictions\":[102]
 					},
 					\"TargetIndex\":-2
 				}",
