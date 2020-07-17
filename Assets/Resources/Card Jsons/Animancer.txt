@@ -48,7 +48,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Clear Jump on Impossible\"
+					\"subeffType\":\"Clear Jump on Effect Impossible\"
 				}",
 				"{
 					\"subeffType\":\"Add Rest\",

@@ -30,7 +30,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Pay Target's Cost in Pips\",
+					\"subeffType\":\"Pay Target's Cost in Pips\"
 				}",
 				"{
 					\"subeffType\":\"Space Target\",

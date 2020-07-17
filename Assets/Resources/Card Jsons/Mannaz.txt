@@ -27,7 +27,7 @@
 					\"MaxCanChoose\":1
 				}",
 				"{
-					\"subeffType\":\"Clear Jump on Effect Impossible\",
+					\"subeffType\":\"Clear Jump on Effect Impossible\"
 				}",
 				"{
 					\"subeffType\":\"Add Rest\",

@@ -31,7 +31,7 @@
 					\"subeffType\":\"Discard\"
 				}",
 				"{
-					\"subeffType\":\"Deck Target\"
+					\"subeffType\":\"Deck Target\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Runer for Odal to deck-summon\",

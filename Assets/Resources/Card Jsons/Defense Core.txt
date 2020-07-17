@@ -51,10 +51,13 @@
 					\"triggerRestrictions\":[1,10]
 				}
 			}",
-			"subeffectTypes":[5,304],
 			"subeffects":[
-				"{}",
-				"{}"
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Rehand\"
+				}"
 			]
 		}
 	],

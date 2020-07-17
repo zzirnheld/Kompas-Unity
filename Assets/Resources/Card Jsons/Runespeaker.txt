@@ -46,7 +46,7 @@
 						\"blurb\":\"Rune for Runespeaker to search (to hand)\",
 						\"restrictions\":[\"Subtypes Include\",\"Friendly\",\"Distinct Name from Other Targets\",\"Deck\",\"Index<=X\"],
 						\"subtypesInclude\":[\"Rune\"]
-					}
+					},
 					\"MaxCanChoose\":1
 				}",
 				"{

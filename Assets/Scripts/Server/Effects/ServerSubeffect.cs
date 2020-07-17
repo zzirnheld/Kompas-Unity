@@ -242,7 +242,7 @@ public abstract class ServerSubeffect : Subeffect
                 toReturn = JsonUtility.FromJson<AttackSubeffect>(subeffJson);
                 break;
             default:
-                Debug.LogError($"Unrecognized effect type enum {subeff.subeffType} for loading effect in effect constructor");
+                Debug.LogError($"Unrecognized effect type enum {subeff.subeffType} for loading effect in effect constructor for json {subeffJson}");
                 return null;
         }
 
