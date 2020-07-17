@@ -86,7 +86,7 @@ public class CardRestriction
     public int costDivisor = 1;
 
     public int cSpaces;
-    public string[] AdjacencySubtypes = new string[0];
+    public string[] adjacencySubtypes = new string[0];
 
     public string blurb = "";
 
@@ -270,7 +270,7 @@ public class CardRestriction
                     if (potentialTarget.DistanceTo(Subeffect.Source) > cSpaces) return false;
                     break;
                 case AdjacentToSubtype:
-                    if (!potentialTarget.AdjacentCards.Any(card => AdjacencySubtypes.All(s => card.Subtypes.Contains(s)))) return false;
+                    if (!potentialTarget.AdjacentCards.Any(card => adjacencySubtypes.All(s => card.Subtypes.Contains(s)))) return false;
                     break;
                 case ExactlyXSpaces:
                     if (potentialTarget.DistanceTo(Subeffect.Source) != Subeffect.Effect.X) return false;

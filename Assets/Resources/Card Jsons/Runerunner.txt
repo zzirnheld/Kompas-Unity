@@ -15,7 +15,7 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Rune for Runerunner to cast\",
+						\"blurb\":\"Rune for Runerunner to cast\",
 						\"restrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Hand\",\"Can Be Played\",\"Effect Controller can Afford Cost\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}
@@ -24,7 +24,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"where for Runerunner to cast its target Rune\",
+						\"blurb\":\"where for Runerunner to cast its target Rune\",
 						\"restrictions\":[0]
 					}
 				}",

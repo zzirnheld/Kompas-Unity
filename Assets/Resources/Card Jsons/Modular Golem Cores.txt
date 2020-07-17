@@ -15,7 +15,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Golem Core for Modular Golem Cores to detach\",
+						\"blurb\":\"Golem Core for Modular Golem Cores to detach\",
 						\"restrictions\":[\"Subtypes Include\",\"Is Augment\",\"Board\"],
 						\"subtypesInclude\":[\"Golem\", \"Core\"]
 					}
@@ -27,7 +27,7 @@
 					\"subeffType\":\"Deck Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Golem core for Modular Golem Cores to search\",
+						\"blurb\":\"Golem core for Modular Golem Cores to search\",
 						\"restrictions\":[\"Subtypes Include\",\"Is Augment\",\"Deck\"],
 						\"subtypesInclude\":[\"Golem\", \"Core\"]
 					}

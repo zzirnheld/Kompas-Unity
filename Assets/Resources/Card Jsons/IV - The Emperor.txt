@@ -16,7 +16,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"for Emperor to buff\",
+						\"blurb\":\"for Emperor to buff\",
 						\"restrictions\":[\"Is Character\",\"Board\",\"Adjacent\"]
 					}
 				}",

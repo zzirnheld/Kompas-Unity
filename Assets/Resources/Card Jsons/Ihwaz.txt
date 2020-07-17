@@ -16,7 +16,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"for Ihwaz to swap (1/2)\",
+						\"blurb\":\"for Ihwaz to swap (1/2)\",
 						\"restrictions\":[\"Not Augment\",\"Board\"]
 					}
 				}",
@@ -24,7 +24,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"for Ihwaz to swap (2/2)\",
+						\"blurb\":\"for Ihwaz to swap (2/2)\",
 						\"restrictions\":[\"Not Augment\",\"Board\",\"Not Already Target\"]
 					}
 				}",

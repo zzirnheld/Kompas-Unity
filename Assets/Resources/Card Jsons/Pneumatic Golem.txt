@@ -16,7 +16,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"character within 3 spaces of Pneumatic Golem for it to rehand\",
+						\"blurb\":\"character within 3 spaces of Pneumatic Golem for it to rehand\",
 						\"restrictions\":[\"Is Character\",\"Board\",\"Within C Spaces\"],
 						\"cSpaces\":3
 					}

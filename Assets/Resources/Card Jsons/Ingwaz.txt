@@ -17,7 +17,7 @@
 					\"subeffType\":\"Discard Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"for Ingwaz to recast\",
+						\"blurb\":\"for Ingwaz to recast\",
 						\"restrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Discard\",\"Can Be Played\",\"Effect Controller can Afford Cost\"],
 						\"subtypesInclude\":[\"Rune\"],
 						\"costDivisor\":2
@@ -31,7 +31,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"where Ingwaz to recast\",
+						\"blurb\":\"where Ingwaz to recast\",
 						\"restrictions\":[0]
 					}
 				}",

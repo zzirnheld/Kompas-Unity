@@ -16,7 +16,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"for Kaunan to give -3EW\",
+						\"blurb\":\"for Kaunan to give -3EW\",
 						\"restrictions\":[\"Is Character\",\"Summoned\",\"Board\"]
 					}
 				}",

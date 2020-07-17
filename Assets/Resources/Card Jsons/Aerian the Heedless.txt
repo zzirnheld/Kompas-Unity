@@ -16,7 +16,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"adjacent Dragon for Aerian to kill\",
+						\"blurb\":\"adjacent Dragon for Aerian to kill\",
 						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"],
 						\"subtypesInclude\":[\"Dragon\"]
 					}
@@ -30,7 +30,7 @@
 			"triggerCondition":301,
 			"trigger":
 			"{
-				\"Blurb\":\"Give the attacking Aerian and all other characters within 2 spaces -2E?\",
+				\"blurb\":\"Give the attacking Aerian and all other characters within 2 spaces -2E?\",
 				\"Optional\":true,
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[0,1]

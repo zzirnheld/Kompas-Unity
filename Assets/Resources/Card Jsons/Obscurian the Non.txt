@@ -16,7 +16,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"adjacent Dragon for Obscurian to kill\",
+						\"blurb\":\"adjacent Dragon for Obscurian to kill\",
 						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"],
 						\"subtypesInclude\":[\"Dragon\"]
 					}
@@ -30,7 +30,7 @@
 			"triggerCondition":301,
 			"trigger":
 			"{
-				\"Blurb\":\"Give Obscurian -1E to give an Avatar -2E?\",
+				\"blurb\":\"Give Obscurian -1E to give an Avatar -2E?\",
 				\"Optional\":true,
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[0,1]
@@ -48,7 +48,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Avatar for Obscurian to give -2E.\",
+						\"blurb\":\"Avatar for Obscurian to give -2E.\",
 						\"restrictions\":[\"Is Character\",\"Avatar\",\"Board\"]
 					}
 				}",

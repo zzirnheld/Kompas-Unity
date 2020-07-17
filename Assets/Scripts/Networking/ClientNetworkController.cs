@@ -242,7 +242,7 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.targetMode = Game.TargetMode.SpaceTarget;
                 ClientGame.CurrSpaceRestriction = packet.GetSpaceRestriction(ClientGame);
                 //TODO display based on that space
-                ClientGame.clientUICtrl.SetCurrState("Choose Space Target", ClientGame.CurrSpaceRestriction.Blurb);
+                ClientGame.clientUICtrl.SetCurrState("Choose Space Target", ClientGame.CurrSpaceRestriction.blurb);
                 break;
             case Packet.Command.SetEffectsX:
                 Debug.Log("Setting X to " + packet.EffectX);

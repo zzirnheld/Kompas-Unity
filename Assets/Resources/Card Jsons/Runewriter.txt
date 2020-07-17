@@ -16,7 +16,7 @@
 					\"subeffType\":\"Choose From List\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Rune for Runewriter to reshuffle\",
+						\"blurb\":\"Rune for Runewriter to reshuffle\",
 						\"restrictions\":[\"Subtypes Include\",\"Friendly\",\"Hand\"],
 						\"subtypesInclude\":[\"Rune\"]
 					},
@@ -33,7 +33,7 @@
 					\"subeffType\":\"Choose From List\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Runer for Runewriter to search (to hand)\",
+						\"blurb\":\"Runer for Runewriter to search (to hand)\",
 						\"restrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Index<=X\"],
 						\"subtypesInclude\":[\"Runer\"]
 					},

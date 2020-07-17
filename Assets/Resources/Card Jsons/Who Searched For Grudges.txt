@@ -16,7 +16,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"to move Who Searched for Grudges to\",
+						\"blurb\":\"to move Who Searched for Grudges to\",
 						\"restrictions\":[110],
 						\"connectednessRestriction\":{
 							\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
@@ -64,14 +64,14 @@
 				"{
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":{
-						\"Blurb\":\"for Who Searched For Grudges to discard (1/2)\",
+						\"blurb\":\"for Who Searched For Grudges to discard (1/2)\",
 						\"restrictions\":[\"Friendly\",\"Hand\"]
 					}
 				}",
 				"{
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":{
-						\"Blurb\":\"for Who Searched For Grudges to discard (2/2)\",
+						\"blurb\":\"for Who Searched For Grudges to discard (2/2)\",
 						\"restrictions\":[\"Friendly\",\"Hand\",\"Not Already Target\"]
 					}
 				}",

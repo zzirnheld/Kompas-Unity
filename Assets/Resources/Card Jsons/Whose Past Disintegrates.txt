@@ -16,7 +16,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"to move Whose Past Disintegrates to\",
+						\"blurb\":\"to move Whose Past Disintegrates to\",
 						\"restrictions\":[110],
 						\"connectednessRestriction\":{
 							\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],

@@ -23,7 +23,7 @@
 					\"subeffType\":\"Choose From List\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"spell for Perthro to search (to hand)\",
+						\"blurb\":\"spell for Perthro to search (to hand)\",
 						\"restrictions\":[\"Is Spell\",\"Friendly\",\"Deck\",\"Index>=C\"],
 						\"constant\":10
 					},

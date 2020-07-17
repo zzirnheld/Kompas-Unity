@@ -20,7 +20,7 @@
 					\"subeffType\":\"Choose From List\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"character for Mannaz to search (to hand)\",
+						\"blurb\":\"character for Mannaz to search (to hand)\",
 						\"restrictions\":[\"Is Character\",\"Friendly\",\"Deck\",\"Index<=C\"],
 						\"constant\":10
 					},

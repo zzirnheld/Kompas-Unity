@@ -16,7 +16,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"enemy card for Straw Golem to move.\",
+						\"blurb\":\"enemy card for Straw Golem to move.\",
 						\"restrictions\":[\"Board\"]
 					}
 				}",

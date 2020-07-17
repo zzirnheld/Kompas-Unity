@@ -30,7 +30,7 @@
 			"triggerCondition":301,
 			"trigger":
 			"{
-				\"Blurb\":\"Give the attacking Terrian -XE to give its taret -2XW? (You choose X)\",
+				\"blurb\":\"Give the attacking Terrian -XE to give its taret -2XW? (You choose X)\",
 				\"Optional\":true,
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[0,1]

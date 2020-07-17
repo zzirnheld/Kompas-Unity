@@ -16,7 +16,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"adjacent Dragon for Caligo to kill\",
+						\"blurb\":\"adjacent Dragon for Caligo to kill\",
 						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"],
 						\"subtypesInclude\":[\"Dragon\"]
 					}
@@ -37,7 +37,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"enemy character for Caligo to attack\",
+						\"blurb\":\"enemy character for Caligo to attack\",
 						\"restrictions\":[\"Is Character\",\"Board\",\"Adjacent\"]
 					}
 				}",
@@ -53,7 +53,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"to move Caligo to\",
+						\"blurb\":\"to move Caligo to\",
 						\"restrictions\":[102]
 					}
 				}",

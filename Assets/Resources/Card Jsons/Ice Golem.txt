@@ -16,7 +16,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"for Ice Golem to temporarily negate\",
+						\"blurb\":\"for Ice Golem to temporarily negate\",
 						\"restrictions\":[\"Is Character\",\"Board\"]
 					}
 				}",

@@ -31,7 +31,7 @@
 					\"subeffType\":\"Deck Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"for Dragon Egg to become\",
+						\"blurb\":\"for Dragon Egg to become\",
 						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Deck\",\"Can Be Played\"],
 						\"subtypesInclude\":[\"Dragon\"]
 					}

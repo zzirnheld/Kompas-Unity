@@ -16,7 +16,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"adjacent Dragon for Aquarian to kill\",
+						\"blurb\":\"adjacent Dragon for Aquarian to kill\",
 						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\"],
 						\"subtypesInclude\":[\"Dragon\"],
 						\"oncardRestrictions\":[0]
@@ -31,7 +31,7 @@
 			"triggerCondition":301,
 			"trigger":
 			"{
-				\"Blurb\":\"Give the attacking Aquarian -1E to give another Dragon +2E?\",
+				\"blurb\":\"Give the attacking Aquarian -1E to give another Dragon +2E?\",
 				\"Optional\":true,
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[0,1]
@@ -49,7 +49,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"another Dragon for Aquarian to heal\",
+						\"blurb\":\"another Dragon for Aquarian to heal\",
 						\"restrictions\":[2,3,7,99,103],
 						\"subtypesInclude\":[\"Dragon\"]
 					}

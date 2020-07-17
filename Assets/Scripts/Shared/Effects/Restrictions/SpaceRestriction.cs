@@ -30,7 +30,7 @@ public class SpaceRestriction
 
     public int C;
 
-    public string Blurb = "";
+    public string blurb = "";
 
     public void Initialize(Subeffect subeffect)
     {

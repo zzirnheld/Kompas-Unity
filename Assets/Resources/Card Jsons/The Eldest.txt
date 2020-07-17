@@ -16,7 +16,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"adjacent Dragon for the Eldest to kill\",
+						\"blurb\":\"adjacent Dragon for the Eldest to kill\",
 						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\"],
 						\"subtypesInclude\":[\"Dragon\"],
 						\"oncardRestrictions\":[0]

@@ -8,7 +8,7 @@
 			"trigger":
 			"{
 				\"Optional\":true,
-				\"Blurb\":\"Draw 1? (An enemy just deck-rehanded a card)\",
+				\"blurb\":\"Draw 1? (An enemy just deck-rehanded a card)\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,101,401],
 					\"cardRestriction\":{

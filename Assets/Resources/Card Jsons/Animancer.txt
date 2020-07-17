@@ -16,7 +16,7 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"for Animancer to discard\",
+						\"blurb\":\"for Animancer to discard\",
 						\"restrictions\":[\"Subtypes Include\",\"Friendly\",\"Hand\",\"Not Already Target\"],
 						\"subtypesInclude\":[\"Golem\"]
 					}
@@ -42,7 +42,7 @@
 					\"MaxCanChoose\":1,
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"for Animancer to search\",
+						\"blurb\":\"for Animancer to search\",
 						\"restrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Cost<=X\",\"Index<=X\"],
 						\"subtypesInclude\":[\"Golem\"]
 					}

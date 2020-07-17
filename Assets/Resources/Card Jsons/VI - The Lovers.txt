@@ -7,7 +7,7 @@
 			"triggerCondition":101,
 			"trigger":
 			"{
-				\"Blurb\":\"Tribute me to deck-summon Tarocco with S <= X?\",
+				\"blurb\":\"Tribute me to deck-summon Tarocco with S <= X?\",
 				\"Optional\":true,
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,200]
@@ -28,7 +28,7 @@
 					\"subeffType\":\"Deck Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Tarocco for Lovers to become\",
+						\"blurb\":\"Tarocco for Lovers to become\",
 						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Deck\",\"S<=X\"],
 						\"subtypesInclude\":[\"Tarocco\"]
 					}

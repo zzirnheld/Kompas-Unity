@@ -16,7 +16,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"adjacent Dragon for Auram to kill\",
+						\"blurb\":\"adjacent Dragon for Auram to kill\",
 						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"],
 						\"subtypesInclude\":[\"Dragon\"]
 					}
@@ -30,7 +30,7 @@
 			"triggerCondition":301,
 			"trigger":
 			"{
-				\"Blurb\":\"Give the attacking Auram -XE to draw X? (You choose X)\",
+				\"blurb\":\"Give the attacking Auram -XE to draw X? (You choose X)\",
 				\"Optional\":true,
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[0,1]

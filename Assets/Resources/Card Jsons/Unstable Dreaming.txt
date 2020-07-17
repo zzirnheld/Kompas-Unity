@@ -15,8 +15,8 @@
 				"{
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":{
-						\"Blurb\":\"Shaper to hand-summon\",
-						\"restrictionsToCheck\":[2,3,7,100],
+						\"blurb\":\"Shaper to hand-summon\",
+						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Hand\"],
 						\"subtypesInclude\":[\"Shaper\"]
 					}
 				}",
@@ -24,8 +24,8 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"where to handsummon the Shaper\",
-						\"restrictionsToCheck\":[0]
+						\"blurb\":\"where to handsummon the Shaper\",
+						\"restrictions\":[0]
 					}
 				}",
 				"{

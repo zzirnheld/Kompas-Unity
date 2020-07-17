@@ -22,7 +22,7 @@
 					\"subeffType\":\"Deck Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"for Clay Golem to summon\",
+						\"blurb\":\"for Clay Golem to summon\",
 						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Deck\"],
 						\"subtypesInclude\":[\"Golem\"]
 					}
@@ -31,7 +31,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"to play the card you chose\",
+						\"blurb\":\"to play the card you chose\",
 						\"restrictions\":[0]
 					}
 				}",

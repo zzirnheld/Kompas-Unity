@@ -16,7 +16,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"spell for Wynn to dispel\",
+						\"blurb\":\"spell for Wynn to dispel\",
 						\"restrictions\":[\"Is Spell\",\"Board\"]
 					}
 				}",

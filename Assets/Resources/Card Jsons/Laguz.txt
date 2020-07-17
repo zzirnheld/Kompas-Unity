@@ -10,7 +10,7 @@
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,120,500,501],
 					\"spaceRestriction\":{
-						\"restrictionsToCheck\":[150]
+						\"restrictions\":[150]
 					}
 				}
 			}",
@@ -19,7 +19,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"restrictionsToCheck\":[1,251],
+						\"restrictions\":[1,251],
 						\"C\":1
 					}
 				}",

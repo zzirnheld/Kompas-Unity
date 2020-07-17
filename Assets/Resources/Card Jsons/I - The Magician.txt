@@ -16,7 +16,7 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"for Magician to hand-bottomdeck\",
+						\"blurb\":\"for Magician to hand-bottomdeck\",
 						\"restrictions\":[\"Friendly\",\"Hand\"]
 					}
 				}",

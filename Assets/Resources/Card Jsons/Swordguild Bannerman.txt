@@ -23,7 +23,7 @@
 					\"subeffType\":\"Discard\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"dead Warrior for Bannerman to reshuffle\",
+						\"blurb\":\"dead Warrior for Bannerman to reshuffle\",
 						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Discard\"],
 						\"subtypesInclude\":[\"Warrior\"]
 					}

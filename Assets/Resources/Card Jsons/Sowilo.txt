@@ -16,7 +16,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"character for Sowilo to give -1E.\",
+						\"blurb\":\"character for Sowilo to give -1E.\",
 						\"restrictions\":[\"Is Character\",\"Board\"]
 					}
 				}",
@@ -28,7 +28,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"other character for Sowilo to give +1E.\",
+						\"blurb\":\"other character for Sowilo to give +1E.\",
 						\"restrictions\":[\"Is Character\",\"Board\",\"Not Already Target\"]
 					}
 				}",

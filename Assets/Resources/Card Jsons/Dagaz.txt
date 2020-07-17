@@ -10,7 +10,7 @@
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,101],
 					\"cardRestriction\":{
-						\"restrictionsToCheck\":[2,4],
+						\"restrictions\":[2,4],
 						\"subtypesInclude\":[\"Rune\"]
 					}
 				}

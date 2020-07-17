@@ -8,7 +8,7 @@
 			"trigger":
 			"{
 				\"Optional\":true,
-				\"Blurb\":\"Give one character -1E and another +1E?\",
+				\"blurb\":\"Give one character -1E and another +1E?\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,200]
 				}
@@ -18,7 +18,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"character for Sun to give -1E\",
+						\"blurb\":\"character for Sun to give -1E\",
 						\"restrictions\":[\"Is Character\",\"Board\"]
 					}
 				}",
@@ -30,7 +30,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"character for Sun to give +1E\",
+						\"blurb\":\"character for Sun to give +1E\",
 						\"restrictions\":[\"Is Character\",\"Board\",\"Not Already Target\"]
 					}
 				}",

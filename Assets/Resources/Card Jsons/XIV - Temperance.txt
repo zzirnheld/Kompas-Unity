@@ -8,7 +8,7 @@
 			"trigger":
 			"{
 				\"Optional\":true,
-				\"Blurb\":\"Dispel a C <= X spell? (X is the number of cards you just drew)\",
+				\"blurb\":\"Dispel a C <= X spell? (X is the number of cards you just drew)\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,200,502]
 				}
@@ -19,7 +19,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"C <= X spell for Temperance to dispel\",
+						\"blurb\":\"C <= X spell for Temperance to dispel\",
 						\"restrictions\":[\"Is Spell\",\"Board\",\"Cost<=X\"]
 					}
 				}",

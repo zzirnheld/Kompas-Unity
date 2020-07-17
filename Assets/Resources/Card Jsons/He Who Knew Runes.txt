@@ -16,7 +16,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"to move He Who Knew Runes to\",
+						\"blurb\":\"to move He Who Knew Runes to\",
 						\"restrictions\":[110],
 						\"connectednessRestriction\":{
 							\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
@@ -61,7 +61,7 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Shaping for He Who Knew Runes to cast\",
+						\"blurb\":\"Shaping for He Who Knew Runes to cast\",
 						\"restrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Hand\",\"Cost==X\",\"Can Be Played\"],
 						\"subtypesInclude\":[\"Shaping\"]
 					}
@@ -70,7 +70,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"where for He Who Knew Runes to cast its target Shaping\",
+						\"blurb\":\"where for He Who Knew Runes to cast its target Shaping\",
 						\"restrictions\":[0]
 					}
 				}",

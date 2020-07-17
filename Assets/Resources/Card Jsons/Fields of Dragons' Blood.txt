@@ -10,8 +10,8 @@
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[101,149],
 					\"cardRestriction\":{
-						\"restrictionsToCheck\":[2,103],
-						\"onBoardRestrictions\":[2]
+						\"restrictions\":[\"Subtypes Include\",\"Board\",\"In AOE\"],
+						\"subtypesInclude\":[\"Dragon\"]
 					}
 				}
 			}",

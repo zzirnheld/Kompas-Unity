@@ -8,7 +8,7 @@
 			"trigger":
 			"{
 				\"Optional\":true,
-				\"Blurb\":\"Tribute me to give a Summoned character -XE and draw X? (X is the number of cards you just drew)\",
+				\"blurb\":\"Tribute me to give a Summoned character -XE and draw X? (X is the number of cards you just drew)\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,200]
 				}
@@ -24,7 +24,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Summoned character for Tower to give -XE\",
+						\"blurb\":\"Summoned character for Tower to give -XE\",
 						\"restrictions\":[\"Is Character\",\"Board\",\"Summoned\"]
 					}
 				}",

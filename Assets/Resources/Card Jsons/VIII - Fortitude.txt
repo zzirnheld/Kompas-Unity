@@ -25,7 +25,7 @@
 			"trigger":
 			"{
 				\"Optional\":true,
-				\"Blurb\":\"Give adjacent friendly character +1E or W?\",
+				\"blurb\":\"Give adjacent friendly character +1E or W?\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,200]
 				}
@@ -35,7 +35,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"adjacent friendly character for Fortitude to give +1E or +1W\",
+						\"blurb\":\"adjacent friendly character for Fortitude to give +1E or +1W\",
 						\"restrictions\":[\"Is Character\",\"Friendly\",\"Deck\",\"Adjacent\"]
 					}
 				}",

@@ -16,7 +16,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"for Gyfu to give +1EW\",
+						\"blurb\":\"for Gyfu to give +1EW\",
 						\"restrictions\":[\"Is Character\",\"Enemy\",\"Board\",\"Not Already Target\"]
 					}
 				}",

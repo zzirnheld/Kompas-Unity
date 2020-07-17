@@ -23,7 +23,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"to move Outpoured Anger to\",
+						\"blurb\":\"to move Outpoured Anger to\",
 						\"restrictions\":[102]
 					},
 					\"TargetIndex\":-2

@@ -16,7 +16,7 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Rune for Runebinding to cast\",
+						\"blurb\":\"Rune for Runebinding to cast\",
 						\"restrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Hand\",\"Can Be Played\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}
@@ -25,7 +25,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"where for Runebinding to cast its target Rune\",
+						\"blurb\":\"where for Runebinding to cast its target Rune\",
 						\"restrictions\":[0]
 					}
 				}",

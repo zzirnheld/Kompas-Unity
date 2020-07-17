@@ -29,7 +29,7 @@
 			"triggerCondition":301,
 			"trigger":
 			"{
-				\"Blurb\":\"Give the attacking Pyrian -1E to give their target -4E?\",
+				\"blurb\":\"Give the attacking Pyrian -1E to give their target -4E?\",
 				\"Optional\":true,
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[0,1]

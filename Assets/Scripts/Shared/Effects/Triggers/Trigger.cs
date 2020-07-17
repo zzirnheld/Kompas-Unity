@@ -8,5 +8,5 @@ public abstract class Trigger
     public TriggerRestriction triggerRestriction;
 
     public bool Optional = false;
-    public string Blurb = "";
+    public string blurb = "";
 }

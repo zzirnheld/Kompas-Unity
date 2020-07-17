@@ -16,7 +16,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"character for Thurisaz to double W\",
+						\"blurb\":\"character for Thurisaz to double W\",
 						\"restrictions\":[\"Is Character\",\"Board\"]
 					}
 				}",

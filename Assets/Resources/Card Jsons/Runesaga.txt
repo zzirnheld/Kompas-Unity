@@ -16,7 +16,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Runer for Runesaga to give +25ESW\",
+						\"blurb\":\"Runer for Runesaga to give +25ESW\",
 						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Summoned\",\"Board\"],
 						\"subtypesInclude\":[\"Runer\"]
 					}
@@ -31,7 +31,7 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Rune for Runesaga to cast\",
+						\"blurb\":\"Rune for Runesaga to cast\",
 						\"restrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Hand\",\"Not Already Target\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}
@@ -40,7 +40,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"where for Runesaga to cast its target Rune\",
+						\"blurb\":\"where for Runesaga to cast its target Rune\",
 						\"restrictions\":[0]
 					}
 				}",

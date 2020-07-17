@@ -16,7 +16,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"first character for Metal Golem to set N to 0\",
+						\"blurb\":\"first character for Metal Golem to set N to 0\",
 						\"restrictions\":[\"Is Character\",\"Board\"]
 					}
 				}",
@@ -28,7 +28,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"second character for Metal Golem to set N to 0\",
+						\"blurb\":\"second character for Metal Golem to set N to 0\",
 						\"restrictions\":[\"Is Character\",\"Board\",\"Not Already Target\"]
 					}
 				}",

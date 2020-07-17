@@ -16,7 +16,7 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Rune for Runepainter to cast\",
+						\"blurb\":\"Rune for Runepainter to cast\",
 						\"restrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Hand\",\"Can Be Played\",\"Effect Controller can Afford Cost\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}
@@ -25,7 +25,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"where for Runepainter to cast its target Rune\",
+						\"blurb\":\"where for Runepainter to cast its target Rune\",
 						\"restrictions\":[0]
 					}
 				}",
@@ -43,7 +43,7 @@
 					\"subeffType\":\"Choose From List\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Rune for Runepainter to search (to hand)\",
+						\"blurb\":\"Rune for Runepainter to search (to hand)\",
 						\"restrictions\":[\"Subtypes Include\",\"Friendly\",\"Same Name as Target\",\"Deck\",\"Index<=X\"],
 						\"subtypesInclude\":[\"Rune\"]
 					},

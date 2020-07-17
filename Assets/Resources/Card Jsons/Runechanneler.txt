@@ -16,7 +16,7 @@
 					\"subeffType\":\"Discard\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Rune for Runechanneler to reshuffle\",
+						\"blurb\":\"Rune for Runechanneler to reshuffle\",
 						\"restrictions\":[\"Subtypes Include\",\"Friendly\",\"Discard\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}
@@ -33,7 +33,7 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Rune for Runechanneler to cast\",
+						\"blurb\":\"Rune for Runechanneler to cast\",
 						\"restrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Hand\",\"Can Be Played\",\"Cost<=X\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}
@@ -42,7 +42,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"where for Runechanneler to cast its target Rune\",
+						\"blurb\":\"where for Runechanneler to cast its target Rune\",
 						\"restrictions\":[0]
 					}
 				}",

@@ -17,7 +17,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"for Ehwaz to give +2N\",
+						\"blurb\":\"for Ehwaz to give +2N\",
 						\"restrictions\":[\"Is Character\",\"Board\"]
 					}
 				}",

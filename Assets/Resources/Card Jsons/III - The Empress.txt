@@ -7,7 +7,7 @@
 			"triggerCondition":101,
 			"trigger":
 			"{
-				\"Blurb\":\"Hand-summon character with S <= X?\",
+				\"blurb\":\"Hand-summon character with S <= X?\",
 				\"Optional\":true,
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,200]
@@ -18,7 +18,7 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"for Empress to hand-summon\",
+						\"blurb\":\"for Empress to hand-summon\",
 						\"restrictions\":[\"Is Character\",\"Friendly\",\"Hand\",\"S<=X\"]
 					}
 				}",
@@ -26,7 +26,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"where Empress to hand-summon\",
+						\"blurb\":\"where Empress to hand-summon\",
 						\"restrictions\":[0]
 					}
 				}",

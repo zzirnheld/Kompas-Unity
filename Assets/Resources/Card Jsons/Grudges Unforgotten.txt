@@ -16,7 +16,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"to move Grudges Unforgotten to\",
+						\"blurb\":\"to move Grudges Unforgotten to\",
 						\"restrictions\":[110],
 						\"connectednessRestriction\":{
 							\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
@@ -61,7 +61,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Ethereal for Grudges Unforgotten to annihilate and absorb\",
+						\"blurb\":\"Ethereal for Grudges Unforgotten to annihilate and absorb\",
 						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Summoned\"],
 						\"subtypesInclude\":[\"Ethereal\"]
 					}

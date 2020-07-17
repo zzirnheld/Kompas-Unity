@@ -16,7 +16,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"to move Evasive Ectoplasm to\",
+						\"blurb\":\"to move Evasive Ectoplasm to\",
 						\"restrictions\":[110],
 						\"connectednessRestriction\":{
 							\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],

@@ -16,7 +16,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"character for Tallow Golem to temporarily activate\",
+						\"blurb\":\"character for Tallow Golem to temporarily activate\",
 						\"restrictions\":[\"Is Character\",\"Board\"]
 					}
 				}",

@@ -16,7 +16,7 @@
 					\"subeffType\":\"Set X by Board Count\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"spell for Dispeller by Sword to dispel\",
+						\"blurb\":\"spell for Dispeller by Sword to dispel\",
 						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
 						\"subtypesInclude\":[\"Warrior\"]
 					}

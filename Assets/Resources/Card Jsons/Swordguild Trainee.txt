@@ -39,7 +39,7 @@
 					\"subeffType\":\"Deck Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Swordguild Warrior for Trainee to become\",
+						\"blurb\":\"Swordguild Warrior for Trainee to become\",
 						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Deck\",\"S<=X\"],
 						\"subtypesInclude\":[\"Warrior\"]
 					}

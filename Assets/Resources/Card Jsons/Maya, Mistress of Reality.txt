@@ -16,7 +16,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"to move Maya to\",
+						\"blurb\":\"to move Maya to\",
 						\"restrictions\":[110],
 						\"connectednessRestriction\":{
 							\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
@@ -64,7 +64,7 @@
 				"{
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":{
-						\"Blurb\":\"for Maya to discard\",
+						\"blurb\":\"for Maya to discard\",
 						\"restrictions\":[\"Friendly\",\"Hand\"]
 					}
 

@@ -16,7 +16,7 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Dragon to hand-reshuffle\",
+						\"blurb\":\"Dragon to hand-reshuffle\",
 						\"restrictions\":[\"Subtypes Include\",\"Friendly\",\"Hand\"],
 						\"subtypesInclude\":[\"Dragon\"]
 					}

@@ -16,7 +16,7 @@
 					\"subeffType\":\"Target All\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Warrior for the General to deck-summon\",
+						\"blurb\":\"Warrior for the General to deck-summon\",
 						\"restrictions\":[\"Subtypes Exclude\",\"Is Character\",\"Deck\",\"Index<=C\"],
 						\"subtypesExclude\":[\"Warrior\"],
 						\"constant\":5

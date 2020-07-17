@@ -20,7 +20,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"enemy for Berkanan to charm\",
+						\"blurb\":\"enemy for Berkanan to charm\",
 						\"restrictions\":[\"Is Character\",\"Enemy\",\"Board\"]
 					}
 				}",

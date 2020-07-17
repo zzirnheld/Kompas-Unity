@@ -8,7 +8,7 @@
 			"trigger":
 			"{
 				\"Optional\":true,
-				\"Blurb\":\"Give me and a Summoned character -XE? (X is the number of cards you just drew)\",
+				\"blurb\":\"Give me and a Summoned character -XE? (X is the number of cards you just drew)\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,200]
 				}
@@ -21,7 +21,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Summoned character for Hanged Man to swap give -XE\",
+						\"blurb\":\"Summoned character for Hanged Man to swap give -XE\",
 						\"restrictions\":[\"Is Character\",\"Board\",\"Summoned\"]
 					}
 				}",

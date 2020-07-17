@@ -16,7 +16,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"for Earth Golem to buff or debuff\",
+						\"blurb\":\"for Earth Golem to buff or debuff\",
 						\"restrictions\":[\"Is Character\",\"Board\"]
 					}
 				}",

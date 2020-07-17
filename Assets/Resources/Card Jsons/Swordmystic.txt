@@ -24,7 +24,7 @@
 					\"subeffType\":\"Discard Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Warrior for Swordmystic to revive\",
+						\"blurb\":\"Warrior for Swordmystic to revive\",
 						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Discard\",\"S<=X\"],
 						\"subtypesInclude\":[\"Warrior\"]
 					}
@@ -36,7 +36,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"where for Swordmystic to revive target Warrior\",
+						\"blurb\":\"where for Swordmystic to revive target Warrior\",
 						\"restrictions\":[0]
 					}
 				}",

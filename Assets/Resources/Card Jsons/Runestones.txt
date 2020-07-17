@@ -21,7 +21,7 @@
 					\"subeffType\":\"Deck Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Rune for Runestones to search\",
+						\"blurb\":\"Rune for Runestones to search\",
 						\"restrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Deck\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}

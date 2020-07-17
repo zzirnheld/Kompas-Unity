@@ -17,7 +17,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"to move Whose Anger Draws Fear to\",
+						\"blurb\":\"to move Whose Anger Draws Fear to\",
 						\"restrictions\":[110],
 						\"connectednessRestriction\":{
 							\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
@@ -69,7 +69,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"to move Whose Anger Draws Fear's attack target to\",
+						\"blurb\":\"to move Whose Anger Draws Fear's attack target to\",
 						\"restrictions\":[251,260],
 						\"C\":1
 					}

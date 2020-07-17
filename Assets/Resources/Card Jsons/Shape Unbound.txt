@@ -16,7 +16,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"character to ANNIHILATE\",
+						\"blurb\":\"character to ANNIHILATE\",
 						\"restrictions\":[\"Subtypes Include\",\"Friendly\",\"Summoned\",\"Board\"],
 						\"subtypesInclude\":[\"Shaper\"]
 					}
@@ -27,7 +27,7 @@
 				"{
 					\"subeffType\":\"Deck Target\",
 					\"cardRestriction\":{
-						\"Blurb\":\"Shaper to decksummon\",
+						\"blurb\":\"Shaper to decksummon\",
 						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Deck\"],
 						\"subtypesInclude\":[\"Shaper\"]
 					}
@@ -36,7 +36,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"where to decksummon the Shaper\",
+						\"blurb\":\"where to decksummon the Shaper\",
 						\"restrictions\":[0]
 					}
 				}",

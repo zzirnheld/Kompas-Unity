@@ -8,11 +8,11 @@
 			"trigger":
 			"{
 				\"Optional\":true,
-				\"Blurb\":\"Tribute Dreamfog to gain a pip?\",
+				\"blurb\":\"Tribute Dreamfog to gain a pip?\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,100],
 					\"cardRestriction\":{
-						\"restrictionsToCheck\":[3]
+						\"restrictions\":[3]
 					}
 				}
 			}",

@@ -8,7 +8,7 @@
 			"trigger":
 			"{
 				\"Optional\":true,
-				\"Blurb\":\"Move card X slots?\",
+				\"blurb\":\"Move card X slots?\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,200,500]
 				}
@@ -18,7 +18,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"for Hermit to move\",
+						\"blurb\":\"for Hermit to move\",
 						\"restrictions\":[\"Board\"]
 					}
 				}",
@@ -26,7 +26,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"where Hermit to move its target\",
+						\"blurb\":\"where Hermit to move its target\",
 						\"restrictions\":[1,201]
 					}
 				}",

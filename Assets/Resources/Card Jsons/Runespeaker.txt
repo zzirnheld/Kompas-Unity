@@ -16,7 +16,7 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Rune for Runespeaker to cast\",
+						\"blurb\":\"Rune for Runespeaker to cast\",
 						\"restrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Hand\",\"Can Be Played\",\"Effect Controller can Afford Cost\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}
@@ -25,7 +25,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"where for Runespeaker to cast its target Rune\",
+						\"blurb\":\"where for Runespeaker to cast its target Rune\",
 						\"restrictions\":[0]
 					}
 				}",
@@ -43,7 +43,7 @@
 					\"subeffType\":\"Choose From List\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Rune for Runespeaker to search (to hand)\",
+						\"blurb\":\"Rune for Runespeaker to search (to hand)\",
 						\"restrictions\":[\"Subtypes Include\",\"Friendly\",\"Distinct Name from Other Targets\",\"Deck\",\"Index<=X\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}

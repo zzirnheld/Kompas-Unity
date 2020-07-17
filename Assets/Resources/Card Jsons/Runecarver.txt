@@ -16,7 +16,7 @@
 					\"subeffType\":\"Choose From List\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Rune for Runecarver to reshuffle\",
+						\"blurb\":\"Rune for Runecarver to reshuffle\",
 						\"restrictions\":[\"Subtypes Include\",\"Friendly\",\"Multiple Possible Locations\"],
 						\"locations\":[1,2,3],
 						\"subtypesInclude\":[\"Rune\"]

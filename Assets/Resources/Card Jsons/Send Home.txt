@@ -16,9 +16,9 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"character to ANNIHILATE\",
+						\"blurb\":\"character to ANNIHILATE\",
 						\"restrictions\":[\"Board\",\"Adjacent to Subtype\"],
-						\"AdjacencySubtypes\":[\"Shaper\"]
+						\"adjacencySubtypes\":[\"Shaper\"]
 					}
 				}",
 				"{

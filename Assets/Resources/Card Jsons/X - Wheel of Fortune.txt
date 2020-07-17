@@ -8,7 +8,7 @@
 			"trigger":
 			"{
 				\"Optional\":true,
-				\"Blurb\":\"Swap two characters' N?\",
+				\"blurb\":\"Swap two characters' N?\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,200]
 				}
@@ -18,7 +18,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"character for Wheel of Fortune to swap N of (1/2)\",
+						\"blurb\":\"character for Wheel of Fortune to swap N of (1/2)\",
 						\"restrictions\":[\"Is Character\",\"Board\"]
 					}
 				}",
@@ -26,7 +26,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"character for Wheel of Fortune to swap N of (2/2)\",
+						\"blurb\":\"character for Wheel of Fortune to swap N of (2/2)\",
 						\"restrictions\":[\"Is Character\",\"Board\",\"Not Already Target\"]
 					}
 				}",
