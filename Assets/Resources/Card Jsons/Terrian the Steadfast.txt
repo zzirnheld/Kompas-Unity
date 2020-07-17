@@ -36,7 +36,6 @@
 					\"triggerRestrictions\":[0,1]
 				}
 			}",
-			"subeffectTypes":[299,5,103,50,103],
 			"subeffects":[
 				"{
 					\"subeffType\":\"Set X by Player Choice\",

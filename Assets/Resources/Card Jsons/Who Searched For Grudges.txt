@@ -65,14 +65,14 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":{
 						\"Blurb\":\"for Who Searched For Grudges to discard (1/2)\",
-						\"restrictions\":[7,100]
+						\"restrictions\":[\"Friendly\",\"Hand\"]
 					}
 				}",
 				"{
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":{
 						\"Blurb\":\"for Who Searched For Grudges to discard (2/2)\",
-						\"restrictions\":[7,100,600]
+						\"restrictions\":[\"Friendly\",\"Hand\",\"Not Already Target\"]
 					}
 				}",
 				"{

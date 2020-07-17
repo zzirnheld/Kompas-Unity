@@ -43,11 +43,10 @@
 				}",
 				"{
 					\"subeffType\":\"Board Target\",
-					\"boardRestriction\":
+					\"cardRestriction\":
 					{
 						\"Blurb\":\"adjacent SX character for Death to kill\",
-						\"restrictionsToCheck\":[3,103,212],
-						\"onBoardRestrictions\":[0,200]
+						\"restrictions\":[\"Is Character\",\"Board\",\"S==X\",\"Adjacent\",\"Summoned\"]
 					}
 				}",
 				"{

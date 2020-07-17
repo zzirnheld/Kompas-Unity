@@ -17,10 +17,10 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Board Target\",
-					\"boardRestriction\":
+					\"cardRestriction\":
 					{
 						\"Blurb\":\"C <= X spell for Temperance to dispel\",
-						\"restrictionsToCheck\":[4,103,204]
+						\"restrictions\":[\"Is Spell\",\"Board\",\"Cost<=X\"]
 					}
 				}",
 				"{

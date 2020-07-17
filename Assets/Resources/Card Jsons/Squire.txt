@@ -11,7 +11,7 @@
 					\"triggerRestrictions\":[0,1,100,400],
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[2],
+						\"restrictions\":[\"Subtypes Include\"],
 						\"subtypesInclude\":[\"Warrior\"]
 					}
 				}

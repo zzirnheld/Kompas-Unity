@@ -17,9 +17,9 @@
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"to move Unstable Soul to\",
-						\"restrictionsToCheck\":[110],
-						\"ConnectednessRestriction\":{
-							\"restrictionsToCheck\":[2,3,103],
+						\"restrictions\":[110],
+						\"connectednessRestriction\":{
+							\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
 							\"subtypesInclude\":[\"Ethereal\"]
 						}
 					}
@@ -34,8 +34,8 @@
 				"{
 					\"subeffType\":\"Set X by Gamestate Value\",
 					\"WhatToCount\":\"Distance to Coords Through\",
-					\"ThroughRestriction\":{
-						\"restrictionsToCheck\":[2,3,103],
+					\"throughRestriction\":{
+						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
 						\"subtypesInclude\":[\"Ethereal\"]
 					}
 				}",
@@ -55,7 +55,7 @@
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[0,101],
 					\"cardRestriction\":{
-						\"restrictionsToCheck\":[100]
+						\"restrictions\":[\"Hand\"]
 					}
 				}
 			}",
@@ -65,9 +65,9 @@
 				}",
 				"{
 					\"subeffType\":\"Choose From List\",
-					\"CardRestriction\":{
+					\"cardRestriction\":{
 						\"Blurb\":\"copy of Twin Spirit to decksummon\",
-						\"restrictionsToCheck\":[7,12,102]
+						\"restrictions\":[\"Friendly\",\"Same Name as Target\",\"Deck\"]
 					},
 					\"MaxCanChoose\":1
 				}",
@@ -76,7 +76,7 @@
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"where for Twin Spirit to decksummon a copy of itself\",
-						\"restrictionsToCheck\":[0]
+						\"restrictions\":[0]
 					}
 				}",
 				"{

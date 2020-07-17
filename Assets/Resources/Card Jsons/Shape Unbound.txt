@@ -14,10 +14,10 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Board Target\",
-					\"boardRestriction\":
+					\"cardRestriction\":
 					{
 						\"Blurb\":\"character to ANNIHILATE\",
-						\"restrictionsToCheck\":[2,7,10,103],
+						\"restrictions\":[\"Subtypes Include\",\"Friendly\",\"Summoned\",\"Board\"],
 						\"subtypesInclude\":[\"Shaper\"]
 					}
 				}",
@@ -28,7 +28,7 @@
 					\"subeffType\":\"Deck Target\",
 					\"cardRestriction\":{
 						\"Blurb\":\"Shaper to decksummon\",
-						\"restrictionsToCheck\":[2,3,7,102],
+						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Deck\"],
 						\"subtypesInclude\":[\"Shaper\"]
 					}
 				}",
@@ -37,7 +37,7 @@
 					\"spaceRestriction\":
 					{
 						\"Blurb\":\"where to decksummon the Shaper\",
-						\"restrictionsToCheck\":[0]
+						\"restrictions\":[0]
 					}
 				}",
 				"{

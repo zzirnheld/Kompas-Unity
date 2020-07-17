@@ -10,7 +10,6 @@
 				],
 				"MaxTimes":2
 			},
-			"subeffectTypes":[305],
 			"subeffects":[
 				"{
 					\"subeffType\":\"Draw\"

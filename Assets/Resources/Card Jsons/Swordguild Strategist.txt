@@ -14,12 +14,11 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Board Target\",
-					\"boardRestriction\":
+					\"cardRestriction\":
 					{
 						\"Blurb\":\"Warrior for Strategist to sacrifice\",
-						\"restrictionsToCheck\":[2,3,103],
-						\"subtypesInclude\":[\"Warrior\"],
-						\"onBoardRestrictions\":[]
+						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
+						\"subtypesInclude\":[\"Warrior\"]
 					}
 				}",
 				"{
@@ -30,11 +29,10 @@
 				}",
 				"{
 					\"subeffType\":\"Board Target\",
-					\"boardRestriction\":
+					\"cardRestriction\":
 					{
 						\"Blurb\":\"Warrior for Strategist to kill\",
-						\"restrictionsToCheck\":[3,103,202],
-						\"onBoardRestrictions\":[]
+						\"restrictions\":[\"Is Character\",\"Board\",\"S<=X\"]
 					}
 				}",
 				"{

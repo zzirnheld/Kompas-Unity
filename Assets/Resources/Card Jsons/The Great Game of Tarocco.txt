@@ -14,9 +14,9 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Set X by Board Count\",
-					\"boardRestriction\":
+					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[2,7,103],
+						\"restrictions\":[\"Subtypes Include\",\"Friendly\",\"Board\"],
 						\"subtypesInclude\":[\"Tarocco\"]
 					}
 				}",

@@ -12,11 +12,10 @@
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,101,401],
 					\"cardRestriction\":{
-						\"restrictionsToCheck\":[9]
+						\"restrictions\":[\"Enemy\"]
 					}
 				}
 			}",
-			"subeffectTypes":[305],
 			"subeffects":[
 				"{
 					\"subeffType\":\"Draw\"

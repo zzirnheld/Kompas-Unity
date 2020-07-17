@@ -14,10 +14,10 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Board Target\",
-					\"boardRestriction\":
+					\"cardRestriction\":
 					{
 						\"Blurb\":\"character for Thurisaz to double W\",
-						\"restrictionsToCheck\":[3,103]
+						\"restrictions\":[\"Is Character\",\"Board\"]
 					}
 				}",
 				"{

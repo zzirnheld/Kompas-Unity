@@ -10,7 +10,7 @@
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,101],
 					\"cardRestriction\":{
-						\"restrictionsToCheck\":[7]
+						\"restrictions\":[\"Friendly\"]
 					}
 				}
 			}",
@@ -33,11 +33,10 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Board Target\",
-					\"boardRestriction\":
+					\"cardRestriction\":
 					{
 						\"Blurb\":\"adjacent friendly character for Fortitude to give +1E or +1W\",
-						\"restrictionsToCheck\":[3,7,103],
-						\"onBoardRestrictions\":[0]
+						\"restrictions\":[\"Is Character\",\"Friendly\",\"Deck\",\"Adjacent\"]
 					}
 				}",
 				"{

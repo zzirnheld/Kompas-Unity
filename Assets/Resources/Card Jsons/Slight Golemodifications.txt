@@ -14,9 +14,9 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Board Target\",
-					\"boardRestriction\":
+					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[2,3,7,103],
+						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\"],
 						\"subtypesInclude\":[\"Golem\"]
 					}
 				}",
@@ -36,7 +36,7 @@
 					\"subeffType\":\"Discard Target\",
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[2,3,100,222],
+						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Hand\",\"S<X\"],
 						\"subtypesInclude\":[\"Golem\"]
 					}
 				}",
@@ -48,7 +48,7 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[2,3,101,222],
+						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Hand\",\"S<X\"],
 						\"subtypesInclude\":[\"Golem\"]
 					}
 				}",
@@ -56,7 +56,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"restrictionsToCheck\":[0]
+						\"restrictions\":[0]
 					}
 				}",
 				"{

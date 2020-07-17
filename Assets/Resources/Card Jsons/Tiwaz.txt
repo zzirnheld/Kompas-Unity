@@ -10,7 +10,7 @@
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[0,101],
 					\"cardRestriction\":{
-						\"restrictionsToCheck\":[3,7,103]
+						\"restrictions\":[\"Is Character\",\"Friendly\",\"Board\"]
 					}
 				}
 			}",

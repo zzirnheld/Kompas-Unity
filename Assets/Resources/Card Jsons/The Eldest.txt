@@ -35,7 +35,6 @@
 					\"triggerRestrictions\":[0,1]
 				}
 			}",
-			"subeffectTypes":[50,301],
 			"subeffects":[
 				"{
 					\"subeffType\":\"Target Defender\"

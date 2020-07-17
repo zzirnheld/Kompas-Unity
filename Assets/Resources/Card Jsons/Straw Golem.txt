@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Straw Golem",
-	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, move an enemy character 3 spaces.",
+	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, move an enemy card 3 spaces.",
 	"effects":[
 		{
 			"triggerCondition":201,
@@ -14,17 +14,17 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Board Target\",
-					\"boardRestriction\":
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"enemy character for Straw Golem to move.\",
-						\"restrictionsToCheck\":[3,103]
+						\"Blurb\":\"enemy card for Straw Golem to move.\",
+						\"restrictions\":[\"Board\"]
 					}
 				}",
 				"{
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"restrictionsToCheck\":[1,251],
+						\"restrictions\":[1,251],
 						\"C\":3
 					}
 				}",

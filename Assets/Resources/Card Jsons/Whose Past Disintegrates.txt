@@ -11,7 +11,6 @@
 					"In Play"
 				]
 			},
-			"subeffectTypes":[4,5,121,201,103,309],
 			"subeffects":[
 				"{
 					\"subeffType\":\"Space Target\",
@@ -60,7 +59,6 @@
 					}
 				}
 			}",
-			"subeffectTypes":[5,103],
 			"subeffects":[
 				"{
 					\"subeffType\":\"Target This\"

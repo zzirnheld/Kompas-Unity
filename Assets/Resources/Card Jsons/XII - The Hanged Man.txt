@@ -19,11 +19,10 @@
 				}",
 				"{
 					\"subeffType\":\"Board Target\",
-					\"boardRestriction\":
+					\"cardRestriction\":
 					{
 						\"Blurb\":\"Summoned character for Hanged Man to swap give -XE\",
-						\"restrictionsToCheck\":[3,103],
-						\"onBoardRestrictions\":[200]
+						\"restrictions\":[\"Is Character\",\"Board\",\"Summoned\"]
 					}
 				}",
 				"{
