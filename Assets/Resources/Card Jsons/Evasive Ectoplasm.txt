@@ -49,11 +49,11 @@
 			]
 		},
 		{
-			"triggerCondition":304,
+			"triggerCondition":"Battle Start",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0,502]
+					\"triggerRestrictions\":[\"This Card Triggered\",\"Max Per Round\"]
 				}
 			}",
 			"subeffects":[
@@ -67,9 +67,9 @@
 				"{
 					\"subeffType\":\"Temporary NESW Buff\",
 					\"WMultiplier\":-1,
-					\"EndCondition\":305,
+					\"endCondition\":\"Battle End\",
 					\"TriggerRestriction\":{
-						\"triggerRestrictions\":[0]
+						\"triggerRestrictions\":[\"This Card Triggered\"]
 					}
 				}"
 			]	

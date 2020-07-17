@@ -4,13 +4,13 @@
 	"effText":"When you draw, I can swap two characters’ N.",
 	"effects":[
 		{
-			"triggerCondition":101,
+			"triggerCondition":"Draw",
 			"trigger":
 			"{
 				\"Optional\":true,
 				\"blurb\":\"Swap two characters' N?\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,200]
+					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\"]
 				}
 			}",
 			"subeffects":[

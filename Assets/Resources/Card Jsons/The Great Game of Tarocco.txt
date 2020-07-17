@@ -4,11 +4,11 @@
 	"effText":"Let X be the number of friendly Tarocco. Draw X.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
 			"subeffects":[

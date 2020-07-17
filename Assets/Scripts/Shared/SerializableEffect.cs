@@ -9,7 +9,7 @@ public class SerializableEffect
     public string[] subeffects;
 
     //used for knowing what trigger to deserialize as
-    public TriggerCondition triggerCondition;
+    public string triggerCondition;
 
     //string to be deserialized
     public string trigger;

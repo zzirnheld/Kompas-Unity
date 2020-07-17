@@ -4,11 +4,11 @@
 	"effText":"Tribute a friendly SX Golem. Hand-summon or revive a Golem with S < X and activate it.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
 			"subeffects":[

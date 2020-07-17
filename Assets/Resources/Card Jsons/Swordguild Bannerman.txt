@@ -4,10 +4,10 @@
 	"effText":"When I die, reshuffle a dead Warrior for each Warrior adjacent to where I died.",
 	"effects":[
 		{
-			"triggerCondition":402,
+			"triggerCondition":"Discard",
 			"trigger":"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0,400]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
 			"subeffects":[

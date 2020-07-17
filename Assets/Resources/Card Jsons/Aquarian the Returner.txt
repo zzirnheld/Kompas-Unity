@@ -4,11 +4,11 @@
 	"effText":"Territorial: When turns start, kill an adjacent friendly Dragon. When I attack, I can give myself -1E and another Dragon +2E.",
 	"effects":[
 		{
-			"triggerCondition":0,
+			"triggerCondition":"Turn Start",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1]
+					\"triggerRestrictions\":[\"This Card in Play\"]
 				}
 			}",
 			"subeffects":[
@@ -34,7 +34,7 @@
 				\"blurb\":\"Give the attacking Aquarian -1E to give another Dragon +2E?\",
 				\"Optional\":true,
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0,1]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
 			"subeffects":[

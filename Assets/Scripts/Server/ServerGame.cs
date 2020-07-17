@@ -177,12 +177,12 @@ public class ServerGame : Game {
             var toDraw = controller.deckCtrl.PopTopdeck();
             if (toDraw == null) break;
             var eachDrawContext = new ActivationContext(card: toDraw, stackable: stackSrc, triggerer: controller);
-            EffectsController.Trigger(TriggerCondition.EachDraw, eachDrawContext);
+            EffectsController.TriggerForCondition(Trigger.EachDraw, eachDrawContext);
             toDraw.Rehand(controller, stackSrc);
             drawn.Add(toDraw);
         }
         var context = new ActivationContext(stackable: stackSrc, triggerer: controller, x: i);
-        EffectsController.Trigger(TriggerCondition.DrawX, context);
+        EffectsController.TriggerForCondition(Trigger.DrawX, context);
         return drawn;
     }
     public GameCard Draw(int player, IStackable stackSrc = null)
@@ -286,7 +286,7 @@ public class ServerGame : Game {
 
         //trigger turn start effects
         var context = new ActivationContext(triggerer: TurnServerPlayer);
-        EffectsController.Trigger(TriggerCondition.TurnStart, context);
+        EffectsController.TriggerForCondition(Trigger.TurnStart, context);
         EffectsController.CheckForResponse();
     }
 

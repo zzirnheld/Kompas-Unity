@@ -14,7 +14,7 @@ public class ServerDeckController : DeckController
         if (card.CanRemove)
         {
             var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
-            EffectsController.Trigger(TriggerCondition.ToDeck, context);
+            EffectsController.TriggerForCondition(Trigger.ToDeck, context);
             return base.AddCard(card);
         }
         return false;
@@ -25,7 +25,7 @@ public class ServerDeckController : DeckController
         if (card.CanRemove)
         {
             var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
-            EffectsController.Trigger(TriggerCondition.Bottomdeck, context);
+            EffectsController.TriggerForCondition(Trigger.Bottomdeck, context);
             ServerNotifier.NotifyBottomdeck(card);
             return base.PushBottomdeck(card, stackSrc);
         }
@@ -37,7 +37,7 @@ public class ServerDeckController : DeckController
         if (card.CanRemove)
         {
             var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
-            EffectsController.Trigger(TriggerCondition.Topdeck, context);
+            EffectsController.TriggerForCondition(Trigger.Topdeck, context);
             ServerNotifier.NotifyTopdeck(card);
             return base.PushTopdeck(card, stackSrc);
         }
@@ -49,7 +49,7 @@ public class ServerDeckController : DeckController
         if (card.CanRemove)
         {
             var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
-            EffectsController.Trigger(TriggerCondition.Reshuffle, context);
+            EffectsController.TriggerForCondition(Trigger.Reshuffle, context);
             ServerNotifier.NotifyReshuffle(card);
             return base.ShuffleIn(card, stackSrc);
         }

@@ -4,11 +4,11 @@
 	"effText":"Can’t be cast normally. Once each turn, when a character moves themselves adjacent to me, you can move them 1 space.",
 	"effects":[
 		{
-			"triggerCondition":408,
+			"triggerCondition":"Move",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,120,500,501],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Coords Fit Restriction\",\"Max Per Turn\",\"Not From Effect\"],
 					\"spaceRestriction\":{
 						\"restrictions\":[150]
 					}

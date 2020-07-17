@@ -4,11 +4,11 @@
 	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, rehand a character within 3 spaces.",
 	"effects":[
 		{
-			"triggerCondition":201,
+			"triggerCondition":"Activate",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
 			"subeffects":[

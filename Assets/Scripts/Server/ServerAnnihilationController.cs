@@ -11,7 +11,7 @@ public class ServerAnnihilationController : AnnihilationController
         if (card.CanRemove)
         {
             var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: stackSrc?.Controller);
-            ServerGame.EffectsController.Trigger(TriggerCondition.Annhilate, context);
+            ServerGame.EffectsController.TriggerForCondition(Trigger.Annhilate, context);
             ServerGame.ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyAnnhilate(card);
             return base.Annihilate(card, stackSrc);
         }

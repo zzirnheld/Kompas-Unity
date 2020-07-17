@@ -4,13 +4,13 @@
 	"effText":"Once each friendly turn, when you draw X, you can move a card X slots.",
 	"effects":[
 		{
-			"triggerCondition":101,
+			"triggerCondition":"Draw",
 			"trigger":
 			"{
 				\"Optional\":true,
 				\"blurb\":\"Move card X slots?\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,200,500]
+					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\",\"Max Per Turn\"]
 				}
 			}",
 			"subeffects":[

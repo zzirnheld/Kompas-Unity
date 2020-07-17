@@ -6,7 +6,7 @@ public class ClientTrigger : Trigger
 {
     public ClientEffect ClientEffect { get; private set; }
 
-    public static ClientTrigger FromJson(TriggerCondition condition, string json, ClientEffect parent)
+    public static ClientTrigger FromJson(string condition, string json, ClientEffect parent)
     {
         var toReturn = JsonUtility.FromJson<ClientTrigger>(json);
 

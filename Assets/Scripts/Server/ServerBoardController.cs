@@ -14,7 +14,7 @@ public class ServerBoardController : BoardController
         if (toPlay.CanRemove)
         {
             var context = new ActivationContext(card: toPlay, stackable: stackSrc, triggerer: controller, space: (toX, toY));
-            EffectsController.Trigger(TriggerCondition.Play, context);
+            EffectsController.TriggerForCondition(Trigger.Play, context);
             if (!toPlay.IsAvatar) ServerNotifierByIndex(toPlay.ControllerIndex).NotifyPlay(toPlay, toX, toY);
             return base.Play(toPlay, toX, toY, controller);
         }
@@ -27,14 +27,14 @@ public class ServerBoardController : BoardController
         if (card.Location != CardLocation.Field) return false;
         var contextA = new ActivationContext(card: card, stackable: stackSrc, space: (toX, toY),
             triggerer: playerInitiated ? card.Controller : stackSrc?.Controller, x: card.DistanceTo(toX, toY));
-        EffectsController.Trigger(TriggerCondition.Move, contextA);
+        EffectsController.TriggerForCondition(Trigger.Move, contextA);
         ServerNotifierByIndex(card.ControllerIndex).NotifyMove(card, toX, toY, playerInitiated);
         var at = GetCardAt(toX, toY);
         if (at != null)
         {
             var contextB = new ActivationContext(card: at, stackable: stackSrc, space: (toX, toY),
                 triggerer: playerInitiated ? card.Controller : stackSrc?.Controller, x: at.DistanceTo(card.BoardX, card.BoardY));
-            EffectsController.Trigger(TriggerCondition.Move, contextB);
+            EffectsController.TriggerForCondition(Trigger.Move, contextB);
         }
         return base.Swap(card, toX, toY, playerInitiated);
     }

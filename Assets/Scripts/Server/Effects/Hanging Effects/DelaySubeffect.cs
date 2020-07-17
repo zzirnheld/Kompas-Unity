@@ -6,7 +6,7 @@ public class DelaySubeffect : ServerSubeffect
 {
     public int NumTimesToDelay = 0;
     public int IndexToResume;
-    public TriggerCondition TriggerCondition;
+    public string TriggerCondition;
     public TriggerRestriction TriggerRestriction = new TriggerRestriction();
 
     public override void Initialize(ServerEffect eff, int subeffIndex)

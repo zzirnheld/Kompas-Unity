@@ -13,7 +13,7 @@ public class ServerDiscardController : DiscardController
     {
         if (!card.CanRemove) return false;
         var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
-        EffectsController.Trigger(TriggerCondition.Discard, context);
+        EffectsController.TriggerForCondition(Trigger.Discard, context);
         ServerNotifier.NotifyDiscard(card);
         return base.AddToDiscard(card);
     }

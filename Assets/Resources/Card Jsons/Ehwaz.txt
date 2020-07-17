@@ -4,14 +4,13 @@
 	"effText":"Can’t be cast normally. Give a character +2N.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[0,100],
 			"subeffects":[
 				"{
 					\"subeffType\":\"Board Target\",

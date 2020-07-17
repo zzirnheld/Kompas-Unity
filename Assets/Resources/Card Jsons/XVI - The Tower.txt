@@ -4,13 +4,13 @@
 	"effText":"When you draw X, you can tribute me, give a Summoned character -XE, and draw X.",
 	"effects":[
 		{
-			"triggerCondition":101,
+			"triggerCondition":"Draw",
 			"trigger":
 			"{
 				\"Optional\":true,
 				\"blurb\":\"Tribute me to give a Summoned character -XE and draw X? (X is the number of cards you just drew)\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,200]
+					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\"]
 				}
 			}",
 			"subeffects":[

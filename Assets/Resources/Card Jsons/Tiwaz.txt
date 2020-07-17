@@ -8,13 +8,12 @@
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0,101],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
 					\"cardRestriction\":{
 						\"restrictions\":[\"Is Character\",\"Friendly\",\"Board\"]
 					}
 				}
 			}",
-			"subeffectTypes":[100],
 			"subeffects":[
 				"{
 					\"subeffType\":\"Change NESW\",

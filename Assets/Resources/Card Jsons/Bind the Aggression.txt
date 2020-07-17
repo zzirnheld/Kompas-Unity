@@ -4,7 +4,7 @@
 	"effText":"When this character kills an SX character, gain X pips.",
 	"effects":[
 		{
-			"triggerCondition":402,
+			"triggerCondition":"Discard",
 			"trigger":
 			"{
 				\"triggerRestriction\":{

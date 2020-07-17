@@ -4,11 +4,11 @@
 	"effText":"Activate this character during enemy turns. (They deactivate on your turn.) When they die (while I'm equipped), rehand me. When your turn starts, pay a pip or dispel me.",
 	"effects":[
 		{
-			"triggerCondition":0,
+			"triggerCondition":"Turn Start",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,301]
+					\"triggerRestrictions\":[\"This Card in Play\",\"Enemy Turn\"]
 				}
 			}",
 			"subeffects":[
@@ -17,19 +17,19 @@
 				}",
 				"{
 					\"subeffType\":\"Temporary Activate\",
-					\"EndCondition\":0,
+					\"endCondition\":\"Turn Start\",
 					\"TriggerRestriction\":{
-						\"triggerRestrictions\":[300]
+						\"triggerRestrictions\":[\"Friendly Turn\"]
 					}
 				}"
 			]
 		},
 		{
-			"triggerCondition":0,
+			"triggerCondition":"Turn Start",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,300]
+					\"triggerRestrictions\":[\"This Card in Play\",\"Friendly Turn\"]
 				}
 			}",
 			"subeffects":[
@@ -63,11 +63,11 @@
 			]
 		},
 		{
-			"triggerCondition":402,
+			"triggerCondition":"Discard",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,10]
+					\"triggerRestrictions\":[\"Augmented Card Triggered\"]
 				}
 			}",
 			"subeffects":[

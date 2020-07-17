@@ -4,11 +4,11 @@
 	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, I activate a character until your next turn.",
 	"effects":[
 		{
-			"triggerCondition":201,
+			"triggerCondition":"Activate",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
 			"subeffects":[
@@ -22,7 +22,7 @@
 				}",
 				"{
 					\"subeffType\":\"Temporary Activate\",
-					\"EndCondition\":0,
+					\"endCondition\":\"Turn Start\",
 					\"TriggerRestriction\":{
 						\"triggerRestrictions\":[300]
 					}

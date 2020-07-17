@@ -4,14 +4,13 @@
 	"effText":"When you draw, give me +1C. Delay 1 turn. If my C ≥ 10, deck-summon a Tarocco.",
 	"effects":[
 		{
-			"triggerCondition":101,
+			"triggerCondition":"Draw",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1]
+					\"triggerRestrictions\":[\"This Card in Play\"]
 				}
 			}",
-			"subeffectTypes":[5,108],
 			"subeffects":[
 				"{
 					\"subeffType\":\"Target This\"
@@ -23,11 +22,11 @@
 			]
 		},
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
 			"subeffects":[

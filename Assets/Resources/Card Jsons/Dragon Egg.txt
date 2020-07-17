@@ -4,11 +4,11 @@
 	"effText":"After I’m summoned, delay 2 turns, then tribute me and deck-summon a Dragon where I was.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
 			"subeffects":[

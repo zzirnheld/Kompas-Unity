@@ -4,15 +4,15 @@
 	"effText":"When a character moves, you can tribute me to gain a pip.",
 	"effects":[
 		{
-			"triggerCondition":408,
+			"triggerCondition":"Move",
 			"trigger":
 			"{
 				\"Optional\":true,
 				\"blurb\":\"Tribute Dreamfog to gain a pip?\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,100],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
 					\"cardRestriction\":{
-						\"restrictions\":[3]
+						\"restrictions\":[\"Is Character\"]
 					}
 				}
 			}",

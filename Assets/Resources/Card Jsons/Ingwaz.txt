@@ -4,14 +4,13 @@
 	"effText":"Can’t be cast normally. Pip recast a Rune for half cost.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[2,150,4,300],
 			"subeffects":[
 				"{
 					\"subeffType\":\"Discard Target\",

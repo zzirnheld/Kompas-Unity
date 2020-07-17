@@ -10,7 +10,7 @@ public class DelayedHangingEffect : HangingEffect
     private readonly int indexToResumeResolution;
     private readonly ServerPlayer controller;
 
-    public DelayedHangingEffect(ServerGame game, TriggerRestriction triggerRestriction, TriggerCondition endCondition,
+    public DelayedHangingEffect(ServerGame game, TriggerRestriction triggerRestriction, string endCondition,
         int numTimesToDelay, ServerEffect toResume, int indexToResumeResolution, ServerPlayer controller)
         : base(game, triggerRestriction, endCondition)
     {

@@ -4,13 +4,13 @@
 	"effText":"When you draw, you can discard-bottomdeck a card to give all friendly characters +1EW.",
 	"effects":[
 		{
-			"triggerCondition":101,
+			"triggerCondition":"Draw",
 			"trigger":
 			"{
 				\"Optional\":true,
 				\"blurb\":\"Discard-bottomdeck a card to give all friendly characters +1EW?\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,200]
+					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\"]
 				}
 			}",
 			"subeffects":[

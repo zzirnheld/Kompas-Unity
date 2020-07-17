@@ -4,11 +4,11 @@
 	"effText":"While equipped, activate this character and give them +5E. When they die (while I'm equipped), rehand me.",
 	"effects":[
 		{
-			"triggerCondition":450,
+			"triggerCondition":"Augment Attached",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
 			"subeffects":[
@@ -17,27 +17,27 @@
 				}",
 				"{
 					\"subeffType\":\"Temporary Activate\",
-					\"EndCondition\":451,
+					\"endCondition\":\"Augment Detached\",
 					\"TriggerRestriction\":{
-						\"triggerRestrictions\":[0]
+						\"triggerRestrictions\":[\"This Card Triggered\"]
 					}
 				}",
 				"{
 					\"subeffType\":\"Temporary NESW Buff\",
 					\"EBuff\":5,
-					\"EndCondition\":451,
+					\"endCondition\":\"Augment Detached\",
 					\"TriggerRestriction\":{
-						\"triggerRestrictions\":[0]
+						\"triggerRestrictions\":[\"This Card Triggered\"]
 					}
 				}"
 			]
 		},
 		{
-			"triggerCondition":402,
+			"triggerCondition":"Discard",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,10]
+					\"triggerRestrictions\":[\"Augmented Card Triggered\"]
 				}
 			}",
 			"subeffectTypes":[5,304],

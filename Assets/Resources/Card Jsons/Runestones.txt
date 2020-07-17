@@ -4,11 +4,11 @@
 	"effText":"Once each turn, when you cast a Rune, you can search your deck for a Rune spell.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,101,500],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"Max Per Turn\"],
 					\"cardRestriction\":
 					{
 						\"restrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\"],

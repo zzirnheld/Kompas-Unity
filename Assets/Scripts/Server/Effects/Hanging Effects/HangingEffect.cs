@@ -4,13 +4,13 @@ using UnityEngine;
 
 public abstract class HangingEffect
 {
-    public readonly TriggerCondition EndCondition;
+    public readonly string EndCondition;
 
     private bool ended = false;
     private readonly TriggerRestriction triggerRestriction;
     protected readonly ServerGame serverGame;
 
-    public HangingEffect(ServerGame serverGame, TriggerRestriction triggerRestriction, TriggerCondition endCondition)
+    public HangingEffect(ServerGame serverGame, TriggerRestriction triggerRestriction, string endCondition)
     {
         this.serverGame = serverGame ?? throw new System.ArgumentNullException("ServerGame in HangingEffect must not be null");
         this.triggerRestriction = triggerRestriction ?? throw new System.ArgumentNullException("Trigger Restriction in HangingEffect must not be null");

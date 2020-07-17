@@ -10,7 +10,7 @@ public class TemporaryNESWBuff : HangingEffect
     private readonly int sBuff = 0;
     private readonly int wBuff = 0;
 
-    public TemporaryNESWBuff(ServerGame game, TriggerRestriction triggerRestriction, TriggerCondition endCondition,
+    public TemporaryNESWBuff(ServerGame game, TriggerRestriction triggerRestriction, string endCondition,
         GameCard buffRecipient, int nBuff, int eBuff, int sBuff, int wBuff) 
         : base(game, triggerRestriction, endCondition)
     {

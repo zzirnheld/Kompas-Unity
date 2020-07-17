@@ -4,11 +4,11 @@
 	"effText":"When a distinctly named Shaper moves, I can move adjacent to them.",
 	"effects":[
 		{
-			"triggerCondition":408,
+			"triggerCondition":"Move",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,101],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
 					\"cardRestriction\":{
 						\"restrictions\":[\"Subtypes Include\",\"Friendly\",\"Distinct Name from Other Targets\"],
 						\"subtypesInclude\":[\"Shaper\"]

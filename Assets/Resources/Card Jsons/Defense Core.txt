@@ -4,11 +4,11 @@
 	"effText":"While equipped, activate this character. When they defend, give them +4EW. When they die (while I'm equipped), rehand me.",
 	"effects":[
 		{
-			"triggerCondition":450,
+			"triggerCondition":"Augment Attached",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
 			"subeffects":[
@@ -17,19 +17,19 @@
 				}",
 				"{
 					\"subeffType\":\"Temporary Activate\",
-					\"EndCondition\":451,
+					\"endCondition\":\"Augment Detached\",
 					\"TriggerRestriction\":{
-						\"triggerRestrictions\":[0]
+						\"triggerRestrictions\":[\"This Card Triggered\"]
 					}
 				}"
 			]
 		},
 		{
-			"triggerCondition":300,
+			"triggerCondition":"Defend",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,10]
+					\"triggerRestrictions\":[\"This Card in Play\",\"Augmented Card Triggered\"]
 				}
 			}",
 			"subeffects":[
@@ -44,11 +44,11 @@
 			]	
 		},
 		{
-			"triggerCondition":402,
+			"triggerCondition":"Discard",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,10]
+					\"triggerRestrictions\":[\"Augmented Card Triggered\"]
 				}
 			}",
 			"subeffects":[

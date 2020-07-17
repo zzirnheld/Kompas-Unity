@@ -4,11 +4,11 @@
 	"effText":"When I’m cast, handsummon a Shaper, but annihilate them when your turns start.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
 			"subeffects":[
@@ -33,7 +33,7 @@
 				}",
 				"{
 					\"subeffType\":\"Hanging Annihilate\",
-					\"EndCondition\":0,
+					\"endCondition\":\"Turn Start\",
 					\"TriggerRestriction\":
 					{
 						\"triggerRestrictions\":[300]

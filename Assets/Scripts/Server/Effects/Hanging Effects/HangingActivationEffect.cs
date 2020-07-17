@@ -7,7 +7,7 @@ public class HangingActivationEffect : HangingEffect
     private readonly GameCard target;
     private readonly ServerSubeffect source;
 
-    public HangingActivationEffect(ServerGame serverGame, TriggerRestriction triggerRestriction, TriggerCondition endCondition,
+    public HangingActivationEffect(ServerGame serverGame, TriggerRestriction triggerRestriction, string endCondition,
         GameCard target, ServerSubeffect source)
         : base(serverGame, triggerRestriction, endCondition)
     {

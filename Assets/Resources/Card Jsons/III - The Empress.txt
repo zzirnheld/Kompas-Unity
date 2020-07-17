@@ -4,13 +4,13 @@
 	"effText":"When you draw X, you can hand-summon a character with S <= X.",
 	"effects":[
 		{
-			"triggerCondition":101,
+			"triggerCondition":"Draw",
 			"trigger":
 			"{
 				\"blurb\":\"Hand-summon character with S <= X?\",
 				\"Optional\":true,
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,200]
+					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\"]
 				}
 			}",
 			"subeffects":[

@@ -4,11 +4,11 @@
 	"effText":"Can’t be cast normally. I give a character -1E and another +1E. Draw 1 and gain a pip.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
 			"subeffects":[

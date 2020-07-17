@@ -49,11 +49,11 @@
 			]
 		},
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0,101],
+					\"triggerRestrictions\":[\"This Card Triggered\",\"This Card Fits Restriction\"],
 					\"cardRestriction\":{
 						\"restrictions\":[\"Hand\"]
 					}

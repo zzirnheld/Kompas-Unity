@@ -4,11 +4,11 @@
 	"effText":"Can’t be cast normally. When you cast a Rune while I have CX, gain X pips, then give me +1C.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,101],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
 					\"cardRestriction\":{
 						\"restrictions\":[2,4],
 						\"subtypesInclude\":[\"Rune\"]

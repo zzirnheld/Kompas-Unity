@@ -49,11 +49,11 @@
 			]
 		},
 		{
-			"triggerCondition":251,
+			"triggerCondition":"E Change",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0,130],
+					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\"],
 					\"xRestriction\":{
 						\"Restrictions\":["<0"]
 					}

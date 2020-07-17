@@ -6,41 +6,40 @@ using UnityEngine;
 public class TriggerRestriction
 {
     public ServerSubeffect Subeffect { get; private set; }
+    
+    public const string ThisCardTriggered = "This Card Triggered"; //0,
+    
+    //todo deprecate this card in play to this card fits restriction
+    public const string ThisCardInPlay = "This Card in Play"; //1,
+    public const string AugmentedCardTriggered = "Augmented Card Triggered"; //10,
 
-    public enum TriggerRestrictions
-    {
-        ThisCardTriggered = 0,
-        ThisCardInPlay = 1,
-        AugmentedCardTriggered = 10,
+    public const string ThisCardFitsRestriction = "This Card Fits Restriction"; //100,
+    public const string TriggererFitsRestriction = "Triggerer Fits Restriction"; //101,
+    public const string CoordsFitRestriction = "Coords Fit Restriction"; //120,
+    public const string XFitsRestriction = "X Fits Restriction"; //130,
+    public const string EffectSourceIsThisCard = "Stackable Source is This Card"; //140,
+    public const string EffectSourceIsTriggerer = "Stackable Source is Triggerer"; //149,
 
-        ThisCardFitsRestriction = 100,
-        TriggererFitsRestriction = 101,
-        CoordsFitRestriction = 120,
-        XFitsRestriction = 130,
-        EffectSourceIsThisCard = 140,
-        EffectSourceIsTriggerer = 149,
+    public const string ControllerTriggered = "Controller Triggered"; //200,
+    public const string EnemyTriggered = "Enemy Triggered"; //201,
 
-        ControllerTriggered = 200,
-        EnemyTriggered = 201,
+    //note: turns are the exception to the rule in that they are the only triggers where the triggering event
+    //(in their case, the turn passing)
+    //happens before the trigger is called, 
+    //instead of the trigger being called at the moment before it happens.
+    //in short, note that the turn will pass, then the trigger for turn start is called.
+    //this means that checking for friendly/enemy turn will check whose turn the current (just-changed-to) turn is.
+    public const string FriendlyTurn = "Friendly Turn"; //300,
+    public const string EnemyTurn = "Enemy Turn"; //301,
 
-        //note: turns are the exception to the rule in that they are the only triggers where the triggering event
-        //(in their case, the turn passing)
-        //happens before the trigger is called, 
-        //instead of the trigger being called at the moment before it happens.
-        //in short, note that the turn will pass, then the trigger for turn start is called.
-        //this means that checking for friendly/enemy turn will check whose turn the current (just-changed-to) turn is.
-        FriendlyTurn = 300,
-        EnemyTurn = 301,
+    public const string FromField = "From Field"; //400,
+    public const string FromDeck = "From Deck"; //401,
 
-        FromField = 400,
-        FromDeck = 401,
+    public const string MaxPerTurn = "Max Per Turn"; //500,
+    public const string NotFromEffect = "Not From Effect"; //501,
+    public const string MaxPerRound = "Max Per Round"; //502
 
-        MaxPerTurn = 500,
-        NotFromEffect = 501,
-        MaxPerRound = 502
-    }
-
-    public TriggerRestrictions[] triggerRestrictions = new TriggerRestrictions[0];
+    public string[] restrictions = new string[0];
     public CardRestriction cardRestriction = new CardRestriction(); //TODO refactor boardrestrictions to be part of cardrestriction
     public XRestriction xRestriction = new XRestriction();
     public SpaceRestriction spaceRestriction = new SpaceRestriction();
@@ -63,60 +62,60 @@ public class TriggerRestriction
 
     public bool Evaluate(ActivationContext context)
     {
-        foreach(TriggerRestrictions r in triggerRestrictions)
+        foreach(var r in restrictions)
         {
             switch (r)
             {
-                case TriggerRestrictions.ThisCardTriggered:
+                case ThisCardTriggered:
                     if (context.Card == ThisCard) continue;
                     else return false;
-                case TriggerRestrictions.ThisCardInPlay:
+                case ThisCardInPlay:
                     if (ThisCard.Location == CardLocation.Field) continue;
                     else return false;
-                case TriggerRestrictions.AugmentedCardTriggered:
+                case AugmentedCardTriggered:
                     if (context.Card == ThisCard.AugmentedCard) continue;
                     else return false;
-                case TriggerRestrictions.ThisCardFitsRestriction:
+                case ThisCardFitsRestriction:
                     if (cardRestriction.Evaluate(ThisCard)) continue;
                     else return false;
-                case TriggerRestrictions.TriggererFitsRestriction:
+                case TriggererFitsRestriction:
                     if (cardRestriction.Evaluate(context.Card)) continue;
                     else return false;
-                case TriggerRestrictions.CoordsFitRestriction:
+                case CoordsFitRestriction:
                     if (context.Space != null && spaceRestriction.Evaluate(context.Space.Value)) continue;
                     else return false;
-                case TriggerRestrictions.XFitsRestriction:
+                case XFitsRestriction:
                     if (context.X != null && xRestriction.Evaluate(context.X.Value)) continue;
                     else return false;
-                case TriggerRestrictions.EffectSourceIsTriggerer:
+                case EffectSourceIsTriggerer:
                     if (context.Stackable is Effect eff && eff.Source == context.Card) continue;
                     else return false;
                 //TODO make these into just something to do with triggered card fitting restriction
-                case TriggerRestrictions.ControllerTriggered:
+                case ControllerTriggered:
                     if (context.Triggerer == ThisCard.Controller) continue;
                     else return false;
-                case TriggerRestrictions.EnemyTriggered:
+                case EnemyTriggered:
                     if (context.Triggerer != ThisCard.Controller) continue;
                     else return false;
-                case TriggerRestrictions.FriendlyTurn:
+                case FriendlyTurn:
                     if (Subeffect.ServerGame.TurnPlayer == ThisCard.Controller) continue;
                     else return false;
-                case TriggerRestrictions.EnemyTurn:
+                case EnemyTurn:
                     if (Subeffect.ServerGame.TurnPlayer != ThisCard.Controller) continue;
                     else return false;
-                case TriggerRestrictions.FromField:
+                case FromField:
                     if (context.Card.Location == CardLocation.Field) continue;
                     else return false;
-                case TriggerRestrictions.FromDeck:
+                case FromDeck:
                     if (context.Card.Location == CardLocation.Deck) continue;
                     else return false;
-                case TriggerRestrictions.MaxPerTurn:
+                case MaxPerTurn:
                     if (ThisTrigger.effToTrigger.TimesUsedThisTurn < maxTimesPerTurn) continue;
                     else return false;
-                case TriggerRestrictions.NotFromEffect:
+                case NotFromEffect:
                     if (context.Stackable is Effect) return false;
                     break;
-                case TriggerRestrictions.MaxPerRound:
+                case MaxPerRound:
                     if (ThisTrigger.effToTrigger.TimesUsedThisRound < maxPerRound) continue;
                     else return false;
                 default:

@@ -4,11 +4,11 @@
 	"effText":"Territorial: When turns start, kill an adjacent friendly Dragon. You can choose a character X spaces from me. Give me -XE, move me adjacent to them, and I attack them.",
 	"effects":[
 		{
-			"triggerCondition":0,
+			"triggerCondition":"Turn Start",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1]
+					\"triggerRestrictions\":[\"This Card in Play\"]
 				}
 			}",
 			"subeffects":[
