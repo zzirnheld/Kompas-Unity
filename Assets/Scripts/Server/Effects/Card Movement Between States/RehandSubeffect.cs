@@ -6,7 +6,11 @@ public class RehandSubeffect : CardChangeStateSubeffect
 {
     public override void Resolve()
     {
-        if (Target.Rehand(Target.Owner, Effect)) ServerEffect.ResolveNextSubeffect();
-        else ServerEffect.EffectImpossible();
+        if (Target == null) ServerEffect.EffectImpossible();
+        else
+        {
+            if (Target.Rehand(Target.Owner, Effect)) ServerEffect.ResolveNextSubeffect();
+            else ServerEffect.EffectImpossible();
+        }
     }
 }

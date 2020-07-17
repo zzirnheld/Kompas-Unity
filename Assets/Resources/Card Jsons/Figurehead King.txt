@@ -42,7 +42,7 @@
 				"{
 					\"subeffType\":\"Count X Loop\",
 					\"CanDecline\":false,
-					\"JumpTo\":5
+					\"JumpTo\":4
 				}",
 				"{
 					\"subeffType\":\"Add Pips\",

@@ -2,8 +2,12 @@
 {
     public override void Resolve()
     {
-        var (x, y) = Space;
-        if (Target.Play(x, y, EffectController, Effect)) ServerEffect.ResolveNextSubeffect();
-        else ServerEffect.EffectImpossible();
+        if (Target == null) ServerEffect.EffectImpossible();
+        else
+        {
+            var (x, y) = Space;
+            if (Target.Play(x, y, EffectController, Effect)) ServerEffect.ResolveNextSubeffect();
+            else ServerEffect.EffectImpossible();
+        }
     }
 }

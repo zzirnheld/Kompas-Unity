@@ -6,7 +6,11 @@ public class BottomdeckSubeffect : CardChangeStateSubeffect
 {
     public override void Resolve()
     {
-        if (Target.Bottomdeck(Target.Owner, Effect)) ServerEffect.ResolveNextSubeffect();
-        else ServerEffect.EffectImpossible();
+        if (Target == null) ServerEffect.EffectImpossible();
+        else
+        {
+            if (Target.Bottomdeck(Target.Owner, Effect)) ServerEffect.ResolveNextSubeffect();
+            else ServerEffect.EffectImpossible();
+        }
     }
 }
