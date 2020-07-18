@@ -7,11 +7,9 @@ public class ListRestriction
 {
     public Subeffect Subeffect;
 
-    public enum ListRestrictions
-    {
-        CanPayCost = 1 //effect's controller is able to pay the cost of all of them together
-    }
-    public ListRestrictions[] Restrictions = new ListRestrictions[0];
+    public const string CanPayCost = "Can Pay Cost"; // 1 //effect's controller is able to pay the cost of all of them together
+
+    public string[] listRestrictions = new string[0];
 
     /// <summary>
     /// Checks the list of cards passed into see if they collectively fit a restriction.
@@ -21,11 +19,11 @@ public class ListRestriction
     /// <see langword="false"/> otherwise</returns>
     public bool Evaluate(IEnumerable<GameCard> cards)
     {
-        foreach(var restriction in Restrictions)
+        foreach(var restriction in listRestrictions)
         {
             switch (restriction)
             {
-                case ListRestrictions.CanPayCost:
+                case CanPayCost:
                     int totalCost = 0;
                     foreach(var card in cards)
                     {
