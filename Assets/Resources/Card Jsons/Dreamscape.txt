@@ -8,7 +8,7 @@
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"Max Per Turn\"],
 					\"cardRestriction\":{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\"],
 						\"subtypesInclude\":[\"Shaper\"]

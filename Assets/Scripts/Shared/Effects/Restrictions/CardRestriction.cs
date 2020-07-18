@@ -11,20 +11,25 @@ public class CardRestriction
 
     #region restrictions
     public const string NameIs = "Name Is"; // 1,
+    public const string DistinctNameFromTargets = "Distinct Name from Other Targets"; // 11,
+    public const string SameName = "Same Name as Target"; // 12,
+    public const string DistinceNameFromSource = "Distinct Name from Source"; // 13,
+
     public const string SubtypesInclude = "Subtypes Include"; // 2,
+    public const string SubtypesExclude = "Subtypes Exclude"; // 6,
+
     public const string IsCharacter = "Is Character"; //3,
     public const string IsSpell = "Is Spell"; //4,
     public const string IsAugment = "Is Augment"; // 5,
     public const string NotAugment = "Not Augment";
-    public const string SubtypesExclude = "Subtypes Exclude"; // 6,
+
     public const string Friendly = "Friendly"; // 7,
-    public const string SameOwner = "Same Owner as Source"; // 8,
     public const string Enemy = "Enemy"; //9,
+    public const string SameOwner = "Same Owner as Source"; // 8,
+
     public const string Summoned = "Summoned"; // 10,
-    public const string DistinctNameFromTargets = "Distinct Name from Other Targets"; // 11,
-    public const string SameName = "Same Name as Target"; // 12,
-    public const string DistinceNameFromSource = "Distinct Name from Source"; // 13,
     public const string Avatar = "Avatar"; // 50,
+
     public const string Distinct = "Distinct from Source"; // 99,
 
     //location
@@ -40,15 +45,18 @@ public class CardRestriction
     public const string SLTEX = "S<=X"; //202,
     public const string WLTEX = "W<=X"; //203,
     public const string CostLTEX = "Cost<=X"; // 204,
+
     public const string NEX = "N==X"; //210, //N == X
     public const string EEX = "E==X"; //211,
     public const string SEX = "S==X"; //212,
     public const string WEX = "W==X"; //213,
     public const string CostEX = "Cost==X"; //214,
+
     public const string NLTX = "N<X"; //220,
     public const string ELTX = "E<X"; //221,
     public const string SLTX = "S<X"; //222,
     public const string WLTX = "W<X"; //223,
+
     public const string NLTEC = "N<=C"; //300, //N <= constant
     public const string ELTEC = "E<=C"; //302,
     public const string SLTEC = "S<=C"; //303,
