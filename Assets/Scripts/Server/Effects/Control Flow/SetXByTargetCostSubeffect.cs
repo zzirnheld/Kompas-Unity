@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class SetXByTargetCostSubeffect : ServerSubeffect
 {
-    public override void Resolve()
+    public override bool Resolve()
     {
-        if(Target == null)
-        {
-            ServerEffect.EffectImpossible();
-            return;
-        }
+        if(Target == null) return ServerEffect.EffectImpossible();
 
         ServerEffect.X = Target.Cost;
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

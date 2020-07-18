@@ -17,9 +17,10 @@ public class PlayerChooseXSubeffect : ServerSubeffect
         EffectController.ServerNotifier.GetXForEffect(ThisCard, ServerEffect.EffectIndex, SubeffIndex);
     }
 
-    public override void Resolve()
+    public override bool Resolve()
     {
         AskForX();
+        return false;
     }
 
     public void SetXIfLegal(int x)

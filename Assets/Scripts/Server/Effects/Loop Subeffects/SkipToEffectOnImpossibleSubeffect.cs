@@ -9,16 +9,16 @@ public class SkipToEffectOnImpossibleSubeffect : ServerSubeffect
 {
     public int JumpTo;
 
-    public override void Resolve()
+    public override bool Resolve()
     {
         ServerEffect.OnImpossible = this;
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 
-    public override void OnImpossible()
+    public override bool OnImpossible()
     {
         //forget about this effect on impossible, and jump to a new one
         ServerEffect.OnImpossible = null;
-        ServerEffect.ResolveSubeffect(JumpTo);
+        return ServerEffect.ResolveSubeffect(JumpTo);
     }
 }

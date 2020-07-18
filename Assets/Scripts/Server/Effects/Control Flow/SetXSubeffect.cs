@@ -10,9 +10,9 @@ public class SetXSubeffect : ServerSubeffect
 
     public int Count { get => Effect.X * Multiplier / Divisor + Modifier; }
 
-    public override void Resolve()
+    public override bool Resolve()
     {
         Effect.X = Count;
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

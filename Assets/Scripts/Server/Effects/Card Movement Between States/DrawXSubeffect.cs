@@ -11,10 +11,10 @@ public class DrawXSubeffect : ServerSubeffect
     public int Modifier = 0;
     public int Count => (ServerEffect.X * XMultiplier / XDivisor) + Modifier;
 
-    public override void Resolve()
+    public override bool Resolve()
     {
         var drawn = ServerGame.DrawX(WhoDraws, Count);
-        if (drawn.Count < Count) ServerEffect.EffectImpossible();
-        else ServerEffect.ResolveNextSubeffect();
+        if (drawn.Count < Count) return ServerEffect.EffectImpossible();
+        else return ServerEffect.ResolveNextSubeffect();
     }
 }

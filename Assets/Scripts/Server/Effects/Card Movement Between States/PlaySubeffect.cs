@@ -1,13 +1,10 @@
 ﻿public class PlaySubeffect : CardChangeStateSubeffect
 {
-    public override void Resolve()
+    public override bool Resolve()
     {
-        if (Target == null) ServerEffect.EffectImpossible();
-        else
-        {
-            var (x, y) = Space;
-            if (Target.Play(x, y, EffectController, Effect)) ServerEffect.ResolveNextSubeffect();
-            else ServerEffect.EffectImpossible();
-        }
+        var (x, y) = Space;
+        if (Target != null && Target.Play(x, y, EffectController, Effect))
+            return ServerEffect.ResolveNextSubeffect();
+        else return ServerEffect.EffectImpossible();
     }
 }

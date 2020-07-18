@@ -18,7 +18,7 @@ public class ForBoardSubeffect : ServerSubeffect
     private int yCount = 0;
     private bool running = false;
 
-    public override void Resolve()
+    public override bool Resolve()
     {
         for (; xCount < 7; xCount++)
         {
@@ -38,9 +38,7 @@ public class ForBoardSubeffect : ServerSubeffect
                         ServerEffect.Targets[ServerEffect.Targets.Count - 1] = c;
                     }
                     //jump to the next effect to resolve
-                    ServerEffect.ResolveNextSubeffect();
-                    //and return (in case there's a targeting effect in the looped section somewhere)
-                    return;
+                    return ServerEffect.ResolveNextSubeffect();
                 } //end if card fits restriction
             } //end y loop
         } //end x loop
@@ -53,6 +51,6 @@ public class ForBoardSubeffect : ServerSubeffect
         //in case the effect runs again, reset the flag
         running = false;
         //then jump to the
-        ServerEffect.ResolveSubeffect(JumpToWhenDone);
+        return ServerEffect.ResolveSubeffect(JumpToWhenDone);
     } //end resolve
 }

@@ -190,9 +190,6 @@ public abstract class ServerSubeffect : Subeffect
             case WhileHaveTargetsLoop:
                 toReturn = JsonUtility.FromJson<LoopWhileHaveTargetsSubeffect>(subeffJson);
                 break;
-            case ExitLoopIfEffectImpossible:
-                toReturn = JsonUtility.FromJson<ExitLoopIfEffectImpossibleSubeffect>(subeffJson);
-                break;
             case JumpOnImpossible:
                 toReturn = JsonUtility.FromJson<SkipToEffectOnImpossibleSubeffect>(subeffJson);
                 break;
@@ -255,7 +252,7 @@ public abstract class ServerSubeffect : Subeffect
     /// if it's an if, it does a specific index
     /// otherwise, it does currentIndex + 1
     /// </summary>
-    public abstract void Resolve();
+    public abstract bool Resolve();
 
     public virtual void Initialize(ServerEffect eff, int subeffIndex)
     {
@@ -268,8 +265,9 @@ public abstract class ServerSubeffect : Subeffect
     /// Optional method. If implemented, does something when the effect is declared impossible.
     /// Default implementation just finishes resolution of the effect
     /// </summary>
-    public virtual void OnImpossible() {
+    public virtual bool OnImpossible() {
         Debug.Log($"On Impossible called for {GetType()} without an override");
-        ServerEffect.ResolveSubeffect(ServerEffect.ServerSubeffects.Length);
+        ServerEffect.OnImpossible = null;
+        return ServerEffect.EffectImpossible();
     }
 }

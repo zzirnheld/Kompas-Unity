@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class AddRestSubeffect : CardTargetSubeffect
 {
-    public override void Resolve()
+    public override bool Resolve()
     {
         Effect.Rest.AddRange(ServerGame.Cards.Where(c => cardRestriction.Evaluate(c)));
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

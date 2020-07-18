@@ -98,23 +98,29 @@ public class ServerEffect : Effect, IServerStackable
         else ResolveSubeffect(context.StartIndex);
     }
 
-    public void ResolveNextSubeffect()
+    public bool ResolveNextSubeffect()
     {
-        ResolveSubeffect(SubeffectIndex + 1);
+        return ResolveSubeffect(SubeffectIndex + 1);
     }
 
-    public void ResolveSubeffect(int index)
+    public bool ResolveSubeffect(int index)
     {
         if (index >= ServerSubeffects.Length)
         {
             FinishResolution();
-            return;
+            return true;
         }
 
         Debug.Log($"Resolving subeffect of type {ServerSubeffects[index].GetType()}");
         SubeffectIndex = index;
         ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
-        ServerSubeffects[index].Resolve();
+        return ServerSubeffects[index].Resolve();
+    }
+
+    public bool EndResolution()
+    {
+        FinishResolution();
+        return true;
     }
 
     /// <summary>
@@ -135,18 +141,19 @@ public class ServerEffect : Effect, IServerStackable
     /// Cancels resolution of the effect, 
     /// or, if there is something pending if the effect becomes impossible, resolves that
     /// </summary>
-    public void EffectImpossible()
+    public bool EffectImpossible()
     {
         Debug.Log($"Effect of {Source.CardName} is being declared impossible");
         if (OnImpossible == null)
         {
             FinishResolution();
             ServerController.ServerNotifier.EffectImpossible();
+            return false;
         }
         else
         {
             SubeffectIndex = OnImpossible.SubeffIndex;
-            OnImpossible.OnImpossible();
+            return OnImpossible.OnImpossible();
         }
     }
 

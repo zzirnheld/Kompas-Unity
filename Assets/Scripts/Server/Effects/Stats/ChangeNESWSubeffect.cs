@@ -10,9 +10,9 @@ public class ChangeNESWSubeffect : ServerSubeffect
     public int sChange = 0;
     public int wChange = 0;
 
-    public override void Resolve()
+    public override bool Resolve()
     {
         Target.AddToCharStats(nChange, eChange, sChange, wChange);
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

@@ -25,7 +25,7 @@ public class ChangeAllNESWSubeffect : ServerSubeffect
         cardRestriction.Initialize(this);
     }
 
-    public override void Resolve()
+    public override bool Resolve()
     {
         var targets = ServerGame.Cards.Where(c => cardRestriction.Evaluate(c));
         foreach (GameCard c in targets)
@@ -33,6 +33,6 @@ public class ChangeAllNESWSubeffect : ServerSubeffect
             c.AddToCharStats(NMod, EMod, SMod, WMod);
         }
 
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

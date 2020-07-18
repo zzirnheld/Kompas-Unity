@@ -20,5 +20,5 @@ public class CountXLoopSubeffect : LoopSubeffect
     }
 
     //Specifically for this type of loop, if another target isn't found, that's when we exit the loop
-    public override void OnImpossible() => ExitLoop();
+    public override bool OnImpossible() => ExitLoop();
 }

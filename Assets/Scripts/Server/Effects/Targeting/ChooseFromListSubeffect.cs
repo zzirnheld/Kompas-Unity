@@ -36,23 +36,24 @@ public class ChooseFromListSubeffect : ServerSubeffect
         listRestriction.Subeffect = this;
     }
 
-    public override void Resolve()
+    public override bool Resolve()
     {
         //TODO: somehow figure out a better way of checking if there exists a valid list?
         //  maybe a method on list restriction that checks?
         //  because otherwise enumerating lists and seeing if at least one fits would be exponential time
         if(!listRestriction.Evaluate(new List<GameCard>()))
-        {
-            ServerEffect.EffectImpossible();
-            return;
-        }
+            return ServerEffect.EffectImpossible();
 
         potentialTargets = ServerGame.Cards.Where(c => cardRestriction.Evaluate(c));
 
         //if there are no possible targets, declare the effect impossible
         //if you want to continue resolution anyway, add an if impossible check before this subeffect.
-        if (potentialTargets.Any()) RequestTargets();
-        else ServerEffect.EffectImpossible();
+        if (potentialTargets.Any())
+        {
+            RequestTargets();
+            return false;
+        }
+        else return ServerEffect.EffectImpossible();
     }
 
     public virtual bool AddListIfLegal(IEnumerable<GameCard> choices)

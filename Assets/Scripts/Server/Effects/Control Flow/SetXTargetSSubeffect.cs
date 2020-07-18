@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class SetXTargetSSubeffect : ServerSubeffect
 {
-    public override void Resolve()
+    public override bool Resolve()
     {
         ServerEffect.X = Target.S;
-        EffectController.ServerNotifier.NotifyEffectX(ThisCard, ServerEffect.EffectIndex, ServerEffect.X);
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

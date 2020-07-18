@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class TargetThisSubeffect : CardTargetSubeffect
 {
-    public override void Resolve()
+    public override bool Resolve()
     {
         ServerEffect.AddTarget(ThisCard);
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

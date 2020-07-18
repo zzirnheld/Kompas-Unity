@@ -7,9 +7,9 @@ using UnityEngine;
 /// </summary>
 public class ClearOnImpossibleSubeffect : ServerSubeffect
 {
-    public override void Resolve()
+    public override bool Resolve()
     {
         ServerEffect.OnImpossible = null;
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

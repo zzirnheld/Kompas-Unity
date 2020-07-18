@@ -9,9 +9,9 @@ public class TakeControlSubeffect : ServerSubeffect
     //TODO abstract this logic into a parent class with other player offset things
     private Player NewController => ServerGame.Players[EffectController.index + ControllerIndexOffset % ServerGame.Players.Length];
 
-    public override void Resolve()
+    public override bool Resolve()
     {
         Target.Controller = NewController;
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

@@ -1,12 +1,12 @@
 ﻿public class TargetDefenderSubeffect : ServerSubeffect
 {
-    public override void Resolve()
+    public override bool Resolve()
     {
         if (ServerEffect.CurrActivationContext.Stackable is Attack attack)
         {
             ServerEffect.AddTarget(attack.defender);
-            ServerEffect.ResolveNextSubeffect();
+            return ServerEffect.ResolveNextSubeffect();
         }
-        else ServerEffect.EffectImpossible();
+        else return ServerEffect.EffectImpossible();
     }
 }

@@ -31,7 +31,7 @@ public class TemporaryNESWBuffAllSubeffect : TemporaryCardChangeSubeffect
 
         foreach(var card in cards)
         {
-            var temp = new TemporaryNESWBuff(ServerGame, TriggerRestriction, EndCondition,
+            var temp = new TemporaryNESWBuff(ServerGame, triggerRestriction, endCondition,
                 card, NBuff, EBuff, SBuff, WBuff);
             effs.Add((temp, card));
         }

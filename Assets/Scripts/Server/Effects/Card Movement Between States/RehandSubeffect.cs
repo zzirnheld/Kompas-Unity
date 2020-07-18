@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class RehandSubeffect : CardChangeStateSubeffect
 {
-    public override void Resolve()
+    public override bool Resolve()
     {
-        if (Target == null) ServerEffect.EffectImpossible();
-        else
-        {
-            if (Target.Rehand(Target.Owner, Effect)) ServerEffect.ResolveNextSubeffect();
-            else ServerEffect.EffectImpossible();
-        }
+        if (Target != null && Target.Rehand(Target.Owner, Effect)) 
+            return ServerEffect.ResolveNextSubeffect();
+        else return ServerEffect.EffectImpossible();
     }
 }

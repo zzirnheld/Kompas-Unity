@@ -23,7 +23,7 @@ public class ConditionalEndSubeffect : ServerSubeffect
         cardRestriction.Initialize(this);
     }
 
-    public override void Resolve()
+    public override bool Resolve()
     {
         bool end;
         switch (Condition)
@@ -50,7 +50,7 @@ public class ConditionalEndSubeffect : ServerSubeffect
                 throw new System.ArgumentException($"Condition {Condition} invalid for conditional end subeffect");
         }
 
-        if (end) ServerEffect.EffectImpossible();
-        else ServerEffect.ResolveNextSubeffect();
+        if (end) return ServerEffect.EndResolution();
+        else return ServerEffect.ResolveNextSubeffect();
     }
 }

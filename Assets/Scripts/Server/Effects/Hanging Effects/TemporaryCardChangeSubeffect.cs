@@ -3,8 +3,8 @@
 [System.Serializable]
 public abstract class TemporaryCardChangeSubeffect : ServerSubeffect
 {
-    public TriggerRestriction TriggerRestriction = new TriggerRestriction();
-    public string EndCondition;
+    public TriggerRestriction triggerRestriction = new TriggerRestriction();
+    public string endCondition;
 
     public string FallOffCondition = Trigger.Remove;
     public string[] FallOffRestrictions =
@@ -16,10 +16,10 @@ public abstract class TemporaryCardChangeSubeffect : ServerSubeffect
     public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        TriggerRestriction.Initialize(this, ThisCard, null);
+        triggerRestriction.Initialize(this, ThisCard, null);
     }
 
-    public override void Resolve()
+    public override bool Resolve()
     {
         //create the hanging effects, of which there can be multiple
         var effectsApplied = CreateHangingEffects();
@@ -27,7 +27,7 @@ public abstract class TemporaryCardChangeSubeffect : ServerSubeffect
         //each of the effects needs to be registered, and registered for how it could fall off
         foreach(var (eff, card) in effectsApplied)
         {
-            ServerGame.EffectsController.RegisterHangingEffect(EndCondition, eff);
+            ServerGame.EffectsController.RegisterHangingEffect(endCondition, eff);
 
             //conditions for falling off
             var triggerRest = new TriggerRestriction() { restrictions = FallOffRestrictions };
@@ -36,7 +36,7 @@ public abstract class TemporaryCardChangeSubeffect : ServerSubeffect
         }
 
         //after all that's done, make it do the next subeffect
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 
     protected abstract IEnumerable<(HangingEffect, GameCard)> CreateHangingEffects();

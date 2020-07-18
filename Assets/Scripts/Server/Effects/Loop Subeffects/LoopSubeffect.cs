@@ -19,7 +19,7 @@ public class LoopSubeffect : ServerSubeffect
 
     protected virtual bool ShouldContinueLoop => true;
 
-    public override void Resolve()
+    public override bool Resolve()
     {
         //loop again if necessary
         Debug.Log($"im in ur loop of type {GetType()}, the one that jumps to {JumpTo}");
@@ -31,15 +31,15 @@ public class LoopSubeffect : ServerSubeffect
                 EffectController.ServerNotifier.EnableDecliningTarget();
                 ServerEffect.OnImpossible = this;
             }
-            ServerEffect.ResolveSubeffect(JumpTo);
+            return ServerEffect.ResolveSubeffect(JumpTo);
         }
-        else ExitLoop();
+        else return ExitLoop();
     }
 
     /// <summary>
     /// Cancels the loop (because the player declined another target, or because there are no more valid targets)
     /// </summary>
-    public void ExitLoop()
+    public bool ExitLoop()
     {
         //let parent know the loop is over
         if(ServerEffect.OnImpossible == this) ServerEffect.OnImpossible = null;
@@ -48,12 +48,12 @@ public class LoopSubeffect : ServerSubeffect
         OnLoopExit();
 
         //then skip to after the loop
-        ServerEffect.ResolveSubeffect(SubeffIndex + 1);
+        return ServerEffect.ResolveSubeffect(SubeffIndex + 1);
     }
 
-    public override void OnImpossible()
+    public override bool OnImpossible()
     {
-        if (CanDecline) ExitLoop();
-        else base.OnImpossible();
+        if (CanDecline) return ExitLoop();
+        else return base.OnImpossible();
     }
 }

@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class MoveSubeffect : CardChangeStateSubeffect
 {
-    public override void Resolve()
+    public override bool Resolve()
     {
-        if (Target == null) ServerEffect.EffectImpossible();
-        else
-        {
-            var (x, y) = Space;
-            if (Target.Move(x, y, false, Effect)) ServerEffect.ResolveNextSubeffect();
-            else ServerEffect.EffectImpossible();
-        }
+        var (x, y) = Space;
+        if (Target != null && Target.Move(x, y, false, Effect))
+            return ServerEffect.ResolveNextSubeffect();
+        else return ServerEffect.EffectImpossible();
     }
 }

@@ -11,7 +11,7 @@ public class SwapNESWSubeffect : ServerSubeffect
     public bool SwapS = false;
     public bool SwapW = false;
 
-    public override void Resolve()
+    public override bool Resolve()
     {
         var target1 = TargetIndices[0] < 0 ?
                 ServerEffect.Targets[ServerEffect.Targets.Count + TargetIndices[0]] :
@@ -19,8 +19,9 @@ public class SwapNESWSubeffect : ServerSubeffect
         var target2 = TargetIndices[1] < 0 ?
                 ServerEffect.Targets[ServerEffect.Targets.Count + TargetIndices[1]] :
                 ServerEffect.Targets[TargetIndices[1]];
+        if (target1 == null || target2 == null) return ServerEffect.EffectImpossible();
 
         target1.SwapCharStats(target2, SwapN, SwapE, SwapS, SwapW);
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

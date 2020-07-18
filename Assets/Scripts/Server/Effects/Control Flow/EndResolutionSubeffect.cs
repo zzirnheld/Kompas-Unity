@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EndResolutionSubeffect : ServerSubeffect
 {
-    public override void Resolve()
+    public override bool Resolve()
     {
-        ServerEffect.ResolveSubeffect(ServerEffect.Subeffects.Length);
+        return ServerEffect.ResolveSubeffect(ServerEffect.Subeffects.Length);
     }
 }

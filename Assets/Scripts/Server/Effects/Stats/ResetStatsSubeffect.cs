@@ -11,7 +11,7 @@ public class ResetStatsSubeffect : ServerSubeffect
     public bool ResetC = false;
     public bool ResetA = false;
 
-    public override void Resolve()
+    public override bool Resolve()
     {
         if (ResetN) Target.SetN(Target.BaseN, Effect);
         if (ResetE) Target.SetE(Target.BaseE, Effect);
@@ -20,6 +20,6 @@ public class ResetStatsSubeffect : ServerSubeffect
         if (ResetC) Target.SetC(Target.BaseC, Effect);
         if (ResetA) Target.SetA(Target.BaseA, Effect);
 
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

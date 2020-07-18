@@ -16,7 +16,7 @@ public class TemporaryNESWBuffSubeffect : TemporaryCardChangeSubeffect
 
     protected override IEnumerable<(HangingEffect, GameCard)> CreateHangingEffects()
     {
-        var temp = new TemporaryNESWBuff(ServerGame, TriggerRestriction, EndCondition,
+        var temp = new TemporaryNESWBuff(ServerGame, triggerRestriction, endCondition,
             Target,
             NBuff + Effect.X * NMultiplier,
             EBuff + Effect.X * EMultiplier,

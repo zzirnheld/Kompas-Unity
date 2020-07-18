@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class NegateSubeffect : ServerSubeffect
 {
-    public override void Resolve()
+    public override bool Resolve()
     {
         Target.SetNegated(true, ServerEffect);
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

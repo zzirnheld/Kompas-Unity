@@ -36,9 +36,9 @@ public class ChangeXByTargetValueSubeffect : ServerSubeffect
 
     protected int Count => (BaseCount * Multiplier / Divisor) + Modifier;
 
-    public override void Resolve()
+    public override bool Resolve()
     {
         Effect.X += Count;
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

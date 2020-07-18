@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class AnnihilateSubeffect : CardChangeStateSubeffect
 {
-    public override void Resolve()
+    public override bool Resolve()
     {
-        if (Target == null) ServerEffect.EffectImpossible();
+        if (Target == null) return ServerEffect.EffectImpossible();
         else
         {
-            if (Game.AnnihilationCtrl.Annihilate(Target, Effect)) ServerEffect.ResolveNextSubeffect();
-            else ServerEffect.EffectImpossible();
+            if (Game.AnnihilationCtrl.Annihilate(Target, Effect)) return ServerEffect.ResolveNextSubeffect();
+            else return ServerEffect.EffectImpossible();
         }
     }
 }

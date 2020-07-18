@@ -14,9 +14,9 @@ public class SetNESWSubeffect : ServerSubeffect
     public int RealSVal => SVal < 0 ? Target.S : SVal;
     public int RealWVal => WVal < 0 ? Target.W : WVal;
 
-    public override void Resolve()
+    public override bool Resolve()
     {
         Target.SetCharStats(RealNVal, RealEVal, RealSVal, RealWVal);
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

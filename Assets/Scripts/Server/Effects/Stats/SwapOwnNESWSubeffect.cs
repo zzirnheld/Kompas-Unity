@@ -10,12 +10,14 @@ public class SwapOwnNESWSubeffect : ServerSubeffect
     public int Stat1;
     public int Stat2;
 
-    public override void Resolve()
+    public override bool Resolve()
     {
+        if (Target == null) return ServerEffect.EffectImpossible();
+
         int[] newStats = { Target.N, Target.E, Target.S, Target.W };
         (newStats[Stat1], newStats[Stat2]) = (newStats[Stat2], newStats[Stat1]);
         Target.SetCharStats(newStats[0], newStats[1], newStats[2], newStats[3]);
 
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

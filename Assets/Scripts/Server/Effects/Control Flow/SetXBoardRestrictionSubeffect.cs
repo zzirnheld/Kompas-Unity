@@ -12,7 +12,7 @@ public class SetXBoardRestrictionSubeffect : ServerSubeffect
         cardRestriction.Initialize(this);
     }
 
-    public override void Resolve()
+    public override bool Resolve()
     {
         ServerEffect.X = 0;
         for(int i = 0; i < 7; i++)
