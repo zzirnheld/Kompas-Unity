@@ -10,13 +10,13 @@ public class XRestriction
     public const string Positive = ">0";
     public const string Negative = "<0";
 
-    public string[] Restrictions = new string[0];
+    public string[] xRestrictions = new string[0];
 
     public Subeffect Subeffect;
 
     public bool Evaluate(int x)
     {
-        foreach(string r in Restrictions)
+        foreach(var r in xRestrictions)
         {
             switch (r)
             {
