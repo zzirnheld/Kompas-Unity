@@ -17,7 +17,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"adjacent Dragon for Obscurian to kill\",
-						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"],
 						\"subtypesInclude\":[\"Dragon\"]
 					}
 				}",
@@ -49,7 +49,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Avatar for Obscurian to give -2E.\",
-						\"restrictions\":[\"Is Character\",\"Avatar\",\"Board\"]
+						\"cardRestrictions\":[\"Is Character\",\"Avatar\",\"Board\"]
 					}
 				}",
 				"{

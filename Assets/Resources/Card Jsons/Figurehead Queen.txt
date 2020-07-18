@@ -51,7 +51,7 @@
 					\"subeffType\":\"Deck Target\",
 					\"cardRestriction\":
 					{
-						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Deck\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Deck\"],
 						\"subtypesInclude\":[\"Tarocco\"]
 					}
 				}",
@@ -59,7 +59,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"restrictions\":[0]
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
 				"{

@@ -17,7 +17,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"adjacent Warrior for Tactician to give +5E or +5W\",
-						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
 						\"subtypesInclude\":[\"Warrior\"]
 					}
 				}",

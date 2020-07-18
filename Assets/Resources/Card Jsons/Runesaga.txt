@@ -17,7 +17,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Runer for Runesaga to give +25ESW\",
-						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Summoned\",\"Board\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Summoned\",\"Board\"],
 						\"subtypesInclude\":[\"Runer\"]
 					}
 				}",
@@ -32,7 +32,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Rune for Runesaga to cast\",
-						\"restrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Hand\",\"Not Already Target\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Hand\",\"Not Already Target\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}
 				}",
@@ -41,7 +41,7 @@
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where for Runesaga to cast its target Rune\",
-						\"restrictions\":[0]
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
 				"{

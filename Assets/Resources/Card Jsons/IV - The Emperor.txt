@@ -17,7 +17,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Emperor to buff\",
-						\"restrictions\":[\"Is Character\",\"Board\",\"Adjacent\"]
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Adjacent\"]
 					}
 				}",
 				"{

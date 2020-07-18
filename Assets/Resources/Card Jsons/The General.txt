@@ -17,7 +17,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Warrior for the General to deck-summon\",
-						\"restrictions\":[\"Subtypes Exclude\",\"Is Character\",\"Deck\",\"Index<=C\"],
+						\"cardRestrictions\":[\"Subtypes Exclude\",\"Is Character\",\"Deck\",\"Index<=C\"],
 						\"subtypesExclude\":[\"Warrior\"],
 						\"constant\":5
 					}
@@ -30,13 +30,13 @@
 					\"subeffType\":\"Choose From List Saving Rest\",
 					\"cardRestriction\":
 					{
-						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Deck\",\"Index<=C\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Deck\",\"Index<=C\"],
 						\"subtypesInclude\":[\"Warrior\"],
 						\"constant\":5
 					},
 					\"listRestriction\":
 					{
-						\"Restrictions\":[1]
+						\"cardRestrictions\":[1]
 					}
 				}",
 				"{
@@ -46,7 +46,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"restrictions\":[0]
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
 				"{

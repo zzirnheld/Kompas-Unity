@@ -17,7 +17,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Dragon to hand-reshuffle\",
-						\"restrictions\":[\"Subtypes Include\",\"Friendly\",\"Hand\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Hand\"],
 						\"subtypesInclude\":[\"Dragon\"]
 					}
 				}",

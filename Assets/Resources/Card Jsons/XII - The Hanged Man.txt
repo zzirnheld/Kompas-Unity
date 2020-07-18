@@ -22,7 +22,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Summoned character for Hanged Man to swap give -XE\",
-						\"restrictions\":[\"Is Character\",\"Board\",\"Summoned\"]
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Summoned\"]
 					}
 				}",
 				"{

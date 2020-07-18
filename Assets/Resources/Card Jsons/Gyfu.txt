@@ -17,7 +17,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Gyfu to give +1EW\",
-						\"restrictions\":[\"Is Character\",\"Enemy\",\"Board\",\"Not Already Target\"]
+						\"cardRestrictions\":[\"Is Character\",\"Enemy\",\"Board\",\"Not Already Target\"]
 					}
 				}",
 				"{

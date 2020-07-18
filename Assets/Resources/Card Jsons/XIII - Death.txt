@@ -34,7 +34,7 @@
 				"{
 					\"subeffType\":\"Set X by Player Choice\",
 					\"XRest\":{
-						\"Restrictions\":[\">0\",\"<=ThisCost\"]
+						\"cardRestrictions\":[\">0\",\"<=ThisCost\"]
 					}
 				}",
 				"{
@@ -46,7 +46,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"adjacent SX character for Death to kill\",
-						\"restrictions\":[\"Is Character\",\"Board\",\"S==X\",\"Adjacent\",\"Summoned\"]
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"S==X\",\"Adjacent\",\"Summoned\"]
 					}
 				}",
 				"{

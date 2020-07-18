@@ -16,7 +16,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\"],
 						\"subtypesInclude\":[\"Golem\"]
 					}
 				}",
@@ -36,7 +36,7 @@
 					\"subeffType\":\"Discard Target\",
 					\"cardRestriction\":
 					{
-						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Hand\",\"S<X\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Hand\",\"S<X\"],
 						\"subtypesInclude\":[\"Golem\"]
 					}
 				}",
@@ -48,7 +48,7 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Hand\",\"S<X\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Hand\",\"S<X\"],
 						\"subtypesInclude\":[\"Golem\"]
 					}
 				}",
@@ -56,7 +56,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"restrictions\":[0]
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
 				"{

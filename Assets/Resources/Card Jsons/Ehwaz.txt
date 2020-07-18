@@ -17,7 +17,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Ehwaz to give +2N\",
-						\"restrictions\":[\"Is Character\",\"Board\"]
+						\"cardRestrictions\":[\"Is Character\",\"Board\"]
 					}
 				}",
 				"{

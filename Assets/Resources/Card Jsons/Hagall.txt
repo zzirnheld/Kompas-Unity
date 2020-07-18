@@ -16,7 +16,7 @@
 					\"subeffType\":\"Change NESW All\",
 					\"cardRestriction\":
 					{
-						\"restrictions\":[\"Is Character\",\"Board\",\"In AOE\"]
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"In AOE\"]
 					},
 					\"NMod\":-1,
 					\"EMod\":-1

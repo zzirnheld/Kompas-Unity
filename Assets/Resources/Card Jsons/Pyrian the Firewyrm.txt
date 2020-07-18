@@ -16,7 +16,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"],
 						\"subtypesInclude\":[\"Dragon\"]
 					}
 				}",

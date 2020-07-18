@@ -16,7 +16,7 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":{
 						\"blurb\":\"Shaper to hand-summon\",
-						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Hand\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Hand\"],
 						\"subtypesInclude\":[\"Shaper\"]
 					}
 				}",
@@ -25,7 +25,7 @@
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where to handsummon the Shaper\",
-						\"restrictions\":[0]
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
 				"{

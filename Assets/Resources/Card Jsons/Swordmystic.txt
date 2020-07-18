@@ -16,7 +16,7 @@
 					\"subeffType\":\"Set X by Board Count\",
 					\"cardRestriction\":
 					{
-						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
 						\"subtypesInclude\":[\"Warrior\"]
 					}
 				}",
@@ -25,7 +25,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Warrior for Swordmystic to revive\",
-						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Discard\",\"S<=X\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Discard\",\"S<=X\"],
 						\"subtypesInclude\":[\"Warrior\"]
 					}
 				}",
@@ -37,7 +37,7 @@
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where for Swordmystic to revive target Warrior\",
-						\"restrictions\":[0]
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
 				"{

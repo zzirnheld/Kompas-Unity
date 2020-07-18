@@ -16,7 +16,7 @@
 					\"subeffType\":\"Set X by Board Count\",
 					\"cardRestriction\":
 					{
-						\"restrictions\":[\"Subtypes Include\",\"Friendly\",\"Board\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Board\"],
 						\"subtypesInclude\":[\"Tarocco\"]
 					}
 				}",

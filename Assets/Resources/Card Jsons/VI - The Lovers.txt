@@ -29,7 +29,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Tarocco for Lovers to become\",
-						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Deck\",\"S<=X\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Deck\",\"S<=X\"],
 						\"subtypesInclude\":[\"Tarocco\"]
 					}
 				}",

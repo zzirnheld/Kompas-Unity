@@ -16,7 +16,7 @@
 					\"subeffType\":\"Set X by Board Count\",
 					\"cardRestriction\":
 						{
-							\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
+							\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
 							\"subtypesInclude\":[\"Warrior\"]
 						}
 				}",

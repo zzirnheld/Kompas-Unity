@@ -17,7 +17,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Kaunan to give -3EW\",
-						\"restrictions\":[\"Is Character\",\"Summoned\",\"Board\"]
+						\"cardRestrictions\":[\"Is Character\",\"Summoned\",\"Board\"]
 					}
 				}",
 				"{

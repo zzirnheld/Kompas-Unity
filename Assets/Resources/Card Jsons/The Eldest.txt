@@ -17,9 +17,8 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"adjacent Dragon for the Eldest to kill\",
-						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\"],
-						\"subtypesInclude\":[\"Dragon\"],
-						\"oncardRestrictions\":[0]
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"],
+						\"subtypesInclude\":[\"Dragon\"]
 					}
 				}",
 				"{

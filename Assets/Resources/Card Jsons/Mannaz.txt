@@ -21,7 +21,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"character for Mannaz to search (to hand)\",
-						\"restrictions\":[\"Is Character\",\"Friendly\",\"Deck\",\"Index<=C\"],
+						\"cardRestrictions\":[\"Is Character\",\"Friendly\",\"Deck\",\"Index<=C\"],
 						\"constant\":10
 					},
 					\"MaxCanChoose\":1
@@ -33,7 +33,7 @@
 					\"subeffType\":\"Add Rest\",
 					\"cardRestriction\":
 					{
-						\"restrictions\":[\"Friendly\",\"Deck\",\"Index<=C\",\"Not Already Target\"],
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<=C\",\"Not Already Target\"],
 						\"constant\":10
 					}
 				}",

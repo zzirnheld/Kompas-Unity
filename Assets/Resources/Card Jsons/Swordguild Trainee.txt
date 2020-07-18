@@ -17,7 +17,7 @@
 					\"subeffType\":\"Set X by Board Count\",
 					\"cardRestriction\":
 						{
-							\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
+							\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
 							\"subtypesInclude\":[\"Warrior\"]
 						}
 				}",
@@ -35,7 +35,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Swordguild Warrior for Trainee to become\",
-						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Deck\",\"S<=X\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Deck\",\"S<=X\"],
 						\"subtypesInclude\":[\"Warrior\"]
 					}
 				}",

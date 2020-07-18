@@ -17,7 +17,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"adjacent Dragon for Caligo to kill\",
-						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"],
 						\"subtypesInclude\":[\"Dragon\"]
 					}
 				}",
@@ -38,7 +38,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"enemy character for Caligo to attack\",
-						\"restrictions\":[\"Is Character\",\"Board\",\"Adjacent\"]
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Adjacent\"]
 					}
 				}",
 				"{
@@ -54,7 +54,7 @@
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"to move Caligo to\",
-						\"restrictions\":[102]
+						\"spaceRestrictions\":[\"Adjacent to Target\"]
 					}
 				}",
 				"{

@@ -19,7 +19,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Hermit to move\",
-						\"restrictions\":[\"Board\"]
+						\"cardRestrictions\":[\"Board\"]
 					}
 				}",
 				"{
@@ -27,7 +27,7 @@
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where Hermit to move its target\",
-						\"restrictions\":[1,201]
+						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == X\"]
 					}
 				}",
 				"{

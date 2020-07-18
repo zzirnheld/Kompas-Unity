@@ -17,7 +17,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for High Priestess to put on top next (to end up under the last card you chose)\",
-						\"restrictions\":[\"Friendly\",\"Deck\",\"Index<=C\",\"Not Already Target\"],
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<=C\",\"Not Already Target\"],
 						\"constant\":4
 					}
 				}",

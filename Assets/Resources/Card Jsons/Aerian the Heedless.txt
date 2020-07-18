@@ -17,7 +17,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"adjacent Dragon for Aerian to kill\",
-						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"],
 						\"subtypesInclude\":[\"Dragon\"]
 					}
 				}",
@@ -41,7 +41,7 @@
 					\"subeffType\":\"Change NESW All\",
 					\"cardRestriction\":
 					{
-						\"restrictions\":[\"Is Character\",\"Board\",\"Within C Spaces\"],
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Within C Spaces\"],
 						\"cSpaces\":2
 					},
 					\"EMod\":-2

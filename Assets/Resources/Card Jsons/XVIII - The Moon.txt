@@ -19,7 +19,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"character for Moon to swap EW\",
-						\"restrictions\":[\"Is Character\",\"Board\"]
+						\"cardRestrictions\":[\"Is Character\",\"Board\"]
 					}
 				}",
 				"{

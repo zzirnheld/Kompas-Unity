@@ -17,7 +17,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"character for Tallow Golem to temporarily activate\",
-						\"restrictions\":[\"Is Character\",\"Board\"]
+						\"cardRestrictions\":[\"Is Character\",\"Board\"]
 					}
 				}",
 				"{

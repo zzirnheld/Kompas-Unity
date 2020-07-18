@@ -17,7 +17,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"enemy character to move adjacent to\",
-						\"restrictions\":[\"Is Character\",\"Enemy\",\"Board\"]
+						\"cardRestrictions\":[\"Is Character\",\"Enemy\",\"Board\"]
 					}
 				}",
 				"{
@@ -25,7 +25,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Friendly Shaper to move the enemy adjacent to\",
-						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\"],
 						\"subtypesInclude\":[\"Shaper\"]
 					}
 				}",
@@ -34,7 +34,7 @@
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where to move the Shaper\",
-						\"restrictions\":[102]
+						\"spaceRestrictions\":[\"Adjacent to Target\"]
 					},
 					\"TargetIndex\":-2
 				}",

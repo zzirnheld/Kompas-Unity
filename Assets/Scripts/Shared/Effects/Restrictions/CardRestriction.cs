@@ -74,7 +74,7 @@ public class CardRestriction
     #endregion restrictions
 
     //because JsonUtility will fill in all values with defaults if not present
-    public string[] restrictions = new string[0];
+    public string[] cardRestrictions = new string[0];
 
     public int costsLessThan;
     public string nameIs;
@@ -99,7 +99,7 @@ public class CardRestriction
     {
         if (potentialTarget == null) return false;
 
-        foreach (string c in restrictions)
+        foreach (string c in cardRestrictions)
         {
             //Debug.Log("Considering restriction " + c + " when X equals " + x);
             switch (c)

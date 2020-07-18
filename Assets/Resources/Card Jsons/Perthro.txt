@@ -24,7 +24,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"spell for Perthro to search (to hand)\",
-						\"restrictions\":[\"Is Spell\",\"Friendly\",\"Deck\",\"Index>=C\"],
+						\"cardRestrictions\":[\"Is Spell\",\"Friendly\",\"Deck\",\"Index>=C\"],
 						\"constant\":10
 					},
 					\"MaxCanChoose\":3
@@ -39,7 +39,7 @@
 					\"subeffType\":\"Choose From List\",
 					\"cardRestriction\":
 					{
-						\"restrictions\":[\"Friendly\",\"Deck\",\"Index<=C\",\"Not Already Target\"],
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<=C\",\"Not Already Target\"],
 						\"constant\":10
 					},
 					\"MaxCanChoose\":1

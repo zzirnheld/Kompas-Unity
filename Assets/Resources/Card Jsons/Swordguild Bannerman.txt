@@ -15,7 +15,7 @@
 					\"subeffType\":\"Set X by Board Count\",
 					\"cardRestriction\":
 					{
-						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
 						\"subtypesInclude\":[\"Warrior\"]
 					}
 				}",
@@ -24,7 +24,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"dead Warrior for Bannerman to reshuffle\",
-						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Discard\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Discard\"],
 						\"subtypesInclude\":[\"Warrior\"]
 					}
 				}",

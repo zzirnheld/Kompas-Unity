@@ -17,7 +17,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Ihwaz to swap (1/2)\",
-						\"restrictions\":[\"Not Augment\",\"Board\"]
+						\"cardRestrictions\":[\"Not Augment\",\"Board\"]
 					}
 				}",
 				"{
@@ -25,7 +25,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Ihwaz to swap (2/2)\",
-						\"restrictions\":[\"Not Augment\",\"Board\",\"Not Already Target\"]
+						\"cardRestrictions\":[\"Not Augment\",\"Board\",\"Not Already Target\"]
 					}
 				}",
 				"{

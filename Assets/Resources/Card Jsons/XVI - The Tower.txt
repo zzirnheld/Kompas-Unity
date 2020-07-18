@@ -25,7 +25,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Summoned character for Tower to give -XE\",
-						\"restrictions\":[\"Is Character\",\"Board\",\"Summoned\"]
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Summoned\"]
 					}
 				}",
 				"{

@@ -17,9 +17,8 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"adjacent Dragon for Aquarian to kill\",
-						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\"],
-						\"subtypesInclude\":[\"Dragon\"],
-						\"oncardRestrictions\":[0]
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\"],
+						\"subtypesInclude\":[\"Dragon\"]
 					}
 				}",
 				"{
@@ -50,7 +49,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"another Dragon for Aquarian to heal\",
-						\"restrictions\":[2,3,7,99,103],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Distinct from Source\",\"Board\"],
 						\"subtypesInclude\":[\"Dragon\"]
 					}
 				}",

@@ -10,7 +10,7 @@
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
 					\"cardRestriction\":{
-						\"restrictions\":[\"Subtypes Include\",\"Friendly\",\"Distinct Name from Other Targets\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Distinct Name from Other Targets\"],
 						\"subtypesInclude\":[\"Shaper\"]
 					}
 				}
@@ -27,7 +27,7 @@
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"to move Outpoured Anger to\",
-						\"restrictions\":[102]
+						\"spaceRestrictions\":[\"Adjacent to Target\"]
 					},
 					\"TargetIndex\":-2
 				}",

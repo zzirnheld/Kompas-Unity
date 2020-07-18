@@ -17,7 +17,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"adjacent Dragon for Auram to kill\",
-						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"],
 						\"subtypesInclude\":[\"Dragon\"]
 					}
 				}",
@@ -40,7 +40,7 @@
 				"{
 					\"subeffType\":\"Set X by Player Choice\",
 					\"XRest\":{
-						\"Restrictions\":[\"<=ThisE\"]
+						\"cardRestrictions\":[\"<=ThisE\"]
 					}
 				}",
 				"{

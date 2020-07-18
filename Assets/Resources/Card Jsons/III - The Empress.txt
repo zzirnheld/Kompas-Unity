@@ -19,7 +19,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Empress to hand-summon\",
-						\"restrictions\":[\"Is Character\",\"Friendly\",\"Hand\",\"S<=X\"]
+						\"cardRestrictions\":[\"Is Character\",\"Friendly\",\"Hand\",\"S<=X\"]
 					}
 				}",
 				"{
@@ -27,7 +27,7 @@
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where Empress to hand-summon\",
-						\"restrictions\":[0]
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
 				"{

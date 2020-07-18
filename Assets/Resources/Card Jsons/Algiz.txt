@@ -16,7 +16,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"restrictions\":[\"Board\",\"Is Character\"]
+						\"cardRestrictions\":[\"Board\",\"Is Character\"]
 					}
 				}",
 				"{

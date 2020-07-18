@@ -17,7 +17,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"character within 3 spaces of Pneumatic Golem for it to rehand\",
-						\"restrictions\":[\"Is Character\",\"Board\",\"Within C Spaces\"],
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Within C Spaces\"],
 						\"cSpaces\":3
 					}
 				}",

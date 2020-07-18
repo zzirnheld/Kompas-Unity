@@ -19,7 +19,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"C <= X spell for Temperance to dispel\",
-						\"restrictions\":[\"Is Spell\",\"Board\",\"Cost<=X\"]
+						\"cardRestrictions\":[\"Is Spell\",\"Board\",\"Cost<=X\"]
 					}
 				}",
 				"{

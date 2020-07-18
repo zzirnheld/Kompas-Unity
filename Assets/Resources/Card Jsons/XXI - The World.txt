@@ -24,7 +24,7 @@
 					\"subeffType\":\"Change NESW All\",
 					\"cardRestriction\":
 					{
-						\"restrictions\":[\"Is Character\",\"Board\",\"Friendly\"]
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\"]
 					},
 					\"EMod\":1,
 					\"WMod\":1

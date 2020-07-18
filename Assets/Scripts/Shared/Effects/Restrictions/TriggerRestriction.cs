@@ -39,7 +39,7 @@ public class TriggerRestriction
     public const string NotFromEffect = "Not From Effect"; //501,
     public const string MaxPerRound = "Max Per Round"; //502
 
-    public string[] restrictions = new string[0];
+    public string[] triggerRestrictions = new string[0];
     public CardRestriction cardRestriction = new CardRestriction(); //TODO refactor boardrestrictions to be part of cardrestriction
     public XRestriction xRestriction = new XRestriction();
     public SpaceRestriction spaceRestriction = new SpaceRestriction();
@@ -62,7 +62,7 @@ public class TriggerRestriction
 
     public bool Evaluate(ActivationContext context)
     {
-        foreach(var r in restrictions)
+        foreach(var r in triggerRestrictions)
         {
             switch (r)
             {

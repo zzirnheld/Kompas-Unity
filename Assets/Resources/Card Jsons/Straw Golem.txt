@@ -17,14 +17,14 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"enemy card for Straw Golem to move.\",
-						\"restrictions\":[\"Board\"]
+						\"cardRestrictions\":[\"Board\"]
 					}
 				}",
 				"{
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"restrictions\":[1,251],
+						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == C\"],
 						\"C\":3
 					}
 				}",

@@ -17,14 +17,14 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"card for Raido to move\",
-						\"restrictions\":[\"Board\"]
+						\"cardRestrictions\":[\"Board\"]
 					}
 				}",
 				"{
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":{
 						\"blurb\":\"where for Raido to move it starget\",
-						\"restrictions\":[1]
+						\"spaceRestrictions\":[\"Empty\"]
 					}
 				}",
 				"{

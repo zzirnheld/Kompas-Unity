@@ -19,7 +19,7 @@
 					\"subeffType\":\"Choose From List\",
 					\"cardRestriction\":{
 						\"blurb\":\"copy of Dreamspace to decksummon\",
-						\"restrictions\":[\"Friendly\",\"Same Name as Target\"]
+						\"cardRestrictions\":[\"Friendly\",\"Same Name as Target\"]
 					},
 					\"MaxCanChoose\":1
 				}",
@@ -28,7 +28,7 @@
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where for Dreamspace to decksummon a copy of itself\",
-						\"restrictions\":[0]
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
 				"{

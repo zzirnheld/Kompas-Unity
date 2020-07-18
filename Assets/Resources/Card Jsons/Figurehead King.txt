@@ -16,14 +16,14 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"restrictions\":[\"Friendly\",\"Hand\"]
+						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
 					}
 				}",
 				"{
 					\"subeffType\":\"Target All\",
 					\"cardRestriction\":
 					{
-						\"restrictions\":[\"Friendly\",\"Hand\",\"Not Already Target\"]
+						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Not Already Target\"]
 					}
 				}",
 				"{

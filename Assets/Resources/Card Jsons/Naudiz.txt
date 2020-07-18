@@ -16,7 +16,7 @@
 					\"subeffType\":\"Change NESW All\",
 					\"cardRestriction\":
 					{
-						\"restrictions\":[\"Is Character\",\"Enemy\",\"Board\"]
+						\"cardRestrictions\":[\"Is Character\",\"Enemy\",\"Board\"]
 					},
 					\"EMod\":-2
 				}"

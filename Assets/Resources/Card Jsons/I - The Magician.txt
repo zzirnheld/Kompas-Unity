@@ -17,7 +17,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Magician to hand-bottomdeck\",
-						\"restrictions\":[\"Friendly\",\"Hand\"]
+						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
 					}
 				}",
 				"{

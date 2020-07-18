@@ -11,7 +11,7 @@ public class TemporaryNESWBuffAllSubeffect : TemporaryCardChangeSubeffect
     //default to making sure things are characters before changing their stats
     public CardRestriction cardRestriction = new CardRestriction()
     {
-        restrictions = new string[]
+        cardRestrictions = new string[]
         {
             CardRestriction.IsCharacter
         }

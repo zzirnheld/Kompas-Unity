@@ -21,7 +21,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"enemy for Berkanan to charm\",
-						\"restrictions\":[\"Is Character\",\"Enemy\",\"Board\"]
+						\"cardRestrictions\":[\"Is Character\",\"Enemy\",\"Board\"]
 					}
 				}",
 				"{

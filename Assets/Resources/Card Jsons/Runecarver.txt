@@ -17,7 +17,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Rune for Runecarver to reshuffle\",
-						\"restrictions\":[\"Subtypes Include\",\"Friendly\",\"Multiple Possible Locations\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Multiple Possible Locations\"],
 						\"locations\":[1,2,3],
 						\"subtypesInclude\":[\"Rune\"]
 					},

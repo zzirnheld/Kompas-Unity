@@ -10,7 +10,7 @@
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Coords Fit Restriction\",\"Max Per Turn\",\"Not From Effect\"],
 					\"spaceRestriction\":{
-						\"restrictions\":[150]
+						\"spaceRestrictions\":[\"In AOE\"]
 					}
 				}
 			}",
@@ -19,7 +19,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"restrictions\":[1,251],
+						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == C\"],
 						\"C\":1
 					}
 				}",

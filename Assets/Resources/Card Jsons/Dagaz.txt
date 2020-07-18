@@ -10,7 +10,7 @@
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
 					\"cardRestriction\":{
-						\"restrictions\":[2,4],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Spell\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}
 				}

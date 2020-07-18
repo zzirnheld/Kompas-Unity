@@ -30,7 +30,7 @@ public abstract class TemporaryCardChangeSubeffect : ServerSubeffect
             ServerGame.EffectsController.RegisterHangingEffect(endCondition, eff);
 
             //conditions for falling off
-            var triggerRest = new TriggerRestriction() { restrictions = FallOffRestrictions };
+            var triggerRest = new TriggerRestriction() { triggerRestrictions = FallOffRestrictions };
             triggerRest.Initialize(this, card, null);
             ServerGame.EffectsController.RegisterHangingEffectFallOff(FallOffCondition, triggerRest, eff);
         }

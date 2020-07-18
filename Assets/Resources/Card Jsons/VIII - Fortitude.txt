@@ -10,7 +10,7 @@
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
 					\"cardRestriction\":{
-						\"restrictions\":[\"Friendly\"]
+						\"cardRestrictions\":[\"Friendly\"]
 					}
 				}
 			}",
@@ -36,7 +36,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"adjacent friendly character for Fortitude to give +1E or +1W\",
-						\"restrictions\":[\"Is Character\",\"Friendly\",\"Deck\",\"Adjacent\"]
+						\"cardRestrictions\":[\"Is Character\",\"Friendly\",\"Deck\",\"Adjacent\"]
 					}
 				}",
 				"{

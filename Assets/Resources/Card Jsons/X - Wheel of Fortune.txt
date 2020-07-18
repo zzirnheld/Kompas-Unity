@@ -19,7 +19,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"character for Wheel of Fortune to swap N of (1/2)\",
-						\"restrictions\":[\"Is Character\",\"Board\"]
+						\"cardRestrictions\":[\"Is Character\",\"Board\"]
 					}
 				}",
 				"{
@@ -27,7 +27,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"character for Wheel of Fortune to swap N of (2/2)\",
-						\"restrictions\":[\"Is Character\",\"Board\",\"Not Already Target\"]
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Not Already Target\"]
 					}
 				}",
 				"{

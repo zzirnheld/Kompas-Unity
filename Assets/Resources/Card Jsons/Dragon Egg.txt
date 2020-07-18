@@ -32,7 +32,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Dragon Egg to become\",
-						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Deck\",\"Can Be Played\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Deck\",\"Can Be Played\"],
 						\"subtypesInclude\":[\"Dragon\"]
 					}
 				}",

@@ -16,7 +16,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\"],
 						\"subtypesInclude\":[\"Dragon\"],
 						\"oncardRestrictions\":[0]
 					}
@@ -40,7 +40,7 @@
 				"{
 					\"subeffType\":\"Set X by Player Choice\",
 					\"XRest\":{
-						\"Restrictions\":[\"<=ThisE\"]
+						\"cardRestrictions\":[\"<=ThisE\"]
 					}
 				}",
 				"{

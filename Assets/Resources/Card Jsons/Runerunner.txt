@@ -16,7 +16,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Rune for Runerunner to cast\",
-						\"restrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Hand\",\"Can Be Played\",\"Effect Controller can Afford Cost\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Hand\",\"Can Be Played\",\"Effect Controller can Afford Cost\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}
 				}",
@@ -25,7 +25,7 @@
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where for Runerunner to cast its target Rune\",
-						\"restrictions\":[0]
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
 				"{

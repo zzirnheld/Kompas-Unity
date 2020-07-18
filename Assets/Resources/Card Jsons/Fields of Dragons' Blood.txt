@@ -10,7 +10,7 @@
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"Triggerer Fits Restriction\",\"Stackable Source is Triggerer\"],
 					\"cardRestriction\":{
-						\"restrictions\":[\"Subtypes Include\",\"Board\",\"In AOE\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Board\",\"In AOE\"],
 						\"subtypesInclude\":[\"Dragon\"]
 					}
 				}

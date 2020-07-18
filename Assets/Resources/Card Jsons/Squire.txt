@@ -11,7 +11,7 @@
 					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
 					\"cardRestriction\":
 					{
-						\"restrictions\":[\"Subtypes Include\"],
+						\"cardRestrictions\":[\"Subtypes Include\"],
 						\"subtypesInclude\":[\"Warrior\"]
 					}
 				}

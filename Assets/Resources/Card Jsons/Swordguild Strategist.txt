@@ -17,7 +17,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Warrior for Strategist to sacrifice\",
-						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
 						\"subtypesInclude\":[\"Warrior\"]
 					}
 				}",
@@ -32,7 +32,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Warrior for Strategist to kill\",
-						\"restrictions\":[\"Is Character\",\"Board\",\"S<=X\"]
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"S<=X\"]
 					}
 				}",
 				"{

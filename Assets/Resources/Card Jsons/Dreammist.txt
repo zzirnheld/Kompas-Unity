@@ -10,9 +10,9 @@
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\",\"Coords Fit Restriction\"],
 					\"spaceRestriction\":{
-						\"restrictions\":[101],
+						\"spaceRestrictions\":[\"Adjacent to a Card that Fits Restriction\"],
 						\"adjacencyRestriction\":{
-							\"restrictions\":[\"Subtypes Include\"],
+							\"cardRestrictions\":[\"Subtypes Include\"],
 							\"subtypesInclude\":[\"Ethereal\"]
 						}
 					}

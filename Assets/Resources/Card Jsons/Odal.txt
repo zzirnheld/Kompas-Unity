@@ -17,7 +17,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"character for Odal to kill\",
-						\"restrictions\":[\"Is Character\",\"Summoned\"]
+						\"cardRestrictions\":[\"Is Character\",\"Summoned\"]
 					}
 				}",
 				"{
@@ -35,7 +35,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Runer for Odal to deck-summon\",
-						\"restrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Deck\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Deck\"],
 						\"subtypesInclude\":[\"Runer\"]
 					}
 				}",
@@ -44,7 +44,7 @@
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where for Odal to deck-summon its target\",
-						\"restrictions\":[0]
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
 				"{

@@ -17,7 +17,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"spell for Wynn to dispel\",
-						\"restrictions\":[\"Is Spell\",\"Board\"]
+						\"cardRestrictions\":[\"Is Spell\",\"Board\"]
 					}
 				}",
 				"{
