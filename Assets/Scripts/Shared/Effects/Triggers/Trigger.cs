@@ -52,6 +52,6 @@ public abstract class Trigger
     public string triggerCondition;
     public TriggerRestriction triggerRestriction;
 
-    public bool Optional = false;
+    public bool optional = false;
     public string blurb = "";
 }

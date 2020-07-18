@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"In Play"
@@ -30,7 +30,7 @@
 				}",
 				"{
 					\"subeffType\":\"Dispel\",
-					\"TargetIndex\":-1
+					\"targetIndex\":-1
 				}"
 			]
 		}

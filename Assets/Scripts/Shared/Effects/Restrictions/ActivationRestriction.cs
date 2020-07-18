@@ -14,27 +14,27 @@ public class ActivationRestriction
     public const string EnemyTurn = "Enemy Turn";
     public const string InPlay = "In Play";
 
-    public int MaxTimes = 1;
+    public int maxTimes = 1;
 
-    public string[] Restrictions = { };
+    public string[] activationRestrictions = { };
 
     public void Initialize(Effect eff)
     {
         Effect = eff;
-        Debug.Log($"Initializing activation restriction for {Card.CardName} with restrictions: {string.Join(", ", Restrictions)}");
+        Debug.Log($"Initializing activation restriction for {Card.CardName} with restrictions: {string.Join(", ", activationRestrictions)}");
     }
 
     public bool Evaluate(Player activator)
     {
-        foreach(string r in Restrictions)
+        foreach(string r in activationRestrictions)
         {
             switch (r)
             {
                 case TimesPerTurn:
-                    if (Effect.TimesUsedThisTurn >= MaxTimes) return false;
+                    if (Effect.TimesUsedThisTurn >= maxTimes) return false;
                     break;
                 case TimesPerRound:
-                    if (Effect.TimesUsedThisRound >= MaxTimes) return false;
+                    if (Effect.TimesUsedThisRound >= maxTimes) return false;
                     break;
                 case FriendlyTurn:
                     if (Effect.Game.TurnPlayer != activator) return false;

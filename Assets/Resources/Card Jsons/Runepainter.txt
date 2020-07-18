@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"In Play"
@@ -37,7 +37,7 @@
 				}",
 				"{
 					\"subeffType\":\"Jump on Effect Impossible\",
-					\"JumpTo\":7
+					\"jumpTo\":7
 				}",
 				"{
 					\"subeffType\":\"Choose From List\",
@@ -47,7 +47,7 @@
 						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Same Name as Target\",\"Deck\",\"Index<=X\"],
 						\"subtypesInclude\":[\"Rune\"]
 					},
-					\"MaxCanChoose\":1
+					\"maxCanChoose\":1
 				}",
 				"{
 					\"subeffType\":\"Clear Jump on Effect Impossible\"

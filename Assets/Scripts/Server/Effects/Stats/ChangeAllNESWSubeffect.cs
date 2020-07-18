@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class ChangeAllNESWSubeffect : ServerSubeffect
 {
-    public int NMod = 0;
-    public int EMod = 0;
-    public int SMod = 0;
-    public int WMod = 0;
+    public int nMod = 0;
+    public int eMod = 0;
+    public int sMod = 0;
+    public int wMod = 0;
     //default to making sure things are characters before changing their stats
     public CardRestriction cardRestriction = new CardRestriction()
     {
@@ -30,7 +30,7 @@ public class ChangeAllNESWSubeffect : ServerSubeffect
         var targets = ServerGame.Cards.Where(c => cardRestriction.Evaluate(c));
         foreach (GameCard c in targets)
         {
-            c.AddToCharStats(NMod, EMod, SMod, WMod);
+            c.AddToCharStats(nMod, eMod, sMod, wMod);
         }
 
         return ServerEffect.ResolveNextSubeffect();

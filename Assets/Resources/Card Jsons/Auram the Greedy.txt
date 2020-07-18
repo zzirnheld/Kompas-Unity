@@ -31,7 +31,7 @@
 			"trigger":
 			"{
 				\"blurb\":\"Give the attacking Auram -XE to draw X? (You choose X)\",
-				\"Optional\":true,
+				\"optional\":true,
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}

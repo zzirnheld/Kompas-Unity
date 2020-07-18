@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"In Play"
@@ -23,23 +23,23 @@
 				}",
 				"{
 					\"subeffType\":\"Change X by Target Value\",
-					\"WhatToCount\":\"Cost\"
+					\"whatToCount\":\"Cost\"
 				}",
 				"{
 					\"subeffType\":\"Discard\"
 				}",
 				"{
 					\"subeffType\":\"Loop\",
-					\"CanDecline\":true,
-					\"JumpTo\":0
+					\"canDecline\":true,
+					\"jumpTo\":0
 				}",
 				"{
 					\"subeffType\":\"Jump on Effect Impossible\",
-					\"JumpTo\":7
+					\"jumpTo\":7
 				}",
 				"{
 					\"subeffType\":\"Choose From List\",
-					\"MaxCanChoose\":1,
+					\"maxCanChoose\":1,
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Animancer to search\",

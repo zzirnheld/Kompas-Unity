@@ -24,7 +24,7 @@
 			"triggerCondition":"Draw",
 			"trigger":
 			"{
-				\"Optional\":true,
+				\"optional\":true,
 				\"blurb\":\"Give adjacent friendly character +1E or W?\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\"]
@@ -51,7 +51,7 @@
 					\"eChange\":1,
 					\"sChange\":0,
 					\"wChange\":0,
-					\"TargetIndex\":0
+					\"targetIndex\":0
 				}",
 				"{
 					\"subeffType\":\"End Effect Resolution\"
@@ -62,7 +62,7 @@
 					\"eChange\":0,
 					\"sChange\":0,
 					\"wChange\":1,
-					\"TargetIndex\":0
+					\"targetIndex\":0
 				}"
 			]
 		}

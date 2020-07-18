@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class SkipToEffectOnImpossibleSubeffect : ServerSubeffect
 {
-    public int JumpTo;
+    public int jumpTo;
 
     public override bool Resolve()
     {
@@ -19,6 +19,6 @@ public class SkipToEffectOnImpossibleSubeffect : ServerSubeffect
     {
         //forget about this effect on impossible, and jump to a new one
         ServerEffect.OnImpossible = null;
-        return ServerEffect.ResolveSubeffect(JumpTo);
+        return ServerEffect.ResolveSubeffect(jumpTo);
     }
 }

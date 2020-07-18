@@ -18,7 +18,7 @@
 				"{
 					\"subeffType\":\"Temporary Activate\",
 					\"endCondition\":\"Augment Detached\",
-					\"TriggerRestriction\":{
+					\"triggerRestriction\":{
 						\"triggerRestrictions\":[\"This Card Triggered\"]
 					}
 				}"

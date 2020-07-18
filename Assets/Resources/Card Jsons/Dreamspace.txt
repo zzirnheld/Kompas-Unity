@@ -21,7 +21,7 @@
 						\"blurb\":\"copy of Dreamspace to decksummon\",
 						\"cardRestrictions\":[\"Friendly\",\"Same Name as Target\"]
 					},
-					\"MaxCanChoose\":1
+					\"maxCanChoose\":1
 				}",
 				"{
 					\"subeffType\":\"Space Target\",

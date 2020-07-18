@@ -7,7 +7,7 @@
 			"triggerCondition":"Draw",
 			"trigger":
 			"{
-				\"Optional\":true,
+				\"optional\":true,
 				\"blurb\":\"Swap the NESW of a character?\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\"]

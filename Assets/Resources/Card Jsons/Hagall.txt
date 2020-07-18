@@ -18,8 +18,8 @@
 					{
 						\"cardRestrictions\":[\"Is Character\",\"Board\",\"In AOE\"]
 					},
-					\"NMod\":-1,
-					\"EMod\":-1
+					\"nMod\":-1,
+					\"eMod\":-1
 				}"
 			]	
 		}

@@ -3,10 +3,10 @@ using System.Linq;
 
 public class TemporaryNESWBuffAllSubeffect : TemporaryCardChangeSubeffect
 {
-    public int NBuff;
-    public int EBuff;
-    public int SBuff;
-    public int WBuff;
+    public int nBuff;
+    public int eBuff;
+    public int sBuff;
+    public int wBuff;
 
     //default to making sure things are characters before changing their stats
     public CardRestriction cardRestriction = new CardRestriction()
@@ -32,7 +32,7 @@ public class TemporaryNESWBuffAllSubeffect : TemporaryCardChangeSubeffect
         foreach(var card in cards)
         {
             var temp = new TemporaryNESWBuff(ServerGame, triggerRestriction, endCondition,
-                card, NBuff, EBuff, SBuff, WBuff);
+                card, nBuff, eBuff, sBuff, wBuff);
             effs.Add((temp, card));
         }
 

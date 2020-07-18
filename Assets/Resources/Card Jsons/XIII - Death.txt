@@ -23,7 +23,7 @@
 		},
 		{
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"In Play"
 				]
 			},

@@ -6,7 +6,7 @@
 		{
 			"blurb":"Shape",
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Friendly Turn",
 					"In Play"
 				]
@@ -29,11 +29,11 @@
 				}",
 				"{
 					\"subeffType\":\"Spend Movement\",
-					\"Modifier\":1
+					\"modifier\":1
 				}",
 				"{
 					\"subeffType\":\"Set X by Gamestate Value\",
-					\"WhatToCount\":\"Distance to Coords Through\",
+					\"whatToCount\":\"Distance to Coords Through\",
 					\"throughRestriction\":{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
 						\"subtypesInclude\":[\"Ethereal\"]
@@ -59,7 +59,7 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Jump on Effect Impossible\",
-					\"JumpTo\":4
+					\"jumpTo\":4
 				}",
 				"{
 					\"subeffType\":\"Hand Target\",
@@ -80,7 +80,7 @@
 				}",
 				"{
 					\"subeffType\":\"Discard\",
-					\"TargetIndex\":-2
+					\"targetIndex\":-2
 				}",
 				"{
 					\"subeffType\":\"End Effect Resolution\"

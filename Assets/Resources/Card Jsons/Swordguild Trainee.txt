@@ -8,7 +8,7 @@
 			"trigger":"{
 				\"triggerRestriction\":
 				{
-					\"Optional\":true,
+					\"optional\":true,
 					\"triggerRestrictions\":[\"This Card in Play\"]
 				}
 			}",

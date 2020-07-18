@@ -6,7 +6,7 @@
 		{
 			"blurb":"Shape",
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Friendly Turn",
 					"In Play"
 				]
@@ -29,11 +29,11 @@
 				}",
 				"{
 					\"subeffType\":\"Spend Movement\",
-					\"Modifier\":1
+					\"modifier\":1
 				}",
 				"{
 					\"subeffType\":\"Set X by Gamestate Value\",
-					\"WhatToCount\":\"Distance to Coords Through\",
+					\"whatToCount\":\"Distance to Coords Through\",
 					\"throughRestriction\":{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
 						\"subtypesInclude\":[\"Ethereal\"]
@@ -68,7 +68,7 @@
 				}",
 				"{
 					\"subeffType\":\"Set X by Target Value\",
-					\"WhatToCount\":\"S\"
+					\"whatToCount\":\"S\"
 				}",
 				"{
 					\"subeffType\":\"Annihilate\"

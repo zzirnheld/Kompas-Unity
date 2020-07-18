@@ -21,10 +21,10 @@
 				}",
 				"{
 					\"subeffType\":\"Set NESW\",
-					\"NVal\":1,
-					\"EVal\":10,
-					\"SVal\":10,
-					\"WVal\":10
+					\"nVal\":1,
+					\"eVal\":10,
+					\"sVal\":10,
+					\"wVal\":10
 				}"
 			]	
 		}

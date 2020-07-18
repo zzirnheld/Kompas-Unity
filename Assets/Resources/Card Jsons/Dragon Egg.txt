@@ -39,7 +39,7 @@
 				"{
 					\"subeffType\":\"Play\",
 					\"spaceIndex\":-1,
-					\"TargetIndex\":-1
+					\"targetIndex\":-1
 				}"
 			]
 		}

@@ -31,7 +31,7 @@
 			"trigger":
 			"{
 				\"blurb\":\"Give Obscurian -1E to give an Avatar -2E?\",
-				\"Optional\":true,
+				\"optional\":true,
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}

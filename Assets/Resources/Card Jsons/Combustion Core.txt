@@ -18,7 +18,7 @@
 				"{
 					\"subeffType\":\"Temporary Activate\",
 					\"endCondition\":\"Turn Start\",
-					\"TriggerRestriction\":{
+					\"triggerRestriction\":{
 						\"triggerRestrictions\":[\"Friendly Turn\"]
 					}
 				}"
@@ -41,7 +41,7 @@
 				}",
 				"{
 					\"subeffType\":\"Jump on Effect Impossible\",
-					\"JumpTo\":4
+					\"jumpTo\":4
 				}",
 				"{
 					\"subeffType\":\"Pay Pips\",

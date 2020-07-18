@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"In Play"
@@ -33,7 +33,7 @@
 					\"eChange\":5,
 					\"sChange\":0,
 					\"wChange\":0,
-					\"TargetIndex\":0
+					\"targetIndex\":0
 				}",
 				"{
 					\"subeffType\":\"End Effect Resolution\"
@@ -44,7 +44,7 @@
 					\"eChange\":0,
 					\"sChange\":0,
 					\"wChange\":5,
-					\"TargetIndex\":0
+					\"targetIndex\":0
 				}"
 			]
 		}

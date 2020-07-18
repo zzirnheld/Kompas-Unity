@@ -44,8 +44,8 @@
 				}",
 				"{
 					\"subeffType\":\"Conditionally End Effect Resolution\",
-					\"Condition\":\"X<C\",
-					\"C\":10
+					\"condition\":\"X<C\",
+					\"constant\":10
 				}",
 				"{
 					\"subeffType\":\"Deck Target\",

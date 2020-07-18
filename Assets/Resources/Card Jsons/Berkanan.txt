@@ -14,7 +14,7 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Conditionally End Effect Resolution\",
-					\"Condition\":\"Must be Friendly Turn\"
+					\"condition\":\"Must be Friendly Turn\"
 				}",
 				"{
 					\"subeffType\":\"Board Target\",

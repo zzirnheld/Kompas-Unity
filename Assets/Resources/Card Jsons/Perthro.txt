@@ -17,7 +17,7 @@
 				}",
 				"{
 					\"subeffType\":\"Jump on Effect Impossible\",
-					\"JumpTo\":4
+					\"jumpTo\":4
 				}",
 				"{
 					\"subeffType\":\"Choose From List\",
@@ -27,7 +27,7 @@
 						\"cardRestrictions\":[\"Is Spell\",\"Friendly\",\"Deck\",\"Index>=C\"],
 						\"constant\":10
 					},
-					\"MaxCanChoose\":3
+					\"maxCanChoose\":3
 				}",
 				"{
 					\"subeffType\":\"Clear Jump on Effect Impossible\"
@@ -42,14 +42,14 @@
 						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<=C\",\"Not Already Target\"],
 						\"constant\":10
 					},
-					\"MaxCanChoose\":1
+					\"maxCanChoose\":1
 				}",
 				"{
 					\"subeffType\":\"Delete Target\"
 				}",
 				"{
 					\"subeffType\":\"Loop While Have Targets\",
-					\"JumpTo\":5
+					\"jumpTo\":5
 				}",
 				"{
 					\"subeffType\":\"Bottomdeck Rest\"

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class AttackSubeffect : ServerSubeffect
 {
-    public int AttackerIndex = -2;
+    public int attackerIndex = -2;
 
     public override bool Resolve()
     {
-        int trueIndex = AttackerIndex < 0 ? AttackerIndex + Effect.Targets.Count : AttackerIndex;
+        int trueIndex = attackerIndex < 0 ? attackerIndex + Effect.Targets.Count : attackerIndex;
         var attacker = trueIndex < 0 ? null : Effect.Targets[trueIndex];
         var defender = Target;
         if (attacker == null || defender == null) ServerEffect.EffectImpossible();

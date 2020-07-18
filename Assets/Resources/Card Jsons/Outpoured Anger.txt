@@ -29,7 +29,7 @@
 						\"blurb\":\"to move Outpoured Anger to\",
 						\"spaceRestrictions\":[\"Adjacent to Target\"]
 					},
-					\"TargetIndex\":-2
+					\"targetIndex\":-2
 				}",
 				"{
 					\"subeffType\":\"Move\"

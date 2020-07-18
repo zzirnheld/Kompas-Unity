@@ -14,7 +14,7 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Jump on Effect Impossible\",
-					\"JumpTo\":3
+					\"jumpTo\":3
 				}",
 				"{
 					\"subeffType\":\"Choose From List\",
@@ -24,7 +24,7 @@
 						\"cardRestrictions\":[\"Is Character\",\"Friendly\",\"Deck\",\"Index<=C\"],
 						\"constant\":10
 					},
-					\"MaxCanChoose\":1
+					\"maxCanChoose\":1
 				}",
 				"{
 					\"subeffType\":\"Clear Jump on Effect Impossible\"

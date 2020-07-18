@@ -49,8 +49,8 @@
 				}",
 				"{
 					\"subeffType\":\"Loop\",
-					\"CanDecline\":true,
-					\"JumpTo\":2
+					\"canDecline\":true,
+					\"jumpTo\":2
 				}"
 			]
 		}

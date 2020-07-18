@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class SetXSubeffect : ServerSubeffect
 {
-    public int Multiplier = 1;
-    public int Divisor = 1;
-    public int Modifier = 0;
+    public int multiplier = 1;
+    public int divisor = 1;
+    public int modifier = 0;
 
-    public int Count { get => Effect.X * Multiplier / Divisor + Modifier; }
+    public int Count { get => Effect.X * multiplier / divisor + modifier; }
 
     public override bool Resolve()
     {

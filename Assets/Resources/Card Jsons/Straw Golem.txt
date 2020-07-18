@@ -24,8 +24,8 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == C\"],
-						\"C\":3
+						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\"],
+						\"constant\":3
 					}
 				}",
 				"{
@@ -35,7 +35,7 @@
 		}
 	],
 	"MovementRestriction":{
-		"Restrictions":[
+		"movementRestrictions":[
 			"Is Character",
 			"Can Move Enough Spaces",
 			"Destination is Empty or Friendly",
@@ -43,7 +43,7 @@
 		]
 	},
 	"AttackRestriction":{
-		"Restrictions":[
+		"attackRestrictions":[
 			"This is Character",
 			"Defender is Character",
 			"Defender is Adjacent",

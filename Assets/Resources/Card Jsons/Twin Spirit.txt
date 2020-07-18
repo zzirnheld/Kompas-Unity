@@ -6,7 +6,7 @@
 		{
 			"blurb":"Shape",
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Friendly Turn",
 					"In Play"
 				]
@@ -29,11 +29,11 @@
 				}",
 				"{
 					\"subeffType\":\"Spend Movement\",
-					\"Modifier\":1
+					\"modifier\":1
 				}",
 				"{
 					\"subeffType\":\"Set X by Gamestate Value\",
-					\"WhatToCount\":\"Distance to Coords Through\",
+					\"whatToCount\":\"Distance to Coords Through\",
 					\"throughRestriction\":{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
 						\"subtypesInclude\":[\"Ethereal\"]
@@ -69,7 +69,7 @@
 						\"blurb\":\"copy of Twin Spirit to decksummon\",
 						\"cardRestrictions\":[\"Friendly\",\"Same Name as Target\",\"Deck\"]
 					},
-					\"MaxCanChoose\":1
+					\"maxCanChoose\":1
 				}",
 				"{
 					\"subeffType\":\"Space Target\",

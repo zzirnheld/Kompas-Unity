@@ -24,7 +24,7 @@
 				}",
 				"{
 					\"subeffType\":\"Pay Target's Cost in Pips\",
-					\"Divisor\":2
+					\"divisor\":2
 				}",
 				"{
 					\"subeffType\":\"Space Target\",

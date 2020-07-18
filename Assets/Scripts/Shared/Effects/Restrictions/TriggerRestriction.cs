@@ -54,7 +54,7 @@ public class TriggerRestriction
     {
         Subeffect = subeff;
         cardRestriction.Initialize(subeff);
-        xRestriction.Subeffect = subeff;
+        xRestriction.Initialize(subeff);
         spaceRestriction.Initialize(subeff);
         this.ThisCard = thisCard;
         this.ThisTrigger = thisTrigger;

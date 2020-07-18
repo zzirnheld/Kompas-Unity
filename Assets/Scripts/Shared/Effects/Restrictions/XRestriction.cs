@@ -12,7 +12,12 @@ public class XRestriction
 
     public string[] xRestrictions = new string[0];
 
-    public Subeffect Subeffect;
+    public Subeffect Subeffect { get; private set; }
+
+    public void Initialize(Subeffect subeff)
+    {
+        Subeffect = subeff;
+    }
 
     public bool Evaluate(int x)
     {

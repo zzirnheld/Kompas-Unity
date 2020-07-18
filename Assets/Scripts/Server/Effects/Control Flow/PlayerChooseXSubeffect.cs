@@ -9,7 +9,7 @@ public class PlayerChooseXSubeffect : ServerSubeffect
     public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        XRest.Subeffect = this;
+        XRest.Initialize(this);
     }
 
     private void AskForX()

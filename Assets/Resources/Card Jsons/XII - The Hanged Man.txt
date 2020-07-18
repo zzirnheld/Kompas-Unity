@@ -7,7 +7,7 @@
 			"triggerCondition":"Draw",
 			"trigger":
 			"{
-				\"Optional\":true,
+				\"optional\":true,
 				\"blurb\":\"Give me and a Summoned character -XE? (X is the number of cards you just drew)\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\"]
@@ -28,12 +28,12 @@
 				"{
 					\"subeffType\":\"X Change NESW\",
 					\"eMult\":-1,
-					\"TargetIndex\":0
+					\"targetIndex\":0
 				}",
 				"{
 					\"subeffType\":\"X Change NESW\",
 					\"eMult\":-1,
-					\"TargetIndex\":1
+					\"targetIndex\":1
 				}"
 			]
 		}

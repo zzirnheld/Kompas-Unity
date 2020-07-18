@@ -21,7 +21,7 @@
 				}",
 				"{
 					\"subeffType\":\"Reset Stats\",
-					\"ResetE\":true
+					\"resetE\":true
 				}",
 				"{
 					\"subeffType\":\"Change NESW\",

@@ -7,7 +7,7 @@
 			"triggerCondition":"Move",
 			"trigger":
 			"{
-				\"Optional\":true,
+				\"optional\":true,
 				\"blurb\":\"Tribute Dreamfog to gain a pip?\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],

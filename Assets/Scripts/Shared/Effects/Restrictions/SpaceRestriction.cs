@@ -18,14 +18,14 @@ public class SpaceRestriction
     public const string InAOE = "In AOE"; //150,
     public const string DistanceX = "Distance to Source == X"; //200,
     public const string DistanceToTargetX = "Distance to Target == X"; //201,
-    public const string DistanceToTargetC = "Distance to Target == C"; //251,
+    public const string DistanceToTargetC = "Distance to Target == Constant"; //251,
     public const string FurtherFromSourceThanTarget = "Further from Source than Target"; //260
 
     public string[] spaceRestrictions;
     public CardRestriction adjacencyRestriction = new CardRestriction();
     public CardRestriction connectednessRestriction = new CardRestriction(); 
 
-    public int C;
+    public int constant;
 
     public string blurb = "";
 
@@ -75,7 +75,7 @@ public class SpaceRestriction
                     if (Subeffect.Target.DistanceTo(x, y) != Subeffect.Effect.X) return false;
                     break;
                 case DistanceToTargetC:
-                    if (Subeffect.Target.DistanceTo(x, y) != C) return false;
+                    if (Subeffect.Target.DistanceTo(x, y) != constant) return false;
                     break;
                 case FurtherFromSourceThanTarget:
                     if (Subeffect.Source.DistanceTo(x, y) <= Subeffect.Source.DistanceTo(Subeffect.Target)) return false;

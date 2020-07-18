@@ -18,7 +18,7 @@
 					{
 						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Adjacent\"]
 					},
-					\"NVal\":0
+					\"nVal\":0
 				}"
 			]	
 		}

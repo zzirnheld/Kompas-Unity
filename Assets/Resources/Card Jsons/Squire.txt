@@ -6,7 +6,7 @@
 		{
 			"triggerCondition":"Play",
 			"trigger":"{
-				\"Optional\":true,
+				\"optional\":true,
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
 					\"cardRestriction\":

@@ -34,7 +34,7 @@
 				"{
 					\"subeffType\":\"Hanging Annihilate\",
 					\"endCondition\":\"Turn Start\",
-					\"TriggerRestriction\":
+					\"triggerRestriction\":
 					{
 						\"triggerRestrictions\":[300]
 					}

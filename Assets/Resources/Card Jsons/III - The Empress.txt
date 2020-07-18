@@ -8,7 +8,7 @@
 			"trigger":
 			"{
 				\"blurb\":\"Hand-summon character with S <= X?\",
-				\"Optional\":true,
+				\"optional\":true,
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\"]
 				}

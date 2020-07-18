@@ -7,7 +7,7 @@
 			"triggerCondition":"Draw",
 			"trigger":
 			"{
-				\"Optional\":true,
+				\"optional\":true,
 				\"blurb\":\"Dispel a C <= X spell? (X is the number of cards you just drew)\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\",\"Max Per Round\"]

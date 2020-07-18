@@ -38,8 +38,8 @@
 				}",
 				"{
 					\"subeffType\":\"Count X Loop\",
-					\"CanDecline\":false,
-					\"JumpTo\":4
+					\"canDecline\":false,
+					\"jumpTo\":4
 				}",
 				"{
 					\"subeffType\":\"Add Pips\",

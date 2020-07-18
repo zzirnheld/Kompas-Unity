@@ -14,8 +14,8 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Temporary NESW Buff All\",
-					\"EBuff\":1,
-					\"WBuff\":1,
+					\"eBuff\":1,
+					\"wBuff\":1,
 					\"endCondition\":\"Turn Start\",
 					\"cardRestriction\":{
 						\"cardRestrictions\":[\"Friendly\",\"Is Character\"]

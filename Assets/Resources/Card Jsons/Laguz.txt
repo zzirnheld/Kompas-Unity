@@ -19,8 +19,8 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == C\"],
-						\"C\":1
+						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\"],
+						\"constant\":1
 					}
 				}",
 				"{

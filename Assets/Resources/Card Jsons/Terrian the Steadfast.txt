@@ -31,7 +31,7 @@
 			"trigger":
 			"{
 				\"blurb\":\"Give the attacking Terrian -XE to give its taret -2XW? (You choose X)\",
-				\"Optional\":true,
+				\"optional\":true,
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}

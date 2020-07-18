@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class LoopSubeffect : ServerSubeffect
 {
-    public int JumpTo;
-    public bool CanDecline = false;
+    public int jumpTo;
+    public bool canDecline = false;
 
     protected virtual void OnLoopExit()
     {
         //make the "no other targets" button disappear
-        if (CanDecline)
+        if (canDecline)
         {
             EffectController.ServerNotifier.DisableDecliningTarget();
             EffectController.ServerNotifier.AcceptTarget(); // otherwise it keeps them in the now-irrelevant target mode
@@ -22,16 +22,16 @@ public class LoopSubeffect : ServerSubeffect
     public override bool Resolve()
     {
         //loop again if necessary
-        Debug.Log($"im in ur loop of type {GetType()}, the one that jumps to {JumpTo}");
+        Debug.Log($"im in ur loop of type {GetType()}, the one that jumps to {jumpTo}");
         if (ShouldContinueLoop)
         {
             //tell the client to enable the button to exit the loop
-            if (CanDecline)
+            if (canDecline)
             {
                 EffectController.ServerNotifier.EnableDecliningTarget();
                 ServerEffect.OnImpossible = this;
             }
-            return ServerEffect.ResolveSubeffect(JumpTo);
+            return ServerEffect.ResolveSubeffect(jumpTo);
         }
         else return ExitLoop();
     }
@@ -53,7 +53,7 @@ public class LoopSubeffect : ServerSubeffect
 
     public override bool OnImpossible()
     {
-        if (CanDecline) return ExitLoop();
+        if (canDecline) return ExitLoop();
         else return base.OnImpossible();
     }
 }

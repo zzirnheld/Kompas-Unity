@@ -36,7 +36,7 @@
 						\"blurb\":\"where to move the Shaper\",
 						\"spaceRestrictions\":[\"Adjacent to Target\"]
 					},
-					\"TargetIndex\":-2
+					\"targetIndex\":-2
 				}",
 				"{
 					\"subeffType\":\"Move\"

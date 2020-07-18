@@ -6,8 +6,8 @@ public abstract class TemporaryCardChangeSubeffect : ServerSubeffect
     public TriggerRestriction triggerRestriction = new TriggerRestriction();
     public string endCondition;
 
-    public string FallOffCondition = Trigger.Remove;
-    public string[] FallOffRestrictions =
+    public string fallOffCondition = Trigger.Remove;
+    public string[] fallOffRestrictions =
     {
         TriggerRestriction.ThisCardTriggered,
         TriggerRestriction.ThisCardInPlay,
@@ -30,9 +30,9 @@ public abstract class TemporaryCardChangeSubeffect : ServerSubeffect
             ServerGame.EffectsController.RegisterHangingEffect(endCondition, eff);
 
             //conditions for falling off
-            var triggerRest = new TriggerRestriction() { triggerRestrictions = FallOffRestrictions };
+            var triggerRest = new TriggerRestriction() { triggerRestrictions = fallOffRestrictions };
             triggerRest.Initialize(this, card, null);
-            ServerGame.EffectsController.RegisterHangingEffectFallOff(FallOffCondition, triggerRest, eff);
+            ServerGame.EffectsController.RegisterHangingEffectFallOff(fallOffCondition, triggerRest, eff);
         }
 
         //after all that's done, make it do the next subeffect

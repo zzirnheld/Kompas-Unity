@@ -22,7 +22,7 @@
 				}",
 				"{
 					\"subeffType\":\"Set NESW\",
-					\"NVal\":0
+					\"nVal\":0
 				}",
 				"{
 					\"subeffType\":\"Board Target\",
@@ -34,14 +34,14 @@
 				}",
 				"{
 					\"subeffType\":\"Set NESW\",
-					\"NVal\":0
+					\"nVal\":0
 				}"
 
 			]
 		}
 	],
 	"MovementRestriction":{
-		"Restrictions":[
+		"movementRestrictions":[
 			"Is Character",
 			"Can Move Enough Spaces",
 			"Destination is Empty or Friendly",
@@ -49,7 +49,7 @@
 		]
 	},
 	"AttackRestriction":{
-		"Restrictions":[
+		"attackRestrictions":[
 			"This is Character",
 			"Defender is Character",
 			"Defender is Adjacent",

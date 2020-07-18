@@ -33,7 +33,7 @@
 				}",
 				"{
 					\"subeffType\":\"Loop X Times\",
-					\"JumpTo\":1
+					\"jumpTo\":1
 				}"
 			]	
 		}

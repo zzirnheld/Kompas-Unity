@@ -84,7 +84,7 @@ public class ServerTrigger : Trigger
         if (CheckTriggerRestrictions(context))
         {
             Debug.Log($"Trigger is valid for effect of {effToTrigger.Source.CardName} with id {effToTrigger.Source.ID}");
-            if (Optional) effToTrigger.serverGame.EffectsController
+            if (optional) effToTrigger.serverGame.EffectsController
                      .AskForTrigger(this, context, effToTrigger.serverGame.ServerPlayers[effToTrigger.Source.ControllerIndex]);
             else TriggerEffect(context);
         }

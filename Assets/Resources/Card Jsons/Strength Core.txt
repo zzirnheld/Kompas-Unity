@@ -18,15 +18,15 @@
 				"{
 					\"subeffType\":\"Temporary Activate\",
 					\"endCondition\":\"Augment Detached\",
-					\"TriggerRestriction\":{
+					\"triggerRestriction\":{
 						\"triggerRestrictions\":[\"This Card Triggered\"]
 					}
 				}",
 				"{
 					\"subeffType\":\"Temporary NESW Buff\",
-					\"WBuff\":4,
+					\"wBuff\":4,
 					\"endCondition\":\"Augment Detached\",
-					\"TriggerRestriction\":{
+					\"triggerRestriction\":{
 						\"triggerRestrictions\":[\"This Card Triggered\"]
 					}
 				}"

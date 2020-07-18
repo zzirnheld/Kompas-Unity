@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SpendMovementSubeffect : ServerSubeffect
 {
-    public int Multiplier = 0;
-    public int Modifier = 0;
-    public int Divisor = 1;
+    public int multiplier = 0;
+    public int modifier = 0;
+    public int divisor = 1;
 
     public override bool Resolve()
     {
-        var spaces = Effect.X * Multiplier / Divisor + Modifier;
+        var spaces = Effect.X * multiplier / divisor + modifier;
         if (Target.SpacesCanMove >= spaces)
         {
             Target.SpacesMoved += spaces;

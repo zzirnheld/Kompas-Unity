@@ -31,7 +31,7 @@
 			"trigger":
 			"{
 				\"blurb\":\"Give the attacking Aerian and all other characters within 2 spaces -2E?\",
-				\"Optional\":true,
+				\"optional\":true,
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
@@ -44,7 +44,7 @@
 						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Within C Spaces\"],
 						\"cSpaces\":2
 					},
-					\"EMod\":-2
+					\"eMod\":-2
 				}"
 			]	
 		}

@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"In Play"
@@ -24,7 +24,7 @@
 				}",
 				"{
 					\"subeffType\":\"Jump on Effect Impossible\",
-					\"JumpTo\":8
+					\"jumpTo\":8
 				}",
 				"{
 					\"subeffType\":\"Choose From List Saving Rest\",
@@ -58,11 +58,11 @@
 				}",
 				"{
 					\"subeffType\":\"Loop X Times\",
-					\"JumpTo\":4
+					\"jumpTo\":4
 				}",
 				"{
 					\"subeffType\":\"Bottomdeck\",
-					\"TargetIndex\":-1
+					\"targetIndex\":-1
 				}",
 				"{
 					\"subeffType\":\"Delete Target\",
@@ -70,7 +70,7 @@
 				}",
 				"{
 					\"subeffType\":\"Loop While Have Targets\",
-					\"JumpTo\":8
+					\"jumpTo\":8
 				}"
 			]
 		}

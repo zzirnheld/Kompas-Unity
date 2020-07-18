@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"In Play"
@@ -26,8 +26,8 @@
 				}",
 				"{
 					\"subeffType\":\"Set X by Math\",
-					\"Multiplier\":0,
-					\"Modifier\":2
+					\"multiplier\":0,
+					\"modifier\":2
 				}",
 				"{
 					\"subeffType\":\"Draw X\"

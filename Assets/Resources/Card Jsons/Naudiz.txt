@@ -18,7 +18,7 @@
 					{
 						\"cardRestrictions\":[\"Is Character\",\"Enemy\",\"Board\"]
 					},
-					\"EMod\":-2
+					\"eMod\":-2
 				}"
 			]	
 		}

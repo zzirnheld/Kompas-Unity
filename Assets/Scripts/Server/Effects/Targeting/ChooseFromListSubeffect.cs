@@ -20,13 +20,13 @@ public class ChooseFromListSubeffect : ServerSubeffect
     /// If this isn't specified in the json, allow unlimited cards to be chosen.
     /// Represent this with -1
     /// </summary>
-    public int MaxCanChoose = -1;
+    public int maxCanChoose = -1;
 
     protected IEnumerable<GameCard> potentialTargets;
 
     protected void RequestTargets()
     {
-        EffectController.ServerNotifier.GetChoicesFromList(potentialTargets, MaxCanChoose, this);
+        EffectController.ServerNotifier.GetChoicesFromList(potentialTargets, maxCanChoose, this);
     }
 
     public override void Initialize(ServerEffect eff, int subeffIndex)
@@ -61,7 +61,7 @@ public class ChooseFromListSubeffect : ServerSubeffect
         //check that there are no elements in choices that aren't in potential targets
         //also check that, if a maximum number to choose has been specified, that many have been chosen
         //also check that the list as a whole is allowable
-        bool invalidList = (MaxCanChoose > 0 && choices.Count() > MaxCanChoose) ||
+        bool invalidList = (maxCanChoose > 0 && choices.Count() > maxCanChoose) ||
             choices.Intersect(potentialTargets).Count() != choices.Count() ||
             !listRestriction.Evaluate(choices);
 

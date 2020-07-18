@@ -7,7 +7,7 @@
 			"triggerCondition":"Rehand",
 			"trigger":
 			"{
-				\"Optional\":true,
+				\"optional\":true,
 				\"blurb\":\"Draw 1? (An enemy just deck-rehanded a card)\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"From Deck\"],

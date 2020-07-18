@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"In Play"
@@ -25,8 +25,8 @@
 				}",
 				"{
 					\"subeffType\":\"Count X Loop\",
-					\"CanDecline\":true,
-					\"JumpTo\":0
+					\"canDecline\":true,
+					\"jumpTo\":0
 				}",
 				"{
 					\"subeffType\":\"Draw X\"

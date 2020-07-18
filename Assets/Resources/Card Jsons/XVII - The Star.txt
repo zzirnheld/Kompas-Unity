@@ -5,10 +5,10 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Max Times Per Round"
 				],
-				"MaxTimes":2
+				"maxTimes":2
 			},
 			"subeffects":[
 				"{

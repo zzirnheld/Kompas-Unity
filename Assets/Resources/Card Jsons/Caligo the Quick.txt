@@ -28,7 +28,7 @@
 		},
 		{
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"In Play"
 				]
 			},
@@ -43,7 +43,7 @@
 				}",
 				"{
 					\"subeffType\":\"Set X by Target Value\",
-					\"WhatToCount\":\"Distance to Target\"
+					\"whatToCount\":\"Distance to Target\"
 				}",
 				"{
 					\"subeffType\":\"X Change NESW\",
@@ -65,8 +65,8 @@
 				}",
 				"{
 					\"subeffType\":\"Attack\",
-					\"AttackerIndex\":-1,
-					\"TargetIndex\":-2
+					\"attackerIndex\":-1,
+					\"targetIndex\":-2
 				}"
 			]	
 		}

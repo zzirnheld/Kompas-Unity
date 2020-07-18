@@ -8,8 +8,8 @@ public class DrawXSubeffect : ServerSubeffect
     public int WhoDraws { get { return Player == -1 ? ServerEffect.ServerController.index : Player; } }
     public int XMultiplier = 1;
     public int XDivisor = 1;
-    public int Modifier = 0;
-    public int Count => (ServerEffect.X * XMultiplier / XDivisor) + Modifier;
+    public int modifier = 0;
+    public int Count => (ServerEffect.X * XMultiplier / XDivisor) + modifier;
 
     public override bool Resolve()
     {

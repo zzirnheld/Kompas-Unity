@@ -8,7 +8,7 @@
 			"trigger":
 			"{
 				\"blurb\":\"Tribute me to deck-summon Tarocco with S <= X?\",
-				\"Optional\":true,
+				\"optional\":true,
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\"]
 				}
@@ -22,7 +22,7 @@
 				}",
 				"{
 					\"subeffType\":\"Discard\",
-					\"TargetIndex\":-1
+					\"targetIndex\":-1
 				}",
 				"{
 					\"subeffType\":\"Deck Target\",
@@ -35,7 +35,7 @@
 				}",
 				"{
 					\"subeffType\":\"Play\",
-					\"TargetIndex\":-1,
+					\"targetIndex\":-1,
 					\"SpaceIndex\":-1
 				}"
 			]	

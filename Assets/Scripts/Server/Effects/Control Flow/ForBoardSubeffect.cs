@@ -11,7 +11,7 @@ using UnityEngine;
  */ 
 public class ForBoardSubeffect : ServerSubeffect
 {
-    public int JumpToWhenDone;
+    public int jumpToWhenDone;
     public CardRestriction cardRestriction;
 
     private int xCount = 0;
@@ -51,6 +51,6 @@ public class ForBoardSubeffect : ServerSubeffect
         //in case the effect runs again, reset the flag
         running = false;
         //then jump to the
-        return ServerEffect.ResolveSubeffect(JumpToWhenDone);
+        return ServerEffect.ResolveSubeffect(jumpToWhenDone);
     } //end resolve
 }

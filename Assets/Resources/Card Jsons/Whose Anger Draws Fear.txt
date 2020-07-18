@@ -6,7 +6,7 @@
 		{
 			"blurb":"Shape",
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Friendly Turn",
 					"In Play"
 				]
@@ -29,11 +29,11 @@
 				}",
 				"{
 					\"subeffType\":\"Spend Movement\",
-					\"Modifier\":1
+					\"modifier\":1
 				}",
 				"{
 					\"subeffType\":\"Set X by Gamestate Value\",
-					\"WhatToCount\":\"Distance to Coords Through\",
+					\"whatToCount\":\"Distance to Coords Through\",
 					\"throughRestriction\":{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
 						\"subtypesInclude\":[\"Ethereal\"]
@@ -62,15 +62,15 @@
 				}",
 				"{
 					\"subeffType\":\"Jump on Effect Impossible\",
-					\"JumpTo\":5
+					\"jumpTo\":5
 				}",
 				"{
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"to move Whose Anger Draws Fear's attack target to\",
-						\"spaceRestrictions\":[\"Distance to Target == C\",\"Further from Source than Target\"],
-						\"C\":1
+						\"spaceRestrictions\":[\"Distance to Target == Constant\",\"Further from Source than Target\"],
+						\"constant\":1
 					}
 				}",
 				"{

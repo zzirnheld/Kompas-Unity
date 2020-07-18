@@ -6,7 +6,7 @@
 		{
 			"blurb":"Shape",
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"In Play"
 				]
 			},
@@ -28,11 +28,11 @@
 				}",
 				"{
 					\"subeffType\":\"Spend Movement\",
-					\"Modifier\":1
+					\"modifier\":1
 				}",
 				"{
 					\"subeffType\":\"Set X by Gamestate Value\",
-					\"WhatToCount\":\"Distance to Coords Through\",
+					\"whatToCount\":\"Distance to Coords Through\",
 					\"throughRestriction\":{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
 						\"subtypesInclude\":[\"Ethereal\"]
