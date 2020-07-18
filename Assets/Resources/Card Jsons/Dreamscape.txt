@@ -17,6 +17,9 @@
 			}",
 			"subeffects":[
 				"{
+					\"subeffType\":\"Target Triggering Card\"
+				}",
+				"{
 					\"subeffType\":\"Reset Stats\",
 					\"ResetE\":true
 				}",

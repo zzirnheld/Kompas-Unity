@@ -13,6 +13,9 @@
 			}",
 			"subeffects":[
 				"{
+					\"subeffType\":\"Target Triggering Card\"
+				}",
+				"{
 					\"subeffType\":\"Set X by Target Value\",
 					\"WhatToCount\":\"S\"
 				}",

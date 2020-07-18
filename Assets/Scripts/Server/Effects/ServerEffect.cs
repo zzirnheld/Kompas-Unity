@@ -86,8 +86,6 @@ public class ServerEffect : Effect, IServerStackable
         //set context parameters
         CurrActivationContext = context;
         X = context.X ?? 0;
-        if (context.Card != null) AddTarget(context.Card);
-        if (context.Space.HasValue) Coords.Add(context.Space.Value);
 
         //notify relevant to this effect starting
         ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);

@@ -30,6 +30,6 @@ public class SetXBoardRestrictionSubeffect : ServerSubeffect
         }
         Debug.Log("Setting X by board restriction to " + ServerEffect.X);
         EffectController.ServerNotifier.NotifyEffectX(ThisCard, ServerEffect.EffectIndex, ServerEffect.X);
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

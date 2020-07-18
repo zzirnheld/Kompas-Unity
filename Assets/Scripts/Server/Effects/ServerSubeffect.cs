@@ -46,6 +46,12 @@ public abstract class ServerSubeffect : Subeffect
             case TargetAugmentedCard:
                 toReturn = JsonUtility.FromJson<TargetAugmentedCardSubeffect>(subeffJson);
                 break;
+            case TargetTriggeringCard:
+                toReturn = JsonUtility.FromJson<TargetTriggeringCardSubeffect>(subeffJson);
+                break;
+            case TargetTriggeringCoords:
+                toReturn = JsonUtility.FromJson<TargetTriggeringCoordsSubeffect>(subeffJson);
+                break;
             case ChooseFromList:
                 toReturn = JsonUtility.FromJson<ChooseFromListSubeffect>(subeffJson);
                 break;

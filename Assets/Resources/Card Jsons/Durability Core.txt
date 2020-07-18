@@ -40,7 +40,6 @@
 					\"triggerRestrictions\":[\"Augmented Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[5,304],
 			"subeffects":[
 				"{
 					\"subeffType\":\"Target This\"

@@ -24,6 +24,8 @@ public class Subeffect
     public const string TargetAll = "Target All"; //11,
     public const string AddRest = "Add Rest"; //12,
     public const string TargetDefender = "Target Defender"; //50,
+    public const string TargetTriggeringCard = "Target Triggering Card";
+    public const string TargetTriggeringCoords = "Target Triggering Space";
 
     //changing values, esp. on cards
     //TODO deprecate change nesw
