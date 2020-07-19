@@ -4,20 +4,23 @@
 	"effText":"When an enemy deck-rehands a card, you can draw 1.",
 	"effects":[
 		{
-			"triggerCondition":403,
+			"triggerCondition":"Rehand",
 			"trigger":
 			"{
-				\"Optional\":true,
-				\"Blurb\":\"Draw 1? (An enemy just deck-rehanded a card)\",
+				\"optional\":true,
+				\"blurb\":\"Draw 1? (An enemy just deck-rehanded a card)\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,101,401],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"From Deck\"],
 					\"cardRestriction\":{
-						\"restrictionsToCheck\":[9]
+						\"cardRestrictions\":[\"Enemy\"]
 					}
 				}
 			}",
-			"subeffectTypes":[305],
-			"subeffects":["{}"]
+			"subeffects":[
+				"{
+					\"subeffType\":\"Draw\"
+				}"
+			]
 		}
 	],
 	"n":2,

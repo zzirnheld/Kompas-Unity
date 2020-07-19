@@ -4,56 +4,67 @@
 	"effText":"When you draw, give me +1C. Delay 1 turn. If my C ≥ 10, deck-summon a Tarocco.",
 	"effects":[
 		{
-			"triggerCondition":101,
+			"triggerCondition":"Draw",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1]
+					\"triggerRestrictions\":[\"This Card in Play\"]
 				}
 			}",
-			"subeffectTypes":[5,108],
 			"subeffects":[
-				"{}",
 				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Change C\",
 					\"XModifier\":1
 				}"
 			]
 		},
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[500,5,254,409,1,4,300],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Delay Effect Resolution\",
 					\"NumTimesToDelay\":0,
 					\"IndexToResume\":1,
 					\"TriggerCondition\":0
 				}",
-				"{}",
-				"{}",
 				"{
-					\"Condition\":\"X<C\",
-					\"C\":10
+					\"subeffType\":\"Target This\"
 				}",
 				"{
+					\"subeffType\":\"Set X by Target Cost\"
+				}",
+				"{
+					\"subeffType\":\"Conditionally End Effect Resolution\",
+					\"condition\":\"X<C\",
+					\"constant\":10
+				}",
+				"{
+					\"subeffType\":\"Deck Target\",
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[2,3,102],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Deck\"],
 						\"subtypesInclude\":[\"Tarocco\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"restrictionsToCheck\":[0]
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Play\"
+				}"
 			]
 		}
 	],

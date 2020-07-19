@@ -5,29 +5,32 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"In Play"
 				]
 			},
-			"subeffectTypes":[3,307,408,306],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"for Magician to hand-bottomdeck\",
-						\"restrictionsToCheck\":[7,100]
+						\"blurb\":\"for Magician to hand-bottomdeck\",
+						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
 					}
 				}",
 				"{
-					\"TargetIndex\":-1
+					\"subeffType\":\"Bottomdeck\"
 				}",
 				"{
-					\"CanDecline\":true,
-					\"JumpTo\":0
+					\"subeffType\":\"Count X Loop\",
+					\"canDecline\":true,
+					\"jumpTo\":0
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Draw X\"
+				}"
 			]	
 		}
 	],

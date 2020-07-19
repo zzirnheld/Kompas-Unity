@@ -5,34 +5,34 @@ using UnityEngine;
 
 public class ChangeAllNESWSubeffect : ServerSubeffect
 {
-    public int NMod = 0;
-    public int EMod = 0;
-    public int SMod = 0;
-    public int WMod = 0;
+    public int nMod = 0;
+    public int eMod = 0;
+    public int sMod = 0;
+    public int wMod = 0;
     //default to making sure things are characters before changing their stats
-    public BoardRestriction BoardRestriction = new BoardRestriction()
+    public CardRestriction cardRestriction = new CardRestriction()
     {
-        restrictionsToCheck = new CardRestriction.CardRestrictions[]
+        cardRestrictions = new string[]
         {
-            CardRestriction.CardRestrictions.IsCharacter,
-            CardRestriction.CardRestrictions.Board
+            CardRestriction.IsCharacter,
+            CardRestriction.Board
         }
     };
 
     public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        BoardRestriction.Initialize(this);
+        cardRestriction.Initialize(this);
     }
 
-    public override void Resolve()
+    public override bool Resolve()
     {
-        var targets = ServerGame.Cards.Where(c => BoardRestriction.Evaluate(c));
+        var targets = ServerGame.Cards.Where(c => cardRestriction.Evaluate(c));
         foreach (GameCard c in targets)
         {
-            c.AddToCharStats(NMod, EMod, SMod, WMod);
+            c.AddToCharStats(nMod, eMod, sMod, wMod);
         }
 
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

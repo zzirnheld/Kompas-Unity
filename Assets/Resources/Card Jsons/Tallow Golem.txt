@@ -4,25 +4,26 @@
 	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, I activate a character until your next turn.",
 	"effects":[
 		{
-			"triggerCondition":201,
+			"triggerCondition":"Activate",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[0,504],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"character for Tallow Golem to temporarily activate\",
-						\"restrictionsToCheck\":[3,103]
+						\"blurb\":\"character for Tallow Golem to temporarily activate\",
+						\"cardRestrictions\":[\"Is Character\",\"Board\"]
 					}
 				}",
 				"{
-					\"EndCondition\":0,
-					\"TriggerRestriction\":{
+					\"subeffType\":\"Temporary Activate\",
+					\"endCondition\":\"Turn Start\",
+					\"triggerRestriction\":{
 						\"triggerRestrictions\":[300]
 					}
 				}"
@@ -30,7 +31,7 @@
 		}
 	],
 	"MovementRestriction":{
-		"Restrictions":[
+		"movementRestrictions":[
 			"Is Character",
 			"Can Move Enough Spaces",
 			"Destination is Empty or Friendly",
@@ -38,7 +39,7 @@
 		]
 	},
 	"AttackRestriction":{
-		"Restrictions":[
+		"attackRestrictions":[
 			"This is Character",
 			"Defender is Character",
 			"Defender is Adjacent",

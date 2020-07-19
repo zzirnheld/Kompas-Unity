@@ -4,31 +4,36 @@
 	"effText":"When I'm summoned, deck-summon a copy of me.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[5,8,4,300],
 			"subeffects":[
-				"{}",
 				"{
-					\"CardRestriction\":{
-						\"Blurb\":\"copy of Dreamspace to decksummon\",
-						\"restrictionsToCheck\":[7,12,102]
-					},
-					\"MaxCanChoose\":1
+					\"subeffType\":\"Target This\"
 				}",
 				"{
+					\"subeffType\":\"Choose From List\",
+					\"cardRestriction\":{
+						\"blurb\":\"copy of Dreamspace to decksummon\",
+						\"cardRestrictions\":[\"Friendly\",\"Same Name as Target\"]
+					},
+					\"maxCanChoose\":1
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"where for Dreamspace to decksummon a copy of itself\",
-						\"restrictionsToCheck\":[0]
+						\"blurb\":\"where for Dreamspace to decksummon a copy of itself\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Play\"
+				}"
 			]	
 		}
 	],

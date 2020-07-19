@@ -6,39 +6,46 @@
 		{
 			"blurb":"Shape",
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Friendly Turn",
 					"In Play"
 				]
 			},
-			"subeffectTypes":[4,5,121,201,103,309],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"to move Whose Anger Draws Fear to\",
-						\"restrictionsToCheck\":[110],
-						\"ConnectednessRestriction\":{
-							\"restrictionsToCheck\":[2,3,103],
+						\"blurb\":\"to move Whose Anger Draws Fear to\",
+						\"spaceRestrictions\":[\"Connected to Source by Cards Fitting Restriction\"],
+						\"connectednessRestriction\":{
+							\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
 							\"subtypesInclude\":[\"Ethereal\"]
 						}
 					}
 				}",
-				"{}",
 				"{
-					\"Modifier\":1
+					\"subeffType\":\"Target This\"
 				}",
 				"{
-					\"WhatToCount\":\"Distance to Coords Through\",
-					\"ThroughRestriction\":{
-						\"restrictionsToCheck\":[2,3,103],
+					\"subeffType\":\"Spend Movement\",
+					\"modifier\":1
+				}",
+				"{
+					\"subeffType\":\"Set X by Gamestate Value\",
+					\"whatToCount\":\"Distance to Coords Through\",
+					\"throughRestriction\":{
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
 						\"subtypesInclude\":[\"Ethereal\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"X Change NESW\",
 					\"eMult\":-1
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Move\"
+				}"
 			]
 		},
 		{
@@ -46,28 +53,38 @@
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[50,404,4,309,407,405,311],
 			"subeffects":[
-				"{}",
 				"{
-					\"JumpTo\":5
+					\"subeffType\":\"Target Defender\"
 				}",
 				"{
+					\"subeffType\":\"Jump on Effect Impossible\",
+					\"jumpTo\":5
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"to move Whose Anger Draws Fear's attack target to\",
-						\"restrictionsToCheck\":[251,260],
-						\"C\":1
+						\"blurb\":\"to move Whose Anger Draws Fear's attack target to\",
+						\"spaceRestrictions\":[\"Distance to Target == Constant\",\"Further from Source than Target\"],
+						\"constant\":1
 					}
 				}",
-				"{}",
-				"{}",
-				"{}",
-				"{}",
-				"{}"
+				"{
+					\"subeffType\":\"Move\"
+				}",
+				"{
+					\"subeffType\":\"End Effect Resolution\"
+				}",
+				"{
+					\"subeffType\":\"Clear Jump on Effect Impossible\"
+				}",
+				"{
+					\"subeffType\":\"Annihilate\"
+				}"
 			]	
 		}
 	],

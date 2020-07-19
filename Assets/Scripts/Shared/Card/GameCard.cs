@@ -162,7 +162,7 @@ public abstract class GameCard : CardBase {
                 case CardLocation.Discard: return Controller.discardCtrl.IndexOf(this);
                 case CardLocation.Field: return BoardX * 7 + BoardY;
                 case CardLocation.Hand: return Controller.handCtrl.IndexOf(this);
-                case CardLocation.Annihilation: return Game.AnnihilationCtrl.Cards.IndexOf(this);
+                case CardLocation.Annihilation: return Game.annihilationCtrl.Cards.IndexOf(this);
                 default:
                     Debug.LogError($"Tried to ask for card index when in location {Location}");
                     return -1;
@@ -326,7 +326,7 @@ public abstract class GameCard : CardBase {
                 Controller.deckCtrl.RemoveFromDeck(this);
                 break;
             case CardLocation.Annihilation:
-                Game.AnnihilationCtrl.Remove(this);
+                Game.annihilationCtrl.Remove(this);
                 break;
             default:
                 Debug.LogWarning($"Tried to remove card {CardName} from invalid location {Location}");

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ThisSpaceTargetSubeffect : ServerSubeffect
 {
-    public override void Resolve()
+    public override bool Resolve()
     {
         ServerEffect.Coords.Add((ThisCard.BoardX, ThisCard.BoardY));
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

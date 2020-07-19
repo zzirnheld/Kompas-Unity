@@ -4,50 +4,53 @@
 	"effText":"Territorial: When turns start, kill an adjacent friendly Dragon. When I attack, I can give myself -1E and adjacent characters -2E.",
 	"effects":[
 		{
-			"triggerCondition":0,
+			"triggerCondition":"Turn Start",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1]
+					\"triggerRestrictions\":[\"This Card in Play\"]
 				}
 			}",
-			"subeffectTypes":[0,301],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"adjacent Dragon for Luxor to kill\",
-						\"restrictionsToCheck\":[2,3,7,103],
-						\"subtypesInclude\":[\"Dragon\"],
-						\"onBoardRestrictions\":[0]
+						\"blurb\":\"adjacent Dragon for Luxor to kill\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"],
+						\"subtypesInclude\":[\"Dragon\"]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Discard\"
+				}"
 			]	
 		},
 		{
 			"triggerCondition":301,
 			"trigger":
 			"{
-				\"Blurb\":\"Give the attacking Luxor -1E to give adjacent characters -2E?\",
-				\"Optional\":true,
+				\"blurb\":\"Give the attacking Luxor -1E to give adjacent characters -2E?\",
+				\"optional\":true,
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0,1]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[5,100,110],
 			"subeffects":[
-				"{}",
 				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
 					\"eChange\":-1
 				}",
 				"{
-					\"BoardRestriction\":
+					\"subeffType\":\"Change NESW All\",
+					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[3,103],
-						\"onBoardRestrictions\":[0]
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Adjacent\"]
 					},
-					\"EMod\":-3
+					\"eMod\":-3
 				}"
 			]	
 		}

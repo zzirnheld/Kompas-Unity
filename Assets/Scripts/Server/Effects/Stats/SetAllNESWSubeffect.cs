@@ -5,33 +5,33 @@ public class SetAllNESWSubeffect : SetNESWSubeffect
     private (int, int, int, int) GetRealValues(GameCard c)
     {
         (int n, int e, int s, int w) = (
-            NVal >= 0 ? NVal : c.N,
-            EVal >= 0 ? EVal : c.E,
-            SVal >= 0 ? SVal : c.S,
-            WVal >= 0 ? WVal : c.W
+            nVal >= 0 ? nVal : c.N,
+            eVal >= 0 ? eVal : c.E,
+            sVal >= 0 ? sVal : c.S,
+            wVal >= 0 ? wVal : c.W
         );
         return (n, e, s, w);
     }
 
     //default to making sure things are characters before changing their stats
-    public BoardRestriction BoardRestriction = new BoardRestriction()
+    public CardRestriction cardRestriction = new CardRestriction()
     {
-        restrictionsToCheck = new CardRestriction.CardRestrictions[]
+        cardRestrictions = new string[]
         {
-            CardRestriction.CardRestrictions.IsCharacter,
-            CardRestriction.CardRestrictions.Board
+            CardRestriction.IsCharacter,
+            CardRestriction.Board
         }
     };
 
     public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        BoardRestriction.Initialize(this);
+        cardRestriction.Initialize(this);
     }
 
-    public override void Resolve()
+    public override bool Resolve()
     {
-        var targets = ServerGame.Cards.Where(c => BoardRestriction.Evaluate(c));
+        var targets = ServerGame.Cards.Where(c => cardRestriction.Evaluate(c));
         foreach (ServerGameCard c in targets)
         {
             var (n, e, s, w) = GetRealValues(c);
@@ -40,6 +40,6 @@ public class SetAllNESWSubeffect : SetNESWSubeffect
             c.SetE(e, ServerEffect);
             c.SetE(e, ServerEffect);
         }
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

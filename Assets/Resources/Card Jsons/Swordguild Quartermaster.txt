@@ -5,23 +5,23 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"In Play"
 				]
 			},
-			"subeffectTypes":[200,101],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Set X by Board Count\",
+					\"cardRestriction\":
 						{
-							\"restrictionsToCheck\":[2,3,103],
-							\"subtypesInclude\":[\"Warrior\"],
-							\"onBoardRestrictions\":[0]
+							\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
+							\"subtypesInclude\":[\"Warrior\"]
 						}
 				}",
 				"{
+					\"subeffType\":\"Add Pips\",
 					\"xMultiplier\":1,
 					\"xDivisor\":2,
 					\"modifier\":0,

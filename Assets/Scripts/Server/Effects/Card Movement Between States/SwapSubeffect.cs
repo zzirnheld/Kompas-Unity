@@ -7,9 +7,10 @@ public class SwapSubeffect : ServerSubeffect
     public int SecondTargetIndex = -2;
     public GameCard SecondTarget => GetTarget(SecondTargetIndex);
 
-    public override void Resolve()
+    public override bool Resolve()
     {
-        Target.Move(SecondTarget.BoardX, SecondTarget.BoardY, false, ServerEffect);
-        ServerEffect.ResolveNextSubeffect();
+        if (Target != null && SecondTarget != null && Target.Move(SecondTarget.BoardX, SecondTarget.BoardY, false, ServerEffect))
+            return ServerEffect.ResolveNextSubeffect();
+        else return ServerEffect.EffectImpossible();
     }
 }

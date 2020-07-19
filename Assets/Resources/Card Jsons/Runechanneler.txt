@@ -1,51 +1,53 @@
 {
 	"cardType":67,
 	"cardName":"Runechanneler",
-	"effText":"Once each friendly turn, you can reshuffle X of your discarded Runes to handcast a CX Rune.",
+	"effText":"Once each friendly turn, you can reshuffle X of your discarded Runes to handcast a C<=X Rune.",
 	"effects":[
 		{
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"In Play"
 				]
 			},
-			"subeffectTypes":[2,303,408,3,4,300],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Discard\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Rune for Runechanneler to reshuffle\",
-						\"restrictionsToCheck\":[2,7,101],
+						\"blurb\":\"Rune for Runechanneler to reshuffle\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Discard\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}
 				}",
 				"{
-					\"TargetIndex\":-1
+					\"subeffType\":\"Reshuffle\"
 				}",
 				"{
-					\"CanDecline\":true,
-					\"JumpTo\":0
+					\"subeffType\":\"Count X Loop\",
+					\"canDecline\":true,
+					\"jumpTo\":0
 				}",
 				"{
+					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Rune for Runechanneler to cast\",
-						\"restrictionsToCheck\":[2,7,100,214,601],
+						\"blurb\":\"Rune for Runechanneler to cast\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Hand\",\"Can Be Played\",\"Cost<=X\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"where for Runechanneler to cast its target Rune\",
-						\"restrictionsToCheck\":[0]
+						\"blurb\":\"where for Runechanneler to cast its target Rune\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
 				"{
-					\"TargetIndex\":-1,
-					\"SpaceIndex\":-1
+					\"subeffType\":\"Play\"
 				}"
 			]
 		}

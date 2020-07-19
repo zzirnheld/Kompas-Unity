@@ -4,54 +4,67 @@
 	"effText":"Tribute a friendly SX Golem. Hand-summon or revive a Golem with S < X and activate it.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[0,254,301,406,2,411,3,4,300,120],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[2,3,7,103],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\"],
 						\"subtypesInclude\":[\"Golem\"]
 					}
 				}",
-				"{}",
-				"{}",
 				"{
+					\"subeffType\":\"Set X by Target Cost\"
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Choose Effect Option\",
 					\"ChoiceBlurb\":\"Hand-summon or revive a Golem?\",
 					\"OptionBlurbs\":[\"Hand-summon\",\"Revive\"],
 					\"OptionJumpIndices\":[4,6]
 				}",
 				"{
+					\"subeffType\":\"Discard Target\",
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[2,3,100,222],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Hand\",\"S<X\"],
 						\"subtypesInclude\":[\"Golem\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Jump to Subeffect\",
 					\"IndexToJumpTo\":7
 				}",
 				"{
+					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[2,3,101,222],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Hand\",\"S<X\"],
 						\"subtypesInclude\":[\"Golem\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"restrictionsToCheck\":[0]
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
-				"{}",
-				"{}"
+				"{
+					\"subeffType\":\"Play\"
+				}",
+				"{
+					\"subeffType\":\"Activate\"
+				}"
 			]	
 		}
 	],

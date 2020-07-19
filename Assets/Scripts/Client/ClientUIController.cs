@@ -222,7 +222,7 @@ public class ClientUIController : UIController
 
     public void ShowOptionalTrigger(Trigger t, int? x)
     {
-        TriggerBlurbText.text = t.Blurb;
+        TriggerBlurbText.text = t.blurb;
         ConfirmTriggerView.SetActive(true);
     }
 

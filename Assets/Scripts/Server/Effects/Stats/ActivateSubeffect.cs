@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ActivateSubeffect : ServerSubeffect
 {
-    public override void Resolve()
+    public override bool Resolve()
     {
         Target.SetActivated(true, Effect);
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

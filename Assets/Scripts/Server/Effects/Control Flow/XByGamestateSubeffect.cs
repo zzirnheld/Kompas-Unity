@@ -7,11 +7,11 @@ public abstract class XByGamestateSubeffect : ServerSubeffect
     public const string HandSize = "Hand Size";
     public const string DistanceToCoordsThrough = "Distance to Coords Through";
 
-    public string WhatToCount;
+    public string whatToCount;
     
-    public int Multiplier = 1;
-    public int Divisor = 1;
-    public int Modifier = 0;
+    public int multiplier = 1;
+    public int divisor = 1;
+    public int modifier = 0;
 
     public int PlayerIndex = 0;
     public ServerPlayer Player
@@ -23,30 +23,30 @@ public abstract class XByGamestateSubeffect : ServerSubeffect
         }
     }
 
-    public BoardRestriction ThroughRestriction = new BoardRestriction();
+    public CardRestriction throughRestriction = new CardRestriction();
 
     public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        ThroughRestriction.Initialize(this);
+        throughRestriction.Initialize(this);
     }
 
     private int BaseCount
     {
         get
         {
-            switch (WhatToCount)
+            switch (whatToCount)
             {
                 case HandSize:
                     return Player.handCtrl.HandSize;
                 case DistanceToCoordsThrough:
                     var (x, y) = Space;
-                    return Game.boardCtrl.ShortestPath(Source, x, y, ThroughRestriction);
+                    return Game.boardCtrl.ShortestPath(Source, x, y, throughRestriction);
                 default:
-                    throw new System.ArgumentException($"Invalid 'what to count' string {WhatToCount} in x by gamestate value subeffect");
+                    throw new System.ArgumentException($"Invalid 'what to count' string {whatToCount} in x by gamestate value subeffect");
             }
         }
     }
 
-    protected int Count { get { return BaseCount * Multiplier / Divisor + Modifier; } }
+    protected int Count { get { return BaseCount * multiplier / divisor + modifier; } }
 }

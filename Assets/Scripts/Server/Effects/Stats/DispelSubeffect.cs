@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class DispelSubeffect : ServerSubeffect
 {
-    public override void Resolve()
+    public override bool Resolve()
     {
         Target.Dispel(Effect);
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

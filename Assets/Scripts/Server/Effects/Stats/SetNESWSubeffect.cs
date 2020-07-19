@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class SetNESWSubeffect : ServerSubeffect
 {
-    public int NVal = -1;
-    public int EVal = -1;
-    public int SVal = -1;
-    public int WVal = -1;
+    public int nVal = -1;
+    public int eVal = -1;
+    public int sVal = -1;
+    public int wVal = -1;
 
-    public int RealNVal => NVal < 0 ? Target.N : NVal;
-    public int RealEVal => EVal < 0 ? Target.E : EVal;
-    public int RealSVal => SVal < 0 ? Target.S : SVal;
-    public int RealWVal => WVal < 0 ? Target.W : WVal;
+    public int RealNVal => nVal < 0 ? Target.N : nVal;
+    public int RealEVal => eVal < 0 ? Target.E : eVal;
+    public int RealSVal => sVal < 0 ? Target.S : sVal;
+    public int RealWVal => wVal < 0 ? Target.W : wVal;
 
-    public override void Resolve()
+    public override bool Resolve()
     {
         Target.SetCharStats(RealNVal, RealEVal, RealSVal, RealWVal);
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

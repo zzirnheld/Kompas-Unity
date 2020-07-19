@@ -5,33 +5,41 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Max Times Per Round",
 					"In Play"
 				]
 			},
-			"subeffectTypes":[8,401,308,10,401,305],
 			"subeffects":[
 				"{
-					\"MaxCanChoose\":1,
-					\"CardRestriction\":
+					\"subeffType\":\"Choose From List\",
+					\"maxCanChoose\":1,
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"for High Priestess to put on top next\",
-						\"restrictionsToCheck\":[7,102,501,600],
+						\"blurb\":\"for High Priestess to put on top next (to end up under the last card you chose)\",
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<=C\",\"Not Already Target\"],
 						\"constant\":4
 					}
 				}",
 				"{
+					\"subeffType\":\"Loop T Times\",
 					\"T\":5,
-					\"JumpTo\":0
+					\"jumpTo\":0
 				}",
-				"{}",
-				"{}",
 				"{
-					\"T\":5,
-					\"JumpTo\":2
+					\"subeffType\":\"Topdeck\"
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Delete Target\"
+				}",
+				"{
+					\"subeffType\":\"Loop T Times\",
+					\"T\":5,
+					\"jumpTo\":2
+				}",
+				"{
+					\"subeffType\":\"Draw\"
+				}"
 			]	
 		}
 	],

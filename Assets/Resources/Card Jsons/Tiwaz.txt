@@ -8,15 +8,15 @@
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0,101],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
 					\"cardRestriction\":{
-						\"restrictionsToCheck\":[3,7,103]
+						\"cardRestrictions\":[\"Is Character\",\"Friendly\",\"Board\"]
 					}
 				}
 			}",
-			"subeffectTypes":[100],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Change NESW\",
 					\"eChange\":2,
 					\"sChange\":2,
 					\"wChange\":2

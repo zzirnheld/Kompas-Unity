@@ -4,29 +4,32 @@
 	"effText":"Can’t be cast normally. Move a card anywhere (that there isn't already a card).",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[0,4,309],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"card for Raido to move\",
-						\"restrictionsToCheck\":[103]
+						\"blurb\":\"card for Raido to move\",
+						\"cardRestrictions\":[\"Board\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":{
-						\"Blurb\":\"where for Raido to move it starget\",
-						\"restrictionsToCheck\":[1]
+						\"blurb\":\"where for Raido to move it starget\",
+						\"spaceRestrictions\":[\"Empty\"]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Move\"
+				}"
 			]	
 		}
 	],

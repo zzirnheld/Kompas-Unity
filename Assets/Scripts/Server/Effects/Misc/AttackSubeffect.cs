@@ -4,21 +4,16 @@ using UnityEngine;
 
 public class AttackSubeffect : ServerSubeffect
 {
-    public int AttackerIndex = -2;
+    public int attackerIndex = -2;
 
-    private GameCard Attacker
+    public override bool Resolve()
     {
-        get
-        {
-            int trueIndex = AttackerIndex < 0 ? AttackerIndex + Effect.Targets.Count : AttackerIndex;
-            return trueIndex < 0 ? null : Effect.Targets[trueIndex];
-        }
-    }
-    private GameCard Defender => Target;
+        int trueIndex = attackerIndex < 0 ? attackerIndex + Effect.Targets.Count : attackerIndex;
+        var attacker = trueIndex < 0 ? null : Effect.Targets[trueIndex];
+        var defender = Target;
+        if (attacker == null || defender == null) ServerEffect.EffectImpossible();
 
-    public override void Resolve()
-    {
-        ServerGame.Attack(Attacker, Defender, ServerEffect.ServerController);
-        ServerEffect.ResolveNextSubeffect();
+        ServerGame.Attack(attacker, defender, ServerEffect.ServerController);
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

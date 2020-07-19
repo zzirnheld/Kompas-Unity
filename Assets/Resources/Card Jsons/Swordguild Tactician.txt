@@ -5,42 +5,46 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"In Play"
 				]
 			},
-			"subeffectTypes":[0,406,100,407,100],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"adjacent Warrior for Tactician to give +5E or +5W\",
-						\"restrictionsToCheck\":[2,3,103],
-						\"subtypesInclude\":[\"Warrior\"],
-						\"onBoardRestrictions\":[0]
+						\"blurb\":\"adjacent Warrior for Tactician to give +5E or +5W\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
+						\"subtypesInclude\":[\"Warrior\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Choose Effect Option\",
 					\"ChoiceBlurb\":\"Give +5E or +5W?\",
 					\"OptionBlurbs\":[\"+5E\",\"+5W\"],
 					\"OptionJumpIndices\":[2,4]
 				}",
 				"{
+					\"subeffType\":\"Change NESW\",
 					\"nChange\":0,
 					\"eChange\":5,
 					\"sChange\":0,
 					\"wChange\":0,
-					\"TargetIndex\":0
+					\"targetIndex\":0
 				}",
-				"{}",
 				"{
+					\"subeffType\":\"End Effect Resolution\"
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
 					\"nChange\":0,
 					\"eChange\":0,
 					\"sChange\":0,
 					\"wChange\":5,
-					\"TargetIndex\":0
+					\"targetIndex\":0
 				}"
 			]
 		}

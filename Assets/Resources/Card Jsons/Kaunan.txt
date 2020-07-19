@@ -4,23 +4,24 @@
 	"effText":"Can’t be cast normally. Give a Summoned character -3EW.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[0,100],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"for Kaunan to give -3EW\",
-						\"restrictionsToCheck\":[3,10,103]
+						\"blurb\":\"for Kaunan to give -3EW\",
+						\"cardRestrictions\":[\"Is Character\",\"Summoned\",\"Board\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Change NESW\",
 					\"eChange\":-3,
 					\"wChange\":-3
 				}"

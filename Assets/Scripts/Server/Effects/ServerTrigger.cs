@@ -14,7 +14,7 @@ public class ServerTrigger : Trigger
     /// <param name="json">The json to create the object from.</param>
     /// <param name="parent">The effect this trigger will trigger.</param>
     /// <returns>The trigger with these characteristics.</returns>
-    public static ServerTrigger FromJson(TriggerCondition condition, string json, ServerEffect parent)
+    public static ServerTrigger FromJson(string condition, string json, ServerEffect parent)
     {
         ServerTrigger toReturn = JsonUtility.FromJson<ServerTrigger>(json);
 
@@ -84,7 +84,7 @@ public class ServerTrigger : Trigger
         if (CheckTriggerRestrictions(context))
         {
             Debug.Log($"Trigger is valid for effect of {effToTrigger.Source.CardName} with id {effToTrigger.Source.ID}");
-            if (Optional) effToTrigger.serverGame.EffectsController
+            if (optional) effToTrigger.serverGame.EffectsController
                      .AskForTrigger(this, context, effToTrigger.serverGame.ServerPlayers[effToTrigger.Source.ControllerIndex]);
             else TriggerEffect(context);
         }

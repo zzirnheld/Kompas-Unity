@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class TargetAugmentedCardSubeffect : ServerSubeffect
 {
-    public override void Resolve()
+    public override bool Resolve()
     {
-        if (ServerEffect.Source.AugmentedCard == null) ServerEffect.EffectImpossible();
+        if (ServerEffect.Source.AugmentedCard == null) return ServerEffect.EffectImpossible();
         else
         {
             ServerEffect.AddTarget(Source.AugmentedCard);
-            ServerEffect.ResolveNextSubeffect();
+            return ServerEffect.ResolveNextSubeffect();
         }
     }
 }

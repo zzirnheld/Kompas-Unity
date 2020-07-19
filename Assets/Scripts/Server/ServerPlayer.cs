@@ -93,7 +93,7 @@ public class ServerPlayer : Player
         ServerNotifier.NotifyBothPutBack();
 
         if (serverGame.ValidAttack(attacker, defender, this))
-            serverGame.Attack(attacker, defender, this);
+            serverGame.Attack(attacker, defender, this, true);
 
         serverGame.EffectsController.CheckForResponse();
     }

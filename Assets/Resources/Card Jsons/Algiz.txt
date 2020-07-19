@@ -4,22 +4,23 @@
 	"effText":"Can’t be cast normally. Give a character +5E.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[0,100],
 			"subeffects":[
 				"{
-						\"boardRestriction\":
-						{
-							\"restrictionsToCheck\":[3,103]
-						}
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Board\",\"Is Character\"]
+					}
 				}",
 				"{
+					\"subeffType\":\"Change NESW\",
 					\"eChange\":5
 				}"
 			]	

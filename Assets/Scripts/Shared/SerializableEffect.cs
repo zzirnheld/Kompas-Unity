@@ -5,14 +5,11 @@ using UnityEngine;
 [System.Serializable]
 public class SerializableEffect
 {
-    //used for knowing what effect type to deserialize as
-    public SubeffectType[] subeffectTypes;
-
     //array of strings that will get deserialized
     public string[] subeffects;
 
     //used for knowing what trigger to deserialize as
-    public TriggerCondition triggerCondition;
+    public string triggerCondition;
 
     //string to be deserialized
     public string trigger;

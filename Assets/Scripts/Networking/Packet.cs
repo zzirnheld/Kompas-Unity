@@ -291,7 +291,7 @@ namespace KompasNetworking
             return subeff.cardRestriction;
         }
         
-        public BoardRestriction GetBoardRestriction(ClientGame clientGame)
+        public CardRestriction GetBoardRestriction(ClientGame clientGame)
         {
             GameCard thatHasEffect = clientGame.GetCardWithID(cardID);
             Effect eff = thatHasEffect.Effects.ElementAt(normalArgs[0]);
@@ -304,7 +304,7 @@ namespace KompasNetworking
                 return null;
             }
 
-            return subeff.boardRestriction;
+            return subeff.cardRestriction;
         }
         
         public SpaceRestriction GetSpaceRestriction(ClientGame clientGame)
@@ -337,7 +337,7 @@ namespace KompasNetworking
                 return null;
             }
 
-            return subeff.ListRestriction;
+            return subeff.listRestriction;
         }
 
         private void Invert()

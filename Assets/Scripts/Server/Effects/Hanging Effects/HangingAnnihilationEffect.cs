@@ -9,7 +9,7 @@ public class HangingAnnihilationEffect : HangingEffect
 {
     private readonly GameCard target;
 
-    public HangingAnnihilationEffect (ServerGame serverGame, TriggerRestriction triggerRestriction, TriggerCondition endCondition,
+    public HangingAnnihilationEffect (ServerGame serverGame, TriggerRestriction triggerRestriction, string endCondition,
         GameCard target)
         : base(serverGame, triggerRestriction, endCondition)
     {
@@ -18,6 +18,6 @@ public class HangingAnnihilationEffect : HangingEffect
 
     protected override void Resolve()
     {
-        serverGame.AnnihilationCtrl.Annihilate(target);
+        serverGame.annihilationCtrl.Annihilate(target);
     }
 }

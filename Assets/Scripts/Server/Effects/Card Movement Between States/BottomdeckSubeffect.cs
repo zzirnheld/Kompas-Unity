@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class BottomdeckSubeffect : CardChangeStateSubeffect
 {
-    public override void Resolve()
+    public override bool Resolve()
     {
-        if (Target.Bottomdeck(Target.Owner, Effect)) ServerEffect.ResolveNextSubeffect();
-        else ServerEffect.EffectImpossible();
+        if (Target != null && Target.Bottomdeck(Target.Owner, Effect))
+            return ServerEffect.ResolveNextSubeffect();
+        else return ServerEffect.EffectImpossible();
     }
 }

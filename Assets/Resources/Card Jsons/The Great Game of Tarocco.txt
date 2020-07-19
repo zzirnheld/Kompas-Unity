@@ -4,23 +4,25 @@
 	"effText":"Let X be the number of friendly Tarocco. Draw X.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[200,306],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Set X by Board Count\",
+					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[2,7,103],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Board\"],
 						\"subtypesInclude\":[\"Tarocco\"]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Draw X\"
+				}"
 			]
 		}
 	],

@@ -9,7 +9,7 @@ public class TriggerDummySubeffect : ServerSubeffect
         this.ServerEffect = eff;
     }
 
-    public override void Resolve()
+    public override bool Resolve()
     {
         throw new System.NotImplementedException("Trigger Dummy Subeffect only exists so that card restriction of trigger restriction has an effect to point to." +
             "It should never resolve.");

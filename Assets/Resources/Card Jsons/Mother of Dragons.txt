@@ -5,30 +5,33 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"In Play"
 				]
 			},
-			"subeffectTypes":[3,303,202,306],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Dragon to hand-reshuffle\",
-						\"restrictionsToCheck\":[2,7,100],
+						\"blurb\":\"Dragon to hand-reshuffle\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Hand\"],
 						\"subtypesInclude\":[\"Dragon\"]
 					}
 				}",
 				"{
-					\"TargetIndex\":-1
+					\"subeffType\":\"Reshuffle\"
 				}",
 				"{
-					\"Multiplier\":0,
-					\"Modifier\":2
+					\"subeffType\":\"Set X by Math\",
+					\"multiplier\":0,
+					\"modifier\":2
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Draw X\"
+				}"
 			]
 		}
 	],

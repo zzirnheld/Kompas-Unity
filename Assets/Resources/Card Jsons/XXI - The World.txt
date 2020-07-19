@@ -4,26 +4,30 @@
 	"effText":"When you draw, you can discard-bottomdeck a card to give all friendly characters +1EW.",
 	"effects":[
 		{
-			"triggerCondition":101,
+			"triggerCondition":"Draw",
 			"trigger":
 			"{
-				\"Optional\":true,
-				\"Blurb\":\"Discard-bottomdeck a card to give all friendly characters +1EW?\",
+				\"optional\":true,
+				\"blurb\":\"Discard-bottomdeck a card to give all friendly characters +1EW?\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,200]
+					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\"]
 				}
 			}",
-			"subeffectTypes":[2,307,110],
 			"subeffects":[
-				"{}",
-				"{}",
 				"{
-					\"BoardRestriction\":
+					\"subeffType\":\"Discard Target\"
+				}",
+				"{
+					\"subeffType\":\"Bottomdeck\"
+				}",
+				"{
+					\"subeffType\":\"Change NESW All\",
+					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[3,7,103]
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\"]
 					},
-					\"EMod\":1,
-					\"WMod\":1
+					\"eMod\":1,
+					\"wMod\":1
 				}"
 			]
 		}

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class LoopSubeffect : ServerSubeffect
 {
-    public int JumpTo;
-    public bool CanDecline = false;
+    public int jumpTo;
+    public bool canDecline = false;
 
     protected virtual void OnLoopExit()
     {
         //make the "no other targets" button disappear
-        if (CanDecline)
+        if (canDecline)
         {
             EffectController.ServerNotifier.DisableDecliningTarget();
             EffectController.ServerNotifier.AcceptTarget(); // otherwise it keeps them in the now-irrelevant target mode
@@ -19,27 +19,27 @@ public class LoopSubeffect : ServerSubeffect
 
     protected virtual bool ShouldContinueLoop => true;
 
-    public override void Resolve()
+    public override bool Resolve()
     {
         //loop again if necessary
-        Debug.Log($"im in ur loop of type {GetType()}, the one that jumps to {JumpTo}");
+        Debug.Log($"im in ur loop of type {GetType()}, the one that jumps to {jumpTo}");
         if (ShouldContinueLoop)
         {
             //tell the client to enable the button to exit the loop
-            if (CanDecline)
+            if (canDecline)
             {
                 EffectController.ServerNotifier.EnableDecliningTarget();
                 ServerEffect.OnImpossible = this;
             }
-            ServerEffect.ResolveSubeffect(JumpTo);
+            return ServerEffect.ResolveSubeffect(jumpTo);
         }
-        else ExitLoop();
+        else return ExitLoop();
     }
 
     /// <summary>
     /// Cancels the loop (because the player declined another target, or because there are no more valid targets)
     /// </summary>
-    public void ExitLoop()
+    public bool ExitLoop()
     {
         //let parent know the loop is over
         if(ServerEffect.OnImpossible == this) ServerEffect.OnImpossible = null;
@@ -48,12 +48,12 @@ public class LoopSubeffect : ServerSubeffect
         OnLoopExit();
 
         //then skip to after the loop
-        ServerEffect.ResolveSubeffect(SubeffIndex + 1);
+        return ServerEffect.ResolveSubeffect(SubeffIndex + 1);
     }
 
-    public override void OnImpossible()
+    public override bool OnImpossible()
     {
-        if (CanDecline) ExitLoop();
-        else base.OnImpossible();
+        if (canDecline) return ExitLoop();
+        else return base.OnImpossible();
     }
 }

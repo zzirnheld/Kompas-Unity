@@ -79,7 +79,7 @@ public class ClientGame : Game {
         if (player >= 2) throw new System.ArgumentException();
 
         var owner = ClientPlayers[player];
-        var avatar = CardRepo.InstantiateClientAvatar(avatarName, this, owner, avatarID);
+        var avatar = cardRepo.InstantiateClientAvatar(avatarName, this, owner, avatarID);
         owner.Avatar = avatar;
         avatar.Play(player * 6, player * 6, owner);
     }
@@ -137,6 +137,7 @@ public class ClientGame : Game {
         clientUICtrl.ChangeTurn(playerIndex);
         clientUICtrl.HideGetDecklistUI();
         RoundCount = 1;
+        TurnCount = 1;
         clientUICtrl.Leyload = Leyload;
     }
 
@@ -146,6 +147,7 @@ public class ClientGame : Game {
         ResetCardsForTurn();
         clientUICtrl.ChangeTurn(TurnPlayerIndex);
         if(TurnPlayerIndex == FirstTurnPlayer) RoundCount++;
+        TurnCount++;
         clientUICtrl.Leyload = Leyload;
     }
 

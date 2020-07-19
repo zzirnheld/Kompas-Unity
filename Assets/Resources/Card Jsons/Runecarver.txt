@@ -5,32 +5,36 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"In Play"
 				]
 			},
-			"subeffectTypes":[8,303,202,306],
 			"subeffects":[
 				"{
-					\"CardRestriction\":
+					\"subeffType\":\"Choose From List\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"Rune for Runecarver to reshuffle\",
-						\"restrictionsToCheck\":[2,7,104],
+						\"blurb\":\"Rune for Runecarver to reshuffle\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Multiple Possible Locations\"],
 						\"locations\":[1,2,3],
 						\"subtypesInclude\":[\"Rune\"]
 					},
-					\"MaxCanChoose\":1
+					\"maxCanChoose\":1
 				}",
 				"{
-					\"TargetIndex\":-1
+					\"subeffType\":\"Reshuffle\",
+					\"targetIndex\":-1
 				}",
 				"{
-					\"Multiplier\":0,
-					\"Modifier\":2
+					\"subeffType\":\"Set X by Math\",
+					\"multiplier\":0,
+					\"modifier\":2
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Draw X\"
+				}"
 			]
 		}
 	],

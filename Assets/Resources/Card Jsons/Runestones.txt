@@ -4,29 +4,31 @@
 	"effText":"Once each turn, when you cast a Rune, you can search your deck for a Rune spell.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,101,500],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"Max Per Turn\"],
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[2,4,7],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}
 				}
 			}",
-			"subeffectTypes":[1,304],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Deck Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Rune for Runestones to search\",
-						\"restrictionsToCheck\":[2,4,7,102],
+						\"blurb\":\"Rune for Runestones to search\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Deck\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Rehand\"
+				}"
 			]
 		}
 	],

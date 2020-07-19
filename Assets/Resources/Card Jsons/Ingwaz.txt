@@ -4,37 +4,38 @@
 	"effText":"Can’t be cast normally. Pip recast a Rune for half cost.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[2,150,4,300],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Discard Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"for Ingwaz to recast\",
-						\"restrictionsToCheck\":[2,4,7,101,601,602],
+						\"blurb\":\"for Ingwaz to recast\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Discard\",\"Can Be Played\",\"Effect Controller can Afford Cost\"],
 						\"subtypesInclude\":[\"Rune\"],
 						\"costDivisor\":2
 					}
 				}",
 				"{
-					\"Divisor\":2
+					\"subeffType\":\"Pay Target's Cost in Pips\",
+					\"divisor\":2
 				}",
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"where Ingwaz to recast\",
-						\"restrictionsToCheck\":[0]
+						\"blurb\":\"where Ingwaz to recast\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
 				"{
-					\"TargetIndex\":-1,
-					\"SpaceIndex\":-1
+					\"subeffType\":\"Play\"
 				}"
 			]	
 		}

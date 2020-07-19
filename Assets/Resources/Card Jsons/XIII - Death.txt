@@ -4,47 +4,54 @@
 	"effText":"When you draw, I get +1S. I can pay XS to kill an adjacent SX character.",
 	"effects":[
 		{
-			"triggerCondition":101,
+			"triggerCondition":"Draw",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,200]
+					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\"]
 				}
 			}",
-			"subeffectTypes":[5,100],
 			"subeffects":[
-				"{}",
 				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
 					\"sChange\":1
 				}"
 			]
 		},
 		{
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"In Play"
 				]
 			},
-			"subeffectTypes":[5,299,103,0,301],
 			"subeffects":[
-				"{}",
 				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Set X by Player Choice\",
 					\"XRest\":{
-						\"Restrictions\":[\">0\",\"<=ThisCost\"]
+						\"cardRestrictions\":[\">0\",\"<=ThisCost\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"X Change NESW\",
 					\"sMult\":-1
 				}",
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"adjacent SX character for Death to kill\",
-						\"restrictionsToCheck\":[3,103,212],
-						\"onBoardRestrictions\":[0,200]
+						\"blurb\":\"adjacent SX character for Death to kill\",
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"S==X\",\"Adjacent\",\"Summoned\"]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Discard\"
+				}"
 			]
 		}
 	],

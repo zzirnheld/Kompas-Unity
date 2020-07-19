@@ -4,26 +4,28 @@
 	"effText":"Can’t be cast normally. Once each turn, when a character moves themselves adjacent to me, you can move them 1 space.",
 	"effects":[
 		{
-			"triggerCondition":408,
+			"triggerCondition":"Move",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,120,500,501],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Coords Fit Restriction\",\"Max Per Turn\",\"Not From Effect\"],
 					\"spaceRestriction\":{
-						\"restrictionsToCheck\":[150]
+						\"spaceRestrictions\":[\"In AOE\"]
 					}
 				}
 			}",
-			"subeffectTypes":[4,309],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"restrictionsToCheck\":[1,251],
-						\"C\":1
+						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\"],
+						\"constant\":1
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Move\"
+				}"
 			]	
 		}
 	],

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ChangeXByGamestateSubeffect : XByGamestateSubeffect
 {
-    public override void Resolve()
+    public override bool Resolve()
     {
         ServerEffect.X += Count;
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

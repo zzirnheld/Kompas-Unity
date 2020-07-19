@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class DummyBoardTargetSubeffect : DummySubeffect
 {
-    public BoardRestriction boardRestriction;
+    public CardRestriction cardRestriction;
 
     public override void Initialize(ClientEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        boardRestriction.Initialize(this);
+        cardRestriction.Initialize(this);
     }
 }

@@ -4,23 +4,25 @@
 	"effText":"Can’t be cast normally. Dispel a spell.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[0,106],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"spell for Wynn to dispel\",
-						\"restrictionsToCheck\":[4,103]
+						\"blurb\":\"spell for Wynn to dispel\",
+						\"cardRestrictions\":[\"Is Spell\",\"Board\"]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Dispel\"
+				}"
 			]	
 		}
 	],

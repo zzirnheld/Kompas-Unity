@@ -5,51 +5,64 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"In Play"
 				]
 			},
-			"subeffectTypes":[3,275,301,410,404,8,405,12,304,350],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"for Animancer to discard\",
-						\"restrictionsToCheck\":[2,7,100,600],
+						\"blurb\":\"for Animancer to discard\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Hand\",\"Not Already Target\"],
 						\"subtypesInclude\":[\"Golem\"]
 					}
 				}",
 				"{
-					\"WhatToCount\":\"Cost\"
-				}",
-				"{}",
-				"{
-					\"CanDecline\":true,
-					\"JumpTo\":0
+					\"subeffType\":\"Change X by Target Value\",
+					\"whatToCount\":\"Cost\"
 				}",
 				"{
-					\"JumpTo\":7
+					\"subeffType\":\"Discard\"
 				}",
 				"{
-					\"MaxCanChoose\":1,
-					\"CardRestriction\":
+					\"subeffType\":\"Loop\",
+					\"canDecline\":true,
+					\"jumpTo\":0
+				}",
+				"{
+					\"subeffType\":\"Jump on Effect Impossible\",
+					\"jumpTo\":7
+				}",
+				"{
+					\"subeffType\":\"Choose From List\",
+					\"maxCanChoose\":1,
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"for Animancer to search\",
-						\"restrictionsToCheck\":[2,7,102,204,551],
+						\"blurb\":\"for Animancer to search\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Cost<=X\",\"Index<=X\"],
 						\"subtypesInclude\":[\"Golem\"]
 					}
 				}",
-				"{}",
 				"{
+					\"subeffType\":\"Clear Jump on Effect Impossible\"
+				}",
+				"{
+					\"subeffType\":\"Add Rest\",
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[7,102,551,600]
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<=X\",\"Not Already Target\"]
 					}
 				}",
-				"{}",
-				"{}"
+				"{
+					\"subeffType\":\"Rehand\"
+				}",
+				"{
+					\"subeffType\":\"Bottomdeck Rest\"
+				}"
 			]
 		}
 	],

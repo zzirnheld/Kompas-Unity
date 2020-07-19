@@ -9,7 +9,7 @@ public class ChooseFromListSaveRestSubeffect : ChooseFromListSubeffect
     {
         //check that there are no elements in choices that aren't in potential targets
         //also check that, if a maximum number to choose has been specified, that many have been chosen
-        if ((MaxCanChoose > 0 && choices.Count() > MaxCanChoose) ||
+        if ((maxCanChoose > 0 && choices.Count() > maxCanChoose) ||
             choices.Intersect(potentialTargets).Count() != choices.Count())
         {
             RequestTargets();

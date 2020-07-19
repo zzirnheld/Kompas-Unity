@@ -12,21 +12,21 @@ public class ConditionalEndSubeffect : ServerSubeffect
     public const string NoneFitRestriction = "None Fit Restriction";
     public const string MustBeFriendlyTurn = "Must be Friendly Turn";
 
-    public int C = 0;
-    public CardRestriction CardRestriction = new CardRestriction();
+    public int constant = 0;
+    public CardRestriction cardRestriction = new CardRestriction();
 
-    public string Condition;
+    public string condition;
 
     public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        CardRestriction.Initialize(this);
+        cardRestriction.Initialize(this);
     }
 
-    public override void Resolve()
+    public override bool Resolve()
     {
         bool end;
-        switch (Condition)
+        switch (condition)
         {
             case XLessThan0:
                 end = ServerEffect.X < 0;
@@ -35,22 +35,22 @@ public class ConditionalEndSubeffect : ServerSubeffect
                 end = ServerEffect.X <= 0;
                 break;
             case XGreaterThanConst:
-                end = ServerEffect.X > C;
+                end = ServerEffect.X > constant;
                 break;
             case XLessThanConst:
-                end = ServerEffect.X < C;
+                end = ServerEffect.X < constant;
                 break;
             case NoneFitRestriction:
-                end = !ServerGame.Cards.Any(c => CardRestriction.Evaluate(c));
+                end = !ServerGame.Cards.Any(c => cardRestriction.Evaluate(c));
                 break;
             case MustBeFriendlyTurn:
                 end = ServerGame.TurnPlayer != Effect.Controller;
                 break;
             default:
-                throw new System.ArgumentException($"Condition {Condition} invalid for conditional end subeffect");
+                throw new System.ArgumentException($"Condition {condition} invalid for conditional end subeffect");
         }
 
-        if (end) ServerEffect.EffectImpossible();
-        else ServerEffect.ResolveNextSubeffect();
+        if (end) return ServerEffect.EndResolution();
+        else return ServerEffect.ResolveNextSubeffect();
     }
 }

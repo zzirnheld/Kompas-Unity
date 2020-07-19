@@ -6,73 +6,94 @@
 		{
 			"blurb":"Shape",
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Friendly Turn",
 					"In Play"
 				]
 			},
-			"subeffectTypes":[4,5,121,201,103,309],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"to move Who Searched for Grudges to\",
-						\"restrictionsToCheck\":[110],
-						\"ConnectednessRestriction\":{
-							\"restrictionsToCheck\":[2,3,103],
+						\"blurb\":\"to move Who Searched for Grudges to\",
+						\"spaceRestrictions\":[\"Connected to Source by Cards Fitting Restriction\"],
+						\"connectednessRestriction\":{
+							\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
 							\"subtypesInclude\":[\"Ethereal\"]
 						}
 					}
 				}",
-				"{}",
 				"{
-					\"Modifier\":1
+					\"subeffType\":\"Target This\"
 				}",
 				"{
-					\"WhatToCount\":\"Distance to Coords Through\",
-					\"ThroughRestriction\":{
-						\"restrictionsToCheck\":[2,3,103],
+					\"subeffType\":\"Spend Movement\",
+					\"modifier\":1
+				}",
+				"{
+					\"subeffType\":\"Set X by Gamestate Value\",
+					\"whatToCount\":\"Distance to Coords Through\",
+					\"throughRestriction\":{
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
 						\"subtypesInclude\":[\"Ethereal\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"X Change NESW\",
 					\"eMult\":-1
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Move\"
+				}"
 			]
 		},
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[404,3,3,301,301,407,5,301],
 			"subeffects":[
 				"{
-					\"JumpTo\":4
+					\"subeffType\":\"Jump on Effect Impossible\",
+					\"jumpTo\":4
 				}",
 				"{
+					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":{
-						\"Blurb\":\"for Who Searched For Grudges to discard (1/2)\",
-						\"restrictionsToCheck\":[7,100]
+						\"blurb\":\"for Who Searched For Grudges to discard (1/2)\",
+						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":{
-						\"Blurb\":\"for Who Searched For Grudges to discard (2/2)\",
-						\"restrictionsToCheck\":[7,100,600]
+						\"blurb\":\"for Who Searched For Grudges to discard (2/2)\",
+						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Not Already Target\"]
 					}
 				}",
-				"{}",
 				"{
-					\"TargetIndex\":-2
+					\"subeffType\":\"Discard\"
 				}",
-				"{}",
-				"{}",
-				"{}"
+				"{
+					\"subeffType\":\"Discard\",
+					\"targetIndex\":-2
+				}",
+				"{
+					\"subeffType\":\"End Effect Resolution\"
+				}",
+				"{
+					\"subeffType\":\"Clear Jump on Effect Impossible\"
+				}"
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}"
 			]	
 		}
 	],

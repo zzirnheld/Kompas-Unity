@@ -4,20 +4,22 @@
 	"effText":"Can’t be cast normally. Draw 2.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[202,306],
 			"subeffects":[
 				"{
-					\"Multiplier\":0,
-					\"Modifier\":2
+					\"subeffType\":\"Set X by Math\",
+					\"multiplier\":0,
+					\"modifier\":2
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Draw X\"
+				}"
 			]	
 		}
 	],

@@ -4,23 +4,24 @@
 	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, I give a Summoned character -4E.",
 	"effects":[
 		{
-			"triggerCondition":201,
+			"triggerCondition":"Activate",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[0,100],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"Summoned character for Obsidian Golem to give -4E\",
-						\"restrictionsToCheck\":[3,10,103]
+						\"blurb\":\"Summoned character for Obsidian Golem to give -4E\",
+						\"cardRestrictions\":[\"Is Character\",\"Summoned\",\"Board\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Change NESW\",
 					\"nChange\":0,
 					\"eChange\":-4,
 					\"sChange\":0,
@@ -30,7 +31,7 @@
 		}
 	],
 	"MovementRestriction":{
-		"Restrictions":[
+		"movementRestrictions":[
 			"Is Character",
 			"Can Move Enough Spaces",
 			"Destination is Empty or Friendly",
@@ -38,7 +39,7 @@
 		]
 	},
 	"AttackRestriction":{
-		"Restrictions":[
+		"attackRestrictions":[
 			"This is Character",
 			"Defender is Character",
 			"Defender is Adjacent",

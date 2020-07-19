@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ReshuffleSubeffect : CardChangeStateSubeffect
 {
-    public override void Resolve()
+    public override bool Resolve()
     {
-        if (Target == null) ServerEffect.EffectImpossible();
-        if (Target.Reshuffle(Target.Owner, Effect)) ServerEffect.ResolveNextSubeffect();
-        else ServerEffect.EffectImpossible();
+        if (Target != null && Target.Reshuffle(Target.Owner, Effect))
+            return ServerEffect.ResolveNextSubeffect();
+        else return ServerEffect.EffectImpossible();
     }
 }

@@ -13,9 +13,10 @@ public class ChooseOptionSubeffect : ServerSubeffect
         EffectController.ServerNotifier.ChooseEffectOption(this);
     }
 
-    public override void Resolve()
+    public override bool Resolve()
     {
         AskForOptionChoice();
+        return false;
     }
 
     public void ChooseOption(int optionIndex)

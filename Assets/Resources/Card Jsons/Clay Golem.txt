@@ -4,38 +4,45 @@
 	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, tribute me and deck-summon a Golem.",
 	"effects":[
 		{
-			"triggerCondition":201,
+			"triggerCondition":"Activate",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[5,301,1,4,300],
 			"subeffects":[
-				"{}",
-				"{}",
 				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Deck Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"for Clay Golem to summon\",
-						\"restrictionsToCheck\":[2,3,102],
+						\"blurb\":\"for Clay Golem to summon\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Deck\"],
 						\"subtypesInclude\":[\"Golem\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"to play the card you chose\",
-						\"restrictionsToCheck\":[0]
+						\"blurb\":\"to play the card you chose\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Play\"
+				}"
 			]
 		}
 	],
 	"MovementRestriction":{
-		"Restrictions":[
+		"movementRestrictions":[
 			"Is Character",
 			"Can Move Enough Spaces",
 			"Destination is Empty or Friendly",
@@ -43,7 +50,7 @@
 		]
 	},
 	"AttackRestriction":{
-		"Restrictions":[
+		"attackRestrictions":[
 			"This is Character",
 			"Defender is Character",
 			"Defender is Adjacent",

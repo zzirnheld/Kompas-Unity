@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class SwapNESWSubeffect : ServerSubeffect
 {
-    public int[] TargetIndices;
+    public int[] targetIndices;
 
-    public bool SwapN = false;
-    public bool SwapE = false;
-    public bool SwapS = false;
-    public bool SwapW = false;
+    public bool swapN = false;
+    public bool swapE = false;
+    public bool swapS = false;
+    public bool swapW = false;
 
-    public override void Resolve()
+    public override bool Resolve()
     {
-        var target1 = TargetIndices[0] < 0 ?
-                ServerEffect.Targets[ServerEffect.Targets.Count + TargetIndices[0]] :
-                ServerEffect.Targets[TargetIndices[0]];
-        var target2 = TargetIndices[1] < 0 ?
-                ServerEffect.Targets[ServerEffect.Targets.Count + TargetIndices[1]] :
-                ServerEffect.Targets[TargetIndices[1]];
+        var target1 = targetIndices[0] < 0 ?
+                ServerEffect.Targets[ServerEffect.Targets.Count + targetIndices[0]] :
+                ServerEffect.Targets[targetIndices[0]];
+        var target2 = targetIndices[1] < 0 ?
+                ServerEffect.Targets[ServerEffect.Targets.Count + targetIndices[1]] :
+                ServerEffect.Targets[targetIndices[1]];
+        if (target1 == null || target2 == null) return ServerEffect.EffectImpossible();
 
-        target1.SwapCharStats(target2, SwapN, SwapE, SwapS, SwapW);
-        ServerEffect.ResolveNextSubeffect();
+        target1.SwapCharStats(target2, swapN, swapE, swapS, swapW);
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

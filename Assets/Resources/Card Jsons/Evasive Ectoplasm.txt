@@ -6,60 +6,70 @@
 		{
 			"blurb":"Shape",
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Friendly Turn",
 					"In Play"
 				]
 			},
-			"subeffectTypes":[4,5,121,201,103,309],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"to move Evasive Ectoplasm to\",
-						\"restrictionsToCheck\":[110],
-						\"ConnectednessRestriction\":{
-							\"restrictionsToCheck\":[2,3,103],
+						\"blurb\":\"to move Evasive Ectoplasm to\",
+						\"spaceRestrictions\":[\"Connected to Source by Cards Fitting Restriction\"],
+						\"connectednessRestriction\":{
+							\"spaceRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
 							\"subtypesInclude\":[\"Ethereal\"]
 						}
 					}
 				}",
-				"{}",
 				"{
-					\"Modifier\":1
+					\"subeffType\":\"Target This\"
 				}",
 				"{
-					\"WhatToCount\":\"Distance to Coords Through\",
-					\"ThroughRestriction\":{
-						\"restrictionsToCheck\":[2,3,103],
+					\"subeffType\":\"Spend Movement\",
+					\"modifier\":1
+				}",
+				"{
+					\"subeffType\":\"Set X by Gamestate Value\",
+					\"whatToCount\":\"Distance to Coords Through\",
+					\"throughRestriction\":{
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
 						\"subtypesInclude\":[\"Ethereal\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"X Change NESW\",
 					\"eMult\":-1
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Move\"
+				}"
 			]
 		},
 		{
-			"triggerCondition":304,
+			"triggerCondition":"Battle Start",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0,502]
+					\"triggerRestrictions\":[\"This Card Triggered\",\"Max Per Round\"]
 				}
 			}",
-			"subeffectTypes":[50,203,501],
 			"subeffects":[
-				"{}",
 				"{
-					\"WhatToCount\":\"W\"
+					\"subeffType\":\"Target Defender\"
 				}",
 				"{
-					\"WMultiplier\":-1,
-					\"EndCondition\":305,
-					\"TriggerRestriction\":{
-						\"triggerRestrictions\":[0]
+					\"subeffType\":\"Set X by Target Value\",
+					\"whatToCount\":\"W\"
+				}",
+				"{
+					\"subeffType\":\"Temporary NESW Buff\",
+					\"wMultiplier\":-1,
+					\"endCondition\":\"Battle End\",
+					\"triggerRestriction\":{
+						\"triggerRestrictions\":[\"This Card Triggered\"]
 					}
 				}"
 			]	

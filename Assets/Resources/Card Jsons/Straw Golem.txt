@@ -1,38 +1,41 @@
 {
 	"cardType":67,
 	"cardName":"Straw Golem",
-	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, move an enemy character 3 spaces.",
+	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, move an enemy card 3 spaces.",
 	"effects":[
 		{
-			"triggerCondition":201,
+			"triggerCondition":"Activate",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[0,4,309],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"enemy character for Straw Golem to move.\",
-						\"restrictionsToCheck\":[3,103]
+						\"blurb\":\"enemy card for Straw Golem to move.\",
+						\"cardRestrictions\":[\"Board\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"restrictionsToCheck\":[1,251],
-						\"C\":3
+						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\"],
+						\"constant\":3
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Move\"
+				}"
 			]
 		}
 	],
 	"MovementRestriction":{
-		"Restrictions":[
+		"movementRestrictions":[
 			"Is Character",
 			"Can Move Enough Spaces",
 			"Destination is Empty or Friendly",
@@ -40,7 +43,7 @@
 		]
 	},
 	"AttackRestriction":{
-		"Restrictions":[
+		"attackRestrictions":[
 			"This is Character",
 			"Defender is Character",
 			"Defender is Adjacent",

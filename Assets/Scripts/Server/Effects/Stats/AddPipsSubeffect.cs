@@ -13,9 +13,9 @@ public class AddPipsSubeffect : ServerSubeffect
     private Player Player => ServerEffect.serverGame.Players[playerOffset + ServerEffect.ServerController.index % 2];
     private int Count => (xMultiplier * ServerEffect.X / xDivisor) + modifier;
 
-    public override void Resolve()
+    public override bool Resolve()
     {
         Player.Pips += Count;
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

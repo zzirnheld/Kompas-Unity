@@ -12,14 +12,18 @@ public class SpaceTargetSubeffect : ServerSubeffect
         spaceRestriction.Initialize(this);
     }
 
-    public override void Resolve()
+    public override bool Resolve()
     {
         if (!ServerEffect.serverGame.ExistsSpaceTarget(spaceRestriction))
         {
             Debug.Log($"No valid coords exist for {ThisCard.CardName} effect");
-            ServerEffect.EffectImpossible();
+            return ServerEffect.EffectImpossible();
         }
-        else EffectController.ServerNotifier.GetSpaceTarget(ThisCard, this);
+        else
+        {
+            EffectController.ServerNotifier.GetSpaceTarget(ThisCard, this);
+            return false;
+        }
     }
 
     public bool SetTargetIfValid(int x, int y)

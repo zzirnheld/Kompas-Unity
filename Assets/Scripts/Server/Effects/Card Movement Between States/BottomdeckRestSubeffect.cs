@@ -20,12 +20,12 @@ public class BottomdeckRestSubeffect : ServerSubeffect
         return list;
     }
 
-    public override void Resolve()
+    public override bool Resolve()
     {
         //TODO better shuffling algorithm
         var list = Shuffle(Effect.Rest);
         foreach (GameCard c in list) c.Bottomdeck(c.Owner, Effect);
 
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

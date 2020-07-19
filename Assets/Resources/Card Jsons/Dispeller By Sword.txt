@@ -5,31 +5,32 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"In Play"
 				]
 			},
-			"subeffectTypes":[200,0,301],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Set X by Board Count\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"spell for Dispeller by Sword to dispel\",
-						\"restrictionsToCheck\":[2,3,103],
-						\"subtypesInclude\":[\"Warrior\"],
-						\"onBoardRestrictions\":[0]
+						\"blurb\":\"spell for Dispeller by Sword to dispel\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
+						\"subtypesInclude\":[\"Warrior\"]
 					}
 				}",
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[4,204],
+						\"cardRestrictions\":[\"Is Spell\",\"Cost<=X\"]
 					}
 				}",
 				"{
-					\"TargetIndex\":-1
+					\"subeffType\":\"Dispel\",
+					\"targetIndex\":-1
 				}"
 			]
 		}

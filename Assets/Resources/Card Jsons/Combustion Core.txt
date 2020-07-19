@@ -4,65 +4,79 @@
 	"effText":"Activate this character during enemy turns. (They deactivate on your turn.) When they die (while I'm equipped), rehand me. When your turn starts, pay a pip or dispel me.",
 	"effects":[
 		{
-			"triggerCondition":0,
+			"triggerCondition":"Turn Start",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,301]
+					\"triggerRestrictions\":[\"This Card in Play\",\"Enemy Turn\"]
 				}
 			}",
-			"subeffectTypes":[7,504],
 			"subeffects":[
-				"{}",
 				"{
-					\"EndCondition\":0,
-					\"TriggerRestriction\":{
-						\"triggerRestrictions\":[300]
+					\"subeffType\":\"Target Augmented Card\"
+				}",
+				"{
+					\"subeffType\":\"Temporary Activate\",
+					\"endCondition\":\"Turn Start\",
+					\"triggerRestriction\":{
+						\"triggerRestrictions\":[\"Friendly Turn\"]
 					}
 				}"
 			]
 		},
 		{
-			"triggerCondition":0,
+			"triggerCondition":"Turn Start",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,300]
+					\"triggerRestrictions\":[\"This Card in Play\",\"Friendly Turn\"]
 				}
 			}",
-			"subeffectTypes":[406,404,102,405,407,405,5,301],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Choose Effect Option\",
 					\"ChoiceBlurb\":\"Pay 1 pip or dispel this?\",
 					\"OptionBlurbs\":[\"Pay 1 pip\",\"Dispel\"],
 					\"OptionJumpIndices\":[1,5]
 				}",
 				"{
-					\"JumpTo\":5
+					\"subeffType\":\"Jump on Effect Impossible\",
+					\"jumpTo\":4
 				}",
 				"{
+					\"subeffType\":\"Pay Pips\",
 					\"xMultiplier\":0,
 					\"modifier\":1
 				}",
-				"{}",
-				"{}",
-				"{}",
-				"{}",
-				"{}"
+				"{
+					\"subeffType\":\"End Effect Resolution\"
+				}",
+				"{
+					\"subeffType\":\"Clear Jump on Effect Impossible\"
+				}",
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}"
 			]
 		},
 		{
-			"triggerCondition":402,
+			"triggerCondition":"Discard",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,10]
+					\"triggerRestrictions\":[\"Augmented Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[5,304],
 			"subeffects":[
-				"{}",
-				"{}"
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Rehand\"
+				}"
 			]
 		}
 	],

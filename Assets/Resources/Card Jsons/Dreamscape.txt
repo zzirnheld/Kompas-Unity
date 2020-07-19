@@ -4,23 +4,27 @@
 	"effText":"The first time each turn a Shaper moves, reset their E and give them +1N.",
 	"effects":[
 		{
-			"triggerCondition":408,
+			"triggerCondition":"Move",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,101],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"Max Per Turn\"],
 					\"cardRestriction\":{
-						\"restrictionsToCheck\":[2,7],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\"],
 						\"subtypesInclude\":[\"Shaper\"]
 					}
 				}
 			}",
-			"subeffectTypes":[112,100],
 			"subeffects":[
 				"{
-					\"ResetE\":true
+					\"subeffType\":\"Target Triggering Card\"
 				}",
 				"{
+					\"subeffType\":\"Reset Stats\",
+					\"resetE\":true
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
 					\"nChange\":1
 				}"
 			]	

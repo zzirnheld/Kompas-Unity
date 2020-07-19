@@ -9,7 +9,7 @@ public class PlayerChooseXSubeffect : ServerSubeffect
     public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        XRest.Subeffect = this;
+        XRest.Initialize(this);
     }
 
     private void AskForX()
@@ -17,9 +17,10 @@ public class PlayerChooseXSubeffect : ServerSubeffect
         EffectController.ServerNotifier.GetXForEffect(ThisCard, ServerEffect.EffectIndex, SubeffIndex);
     }
 
-    public override void Resolve()
+    public override bool Resolve()
     {
         AskForX();
+        return false;
     }
 
     public void SetXIfLegal(int x)

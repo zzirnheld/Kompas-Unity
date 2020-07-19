@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SetXByTargetValueSubeffect : ChangeXByTargetValueSubeffect
 {
-    public override void Resolve()
+    public override bool Resolve()
     {
         Effect.X = Count;
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

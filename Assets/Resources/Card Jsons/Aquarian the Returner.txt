@@ -4,52 +4,57 @@
 	"effText":"Territorial: When turns start, kill an adjacent friendly Dragon. When I attack, I can give myself -1E and another Dragon +2E.",
 	"effects":[
 		{
-			"triggerCondition":0,
+			"triggerCondition":"Turn Start",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1]
+					\"triggerRestrictions\":[\"This Card in Play\"]
 				}
 			}",
-			"subeffectTypes":[0,301],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"adjacent Dragon for Aquarian to kill\",
-						\"restrictionsToCheck\":[2,3,7,103],
-						\"subtypesInclude\":[\"Dragon\"],
-						\"onBoardRestrictions\":[0]
+						\"blurb\":\"adjacent Dragon for Aquarian to kill\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\"],
+						\"subtypesInclude\":[\"Dragon\"]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Discard\"
+				}"
 			]	
 		},
 		{
 			"triggerCondition":301,
 			"trigger":
 			"{
-				\"Blurb\":\"Give the attacking Aquarian -1E to give another Dragon +2E?\",
-				\"Optional\":true,
+				\"blurb\":\"Give the attacking Aquarian -1E to give another Dragon +2E?\",
+				\"optional\":true,
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0,1]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[5,100,0,100],
 			"subeffects":[
-				"{}",
 				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
 					\"eChange\":-1
 				}",
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"another Dragon for Aquarian to heal\",
-						\"restrictionsToCheck\":[2,3,7,99,103],
+						\"blurb\":\"another Dragon for Aquarian to heal\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Distinct from Source\",\"Board\"],
 						\"subtypesInclude\":[\"Dragon\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Change NESW\",
 					\"eChange\":2
 				}"
 			]	

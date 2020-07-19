@@ -4,42 +4,56 @@
 	"effText":"Can’t be cast normally. Search your deck’s top 10 cards for 3 spells.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[10,404,8,405,12,304,10,402,350],
 			"subeffects":[
-				"{}",
 				"{
-					\"JumpTo\":4
+					\"subeffType\":\"Delete Target\"
 				}",
 				"{
-					\"CardRestriction\":
-					{
-						\"Blurb\":\"spell for Perthro to search (to hand)\",
-						\"restrictionsToCheck\":[4,7,102,501],
-						\"constant\":10
-					},
-					\"MaxCanChoose\":3
+					\"subeffType\":\"Jump on Effect Impossible\",
+					\"jumpTo\":4
 				}",
-				"{}",
 				"{
+					\"subeffType\":\"Choose From List\",
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[7,102,501,600],
+						\"blurb\":\"spell for Perthro to search (to hand)\",
+						\"cardRestrictions\":[\"Is Spell\",\"Friendly\",\"Deck\",\"Index>=C\"],
 						\"constant\":10
-					}
+					},
+					\"maxCanChoose\":3
 				}",
-				"{}",
-				"{}",
 				"{
-					\"JumpTo\":5
+					\"subeffType\":\"Clear Jump on Effect Impossible\"
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Add Rest\"
+				}"
+				"{
+					\"subeffType\":\"Choose From List\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<=C\",\"Not Already Target\"],
+						\"constant\":10
+					},
+					\"maxCanChoose\":1
+				}",
+				"{
+					\"subeffType\":\"Delete Target\"
+				}",
+				"{
+					\"subeffType\":\"Loop While Have Targets\",
+					\"jumpTo\":5
+				}",
+				"{
+					\"subeffType\":\"Bottomdeck Rest\"
+				}"
 			]	
 		}
 	],

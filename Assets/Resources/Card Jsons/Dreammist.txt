@@ -4,23 +4,24 @@
 	"effText":"When I'm summoned adjacent to a Shaper, draw 1.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0,120],
+					\"triggerRestrictions\":[\"This Card Triggered\",\"Coords Fit Restriction\"],
 					\"spaceRestriction\":{
-						\"restrictionsToCheck\":[101],
+						\"spaceRestrictions\":[\"Adjacent to a Card that Fits Restriction\"],
 						\"adjacencyRestriction\":{
-							\"restrictionsToCheck\":[2],
+							\"cardRestrictions\":[\"Subtypes Include\"],
 							\"subtypesInclude\":[\"Ethereal\"]
 						}
 					}
 				}
 			}",
-			"subeffectTypes":[305],
 			"subeffects":[
-				"{}"
+				"{
+					\"subeffType\":\"Draw\"
+				}"
 			]	
 		}
 	],

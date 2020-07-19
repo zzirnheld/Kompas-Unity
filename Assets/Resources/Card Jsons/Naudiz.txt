@@ -4,21 +4,21 @@
 	"effText":"Can’t be cast normally. Give all enemy characters -2E.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[110],
 			"subeffects":[
 				"{
-					\"BoardRestriction\":
+					\"subeffType\":\"Change NESW All\",
+					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[3,9,103]
+						\"cardRestrictions\":[\"Is Character\",\"Enemy\",\"Board\"]
 					},
-					\"EMod\":-2
+					\"eMod\":-2
 				}"
 			]	
 		}

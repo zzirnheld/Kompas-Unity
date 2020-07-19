@@ -4,17 +4,19 @@
 	"effText":"When you draw, I give this character +1S.",
 	"effects":[
 		{
-			"triggerCondition":101,
+			"triggerCondition":"Draw",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,200]
+					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\"]
 				}
 			}",
-			"subeffectTypes":[7,100],
 			"subeffects":[
-				"{}",
 				"{
+					\"subeffType\":\"Target Augmented Card\"
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
 					\"sChange\":1
 				}"
 			]

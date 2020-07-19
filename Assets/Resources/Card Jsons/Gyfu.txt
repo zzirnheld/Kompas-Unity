@@ -4,31 +4,34 @@
 	"effText":"Can’t be cast normally. Give X enemy characters +1EW. Gain X pips.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[0,100,408,101],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"for Gyfu to give +1EW\",
-						\"restrictionsToCheck\":[3,9,103,600]
+						\"blurb\":\"for Gyfu to give +1EW\",
+						\"cardRestrictions\":[\"Is Character\",\"Enemy\",\"Board\",\"Not Already Target\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Change NESW\",
 					\"eChange\":1,
 					\"wChange\":1
 				}",
 				"{
-					\"CanDecline\":true,
-					\"JumpTo\":0
+					\"subeffType\":\"Count X Loop\",
+					\"canDecline\":true,
+					\"jumpTo\":0
 				}",
 				"{
+					\"subeffType\":\"Add Pips\",
 					\"xMultiplier\":1
 				}"
 			]	

@@ -72,12 +72,12 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.Delete(card);
                 break;
             case Packet.Command.AddAsFriendly:
-                var friendlyCard = ClientGame.CardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, Friendly, packet.CardIDToBe);
+                var friendlyCard = ClientGame.cardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, Friendly, packet.CardIDToBe);
                 ClientGame.cardsByID.Add(packet.CardIDToBe, friendlyCard);
                 ClientGame.friendlyDeckCtrl.PushTopdeck(friendlyCard);
                 break;
             case Packet.Command.AddAsEnemy:
-                var added = ClientGame.CardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, Enemy, packet.CardIDToBe);
+                var added = ClientGame.cardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, Enemy, packet.CardIDToBe);
                 ClientGame.cardsByID.Add(packet.CardIDToBe, added);
                 //TODO make it always ask for cards from enemy deck
                 switch (packet.Location)
@@ -89,7 +89,7 @@ public class ClientNetworkController : NetworkController {
                         added.Discard();
                         break;
                     case CardLocation.Annihilation:
-                        added.Game.AnnihilationCtrl.Annihilate(added);
+                        added.Game.annihilationCtrl.Annihilate(added);
                         break;
                     default:
                         Debug.Log("Tried to add an enemy card to " + packet.Location);
@@ -97,7 +97,7 @@ public class ClientNetworkController : NetworkController {
                 }
                 break;
             case Packet.Command.AddAsEnemyAndAttach:
-                var addAndAttach = ClientGame.CardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, Enemy, packet.CardIDToBe);
+                var addAndAttach = ClientGame.cardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, Enemy, packet.CardIDToBe);
                 ClientGame.cardsByID.Add(packet.CardIDToBe, addAndAttach);
                 ClientGame.boardCtrl.GetCardAt(packet.X, packet.Y).AddAugment(addAndAttach);
                 break;
@@ -146,7 +146,7 @@ public class ClientNetworkController : NetworkController {
                 card?.Bottomdeck();
                 break;
             case Packet.Command.Annihilate:
-                ClientGame.AnnihilationCtrl.Annihilate(card);
+                ClientGame.annihilationCtrl.Annihilate(card);
                 break;
             case Packet.Command.SetN:
                 card?.SetN(packet.Stat);
@@ -190,12 +190,12 @@ public class ClientNetworkController : NetworkController {
             case Packet.Command.RequestBoardTarget:
                 ClientGame.targetMode = Game.TargetMode.BoardTarget;
                 ClientGame.CurrCardRestriction = packet.GetBoardRestriction(ClientGame);
-                ClientGame.clientUICtrl.SetCurrState("Choose Board Target", ClientGame.CurrCardRestriction.Blurb);
+                ClientGame.clientUICtrl.SetCurrState("Choose Board Target", ClientGame.CurrCardRestriction.blurb);
                 break;
             case Packet.Command.RequestHandTarget:
                 ClientGame.targetMode = Game.TargetMode.HandTarget;
                 ClientGame.CurrCardRestriction = packet.GetCardRestriction(ClientGame);
-                ClientGame.clientUICtrl.SetCurrState("Choose Hand Target", ClientGame.CurrCardRestriction.Blurb);
+                ClientGame.clientUICtrl.SetCurrState("Choose Hand Target", ClientGame.CurrCardRestriction.blurb);
                 break;
             case Packet.Command.RequestDeckTarget:
                 ClientGame.targetMode = Game.TargetMode.OnHold;
@@ -203,14 +203,14 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.CurrCardRestriction = packet.GetCardRestriction(ClientGame);
                 List<GameCard> toSearch = ClientGame.friendlyDeckCtrl.CardsThatFitRestriction(ClientGame.CurrCardRestriction);
                 ClientGame.clientUICtrl.StartSearch(toSearch);
-                ClientGame.clientUICtrl.SetCurrState("Choose Deck Target", ClientGame?.CurrCardRestriction?.Blurb);
+                ClientGame.clientUICtrl.SetCurrState("Choose Deck Target", ClientGame?.CurrCardRestriction?.blurb);
                 break;
             case Packet.Command.RequestDiscardTarget:
                 ClientGame.targetMode = Game.TargetMode.OnHold;
                 ClientGame.CurrCardRestriction = packet.GetCardRestriction(ClientGame);
                 List<GameCard> discardToSearch = ClientGame.friendlyDiscardCtrl.CardsThatFitRestriction(ClientGame.CurrCardRestriction);
                 ClientGame.clientUICtrl.StartSearch(discardToSearch);
-                ClientGame.clientUICtrl.SetCurrState("Choose Discard Target", ClientGame.CurrCardRestriction.Blurb);
+                ClientGame.clientUICtrl.SetCurrState("Choose Discard Target", ClientGame.CurrCardRestriction.blurb);
                 break;
             case Packet.Command.GetChoicesFromList:
                 ClientGame.targetMode = Game.TargetMode.OnHold;
@@ -225,7 +225,7 @@ public class ClientNetworkController : NetworkController {
                 var listRestriction = packet.GetListRestriction(ClientGame);
                 ClientGame.clientUICtrl.StartSearch(choicesToPick, listRestriction, packet.MaxNum);
                 ClientGame.clientUICtrl.SetCurrState($"Choose Target for Effect of {listRestriction.Subeffect.Source.CardName}", 
-                    ClientGame.CurrCardRestriction.Blurb);
+                    ClientGame.CurrCardRestriction.blurb);
                 break;
             case Packet.Command.ChooseEffectOption:
                 //TODO catch out of bounds errors, in case of malicious packets?
@@ -242,7 +242,7 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.targetMode = Game.TargetMode.SpaceTarget;
                 ClientGame.CurrSpaceRestriction = packet.GetSpaceRestriction(ClientGame);
                 //TODO display based on that space
-                ClientGame.clientUICtrl.SetCurrState("Choose Space Target", ClientGame.CurrSpaceRestriction.Blurb);
+                ClientGame.clientUICtrl.SetCurrState("Choose Space Target", ClientGame.CurrSpaceRestriction.blurb);
                 break;
             case Packet.Command.SetEffectsX:
                 Debug.Log("Setting X to " + packet.EffectX);

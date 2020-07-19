@@ -5,31 +5,36 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Max Times Per Turn",
 					"In Play"
 				]
 			},
-			"subeffectTypes":[0,301,1,304],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
-					{
-						\"Blurb\":\"Golem Core for Modular Golem Cores to detach\",
-						\"restrictionsToCheck\":[2,5,103],
-						\"subtypesInclude\":[\"Golem\", \"Core\"]
-					}
-				}",
-				"{}",
-				"{
+					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Golem core for Modular Golem Cores to search\",
-						\"restrictionsToCheck\":[2,5,102],
+						\"blurb\":\"Golem Core for Modular Golem Cores to detach\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Augment\",\"Board\"],
 						\"subtypesInclude\":[\"Golem\", \"Core\"]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Deck Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Golem core for Modular Golem Cores to search\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Augment\",\"Deck\"],
+						\"subtypesInclude\":[\"Golem\", \"Core\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Rehand\"
+				}"
 			]
 		}
 	],

@@ -7,22 +7,22 @@ public class BoardTargetSubeffect : CardTargetSubeffect
 {
     //there will be a different target effect for board, hand, discard, deck, and combos of these
     
-    public BoardRestriction boardRestriction;
+    public CardRestriction cardRestriction;
 
     public override void Initialize(ServerEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        boardRestriction.Initialize(this);
+        cardRestriction.Initialize(this);
     }
 
-    public override void Resolve()
+    public override bool Resolve()
     {
         //check first that there exist valid targets. if there exist no valid targets, finish resolution here
-        if (!ThisCard.Game.ExistsCardTarget(boardRestriction))
+        if (!ThisCard.Game.ExistsCardTarget(cardRestriction))
         {
             Debug.Log("No target exists for " + ThisCard.CardName + " effect");
             ServerEffect.EffectImpossible();
-            return;
+            return false;
         }
 
         //ask the client that is this effect's controller for a target. 
@@ -31,13 +31,14 @@ public class BoardTargetSubeffect : CardTargetSubeffect
         EffectController.ServerNotifier.GetBoardTarget(ThisCard, this);
 
         //then wait for the network controller to call the continue method
+        return false;
     }
 
     public override bool AddTargetIfLegal(GameCard card)
     {
         Debug.Log("Adding target if legal board target subeff " + card.CardName);
         //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
-        if (boardRestriction.Evaluate(card))
+        if (cardRestriction.Evaluate(card))
         {
             Debug.Log("Adding " + card.CardName + " as target");
             ServerEffect.AddTarget(card);

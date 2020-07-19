@@ -8,9 +8,9 @@ public class ChangeSpellCSubeffect : ServerSubeffect
     public int XMultiplier = 0;
     public int XDivisor = 1;
 
-    public override void Resolve()
+    public override bool Resolve()
     {
         Target.SetC(ServerEffect.X * XMultiplier / XDivisor + XModifier, Effect);
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

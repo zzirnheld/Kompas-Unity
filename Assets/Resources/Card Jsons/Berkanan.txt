@@ -4,27 +4,32 @@
 	"effText":"Can’t be cast normally. If it’s your turn, take control of an enemy character and end your turn.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[409,0,130,600],
 			"subeffects":[
 				"{
-					\"Condition\":\"Must be Friendly Turn\"
+					\"subeffType\":\"Conditionally End Effect Resolution\",
+					\"condition\":\"Must be Friendly Turn\"
 				}",
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"enemy for Berkanan to charm\",
-						\"restrictionsToCheck\":[3,9,103]
+						\"blurb\":\"enemy for Berkanan to charm\",
+						\"cardRestrictions\":[\"Is Character\",\"Enemy\",\"Board\"]
 					}
 				}",
-				"{}",
-				"{}"
+				"{
+					\"subeffType\":\"Take Control\"
+				}",
+				"{
+					\"subeffType\":\"End Turn\"
+				}"
 			]	
 		}
 	],

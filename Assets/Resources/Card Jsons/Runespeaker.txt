@@ -5,51 +5,66 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"In Play"
 				]
 			},
-			"subeffectTypes":[3,4,150,300,404,1,405,12,304,350],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Rune for Runespeaker to cast\",
-						\"restrictionsToCheck\":[2,4,7,100,601,602],
+						\"blurb\":\"Rune for Runespeaker to cast\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Hand\",\"Can Be Played\",\"Effect Controller can Afford Cost\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"where for Runespeaker to cast its target Rune\",
-						\"restrictionsToCheck\":[0]
+						\"blurb\":\"where for Runespeaker to cast its target Rune\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
-				"{}",
-				"{}",
 				"{
-					\"JumpTo\":7
+					\"subeffType\":\"Pay Target's Cost in Pips\"
 				}",
 				"{
+					\"subeffType\":\"Play\"
+				}",
+				"{
+					\"subeffType\":\"Jump on Effect Impossible\",
+					\"jumpTo\":7
+				}",
+				"{
+					\"subeffType\":\"Choose From List\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Rune for Runespeaker to search (to hand)\",
-						\"restrictionsToCheck\":[2,7,11,102,551],
+						\"blurb\":\"Rune for Runespeaker to search (to hand)\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Distinct Name from Other Targets\",\"Deck\",\"Index<=X\"],
 						\"subtypesInclude\":[\"Rune\"]
-					}
+					},
+					\"maxCanChoose\":1
 				}",
-				"{}",
 				"{
+					\"subeffType\":\"Clear Jump on Effect Impossible\"
+				}",
+				"{
+					\"subeffType\":\"Add Rest\",
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[7,102,551,600]
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<=X\",\"Not Already Target\"]
 					}
 				}",
-				"{}",
-				"{}"
+				"{
+					\"subeffType\":\"Rehand\"
+				}",
+				"{
+					\"subeffType\":\"Bottomdeck Rest\"
+				}"
 			]
 		}
 	],

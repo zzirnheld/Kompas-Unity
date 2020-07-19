@@ -4,20 +4,20 @@
 	"effText":"When a Dragon here changes their own stats by effect, gain a pip.",
 	"effects":[
 		{
-			"triggerCondition":200,
+			"triggerCondition":"NESW Change",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[101,149],
+					\"triggerRestrictions\":[\"Triggerer Fits Restriction\",\"Stackable Source is Triggerer\"],
 					\"cardRestriction\":{
-						\"restrictionsToCheck\":[2,103],
-						\"onBoardRestrictions\":[2]
+						\"cardRestrictions\":[\"Subtypes Include\",\"Board\",\"In AOE\"],
+						\"subtypesInclude\":[\"Dragon\"]
 					}
 				}
 			}",
-			"subeffectTypes":[101],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Add Pips\",
 					\"modifier\":1
 				}"
 			]	

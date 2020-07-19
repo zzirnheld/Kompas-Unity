@@ -4,25 +4,26 @@
 	"effText":"Annihilate a character adjacent to a Shaper.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[0,311],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"character to ANNIHILATE\",
-						\"restrictionsToCheck\":[103],
-						\"onBoardRestrictions\":[20],
-						\"AdjacencySubtypes\":[\"Shaper\"]
+						\"blurb\":\"character to ANNIHILATE\",
+						\"cardRestrictions\":[\"Board\",\"Adjacent to Subtype\"],
+						\"adjacencySubtypes\":[\"Shaper\"]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Annihilate\"
+				}"
 			]
 		}
 	],

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TargetAllSubeffect : CardTargetSubeffect
 {
-    public override void Resolve()
+    public override bool Resolve()
     {
         var targets = ServerGame.Cards.Where(c => cardRestriction.Evaluate(c));
         //check what targets there are now, before you add them, to not mess with NotAlreadyTarget restriction
@@ -13,8 +13,8 @@ public class TargetAllSubeffect : CardTargetSubeffect
         bool any = targets.Any();
         foreach (var t in targets) Effect.AddTarget(t);        
 
-        if (any) ServerEffect.ResolveNextSubeffect();
-        else ServerEffect.EffectImpossible();
+        if (any) return ServerEffect.ResolveNextSubeffect();
+        else return ServerEffect.EffectImpossible();
     }
 }
 

@@ -4,34 +4,34 @@
 	"effText":"When you draw X, you can hand-summon a character with S <= X.",
 	"effects":[
 		{
-			"triggerCondition":101,
+			"triggerCondition":"Draw",
 			"trigger":
 			"{
-				\"Blurb\":\"Hand-summon character with S <= X?\",
-				\"Optional\":true,
+				\"blurb\":\"Hand-summon character with S <= X?\",
+				\"optional\":true,
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,200]
+					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\"]
 				}
 			}",
-			"subeffectTypes":[3,4,300],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"for Empress to hand-summon\",
-						\"restrictionsToCheck\":[3,7,100,202]
+						\"blurb\":\"for Empress to hand-summon\",
+						\"cardRestrictions\":[\"Is Character\",\"Friendly\",\"Hand\",\"S<=X\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"where Empress to hand-summon\",
-						\"restrictionsToCheck\":[0]
+						\"blurb\":\"where Empress to hand-summon\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
 				"{
-					\"TargetIndex\":-1,
-					\"SpaceIndex\":-1
+					\"subeffType\":\"Play\"
 				}"
 			]	
 		}

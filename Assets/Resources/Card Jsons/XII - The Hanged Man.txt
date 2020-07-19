@@ -4,33 +4,36 @@
 	"effText":"When you draw X, I can give myself and a Summoned character -XE.",
 	"effects":[
 		{
-			"triggerCondition":101,
+			"triggerCondition":"Draw",
 			"trigger":
 			"{
-				\"Optional\":true,
-				\"Blurb\":\"Give me and a Summoned character -XE? (X is the number of cards you just drew)\",
+				\"optional\":true,
+				\"blurb\":\"Give me and a Summoned character -XE? (X is the number of cards you just drew)\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,200]
+					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\"]
 				}
-			}",
-			"subeffectTypes":[5,0,103,103],
+			}",=
 			"subeffects":[
-				"{}",
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"Summoned character for Hanged Man to swap give -XE\",
-						\"restrictionsToCheck\":[3,103],
-						\"onBoardRestrictions\":[200]
+						\"blurb\":\"Summoned character for Hanged Man to swap give -XE\",
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Summoned\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"X Change NESW\",
 					\"eMult\":-1,
-					\"TargetIndex\":0
+					\"targetIndex\":0
 				}",
 				"{
+					\"subeffType\":\"X Change NESW\",
 					\"eMult\":-1,
-					\"TargetIndex\":1
+					\"targetIndex\":1
 				}"
 			]
 		}

@@ -14,7 +14,7 @@ public class AttackRestriction
 
     public const string ThisIsActive = "This is Activated";
 
-    public string[] Restrictions = new string[] { ThisIsCharacter, DefenderIsCharacter, DefenderIsAdjacent, DefenderIsEnemy, FriendlyTurn, MaxPerTurn };
+    public string[] attackRestrictions = new string[] { ThisIsCharacter, DefenderIsCharacter, DefenderIsAdjacent, DefenderIsEnemy, FriendlyTurn, MaxPerTurn };
     public int maxAttacks = 1;
 
     public GameCard Card { get; private set; }
@@ -28,7 +28,7 @@ public class AttackRestriction
     {
         if (defender == null) return false;
 
-        foreach(string r in Restrictions)
+        foreach(string r in attackRestrictions)
         {
             switch (r)
             {

@@ -4,40 +4,46 @@
 	"effText":"Move a Shaper to be adjacent to an enemy character. They fight.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[0,0,4,309,601],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"enemy character to move adjacent to\",
-						\"restrictionsToCheck\":[3,9,103]
+						\"blurb\":\"enemy character to move adjacent to\",
+						\"cardRestrictions\":[\"Is Character\",\"Enemy\",\"Board\"]
 					}
 				}",
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"Friendly Shaper to move the enemy adjacent to\",
-						\"restrictionsToCheck\":[2,3,7,103],
+						\"blurb\":\"Friendly Shaper to move the enemy adjacent to\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\"],
 						\"subtypesInclude\":[\"Shaper\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"where to move the Shaper\",
-						\"restrictionsToCheck\":[102]
+						\"blurb\":\"where to move the Shaper\",
+						\"spaceRestrictions\":[\"Adjacent to Target\"]
 					},
-					\"TargetIndex\":-2
+					\"targetIndex\":-2
 				}",
-				"{}",
-				"{}"
+				"{
+					\"subeffType\":\"Move\"
+				}",
+				"{
+					\"subeffType\":\"Attack\"
+				}"
 			]
 		}
 	],

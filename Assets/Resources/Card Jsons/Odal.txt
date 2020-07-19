@@ -4,43 +4,52 @@
 	"effText":"Can’t be cast normally. Choose an SX character. Pay X pips. Kill the chosen character and deck-summon an SX Runer.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[0,203,102,301,1,4,300],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"character for Odal to kill\",
-						\"restrictionsToCheck\":[3]
+						\"blurb\":\"character for Odal to kill\",
+						\"cardRestrictions\":[\"Is Character\",\"Summoned\"]
 					}
 				}",
 				"{
-					\"WhatToCount\":\"S\"
+					\"subeffType\":\"Set X by Target Value\",
+					\"whatToCount\":\"S\"
 				}",
-				"{}",
-				"{}",
 				"{
+					\"subeffType\":\"Pay Pips\"
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Deck Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Runer for Odal to deck-summon\",
-						\"restrictionsToCheck\":[2,3,7,102],
+						\"blurb\":\"Runer for Odal to deck-summon\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Deck\"],
 						\"subtypesInclude\":[\"Runer\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"where for Odal to deck-summon its target\",
-						\"restrictionsToCheck\":[0]
+						\"blurb\":\"where for Odal to deck-summon its target\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Play\"
+				}"
 			]	
 		}
 	],

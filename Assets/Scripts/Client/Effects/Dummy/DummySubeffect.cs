@@ -11,32 +11,34 @@ public class DummySubeffect : Subeffect
     public ClientEffect ClientEffect { get; private set; }
     public ClientPlayer ClientController => ClientEffect.ClientController;
 
-    public static DummySubeffect FromJson(SubeffectType subeffectType, string json, ClientEffect parent, int subeffIndex)
+    public static DummySubeffect FromJson(string json, ClientEffect parent, int subeffIndex)
     {
+        var subeff = JsonUtility.FromJson<Subeffect>(json);
+
         Debug.Log($"Creating subeffect from json {json}");
         DummySubeffect toReturn;
 
-        switch (subeffectType)
+        switch (subeff.subeffType)
         {
-            case SubeffectType.BoardTarget:
+            case BoardTarget:
                 toReturn = JsonUtility.FromJson<DummyBoardTargetSubeffect>(json);
                 break;
-            case SubeffectType.DeckTarget:
-            case SubeffectType.DiscardTarget:
-            case SubeffectType.HandTarget:
+            case DeckTarget:
+            case DiscardTarget:
+            case HandTarget:
                 toReturn = JsonUtility.FromJson<DummyCardTargetSubeffect>(json);
                 break;
-            case SubeffectType.ChooseFromList:
-            case SubeffectType.ChooseFromListSaveRest:
+            case ChooseFromList:
+            case ChooseFromListSaveRest:
                 toReturn = JsonUtility.FromJson<DummyListTargetSubeffect>(json);
                 break;
-            case SubeffectType.SpaceTarget:
+            case SpaceTarget:
                 toReturn = JsonUtility.FromJson<DummySpaceTargetSubeffect>(json);
                 break;
-            case SubeffectType.ChooseEffectOption:
+            case ChooseEffectOption:
                 toReturn = JsonUtility.FromJson<DummyChooseOptionSubeffect>(json);
                 break;
-            case SubeffectType.PlayerChooseX:
+            case PlayerChooseX:
                 toReturn = JsonUtility.FromJson<DummyPlayerChooseXSubeffect>(json);
                 break;
             default:
@@ -47,7 +49,7 @@ public class DummySubeffect : Subeffect
 
         if (toReturn != null)
         {
-            Debug.Log($"Finishing setup for new effect of type {subeffectType}");
+            Debug.Log($"Finishing setup for new effect of type {subeff.subeffType}");
             toReturn.Initialize(parent, subeffIndex);
         }
 

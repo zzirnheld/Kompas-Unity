@@ -4,39 +4,45 @@
 	"effText":"Annihilate a friendly Summoned Shaper. Deck-summon a Shaper.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[0,311,1,4,300],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"character to ANNIHILATE\",
-						\"restrictionsToCheck\":[2,7,10,103],
+						\"blurb\":\"character to ANNIHILATE\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Summoned\",\"Board\"],
 						\"subtypesInclude\":[\"Shaper\"]
 					}
 				}",
-				"{}",
 				"{
+					\"subeffType\":\"Annihilate\"
+				}",
+				"{
+					\"subeffType\":\"Deck Target\",
 					\"cardRestriction\":{
-						\"Blurb\":\"Shaper to decksummon\",
-						\"restrictionsToCheck\":[2,3,7,102],
+						\"blurb\":\"Shaper to decksummon\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Deck\"],
 						\"subtypesInclude\":[\"Shaper\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"where to decksummon the Shaper\",
-						\"restrictionsToCheck\":[0]
+						\"blurb\":\"where to decksummon the Shaper\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Play\"
+				}"
 			]
 		}
 	],

@@ -4,32 +4,38 @@
 	"effText":"When you draw X, you can tribute me to deck-summon an S ≤ X Tarocco where I was.",
 	"effects":[
 		{
-			"triggerCondition":101,
+			"triggerCondition":"Draw",
 			"trigger":
 			"{
-				\"Blurb\":\"Tribute me to deck-summon Tarocco with S <= X?\",
-				\"Optional\":true,
+				\"blurb\":\"Tribute me to deck-summon Tarocco with S <= X?\",
+				\"optional\":true,
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,200]
+					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\"]
 				}
 			}",
-			"subeffectTypes":[6,5,301,1,300],
 			"subeffects":[
-				"{}",
-				"{}",
 				"{
-					\"TargetIndex\":-1
+					\"subeffType\":\"Target This Space\"
 				}",
 				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Discard\",
+					\"targetIndex\":-1
+				}",
+				"{
+					\"subeffType\":\"Deck Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Tarocco for Lovers to become\",
-						\"restrictionsToCheck\":[2,3,102,202],
+						\"blurb\":\"Tarocco for Lovers to become\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Deck\",\"S<=X\"],
 						\"subtypesInclude\":[\"Tarocco\"]
 					}
 				}",
 				"{
-					\"TargetIndex\":-1,
+					\"subeffType\":\"Play\",
+					\"targetIndex\":-1,
 					\"SpaceIndex\":-1
 				}"
 			]	

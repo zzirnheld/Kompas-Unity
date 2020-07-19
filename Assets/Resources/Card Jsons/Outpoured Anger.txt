@@ -4,29 +4,36 @@
 	"effText":"When a distinctly named Shaper moves, I can move adjacent to them.",
 	"effects":[
 		{
-			"triggerCondition":408,
+			"triggerCondition":"Move",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,101],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
 					\"cardRestriction\":{
-						\"restrictionsToCheck\":[2,7,11],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Distinct Name from Other Targets\"],
 						\"subtypesInclude\":[\"Shaper\"]
 					}
 				}
 			}",
-			"subeffectTypes":[5,4,309],
 			"subeffects":[
-				"{}",
 				"{
+					\"subeffType\":\"Target Triggering Card\"
+				}",
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"to move Outpoured Anger to\",
-						\"restrictionsToCheck\":[102]
+						\"blurb\":\"to move Outpoured Anger to\",
+						\"spaceRestrictions\":[\"Adjacent to Target\"]
 					},
-					\"TargetIndex\":-2
+					\"targetIndex\":-2
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Move\"
+				}"
 			]	
 		}
 	],

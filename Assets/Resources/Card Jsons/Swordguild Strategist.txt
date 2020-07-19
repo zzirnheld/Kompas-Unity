@@ -5,37 +5,38 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"In Play"
 				]
 			},
-			"subeffectTypes":[0,252,301,0,301],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"Warrior for Strategist to sacrifice\",
-						\"restrictionsToCheck\":[2,3,103],
-						\"subtypesInclude\":[\"Warrior\"],
-						\"onBoardRestrictions\":[]
-					}
-				}",
-				"{}",
-				"{
-					\"TargetIndex\":-1
-				}",
-				"{
-					\"boardRestriction\":
-					{
-						\"Blurb\":\"Warrior for Strategist to kill\",
-						\"restrictionsToCheck\":[3,103,202],
-						\"onBoardRestrictions\":[]
+						\"blurb\":\"Warrior for Strategist to sacrifice\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
+						\"subtypesInclude\":[\"Warrior\"]
 					}
 				}",
 				"{
-					\"TargetIndex\":-1
+					\"subeffType\":\"Set X by Target S\"
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Warrior for Strategist to kill\",
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"S<=X\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Discard\"
 				}"
 			]
 		}

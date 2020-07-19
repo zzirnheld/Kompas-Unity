@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net.Sockets;
 using UnityEngine;
 
@@ -31,7 +29,7 @@ public class ServerGame : Game {
     public void Init(UIController uiCtrl, CardRepository cardRepo)
     {
         this.uiCtrl = uiCtrl;
-        CardRepo = cardRepo;
+        base.cardRepo = cardRepo;
     }
 
     #region players and game starting
@@ -72,7 +70,7 @@ public class ServerGame : Game {
         if (uiCtrl.DebugMode) return true;
         if (deck.Count < 50) return false;
         //first name should be that of the Avatar
-        if (CardRepo.GetCardFromName(deck[0]).cardType != 'C') return false;
+        if (cardRepo.GetCardFromName(deck[0]).cardType != 'C') return false;
 
         return true;
     }
@@ -107,7 +105,7 @@ public class ServerGame : Game {
         lock (AddCardsLock)
         {
             //otherwise, set the avatar and rest of the deck
-            avatar = CardRepo.InstantiateServerAvatar(deck[0], this, player, cardCount++);
+            avatar = cardRepo.InstantiateServerAvatar(deck[0], this, player, cardCount++);
             if (avatar == null)
             {
                 Debug.LogError($"Error in loading avatar for {decklist}");
@@ -124,7 +122,7 @@ public class ServerGame : Game {
             ServerGameCard card;
             lock (AddCardsLock)
             {
-                card = CardRepo.InstantiateServerNonAvatar(name, this, player, cardCount);
+                card = cardRepo.InstantiateServerNonAvatar(name, this, player, cardCount);
                 cardsByID.Add(cardCount, card);
                 cardCount++;
             }
@@ -151,8 +149,8 @@ public class ServerGame : Game {
     {
         //set initial pips (based on avatars' S)
         Debug.Log($"Starting game. Player 0 avatar is null? {Players[0].Avatar == null}. Player 1 is null? {Players[1].Avatar == null}.");
-        Players[0].Pips = Players[1].Avatar.S / 2;
-        Players[1].Pips = Players[0].Avatar.S / 2;
+        Players[0].Pips = 0; //Players[1].Avatar.S / 2;
+        Players[1].Pips = 0; //Players[0].Avatar.S / 2;
 
         //determine who goes first and tell the players
         FirstTurnPlayer = TurnPlayerIndex = Random.value > 0.5f ? 0 : 1;
@@ -177,12 +175,12 @@ public class ServerGame : Game {
             var toDraw = controller.deckCtrl.PopTopdeck();
             if (toDraw == null) break;
             var eachDrawContext = new ActivationContext(card: toDraw, stackable: stackSrc, triggerer: controller);
-            EffectsController.Trigger(TriggerCondition.EachDraw, eachDrawContext);
+            EffectsController.TriggerForCondition(Trigger.EachDraw, eachDrawContext);
             toDraw.Rehand(controller, stackSrc);
             drawn.Add(toDraw);
         }
         var context = new ActivationContext(stackable: stackSrc, triggerer: controller, x: i);
-        EffectsController.Trigger(TriggerCondition.DrawX, context);
+        EffectsController.TriggerForCondition(Trigger.DrawX, context);
         return drawn;
     }
     public GameCard Draw(int player, IStackable stackSrc = null)
@@ -191,7 +189,7 @@ public class ServerGame : Game {
         return drawn.Count > 0 ? drawn[0] : null;
     }
 
-    public void GivePlayerPips(ServerPlayer player, int pipsToSet)
+    public void GivePlayerPips(Player player, int pipsToSet)
     {
         player.Pips = pipsToSet;
         if (player.index == 0) uiCtrl.UpdateFriendlyPips(pipsToSet);
@@ -200,12 +198,11 @@ public class ServerGame : Game {
 
     public void GiveTurnPlayerPips()
     {
-        Debug.Log($"Giving turn player pips when leyload is {Leyload} on round {RoundCount}");
-        int pipsToSet = TurnPlayer.Pips + Leyload;
-        GivePlayerPips(TurnServerPlayer, pipsToSet);
+        Debug.Log($"Giving turn player pips when leyload is {Leyload} on turn {TurnCount}");
+        GivePlayerPips(TurnPlayer, TurnPlayer.Pips + Leyload);
     }
 
-    public void Attack(GameCard attacker, GameCard defender, ServerPlayer instigator)
+    public void Attack(GameCard attacker, GameCard defender, ServerPlayer instigator, bool playerInitiated = false)
     {
         Debug.Log($"ServerNetworkController {attacker.CardName} attacking {defender.CardName} at {defender.BoardX}, {defender.BoardY}");
         //push the attack to the stack, then check if any player wants to respond before resolving it
@@ -213,6 +210,7 @@ public class ServerGame : Game {
         EffectsController.PushToStack(attack, new ActivationContext());
         //check for triggers related to the attack (if this were in the constructor, the triggers would go on the stack under the attack
         attack.Declare();
+        if (playerInitiated) attacker.AttacksThisTurn++;
         EffectsController.CheckForResponse();
     }
 
@@ -275,6 +273,7 @@ public class ServerGame : Game {
     {
         TurnPlayerIndex = 1 - TurnPlayerIndex;
         if(TurnPlayerIndex == FirstTurnPlayer) RoundCount++;
+        TurnCount++;
         GiveTurnPlayerPips();
         
         ResetCardsForTurn();
@@ -285,7 +284,7 @@ public class ServerGame : Game {
 
         //trigger turn start effects
         var context = new ActivationContext(triggerer: TurnServerPlayer);
-        EffectsController.Trigger(TriggerCondition.TurnStart, context);
+        EffectsController.TriggerForCondition(Trigger.TurnStart, context);
         EffectsController.CheckForResponse();
     }
 

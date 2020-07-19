@@ -4,25 +4,26 @@
 	"effText":"Territorial: When turns start, kill an adjacent friendly Dragon. When I attack, kill my target.",
 	"effects":[
 		{
-			"triggerCondition":0,
+			"triggerCondition":"Turn Start",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1]
+					\"triggerRestrictions\":[\"This Card in Play\"]
 				}
 			}",
-			"subeffectTypes":[0,301],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"adjacent Dragon for the Eldest to kill\",
-						\"restrictionsToCheck\":[2,3,7,103],
-						\"subtypesInclude\":[\"Dragon\"],
-						\"onBoardRestrictions\":[0]
+						\"blurb\":\"adjacent Dragon for the Eldest to kill\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"],
+						\"subtypesInclude\":[\"Dragon\"]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Discard\"
+				}"
 			]	
 		},
 		{
@@ -30,13 +31,16 @@
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0,1]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[50,301],
 			"subeffects":[
-				"{}",
-				"{}"
+				"{
+					\"subeffType\":\"Target Defender\"
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}"
 			]	
 		}
 	],

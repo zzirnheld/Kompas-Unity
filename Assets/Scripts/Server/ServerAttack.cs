@@ -25,9 +25,9 @@ public class ServerAttack : Attack, IServerStackable
     {
         var attackerContext = new ActivationContext(card: attacker, stackable: this, triggerer: Controller);
         var defenderContext = new ActivationContext(card: defender, stackable: this, triggerer: Controller);
-        EffCtrl.Trigger(TriggerCondition.Attacks, attackerContext);
-        EffCtrl.Trigger(TriggerCondition.Defends, defenderContext);
-        EffCtrl.Trigger(TriggerCondition.Battles, attackerContext, defenderContext);
+        EffCtrl.TriggerForCondition(Trigger.Attacks, attackerContext);
+        EffCtrl.TriggerForCondition(Trigger.Defends, defenderContext);
+        EffCtrl.TriggerForCondition(Trigger.Battles, attackerContext, defenderContext);
     }
 
     private bool StillValidAttack
@@ -45,7 +45,7 @@ public class ServerAttack : Attack, IServerStackable
         if(StillValidAttack) DealDamage();
         var attackerContext = new ActivationContext(card: attacker, stackable: this, triggerer: Controller);
         var defenderContext = new ActivationContext(card: defender, stackable: this, triggerer: Controller);
-        EffCtrl.Trigger(TriggerCondition.BattleEnds, attackerContext, defenderContext);
+        EffCtrl.TriggerForCondition(Trigger.BattleEnds, attackerContext, defenderContext);
         //then finish the resolution
         EffCtrl.FinishStackEntryResolution();
     }
@@ -63,7 +63,7 @@ public class ServerAttack : Attack, IServerStackable
         var attackerTakeContext = new ActivationContext(card: attacker, stackable: this, triggerer: Controller, x: defenderDmg);
         var defenderTakeContext = new ActivationContext(card: defender, stackable: this, triggerer: Controller, x: attackerDmg);
         //trigger effects based on combat damage
-        EffCtrl.Trigger(TriggerCondition.TakeCombatDamage, attackerTakeContext, defenderTakeContext);
-        EffCtrl.Trigger(TriggerCondition.DealCombatDamage, attackerDealContext, defenderDealContext);
+        EffCtrl.TriggerForCondition(Trigger.TakeCombatDamage, attackerTakeContext, defenderTakeContext);
+        EffCtrl.TriggerForCondition(Trigger.DealCombatDamage, attackerDealContext, defenderDealContext);
     }
 }

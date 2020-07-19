@@ -4,47 +4,47 @@
 	"effText":"Territorial: When turns start, kill an adjacent friendly Dragon. When I attack, I can all characters (including myself) within two spaces -2E.",
 	"effects":[
 		{
-			"triggerCondition":0,
+			"triggerCondition":"Turn Start",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1]
+					\"triggerRestrictions\":[\"This Card in Play\"]
 				}
 			}",
-			"subeffectTypes":[0,301],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"adjacent Dragon for Aerian to kill\",
-						\"restrictionsToCheck\":[2,3,7,103],
-						\"subtypesInclude\":[\"Dragon\"],
-						\"onBoardRestrictions\":[0]
+						\"blurb\":\"adjacent Dragon for Aerian to kill\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"],
+						\"subtypesInclude\":[\"Dragon\"]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Discard\"
+				}"
 			]	
 		},
 		{
 			"triggerCondition":301,
 			"trigger":
 			"{
-				\"Blurb\":\"Give the attacking Aerian and all other characters within 2 spaces -2E?\",
-				\"Optional\":true,
+				\"blurb\":\"Give the attacking Aerian and all other characters within 2 spaces -2E?\",
+				\"optional\":true,
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0,1]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[110],
 			"subeffects":[
 				"{
-					\"BoardRestriction\":
+					\"subeffType\":\"Change NESW All\",
+					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[3,103],
-						\"onBoardRestrictions\":[1],
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Within C Spaces\"],
 						\"cSpaces\":2
 					},
-					\"EMod\":-2
+					\"eMod\":-2
 				}"
 			]	
 		}

@@ -4,21 +4,23 @@
 	"effText":"When you cast a Rune, I give myself +1EW.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,101,200],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"Controller Triggered\"],
 					\"cardRestriction\":{
-						\"restrictionsToCheck\":[2,4,7],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}
 				}
 			}",
-			"subeffectTypes":[5,100],
 			"subeffects":[
-				"{}",
 				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
 					\"eChange\":1,
 					\"wChange\":1
 				}"

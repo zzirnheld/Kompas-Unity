@@ -5,16 +5,28 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"In Play"
 				]
 			},
-			"subeffectTypes":[0,100],
 			"subeffects":[
-				"{\"boardRestriction\":{\"restrictionsToCheck\":[2,3,103],\"subtypesInclude\":[\"Warrior\"],\"onBoardRestrictions\":[0]}}",
-				"{\"nChange\":1,\"eChange\":0,\"sChange\":0,\"wChange\":0,\"targetIndex\":0}"
+				"{
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
+						\"subtypesInclude\":[\"Warrior\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
+					\"nChange\":1,
+					\"eChange\":0,
+					\"sChange\":0,
+					\"wChange\":0,
+					\"targetIndex\":0
+				}"
 			]
 		}
 	],

@@ -4,24 +4,24 @@
 	"effText":"When you draw X, I give an adjacent character +XEW.",
 	"effects":[
 		{
-			"triggerCondition":101,
+			"triggerCondition":"Draw",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,200]
+					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\"]
 				}
 			}",
-			"subeffectTypes":[0,103],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"for Emperor to buff\",
-						\"restrictionsToCheck\":[3,103],
-						\"onBoardRestrictions\":[0]
+						\"blurb\":\"for Emperor to buff\",
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Adjacent\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"X Change NESW\",
 					\"eMult\":1,
 					\"wMult\":1
 				}"

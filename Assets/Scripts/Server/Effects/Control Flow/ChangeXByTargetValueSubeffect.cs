@@ -10,17 +10,17 @@ public class ChangeXByTargetValueSubeffect : ServerSubeffect
     public const string C = "C";
     public const string DistanceToTarget = "Distance to Target";
 
-    public string WhatToCount;
+    public string whatToCount;
 
-    public int Multiplier = 1;
-    public int Divisor = 1;
-    public int Modifier = 0;
+    public int multiplier = 1;
+    public int divisor = 1;
+    public int modifier = 0;
 
     private int BaseCount
     {
         get
         {
-            switch (WhatToCount)
+            switch (whatToCount)
             {
                 case Cost: return Target.Cost;
                 case S: return Target.S;
@@ -29,16 +29,16 @@ public class ChangeXByTargetValueSubeffect : ServerSubeffect
                 case DistanceToTarget:
                     return Source.DistanceTo(Target);
                 default:
-                    throw new System.ArgumentException($"Invalid 'what to count' string {WhatToCount} in x by gamestate value subeffect");
+                    throw new System.ArgumentException($"Invalid 'what to count' string {whatToCount} in x by gamestate value subeffect");
             }
         }
     }
 
-    protected int Count => (BaseCount * Multiplier / Divisor) + Modifier;
+    protected int Count => (BaseCount * multiplier / divisor) + modifier;
 
-    public override void Resolve()
+    public override bool Resolve()
     {
         Effect.X += Count;
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

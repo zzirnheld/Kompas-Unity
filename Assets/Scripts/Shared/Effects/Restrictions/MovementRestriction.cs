@@ -22,7 +22,7 @@ public class MovementRestriction
 
     //The actual list of restrictions, set by json.
     //Default restrictions are that only characters with enough n can move.
-    public string[] Restrictions = new string[] { IsCharacter, CanMoveEnoughSpaces, DestinationCanMoveHere };
+    public string[] movementRestrictions = new string[] { IsCharacter, CanMoveEnoughSpaces, DestinationCanMoveHere };
     
     public GameCard Card { get; private set; }
 
@@ -43,7 +43,7 @@ public class MovementRestriction
     {
         if (x < 0 || y < 0 || x > 6 || y > 6) return false;
 
-        foreach(string r in Restrictions)
+        foreach(string r in movementRestrictions)
         {
             switch (r)
             {

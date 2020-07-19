@@ -5,32 +5,34 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Max Times Per Round",
 					"In Play"
 				]
 			},
-			"subeffectTypes":[3,4,150,300],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Rune for Runerunner to cast\",
-						\"restrictionsToCheck\":[2,4,7,100,601,602],
+						\"blurb\":\"Rune for Runerunner to cast\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Hand\",\"Can Be Played\",\"Effect Controller can Afford Cost\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"where for Runerunner to cast its target Rune\",
-						\"restrictionsToCheck\":[0]
+						\"blurb\":\"where for Runerunner to cast its target Rune\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
-				"{}",
 				"{
-					\"TargetIndex\":-1,
-					\"SpaceIndex\":-1
+					\"subeffType\":\"Pay Target's Cost in Pips\"
+				}",
+				"{
+					\"subeffType\":\"Play\"
 				}"
 			]
 		}

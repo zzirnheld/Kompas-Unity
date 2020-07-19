@@ -5,30 +5,33 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Max Times Per Turn",
 					"Enemy Turn",
 					"In Play"
 				]
 			},
-			"subeffectTypes":[3,4,300],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Rune for Runebinding to cast\",
-						\"restrictionsToCheck\":[2,4,7,100,601],
+						\"blurb\":\"Rune for Runebinding to cast\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Hand\",\"Can Be Played\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"where for Runebinding to cast its target Rune\",
-						\"restrictionsToCheck\":[0]
+						\"blurb\":\"where for Runebinding to cast its target Rune\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Play\"
+				}"
 			]
 		}
 	],

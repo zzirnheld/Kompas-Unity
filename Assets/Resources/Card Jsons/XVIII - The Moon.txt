@@ -4,25 +4,26 @@
 	"effText":"When you draw, I can swap the EW of a character.",
 	"effects":[
 		{
-			"triggerCondition":101,
+			"triggerCondition":"Draw",
 			"trigger":
 			"{
-				\"Optional\":true,
-				\"Blurb\":\"Swap the NESW of a character?\",
+				\"optional\":true,
+				\"blurb\":\"Swap the NESW of a character?\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,200]
+					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\"]
 				}
 			}",
-			"subeffectTypes":[0,107],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"character for Moon to swap EW\",
-						\"restrictionsToCheck\":[3,103]
+						\"blurb\":\"character for Moon to swap EW\",
+						\"cardRestrictions\":[\"Is Character\",\"Board\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Swap Target's Own NESW\",
 					\"Stat1\":1,
 					\"Stat2\":3
 				}"

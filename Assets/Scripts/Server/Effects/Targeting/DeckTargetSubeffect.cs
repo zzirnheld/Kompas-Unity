@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class DeckTargetSubeffect : CardTargetSubeffect
 {
-    public override void Resolve()
+    public override bool Resolve()
     {
         //check first that there exist valid targets. if there exist no valid targets, finish resolution here
         if (!ThisCard.Game.ExistsCardTarget(cardRestriction))
         {
             Debug.Log("No target exists for " + ThisCard.CardName + " effect");
-            ServerEffect.EffectImpossible();
-            return;
+            return ServerEffect.EffectImpossible();
         }
 
         //ask the client that is this effect's controller for a target. 
@@ -20,6 +19,7 @@ public class DeckTargetSubeffect : CardTargetSubeffect
         EffectController.ServerNotifier.GetDeckTarget(ThisCard, this);
 
         //then wait for the network controller to call the continue method
+        return false;
     }
 
     public override bool AddTargetIfLegal(GameCard card)

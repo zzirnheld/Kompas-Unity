@@ -4,38 +4,44 @@
 	"effText":"Can’t be cast normally. I give a character -1E and another +1E. Draw 1 and gain a pip.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[0,100,0,100,305,101],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"character for Sowilo to give -1E.\",
-						\"restrictionsToCheck\":[3,103]
+						\"blurb\":\"character for Sowilo to give -1E.\",
+						\"cardRestrictions\":[\"Is Character\",\"Board\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Change NESW\",
 					\"eChange\":-1
 				}",
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"other character for Sowilo to give +1E.\",
-						\"restrictionsToCheck\":[3,103,600]
+						\"blurb\":\"other character for Sowilo to give +1E.\",
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Not Already Target\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Change NESW\",
 					\"eChange\":1
 				}",
-				"{}",
 				"{
-					\"Modifier\":1
+					\"subeffType\":\"Draw\"
+				}",
+				"{
+					\"subeffType\":\"Add Pips\",
+					\"modifier\":1
 				}"
 			]
 		}

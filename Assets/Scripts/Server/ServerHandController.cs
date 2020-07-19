@@ -13,7 +13,7 @@ public class ServerHandController : HandController
     {
         if (!card.CanRemove) return false;
         var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
-        EffectsController.Trigger(TriggerCondition.Rehand, context);
+        EffectsController.TriggerForCondition(Trigger.Rehand, context);
         ServerNotifier.NotifyRehand(card);
         return base.AddToHand(card);
     }

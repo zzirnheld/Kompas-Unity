@@ -42,15 +42,15 @@ public class ServerEffect : Effect, IServerStackable
             }
         }
 
-        for (int i = 0; i < se.subeffectTypes.Length; i++)
+        for (int i = 0; i < se.subeffects.Length; i++)
         {
             try
             {
-                ServerSubeffects[i] = ServerSubeffect.FromJson(se.subeffectTypes[i], se.subeffects[i], this, i);
+                ServerSubeffects[i] = ServerSubeffect.FromJson(se.subeffects[i], this, i);
             }
             catch (System.ArgumentException)
             {
-                Debug.LogError($"Failed to load subeffect of type {se.subeffectTypes[i]} from json {se.subeffects[i]}");
+                Debug.LogError($"Failed to load subeffect from json {se.subeffects[i]}");
                 throw;
             }
         }
@@ -86,8 +86,6 @@ public class ServerEffect : Effect, IServerStackable
         //set context parameters
         CurrActivationContext = context;
         X = context.X ?? 0;
-        if (context.Card != null) AddTarget(context.Card);
-        if (context.Space.HasValue) Coords.Add(context.Space.Value);
 
         //notify relevant to this effect starting
         ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
@@ -98,23 +96,29 @@ public class ServerEffect : Effect, IServerStackable
         else ResolveSubeffect(context.StartIndex);
     }
 
-    public void ResolveNextSubeffect()
+    public bool ResolveNextSubeffect()
     {
-        ResolveSubeffect(SubeffectIndex + 1);
+        return ResolveSubeffect(SubeffectIndex + 1);
     }
 
-    public void ResolveSubeffect(int index)
+    public bool ResolveSubeffect(int index)
     {
         if (index >= ServerSubeffects.Length)
         {
             FinishResolution();
-            return;
+            return true;
         }
 
         Debug.Log($"Resolving subeffect of type {ServerSubeffects[index].GetType()}");
         SubeffectIndex = index;
         ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
-        ServerSubeffects[index].Resolve();
+        return ServerSubeffects[index].Resolve();
+    }
+
+    public bool EndResolution()
+    {
+        FinishResolution();
+        return true;
     }
 
     /// <summary>
@@ -135,18 +139,19 @@ public class ServerEffect : Effect, IServerStackable
     /// Cancels resolution of the effect, 
     /// or, if there is something pending if the effect becomes impossible, resolves that
     /// </summary>
-    public void EffectImpossible()
+    public bool EffectImpossible()
     {
         Debug.Log($"Effect of {Source.CardName} is being declared impossible");
         if (OnImpossible == null)
         {
             FinishResolution();
             ServerController.ServerNotifier.EffectImpossible();
+            return false;
         }
         else
         {
             SubeffectIndex = OnImpossible.SubeffIndex;
-            OnImpossible.OnImpossible();
+            return OnImpossible.OnImpossible();
         }
     }
 

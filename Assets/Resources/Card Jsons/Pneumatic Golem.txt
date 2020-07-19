@@ -4,30 +4,31 @@
 	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, rehand a character within 3 spaces.",
 	"effects":[
 		{
-			"triggerCondition":201,
+			"triggerCondition":"Activate",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[0,304],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"character within 3 spaces of Pneumatic Golem for it to rehand\",
-						\"restrictionsToCheck\":[3,103],
-						\"onBoardRestrictions\":[1],
+						\"blurb\":\"character within 3 spaces of Pneumatic Golem for it to rehand\",
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Within C Spaces\"],
 						\"cSpaces\":3
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Rehand\"
+				}"
 			]
 		}
 	],
 	"MovementRestriction":{
-		"Restrictions":[
+		"movementRestrictions":[
 			"Is Character",
 			"Can Move Enough Spaces",
 			"Destination is Empty or Friendly",
@@ -35,7 +36,7 @@
 		]
 	},
 	"AttackRestriction":{
-		"Restrictions":[
+		"attackRestrictions":[
 			"This is Character",
 			"Defender is Character",
 			"Defender is Adjacent",

@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class DiscardSubeffect : CardChangeStateSubeffect
 {
-    public override void Resolve()
+    public override bool Resolve()
     {
-        if (Target == null)
-        {
-            ServerEffect.EffectImpossible();
-            return;
-        }
-        Debug.Log("Resolving discard subeffect");
-        if (Target.Discard(ServerEffect)) ServerEffect.ResolveNextSubeffect();
-        else ServerEffect.EffectImpossible();
+        if (Target != null && Target.Discard(ServerEffect))
+            return ServerEffect.ResolveNextSubeffect();
+        else return ServerEffect.EffectImpossible();
     }
 }

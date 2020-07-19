@@ -4,25 +4,27 @@
 	"effText":"Once each round, when you draw X, I can dispel a C ≤ X spell.",
 	"effects":[
 		{
-			"triggerCondition":101,
+			"triggerCondition":"Draw",
 			"trigger":
 			"{
-				\"Optional\":true,
-				\"Blurb\":\"Dispel a C <= X spell? (X is the number of cards you just drew)\",
+				\"optional\":true,
+				\"blurb\":\"Dispel a C <= X spell? (X is the number of cards you just drew)\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,200,502]
+					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\",\"Max Per Round\"]
 				}
 			}",
-			"subeffectTypes":[0,106],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"C <= X spell for Temperance to dispel\",
-						\"restrictionsToCheck\":[4,103,204]
+						\"blurb\":\"C <= X spell for Temperance to dispel\",
+						\"cardRestrictions\":[\"Is Spell\",\"Board\",\"Cost<=X\"]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Dispel\"
+				}"
 			]
 		}
 	],

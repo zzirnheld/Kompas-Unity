@@ -6,70 +6,82 @@
 		{
 			"blurb":"Shape",
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Friendly Turn",
 					"In Play"
 				]
 			},
-			"subeffectTypes":[4,5,121,201,103,309],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"to move Unstable Soul to\",
-						\"restrictionsToCheck\":[110],
-						\"ConnectednessRestriction\":{
-							\"restrictionsToCheck\":[2,3,103],
+						\"blurb\":\"to move Unstable Soul to\",
+						\"spaceRestrictions\":[\"Connected to Source by Cards Fitting Restriction\"],
+						\"connectednessRestriction\":{
+							\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
 							\"subtypesInclude\":[\"Ethereal\"]
 						}
 					}
 				}",
-				"{}",
 				"{
-					\"Modifier\":1
+					\"subeffType\":\"Target This\"
 				}",
 				"{
-					\"WhatToCount\":\"Distance to Coords Through\",
-					\"ThroughRestriction\":{
-						\"restrictionsToCheck\":[2,3,103],
+					\"subeffType\":\"Spend Movement\",
+					\"modifier\":1
+				}",
+				"{
+					\"subeffType\":\"Set X by Gamestate Value\",
+					\"whatToCount\":\"Distance to Coords Through\",
+					\"throughRestriction\":{
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
 						\"subtypesInclude\":[\"Ethereal\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"X Change NESW\",
 					\"eMult\":-1
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Move\"
+				}"
 			]
 		},
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0,101],
+					\"triggerRestrictions\":[\"This Card Triggered\",\"This Card Fits Restriction\"],
 					\"cardRestriction\":{
-						\"restrictionsToCheck\":[100]
+						\"cardRestrictions\":[\"Hand\"]
 					}
 				}
 			}",
-			"subeffectTypes":[5,8,4,300],
 			"subeffects":[
-				"{}",
 				"{
-					\"CardRestriction\":{
-						\"Blurb\":\"copy of Twin Spirit to decksummon\",
-						\"restrictionsToCheck\":[7,12,102]
-					},
-					\"MaxCanChoose\":1
+					\"subeffType\":\"Target This\"
 				}",
 				"{
+					\"subeffType\":\"Choose From List\",
+					\"cardRestriction\":{
+						\"blurb\":\"copy of Twin Spirit to decksummon\",
+						\"cardRestrictions\":[\"Friendly\",\"Same Name as Target\",\"Deck\"]
+					},
+					\"maxCanChoose\":1
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"where for Twin Spirit to decksummon a copy of itself\",
-						\"restrictionsToCheck\":[0]
+						\"blurb\":\"where for Twin Spirit to decksummon a copy of itself\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Play\"
+				}"
 			]	
 		}
 	],

@@ -4,22 +4,21 @@
 	"effText":"Can’t be cast normally. I set any adjacent characters’ N to 0.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[111],
 			"subeffects":[
 				"{
-					\"BoardRestriction\":
+					\"subeffType\":\"Set NESW All\",
+					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[3,103],
-						\"onBoardRestrictions\":[0]
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Adjacent\"]
 					},
-					\"NVal\":0
+					\"nVal\":0
 				}"
 			]	
 		}

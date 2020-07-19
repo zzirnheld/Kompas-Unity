@@ -4,61 +4,69 @@
 	"effText":"Territorial: When turns start, kill an adjacent friendly Dragon. You can choose a character X spaces from me. Give me -XE, move me adjacent to them, and I attack them.",
 	"effects":[
 		{
-			"triggerCondition":0,
+			"triggerCondition":"Turn Start",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1]
+					\"triggerRestrictions\":[\"This Card in Play\"]
 				}
 			}",
-			"subeffectTypes":[0,301],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"adjacent Dragon for Caligo to kill\",
-						\"restrictionsToCheck\":[2,3,7,103],
-						\"subtypesInclude\":[\"Dragon\"],
-						\"onBoardRestrictions\":[0]
+						\"blurb\":\"adjacent Dragon for Caligo to kill\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"],
+						\"subtypesInclude\":[\"Dragon\"]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Discard\"
+				}"
 			]	
 		},
 		{
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"In Play"
 				]
 			},
-			"subeffectTypes":[0,203,103,4,5,309,601],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"enemy character for Caligo to attack\",
-						\"restrictionsToCheck\":[3,103],
-						\"onBoardRestrictions\":[0]
+						\"blurb\":\"enemy character for Caligo to attack\",
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Adjacent\"]
 					}
 				}",
 				"{
-					\"WhatToCount\":\"Distance to Target\"
+					\"subeffType\":\"Set X by Target Value\",
+					\"whatToCount\":\"Distance to Target\"
 				}",
 				"{
+					\"subeffType\":\"X Change NESW\",
 					\"eMult\":-1
 				}",
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"to move Caligo to\",
-						\"restrictionsToCheck\":[102]
+						\"blurb\":\"to move Caligo to\",
+						\"spaceRestrictions\":[\"Adjacent to Target\"]
 					}
 				}",
-				"{}",
-				"{}",
 				"{
-					\"AttackerIndex\":-1,
-					\"TargetIndex\":-2
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Move\"
+				}",
+				"{
+					\"subeffType\":\"Attack\",
+					\"attackerIndex\":-1,
+					\"targetIndex\":-2
 				}"
 			]	
 		}

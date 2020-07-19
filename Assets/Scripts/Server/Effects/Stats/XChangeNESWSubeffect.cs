@@ -15,13 +15,13 @@ public class XChangeNESWSubeffect : ServerSubeffect
     public int sMod = 0;
     public int wMod = 0;
     
-    public override void Resolve()
+    public override bool Resolve()
     {
         Target.AddToCharStats(
             ServerEffect.X * nMult + nMod,
             ServerEffect.X * eMult + eMod,
             ServerEffect.X * sMult + sMod,
             ServerEffect.X * wMult + wMod);
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

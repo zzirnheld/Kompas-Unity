@@ -4,47 +4,53 @@
 	"effText":"Must be cast normally. Give a Summoned Runer +25ESW. Handcast any number of Runes.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[0,100,3,4,300,410],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"Runer for Runesaga to give +25ESW\",
-						\"restrictionsToCheck\":[2,3,10,103],
+						\"blurb\":\"Runer for Runesaga to give +25ESW\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Summoned\",\"Board\"],
 						\"subtypesInclude\":[\"Runer\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Change NESW\",
 					\"eChange\":25,
 					\"sChange\":25,
 					\"wChange\":25
 				}",
 				"{
+					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Rune for Runesaga to cast\",
-						\"restrictionsToCheck\":[2,4,7,100,600],
+						\"blurb\":\"Rune for Runesaga to cast\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Hand\",\"Not Already Target\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"where for Runesaga to cast its target Rune\",
-						\"restrictionsToCheck\":[0]
+						\"blurb\":\"where for Runesaga to cast its target Rune\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
-				"{}",
 				"{
-					\"CanDecline\":true,
-					\"JumpTo\":2
+					\"subeffType\":\"Play\"
+				}",
+				"{
+					\"subeffType\":\"Loop\",
+					\"canDecline\":true,
+					\"jumpTo\":2
 				}"
 			]
 		}

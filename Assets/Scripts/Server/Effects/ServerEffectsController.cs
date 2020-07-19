@@ -14,16 +14,16 @@ public class ServerEffectsController : MonoBehaviour
         = new Stack<(ServerTrigger, ActivationContext, ServerPlayer)>();
 
     //trigger map
-    protected Dictionary<TriggerCondition, List<ServerTrigger>> triggerMap = new Dictionary<TriggerCondition, List<ServerTrigger>>();
-    protected Dictionary<TriggerCondition, List<HangingEffect>> hangingEffectMap = new Dictionary<TriggerCondition, List<HangingEffect>>();
-    protected Dictionary<TriggerCondition, List<(HangingEffect, TriggerRestriction)>> hangingEffectFallOffMap 
-        = new Dictionary<TriggerCondition, List<(HangingEffect, TriggerRestriction)>>();
+    protected Dictionary<string, List<ServerTrigger>> triggerMap = new Dictionary<string, List<ServerTrigger>>();
+    protected Dictionary<string, List<HangingEffect>> hangingEffectMap = new Dictionary<string, List<HangingEffect>>();
+    protected Dictionary<string, List<(HangingEffect, TriggerRestriction)>> hangingEffectFallOffMap 
+        = new Dictionary<string, List<(HangingEffect, TriggerRestriction)>>();
 
     public IServerStackable CurrStackEntry { get; private set; }
 
     public void Start()
     {   
-        foreach (TriggerCondition c in System.Enum.GetValues(typeof(TriggerCondition)))
+        foreach (var c in Trigger.TriggerConditions)
         {
             triggerMap.Add(c, new List<ServerTrigger>());
             hangingEffectMap.Add(c, new List<HangingEffect>());
@@ -142,7 +142,7 @@ public class ServerEffectsController : MonoBehaviour
     #endregion the stack
 
     #region triggers
-    public void RegisterTrigger(TriggerCondition condition, ServerTrigger trigger)
+    public void RegisterTrigger(string condition, ServerTrigger trigger)
     {
         Debug.Log($"Registering a new trigger from card {trigger.effToTrigger.Source.CardName} to condition {condition}");
         List<ServerTrigger> triggers = triggerMap[condition];
@@ -154,26 +154,26 @@ public class ServerEffectsController : MonoBehaviour
         triggers.Add(trigger);
     }
 
-    public void RegisterHangingEffect(TriggerCondition condition, HangingEffect hangingEff)
+    public void RegisterHangingEffect(string condition, HangingEffect hangingEff)
     {
         Debug.Log($"Registering a new hanging effect to condition {condition}");
         List<HangingEffect> hangingEffs = hangingEffectMap[condition];
         hangingEffs.Add(hangingEff);
     }
 
-    public void RegisterHangingEffectFallOff(TriggerCondition condition, TriggerRestriction restriction, HangingEffect hangingEff)
+    public void RegisterHangingEffectFallOff(string condition, TriggerRestriction restriction, HangingEffect hangingEff)
     {
         Debug.Log($"Registering a new hanging effect to condition {condition}");
         var hangingEffs = hangingEffectFallOffMap[condition];
         hangingEffs.Add((hangingEff, restriction));
     }
 
-    public void Trigger(TriggerCondition condition, params ActivationContext[] contexts)
+    public void TriggerForCondition(string condition, params ActivationContext[] contexts)
     {
-        foreach (var c in contexts) Trigger(condition, c);
+        foreach (var c in contexts) TriggerForCondition(condition, c);
     }
 
-    public void Trigger(TriggerCondition condition, ActivationContext context)
+    public void TriggerForCondition(string condition, ActivationContext context)
     {
         List<HangingEffect> toRemove = new List<HangingEffect>();
         foreach (HangingEffect t in hangingEffectMap[condition])

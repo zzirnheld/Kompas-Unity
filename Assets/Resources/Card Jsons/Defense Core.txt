@@ -4,53 +4,60 @@
 	"effText":"While equipped, activate this character. When they defend, give them +4EW. When they die (while I'm equipped), rehand me.",
 	"effects":[
 		{
-			"triggerCondition":450,
+			"triggerCondition":"Augment Attached",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[7,504],
 			"subeffects":[
-				"{}",
 				"{
-					\"EndCondition\":451,
-					\"TriggerRestriction\":{
-						\"triggerRestrictions\":[0]
+					\"subeffType\":\"Target Augmented Card\"
+				}",
+				"{
+					\"subeffType\":\"Temporary Activate\",
+					\"endCondition\":\"Augment Detached\",
+					\"triggerRestriction\":{
+						\"triggerRestrictions\":[\"This Card Triggered\"]
 					}
 				}"
 			]
 		},
 		{
-			"triggerCondition":300,
+			"triggerCondition":"Defend",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,10]
+					\"triggerRestrictions\":[\"This Card in Play\",\"Augmented Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[7,100],
 			"subeffects":[
-				"{}",
 				"{
+					\"subeffType\":\"Target Augmented Card\"
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
 					\"eChange\":4,
 					\"wChange\":4
 				}"
 			]	
 		},
 		{
-			"triggerCondition":402,
+			"triggerCondition":"Discard",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,10]
+					\"triggerRestrictions\":[\"Augmented Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[5,304],
 			"subeffects":[
-				"{}",
-				"{}"
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Rehand\"
+				}"
 			]
 		}
 	],

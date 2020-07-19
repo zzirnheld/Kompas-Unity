@@ -4,33 +4,37 @@
 	"effText":"When I’m cast, handsummon a Shaper, but annihilate them when your turns start.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[3,4,300,550],
 			"subeffects":[
 				"{
+					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":{
-						\"Blurb\":\"Shaper to hand-summon\",
-						\"restrictionsToCheck\":[2,3,7,100],
+						\"blurb\":\"Shaper to hand-summon\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Hand\"],
 						\"subtypesInclude\":[\"Shaper\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"Blurb\":\"where to handsummon the Shaper\",
-						\"restrictionsToCheck\":[0]
+						\"blurb\":\"where to handsummon the Shaper\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
-				"{}",
 				"{
-					\"EndCondition\":0,
-					\"TriggerRestriction\":
+					\"subeffType\":\"Play\"
+				}",
+				"{
+					\"subeffType\":\"Hanging Annihilate\",
+					\"endCondition\":\"Turn Start\",
+					\"triggerRestriction\":
 					{
 						\"triggerRestrictions\":[300]
 					}

@@ -4,22 +4,25 @@
 	"effText":"Can’t be cast normally. If it’s your turn, gain 5 pips and end your turn.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[409,101,600],
 			"subeffects":[
 				"{
-					\"Condition\":\"Must be Friendly Turn\"
+					\"subeffType\":\"Conditionally End Effect Resolution\",
+					\"condition\":\"Must be Friendly Turn\"
 				}",
 				"{
+					\"subeffType\":\"Add Pips\",
 					\"modifier\":5
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"End Turn\"
+				}"
 			]	
 		}
 	],

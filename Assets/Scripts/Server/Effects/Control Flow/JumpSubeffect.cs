@@ -6,9 +6,9 @@ public class JumpSubeffect : ServerSubeffect
 {
     public int IndexToJumpTo;
 
-    public override void Resolve()
+    public override bool Resolve()
     {
         //this will always jump to the given subeffect index
-        ServerEffect.ResolveSubeffect(IndexToJumpTo);
+        return ServerEffect.ResolveSubeffect(IndexToJumpTo);
     }
 }

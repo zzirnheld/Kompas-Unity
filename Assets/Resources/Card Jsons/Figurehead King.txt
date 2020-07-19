@@ -4,46 +4,45 @@
 	"effText":"Choose a card in your hand, then reshuffle the other X. Gain X pips.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[10,409,3,11,10,303,10,408,101],
 			"subeffects":[
-				"{}",
 				"{
-					\"Condition\":\"None Fit Restriction\",
-					\"CardRestriction\":
-					{
-						\"restrictionsToCheck\":[2,7,103],
-						\"subtypesInclude\":[\"Tarocco\"]
-					}
-				}",
-				"{
+					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[7,100]
+						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Target All\",
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[7,100,600]
+						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Not Already Target\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Delete Target\",
 					\"DeleteIndex\":0
 				}",
-				"{}",
-				"{}",
 				"{
-					\"CanDecline\":false,
-					\"JumpTo\":5
+					\"subeffType\":\"Reshuffle\"
 				}",
 				"{
+					\"subeffType\":\"Delete Target\"
+				}",
+				"{
+					\"subeffType\":\"Count X Loop\",
+					\"canDecline\":false,
+					\"jumpTo\":4
+				}",
+				"{
+					\"subeffType\":\"Add Pips\",
 					\"xMultiplier\":1
 				}"
 			]

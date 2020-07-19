@@ -4,26 +4,28 @@
 	"effText":"Can’t be cast normally. Double a character's W.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[0,203,103],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"character for Thurisaz to double W\",
-						\"restrictionsToCheck\":[3,103]
+						\"blurb\":\"character for Thurisaz to double W\",
+						\"cardRestrictions\":[\"Is Character\",\"Board\"]
 					}
 				}",
 				"{
-					\"WhatToCount\":\"W\"
+					\"subeffType\":\"Set X by Target Value\",
+					\"whatToCount\":\"W\"
 				}",
 				"{
+					\"subeffType\":\"X Change NESW\",
 					\"wMult\":1
 				}"
 			]	

@@ -9,6 +9,6 @@ public class DummyPlayerChooseXSubeffect : DummySubeffect
     public override void Initialize(ClientEffect eff, int subeffIndex)
     {
         base.Initialize(eff, subeffIndex);
-        XRest.Subeffect = this;
+        XRest.Initialize(this);
     }
 }

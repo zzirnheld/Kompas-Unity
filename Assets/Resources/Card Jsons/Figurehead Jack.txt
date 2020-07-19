@@ -4,15 +4,18 @@
 	"effText":"Draw 1.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[305],
-			"subeffects":["{}"]	
+			"subeffects":[
+				"{
+					\"subeffType\":\"Draw\"
+				}"
+			]	
 		}
 	],
 	"fast":true,

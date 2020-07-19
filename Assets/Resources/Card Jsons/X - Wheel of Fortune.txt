@@ -4,34 +4,36 @@
 	"effText":"When you draw, I can swap two characters’ N.",
 	"effects":[
 		{
-			"triggerCondition":101,
+			"triggerCondition":"Draw",
 			"trigger":
 			"{
-				\"Optional\":true,
-				\"Blurb\":\"Swap two characters' N?\",
+				\"optional\":true,
+				\"blurb\":\"Swap two characters' N?\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,200]
+					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\"]
 				}
 			}",
-			"subeffectTypes":[0,0,104],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"character for Wheel of Fortune to swap N of (1/2)\",
-						\"restrictionsToCheck\":[103]
+						\"blurb\":\"character for Wheel of Fortune to swap N of (1/2)\",
+						\"cardRestrictions\":[\"Is Character\",\"Board\"]
 					}
 				}",
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"character for Wheel of Fortune to swap N of (2/2)\",
-						\"restrictionsToCheck\":[103,600]
+						\"blurb\":\"character for Wheel of Fortune to swap N of (2/2)\",
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Not Already Target\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Swap NESW\",
 					\"TargetIndices\":[-1,-2],
-					\"SwapN\":true
+					\"swapN\":true
 				}"
 			]
 		}

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using KompasNetworking;
+﻿using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 public abstract class Game : MonoBehaviour
 {
@@ -18,12 +15,12 @@ public abstract class Game : MonoBehaviour
 
     //game mechanics
     public BoardController boardCtrl;
-    public AnnihilationController AnnihilationCtrl;
+    public AnnihilationController annihilationCtrl;
     //game objects
     public GameObject boardObject;
 
     //list of card names 
-    public CardRepository CardRepo;
+    public CardRepository cardRepo;
 
     public abstract Player[] Players { get; }
     public int TurnPlayerIndex { get; protected set; } = 0;
@@ -32,8 +29,9 @@ public abstract class Game : MonoBehaviour
     //game data
     public abstract IEnumerable<GameCard> Cards { get; }
     public int FirstTurnPlayer { get; protected set; }
-    public int RoundCount = 1;
-    public int Leyload => RoundCount + boardCtrl.CardsWhere(c => c != null).Count;
+    public int RoundCount { get; protected set; } = 1;
+    public int TurnCount { get; protected set; } = 1;
+    public int Leyload => TurnCount;
 
     public TargetMode targetMode = TargetMode.Free;
 

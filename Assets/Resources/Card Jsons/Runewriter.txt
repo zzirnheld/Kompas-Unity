@@ -5,46 +5,56 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"Restrictions":[
+				"activationRestrictions":[
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"In Play"
 				]
 			},
-			"subeffectTypes":[8,303,404,1,405,12,304,350],
 			"subeffects":[
 				"{
-					\"CardRestriction\":
+					\"subeffType\":\"Choose From List\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"Rune for Runewriter to reshuffle\",
-						\"restrictionsToCheck\":[2,7,103],
+						\"blurb\":\"Rune for Runewriter to reshuffle\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Hand\"],
 						\"subtypesInclude\":[\"Rune\"]
 					},
-					\"MaxCanChoose\":1
+					\"maxCanChoose\":1
 				}",
 				"{
-					\"TargetIndex\":-1
+					\"subeffType\":\"Reshuffle\"
 				}",
 				"{
-					\"JumpTo\":5
+					\"subeffType\":\"Jump on Effect Impossible\",
+					\"jumpTo\":5
 				}",
 				"{
+					\"subeffType\":\"Choose From List\",
 					\"cardRestriction\":
 					{
-						\"Blurb\":\"Runer for Runewriter to search (to hand)\",
-						\"restrictionsToCheck\":[2,7,102,551],
+						\"blurb\":\"Runer for Runewriter to search (to hand)\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Index<=X\"],
 						\"subtypesInclude\":[\"Runer\"]
-					}
+					},
+					\"Max Can Choose\":1
 				}",
-				"{}",
 				"{
+					\"subeffType\":\"Clear Jump on Effect Impossible\"
+				}",
+				"{
+					\"subeffType\":\"Add Rest\",
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[7,102,551,600]
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<=X\",\"Not Already Target\"]
 					}
 				}",
-				"{}",
-				"{}"
+				"{
+					\"subeffType\":\"Rehand\"
+				}",
+				"{
+					\"subeffType\":\"Bottomdeck Rest\"
+				}"
 			]
 		}
 	],

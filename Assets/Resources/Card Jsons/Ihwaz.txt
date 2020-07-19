@@ -1,33 +1,36 @@
 {
 	"cardType":83,
 	"cardName":"Ihwaz",
-	"effText":"Can’t be cast normally. Swap two characters' positions",
+	"effText":"Can’t be cast normally. Swap two non-Augment cards' positions",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
-			"subeffectTypes":[0,0,310],
 			"subeffects":[
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"for Ihwaz to swap (1/2)\",
-						\"restrictionsToCheck\":[3,103]
+						\"blurb\":\"for Ihwaz to swap (1/2)\",
+						\"cardRestrictions\":[\"Not Augment\",\"Board\"]
 					}
 				}",
 				"{
-					\"boardRestriction\":
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
 					{
-						\"Blurb\":\"for Ihwaz to swap (2/2)\",
-						\"restrictionsToCheck\":[3,103,600]
+						\"blurb\":\"for Ihwaz to swap (2/2)\",
+						\"cardRestrictions\":[\"Not Augment\",\"Board\",\"Not Already Target\"]
 					}
 				}",
-				"{}"
+				"{
+					\"subeffType\":\"Swap\"
+				}"
 			]
 		}
 	],

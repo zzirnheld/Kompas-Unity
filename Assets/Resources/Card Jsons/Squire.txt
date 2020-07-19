@@ -4,25 +4,27 @@
 	"effText":"When you summon a Warrior, you can tribute me to gain a pip.",
 	"effects":[
 		{
-			"triggerCondition":401,
+			"triggerCondition":"Play",
 			"trigger":"{
-				\"Optional\":true,
+				\"optional\":true,
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[0,1,100,400],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
 					\"cardRestriction\":
 					{
-						\"restrictionsToCheck\":[2],
+						\"cardRestrictions\":[\"Subtypes Include\"],
 						\"subtypesInclude\":[\"Warrior\"]
 					}
 				}
 			}",
-			"subeffectTypes":[5,301,101],
 			"subeffects":[
-				"{}",
 				"{
-					\"TargetIndex\":-1
+					\"subeffType\":\"Target This\"
 				}",
 				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Add Pips\",
 					\"xMultiplier\":0,
 					\"xDivisor\":1,
 					\"modifier\":1,

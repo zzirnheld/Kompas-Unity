@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EndTurnSubeffect : ServerSubeffect
 {
-    public override void Resolve()
+    public override bool Resolve()
     {
         ServerGame.SwitchTurn();
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }

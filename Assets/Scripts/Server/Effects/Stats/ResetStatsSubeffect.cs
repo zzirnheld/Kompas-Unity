@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class ResetStatsSubeffect : ServerSubeffect
 {
-    public bool ResetN = false;
-    public bool ResetE = false;
-    public bool ResetS = false;
-    public bool ResetW = false;
-    public bool ResetC = false;
-    public bool ResetA = false;
+    public bool resetN = false;
+    public bool resetE = false;
+    public bool resetS = false;
+    public bool resetW = false;
+    public bool resetC = false;
+    public bool resetA = false;
 
-    public override void Resolve()
+    public override bool Resolve()
     {
-        if (ResetN) Target.SetN(Target.BaseN, Effect);
-        if (ResetE) Target.SetE(Target.BaseE, Effect);
-        if (ResetS) Target.SetS(Target.BaseS, Effect);
-        if (ResetW) Target.SetW(Target.BaseW, Effect);
-        if (ResetC) Target.SetC(Target.BaseC, Effect);
-        if (ResetA) Target.SetA(Target.BaseA, Effect);
+        if (resetN) Target.SetN(Target.BaseN, Effect);
+        if (resetE) Target.SetE(Target.BaseE, Effect);
+        if (resetS) Target.SetS(Target.BaseS, Effect);
+        if (resetW) Target.SetW(Target.BaseW, Effect);
+        if (resetC) Target.SetC(Target.BaseC, Effect);
+        if (resetA) Target.SetA(Target.BaseA, Effect);
 
-        ServerEffect.ResolveNextSubeffect();
+        return ServerEffect.ResolveNextSubeffect();
     }
 }
