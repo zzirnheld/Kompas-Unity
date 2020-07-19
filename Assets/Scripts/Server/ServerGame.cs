@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net.Sockets;
 using UnityEngine;
 
@@ -31,7 +29,7 @@ public class ServerGame : Game {
     public void Init(UIController uiCtrl, CardRepository cardRepo)
     {
         this.uiCtrl = uiCtrl;
-        CardRepo = cardRepo;
+        base.cardRepo = cardRepo;
     }
 
     #region players and game starting
@@ -72,7 +70,7 @@ public class ServerGame : Game {
         if (uiCtrl.DebugMode) return true;
         if (deck.Count < 50) return false;
         //first name should be that of the Avatar
-        if (CardRepo.GetCardFromName(deck[0]).cardType != 'C') return false;
+        if (cardRepo.GetCardFromName(deck[0]).cardType != 'C') return false;
 
         return true;
     }
@@ -107,7 +105,7 @@ public class ServerGame : Game {
         lock (AddCardsLock)
         {
             //otherwise, set the avatar and rest of the deck
-            avatar = CardRepo.InstantiateServerAvatar(deck[0], this, player, cardCount++);
+            avatar = cardRepo.InstantiateServerAvatar(deck[0], this, player, cardCount++);
             if (avatar == null)
             {
                 Debug.LogError($"Error in loading avatar for {decklist}");
@@ -124,7 +122,7 @@ public class ServerGame : Game {
             ServerGameCard card;
             lock (AddCardsLock)
             {
-                card = CardRepo.InstantiateServerNonAvatar(name, this, player, cardCount);
+                card = cardRepo.InstantiateServerNonAvatar(name, this, player, cardCount);
                 cardsByID.Add(cardCount, card);
                 cardCount++;
             }

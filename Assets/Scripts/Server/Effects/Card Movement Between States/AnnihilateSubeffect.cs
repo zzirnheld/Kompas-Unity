@@ -9,7 +9,7 @@ public class AnnihilateSubeffect : CardChangeStateSubeffect
         if (Target == null) return ServerEffect.EffectImpossible();
         else
         {
-            if (Game.AnnihilationCtrl.Annihilate(Target, Effect)) return ServerEffect.ResolveNextSubeffect();
+            if (Game.annihilationCtrl.Annihilate(Target, Effect)) return ServerEffect.ResolveNextSubeffect();
             else return ServerEffect.EffectImpossible();
         }
     }

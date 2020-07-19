@@ -3626,10 +3626,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiCtrl: {fileID: 1615817260}
   boardCtrl: {fileID: 1957049984}
-  AnnihilationCtrl: {fileID: 803167337}
+  annihilationCtrl: {fileID: 803167337}
   boardObject: {fileID: 1957049979}
-  CardRepo: {fileID: 492080564}
-  RoundCount: 1
+  cardRepo: {fileID: 492080564}
   targetMode: 0
   AvatarPrefab: {fileID: 3737252039058614834, guid: 6342a8b7ecbc4e94aa211dd4cf95f7c6,
     type: 3}
@@ -3652,7 +3651,7 @@ MonoBehaviour:
   clientNotifier: {fileID: 2001968207}
   clientUICtrl: {fileID: 1615817260}
   CurrCardRestriction:
-    restrictionsToCheck: 
+    cardRestrictions: []
     costsLessThan: 0
     nameIs: 
     subtypesInclude: []
@@ -3661,11 +3660,13 @@ MonoBehaviour:
     locations: 
     costMultiplier: 1
     costDivisor: 1
-    Blurb: 
+    cSpaces: 0
+    adjacencySubtypes: []
+    blurb: 
   CurrSpaceRestriction:
-    restrictionsToCheck: 
+    spaceRestrictions: []
     adjacencyRestriction:
-      restrictionsToCheck: 
+      cardRestrictions: []
       costsLessThan: 0
       nameIs: 
       subtypesInclude: []
@@ -3674,12 +3675,11 @@ MonoBehaviour:
       locations: 
       costMultiplier: 1
       costDivisor: 1
-      Blurb: 
-      onBoardRestrictions: 
       cSpaces: 0
-      AdjacencySubtypes: []
-    ConnectednessRestriction:
-      restrictionsToCheck: 
+      adjacencySubtypes: []
+      blurb: 
+    connectednessRestriction:
+      cardRestrictions: []
       costsLessThan: 0
       nameIs: 
       subtypesInclude: []
@@ -3688,12 +3688,11 @@ MonoBehaviour:
       locations: 
       costMultiplier: 1
       costDivisor: 1
-      Blurb: 
-      onBoardRestrictions: 
       cSpaces: 0
-      AdjacencySubtypes: []
-    C: 0
-    Blurb: 
+      adjacencySubtypes: []
+      blurb: 
+    constant: 0
+    blurb: 
 --- !u!114 &492080564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9287,7 +9286,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 306.22, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 306.22, y: 42.35}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1110181314
 MonoBehaviour:
@@ -9316,8 +9315,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalFit: 2
-  m_VerticalFit: 2
+  m_HorizontalFit: 0
+  m_VerticalFit: 0
 --- !u!114 &1110181316
 MonoBehaviour:
   m_ObjectHideFlags: 0

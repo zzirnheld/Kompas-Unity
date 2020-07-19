@@ -72,12 +72,12 @@ public class ClientNetworkController : NetworkController {
                 ClientGame.Delete(card);
                 break;
             case Packet.Command.AddAsFriendly:
-                var friendlyCard = ClientGame.CardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, Friendly, packet.CardIDToBe);
+                var friendlyCard = ClientGame.cardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, Friendly, packet.CardIDToBe);
                 ClientGame.cardsByID.Add(packet.CardIDToBe, friendlyCard);
                 ClientGame.friendlyDeckCtrl.PushTopdeck(friendlyCard);
                 break;
             case Packet.Command.AddAsEnemy:
-                var added = ClientGame.CardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, Enemy, packet.CardIDToBe);
+                var added = ClientGame.cardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, Enemy, packet.CardIDToBe);
                 ClientGame.cardsByID.Add(packet.CardIDToBe, added);
                 //TODO make it always ask for cards from enemy deck
                 switch (packet.Location)
@@ -89,7 +89,7 @@ public class ClientNetworkController : NetworkController {
                         added.Discard();
                         break;
                     case CardLocation.Annihilation:
-                        added.Game.AnnihilationCtrl.Annihilate(added);
+                        added.Game.annihilationCtrl.Annihilate(added);
                         break;
                     default:
                         Debug.Log("Tried to add an enemy card to " + packet.Location);
@@ -97,7 +97,7 @@ public class ClientNetworkController : NetworkController {
                 }
                 break;
             case Packet.Command.AddAsEnemyAndAttach:
-                var addAndAttach = ClientGame.CardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, Enemy, packet.CardIDToBe);
+                var addAndAttach = ClientGame.cardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, Enemy, packet.CardIDToBe);
                 ClientGame.cardsByID.Add(packet.CardIDToBe, addAndAttach);
                 ClientGame.boardCtrl.GetCardAt(packet.X, packet.Y).AddAugment(addAndAttach);
                 break;
@@ -146,7 +146,7 @@ public class ClientNetworkController : NetworkController {
                 card?.Bottomdeck();
                 break;
             case Packet.Command.Annihilate:
-                ClientGame.AnnihilationCtrl.Annihilate(card);
+                ClientGame.annihilationCtrl.Annihilate(card);
                 break;
             case Packet.Command.SetN:
                 card?.SetN(packet.Stat);

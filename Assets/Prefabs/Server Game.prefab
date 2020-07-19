@@ -450,10 +450,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiCtrl: {fileID: 0}
   boardCtrl: {fileID: 1207085433549217554}
-  AnnihilationCtrl: {fileID: 8090786031170266276}
+  annihilationCtrl: {fileID: 8090786031170266276}
   boardObject: {fileID: 5600903428081141519}
   CardRepo: {fileID: 0}
-  maxCardsOnField: 0
+  RoundCount: 1
+  TurnCount: 1
   targetMode: 0
   EffectsController: {fileID: 657906863238247598}
   ServerPlayers:

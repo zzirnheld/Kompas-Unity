@@ -18,6 +18,6 @@ public class HangingAnnihilationEffect : HangingEffect
 
     protected override void Resolve()
     {
-        serverGame.AnnihilationCtrl.Annihilate(target);
+        serverGame.annihilationCtrl.Annihilate(target);
     }
 }
