@@ -1,158 +1,165 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Net.Sockets;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using KompasNetworking;
+using KompasCore.GameCore;
+using KompasCore.Effects;
+using KompasCore.Cards;
+using KompasClient.Cards;
+using KompasClient.Networking;
+using KompasClient.UI;
 
-public class ClientGame : Game {
-
-    public static ClientGame mainClientGame;
-
-    public GameObject AvatarPrefab;
-
-    public override Player[] Players => ClientPlayers;
-    public ClientPlayer[] ClientPlayers;
-    
-    public Dictionary<int, ClientGameCard> cardsByID = new Dictionary<int, ClientGameCard>();
-    public IEnumerable<ClientGameCard> ClientCards => cardsByID.Values;
-    public override IEnumerable<GameCard> Cards => ClientCards;
-
-    private bool friendlyTurn;
-
-    public HandController friendlyHandCtrl;
-    public DeckController friendlyDeckCtrl;
-    public DiscardController friendlyDiscardCtrl;
-
-    public GameObject friendlyHandObj;
-    public GameObject friendlyDeckObj;
-    public GameObject friendlyDiscardObj;
-
-    public ClientDummyHandController enemyHandCtrl;
-    public DeckController enemyDeckCtrl;
-    public DiscardController enemyDiscardCtrl;
-
-    public GameObject enemyHandObj;
-    public GameObject enemyDeckObj;
-    public GameObject enemyDiscardObj;
-
-    public ClientNetworkController clientNetworkCtrl;
-    public ClientNotifier clientNotifier;
-    public ClientUIController clientUICtrl;
-
-    //targeting
-    public CardRestriction CurrCardRestriction;
-    public SpaceRestriction CurrSpaceRestriction;
-
-    private void Start()
+namespace KompasClient.GameCore
+{
+    public class ClientGame : Game
     {
-        mainGame = this;
-        mainClientGame = this;
-    }
 
-    public override void OnClickBoard(int x, int y)
-    {
-        clientNotifier.RequestSpaceTarget(x, y);
-    }
+        public static ClientGame mainClientGame;
 
-    public void PutCardsBack()
-    {
-        foreach (var c in Cards) c.PutBack();
-    }
+        public GameObject AvatarPrefab;
 
-    //game mechanics
-    #region setting pips
-    public void SetFriendlyPips(int num)
-    {
-        Players[0].Pips = num;
-        uiCtrl.UpdateFriendlyPips(num);
-    }
+        public override Player[] Players => ClientPlayers;
+        public ClientPlayer[] ClientPlayers;
 
-    public void SetEnemyPips(int num)
-    {
-        Players[1].Pips = num;
-        uiCtrl.UpdateEnemyPips(num);
-    }
-    #endregion
+        public Dictionary<int, ClientGameCard> cardsByID = new Dictionary<int, ClientGameCard>();
+        public IEnumerable<ClientGameCard> ClientCards => cardsByID.Values;
+        public override IEnumerable<GameCard> Cards => ClientCards;
 
-    public void SetAvatar(int player, string avatarName, int avatarID)
-    {
-        if (player >= 2) throw new System.ArgumentException();
+        private bool friendlyTurn;
 
-        var owner = ClientPlayers[player];
-        var avatar = cardRepo.InstantiateClientAvatar(avatarName, this, owner, avatarID);
-        owner.Avatar = avatar;
-        avatar.Play(player * 6, player * 6, owner);
-    }
+        public HandController friendlyHandCtrl;
+        public DeckController friendlyDeckCtrl;
+        public DiscardController friendlyDiscardCtrl;
 
-    public void Delete(GameCard card)
-    {
-        card.Remove();
-        Destroy(card.gameObject);
-    }
+        public GameObject friendlyHandObj;
+        public GameObject friendlyDeckObj;
+        public GameObject friendlyDiscardObj;
 
-    //requesting
-    public void RequestMove(GameCard card, int toX, int toY)
-    {
-        clientNotifier.RequestMove(card, toX, toY);
-    }
+        public ClientDummyHandController enemyHandCtrl;
+        public DeckController enemyDeckCtrl;
+        public DiscardController enemyDiscardCtrl;
 
-    public void RequestPlay(GameCard card, int toX, int toY)
-    {
-        clientNotifier.RequestPlay(card, toX, toY);
-    }
+        public GameObject enemyHandObj;
+        public GameObject enemyDeckObj;
+        public GameObject enemyDiscardObj;
 
-    public void TargetCard(GameCard card)
-    {
-        if(CurrCardRestriction == null)
+        public ClientNetworkController clientNetworkCtrl;
+        public ClientNotifier clientNotifier;
+        public ClientUIController clientUICtrl;
+
+        //targeting
+        public CardRestriction CurrCardRestriction;
+        public SpaceRestriction CurrSpaceRestriction;
+
+        private void Start()
         {
-            Debug.Log($"Called target card on {card.CardName} while curr card restriction is null");
-            return;
+            mainGame = this;
+            mainClientGame = this;
         }
 
-        //if the player is currently looking for a target on the board,
-        if (targetMode == TargetMode.BoardTarget || targetMode == TargetMode.HandTarget)
+        public override void OnClickBoard(int x, int y)
         {
-            //check if the target fits the restriction, according to us
-            if (CurrCardRestriction.Evaluate(card, clientNetworkCtrl.X))
+            clientNotifier.RequestSpaceTarget(x, y);
+        }
+
+        public void PutCardsBack()
+        {
+            foreach (var c in Cards) c.PutBack();
+        }
+
+        //game mechanics
+        #region setting pips
+        public void SetFriendlyPips(int num)
+        {
+            Players[0].Pips = num;
+            uiCtrl.UpdateFriendlyPips(num);
+        }
+
+        public void SetEnemyPips(int num)
+        {
+            Players[1].Pips = num;
+            uiCtrl.UpdateEnemyPips(num);
+        }
+        #endregion
+
+        public void SetAvatar(int player, string avatarName, int avatarID)
+        {
+            if (player >= 2) throw new System.ArgumentException();
+
+            var owner = ClientPlayers[player];
+            var avatar = cardRepo.InstantiateClientAvatar(avatarName, this, owner, avatarID);
+            owner.Avatar = avatar;
+            avatar.Play(player * 6, player * 6, owner);
+        }
+
+        public void Delete(GameCard card)
+        {
+            card.Remove();
+            Destroy(card.gameObject);
+        }
+
+        //requesting
+        public void RequestMove(GameCard card, int toX, int toY)
+        {
+            clientNotifier.RequestMove(card, toX, toY);
+        }
+
+        public void RequestPlay(GameCard card, int toX, int toY)
+        {
+            clientNotifier.RequestPlay(card, toX, toY);
+        }
+
+        public void TargetCard(GameCard card)
+        {
+            if (CurrCardRestriction == null)
             {
-                //if it fits the restriction, send the proposed target to the server
-                clientNotifier.RequestTarget(card);
+                Debug.Log($"Called target card on {card.CardName} while curr card restriction is null");
+                return;
+            }
 
-                //put the relevant card back
-                card.PutBack();
+            //if the player is currently looking for a target on the board,
+            if (targetMode == TargetMode.BoardTarget || targetMode == TargetMode.HandTarget)
+            {
+                //check if the target fits the restriction, according to us
+                if (CurrCardRestriction.Evaluate(card, clientNetworkCtrl.X))
+                {
+                    //if it fits the restriction, send the proposed target to the server
+                    clientNotifier.RequestTarget(card);
 
-                //and change the game's target mode TODO should this do this
-                targetMode = TargetMode.OnHold;
+                    //put the relevant card back
+                    card.PutBack();
+
+                    //and change the game's target mode TODO should this do this
+                    targetMode = TargetMode.OnHold;
+                }
+            }
+            else
+            {
+                Debug.LogError($"Tried to target card {card.CardName} while in not understood target mode {targetMode}");
             }
         }
-        else
+
+        public void SetFirstTurnPlayer(int playerIndex)
         {
-            Debug.LogError($"Tried to target card {card.CardName} while in not understood target mode {targetMode}");
+            FirstTurnPlayer = TurnPlayerIndex = playerIndex;
+            clientUICtrl.ChangeTurn(playerIndex);
+            clientUICtrl.HideGetDecklistUI();
+            RoundCount = 1;
+            TurnCount = 1;
+            clientUICtrl.Leyload = Leyload;
         }
-    }
 
-    public void SetFirstTurnPlayer(int playerIndex)
-    {
-        FirstTurnPlayer = TurnPlayerIndex = playerIndex;
-        clientUICtrl.ChangeTurn(playerIndex);
-        clientUICtrl.HideGetDecklistUI();
-        RoundCount = 1;
-        TurnCount = 1;
-        clientUICtrl.Leyload = Leyload;
-    }
+        public void EndTurn()
+        {
+            TurnPlayerIndex = 1 - TurnPlayerIndex;
+            ResetCardsForTurn();
+            clientUICtrl.ChangeTurn(TurnPlayerIndex);
+            if (TurnPlayerIndex == FirstTurnPlayer) RoundCount++;
+            TurnCount++;
+            clientUICtrl.Leyload = Leyload;
+        }
 
-    public void EndTurn()
-    {
-        TurnPlayerIndex = 1 - TurnPlayerIndex;
-        ResetCardsForTurn();
-        clientUICtrl.ChangeTurn(TurnPlayerIndex);
-        if(TurnPlayerIndex == FirstTurnPlayer) RoundCount++;
-        TurnCount++;
-        clientUICtrl.Leyload = Leyload;
-    }
-
-    public override GameCard GetCardWithID(int id)
-    {
-        return cardsByID.ContainsKey(id) ? cardsByID[id] : null;
+        public override GameCard GetCardWithID(int id)
+        {
+            return cardsByID.ContainsKey(id) ? cardsByID[id] : null;
+        }
     }
 }

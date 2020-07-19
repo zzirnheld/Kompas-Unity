@@ -1,295 +1,305 @@
-﻿using System.Collections.Generic;
+﻿using KompasCore.Cards;
+using KompasCore.Effects;
+using KompasCore.GameCore;
+using KompasCore.UI;
+using KompasServer.Cards;
+using KompasServer.Effects;
+using System.Collections.Generic;
 using System.Net.Sockets;
 using UnityEngine;
 
-public class ServerGame : Game {
-
-    //model is basically: players request to the server to do something:
-    //if server oks, it tells all players to do the thing
-    //if server doesn't ok, it sends to all players a "hold up reset everything to how it should be"
-    
-    public Dictionary<int, ServerGameCard> cardsByID = new Dictionary<int, ServerGameCard>();
-    public IEnumerable<ServerGameCard> ServerCards => cardsByID.Values;
-    public override IEnumerable<GameCard> Cards => ServerCards;
-
-    public readonly object AddCardsLock = new object();
-    public readonly object CheckAvatarsLock = new object();
-
-    public ServerEffectsController EffectsController;
-
-    public override Player[] Players => ServerPlayers;
-    public ServerPlayer[] ServerPlayers;
-    public ServerPlayer TurnServerPlayer => ServerPlayers[TurnPlayerIndex];
-    public int cardCount = 0;
-    private int currPlayerCount = 0; //current number of players. shouldn't exceed 2
-
-    public ServerEffect CurrEffect { get; set; }
-    public override IStackable CurrStackEntry => EffectsController.CurrStackEntry;
-
-    public void Init(UIController uiCtrl, CardRepository cardRepo)
+namespace KompasServer.GameCore
+{
+    public class ServerGame : Game
     {
-        this.uiCtrl = uiCtrl;
-        base.cardRepo = cardRepo;
-    }
 
-    #region players and game starting
-    public int AddPlayer(TcpClient tcpClient)
-    {
-        Debug.Log($"Adding player #{currPlayerCount}");
-        if (currPlayerCount >= 2) return -1;
+        //model is basically: players request to the server to do something:
+        //if server oks, it tells all players to do the thing
+        //if server doesn't ok, it sends to all players a "hold up reset everything to how it should be"
 
-        Players[currPlayerCount].SetInfo(tcpClient, currPlayerCount);
-        currPlayerCount++;
+        public Dictionary<int, ServerGameCard> cardsByID = new Dictionary<int, ServerGameCard>();
+        public IEnumerable<ServerGameCard> ServerCards => cardsByID.Values;
+        public override IEnumerable<GameCard> Cards => ServerCards;
 
-        //if at least two players, start the game startup process by getting avatars
-        if (currPlayerCount >= 2) GetDecks();
+        public readonly object AddCardsLock = new object();
+        public readonly object CheckAvatarsLock = new object();
 
-        return currPlayerCount;
-    }
+        public ServerEffectsController EffectsController;
 
-    private void GetDeckFrom(ServerPlayer player)
-    {
-        player.ServerNotifier.GetDecklist();
-    }
+        public override Player[] Players => ServerPlayers;
+        public ServerPlayer[] ServerPlayers;
+        public ServerPlayer TurnServerPlayer => ServerPlayers[TurnPlayerIndex];
+        public int cardCount = 0;
+        private int currPlayerCount = 0; //current number of players. shouldn't exceed 2
 
-    public void GetDecks()
-    {
-        //ask the players for their avatars (and decks at the same time)
-        foreach(ServerPlayer p in ServerPlayers)
+        public ServerEffect CurrEffect { get; set; }
+        public override IStackable CurrStackEntry => EffectsController.CurrStackEntry;
+
+        public void Init(UIController uiCtrl, CardRepository cardRepo)
         {
-            GetDeckFrom(p);
+            this.uiCtrl = uiCtrl;
+            base.cardRepo = cardRepo;
         }
 
-        //if avatars are returned, then set the pips to start with and start the game
-        //that should happen in server network controller
-    }
-
-    //for future logic like limited cards, etc.
-    private bool ValidDeck(List<string> deck)
-    {
-        if (uiCtrl.DebugMode) return true;
-        if (deck.Count < 50) return false;
-        //first name should be that of the Avatar
-        if (cardRepo.GetCardFromName(deck[0]).cardType != 'C') return false;
-
-        return true;
-    }
-
-    private List<string> SanitizeDeck(string decklist)
-    {
-        string[] cards = decklist.Split('\n');
-        List<string> deck = new List<string>();
-        foreach (string name in cards)
+        #region players and game starting
+        public int AddPlayer(TcpClient tcpClient)
         {
-            if (string.IsNullOrWhiteSpace(name)) continue;
-            if (CardRepository.CardExists(name)) deck.Add(name);
+            Debug.Log($"Adding player #{currPlayerCount}");
+            if (currPlayerCount >= 2) return -1;
+
+            Players[currPlayerCount].SetInfo(tcpClient, currPlayerCount);
+            currPlayerCount++;
+
+            //if at least two players, start the game startup process by getting avatars
+            if (currPlayerCount >= 2) GetDecks();
+
+            return currPlayerCount;
         }
 
-        return deck;
-    }
-
-    public void SetDeck(ServerPlayer player, string decklist)
-    {
-        List<string> deck = SanitizeDeck(decklist);
-
-        if (!ValidDeck(deck))
+        private void GetDeckFrom(ServerPlayer player)
         {
-            Debug.LogError($"INVALID DECK {decklist}");
-            //request deck again from that player
-            GetDeckFrom(player);
-            return;
+            player.ServerNotifier.GetDecklist();
         }
-        else player.ServerNotifier.DeckAccepted();
 
-        AvatarServerGameCard avatar;
-        lock (AddCardsLock)
+        public void GetDecks()
         {
-            //otherwise, set the avatar and rest of the deck
-            avatar = cardRepo.InstantiateServerAvatar(deck[0], this, player, cardCount++);
-            if (avatar == null)
+            //ask the players for their avatars (and decks at the same time)
+            foreach (ServerPlayer p in ServerPlayers)
             {
-                Debug.LogError($"Error in loading avatar for {decklist}");
+                GetDeckFrom(p);
+            }
+
+            //if avatars are returned, then set the pips to start with and start the game
+            //that should happen in server network controller
+        }
+
+        //for future logic like limited cards, etc.
+        private bool ValidDeck(List<string> deck)
+        {
+            if (uiCtrl.DebugMode) return true;
+            if (deck.Count < 50) return false;
+            //first name should be that of the Avatar
+            if (cardRepo.GetCardFromName(deck[0]).cardType != 'C') return false;
+
+            return true;
+        }
+
+        private List<string> SanitizeDeck(string decklist)
+        {
+            string[] cards = decklist.Split('\n');
+            List<string> deck = new List<string>();
+            foreach (string name in cards)
+            {
+                if (string.IsNullOrWhiteSpace(name)) continue;
+                if (CardRepository.CardExists(name)) deck.Add(name);
+            }
+
+            return deck;
+        }
+
+        public void SetDeck(ServerPlayer player, string decklist)
+        {
+            List<string> deck = SanitizeDeck(decklist);
+
+            if (!ValidDeck(deck))
+            {
+                Debug.LogError($"INVALID DECK {decklist}");
+                //request deck again from that player
                 GetDeckFrom(player);
                 return;
             }
-        }
+            else player.ServerNotifier.DeckAccepted();
 
-        //take out avatar before telling player to add the rest of the deck
-        deck.RemoveAt(0);
-
-        foreach(string name in deck)
-        {
-            ServerGameCard card;
+            AvatarServerGameCard avatar;
             lock (AddCardsLock)
             {
-                card = cardRepo.InstantiateServerNonAvatar(name, this, player, cardCount);
-                cardsByID.Add(cardCount, card);
-                cardCount++;
+                //otherwise, set the avatar and rest of the deck
+                avatar = cardRepo.InstantiateServerAvatar(deck[0], this, player, cardCount++);
+                if (avatar == null)
+                {
+                    Debug.LogError($"Error in loading avatar for {decklist}");
+                    GetDeckFrom(player);
+                    return;
+                }
             }
-            player.deckCtrl.ShuffleIn(card);
-            if (card != null) Debug.Log($"Adding new card {card.CardName} with id {card.ID}");
-            player.ServerNotifier.NotifyAddToDeck(card);
-        }
 
-        Debug.Log($"Setting avatar for player {player.index}");
-        player.Avatar = avatar;
-        avatar.Play(player.index * 6, player.index * 6, player, null);
-        //if both players have decks now, then start the game
-        lock (CheckAvatarsLock)
-        {
-            foreach (Player p in Players)
+            //take out avatar before telling player to add the rest of the deck
+            deck.RemoveAt(0);
+
+            foreach (string name in deck)
             {
-                if (p.Avatar == null) return;
+                ServerGameCard card;
+                lock (AddCardsLock)
+                {
+                    card = cardRepo.InstantiateServerNonAvatar(name, this, player, cardCount);
+                    cardsByID.Add(cardCount, card);
+                    cardCount++;
+                }
+                player.deckCtrl.ShuffleIn(card);
+                if (card != null) Debug.Log($"Adding new card {card.CardName} with id {card.ID}");
+                player.ServerNotifier.NotifyAddToDeck(card);
             }
+
+            Debug.Log($"Setting avatar for player {player.index}");
+            player.Avatar = avatar;
+            avatar.Play(player.index * 6, player.index * 6, player, null);
+            //if both players have decks now, then start the game
+            lock (CheckAvatarsLock)
+            {
+                foreach (Player p in Players)
+                {
+                    if (p.Avatar == null) return;
+                }
+            }
+            StartGame();
         }
-        StartGame();
-    }
 
-    public void StartGame()
-    {
-        //set initial pips (based on avatars' S)
-        Debug.Log($"Starting game. Player 0 avatar is null? {Players[0].Avatar == null}. Player 1 is null? {Players[1].Avatar == null}.");
-        Players[0].Pips = 0; //Players[1].Avatar.S / 2;
-        Players[1].Pips = 0; //Players[0].Avatar.S / 2;
-
-        //determine who goes first and tell the players
-        FirstTurnPlayer = TurnPlayerIndex = Random.value > 0.5f ? 0 : 1;
-        ServerPlayers[TurnPlayerIndex].ServerNotifier.YoureFirst();
-        ServerPlayers[1 - TurnPlayerIndex].ServerNotifier.YoureSecond();
-
-        foreach(var player in ServerPlayers)
+        public void StartGame()
         {
-            DrawX(player.index, 5);
-        }
-        GiveTurnPlayerPips();
-    }
-    #endregion
+            //set initial pips (based on avatars' S)
+            Debug.Log($"Starting game. Player 0 avatar is null? {Players[0].Avatar == null}. Player 1 is null? {Players[1].Avatar == null}.");
+            Players[0].Pips = 0; //Players[1].Avatar.S / 2;
+            Players[1].Pips = 0; //Players[0].Avatar.S / 2;
 
-    public List<GameCard> DrawX(int player, int x, IStackable stackSrc = null)
-    {
-        List<GameCard> drawn = new List<GameCard>();
-        Player controller = Players[player];
-        int i;
-        for (i = 0; i < x; i++)
+            //determine who goes first and tell the players
+            FirstTurnPlayer = TurnPlayerIndex = Random.value > 0.5f ? 0 : 1;
+            ServerPlayers[TurnPlayerIndex].ServerNotifier.YoureFirst();
+            ServerPlayers[1 - TurnPlayerIndex].ServerNotifier.YoureSecond();
+
+            foreach (var player in ServerPlayers)
+            {
+                DrawX(player.index, 5);
+            }
+            GiveTurnPlayerPips();
+        }
+        #endregion
+
+        public List<GameCard> DrawX(int player, int x, IStackable stackSrc = null)
         {
-            var toDraw = controller.deckCtrl.PopTopdeck();
-            if (toDraw == null) break;
-            var eachDrawContext = new ActivationContext(card: toDraw, stackable: stackSrc, triggerer: controller);
-            EffectsController.TriggerForCondition(Trigger.EachDraw, eachDrawContext);
-            toDraw.Rehand(controller, stackSrc);
-            drawn.Add(toDraw);
+            List<GameCard> drawn = new List<GameCard>();
+            Player controller = Players[player];
+            int i;
+            for (i = 0; i < x; i++)
+            {
+                var toDraw = controller.deckCtrl.PopTopdeck();
+                if (toDraw == null) break;
+                var eachDrawContext = new ActivationContext(card: toDraw, stackable: stackSrc, triggerer: controller);
+                EffectsController.TriggerForCondition(Trigger.EachDraw, eachDrawContext);
+                toDraw.Rehand(controller, stackSrc);
+                drawn.Add(toDraw);
+            }
+            var context = new ActivationContext(stackable: stackSrc, triggerer: controller, x: i);
+            EffectsController.TriggerForCondition(Trigger.DrawX, context);
+            return drawn;
         }
-        var context = new ActivationContext(stackable: stackSrc, triggerer: controller, x: i);
-        EffectsController.TriggerForCondition(Trigger.DrawX, context);
-        return drawn;
-    }
-    public GameCard Draw(int player, IStackable stackSrc = null)
-    {
-        var drawn = DrawX(player, 1, stackSrc);
-        return drawn.Count > 0 ? drawn[0] : null;
-    }
-
-    public void GivePlayerPips(Player player, int pipsToSet)
-    {
-        player.Pips = pipsToSet;
-        if (player.index == 0) uiCtrl.UpdateFriendlyPips(pipsToSet);
-        else uiCtrl.UpdateEnemyPips(pipsToSet);
-    }
-
-    public void GiveTurnPlayerPips()
-    {
-        Debug.Log($"Giving turn player pips when leyload is {Leyload} on turn {TurnCount}");
-        GivePlayerPips(TurnPlayer, TurnPlayer.Pips + Leyload);
-    }
-
-    public void Attack(GameCard attacker, GameCard defender, ServerPlayer instigator, bool playerInitiated = false)
-    {
-        Debug.Log($"ServerNetworkController {attacker.CardName} attacking {defender.CardName} at {defender.BoardX}, {defender.BoardY}");
-        //push the attack to the stack, then check if any player wants to respond before resolving it
-        var attack = new ServerAttack(this, instigator, attacker, defender);
-        EffectsController.PushToStack(attack, new ActivationContext());
-        //check for triggers related to the attack (if this were in the constructor, the triggers would go on the stack under the attack
-        attack.Declare();
-        if (playerInitiated) attacker.AttacksThisTurn++;
-        EffectsController.CheckForResponse();
-    }
-
-    #region check validity
-    public bool ValidBoardPlay(GameCard card, int toX, int toY, ServerPlayer player)
-    {
-        if (uiCtrl.DebugMode)
+        public GameCard Draw(int player, IStackable stackSrc = null)
         {
-            Debug.LogWarning("Debug mode, always return true for valid play");
-            return true;
+            var drawn = DrawX(player, 1, stackSrc);
+            return drawn.Count > 0 ? drawn[0] : null;
         }
 
-        Debug.Log("Trying to play " + card.CardName + " to " + toX + ", " + toY);
-        return card != null
-            && boardCtrl.ValidIndices(toX, toY)
-            && boardCtrl.GetCardAt(toX, toY) == null
-            && card.PlayRestriction.EvaluateNormalPlay(toX, toY, player);
-    }
-
-    public bool ValidAugment(GameCard card, int toX, int toY, ServerPlayer player)
-    {
-        if (uiCtrl.DebugMode)
+        public void GivePlayerPips(Player player, int pipsToSet)
         {
-            Debug.LogWarning("Debug mode, always return true for valid augment");
-            return true;
+            player.Pips = pipsToSet;
+            if (player.index == 0) uiCtrl.UpdateFriendlyPips(pipsToSet);
+            else uiCtrl.UpdateEnemyPips(pipsToSet);
         }
 
-        return card != null
-            && card.CardType == 'A'
-            && boardCtrl.ValidIndices(toX, toY)
-            && boardCtrl.GetCardAt(toX, toY) != null
-            && card.PlayRestriction.EvaluateNormalPlay(toX, toY, player);
-    }
-
-    public bool ValidMove(GameCard toMove, int toX, int toY)
-    {
-        if (uiCtrl.DebugMode)
+        public void GiveTurnPlayerPips()
         {
-            Debug.LogWarning("Debug mode, always return true for valid move");
-            return true;
+            Debug.Log($"Giving turn player pips when leyload is {Leyload} on turn {TurnCount}");
+            GivePlayerPips(TurnPlayer, TurnPlayer.Pips + Leyload);
         }
 
-        if (toMove.Position == (toX, toY) || (toMove.IsAvatar && !toMove.Summoned)) return false;
-        return toMove.MovementRestriction.Evaluate(toX, toY);
-    }
-
-    public bool ValidAttack(GameCard attacker, GameCard defender, ServerPlayer instigator)
-    {
-        if (uiCtrl.DebugMode)
+        public void Attack(GameCard attacker, GameCard defender, ServerPlayer instigator, bool playerInitiated = false)
         {
-            Debug.LogWarning("Debug mode, always return true for valid attack");
-            return attacker != null && defender != null;
+            Debug.Log($"ServerNetworkController {attacker.CardName} attacking {defender.CardName} at {defender.BoardX}, {defender.BoardY}");
+            //push the attack to the stack, then check if any player wants to respond before resolving it
+            var attack = new ServerAttack(this, instigator, attacker, defender);
+            EffectsController.PushToStack(attack, new ActivationContext());
+            //check for triggers related to the attack (if this were in the constructor, the triggers would go on the stack under the attack
+            attack.Declare();
+            if (playerInitiated) attacker.AttacksThisTurn++;
+            EffectsController.CheckForResponse();
         }
 
-        return attacker.AttackRestriction.Evaluate(defender);
-    }
-    #endregion
+        #region check validity
+        public bool ValidBoardPlay(GameCard card, int toX, int toY, ServerPlayer player)
+        {
+            if (uiCtrl.DebugMode)
+            {
+                Debug.LogWarning("Debug mode, always return true for valid play");
+                return true;
+            }
 
-    public void SwitchTurn()
-    {
-        TurnPlayerIndex = 1 - TurnPlayerIndex;
-        if(TurnPlayerIndex == FirstTurnPlayer) RoundCount++;
-        TurnCount++;
-        GiveTurnPlayerPips();
-        
-        ResetCardsForTurn();
+            Debug.Log("Trying to play " + card.CardName + " to " + toX + ", " + toY);
+            return card != null
+                && boardCtrl.ValidIndices(toX, toY)
+                && boardCtrl.GetCardAt(toX, toY) == null
+                && card.PlayRestriction.EvaluateNormalPlay(toX, toY, player);
+        }
 
-        //draw for turn and store what was drawn
-        GameCard drawn = Draw(TurnPlayerIndex);
-        TurnServerPlayer.ServerNotifier.NotifySetTurn(this, TurnPlayerIndex);
+        public bool ValidAugment(GameCard card, int toX, int toY, ServerPlayer player)
+        {
+            if (uiCtrl.DebugMode)
+            {
+                Debug.LogWarning("Debug mode, always return true for valid augment");
+                return true;
+            }
 
-        //trigger turn start effects
-        var context = new ActivationContext(triggerer: TurnServerPlayer);
-        EffectsController.TriggerForCondition(Trigger.TurnStart, context);
-        EffectsController.CheckForResponse();
-    }
+            return card != null
+                && card.CardType == 'A'
+                && boardCtrl.ValidIndices(toX, toY)
+                && boardCtrl.GetCardAt(toX, toY) != null
+                && card.PlayRestriction.EvaluateNormalPlay(toX, toY, player);
+        }
 
-    public override GameCard GetCardWithID(int id)
-    {
-        return cardsByID.ContainsKey(id) ? cardsByID[id] : null;
+        public bool ValidMove(GameCard toMove, int toX, int toY)
+        {
+            if (uiCtrl.DebugMode)
+            {
+                Debug.LogWarning("Debug mode, always return true for valid move");
+                return true;
+            }
+
+            if (toMove.Position == (toX, toY) || (toMove.IsAvatar && !toMove.Summoned)) return false;
+            return toMove.MovementRestriction.Evaluate(toX, toY);
+        }
+
+        public bool ValidAttack(GameCard attacker, GameCard defender, ServerPlayer instigator)
+        {
+            if (uiCtrl.DebugMode)
+            {
+                Debug.LogWarning("Debug mode, always return true for valid attack");
+                return attacker != null && defender != null;
+            }
+
+            return attacker.AttackRestriction.Evaluate(defender);
+        }
+        #endregion
+
+        public void SwitchTurn()
+        {
+            TurnPlayerIndex = 1 - TurnPlayerIndex;
+            if (TurnPlayerIndex == FirstTurnPlayer) RoundCount++;
+            TurnCount++;
+            GiveTurnPlayerPips();
+
+            ResetCardsForTurn();
+
+            //draw for turn and store what was drawn
+            GameCard drawn = Draw(TurnPlayerIndex);
+            TurnServerPlayer.ServerNotifier.NotifySetTurn(this, TurnPlayerIndex);
+
+            //trigger turn start effects
+            var context = new ActivationContext(triggerer: TurnServerPlayer);
+            EffectsController.TriggerForCondition(Trigger.TurnStart, context);
+            EffectsController.CheckForResponse();
+        }
+
+        public override GameCard GetCardWithID(int id)
+        {
+            return cardsByID.ContainsKey(id) ? cardsByID[id] : null;
+        }
     }
 }

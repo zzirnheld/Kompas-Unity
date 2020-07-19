@@ -1,33 +1,33 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
-public abstract class CardBase : MonoBehaviour
+namespace KompasCore.Cards
 {
-    public const string SimpleSubtype = "Simple";
-    public const string DelayedSubtype = "Delayed";
-    public const string TerraformSubtype = "Terraform";
-    public const string VanishingSubtype = "Vanishing";
-
-    public char CardType { get; private set; }
-    public string CardName { get; private set; }
-    public string EffText { get; private set; }
-    public string SubtypeText { get; private set; }
-    public string[] Subtypes { get; private set; }
-
-    public Sprite detailedSprite;
-    public Sprite simpleSprite;
-
-    protected void SetInfo(SerializableCard card)
+    public abstract class CardBase : MonoBehaviour
     {
-        CardType = card.cardType;
-        CardName = card.cardName;
-        EffText = card.effText;
-        SubtypeText = card.subtypeText;
-        Subtypes = card.subtypes;
+        public const string SimpleSubtype = "Simple";
+        public const string DelayedSubtype = "Delayed";
+        public const string TerraformSubtype = "Terraform";
+        public const string VanishingSubtype = "Vanishing";
 
-        detailedSprite = Resources.Load<Sprite>("Detailed Sprites/" + CardName);
-        simpleSprite = Resources.Load<Sprite>("Simple Sprites/" + CardName);
+        public char CardType { get; private set; }
+        public string CardName { get; private set; }
+        public string EffText { get; private set; }
+        public string SubtypeText { get; private set; }
+        public string[] Subtypes { get; private set; }
+
+        public Sprite detailedSprite;
+        public Sprite simpleSprite;
+
+        protected void SetInfo(SerializableCard card)
+        {
+            CardType = card.cardType;
+            CardName = card.cardName;
+            EffText = card.effText;
+            SubtypeText = card.subtypeText;
+            Subtypes = card.subtypes;
+
+            detailedSprite = Resources.Load<Sprite>("Detailed Sprites/" + CardName);
+            simpleSprite = Resources.Load<Sprite>("Simple Sprites/" + CardName);
+        }
     }
 }

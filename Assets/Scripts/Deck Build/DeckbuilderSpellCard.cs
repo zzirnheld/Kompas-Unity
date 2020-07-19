@@ -1,31 +1,32 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using KompasCore.Cards;
 
-public class DeckbuilderSpellCard : DeckbuilderCard
+namespace KompasDeckbuilder
 {
-    public int c;
-    public string spellType;
-    public bool fast;
-    public string subtext;
-
-    public string StatsString
+    public class DeckbuilderSpellCard : DeckbuilderCard
     {
-        get { return $"D: {c}  Subtext: {subtext}"; }
-    }
+        public int c;
+        public string spellType;
+        public bool fast;
+        public string subtext;
 
-    public override void SetInfo(CardSearchController searchCtrl, SerializableCard spellCard, bool inDeck)
-    {
-        base.SetInfo(searchCtrl, spellCard, inDeck);
-        c = spellCard.c;
-        spellType = spellCard.spellType;
-        fast = spellCard.fast;
-        subtext = spellCard.subtext;
-    }
+        public string StatsString
+        {
+            get { return $"D: {c}  Subtext: {subtext}"; }
+        }
 
-    public override void Show()
-    {
-        base.Show();
-        cardSearchController.StatsText.text = StatsString;
+        public override void SetInfo(CardSearchController searchCtrl, SerializableCard spellCard, bool inDeck)
+        {
+            base.SetInfo(searchCtrl, spellCard, inDeck);
+            c = spellCard.c;
+            spellType = spellCard.spellType;
+            fast = spellCard.fast;
+            subtext = spellCard.subtext;
+        }
+
+        public override void Show()
+        {
+            base.Show();
+            cardSearchController.StatsText.text = StatsString;
+        }
     }
 }

@@ -1,14 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class SetXByTargetCostSubeffect : ServerSubeffect
+﻿namespace KompasServer.Effects
 {
-    public override bool Resolve()
+    public class SetXByTargetCostSubeffect : ServerSubeffect
     {
-        if(Target == null) return ServerEffect.EffectImpossible();
+        public override bool Resolve()
+        {
+            if (Target == null) return ServerEffect.EffectImpossible();
 
-        ServerEffect.X = Target.Cost;
-        return ServerEffect.ResolveNextSubeffect();
+            ServerEffect.X = Target.Cost;
+            return ServerEffect.ResolveNextSubeffect();
+        }
     }
 }

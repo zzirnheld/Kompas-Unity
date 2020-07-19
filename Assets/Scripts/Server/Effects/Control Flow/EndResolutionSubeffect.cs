@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class EndResolutionSubeffect : ServerSubeffect
+﻿namespace KompasServer.Effects
 {
-    public override bool Resolve()
+    public class EndResolutionSubeffect : ServerSubeffect
     {
-        return ServerEffect.ResolveSubeffect(ServerEffect.Subeffects.Length);
+        public override bool Resolve()
+        {
+            return ServerEffect.ResolveSubeffect(ServerEffect.Subeffects.Length);
+        }
     }
 }

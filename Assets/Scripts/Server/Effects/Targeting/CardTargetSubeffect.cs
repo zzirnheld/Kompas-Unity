@@ -1,32 +1,35 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using KompasCore.Cards;
+using KompasCore.Effects;
 using UnityEngine;
 
-public abstract class CardTargetSubeffect : ServerSubeffect
+namespace KompasServer.Effects
 {
-    public CardRestriction cardRestriction = new CardRestriction();
-
-    public override void Initialize(ServerEffect eff, int subeffIndex)
+    public abstract class CardTargetSubeffect : ServerSubeffect
     {
-        base.Initialize(eff, subeffIndex);
-        cardRestriction.Initialize(this);
-    }
+        public CardRestriction cardRestriction = new CardRestriction();
 
-    /// <summary>
-    /// Check if the card passed is a valid target, and if it is, continue the effect
-    /// </summary>
-    public virtual bool AddTargetIfLegal(GameCard card)
-    {
-        //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
-        if (cardRestriction.Evaluate(card))
+        public override void Initialize(ServerEffect eff, int subeffIndex)
         {
-            Debug.Log("Adding " + card.CardName + " as target");
-            ServerEffect.AddTarget(card);
-            EffectController.ServerNotifier.AcceptTarget();
-            ServerEffect.ResolveNextSubeffect();
-            return true;
+            base.Initialize(eff, subeffIndex);
+            cardRestriction.Initialize(this);
         }
 
-        return false;
+        /// <summary>
+        /// Check if the card passed is a valid target, and if it is, continue the effect
+        /// </summary>
+        public virtual bool AddTargetIfLegal(GameCard card)
+        {
+            //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
+            if (cardRestriction.Evaluate(card))
+            {
+                Debug.Log("Adding " + card.CardName + " as target");
+                ServerEffect.AddTarget(card);
+                EffectController.ServerNotifier.AcceptTarget();
+                ServerEffect.ResolveNextSubeffect();
+                return true;
+            }
+
+            return false;
+        }
     }
 }

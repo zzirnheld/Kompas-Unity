@@ -1,14 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using KompasCore.Effects;
 
-public class DummyCardTargetSubeffect : DummySubeffect
+namespace KompasClient.Effects
 {
-    public CardRestriction cardRestriction;
-
-    public override void Initialize(ClientEffect eff, int subeffIndex)
+    public class DummyCardTargetSubeffect : DummySubeffect
     {
-        base.Initialize(eff, subeffIndex);
-        cardRestriction.Initialize(this);
+        public CardRestriction cardRestriction;
+
+        public override void Initialize(ClientEffect eff, int subeffIndex)
+        {
+            base.Initialize(eff, subeffIndex);
+            cardRestriction.Initialize(this);
+        }
     }
 }

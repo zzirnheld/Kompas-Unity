@@ -1,52 +1,54 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using KompasCore.Effects;
+using KompasServer.GameCore;
 
-public abstract class XByGamestateSubeffect : ServerSubeffect
+namespace KompasServer.Effects
 {
-    public const string HandSize = "Hand Size";
-    public const string DistanceToCoordsThrough = "Distance to Coords Through";
-
-    public string whatToCount;
-    
-    public int multiplier = 1;
-    public int divisor = 1;
-    public int modifier = 0;
-
-    public int PlayerIndex = 0;
-    public ServerPlayer Player
+    public abstract class XByGamestateSubeffect : ServerSubeffect
     {
-        get
+        public const string HandSize = "Hand Size";
+        public const string DistanceToCoordsThrough = "Distance to Coords Through";
+
+        public string whatToCount;
+
+        public int multiplier = 1;
+        public int divisor = 1;
+        public int modifier = 0;
+
+        public int PlayerIndex = 0;
+        public ServerPlayer Player
         {
-            if (PlayerIndex == 0) return ServerEffect.ServerController;
-            else return ServerEffect.ServerController.ServerEnemy;
-        }
-    }
-
-    public CardRestriction throughRestriction = new CardRestriction();
-
-    public override void Initialize(ServerEffect eff, int subeffIndex)
-    {
-        base.Initialize(eff, subeffIndex);
-        throughRestriction.Initialize(this);
-    }
-
-    private int BaseCount
-    {
-        get
-        {
-            switch (whatToCount)
+            get
             {
-                case HandSize:
-                    return Player.handCtrl.HandSize;
-                case DistanceToCoordsThrough:
-                    var (x, y) = Space;
-                    return Game.boardCtrl.ShortestPath(Source, x, y, throughRestriction);
-                default:
-                    throw new System.ArgumentException($"Invalid 'what to count' string {whatToCount} in x by gamestate value subeffect");
+                if (PlayerIndex == 0) return ServerEffect.ServerController;
+                else return ServerEffect.ServerController.ServerEnemy;
             }
         }
-    }
 
-    protected int Count { get { return BaseCount * multiplier / divisor + modifier; } }
+        public CardRestriction throughRestriction = new CardRestriction();
+
+        public override void Initialize(ServerEffect eff, int subeffIndex)
+        {
+            base.Initialize(eff, subeffIndex);
+            throughRestriction.Initialize(this);
+        }
+
+        private int BaseCount
+        {
+            get
+            {
+                switch (whatToCount)
+                {
+                    case HandSize:
+                        return Player.handCtrl.HandSize;
+                    case DistanceToCoordsThrough:
+                        var (x, y) = Space;
+                        return Game.boardCtrl.ShortestPath(Source, x, y, throughRestriction);
+                    default:
+                        throw new System.ArgumentException($"Invalid 'what to count' string {whatToCount} in x by gamestate value subeffect");
+                }
+            }
+        }
+
+        protected int Count { get { return BaseCount * multiplier / divisor + modifier; } }
+    }
 }

@@ -1,15 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class TargetTriggeringCardSubeffect : ServerSubeffect
+﻿namespace KompasServer.Effects
 {
-    public override bool Resolve()
+    public class TargetTriggeringCardSubeffect : ServerSubeffect
     {
-        if (ServerEffect.CurrActivationContext.Card == null)
-            return ServerEffect.EffectImpossible();
+        public override bool Resolve()
+        {
+            if (ServerEffect.CurrActivationContext.Card == null)
+                return ServerEffect.EffectImpossible();
 
-        ServerEffect.AddTarget(ServerEffect.CurrActivationContext.Card);
-        return ServerEffect.ResolveNextSubeffect();
+            ServerEffect.AddTarget(ServerEffect.CurrActivationContext.Card);
+            return ServerEffect.ResolveNextSubeffect();
+        }
     }
 }

@@ -1,11 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using KompasClient.GameCore;
 
-public class DummyClientGameCard : ClientGameCard
+namespace KompasClient.Cards
 {
-    public void SetClientGame(ClientGame game)
+    public class DummyClientGameCard : ClientGameCard
     {
-        ClientGame = game;
+        public void SetClientGame(ClientGame game)
+        {
+            ClientGame = game;
+        }
     }
 }

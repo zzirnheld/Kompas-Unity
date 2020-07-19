@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class ThisSpaceTargetSubeffect : ServerSubeffect
+﻿namespace KompasServer.Effects
 {
-    public override bool Resolve()
+    public class ThisSpaceTargetSubeffect : ServerSubeffect
     {
-        ServerEffect.Coords.Add((ThisCard.BoardX, ThisCard.BoardY));
-        return ServerEffect.ResolveNextSubeffect();
+        public override bool Resolve()
+        {
+            ServerEffect.Coords.Add((ThisCard.BoardX, ThisCard.BoardY));
+            return ServerEffect.ResolveNextSubeffect();
+        }
     }
 }

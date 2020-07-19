@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class SetXByTargetValueSubeffect : ChangeXByTargetValueSubeffect
+﻿namespace KompasServer.Effects
 {
-    public override bool Resolve()
+    public class SetXByTargetValueSubeffect : ChangeXByTargetValueSubeffect
     {
-        Effect.X = Count;
-        return ServerEffect.ResolveNextSubeffect();
+        public override bool Resolve()
+        {
+            Effect.X = Count;
+            return ServerEffect.ResolveNextSubeffect();
+        }
     }
 }

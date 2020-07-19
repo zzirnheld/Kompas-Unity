@@ -1,12 +1,17 @@
-﻿public class TargetDefenderSubeffect : ServerSubeffect
+﻿using KompasCore.Effects;
+
+namespace KompasServer.Effects
 {
-    public override bool Resolve()
+    public class TargetDefenderSubeffect : ServerSubeffect
     {
-        if (ServerEffect.CurrActivationContext.Stackable is Attack attack)
+        public override bool Resolve()
         {
-            ServerEffect.AddTarget(attack.defender);
-            return ServerEffect.ResolveNextSubeffect();
+            if (ServerEffect.CurrActivationContext.Stackable is Attack attack)
+            {
+                ServerEffect.AddTarget(attack.defender);
+                return ServerEffect.ResolveNextSubeffect();
+            }
+            else return ServerEffect.EffectImpossible();
         }
-        else return ServerEffect.EffectImpossible();
     }
 }

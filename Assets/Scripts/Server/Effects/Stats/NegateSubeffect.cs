@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class NegateSubeffect : ServerSubeffect
+﻿namespace KompasServer.Effects
 {
-    public override bool Resolve()
+    public class NegateSubeffect : ServerSubeffect
     {
-        Target.SetNegated(true, ServerEffect);
-        return ServerEffect.ResolveNextSubeffect();
+        public override bool Resolve()
+        {
+            Target.SetNegated(true, ServerEffect);
+            return ServerEffect.ResolveNextSubeffect();
+        }
     }
 }

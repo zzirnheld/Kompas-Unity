@@ -1,16 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class TargetAugmentedCardSubeffect : ServerSubeffect
+﻿namespace KompasServer.Effects
 {
-    public override bool Resolve()
+    public class TargetAugmentedCardSubeffect : ServerSubeffect
     {
-        if (ServerEffect.Source.AugmentedCard == null) return ServerEffect.EffectImpossible();
-        else
+        public override bool Resolve()
         {
-            ServerEffect.AddTarget(Source.AugmentedCard);
-            return ServerEffect.ResolveNextSubeffect();
+            if (ServerEffect.Source.AugmentedCard == null) return ServerEffect.EffectImpossible();
+            else
+            {
+                ServerEffect.AddTarget(Source.AugmentedCard);
+                return ServerEffect.ResolveNextSubeffect();
+            }
         }
     }
 }

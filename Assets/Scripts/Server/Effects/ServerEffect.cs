@@ -1,168 +1,173 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using KompasCore.Cards;
+using KompasCore.Effects;
+using KompasServer.GameCore;
 using UnityEngine;
 
-public class ServerEffect : Effect, IServerStackable
+
+namespace KompasServer.Effects
 {
-    public ServerSubeffect[] ServerSubeffects { get; }
-    public ServerTrigger ServerTrigger { get; }
-    
-    public ServerGame serverGame;
-    public ServerEffectsController EffectsController => serverGame.EffectsController;
-
-    public ServerSubeffect OnImpossible = null;
-    
-    public ServerPlayer ServerController { get;  set; }
-    public override Player Controller
+    public class ServerEffect : Effect, IServerStackable
     {
-        get { return ServerController; }
-        set { ServerController = value as ServerPlayer; }
-    }
-    public override Subeffect[] Subeffects => ServerSubeffects;
-    public override Trigger Trigger => ServerTrigger;
+        public ServerSubeffect[] ServerSubeffects { get; }
+        public ServerTrigger ServerTrigger { get; }
 
-    public ServerEffect(SerializableEffect se, GameCard thisCard, ServerGame serverGame, ServerPlayer controller, int effectIndex) 
-        : base(se.activationRestriction ?? new ActivationRestriction(), thisCard, se.blurb, effectIndex)
-    {
-        this.serverGame = serverGame;
-        this.ServerController = controller;
-        ServerSubeffects = new ServerSubeffect[se.subeffects.Length];
+        public ServerGame serverGame;
+        public ServerEffectsController EffectsController => serverGame.EffectsController;
 
-        if (!string.IsNullOrEmpty(se.trigger))
+        public ServerSubeffect OnImpossible = null;
+
+        public ServerPlayer ServerController { get; set; }
+        public override Player Controller
         {
-            try
+            get { return ServerController; }
+            set { ServerController = value as ServerPlayer; }
+        }
+        public override Subeffect[] Subeffects => ServerSubeffects;
+        public override Trigger Trigger => ServerTrigger;
+
+        public ServerEffect(SerializableEffect se, GameCard thisCard, ServerGame serverGame, ServerPlayer controller, int effectIndex)
+            : base(se.activationRestriction ?? new ActivationRestriction(), thisCard, se.blurb, effectIndex)
+        {
+            this.serverGame = serverGame;
+            this.ServerController = controller;
+            ServerSubeffects = new ServerSubeffect[se.subeffects.Length];
+
+            if (!string.IsNullOrEmpty(se.trigger))
             {
-                ServerTrigger = ServerTrigger.FromJson(se.triggerCondition, se.trigger, this);
-                EffectsController.RegisterTrigger(se.triggerCondition, ServerTrigger);
+                try
+                {
+                    ServerTrigger = ServerTrigger.FromJson(se.triggerCondition, se.trigger, this);
+                    EffectsController.RegisterTrigger(se.triggerCondition, ServerTrigger);
+                }
+                catch (System.ArgumentException)
+                {
+                    Debug.LogError($"Failed to load trigger of type {se.triggerCondition} from json {se.trigger}");
+                    throw;
+                }
             }
-            catch (System.ArgumentException)
+
+            for (int i = 0; i < se.subeffects.Length; i++)
             {
-                Debug.LogError($"Failed to load trigger of type {se.triggerCondition} from json {se.trigger}");
-                throw;
+                try
+                {
+                    ServerSubeffects[i] = ServerSubeffect.FromJson(se.subeffects[i], this, i);
+                }
+                catch (System.ArgumentException)
+                {
+                    Debug.LogError($"Failed to load subeffect from json {se.subeffects[i]}");
+                    throw;
+                }
             }
         }
 
-        for (int i = 0; i < se.subeffects.Length; i++)
+        public bool CanBeActivatedBy(ServerPlayer controller)
         {
-            try
-            {
-                ServerSubeffects[i] = ServerSubeffect.FromJson(se.subeffects[i], this, i);
-            }
-            catch (System.ArgumentException)
-            {
-                Debug.LogError($"Failed to load subeffect from json {se.subeffects[i]}");
-                throw;
-            }
+            if (serverGame.uiCtrl.DebugMode) return true;
+            return Trigger == null
+                && controller.index == Source.ControllerIndex
+                && !Negated
+                && ActivationRestriction.Evaluate(controller);
         }
-    }
 
-    public bool CanBeActivatedBy(ServerPlayer controller)
-    {
-        if (serverGame.uiCtrl.DebugMode) return true;
-        return Trigger == null
-            && controller.index == Source.ControllerIndex
-            && !Negated
-            && ActivationRestriction.Evaluate(controller);
-    }
+        public void PushToStack(ServerPlayer controller, ActivationContext context)
+        {
+            EffectsController.PushToStack(this, controller, context);
+        }
 
-    public void PushToStack(ServerPlayer controller, ActivationContext context)
-    {
-        EffectsController.PushToStack(this, controller, context);
-    }
+        public void PushedToStack(ServerGame game, ServerPlayer ctrl)
+        {
+            TimesUsedThisRound++;
+            TimesUsedThisTurn++;
+            serverGame = game;
+            Controller = ctrl;
+        }
 
-    public void PushedToStack(ServerGame game, ServerPlayer ctrl)
-    {
-        TimesUsedThisRound++;
-        TimesUsedThisTurn++;
-        serverGame = game;
-        Controller = ctrl;
-    }
+        public void StartResolution(ActivationContext context)
+        {
+            Debug.Log($"Resolving effect {EffectIndex} of {Source.CardName} in context {context}");
+            serverGame.CurrEffect = this;
 
-    public void StartResolution(ActivationContext context)
-    {
-        Debug.Log($"Resolving effect {EffectIndex} of {Source.CardName} in context {context}");
-        serverGame.CurrEffect = this;
+            //set context parameters
+            CurrActivationContext = context;
+            X = context.X ?? 0;
 
-        //set context parameters
-        CurrActivationContext = context;
-        X = context.X ?? 0;
+            //notify relevant to this effect starting
+            ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
+            ServerController.ServerNotifier.EffectResolving(this);
 
-        //notify relevant to this effect starting
-        ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
-        ServerController.ServerNotifier.EffectResolving(this);
+            //resolve the effect if possible
+            if (Negated) EffectImpossible();
+            else ResolveSubeffect(context.StartIndex);
+        }
 
-        //resolve the effect if possible
-        if (Negated) EffectImpossible();
-        else ResolveSubeffect(context.StartIndex);
-    }
+        public bool ResolveNextSubeffect()
+        {
+            return ResolveSubeffect(SubeffectIndex + 1);
+        }
 
-    public bool ResolveNextSubeffect()
-    {
-        return ResolveSubeffect(SubeffectIndex + 1);
-    }
+        public bool ResolveSubeffect(int index)
+        {
+            if (index >= ServerSubeffects.Length)
+            {
+                FinishResolution();
+                return true;
+            }
 
-    public bool ResolveSubeffect(int index)
-    {
-        if (index >= ServerSubeffects.Length)
+            Debug.Log($"Resolving subeffect of type {ServerSubeffects[index].GetType()}");
+            SubeffectIndex = index;
+            ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
+            return ServerSubeffects[index].Resolve();
+        }
+
+        public bool EndResolution()
         {
             FinishResolution();
             return true;
         }
 
-        Debug.Log($"Resolving subeffect of type {ServerSubeffects[index].GetType()}");
-        SubeffectIndex = index;
-        ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
-        return ServerSubeffects[index].Resolve();
-    }
-
-    public bool EndResolution()
-    {
-        FinishResolution();
-        return true;
-    }
-
-    /// <summary>
-    /// If the effect finishes resolving, this method is called.
-    /// </summary>
-    private void FinishResolution()
-    {
-        SubeffectIndex = 0;
-        X = 0;
-        Targets.Clear();
-        Rest.Clear();
-        OnImpossible = null;
-        ServerController.ServerNotifier.NotifyBothPutBack();
-        EffectsController.FinishStackEntryResolution();
-    }
-
-    /// <summary>
-    /// Cancels resolution of the effect, 
-    /// or, if there is something pending if the effect becomes impossible, resolves that
-    /// </summary>
-    public bool EffectImpossible()
-    {
-        Debug.Log($"Effect of {Source.CardName} is being declared impossible");
-        if (OnImpossible == null)
+        /// <summary>
+        /// If the effect finishes resolving, this method is called.
+        /// </summary>
+        private void FinishResolution()
         {
-            FinishResolution();
-            ServerController.ServerNotifier.EffectImpossible();
-            return false;
+            SubeffectIndex = 0;
+            X = 0;
+            Targets.Clear();
+            Rest.Clear();
+            OnImpossible = null;
+            ServerController.ServerNotifier.NotifyBothPutBack();
+            EffectsController.FinishStackEntryResolution();
         }
-        else
+
+        /// <summary>
+        /// Cancels resolution of the effect, 
+        /// or, if there is something pending if the effect becomes impossible, resolves that
+        /// </summary>
+        public bool EffectImpossible()
         {
-            SubeffectIndex = OnImpossible.SubeffIndex;
-            return OnImpossible.OnImpossible();
+            Debug.Log($"Effect of {Source.CardName} is being declared impossible");
+            if (OnImpossible == null)
+            {
+                FinishResolution();
+                ServerController.ServerNotifier.EffectImpossible();
+                return false;
+            }
+            else
+            {
+                SubeffectIndex = OnImpossible.SubeffIndex;
+                return OnImpossible.OnImpossible();
+            }
         }
-    }
 
-    public void DeclineAnotherTarget()
-    {
-        OnImpossible?.OnImpossible();
-    }
+        public void DeclineAnotherTarget()
+        {
+            OnImpossible?.OnImpossible();
+        }
 
-    public override void AddTarget(GameCard card)
-    {
-        base.AddTarget(card);
-        serverGame.ServerPlayers[card.ControllerIndex].ServerNotifier.SetTarget(Source, EffectIndex, card);
+        public override void AddTarget(GameCard card)
+        {
+            base.AddTarget(card);
+            serverGame.ServerPlayers[card.ControllerIndex].ServerNotifier.SetTarget(Source, EffectIndex, card);
+        }
     }
 }

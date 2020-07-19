@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class SetXTargetSSubeffect : ServerSubeffect
+﻿namespace KompasServer.Effects
 {
-    public override bool Resolve()
+    public class SetXTargetSSubeffect : ServerSubeffect
     {
-        ServerEffect.X = Target.S;
-        return ServerEffect.ResolveNextSubeffect();
+        public override bool Resolve()
+        {
+            ServerEffect.X = Target.S;
+            return ServerEffect.ResolveNextSubeffect();
+        }
     }
 }

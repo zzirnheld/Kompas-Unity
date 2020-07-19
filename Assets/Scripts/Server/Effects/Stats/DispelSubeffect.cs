@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class DispelSubeffect : ServerSubeffect
+﻿namespace KompasServer.Effects
 {
-    public override bool Resolve()
+    public class DispelSubeffect : ServerSubeffect
     {
-        Target.Dispel(Effect);
-        return ServerEffect.ResolveNextSubeffect();
+        public override bool Resolve()
+        {
+            Target.Dispel(Effect);
+            return ServerEffect.ResolveNextSubeffect();
+        }
     }
 }

@@ -1,33 +1,32 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class ChooseOptionSubeffect : ServerSubeffect
+﻿namespace KompasServer.Effects
 {
-    public string ChoiceBlurb;
-    public string[] OptionBlurbs;
-    public int[] OptionJumpIndices;
-
-    private void AskForOptionChoice()
+    public class ChooseOptionSubeffect : ServerSubeffect
     {
-        EffectController.ServerNotifier.ChooseEffectOption(this);
-    }
+        public string ChoiceBlurb;
+        public string[] OptionBlurbs;
+        public int[] OptionJumpIndices;
 
-    public override bool Resolve()
-    {
-        AskForOptionChoice();
-        return false;
-    }
-
-    public void ChooseOption(int optionIndex)
-    {
-        if (optionIndex >= OptionJumpIndices.Length)
+        private void AskForOptionChoice()
         {
-            //ask again
-            AskForOptionChoice();
-            return;
+            EffectController.ServerNotifier.ChooseEffectOption(this);
         }
 
-        ServerEffect.ResolveSubeffect(OptionJumpIndices[optionIndex]);
+        public override bool Resolve()
+        {
+            AskForOptionChoice();
+            return false;
+        }
+
+        public void ChooseOption(int optionIndex)
+        {
+            if (optionIndex >= OptionJumpIndices.Length)
+            {
+                //ask again
+                AskForOptionChoice();
+                return;
+            }
+
+            ServerEffect.ResolveSubeffect(OptionJumpIndices[optionIndex]);
+        }
     }
 }

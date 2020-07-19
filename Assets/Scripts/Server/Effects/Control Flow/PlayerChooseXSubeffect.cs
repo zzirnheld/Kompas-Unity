@@ -1,35 +1,36 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using KompasCore.Effects;
 
-public class PlayerChooseXSubeffect : ServerSubeffect
+namespace KompasServer.Effects
 {
-    public XRestriction XRest;
-
-    public override void Initialize(ServerEffect eff, int subeffIndex)
+    public class PlayerChooseXSubeffect : ServerSubeffect
     {
-        base.Initialize(eff, subeffIndex);
-        XRest.Initialize(this);
-    }
+        public XRestriction XRest;
 
-    private void AskForX()
-    {
-        EffectController.ServerNotifier.GetXForEffect(ThisCard, ServerEffect.EffectIndex, SubeffIndex);
-    }
-
-    public override bool Resolve()
-    {
-        AskForX();
-        return false;
-    }
-
-    public void SetXIfLegal(int x)
-    {
-        if (XRest.Evaluate(x))
+        public override void Initialize(ServerEffect eff, int subeffIndex)
         {
-            ServerEffect.X = x;
-            ServerEffect.ResolveNextSubeffect();
+            base.Initialize(eff, subeffIndex);
+            XRest.Initialize(this);
         }
-        else AskForX();
+
+        private void AskForX()
+        {
+            EffectController.ServerNotifier.GetXForEffect(ThisCard, ServerEffect.EffectIndex, SubeffIndex);
+        }
+
+        public override bool Resolve()
+        {
+            AskForX();
+            return false;
+        }
+
+        public void SetXIfLegal(int x)
+        {
+            if (XRest.Evaluate(x))
+            {
+                ServerEffect.X = x;
+                ServerEffect.ResolveNextSubeffect();
+            }
+            else AskForX();
+        }
     }
 }

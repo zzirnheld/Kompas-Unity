@@ -1,16 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class DrawSubeffect : ServerSubeffect
+﻿namespace KompasServer.Effects
 {
-    public int Player = -1;
-    public int WhoDraws { get { return Player == -1 ? ServerEffect.ServerController.index : Player; } }
-
-    public override bool Resolve()
+    public class DrawSubeffect : ServerSubeffect
     {
-        var drawn = ServerGame.Draw(WhoDraws);
-        if (drawn == null) return ServerEffect.EffectImpossible();
-        else return ServerEffect.ResolveNextSubeffect();
+        public int Player = -1;
+        public int WhoDraws { get { return Player == -1 ? ServerEffect.ServerController.index : Player; } }
+
+        public override bool Resolve()
+        {
+            var drawn = ServerGame.Draw(WhoDraws);
+            if (drawn == null) return ServerEffect.EffectImpossible();
+            else return ServerEffect.ResolveNextSubeffect();
+        }
     }
 }

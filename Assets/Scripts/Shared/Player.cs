@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using KompasCore.Cards;
+using KompasCore.Effects;
+using KompasCore.GameCore;
 using System.Collections.Generic;
 using System.Net.Sockets;
 using UnityEngine;
-using KompasNetworking;
 
 public abstract class Player : MonoBehaviour{
 

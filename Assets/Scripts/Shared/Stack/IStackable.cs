@@ -1,9 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using KompasCore.Cards;
 
-public interface IStackable
+namespace KompasCore.Effects
 {
-    Player Controller { get; }
-    GameCard Source { get; }
+    public interface IStackable
+    {
+        Player Controller { get; }
+        GameCard Source { get; }
+    }
 }

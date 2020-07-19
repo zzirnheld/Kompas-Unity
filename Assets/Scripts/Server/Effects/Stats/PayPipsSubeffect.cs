@@ -1,19 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class PayPipsSubeffect : ServerSubeffect
+﻿namespace KompasServer.Effects
 {
-    public int xMultiplier = 1;
-    public int xDivisor = 1;
-    public int modifier = 0;
-
-    public override bool Resolve()
+    public class PayPipsSubeffect : ServerSubeffect
     {
-        int toPay = ServerEffect.X * xMultiplier / xDivisor + modifier;
-        if(EffectController.Pips < toPay) ServerEffect.EffectImpossible();
+        public int xMultiplier = 1;
+        public int xDivisor = 1;
+        public int modifier = 0;
 
-        EffectController.Pips -= toPay;
-        return ServerEffect.ResolveNextSubeffect();
+        public override bool Resolve()
+        {
+            int toPay = ServerEffect.X * xMultiplier / xDivisor + modifier;
+            if (EffectController.Pips < toPay) ServerEffect.EffectImpossible();
+
+            EffectController.Pips -= toPay;
+            return ServerEffect.ResolveNextSubeffect();
+        }
     }
 }

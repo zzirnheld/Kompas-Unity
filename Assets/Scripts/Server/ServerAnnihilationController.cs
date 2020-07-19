@@ -1,20 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using KompasCore.Cards;
+using KompasCore.Effects;
+using KompasCore.GameCore;
 
-public class ServerAnnihilationController : AnnihilationController
+namespace KompasServer.GameCore
 {
-    public ServerGame ServerGame;
-
-    public override bool Annihilate(GameCard card, IStackable stackSrc = null)
+    public class ServerAnnihilationController : AnnihilationController
     {
-        if (card.CanRemove)
+        public ServerGame ServerGame;
+
+        public override bool Annihilate(GameCard card, IStackable stackSrc = null)
         {
-            var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: stackSrc?.Controller);
-            ServerGame.EffectsController.TriggerForCondition(Trigger.Annhilate, context);
-            ServerGame.ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyAnnhilate(card);
-            return base.Annihilate(card, stackSrc);
+            if (card.CanRemove)
+            {
+                var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: stackSrc?.Controller);
+                ServerGame.EffectsController.TriggerForCondition(Trigger.Annhilate, context);
+                ServerGame.ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyAnnhilate(card);
+                return base.Annihilate(card, stackSrc);
+            }
+            return false;
         }
-        return false;
     }
 }

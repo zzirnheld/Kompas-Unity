@@ -1,22 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using KompasCore.Effects;
 using UnityEngine;
 
-public class ClientTrigger : Trigger
+namespace KompasClient.Effects
 {
-    public ClientEffect ClientEffect { get; private set; }
-
-    public static ClientTrigger FromJson(string condition, string json, ClientEffect parent)
+    public class ClientTrigger : Trigger
     {
-        var toReturn = JsonUtility.FromJson<ClientTrigger>(json);
+        public ClientEffect ClientEffect { get; private set; }
 
-        if (toReturn != null)
+        public static ClientTrigger FromJson(string condition, string json, ClientEffect parent)
         {
-            //set all values shared by all triggers
-            toReturn.triggerCondition = condition;
-            toReturn.ClientEffect = parent;
-        }
+            var toReturn = JsonUtility.FromJson<ClientTrigger>(json);
 
-        return toReturn;
+            if (toReturn != null)
+            {
+                //set all values shared by all triggers
+                toReturn.triggerCondition = condition;
+                toReturn.ClientEffect = parent;
+            }
+
+            return toReturn;
+        }
     }
 }

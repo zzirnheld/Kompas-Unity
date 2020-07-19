@@ -2,8 +2,13 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using KompasCore.Cards;
+using KompasCore.Effects;
+using KompasClient.GameCore;
+using KompasClient.Effects;
+using KompasServer.Effects;
 
-namespace KompasNetworking
+namespace KompasCore.Networking
 {
     public class Packet
     {

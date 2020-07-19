@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using KompasCore.Networking;
+using KompasCore.UI;
+using KompasServer.GameCore;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
-using System.Threading.Tasks;
 using UnityEngine;
 
-namespace KompasNetworking
+namespace KompasServer.Networking
 {
     public class ServerController : MonoBehaviour
     {

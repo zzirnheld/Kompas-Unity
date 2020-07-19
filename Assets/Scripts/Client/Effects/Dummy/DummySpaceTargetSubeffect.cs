@@ -1,14 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using KompasCore.Effects;
 
-public class DummySpaceTargetSubeffect : DummySubeffect
+namespace KompasClient.Effects
 {
-    public SpaceRestriction spaceRestriction;
-
-    public override void Initialize(ClientEffect eff, int subeffIndex)
+    public class DummySpaceTargetSubeffect : DummySubeffect
     {
-        base.Initialize(eff, subeffIndex);
-        spaceRestriction.Initialize(this);
+        public SpaceRestriction spaceRestriction;
+
+        public override void Initialize(ClientEffect eff, int subeffIndex)
+        {
+            base.Initialize(eff, subeffIndex);
+            spaceRestriction.Initialize(this);
+        }
     }
 }

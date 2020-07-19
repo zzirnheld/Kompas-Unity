@@ -1,144 +1,147 @@
-﻿using System.Collections;
+﻿using KompasClient.Networking;
 using System.Collections.Generic;
 using System.IO;
-using UnityEngine;
-using TMPro;
 using System.Text;
+using TMPro;
+using UnityEngine;
 
-public class DeckSelectUIController : MonoBehaviour
+namespace KompasClient.UI
 {
-    public const int txtExtLen = 4;
-
-    public ClientNotifier ClientNotifier;
-    public CardRepository CardRepo;
-    public DeckSelectCard CardPrefab;
-
-    //ui elements
-    public TMP_Dropdown DeckNameDropdown;
-    public GameObject DeckViewScrollPane;
-    public TMP_Text CardsInDeckText;
-
-    public List<DeckSelectCard> currDeck;
-
-    private List<string> deckNames;
-    private string deckFilesFolderPath;
-
-    // Start is called before the first frame update
-    void Start()
+    public class DeckSelectUIController : MonoBehaviour
     {
-        //for now, load an empty list. later, load a default deck?
-        currDeck = new List<DeckSelectCard>();
-        deckFilesFolderPath = Application.persistentDataPath + "/Decks";
+        public const int txtExtLen = 4;
 
-        //create the directory if doesn't exist
-        Directory.CreateDirectory(deckFilesFolderPath);
+        public ClientNotifier ClientNotifier;
+        public CardRepository CardRepo;
+        public DeckSelectCard CardPrefab;
 
-        //open the deck directory and add all text files to a decklist dropdown
-        DeckNameDropdown.options.Clear();
-        deckNames = new List<string>();
-        DirectoryInfo dirInfo = new DirectoryInfo(deckFilesFolderPath);
-        FileInfo[] files = dirInfo.GetFiles("*.txt");
-        foreach (FileInfo fi in files)
+        //ui elements
+        public TMP_Dropdown DeckNameDropdown;
+        public GameObject DeckViewScrollPane;
+        public TMP_Text CardsInDeckText;
+
+        public List<DeckSelectCard> currDeck;
+
+        private List<string> deckNames;
+        private string deckFilesFolderPath;
+
+        // Start is called before the first frame update
+        void Start()
         {
-            //add the file name without the ".txt" characters
-            string deckName = fi.Name.Substring(0, fi.Name.Length - txtExtLen);
-            if (string.IsNullOrWhiteSpace(deckName)) continue;
-            deckNames.Add(deckName);
-            DeckNameDropdown.options.Add(new TMP_Dropdown.OptionData() { text = deckName });
+            //for now, load an empty list. later, load a default deck?
+            currDeck = new List<DeckSelectCard>();
+            deckFilesFolderPath = Application.persistentDataPath + "/Decks";
+
+            //create the directory if doesn't exist
+            Directory.CreateDirectory(deckFilesFolderPath);
+
+            //open the deck directory and add all text files to a decklist dropdown
+            DeckNameDropdown.options.Clear();
+            deckNames = new List<string>();
+            DirectoryInfo dirInfo = new DirectoryInfo(deckFilesFolderPath);
+            FileInfo[] files = dirInfo.GetFiles("*.txt");
+            foreach (FileInfo fi in files)
+            {
+                //add the file name without the ".txt" characters
+                string deckName = fi.Name.Substring(0, fi.Name.Length - txtExtLen);
+                if (string.IsNullOrWhiteSpace(deckName)) continue;
+                deckNames.Add(deckName);
+                DeckNameDropdown.options.Add(new TMP_Dropdown.OptionData() { text = deckName });
+            }
+
+            //load initially selected deck
+            Debug.Log("Load initially selected deck");
+            LoadDeck(0);
         }
 
-        //load initially selected deck
-        Debug.Log("Load initially selected deck");
-        LoadDeck(0);
-    }
-
-    private void SetDeckCountText()
-    {
-        CardsInDeckText.text = $"Cards in Deck: {currDeck.Count}";
-    }
-
-    private void ClearDeck()
-    {
-        for (int i = currDeck.Count - 1; i >= 0; i--)
+        private void SetDeckCountText()
         {
-            DeckSelectCard c = currDeck[i];
-            currDeck.RemoveAt(i);
-            Destroy(c.gameObject);
-        }
-    }
-
-    private void AddToDeck(string name)
-    {
-        string json = CardRepo.GetJsonFromName(name);
-        if (json == null)
-        {
-            Debug.LogError($"No json found for card name {name}");
-            return;
+            CardsInDeckText.text = $"Cards in Deck: {currDeck.Count}";
         }
 
-        DeckSelectCard toAdd = CardRepo.InstantiateDeckSelectCard(json, DeckViewScrollPane.transform, CardPrefab, this);
-        if (toAdd == null)
+        private void ClearDeck()
         {
-            Debug.LogError($"Somehow have a DeckbuilderCard with name {name} couldn't be re-instantiated");
-            return;
+            for (int i = currDeck.Count - 1; i >= 0; i--)
+            {
+                DeckSelectCard c = currDeck[i];
+                currDeck.RemoveAt(i);
+                Destroy(c.gameObject);
+            }
         }
 
-        currDeck.Add(toAdd);
-        SetDeckCountText();
-    }
-
-    public void LoadDeck(int index)
-    {
-        if (index > deckNames.Count) return;
-        Debug.Log($"Loading {deckNames[index]}");
-
-        //then add new cards
-        string filePath = deckFilesFolderPath + "/" + deckNames[index] + ".txt";
-        string decklist = File.ReadAllText(filePath);
-        LoadDeck(decklist, deckNames[index]);
-    }
-
-    public void LoadDeck(string decklist, string deckName)
-    {
-        //first clear deck
-        ClearDeck();
-
-        decklist = decklist.Replace("\u200B", "");
-        decklist = decklist.Replace("\r", "");
-        decklist = decklist.Replace("\t", "");
-        List<string> cardNames = new List<string>(decklist.Split('\n'));
-
-        if (deckName == null) deckName = cardNames[0];
-
-        foreach (string name in cardNames)
+        private void AddToDeck(string name)
         {
-            if (!string.IsNullOrWhiteSpace(name)) AddToDeck(name);
+            string json = CardRepo.GetJsonFromName(name);
+            if (json == null)
+            {
+                Debug.LogError($"No json found for card name {name}");
+                return;
+            }
+
+            DeckSelectCard toAdd = CardRepo.InstantiateDeckSelectCard(json, DeckViewScrollPane.transform, CardPrefab, this);
+            if (toAdd == null)
+            {
+                Debug.LogError($"Somehow have a DeckbuilderCard with name {name} couldn't be re-instantiated");
+                return;
+            }
+
+            currDeck.Add(toAdd);
+            SetDeckCountText();
         }
 
-        SetDeckCountText();
-        DeckNameDropdown.RefreshShownValue();
-    }
-
-    public void ConfirmSelectedDeck()
-    {
-        StringBuilder sb = new StringBuilder();
-        foreach(DeckSelectCard card in currDeck)
+        public void LoadDeck(int index)
         {
-            sb.Append(card.CardName);
-            sb.Append("\n");
+            if (index > deckNames.Count) return;
+            Debug.Log($"Loading {deckNames[index]}");
+
+            //then add new cards
+            string filePath = deckFilesFolderPath + "/" + deckNames[index] + ".txt";
+            string decklist = File.ReadAllText(filePath);
+            LoadDeck(decklist, deckNames[index]);
         }
 
-        ClientNotifier.RequestDecklistImport(sb.ToString());
-    }
+        public void LoadDeck(string decklist, string deckName)
+        {
+            //first clear deck
+            ClearDeck();
 
-    public void SelectAsAvatar(DeckSelectCard card)
-    {
-        if (card.CardType != 'C' || !currDeck.Contains(card)) return;
+            decklist = decklist.Replace("\u200B", "");
+            decklist = decklist.Replace("\r", "");
+            decklist = decklist.Replace("\t", "");
+            List<string> cardNames = new List<string>(decklist.Split('\n'));
 
-        currDeck.Remove(card);
-        currDeck.Insert(0, card);
+            if (deckName == null) deckName = cardNames[0];
 
-        //then move it in the ui
-        card.transform.SetAsFirstSibling();
+            foreach (string name in cardNames)
+            {
+                if (!string.IsNullOrWhiteSpace(name)) AddToDeck(name);
+            }
+
+            SetDeckCountText();
+            DeckNameDropdown.RefreshShownValue();
+        }
+
+        public void ConfirmSelectedDeck()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (DeckSelectCard card in currDeck)
+            {
+                sb.Append(card.CardName);
+                sb.Append("\n");
+            }
+
+            ClientNotifier.RequestDecklistImport(sb.ToString());
+        }
+
+        public void SelectAsAvatar(DeckSelectCard card)
+        {
+            if (card.CardType != 'C' || !currDeck.Contains(card)) return;
+
+            currDeck.Remove(card);
+            currDeck.Insert(0, card);
+
+            //then move it in the ui
+            card.transform.SetAsFirstSibling();
+        }
     }
 }

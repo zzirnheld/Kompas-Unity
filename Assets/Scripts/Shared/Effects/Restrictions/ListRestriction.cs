@@ -1,42 +1,45 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using KompasCore.Cards;
 
-[System.Serializable]
-public class ListRestriction
+namespace KompasCore.Effects
 {
-    public Subeffect Subeffect;
-
-    public const string CanPayCost = "Can Pay Cost"; // 1 //effect's controller is able to pay the cost of all of them together
-
-    public string[] listRestrictions = new string[0];
-
-    /// <summary>
-    /// Checks the list of cards passed into see if they collectively fit a restriction.
-    /// </summary>
-    /// <param name="cards">The list of cards to collectively evaluate.</param>
-    /// <returns><see langword="true"/> if the cards fit all the required restrictions collectively, 
-    /// <see langword="false"/> otherwise</returns>
-    public bool Evaluate(IEnumerable<GameCard> cards)
+    [System.Serializable]
+    public class ListRestriction
     {
-        foreach(var restriction in listRestrictions)
+        public Subeffect Subeffect;
+
+        public const string CanPayCost = "Can Pay Cost"; // 1 //effect's controller is able to pay the cost of all of them together
+
+        public string[] listRestrictions = new string[0];
+
+        /// <summary>
+        /// Checks the list of cards passed into see if they collectively fit a restriction.
+        /// </summary>
+        /// <param name="cards">The list of cards to collectively evaluate.</param>
+        /// <returns><see langword="true"/> if the cards fit all the required restrictions collectively, 
+        /// <see langword="false"/> otherwise</returns>
+        public bool Evaluate(IEnumerable<GameCard> cards)
         {
-            switch (restriction)
+            foreach (var restriction in listRestrictions)
             {
-                case CanPayCost:
-                    int totalCost = 0;
-                    foreach(var card in cards)
-                    {
-                        //TODO: check each card's playability, once runes are in?
-                        totalCost += card.Cost;
-                    }
-                    if (Subeffect.Controller.Pips < totalCost) return false;
-                    break;
-                default:
-                    Debug.LogError($"Could not check list restriction {restriction}");
-                    return false;
+                switch (restriction)
+                {
+                    case CanPayCost:
+                        int totalCost = 0;
+                        foreach (var card in cards)
+                        {
+                            //TODO: check each card's playability, once runes are in?
+                            totalCost += card.Cost;
+                        }
+                        if (Subeffect.Controller.Pips < totalCost) return false;
+                        break;
+                    default:
+                        Debug.LogError($"Could not check list restriction {restriction}");
+                        return false;
+                }
             }
+            return true;
         }
-        return true;
     }
 }
