@@ -151,8 +151,8 @@ public class ServerGame : Game {
     {
         //set initial pips (based on avatars' S)
         Debug.Log($"Starting game. Player 0 avatar is null? {Players[0].Avatar == null}. Player 1 is null? {Players[1].Avatar == null}.");
-        Players[0].Pips = Players[1].Avatar.S / 2;
-        Players[1].Pips = Players[0].Avatar.S / 2;
+        Players[0].Pips = 0; //Players[1].Avatar.S / 2;
+        Players[1].Pips = 0; //Players[0].Avatar.S / 2;
 
         //determine who goes first and tell the players
         FirstTurnPlayer = TurnPlayerIndex = Random.value > 0.5f ? 0 : 1;
@@ -191,7 +191,7 @@ public class ServerGame : Game {
         return drawn.Count > 0 ? drawn[0] : null;
     }
 
-    public void GivePlayerPips(ServerPlayer player, int pipsToSet)
+    public void GivePlayerPips(Player player, int pipsToSet)
     {
         player.Pips = pipsToSet;
         if (player.index == 0) uiCtrl.UpdateFriendlyPips(pipsToSet);
@@ -200,9 +200,8 @@ public class ServerGame : Game {
 
     public void GiveTurnPlayerPips()
     {
-        Debug.Log($"Giving turn player pips when leyload is {Leyload} on round {RoundCount}");
-        int pipsToSet = TurnPlayer.Pips + Leyload;
-        GivePlayerPips(TurnServerPlayer, pipsToSet);
+        Debug.Log($"Giving turn player pips when leyload is {Leyload} on turn {TurnCount}");
+        GivePlayerPips(TurnPlayer, TurnPlayer.Pips + Leyload);
     }
 
     public void Attack(GameCard attacker, GameCard defender, ServerPlayer instigator, bool playerInitiated = false)
@@ -276,6 +275,7 @@ public class ServerGame : Game {
     {
         TurnPlayerIndex = 1 - TurnPlayerIndex;
         if(TurnPlayerIndex == FirstTurnPlayer) RoundCount++;
+        TurnCount++;
         GiveTurnPlayerPips();
         
         ResetCardsForTurn();

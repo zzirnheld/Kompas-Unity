@@ -33,7 +33,8 @@ public abstract class Game : MonoBehaviour
     public abstract IEnumerable<GameCard> Cards { get; }
     public int FirstTurnPlayer { get; protected set; }
     public int RoundCount = 1;
-    public int Leyload => RoundCount + boardCtrl.CardsWhere(c => c != null).Count;
+    public int TurnCount = 1;
+    public int Leyload => TurnCount;
 
     public TargetMode targetMode = TargetMode.Free;
 

@@ -137,6 +137,7 @@ public class ClientGame : Game {
         clientUICtrl.ChangeTurn(playerIndex);
         clientUICtrl.HideGetDecklistUI();
         RoundCount = 1;
+        TurnCount = 1;
         clientUICtrl.Leyload = Leyload;
     }
 
@@ -146,6 +147,7 @@ public class ClientGame : Game {
         ResetCardsForTurn();
         clientUICtrl.ChangeTurn(TurnPlayerIndex);
         if(TurnPlayerIndex == FirstTurnPlayer) RoundCount++;
+        TurnCount++;
         clientUICtrl.Leyload = Leyload;
     }
 
