@@ -1,0 +1,30 @@
+{
+	"cardType":83,
+	"cardName":"Past Lives",
+	"effText":"Unloopable: 1/name/turn. Resummon all characters.",
+	"effects":[
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Resummon All\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Summoned\",\"Board\"]
+					}
+				}"
+			]	
+		}
+	],
+	"fast":true,
+	"c":3,
+	"spellType":"Simple",
+	"subtypes":["Simple"],
+	"subtypeText":"Simple"
+}

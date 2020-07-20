@@ -1,0 +1,47 @@
+{
+	"cardType":67,
+	"cardName":"Pastknower Vessel",
+	"effText":"Geminii: You can pip resummon me. When I’m summoned, draw 1.",
+	"effects":[
+		{
+			"blurb":"Pip Resummon",
+			"activationRestriction":{
+				"activationRestrictions":[
+					"Friendly Turn",
+					"In Play"
+				]
+			},
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Pay Target's Cost in Pips\"
+				}",
+				"{
+					\"subeffType\":\"Resummon\"
+				}"
+			]	
+		},
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Draw\"
+				}"
+			]	
+		}
+	],
+	"n":1,
+	"e":2,
+	"s":5,
+	"w":1,
+	"subtypes":["Geminii"],
+	"subtypeText":"Geminii"
+}

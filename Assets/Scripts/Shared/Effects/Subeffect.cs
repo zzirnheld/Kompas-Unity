@@ -48,6 +48,8 @@ namespace KompasCore.Effects
         public const string TakeControl = "Take Control"; //130,
                                                           //Deactivate = 121,
         public const string PayPipsByTargetCost = "Pay Target's Cost in Pips"; //150,
+        public const string Resummon = "Resummon";
+        public const string ResummonAll = "Resummon All";
 
         //effect x
         public const string SetXByBoardCount = "Set X by Board Count"; //200,

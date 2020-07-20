@@ -1,0 +1,55 @@
+{
+	"cardType":67,
+	"cardName":"Revered Vessel",
+	"effText":"Geminii: You can pip resummon me. When I’m summoned, give adjacent characters +2NESW.",
+	"effects":[
+		{
+			"blurb":"Pip Resummon",
+			"activationRestriction":{
+				"activationRestrictions":[
+					"Friendly Turn",
+					"In Play"
+				]
+			},
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Pay Target's Cost in Pips\"
+				}",
+				"{
+					\"subeffType\":\"Resummon\"
+				}"
+			]	
+		},
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Change NESW All\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Adjacent\"]
+					},
+					\"nMod\":2,
+					\"eMod\":2,
+					\"sMod\":2,
+					\"wMod\":2
+				}"
+			]	
+		}
+	],
+	"n":1,
+	"e":1,
+	"s":5,
+	"w":1,
+	"subtypes":["Geminii"],
+	"subtypeText":"Geminii"
+}

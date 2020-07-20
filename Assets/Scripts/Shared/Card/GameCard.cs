@@ -211,6 +211,8 @@ namespace KompasCore.Cards
         public int DistanceTo(int x, int y)
         {
             if (Location != CardLocation.Field) return -1;
+            Debug.Log($"Distance from {CardName} to {x}, {y} is" +
+                $" {(Mathf.Abs(x - BoardX) > Mathf.Abs(y - BoardY) ? Mathf.Abs(x - BoardX) : Mathf.Abs(y - BoardY))}");
             return Mathf.Abs(x - BoardX) > Mathf.Abs(y - BoardY) ? Mathf.Abs(x - BoardX) : Mathf.Abs(y - BoardY);
             /* equivalent to
              * if (Mathf.Abs(card.X - X) > Mathf.Abs(card.Y - Y)) return Mathf.Abs(card.X - X);
@@ -221,7 +223,7 @@ namespace KompasCore.Cards
         public int DistanceTo(GameCard card) => DistanceTo(card.BoardX, card.BoardY);
         public bool WithinSlots(int numSlots, GameCard card)
         {
-            if (card == null) return false;
+            if (card == null || card.Location != CardLocation.Field || Location != CardLocation.Field) return false;
             return DistanceTo(card) <= numSlots;
         }
         public bool WithinSlots(int numSlots, int x, int y) => DistanceTo(x, y) <= numSlots;

@@ -75,7 +75,7 @@ namespace KompasCore.Effects
 
         //board
         public const string Adjacent = "Adjacent"; // 0,
-        public const string WithinCSpaces = "Within C Spaces"; // 1,
+        public const string WithinCSpacesOfSource = "Within C Spaces"; // 1,
         public const string InAOE = "In AOE"; // 2,
         public const string DistanceToTargetWithinCSpaces = "Target Within C Spaces of Source"; // 10,
         public const string AdjacentToSubtype = "Adjacent to Subtype"; // 20,
@@ -110,7 +110,7 @@ namespace KompasCore.Effects
 
             foreach (string c in cardRestrictions)
             {
-                //Debug.Log("Considering restriction " + c + " when X equals " + x);
+                Debug.Log("Considering restriction " + c + " when X equals " + x);
                 switch (c)
                 {
                     case NameIs:
@@ -269,7 +269,7 @@ namespace KompasCore.Effects
                     case Adjacent:
                         if (!potentialTarget.IsAdjacentTo(Subeffect.Source)) return false;
                         break;
-                    case WithinCSpaces:
+                    case WithinCSpacesOfSource:
                         if (!potentialTarget.WithinSlots(cSpaces, Subeffect.Source)) return false;
                         break;
                     case InAOE:

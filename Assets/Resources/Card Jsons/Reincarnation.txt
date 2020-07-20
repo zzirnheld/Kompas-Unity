@@ -1,0 +1,34 @@
+{
+	"cardType":83,
+	"cardName":"Reincarnation",
+	"effText":"When a character dies, resummon a character.",
+	"effects":[
+		{
+			"triggerCondition":"Discard",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Summoned character for Reincarnation to resummon\",
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Summoned\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Resummon\"
+				}"
+			]	
+		}
+	],
+	"fast":false,
+	"c":4,
+	"spellType":"Enchant",
+	"subtypes":["Enchant"],
+	"subtypeText":"Enchant"
+}

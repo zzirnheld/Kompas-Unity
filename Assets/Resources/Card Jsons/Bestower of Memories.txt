@@ -1,0 +1,52 @@
+{
+	"cardType":67,
+	"cardName":"Bestower of Memories",
+	"effText":"When your turn starts, you can resummon a Summoned character. When you summon a character, gain a pip.",
+	"effects":[
+		{
+			"triggerCondition":"Turn Start",
+			"trigger":
+			"{
+				\"blurb\":\"Resummon a Summoned character? (This triggers any relevant on-summon effects.)\",
+				\"optional\":true,
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"Friendly Turn\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Summoned character for Bestower of Memories to resummon\",
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Summoned\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Resummon\"
+				}"
+			]	
+		},
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Add Pips\",
+					\"modifier\":1
+				}"
+			]	
+		}
+	],
+	"n":1,
+	"e":9,
+	"s":14,
+	"w":11,
+	"subtypes":["Geminii","God"],
+	"subtypeText":"Geminii God"
+}

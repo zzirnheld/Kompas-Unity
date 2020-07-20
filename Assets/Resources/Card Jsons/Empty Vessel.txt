@@ -1,0 +1,54 @@
+{
+	"cardType":67,
+	"cardName":"Empty Vessel",
+	"effText":"Geminii: You can pip resummon me. When I’m summoned, give me +2NESW.",
+	"effects":[
+		{
+			"blurb":"Pip Resummon",
+			"activationRestriction":{
+				"activationRestrictions":[
+					"Friendly Turn",
+					"In Play"
+				]
+			},
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Pay Target's Cost in Pips\"
+				}",
+				"{
+					\"subeffType\":\"Resummon\"
+				}"
+			]	
+		},
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
+					\"nChange\":2,
+					\"eChange\":2,
+					\"sChange\":2,
+					\"wChange\":2
+				}"
+			]	
+		}
+	],
+	"n":1,
+	"e":3,
+	"s":5,
+	"w":3,
+	"subtypes":["Geminii"],
+	"subtypeText":"Geminii"
+}
