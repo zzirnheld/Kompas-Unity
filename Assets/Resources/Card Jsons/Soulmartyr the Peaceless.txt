@@ -1,0 +1,78 @@
+{
+	"cardType":67,
+	"cardName":"Soulmartyr the Peaceless",
+	"effText":"Revenant: When I die, annihilate me. You can pip revive me for half cost.\nWhen a card is annihilated, give friendly Ethereals +1W.",
+	"effects":[
+		{
+			"triggerCondition":"Discard",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Annihilate\"
+				}"
+			]
+		},
+		{
+			"activationRestriction":{
+				"activationRestrictions":[
+					"Location"
+				],
+				"location":2
+			}
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where to revive Unlost\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Pay Target's Cost in Pips\",
+					\"divisor\":2
+				}"
+				"{
+					\"subeffType\":\"Play\"
+				}"
+			]
+		}
+		{
+			"triggerCondition":"Annihilate",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Change NESW All\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Ethereal\"]
+					},
+					\"wMod\":1
+				}"
+			]	
+		}
+	],
+	"n":3,
+	"e":2,
+	"s":8,
+	"w":3,
+	"subtypes":["Ethereal","Revenant"],
+	"subtypeText":"Ethereal Revenant"
+}

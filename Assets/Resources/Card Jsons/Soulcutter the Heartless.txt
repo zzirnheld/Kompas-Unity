@@ -1,0 +1,83 @@
+{
+	"cardType":67,
+	"cardName":"Soulcutter the Heartless",
+	"effText":"Revenant: When I die, annihilate me. You can pip revive me for half cost.\nWhen a card is annihilated, discard a Revenant and draw 1.",
+	"effects":[
+		{
+			"triggerCondition":"Discard",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Annihilate\"
+				}"
+			]
+		},
+		{
+			"activationRestriction":{
+				"activationRestrictions":[
+					"Location"
+				],
+				"location":2
+			}
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where to revive Unlost\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Pay Target's Cost in Pips\",
+					\"divisor\":2
+				}"
+				"{
+					\"subeffType\":\"Play\"
+				}"
+			]
+		}
+		{
+			"triggerCondition":"Annihilate",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Hand Target\",
+					\"cardRestriction\":{
+						\"blurb\":\"for Unwanted to discard\",
+						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Revenant\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Draw\"
+				}"
+			]	
+		}
+	],
+	"n":3,
+	"e":3,
+	"s":8,
+	"w":3,
+	"subtypes":["Ethereal","Revenant"],
+	"subtypeText":"Ethereal Revenant"
+}

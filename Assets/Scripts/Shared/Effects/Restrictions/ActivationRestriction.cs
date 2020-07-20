@@ -14,8 +14,10 @@ namespace KompasCore.Effects
         public const string FriendlyTurn = "Friendly Turn";
         public const string EnemyTurn = "Enemy Turn";
         public const string InPlay = "In Play";
+        public const string Location = "Location";
 
         public int maxTimes = 1;
+        public CardLocation location = CardLocation.Field;
 
         public string[] activationRestrictions = { };
 
