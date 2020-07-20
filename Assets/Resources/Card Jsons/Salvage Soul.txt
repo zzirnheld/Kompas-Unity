@@ -1,0 +1,47 @@
+{
+	"cardType":83,
+	"cardName":"Salvage Soul",
+	"effText":"Rehand a friendly Revenant. Draw 1. Discard 1.",
+	"effects":[
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":{
+						\"blurb\":\"Revenant for Salvage Soul to rehand\",
+						\"cardRestrictions\":[\"Friendly\",\"Board\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Revenant\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Rehand\"
+				}",
+				"{
+					\"subeffType\":\"Draw\"
+				}",
+				"{
+					\"subeffType\":\"Hand Target\",
+					\"cardRestriction\":{
+						\"blurb\":\"card for Salvage Soul to discard\",
+						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}"
+			]	
+		}
+	],
+	"fast":true,
+	"c":1,
+	"spellType":"Simple",
+	"subtypes":["Simple"],
+	"subtypeText":"Simple"
+}

@@ -193,6 +193,7 @@ namespace KompasCore.Cards
             Fast = serializedCard.fast;
             Arg = serializedCard.arg;
 
+            TurnsOnBoard = 0;
             SpacesMoved = 0;
             MovementRestriction = serializedCard.MovementRestriction ?? new MovementRestriction();
             MovementRestriction.SetInfo(this);
@@ -259,6 +260,11 @@ namespace KompasCore.Cards
             SpacesMoved = 0;
             AttacksThisTurn = 0;
             TurnsOnBoard++;
+
+            if(CardType == 'S' && SpellSubtype == VanishingSubtype)
+            {
+                if (TurnsOnBoard > Arg) Discard();
+            }
         }
 
         #region augments

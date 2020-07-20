@@ -1,0 +1,37 @@
+{
+	"cardType":83,
+	"cardName":"Revenance",
+	"effText":"When you draw a Revenant, you can discard it and draw 1.\n(Discarded when the third turn starts after I’m played)",
+	"effects":[
+		{
+			"triggerCondition":"Each Card Drawn",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\",\"Triggerer Fits Restriction\"],
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Revenant\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target Triggering Card\"
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Draw\"
+				}"
+			]	
+		}
+	],
+	"fast":false,
+	"c":3,
+	"spellType":"Vanishing",
+	"subtypes":["Vanishing"],
+	"subtypeText":"Vanishing",
+	"arg":3
+}
