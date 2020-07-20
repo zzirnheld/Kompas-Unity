@@ -26,7 +26,7 @@
 			]	
 		},
 		{
-			"triggerCondition":301,
+			"triggerCondition":"Attack",
 			"trigger":
 			"{
 				\"blurb\":\"Give the attacking Pyrian -1E to give their target -4E?\",

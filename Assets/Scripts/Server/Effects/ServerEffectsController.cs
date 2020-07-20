@@ -22,7 +22,11 @@ namespace KompasServer.Effects
         protected Dictionary<string, List<(HangingEffect, TriggerRestriction)>> hangingEffectFallOffMap
             = new Dictionary<string, List<(HangingEffect, TriggerRestriction)>>();
 
-        public IServerStackable CurrStackEntry { get; private set; }
+        public IServerStackable CurrStackEntry 
+        { 
+            get; 
+            private set; 
+        }
 
         public void Start()
         {
@@ -178,6 +182,7 @@ namespace KompasServer.Effects
 
         public void TriggerForCondition(string condition, ActivationContext context)
         {
+            Debug.Log($"Attempting to trigger {condition}, with context {context}");
             List<HangingEffect> toRemove = new List<HangingEffect>();
             foreach (HangingEffect t in hangingEffectMap[condition])
             {
@@ -205,7 +210,6 @@ namespace KompasServer.Effects
                 hangingEffectFallOffMap[condition].Remove((eff, fallOffRestriction));
             }
 
-            Debug.Log($"Attempting to trigger {condition}, with context {context}");
             foreach (ServerTrigger t in triggerMap[condition])
             {
                 t.TriggerIfValid(context);

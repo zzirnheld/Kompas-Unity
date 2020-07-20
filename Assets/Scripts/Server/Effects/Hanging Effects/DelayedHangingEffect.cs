@@ -24,6 +24,7 @@ namespace KompasServer.Effects
 
         protected override bool ShouldEnd(ActivationContext context)
         {
+            UnityEngine.Debug.Log($"Checking if delayed hanging effect should end for context {context}, {numTimesDelayed}/{numTimesToDelay}");
             //first check any other logic
             if (!base.ShouldEnd(context)) return false;
 

@@ -133,8 +133,7 @@ Malevolent Vessel
 Pastknower Vessel
 Revered Vessel
 Empty Vessel
-Recaller
-Vessel
+Recaller Vessel
 Memory Guide
 Rememories
 Past Lives

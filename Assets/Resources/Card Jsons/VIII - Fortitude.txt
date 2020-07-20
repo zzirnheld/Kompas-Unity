@@ -4,7 +4,7 @@
 	"effText":"When a friendly character attacks, draw 1. When you draw, I can give an adjacent friendly character +1E or W.",
 	"effects":[
 		{
-			"triggerCondition":301,
+			"triggerCondition":"Attack",
 			"trigger":
 			"{
 				\"triggerRestriction\":{

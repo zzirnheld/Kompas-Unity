@@ -27,7 +27,7 @@
 			]	
 		},
 		{
-			"triggerCondition":301,
+			"triggerCondition":"Attack",
 			"trigger":
 			"{
 				\"triggerRestriction\":{

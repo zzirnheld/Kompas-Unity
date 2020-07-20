@@ -4,9 +4,9 @@ namespace KompasServer.Effects
 {
     public class DelaySubeffect : ServerSubeffect
     {
-        public int NumTimesToDelay = 0;
-        public int IndexToResume;
-        public string TriggerCondition;
+        public int numTimesToDelay = 0;
+        public int indexToResume;
+        public string triggerCondition;
         public TriggerRestriction triggerRestriction = new TriggerRestriction();
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
@@ -17,9 +17,9 @@ namespace KompasServer.Effects
 
         public override bool Resolve()
         {
-            var eff = new DelayedHangingEffect(ServerGame, triggerRestriction, TriggerCondition,
-                NumTimesToDelay, ServerEffect, IndexToResume, EffectController);
-            ServerGame.EffectsController.RegisterHangingEffect(TriggerCondition, eff);
+            var eff = new DelayedHangingEffect(ServerGame, triggerRestriction, triggerCondition,
+                numTimesToDelay, ServerEffect, indexToResume, EffectController);
+            ServerGame.EffectsController.RegisterHangingEffect(triggerCondition, eff);
             return ServerEffect.EffectImpossible();
         }
     }

@@ -4,7 +4,7 @@
 	"effText":"Can't be cast normally. When a friendly character attacks, I give them +2ESW.",
 	"effects":[
 		{
-			"triggerCondition":301,
+			"triggerCondition":"Attack",
 			"trigger":
 			"{
 				\"triggerRestriction\":{

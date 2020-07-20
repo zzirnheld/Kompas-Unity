@@ -1,0 +1,42 @@
+{
+	"cardType":83,
+	"cardName":"Souflare",
+	"effText":"Annihilate X Revenants from your hand. Draw X. Gain X pips.",
+	"effects":[
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Hand Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"for Soulflare to annihilate\",
+						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Bottomdeck\"
+				}",
+				"{
+					\"subeffType\":\"Count X Loop\",
+					\"canDecline\":true,
+					\"jumpTo\":0
+				}",
+				"{
+					\"subeffType\":\"Draw X\"
+				}"
+			]	
+		}
+	],
+	"fast":true,
+	"c":2,
+	"spellType":"Simple",
+	"subtypes":["Simple","Shaping"],
+	"subtypeText":"Simple Shaping"
+}

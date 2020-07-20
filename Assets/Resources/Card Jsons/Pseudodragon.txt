@@ -4,7 +4,7 @@
 	"effText":"When I attack, give me and my target -1E.",
 	"effects":[
 		{
-			"triggerCondition":301,
+			"triggerCondition":"Attack",
 			"trigger":
 			"{
 				\"triggerRestriction\":{

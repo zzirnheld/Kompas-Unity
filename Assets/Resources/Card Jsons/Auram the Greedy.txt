@@ -27,7 +27,7 @@
 			]	
 		},
 		{
-			"triggerCondition":301,
+			"triggerCondition":"Attack",
 			"trigger":
 			"{
 				\"blurb\":\"Give the attacking Auram -XE to draw X? (You choose X)\",
