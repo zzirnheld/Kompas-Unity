@@ -28,7 +28,7 @@ namespace KompasCore.GameCore
 
         public static Vector3 GridIndicesFromPos(int x, int y)
         {
-            return new Vector3(GridIndexToPos(x), GridIndexToPos(y), 0.2f);
+            return new Vector3(GridIndexToPos(x), 0.2f, GridIndexToPos(y));
         }
 
         private readonly GameCard[,] cards = new GameCard[SpacesInGrid, SpacesInGrid];
@@ -262,7 +262,7 @@ namespace KompasCore.GameCore
                 var intersection = transform.InverseTransformPoint(hit.point);
 
                 int xIntersection = PosToGridIndex(intersection.x);
-                int yIntersection = PosToGridIndex(intersection.y);
+                int yIntersection = PosToGridIndex(intersection.z);
                 //then, if the game is a clientgame, request a space target
                 game.OnClickBoard(xIntersection, yIntersection);
             }

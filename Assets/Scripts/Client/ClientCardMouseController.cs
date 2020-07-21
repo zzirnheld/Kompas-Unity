@@ -49,7 +49,7 @@ namespace KompasClient.Cards
             if (WithinIgnoreZ(boardLocalPosition, minBoardLocalX, maxBoardLocalX, minBoardLocalY, maxBoardLocalY))
             {
                 int x = BoardController.PosToGridIndex(boardLocalPosition.x);
-                int y = BoardController.PosToGridIndex(boardLocalPosition.y);
+                int y = BoardController.PosToGridIndex(boardLocalPosition.z);
 
                 //if the card is being moved on the field, that means it's just being moved
                 if (Card.Location == CardLocation.Field)

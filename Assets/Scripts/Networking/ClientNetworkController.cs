@@ -226,8 +226,8 @@ namespace KompasClient.Networking
                     }
                     var listRestriction = packet.GetListRestriction(ClientGame);
                     ClientGame.clientUICtrl.StartSearch(choicesToPick, listRestriction, packet.MaxNum);
-                    ClientGame.clientUICtrl.SetCurrState($"Choose Target for Effect of {listRestriction.Subeffect.Source.CardName}",
-                        ClientGame.CurrCardRestriction.blurb);
+                    ClientGame.clientUICtrl.SetCurrState($"Choose Target for Effect of {listRestriction?.Subeffect?.Source?.CardName}",
+                        ClientGame.CurrCardRestriction?.blurb);
                     break;
                 case Packet.Command.ChooseEffectOption:
                     //TODO catch out of bounds errors, in case of malicious packets?
