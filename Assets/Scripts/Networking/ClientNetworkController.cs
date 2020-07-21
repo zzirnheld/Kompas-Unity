@@ -225,7 +225,7 @@ namespace KompasClient.Networking
                         else choicesToPick.Add(c);
                     }
                     var listRestriction = packet.GetListRestriction(ClientGame);
-                    ClientGame.clientUICtrl.StartSearch(choicesToPick, listRestriction, packet.MaxNum);
+                    ClientGame.clientUICtrl.StartSearch(choicesToPick, packet.MaxNum);
                     ClientGame.clientUICtrl.SetCurrState($"Choose Target for Effect of {listRestriction?.Subeffect?.Source?.CardName}",
                         ClientGame.CurrCardRestriction?.blurb);
                     break;

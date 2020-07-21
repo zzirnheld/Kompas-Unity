@@ -1,8 +1,8 @@
-﻿using KompasClient.GameCore;
-using KompasClient.Effects;
+﻿using KompasClient.Effects;
+using KompasClient.GameCore;
 using KompasCore.Cards;
-using KompasCore.GameCore;
 using KompasCore.Effects;
+using KompasCore.GameCore;
 using KompasCore.UI;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +15,22 @@ namespace KompasClient.UI
     {
         public const string FriendlyTurn = "Friendly Turn";
         public const string EnemyTurn = "Enemy Turn";
+
+        public struct SearchData
+        {
+            public readonly List<GameCard> toSearch;
+            public readonly int numToSearch;
+            public readonly bool targetingSearch;
+            public readonly List<GameCard> searched;
+
+            public SearchData(List<GameCard> toSearch, int numToSearch, bool targetingSearch, List<GameCard> searched)
+            {
+                this.toSearch = toSearch;
+                this.numToSearch = numToSearch;
+                this.targetingSearch = targetingSearch;
+                this.searched = searched;
+            }
+        }
 
         public ClientGame clientGame;
         //debug UI 
@@ -41,6 +57,7 @@ namespace KompasClient.UI
         public Image cardSearchImage;
         public GameObject alreadySelectedText;
         public Button searchTargetButton;
+        public TMPro.TMP_Text searchTargetButtonText;
         //effects
         public InputField xInput;
         public GameObject setXView;
@@ -49,12 +66,9 @@ namespace KompasClient.UI
         public GameObject ConfirmTriggerView;
         public TMPro.TMP_Text TriggerBlurbText;
         //search
-        private List<GameCard> toSearch;
         private int searchIndex = 0;
-        private int numToSearch;
-        private ListRestriction searchListRestriction;
-        private int numSearched;
-        private List<GameCard> searched;
+        private SearchData? currSearchData = null;
+        private readonly Stack<SearchData> searchStack = new Stack<SearchData>();
         //choose effect option
         public GameObject ChooseOptionView;
         public TMPro.TMP_Text ChoiceBlurbText;
@@ -67,11 +81,6 @@ namespace KompasClient.UI
         public GameObject DeckSelectorParent;
         public GameObject DeckAcceptedParent;
         public GameObject ConnectedWaitingParent;
-
-        private void Awake()
-        {
-            toSearch = new List<GameCard>();
-        }
 
         private bool ShowEffect(Effect eff)
         {
@@ -258,64 +267,57 @@ namespace KompasClient.UI
         #endregion effects
 
         #region search
-        public void StartSearch(List<GameCard> list, ListRestriction listRestriction = null, int numToChoose = 1)
+        public void StartSearch(List<GameCard> list, int numToChoose = 1, bool targetingSearch = true) =>
+            StartSearch(new SearchData(list, list.Count < numToChoose ? list.Count : numToChoose, targetingSearch, new List<GameCard>()));
+
+        public void StartSearch(SearchData data)
         {
-            //if already searching, dont start another search?
-            if (toSearch != null && toSearch.Count != 0) return;
             //if the list is empty, don't search
-            if (list.Count == 0) return;
+            if (data.toSearch.Count == 0) return;
 
-            Debug.Log($"Searching a list of {list.Count} cards: {string.Join(",", list.Select(c => c.CardName))}");
+            //if should search and already searching, remember current search
+            if (currSearchData.HasValue) searchStack.Push(currSearchData.Value);
 
-            toSearch = list;
-            numToSearch = list.Count < numToChoose ? list.Count : numToChoose;
-            searchListRestriction = listRestriction;
-            numSearched = 0;
-            searched = new List<GameCard>();
+            currSearchData = data;
+            Debug.Log($"Searching a list of {data.toSearch.Count} cards: {string.Join(",", data.toSearch.Select(c => c.CardName))}");
 
             //initiate search process
             searchIndex = 0;
-            cardSearchImage.sprite = toSearch[searchIndex].detailedSprite;
+            cardSearchImage.sprite = currSearchData.Value.toSearch[searchIndex].detailedSprite;
+            if (currSearchData.Value.targetingSearch) searchTargetButtonText.text = "Choose";
+            else searchTargetButtonText.text = "Cancel";
             cardSearchView.SetActive(true);
-            //set buttons to their correct states
-            //searchTargetButton.gameObject.SetActive(true);
         }
 
         public void SearchSelectedCard()
         {
             //if the list to search through is null, we're not searching atm.
-            if (toSearch == null) return;
+            if (currSearchData == null) return;
 
-            GameCard searchSelected = toSearch[searchIndex];
+            if (!currSearchData.Value.targetingSearch)
+            {
+                ResetSearch();
+                return;
+            }
 
-            if (numToSearch == 1)
+            GameCard searchSelected = currSearchData.Value.toSearch[searchIndex];
+
+            if (currSearchData.Value.numToSearch == 1)
             {
                 clientGame.clientNotifier.RequestTarget(searchSelected);
                 ResetSearch();
             }
-            else if (!searched.Contains(searchSelected))
+            else if (!currSearchData.Value.searched.Contains(searchSelected))
             {
-                searched.Add(searchSelected);
+                currSearchData.Value.searched.Add(searchSelected);
 
                 alreadySelectedText.SetActive(true);
 
-                //TODO a better way to evaluate the list restriction. a partial list might not fit the list restriction, but
-                //adding something to that list might make it fit.
-                //if there is a list restriction, but it doesn't like this list, refuse to add that card
-                /*if(searchListRestriction != null && !searchListRestriction.Evaluate(searched))
-                {
-                    searched.Remove(searchSelected);
-                    return;
-                }*/
-
-                //TODO: if we didn't return (and so are looking for more cards), mark that card as selected (so the player can tell what they've selected so far)
-                numSearched++;
-
                 //if we were given a maximum number to be searched, and hit that number, no reason to keep asking
-                if (numToSearch > 1 && numSearched >= numToSearch)
+                if (currSearchData.Value.numToSearch > 1 && currSearchData.Value.searched.Count >= currSearchData.Value.numToSearch)
                 {
                     //then send the total list
-                    clientGame.clientNotifier.RequestListChoices(searched);
+                    clientGame.clientNotifier.RequestListChoices(currSearchData.Value.searched);
                     //and reset searching
                     ResetSearch();
                 }
@@ -323,42 +325,21 @@ namespace KompasClient.UI
             else
             {
                 //deselect
-                searched.Remove(searchSelected);
-                numSearched--;
+                currSearchData.Value.searched.Remove(searchSelected);
                 alreadySelectedText.SetActive(false);
             }
         }
 
-        public void EndSearch()
-        {
-            //if the list to search through is null, we're not searching atm.
-            if (toSearch == null) return;
-
-            //if we were told to look for any number of cards, send the final list of cards found
-            if (numToSearch == -1) clientGame.clientNotifier.RequestListChoices(searched);
-            //otherwise, tell the server that we'd like to cancel searching?
-            //if we're required to make a search, the server will insist that yes, actually, i need a search from you
-            else clientGame.clientNotifier.RequestCancelSearch();
-
-            ResetSearch();
-        }
-
         /// <summary>
-        /// Hides all buttons relevant to all searches
+        /// If this is the last search, hides everything. If it's not, moves on to the next search
         /// </summary>
         private void ResetSearch()
         {
             //forget what we were searching through. don't just clear the list because that might clear the actual deck or discard
-            toSearch = null;
+            currSearchData = null; //thank god for garbage collection lol :upside down smiley:
 
-            cardSearchView.SetActive(false);
-            //set buttons to their correct states
-            //searchTargetButton.gameObject.SetActive(false);
-        }
-
-        public void StartDeckSearch()
-        {
-            StartSearch(clientGame.friendlyDeckCtrl.Deck);
+            if (searchStack.Count == 0) cardSearchView.SetActive(false);
+            else StartSearch(searchStack.Pop());
         }
 
         public void StartDiscardSearch()
@@ -369,20 +350,24 @@ namespace KompasClient.UI
         public void NextCardSearch()
         {
             searchIndex++;
-            searchIndex %= toSearch.Count;
-
-            cardSearchImage.sprite = toSearch[searchIndex].detailedSprite;
-            alreadySelectedText.SetActive(searched.Contains(toSearch[searchIndex]));
+            searchIndex %= currSearchData.Value.toSearch.Count;
+            SearchShowIndex(searchIndex);
         }
 
         public void PrevCardSearch()
         {
             searchIndex--;
-            if (searchIndex < 0) searchIndex += toSearch.Count;
-
-            cardSearchImage.sprite = toSearch[searchIndex].detailedSprite;
-            alreadySelectedText.SetActive(searched.Contains(toSearch[searchIndex]));
+            if (searchIndex < 0) searchIndex += currSearchData.Value.toSearch.Count;
+            SearchShowIndex(searchIndex);
         }
+
+        public void SearchShowIndex(int index)
+        {
+            cardSearchImage.sprite = currSearchData.Value.toSearch[searchIndex].detailedSprite;
+            alreadySelectedText.SetActive(currSearchData.Value.searched.Contains(currSearchData.Value.toSearch[searchIndex]));
+        }
+
+        public void SelectShownSearchCard() => HoverOver(currSearchData.Value.toSearch[searchIndex]);
         #endregion
 
         #region flow control

@@ -8,8 +8,7 @@ namespace KompasClient.GameCore
 
         public void OnMouseDown()
         {
-            if (ClientGame.friendlyDiscardCtrl == this)
-                ClientGame.clientNotifier.RequestRehand(GetLastDiscarded());
+            ClientGame.clientUICtrl.StartSearch(Discard, targetingSearch: false);
         }
     }
 }
