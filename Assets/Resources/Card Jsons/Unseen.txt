@@ -42,12 +42,12 @@
 				"{
 					\"subeffType\":\"Pay Target's Cost in Pips\",
 					\"divisor\":2
-				}"
+				}",
 				"{
 					\"subeffType\":\"Play\"
 				}"
 			]
-		}
+		},
 		{
 			"triggerCondition":"Play",
 			"trigger":

@@ -41,7 +41,7 @@
 				}",
 				"{
 					\"subeffType\":\"Pay Target's Cost in Pips\"
-				}"
+				}",
 				"{
 					\"subeffType\":\"Play\"
 				}"
