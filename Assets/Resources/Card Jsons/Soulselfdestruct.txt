@@ -1,0 +1,49 @@
+{
+	"cardType":83,
+	"cardName":"Soulselfdestruct",
+	"effText":"Kill a friendly SX Ethereal. Mill X Revenants. (Discard them from your deck.)",
+	"effects":[
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":{
+						\"blurb\":\"Ethereal for Soulselfdestruct to kill\",
+						\"cardRestrictions\":[\"Friendly\",\"Board\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Ethereal\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Deck Target\",
+					\"cardRestriction\":{
+						\"blurb\":\"card for Salvage Soul to discard\",
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Revenant\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Loop X Times\",
+					\"jumpTo\":3
+				}"
+			]	
+		}
+	],
+	"fast":true,
+	"c":1,
+	"spellType":"Simple",
+	"subtypes":["Simple"],
+	"subtypeText":"Simple"
+}

@@ -22,6 +22,8 @@ namespace KompasCore.GameCore
 
         public int IndexOf(GameCard card) => Deck.IndexOf(card);
         public int DeckSize => Deck.Count;
+        public GameCard Topdeck => Deck.FirstOrDefault();
+        public GameCard Bottomdeck => Deck.LastOrDefault();
 
         /// <summary>
         /// Gets the card at the designated index.

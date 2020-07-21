@@ -278,7 +278,7 @@ namespace KompasClient.UI
             cardSearchImage.sprite = toSearch[searchIndex].detailedSprite;
             cardSearchView.SetActive(true);
             //set buttons to their correct states
-            searchTargetButton.gameObject.SetActive(true);
+            //searchTargetButton.gameObject.SetActive(true);
         }
 
         public void SearchSelectedCard()
@@ -353,7 +353,7 @@ namespace KompasClient.UI
 
             cardSearchView.SetActive(false);
             //set buttons to their correct states
-            searchTargetButton.gameObject.SetActive(false);
+            //searchTargetButton.gameObject.SetActive(false);
         }
 
         public void StartDeckSearch()

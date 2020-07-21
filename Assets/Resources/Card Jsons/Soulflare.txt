@@ -21,7 +21,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Bottomdeck\"
+					\"subeffType\":\"Annihilate\"
 				}",
 				"{
 					\"subeffType\":\"Count X Loop\",
@@ -30,13 +30,17 @@
 				}",
 				"{
 					\"subeffType\":\"Draw X\"
+				}",
+				"{
+					\"subeffType\":\"Add Pips\"
+					\"xMultiplier\":1
 				}"
 			]	
 		}
 	],
 	"fast":true,
-	"c":2,
+	"c":3,
 	"spellType":"Simple",
-	"subtypes":["Simple","Shaping"],
-	"subtypeText":"Simple Shaping"
+	"subtypes":["Simple"],
+	"subtypeText":"Simple"
 }

@@ -68,13 +68,14 @@ namespace KompasCore.Effects
         public const string DiscardCard = "Discard"; //301,
         public const string ReshuffleCard = "Reshuffle"; //303,
         public const string RehandCard = "Rehand"; //304,
-        public const string Draw = "Draw"; //305,
-        public const string DrawX = "Draw X"; //306,
         public const string Bottomdeck = "Bottomdeck"; //307,
         public const string Topdeck = "Topdeck"; //308,
         public const string Move = "Move"; //309,
         public const string Swap = "Swap"; //310,
         public const string Annihilate = "Annihilate"; //311,
+        public const string Draw = "Draw"; //305,
+        public const string DrawX = "Draw X"; //306,
+        public const string Mill = "Mill";
         public const string BottomdeckRest = "Bottomdeck Rest"; //350,
 
         //loops/control flow
