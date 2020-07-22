@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Soulcutter the Heartless",
-	"effText":"Revenant: When I die, annihilate me. You can pip revive me for half cost.\nWhen a card is annihilated, discard a Revenant and draw 1.",
+	"effText":"Revenant: When I die, annihilate me. You can pip revive me for half cost.\nWhen a card is annihilated, discard a Revenant, draw 1, and if it's an enemy turn, gain a pip.",
 	"effects":[
 		{
 			"triggerCondition":"Discard",
@@ -70,6 +70,14 @@
 				}",
 				"{
 					\"subeffType\":\"Draw\"
+				}",
+				"{
+					\"subeffType\":\"Conditionally End Effect Resolution\",
+					\"condition\":\"Must be Enemy Turn\"
+				}",
+				"{
+					\"subeffType\":\"Add Pips\",
+					\"modifier\":1
 				}"
 			]	
 		}

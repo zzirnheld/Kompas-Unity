@@ -11,6 +11,7 @@ namespace KompasServer.Effects
         public const string XLessThanConst = "X<C";
         public const string NoneFitRestriction = "None Fit Restriction";
         public const string MustBeFriendlyTurn = "Must be Friendly Turn";
+        public const string MustBeEnemyTurn = "Must be Enemy Turn";
 
         public int constant = 0;
         public CardRestriction cardRestriction = new CardRestriction();
@@ -45,6 +46,9 @@ namespace KompasServer.Effects
                     break;
                 case MustBeFriendlyTurn:
                     end = ServerGame.TurnPlayer != Effect.Controller;
+                    break;
+                case MustBeEnemyTurn:
+                    end = ServerGame.TurnPlayer == Effect.Controller;
                     break;
                 default:
                     throw new System.ArgumentException($"Condition {condition} invalid for conditional end subeffect");

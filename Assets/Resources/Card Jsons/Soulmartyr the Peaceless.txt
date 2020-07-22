@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Soulmartyr the Peaceless",
-	"effText":"Revenant: When I die, annihilate me. You can pip revive me for half cost.\nWhen a card is annihilated, give friendly Ethereals +1W.",
+	"effText":"Revenant: When I die, annihilate me. You can pip revive me for half cost.\nWhen a card is annihilated, give friendly Ethereals +1W, and if it's an enemy turn, gain a pip.",
 	"effects":[
 		{
 			"triggerCondition":"Discard",
@@ -65,6 +65,14 @@
 						\"subtypesInclude\":[\"Ethereal\"]
 					},
 					\"wMod\":1
+				}",
+				"{
+					\"subeffType\":\"Conditionally End Effect Resolution\",
+					\"condition\":\"Must be Enemy Turn\"
+				}",
+				"{
+					\"subeffType\":\"Add Pips\",
+					\"modifier\":1
 				}"
 			]	
 		}
