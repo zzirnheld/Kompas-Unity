@@ -3119,13 +3119,13 @@ MonoBehaviour:
   ClientCharPrefab: {fileID: 0}
   ClientSpellPrefab: {fileID: 0}
   ClientAugPrefab: {fileID: 0}
-  ServerAvatarPrefab: {fileID: 4404581814192963609, guid: dc96b0f4072d6b346b16c25bb389096b,
+  ServerAvatarPrefab: {fileID: 3146857051703895276, guid: 3ca41fb52db949149969fcf2dff545bf,
     type: 3}
-  ServerCharPrefab: {fileID: 4792563830948402488, guid: 13d5ad9d91f212e4e8922fd8be8390d4,
+  ServerCharPrefab: {fileID: 3146857051703895276, guid: aa3a64a32905bb14995dd1a5b54440cc,
     type: 3}
-  ServerSpellPrefab: {fileID: 5380166087280040253, guid: ae48d254d3f37f240a93b38386608a7f,
+  ServerSpellPrefab: {fileID: 3146857051703895276, guid: aa3a64a32905bb14995dd1a5b54440cc,
     type: 3}
-  ServerAugPrefab: {fileID: 6154761281434505768, guid: 63d407e8ed4ec024fb18638a9fd1f2db,
+  ServerAugPrefab: {fileID: 3146857051703895276, guid: aa3a64a32905bb14995dd1a5b54440cc,
     type: 3}
 --- !u!1 &1515742811
 GameObject:
