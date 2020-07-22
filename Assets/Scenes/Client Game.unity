@@ -3545,13 +3545,13 @@ MonoBehaviour:
   DeckbuilderCharPrefab: {fileID: 0}
   DeckbuilderSpellPrefab: {fileID: 0}
   DeckbuilderAugPrefab: {fileID: 0}
-  ClientAvatarPrefab: {fileID: 6195353887460082758, guid: ae47bc32d1e3be74594894ad3f07f352,
+  ClientAvatarPrefab: {fileID: 3146857051703895276, guid: d3c8a73d11775cb4796a33679a2d29c0,
     type: 3}
-  ClientCharPrefab: {fileID: 1865637914893367623, guid: 6df5c5239da6fdc4faf8916b235fe769,
+  ClientCharPrefab: {fileID: 3146857051703895276, guid: 46ba5fc0233bfa34b8f702966c564175,
     type: 3}
-  ClientSpellPrefab: {fileID: 6175093951283449654, guid: 7f8e50daa5d174f4f96edf111b00ec56,
+  ClientSpellPrefab: {fileID: 3146857051703895276, guid: 46ba5fc0233bfa34b8f702966c564175,
     type: 3}
-  ClientAugPrefab: {fileID: 8126270345339244767, guid: 838fd760f8a3c6544b549c791cd88586,
+  ClientAugPrefab: {fileID: 3146857051703895276, guid: 46ba5fc0233bfa34b8f702966c564175,
     type: 3}
   ServerAvatarPrefab: {fileID: 0}
   ServerCharPrefab: {fileID: 0}

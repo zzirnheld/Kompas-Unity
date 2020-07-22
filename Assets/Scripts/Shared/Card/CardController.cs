@@ -10,6 +10,24 @@ namespace KompasCore.Cards
     {
         public GameCard card;
         public MeshRenderer cardFaceRenderer;
+        public TMPro.TMP_Text nText;
+        public TMPro.TMP_Text eText;
+        public TMPro.TMP_Text sText;
+        public TMPro.TMP_Text wText;
+        public TMPro.TMP_Text cText;
+        public TMPro.TMP_Text aText;
+        public GameObject nRing;
+        public GameObject eRing;
+        public GameObject wRing;
+        public GameObject charNameplate;
+        public GameObject noncharNameplate;
+
+        public int N { set => nText.text = $"N\n{value}"; }
+        public int E { set => eText.text = $"E\n{value}"; }
+        public int S { set => sText.text = $"S\n{value}"; }
+        public int W { set => wText.text = $"W\n{value}"; }
+        public int C { set => cText.text = $"C\n{value}"; }
+        public int A { set => aText.text = $"A\n{value}"; }
 
         public void SetPhysicalLocation(CardLocation location)
         {
@@ -63,6 +81,24 @@ namespace KompasCore.Cards
             }
 
             cardFaceRenderer.material.mainTexture = detailed;
+        }
+
+        public void ShowForCardType(char cardType)
+        {
+            bool isChar = cardType == 'C';
+            nRing.SetActive(isChar);
+            eRing.SetActive(isChar);
+            wRing.SetActive(isChar);
+            nText.gameObject.SetActive(isChar);
+            eText.gameObject.SetActive(isChar);
+            sText.gameObject.SetActive(isChar);
+            wText.gameObject.SetActive(isChar);
+            charNameplate.SetActive(isChar);
+
+            noncharNameplate.SetActive(!isChar);
+
+            cText.gameObject.SetActive(cardType == 'S');
+            aText.gameObject.SetActive(cardType == 'A');
         }
 
         /// <summary>

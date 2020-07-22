@@ -400,9 +400,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2157426566985455359}
   - component: {fileID: 6379925869815741931}
-  - component: {fileID: 6565957011975089532}
+  - component: {fileID: 2410040325197017081}
   m_Layer: 0
-  m_Name: Client Avatar Card Brass
+  m_Name: Client Card Brass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -444,7 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6075e39016768b143af40ac75b10bc93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 6565957011975089532}
+  card: {fileID: 2410040325197017081}
   cardFaceRenderer: {fileID: 2788596641664160025}
   nText: {fileID: 3625382428148799892}
   eText: {fileID: 3625382427709264322}
@@ -457,7 +457,7 @@ MonoBehaviour:
   wRing: {fileID: 608479765165482847}
   charNameplate: {fileID: 5516865187128098197}
   noncharNameplate: {fileID: 6576319634138716341}
---- !u!114 &6565957011975089532
+--- !u!114 &2410040325197017081
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -466,7 +466,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3146857051703895276}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2f0bad0f397a8f48b9bf1ff9913be8b, type: 3}
+  m_Script: {fileID: 11500000, guid: d5eaf700679447a438067b5b33bda12a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   detailedSprite: {fileID: 0}
@@ -1830,7 +1830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13351909bd3483f4e98c4d1696cf3e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Card: {fileID: 6565957011975089532}
+  Card: {fileID: 2410040325197017081}
   ClientGame: {fileID: 0}
 --- !u!64 &3629093906590329196
 MeshCollider:
