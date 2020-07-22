@@ -1,6 +1,6 @@
 {
 	"cardType":83,
-	"cardName":"Souflare",
+	"cardName":"Soulflare",
 	"effText":"Annihilate X Revenants from your hand. Draw X. Gain X pips.",
 	"effects":[
 		{
@@ -39,7 +39,7 @@
 		}
 	],
 	"fast":true,
-	"c":3,
+	"c":1,
 	"spellType":"Simple",
 	"subtypes":["Simple"],
 	"subtypeText":"Simple"

@@ -8,7 +8,7 @@
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+					\"triggerRestrictions\":[\"This Card Triggered\",\"From Field\"]
 				}
 			}",
 			"subeffects":[
@@ -51,7 +51,7 @@
 	"n":2,
 	"e":1,
 	"s":2,
-	"w":1,
+	"w":2,
 	"subtypes":["Ethereal","Revenant"],
 	"subtypeText":"Ethereal Revenant"
 }

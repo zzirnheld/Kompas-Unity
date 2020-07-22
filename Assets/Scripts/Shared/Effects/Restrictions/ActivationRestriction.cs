@@ -17,7 +17,7 @@ namespace KompasCore.Effects
         public const string Location = "Location";
 
         public int maxTimes = 1;
-        public CardLocation location = CardLocation.Field;
+        public int location = (int) CardLocation.Field;
 
         public string[] activationRestrictions = { };
 
@@ -47,6 +47,9 @@ namespace KompasCore.Effects
                         break;
                     case InPlay:
                         if (Effect.Source.Location != CardLocation.Field) return false;
+                        break;
+                    case Location:
+                        if (Effect.Source.Location != (CardLocation) location) return false;
                         break;
                     default:
                         Debug.LogError($"You forgot to check for {r} in Activation Restriction switch");

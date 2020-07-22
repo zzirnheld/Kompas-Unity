@@ -262,7 +262,8 @@ namespace KompasServer.GameCore
                 return true;
             }
 
-            if (toMove.Position == (toX, toY) || (toMove.IsAvatar && !toMove.Summoned)) return false;
+            if (toMove.Position == (toX, toY) || (toMove.IsAvatar && !toMove.Summoned)
+                || EffectsController.CurrStackEntry != null) return false;
             return toMove.MovementRestriction.Evaluate(toX, toY);
         }
 

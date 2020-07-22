@@ -8,7 +8,7 @@
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+					\"triggerRestrictions\":[\"This Card Triggered\",\"From Field\"]
 				}
 			}",
 			"subeffects":[
@@ -60,7 +60,7 @@
 				"{
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":{
-						\"blurb\":\"for Unwanted to discard\",
+						\"blurb\":\"for Soulcutter to discard\",
 						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Subtypes Include\"],
 						\"subtypesInclude\":[\"Revenant\"]
 					}
@@ -75,9 +75,9 @@
 		}
 	],
 	"n":3,
-	"e":3,
+	"e":4,
 	"s":8,
-	"w":3,
+	"w":4,
 	"subtypes":["Ethereal","Revenant"],
 	"subtypeText":"Ethereal Revenant"
 }

@@ -124,6 +124,9 @@ namespace KompasServer.Effects
                 case ResummonAll:
                     toReturn = JsonUtility.FromJson<ResummonAllSubeffect>(subeffJson);
                     break;
+                case Mill:
+                    toReturn = JsonUtility.FromJson<MillSubeffect>(subeffJson);
+                    break;
                 case SetXByBoardCount:
                     toReturn = JsonUtility.FromJson<SetXBoardRestrictionSubeffect>(subeffJson);
                     break;

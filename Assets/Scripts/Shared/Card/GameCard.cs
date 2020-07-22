@@ -259,12 +259,7 @@ namespace KompasCore.Cards
 
             SpacesMoved = 0;
             AttacksThisTurn = 0;
-            TurnsOnBoard++;
-
-            if(CardType == 'S' && SpellSubtype == VanishingSubtype)
-            {
-                if (TurnsOnBoard > Arg) Discard();
-            }
+            if(Location == CardLocation.Field) TurnsOnBoard++;
         }
 
         #region augments

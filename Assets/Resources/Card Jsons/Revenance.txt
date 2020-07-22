@@ -7,6 +7,8 @@
 			"triggerCondition":"Each Card Drawn",
 			"trigger":
 			"{
+				\"blurb\":\"Discard the drawn Revenant to draw 1?\",
+				\"optional\":true,
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\",\"Triggerer Fits Restriction\"],
 					\"cardRestriction\":{
@@ -33,5 +35,5 @@
 	"spellType":"Vanishing",
 	"subtypes":["Vanishing"],
 	"subtypeText":"Vanishing",
-	"arg":3
+	"arg":1
 }
