@@ -1,14 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class JumpSubeffect : ServerSubeffect
+﻿namespace KompasServer.Effects
 {
-    public int IndexToJumpTo;
-
-    public override bool Resolve()
+    public class JumpSubeffect : ServerSubeffect
     {
-        //this will always jump to the given subeffect index
-        return ServerEffect.ResolveSubeffect(IndexToJumpTo);
+        public int IndexToJumpTo;
+
+        public override bool Resolve()
+        {
+            //this will always jump to the given subeffect index
+            return ServerEffect.ResolveSubeffect(IndexToJumpTo);
+        }
     }
 }

@@ -1,23 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class XTimesSubeffect : LoopSubeffect
+﻿namespace KompasServer.Effects
 {
-    private int count = 0;
-
-    protected override bool ShouldContinueLoop
+    public class XTimesSubeffect : LoopSubeffect
     {
-        get
+        private int count = 0;
+
+        protected override bool ShouldContinueLoop
         {
-            count++;
-            return count < ServerEffect.X;
+            get
+            {
+                count++;
+                return count < ServerEffect.X;
+            }
         }
-    }
 
-    protected override void OnLoopExit()
-    {
-        base.OnLoopExit();
-        count = 0;
+        protected override void OnLoopExit()
+        {
+            base.OnLoopExit();
+            count = 0;
+        }
     }
 }

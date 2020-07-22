@@ -1,10 +1,12 @@
-﻿using System.Collections;
-using System.Linq;
+﻿using KompasCore.Cards;
+using KompasCore.Networking;
+using KompasServer.Effects;
+using KompasServer.GameCore;
 using System.Collections.Generic;
-using System.Net.Sockets;
+using System.Linq;
 using UnityEngine;
 
-namespace KompasNetworking
+namespace KompasServer.Networking
 {
     //handles networking and such for a server game
     public class ServerNetworkController : NetworkController
@@ -43,7 +45,7 @@ namespace KompasNetworking
                     break;
                 case Packet.Command.EndTurn:
                     //TODO check to see if it was their turn bewfore swapping turns
-                    sGame.SwitchTurn();
+                    if(sGame.EffectsController.CurrStackEntry == null) sGame.SwitchTurn();
                     break;
                 #region effect commands
                 case Packet.Command.Target:

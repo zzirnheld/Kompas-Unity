@@ -1,13 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
+﻿using System.Linq;
 
-public class AddRestSubeffect : CardTargetSubeffect
+namespace KompasServer.Effects
 {
-    public override bool Resolve()
+    public class AddRestSubeffect : CardTargetSubeffect
     {
-        Effect.Rest.AddRange(ServerGame.Cards.Where(c => cardRestriction.Evaluate(c)));
-        return ServerEffect.ResolveNextSubeffect();
+        public override bool Resolve()
+        {
+            Effect.Rest.AddRange(ServerGame.Cards.Where(c => cardRestriction.Evaluate(c)));
+            return ServerEffect.ResolveNextSubeffect();
+        }
     }
 }

@@ -1,24 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class PayPipsTargetCostSubeffect : ServerSubeffect
+namespace KompasServer.Effects
 {
-    public int multiplier = 1;
-    public int divisor = 1;
-    public int modifier = 0;
-
-    public override bool Resolve()
+    public class PayPipsTargetCostSubeffect : ServerSubeffect
     {
-        if(Target == null) return ServerEffect.EffectImpossible();
+        public int multiplier = 1;
+        public int divisor = 1;
+        public int modifier = 0;
 
-        int toPay = Target.Cost * multiplier / divisor + modifier;
-        if (EffectController.Pips < toPay) return ServerEffect.EffectImpossible();
-        else
+        public override bool Resolve()
         {
-            Debug.Log("Paying " + toPay + " pips for target cost");
-            ServerGame.GivePlayerPips(EffectController, EffectController.Pips - toPay);
-            return ServerEffect.ResolveNextSubeffect();
+            if (Target == null) return ServerEffect.EffectImpossible();
+
+            int toPay = Target.Cost * multiplier / divisor + modifier;
+            if (EffectController.Pips < toPay) return ServerEffect.EffectImpossible();
+            else
+            {
+                Debug.Log("Paying " + toPay + " pips for target cost");
+                ServerGame.GivePlayerPips(EffectController, EffectController.Pips - toPay);
+                return ServerEffect.ResolveNextSubeffect();
+            }
         }
     }
 }

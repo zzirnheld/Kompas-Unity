@@ -1,13 +1,15 @@
-﻿using System.Collections;
+﻿using KompasCore.Cards;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class TemporaryNegateSubeffect : TemporaryCardChangeSubeffect
+namespace KompasServer.Effects
 {
-    protected override IEnumerable<(HangingEffect, GameCard)> CreateHangingEffects()
+    public class TemporaryNegateSubeffect : TemporaryCardChangeSubeffect
     {
-        var tempNegation = new HangingNegationEffect(ServerGame, triggerRestriction, endCondition,
-            Target, this);
-        return new List<(HangingEffect, GameCard)>() { (tempNegation, Target) };
+        protected override IEnumerable<(HangingEffect, GameCard)> CreateHangingEffects()
+        {
+            var tempNegation = new HangingNegationEffect(ServerGame, triggerRestriction, endCondition,
+                Target, this);
+            return new List<(HangingEffect, GameCard)>() { (tempNegation, Target) };
+        }
     }
 }

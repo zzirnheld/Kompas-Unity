@@ -1,17 +1,20 @@
-﻿using System.Collections;
+﻿using KompasClient.Cards;
+using KompasCore.GameCore;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class ClientDeckController : DeckController
+namespace KompasClient.GameCore
 {
-    public ClientGame ClientGame;
-
-    public List<ClientGameCard> ClientDeck { get; } = new List<ClientGameCard>();
-
-    public void OnMouseDown()
+    public class ClientDeckController : DeckController
     {
-        //request a draw
-        if (ClientGame.friendlyDeckCtrl == this)
-            ClientGame.clientNotifier.RequestDraw();
+        public ClientGame ClientGame;
+
+        public List<ClientGameCard> ClientDeck { get; } = new List<ClientGameCard>();
+
+        public void OnMouseDown()
+        {
+            //request a draw
+            if (ClientGame.friendlyDeckCtrl == this)
+                ClientGame.clientNotifier.RequestDraw();
+        }
     }
 }

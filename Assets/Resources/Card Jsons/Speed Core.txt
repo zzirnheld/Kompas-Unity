@@ -37,7 +37,7 @@
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,10]
+					\"triggerRestrictions\":[\"This Card in Play\",\"Augmented Card Triggered\"]
 				}
 			}",
 			"subeffects":[

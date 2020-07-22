@@ -1,10 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using KompasServer.GameCore;
+using KompasCore.Effects;
 
-public interface IServerStackable : IStackable
+namespace KompasServer.Effects
 {
-    void StartResolution(ActivationContext context);
+    public interface IServerStackable : IStackable
+    {
+        void StartResolution(ActivationContext context);
 
-    ServerPlayer ServerController { get; }
+        ServerPlayer ServerController { get; }
+    }
 }

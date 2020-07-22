@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class DummyChooseOptionSubeffect : DummySubeffect
+﻿namespace KompasClient.Effects
 {
-    public string ChoiceBlurb;
-    public string[] OptionBlurbs;
-    public int[] OptionJumpIndices;
+    public class DummyChooseOptionSubeffect : DummySubeffect
+    {
+        public string ChoiceBlurb;
+        public string[] OptionBlurbs;
+        public int[] OptionJumpIndices;
+    }
 }

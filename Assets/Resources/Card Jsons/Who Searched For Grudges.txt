@@ -87,7 +87,7 @@
 				}",
 				"{
 					\"subeffType\":\"Clear Jump on Effect Impossible\"
-				}"
+				}",
 				"{
 					\"subeffType\":\"Target This\"
 				}",

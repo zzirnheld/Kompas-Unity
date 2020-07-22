@@ -1,14 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using KompasCore.GameCore;
 
-public class ClientDiscardController : DiscardController
+namespace KompasClient.GameCore
 {
-    public ClientGame ClientGame;
-
-    public void OnMouseDown()
+    public class ClientDiscardController : DiscardController
     {
-        if (ClientGame.friendlyDiscardCtrl == this)
-            ClientGame.clientNotifier.RequestRehand(GetLastDiscarded());
+        public ClientGame ClientGame;
+
+        public void OnMouseDown()
+        {
+            ClientGame.clientUICtrl.StartSearch(Discard, targetingSearch: false);
+        }
     }
 }

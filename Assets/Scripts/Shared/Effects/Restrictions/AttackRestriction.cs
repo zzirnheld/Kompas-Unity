@@ -1,63 +1,64 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using KompasCore.Cards;
 
-[System.Serializable]
-public class AttackRestriction
+namespace KompasCore.Effects
 {
-    public const string ThisIsCharacter = "This is Character";
-    public const string DefenderIsCharacter = "Defender is Character";
-    public const string DefenderIsAdjacent = "Defender is Adjacent";
-    public const string DefenderIsEnemy = "Defender is Enemy";
-    public const string FriendlyTurn = "Friendly Turn";
-    public const string MaxPerTurn = "Maximum Per Turn";
-
-    public const string ThisIsActive = "This is Activated";
-
-    public string[] attackRestrictions = new string[] { ThisIsCharacter, DefenderIsCharacter, DefenderIsAdjacent, DefenderIsEnemy, FriendlyTurn, MaxPerTurn };
-    public int maxAttacks = 1;
-
-    public GameCard Card { get; private set; }
-
-    public void SetInfo(GameCard card)
+    [System.Serializable]
+    public class AttackRestriction
     {
-        Card = card;
-    }
+        public const string ThisIsCharacter = "This is Character";
+        public const string DefenderIsCharacter = "Defender is Character";
+        public const string DefenderIsAdjacent = "Defender is Adjacent";
+        public const string DefenderIsEnemy = "Defender is Enemy";
+        public const string FriendlyTurn = "Friendly Turn";
+        public const string MaxPerTurn = "Maximum Per Turn";
 
-    public bool Evaluate(GameCard defender)
-    {
-        if (defender == null) return false;
+        public const string ThisIsActive = "This is Activated";
 
-        foreach(string r in attackRestrictions)
+        public string[] attackRestrictions = new string[] { ThisIsCharacter, DefenderIsCharacter, DefenderIsAdjacent, DefenderIsEnemy, FriendlyTurn, MaxPerTurn };
+        public int maxAttacks = 1;
+
+        public GameCard Card { get; private set; }
+
+        public void SetInfo(GameCard card)
         {
-            switch (r)
-            {
-                case ThisIsCharacter:
-                    if (Card.CardType != 'C') return false;
-                    break;
-                case DefenderIsCharacter:
-                    if (defender.CardType != 'C') return false;
-                    break;
-                case DefenderIsAdjacent:
-                    if (!Card.IsAdjacentTo(defender)) return false;
-                    break;
-                case DefenderIsEnemy:
-                    if (Card.Controller == defender.Controller) return false;
-                    break;
-                case ThisIsActive:
-                    if (!Card.Activated) return false;
-                    break;
-                case FriendlyTurn:
-                    if (Card.Controller != Card.Game.TurnPlayer) return false;
-                    break;
-                case MaxPerTurn:
-                    if (Card.AttacksThisTurn >= maxAttacks) return false;
-                    break;
-                default:
-                    throw new System.ArgumentException($"Could not understand attack restriction {r}");
-            }
+            Card = card;
         }
 
-        return true;
+        public bool Evaluate(GameCard defender)
+        {
+            if (defender == null) return false;
+
+            foreach (string r in attackRestrictions)
+            {
+                switch (r)
+                {
+                    case ThisIsCharacter:
+                        if (Card.CardType != 'C') return false;
+                        break;
+                    case DefenderIsCharacter:
+                        if (defender.CardType != 'C') return false;
+                        break;
+                    case DefenderIsAdjacent:
+                        if (!Card.IsAdjacentTo(defender)) return false;
+                        break;
+                    case DefenderIsEnemy:
+                        if (Card.Controller == defender.Controller) return false;
+                        break;
+                    case ThisIsActive:
+                        if (!Card.Activated) return false;
+                        break;
+                    case FriendlyTurn:
+                        if (Card.Controller != Card.Game.TurnPlayer) return false;
+                        break;
+                    case MaxPerTurn:
+                        if (Card.AttacksThisTurn >= maxAttacks) return false;
+                        break;
+                    default:
+                        throw new System.ArgumentException($"Could not understand attack restriction {r}");
+                }
+            }
+
+            return true;
+        }
     }
 }

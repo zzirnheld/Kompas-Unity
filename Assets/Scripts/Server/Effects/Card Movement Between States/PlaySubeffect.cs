@@ -1,10 +1,13 @@
-﻿public class PlaySubeffect : CardChangeStateSubeffect
+﻿namespace KompasServer.Effects
 {
-    public override bool Resolve()
+    public class PlaySubeffect : CardChangeStateSubeffect
     {
-        var (x, y) = Space;
-        if (Target != null && Target.Play(x, y, EffectController, Effect))
-            return ServerEffect.ResolveNextSubeffect();
-        else return ServerEffect.EffectImpossible();
+        public override bool Resolve()
+        {
+            var (x, y) = Space;
+            if (Target != null && Target.Play(x, y, EffectController, Effect))
+                return ServerEffect.ResolveNextSubeffect();
+            else return ServerEffect.EffectImpossible();
+        }
     }
 }

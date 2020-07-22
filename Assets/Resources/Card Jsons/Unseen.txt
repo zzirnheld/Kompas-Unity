@@ -1,0 +1,91 @@
+{
+	"cardType":67,
+	"cardName":"Unseen",
+	"effText":"Revenant: When I die, annihilate me. You can pip revive me for half cost.\nWhen I'm summoned, discard a Revenant and search your deck for a Revenant.",
+	"effects":[
+		{
+			"triggerCondition":"Discard",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\",\"From Field\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Annihilate\"
+				}"
+			]
+		},
+		{
+			"activationRestriction":{
+				"activationRestrictions":[
+					"Location"
+				],
+				"location":2
+			},
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where to revive Unlost\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Pay Target's Cost in Pips\",
+					\"divisor\":2
+				}",
+				"{
+					\"subeffType\":\"Play\"
+				}"
+			]
+		},
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Hand Target\",
+					\"cardRestriction\":{
+						\"blurb\":\"for Unwanted to discard\",
+						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Revenant\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Deck Target\",
+					\"cardRestriction\":{
+						\"blurb\":\"for Unwanted to search\",
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Revenant\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Rehand\"
+				}"
+			]	
+		}
+	],
+	"n":2,
+	"e":2,
+	"s":4,
+	"w":2,
+	"subtypes":["Ethereal","Revenant"],
+	"subtypeText":"Ethereal Revenant"
+}

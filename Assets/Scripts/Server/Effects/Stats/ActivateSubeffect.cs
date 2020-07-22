@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActivateSubeffect : ServerSubeffect
+namespace KompasServer.Effects
 {
-    public override bool Resolve()
+    public class ActivateSubeffect : ServerSubeffect
     {
-        Target.SetActivated(true, Effect);
-        return ServerEffect.ResolveNextSubeffect();
+        public override bool Resolve()
+        {
+            Target.SetActivated(true, Effect);
+            return ServerEffect.ResolveNextSubeffect();
+        }
     }
 }

@@ -1,36 +1,38 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using KompasCore.Cards;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DeckSelectCard : CardBase, IPointerDownHandler 
+namespace KompasClient.UI
 {
-    public DeckSelectUIController UICtrl;
-    public Image Image;
-
-    public void SetInfo(SerializableCard card, DeckSelectUIController uiCtrl)
+    public class DeckSelectCard : CardBase, IPointerDownHandler
     {
-        base.SetInfo(card);
-        UICtrl = uiCtrl;
-        SetImage(CardName);
-    }
+        public DeckSelectUIController UICtrl;
+        public Image Image;
 
-    protected void SetImage(string cardFileName)
-    {
-        detailedSprite = Resources.Load<Sprite>("Detailed Sprites/" + cardFileName);
-        simpleSprite = Resources.Load<Sprite>("Simple Sprites/" + cardFileName);
-        //check if either is null. if so, log to debug and return
-        if (detailedSprite == null || simpleSprite == null)
+        public void SetInfo(SerializableCard card, DeckSelectUIController uiCtrl)
         {
-            Debug.LogError("Could not find sprite with name " + cardFileName);
-            return;
+            base.SetInfo(card);
+            UICtrl = uiCtrl;
+            SetImage(CardName);
         }
-        Image.sprite = simpleSprite;
-    }
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        UICtrl.SelectAsAvatar(this);
+        protected void SetImage(string cardFileName)
+        {
+            detailedSprite = Resources.Load<Sprite>("Detailed Sprites/" + cardFileName);
+            simpleSprite = Resources.Load<Sprite>("Simple Sprites/" + cardFileName);
+            //check if either is null. if so, log to debug and return
+            if (detailedSprite == null || simpleSprite == null)
+            {
+                Debug.LogError("Could not find sprite with name " + cardFileName);
+                return;
+            }
+            Image.sprite = simpleSprite;
+        }
+
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            UICtrl.SelectAsAvatar(this);
+        }
     }
 }

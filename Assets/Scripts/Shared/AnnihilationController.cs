@@ -1,20 +1,24 @@
-﻿using System.Collections;
+﻿using KompasCore.Cards;
+using KompasCore.Effects;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnnihilationController : MonoBehaviour
+namespace KompasCore.GameCore
 {
-    public Game game;
-
-    public List<GameCard> Cards { get; } = new List<GameCard>();
-
-    public virtual bool Annihilate(GameCard card, IStackable stackSrc = null)
+    public class AnnihilationController : MonoBehaviour
     {
-        card.Remove(stackSrc);
-        Cards.Add(card);
-        card.Location = CardLocation.Annihilation;
-        return true;
-    }
+        public Game game;
 
-    public void Remove(GameCard card) => Cards.Remove(card);
+        public List<GameCard> Cards { get; } = new List<GameCard>();
+
+        public virtual bool Annihilate(GameCard card, IStackable stackSrc = null)
+        {
+            card.Remove(stackSrc);
+            Cards.Add(card);
+            card.Location = CardLocation.Annihilation;
+            return true;
+        }
+
+        public void Remove(GameCard card) => Cards.Remove(card);
+    }
 }

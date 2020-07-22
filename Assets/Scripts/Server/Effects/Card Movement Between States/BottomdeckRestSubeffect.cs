@@ -1,31 +1,33 @@
-﻿using System.Collections;
+﻿using KompasCore.Cards;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class BottomdeckRestSubeffect : ServerSubeffect
+namespace KompasServer.Effects
 {
-    private static readonly System.Random rng = new System.Random();
-
-    private List<GameCard> Shuffle(List<GameCard> list)
+    public class BottomdeckRestSubeffect : ServerSubeffect
     {
-        int n = list.Count;
-        while (n > 1)
+        private static readonly System.Random rng = new System.Random();
+
+        private List<GameCard> Shuffle(List<GameCard> list)
         {
-            n--;
-            int k = rng.Next(n + 1);
-            GameCard value = list[k];
-            list[k] = list[n];
-            list[n] = value;
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                GameCard value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
+            return list;
         }
-        return list;
-    }
 
-    public override bool Resolve()
-    {
-        //TODO better shuffling algorithm
-        var list = Shuffle(Effect.Rest);
-        foreach (GameCard c in list) c.Bottomdeck(c.Owner, Effect);
+        public override bool Resolve()
+        {
+            //TODO better shuffling algorithm
+            var list = Shuffle(Effect.Rest);
+            foreach (GameCard c in list) c.Bottomdeck(c.Owner, Effect);
 
-        return ServerEffect.ResolveNextSubeffect();
+            return ServerEffect.ResolveNextSubeffect();
+        }
     }
 }

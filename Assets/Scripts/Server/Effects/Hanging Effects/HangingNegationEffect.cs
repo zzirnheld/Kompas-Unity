@@ -1,23 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using KompasCore.Cards;
+using KompasCore.Effects;
+using KompasServer.GameCore;
 
-public class HangingNegationEffect : HangingEffect
+namespace KompasServer.Effects
 {
-    private readonly GameCard target;
-    private readonly ServerSubeffect source;
-
-    public HangingNegationEffect(ServerGame serverGame, TriggerRestriction triggerRestriction, string endCondition,
-        GameCard target, ServerSubeffect source)
-        : base(serverGame, triggerRestriction, endCondition)
+    public class HangingNegationEffect : HangingEffect
     {
-        this.target = target ?? throw new System.ArgumentNullException("Cannot target a null card for a hanging negation");
-        this.source = source ?? throw new System.ArgumentNullException("Cannot have a null source subeffect for hanging negatione effect");
-        target.SetNegated(true, source.ServerEffect);
-    }
+        private readonly GameCard target;
+        private readonly ServerSubeffect source;
 
-    protected override void Resolve()
-    {
-        target.SetNegated(false, source.ServerEffect);
+        public HangingNegationEffect(ServerGame serverGame, TriggerRestriction triggerRestriction, string endCondition,
+            GameCard target, ServerSubeffect source)
+            : base(serverGame, triggerRestriction, endCondition)
+        {
+            this.target = target ?? throw new System.ArgumentNullException("Cannot target a null card for a hanging negation");
+            this.source = source ?? throw new System.ArgumentNullException("Cannot have a null source subeffect for hanging negatione effect");
+            target.SetNegated(true, source.ServerEffect);
+        }
+
+        protected override void Resolve()
+        {
+            target.SetNegated(false, source.ServerEffect);
+        }
     }
 }

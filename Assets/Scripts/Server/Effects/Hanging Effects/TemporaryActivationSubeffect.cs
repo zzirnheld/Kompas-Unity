@@ -1,11 +1,15 @@
 ﻿using System.Collections.Generic;
+using KompasCore.Cards;
 
-public class TemporaryActivationSubeffect : TemporaryCardChangeSubeffect
+namespace KompasServer.Effects
 {
-    protected override IEnumerable<(HangingEffect, GameCard)> CreateHangingEffects()
+    public class TemporaryActivationSubeffect : TemporaryCardChangeSubeffect
     {
-        var tempActivation = new HangingActivationEffect(ServerGame, triggerRestriction, endCondition,
-            Target, this);
-        return new List<(HangingEffect, GameCard)>() { (tempActivation, Target) };
+        protected override IEnumerable<(HangingEffect, GameCard)> CreateHangingEffects()
+        {
+            var tempActivation = new HangingActivationEffect(ServerGame, triggerRestriction, endCondition,
+                Target, this);
+            return new List<(HangingEffect, GameCard)>() { (tempActivation, Target) };
+        }
     }
 }

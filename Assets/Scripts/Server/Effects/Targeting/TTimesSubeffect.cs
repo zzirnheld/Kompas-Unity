@@ -1,24 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class TTimesSubeffect : LoopSubeffect
+﻿namespace KompasServer.Effects
 {
-    public int T;
-    private int count = 0;
-
-    protected override void OnLoopExit()
+    public class TTimesSubeffect : LoopSubeffect
     {
-        base.OnLoopExit();
-        count = 0;
-    }
+        public int T;
+        private int count = 0;
 
-    protected override bool ShouldContinueLoop
-    {
-        get
+        protected override void OnLoopExit()
         {
-            count++;
-            return count < T;
+            base.OnLoopExit();
+            count = 0;
+        }
+
+        protected override bool ShouldContinueLoop
+        {
+            get
+            {
+                count++;
+                return count < T;
+            }
         }
     }
 }

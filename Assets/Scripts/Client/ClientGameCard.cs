@@ -1,50 +1,56 @@
-﻿using System.Collections;
+﻿using KompasClient.Effects;
+using KompasClient.GameCore;
+using KompasCore.Cards;
+using KompasCore.Effects;
+using KompasCore.GameCore;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class ClientGameCard : GameCard
+namespace KompasClient.Cards
 {
-    public ClientGame ClientGame { get; protected set; }
-    public override Game Game => ClientGame;
-
-    public override CardLocation Location
+    public class ClientGameCard : GameCard
     {
-        get => base.Location;
-        set
+        public ClientGame ClientGame { get; protected set; }
+        public override Game Game => ClientGame;
+
+        public override CardLocation Location
         {
-            base.Location = value;
-            ClientGame.clientUICtrl.Leyload = Game.Leyload;
+            get => base.Location;
+            set
+            {
+                base.Location = value;
+                ClientGame.clientUICtrl.Leyload = Game.Leyload;
+            }
         }
-    }
 
-    private ClientPlayer clientController;
-    public ClientPlayer ClientController
-    {
-        get => clientController;
-        set
+        private ClientPlayer clientController;
+        public ClientPlayer ClientController
         {
-            clientController = value;
-            cardCtrl?.SetRotation();
+            get => clientController;
+            set
+            {
+                clientController = value;
+                cardCtrl?.SetRotation();
+            }
         }
-    }
-    public override Player Controller
-    {
-        get => ClientController;
-        set => ClientController = value as ClientPlayer;
-    }
+        public override Player Controller
+        {
+            get => ClientController;
+            set => ClientController = value as ClientPlayer;
+        }
 
-    public ClientPlayer ClientOwner { get; private set; }
-    public override Player Owner => ClientOwner;
+        public ClientPlayer ClientOwner { get; private set; }
+        public override Player Owner => ClientOwner;
 
-    public ClientEffect[] ClientEffects { get; private set; }
-    public override IEnumerable<Effect> Effects => ClientEffects;
-    public override bool IsAvatar => false;
+        public ClientEffect[] ClientEffects { get; private set; }
+        public override IEnumerable<Effect> Effects => ClientEffects;
+        public override bool IsAvatar => false;
 
-    public virtual void SetInfo(SerializableCard serializedCard, ClientGame game, ClientPlayer owner, ClientEffect[] effects, int id)
-    {
-        base.SetInfo(serializedCard, id);
-        ClientGame = game;
-        ClientController = ClientOwner = owner;
-        ClientEffects = effects;
+        public virtual void SetInfo(SerializableCard serializedCard, ClientGame game, ClientPlayer owner, ClientEffect[] effects, int id)
+        {
+            base.SetInfo(serializedCard, id);
+            ClientGame = game;
+            ClientController = ClientOwner = owner;
+            ClientEffects = effects;
+        }
     }
 }

@@ -1,0 +1,38 @@
+{
+	"cardType":83,
+	"cardName":"Soul Drain",
+	"effText":"When an SX Revenant is annihilated, mill your deck’s top X.",
+	"effects":[
+		{
+			"triggerCondition":"Annihilate",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\"],
+						\"subtypesInclude\":[\"Revenant\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target Triggering Card\"
+				}",
+				"{
+					\"subeffType\":\"Set X by Target Value\",
+					\"whatToCount\":\"S\"
+				}",
+				"{
+					\"subeffType\":\"Mill\",
+					\"xMultiplier\":1
+				}"
+			]	
+		}
+	],
+	"fast":true,
+	"c":3,
+	"spellType":"Enchant",
+	"subtypes":["Enchant"],
+	"subtypeText":"Enchant"
+}

@@ -8,7 +8,7 @@ using System.Text;
 using UnityEngine;
 
 
-namespace KompasNetworking
+namespace KompasCore.Networking
 {
     public abstract class NetworkController : MonoBehaviour
     {

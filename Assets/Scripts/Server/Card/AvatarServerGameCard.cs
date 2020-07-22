@@ -1,33 +1,37 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using KompasCore.Cards;
+using KompasCore.Effects;
+using KompasServer.Effects;
+using KompasServer.GameCore;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class AvatarServerGameCard : ServerGameCard
+namespace KompasServer.Cards
 {
-    public override bool CanRemove => Summoned || Location == CardLocation.Nowhere;
-
-    public override void SetE(int e, IStackable stackSrc = null)
+    public class AvatarServerGameCard : ServerGameCard
     {
-        base.SetE(e, stackSrc);
-        if (E < 0) ServerGame.Lose(ControllerIndex);
-    }
+        public override bool CanRemove => Summoned || Location == CardLocation.Nowhere;
 
-    //TODO make this return whether the Avatar is summoned yet
-    public override bool Summoned => false;
-    public override bool IsAvatar => true;
-    public override int CombatDamage => Summoned ? base.CombatDamage : 0;
+        public override void SetE(int e, IStackable stackSrc = null)
+        {
+            base.SetE(e, stackSrc);
+            if (E < 0) ServerGame.Lose(ControllerIndex);
+        }
 
-    public override bool Remove(IStackable stackSrc = null)
-    {
-        Debug.LogWarning("Remove called for Avatar - doing nothing");
-        if (Summoned) return base.Remove(stackSrc);
-        else return Location == CardLocation.Nowhere;
-    }
+        //TODO make this return whether the Avatar is summoned yet
+        public override bool Summoned => false;
+        public override bool IsAvatar => true;
+        public override int CombatDamage => Summoned ? base.CombatDamage : 0;
 
-    public override void SetInfo(SerializableCard serializedCard, ServerGame game, ServerPlayer owner, ServerEffect[] effects, int id)
-    {
-        base.SetInfo(serializedCard, game, owner, effects, id);
-        E *= 2;
+        public override bool Remove(IStackable stackSrc = null)
+        {
+            Debug.LogWarning("Remove called for Avatar - doing nothing");
+            if (Summoned) return base.Remove(stackSrc);
+            else return Location == CardLocation.Nowhere;
+        }
+
+        public override void SetInfo(SerializableCard serializedCard, ServerGame game, ServerPlayer owner, ServerEffect[] effects, int id)
+        {
+            base.SetInfo(serializedCard, game, owner, effects, id);
+            E *= 2;
+        }
     }
 }

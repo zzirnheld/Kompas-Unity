@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class EndTurnSubeffect : ServerSubeffect
+﻿namespace KompasServer.Effects
 {
-    public override bool Resolve()
+    public class EndTurnSubeffect : ServerSubeffect
     {
-        ServerGame.SwitchTurn();
-        return ServerEffect.ResolveNextSubeffect();
+        public override bool Resolve()
+        {
+            ServerGame.SwitchTurn();
+            return ServerEffect.ResolveNextSubeffect();
+        }
     }
 }

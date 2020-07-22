@@ -1,23 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using KompasCore.Effects;
+using KompasCore.Cards;
+using KompasServer.GameCore;
 
-public class HangingActivationEffect : HangingEffect
+namespace KompasServer.Effects
 {
-    private readonly GameCard target;
-    private readonly ServerSubeffect source;
-
-    public HangingActivationEffect(ServerGame serverGame, TriggerRestriction triggerRestriction, string endCondition,
-        GameCard target, ServerSubeffect source)
-        : base(serverGame, triggerRestriction, endCondition)
+    public class HangingActivationEffect : HangingEffect
     {
-        this.target = target ?? throw new System.ArgumentNullException("Cannot target a null card for a hanging activation");
-        this.source = source ?? throw new System.ArgumentNullException("Cannot make a hanging activation effect from no subeffect");
-        target.SetActivated(true, source.ServerEffect);
-    }
+        private readonly GameCard target;
+        private readonly ServerSubeffect source;
 
-    protected override void Resolve()
-    {
-        target.SetActivated(false, source.ServerEffect);
+        public HangingActivationEffect(ServerGame serverGame, TriggerRestriction triggerRestriction, string endCondition,
+            GameCard target, ServerSubeffect source)
+            : base(serverGame, triggerRestriction, endCondition)
+        {
+            this.target = target ?? throw new System.ArgumentNullException("Cannot target a null card for a hanging activation");
+            this.source = source ?? throw new System.ArgumentNullException("Cannot make a hanging activation effect from no subeffect");
+            target.SetActivated(true, source.ServerEffect);
+        }
+
+        protected override void Resolve()
+        {
+            target.SetActivated(false, source.ServerEffect);
+        }
     }
 }

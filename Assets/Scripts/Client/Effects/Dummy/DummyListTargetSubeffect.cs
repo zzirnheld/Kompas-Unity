@@ -1,23 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using KompasCore.Effects;
 
-public class DummyListTargetSubeffect : DummySubeffect
+namespace KompasClient.Effects
 {
-    /// <summary>
-    /// Restriction that each card must fulfill
-    /// </summary>
-    public CardRestriction cardRestriction;
-
-    /// <summary>
-    /// Restriction that the list collectively must fulfill
-    /// </summary>
-    public ListRestriction listRestriction;
-
-    public override void Initialize(ClientEffect eff, int subeffIndex)
+    public class DummyListTargetSubeffect : DummySubeffect
     {
-        base.Initialize(eff, subeffIndex);
-        cardRestriction.Initialize(this);
-        listRestriction.Subeffect = this;
+        /// <summary>
+        /// Restriction that each card must fulfill
+        /// </summary>
+        public CardRestriction cardRestriction;
+
+        /// <summary>
+        /// Restriction that the list collectively must fulfill
+        /// </summary>
+        public ListRestriction listRestriction;
+
+        public override void Initialize(ClientEffect eff, int subeffIndex)
+        {
+            base.Initialize(eff, subeffIndex);
+            cardRestriction.Initialize(this);
+            listRestriction.Subeffect = this;
+        }
     }
 }

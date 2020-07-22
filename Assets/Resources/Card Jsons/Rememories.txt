@@ -1,0 +1,33 @@
+{
+	"cardType":83,
+	"cardName":"Rememories",
+	"effText":"When you summon a character, give them +1 NESW.",
+	"effects":[
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target Triggering Card\"
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
+					\"nChange\":1,
+					\"eChange\":1,
+					\"sChange\":1,
+					\"wChange\":1
+				}"
+			]	
+		}
+	],
+	"fast":false,
+	"c":4,
+	"spellType":"Enchant",
+	"subtypes":["Enchant"],
+	"subtypeText":"Enchant"
+}

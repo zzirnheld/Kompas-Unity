@@ -27,7 +27,7 @@
 			]	
 		},
 		{
-			"triggerCondition":301,
+			"triggerCondition":"Attack",
 			"trigger":
 			"{
 				\"blurb\":\"Give the attacking Aerian and all other characters within 2 spaces -2E?\",

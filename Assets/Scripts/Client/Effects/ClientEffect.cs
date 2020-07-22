@@ -1,51 +1,55 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using KompasCore.Cards;
+using KompasCore.Effects;
+using KompasClient.GameCore;
 
-public class ClientEffect : Effect
+namespace KompasClient.Effects
 {
-    public ClientPlayer ClientController;
-    public override Player Controller
+    public class ClientEffect : Effect
     {
-        get { return ClientController; }
-        set { ClientController = value as ClientPlayer; }
-    }
-    public ClientGame ClientGame { get; }
-    public DummySubeffect[] DummySubeffects { get; }
-    public ClientTrigger ClientTrigger { get; }
-
-    public override Subeffect[] Subeffects => DummySubeffects;
-    public override Trigger Trigger => ClientTrigger;
-
-
-    public ClientEffect(SerializableEffect se, GameCard thisCard, ClientGame clientGame, int effectIndex)
-        : base(se.activationRestriction ?? new ActivationRestriction(), thisCard, se.blurb, effectIndex)
-    {
-        this.ClientGame = clientGame;
-        DummySubeffects = new DummySubeffect[se.subeffects.Length];
-
-        if (!string.IsNullOrEmpty(se.trigger))
+        public ClientPlayer ClientController;
+        public override Player Controller
         {
-            try
-            {
-                ClientTrigger = ClientTrigger.FromJson(se.triggerCondition, se.trigger, this);
-            }
-            catch (System.ArgumentException)
-            {
-                Debug.LogError($"Failed to load trigger of type {se.triggerCondition} from json {se.trigger}");
-                throw;
-            }
+            get { return ClientController; }
+            set { ClientController = value as ClientPlayer; }
         }
+        public ClientGame ClientGame { get; }
+        public DummySubeffect[] DummySubeffects { get; }
+        public ClientTrigger ClientTrigger { get; }
 
-        for (int i = 0; i < se.subeffects.Length; i++)
+        public override Subeffect[] Subeffects => DummySubeffects;
+        public override Trigger Trigger => ClientTrigger;
+
+
+        public ClientEffect(SerializableEffect se, GameCard thisCard, ClientGame clientGame, int effectIndex)
+            : base(se.activationRestriction ?? new ActivationRestriction(), thisCard, se.blurb, effectIndex)
         {
-            try
+            this.ClientGame = clientGame;
+            DummySubeffects = new DummySubeffect[se.subeffects.Length];
+
+            if (!string.IsNullOrEmpty(se.trigger))
             {
-                DummySubeffects[i] = DummySubeffect.FromJson(se.subeffects[i], this, i);
+                try
+                {
+                    ClientTrigger = ClientTrigger.FromJson(se.triggerCondition, se.trigger, this);
+                }
+                catch (System.ArgumentException)
+                {
+                    Debug.LogError($"Failed to load trigger of type {se.triggerCondition} from json {se.trigger}");
+                    throw;
+                }
             }
-            catch (System.ArgumentException)
+
+            for (int i = 0; i < se.subeffects.Length; i++)
             {
-                Debug.LogError($"Failed to load subeffect from json {se.subeffects[i]}");
+                try
+                {
+                    DummySubeffects[i] = DummySubeffect.FromJson(se.subeffects[i], this, i);
+                }
+                catch (System.ArgumentException)
+                {
+                    Debug.LogError($"Failed to load subeffect from json {se.subeffects[i]}");
+                }
             }
         }
     }

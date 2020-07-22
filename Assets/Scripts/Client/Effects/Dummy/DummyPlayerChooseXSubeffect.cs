@@ -1,14 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using KompasCore.Effects;
 
-public class DummyPlayerChooseXSubeffect : DummySubeffect
+namespace KompasClient.Effects
 {
-    public XRestriction XRest;
-
-    public override void Initialize(ClientEffect eff, int subeffIndex)
+    public class DummyPlayerChooseXSubeffect : DummySubeffect
     {
-        base.Initialize(eff, subeffIndex);
-        XRest.Initialize(this);
+        public XRestriction XRest;
+
+        public override void Initialize(ClientEffect eff, int subeffIndex)
+        {
+            base.Initialize(eff, subeffIndex);
+            XRest.Initialize(this);
+        }
     }
 }

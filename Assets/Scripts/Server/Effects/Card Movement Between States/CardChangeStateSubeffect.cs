@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-/// <summary>
-/// Moves cards between discard/field/etc
-/// </summary>
-public abstract class CardChangeStateSubeffect : ServerSubeffect
+﻿namespace KompasServer.Effects
 {
-    
+    /// <summary>
+    /// Moves cards between discard/field/etc
+    /// </summary>
+    public abstract class CardChangeStateSubeffect : ServerSubeffect
+    {
+
+    }
 }

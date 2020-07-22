@@ -27,7 +27,7 @@
 			]	
 		},
 		{
-			"triggerCondition":301,
+			"triggerCondition":"Attack",
 			"trigger":
 			"{
 				\"blurb\":\"Give the attacking Aquarian -1E to give another Dragon +2E?\",

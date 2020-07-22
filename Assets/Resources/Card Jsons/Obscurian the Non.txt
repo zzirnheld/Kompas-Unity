@@ -27,7 +27,7 @@
 			]	
 		},
 		{
-			"triggerCondition":301,
+			"triggerCondition":"Attack",
 			"trigger":
 			"{
 				\"blurb\":\"Give Obscurian -1E to give an Avatar -2E?\",

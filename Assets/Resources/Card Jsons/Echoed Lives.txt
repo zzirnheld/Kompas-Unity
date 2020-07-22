@@ -1,0 +1,30 @@
+{
+	"cardType":83,
+	"cardName":"Echoed Lives",
+	"effText":"When turns start, resummon characters here.",
+	"effects":[
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Resummon All\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Summoned\",\"Board\",\"In AOE\"]
+					}
+				}"
+			]	
+		}
+	],
+	"c":3,
+	"spellType":"Terraform",
+	"subtypes":["Terraform"],
+	"subtypeText":"Terraform",
+	"arg":1
+}

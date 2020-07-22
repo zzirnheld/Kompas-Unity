@@ -4,7 +4,7 @@
 	"effText":"When a friendly character attacks, draw 1. When you draw, I can give an adjacent friendly character +1E or W.",
 	"effects":[
 		{
-			"triggerCondition":301,
+			"triggerCondition":"Attack",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
@@ -24,7 +24,6 @@
 			"triggerCondition":"Draw",
 			"trigger":
 			"{
-				\"optional\":true,
 				\"blurb\":\"Give adjacent friendly character +1E or W?\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\"]
@@ -36,7 +35,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"adjacent friendly character for Fortitude to give +1E or +1W\",
-						\"cardRestrictions\":[\"Is Character\",\"Friendly\",\"Deck\",\"Adjacent\"]
+						\"cardRestrictions\":[\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"]
 					}
 				}",
 				"{

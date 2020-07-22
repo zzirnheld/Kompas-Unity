@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
+﻿using System.Linq;
 
-public class LoopWhileHaveTargetsSubeffect : LoopSubeffect
+namespace KompasServer.Effects
 {
-    protected override bool ShouldContinueLoop => ServerEffect.Targets.Any();
+    public class LoopWhileHaveTargetsSubeffect : LoopSubeffect
+    {
+        protected override bool ShouldContinueLoop => ServerEffect.Targets.Any();
+    }
 }

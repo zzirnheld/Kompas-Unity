@@ -32,9 +32,9 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Delay Effect Resolution\",
-					\"NumTimesToDelay\":0,
-					\"IndexToResume\":1,
-					\"TriggerCondition\":0
+					\"numTimesToDelay\":0,
+					\"indexToResume\":1,
+					\"triggerCondition\":\"Turn Start\"
 				}",
 				"{
 					\"subeffType\":\"Target This\"

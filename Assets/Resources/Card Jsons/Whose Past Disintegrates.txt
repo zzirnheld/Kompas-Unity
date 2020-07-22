@@ -55,7 +55,7 @@
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\"],
 					\"xRestriction\":{
-						\"xRestrictions\":["<0"]
+						\"xRestrictions\":[\"<0\"]
 					}
 				}
 			}",

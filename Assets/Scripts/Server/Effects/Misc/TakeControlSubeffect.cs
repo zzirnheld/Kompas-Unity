@@ -1,17 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class TakeControlSubeffect : ServerSubeffect
+﻿namespace KompasServer.Effects
 {
-    public int ControllerIndexOffset = 0;
-
-    //TODO abstract this logic into a parent class with other player offset things
-    private Player NewController => ServerGame.Players[EffectController.index + ControllerIndexOffset % ServerGame.Players.Length];
-
-    public override bool Resolve()
+    public class TakeControlSubeffect : ServerSubeffect
     {
-        Target.Controller = NewController;
-        return ServerEffect.ResolveNextSubeffect();
+        public int ControllerIndexOffset = 0;
+
+        //TODO abstract this logic into a parent class with other player offset things
+        private Player NewController => ServerGame.Players[EffectController.index + ControllerIndexOffset % ServerGame.Players.Length];
+
+        public override bool Resolve()
+        {
+            Target.Controller = NewController;
+            return ServerEffect.ResolveNextSubeffect();
+        }
     }
 }

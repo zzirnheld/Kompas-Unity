@@ -1,0 +1,35 @@
+{
+	"cardType":67,
+	"cardName":"Memory Guide",
+	"effText":"When your turn starts, resummon an adjacent Summoned character.",
+	"effects":[
+		{
+			"triggerCondition":"Turn Start",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"Friendly Turn\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"adjacent Summoned character for Memory Guide to resummon\",
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Summoned\",\"Adjacent\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Resummon\"
+				}"
+			]	
+		}
+	],
+	"n":2,
+	"e":2,
+	"s":2,
+	"w":0,
+	"subtypes":[],
+	"subtypeText":""
+}
