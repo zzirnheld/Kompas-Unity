@@ -7,11 +7,17 @@ namespace KompasServer.Effects
     {
         public CardRestriction cardRestriction = new CardRestriction();
 
+        public override void Initialize(ServerEffect eff, int subeffIndex)
+        {
+            base.Initialize(eff, subeffIndex);
+            cardRestriction.Initialize(this);
+        }
+
         public override bool Resolve()
         {
             foreach (var c in Game.boardCtrl.CardsWhere(c => cardRestriction.Evaluate(c)))
             {
-                var ctxt = new ActivationContext(card: c, stackable: Effect, triggerer: EffectController, space: Target.Position);
+                var ctxt = new ActivationContext(card: c, stackable: Effect, triggerer: EffectController, space: c.Position);
                 ServerEffect.EffectsController.TriggerForCondition(Trigger.Play, ctxt);
             }
 
