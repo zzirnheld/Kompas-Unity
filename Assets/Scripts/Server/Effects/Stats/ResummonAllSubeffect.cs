@@ -21,7 +21,7 @@ namespace KompasServer.Effects
                 ServerEffect.EffectsController.TriggerForCondition(Trigger.Play, ctxt);
             }
 
-            return ServerEffect.EffectImpossible();
+            return ServerEffect.ResolveNextSubeffect();
         }
     }
 }

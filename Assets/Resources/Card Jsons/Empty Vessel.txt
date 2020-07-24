@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Empty Vessel",
-	"effText":"Geminii: You can pip resummon me. When I’m summoned, give me +2NESW.",
+	"effText":"Geminii: You can pip resummon me. When I’m summoned, give me +1NESW.",
 	"effects":[
 		{
 			"blurb":"Pip Resummon",
