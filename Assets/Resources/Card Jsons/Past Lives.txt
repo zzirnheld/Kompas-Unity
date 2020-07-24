@@ -23,7 +23,7 @@
 		}
 	],
 	"fast":true,
-	"c":3,
+	"c":4,
 	"spellType":"Simple",
 	"subtypes":["Simple"],
 	"subtypeText":"Simple"

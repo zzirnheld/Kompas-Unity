@@ -49,6 +49,16 @@ namespace KompasClient.GameCore
         public CardRestriction CurrCardRestriction;
         public SpaceRestriction CurrSpaceRestriction;
 
+        public override int Leyload 
+        { 
+            get => base.Leyload;
+            set
+            {
+                base.Leyload = value;
+                clientUICtrl.Leyload = Leyload;
+            }
+        }
+
         private void Start()
         {
             mainGame = this;
@@ -144,7 +154,6 @@ namespace KompasClient.GameCore
             clientUICtrl.HideGetDecklistUI();
             RoundCount = 1;
             TurnCount = 1;
-            clientUICtrl.Leyload = Leyload;
         }
 
         public void EndTurn()
@@ -154,7 +163,6 @@ namespace KompasClient.GameCore
             clientUICtrl.ChangeTurn(TurnPlayerIndex);
             if (TurnPlayerIndex == FirstTurnPlayer) RoundCount++;
             TurnCount++;
-            clientUICtrl.Leyload = Leyload;
         }
 
         public override GameCard GetCardWithID(int id)

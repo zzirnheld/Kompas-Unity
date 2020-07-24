@@ -104,6 +104,7 @@ namespace KompasCore.Effects
         //misc
         public const string EndTurn = "End Turn"; //600,
         public const string Attack = "Attack"; //601
+        public const string ChangeLeyload = "Change Leyload";
         #endregion subeffect type constants
 
 

@@ -6,6 +6,7 @@ using KompasServer.Effects;
 using KompasServer.GameCore;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 namespace KompasServer.Networking
@@ -86,6 +87,12 @@ namespace KompasServer.Networking
         public void NotifyBothPutBack()
         {
             Packet p = new Packet(Packet.Command.PutBack);
+            SendToBoth(p);
+        }
+
+        public void NotifyLeyload(int leyload)
+        {
+            var p = new Packet(Packet.Command.Leyload, leyload);
             SendToBoth(p);
         }
 

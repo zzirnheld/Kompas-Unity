@@ -70,6 +70,9 @@ namespace KompasClient.Networking
                     ClientGame.SetAvatar(1, packet.CardName, packet.CardIDToBe);
                     break;
                 #endregion game start
+                case Packet.Command.Leyload:
+                    ClientGame.Leyload = packet.normalArgs[0];
+                    break;
                 case Packet.Command.Delete:
                     ClientGame.Delete(card);
                     break;

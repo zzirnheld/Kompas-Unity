@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Bestower of Memories",
-	"effText":"When your turn starts, you can resummon a Summoned character. When you summon a character, gain a pip.",
+	"effText":"When your turn starts, you can resummon a Summoned character. When you summon a character, gain a pip and increase the Leyload by 1.",
 	"effects":[
 		{
 			"triggerCondition":"Turn Start",
@@ -43,12 +43,16 @@
 				"{
 					\"subeffType\":\"Add Pips\",
 					\"modifier\":1
+				}",
+				"{
+					\"subeffType\":\"Change Leyload\",
+					\"modifier\":1
 				}"
 			]	
 		}
 	],
 	"n":1,
-	"e":9,
+	"e":7,
 	"s":14,
 	"w":11,
 	"subtypes":["Geminii","God"],

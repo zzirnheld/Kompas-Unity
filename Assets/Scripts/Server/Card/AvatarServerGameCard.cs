@@ -31,7 +31,6 @@ namespace KompasServer.Cards
         public override void SetInfo(SerializableCard serializedCard, ServerGame game, ServerPlayer owner, ServerEffect[] effects, int id)
         {
             base.SetInfo(serializedCard, game, owner, effects, id);
-            E *= 2;
         }
     }
 }

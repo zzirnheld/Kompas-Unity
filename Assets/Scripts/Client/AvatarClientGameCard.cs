@@ -22,7 +22,6 @@ namespace KompasClient.Cards
         public override void SetInfo(SerializableCard serializedCard, ClientGame game, ClientPlayer owner, ClientEffect[] effects, int id)
         {
             base.SetInfo(serializedCard, game, owner, effects, id);
-            SetE(E * 2);
         }
     }
 }

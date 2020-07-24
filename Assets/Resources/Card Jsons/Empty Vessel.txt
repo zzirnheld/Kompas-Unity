@@ -37,10 +37,10 @@
 				}",
 				"{
 					\"subeffType\":\"Change NESW\",
-					\"nChange\":2,
-					\"eChange\":2,
-					\"sChange\":2,
-					\"wChange\":2
+					\"nChange\":1,
+					\"eChange\":1,
+					\"sChange\":1,
+					\"wChange\":1
 				}"
 			]	
 		}

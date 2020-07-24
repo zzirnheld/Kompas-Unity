@@ -38,10 +38,9 @@
 					{
 						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Adjacent\"]
 					},
-					\"nMod\":2,
-					\"eMod\":2,
-					\"sMod\":2,
-					\"wMod\":2
+					\"eMod\":1,
+					\"sMod\":1,
+					\"wMod\":1
 				}"
 			]	
 		}

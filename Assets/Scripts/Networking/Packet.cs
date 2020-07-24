@@ -28,7 +28,7 @@ namespace KompasCore.Networking
             Attach = 104,
             AddAsEnemyAndAttach = 105,
             EndTurn = 150,
-            //Leyload = 151,
+            Leyload = 151,
             //move cards around
             Topdeck = 200,
             Discard = 201,
