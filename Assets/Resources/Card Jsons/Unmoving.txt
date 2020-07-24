@@ -23,7 +23,8 @@
 		{
 			"activationRestriction":{
 				"activationRestrictions":[
-					"Location"
+					"Location",
+					"Stack Empty"
 				],
 				"location":2
 			},
