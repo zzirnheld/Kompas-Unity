@@ -100,6 +100,13 @@ namespace KompasServer.GameCore
 
             serverGame.EffectsController.CheckForResponse();
         }
+
+        public void TryEndTurn()
+        {
+            if (serverGame.EffectsController.CurrStackEntry == null &&
+                serverGame.TurnPlayer == this) 
+                serverGame.SwitchTurn();
+        }
         #endregion Player Control Methods
     }
 }

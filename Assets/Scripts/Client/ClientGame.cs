@@ -103,6 +103,7 @@ namespace KompasClient.GameCore
         public void Delete(GameCard card)
         {
             card.Remove();
+            cardsByID.Remove(card.ID);
             Destroy(card.gameObject);
         }
 

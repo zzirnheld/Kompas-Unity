@@ -131,6 +131,9 @@ namespace KompasClient.UI
         {
             string ip = ipInputField.text;
             if (string.IsNullOrEmpty(ip)) ip = "127.0.0.1";
+            var allowedChars = "1234567890.";
+            ip = new string(ip.Where(c => allowedChars.Contains(c)).ToArray());
+
             try
             {
                 HideConnectUI();
