@@ -79,6 +79,7 @@ namespace KompasClient.UI
         public GameObject DeckSelectUIParent;
         public GameObject ConnectToServerParent;
         public GameObject DeckSelectorParent;
+        public GameObject DeckWaitingParent;
         public GameObject DeckAcceptedParent;
         public GameObject ConnectedWaitingParent;
 
@@ -165,12 +166,21 @@ namespace KompasClient.UI
         public void ShowGetDecklistUI()
         {
             ConnectToServerParent.SetActive(false);
+            DeckWaitingParent.SetActive(false);
             DeckSelectUIParent.SetActive(true);
+        }
+
+        public void AwaitDeckConfirm()
+        {
+            DeckSelectorParent.SetActive(false);
+            DeckAcceptedParent.SetActive(false);
+            DeckWaitingParent.SetActive(true);
         }
 
         public void ShowDeckAcceptedUI()
         {
             DeckSelectorParent.SetActive(false);
+            DeckWaitingParent.SetActive(false);
             DeckAcceptedParent.SetActive(true);
         }
 

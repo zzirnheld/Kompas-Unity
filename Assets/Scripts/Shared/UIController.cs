@@ -31,6 +31,8 @@ namespace KompasCore.UI
         public GameObject UseEffectGridParent;
         public GameObject AugmentPanelParent;
         public GameObject AugmentGridParent;
+        public GameObject negatedParent;
+        public GameObject activatedParent;
         //current state text (reminds the player what's happening right now)
         public TMPro.TMP_Text currentStateText;
         //networking
@@ -83,6 +85,9 @@ namespace KompasCore.UI
                 AugmentPanelParent.SetActive(true);
             }
             else AugmentPanelParent.SetActive(false);
+
+            negatedParent.SetActive(card.Negated);
+            activatedParent.SetActive(card.Activated);
             selectedUIParent.SetActive(true);
         }
 
