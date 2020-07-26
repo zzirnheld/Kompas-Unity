@@ -261,7 +261,7 @@ namespace KompasCore.Cards
             while (Negated) Negated = false;
             while (Activated) Activated = false;
 
-            cardCtrl.ShowForCardType(CardType);
+            cardCtrl.ShowForCardType(CardType, false);
         }
 
         #region distance/adjacency

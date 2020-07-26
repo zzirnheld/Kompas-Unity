@@ -10,24 +10,77 @@ namespace KompasCore.Cards
     {
         public GameCard card;
         public MeshRenderer cardFaceRenderer;
-        public TMPro.TMP_Text nText;
-        public TMPro.TMP_Text eText;
-        public TMPro.TMP_Text sText;
-        public TMPro.TMP_Text wText;
-        public TMPro.TMP_Text cText;
-        public TMPro.TMP_Text aText;
-        public GameObject nRing;
-        public GameObject eRing;
-        public GameObject wRing;
-        public GameObject charNameplate;
-        public GameObject noncharNameplate;
+        public GameObject zoomedCharFrame;
+        public GameObject zoomedAllFrame;
+        public GameObject unzoomedCharFrame;
+        public GameObject unzoomedAllFrame;
+        public TMPro.TMP_Text zoomedNText;
+        public TMPro.TMP_Text zoomedEText;
+        public TMPro.TMP_Text zoomedSText;
+        public TMPro.TMP_Text zoomedWText;
+        public TMPro.TMP_Text zoomedCText;
+        public TMPro.TMP_Text zoomedAText;
+        public TMPro.TMP_Text unzoomedNText;
+        public TMPro.TMP_Text unzoomedEText;
+        public TMPro.TMP_Text unzoomedSText;
+        public TMPro.TMP_Text unzoomedWText;
+        public TMPro.TMP_Text unzoomedCText;
+        public TMPro.TMP_Text unzoomedAText;
 
-        public int N { set => nText.text = $"N\n{value}"; }
-        public int E { set => eText.text = $"E\n{value}"; }
-        public int S { set => sText.text = $"S\n{value}"; }
-        public int W { set => wText.text = $"W\n{value}"; }
-        public int C { set => cText.text = $"C\n{value}"; }
-        public int A { set => aText.text = $"A\n{value}"; }
+        public int N 
+        {
+            set
+            {
+                var str = $"N\n{value}";
+                zoomedNText.text = str;
+                unzoomedNText.text = str;
+            }
+        }
+        public int E
+        {
+            set
+            {
+                var str = $"E\n{value}";
+                zoomedEText.text = str;
+                unzoomedEText.text = str;
+            }
+        }
+        public int S
+        {
+            set
+            {
+                var str = $"S\n{value}";
+                zoomedSText.text = str;
+                unzoomedSText.text = str;
+            }
+        }
+        public int W
+        {
+            set
+            {
+                var str = $"W\n{value}";
+                zoomedWText.text = str;
+                unzoomedWText.text = str;
+            }
+        }
+        public int C
+        {
+            set
+            {
+                var str = $"C\n{value}";
+                zoomedCText.text = str;
+                unzoomedCText.text = str;
+            }
+        }
+        public int A
+        {
+            set
+            {
+                var str = $"A\n{value}";
+                zoomedAText.text = str;
+                unzoomedAText.text = str;
+            }
+        }
 
         public void SetPhysicalLocation(CardLocation location)
         {
@@ -83,22 +136,32 @@ namespace KompasCore.Cards
             cardFaceRenderer.material.mainTexture = detailed;
         }
 
-        public void ShowForCardType(char cardType)
+        public void ShowForCardType(char cardType, bool zoomed)
         {
             bool isChar = cardType == 'C';
-            nRing.SetActive(isChar);
-            eRing.SetActive(isChar);
-            wRing.SetActive(isChar);
-            nText.gameObject.SetActive(isChar);
-            eText.gameObject.SetActive(isChar);
-            sText.gameObject.SetActive(isChar);
-            wText.gameObject.SetActive(isChar);
-            charNameplate.SetActive(isChar);
 
-            noncharNameplate.SetActive(!isChar);
+            bool zoomedChar = isChar && zoomed;
+            zoomedNText.gameObject.SetActive(zoomedChar);
+            zoomedEText.gameObject.SetActive(zoomedChar);
+            zoomedSText.gameObject.SetActive(zoomedChar);
+            zoomedWText.gameObject.SetActive(zoomedChar);
+            zoomedCharFrame.SetActive(zoomedChar);
 
-            cText.gameObject.SetActive(cardType == 'S');
-            aText.gameObject.SetActive(cardType == 'A');
+            bool unzoomedChar = isChar && !zoomed;
+            unzoomedNText.gameObject.SetActive(unzoomedChar);
+            unzoomedEText.gameObject.SetActive(unzoomedChar);
+            unzoomedSText.gameObject.SetActive(unzoomedChar);
+            unzoomedWText.gameObject.SetActive(unzoomedChar);
+            unzoomedCharFrame.SetActive(unzoomedChar);
+
+            zoomedCText.gameObject.SetActive(cardType == 'S' && zoomed);
+            unzoomedCText.gameObject.SetActive(cardType == 'S' && !zoomed);
+
+            zoomedAText.gameObject.SetActive(cardType == 'A' && zoomed);
+            unzoomedAText.gameObject.SetActive(cardType == 'A' && !zoomed);
+
+            zoomedAllFrame.SetActive(zoomed);
+            unzoomedAllFrame.SetActive(!zoomed);
         }
 
         /// <summary>

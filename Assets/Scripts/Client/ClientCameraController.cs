@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using KompasClient.GameCore;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public class ClientCameraController : MonoBehaviour
     public const float MinCameraHeight = 2f;
     public const float MaxCameraHeight = 30f;
     public const float MaxCameraPan = 12f;
+    public const float ZoomThreshold = 14f; //TODO allow player to change this in settings
 
     public float PanFactor => Mathf.Log10(transform.position.y) * PanFactorBase;
     public float RotationAngle => Mathf.Log10(transform.position.y) * RotationFactorBase;
@@ -19,10 +21,21 @@ public class ClientCameraController : MonoBehaviour
     public Vector3 Left     => PanFactor * Vector3.left;
     public Vector3 Right    => PanFactor * Vector3.right;
 
+    public ClientGame clientGame;
+
     public void FixedUpdate()
     {
-        if(transform.position.y > MinCameraHeight || Input.mouseScrollDelta.y < 0) 
+        if (transform.position.y > MinCameraHeight || Input.mouseScrollDelta.y < 0)
+        {
+            var tempHeight = transform.position.y;
             transform.Translate(ZoomFactor * Input.mouseScrollDelta.y * Vector3.forward);
+
+            //if just crossed the threshold for showing cards as zoomed or no, update cards accordingly
+            if (tempHeight > ZoomThreshold && transform.position.y <= ZoomThreshold)
+                clientGame.ShowCardsByZoom(true);
+            else if (tempHeight <= ZoomThreshold && transform.position.y > ZoomThreshold)
+                clientGame.ShowCardsByZoom(false);
+        }
 
         if (Input.GetKey(KeyCode.W)) transform.Translate(Up);
         if (Input.GetKey(KeyCode.S)) transform.Translate(Down);

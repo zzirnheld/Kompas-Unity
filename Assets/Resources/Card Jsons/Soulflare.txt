@@ -17,7 +17,8 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Soulflare to annihilate\",
-						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
+						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Revenant\"]
 					}
 				}",
 				"{

@@ -170,5 +170,10 @@ namespace KompasClient.GameCore
         {
             return cardsByID.ContainsKey(id) ? cardsByID[id] : null;
         }
+
+        public void ShowCardsByZoom(bool zoomed)
+        {
+            foreach (var c in Cards) c.cardCtrl.ShowForCardType(c.CardType, zoomed);
+        }
     }
 }

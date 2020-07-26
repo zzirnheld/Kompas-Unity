@@ -3762,7 +3762,7 @@ MonoBehaviour:
   boardObject: {fileID: 8296172668889192585}
   cardRepo: {fileID: 492080564}
   targetMode: 0
-  AvatarPrefab: {fileID: 3737252039058614834, guid: 6342a8b7ecbc4e94aa211dd4cf95f7c6,
+  AvatarPrefab: {fileID: 3146857051703895276, guid: eedbf9517c9afa440a613c7bf437a80e,
     type: 3}
   ClientPlayers:
   - {fileID: 1829834588}
@@ -3842,7 +3842,7 @@ MonoBehaviour:
   DeckbuilderCharPrefab: {fileID: 0}
   DeckbuilderSpellPrefab: {fileID: 0}
   DeckbuilderAugPrefab: {fileID: 0}
-  ClientAvatarPrefab: {fileID: 3146857051703895276, guid: d3c8a73d11775cb4796a33679a2d29c0,
+  ClientAvatarPrefab: {fileID: 3146857051703895276, guid: eedbf9517c9afa440a613c7bf437a80e,
     type: 3}
   ClientCharPrefab: {fileID: 3146857051703895276, guid: 46ba5fc0233bfa34b8f702966c564175,
     type: 3}
@@ -16170,6 +16170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11ad251cde19ff24380f4a984ebda711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clientGame: {fileID: 492080563}
 --- !u!1 &2127497969
 GameObject:
   m_ObjectHideFlags: 0
