@@ -35,13 +35,13 @@ namespace KompasCore.Effects
             {
                 case PlayedByCardOwner: return player == Card.Owner;
                 case FromHand: return Card.Location == CardLocation.Hand;
-                case StandardPlayRestriction: return (Card.Game.ValidStandardPlaySpace(x, y, Card.Controller));
-                case StandardSpellRestriction: return (Card.CardType != 'S' ||
-                        Card.Game.boardCtrl.CardsAdjacentTo(x, y).All(c => c.CardType != 'S'));
+                case StandardPlayRestriction: return Card.Game.ValidStandardPlaySpace(x, y, Card.Controller);
+                case StandardSpellRestriction: return Card.CardType != 'S' ||
+                        Card.Game.boardCtrl.CardsAdjacentTo(x, y).All(c => c.CardType != 'S');
                 case OnFriendlyCard: return Card.Game.boardCtrl.GetCardAt(x, y)?.Controller == Card.Controller;
                 case HasCostInPips: return Card.Controller.Pips >= Card.Cost;
-                case FriendlyTurnIfNotFast: return Card.Fast && Card.Game.TurnPlayer == Card.Controller;
-                case NothingIsResolving: return (Card.Game.CurrStackEntry == null);
+                case FriendlyTurnIfNotFast: return Card.Fast || Card.Game.TurnPlayer == Card.Controller;
+                case NothingIsResolving: return Card.Game.CurrStackEntry == null;
                 case NotNormally: return !normal;
                 default:
                     Debug.LogError($"You forgot to check for condition {r} in RestrictionInvalid for PlayRestriction");
@@ -53,6 +53,6 @@ namespace KompasCore.Effects
             => NormalRestrictions.All(r => RestrictionValid(r, x, y, player, true));
 
         public bool EvaluateEffectPlay(int x, int y, Effect effect)
-            => EffectRestrictions.All(r => RestrictionValid(r, x, y, effect.Controller, true));
+            => EffectRestrictions.All(r => RestrictionValid(r, x, y, effect.Controller, false));
     }
 }
