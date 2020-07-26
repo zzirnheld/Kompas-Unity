@@ -1427,6 +1427,8 @@ MonoBehaviour:
   UseEffectGridParent: {fileID: 0}
   AugmentPanelParent: {fileID: 0}
   AugmentGridParent: {fileID: 0}
+  negatedParent: {fileID: 0}
+  activatedParent: {fileID: 0}
   currentStateText: {fileID: 0}
   ipInputField: {fileID: 0}
   networkingParent: {fileID: 1929206214}
@@ -3119,13 +3121,13 @@ MonoBehaviour:
   ClientCharPrefab: {fileID: 0}
   ClientSpellPrefab: {fileID: 0}
   ClientAugPrefab: {fileID: 0}
-  ServerAvatarPrefab: {fileID: 3146857051703895276, guid: 3ca41fb52db949149969fcf2dff545bf,
+  ServerAvatarPrefab: {fileID: 3146857051703895276, guid: 6277c28998120d04dbd1d1d5270bca2e,
     type: 3}
-  ServerCharPrefab: {fileID: 3146857051703895276, guid: aa3a64a32905bb14995dd1a5b54440cc,
+  ServerCharPrefab: {fileID: 3146857051703895276, guid: 397b54c2222eb0443a3b6c86754a8af2,
     type: 3}
-  ServerSpellPrefab: {fileID: 3146857051703895276, guid: aa3a64a32905bb14995dd1a5b54440cc,
+  ServerSpellPrefab: {fileID: 3146857051703895276, guid: 397b54c2222eb0443a3b6c86754a8af2,
     type: 3}
-  ServerAugPrefab: {fileID: 3146857051703895276, guid: aa3a64a32905bb14995dd1a5b54440cc,
+  ServerAugPrefab: {fileID: 3146857051703895276, guid: 397b54c2222eb0443a3b6c86754a8af2,
     type: 3}
 --- !u!1 &1515742811
 GameObject:
