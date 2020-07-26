@@ -58,6 +58,12 @@ namespace KompasClient.UI
         public GameObject alreadySelectedText;
         public Button searchTargetButton;
         public TMPro.TMP_Text searchTargetButtonText;
+        public TMPro.TMP_Text nSearchText;
+        public TMPro.TMP_Text eSearchText;
+        public TMPro.TMP_Text sSearchText;
+        public TMPro.TMP_Text wSearchText;
+        public TMPro.TMP_Text cSearchText;
+        public TMPro.TMP_Text aSearchText;
         //effects
         public InputField xInput;
         public GameObject setXView;
@@ -376,8 +382,23 @@ namespace KompasClient.UI
 
         public void SearchShowIndex(int index)
         {
-            cardSearchImage.sprite = currSearchData.Value.toSearch[searchIndex].detailedSprite;
-            alreadySelectedText.SetActive(currSearchData.Value.searched.Contains(currSearchData.Value.toSearch[searchIndex]));
+            var toShow = currSearchData.Value.toSearch[searchIndex];
+            cardSearchImage.sprite = toShow.detailedSprite;
+            alreadySelectedText.SetActive(currSearchData.Value.searched.Contains(toShow));
+
+            nSearchText.text = $"N\n{toShow.N}";
+            eSearchText.text = $"E\n{toShow.E}";
+            sSearchText.text = $"S\n{toShow.S}";
+            wSearchText.text = $"W\n{toShow.W}";
+            cSearchText.text = $"C\n{toShow.C}";
+            aSearchText.text = $"A\n{toShow.A}";
+
+            nSearchText.gameObject.SetActive(toShow.CardType == 'C');
+            eSearchText.gameObject.SetActive(toShow.CardType == 'C');
+            sSearchText.gameObject.SetActive(toShow.CardType == 'C');
+            wSearchText.gameObject.SetActive(toShow.CardType == 'C');
+            cSearchText.gameObject.SetActive(toShow.CardType == 'S');
+            aSearchText.gameObject.SetActive(toShow.CardType == 'A');
         }
 
         public void SelectShownSearchCard() => HoverOver(currSearchData.Value.toSearch[searchIndex]);
