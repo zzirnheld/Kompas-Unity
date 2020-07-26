@@ -123,17 +123,20 @@ namespace KompasCore.Cards
         /// <summary>
         /// Set the sprites of this card and gameobject
         /// </summary>
-        public void SetImage(string cardFileName)
+        public void SetImage(string cardFileName, bool zoomed)
         {
-            var detailed = Resources.Load<Texture>("Card Detailed Textures/" + cardFileName);
+            Texture pic;
+            if (zoomed) pic = Resources.Load<Texture>("Card Detailed Textures/" + cardFileName);
+            else pic = Resources.Load<Texture>("Unzoomed Card Textures/" + cardFileName);
+
             //check if either is null. if so, log to debug and return
-            if (detailed == null)
+            if (pic == null)
             {
                 Debug.Log("Could not find sprite with name " + cardFileName);
                 return;
             }
 
-            cardFaceRenderer.material.mainTexture = detailed;
+            cardFaceRenderer.material.mainTexture = pic;
         }
 
         public void ShowForCardType(char cardType, bool zoomed)
@@ -162,6 +165,8 @@ namespace KompasCore.Cards
 
             zoomedAllFrame.SetActive(zoomed);
             unzoomedAllFrame.SetActive(!zoomed);
+
+            SetImage(card.CardName, zoomed);
         }
 
         /// <summary>
