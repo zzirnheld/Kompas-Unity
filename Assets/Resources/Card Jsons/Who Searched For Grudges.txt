@@ -98,9 +98,9 @@
 		}
 	],
 	"n":1,
-	"e":7,
+	"e":5,
 	"s":3,
-	"w":7,
+	"w":5,
 	"subtypes":["Ethereal","Shaper"],
 	"subtypeText":"Ethereal Shaper"
 }

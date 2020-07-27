@@ -79,7 +79,7 @@
 		}
 	],
 	"n":2,
-	"e":8,
+	"e":6,
 	"s":8,
 	"w":5,
 	"subtypes":["Ethereal","Shaper","Mage"],
