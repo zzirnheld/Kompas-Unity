@@ -2,6 +2,7 @@
 using UnityEngine;
 using KompasCore.Effects;
 using KompasServer.GameCore;
+using System.Linq;
 
 namespace KompasServer.Effects
 {
@@ -128,20 +129,10 @@ namespace KompasServer.Effects
                 //if the player chooses to trigger it, it will be removed from the list
             }
             //check if responses exist. if not, resolve
-            else if (ServerGame.TurnServerPlayer.HoldsPriority())
-            {
-                //then send them a request to do something or pass priority
-                //TODO: send the stack entry encoded somehow?
-            }
-            else if (ServerGame.TurnServerPlayer.ServerEnemy.HoldsPriority())
-            {
-                //then mark the turn player as having passed priority
-                ServerGame.TurnServerPlayer.ServerEnemy.passedPriority = true;
-
-                //then ask the non turn player to do something or pass priority
-            }
             else
             {
+                var possible = ServerGame.Cards.Where(c => c.Effects.Any(e => e.ActivationRestriction.Evaluate(c.Controller)));
+
                 //if neither player has anything to do, resolve the stack
                 ResolveNextStackEntry();
             }

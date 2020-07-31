@@ -89,18 +89,13 @@ namespace KompasClient.UI
         public GameObject DeckAcceptedParent;
         public GameObject ConnectedWaitingParent;
 
-        private bool ShowEffect(Effect eff)
-        {
-            return eff.Trigger == null &&
-                        eff.Source.Controller == clientGame.Players[0] && //TODO make this instead be part of activation restriction
-                        eff.ActivationRestriction.Evaluate(clientGame.Players[0]);
-        }
+        private bool ShowEffect(Effect eff) => eff.CanBeActivatedBy(clientGame.Players[0]);
 
         public override void ShowInfoFor(GameCard card, bool refresh = false)
         {
             base.ShowInfoFor(card);
 
-            if (card?.Effects != null && card.Effects.Where(eff => ShowEffect(eff)).Any())
+            if (card != null && card.Effects.Where(eff => ShowEffect(eff)).Any())
             {
                 var children = new List<GameObject>();
                 foreach (Transform child in UseEffectGridParent.transform) children.Add(child.gameObject);
@@ -213,7 +208,7 @@ namespace KompasClient.UI
         #region effects
         public void ActivateSelectedCardEff(int index)
         {
-            clientGame.clientNotifier.RequestResolveEffect(shownCard, index);
+            clientGame.clientNotifier.RequestResolveEffect(ShownCard, index);
         }
 
         public void ToggleHoldingPriority()

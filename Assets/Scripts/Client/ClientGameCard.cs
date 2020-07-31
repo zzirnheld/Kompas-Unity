@@ -52,5 +52,12 @@ namespace KompasClient.Cards
             ClientController = ClientOwner = owner;
             ClientEffects = effects;
         }
+
+        public override void SetN(int n, IStackable stackSrc = null)
+        {
+            base.SetN(n, stackSrc);
+            if (ClientGame.clientUICtrl.ShownCard == this)
+                ClientGame.clientUICtrl.RefreshInfo();
+        }
     }
 }

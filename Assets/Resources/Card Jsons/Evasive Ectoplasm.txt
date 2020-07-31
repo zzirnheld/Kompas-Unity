@@ -8,7 +8,7 @@
 			"activationRestriction":{
 				"activationRestrictions":[
 					"Friendly Turn",
-					"In Play"
+					"Default"
 				]
 			},
 			"subeffects":[

@@ -60,13 +60,9 @@ namespace KompasServer.Effects
             }
         }
 
-        public bool CanBeActivatedBy(ServerPlayer controller)
+        public override bool CanBeActivatedBy(Player controller)
         {
-            if (serverGame.uiCtrl.DebugMode) return true;
-            return Trigger == null
-                && controller.index == Source.ControllerIndex
-                && !Negated
-                && ActivationRestriction.Evaluate(controller);
+            return serverGame.uiCtrl.DebugMode || base.CanBeActivatedBy(controller);
         }
 
         public void PushToStack(ServerPlayer controller, ActivationContext context)

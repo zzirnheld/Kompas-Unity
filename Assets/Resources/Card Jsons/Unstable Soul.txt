@@ -7,7 +7,7 @@
 			"blurb":"Shape",
 			"activationRestriction":{
 				"activationRestrictions":[
-					"In Play"
+					"Default"
 				]
 			},
 			"subeffects":[

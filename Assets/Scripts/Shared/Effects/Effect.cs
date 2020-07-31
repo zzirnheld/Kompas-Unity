@@ -84,9 +84,12 @@ namespace KompasCore.Effects
             Targets.Add(card);
         }
 
-        public GameCard TargetAt(int index)
+        public virtual bool CanBeActivatedBy(Player controller)
         {
-            return Targets.ElementAt(index);
+            return Trigger == null
+                && controller.index == Source.ControllerIndex
+                && !Negated
+                && ActivationRestriction.Evaluate(controller);
         }
     }
 }

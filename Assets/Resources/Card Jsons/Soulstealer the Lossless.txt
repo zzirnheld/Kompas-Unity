@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Soulstealer the Lossless",
-	"effText":"Revenant: When I die, annihilate me. You can pip revive me for half cost.\nWhen a card is annihilated, give friendly Ethereals +1E, and if it's an enemy turn, gain a pip.",
+	"effText":"Revenant: When I die, annihilate me. During your turn, you can pip revive me for half cost.\nWhen a card is annihilated, give friendly Ethereals +1E, and if it's an enemy turn, gain a pip.",
 	"effects":[
 		{
 			"triggerCondition":"Discard",
@@ -24,7 +24,8 @@
 			"activationRestriction":{
 				"activationRestrictions":[
 					"Location",
-					"Stack Empty"
+					"Controller Activates",
+					"Not Negated"
 				],
 				"location":2
 			},

@@ -24,7 +24,8 @@
 			"activationRestriction":{
 				"activationRestrictions":[
 					"Location",
-					"Stack Empty"
+					"Controller Activates",
+					"Not Negated"
 				],
 				"location":2
 			},

@@ -7,7 +7,7 @@
 			"activationRestriction":{
 				"activationRestrictions":[
 					"Max Times Per Turn",
-					"In Play"
+					"Default"
 				]
 			},
 			"subeffects":[
