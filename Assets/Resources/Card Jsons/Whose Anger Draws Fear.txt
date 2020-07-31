@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Whose Anger Draws Fear",
-	"effText":"Shape: During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters. When I attack, move my target away from me one space. If you can't, annihilate them.",
+	"effText":"Shape: During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters.\nWhen I attack, move my target away from me one space. If you can't, annihilate them.",
 	"effects":[
 		{
 			"blurb":"Shape",

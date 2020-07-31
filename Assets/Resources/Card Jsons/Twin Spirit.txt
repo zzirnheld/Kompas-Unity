@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Twin Spirit",
-	"effText":"Shape: During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters. When I'm hand-summoned, deck-summon a copy of me.",
+	"effText":"Shape: During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters.\nWhen I'm hand-summoned, deck-summon a copy of me.",
 	"effects":[
 		{
 			"blurb":"Shape",

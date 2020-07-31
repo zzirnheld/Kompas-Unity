@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Evasive Ectoplasm",
-	"effText":"Shape: During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters. The first fight each round, if I’m fighting a WX character, give them -XW for the fight.",
+	"effText":"Shape: During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters.\nThe first fight each round, if I’m fighting a WX character, give them -XW for the fight.",
 	"effects":[
 		{
 			"blurb":"Shape",
