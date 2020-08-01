@@ -69,6 +69,8 @@ namespace KompasClient.UI
         public GameObject setXView;
         public GameObject declineAnotherTargetView;
         public GameObject declineEffectView;
+        public Toggle autodeclineEffects;
+        public bool Autodecline => autodeclineEffects.isOn;
         //confirm trigger
         public GameObject ConfirmTriggerView;
         public TMPro.TMP_Text TriggerBlurbText;
@@ -282,7 +284,8 @@ namespace KompasClient.UI
 
         public void GetResponse()
         {
-            declineEffectView.SetActive(true);
+            if (Autodecline) DeclineResponse();
+            else declineEffectView.SetActive(true);
         }
 
         public void UngetResponse()

@@ -43,6 +43,7 @@ namespace KompasServer.Effects
         #region the stack
         public void PushToStack(IServerStackable eff, ActivationContext context)
         {
+            ResetPassingPriority();
             stack.Push((eff, context));
         }
 
@@ -109,7 +110,7 @@ namespace KompasServer.Effects
             }
         }
 
-        public void CheckForResponse()
+        public void CheckForResponse(bool reset = true)
         {
             if (CurrStackEntry != null)
             {
@@ -117,8 +118,7 @@ namespace KompasServer.Effects
                 return;
             }
 
-            //since a new thing is being put on the stack, mark both players as having not passed priority
-            ResetPassingPriority();
+            if (reset) ResetPassingPriority();
 
             if (OptionalTriggersToAsk.Count > 0)
             {

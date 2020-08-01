@@ -107,7 +107,7 @@ namespace KompasServer.Networking
                     break;
                 case Packet.Command.Response:
                     Player.passedPriority = true;
-                    sGame.EffectsController.CheckForResponse();
+                    sGame.EffectsController.CheckForResponse(reset: false);
                     break;
                 #endregion
                 #region debug commands
