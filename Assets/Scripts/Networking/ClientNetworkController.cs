@@ -287,6 +287,12 @@ namespace KompasClient.Networking
                     t.ClientEffect.ClientController = Friendly;
                     ClientGame.clientUICtrl.ShowOptionalTrigger(t, packet.EffIndex);
                     break;
+                case Packet.Command.Response:
+                    ClientGame.clientUICtrl.GetResponse();
+                    break;
+                case Packet.Command.NoMoreResponse:
+                    ClientGame.clientUICtrl.UngetResponse();
+                    break;
                 default:
                     Debug.LogError($"Unrecognized command {packet.command} sent to client");
                     break;

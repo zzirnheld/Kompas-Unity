@@ -378,6 +378,12 @@ namespace KompasServer.Networking
             Packet outPacket = new Packet(Packet.Command.Response);
             SendPacket(outPacket);
         }
+        
+        public void RequestNoResponse()
+        {
+            var p = new Packet(Packet.Command.NoMoreResponse);
+            SendPacket(p);
+        }
 
         /// <summary>
         /// Lets that player know their target has been accepted. called if the Target method returns True

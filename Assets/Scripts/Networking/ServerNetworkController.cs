@@ -105,6 +105,10 @@ namespace KompasServer.Networking
                         optionSubeff.ChooseOption(packet.EffectOption);
                     }
                     break;
+                case Packet.Command.Response:
+                    Player.passedPriority = true;
+                    sGame.EffectsController.CheckForResponse();
+                    break;
                 #endregion
                 #region debug commands
                 case Packet.Command.Topdeck:

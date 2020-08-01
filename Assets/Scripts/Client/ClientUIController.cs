@@ -68,6 +68,7 @@ namespace KompasClient.UI
         public InputField xInput;
         public GameObject setXView;
         public GameObject declineAnotherTargetView;
+        public GameObject declineEffectView;
         //confirm trigger
         public GameObject ConfirmTriggerView;
         public TMPro.TMP_Text TriggerBlurbText;
@@ -277,6 +278,22 @@ namespace KompasClient.UI
         {
             clientGame.clientNotifier.RequestChooseEffectOption(EffectOptionDropdown.value);
             ChooseOptionView.SetActive(false);
+        }
+
+        public void GetResponse()
+        {
+            declineEffectView.SetActive(true);
+        }
+
+        public void UngetResponse()
+        {
+            declineEffectView.SetActive(false);
+        }
+
+        public void DeclineResponse()
+        {
+            declineEffectView.SetActive(false);
+            clientGame.clientNotifier.DeclineResponse();
         }
         #endregion effects
 

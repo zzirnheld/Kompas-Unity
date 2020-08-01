@@ -8,7 +8,8 @@ namespace KompasServer.Effects
 {
     public class ServerEffectsController : MonoBehaviour
     {
-        public readonly object TriggerStackLock = new object();
+        public readonly object triggerStackLock = new object();
+        public readonly object responseLock = new object();
 
         public ServerGame ServerGame;
 
@@ -66,6 +67,7 @@ namespace KompasServer.Effects
             }
             else
             {
+                foreach (var p in ServerGame.ServerPlayers) p.ServerNotifier.RequestNoResponse();
                 CurrStackEntry = stackable;
                 stackable.StartResolution(startIndex);
             }
@@ -93,7 +95,7 @@ namespace KompasServer.Effects
             //TODO: in theory, this would allow anyone to just send a packet that had true or false in it and answer for the player
             //but they can kinda cheat like that with everything here...
 
-            lock (TriggerStackLock)
+            lock (triggerStackLock)
             {
                 if (OptionalTriggersToAsk.Count == 0)
                 {
@@ -121,7 +123,7 @@ namespace KompasServer.Effects
             if (OptionalTriggersToAsk.Count > 0)
             {
                 //then ask the respective player about that trigger.
-                lock (TriggerStackLock)
+                lock (triggerStackLock)
                 {
                     var (t, context, controller) = OptionalTriggersToAsk.Peek();
                     controller?.ServerNotifier.AskForTrigger(t, context.X, context.Card, context.Stackable, context.Triggerer);
@@ -131,10 +133,17 @@ namespace KompasServer.Effects
             //check if responses exist. if not, resolve
             else
             {
-                var possible = ServerGame.Cards.Where(c => c.Effects.Any(e => e.ActivationRestriction.Evaluate(c.Controller)));
+                lock (responseLock)
+                {
+                    //TODO if any player can activate effects, do ServerGame.Players.Any() the entire expression
+                    var players = ServerGame.Cards.Where(c => c.Effects.Any(e => e.ActivationRestriction.Evaluate(c.Controller)))
+                        .Select(c => c.Controller).Distinct().Where(p => !p.passedPriority);
 
-                //if neither player has anything to do, resolve the stack
-                ResolveNextStackEntry();
+                    //TODO figure out a way to not resolve the deferred execution of Linq twice
+                    if (players.Any()) foreach (var p in players) ServerGame.ServerPlayers[p.index].ServerNotifier.RequestResponse();
+                    //if neither player has anything to do, resolve the stack
+                    else ResolveNextStackEntry();
+                }
             }
         }
         #endregion the stack
@@ -216,7 +225,7 @@ namespace KompasServer.Effects
         public void AskForTrigger(ServerTrigger trigger, ActivationContext context, ServerPlayer controller)
         {
             Debug.Log($"Asking about trigger for effect of card {trigger.effToTrigger.Source.CardName}");
-            lock (TriggerStackLock)
+            lock (triggerStackLock)
             {
                 OptionalTriggersToAsk.Push((trigger, context, controller));
             }

@@ -71,6 +71,7 @@ namespace KompasCore.Networking
             Response = 552,
             DeclineAnotherTarget = 553,
             CancelSearch = 554,
+            NoMoreResponse = 555,
             //server notifying if anything else is necessary
             TargetAccepted = 575,
             SpaceTargetAccepted = 576,

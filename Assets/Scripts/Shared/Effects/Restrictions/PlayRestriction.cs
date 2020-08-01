@@ -22,7 +22,7 @@ namespace KompasCore.Effects
 
         public string[] NormalRestrictions = 
             { PlayedByCardOwner, FromHand, StandardPlayRestriction, StandardSpellRestriction, FriendlyTurnIfNotFast, HasCostInPips, NothingIsResolving };
-        public string[] EffectRestrictions = { StandardSpellRestriction };
+        public string[] EffectRestrictions = { StandardSpellRestriction }; //TODO make standard spell restriction part of space restriction instead?
 
         public void SetInfo(GameCard card)
         {
