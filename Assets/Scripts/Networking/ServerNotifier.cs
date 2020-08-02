@@ -395,6 +395,12 @@ namespace KompasServer.Networking
             SendPacket(p);
         }
 
+        public void StackEmpty()
+        {
+            var p = new Packet(Packet.Command.StackEmpty);
+            SendToBoth(p);
+        }
+
         public void SetTarget(GameCard card, int effIndex, GameCard target)
         {
             Packet p = new Packet(Packet.Command.Target, card, effIndex, target.ID);

@@ -743,8 +743,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2157426566985455359}
-  - component: {fileID: 6379925869815741931}
   - component: {fileID: 2410040325197017081}
+  - component: {fileID: 4066127554904995548}
   m_Layer: 0
   m_Name: Client Card Brass
   m_TagString: Untagged
@@ -774,7 +774,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6379925869815741931
+--- !u!114 &2410040325197017081
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -783,7 +783,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 3146857051703895276}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6075e39016768b143af40ac75b10bc93, type: 3}
+  m_Script: {fileID: 11500000, guid: d5eaf700679447a438067b5b33bda12a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detailedSprite: {fileID: 0}
+  simpleSprite: {fileID: 0}
+  cardCtrl: {fileID: 4066127554904995548}
+--- !u!114 &4066127554904995548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146857051703895276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4138ee4b63d269e4fbede91cec7c3613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   card: {fileID: 2410040325197017081}
@@ -804,21 +819,6 @@ MonoBehaviour:
   unzoomedWText: {fileID: 3625382429207079244}
   unzoomedCText: {fileID: 3625382428906105486}
   unzoomedAText: {fileID: 3625382427361149801}
---- !u!114 &2410040325197017081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3146857051703895276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5eaf700679447a438067b5b33bda12a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detailedSprite: {fileID: 0}
-  simpleSprite: {fileID: 0}
-  cardCtrl: {fileID: 6379925869815741931}
 --- !u!1 &3625382427361149807
 GameObject:
   m_ObjectHideFlags: 0

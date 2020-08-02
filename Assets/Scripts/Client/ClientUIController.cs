@@ -202,7 +202,7 @@ namespace KompasClient.UI
 
         public void SetCurrState(string primaryState, string secondaryState = "")
         {
-            CurrStateOverallObj.SetActive(true);
+            CurrStateOverallObj.SetActive(!string.IsNullOrEmpty(primaryState));
             CurrStateText.text = primaryState;
             CurrStateBonusText.text = secondaryState;
             CurrStateBonusObj.SetActive(!string.IsNullOrWhiteSpace(secondaryState));

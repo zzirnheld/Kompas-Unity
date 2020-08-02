@@ -82,7 +82,7 @@ namespace KompasCore.Cards
             }
         }
 
-        public void SetPhysicalLocation(CardLocation location)
+        public virtual void SetPhysicalLocation(CardLocation location)
         {
             Debug.Log($"Card controller of {card.CardName} setting physical location in {card.Location} to {card.BoardX}, {card.BoardY}");
             switch (location)

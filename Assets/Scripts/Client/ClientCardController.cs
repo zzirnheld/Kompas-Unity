@@ -1,18 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using KompasCore.Cards;
 
-public class ClientCardController : MonoBehaviour
+public class ClientCardController : CardController
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void SetPhysicalLocation(CardLocation location)
     {
-        
-    }
+        base.SetPhysicalLocation(location);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        ShowForCardType(card.CardType, ClientCameraController.Main.Zoomed);
     }
 }

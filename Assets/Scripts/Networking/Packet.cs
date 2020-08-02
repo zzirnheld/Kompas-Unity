@@ -91,8 +91,9 @@ namespace KompasCore.Networking
             PutBack = 701,
             YoureFirst = 702,
             YoureSecond = 703,
-            //debug
-            ActivateEffect = 800
+            //effect stuff
+            ActivateEffect = 800,
+            StackEmpty = 801
         }
 
         public Packet Copy()

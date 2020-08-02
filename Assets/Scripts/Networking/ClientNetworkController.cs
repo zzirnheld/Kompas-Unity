@@ -277,7 +277,12 @@ namespace KompasClient.Networking
                     ClientGame.boardCtrl.DiscardSimples();
                     break;
                 case Packet.Command.EffectResolving:
-                    card.Effects.ElementAt(packet.EffIndex).Controller = ClientGame.Players[packet.normalArgs[1]];
+                    var eff = card.Effects.ElementAt(packet.EffIndex);
+                    eff.Controller = ClientGame.Players[packet.normalArgs[1]];
+                    ClientGame.clientUICtrl.SetCurrState($"Resolving Effect of {card?.CardName}", $"{eff.Blurb}");
+                    break;
+                case Packet.Command.StackEmpty:
+                    ClientGame.clientUICtrl.SetCurrState(string.Empty);
                     break;
                 /*case Packet.Command.EffectImpossible:
                     ClientGame.clientUICtrl.SetCurrState("Effect Impossible");

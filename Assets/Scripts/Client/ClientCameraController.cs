@@ -1,10 +1,13 @@
 ﻿using KompasClient.GameCore;
+using KompasServer.Effects;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ClientCameraController : MonoBehaviour
 {
+    public static ClientCameraController Main { get; private set; }
+
     public const float ZoomFactor = 1f;
     public const float PanFactorBase = 0.4f;
     public const float RotationFactorBase = 1f;
@@ -15,6 +18,7 @@ public class ClientCameraController : MonoBehaviour
 
     public float PanFactor => Mathf.Log10(transform.position.y) * PanFactorBase;
     public float RotationAngle => Mathf.Log10(transform.position.y) * RotationFactorBase;
+    public bool Zoomed => transform.position.y <= ZoomThreshold;
 
     public Vector3 Down     => PanFactor * Vector3.down;
     public Vector3 Up       => PanFactor * Vector3.up;
@@ -22,6 +26,11 @@ public class ClientCameraController : MonoBehaviour
     public Vector3 Right    => PanFactor * Vector3.right;
 
     public ClientGame clientGame;
+
+    private void Awake()
+    {
+        Main = this;
+    }
 
     public void FixedUpdate()
     {

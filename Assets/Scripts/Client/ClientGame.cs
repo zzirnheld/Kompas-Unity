@@ -23,8 +23,6 @@ namespace KompasClient.GameCore
         public IEnumerable<ClientGameCard> ClientCards => cardsByID.Values;
         public override IEnumerable<GameCard> Cards => ClientCards;
 
-        private bool friendlyTurn;
-
         public HandController friendlyHandCtrl;
         public DeckController friendlyDeckCtrl;
         public DiscardController friendlyDiscardCtrl;

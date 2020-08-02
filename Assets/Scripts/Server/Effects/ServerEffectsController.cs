@@ -65,6 +65,7 @@ namespace KompasServer.Effects
             {
                 ServerGame.TurnServerPlayer.ServerNotifier.DiscardSimples();
                 ServerGame.boardCtrl.DiscardSimples();
+                ServerGame.ServerPlayers.First().ServerNotifier.StackEmpty();
             }
             else
             {
