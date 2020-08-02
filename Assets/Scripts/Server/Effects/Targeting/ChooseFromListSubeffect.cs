@@ -28,7 +28,7 @@ namespace KompasServer.Effects
 
         protected void RequestTargets()
         {
-            EffectController.ServerNotifier.GetChoicesFromList(potentialTargets, maxCanChoose, this);
+            ServerPlayer.ServerNotifier.GetChoicesFromList(potentialTargets, maxCanChoose, this);
         }
 
         public override void Initialize(ServerEffect eff, int subeffIndex)

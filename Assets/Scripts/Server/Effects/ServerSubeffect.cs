@@ -18,6 +18,8 @@ namespace KompasServer.Effects
         public ServerPlayer EffectController { get { return ServerEffect.ServerController; } }
         public GameCard ThisCard { get { return ServerEffect.Source; } }
 
+        public ServerPlayer ServerPlayer => ServerGame.ServerPlayers[(Controller.index + playerIndex) % ServerGame.ServerPlayers.Length];
+
         public static ServerSubeffect FromJson(string subeffJson, ServerEffect parent, int subeffIndex)
         {
             var subeff = JsonUtility.FromJson<Subeffect>(subeffJson);

@@ -1,0 +1,95 @@
+{
+	"cardType":83,
+	"cardName":"Decide! One of Two Options!",
+	"effText":"Crazy Idea: When I'm hand-discarded, discard-play another Crazy Idea.\nChoose two characters. Delay 2 turns. Your opponent chooses one that I kill. Annihilate me.",
+	"effects":[
+		{
+			"triggerCondition":"Discard",
+			"trigger":"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\",\"Triggerer Fits Restriction\"],
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Hand\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Discard Target\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Distinct from Source\"],
+						\"subtypesInclude\":[\"Crazy Idea\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where Decide! to play targeted Crazy Idea\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Play\"
+				}"
+			]
+		},
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"character for Decide! to maybe kill (1/2)\",
+						\"cardRestrictions\":[\"Is Character\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"character for Decide! to maybe kill (2/2)\",
+						\"cardRestrictions\":[\"Is Character\",\"Distinct from Target\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Delay Effect Resolution\",
+					\"numTimesToDelay\":1,
+					\"indexToResume\":3,
+					\"triggerCondition\":\"Turn Start\"
+				}",
+				"{
+					\"subeffType\":\"Choose From List\",
+					\"maxCanChoose\":1,
+					\"cardRestriction\":
+					{
+						\"blurb\":\"card for Decide! to kill\",
+						\"cardRestrictions\":[\"Already Target\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Annihilate\"
+				}"
+			]
+		}
+	],
+	"c":5,
+	"spellType":"Delayed",
+	"subtypes":["Delayed","Crazy Idea"],
+	"subtypeText":"Delayed Crazy Idea",
+	"arg":2
+}

@@ -1,0 +1,97 @@
+{
+	"cardType":83,
+	"cardName":"Stupid Idea Generator",
+	"effText":"Crazy Idea: When I'm hand-discarded, discard-play another Crazy Idea.\nWhen turns start, discard a Crazy Idea, draw 1, then pay a pip or annihilate me.",
+	"effects":[
+		{
+			"triggerCondition":"Discard",
+			"trigger":"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\",\"Triggerer Fits Restriction\"],
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Hand\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Discard Target\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Distinct from Source\"],
+						\"subtypesInclude\":[\"Crazy Idea\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where Decide! to play targeted Crazy Idea\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Play\"
+				}"
+			]
+		},
+		{
+		{
+			"triggerCondition":"Turn Start",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Hand Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Crazy Idea for Stupid Idea Generator to discard\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Hand\"],
+						\"subtypesInclude\":[\"Crazy Idea\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Draw\"
+				}",
+				"{
+					\"subeffType\":\"Choose Effect Option\",
+					\"ChoiceBlurb\":\"Pay 1 pip or annihilate this?\",
+					\"OptionBlurbs\":[\"Pay 1 pip\",\"Annhihilate\"],
+					\"OptionJumpIndices\":[4,8]
+				}",
+				"{
+					\"subeffType\":\"Jump on Effect Impossible\",
+					\"jumpTo\":4
+				}",
+				"{
+					\"subeffType\":\"Pay Pips\",
+					\"xMultiplier\":0,
+					\"modifier\":1
+				}",
+				"{
+					\"subeffType\":\"End Effect Resolution\"
+				}",
+				"{
+					\"subeffType\":\"Clear Jump on Effect Impossible\"
+				}",
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Annihilate\"
+				}"
+			]	
+		},
+	],
+	"c":5,
+	"spellType":"Enchant",
+	"subtypes":["Enchant","Crazy Idea"],
+	"subtypeText":"Enchant Crazy Idea"
+}

@@ -131,6 +131,11 @@ namespace KompasCore.Effects
         public int spaceIndex = -1;
 
         /// <summary>
+        /// The index of player. If 0, this, if 1, enemy. 
+        /// </summary>
+        public int playerIndex = 0;
+
+        /// <summary>
         /// Represents the type of subeffect this is
         /// </summary>
         public string subeffType;
@@ -149,5 +154,6 @@ namespace KompasCore.Effects
 
         public GameCard Target => GetTarget(targetIndex);
         public (int x, int y) Space => GetSpace(spaceIndex);
+        public Player Player => Game.Players[(Controller.index + playerIndex) % Game.Players.Length];
     }
 }

@@ -32,6 +32,8 @@ namespace KompasCore.Effects
         public const string Avatar = "Avatar"; // 50,
 
         public const string Distinct = "Distinct from Source"; // 99,
+        public const string DistinctFromTarget = "Distinct from Target";
+        public const string AlreadyTarget = "Already Target";
 
         //location
         public const string Hand = "Hand"; // 100,
@@ -113,6 +115,9 @@ namespace KompasCore.Effects
                 Debug.Log("Considering restriction " + c + " when X equals " + x);
                 switch (c)
                 {
+                    case AlreadyTarget:
+                        if (!Subeffect.Effect.Targets.Contains(potentialTarget)) return false;
+                        break;
                     case NameIs:
                         if (potentialTarget.CardName != nameIs) return false;
                         break;
@@ -167,6 +172,9 @@ namespace KompasCore.Effects
                         break;
                     case Distinct:
                         if (potentialTarget == Subeffect.Source) return false;
+                        break;
+                    case DistinctFromTarget:
+                        if (potentialTarget == Subeffect.Target) return false;
                         break;
                     case Hand:
                         if (potentialTarget.Location != CardLocation.Hand) return false;

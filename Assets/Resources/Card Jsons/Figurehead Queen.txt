@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Figurehead Queen",
-	"effText":"When you draw, give me +1C. Delay 1 turn. If my C ≥ 10, deck-summon a Tarocco.",
+	"effText":"When you draw, give me +1C.\nDelay 1 turn. If my C ≥ 10, deck-summon a Tarocco.",
 	"effects":[
 		{
 			"triggerCondition":"Draw",
