@@ -17,7 +17,8 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Soulflare to annihilate\",
-						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
+						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Revenant\"]
 					}
 				}",
 				"{
@@ -32,7 +33,7 @@
 					\"subeffType\":\"Draw X\"
 				}",
 				"{
-					\"subeffType\":\"Add Pips\"
+					\"subeffType\":\"Add Pips\",
 					\"xMultiplier\":1
 				}"
 			]	

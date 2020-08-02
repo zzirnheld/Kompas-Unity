@@ -23,7 +23,9 @@
 		{
 			"activationRestriction":{
 				"activationRestrictions":[
-					"Location"
+					"Location",
+					"Controller Activates",
+					"Not Negated"
 				],
 				"location":2
 			},

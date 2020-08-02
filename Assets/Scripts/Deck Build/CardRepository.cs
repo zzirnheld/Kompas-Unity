@@ -182,7 +182,7 @@ public class CardRepository : MonoBehaviour
             AvatarServerGameCard avatar = Instantiate(ServerAvatarPrefab).GetComponent<AvatarServerGameCard>();
             ServerEffect[] effects = CreateServerEffects(charCard.effects, avatar, serverGame, owner);
             avatar.SetInfo(charCard, serverGame, owner, effects, id);
-            avatar.cardCtrl.SetImage(avatar.CardName);
+            avatar.cardCtrl.SetImage(avatar.CardName, false);
             serverGame.cardsByID.Add(id, avatar);
             return avatar;
         }
@@ -222,7 +222,7 @@ public class CardRepository : MonoBehaviour
             }
             effects = CreateServerEffects(serializableCard.effects, card, serverGame, owner);
             card?.SetInfo(serializableCard, serverGame, owner, effects, id);
-            card?.cardCtrl?.SetImage(card.CardName);
+            card?.cardCtrl?.SetImage(card.CardName, false);
             return card;
         }
         catch (System.ArgumentException argEx)
@@ -259,7 +259,7 @@ public class CardRepository : MonoBehaviour
             ClientEffect[] effects = CreateClientEffects(charCard.effects, avatar, clientGame);
             avatar.SetInfo(charCard, clientGame, owner, effects, id);
             avatar.gameObject.GetComponentInChildren<ClientCardMouseController>().ClientGame = clientGame;
-            avatar.cardCtrl.SetImage(avatar.CardName);
+            avatar.cardCtrl.SetImage(avatar.CardName, false);
             clientGame.cardsByID.Add(id, avatar);
             return avatar;
         }
@@ -298,7 +298,7 @@ public class CardRepository : MonoBehaviour
             }
             effects = CreateClientEffects(serializableCard.effects, card, clientGame);
             card.SetInfo(serializableCard, clientGame, owner, effects, id);
-            card.cardCtrl.SetImage(card.CardName);
+            card.cardCtrl.SetImage(card.CardName, false);
             card.gameObject.GetComponentInChildren<ClientCardMouseController>().ClientGame = clientGame;
             return card;
         }

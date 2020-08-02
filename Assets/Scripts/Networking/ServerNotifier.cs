@@ -6,6 +6,7 @@ using KompasServer.Effects;
 using KompasServer.GameCore;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 namespace KompasServer.Networking
@@ -86,6 +87,12 @@ namespace KompasServer.Networking
         public void NotifyBothPutBack()
         {
             Packet p = new Packet(Packet.Command.PutBack);
+            SendToBoth(p);
+        }
+
+        public void NotifyLeyload(int leyload)
+        {
+            var p = new Packet(Packet.Command.Leyload, leyload);
             SendToBoth(p);
         }
 
@@ -371,6 +378,12 @@ namespace KompasServer.Networking
             Packet outPacket = new Packet(Packet.Command.Response);
             SendPacket(outPacket);
         }
+        
+        public void RequestNoResponse()
+        {
+            var p = new Packet(Packet.Command.NoMoreResponse);
+            SendPacket(p);
+        }
 
         /// <summary>
         /// Lets that player know their target has been accepted. called if the Target method returns True
@@ -380,6 +393,12 @@ namespace KompasServer.Networking
             Debug.Log($"Accepting target of {Player.index}");
             Packet p = new Packet(Packet.Command.TargetAccepted);
             SendPacket(p);
+        }
+
+        public void StackEmpty()
+        {
+            var p = new Packet(Packet.Command.StackEmpty);
+            SendToBoth(p);
         }
 
         public void SetTarget(GameCard card, int effIndex, GameCard target)

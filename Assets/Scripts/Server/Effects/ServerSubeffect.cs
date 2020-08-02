@@ -256,6 +256,9 @@ namespace KompasServer.Effects
                 case Attack:
                     toReturn = JsonUtility.FromJson<AttackSubeffect>(subeffJson);
                     break;
+                case ChangeLeyload:
+                    toReturn = JsonUtility.FromJson<ChangeLeyloadSubeffect>(subeffJson);
+                    break;
                 default:
                     Debug.LogError($"Unrecognized effect type enum {subeff.subeffType} for loading effect in effect constructor for json {subeffJson}");
                     return null;

@@ -70,6 +70,9 @@ namespace KompasClient.Networking
                     ClientGame.SetAvatar(1, packet.CardName, packet.CardIDToBe);
                     break;
                 #endregion game start
+                case Packet.Command.Leyload:
+                    ClientGame.Leyload = packet.normalArgs[0];
+                    break;
                 case Packet.Command.Delete:
                     ClientGame.Delete(card);
                     break;
@@ -274,7 +277,12 @@ namespace KompasClient.Networking
                     ClientGame.boardCtrl.DiscardSimples();
                     break;
                 case Packet.Command.EffectResolving:
-                    card.Effects.ElementAt(packet.EffIndex).Controller = ClientGame.Players[packet.normalArgs[1]];
+                    var eff = card.Effects.ElementAt(packet.EffIndex);
+                    eff.Controller = ClientGame.Players[packet.normalArgs[1]];
+                    ClientGame.clientUICtrl.SetCurrState($"Resolving Effect of {card?.CardName}", $"{eff.Blurb}");
+                    break;
+                case Packet.Command.StackEmpty:
+                    ClientGame.clientUICtrl.SetCurrState(string.Empty);
                     break;
                 /*case Packet.Command.EffectImpossible:
                     ClientGame.clientUICtrl.SetCurrState("Effect Impossible");
@@ -283,6 +291,12 @@ namespace KompasClient.Networking
                     ClientTrigger t = card.Effects.ElementAt(packet.EffIndex).Trigger as ClientTrigger;
                     t.ClientEffect.ClientController = Friendly;
                     ClientGame.clientUICtrl.ShowOptionalTrigger(t, packet.EffIndex);
+                    break;
+                case Packet.Command.Response:
+                    ClientGame.clientUICtrl.GetResponse();
+                    break;
+                case Packet.Command.NoMoreResponse:
+                    ClientGame.clientUICtrl.UngetResponse();
                     break;
                 default:
                     Debug.LogError($"Unrecognized command {packet.command} sent to client");

@@ -35,8 +35,8 @@ namespace KompasCore.GameCore
         public abstract IEnumerable<GameCard> Cards { get; }
         public int FirstTurnPlayer { get; protected set; }
         public int RoundCount { get; protected set; } = 1;
-        public int TurnCount { get; protected set; } = 1;
-        public int Leyload => TurnCount;
+        public virtual int TurnCount { get; protected set; } = 1;
+        public virtual int Leyload { get; set; } = 1;
 
         public TargetMode targetMode = TargetMode.Free;
 

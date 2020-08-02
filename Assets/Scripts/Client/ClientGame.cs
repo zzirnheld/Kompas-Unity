@@ -23,8 +23,6 @@ namespace KompasClient.GameCore
         public IEnumerable<ClientGameCard> ClientCards => cardsByID.Values;
         public override IEnumerable<GameCard> Cards => ClientCards;
 
-        private bool friendlyTurn;
-
         public HandController friendlyHandCtrl;
         public DeckController friendlyDeckCtrl;
         public DiscardController friendlyDiscardCtrl;
@@ -48,6 +46,16 @@ namespace KompasClient.GameCore
         //targeting
         public CardRestriction CurrCardRestriction;
         public SpaceRestriction CurrSpaceRestriction;
+
+        public override int Leyload 
+        { 
+            get => base.Leyload;
+            set
+            {
+                base.Leyload = value;
+                clientUICtrl.Leyload = Leyload;
+            }
+        }
 
         private void Start()
         {
@@ -93,6 +101,7 @@ namespace KompasClient.GameCore
         public void Delete(GameCard card)
         {
             card.Remove();
+            cardsByID.Remove(card.ID);
             Destroy(card.gameObject);
         }
 
@@ -144,7 +153,6 @@ namespace KompasClient.GameCore
             clientUICtrl.HideGetDecklistUI();
             RoundCount = 1;
             TurnCount = 1;
-            clientUICtrl.Leyload = Leyload;
         }
 
         public void EndTurn()
@@ -154,12 +162,16 @@ namespace KompasClient.GameCore
             clientUICtrl.ChangeTurn(TurnPlayerIndex);
             if (TurnPlayerIndex == FirstTurnPlayer) RoundCount++;
             TurnCount++;
-            clientUICtrl.Leyload = Leyload;
         }
 
         public override GameCard GetCardWithID(int id)
         {
             return cardsByID.ContainsKey(id) ? cardsByID[id] : null;
+        }
+
+        public void ShowCardsByZoom(bool zoomed)
+        {
+            foreach (var c in Cards) c.cardCtrl.ShowForCardType(c.CardType, zoomed);
         }
     }
 }

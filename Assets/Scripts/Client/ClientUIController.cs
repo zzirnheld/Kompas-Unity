@@ -43,7 +43,7 @@ namespace KompasClient.UI
         public int Leyload
         {
             set => LeyloadText.text = $"{value} Pips Leyload," +
-                $"\n{value + (clientGame.TurnPlayerIndex == clientGame.FirstTurnPlayer ? 0 : 1)} Next Turn";
+                $"\n{value + 1} Next Turn";
         }
 
         //current state
@@ -58,10 +58,19 @@ namespace KompasClient.UI
         public GameObject alreadySelectedText;
         public Button searchTargetButton;
         public TMPro.TMP_Text searchTargetButtonText;
+        public TMPro.TMP_Text nSearchText;
+        public TMPro.TMP_Text eSearchText;
+        public TMPro.TMP_Text sSearchText;
+        public TMPro.TMP_Text wSearchText;
+        public TMPro.TMP_Text cSearchText;
+        public TMPro.TMP_Text aSearchText;
         //effects
         public InputField xInput;
         public GameObject setXView;
         public GameObject declineAnotherTargetView;
+        public GameObject declineEffectView;
+        public Toggle autodeclineEffects;
+        public bool Autodecline => autodeclineEffects.isOn;
         //confirm trigger
         public GameObject ConfirmTriggerView;
         public TMPro.TMP_Text TriggerBlurbText;
@@ -79,21 +88,17 @@ namespace KompasClient.UI
         public GameObject DeckSelectUIParent;
         public GameObject ConnectToServerParent;
         public GameObject DeckSelectorParent;
+        public GameObject DeckWaitingParent;
         public GameObject DeckAcceptedParent;
         public GameObject ConnectedWaitingParent;
 
-        private bool ShowEffect(Effect eff)
-        {
-            return eff.Trigger == null &&
-                        eff.Source.Controller == clientGame.Players[0] && //TODO make this instead be part of activation restriction
-                        eff.ActivationRestriction.Evaluate(clientGame.Players[0]);
-        }
+        private bool ShowEffect(Effect eff) => eff.CanBeActivatedBy(clientGame.Players[0]);
 
         public override void ShowInfoFor(GameCard card, bool refresh = false)
         {
             base.ShowInfoFor(card);
 
-            if (card?.Effects != null && card.Effects.Where(eff => ShowEffect(eff)).Any())
+            if (card != null && card.Effects.Where(eff => ShowEffect(eff)).Any())
             {
                 var children = new List<GameObject>();
                 foreach (Transform child in UseEffectGridParent.transform) children.Add(child.gameObject);
@@ -131,6 +136,9 @@ namespace KompasClient.UI
         {
             string ip = ipInputField.text;
             if (string.IsNullOrEmpty(ip)) ip = "127.0.0.1";
+            var allowedChars = "1234567890.";
+            ip = new string(ip.Where(c => allowedChars.Contains(c)).ToArray());
+
             try
             {
                 HideConnectUI();
@@ -162,12 +170,21 @@ namespace KompasClient.UI
         public void ShowGetDecklistUI()
         {
             ConnectToServerParent.SetActive(false);
+            DeckWaitingParent.SetActive(false);
             DeckSelectUIParent.SetActive(true);
+        }
+
+        public void AwaitDeckConfirm()
+        {
+            DeckSelectorParent.SetActive(false);
+            DeckAcceptedParent.SetActive(false);
+            DeckWaitingParent.SetActive(true);
         }
 
         public void ShowDeckAcceptedUI()
         {
             DeckSelectorParent.SetActive(false);
+            DeckWaitingParent.SetActive(false);
             DeckAcceptedParent.SetActive(true);
         }
 
@@ -185,7 +202,7 @@ namespace KompasClient.UI
 
         public void SetCurrState(string primaryState, string secondaryState = "")
         {
-            CurrStateOverallObj.SetActive(true);
+            CurrStateOverallObj.SetActive(!string.IsNullOrEmpty(primaryState));
             CurrStateText.text = primaryState;
             CurrStateBonusText.text = secondaryState;
             CurrStateBonusObj.SetActive(!string.IsNullOrWhiteSpace(secondaryState));
@@ -194,7 +211,7 @@ namespace KompasClient.UI
         #region effects
         public void ActivateSelectedCardEff(int index)
         {
-            clientGame.clientNotifier.RequestResolveEffect(shownCard, index);
+            clientGame.clientNotifier.RequestResolveEffect(ShownCard, index);
         }
 
         public void ToggleHoldingPriority()
@@ -263,6 +280,23 @@ namespace KompasClient.UI
         {
             clientGame.clientNotifier.RequestChooseEffectOption(EffectOptionDropdown.value);
             ChooseOptionView.SetActive(false);
+        }
+
+        public void GetResponse()
+        {
+            if (Autodecline) DeclineResponse();
+            else declineEffectView.SetActive(true);
+        }
+
+        public void UngetResponse()
+        {
+            declineEffectView.SetActive(false);
+        }
+
+        public void DeclineResponse()
+        {
+            declineEffectView.SetActive(false);
+            clientGame.clientNotifier.DeclineResponse();
         }
         #endregion effects
 
@@ -363,8 +397,23 @@ namespace KompasClient.UI
 
         public void SearchShowIndex(int index)
         {
-            cardSearchImage.sprite = currSearchData.Value.toSearch[searchIndex].detailedSprite;
-            alreadySelectedText.SetActive(currSearchData.Value.searched.Contains(currSearchData.Value.toSearch[searchIndex]));
+            var toShow = currSearchData.Value.toSearch[searchIndex];
+            cardSearchImage.sprite = toShow.detailedSprite;
+            alreadySelectedText.SetActive(currSearchData.Value.searched.Contains(toShow));
+
+            nSearchText.text = $"N\n{toShow.N}";
+            eSearchText.text = $"E\n{toShow.E}";
+            sSearchText.text = $"S\n{toShow.S}";
+            wSearchText.text = $"W\n{toShow.W}";
+            cSearchText.text = $"C\n{toShow.C}";
+            aSearchText.text = $"A\n{toShow.A}";
+
+            nSearchText.gameObject.SetActive(toShow.CardType == 'C');
+            eSearchText.gameObject.SetActive(toShow.CardType == 'C');
+            sSearchText.gameObject.SetActive(toShow.CardType == 'C');
+            wSearchText.gameObject.SetActive(toShow.CardType == 'C');
+            cSearchText.gameObject.SetActive(toShow.CardType == 'S');
+            aSearchText.gameObject.SetActive(toShow.CardType == 'A');
         }
 
         public void SelectShownSearchCard() => HoverOver(currSearchData.Value.toSearch[searchIndex]);

@@ -8,7 +8,7 @@
 				"activationRestrictions":[
 					"Max Times Per Turn",
 					"Friendly Turn",
-					"In Play"
+					"Default"
 				]
 			},
 			"subeffects":[

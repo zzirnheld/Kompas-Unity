@@ -4,7 +4,7 @@
 	"effText":"When turns start, resummon characters here.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
+			"triggerCondition":"Turn Start",
 			"trigger":
 			"{
 				\"triggerRestriction\":{

@@ -19,12 +19,66 @@ namespace KompasCore.Cards
         public int BaseC => serializedCard.c;
         public int BaseA => serializedCard.a;
 
-        public int N { get; private set; }
-        public int E { get; protected set; }
-        public int S { get; private set; }
-        public int W { get; private set; }
-        public int C { get; private set; }
-        public int A { get; private set; }
+        private int n;
+        private int e;
+        private int s;
+        private int w;
+        private int c;
+        private int a;
+        public int N 
+        { 
+            get => n;
+            private set
+            {
+                n = value;
+                cardCtrl.N = value;
+            }
+        }
+        public int E
+        {
+            get => e;
+            protected set
+            {
+                e = value;
+                cardCtrl.E = value;
+            }
+        }
+        public int S
+        {
+            get => s;
+            private set
+            {
+                s = value;
+                cardCtrl.S = value;
+            }
+        }
+        public int W
+        {
+            get => w;
+            private set
+            {
+                w = value;
+                cardCtrl.W = value;
+            }
+        }
+        public int C
+        {
+            get => c;
+            private set
+            {
+                c = value;
+                cardCtrl.C = value;
+            }
+        }
+        public int A
+        {
+            get => a;
+            private set
+            {
+                a = value;
+                cardCtrl.A = value;
+            }
+        }
 
         public bool Fast { get; private set; }
 
@@ -206,6 +260,8 @@ namespace KompasCore.Cards
             //instead of setting negations or activations to 0, so that it updates the client correctly
             while (Negated) Negated = false;
             while (Activated) Activated = false;
+
+            cardCtrl.ShowForCardType(CardType, false);
         }
 
         #region distance/adjacency

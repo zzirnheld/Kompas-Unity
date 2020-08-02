@@ -7,8 +7,7 @@
 			"blurb":"Pip Resummon",
 			"activationRestriction":{
 				"activationRestrictions":[
-					"Friendly Turn",
-					"In Play"
+					"Default"
 				]
 			},
 			"subeffects":[
@@ -50,7 +49,7 @@
 	"n":3,
 	"e":1,
 	"s":5,
-	"w":6,
+	"w":4,
 	"subtypes":["Geminii","Warrior"],
 	"subtypeText":"Geminii Warrior"
 }

@@ -1,14 +1,14 @@
 {
 	"cardType":67,
 	"cardName":"Who Searched For Grudges",
-	"effText":"Shape: During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters. When I'm summoned, discard 2. If you can't, tribute me.",
+	"effText":"Shape: During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters.\nWhen I'm summoned, discard 2. If you can't, tribute me.",
 	"effects":[
 		{
 			"blurb":"Shape",
 			"activationRestriction":{
 				"activationRestrictions":[
 					"Friendly Turn",
-					"In Play"
+					"Default"
 				]
 			},
 			"subeffects":[
@@ -98,9 +98,9 @@
 		}
 	],
 	"n":1,
-	"e":7,
+	"e":5,
 	"s":3,
-	"w":7,
+	"w":5,
 	"subtypes":["Ethereal","Shaper"],
 	"subtypeText":"Ethereal Shaper"
 }

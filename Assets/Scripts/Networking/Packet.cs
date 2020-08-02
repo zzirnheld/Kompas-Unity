@@ -28,7 +28,7 @@ namespace KompasCore.Networking
             Attach = 104,
             AddAsEnemyAndAttach = 105,
             EndTurn = 150,
-            //Leyload = 151,
+            Leyload = 151,
             //move cards around
             Topdeck = 200,
             Discard = 201,
@@ -71,6 +71,7 @@ namespace KompasCore.Networking
             Response = 552,
             DeclineAnotherTarget = 553,
             CancelSearch = 554,
+            NoMoreResponse = 555,
             //server notifying if anything else is necessary
             TargetAccepted = 575,
             SpaceTargetAccepted = 576,
@@ -90,8 +91,9 @@ namespace KompasCore.Networking
             PutBack = 701,
             YoureFirst = 702,
             YoureSecond = 703,
-            //debug
-            ActivateEffect = 800
+            //effect stuff
+            ActivateEffect = 800,
+            StackEmpty = 801
         }
 
         public Packet Copy()

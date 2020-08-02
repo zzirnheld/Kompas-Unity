@@ -6,7 +6,8 @@
 		{
 			"activationRestriction":{
 				"activationRestrictions":[
-					"Max Times Per Round"
+					"Max Times Per Round",
+					"Default"
 				],
 				"maxTimes":2
 			},

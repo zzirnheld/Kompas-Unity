@@ -17,7 +17,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"enemy card for Straw Golem to move.\",
-						\"cardRestrictions\":[\"Board\"]
+						\"cardRestrictions\":[\"Board\",\"Enemy\"]
 					}
 				}",
 				"{
@@ -54,7 +54,7 @@
 		]
 	},
 	"n":2,
-	"e":1,
+	"e":2,
 	"s":3,
 	"w":4,
 	"subtypes":["Golem"],

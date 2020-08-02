@@ -31,6 +31,8 @@ namespace KompasCore.UI
         public GameObject UseEffectGridParent;
         public GameObject AugmentPanelParent;
         public GameObject AugmentGridParent;
+        public GameObject negatedParent;
+        public GameObject activatedParent;
         //current state text (reminds the player what's happening right now)
         public TMPro.TMP_Text currentStateText;
         //networking
@@ -43,7 +45,7 @@ namespace KompasCore.UI
         private bool hovering = false;
         private GameCard hoveredCard;
 
-        protected GameCard shownCard;
+        public GameCard ShownCard { get; protected set;}
 
         public bool DebugMode { get { return debugToggle.isOn; } }
 
@@ -54,9 +56,9 @@ namespace KompasCore.UI
 
         public virtual void ShowInfoFor(GameCard card, bool refresh = false)
         {
-            if (shownCard == card && !refresh) return;
+            if (ShownCard == card && !refresh) return;
 
-            shownCard = card;
+            ShownCard = card;
 
             hoveredCard = card;
             selectedCardStatsText.text = hoveredCard.StatsString;
@@ -83,8 +85,13 @@ namespace KompasCore.UI
                 AugmentPanelParent.SetActive(true);
             }
             else AugmentPanelParent.SetActive(false);
+
+            negatedParent.SetActive(card.Negated);
+            activatedParent.SetActive(card.Activated);
             selectedUIParent.SetActive(true);
         }
+
+        public void RefreshInfo() => ShowInfoFor(ShownCard, refresh: true);
 
         /// <summary>
         /// updates the ui with the given selection. if the selection is null, hides the ui.
@@ -99,7 +106,7 @@ namespace KompasCore.UI
                 selectedUIParent.SetActive(false);
                 SelectedCard = null;
                 hoveredCard = null;
-                shownCard = null;
+                ShownCard = null;
                 //Debug.Log("Selecting Null");
                 selectedCardNameText.text = "No Card Selected";
                 selectedCardImage.sprite = Resources.Load<Sprite>("Kompas Circle Background");

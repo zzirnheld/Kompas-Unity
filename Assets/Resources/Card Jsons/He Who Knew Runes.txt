@@ -1,14 +1,14 @@
 {
 	"cardType":67,
 	"cardName":"He Who Knew Runes",
-	"effText":"Shape: During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters. When I move X, you can hand-cast a CX Shaping.",
+	"effText":"Shape: During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters.\nWhen I move X, you can hand-cast a CX Shaping.",
 	"effects":[
 		{
 			"blurb":"Shape",
 			"activationRestriction":{
 				"activationRestrictions":[
 					"Friendly Turn",
-					"In Play"
+					"Default"
 				]
 			},
 			"subeffects":[

@@ -33,5 +33,5 @@
 	"s":6,
 	"w":7,
 	"subtypes":["Tarocco","Warrior"],
-	"subtypeText":"tarocco Warrior"
+	"subtypeText":"Tarocco Warrior"
 }

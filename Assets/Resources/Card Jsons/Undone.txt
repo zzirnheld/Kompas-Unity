@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Undone",
-	"effText":"Revenant: When I die, annihilate me. You can pip revive me for half cost.",
+	"effText":"Revenant: When I die, annihilate me. During your turn, you can pip revive me for half cost.",
 	"effects":[
 		{
 			"triggerCondition":"Discard",
@@ -23,7 +23,9 @@
 		{
 			"activationRestriction":{
 				"activationRestrictions":[
-					"Location"
+					"Location",
+					"Controller Activates",
+					"Not Negated"
 				],
 				"location":2
 			},

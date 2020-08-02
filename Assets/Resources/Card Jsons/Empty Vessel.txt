@@ -1,14 +1,13 @@
 {
 	"cardType":67,
 	"cardName":"Empty Vessel",
-	"effText":"Geminii: You can pip resummon me. When I’m summoned, give me +2NESW.",
+	"effText":"Geminii: You can pip resummon me. When I’m summoned, give me +1NESW.",
 	"effects":[
 		{
 			"blurb":"Pip Resummon",
 			"activationRestriction":{
 				"activationRestrictions":[
-					"Friendly Turn",
-					"In Play"
+					"Default"
 				]
 			},
 			"subeffects":[
@@ -37,10 +36,10 @@
 				}",
 				"{
 					\"subeffType\":\"Change NESW\",
-					\"nChange\":2,
-					\"eChange\":2,
-					\"sChange\":2,
-					\"wChange\":2
+					\"nChange\":1,
+					\"eChange\":1,
+					\"sChange\":1,
+					\"wChange\":1
 				}"
 			]	
 		}

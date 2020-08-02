@@ -12,6 +12,7 @@ namespace KompasServer.GameCore
 {
     public class ServerGame : Game
     {
+        public const int AvatarEBonus = 10;
 
         //model is basically: players request to the server to do something:
         //if server oks, it tells all players to do the thing
@@ -34,6 +35,26 @@ namespace KompasServer.GameCore
 
         public ServerEffect CurrEffect { get; set; }
         public override IStackable CurrStackEntry => EffectsController.CurrStackEntry;
+
+        public override int TurnCount 
+        { 
+            get => base.TurnCount;
+            protected set
+            {
+                Leyload += value - TurnCount;
+                base.TurnCount = value;
+            }
+        }
+
+        public override int Leyload 
+        { 
+            get => base.Leyload;
+            set
+            {
+                base.Leyload = value;
+                ServerPlayers[0].ServerNotifier.NotifyLeyload(Leyload);
+            }
+        }
 
         public void Init(UIController uiCtrl, CardRepository cardRepo)
         {
@@ -166,10 +187,9 @@ namespace KompasServer.GameCore
             ServerPlayers[TurnPlayerIndex].ServerNotifier.YoureFirst();
             ServerPlayers[1 - TurnPlayerIndex].ServerNotifier.YoureSecond();
 
-            foreach (var player in ServerPlayers)
-            {
-                DrawX(player.index, 5);
-            }
+            foreach (var p in ServerPlayers) p.Avatar.SetE(p.Avatar.E + AvatarEBonus);
+
+            foreach (var player in ServerPlayers) DrawX(player.index, 5);
             GiveTurnPlayerPips();
         }
         #endregion

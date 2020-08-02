@@ -8,7 +8,7 @@
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\"]
+					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\"]
 				}
 			}",
 			"subeffects":[

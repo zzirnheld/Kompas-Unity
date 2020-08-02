@@ -29,7 +29,7 @@
 		{
 			"activationRestriction":{
 				"activationRestrictions":[
-					"In Play"
+					"Default"
 				]
 			},
 			"subeffects":[

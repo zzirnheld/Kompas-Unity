@@ -123,6 +123,12 @@ namespace KompasClient.Networking
             Packet packet = new Packet(Packet.Command.ChooseEffectOption, option);
             Send(packet);
         }
+
+        public void DeclineResponse()
+        {
+            var p = new Packet(Packet.Command.Response);
+            Send(p);
+        }
         #endregion
 
         #region Debug Request Actions

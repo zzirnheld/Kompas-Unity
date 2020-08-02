@@ -44,8 +44,7 @@ namespace KompasServer.Networking
                     Player.TryAttack(attacker, defender);
                     break;
                 case Packet.Command.EndTurn:
-                    //TODO check to see if it was their turn bewfore swapping turns
-                    if(sGame.EffectsController.CurrStackEntry == null) sGame.SwitchTurn();
+                    Player.TryEndTurn();
                     break;
                 #region effect commands
                 case Packet.Command.Target:
@@ -105,6 +104,10 @@ namespace KompasServer.Networking
                     {
                         optionSubeff.ChooseOption(packet.EffectOption);
                     }
+                    break;
+                case Packet.Command.Response:
+                    Player.passedPriority = true;
+                    sGame.EffectsController.CheckForResponse(reset: false);
                     break;
                 #endregion
                 #region debug commands
