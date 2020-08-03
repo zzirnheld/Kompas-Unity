@@ -90,6 +90,7 @@ namespace KompasCore.Effects
         public const string CountXLoop = "Count X Loop"; //408,
         public const string ConditionalEndEffect = "Conditionally End Effect Resolution"; //409,
                                                                                           //TODO deprecate basic loop
+        public const string ConditionalJump = "Conditionally Jump";
         public const string BasicLoop = "Loop"; //410,
         public const string Jump = "Jump to Subeffect"; //411,
 

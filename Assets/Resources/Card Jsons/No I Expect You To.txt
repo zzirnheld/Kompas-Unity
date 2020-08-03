@@ -1,7 +1,7 @@
 {
 	"cardType":83,
-	"cardName":"Decide! One of Two Options!",
-	"effText":"Crazy Idea: When I'm hand-discarded, discard-play another Crazy Idea.\nChoose two characters. Delay 2 turns. Your opponent chooses one that I kill. Annihilate me.",
+	"cardName":"No I Expect You To",
+	"effText":"Crazy Idea: When I'm hand-discarded, discard-play another Crazy Idea.\nChoose a character in front of me. Delay 2. If they’re still in front of me, kill them. If not, annihilate me. ",
 	"effects":[
 		{
 			"triggerCondition":"Discard",
@@ -48,42 +48,36 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"character for Decide! to maybe kill (1/2)\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\"]
-					}
-				}",
-				"{
-					\"subeffType\":\"Board Target\",
-					\"cardRestriction\":
-					{
-						\"blurb\":\"character for Decide! to maybe kill (2/2)\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Distinct from Target\"]
+						\"blurb\":\"character for No I Expect You To maybe kill\",
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"In Front of Source\"]
 					}
 				}",
 				"{
 					\"subeffType\":\"Delay Effect Resolution\",
 					\"numTimesToDelay\":1,
-					\"indexToResume\":3,
+					\"indexToResume\":2,
 					\"triggerCondition\":\"Turn Start\"
 				}",
 				"{
-					\"subeffType\":\"Choose From List\",
-					\"playerIndex\":1,
-					\"maxCanChoose\":1,
+					\"subeffType\":\"Conditionally Jump\",
+					\"condition\":\"Target Fits Restriction\",
+					\"jumpIndex\":6,
 					\"cardRestriction\":
 					{
-						\"blurb\":\"card for Decide! to kill\",
-						\"cardRestrictions\":[\"Already Target\"]
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"In Front of Source\"]
 					}
-				}",
-				"{
-					\"subeffType\":\"Discard\"
 				}",
 				"{
 					\"subeffType\":\"Target This\"
 				}",
 				"{
 					\"subeffType\":\"Annihilate\"
+				}",
+				"{
+					\"subeffType\":\"End Effect Resolution\"
+				}",
+				"{
+					\"subeffType\":\"Discard\"
 				}"
 			]
 		}

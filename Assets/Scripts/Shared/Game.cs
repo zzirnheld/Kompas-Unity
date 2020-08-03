@@ -93,6 +93,18 @@ namespace KompasCore.GameCore
             }
         }
 
+        public bool ExistsEffectPlaySpace(PlayRestriction restriction, Effect eff)
+        {
+            for(int x = 0; x < 7; x++)
+            {
+                for(int y = 0; y < 7; y++)
+                {
+                    if (restriction.EvaluateEffectPlay(x, y, eff)) return true;
+                }
+            }
+
+            return false;
+        }
 
         protected void ResetCardsForTurn()
         {

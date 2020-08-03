@@ -86,6 +86,7 @@ namespace KompasServer.Effects
             //set context parameters
             CurrActivationContext = context;
             X = context.X ?? 0;
+            Targets.AddRange(context.Targets);
 
             //notify relevant to this effect starting
             ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);

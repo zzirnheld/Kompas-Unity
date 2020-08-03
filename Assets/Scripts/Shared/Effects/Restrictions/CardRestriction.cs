@@ -11,77 +11,84 @@ namespace KompasCore.Effects
         public Subeffect Subeffect { get; private set; }
 
         #region restrictions
-        public const string NameIs = "Name Is"; // 1,
-        public const string DistinctNameFromTargets = "Distinct Name from Other Targets"; // 11,
-        public const string SameName = "Same Name as Target"; // 12,
-        public const string DistinceNameFromSource = "Distinct Name from Source"; // 13,
+        //targets
+        public const string AlreadyTarget = "Already Target";
+        public const string NotAlreadyTarget = "Not Already Target";
 
-        public const string SubtypesInclude = "Subtypes Include"; // 2,
-        public const string SubtypesExclude = "Subtypes Exclude"; // 6,
+        //names
+        public const string NameIs = "Name Is";
+        public const string SameName = "Same Name as Target";
+        public const string DistinctNameFromTargets = "Distinct Name from Other Targets";
+        public const string DistinctNameFromSource = "Distinct Name from Source";
 
-        public const string IsCharacter = "Is Character"; //3,
-        public const string IsSpell = "Is Spell"; //4,
-        public const string IsAugment = "Is Augment"; // 5,
+        //card types
+        public const string IsCharacter = "Is Character";
+        public const string IsSpell = "Is Spell";
+        public const string IsAugment = "Is Augment";
         public const string NotAugment = "Not Augment";
 
-        public const string Friendly = "Friendly"; // 7,
-        public const string Enemy = "Enemy"; //9,
-        public const string SameOwner = "Same Owner as Source"; // 8,
+        //control
+        public const string Friendly = "Friendly";
+        public const string Enemy = "Enemy";
+        public const string SameOwner = "Same Owner as Source";
 
-        public const string Summoned = "Summoned"; // 10,
-        public const string Avatar = "Avatar"; // 50,
+        //summoned
+        public const string Summoned = "Summoned";
+        public const string Avatar = "Avatar";
 
-        public const string Distinct = "Distinct from Source"; // 99,
+        //subtypes
+        public const string SubtypesInclude = "Subtypes Include";
+        public const string SubtypesExclude = "Subtypes Exclude";
+
+        //distinct
+        public const string DistinctFromSource = "Distinct from Source";
         public const string DistinctFromTarget = "Distinct from Target";
-        public const string AlreadyTarget = "Already Target";
 
         //location
-        public const string Hand = "Hand"; // 100,
-        public const string Discard = "Discard"; // 101,
-        public const string Deck = "Deck"; // 102,
-        public const string Board = "Board"; // 103,
-        public const string LocationInList = "Multiple Possible Locations"; // 104,
+        public const string Hand = "Hand";
+        public const string Discard = "Discard";
+        public const string Deck = "Deck";
+        public const string Board = "Board";
+        public const string LocationInList = "Multiple Possible Locations";
 
         //stats
-        public const string NLTEX = "N<=X"; // 200, //N <= X
-        public const string ELTEX = "E<=X"; //201,
-        public const string SLTEX = "S<=X"; //202,
-        public const string WLTEX = "W<=X"; //203,
-        public const string CostLTEX = "Cost<=X"; // 204,
+            //<=X
+        public const string NLTEX = "N<=X";
+        public const string ELTEX = "E<=X";
+        public const string SLTEX = "S<=X";
+        public const string WLTEX = "W<=X";
+        public const string CostLTEX = "Cost<=X";
+            //==X
+        public const string NEX = "N==X";
+        public const string EEX = "E==X";
+        public const string SEX = "S==X";
+        public const string WEX = "W==X";
+        public const string CostEX = "Cost==X";
+            //<X
+        public const string NLTX = "N<X";
+        public const string ELTX = "E<X";
+        public const string SLTX = "S<X";
+        public const string WLTX = "W<X";
+            //<=C
+        public const string NLTEC = "N<=C";
+        public const string ELTEC = "E<=C";
+        public const string SLTEC = "S<=C";
+        public const string WLTEC = "W<=C";
 
-        public const string NEX = "N==X"; //210, //N == X
-        public const string EEX = "E==X"; //211,
-        public const string SEX = "S==X"; //212,
-        public const string WEX = "W==X"; //213,
-        public const string CostEX = "Cost==X"; //214,
-
-        public const string NLTX = "N<X"; //220,
-        public const string ELTX = "E<X"; //221,
-        public const string SLTX = "S<X"; //222,
-        public const string WLTX = "W<X"; //223,
-
-        public const string NLTEC = "N<=C"; //300, //N <= constant
-        public const string ELTEC = "E<=C"; //302,
-        public const string SLTEC = "S<=C"; //303,
-        public const string WLTEC = "W<=C"; //304,
-
-        //index in list
-        public const string IndexInListGTEC = "Index>=C"; // 500,
-        public const string IndexInListLTEC = "Index<=C"; //501,
-        public const string IndexInListLTEX = "Index<=X"; //551,
+        //positioning
+        public const string Adjacent = "Adjacent";
+        public const string WithinCSpacesOfSource = "Within C Spaces";
+        public const string InAOE = "In AOE";
+        public const string AdjacentToSubtype = "Adjacent to Subtype";
+        public const string ExactlyXSpaces = "Exactly X Spaces to Source";
+        public const string InFrontOfSource = "In Front of Source";
+        public const string IndexInListGTEC = "Index>=C";
+        public const string IndexInListLTEC = "Index<=C";
+        public const string IndexInListLTEX = "Index<=X";
 
         //misc
-        public const string NotAlreadyTarget = "Not Already Target"; //600,
-        public const string CanBePlayed = "Can Be Played"; // 601,
-        public const string EffectControllerCanPayCost = "Effect Controller can Afford Cost"; // 602
-
-        //board
-        public const string Adjacent = "Adjacent"; // 0,
-        public const string WithinCSpacesOfSource = "Within C Spaces"; // 1,
-        public const string InAOE = "In AOE"; // 2,
-        public const string DistanceToTargetWithinCSpaces = "Target Within C Spaces of Source"; // 10,
-        public const string AdjacentToSubtype = "Adjacent to Subtype"; // 20,
-        public const string ExactlyXSpaces = "Exactly X Spaces to Source"; // 100,
+        public const string CanBePlayed = "Can Be Played";
+        public const string EffectControllerCanPayCost = "Effect Controller can Afford Cost";
         #endregion restrictions
 
         //because JsonUtility will fill in all values with defaults if not present
@@ -106,211 +113,120 @@ namespace KompasCore.Effects
             this.Subeffect = subeff;
         }
 
+        /// <summary>
+        /// Determines whether the given restriction is true for a given card, with a given value of x.
+        /// </summary>
+        /// <param name="restriction">The restriction to check, as defined in the constants above.</param>
+        /// <param name="potentialTarget">The card to consider the restriction for.</param>
+        /// <param name="x">The value of x for which to consider the restriction</param>
+        /// <returns><see langword="true"/> if the card fits the restriction for the given value of x, <see langword="false"/> otherwise.</returns>
+        private bool RestrictionValid(string restriction, GameCard potentialTarget, int x)
+        {
+            Debug.Log($"Considering restriction {restriction} for card {potentialTarget} when X equals {x}");
+            switch (restriction)
+            {
+                //targets
+                case AlreadyTarget:    return Subeffect.Effect.Targets.Contains(potentialTarget);
+                case NotAlreadyTarget: return !Subeffect.Effect.Targets.Contains(potentialTarget);
+
+                //names
+                case NameIs:                  return potentialTarget.CardName == nameIs;
+                case SameName:                return Subeffect.Target.CardName == potentialTarget.CardName;
+                case DistinctNameFromTargets: return Subeffect.Effect.Targets.All(card => card.CardName != potentialTarget.CardName);
+                case DistinctNameFromSource:  return Subeffect.Source.CardName != potentialTarget.CardName;
+
+                //card types
+                case IsCharacter: return potentialTarget.CardType == 'C';
+                case IsSpell:     return potentialTarget.CardType == 'S';
+                case IsAugment:   return potentialTarget.CardType == 'A';
+                case NotAugment:  return potentialTarget.CardType != 'A';
+
+                //control
+                case Friendly:  return potentialTarget.Controller == Subeffect.Controller;
+                case Enemy:     return potentialTarget.Controller != Subeffect.Controller;
+                case SameOwner: return potentialTarget.Owner == Subeffect.Controller;
+
+                //summoned
+                case Summoned: return potentialTarget.Summoned;
+                case Avatar:   return potentialTarget.IsAvatar;
+
+                //subtypes
+                case SubtypesInclude: return subtypesInclude.All(s => potentialTarget.SubtypeText.Contains(s));
+                case SubtypesExclude: return subtypesExclude.All(s => !potentialTarget.SubtypeText.Contains(s));
+
+                //distinct
+                case DistinctFromSource: return potentialTarget != Subeffect.Source;
+                case DistinctFromTarget: return potentialTarget != Subeffect.Target;
+
+                //location
+                case Hand:           return potentialTarget.Location == CardLocation.Hand;
+                case Deck:           return potentialTarget.Location == CardLocation.Deck;
+                case Discard:        return potentialTarget.Location == CardLocation.Discard;
+                case Board:          return potentialTarget.Location == CardLocation.Field;
+                case LocationInList: return locations.Contains(potentialTarget.Location);
+
+                //stats
+                    //<=
+                case NLTEX:    return potentialTarget.N <= x;
+                case ELTEX:    return potentialTarget.E <= x;
+                case SLTEX:    return potentialTarget.S <= x;
+                case WLTEX:    return potentialTarget.W <= x;
+                case CostLTEX: return potentialTarget.Cost <= x;
+                    //==
+                case NEX:      return potentialTarget.N == x;
+                case EEX:      return potentialTarget.E == x;
+                case SEX:      return potentialTarget.S == x;
+                case WEX:      return potentialTarget.W == x;
+                case CostEX:   return potentialTarget.Cost == x;
+                    //<
+                case NLTX:     return potentialTarget.N < x;
+                case ELTX:     return potentialTarget.E < x;
+                case SLTX:     return potentialTarget.S < x;
+                case WLTX:     return potentialTarget.W < x;
+                    //<=C
+                case NLTEC:    return potentialTarget.N <= constant;
+                case ELTEC:    return potentialTarget.E <= constant;
+                case SLTEC:    return potentialTarget.S <= constant;
+                case WLTEC:    return potentialTarget.W <= constant;
+
+                //positioning
+                case Adjacent:          return potentialTarget.IsAdjacentTo(Subeffect.Source);
+                case AdjacentToSubtype: return potentialTarget.AdjacentCards.Any(card => adjacencySubtypes.All(s => card.Subtypes.Contains(s)));
+                case InAOE:             return Subeffect.Source.CardInAOE(potentialTarget);
+                case WithinCSpacesOfSource: return potentialTarget.WithinSpaces(cSpaces, Subeffect.Source);
+                case ExactlyXSpaces:    return potentialTarget.DistanceTo(Subeffect.Source) == Subeffect.Effect.X;
+                case InFrontOfSource:   return Subeffect.Source.CardInFront(potentialTarget);
+                case IndexInListGTEC:   return potentialTarget.IndexInList >= constant;
+                case IndexInListLTEC:   return potentialTarget.IndexInList <= constant;
+                case IndexInListLTEX:   return potentialTarget.IndexInList <= x;
+
+                //misc
+                case CanBePlayed: return Subeffect.Game.ExistsEffectPlaySpace(Subeffect.Source.PlayRestriction, Subeffect.Effect);
+                case EffectControllerCanPayCost: return Subeffect.Effect.Controller.Pips >= potentialTarget.Cost * costMultiplier / costDivisor;
+                default:
+                    Debug.LogError($"You forgot to implement a check for {restriction}");
+                    return false;
+            }
+        }
+
+        /// <summary>
+        /// Checks whether the card in question fits the relevant retrictions, for the given value of X
+        /// </summary>
+        /// <param name="potentialTarget">The card to see if it fits all restrictions</param>
+        /// <param name="x">The value of X for which to consider this effect's restriction</param>
+        /// <returns><see langword="true"/> if the card fits all restrictions, <see langword="false"/> if it doesn't fit at least one</returns>
         public virtual bool Evaluate(GameCard potentialTarget, int x)
         {
             if (potentialTarget == null) return false;
 
-            foreach (string c in cardRestrictions)
-            {
-                Debug.Log("Considering restriction " + c + " when X equals " + x);
-                switch (c)
-                {
-                    case AlreadyTarget:
-                        if (!Subeffect.Effect.Targets.Contains(potentialTarget)) return false;
-                        break;
-                    case NameIs:
-                        if (potentialTarget.CardName != nameIs) return false;
-                        break;
-                    case SubtypesInclude:
-                        foreach (string s in subtypesInclude)
-                        {
-                            if (potentialTarget.SubtypeText.IndexOf(s) == -1) return false;
-                        }
-                        break;
-                    case IsCharacter:
-                        if (potentialTarget.CardType != 'C') return false;
-                        break;
-                    case IsSpell:
-                        if (potentialTarget.CardType != 'S') return false;
-                        break;
-                    case IsAugment:
-                        if (potentialTarget.CardType != 'A') return false;
-                        break;
-                    case NotAugment:
-                        if (potentialTarget.CardType == 'A') return false;
-                        break;
-                    case SubtypesExclude:
-                        foreach (string s in subtypesExclude)
-                        {
-                            if (potentialTarget.SubtypeText.IndexOf(s) != -1) return false;
-                        }
-                        break;
-                    case Friendly:
-                        if (potentialTarget.Controller != Subeffect.Controller) return false;
-                        break;
-                    case Enemy:
-                        if (potentialTarget.Controller == Subeffect.Controller) return false;
-                        break;
-                    case SameOwner:
-                        if (potentialTarget.Owner != Subeffect.Controller) return false;
-                        break;
-                    case Summoned:
-                        if (!potentialTarget.Summoned) return false;
-                        break;
-                    case DistinctNameFromTargets:
-                        //checks if any target shares a name with this one
-                        if (Subeffect.Effect.Targets.Where(card => card.CardName == potentialTarget.CardName).Any()) return false;
-                        break;
-                    case SameName: //note: same name as this subeffect's target
-                        if (Subeffect.Target.CardName != potentialTarget.CardName) return false;
-                        break;
-                    case DistinceNameFromSource:
-                        if (Subeffect.Source.CardName == potentialTarget.CardName) return false;
-                        break;
-                    case Avatar:
-                        if (!(potentialTarget.IsAvatar)) return false;
-                        break;
-                    case Distinct:
-                        if (potentialTarget == Subeffect.Source) return false;
-                        break;
-                    case DistinctFromTarget:
-                        if (potentialTarget == Subeffect.Target) return false;
-                        break;
-                    case Hand:
-                        if (potentialTarget.Location != CardLocation.Hand) return false;
-                        break;
-                    case Deck:
-                        if (potentialTarget.Location != CardLocation.Deck) return false;
-                        break;
-                    case Discard:
-                        if (potentialTarget.Location != CardLocation.Discard) return false;
-                        break;
-                    case Board:
-                        if (potentialTarget.Location != CardLocation.Field) return false;
-                        break;
-                    case LocationInList:
-                        if (!locations.Contains(potentialTarget.Location)) return false;
-                        break;
-                    case NLTEX:
-                        if (potentialTarget.N > x) return false;
-                        break;
-                    case ELTEX:
-                        if (potentialTarget.E > x) return false;
-                        break;
-                    case SLTEX:
-                        if (potentialTarget.S > x) return false;
-                        break;
-                    case WLTEX:
-                        if (potentialTarget.W > x) return false;
-                        break;
-                    case CostLTEX:
-                        if (potentialTarget.Cost > x) return false;
-                        break;
-                    case NEX:
-                        if (potentialTarget.N != x) return false;
-                        break;
-                    case EEX:
-                        if (potentialTarget.E != x) return false;
-                        break;
-                    case SEX:
-                        if (potentialTarget.S != x) return false;
-                        break;
-                    case WEX:
-                        if (potentialTarget.W != x) return false;
-                        break;
-                    case CostEX:
-                        if (potentialTarget.Cost != x) return false;
-                        break;
-                    case (NLTX):
-                        if (potentialTarget.N >= x) return false;
-                        break;
-                    case (ELTX):
-                        if (potentialTarget.E >= x) return false;
-                        break;
-                    case (SLTX):
-                        if (potentialTarget.S >= x) return false;
-                        break;
-                    case (WLTX):
-                        if (potentialTarget.W >= x) return false;
-                        break;
-                    case NLTEC:
-                        if (potentialTarget.N > constant) return false;
-                        break;
-                    case ELTEC:
-                        if (potentialTarget.E > constant) return false;
-                        break;
-                    case SLTEC:
-                        if (potentialTarget.S > constant) return false;
-                        break;
-                    case WLTEC:
-                        if (potentialTarget.W > constant) return false;
-                        break;
-                    case IndexInListGTEC:
-                        if (potentialTarget.IndexInList < constant) return false;
-                        break;
-                    case IndexInListLTEC:
-                        if (potentialTarget.IndexInList > constant) return false;
-                        break;
-                    case IndexInListLTEX:
-                        if (potentialTarget.IndexInList > Subeffect.Effect.X) return false;
-                        break;
-                    case NotAlreadyTarget:
-                        if (Subeffect.Effect.Targets.Contains(potentialTarget)) return false;
-                        break;
-                    case CanBePlayed:
-                        bool found = false;
-                        for (int i = 0; i < 7 && !found; i++)
-                        {
-                            for (int j = 0; j < 7 && !found; j++)
-                            {
-                                if (potentialTarget.PlayRestriction.EvaluateEffectPlay(i, j, Subeffect.Effect))
-                                {
-                                    found = true;
-                                }
-                            }
-                        }
-                        if (found) break;
-                        else return false;
-                    case EffectControllerCanPayCost:
-                        if (Subeffect.Effect.Controller.Pips < potentialTarget.Cost * costMultiplier / costDivisor) return false;
-                        break;
-                    case Adjacent:
-                        if (!potentialTarget.IsAdjacentTo(Subeffect.Source)) return false;
-                        break;
-                    case WithinCSpacesOfSource:
-                        if (!potentialTarget.WithinSlots(cSpaces, Subeffect.Source)) return false;
-                        break;
-                    case InAOE:
-                        if (!Subeffect.Source.CardInAOE(potentialTarget)) return false;
-                        break;
-                    case DistanceToTargetWithinCSpaces:
-                        if (potentialTarget.DistanceTo(Subeffect.Source) > cSpaces) return false;
-                        break;
-                    case AdjacentToSubtype:
-                        if (!potentialTarget.AdjacentCards.Any(card => adjacencySubtypes.All(s => card.Subtypes.Contains(s)))) return false;
-                        break;
-                    case ExactlyXSpaces:
-                        if (potentialTarget.DistanceTo(Subeffect.Source) != Subeffect.Effect.X) return false;
-                        break;
-                    default:
-                        Debug.LogError($"You forgot to implement a check for {c}");
-                        return false;
-                }
-            }
-
-            Debug.Log(potentialTarget.CardName + " fits the restriction");
-            return true;
+            return cardRestrictions.All(r => RestrictionValid(r, potentialTarget, x));
         }
 
         /// <summary>
-        /// 
+        /// Checks whether the card in question fits the relevant retrictions, for the current effect value of X
         /// </summary>
-        /// <param name="potentialTarget"></param>
-        /// <param name="actuallyTargetThis">Whether effect resolution should continue if this is a valid target</param>
-        /// <returns></returns>
-        public virtual bool Evaluate(GameCard potentialTarget)
-        {
-            return Evaluate(potentialTarget, Subeffect.Effect.X);
-        }
+        /// <param name="potentialTarget">The card to see if it fits all restrictions</param>
+        /// <returns><see langword="true"/> if the card fits all restrictions, <see langword="false"/> if it doesn't fit at least one</returns>
+        public virtual bool Evaluate(GameCard potentialTarget) => Evaluate(potentialTarget, Subeffect.Effect.X);
     }
 }
