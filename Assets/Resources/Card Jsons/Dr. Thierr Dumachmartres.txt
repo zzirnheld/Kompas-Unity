@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Dr. Thierr Dumachmartres",
-	"effText":"Unique: Can’t be played if you control a copy. Once each turn, you can discard a Crazy Idea to draw 1.",
+	"effText":"Unique: Can’t be played if you control a copy. Once each turn, you can discard 1 to draw 1.",
 	"effects":[
 		{
 			"activationRestriction":{
@@ -15,9 +15,8 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"Crazy Idea for Dumachmartres to discard\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Hand\"],
-						\"subtypesInclude\":[\"Crazy Idea\"]
+						\"blurb\":\"card for Dumachmartres to discard\",
+						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
 					}
 				}",
 				"{

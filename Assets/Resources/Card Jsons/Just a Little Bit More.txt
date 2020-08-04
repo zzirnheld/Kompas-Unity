@@ -1,0 +1,119 @@
+{
+	"cardType":83,
+	"cardName":"Just a Little Bit More",
+	"effText":"Crazy Idea: When I'm hand-discarded, discard-play another Crazy Idea.\nDiscard 1. Draw 1. Move a card 1 space, but you can’t move a Crazy Idea next to 2 Crazy Ideas. Annihilate me.",
+	"effects":[
+		{
+			"triggerCondition":"Discard",
+			"trigger":"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\",\"Triggerer Fits Restriction\"],
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Hand\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Discard Target\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Distinct from Source\"],
+						\"subtypesInclude\":[\"Crazy Idea\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where Decide! to play targeted Crazy Idea\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Play\"
+				}"
+			]
+		},
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Hand Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"card for Wait, Hold Up to discard\",
+						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Draw\"
+				}",
+				"{
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"enemy for Wait, Hold Up to move\",
+						\"cardRestrictions\":[\"Board\",\"Enemy\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Conditionally Jump\",
+					\"condition\":\"Target Fits Restriction\",
+					\"jumpIndex\":7,
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Crazy Idea\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where for Just a Little Bit More to move its target\",
+						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\"],
+						\"constant\":1
+					}
+				}",
+				"{
+					\"subeffType\":\"Jump to Subeffect\",
+					\"indexToJumpTo\":8
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where Just... to move (not next to two Crazy Ideas)\",
+						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\",\"Limit Number of Adjacent Cards Fitting Restriction\"],
+						\"constant\":1,
+						\"adjacencyLimit\":1
+					}
+				}",
+				"{
+					\"subeffType\":\"Move\"
+				}",
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Annihilate\"
+				}"
+			]
+		}
+	],
+	"c":5,
+	"spellType":"Simple",
+	"subtypes":["Simple","Crazy Idea"],
+	"subtypeText":"Simple Crazy Idea",
+	"arg":2
+}

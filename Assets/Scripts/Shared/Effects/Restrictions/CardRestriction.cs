@@ -191,7 +191,7 @@ namespace KompasCore.Effects
 
                 //positioning
                 case Adjacent:          return potentialTarget.IsAdjacentTo(Subeffect.Source);
-                case AdjacentToSubtype: return potentialTarget.AdjacentCards.Any(card => adjacencySubtypes.All(s => card.Subtypes.Contains(s)));
+                case AdjacentToSubtype: return potentialTarget.AdjacentCards.Any(card => adjacencySubtypes.All(s => card.SubtypeText.Contains(s)));
                 case InAOE:             return Subeffect.Source.CardInAOE(potentialTarget);
                 case WithinCSpacesOfSource: return potentialTarget.WithinSpaces(cSpaces, Subeffect.Source);
                 case ExactlyXSpaces:    return potentialTarget.DistanceTo(Subeffect.Source) == Subeffect.Effect.X;

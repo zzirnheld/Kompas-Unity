@@ -1,7 +1,7 @@
 {
 	"cardType":83,
-	"cardName":"Stupid Idea Generator",
-	"effText":"Crazy Idea: When I'm hand-discarded, discard-play another Crazy Idea.\nWhen turns start, discard 1, draw 1, then pay a pip or annihilate me.",
+	"cardName":"Wait Hold Up",
+	"effText":"Crazy Idea: When I'm hand-discarded, discard-play another Crazy Idea.\nDiscard 1. Draw 1. Move an enemy character up to 3 spaces. Annihilate me.",
 	"effects":[
 		{
 			"triggerCondition":"Discard",
@@ -36,12 +36,11 @@
 			]
 		},
 		{
-		{
-			"triggerCondition":"Turn Start",
+			"triggerCondition":"Play",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\"]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
 			"subeffects":[
@@ -49,7 +48,7 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"card for Stupid Idea Generator to discard\",
+						\"blurb\":\"card for Wait, Hold Up to discard\",
 						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
 					}
 				}",
@@ -60,25 +59,24 @@
 					\"subeffType\":\"Draw\"
 				}",
 				"{
-					\"subeffType\":\"Choose Effect Option\",
-					\"ChoiceBlurb\":\"Pay 1 pip or annihilate this?\",
-					\"OptionBlurbs\":[\"Pay 1 pip\",\"Annhihilate\"],
-					\"OptionJumpIndices\":[4,8]
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"enemy for Wait, Hold Up to move\",
+						\"cardRestrictions\":[\"Board\",\"Enemy\"]
+					}
 				}",
 				"{
-					\"subeffType\":\"Jump on Effect Impossible\",
-					\"jumpTo\":4
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where Wait, Hold Up to move its target\",
+						\"spaceRestrictions\":[\"Empty\",\"Distance to Target <= Constant\"],
+						\"constant\":3
+					}
 				}",
 				"{
-					\"subeffType\":\"Pay Pips\",
-					\"xMultiplier\":0,
-					\"modifier\":1
-				}",
-				"{
-					\"subeffType\":\"End Effect Resolution\"
-				}",
-				"{
-					\"subeffType\":\"Clear Jump on Effect Impossible\"
+					\"subeffType\":\"Move\"
 				}",
 				"{
 					\"subeffType\":\"Target This\"
@@ -86,11 +84,12 @@
 				"{
 					\"subeffType\":\"Annihilate\"
 				}"
-			]	
-		},
+			]
+		}
 	],
 	"c":5,
-	"spellType":"Enchant",
-	"subtypes":["Enchant","Crazy Idea"],
-	"subtypeText":"Enchant Crazy Idea"
+	"spellType":"Simple",
+	"subtypes":["Simple","Crazy Idea"],
+	"subtypeText":"Simple Crazy Idea",
+	"arg":2
 }
