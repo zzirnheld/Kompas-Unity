@@ -26,6 +26,7 @@ namespace KompasCore.Effects
 
         //misc
         public const string CanPlayTarget = "Can Play Target to This Space";
+        public const string CanMoveTarget = "Can Move Target to This Space";
         public const string Empty = "Empty";
 
         public string[] spaceRestrictions;
@@ -66,7 +67,8 @@ namespace KompasCore.Effects
                 case FurtherFromSourceThanTarget: return Subeffect.Source.DistanceTo(x, y) > Subeffect.Source.DistanceTo(Subeffect.Target);
 
                 //misc
-                case CanPlayTarget: return Subeffect.Effect.Game.boardCtrl.CanPlayTo(Subeffect.Controller.index, x, y);
+                case CanPlayTarget: return Subeffect.Target.PlayRestriction.EvaluateEffectPlay(x, y, Subeffect.Effect);
+                case CanMoveTarget: return Subeffect.Target.MovementRestriction.EvaluateEffectMove(x, y);
                 case Empty: return Subeffect.Effect.Game.boardCtrl.GetCardAt(x, y) == null;
                 default: throw new ArgumentException($"Invalid space restriction {restriction}", "restriction");
             }

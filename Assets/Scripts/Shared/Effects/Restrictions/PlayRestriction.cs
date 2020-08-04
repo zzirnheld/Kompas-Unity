@@ -36,8 +36,7 @@ namespace KompasCore.Effects
                 case PlayedByCardOwner: return player == Card.Owner;
                 case FromHand: return Card.Location == CardLocation.Hand;
                 case StandardPlayRestriction: return Card.Game.ValidStandardPlaySpace(x, y, Card.Controller);
-                case StandardSpellRestriction: return Card.CardType != 'S' ||
-                        Card.Game.boardCtrl.CardsAdjacentTo(x, y).All(c => c.CardType != 'S');
+                case StandardSpellRestriction: return Card.CardType != 'S' || Card.Game.ValidSpellSpace(x, y);
                 case OnFriendlyCard: return Card.Game.boardCtrl.GetCardAt(x, y)?.Controller == Card.Controller;
                 case HasCostInPips: return Card.Controller.Pips >= Card.Cost;
                 case FriendlyTurnIfNotFast: return Card.Fast || Card.Game.TurnPlayer == Card.Controller;

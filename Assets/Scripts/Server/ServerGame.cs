@@ -284,7 +284,7 @@ namespace KompasServer.GameCore
 
             if (toMove.Position == (toX, toY) || (toMove.IsAvatar && !toMove.Summoned)
                 || EffectsController.CurrStackEntry != null) return false;
-            return toMove.MovementRestriction.Evaluate(toX, toY);
+            return toMove.MovementRestriction.EvaluateNormalMove(toX, toY);
         }
 
         public bool ValidAttack(GameCard attacker, GameCard defender, ServerPlayer instigator)

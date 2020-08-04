@@ -105,6 +105,5 @@
 	"c":5,
 	"spellType":"Simple",
 	"subtypes":["Simple","Crazy Idea"],
-	"subtypeText":"Simple Crazy Idea",
-	"arg":2
+	"subtypeText":"Simple Crazy Idea"
 }

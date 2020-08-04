@@ -212,34 +212,6 @@ namespace KompasCore.GameCore
             else return Swap(card, toX, toY, playerInitiated, stackSrc);
         }
 
-        public void PutCardsBack()
-        {
-            foreach (GameCard card in cards)
-            {
-                if (card != null) card.PutBack();
-            }
-        }
-
-        public bool ExistsCardOnBoard(CardRestriction restriction)
-        {
-            foreach (GameCard c in cards)
-            {
-                if (c != null && restriction.Evaluate(c)) return true;
-            }
-
-            return false;
-        }
-
-        public bool CanPlayTo(int playerIndex, int x, int y)
-        {
-            foreach (GameCard c in cards)
-            {
-                if (c != null && c.IsAdjacentTo(x, y) && c.ControllerIndex == playerIndex) return true;
-            }
-
-            return false;
-        }
-
         public void DiscardSimples()
         {
             foreach (GameCard c in cards)
