@@ -1,6 +1,7 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Networking;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace KompasClient.Networking
@@ -42,15 +43,12 @@ namespace KompasClient.Networking
 
         public void RequestEndTurn()
         {
-            Packet packet = new Packet(Packet.Command.EndTurn);
-            Send(packet);
+            Send(new EndTurnActionPacket());
         }
 
         public void RequestTarget(GameCard card)
         {
-            Debug.Log("Requesting target " + card.CardName);
-            Packet packet = new Packet(Packet.Command.Target, card);
-            Send(packet);
+            Send(new CardTargetPacket(card.ID));
         }
 
         public void RequestResolveEffect(GameCard card, int index)
@@ -64,34 +62,24 @@ namespace KompasClient.Networking
         public void RequestSetX(int x)
         {
             Debug.Log("Requesting to set X to " + x);
-            Packet packet = new Packet(Packet.Command.PlayerSetX);
-            packet.normalArgs[2] = x;
-            Send(packet);
+            Send(new SelectXPacket(x));
         }
 
         public void DeclineAnotherTarget()
         {
             Debug.Log("Declining to select another target");
-            Packet packet = new Packet(Packet.Command.DeclineAnotherTarget);
-            Send(packet);
+            Send(new DeclineAnotherTargetPacket());
         }
 
         public void RequestSpaceTarget(int x, int y)
         {
             Debug.Log("Requesting a space target of " + x + ", " + y);
-            Packet packet = new Packet(Packet.Command.SpaceTarget, x, y);
-            Send(packet);
+            Send(new SpaceTargetPacket(x, y));
         }
 
         public void RequestListChoices(List<GameCard> choices)
         {
-            int[] cardIDs = new int[choices.Count];
-            for (int i = 0; i < choices.Count; i++)
-            {
-                cardIDs[i] = choices[i].ID;
-            }
-            Packet packet = new Packet(Packet.Command.GetChoicesFromList, cardIDs);
-            Send(packet);
+            Send(new ListChoicesPacket(choices.Select(c => c.ID).ToArray()));
         }
 
         public void RequestCancelSearch()
@@ -103,8 +91,7 @@ namespace KompasClient.Networking
         public void RequestTriggerReponse(bool answer)
         {
             Debug.Log($"Requesting trigger response for {answer}");
-            Packet packet = new Packet(Packet.Command.OptionalTrigger, answer ? 1 : 0);
-            Send(packet);
+            Send(new OptionalTriggerAnswerPacket(answer));
         }
 
         public void RequestChooseEffectOption(int option)

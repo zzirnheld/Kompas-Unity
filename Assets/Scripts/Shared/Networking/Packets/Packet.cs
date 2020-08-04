@@ -23,9 +23,13 @@ namespace KompasCore.Networking
         public const string EndTurnAction = "Player End Turn Action";
 
         //effect commands
-        public const string CardTarget = "Card Target";
-        public const string SpaceTarget = "Space Target";
-        public const string XSelection = "Player Selected X Value";
+        public const string CardTargetChosen = "Card Target Chosen";
+        public const string SpaceTargetChosen = "Space Target Chosen";
+        public const string XSelectionChosen = "X Value Chosen";
+        public const string DeclineAnotherTarget = "Decline Another Target";
+        public const string ListChoicesChosen = "List Choices Chosen";
+        public const string OptionalTriggerResponse = "Optional Trigger Answered";
+        public const string ChooseEffectOption = "Choose Effect Option";
 
         /*
         public enum Command

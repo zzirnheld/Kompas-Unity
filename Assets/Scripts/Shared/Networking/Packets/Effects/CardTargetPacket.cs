@@ -9,7 +9,7 @@ namespace KompasCore.Networking
     {
         public int cardId;
 
-        public CardTargetPacket() : base(CardTarget) { }
+        public CardTargetPacket() : base(CardTargetChosen) { }
 
         public CardTargetPacket(int cardId) : this()
         {

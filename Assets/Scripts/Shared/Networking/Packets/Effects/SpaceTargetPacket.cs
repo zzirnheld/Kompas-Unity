@@ -10,7 +10,7 @@ namespace KompasCore.Networking
         public int x;
         public int y;
 
-        public SpaceTargetPacket() : base(SpaceTarget) { }
+        public SpaceTargetPacket() : base(SpaceTargetChosen) { }
 
         public SpaceTargetPacket(int x, int y) : this()
         {

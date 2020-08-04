@@ -62,27 +62,6 @@ namespace KompasClient.Networking
             /*
             switch (packet.command)
             {
-                #region game start
-                case Packet.Command.GetDeck:
-                    //tell ui to get deck
-                    ClientGame.clientUICtrl.ShowGetDecklistUI();
-                    break;
-                case Packet.Command.DeckAccepted:
-                    ClientGame.clientUICtrl.ShowDeckAcceptedUI();
-                    break;
-                case Packet.Command.YoureFirst:
-                    ClientGame.SetFirstTurnPlayer(0);
-                    break;
-                case Packet.Command.YoureSecond:
-                    ClientGame.SetFirstTurnPlayer(1);
-                    break;
-                case Packet.Command.SetFriendlyAvatar:
-                    ClientGame.SetAvatar(0, packet.CardName, packet.CardIDToBe);
-                    break;
-                case Packet.Command.SetEnemyAvatar:
-                    ClientGame.SetAvatar(1, packet.CardName, packet.CardIDToBe);
-                    break;
-                #endregion game start
                 case Packet.Command.Leyload:
                     ClientGame.Leyload = packet.normalArgs[0];
                     break;

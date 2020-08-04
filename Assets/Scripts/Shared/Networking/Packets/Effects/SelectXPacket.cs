@@ -9,7 +9,7 @@ namespace KompasCore.Networking
     {
         public int x;
 
-        public SelectXPacket() : base(XSelection) { }
+        public SelectXPacket() : base(XSelectionChosen) { }
 
         public SelectXPacket(int x) : this()
         {

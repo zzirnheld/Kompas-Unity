@@ -30,9 +30,13 @@ namespace KompasServer.Networking
                 case Packet.EndTurnAction: return JsonUtility.FromJson<EndTurnActionServerPacket>(json);
 
                 //effects
-                case Packet.CardTarget: return JsonUtility.FromJson<CardTargetServerPacket>(json);
-                case Packet.SpaceTarget: return JsonUtility.FromJson<SpaceTargetServerPacket>(json);
-                case Packet.XSelection: return JsonUtility.FromJson<SelectXServerPacket>(json);
+                case Packet.CardTargetChosen: return JsonUtility.FromJson<CardTargetServerPacket>(json);
+                case Packet.SpaceTargetChosen: return JsonUtility.FromJson<SpaceTargetServerPacket>(json);
+                case Packet.XSelectionChosen: return JsonUtility.FromJson<SelectXServerPacket>(json);
+                case Packet.DeclineAnotherTarget: return JsonUtility.FromJson<DeclineAnotherTargetServerPacket>(json);
+                case Packet.ListChoicesChosen: return JsonUtility.FromJson<ListChoicesServerPacket>(json);
+                case Packet.OptionalTriggerResponse: return JsonUtility.FromJson<OptionalTriggerAnswerServerPacket>(json);
+                case Packet.ChooseEffectOption: return JsonUtility.FromJson<EffectOptionResponseServerPacket>(json);
 
                 //misc
                 default: throw new System.ArgumentException($"Unrecognized command {command} in packet sent to client");
@@ -54,48 +58,6 @@ namespace KompasServer.Networking
         //TODO make code that checks if ready to resolve the stack (both players have no responses/have declined priority in a row)
         public override void ProcessPacket()
                 #region effect commands
-                case Packet.Command.PlayerSetX:
-                    if (sGame.CurrEffect?.CurrSubeffect is PlayerChooseXSubeffect xEff)
-                    {
-                        xEff.SetXIfLegal(packet.EffectX);
-                    }
-                    else Debug.Log("curr effect null? " + (sGame.CurrEffect == null) + " or not player set x? " + (sGame.CurrEffect?.CurrSubeffect is SpaceTargetSubeffect));
-                    break;
-                case Packet.Command.DeclineAnotherTarget:
-                    sGame.CurrEffect?.DeclineAnotherTarget();
-                    break;
-                case Packet.Command.GetChoicesFromList:
-                    List<GameCard> choices = new List<GameCard>();
-                    foreach (int id in packet.specialArgs)
-                    {
-                        GameCard c = sGame.GetCardWithID(id);
-                        if (c == null) Debug.LogError($"Player tried to search card to list with invalid id {id}");
-                        else choices.Add(c);
-                    }
-
-                    if (sGame.CurrEffect?.CurrSubeffect is ChooseFromListSubeffect listEff)
-                    {
-                        listEff.AddListIfLegal(choices);
-                    }
-
-                    if(sGame.CurrEffect?.CurrSubeffect is DeckTargetSubeffect deckTgtSubeff)
-                    {
-                        deckTgtSubeff.AddTargetIfLegal(choices.FirstOrDefault());
-                    }
-                    break;
-                case Packet.Command.OptionalTrigger:
-                    sGame.EffectsController.OptionalTriggerAnswered(packet.Answer);
-                    break;
-                case Packet.Command.ChooseEffectOption:
-                    if(sGame.CurrEffect?.CurrSubeffect is ChooseOptionSubeffect optionSubeff)
-                    {
-                        optionSubeff.ChooseOption(packet.EffectOption);
-                    }
-                    break;
-                case Packet.Command.Response:
-                    Player.passedPriority = true;
-                    sGame.EffectsController.CheckForResponse(reset: false);
-                    break;
                 #endregion
                 #region debug commands
                 case Packet.Command.Topdeck:
