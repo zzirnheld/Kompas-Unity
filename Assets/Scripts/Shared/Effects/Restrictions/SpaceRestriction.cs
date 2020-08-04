@@ -15,6 +15,7 @@ namespace KompasCore.Effects
         public const string AdjacentToTarget = "Adjacent to Target";
         public const string ConnectedToSourceBy = "Connected to Source by Cards Fitting Restriction";
         public const string InAOE = "In AOE";
+        public const string NotInAOE = "Not In AOE";
         public const string LimitAdjacentCardsFittingRestriction = "Limit Number of Adjacent Cards Fitting Restriction";
 
         //distance
@@ -23,6 +24,7 @@ namespace KompasCore.Effects
         public const string DistanceToTargetC = "Distance to Target == Constant";
         public const string DistanceToTargetLTEC = "Distance to Target <= Constant";
         public const string FurtherFromSourceThanTarget = "Further from Source than Target";
+        public const string TowardsSourceFromTarget = "Towards Source from Target";
 
         //misc
         public const string CanPlayTarget = "Can Play Target to This Space";
@@ -56,6 +58,7 @@ namespace KompasCore.Effects
                 case AdjacentToTarget:          return Subeffect.Target.IsAdjacentTo(x, y);
                 case ConnectedToSourceBy:       return Subeffect.Game.boardCtrl.ShortestPath(Subeffect.Source, x, y, connectednessRestriction) < 50;
                 case InAOE:                     return Subeffect.Source.SpaceInAOE(x, y);
+                case NotInAOE:                  return !Subeffect.Source.SpaceInAOE(x, y);
                 case LimitAdjacentCardsFittingRestriction:
                     return Subeffect.Game.boardCtrl.CardsAdjacentTo(x, y).Where(c => limitAdjacencyRestriction.Evaluate(c)).Count() <= adjacencyLimit;
 
@@ -65,6 +68,7 @@ namespace KompasCore.Effects
                 case DistanceToTargetC:           return Subeffect.Target.DistanceTo(x, y) == constant;
                 case DistanceToTargetLTEC:        return Subeffect.Target.DistanceTo(x, y) <= constant;
                 case FurtherFromSourceThanTarget: return Subeffect.Source.DistanceTo(x, y) > Subeffect.Source.DistanceTo(Subeffect.Target);
+                case TowardsSourceFromTarget:     return Subeffect.Source.DistanceTo(x, y) < Subeffect.Source.DistanceTo(Subeffect.Target);
 
                 //misc
                 case CanPlayTarget: return Subeffect.Target.PlayRestriction.EvaluateEffectPlay(x, y, Subeffect.Effect);

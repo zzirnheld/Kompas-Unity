@@ -1,0 +1,59 @@
+{
+	"cardType":83,
+	"cardName":"Right Into My Trap",
+	"effText":"Crazy Idea: When I'm hand-discarded, discard-play another Crazy Idea.\nWhen a character here moves out of my area of effect, move them a space towards me, then if they’re no longer in my area of effect, annihilate me.",
+	"effects":[
+		{
+			"triggerCondition":"Move",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"Triggerer Fits Restriction\",\"Coords Fit Restriction\"],
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"In AOE\"]
+					},
+					\"spaceRestriction\":
+					{
+						\"spaceRestrictions\":[\"Not In AOE\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target Triggering Card\"
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where for Just a Little Bit More to move its target\",
+						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\",\"Can Move Target to This Space\",\"Towards Source from Target\"],
+						\"constant\":1
+					}
+				}",
+				"{
+					\"subeffType\":\"Move\"
+				}",
+				"{
+					\"subeffType\":\"Conditionally End Effect Resolution\",
+					\"condition\":\"Target Fits Restriction\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"In AOE\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Annihilate\"
+				}"
+			]	
+		}
+	],
+	"c":5,
+	"spellType":"Terraform",
+	"subtypeText":"Crazy Idea Terraform",
+	"arg":1
+}
