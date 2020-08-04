@@ -30,13 +30,6 @@ namespace KompasServer.Networking
             OtherNotifier.SendPacket(b);
         }
 
-        private void SendPacketsAfterInverting(Packet a, Packet b, int aIndex, int bIndex)
-        {
-            a.InvertForController(aIndex);
-            b?.InvertForController(bIndex);
-            SendPackets(a, b);
-        }
-
         private void SendToBoth(Packet p)
         {
             SendPackets(p, p.Copy());
@@ -45,34 +38,24 @@ namespace KompasServer.Networking
         #region game start
         public void GetDecklist()
         {
-            Packet p = new Packet(Packet.Command.GetDeck);
-            SendPacket(p);
+            SendPacket(new GetDeckPacket());
         }
 
         public void DeckAccepted()
         {
-            Packet p = new Packet(Packet.Command.DeckAccepted);
-            SendPacket(p);
+            SendPacket(new DeckAcceptedPacket());
         }
 
         public void SetFriendlyAvatar(string cardName, int cardID)
         {
-            Packet p = new Packet(Packet.Command.SetFriendlyAvatar, cardName) { cardID = cardID };
-            Packet q = new Packet(Packet.Command.SetEnemyAvatar, cardName) { cardID = cardID };
+            var p = new SetAvatarPacket(0, cardName, cardID);
+            var q = new SetAvatarPacket(1, cardName, cardID);
             SendPackets(p, q);
         }
 
-        public void YoureFirst()
+        public void SetFirstTurnPlayer(int firstPlayer)
         {
-            Debug.Log("Sending you're first");
-            Packet p = new Packet(Packet.Command.YoureFirst);
-            SendPacket(p);
-        }
-
-        public void YoureSecond()
-        {
-            Debug.Log("Sending you're second");
-            Packet p = new Packet(Packet.Command.YoureSecond);
+            var p = new SetFirstPlayerPacket((firstPlayer + Player.index) % Player.serverGame.Players.Length);
             SendPacket(p);
         }
         #endregion game start

@@ -18,11 +18,6 @@ namespace KompasClient.Networking
 
         public int X { get; private set; }
 
-        public override void Awake()
-        {
-            base.Awake();
-        }
-
         public void Connect(string ip)
         {
             Debug.Log($"Connecting to {ip} on a random port");
@@ -37,16 +32,34 @@ namespace KompasClient.Networking
             base.Update();
         }
 
-        public override void ProcessPacket(Packet packet)
+        private IClientOrderPacket FromJson(string command, string json)
         {
-            if (packet == null)
+            switch (command)
             {
-                Debug.Log("Null packet");
+                //game start
+                case Packet.GetDeck: return JsonUtility.FromJson<GetDeckClientPacket>(json);
+                case Packet.DeckAccepted: return JsonUtility.FromJson<DeckAcceptedClientPacket>(json);
+                case Packet.SetAvatar: return JsonUtility.FromJson<SetAvatarClientPacket>(json);
+                case Packet.SetFirstTurnPlayer: return JsonUtility.FromJson<SetFirstPlayerClientPacket>(json);
+
+                //
+
+                default: throw new System.ArgumentException($"Unrecognized command {command} in packet sent to client");
+            }
+        }
+
+        public override void ProcessPacket((string command, string json) packetInfo)
+        {
+            if (packetInfo.command == Packet.Invalid)
+            {
+                Debug.LogError("Invalid packet");
                 return;
             }
-            var card = ClientGame.GetCardWithID(packet.cardID);
-            Debug.Log($"Parsing command {packet.command} for {packet.cardID}. That's the card {card?.CardName}");
 
+            var p = FromJson(packetInfo.command, packetInfo.json);
+            p.Execute(ClientGame);
+
+            /*
             switch (packet.command)
             {
                 #region game start
@@ -284,9 +297,9 @@ namespace KompasClient.Networking
                 case Packet.Command.StackEmpty:
                     ClientGame.clientUICtrl.SetCurrState(string.Empty);
                     break;
-                /*case Packet.Command.EffectImpossible:
+                case Packet.Command.EffectImpossible:
                     ClientGame.clientUICtrl.SetCurrState("Effect Impossible");
-                    break;*/
+                    break;
                 case Packet.Command.OptionalTrigger:
                     ClientTrigger t = card.Effects.ElementAt(packet.EffIndex).Trigger as ClientTrigger;
                     t.ClientEffect.ClientController = Friendly;
@@ -301,7 +314,7 @@ namespace KompasClient.Networking
                 default:
                     Debug.LogError($"Unrecognized command {packet.command} sent to client");
                     break;
-            }
+            }*/
         }
     }
 }

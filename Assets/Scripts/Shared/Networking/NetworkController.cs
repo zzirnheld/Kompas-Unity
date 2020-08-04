@@ -14,7 +14,7 @@ namespace KompasCore.Networking
     {
         public const int port = 8888;
 
-        public Queue<Packet> Packets { get; private set; }
+        public readonly Queue<(string, string)> packets = new Queue<(string, string)>();
 
         private bool awaitingInt = true;
         private int numBytesToRead;
@@ -22,17 +22,12 @@ namespace KompasCore.Networking
         private byte[] bytesRead = new byte[sizeof(int)];
         protected TcpClient tcpClient;
 
-        public virtual void Awake()
-        {
-            Packets = new Queue<Packet>();
-        }
-
         public void SetInfo(TcpClient tcpClient)
         {
             this.tcpClient = tcpClient;
         }
 
-        public abstract void ProcessPacket(Packet p);
+        public abstract void ProcessPacket((string command, string json) packetInfo);
 
         public virtual void Update()
         {
@@ -46,7 +41,7 @@ namespace KompasCore.Networking
             if (awaitingInt) ReadInt(networkStream);
             else ReadPacket(networkStream);
             
-            if (Packets.Count != 0) ProcessPacket(Packets.Dequeue());
+            if (packets.Count != 0) ProcessPacket(packets.Dequeue());
         }
 
         #region serialization
@@ -57,20 +52,20 @@ namespace KompasCore.Networking
             return bytes;
         }
 
-        protected static Packet Deserialize(byte[] bytes)
+        protected static (string, string) Deserialize(byte[] bytes)
         {
             string json = Encoding.UTF8.GetString(bytes);
             try
             {
                 Packet p = JsonUtility.FromJson<Packet>(json);
-                return p;
+                return (p.command, json);
             }
             catch (System.ArgumentException argEx)
             {
                 //Catch JSON parse error
                 Debug.LogError($"Failed to deserialize packet from json \"{json}\", " +
                     $"argument exception with message {argEx.Message}");
-                return null;
+                return (Packet.Invalid, null);
             }
         }
         #endregion serialization
@@ -130,8 +125,8 @@ namespace KompasCore.Networking
             numBytesRead += networkStream.Read(bytesRead, numBytesRead, numBytesToRead - numBytesRead);
             if (numBytesRead == numBytesToRead)
             {
-                Packet p = Deserialize(bytesRead);
-                if(p != null) Packets.Enqueue(p);
+                var (p, json) = Deserialize(bytesRead);
+                if(p != Packet.Invalid) packets.Enqueue((p, json));
                 awaitingInt = true;
                 bytesRead = new byte[sizeof(int)];
                 numBytesRead = 0;

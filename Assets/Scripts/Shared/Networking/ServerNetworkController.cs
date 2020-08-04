@@ -15,58 +15,45 @@ namespace KompasServer.Networking
         public ServerGame sGame;
         public ServerNotifier ServerNotifier;
 
-        //TODO make code that checks if ready to resolve the stack (both players have no responses/have declined priority in a row)
-        public override void ProcessPacket(Packet packet)
+        private IServerOrderPacket FromJson(string command, string json)
         {
-            if (packet == null) return;
-            packet.InvertForController(Player.index);
-            Debug.Log($"packet command is {packet.command} for player index {Player.index}," +
-                $"inverted numbers {packet.normalArgs[0]}, {packet.normalArgs[1]}, {packet.normalArgs[2]}, {packet.normalArgs[3]}");
-
-            //switch between all the possible requests for the server to handle.
-            switch (packet.command)
+            switch (command)
             {
-                case Packet.Command.SetDeck:
-                    sGame.SetDeck(Player, packet.stringArg);
-                    break;
-                case Packet.Command.Augment:
-                    Player.TryAugment(sGame.GetCardWithID(packet.cardID), packet.X, packet.Y);
-                    break;
-                case Packet.Command.Play:
-                    Player.TryPlay(sGame.GetCardWithID(packet.cardID), packet.X, packet.Y);
-                    break;
-                case Packet.Command.Move:
-                    Player.TryMove(sGame.GetCardWithID(packet.cardID), packet.X, packet.Y);
-                    break;
-                case Packet.Command.Attack:
-                    var attacker = sGame.GetCardWithID(packet.cardID);
-                    var defender = sGame.boardCtrl.GetCardAt(packet.X, packet.Y);
-                    Player.TryAttack(attacker, defender);
-                    break;
-                case Packet.Command.EndTurn:
-                    Player.TryEndTurn();
-                    break;
+                //game start
+                case Packet.SetDeck: return JsonUtility.FromJson<SetDeckServerPacket>(json);
+
+                //player actions
+                case Packet.PlayAction: return JsonUtility.FromJson<PlayActionServerPacket>(json);
+                case Packet.AugmentAction: return JsonUtility.FromJson<AugmentActionServerPacket>(json);
+                case Packet.MoveAction: return JsonUtility.FromJson<MoveActionServerPacket>(json);
+                case Packet.AttackAction: return JsonUtility.FromJson<AttackActionServerPacket>(json);
+                case Packet.EndTurnAction: return JsonUtility.FromJson<EndTurnActionServerPacket>(json);
+
+                //effects
+                case Packet.CardTarget: return JsonUtility.FromJson<CardTargetServerPacket>(json);
+                case Packet.SpaceTarget: return JsonUtility.FromJson<SpaceTargetServerPacket>(json);
+                case Packet.XSelection: return JsonUtility.FromJson<SelectXServerPacket>(json);
+
+                //misc
+                default: throw new System.ArgumentException($"Unrecognized command {command} in packet sent to client");
+            }
+        }
+
+        public override void ProcessPacket((string command, string json) packetInfo)
+        {
+            if(packetInfo.command == Packet.Invalid)
+            {
+                Debug.LogError("Invalid packet");
+                return;
+            }
+
+            var packet = FromJson(packetInfo.command, packetInfo.json);
+            packet.Execute(sGame, Player);
+        }
+        /*
+        //TODO make code that checks if ready to resolve the stack (both players have no responses/have declined priority in a row)
+        public override void ProcessPacket()
                 #region effect commands
-                case Packet.Command.Target:
-                    var currSubeff = sGame.CurrEffect?.CurrSubeffect;
-                    if (currSubeff is CardTargetSubeffect targetEff)
-                    {
-                        targetEff.AddTargetIfLegal(sGame.GetCardWithID(packet.cardID));
-                    }
-                    else if(currSubeff is ChooseFromListSubeffect chooseListSubeff)
-                    {
-                        var choice = new List<GameCard>{ sGame.GetCardWithID(packet.cardID) };
-                        chooseListSubeff.AddListIfLegal(choice);
-                    }
-                    break;
-                case Packet.Command.SpaceTarget:
-                    Debug.Log("Receieved space target " + packet.X + packet.Y);
-                    if (sGame.CurrEffect?.CurrSubeffect is SpaceTargetSubeffect spaceEff)
-                    {
-                        spaceEff.SetTargetIfValid(packet.X, packet.Y);
-                    }
-                    else Debug.Log("curr effect null? " + (sGame.CurrEffect == null) + " or not spacetgtsubeff? " + (sGame.CurrEffect?.CurrSubeffect is SpaceTargetSubeffect));
-                    break;
                 case Packet.Command.PlayerSetX:
                     if (sGame.CurrEffect?.CurrSubeffect is PlayerChooseXSubeffect xEff)
                     {
@@ -139,7 +126,8 @@ namespace KompasServer.Networking
                     Debug.Log($"Invalid command {packet.command} to server from {Player.index}");
                     break;
             }
-        }
+
+    }*/
 
         public static int InvertIndexForController(int index, int controller)
         {

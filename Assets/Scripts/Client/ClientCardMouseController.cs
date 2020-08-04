@@ -58,7 +58,7 @@ namespace KompasClient.Cards
                     Debug.Log($"Trying to move/attack to {x}, {y}. The controller index, if any, is {cardThere?.ControllerIndex}");
                     //then check if it's an attack or not
                     if (cardThere != null && cardThere.Controller != Card.Controller)
-                        ClientGame.clientNotifier.RequestAttack(Card, x, y);
+                        ClientGame.clientNotifier.RequestAttack(Card, cardThere);
                     else
                         ClientGame.clientNotifier.RequestMove(Card, x, y);
                 }

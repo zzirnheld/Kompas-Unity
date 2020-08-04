@@ -11,8 +11,7 @@ namespace KompasClient.Networking
 
         private void Send(Packet packet)
         {
-            if (packet != null) Debug.Log($"Sending packet with command {packet?.command}, normal args {string.Join(",", packet?.normalArgs)}, " +
-                 $"special args {string.Join(",", packet?.specialArgs)}, string arg {packet?.stringArg}");
+            if (packet != null) Debug.Log($"Sending packet {packet}");
             clientNetworkCtrl.SendPacket(packet);
         }
 
@@ -20,35 +19,25 @@ namespace KompasClient.Networking
         public void RequestPlay(GameCard card, int toX, int toY)
         {
             Debug.Log($"Requesting {card.CardName} to be played to {toX} {toY}");
-
-            Packet packet;
-            if (card.CardType == 'A') packet = new Packet(Packet.Command.Augment, card, toX, toY);
-            else packet = new Packet(Packet.Command.Play, card, toX, toY);
-            Send(packet);
+            if (card.CardType == 'A') Send(new AugmentActionPacket(card.ID, toX, toY));
+            else Send(new PlayActionPacket(card.ID, toX, toY));
         }
 
         public void RequestMove(GameCard card, int toX, int toY)
         {
             Debug.Log($"Requesting {card.CardName} to be moved to {toX} {toY}");
-            Packet packet = new Packet(Packet.Command.Move, card, toX, toY);
-            Send(packet);
+            Send(new MoveActionPacket(card.ID, toX, toY));
         }
 
-        public void RequestAttack(GameCard card, int toX, int toY)
+        public void RequestAttack(GameCard attacker, GameCard defender)
         {
-            Packet packet = new Packet(Packet.Command.Attack, card, toX, toY);
-            Send(packet);
+            Send(new AttackActionPacket(attacker.ID, defender.ID));
         }
 
         public void RequestDecklistImport(string decklist)
         {
             Debug.Log("Requesting Deck import of \"" + decklist + "\"");
-            string[] cardNames = decklist.Split('\n');
-            Packet packet = new Packet(Packet.Command.SetDeck)
-            {
-                stringArg = decklist
-            };
-            Send(packet);
+            Send(new SetDeckPacket(decklist));
         }
 
         public void RequestEndTurn()
