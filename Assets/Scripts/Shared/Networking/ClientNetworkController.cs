@@ -63,6 +63,7 @@ namespace KompasClient.Networking
 
                 //stats
                 case Packet.UpdateCardNumericStats: return JsonUtility.FromJson<ChangeCardNumericStatsClientPacket>(json);
+                case Packet.NegateCard: return JsonUtility.FromJson<NegateCardClientPacket>(json);
 
                 //misc
                 default: throw new System.ArgumentException($"Unrecognized command {command} in packet sent to client");
@@ -81,27 +82,6 @@ namespace KompasClient.Networking
             p.Execute(ClientGame);
 
             /*
-                case Packet.Command.Negate:
-                    card?.SetNegated(packet.Answer);
-                    break;
-                case Packet.Command.Activate:
-                    card?.SetActivated(packet.Answer);
-                    break;
-                case Packet.Command.ChangeControl:
-                    if (card != null) card.Controller = ClientGame.Players[packet.ControllerIndex];
-                    break;
-                case Packet.Command.SetPips:
-                    ClientGame.SetFriendlyPips(packet.Pips);
-                    break;
-                case Packet.Command.SetEnemyPips:
-                    ClientGame.SetEnemyPips(packet.Pips);
-                    break;
-                case Packet.Command.PutBack:
-                    ClientGame.PutCardsBack();
-                    break;
-                case Packet.Command.EndTurn:
-                    ClientGame.EndTurn();
-                    break;
                 case Packet.Command.RequestBoardTarget:
                     ClientGame.targetMode = Game.TargetMode.BoardTarget;
                     ClientGame.CurrCardRestriction = packet.GetBoardRestriction(ClientGame);

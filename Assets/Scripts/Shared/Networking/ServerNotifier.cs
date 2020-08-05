@@ -61,27 +61,16 @@ namespace KompasServer.Networking
         #endregion game start
 
         #region notify
-        public void NotifyPutBack()
-        {
-            Packet p = new Packet(Packet.Command.PutBack);
-            SendPacket(p);
-        }
+        public void NotifyPutBack() => SendPacket(new PutCardsBackPacket());
 
-        public void NotifyBothPutBack()
-        {
-            Packet p = new Packet(Packet.Command.PutBack);
-            SendToBoth(p);
-        }
+        public void NotifyBothPutBack() => SendToBoth(new PutCardsBackPacket());
 
-        public void NotifyLeyload(int leyload)
-        {
-            SendToBoth(new SetLeyloadPacket(leyload));
-        }
+        public void NotifyLeyload(int leyload) => SendToBoth(new SetLeyloadPacket(leyload));
 
         public void NotifyAttach(GameCard toAttach, int x, int y)
         {
             //tell everyone to do it
-            var p = new AttachCardPacket(toAttach.ID, toAttach.CardName, toAttach.ControllerIndex, x, y);
+            var p = new AttachCardPacket(toAttach.ID, toAttach.CardName, toAttach.ControllerIndex, x, y, invert: Player.index != 0);
             var q = p.GetInversion(toAttach.KnownToEnemy);
             SendPackets(p, q);
         }
@@ -95,21 +84,21 @@ namespace KompasServer.Networking
             if (toPlay.CardType == 'A') return;
 
             //tell everyone to do it
-            var p = new PlayCardPacket(toPlay.ID, toPlay.CardName, toPlay.ControllerIndex, x, y);
+            var p = new PlayCardPacket(toPlay.ID, toPlay.CardName, toPlay.ControllerIndex, x, y, invert: Player.index != 0);
             var q = p.GetInversion(toPlay.KnownToEnemy);
             SendPackets(p, q);
         }
 
         public void NotifyMove(GameCard toMove, int x, int y, bool playerInitiated)
         {
-            var p = new MoveCardPacket(toMove.ID, x, y, playerInitiated, invert: toMove.ControllerIndex == 0);
+            var p = new MoveCardPacket(toMove.ID, x, y, playerInitiated, invert: Player.index != 0);
             var q = p.GetInversion(known: true);
             SendPackets(p, q);
         }
 
         public void NotifyDiscard(GameCard toDiscard)
         {
-            var p = new DiscardCardPacket(toDiscard.ID, toDiscard.CardName, toDiscard.ControllerIndex, invert: toDiscard.ControllerIndex == 0);
+            var p = new DiscardCardPacket(toDiscard.ID, toDiscard.CardName, toDiscard.ControllerIndex, invert: Player.index != 0);
             var q = p.GetInversion(toDiscard.KnownToEnemy);
             SendPackets(p, q);
         }
@@ -157,18 +146,17 @@ namespace KompasServer.Networking
 
         public void NotifyAddToDeck(GameCard added)
         {
-            //let everyone know
-            Packet outPacket = new Packet(Packet.Command.AddAsFriendly, added.CardName, (int)CardLocation.Deck, added.ID);
-            Packet outPacketInverted = new Packet(Packet.Command.IncrementEnemyDeck);
-            SendPackets(outPacket, outPacketInverted);
+            var p = new AddCardPacket(added.ID, added.CardName, added.Location, added.ControllerIndex,
+                added.BoardX, added.BoardY, attached: false, invert: Player.index != 0);
+            var q = p.GetInversion(added.KnownToEnemy);
+            SendPackets(p, q);
         }
 
         public void NotifySetPips(int pipsToSet)
         {
-            //let everyone know
-            Packet outPacket = new Packet(Packet.Command.SetPips, pipsToSet);
-            Packet outPacketInverted = new Packet(Packet.Command.SetEnemyPips, pipsToSet);
-            SendPackets(outPacket, outPacketInverted);
+            var p = new SetPipsPacket(pipsToSet, Player.index, invert: Player.index != 0);
+            var q = p.GetInversion(true);
+            SendPackets(p, q);
         }
 
         public void NotifyStats(GameCard card)
@@ -180,24 +168,22 @@ namespace KompasServer.Networking
 
         public void NotifySetNegated(GameCard card, bool negated)
         {
-            if (card == null) throw new System.ArgumentNullException($"Card must not be null to notify about negating");
-            Packet packet = new Packet(Packet.Command.Negate, card, negated);
-            SendToBoth(packet);
+            var p = new NegateCardPacket(card.ID, negated);
+            var q = p.GetInversion(card.KnownToEnemy);
+            SendPackets(p, q);
         }
 
         public void NotifyActivate(GameCard card, bool activated)
         {
-            if (card == null) throw new System.ArgumentNullException($"Card must not be null to notify about activating");
-            Packet packet = new Packet(Packet.Command.Activate, card, activated);
-            SendToBoth(packet);
+            var p = new ActivateCardPacket(card.ID, activated);
+            var q = p.GetInversion(card.KnownToEnemy);
+            SendPackets(p, q);
         }
 
         public void NotifyChangeController(GameCard card, Player controller)
         {
-            if (card == null) throw new System.ArgumentNullException($"Card must not be null to notify about changing controller");
-            if (controller == null) throw new System.ArgumentNullException($"Player must not be null to notify about changing controller");
-            Packet p = new Packet(Packet.Command.ChangeControl, card, controller == Player ? 0 : 1);
-            Packet q = new Packet(Packet.Command.ChangeControl, card, controller == Player ? 1 : 0);
+            var p = new ChangeCardControllerPacket(card.ID, controller.index, invert: Player.index != 0);
+            var q = p.GetInversion(card.KnownToEnemy);
             SendPackets(p, q);
         }
 

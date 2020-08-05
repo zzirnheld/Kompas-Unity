@@ -14,7 +14,7 @@ namespace KompasCore.Networking
         public int c;
         public int a;
 
-        public ChangeCardNumericStatsPacket() : base(DiscardCard) { }
+        public ChangeCardNumericStatsPacket() : base(UpdateCardNumericStats) { }
 
         public ChangeCardNumericStatsPacket(int cardId, (int n, int e, int s, int w, int c, int a) stats) : this()
         {

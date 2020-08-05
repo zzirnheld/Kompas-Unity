@@ -6,6 +6,7 @@ namespace KompasCore.Networking
     [System.Serializable]
     public abstract class Packet
     {
+        #region commands
         public const string Invalid = "Invalid Command";
 
         //game start
@@ -32,9 +33,12 @@ namespace KompasCore.Networking
         public const string ListChoicesChosen = "List Choices Chosen";
         public const string OptionalTriggerResponse = "Optional Trigger Answered";
         public const string ChooseEffectOption = "Choose Effect Option";
+            //from server to client
+        public const string GetBoardTarget = "Get Board Target";
 
         //gamestate (from server to client)
         public const string SetLeyload = "Set Leyload";
+        public const string SetTurnPlayer = "Set Turn Player";
 
         //card addition/deletion (from server to client)
         public const string DeleteCard = "Delete Card";
@@ -42,6 +46,7 @@ namespace KompasCore.Networking
         public const string ChangeEnemyHandCount = "Change Enemy Hand Count";
 
         //card movement (from server to client)
+        public const string PutCardsBack = "Put Cards Back";
             //public locations
         public const string PlayCard = "Play Card";
         public const string AttachCard = "Attach Card";
@@ -56,6 +61,10 @@ namespace KompasCore.Networking
 
         //stats
         public const string UpdateCardNumericStats = "Change Card Numeric Stats";
+        public const string NegateCard = "Negate Card";
+        public const string ActivateCard = "Activate Card";
+        public const string ChangeCardController = "Change Card Controller";
+        public const string SetPips = "Set Pips";
 
         //debug commands
         //from client to server
@@ -65,12 +74,14 @@ namespace KompasCore.Networking
         public const string DebugDraw = "DEBUG COMMAND Draw";
         public const string DebugSetNESW = "DEBUG COMMAND Set NESW";
         public const string DebugSetPips = "DEBUG COMMAND Set Pips";
+        #endregion commands
 
         /// <summary>
         /// Contains the command that is sent.
         /// </summary>
         public string command;
 
+        //Json serializer needs a parameterless constructor
         public Packet() { }
 
         public Packet(string command)
@@ -87,14 +98,10 @@ namespace KompasCore.Networking
         /// Creates a version of this packet that the opposite player will understand.
         /// </summary>
         /// <returns></returns>
-        public virtual Packet GetInversion(bool known) => known ? Copy() : null;
+        public virtual Packet GetInversion(bool known = true) => known ? Copy() : null;
 
-        public override string ToString()
-        {
-            return $"Command: {command}";
-        }
+        public override string ToString() => $"Command: {command}";
     }
-
 }
 
 namespace KompasClient.Networking
