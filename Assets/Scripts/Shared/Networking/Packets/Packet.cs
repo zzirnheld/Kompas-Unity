@@ -34,7 +34,18 @@ namespace KompasCore.Networking
         public const string OptionalTriggerResponse = "Optional Trigger Answered";
         public const string ChooseEffectOption = "Choose Effect Option";
             //from server to client
+            //targeting
         public const string GetBoardTarget = "Get Board Target";
+        public const string GetHandTarget = "Get Hand Target";
+        public const string GetDeckTarget = "Get Deck Target";
+        public const string GetDiscardTarget = "Get Discard Target";
+        public const string GetListChoices = "Get List Choices";
+        public const string GetSpaceTarget = "Get Space Target";
+            //other effect
+        public const string GetEffectOption = "Get Effect Option";
+        public const string EffectResolving = "Effect Resolving";
+        public const string SetEffectsX = "Set Effects X";
+        public const string PlayerChooseX = "Player Choose X";
 
         //gamestate (from server to client)
         public const string SetLeyload = "Set Leyload";

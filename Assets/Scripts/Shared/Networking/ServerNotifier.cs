@@ -189,72 +189,43 @@ namespace KompasServer.Networking
 
         public void NotifySetTurn(ServerGame sGame, int indexToSet)
         {
-            Packet outPacket = new Packet(Packet.Command.EndTurn, indexToSet);
-            Packet outPacketInverted = new Packet(Packet.Command.EndTurn, indexToSet);
-            SendToBoth(outPacket);
+            var p = new SetTurnPlayerPacket(indexToSet, invert: Player.index != 0);
+            var q = p.GetInversion();
+            SendPackets(p, q);
         }
         #endregion notify
 
         #region request targets
-        public void GetBoardTarget(GameCard source, BoardTargetSubeffect boardTargetSubeffect)
-        {
-            Packet outPacket = new Packet(Packet.Command.RequestBoardTarget, source, boardTargetSubeffect);
-            SendPacket(outPacket);
-            Debug.Log("Asking for board target");
-        }
+        public void GetBoardTarget(BoardTargetSubeffect boardTargetSubeffect)
+            => SendPacket(new GetBoardTargetPacket(boardTargetSubeffect.cardRestriction));
 
-        public void GetDeckTarget(GameCard source, CardTargetSubeffect cardTargetSubeffect)
-        {
-            Packet outPacket = new Packet(Packet.Command.RequestDeckTarget, source, cardTargetSubeffect);
-            SendPacket(outPacket);
-            Debug.Log("Asking for deck target");
-        }
+        public void GetDeckTarget(CardTargetSubeffect cardTargetSubeffect)
+            => SendPacket(new GetDeckTargetPacket(cardTargetSubeffect.cardRestriction));
 
-        public void GetDiscardTarget(GameCard source, CardTargetSubeffect cardTargetSubeffect)
-        {
-            Packet outPacket = new Packet(Packet.Command.RequestDiscardTarget, source, cardTargetSubeffect);
-            SendPacket(outPacket);
-            Debug.Log("Asking for discard target");
-        }
+        public void GetDiscardTarget(CardTargetSubeffect cardTargetSubeffect)
+            => SendPacket(new GetDiscardTargetPacket(cardTargetSubeffect.cardRestriction));
 
-        public void GetHandTarget(GameCard source, CardTargetSubeffect cardTargetSubeffect)
-        {
-            Packet outPacket = new Packet(Packet.Command.RequestHandTarget, source, cardTargetSubeffect);
-            SendPacket(outPacket);
-            Debug.Log("Asking for hand target");
-        }
+        public void GetHandTarget(CardTargetSubeffect cardTargetSubeffect)
+            => SendPacket(new GetHandTargetPacket(cardTargetSubeffect.cardRestriction));
 
-        public void GetSpaceTarget(GameCard effSrc, SpaceTargetSubeffect spaceTargetSubeffect)
-        {
-            Packet outPacket = new Packet(Packet.Command.SpaceTarget, effSrc, spaceTargetSubeffect);
-            SendPacket(outPacket);
-            Debug.Log("Asking for space target");
-        }
+        public void GetSpaceTarget(SpaceTargetSubeffect spaceTargetSubeffect)
+            => SendPacket(new GetSpaceTargetPacket(spaceTargetSubeffect.spaceRestriction));
 
         public void GetChoicesFromList(IEnumerable<GameCard> potentialTargets, int maxNum, ChooseFromListSubeffect src)
         {
-            int[] cardIDs = new int[potentialTargets.Count()];
-            int i = 0;
-            foreach (GameCard c in potentialTargets) cardIDs[i++] = c.ID;
-            Packet packet = new Packet(Packet.Command.GetChoicesFromList, src.ThisCard, cardIDs, src.ServerEffect.EffectIndex, src.SubeffIndex, maxNum);
-            SendPacket(packet);
-            Debug.Log($"Asking for targets from list of cardIDs {string.Join(",", cardIDs)}");
-        }
-
-        public void ChooseEffectOption(ChooseOptionSubeffect src)
-        {
-            Packet packet = new Packet(Packet.Command.ChooseEffectOption, src.ThisCard, src.ServerEffect.EffectIndex, src.SubeffIndex);
-            SendPacket(packet);
+            var p = new GetListChoicesPacket(potentialTargets.Select(c => c.ID).ToArray(), maxNum,
+                src.Source.ID, src.Effect.EffectIndex, src.SubeffIndex);
+            SendPacket(p);
         }
         #endregion request targets
 
         #region other effect stuff
+        public void ChooseEffectOption(ChooseOptionSubeffect src) => SendPacket(new GetEffectOptionPacket(src));
+
         public void EffectResolving(ServerEffect eff)
         {
-            Packet p = new Packet(Packet.Command.EffectResolving, eff.Source, eff.EffectIndex,
-                eff.Controller == Player ? 0 : 1, 0, 0);
-            Packet q = new Packet(Packet.Command.EffectResolving, eff.Source, eff.EffectIndex,
-                eff.Controller == Player ? 1 : 0, 0, 0);
+            var p = new EffectResolvingPacket(eff.Source.ID, eff.EffectIndex, eff.Controller.index, invert: Player.index != 0);
+            var q = p.GetInversion();
             SendPackets(p, q);
         }
 
@@ -300,15 +271,13 @@ namespace KompasServer.Networking
 
         public void GetXForEffect(GameCard effSource, int effIndex, int subeffIndex)
         {
-            Packet outPacket = new Packet(Packet.Command.PlayerSetX, effSource, effIndex, subeffIndex);
-            SendPacket(outPacket);
+            var p = new 
         }
 
         public void NotifyEffectX(GameCard effSrc, int effIndex, int x)
         {
-            //this puts the cardid in the right place, eff index in right place, x in packet.X
-            Packet outPacket = new Packet(Packet.Command.SetEffectsX, effSrc, effIndex, 0, x, 0);
-            SendToBoth(outPacket);
+            var p = new SetEffectsXPacket(effSrc.ID, effIndex, x);
+            SendToBoth(p);
         }
 
         public void EnableDecliningTarget()

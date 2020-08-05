@@ -14,7 +14,7 @@ namespace KompasClient.Networking
     {
         public ClientGame ClientGame;
 
-        public int X { get; private set; }
+        public int X { get; set; }
 
         public void Connect(string ip)
         {
@@ -64,6 +64,23 @@ namespace KompasClient.Networking
                 //stats
                 case Packet.UpdateCardNumericStats: return JsonUtility.FromJson<ChangeCardNumericStatsClientPacket>(json);
                 case Packet.NegateCard: return JsonUtility.FromJson<NegateCardClientPacket>(json);
+                case Packet.ActivateCard: return JsonUtility.FromJson<ActivateCardClientPacket>(json);
+                case Packet.ChangeCardController: return JsonUtility.FromJson<ChangeCardControllerClientPacket>(json);
+                case Packet.SetPips: return JsonUtility.FromJson<SetPipsClientPacket>(json);
+
+                //effects
+                    //targeting
+                case Packet.GetBoardTarget: return JsonUtility.FromJson<GetBoardTargetClientPacket>(json);
+                case Packet.GetHandTarget: return JsonUtility.FromJson<GetHandTargetClientPacket>(json);
+                case Packet.GetDeckTarget: return JsonUtility.FromJson<GetDeckTargetClientPacket>(json);
+                case Packet.GetDiscardTarget: return JsonUtility.FromJson<DiscardCardClientPacket>(json);
+                case Packet.GetListChoices: return JsonUtility.FromJson<GetListChoicesClientPacket>(json);
+                case Packet.GetSpaceTarget: return JsonUtility.FromJson<GetSpaceTargetClientPacket>(json);
+                    //other
+                case Packet.GetEffectOption: return JsonUtility.FromJson<GetEffectOptionClientPacket>(json);
+                case Packet.EffectResolving: return JsonUtility.FromJson<EffectResolvingClientPacket>(json);
+                case Packet.SetEffectsX: return JsonUtility.FromJson<SetEffectsXClientPacket>(json);
+                case Packet.PlayerChooseX: return JsonUtility.FromJson<GetPlayerChooseXClientPacket>(json);
 
                 //misc
                 default: throw new System.ArgumentException($"Unrecognized command {command} in packet sent to client");
@@ -82,71 +99,6 @@ namespace KompasClient.Networking
             p.Execute(ClientGame);
 
             /*
-                case Packet.Command.RequestBoardTarget:
-                    ClientGame.targetMode = Game.TargetMode.BoardTarget;
-                    ClientGame.CurrCardRestriction = packet.GetBoardRestriction(ClientGame);
-                    ClientGame.clientUICtrl.SetCurrState("Choose Board Target", ClientGame.CurrCardRestriction.blurb);
-                    break;
-                case Packet.Command.RequestHandTarget:
-                    ClientGame.targetMode = Game.TargetMode.HandTarget;
-                    ClientGame.CurrCardRestriction = packet.GetCardRestriction(ClientGame);
-                    ClientGame.clientUICtrl.SetCurrState("Choose Hand Target", ClientGame.CurrCardRestriction.blurb);
-                    break;
-                case Packet.Command.RequestDeckTarget:
-                    ClientGame.targetMode = Game.TargetMode.OnHold;
-                    Debug.Log($"Deck target for Eff index: {packet.EffIndex} subeff index {packet.SubeffIndex}");
-                    ClientGame.CurrCardRestriction = packet.GetCardRestriction(ClientGame);
-                    List<GameCard> toSearch = ClientGame.friendlyDeckCtrl.CardsThatFitRestriction(ClientGame.CurrCardRestriction);
-                    ClientGame.clientUICtrl.StartSearch(toSearch);
-                    ClientGame.clientUICtrl.SetCurrState("Choose Deck Target", ClientGame?.CurrCardRestriction?.blurb);
-                    break;
-                case Packet.Command.RequestDiscardTarget:
-                    ClientGame.targetMode = Game.TargetMode.OnHold;
-                    ClientGame.CurrCardRestriction = packet.GetCardRestriction(ClientGame);
-                    List<GameCard> discardToSearch = ClientGame.friendlyDiscardCtrl.CardsThatFitRestriction(ClientGame.CurrCardRestriction);
-                    ClientGame.clientUICtrl.StartSearch(discardToSearch);
-                    ClientGame.clientUICtrl.SetCurrState("Choose Discard Target", ClientGame.CurrCardRestriction.blurb);
-                    break;
-                case Packet.Command.GetChoicesFromList:
-                    ClientGame.targetMode = Game.TargetMode.OnHold;
-                    int[] cardIDs = packet.specialArgs;
-                    List<GameCard> choicesToPick = new List<GameCard>();
-                    foreach (int id in cardIDs)
-                    {
-                        GameCard c = ClientGame.GetCardWithID(id);
-                        if (c == null) Debug.LogError($"Tried to start a list search including card with invalid id {id}");
-                        else choicesToPick.Add(c);
-                    }
-                    var listRestriction = packet.GetListRestriction(ClientGame);
-                    ClientGame.clientUICtrl.StartSearch(choicesToPick, packet.MaxNum);
-                    ClientGame.clientUICtrl.SetCurrState($"Choose Target for Effect of {listRestriction?.Subeffect?.Source?.CardName}",
-                        ClientGame.CurrCardRestriction?.blurb);
-                    break;
-                case Packet.Command.ChooseEffectOption:
-                    //TODO catch out of bounds errors, in case of malicious packets?
-                    var subeff = card.Effects.ElementAt(packet.normalArgs[0]).Subeffects[packet.normalArgs[1]]
-                        as DummyChooseOptionSubeffect;
-                    if (subeff == null)
-                    {
-                        Debug.LogError($"Subeffect for card id {packet.cardID}, effect index {packet.normalArgs[0]}, subeffect index {packet.normalArgs[1]} " +
-                            $"is null or not dummy choose option subeffect");
-                    }
-                    ClientGame.clientUICtrl.ShowEffectOptions(subeff);
-                    break;
-                case Packet.Command.SpaceTarget:
-                    ClientGame.targetMode = Game.TargetMode.SpaceTarget;
-                    ClientGame.CurrSpaceRestriction = packet.GetSpaceRestriction(ClientGame);
-                    //TODO display based on that space
-                    ClientGame.clientUICtrl.SetCurrState("Choose Space Target", ClientGame.CurrSpaceRestriction.blurb);
-                    break;
-                case Packet.Command.SetEffectsX:
-                    Debug.Log("Setting X to " + packet.EffectX);
-                    if (card != null) card.Effects.ElementAt(packet.EffIndex).X = packet.EffectX;
-                    X = packet.EffectX;
-                    break;
-                case Packet.Command.PlayerSetX:
-                    ClientGame.clientUICtrl.GetXForEffect();
-                    break;
                 case Packet.Command.TargetAccepted:
                     ClientGame.targetMode = Game.TargetMode.Free;
                     ClientGame.CurrCardRestriction = null;
@@ -165,11 +117,6 @@ namespace KompasClient.Networking
                     break;
                 case Packet.Command.DiscardSimples:
                     ClientGame.boardCtrl.DiscardSimples();
-                    break;
-                case Packet.Command.EffectResolving:
-                    var eff = card.Effects.ElementAt(packet.EffIndex);
-                    eff.Controller = ClientGame.Players[packet.normalArgs[1]];
-                    ClientGame.clientUICtrl.SetCurrState($"Resolving Effect of {card?.CardName}", $"{eff.Blurb}");
                     break;
                 case Packet.Command.StackEmpty:
                     ClientGame.clientUICtrl.SetCurrState(string.Empty);
