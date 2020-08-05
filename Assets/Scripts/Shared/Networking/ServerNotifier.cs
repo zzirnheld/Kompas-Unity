@@ -1,5 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
+using KompasCore.GameCore;
 using KompasCore.Networking;
 using KompasServer.Cards;
 using KompasServer.Effects;
@@ -19,8 +20,7 @@ namespace KompasServer.Networking
 
         public void SendPacket(Packet packet)
         {
-            if (packet != null) Debug.Log($"Sending packet to {Player.index} with command {packet.command}, normal args {string.Join(",", packet.normalArgs)}, " +
-                $"special args {string.Join(",", packet.specialArgs)}, string arg {packet.stringArg}");
+            if (packet != null) Debug.Log($"Sending packet to {Player.index} with info {packet}");
             ServerNetworkCtrl.SendPacket(packet);
         }
 
@@ -75,8 +75,7 @@ namespace KompasServer.Networking
 
         public void NotifyLeyload(int leyload)
         {
-            var p = new Packet(Packet.Command.Leyload, leyload);
-            SendToBoth(p);
+            SendToBoth(new SetLeyloadPacket(leyload));
         }
 
         public void NotifyAttach(GameCard toAttach, int x, int y)
@@ -97,19 +96,9 @@ namespace KompasServer.Networking
             if (toPlay.CardType == 'A') return;
 
             //tell everyone to do it
-            Packet outPacket = new Packet(Packet.Command.Play, toPlay, x, y);
-            Packet outPacketInverted;
-            if (toPlay.Location == CardLocation.Discard || toPlay.Location == CardLocation.Field)
-            {
-                outPacketInverted = new Packet(Packet.Command.Play, toPlay, x, y);
-            }
-            else
-            {
-                outPacketInverted = new Packet(Packet.Command.AddAsEnemy, toPlay.CardName,
-                    (int)CardLocation.Field, toPlay.ID, x, y);
-            }
-
-            SendPacketsAfterInverting(outPacket, outPacketInverted, Player.index, Player.Enemy.index);
+            var p = new PlayCardPacket(toPlay.ID, toPlay.CardName, toPlay.ControllerIndex, x, y);
+            var q = p.GetInversion(toPlay.KnownToEnemy);
+            SendPackets(p, q);
         }
 
         public void NotifyMove(GameCard toMove, int x, int y, bool playerInitiated)

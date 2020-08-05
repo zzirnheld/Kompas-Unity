@@ -3,6 +3,7 @@ using KompasCore.Networking;
 using KompasServer.GameCore;
 using KompasServer.Effects;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace KompasCore.Networking
 {
@@ -10,12 +11,14 @@ namespace KompasCore.Networking
     {
         public int[] cardIds;
 
-        public ListChoicesPacket() : base(ListChoicesPacket) { }
+        public ListChoicesPacket() : base(ListChoicesChosen) { }
 
         public ListChoicesPacket(int[] cardIds) : this()
         {
             this.cardIds = cardIds;
         }
+
+        public ListChoicesPacket(IEnumerable<GameCard> cards) : this(cards.Select(c => c.ID).ToArray()) { }
 
         public override Packet Copy() => new ListChoicesPacket(cardIds);
     }

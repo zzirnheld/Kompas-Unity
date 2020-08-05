@@ -1,6 +1,7 @@
 ﻿using KompasCore.Effects;
 using KompasCore.GameCore;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace KompasCore.Cards
@@ -201,6 +202,7 @@ namespace KompasCore.Cards
                 cardCtrl?.SetPhysicalLocation(location);
             }
         }
+        public bool KnownToEnemy => Game.HiddenLocations.Contains(Location);
         public int ID { get; private set; }
         public abstract IEnumerable<Effect> Effects { get; }
         public List<GameCard> Augments { get; private set; } = new List<GameCard>();

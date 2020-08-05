@@ -53,10 +53,7 @@ namespace KompasClient.Networking
 
         public void RequestResolveEffect(GameCard card, int index)
         {
-            if (card == null) return;
-            Debug.Log("Requesting effect of " + card.CardName + " number" + index);
-            Packet packet = new Packet(Packet.Command.ActivateEffect, card, index);
-            Send(packet);
+            Send(new ActivateEffectActionPacket(card.ID, index));
         }
 
         public void RequestSetX(int x)
@@ -79,13 +76,7 @@ namespace KompasClient.Networking
 
         public void RequestListChoices(List<GameCard> choices)
         {
-            Send(new ListChoicesPacket(choices.Select(c => c.ID).ToArray()));
-        }
-
-        public void RequestCancelSearch()
-        {
-            Packet packet = new Packet(Packet.Command.CancelSearch);
-            Send(packet);
+            Send(new ListChoicesPacket(choices));
         }
 
         public void RequestTriggerReponse(bool answer)
@@ -96,53 +87,44 @@ namespace KompasClient.Networking
 
         public void RequestChooseEffectOption(int option)
         {
-            Packet packet = new Packet(Packet.Command.ChooseEffectOption, option);
-            Send(packet);
+            Send(new EffectOptionResponsePacket(option));
         }
 
         public void DeclineResponse()
         {
-            var p = new Packet(Packet.Command.Response);
-            Send(p);
+            Send(new PassPriorityPacket());
         }
         #endregion
 
         #region Debug Request Actions
         public void RequestTopdeck(GameCard card)
         {
-            Packet packet = new Packet(Packet.Command.Topdeck, card);
-            Send(packet);
+            Send(new DebugTopdeckPacket(card.ID));
         }
 
         public void RequestDiscard(GameCard card)
         {
-            Packet packet = new Packet(Packet.Command.Discard, card);
-            Send(packet);
+            Send(new DebugDiscardPacket(card.ID));
         }
 
         public void RequestRehand(GameCard card)
         {
-            Packet packet = new Packet(Packet.Command.Rehand, card);
-            Send(packet);
+            Send(new DebugRehandPacket(card.ID));
         }
 
         public void RequestDraw()
         {
-            Packet packet = new Packet(Packet.Command.Draw);
-            Send(packet);
+            Send(new DebugDrawPacket());
         }
 
         public void RequestSetNESW(GameCard card, int n, int e, int s, int w)
         {
-            Packet packet = new Packet(Packet.Command.SetNESW, card, n, e, s, w);
-            Send(packet);
+            Send(new DebugSetNESWPacket(card.ID, n, e, s, w));
         }
 
         public void RequestUpdatePips(int num)
         {
-            Packet packet = new Packet(Packet.Command.SetPips, num);
-            Send(packet);
-            Debug.Log("requesting updating pips to " + num);
+            Send(new DebugSetPipsPacket(num));
         }
         #endregion
     }

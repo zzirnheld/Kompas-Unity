@@ -13,8 +13,6 @@ namespace KompasClient.Networking
     public class ClientNetworkController : NetworkController
     {
         public ClientGame ClientGame;
-        private ClientPlayer Friendly => ClientGame.ClientPlayers[0];
-        private ClientPlayer Enemy => ClientGame.ClientPlayers[1];
 
         public int X { get; private set; }
 
@@ -42,8 +40,18 @@ namespace KompasClient.Networking
                 case Packet.SetAvatar: return JsonUtility.FromJson<SetAvatarClientPacket>(json);
                 case Packet.SetFirstTurnPlayer: return JsonUtility.FromJson<SetFirstPlayerClientPacket>(json);
 
-                //
+                //gamestate
+                case Packet.SetLeyload: return JsonUtility.FromJson<SetLeyloadClientPacket>(json);
 
+                //card addition/deletion
+                case Packet.AddCard: return JsonUtility.FromJson<AddCardClientPacket>(json);
+                case Packet.DeleteCard: return JsonUtility.FromJson<DeleteCardClientPacket>(json);
+                case Packet.ChangeEnemyHandCount: return JsonUtility.FromJson<ChangeEnemyHandCountClientPacket>(json);
+
+                //card movement
+                case Packet.PlayCard: return JsonUtility.FromJson<PlayCardClientPacket>(json);
+
+                //misc
                 default: throw new System.ArgumentException($"Unrecognized command {command} in packet sent to client");
             }
         }
@@ -60,65 +68,6 @@ namespace KompasClient.Networking
             p.Execute(ClientGame);
 
             /*
-            switch (packet.command)
-            {
-                case Packet.Command.Leyload:
-                    ClientGame.Leyload = packet.normalArgs[0];
-                    break;
-                case Packet.Command.Delete:
-                    ClientGame.Delete(card);
-                    break;
-                case Packet.Command.AddAsFriendly:
-                    var friendlyCard = ClientGame.cardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, Friendly, packet.CardIDToBe);
-                    ClientGame.cardsByID.Add(packet.CardIDToBe, friendlyCard);
-                    ClientGame.friendlyDeckCtrl.PushTopdeck(friendlyCard);
-                    break;
-                case Packet.Command.AddAsEnemy:
-                    var added = ClientGame.cardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, Enemy, packet.CardIDToBe);
-                    ClientGame.cardsByID.Add(packet.CardIDToBe, added);
-                    //TODO make it always ask for cards from enemy deck
-                    switch (packet.Location)
-                    {
-                        case CardLocation.Field:
-                            added.Play(packet.X, packet.Y, added.Owner);
-                            break;
-                        case CardLocation.Discard:
-                            added.Discard();
-                            break;
-                        case CardLocation.Annihilation:
-                            added.Game.annihilationCtrl.Annihilate(added);
-                            break;
-                        default:
-                            Debug.Log("Tried to add an enemy card to " + packet.Location);
-                            break;
-                    }
-                    break;
-                case Packet.Command.AddAsEnemyAndAttach:
-                    var addAndAttach = ClientGame.cardRepo.InstantiateClientNonAvatar(packet.CardName, ClientGame, Enemy, packet.CardIDToBe);
-                    ClientGame.cardsByID.Add(packet.CardIDToBe, addAndAttach);
-                    ClientGame.boardCtrl.GetCardAt(packet.X, packet.Y).AddAugment(addAndAttach);
-                    break;
-                case Packet.Command.IncrementEnemyDeck:
-                    //TODO
-                    break;
-                case Packet.Command.IncrementEnemyHand:
-                    ClientGame.enemyHandCtrl.IncrementHand();
-                    break;
-                case Packet.Command.DecrementEnemyDeck:
-                    //TODO make sure for both this and decrement hand that you're not deleting a revealedcard
-                    if (ClientGame.enemyDeckCtrl.DeckSize > 0)
-                    {
-                        ClientGame.enemyDeckCtrl.PopBottomdeck();
-                    }
-                    break;
-                case Packet.Command.DecrementEnemyHand:
-                    ClientGame.enemyHandCtrl.DecrementHand();
-                    break;
-                case Packet.Command.Augment: //the play method calls augment if the card is an augment
-                case Packet.Command.Play:
-                    Debug.Log("Client ordered to play to " + packet.X + ", " + packet.Y);
-                    card?.Play(packet.X, packet.Y, card.Owner);
-                    break;
                 case Packet.Command.Attach:
                     ClientGame.boardCtrl.GetCardAt(packet.X, packet.Y)?.AddAugment(card);
                     break;

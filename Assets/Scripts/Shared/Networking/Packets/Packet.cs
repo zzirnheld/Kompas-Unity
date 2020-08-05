@@ -15,14 +15,16 @@ namespace KompasCore.Networking
         public const string SetAvatar = "Set Avatar";
         public const string SetFirstTurnPlayer = "Set First Turn Player";
 
-        //player action: things the player initiates
+        //player action: things the player initiates (client to server)
         public const string PlayAction = "Player Play Action";
         public const string AugmentAction = "Player Augment Action";
         public const string MoveAction = "Player Move Action";
         public const string AttackAction = "Player Attack Action";
         public const string EndTurnAction = "Player End Turn Action";
+        public const string ActivateEffectAction = "Player Activate Effect Action";
 
         //effect commands
+            //from client to server
         public const string CardTargetChosen = "Card Target Chosen";
         public const string SpaceTargetChosen = "Space Target Chosen";
         public const string XSelectionChosen = "X Value Chosen";
@@ -31,90 +33,25 @@ namespace KompasCore.Networking
         public const string OptionalTriggerResponse = "Optional Trigger Answered";
         public const string ChooseEffectOption = "Choose Effect Option";
 
-        /*
-        public enum Command
-        {
-            Invalid = -1,
-            //game start procedures
-            GetDeck = 0,
-            SetDeck = 1,
-            DeckAccepted = 2,
-            SetAvatar = 10,
-            SetFirstTurnPlayer = 11,
-            //basic player commands
-            PlayAction = 100,
-            Move = 102,
-            Attack = 103,
-            Attach = 104,
-            AddAsEnemyAndAttach = 105,
-            EndTurn = 150,
-            Leyload = 151,
-            //move cards around
-            Topdeck = 200,
-            Discard = 201,
-            Rehand = 202,
-            Reshuffle = 203,
-            AddAsFriendly = 204,
-            AddAsEnemy = 205,
-            Bottomdeck = 206,
-            Draw = 207,
-            Delete = 208,
-            Annihilate = 209,
-            Play = 250,
-            Augment = 251,
-            //card properties
-            SetNESW = 301,
-            Negate = 302,
-            SetSpellStats = 303,
-            Activate = 304,
-            Deactivate = 305,
-            ChangeControl = 306,
-            SetN = 350,
-            SetE = 351,
-            SetS = 352,
-            SetW = 353,
-            SetC = 354,
-            SetA = 355,
-            //change numbers of cards that you see of your opponent
-            IncrementEnemyDeck = 400,
-            IncrementEnemyHand = 401,
-            DecrementEnemyDeck = 402,
-            DecrementEnemyHand = 403,
-            //server requesting a target of a client
-            GetAttackTarget = 500,
-            RequestBoardTarget = 501,
-            RequestDeckTarget = 502,
-            RequestDiscardTarget = 503,
-            RequestHandTarget = 504,
-            GetChoicesFromList = 505,
-            //client responding
-            Target = 550,
-            SpaceTarget = 551,
-            Response = 552,
-            DeclineAnotherTarget = 553,
-            CancelSearch = 554,
-            NoMoreResponse = 555,
-            //server notifying if anything else is necessary
-            TargetAccepted = 575,
-            SpaceTargetAccepted = 576,
-            //other effect technicalities
-            PlayerSetX = 600,
-            EnableDecliningTarget = 601,
-            DisableDecliningTarget = 602,
-            SetPips = 603,
-            SetEnemyPips = 604,
-            SetEffectsX = 605,
-            OptionalTrigger = 606,
-            ChooseEffectOption = 607,
-            EffectResolving = 608,
-            EffectImpossible = 609,
-            //miscellaneous
-            DiscardSimples = 700,
-            PutBack = 701,
-            //effect stuff
-            ActivateEffect = 800,
-            StackEmpty = 801
-        }*/
+        //gamestate (from server to client)
+        public const string SetLeyload = "Set Leyload";
+
+        //card addition/deletion (from server to client)
+        public const string DeleteCard = "Delete Card";
+        public const string AddCard = "Add Card";
+        public const string ChangeEnemyHandCount = "Change Enemy Hand Count";
+
+        //card movement (from server to client)
+        public const string PlayCard = "Play Card";
+
+        //debug commands
+            //from client to server
+        public const string DebugTopdeck = "DEBUG COMMAND Topdeck";
+        public const string DebugDiscard = "DEBUG COMMAND Discard";
+        public const string DebugRehand = "DEBUG COMMAND Rehand";
+        public const string DebugDraw = "DEBUG COMMAND Draw";
+        public const string DebugSetNESW = "DEBUG COMMAND Set NESW";
+        public const string DebugSetPips = "DEBUG COMMAND Set Pips";
 
         /// <summary>
         /// Contains the command that is sent.
@@ -128,7 +65,16 @@ namespace KompasCore.Networking
             this.command = command;
         }
 
+        /// <summary>
+        /// Creates an exact copy of this packet to send.
+        /// </summary>
+        /// <returns></returns>
         public abstract Packet Copy();
+        /// <summary>
+        /// Creates a version of this packet that the opposite player will understand.
+        /// </summary>
+        /// <returns></returns>
+        public virtual Packet GetInversion(bool known) => Copy();
 
         public override string ToString()
         {
