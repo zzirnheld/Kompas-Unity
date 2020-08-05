@@ -17,39 +17,23 @@ namespace KompasCore.Networking
 
         public AddCardPacket() : base(DeleteCard) { }
 
-        public AddCardPacket(int cardId, string cardName, CardLocation location, int controllerIndex) : this()
+        public AddCardPacket(int cardId, string cardName, CardLocation location, int controllerIndex, bool invert = false) : this()
         {
             this.cardId = cardId;
             this.cardName = cardName;
-            this.controllerIndex = controllerIndex;
+            this.location = location;
+            this.controllerIndex = invert ? 1 - controllerIndex : controllerIndex;
         }
 
-        public AddCardPacket(int cardId, string cardName, CardLocation location, int controllerIndex, int x, int y, bool attached) 
-            : this(cardId, cardName, location, controllerIndex)
+        public AddCardPacket(int cardId, string cardName, CardLocation location, int controllerIndex, int x, int y, bool attached, bool invert = false) 
+            : this(cardId, cardName, location, controllerIndex, invert)
         {
-            if(controllerIndex == 0)
-            {
-                this.x = x;
-                this.y = y;
-            }
-            else
-            {
-                this.x = 6 - x;
-                this.y = 6 - y;
-            }
-
+            this.x = invert ? 6 - x : x;
+            this.y = invert ? 6 - y : y;
             this.attached = attached;
         }
 
-        public override Packet Copy()
-        {
-            var p = new AddCardPacket(cardId, cardName, location, controllerIndex)
-            {
-                x = x,
-                y = y
-            };
-            return p;
-        }
+        public override Packet Copy() => new AddCardPacket(cardId, cardName, location, controllerIndex, x, y, attached);
 
         public override Packet GetInversion(bool known)
         {
@@ -62,7 +46,7 @@ namespace KompasCore.Networking
                     default: throw new System.ArgumentException($"What should add card packet do when a card is added to the hidden location {location}");
                 }
             }
-            else return new AddCardPacket(cardId, cardName, location, 1 - controllerIndex, x, y, attached);
+            else return new AddCardPacket(cardId, cardName, location, controllerIndex, x, y, attached, invert: true);
         }
     }
 }

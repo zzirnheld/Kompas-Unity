@@ -14,21 +14,21 @@ namespace KompasCore.Networking
 
         public PlayCardPacket() : base(PlayCard) { }
 
-        public PlayCardPacket(int cardId, string cardName, int controllerIndex, int x, int y) : this()
+        public PlayCardPacket(int cardId, string cardName, int controllerIndex, int x, int y, bool invert = false) : this()
         {
             this.cardId = cardId;
             this.cardName = cardName;
-            this.controllerIndex = controllerIndex;
-            this.x = controllerIndex == 0 ? x : 6 - x;
-            this.y = controllerIndex == 0 ? y : 6 - y;
+            this.controllerIndex = invert ? 1 - controllerIndex : controllerIndex;
+            this.x = invert ? 6 - x : x;
+            this.y = invert ? 6 - y : y;
         }
 
-        public override Packet Copy() => new PlayCardPacket(cardId, cardName, controllerIndex, x, y);
+        public override Packet Copy() => new PlayCardPacket(cardId, cardName, controllerIndex, x, y, invert: false);
 
         public override Packet GetInversion(bool known)
         {
-            if (known) return new PlayCardPacket(cardId, cardName, 1 - controllerIndex, x, y);
-            else return new AddCardPacket(cardId, cardName, CardLocation.Field, controllerIndex, x, y, false);
+            if (known) return new PlayCardPacket(cardId, cardName, controllerIndex, x, y, invert: true);
+            else return new AddCardPacket(cardId, cardName, CardLocation.Field, controllerIndex, x, y, false, invert: true);
         }
     }
 }

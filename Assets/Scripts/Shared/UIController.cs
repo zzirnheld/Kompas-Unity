@@ -52,8 +52,6 @@ namespace KompasCore.UI
         //deck search vars
         public List<GameCard> thingToSearch;
 
-        public virtual void ResetShownInfo() => ShowInfoFor(hovering ? hoveredCard : SelectedCard);
-
         public virtual void ShowInfoFor(GameCard card, bool refresh = false)
         {
             if (ShownCard == card && !refresh) return;
@@ -91,7 +89,7 @@ namespace KompasCore.UI
             selectedUIParent.SetActive(true);
         }
 
-        public void RefreshInfo() => ShowInfoFor(ShownCard, refresh: true);
+        public void RefreshShownCardInfo() => ShowInfoFor(ShownCard, refresh: true);
 
         /// <summary>
         /// updates the ui with the given selection. if the selection is null, hides the ui.

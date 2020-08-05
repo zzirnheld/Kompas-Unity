@@ -80,11 +80,10 @@ namespace KompasServer.Networking
 
         public void NotifyAttach(GameCard toAttach, int x, int y)
         {
-            Packet p = new Packet(Packet.Command.Attach, toAttach, x, y);
-            Packet q = toAttach.Location == CardLocation.Discard || toAttach.Location == CardLocation.Field ?
-                new Packet(Packet.Command.Attach, toAttach, x, y) :
-                new Packet(Packet.Command.AddAsEnemyAndAttach, toAttach.CardName, (int)CardLocation.Field, toAttach.ID, x, y);
-            SendPacketsAfterInverting(p, q, Player.index, Player.Enemy.index);
+            //tell everyone to do it
+            var p = new AttachCardPacket(toAttach.ID, toAttach.CardName, toAttach.ControllerIndex, x, y);
+            var q = p.GetInversion(toAttach.KnownToEnemy);
+            SendPackets(p, q);
         }
 
         /// <summary>
@@ -103,79 +102,57 @@ namespace KompasServer.Networking
 
         public void NotifyMove(GameCard toMove, int x, int y, bool playerInitiated)
         {
-            //tell everyone to do it
-            Packet friendlyPacket = new Packet(Packet.Command.Move, toMove, x, y);
-            Packet enemyPacket = new Packet(Packet.Command.Move, toMove, x, y);
-            SendPacketsAfterInverting(friendlyPacket, enemyPacket, Player.index, Player.Enemy.index);
+            var p = new MoveCardPacket(toMove.ID, x, y, playerInitiated, invert: toMove.ControllerIndex == 0);
+            var q = p.GetInversion(known: true);
+            SendPackets(p, q);
         }
 
         public void NotifyDiscard(GameCard toDiscard)
         {
-            Packet outPacket = null;
-            Packet outPacketInverted = null;
-            //and let everyone know
-            outPacket = new Packet(Packet.Command.Discard, toDiscard);
-            if (toDiscard.Location == CardLocation.Discard || toDiscard.Location == CardLocation.Field)
-                outPacketInverted = new Packet(Packet.Command.Discard, toDiscard);
-            else outPacketInverted = new Packet(Packet.Command.AddAsEnemy, toDiscard.CardName, (int)CardLocation.Discard, toDiscard.ID);
-            SendPackets(outPacket, outPacketInverted);
+            var p = new DiscardCardPacket(toDiscard.ID, toDiscard.CardName, toDiscard.ControllerIndex, invert: toDiscard.ControllerIndex == 0);
+            var q = p.GetInversion(toDiscard.KnownToEnemy);
+            SendPackets(p, q);
         }
 
         public void NotifyRehand(GameCard toRehand)
         {
-            Packet outPacketInverted = null;
-            //and let everyone know
-            Packet outPacket = new Packet(Packet.Command.Rehand, toRehand);
-            if (toRehand.Location == CardLocation.Discard || toRehand.Location == CardLocation.Field)
-                outPacketInverted = new Packet(Packet.Command.Delete, toRehand);
-            SendPackets(outPacket, outPacketInverted);
-
-            var q = new Packet(Packet.Command.IncrementEnemyHand);
-            OtherNotifier.SendPacket(q);
+            var p = new RehandCardPacket(toRehand.ID);
+            var q = p.GetInversion(toRehand.KnownToEnemy);
+            SendPackets(p, q);
         }
 
         public void NotifyDecrementHand()
         {
-            var p = new Packet(Packet.Command.DecrementEnemyHand);
+            var p = new ChangeEnemyHandCountPacket(-1);
             SendPacket(p);
         }
 
         public void NotifyAnnhilate(GameCard toAnnhilate)
         {
-            var p = new Packet(Packet.Command.Annihilate, toAnnhilate);
-            var q = toAnnhilate.Location == CardLocation.Discard || toAnnhilate.Location == CardLocation.Field ?
-                new Packet(Packet.Command.Annihilate, toAnnhilate) :
-            new Packet(Packet.Command.AddAsEnemy, toAnnhilate.CardName, (int)CardLocation.Annihilation, toAnnhilate.ID);
+            var p = new AnnihilateCardPacket(toAnnhilate.ID, toAnnhilate.CardName, toAnnhilate.ControllerIndex);
+            var q = p.GetInversion(toAnnhilate.KnownToEnemy);
             SendPackets(p, q);
         }
 
         public void NotifyTopdeck(GameCard card)
         {
-            Packet outPacketInverted = null;
-            //and let everyone know
-            Packet outPacket = new Packet(Packet.Command.Topdeck, card);
-            if (card.Location == CardLocation.Hand || card.Location == CardLocation.Deck)
-                outPacketInverted = new Packet(Packet.Command.Delete, card);
-            SendPackets(outPacket, outPacketInverted);
+            var p = new TopdeckCardPacket(card.ID, card.OwnerIndex);
+            var q = p.GetInversion(card.KnownToEnemy);
+            SendPackets(p, q);
         }
 
         public void NotifyBottomdeck(GameCard card)
         {
-            Packet packet = new Packet(Packet.Command.Bottomdeck, card);
-            Packet other = null;
-            if (card.Location == CardLocation.Hand || card.Location == CardLocation.Deck)
-                other = new Packet(Packet.Command.Delete, card);
-            SendPackets(packet, other);
+            var p = new BottomdeckCardPacket(card.ID, card.OwnerIndex);
+            var q = p.GetInversion(card.KnownToEnemy);
+            SendPackets(p, q);
         }
 
         public void NotifyReshuffle(GameCard toReshuffle)
         {
-            Packet outPacketInverted = null;
-            //and let everyone know
-            Packet outPacket = new Packet(Packet.Command.Reshuffle, toReshuffle);
-            if (toReshuffle.Location == CardLocation.Hand || toReshuffle.Location == CardLocation.Deck)
-                outPacketInverted = new Packet(Packet.Command.Delete, toReshuffle);
-            SendPackets(outPacket, outPacketInverted);
+            var p = new ReshuffleCardPacket(toReshuffle.ID, toReshuffle.OwnerIndex);
+            var q = p.GetInversion(toReshuffle.KnownToEnemy);
+            SendPackets(p, q);
         }
 
         public void NotifyAddToDeck(GameCard added)
@@ -194,55 +171,11 @@ namespace KompasServer.Networking
             SendPackets(outPacket, outPacketInverted);
         }
 
-        public void NotifySetNESW(ServerGameCard card, int n, int e, int s, int w)
+        public void NotifyStats(GameCard card)
         {
-            if (card == null) throw new System.ArgumentNullException($"Char must not be null to notify about setting stats");
-            //let everyone know to set NESW
-            Packet p = new Packet(Packet.Command.SetNESW, card, n, e, s, w);
-            SendToBoth(p);
-        }
-
-        public void NotifySetN(GameCard card)
-        {
-            Packet p = new Packet(Packet.Command.SetN, card, card.N);
-            SendToBoth(p);
-        }
-
-        public void NotifySetE(GameCard card)
-        {
-            Packet p = new Packet(Packet.Command.SetE, card, card.E);
-            SendToBoth(p);
-        }
-
-        public void NotifySetS(GameCard card)
-        {
-            Packet p = new Packet(Packet.Command.SetS, card, card.S);
-            SendToBoth(p);
-        }
-
-        public void NotifySetW(GameCard card)
-        {
-            Packet p = new Packet(Packet.Command.SetW, card, card.W);
-            SendToBoth(p);
-        }
-
-        public void NotifySetC(GameCard card)
-        {
-            Packet p = new Packet(Packet.Command.SetC, card, card.C);
-            SendToBoth(p);
-        }
-
-        public void NotifySetA(GameCard card)
-        {
-            Packet p = new Packet(Packet.Command.SetA, card, card.A);
-            SendToBoth(p);
-        }
-
-        public void NotifySetSpellStats(ServerGameCard spell, int c)
-        {
-            if (spell == null) throw new System.ArgumentNullException($"Spell must not be null to notify about setting stats");
-            Packet p = new Packet(Packet.Command.SetSpellStats, spell, c);
-            SendToBoth(p);
+            var p = new ChangeCardNumericStatsPacket(card.ID, card.Stats);
+            var q = p.GetInversion(card.KnownToEnemy);
+            SendPackets(p, q);
         }
 
         public void NotifySetNegated(GameCard card, bool negated)

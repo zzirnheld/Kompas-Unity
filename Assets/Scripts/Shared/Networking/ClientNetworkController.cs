@@ -49,7 +49,20 @@ namespace KompasClient.Networking
                 case Packet.ChangeEnemyHandCount: return JsonUtility.FromJson<ChangeEnemyHandCountClientPacket>(json);
 
                 //card movement
+                    //public areas
                 case Packet.PlayCard: return JsonUtility.FromJson<PlayCardClientPacket>(json);
+                case Packet.AttachCard: return JsonUtility.FromJson<AttachCardClientPacket>(json);
+                case Packet.MoveCard: return JsonUtility.FromJson<MoveCardClientPacket>(json);
+                case Packet.DiscardCard: return JsonUtility.FromJson<DiscardCardClientPacket>(json);
+                case Packet.AnnihilateCard: return JsonUtility.FromJson<AnnihilateCardClientPacket>(json);
+                    //private areas
+                case Packet.RehandCard: return JsonUtility.FromJson<RehandCardClientPacket>(json);
+                case Packet.TopdeckCard: return JsonUtility.FromJson<TopdeckCardClientPacket>(json);
+                case Packet.ReshuffleCard: return JsonUtility.FromJson<ReshuffleCardClientPacket>(json);
+                case Packet.BottomdeckCard: return JsonUtility.FromJson<BottomdeckCardClientPacket>(json);
+
+                //stats
+                case Packet.UpdateCardNumericStats: return JsonUtility.FromJson<ChangeCardNumericStatsClientPacket>(json);
 
                 //misc
                 default: throw new System.ArgumentException($"Unrecognized command {command} in packet sent to client");
@@ -68,50 +81,6 @@ namespace KompasClient.Networking
             p.Execute(ClientGame);
 
             /*
-                case Packet.Command.Attach:
-                    ClientGame.boardCtrl.GetCardAt(packet.X, packet.Y)?.AddAugment(card);
-                    break;
-                case Packet.Command.Move:
-                    card.Move(packet.X, packet.Y, packet.Answer);
-                    //make the ui show the updated n (and other values)
-                    ClientGame.uiCtrl.SelectCard(ClientGame.uiCtrl.SelectedCard, false);
-                    break;
-                case Packet.Command.Topdeck:
-                    card.Topdeck();
-                    break;
-                case Packet.Command.Discard:
-                    card.Discard();
-                    break;
-                case Packet.Command.Rehand:
-                    card?.Rehand();
-                    break;
-                case Packet.Command.Reshuffle:
-                    card?.Reshuffle();
-                    break;
-                case Packet.Command.Bottomdeck:
-                    card?.Bottomdeck();
-                    break;
-                case Packet.Command.Annihilate:
-                    ClientGame.annihilationCtrl.Annihilate(card);
-                    break;
-                case Packet.Command.SetN:
-                    card?.SetN(packet.Stat);
-                    break;
-                case Packet.Command.SetE:
-                    card?.SetE(packet.Stat);
-                    break;
-                case Packet.Command.SetS:
-                    card?.SetS(packet.Stat);
-                    break;
-                case Packet.Command.SetW:
-                    card?.SetW(packet.Stat);
-                    break;
-                case Packet.Command.SetC:
-                    card?.SetC(packet.Stat);
-                    break;
-                case Packet.Command.SetA:
-                    card?.SetA(packet.Stat);
-                    break;
                 case Packet.Command.Negate:
                     card?.SetNegated(packet.Answer);
                     break;

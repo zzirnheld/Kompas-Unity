@@ -140,6 +140,7 @@ namespace KompasCore.Cards
         public virtual bool CanRemove => true;
         public virtual int CombatDamage => W;
         public (int n, int e, int s, int w) CharStats => (N, E, S, W);
+        public (int n, int e, int s, int w, int c, int a) Stats => (N, E, S, W, C, A);
         #endregion stats
 
         #region positioning
@@ -387,6 +388,16 @@ namespace KompasCore.Cards
             SetE(E + e, stackSrc);
             SetS(S + s, stackSrc);
             SetW(W + w, stackSrc);
+        }
+
+        public void SetStats((int n, int e, int s, int w, int c, int a) stats, IStackable stackSrc = null)
+        {
+            SetN(stats.n, stackSrc);
+            SetE(stats.e, stackSrc);
+            SetS(stats.s, stackSrc);
+            SetW(stats.w, stackSrc);
+            SetC(stats.c, stackSrc);
+            SetA(stats.a, stackSrc);
         }
 
         public virtual void SetNegated(bool negated, IStackable stackSrc = null) => Negated = negated;

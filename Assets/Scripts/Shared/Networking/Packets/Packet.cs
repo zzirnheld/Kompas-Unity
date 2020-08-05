@@ -42,10 +42,23 @@ namespace KompasCore.Networking
         public const string ChangeEnemyHandCount = "Change Enemy Hand Count";
 
         //card movement (from server to client)
+            //public locations
         public const string PlayCard = "Play Card";
+        public const string AttachCard = "Attach Card";
+        public const string MoveCard = "Move Card";
+        public const string DiscardCard = "Discard Card";
+        public const string AnnihilateCard = "Annihilate Card";
+            //private locations
+        public const string RehandCard = "Rehand Card";
+        public const string TopdeckCard = "Topdeck Card";
+        public const string ReshuffleCard = "Reshuffle Card";
+        public const string BottomdeckCard = "Bottomdeck Card";
+
+        //stats
+        public const string UpdateCardNumericStats = "Change Card Numeric Stats";
 
         //debug commands
-            //from client to server
+        //from client to server
         public const string DebugTopdeck = "DEBUG COMMAND Topdeck";
         public const string DebugDiscard = "DEBUG COMMAND Discard";
         public const string DebugRehand = "DEBUG COMMAND Rehand";
@@ -74,7 +87,7 @@ namespace KompasCore.Networking
         /// Creates a version of this packet that the opposite player will understand.
         /// </summary>
         /// <returns></returns>
-        public virtual Packet GetInversion(bool known) => Copy();
+        public virtual Packet GetInversion(bool known) => known ? Copy() : null;
 
         public override string ToString()
         {
