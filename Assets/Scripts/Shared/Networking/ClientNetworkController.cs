@@ -81,6 +81,14 @@ namespace KompasClient.Networking
                 case Packet.EffectResolving: return JsonUtility.FromJson<EffectResolvingClientPacket>(json);
                 case Packet.SetEffectsX: return JsonUtility.FromJson<SetEffectsXClientPacket>(json);
                 case Packet.PlayerChooseX: return JsonUtility.FromJson<GetPlayerChooseXClientPacket>(json);
+                case Packet.TargetAccepted: return JsonUtility.FromJson<TargetAcceptedClientPacket>(json);
+                case Packet.AddTarget: return JsonUtility.FromJson<AddTargetClientPacket>(json);
+                case Packet.ToggleDecliningTarget: return JsonUtility.FromJson<ToggleDecliningTargetClientPacket>(json);
+                case Packet.DiscardSimples: return JsonUtility.FromJson<DiscardSimplesClientPacket>(json);
+                case Packet.StackEmpty: return JsonUtility.FromJson<StackEmptyClientPacket>(json);
+                case Packet.EffectImpossible: return JsonUtility.FromJson<EffectImpossibleClientPacket>(json);
+                case Packet.OptionalTrigger: return JsonUtility.FromJson<OptionalTriggerClientPacket>(json);
+                case Packet.ToggleAllowResponses: return JsonUtility.FromJson<ToggleAllowResponsesClientPacket>(json);
 
                 //misc
                 default: throw new System.ArgumentException($"Unrecognized command {command} in packet sent to client");
@@ -97,48 +105,6 @@ namespace KompasClient.Networking
 
             var p = FromJson(packetInfo.command, packetInfo.json);
             p.Execute(ClientGame);
-
-            /*
-                case Packet.Command.TargetAccepted:
-                    ClientGame.targetMode = Game.TargetMode.Free;
-                    ClientGame.CurrCardRestriction = null;
-                    ClientGame.CurrSpaceRestriction = null;
-                    ClientGame.clientUICtrl.SetCurrState("Target Accepted");
-                    break;
-                case Packet.Command.Target:
-                    var target = ClientGame.GetCardWithID(packet.normalArgs[1]);
-                    if (target != null) card.Effects.ElementAt(packet.EffIndex).AddTarget(target);
-                    break;
-                case Packet.Command.EnableDecliningTarget:
-                    ClientGame.clientUICtrl.EnableDecliningTarget();
-                    break;
-                case Packet.Command.DisableDecliningTarget:
-                    ClientGame.clientUICtrl.DisableDecliningTarget();
-                    break;
-                case Packet.Command.DiscardSimples:
-                    ClientGame.boardCtrl.DiscardSimples();
-                    break;
-                case Packet.Command.StackEmpty:
-                    ClientGame.clientUICtrl.SetCurrState(string.Empty);
-                    break;
-                case Packet.Command.EffectImpossible:
-                    ClientGame.clientUICtrl.SetCurrState("Effect Impossible");
-                    break;
-                case Packet.Command.OptionalTrigger:
-                    ClientTrigger t = card.Effects.ElementAt(packet.EffIndex).Trigger as ClientTrigger;
-                    t.ClientEffect.ClientController = Friendly;
-                    ClientGame.clientUICtrl.ShowOptionalTrigger(t, packet.EffIndex);
-                    break;
-                case Packet.Command.Response:
-                    ClientGame.clientUICtrl.GetResponse();
-                    break;
-                case Packet.Command.NoMoreResponse:
-                    ClientGame.clientUICtrl.UngetResponse();
-                    break;
-                default:
-                    Debug.LogError($"Unrecognized command {packet.command} sent to client");
-                    break;
-            }*/
         }
     }
 }

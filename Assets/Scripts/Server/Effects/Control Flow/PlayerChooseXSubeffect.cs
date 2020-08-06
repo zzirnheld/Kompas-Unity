@@ -14,7 +14,7 @@ namespace KompasServer.Effects
 
         private void AskForX()
         {
-            EffectController.ServerNotifier.GetXForEffect(ThisCard, ServerEffect.EffectIndex, SubeffIndex);
+            EffectController.ServerNotifier.GetXForEffect();
         }
 
         public override bool Resolve()

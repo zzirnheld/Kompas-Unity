@@ -46,6 +46,14 @@ namespace KompasCore.Networking
         public const string EffectResolving = "Effect Resolving";
         public const string SetEffectsX = "Set Effects X";
         public const string PlayerChooseX = "Player Choose X";
+        public const string TargetAccepted = "Target Accepted";
+        public const string AddTarget = "Add Target";
+        public const string ToggleDecliningTarget = "Toggle Declining Target";
+        public const string DiscardSimples = "Discard Simples";
+        public const string StackEmpty = "Stack Empty";
+        public const string EffectImpossible = "Effect Impossible";
+        public const string OptionalTrigger = "Optional Trigger";
+        public const string ToggleAllowResponses = "Toggle Allow Responses";
 
         //gamestate (from server to client)
         public const string SetLeyload = "Set Leyload";

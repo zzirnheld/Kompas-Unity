@@ -184,12 +184,13 @@ namespace KompasServer.GameCore
 
             //determine who goes first and tell the players
             FirstTurnPlayer = TurnPlayerIndex = Random.value > 0.5f ? 0 : 1;
-            ServerPlayers[TurnPlayerIndex].ServerNotifier.YoureFirst();
-            ServerPlayers[1 - TurnPlayerIndex].ServerNotifier.YoureSecond();
 
-            foreach (var p in ServerPlayers) p.Avatar.SetE(p.Avatar.E + AvatarEBonus);
-
-            foreach (var player in ServerPlayers) DrawX(player.index, 5);
+            foreach (var p in ServerPlayers) 
+            {
+                p.ServerNotifier.SetFirstTurnPlayer(FirstTurnPlayer);
+                p.Avatar.SetE(p.Avatar.E + AvatarEBonus);
+                DrawX(p.index, 5);
+            }
             GiveTurnPlayerPips();
         }
         #endregion

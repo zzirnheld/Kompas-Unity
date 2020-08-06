@@ -4352,6 +4352,20 @@ MonoBehaviour:
       cSpaces: 0
       adjacencySubtypes: []
       blurb: 
+    limitAdjacencyRestriction:
+      cardRestrictions: []
+      costsLessThan: 0
+      nameIs: 
+      subtypesInclude: []
+      subtypesExclude: []
+      constant: 0
+      locations: 
+      costMultiplier: 1
+      costDivisor: 1
+      cSpaces: 0
+      adjacencySubtypes: []
+      blurb: 
+    adjacencyLimit: 0
     connectednessRestriction:
       cardRestrictions: []
       costsLessThan: 0

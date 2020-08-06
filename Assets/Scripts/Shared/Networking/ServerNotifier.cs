@@ -53,6 +53,10 @@ namespace KompasServer.Networking
             SendPackets(p, q);
         }
 
+        /// <summary>
+        /// Takes care of inverting first turn player
+        /// </summary>
+        /// <param name="firstPlayer">First turn player, from the server's perspective</param>
         public void SetFirstTurnPlayer(int firstPlayer)
         {
             var p = new SetFirstPlayerPacket((firstPlayer + Player.index) % Player.serverGame.Players.Length);
@@ -229,50 +233,23 @@ namespace KompasServer.Networking
             SendPackets(p, q);
         }
 
-        public void EffectImpossible()
-        {
-            Packet p = new Packet(Packet.Command.EffectImpossible);
-            SendToBoth(p);
-        }
+        public void EffectImpossible() => SendToBoth(new EffectImpossiblePacket());
 
-        public void RequestResponse()
-        {
-            Packet outPacket = new Packet(Packet.Command.Response);
-            SendPacket(outPacket);
-        }
+        public void RequestResponse() => SendPacket(new ToggleAllowResponsesPacket(true));
         
-        public void RequestNoResponse()
-        {
-            var p = new Packet(Packet.Command.NoMoreResponse);
-            SendPacket(p);
-        }
+        public void RequestNoResponse() => SendPacket(new ToggleAllowResponsesPacket(false));
 
         /// <summary>
         /// Lets that player know their target has been accepted. called if the Target method returns True
         /// </summary>
-        public void AcceptTarget()
-        {
-            Debug.Log($"Accepting target of {Player.index}");
-            Packet p = new Packet(Packet.Command.TargetAccepted);
-            SendPacket(p);
-        }
+        public void AcceptTarget() => SendPacket(new TargetAcceptedPacket());
 
-        public void StackEmpty()
-        {
-            var p = new Packet(Packet.Command.StackEmpty);
-            SendToBoth(p);
-        }
+        public void StackEmpty() => SendToBoth(new StackEmptyPacket());
 
         public void SetTarget(GameCard card, int effIndex, GameCard target)
-        {
-            Packet p = new Packet(Packet.Command.Target, card, effIndex, target.ID);
-            SendPacket(p);
-        }
+            => SendToBoth(new AddTargetPacket(card.ID, effIndex, target.ID));
 
-        public void GetXForEffect(GameCard effSource, int effIndex, int subeffIndex)
-        {
-            var p = new 
-        }
+        public void GetXForEffect() => SendPacket(new GetPlayerChooseXPacket());
 
         public void NotifyEffectX(GameCard effSrc, int effIndex, int x)
         {
@@ -280,34 +257,14 @@ namespace KompasServer.Networking
             SendToBoth(p);
         }
 
-        public void EnableDecliningTarget()
-        {
-            Packet packet = new Packet(Packet.Command.EnableDecliningTarget);
-            Debug.Log("Enabling declining target");
-            SendPacket(packet);
-        }
+        public void EnableDecliningTarget() => SendPacket(new ToggleDecliningTargetPacket(true));
 
-        public void DisableDecliningTarget()
-        {
-            Packet packet = new Packet(Packet.Command.DisableDecliningTarget);
-            Debug.Log("Disabling declining target");
-            SendPacket(packet);
-        }
+        public void DisableDecliningTarget() => SendPacket(new ToggleDecliningTargetPacket(false));
 
-        public void DiscardSimples()
-        {
-            Packet packet = new Packet(Packet.Command.DiscardSimples);
-            SendToBoth(packet);
-        }
+        public void DiscardSimples() => SendToBoth(new DiscardSimplesPacket());
 
         public void AskForTrigger(ServerTrigger t, int? x, GameCard cardTriggerer, IStackable stackTriggerer, Player triggerer)
-        {
-            GameCard cardWhoseTrigger = t.effToTrigger.Source;
-            int effIndex = t.effToTrigger.EffectIndex;
-            //TODO send info about triggerer to display on client
-            Packet packet = new Packet(Packet.Command.OptionalTrigger, cardWhoseTrigger, effIndex, 0, x ?? 0, 0);
-            SendPacket(packet);
-        }
+            => SendPacket(new OptionalTriggerPacket(t.effToTrigger.Source.ID, t.effToTrigger.EffectIndex));
         #endregion other effect stuff
     }
 }
