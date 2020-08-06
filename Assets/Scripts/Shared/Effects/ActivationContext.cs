@@ -22,7 +22,7 @@ namespace KompasCore.Effects
             X = x;
             Space = space;
             StartIndex = startIndex;
-            Targets = targets ?? new List<GameCard>();
+            Targets = targets; //no use ??ing to a new list because there's the default parameterless constructor
         }
 
         public override string ToString()

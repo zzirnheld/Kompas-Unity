@@ -86,7 +86,7 @@ namespace KompasServer.Effects
             //set context parameters
             CurrActivationContext = context;
             X = context.X ?? 0;
-            Targets.AddRange(context.Targets);
+            if(context.Targets != null) Targets.AddRange(context.Targets);
 
             //notify relevant to this effect starting
             ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
@@ -165,6 +165,16 @@ namespace KompasServer.Effects
         {
             base.AddTarget(card);
             serverGame.ServerPlayers[card.ControllerIndex].ServerNotifier.SetTarget(Source, EffectIndex, card);
+        }
+
+        public override string ToString()
+        {
+            var sb = new System.Text.StringBuilder();
+
+            sb.Append($"Effect of {Source.CardName}:\n");
+            foreach (var s in Subeffects) sb.Append($"{s.GetType()},\n");
+
+            return sb.ToString();
         }
     }
 }

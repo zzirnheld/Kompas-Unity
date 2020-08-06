@@ -58,7 +58,7 @@ namespace KompasClient.Networking
         public void Execute(ClientGame clientGame)
         {
             var controller = clientGame.ClientPlayers[controllerIndex];
-            var card = clientGame.cardRepo.InstantiateClientAvatar(cardName, clientGame, controller, cardId);
+            var card = clientGame.cardRepo.InstantiateClientNonAvatar(cardName, clientGame, controller, cardId);
             clientGame.cardsByID.Add(cardId, card);
             switch (location)
             {

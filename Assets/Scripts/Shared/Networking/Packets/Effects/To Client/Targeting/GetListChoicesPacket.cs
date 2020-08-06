@@ -17,7 +17,7 @@ namespace KompasCore.Networking
 
         public GetListChoicesPacket() : base(GetListChoices) { }
 
-        public GetListChoicesPacket(int[] cardIds, int max, int sourceCardId, int effIndex, int subeffIndex)
+        public GetListChoicesPacket(int[] cardIds, int max, int sourceCardId, int effIndex, int subeffIndex) : this()
         {
             this.cardIds = cardIds;
             this.max = max;

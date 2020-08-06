@@ -34,6 +34,7 @@ namespace KompasCore.Networking
         public const string ListChoicesChosen = "List Choices Chosen";
         public const string OptionalTriggerResponse = "Optional Trigger Answered";
         public const string ChooseEffectOption = "Choose Effect Option";
+        public const string PassPriority = "Pass Priority";
             //from server to client
             //targeting
         public const string GetBoardTarget = "Get Board Target";

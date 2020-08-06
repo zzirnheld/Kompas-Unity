@@ -11,7 +11,7 @@ namespace KompasCore.Networking
     {
         public bool enabled;
 
-        public ToggleAllowResponsesPacket() : base(ToggleDecliningTarget) { }
+        public ToggleAllowResponsesPacket() : base(ToggleAllowResponses) { }
 
         public ToggleAllowResponsesPacket(bool enabled) : this()
         {

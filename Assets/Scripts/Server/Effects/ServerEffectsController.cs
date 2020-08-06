@@ -60,7 +60,8 @@ namespace KompasServer.Effects
 
         public void ResolveNextStackEntry()
         {
-            var (stackable, startIndex) = stack.Pop();
+            var (stackable, context) = stack.Pop();
+            Debug.Log($"Resolving next stack entry: {stackable}, {context}");
             if (stackable == null)
             {
                 ServerGame.TurnServerPlayer.ServerNotifier.DiscardSimples();
@@ -71,7 +72,7 @@ namespace KompasServer.Effects
             {
                 foreach (var p in ServerGame.ServerPlayers) p.ServerNotifier.RequestNoResponse();
                 CurrStackEntry = stackable;
-                stackable.StartResolution(startIndex);
+                stackable.StartResolution(context);
             }
         }
 

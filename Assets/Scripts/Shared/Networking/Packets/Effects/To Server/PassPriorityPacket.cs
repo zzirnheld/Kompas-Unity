@@ -7,7 +7,7 @@ namespace KompasCore.Networking
 {
     public class PassPriorityPacket : Packet
     {
-        public PassPriorityPacket() : base(ChooseEffectOption) { }
+        public PassPriorityPacket() : base(PassPriority) { }
 
         public override Packet Copy() => new PassPriorityPacket();
     }
