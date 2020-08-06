@@ -3,8 +3,9 @@ using KompasServer.GameCore;
 
 namespace KompasCore.Networking
 {
+    //not abstract so can deserialize to it
     [System.Serializable]
-    public abstract class Packet
+    public class Packet
     {
         #region commands
         public const string Invalid = "Invalid Command";
@@ -112,7 +113,8 @@ namespace KompasCore.Networking
         /// Creates an exact copy of this packet to send.
         /// </summary>
         /// <returns></returns>
-        public abstract Packet Copy();
+        public virtual Packet Copy() => new Packet(command);
+
         /// <summary>
         /// Creates a version of this packet that the opposite player will understand.
         /// </summary>

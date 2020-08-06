@@ -10,7 +10,8 @@ namespace KompasCore.GameCore
     public abstract class Game : MonoBehaviour
     {
         public const string CardListPath = "Card Jsons/Card List";
-        public static readonly CardLocation[] HiddenLocations = new CardLocation[] { CardLocation.Deck, CardLocation.Hand };
+        public static readonly CardLocation[] HiddenLocations 
+            = new CardLocation[] { CardLocation.Nowhere, CardLocation.Deck, CardLocation.Hand };
 
         public static Game mainGame;
 

@@ -15,7 +15,7 @@ namespace KompasCore.Networking
         public int y;
         public bool attached;
 
-        public AddCardPacket() : base(DeleteCard) { }
+        public AddCardPacket() : base(AddCard) { }
 
         public AddCardPacket(int cardId, string cardName, CardLocation location, int controllerIndex, bool invert = false) : this()
         {
