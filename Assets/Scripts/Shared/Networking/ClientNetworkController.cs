@@ -42,6 +42,7 @@ namespace KompasClient.Networking
 
                 //gamestate
                 case Packet.SetLeyload: return JsonUtility.FromJson<SetLeyloadClientPacket>(json);
+                case Packet.SetTurnPlayer: return JsonUtility.FromJson<SetTurnPlayerClientPacket>(json);
 
                 //card addition/deletion
                 case Packet.AddCard: return JsonUtility.FromJson<AddCardClientPacket>(json);

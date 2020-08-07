@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using KompasCore.Effects;
 using KompasCore.GameCore;
+using KompasClient.GameCore;
 
 namespace KompasClient.Effects
 {

@@ -76,6 +76,7 @@ namespace KompasServer.Effects
             TimesUsedThisTurn++;
             serverGame = game;
             Controller = ctrl;
+            ctrl.ServerNotifier.NotifyEffectActivated(this);
         }
 
         public void StartResolution(ActivationContext context)

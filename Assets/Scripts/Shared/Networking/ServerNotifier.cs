@@ -233,6 +233,8 @@ namespace KompasServer.Networking
             SendPackets(p, q);
         }
 
+        public void NotifyEffectActivated(ServerEffect eff) => SendToBoth(new EffectActivatedPacket(eff.Source.ID, eff.EffectIndex));
+
         public void EffectImpossible() => SendToBoth(new EffectImpossiblePacket());
 
         public void RequestResponse() => SendPacket(new ToggleAllowResponsesPacket(true));

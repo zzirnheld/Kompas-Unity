@@ -52,5 +52,11 @@ namespace KompasClient.Effects
                 }
             }
         }
+
+        public void Activated()
+        {
+            TimesUsedThisTurn++;
+            TimesUsedThisRound++;
+        }
     }
 }

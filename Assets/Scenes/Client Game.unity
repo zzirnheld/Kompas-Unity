@@ -15261,6 +15261,7 @@ MonoBehaviour:
   handObject: {fileID: 1921547572}
   passedPriority: 0
   ClientEnemy: {fileID: 1841194802}
+  clientGame: {fileID: 492080563}
 --- !u!1 &1836305639
 GameObject:
   m_ObjectHideFlags: 0
@@ -15585,6 +15586,7 @@ MonoBehaviour:
   handObject: {fileID: 60475902}
   passedPriority: 0
   ClientEnemy: {fileID: 1829834588}
+  clientGame: {fileID: 492080563}
 --- !u!1 &1847867115
 GameObject:
   m_ObjectHideFlags: 0
