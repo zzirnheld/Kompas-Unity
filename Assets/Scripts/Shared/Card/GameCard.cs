@@ -1,6 +1,7 @@
 ﻿using KompasCore.Effects;
 using KompasCore.GameCore;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace KompasCore.Cards
@@ -139,12 +140,13 @@ namespace KompasCore.Cards
         public virtual bool CanRemove => true;
         public virtual int CombatDamage => W;
         public (int n, int e, int s, int w) CharStats => (N, E, S, W);
+        public (int n, int e, int s, int w, int c, int a) Stats => (N, E, S, W, C, A);
         #endregion stats
 
         #region positioning
         public int BoardX { get; protected set; }
         public int BoardY { get; protected set; }
-        public (int, int) Position
+        public (int x, int y) Position
         {
             get => (BoardX, BoardY);
             set
@@ -154,6 +156,7 @@ namespace KompasCore.Cards
                 foreach (var aug in Augments) aug.Position = value;
             }
         }
+        public (int x, int y) SubjectivePosition => SubjectiveCoords(Position);
 
         private GameCard augmentedCard;
         public GameCard AugmentedCard
@@ -200,6 +203,7 @@ namespace KompasCore.Cards
                 cardCtrl?.SetPhysicalLocation(location);
             }
         }
+        public bool KnownToEnemy => !Game.HiddenLocations.Contains(Location);
         public int ID { get; private set; }
         public abstract IEnumerable<Effect> Effects { get; }
         public List<GameCard> Augments { get; private set; } = new List<GameCard>();
@@ -227,6 +231,10 @@ namespace KompasCore.Cards
                 }
             }
         }
+
+
+        public int SubjectiveCoord(int coord) => ControllerIndex == 0 ? coord : 6 - coord;
+        public (int, int) SubjectiveCoords((int x, int y) space) => (SubjectiveCoord(space.x), SubjectiveCoord(space.y));
 
         public void SetInfo(SerializableCard serializedCard, int id)
         {
@@ -278,16 +286,35 @@ namespace KompasCore.Cards
             */
         }
         public int DistanceTo(GameCard card) => DistanceTo(card.BoardX, card.BoardY);
-        public bool WithinSlots(int numSlots, GameCard card)
+        public bool WithinSpaces(int numSpaces, GameCard card)
         {
             if (card == null || card.Location != CardLocation.Field || Location != CardLocation.Field) return false;
-            return DistanceTo(card) <= numSlots;
+            return DistanceTo(card) <= numSpaces;
         }
-        public bool WithinSlots(int numSlots, int x, int y) => DistanceTo(x, y) <= numSlots;
+        public bool WithinSlots(int numSpaces, int x, int y) => DistanceTo(x, y) <= numSpaces;
         public bool IsAdjacentTo(GameCard card) => card != null && DistanceTo(card) == 1;
         public bool IsAdjacentTo(int x, int y) => DistanceTo(x, y) == 1;
         public virtual bool CardInAOE(GameCard c) => false;
         public virtual bool SpaceInAOE(int x, int y) => false;
+        public bool SameColumn(int x, int y) => BoardX + BoardY == x + y;
+        public bool SameColumn(GameCard c) => c.Location == CardLocation.Field && SameColumn(c.BoardX, c.BoardY);
+
+        /// <summary>
+        /// Returns whether the <paramref name="space"/> passed in is in front of this card
+        /// </summary>
+        /// <param name="space">The space to check if it's in front of this card</param>
+        /// <returns><see langword="true"/> if <paramref name="space"/> is in front of this, <see langword="false"/> otherwise.</returns>
+        public bool SpaceInFront((int x, int y) space)
+        {
+            return SameColumn(space.x, space.y) && SubjectiveCoord(space.x) > SubjectivePosition.x;
+        }
+
+        /// <summary>
+        /// Returns whether the card passed in is in front of this card
+        /// </summary>
+        /// <param name="card">The card to check if it's in front of this one</param>
+        /// <returns><see langword="true"/> if <paramref name="card"/> is in front of this, <see langword="false"/> otherwise.</returns>
+        public bool CardInFront(GameCard card) => SpaceInFront(card.Position);
         #endregion distance/adjacency
 
         public void PutBack() => cardCtrl?.SetPhysicalLocation(Location);
@@ -361,6 +388,16 @@ namespace KompasCore.Cards
             SetE(E + e, stackSrc);
             SetS(S + s, stackSrc);
             SetW(W + w, stackSrc);
+        }
+
+        public void SetStats((int n, int e, int s, int w, int c, int a) stats, IStackable stackSrc = null)
+        {
+            SetN(stats.n, stackSrc);
+            SetE(stats.e, stackSrc);
+            SetS(stats.s, stackSrc);
+            SetW(stats.w, stackSrc);
+            SetC(stats.c, stackSrc);
+            SetA(stats.a, stackSrc);
         }
 
         public virtual void SetNegated(bool negated, IStackable stackSrc = null) => Negated = negated;

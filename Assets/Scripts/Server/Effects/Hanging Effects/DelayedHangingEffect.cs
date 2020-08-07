@@ -1,5 +1,7 @@
-﻿using KompasCore.Effects;
+﻿using KompasCore.Cards;
+using KompasCore.Effects;
 using KompasServer.GameCore;
+using System.Collections.Generic;
 
 namespace KompasServer.Effects
 {
@@ -10,15 +12,17 @@ namespace KompasServer.Effects
         private readonly ServerEffect toResume;
         private readonly int indexToResumeResolution;
         private readonly ServerPlayer controller;
+        private readonly List<GameCard> targets;
 
         public DelayedHangingEffect(ServerGame game, TriggerRestriction triggerRestriction, string endCondition,
-            int numTimesToDelay, ServerEffect toResume, int indexToResumeResolution, ServerPlayer controller)
+            int numTimesToDelay, ServerEffect toResume, int indexToResumeResolution, ServerPlayer controller, List<GameCard> targets)
             : base(game, triggerRestriction, endCondition)
         {
             this.numTimesToDelay = numTimesToDelay;
             this.toResume = toResume;
             this.indexToResumeResolution = indexToResumeResolution;
             this.controller = controller;
+            this.targets = targets;
             numTimesDelayed = 0;
         }
 
@@ -41,7 +45,7 @@ namespace KompasServer.Effects
 
         protected override void Resolve()
         {
-            var context = new ActivationContext(startIndex: indexToResumeResolution);
+            var context = new ActivationContext(startIndex: indexToResumeResolution, targets: targets);
             serverGame.EffectsController.PushToStack(toResume, controller, context);
         }
     }

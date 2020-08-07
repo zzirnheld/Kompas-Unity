@@ -1,4 +1,6 @@
-﻿using KompasCore.Effects;
+﻿using KompasCore.Cards;
+using KompasCore.Effects;
+using System.Collections.Generic;
 
 namespace KompasServer.Effects
 {
@@ -18,7 +20,7 @@ namespace KompasServer.Effects
         public override bool Resolve()
         {
             var eff = new DelayedHangingEffect(ServerGame, triggerRestriction, triggerCondition,
-                numTimesToDelay, ServerEffect, indexToResume, EffectController);
+                numTimesToDelay, ServerEffect, indexToResume, EffectController, new List<GameCard>(Effect.Targets));
             ServerGame.EffectsController.RegisterHangingEffect(triggerCondition, eff);
             return ServerEffect.EffectImpossible();
         }

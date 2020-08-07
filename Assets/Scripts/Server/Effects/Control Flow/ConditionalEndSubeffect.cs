@@ -12,6 +12,8 @@ namespace KompasServer.Effects
         public const string NoneFitRestriction = "None Fit Restriction";
         public const string MustBeFriendlyTurn = "Must be Friendly Turn";
         public const string MustBeEnemyTurn = "Must be Enemy Turn";
+        public const string TargetViolatesRestriction = "Target Violates Restriction";
+        public const string TargetFitsRestriction = "Target Fits Restriction";
 
         public int constant = 0;
         public CardRestriction cardRestriction = new CardRestriction();
@@ -24,37 +26,26 @@ namespace KompasServer.Effects
             cardRestriction.Initialize(this);
         }
 
-        public override bool Resolve()
+        private bool ShouldEnd(string condition)
         {
-            bool end;
             switch (condition)
             {
-                case XLessThan0:
-                    end = ServerEffect.X < 0;
-                    break;
-                case XLessThanEqual0:
-                    end = ServerEffect.X <= 0;
-                    break;
-                case XGreaterThanConst:
-                    end = ServerEffect.X > constant;
-                    break;
-                case XLessThanConst:
-                    end = ServerEffect.X < constant;
-                    break;
-                case NoneFitRestriction:
-                    end = !ServerGame.Cards.Any(c => cardRestriction.Evaluate(c));
-                    break;
-                case MustBeFriendlyTurn:
-                    end = ServerGame.TurnPlayer != Effect.Controller;
-                    break;
-                case MustBeEnemyTurn:
-                    end = ServerGame.TurnPlayer == Effect.Controller;
-                    break;
-                default:
-                    throw new System.ArgumentException($"Condition {condition} invalid for conditional end subeffect");
+                case XLessThan0:         return ServerEffect.X < 0;
+                case XLessThanEqual0:    return ServerEffect.X <= 0;
+                case XGreaterThanConst:  return ServerEffect.X > constant;
+                case XLessThanConst:     return ServerEffect.X < constant;
+                case NoneFitRestriction: return !ServerGame.Cards.Any(c => cardRestriction.Evaluate(c));
+                case MustBeFriendlyTurn: return ServerGame.TurnPlayer != Effect.Controller;
+                case MustBeEnemyTurn:    return ServerGame.TurnPlayer == Effect.Controller;
+                case TargetViolatesRestriction: return !cardRestriction.Evaluate(Target);
+                case TargetFitsRestriction:     return cardRestriction.Evaluate(Target);
+                default: throw new System.ArgumentException($"Condition {condition} invalid for conditional end subeffect");
             }
+        }
 
-            if (end) return ServerEffect.EndResolution();
+        public override bool Resolve()
+        {
+            if (ShouldEnd(condition)) return ServerEffect.EndResolution();
             else return ServerEffect.ResolveNextSubeffect();
         }
     }

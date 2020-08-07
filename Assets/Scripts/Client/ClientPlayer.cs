@@ -1,10 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class ClientPlayer : Player
+﻿namespace KompasClient.GameCore
 {
-    public ClientPlayer ClientEnemy;
+    public class ClientPlayer : Player
+    {
+        public ClientPlayer ClientEnemy;
+        public ClientGame clientGame;
 
-    public override Player Enemy => ClientEnemy;
+        public override Player Enemy => ClientEnemy;
+
+        public override int Pips 
+        { 
+            get => base.Pips;
+            set
+            {
+                base.Pips = value;
+                if (index == 0) clientGame.uiCtrl.UpdateFriendlyPips(Pips);
+                else clientGame.uiCtrl.UpdateEnemyPips(Pips);
+            }
+        }
+    }
 }

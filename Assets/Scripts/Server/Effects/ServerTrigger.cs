@@ -79,7 +79,7 @@ namespace KompasServer.Effects
         /// <param name="cardTriggerer">The card that triggered this, if any.</param>
         /// <param name="stackTrigger">The effect or attack that triggered this, if any.</param>
         /// <param name="x">If the action that triggered this has a value of x, it goes here. Otherwise, null.</param>
-        public virtual void TriggerIfValid(ActivationContext context)
+        public void TriggerIfValid(ActivationContext context)
         {
             /*Debug.Log($"Is trigger valid for effect of {effToTrigger.thisCard.CardName} with id {effToTrigger.thisCard.ID}? " +
                 $"{CheckTriggerRestrictions(triggerer, stackTrigger, x)}");*/

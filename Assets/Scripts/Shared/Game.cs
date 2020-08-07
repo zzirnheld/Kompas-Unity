@@ -10,6 +10,8 @@ namespace KompasCore.GameCore
     public abstract class Game : MonoBehaviour
     {
         public const string CardListPath = "Card Jsons/Card List";
+        public static readonly CardLocation[] HiddenLocations 
+            = new CardLocation[] { CardLocation.Nowhere, CardLocation.Deck, CardLocation.Hand };
 
         public static Game mainGame;
 
@@ -93,6 +95,23 @@ namespace KompasCore.GameCore
             }
         }
 
+        public bool ExistsEffectPlaySpace(PlayRestriction restriction, Effect eff)
+        {
+            for(int x = 0; x < 7; x++)
+            {
+                for(int y = 0; y < 7; y++)
+                {
+                    if (restriction.EvaluateEffectPlay(x, y, eff)) return true;
+                }
+            }
+
+            return false;
+        }
+
+        public bool ValidSpellSpace(int x, int y)
+        {
+            return boardCtrl.CardsAdjacentTo(x, y).Where(c => c.CardType == 'S').Count() <= 2;
+        }
 
         protected void ResetCardsForTurn()
         {

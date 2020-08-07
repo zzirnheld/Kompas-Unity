@@ -1,4 +1,5 @@
 ﻿using KompasCore.Cards;
+using System.Linq;
 
 namespace KompasCore.Effects
 {
@@ -14,7 +15,8 @@ namespace KompasCore.Effects
         //In other words, if we're swapping, can the other card also move here?
         //Also checks that that other card is friendly
         private const string DestinationCanMoveHere = "Destination is Empty or Friendly";
-        //TODO maybe a "destination can move here" to force swaps with enemy characters?
+        //If this is a spell being moved, it can't be next to 2 other spells
+        private const string StandardSpellMoveRestiction = "If Spell, Not Next to 2 Other Spells";
         #endregion Basic Movement Restrictions
 
         //Whether the character has been activated (for Golems)
@@ -22,7 +24,8 @@ namespace KompasCore.Effects
 
         //The actual list of restrictions, set by json.
         //Default restrictions are that only characters with enough n can move.
-        public string[] movementRestrictions = new string[] { IsCharacter, CanMoveEnoughSpaces, DestinationCanMoveHere };
+        public string[] normalMovementRestrictions = new string[] { IsCharacter, CanMoveEnoughSpaces, DestinationCanMoveHere, StandardSpellMoveRestiction };
+        public string[] effectMovementRestrictions = new string[] { StandardSpellMoveRestiction };
 
         public GameCard Card { get; private set; }
 
@@ -31,44 +34,67 @@ namespace KompasCore.Effects
             Card = card;
         }
 
+        private bool RestrictionValid(string restriction, int x, int y, bool isSwapTarget, bool byEffect)
+        {
+            switch (restriction)
+            {
+                //normal restrictions
+                case IsCharacter: return Card.CardType == 'C';
+                case CanMoveEnoughSpaces: return Card.SpacesCanMove >= Card.DistanceTo(x, y);
+                case StandardSpellMoveRestiction: return Card.CardType != 'S' || Card.Game.ValidSpellSpace(x, y);
+                case DestinationCanMoveHere:
+                    if (isSwapTarget) return true;
+                    var atDest = Card.Game.boardCtrl.GetCardAt(x, y);
+                    if (atDest == null) return true;
+                    if(byEffect) return atDest.MovementRestriction.EvaluateEffectMove(Card.Position, isSwapTarget: true);
+                    else return atDest.MovementRestriction.EvaluateNormalMove(Card.Position, isSwapTarget: true);
+
+                //special effect restrictions
+                case IsActive: return Card.Activated;
+                default: throw new System.ArgumentException($"Could not understand movement restriction {restriction}");
+            }
+        }
+
+        private bool ValidIndices(int x, int y) => 0 <= x && x < 7 && 0 <= y && y < 7;
+
         /// <summary>
-        /// Checks whether the card this is attached to can move to (x, y)
+        /// Checks whether the card this is attached to can move to (x, y) as a normal action
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="isSwapTarget">Whether this card is the target of a swap. 
+        /// <param name="space">Space this card might move to</param>
+        /// <param name="isSwapTarget">Whether this card is the target of a swap. <br></br>
         /// If this is true, ignores "Destination Can Move Here" restriction, because otherwise you would have infinite recursion.</param>
         /// <returns><see langword="true"/> if the card can move to (x, y); <see langword="false"/> otherwise.</returns>
-        public bool Evaluate(int x, int y, bool isSwapTarget = false)
-        {
-            if (x < 0 || y < 0 || x > 6 || y > 6) return false;
+        public bool EvaluateNormalMove((int x, int y) space, bool isSwapTarget = false) => EvaluateNormalMove(space.x, space.y, isSwapTarget);
 
-            foreach (string r in movementRestrictions)
-            {
-                switch (r)
-                {
-                    case IsCharacter:
-                        if (Card.CardType != 'C') return false;
-                        break;
-                    case CanMoveEnoughSpaces:
-                        if (Card.SpacesCanMove < Card.DistanceTo(x, y)) return false;
-                        break;
-                    case DestinationCanMoveHere:
-                        if (isSwapTarget) break;
-                        var atDest = Card.Game.boardCtrl.GetCardAt(x, y);
-                        if (atDest == null) break;
-                        if (atDest.Controller != Card.Controller) return false;
-                        if (!atDest.MovementRestriction.Evaluate(Card.BoardX, Card.BoardY, isSwapTarget: true)) return false;
-                        break;
-                    case IsActive:
-                        if (!Card.Activated) return false;
-                        break;
-                    default:
-                        throw new System.ArgumentException($"Could not understand movement restriction {r}");
-                }
-            }
+        /// <summary>
+        /// Checks whether the card this is attached to can move to (x, y) as a normal action
+        /// </summary>
+        /// <param name="x">X coord this card might move to</param>
+        /// <param name="y">Y coord this card might move to</param>
+        /// <param name="isSwapTarget">Whether this card is the target of a swap. <br></br>
+        /// If this is true, ignores "Destination Can Move Here" restriction, because otherwise you would have infinite recursion.</param>
+        /// <returns><see langword="true"/> if the card can move to (x, y); <see langword="false"/> otherwise.</returns>
+        public bool EvaluateNormalMove(int x, int y, bool isSwapTarget = false)
+            => ValidIndices(x, y) && normalMovementRestrictions.All(r => RestrictionValid(r, x, y, isSwapTarget, false));
 
-            return true;
-        }
+        /// <summary>
+        /// Checks whether the card this is attached to can move to (x, y) as part of an effect
+        /// </summary>
+        /// <param name="space">Space this card might move to</param>
+        /// <param name="isSwapTarget">Whether this card is the target of a swap. <br></br>
+        /// If this is true, ignores "Destination Can Move Here" restriction, because otherwise you would have infinite recursion.</param>
+        /// <returns><see langword="true"/> if the card can move to (x, y); <see langword="false"/> otherwise.</returns>
+        public bool EvaluateEffectMove((int x, int y) space, bool isSwapTarget = false) => EvaluateEffectMove(space.x, space.y, isSwapTarget);
+
+        /// <summary>
+        /// Checks whether the card this is attached to can move to (x, y) as part of an effect
+        /// </summary>
+        /// <param name="x">X coord this card might move to</param>
+        /// <param name="y">Y coord this card might move to</param>
+        /// <param name="isSwapTarget">Whether this card is the target of a swap. <br></br>
+        /// If this is true, ignores "Destination Can Move Here" restriction, because otherwise you would have infinite recursion.</param>
+        /// <returns><see langword="true"/> if the card can move to (x, y); <see langword="false"/> otherwise.</returns>
+        public bool EvaluateEffectMove(int x, int y, bool isSwapTarget = false)
+            => ValidIndices(x, y) && effectMovementRestrictions.All(r => RestrictionValid(r, x, y, isSwapTarget: false, byEffect: true));
     }
 }

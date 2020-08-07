@@ -42,7 +42,7 @@
 				}",
 				"{
 					\"subeffType\":\"Jump to Subeffect\",
-					\"IndexToJumpTo\":7
+					\"indexToJumpTo\":7
 				}",
 				"{
 					\"subeffType\":\"Discard Target\",

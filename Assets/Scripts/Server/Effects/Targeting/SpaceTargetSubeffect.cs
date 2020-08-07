@@ -15,15 +15,15 @@ namespace KompasServer.Effects
 
         public override bool Resolve()
         {
-            if (!ServerEffect.serverGame.ExistsSpaceTarget(spaceRestriction))
+            if (ServerEffect.serverGame.ExistsSpaceTarget(spaceRestriction))
             {
-                Debug.Log($"No valid coords exist for {ThisCard.CardName} effect");
-                return ServerEffect.EffectImpossible();
+                EffectController.ServerNotifier.GetSpaceTarget(this);
+                return false;
             }
             else
             {
-                EffectController.ServerNotifier.GetSpaceTarget(ThisCard, this);
-                return false;
+                Debug.Log($"No valid coords exist for {ThisCard.CardName} effect");
+                return ServerEffect.EffectImpossible();
             }
         }
 
