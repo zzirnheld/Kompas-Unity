@@ -1,4 +1,4 @@
-﻿using Boo.Lang;
+﻿using System.Collections.Generic;
 using KompasCore.Cards;
 using KompasServer.GameCore;
 using System.Linq;
@@ -38,6 +38,7 @@ namespace KompasCore.Effects
             Effect = eff;
             if (activationRestrictions.Contains("Default")) activationRestrictions.AddRange(DefaultRestrictions);
             Debug.Log($"Initializing activation restriction for {Card.CardName} with restrictions: {string.Join(", ", activationRestrictions)}");
+            //Debug.Log($"Serialized version: {JsonUtility.ToJson(this)}");
         }
 
         private bool RestrictionValid(string r, Player activator)

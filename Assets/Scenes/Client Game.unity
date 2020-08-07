@@ -4352,6 +4352,20 @@ MonoBehaviour:
       cSpaces: 0
       adjacencySubtypes: []
       blurb: 
+    limitAdjacencyRestriction:
+      cardRestrictions: []
+      costsLessThan: 0
+      nameIs: 
+      subtypesInclude: []
+      subtypesExclude: []
+      constant: 0
+      locations: 
+      costMultiplier: 1
+      costDivisor: 1
+      cSpaces: 0
+      adjacencySubtypes: []
+      blurb: 
+    adjacencyLimit: 0
     connectednessRestriction:
       cardRestrictions: []
       costsLessThan: 0
@@ -10110,6 +10124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1049328078}
   - component: {fileID: 1049328079}
+  - component: {fileID: 1049328080}
   m_Layer: 5
   m_Name: Autodecline Checkbox
   m_TagString: Untagged
@@ -10183,7 +10198,27 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 0
+  m_IsOn: 1
+--- !u!114 &1049328080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049328077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: 20
+  m_MinHeight: 40
+  m_PreferredWidth: 20
+  m_PreferredHeight: 40
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &1064415424
 GameObject:
   m_ObjectHideFlags: 0
@@ -15247,6 +15282,7 @@ MonoBehaviour:
   handObject: {fileID: 1921547572}
   passedPriority: 0
   ClientEnemy: {fileID: 1841194802}
+  clientGame: {fileID: 492080563}
 --- !u!1 &1836305639
 GameObject:
   m_ObjectHideFlags: 0
@@ -15571,6 +15607,7 @@ MonoBehaviour:
   handObject: {fileID: 60475902}
   passedPriority: 0
   ClientEnemy: {fileID: 1829834588}
+  clientGame: {fileID: 492080563}
 --- !u!1 &1847867115
 GameObject:
   m_ObjectHideFlags: 0

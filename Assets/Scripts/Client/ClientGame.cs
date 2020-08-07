@@ -73,21 +73,6 @@ namespace KompasClient.GameCore
             foreach (var c in Cards) c.PutBack();
         }
 
-        //game mechanics
-        #region setting pips
-        public void SetFriendlyPips(int num)
-        {
-            Players[0].Pips = num;
-            uiCtrl.UpdateFriendlyPips(num);
-        }
-
-        public void SetEnemyPips(int num)
-        {
-            Players[1].Pips = num;
-            uiCtrl.UpdateEnemyPips(num);
-        }
-        #endregion
-
         public void SetAvatar(int player, string avatarName, int avatarID)
         {
             if (player >= 2) throw new System.ArgumentException();

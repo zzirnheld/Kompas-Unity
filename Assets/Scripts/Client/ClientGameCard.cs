@@ -57,7 +57,7 @@ namespace KompasClient.Cards
         {
             base.SetN(n, stackSrc);
             if (ClientGame.clientUICtrl.ShownCard == this)
-                ClientGame.clientUICtrl.RefreshInfo();
+                ClientGame.clientUICtrl.RefreshShownCardInfo();
         }
     }
 }

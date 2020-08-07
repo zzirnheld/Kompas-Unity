@@ -46,7 +46,8 @@ namespace KompasServer.Cards
             get => base.Location;
             set
             {
-                if (Location == CardLocation.Hand) ServerController.ServerEnemy.ServerNotifier.NotifyDecrementHand();
+                if (Location == CardLocation.Hand && value != CardLocation.Hand)
+                    ServerController.ServerEnemy.ServerNotifier.NotifyDecrementHand();
                 base.Location = value;
             }
         }
@@ -103,7 +104,7 @@ namespace KompasServer.Cards
             EffectsController.TriggerForCondition(Trigger.NChange, context);
             EffectsController.TriggerForCondition(Trigger.NESWChange, context);
             base.SetN(n);
-            ServerNotifier.NotifySetN(this);
+            ServerNotifier.NotifyStats(this);
         }
 
         public override void SetE(int e, IStackable stackSrc = null)
@@ -112,7 +113,7 @@ namespace KompasServer.Cards
             EffectsController.TriggerForCondition(Trigger.EChange, context);
             EffectsController.TriggerForCondition(Trigger.NESWChange, context);
             base.SetE(e);
-            ServerNotifier.NotifySetE(this);
+            ServerNotifier.NotifyStats(this);
         }
 
         public override void SetS(int s, IStackable stackSrc = null)
@@ -121,7 +122,7 @@ namespace KompasServer.Cards
             EffectsController.TriggerForCondition(Trigger.SChange, context);
             EffectsController.TriggerForCondition(Trigger.NESWChange, context);
             base.SetS(s);
-            ServerNotifier.NotifySetS(this);
+            ServerNotifier.NotifyStats(this);
         }
 
         public override void SetW(int w, IStackable stackSrc = null)
@@ -130,7 +131,7 @@ namespace KompasServer.Cards
             EffectsController.TriggerForCondition(Trigger.WChange, context);
             EffectsController.TriggerForCondition(Trigger.NESWChange, context);
             base.SetW(w);
-            ServerNotifier.NotifySetW(this);
+            ServerNotifier.NotifyStats(this);
         }
 
         public override void SetC(int c, IStackable stackSrc = null)
@@ -139,7 +140,7 @@ namespace KompasServer.Cards
             EffectsController.TriggerForCondition(Trigger.CChange, context);
             EffectsController.TriggerForCondition(Trigger.NESWChange, context);
             base.SetC(c);
-            ServerNotifier.NotifySetC(this);
+            ServerNotifier.NotifyStats(this);
         }
 
         public override void SetA(int a, IStackable stackSrc = null)
@@ -148,7 +149,7 @@ namespace KompasServer.Cards
             EffectsController.TriggerForCondition(Trigger.AChange, context);
             EffectsController.TriggerForCondition(Trigger.NESWChange, context);
             base.SetA(a);
-            ServerNotifier.NotifySetA(this);
+            ServerNotifier.NotifyStats(this);
         }
 
         public override void SetNegated(bool negated, IStackable stackSrc = null)
