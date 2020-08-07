@@ -29,6 +29,9 @@ namespace KompasServer.Effects
             set => confirmed = value;
         }
 
+        public int order = -1;
+        public bool Ordered => order != -1;
+
         /// <summary>
         /// Creates a trigger from a json
         /// </summary>
@@ -77,6 +80,7 @@ namespace KompasServer.Effects
         {
             Responded = false;
             Confirmed = false;
+            order = -1;
         }
     }
 }

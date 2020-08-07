@@ -267,6 +267,13 @@ namespace KompasServer.Networking
 
         public void AskForTrigger(ServerTrigger t) 
             => SendPacket(new OptionalTriggerPacket(t.effToTrigger.Source.ID, t.effToTrigger.EffectIndex));
+
+        public void GetTriggerOrder(IEnumerable<ServerTrigger> triggers)
+        {
+            int[] cardIds = triggers.Select(t => t.effToTrigger.Source.ID).ToArray();
+            int[] effIndices = triggers.Select(t => t.effToTrigger.EffectIndex).ToArray();
+            SendPacket(new GetTriggerOrderPacket(cardIds, effIndices));
+        }
         #endregion other effect stuff
     }
 }

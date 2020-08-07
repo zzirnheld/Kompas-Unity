@@ -101,6 +101,53 @@ namespace KompasServer.Effects
             }
         }
 
+        /// <summary>
+        /// Checks to see if anything needs to be done with triggers before checking for other responses
+        /// </summary>
+        /// <param name="turnPlayer"></param>
+        /// <returns><see langword="true"/> if all triggers have been addressed, <see langword="false"/> otherwise</returns>
+        private bool CheckTriggers(ServerPlayer turnPlayer)
+        {
+            //then ask the respective player about that trigger.
+            lock (triggerStackLock)
+            {
+                var triggered = triggeredTriggers.Peek();
+                var list = triggered.triggers;
+                //if any triggers have not been responded to, make them get responded to
+                currentOptionalTrigger = list.FirstOrDefault(t => !t.Responded);
+                if (currentOptionalTrigger != default)
+                {
+                    currentOptionalTrigger.effToTrigger.ServerController.ServerNotifier.AskForTrigger(currentOptionalTrigger);
+                    return false;
+                }
+
+                //now that all effects have been addressed, see if there's any
+                foreach(var p in ServerGame.Players)
+                {
+                    var thisPlayers = list.Where(t => t.effToTrigger.Controller == p);
+                    if (thisPlayers.Count() == 1) thisPlayers.First().order = 1;
+                }
+
+                //if all triggers have been responded to
+                var confirmed = list.Where(t => t.Confirmed);
+                if (confirmed.All(t => t.Ordered))
+                {
+                    foreach (var t in confirmed.Where(t => t.effToTrigger.Controller == turnPlayer))
+                        PushToStack(t.effToTrigger, triggered.context);
+                    foreach (var t in confirmed.Where(t => t.effToTrigger.Controller == turnPlayer.Enemy))
+                        PushToStack(t.effToTrigger, triggered.context);
+                }
+                else
+                {
+                    foreach (var p in ServerGame.ServerPlayers)
+                    {
+                        var thisPlayers = confirmed.Where(t => t.effToTrigger.Controller == p);
+                        if (thisPlayers.Any(t => !t.Ordered)) p.ServerNotifier.GetTriggerOrder(thisPlayers);
+                    }
+                }
+            }
+        }
+
         public void CheckForResponse(bool reset = true)
         {
             if (CurrStackEntry != null)
@@ -112,31 +159,7 @@ namespace KompasServer.Effects
             if (reset) ResetPassingPriority();
 
             //if there's any triggers triggered
-            if (triggeredTriggers.Count > 0)
-            {
-                //then ask the respective player about that trigger.
-                lock (triggerStackLock)
-                {
-                    var triggered = triggeredTriggers.Peek();
-                    var list = triggered.triggers;
-                    //if any triggers have not been responded to, make them get responded to
-                    currentOptionalTrigger = list.FirstOrDefault(t => !t.Responded);
-                    if(currentOptionalTrigger != default)
-                    {
-                        currentOptionalTrigger.effToTrigger.ServerController.ServerNotifier.AskForTrigger(currentOptionalTrigger);
-                        return;
-                    }
-                    //if all triggers have been responded to
-                    else
-                    {
-                        //push the ones that are confirmed (i.e. mandatory or accepted) TODO here's where I need to put the ordering
-                        foreach (var t in list.Where(t => t.Confirmed)) PushToStack(t.effToTrigger, triggered.context);
-                        //and reset them all, for the next time triggering might happen
-                        foreach (var t in list) t.ResetConfirmation();
-                    }
-                }
-                //if the player chooses to trigger it, it will be removed from the list
-            }
+            if (triggeredTriggers.Count > 0) CheckTriggers(ServerGame.TurnServerPlayer);
 
             //check if responses exist. if not, resolve
             lock (responseLock)
