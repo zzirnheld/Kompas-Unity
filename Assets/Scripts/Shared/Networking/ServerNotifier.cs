@@ -265,7 +265,7 @@ namespace KompasServer.Networking
 
         public void DiscardSimples() => SendToBoth(new DiscardSimplesPacket());
 
-        public void AskForTrigger(ServerTrigger t, int? x, GameCard cardTriggerer, IStackable stackTriggerer, Player triggerer)
+        public void AskForTrigger(ServerTrigger t) 
             => SendPacket(new OptionalTriggerPacket(t.effToTrigger.Source.ID, t.effToTrigger.EffectIndex));
         #endregion other effect stuff
     }

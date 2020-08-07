@@ -57,6 +57,7 @@ namespace KompasCore.Networking
         public const string EffectImpossible = "Effect Impossible";
         public const string OptionalTrigger = "Optional Trigger";
         public const string ToggleAllowResponses = "Toggle Allow Responses";
+        public const string GetTriggerOrder = "Get Trigger Order";
 
         //gamestate (from server to client)
         public const string SetLeyload = "Set Leyload";

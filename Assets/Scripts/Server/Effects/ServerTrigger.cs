@@ -9,6 +9,26 @@ namespace KompasServer.Effects
     {
         public ServerEffect effToTrigger;
 
+        private bool responded = false;
+        /// <summary>
+        /// Represents whether this trigger, if optional, has been responded to (to accept or decline)
+        /// </summary>
+        public bool Responded
+        {
+            get => !optional || responded;
+            set => responded = value;
+        }
+
+        private bool confirmed = false;
+        /// <summary>
+        /// Represents whether this trigger, if optional, was chosen to be used or not.
+        /// </summary>
+        public bool Confirmed
+        {
+            get => !optional || confirmed;
+            set => confirmed = value;
+        }
+
         /// <summary>
         /// Creates a trigger from a json
         /// </summary>
@@ -37,59 +57,26 @@ namespace KompasServer.Effects
         }
 
         /// <summary>
-        /// Pushes this trigger's effect onto the stack with the value of X if applicable.
-        /// </summary>
-        /// <param name="x"></param>
-        protected void TriggerEffect(ActivationContext context)
-        {
-            Debug.Log($"Triggering effect of {effToTrigger.Source.CardName} for context {context}");
-            //TODO should you notify right now about effect x? as of right now, no, because the important thing is the x value currently set in client network controller
-            //and either another effect could be currently resolving with a different value of x
-            //or the value of x could get changed between when this triggers and when the effect resolves
-            effToTrigger.PushToStack(effToTrigger.serverGame.ServerPlayers[effToTrigger.Source.ControllerIndex], context);
-        }
-
-        /// <summary>
-        /// Trigger this effect, ignoring the trigger restriction
-        /// </summary>
-        /// <param name="context"></param>
-        /// <param name="controller"></param>
-        public void OverrideTrigger(ActivationContext context, ServerPlayer controller) => effToTrigger.PushToStack(controller, context);
-
-        /// <summary>
         /// Checks all relevant trigger restrictions
         /// </summary>
         /// <param name="cardTriggerer">The card that triggered this, if any.</param>
         /// <param name="stackTrigger">The effect or attack that triggered this, if any.</param>
         /// <param name="x">If the action that triggered this has a value of x, it goes here. Otherwise, null.</param>
         /// <returns>Whether all restrictions of the trigger are fulfilled.</returns>
-        protected bool CheckTriggerRestrictions(ActivationContext context)
+        public bool ValidForContext(ActivationContext context)
         {
-            if (triggerRestriction == null)
-            {
-                Debug.LogWarning($"Warning: null trigger restriction for effect of {effToTrigger.Source.CardName}");
-            }
+            if (triggerRestriction == null) throw new System.ArgumentNullException($"null trigger restriction for effect of {effToTrigger.Source.CardName}");
 
             return triggerRestriction.Evaluate(context);
         }
 
         /// <summary>
-        /// If the trigger for this effect applies to this trigger source, triggers this trigger's effect.
+        /// Resets Confirmed and Responded, for the next time this effect might be triggered
         /// </summary>
-        /// <param name="cardTriggerer">The card that triggered this, if any.</param>
-        /// <param name="stackTrigger">The effect or attack that triggered this, if any.</param>
-        /// <param name="x">If the action that triggered this has a value of x, it goes here. Otherwise, null.</param>
-        public void TriggerIfValid(ActivationContext context)
+        public void ResetConfirmation()
         {
-            /*Debug.Log($"Is trigger valid for effect of {effToTrigger.thisCard.CardName} with id {effToTrigger.thisCard.ID}? " +
-                $"{CheckTriggerRestrictions(triggerer, stackTrigger, x)}");*/
-            if (CheckTriggerRestrictions(context))
-            {
-                Debug.Log($"Trigger is valid for effect of {effToTrigger.Source.CardName} with id {effToTrigger.Source.ID}");
-                if (optional) effToTrigger.serverGame.EffectsController
-                         .AskForTrigger(this, context, effToTrigger.serverGame.ServerPlayers[effToTrigger.Source.ControllerIndex]);
-                else TriggerEffect(context);
-            }
+            Responded = false;
+            Confirmed = false;
         }
     }
 }
