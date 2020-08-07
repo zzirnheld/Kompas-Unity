@@ -95,9 +95,6 @@ namespace KompasServer.Effects
 
         public void OptionalTriggerAnswered(bool answer)
         {
-            //TODO: in theory, this would allow anyone to just send a packet that had true or false in it and answer for the player
-            //but they can kinda cheat like that with everything here...
-
             lock (triggerStackLock)
             {
                 if (OptionalTriggersToAsk.Count == 0)
@@ -128,7 +125,7 @@ namespace KompasServer.Effects
                 lock (triggerStackLock)
                 {
                     var (t, context, controller) = OptionalTriggersToAsk.Peek();
-                    controller?.ServerNotifier.AskForTrigger(t, context.X, context.Card, context.Stackable, context.Triggerer);
+                    controller.ServerNotifier.AskForTrigger(t, context.X, context.Card, context.Stackable, context.Triggerer);
                 }
                 //if the player chooses to trigger it, it will be removed from the list
             }
