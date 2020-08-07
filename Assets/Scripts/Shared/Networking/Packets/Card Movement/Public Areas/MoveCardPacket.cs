@@ -16,8 +16,8 @@ namespace KompasCore.Networking
         public MoveCardPacket(int cardId, int x, int y, bool normalMove, bool invert) : this()
         {
             this.cardId = cardId;
-            this.x = invert ? x : 6 - x;
-            this.y = invert ? y : 6 - y;
+            this.x = invert ? 6 - x : x;
+            this.y = invert ? 6 - y : y;
             this.normalMove = normalMove;
         }
 

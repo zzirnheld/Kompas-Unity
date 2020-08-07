@@ -38,7 +38,7 @@ namespace KompasClient.Networking
         {
             var subeff = clientGame.GetCardWithID(sourceCardId)?.Effects.ElementAt(effIndex).Subeffects[subeffIndex];
             if (subeff == null) return;
-            var restriction = (subeff as DummyCardTargetSubeffect)?.cardRestriction;
+            var restriction = (subeff as DummyBoardTargetSubeffect)?.cardRestriction;
             if (restriction != null)
             {
                 clientGame.targetMode = Game.TargetMode.BoardTarget;
