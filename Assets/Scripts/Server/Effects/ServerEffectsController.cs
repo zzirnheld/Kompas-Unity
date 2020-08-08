@@ -127,7 +127,7 @@ namespace KompasServer.Effects
             lock (triggerStackLock)
             {
                 var triggered = TriggeredTriggers.Peek();
-                var list = triggered.triggers;
+                var list = triggered.triggers.Where(t => t.StillValidForContext(triggered.context));
                 Debug.Log($"Checking {list.Count()} triggers...: {string.Join(", ", list.Select(t => t.blurb))}");
                 //if there's no triggers, skip all this logic
                 if (!list.Any())
@@ -141,14 +141,14 @@ namespace KompasServer.Effects
                 currentOptionalTrigger = list.FirstOrDefault(t => !t.Responded);
                 if (currentOptionalTrigger != default)
                 {
-                    currentOptionalTrigger.effToTrigger.ServerController.ServerNotifier.AskForTrigger(currentOptionalTrigger);
+                    currentOptionalTrigger.serverEffect.ServerController.ServerNotifier.AskForTrigger(currentOptionalTrigger);
                     return false;
                 }
 
                 //now that all effects have been addressed, see if there's any
                 foreach(var p in ServerGame.Players)
                 {
-                    var thisPlayers = list.Where(t => t.effToTrigger.Controller == p);
+                    var thisPlayers = list.Where(t => t.serverEffect.Controller == p);
                     if (thisPlayers.Count() == 1) thisPlayers.First().order = 1;
                 }
 
@@ -156,10 +156,10 @@ namespace KompasServer.Effects
                 var confirmed = list.Where(t => t.Confirmed);
                 if (confirmed.All(t => t.Ordered))
                 {
-                    foreach (var t in confirmed.Where(t => t.effToTrigger.Controller == turnPlayer).OrderBy(t => t.order))
-                        PushToStack(t.effToTrigger, triggered.context);
-                    foreach (var t in confirmed.Where(t => t.effToTrigger.Controller == turnPlayer.Enemy).OrderBy(t => t.order))
-                        PushToStack(t.effToTrigger, triggered.context);
+                    foreach (var t in confirmed.Where(t => t.serverEffect.Controller == turnPlayer).OrderBy(t => t.order))
+                        PushToStack(t.serverEffect, triggered.context);
+                    foreach (var t in confirmed.Where(t => t.serverEffect.Controller == turnPlayer.Enemy).OrderBy(t => t.order))
+                        PushToStack(t.serverEffect, triggered.context);
                     TriggeredTriggers.Dequeue();
                     return true;
                 }
@@ -167,7 +167,7 @@ namespace KompasServer.Effects
                 {
                     foreach (var p in ServerGame.ServerPlayers)
                     {
-                        var thisPlayers = confirmed.Where(t => t.effToTrigger.Controller == p);
+                        var thisPlayers = confirmed.Where(t => t.serverEffect.Controller == p);
                         if (thisPlayers.Any(t => !t.Ordered)) p.ServerNotifier.GetTriggerOrder(thisPlayers);
                     }
                     return false;
@@ -219,7 +219,7 @@ namespace KompasServer.Effects
         #region triggers
         public void RegisterTrigger(string condition, ServerTrigger trigger)
         {
-            Debug.Log($"Registering a new trigger from card {trigger.effToTrigger.Source.CardName} to condition {condition}");
+            Debug.Log($"Registering a new trigger from card {trigger.serverEffect.Source.CardName} to condition {condition}");
             List<ServerTrigger> triggers = triggerMap[condition];
             if (triggers == null)
             {
@@ -262,18 +262,12 @@ namespace KompasServer.Effects
             }
 
             /* 
-             * this might need to be .toArray()ed, but it might not
-             * since linq builds a query, this might be executed only when the enumerable is iterated through 
-             * which would be exactly what we need: 
-             * for it to only check the triggers to be ordered only after the others have been put on the stack. 
+             * Needs to be toArray()ed because cards might move out of correct state after this moment.
+             * Later, when triggers are being ordered, stuff like 1/turn will be rechecked.
              */
-            var validTriggers = triggerMap[condition].Where(t => t.ValidForContext(context));
+            var validTriggers = triggerMap[condition].Where(t => t.ValidForContext(context)).ToArray();
             if (!validTriggers.Any()) return;
-            var triggers = new TriggersTriggered
-            (
-                triggers: validTriggers,
-                context: context
-            );
+            var triggers = new TriggersTriggered(triggers: validTriggers, context: context);
             Debug.Log($"Triggers triggered: {string.Join(", ", triggers.triggers.Select(t => t.blurb))}");
             lock (triggerStackLock)
             {

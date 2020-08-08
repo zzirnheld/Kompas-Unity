@@ -1,5 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasServer.Effects;
+using System.Linq;
 using UnityEngine;
 
 namespace KompasCore.Effects
@@ -41,6 +42,8 @@ namespace KompasCore.Effects
         public const string NotFromEffect = "Not From Effect"; //501,
         public const string MaxPerRound = "Max Per Round"; //502
 
+        public static readonly string[] ReevalationRestrictions = { MaxPerTurn, MaxPerRound };
+
         public string[] triggerRestrictions = new string[0];
         public CardRestriction cardRestriction = new CardRestriction(); //TODO refactor boardrestrictions to be part of cardrestriction
         public XRestriction xRestriction = new XRestriction();
@@ -62,71 +65,40 @@ namespace KompasCore.Effects
             this.ThisTrigger = thisTrigger;
         }
 
-        public bool Evaluate(ActivationContext context)
+        private bool RestrictionValid(string restriction, ActivationContext context)
         {
-            foreach (var r in triggerRestrictions)
+            switch (restriction)
             {
-                switch (r)
-                {
-                    case ThisCardTriggered:
-                        if (context.Card == ThisCard) continue;
-                        else return false;
-                    case ThisCardInPlay:
-                        if (ThisCard.Location == CardLocation.Field) continue;
-                        else return false;
-                    case AugmentedCardTriggered:
-                        if (context.Card == ThisCard.AugmentedCard) continue;
-                        else return false;
-                    case ThisCardFitsRestriction:
-                        if (cardRestriction.Evaluate(ThisCard)) continue;
-                        else return false;
-                    case TriggererFitsRestriction:
-                        if (cardRestriction.Evaluate(context.Card)) continue;
-                        else return false;
-                    case CoordsFitRestriction:
-                        if (context.Space != null && spaceRestriction.Evaluate(context.Space.Value)) continue;
-                        else return false;
-                    case XFitsRestriction:
-                        if (context.X != null && xRestriction.Evaluate(context.X.Value)) continue;
-                        else return false;
-                    case EffectSourceIsTriggerer:
-                        if (context.Stackable is Effect eff && eff.Source == context.Card) continue;
-                        else return false;
-                    //TODO make these into just something to do with triggered card fitting restriction
-                    case ControllerTriggered:
-                        if (context.Triggerer == ThisCard.Controller) continue;
-                        else return false;
-                    case EnemyTriggered:
-                        if (context.Triggerer != ThisCard.Controller) continue;
-                        else return false;
-                    case FriendlyTurn:
-                        if (Subeffect.Game.TurnPlayer == ThisCard.Controller) continue;
-                        else return false;
-                    case EnemyTurn:
-                        if (Subeffect.Game.TurnPlayer != ThisCard.Controller) continue;
-                        else return false;
-                    case FromField:
-                        if (context.Card.Location == CardLocation.Field) continue;
-                        else return false;
-                    case FromDeck:
-                        if (context.Card.Location == CardLocation.Deck) continue;
-                        else return false;
-                    case MaxPerTurn:
-                        if (ThisTrigger.effToTrigger.TimesUsedThisTurn < maxTimesPerTurn) continue;
-                        else return false;
-                    case NotFromEffect:
-                        if (context.Stackable is Effect) return false;
-                        break;
-                    case MaxPerRound:
-                        if (ThisTrigger.effToTrigger.TimesUsedThisRound < maxPerRound) continue;
-                        else return false;
-                    default:
-                        Debug.LogError($"Unrecognized trigger restriction {r}");
-                        break;
-                }
+                case ThisCardTriggered: return context.Card == ThisCard;
+                case ThisCardInPlay: return ThisCard.Location == CardLocation.Field;
+                case AugmentedCardTriggered: return context.Card == ThisCard.AugmentedCard;
+                case ThisCardFitsRestriction: return cardRestriction.Evaluate(ThisCard);
+                case TriggererFitsRestriction: return cardRestriction.Evaluate(context.Card);
+                case CoordsFitRestriction: return context.Space != null && spaceRestriction.Evaluate(context.Space.Value);
+                case XFitsRestriction: return context.X != null && xRestriction.Evaluate(context.X.Value);
+                case EffectSourceIsTriggerer: return context.Stackable is Effect eff && eff.Source == context.Card;
+                //TODO make these into just something to do with triggered card fitting restriction
+                case ControllerTriggered: return context.Triggerer == ThisCard.Controller;
+                case EnemyTriggered: return context.Triggerer != ThisCard.Controller;
+                case FriendlyTurn: return Subeffect.Game.TurnPlayer == ThisCard.Controller;
+                case EnemyTurn: return Subeffect.Game.TurnPlayer != ThisCard.Controller;
+                case FromField: return context.Card.Location == CardLocation.Field;
+                case FromDeck: return context.Card.Location == CardLocation.Deck;
+                case MaxPerTurn: return ThisTrigger.serverEffect.TimesUsedThisTurn < maxTimesPerTurn;
+                case NotFromEffect: return context.Stackable is Effect;
+                case MaxPerRound: return ThisTrigger.serverEffect.TimesUsedThisRound < maxPerRound;
+                default: throw new System.ArgumentException($"Invalid trigger restriction {restriction}");
             }
-
-            return true;
         }
+
+        public bool Evaluate(ActivationContext context) => triggerRestrictions.All(r => RestrictionValid(r, context));
+
+        /// <summary>
+        /// Reevaluates the trigger to check that any restrictions that could change between it being triggered
+        /// and it being ordered on the stack, are still true.
+        /// </summary>
+        /// <returns></returns>
+        public bool Reevaluate(ActivationContext context)
+            => triggerRestrictions.Intersect(ReevalationRestrictions).All(r => RestrictionValid(r, context));
     }
 }

@@ -266,12 +266,12 @@ namespace KompasServer.Networking
         public void DiscardSimples() => SendToBoth(new DiscardSimplesPacket());
 
         public void AskForTrigger(ServerTrigger t) 
-            => SendPacket(new OptionalTriggerPacket(t.effToTrigger.Source.ID, t.effToTrigger.EffectIndex));
+            => SendPacket(new OptionalTriggerPacket(t.serverEffect.Source.ID, t.serverEffect.EffectIndex));
 
         public void GetTriggerOrder(IEnumerable<ServerTrigger> triggers)
         {
-            int[] cardIds = triggers.Select(t => t.effToTrigger.Source.ID).ToArray();
-            int[] effIndices = triggers.Select(t => t.effToTrigger.EffectIndex).ToArray();
+            int[] cardIds = triggers.Select(t => t.serverEffect.Source.ID).ToArray();
+            int[] effIndices = triggers.Select(t => t.serverEffect.EffectIndex).ToArray();
             SendPacket(new GetTriggerOrderPacket(cardIds, effIndices));
         }
         #endregion other effect stuff

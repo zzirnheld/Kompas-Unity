@@ -8,10 +8,10 @@ namespace KompasServer.Effects
     [System.Serializable]
     public class ServerTrigger : Trigger
     {
-        public ServerEffect effToTrigger;
+        public ServerEffect serverEffect;
 
-        public override GameCard Source => effToTrigger.Source;
-        public override Effect Effect => effToTrigger;
+        public override GameCard Source => serverEffect.Source;
+        public override Effect Effect => serverEffect;
 
         private bool responded = false;
         /// <summary>
@@ -51,7 +51,7 @@ namespace KompasServer.Effects
             {
                 //set all values shared by all triggers
                 toReturn.triggerCondition = condition;
-                toReturn.effToTrigger = parent;
+                toReturn.serverEffect = parent;
                 //if the trigger has any restriction, set its values
                 if (toReturn.triggerRestriction != null)
                 {
@@ -72,10 +72,17 @@ namespace KompasServer.Effects
         /// <returns>Whether all restrictions of the trigger are fulfilled.</returns>
         public bool ValidForContext(ActivationContext context)
         {
-            if (triggerRestriction == null) throw new System.ArgumentNullException($"null trigger restriction for effect of {effToTrigger.Source.CardName}");
+            if (triggerRestriction == null) throw new System.ArgumentNullException($"null trigger restriction for effect of {serverEffect.Source.CardName}");
 
             return triggerRestriction.Evaluate(context);
         }
+
+        /// <summary>
+        /// Rechecks any trigger restrictions that might have changed between the trigger triggering and being ordered.
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public bool StillValidForContext(ActivationContext context) => triggerRestriction.Reevaluate(context);
 
         /// <summary>
         /// Resets Confirmed and Responded, for the next time this effect might be triggered
