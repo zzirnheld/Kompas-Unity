@@ -1,6 +1,7 @@
-﻿using KompasClient.Effects;
-using KompasClient.GameCore;
+﻿using KompasClient.GameCore;
+using KompasCore.Effects;
 using KompasCore.Networking;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace KompasCore.Networking
@@ -28,10 +29,14 @@ namespace KompasClient.Networking
     {
         public void Execute(ClientGame clientGame)
         {
-            var trigger = clientGame.GetCardWithID(sourceCardId)?.Effects.ElementAt(effIndex).Trigger as ClientTrigger;
-            if (trigger == null) return;
-            trigger.ClientEffect.ClientController = clientGame.ClientPlayers[0];
-            clientGame.clientUICtrl.ShowOptionalTrigger(trigger, effIndex);
+            List<Trigger> triggers = new List<Trigger>();
+            for (int i = 0; i < sourceCardIds.Length; i++)
+            {
+                var card = clientGame.GetCardWithID(sourceCardIds[i]);
+                var trigger = card?.Effects.ElementAt(effIndices[i]).Trigger;
+                if (trigger != null) triggers.Add(trigger);
+            }
+            clientGame.clientUICtrl.triggerOrderUI.OrderTriggers(triggers);
         }
     }
 }

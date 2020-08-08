@@ -43,6 +43,7 @@ namespace KompasClient.Networking
                 //gamestate
                 case Packet.SetLeyload: return JsonUtility.FromJson<SetLeyloadClientPacket>(json);
                 case Packet.SetTurnPlayer: return JsonUtility.FromJson<SetTurnPlayerClientPacket>(json);
+                case Packet.PutCardsBack: return JsonUtility.FromJson<PutCardsBackClientPacket>(json);
 
                 //card addition/deletion
                 case Packet.AddCard: return JsonUtility.FromJson<AddCardClientPacket>(json);
@@ -91,6 +92,7 @@ namespace KompasClient.Networking
                 case Packet.EffectImpossible: return JsonUtility.FromJson<EffectImpossibleClientPacket>(json);
                 case Packet.OptionalTrigger: return JsonUtility.FromJson<OptionalTriggerClientPacket>(json);
                 case Packet.ToggleAllowResponses: return JsonUtility.FromJson<ToggleAllowResponsesClientPacket>(json);
+                case Packet.GetTriggerOrder: return JsonUtility.FromJson<GetTriggerOrderClientPacket>(json);
 
                 //misc
                 default: throw new System.ArgumentException($"Unrecognized command {command} in packet sent to client");

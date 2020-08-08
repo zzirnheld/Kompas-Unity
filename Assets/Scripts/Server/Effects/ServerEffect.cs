@@ -65,11 +65,6 @@ namespace KompasServer.Effects
             return serverGame.uiCtrl.DebugMode || base.CanBeActivatedBy(controller);
         }
 
-        public void PushToStack(ServerPlayer controller, ActivationContext context)
-        {
-            EffectsController.PushToStack(this, controller, context);
-        }
-
         public void PushedToStack(ServerGame game, ServerPlayer ctrl)
         {
             TimesUsedThisRound++;

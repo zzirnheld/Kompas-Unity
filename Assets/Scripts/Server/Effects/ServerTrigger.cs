@@ -1,4 +1,5 @@
-﻿using KompasCore.Effects;
+﻿using KompasCore.Cards;
+using KompasCore.Effects;
 using KompasServer.GameCore;
 using UnityEngine;
 
@@ -8,6 +9,9 @@ namespace KompasServer.Effects
     public class ServerTrigger : Trigger
     {
         public ServerEffect effToTrigger;
+
+        public override GameCard Source => effToTrigger.Source;
+        public override Effect Effect => effToTrigger;
 
         private bool responded = false;
         /// <summary>

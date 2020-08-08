@@ -29,6 +29,11 @@ namespace KompasServer.Networking
         public void Execute(ServerGame serverGame, ServerPlayer player)
         {
             var currSubeff = serverGame.CurrEffect?.CurrSubeffect;
+            if(player.index != 0)
+            {
+                x = 6 - x;
+                y = 6 - y;
+            }
 
             if (currSubeff is SpaceTargetSubeffect spaceTargetSubeffect)
                 spaceTargetSubeffect.SetTargetIfValid(x, y);

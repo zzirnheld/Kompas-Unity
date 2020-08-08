@@ -12,6 +12,12 @@ namespace KompasServer.Effects
         {
             public IEnumerable<ServerTrigger> triggers;
             public ActivationContext context;
+
+            public TriggersTriggered(IEnumerable<ServerTrigger> triggers, ActivationContext context)
+            {
+                this.triggers = triggers;
+                this.context = context;
+            }
         }
 
         private readonly object triggerStackLock = new object();
@@ -22,7 +28,16 @@ namespace KompasServer.Effects
         private readonly ServerEffectStack stack = new ServerEffectStack();
 
         //queue of triggers triggered throughout the resolution of the effect, to be ordered after the effect resolves
-        private readonly Queue<TriggersTriggered> triggeredTriggers = new Queue<TriggersTriggered>();
+        private Queue<TriggersTriggered> triggeredTriggers = new Queue<TriggersTriggered>();
+        private Queue<TriggersTriggered> TriggeredTriggers
+        {
+            get
+            {
+                Debug.Log($"Getting triggered triggers, {triggeredTriggers.Count}, {(triggeredTriggers.Count > 0 ? triggeredTriggers.Peek().triggers.Count().ToString() : "")}");
+                return triggeredTriggers;
+            }
+            set => triggeredTriggers = value;
+        }
         //current optional trigger considered, if any
         private ServerTrigger currentOptionalTrigger;
 
@@ -56,7 +71,7 @@ namespace KompasServer.Effects
         public void PushToStack(ServerEffect eff, ServerPlayer controller, ActivationContext context)
         {
             eff.PushedToStack(ServerGame, controller);
-            PushToStack(eff, context);
+            PushToStack(eff as IServerStackable, context);
         }
 
         public void PushToStack(ServerEffect eff, ActivationContext context) => PushToStack(eff, eff.ServerController, context);
@@ -111,8 +126,17 @@ namespace KompasServer.Effects
             //then ask the respective player about that trigger.
             lock (triggerStackLock)
             {
-                var triggered = triggeredTriggers.Peek();
+                var triggered = TriggeredTriggers.Peek();
                 var list = triggered.triggers;
+                Debug.Log($"Checking {list.Count()} triggers...: {string.Join(", ", list.Select(t => t.blurb))}");
+                //if there's no triggers, skip all this logic
+                if (!list.Any())
+                {
+                    Debug.Log("No triggers to consider.");
+                    triggeredTriggers.Dequeue();
+                    return true;
+                }
+
                 //if any triggers have not been responded to, make them get responded to
                 currentOptionalTrigger = list.FirstOrDefault(t => !t.Responded);
                 if (currentOptionalTrigger != default)
@@ -132,10 +156,12 @@ namespace KompasServer.Effects
                 var confirmed = list.Where(t => t.Confirmed);
                 if (confirmed.All(t => t.Ordered))
                 {
-                    foreach (var t in confirmed.Where(t => t.effToTrigger.Controller == turnPlayer))
+                    foreach (var t in confirmed.Where(t => t.effToTrigger.Controller == turnPlayer).OrderBy(t => t.order))
                         PushToStack(t.effToTrigger, triggered.context);
-                    foreach (var t in confirmed.Where(t => t.effToTrigger.Controller == turnPlayer.Enemy))
+                    foreach (var t in confirmed.Where(t => t.effToTrigger.Controller == turnPlayer.Enemy).OrderBy(t => t.order))
                         PushToStack(t.effToTrigger, triggered.context);
+                    TriggeredTriggers.Dequeue();
+                    return true;
                 }
                 else
                 {
@@ -144,8 +170,22 @@ namespace KompasServer.Effects
                         var thisPlayers = confirmed.Where(t => t.effToTrigger.Controller == p);
                         if (thisPlayers.Any(t => !t.Ordered)) p.ServerNotifier.GetTriggerOrder(thisPlayers);
                     }
+                    return false;
                 }
             }
+        }
+        
+        private bool CheckAllTriggers(ServerPlayer turnPlayer)
+        {
+            while (TriggeredTriggers.Any())
+            {
+                if (!CheckTriggers(turnPlayer)) return false;
+                foreach(var tList in triggerMap.Values)
+                {
+                    foreach (var t in tList) t.ResetConfirmation();
+                }
+            }
+            return true;
         }
 
         public void CheckForResponse(bool reset = true)
@@ -159,7 +199,7 @@ namespace KompasServer.Effects
             if (reset) ResetPassingPriority();
 
             //if there's any triggers triggered
-            if (triggeredTriggers.Count > 0) CheckTriggers(ServerGame.TurnServerPlayer);
+            if (!CheckAllTriggers(ServerGame.TurnServerPlayer)) return;
 
             //check if responses exist. if not, resolve
             lock (responseLock)
@@ -211,10 +251,10 @@ namespace KompasServer.Effects
         public void TriggerForCondition(string condition, ActivationContext context)
         {
             Debug.Log($"Attempting to trigger {condition}, with context {context}");
-            var endedEffects = hangingEffectMap[condition].Where(he => he.EndIfApplicable(context));
+            var endedEffects = hangingEffectMap[condition].Where(he => he.EndIfApplicable(context)).ToArray();
             foreach (var t in endedEffects) hangingEffectMap[condition].Remove(t);
 
-            var fallOffToRemove = hangingEffectFallOffMap[condition].Where((he) => he.tr.Evaluate(context));
+            var fallOffToRemove = hangingEffectFallOffMap[condition].Where((he) => he.tr.Evaluate(context)).ToArray();
             foreach (var toRemove in fallOffToRemove)
             {
                 hangingEffectMap[toRemove.he.EndCondition].Remove(toRemove.he);
@@ -227,12 +267,18 @@ namespace KompasServer.Effects
              * which would be exactly what we need: 
              * for it to only check the triggers to be ordered only after the others have been put on the stack. 
              */
-            var triggers = new TriggersTriggered 
-            { 
-                triggers = triggerMap[condition].Where(t => t.ValidForContext(context)), 
-                context = context 
-            };  
-            triggeredTriggers.Enqueue(triggers);
+            var validTriggers = triggerMap[condition].Where(t => t.ValidForContext(context));
+            if (!validTriggers.Any()) return;
+            var triggers = new TriggersTriggered
+            (
+                triggers: validTriggers,
+                context: context
+            );
+            Debug.Log($"Triggers triggered: {string.Join(", ", triggers.triggers.Select(t => t.blurb))}");
+            lock (triggerStackLock)
+            {
+                TriggeredTriggers.Enqueue(triggers);
+            }
         }
 
         public void OptionalTriggerAnswered(bool answered)

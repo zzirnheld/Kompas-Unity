@@ -1,5 +1,6 @@
 ﻿using KompasClient.GameCore;
 using KompasServer.GameCore;
+using UnityEngine;
 
 namespace KompasCore.Networking
 {
@@ -35,6 +36,7 @@ namespace KompasCore.Networking
         public const string OptionalTriggerResponse = "Optional Trigger Answered";
         public const string ChooseEffectOption = "Choose Effect Option";
         public const string PassPriority = "Pass Priority";
+        public const string ChooseTriggerOrder = "Choose Trigger Order";
             //from server to client
             //targeting
         public const string GetBoardTarget = "Get Board Target";
@@ -124,7 +126,7 @@ namespace KompasCore.Networking
         /// <returns></returns>
         public virtual Packet GetInversion(bool known = true) => known ? Copy() : null;
 
-        public override string ToString() => $"Command: {command}";
+        public override string ToString() => JsonUtility.ToJson(this);
     }
 }
 

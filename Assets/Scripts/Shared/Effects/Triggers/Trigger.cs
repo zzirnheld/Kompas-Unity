@@ -1,4 +1,6 @@
-﻿namespace KompasCore.Effects
+﻿using KompasCore.Cards;
+
+namespace KompasCore.Effects
 {
     public abstract class Trigger
     {
@@ -51,6 +53,9 @@
         public TriggerRestriction triggerRestriction;
 
         public bool optional = false;
-        public string blurb = "";
+        public string blurb = "Trigger";
+
+        public abstract GameCard Source { get; }
+        public abstract Effect Effect { get; }
     }
 }
