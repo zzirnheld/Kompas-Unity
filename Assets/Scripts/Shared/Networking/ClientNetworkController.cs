@@ -75,7 +75,7 @@ namespace KompasClient.Networking
                 case Packet.GetBoardTarget: return JsonUtility.FromJson<GetBoardTargetClientPacket>(json);
                 case Packet.GetHandTarget: return JsonUtility.FromJson<GetHandTargetClientPacket>(json);
                 case Packet.GetDeckTarget: return JsonUtility.FromJson<GetDeckTargetClientPacket>(json);
-                case Packet.GetDiscardTarget: return JsonUtility.FromJson<DiscardCardClientPacket>(json);
+                case Packet.GetDiscardTarget: return JsonUtility.FromJson<GetDiscardTargetClientPacket>(json);
                 case Packet.GetListChoices: return JsonUtility.FromJson<GetListChoicesClientPacket>(json);
                 case Packet.GetSpaceTarget: return JsonUtility.FromJson<GetSpaceTargetClientPacket>(json);
                     //other
