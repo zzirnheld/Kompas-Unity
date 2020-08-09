@@ -7,6 +7,9 @@ namespace KompasServer.Effects
 {
     public class ChooseFromListSubeffect : ServerSubeffect
     {
+        public const string NoOrder = "No Order";
+        public const string Closest = "Closest";
+
         /// <summary>
         /// Restriction that each card must fulfill
         /// </summary>
@@ -24,18 +27,40 @@ namespace KompasServer.Effects
         /// </summary>
         public int maxCanChoose = -1;
 
+        /// <summary>
+        /// The minimum number of cards that must be chosen.
+        /// If is < 0, gets set to maxCanChoose
+        /// </summary>
+        public int minCanChoose = -1;
+
+        public string orderBy = NoOrder;
+
         protected IEnumerable<GameCard> potentialTargets;
 
         protected void RequestTargets()
-        {
-            ServerPlayer.ServerNotifier.GetChoicesFromList(potentialTargets, maxCanChoose, this);
-        }
+            => ServerPlayer.ServerNotifier.GetChoicesFromList(potentialTargets, maxCanChoose, this);
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
             cardRestriction.Initialize(this);
             listRestriction.Subeffect = this;
+            if (minCanChoose < 0) minCanChoose = maxCanChoose;
+        }
+
+        private IEnumerable<GameCard> GetPossibleTargets()
+        {
+            var possibleTargets = ServerGame.Cards.Where(c => cardRestriction.Evaluate(c));
+            if (!possibleTargets.Any()) return new GameCard[0];
+
+            switch (order)
+            {
+                case NoOrder: return possibleTargets;
+                case Closest: 
+                    int minDist = possibleTargets.Min(c => c.DistanceTo(Source));
+                    return possibleTargets.Where(c => c.DistanceTo(Source) == minDist);
+                default: throw new System.ArgumentException($"Invalid ordering in choose from list");
+            }
         }
 
         public override bool Resolve()
@@ -43,14 +68,13 @@ namespace KompasServer.Effects
             //TODO: somehow figure out a better way of checking if there exists a valid list?
             //  maybe a method on list restriction that checks?
             //  because otherwise enumerating lists and seeing if at least one fits would be exponential time
-            if (!listRestriction.Evaluate(new List<GameCard>()))
-                return ServerEffect.EffectImpossible();
+            if (!listRestriction.Evaluate(new List<GameCard>())) return ServerEffect.EffectImpossible();
 
-            potentialTargets = ServerGame.Cards.Where(c => cardRestriction.Evaluate(c));
+            potentialTargets = GetPossibleTargets();
 
-            //if there are no possible targets, declare the effect impossible
+            //if there are not enough possible targets, declare the effect impossible
             //if you want to continue resolution anyway, add an if impossible check before this subeffect.
-            if (potentialTargets.Any())
+            if (potentialTargets.Count() < minCanChoose)
             {
                 RequestTargets();
                 return false;
@@ -60,14 +84,20 @@ namespace KompasServer.Effects
 
         public virtual bool AddListIfLegal(IEnumerable<GameCard> choices)
         {
-            //check that there are no elements in choices that aren't in potential targets
-            //also check that, if a maximum number to choose has been specified, that many have been chosen
-            //also check that the list as a whole is allowable
-            bool invalidList = (maxCanChoose > 0 && choices.Count() > maxCanChoose) ||
-                choices.Intersect(potentialTargets).Count() != choices.Count() ||
-                !listRestriction.Evaluate(choices);
+            /*
+             * Check that all choices were potential targets.
+             * Check that the minimum number of items, if any, has been surpassed.
+             * Check that the maximum number of items, if any, hasn't been exceeded.
+             * Check that all choices were distinct.
+             * Check that the list restriction is satisfied.
+             */
+            bool validList = choices.All(c => potentialTargets.Contains(c)) &&
+                (minCanChoose < 0 || choices.Count() >= minCanChoose) &&
+                (maxCanChoose < 0 || choices.Count() <= maxCanChoose) &&
+                choices.Distinct().Count() == choices.Count() &&
+                listRestriction.Evaluate(choices);
 
-            if (invalidList)
+            if (!validList)
             {
                 RequestTargets();
                 return false;
@@ -77,8 +107,7 @@ namespace KompasServer.Effects
             foreach (var c in choices) ServerEffect.AddTarget(c);
             //everything's cool
             EffectController.ServerNotifier.AcceptTarget();
-            ServerEffect.ResolveNextSubeffect();
-            return true;
+            return ServerEffect.ResolveNextSubeffect();
         }
 
     }

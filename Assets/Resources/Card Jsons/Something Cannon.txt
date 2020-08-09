@@ -1,0 +1,42 @@
+{
+	"cardType":67,
+	"cardName":"Something Cannon",
+	"effText":"Once each round, you can give me and a Summoned character -3E.",
+	"effects":[
+		{
+			"activationRestriction":{
+				"activationRestrictions":[
+					"Max Times Per Round",
+					"Default"
+				],
+				"maxTimes":1
+			},
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
+					\"eChange\":-3
+				}",
+				"{
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Summoned character for Something Cannon to blast for -3E\",
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Summoned\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
+					\"eChange\":-3
+				}"
+			]	
+		}
+	],
+	"n":0,
+	"e":4,
+	"s":5,
+	"w":3,
+	"subtypeText":"Crazy Idea"
+}

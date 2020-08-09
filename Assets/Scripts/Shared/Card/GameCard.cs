@@ -275,7 +275,7 @@ namespace KompasCore.Cards
         #region distance/adjacency
         public int DistanceTo(int x, int y)
         {
-            if (Location != CardLocation.Field) return -1;
+            if (Location != CardLocation.Field) return int.MaxValue;
             Debug.Log($"Distance from {CardName} to {x}, {y} is" +
                 $" {(Mathf.Abs(x - BoardX) > Mathf.Abs(y - BoardY) ? Mathf.Abs(x - BoardX) : Mathf.Abs(y - BoardY))}");
             return Mathf.Abs(x - BoardX) > Mathf.Abs(y - BoardY) ? Mathf.Abs(x - BoardX) : Mathf.Abs(y - BoardY);
