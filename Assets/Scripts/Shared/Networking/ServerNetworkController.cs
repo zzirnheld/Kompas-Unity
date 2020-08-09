@@ -39,6 +39,7 @@ namespace KompasServer.Networking
                 case Packet.OptionalTriggerResponse: return JsonUtility.FromJson<OptionalTriggerAnswerServerPacket>(json);
                 case Packet.ChooseEffectOption:      return JsonUtility.FromJson<EffectOptionResponseServerPacket>(json);
                 case Packet.PassPriority:            return JsonUtility.FromJson<PassPriorityServerPacket>(json);
+                case Packet.ChooseTriggerOrder:      return JsonUtility.FromJson<TriggerOrderResponseServerPacket>(json);
 
                 //debug
                 case Packet.DebugTopdeck: return JsonUtility.FromJson<DebugTopdeckServerPacket>(json);

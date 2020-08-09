@@ -1,5 +1,6 @@
 ﻿using KompasCore.Networking;
 using KompasClient.GameCore;
+using System.Diagnostics;
 
 namespace KompasCore.Networking
 {
@@ -31,6 +32,7 @@ namespace KompasClient.Networking
             var card = clientGame.GetCardWithID(cardId);
             var controller = clientGame.Players[controllerIndex];
             if (card != null && controller != null) card.Controller = controller;
+            else UnityEngine.Debug.Log($"Could not set card controller, card: {card}; controller: {controller}");
         }
     }
 }

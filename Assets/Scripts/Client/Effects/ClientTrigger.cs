@@ -1,4 +1,5 @@
-﻿using KompasCore.Effects;
+﻿using KompasCore.Cards;
+using KompasCore.Effects;
 using UnityEngine;
 
 namespace KompasClient.Effects
@@ -6,6 +7,9 @@ namespace KompasClient.Effects
     public class ClientTrigger : Trigger
     {
         public ClientEffect ClientEffect { get; private set; }
+
+        public override GameCard Source => ClientEffect.Source;
+        public override Effect Effect => ClientEffect;
 
         public static ClientTrigger FromJson(string condition, string json, ClientEffect parent)
         {

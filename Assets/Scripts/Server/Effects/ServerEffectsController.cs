@@ -8,27 +8,48 @@ namespace KompasServer.Effects
 {
     public class ServerEffectsController : MonoBehaviour
     {
-        public readonly object triggerStackLock = new object();
-        public readonly object responseLock = new object();
+        private struct TriggersTriggered
+        {
+            public IEnumerable<ServerTrigger> triggers;
+            public ActivationContext context;
+
+            public TriggersTriggered(IEnumerable<ServerTrigger> triggers, ActivationContext context)
+            {
+                this.triggers = triggers;
+                this.context = context;
+            }
+        }
+
+        private readonly object triggerStackLock = new object();
+        private readonly object responseLock = new object();
 
         public ServerGame ServerGame;
 
-        protected ServerEffectStack stack = new ServerEffectStack();
+        private readonly ServerEffectStack stack = new ServerEffectStack();
 
-        public Stack<(ServerTrigger, ActivationContext, ServerPlayer)> OptionalTriggersToAsk
-            = new Stack<(ServerTrigger, ActivationContext, ServerPlayer)>();
+        //queue of triggers triggered throughout the resolution of the effect, to be ordered after the effect resolves
+        private Queue<TriggersTriggered> triggeredTriggers = new Queue<TriggersTriggered>();
+        private Queue<TriggersTriggered> TriggeredTriggers
+        {
+            get
+            {
+                Debug.Log($"Getting triggered triggers, {triggeredTriggers.Count}, {(triggeredTriggers.Count > 0 ? triggeredTriggers.Peek().triggers.Count().ToString() : "")}");
+                return triggeredTriggers;
+            }
+            set => triggeredTriggers = value;
+        }
+        //current optional trigger considered, if any
+        private ServerTrigger currentOptionalTrigger;
 
-        //trigger map
-        protected Dictionary<string, List<ServerTrigger>> triggerMap = new Dictionary<string, List<ServerTrigger>>();
-        protected Dictionary<string, List<HangingEffect>> hangingEffectMap = new Dictionary<string, List<HangingEffect>>();
-        protected Dictionary<string, List<(HangingEffect, TriggerRestriction)>> hangingEffectFallOffMap
+        //trigger maps
+        private readonly Dictionary<string, List<ServerTrigger>> triggerMap 
+            = new Dictionary<string, List<ServerTrigger>>();
+        private readonly Dictionary<string, List<HangingEffect>> hangingEffectMap 
+            = new Dictionary<string, List<HangingEffect>>();
+        private readonly Dictionary<string, List<(HangingEffect he, TriggerRestriction tr)>> hangingEffectFallOffMap
             = new Dictionary<string, List<(HangingEffect, TriggerRestriction)>>();
 
-        public IServerStackable CurrStackEntry 
-        { 
-            get; 
-            private set; 
-        }
+        public IServerStackable CurrStackEntry { get; private set; }
 
         public void Start()
         {
@@ -50,8 +71,10 @@ namespace KompasServer.Effects
         public void PushToStack(ServerEffect eff, ServerPlayer controller, ActivationContext context)
         {
             eff.PushedToStack(ServerGame, controller);
-            PushToStack(eff, context);
+            PushToStack(eff as IServerStackable, context);
         }
+
+        public void PushToStack(ServerEffect eff, ActivationContext context) => PushToStack(eff, eff.ServerController, context);
 
         public IServerStackable CancelStackEntry(int index)
         {
@@ -93,20 +116,76 @@ namespace KompasServer.Effects
             }
         }
 
-        public void OptionalTriggerAnswered(bool answer)
+        /// <summary>
+        /// Checks to see if anything needs to be done with triggers before checking for other responses
+        /// </summary>
+        /// <param name="turnPlayer"></param>
+        /// <returns><see langword="true"/> if all triggers have been addressed, <see langword="false"/> otherwise</returns>
+        private bool CheckTriggers(ServerPlayer turnPlayer)
         {
+            //then ask the respective player about that trigger.
             lock (triggerStackLock)
             {
-                if (OptionalTriggersToAsk.Count == 0)
+                var triggered = TriggeredTriggers.Peek();
+                var list = triggered.triggers.Where(t => t.StillValidForContext(triggered.context));
+                Debug.Log($"Checking {list.Count()} triggers...: {string.Join(", ", list.Select(t => t.blurb))}");
+                //if there's no triggers, skip all this logic
+                if (!list.Any())
                 {
-                    Debug.LogError($"Tried to answer about a trigger when there weren't any triggers to answer about.");
-                    return;
+                    Debug.Log("No triggers to consider.");
+                    triggeredTriggers.Dequeue();
+                    return true;
                 }
 
-                var (t, context, controller) = OptionalTriggersToAsk.Pop();
-                if (answer) t.OverrideTrigger(context, controller);
-                CheckForResponse();
+                //if any triggers have not been responded to, make them get responded to
+                currentOptionalTrigger = list.FirstOrDefault(t => !t.Responded);
+                if (currentOptionalTrigger != default)
+                {
+                    currentOptionalTrigger.serverEffect.ServerController.ServerNotifier.AskForTrigger(currentOptionalTrigger);
+                    return false;
+                }
+
+                //now that all effects have been addressed, see if there's any
+                foreach(var p in ServerGame.Players)
+                {
+                    var thisPlayers = list.Where(t => t.serverEffect.Controller == p);
+                    if (thisPlayers.Count() == 1) thisPlayers.First().order = 1;
+                }
+
+                //if all triggers have been responded to
+                var confirmed = list.Where(t => t.Confirmed);
+                if (confirmed.All(t => t.Ordered))
+                {
+                    foreach (var t in confirmed.Where(t => t.serverEffect.Controller == turnPlayer).OrderBy(t => t.order))
+                        PushToStack(t.serverEffect, triggered.context);
+                    foreach (var t in confirmed.Where(t => t.serverEffect.Controller == turnPlayer.Enemy).OrderBy(t => t.order))
+                        PushToStack(t.serverEffect, triggered.context);
+                    TriggeredTriggers.Dequeue();
+                    return true;
+                }
+                else
+                {
+                    foreach (var p in ServerGame.ServerPlayers)
+                    {
+                        var thisPlayers = confirmed.Where(t => t.serverEffect.Controller == p);
+                        if (thisPlayers.Any(t => !t.Ordered)) p.ServerNotifier.GetTriggerOrder(thisPlayers);
+                    }
+                    return false;
+                }
             }
+        }
+        
+        private bool CheckAllTriggers(ServerPlayer turnPlayer)
+        {
+            while (TriggeredTriggers.Any())
+            {
+                if (!CheckTriggers(turnPlayer)) return false;
+                foreach(var tList in triggerMap.Values)
+                {
+                    foreach (var t in tList) t.ResetConfirmation();
+                }
+            }
+            return true;
         }
 
         public void CheckForResponse(bool reset = true)
@@ -119,30 +198,20 @@ namespace KompasServer.Effects
 
             if (reset) ResetPassingPriority();
 
-            if (OptionalTriggersToAsk.Count > 0)
-            {
-                //then ask the respective player about that trigger.
-                lock (triggerStackLock)
-                {
-                    var (t, context, controller) = OptionalTriggersToAsk.Peek();
-                    controller.ServerNotifier.AskForTrigger(t, context.X, context.Card, context.Stackable, context.Triggerer);
-                }
-                //if the player chooses to trigger it, it will be removed from the list
-            }
-            //check if responses exist. if not, resolve
-            else
-            {
-                lock (responseLock)
-                {
-                    //TODO if any player can activate effects, do ServerGame.Players.Any() the entire expression
-                    var players = ServerGame.Cards.Where(c => c.Effects.Any(e => e.ActivationRestriction.Evaluate(c.Controller)))
-                        .Select(c => c.Controller).Distinct().Where(p => !p.passedPriority);
+            //if there's any triggers triggered
+            if (!CheckAllTriggers(ServerGame.TurnServerPlayer)) return;
 
-                    //TODO figure out a way to not resolve the deferred execution of Linq twice
-                    if (players.Any()) foreach (var p in players) ServerGame.ServerPlayers[p.index].ServerNotifier.RequestResponse();
-                    //if neither player has anything to do, resolve the stack
-                    else ResolveNextStackEntry();
-                }
+            //check if responses exist. if not, resolve
+            lock (responseLock)
+            {
+                //TODO if any player can activate effects, do ServerGame.Players.Any() the entire expression
+                var players = ServerGame.Cards.Where(c => c.Effects.Any(e => e.ActivationRestriction.Evaluate(c.Controller)))
+                    .Select(c => c.Controller).Distinct().Where(p => !p.passedPriority);
+
+                //TODO figure out a way to not resolve the deferred execution of Linq twice
+                if (players.Any()) foreach (var p in players) ServerGame.ServerPlayers[p.index].ServerNotifier.RequestResponse();
+                //if neither player has anything to do, resolve the stack
+                else ResolveNextStackEntry();
             }
         }
         #endregion the stack
@@ -150,7 +219,7 @@ namespace KompasServer.Effects
         #region triggers
         public void RegisterTrigger(string condition, ServerTrigger trigger)
         {
-            Debug.Log($"Registering a new trigger from card {trigger.effToTrigger.Source.CardName} to condition {condition}");
+            Debug.Log($"Registering a new trigger from card {trigger.serverEffect.Source.CardName} to condition {condition}");
             List<ServerTrigger> triggers = triggerMap[condition];
             if (triggers == null)
             {
@@ -182,51 +251,36 @@ namespace KompasServer.Effects
         public void TriggerForCondition(string condition, ActivationContext context)
         {
             Debug.Log($"Attempting to trigger {condition}, with context {context}");
-            List<HangingEffect> toRemove = new List<HangingEffect>();
-            foreach (HangingEffect t in hangingEffectMap[condition])
+            var endedEffects = hangingEffectMap[condition].Where(he => he.EndIfApplicable(context)).ToArray();
+            foreach (var t in endedEffects) hangingEffectMap[condition].Remove(t);
+
+            var fallOffToRemove = hangingEffectFallOffMap[condition].Where((he) => he.tr.Evaluate(context)).ToArray();
+            foreach (var toRemove in fallOffToRemove)
             {
-                if (t.EndIfApplicable(context))
-                {
-                    toRemove.Add(t);
-                }
-            }
-            foreach (var t in toRemove)
-            {
-                hangingEffectMap[condition].Remove(t);
+                hangingEffectMap[toRemove.he.EndCondition].Remove(toRemove.he);
+                hangingEffectFallOffMap[condition].Remove(toRemove);
             }
 
-            var fallOffToRemove = new List<(HangingEffect, TriggerRestriction)>();
-            foreach (var (eff, fallOffRestriction) in hangingEffectFallOffMap[condition])
+            /* 
+             * Needs to be toArray()ed because cards might move out of correct state after this moment.
+             * Later, when triggers are being ordered, stuff like 1/turn will be rechecked.
+             */
+            var validTriggers = triggerMap[condition].Where(t => t.ValidForContext(context)).ToArray();
+            if (!validTriggers.Any()) return;
+            var triggers = new TriggersTriggered(triggers: validTriggers, context: context);
+            Debug.Log($"Triggers triggered: {string.Join(", ", triggers.triggers.Select(t => t.blurb))}");
+            lock (triggerStackLock)
             {
-                if (fallOffRestriction.Evaluate(context))
-                {
-                    fallOffToRemove.Add((eff, fallOffRestriction));
-                }
-            }
-            foreach (var (eff, fallOffRestriction) in fallOffToRemove)
-            {
-                hangingEffectMap[eff.EndCondition].Remove(eff);
-                hangingEffectFallOffMap[condition].Remove((eff, fallOffRestriction));
-            }
-
-            foreach (ServerTrigger t in triggerMap[condition])
-            {
-                t.TriggerIfValid(context);
+                TriggeredTriggers.Enqueue(triggers);
             }
         }
 
-        /// <summary>
-        /// Adds this trigger to the list that, once a stack entry resolves,
-        /// asks the player whose trigger it is if they actually want to trigger that effect
-        /// </summary>
-        /// <param name="trigger"></param>
-        /// <param name="x"></param>
-        public void AskForTrigger(ServerTrigger trigger, ActivationContext context, ServerPlayer controller)
+        public void OptionalTriggerAnswered(bool answered)
         {
-            Debug.Log($"Asking about trigger for effect of card {trigger.effToTrigger.Source.CardName}");
-            lock (triggerStackLock)
+            if(currentOptionalTrigger != default)
             {
-                OptionalTriggersToAsk.Push((trigger, context, controller));
+                currentOptionalTrigger.Confirmed = answered;
+                currentOptionalTrigger.Responded = true;
             }
         }
         #endregion triggers

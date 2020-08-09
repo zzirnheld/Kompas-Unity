@@ -1,6 +1,7 @@
 ﻿using KompasCore.Networking;
 using KompasClient.GameCore;
 using System.Linq;
+using System.Diagnostics;
 
 namespace KompasCore.Networking
 {
@@ -32,11 +33,8 @@ namespace KompasClient.Networking
         public void Execute(ClientGame clientGame)
         {
             var card = clientGame.GetCardWithID(cardId);
-            if (card != null)
-            {
-                if (card.Owner == clientGame.Players[0]) card.Rehand();
-                else clientGame.enemyHandCtrl.IncrementHand();
-            }
+            UnityEngine.Debug.Log($"Rehand packet to rehand {card?.CardName} that has controller {card?.ControllerIndex}");
+            if (card != null) card.Rehand();
         }
     }
 }

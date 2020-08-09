@@ -274,13 +274,11 @@ public class CardRepository : MonoBehaviour
     public ClientGameCard InstantiateClientNonAvatar(string name, ClientGame clientGame, ClientPlayer owner, int id)
     {
         string json = cardJsons[name] ?? throw new System.ArgumentException($"Name {name} not associated with json");
-        ClientGameCard card = null;
-        ClientEffect[] effects;
-
         try
         {
             //TODO later try setting serializableCard in the switch, and moving set info outside
             SerializableCard serializableCard = JsonUtility.FromJson<SerializableCard>(json);
+            ClientGameCard card;
             switch (serializableCard.cardType)
             {
                 case 'C':
@@ -296,7 +294,7 @@ public class CardRepository : MonoBehaviour
                     Debug.LogError("Unrecognized type character " + serializableCard.cardType + " in " + json);
                     return null;
             }
-            effects = CreateClientEffects(serializableCard.effects, card, clientGame);
+            ClientEffect[] effects = CreateClientEffects(serializableCard.effects, card, clientGame);
             card.SetInfo(serializableCard, clientGame, owner, effects, id);
             card.cardCtrl.SetImage(card.CardName, false);
             card.gameObject.GetComponentInChildren<ClientCardMouseController>().ClientGame = clientGame;

@@ -10,7 +10,7 @@ namespace KompasCore.Networking
         public string cardName;
         public int controllerIndex;
 
-        public AnnihilateCardPacket() : base(DiscardCard) { }
+        public AnnihilateCardPacket() : base(AnnihilateCard) { }
 
         public AnnihilateCardPacket(int cardId, string cardName, int controllerIndex, bool invert = false) : this()
         {

@@ -92,6 +92,9 @@ namespace KompasClient.UI
         public GameObject DeckAcceptedParent;
         public GameObject ConnectedWaitingParent;
 
+        //effect option ui
+        public TriggerOrderUIController triggerOrderUI;
+
         private bool ShowEffect(Effect eff) => eff.CanBeActivatedBy(clientGame.Players[0]);
 
         public override void ShowInfoFor(GameCard card, bool refresh = false)

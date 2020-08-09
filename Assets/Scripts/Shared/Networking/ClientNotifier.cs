@@ -1,5 +1,7 @@
 ﻿using KompasCore.Cards;
+using KompasCore.Effects;
 using KompasCore.Networking;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -85,15 +87,26 @@ namespace KompasClient.Networking
             Send(new OptionalTriggerAnswerPacket(answer));
         }
 
-        public void RequestChooseEffectOption(int option)
+        public void RequestChooseEffectOption(int option) => Send(new EffectOptionResponsePacket(option));
+
+        public void ChooseTriggerOrder(IEnumerable<(Trigger, int)> triggers)
         {
-            Send(new EffectOptionResponsePacket(option));
+            int count = triggers.Count();
+            int[] cardIds = new int[count];
+            int[] effIndices = new int[count];
+            int[] orders = new int[count];
+            int i = 0;
+            foreach(var (t, o) in triggers)
+            {
+                cardIds[i] = t.Source.ID;
+                effIndices[i] = t.Effect.EffectIndex;
+                orders[i] = o;
+                i++;
+            }
+            Send(new TriggerOrderResponsePacket(cardIds, effIndices, orders));
         }
 
-        public void DeclineResponse()
-        {
-            Send(new PassPriorityPacket());
-        }
+        public void DeclineResponse() => Send(new PassPriorityPacket());
         #endregion
 
         #region Debug Request Actions
