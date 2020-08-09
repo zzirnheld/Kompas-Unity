@@ -69,6 +69,7 @@ namespace KompasServer.Effects
         {
             TimesUsedThisRound++;
             TimesUsedThisTurn++;
+            TimesUsedThisStack++;
             serverGame = game;
             Controller = ctrl;
             ctrl.ServerNotifier.NotifyEffectActivated(this);

@@ -6,6 +6,7 @@
 		{
 			"triggerCondition":"Discard",
 			"trigger":"{
+				\"blurb\":\"Crazy Idea\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\",\"Triggerer Fits Restriction\"],
 					\"cardRestriction\":{
@@ -36,10 +37,10 @@
 			]
 		},
 		{
-		{
 			"triggerCondition":"Turn Start",
 			"trigger":
 			"{
+				\"blurb\":\"Generate Stupid Idea\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\"]
 				}

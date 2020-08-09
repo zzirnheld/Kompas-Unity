@@ -41,8 +41,9 @@ namespace KompasCore.Effects
         public const string MaxPerTurn = "Max Per Turn"; //500,
         public const string NotFromEffect = "Not From Effect"; //501,
         public const string MaxPerRound = "Max Per Round"; //502
+        public const string MaxPerStack = "Max Per Stack";
 
-        public static readonly string[] ReevalationRestrictions = { MaxPerTurn, MaxPerRound };
+        public static readonly string[] ReevalationRestrictions = { MaxPerTurn, MaxPerRound, MaxPerStack };
 
         public string[] triggerRestrictions = new string[0];
         public CardRestriction cardRestriction = new CardRestriction(); //TODO refactor boardrestrictions to be part of cardrestriction
@@ -50,6 +51,7 @@ namespace KompasCore.Effects
         public SpaceRestriction spaceRestriction = new SpaceRestriction();
         public int maxTimesPerTurn = 1;
         public int maxPerRound = 1;
+        public int maxPerStack = 1;
 
         public GameCard ThisCard { get; private set; }
 
@@ -69,24 +71,34 @@ namespace KompasCore.Effects
         {
             switch (restriction)
             {
-                case ThisCardTriggered: return context.Card == ThisCard;
-                case ThisCardInPlay: return ThisCard.Location == CardLocation.Field;
-                case AugmentedCardTriggered: return context.Card == ThisCard.AugmentedCard;
-                case ThisCardFitsRestriction: return cardRestriction.Evaluate(ThisCard);
+                //card triggering stuff
+                case ThisCardTriggered:        return context.Card == ThisCard;
+                case ThisCardInPlay:           return ThisCard.Location == CardLocation.Field;
+                case AugmentedCardTriggered:   return context.Card == ThisCard.AugmentedCard;
+                case ThisCardFitsRestriction:  return cardRestriction.Evaluate(ThisCard);
                 case TriggererFitsRestriction: return cardRestriction.Evaluate(context.Card);
-                case CoordsFitRestriction: return context.Space != null && spaceRestriction.Evaluate(context.Space.Value);
-                case XFitsRestriction: return context.X != null && xRestriction.Evaluate(context.X.Value);
+                
+                //other non-card triggering things
+                case CoordsFitRestriction:    return context.Space != null && spaceRestriction.Evaluate(context.Space.Value);
+                case XFitsRestriction:        return context.X != null && xRestriction.Evaluate(context.X.Value);
                 case EffectSourceIsTriggerer: return context.Stackable is Effect eff && eff.Source == context.Card;
                 //TODO make these into just something to do with triggered card fitting restriction
-                case ControllerTriggered: return context.Triggerer == ThisCard.Controller;
-                case EnemyTriggered: return context.Triggerer != ThisCard.Controller;
-                case FriendlyTurn: return Subeffect.Game.TurnPlayer == ThisCard.Controller;
-                case EnemyTurn: return Subeffect.Game.TurnPlayer != ThisCard.Controller;
-                case FromField: return context.Card.Location == CardLocation.Field;
-                case FromDeck: return context.Card.Location == CardLocation.Deck;
-                case MaxPerTurn: return ThisTrigger.serverEffect.TimesUsedThisTurn < maxTimesPerTurn;
+                case ControllerTriggered:     return context.Triggerer == ThisCard.Controller;
+                case EnemyTriggered:          return context.Triggerer != ThisCard.Controller;
+
+                //gamestate
+                case FriendlyTurn:  return Subeffect.Game.TurnPlayer == ThisCard.Controller;
+                case EnemyTurn:     return Subeffect.Game.TurnPlayer != ThisCard.Controller;
+                case FromField:     return context.Card.Location == CardLocation.Field;
+                case FromDeck:      return context.Card.Location == CardLocation.Deck;
                 case NotFromEffect: return context.Stackable is Effect;
+
+                //max
                 case MaxPerRound: return ThisTrigger.serverEffect.TimesUsedThisRound < maxPerRound;
+                case MaxPerTurn:  return ThisTrigger.serverEffect.TimesUsedThisTurn < maxTimesPerTurn;
+                case MaxPerStack: return ThisTrigger.serverEffect.TimesUsedThisStack < maxPerStack;
+
+                //misc
                 default: throw new System.ArgumentException($"Invalid trigger restriction {restriction}");
             }
         }

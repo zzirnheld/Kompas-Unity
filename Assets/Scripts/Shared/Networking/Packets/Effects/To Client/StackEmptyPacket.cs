@@ -16,6 +16,10 @@ namespace KompasClient.Networking
 {
     public class StackEmptyClientPacket : StackEmptyPacket, IClientOrderPacket
     {
-        public void Execute(ClientGame clientGame) => clientGame.clientUICtrl.SetCurrState("Stack Empty");
+        public void Execute(ClientGame clientGame)
+        {
+            clientGame.clientUICtrl.SetCurrState("Stack Empty");
+            foreach (var c in clientGame.Cards) c.ResetForStack();
+        }
     }
 }

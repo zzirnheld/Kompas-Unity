@@ -87,6 +87,8 @@ namespace KompasServer.Effects
             Debug.Log($"Resolving next stack entry: {stackable}, {context}");
             if (stackable == null)
             {
+                //stack ends
+                foreach (var c in ServerGame.Cards) c.ResetForStack();
                 ServerGame.TurnServerPlayer.ServerNotifier.DiscardSimples();
                 ServerGame.boardCtrl.DiscardSimples();
                 ServerGame.ServerPlayers.First().ServerNotifier.StackEmpty();

@@ -1,7 +1,7 @@
 {
 	"cardType":83,
-	"cardName":"Right Into My Trap",
-	"effText":"Crazy Idea: When I'm hand-discarded, discard-play another Crazy Idea.\nWhen a character here moves out of my area of effect, move them a space towards me, then if they’re no longer in my area of effect, annihilate me.",
+	"cardName":"Shifting Tile Maze Path Blocker",
+	"effText":"Crazy Idea: When I'm hand-discarded, discard-play another Crazy Idea.\nWhen a character enters my area of effect, set their N to 0. When a character leaves my area of effect, annihilate me.",
 	"effects":[
 		{
 			"triggerCondition":"Discard",
@@ -19,7 +19,7 @@
 					\"subeffType\":\"Discard Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"Crazy Idea for A Frayed Knot to discard\",
+						\"blurb\":\"Crazy Idea for Ballroom-Disco Breakdance Competition to discard\",
 						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Distinct from Source\"],
 						\"subtypesInclude\":[\"Crazy Idea\"]
 					}
@@ -28,7 +28,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"blurb\":\"where A Frayed Knot to play targeted Crazy Idea\",
+						\"blurb\":\"where Ballroom-Disco Breakdance Competition to play targeted Crazy Idea\",
 						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
@@ -41,7 +41,34 @@
 			"triggerCondition":"Move",
 			"trigger":
 			"{
-				\"blurb\":\"Back Into My Trap\",
+				\"blurb\":\"N = 0\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"Triggerer Fits Restriction\",\"Coords Fit Restriction\"],
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Not In AOE\"]
+					},
+					\"spaceRestriction\":
+					{
+						\"spaceRestrictions\":[\"In AOE\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target Triggering Card\"
+				}",
+				"{
+					\"subeffType\":\"Set NESW\",
+					\"nVal\":0
+				}"
+			]	
+		},
+		{
+			"triggerCondition":"Move",
+			"trigger":
+			"{
+				\"blurb\":\"Annihilate this\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"Triggerer Fits Restriction\",\"Coords Fit Restriction\"],
 					\"cardRestriction\":
@@ -55,29 +82,6 @@
 				}
 			}",
 			"subeffects":[
-				"{
-					\"subeffType\":\"Target Triggering Card\"
-				}",
-				"{
-					\"subeffType\":\"Space Target\",
-					\"spaceRestriction\":
-					{
-						\"blurb\":\"where for Just a Little Bit More to move its target\",
-						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\",\"Can Move Target to This Space\",\"Towards Source from Target\"],
-						\"constant\":1
-					}
-				}",
-				"{
-					\"subeffType\":\"Move\"
-				}",
-				"{
-					\"subeffType\":\"Conditionally End Effect Resolution\",
-					\"condition\":\"Target Fits Restriction\",
-					\"cardRestriction\":
-					{
-						\"cardRestrictions\":[\"In AOE\"]
-					}
-				}",
 				"{
 					\"subeffType\":\"Target This\"
 				}",

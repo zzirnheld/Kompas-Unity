@@ -57,6 +57,7 @@ namespace KompasClient.Effects
         {
             TimesUsedThisTurn++;
             TimesUsedThisRound++;
+            TimesUsedThisStack++;
         }
     }
 }

@@ -51,6 +51,7 @@ namespace KompasCore.Effects
         public int X = 0;
         public int TimesUsedThisTurn { get; protected set; }
         public int TimesUsedThisRound { get; protected set; }
+        public int TimesUsedThisStack { get; set; }
 
         public Effect(ActivationRestriction restriction, GameCard source, string blurb, int effIndex)
         {

@@ -345,6 +345,11 @@ namespace KompasCore.Cards
             if(Location == CardLocation.Field) TurnsOnBoard++;
         }
 
+        public void ResetForStack()
+        {
+            foreach (var e in Effects) e.TimesUsedThisStack = 0;
+        }
+
         #region augments
         public virtual void AddAugment(GameCard augment, IStackable stackSrc = null)
         {

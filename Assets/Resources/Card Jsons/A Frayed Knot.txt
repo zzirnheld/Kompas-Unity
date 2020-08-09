@@ -1,0 +1,69 @@
+{
+	"cardType":83,
+	"cardName":"A Frayed Knot",
+	"effText":"Crazy Idea: When I'm hand-discarded, discard-play another Crazy Idea.\nDiscard a Crazy Idea",
+	"effects":[
+		{
+			"triggerCondition":"Discard",
+			"trigger":"{
+				\"blurb\":\"Crazy Idea\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\",\"Triggerer Fits Restriction\"],
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Hand\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Discard Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Crazy Idea for A Frayed Knot to discard\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Distinct from Source\"],
+						\"subtypesInclude\":[\"Crazy Idea\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where A Frayed Knot to play targeted Crazy Idea\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Play\"
+				}"
+			]
+		},
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"blurb\":\"A Frayed Knot\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Hand Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"card for A Frayed Knot to discard\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Hand\"],
+						\"subtypesInclude\":[\"Crazy Idea\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}"
+			]
+		}
+	],
+	"c":5,
+	"spellType":"Simple",
+	"subtypes":["Simple","Crazy Idea"],
+	"subtypeText":"Simple Crazy Idea"
+}

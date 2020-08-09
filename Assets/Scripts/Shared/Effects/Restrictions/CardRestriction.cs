@@ -31,6 +31,7 @@ namespace KompasCore.Effects
         public const string Friendly = "Friendly";
         public const string Enemy = "Enemy";
         public const string SameOwner = "Same Owner as Source";
+        public const string TurnPlayerControls = "Turn Player Controls";
 
         //summoned
         public const string Summoned = "Summoned";
@@ -79,6 +80,7 @@ namespace KompasCore.Effects
         public const string Adjacent = "Adjacent";
         public const string WithinCSpacesOfSource = "Within C Spaces";
         public const string InAOE = "In AOE";
+        public const string NotInAOE = "Not In AOE";
         public const string AdjacentToSubtype = "Adjacent to Subtype";
         public const string ExactlyXSpaces = "Exactly X Spaces to Source";
         public const string InFrontOfSource = "In Front of Source";
@@ -145,6 +147,7 @@ namespace KompasCore.Effects
                 case Friendly:  return potentialTarget.Controller == Subeffect.Controller;
                 case Enemy:     return potentialTarget.Controller != Subeffect.Controller;
                 case SameOwner: return potentialTarget.Owner == Subeffect.Controller;
+                case TurnPlayerControls: return potentialTarget.Controller == Subeffect.Game.TurnPlayer;
 
                 //summoned
                 case Summoned: return potentialTarget.Summoned;
@@ -193,6 +196,7 @@ namespace KompasCore.Effects
                 case Adjacent:          return potentialTarget.IsAdjacentTo(Subeffect.Source);
                 case AdjacentToSubtype: return potentialTarget.AdjacentCards.Any(card => adjacencySubtypes.All(s => card.SubtypeText.Contains(s)));
                 case InAOE:             return Subeffect.Source.CardInAOE(potentialTarget);
+                case NotInAOE:          return !Subeffect.Source.CardInAOE(potentialTarget);
                 case WithinCSpacesOfSource: return potentialTarget.WithinSpaces(cSpaces, Subeffect.Source);
                 case ExactlyXSpaces:    return potentialTarget.DistanceTo(Subeffect.Source) == Subeffect.Effect.X;
                 case InFrontOfSource:   return Subeffect.Source.CardInFront(potentialTarget);
