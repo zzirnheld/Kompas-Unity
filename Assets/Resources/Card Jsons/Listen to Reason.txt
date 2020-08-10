@@ -29,20 +29,20 @@
 					}
 				}",
 				"{
-					\"subeffType":\"Discard\"
+					\"subeffType\":\"Discard\"
 				}",
 				"{
 					\"subeffType":\"Delete Target\"
 				}",
 				"{
-					\"subeffType":\"Loop While Have Targets\",
+					\"subeffType\":\"Loop While Have Targets\",
 					\"jumpTo\":2
 				}",
 				"{
-					\"subeffType":\"Pay Pips\"
+					\"subeffType\":\"Pay Pips\"
 				}",
 				"{
-					\"subeffType":\"Draw X\"
+					\"subeffType\":\"Draw X\"
 				}"
 			]	
 		}

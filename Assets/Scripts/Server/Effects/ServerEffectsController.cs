@@ -284,6 +284,8 @@ namespace KompasServer.Effects
                 currentOptionalTrigger.Confirmed = answered;
                 currentOptionalTrigger.Responded = true;
             }
+
+            CheckForResponse();
         }
         #endregion triggers
     }

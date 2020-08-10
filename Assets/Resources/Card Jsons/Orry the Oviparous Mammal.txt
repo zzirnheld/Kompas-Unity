@@ -17,7 +17,7 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"Mind bawk bawk Controlled Pigeons\",
+						\"blurb\":\"An oviparous mamal? ORRY THE OVIPAROUS MAMMAL?\",
 						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Subtypes Include\"],
 						\"subtypesInclude\":[\"Crazy Idea\"]
 					}
@@ -30,7 +30,7 @@
 				}",
 				"{
 					\"subeffType\":\"Change NESW\",
-					\"eChange\":-3
+					\"wChange\":3
 				}"
 			]	
 		}

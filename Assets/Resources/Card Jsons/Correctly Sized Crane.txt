@@ -8,7 +8,7 @@
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"Max Per Turn\"],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"Max Per Turn\",\"Controller Triggered\"],
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Hand\"]
@@ -20,6 +20,7 @@
 					\"subeffType\":\"Discard Target\",
 					\"cardRestriction\":
 					{
+						\"blurb\":\"card for Correctly Sized Crane to grab",
 						\"cardRestrictions\":[\"Friendly\",\"Discard\"]
 					}
 				}",

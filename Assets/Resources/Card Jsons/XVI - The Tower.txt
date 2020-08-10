@@ -40,7 +40,7 @@
 	],
 	"n":0,
 	"e":4,
-	"s":8,
+	"s":10,
 	"w":2,
 	"subtypes":["Tarocco"],
 	"subtypeText":"Tarocco"

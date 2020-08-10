@@ -4,6 +4,39 @@
 	"effText":"Crazy Idea: When I'm hand-discarded, discard-play another Crazy Idea.\nThe first time each stack a character moves into here, move them to an empty space here. If you can't, annihilate me.",
 	"effects":[
 		{
+			"triggerCondition":"Discard",
+			"trigger":"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\",\"Triggerer Fits Restriction\"],
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Hand\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Discard Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Crazy Idea for Maze Blocker to target\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Distinct from Source\"],
+						\"subtypesInclude\":[\"Crazy Idea\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where Maze Blocker to play targeted Crazy Idea\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Play\"
+				}"
+			]
+		},
+		{
 			"triggerCondition":"Move",
 			"trigger":
 			"{

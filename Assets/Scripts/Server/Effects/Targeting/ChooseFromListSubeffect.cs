@@ -74,12 +74,10 @@ namespace KompasServer.Effects
 
             //if there are not enough possible targets, declare the effect impossible
             //if you want to continue resolution anyway, add an if impossible check before this subeffect.
-            if (potentialTargets.Count() < minCanChoose)
-            {
-                RequestTargets();
-                return false;
-            }
-            else return ServerEffect.EffectImpossible();
+            if (potentialTargets.Count() < minCanChoose) return ServerEffect.EffectImpossible();
+
+            RequestTargets();
+            return false;
         }
 
         public virtual bool AddListIfLegal(IEnumerable<GameCard> choices)
