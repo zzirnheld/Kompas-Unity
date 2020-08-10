@@ -89,6 +89,7 @@ namespace KompasCore.Effects
         public const string IndexInListGTEC = "Index>=C";
         public const string IndexInListLTEC = "Index<=C";
         public const string IndexInListLTEX = "Index<=X";
+        public const string SameColumnAsSource = "Same Column as Source";
 
         //misc
         public const string CanBePlayed = "Can Be Played";
@@ -195,16 +196,17 @@ namespace KompasCore.Effects
                 case WLTEC:    return potentialTarget.W <= constant;
 
                 //positioning
-                case Adjacent:          return potentialTarget.IsAdjacentTo(Subeffect.Source);
-                case AdjacentToSubtype: return potentialTarget.AdjacentCards.Any(card => adjacencySubtypes.All(s => card.SubtypeText.Contains(s)));
-                case InAOE:             return Subeffect.Source.CardInAOE(potentialTarget);
-                case NotInAOE:          return !Subeffect.Source.CardInAOE(potentialTarget);
+                case Adjacent:           return potentialTarget.IsAdjacentTo(Subeffect.Source);
+                case AdjacentToSubtype:  return potentialTarget.AdjacentCards.Any(card => adjacencySubtypes.All(s => card.SubtypeText.Contains(s)));
+                case InAOE:              return Subeffect.Source.CardInAOE(potentialTarget);
+                case NotInAOE:           return !Subeffect.Source.CardInAOE(potentialTarget);
                 case WithinCSpacesOfSource: return potentialTarget.WithinSpaces(cSpaces, Subeffect.Source);
-                case ExactlyXSpaces:    return potentialTarget.DistanceTo(Subeffect.Source) == Subeffect.Effect.X;
-                case InFrontOfSource:   return Subeffect.Source.CardInFront(potentialTarget);
-                case IndexInListGTEC:   return potentialTarget.IndexInList >= constant;
-                case IndexInListLTEC:   return potentialTarget.IndexInList <= constant;
-                case IndexInListLTEX:   return potentialTarget.IndexInList <= x;
+                case ExactlyXSpaces:     return potentialTarget.DistanceTo(Subeffect.Source) == Subeffect.Effect.X;
+                case InFrontOfSource:    return Subeffect.Source.CardInFront(potentialTarget);
+                case IndexInListGTEC:    return potentialTarget.IndexInList >= constant;
+                case IndexInListLTEC:    return potentialTarget.IndexInList <= constant;
+                case IndexInListLTEX:    return potentialTarget.IndexInList <= x;
+                case SameColumnAsSource: return potentialTarget.SameColumn(Subeffect.Source);
 
                 //misc
                 case CanBePlayed: return Subeffect.Game.ExistsEffectPlaySpace(Subeffect.Source.PlayRestriction, Subeffect.Effect);

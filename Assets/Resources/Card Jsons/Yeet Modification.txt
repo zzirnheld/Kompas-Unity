@@ -5,7 +5,8 @@
 	"effects":[
 		{
 			"triggerCondition":"Discard",
-			"trigger":"{
+			"trigger":
+			"{
 				\"blurb\":\"Crazy Idea\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\",\"Triggerer Fits Restriction\"],
@@ -66,10 +67,9 @@
 					\"subeffType\":\"Move\"
 				}"
 			]	
-		},
+		}
 	],
 	"c":5,
 	"spellType":"Enchant",
-	"subtypes":["Enchant","Crazy Idea"],
 	"subtypeText":"Enchant Crazy Idea"
 }

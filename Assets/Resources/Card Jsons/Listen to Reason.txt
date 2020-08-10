@@ -37,7 +37,7 @@
 				"{
 					\"subeffType":\"Loop While Have Targets\",
 					\"jumpTo\":2
-				}"
+				}",
 				"{
 					\"subeffType":\"Pay Pips\"
 				}",

@@ -28,28 +28,28 @@
 				"{
 					\"subeffType\":\"Change NESW\",
 					\"nChange\":1
-				}"
+				}",
 				"{
 					\"subeffType\":\"End Effect Resolution\"
 				}",
 				"{
 					\"subeffType\":\"Change NESW\",
 					\"eChange\":1
-				}"
+				}",
 				"{
 					\"subeffType\":\"End Effect Resolution\"
 				}",
 				"{
 					\"subeffType\":\"Change NESW\",
 					\"sChange\":1
-				}"
+				}",
 				"{
 					\"subeffType\":\"End Effect Resolution\"
 				}",
 				"{
 					\"subeffType\":\"Change NESW\",
 					\"wChange\":1
-				}"
+				}",
 				"{
 					\"subeffType\":\"End Effect Resolution\"
 				}"

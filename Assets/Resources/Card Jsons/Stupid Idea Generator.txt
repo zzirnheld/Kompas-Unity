@@ -89,7 +89,7 @@
 					\"subeffType\":\"Annihilate\"
 				}"
 			]	
-		},
+		}
 	],
 	"c":5,
 	"spellType":"Enchant",
