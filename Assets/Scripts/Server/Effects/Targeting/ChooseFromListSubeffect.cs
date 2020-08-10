@@ -53,7 +53,7 @@ namespace KompasServer.Effects
             var possibleTargets = ServerGame.Cards.Where(c => cardRestriction.Evaluate(c));
             if (!possibleTargets.Any()) return new GameCard[0];
 
-            switch (order)
+            switch (orderBy)
             {
                 case NoOrder: return possibleTargets;
                 case Closest: 

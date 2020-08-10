@@ -1,0 +1,64 @@
+{
+	"cardType":67,
+	"cardName":"Flippant Emo Daughter",
+	"effText":"When you play a Crazy Idea, give me +1 N, E, S, or W.",
+	"effects":[
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"This Card Fits Restriction\"],
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Adjacent to Enemy\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target Triggering Card\"
+				}",
+				"{
+					\"subeffType\":\"Choose Effect Option\",
+					\"ChoiceBlurb\":\"What stat do you want to buff, dad? (rolls eyes)\",
+					\"OptionBlurbs\":[\"N\",\"E\",\"S\",\"W\"],
+					\"OptionJumpIndices\":[2,4,6,8]
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
+					\"nChange\":1
+				}"
+				"{
+					\"subeffType\":\"End Effect Resolution\"
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
+					\"eChange\":1
+				}"
+				"{
+					\"subeffType\":\"End Effect Resolution\"
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
+					\"sChange\":1
+				}"
+				"{
+					\"subeffType\":\"End Effect Resolution\"
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
+					\"wChange\":1
+				}"
+				"{
+					\"subeffType\":\"End Effect Resolution\"
+				}"
+			]	
+		}
+	],
+	"n":1,
+	"e":1,
+	"s":5,
+	"w":1,
+	"subtypeText":""
+}

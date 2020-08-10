@@ -1,0 +1,55 @@
+{
+	"cardType":67,
+	"cardName":"Great Scott",
+	"effText":"Unique: Can’t be played if you control a copy.\nThe first time each turn a character moves, discard 1, draw 1, and move the character 1 space.",
+	"effects":[
+		{
+			"triggerCondition":"Move",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Is Character\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Hand Target\",
+					\"cardRestriction\":{
+						\"blurb\":\"for Great Scott to discard\",
+						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
+					}
+
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Draw\"
+				}",
+				"{
+					\"subeffType\":\"Target Triggering Card\"
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where for Great Scott, Marty, move the card!\",
+						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\",\"Can Move Target to This Space\",\"Towards Source from Target\"],
+						\"constant\":1
+					}
+				}",
+				"{
+					\"subeffType\":\"Move\"
+				}"
+			]	
+		}
+	],
+	"n":1,
+	"e":4,
+	"s":7,
+	"w":4,
+	"subtypeText":"Doctor"
+}

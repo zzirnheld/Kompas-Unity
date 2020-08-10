@@ -1,0 +1,53 @@
+{
+	"cardType":83,
+	"cardName":"Listen to Reason",
+	"effText":"Discard your hand, including X Crazy Ideas. Pay X pips. Draw X.",
+	"effects":[
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"blurb\":\"Please\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Set X by Gamestate Value\",
+					\"throughRestriction\":
+					{
+						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Crazy Idea\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Target All\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
+					}
+				}",
+				"{
+					\"subeffType":\"Discard\"
+				}",
+				"{
+					\"subeffType":\"Delete Target\"
+				}",
+				"{
+					\"subeffType":\"Loop While Have Targets\",
+					\"jumpTo\":2
+				}"
+				"{
+					\"subeffType":\"Pay Pips\"
+				}",
+				"{
+					\"subeffType":\"Draw X\"
+				}"
+			]	
+		}
+	],
+	"c":5,
+	"spellType":"Simple",
+	"subtypeText":"Simple"
+}

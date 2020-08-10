@@ -1,0 +1,39 @@
+{
+	"cardType":83,
+	"cardName":"Shatter the Warranty",
+	"effText":"Dispel a friendly CX Enchant. Draw X.",
+	"effects":[
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"blurb\":\"Hi-yah!\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Friendly\",\"Board\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Enchant\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Set X by Target Cost\"
+				}",
+				"{
+					\"subeffType\":\"Dispe\"
+				}",
+				"{
+					\"subeffType\":\"Draw X\"
+				}"
+			]	
+		}
+	],
+	"c":5,
+	"spellType":"Simple",
+	"subtypeText":"Simple"
+}

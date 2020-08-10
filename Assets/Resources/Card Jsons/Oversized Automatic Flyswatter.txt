@@ -1,0 +1,35 @@
+{
+	"cardType":67,
+	"cardName":"Oversized Automatic Flyswatter",
+	"effText":"When a character arrives adjacent to me, give them -1E.",
+	"effects":[
+		{
+			"triggerCondition":"Arrive",
+			"trigger":
+			"{
+				\"blurb\":\"BEGONE! SWAT!\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"Coords Fit Restriction\"],
+					\"spaceRestriction\":
+					{
+						\"spaceRestrictions\":[\"Adjacent to Source\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target Triggering Card\"
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
+					\"eChange\":-1
+				}"
+			]	
+		}
+	],
+	"n":0,
+	"e":3,
+	"s":5,
+	"w":5,
+	"subtypeText":"Crazy Idea"
+}

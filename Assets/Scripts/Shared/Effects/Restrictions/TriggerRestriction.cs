@@ -23,6 +23,8 @@ namespace KompasCore.Effects
         public const string EffectSourceIsThisCard = "Stackable Source is This Card"; //140,
         public const string EffectSourceIsTriggerer = "Stackable Source is Triggerer"; //149,
 
+        public const string DistanceTriggererToSpaceConstant = "Distance from Triggerer to Space == Constant";
+
         public const string ControllerTriggered = "Controller Triggered"; //200,
         public const string EnemyTriggered = "Enemy Triggered"; //201,
 
@@ -52,6 +54,7 @@ namespace KompasCore.Effects
         public int maxTimesPerTurn = 1;
         public int maxPerRound = 1;
         public int maxPerStack = 1;
+        public int distance = 1;
 
         public GameCard ThisCard { get; private set; }
 
@@ -85,6 +88,10 @@ namespace KompasCore.Effects
                 //TODO make these into just something to do with triggered card fitting restriction
                 case ControllerTriggered:     return context.Triggerer == ThisCard.Controller;
                 case EnemyTriggered:          return context.Triggerer != ThisCard.Controller;
+
+                case DistanceTriggererToSpaceConstant:
+                    if (context.Space == null) return false;
+                    return context.Card.DistanceTo(context.Space.Value) == distance;
 
                 //gamestate
                 case FriendlyTurn:  return Subeffect.Game.TurnPlayer == ThisCard.Controller;

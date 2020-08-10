@@ -1,0 +1,54 @@
+{
+	"cardType":67,
+	"cardName":"Weird Idea That is Also",
+	"effText":"Once each friendly turn, you can give me -1E, discard a Crazy Idea, and give another character +1W.",
+	"effects":[
+		{
+			"activationRestriction":{
+				"activationRestrictions":[
+					"Max Times Per Turn",
+					"Friendly Turn",
+					"Default"
+				]
+			},
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
+					\"eChange\":-1
+				}",
+				"{
+					\"subeffType\":\"Hand Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Mind bawk bawk Controlled Pigeons\",
+						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Crazy Idea\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"character that is also +1W\",
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Distinct from Source\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
+					\"eChange\":-3
+				}"
+			]	
+		}
+	],
+	"n":1,
+	"e":6,
+	"s":5,
+	"w":1,
+	"subtypeText":"Crazy Idea"
+}

@@ -285,6 +285,7 @@ namespace KompasCore.Cards
              * is card.X - X > card.Y - Y? If so, return card.X -X, otherwise return card.Y - Y
             */
         }
+        public int DistanceTo((int x, int y) space) => DistanceTo(space.x, space.y);
         public int DistanceTo(GameCard card) => DistanceTo(card.BoardX, card.BoardY);
         public bool WithinSpaces(int numSpaces, GameCard card)
         {

@@ -1,5 +1,6 @@
 ﻿using KompasCore.Effects;
 using KompasServer.GameCore;
+using System.Linq;
 
 namespace KompasServer.Effects
 {
@@ -7,6 +8,7 @@ namespace KompasServer.Effects
     {
         public const string HandSize = "Hand Size";
         public const string DistanceToCoordsThrough = "Distance to Coords Through";
+        public const string CardsFittingRestriction = "Cards Fitting Restriction";
 
         public string whatToCount;
 
@@ -43,6 +45,8 @@ namespace KompasServer.Effects
                     case DistanceToCoordsThrough:
                         var (x, y) = Space;
                         return Game.boardCtrl.ShortestPath(Source, x, y, throughRestriction);
+                    case CardsFittingRestriction:
+                        return Game.Cards.Where(c => throughRestriction.Evaluate(c)).Count();
                     default:
                         throw new System.ArgumentException($"Invalid 'what to count' string {whatToCount} in x by gamestate value subeffect");
                 }

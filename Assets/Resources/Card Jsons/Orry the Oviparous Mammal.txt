@@ -1,0 +1,43 @@
+{
+	"cardType":67,
+	"cardName":"Orry the Oviparous Mammal",
+	"effText":"When I move 3 spaces, discard a Crazy Idea, draw 1, and give me +3W.",
+	"effects":[
+		{
+			"triggerCondition":"Move",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\",\"Distance from Triggerer to Space == Constant\"],
+					\"distance\":3
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Hand Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Mind bawk bawk Controlled Pigeons\",
+						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Crazy Idea\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
+					\"eChange\":-3
+				}"
+			]	
+		}
+	],
+	"n":3,
+	"e":3,
+	"s":5,
+	"w":0,
+	"subtypeText":"Crazy Idea"
+}

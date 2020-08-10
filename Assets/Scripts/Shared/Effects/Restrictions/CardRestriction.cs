@@ -2,6 +2,7 @@
 using System.Linq;
 using UnityEngine;
 using KompasCore.Cards;
+using System.Security.Policy;
 
 namespace KompasCore.Effects
 {
@@ -32,6 +33,7 @@ namespace KompasCore.Effects
         public const string Enemy = "Enemy";
         public const string SameOwner = "Same Owner as Source";
         public const string TurnPlayerControls = "Turn Player Controls";
+        public const string AdjacentToEnemy = "Adjacent to Enemy";
 
         //summoned
         public const string Summoned = "Summoned";
