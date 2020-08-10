@@ -19,7 +19,7 @@
 					\"subeffType\":\"Discard Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"Crazy Idea for A Frayed Knot to discard\",
+						\"blurb\":\"Crazy Idea for Right Into My Trap to discard\",
 						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Distinct from Source\"],
 						\"subtypesInclude\":[\"Crazy Idea\"]
 					}
@@ -62,7 +62,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"blurb\":\"where for Just a Little Bit More to move its target\",
+						\"blurb\":\"back into my trap\",
 						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\",\"Can Move Target to This Space\",\"Towards Source from Target\"],
 						\"constant\":1
 					}

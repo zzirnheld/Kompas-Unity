@@ -15,7 +15,7 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"card for Dumachmartres to discard\",
+						\"blurb\":\"Dr. Thierr Dumachmartres' evil scheme for today\",
 						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
 					}
 				}",

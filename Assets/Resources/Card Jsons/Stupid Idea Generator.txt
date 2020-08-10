@@ -19,6 +19,7 @@
 					\"subeffType\":\"Discard Target\",
 					\"cardRestriction\":
 					{
+						\"blurb\":\"Crazy Idea for Stupid Idea Generator to play\",
 						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Distinct from Source\"],
 						\"subtypesInclude\":[\"Crazy Idea\"]
 					}
@@ -27,7 +28,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"blurb\":\"where Decide! to play targeted Crazy Idea\",
+						\"blurb\":\"where Stupid Idea Generator to play targeted Crazy Idea\",
 						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
@@ -50,7 +51,7 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"card for Stupid Idea Generator to discard\",
+						\"blurb\":\"Stupid Idea to Generate\",
 						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
 					}
 				}",
@@ -62,7 +63,7 @@
 				}",
 				"{
 					\"subeffType\":\"Choose Effect Option\",
-					\"ChoiceBlurb\":\"Pay 1 pip or annihilate this?\",
+					\"ChoiceBlurb\":\"Pay 1 pip or annihilate Stupid?\",
 					\"OptionBlurbs\":[\"Pay 1 pip\",\"Annhihilate\"],
 					\"OptionJumpIndices\":[4,8]
 				}",

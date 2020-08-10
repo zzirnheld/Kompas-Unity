@@ -17,6 +17,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
+						\"blurb\":\"No! Not the original 1870s porcelain doll torso collection!\",
 						\"cardRestrictions\":[\"Friendly\",\"Board\",\"Subtypes Include\"],
 						\"subtypesInclude\":[\"Enchant\"]
 					}
@@ -25,7 +26,7 @@
 					\"subeffType\":\"Set X by Target Cost\"
 				}",
 				"{
-					\"subeffType\":\"Dispe\"
+					\"subeffType\":\"Dispel\"
 				}",
 				"{
 					\"subeffType\":\"Draw X\"

@@ -48,7 +48,7 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"card for Wait, Hold Up to discard\",
+						\"blurb\":\"Wait, Hold Up, what are you discarding?\",
 						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
 					}
 				}",
@@ -62,7 +62,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"enemy for Wait, Hold Up to move\",
+						\"blurb\":\"Wait, Hold Up, what are you moving?\",
 						\"cardRestrictions\":[\"Board\",\"Enemy\"]
 					}
 				}",
@@ -70,7 +70,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"blurb\":\"where Wait, Hold Up to move its target\",
+						\"blurb\":\"Wait, Hold Up, where?\",
 						\"spaceRestrictions\":[\"Empty\",\"Distance to Target <= Constant\"],
 						\"constant\":3
 					}

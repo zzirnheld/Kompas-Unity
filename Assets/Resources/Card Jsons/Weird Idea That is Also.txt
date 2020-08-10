@@ -23,7 +23,7 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"Mind bawk bawk Controlled Pigeons\",
+						\"blurb\":\"card in hand that is also discard\",
 						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Subtypes Include\"],
 						\"subtypesInclude\":[\"Crazy Idea\"]
 					}
@@ -41,7 +41,7 @@
 				}",
 				"{
 					\"subeffType\":\"Change NESW\",
-					\"eChange\":-3
+					\"wChange\":1
 				}"
 			]	
 		}

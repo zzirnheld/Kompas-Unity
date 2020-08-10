@@ -48,7 +48,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"card for Self-Destruct Button to destroy (1/2)\",
+						\"blurb\":\"No! Not the Self-Destruct Button installed on all Ificator (TM) systems! (1/2)\",
 						\"cardRestrictions\":[\"Friendly\",\"Board\"]
 					}
 				}",
@@ -56,7 +56,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"card for Self-Destruct Button to destroy (2/2)\",
+						\"blurb\":\"No! Not the Self-Destruct Button installed on all Ificator (TM) systems! (2/2)\",
 						\"cardRestrictions\":[\"Friendly\",\"Board\",\"Distinct from Target\"]
 					}
 				}",
@@ -86,7 +86,7 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"card for Self-Destruct Button to discard\",
+						\"blurb\":\"oh, and the self-destruct button on the -ificator in my hand, curse you, Orry\",
 						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
 					}
 				}",
