@@ -11,35 +11,17 @@ namespace KompasCore.GameCore
         public const string BLANK_CARD_PATH = "Card Jsons/Blank Card";
 
         public Game game;
-
-        //one of these for each player
         public Player Owner;
 
         //rng for shuffling
         private static readonly System.Random rng = new System.Random();
 
-        public List<GameCard> Deck { get; } = new List<GameCard>();
+        public readonly List<GameCard> Deck = new List<GameCard>();
 
         public int IndexOf(GameCard card) => Deck.IndexOf(card);
         public int DeckSize => Deck.Count;
         public GameCard Topdeck => Deck.FirstOrDefault();
         public GameCard Bottomdeck => Deck.LastOrDefault();
-
-        /// <summary>
-        /// Gets the card at the designated index.
-        /// </summary>
-        /// <param name="index">Index of the card to get</param>
-        /// <param name="remove">Whether or not to remove the card</param>
-        /// <param name="shuffle">Whether or not to shuffle the deck after getting the card</param>
-        /// <returns></returns>
-        public GameCard CardAt(int index, bool remove, bool shuffle = false)
-        {
-            if (index > Deck.Count()) return null;
-            GameCard card = Deck.ElementAt(index);
-            if (remove) Deck.RemoveAt(index);
-            if (shuffle) Shuffle();
-            return card;
-        }
 
         protected virtual bool AddCard(GameCard card, IStackable stackSrc = null)
         {
@@ -125,21 +107,6 @@ namespace KompasCore.GameCore
                 Deck[k] = Deck[n];
                 Deck[n] = value;
             }
-        }
-
-        /// <summary>
-        /// Checks if a card exists that fits the given restriction
-        /// </summary>
-        /// <param name="cardRestriction"></param>
-        /// <returns></returns>
-        public bool Exists(CardRestriction cardRestriction)
-        {
-            foreach (GameCard c in Deck)
-            {
-                if (c != null && cardRestriction.Evaluate(c)) return true;
-            }
-
-            return false;
         }
 
         public List<GameCard> CardsThatFitRestriction(CardRestriction cardRestriction)

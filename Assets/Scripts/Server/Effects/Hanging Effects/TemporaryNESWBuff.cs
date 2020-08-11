@@ -12,9 +12,10 @@ namespace KompasServer.Effects
         private readonly int sBuff = 0;
         private readonly int wBuff = 0;
 
-        public TemporaryNESWBuff(ServerGame game, TriggerRestriction triggerRestriction, string endCondition,
+        public TemporaryNESWBuff(ServerGame game, TriggerRestriction triggerRestriction, string endCondition, 
+            string fallOffCondition, TriggerRestriction fallOffRestriction,
             GameCard buffRecipient, int nBuff, int eBuff, int sBuff, int wBuff)
-            : base(game, triggerRestriction, endCondition)
+            : base(game, triggerRestriction, endCondition, fallOffCondition, fallOffRestriction)
         {
             this.buffRecipient = buffRecipient ?? throw new System.ArgumentNullException("Null characcter card in temporary nesw buff");
             this.nBuff = nBuff;

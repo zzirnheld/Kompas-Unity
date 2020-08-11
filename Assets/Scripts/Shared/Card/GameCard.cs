@@ -123,6 +123,19 @@ namespace KompasCore.Cards
                 }
             }
         }
+        private string SpellSubtypeString
+        {
+            get
+            {
+                if (CardType != 'S') return "";
+                switch (SpellSubtype)
+                {
+                    case TerraformSubtype: return $" Radius {Arg}";
+                    case DelayedSubtype: return $" {Arg} turns";
+                    default: return "";
+                }
+            }
+        }
         public string StatsString
         {
             get
@@ -130,7 +143,7 @@ namespace KompasCore.Cards
                 switch (CardType)
                 {
                     case 'C': return $"N: {N} / E: {E} / S: {S} / W: {W}";
-                    case 'S': return $"C {C} {(Fast ? "Fast" : "")} {SpellSubtype}";
+                    case 'S': return $"C {C}{(Fast ? " Fast" : "")} {SpellSubtype}{SpellSubtypeString}";
                     case 'A': return $"A {A}";
                     default: throw new System.NotImplementedException($"Stats string not implemented for card type {CardType}");
                 }
@@ -203,7 +216,7 @@ namespace KompasCore.Cards
                 cardCtrl?.SetPhysicalLocation(location);
             }
         }
-        public bool KnownToEnemy => !Game.HiddenLocations.Contains(Location);
+        public virtual bool KnownToEnemy => !Game.HiddenLocations.Contains(Location);
         public int ID { get; private set; }
         public abstract IEnumerable<Effect> Effects { get; }
         public List<GameCard> Augments { get; private set; } = new List<GameCard>();
@@ -329,7 +342,10 @@ namespace KompasCore.Cards
         /// Resets any of the card's values that might be different from their originals.
         /// Should be called when cards move out the discard, or into the hand, deck, or annihilation
         /// </summary>
-        public virtual void ResetCard() { if (serializedCard != null) SetInfo(serializedCard, ID); }
+        public virtual void ResetCard() 
+        { 
+            if (serializedCard != null) SetInfo(serializedCard, ID); 
+        }
 
         /// <summary>
         /// Resets anything that needs to be reset for the start of the turn.

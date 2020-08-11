@@ -15,16 +15,17 @@ namespace KompasServer.Effects
         public int sMultiplier = 0;
         public int wMultiplier = 0;
 
-        protected override IEnumerable<(HangingEffect, GameCard)> CreateHangingEffects()
+        protected override IEnumerable<HangingEffect> CreateHangingEffects()
         {
-            var temp = new TemporaryNESWBuff(ServerGame, triggerRestriction, endCondition,
+            var temp = new TemporaryNESWBuff(ServerGame, triggerRestriction, endCondition, 
+                fallOffCondition, CreateFallOffRestriction(Target),
                 Target,
                 nBuff + Effect.X * nMultiplier,
                 eBuff + Effect.X * eMultiplier,
                 sBuff + Effect.X * sMultiplier,
                 wBuff + Effect.X * wMultiplier);
 
-            return new List<(HangingEffect, GameCard)>() { (temp, Target) };
+            return new List<HangingEffect>() { temp };
         }
     }
 }

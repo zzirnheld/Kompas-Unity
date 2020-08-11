@@ -305,7 +305,7 @@ namespace KompasClient.UI
 
         #region search
         public void StartSearch(List<GameCard> list, int numToChoose = 1, bool targetingSearch = true) =>
-            StartSearch(new SearchData(list, list.Count < numToChoose ? list.Count : numToChoose, targetingSearch, new List<GameCard>()));
+            StartSearch(new SearchData(list, System.Math.Min(list.Count, numToChoose), targetingSearch, new List<GameCard>()));
 
         public void StartSearch(SearchData data)
         {
@@ -320,7 +320,7 @@ namespace KompasClient.UI
 
             //initiate search process
             searchIndex = 0;
-            cardSearchImage.sprite = currSearchData.Value.toSearch[searchIndex].detailedSprite;
+            SearchShowIndex(searchIndex);
             if (currSearchData.Value.targetingSearch) searchTargetButtonText.text = "Choose";
             else searchTargetButtonText.text = "Cancel";
             cardSearchView.SetActive(true);

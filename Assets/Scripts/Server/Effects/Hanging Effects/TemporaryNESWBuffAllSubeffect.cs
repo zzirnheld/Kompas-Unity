@@ -17,7 +17,7 @@ namespace KompasServer.Effects
         {
             cardRestrictions = new string[]
             {
-            CardRestriction.IsCharacter
+                CardRestriction.IsCharacter
             }
         };
 
@@ -27,17 +27,17 @@ namespace KompasServer.Effects
             cardRestriction.Initialize(this);
         }
 
-        protected override IEnumerable<(HangingEffect, GameCard)> CreateHangingEffects()
+        protected override IEnumerable<HangingEffect> CreateHangingEffects()
         {
-            var effs = new List<(HangingEffect, GameCard)>();
+            var effs = new List<HangingEffect>();
 
             IEnumerable<GameCard> cards = ServerGame.Cards.Where(c => cardRestriction.Evaluate(c));
 
             foreach (var card in cards)
             {
-                var temp = new TemporaryNESWBuff(ServerGame, triggerRestriction, endCondition,
+                var temp = new TemporaryNESWBuff(ServerGame, triggerRestriction, endCondition, 
+                    fallOffCondition, CreateFallOffRestriction(card),
                     card, nBuff, eBuff, sBuff, wBuff);
-                effs.Add((temp, card));
             }
 
             return effs;

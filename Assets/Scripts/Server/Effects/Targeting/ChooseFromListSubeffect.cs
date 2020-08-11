@@ -68,19 +68,26 @@ namespace KompasServer.Effects
             //TODO: somehow figure out a better way of checking if there exists a valid list?
             //  maybe a method on list restriction that checks?
             //  because otherwise enumerating lists and seeing if at least one fits would be exponential time
-            if (!listRestriction.Evaluate(new List<GameCard>())) return ServerEffect.EffectImpossible();
+            if (!listRestriction.Evaluate(new List<GameCard>())) 
+                return ServerEffect.EffectImpossible();
 
             potentialTargets = GetPossibleTargets();
 
             //if there are not enough possible targets, declare the effect impossible
             //if you want to continue resolution anyway, add an if impossible check before this subeffect.
-            if (potentialTargets.Count() < minCanChoose) return ServerEffect.EffectImpossible();
+            if (potentialTargets.Count() < minCanChoose || potentialTargets.Count() < 1)
+                return ServerEffect.EffectImpossible();
 
             RequestTargets();
             return false;
         }
 
-        public virtual bool AddListIfLegal(IEnumerable<GameCard> choices)
+        protected virtual void AddList(IEnumerable<GameCard> choices)
+        {
+            foreach (var c in choices) ServerEffect.AddTarget(c);
+        }
+
+        public bool AddListIfLegal(IEnumerable<GameCard> choices)
         {
             /*
              * Check that all choices were potential targets.
@@ -102,7 +109,7 @@ namespace KompasServer.Effects
             }
 
             //add all cards in the chosen list to targets
-            foreach (var c in choices) ServerEffect.AddTarget(c);
+            AddList(choices);
             //everything's cool
             EffectController.ServerNotifier.AcceptTarget();
             return ServerEffect.ResolveNextSubeffect();

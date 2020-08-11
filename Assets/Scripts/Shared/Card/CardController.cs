@@ -93,7 +93,7 @@ namespace KompasCore.Cards
                     break;
                 case CardLocation.Discard:
                     card.gameObject.transform.SetParent(card.Controller.discardObject.transform);
-                    card.gameObject.transform.localPosition = new Vector3(0, 0, (float)card.Controller.discardCtrl.IndexOf(card));
+                    card.Controller.discardCtrl.SpreadOutCards();
                     gameObject.SetActive(true);
                     break;
                 case CardLocation.Field:

@@ -29,15 +29,6 @@ namespace KompasServer.Effects
 
         //queue of triggers triggered throughout the resolution of the effect, to be ordered after the effect resolves
         private Queue<TriggersTriggered> triggeredTriggers = new Queue<TriggersTriggered>();
-        private Queue<TriggersTriggered> TriggeredTriggers
-        {
-            get
-            {
-                Debug.Log($"Getting triggered triggers, {triggeredTriggers.Count}, {(triggeredTriggers.Count > 0 ? triggeredTriggers.Peek().triggers.Count().ToString() : "")}");
-                return triggeredTriggers;
-            }
-            set => triggeredTriggers = value;
-        }
         //current optional trigger considered, if any
         private ServerTrigger currentOptionalTrigger;
 
@@ -46,20 +37,10 @@ namespace KompasServer.Effects
             = new Dictionary<string, List<ServerTrigger>>();
         private readonly Dictionary<string, List<HangingEffect>> hangingEffectMap 
             = new Dictionary<string, List<HangingEffect>>();
-        private readonly Dictionary<string, List<(HangingEffect he, TriggerRestriction tr)>> hangingEffectFallOffMap
-            = new Dictionary<string, List<(HangingEffect, TriggerRestriction)>>();
+        private readonly Dictionary<string, List<HangingEffect>> hangingEffectFallOffMap
+            = new Dictionary<string, List<HangingEffect>>();
 
         public IServerStackable CurrStackEntry { get; private set; }
-
-        public void Start()
-        {
-            foreach (var c in Trigger.TriggerConditions)
-            {
-                triggerMap.Add(c, new List<ServerTrigger>());
-                hangingEffectMap.Add(c, new List<HangingEffect>());
-                hangingEffectFallOffMap.Add(c, new List<(HangingEffect, TriggerRestriction)>());
-            }
-        }
 
         #region the stack
         public void PushToStack(IServerStackable eff, ActivationContext context)
@@ -128,7 +109,7 @@ namespace KompasServer.Effects
             //then ask the respective player about that trigger.
             lock (triggerStackLock)
             {
-                var triggered = TriggeredTriggers.Peek();
+                var triggered = triggeredTriggers.Peek();
                 var list = triggered.triggers.Where(t => t.StillValidForContext(triggered.context));
                 Debug.Log($"Checking {list.Count()} triggers...: {string.Join(", ", list.Select(t => t.blurb))}");
                 //if there's no triggers, skip all this logic
@@ -162,7 +143,7 @@ namespace KompasServer.Effects
                         PushToStack(t.serverEffect, triggered.context);
                     foreach (var t in confirmed.Where(t => t.serverEffect.Controller == turnPlayer.Enemy).OrderBy(t => t.order))
                         PushToStack(t.serverEffect, triggered.context);
-                    TriggeredTriggers.Dequeue();
+                    triggeredTriggers.Dequeue();
                     return true;
                 }
                 else
@@ -179,7 +160,7 @@ namespace KompasServer.Effects
         
         private bool CheckAllTriggers(ServerPlayer turnPlayer)
         {
-            while (TriggeredTriggers.Any())
+            while (triggeredTriggers.Any())
             {
                 if (!CheckTriggers(turnPlayer)) return false;
                 foreach(var tList in triggerMap.Values)
@@ -222,27 +203,28 @@ namespace KompasServer.Effects
         public void RegisterTrigger(string condition, ServerTrigger trigger)
         {
             Debug.Log($"Registering a new trigger from card {trigger.serverEffect.Source.CardName} to condition {condition}");
-            List<ServerTrigger> triggers = triggerMap[condition];
-            if (triggers == null)
-            {
-                triggers = new List<ServerTrigger>();
-                triggerMap.Add(condition, triggers);
-            }
-            triggers.Add(trigger);
+            if (!triggerMap.ContainsKey(condition)) 
+                triggerMap.Add(condition, new List<ServerTrigger>());
+
+            triggerMap[condition].Add(trigger);
         }
 
         public void RegisterHangingEffect(string condition, HangingEffect hangingEff)
         {
             Debug.Log($"Registering a new hanging effect to condition {condition}");
-            List<HangingEffect> hangingEffs = hangingEffectMap[condition];
-            hangingEffs.Add(hangingEff);
+            if (!hangingEffectMap.ContainsKey(condition))
+                hangingEffectMap.Add(condition, new List<HangingEffect>());
+
+            hangingEffectMap[condition].Add(hangingEff);
         }
 
         public void RegisterHangingEffectFallOff(string condition, TriggerRestriction restriction, HangingEffect hangingEff)
         {
             Debug.Log($"Registering a new hanging effect to condition {condition}");
-            var hangingEffs = hangingEffectFallOffMap[condition];
-            hangingEffs.Add((hangingEff, restriction));
+            if (!hangingEffectFallOffMap.ContainsKey(condition))
+                hangingEffectFallOffMap.Add(condition, new List<HangingEffect>());
+
+            hangingEffectFallOffMap[condition].Add(hangingEff);
         }
 
         public void TriggerForCondition(string condition, params ActivationContext[] contexts)
@@ -253,27 +235,43 @@ namespace KompasServer.Effects
         public void TriggerForCondition(string condition, ActivationContext context)
         {
             Debug.Log($"Attempting to trigger {condition}, with context {context}");
-            var endedEffects = hangingEffectMap[condition].Where(he => he.EndIfApplicable(context)).ToArray();
-            foreach (var t in endedEffects) hangingEffectMap[condition].Remove(t);
-
-            var fallOffToRemove = hangingEffectFallOffMap[condition].Where((he) => he.tr.Evaluate(context)).ToArray();
-            foreach (var toRemove in fallOffToRemove)
+            if (hangingEffectMap.ContainsKey(condition))
             {
-                hangingEffectMap[toRemove.he.EndCondition].Remove(toRemove.he);
-                hangingEffectFallOffMap[condition].Remove(toRemove);
+                var endedEffects = hangingEffectMap[condition].Where(he => he.EndIfApplicable(context)).ToArray();
+                foreach (var t in endedEffects)
+                {
+                    hangingEffectMap[condition].Remove(t);
+                    if(!string.IsNullOrEmpty(t.FallOffCondition))
+                        hangingEffectFallOffMap[t.FallOffCondition].Remove(t);
+                }
             }
 
-            /* 
-             * Needs to be toArray()ed because cards might move out of correct state after this moment.
-             * Later, when triggers are being ordered, stuff like 1/turn will be rechecked.
-             */
-            var validTriggers = triggerMap[condition].Where(t => t.ValidForContext(context)).ToArray();
-            if (!validTriggers.Any()) return;
-            var triggers = new TriggersTriggered(triggers: validTriggers, context: context);
-            Debug.Log($"Triggers triggered: {string.Join(", ", triggers.triggers.Select(t => t.blurb))}");
-            lock (triggerStackLock)
+            if (hangingEffectFallOffMap.ContainsKey(condition))
             {
-                TriggeredTriggers.Enqueue(triggers);
+                var fallOffToRemove = hangingEffectFallOffMap[condition]
+                    .Where(he => he.FallOffRestriction.Evaluate(context))
+                    .ToArray();
+                foreach (var toRemove in fallOffToRemove)
+                {
+                    hangingEffectMap[toRemove.EndCondition].Remove(toRemove);
+                    hangingEffectFallOffMap[condition].Remove(toRemove);
+                }
+            }
+
+            if (triggerMap.ContainsKey(condition))
+            {
+                /* 
+                 * Needs to be toArray()ed because cards might move out of correct state after this moment.
+                 * Later, when triggers are being ordered, stuff like 1/turn will be rechecked.
+                 */
+                var validTriggers = triggerMap[condition].Where(t => t.ValidForContext(context)).ToArray();
+                if (!validTriggers.Any()) return;
+                var triggers = new TriggersTriggered(triggers: validTriggers, context: context);
+                Debug.Log($"Triggers triggered: {string.Join(", ", triggers.triggers.Select(t => t.blurb))}");
+                lock (triggerStackLock)
+                {
+                    triggeredTriggers.Enqueue(triggers);
+                }
             }
         }
 

@@ -13,9 +13,17 @@ namespace KompasServer.Effects
         public string fallOffCondition = Trigger.Remove;
         public string[] fallOffRestrictions =
         {
-        TriggerRestriction.ThisCardTriggered,
-        TriggerRestriction.ThisCardInPlay,
-    };
+            TriggerRestriction.ThisCardTriggered,
+            TriggerRestriction.ThisCardInPlay,
+        };
+
+        protected TriggerRestriction CreateFallOffRestriction(GameCard card)
+        {
+            //conditions for falling off
+            var triggerRest = new TriggerRestriction() { triggerRestrictions = fallOffRestrictions };
+            triggerRest.Initialize(this, card, null);
+            return triggerRest;
+        }
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
@@ -29,20 +37,17 @@ namespace KompasServer.Effects
             var effectsApplied = CreateHangingEffects();
 
             //each of the effects needs to be registered, and registered for how it could fall off
-            foreach (var (eff, card) in effectsApplied)
+            foreach (var eff in effectsApplied)
             {
                 ServerGame.EffectsController.RegisterHangingEffect(endCondition, eff);
-
-                //conditions for falling off
-                var triggerRest = new TriggerRestriction() { triggerRestrictions = fallOffRestrictions };
-                triggerRest.Initialize(this, card, null);
-                ServerGame.EffectsController.RegisterHangingEffectFallOff(fallOffCondition, triggerRest, eff);
+                if(!string.IsNullOrEmpty(fallOffCondition))
+                    ServerGame.EffectsController.RegisterHangingEffectFallOff(fallOffCondition, eff.FallOffRestriction, eff);
             }
 
             //after all that's done, make it do the next subeffect
             return ServerEffect.ResolveNextSubeffect();
         }
 
-        protected abstract IEnumerable<(HangingEffect, GameCard)> CreateHangingEffects();
+        protected abstract IEnumerable<HangingEffect> CreateHangingEffects();
     }
 }
