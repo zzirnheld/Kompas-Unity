@@ -98,6 +98,7 @@ namespace KompasServer.Effects
                 player.passedPriority = false;
             }
         }
+        #endregion the stack
 
         /// <summary>
         /// Checks to see if anything needs to be done with triggers before checking for other responses
@@ -187,19 +188,56 @@ namespace KompasServer.Effects
             //check if responses exist. if not, resolve
             lock (responseLock)
             {
-                //TODO if any player can activate effects, do ServerGame.Players.Any() the entire expression
-                var players = ServerGame.Cards.Where(c => c.Effects.Any(e => e.ActivationRestriction.Evaluate(c.Controller)))
-                    .Select(c => c.Controller).Distinct().Where(p => !p.passedPriority);
+                var players = ServerGame.ServerPlayers
+                    .Where(player => !player.passedPriority &&
+                        ServerGame.Cards.Any(c => c.Effects.Any(e => e.ActivationRestriction.Evaluate(player))))
+                    .ToArray();
 
-                //TODO figure out a way to not resolve the deferred execution of Linq twice
                 if (players.Any()) foreach (var p in players) ServerGame.ServerPlayers[p.index].ServerNotifier.RequestResponse();
                 //if neither player has anything to do, resolve the stack
                 else ResolveNextStackEntry();
             }
         }
-        #endregion the stack
 
-        #region triggers
+        public void TriggerForCondition(string condition, params ActivationContext[] contexts)
+        {
+            foreach (var c in contexts) TriggerForCondition(condition, c);
+        }
+
+        public void TriggerForCondition(string condition, ActivationContext context)
+        {
+            ResolveHangingEffects(condition, context);
+
+            if (triggerMap.ContainsKey(condition))
+            {
+                /* Needs to be toArray()ed because cards might move out of correct state after this moment.
+                 * Later, when triggers are being ordered, stuff like 1/turn will be rechecked. */
+                var validTriggers = triggerMap[condition]
+                    .Where(t => t.ValidForContext(context))
+                    .ToArray();
+                if (!validTriggers.Any()) return;
+                var triggers = new TriggersTriggered(triggers: validTriggers, context: context);
+                Debug.Log($"Triggers triggered: {string.Join(", ", triggers.triggers.Select(t => t.blurb))}");
+                lock (triggerStackLock)
+                {
+                    triggeredTriggers.Enqueue(triggers);
+                }
+            }
+        }
+
+        public void OptionalTriggerAnswered(bool answered)
+        {
+            if (currentOptionalTrigger != default)
+            {
+                currentOptionalTrigger.Confirmed = answered;
+                currentOptionalTrigger.Responded = true;
+                currentOptionalTrigger = default;
+            }
+
+            CheckForResponse();
+        }
+
+        #region register to trigger condition
         public void RegisterTrigger(string condition, ServerTrigger trigger)
         {
             Debug.Log($"Registering a new trigger from card {trigger.serverEffect.Source.CardName} to condition {condition}");
@@ -255,45 +293,6 @@ namespace KompasServer.Effects
                 }
             }
         }
-
-        public void TriggerForCondition(string condition, params ActivationContext[] contexts)
-        {
-            foreach (var c in contexts) TriggerForCondition(condition, c);
-        }
-
-        public void TriggerForCondition(string condition, ActivationContext context)
-        {
-            ResolveHangingEffects(condition, context);
-
-            if (triggerMap.ContainsKey(condition))
-            {
-                /* 
-                 * Needs to be toArray()ed because cards might move out of correct state after this moment.
-                 * Later, when triggers are being ordered, stuff like 1/turn will be rechecked.
-                 */
-                var validTriggers = triggerMap[condition]
-                    .Where(t => t.ValidForContext(context))
-                    .ToArray();
-                if (!validTriggers.Any()) return;
-                var triggers = new TriggersTriggered(triggers: validTriggers, context: context);
-                Debug.Log($"Triggers triggered: {string.Join(", ", triggers.triggers.Select(t => t.blurb))}");
-                lock (triggerStackLock)
-                {
-                    triggeredTriggers.Enqueue(triggers);
-                }
-            }
-        }
-
-        public void OptionalTriggerAnswered(bool answered)
-        {
-            if(currentOptionalTrigger != default)
-            {
-                currentOptionalTrigger.Confirmed = answered;
-                currentOptionalTrigger.Responded = true;
-            }
-
-            CheckForResponse();
-        }
-        #endregion triggers
+        #endregion register to trigger condition
     }
 }
