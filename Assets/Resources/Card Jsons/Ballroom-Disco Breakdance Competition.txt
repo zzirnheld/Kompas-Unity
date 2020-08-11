@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Ballroom-Disco Breakdance Competition",
-	"effText":"Crazy Idea: When I'm hand-discarded, discard-play another Crazy Idea.\nWhen a character enters my area of effect, set their N to 0. When a character leaves my area of effect, annihilate me.",
+	"effText":"Ificate: When I'm hand-discarded, pay a pip and discard-play another Crazy Idea.\nWhen a character enters my area of effect, set their N to 0. When a character leaves my area of effect, annihilate me.",
 	"effects":[
 		{
 			"triggerCondition":"Discard",
@@ -16,11 +16,16 @@
 			}",
 			"subeffects":[
 				"{
+					\"subeffType\":\"Pay Pips\",
+					\"xMultiplier\":0,
+					\"modifier\":1
+				}",
+				"{
 					\"subeffType\":\"Discard Target\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Crazy Idea for Ballroom-Disco Breakdance Competition to discard\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Distinct from Source\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Friendly\",\"Distinct from Source\"],
 						\"subtypesInclude\":[\"Crazy Idea\"]
 					}
 				}",

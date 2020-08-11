@@ -15,6 +15,7 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Set X by Gamestate Value\",
+					\"whatToCount\":\"Cards Fitting Restriction\",
 					\"throughRestriction\":
 					{
 						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Subtypes Include\"],

@@ -8,7 +8,7 @@
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"Max Per Turn\"],
 					\"cardRestriction\":{
 						\"cardRestrictions\":[\"Is Character\"]
 					}
@@ -18,10 +18,9 @@
 				"{
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":{
-						\"blurb\":\"for Great Scott to discard\",
+						\"blurb\":\"Great Scott, we have to discard something\",
 						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
 					}
-
 				}",
 				"{
 					\"subeffType\":\"Discard\"
@@ -36,8 +35,8 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"blurb\":\"where for Great Scott, Marty, move the card!\",
-						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\",\"Can Move Target to This Space\",\"Towards Source from Target\"],
+						\"blurb\":\"Great Scott, Marty, move the card!\",
+						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\",\"Can Move Target to This Space\"],
 						\"constant\":1
 					}
 				}",

@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Yeet Modification",
-	"effText":"Crazy Idea: When I'm hand-discarded, discard-play another Crazy Idea.\nOnce each turn, you can move a turn player's card one space.",
+	"effText":"Ificate: When I'm hand-discarded, pay a pip and discard-play another Crazy Idea.\nOnce each turn, you can move a turn player's card one space.",
 	"effects":[
 		{
 			"triggerCondition":"Discard",
@@ -17,11 +17,16 @@
 			}",
 			"subeffects":[
 				"{
+					\"subeffType\":\"Pay Pips\",
+					\"xMultiplier\":0,
+					\"modifier\":1
+				}",
+				"{
 					\"subeffType\":\"Discard Target\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Crazy Idea for Yeet Modification to play\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Distinct from Source\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Friendly\",\"Distinct from Source\"],
 						\"subtypesInclude\":[\"Crazy Idea\"]
 					}
 				}",

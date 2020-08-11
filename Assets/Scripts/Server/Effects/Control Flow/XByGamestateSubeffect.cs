@@ -16,16 +16,6 @@ namespace KompasServer.Effects
         public int divisor = 1;
         public int modifier = 0;
 
-        public int PlayerIndex = 0;
-        public ServerPlayer Player
-        {
-            get
-            {
-                if (PlayerIndex == 0) return ServerEffect.ServerController;
-                else return ServerEffect.ServerController.ServerEnemy;
-            }
-        }
-
         public CardRestriction throughRestriction = new CardRestriction();
 
         public override void Initialize(ServerEffect eff, int subeffIndex)

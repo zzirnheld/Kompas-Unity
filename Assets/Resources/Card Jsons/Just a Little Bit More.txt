@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Just a Little Bit More",
-	"effText":"Crazy Idea: When I'm hand-discarded, discard-play another Crazy Idea.\nDiscard 1. Draw 1. Move a card 1 space. (You can’t move a spell next to 2 other spells.) Annihilate me.",
+	"effText":"Ificate: When I'm hand-discarded, pay a pip and discard-play another Crazy Idea.\nDiscard 1. Draw 1. Move a card 1 space. (You can’t move a spell next to 2 other spells.) Annihilate me.",
 	"effects":[
 		{
 			"triggerCondition":"Discard",
@@ -15,10 +15,15 @@
 			}",
 			"subeffects":[
 				"{
+					\"subeffType\":\"Pay Pips\",
+					\"xMultiplier\":0,
+					\"modifier\":1
+				}",
+				"{
 					\"subeffType\":\"Discard Target\",
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Distinct from Source\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Friendly\",\"Distinct from Source\"],
 						\"subtypesInclude\":[\"Crazy Idea\"]
 					}
 				}",

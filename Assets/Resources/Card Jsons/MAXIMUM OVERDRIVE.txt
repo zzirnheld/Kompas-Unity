@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"MAXIMUM OVERDRIVE",
-	"effText":"Crazy Idea: When I'm hand-discarded, discard-play another Crazy Idea.\nGive a character +5N and -5W.",
+	"effText":"Ificate: When I'm hand-discarded, pay a pip and discard-play another Crazy Idea.\nGive a character +5N and -5W.",
 	"effects":[
 		{
 			"triggerCondition":"Discard",
@@ -16,11 +16,16 @@
 			}",
 			"subeffects":[
 				"{
+					\"subeffType\":\"Pay Pips\",
+					\"xMultiplier\":0,
+					\"modifier\":1
+				}",
+				"{
 					\"subeffType\":\"Discard Target\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Crazy Idea for MAXIMUM OVERDRIVE to play\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Distinct from Source\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Friendly\",\"Distinct from Source\"],
 						\"subtypesInclude\":[\"Crazy Idea\"]
 					}
 				}",
