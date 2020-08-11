@@ -18,6 +18,7 @@
 					\"subeffType\":\"Discard Target\",
 					\"cardRestriction\":
 					{
+						\"blurb\":\"Crazy Idea for Self-Destruct Button to play\",
 						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Distinct from Source\"],
 						\"subtypesInclude\":[\"Crazy Idea\"]
 					}
@@ -26,7 +27,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"blurb\":\"where Decide! to play targeted Crazy Idea\",
+						\"blurb\":\"where Self-Destruct Button to play targeted Crazy Idea\",
 						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",

@@ -36,7 +36,7 @@
 		}
 	],
 	"n":3,
-	"e":3,
+	"e":1,
 	"s":5,
 	"w":0,
 	"subtypeText":"Crazy Idea"
