@@ -32,7 +32,7 @@
 					\"subeffType\":\"Discard\"
 				}",
 				"{
-					\"subeffType":\"Delete Target\"
+					\"subeffType\":\"Delete Target\"
 				}",
 				"{
 					\"subeffType\":\"Loop While Have Targets\",

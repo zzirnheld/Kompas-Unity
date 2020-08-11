@@ -1,6 +1,6 @@
 {
 	"cardType":83,
-	"cardName":"Shifting Tile Maze Path Blocker",
+	"cardName":"Ballroom-Disco Breakdance Competition",
 	"effText":"Crazy Idea: When I'm hand-discarded, discard-play another Crazy Idea.\nWhen a character enters my area of effect, set their N to 0. When a character leaves my area of effect, annihilate me.",
 	"effects":[
 		{

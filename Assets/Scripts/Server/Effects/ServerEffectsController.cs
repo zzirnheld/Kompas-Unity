@@ -227,21 +227,18 @@ namespace KompasServer.Effects
             hangingEffectFallOffMap[condition].Add(hangingEff);
         }
 
-        public void TriggerForCondition(string condition, params ActivationContext[] contexts)
-        {
-            foreach (var c in contexts) TriggerForCondition(condition, c);
-        }
-
-        public void TriggerForCondition(string condition, ActivationContext context)
+        private void ResolveHangingEffects(string condition, ActivationContext context)
         {
             Debug.Log($"Attempting to trigger {condition}, with context {context}");
             if (hangingEffectMap.ContainsKey(condition))
             {
-                var endedEffects = hangingEffectMap[condition].Where(he => he.EndIfApplicable(context)).ToArray();
+                var endedEffects = hangingEffectMap[condition]
+                    .Where(he => he.EndIfApplicable(context))
+                    .ToArray();
                 foreach (var t in endedEffects)
                 {
                     hangingEffectMap[condition].Remove(t);
-                    if(!string.IsNullOrEmpty(t.FallOffCondition))
+                    if (!string.IsNullOrEmpty(t.FallOffCondition))
                         hangingEffectFallOffMap[t.FallOffCondition].Remove(t);
                 }
             }
@@ -257,6 +254,16 @@ namespace KompasServer.Effects
                     hangingEffectFallOffMap[condition].Remove(toRemove);
                 }
             }
+        }
+
+        public void TriggerForCondition(string condition, params ActivationContext[] contexts)
+        {
+            foreach (var c in contexts) TriggerForCondition(condition, c);
+        }
+
+        public void TriggerForCondition(string condition, ActivationContext context)
+        {
+            ResolveHangingEffects(condition, context);
 
             if (triggerMap.ContainsKey(condition))
             {
@@ -264,7 +271,9 @@ namespace KompasServer.Effects
                  * Needs to be toArray()ed because cards might move out of correct state after this moment.
                  * Later, when triggers are being ordered, stuff like 1/turn will be rechecked.
                  */
-                var validTriggers = triggerMap[condition].Where(t => t.ValidForContext(context)).ToArray();
+                var validTriggers = triggerMap[condition]
+                    .Where(t => t.ValidForContext(context))
+                    .ToArray();
                 if (!validTriggers.Any()) return;
                 var triggers = new TriggersTriggered(triggers: validTriggers, context: context);
                 Debug.Log($"Triggers triggered: {string.Join(", ", triggers.triggers.Select(t => t.blurb))}");

@@ -20,7 +20,7 @@
 					\"subeffType\":\"Discard Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"card for Correctly Sized Crane to grab",
+						\"blurb\":\"card for Correctly Sized Crane to grab\",
 						\"cardRestrictions\":[\"Friendly\",\"Discard\"]
 					}
 				}",
