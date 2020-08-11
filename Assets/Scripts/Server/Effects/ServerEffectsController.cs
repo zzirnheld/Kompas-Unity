@@ -110,22 +110,24 @@ namespace KompasServer.Effects
             //then ask the respective player about that trigger.
             lock (triggerStackLock)
             {
+                //get the list of triggers, and see if they're all still valid
                 var triggered = triggeredTriggers.Peek();
                 var list = triggered.triggers.Where(t => t.StillValidForContext(triggered.context));
-                Debug.Log($"Checking {list.Count()} triggers...: {string.Join(", ", list.Select(t => t.blurb))}");
+
                 //if there's no triggers, skip all this logic
                 if (!list.Any())
                 {
-                    Debug.Log("No triggers to consider.");
+                    Debug.Log($"Triggers that were valid from {string.Join(",", triggered.triggers)} aren't anymore");
                     triggeredTriggers.Dequeue();
                     return true;
                 }
 
-                //if any triggers have not been responded to, make them get responded to
+                //if any triggers have not been responded to, make them get responded to.
+                //this is saved so that we know what trigger to okay or not if it's responded
                 currentOptionalTrigger = list.FirstOrDefault(t => !t.Responded);
                 if (currentOptionalTrigger != default)
                 {
-                    currentOptionalTrigger.serverEffect.ServerController.ServerNotifier.AskForTrigger(currentOptionalTrigger);
+                    currentOptionalTrigger.Ask();
                     return false;
                 }
 
@@ -193,10 +195,21 @@ namespace KompasServer.Effects
                         ServerGame.Cards.Any(c => c.Effects.Any(e => e.ActivationRestriction.Evaluate(player))))
                     .ToArray();
 
-                if (players.Any()) foreach (var p in players) ServerGame.ServerPlayers[p.index].ServerNotifier.RequestResponse();
+                if (players.Any()) foreach (var p in players) p.ServerNotifier.RequestResponse();
                 //if neither player has anything to do, resolve the stack
                 else ResolveNextStackEntry();
             }
+        }
+
+        public void OptionalTriggerAnswered(bool answered, Player answerer)
+        {
+            if (currentOptionalTrigger != default)
+            {
+                currentOptionalTrigger.Answered(answered, answerer);
+                currentOptionalTrigger = default;
+            }
+
+            CheckForResponse();
         }
 
         public void TriggerForCondition(string condition, params ActivationContext[] contexts)
@@ -223,18 +236,6 @@ namespace KompasServer.Effects
                     triggeredTriggers.Enqueue(triggers);
                 }
             }
-        }
-
-        public void OptionalTriggerAnswered(bool answered)
-        {
-            if (currentOptionalTrigger != default)
-            {
-                currentOptionalTrigger.Confirmed = answered;
-                currentOptionalTrigger.Responded = true;
-                currentOptionalTrigger = default;
-            }
-
-            CheckForResponse();
         }
 
         #region register to trigger condition
