@@ -9,10 +9,8 @@ namespace KompasDeckbuilder
         public int s;
         public int w;
 
-        public string StatsString
-        {
-            get { return $"N: {n}  E: {e}  S: {s}  W: {w}"; }
-        }
+        public string StatsString => $"N: {n}  E: {e}  S: {s}  W: {w}";
+        public override string BlurbString => $"N{n} / E{e} / S{s} / W{w} {SubtypeText}";
 
         public override void SetInfo(CardSearchController searchCtrl, SerializableCard charCard, bool InDeck)
         {

@@ -9,10 +9,8 @@ namespace KompasDeckbuilder
         public bool fast;
         public string subtext;
 
-        public string StatsString
-        {
-            get { return $"D: {c}  Subtext: {subtext}"; }
-        }
+        public string StatsString => $"D: {c}  Subtext: {subtext}";
+        public override string BlurbString => $"C{c}{(fast ? " Fast" : "")} {SubtypeText}";
 
         public override void SetInfo(CardSearchController searchCtrl, SerializableCard spellCard, bool inDeck)
         {

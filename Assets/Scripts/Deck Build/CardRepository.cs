@@ -9,6 +9,7 @@ using KompasServer.Cards;
 using KompasServer.Effects;
 using KompasServer.GameCore;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CardRepository : MonoBehaviour
@@ -20,6 +21,8 @@ public class CardRepository : MonoBehaviour
     private static Dictionary<string, int> cardNameIDs;
     private static List<string> cardNames;
     private static List<string> cardNamesToIgnore;
+
+    public static IEnumerable<string> CardJsons => cardJsons.Values;
 
     #region prefabs
     public GameObject DeckSelectCardPrefab;
@@ -83,61 +86,7 @@ public class CardRepository : MonoBehaviour
         if (string.IsNullOrWhiteSpace(name)) return true;
         return cardNamesToIgnore.Contains(name);
     }
-
-    public static string CardName(int id) => cardNames[id];
-    public static int CardNameID(string cardName) => cardNameIDs[cardName];
     public static bool CardExists(string cardName) => cardNameIDs.ContainsKey(cardName);
-
-    private bool SubtypesContain(string cardName, string subtypesInclude)
-    {
-        if (!cardJsons.ContainsKey(cardName)) return false;
-        try
-        {
-            SerializableCard card = JsonUtility.FromJson<SerializableCard>(cardJsons[cardName]);
-            if(card.subtypeText == null) return false;
-            return ContainsIgnoreCase(card.subtypeText, subtypesInclude);
-        }
-        catch(System.ArgumentException)
-        {
-            Debug.LogError($"Arg ex when checking if subtypes of {cardName} contain {subtypesInclude}. Json is {cardJsons[cardName]}");
-            return false;
-        }
-    }
-
-    private bool ContainsIgnoreCase(string a, string b)
-    {
-        return a.ToLower().Contains(b.ToLower());
-    }
-
-    public List<string> GetCardsFromFilter(string nameIncludes, string subtypeIncludes)
-    {
-        List<string> cards = new List<string>();
-        foreach (string name in cardNames)
-        {
-            if (ContainsIgnoreCase(name, nameIncludes) && SubtypesContain(name, subtypeIncludes))
-            {
-                //Debug.Log($"found a name {name} that contains {nameIncludes}");
-                cards.Add(name);
-            }
-        }
-        return cards;
-    }
-
-    public List<string> GetJsonsFromNameList(List<string> names)
-    {
-        List<string> jsons = new List<string>();
-        foreach(string name in names)
-        {
-            //Debug.Log($"Trying to get json for name \"{name}\", string length {name.Length}");
-            if(cardJsons.ContainsKey(name)) jsons.Add(cardJsons[name]);
-        }
-        return jsons;
-    }
-
-    public List<string> GetJsonsThatFit(string nameIncludes, string subtypesInclude)
-    {
-        return GetJsonsFromNameList(GetCardsFromFilter(nameIncludes, subtypesInclude));
-    }
 
     public string GetJsonFromName(string name)
     {
@@ -149,6 +98,9 @@ public class CardRepository : MonoBehaviour
 
         return cardJsons[name];
     }
+
+    public IEnumerable<string> GetJsonsFromNames(IEnumerable<string> names)
+        => names.Select(n => GetJsonFromName(n)).Where(json => json != null);
 
     #region Create Cards
     public SerializableCard GetCardFromName(string name)
@@ -325,7 +277,7 @@ public class CardRepository : MonoBehaviour
         }
     }
 
-    public DeckbuilderCard InstantiateDeckbuilderCard(string json, CardSearchController searchCtrl, Transform parent, bool inDeck)
+    public DeckbuilderCard InstantiateDeckbuilderCard(string json, CardSearchController searchCtrl, bool inDeck)
     {
         try
         {
@@ -334,17 +286,17 @@ public class CardRepository : MonoBehaviour
             {
                 case 'C':
                     SerializableCard serializableChar = JsonUtility.FromJson<SerializableCard>(json);
-                    var charCard = Instantiate(DeckbuilderCharPrefab, parent).GetComponent<DeckbuilderCharCard>();
+                    var charCard = Instantiate(DeckbuilderCharPrefab).GetComponent<DeckbuilderCharCard>();
                     charCard.SetInfo(searchCtrl, serializableChar, inDeck);
                     return charCard;
                 case 'S':
                     SerializableCard serializableSpell = JsonUtility.FromJson<SerializableCard>(json);
-                    var spellCard = Instantiate(DeckbuilderSpellPrefab, parent).GetComponent<DeckbuilderSpellCard>();
+                    var spellCard = Instantiate(DeckbuilderSpellPrefab).GetComponent<DeckbuilderSpellCard>();
                     spellCard.SetInfo(searchCtrl, serializableSpell, inDeck);
                     return spellCard;
                 case 'A':
                     SerializableCard serializableAug = JsonUtility.FromJson<SerializableCard>(json);
-                    var augCard = Instantiate(DeckbuilderAugPrefab, parent).GetComponent<DeckbuilderAugCard>();
+                    var augCard = Instantiate(DeckbuilderAugPrefab).GetComponent<DeckbuilderAugCard>();
                     augCard.SetInfo(searchCtrl, serializableAug, inDeck);
                     return augCard;
                 default:

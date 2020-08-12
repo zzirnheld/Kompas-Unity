@@ -9,10 +9,8 @@ namespace KompasDeckbuilder
         public string subtext;
         public string[] augSubtypes;
 
-        public string StatsString
-        {
-            get { return $"A: {a}  Subtext: {subtext}"; }
-        }
+        public string StatsString => $"A: {a}  Subtext: {subtext}";
+        public override string BlurbString => $"A{a}{(fast ? " Fast" : "")} {SubtypeText}";
 
         public override void SetInfo(CardSearchController searchCtrl, SerializableCard augCard, bool inDeck)
         {

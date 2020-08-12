@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-
+using System.Linq;
+using KompasCore.Cards;
 
 namespace KompasDeckbuilder
 {
     public class CardSearchController : MonoBehaviour
     {
         public const string cardBackPath = "Detailed Sprites/Square Kompas Logo";
+
+        public GameObject deckSearchInfoObj;
 
         //card data pane ui elements
         public GameObject CardSearchPaneParentObj;
@@ -31,14 +34,15 @@ namespace KompasDeckbuilder
 
         //search data
         private DeckbuilderCard selectedCard;
-        private List<DeckbuilderCard> shownCards;
+        private List<DeckSearchInfoController> shownCards;
         private string cardNameToSearch = "";
         private string subtypeToSearch = "";
+        private string textToSearch = "";
 
-        void Awake()
+        public void Awake()
         {
             //initialize list
-            shownCards = new List<DeckbuilderCard>();
+            shownCards = new List<DeckSearchInfoController>();
 
             //get image to show when no card is selected
             CardBack = Resources.Load<Sprite>(cardBackPath);
@@ -73,22 +77,49 @@ namespace KompasDeckbuilder
         private void SearchCards()
         {
             //first clear all shown cards
-            foreach (DeckbuilderCard card in shownCards)
+            foreach (var card in shownCards)
             {
+                Debug.Log($"Destroying {card.cardName.text}");
+                card.Kill();
                 Destroy(card.gameObject);
             }
             shownCards.Clear();
 
             //don't do anything if it's an invalid string to search with
-            if (string.IsNullOrWhiteSpace(cardNameToSearch) && string.IsNullOrWhiteSpace(subtypeToSearch)) return;
+            if ((string.IsNullOrWhiteSpace(cardNameToSearch) || cardNameToSearch.Length < 2)
+                && (string.IsNullOrWhiteSpace(subtypeToSearch) || subtypeToSearch.Length < 2)
+                && (string.IsNullOrWhiteSpace(textToSearch) || textToSearch.Length < 2))
+                return;
+
+            string nameLower = cardNameToSearch?.ToLower();
+            string subtypesLower = subtypeToSearch?.ToLower();
+            string textLower = textToSearch?.ToLower();
 
             //assuming everything is valid, get all the jsons that fit that
-            List<string> jsonsThatFit = CardRepo.GetJsonsThatFit(cardNameToSearch, subtypeToSearch);
+            var serializeds = CardRepository.CardJsons.Select(json => JsonUtility.FromJson<SerializableCard>(json));
+
+            if (!string.IsNullOrWhiteSpace(nameLower) && nameLower.Length >= 2)
+                serializeds = serializeds.Where(s => s.cardName.ToLower().Contains(nameLower));
+
+            if (!string.IsNullOrWhiteSpace(subtypesLower) && subtypesLower.Length >= 2)
+                serializeds = serializeds.Where(s => s.subtypeText.ToLower().Contains(subtypesLower));
+
+            if (!string.IsNullOrWhiteSpace(textLower) && textLower.Length >= 2)
+                serializeds = serializeds.Where(s => s.effText.ToLower().Contains(textLower));
+
+
+            var jsonsThatFit = CardRepo.GetJsonsFromNames(serializeds.Select(s => s.cardName));
+
             //for each of the jsons, add it to the shown cards to be added
             foreach (string json in jsonsThatFit)
             {
-                DeckbuilderCard newCard = CardRepo.InstantiateDeckbuilderCard(json, this, CardSearchPaneParentObj.transform, false);
-                if (newCard != null) shownCards.Add(newCard);
+                DeckbuilderCard newCard = CardRepo.InstantiateDeckbuilderCard(json, this, false);
+                if (newCard != null)
+                {
+                    var cardInfo = Instantiate(deckSearchInfoObj, CardSearchPaneParentObj.transform).GetComponent<DeckSearchInfoController>();
+                    cardInfo.Initialize(newCard, this);
+                    shownCards.Add(cardInfo);
+                }
             }
         }
 
@@ -109,6 +140,12 @@ namespace KompasDeckbuilder
         public void SearchCardsBySubtype(string subtype)
         {
             subtypeToSearch = subtype.Replace("\u200B", "");
+            SearchCards();
+        }
+
+        public void SearchCardsByText(string text)
+        {
+            textToSearch = text.Replace("\u200B", "");
             SearchCards();
         }
     }

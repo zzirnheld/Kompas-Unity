@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using TMPro;
 using UnityEngine;
@@ -25,7 +26,6 @@ namespace KompasDeckbuilder
         //ui elements
         public GameObject DeckViewScrollPane;
         public TMP_Dropdown DeckNameDropdown;
-        public TMP_InputField DeckNameInput;
         public TMP_Text CardsInDeckText;
 
         //deck data
@@ -144,7 +144,7 @@ namespace KompasDeckbuilder
             CardsInDeckText.text = $"Cards in Deck: {currDeck.Count}";
         }
 
-        private void ClearDeck()
+        public void ClearDeck()
         {
             Debug.Log("Clearing deck");
             for (int i = currDeck.Count - 1; i >= 0; i--)
@@ -183,7 +183,7 @@ namespace KompasDeckbuilder
             string json = CardRepo.GetJsonFromName(name);
             if (json == null) return;
 
-            DeckbuilderCard toAdd = CardRepo.InstantiateDeckbuilderCard(json, CardSearchCtrl, DeckViewScrollPane.transform, true);
+            DeckbuilderCard toAdd = CardRepo.InstantiateDeckbuilderCard(json, CardSearchCtrl, true);
             if (toAdd == null)
             {
                 Debug.LogError($"Somehow have a DeckbuilderCard with name {name} couldn't be re-instantiated");
@@ -192,6 +192,9 @@ namespace KompasDeckbuilder
 
             IsDeckDirty = true;
             currDeck.Add(toAdd);
+            toAdd.gameObject.SetActive(true);
+            toAdd.transform.parent = DeckViewScrollPane.transform;
+            toAdd.transform.localScale = Vector3.one;
             SetDeckCountText();
         }
 
@@ -222,12 +225,10 @@ namespace KompasDeckbuilder
                     index = index < deckNames.Count ? index : 0;
                     currDeckName = deckNames[index];
                     DeckNameDropdown.value = index;
-                    DeckNameInput.text = currDeckName;
                 }
                 else
                 {
                     currDeckName = "";
-                    DeckNameInput.text = "";
                 }
                 DeckNameDropdown.RefreshShownValue();
             }
@@ -256,19 +257,18 @@ namespace KompasDeckbuilder
 
             currDeckName = deckName;
             IsDeckDirty = false;
-            DeckNameInput.text = deckName;
             SetDeckCountText();
         }
 
         public void SaveDeck()
         {
-            if (string.IsNullOrWhiteSpace(DeckNameInput.text))
+            /*if (string.IsNullOrWhiteSpace(DeckNameInput.text))
             {
                 Debug.Log("Tried to save blank deck name, ignoring");
                 return;
-            }
+            }*/
 
-            currDeckName = DeckNameInput.text;
+            currDeckName = currDeck.First().CardName;
 
             //write to a persistent file
             string filePath = deckFilesFolderPath + "/" + currDeckName + ".txt";
