@@ -57,7 +57,7 @@
 			"This is Activated",
 			"Friendly Turn",
 			"Maximum Per Turn",
-			Nothing Resolving
+			"Nothing Resolving"
 		]
 	},
 	"n":2,

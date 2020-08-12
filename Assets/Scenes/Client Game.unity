@@ -14128,7 +14128,7 @@ GameObject:
   - component: {fileID: 1506913276}
   - component: {fileID: 1506913275}
   m_Layer: 5
-  m_Name: Confirm Trigger Background Image
+  m_Name: Choose Effect Option Background Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15014,7 +15014,7 @@ MonoBehaviour:
   autodeclineEffects: {fileID: 1049328079}
   ConfirmTriggerView: {fileID: 1409840298}
   TriggerBlurbText: {fileID: 659674731}
-  chooseOptionUICtrl: {fileID: 0}
+  chooseOptionUICtrl: {fileID: 1241039935}
   DeckSelectCtrl: {fileID: 2134909800}
   DeckSelectUIParent: {fileID: 2134909798}
   ConnectToServerParent: {fileID: 867960088}
