@@ -70,11 +70,11 @@
 					\"subeffType\":\"Choose Effect Option\",
 					\"ChoiceBlurb\":\"Pay 1 pip or annihilate Stupid?\",
 					\"OptionBlurbs\":[\"Pay 1 pip\",\"Annhihilate\"],
-					\"OptionJumpIndices\":[4,8]
+					\"OptionJumpIndices\":[4,7]
 				}",
 				"{
 					\"subeffType\":\"Jump on Effect Impossible\",
-					\"jumpTo\":4
+					\"jumpTo\":7
 				}",
 				"{
 					\"subeffType\":\"Pay Pips\",

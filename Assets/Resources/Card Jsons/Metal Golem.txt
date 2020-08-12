@@ -56,7 +56,8 @@
 			"Defender is Enemy",
 			"This is Activated",
 			"Friendly Turn",
-			"Maximum Per Turn"
+			"Maximum Per Turn",
+			Nothing Resolving
 		]
 	},
 	"n":2,

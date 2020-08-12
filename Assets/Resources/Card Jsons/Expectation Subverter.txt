@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Expectation Subverter",
-	"effText":"When turns start, give the closest character in front of me in my column -3E, then pay a pip or annihilate me.",
+	"effText":"When turns start, give the closest other character in front of me in my column -3E, then pay a pip or annihilate me.",
 	"effects":[
 		{
 			"triggerCondition":"Turn Start",
@@ -20,7 +20,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Expectation Subverter to subvert expectations (-3E)\",
-						\"cardRestrictions\":[\"Board\",\"Is Character\",\"Same Column as Source\",\"In Front of Source\"]
+						\"cardRestrictions\":[\"Board\",\"Is Character\",\"Same Column as Source\",\"In Front of Source\",\"Distinct from Source\"]
 					}
 				}",
 				"{

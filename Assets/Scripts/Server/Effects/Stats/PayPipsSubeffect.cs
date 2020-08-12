@@ -9,9 +9,9 @@
         public override bool Resolve()
         {
             int toPay = ServerEffect.X * xMultiplier / xDivisor + modifier;
-            if (EffectController.Pips < toPay) ServerEffect.EffectImpossible();
+            if (Player.Pips < toPay) return ServerEffect.EffectImpossible();
 
-            EffectController.Pips -= toPay;
+            Player.Pips -= toPay;
             return ServerEffect.ResolveNextSubeffect();
         }
     }

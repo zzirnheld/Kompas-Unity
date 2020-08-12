@@ -28,7 +28,7 @@ namespace KompasCore.Cards
         private int a;
         public int N 
         { 
-            get => n;
+            get => n < 0 ? 0 : n;
             private set
             {
                 n = value;
@@ -37,7 +37,7 @@ namespace KompasCore.Cards
         }
         public int E
         {
-            get => e;
+            get => e < 0 ? 0 : e;
             protected set
             {
                 e = value;
@@ -46,7 +46,7 @@ namespace KompasCore.Cards
         }
         public int S
         {
-            get => s;
+            get => s < 0 ? 0 : s;
             private set
             {
                 s = value;
@@ -55,7 +55,7 @@ namespace KompasCore.Cards
         }
         public int W
         {
-            get => w;
+            get => w < 0 ? 0 : w;
             private set
             {
                 w = value;
@@ -64,7 +64,7 @@ namespace KompasCore.Cards
         }
         public int C
         {
-            get => c;
+            get => c < 0 ? 0 : c;
             private set
             {
                 c = value;
@@ -73,7 +73,7 @@ namespace KompasCore.Cards
         }
         public int A
         {
-            get => a;
+            get => a < 0 ? 0 : a;
             private set
             {
                 a = value;

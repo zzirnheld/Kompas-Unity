@@ -11,10 +11,12 @@ namespace KompasCore.Effects
         public const string DefenderIsEnemy = "Defender is Enemy";
         public const string FriendlyTurn = "Friendly Turn";
         public const string MaxPerTurn = "Maximum Per Turn";
+        public const string NothingResolving = "Nothing Resolving";
 
         public const string ThisIsActive = "This is Activated";
 
-        public string[] attackRestrictions = new string[] { ThisIsCharacter, DefenderIsCharacter, DefenderIsAdjacent, DefenderIsEnemy, FriendlyTurn, MaxPerTurn };
+        public string[] attackRestrictions = new string[] { ThisIsCharacter, DefenderIsCharacter, DefenderIsAdjacent, DefenderIsEnemy, 
+            FriendlyTurn, MaxPerTurn, NothingResolving };
         public int maxAttacks = 1;
 
         public GameCard Card { get; private set; }
