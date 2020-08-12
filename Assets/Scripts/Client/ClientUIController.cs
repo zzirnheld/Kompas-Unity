@@ -79,9 +79,7 @@ namespace KompasClient.UI
         private SearchData? currSearchData = null;
         private readonly Stack<SearchData> searchStack = new Stack<SearchData>();
         //choose effect option
-        public GameObject ChooseOptionView;
-        public TMPro.TMP_Text ChoiceBlurbText;
-        public TMPro.TMP_Dropdown EffectOptionDropdown;
+        public ClientChooseOptionUIController chooseOptionUICtrl;
 
         //deck select ui
         public DeckSelectUIController DeckSelectCtrl;
@@ -269,21 +267,7 @@ namespace KompasClient.UI
         }
 
         public void ShowEffectOptions(DummyChooseOptionSubeffect subeff)
-        {
-            ChoiceBlurbText.text = subeff.ChoiceBlurb;
-            EffectOptionDropdown.ClearOptions();
-            foreach (string blurb in subeff.OptionBlurbs)
-            {
-                EffectOptionDropdown.options.Add(new TMPro.TMP_Dropdown.OptionData() { text = blurb });
-            }
-            ChooseOptionView.SetActive(true);
-        }
-
-        public void ChooseSelectedEffectOption()
-        {
-            clientGame.clientNotifier.RequestChooseEffectOption(EffectOptionDropdown.value);
-            ChooseOptionView.SetActive(false);
-        }
+            => chooseOptionUICtrl.ShowEffectOptions(subeff);
 
         public void GetResponse()
         {
