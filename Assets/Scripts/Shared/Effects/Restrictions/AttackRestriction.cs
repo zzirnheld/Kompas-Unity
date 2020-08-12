@@ -55,6 +55,9 @@ namespace KompasCore.Effects
                     case MaxPerTurn:
                         if (Card.AttacksThisTurn >= maxAttacks) return false;
                         break;
+                    case NothingResolving:
+                        if (Card.Game.CurrStackEntry != default) return false;
+                        break;
                     default:
                         throw new System.ArgumentException($"Could not understand attack restriction {r}");
                 }
