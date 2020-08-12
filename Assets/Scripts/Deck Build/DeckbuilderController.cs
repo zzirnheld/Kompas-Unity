@@ -260,18 +260,10 @@ namespace KompasDeckbuilder
             SetDeckCountText();
         }
 
-        public void SaveDeck()
+        public void SaveDeckAs(string name)
         {
-            /*if (string.IsNullOrWhiteSpace(DeckNameInput.text))
-            {
-                Debug.Log("Tried to save blank deck name, ignoring");
-                return;
-            }*/
-
-            currDeckName = currDeck.First().CardName;
-
             //write to a persistent file
-            string filePath = deckFilesFolderPath + "/" + currDeckName + ".txt";
+            string filePath = $"{deckFilesFolderPath}/{name}.txt";
 
             string decklist = GetCurrentDeckAsString();
             Debug.Log($"Saving deck to {filePath}\n{decklist}");
@@ -279,13 +271,15 @@ namespace KompasDeckbuilder
 
             IsDeckDirty = false;
 
-            if (!deckNames.Contains(currDeckName))
+            if (!deckNames.Contains(name))
             {
-                deckNames.Add(currDeckName);
-                DeckNameDropdown.options.Add(new TMP_Dropdown.OptionData() { text = currDeckName });
+                deckNames.Add(name);
+                DeckNameDropdown.options.Add(new TMP_Dropdown.OptionData() { text = name });
                 DeckNameDropdown.value = deckNames.Count - 1;
             }
         }
+
+        public void SaveDeck() => SaveDeckAs(currDeckName);
 
         public void RemoveFromDeck(DeckbuilderCard card)
         {

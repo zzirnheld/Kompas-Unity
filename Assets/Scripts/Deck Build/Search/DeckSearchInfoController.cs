@@ -28,5 +28,9 @@ namespace KompasDeckbuilder
         {
             Destroy(card.gameObject);
         }
+
+        public void Show() => card.Show();
+
+        public void Unshow() => card.Unshow();
     }
 }
