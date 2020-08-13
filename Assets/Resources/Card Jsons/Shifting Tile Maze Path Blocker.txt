@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Shifting Tile Maze Path Blocker",
-	"effText":"Ificate: When I'm hand-discarded, pay a pip and discard-play another Crazy Idea.\nThe first time each stack a character moves into here, move them to an empty space here. If you can't, annihilate me.",
+	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nThe first time each stack a character moves into here, move them to an empty space here. If you can't, annihilate me.",
 	"effects":[
 		{
 			"triggerCondition":"Discard",
@@ -15,18 +15,18 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Pay Pips\",
-					\"xMultiplier\":0,
-					\"modifier\":1
-				}",
-				"{
 					\"subeffType\":\"Discard Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"Crazy Idea for Maze Blocker to target\",
+						\"blurb\":\"Crazy Idea for Maze Blocker to Ificate\",
 						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Friendly\",\"Distinct from Source\"],
 						\"subtypesInclude\":[\"Crazy Idea\"]
 					}
+				}",
+				"{
+					\"subeffType\":\"Pay Pips\",
+					\"xMultiplier\":0,
+					\"modifier\":1
 				}",
 				"{
 					\"subeffType\":\"Space Target\",

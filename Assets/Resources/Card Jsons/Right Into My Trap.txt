@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Right Into My Trap",
-	"effText":"Ificate: When I'm hand-discarded, pay a pip and discard-play another Crazy Idea.\nWhen a character here moves out of my area of effect, move them a space towards me, then if they’re no longer in my area of effect, annihilate me.",
+	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nWhen a character here moves out of my area of effect, move them a space towards me, then if they’re no longer in my area of effect, annihilate me.",
 	"effects":[
 		{
 			"triggerCondition":"Discard",
@@ -16,24 +16,24 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Pay Pips\",
-					\"xMultiplier\":0,
-					\"modifier\":1
-				}",
-				"{
 					\"subeffType\":\"Discard Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"Crazy Idea for Right Into My Trap to discard\",
+						\"blurb\":\"Crazy Idea for Right Into My Trap to Ificate\",
 						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Friendly\",\"Distinct from Source\"],
 						\"subtypesInclude\":[\"Crazy Idea\"]
 					}
 				}",
 				"{
+					\"subeffType\":\"Pay Pips\",
+					\"xMultiplier\":0,
+					\"modifier\":1
+				}",
+				"{
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"blurb\":\"where A Frayed Knot to play targeted Crazy Idea\",
+						\"blurb\":\"where Right Into My Trap to play targeted Crazy Idea\",
 						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",

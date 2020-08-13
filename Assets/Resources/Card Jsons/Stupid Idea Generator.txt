@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Stupid Idea Generator",
-	"effText":"Ificate: When I'm hand-discarded, pay a pip and discard-play another Crazy Idea.\nWhen turns start, discard 1, draw 1, then pay a pip or annihilate me.",
+	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nWhen turns start, discard 1, draw 1, then pay a pip or annihilate me.",
 	"effects":[
 		{
 			"triggerCondition":"Discard",
@@ -16,18 +16,18 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Pay Pips\",
-					\"xMultiplier\":0,
-					\"modifier\":1
-				}",
-				"{
 					\"subeffType\":\"Discard Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"Crazy Idea for Stupid Idea Generator to play\",
+						\"blurb\":\"Crazy Idea for Stupid Idea Generator to Ificate\",
 						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Friendly\",\"Distinct from Source\"],
 						\"subtypesInclude\":[\"Crazy Idea\"]
 					}
+				}",
+				"{
+					\"subeffType\":\"Pay Pips\",
+					\"xMultiplier\":0,
+					\"modifier\":1
 				}",
 				"{
 					\"subeffType\":\"Space Target\",
