@@ -36,8 +36,9 @@ namespace KompasCore.Effects
         public const string AdjacentToEnemy = "Adjacent to Enemy";
 
         //summoned
-        public const string Summoned = "Summoned";
+        public const string Summoned = "Summoned"; //non-avatar character
         public const string Avatar = "Avatar";
+        public const string NotAvatar = "Not Avatar";
 
         //subtypes
         public const string SubtypesInclude = "Subtypes Include";
@@ -153,8 +154,9 @@ namespace KompasCore.Effects
                 case TurnPlayerControls: return potentialTarget.Controller == Subeffect.Game.TurnPlayer;
 
                 //summoned
-                case Summoned: return potentialTarget.Summoned;
-                case Avatar:   return potentialTarget.IsAvatar;
+                case Summoned:  return potentialTarget.Summoned;
+                case Avatar:    return potentialTarget.IsAvatar;
+                case NotAvatar: return !potentialTarget.IsAvatar;
 
                 //subtypes
                 case SubtypesInclude: return subtypesInclude.All(s => potentialTarget.SubtypeText.Contains(s));

@@ -68,7 +68,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"you! move a little bit to the left...\",
-						\"cardRestrictions\":[\"Board\",\"Enemy\"]
+						\"cardRestrictions\":[\"Board\",\"Not Avatar\"]
 					}
 				}",
 				"{
