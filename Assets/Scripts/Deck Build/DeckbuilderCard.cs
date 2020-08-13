@@ -55,7 +55,6 @@ namespace KompasDeckbuilder
             if (detailedSprite == null || simpleSprite == null)
             {
                 Debug.LogError("Could not find sprite with name " + cardFileName);
-                return;
             }
             image.sprite = simpleSprite;
         }
