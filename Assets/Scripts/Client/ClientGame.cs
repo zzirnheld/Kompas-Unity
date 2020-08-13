@@ -6,6 +6,8 @@ using KompasCore.Cards;
 using KompasClient.Cards;
 using KompasClient.Networking;
 using KompasClient.UI;
+using KompasClient.Effects;
+using TMPro;
 
 namespace KompasClient.GameCore
 {
@@ -46,6 +48,10 @@ namespace KompasClient.GameCore
         //targeting
         public CardRestriction CurrCardRestriction;
         public SpaceRestriction CurrSpaceRestriction;
+
+        //TODO make client aware that effects have been pushed to stack
+        private bool stackEmpty = true;
+        public override bool StackEmpty => stackEmpty;
 
         public override int Leyload 
         { 
@@ -157,6 +163,20 @@ namespace KompasClient.GameCore
         public void ShowCardsByZoom(bool zoomed)
         {
             foreach (var c in Cards) c.cardCtrl.ShowForCardType(c.CardType, zoomed);
+        }
+
+        public void EffectActivated(ClientEffect eff)
+        {
+            stackEmpty = false;
+            clientUICtrl.SetCurrState($"{(eff.Controller.index == 0 ? "Friendly" : "Enemy")} Effect Activated",
+                eff.Blurb);
+        }
+
+        public void StackEmptied()
+        {
+            stackEmpty = true;
+            clientUICtrl.SetCurrState("Stack Empty");
+            foreach (var c in Cards) c.ResetForStack();
         }
     }
 }

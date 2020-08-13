@@ -41,6 +41,7 @@ namespace KompasServer.Effects
             = new Dictionary<string, List<HangingEffect>>();
 
         public IServerStackable CurrStackEntry { get; private set; }
+        public bool StackEmpty => stack.Empty;
 
         #region the stack
         public void PushToStack(IServerStackable eff, ActivationContext context)
