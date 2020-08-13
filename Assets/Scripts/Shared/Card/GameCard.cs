@@ -308,8 +308,13 @@ namespace KompasCore.Cards
         public bool WithinSlots(int numSpaces, int x, int y) => DistanceTo(x, y) <= numSpaces;
         public bool IsAdjacentTo(GameCard card) => card != null && DistanceTo(card) == 1;
         public bool IsAdjacentTo(int x, int y) => DistanceTo(x, y) == 1;
-        public virtual bool CardInAOE(GameCard c) => false;
-        public virtual bool SpaceInAOE(int x, int y) => false;
+        public bool CardInAOE(GameCard c) => SpaceInAOE(c.Position);
+        public bool SpaceInAOE((int x, int y) space) => SpaceInAOE(space.x, space.y);
+        public bool SpaceInAOE(int x, int y)
+        {
+            if (CardType != 'S' || SpellSubtype != TerraformSubtype) return false;
+            return DistanceTo(x, y) <= Arg;
+        }
         public bool SameColumn(int x, int y) => BoardX + BoardY == x + y;
         public bool SameColumn(GameCard c) => c.Location == CardLocation.Field && SameColumn(c.BoardX, c.BoardY);
 

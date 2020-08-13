@@ -48,7 +48,7 @@
 			"{
 				\"blurb\":\"N = 0\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Triggerer Fits Restriction\",\"Coords Fit Restriction\"],
+					\"triggerRestrictions\":[\"Triggerer Fits Restriction\",\"Coords Fit Restriction\",\"This Card in Play\"],
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Not In AOE\"]
@@ -75,7 +75,7 @@
 			"{
 				\"blurb\":\"Annihilate this\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Triggerer Fits Restriction\",\"Coords Fit Restriction\"],
+					\"triggerRestrictions\":[\"Triggerer Fits Restriction\",\"Coords Fit Restriction\",\"This Card in Play\"],
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Character\",\"Board\",\"In AOE\"]

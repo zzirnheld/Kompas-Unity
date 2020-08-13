@@ -46,7 +46,7 @@
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Triggerer Fits Restriction\",\"Max Per Stack\"],
+					\"triggerRestrictions\":[\"Triggerer Fits Restriction\",\"Max Per Stack\",\"This Card in Play\"],
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Character\",\"Board\",\"In AOE\"]
