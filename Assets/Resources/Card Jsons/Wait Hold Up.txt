@@ -68,7 +68,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Wait, Hold Up, what are you moving?\",
-						\"cardRestrictions\":[\"Board\",\"Enemy\"]
+						\"cardRestrictions\":[\"Board\",\"Enemy\",\"Summoned\"]
 					}
 				}",
 				"{

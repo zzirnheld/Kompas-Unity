@@ -7,6 +7,7 @@
 			"triggerCondition":"Discard",
 			"trigger":
 			"{
+				\"blurb\":\"Annihilate\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\",\"From Field\"]
 				}
@@ -37,7 +38,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"blurb\":\"where to revive Unlost\",
+						\"blurb\":\"where to revive Unfound\",
 						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
