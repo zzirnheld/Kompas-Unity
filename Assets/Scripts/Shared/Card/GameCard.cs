@@ -315,7 +315,7 @@ namespace KompasCore.Cards
             if (CardType != 'S' || SpellSubtype != TerraformSubtype) return false;
             return DistanceTo(x, y) <= Arg;
         }
-        public bool SameColumn(int x, int y) => BoardX + BoardY == x + y;
+        public bool SameColumn(int x, int y) => BoardX - BoardY == x - y;
         public bool SameColumn(GameCard c) => c.Location == CardLocation.Field && SameColumn(c.BoardX, c.BoardY);
 
         /// <summary>

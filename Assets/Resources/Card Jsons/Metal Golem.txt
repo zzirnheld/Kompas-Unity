@@ -45,6 +45,7 @@
 			"Is Character",
 			"Can Move Enough Spaces",
 			"Destination is Empty or Friendly",
+			"Nothing Happening",
 			"Activated"
 		]
 	},

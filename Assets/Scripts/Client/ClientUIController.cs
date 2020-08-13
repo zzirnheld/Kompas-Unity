@@ -6,6 +6,7 @@ using KompasCore.GameCore;
 using KompasCore.UI;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -133,12 +134,11 @@ namespace KompasClient.UI
         }
 
         #region connection/game start
-        public void Connect()
+        public void Connect(bool acceptEmpty)
         {
             string ip = ipInputField.text;
-            if (string.IsNullOrEmpty(ip)) ip = "127.0.0.1";
-            var allowedChars = "1234567890.";
-            ip = new string(ip.Where(c => allowedChars.Contains(c)).ToArray());
+            if (string.IsNullOrEmpty(ip) && acceptEmpty) ip = "127.0.0.1";
+            if (!IPAddress.TryParse(ip, out _)) return;
 
             try
             {

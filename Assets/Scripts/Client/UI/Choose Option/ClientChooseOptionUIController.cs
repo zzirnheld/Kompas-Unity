@@ -19,7 +19,7 @@ namespace KompasClient.UI
         public void ShowEffectOptions(DummyChooseOptionSubeffect subeff)
         {
             //remove old options
-            foreach (var o in options) Destroy(o);
+            foreach (var o in options) Destroy(o.gameObject);
             options.Clear();
 
             //set new information

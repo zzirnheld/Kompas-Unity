@@ -40,8 +40,9 @@ namespace KompasServer.Effects
         private readonly Dictionary<string, List<HangingEffect>> hangingEffectFallOffMap
             = new Dictionary<string, List<HangingEffect>>();
 
+        private bool awaitingOrderOrOptional = false;
         public IServerStackable CurrStackEntry { get; private set; }
-        public bool StackEmpty => stack.Empty;
+        public bool StackEmpty => stack.Empty && !awaitingOrderOrOptional;
 
         #region the stack
         public void PushToStack(IServerStackable eff, ActivationContext context)
@@ -111,6 +112,8 @@ namespace KompasServer.Effects
             //then ask the respective player about that trigger.
             lock (triggerStackLock)
             {
+                awaitingOrderOrOptional = false;
+
                 //get the list of triggers, and see if they're all still valid
                 var triggered = triggeredTriggers.Peek();
                 var list = triggered.triggers.Where(t => t.StillValidForContext(triggered.context));
@@ -129,6 +132,7 @@ namespace KompasServer.Effects
                 if (currentOptionalTrigger != default)
                 {
                     currentOptionalTrigger.Ask();
+                    awaitingOrderOrOptional = true;
                     return false;
                 }
 
@@ -157,6 +161,7 @@ namespace KompasServer.Effects
                         var thisPlayers = confirmed.Where(t => t.serverEffect.Controller == p);
                         if (thisPlayers.Any(t => !t.Ordered)) p.ServerNotifier.GetTriggerOrder(thisPlayers);
                     }
+                    awaitingOrderOrOptional = true;
                     return false;
                 }
             }

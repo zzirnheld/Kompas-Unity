@@ -47,8 +47,8 @@
 		}
 	],
 	"n":1,
-	"e":6,
+	"e":5,
 	"s":5,
-	"w":1,
+	"w":0,
 	"subtypeText":"Crazy Idea"
 }
