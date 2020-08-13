@@ -97,9 +97,9 @@ namespace KompasClient.UI
 
         public override void ShowInfoFor(GameCard card, bool refresh = false)
         {
-            base.ShowInfoFor(card);
+            base.ShowInfoFor(card, refresh);
 
-            if (card != null && card.Effects.Where(eff => ShowEffect(eff)).Any())
+            if (card != null && card.Effects.Any(eff => ShowEffect(eff)))
             {
                 var children = new List<GameObject>();
                 foreach (Transform child in UseEffectGridParent.transform) children.Add(child.gameObject);

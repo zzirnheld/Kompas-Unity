@@ -12,7 +12,7 @@ namespace KompasClient.UI
         public ClientUIController clientUICtrl;
         public Transform triggerObjectsParent;
 
-        private List<TriggerUIController> triggerUIs = new List<TriggerUIController>();
+        private readonly List<TriggerUIController> triggerUIs = new List<TriggerUIController>();
 
         public int CurrIndex { get; set; }
 
@@ -56,6 +56,8 @@ namespace KompasClient.UI
         {
             gameObject.SetActive(false);
             clientUICtrl.clientGame.clientNotifier.ChooseTriggerOrder(triggerUIs.Select(t => (t.Trigger, t.Index)));
+            foreach (var ui in triggerUIs) Destroy(ui.gameObject);
+            triggerUIs.Clear();
         }
     }
 }
