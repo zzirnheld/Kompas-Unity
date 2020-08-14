@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Ballroom-Disco Breakdance Competition",
-	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nWhen a character enters my area of effect, set their N to 0. When a character leaves my area of effect, annihilate me.",
+	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nWhen a character moves into my area of effect, set their N to 0. When a character leaves my area of effect, annihilate me.",
 	"effects":[
 		{
 			"triggerCondition":"Discard",

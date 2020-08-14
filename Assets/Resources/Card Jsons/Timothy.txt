@@ -1,12 +1,13 @@
 {
 	"cardType":67,
 	"cardName":"Timothy",
-	"effText":"The first time each turn you hand-discard a Crazy Idea, pay 2 pips and discard-cast it.",
+	"effText":"The first time each turn you hand-discard a Crazy Idea, pay 2 pips and discard-play it.",
 	"effects":[
 		{
 			"triggerCondition":"Discard",
 			"trigger":
 			"{
+				\"blurb\":\"Play discarded Crazy\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"Max Per Turn\"],
 					\"cardRestriction\":

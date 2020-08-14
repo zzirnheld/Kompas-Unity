@@ -6,6 +6,7 @@
 		{
 			"triggerCondition":"Discard",
 			"trigger":"{
+				\"blurb\":\"Crazy Idea\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\",\"Triggerer Fits Restriction\"],
 					\"cardRestriction\":{
@@ -45,6 +46,7 @@
 			"triggerCondition":"Play",
 			"trigger":
 			"{
+				\"blurb\":\"Wait Hold Up\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
