@@ -9,6 +9,7 @@ namespace KompasServer.Effects
         public const string HandSize = "Hand Size";
         public const string DistanceToCoordsThrough = "Distance to Coords Through";
         public const string CardsFittingRestriction = "Cards Fitting Restriction";
+        public const string EffectUsesThisTurn = "Effect Uses This Turn";
 
         public string whatToCount;
 
@@ -37,12 +38,14 @@ namespace KompasServer.Effects
                         return Game.boardCtrl.ShortestPath(Source, x, y, throughRestriction);
                     case CardsFittingRestriction:
                         return Game.Cards.Where(c => throughRestriction.Evaluate(c)).Count();
+                    case EffectUsesThisTurn:
+                        return Effect.TimesUsedThisTurn;
                     default:
                         throw new System.ArgumentException($"Invalid 'what to count' string {whatToCount} in x by gamestate value subeffect");
                 }
             }
         }
 
-        protected int Count { get { return BaseCount * multiplier / divisor + modifier; } }
+        protected int Count => BaseCount * multiplier / divisor + modifier;
     }
 }

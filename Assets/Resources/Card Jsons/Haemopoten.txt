@@ -1,0 +1,52 @@
+{
+	"cardType":67,
+	"cardName":"Haemopoten",
+	"effText":"During your turn, you can set X to the number of uses of this effect  this turn. Give me -XE. Annihilate your topdeck. Delay 1. Rehand it.",
+	"effects":[
+		{
+			"activationRestriction":{
+				"activationRestrictions":[
+					"Friendly Turn",
+					"Default"
+				]
+			},
+			"subeffects":[
+				"{
+					\"subeffType\":\"Set X by Gamestate Value\",
+					\"whatToCount\":\"Effect Uses This Turn\"
+				}",
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"X Change NESW\",
+					\"eMult\":-1
+				}",
+				"{
+					\"subeffType\":\"Choose From List\",
+					\"maxCanChoose\":1,
+					\"cardRestriction\":
+					{
+						\"blurb\":\"for Necropoten to draw\",
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<=C\"],
+						\"constant\":1
+					}
+				}",
+				"{
+					\"subeffType\":\"Delay Effect Resolution\",
+					\"numTimesToDelay\":1,
+					\"indexToResume\":1,
+					\"triggerCondition\":\"Turn Start\"
+				}",
+				"{
+					\"subeffType\":\"Rehand\"
+				}"
+			]
+		}
+	],
+	"n":1,
+	"e":11,
+	"s":10,
+	"w":9,
+	"subtypeText":"Dragon"
+}

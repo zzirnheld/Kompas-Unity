@@ -1,12 +1,11 @@
 {
 	"cardType":67,
 	"cardName":"Animancer",
-	"effText":"OEFT discard Golems total cost X, search top X for C <= X Golem. Bottomdeck the rest.",
+	"effText":"During your turn, you can hand-discard Golems with total cost X to search your deck's top X cards a for cost <= X Golem. Bottomdeck the rest.\nThe first time each round a friendly Golem dies, delay 1 turn, then draw 1.",
 	"effects":[
 		{
 			"activationRestriction":{
 				"activationRestrictions":[
-					"Max Times Per Turn",
 					"Friendly Turn",
 					"Default"
 				]
@@ -62,6 +61,32 @@
 				}",
 				"{
 					\"subeffType\":\"Bottomdeck Rest\"
+				}"
+			]
+		},
+		{
+			"triggerCondition":"Discard",
+			"trigger":
+			"{
+				\"blurb\":\"Recycle Golem parts\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"Max Per Round\",\"Triggerer Fits Restriction\",\"From Field\"],
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Board\"],
+						\"subtypesInclude\":[\"Golem\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Delay Effect Resolution\",
+					\"numTimesToDelay\":1,
+					\"indexToResume\":1,
+					\"triggerCondition\":\"Turn Start\"
+				}",
+				"{
+					\"subeffType\":\"Draw\"
 				}"
 			]
 		}
