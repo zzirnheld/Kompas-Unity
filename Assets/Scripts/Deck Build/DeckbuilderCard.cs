@@ -11,6 +11,8 @@ namespace KompasDeckbuilder
         protected Image image;
         private bool InDeck;
 
+        public abstract string BlurbString { get; }
+
         public void Awake()
         {
             image = GetComponent<Image>();
@@ -53,7 +55,6 @@ namespace KompasDeckbuilder
             if (detailedSprite == null || simpleSprite == null)
             {
                 Debug.LogError("Could not find sprite with name " + cardFileName);
-                return;
             }
             image.sprite = simpleSprite;
         }
@@ -61,15 +62,7 @@ namespace KompasDeckbuilder
         public void OnClick()
         {
             Debug.Log($"Clicked {CardName}, in deck? {InDeck}");
-            if (InDeck)
-            {
-                cardSearchController.DeckbuilderCtrl.RemoveFromDeck(this);
-            }
-            else
-            {
-                Select();
-                cardSearchController.DeckbuilderCtrl.AddToDeck(this);
-            }
+            cardSearchController.DeckbuilderCtrl.RemoveFromDeck(this);
         }
     }
 }

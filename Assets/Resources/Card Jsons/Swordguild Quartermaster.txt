@@ -24,8 +24,7 @@
 					\"subeffType\":\"Add Pips\",
 					\"xMultiplier\":1,
 					\"xDivisor\":2,
-					\"modifier\":0,
-					\"playerOffset\":0
+					\"modifier\":0
 				}"
 			]
 		}

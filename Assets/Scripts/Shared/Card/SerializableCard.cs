@@ -13,7 +13,6 @@ namespace KompasCore.Cards
         public string cardName;
         public string effText;
         public string subtypeText;
-        public string[] subtypes;
         public SerializableEffect[] effects;
 
         public MovementRestriction MovementRestriction;

@@ -46,6 +46,7 @@
 			"Is Character",
 			"Can Move Enough Spaces",
 			"Destination is Empty or Friendly",
+			"Nothing Happening",
 			"Activated"
 		]
 	},
@@ -57,7 +58,8 @@
 			"Defender is Enemy",
 			"This is Activated",
 			"Friendly Turn",
-			"Maximum Per Turn"
+			"Maximum Per Turn",
+			"Stack Empty"
 		]
 	},
 	"n":1,

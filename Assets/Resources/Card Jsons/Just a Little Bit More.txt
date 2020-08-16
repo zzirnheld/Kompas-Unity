@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Just a Little Bit More",
-	"effText":"Crazy Idea: When I'm hand-discarded, discard-play another Crazy Idea.\nDiscard 1. Draw 1. Move a card 1 space. (You can’t move a spell next to 2 other spells.) Annihilate me.",
+	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nDiscard 1. Draw 1. Move a card 1 space. (You can’t move a spell next to 2 other spells.) Annihilate me.",
 	"effects":[
 		{
 			"triggerCondition":"Discard",
@@ -18,15 +18,21 @@
 					\"subeffType\":\"Discard Target\",
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Distinct from Source\"],
+						\"blurb\":\"Crazy Idea for Just a Little Bit More to Ificate\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Friendly\",\"Distinct from Source\"],
 						\"subtypesInclude\":[\"Crazy Idea\"]
 					}
+				}",
+				"{
+					\"subeffType\":\"Pay Pips\",
+					\"xMultiplier\":0,
+					\"modifier\":1
 				}",
 				"{
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"blurb\":\"where Decide! to play targeted Crazy Idea\",
+						\"blurb\":\"where Just a Little Bit More to play targeted Crazy Idea\",
 						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
@@ -48,7 +54,7 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"card for Wait, Hold Up to discard\",
+						\"blurb\":\"Just discard a little bit more\",
 						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
 					}
 				}",
@@ -62,15 +68,15 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"enemy for Wait, Hold Up to move\",
-						\"cardRestrictions\":[\"Board\",\"Enemy\"]
+						\"blurb\":\"you! move a little bit to the left...\",
+						\"cardRestrictions\":[\"Board\",\"Not Avatar\"]
 					}
 				}",
 				"{
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"blurb\":\"where for Just a Little Bit More to move its target\",
+						\"blurb\":\"ok, now move just a little bit more\",
 						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\",\"Can Move Target to This Space\"],
 						\"constant\":1
 					}

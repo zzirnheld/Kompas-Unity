@@ -11,9 +11,10 @@ namespace KompasServer.Effects
     {
         private readonly GameCard target;
 
-        public HangingAnnihilationEffect(ServerGame serverGame, TriggerRestriction triggerRestriction, string endCondition,
+        public HangingAnnihilationEffect(ServerGame serverGame, TriggerRestriction triggerRestriction, string endCondition, 
+            string fallOffCondition, TriggerRestriction fallOffRestriction,
             GameCard target)
-            : base(serverGame, triggerRestriction, endCondition)
+            : base(serverGame, triggerRestriction, endCondition, fallOffCondition, fallOffRestriction)
         {
             this.target = target;
         }

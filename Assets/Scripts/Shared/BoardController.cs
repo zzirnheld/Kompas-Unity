@@ -16,36 +16,23 @@ namespace KompasCore.GameCore
         public const float LenOneSpace = 2f;
         public const float SpaceOffset = LenOneSpace / 2;
 
-        public static int PosToGridIndex(float pos)
-        {
-            return (int)((pos + BoardLenOffset) / (LenOneSpace));
-        }
+        public static int PosToGridIndex(float pos) 
+            => (int)((pos + BoardLenOffset) / (LenOneSpace));
 
         public static float GridIndexToPos(int gridIndex)
-        {
-            return (float)((gridIndex * LenOneSpace) + SpaceOffset - BoardLenOffset);
-        }
+            => (float)((gridIndex * LenOneSpace) + SpaceOffset - BoardLenOffset);
 
         public static Vector3 GridIndicesFromPos(int x, int y)
-        {
-            return new Vector3(GridIndexToPos(x), 0.2f, GridIndexToPos(y));
-        }
+            => new Vector3(GridIndexToPos(x), 0.2f, GridIndexToPos(y));
 
-        private readonly GameCard[,] cards = new GameCard[SpacesInGrid, SpacesInGrid];
+        public readonly GameCard[,] Board = new GameCard[SpacesInGrid, SpacesInGrid];
 
         //helper methods
         #region helper methods
-        public bool ValidIndices(int x, int y)
-        {
-            return x >= 0 && y >= 0 && x < 7 && y < 7;
-        }
+        public bool ValidIndices(int x, int y) => x >= 0 && y >= 0 && x < 7 && y < 7;
 
         //get game data
-        public GameCard GetCardAt(int x, int y)
-        {
-            if (!ValidIndices(x, y)) return null;
-            return cards[x, y];
-        }
+        public GameCard GetCardAt(int x, int y) => ValidIndices(x, y) ? Board[x, y] : null;
 
         public List<GameCard> CardsAdjacentTo(int x, int y)
         {
@@ -66,7 +53,7 @@ namespace KompasCore.GameCore
         public List<GameCard> CardsWhere(Func<GameCard, bool> predicate)
         {
             var list = new List<GameCard>();
-            foreach (var card in cards) if (predicate(card)) list.Add(card);
+            foreach (var card in Board) if (predicate(card)) list.Add(card);
             return list;
         }
 
@@ -123,33 +110,22 @@ namespace KompasCore.GameCore
 
         public bool ExistsCardOnBoard(Func<GameCard, bool> predicate)
         {
-            foreach (var c in cards)
+            foreach (var c in Board)
             {
                 if (predicate(c)) return true;
             }
             return false;
-        }
-
-        public int GetNumCardsOnBoard()
-        {
-            int i = 0;
-            foreach (GameCard card in cards)
-            {
-                if (card != null) i++;
-            }
-            return i;
         }
         #endregion
 
         #region game mechanics
         public void RemoveFromBoard(GameCard toRemove)
         {
-            if (toRemove?.Location != CardLocation.Field) return;
-
-            RemoveFromBoard(toRemove.BoardX, toRemove.BoardY);
+            if (toRemove?.Location == CardLocation.Field)
+                RemoveFromBoard(toRemove.BoardX, toRemove.BoardY);
         }
 
-        public void RemoveFromBoard(int x, int y) => cards[x, y] = null;
+        public void RemoveFromBoard(int x, int y) => Board[x, y] = null;
 
         /// <summary>
         /// Puts the card on the board
@@ -162,8 +138,8 @@ namespace KompasCore.GameCore
             Debug.Log($"In boardctrl, playing {toPlay.CardName} to {toX}, {toY}");
             toPlay.Remove(stackSrc);
 
-            if (toPlay.CardType == 'A') cards[toX, toY].AddAugment(toPlay, stackSrc);
-            else cards[toX, toY] = toPlay;
+            if (toPlay.CardType == 'A') Board[toX, toY].AddAugment(toPlay, stackSrc);
+            else Board[toX, toY] = toPlay;
 
             toPlay.Location = CardLocation.Field;
             toPlay.Position = (toX, toY);
@@ -181,9 +157,9 @@ namespace KompasCore.GameCore
             if (card.AugmentedCard != null) throw new NotImplementedException();
 
             var (tempX, tempY) = card.Position;
-            GameCard temp = cards[toX, toY];
-            cards[toX, toY] = card;
-            cards[tempX, tempY] = temp;
+            GameCard temp = Board[toX, toY];
+            Board[toX, toY] = card;
+            Board[tempX, tempY] = temp;
 
             //then let the cards know they've been moved
             if (playerInitiated)
@@ -204,7 +180,7 @@ namespace KompasCore.GameCore
             {
                 if (card.Remove(stackSrc))
                 {
-                    cards[toX, toY].AddAugment(card, stackSrc);
+                    Board[toX, toY].AddAugment(card, stackSrc);
                     return true;
                 }
                 return false;
@@ -214,7 +190,7 @@ namespace KompasCore.GameCore
 
         public void DiscardSimples()
         {
-            foreach (GameCard c in cards)
+            foreach (GameCard c in Board)
             {
                 if (c != null && c.SpellSubtype == CardBase.SimpleSubtype) c.Discard();
             }

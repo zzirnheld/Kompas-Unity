@@ -1,5 +1,6 @@
 ﻿using KompasCore.Effects;
 using KompasServer.GameCore;
+using System.Linq;
 
 namespace KompasServer.Effects
 {
@@ -7,22 +8,14 @@ namespace KompasServer.Effects
     {
         public const string HandSize = "Hand Size";
         public const string DistanceToCoordsThrough = "Distance to Coords Through";
+        public const string CardsFittingRestriction = "Cards Fitting Restriction";
+        public const string EffectUsesThisTurn = "Effect Uses This Turn";
 
         public string whatToCount;
 
         public int multiplier = 1;
         public int divisor = 1;
         public int modifier = 0;
-
-        public int PlayerIndex = 0;
-        public ServerPlayer Player
-        {
-            get
-            {
-                if (PlayerIndex == 0) return ServerEffect.ServerController;
-                else return ServerEffect.ServerController.ServerEnemy;
-            }
-        }
 
         public CardRestriction throughRestriction = new CardRestriction();
 
@@ -43,12 +36,16 @@ namespace KompasServer.Effects
                     case DistanceToCoordsThrough:
                         var (x, y) = Space;
                         return Game.boardCtrl.ShortestPath(Source, x, y, throughRestriction);
+                    case CardsFittingRestriction:
+                        return Game.Cards.Where(c => throughRestriction.Evaluate(c)).Count();
+                    case EffectUsesThisTurn:
+                        return Effect.TimesUsedThisTurn;
                     default:
                         throw new System.ArgumentException($"Invalid 'what to count' string {whatToCount} in x by gamestate value subeffect");
                 }
             }
         }
 
-        protected int Count { get { return BaseCount * multiplier / divisor + modifier; } }
+        protected int Count => BaseCount * multiplier / divisor + modifier;
     }
 }

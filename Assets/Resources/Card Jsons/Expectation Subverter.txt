@@ -1,0 +1,65 @@
+{
+	"cardType":67,
+	"cardName":"Expectation Subverter",
+	"effText":"When turns start, give the closest other character in front of me in my column -3E, then pay a pip or annihilate me.",
+	"effects":[
+		{
+			"triggerCondition":"Turn Start",
+			"trigger":
+			"{
+				\"blurb\":\"Subvert Expectations\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Choose From List\",
+					\"orderBy\":\"Closest\",
+					\"maxCanChoose\":1,
+					\"cardRestriction\":
+					{
+						\"blurb\":\"for Expectation Subverter to subvert expectations (-3E)\",
+						\"cardRestrictions\":[\"Board\",\"Is Character\",\"Same Column as Source\",\"In Front of Source\",\"Distinct from Source\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
+					\"eChange\":-3
+				}",
+				"{
+					\"subeffType\":\"Choose Effect Option\",
+					\"ChoiceBlurb\":\"Pay 1 pip or annihilate this?\",
+					\"OptionBlurbs\":[\"Pay 1 pip\",\"Dispel\"],
+					\"OptionJumpIndices\":[3,7]
+				}",
+				"{
+					\"subeffType\":\"Jump on Effect Impossible\",
+					\"jumpTo\":4
+				}",
+				"{
+					\"subeffType\":\"Pay Pips\",
+					\"xMultiplier\":0,
+					\"modifier\":1
+				}",
+				"{
+					\"subeffType\":\"End Effect Resolution\"
+				}",
+				"{
+					\"subeffType\":\"Clear Jump on Effect Impossible\"
+				}",
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Annihilate\"
+				}"
+			]	
+		}
+	],
+	"n":0,
+	"e":4,
+	"s":5,
+	"w":3,
+	"subtypeText":"Crazy Idea"
+}

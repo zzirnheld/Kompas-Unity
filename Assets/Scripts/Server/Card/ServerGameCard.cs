@@ -46,11 +46,29 @@ namespace KompasServer.Cards
             get => base.Location;
             set
             {
-                if (Location == CardLocation.Hand && value != CardLocation.Hand)
+                if (Location == CardLocation.Hand && value != CardLocation.Hand && !KnownToEnemy)
                     ServerController.ServerEnemy.ServerNotifier.NotifyDecrementHand();
                 base.Location = value;
+                switch (Location)
+                {
+                    case CardLocation.Discard:
+                    case CardLocation.Field:
+                    case CardLocation.Annihilation:
+                        knownToEnemy = true;
+                        break;
+                    case CardLocation.Deck:
+                        knownToEnemy = false;
+                        break;
+                    default:
+                        UnityEngine.Debug.Log($"Card {CardName} being moved to {Location}. " +
+                            $"Not setting knownToEnemy, because enemy knowledge doesn't change");
+                        break;
+                }
             }
         }
+
+        private bool knownToEnemy = false;
+        public override bool KnownToEnemy => knownToEnemy;
 
         public virtual void SetInfo(SerializableCard serializedCard, ServerGame game, ServerPlayer owner, ServerEffect[] effects, int id)
         {

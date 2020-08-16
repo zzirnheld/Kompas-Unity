@@ -1,0 +1,36 @@
+{
+	"cardType":83,
+	"cardName":"Correctly Sized Crane",
+	"effText":"The first time each turn you hand-discard a card, discard-rehand your card.",
+	"effects":[
+		{
+			"triggerCondition":"Discard",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"Max Per Turn\",\"Controller Triggered\"],
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Hand\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Discard Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"card for Correctly Sized Crane to grab\",
+						\"cardRestrictions\":[\"Friendly\",\"Discard\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Rehand\"
+				}"
+			]	
+		}
+	],
+	"c":5,
+	"spellType":"Enchant",
+	"subtypeText":"Enchant"
+}

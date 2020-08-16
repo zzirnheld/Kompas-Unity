@@ -6,6 +6,7 @@ using KompasCore.GameCore;
 using KompasCore.UI;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -79,9 +80,7 @@ namespace KompasClient.UI
         private SearchData? currSearchData = null;
         private readonly Stack<SearchData> searchStack = new Stack<SearchData>();
         //choose effect option
-        public GameObject ChooseOptionView;
-        public TMPro.TMP_Text ChoiceBlurbText;
-        public TMPro.TMP_Dropdown EffectOptionDropdown;
+        public ClientChooseOptionUIController chooseOptionUICtrl;
 
         //deck select ui
         public DeckSelectUIController DeckSelectCtrl;
@@ -99,9 +98,9 @@ namespace KompasClient.UI
 
         public override void ShowInfoFor(GameCard card, bool refresh = false)
         {
-            base.ShowInfoFor(card);
+            base.ShowInfoFor(card, refresh);
 
-            if (card != null && card.Effects.Where(eff => ShowEffect(eff)).Any())
+            if (card != null && card.Effects.Any(eff => ShowEffect(eff)))
             {
                 var children = new List<GameObject>();
                 foreach (Transform child in UseEffectGridParent.transform) children.Add(child.gameObject);
@@ -135,12 +134,11 @@ namespace KompasClient.UI
         }
 
         #region connection/game start
-        public void Connect()
+        public void Connect(bool acceptEmpty)
         {
             string ip = ipInputField.text;
-            if (string.IsNullOrEmpty(ip)) ip = "127.0.0.1";
-            var allowedChars = "1234567890.";
-            ip = new string(ip.Where(c => allowedChars.Contains(c)).ToArray());
+            if (string.IsNullOrEmpty(ip) && acceptEmpty) ip = "127.0.0.1";
+            if (!IPAddress.TryParse(ip, out _)) return;
 
             try
             {
@@ -269,21 +267,7 @@ namespace KompasClient.UI
         }
 
         public void ShowEffectOptions(DummyChooseOptionSubeffect subeff)
-        {
-            ChoiceBlurbText.text = subeff.ChoiceBlurb;
-            EffectOptionDropdown.ClearOptions();
-            foreach (string blurb in subeff.OptionBlurbs)
-            {
-                EffectOptionDropdown.options.Add(new TMPro.TMP_Dropdown.OptionData() { text = blurb });
-            }
-            ChooseOptionView.SetActive(true);
-        }
-
-        public void ChooseSelectedEffectOption()
-        {
-            clientGame.clientNotifier.RequestChooseEffectOption(EffectOptionDropdown.value);
-            ChooseOptionView.SetActive(false);
-        }
+            => chooseOptionUICtrl.ShowEffectOptions(subeff);
 
         public void GetResponse()
         {
@@ -305,7 +289,7 @@ namespace KompasClient.UI
 
         #region search
         public void StartSearch(List<GameCard> list, int numToChoose = 1, bool targetingSearch = true) =>
-            StartSearch(new SearchData(list, list.Count < numToChoose ? list.Count : numToChoose, targetingSearch, new List<GameCard>()));
+            StartSearch(new SearchData(list, System.Math.Min(list.Count, numToChoose), targetingSearch, new List<GameCard>()));
 
         public void StartSearch(SearchData data)
         {
@@ -320,7 +304,7 @@ namespace KompasClient.UI
 
             //initiate search process
             searchIndex = 0;
-            cardSearchImage.sprite = currSearchData.Value.toSearch[searchIndex].detailedSprite;
+            SearchShowIndex(searchIndex);
             if (currSearchData.Value.targetingSearch) searchTargetButtonText.text = "Choose";
             else searchTargetButtonText.text = "Cancel";
             cardSearchView.SetActive(true);

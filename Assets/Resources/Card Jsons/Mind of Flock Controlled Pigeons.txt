@@ -1,0 +1,41 @@
+{
+	"cardType":67,
+	"cardName":"Mind of Flock Controlled Pigeons",
+	"effText":"When I deal combat damage, discard a Crazy Idea and draw 1.",
+	"effects":[
+		{
+			"triggerCondition":"Deal Combat Damage",
+			"trigger":
+			"{
+				\"blurb\":\"bawk bawk bawk\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Hand Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Mind bawk bawk Controlled Pigeons\",
+						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Crazy Idea\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Draw X\",
+					\"XMultiplier\":0,
+					\"modifier\":2
+				}"
+			]	
+		}
+	],
+	"n":3,
+	"e":3,
+	"s":5,
+	"w":3,
+	"subtypeText":"Crazy Idea"
+}

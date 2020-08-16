@@ -1,0 +1,103 @@
+{
+	"cardType":83,
+	"cardName":"Ballroom-Disco Breakdance Competition",
+	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nWhen a character moves into my area of effect, set their N to 0. When a character leaves my area of effect, annihilate me.",
+	"effects":[
+		{
+			"triggerCondition":"Discard",
+			"trigger":"{
+				\"blurb\":\"Crazy Idea\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\",\"Triggerer Fits Restriction\"],
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Hand\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Discard Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Crazy Idea for Ballroom-Disco to Ificate\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Friendly\",\"Distinct from Source\"],
+						\"subtypesInclude\":[\"Crazy Idea\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Pay Pips\",
+					\"xMultiplier\":0,
+					\"modifier\":1
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where Ballroom-Disco Breakdance Competition to play targeted Crazy Idea\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Play\"
+				}"
+			]
+		},
+		{
+			"triggerCondition":"Move",
+			"trigger":
+			"{
+				\"blurb\":\"N = 0\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"Triggerer Fits Restriction\",\"Coords Fit Restriction\",\"This Card in Play\"],
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Not In AOE\"]
+					},
+					\"spaceRestriction\":
+					{
+						\"spaceRestrictions\":[\"In AOE\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target Triggering Card\"
+				}",
+				"{
+					\"subeffType\":\"Set NESW\",
+					\"nVal\":0
+				}"
+			]	
+		},
+		{
+			"triggerCondition":"Move",
+			"trigger":
+			"{
+				\"blurb\":\"Annihilate this\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"Triggerer Fits Restriction\",\"Coords Fit Restriction\",\"This Card in Play\"],
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"In AOE\"]
+					},
+					\"spaceRestriction\":
+					{
+						\"spaceRestrictions\":[\"Not In AOE\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Annihilate\"
+				}"
+			]	
+		}
+	],
+	"c":5,
+	"spellType":"Terraform",
+	"subtypeText":"Crazy Idea Terraform",
+	"arg":1
+}

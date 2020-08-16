@@ -16,8 +16,8 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"for Emperor to buff\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Adjacent\"]
+						\"blurb\":\"Summoned character for Emperor to buff\",
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Adjacent\",\"Summoned\"]
 					}
 				}",
 				"{

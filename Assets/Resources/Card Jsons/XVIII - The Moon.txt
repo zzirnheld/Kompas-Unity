@@ -1,14 +1,14 @@
 {
 	"cardType":67,
 	"cardName":"XVIII - The Moon",
-	"effText":"When you draw, I can swap the EW of a character.",
+	"effText":"When you draw, I can swap a Summoned character's E and W, then swap their EW with another Summoned character's.",
 	"effects":[
 		{
 			"triggerCondition":"Draw",
 			"trigger":
 			"{
 				\"optional\":true,
-				\"blurb\":\"Swap the NESW of a character?\",
+				\"blurb\":\"Swap character E and W, characters' EW?\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\"]
 				}
@@ -19,15 +19,28 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"character for Moon to swap EW\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\"]
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Summoned\"]
 					}
 				}",
 				"{
 					\"subeffType\":\"Swap Target's Own NESW\",
 					\"Stat1\":1,
 					\"Stat2\":3
+				}",
+				"{
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"character for Moon to swap EW\",
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Summoned\",\"Not Already Target\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Swap NESW\",
+					\"TargetIndices\":[-1,-2],
+					\"swapE\":true,
+					\"swapW\":true
 				}"
-
 			]
 		}
 	],

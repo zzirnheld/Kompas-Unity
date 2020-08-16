@@ -1,11 +1,12 @@
 {
 	"cardType":83,
 	"cardName":"Wait Hold Up",
-	"effText":"Crazy Idea: When I'm hand-discarded, discard-play another Crazy Idea.\nDiscard 1. Draw 1. Move an enemy character up to 3 spaces. Annihilate me.",
+	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nDiscard 1. Draw 1. Move an enemy character up to 3 spaces. Annihilate me.",
 	"effects":[
 		{
 			"triggerCondition":"Discard",
 			"trigger":"{
+				\"blurb\":\"Crazy Idea\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\",\"Triggerer Fits Restriction\"],
 					\"cardRestriction\":{
@@ -18,15 +19,21 @@
 					\"subeffType\":\"Discard Target\",
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Distinct from Source\"],
+						\"blurb\":\"Crazy Idea for Wait Hold Up to Ificate\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Friendly\",\"Distinct from Source\"],
 						\"subtypesInclude\":[\"Crazy Idea\"]
 					}
+				}",
+				"{
+					\"subeffType\":\"Pay Pips\",
+					\"xMultiplier\":0,
+					\"modifier\":1
 				}",
 				"{
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"blurb\":\"where Decide! to play targeted Crazy Idea\",
+						\"blurb\":\"where Wait Hold Up to play targeted Crazy Idea\",
 						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
@@ -39,6 +46,7 @@
 			"triggerCondition":"Play",
 			"trigger":
 			"{
+				\"blurb\":\"Wait Hold Up\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
@@ -48,7 +56,7 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"card for Wait, Hold Up to discard\",
+						\"blurb\":\"Wait, Hold Up, what are you discarding?\",
 						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
 					}
 				}",
@@ -62,15 +70,15 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"enemy for Wait, Hold Up to move\",
-						\"cardRestrictions\":[\"Board\",\"Enemy\"]
+						\"blurb\":\"Wait, Hold Up, what are you moving?\",
+						\"cardRestrictions\":[\"Board\",\"Enemy\",\"Summoned\"]
 					}
 				}",
 				"{
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"blurb\":\"where Wait, Hold Up to move its target\",
+						\"blurb\":\"Wait, Hold Up, where?\",
 						\"spaceRestrictions\":[\"Empty\",\"Distance to Target <= Constant\"],
 						\"constant\":3
 					}

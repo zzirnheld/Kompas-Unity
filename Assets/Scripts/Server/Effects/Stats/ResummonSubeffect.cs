@@ -10,6 +10,7 @@ namespace KompasServer.Effects
 
             var ctxt = new ActivationContext(card: Target, stackable: Effect, triggerer: EffectController, space: Target.Position);
             ServerEffect.EffectsController.TriggerForCondition(Trigger.Play, ctxt);
+            ServerEffect.EffectsController.TriggerForCondition(Trigger.Arrive, ctxt);
             return ServerEffect.ResolveNextSubeffect();
         }
     }

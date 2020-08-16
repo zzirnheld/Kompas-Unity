@@ -1,6 +1,5 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
-using KompasServer.GameCore;
 using UnityEngine;
 
 namespace KompasServer.Effects
@@ -92,6 +91,33 @@ namespace KompasServer.Effects
             Responded = false;
             Confirmed = false;
             order = -1;
+        }
+
+        /// <summary>
+        /// Asks this effect's controller if they want to trigger this trigger.
+        /// Should only be called for optional triggers - anything else doesn't make sense
+        /// </summary>
+        public void Ask()
+        {
+            if (!optional) 
+                throw new System.InvalidOperationException("Can't ask the player to okay a trigger that isn't optional");
+
+            serverEffect.ServerController.ServerNotifier.AskForTrigger(this);
+        }
+
+        /// <summary>
+        /// Updates whether this trigger will be triggered, based on the player's answer
+        /// </summary>
+        /// <param name="answerer"></param>
+        public void Answered(bool answer, Player answerer)
+        {
+            if (!optional) 
+                throw new System.InvalidOperationException("Can't answer a trigger that isn't optional");
+            if (answerer != Effect.Controller) 
+                throw new System.InvalidOperationException("Player other than the owner tried to answer a trigger");
+
+            Confirmed = answer;
+            Responded = true;
         }
     }
 }

@@ -1,12 +1,52 @@
 {
 	"cardType":83,
 	"cardName":"Right Into My Trap",
-	"effText":"Crazy Idea: When I'm hand-discarded, discard-play another Crazy Idea.\nWhen a character here moves out of my area of effect, move them a space towards me, then if they’re no longer in my area of effect, annihilate me.",
+	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nWhen a character here moves out of my area of effect, move them a space towards me, then if they’re no longer in my area of effect, annihilate me.",
 	"effects":[
+		{
+			"triggerCondition":"Discard",
+			"trigger":"{
+				\"blurb\":\"Crazy Idea\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\",\"Triggerer Fits Restriction\"],
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Hand\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Discard Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Crazy Idea for Right Into My Trap to Ificate\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Friendly\",\"Distinct from Source\"],
+						\"subtypesInclude\":[\"Crazy Idea\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Pay Pips\",
+					\"xMultiplier\":0,
+					\"modifier\":1
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where Right Into My Trap to play targeted Crazy Idea\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Play\"
+				}"
+			]
+		},
 		{
 			"triggerCondition":"Move",
 			"trigger":
 			"{
+				\"blurb\":\"Back Into My Trap\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"Triggerer Fits Restriction\",\"Coords Fit Restriction\"],
 					\"cardRestriction\":
@@ -27,7 +67,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"blurb\":\"where for Just a Little Bit More to move its target\",
+						\"blurb\":\"back into my trap\",
 						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\",\"Can Move Target to This Space\",\"Towards Source from Target\"],
 						\"constant\":1
 					}

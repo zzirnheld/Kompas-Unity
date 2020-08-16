@@ -1,11 +1,12 @@
 {
 	"cardType":83,
 	"cardName":"Stupid Idea Generator",
-	"effText":"Crazy Idea: When I'm hand-discarded, discard-play another Crazy Idea.\nWhen turns start, discard 1, draw 1, then pay a pip or annihilate me.",
+	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nWhen enemy turns start, discard 1, draw 1, then pay a pip or annihilate me.",
 	"effects":[
 		{
 			"triggerCondition":"Discard",
 			"trigger":"{
+				\"blurb\":\"Crazy Idea\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\",\"Triggerer Fits Restriction\"],
 					\"cardRestriction\":{
@@ -18,15 +19,21 @@
 					\"subeffType\":\"Discard Target\",
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Distinct from Source\"],
+						\"blurb\":\"Crazy Idea for Stupid Idea Generator to Ificate\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Friendly\",\"Distinct from Source\"],
 						\"subtypesInclude\":[\"Crazy Idea\"]
 					}
+				}",
+				"{
+					\"subeffType\":\"Pay Pips\",
+					\"xMultiplier\":0,
+					\"modifier\":1
 				}",
 				"{
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"blurb\":\"where Decide! to play targeted Crazy Idea\",
+						\"blurb\":\"where Stupid Idea Generator to play targeted Crazy Idea\",
 						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
@@ -36,12 +43,12 @@
 			]
 		},
 		{
-		{
 			"triggerCondition":"Turn Start",
 			"trigger":
 			"{
+				\"blurb\":\"Generate Stupid Idea\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\"]
+					\"triggerRestrictions\":[\"This Card in Play\",\"Enemy Turn\"]
 				}
 			}",
 			"subeffects":[
@@ -49,7 +56,7 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"card for Stupid Idea Generator to discard\",
+						\"blurb\":\"Stupid Idea to Generate\",
 						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
 					}
 				}",
@@ -61,13 +68,13 @@
 				}",
 				"{
 					\"subeffType\":\"Choose Effect Option\",
-					\"ChoiceBlurb\":\"Pay 1 pip or annihilate this?\",
+					\"ChoiceBlurb\":\"Pay 1 pip or annihilate Stupid?\",
 					\"OptionBlurbs\":[\"Pay 1 pip\",\"Annhihilate\"],
-					\"OptionJumpIndices\":[4,8]
+					\"OptionJumpIndices\":[4,7]
 				}",
 				"{
 					\"subeffType\":\"Jump on Effect Impossible\",
-					\"jumpTo\":4
+					\"jumpTo\":7
 				}",
 				"{
 					\"subeffType\":\"Pay Pips\",
@@ -87,7 +94,7 @@
 					\"subeffType\":\"Annihilate\"
 				}"
 			]	
-		},
+		}
 	],
 	"c":5,
 	"spellType":"Enchant",

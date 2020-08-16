@@ -15,7 +15,7 @@
 				"{
 					\"subeffType\":\"Set X by Gamestate Value\",
 					\"whatToCount\":\"Hand Size\",
-					\"PlayerIndex\":1
+					\"playerIndex\":1
 				}",
 				"{
 					\"subeffType\":\"Change X by Gamestate Value\",

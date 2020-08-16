@@ -1,0 +1,80 @@
+{
+	"cardType":83,
+	"cardName":"Yeet Modification",
+	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nOnce each turn, you can move a turn player's card one space.",
+	"effects":[
+		{
+			"triggerCondition":"Discard",
+			"trigger":
+			"{
+				\"blurb\":\"Crazy Idea\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\",\"Triggerer Fits Restriction\"],
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Hand\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Discard Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Crazy Idea for Yeet Modification to Ificate\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Friendly\",\"Distinct from Source\"],
+						\"subtypesInclude\":[\"Crazy Idea\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Pay Pips\",
+					\"xMultiplier\":0,
+					\"modifier\":1
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where Yeet Modification to play targeted Crazy Idea\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Play\"
+				}"
+			]
+		},
+		{
+			"activationRestriction":{
+				"activationRestrictions":[
+					"Max Times Per Turn",
+					"Default"
+				],
+				"maxTimes":1
+			},
+			"subeffects":[
+				"{
+					\"subeffType\":\"Board Target\",
+					\"blurb\":\"card to slightly yeet\",
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Board\",\"Turn Player Controls\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where to slightly yeet target card\",
+						\"spaceRestrictions\":[\"Distance to Target == Constant\"],
+						\"constant\":1
+					}
+				}",
+				"{
+					\"subeffType\":\"Move\"
+				}"
+			]	
+		}
+	],
+	"c":5,
+	"spellType":"Enchant",
+	"subtypeText":"Enchant Crazy Idea"
+}

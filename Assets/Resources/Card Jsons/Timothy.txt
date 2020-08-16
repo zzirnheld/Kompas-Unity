@@ -1,0 +1,48 @@
+{
+	"cardType":67,
+	"cardName":"Timothy",
+	"effText":"The first time each turn you hand-discard a Crazy Idea, pay 2 pips and discard-play it.",
+	"effects":[
+		{
+			"triggerCondition":"Discard",
+			"trigger":
+			"{
+				\"blurb\":\"Play discarded Crazy\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"Max Per Turn\"],
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Subtypes Include\",\"Hand\"],
+						\"subtypesInclude\":[\"Crazy Idea\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Pay Pips\",
+					\"xMultiplier\":0,
+					\"modifier\":2
+				}",
+				"{
+					\"subeffType\":\"Target Triggering Card\"
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where, Timothy. Where? Where can I put THIS one?\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Play\"
+				}"
+			]	
+		}
+	],
+	"n":1,
+	"e":5,
+	"s":6,
+	"w":3,
+	"subtypeText":"Supreme Lab Assistant Lord of Labcoats Deacon of Decontamination"
+}

@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Decide! One of Two Options!",
-	"effText":"Crazy Idea: When I'm hand-discarded, discard-play another Crazy Idea.\nChoose two characters. Delay 2 turns. Your opponent chooses one that I kill. Annihilate me.",
+	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nChoose two characters. Delay 2 turns. Your opponent chooses one that I kill. Annihilate me.",
 	"effects":[
 		{
 			"triggerCondition":"Discard",
@@ -18,9 +18,15 @@
 					\"subeffType\":\"Discard Target\",
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Distinct from Source\"],
+						\"blurb\":\"Crazy Idea for Decide! to Ificate\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Friendly\",\"Distinct from Source\"],
 						\"subtypesInclude\":[\"Crazy Idea\"]
 					}
+				}",
+				"{
+					\"subeffType\":\"Pay Pips\",
+					\"xMultiplier\":0,
+					\"modifier\":1
 				}",
 				"{
 					\"subeffType\":\"Space Target\",

@@ -4,25 +4,18 @@ using System.Collections.Generic;
 
 namespace KompasServer.Effects
 {
-    public class DelaySubeffect : ServerSubeffect
+    public class DelaySubeffect : TemporaryCardChangeSubeffect
     {
         public int numTimesToDelay = 0;
         public int indexToResume;
         public string triggerCondition;
-        public TriggerRestriction triggerRestriction = new TriggerRestriction();
 
-        public override void Initialize(ServerEffect eff, int subeffIndex)
+        protected override IEnumerable<HangingEffect> CreateHangingEffects()
         {
-            base.Initialize(eff, subeffIndex);
-            triggerRestriction.Initialize(this, ThisCard, null);
-        }
-
-        public override bool Resolve()
-        {
-            var eff = new DelayedHangingEffect(ServerGame, triggerRestriction, triggerCondition,
+            var delay = new DelayedHangingEffect(ServerGame, triggerRestriction, endCondition, 
+                fallOffCondition, CreateFallOffRestriction(Source),
                 numTimesToDelay, ServerEffect, indexToResume, EffectController, new List<GameCard>(Effect.Targets));
-            ServerGame.EffectsController.RegisterHangingEffect(triggerCondition, eff);
-            return ServerEffect.EffectImpossible();
+            return new List<HangingEffect>() { delay };
         }
     }
 }

@@ -17,6 +17,7 @@ namespace KompasCore.Effects
         private const string DestinationCanMoveHere = "Destination is Empty or Friendly";
         //If this is a spell being moved, it can't be next to 2 other spells
         private const string StandardSpellMoveRestiction = "If Spell, Not Next to 2 Other Spells";
+        private const string NothingHappening = "Nothing Happening";
         #endregion Basic Movement Restrictions
 
         //Whether the character has been activated (for Golems)
@@ -24,7 +25,10 @@ namespace KompasCore.Effects
 
         //The actual list of restrictions, set by json.
         //Default restrictions are that only characters with enough n can move.
-        public string[] normalMovementRestrictions = new string[] { IsCharacter, CanMoveEnoughSpaces, DestinationCanMoveHere, StandardSpellMoveRestiction };
+        public string[] normalMovementRestrictions = new string[] 
+        {
+            IsCharacter, CanMoveEnoughSpaces, DestinationCanMoveHere, StandardSpellMoveRestiction, NothingHappening 
+        };
         public string[] effectMovementRestrictions = new string[] { StandardSpellMoveRestiction };
 
         public GameCard Card { get; private set; }
@@ -42,6 +46,7 @@ namespace KompasCore.Effects
                 case IsCharacter: return Card.CardType == 'C';
                 case CanMoveEnoughSpaces: return Card.SpacesCanMove >= Card.DistanceTo(x, y);
                 case StandardSpellMoveRestiction: return Card.CardType != 'S' || Card.Game.ValidSpellSpace(x, y);
+                case NothingHappening: return Card.Game.StackEmpty;
                 case DestinationCanMoveHere:
                     if (isSwapTarget) return true;
                     var atDest = Card.Game.boardCtrl.GetCardAt(x, y);

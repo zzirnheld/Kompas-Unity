@@ -1,0 +1,74 @@
+{
+	"cardType":83,
+	"cardName":"MAXIMUM OVERDRIVE",
+	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nGive a character +5N and -5W.",
+	"effects":[
+		{
+			"triggerCondition":"Discard",
+			"trigger":"{
+				\"blurb\":\"Crazy Idea\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\",\"Triggerer Fits Restriction\"],
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Hand\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Discard Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Crazy Idea for MAXIMUM OVERDRIVE to Ificate\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Friendly\",\"Distinct from Source\"],
+						\"subtypesInclude\":[\"Crazy Idea\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Pay Pips\",
+					\"xMultiplier\":0,
+					\"modifier\":1
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where MAXIMUM OVERDRIVE to play targeted Crazy Idea\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Play\"
+				}"
+			]
+		},
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"blurb\":\"MAXIMUM OVERDRIVE\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Board Target\",
+					\"blurb\":\"character to MAXIMUM OVERDRIVE\",
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Is Character\",\"Board\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
+					\"nChange\":5,
+					\"wChange\":-5
+				}"
+			]
+		}
+	],
+	"c":5,
+	"spellType":"Simple",
+	"subtypes":["Simple","Crazy Idea"],
+	"subtypeText":"Simple Crazy Idea"
+}

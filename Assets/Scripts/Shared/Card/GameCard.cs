@@ -28,7 +28,7 @@ namespace KompasCore.Cards
         private int a;
         public int N 
         { 
-            get => n;
+            get => n < 0 ? 0 : n;
             private set
             {
                 n = value;
@@ -37,7 +37,7 @@ namespace KompasCore.Cards
         }
         public int E
         {
-            get => e;
+            get => e < 0 ? 0 : e;
             protected set
             {
                 e = value;
@@ -46,7 +46,7 @@ namespace KompasCore.Cards
         }
         public int S
         {
-            get => s;
+            get => s < 0 ? 0 : s;
             private set
             {
                 s = value;
@@ -55,7 +55,7 @@ namespace KompasCore.Cards
         }
         public int W
         {
-            get => w;
+            get => w < 0 ? 0 : w;
             private set
             {
                 w = value;
@@ -64,7 +64,7 @@ namespace KompasCore.Cards
         }
         public int C
         {
-            get => c;
+            get => c < 0 ? 0 : c;
             private set
             {
                 c = value;
@@ -73,7 +73,7 @@ namespace KompasCore.Cards
         }
         public int A
         {
-            get => a;
+            get => a < 0 ? 0 : a;
             private set
             {
                 a = value;
@@ -123,6 +123,19 @@ namespace KompasCore.Cards
                 }
             }
         }
+        private string SpellSubtypeString
+        {
+            get
+            {
+                if (CardType != 'S') return "";
+                switch (SpellSubtype)
+                {
+                    case TerraformSubtype: return $" Radius {Arg}";
+                    case DelayedSubtype: return $" {Arg} turns";
+                    default: return "";
+                }
+            }
+        }
         public string StatsString
         {
             get
@@ -130,7 +143,7 @@ namespace KompasCore.Cards
                 switch (CardType)
                 {
                     case 'C': return $"N: {N} / E: {E} / S: {S} / W: {W}";
-                    case 'S': return $"C {C} {(Fast ? "Fast" : "")} {SpellSubtype}";
+                    case 'S': return $"C {C}{(Fast ? " Fast" : "")} {SpellSubtype}{SpellSubtypeString}";
                     case 'A': return $"A {A}";
                     default: throw new System.NotImplementedException($"Stats string not implemented for card type {CardType}");
                 }
@@ -203,7 +216,7 @@ namespace KompasCore.Cards
                 cardCtrl?.SetPhysicalLocation(location);
             }
         }
-        public bool KnownToEnemy => !Game.HiddenLocations.Contains(Location);
+        public virtual bool KnownToEnemy => !Game.HiddenLocations.Contains(Location);
         public int ID { get; private set; }
         public abstract IEnumerable<Effect> Effects { get; }
         public List<GameCard> Augments { get; private set; } = new List<GameCard>();
@@ -275,7 +288,7 @@ namespace KompasCore.Cards
         #region distance/adjacency
         public int DistanceTo(int x, int y)
         {
-            if (Location != CardLocation.Field) return -1;
+            if (Location != CardLocation.Field) return int.MaxValue;
             Debug.Log($"Distance from {CardName} to {x}, {y} is" +
                 $" {(Mathf.Abs(x - BoardX) > Mathf.Abs(y - BoardY) ? Mathf.Abs(x - BoardX) : Mathf.Abs(y - BoardY))}");
             return Mathf.Abs(x - BoardX) > Mathf.Abs(y - BoardY) ? Mathf.Abs(x - BoardX) : Mathf.Abs(y - BoardY);
@@ -285,6 +298,7 @@ namespace KompasCore.Cards
              * is card.X - X > card.Y - Y? If so, return card.X -X, otherwise return card.Y - Y
             */
         }
+        public int DistanceTo((int x, int y) space) => DistanceTo(space.x, space.y);
         public int DistanceTo(GameCard card) => DistanceTo(card.BoardX, card.BoardY);
         public bool WithinSpaces(int numSpaces, GameCard card)
         {
@@ -294,9 +308,14 @@ namespace KompasCore.Cards
         public bool WithinSlots(int numSpaces, int x, int y) => DistanceTo(x, y) <= numSpaces;
         public bool IsAdjacentTo(GameCard card) => card != null && DistanceTo(card) == 1;
         public bool IsAdjacentTo(int x, int y) => DistanceTo(x, y) == 1;
-        public virtual bool CardInAOE(GameCard c) => false;
-        public virtual bool SpaceInAOE(int x, int y) => false;
-        public bool SameColumn(int x, int y) => BoardX + BoardY == x + y;
+        public bool CardInAOE(GameCard c) => SpaceInAOE(c.Position);
+        public bool SpaceInAOE((int x, int y) space) => SpaceInAOE(space.x, space.y);
+        public bool SpaceInAOE(int x, int y)
+        {
+            if (CardType != 'S' || SpellSubtype != TerraformSubtype) return false;
+            return DistanceTo(x, y) <= Arg;
+        }
+        public bool SameColumn(int x, int y) => BoardX - BoardY == x - y;
         public bool SameColumn(GameCard c) => c.Location == CardLocation.Field && SameColumn(c.BoardX, c.BoardY);
 
         /// <summary>
@@ -328,7 +347,10 @@ namespace KompasCore.Cards
         /// Resets any of the card's values that might be different from their originals.
         /// Should be called when cards move out the discard, or into the hand, deck, or annihilation
         /// </summary>
-        public virtual void ResetCard() { if (serializedCard != null) SetInfo(serializedCard, ID); }
+        public virtual void ResetCard() 
+        { 
+            if (serializedCard != null) SetInfo(serializedCard, ID); 
+        }
 
         /// <summary>
         /// Resets anything that needs to be reset for the start of the turn.
@@ -343,6 +365,11 @@ namespace KompasCore.Cards
             SpacesMoved = 0;
             AttacksThisTurn = 0;
             if(Location == CardLocation.Field) TurnsOnBoard++;
+        }
+
+        public void ResetForStack()
+        {
+            foreach (var e in Effects) e.TimesUsedThisStack = 0;
         }
 
         #region augments

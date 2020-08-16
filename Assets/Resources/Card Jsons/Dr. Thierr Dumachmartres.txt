@@ -1,12 +1,12 @@
 {
 	"cardType":67,
 	"cardName":"Dr. Thierr Dumachmartres",
-	"effText":"Unique: Can’t be played if you control a copy. Once each turn, you can discard 1 to draw 1.",
+	"effText":"Unique: Can’t be played if you control a copy.\nOnce each round, you can discard 1 to draw 1.",
 	"effects":[
 		{
 			"activationRestriction":{
 				"activationRestrictions":[
-					"Max Times Per Turn",
+					"Max Times Per Round",
 					"Default"
 				]
 			},
@@ -15,7 +15,7 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"card for Dumachmartres to discard\",
+						\"blurb\":\"Dr. Thierr Dumachmartres' evil scheme for today\",
 						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
 					}
 				}",

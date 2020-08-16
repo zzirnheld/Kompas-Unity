@@ -2,8 +2,6 @@
 {
     public class DrawXSubeffect : ServerSubeffect
     {
-        public int Player = -1;
-        public int WhoDraws { get { return Player == -1 ? ServerEffect.ServerController.index : Player; } }
         public int XMultiplier = 1;
         public int XDivisor = 1;
         public int modifier = 0;
@@ -11,7 +9,7 @@
 
         public override bool Resolve()
         {
-            var drawn = ServerGame.DrawX(WhoDraws, Count);
+            var drawn = ServerGame.DrawX(Player.index, Count);
             if (drawn.Count < Count) return ServerEffect.EffectImpossible();
             else return ServerEffect.ResolveNextSubeffect();
         }
