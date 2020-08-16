@@ -1,0 +1,52 @@
+{
+	"cardType":67,
+	"cardName":"Angel of the Downtrodden",
+	"effText":"When a Supplicant dies, draw a card or search your deck for a \"God of the Supplicants\".",
+	"effects":[
+		{
+			"activationRestriction":{
+				"activationRestrictions":[
+					"Max Times Per Turn",
+					"Card Exists",
+					"Default"
+				]
+			},
+			"subeffects":[
+				"{
+					\"subeffType\":\"Set X by Board Count\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Board\",\"Adjacent\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Supplicant\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Choose From List\",
+					\"maxCanChoose\":1,
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Supplicants' Plea\",
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Is Spell\",\"Cost<=X\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Plea\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where to play Supplicants' Plea\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Play\"
+				}"
+			]
+		}
+	],
+	"n":4,
+	"e":8,
+	"s":9,
+	"w":8,
+	"subtypeText":"Angel"
+}

@@ -19,6 +19,7 @@ namespace KompasCore.Effects
         //names
         public const string NameIs = "Name Is";
         public const string SameName = "Same Name as Target";
+        public const string SameNameAsSource = "Same Name as Source";
         public const string DistinctNameFromTargets = "Distinct Name from Other Targets";
         public const string DistinctNameFromSource = "Distinct Name from Source";
 
@@ -138,6 +139,7 @@ namespace KompasCore.Effects
                 //names
                 case NameIs:                  return potentialTarget.CardName == nameIs;
                 case SameName:                return Subeffect.Target.CardName == potentialTarget.CardName;
+                case SameNameAsSource:        return potentialTarget.CardName == Subeffect.Source.CardName;
                 case DistinctNameFromTargets: return Subeffect.Effect.Targets.All(card => card.CardName != potentialTarget.CardName);
                 case DistinctNameFromSource:  return Subeffect.Source.CardName != potentialTarget.CardName;
 

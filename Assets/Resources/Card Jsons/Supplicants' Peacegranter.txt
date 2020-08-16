@@ -1,0 +1,54 @@
+{
+	"cardType":67,
+	"cardName":"Supplicants' Peacegranter",
+	"effText":"When a Supplicant dies, draw a card or search your deck for a \"God of the Supplicants\".",
+	"effects":[
+		{
+			"triggerCondition":"Discard",
+			"trigger":
+			"{
+				\"blurb\":\"Grant peace\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"Triggerer Fits Retriction\",\"From Field\"],
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Supplicant\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Choose Effect Option\",
+					\"ChoiceBlurb\":\"Draw or search for a \\\"God of the Suppliants\\\"\",
+					\"OptionBlurbs\":[\"Draw\",\"God\"],
+					\"OptionJumpIndices\":[1,3]
+				}",
+				"{
+					\"subeffType\":\"Draw\"
+				}",
+				"{
+					\"subeffType\":\"End Effect Resolution\"
+				}",
+				"{
+					\"subeffType\":\"Choose From List\",
+					\"maxCanChoose\":1,
+					\"cardRestriction\":
+					{
+						\"blurb\":\"God of the Supplicants\",
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Name Is\"],
+						\"nameIs\":\"God of the Supplicants\"
+					}
+				}",
+				"{
+					\"subeffType\":\"Rehand\"
+				}"
+			]
+		}
+	],
+	"n":2,
+	"e":2,
+	"s":3,
+	"w":2,
+	"subtypeText":"Supplicant"
+}
