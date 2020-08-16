@@ -1,0 +1,84 @@
+{
+	"cardType":83,
+	"cardName":"Mad Blood",
+	"effText":"When a friendly Cultist dies, give friendly Cultists +1W.",
+	"effects":[
+		{
+			"triggerCondition":"Discard",
+			"trigger":
+			"{
+				\"blurb\":\"Bloodcurse\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"Triggerer Fits Retriction\",\"From Field\",\"Max Per Turn\"],
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Cultist\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Change NESW All\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Cultist\"]
+					},
+					\"wMod\":1
+				}",
+				"{
+					\"subeffType\":\"Choose From List\",
+					\"maxCanChoose\":1,
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Silent Cult Follower to bloodcurse (1/2)\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Is Character\"],
+						\"subtypesInclude\":[\"Cultist Follower\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where to play Mad Blood's new bloodcurse (1/2)\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Play\"
+				}",
+				"{
+					\"subeffType\":\"Choose From List\",
+					\"maxCanChoose\":1,
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Silent Cult Follower to bloodcurse (2/2)\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Is Character\"],
+						\"subtypesInclude\":[\"Cultist Follower\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where to play Mad Blood's new bloodcurse (2/2)\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Play\"
+				}",
+				"{
+					\"subeffType\":\"Target This\"
+				}"m
+				"{
+					\"subeffType\":\"Annihilate\"
+				}"
+			]	
+		}
+	],
+	"c":1,
+	"spellType":"Enchant",
+	"subtypeText":"Enchant"
+}

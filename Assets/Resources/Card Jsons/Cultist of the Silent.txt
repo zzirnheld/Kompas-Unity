@@ -1,0 +1,30 @@
+{
+	"cardType":67,
+	"cardName":"Cultist of the Silent",
+	"effText":"When I die, reshuffle me.",
+	"effects":[
+		{
+			"triggerCondition":"Discard",
+			"trigger":
+			"{
+				\"blurb\":\"Reshuffle\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\",\"From Field\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Reshuffle\"
+				}"
+			]
+		}
+	],
+	"n":1,
+	"e":1,
+	"s":1,
+	"w":1,
+	"subtypeText":"Cultist Follower"
+}

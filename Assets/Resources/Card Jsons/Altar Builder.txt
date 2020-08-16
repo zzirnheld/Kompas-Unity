@@ -1,0 +1,73 @@
+{
+	"cardType":67,
+	"cardName":"Altar Builder",
+	"effText":"When a friendly Cultist dies, I get +1S.\nI can pay 9S to deck-cast an Altar Terraform.",
+	"effects":[
+		{
+			"triggerCondition":"Discard",
+			"trigger":
+			"{
+				\"blurb\":\"Reshuffle\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"Triggerer Fits Retriction\",\"From Field\"],
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Subtypes Include\",\"Board\",\"Friendly\"],
+						\"subtypesInclude\":[\"Cultist\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"X Change NESW\",
+					\"sMod\":1
+				}"
+			]
+		},
+		{
+			"activationRestriction":{
+				"activationRestrictions":[
+					"Default"
+				]
+			},
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}"
+				"{
+					\"subeffType\":\"Pay Stats\",
+					\"sMod\":9
+				}",
+				"{
+					\"subeffType\":\"Choose From List\",
+					\"maxCanChoose\":1,
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Altar for Altar Builder to play\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Is Spell\"],
+						\"subtypesInclude\":[\"Altar\",\"Terraform\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where for Altar Builder to cast its target Altar\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Play\"
+				}"
+			]
+		}
+	],
+	"n":1,
+	"e":2,
+	"s":4,
+	"w":1,
+	"subtypeText":"Cultist Craftsman"
+}

@@ -1,0 +1,47 @@
+{
+	"cardType":67,
+	"cardName":"Silent Recruiter",
+	"effText":"Once each turn, if I'm adjacent to an enemy, you can deck-summon a Cultist Follower",
+	"effects":[
+		{
+			"activationRestriction":{
+				"activationRestrictions":[
+					"Max Per Turn",
+					"Card Exists",
+					"Default"
+				],
+				"existsRestriction":{
+					\"cardRestrictions\":[\"Enemy\",\"Adjacent\",\"Board\"]
+				}
+			},
+			"subeffects":[
+				"{
+					\"subeffType\":\"Choose From List\",
+					\"maxCanChoose\":1,
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Silent Cult Follower to recruit\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Is Character\"],
+						\"subtypesInclude\":[\"Cultist Follower\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where to play Silent Recruiter's new recruit\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Play\"
+				}"
+			]
+		}
+	],
+	"n":4,
+	"e":3,
+	"s":5,
+	"w":1,
+	"subtypeText":"Cultist"
+}

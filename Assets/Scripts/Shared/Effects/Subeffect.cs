@@ -27,6 +27,7 @@ namespace KompasCore.Effects
         public const string TargetDefender = "Target Defender";
         public const string TargetTriggeringCard = "Target Triggering Card";
         public const string TargetTriggeringCoords = "Target Triggering Space";
+        public const string TargetTargetsSpace = "Target Target's Space";
 
         //changing values, esp. on cards
         //TODO deprecate change nesw
@@ -49,6 +50,8 @@ namespace KompasCore.Effects
         public const string PayPipsByTargetCost = "Pay Target's Cost in Pips";
         public const string Resummon = "Resummon";
         public const string ResummonAll = "Resummon All";
+
+        public const string PayStats = "Pay Stats";
 
         //effect x
         public const string SetXByBoardCount = "Set X by Board Count";

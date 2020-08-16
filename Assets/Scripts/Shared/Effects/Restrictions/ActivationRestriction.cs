@@ -21,6 +21,7 @@ namespace KompasCore.Effects
         //public const string StackEmpty = "Stack Empty";
         public const string ControllerActivates = "Controller Activates";
         public const string NotNegated = "Not Negated";
+        public const string CardExists = "Card Exists";
 
         public const string Default = "Default";
         public static readonly string[] DefaultRestrictions =
@@ -30,6 +31,7 @@ namespace KompasCore.Effects
 
         public int maxTimes = 1;
         public int location = (int) CardLocation.Field;
+        public CardRestriction existsRestriction = new CardRestriction();
 
         public List<string> activationRestrictions = new List<string>{ "Default" };
 
@@ -55,9 +57,8 @@ namespace KompasCore.Effects
                 //case StackEmpty: return Effect.Game.CurrStackEntry == null; //TODO make client game actually track current stack entry
                 case ControllerActivates: return activator == Card.Controller;
                 case NotNegated: return !Effect.Negated;
-                default:
-                    Debug.LogError($"You forgot to check for {r} in Activation Restriction switch");
-                    return false;
+                case CardExists: return Effect.Game.Cards.Any(c => existsRestriction.Evaluate(c));
+                default: throw new System.ArgumentException($"Invalid activation restriction {r}");
             }
         }
 

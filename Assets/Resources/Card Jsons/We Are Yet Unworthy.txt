@@ -1,0 +1,59 @@
+{
+	"cardType":83,
+	"cardName":"We Are Yet Unworthy",
+	"effText":"Kill a friendly Cultist. Hand-reshuffle a card. Draw 2. Gain 3 Pips. Annihilate me.",
+	"effects":[
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"unworthy Cultist\",
+						\"cardRestrictions\":[\"Board\",\"Is Character\",\"Summoned\",\"Friendly\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Cultist\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Hand Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"unworthy card in hand\",
+						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Reshuffle\"
+				}",
+				"{
+					\"subeffType\":\"Draw X\",
+					\"XMultiplier\":0,
+					\"modifier\":2
+				}",
+				"{
+					\"subeffType\":\"Add Pips\",
+					\"modifier\":3
+				}",
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Annihilate\"
+				}"
+			]
+		}
+	],
+	"c":1,
+	"spellType":"Simple",
+	"subtypeText":"Simple"
+}

@@ -1,0 +1,43 @@
+{
+	"cardType":83,
+	"cardName":"Deafening Silence",
+	"effText":"Set X to the number of your dead Cultists. Give a character -XW.",
+	"effects":[
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Set X by Gamestate Value\",
+					\"whatToCount\":\"Cards Fitting Restriction\",
+					\"throughRestriction\":
+					{
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Discard\",\"Friendly\"],
+						\"subtypesInclude\":[\"Cultist\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"character to deafen with silence\",
+						\"cardRestrictions\":[\"Is Character\",\"Board\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"X Change NESW\",
+					\"wMult\":-1
+				}"
+			]
+		}
+	],
+	"c":1,
+	"fast":true,
+	"spellType":"Simple",
+	"subtypeText":"Simple"
+}

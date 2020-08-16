@@ -1,0 +1,36 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace KompasServer.Effects
+{
+    public class PayStatsSubeffect : ServerSubeffect
+    {
+        public int nMult = 0;
+        public int eMult = 0;
+        public int sMult = 0;
+        public int wMult = 0;
+
+        public int nMod = 0;
+        public int eMod = 0;
+        public int sMod = 0;
+        public int wMod = 0;
+
+        public int N => nMult * Effect.X + nMod;
+        public int E => eMult * Effect.X + eMod;
+        public int S => sMult * Effect.X + sMod;
+        public int W => wMult * Effect.X + wMod;
+
+        public override bool Resolve()
+        {
+            if (Target.N < N ||
+                Target.E < E ||
+                Target.S < S ||
+                Target.W < W)
+                return ServerEffect.EffectImpossible();
+
+            Target.AddToCharStats(-1 * N, -1 * E, -1 * S, -1 * W, Effect);
+            return ServerEffect.ResolveNextSubeffect();
+        }
+    }
+}
