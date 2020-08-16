@@ -1,0 +1,45 @@
+{
+	"cardType":67,
+	"cardName":"God of Mercy",
+	"effText":"When I arrive adjacent to a Supplicant, negate adjacent characters.",
+	"effects":[
+		{
+			"triggerCondition":"Arrive",
+			"trigger":
+			"{
+				\"blurb\":\"Mercy\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"Adjacent to Restriction\"],
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Supplicant\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target All\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Supplicant to give safe haven\",
+						\"cardRestrictions\":[\"Board\",\"Is Character\",\"Adjacent\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Negate\"
+				}",
+				"{
+					\"subeffType\":\"Loop While Have Targets\",
+					\"delete\":true,
+					\"jumpTo\":1
+				}"
+			]
+		}
+	],
+	"n":4,
+	"e":10,
+	"s":10,
+	"w":10,
+	"subtypeText":"God"
+}

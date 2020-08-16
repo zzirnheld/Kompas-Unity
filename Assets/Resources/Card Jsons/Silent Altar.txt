@@ -92,7 +92,7 @@
 		}
 	],
 	"c":5,
-	"spellType":"Terraform",
-	"subtypeText":"Altar Terraform",
+	"spellType":"Radial",
+	"subtypeText":"Altar Radial",
 	"arg":1
 }

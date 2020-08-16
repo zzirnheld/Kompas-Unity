@@ -1,0 +1,33 @@
+{
+	"cardType":83,
+	"cardName":"Deliver Us",
+	"effText":"Set X to the number of friendly Supplicants. Draw X.",
+	"effects":[
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Set X by Gamestate Value\",
+					\"whatToCount\":\"Cards Fitting Restriction\",
+					\"throughRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Supplicant\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Draw X\"
+				}"
+			]
+		}
+	],
+	"c":3,
+	"spellType":"Simple",
+	"subtypeText":"Simple Plea"
+}

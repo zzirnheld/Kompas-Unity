@@ -130,7 +130,7 @@ namespace KompasCore.Cards
                 if (CardType != 'S') return "";
                 switch (SpellSubtype)
                 {
-                    case TerraformSubtype: return $" Radius {Arg}";
+                    case RadialSubtype: return $" Radius {Arg}";
                     case DelayedSubtype: return $" {Arg} turns";
                     default: return "";
                 }
@@ -312,7 +312,7 @@ namespace KompasCore.Cards
         public bool SpaceInAOE((int x, int y) space) => SpaceInAOE(space.x, space.y);
         public bool SpaceInAOE(int x, int y)
         {
-            if (CardType != 'S' || SpellSubtype != TerraformSubtype) return false;
+            if (CardType != 'S' || SpellSubtype != RadialSubtype) return false;
             return DistanceTo(x, y) <= Arg;
         }
         public bool SameColumn(int x, int y) => BoardX - BoardY == x - y;

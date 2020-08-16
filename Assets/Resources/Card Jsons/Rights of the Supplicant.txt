@@ -1,0 +1,34 @@
+{
+	"cardType":83,
+	"cardName":"Rights of the Supplicant",
+	"effText":"When a Supplicant defends, give their attacker -1EW.",
+	"effects":[
+		{
+			"triggerCondition":"Defend",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Supplicant\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target Attacker\"
+				}",
+				"{
+					\"subeffType\":\"X Change NESW\",
+					\"eMod\":-1,
+					\"wMod\":-1
+				}"
+			]	
+		}
+	],
+	"c":2,
+	"spellType":"Enchant",
+	"subtypeText":"Enchant"
+}

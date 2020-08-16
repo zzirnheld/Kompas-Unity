@@ -1,0 +1,48 @@
+{
+	"cardType":83,
+	"cardName":"Find Me Find Peace",
+	"effText":"Rehand all Supplicants from your deck’s top 4 cards. Bottomdeck the rest.",
+	"effects":[
+		{
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"blurb\":\"Find Me, Find Peace\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target All\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<=C\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Add Rest\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<=C\",\"Not Already Target\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Rehand\"
+				}",
+				"{
+					\"subeffType\":\"Loop While Have Targets\",
+					\"delete\":true,
+					\"jumpTo\":2
+				}",
+				"{
+					\"subeffType\":\"Bottomdeck Rest\"
+				}"
+			]
+		}
+	],
+	"c":2,
+	"spellType":"Simple",
+	"subtypeText":"Simple"
+}

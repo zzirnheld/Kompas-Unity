@@ -1,0 +1,72 @@
+{
+	"cardType":65,
+	"cardName":"Touch of the Divine",
+	"effText":"While equipped, negate this character and give them +2NESW. When this character dies, if they’re a Supplicant, rehand me.",
+	"effects":[
+		{
+			"triggerCondition":"Augment Attached",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target Augmented Card\"
+				}",
+				"{
+					\"subeffType\":\"Temporary Negate\",
+					\"endCondition\":\"Augment Detached\",
+					\"triggerRestriction\":{
+						\"triggerRestrictions\":[\"This Card Triggered\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Temporary NESW Buff\",
+					\"nBuff\":2,
+					\"eBuff\":2,
+					\"sBuff\":2,
+					\"wBuff\":2,
+					\"endCondition\":\"Augment Detached\",
+					\"triggerRestriction\":{
+						\"triggerRestrictions\":[\"This Card Triggered\"]
+					}
+				}"
+			]
+		},
+		{
+			"triggerCondition":"Discard",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"Augmented Card Triggered\",\"Triggerer Fits Restriction\"],
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Supplicant\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Rehand\"
+				}"
+			]
+		}
+	],
+	"PlayRestriction":{
+		"NormalRestrictions":[
+			"Played By Card Owner",
+			"From Hand",
+			"Friendly Turn",
+			"Has Cost in Pips",
+			"On Friendly Card"
+		]
+	},
+	"a":3,
+	"subtypeText":""
+}

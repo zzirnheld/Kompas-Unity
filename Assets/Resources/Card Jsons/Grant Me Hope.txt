@@ -1,0 +1,41 @@
+{
+	"cardType":83,
+	"cardName":"Wait Hold Up",
+	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nDiscard 1. Draw 1. Move an enemy character up to 3 spaces. Annihilate me.",
+	"effects":[
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"blurb\":\"Grant Hope\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Change NESW All\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Supplicant\"]
+					},
+					\"eMod\":3
+				}",
+				"{
+					\"subeffType\":\"Change NESW All\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Negated\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Supplicant\"]
+					},
+					\"wMod\":3
+				}"
+			]
+		}
+	],
+	"c":2,
+	"fast":true,
+	"spellType":"Simple",
+	"subtypeText":"Simple Plea"
+}

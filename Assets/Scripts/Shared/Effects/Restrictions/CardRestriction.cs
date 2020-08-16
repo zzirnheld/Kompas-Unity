@@ -80,6 +80,8 @@ namespace KompasCore.Effects
         public const string SLTEC = "S<=C";
         public const string WLTEC = "W<=C";
 
+        public const string Negated = "Negated";
+
         //positioning
         public const string Adjacent = "Adjacent";
         public const string WithinCSpacesOfSource = "Within C Spaces";
@@ -198,6 +200,8 @@ namespace KompasCore.Effects
                 case ELTEC:    return potentialTarget.E <= constant;
                 case SLTEC:    return potentialTarget.S <= constant;
                 case WLTEC:    return potentialTarget.W <= constant;
+
+                case Negated:  return potentialTarget.Negated;
 
                 //positioning
                 case Adjacent:           return potentialTarget.IsAdjacentTo(Subeffect.Source);

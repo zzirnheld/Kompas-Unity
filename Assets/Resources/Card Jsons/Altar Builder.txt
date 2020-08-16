@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Altar Builder",
-	"effText":"When a friendly Cultist dies, I get +1S.\nI can pay 9S to deck-cast an Altar Terraform.",
+	"effText":"When a friendly Cultist dies, I get +1S.\nI can pay 9S to deck-cast an Altar Radial.",
 	"effects":[
 		{
 			"triggerCondition":"Discard",
@@ -48,7 +48,7 @@
 					{
 						\"blurb\":\"Altar for Altar Builder to play\",
 						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Is Spell\"],
-						\"subtypesInclude\":[\"Altar\",\"Terraform\"]
+						\"subtypesInclude\":[\"Altar\",\"Radial\"]
 					}
 				}",
 				"{

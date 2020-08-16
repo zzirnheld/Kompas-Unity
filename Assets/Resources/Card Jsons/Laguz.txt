@@ -33,8 +33,8 @@
 		"NormalRestrictions":["Cannot be Played Normally"]
 	},
 	"c":2,
-	"spellType":"Terraform",
-	"subtypes":["Rune","Terraform"],
-	"subtypeText":"Rune Terraform",
+	"spellType":"Radial",
+	"subtypes":["Rune","Radial"],
+	"subtypeText":"Rune Radial",
 	"arg":1
 }

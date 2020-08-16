@@ -1,0 +1,29 @@
+{
+	"cardType":83,
+	"cardName":"Forgive the Past",
+	"effText":"When you summon a Supplicant, draw 1.",
+	"effects":[
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\",\"Triggerer Fits Restriction\"],
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Supplicant\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Draw\"
+				}"
+			]	
+		}
+	],
+	"c":3,
+	"spellType":"Enchant",
+	"subtypeText":"Enchant Plea"
+}

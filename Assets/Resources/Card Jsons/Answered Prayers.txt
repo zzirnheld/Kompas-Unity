@@ -1,0 +1,54 @@
+{
+	"cardType":83,
+	"cardName":"Answered Prayers",
+	"effText":"When you summon a Supplicant, gain 1 pip.",
+	"effects":[
+		{
+			"triggerCondition":"Turn Start",
+			"trigger":
+			"{
+				\"blurb\":\"Grant Refuge\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Choose From List\",
+					\"maxCanChoose\":1,
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Supplicant to answer prayers\",
+						\"cardRestrictions\":[\"Friendly\",\"Discard\",\"Is Character\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Supplicant\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Rehand\"
+				}"
+			]	
+		},
+		{
+			"activationRestriction":{
+				"activationRestrictions":[
+					"Default"
+				]
+			},
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Annihilate\"
+				}",
+				"{
+					\"subeffType\":\"Add Pips\",
+					\"modifier\":3
+				}"
+			]
+		}
+	],
+	"c":3,
+	"spellType":"Enchant",
+	"subtypeText":"Enchant Plea"
+}

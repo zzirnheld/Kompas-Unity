@@ -6,7 +6,7 @@ namespace KompasCore.Cards
     {
         public const string SimpleSubtype = "Simple";
         public const string DelayedSubtype = "Delayed";
-        public const string TerraformSubtype = "Terraform";
+        public const string RadialSubtype = "Radial";
         public const string VanishingSubtype = "Vanishing";
 
         public char CardType { get; private set; }

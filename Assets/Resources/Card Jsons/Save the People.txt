@@ -1,6 +1,6 @@
 {
 	"cardType":83,
-	"cardName":"Cyclical Sacrifice",
+	"cardName":"Save the People",
 	"effText":"Reshuffle X of your dead Cultists. Gain X pips. Annihilate me.",
 	"effects":[
 		{
@@ -22,7 +22,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Reshuffle\"
+					\"subeffType\":\"Rehand\"
 				}",
 				"{
 					\"subeffType\":\"Count X Loop\",
@@ -42,7 +42,7 @@
 			]
 		}
 	],
-	"c":2,
+	"c":4,
 	"spellType":"Simple",
-	"subtypeText":"Simple"
+	"subtypeText":"Simple Plea"
 }

@@ -97,7 +97,7 @@
 		}
 	],
 	"c":5,
-	"spellType":"Terraform",
-	"subtypeText":"Crazy Idea Terraform",
+	"spellType":"Radial",
+	"subtypeText":"Crazy Idea Radial",
 	"arg":1
 }

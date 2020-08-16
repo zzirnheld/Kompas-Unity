@@ -88,7 +88,7 @@
 		}
 	],
 	"c":5,
-	"spellType":"Terraform",
-	"subtypeText":"Lemon-Flavored Crazy Idea Terraform",
+	"spellType":"Radial",
+	"subtypeText":"Lemon-Flavored Crazy Idea Radial",
 	"arg":1
 }

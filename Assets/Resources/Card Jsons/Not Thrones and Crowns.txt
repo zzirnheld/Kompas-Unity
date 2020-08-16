@@ -1,0 +1,39 @@
+{
+	"cardType":83,
+	"cardName":"Not Thrones and Crowns",
+	"effText":"Set X to the number of friendly Supplicants. Give all Summoned non-Supplicants -XE.",
+	"effects":[
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Set X by Gamestate Value\",
+					\"whatToCount\":\"Cards Fitting Restriction\",
+					\"throughRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Supplicant\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Change NESW All\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Summoned\",\"Subtypes Exclude\"],
+						\"subtypesExclude\":[\"Supplicant\"]
+					},
+					\"eMult\":-1
+				}"
+			]
+		}
+	],
+	"c":5,
+	"spellType":"Simple",
+	"subtypeText":"Simple Plea"
+}
