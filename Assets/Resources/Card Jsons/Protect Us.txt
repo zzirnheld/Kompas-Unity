@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Protect Us",
-	"effText":"Set X to the number of friendly Supplicants. Draw X.",
+	"effText":"Set X to the number of friendly Supplicants. Give all friendly Supplicants +XE.",
 	"effects":[
 		{
 			"triggerCondition":"Play",
