@@ -130,7 +130,7 @@ namespace KompasCore.Cards
                 if (CardType != 'S') return "";
                 switch (SpellSubtype)
                 {
-                    case RadialSubtype: return $" Radius {Arg}";
+                    case RadialSubtype: return $" {Arg}";
                     case DelayedSubtype: return $" {Arg} turns";
                     default: return "";
                 }
