@@ -9,7 +9,7 @@
 			"{
 				\"blurb\":\"Reshuffle\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Triggerer Fits Retriction\",\"From Field\"],
+					\"triggerRestrictions\":[\"Triggerer Fits Restriction\",\"From Field\"],
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Board\",\"Friendly\"],
@@ -36,7 +36,7 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Target This\"
-				}"
+				}",
 				"{
 					\"subeffType\":\"Pay Stats\",
 					\"sMod\":9

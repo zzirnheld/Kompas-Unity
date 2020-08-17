@@ -47,7 +47,7 @@ namespace KompasCore.Effects
 
         private bool RestrictionValid(string r, Player activator)
         {
-            Debug.Log($"Considering activation restriction {r} for {Effect.Source.CardName}");
+            //Debug.Log($"Considering activation restriction {r} for {Effect.Source.CardName}");
 
             switch (r)
             {

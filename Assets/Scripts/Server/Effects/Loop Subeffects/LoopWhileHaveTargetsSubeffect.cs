@@ -11,7 +11,7 @@ namespace KompasServer.Effects
             get
             {
                 if (delete && ServerEffect.Targets.Any())
-                    ServerEffect.Targets.Remove(ServerEffect.Targets.Last());
+                    ServerEffect.Targets.Remove(Target);
                 return ServerEffect.Targets.Any();
             }
         }

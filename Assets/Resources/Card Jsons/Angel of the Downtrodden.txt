@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Angel of the Downtrodden",
-	"effText":"When a Supplicant dies, draw a card or search your deck for a \"God of the Supplicants\".",
+	"effText":"Once each turn, you can set X to the number of adjacent Supplicants, then deck-cast a CX Plea.",
 	"effects":[
 		{
 			"activationRestriction":{

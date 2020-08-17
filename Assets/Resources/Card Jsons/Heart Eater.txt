@@ -9,7 +9,7 @@
 			"{
 				\"blurb\":\"Eat Heart\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Triggerer Fits Retriction\",\"From Field\"],
+					\"triggerRestrictions\":[\"Triggerer Fits Restriction\",\"From Field\"],
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\"]

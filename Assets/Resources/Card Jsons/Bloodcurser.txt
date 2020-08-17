@@ -9,7 +9,7 @@
 			"{
 				\"blurb\":\"Bloodcurse\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Triggerer Fits Retriction\",\"From Field\",\"Max Per Round\"],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"From Field\",\"Max Per Round\"],
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Subtypes Include\"],

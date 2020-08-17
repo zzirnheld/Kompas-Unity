@@ -144,7 +144,7 @@ namespace KompasCore.Effects
         /// <returns><see langword="true"/> if the card fits the restriction for the given value of x, <see langword="false"/> otherwise.</returns>
         private bool RestrictionValid(string restriction, GameCard potentialTarget, int x)
         {
-            Debug.Log($"Considering restriction {restriction} for card {potentialTarget} when X equals {x}");
+            //Debug.Log($"Considering restriction {restriction} for card {potentialTarget} when X equals {x}");
             switch (restriction)
             {
                 //targets

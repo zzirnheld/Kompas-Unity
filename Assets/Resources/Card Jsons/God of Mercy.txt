@@ -9,11 +9,16 @@
 			"{
 				\"blurb\":\"Mercy\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Adjacent to Restriction\"],
-					\"cardRestriction\":
+					\"triggerRestrictions\":[\"This Card in Play\",\"Coords Fit Restriction\"],
+					\"spaceRestriction\":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Supplicant\"]
+						\"blurb\":\"where to summon the other Fleeing Lover\",
+						\"spaceRestrictions\":[\"Adjacent to a Card that Fits Restriction\"],
+						\"adjacencyRestriction\":
+						{
+							\"cardRestrictions\":[\"Subtypes Include\"],
+							\"subtypesInclude\":[\"Supplicant\"]
+						}
 					}
 				}
 			}",

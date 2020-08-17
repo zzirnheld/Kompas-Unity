@@ -76,7 +76,7 @@ public class CardRepository : MonoBehaviour
             json = json.Replace("\r", "");
             json = json.Replace("\t", "");
             //add the cleaned json to the dictionary
-            Debug.Log($"Adding json for \"{nameClean}\" of length {nameClean.Length} to dictionary");
+            Debug.Log($"Adding json for \"{nameClean}\" of length {nameClean.Length} to dictionary. Json:\n{json}");
             cardJsons.Add(nameClean, json);
         }
     }
@@ -311,5 +311,12 @@ public class CardRepository : MonoBehaviour
             return null;
         }
     }
+
+    public static IEnumerable<SerializableCard> GetSerializableCards(IEnumerable<string> jsons)
+    {
+        return jsons.Select(json => JsonUtility.FromJson<SerializableCard>(json));
+    }
+
+    public static IEnumerable<SerializableCard> SerializableCards => GetSerializableCards(CardJsons);
     #endregion Create Cards
 }
