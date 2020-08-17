@@ -7,9 +7,9 @@
 			"triggerCondition":"Discard",
 			"trigger":
 			"{
-				\"blurb\":\"Bloodcurse\",
+				\"blurb\":\"Unwavering Devotion\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Triggerer Fits Restriction\",\"From Field\"],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"From Field\"],
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Subtypes Include\"],

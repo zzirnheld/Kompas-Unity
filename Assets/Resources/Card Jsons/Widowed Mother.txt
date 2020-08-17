@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Widowed Mother",
-	"effText":"When turns start, give me -1E.",
+	"effText":"When turns start, give adjacent characters -1W.",
 	"effects":[
 		{
 			"triggerCondition":"Turn Start",
