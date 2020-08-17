@@ -21,8 +21,8 @@ namespace KompasClient.Effects
         public override Trigger Trigger => ClientTrigger;
 
 
-        public ClientEffect(SerializableEffect se, GameCard thisCard, ClientGame clientGame, int effectIndex)
-            : base(se.activationRestriction ?? new ActivationRestriction(), thisCard, se.blurb, effectIndex)
+        public ClientEffect(SerializableEffect se, GameCard thisCard, ClientGame clientGame, int effectIndex, ClientPlayer owner)
+            : base(se.activationRestriction ?? new ActivationRestriction(), thisCard, se.blurb, effectIndex, owner)
         {
             this.ClientGame = clientGame;
             DummySubeffects = new DummySubeffect[se.subeffects.Length];

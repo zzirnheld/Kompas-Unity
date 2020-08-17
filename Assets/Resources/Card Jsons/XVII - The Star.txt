@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"XVII - The Star",
-	"effText":"Twice each round, if there's a friendly Tarocco, you can draw 1.",
+	"effText":"Twice each round, if there's another friendly Tarocco, you can draw 1.",
 	"effects":[
 		{
 			"activationRestriction":{
@@ -12,7 +12,7 @@
 				],
 				"maxTimes":2,
 				"existsRestriction":{
-					"cardRestrictions":["Friendly","Board","Subtypes Include"],
+					"cardRestrictions":["Friendly","Board","Subtypes Include","Distinct from Source"],
 					"subtypesInclude":["Tarocco"]
 				}
 			},

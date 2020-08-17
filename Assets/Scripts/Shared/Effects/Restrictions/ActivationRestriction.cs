@@ -3,6 +3,7 @@ using KompasCore.Cards;
 using KompasServer.GameCore;
 using System.Linq;
 using UnityEngine;
+using KompasClient.Effects;
 
 namespace KompasCore.Effects
 {
@@ -38,6 +39,7 @@ namespace KompasCore.Effects
         public void Initialize(Effect eff)
         {
             Effect = eff;
+            existsRestriction.Initialize(eff.Source, eff.Controller, eff);
             if (activationRestrictions.Contains("Default")) activationRestrictions.AddRange(DefaultRestrictions);
             Debug.Log($"Initializing activation restriction for {Card.CardName} with restrictions: {string.Join(", ", activationRestrictions)}");
             //Debug.Log($"Serialized version: {JsonUtility.ToJson(this)}");
@@ -45,6 +47,8 @@ namespace KompasCore.Effects
 
         private bool RestrictionValid(string r, Player activator)
         {
+            Debug.Log($"Considering activation restriction {r} for {Effect.Source.CardName}");
+
             switch (r)
             {
                 case Default: return true;
