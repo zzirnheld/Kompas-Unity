@@ -1,5 +1,6 @@
 ﻿using KompasCore.GameCore;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace KompasCore.Cards
 {
@@ -23,6 +24,7 @@ namespace KompasCore.Cards
         //actual interaction
         public void OnMouseDrag()
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
             //don't allow dragging cards if we're awaiting a target
             if (Game.targetMode != Game.TargetMode.Free) return;
 
@@ -32,6 +34,7 @@ namespace KompasCore.Cards
 
         public void OnMouseExit()
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
             //don't allow dragging cards if we're awaiting a target
             if (Game.targetMode != Game.TargetMode.Free) return;
 
@@ -47,6 +50,7 @@ namespace KompasCore.Cards
 
         public virtual void OnMouseUp()
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
             Debug.Log($"On mouse up on {Card.CardName} in target mode {Game.targetMode}");
 
             //select cards if the player releases the mouse button while over one
@@ -58,6 +62,7 @@ namespace KompasCore.Cards
 
         public void OnMouseEnter()
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
             Game.uiCtrl.HoverOver(Card);
         }
         #endregion MouseStuff

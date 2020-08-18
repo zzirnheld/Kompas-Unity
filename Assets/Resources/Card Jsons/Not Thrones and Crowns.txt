@@ -33,7 +33,11 @@
 			]
 		}
 	],
-	"c":5,
+	"c":6,
+	"PlayRestriction":{
+		"normalRestrictions":["Default Normal Restrictions","Unique"],
+		"effectRestrictions":["Default Effect Restrictions","Unique"]
+	},
 	"spellType":"Simple",
 	"subtypeText":"Simple Plea"
 }

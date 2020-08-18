@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Protect Us",
-	"effText":"Set X to the number of friendly Supplicants. Give all friendly Supplicants +XE.",
+	"effText":"Set X to the number of friendly Supplicants. Give all friendly Supplicants +XE. Give all friendly negated Supplicants +XW.",
 	"effects":[
 		{
 			"triggerCondition":"Play",
@@ -29,11 +29,24 @@
 						\"subtypesInclude\":[\"Supplicant\"]
 					},
 					\"eMult\":1
+				}",
+				"{
+					\"subeffType\":\"Change NESW All\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Negated\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Supplicant\"]
+					},
+					\"wMult\":3
 				}"
 			]
 		}
 	],
 	"c":3,
+	"PlayRestriction":{
+		"normalRestrictions":["Default Normal Restrictions","Unique"],
+		"effectRestrictions":["Default Effect Restrictions","Unique"]
+	},
 	"spellType":"Simple",
 	"subtypeText":"Simple Plea"
 }

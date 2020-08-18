@@ -35,7 +35,7 @@
 				}",
 				"{
 					\"subeffType\":\"Jump on Effect Impossible\",
-					\"jumpTo\":4
+					\"jumpTo\":6
 				}",
 				"{
 					\"subeffType\":\"Pay Pips\",

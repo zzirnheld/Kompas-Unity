@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Supplicants' Peacegranter",
-	"effText":"When a Supplicant dies, draw a card or search your deck for a \"God of the Supplicants\".",
+	"effText":"The first time each turn a Supplicant dies, draw a card or search your deck for a \"God of the Supplicants\".",
 	"effects":[
 		{
 			"triggerCondition":"Discard",
@@ -9,7 +9,7 @@
 			"{
 				\"blurb\":\"Grant peace\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"From Field\"],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"From Field\",\"Max Per Turn\"],
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Subtypes Include\"],
@@ -46,9 +46,9 @@
 			]
 		}
 	],
-	"n":2,
-	"e":2,
-	"s":3,
-	"w":2,
+	"n":1,
+	"e":5,
+	"s":4,
+	"w":3,
 	"subtypeText":"Supplicant"
 }

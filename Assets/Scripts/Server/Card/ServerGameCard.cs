@@ -172,7 +172,12 @@ namespace KompasServer.Cards
 
         public override void SetNegated(bool negated, IStackable stackSrc = null)
         {
-            if (Negated != negated) ServerNotifier.NotifySetNegated(this, negated);
+            if (Negated != negated)
+            {
+                ServerNotifier.NotifySetNegated(this, negated);
+                var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller);
+                if (negated) EffectsController.TriggerForCondition(Trigger.Negate, context);
+            }
             base.SetNegated(negated, stackSrc);
         }
 

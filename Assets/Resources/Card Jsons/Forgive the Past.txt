@@ -24,6 +24,10 @@
 		}
 	],
 	"c":3,
+	"PlayRestriction":{
+		"normalRestrictions":["Default Normal Restrictions","Unique"],
+		"effectRestrictions":["Default Effect Restrictions","Unique"]
+	},
 	"spellType":"Enchant",
 	"subtypeText":"Enchant Plea"
 }

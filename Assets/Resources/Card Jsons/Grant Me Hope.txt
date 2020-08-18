@@ -1,10 +1,10 @@
 {
 	"cardType":83,
-	"cardName":"Wait Hold Up",
-	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nDiscard 1. Draw 1. Move an enemy character up to 3 spaces. Annihilate me.",
+	"cardName":"Grant Me Hope",
+	"effText":"Unique. (Can't be played if you control a copy)\nWhen a character is negated, give them +1ESW. If they're a Supplicant, also give them +2NESW.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
+			"triggerCondition":"Negate",
 			"trigger":
 			"{
 				\"blurb\":\"Grant Hope\",
@@ -14,28 +14,38 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Change NESW All\",
-					\"cardRestriction\":
-					{
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Supplicant\"]
-					},
-					\"eMod\":3
+					\"subeffType\":\"Target Triggering Card\"
 				}",
 				"{
-					\"subeffType\":\"Change NESW All\",
+					\"subeffType\":\"X Change NESW\",
+					\"eMod\":1,
+					\"sMod\":1,
+					\"wMod\":1
+				}",
+				"{
+					\"subeffType\":\"Conditionally End Effect Resolution\",
+					\"condition\":\"Target Violates Restriction\",
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Negated\",\"Subtypes Include\"],
+						\"cardRestrictions\":[\"Subtypes Include\"],
 						\"subtypesInclude\":[\"Supplicant\"]
-					},
-					\"wMod\":3
+					}
+				}",
+				"{
+					\"subeffType\":\"X Change NESW\",
+					\"nMod\":2,
+					\"eMod\":2,
+					\"sMod\":2,
+					\"wMod\":2
 				}"
 			]
 		}
 	],
 	"c":2,
-	"fast":true,
-	"spellType":"Simple",
-	"subtypeText":"Simple Plea"
+	"PlayRestriction":{
+		"normalRestrictions":["Default Normal Restrictions","Unique"],
+		"effectRestrictions":["Default Effect Restrictions","Unique"]
+	},
+	"spellType":"Enchant",
+	"subtypeText":"Enchant Plea"
 }

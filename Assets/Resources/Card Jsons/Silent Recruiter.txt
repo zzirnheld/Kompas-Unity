@@ -41,7 +41,7 @@
 	],
 	"n":3,
 	"e":1,
-	"s":6,
+	"s":4,
 	"w":1,
 	"subtypeText":"Cultist"
 }

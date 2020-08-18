@@ -18,6 +18,7 @@ namespace KompasCore.Effects
         public const string HasCostInPips = "Has Cost in Pips";
         public const string NothingIsResolving = "Nothing is Resolving";
 
+        public const string Unique = "Unique";
         public const string NotNormally = "Cannot be Played Normally";
         public const string MustNormally = "Must be Played Normally";
         public const string OnFriendlyCard = "On Friendly Card";
@@ -69,6 +70,8 @@ namespace KompasCore.Effects
                 case OnFriendlyCard: return Card.Game.boardCtrl.GetCardAt(x, y)?.Controller == Card.Controller;
                 case NotNormally: return !normal;
                 case MustNormally: return normal;
+                case Unique: 
+                    return !Card.Game.Cards.Any(c => c.Location == CardLocation.Field && c.Controller == Card.Controller && c.CardName == Card.CardName);
 
                 default:
                     Debug.LogError($"You forgot to check for condition {r} in RestrictionInvalid for PlayRestriction");

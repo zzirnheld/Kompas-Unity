@@ -9,10 +9,9 @@
 			"{
 				\"blurb\":\"Mercy\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Coords Fit Restriction\"],
+					\"triggerRestrictions\":[\"This Card Triggered\",\"Coords Fit Restriction\"],
 					\"spaceRestriction\":
 					{
-						\"blurb\":\"where to summon the other Fleeing Lover\",
 						\"spaceRestrictions\":[\"Adjacent to a Card that Fits Restriction\"],
 						\"adjacencyRestriction\":
 						{
@@ -46,9 +45,9 @@
 			]
 		}
 	],
-	"n":4,
-	"e":10,
-	"s":10,
-	"w":10,
+	"n":5,
+	"e":15,
+	"s":12,
+	"w":0,
 	"subtypeText":"God"
 }

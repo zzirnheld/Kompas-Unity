@@ -2,6 +2,7 @@
 using KompasCore.Cards;
 using KompasCore.GameCore;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace KompasClient.Cards
 {
@@ -37,6 +38,7 @@ namespace KompasClient.Cards
 
         public override void OnMouseUp()
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
             base.OnMouseUp();
 
             //don't allow dragging cards if we're awaiting a target
