@@ -22,17 +22,10 @@
 			]
 		}
 	],
-	"fast":false,
 	"PlayRestriction":{
-		"NormalRestrictions":[
-			"Played By Card Owner",
-			"From Hand",
-			"Friendly Turn",
-			"Has Cost in Pips",
-			"On Friendly Card"
-		]
+		"normalRestrictions":["Augment Normal Restrictions"],
+		"effectRestrictions":["Augment Effect Restrictions"]
 	},
 	"a":2,
-	"subtypes":["Tarocco"],
 	"subtypeText":"Tarocco"
 }

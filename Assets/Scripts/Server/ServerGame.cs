@@ -35,7 +35,7 @@ namespace KompasServer.GameCore
 
         public ServerEffect CurrEffect { get; set; }
         public override IStackable CurrStackEntry => EffectsController.CurrStackEntry;
-        public override bool StackEmpty => EffectsController.StackEmpty;
+        public override bool NothingHappening => EffectsController.StackEmpty;
 
         public override int TurnCount 
         { 

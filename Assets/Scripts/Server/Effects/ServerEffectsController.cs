@@ -40,9 +40,9 @@ namespace KompasServer.Effects
         private readonly Dictionary<string, List<HangingEffect>> hangingEffectFallOffMap
             = new Dictionary<string, List<HangingEffect>>();
 
-        private bool awaitingOrderOrOptional = false;
+        private bool priorityHeld = false;
         public IServerStackable CurrStackEntry { get; private set; }
-        public bool StackEmpty => stack.Empty && !awaitingOrderOrOptional;
+        public bool StackEmpty => stack.Empty && !priorityHeld;
 
         #region the stack
         public void PushToStack(IServerStackable eff, ActivationContext context)
@@ -112,8 +112,6 @@ namespace KompasServer.Effects
             //then ask the respective player about that trigger.
             lock (triggerStackLock)
             {
-                awaitingOrderOrOptional = false;
-
                 //get the list of triggers, and see if they're all still valid
                 var triggered = triggeredTriggers.Peek();
                 var list = triggered.triggers.Where(t => t.StillValidForContext(triggered.context));
@@ -132,7 +130,6 @@ namespace KompasServer.Effects
                 if (currentOptionalTrigger != default)
                 {
                     currentOptionalTrigger.Ask();
-                    awaitingOrderOrOptional = true;
                     return false;
                 }
 
@@ -161,7 +158,6 @@ namespace KompasServer.Effects
                         var thisPlayers = confirmed.Where(t => t.serverEffect.Controller == p);
                         if (thisPlayers.Any(t => !t.Ordered)) p.ServerNotifier.GetTriggerOrder(thisPlayers);
                     }
-                    awaitingOrderOrOptional = true;
                     return false;
                 }
             }
@@ -171,7 +167,7 @@ namespace KompasServer.Effects
         {
             while (triggeredTriggers.Any())
             {
-                if (!CheckTriggers(turnPlayer)) return false;
+                if (!CheckTriggers(turnPlayer: turnPlayer)) return false;
                 foreach(var tList in triggerMap.Values)
                 {
                     foreach (var t in tList) t.ResetConfirmation();
@@ -190,8 +186,12 @@ namespace KompasServer.Effects
 
             if (reset) ResetPassingPriority();
 
-            //if there's any triggers triggered
-            if (!CheckAllTriggers(ServerGame.TurnServerPlayer)) return;
+            //if there's any triggers triggered that haven't been dealt with, mark priority being held and return
+            if (!CheckAllTriggers(ServerGame.TurnServerPlayer))
+            {
+                priorityHeld = true;
+                return;
+            }
 
             //check if responses exist. if not, resolve
             lock (responseLock)
@@ -201,9 +201,17 @@ namespace KompasServer.Effects
                         ServerGame.Cards.Any(c => c.Effects.Any(e => e.ActivationRestriction.Evaluate(player))))
                     .ToArray();
 
-                if (players.Any()) foreach (var p in players) p.ServerNotifier.RequestResponse();
+                if (players.Any())
+                {
+                    foreach (var p in players) p.ServerNotifier.RequestResponse();
+                    priorityHeld = true;
+                }
                 //if neither player has anything to do, resolve the stack
-                else ResolveNextStackEntry();
+                else
+                {
+                    priorityHeld = false;
+                    ResolveNextStackEntry();
+                }
             }
         }
 

@@ -51,7 +51,7 @@ namespace KompasClient.GameCore
 
         //TODO make client aware that effects have been pushed to stack
         private bool stackEmpty = true;
-        public override bool StackEmpty => stackEmpty;
+        public override bool NothingHappening => stackEmpty;
 
         public override int Leyload 
         { 

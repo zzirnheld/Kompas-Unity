@@ -48,7 +48,7 @@ namespace KompasCore.GameCore
         public abstract GameCard GetCardWithID(int id);
 
         public virtual IStackable CurrStackEntry => null;
-        public abstract bool StackEmpty { get; }
+        public abstract bool NothingHappening { get; }
 
         //game mechanics
         //checking for valid target

@@ -46,7 +46,7 @@ namespace KompasCore.Effects
                 case IsCharacter: return Card.CardType == 'C';
                 case CanMoveEnoughSpaces: return Card.SpacesCanMove >= Card.DistanceTo(x, y);
                 case StandardSpellMoveRestiction: return Card.CardType != 'S' || Card.Game.ValidSpellSpace(x, y);
-                case NothingHappening: return Card.Game.StackEmpty;
+                case NothingHappening: return Card.Game.NothingHappening;
                 case DestinationCanMoveHere:
                     if (isSwapTarget) return true;
                     var atDest = Card.Game.boardCtrl.GetCardAt(x, y);
