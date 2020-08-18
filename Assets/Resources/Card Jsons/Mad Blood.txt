@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Mad Blood",
-	"effText":"The first time each turn a friendly Cultist dies, deck-summon 2 Cultist Followers and annihilate me. (If this effect is negated, it can trigger again another turn.)",
+	"effText":"The first time each turn a friendly Cultist dies, annihilate me and deck-summon 2 Cultist Followers. (If this effect is negated, it can trigger again another turn.)",
 	"effects":[
 		{
 			"triggerCondition":"Discard",
@@ -19,13 +19,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Change NESW All\",
-					\"cardRestriction\":
-					{
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Cultist\"]
-					},
-					\"wMod\":1
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Annihilate\"
 				}",
 				"{
 					\"subeffType\":\"Choose From List\",
@@ -68,17 +65,11 @@
 				}",
 				"{
 					\"subeffType\":\"Play\"
-				}",
-				"{
-					\"subeffType\":\"Target This\"
-				}",
-				"{
-					\"subeffType\":\"Annihilate\"
 				}"
 			]	
 		}
 	],
-	"c":1,
+	"c":2,
 	"spellType":"Enchant",
 	"subtypeText":"Enchant"
 }

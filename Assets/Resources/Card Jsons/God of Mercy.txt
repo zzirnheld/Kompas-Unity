@@ -32,7 +32,11 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Negate\"
+					\"subeffType\":\"Temporary Negate\",
+					\"endCondition\":\"Remove\",
+					\"triggerRestriction\":{
+						\"triggerRestrictions\":[\"This Card Triggered\"]
+					}
 				}",
 				"{
 					\"subeffType\":\"Loop While Have Targets\",

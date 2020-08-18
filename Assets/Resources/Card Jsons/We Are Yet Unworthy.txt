@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"We Are Yet Unworthy",
-	"effText":"Kill a friendly Cultist. Hand-reshuffle a card. Draw 2. Gain 3 Pips. Annihilate me.",
+	"effText":"Kill a friendly Cultist. Hand-reshuffle a card. Draw 2. Gain 2 Pips. Annihilate me.",
 	"effects":[
 		{
 			"triggerCondition":"Play",
@@ -42,7 +42,7 @@
 				}",
 				"{
 					\"subeffType\":\"Add Pips\",
-					\"modifier\":3
+					\"modifier\":2
 				}",
 				"{
 					\"subeffType\":\"Target This\"
