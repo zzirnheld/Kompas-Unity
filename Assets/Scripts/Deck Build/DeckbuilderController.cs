@@ -15,6 +15,18 @@ namespace KompasDeckbuilder
 
         private string deckFilesFolderPath = "";
 
+        //card dragging
+        private DeckbuilderCard currentDrag;
+        public DeckbuilderCard CurrentDrag
+        {
+            get => currentDrag;
+            set
+            {
+                if (value == null || currDeck.Contains(value))
+                    currentDrag = value;
+            }
+        }
+
         //other ui element controllersS
         public CardRepository CardRepo;
         public CardSearchController CardSearchCtrl;
@@ -297,6 +309,15 @@ namespace KompasDeckbuilder
         {
             if (string.IsNullOrWhiteSpace(LastDeletedName)) return;
             AddToDeck(LastDeletedName);
+        }
+
+        public void MoveTo(DeckbuilderCard card, int index)
+        {
+            if (currDeck.Contains(card))
+            {
+                currDeck.Remove(card);
+                currDeck.Insert(index, card);
+            }
         }
     }
 }
