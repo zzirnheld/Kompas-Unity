@@ -21,6 +21,7 @@ namespace KompasCore.Effects
         public const string AdjacentToRestriction = "Adjacent to Restriction";
         public const string CoordsFitRestriction = "Coords Fit Restriction"; //120,
         public const string XFitsRestriction = "X Fits Restriction"; //130,
+        public const string StackableSourceFitsRestriction = "Stackable Source Fits Restriction";
         public const string EffectSourceIsThisCard = "Stackable Source is This Card"; //140,
         public const string EffectSourceIsTriggerer = "Stackable Source is Triggerer"; //149,
 
@@ -49,9 +50,10 @@ namespace KompasCore.Effects
         public static readonly string[] ReevalationRestrictions = { MaxPerTurn, MaxPerRound, MaxPerStack };
 
         public string[] triggerRestrictions = new string[0];
-        public CardRestriction cardRestriction = new CardRestriction(); //TODO refactor boardrestrictions to be part of cardrestriction
+        public CardRestriction cardRestriction = new CardRestriction();
         public XRestriction xRestriction = new XRestriction();
         public SpaceRestriction spaceRestriction = new SpaceRestriction();
+        public CardRestriction sourceRestriction = new CardRestriction();
         public int maxTimesPerTurn = 1;
         public int maxPerRound = 1;
         public int maxPerStack = 1;
@@ -81,6 +83,7 @@ namespace KompasCore.Effects
                 case AugmentedCardTriggered:   return context.Card == ThisCard.AugmentedCard;
                 case ThisCardFitsRestriction:  return cardRestriction.Evaluate(ThisCard);
                 case TriggererFitsRestriction: return cardRestriction.Evaluate(context.Card);
+                case StackableSourceFitsRestriction: return sourceRestriction.Evaluate(context.Stackable?.Source);
                 
                 //other non-card triggering things
                 case CoordsFitRestriction:    return context.Space != null && spaceRestriction.Evaluate(context.Space.Value);

@@ -1,0 +1,53 @@
+{
+	"cardType":67,
+	"cardName":"Dragaboo",
+	"effText":"When a Dragon kills me, you can annihilate me to discard an SX Dragon and gain X pips.",
+	"effects":[
+		{
+			"triggerCondition":"Discard",
+			"trigger":
+			"{
+				\"blurb\":\"*notices your dragon*\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\",\"Stackable Source Fits Restriction\"],
+					\"sourceRestriction\":{
+						\"cardRestrictions\":[\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Dragon\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Annihilate\"
+				}",
+				"{
+					\"subeffType\":\"Hand Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"OWO SO DRAGONNNNNNNNN\",
+						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Dragon\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Set X by Target Cost\"
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Add Pips\",
+					\"xMultiplier\":1
+				}"
+			]	
+		}
+	],
+	"n":1,
+	"e":1,
+	"s":2,
+	"w":2,
+	"subtypeText":""
+}

@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"II - The High Priestess",
-	"effText":"Once each friendly turn, you can look at and rearrange the top 5 cards of your deck, then draw 1.",
+	"effText":"Once each round, you can draw 3, then hand-topdeck 3.",
 	"effects":[
 		{
 			"activationRestriction":{
@@ -13,33 +13,42 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"Choose From List\",
-					\"maxCanChoose\":1,
-					\"cardRestriction\":
-					{
-						\"blurb\":\"for High Priestess to put on top next (to end up under the last card you chose)\",
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<=C\",\"Not Already Target\"],
-						\"constant\":4
-					}
+					\"subeffType\":\"Draw X\",
+					\"XMultiplier\":0,
+					\"modifier\":3
 				}",
 				"{
-					\"subeffType\":\"Loop T Times\",
-					\"T\":5,
-					\"jumpTo\":0
+					\"subeffType\":\"Hand Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"for High Priestess to topdeck (1/3)\",
+						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
+					}
 				}",
 				"{
 					\"subeffType\":\"Topdeck\"
 				}",
 				"{
-					\"subeffType\":\"Delete Target\"
+					\"subeffType\":\"Hand Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"for High Priestess to topdeck (2/3)\",
+						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Not Already Target\"]
+					}
 				}",
 				"{
-					\"subeffType\":\"Loop T Times\",
-					\"T\":5,
-					\"jumpTo\":2
+					\"subeffType\":\"Topdeck\"
 				}",
 				"{
-					\"subeffType\":\"Draw\"
+					\"subeffType\":\"Hand Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"for High Priestess to topdeck (3/3)\",
+						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Not Already Target\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Topdeck\"
 				}"
 			]	
 		}
@@ -48,6 +57,5 @@
 	"e":6,
 	"s":6,
 	"w":4,
-	"subtypes":["Tarocco","Mage"],
 	"subtypeText":"Tarocco Mage"
 }

@@ -1,12 +1,13 @@
 {
 	"cardType":67,
 	"cardName":"Caligo the Quick",
-	"effText":"Territorial: When turns start, kill an adjacent friendly Dragon. You can choose a character X spaces from me. Give me -XE, move me adjacent to them, and I attack them.",
+	"effText":"Territorial: When turns start, kill an adjacent friendly Dragon.\nYou can choose a character X spaces from me. Give me -XE, move me adjacent to them, and I attack them.",
 	"effects":[
 		{
 			"triggerCondition":"Turn Start",
 			"trigger":
 			"{
+				\"blurb\":\"Territorial\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\"]
 				}
@@ -16,9 +17,8 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"adjacent Dragon for Caligo to kill\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"],
-						\"subtypesInclude\":[\"Dragon\"]
+						\"blurb\":\"adjacent character for Caligo to kill\",
+						\"cardRestrictions\":[\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"]
 					}
 				}",
 				"{
@@ -76,5 +76,5 @@
 	"s":7,
 	"w":5,
 	"subtypes":["Dragon"],
-	"subtypeText":"Dragon"
+	"subtypeText":"Flying Dragon"
 }

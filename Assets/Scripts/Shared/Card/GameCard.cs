@@ -391,11 +391,7 @@ namespace KompasCore.Cards
 
         #region statfuncs
         public virtual void SetN(int n, IStackable stackSrc = null) => N = n;
-        public virtual void SetE(int e, IStackable stackSrc = null)
-        {
-            E = e;
-            if (E <= 0 && CardType == 'C') Discard(stackSrc);
-        }
+        public virtual void SetE(int e, IStackable stackSrc = null) => E = e;
         public virtual void SetS(int s, IStackable stackSrc = null) => S = s;
         public virtual void SetW(int w, IStackable stackSrc = null) => W = w;
         public virtual void SetC(int c, IStackable stackSrc = null) => C = c;

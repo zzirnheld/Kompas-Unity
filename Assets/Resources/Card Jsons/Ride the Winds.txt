@@ -1,0 +1,42 @@
+{
+	"cardType":83,
+	"cardName":"Ride the Winds",
+	"effText":"Once each turn, you can move a Flying character 1 space.",
+	"effects":[
+		{
+			"blurb":"Ride the Winds",
+			"activationRestriction":{
+				"activationRestrictions":[
+					"Max Times Per Turn",
+					"Default"
+				]
+			},
+			"subeffects":[
+				"{
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"to ride the winds\",
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Dragon\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where to ride\",
+						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\",\"Can Move Target to This Space\"],
+						\"constant\":1
+					}
+				}",
+				"{
+					\"subeffType\":\"Move\"
+				}"
+			]	
+		}
+	],
+	"c":2,
+	"spellType":"Enchant",
+	"subtypeText":"Enchant"
+}

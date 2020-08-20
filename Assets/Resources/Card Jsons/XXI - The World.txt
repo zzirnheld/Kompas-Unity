@@ -1,24 +1,26 @@
 {
 	"cardType":67,
 	"cardName":"XXI - The World",
-	"effText":"When you draw, you can discard-bottomdeck a card to give all friendly characters +1EW.",
+	"effText":"When a friendly character dies, reshuffle them, give friendly characters +1EW, and draw 1.",
 	"effects":[
 		{
-			"triggerCondition":"Draw",
+			"triggerCondition":"Discard",
 			"trigger":
 			"{
-				\"optional\":true,
-				\"blurb\":\"Discard-bottomdeck a card to give all friendly characters +1EW?\",
+				\"blurb\":\"Reshuffle, buff, draw\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\"]
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Friendly\",\"Board\"]
+					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Discard Target\"
+					\"subeffType\":\"Target Triggering Card\"
 				}",
 				"{
-					\"subeffType\":\"Bottomdeck\"
+					\"subeffType\":\"Reshuffle\"
 				}",
 				"{
 					\"subeffType\":\"Change NESW All\",
@@ -28,6 +30,9 @@
 					},
 					\"eMod\":1,
 					\"wMod\":1
+				}",
+				"{
+					\"subeffType\":\"Draw\"
 				}"
 			]
 		}
@@ -36,6 +41,5 @@
 	"e":16,
 	"s":16,
 	"w":16,
-	"subtypes":["Tarocco","Mage"],
 	"subtypeText":"Tarocco Mage"
 }

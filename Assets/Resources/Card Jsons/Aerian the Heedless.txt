@@ -1,12 +1,13 @@
 {
 	"cardType":67,
 	"cardName":"Aerian the Heedless",
-	"effText":"Territorial: When turns start, kill an adjacent friendly Dragon. When I attack, I can all characters (including myself) within two spaces -2E.",
+	"effText":"Territorial: When turns start, kill an adjacent friendly character.\nWhen I attack, I can all characters (including myself) within two spaces -2E.",
 	"effects":[
 		{
 			"triggerCondition":"Turn Start",
 			"trigger":
 			"{
+				\"blurb\":\"Territorial\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\"]
 				}
@@ -16,9 +17,8 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"adjacent Dragon for Aerian to kill\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"],
-						\"subtypesInclude\":[\"Dragon\"]
+						\"blurb\":\"adjacent character for Aerian to kill\",
+						\"cardRestrictions\":[\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"]
 					}
 				}",
 				"{
@@ -54,5 +54,5 @@
 	"s":7,
 	"w":3,
 	"subtypes":["Dragon"],
-	"subtypeText":"Dragon"
+	"subtypeText":"Flying Dragon"
 }

@@ -1,14 +1,20 @@
 {
 	"cardType":67,
 	"cardName":"XVII - The Star",
-	"effText":"Once each round, you can draw 1.\nOnce each round, you can draw 1, then hand-bottomdeck 1.",
+	"effText":"Once each friendly turn, if there's a friendly Tarocco, you can draw 1.\nOnce each enemy turn, you can draw 1, then hand-bottomdeck 1.",
 	"effects":[
 		{
 			"activationRestriction":{
 				"activationRestrictions":[
-					"Max Times Per Round",
+					"Max Times Per Turn",
+					"Friendly Turn",
+					"Card Exists",
 					"Default"
-				]
+				],
+				"existsRestriction":{
+					"cardRestrictions":["Friendly","Board","Subtypes Include","Distinct from Source"],
+					"subtypesInclude":["Tarocco"]
+				}
 			},
 			"subeffects":[
 				"{
@@ -19,7 +25,8 @@
 		{
 			"activationRestriction":{
 				"activationRestrictions":[
-					"Max Times Per Round",
+					"Max Times Per Turn",
+					"Enemy Turn",
 					"Default"
 				]
 			},
@@ -43,7 +50,7 @@
 	],
 	"n":2,
 	"e":7,
-	"s":9,
-	"w":5,
+	"s":6,
+	"w":4,
 	"subtypeText":"Tarocco Mage"
 }

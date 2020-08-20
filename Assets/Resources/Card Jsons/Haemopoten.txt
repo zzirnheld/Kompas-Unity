@@ -48,5 +48,5 @@
 	"e":11,
 	"s":10,
 	"w":9,
-	"subtypeText":"Dragon"
+	"subtypeText":"Flying Dragon"
 }
