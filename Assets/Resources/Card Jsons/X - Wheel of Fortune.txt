@@ -32,7 +32,7 @@
 				}",
 				"{
 					\"subeffType\":\"Swap NESW\",
-					\"TargetIndices\":[-1,-2],
+					\"targetIndices\":[-1,-2],
 					\"swapN\":true
 				}"
 			]
