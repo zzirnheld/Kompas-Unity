@@ -1,12 +1,13 @@
 {
 	"cardType":67,
 	"cardName":"II - The High Priestess",
-	"effText":"Once each round, you can look at and rearrange the top 5 cards of your deck, then draw 1.",
+	"effText":"Once each friendly turn, you can look at and rearrange the top 5 cards of your deck, then draw 1.",
 	"effects":[
 		{
 			"activationRestriction":{
 				"activationRestrictions":[
-					"Max Times Per Round",
+					"Max Times Per Turn",
+					"Friendly Turn",
 					"Default"
 				]
 			},
@@ -45,8 +46,8 @@
 	],
 	"n":1,
 	"e":6,
-	"s":5,
-	"w":2,
+	"s":6,
+	"w":4,
 	"subtypes":["Tarocco","Mage"],
 	"subtypeText":"Tarocco Mage"
 }
