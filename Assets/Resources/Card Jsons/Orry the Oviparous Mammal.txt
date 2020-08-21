@@ -39,5 +39,5 @@
 	"e":1,
 	"s":5,
 	"w":0,
-	"subtypeText":"Crazy Idea"
+	"subtypeText":"Semi-Aquatic Egg-Laying Crazy Idea"
 }

@@ -51,9 +51,14 @@
 		}
 	],
 	"PlayRestriction":{
-		"normalRestrictions":["Augment Normal Restrictions"],
-		"effectRestrictions":["Augment Effect Restrictions"]
+		"normalRestrictions":["Augment Normal Restrictions","On Card that Fits Restriction"],
+		"effectRestrictions":["Augment Effect Restrictions","On Card that Fits Restriction"],
+		"onCardRestriction":{
+			\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Board\"],
+			\"subtypesInclude\":[\"Golem\"]
+		}
 	},
 	"a":3,
-	"subtypeText":"Golem Core"
+	"subtypeText":"Golem Core",
+	"augSubtypes":["Golem"]
 }
