@@ -1,0 +1,44 @@
+{
+	"cardType":65,
+	"cardName":"Kusanagi",
+	"effText":"The first time each round this character attacks, if their target is behind them, swap their places and give the defender -5 W.",
+	"effects":[
+		{
+			"triggerCondition":"Attack",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"Augmented Card Triggered\",\"Max Per Round\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target Defender\"
+				}",
+				"{
+					\"subeffType\":\"Conditionally End Effect Resolution\",
+					\"condition\":\"Target Violates Restriction\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Behind Source\"],
+					}
+				}",
+				"{
+					\"subeffType\":\"X Change NESW\",
+					\"wMod\":-5
+				}"
+			]
+		}
+	],
+	"PlayRestriction":{
+		"normalRestrictions":["Augment Normal Restrictions","On Card that Fits Restriction"],
+		"effectRestrictions":["Augment Effect Restrictions","On Card that Fits Restriction"],
+		"onCardRestriction":{
+			\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Board\"],
+			\"subtypesInclude\":[\"Warrior\"]
+		}
+	},
+	"a":3,
+	"subtypeText":"Sword",
+	"augSubtypes":["Warrior"]
+}

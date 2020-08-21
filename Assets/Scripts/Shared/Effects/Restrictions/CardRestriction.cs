@@ -89,6 +89,7 @@ namespace KompasCore.Effects
         public const string AdjacentToSubtype = "Adjacent to Subtype";
         public const string ExactlyXSpaces = "Exactly X Spaces to Source";
         public const string InFrontOfSource = "In Front of Source";
+        public const string BehindSource = "Behind Source";
         public const string IndexInListGTEC = "Index>=C";
         public const string IndexInListLTEC = "Index<=C";
         public const string IndexInListLTEX = "Index<=X";
@@ -224,6 +225,7 @@ namespace KompasCore.Effects
                 case WithinCSpacesOfSource: return potentialTarget.WithinSpaces(cSpaces, Source);
                 case ExactlyXSpaces:     return potentialTarget.DistanceTo(Source) == x;
                 case InFrontOfSource:    return Source.CardInFront(potentialTarget);
+                case BehindSource:       return Source.CardBehind(potentialTarget);
                 case IndexInListGTEC:    return potentialTarget.IndexInList >= constant;
                 case IndexInListLTEC:    return potentialTarget.IndexInList <= constant;
                 case IndexInListLTEX:    return potentialTarget.IndexInList <= x;

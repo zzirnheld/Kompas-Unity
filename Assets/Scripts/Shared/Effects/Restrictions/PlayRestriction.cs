@@ -21,7 +21,8 @@ namespace KompasCore.Effects
         public const string Unique = "Unique";
         public const string NotNormally = "Cannot be Played Normally";
         public const string MustNormally = "Must be Played Normally";
-        public const string OnFriendlyCard = "On Friendly Card";
+        public const string OnFriendlyBoardCard = "On Friendly Card";
+        public const string OnCardFittingRestriction = "On Card that Fits Restriction";
 
         public const string DefaultNormal = "Default Normal Restrictions";
         public const string DefaultEffect = "Default Effect Restrictions";
@@ -32,11 +33,13 @@ namespace KompasCore.Effects
         public const string AugNormal = "Augment Normal Restrictions";
         public const string AugEffect = "Augment Effect Restrictions";
         public static readonly string[] AugmentNormalRestrictions =
-            { PlayedByCardOwner, FromHand, OnFriendlyCard, StandardSpellRestriction, FriendlyTurnIfNotFast, HasCostInPips, NothingIsResolving };
-        public static readonly string[] AugmentEffectRestrictions = { StandardSpellRestriction, OnFriendlyCard };
+            { PlayedByCardOwner, FromHand, OnFriendlyBoardCard, StandardSpellRestriction, FriendlyTurnIfNotFast, HasCostInPips, NothingIsResolving };
+        public static readonly string[] AugmentEffectRestrictions = { StandardSpellRestriction, OnFriendlyBoardCard };
 
         public List<string> normalRestrictions = new List<string> { DefaultNormal };
         public List<string> effectRestrictions = new List<string> { DefaultEffect };
+
+        public CardRestriction onCardRestriction = new CardRestriction();
 
         public void SetInfo(GameCard card)
         {
@@ -67,7 +70,7 @@ namespace KompasCore.Effects
                 case FriendlyTurnIfNotFast: return Card.Fast || Card.Game.TurnPlayer == Card.Controller;
                 case NothingIsResolving: return Card.Fast || Card.Game.CurrStackEntry == null;
 
-                case OnFriendlyCard: return Card.Game.boardCtrl.GetCardAt(x, y)?.Controller == Card.Controller;
+                case OnFriendlyBoardCard: return Card.Game.boardCtrl.GetCardAt(x, y)?.Controller == Card.Controller;
                 case NotNormally: return !normal;
                 case MustNormally: return normal;
                 case Unique: 

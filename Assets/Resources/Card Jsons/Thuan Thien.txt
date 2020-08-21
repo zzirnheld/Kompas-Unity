@@ -1,0 +1,40 @@
+{
+	"cardType":65,
+	"cardName":"Thuan Thien",
+	"effText":"The first time each round this character fights, set X to their W, then give them +X W.",
+	"effects":[
+		{
+			"triggerCondition":"Battle Start",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"Augmented Card Triggered\",\"Max Per Round\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target Augmented Card\"
+				}",
+				"{
+					\"subeffType\":\"Set X by Target Value\",
+					\"whatToCount\":\"W\"
+				}",
+				"{
+					\"subeffType\":\"X Change NESW\",
+					\"wMult\":1
+				}"
+			]
+		}
+	],
+	"PlayRestriction":{
+		"normalRestrictions":["Augment Normal Restrictions","On Card that Fits Restriction"],
+		"effectRestrictions":["Augment Effect Restrictions","On Card that Fits Restriction"],
+		"onCardRestriction":{
+			\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Board\"],
+			\"subtypesInclude\":[\"Warrior\"]
+		}
+	},
+	"a":3,
+	"subtypeText":"Sword",
+	"augSubtypes":["Warrior"]
+}

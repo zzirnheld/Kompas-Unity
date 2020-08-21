@@ -144,7 +144,7 @@ namespace KompasCore.Cards
                 {
                     case 'C': return $"N: {N} / E: {E} / S: {S} / W: {W}";
                     case 'S': return $"C {C}{(Fast ? " Fast" : "")} {SpellSubtype}{SpellSubtypeString}";
-                    case 'A': return $"A {A}";
+                    case 'A': return $"A {A}{(AugmentSubtypes != null ? $"Augment: {string.Join(",", AugmentSubtypes)}" : "")}";
                     default: throw new System.NotImplementedException($"Stats string not implemented for card type {CardType}");
                 }
             }
@@ -323,10 +323,7 @@ namespace KompasCore.Cards
         /// </summary>
         /// <param name="space">The space to check if it's in front of this card</param>
         /// <returns><see langword="true"/> if <paramref name="space"/> is in front of this, <see langword="false"/> otherwise.</returns>
-        public bool SpaceInFront((int x, int y) space)
-        {
-            return SameColumn(space.x, space.y) && SubjectiveCoord(space.x) > SubjectivePosition.x;
-        }
+        public bool SpaceInFront((int x, int y) space) => SubjectiveCoord(space.x) > SubjectivePosition.x;
 
         /// <summary>
         /// Returns whether the card passed in is in front of this card
@@ -334,6 +331,20 @@ namespace KompasCore.Cards
         /// <param name="card">The card to check if it's in front of this one</param>
         /// <returns><see langword="true"/> if <paramref name="card"/> is in front of this, <see langword="false"/> otherwise.</returns>
         public bool CardInFront(GameCard card) => SpaceInFront(card.Position);
+
+        /// <summary>
+        /// Returns whether the <paramref name="space"/> passed in is behind this card
+        /// </summary>
+        /// <param name="space">The space to check if it's behind this card</param>
+        /// <returns><see langword="true"/> if <paramref name="space"/> is behind this, <see langword="false"/> otherwise.</returns>
+        public bool SpaceBehind((int x, int y) space) => SubjectiveCoord(space.x) < SubjectivePosition.x;
+
+        /// <summary>
+        /// Returns whether the card passed in is behind this card
+        /// </summary>
+        /// <param name="card">The card to check if it's behind this one</param>
+        /// <returns><see langword="true"/> if <paramref name="card"/> is behind this, <see langword="false"/> otherwise.</returns>
+        public bool CardBehind(GameCard card) => SpaceBehind(card.Position);
         #endregion distance/adjacency
 
         public void PutBack() => cardCtrl?.SetPhysicalLocation(Location);

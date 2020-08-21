@@ -13,6 +13,7 @@ namespace KompasCore.Cards
         public string CardName { get; private set; }
         public string EffText { get; private set; }
         public string SubtypeText { get; private set; }
+        public string[] AugmentSubtypes { get; private set; }
 
         public Sprite detailedSprite;
         public Sprite simpleSprite;
@@ -23,6 +24,7 @@ namespace KompasCore.Cards
             CardName = card.cardName;
             EffText = card.effText;
             SubtypeText = card.subtypeText;
+            AugmentSubtypes = card.augSubtypes;
 
             detailedSprite = Resources.Load<Sprite>("Detailed Sprites/" + CardName);
             simpleSprite = Resources.Load<Sprite>("Simple Sprites/" + CardName);

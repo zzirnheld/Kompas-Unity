@@ -39,7 +39,7 @@
 				"{
 					\"subeffType\":\"Set X by Player Choice\",
 					\"XRest\":{
-						\"cardRestrictions\":[\"<=ThisE\"]
+						\"xRestrictions\":[\"<=ThisE\"]
 					}
 				}",
 				"{
