@@ -10,8 +10,8 @@ namespace KompasCore.GameCore
     public abstract class Game : MonoBehaviour
     {
         public const string CardListPath = "Card Jsons/Card List";
-        public static readonly CardLocation[] HiddenLocations 
-            = new CardLocation[] { CardLocation.Nowhere, CardLocation.Deck, CardLocation.Hand };
+        public static readonly CardLocation[] HiddenLocations = 
+            new CardLocation[] { CardLocation.Nowhere, CardLocation.Deck, CardLocation.Hand };
 
         public static Game mainGame;
 
@@ -31,7 +31,7 @@ namespace KompasCore.GameCore
 
         public abstract Player[] Players { get; }
         public int TurnPlayerIndex { get; protected set; } = 0;
-        public Player TurnPlayer { get { return Players[TurnPlayerIndex]; } }
+        public Player TurnPlayer => Players[TurnPlayerIndex];
 
         //game data
         public abstract IEnumerable<GameCard> Cards { get; }

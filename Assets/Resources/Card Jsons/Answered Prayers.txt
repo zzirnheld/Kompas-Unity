@@ -43,7 +43,7 @@
 				}",
 				"{
 					\"subeffType\":\"Add Pips\",
-					\"modifier\":3
+					\"xModifier\":3
 				}"
 			]
 		}

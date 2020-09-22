@@ -29,7 +29,7 @@
 				}",
 				"{
 					\"subeffType\":\"Spend Movement\",
-					\"modifier\":1
+					\"xModifier\":1
 				}",
 				"{
 					\"subeffType\":\"Set X by Gamestate Value\",

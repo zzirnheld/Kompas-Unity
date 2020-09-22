@@ -144,6 +144,26 @@ namespace KompasCore.Effects
         /// </summary>
         public string subeffType;
 
+        /// <summary>
+        /// If the effect uses X, this is the multiplier to X
+        /// </summary>
+        public int xMultiplier = 0;
+
+        /// <summary>
+        /// If the effect uses X, this is the divisor to X
+        /// </summary>
+        public int xDivisor = 1;
+
+        /// <summary>
+        /// If the effect uses X, this is the modifier to X
+        /// </summary>
+        public int xModifier = 0;
+
+        /// <summary>
+        /// If the effect uses X, this is the adjusted value of X
+        /// </summary>
+        public int Count => (Effect.X * xMultiplier / xDivisor) + xModifier;
+
         public GameCard GetTarget(int num)
         {
             int trueIndex = num < 0 ? num + Effect.Targets.Count : num;

@@ -1,13 +1,7 @@
 ﻿namespace KompasServer.Effects
 {
-    public class SetXByTargetCostSubeffect : ServerSubeffect
+    public class SetXByTargetCostSubeffect : SetXSubeffect
     {
-        public override bool Resolve()
-        {
-            if (Target == null) return ServerEffect.EffectImpossible();
-
-            ServerEffect.X = Target.Cost;
-            return ServerEffect.ResolveNextSubeffect();
-        }
+        public override int BaseCount => Target?.Cost ?? 0;
     }
 }

@@ -2,13 +2,9 @@
 {
     public class SpendMovementSubeffect : ServerSubeffect
     {
-        public int multiplier = 0;
-        public int modifier = 0;
-        public int divisor = 1;
-
         public override bool Resolve()
         {
-            var spaces = Effect.X * multiplier / divisor + modifier;
+            var spaces = Count;
             if (Target.SpacesCanMove >= spaces)
             {
                 Target.SpacesMoved += spaces;

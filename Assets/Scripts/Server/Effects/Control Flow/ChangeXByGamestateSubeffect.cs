@@ -1,11 +1,7 @@
 ﻿namespace KompasServer.Effects
 {
-    public class ChangeXByGamestateSubeffect : XByGamestateSubeffect
+    public class ChangeXByGamestateSubeffect : SetXByGamestateSubeffect
     {
-        public override bool Resolve()
-        {
-            ServerEffect.X += Count;
-            return ServerEffect.ResolveNextSubeffect();
-        }
+        public override int BaseCount => Effect.X + base.BaseCount;
     }
 }

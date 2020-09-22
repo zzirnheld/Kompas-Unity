@@ -29,7 +29,7 @@
 				}",
 				"{
 					\"subeffType\":\"Change C\",
-					\"XMultiplier\":1,
+					\"xMultiplier\":1,
 					\"XModifier\":1
 				}"
 			]	

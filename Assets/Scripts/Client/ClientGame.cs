@@ -155,10 +155,7 @@ namespace KompasClient.GameCore
             TurnCount++;
         }
 
-        public override GameCard GetCardWithID(int id)
-        {
-            return cardsByID.ContainsKey(id) ? cardsByID[id] : null;
-        }
+        public override GameCard GetCardWithID(int id) => cardsByID.ContainsKey(id) ? cardsByID[id] : null;
 
         public void ShowCardsByZoom(bool zoomed)
         {

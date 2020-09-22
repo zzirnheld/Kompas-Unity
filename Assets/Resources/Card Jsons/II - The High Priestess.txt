@@ -14,8 +14,8 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Draw X\",
-					\"XMultiplier\":0,
-					\"modifier\":3
+					\"xMultiplier\":0,
+					\"xModifier\":3
 				}",
 				"{
 					\"subeffType\":\"Hand Target\",

@@ -14,8 +14,8 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Set X by Math\",
-					\"multiplier\":0,
-					\"modifier\":2
+					\"xMultiplier\":0,
+					\"xModifier\":2
 				}",
 				"{
 					\"subeffType\":\"Draw X\"

@@ -27,8 +27,8 @@
 				}",
 				"{
 					\"subeffType\":\"Draw X\",
-					\"XMultiplier\":0,
-					\"modifier\":2
+					\"xMultiplier\":0,
+					\"xModifier\":2
 				}"
 			]	
 		}
