@@ -13,8 +13,6 @@ namespace KompasCore.GameCore
         public static readonly CardLocation[] HiddenLocations = 
             new CardLocation[] { CardLocation.Nowhere, CardLocation.Deck, CardLocation.Hand };
 
-        public static Game mainGame;
-
         public enum TargetMode { Free, OnHold, BoardTarget, HandTarget, SpaceTarget }
 
         //other scripts

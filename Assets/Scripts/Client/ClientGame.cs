@@ -13,9 +13,6 @@ namespace KompasClient.GameCore
 {
     public class ClientGame : Game
     {
-
-        public static ClientGame mainClientGame;
-
         public GameObject AvatarPrefab;
 
         public override Player[] Players => ClientPlayers;
@@ -61,12 +58,6 @@ namespace KompasClient.GameCore
                 base.Leyload = value;
                 clientUICtrl.Leyload = Leyload;
             }
-        }
-
-        private void Start()
-        {
-            mainGame = this;
-            mainClientGame = this;
         }
 
         public override void OnClickBoard(int x, int y)
