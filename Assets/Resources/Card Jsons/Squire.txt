@@ -27,15 +27,15 @@
 					\"subeffType\":\"Add Pips\",
 					\"xMultiplier\":0,
 					\"xDivisor\":1,
-					\"modifier\":1
+					\"xModifier\":1
 				}"
 			]	
 		}
 	],
-	"n":3,
-	"e":4,
-	"s":4,
-	"w":4,
+	"n":1,
+	"e":1,
+	"s":1,
+	"w":1,
 	"subtypes":["Swordguild","Warrior"],
 	"subtypeText":"Swordguild Warrior"
 }

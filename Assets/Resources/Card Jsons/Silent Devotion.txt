@@ -1,0 +1,43 @@
+{
+	"cardType":83,
+	"cardName":"Silent Devotion",
+	"effText":"When friendly turns start, deck-summon a Cultist Follower.",
+	"effects":[
+		{
+			"triggerCondition":"Turn Start",
+			"trigger":
+			"{
+				\"blurb\":\"New Silent Devotee\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"Friendly Turn\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Choose From List\",
+					\"maxCanChoose\":1,
+					\"cardRestriction\":
+					{
+						\"blurb\":\"New Silent Devotee\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Is Character\"],
+						\"subtypesInclude\":[\"Cultist Follower\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where to play new Silent Devotee\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Play\"
+				}"
+			]	
+		}
+	],
+	"c":3,
+	"spellType":"Enchant",
+	"subtypeText":"Enchant"
+}

@@ -8,7 +8,7 @@ namespace KompasServer.Effects
     {
         public int numTimesToDelay = 0;
         public int indexToResume;
-        public string triggerCondition;
+        public override bool ContinueResolution => false;
 
         protected override IEnumerable<HangingEffect> CreateHangingEffects()
         {

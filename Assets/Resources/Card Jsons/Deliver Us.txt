@@ -1,0 +1,61 @@
+{
+	"cardType":83,
+	"cardName":"Deliver Us",
+	"effText":"If there's at least 10 friendly Supplicants dead or in play, deck-summon a \"God of Mercy\".",
+	"effects":[
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Set X by Gamestate Value\",
+					\"whatToCount\":\"Cards Fitting Restriction\",
+					\"throughRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Multiple Possible Locations\",\"Friendly\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Supplicant\"],
+						\"locations\":[1,2]
+					}
+				}",
+				"{
+					\"subeffType\":\"Conditionally End Effect Resolution\",
+					\"condition\":\"X<C\",
+					\"constant\":10
+				}",
+				"{
+					\"subeffType\":\"Choose From List\",
+					\"maxCanChoose\":1,
+					\"cardRestriction\":
+					{
+						\"blurb\":\"God of the Supplicants\",
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Name Is\"],
+						\"nameIs\":\"God of Mercy\"
+					}
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where to play God of Mercy\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Play\"
+				}"
+			]
+		}
+	],
+	"c":1,
+	"PlayRestriction":{
+		"normalRestrictions":["Default Normal Restrictions","Unique"],
+		"effectRestrictions":["Default Effect Restrictions","Unique"]
+	},
+	"spellType":"Simple",
+	"subtypeText":"Simple Plea"
+}

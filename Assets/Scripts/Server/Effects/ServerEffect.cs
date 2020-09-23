@@ -26,7 +26,7 @@ namespace KompasServer.Effects
         public override Trigger Trigger => ServerTrigger;
 
         public ServerEffect(SerializableEffect se, GameCard thisCard, ServerGame serverGame, ServerPlayer controller, int effectIndex)
-            : base(se.activationRestriction ?? new ActivationRestriction(), thisCard, se.blurb, effectIndex)
+            : base(se.activationRestriction ?? new ActivationRestriction(), thisCard, se.blurb, effectIndex, controller)
         {
             this.serverGame = serverGame;
             this.ServerController = controller;

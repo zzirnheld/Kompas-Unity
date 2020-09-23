@@ -20,7 +20,7 @@
 				"{
 					\"subeffType\":\"Change X by Gamestate Value\",
 					\"whatToCount\":\"Hand Size\",
-					\"multiplier\":-1
+					\"xMultiplier\":-1
 				}",
 				"{
 					\"subeffType\":\"Conditionally End Effect Resolution\",

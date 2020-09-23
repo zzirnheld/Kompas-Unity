@@ -27,7 +27,7 @@
 				"{
 					\"subeffType\":\"Pay Pips\",
 					\"xMultiplier\":0,
-					\"modifier\":1
+					\"xModifier\":1
 				}",
 				"{
 					\"subeffType\":\"Space Target\",
@@ -79,7 +79,7 @@
 				"{
 					\"subeffType\":\"Pay Pips\",
 					\"xMultiplier\":0,
-					\"modifier\":1
+					\"xModifier\":1
 				}",
 				"{
 					\"subeffType\":\"End Effect Resolution\"

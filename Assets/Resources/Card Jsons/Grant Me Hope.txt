@@ -1,0 +1,51 @@
+{
+	"cardType":83,
+	"cardName":"Grant Me Hope",
+	"effText":"Unique. (Can't be played if you control a copy)\nWhen a character is negated, give them +1ESW. If they're a Supplicant, also give them +2NESW.",
+	"effects":[
+		{
+			"triggerCondition":"Negate",
+			"trigger":
+			"{
+				\"blurb\":\"Grant Hope\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target Triggering Card\"
+				}",
+				"{
+					\"subeffType\":\"X Change NESW\",
+					\"eMod\":1,
+					\"sMod\":1,
+					\"wMod\":1
+				}",
+				"{
+					\"subeffType\":\"Conditionally End Effect Resolution\",
+					\"condition\":\"Target Violates Restriction\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Supplicant\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"X Change NESW\",
+					\"nMod\":2,
+					\"eMod\":2,
+					\"sMod\":2,
+					\"wMod\":2
+				}"
+			]
+		}
+	],
+	"c":2,
+	"PlayRestriction":{
+		"normalRestrictions":["Default Normal Restrictions","Unique"],
+		"effectRestrictions":["Default Effect Restrictions","Unique"]
+	},
+	"spellType":"Enchant",
+	"subtypeText":"Enchant Plea"
+}

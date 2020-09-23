@@ -1,12 +1,13 @@
 {
 	"cardType":67,
 	"cardName":"Pyrian the Firewyrm",
-	"effText":"Territorial: When turns start, kill an adjacent friendly Dragon. When I attack, I can give myself -1E and my target -4E.",
+	"effText":"Territorial: When turns start, kill an adjacent friendly character.\nWhen I attack, I can give myself -1E and my target -4E.",
 	"effects":[
 		{
 			"triggerCondition":"Turn Start",
 			"trigger":
 			"{
+				\"blurb\":\"Territorial\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\"]
 				}
@@ -16,8 +17,7 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"],
-						\"subtypesInclude\":[\"Dragon\"]
+						\"cardRestrictions\":[\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"]
 					}
 				}",
 				"{
@@ -58,5 +58,5 @@
 	"s":7,
 	"w":5,
 	"subtypes":["Dragon"],
-	"subtypeText":"Dragon"
+	"subtypeText":"Flying Dragon"
 }

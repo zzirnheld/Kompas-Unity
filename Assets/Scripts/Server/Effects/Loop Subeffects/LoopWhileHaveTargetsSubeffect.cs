@@ -4,6 +4,16 @@ namespace KompasServer.Effects
 {
     public class LoopWhileHaveTargetsSubeffect : LoopSubeffect
     {
-        protected override bool ShouldContinueLoop => ServerEffect.Targets.Any();
+        public bool delete = false;
+
+        protected override bool ShouldContinueLoop
+        {
+            get
+            {
+                if (delete && ServerEffect.Targets.Any())
+                    ServerEffect.Targets.Remove(Target);
+                return ServerEffect.Targets.Any();
+            }
+        }
     }
 }

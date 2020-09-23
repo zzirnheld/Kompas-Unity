@@ -40,7 +40,8 @@
 					\"jumpTo\":2
 				}",
 				"{
-					\"subeffType\":\"Pay Pips\"
+					\"subeffType\":\"Pay Pips\",
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Draw X\"

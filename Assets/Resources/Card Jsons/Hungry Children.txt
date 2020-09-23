@@ -1,0 +1,31 @@
+{
+	"cardType":67,
+	"cardName":"Hungry Children",
+	"effText":"When turns start, give me -1E.",
+	"effects":[
+		{
+			"triggerCondition":"Turn Start",
+			"trigger":
+			"{
+				\"blurb\":\"Starvation\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"X Change NESW\",
+					\"eMod\":-1
+				}"
+			]
+		}
+	],
+	"n":3,
+	"e":2,
+	"s":1,
+	"w":0,
+	"subtypeText":"Supplicant"
+}

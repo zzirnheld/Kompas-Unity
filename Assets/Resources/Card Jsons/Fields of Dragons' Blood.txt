@@ -18,14 +18,14 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Add Pips\",
-					\"modifier\":1
+					\"xModifier\":1
 				}"
 			]	
 		}
 	],
 	"c":3,
-	"spellType":"Terraform",
-	"subtypes":["Terraform"],
-	"subtypeText":"Terraform",
+	"spellType":"Radial",
+	"subtypes":["Radial"],
+	"subtypeText":"Radial",
 	"arg":1
 }

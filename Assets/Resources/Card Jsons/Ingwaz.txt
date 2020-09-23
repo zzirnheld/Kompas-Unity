@@ -24,7 +24,7 @@
 				}",
 				"{
 					\"subeffType\":\"Pay Target's Cost in Pips\",
-					\"divisor\":2
+					\"xDivisor\":2
 				}",
 				"{
 					\"subeffType\":\"Space Target\",
@@ -41,7 +41,7 @@
 		}
 	],
 	"PlayRestriction":{
-		"NormalRestrictions":["Cannot be Played Normally"]
+		"normalRestrictions":["Cannot be Played Normally"]
 	},
 	"c":1,
 	"spellType":"Simple",

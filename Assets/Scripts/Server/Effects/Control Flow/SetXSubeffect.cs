@@ -2,15 +2,13 @@
 {
     public class SetXSubeffect : ServerSubeffect
     {
-        public int multiplier = 1;
-        public int divisor = 1;
-        public int modifier = 0;
+        public virtual int BaseCount => Effect.X;
 
-        public int Count { get => Effect.X * multiplier / divisor + modifier; }
+        public int TrueCount => (BaseCount * xMultiplier / xDivisor) + xModifier;
 
         public override bool Resolve()
         {
-            Effect.X = Count;
+            Effect.X = TrueCount;
             return ServerEffect.ResolveNextSubeffect();
         }
     }

@@ -29,14 +29,14 @@
 				}",
 				"{
 					\"subeffType\":\"Change C\",
-					\"XMultiplier\":1,
+					\"xMultiplier\":1,
 					\"XModifier\":1
 				}"
 			]	
 		}
 	],
 	"PlayRestriction":{
-		"NormalRestrictions":["Cannot be Played Normally"]
+		"normalRestrictions":["Cannot be Played Normally"]
 	},
 	"c":1,
 	"spellType":"Vanishing",

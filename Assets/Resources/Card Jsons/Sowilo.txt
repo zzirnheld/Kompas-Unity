@@ -41,13 +41,13 @@
 				}",
 				"{
 					\"subeffType\":\"Add Pips\",
-					\"modifier\":1
+					\"xModifier\":1
 				}"
 			]
 		}
 	],
 	"PlayRestriction":{
-		"NormalRestrictions":["Cannot be Played Normally"]
+		"normalRestrictions":["Cannot be Played Normally"]
 	},
 	"c":1,
 	"spellType":"Simple",

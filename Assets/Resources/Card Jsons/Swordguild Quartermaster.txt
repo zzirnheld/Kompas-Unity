@@ -24,7 +24,7 @@
 					\"subeffType\":\"Add Pips\",
 					\"xMultiplier\":1,
 					\"xDivisor\":2,
-					\"modifier\":0
+					\"xModifier\":0
 				}"
 			]
 		}

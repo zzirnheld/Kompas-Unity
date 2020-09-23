@@ -1,8 +1,7 @@
-﻿using System;
+﻿using KompasCore.Cards;
+using System;
 using System.Linq;
 using UnityEngine;
-using KompasCore.Cards;
-using System.Security.Policy;
 
 namespace KompasCore.Effects
 {
@@ -19,6 +18,7 @@ namespace KompasCore.Effects
         //names
         public const string NameIs = "Name Is";
         public const string SameName = "Same Name as Target";
+        public const string SameNameAsSource = "Same Name as Source";
         public const string DistinctNameFromTargets = "Distinct Name from Other Targets";
         public const string DistinctNameFromSource = "Distinct Name from Source";
 
@@ -79,6 +79,8 @@ namespace KompasCore.Effects
         public const string SLTEC = "S<=C";
         public const string WLTEC = "W<=C";
 
+        public const string Negated = "Negated";
+
         //positioning
         public const string Adjacent = "Adjacent";
         public const string WithinCSpacesOfSource = "Within C Spaces";
@@ -87,6 +89,7 @@ namespace KompasCore.Effects
         public const string AdjacentToSubtype = "Adjacent to Subtype";
         public const string ExactlyXSpaces = "Exactly X Spaces to Source";
         public const string InFrontOfSource = "In Front of Source";
+        public const string BehindSource = "Behind Source";
         public const string IndexInListGTEC = "Index>=C";
         public const string IndexInListLTEC = "Index<=C";
         public const string IndexInListLTEX = "Index<=X";
@@ -112,11 +115,25 @@ namespace KompasCore.Effects
         public int cSpaces;
         public string[] adjacencySubtypes = new string[0];
 
+        public GameCard Source { get; private set; }
+        public Player Controller { get; private set; }
+        public Effect Effect { get; private set; }
+
         public string blurb = "";
 
         public void Initialize(Subeffect subeff)
         {
             this.Subeffect = subeff;
+            Source = subeff.Source;
+            Controller = subeff.Controller;
+            Effect = subeff.Effect;
+        }
+
+        public void Initialize(GameCard source, Player controller, Effect eff)
+        {
+            Source = source;
+            Controller = controller;
+            Effect = eff;
         }
 
         /// <summary>
@@ -132,14 +149,15 @@ namespace KompasCore.Effects
             switch (restriction)
             {
                 //targets
-                case AlreadyTarget:    return Subeffect.Effect.Targets.Contains(potentialTarget);
-                case NotAlreadyTarget: return !Subeffect.Effect.Targets.Contains(potentialTarget);
+                case AlreadyTarget:    return Effect.Targets.Contains(potentialTarget);
+                case NotAlreadyTarget: return !Effect.Targets.Contains(potentialTarget);
 
                 //names
                 case NameIs:                  return potentialTarget.CardName == nameIs;
                 case SameName:                return Subeffect.Target.CardName == potentialTarget.CardName;
-                case DistinctNameFromTargets: return Subeffect.Effect.Targets.All(card => card.CardName != potentialTarget.CardName);
-                case DistinctNameFromSource:  return Subeffect.Source.CardName != potentialTarget.CardName;
+                case SameNameAsSource:        return potentialTarget.CardName == Source.CardName;
+                case DistinctNameFromTargets: return Effect.Targets.All(card => card.CardName != potentialTarget.CardName);
+                case DistinctNameFromSource:  return Source.CardName != potentialTarget.CardName;
 
                 //card types
                 case IsCharacter: return potentialTarget.CardType == 'C';
@@ -148,9 +166,9 @@ namespace KompasCore.Effects
                 case NotAugment:  return potentialTarget.CardType != 'A';
 
                 //control
-                case Friendly:  return potentialTarget.Controller == Subeffect.Controller;
-                case Enemy:     return potentialTarget.Controller != Subeffect.Controller;
-                case SameOwner: return potentialTarget.Owner == Subeffect.Controller;
+                case Friendly:  return potentialTarget.Controller == Controller;
+                case Enemy:     return potentialTarget.Controller != Controller;
+                case SameOwner: return potentialTarget.Owner == Controller;
                 case TurnPlayerControls: return potentialTarget.Controller == Subeffect.Game.TurnPlayer;
 
                 //summoned
@@ -163,7 +181,7 @@ namespace KompasCore.Effects
                 case SubtypesExclude: return subtypesExclude.All(s => !potentialTarget.SubtypeText.Contains(s));
 
                 //distinct
-                case DistinctFromSource: return potentialTarget != Subeffect.Source;
+                case DistinctFromSource: return potentialTarget != Source;
                 case DistinctFromTarget: return potentialTarget != Subeffect.Target;
 
                 //location
@@ -197,21 +215,24 @@ namespace KompasCore.Effects
                 case SLTEC:    return potentialTarget.S <= constant;
                 case WLTEC:    return potentialTarget.W <= constant;
 
+                case Negated:  return potentialTarget.Negated;
+
                 //positioning
-                case Adjacent:           return potentialTarget.IsAdjacentTo(Subeffect.Source);
+                case Adjacent:           return potentialTarget.IsAdjacentTo(Source);
                 case AdjacentToSubtype:  return potentialTarget.AdjacentCards.Any(card => adjacencySubtypes.All(s => card.SubtypeText.Contains(s)));
-                case InAOE:              return Subeffect.Source.CardInAOE(potentialTarget);
-                case NotInAOE:           return !Subeffect.Source.CardInAOE(potentialTarget);
-                case WithinCSpacesOfSource: return potentialTarget.WithinSpaces(cSpaces, Subeffect.Source);
-                case ExactlyXSpaces:     return potentialTarget.DistanceTo(Subeffect.Source) == Subeffect.Effect.X;
-                case InFrontOfSource:    return Subeffect.Source.CardInFront(potentialTarget);
+                case InAOE:              return Source.CardInAOE(potentialTarget);
+                case NotInAOE:           return !Source.CardInAOE(potentialTarget);
+                case WithinCSpacesOfSource: return potentialTarget.WithinSpaces(cSpaces, Source);
+                case ExactlyXSpaces:     return potentialTarget.DistanceTo(Source) == x;
+                case InFrontOfSource:    return Source.CardInFront(potentialTarget);
+                case BehindSource:       return Source.CardBehind(potentialTarget);
                 case IndexInListGTEC:    return potentialTarget.IndexInList >= constant;
                 case IndexInListLTEC:    return potentialTarget.IndexInList <= constant;
                 case IndexInListLTEX:    return potentialTarget.IndexInList <= x;
-                case SameColumnAsSource: return potentialTarget.SameColumn(Subeffect.Source);
+                case SameColumnAsSource: return potentialTarget.SameColumn(Source);
 
                 //misc
-                case CanBePlayed: return Subeffect.Game.ExistsEffectPlaySpace(Subeffect.Source.PlayRestriction, Subeffect.Effect);
+                case CanBePlayed: return Subeffect.Game.ExistsEffectPlaySpace(Source.PlayRestriction, Effect);
                 case EffectControllerCanPayCost: return Subeffect.Effect.Controller.Pips >= potentialTarget.Cost * costMultiplier / costDivisor;
                 default:
                     Debug.LogError($"You forgot to implement a check for {restriction}");
@@ -237,6 +258,6 @@ namespace KompasCore.Effects
         /// </summary>
         /// <param name="potentialTarget">The card to see if it fits all restrictions</param>
         /// <returns><see langword="true"/> if the card fits all restrictions, <see langword="false"/> if it doesn't fit at least one</returns>
-        public virtual bool Evaluate(GameCard potentialTarget) => Evaluate(potentialTarget, Subeffect.Effect.X);
+        public virtual bool Evaluate(GameCard potentialTarget) => Evaluate(potentialTarget, Effect.X);
     }
 }

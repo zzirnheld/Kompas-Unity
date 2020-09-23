@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"IX - The Hermit",
-	"effText":"Once each friendly turn, when you draw X, you can move a card X slots.",
+	"effText":"Once each turn, when you draw X, you can move a card X slots.",
 	"effects":[
 		{
 			"triggerCondition":"Draw",

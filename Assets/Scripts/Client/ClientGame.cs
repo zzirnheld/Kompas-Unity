@@ -13,9 +13,6 @@ namespace KompasClient.GameCore
 {
     public class ClientGame : Game
     {
-
-        public static ClientGame mainClientGame;
-
         public GameObject AvatarPrefab;
 
         public override Player[] Players => ClientPlayers;
@@ -51,7 +48,7 @@ namespace KompasClient.GameCore
 
         //TODO make client aware that effects have been pushed to stack
         private bool stackEmpty = true;
-        public override bool StackEmpty => stackEmpty;
+        public override bool NothingHappening => stackEmpty;
 
         public override int Leyload 
         { 
@@ -61,12 +58,6 @@ namespace KompasClient.GameCore
                 base.Leyload = value;
                 clientUICtrl.Leyload = Leyload;
             }
-        }
-
-        private void Start()
-        {
-            mainGame = this;
-            mainClientGame = this;
         }
 
         public override void OnClickBoard(int x, int y)
@@ -155,10 +146,7 @@ namespace KompasClient.GameCore
             TurnCount++;
         }
 
-        public override GameCard GetCardWithID(int id)
-        {
-            return cardsByID.ContainsKey(id) ? cardsByID[id] : null;
-        }
+        public override GameCard GetCardWithID(int id) => cardsByID.ContainsKey(id) ? cardsByID[id] : null;
 
         public void ShowCardsByZoom(bool zoomed)
         {

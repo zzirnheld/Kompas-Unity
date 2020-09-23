@@ -130,7 +130,7 @@ namespace KompasCore.Cards
                 if (CardType != 'S') return "";
                 switch (SpellSubtype)
                 {
-                    case TerraformSubtype: return $" Radius {Arg}";
+                    case RadialSubtype: return $" {Arg}";
                     case DelayedSubtype: return $" {Arg} turns";
                     default: return "";
                 }
@@ -144,7 +144,7 @@ namespace KompasCore.Cards
                 {
                     case 'C': return $"N: {N} / E: {E} / S: {S} / W: {W}";
                     case 'S': return $"C {C}{(Fast ? " Fast" : "")} {SpellSubtype}{SpellSubtypeString}";
-                    case 'A': return $"A {A}";
+                    case 'A': return $"A {A}{(AugmentSubtypes != null ? $"Augment: {string.Join(",", AugmentSubtypes)}" : "")}";
                     default: throw new System.NotImplementedException($"Stats string not implemented for card type {CardType}");
                 }
             }
@@ -306,13 +306,13 @@ namespace KompasCore.Cards
             return DistanceTo(card) <= numSpaces;
         }
         public bool WithinSlots(int numSpaces, int x, int y) => DistanceTo(x, y) <= numSpaces;
-        public bool IsAdjacentTo(GameCard card) => card != null && DistanceTo(card) == 1;
-        public bool IsAdjacentTo(int x, int y) => DistanceTo(x, y) == 1;
+        public bool IsAdjacentTo(GameCard card) => Location == CardLocation.Field && card != null && DistanceTo(card) == 1;
+        public bool IsAdjacentTo(int x, int y) => Location == CardLocation.Field && DistanceTo(x, y) == 1;
         public bool CardInAOE(GameCard c) => SpaceInAOE(c.Position);
         public bool SpaceInAOE((int x, int y) space) => SpaceInAOE(space.x, space.y);
         public bool SpaceInAOE(int x, int y)
         {
-            if (CardType != 'S' || SpellSubtype != TerraformSubtype) return false;
+            if (CardType != 'S' || SpellSubtype != RadialSubtype) return false;
             return DistanceTo(x, y) <= Arg;
         }
         public bool SameColumn(int x, int y) => BoardX - BoardY == x - y;
@@ -323,10 +323,7 @@ namespace KompasCore.Cards
         /// </summary>
         /// <param name="space">The space to check if it's in front of this card</param>
         /// <returns><see langword="true"/> if <paramref name="space"/> is in front of this, <see langword="false"/> otherwise.</returns>
-        public bool SpaceInFront((int x, int y) space)
-        {
-            return SameColumn(space.x, space.y) && SubjectiveCoord(space.x) > SubjectivePosition.x;
-        }
+        public bool SpaceInFront((int x, int y) space) => SubjectiveCoord(space.x) > SubjectivePosition.x;
 
         /// <summary>
         /// Returns whether the card passed in is in front of this card
@@ -334,6 +331,20 @@ namespace KompasCore.Cards
         /// <param name="card">The card to check if it's in front of this one</param>
         /// <returns><see langword="true"/> if <paramref name="card"/> is in front of this, <see langword="false"/> otherwise.</returns>
         public bool CardInFront(GameCard card) => SpaceInFront(card.Position);
+
+        /// <summary>
+        /// Returns whether the <paramref name="space"/> passed in is behind this card
+        /// </summary>
+        /// <param name="space">The space to check if it's behind this card</param>
+        /// <returns><see langword="true"/> if <paramref name="space"/> is behind this, <see langword="false"/> otherwise.</returns>
+        public bool SpaceBehind((int x, int y) space) => SubjectiveCoord(space.x) < SubjectivePosition.x;
+
+        /// <summary>
+        /// Returns whether the card passed in is behind this card
+        /// </summary>
+        /// <param name="card">The card to check if it's behind this one</param>
+        /// <returns><see langword="true"/> if <paramref name="card"/> is behind this, <see langword="false"/> otherwise.</returns>
+        public bool CardBehind(GameCard card) => SpaceBehind(card.Position);
         #endregion distance/adjacency
 
         public void PutBack() => cardCtrl?.SetPhysicalLocation(Location);
@@ -391,11 +402,7 @@ namespace KompasCore.Cards
 
         #region statfuncs
         public virtual void SetN(int n, IStackable stackSrc = null) => N = n;
-        public virtual void SetE(int e, IStackable stackSrc = null)
-        {
-            E = e;
-            if (E <= 0 && CardType == 'C') Discard(stackSrc);
-        }
+        public virtual void SetE(int e, IStackable stackSrc = null) => E = e;
         public virtual void SetS(int s, IStackable stackSrc = null) => S = s;
         public virtual void SetW(int w, IStackable stackSrc = null) => W = w;
         public virtual void SetC(int c, IStackable stackSrc = null) => C = c;

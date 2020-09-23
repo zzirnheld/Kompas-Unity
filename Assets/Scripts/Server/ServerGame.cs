@@ -6,6 +6,7 @@ using KompasServer.Cards;
 using KompasServer.Effects;
 using System.Collections.Generic;
 using System.Net.Sockets;
+using System.Linq;
 using UnityEngine;
 
 namespace KompasServer.GameCore
@@ -35,7 +36,7 @@ namespace KompasServer.GameCore
 
         public ServerEffect CurrEffect { get; set; }
         public override IStackable CurrStackEntry => EffectsController.CurrStackEntry;
-        public override bool StackEmpty => EffectsController.StackEmpty;
+        public override bool NothingHappening => EffectsController.StackEmpty;
 
         public override int TurnCount 
         { 
@@ -78,10 +79,7 @@ namespace KompasServer.GameCore
             return currPlayerCount;
         }
 
-        private void GetDeckFrom(ServerPlayer player)
-        {
-            player.ServerNotifier.GetDecklist();
-        }
+        private void GetDeckFrom(ServerPlayer player) => player.ServerNotifier.GetDecklist();
 
         public void GetDecks()
         {
@@ -108,15 +106,17 @@ namespace KompasServer.GameCore
 
         private List<string> SanitizeDeck(string decklist)
         {
-            string[] cards = decklist.Split('\n');
+            /*string[] cards = decklist.Split('\n');
             List<string> deck = new List<string>();
             foreach (string name in cards)
             {
                 if (string.IsNullOrWhiteSpace(name)) continue;
                 if (CardRepository.CardExists(name)) deck.Add(name);
-            }
+            }*/
 
-            return deck;
+            return decklist.Split('\n')
+                .Where(c => !string.IsNullOrWhiteSpace(c) && CardRepository.CardExists(c))
+                .ToList();
         }
 
         public void SetDeck(ServerPlayer player, string decklist)
@@ -311,7 +311,7 @@ namespace KompasServer.GameCore
             ResetCardsForTurn();
 
             //draw for turn and store what was drawn
-            GameCard drawn = Draw(TurnPlayerIndex);
+            Draw(TurnPlayerIndex);
             TurnServerPlayer.ServerNotifier.NotifySetTurn(this, TurnPlayerIndex);
 
             //trigger turn start effects
@@ -320,9 +320,6 @@ namespace KompasServer.GameCore
             EffectsController.CheckForResponse();
         }
 
-        public override GameCard GetCardWithID(int id)
-        {
-            return cardsByID.ContainsKey(id) ? cardsByID[id] : null;
-        }
+        public override GameCard GetCardWithID(int id) => cardsByID.ContainsKey(id) ? cardsByID[id] : null;
     }
 }

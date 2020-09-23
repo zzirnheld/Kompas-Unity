@@ -1,0 +1,75 @@
+{
+	"cardType":83,
+	"cardName":"Mad Blood",
+	"effText":"The first time each turn a friendly Cultist dies, annihilate me and deck-summon 2 Cultist Followers. (If this effect is negated, it can trigger again another turn.)",
+	"effects":[
+		{
+			"triggerCondition":"Discard",
+			"trigger":
+			"{
+				\"blurb\":\"Bloodcurse\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"From Field\",\"Max Per Turn\"],
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Cultist\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Annihilate\"
+				}",
+				"{
+					\"subeffType\":\"Choose From List\",
+					\"maxCanChoose\":1,
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Silent Cult Follower to bloodcurse (1/2)\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Is Character\"],
+						\"subtypesInclude\":[\"Cultist Follower\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where to play Mad Blood's new bloodcurse (1/2)\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Play\"
+				}",
+				"{
+					\"subeffType\":\"Choose From List\",
+					\"maxCanChoose\":1,
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Silent Cult Follower to bloodcurse (2/2)\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Is Character\"],
+						\"subtypesInclude\":[\"Cultist Follower\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where to play Mad Blood's new bloodcurse (2/2)\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Play\"
+				}"
+			]	
+		}
+	],
+	"c":2,
+	"spellType":"Enchant",
+	"subtypeText":"Enchant"
+}

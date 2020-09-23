@@ -4,6 +4,7 @@
 	"effText":"Once each friendly turn, you can hand-bottomdeck X cards to draw X.",
 	"effects":[
 		{
+			"blurb":"Redraw",
 			"activationRestriction":{
 				"activationRestrictions":[
 					"Max Times Per Turn",
@@ -38,6 +39,5 @@
 	"e":5,
 	"s":5,
 	"w":2,
-	"subtypes":["Tarocco","Mage"],
 	"subtypeText":"Tarocco Mage"
 }

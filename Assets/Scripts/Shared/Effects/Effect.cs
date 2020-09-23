@@ -53,9 +53,10 @@ namespace KompasCore.Effects
         public int TimesUsedThisRound { get; protected set; }
         public int TimesUsedThisStack { get; set; }
 
-        public Effect(ActivationRestriction restriction, GameCard source, string blurb, int effIndex)
+        public Effect(ActivationRestriction restriction, GameCard source, string blurb, int effIndex, Player owner)
         {
             Source = source ?? throw new System.ArgumentNullException($"Effect cannot be attached to null card");
+            Controller = owner;
             ActivationRestriction = restriction;
             ActivationRestriction.Initialize(this);
             Blurb = blurb;

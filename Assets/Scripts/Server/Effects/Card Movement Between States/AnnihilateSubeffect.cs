@@ -4,7 +4,7 @@
     {
         public override bool Resolve()
         {
-            if (Target == null) return ServerEffect.EffectImpossible();
+            if (Target == null || Target.Location == CardLocation.Annihilation) return ServerEffect.EffectImpossible();
             else
             {
                 if (Game.annihilationCtrl.Annihilate(Target, Effect)) return ServerEffect.ResolveNextSubeffect();

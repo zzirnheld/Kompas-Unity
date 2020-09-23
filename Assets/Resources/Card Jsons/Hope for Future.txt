@@ -1,0 +1,34 @@
+{
+	"cardType":83,
+	"cardName":"Hope for Future",
+	"effText":"When you summon a Supplicant, gain 1 pip.",
+	"effects":[
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\",\"Triggerer Fits Restriction\"],
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Supplicant\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Add Pips\",
+					\"xModifier\":1
+				}"
+			]	
+		}
+	],
+	"c":3,
+	"PlayRestriction":{
+		"normalRestrictions":["Default Normal Restrictions","Unique"],
+		"effectRestrictions":["Default Effect Restrictions","Unique"]
+	},
+	"spellType":"Enchant",
+	"subtypeText":"Enchant Plea"
+}

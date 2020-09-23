@@ -31,6 +31,7 @@ namespace KompasServer.Effects
                 case HandTarget: return JsonUtility.FromJson<HandTargetSubeffect>(subeffJson);
                 case TargetThis: return JsonUtility.FromJson<TargetThisSubeffect>(subeffJson);
                 case TargetThisSpace: return JsonUtility.FromJson<TargetThisSpaceSubeffect>(subeffJson);
+                case TargetTargetsSpace: return JsonUtility.FromJson<TargetTargetsSpaceSubeffect>(subeffJson);
                 case TargetAugmentedCard: return JsonUtility.FromJson<TargetAugmentedCardSubeffect>(subeffJson);
                 case TargetTriggeringCard: return JsonUtility.FromJson<TargetTriggeringCardSubeffect>(subeffJson);
                 case TargetTriggeringCoords: return JsonUtility.FromJson<TargetTriggeringCoordsSubeffect>(subeffJson);
@@ -40,6 +41,7 @@ namespace KompasServer.Effects
                 case TargetAll: return JsonUtility.FromJson<TargetAllSubeffect>(subeffJson);
                 case AddRest: return JsonUtility.FromJson<AddRestSubeffect>(subeffJson);
                 case TargetDefender: return JsonUtility.FromJson<TargetDefenderSubeffect>(subeffJson);
+                case TargetAttacker: return JsonUtility.FromJson<TargetAttackerSubeffect>(subeffJson);
                 case SpaceTarget: return JsonUtility.FromJson<SpaceTargetSubeffect>(subeffJson);
 
                 //change stats

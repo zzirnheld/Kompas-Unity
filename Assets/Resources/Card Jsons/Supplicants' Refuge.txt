@@ -1,0 +1,51 @@
+{
+	"cardType":83,
+	"cardName":"Supplicants' Refuge",
+	"effText":"When turns start, give Supplicants here +1E.\nYou can annihilate me to gain 3 pips.",
+	"effects":[
+		{
+			"triggerCondition":"Turn Start",
+			"trigger":
+			"{
+				\"blurb\":\"Grant Refuge\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Change NESW All\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"In AOE\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Supplicant\"]
+					},
+					\"eMod\":1
+				}"
+			]	
+		},
+		{
+			"activationRestriction":{
+				"activationRestrictions":[
+					"Default"
+				]
+			},
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Annihilate\"
+				}",
+				"{
+					\"subeffType\":\"Add Pips\",
+					\"xModifier\":3
+				}"
+			]
+		}
+	],
+	"c":3,
+	"spellType":"Radial",
+	"subtypeText":"Radial",
+	"arg":1
+}

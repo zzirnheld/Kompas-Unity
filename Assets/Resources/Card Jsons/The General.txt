@@ -13,64 +13,52 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target All\",
-					\"cardRestriction\":
-					{
-						\"blurb\":\"Warrior for the General to deck-summon\",
-						\"cardRestrictions\":[\"Subtypes Exclude\",\"Is Character\",\"Deck\",\"Index<=C\"],
-						\"subtypesExclude\":[\"Warrior\"],
-						\"constant\":5
-					}
+					\"subeffType\":\"Set X by Math\",
+					\"xModifier\":5
 				}",
 				"{
 					\"subeffType\":\"Jump on Effect Impossible\",
 					\"jumpTo\":8
 				}",
 				"{
-					\"subeffType\":\"Choose From List Saving Rest\",
+					\"subeffType\":\"Choose From List\",
+					\"maxCanChoose\":1,
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Deck\",\"Index<=C\"],
-						\"subtypesInclude\":[\"Warrior\"],
-						\"constant\":5
-					},
-					\"listRestriction\":
-					{
-						\"listRestrictions\":[\"Can Pay Cost\"]
+						\"blurb\":\"Warrior for The General to recruit\",
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Is Character\",\"Index<=X\",\"Subtypes Include\",\"Can Be Played\",\"Effect Controller can Afford Cost\"],
+						\"subtypesInclude\":[\"Warrior\"]
 					}
-				}",
-				"{
-					\"subeffType\":\"Clear Jump on Effect Impossible\"
 				}",
 				"{
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
+						\"blurb\":\"where for The General to recruit their Warrior\",
 						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
+				}",
+				"{
+					\"subeffType\":\"Pay Target's Cost in Pips\"
 				}",
 				"{
 					\"subeffType\":\"Play\"
 				}",
 				"{
-					\"subeffType\":\"Delete Target\",
-					\"DeleteIndex\":-1
+					\"subeffType\":\"Count X Loop\",
+					\"canDecline\":true,
+					\"jumpTo\":2,
+					\"increment\":false
 				}",
 				"{
-					\"subeffType\":\"Loop X Times\",
-					\"jumpTo\":4
+					\"subeffType\":\"Add Rest\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<=X\",\"Not Already Target\"]
+					}
 				}",
 				"{
-					\"subeffType\":\"Bottomdeck\",
-					\"targetIndex\":-1
-				}",
-				"{
-					\"subeffType\":\"Delete Target\",
-					\"DeleteIndex\":-1
-				}",
-				"{
-					\"subeffType\":\"Loop While Have Targets\",
-					\"jumpTo\":8
+					\"subeffType\":\"Bottomdeck Rest\"
 				}"
 			]
 		}
@@ -79,6 +67,5 @@
 	"e":9,
 	"s":10,
 	"w":11,
-	"subtypes":["Swordguild","Warrior"],
 	"subtypeText":"Swordguild Warrior"
 }

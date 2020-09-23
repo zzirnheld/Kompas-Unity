@@ -1,0 +1,48 @@
+{
+	"cardType":83,
+	"cardName":"Cyclical Sacrifice",
+	"effText":"Reshuffle X of your dead Cultists. Gain X pips. Annihilate me.",
+	"effects":[
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Discard Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"for Cyclical Sacrifice to reshuffle\",
+						\"cardRestrictions\":[\"Friendly\",\"Discard\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Cultist\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Reshuffle\"
+				}",
+				"{
+					\"subeffType\":\"Count X Loop\",
+					\"canDecline\":true,
+					\"jumpTo\":0
+				}",
+				"{
+					\"subeffType\":\"Add Pips\",
+					\"xMultiplier\":1
+				}",
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Annihilate\"
+				}"
+			]
+		}
+	],
+	"c":1,
+	"spellType":"Simple",
+	"subtypeText":"Simple"
+}

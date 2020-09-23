@@ -23,8 +23,8 @@
 		}
 	],
 	"c":3,
-	"spellType":"Terraform",
-	"subtypes":["Terraform"],
-	"subtypeText":"Terraform",
+	"spellType":"Radial",
+	"subtypes":["Radial"],
+	"subtypeText":"Radial",
 	"arg":1
 }

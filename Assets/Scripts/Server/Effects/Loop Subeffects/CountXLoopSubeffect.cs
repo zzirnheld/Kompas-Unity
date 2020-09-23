@@ -2,12 +2,16 @@
 {
     public class CountXLoopSubeffect : LoopSubeffect
     {
+        //if true, increments x each iteration. if false, decrements
+        public bool increment = true;
+
         protected override bool ShouldContinueLoop
         {
             get
             {
                 //count the number of times this happens
-                ServerEffect.X++;
+                if (increment) ServerEffect.X++;
+                else ServerEffect.X--;
 
                 //let the effect know that if there are no more targets, then call this for loop exit
                 ServerEffect.OnImpossible = this;

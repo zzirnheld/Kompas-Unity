@@ -57,6 +57,17 @@ namespace KompasCore.GameCore
             return list;
         }
 
+        public List<GameCard> CardsAndAugsWhere(Func<GameCard, bool> predicate)
+        {
+            var list = new List<GameCard>();
+            foreach(var card in Board)
+            {
+                if (predicate(card)) list.Add(card);
+                if (card != null) list.AddRange(card.Augments.Where(predicate));
+            }
+            return list;
+        }
+
         /// <summary>
         /// A really bad Dijkstra's because this is a fun side project and I'm not feeling smart today
         /// </summary>

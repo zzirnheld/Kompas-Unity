@@ -42,11 +42,11 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Add Pips\",
-					\"modifier\":1
+					\"xModifier\":1
 				}",
 				"{
 					\"subeffType\":\"Change Leyload\",
-					\"modifier\":1
+					\"xModifier\":1
 				}"
 			]	
 		}

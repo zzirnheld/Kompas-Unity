@@ -1,0 +1,36 @@
+{
+	"cardType":67,
+	"cardName":"Heart Eater",
+	"effText":"When a friendly character dies, I get +1EW.",
+	"effects":[
+		{
+			"triggerCondition":"Discard",
+			"trigger":
+			"{
+				\"blurb\":\"Eat Heart\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"From Field\"],
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"X Change NESW\",
+					\"eMod\":1,
+					\"wMod\":1
+				}"
+			]
+		}
+	],
+	"n":2,
+	"e":2,
+	"s":4,
+	"w":2,
+	"subtypeText":"Cultist Warrior"
+}

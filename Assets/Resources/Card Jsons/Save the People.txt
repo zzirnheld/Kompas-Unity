@@ -1,0 +1,52 @@
+{
+	"cardType":83,
+	"cardName":"Save the People",
+	"effText":"Rehand X of your dead Supplicants. Gain X pips. Annihilate me.",
+	"effects":[
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Discard Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"for Save the People to rehand\",
+						\"cardRestrictions\":[\"Friendly\",\"Discard\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Supplicant\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Rehand\"
+				}",
+				"{
+					\"subeffType\":\"Count X Loop\",
+					\"canDecline\":true,
+					\"jumpTo\":0
+				}",
+				"{
+					\"subeffType\":\"Add Pips\",
+					\"xMultiplier\":1
+				}",
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Annihilate\"
+				}"
+			]
+		}
+	],
+	"c":4,
+	"PlayRestriction":{
+		"normalRestrictions":["Default Normal Restrictions","Unique"],
+		"effectRestrictions":["Default Effect Restrictions","Unique"]
+	},
+	"spellType":"Simple",
+	"subtypeText":"Simple Plea"
+}

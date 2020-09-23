@@ -14,8 +14,8 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Set X by Math\",
-					\"multiplier\":0,
-					\"modifier\":2
+					\"xMultiplier\":0,
+					\"xModifier\":2
 				}",
 				"{
 					\"subeffType\":\"Draw X\"
@@ -24,7 +24,7 @@
 		}
 	],
 	"PlayRestriction":{
-		"NormalRestrictions":["Cannot be Played Normally"]
+		"normalRestrictions":["Cannot be Played Normally"]
 	},
 	"c":1,
 	"spellType":"Simple",

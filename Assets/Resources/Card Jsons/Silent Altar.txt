@@ -1,0 +1,98 @@
+{
+	"cardType":83,
+	"cardName":"Silent Altar",
+	"effText":"When a Cultist here dies, I get +1C.\nYou can tribute Altars with total C 31 to hand- or deck-summon any character.",
+	"effects":[
+		{
+			"triggerCondition":"Discard",
+			"trigger":
+			"{
+				\"blurb\":\"Reshuffle\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"Triggerer Fits Restriction\",\"From Field\"],
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Subtypes Include\",\"Board\",\"Friendly\"],
+						\"subtypesInclude\":[\"Cultist\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Change C\",
+					\"XModifier\":1
+				}"
+			]
+		},
+		{
+			"activationRestriction":{
+				"activationRestrictions":[
+					"Default"
+				]
+			},
+			"subeffects":[
+				"{
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Altar(s) to sacrifice\",
+						\"cardRestrictions\":[\"Is Spell\",\"Subtypes Include\",\"Friendly\",\"Hand\",\"Not Already Target\"],
+						\"subtypesInclude\":[\"Altar\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Change X by Target Value\",
+					\"whatToCount\":\"Cost\"
+				}",
+				"{
+					\"subeffType\":\"Conditionally Jump\",
+					\"condition\":\"X >= Constant\",
+					\"constant\":31,
+					\"jumpIndex\":4
+				}",
+				"{
+					\"subeffType\":\"Loop\",
+					\"canDecline\":true,
+					\"jumpTo\":0
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Delete Target\"
+				}",
+				"{
+					\"subeffType\":\"Loop While Have Targets\",
+					\"jumpTo\":4
+				}",
+				"{
+					\"subeffType\":\"Choose From List\",
+					\"maxCanChoose\":1,
+					\"cardRestriction\":
+					{
+						\"blurb\":\"culmination of the Silent Altar Ritual\",
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Is Character\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where to play the result Silent Altar Ritual\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Play\"
+				}"
+			]
+		}
+	],
+	"c":5,
+	"spellType":"Radial",
+	"subtypeText":"Altar Radial",
+	"arg":1
+}

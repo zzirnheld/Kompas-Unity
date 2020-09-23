@@ -1,0 +1,62 @@
+{
+	"cardType":67,
+	"cardName":"Dragon Hatchling",
+	"effText":"After I’m summoned, delay 1 turn, then tribute me, discard a Dragon, and hand-summon a Dragon where I was.",
+	"effects":[
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Delay Effect Resolution\",
+					\"numTimesToDelay\":0,
+					\"indexToResume\":1,
+					\"endCondition\":\"Turn Start\"
+				}",
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Target This Space\"
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Hand Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"for Dragon Hatchling to eat (discard)\",
+						\"cardRestrictions\":[\"Friendly\",\"Is Character\",\"Hand\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Dragon\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Hand Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"for Dragon Hatchling to become (play)\",
+						\"cardRestrictions\":[\"Friendly\",\"Is Character\",\"Hand\",\"Subtypes Include\",\"Can Be Played\"],
+						\"subtypesInclude\":[\"Dragon\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Play\"
+				}"
+			]
+		}
+	],
+	"n":0,
+	"e":2,
+	"s":2,
+	"w":0,
+	"subtypeText":"Dragon"
+}

@@ -3,6 +3,7 @@ using KompasCore.Cards;
 using KompasServer.GameCore;
 using System.Linq;
 using UnityEngine;
+using KompasClient.Effects;
 
 namespace KompasCore.Effects
 {
@@ -21,6 +22,7 @@ namespace KompasCore.Effects
         //public const string StackEmpty = "Stack Empty";
         public const string ControllerActivates = "Controller Activates";
         public const string NotNegated = "Not Negated";
+        public const string CardExists = "Card Exists";
 
         public const string Default = "Default";
         public static readonly string[] DefaultRestrictions =
@@ -30,12 +32,14 @@ namespace KompasCore.Effects
 
         public int maxTimes = 1;
         public int location = (int) CardLocation.Field;
+        public CardRestriction existsRestriction = new CardRestriction();
 
         public List<string> activationRestrictions = new List<string>{ "Default" };
 
         public void Initialize(Effect eff)
         {
             Effect = eff;
+            existsRestriction.Initialize(eff.Source, eff.Controller, eff);
             if (activationRestrictions.Contains("Default")) activationRestrictions.AddRange(DefaultRestrictions);
             Debug.Log($"Initializing activation restriction for {Card.CardName} with restrictions: {string.Join(", ", activationRestrictions)}");
             //Debug.Log($"Serialized version: {JsonUtility.ToJson(this)}");
@@ -43,6 +47,8 @@ namespace KompasCore.Effects
 
         private bool RestrictionValid(string r, Player activator)
         {
+            //Debug.Log($"Considering activation restriction {r} for {Effect.Source.CardName}");
+
             switch (r)
             {
                 case Default: return true;
@@ -55,9 +61,8 @@ namespace KompasCore.Effects
                 //case StackEmpty: return Effect.Game.CurrStackEntry == null; //TODO make client game actually track current stack entry
                 case ControllerActivates: return activator == Card.Controller;
                 case NotNegated: return !Effect.Negated;
-                default:
-                    Debug.LogError($"You forgot to check for {r} in Activation Restriction switch");
-                    return false;
+                case CardExists: return Effect.Game.Cards.Any(c => existsRestriction.Evaluate(c));
+                default: throw new System.ArgumentException($"Invalid activation restriction {r}");
             }
         }
 

@@ -422,7 +422,7 @@ namespace KompasClient.UI
             if (debugPipsField.text != "")
             {
                 int toSetPips = int.Parse(debugPipsField.text);
-                ClientGame.mainClientGame.clientNotifier.RequestUpdatePips(toSetPips);
+                clientGame.clientNotifier.RequestUpdatePips(toSetPips);
             }
         }
 

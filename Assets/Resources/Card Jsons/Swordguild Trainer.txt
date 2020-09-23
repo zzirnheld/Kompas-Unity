@@ -21,19 +21,15 @@
 				}",
 				"{
 					\"subeffType\":\"Change NESW\",
-					\"nChange\":1,
-					\"eChange\":0,
-					\"sChange\":0,
-					\"wChange\":0,
-					\"targetIndex\":0
+					\"nChange\":1
 				}"
 			]
 		}
 	],
-	"n":3,
+	"n":2,
 	"e":3,
 	"s":4,
-	"w":3,
+	"w":4,
 	"subtypes":["Swordguild","Warrior"],
 	"subtypeText":"Swordguild Warrior"
 }

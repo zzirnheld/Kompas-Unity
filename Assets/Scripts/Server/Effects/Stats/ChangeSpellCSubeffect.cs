@@ -1,14 +1,9 @@
 ﻿namespace KompasServer.Effects
 {
     public class ChangeSpellCSubeffect : ServerSubeffect
-    {
-        public int XModifier = 0;
-        public int XMultiplier = 0;
-        public int XDivisor = 1;
-
-        public override bool Resolve()
+    {public override bool Resolve()
         {
-            Target.SetC(ServerEffect.X * XMultiplier / XDivisor + XModifier, Effect);
+            Target.SetC(Count, Effect);
             return ServerEffect.ResolveNextSubeffect();
         }
     }

@@ -76,7 +76,7 @@ public class CardRepository : MonoBehaviour
             json = json.Replace("\r", "");
             json = json.Replace("\t", "");
             //add the cleaned json to the dictionary
-            Debug.Log($"Adding json for \"{nameClean}\" of length {nameClean.Length} to dictionary");
+            Debug.Log($"Adding json for \"{nameClean}\" of length {nameClean.Length} to dictionary. Json:\n{json}");
             cardJsons.Add(nameClean, json);
         }
     }
@@ -185,12 +185,12 @@ public class CardRepository : MonoBehaviour
         }
     }
 
-    private ClientEffect[] CreateClientEffects(SerializableEffect[] serEffs, GameCard card, ClientGame clientGame)
+    private ClientEffect[] CreateClientEffects(SerializableEffect[] serEffs, GameCard card, ClientGame clientGame, ClientPlayer owner)
     {
         ClientEffect[] effects = new ClientEffect[serEffs.Length];
         for (int i = 0; i < effects.Length; i++)
         {
-            effects[i] = new ClientEffect(serEffs[i], card, clientGame, i);
+            effects[i] = new ClientEffect(serEffs[i], card, clientGame, i, owner);
         }
         return effects;
     }
@@ -208,7 +208,7 @@ public class CardRepository : MonoBehaviour
             SerializableCard charCard = JsonUtility.FromJson<SerializableCard>(cardJsons[cardName]);
             if (charCard.cardType != 'C') return null;
             AvatarClientGameCard avatar = Instantiate(ClientAvatarPrefab).GetComponent<AvatarClientGameCard>();
-            ClientEffect[] effects = CreateClientEffects(charCard.effects, avatar, clientGame);
+            ClientEffect[] effects = CreateClientEffects(charCard.effects, avatar, clientGame, owner);
             avatar.SetInfo(charCard, clientGame, owner, effects, id);
             avatar.gameObject.GetComponentInChildren<ClientCardMouseController>().ClientGame = clientGame;
             avatar.cardCtrl.SetImage(avatar.CardName, false);
@@ -246,7 +246,7 @@ public class CardRepository : MonoBehaviour
                     Debug.LogError("Unrecognized type character " + serializableCard.cardType + " in " + json);
                     return null;
             }
-            ClientEffect[] effects = CreateClientEffects(serializableCard.effects, card, clientGame);
+            ClientEffect[] effects = CreateClientEffects(serializableCard.effects, card, clientGame, owner);
             card.SetInfo(serializableCard, clientGame, owner, effects, id);
             card.cardCtrl.SetImage(card.CardName, false);
             card.gameObject.GetComponentInChildren<ClientCardMouseController>().ClientGame = clientGame;
@@ -311,5 +311,12 @@ public class CardRepository : MonoBehaviour
             return null;
         }
     }
+
+    public static IEnumerable<SerializableCard> GetSerializableCards(IEnumerable<string> jsons)
+    {
+        return jsons.Select(json => JsonUtility.FromJson<SerializableCard>(json));
+    }
+
+    public static IEnumerable<SerializableCard> SerializableCards => GetSerializableCards(CardJsons);
     #endregion Create Cards
 }

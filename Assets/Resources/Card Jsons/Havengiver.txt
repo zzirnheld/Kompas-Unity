@@ -1,0 +1,46 @@
+{
+	"cardType":67,
+	"cardName":"Havengiver",
+	"effText":"When turns start, you can revive an S <= 1 Supplicant.",
+	"effects":[
+		{
+			"triggerCondition":"Turn Start",
+			"trigger":
+			"{
+				\"blurb\":\"Give Safe Haven\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Choose From List\",
+					\"maxCanChoose\":1,
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Supplicant to give safe haven\",
+						\"cardRestrictions\":[\"Friendly\",\"Discard\",\"Is Character\",\"S<=C\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Supplicant\"],
+						\"constant\":1
+					}
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"haven to play the Supplicant\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Play\"
+				}"
+			]
+		}
+	],
+	"n":1,
+	"e":3,
+	"s":4,
+	"w":3,
+	"subtypeText":"Supplicant"
+}

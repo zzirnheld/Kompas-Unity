@@ -21,7 +21,7 @@
 				"{
 					\"subeffType\":\"Pay Pips\",
 					\"xMultiplier\":0,
-					\"modifier\":2
+					\"xModifier\":2
 				}",
 				"{
 					\"subeffType\":\"Target Triggering Card\"

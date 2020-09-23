@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"The Eldest",
-	"effText":"Territorial: When turns start, kill an adjacent friendly Dragon. When I attack, kill my target.",
+	"effText":"Territorial: When turns start, kill an adjacent friendly character.\nWhen I attack, kill my target.",
 	"effects":[
 		{
 			"triggerCondition":"Turn Start",
@@ -16,9 +16,8 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"adjacent Dragon for the Eldest to kill\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"],
-						\"subtypesInclude\":[\"Dragon\"]
+						\"blurb\":\"adjacent character for the Eldest to kill\",
+						\"cardRestrictions\":[\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"]
 					}
 				}",
 				"{
@@ -49,5 +48,5 @@
 	"s":9,
 	"w":4,
 	"subtypes":["Dragon"],
-	"subtypeText":"Dragon"
+	"subtypeText":"Flying Dragon"
 }

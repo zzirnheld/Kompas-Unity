@@ -9,6 +9,7 @@ namespace KompasServer.Effects
     {
         public TriggerRestriction triggerRestriction = new TriggerRestriction();
         public string endCondition;
+        public virtual bool ContinueResolution => true;
 
         public string fallOffCondition = Trigger.Remove;
         public string[] fallOffRestrictions =
@@ -45,7 +46,8 @@ namespace KompasServer.Effects
             }
 
             //after all that's done, make it do the next subeffect
-            return ServerEffect.ResolveNextSubeffect();
+            if (ContinueResolution) return ServerEffect.ResolveNextSubeffect();
+            else return ServerEffect.EndResolution();
         }
 
         protected abstract IEnumerable<HangingEffect> CreateHangingEffects();

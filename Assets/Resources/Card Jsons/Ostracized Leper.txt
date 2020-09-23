@@ -1,0 +1,31 @@
+{
+	"cardType":67,
+	"cardName":"Ostracized Leper",
+	"effText":"When turns start, give me -1E.",
+	"effects":[
+		{
+			"triggerCondition":"Turn Start",
+			"trigger":
+			"{
+				\"blurb\":\"Leprosy\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"X Change NESW\",
+					\"eMod\":-1
+				}"
+			]
+		}
+	],
+	"n":1,
+	"e":2,
+	"s":1,
+	"w":1,
+	"subtypeText":"Supplicant"
+}

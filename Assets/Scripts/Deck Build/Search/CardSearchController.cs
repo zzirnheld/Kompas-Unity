@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using System.Linq;
 using KompasCore.Cards;
+using System;
 
 namespace KompasDeckbuilder
 {
@@ -74,6 +75,13 @@ namespace KompasDeckbuilder
             card.Show();
         }
 
+        /*
+        private SerializableCard LoadCard(string json)
+        {
+            Debug.Log(json);
+            return JsonUtility.FromJson<SerializableCard>(json);
+        }*/
+
         private void SearchCards()
         {
             //first clear all shown cards
@@ -95,8 +103,7 @@ namespace KompasDeckbuilder
             string subtypesLower = subtypeToSearch?.ToLower();
             string textLower = textToSearch?.ToLower();
 
-            //assuming everything is valid, get all the jsons that fit that
-            var serializeds = CardRepository.CardJsons.Select(json => JsonUtility.FromJson<SerializableCard>(json));
+            var serializeds = CardRepository.SerializableCards;
 
             if (!string.IsNullOrWhiteSpace(nameLower) && nameLower.Length >= 2)
                 serializeds = serializeds.Where(s => s.cardName.ToLower().Contains(nameLower));

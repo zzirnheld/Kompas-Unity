@@ -1,0 +1,58 @@
+{
+	"cardType":83,
+	"cardName":"Answered Prayers",
+	"effText":"When turns start, rehand a dead Supplicant.\nYou can annihilate me to gain 3 pips.",
+	"effects":[
+		{
+			"triggerCondition":"Turn Start",
+			"trigger":
+			"{
+				\"blurb\":\"Grant Refuge\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Choose From List\",
+					\"maxCanChoose\":1,
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Supplicant to answer prayers\",
+						\"cardRestrictions\":[\"Friendly\",\"Discard\",\"Is Character\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Supplicant\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Rehand\"
+				}"
+			]	
+		},
+		{
+			"activationRestriction":{
+				"activationRestrictions":[
+					"Default"
+				]
+			},
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Annihilate\"
+				}",
+				"{
+					\"subeffType\":\"Add Pips\",
+					\"xModifier\":3
+				}"
+			]
+		}
+	],
+	"c":3,
+	"PlayRestriction":{
+		"normalRestrictions":["Default Normal Restrictions","Unique"],
+		"effectRestrictions":["Default Effect Restrictions","Unique"]
+	},
+	"spellType":"Enchant",
+	"subtypeText":"Enchant Plea"
+}

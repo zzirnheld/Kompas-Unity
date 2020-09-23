@@ -1,0 +1,36 @@
+{
+	"cardType":83,
+	"cardName":"Unwavering Devotion",
+	"effText":"When a friendly Cultist dies, give friendly Cultists +1W.",
+	"effects":[
+		{
+			"triggerCondition":"Discard",
+			"trigger":
+			"{
+				\"blurb\":\"Unwavering Devotion\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"From Field\"],
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Cultist\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Change NESW All\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Cultist\"]
+					},
+					\"wMod\":1
+				}"
+			]	
+		}
+	],
+	"c":2,
+	"spellType":"Enchant",
+	"subtypeText":"Enchant"
+}

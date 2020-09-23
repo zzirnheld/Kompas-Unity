@@ -10,6 +10,7 @@ namespace KompasCore.Effects
         public const string NESWChange = "NESW Change";
         public const string Activate = "Activate";
         public const string Deactivate = "Deactivate";
+        public const string Negate = "Negate";
         public const string NChange = "N Change";
         public const string EChange = "E Change";
         public const string SChange = "S Change";

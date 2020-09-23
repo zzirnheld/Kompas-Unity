@@ -25,11 +25,11 @@
 		}
 	],
 	"PlayRestriction":{
-		"NormalRestrictions":["Cannot be Played Normally"]
+		"normalRestrictions":["Cannot be Played Normally"]
 	},
 	"c":4,
-	"spellType":"Terraform",
-	"subtypes":["Rune","Terraform"],
-	"subtypeText":"Rune Terraform",
+	"spellType":"Radial",
+	"subtypes":["Rune","Radial"],
+	"subtypeText":"Rune Radial",
 	"arg":1
 }

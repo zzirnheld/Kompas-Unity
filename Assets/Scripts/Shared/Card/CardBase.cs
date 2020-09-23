@@ -6,13 +6,14 @@ namespace KompasCore.Cards
     {
         public const string SimpleSubtype = "Simple";
         public const string DelayedSubtype = "Delayed";
-        public const string TerraformSubtype = "Terraform";
+        public const string RadialSubtype = "Radial";
         public const string VanishingSubtype = "Vanishing";
 
         public char CardType { get; private set; }
         public string CardName { get; private set; }
         public string EffText { get; private set; }
         public string SubtypeText { get; private set; }
+        public string[] AugmentSubtypes { get; private set; }
 
         public Sprite detailedSprite;
         public Sprite simpleSprite;
@@ -23,6 +24,7 @@ namespace KompasCore.Cards
             CardName = card.cardName;
             EffText = card.effText;
             SubtypeText = card.subtypeText;
+            AugmentSubtypes = card.augSubtypes;
 
             detailedSprite = Resources.Load<Sprite>("Detailed Sprites/" + CardName);
             simpleSprite = Resources.Load<Sprite>("Simple Sprites/" + CardName);

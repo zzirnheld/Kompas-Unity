@@ -35,12 +35,12 @@
 				}",
 				"{
 					\"subeffType\":\"Jump on Effect Impossible\",
-					\"jumpTo\":4
+					\"jumpTo\":6
 				}",
 				"{
 					\"subeffType\":\"Pay Pips\",
 					\"xMultiplier\":0,
-					\"modifier\":1
+					\"xModifier\":1
 				}",
 				"{
 					\"subeffType\":\"End Effect Resolution\"

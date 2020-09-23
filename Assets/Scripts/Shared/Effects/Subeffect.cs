@@ -25,8 +25,10 @@ namespace KompasCore.Effects
         public const string TargetAll = "Target All";
         public const string AddRest = "Add Rest";
         public const string TargetDefender = "Target Defender";
+        public const string TargetAttacker = "Target Attacker";
         public const string TargetTriggeringCard = "Target Triggering Card";
         public const string TargetTriggeringCoords = "Target Triggering Space";
+        public const string TargetTargetsSpace = "Target Target's Space";
 
         //changing values, esp. on cards
         //TODO deprecate change nesw
@@ -49,6 +51,8 @@ namespace KompasCore.Effects
         public const string PayPipsByTargetCost = "Pay Target's Cost in Pips";
         public const string Resummon = "Resummon";
         public const string ResummonAll = "Resummon All";
+
+        public const string PayStats = "Pay Stats";
 
         //effect x
         public const string SetXByBoardCount = "Set X by Board Count";
@@ -139,6 +143,26 @@ namespace KompasCore.Effects
         /// Represents the type of subeffect this is
         /// </summary>
         public string subeffType;
+
+        /// <summary>
+        /// If the effect uses X, this is the multiplier to X
+        /// </summary>
+        public int xMultiplier = 0;
+
+        /// <summary>
+        /// If the effect uses X, this is the divisor to X
+        /// </summary>
+        public int xDivisor = 1;
+
+        /// <summary>
+        /// If the effect uses X, this is the modifier to X
+        /// </summary>
+        public int xModifier = 0;
+
+        /// <summary>
+        /// If the effect uses X, this is the adjusted value of X
+        /// </summary>
+        public int Count => (Effect.X * xMultiplier / xDivisor) + xModifier;
 
         public GameCard GetTarget(int num)
         {

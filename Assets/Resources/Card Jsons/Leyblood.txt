@@ -1,0 +1,33 @@
+{
+	"cardType":83,
+	"cardName":"Leyblood",
+	"effText":"When a friendly Dragon kills a character, gain a pip.",
+	"effects":[
+		{
+			"triggerCondition":"Discard",
+			"trigger":
+			"{
+				\"blurb\":\"Leyblood\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"Stackable Source Fits Restriction\"],
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Is Character\"]
+					},
+					\"sourceRestriction\":{
+						\"cardRestrictions\":[\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Dragon\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Add Pips\",
+					\"xModifier\":1
+				}"
+			]	
+		}
+	],
+	"c":2,
+	"spellType":"Enchant",
+	"subtypeText":"Enchant"
+}
