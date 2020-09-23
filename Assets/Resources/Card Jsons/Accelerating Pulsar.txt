@@ -1,0 +1,66 @@
+{
+	"cardType":67,
+	"cardName":"Accelerating Pulsar",
+	"effText":"When your Avatar gains S, give adjacent characters +1 N.\nWhen your Avatar loses S, give adjacent characters -1 N.",
+	"effects":[
+		{
+			"triggerCondition":"S Change",
+			"trigger":
+			"{
+				\"blurb\":\"Accelerate\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\",\"Triggerer Fits Restriction\"],
+					\"xRestriction\":{
+						\"xRestrictions\":[\">0\"]
+					},
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Board\",\"Avatar\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Change NESW All\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Adjacent\"]
+					},
+					\"nMod\":1
+				}"
+			]	
+		},
+		{
+			"triggerCondition":"S Change",
+			"trigger":
+			"{
+				\"blurb\":\"Decelerate\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\",\"Triggerer Fits Restriction\"],
+					\"xRestriction\":{
+						\"xRestrictions\":[\"<0\"]
+					},
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Board\",\"Avatar\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Change NESW All\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Adjacent\"]
+					},
+					\"nMod\":-1
+				}"
+			]	
+		}
+	],
+	"n":1,
+	"e":3,
+	"s":3,
+	"w":3,
+	"subtypes":["Pulsar"]
+}

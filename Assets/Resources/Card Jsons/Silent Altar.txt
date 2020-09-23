@@ -23,7 +23,7 @@
 				}",
 				"{
 					\"subeffType\":\"Change C\",
-					\"XModifier\":1
+					\"xModifier\":1
 				}"
 			]
 		},

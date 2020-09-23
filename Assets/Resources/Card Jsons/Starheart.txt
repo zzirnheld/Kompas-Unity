@@ -1,0 +1,47 @@
+{
+	"cardType":67,
+	"cardName":"Starheart",
+	"effText":"Once each turn, you can give me +1 S.\nOnce each turn, you can give me -1 S.",
+	"effects":[
+		{
+			"blurb":"Surge",
+			"activationRestriction":{
+				"activationRestrictions":[
+					"Max Times Per Turn",
+					"Default"
+				]
+			},
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"X Change NESW\",
+					\"sMod\":1
+				}"
+			]
+		},
+		{
+			"blurb":"Shrink",
+			"activationRestriction":{
+				"activationRestrictions":[
+					"Max Times Per Turn",
+					"Default"
+				]
+			},
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"X Change NESW\",
+					\"sMod\":-1
+				}"
+			]
+		}
+	],
+	"n":0,
+	"e":5,
+	"s":5,
+	"w":5
+}

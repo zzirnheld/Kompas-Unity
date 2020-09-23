@@ -1,0 +1,80 @@
+{
+	"cardType":83,
+	"cardName":"Coalescing Stardust",
+	"effText":"When your Avatar gets +-X S, give me +-X C. (If they lose S, I lose C. If they gain S, I gain C.)\nDelay 2 turns.\nSet X to my C. Deck-summon an SX Pulsar.",
+	"effects":[
+		{
+			"triggerCondition":"S Change",
+			"trigger":
+			"{
+				\"blurb\":\"Flare\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Board\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Change C\",
+					\"xMultiplier\":1
+				}"
+			]
+		},
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Delay Effect Resolution\",
+					\"numTimesToDelay\":1,
+					\"indexToResume\":1,
+					\"triggerCondition\":\"Turn Start\"
+				}",
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Set X by Target Value\",
+					\"whatToCount\":\"C\"
+				}",
+				"{
+					\"subeffType\":\"Choose From List\",
+					\"maxCanChoose\":1,
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Pulsar to coalesce\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Is Character\",\"S==X\"],
+						\"subtypesInclude\":[\"Pulsar\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where to play newly coalesced Pulsar\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Play\"
+				}"
+			]
+		}
+	],
+	"c":1,
+	"spellType":"Delayed",
+	"subtypes":["Delayed"],
+	"subtypeText":"Delayed",
+	"arg":2
+}
