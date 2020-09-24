@@ -1,0 +1,58 @@
+{
+	"cardType":83,
+	"cardName":"Starstuff",
+	"effText":"Give your Avatar +-5 S. You can then annihilate me to draw 1.",
+	"effects":[
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target Avatar\"
+				}",
+				"{
+					\"subeffType\":\"Choose Effect Option\",
+					\"ChoiceBlurb\":\"Give +5 S or -5 S?\",
+					\"OptionBlurbs\":[\"+5 S\",\"-5 S\"],
+					\"OptionJumpIndices\":[2,4]
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
+					\"sChange\":5
+				}",
+				"{
+					\"subeffType\":\"Jump\",
+					\"indexToJumpTo\":5
+				}",
+				"{
+					\"subeffType\":\"Change NESW\",
+					\"sChange\":-5
+				}",
+				"{
+					\"subeffType\":\"Choose Effect Option\",
+					\"ChoiceBlurb\":\"Annihilate me and draw 1?\",
+					\"OptionBlurbs\":[\"Yes\",\"No\"],
+					\"OptionJumpIndices\":[7,100]
+				}",
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Annihilate\"
+				}",
+				"{
+					\"subeffType\":\"Draw\"
+				}"
+			]	
+		}
+	],
+	"fast":true,
+	"c":1,
+	"spellType":"Simple",
+	"subtypes":["Simple"]
+}

@@ -1,0 +1,65 @@
+{
+	"cardType":83,
+	"cardName":"Cannot Be Created Nor Destroyed",
+	"effText":"When turns start, reshuffle all X friendly discarded Pulsars, give your Avatar +-X S, and draw 1.",
+	"effects":[
+		{
+			"triggerCondition":"Turn Start",
+			"trigger":
+			"{
+				\"blurb\":\"Repurpose Starstuff\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target All\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Friendly\",\"Discard\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Pulsar\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Reshuffle\"
+				}",
+				"{
+					\"subeffType\":\"Delete Target\"
+				}",
+				"{
+					\"subeffType\":\"Count X Loop\",
+					\"canDecline\":false,
+					\"jumpTo\":1
+				}",
+				"{
+					\"subeffType\":\"Target Avatar\"
+				}",
+				"{
+					\"subeffType\":\"Choose Effect Option\",
+					\"ChoiceBlurb\":\"Give +X S or -X S?\",
+					\"OptionBlurbs\":[\"+X S\",\"-X S\"],
+					\"OptionJumpIndices\":[6,8]
+				}",
+				"{
+					\"subeffType\":\"X Change NESW\",
+					\"sMult\":1
+				}",
+				"{
+					\"subeffType\":\"Jump\",
+					\"indexToJumpTo\":9
+				}",
+				"{
+					\"subeffType\":\"X Change NESW\",
+					\"sMult\":-1
+				}",
+				"{
+					\"subeffType\":\"Draw\"
+				}"
+			]	
+		}
+	],
+	"c":1,
+	"spellType":"Enchant",
+	"subtypes":["Enchant"]
+}

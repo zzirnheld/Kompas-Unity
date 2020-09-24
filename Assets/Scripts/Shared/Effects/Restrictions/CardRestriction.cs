@@ -78,6 +78,9 @@ namespace KompasCore.Effects
         public const string ELTEC = "E<=C";
         public const string SLTEC = "S<=C";
         public const string WLTEC = "W<=C";
+        //misc statlike
+        public const string CostLTAvatar = "Cost<Avatar";
+        public const string CostGTAvatar = "Cost>Avatar";
 
         public const string Negated = "Negated";
 
@@ -214,6 +217,9 @@ namespace KompasCore.Effects
                 case ELTEC:    return potentialTarget.E <= constant;
                 case SLTEC:    return potentialTarget.S <= constant;
                 case WLTEC:    return potentialTarget.W <= constant;
+                    //misc
+                case CostLTAvatar: return potentialTarget.Cost < Source.Controller.Avatar.Cost;
+                case CostGTAvatar: return potentialTarget.Cost > Source.Controller.Avatar.Cost;
 
                 case Negated:  return potentialTarget.Negated;
 

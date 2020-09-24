@@ -1,0 +1,31 @@
+{
+	"cardType":83,
+	"cardName":"Supernova",
+	"effText":"Repeat the following until your Avatar's S is 0: Give your Avatar -1S.",
+	"effects":[
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target Avatar\"
+				}",
+				"{
+					\"subeffType\":\"X Change NESW\",
+					\"sMod\":-1
+				}",
+				"{
+					\"subeffType\":\"Conditionally Jump\"
+				}"
+			]	
+		}
+	],
+	"c":1,
+	"spellType":"Simple",
+	"subtypes":["Simple"]
+}

@@ -26,6 +26,7 @@ namespace KompasCore.Effects
         public const string AddRest = "Add Rest";
         public const string TargetDefender = "Target Defender";
         public const string TargetAttacker = "Target Attacker";
+        public const string TargetAvatar = "Target Avatar";
         public const string TargetTriggeringCard = "Target Triggering Card";
         public const string TargetTriggeringCoords = "Target Triggering Space";
         public const string TargetTargetsSpace = "Target Target's Space";
