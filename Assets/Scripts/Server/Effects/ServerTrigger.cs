@@ -32,6 +32,9 @@ namespace KompasServer.Effects
             set => confirmed = value;
         }
 
+        /// <summary>
+        /// Represents the order this trigger has been given, amongst other simultaneously triggered triggers.
+        /// </summary>
         public int order = -1;
         public bool Ordered => order != -1;
 
@@ -46,18 +49,14 @@ namespace KompasServer.Effects
         {
             ServerTrigger toReturn = JsonUtility.FromJson<ServerTrigger>(json);
 
-            if (toReturn != null)
-            {
-                //set all values shared by all triggers
-                toReturn.triggerCondition = condition;
-                toReturn.serverEffect = parent;
-                //if the trigger has any restriction, set its values
-                if (toReturn.triggerRestriction != null)
-                {
-                    var dummy = new TriggerDummySubeffect(parent);
-                    toReturn.triggerRestriction.Initialize(dummy, parent.Source, toReturn);
-                }
-            }
+            //set all values shared by all triggers
+            toReturn.triggerCondition = condition;
+            toReturn.serverEffect = parent;
+            //it also better have a trigger restriction, even if it's a generic one
+            if (toReturn.triggerRestriction == null) 
+                    throw new System.ArgumentNullException($"null trigger restriction for effect of {toReturn.serverEffect.Source.CardName}");
+            var dummy = new TriggerDummySubeffect(parent);
+            toReturn.triggerRestriction.Initialize(dummy, parent.Source, toReturn);
 
             return toReturn;
         }
@@ -69,12 +68,7 @@ namespace KompasServer.Effects
         /// <param name="stackTrigger">The effect or attack that triggered this, if any.</param>
         /// <param name="x">If the action that triggered this has a value of x, it goes here. Otherwise, null.</param>
         /// <returns>Whether all restrictions of the trigger are fulfilled.</returns>
-        public bool ValidForContext(ActivationContext context)
-        {
-            if (triggerRestriction == null) throw new System.ArgumentNullException($"null trigger restriction for effect of {serverEffect.Source.CardName}");
-
-            return triggerRestriction.Evaluate(context);
-        }
+        public bool ValidForContext(ActivationContext context) => triggerRestriction.Evaluate(context);
 
         /// <summary>
         /// Rechecks any trigger restrictions that might have changed between the trigger triggering and being ordered.

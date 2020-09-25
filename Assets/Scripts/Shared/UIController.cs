@@ -42,7 +42,7 @@ namespace KompasCore.UI
         //selection variables
         public GameCard SelectedCard { get; protected set; }
 
-        private bool hovering = false;
+        private bool Hovering => hoveredCard != null;
         private GameCard hoveredCard;
 
         public GameCard ShownCard { get; protected set;}
@@ -52,20 +52,40 @@ namespace KompasCore.UI
         //deck search vars
         public List<GameCard> thingToSearch;
 
+        public virtual void ShowNothing()
+        {
+            selectedUIParent.SetActive(false);
+            SelectedCard = null;
+            hoveredCard = null;
+            ShownCard = null;
+            //Debug.Log("Selecting Null");
+            selectedCardNameText.text = "No Card Selected";
+            selectedCardImage.sprite = Resources.Load<Sprite>("Kompas Circle Background");
+            selectedCardStatsText.text = "";
+            selectedCardSubtypesText.text = "";
+            selectedCardEffText.text = "";
+        }
+
         public virtual void ShowInfoFor(GameCard card, bool refresh = false)
         {
             if (ShownCard == card && !refresh) return;
 
             ShownCard = card;
-
-            hoveredCard = card;
-            selectedCardStatsText.text = hoveredCard.StatsString;
+            if (card == null)
+            {
+                ShowNothing();
+                return;
+            }
 
             //set all common values
+            selectedCardStatsText.text = hoveredCard.StatsString;
             selectedCardSubtypesText.text = string.IsNullOrEmpty(card.SubtypeText) ? "(No Subtypes)" : card.SubtypeText;
             selectedCardNameText.text = card.CardName;
             selectedCardImage.sprite = card.detailedSprite;
             selectedCardEffText.text = card.EffText;
+            //show if card is negated or activated
+            negatedParent.SetActive(card.Negated);
+            activatedParent.SetActive(card.Activated);
 
             if (card?.Augments != null && card.Augments.Any())
             {
@@ -84,8 +104,6 @@ namespace KompasCore.UI
             }
             else AugmentPanelParent.SetActive(false);
 
-            negatedParent.SetActive(card.Negated);
-            activatedParent.SetActive(card.Activated);
             selectedUIParent.SetActive(true);
         }
 
@@ -98,22 +116,6 @@ namespace KompasCore.UI
         /// <param name="fromClick">whether the selecting is from clicking, aka choosing a target</param>
         public virtual void SelectCard(GameCard card, Game.TargetMode targetMode, bool fromClick)
         {
-            //if the card is null, deselect everything
-            if (card == null)
-            {
-                selectedUIParent.SetActive(false);
-                SelectedCard = null;
-                hoveredCard = null;
-                ShownCard = null;
-                //Debug.Log("Selecting Null");
-                selectedCardNameText.text = "No Card Selected";
-                selectedCardImage.sprite = Resources.Load<Sprite>("Kompas Circle Background");
-                selectedCardStatsText.text = "";
-                selectedCardSubtypesText.text = "";
-                selectedCardEffText.text = "";
-                return;
-            }
-
             SelectedCard = card;
             ShowInfoFor(card);
         }
@@ -124,27 +126,10 @@ namespace KompasCore.UI
             else SelectCard(card, card.Game.targetMode, fromClick);
         }
 
-        public void StopHovering()
-        {
-            if (!hovering) return;
-            SelectCard(SelectedCard, false);
-            hoveredCard = null;
-            hovering = false;
-        }
-
         public void HoverOver(GameCard card)
         {
-            if (card == null)
-            {
-                StopHovering();
-                return;
-            }
-
-            if (card == hoveredCard) return;
-
-            hovering = true;
-
-            ShowInfoFor(card);
+            hoveredCard = card;
+            ShowInfoFor(card ?? SelectedCard);
         }
 
         #region updating pips

@@ -51,7 +51,7 @@ namespace KompasCore.Effects
         };
 
         public string triggerCondition;
-        public TriggerRestriction triggerRestriction;
+        public TriggerRestriction triggerRestriction = new TriggerRestriction();
 
         public bool optional = false;
         public string blurb = "Trigger";

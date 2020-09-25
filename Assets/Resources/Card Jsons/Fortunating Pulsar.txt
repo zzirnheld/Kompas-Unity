@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Fortunating Pulsar",
-	"effText":"When your Avatar gains S, each player draws 1.\nWhen your Avatar loses S, gain a pip.",
+	"effText":"The first time each turn your Avatar gains S, draw 1.\nThe first time each turn your Avatar loses S, gain a pip.",
 	"effects":[
 		{
 			"triggerCondition":"S Change",
@@ -9,7 +9,7 @@
 			"{
 				\"blurb\":\"Fortune-card\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\",\"Triggerer Fits Restriction\"],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Max Per Turn\",\"X Fits Restriction\",\"Triggerer Fits Restriction\"],
 					\"xRestriction\":{
 						\"xRestrictions\":[\">0\"]
 					},
@@ -22,10 +22,6 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Draw\"
-				}",
-				"{
-					\"subeffType\":\"Draw\",
-					\"playerIndex\":1
 				}"
 			]	
 		},
@@ -35,7 +31,7 @@
 			"{
 				\"blurb\":\"Fortune-pip\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\",\"Triggerer Fits Restriction\"],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Max Per Turn\",\"X Fits Restriction\",\"Triggerer Fits Restriction\"],
 					\"xRestriction\":{
 						\"xRestrictions\":[\"<0\"]
 					},
@@ -50,12 +46,6 @@
 					\"subeffType\":\"Add Pips\",
 					\"xMultiplier\":0,
 					\"xModifier\":1
-				}",
-				"{
-					\"subeffType\":\"Add Pips\",
-					\"xMultiplier\":0,
-					\"xModifier\":1,
-					\"playerIndex\":1
 				}"
 			]	
 		}

@@ -95,12 +95,18 @@ namespace KompasServer.Cards
 
         public override bool Remove(IStackable stackSrc = null)
         {
+            //if you can't remove, don't even proc the trigger
             if (!CanRemove) return false;
+
+            //proc the trigger before actually removing anything
             var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller ?? Controller);
             EffectsController.TriggerForCondition(Trigger.Remove, context);
+
+            //remove for realsies
             base.Remove(stackSrc);
-            //copy the enumeration so that you can edit the original
-            var augments = new List<GameCard>(Augments);
+
+            //copy the colleciton  so that you can edit the original
+            var augments = Augments.ToArray();
             foreach (var aug in augments) aug.Discard();
             return true;
         }
@@ -109,16 +115,13 @@ namespace KompasServer.Cards
         {
             base.ResetForTurn(turnPlayer);
 
-            if (CardType == 'S' && SpellSubtype == VanishingSubtype)
-            {
-                if (TurnsOnBoard > Arg) Discard();
-            }
+            if (CardType == 'S' && SpellSubtype == VanishingSubtype && TurnsOnBoard > Arg) Discard();
         }
 
         #region stats
         public override void SetN(int n, IStackable stackSrc = null)
         {
-            var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: N - n);
+            var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: n - N);
             EffectsController.TriggerForCondition(Trigger.NChange, context);
             EffectsController.TriggerForCondition(Trigger.NESWChange, context);
             base.SetN(n, stackSrc);
@@ -127,7 +130,7 @@ namespace KompasServer.Cards
 
         public override void SetE(int e, IStackable stackSrc = null)
         {
-            var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: E - e);
+            var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: e - E);
             EffectsController.TriggerForCondition(Trigger.EChange, context);
             EffectsController.TriggerForCondition(Trigger.NESWChange, context);
             base.SetE(e, stackSrc);
@@ -139,7 +142,7 @@ namespace KompasServer.Cards
 
         public override void SetS(int s, IStackable stackSrc = null)
         {
-            var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: S - s);
+            var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: s - S);
             EffectsController.TriggerForCondition(Trigger.SChange, context);
             EffectsController.TriggerForCondition(Trigger.NESWChange, context);
             base.SetS(s, stackSrc);
@@ -148,7 +151,7 @@ namespace KompasServer.Cards
 
         public override void SetW(int w, IStackable stackSrc = null)
         {
-            var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: W - w);
+            var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: w - W);
             EffectsController.TriggerForCondition(Trigger.WChange, context);
             EffectsController.TriggerForCondition(Trigger.NESWChange, context);
             base.SetW(w, stackSrc);
@@ -157,7 +160,7 @@ namespace KompasServer.Cards
 
         public override void SetC(int c, IStackable stackSrc = null)
         {
-            var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: C - c);
+            var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: c - C);
             EffectsController.TriggerForCondition(Trigger.CChange, context);
             EffectsController.TriggerForCondition(Trigger.NESWChange, context);
             base.SetC(c, stackSrc);
@@ -166,7 +169,7 @@ namespace KompasServer.Cards
 
         public override void SetA(int a, IStackable stackSrc = null)
         {
-            var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: A - a);
+            var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: a - A);
             EffectsController.TriggerForCondition(Trigger.AChange, context);
             EffectsController.TriggerForCondition(Trigger.NESWChange, context);
             base.SetA(a, stackSrc);

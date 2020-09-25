@@ -49,9 +49,6 @@
 				}",
 				"{
 					\"subeffType\":\"Annihilate\"
-				}",
-				"{
-					\"subeffType\":\"Draw\"
 				}"
 			]	
 		}

@@ -216,6 +216,11 @@ namespace KompasCore.Cards
                 cardCtrl?.SetPhysicalLocation(location);
             }
         }
+
+        /// <summary>
+        /// Represents whether this card is currently known to the enemy of this player.
+        /// TODO: make this also be accurate on client, remembering what thigns have been revealed
+        /// </summary>
         public virtual bool KnownToEnemy => !Game.HiddenLocations.Contains(Location);
         public int ID { get; private set; }
         public abstract IEnumerable<Effect> Effects { get; }
@@ -289,8 +294,6 @@ namespace KompasCore.Cards
         public int DistanceTo(int x, int y)
         {
             if (Location != CardLocation.Field) return int.MaxValue;
-            Debug.Log($"Distance from {CardName} to {x}, {y} is" +
-                $" {(Mathf.Abs(x - BoardX) > Mathf.Abs(y - BoardY) ? Mathf.Abs(x - BoardX) : Mathf.Abs(y - BoardY))}");
             return Mathf.Abs(x - BoardX) > Mathf.Abs(y - BoardY) ? Mathf.Abs(x - BoardX) : Mathf.Abs(y - BoardY);
             /* equivalent to
              * if (Mathf.Abs(card.X - X) > Mathf.Abs(card.Y - Y)) return Mathf.Abs(card.X - X);
@@ -301,20 +304,14 @@ namespace KompasCore.Cards
         public int DistanceTo((int x, int y) space) => DistanceTo(space.x, space.y);
         public int DistanceTo(GameCard card) => DistanceTo(card.BoardX, card.BoardY);
         public bool WithinSpaces(int numSpaces, GameCard card)
-        {
-            if (card == null || card.Location != CardLocation.Field || Location != CardLocation.Field) return false;
-            return DistanceTo(card) <= numSpaces;
-        }
-        public bool WithinSlots(int numSpaces, int x, int y) => DistanceTo(x, y) <= numSpaces;
+            => card != null && card.Location == CardLocation.Field && Location == CardLocation.Field && DistanceTo(card) <= numSpaces;
+        public bool WithinSpaces(int numSpaces, int x, int y) => DistanceTo(x, y) <= numSpaces;
         public bool IsAdjacentTo(GameCard card) => Location == CardLocation.Field && card != null && DistanceTo(card) == 1;
         public bool IsAdjacentTo(int x, int y) => Location == CardLocation.Field && DistanceTo(x, y) == 1;
         public bool CardInAOE(GameCard c) => SpaceInAOE(c.Position);
         public bool SpaceInAOE((int x, int y) space) => SpaceInAOE(space.x, space.y);
         public bool SpaceInAOE(int x, int y)
-        {
-            if (CardType != 'S' || SpellSubtype != RadialSubtype) return false;
-            return DistanceTo(x, y) <= Arg;
-        }
+            => CardType == 'S' && SpellSubtype == RadialSubtype && DistanceTo(x, y) <= Arg;
         public bool SameColumn(int x, int y) => BoardX - BoardY == x - y;
         public bool SameColumn(GameCard c) => c.Location == CardLocation.Field && SameColumn(c.BoardX, c.BoardY);
 
@@ -349,10 +346,7 @@ namespace KompasCore.Cards
 
         public void PutBack() => cardCtrl?.SetPhysicalLocation(Location);
 
-        public void CountSpacesMovedTo((int x, int y) to)
-        {
-            SpacesMoved += DistanceTo(to.x, to.y);
-        }
+        public void CountSpacesMovedTo((int x, int y) to) => SpacesMoved += DistanceTo(to.x, to.y);
 
         /// <summary>
         /// Resets any of the card's values that might be different from their originals.
@@ -434,6 +428,20 @@ namespace KompasCore.Cards
             SetA(stats.a, stackSrc);
         }
 
+        public void SwapCharStats(GameCard other, bool swapN = true, bool swapE = true, bool swapS = true, bool swapW = true)
+        {
+            int[] aNewStats = new int[4];
+            int[] bNewStats = new int[4];
+
+            (aNewStats[0], bNewStats[0]) = swapN ? (other.N, N) : (N, other.N);
+            (aNewStats[1], bNewStats[1]) = swapE ? (other.E, E) : (E, other.E);
+            (aNewStats[2], bNewStats[2]) = swapS ? (other.S, S) : (S, other.S);
+            (aNewStats[3], bNewStats[3]) = swapW ? (other.W, W) : (W, other.W);
+
+            SetCharStats(aNewStats[0], aNewStats[1], aNewStats[2], aNewStats[3]);
+            other.SetCharStats(bNewStats[0], bNewStats[1], bNewStats[2], bNewStats[3]);
+        }
+
         public virtual void SetNegated(bool negated, IStackable stackSrc = null) => Negated = negated;
         public virtual void SetActivated(bool activated, IStackable stackSrc = null) => Activated = activated;
         #endregion statfuncs
@@ -496,20 +504,6 @@ namespace KompasCore.Cards
 
         public bool Move(int toX, int toY, bool normalMove, IStackable stackSrc = null)
             => Game.boardCtrl.Move(this, toX, toY, normalMove, stackSrc);
-
-        public void SwapCharStats(GameCard other, bool swapN = true, bool swapE = true, bool swapS = true, bool swapW = true)
-        {
-            int[] aNewStats = new int[4];
-            int[] bNewStats = new int[4];
-
-            (aNewStats[0], bNewStats[0]) = swapN ? (other.N, N) : (N, other.N);
-            (aNewStats[1], bNewStats[1]) = swapE ? (other.E, E) : (E, other.E);
-            (aNewStats[2], bNewStats[2]) = swapS ? (other.S, S) : (S, other.S);
-            (aNewStats[3], bNewStats[3]) = swapW ? (other.W, W) : (W, other.W);
-
-            SetCharStats(aNewStats[0], aNewStats[1], aNewStats[2], aNewStats[3]);
-            other.SetCharStats(bNewStats[0], bNewStats[1], bNewStats[2], bNewStats[3]);
-        }
 
         public void Dispel(IStackable stackSrc = null)
         {
