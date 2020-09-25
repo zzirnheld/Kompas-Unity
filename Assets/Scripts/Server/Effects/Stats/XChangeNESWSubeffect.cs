@@ -13,13 +13,14 @@
         public int sMod = 0;
         public int wMod = 0;
 
+        public int NVal => ServerEffect.X * nMult + nMod;
+        public int EVal => ServerEffect.X * eMult + eMod;
+        public int SVal => ServerEffect.X * sMult + sMod;
+        public int WVal => ServerEffect.X * wMult + wMod;
+
         public override bool Resolve()
         {
-            Target.AddToCharStats(
-                ServerEffect.X * nMult + nMod,
-                ServerEffect.X * eMult + eMod,
-                ServerEffect.X * sMult + sMod,
-                ServerEffect.X * wMult + wMod);
+            Target.AddToCharStats(NVal, EVal, SVal, WVal);
             return ServerEffect.ResolveNextSubeffect();
         }
     }
