@@ -39,7 +39,7 @@
 					\"subeffType\":\"Delay Effect Resolution\",
 					\"numTimesToDelay\":1,
 					\"indexToResume\":1,
-					\"triggerCondition\":\"Turn Start\"
+					\"endCondition\":\"Turn Start\"
 				}",
 				"{
 					\"subeffType\":\"Target This\"

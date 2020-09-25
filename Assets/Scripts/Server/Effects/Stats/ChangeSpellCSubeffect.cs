@@ -3,7 +3,7 @@
     public class ChangeSpellCSubeffect : ServerSubeffect
     {public override bool Resolve()
         {
-            Target.SetC(Count, Effect);
+            Target.SetC(Target.C + Count, Effect);
             return ServerEffect.ResolveNextSubeffect();
         }
     }
