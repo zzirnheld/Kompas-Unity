@@ -9,7 +9,7 @@
 			"{
 				\"blurb\":\"Flare\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"This Card in Play\"],
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Board\"]
@@ -74,7 +74,6 @@
 	],
 	"c":1,
 	"spellType":"Delayed",
-	"subtypes":["Delayed"],
 	"subtypeText":"Delayed",
 	"arg":2
 }

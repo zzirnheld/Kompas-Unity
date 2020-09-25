@@ -8,7 +8,7 @@
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Controller Triggered\",\"Triggerer Fits Restriction\"],
+					\"triggerRestrictions\":[\"Controller Triggered\",\"Triggerer Fits Restriction\",\"This Card in Play\"],
 					\"cardRestriction\":{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Cost>Avatar\"],
 						\"subtypesInclude\":[\"Pulsar\"]
@@ -27,7 +27,7 @@
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Controller Triggered\",\"Triggerer Fits Restriction\"],
+					\"triggerRestrictions\":[\"Controller Triggered\",\"Triggerer Fits Restriction\",\"This Card in Play\"],
 					\"cardRestriction\":{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Cost<Avatar\"],
 						\"subtypesInclude\":[\"Pulsar\"]
@@ -43,5 +43,5 @@
 	],
 	"c":3,
 	"spellType":"Enchant",
-	"subtypes":["Enchant"]
+	"subtypeText":"Enchant"
 }

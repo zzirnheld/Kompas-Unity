@@ -60,5 +60,5 @@
 	"e":7,
 	"s":7,
 	"w":7,
-	"subtypes":["Pulsar"]
+	"subtypeText":"Pulsar"
 }

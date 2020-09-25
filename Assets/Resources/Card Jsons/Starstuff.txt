@@ -26,7 +26,7 @@
 					\"sChange\":5
 				}",
 				"{
-					\"subeffType\":\"Jump\",
+					\"subeffType\":\"Jump to Subeffect\",
 					\"indexToJumpTo\":5
 				}",
 				"{
@@ -54,5 +54,5 @@
 	"fast":true,
 	"c":1,
 	"spellType":"Simple",
-	"subtypes":["Simple"]
+	"subtypeText":"Simple"
 }

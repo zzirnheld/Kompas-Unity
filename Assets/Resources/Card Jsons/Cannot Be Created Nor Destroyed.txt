@@ -46,7 +46,7 @@
 					\"sMult\":1
 				}",
 				"{
-					\"subeffType\":\"Jump\",
+					\"subeffType\":\"Jump to Subeffect\",
 					\"indexToJumpTo\":9
 				}",
 				"{
@@ -61,5 +61,5 @@
 	],
 	"c":1,
 	"spellType":"Enchant",
-	"subtypes":["Enchant"]
+	"subtypeText":"Enchant"
 }

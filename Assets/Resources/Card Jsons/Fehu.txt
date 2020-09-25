@@ -13,12 +13,8 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Set X by Math\",
-					\"xMultiplier\":0,
+					\"subeffType\":\"Draw X\",
 					\"xModifier\":2
-				}",
-				"{
-					\"subeffType\":\"Draw X\"
 				}"
 			]	
 		}

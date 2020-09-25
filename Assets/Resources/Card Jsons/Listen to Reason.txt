@@ -44,7 +44,8 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Draw X\"
+					\"subeffType\":\"Draw X\",
+					\"xMultiplier\":1
 				}"
 			]	
 		}

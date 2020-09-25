@@ -33,7 +33,8 @@
 					\"xModifier\":2
 				}",
 				"{
-					\"subeffType\":\"Draw X\"
+					\"subeffType\":\"Draw X\",
+					\"xMultiplier\":1
 				}"
 			]
 		}
