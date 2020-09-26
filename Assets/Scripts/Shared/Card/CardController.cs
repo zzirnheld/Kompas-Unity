@@ -35,54 +35,54 @@ namespace KompasCore.Cards
         {
             set
             {
-                var str = $"N\n{value}";
-                zoomedNText.text = str;
-                unzoomedNText.text = str;
+                zoomedNText.text = $"N\n{value}";
+                unzoomedNText.text = $"{value}";
+                unzoomedNText.fontSize = value < 10 ? 36f : 24f;
             }
         }
         public int E
         {
             set
             {
-                var str = $"E\n{value}";
-                zoomedEText.text = str;
-                unzoomedEText.text = str;
+                zoomedEText.text = $"E\n{value}";
+                unzoomedEText.text = $"{value}";
+                unzoomedEText.fontSize = value < 10 ? 36f : 24f;
             }
         }
         public int S
         {
             set
             {
-                var str = $"S\n{value}";
-                zoomedSText.text = str;
-                unzoomedSText.text = str;
+                zoomedSText.text = $"S\n{value}";
+                unzoomedSText.text = $"{value}";
+                unzoomedSText.fontSize = value < 10 ? 36f : 24f;
             }
         }
         public int W
         {
             set
             {
-                var str = $"W\n{value}";
-                zoomedWText.text = str;
-                unzoomedWText.text = str;
+                zoomedWText.text = $"W\n{value}";
+                unzoomedWText.text = $"{value}";
+                unzoomedWText.fontSize = value < 10 ? 36f : 24f;
             }
         }
         public int C
         {
             set
             {
-                var str = $"C\n{value}";
-                zoomedCText.text = str;
-                unzoomedCText.text = str;
+                zoomedCText.text = $"C\n{value}";
+                unzoomedCText.text = $"{value}";
+                unzoomedCText.fontSize = value < 10 ? 36f : 24f;
             }
         }
         public int A
         {
             set
             {
-                var str = $"A\n{value}";
-                zoomedAText.text = str;
-                unzoomedAText.text = str;
+                zoomedAText.text = $"A\n{value}";
+                unzoomedAText.text = $"{value}";
+                unzoomedAText.fontSize = value < 10 ? 36f : 24f;
             }
         }
 
