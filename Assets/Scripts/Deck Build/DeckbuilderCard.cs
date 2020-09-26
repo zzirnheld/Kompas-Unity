@@ -42,6 +42,7 @@ namespace KompasDeckbuilder
             cardSearchController.CardNameText.text = CardName;
             cardSearchController.SubtypesText.text = SubtypeText;
             cardSearchController.EffectText.text = EffText;
+            cardSearchController.StatsText.text = StatsString;
         }
 
         public void Unshow()
