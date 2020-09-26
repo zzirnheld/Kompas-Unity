@@ -26,7 +26,7 @@ namespace KompasCore.GameCore
             => new Vector3(GridIndexToPos(x), 0.2f, GridIndexToPos(y));
 
         public static Vector3 GridIndicesToPosWithStacking(int x, int y, int stackHeight)
-            => new Vector3(GridIndexToPos(x), 0.2f * stackHeight, GridIndexToPos(y));
+            => new Vector3(GridIndexToPos(x), 0.2f * (1 + stackHeight), GridIndexToPos(y));
 
         public readonly GameCard[,] Board = new GameCard[SpacesInGrid, SpacesInGrid];
 

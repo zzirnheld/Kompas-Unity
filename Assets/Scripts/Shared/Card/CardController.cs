@@ -1,5 +1,6 @@
 ﻿using KompasCore.GameCore;
 using UnityEngine;
+using TMPro;
 
 namespace KompasCore.Cards
 {
@@ -9,23 +10,26 @@ namespace KompasCore.Cards
     public class CardController : MonoBehaviour
     {
         public GameCard card;
+
+        public CardAOEController aoeController;
+
         public MeshRenderer cardFaceRenderer;
         public GameObject zoomedCharFrame;
         public GameObject zoomedAllFrame;
         public GameObject unzoomedCharFrame;
         public GameObject unzoomedAllFrame;
-        public TMPro.TMP_Text zoomedNText;
-        public TMPro.TMP_Text zoomedEText;
-        public TMPro.TMP_Text zoomedSText;
-        public TMPro.TMP_Text zoomedWText;
-        public TMPro.TMP_Text zoomedCText;
-        public TMPro.TMP_Text zoomedAText;
-        public TMPro.TMP_Text unzoomedNText;
-        public TMPro.TMP_Text unzoomedEText;
-        public TMPro.TMP_Text unzoomedSText;
-        public TMPro.TMP_Text unzoomedWText;
-        public TMPro.TMP_Text unzoomedCText;
-        public TMPro.TMP_Text unzoomedAText;
+        public TMP_Text zoomedNText;
+        public TMP_Text zoomedEText;
+        public TMP_Text zoomedSText;
+        public TMP_Text zoomedWText;
+        public TMP_Text zoomedCText;
+        public TMP_Text zoomedAText;
+        public TMP_Text unzoomedNText;
+        public TMP_Text unzoomedEText;
+        public TMP_Text unzoomedSText;
+        public TMP_Text unzoomedWText;
+        public TMP_Text unzoomedCText;
+        public TMP_Text unzoomedAText;
 
         public int N 
         {
@@ -85,6 +89,9 @@ namespace KompasCore.Cards
         public virtual void SetPhysicalLocation(CardLocation location)
         {
             Debug.Log($"Card controller of {card.CardName} setting physical location in {card.Location} to {card.BoardX}, {card.BoardY}");
+
+            aoeController.Hide();
+
             switch (location)
             {
                 case CardLocation.Deck:
@@ -174,8 +181,11 @@ namespace KompasCore.Cards
         /// </summary>
         private void MoveTo((int x, int y) to)
         {
+            int heightIndex = card.AugmentedCard == null ? card.Augments.Count : card.Augments.IndexOf(card);
             transform.localPosition = BoardController.GridIndicesToPosWithStacking(to.x, to.y, card.Augments.Count);
             gameObject.SetActive(card.AugmentedCard == null);
+
+            if (card.CardType == 'S' && card.SpellSubtype == CardBase.RadialSubtype) aoeController.Show(card.Arg);
         }
     }
 }
