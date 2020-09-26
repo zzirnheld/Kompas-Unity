@@ -8,6 +8,8 @@ namespace KompasCore.Cards
 {
     public abstract class GameCard : CardBase
     {
+        public abstract Game Game { get; }
+        public int ID { get; private set; }
         public CardController cardCtrl;
 
         private SerializableCard serializedCard;
@@ -20,72 +22,36 @@ namespace KompasCore.Cards
         public int BaseC => serializedCard.c;
         public int BaseA => serializedCard.a;
 
-        private int n;
-        private int e;
-        private int s;
-        private int w;
-        private int c;
-        private int a;
-        public int N 
+        public override int N 
         { 
-            get => n < 0 ? 0 : n;
-            private set
-            {
-                n = value;
-                cardCtrl.N = value;
-            }
+            get => base.N; 
+            protected set => cardCtrl.N = base.N = value;
         }
-        public int E
+        public override int E
         {
-            get => e < 0 ? 0 : e;
-            protected set
-            {
-                e = value;
-                cardCtrl.E = value;
-            }
+            get => base.E;
+            protected set => cardCtrl.E = base.E = value;
         }
-        public int S
+        public override int S
         {
-            get => s < 0 ? 0 : s;
-            private set
-            {
-                s = value;
-                cardCtrl.S = value;
-            }
+            get => base.S;
+            protected set => cardCtrl.S = base.S = value;
         }
-        public int W
+        public override int W
         {
-            get => w < 0 ? 0 : w;
-            private set
-            {
-                w = value;
-                cardCtrl.W = value;
-            }
+            get => base.W;
+            protected set => cardCtrl.W = base.W = value;
         }
-        public int C
+        public override int C
         {
-            get => c < 0 ? 0 : c;
-            private set
-            {
-                c = value;
-                cardCtrl.C = value;
-            }
+            get => base.C;
+            protected set => cardCtrl.C = base.C = value;
         }
-        public int A
+        public override int A
         {
-            get => a < 0 ? 0 : a;
-            private set
-            {
-                a = value;
-                cardCtrl.A = value;
-            }
+            get => base.A;
+            protected set => cardCtrl.A = base.A = value;
         }
-
-        public bool Fast { get; private set; }
-
-        public string Subtext { get; private set; }
-        public string SpellSubtype { get; private set; }
-        public int Arg { get; private set; }
 
         public int Negations { get; private set; } = 0;
         public virtual bool Negated
@@ -110,45 +76,6 @@ namespace KompasCore.Cards
             }
         }
 
-        public int Cost
-        {
-            get
-            {
-                switch (CardType)
-                {
-                    case 'C': return S;
-                    case 'S': return C;
-                    case 'A': return A;
-                    default: throw new System.NotImplementedException($"Cost not implemented for card type {CardType}");
-                }
-            }
-        }
-        private string SpellSubtypeString
-        {
-            get
-            {
-                if (CardType != 'S') return "";
-                switch (SpellSubtype)
-                {
-                    case RadialSubtype: return $" {Arg}";
-                    case DelayedSubtype: return $" {Arg} turns";
-                    default: return "";
-                }
-            }
-        }
-        public string StatsString
-        {
-            get
-            {
-                switch (CardType)
-                {
-                    case 'C': return $"N: {N} / E: {E} / S: {S} / W: {W}";
-                    case 'S': return $"C {C}{(Fast ? " Fast" : "")} {SpellSubtype}{SpellSubtypeString}";
-                    case 'A': return $"A {A}{(AugmentSubtypes != null ? $"Augment: {string.Join(",", AugmentSubtypes)}" : "")}";
-                    default: throw new System.NotImplementedException($"Stats string not implemented for card type {CardType}");
-                }
-            }
-        }
         public virtual bool Summoned => CardType == 'C' && Location == CardLocation.Field;
         public virtual bool CanRemove => true;
         public virtual int CombatDamage => W;
@@ -169,8 +96,33 @@ namespace KompasCore.Cards
                 foreach (var aug in Augments) aug.Position = value;
             }
         }
+
+        public int SubjectiveCoord(int coord) => ControllerIndex == 0 ? coord : 6 - coord;
+        public (int, int) SubjectiveCoords((int x, int y) space) => (SubjectiveCoord(space.x), SubjectiveCoord(space.y));
         public (int x, int y) SubjectivePosition => SubjectiveCoords(Position);
 
+        public int IndexInList
+        {
+            get
+            {
+                switch (Location)
+                {
+                    case CardLocation.Deck: return Controller.deckCtrl.IndexOf(this);
+                    case CardLocation.Discard: return Controller.discardCtrl.IndexOf(this);
+                    case CardLocation.Field: return BoardX * 7 + BoardY;
+                    case CardLocation.Hand: return Controller.handCtrl.IndexOf(this);
+                    case CardLocation.Annihilation: return Game.annihilationCtrl.Cards.IndexOf(this);
+                    default:
+                        Debug.LogError($"Tried to ask for card index when in location {Location}");
+                        return -1;
+                }
+            }
+        }
+        public List<GameCard> AdjacentCards => Game.boardCtrl.CardsAdjacentTo(BoardX, BoardY);
+        #endregion positioning
+
+        #region Augments
+        public List<GameCard> Augments { get; private set; } = new List<GameCard>();
         private GameCard augmentedCard;
         public GameCard AugmentedCard
         {
@@ -185,7 +137,7 @@ namespace KompasCore.Cards
                 }
             }
         }
-        #endregion positioning
+        #endregion
 
         //movement
         public int SpacesMoved { get; set; }
@@ -222,37 +174,9 @@ namespace KompasCore.Cards
         /// TODO: make this also be accurate on client, remembering what thigns have been revealed
         /// </summary>
         public virtual bool KnownToEnemy => !Game.HiddenLocations.Contains(Location);
-        public int ID { get; private set; }
         public abstract IEnumerable<Effect> Effects { get; }
-        public List<GameCard> Augments { get; private set; } = new List<GameCard>();
         public int TurnsOnBoard { get; private set; }
         public abstract bool IsAvatar { get; }
-
-        public abstract Game Game { get; }
-
-        public List<GameCard> AdjacentCards => Game.boardCtrl.CardsAdjacentTo(BoardX, BoardY);
-
-        public int IndexInList
-        {
-            get
-            {
-                switch (Location)
-                {
-                    case CardLocation.Deck: return Controller.deckCtrl.IndexOf(this);
-                    case CardLocation.Discard: return Controller.discardCtrl.IndexOf(this);
-                    case CardLocation.Field: return BoardX * 7 + BoardY;
-                    case CardLocation.Hand: return Controller.handCtrl.IndexOf(this);
-                    case CardLocation.Annihilation: return Game.annihilationCtrl.Cards.IndexOf(this);
-                    default:
-                        Debug.LogError($"Tried to ask for card index when in location {Location}");
-                        return -1;
-                }
-            }
-        }
-
-
-        public int SubjectiveCoord(int coord) => ControllerIndex == 0 ? coord : 6 - coord;
-        public (int, int) SubjectiveCoords((int x, int y) space) => (SubjectiveCoord(space.x), SubjectiveCoord(space.y));
 
         public void SetInfo(SerializableCard serializedCard, int id)
         {
@@ -260,18 +184,6 @@ namespace KompasCore.Cards
 
             this.ID = id;
             this.serializedCard = serializedCard;
-
-            N = serializedCard.n;
-            E = serializedCard.e;
-            S = serializedCard.s;
-            W = serializedCard.w;
-            C = serializedCard.c;
-            A = serializedCard.a;
-
-            Subtext = serializedCard.subtext;
-            SpellSubtype = serializedCard.spellType;
-            Fast = serializedCard.fast;
-            Arg = serializedCard.arg;
 
             TurnsOnBoard = 0;
             SpacesMoved = 0;
@@ -288,6 +200,35 @@ namespace KompasCore.Cards
             while (Activated) Activated = false;
 
             cardCtrl.ShowForCardType(CardType, false);
+        }
+
+        /// <summary>
+        /// Resets any of the card's values that might be different from their originals.
+        /// Should be called when cards move out the discard, or into the hand, deck, or annihilation
+        /// </summary>
+        public virtual void ResetCard()
+        {
+            if (serializedCard != null) SetInfo(serializedCard, ID);
+        }
+
+        /// <summary>
+        /// Resets anything that needs to be reset for the start of the turn.
+        /// </summary>
+        public virtual void ResetForTurn(Player turnPlayer)
+        {
+            foreach (Effect eff in Effects)
+            {
+                eff.ResetForTurn(turnPlayer);
+            }
+
+            SpacesMoved = 0;
+            AttacksThisTurn = 0;
+            if (Location == CardLocation.Field) TurnsOnBoard++;
+        }
+
+        public void ResetForStack()
+        {
+            foreach (var e in Effects) e.TimesUsedThisStack = 0;
         }
 
         #region distance/adjacency
@@ -348,35 +289,6 @@ namespace KompasCore.Cards
 
         public void CountSpacesMovedTo((int x, int y) to) => SpacesMoved += DistanceTo(to.x, to.y);
 
-        /// <summary>
-        /// Resets any of the card's values that might be different from their originals.
-        /// Should be called when cards move out the discard, or into the hand, deck, or annihilation
-        /// </summary>
-        public virtual void ResetCard() 
-        { 
-            if (serializedCard != null) SetInfo(serializedCard, ID); 
-        }
-
-        /// <summary>
-        /// Resets anything that needs to be reset for the start of the turn.
-        /// </summary>
-        public virtual void ResetForTurn(Player turnPlayer)
-        {
-            foreach (Effect eff in Effects)
-            {
-                eff.ResetForTurn(turnPlayer);
-            }
-
-            SpacesMoved = 0;
-            AttacksThisTurn = 0;
-            if(Location == CardLocation.Field) TurnsOnBoard++;
-        }
-
-        public void ResetForStack()
-        {
-            foreach (var e in Effects) e.TimesUsedThisStack = 0;
-        }
-
         #region augments
         public virtual void AddAugment(GameCard augment, IStackable stackSrc = null)
         {
@@ -387,10 +299,13 @@ namespace KompasCore.Cards
             augment.AugmentedCard = this;
         }
 
-        protected virtual void Detach(IStackable stackSrc = null)
+        protected virtual bool Detach(IStackable stackSrc = null)
         {
+            if (AugmentedCard == null) return false;
+
             AugmentedCard.Augments.Remove(this);
             AugmentedCard = null;
+            return true;
         }
         #endregion augments
 
@@ -455,27 +370,20 @@ namespace KompasCore.Cards
             switch (Location)
             {
                 case CardLocation.Field:
-                    if (AugmentedCard != null) Detach(stackSrc);
-                    else Game.boardCtrl.RemoveFromBoard(this);
-                    break;
+                    if (AugmentedCard != null) return Detach(stackSrc);
+                    else return Game.boardCtrl.RemoveFromBoard(this);
                 case CardLocation.Discard:
-                    Controller.discardCtrl.RemoveFromDiscard(this);
-                    break;
+                    return Controller.discardCtrl.RemoveFromDiscard(this);
                 case CardLocation.Hand:
-                    Controller.handCtrl.RemoveFromHand(this);
-                    break;
+                    return Controller.handCtrl.RemoveFromHand(this);
                 case CardLocation.Deck:
-                    Controller.deckCtrl.RemoveFromDeck(this);
-                    break;
+                    return Controller.deckCtrl.RemoveFromDeck(this);
                 case CardLocation.Annihilation:
-                    Game.annihilationCtrl.Remove(this);
-                    break;
+                    return Game.annihilationCtrl.Remove(this);
                 default:
                     Debug.LogWarning($"Tried to remove card {CardName} from invalid location {Location}");
-                    break;
+                    return false;
             }
-
-            return true;
         }
 
         public bool Discard(IStackable stackSrc = null) => Controller.discardCtrl.AddToDiscard(this, stackSrc);

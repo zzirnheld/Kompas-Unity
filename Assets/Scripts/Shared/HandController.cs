@@ -32,10 +32,13 @@ namespace KompasCore.GameCore
             return Hand.IndexOf(card);
         }
 
-        public virtual void RemoveFromHand(GameCard card)
+        public virtual bool RemoveFromHand(GameCard card)
         {
+            if (!Hand.Contains(card)) return false;
+
             Hand.Remove(card);
             SpreadOutCards();
+            return true;
         }
 
         public virtual void SpreadOutCards()

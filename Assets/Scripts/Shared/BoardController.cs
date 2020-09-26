@@ -22,8 +22,11 @@ namespace KompasCore.GameCore
         public static float GridIndexToPos(int gridIndex)
             => (float)((gridIndex * LenOneSpace) + SpaceOffset - BoardLenOffset);
 
-        public static Vector3 GridIndicesFromPos(int x, int y)
+        public static Vector3 GridIndicesToPos(int x, int y)
             => new Vector3(GridIndexToPos(x), 0.2f, GridIndexToPos(y));
+
+        public static Vector3 GridIndicesToPosWithStacking(int x, int y, int stackHeight)
+            => new Vector3(GridIndexToPos(x), 0.2f * stackHeight, GridIndexToPos(y));
 
         public readonly GameCard[,] Board = new GameCard[SpacesInGrid, SpacesInGrid];
 
@@ -130,10 +133,15 @@ namespace KompasCore.GameCore
         #endregion
 
         #region game mechanics
-        public void RemoveFromBoard(GameCard toRemove)
+        public bool RemoveFromBoard(GameCard toRemove)
         {
-            if (toRemove?.Location == CardLocation.Field)
-                RemoveFromBoard(toRemove.BoardX, toRemove.BoardY);
+            var (x, y) = toRemove.Position;
+            if (toRemove.Location == CardLocation.Field && Board[x, y] == toRemove)
+            {
+                RemoveFromBoard(x, y);
+                return true;
+            }
+            return false;
         }
 
         public void RemoveFromBoard(int x, int y) => Board[x, y] = null;

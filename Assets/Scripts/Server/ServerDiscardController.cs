@@ -21,5 +21,15 @@ namespace KompasServer.GameCore
             ServerNotifier.NotifyDiscard(card);
             return base.AddToDiscard(card);
         }
+
+        public override bool RemoveFromDiscard(GameCard card)
+        {
+            if(base.RemoveFromDiscard(card))
+            {
+                card.ResetCard();
+                return true;
+            }
+            return false;
+        }
     }
 }

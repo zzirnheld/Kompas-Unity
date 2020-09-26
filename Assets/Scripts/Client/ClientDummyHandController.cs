@@ -24,16 +24,19 @@ public class ClientDummyHandController : ClientHandController
 
     public void DecrementHand() => RemoveFromHand(dummyHand.LastOrDefault());
 
-    public override void RemoveFromHand(GameCard card)
+    public override bool RemoveFromHand(GameCard card)
     {
-        if (card == default) return;
+        //remove the card from the real hand if it's actually there
+        if (base.RemoveFromHand(card)) return true;
 
-        base.RemoveFromHand(card);
+        //otherwise, remove the requisite dummy card
         if (dummyHand.Contains(card))
         {
             dummyHand.Remove(card);
             Destroy(card.gameObject);
+            return true;
         }
+        return false;
     }
 
     public override void SpreadOutCards()

@@ -86,11 +86,13 @@ namespace KompasServer.Cards
             base.AddAugment(augment, stackSrc);
         }
 
-        protected override void Detach(IStackable stackSrc = null)
+        protected override bool Detach(IStackable stackSrc = null)
         {
+            if (AugmentedCard == null) return false;
+
             var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller ?? Controller);
             EffectsController.TriggerForCondition(Trigger.AugmentDetached, context);
-            base.Detach(stackSrc);
+            return base.Detach(stackSrc);
         }
 
         public override bool Remove(IStackable stackSrc = null)

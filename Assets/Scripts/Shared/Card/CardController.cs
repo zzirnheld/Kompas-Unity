@@ -174,7 +174,7 @@ namespace KompasCore.Cards
         /// </summary>
         private void MoveTo((int x, int y) to)
         {
-            transform.localPosition = BoardController.GridIndicesFromPos(to.x, to.y);
+            transform.localPosition = BoardController.GridIndicesToPosWithStacking(to.x, to.y, card.Augments.Count);
             gameObject.SetActive(card.AugmentedCard == null);
         }
     }

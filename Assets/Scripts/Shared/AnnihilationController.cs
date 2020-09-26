@@ -19,6 +19,12 @@ namespace KompasCore.GameCore
             return true;
         }
 
-        public void Remove(GameCard card) => Cards.Remove(card);
+        public virtual bool Remove(GameCard card)
+        {
+            if (!Cards.Contains(card)) return false;
+
+            Cards.Remove(card);
+            return true;
+        }
     }
 }
