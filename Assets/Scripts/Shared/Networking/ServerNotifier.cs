@@ -251,6 +251,9 @@ namespace KompasServer.Networking
         public void SetTarget(GameCard card, int effIndex, GameCard target)
             => SendToBoth(new AddTargetPacket(card.ID, effIndex, target.ID));
 
+        public void RemoveTarget(GameCard card, int effIndex, GameCard target)
+            => SendToBoth(new RemoveTargetPacket(card.ID, effIndex, target.ID));
+
         public void GetXForEffect() => SendPacket(new GetPlayerChooseXPacket());
 
         public void NotifyEffectX(GameCard effSrc, int effIndex, int x)

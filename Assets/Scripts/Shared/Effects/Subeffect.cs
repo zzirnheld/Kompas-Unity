@@ -165,20 +165,16 @@ namespace KompasCore.Effects
         /// </summary>
         public int Count => (Effect.X * xMultiplier / xDivisor) + xModifier;
 
-        public GameCard GetTarget(int num)
-        {
-            int trueIndex = num < 0 ? num + Effect.Targets.Count : num;
-            return trueIndex < 0 ? null : Effect.Targets[trueIndex];
-        }
-
-        public (int x, int y) GetSpace(int num)
-        {
-            var trueIndex = num < 0 ? num + Effect.Coords.Count : num;
-            return trueIndex < 0 ? (0, 0) : Effect.Coords[trueIndex];
-        }
-
-        public GameCard Target => GetTarget(targetIndex);
-        public (int x, int y) Space => GetSpace(spaceIndex);
+        public GameCard Target => Effect.GetTarget(targetIndex);
+        public (int x, int y) Space => Effect.GetSpace(spaceIndex);
         public Player Player => Game.Players[(Controller.index + playerIndex) % Game.Players.Length];
+
+        public bool RemoveTarget()
+        {
+            if (Target == null) return false;
+
+            Effect.RemoveTarget(Target);
+            return true;
+        }
     }
 }

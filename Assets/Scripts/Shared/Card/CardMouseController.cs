@@ -60,8 +60,9 @@ namespace KompasCore.Cards
             dragging = false;
         }
 
-        public void OnMouseEnter()
+        public void OnMouseOver()
         {
+            //if the mouse is currently over a ui element, don't swap what you're seeing
             if (EventSystem.current.IsPointerOverGameObject()) return;
             Game.uiCtrl.HoverOver(Card);
         }

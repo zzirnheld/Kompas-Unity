@@ -46,6 +46,7 @@ namespace KompasClient.Networking
                 var discardToSearch = clientGame.Cards.Where(c => restriction.Evaluate(c)).ToList();
                 clientGame.clientUICtrl.StartSearch(discardToSearch);
                 clientGame.clientUICtrl.SetCurrState("Choose Discard Target", restriction.blurb);
+                clientGame.ShowValidCardTargets(c => restriction.Evaluate(c));
             }
         }
     }

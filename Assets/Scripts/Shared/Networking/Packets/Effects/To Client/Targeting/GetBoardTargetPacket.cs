@@ -44,6 +44,7 @@ namespace KompasClient.Networking
                 clientGame.targetMode = Game.TargetMode.BoardTarget;
                 clientGame.CurrCardRestriction = restriction;
                 clientGame.clientUICtrl.SetCurrState("Choose Board Target", restriction.blurb);
+                clientGame.ShowValidCardTargets(c => restriction.Evaluate(c));
             }
         }
     }

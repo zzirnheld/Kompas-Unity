@@ -23,7 +23,8 @@ namespace KompasCore.Effects
         public Subeffect CurrSubeffect => Subeffects[SubeffectIndex];
 
         //Targets
-        public List<GameCard> Targets { get; } = new List<GameCard>();
+        protected List<GameCard> TargetsList { get; } = new List<GameCard>();
+        public IEnumerable<GameCard> Targets => TargetsList;
         public List<(int x, int y)> Coords { get; private set; } = new List<(int x, int y)>();
         public List<GameCard> Rest { get; private set; } = new List<GameCard>();
         /// <summary>
@@ -76,7 +77,8 @@ namespace KompasCore.Effects
 
         public virtual void Negate() => Negated = true;
 
-        public virtual void AddTarget(GameCard card) => Targets.Add(card);
+        public virtual void AddTarget(GameCard card) => TargetsList.Add(card);
+        public virtual void RemoveTarget(GameCard card) => TargetsList.Remove(card);
 
         public virtual bool CanBeActivatedBy(Player controller)
         {
@@ -84,6 +86,20 @@ namespace KompasCore.Effects
                 && controller.index == Source.ControllerIndex
                 && !Negated
                 && ActivationRestriction.Evaluate(controller);
+        }
+
+        public abstract void StartResolution(ActivationContext context);
+
+        public GameCard GetTarget(int num)
+        {
+            int trueIndex = num < 0 ? num + TargetsList.Count : num;
+            return trueIndex < 0 ? null : TargetsList[trueIndex];
+        }
+
+        public (int x, int y) GetSpace(int num)
+        {
+            var trueIndex = num < 0 ? num + Coords.Count : num;
+            return trueIndex < 0 ? (0, 0) : Coords[trueIndex];
         }
     }
 }

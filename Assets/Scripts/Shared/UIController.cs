@@ -129,7 +129,8 @@ namespace KompasCore.UI
         public void HoverOver(GameCard card)
         {
             hoveredCard = card;
-            ShowInfoFor(card ?? SelectedCard);
+            if (card != null) ShowInfoFor(card);
+            else ShowInfoFor(SelectedCard);
         }
 
         #region updating pips

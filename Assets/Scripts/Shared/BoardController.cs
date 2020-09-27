@@ -9,12 +9,12 @@ namespace KompasCore.GameCore
 {
     public class BoardController : MonoBehaviour
     {
-        public Game game;
-
         public const int SpacesInGrid = 7;
         public const float BoardLenOffset = 7f;
         public const float LenOneSpace = 2f;
         public const float SpaceOffset = LenOneSpace / 2;
+
+        public Game game;
 
         public static int PosToGridIndex(float pos) 
             => (int)((pos + BoardLenOffset) / (LenOneSpace));

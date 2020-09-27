@@ -9,6 +9,9 @@ namespace KompasCore.Cards
     /// </summary>
     public class CardController : MonoBehaviour
     {
+        public const float LargeUnzoomedTextFontSize = 32f;
+        public const float SmallUnzoomedTextFontSize = 22f;
+
         public GameCard card;
 
         public CardAOEController aoeController;
@@ -31,13 +34,16 @@ namespace KompasCore.Cards
         public TMP_Text unzoomedCText;
         public TMP_Text unzoomedAText;
 
+        public GameObject currentTargetObject;
+        public GameObject validTargetObject;
+
         public int N 
         {
             set
             {
                 zoomedNText.text = $"N\n{value}";
                 unzoomedNText.text = $"{value}";
-                unzoomedNText.fontSize = value < 10 ? 36f : 24f;
+                unzoomedNText.fontSize = value < 10 ? LargeUnzoomedTextFontSize : SmallUnzoomedTextFontSize;
             }
         }
         public int E
@@ -46,7 +52,7 @@ namespace KompasCore.Cards
             {
                 zoomedEText.text = $"E\n{value}";
                 unzoomedEText.text = $"{value}";
-                unzoomedEText.fontSize = value < 10 ? 36f : 24f;
+                unzoomedEText.fontSize = value < 10 ? LargeUnzoomedTextFontSize : SmallUnzoomedTextFontSize;
             }
         }
         public int S
@@ -55,7 +61,7 @@ namespace KompasCore.Cards
             {
                 zoomedSText.text = $"S\n{value}";
                 unzoomedSText.text = $"{value}";
-                unzoomedSText.fontSize = value < 10 ? 36f : 24f;
+                unzoomedSText.fontSize = value < 10 ? LargeUnzoomedTextFontSize : SmallUnzoomedTextFontSize;
             }
         }
         public int W
@@ -64,7 +70,7 @@ namespace KompasCore.Cards
             {
                 zoomedWText.text = $"W\n{value}";
                 unzoomedWText.text = $"{value}";
-                unzoomedWText.fontSize = value < 10 ? 36f : 24f;
+                unzoomedWText.fontSize = value < 10 ? LargeUnzoomedTextFontSize : SmallUnzoomedTextFontSize;
             }
         }
         public int C
@@ -73,7 +79,7 @@ namespace KompasCore.Cards
             {
                 zoomedCText.text = $"C\n{value}";
                 unzoomedCText.text = $"{value}";
-                unzoomedCText.fontSize = value < 10 ? 36f : 24f;
+                unzoomedCText.fontSize = value < 10 ? LargeUnzoomedTextFontSize : SmallUnzoomedTextFontSize;
             }
         }
         public int A
@@ -82,7 +88,7 @@ namespace KompasCore.Cards
             {
                 zoomedAText.text = $"A\n{value}";
                 unzoomedAText.text = $"{value}";
-                unzoomedAText.fontSize = value < 10 ? 36f : 24f;
+                unzoomedAText.fontSize = value < 10 ? LargeUnzoomedTextFontSize : SmallUnzoomedTextFontSize;
             }
         }
 
@@ -181,11 +187,21 @@ namespace KompasCore.Cards
         /// </summary>
         private void MoveTo((int x, int y) to)
         {
-            int heightIndex = card.AugmentedCard == null ? card.Augments.Count : card.Augments.IndexOf(card);
-            transform.localPosition = BoardController.GridIndicesToPosWithStacking(to.x, to.y, card.Augments.Count);
+            int heightIndex = card.AugmentedCard == null ? card.Augments.Count : card.AugmentedCard.Augments.IndexOf(card);
+            transform.localPosition = BoardController.GridIndicesToPosWithStacking(to.x, to.y, heightIndex);
             gameObject.SetActive(card.AugmentedCard == null);
 
             if (card.CardType == 'S' && card.SpellSubtype == CardBase.RadialSubtype) aoeController.Show(card.Arg);
+        }
+
+        public void ShowValidTarget(bool valid = true) => validTargetObject.SetActive(valid);
+
+        public void ShowCurrentTarget(bool current = true) => currentTargetObject.SetActive(current);
+
+        public void HideTarget()
+        {
+            validTargetObject.SetActive(false);
+            currentTargetObject.SetActive(false);
         }
     }
 }

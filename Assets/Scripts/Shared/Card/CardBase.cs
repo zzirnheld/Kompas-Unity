@@ -91,8 +91,8 @@ namespace KompasCore.Cards
                 switch (CardType)
                 {
                     case 'C': return $"N: {N} / E: {E} / S: {S} / W: {W}";
-                    case 'S': return $"C {C}{(Fast ? " Fast" : "")} {SpellSubtype}{SpellSubtypeString}";
-                    case 'A': return $"A {A}{(AugmentSubtypes != null ? $"Augment: {string.Join(",", AugmentSubtypes)}" : "")}";
+                    case 'S': return $"C {C}{(Fast ? " Fast " : " ")}{SpellSubtype}{SpellSubtypeString}";
+                    case 'A': return $"A {A}{(Fast ? " Fast " : " ")}{(AugmentSubtypes != null ? $"Augment: {string.Join(",", AugmentSubtypes)}" : "")}";
                     default: throw new System.NotImplementedException($"Stats string not implemented for card type {CardType}");
                 }
             }

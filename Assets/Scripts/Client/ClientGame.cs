@@ -8,6 +8,8 @@ using KompasClient.Networking;
 using KompasClient.UI;
 using KompasClient.Effects;
 using TMPro;
+using System;
+using System.Linq;
 
 namespace KompasClient.GameCore
 {
@@ -165,6 +167,24 @@ namespace KompasClient.GameCore
             stackEmpty = true;
             clientUICtrl.SetCurrState("Stack Empty");
             foreach (var c in Cards) c.ResetForStack();
+            ShowNoCardsAsTargets();
+        }
+
+        /// <summary>
+        /// Makes each card no longer show any highlight about its status as a target
+        /// </summary>
+        public void ShowNoCardsAsTargets()
+        {
+            foreach (var card in Cards) card.cardCtrl.HideTarget();
+        }
+
+        /// <summary>
+        /// Show valid target highlight for any valid potential targets
+        /// </summary>
+        /// <param name="predicate"></param>
+        public void ShowValidCardTargets(Func<GameCard, bool> predicate)
+        {
+            foreach (var card in Cards) card.cardCtrl.ShowValidTarget(predicate(card));
         }
     }
 }

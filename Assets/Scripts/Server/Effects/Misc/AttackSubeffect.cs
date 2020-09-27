@@ -1,4 +1,6 @@
-﻿namespace KompasServer.Effects
+﻿using System.Linq;
+
+namespace KompasServer.Effects
 {
     public class AttackSubeffect : ServerSubeffect
     {
@@ -6,8 +8,7 @@
 
         public override bool Resolve()
         {
-            int trueIndex = attackerIndex < 0 ? attackerIndex + Effect.Targets.Count : attackerIndex;
-            var attacker = trueIndex < 0 ? null : Effect.Targets[trueIndex];
+            var attacker = Effect.GetTarget(attackerIndex);
             var defender = Target;
             if (attacker == null || defender == null) ServerEffect.EffectImpossible();
 

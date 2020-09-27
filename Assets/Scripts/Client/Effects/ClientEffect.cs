@@ -53,6 +53,18 @@ namespace KompasClient.Effects
             }
         }
 
+        public override void AddTarget(GameCard card)
+        {
+            base.AddTarget(card);
+            card.cardCtrl.ShowCurrentTarget(true);
+        }
+
+        public override void RemoveTarget(GameCard card)
+        {
+            base.RemoveTarget(card);
+            card.cardCtrl.ShowCurrentTarget(false);
+        }
+
         public void Activated()
         {
             TimesUsedThisTurn++;
@@ -60,6 +72,16 @@ namespace KompasClient.Effects
             TimesUsedThisStack++;
 
             ClientGame.EffectActivated(this);
+        }
+
+        public override void StartResolution(ActivationContext context)
+        {
+            ClientGame.clientUICtrl.SetCurrState($"Resolving Effect of {Source.CardName}", $"{Blurb}");
+            TargetsList.Clear();
+
+            //in case any cards are still showing targets from the last effect, which they will if this happens after another effect in the stack.
+            //TODO move this behavior to a "effect end" packet and stuff?
+            ClientGame.ShowNoCardsAsTargets();
         }
     }
 }

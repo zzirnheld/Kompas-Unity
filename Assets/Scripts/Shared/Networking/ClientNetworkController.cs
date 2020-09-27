@@ -86,6 +86,7 @@ namespace KompasClient.Networking
                 case Packet.PlayerChooseX: return JsonUtility.FromJson<GetPlayerChooseXClientPacket>(json);
                 case Packet.TargetAccepted: return JsonUtility.FromJson<TargetAcceptedClientPacket>(json);
                 case Packet.AddTarget: return JsonUtility.FromJson<AddTargetClientPacket>(json);
+                case Packet.RemoveTarget: return JsonUtility.FromJson<RemoveTargetClientPacket>(json);
                 case Packet.ToggleDecliningTarget: return JsonUtility.FromJson<ToggleDecliningTargetClientPacket>(json);
                 case Packet.DiscardSimples: return JsonUtility.FromJson<DiscardSimplesClientPacket>(json);
                 case Packet.StackEmpty: return JsonUtility.FromJson<StackEmptyClientPacket>(json);

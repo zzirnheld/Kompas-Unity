@@ -8,22 +8,21 @@ namespace KompasServer.Effects
 {
     public class ServerEffect : Effect, IServerStackable
     {
-        public ServerSubeffect[] ServerSubeffects { get; }
-        public ServerTrigger ServerTrigger { get; }
-
         public ServerGame serverGame;
         public ServerEffectsController EffectsController => serverGame.EffectsController;
-
-        public ServerSubeffect OnImpossible = null;
-
         public ServerPlayer ServerController { get; set; }
         public override Player Controller
         {
-            get { return ServerController; }
-            set { ServerController = value as ServerPlayer; }
+            get => ServerController;
+            set => ServerController = value as ServerPlayer;
         }
+
+        public ServerSubeffect[] ServerSubeffects { get; }
         public override Subeffect[] Subeffects => ServerSubeffects;
+        public ServerTrigger ServerTrigger { get; }
         public override Trigger Trigger => ServerTrigger;
+
+        public ServerSubeffect OnImpossible = null;
 
         public ServerEffect(SerializableEffect se, GameCard thisCard, ServerGame serverGame, ServerPlayer controller, int effectIndex)
             : base(se.activationRestriction ?? new ActivationRestriction(), thisCard, se.blurb, effectIndex, controller)
@@ -75,7 +74,8 @@ namespace KompasServer.Effects
             ctrl.ServerNotifier.NotifyEffectActivated(this);
         }
 
-        public void StartResolution(ActivationContext context)
+        #region resolution
+        public override void StartResolution(ActivationContext context)
         {
             Debug.Log($"Resolving effect {EffectIndex} of {Source.CardName} in context {context}");
             serverGame.CurrEffect = this;
@@ -83,8 +83,8 @@ namespace KompasServer.Effects
             //set context parameters
             CurrActivationContext = context;
             X = context.X ?? 0;
-            Targets.Clear();
-            if(context.Targets != null) Targets.AddRange(context.Targets);
+            TargetsList.Clear();
+            if(context.Targets != null) TargetsList.AddRange(context.Targets);
 
             //notify relevant to this effect starting
             ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
@@ -127,7 +127,7 @@ namespace KompasServer.Effects
         {
             SubeffectIndex = 0;
             X = 0;
-            Targets.Clear();
+            TargetsList.Clear();
             Rest.Clear();
             OnImpossible = null;
             ServerController.ServerNotifier.NotifyBothPutBack();
@@ -153,16 +153,20 @@ namespace KompasServer.Effects
                 return OnImpossible.OnImpossible();
             }
         }
+        #endregion resolution
 
-        public void DeclineAnotherTarget()
-        {
-            OnImpossible?.OnImpossible();
-        }
+        public void DeclineAnotherTarget() => OnImpossible?.OnImpossible();
 
         public override void AddTarget(GameCard card)
         {
             base.AddTarget(card);
-            serverGame.ServerPlayers[card.ControllerIndex].ServerNotifier.SetTarget(Source, EffectIndex, card);
+            serverGame.ServerControllerOf(card).ServerNotifier.SetTarget(Source, EffectIndex, card);
+        }
+
+        public override void RemoveTarget(GameCard card)
+        {
+            base.RemoveTarget(card);
+            serverGame.ServerControllerOf(card).ServerNotifier.RemoveTarget(Source, EffectIndex, card);
         }
 
         public override string ToString()

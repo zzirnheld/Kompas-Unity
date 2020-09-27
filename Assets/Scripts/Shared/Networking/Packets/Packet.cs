@@ -53,6 +53,7 @@ namespace KompasCore.Networking
         public const string PlayerChooseX = "Player Choose X";
         public const string TargetAccepted = "Target Accepted";
         public const string AddTarget = "Add Target";
+        public const string RemoveTarget = "Remove Target";
         public const string ToggleDecliningTarget = "Toggle Declining Target";
         public const string DiscardSimples = "Discard Simples";
         public const string StackEmpty = "Stack Empty";

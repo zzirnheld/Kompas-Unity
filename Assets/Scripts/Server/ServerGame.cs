@@ -84,16 +84,13 @@ namespace KompasServer.GameCore
         public void GetDecks()
         {
             //ask the players for their avatars (and decks at the same time)
-            foreach (ServerPlayer p in ServerPlayers)
-            {
-                GetDeckFrom(p);
-            }
+            foreach (ServerPlayer p in ServerPlayers) GetDeckFrom(p);
 
             //if avatars are returned, then set the pips to start with and start the game
             //that should happen in server network controller
         }
 
-        //for future logic like limited cards, etc.
+        //TODO for future logic like limited cards, etc.
         private bool ValidDeck(List<string> deck)
         {
             if (uiCtrl.DebugMode) return true;
@@ -106,14 +103,6 @@ namespace KompasServer.GameCore
 
         private List<string> SanitizeDeck(string decklist)
         {
-            /*string[] cards = decklist.Split('\n');
-            List<string> deck = new List<string>();
-            foreach (string name in cards)
-            {
-                if (string.IsNullOrWhiteSpace(name)) continue;
-                if (CardRepository.CardExists(name)) deck.Add(name);
-            }*/
-
             return decklist.Split('\n')
                 .Where(c => !string.IsNullOrWhiteSpace(c) && CardRepository.CardExists(c))
                 .ToList();
@@ -321,5 +310,7 @@ namespace KompasServer.GameCore
         }
 
         public override GameCard GetCardWithID(int id) => cardsByID.ContainsKey(id) ? cardsByID[id] : null;
+
+        public ServerPlayer ServerControllerOf(GameCard card) => ServerPlayers[card.ControllerIndex];
     }
 }

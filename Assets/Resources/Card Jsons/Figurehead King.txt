@@ -28,7 +28,7 @@
 				}",
 				"{
 					\"subeffType\":\"Delete Target\",
-					\"DeleteIndex\":0
+					\"targetIndex\":0
 				}",
 				"{
 					\"subeffType\":\"Reshuffle\"
