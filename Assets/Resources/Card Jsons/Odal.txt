@@ -26,7 +26,8 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Pay Pips\"
+					\"subeffType\":\"Pay Pips\",
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Discard\"
