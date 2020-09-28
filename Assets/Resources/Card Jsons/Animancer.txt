@@ -22,7 +22,8 @@
 				}",
 				"{
 					\"subeffType\":\"Change X by Target Value\",
-					\"whatToCount\":\"Cost\"
+					\"whatToCount\":\"Cost\",
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Discard\"
@@ -34,7 +35,7 @@
 				}",
 				"{
 					\"subeffType\":\"Jump on Effect Impossible\",
-					\"jumpTo\":7
+					\"jumpTo\":10
 				}",
 				"{
 					\"subeffType\":\"Choose From List\",
@@ -44,7 +45,27 @@
 						\"blurb\":\"for Animancer to search\",
 						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Cost<=X\",\"Index<=X\"],
 						\"subtypesInclude\":[\"Golem\"]
-					}
+					},
+					\"xMultiplier\":1
+				}",
+				"{
+					\"subeffType\":\"Rehand\"
+				}",
+				"{
+					\"subeffType\":\"Add Rest\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<=X\",\"Not Already Target\"]
+					},
+					\"xMultiplier\":1,
+					\"xModifier\":-1
+				}",
+				"{
+					\"subeffType\":\"Clear Jump on Effect Impossible\"
+				}",
+				"{
+					\"subeffType\":\"Jump to Subeffect\",
+					\"indexToJumpTo\":12
 				}",
 				"{
 					\"subeffType\":\"Clear Jump on Effect Impossible\"
@@ -54,10 +75,8 @@
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<=X\",\"Not Already Target\"]
-					}
-				}",
-				"{
-					\"subeffType\":\"Rehand\"
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Bottomdeck Rest\"

@@ -19,7 +19,8 @@
 					{
 						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Subtypes Include\"],
 						\"subtypesInclude\":[\"Supplicant\"]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Change NESW All\",

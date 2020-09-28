@@ -18,7 +18,8 @@
 					{
 						\"cardRestrictions\":[\"Board\",\"Adjacent\",\"Subtypes Include\"],
 						\"subtypesInclude\":[\"Supplicant\"]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Choose From List\",
@@ -28,7 +29,8 @@
 						\"blurb\":\"Supplicants' Plea\",
 						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Is Spell\",\"Cost<=X\",\"Subtypes Include\"],
 						\"subtypesInclude\":[\"Plea\"]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Space Target\",

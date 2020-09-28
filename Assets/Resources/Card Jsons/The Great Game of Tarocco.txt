@@ -18,7 +18,8 @@
 					{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Board\"],
 						\"subtypesInclude\":[\"Tarocco\"]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Draw X\",

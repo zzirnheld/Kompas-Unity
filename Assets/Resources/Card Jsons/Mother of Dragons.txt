@@ -25,13 +25,8 @@
 					\"subeffType\":\"Reshuffle\"
 				}",
 				"{
-					\"subeffType\":\"Set X by Math\",
-					\"xMultiplier\":0,
-					\"xModifier\":2
-				}",
-				"{
 					\"subeffType\":\"Draw X\",
-					\"xMultiplier\":1
+					\"xModifier\":2
 				}"
 			]
 		}

@@ -41,7 +41,8 @@
 					\"subeffType\":\"Set X by Player Choice\",
 					\"XRest\":{
 						\"cardRestrictions\":[\"<=ThisE\"]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Target This\"

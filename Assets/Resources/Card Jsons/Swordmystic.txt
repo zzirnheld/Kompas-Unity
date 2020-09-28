@@ -18,7 +18,8 @@
 					{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
 						\"subtypesInclude\":[\"Warrior\"]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Discard Target\",
@@ -27,7 +28,8 @@
 						\"blurb\":\"Warrior for Swordmystic to revive\",
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Discard\",\"S<=X\"],
 						\"subtypesInclude\":[\"Warrior\"]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Pay Target's Cost in Pips\"

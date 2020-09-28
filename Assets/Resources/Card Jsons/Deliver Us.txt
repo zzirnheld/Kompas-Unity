@@ -20,7 +20,8 @@
 						\"cardRestrictions\":[\"Is Character\",\"Multiple Possible Locations\",\"Friendly\",\"Subtypes Include\"],
 						\"subtypesInclude\":[\"Supplicant\"],
 						\"locations\":[1,2]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Conditionally End Effect Resolution\",

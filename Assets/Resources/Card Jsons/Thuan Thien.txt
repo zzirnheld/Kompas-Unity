@@ -17,7 +17,8 @@
 				}",
 				"{
 					\"subeffType\":\"Set X by Target Value\",
-					\"whatToCount\":\"W\"
+					\"whatToCount\":\"W\",
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"X Change NESW\",

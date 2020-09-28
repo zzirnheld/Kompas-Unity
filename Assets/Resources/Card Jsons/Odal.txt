@@ -22,7 +22,8 @@
 				}",
 				"{
 					\"subeffType\":\"Set X by Target Value\",
-					\"whatToCount\":\"S\"
+					\"whatToCount\":\"S\",
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Pay Pips\"

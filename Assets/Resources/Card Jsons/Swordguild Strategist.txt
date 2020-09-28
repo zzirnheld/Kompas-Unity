@@ -22,7 +22,8 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Set X by Target S\"
+					\"subeffType\":\"Set X by Target S\",
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Discard\"
@@ -33,7 +34,8 @@
 					{
 						\"blurb\":\"Warrior for Strategist to kill\",
 						\"cardRestrictions\":[\"Is Character\",\"Board\",\"S<=X\"]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Discard\"

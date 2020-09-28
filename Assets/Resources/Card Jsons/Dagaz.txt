@@ -21,7 +21,8 @@
 				}",
 				"{
 					\"subeffType\":\"Set X by Target Value\",
-					\"whatToCount\":\"C\"
+					\"whatToCount\":\"C\",
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Add Pips\",

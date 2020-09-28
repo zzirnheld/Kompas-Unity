@@ -37,7 +37,8 @@
 					\"throughRestriction\":{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
 						\"subtypesInclude\":[\"Ethereal\"]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"X Change NESW\",
@@ -64,7 +65,8 @@
 						\"blurb\":\"Shaping for He Who Knew Runes to cast\",
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Hand\",\"Cost==X\",\"Can Be Played\"],
 						\"subtypesInclude\":[\"Shaping\"]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Space Target\",

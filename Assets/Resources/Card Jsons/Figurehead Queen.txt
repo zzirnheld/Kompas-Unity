@@ -40,7 +40,8 @@
 					\"subeffType\":\"Target This\"
 				}",
 				"{
-					\"subeffType\":\"Set X by Target Cost\"
+					\"subeffType\":\"Set X by Target Cost\",
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Conditionally End Effect Resolution\",
