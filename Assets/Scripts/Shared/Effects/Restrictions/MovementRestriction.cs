@@ -18,6 +18,9 @@ namespace KompasCore.Effects
         //If this is a spell being moved, it can't be next to 2 other spells
         private const string StandardSpellMoveRestiction = "If Spell, Not Next to 2 Other Spells";
         private const string NothingHappening = "Nothing Happening";
+        private const string IsNotAvatar = "Is Not Avatar";
+        private const string IsFriendlyTurn = "Is Friendly Turn";
+        //TODO add a "default" restriction
         #endregion Basic Movement Restrictions
 
         //Whether the character has been activated (for Golems)
@@ -27,7 +30,7 @@ namespace KompasCore.Effects
         //Default restrictions are that only characters with enough n can move.
         public string[] normalMovementRestrictions = new string[] 
         {
-            IsCharacter, CanMoveEnoughSpaces, DestinationCanMoveHere, StandardSpellMoveRestiction, NothingHappening 
+            IsCharacter, CanMoveEnoughSpaces, DestinationCanMoveHere, StandardSpellMoveRestiction, NothingHappening, IsNotAvatar, IsFriendlyTurn
         };
         public string[] effectMovementRestrictions = new string[] { StandardSpellMoveRestiction };
 
@@ -47,11 +50,14 @@ namespace KompasCore.Effects
                 case CanMoveEnoughSpaces: return Card.SpacesCanMove >= Card.DistanceTo(x, y);
                 case StandardSpellMoveRestiction: return Card.CardType != 'S' || Card.Game.ValidSpellSpace(x, y);
                 case NothingHappening: return Card.Game.NothingHappening;
+                case IsNotAvatar: return !Card.IsAvatar;
+                case IsFriendlyTurn: return Card.Game.TurnPlayer == Card.Controller;
                 case DestinationCanMoveHere:
                     if (isSwapTarget) return true;
                     var atDest = Card.Game.boardCtrl.GetCardAt(x, y);
                     if (atDest == null) return true;
-                    if(byEffect) return atDest.MovementRestriction.EvaluateEffectMove(Card.Position, isSwapTarget: true);
+                    if (byEffect) return atDest.MovementRestriction.EvaluateEffectMove(Card.Position, isSwapTarget: true);
+                    else if (atDest.Controller != Card.Controller) return false; //TODO later allow for cards that *can* swap with enemies
                     else return atDest.MovementRestriction.EvaluateNormalMove(Card.Position, isSwapTarget: true);
 
                 //special effect restrictions

@@ -17,6 +17,7 @@ namespace KompasCore.UI
         public GameObject useEffectButtonPrefab;
 
         //normal UI
+        public BoardUIController boardUICtrl;
         //pips
         public TMPro.TMP_Text friendlyPipsText;
         public TMPro.TMP_Text enemyPipsText;
@@ -42,7 +43,6 @@ namespace KompasCore.UI
         //selection variables
         public GameCard SelectedCard { get; protected set; }
 
-        private bool Hovering => hoveredCard != null;
         private GameCard hoveredCard;
 
         public GameCard ShownCard { get; protected set;}
@@ -64,6 +64,8 @@ namespace KompasCore.UI
             selectedCardStatsText.text = "";
             selectedCardSubtypesText.text = "";
             selectedCardEffText.text = "";
+
+            boardUICtrl.ShowNothing();
         }
 
         public virtual void ShowInfoFor(GameCard card, bool refresh = false)
@@ -105,6 +107,8 @@ namespace KompasCore.UI
             else AugmentPanelParent.SetActive(false);
 
             selectedUIParent.SetActive(true);
+
+            boardUICtrl.ShowForCard(card, refresh);
         }
 
         public void RefreshShownCardInfo() => ShowInfoFor(ShownCard, refresh: true);

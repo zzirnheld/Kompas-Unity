@@ -23,7 +23,7 @@ namespace KompasCore.GameCore
             => (float)((gridIndex * LenOneSpace) + SpaceOffset - BoardLenOffset);
 
         public static Vector3 GridIndicesToPos(int x, int y)
-            => new Vector3(GridIndexToPos(x), 0.2f, GridIndexToPos(y));
+            => new Vector3(GridIndexToPos(x), 0.01f, GridIndexToPos(y));
 
         public static Vector3 GridIndicesToPosWithStacking(int x, int y, int stackHeight)
             => new Vector3(GridIndexToPos(x), 0.2f * (1 + stackHeight), GridIndexToPos(y));

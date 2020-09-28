@@ -14814,6 +14814,7 @@ MonoBehaviour:
     type: 3}
   useEffectButtonPrefab: {fileID: 1940061827561737992, guid: 603f9424733bb0746800706bdfff060d,
     type: 3}
+  boardUICtrl: {fileID: 4063274800751553634}
   friendlyPipsText: {fileID: 1687662614}
   enemyPipsText: {fileID: 1006522080}
   selectedUIParent: {fileID: 1738197751}
@@ -19550,6 +19551,7 @@ GameObject:
   - component: {fileID: 1334743737591088204}
   - component: {fileID: 4063274800751553632}
   - component: {fileID: 4063274800751553633}
+  - component: {fileID: 4063274800751553634}
   m_Layer: 0
   m_Name: Gameboard Base
   m_TagString: Untagged
@@ -19583,6 +19585,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 14, y: 0, z: 14}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4063274800751553634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4063274800751553631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e30f82f41ad83bb4b9ebd10944c9f7d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spaceCueControllerPrefab: {fileID: 6721646274851369500, guid: db85c6b7f288c3a40b526bdfd48b1bfc,
+    type: 3}
+  boardCtrl: {fileID: 4063274800751553632}
 --- !u!4 &5006512735650261658
 Transform:
   m_ObjectHideFlags: 0

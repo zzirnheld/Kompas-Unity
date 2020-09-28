@@ -14,13 +14,14 @@ namespace KompasCore.Effects
         public const string FriendlyTurn = "Friendly Turn";
         public const string MaxPerTurn = "Maximum Per Turn";
         public const string StackEmpty = "Stack Empty";
+        public const string IsNotAvatar = "Is Not Avatar";
 
         public const string Default = "Default";
 
         public const string ThisIsActive = "This is Activated";
 
         public static readonly string[] DefaultAttackRestrictions = { ThisIsCharacter, DefenderIsCharacter, DefenderIsAdjacent, DefenderIsEnemy,
-            FriendlyTurn, MaxPerTurn, StackEmpty };
+            FriendlyTurn, MaxPerTurn, StackEmpty, IsNotAvatar };
 
         public List<string> attackRestrictions = new List<string> { Default };
         public int maxAttacks = 1;
@@ -47,6 +48,7 @@ namespace KompasCore.Effects
                 case FriendlyTurn: return Card.Controller == Card.Game.TurnPlayer;
                 case MaxPerTurn: return Card.AttacksThisTurn < maxAttacks;
                 case StackEmpty: return Card.Game.NothingHappening;
+                case IsNotAvatar: return !Card.IsAvatar;
                 case ThisIsActive: return Card.Activated;
                 default: throw new System.ArgumentException($"Could not understand attack restriction {restriction}");
             }
