@@ -5,7 +5,7 @@ namespace KompasServer.Effects
     public class ConditionalJumpSubeffect : ServerSubeffect
     {
         public const string TargetFitsRestriction = "Target Fits Restriction";
-        public const string XGreaterEqualConstant = "X >= Constat";
+        public const string XGreaterEqualConstant = "X >= Constant";
 
         public string condition;
         public int jumpIndex;

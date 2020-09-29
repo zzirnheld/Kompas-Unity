@@ -1,6 +1,7 @@
 ﻿using KompasCore.Cards;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace KompasCore.Effects
 {
@@ -54,10 +55,17 @@ namespace KompasCore.Effects
             }
         }
 
+        private bool RestrictionValidWithDebug(string restriction, GameCard defender)
+        {
+            bool valid = RestrictionValid(restriction, defender);
+            if (!valid) Debug.LogWarning($"{Card.CardName} cannot attack {defender} because it flouts the attack restriction {restriction}");
+            return valid;
+        }
+
         public bool Evaluate(GameCard defender)
         {
             if (defender == null) return false;
-            return attackRestrictions.All(r => RestrictionValid(r, defender));
+            return attackRestrictions.All(r => RestrictionValidWithDebug(r, defender));
         }
     }
 }

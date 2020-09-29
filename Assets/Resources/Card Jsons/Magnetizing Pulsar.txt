@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Magnetizing Pulsar",
-	"effText":"When your Avatar gains S, give adjacent characters +1 E.\nWhen your Avatar loses S, give adjacent characters -1 E.",
+	"effText":"When your Avatar gains S, move another character one space away from me.\nWhen your Avatar loses S, move another character one space towards me.",
 	"effects":[
 		{
 			"triggerCondition":"S Change",
@@ -72,7 +72,7 @@
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"to move Magnetizing's target to\",
-						\"spaceRestrictions\":[\"Distance to Target == Constant\",\"Towards Source than Target\"],
+						\"spaceRestrictions\":[\"Distance to Target == Constant\",\"Towards Source from Target\"],
 						\"constant\":1
 					}
 				}",

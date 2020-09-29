@@ -53,7 +53,6 @@
 			]	
 		}
 	],
-	"fast":true,
 	"c":1,
 	"spellType":"Simple",
 	"subtypeText":"Simple"

@@ -20,7 +20,14 @@
 					\"sMod\":-1
 				}",
 				"{
-					\"subeffType\":\"Conditionally Jump\"
+					\"subeffType\":\"Set X by Target Value\",
+					\"whatToCount\":\"S\",
+					\"xMultiplier\":1
+				}",
+				"{
+					\"subeffType\":\"Conditionally Jump\",
+					\"condition\":\"X >= Constant\",
+					\"jumpIndex\":0
 				}"
 			]	
 		}

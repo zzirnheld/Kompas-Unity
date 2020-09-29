@@ -70,7 +70,7 @@
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"to move Whose Anger Draws Fear's attack target to\",
-						\"spaceRestrictions\":[\"Distance to Target == Constant\",\"Further from Source than Target\"],
+						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\",\"Further from Source than Target\"],
 						\"constant\":1
 					}
 				}",
