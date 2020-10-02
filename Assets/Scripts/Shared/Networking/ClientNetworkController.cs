@@ -67,6 +67,7 @@ namespace KompasClient.Networking
                 case Packet.UpdateCardNumericStats: return JsonUtility.FromJson<ChangeCardNumericStatsClientPacket>(json);
                 case Packet.NegateCard: return JsonUtility.FromJson<NegateCardClientPacket>(json);
                 case Packet.ActivateCard: return JsonUtility.FromJson<ActivateCardClientPacket>(json);
+                case Packet.ResetCard: return JsonUtility.FromJson<ResetCardClientPacket>(json);
                 case Packet.ChangeCardController: return JsonUtility.FromJson<ChangeCardControllerClientPacket>(json);
                 case Packet.SetPips: return JsonUtility.FromJson<SetPipsClientPacket>(json);
 

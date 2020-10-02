@@ -6,6 +6,7 @@
 		{
 			"triggerCondition":"Discard",
 			"trigger":"{
+				\"blurb\":\"Ificate\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\",\"Triggerer Fits Restriction\"],
 					\"cardRestriction\":{

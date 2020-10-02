@@ -89,6 +89,7 @@ namespace KompasCore.Networking
         public const string UpdateCardNumericStats = "Change Card Numeric Stats";
         public const string NegateCard = "Negate Card";
         public const string ActivateCard = "Activate Card";
+        public const string ResetCard = "Reset Card";
         public const string ChangeCardController = "Change Card Controller";
         public const string SetPips = "Set Pips";
 

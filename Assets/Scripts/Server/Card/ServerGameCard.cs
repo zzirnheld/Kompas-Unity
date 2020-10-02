@@ -78,6 +78,12 @@ namespace KompasServer.Cards
             ServerEffects = effects;
         }
 
+        public override void ResetCard()
+        {
+            base.ResetCard();
+            ServerNotifier.NotifyResetCard(this);
+        }
+
         public override void AddAugment(GameCard augment, IStackable stackSrc = null)
         {
             var context = new ActivationContext(card: augment, stackable: stackSrc, triggerer: stackSrc?.Controller ?? Controller);
