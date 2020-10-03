@@ -21,6 +21,14 @@ namespace KompasCore.Cards
         public GameObject zoomedAllFrame;
         public GameObject unzoomedCharFrame;
         public GameObject unzoomedAllFrame;
+
+        public GameObject zoomedCharStatBackgrounds;
+        public GameObject unzoomedCharStatBackgrounds;
+        public GameObject zoomedSpellStatBackgrounds;
+        public GameObject unzoomedSpellStatBackgrounds;
+        public GameObject zoomedAugStatBackgrounds;
+        public GameObject unzoomedAugStatBackgrounds;
+
         public TMP_Text zoomedNText;
         public TMP_Text zoomedEText;
         public TMP_Text zoomedSText;
@@ -162,6 +170,7 @@ namespace KompasCore.Cards
             zoomedSText.gameObject.SetActive(zoomedChar);
             zoomedWText.gameObject.SetActive(zoomedChar);
             zoomedCharFrame.SetActive(zoomedChar);
+            zoomedCharStatBackgrounds.SetActive(zoomedChar);
 
             bool unzoomedChar = isChar && !zoomed;
             unzoomedNText.gameObject.SetActive(unzoomedChar);
@@ -169,12 +178,21 @@ namespace KompasCore.Cards
             unzoomedSText.gameObject.SetActive(unzoomedChar);
             unzoomedWText.gameObject.SetActive(unzoomedChar);
             unzoomedCharFrame.SetActive(unzoomedChar);
+            unzoomedCharStatBackgrounds.SetActive(unzoomedChar);
 
-            zoomedCText.gameObject.SetActive(cardType == 'S' && zoomed);
-            unzoomedCText.gameObject.SetActive(cardType == 'S' && !zoomed);
+            bool zoomedSpell = cardType == 'S' && zoomed;
+            zoomedCText.gameObject.SetActive(zoomedSpell);
+            zoomedSpellStatBackgrounds.SetActive(zoomedSpell);
+            bool unzoomedSpell = cardType == 'S' && !zoomed;
+            unzoomedCText.gameObject.SetActive(unzoomedSpell);
+            unzoomedSpellStatBackgrounds.SetActive(unzoomedSpell);
 
-            zoomedAText.gameObject.SetActive(cardType == 'A' && zoomed);
-            unzoomedAText.gameObject.SetActive(cardType == 'A' && !zoomed);
+            bool zoomedAug = cardType == 'A' && zoomed;
+            zoomedAText.gameObject.SetActive(zoomedAug);
+            zoomedAugStatBackgrounds.SetActive(zoomedAug);
+            bool unzoomedAug = cardType == 'A' && !zoomed;
+            unzoomedAText.gameObject.SetActive(unzoomedAug);
+            unzoomedAugStatBackgrounds.gameObject.SetActive(unzoomedAug);
 
             zoomedAllFrame.SetActive(zoomed);
             unzoomedAllFrame.SetActive(!zoomed);
