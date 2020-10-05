@@ -131,16 +131,16 @@ namespace KompasServer.Effects
                 foreach(var p in ServerGame.Players)
                 {
                     var thisPlayers = list.Where(t => t.serverEffect.Controller == p);
-                    if (thisPlayers.Count() == 1) thisPlayers.First().order = 1;
+                    if (thisPlayers.Count() == 1) thisPlayers.First().Order = 1;
                 }
 
                 //if all triggers have been responded to
                 var confirmed = list.Where(t => t.Confirmed);
                 if (confirmed.All(t => t.Ordered))
                 {
-                    foreach (var t in confirmed.Where(t => t.serverEffect.Controller == turnPlayer).OrderBy(t => t.order))
+                    foreach (var t in confirmed.Where(t => t.serverEffect.Controller == turnPlayer).OrderBy(t => t.Order))
                         PushToStack(t.serverEffect, triggered.context);
-                    foreach (var t in confirmed.Where(t => t.serverEffect.Controller == turnPlayer.Enemy).OrderBy(t => t.order))
+                    foreach (var t in confirmed.Where(t => t.serverEffect.Controller == turnPlayer.Enemy).OrderBy(t => t.Order))
                         PushToStack(t.serverEffect, triggered.context);
                     triggeredTriggers.Dequeue();
                     return true;

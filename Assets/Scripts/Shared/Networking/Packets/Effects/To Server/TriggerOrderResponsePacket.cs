@@ -13,7 +13,6 @@ namespace KompasCore.Networking
         public int[] cardIds;
         public int[] effIndices;
         public int[] orders;
-        public (int, int, int) test;
 
         public TriggerOrderResponsePacket() : base(ChooseTriggerOrder) { }
 
@@ -22,7 +21,6 @@ namespace KompasCore.Networking
             this.cardIds = cardIds;
             this.effIndices = effIndices;
             this.orders = orders;
-            test = (cardIds.Length, effIndices.Length, orders.Length);
         }
 
         public override Packet Copy() => new TriggerOrderResponsePacket(cardIds, effIndices, orders);
@@ -38,8 +36,9 @@ namespace KompasServer.Networking
             for(int i = 0; i < cardIds.Length; i++)
             {
                 var card = serverGame.GetCardWithID(cardIds[i]);
-                if (card?.Effects.ElementAt(effIndices[i]).Trigger is ServerTrigger trigger) 
-                    trigger.order = orders[i];
+                if (card == null) continue;
+                if (card.Effects.ElementAt(effIndices[i]).Trigger is ServerTrigger trigger) 
+                    trigger.Order = orders[i];
             }
             serverGame.EffectsController.CheckForResponse();
         }

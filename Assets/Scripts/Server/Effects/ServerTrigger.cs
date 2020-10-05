@@ -35,7 +35,16 @@ namespace KompasServer.Effects
         /// <summary>
         /// Represents the order this trigger has been given, amongst other simultaneously triggered triggers.
         /// </summary>
-        public int order = -1;
+        private int order = -1;
+        public int Order
+        {
+            get => order;
+            set
+            {
+                order = value;
+                Responded = true;
+            }
+        }
         public bool Ordered => order != -1;
 
         /// <summary>
