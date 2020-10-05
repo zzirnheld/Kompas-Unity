@@ -7,6 +7,7 @@
 			"triggerCondition":"Augment Attached",
 			"trigger":
 			"{
+				\"blurb\":\"Activate Golem\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
@@ -36,6 +37,7 @@
 			"triggerCondition":"Discard",
 			"trigger":
 			"{
+				\"blurb\":\"Core Recovery\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"Augmented Card Triggered\"]
 				}

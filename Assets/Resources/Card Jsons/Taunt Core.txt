@@ -1,15 +1,15 @@
 {
 	"cardType":65,
-	"cardName":"Combustion Core",
-	"effText":"Activate this character during enemy turns. (They deactivate on your turn.) When they die (while I'm equipped), rehand me. When your turn starts, pay a pip or dispel me.",
+	"cardName":"Taunt Core",
+	"effText":"While equipped, activate this character. The first time each stack an adjacent character moves, move them to any space adjacent to me. When they die (while I'm equipped), rehand me.",
 	"effects":[
 		{
-			"triggerCondition":"Turn Start",
+			"triggerCondition":"Augment Attached",
 			"trigger":
 			"{
 				\"blurb\":\"Activate Golem\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Enemy Turn\"]
+					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
 			"subeffects":[
@@ -18,51 +18,42 @@
 				}",
 				"{
 					\"subeffType\":\"Temporary Activate\",
-					\"endCondition\":\"Turn Start\",
+					\"endCondition\":\"Augment Detached\",
 					\"triggerRestriction\":{
-						\"triggerRestrictions\":[\"Friendly Turn\"]
+						\"triggerRestrictions\":[\"This Card Triggered\"]
 					}
 				}"
 			]
 		},
 		{
-			"triggerCondition":"Turn Start",
+			"triggerCondition":"Move",
 			"trigger":
 			"{
-				\"blurb\":\"Combustion Maintenance\",
+				\"blurb\":\"Taunt\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Friendly Turn\"]
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"Max Per Stack\"],
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Adjacent\"]
+					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Choose Effect Option\",
-					\"ChoiceBlurb\":\"Pay 1 pip or dispel this?\",
-					\"OptionBlurbs\":[\"Pay 1 pip\",\"Dispel\"],
-					\"OptionJumpIndices\":[1,5]
+					\"subeffType\":\"Target Triggering Card\"
 				}",
 				"{
-					\"subeffType\":\"Jump on Effect Impossible\",
-					\"jumpTo\":4
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where for Taunt Core to move its target\",
+						\"spaceRestrictions\":[\"Empty\",\"Adjacent\",\"Can Move Target to This Space\"]
+					}
 				}",
 				"{
-					\"subeffType\":\"Pay Pips\",
-					\"xMultiplier\":0,
-					\"xModifier\":1
-				}",
-				"{
-					\"subeffType\":\"End Effect Resolution\"
-				}",
-				"{
-					\"subeffType\":\"Clear Jump on Effect Impossible\"
-				}",
-				"{
-					\"subeffType\":\"Target This\"
-				}",
-				"{
-					\"subeffType\":\"Discard\"
+					\"subeffType\":\"Move\"
 				}"
-			]
+			]	
 		},
 		{
 			"triggerCondition":"Discard",

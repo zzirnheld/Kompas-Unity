@@ -7,7 +7,7 @@
 			"triggerCondition":"Discard",
 			"trigger":
 			"{
-				\"blurb\":\"Bloodcurse\",
+				\"blurb\":\"Mad Bloodcurse\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"From Field\",\"Max Per Turn\"],
 					\"cardRestriction\":

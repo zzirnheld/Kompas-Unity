@@ -46,6 +46,7 @@
 			"triggerCondition":"Move",
 			"trigger":
 			"{
+				\"blurb\":\"Maze Block\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Coords Fit Restriction\",\"Max Per Stack\"],
 					\"spaceRestriction\":

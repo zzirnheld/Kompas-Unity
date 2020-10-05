@@ -112,6 +112,7 @@ namespace KompasClient.Networking
             var p = FromJson(packetInfo.command, packetInfo.json);
             Debug.Log($"Parsing packet {p}");
             p.Execute(ClientGame);
+            ClientGame.RefreshShownCards();
             ClientGame.clientUICtrl.RefreshShownCardInfo();
         }
     }

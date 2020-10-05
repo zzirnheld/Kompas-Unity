@@ -306,6 +306,16 @@ namespace KompasServer.GameCore
             //trigger turn start effects
             var context = new ActivationContext(triggerer: TurnServerPlayer);
             EffectsController.TriggerForCondition(Trigger.TurnStart, context);
+
+            //then, discard any delayed or vanishing cards
+            foreach(var c in Cards)
+            {
+                if (c.Location == CardLocation.Field && c.CardType == 'S' 
+                    && (c.SpellSubtype == CardBase.VanishingSubtype || c.SpellSubtype == CardBase.DelayedSubtype) 
+                    && c.TurnsOnBoard > c.Arg) 
+                    c.Discard();
+            }
+
             EffectsController.CheckForResponse();
         }
 

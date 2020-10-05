@@ -7,6 +7,8 @@ namespace KompasCore.GameCore
 {
     public abstract class HandController : MonoBehaviour
     {
+        public const int MaxHandSize = 10;
+
         public Player Owner;
 
         public readonly List<GameCard> Hand = new List<GameCard>();

@@ -96,9 +96,9 @@ namespace KompasClient.UI
 
         private bool ShowEffect(Effect eff) => eff.CanBeActivatedBy(clientGame.Players[0]);
 
-        public override void ShowInfoFor(GameCard card, bool refresh = false)
+        public override bool ShowInfoFor(GameCard card, bool refresh = false)
         {
-            base.ShowInfoFor(card, refresh);
+            if (!base.ShowInfoFor(card, refresh)) return false;
 
             if (card != null && card.Effects.Any(eff => ShowEffect(eff)))
             {
@@ -120,6 +120,8 @@ namespace KompasClient.UI
                 selectedUIParent.SetActive(true);
             }
             else UseEffectParent.SetActive(false);
+
+            return true;
         }
 
         public override void SelectCard(GameCard card, Game.TargetMode targetMode, bool fromClick)

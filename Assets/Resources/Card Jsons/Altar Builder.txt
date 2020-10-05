@@ -7,7 +7,7 @@
 			"triggerCondition":"Discard",
 			"trigger":
 			"{
-				\"blurb\":\"Reshuffle\",
+				\"blurb\":\"Strengthen Builder\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"Triggerer Fits Restriction\",\"From Field\"],
 					\"cardRestriction\":
@@ -28,6 +28,7 @@
 			]
 		},
 		{
+			"blurb":"Build Altar",
 			"activationRestriction":{
 				"activationRestrictions":[
 					"Default"

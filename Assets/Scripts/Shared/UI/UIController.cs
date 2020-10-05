@@ -68,15 +68,22 @@ namespace KompasCore.UI
             boardUICtrl.ShowNothing();
         }
 
-        public virtual void ShowInfoFor(GameCard card, bool refresh = false)
+        /// <summary>
+        /// Updates the info shown in the ui for the given card.
+        /// <br></br> If the card passed in is already being shown, but refresh is false, does nothing.
+        /// </summary>
+        /// <param name="card">The card to show info for.</param>
+        /// <param name="refresh">Whether to forcibly refresh all shown info of the card being shown</param>
+        /// <returns><see langword="true"/> if the shown info was updated, <see langword="false"/> otherwise.</returns>
+        public virtual bool ShowInfoFor(GameCard card, bool refresh = false)
         {
-            if (ShownCard == card && !refresh) return;
+            if (ShownCard == card && !refresh) return false;
 
             ShownCard = card;
             if (card == null)
             {
                 ShowNothing();
-                return;
+                return false;
             }
 
             //set all common values
@@ -89,7 +96,7 @@ namespace KompasCore.UI
             negatedParent.SetActive(card.Negated);
             activatedParent.SetActive(card.Activated);
 
-            if (card?.Augments != null && card.Augments.Any())
+            if (card.Augments != null && card.Augments.Any())
             {
                 var children = new List<GameObject>();
                 foreach (Transform child in AugmentGridParent.transform) children.Add(child.gameObject);
@@ -109,6 +116,8 @@ namespace KompasCore.UI
             selectedUIParent.SetActive(true);
 
             boardUICtrl.ShowForCard(card, refresh);
+
+            return true;
         }
 
         public void RefreshShownCardInfo() => ShowInfoFor(ShownCard, refresh: true);

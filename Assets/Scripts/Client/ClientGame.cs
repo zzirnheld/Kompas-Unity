@@ -52,6 +52,8 @@ namespace KompasClient.GameCore
         private bool stackEmpty = true;
         public override bool NothingHappening => stackEmpty;
 
+        private bool zoomed = false;
+
         public override int Leyload 
         { 
             get => base.Leyload;
@@ -152,8 +154,14 @@ namespace KompasClient.GameCore
 
         public void ShowCardsByZoom(bool zoomed)
         {
-            foreach (var c in Cards) c.cardCtrl.ShowForCardType(c.CardType, zoomed);
+            this.zoomed = zoomed;
+            foreach (var c in Cards)
+            {
+                if(c.gameObject.activeSelf) c.cardCtrl.ShowForCardType(c.CardType, zoomed);
+            }
         }
+
+        public void RefreshShownCards() => ShowCardsByZoom(zoomed);
 
         public void EffectActivated(ClientEffect eff)
         {

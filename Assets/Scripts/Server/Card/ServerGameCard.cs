@@ -119,13 +119,6 @@ namespace KompasServer.Cards
             return true;
         }
 
-        public override void ResetForTurn(Player turnPlayer)
-        {
-            base.ResetForTurn(turnPlayer);
-
-            if (CardType == 'S' && SpellSubtype == VanishingSubtype && TurnsOnBoard > Arg) Discard();
-        }
-
         #region stats
         public override void SetN(int n, IStackable stackSrc = null)
         {

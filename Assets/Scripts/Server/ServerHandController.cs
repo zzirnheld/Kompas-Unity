@@ -15,7 +15,7 @@ namespace KompasServer.GameCore
 
         public override bool AddToHand(GameCard card, IStackable stackSrc = null)
         {
-            if (!card.CanRemove) return false;
+            if (!card.CanRemove || Hand.Count >= MaxHandSize) return false;
             var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
             EffectsController.TriggerForCondition(Trigger.Rehand, context);
             ServerNotifier.NotifyRehand(card);

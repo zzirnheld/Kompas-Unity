@@ -112,7 +112,7 @@ namespace KompasCore.GameCore
 
         protected void ResetCardsForTurn()
         {
-            foreach (var c in Cards) c?.ResetForTurn(TurnPlayer);
+            foreach (var c in Cards) c.ResetForTurn(TurnPlayer);
         }
     }
 }
