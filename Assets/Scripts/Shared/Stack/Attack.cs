@@ -18,9 +18,9 @@ namespace KompasCore.Effects
         /// <param name="defender"></param>
         public Attack(Player controller, GameCard attacker, GameCard defender)
         {
-            controller = controller ?? throw new System.ArgumentNullException("Cannot have null controller of attack");
-            this.attacker = attacker ?? throw new System.ArgumentNullException("Cannot have null attacker");
-            this.defender = defender ?? throw new System.ArgumentNullException("Cannot have null defender");
+            this.controller = controller != null ? controller : throw new System.ArgumentNullException("controller", "Cannot have null controller of attack");
+            this.attacker = attacker != null ? attacker : throw new System.ArgumentNullException("attacker", "Cannot have null attacker");
+            this.defender = defender != null ? defender : throw new System.ArgumentNullException("defender", "Cannot have null defender");
         }
     }
 }

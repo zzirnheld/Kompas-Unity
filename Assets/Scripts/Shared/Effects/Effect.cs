@@ -54,7 +54,7 @@ namespace KompasCore.Effects
 
         public Effect(ActivationRestriction restriction, GameCard source, string blurb, int effIndex, Player owner)
         {
-            Source = source ?? throw new System.ArgumentNullException($"Effect cannot be attached to null card");
+            Source = source != null ? source : throw new System.ArgumentNullException("source", "Effect cannot be attached to null card");
             Controller = owner;
             ActivationRestriction = restriction;
             ActivationRestriction.Initialize(this);
@@ -81,12 +81,10 @@ namespace KompasCore.Effects
         public virtual void RemoveTarget(GameCard card) => TargetsList.Remove(card);
 
         public virtual bool CanBeActivatedBy(Player controller)
-        {
-            return Trigger == null
-                && controller.index == Source.ControllerIndex
-                && !Negated
-                && ActivationRestriction.Evaluate(controller);
-        }
+            => Trigger == null && ActivationRestriction.Evaluate(controller);
+
+        public virtual bool CanBeActivatedAtAllBy(Player activator)
+            => Trigger == null && ActivationRestriction.EvaluateAtAll(activator);
 
         public abstract void StartResolution(ActivationContext context);
 

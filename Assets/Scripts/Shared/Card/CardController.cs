@@ -1,6 +1,7 @@
 ﻿using KompasCore.GameCore;
 using UnityEngine;
 using TMPro;
+using KompasCore.UI;
 
 namespace KompasCore.Cards
 {
@@ -44,6 +45,9 @@ namespace KompasCore.Cards
 
         public GameObject currentTargetObject;
         public GameObject validTargetObject;
+
+        public OscillatingController attackOscillator;
+        public OscillatingController effectOscillator;
 
         public int N 
         {
@@ -196,6 +200,21 @@ namespace KompasCore.Cards
 
             zoomedAllFrame.SetActive(zoomed);
             unzoomedAllFrame.SetActive(!zoomed);
+
+            //the following logic is arranged the way it is so you don't loop through all cards,
+            //unless the card does actually have a possible attack
+
+            //if you can attack at all, enable the attack indicator
+            if (card.AttackRestriction.EvaluateAtAll()) 
+                //oscillate the attack indicator if can attack a card right now
+                attackOscillator.Enable(card.AttackRestriction.EvaluateAny());
+            else attackOscillator.Disable();
+
+            //if you can activate any effect, enable the attack indicator
+            if (card.HasAtAllActivateableEffect)
+                //oscillate the effect indicator if you can activate an effect right now
+                effectOscillator.Enable(card.HasCurrentlyActivateableEffect);
+            else effectOscillator.Disable();
 
             SetImage(card.CardName, zoomed);
         }

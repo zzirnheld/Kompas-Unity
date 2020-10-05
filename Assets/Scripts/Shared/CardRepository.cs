@@ -246,6 +246,7 @@ public class CardRepository : MonoBehaviour
                     Debug.LogError("Unrecognized type character " + serializableCard.cardType + " in " + json);
                     return null;
             }
+            Debug.Log($"Successfully created a card? {card != null} for json {json}");
             ClientEffect[] effects = CreateClientEffects(serializableCard.effects, card, clientGame, owner);
             card.SetInfo(serializableCard, clientGame, owner, effects, id);
             card.cardCtrl.SetImage(card.CardName, false);

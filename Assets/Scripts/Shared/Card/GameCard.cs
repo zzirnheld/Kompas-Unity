@@ -139,6 +139,19 @@ namespace KompasCore.Cards
         }
         #endregion
 
+        #region effects
+        public abstract IEnumerable<Effect> Effects { get; }
+        /// <summary>
+        /// Whether there is an effect that is ready to be activated right now
+        /// </summary>
+        public bool HasCurrentlyActivateableEffect => Effects != null && Effects.Count(e => e.CanBeActivatedBy(Controller)) > 0;
+        /// <summary>
+        /// Whether there is any effect that can still be activated (this turn, this round, etc.) 
+        /// even if it can't be activated at this exact moment.
+        /// </summary>
+        public bool HasAtAllActivateableEffect => Effects != null && Effects.Count(e => e.CanBeActivatedAtAllBy(Controller)) > 0;
+        #endregion effects
+
         //movement
         public int SpacesMoved { get; set; }
         public int SpacesCanMove => N - SpacesMoved;
@@ -174,7 +187,6 @@ namespace KompasCore.Cards
         /// TODO: make this also be accurate on client, remembering what thigns have been revealed
         /// </summary>
         public virtual bool KnownToEnemy => !Game.HiddenLocations.Contains(Location);
-        public abstract IEnumerable<Effect> Effects { get; }
         public int TurnsOnBoard { get; private set; }
         public abstract bool IsAvatar { get; }
 
@@ -194,7 +206,7 @@ namespace KompasCore.Cards
             PlayRestriction = serializedCard.PlayRestriction ?? new PlayRestriction();
             PlayRestriction.SetInfo(this);
 
-            if (Effects != null) foreach (var eff in Effects) eff?.Reset();
+            if (Effects != null) foreach (var eff in Effects) eff.Reset();
             //instead of setting negations or activations to 0, so that it updates the client correctly
             while (Negated) Negated = false;
             while (Activated) Activated = false;
