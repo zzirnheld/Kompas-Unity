@@ -85,7 +85,7 @@
 		}
 	],
 	"n":1,
-	"e":7,
+	"e":10,
 	"s":7,
 	"w":3,
 	"subtypes":["Mage","Craftsman"],

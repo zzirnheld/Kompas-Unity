@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Fortunating Pulsar",
-	"effText":"The first time each turn your Avatar gains S, draw 1.\nThe first time each turn your Avatar loses S, gain a pip.",
+	"effText":"When your Avatar gains S, discard 1, then draw 1.\nWhen your Avatar gains S, give both players a pip.",
 	"effects":[
 		{
 			"triggerCondition":"S Change",
@@ -9,7 +9,7 @@
 			"{
 				\"blurb\":\"Fortune-card\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Max Per Turn\",\"X Fits Restriction\",\"Triggerer Fits Restriction\"],
+					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\",\"Triggerer Fits Restriction\"],
 					\"xRestriction\":{
 						\"xRestrictions\":[\">0\"]
 					},
@@ -20,6 +20,16 @@
 				}
 			}",
 			"subeffects":[
+				"{
+					\"subeffType\":\"Hand Target\",
+					\"cardRestriction\":{
+						\"blurb\":\"Great Scott, we have to discard something\",
+						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}",
 				"{
 					\"subeffType\":\"Draw\"
 				}"
@@ -46,6 +56,12 @@
 					\"subeffType\":\"Add Pips\",
 					\"xMultiplier\":0,
 					\"xModifier\":1
+				}",
+				"{
+					\"subeffType\":\"Add Pips\",
+					\"xMultiplier\":0,
+					\"xModifier\":1,
+					\"playerIndex\":1
 				}"
 			]	
 		}
