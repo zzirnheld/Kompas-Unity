@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Obsidian Golem",
-	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, I give a Summoned character -4E.",
+	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, I give a Summoned character -5E.",
 	"effects":[
 		{
 			"triggerCondition":"Activate",
@@ -22,10 +22,7 @@
 				}",
 				"{
 					\"subeffType\":\"Change NESW\",
-					\"nChange\":0,
-					\"eChange\":-4,
-					\"sChange\":0,
-					\"wChange\":0
+					\"eChange\":-5
 				}"
 			]
 		}

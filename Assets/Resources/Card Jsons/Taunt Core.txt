@@ -47,7 +47,7 @@
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where for Taunt Core to move its target\",
-						\"spaceRestrictions\":[\"Empty\",\"Adjacent\",\"Can Move Target to This Space\"]
+						\"spaceRestrictions\":[\"Empty\",\"Adjacent to Source\",\"Can Move Target to This Space\"]
 					}
 				}",
 				"{

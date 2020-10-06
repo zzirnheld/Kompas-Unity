@@ -74,8 +74,8 @@ namespace KompasCore.Effects
         public bool RestrictionValidWithDebug(string restriction, Player activator)
         {
             bool valid = RestrictionValid(restriction, activator);
-            if (!valid) Debug.Log($"Card {Card.CardName} effect # {Effect.EffectIndex} activation restriction " +
-                $"flouts restriction {restriction} for activator {activator.index}");
+            /*if (!valid) Debug.Log($"Card {Card.CardName} effect # {Effect.EffectIndex} activation restriction " +
+                $"flouts restriction {restriction} for activator {activator.index}");*/
             return valid;
         }
 

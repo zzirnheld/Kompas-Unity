@@ -36,7 +36,7 @@
 					\"endCondition\":\"Turn Start\",
 					\"triggerRestriction\":
 					{
-						\"triggerRestrictions\":[300]
+						\"triggerRestrictions\":["Friendly Turn"]
 					}
 				}"
 			]
