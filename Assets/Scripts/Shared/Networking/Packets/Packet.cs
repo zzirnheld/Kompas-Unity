@@ -65,6 +65,7 @@ namespace KompasCore.Networking
         //gamestate (from server to client)
         public const string SetLeyload = "Set Leyload";
         public const string SetTurnPlayer = "Set Turn Player";
+        public const string AttackStarted = "Attack Started";
 
         //card addition/deletion (from server to client)
         public const string DeleteCard = "Delete Card";

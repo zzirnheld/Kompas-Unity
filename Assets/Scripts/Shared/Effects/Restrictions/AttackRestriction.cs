@@ -69,7 +69,7 @@ namespace KompasCore.Effects
         private bool RestrictionValidWithDebug(string restriction, GameCard defender)
         {
             bool valid = RestrictionValid(restriction, defender);
-            if (!valid) Debug.LogWarning($"{Card.CardName} cannot attack {defender} because it flouts the attack restriction {restriction}");
+            //if (!valid) Debug.LogWarning($"{Card.CardName} cannot attack {defender} because it flouts the attack restriction {restriction}");
             return valid;
         }
 
@@ -93,6 +93,6 @@ namespace KompasCore.Effects
         /// </summary>
         /// <returns><see langword="true"/> If any card in the game fits this card's atack restriction, 
         /// <see langword="false"/> otherwise.</returns>
-        public bool EvaluateAny() => Card.Game.Cards.Any(c => Evaluate(c));
+        public bool EvaluateAny() => Card.Game.boardCtrl.ExistsCardOnBoard(c => Evaluate(c));
     }
 }

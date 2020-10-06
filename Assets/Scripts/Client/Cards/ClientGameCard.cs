@@ -19,6 +19,7 @@ namespace KompasClient.Cards
             {
                 base.Location = value;
                 ClientGame.clientUICtrl.Leyload = Game.Leyload;
+                if(cardCtrl != null) cardCtrl.ShowForCardType(CardType, ClientGame.Zoomed);
             }
         }
 
@@ -29,7 +30,7 @@ namespace KompasClient.Cards
             set
             {
                 clientController = value;
-                cardCtrl?.SetRotation();
+                if(cardCtrl != null) cardCtrl.SetRotation();
             }
         }
         public override Player Controller

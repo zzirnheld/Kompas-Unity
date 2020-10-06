@@ -53,6 +53,7 @@ namespace KompasClient.GameCore
         public override bool NothingHappening => stackEmpty;
 
         private bool zoomed = false;
+        public bool Zoomed => zoomed;
 
         public override int Leyload 
         { 

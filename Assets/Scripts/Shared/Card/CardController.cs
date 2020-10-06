@@ -204,17 +204,26 @@ namespace KompasCore.Cards
             //the following logic is arranged the way it is so you don't loop through all cards,
             //unless the card does actually have a possible attack
 
-            //if you can attack at all, enable the attack indicator
-            if (card.AttackRestriction.EvaluateAtAll()) 
-                //oscillate the attack indicator if can attack a card right now
-                attackOscillator.Enable(card.AttackRestriction.EvaluateAny());
-            else attackOscillator.Disable();
+            //only check if card can attack if on field
+            if (card.Location == CardLocation.Field)
+            {
+                //if you can attack at all, enable the attack indicator
+                if (card.AttackRestriction.EvaluateAtAll())
+                    //oscillate the attack indicator if can attack a card right now
+                    attackOscillator.Enable(card.AttackRestriction.EvaluateAny());
+                else attackOscillator.Disable();
 
-            //if you can activate any effect, enable the attack indicator
-            if (card.HasAtAllActivateableEffect)
-                //oscillate the effect indicator if you can activate an effect right now
-                effectOscillator.Enable(card.HasCurrentlyActivateableEffect);
-            else effectOscillator.Disable();
+                //if you can activate any effect, enable the attack indicator
+                if (card.HasAtAllActivateableEffect)
+                    //oscillate the effect indicator if you can activate an effect right now
+                    effectOscillator.Enable(card.HasCurrentlyActivateableEffect);
+                else effectOscillator.Disable();
+            }
+            else
+            {
+                attackOscillator.Disable();
+                effectOscillator.Disable();
+            }
 
             SetImage(card.CardName, zoomed);
         }

@@ -55,6 +55,7 @@ Durability Core
 Strength Core
 Defense Core
 Combustion Core
+Taunt Core
 Modular Golem Cores
 Slight Golemodifications
 Runeloremaster
@@ -243,4 +244,4 @@ Supernova
 Starstuff
 Starbirth
 Cannot Be Created Nor Destroyed
-lulthisdontexistmydood
+a lot of disappointment

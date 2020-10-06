@@ -38,13 +38,8 @@
 	},
 	"AttackRestriction":{
 		"attackRestrictions":[
-			"This is Character",
-			"Defender is Character",
-			"Defender is Adjacent",
-			"Defender is Enemy",
-			"This is Activated",
-			"Friendly Turn",
-			"Maximum Per Turn"
+			"Default",
+			"This is Activated"
 		]
 	},
 	"n":3,
