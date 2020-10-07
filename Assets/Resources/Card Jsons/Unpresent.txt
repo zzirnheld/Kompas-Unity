@@ -55,7 +55,7 @@
 		}
 	],
 	"n":0,
-	"e":8,
+	"e":6,
 	"s":4,
 	"w":2,
 	"subtypes":["Ethereal","Revenant"],

@@ -53,6 +53,7 @@
 			"triggerCondition":"Move",
 			"trigger":
 			"{
+				\"blurb\":\"Discard Draw\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
 					\"cardRestriction\":{

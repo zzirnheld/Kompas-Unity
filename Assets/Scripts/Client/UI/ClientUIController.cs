@@ -17,6 +17,9 @@ namespace KompasClient.UI
         public const string FriendlyTurn = "Friendly Turn";
         public const string EnemyTurn = "Enemy Turn";
 
+        public const string AwaitingResponseMessage = "Awaiting Response";
+        public const string AwaitingEnemyResponse = "Awaiting Enemy Response";
+
         public struct SearchData
         {
             public readonly List<GameCard> toSearch;
@@ -130,10 +133,7 @@ namespace KompasClient.UI
             if (fromClick && card != null) clientGame.TargetCard(card);
         }
 
-        public void ReselectSelectedCard(bool fromClick)
-        {
-            SelectCard(SelectedCard, fromClick);
-        }
+        public void ReselectSelectedCard(bool fromClick) => SelectCard(SelectedCard, fromClick);
 
         #region connection/game start
         public void Connect(bool acceptEmpty)
@@ -155,20 +155,11 @@ namespace KompasClient.UI
             }
         }
 
-        public void HideConnectUI()
-        {
-            networkingParent.SetActive(false);
-        }
+        public void HideConnectUI() => networkingParent.SetActive(false);
 
-        public void ShowConnectedWaitingUI()
-        {
-            ConnectedWaitingParent.SetActive(true);
-        }
+        public void ShowConnectedWaitingUI() => ConnectedWaitingParent.SetActive(true);
 
-        public void ShowConnectUI()
-        {
-            networkingParent.SetActive(true);
-        }
+        public void ShowConnectUI() => networkingParent.SetActive(true);
 
         public void ShowGetDecklistUI()
         {
@@ -191,10 +182,7 @@ namespace KompasClient.UI
             DeckAcceptedParent.SetActive(true);
         }
 
-        public void HideGetDecklistUI()
-        {
-            DeckSelectUIParent.SetActive(false);
-        }
+        public void HideGetDecklistUI() => DeckSelectUIParent.SetActive(false);
         #endregion connection/game start
 
         public void ChangeTurn(int index)
@@ -222,10 +210,7 @@ namespace KompasClient.UI
             throw new System.NotImplementedException();
         }
 
-        public void GetXForEffect()
-        {
-            setXView.SetActive(true);
-        }
+        public void GetXForEffect() => setXView.SetActive(true);
 
         /// <summary>
         /// Sets the value for X in an effect that uses X
@@ -240,15 +225,9 @@ namespace KompasClient.UI
             }
         }
 
-        public void EnableDecliningTarget()
-        {
-            declineAnotherTargetView.SetActive(true);
-        }
+        public void EnableDecliningTarget() => declineAnotherTargetView.SetActive(true);
 
-        public void DisableDecliningTarget()
-        {
-            declineAnotherTargetView.SetActive(false);
-        }
+        public void DisableDecliningTarget() => declineAnotherTargetView.SetActive(false);
 
         public void DeclineAnotherTarget()
         {
@@ -273,14 +252,21 @@ namespace KompasClient.UI
 
         public void GetResponse()
         {
-            if (Autodecline) DeclineResponse();
-            else declineEffectView.SetActive(true);
+            //get response as necessary 
+            if (Autodecline)
+            {
+                DeclineResponse();
+                currentStateText.text = AwaitingEnemyResponse;
+            }
+            else
+            {
+                declineEffectView.SetActive(true);
+                currentStateText.text = AwaitingResponseMessage;
+            }
+
         }
 
-        public void UngetResponse()
-        {
-            declineEffectView.SetActive(false);
-        }
+        public void UngetResponse() => declineEffectView.SetActive(false);
 
         public void DeclineResponse()
         {
@@ -290,8 +276,8 @@ namespace KompasClient.UI
         #endregion effects
 
         #region search
-        public void StartSearch(List<GameCard> list, int numToChoose = 1, bool targetingSearch = true) =>
-            StartSearch(new SearchData(list, System.Math.Min(list.Count, numToChoose), targetingSearch, new List<GameCard>()));
+        public void StartSearch(List<GameCard> list, int numToChoose = 1, bool targetingSearch = true) 
+            => StartSearch(new SearchData(list, System.Math.Min(list.Count, numToChoose), targetingSearch, new List<GameCard>()));
 
         public void StartSearch(SearchData data)
         {
@@ -365,10 +351,7 @@ namespace KompasClient.UI
             else StartSearch(searchStack.Pop());
         }
 
-        public void StartDiscardSearch()
-        {
-            StartSearch(clientGame.friendlyDiscardCtrl.Discard);
-        }
+        public void StartDiscardSearch() => StartSearch(clientGame.friendlyDiscardCtrl.Discard);
 
         public void NextCardSearch()
         {

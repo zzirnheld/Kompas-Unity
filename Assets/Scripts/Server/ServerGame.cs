@@ -14,6 +14,7 @@ namespace KompasServer.GameCore
     public class ServerGame : Game
     {
         public const int AvatarEBonus = 10;
+        public const int AvatarWPenalty = 10;
 
         //model is basically: players request to the server to do something:
         //if server oks, it tells all players to do the thing
@@ -94,7 +95,7 @@ namespace KompasServer.GameCore
         private bool ValidDeck(List<string> deck)
         {
             if (uiCtrl.DebugMode) return true;
-            if (deck.Count < 50) return false;
+            if (deck.Count < 49) return false;
             //first name should be that of the Avatar
             if (cardRepo.GetCardFromName(deck[0]).cardType != 'C') return false;
 
@@ -179,6 +180,7 @@ namespace KompasServer.GameCore
             {
                 p.ServerNotifier.SetFirstTurnPlayer(FirstTurnPlayer);
                 p.Avatar.SetE(p.Avatar.E + AvatarEBonus);
+                p.Avatar.SetW(p.Avatar.W - AvatarWPenalty);
                 DrawX(p.index, 5);
             }
             GiveTurnPlayerPips();
@@ -257,6 +259,8 @@ namespace KompasServer.GameCore
                 Debug.LogWarning("Debug mode, always return true for valid augment");
                 return true;
             }
+
+            Debug.Log($"Checking valid augment of {card.CardName} to {toX}, {toY}, on {boardCtrl.GetCardAt(toX, toY)}");
 
             return card != null
                 && card.CardType == 'A'
