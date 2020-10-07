@@ -29,7 +29,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Necropoten to draw\",
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<=C\"],
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<C\"],
 						\"constant\":1
 					}
 				}",

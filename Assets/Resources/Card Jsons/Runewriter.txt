@@ -34,7 +34,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Runer for Runewriter to search (to hand)\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Index<=X\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Index<X\"],
 						\"subtypesInclude\":[\"Runer\"]
 					},
 					\"maxCanChoose\":1,
@@ -47,7 +47,7 @@
 					\"subeffType\":\"Add Rest\",
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<=X\",\"Not Already Target\"]
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<X\",\"Not Already Target\"]
 					},
 					\"xMultiplier\":1
 				}",

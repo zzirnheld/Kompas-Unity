@@ -124,6 +124,8 @@ namespace KompasCore.Cards
 
             detailedSprite = Resources.Load<Sprite>("Detailed Sprites/" + CardName);
             simpleSprite = Resources.Load<Sprite>("Simple Sprites/" + CardName);
+            if (detailedSprite == null) detailedSprite = simpleSprite;
+            if (simpleSprite == null) simpleSprite = detailedSprite;
         }
     }
 }

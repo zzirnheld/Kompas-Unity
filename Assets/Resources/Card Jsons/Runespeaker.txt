@@ -44,7 +44,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Rune for Runespeaker to search (to hand)\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Distinct Name from Other Targets\",\"Deck\",\"Index<=X\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Distinct Name from Other Targets\",\"Deck\",\"Index<X\"],
 						\"subtypesInclude\":[\"Rune\"]
 					},
 					\"maxCanChoose\":1,
@@ -57,7 +57,7 @@
 					\"subeffType\":\"Add Rest\",
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<=X\",\"Not Already Target\"]
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<X\",\"Not Already Target\"]
 					},
 					\"xMultiplier\":1
 				}",

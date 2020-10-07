@@ -37,7 +37,8 @@ public class ClientCameraController : MonoBehaviour
         if (transform.position.y > MinCameraHeight || Input.mouseScrollDelta.y < 0)
         {
             var tempHeight = transform.position.y;
-            transform.Translate(ZoomFactor * Input.mouseScrollDelta.y * Vector3.forward);
+            if(clientGame.canZoom)
+                transform.Translate(ZoomFactor * Input.mouseScrollDelta.y * Vector3.forward);
 
             //if just crossed the threshold for showing cards as zoomed or no, update cards accordingly
             if (tempHeight > ZoomThreshold && transform.position.y <= ZoomThreshold)

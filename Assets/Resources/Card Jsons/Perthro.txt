@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Perthro",
-	"effText":"Can’t be cast normally. Search your deck’s top 10 cards for 3 spells.",
+	"effText":"Can’t be cast normally. Search your deck’s top 10 cards for up to 3 spells.",
 	"effects":[
 		{
 			"triggerCondition":"Play",
@@ -21,7 +21,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"spell for Perthro to search (to hand)\",
-						\"cardRestrictions\":[\"Is Spell\",\"Friendly\",\"Deck\",\"Index>=C\"],
+						\"cardRestrictions\":[\"Is Spell\",\"Friendly\",\"Deck\",\"Index<C\"],
 						\"constant\":10
 					},
 					\"maxCanChoose\":3
@@ -36,7 +36,7 @@
 					\"subeffType\":\"Choose From List\",
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<=C\",\"Not Already Target\"],
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<C\",\"Not Already Target\"],
 						\"constant\":10
 					},
 					\"maxCanChoose\":1

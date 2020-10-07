@@ -52,8 +52,7 @@ namespace KompasClient.GameCore
         private bool stackEmpty = true;
         public override bool NothingHappening => stackEmpty;
 
-        private bool zoomed = false;
-        public bool Zoomed => zoomed;
+        public bool canZoom = false;
 
         public override int Leyload 
         { 
@@ -140,6 +139,7 @@ namespace KompasClient.GameCore
             clientUICtrl.HideGetDecklistUI();
             RoundCount = 1;
             TurnCount = 1;
+            canZoom = true;
         }
 
         public void EndTurn()
@@ -155,14 +155,13 @@ namespace KompasClient.GameCore
 
         public void ShowCardsByZoom(bool zoomed)
         {
-            this.zoomed = zoomed;
             foreach (var c in Cards)
             {
                 if(c.gameObject.activeSelf) c.cardCtrl.ShowForCardType(c.CardType, zoomed);
             }
         }
 
-        public void RefreshShownCards() => ShowCardsByZoom(zoomed);
+        public void RefreshShownCards() => ShowCardsByZoom(ClientCameraController.Main.Zoomed);
 
         public void EffectActivated(ClientEffect eff)
         {

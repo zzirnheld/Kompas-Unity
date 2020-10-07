@@ -19,7 +19,7 @@ namespace KompasClient.Cards
             {
                 base.Location = value;
                 ClientGame.clientUICtrl.Leyload = Game.Leyload;
-                if(cardCtrl != null) cardCtrl.ShowForCardType(CardType, ClientGame.Zoomed);
+                if(cardCtrl != null) cardCtrl.ShowForCardType(CardType, ClientCameraController.Main.Zoomed);
             }
         }
 
