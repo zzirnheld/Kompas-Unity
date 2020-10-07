@@ -14,7 +14,8 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Set X by Math\",
-					\"xModifier\":5
+					\"xModifier\":5,
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Jump on Effect Impossible\",
@@ -28,7 +29,8 @@
 						\"blurb\":\"Warrior for The General to recruit\",
 						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Is Character\",\"Index<=X\",\"Subtypes Include\",\"Can Be Played\",\"Effect Controller can Afford Cost\"],
 						\"subtypesInclude\":[\"Warrior\"]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Space Target\",
@@ -55,7 +57,8 @@
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<=X\",\"Not Already Target\"]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Bottomdeck Rest\"

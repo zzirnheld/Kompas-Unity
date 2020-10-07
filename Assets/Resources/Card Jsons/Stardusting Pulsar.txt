@@ -1,0 +1,80 @@
+{
+	"cardType":67,
+	"cardName":"Stardusting Pulsar",
+	"effText":"When your Avatar gains S, give adjacent characters +1 NESW.\nWhen your Avatar loses S, give adjacent characters -1 NESW.",
+	"effects":[
+		{
+			"triggerCondition":"S Change",
+			"trigger":
+			"{
+				\"blurb\":\"Flare\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\",\"Triggerer Fits Restriction\"],
+					\"xRestriction\":{
+						\"xRestrictions\":[\">0\"]
+					},
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Board\",\"Avatar\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Summoned character for Stardusting Pulsar to buff\",
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Summoned\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"X Change NESW\",
+					\"nMod\":1,
+					\"eMod\":1,
+					\"sMod\":1,
+					\"wMod\":1
+				}"
+			]
+		},
+		{
+			"triggerCondition":"S Change",
+			"trigger":
+			"{
+				\"blurb\":\"Diminish\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\",\"Triggerer Fits Restriction\"],
+					\"xRestriction\":{
+						\"xRestrictions\":[\"<0\"]
+					},
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Board\",\"Avatar\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Summoned character for Stardusting Pulsar to debuff\",
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Summoned\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"X Change NESW\",
+					\"nMod\":-1,
+					\"eMod\":-1,
+					\"sMod\":-1,
+					\"wMod\":-1
+				}"
+			]
+		}
+	],
+	"n":1,
+	"e":9,
+	"s":9,
+	"w":9,
+	"subtypeText":"Pulsar"
+}

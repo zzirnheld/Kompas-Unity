@@ -30,7 +30,8 @@
 					\"jumpTo\":0
 				}",
 				"{
-					\"subeffType\":\"Draw X\"
+					\"subeffType\":\"Draw X\",
+					\"xMultiplier\":1
 				}"
 			]	
 		}

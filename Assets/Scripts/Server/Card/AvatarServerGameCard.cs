@@ -19,7 +19,7 @@ namespace KompasServer.Cards
         //TODO make this return whether the Avatar is summoned yet
         public override bool Summoned => false;
         public override bool IsAvatar => true;
-        public override int CombatDamage => Summoned ? base.CombatDamage : 0;
+        //public override int CombatDamage => Summoned ? base.CombatDamage : 0;
 
         public override bool Remove(IStackable stackSrc = null)
         {

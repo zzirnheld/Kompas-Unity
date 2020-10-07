@@ -22,6 +22,7 @@
 			]
 		},
 		{
+			"blurb":"Revive",
 			"activationRestriction":{
 				"activationRestrictions":[
 					"Location",
@@ -43,7 +44,9 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Pay Target's Cost in Pips\"
+					\"subeffType\":\"Pay Target's Cost in Pips\",
+					\"xDivisor\":2,
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Play\"
@@ -51,7 +54,7 @@
 			]
 		}
 	],
-	"n":2,
+	"n":0,
 	"e":1,
 	"s":2,
 	"w":2,

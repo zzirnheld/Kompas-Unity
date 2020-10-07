@@ -44,6 +44,7 @@ namespace KompasClient.Networking
                 case Packet.SetLeyload: return JsonUtility.FromJson<SetLeyloadClientPacket>(json);
                 case Packet.SetTurnPlayer: return JsonUtility.FromJson<SetTurnPlayerClientPacket>(json);
                 case Packet.PutCardsBack: return JsonUtility.FromJson<PutCardsBackClientPacket>(json);
+                case Packet.AttackStarted: return JsonUtility.FromJson<AttackStartedClientPacket>(json);
 
                 //card addition/deletion
                 case Packet.AddCard: return JsonUtility.FromJson<AddCardClientPacket>(json);
@@ -67,6 +68,7 @@ namespace KompasClient.Networking
                 case Packet.UpdateCardNumericStats: return JsonUtility.FromJson<ChangeCardNumericStatsClientPacket>(json);
                 case Packet.NegateCard: return JsonUtility.FromJson<NegateCardClientPacket>(json);
                 case Packet.ActivateCard: return JsonUtility.FromJson<ActivateCardClientPacket>(json);
+                case Packet.ResetCard: return JsonUtility.FromJson<ResetCardClientPacket>(json);
                 case Packet.ChangeCardController: return JsonUtility.FromJson<ChangeCardControllerClientPacket>(json);
                 case Packet.SetPips: return JsonUtility.FromJson<SetPipsClientPacket>(json);
 
@@ -86,6 +88,7 @@ namespace KompasClient.Networking
                 case Packet.PlayerChooseX: return JsonUtility.FromJson<GetPlayerChooseXClientPacket>(json);
                 case Packet.TargetAccepted: return JsonUtility.FromJson<TargetAcceptedClientPacket>(json);
                 case Packet.AddTarget: return JsonUtility.FromJson<AddTargetClientPacket>(json);
+                case Packet.RemoveTarget: return JsonUtility.FromJson<RemoveTargetClientPacket>(json);
                 case Packet.ToggleDecliningTarget: return JsonUtility.FromJson<ToggleDecliningTargetClientPacket>(json);
                 case Packet.DiscardSimples: return JsonUtility.FromJson<DiscardSimplesClientPacket>(json);
                 case Packet.StackEmpty: return JsonUtility.FromJson<StackEmptyClientPacket>(json);
@@ -110,6 +113,7 @@ namespace KompasClient.Networking
             var p = FromJson(packetInfo.command, packetInfo.json);
             Debug.Log($"Parsing packet {p}");
             p.Execute(ClientGame);
+            ClientGame.RefreshShownCards();
             ClientGame.clientUICtrl.RefreshShownCardInfo();
         }
     }

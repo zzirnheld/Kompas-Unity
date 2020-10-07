@@ -78,6 +78,12 @@ namespace KompasServer.Cards
             ServerEffects = effects;
         }
 
+        public override void ResetCard()
+        {
+            base.ResetCard();
+            ServerNotifier.NotifyResetCard(this);
+        }
+
         public override void AddAugment(GameCard augment, IStackable stackSrc = null)
         {
             var context = new ActivationContext(card: augment, stackable: stackSrc, triggerer: stackSrc?.Controller ?? Controller);
@@ -86,33 +92,31 @@ namespace KompasServer.Cards
             base.AddAugment(augment, stackSrc);
         }
 
-        protected override void Detach(IStackable stackSrc = null)
+        protected override bool Detach(IStackable stackSrc = null)
         {
+            if (AugmentedCard == null) return false;
+
             var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller ?? Controller);
             EffectsController.TriggerForCondition(Trigger.AugmentDetached, context);
-            base.Detach(stackSrc);
+            return base.Detach(stackSrc);
         }
 
         public override bool Remove(IStackable stackSrc = null)
         {
+            //if you can't remove, don't even proc the trigger
             if (!CanRemove) return false;
+
+            //proc the trigger before actually removing anything
             var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller ?? Controller);
             EffectsController.TriggerForCondition(Trigger.Remove, context);
+
+            //remove for realsies
             base.Remove(stackSrc);
-            //copy the enumeration so that you can edit the original
-            var augments = new List<GameCard>(Augments);
+
+            //copy the colleciton  so that you can edit the original
+            var augments = Augments.ToArray();
             foreach (var aug in augments) aug.Discard();
             return true;
-        }
-
-        public override void ResetForTurn(Player turnPlayer)
-        {
-            base.ResetForTurn(turnPlayer);
-
-            if (CardType == 'S' && SpellSubtype == VanishingSubtype)
-            {
-                if (TurnsOnBoard > Arg) Discard();
-            }
         }
 
         #region stats

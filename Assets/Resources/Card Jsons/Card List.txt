@@ -55,6 +55,7 @@ Durability Core
 Strength Core
 Defense Core
 Combustion Core
+Taunt Core
 Modular Golem Cores
 Slight Golemodifications
 Runeloremaster
@@ -229,4 +230,18 @@ Ride the Winds
 Durendal
 Thuan Thien
 Kusanagi
-lulthisdontexistmydood
+Starheart
+Focusing Pulsar
+Boldening Pulsar
+Accelerating Pulsar
+Fortunating Pulsar
+Magnetizing Pulsar
+Echoing Pulsar
+Stardusting Pulsar
+Coalescing Stardust
+Fires of Creation
+Supernova
+Starstuff
+Starbirth
+Cannot Be Created Nor Destroyed
+a lot of disappointment

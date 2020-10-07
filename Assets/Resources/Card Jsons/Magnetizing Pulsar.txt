@@ -1,0 +1,90 @@
+{
+	"cardType":67,
+	"cardName":"Magnetizing Pulsar",
+	"effText":"When your Avatar gains S, move another card one space away from me.\nWhen your Avatar loses S, move another card one space towards me.",
+	"effects":[
+		{
+			"triggerCondition":"S Change",
+			"trigger":
+			"{
+				\"blurb\":\"Repel\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\",\"Triggerer Fits Restriction\"],
+					\"xRestriction\":{
+						\"xRestrictions\":[\">0\"]
+					},
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Board\",\"Avatar\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"for Magnetizing to move\",
+						\"cardRestrictions\":[\"Board\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"to move Magnetizing's target to\",
+						\"spaceRestrictions\":[\"Distance to Target == Constant\",\"Further from Source than Target\"],
+						\"constant\":1
+					}
+				}",
+				"{
+					\"subeffType\":\"Move\"
+				}"
+			]
+		},
+		{
+			"triggerCondition":"S Change",
+			"trigger":
+			"{
+				\"blurb\":\"Attract\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\",\"Triggerer Fits Restriction\"],
+					\"xRestriction\":{
+						\"xRestrictions\":[\"<0\"]
+					},
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Board\",\"Avatar\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"for Magnetizing to move\",
+						\"cardRestrictions\":[\"Board\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"to move Magnetizing's target to\",
+						\"spaceRestrictions\":[\"Distance to Target == Constant\",\"Towards Source from Target\"],
+						\"constant\":1
+					}
+				}",
+				"{
+					\"subeffType\":\"Move\"
+				}"
+			]
+		}
+	],
+	"n":1,
+	"e":3,
+	"s":3,
+	"w":3,
+	"subtypeText":"Pulsar"
+}

@@ -43,7 +43,8 @@
 				}",
 				"{
 					\"subeffType\":\"Set X by Target Value\",
-					\"whatToCount\":\"Distance to Target\"
+					\"whatToCount\":\"Distance to Target\",
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"X Change NESW\",

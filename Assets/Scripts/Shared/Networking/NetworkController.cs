@@ -36,7 +36,7 @@ namespace KompasCore.Networking
             //if there's nothing to be read, return
             if (!tcpClient.GetStream().DataAvailable) return;
 
-            Debug.Log("Data available");
+            //Debug.Log("Data available");
 
             if (awaitingInt) ReadInt(networkStream);
             else ReadPacket(networkStream);

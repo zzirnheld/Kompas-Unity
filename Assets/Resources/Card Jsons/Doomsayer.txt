@@ -4,6 +4,7 @@
 	"effText":"Once each friendly turn, you can search your deck for a Cultist.",
 	"effects":[
 		{
+			"blurb":"DOOM",
 			"activationRestriction":{
 				"activationRestrictions":[
 					"Max Times Per Turn",

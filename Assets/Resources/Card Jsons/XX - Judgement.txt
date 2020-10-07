@@ -20,7 +20,8 @@
 					{
 						\"blurb\":\"character for Judgement to kill\",
 						\"cardRestrictions\":[\"Is Character\",\"Board\",\"S<=X\"]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Discard\"

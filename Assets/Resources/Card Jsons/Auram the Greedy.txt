@@ -41,7 +41,8 @@
 					\"subeffType\":\"Set X by Player Choice\",
 					\"XRest\":{
 						\"cardRestrictions\":[\"<=ThisE\"]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Target This\"
@@ -51,7 +52,8 @@
 					\"eMult\":-1
 				}",
 				"{
-					\"subeffType\":\"Draw X\"
+					\"subeffType\":\"Draw X\",
+					\"xMultiplier\":1
 				}"
 			]	
 		}

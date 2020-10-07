@@ -15,8 +15,8 @@ namespace KompasServer.Effects
         public ServerAttack(ServerGame serverGame, ServerPlayer controller, GameCard attacker, GameCard defender)
             : base(controller, attacker, defender)
         {
-            this.ServerGame = serverGame ?? throw new System.ArgumentNullException("Server game cannot be null for attack");
-            this.ServerController = controller ?? throw new System.ArgumentNullException("Attack must have a non-null controller");
+            this.ServerGame = serverGame != null ? serverGame : throw new System.ArgumentNullException("serverGame", "Server game cannot be null for attack");
+            this.ServerController = controller != null ? controller : throw new System.ArgumentNullException("controller", "Attack must have a non-null controller");
         }
 
         /// <summary>

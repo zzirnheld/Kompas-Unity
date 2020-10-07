@@ -37,7 +37,8 @@
 					\"throughRestriction\":{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
 						\"subtypesInclude\":[\"Ethereal\"]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"X Change NESW\",
@@ -62,7 +63,8 @@
 				}",
 				"{
 					\"subeffType\":\"Set X by Target Value\",
-					\"whatToCount\":\"W\"
+					\"whatToCount\":\"W\",
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Temporary NESW Buff\",

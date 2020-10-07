@@ -7,7 +7,7 @@
 			"triggerCondition":"Discard",
 			"trigger":
 			"{
-				\"blurb\":\"Crazy Idea\",
+				\"blurb\":\"Ificate\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\",\"Triggerer Fits Restriction\"],
 					\"cardRestriction\":{

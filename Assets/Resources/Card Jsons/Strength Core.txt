@@ -7,6 +7,7 @@
 			"triggerCondition":"Augment Attached",
 			"trigger":
 			"{
+				\"blurb\":\"Activate Golem\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
@@ -36,6 +37,7 @@
 			"triggerCondition":"Discard",
 			"trigger":
 			"{
+				\"blurb\":\"Core Recovery\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Augmented Card Triggered\"]
 				}
@@ -54,8 +56,8 @@
 		"normalRestrictions":["Augment Normal Restrictions","On Card that Fits Restriction"],
 		"effectRestrictions":["Augment Effect Restrictions","On Card that Fits Restriction"],
 		"onCardRestriction":{
-			\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Board\"],
-			\"subtypesInclude\":[\"Golem\"]
+			"cardRestrictions":["Subtypes Include","Friendly","Board"],
+			"subtypesInclude":["Golem"]
 		}
 	},
 	"a":3,

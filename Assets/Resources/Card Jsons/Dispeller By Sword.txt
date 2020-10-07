@@ -19,14 +19,16 @@
 						\"blurb\":\"spell for Dispeller by Sword to dispel\",
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
 						\"subtypesInclude\":[\"Warrior\"]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Spell\",\"Cost<=X\"]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Dispel\",

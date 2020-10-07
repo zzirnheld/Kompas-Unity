@@ -25,10 +25,9 @@ namespace KompasCore.Effects
         public const string CardExists = "Card Exists";
 
         public const string Default = "Default";
-        public static readonly string[] DefaultRestrictions =
-        {
-            "Controller Activates", "Not Negated", "In Play"
-        };
+        public static readonly string[] DefaultRestrictions = { ControllerActivates, NotNegated, InPlay };
+
+        public static readonly string[] AtAllRestrictions = { TimesPerTurn, TimesPerRound, FriendlyTurn, EnemyTurn, NotNegated, InPlay };
 
         public int maxTimes = 1;
         public int location = (int) CardLocation.Field;
@@ -48,6 +47,12 @@ namespace KompasCore.Effects
         private bool RestrictionValid(string r, Player activator)
         {
             //Debug.Log($"Considering activation restriction {r} for {Effect.Source.CardName}");
+            if(Card == null || Card.Game == null)
+            {
+                //stuff is still getting set up
+                Debug.LogWarning($"checked actvation restriction while card or card's game is null");
+                return false;
+            }
 
             switch (r)
             {
@@ -66,7 +71,18 @@ namespace KompasCore.Effects
             }
         }
 
+        public bool RestrictionValidWithDebug(string restriction, Player activator)
+        {
+            bool valid = RestrictionValid(restriction, activator);
+            /*if (!valid) Debug.Log($"Card {Card.CardName} effect # {Effect.EffectIndex} activation restriction " +
+                $"flouts restriction {restriction} for activator {activator.index}");*/
+            return valid;
+        }
+
         public bool Evaluate(Player activator)
-            => activationRestrictions.All(r => RestrictionValid(r, activator));
+            => activationRestrictions.All(r => RestrictionValidWithDebug(r, activator));
+
+        public bool EvaluateAtAll(Player activator)
+            => activationRestrictions.Intersect(AtAllRestrictions).All(r => RestrictionValidWithDebug(r, activator));
     }
 }

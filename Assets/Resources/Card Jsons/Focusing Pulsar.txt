@@ -1,0 +1,58 @@
+{
+	"cardType":67,
+	"cardName":"Focusing Pulsar",
+	"effText":"When your Avatar gains S, give adjacent characters +1 W.\nWhen your Avatar loses S, give adjacent characters -1 W.",
+	"effects":[
+		{
+			"triggerCondition":"S Change",
+			"trigger":
+			"{
+				\"blurb\":\"Enfocus\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\"],
+					\"xRestriction\":{
+						\"xRestrictions\":[\">0\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Change NESW All\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Adjacent\"]
+					},
+					\"wMod\":1
+				}"
+			]	
+		},
+		{
+			"triggerCondition":"S Change",
+			"trigger":
+			"{
+				\"blurb\":\"Unfocus\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\"],
+					\"xRestriction\":{
+						\"xRestrictions\":[\"<0\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Change NESW All\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Adjacent\"]
+					},
+					\"wMod\":-1
+				}"
+			]	
+		}
+	],
+	"n":1,
+	"e":3,
+	"s":3,
+	"w":3,
+	"subtypeText":"Pulsar"
+}

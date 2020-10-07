@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"XXI - The World",
-	"effText":"When a friendly character dies, reshuffle them, give friendly characters +1EW, and draw 1.",
+	"effText":"When a character dies, reshuffle them, give friendly characters +1EW, and draw 1.",
 	"effects":[
 		{
 			"triggerCondition":"Discard",
@@ -11,7 +11,7 @@
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
 					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Friendly\",\"Board\"]
+						\"cardRestrictions\":[\"Board\"]
 					}
 				}
 			}",

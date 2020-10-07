@@ -1,6 +1,7 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasCore.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -108,13 +109,11 @@ namespace KompasCore.GameCore
         }
 
         public bool ValidSpellSpace(int x, int y)
-        {
-            return boardCtrl.CardsAdjacentTo(x, y).Where(c => c.CardType == 'S').Count() <= 2;
-        }
+            => boardCtrl.CardsAdjacentTo(x, y).Where(c => c.CardType == 'S').Count() <= 2;
 
         protected void ResetCardsForTurn()
         {
-            foreach (var c in Cards) c?.ResetForTurn(TurnPlayer);
+            foreach (var c in Cards) c.ResetForTurn(TurnPlayer);
         }
     }
 }

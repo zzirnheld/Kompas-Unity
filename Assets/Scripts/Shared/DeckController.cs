@@ -58,8 +58,8 @@ namespace KompasCore.GameCore
         {
             if (Deck.Count == 0) return null;
 
-            GameCard card = Deck[0];
-            Deck.RemoveAt(0);
+            var card = Deck[0];
+            RemoveFromDeck(card);
             return card;
         }
 
@@ -68,31 +68,19 @@ namespace KompasCore.GameCore
             if (Deck.Count == 0) return null;
 
             GameCard card = Deck[Deck.Count - 1];
-            Deck.RemoveAt(Deck.Count - 1);
+            RemoveFromDeck(card);
             return card;
-        }
-
-        public GameCard RemoveCardWithName(string name)
-        {
-            GameCard toReturn;
-            for (int i = 0; i < Deck.Count; i++)
-            {
-                if (Deck[i].CardName.Equals(name))
-                {
-                    toReturn = Deck[i];
-                    Deck.RemoveAt(i);
-                    return toReturn;
-                }
-            }
-            return null;
         }
 
         /// <summary>
         /// Random access remove from deck
         /// </summary>
-        public void RemoveFromDeck(GameCard card)
+        public virtual bool RemoveFromDeck(GameCard card)
         {
+            if (!Deck.Contains(card)) return false;
+
             Deck.Remove(card);
+            return true;
         }
 
         //misc

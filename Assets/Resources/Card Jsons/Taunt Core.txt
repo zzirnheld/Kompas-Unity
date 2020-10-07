@@ -1,0 +1,88 @@
+{
+	"cardType":65,
+	"cardName":"Taunt Core",
+	"effText":"While equipped, activate this character. The first time each stack an adjacent character moves, move them to any space adjacent to me. When they die (while I'm equipped), rehand me.",
+	"effects":[
+		{
+			"triggerCondition":"Augment Attached",
+			"trigger":
+			"{
+				\"blurb\":\"Activate Golem\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target Augmented Card\"
+				}",
+				"{
+					\"subeffType\":\"Temporary Activate\",
+					\"endCondition\":\"Augment Detached\",
+					\"triggerRestriction\":{
+						\"triggerRestrictions\":[\"This Card Triggered\"]
+					}
+				}"
+			]
+		},
+		{
+			"triggerCondition":"Move",
+			"trigger":
+			"{
+				\"blurb\":\"Taunt\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"Max Per Stack\"],
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Adjacent\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target Triggering Card\"
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where for Taunt Core to move its target\",
+						\"spaceRestrictions\":[\"Empty\",\"Adjacent to Source\",\"Can Move Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Move\"
+				}"
+			]	
+		},
+		{
+			"triggerCondition":"Discard",
+			"trigger":
+			"{
+				\"blurb\":\"Core Recovery\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"Augmented Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Rehand\"
+				}"
+			]
+		}
+	],
+	"PlayRestriction":{
+		"normalRestrictions":["Augment Normal Restrictions","On Card that Fits Restriction"],
+		"effectRestrictions":["Augment Effect Restrictions","On Card that Fits Restriction"],
+		"onCardRestriction":{
+			"cardRestrictions":["Subtypes Include","Friendly","Board"],
+			"subtypesInclude":["Golem"]
+		}
+	},
+	"a":3,
+	"subtypeText":"Golem Core",
+	"augSubtypes":["Golem"]
+}

@@ -184,6 +184,13 @@ namespace KompasServer.Networking
             SendPackets(p, q);
         }
 
+        public void NotifyResetCard(GameCard card)
+        {
+            var p = new ResetCardPacket(card.ID);
+            var q = p.GetInversion(card.KnownToEnemy);
+            SendPackets(p, q);
+        }
+
         public void NotifyChangeController(GameCard card, Player controller)
         {
             var p = new ChangeCardControllerPacket(card.ID, controller.index, invert: Player.index != 0);
@@ -250,6 +257,9 @@ namespace KompasServer.Networking
 
         public void SetTarget(GameCard card, int effIndex, GameCard target)
             => SendToBoth(new AddTargetPacket(card.ID, effIndex, target.ID));
+
+        public void RemoveTarget(GameCard card, int effIndex, GameCard target)
+            => SendToBoth(new RemoveTargetPacket(card.ID, effIndex, target.ID));
 
         public void GetXForEffect() => SendPacket(new GetPlayerChooseXPacket());
 

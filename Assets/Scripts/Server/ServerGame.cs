@@ -14,6 +14,7 @@ namespace KompasServer.GameCore
     public class ServerGame : Game
     {
         public const int AvatarEBonus = 10;
+        public const int AvatarWPenalty = 10;
 
         //model is basically: players request to the server to do something:
         //if server oks, it tells all players to do the thing
@@ -84,20 +85,17 @@ namespace KompasServer.GameCore
         public void GetDecks()
         {
             //ask the players for their avatars (and decks at the same time)
-            foreach (ServerPlayer p in ServerPlayers)
-            {
-                GetDeckFrom(p);
-            }
+            foreach (ServerPlayer p in ServerPlayers) GetDeckFrom(p);
 
             //if avatars are returned, then set the pips to start with and start the game
             //that should happen in server network controller
         }
 
-        //for future logic like limited cards, etc.
+        //TODO for future logic like limited cards, etc.
         private bool ValidDeck(List<string> deck)
         {
             if (uiCtrl.DebugMode) return true;
-            if (deck.Count < 50) return false;
+            if (deck.Count < 49) return false;
             //first name should be that of the Avatar
             if (cardRepo.GetCardFromName(deck[0]).cardType != 'C') return false;
 
@@ -106,14 +104,6 @@ namespace KompasServer.GameCore
 
         private List<string> SanitizeDeck(string decklist)
         {
-            /*string[] cards = decklist.Split('\n');
-            List<string> deck = new List<string>();
-            foreach (string name in cards)
-            {
-                if (string.IsNullOrWhiteSpace(name)) continue;
-                if (CardRepository.CardExists(name)) deck.Add(name);
-            }*/
-
             return decklist.Split('\n')
                 .Where(c => !string.IsNullOrWhiteSpace(c) && CardRepository.CardExists(c))
                 .ToList();
@@ -190,6 +180,7 @@ namespace KompasServer.GameCore
             {
                 p.ServerNotifier.SetFirstTurnPlayer(FirstTurnPlayer);
                 p.Avatar.SetE(p.Avatar.E + AvatarEBonus);
+                p.Avatar.SetW(p.Avatar.W - AvatarWPenalty);
                 DrawX(p.index, 5);
             }
             GiveTurnPlayerPips();
@@ -269,6 +260,8 @@ namespace KompasServer.GameCore
                 return true;
             }
 
+            Debug.Log($"Checking valid augment of {card.CardName} to {toX}, {toY}, on {boardCtrl.GetCardAt(toX, toY)}");
+
             return card != null
                 && card.CardType == 'A'
                 && boardCtrl.ValidIndices(toX, toY)
@@ -317,9 +310,21 @@ namespace KompasServer.GameCore
             //trigger turn start effects
             var context = new ActivationContext(triggerer: TurnServerPlayer);
             EffectsController.TriggerForCondition(Trigger.TurnStart, context);
+
+            //then, discard any delayed or vanishing cards
+            foreach(var c in Cards)
+            {
+                if (c.Location == CardLocation.Field && c.CardType == 'S' 
+                    && (c.SpellSubtype == CardBase.VanishingSubtype || c.SpellSubtype == CardBase.DelayedSubtype) 
+                    && c.TurnsOnBoard > c.Arg) 
+                    c.Discard();
+            }
+
             EffectsController.CheckForResponse();
         }
 
         public override GameCard GetCardWithID(int id) => cardsByID.ContainsKey(id) ? cardsByID[id] : null;
+
+        public ServerPlayer ServerControllerOf(GameCard card) => ServerPlayers[card.ControllerIndex];
     }
 }

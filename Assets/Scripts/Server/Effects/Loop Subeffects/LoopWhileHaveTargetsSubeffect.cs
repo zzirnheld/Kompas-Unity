@@ -10,8 +10,9 @@ namespace KompasServer.Effects
         {
             get
             {
-                if (delete && ServerEffect.Targets.Any())
-                    ServerEffect.Targets.Remove(Target);
+                //if we're deleting and there's something to delete, delete it.
+                if (delete && ServerEffect.Targets.Any()) RemoveTarget();
+                //after any delete that might have happened, check if there's still targets
                 return ServerEffect.Targets.Any();
             }
         }

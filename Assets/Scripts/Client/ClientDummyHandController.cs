@@ -11,7 +11,7 @@ public class ClientDummyHandController : ClientHandController
     /// </summary>
     public GameObject dummyCardPrefab;
 
-    private List<GameCard> dummyHand = new List<GameCard>();
+    private readonly List<GameCard> dummyHand = new List<GameCard>();
 
     public void IncrementHand()
     {
@@ -24,16 +24,19 @@ public class ClientDummyHandController : ClientHandController
 
     public void DecrementHand() => RemoveFromHand(dummyHand.LastOrDefault());
 
-    public override void RemoveFromHand(GameCard card)
+    public override bool RemoveFromHand(GameCard card)
     {
-        if (card == default) return;
-
-        base.RemoveFromHand(card);
+        //if it's a dummy, remove and destroy it
         if (dummyHand.Contains(card))
         {
             dummyHand.Remove(card);
+            RemoveFromHand(card);
             Destroy(card.gameObject);
+            return true;
         }
+
+        //remove the card from the real hand if it's actually there
+        return base.RemoveFromHand(card);
     }
 
     public override void SpreadOutCards()

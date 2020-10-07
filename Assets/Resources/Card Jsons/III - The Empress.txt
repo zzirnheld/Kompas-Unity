@@ -20,7 +20,8 @@
 					{
 						\"blurb\":\"for Empress to hand-summon\",
 						\"cardRestrictions\":[\"Is Character\",\"Friendly\",\"Hand\",\"S<=X\"]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Space Target\",

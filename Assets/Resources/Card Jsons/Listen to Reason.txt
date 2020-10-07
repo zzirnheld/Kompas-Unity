@@ -20,7 +20,8 @@
 					{
 						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Subtypes Include\"],
 						\"subtypesInclude\":[\"Crazy Idea\"]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Target All\",
@@ -44,7 +45,8 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Draw X\"
+					\"subeffType\":\"Draw X\",
+					\"xMultiplier\":1
 				}"
 			]	
 		}

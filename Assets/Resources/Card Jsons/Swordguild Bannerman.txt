@@ -17,7 +17,8 @@
 					{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
 						\"subtypesInclude\":[\"Warrior\"]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Discard\",

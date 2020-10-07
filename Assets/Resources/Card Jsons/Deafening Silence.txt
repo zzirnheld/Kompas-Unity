@@ -19,7 +19,8 @@
 					{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Discard\",\"Friendly\"],
 						\"subtypesInclude\":[\"Cultist\"]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Board Target\",

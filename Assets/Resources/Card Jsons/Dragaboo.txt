@@ -33,7 +33,8 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Set X by Target Cost\"
+					\"subeffType\":\"Set X by Target Cost\",
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Discard\"

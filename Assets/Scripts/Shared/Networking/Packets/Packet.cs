@@ -53,6 +53,7 @@ namespace KompasCore.Networking
         public const string PlayerChooseX = "Player Choose X";
         public const string TargetAccepted = "Target Accepted";
         public const string AddTarget = "Add Target";
+        public const string RemoveTarget = "Remove Target";
         public const string ToggleDecliningTarget = "Toggle Declining Target";
         public const string DiscardSimples = "Discard Simples";
         public const string StackEmpty = "Stack Empty";
@@ -64,6 +65,7 @@ namespace KompasCore.Networking
         //gamestate (from server to client)
         public const string SetLeyload = "Set Leyload";
         public const string SetTurnPlayer = "Set Turn Player";
+        public const string AttackStarted = "Attack Started";
 
         //card addition/deletion (from server to client)
         public const string DeleteCard = "Delete Card";
@@ -88,6 +90,7 @@ namespace KompasCore.Networking
         public const string UpdateCardNumericStats = "Change Card Numeric Stats";
         public const string NegateCard = "Negate Card";
         public const string ActivateCard = "Activate Card";
+        public const string ResetCard = "Reset Card";
         public const string ChangeCardController = "Change Card Controller";
         public const string SetPips = "Set Pips";
 

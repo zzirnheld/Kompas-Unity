@@ -16,10 +16,11 @@
 				"{
 					\"subeffType\":\"Set X by Board Count\",
 					\"cardRestriction\":
-						{
-							\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
-							\"subtypesInclude\":[\"Warrior\"]
-						}
+					{
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
+						\"subtypesInclude\":[\"Warrior\"]
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Target This\"
@@ -37,7 +38,8 @@
 						\"blurb\":\"Swordguild Warrior for Trainee to become\",
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Deck\",\"S<=X\"],
 						\"subtypesInclude\":[\"Warrior\"]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Play\"

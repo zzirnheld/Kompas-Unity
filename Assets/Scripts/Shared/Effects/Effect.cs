@@ -12,6 +12,7 @@ namespace KompasCore.Effects
     {
         public Game Game => Source.Game;
 
+        public readonly int EffectIndex;
         public GameCard Source { get; }
         public abstract Player Controller { get; set; }
 
@@ -21,18 +22,24 @@ namespace KompasCore.Effects
         public int SubeffectIndex { get; protected set; }
         public Subeffect CurrSubeffect => Subeffects[SubeffectIndex];
 
-        public readonly int EffectIndex;
-
         //Targets
-        public List<GameCard> Targets { get; } = new List<GameCard>();
+        protected List<GameCard> TargetsList { get; } = new List<GameCard>();
+        public IEnumerable<GameCard> Targets => TargetsList;
         public List<(int x, int y)> Coords { get; private set; } = new List<(int x, int y)>();
         public List<GameCard> Rest { get; private set; } = new List<GameCard>();
+        /// <summary>
+        /// X value for card effect text (not coordinates)
+        /// </summary>
+        public int X = 0;
 
-        //Trigger
+        //Triggering and Activating
         public abstract Trigger Trigger { get; }
         public ActivationRestriction ActivationRestriction { get; }
         public string Blurb { get; }
         public ActivationContext CurrActivationContext { get; protected set; }
+        public int TimesUsedThisTurn { get; protected set; }
+        public int TimesUsedThisRound { get; protected set; }
+        public int TimesUsedThisStack { get; set; }
 
         private int negations = 0;
         public bool Negated
@@ -45,17 +52,9 @@ namespace KompasCore.Effects
             }
         }
 
-        /// <summary>
-        /// X value for card effect text (not coordinates)
-        /// </summary>
-        public int X = 0;
-        public int TimesUsedThisTurn { get; protected set; }
-        public int TimesUsedThisRound { get; protected set; }
-        public int TimesUsedThisStack { get; set; }
-
         public Effect(ActivationRestriction restriction, GameCard source, string blurb, int effIndex, Player owner)
         {
-            Source = source ?? throw new System.ArgumentNullException($"Effect cannot be attached to null card");
+            Source = source != null ? source : throw new System.ArgumentNullException("source", "Effect cannot be attached to null card");
             Controller = owner;
             ActivationRestriction = restriction;
             ActivationRestriction.Initialize(this);
@@ -76,22 +75,29 @@ namespace KompasCore.Effects
             TimesUsedThisTurn = 0;
         }
 
-        public virtual void Negate()
-        {
-            Negated = true;
-        }
+        public virtual void Negate() => Negated = true;
 
-        public virtual void AddTarget(GameCard card)
-        {
-            Targets.Add(card);
-        }
+        public virtual void AddTarget(GameCard card) => TargetsList.Add(card);
+        public virtual void RemoveTarget(GameCard card) => TargetsList.Remove(card);
 
         public virtual bool CanBeActivatedBy(Player controller)
+            => Trigger == null && ActivationRestriction.Evaluate(controller);
+
+        public virtual bool CanBeActivatedAtAllBy(Player activator)
+            => Trigger == null && ActivationRestriction.EvaluateAtAll(activator);
+
+        public abstract void StartResolution(ActivationContext context);
+
+        public GameCard GetTarget(int num)
         {
-            return Trigger == null
-                && controller.index == Source.ControllerIndex
-                && !Negated
-                && ActivationRestriction.Evaluate(controller);
+            int trueIndex = num < 0 ? num + TargetsList.Count : num;
+            return trueIndex < 0 ? null : TargetsList[trueIndex];
+        }
+
+        public (int x, int y) GetSpace(int num)
+        {
+            var trueIndex = num < 0 ? num + Coords.Count : num;
+            return trueIndex < 0 ? (0, 0) : Coords[trueIndex];
         }
     }
 }

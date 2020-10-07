@@ -246,6 +246,7 @@ public class CardRepository : MonoBehaviour
                     Debug.LogError("Unrecognized type character " + serializableCard.cardType + " in " + json);
                     return null;
             }
+            Debug.Log($"Successfully created a card? {card != null} for json {json}");
             ClientEffect[] effects = CreateClientEffects(serializableCard.effects, card, clientGame, owner);
             card.SetInfo(serializableCard, clientGame, owner, effects, id);
             card.cardCtrl.SetImage(card.CardName, false);
@@ -312,10 +313,21 @@ public class CardRepository : MonoBehaviour
         }
     }
 
-    public static IEnumerable<SerializableCard> GetSerializableCards(IEnumerable<string> jsons)
+    public static SerializableCard SerializableCardFromJson(string json)
     {
-        return jsons.Select(json => JsonUtility.FromJson<SerializableCard>(json));
+        try
+        {
+            return JsonUtility.FromJson<SerializableCard>(json);
+        }
+        catch (System.ArgumentException e)
+        {
+            Debug.LogError($"{json} had argument exception {e.Message}");
+        }
+        return null;
     }
+
+    public static IEnumerable<SerializableCard> GetSerializableCards(IEnumerable<string> jsons)
+        => jsons.Select(json => SerializableCardFromJson(json)).Where(card => card != null);
 
     public static IEnumerable<SerializableCard> SerializableCards => GetSerializableCards(CardJsons);
     #endregion Create Cards

@@ -31,7 +31,8 @@
 						\"blurb\":\"Tarocco for Lovers to become\",
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Deck\",\"S<=X\"],
 						\"subtypesInclude\":[\"Tarocco\"]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Play\",

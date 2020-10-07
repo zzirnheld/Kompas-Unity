@@ -36,7 +36,8 @@
 						\"blurb\":\"Rune for Runechanneler to cast\",
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Hand\",\"Can Be Played\",\"Cost<=X\"],
 						\"subtypesInclude\":[\"Rune\"]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Space Target\",

@@ -38,7 +38,7 @@ namespace KompasClient.Networking
             if (card == null) return;
             var eff = card.Effects.ElementAt(effIndex);
             eff.Controller = clientGame.Players[controllerIndex];
-            clientGame.clientUICtrl.SetCurrState($"Resolving Effect of {card.CardName}", $"{eff.Blurb}");
+            eff.StartResolution(default); //TODO eventually make this be real
         }
     }
 }

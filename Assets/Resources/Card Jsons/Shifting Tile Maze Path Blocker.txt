@@ -6,6 +6,7 @@
 		{
 			"triggerCondition":"Discard",
 			"trigger":"{
+				\"blurb\":\"Ificate\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\",\"Triggerer Fits Restriction\"],
 					\"cardRestriction\":{
@@ -45,6 +46,7 @@
 			"triggerCondition":"Move",
 			"trigger":
 			"{
+				\"blurb\":\"Maze Block\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Coords Fit Restriction\",\"Max Per Stack\"],
 					\"spaceRestriction\":

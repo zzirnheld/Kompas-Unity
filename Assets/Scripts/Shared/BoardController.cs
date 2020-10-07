@@ -9,12 +9,12 @@ namespace KompasCore.GameCore
 {
     public class BoardController : MonoBehaviour
     {
-        public Game game;
-
         public const int SpacesInGrid = 7;
         public const float BoardLenOffset = 7f;
         public const float LenOneSpace = 2f;
         public const float SpaceOffset = LenOneSpace / 2;
+
+        public Game game;
 
         public static int PosToGridIndex(float pos) 
             => (int)((pos + BoardLenOffset) / (LenOneSpace));
@@ -22,8 +22,11 @@ namespace KompasCore.GameCore
         public static float GridIndexToPos(int gridIndex)
             => (float)((gridIndex * LenOneSpace) + SpaceOffset - BoardLenOffset);
 
-        public static Vector3 GridIndicesFromPos(int x, int y)
-            => new Vector3(GridIndexToPos(x), 0.2f, GridIndexToPos(y));
+        public static Vector3 GridIndicesToPos(int x, int y)
+            => new Vector3(GridIndexToPos(x), 0.01f, GridIndexToPos(y));
+
+        public static Vector3 GridIndicesToPosWithStacking(int x, int y, int stackHeight)
+            => new Vector3(GridIndexToPos(x), 0.2f * (1 + stackHeight), GridIndexToPos(y));
 
         public readonly GameCard[,] Board = new GameCard[SpacesInGrid, SpacesInGrid];
 
@@ -130,10 +133,15 @@ namespace KompasCore.GameCore
         #endregion
 
         #region game mechanics
-        public void RemoveFromBoard(GameCard toRemove)
+        public bool RemoveFromBoard(GameCard toRemove)
         {
-            if (toRemove?.Location == CardLocation.Field)
-                RemoveFromBoard(toRemove.BoardX, toRemove.BoardY);
+            var (x, y) = toRemove.Position;
+            if (toRemove.Location == CardLocation.Field && Board[x, y] == toRemove)
+            {
+                RemoveFromBoard(x, y);
+                return true;
+            }
+            return false;
         }
 
         public void RemoveFromBoard(int x, int y) => Board[x, y] = null;

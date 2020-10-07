@@ -50,6 +50,8 @@ namespace KompasCore.Effects
 
             if (effectRestrictions.Contains(DefaultEffect)) effectRestrictions.AddRange(DefaultEffectRestrictions);
             if (effectRestrictions.Contains(AugEffect)) effectRestrictions.AddRange(AugmentEffectRestrictions);
+
+            onCardRestriction.Initialize(card, card.Controller, null);
         }
 
         private bool RestrictionValid(string r, int x, int y, Player player, bool normal)
@@ -71,6 +73,9 @@ namespace KompasCore.Effects
                 case NothingIsResolving: return Card.Fast || Card.Game.CurrStackEntry == null;
 
                 case OnFriendlyBoardCard: return Card.Game.boardCtrl.GetCardAt(x, y)?.Controller == Card.Controller;
+                case OnCardFittingRestriction:
+                    onCardRestriction.Initialize(Card, player, null);
+                    return onCardRestriction.Evaluate(Card.Game.boardCtrl.GetCardAt(x, y));
                 case NotNormally: return !normal;
                 case MustNormally: return normal;
                 case Unique: 

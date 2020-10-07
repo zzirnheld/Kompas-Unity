@@ -78,6 +78,9 @@ namespace KompasCore.Effects
         public const string ELTEC = "E<=C";
         public const string SLTEC = "S<=C";
         public const string WLTEC = "W<=C";
+        //misc statlike
+        public const string CostLTAvatar = "Cost<Avatar";
+        public const string CostGTAvatar = "Cost>Avatar";
 
         public const string Negated = "Negated";
 
@@ -145,7 +148,10 @@ namespace KompasCore.Effects
         /// <returns><see langword="true"/> if the card fits the restriction for the given value of x, <see langword="false"/> otherwise.</returns>
         private bool RestrictionValid(string restriction, GameCard potentialTarget, int x)
         {
-            //Debug.Log($"Considering restriction {restriction} for card {potentialTarget} when X equals {x}");
+            if (potentialTarget == null) return false;
+
+            Debug.Log($"Considering restriction {restriction} for card {potentialTarget.CardName} when X equals {x}, " +
+                $"controller is {(Controller == null ? -1 : Controller.index)}, potential target controlled by {potentialTarget.ControllerIndex}");
             switch (restriction)
             {
                 //targets
@@ -214,6 +220,9 @@ namespace KompasCore.Effects
                 case ELTEC:    return potentialTarget.E <= constant;
                 case SLTEC:    return potentialTarget.S <= constant;
                 case WLTEC:    return potentialTarget.W <= constant;
+                    //misc
+                case CostLTAvatar: return potentialTarget.Cost < Source.Controller.Avatar.Cost;
+                case CostGTAvatar: return potentialTarget.Cost > Source.Controller.Avatar.Cost;
 
                 case Negated:  return potentialTarget.Negated;
 
@@ -258,6 +267,6 @@ namespace KompasCore.Effects
         /// </summary>
         /// <param name="potentialTarget">The card to see if it fits all restrictions</param>
         /// <returns><see langword="true"/> if the card fits all restrictions, <see langword="false"/> if it doesn't fit at least one</returns>
-        public virtual bool Evaluate(GameCard potentialTarget) => Evaluate(potentialTarget, Effect.X);
+        public virtual bool Evaluate(GameCard potentialTarget) => Evaluate(potentialTarget, Effect?.X ?? 0);
     }
 }

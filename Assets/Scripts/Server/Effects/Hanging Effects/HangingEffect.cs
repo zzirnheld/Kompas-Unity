@@ -16,8 +16,8 @@ namespace KompasServer.Effects
         public HangingEffect(ServerGame serverGame, TriggerRestriction triggerRestriction, string endCondition, 
             string fallOffCondition, TriggerRestriction fallOffRestriction)
         {
-            this.serverGame = serverGame ?? throw new System.ArgumentNullException("ServerGame in HangingEffect must not be null");
-            this.triggerRestriction = triggerRestriction ?? throw new System.ArgumentNullException("Trigger Restriction in HangingEffect must not be null");
+            this.serverGame = serverGame != null ? serverGame : throw new System.ArgumentNullException("serverGame", "ServerGame in HangingEffect must not be null");
+            this.triggerRestriction = triggerRestriction ?? throw new System.ArgumentNullException("triggerRestriction", "Trigger Restriction in HangingEffect must not be null");
             EndCondition = endCondition;
             FallOffCondition = fallOffCondition;
             FallOffRestriction = fallOffRestriction;

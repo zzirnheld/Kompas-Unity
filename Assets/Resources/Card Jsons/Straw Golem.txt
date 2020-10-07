@@ -45,18 +45,12 @@
 	},
 	"AttackRestriction":{
 		"attackRestrictions":[
-			"This is Character",
-			"Defender is Character",
-			"Defender is Adjacent",
-			"Defender is Enemy",
-			"This is Activated",
-			"Friendly Turn",
-			"Maximum Per Turn",
-			"Stack Empty"
+			"Default",
+			"This is Activated"
 		]
 	},
 	"n":2,
-	"e":2,
+	"e":4,
 	"s":3,
 	"w":4,
 	"subtypes":["Golem"],

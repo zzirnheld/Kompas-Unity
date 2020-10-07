@@ -37,13 +37,18 @@ namespace KompasClient.Networking
         public void Execute(ClientGame clientGame)
         {
             var cards = cardIds.Select(i => clientGame.GetCardWithID(i)).Where(c => c != null);
-            var subeff = clientGame.GetCardWithID(sourceCardId)?.Effects.ElementAt(effIndex).Subeffects[subeffIndex] as DummyListTargetSubeffect;
+            var source = clientGame.GetCardWithID(sourceCardId);
+            if (source == null) return;
+            var subeff = source.Effects.ElementAt(effIndex).Subeffects[subeffIndex] as DummyListTargetSubeffect;
             var listRestriction = subeff?.listRestriction;
             clientGame.CurrCardRestriction = subeff?.cardRestriction;
             clientGame.targetMode = Game.TargetMode.OnHold;
             clientGame.clientUICtrl.StartSearch(cards.ToList(), max);
-            clientGame.clientUICtrl.SetCurrState($"Choose Target for Effect of {listRestriction?.Subeffect?.Source?.CardName}",
+            clientGame.clientUICtrl.SetCurrState($"Choose Target for Effect of {source.CardName}",
                 clientGame.CurrCardRestriction?.blurb);
+
+            //can't just do foreach( in cards) because also need to turn off any remaining targets that aren't in the list
+            clientGame.ShowValidCardTargets(c => cards.Contains(c));
         }
     }
 }

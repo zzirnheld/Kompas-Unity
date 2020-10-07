@@ -17,7 +17,8 @@
 				}",
 				"{
 					\"subeffType\":\"Set X by Target Value\",
-					\"whatToCount\":\"W\"
+					\"whatToCount\":\"W\",
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"X Change NESW\",
@@ -30,8 +31,8 @@
 		"normalRestrictions":["Augment Normal Restrictions","On Card that Fits Restriction"],
 		"effectRestrictions":["Augment Effect Restrictions","On Card that Fits Restriction"],
 		"onCardRestriction":{
-			\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Board\"],
-			\"subtypesInclude\":[\"Warrior\"]
+			"cardRestrictions":["Subtypes Include","Friendly","Board"],
+			"subtypesInclude":["Warrior"]
 		}
 	},
 	"a":3,

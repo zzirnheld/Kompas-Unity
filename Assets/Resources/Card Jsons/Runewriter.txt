@@ -37,7 +37,8 @@
 						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Index<=X\"],
 						\"subtypesInclude\":[\"Runer\"]
 					},
-					\"Max Can Choose\":1
+					\"maxCanChoose\":1,
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Clear Jump on Effect Impossible\"
@@ -47,7 +48,8 @@
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<=X\",\"Not Already Target\"]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Rehand\"

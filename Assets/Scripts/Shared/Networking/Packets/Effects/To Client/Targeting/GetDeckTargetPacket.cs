@@ -47,6 +47,7 @@ namespace KompasClient.Networking
                 var toSearch = clientGame.friendlyDeckCtrl.CardsThatFitRestriction(restriction);
                 clientGame.clientUICtrl.StartSearch(toSearch);
                 clientGame.clientUICtrl.SetCurrState("Choose Deck Target", restriction.blurb);
+                clientGame.ShowValidCardTargets(c => restriction.Evaluate(c));
             }
         }
     }

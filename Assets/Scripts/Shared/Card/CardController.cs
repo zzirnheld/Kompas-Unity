@@ -1,5 +1,7 @@
 ﻿using KompasCore.GameCore;
 using UnityEngine;
+using TMPro;
+using KompasCore.UI;
 
 namespace KompasCore.Cards
 {
@@ -8,83 +10,106 @@ namespace KompasCore.Cards
     /// </summary>
     public class CardController : MonoBehaviour
     {
+        public const float LargeUnzoomedTextFontSize = 32f;
+        public const float SmallUnzoomedTextFontSize = 22f;
+
         public GameCard card;
+
+        public CardAOEController aoeController;
+
         public MeshRenderer cardFaceRenderer;
         public GameObject zoomedCharFrame;
         public GameObject zoomedAllFrame;
         public GameObject unzoomedCharFrame;
         public GameObject unzoomedAllFrame;
-        public TMPro.TMP_Text zoomedNText;
-        public TMPro.TMP_Text zoomedEText;
-        public TMPro.TMP_Text zoomedSText;
-        public TMPro.TMP_Text zoomedWText;
-        public TMPro.TMP_Text zoomedCText;
-        public TMPro.TMP_Text zoomedAText;
-        public TMPro.TMP_Text unzoomedNText;
-        public TMPro.TMP_Text unzoomedEText;
-        public TMPro.TMP_Text unzoomedSText;
-        public TMPro.TMP_Text unzoomedWText;
-        public TMPro.TMP_Text unzoomedCText;
-        public TMPro.TMP_Text unzoomedAText;
+
+        public GameObject zoomedCharStatBackgrounds;
+        public GameObject unzoomedCharStatBackgrounds;
+        public GameObject zoomedSpellStatBackgrounds;
+        public GameObject unzoomedSpellStatBackgrounds;
+        public GameObject zoomedAugStatBackgrounds;
+        public GameObject unzoomedAugStatBackgrounds;
+
+        public TMP_Text zoomedNText;
+        public TMP_Text zoomedEText;
+        public TMP_Text zoomedSText;
+        public TMP_Text zoomedWText;
+        public TMP_Text zoomedCText;
+        public TMP_Text zoomedAText;
+        public TMP_Text unzoomedNText;
+        public TMP_Text unzoomedEText;
+        public TMP_Text unzoomedSText;
+        public TMP_Text unzoomedWText;
+        public TMP_Text unzoomedCText;
+        public TMP_Text unzoomedAText;
+
+        public GameObject currentTargetObject;
+        public GameObject validTargetObject;
+
+        public OscillatingController attackOscillator;
+        public OscillatingController effectOscillator;
 
         public int N 
         {
             set
             {
-                var str = $"N\n{value}";
-                zoomedNText.text = str;
-                unzoomedNText.text = str;
+                zoomedNText.text = $"N\n{value}";
+                unzoomedNText.text = $"{value}";
+                unzoomedNText.fontSize = value < 10 ? LargeUnzoomedTextFontSize : SmallUnzoomedTextFontSize;
             }
         }
         public int E
         {
             set
             {
-                var str = $"E\n{value}";
-                zoomedEText.text = str;
-                unzoomedEText.text = str;
+                zoomedEText.text = $"E\n{value}";
+                unzoomedEText.text = $"{value}";
+                unzoomedEText.fontSize = value < 10 ? LargeUnzoomedTextFontSize : SmallUnzoomedTextFontSize;
             }
         }
         public int S
         {
             set
             {
-                var str = $"S\n{value}";
-                zoomedSText.text = str;
-                unzoomedSText.text = str;
+                zoomedSText.text = $"S\n{value}";
+                unzoomedSText.text = $"{value}";
+                unzoomedSText.fontSize = value < 10 ? LargeUnzoomedTextFontSize : SmallUnzoomedTextFontSize;
             }
         }
         public int W
         {
             set
             {
-                var str = $"W\n{value}";
-                zoomedWText.text = str;
-                unzoomedWText.text = str;
+                zoomedWText.text = $"W\n{value}";
+                unzoomedWText.text = $"{value}";
+                unzoomedWText.fontSize = value < 10 ? LargeUnzoomedTextFontSize : SmallUnzoomedTextFontSize;
             }
         }
         public int C
         {
             set
             {
-                var str = $"C\n{value}";
-                zoomedCText.text = str;
-                unzoomedCText.text = str;
+                zoomedCText.text = $"C\n{value}";
+                unzoomedCText.text = $"{value}";
+                unzoomedCText.fontSize = value < 10 ? LargeUnzoomedTextFontSize : SmallUnzoomedTextFontSize;
             }
         }
         public int A
         {
             set
             {
-                var str = $"A\n{value}";
-                zoomedAText.text = str;
-                unzoomedAText.text = str;
+                zoomedAText.text = $"A\n{value}";
+                unzoomedAText.text = $"{value}";
+                unzoomedAText.fontSize = value < 10 ? LargeUnzoomedTextFontSize : SmallUnzoomedTextFontSize;
             }
         }
 
         public virtual void SetPhysicalLocation(CardLocation location)
         {
             Debug.Log($"Card controller of {card.CardName} setting physical location in {card.Location} to {card.BoardX}, {card.BoardY}");
+
+            aoeController.Hide();
+
             switch (location)
             {
                 case CardLocation.Deck:
@@ -149,6 +174,7 @@ namespace KompasCore.Cards
             zoomedSText.gameObject.SetActive(zoomedChar);
             zoomedWText.gameObject.SetActive(zoomedChar);
             zoomedCharFrame.SetActive(zoomedChar);
+            zoomedCharStatBackgrounds.SetActive(zoomedChar);
 
             bool unzoomedChar = isChar && !zoomed;
             unzoomedNText.gameObject.SetActive(unzoomedChar);
@@ -156,15 +182,48 @@ namespace KompasCore.Cards
             unzoomedSText.gameObject.SetActive(unzoomedChar);
             unzoomedWText.gameObject.SetActive(unzoomedChar);
             unzoomedCharFrame.SetActive(unzoomedChar);
+            unzoomedCharStatBackgrounds.SetActive(unzoomedChar);
 
-            zoomedCText.gameObject.SetActive(cardType == 'S' && zoomed);
-            unzoomedCText.gameObject.SetActive(cardType == 'S' && !zoomed);
+            bool zoomedSpell = cardType == 'S' && zoomed;
+            zoomedCText.gameObject.SetActive(zoomedSpell);
+            zoomedSpellStatBackgrounds.SetActive(zoomedSpell);
+            bool unzoomedSpell = cardType == 'S' && !zoomed;
+            unzoomedCText.gameObject.SetActive(unzoomedSpell);
+            unzoomedSpellStatBackgrounds.SetActive(unzoomedSpell);
 
-            zoomedAText.gameObject.SetActive(cardType == 'A' && zoomed);
-            unzoomedAText.gameObject.SetActive(cardType == 'A' && !zoomed);
+            bool zoomedAug = cardType == 'A' && zoomed;
+            zoomedAText.gameObject.SetActive(zoomedAug);
+            zoomedAugStatBackgrounds.SetActive(zoomedAug);
+            bool unzoomedAug = cardType == 'A' && !zoomed;
+            unzoomedAText.gameObject.SetActive(unzoomedAug);
+            unzoomedAugStatBackgrounds.gameObject.SetActive(unzoomedAug);
 
             zoomedAllFrame.SetActive(zoomed);
             unzoomedAllFrame.SetActive(!zoomed);
+
+            //the following logic is arranged the way it is so you don't loop through all cards,
+            //unless the card does actually have a possible attack
+
+            //only check if card can attack if on field
+            if (card.Location == CardLocation.Field)
+            {
+                //if you can attack at all, enable the attack indicator
+                if (card.AttackRestriction.EvaluateAtAll())
+                    //oscillate the attack indicator if can attack a card right now
+                    attackOscillator.Enable(card.AttackRestriction.EvaluateAny());
+                else attackOscillator.Disable();
+
+                //if you can activate any effect, enable the attack indicator
+                if (card.HasAtAllActivateableEffect)
+                    //oscillate the effect indicator if you can activate an effect right now
+                    effectOscillator.Enable(card.HasCurrentlyActivateableEffect);
+                else effectOscillator.Disable();
+            }
+            else
+            {
+                attackOscillator.Disable();
+                effectOscillator.Disable();
+            }
 
             SetImage(card.CardName, zoomed);
         }
@@ -174,8 +233,21 @@ namespace KompasCore.Cards
         /// </summary>
         private void MoveTo((int x, int y) to)
         {
-            transform.localPosition = BoardController.GridIndicesFromPos(to.x, to.y);
+            int heightIndex = card.AugmentedCard == null ? card.Augments.Count : card.AugmentedCard.Augments.IndexOf(card);
+            transform.localPosition = BoardController.GridIndicesToPosWithStacking(to.x, to.y, heightIndex);
             gameObject.SetActive(card.AugmentedCard == null);
+
+            if (card.CardType == 'S' && card.SpellSubtype == CardBase.RadialSubtype) aoeController.Show(card.Arg);
+        }
+
+        public void ShowValidTarget(bool valid = true) => validTargetObject.SetActive(valid);
+
+        public void ShowCurrentTarget(bool current = true) => currentTargetObject.SetActive(current);
+
+        public void HideTarget()
+        {
+            validTargetObject.SetActive(false);
+            currentTargetObject.SetActive(false);
         }
     }
 }

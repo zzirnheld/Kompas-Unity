@@ -40,7 +40,8 @@
 					\"subeffType\":\"Set X by Player Choice\",
 					\"XRest\":{
 						\"xRestrictions\":[\"<=ThisE\"]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Target This\"

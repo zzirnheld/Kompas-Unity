@@ -5,7 +5,7 @@ namespace KompasServer.Effects
     public class SwapSubeffect : ServerSubeffect
     {
         public int SecondTargetIndex = -2;
-        public GameCard SecondTarget => GetTarget(SecondTargetIndex);
+        public GameCard SecondTarget => Effect.GetTarget(SecondTargetIndex);
 
         public override bool Resolve()
         {

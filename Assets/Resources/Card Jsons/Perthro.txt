@@ -13,9 +13,6 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Delete Target\"
-				}",
-				"{
 					\"subeffType\":\"Jump on Effect Impossible\",
 					\"jumpTo\":4
 				}",

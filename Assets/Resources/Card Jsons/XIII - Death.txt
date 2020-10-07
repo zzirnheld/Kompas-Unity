@@ -35,7 +35,8 @@
 					\"subeffType\":\"Set X by Player Choice\",
 					\"XRest\":{
 						\"cardRestrictions\":[\">0\",\"<=ThisCost\"]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"X Change NESW\",
@@ -47,7 +48,8 @@
 					{
 						\"blurb\":\"adjacent SX character for Death to kill\",
 						\"cardRestrictions\":[\"Is Character\",\"Board\",\"S==X\",\"Adjacent\",\"Summoned\"]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Discard\"

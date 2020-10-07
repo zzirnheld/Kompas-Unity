@@ -29,11 +29,12 @@ namespace KompasCore.GameCore
             return Discard.IndexOf(card);
         }
 
-        public void RemoveFromDiscard(GameCard card)
+        public virtual bool RemoveFromDiscard(GameCard card)
         {
-            Debug.Assert(card != null);
-            card.ResetCard();
+            if (!Discard.Contains(card)) return false;
+
             Discard.Remove(card);
+            return true;
         }
 
         public List<GameCard> CardsThatFitRestriction(CardRestriction cardRestriction)

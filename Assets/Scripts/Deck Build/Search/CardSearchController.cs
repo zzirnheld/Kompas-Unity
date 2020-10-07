@@ -105,6 +105,11 @@ namespace KompasDeckbuilder
 
             var serializeds = CardRepository.SerializableCards;
 
+            foreach(var s in serializeds)
+            {
+                if(s.subtypeText == null) Debug.Log(s.cardName);
+            }
+
             if (!string.IsNullOrWhiteSpace(nameLower) && nameLower.Length >= 2)
                 serializeds = serializeds.Where(s => s.cardName.ToLower().Contains(nameLower));
 

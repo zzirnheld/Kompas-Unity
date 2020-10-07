@@ -8,6 +8,8 @@ using KompasClient.Networking;
 using KompasClient.UI;
 using KompasClient.Effects;
 using TMPro;
+using System;
+using System.Linq;
 
 namespace KompasClient.GameCore
 {
@@ -49,6 +51,9 @@ namespace KompasClient.GameCore
         //TODO make client aware that effects have been pushed to stack
         private bool stackEmpty = true;
         public override bool NothingHappening => stackEmpty;
+
+        private bool zoomed = false;
+        public bool Zoomed => zoomed;
 
         public override int Leyload 
         { 
@@ -150,8 +155,14 @@ namespace KompasClient.GameCore
 
         public void ShowCardsByZoom(bool zoomed)
         {
-            foreach (var c in Cards) c.cardCtrl.ShowForCardType(c.CardType, zoomed);
+            this.zoomed = zoomed;
+            foreach (var c in Cards)
+            {
+                if(c.gameObject.activeSelf) c.cardCtrl.ShowForCardType(c.CardType, zoomed);
+            }
         }
+
+        public void RefreshShownCards() => ShowCardsByZoom(zoomed);
 
         public void EffectActivated(ClientEffect eff)
         {
@@ -165,6 +176,24 @@ namespace KompasClient.GameCore
             stackEmpty = true;
             clientUICtrl.SetCurrState("Stack Empty");
             foreach (var c in Cards) c.ResetForStack();
+            ShowNoCardsAsTargets();
+        }
+
+        /// <summary>
+        /// Makes each card no longer show any highlight about its status as a target
+        /// </summary>
+        public void ShowNoCardsAsTargets()
+        {
+            foreach (var card in Cards) card.cardCtrl.HideTarget();
+        }
+
+        /// <summary>
+        /// Show valid target highlight for any valid potential targets
+        /// </summary>
+        /// <param name="predicate"></param>
+        public void ShowValidCardTargets(Func<GameCard, bool> predicate)
+        {
+            foreach (var card in Cards) card.cardCtrl.ShowValidTarget(predicate(card));
         }
     }
 }

@@ -7,6 +7,8 @@ namespace KompasCore.GameCore
 {
     public abstract class HandController : MonoBehaviour
     {
+        public const int MaxHandSize = 10;
+
         public Player Owner;
 
         public readonly List<GameCard> Hand = new List<GameCard>();
@@ -32,10 +34,13 @@ namespace KompasCore.GameCore
             return Hand.IndexOf(card);
         }
 
-        public virtual void RemoveFromHand(GameCard card)
+        public virtual bool RemoveFromHand(GameCard card)
         {
+            if (!Hand.Contains(card)) return false;
+
             Hand.Remove(card);
             SpreadOutCards();
+            return true;
         }
 
         public virtual void SpreadOutCards()

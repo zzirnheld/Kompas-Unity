@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Ice Golem",
-	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, I negate a character until your next turn.",
+	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, I negate TWOOOO character until your next turn.",
 	"effects":[
 		{
 			"triggerCondition":"Activate",
@@ -26,6 +26,21 @@
 					\"triggerRestriction\":{
 						\"triggerRestrictions\":[\"Friendly Turn\"]
 					}
+				}",
+				"{
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"for Ice Golem to temporarily negate\",
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Not Already Target\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Temporary Negate\",
+					\"endCondition\":\"Turn Start\",
+					\"triggerRestriction\":{
+						\"triggerRestrictions\":[\"Friendly Turn\"]
+					}
 				}"
 			]
 		}
@@ -41,19 +56,13 @@
 	},
 	"AttackRestriction":{
 		"attackRestrictions":[
-			"This is Character",
-			"Defender is Character",
-			"Defender is Adjacent",
-			"Defender is Enemy",
-			"This is Activated",
-			"Friendly Turn",
-			"Maximum Per Turn",
-			"Stack Empty"
+			"Default",
+			"This is Activated"
 		]
 	},
 	"n":2,
 	"e":1,
-	"s":3,
+	"s":2,
 	"w":4,
 	"subtypes":["Golem"],
 	"subtypeText":"Golem"
