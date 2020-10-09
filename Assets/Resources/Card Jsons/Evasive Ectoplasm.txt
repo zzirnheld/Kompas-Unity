@@ -59,7 +59,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Defender\"
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Target Other in Fight\"
 				}",
 				"{
 					\"subeffType\":\"Set X by Target Value\",

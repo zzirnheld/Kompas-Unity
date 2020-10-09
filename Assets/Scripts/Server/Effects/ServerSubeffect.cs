@@ -42,6 +42,7 @@ namespace KompasServer.Effects
                 case AddRest: return JsonUtility.FromJson<AddRestSubeffect>(subeffJson);
                 case TargetDefender: return JsonUtility.FromJson<TargetDefenderSubeffect>(subeffJson);
                 case TargetAttacker: return JsonUtility.FromJson<TargetAttackerSubeffect>(subeffJson);
+                case TargetOtherInFight: return JsonUtility.FromJson<TargetOtherInFightSubeffect>(subeffJson);
                 case SpaceTarget: return JsonUtility.FromJson<SpaceTargetSubeffect>(subeffJson);
                 case TargetAvatar: return JsonUtility.FromJson<TargetAvatarSubeffect>(subeffJson);
 
