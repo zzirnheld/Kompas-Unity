@@ -3,6 +3,7 @@ using KompasServer.Effects;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ClientCameraController : MonoBehaviour
 {
@@ -37,7 +38,7 @@ public class ClientCameraController : MonoBehaviour
         if (transform.position.y > MinCameraHeight || Input.mouseScrollDelta.y < 0)
         {
             var tempHeight = transform.position.y;
-            if(clientGame.canZoom)
+            if(clientGame.canZoom && !EventSystem.current.IsPointerOverGameObject())
                 transform.Translate(ZoomFactor * Input.mouseScrollDelta.y * Vector3.forward);
 
             //if just crossed the threshold for showing cards as zoomed or no, update cards accordingly

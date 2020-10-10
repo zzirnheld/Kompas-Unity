@@ -41,6 +41,16 @@ namespace KompasServer.Cards
 
         public override bool IsAvatar => false;
 
+        public override int SpacesMoved 
+        { 
+            get => base.SpacesMoved;
+            set
+            {
+                base.SpacesMoved = value;
+                if(ServerController != null) ServerController.ServerNotifier.NotifySpacesMoved(this);
+            }
+        }
+
         public override CardLocation Location
         {
             get => base.Location;

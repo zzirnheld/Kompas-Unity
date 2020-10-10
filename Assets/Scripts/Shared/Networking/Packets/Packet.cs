@@ -93,6 +93,7 @@ namespace KompasCore.Networking
         public const string ResetCard = "Reset Card";
         public const string ChangeCardController = "Change Card Controller";
         public const string SetPips = "Set Pips";
+        public const string SpacesMoved = "Spaces Moved";
 
         //debug commands
         //from client to server

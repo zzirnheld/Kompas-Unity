@@ -34,7 +34,7 @@ namespace KompasServer.GameCore
                 triggerer: playerInitiated ? card.Controller : stackSrc?.Controller, x: card.DistanceTo(toX, toY));
             EffectsController.TriggerForCondition(Trigger.Move, contextA);
             EffectsController.TriggerForCondition(Trigger.Arrive, contextA);
-            ServerNotifierByIndex(card.ControllerIndex).NotifyMove(card, toX, toY, playerInitiated);
+            ServerNotifierByIndex(card.ControllerIndex).NotifyMove(card, toX, toY);
             var at = GetCardAt(toX, toY);
             if (at != null)
             {

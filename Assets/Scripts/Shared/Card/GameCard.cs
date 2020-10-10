@@ -153,7 +153,7 @@ namespace KompasCore.Cards
         #endregion effects
 
         //movement
-        public int SpacesMoved { get; set; }
+        public virtual int SpacesMoved { get; set; }
         public int SpacesCanMove => N - SpacesMoved;
 
         public int AttacksThisTurn { get; set; } = 0;

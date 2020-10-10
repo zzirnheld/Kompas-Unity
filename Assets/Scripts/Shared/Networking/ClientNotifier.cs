@@ -21,71 +21,35 @@ namespace KompasClient.Networking
         #region Normal Request Actions
         public void RequestPlay(GameCard card, int toX, int toY)
         {
-            Debug.Log($"Requesting {card.CardName} to be played to {toX} {toY}");
             if (card.CardType == 'A') Send(new AugmentActionPacket(card.ID, toX, toY));
             else Send(new PlayActionPacket(card.ID, toX, toY));
         }
 
         public void RequestMove(GameCard card, int toX, int toY)
-        {
-            Debug.Log($"Requesting {card.CardName} to be moved to {toX} {toY}");
-            Send(new MoveActionPacket(card.ID, toX, toY));
-        }
+            => Send(new MoveActionPacket(card.ID, toX, toY));
 
         public void RequestAttack(GameCard attacker, GameCard defender)
-        {
-            Send(new AttackActionPacket(attacker.ID, defender.ID));
-        }
+            => Send(new AttackActionPacket(attacker.ID, defender.ID));
 
         public void RequestDecklistImport(string decklist)
-        {
-            Debug.Log("Requesting Deck import of \"" + decklist + "\"");
-            Send(new SetDeckPacket(decklist));
-        }
+            => Send(new SetDeckPacket(decklist));
 
-        public void RequestEndTurn()
-        {
-            Send(new EndTurnActionPacket());
-        }
+        public void RequestEndTurn() => Send(new EndTurnActionPacket());
 
-        public void RequestTarget(GameCard card)
-        {
-            Send(new CardTargetPacket(card.ID));
-        }
+        public void RequestTarget(GameCard card) => Send(new CardTargetPacket(card.ID));
 
         public void RequestResolveEffect(GameCard card, int index)
-        {
-            Send(new ActivateEffectActionPacket(card.ID, index));
-        }
+            => Send(new ActivateEffectActionPacket(card.ID, index));
 
-        public void RequestSetX(int x)
-        {
-            Debug.Log("Requesting to set X to " + x);
-            Send(new SelectXPacket(x));
-        }
+        public void RequestSetX(int x) => Send(new SelectXPacket(x));
 
-        public void DeclineAnotherTarget()
-        {
-            Debug.Log("Declining to select another target");
-            Send(new DeclineAnotherTargetPacket());
-        }
+        public void DeclineAnotherTarget() => Send(new DeclineAnotherTargetPacket());
 
-        public void RequestSpaceTarget(int x, int y)
-        {
-            Debug.Log("Requesting a space target of " + x + ", " + y);
-            Send(new SpaceTargetPacket(x, y));
-        }
+        public void RequestSpaceTarget(int x, int y) => Send(new SpaceTargetPacket(x, y));
 
-        public void RequestListChoices(List<GameCard> choices)
-        {
-            Send(new ListChoicesPacket(choices));
-        }
+        public void RequestListChoices(List<GameCard> choices) => Send(new ListChoicesPacket(choices));
 
-        public void RequestTriggerReponse(bool answer)
-        {
-            Debug.Log($"Requesting trigger response for {answer}");
-            Send(new OptionalTriggerAnswerPacket(answer));
-        }
+        public void RequestTriggerReponse(bool answer) => Send(new OptionalTriggerAnswerPacket(answer));
 
         public void RequestChooseEffectOption(int option) => Send(new EffectOptionResponsePacket(option));
 

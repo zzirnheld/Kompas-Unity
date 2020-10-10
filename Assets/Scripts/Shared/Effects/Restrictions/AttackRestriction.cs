@@ -48,7 +48,7 @@ namespace KompasCore.Effects
                 return false;
             }
 
-            Debug.Log($"Considering restriction {restriction} for attack of {Card.CardName} on {(defender == null ? "" : defender.CardName)}");
+            //Debug.Log($"Considering restriction {restriction} for attack of {Card.CardName} on {(defender == null ? "" : defender.CardName)}");
             switch (restriction)
             {
                 case Default: return true;

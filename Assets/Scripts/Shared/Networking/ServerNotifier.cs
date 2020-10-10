@@ -93,9 +93,9 @@ namespace KompasServer.Networking
             SendPackets(p, q);
         }
 
-        public void NotifyMove(GameCard toMove, int x, int y, bool playerInitiated)
+        public void NotifyMove(GameCard toMove, int x, int y)
         {
-            var p = new MoveCardPacket(toMove.ID, x, y, playerInitiated, invert: Player.index != 0);
+            var p = new MoveCardPacket(toMove.ID, x, y, invert: Player.index != 0);
             var q = p.GetInversion(known: true);
             SendPackets(p, q);
         }
@@ -165,7 +165,14 @@ namespace KompasServer.Networking
 
         public void NotifyStats(GameCard card)
         {
-            var p = new ChangeCardNumericStatsPacket(card.ID, card.Stats);
+            var p = new ChangeCardNumericStatsPacket(card.ID, card.Stats, card.SpacesMoved);
+            var q = p.GetInversion(card.KnownToEnemy);
+            SendPackets(p, q);
+        }
+
+        public void NotifySpacesMoved(GameCard card)
+        {
+            var p = new SpacesMovedPacket(card.ID, card.SpacesMoved);
             var q = p.GetInversion(card.KnownToEnemy);
             SendPackets(p, q);
         }
