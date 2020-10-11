@@ -5,6 +5,7 @@ using KompasServer.Effects;
 using KompasServer.GameCore;
 using KompasServer.Networking;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace KompasServer.Cards
 {
@@ -211,6 +212,7 @@ namespace KompasServer.Cards
         {
             base.SetAttacksThisTurn(attacksThisTurn, fromReset);
             if (ServerController != null && !fromReset) ServerController.ServerNotifier.NotifyAttacksThisTurn(this);
+            Debug.Log($"Setting attacks this turn for {CardName} to {attacksThisTurn}");
         }
         #endregion stats
     }
