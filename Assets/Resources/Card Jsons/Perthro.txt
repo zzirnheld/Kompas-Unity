@@ -41,11 +41,9 @@
 					\"subeffType\":\"Rehand\"
 				}",
 				"{
-					\"subeffType\":\"Delete Target\"
-				}",
-				"{
 					\"subeffType\":\"Loop While Have Targets\",
-					\"jumpTo\":5
+					\"delete\":true,
+					\"jumpTo\":4
 				}",
 				"{
 					\"subeffType\":\"Bottomdeck Rest\"

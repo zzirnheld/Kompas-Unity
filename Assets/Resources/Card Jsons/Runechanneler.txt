@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"Discard\",
+					\"subeffType\":\"Discard Target\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Rune for Runechanneler to reshuffle\",
