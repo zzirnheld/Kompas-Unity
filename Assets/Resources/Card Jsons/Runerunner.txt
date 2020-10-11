@@ -29,7 +29,8 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Pay Target's Cost in Pips\"
+					\"subeffType\":\"Pay Target's Cost in Pips\",
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Play\"
