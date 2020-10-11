@@ -24,8 +24,8 @@ namespace KompasCore.Networking
             this.y = invert ? 6 - y : y;
         }
 
-        public AttachCardPacket(GameCard card, bool invert = false)
-            : this(card.ID, card.CardName, card.ControllerIndex, card.BoardX, card.BoardY, invert: invert)
+        public AttachCardPacket(GameCard card, int x, int y, bool invert = false)
+            : this(card.ID, card.CardName, card.ControllerIndex, x, y, invert: invert)
         { }
 
         public override Packet Copy() => new AttachCardPacket(cardId, cardName, controllerIndex, x, y);

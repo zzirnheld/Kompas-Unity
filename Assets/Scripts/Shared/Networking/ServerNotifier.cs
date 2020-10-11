@@ -64,7 +64,7 @@ namespace KompasServer.Networking
 
         #region card location
         public void NotifyAttach(GameCard toAttach, int x, int y)
-            => SendToBothInverting(new AttachCardPacket(toAttach, invert: Player.index != 0), toAttach.KnownToEnemy);
+            => SendToBothInverting(new AttachCardPacket(toAttach, x, y, invert: Player.index != 0), toAttach.KnownToEnemy);
 
         /// <summary>
         /// Notifies that the Player corresponding to this notifier played a given card

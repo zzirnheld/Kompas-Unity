@@ -150,8 +150,8 @@ namespace KompasCore.Effects
         {
             if (potentialTarget == null) return false;
 
-            Debug.Log($"Considering restriction {restriction} for card {potentialTarget.CardName} when X equals {x}, " +
-                $"controller is {(Controller == null ? -1 : Controller.index)}, potential target controlled by {potentialTarget.ControllerIndex}");
+            /*Debug.Log($"Considering restriction {restriction} for card {potentialTarget.CardName} when X equals {x}, " +
+                $"controller is {(Controller == null ? -1 : Controller.index)}, potential target controlled by {potentialTarget.ControllerIndex}");*/
             switch (restriction)
             {
                 //targets
