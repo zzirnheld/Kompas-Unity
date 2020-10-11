@@ -28,8 +28,11 @@ namespace KompasClient.Networking
         public void Execute(ClientGame clientGame)
         {
             var card = clientGame.GetCardWithID(cardId);
-            if (card != null) card.SpacesMoved = spacesMoved;
-            clientGame.uiCtrl.RefreshShownCardInfo();
+            if (card != null)
+            {
+                card.SetSpacesMoved(spacesMoved);
+                clientGame.uiCtrl.RefreshShownCardInfo();
+            }
         }
     }
 }

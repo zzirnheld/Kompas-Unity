@@ -94,6 +94,7 @@ namespace KompasCore.Networking
         public const string ChangeCardController = "Change Card Controller";
         public const string SetPips = "Set Pips";
         public const string SpacesMoved = "Spaces Moved";
+        public const string AttacksThisTurn = "Attacks This Turn";
 
         //debug commands
         //from client to server

@@ -2,6 +2,7 @@
 using System.Linq;
 using KompasCore.Cards;
 using KompasCore.Effects;
+using UnityEngine;
 
 namespace KompasServer.Effects
 {
@@ -68,10 +69,12 @@ namespace KompasServer.Effects
             //TODO: somehow figure out a better way of checking if there exists a valid list?
             //  maybe a method on list restriction that checks?
             //  because otherwise enumerating lists and seeing if at least one fits would be exponential time
+            Debug.Log("Checking empty list restriction");
             if (!listRestriction.Evaluate(new List<GameCard>())) 
                 return ServerEffect.EffectImpossible();
 
             potentialTargets = GetPossibleTargets();
+            Debug.Log($"Potential targets {string.Join(", ", potentialTargets.Select(t => t.CardName))}");
 
             //if there are not enough possible targets, declare the effect impossible
             //if you want to continue resolution anyway, add an if impossible check before this subeffect.

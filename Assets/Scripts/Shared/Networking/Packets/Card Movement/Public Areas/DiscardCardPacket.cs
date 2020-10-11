@@ -1,6 +1,7 @@
 ﻿using KompasCore.Networking;
 using KompasClient.GameCore;
 using System.Linq;
+using KompasCore.Cards;
 
 namespace KompasCore.Networking
 {
@@ -18,6 +19,10 @@ namespace KompasCore.Networking
             this.cardName = cardName;
             this.controllerIndex = invert ? 1 - controllerIndex : controllerIndex;
         }
+
+        public DiscardCardPacket(GameCard card, bool invert = false)
+            : this(card.ID, card.CardName, card.ControllerIndex, invert: invert)
+        { }
 
         public override Packet Copy() => new DiscardCardPacket(cardId, cardName, controllerIndex, invert: false);
 

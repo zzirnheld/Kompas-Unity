@@ -1,10 +1,5 @@
-﻿using KompasClient.Effects;
-using KompasClient.GameCore;
-using KompasCore.Cards;
-using KompasCore.GameCore;
+﻿using KompasClient.GameCore;
 using KompasCore.Networking;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using UnityEngine;
 
@@ -71,6 +66,8 @@ namespace KompasClient.Networking
                 case Packet.ResetCard: return JsonUtility.FromJson<ResetCardClientPacket>(json);
                 case Packet.ChangeCardController: return JsonUtility.FromJson<ChangeCardControllerClientPacket>(json);
                 case Packet.SetPips: return JsonUtility.FromJson<SetPipsClientPacket>(json);
+                case Packet.AttacksThisTurn: return JsonUtility.FromJson<AttacksThisTurnClientPacket>(json);
+                case Packet.SpacesMoved: return JsonUtility.FromJson<SpacesMovedClientPacket>(json);
 
                 //effects
                     //targeting

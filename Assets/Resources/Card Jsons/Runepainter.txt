@@ -44,11 +44,11 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Rune for Runepainter to search (to hand)\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Same Name as Target\",\"Deck\",\"Index<X\"],
-						\"subtypesInclude\":[\"Rune\"]
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Same Name as Target\",\"Deck\",\"Index<C\"],
+						\"subtypesInclude\":[\"Rune\"],
+						\"constant\":10
 					},
-					\"maxCanChoose\":1,
-					\"xMultiplier\":1
+					\"maxCanChoose\":1
 				}",
 				"{
 					\"subeffType\":\"Clear Jump on Effect Impossible\"
@@ -57,9 +57,9 @@
 					\"subeffType\":\"Add Rest\",
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<X\",\"Not Already Target\"]
-					},
-					\"xMultiplier\":1
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<C\",\"Not Already Target\"],
+						\"constant\":10
+					}
 				}",
 				"{
 					\"subeffType\":\"Rehand\"

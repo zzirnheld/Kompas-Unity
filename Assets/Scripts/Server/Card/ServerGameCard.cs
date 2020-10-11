@@ -41,16 +41,6 @@ namespace KompasServer.Cards
 
         public override bool IsAvatar => false;
 
-        public override int SpacesMoved 
-        { 
-            get => base.SpacesMoved;
-            set
-            {
-                base.SpacesMoved = value;
-                if(ServerController != null) ServerController.ServerNotifier.NotifySpacesMoved(this);
-            }
-        }
-
         public override CardLocation Location
         {
             get => base.Location;
@@ -90,8 +80,9 @@ namespace KompasServer.Cards
 
         public override void ResetCard()
         {
-            base.ResetCard();
+            //notify first so reset values get set to their proper things
             ServerNotifier.NotifyResetCard(this);
+            base.ResetCard();
         }
 
         public override void AddAugment(GameCard augment, IStackable stackSrc = null)
@@ -208,6 +199,18 @@ namespace KompasServer.Cards
                 else EffectsController.TriggerForCondition(Trigger.Deactivate, context);
             }
             base.SetActivated(activated, stackSrc);
+        }
+
+        public override void SetSpacesMoved(int spacesMoved, bool fromReset = false)
+        {
+            base.SetSpacesMoved(spacesMoved, fromReset);
+            if (ServerController != null && !fromReset) ServerController.ServerNotifier.NotifySpacesMoved(this);
+        }
+
+        public override void SetAttacksThisTurn(int attacksThisTurn, bool fromReset = false)
+        {
+            base.SetAttacksThisTurn(attacksThisTurn, fromReset);
+            if (ServerController != null && !fromReset) ServerController.ServerNotifier.NotifyAttacksThisTurn(this);
         }
         #endregion stats
     }

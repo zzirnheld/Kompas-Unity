@@ -232,7 +232,7 @@ namespace KompasServer.GameCore
             EffectsController.PushToStack(attack, new ActivationContext());
             //check for triggers related to the attack (if this were in the constructor, the triggers would go on the stack under the attack
             attack.Declare();
-            if (playerInitiated) attacker.AttacksThisTurn++;
+            if (playerInitiated) attacker.SetAttacksThisTurn(attacker.attacksThisTurn + 1);
             EffectsController.CheckForResponse();
         }
 
