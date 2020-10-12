@@ -17,7 +17,7 @@
 					\"subeffType\":\"Target All\",
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<=C\",\"Subtypes Include\"],
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<C\",\"Subtypes Include\"],
 						\"subtypesInclude\":[\"Supplicant\"],
 						\"constant\":4
 					}
@@ -26,7 +26,7 @@
 					\"subeffType\":\"Add Rest\",
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<=C\",\"Not Already Target\"],
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<C\",\"Not Already Target\"],
 						\"constant\":4
 					}
 				}",

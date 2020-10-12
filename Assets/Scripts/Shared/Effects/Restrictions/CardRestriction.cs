@@ -93,9 +93,9 @@ namespace KompasCore.Effects
         public const string ExactlyXSpaces = "Exactly X Spaces to Source";
         public const string InFrontOfSource = "In Front of Source";
         public const string BehindSource = "Behind Source";
-        public const string IndexInListGTEC = "Index>=C";
-        public const string IndexInListLTEC = "Index<=C";
-        public const string IndexInListLTEX = "Index<=X";
+        public const string IndexInListGTC = "Index>C";
+        public const string IndexInListLTC = "Index<C";
+        public const string IndexInListLTX = "Index<X";
         public const string SameColumnAsSource = "Same Column as Source";
 
         //misc
@@ -150,8 +150,8 @@ namespace KompasCore.Effects
         {
             if (potentialTarget == null) return false;
 
-            Debug.Log($"Considering restriction {restriction} for card {potentialTarget.CardName} when X equals {x}, " +
-                $"controller is {(Controller == null ? -1 : Controller.index)}, potential target controlled by {potentialTarget.ControllerIndex}");
+            /*Debug.Log($"Considering restriction {restriction} for card {potentialTarget.CardName} when X equals {x}, " +
+                $"controller is {(Controller == null ? -1 : Controller.index)}, potential target controlled by {potentialTarget.ControllerIndex}");*/
             switch (restriction)
             {
                 //targets
@@ -235,17 +235,15 @@ namespace KompasCore.Effects
                 case ExactlyXSpaces:     return potentialTarget.DistanceTo(Source) == x;
                 case InFrontOfSource:    return Source.CardInFront(potentialTarget);
                 case BehindSource:       return Source.CardBehind(potentialTarget);
-                case IndexInListGTEC:    return potentialTarget.IndexInList >= constant;
-                case IndexInListLTEC:    return potentialTarget.IndexInList <= constant;
-                case IndexInListLTEX:    return potentialTarget.IndexInList <= x;
+                case IndexInListGTC:     return potentialTarget.IndexInList > constant;
+                case IndexInListLTC:     return potentialTarget.IndexInList < constant;
+                case IndexInListLTX:     return potentialTarget.IndexInList < x;
                 case SameColumnAsSource: return potentialTarget.SameColumn(Source);
 
                 //misc
                 case CanBePlayed: return Subeffect.Game.ExistsEffectPlaySpace(Source.PlayRestriction, Effect);
                 case EffectControllerCanPayCost: return Subeffect.Effect.Controller.Pips >= potentialTarget.Cost * costMultiplier / costDivisor;
-                default:
-                    Debug.LogError($"You forgot to implement a check for {restriction}");
-                    return false;
+                default: throw new ArgumentException($"Invalid card restriction {restriction}", "restriction");
             }
         }
 

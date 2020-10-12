@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Perthro",
-	"effText":"Can’t be cast normally. Search your deck’s top 10 cards for 3 spells.",
+	"effText":"Can’t be cast normally. Search your deck’s top 10 cards for up to 3 spells.",
 	"effects":[
 		{
 			"triggerCondition":"Play",
@@ -21,7 +21,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"spell for Perthro to search (to hand)\",
-						\"cardRestrictions\":[\"Is Spell\",\"Friendly\",\"Deck\",\"Index>=C\"],
+						\"cardRestrictions\":[\"Is Spell\",\"Friendly\",\"Deck\",\"Index<C\"],
 						\"constant\":10
 					},
 					\"maxCanChoose\":3
@@ -30,23 +30,20 @@
 					\"subeffType\":\"Clear Jump on Effect Impossible\"
 				}",
 				"{
-					\"subeffType\":\"Add Rest\"
-				}",
-				"{
-					\"subeffType\":\"Choose From List\",
+					\"subeffType\":\"Add Rest\",
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<=C\",\"Not Already Target\"],
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<C\",\"Not Already Target\"],
 						\"constant\":10
-					},
-					\"maxCanChoose\":1
+					}
 				}",
 				"{
-					\"subeffType\":\"Delete Target\"
+					\"subeffType\":\"Rehand\"
 				}",
 				"{
 					\"subeffType\":\"Loop While Have Targets\",
-					\"jumpTo\":5
+					\"delete\":true,
+					\"jumpTo\":4
 				}",
 				"{
 					\"subeffType\":\"Bottomdeck Rest\"
@@ -57,7 +54,7 @@
 	"PlayRestriction":{
 		"normalRestrictions":["Cannot be Played Normally"]
 	},
-	"c":3,
+	"c":2,
 	"spellType":"Simple",
 	"subtypes":["Rune","Simple"],
 	"subtypeText":"Rune Simple"

@@ -30,7 +30,8 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Pay Target's Cost in Pips\"
+					\"subeffType\":\"Pay Target's Cost in Pips\",
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Play\"
@@ -38,10 +39,10 @@
 			]
 		}
 	],
-	"n":3,
-	"e":3,
-	"s":3,
-	"w":3,
+	"n":1,
+	"e":1,
+	"s":1,
+	"w":1,
 	"subtypes":["Runer","Mage"],
 	"subtypeText":"Runer Mage"
 }

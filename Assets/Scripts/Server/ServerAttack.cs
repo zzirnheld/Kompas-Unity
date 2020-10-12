@@ -25,6 +25,8 @@ namespace KompasServer.Effects
         /// </summary>
         public void Declare()
         {
+            ServerController.ServerNotifier.NotifyAttackStarted(attacker, defender);
+
             var attackerContext = new ActivationContext(card: attacker, stackable: this, triggerer: Controller);
             var defenderContext = new ActivationContext(card: defender, stackable: this, triggerer: Controller);
             EffCtrl.TriggerForCondition(Trigger.Attacks, attackerContext);

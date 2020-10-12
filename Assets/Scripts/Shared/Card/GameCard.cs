@@ -137,6 +137,8 @@ namespace KompasCore.Cards
                 }
             }
         }
+
+        public bool Attached => AugmentedCard != null;
         #endregion
 
         #region effects
@@ -153,10 +155,12 @@ namespace KompasCore.Cards
         #endregion effects
 
         //movement
-        public int SpacesMoved { get; set; }
+        private int spacesMoved = 0;
+        public int SpacesMoved => spacesMoved;
         public int SpacesCanMove => N - SpacesMoved;
 
-        public int AttacksThisTurn { get; set; } = 0;
+        public int attacksThisTurn = 0;
+        public int AttacksThisTurn => attacksThisTurn;
 
         //restrictions
         public MovementRestriction MovementRestriction { get; private set; }
@@ -198,7 +202,8 @@ namespace KompasCore.Cards
             this.serializedCard = serializedCard;
 
             TurnsOnBoard = 0;
-            SpacesMoved = 0;
+            SetSpacesMoved(0, true);
+            SetAttacksThisTurn(0, true);
             MovementRestriction = serializedCard.MovementRestriction ?? new MovementRestriction();
             MovementRestriction.SetInfo(this);
             AttackRestriction = serializedCard.AttackRestriction ?? new AttackRestriction();
@@ -233,8 +238,8 @@ namespace KompasCore.Cards
                 eff.ResetForTurn(turnPlayer);
             }
 
-            SpacesMoved = 0;
-            AttacksThisTurn = 0;
+            SetSpacesMoved(0, true);
+            SetAttacksThisTurn(0, true);
             if (Location == CardLocation.Field) TurnsOnBoard++;
         }
 
@@ -299,7 +304,7 @@ namespace KompasCore.Cards
 
         public void PutBack() => cardCtrl?.SetPhysicalLocation(Location);
 
-        public void CountSpacesMovedTo((int x, int y) to) => SpacesMoved += DistanceTo(to.x, to.y);
+        public void CountSpacesMovedTo((int x, int y) to) => SetSpacesMoved(spacesMoved + DistanceTo(to.x, to.y));
 
         #region augments
         public virtual void AddAugment(GameCard augment, IStackable stackSrc = null)
@@ -371,6 +376,9 @@ namespace KompasCore.Cards
 
         public virtual void SetNegated(bool negated, IStackable stackSrc = null) => Negated = negated;
         public virtual void SetActivated(bool activated, IStackable stackSrc = null) => Activated = activated;
+
+        public virtual void SetSpacesMoved(int spacesMoved, bool fromReset = false) => this.spacesMoved = spacesMoved;
+        public virtual void SetAttacksThisTurn(int attacksThisTurn, bool fromReset = false) => this.attacksThisTurn = attacksThisTurn;
         #endregion statfuncs
 
         #region moveCard

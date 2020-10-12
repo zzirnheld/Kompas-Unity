@@ -1,13 +1,9 @@
 ﻿using KompasCore.Cards;
-using KompasCore.Effects;
-using KompasCore.GameCore;
 using KompasCore.Networking;
-using KompasServer.Cards;
 using KompasServer.Effects;
 using KompasServer.GameCore;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
 using UnityEngine;
 
 namespace KompasServer.Networking
@@ -30,28 +26,17 @@ namespace KompasServer.Networking
             OtherNotifier.SendPacket(b);
         }
 
-        private void SendToBoth(Packet p)
-        {
-            SendPackets(p, p.Copy());
-        }
+        private void SendToBoth(Packet p) => SendPackets(p, p.Copy());
+
+        private void SendToBothInverting(Packet p, bool known = true) => SendPackets(p, p.GetInversion(known));
 
         #region game start
-        public void GetDecklist()
-        {
-            SendPacket(new GetDeckPacket());
-        }
+        public void GetDecklist() => SendPacket(new GetDeckPacket());
 
-        public void DeckAccepted()
-        {
-            SendPacket(new DeckAcceptedPacket());
-        }
+        public void DeckAccepted() => SendPacket(new DeckAcceptedPacket());
 
         public void SetFriendlyAvatar(string cardName, int cardID)
-        {
-            var p = new SetAvatarPacket(0, cardName, cardID);
-            var q = new SetAvatarPacket(1, cardName, cardID);
-            SendPackets(p, q);
-        }
+            => SendToBothInverting(new SetAvatarPacket(0, cardName, cardID));
 
         /// <summary>
         /// Takes care of inverting first turn player
@@ -64,20 +49,22 @@ namespace KompasServer.Networking
         }
         #endregion game start
 
-        #region notify
         public void NotifyPutBack() => SendPacket(new PutCardsBackPacket());
 
         public void NotifyBothPutBack() => SendToBoth(new PutCardsBackPacket());
 
+        #region game stats
         public void NotifyLeyload(int leyload) => SendToBoth(new SetLeyloadPacket(leyload));
 
+        public void NotifySetPips(int pipsToSet)
+            => SendToBothInverting(new SetPipsPacket(pipsToSet, Player.index, invert: Player.index != 0));
+        public void NotifySetTurn(ServerGame sGame, int indexToSet)
+            => SendToBothInverting(new SetTurnPlayerPacket(indexToSet, invert: Player.index != 0));
+        #endregion game stats
+
+        #region card location
         public void NotifyAttach(GameCard toAttach, int x, int y)
-        {
-            //tell everyone to do it
-            var p = new AttachCardPacket(toAttach.ID, toAttach.CardName, toAttach.ControllerIndex, x, y, invert: Player.index != 0);
-            var q = p.GetInversion(toAttach.KnownToEnemy);
-            SendPackets(p, q);
-        }
+            => SendToBothInverting(new AttachCardPacket(toAttach, x, y, invert: Player.index != 0), toAttach.KnownToEnemy);
 
         /// <summary>
         /// Notifies that the Player corresponding to this notifier played a given card
@@ -93,118 +80,55 @@ namespace KompasServer.Networking
             SendPackets(p, q);
         }
 
-        public void NotifyMove(GameCard toMove, int x, int y, bool playerInitiated)
-        {
-            var p = new MoveCardPacket(toMove.ID, x, y, playerInitiated, invert: Player.index != 0);
-            var q = p.GetInversion(known: true);
-            SendPackets(p, q);
-        }
+        public void NotifyMove(GameCard toMove, int x, int y)
+            => SendToBothInverting(new MoveCardPacket(toMove.ID, x, y, invert: Player.index != 0));
 
         public void NotifyDiscard(GameCard toDiscard)
-        {
-            var p = new DiscardCardPacket(toDiscard.ID, toDiscard.CardName, toDiscard.ControllerIndex, invert: Player.index != 0);
-            var q = p.GetInversion(toDiscard.KnownToEnemy);
-            SendPackets(p, q);
-        }
+            => SendToBothInverting(new DiscardCardPacket(toDiscard, invert: Player.index != 0), toDiscard.KnownToEnemy);
 
         public void NotifyRehand(GameCard toRehand)
-        {
-            var p = new RehandCardPacket(toRehand.ID);
-            var q = p.GetInversion(toRehand.KnownToEnemy);
-            SendPackets(p, q);
-        }
+            => SendToBothInverting(new RehandCardPacket(toRehand.ID), toRehand.KnownToEnemy);
 
-        public void NotifyDecrementHand()
-        {
-            var p = new ChangeEnemyHandCountPacket(-1);
-            SendPacket(p);
-        }
+        public void NotifyDecrementHand() => SendPacket(new ChangeEnemyHandCountPacket(-1));
 
         public void NotifyAnnhilate(GameCard toAnnhilate)
-        {
-            var p = new AnnihilateCardPacket(toAnnhilate.ID, toAnnhilate.CardName, toAnnhilate.ControllerIndex);
-            var q = p.GetInversion(toAnnhilate.KnownToEnemy);
-            SendPackets(p, q);
-        }
+            => SendToBothInverting(new AnnihilateCardPacket(toAnnhilate.ID, toAnnhilate.CardName, toAnnhilate.ControllerIndex), toAnnhilate.KnownToEnemy);
 
         public void NotifyTopdeck(GameCard card)
-        {
-            var p = new TopdeckCardPacket(card.ID, card.OwnerIndex);
-            var q = p.GetInversion(card.KnownToEnemy);
-            SendPackets(p, q);
-        }
+            => SendToBothInverting(new TopdeckCardPacket(card.ID, card.OwnerIndex), card.KnownToEnemy);
 
         public void NotifyBottomdeck(GameCard card)
-        {
-            var p = new BottomdeckCardPacket(card.ID, card.OwnerIndex);
-            var q = p.GetInversion(card.KnownToEnemy);
-            SendPackets(p, q);
-        }
+            => SendToBothInverting(new BottomdeckCardPacket(card.ID, card.OwnerIndex), card.KnownToEnemy);
 
         public void NotifyReshuffle(GameCard toReshuffle)
-        {
-            var p = new ReshuffleCardPacket(toReshuffle.ID, toReshuffle.OwnerIndex);
-            var q = p.GetInversion(toReshuffle.KnownToEnemy);
-            SendPackets(p, q);
-        }
+            => SendToBothInverting(new ReshuffleCardPacket(toReshuffle.ID, toReshuffle.OwnerIndex), toReshuffle.KnownToEnemy);
 
         public void NotifyAddToDeck(GameCard added)
-        {
-            var p = new AddCardPacket(added.ID, added.CardName, added.Location, added.ControllerIndex,
-                added.BoardX, added.BoardY, attached: false, invert: Player.index != 0);
-            var q = p.GetInversion(added.KnownToEnemy);
-            SendPackets(p, q);
-        }
+            => SendToBothInverting(new AddCardPacket(added, invert: Player.index != 0), added.KnownToEnemy);
+        #endregion card location
 
-        public void NotifySetPips(int pipsToSet)
-        {
-            var p = new SetPipsPacket(pipsToSet, Player.index, invert: Player.index != 0);
-            var q = p.GetInversion(true);
-            SendPackets(p, q);
-        }
-
+        #region card stats
         public void NotifyStats(GameCard card)
-        {
-            var p = new ChangeCardNumericStatsPacket(card.ID, card.Stats);
-            var q = p.GetInversion(card.KnownToEnemy);
-            SendPackets(p, q);
-        }
+            => SendToBothInverting(new ChangeCardNumericStatsPacket(card.ID, card.Stats, card.SpacesMoved), card.KnownToEnemy);
+
+        public void NotifySpacesMoved(GameCard card)
+            => SendToBothInverting(new SpacesMovedPacket(card.ID, card.SpacesMoved), card.KnownToEnemy);
+
+        public void NotifyAttacksThisTurn(GameCard card) 
+            => SendToBothInverting(new AttacksThisTurnPacket(card.ID, card.AttacksThisTurn), card.KnownToEnemy);
 
         public void NotifySetNegated(GameCard card, bool negated)
-        {
-            var p = new NegateCardPacket(card.ID, negated);
-            var q = p.GetInversion(card.KnownToEnemy);
-            SendPackets(p, q);
-        }
+            => SendToBothInverting(new NegateCardPacket(card.ID, negated), card.KnownToEnemy);
 
         public void NotifyActivate(GameCard card, bool activated)
-        {
-            var p = new ActivateCardPacket(card.ID, activated);
-            var q = p.GetInversion(card.KnownToEnemy);
-            SendPackets(p, q);
-        }
+            => SendToBothInverting(new ActivateCardPacket(card.ID, activated), card.KnownToEnemy);
 
         public void NotifyResetCard(GameCard card)
-        {
-            var p = new ResetCardPacket(card.ID);
-            var q = p.GetInversion(card.KnownToEnemy);
-            SendPackets(p, q);
-        }
+            => SendToBothInverting(new ResetCardPacket(card.ID), card.KnownToEnemy);
 
         public void NotifyChangeController(GameCard card, Player controller)
-        {
-            var p = new ChangeCardControllerPacket(card.ID, controller.index, invert: Player.index != 0);
-            var q = p.GetInversion(card.KnownToEnemy);
-            SendPackets(p, q);
-        }
-
-        public void NotifySetTurn(ServerGame sGame, int indexToSet)
-        {
-            var p = new SetTurnPlayerPacket(indexToSet, invert: Player.index != 0);
-            var q = p.GetInversion();
-            SendPackets(p, q);
-        }
-        #endregion notify
+            => SendToBothInverting(new ChangeCardControllerPacket(card.ID, controller.index, invert: Player.index != 0), card.KnownToEnemy);
+        #endregion card stats
 
         #region request targets
         public void GetBoardTarget(BoardTargetSubeffect boardTargetSubeffect)
@@ -230,17 +154,16 @@ namespace KompasServer.Networking
         }
         #endregion request targets
 
+        public void NotifyAttackStarted(GameCard atk, GameCard def) => SendToBoth(new AttackStartedPacket(atk.ID, def.ID));
+
         #region other effect stuff
         public void ChooseEffectOption(ChooseOptionSubeffect src) => SendPacket(new GetEffectOptionPacket(src));
 
         public void EffectResolving(ServerEffect eff)
-        {
-            var p = new EffectResolvingPacket(eff.Source.ID, eff.EffectIndex, eff.Controller.index, invert: Player.index != 0);
-            var q = p.GetInversion();
-            SendPackets(p, q);
-        }
+            => SendToBothInverting(new EffectResolvingPacket(eff.Source.ID, eff.EffectIndex, eff.Controller.index, invert: Player.index != 0));
 
-        public void NotifyEffectActivated(ServerEffect eff) => SendToBoth(new EffectActivatedPacket(eff.Source.ID, eff.EffectIndex));
+        public void NotifyEffectActivated(ServerEffect eff) 
+            => SendToBoth(new EffectActivatedPacket(eff.Source.ID, eff.EffectIndex));
 
         public void EffectImpossible() => SendToBoth(new EffectImpossiblePacket());
 

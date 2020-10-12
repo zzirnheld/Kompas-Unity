@@ -43,7 +43,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Animancer to search\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Cost<=X\",\"Index<=X\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Cost<=X\",\"Index<X\"],
 						\"subtypesInclude\":[\"Golem\"]
 					},
 					\"xMultiplier\":1
@@ -55,7 +55,7 @@
 					\"subeffType\":\"Add Rest\",
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<=X\",\"Not Already Target\"]
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<X\",\"Not Already Target\"]
 					},
 					\"xMultiplier\":1,
 					\"xModifier\":-1
@@ -74,7 +74,7 @@
 					\"subeffType\":\"Add Rest\",
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<=X\",\"Not Already Target\"]
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<X\",\"Not Already Target\"]
 					},
 					\"xMultiplier\":1
 				}",

@@ -9,21 +9,19 @@ namespace KompasCore.Networking
         public int cardId;
         public int x;
         public int y;
-        public bool normalMove;
 
         public MoveCardPacket() : base(MoveCard) { }
 
-        public MoveCardPacket(int cardId, int x, int y, bool normalMove, bool invert) : this()
+        public MoveCardPacket(int cardId, int x, int y, bool invert) : this()
         {
             this.cardId = cardId;
             this.x = invert ? 6 - x : x;
             this.y = invert ? 6 - y : y;
-            this.normalMove = normalMove;
         }
 
-        public override Packet Copy() => new MoveCardPacket(cardId, x, y, normalMove, invert: false);
+        public override Packet Copy() => new MoveCardPacket(cardId, x, y, invert: false);
 
-        public override Packet GetInversion(bool known) => new MoveCardPacket(cardId, x, y, normalMove, invert: true);
+        public override Packet GetInversion(bool known) => new MoveCardPacket(cardId, x, y, invert: true);
     }
 }
 
@@ -34,7 +32,7 @@ namespace KompasClient.Networking
         public void Execute(ClientGame clientGame)
         {
             var card = clientGame.GetCardWithID(cardId);
-            if(card != null) card.Move(x, y, normalMove);
+            if(card != null) card.Move(x, y, false);
             clientGame.uiCtrl.RefreshShownCardInfo();
         }
     }

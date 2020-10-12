@@ -24,7 +24,7 @@
 					\"subeffType\":\"Temporary Activate\",
 					\"endCondition\":\"Turn Start\",
 					\"triggerRestriction\":{
-						\"triggerRestrictions\":["Friendly Turn"]
+						\"triggerRestrictions\":[\"Friendly Turn\"]
 					}
 				}"
 			]

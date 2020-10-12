@@ -81,9 +81,7 @@ namespace KompasCore.Effects
                 case Unique: 
                     return !Card.Game.Cards.Any(c => c.Location == CardLocation.Field && c.Controller == Card.Controller && c.CardName == Card.CardName);
 
-                default:
-                    Debug.LogError($"You forgot to check for condition {r} in RestrictionInvalid for PlayRestriction");
-                    return true;
+                default: throw new System.ArgumentException($"You forgot to check play restriction {r}", "r");
             }
         }
 

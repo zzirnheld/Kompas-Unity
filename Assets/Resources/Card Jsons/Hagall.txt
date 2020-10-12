@@ -27,7 +27,7 @@
 	"PlayRestriction":{
 		"normalRestrictions":["Cannot be Played Normally"]
 	},
-	"c":4,
+	"c":2,
 	"spellType":"Radial",
 	"subtypes":["Rune","Radial"],
 	"subtypeText":"Rune Radial",

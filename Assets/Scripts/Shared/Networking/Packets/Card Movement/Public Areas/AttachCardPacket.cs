@@ -1,6 +1,7 @@
 ﻿using KompasCore.Networking;
 using KompasClient.GameCore;
 using System.Linq;
+using KompasCore.Cards;
 
 namespace KompasCore.Networking
 {
@@ -22,6 +23,10 @@ namespace KompasCore.Networking
             this.x = invert ? 6 - x : x;
             this.y = invert ? 6 - y : y;
         }
+
+        public AttachCardPacket(GameCard card, int x, int y, bool invert = false)
+            : this(card.ID, card.CardName, card.ControllerIndex, x, y, invert: invert)
+        { }
 
         public override Packet Copy() => new AttachCardPacket(cardId, cardName, controllerIndex, x, y);
 

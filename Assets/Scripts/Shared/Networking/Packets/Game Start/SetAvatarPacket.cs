@@ -19,6 +19,9 @@ namespace KompasCore.Networking
         }
 
         public override Packet Copy() => new SetAvatarPacket();
+
+        public override Packet GetInversion(bool known = true) 
+            => new SetAvatarPacket(1 - playerIndex, cardName, cardId);
     }
 }
 

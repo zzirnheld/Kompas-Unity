@@ -30,7 +30,8 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Pay Target's Cost in Pips\"
+					\"subeffType\":\"Pay Target's Cost in Pips\",
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"Play\"
@@ -44,11 +45,11 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Rune for Runepainter to search (to hand)\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Same Name as Target\",\"Deck\",\"Index<=X\"],
-						\"subtypesInclude\":[\"Rune\"]
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Same Name as Target\",\"Deck\",\"Index<C\"],
+						\"subtypesInclude\":[\"Rune\"],
+						\"constant\":10
 					},
-					\"maxCanChoose\":1,
-					\"xMultiplier\":1
+					\"maxCanChoose\":1
 				}",
 				"{
 					\"subeffType\":\"Clear Jump on Effect Impossible\"
@@ -57,9 +58,9 @@
 					\"subeffType\":\"Add Rest\",
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<=X\",\"Not Already Target\"]
-					},
-					\"xMultiplier\":1
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<C\",\"Not Already Target\"],
+						\"constant\":10
+					}
 				}",
 				"{
 					\"subeffType\":\"Rehand\"
@@ -71,9 +72,9 @@
 		}
 	],
 	"n":1,
-	"e":4,
-	"s":4,
-	"w":5,
+	"e":3,
+	"s":3,
+	"w":3,
 	"subtypes":["Runer","Mage"],
 	"subtypeText":"Runer Mage"
 }

@@ -17,7 +17,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"character to ANNIHILATE\",
-						\"cardRestrictions\":[\"Board\",\"Adjacent to Subtype\"],
+						\"cardRestrictions\":[\"Board\",\"Is Character\",\"Adjacent to Subtype\"],
 						\"adjacencySubtypes\":[\"Shaper\"]
 					}
 				}",

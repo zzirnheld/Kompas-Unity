@@ -5,6 +5,7 @@ using KompasServer.Effects;
 using KompasServer.GameCore;
 using KompasServer.Networking;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace KompasServer.Cards
 {
@@ -80,8 +81,9 @@ namespace KompasServer.Cards
 
         public override void ResetCard()
         {
-            base.ResetCard();
+            //notify first so reset values get set to their proper things
             ServerNotifier.NotifyResetCard(this);
+            base.ResetCard();
         }
 
         public override void AddAugment(GameCard augment, IStackable stackSrc = null)
@@ -198,6 +200,19 @@ namespace KompasServer.Cards
                 else EffectsController.TriggerForCondition(Trigger.Deactivate, context);
             }
             base.SetActivated(activated, stackSrc);
+        }
+
+        public override void SetSpacesMoved(int spacesMoved, bool fromReset = false)
+        {
+            base.SetSpacesMoved(spacesMoved, fromReset);
+            if (ServerController != null && !fromReset) ServerController.ServerNotifier.NotifySpacesMoved(this);
+        }
+
+        public override void SetAttacksThisTurn(int attacksThisTurn, bool fromReset = false)
+        {
+            base.SetAttacksThisTurn(attacksThisTurn, fromReset);
+            if (ServerController != null && !fromReset) ServerController.ServerNotifier.NotifyAttacksThisTurn(this);
+            Debug.Log($"Setting attacks this turn for {CardName} to {attacksThisTurn}");
         }
         #endregion stats
     }

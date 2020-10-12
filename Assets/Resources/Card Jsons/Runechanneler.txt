@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"Discard\",
+					\"subeffType\":\"Discard Target\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Rune for Runechanneler to reshuffle\",
@@ -55,7 +55,7 @@
 	],
 	"n":2,
 	"e":4,
-	"s":6,
+	"s":5,
 	"w":4,
 	"subtypes":["Runer","Mage"],
 	"subtypeText":"Runer Mage"

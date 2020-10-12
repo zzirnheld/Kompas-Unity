@@ -27,7 +27,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Warrior for The General to recruit\",
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Is Character\",\"Index<=X\",\"Subtypes Include\",\"Can Be Played\",\"Effect Controller can Afford Cost\"],
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Is Character\",\"Index<X\",\"Subtypes Include\",\"Can Be Played\",\"Effect Controller can Afford Cost\"],
 						\"subtypesInclude\":[\"Warrior\"]
 					},
 					\"xMultiplier\":1
@@ -56,7 +56,7 @@
 					\"subeffType\":\"Add Rest\",
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<=X\",\"Not Already Target\"]
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<X\",\"Not Already Target\"]
 					},
 					\"xMultiplier\":1
 				}",
