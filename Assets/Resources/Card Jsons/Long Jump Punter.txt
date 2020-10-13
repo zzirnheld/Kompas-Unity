@@ -9,9 +9,13 @@
 			"{
 				\"blurb\":\"Punt Augment\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Max Per Stack\",\"Triggerer's Augmented Card Fits Restriction\"],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Max Per Stack\",\"Coords Fit Restriction\"],
 					\"cardRestriction\":{
 						\"cardRestrictions\":[\"Is Source\"]
+					},
+					\"spaceRestriction\":
+					{
+						\"spaceRestrictions\":[\"Card Here Fits Restriction\"]
 					}
 				}
 			}",

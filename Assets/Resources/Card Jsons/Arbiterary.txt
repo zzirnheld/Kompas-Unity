@@ -28,9 +28,13 @@
 			"{
 				\"blurb\":\"Score Goal!\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer's Augmented Card Fits Restriction\"],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Coords Fit Restriction\"],
 					\"cardRestriction\":{
 						\"cardRestrictions\":[\"Avatar\",\"Enemy\"]
+					},
+					\"spaceRestriction\":
+					{
+						\"spaceRestrictions\":[\"Card Here Fits Restriction\"]
 					}
 				}
 			}",

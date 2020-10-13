@@ -170,7 +170,12 @@ namespace KompasCore.GameCore
                 if (!Board[toX, toY].AddAugment(toPlay, stackSrc)) return false;
             }
             //otherwise, put a card to the requested space
-            else Board[toX, toY] = toPlay;
+            else
+            {
+                Board[toX, toY] = toPlay;
+                toPlay.Location = CardLocation.Field;
+                toPlay.Position = (toX, toY);
+            }
 
             toPlay.Controller = controller;
             return true;

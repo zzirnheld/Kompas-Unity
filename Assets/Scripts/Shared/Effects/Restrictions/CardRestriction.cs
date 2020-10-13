@@ -90,6 +90,7 @@ namespace KompasCore.Effects
 
         //positioning
         public const string Adjacent = "Adjacent";
+        public const string AdjacentToTarget = "Adjacent to Target";
         public const string WithinCSpacesOfSource = "Within C Spaces";
         public const string InAOE = "In AOE";
         public const string NotInAOE = "Not In AOE";
@@ -106,6 +107,7 @@ namespace KompasCore.Effects
         //misc
         public const string CanBePlayed = "Can Be Played";
         public const string EffectControllerCanPayCost = "Effect Controller can Afford Cost";
+        public const string Augmented = "Augmented";
         #endregion restrictions
 
         //because JsonUtility will fill in all values with defaults if not present
@@ -193,6 +195,7 @@ namespace KompasCore.Effects
 
                 //is
                 case IsSource: return potentialTarget == Source;
+                case AugmentsTarget: return potentialTarget.AugmentedCard == Subeffect.Target;
 
                 //distinct
                 case DistinctFromSource: return potentialTarget != Source;
@@ -236,6 +239,7 @@ namespace KompasCore.Effects
 
                 //positioning
                 case Adjacent:           return potentialTarget.IsAdjacentTo(Source);
+                case AdjacentToTarget:   return potentialTarget.IsAdjacentTo(Subeffect.Target);
                 case AdjacentToSubtype:  return potentialTarget.AdjacentCards.Any(card => adjacencySubtypes.All(s => card.SubtypeText.Contains(s)));
                 case InAOE:              return Source.CardInAOE(potentialTarget);
                 case NotInAOE:           return !Source.CardInAOE(potentialTarget);
@@ -252,6 +256,7 @@ namespace KompasCore.Effects
                 //misc
                 case CanBePlayed: return Subeffect.Game.ExistsEffectPlaySpace(Source.PlayRestriction, Effect);
                 case EffectControllerCanPayCost: return Subeffect.Effect.Controller.Pips >= potentialTarget.Cost * costMultiplier / costDivisor;
+                case Augmented: return potentialTarget.Augments.Any();
                 default: throw new ArgumentException($"Invalid card restriction {restriction}", "restriction");
             }
         }

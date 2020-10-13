@@ -1,0 +1,56 @@
+{
+	"cardType":83,
+	"cardName":"Mad Jukes",
+	"effText":"When a friendly character wielding Augments with total A X moves, give adjacent characters -X W.",
+	"effects":[
+		{
+			"triggerCondition":"Move",
+			"trigger":
+			"{
+				\"blurb\":\"Touchdown!\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Friendly\",\"Augmented\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target Triggering Card\"
+				}",
+				"{
+					\"subeffType\":\"Target All\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Augment of Target\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Change X by Target Value\",
+					\"whatToCount\":\"Cost\",
+					\"xMultiplier\":1
+				}",
+				"{
+					\"subeffType\":\"Loop While Have Targets\",
+					\"delete\":true,
+					\"remainingTargets\":1,
+					\"jumpTo\":2
+				}",
+				"{
+					\"subeffType\":\"Change NESW All\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Adjacent to Target\"]
+					},
+					\"wMult\":-1
+				}"
+			]
+		}
+	],
+	"c":1,
+	"spellType":"Enchant",
+	"subtypes":["Enchant"],
+	"subtypeText":"Enchant"
+}

@@ -9,9 +9,13 @@
 			"{
 				\"blurb\":\"Run Forward!\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer's Augmented Card Fits Restriction\"],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Coords Fit Restriction\"],
 					\"cardRestriction\":{
 						\"cardRestrictions\":[\"Is Source\"]
+					},
+					\"spaceRestriction\":
+					{
+						\"spaceRestrictions\":[\"Card Here Fits Restriction\"]
 					}
 				}
 			}",

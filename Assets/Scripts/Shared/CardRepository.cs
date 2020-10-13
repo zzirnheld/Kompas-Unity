@@ -122,6 +122,8 @@ public class CardRepository : MonoBehaviour
 
     public AvatarServerGameCard InstantiateServerAvatar(string cardName, ServerGame serverGame, ServerPlayer owner, int id)
     {
+        Debug.Log($"Instantiating server avatar named {cardName}");
+
         if (!cardJsons.ContainsKey(cardName))
         {
             Debug.LogError($"Tried to create an avatar for a name that doesn't have a json");
@@ -159,7 +161,7 @@ public class CardRepository : MonoBehaviour
             SerializableCard serializableCard = JsonUtility.FromJson<SerializableCard>(json);
             switch (serializableCard.cardType)
             {
-                case 'C': 
+                case 'C':
                     card = Instantiate(ServerCharPrefab).GetComponent<ServerGameCard>();
                     break;
                 case 'S':

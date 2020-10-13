@@ -4548,6 +4548,7 @@ MonoBehaviour:
       blurb: 
     constant: 0
     blurb: 
+  canZoom: 0
 --- !u!114 &492080564
 MonoBehaviour:
   m_ObjectHideFlags: 0

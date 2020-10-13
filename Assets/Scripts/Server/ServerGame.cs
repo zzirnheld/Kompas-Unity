@@ -154,7 +154,8 @@ namespace KompasServer.GameCore
 
             Debug.Log($"Setting avatar for player {player.index}");
             player.Avatar = avatar;
-            avatar.Play(player.index * 6, player.index * 6, player, null);
+            //avatar.Play(player.index * 6, player.index * 6, player);
+            Debug.Log($"Avatar successfully played? {avatar.Play(player.index * 6, player.index * 6, player)}");
             //if both players have decks now, then start the game
             lock (CheckAvatarsLock)
             {

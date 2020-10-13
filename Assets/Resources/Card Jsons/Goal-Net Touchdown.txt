@@ -1,33 +1,34 @@
 {
-	"cardType":67,
-	"cardName":"Inside Goalie Defender",
-	"effText":"When your adjacent Avatar is augmented, apply their Augment(s) to another character within 1 space of me.",
+	"cardType":83,
+	"cardName":"Goal-Net Touchdown",
+	"effText":"When a character moves adjacent to an enemy Avatar, apply their Augment(s) to that Avatar.",
 	"effects":[
 		{
-			"triggerCondition":"Augment Attached",
+			"triggerCondition":"Move",
 			"trigger":
 			"{
-				\"blurb\":\"Goal Kick\",
+				\"blurb\":\"Touchdown!\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Coords Fit Restriction\"],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Coords Fit Restriction\",\"Triggerer Fits Restriction\"],
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Avatar\",\"Friendly\",\"Adjacent\"]
+						\"cardRestrictions\":[\"Is Character\"]
 					},
 					\"spaceRestriction\":
 					{
-						\"spaceRestrictions\":[\"Card Here Fits Restriction\"]
+						\"spaceRestrictions\":[\"Adjacent to a Card that Fits Restriction\"],
+						\"adjacencyRestriction\":
+						{
+							\"cardRestrictions\":[\"Avatar\",\"Enemy\"]
+						}
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Board Target\",
-					\"cardRestriction\":
-					{
-						\"blurb\":\"character within 2 spaces to goal-kick Augment to\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Within C Spaces\"],
-						\"cSpaces\":2
+					\"subeffType\":\"Auto Target\",
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Avatar\",\"Enemy\"]
 					}
 				}",
 				"{
@@ -62,9 +63,8 @@
 			]
 		}
 	],
-	"n":0,
-	"e":6,
-	"s":3,
-	"w":3,
-	"subtypeText":""
+	"c":3,
+	"spellType":"Enchant",
+	"subtypes":["Enchant"],
+	"subtypeText":"Enchant"
 }

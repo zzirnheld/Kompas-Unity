@@ -407,6 +407,9 @@ namespace KompasCore.Cards
 
             switch (Location)
             {
+                case CardLocation.Nowhere:
+                    Debug.Log($"Removing {CardName} from nowehre");
+                    return true;
                 case CardLocation.Field:
                     if (AugmentedCard != null) return Detach(stackSrc);
                     else return Game.boardCtrl.RemoveFromBoard(this);
