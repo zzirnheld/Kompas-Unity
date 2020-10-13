@@ -1,0 +1,39 @@
+{
+	"cardType":67,
+	"cardName":"Forward Dunker",
+	"effText":"When I'm augmented, attach that Augment to an adjacent Avatar.",
+	"effects":[
+		{
+			"triggerCondition":"Augment Attached",
+			"trigger":
+			"{
+				\"blurb\":\"Run Forward!\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer's Augmented Card Fits Restriction\"],
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Is Source\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Board\",\"Avatar\",\"Adjacent\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Target Triggering Card\"
+				}",
+				"{
+					\"subeffType\":\"Attach\"
+				}"
+			]
+		}
+	],
+	"n":2,
+	"e":3,
+	"s":3,
+	"w":2,
+	"subtypeText":""
+}

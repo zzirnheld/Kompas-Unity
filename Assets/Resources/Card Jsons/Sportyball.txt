@@ -1,0 +1,45 @@
+{
+	"cardType":65,
+	"cardName":"Sportyball",
+	"effText":"At any time, you can set X to the number of uses of this ability this turn. Pay X pips and attach me to an adjacent character. (The first time this ability is used, it costs 1 pip.)",
+	"effects":[
+		{
+			"blurb":"Pass",
+			"activationRestriction":{
+				"activationRestrictions":[
+					"Default"
+				]
+			},
+			"subeffects":[
+				"{
+					\"subeffType\":\"Set X by Gamestate Value\",
+					\"whatToCount\":\"Effect Uses This Turn\",
+					\"xMultiplier\":1
+				}",
+				"{
+					\"subeffType\":\"Pay Pips\",
+					\"xMultiplier\":1,
+					\"xModifier\":0
+				}",
+				"{
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Board\",\"Is Character\",\"Adjacent\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Attach\"
+				}"
+			]
+		}
+	],
+	"PlayRestriction":{
+		"normalRestrictions":["Augment Normal Restrictions"],
+		"effectRestrictions":["Augment Effect Restrictions"]
+	},
+	"a":1,
+	"subtypeText":"Sportsball"
+}

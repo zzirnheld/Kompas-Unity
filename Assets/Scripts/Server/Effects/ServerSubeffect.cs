@@ -33,6 +33,7 @@ namespace KompasServer.Effects
                 case TargetThisSpace: return JsonUtility.FromJson<TargetThisSpaceSubeffect>(subeffJson);
                 case TargetTargetsSpace: return JsonUtility.FromJson<TargetTargetsSpaceSubeffect>(subeffJson);
                 case TargetAugmentedCard: return JsonUtility.FromJson<TargetAugmentedCardSubeffect>(subeffJson);
+                case TargetTargetsAugmentedCard: return JsonUtility.FromJson<TargetTargetsAugmentedCardSubeffect>(subeffJson);
                 case TargetTriggeringCard: return JsonUtility.FromJson<TargetTriggeringCardSubeffect>(subeffJson);
                 case TargetTriggeringCoords: return JsonUtility.FromJson<TargetTriggeringCoordsSubeffect>(subeffJson);
                 case ChooseFromList: return JsonUtility.FromJson<ChooseFromListSubeffect>(subeffJson);
@@ -57,6 +58,7 @@ namespace KompasServer.Effects
                 case SwapOwnNESW: return JsonUtility.FromJson<SwapOwnNESWSubeffect>(subeffJson);
                 case ChangeSpellC: return JsonUtility.FromJson<ChangeSpellCSubeffect>(subeffJson);
                 case ResetStats: return JsonUtility.FromJson<ResetStatsSubeffect>(subeffJson);
+                case ChangeStats: return JsonUtility.FromJson<ChangeCardStatsSubeffect>(subeffJson);
                     //other
                 case Negate: return JsonUtility.FromJson<NegateSubeffect>(subeffJson);
                 case Activate: return JsonUtility.FromJson<ActivateSubeffect>(subeffJson);
@@ -96,6 +98,7 @@ namespace KompasServer.Effects
                 case Annihilate: return JsonUtility.FromJson<AnnihilateSubeffect>(subeffJson);
                 case Mill: return JsonUtility.FromJson<MillSubeffect>(subeffJson);
                 case BottomdeckRest: return JsonUtility.FromJson<BottomdeckRestSubeffect>(subeffJson);
+                case AttachCard: return JsonUtility.FromJson<AttachSubeffect>(subeffJson);
 
                 //control flows
                 case XTimesLoop: return JsonUtility.FromJson<XTimesSubeffect>(subeffJson);

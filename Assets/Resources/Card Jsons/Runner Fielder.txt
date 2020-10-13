@@ -1,0 +1,39 @@
+{
+	"cardType":67,
+	"cardName":"Runner Fielder",
+	"effText":"When I'm augmented, attach that Augment to the character directly in front of me.",
+	"effects":[
+		{
+			"triggerCondition":"Augment Attached",
+			"trigger":
+			"{
+				\"blurb\":\"Run Forward!\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer's Augmented Card Fits Restriction\"],
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Is Source\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Auto Target\",
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Directly In Front of Source\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Target Triggering Card\"
+				}",
+				"{
+					\"subeffType\":\"Attach\"
+				}"
+			]
+		}
+	],
+	"n":1,
+	"e":2,
+	"s":2,
+	"w":2,
+	"subtypeText":""
+}

@@ -300,6 +300,11 @@ namespace KompasCore.Cards
         /// <param name="card">The card to check if it's behind this one</param>
         /// <returns><see langword="true"/> if <paramref name="card"/> is behind this, <see langword="false"/> otherwise.</returns>
         public bool CardBehind(GameCard card) => SpaceBehind(card.Position);
+
+        public bool SpaceDirectlyInFront((int x, int y) space)
+            => SubjectiveCoords(space) == (SubjectivePosition.x + 1, SubjectivePosition.y + 1);
+
+        public bool CardDirectlyInFront(GameCard card) => SpaceDirectlyInFront(card.Position);
         #endregion distance/adjacency
 
         public void PutBack() => cardCtrl?.SetPhysicalLocation(Location);
@@ -307,13 +312,23 @@ namespace KompasCore.Cards
         public void CountSpacesMovedTo((int x, int y) to) => SetSpacesMoved(spacesMoved + DistanceTo(to.x, to.y));
 
         #region augments
-        public virtual void AddAugment(GameCard augment, IStackable stackSrc = null)
+        public virtual bool AddAugment(GameCard augment, IStackable stackSrc = null)
         {
-            if (augment == null) return;
-            augment.Remove(stackSrc);
-            augment.Location = CardLocation.Field;
+            //can't add a null augment
+            if (augment == null) return false;
+
+            //if this and the other are in the same place, it doesn't leave play
+            if(augment.Location != Location) augment.Remove(stackSrc);
+
+            //regardless, add the augment
             Augments.Add(augment);
+
+            //and update the augment's augmented card, location, and position to reflect its new status
             augment.AugmentedCard = this;
+            augment.Location = Location;
+            augment.Position = Position;
+
+            return true;
         }
 
         protected virtual bool Detach(IStackable stackSrc = null)
@@ -359,6 +374,9 @@ namespace KompasCore.Cards
             SetC(stats.c, stackSrc);
             SetA(stats.a, stackSrc);
         }
+
+        public void AddToStats((int n, int e, int s, int w, int c, int a) stats, IStackable stackSrc = null)
+            => SetStats((N + stats.n, E + stats.e, S + stats.s, W + stats.w, C + stats.c, A + stats.a), stackSrc);
 
         public void SwapCharStats(GameCard other, bool swapN = true, bool swapE = true, bool swapS = true, bool swapW = true)
         {

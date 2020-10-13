@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KompasCore.Cards;
+using System;
 using System.Linq;
 using UnityEngine;
 

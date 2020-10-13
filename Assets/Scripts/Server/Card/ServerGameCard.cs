@@ -86,12 +86,14 @@ namespace KompasServer.Cards
             base.ResetCard();
         }
 
-        public override void AddAugment(GameCard augment, IStackable stackSrc = null)
+        public override bool AddAugment(GameCard augment, IStackable stackSrc = null)
         {
+            if (augment == null) return false;
+
             var context = new ActivationContext(card: augment, stackable: stackSrc, triggerer: stackSrc?.Controller ?? Controller);
             EffectsController.TriggerForCondition(Trigger.AugmentAttached, context);
             ServerNotifier.NotifyAttach(augment, BoardX, BoardY);
-            base.AddAugment(augment, stackSrc);
+            return base.AddAugment(augment, stackSrc);
         }
 
         protected override bool Detach(IStackable stackSrc = null)

@@ -44,6 +44,10 @@ namespace KompasCore.Effects
         public const string SubtypesInclude = "Subtypes Include";
         public const string SubtypesExclude = "Subtypes Exclude";
 
+        //is
+        public const string IsSource = "Is Source";
+        public const string AugmentsTarget = "Is Augment of Target";
+
         //distinct
         public const string DistinctFromSource = "Distinct from Source";
         public const string DistinctFromTarget = "Distinct from Target";
@@ -97,6 +101,7 @@ namespace KompasCore.Effects
         public const string IndexInListLTC = "Index<C";
         public const string IndexInListLTX = "Index<X";
         public const string SameColumnAsSource = "Same Column as Source";
+        public const string DirectlyInFrontOfSource = "Directly In Front of Source";
 
         //misc
         public const string CanBePlayed = "Can Be Played";
@@ -186,6 +191,9 @@ namespace KompasCore.Effects
                 case SubtypesInclude: return subtypesInclude.All(s => potentialTarget.SubtypeText.Contains(s));
                 case SubtypesExclude: return subtypesExclude.All(s => !potentialTarget.SubtypeText.Contains(s));
 
+                //is
+                case IsSource: return potentialTarget == Source;
+
                 //distinct
                 case DistinctFromSource: return potentialTarget != Source;
                 case DistinctFromTarget: return potentialTarget != Subeffect.Target;
@@ -239,6 +247,7 @@ namespace KompasCore.Effects
                 case IndexInListLTC:     return potentialTarget.IndexInList < constant;
                 case IndexInListLTX:     return potentialTarget.IndexInList < x;
                 case SameColumnAsSource: return potentialTarget.SameColumn(Source);
+                case DirectlyInFrontOfSource: return Source.CardDirectlyInFront(potentialTarget);
 
                 //misc
                 case CanBePlayed: return Subeffect.Game.ExistsEffectPlaySpace(Source.PlayRestriction, Effect);
