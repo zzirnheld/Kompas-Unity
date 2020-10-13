@@ -13,15 +13,6 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Conditionally End Effect Resolution\",
-					\"condition\":\"Any Fit Restriction\",
-					\"cardRestriction\":
-					{
-						\"cardRestrictions\":[\"Board\",\"Friendly\",\"Is Augment\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Sportsball\"]
-					}
-				}",
-				"{
 					\"subeffType\":\"Choose From List\",
 					\"maxCanChoose\":1,
 					\"cardRestriction\":
