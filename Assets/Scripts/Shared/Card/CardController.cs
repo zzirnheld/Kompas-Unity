@@ -110,6 +110,15 @@ namespace KompasCore.Cards
 
             aoeController.Hide();
 
+            if(card.AugmentedCard != null)
+            {
+                gameObject.SetActive(true);
+                card.AugmentedCard.cardCtrl.SpreadOutAugs();
+                return;
+            }
+
+            card.transform.localScale = Vector3.one;
+
             switch (location)
             {
                 case CardLocation.Deck:
@@ -138,12 +147,27 @@ namespace KompasCore.Cards
                     break;
                 default: throw new System.ArgumentException($"Invalid card location {location} to put card physically at");
             }
+
+            SpreadOutAugs();
+        }
+
+        public void SpreadOutAugs()
+        {
+            var augCount = card.Augments.Count;
+            float scale = augCount <= 1 ? 0.5f : 0.75f / ((float) augCount);
+            float increment = 1f/ ((float) augCount); //2f / ((float) (2f * augCount))
+            float offset = -1f + increment;
+            foreach(var aug in card.Augments)
+            {
+                aug.transform.parent = card.transform;
+                aug.transform.localScale = new Vector3(scale, scale, scale);
+                aug.transform.localPosition = new Vector3(offset, 0.2f, 0f);
+                offset += increment + increment;
+            }
         }
 
         public void SetRotation()
-        {
-            card.gameObject.transform.eulerAngles = new Vector3(0, 180 + 180 * card.ControllerIndex, 0);
-        }
+            => card.transform.eulerAngles = new Vector3(0, 180 + 180 * card.ControllerIndex, 0);
 
         /// <summary>
         /// Set the sprites of this card and gameobject
@@ -164,6 +188,12 @@ namespace KompasCore.Cards
             cardFaceRenderer.material.mainTexture = pic;
         }
 
+
+        /// <summary>
+        /// Sets frame and text objects based on the card's type, and zoom level
+        /// </summary>
+        /// <param name="cardType">Whether the card is a character, spell, or augment.</param>
+        /// <param name="zoomed">Whether to show the card as zoomed in or not.</param>
         public void ShowForCardType(char cardType, bool zoomed)
         {
             bool isChar = cardType == 'C';

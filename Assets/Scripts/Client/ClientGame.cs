@@ -175,15 +175,16 @@ namespace KompasClient.GameCore
             stackEmpty = true;
             clientUICtrl.SetCurrState("Stack Empty");
             foreach (var c in Cards) c.ResetForStack();
-            ShowNoCardsAsTargets();
+            ShowNoTargets();
         }
 
         /// <summary>
         /// Makes each card no longer show any highlight about its status as a target
         /// </summary>
-        public void ShowNoCardsAsTargets()
+        public void ShowNoTargets()
         {
             foreach (var card in Cards) card.cardCtrl.HideTarget();
+            clientUICtrl.boardUICtrl.ShowSpaceTargets(_ => false);
         }
 
         /// <summary>

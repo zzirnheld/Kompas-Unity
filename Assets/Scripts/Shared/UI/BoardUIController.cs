@@ -1,5 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.GameCore;
+using System;
 using UnityEngine;
 
 namespace KompasCore.UI
@@ -57,6 +58,17 @@ namespace KompasCore.UI
         public void ShowNothing()
         {
             foreach (var cue in spaceCueControllers) cue.ShowCanNeither();
+        }
+
+        public void ShowSpaceTargets(Func<(int, int), bool> predicate)
+        {
+            for(int x = 0; x < 7; x++)
+            {
+                for(int y = 0; y < 7; y++)
+                {
+                    spaceCueControllers[x, y].ShowCanTarget(predicate((x, y)));
+                }
+            }
         }
     }
 }

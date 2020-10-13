@@ -92,7 +92,7 @@ namespace KompasCore.Cards
             set
             {
                 (BoardX, BoardY) = value;
-                cardCtrl?.SetPhysicalLocation(Location);
+                if(cardCtrl != null) cardCtrl.SetPhysicalLocation(Location);
                 foreach (var aug in Augments) aug.Position = value;
             }
         }

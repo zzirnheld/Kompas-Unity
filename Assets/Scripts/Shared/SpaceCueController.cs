@@ -8,6 +8,7 @@ namespace KompasCore.UI
     {
         public GameObject canMoveCube;
         public GameObject canAttackCube;
+        public GameObject canTargetCube;
 
         public void ShowCanMove()
         {
@@ -26,5 +27,7 @@ namespace KompasCore.UI
             canMoveCube.SetActive(false);
             canAttackCube.SetActive(false);
         }
+
+        public void ShowCanTarget(bool can = true) => canTargetCube.gameObject.SetActive(can);
     }
 }
