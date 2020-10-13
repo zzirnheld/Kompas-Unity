@@ -9,7 +9,7 @@
 			"{
 				\"blurb\":\"Relay Long-Jump\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Coords Fit Restriction\",\"Triggerer Fits Restriction\"],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Coords Fit Restriction\",\"Triggerer Fits Restriction\"],
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Character\",\"Distinct from Source\"]

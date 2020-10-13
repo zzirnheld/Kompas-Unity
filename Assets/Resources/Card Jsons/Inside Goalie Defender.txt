@@ -33,17 +33,20 @@
 					}
 				}",
 				"{
+					\"subeffType\":\"Target Target's Augmented Card\",
+					\"targetIndex\":0
+				}",
+				"{
 					\"subeffType\":\"Target All\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Augment of Target\"]
-					},
-					\"targetIndex\":0
+					}
 				}",
 				"{
 					\"subeffType\":\"Conditionally End Effect Resolution\",
 					\"condition\":\"Number Targets <= Constant\",
-					\"constant\":2
+					\"constant\":3
 				}",
 				"{
 					\"subeffType\":\"Attach\",
@@ -52,8 +55,8 @@
 				"{
 					\"subeffType\":\"Loop While Have Targets\",
 					\"delete\":true,
-					\"remainingTargets\":2,
-					\"jumpTo\":4
+					\"remainingTargets\":3,
+					\"jumpTo\":5
 				}"
 			]
 		}
