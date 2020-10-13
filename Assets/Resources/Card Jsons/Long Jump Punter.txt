@@ -1,0 +1,42 @@
+{
+	"cardType":67,
+	"cardName":"Long Jump Punter",
+	"effText":"The first time each stack I'm augmented, apply that Augment to another character within 2 spaces of me.",
+	"effects":[
+		{
+			"triggerCondition":"Augment Attached",
+			"trigger":
+			"{
+				\"blurb\":\"Punt Augment\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"Max Per Stack\",\"Triggerer's Augmented Card Fits Restriction\"],
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Is Source\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"character within 2 spaces to punt Augment to\",
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Within C Spaces\"],
+						\"cSpaces\":2
+					}
+				}",
+				"{
+					\"subeffType\":\"Target Triggering Card\"
+				}",
+				"{
+					\"subeffType\":\"Attach\"
+				}"
+			]
+		}
+	],
+	"n":3,
+	"e":3,
+	"s":5,
+	"w":4,
+	"subtypeText":""
+}

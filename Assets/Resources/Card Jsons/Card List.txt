@@ -250,4 +250,7 @@ Arbiterary
 Runner Fielder
 Forward Dunker
 Relay Long-Jumper
+Long Jump Punter
+Mid-Outfielder
+Inside Goalie Defender
 a lot of disappointment

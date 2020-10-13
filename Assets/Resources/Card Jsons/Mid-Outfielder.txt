@@ -1,0 +1,41 @@
+{
+	"cardType":67,
+	"cardName":"Mid-Outfielder",
+	"effText":"When I'm augmented, move me up to 2 spaces.",
+	"effects":[
+		{
+			"triggerCondition":"Augment Attached",
+			"trigger":
+			"{
+				\"blurb\":\"Run Augment Outfield\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"Max Per Stack\",\"Triggerer's Augmented Card Fits Restriction\"],
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Is Source\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target This\"
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"spaceRestrictions\":[\"Empty\",\"Distance to Target <= Constant\"],
+						\"constant\":2
+					}
+				}",
+				"{
+					\"subeffType\":\"Move\"
+				}"
+			]
+		}
+	],
+	"n":1,
+	"e":3,
+	"s":3,
+	"w":3,
+	"subtypeText":""
+}

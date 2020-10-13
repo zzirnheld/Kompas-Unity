@@ -1,28 +1,30 @@
 {
 	"cardType":67,
-	"cardName":"Relay Long-Jumper",
-	"effText":"When a character moves adjacent to me, attach their Augment(s) to me.",
+	"cardName":"Inside Goalie Defender",
+	"effText":"When your adjacent Avatar is augmented, apply their Augment(s) to another character within 1 space of me.",
 	"effects":[
 		{
-			"triggerCondition":"Move",
+			"triggerCondition":"Augment Attached",
 			"trigger":
 			"{
-				\"blurb\":\"Relay Long-Jump\",
+				\"blurb\":\"Goal Kick\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Coords Fit Restriction\",\"Triggerer Fits Restriction\"],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer's Augmented Card Fits Restriction\"],
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Distinct from Source\"]
-					},
-					\"spaceRestriction\":
-					{
-						\"spaceRestrictions\":[\"Adjacent to Source\"]
+						\"cardRestrictions\":[\"Avatar\",\"Friendly\",\"Adjacent\"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"character within 2 spaces to goal-kick Augment to\",
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Within C Spaces\"],
+						\"cSpaces\":2
+					}
 				}",
 				"{
 					\"subeffType\":\"Target Triggering Card\"
@@ -56,9 +58,9 @@
 			]
 		}
 	],
-	"n":2,
-	"e":3,
-	"s":4,
+	"n":0,
+	"e":6,
+	"s":3,
 	"w":3,
 	"subtypeText":""
 }
