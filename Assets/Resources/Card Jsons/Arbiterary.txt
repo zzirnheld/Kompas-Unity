@@ -29,12 +29,12 @@
 				\"blurb\":\"Score Goal!\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Coords Fit Restriction\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Avatar\",\"Enemy\"]
-					},
 					\"spaceRestriction\":
 					{
-						\"spaceRestrictions\":[\"Card Here Fits Restriction\"]
+						\"spaceRestrictions\":[\"Card Here Fits Restriction\"],
+						\"hereFitsRestriction\":{
+							\"cardRestrictions\":[\"Avatar\",\"Enemy\"]
+						}
 					}
 				}
 			}",

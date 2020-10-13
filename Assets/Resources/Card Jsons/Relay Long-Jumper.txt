@@ -40,18 +40,14 @@
 					\"constant\":2
 				}",
 				"{
-					\"subeffType\":\"Delete Target\",
-					\"targetIndex\":1
-				}",
-				"{
 					\"subeffType\":\"Attach\",
 					\"attachmentTarget\":0
 				}",
 				"{
 					\"subeffType\":\"Loop While Have Targets\",
 					\"delete\":true,
-					\"remainingTargets\":1,
-					\"jumpTo\":5
+					\"remainingTargets\":2,
+					\"jumpTo\":4
 				}"
 			]
 		}

@@ -10,12 +10,12 @@
 				\"blurb\":\"Teamwork! Draw!\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Coords Fit Restriction\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Friendly\"]
-					},
 					\"spaceRestriction\":
 					{
-						\"spaceRestrictions\":[\"Card Here Fits Restriction\"]
+						\"spaceRestrictions\":[\"Card Here Fits Restriction\"],
+						\"hereFitsRestriction\":{
+							\"cardRestrictions\":[\"Friendly\"]
+						}
 					}
 				}
 			}",

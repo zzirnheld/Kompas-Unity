@@ -9,7 +9,7 @@
 			"{
 				\"blurb\":\"Bounce On Arrival\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+					\"triggerRestrictions\":[\"This Card Triggered\",\"Max Per Turn\"]
 				}
 			}",
 			"subeffects":[
@@ -33,7 +33,11 @@
 			"{
 				\"blurb\":\"Bounce To Arrival\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\",\"Coords Fit Restriction\"],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Max Per Turn\",\"Coords Fit Restriction\",\"Triggerer Fits Restriction\"],
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Distinct from Source\"]
+					},
 					\"spaceRestriction\":
 					{
 						\"spaceRestrictions\":[\"Adjacent to Source\"]

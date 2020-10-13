@@ -10,12 +10,12 @@
 				\"blurb\":\"Run Augment Outfield\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Max Per Stack\",\"Coords Fit Restriction\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Is Source\"]
-					},
 					\"spaceRestriction\":
 					{
-						\"spaceRestrictions\":[\"Card Here Fits Restriction\"]
+						\"spaceRestrictions\":[\"Card Here Fits Restriction\"],
+						\"hereFitsRestriction\":{
+							\"cardRestrictions\":[\"Is Source\"]
+						}
 					}
 				}
 			}",
