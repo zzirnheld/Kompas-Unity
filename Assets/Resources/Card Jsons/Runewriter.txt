@@ -26,6 +26,9 @@
 					\"subeffType\":\"Reshuffle\"
 				}",
 				"{
+					\"subeffType\":\"Delete Target\"
+				}",
+				"{
 					\"subeffType\":\"Jump on Effect Impossible\",
 					\"jumpTo\":5
 				}",
@@ -34,11 +37,11 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Runar for Runewriter to search (to hand)\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Index<X\"],
-						\"subtypesInclude\":[\"Runar\"]
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Index<C\"],
+						\"subtypesInclude\":[\"Runar\"],
+						\"constant\":10
 					},
-					\"maxCanChoose\":1,
-					\"xMultiplier\":1
+					\"maxCanChoose\":1
 				}",
 				"{
 					\"subeffType\":\"Clear Jump on Effect Impossible\"
@@ -47,15 +50,16 @@
 					\"subeffType\":\"Add Rest\",
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<X\",\"Not Already Target\"]
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<C\",\"Not Already Target\"],
+						\"constant\":10
 					},
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Rehand\"
+					\"subeffType\":\"Bottomdeck Rest\"
 				}",
 				"{
-					\"subeffType\":\"Bottomdeck Rest\"
+					\"subeffType\":\"Rehand\"
 				}"
 			]
 		}

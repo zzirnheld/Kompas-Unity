@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Runestones",
-	"effText":"The first time each turn you cast a Rune, you can search your deck for a Rune spell.",
+	"effText":"The first time each turn you cast a Rune, you can search your deck for a Rune.",
 	"effects":[
 		{
 			"triggerCondition":"Play",
@@ -22,7 +22,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Rune for Runestones to search\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Deck\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}
 				}",

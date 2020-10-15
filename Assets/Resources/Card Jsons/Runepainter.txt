@@ -37,6 +37,9 @@
 					\"subeffType\":\"Play\"
 				}",
 				"{
+					\"subeffType\":\"Delete Target\"
+				}",
+				"{
 					\"subeffType\":\"Jump on Effect Impossible\",
 					\"jumpTo\":7
 				}",
@@ -63,10 +66,10 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Bottomdeck Rest\"
+					\"subeffType\":\"Rehand\"
 				}",
 				"{
-					\"subeffType\":\"Rehand\"
+					\"subeffType\":\"Bottomdeck Rest\"
 				}"
 			]
 		}
