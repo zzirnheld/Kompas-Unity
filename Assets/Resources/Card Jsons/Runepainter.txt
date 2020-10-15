@@ -63,10 +63,10 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Rehand\"
+					\"subeffType\":\"Bottomdeck Rest\"
 				}",
 				"{
-					\"subeffType\":\"Bottomdeck Rest\"
+					\"subeffType\":\"Rehand\"
 				}"
 			]
 		}
@@ -75,6 +75,6 @@
 	"e":3,
 	"s":3,
 	"w":3,
-	"subtypes":["Runer","Mage"],
-	"subtypeText":"Runer Mage"
+	"subtypes":["Runar","Mage"],
+	"subtypeText":"Runar Mage"
 }

@@ -57,6 +57,6 @@
 	"e":4,
 	"s":5,
 	"w":4,
-	"subtypes":["Runer","Mage"],
-	"subtypeText":"Runer Mage"
+	"subtypes":["Runar","Mage"],
+	"subtypeText":"Runar Mage"
 }

@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Runewriter",
-	"effText":"Once each friendly turn, you can hand-reshuffle a Rune to search your deck’s top 10 cards for a Runer.",
+	"effText":"Once each friendly turn, you can hand-reshuffle a Rune to search your deck’s top 10 cards for a Runar.",
 	"effects":[
 		{
 			"activationRestriction":{
@@ -33,9 +33,9 @@
 					\"subeffType\":\"Choose From List\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"Runer for Runewriter to search (to hand)\",
+						\"blurb\":\"Runar for Runewriter to search (to hand)\",
 						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Index<X\"],
-						\"subtypesInclude\":[\"Runer\"]
+						\"subtypesInclude\":[\"Runar\"]
 					},
 					\"maxCanChoose\":1,
 					\"xMultiplier\":1
@@ -64,6 +64,6 @@
 	"e":2,
 	"s":2,
 	"w":2,
-	"subtypes":["Runer","Mage"],
-	"subtypeText":"Runer Mage"
+	"subtypes":["Runar","Mage"],
+	"subtypeText":"Runar Mage"
 }

@@ -40,10 +40,10 @@ namespace KompasServer.Effects
             foreach (ServerGameCard c in targets)
             {
                 var (n, e, s, w) = GetRealValues(c);
-                c.SetN(e, ServerEffect);
+                c.SetN(n, ServerEffect);
                 c.SetE(e, ServerEffect);
-                c.SetE(e, ServerEffect);
-                c.SetE(e, ServerEffect);
+                c.SetS(s, ServerEffect);
+                c.SetW(w, ServerEffect);
             }
             return ServerEffect.ResolveNextSubeffect();
         }

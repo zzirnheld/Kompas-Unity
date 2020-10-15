@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Odal",
-	"effText":"Can’t be cast normally. Choose an SX character. Pay X pips. Kill the chosen character and deck-summon an SX Runer.",
+	"effText":"Can’t be cast normally. Choose an SX character. Pay X pips. Kill the chosen character and deck-summon an SX Runar.",
 	"effects":[
 		{
 			"triggerCondition":"Play",
@@ -36,9 +36,9 @@
 					\"subeffType\":\"Deck Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"Runer for Odal to deck-summon\",
+						\"blurb\":\"Runar for Odal to deck-summon\",
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Deck\"],
-						\"subtypesInclude\":[\"Runer\"]
+						\"subtypesInclude\":[\"Runar\"]
 					}
 				}",
 				"{
