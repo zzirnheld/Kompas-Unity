@@ -69,11 +69,11 @@ namespace KompasCore.Networking
         #region writing
         public void SendPacket(Packet packet)
         {
-            if (packet == null)
-            {
+            if (packet == null) return;
+            /*{
                 Debug.Log("Tried to send a null packet");
                 return;
-            }
+            }*/
 
             NetworkStream networkStream = tcpClient.GetStream();
             // we won't use a binary writer, because the endianness is unhelpful

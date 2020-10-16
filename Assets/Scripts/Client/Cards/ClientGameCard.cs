@@ -54,6 +54,13 @@ namespace KompasClient.Cards
             ClientEffects = effects;
         }
 
+        public override void ResetCard()
+        {
+            base.ResetCard();
+
+            cardCtrl.ShowForCardType(CardType, ClientCameraController.Main.Zoomed);
+        }
+
         public override void SetN(int n, IStackable stackSrc = null)
         {
             base.SetN(n, stackSrc);

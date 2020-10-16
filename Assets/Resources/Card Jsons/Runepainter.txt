@@ -37,14 +37,11 @@
 					\"subeffType\":\"Play\"
 				}",
 				"{
-					\"subeffType\":\"Delete Target\"
-				}",
-				"{
 					\"subeffType\":\"Jump on Effect Impossible\",
-					\"jumpTo\":7
+					\"jumpTo\":8
 				}",
 				"{
-					\"subeffType\":\"Choose From List\",
+					\"subeffType\":\"Choose From List Saving Rest\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Rune for Runepainter to search (to hand)\",
@@ -52,18 +49,14 @@
 						\"subtypesInclude\":[\"Rune\"],
 						\"constant\":10
 					},
-					\"maxCanChoose\":1
-				}",
-				"{
-					\"subeffType\":\"Clear Jump on Effect Impossible\"
-				}",
-				"{
-					\"subeffType\":\"Add Rest\",
-					\"cardRestriction\":
+					\"restRestriction\":
 					{
 						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<C\",\"Not Already Target\"],
 						\"constant\":10
 					}
+				}",
+				"{
+					\"subeffType\":\"Clear Jump on Effect Impossible\"
 				}",
 				"{
 					\"subeffType\":\"Rehand\"

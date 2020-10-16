@@ -196,25 +196,17 @@ namespace KompasCore.Cards
 
         public void SetInfo(SerializableCard serializedCard, int id)
         {
-            base.SetInfo(serializedCard);
+            base.SetInfo(serializedCard); //base is redundant but adds clarity
 
             this.ID = id;
             this.serializedCard = serializedCard;
 
-            TurnsOnBoard = 0;
-            SetSpacesMoved(0, true);
-            SetAttacksThisTurn(0, true);
             MovementRestriction = serializedCard.MovementRestriction ?? new MovementRestriction();
             MovementRestriction.SetInfo(this);
             AttackRestriction = serializedCard.AttackRestriction ?? new AttackRestriction();
             AttackRestriction.SetInfo(this);
             PlayRestriction = serializedCard.PlayRestriction ?? new PlayRestriction();
             PlayRestriction.SetInfo(this);
-
-            if (Effects != null) foreach (var eff in Effects) eff.Reset();
-            //instead of setting negations or activations to 0, so that it updates the client correctly
-            while (Negated) Negated = false;
-            while (Activated) Activated = false;
 
             cardCtrl.ShowForCardType(CardType, false);
         }
@@ -225,7 +217,22 @@ namespace KompasCore.Cards
         /// </summary>
         public virtual void ResetCard()
         {
-            if (serializedCard != null) SetInfo(serializedCard, ID);
+            if(serializedCard == null)
+            {
+                Debug.LogError($"Tried to reset card whose info was never set!");
+                return;
+            }
+
+            base.SetInfo(serializedCard); //base is redundant but adds clarity
+
+            TurnsOnBoard = 0;
+            SetSpacesMoved(0, true);
+            SetAttacksThisTurn(0, true);
+
+            if (Effects != null) foreach (var eff in Effects) eff.Reset();
+            //instead of setting negations or activations to 0, so that it updates the client correctly
+            while (Negated) Negated = false;
+            while (Activated) Activated = false;
         }
 
         /// <summary>
