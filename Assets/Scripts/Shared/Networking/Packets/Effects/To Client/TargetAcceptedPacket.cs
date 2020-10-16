@@ -23,6 +23,7 @@ namespace KompasClient.Networking
             clientGame.CurrSpaceRestriction = null;
             clientGame.clientUICtrl.SetCurrState("Target Accepted");
             clientGame.ShowNoTargets();
+            clientGame.clientUICtrl.ResetSearch();
         }
     }
 }

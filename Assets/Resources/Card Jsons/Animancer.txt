@@ -41,14 +41,14 @@
 					\"subeffType\":\"Choose From List Saving Rest\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"spell for Perthro to search (to hand)\",
-						\"cardRestrictions\":[\"Is Character\",\"Friendly\",\"Deck\",\"Index<C\"],
-						\"constant\":10
+						\"blurb\":\"for Animancer to search\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Cost<=X\",\"Index<X\"],
+						\"subtypesInclude\":[\"Golem\"]
 					},
 					\"restRestriction\":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<C\",\"Not Already Target\"],
-						\"constant\":10
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Cost<=X\",\"Index<X\",\"Not Already Target\"],
+						\"subtypesInclude\":[\"Golem\"]
 					}
 				}",
 				"{

@@ -16,7 +16,7 @@ namespace KompasCore.Effects
         public const string StandardSpellRestriction = "Not Adjacent to Other Spell";
         public const string FriendlyTurnIfNotFast = "Friendly Turn";
         public const string HasCostInPips = "Has Cost in Pips";
-        public const string NothingIsResolving = "Nothing is Resolving";
+        public const string FastOrNothingIsResolving = "Nothing is Resolving";
 
         public const string Unique = "Unique";
         public const string NotNormally = "Cannot be Played Normally";
@@ -27,13 +27,13 @@ namespace KompasCore.Effects
         public const string DefaultNormal = "Default Normal Restrictions";
         public const string DefaultEffect = "Default Effect Restrictions";
         public static readonly string[] DefaultNormalRestrictions =
-            { PlayedByCardOwner, FromHand, StandardPlayRestriction, StandardSpellRestriction, FriendlyTurnIfNotFast, HasCostInPips, NothingIsResolving };
+            { PlayedByCardOwner, FromHand, StandardPlayRestriction, StandardSpellRestriction, FriendlyTurnIfNotFast, HasCostInPips, FastOrNothingIsResolving };
         public static readonly string[] DefaultEffectRestrictions = { StandardSpellRestriction, StandardPlayRestriction };
 
         public const string AugNormal = "Augment Normal Restrictions";
         public const string AugEffect = "Augment Effect Restrictions";
         public static readonly string[] AugmentNormalRestrictions =
-            { PlayedByCardOwner, FromHand, OnFriendlyBoardCard, StandardSpellRestriction, FriendlyTurnIfNotFast, HasCostInPips, NothingIsResolving };
+            { PlayedByCardOwner, FromHand, OnFriendlyBoardCard, StandardSpellRestriction, FriendlyTurnIfNotFast, HasCostInPips, FastOrNothingIsResolving };
         public static readonly string[] AugmentEffectRestrictions = { StandardSpellRestriction, OnFriendlyBoardCard };
 
         public List<string> normalRestrictions = new List<string> { DefaultNormal };
@@ -70,7 +70,7 @@ namespace KompasCore.Effects
                 case StandardSpellRestriction: return Card.CardType != 'S' || Card.Game.ValidSpellSpace(x, y);
                 case HasCostInPips: return Card.Controller.Pips >= Card.Cost;
                 case FriendlyTurnIfNotFast: return Card.Fast || Card.Game.TurnPlayer == Card.Controller;
-                case NothingIsResolving: return Card.Fast || Card.Game.CurrStackEntry == null;
+                case FastOrNothingIsResolving: return Card.Fast || Card.Game.NothingHappening;
 
                 case OnFriendlyBoardCard: return Card.Game.boardCtrl.GetCardAt(x, y)?.Controller == Card.Controller;
                 case OnCardFittingRestriction:

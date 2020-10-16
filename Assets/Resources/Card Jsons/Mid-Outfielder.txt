@@ -9,7 +9,7 @@
 			"{
 				\"blurb\":\"Run Augment Outfield\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Max Per Stack\",\"Coords Fit Restriction\"],
+					\"triggerRestrictions\":[\"This Card in Play\",\"Coords Fit Restriction\"],
 					\"spaceRestriction\":
 					{
 						\"spaceRestrictions\":[\"Card Here Fits Restriction\"],

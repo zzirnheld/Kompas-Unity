@@ -58,7 +58,7 @@ namespace KompasClient.Cards
         {
             base.ResetCard();
 
-            cardCtrl.ShowForCardType(CardType, ClientCameraController.Main.Zoomed);
+            if(cardCtrl != null) cardCtrl.ShowForCardType(CardType, ClientCameraController.Main.Zoomed);
         }
 
         public override void SetN(int n, IStackable stackSrc = null)

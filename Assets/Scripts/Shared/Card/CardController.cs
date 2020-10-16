@@ -154,15 +154,34 @@ namespace KompasCore.Cards
         public void SpreadOutAugs()
         {
             var augCount = card.Augments.Count;
-            float scale = augCount <= 1 ? 0.5f : 0.75f / ((float) augCount);
-            float increment = 1f/ ((float) augCount); //2f / ((float) (2f * augCount))
-            float offset = -1f + increment;
+            /*float scale = 0.4f / ((float) (augCount / 4));
+            float increment = 0.4f/ ((float) (augCount / 4)); //1f / ((float) (2f * augCount))
+            float xOffset = -1f + increment;
+            float zOffset = 1f - increment;
             foreach(var aug in card.Augments)
             {
                 aug.transform.parent = card.transform;
                 aug.transform.localScale = new Vector3(scale, scale, scale);
-                aug.transform.localPosition = new Vector3(offset, 0.2f, 0f);
-                offset += increment + increment;
+                aug.transform.localPosition = new Vector3(xOffset, 0.2f, zOffset);
+                xOffset += increment + increment;
+            }*/
+            float scale = 0.4f / ((float)((augCount + 3) / 4));
+            int i = 0;
+            foreach(var aug in card.Augments)
+            {
+                aug.transform.parent = card.transform;
+                aug.transform.localScale = new Vector3(scale, scale, scale);
+                float x, z;
+                switch(i % 4)
+                {
+                    case 0: (x, z) = (-0.5f, 0.5f); break;
+                    case 1: (x, z) = (0.5f, 0.5f); break;
+                    case 2: (x, z) = (0.5f, -0.5f); break;
+                    case 3: (x, z) = (-0.5f, -0.5f); break;
+                    default: (x, z) = (0f, 0f); break;
+                }
+                aug.transform.localPosition = new Vector3(x, 0.2f * ((i / 4) + 1), z);
+                i++;
             }
         }
 

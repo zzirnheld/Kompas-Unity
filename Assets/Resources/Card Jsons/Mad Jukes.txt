@@ -51,6 +51,5 @@
 	],
 	"c":1,
 	"spellType":"Enchant",
-	"subtypes":["Enchant"],
-	"subtypeText":"Enchant"
+	"subtypeText":"Sportsball Play Enchant"
 }

@@ -7,7 +7,7 @@
 			"triggerCondition":"Discard",
 			"trigger":
 			"{
-				\"blurb\":\"Core Recovery\",
+				\"blurb\":\"Sportyball Recovery\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"Augmented Card Triggered\"]
 				}
