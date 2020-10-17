@@ -277,7 +277,7 @@ namespace KompasClient.UI
 
         #region search
         public void StartSearch(List<GameCard> list, int numToChoose = 1, bool targetingSearch = true) 
-            => StartSearch(new SearchData(list, System.Math.Min(list.Count, numToChoose), targetingSearch, new List<GameCard>()));
+            => StartSearch(new SearchData(list, numToChoose, targetingSearch, new List<GameCard>()));
 
         public void StartSearch(SearchData data)
         {

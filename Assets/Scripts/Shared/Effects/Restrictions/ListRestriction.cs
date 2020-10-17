@@ -52,22 +52,34 @@ namespace KompasCore.Effects
                     foreach (var card in cards) totalCost += card.Cost;
                     return Subeffect.Controller.Pips >= totalCost;
                 case MinCanChoose: return cards.Count() >= minCanChoose;
-                case MaxCanChoose: return cards.Count() <= minCanChoose;
+                case MaxCanChoose: return cards.Count() <= maxCanChoose;
                 default: throw new System.ArgumentException($"Invalid list restriction {restriction}", "restriction");
             }
+        }
+
+        private bool EvaluateRestrictionWithDebug(string restriction, IEnumerable<GameCard> cards)
+        {
+            bool valid = EvaluateRestriction(restriction, cards);
+            if (!valid) Debug.Log($"Invalid list of cards {string.Join(", ", cards.Select(c => c.CardName))} flouts list restriction {restriction}");
+            return valid;
         }
 
         /// <summary>
         /// Checks the list of cards passed into see if they collectively fit a restriction.
         /// </summary>
-        /// <param name="cards">The list of cards to collectively evaluate.</param>
+        /// <param name="choices">The list of cards to collectively evaluate.</param>
         /// <returns><see langword="true"/> if the cards fit all the required restrictions collectively, 
         /// <see langword="false"/> otherwise</returns>
-        public bool Evaluate(IEnumerable<GameCard> cards, IEnumerable<GameCard> potentialTargets)
+        public bool Evaluate(IEnumerable<GameCard> choices, IEnumerable<GameCard> potentialTargets)
         {
-            if (cards.Count() != cards.Distinct().Count()) return false;
-            if (cards.Except(potentialTargets).Any()) return false;
-            return listRestrictions.All(r => EvaluateRestriction(r, cards));
+            if (choices.Except(potentialTargets).Any())
+            {
+                /*Debug.Log($"Some cards in list of choices {string.Join(",", choices.Select(c => c.CardName))}" +
+                    $" don't appear in the list of potential targets {string.Join(",", potentialTargets.Select(c => c.CardName))}.");*/
+                Debug.Log("Some choices don't appear in the list of potential targets");
+                return false;
+            }
+            return listRestrictions.All(r => EvaluateRestrictionWithDebug(r, choices));
         }
 
         private bool EvaluateValidListChoice(string restriction, IEnumerable<GameCard> potentialTargets)

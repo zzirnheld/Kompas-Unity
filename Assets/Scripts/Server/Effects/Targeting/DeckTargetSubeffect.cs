@@ -35,6 +35,7 @@ namespace KompasServer.Effects
             //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
             if (AwaitingTarget && cardRestriction.Evaluate(card))
             {
+                AwaitingTarget = false;
                 Debug.Log("Adding " + card.CardName + " as target");
                 ServerEffect.AddTarget(card);
                 EffectController.ServerNotifier.AcceptTarget();

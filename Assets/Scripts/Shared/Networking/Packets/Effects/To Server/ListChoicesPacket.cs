@@ -30,7 +30,7 @@ namespace KompasServer.Networking
     {
         public void Execute(ServerGame serverGame, ServerPlayer player)
         {
-            var choices = cardIds.Select(c => serverGame.GetCardWithID(c)).Where(c => c != null);
+            var choices = cardIds.Select(c => serverGame.GetCardWithID(c)).Where(c => c != null).Distinct();
 
             var currSubeff = serverGame.CurrEffect?.CurrSubeffect;
             if (currSubeff is ChooseFromListSubeffect listEff)

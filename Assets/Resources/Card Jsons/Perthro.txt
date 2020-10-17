@@ -43,7 +43,7 @@
 				"{
 					\"subeffType\":\"Loop While Have Targets\",
 					\"delete\":true,
-					\"jumpTo\":4
+					\"jumpTo\":3
 				}",
 				"{
 					\"subeffType\":\"Bottomdeck Rest\"
