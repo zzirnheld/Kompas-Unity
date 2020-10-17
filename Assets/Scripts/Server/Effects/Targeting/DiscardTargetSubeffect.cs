@@ -5,10 +5,10 @@ namespace KompasServer.Effects
 {
     public class DiscardTargetSubeffect : CardTargetSubeffect
     {
-        public override void Initialize(ServerEffect eff, int subeffIndex)
+        protected override void GetTargets()
         {
-            base.Initialize(eff, subeffIndex);
-            cardRestriction.Initialize(this);
+            base.GetTargets();
+            EffectController.ServerNotifier.GetDiscardTarget(this);
         }
 
         public override bool Resolve()
@@ -23,16 +23,9 @@ namespace KompasServer.Effects
             //ask the client that is this effect's controller for a target. 
             //give the card if whose effect it is, the index of the effect, and the index of the subeffect
             //since only the server resolves effects, this should never be called for a client. 
-            EffectController.ServerNotifier.GetDiscardTarget(this);
+            GetTargets();
 
             //then wait for the network controller to call the continue method
-            return false;
-        }
-
-        public override bool AddTargetIfLegal(GameCard card)
-        {
-            if (base.AddTargetIfLegal(card)) return true;
-            EffectController.ServerNotifier.GetDiscardTarget(this);
             return false;
         }
     }

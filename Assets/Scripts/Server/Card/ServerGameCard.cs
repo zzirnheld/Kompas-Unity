@@ -90,8 +90,12 @@ namespace KompasServer.Cards
         {
             if (augment == null) return false;
 
-            var context = new ActivationContext(card: augment, space: Position, stackable: stackSrc, triggerer: stackSrc?.Controller ?? Controller);
+            var context = new ActivationContext(card: augment, space: Position, stackable: stackSrc, triggerer: Controller);
             EffectsController.TriggerForCondition(Trigger.AugmentAttached, context);
+
+            var augmentedContext = new ActivationContext(card: this, space: Position, stackable: stackSrc, triggerer: Controller);
+            EffectsController.TriggerForCondition(Trigger.Augmented, augmentedContext);
+
             ServerNotifier.NotifyAttach(augment, BoardX, BoardY);
             return base.AddAugment(augment, stackSrc);
         }

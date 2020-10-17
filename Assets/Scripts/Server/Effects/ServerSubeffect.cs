@@ -46,7 +46,8 @@ namespace KompasServer.Effects
                 case TargetOtherInFight: return JsonUtility.FromJson<TargetOtherInFightSubeffect>(subeffJson);
                 case SpaceTarget: return JsonUtility.FromJson<SpaceTargetSubeffect>(subeffJson);
                 case TargetAvatar: return JsonUtility.FromJson<TargetAvatarSubeffect>(subeffJson);
-                case AutoTargetSubeffect: return JsonUtility.FromJson<AutoTargetSubeffect>(subeffJson);
+                case AutoTarget: return JsonUtility.FromJson<AutoTargetSubeffect>(subeffJson);
+                case TargetAugments: return JsonUtility.FromJson<TargetAugmentsSubeffect>(subeffJson);
 
                 //change stats
                     //numeric

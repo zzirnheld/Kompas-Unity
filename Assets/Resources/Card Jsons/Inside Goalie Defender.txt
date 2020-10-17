@@ -37,11 +37,7 @@
 					\"targetIndex\":0
 				}",
 				"{
-					\"subeffType\":\"Target All\",
-					\"cardRestriction\":
-					{
-						\"cardRestrictions\":[\"Is Augment of Target\"]
-					}
+					\"subeffType\":\"Target Augments\"
 				}",
 				"{
 					\"subeffType\":\"Conditionally End Effect Resolution\",
@@ -61,9 +57,9 @@
 			]
 		}
 	],
-	"n":0,
+	"n":1,
 	"e":6,
 	"s":3,
-	"w":3,
+	"w":0,
 	"subtypeText":""
 }

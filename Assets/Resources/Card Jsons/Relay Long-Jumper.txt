@@ -28,11 +28,7 @@
 					\"subeffType\":\"Target Triggering Card\"
 				}",
 				"{
-					\"subeffType\":\"Target All\",
-					\"cardRestriction\":
-					{
-						\"cardRestrictions\":[\"Is Augment of Target\"]
-					}
+					\"subeffType\":\"Target Augments\"
 				}",
 				"{
 					\"subeffType\":\"Conditionally End Effect Resolution\",
@@ -52,9 +48,9 @@
 			]
 		}
 	],
-	"n":2,
+	"n":3,
 	"e":3,
 	"s":4,
-	"w":3,
+	"w":0,
 	"subtypeText":""
 }

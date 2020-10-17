@@ -32,7 +32,8 @@ namespace KompasCore.Effects
         public const string TargetTriggeringCard = "Target Triggering Card";
         public const string TargetTriggeringCoords = "Target Triggering Space";
         public const string TargetTargetsSpace = "Target Target's Space";
-        public const string AutoTargetSubeffect = "Auto Target";
+        public const string AutoTarget = "Auto Target";
+        public const string TargetAugments = "Target Augments";
 
         //changing values, esp. on cards
         //TODO deprecate change nesw

@@ -7,7 +7,7 @@
 			"triggerCondition":"Move",
 			"trigger":
 			"{
-				\"blurb\":\"Touchdown!\",
+				\"blurb\":\"Mad Jukes My Dude!\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
 					\"cardRestriction\":
@@ -21,11 +21,7 @@
 					\"subeffType\":\"Target Triggering Card\"
 				}",
 				"{
-					\"subeffType\":\"Target All\",
-					\"cardRestriction\":
-					{
-						\"cardRestrictions\":[\"Is Augment of Target\"]
-					}
+					\"subeffType\":\"Target Augments\"
 				}",
 				"{
 					\"subeffType\":\"Change X by Target Value\",

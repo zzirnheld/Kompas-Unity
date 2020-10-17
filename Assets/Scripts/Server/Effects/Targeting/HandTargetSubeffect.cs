@@ -5,6 +5,12 @@ namespace KompasServer.Effects
 {
     public class HandTargetSubeffect : CardTargetSubeffect
     {
+        protected override void GetTargets()
+        {
+            base.GetTargets();
+            EffectController.ServerNotifier.GetHandTarget(this);
+        }
+
         public override bool Resolve()
         {
             //check first that there exist valid targets. if there exist no valid targets, finish resolution here
@@ -17,17 +23,9 @@ namespace KompasServer.Effects
             //ask the client that is this effect's controller for a target. 
             //give the card if whose effect it is, the index of the effect, and the index of the subeffect
             //since only the server resolves effects, this should never be called for a client. 
-            EffectController.ServerNotifier.GetHandTarget(this);
+            GetTargets();
 
             //then wait for the network controller to call the continue method
-            return false;
-        }
-
-        public override bool AddTargetIfLegal(GameCard card)
-        {
-            if (base.AddTargetIfLegal(card)) return true;
-
-            EffectController.ServerNotifier.GetHandTarget(this);
             return false;
         }
     }
