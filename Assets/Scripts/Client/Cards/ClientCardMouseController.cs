@@ -38,7 +38,13 @@ namespace KompasClient.Cards
 
         public override void OnMouseUp()
         {
-            if (EventSystem.current.IsPointerOverGameObject()) return;
+            //don't do anything if we're over an event system object, 
+            //because that would let us click on cards underneath prompts
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                Debug.Log($"Released card while pointer over event system object");
+                return;
+            }
             base.OnMouseUp();
 
             //don't allow dragging cards if we're awaiting a target

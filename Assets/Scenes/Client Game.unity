@@ -4493,7 +4493,6 @@ MonoBehaviour:
   clientUICtrl: {fileID: 1615817260}
   CurrCardRestriction:
     cardRestrictions: []
-    costsLessThan: 0
     nameIs: 
     subtypesInclude: []
     subtypesExclude: []
@@ -4503,12 +4502,12 @@ MonoBehaviour:
     costDivisor: 1
     cSpaces: 0
     adjacencySubtypes: []
+    secondaryRestrictionString: 
     blurb: 
   CurrSpaceRestriction:
     spaceRestrictions: []
     adjacencyRestriction:
       cardRestrictions: []
-      costsLessThan: 0
       nameIs: 
       subtypesInclude: []
       subtypesExclude: []
@@ -4518,10 +4517,10 @@ MonoBehaviour:
       costDivisor: 1
       cSpaces: 0
       adjacencySubtypes: []
+      secondaryRestrictionString: 
       blurb: 
     limitAdjacencyRestriction:
       cardRestrictions: []
-      costsLessThan: 0
       nameIs: 
       subtypesInclude: []
       subtypesExclude: []
@@ -4531,11 +4530,11 @@ MonoBehaviour:
       costDivisor: 1
       cSpaces: 0
       adjacencySubtypes: []
+      secondaryRestrictionString: 
       blurb: 
     adjacencyLimit: 0
     connectednessRestriction:
       cardRestrictions: []
-      costsLessThan: 0
       nameIs: 
       subtypesInclude: []
       subtypesExclude: []
@@ -4545,10 +4544,10 @@ MonoBehaviour:
       costDivisor: 1
       cSpaces: 0
       adjacencySubtypes: []
+      secondaryRestrictionString: 
       blurb: 
     hereFitsRestriction:
       cardRestrictions: []
-      costsLessThan: 0
       nameIs: 
       subtypesInclude: []
       subtypesExclude: []
@@ -4558,6 +4557,7 @@ MonoBehaviour:
       costDivisor: 1
       cSpaces: 0
       adjacencySubtypes: []
+      secondaryRestrictionString: 
       blurb: 
     constant: 0
     blurb: 

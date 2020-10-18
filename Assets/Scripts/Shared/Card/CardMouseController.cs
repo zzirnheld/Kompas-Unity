@@ -50,6 +50,8 @@ namespace KompasCore.Cards
 
         public virtual void OnMouseUp()
         {
+            //don't do anything if we're over an event system object, 
+            //because that would let us click on cards underneath prompts
             if (EventSystem.current.IsPointerOverGameObject()) return;
             Debug.Log($"On mouse up on {Card.CardName} in target mode {Game.targetMode}");
 
