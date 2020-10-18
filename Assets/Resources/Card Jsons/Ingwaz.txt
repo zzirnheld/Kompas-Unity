@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Ingwaz",
-	"effText":"Can’t be cast normally. Pip recast a Rune for half cost (rounding down).",
+	"effText":"Can’t be cast normally. Pip recast a distinctly named Rune for half cost (rounding down).",
 	"effects":[
 		{
 			"triggerCondition":"Play",
@@ -17,7 +17,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Ingwaz to recast\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Discard\",\"Can Be Played\",\"Effect Controller can Afford Cost\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Discard\",\"Can Be Played\",\"Effect Controller can Afford Cost\",\"Distinct Name from Source\"],
 						\"subtypesInclude\":[\"Rune\"],
 						\"costDivisor\":2
 					}

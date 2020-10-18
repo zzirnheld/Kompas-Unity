@@ -42,7 +42,9 @@ namespace KompasServer.Effects
 
         private bool priorityHeld = false;
         public IServerStackable CurrStackEntry { get; private set; }
-        public bool StackEmpty => stack.Empty && !priorityHeld;
+        
+        //nothign is happening if nothing is in the stack, nothing is currently resolving, and no one is waiting to add something to the stack.
+        public bool NothingHappening => stack.Empty && CurrStackEntry == null && !priorityHeld;
 
         #region the stack
         public void PushToStack(IServerStackable eff, ActivationContext context)
@@ -61,17 +63,19 @@ namespace KompasServer.Effects
 
         public IServerStackable CancelStackEntry(int index) => stack.Cancel(index);
 
+        private void StackEmptied()
+        {
+            //stack ends
+            foreach (var c in ServerGame.Cards) c.ResetForStack();
+            ServerGame.boardCtrl.ClearSpells();
+            ServerGame.ServerPlayers.First().ServerNotifier.StackEmpty();
+        }
+
         public void ResolveNextStackEntry()
         {
             var (stackable, context) = stack.Pop();
             Debug.Log($"Resolving next stack entry: {stackable}, {context}");
-            if (stackable == null)
-            {
-                //stack ends
-                foreach (var c in ServerGame.Cards) c.ResetForStack();
-                ServerGame.boardCtrl.DiscardSimples();
-                ServerGame.ServerPlayers.First().ServerNotifier.StackEmpty();
-            }
+            if (stackable == null) StackEmptied();
             else
             {
                 foreach (var p in ServerGame.ServerPlayers) p.ServerNotifier.RequestNoResponse();
@@ -207,6 +211,7 @@ namespace KompasServer.Effects
                 //for any player that is holding priority, request a response from them. Does nothing if no one holds priority.
                 foreach (var p in players) p.ServerNotifier.RequestResponse();
             }
+
             //if no one held priority, great! resolve the next stack entry.
             if (!priorityHeld) ResolveNextStackEntry();
         }

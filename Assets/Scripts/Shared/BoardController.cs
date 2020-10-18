@@ -221,11 +221,24 @@ namespace KompasCore.GameCore
             else return Swap(card, toX, toY, playerInitiated, stackSrc);
         }
 
-        public void DiscardSimples()
+        public void ClearSpells()
         {
             foreach (GameCard c in Board)
             {
-                if (c != null && c.SpellSubtype == CardBase.SimpleSubtype) c.Discard();
+                if (c == null) continue;
+                else if (c.CardType == 'S')
+                {
+                    switch (c.SpellSubtype)
+                    {
+                        case CardBase.SimpleSubtype: 
+                            c.Discard();
+                            break;
+                        case CardBase.DelayedSubtype:
+                        case CardBase.VanishingSubtype:
+                            if (c.TurnsOnBoard >= c.Arg) c.Discard();
+                            break;
+                    }
+                }
             }
         }
         #endregion game mechanics
