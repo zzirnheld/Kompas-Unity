@@ -21,7 +21,7 @@ namespace KompasCore.Effects
         public const string Unique = "Unique";
         public const string NotNormally = "Cannot be Played Normally";
         public const string MustNormally = "Must be Played Normally";
-        public const string OnFriendlyBoardCard = "On Friendly Card";
+        public const string OnBoardCard = "On Board Card";
         public const string OnCardFittingRestriction = "On Card that Fits Restriction";
 
         public const string DefaultNormal = "Default Normal Restrictions";
@@ -33,8 +33,8 @@ namespace KompasCore.Effects
         public const string AugNormal = "Augment Normal Restrictions";
         public const string AugEffect = "Augment Effect Restrictions";
         public static readonly string[] AugmentNormalRestrictions =
-            { PlayedByCardOwner, FromHand, OnFriendlyBoardCard, StandardSpellRestriction, FriendlyTurnIfNotFast, HasCostInPips, FastOrNothingIsResolving };
-        public static readonly string[] AugmentEffectRestrictions = { StandardSpellRestriction, OnFriendlyBoardCard };
+            { PlayedByCardOwner, FromHand, OnBoardCard, StandardSpellRestriction, FriendlyTurnIfNotFast, HasCostInPips, FastOrNothingIsResolving };
+        public static readonly string[] AugmentEffectRestrictions = { StandardSpellRestriction, OnBoardCard };
 
         public List<string> normalRestrictions = new List<string> { DefaultNormal };
         public List<string> effectRestrictions = new List<string> { DefaultEffect };
@@ -72,7 +72,7 @@ namespace KompasCore.Effects
                 case FriendlyTurnIfNotFast: return Card.Fast || Card.Game.TurnPlayer == Card.Controller;
                 case FastOrNothingIsResolving: return Card.Fast || Card.Game.NothingHappening;
 
-                case OnFriendlyBoardCard: return Card.Game.boardCtrl.GetCardAt(x, y)?.Controller == Card.Controller;
+                case OnBoardCard: return Card.Game.boardCtrl.GetCardAt(x, y) != null;
                 case OnCardFittingRestriction:
                     onCardRestriction.Initialize(Card, player, null);
                     return onCardRestriction.Evaluate(Card.Game.boardCtrl.GetCardAt(x, y));

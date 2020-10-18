@@ -47,6 +47,7 @@ namespace KompasCore.Effects
         //is
         public const string IsSource = "Is Source";
         public const string AugmentsTarget = "Is Augment of Target";
+        public const string WieldsAugmentFittingRestriction = "Wields Augment Fitting Restriction";
 
         //distinct
         public const string DistinctFromSource = "Distinct from Source";
@@ -113,7 +114,6 @@ namespace KompasCore.Effects
         //because JsonUtility will fill in all values with defaults if not present
         public string[] cardRestrictions = new string[0];
 
-        public int costsLessThan;
         public string nameIs;
         public string[] subtypesInclude = new string[0];
         public string[] subtypesExclude = new string[0];
@@ -121,9 +121,13 @@ namespace KompasCore.Effects
         public CardLocation[] locations;
         public int costMultiplier = 1;
         public int costDivisor = 1;
-
         public int cSpaces;
         public string[] adjacencySubtypes = new string[0];
+
+
+        [System.NonSerialized]
+        private CardRestriction secondaryRestriction;
+        public string secondaryRestrictionString = null;
 
         public GameCard Source { get; private set; }
         public Player Controller { get; private set; }
@@ -137,6 +141,13 @@ namespace KompasCore.Effects
             Source = subeff.Source;
             Controller = subeff.Controller;
             Effect = subeff.Effect;
+
+            //if there's any secondary restriction, create it
+            if (secondaryRestrictionString != null)
+            {
+                secondaryRestriction = JsonUtility.FromJson<CardRestriction>(secondaryRestrictionString);
+                secondaryRestriction.Initialize(subeff);
+            }
         }
 
         public void Initialize(GameCard source, Player controller, Effect eff)
@@ -196,6 +207,7 @@ namespace KompasCore.Effects
                 //is
                 case IsSource: return potentialTarget == Source;
                 case AugmentsTarget: return potentialTarget.AugmentedCard == Subeffect.Target;
+                case WieldsAugmentFittingRestriction: return potentialTarget.Augments.Any(c => secondaryRestriction.Evaluate(c));
 
                 //distinct
                 case DistinctFromSource: return potentialTarget != Source;

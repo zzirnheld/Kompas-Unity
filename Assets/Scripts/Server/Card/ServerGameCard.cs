@@ -96,7 +96,7 @@ namespace KompasServer.Cards
             var augmentedContext = new ActivationContext(card: this, space: Position, stackable: stackSrc, triggerer: Controller);
             EffectsController.TriggerForCondition(Trigger.Augmented, augmentedContext);
 
-            ServerNotifier.NotifyAttach(augment, BoardX, BoardY);
+            ServerGame.ServerPlayers[augment.ControllerIndex].ServerNotifier.NotifyAttach(augment, BoardX, BoardY);
             return base.AddAugment(augment, stackSrc);
         }
 

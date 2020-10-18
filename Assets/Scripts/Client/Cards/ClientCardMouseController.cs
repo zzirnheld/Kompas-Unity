@@ -42,7 +42,12 @@ namespace KompasClient.Cards
             base.OnMouseUp();
 
             //don't allow dragging cards if we're awaiting a target
-            if (Card.Game.targetMode != Game.TargetMode.Free) return;
+            if (Card.Game.targetMode != Game.TargetMode.Free)
+            {
+                Debug.Log($"On mouse up called for {Card.CardName} while in a non-free target mode {Card.Game.targetMode}. Putting back.");
+                Card.PutBack();
+                return;
+            }
 
             //get coords w/r/t gameboard
             var boardLocalPosition = Game.boardObject.transform.InverseTransformPoint(Card.gameObject.transform.position);
@@ -57,7 +62,7 @@ namespace KompasClient.Cards
                 if (Card.Location == CardLocation.Field)
                 {
                     var cardThere = Game.boardCtrl.GetCardAt(x, y);
-                    Debug.Log($"Trying to move/attack to {x}, {y}. The controller index, if any, is {cardThere?.ControllerIndex}");
+                    Debug.Log($"Trying to move/attack to {x}, {y}. The controller index, if any, is {(cardThere == null ? -1 : cardThere.ControllerIndex)}");
                     //then check if it's an attack or not
                     if (cardThere != null && cardThere.Controller != Card.Controller)
                         ClientGame.clientNotifier.RequestAttack(Card, cardThere);
@@ -67,6 +72,9 @@ namespace KompasClient.Cards
                 //otherwise, it is being played from somewhere like the hand or discard
                 else ClientGame.clientNotifier.RequestPlay(Card, x, y);
             }
+
+            //the conditions after this are all debug things.
+
             //if it's not on the board, maybe it's on top of the discard
             else if (WithinIgnoreY(Card.gameObject.transform.position, minDiscardX, maxDiscardX, minDiscardZ, maxDiscardZ))
             {

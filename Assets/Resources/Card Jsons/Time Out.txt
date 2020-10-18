@@ -1,0 +1,46 @@
+{
+	"cardType":83,
+	"cardName":"Time Out",
+	"effText":"Choose an enemy character wielding a friendly Sportsball. Rehand their Augments (to their owners), then rehand the character.",
+	"effects":[
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"character to put in TIME OUT!\",
+						\"cardRestrictions\":[\"Board\",\"Is Character\",\"Enemy\",\"Wields Augment Fitting Restriction\"],
+						\"secondaryRestrictionString\":
+						\"{
+							\\\"cardRestrictions\\\":[\\\"Friendly\\\",\\\"Subtypes Include\\\"],
+							\\\"subtypesInclude\\\":[\\\"Sportsball\\\"]
+						}\"
+					}
+				}",
+				"{
+					\"subeffType\":\"Target Augments\"
+				}",
+				"{
+					\"subeffType\":\"Rehand\"
+				}",
+				"{
+					\"subeffType\":\"Loop While Have Targets\",
+					\"delete\":true,
+					\"jumpTo\":2
+				}"
+			]
+		}
+	],
+	"fast":true,
+	"c":1,
+	"spellType":"Simple",
+	"subtypeText":"Simple"
+}

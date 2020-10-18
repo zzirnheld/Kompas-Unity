@@ -314,7 +314,10 @@ namespace KompasCore.Cards
         public bool CardDirectlyInFront(GameCard card) => SpaceDirectlyInFront(card.Position);
         #endregion distance/adjacency
 
-        public void PutBack() => cardCtrl?.SetPhysicalLocation(Location);
+        public void PutBack()
+        {
+            if(cardCtrl != null) cardCtrl.SetPhysicalLocation(Location);
+        }
 
         public void CountSpacesMovedTo((int x, int y) to) => SetSpacesMoved(spacesMoved + DistanceTo(to.x, to.y));
 

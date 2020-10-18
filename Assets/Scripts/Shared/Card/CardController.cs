@@ -49,6 +49,9 @@ namespace KompasCore.Cards
         public OscillatingController attackOscillator;
         public OscillatingController effectOscillator;
 
+        private string currImageCardName;
+        private bool currImageZoomLevel;
+
         public int N 
         {
             set
@@ -106,7 +109,7 @@ namespace KompasCore.Cards
 
         public virtual void SetPhysicalLocation(CardLocation location)
         {
-            Debug.Log($"Card controller of {card.CardName} setting physical location in {card.Location} to {card.BoardX}, {card.BoardY}");
+            //Debug.Log($"Card controller of {card.CardName} setting physical location in {card.Location} to {card.BoardX}, {card.BoardY}");
 
             aoeController.Hide();
 
@@ -193,6 +196,11 @@ namespace KompasCore.Cards
         /// </summary>
         public void SetImage(string cardFileName, bool zoomed)
         {
+            if (cardFileName == currImageCardName && currImageZoomLevel == zoomed) return;
+
+            currImageCardName = cardFileName;
+            currImageZoomLevel = zoomed;
+
             Texture pic;
             if (zoomed) pic = Resources.Load<Texture>("Card Detailed Textures/" + cardFileName);
             else pic = Resources.Load<Texture>("Unzoomed Card Textures/" + cardFileName);
