@@ -10,7 +10,7 @@
 				\"blurb\":\"Getcha Getcha Getcha\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
-					\"hereFitsRestriction\":{
+					\"cardRestriction\":{
 						\"cardRestrictions\":[\"Friendly\"]
 					}
 				}

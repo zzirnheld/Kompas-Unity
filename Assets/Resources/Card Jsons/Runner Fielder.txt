@@ -23,11 +23,7 @@
 				"{
 					\"subeffType\":\"Auto Target\",
 					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Directly In Front of Source\"]
-					},
-					\"spaceRestriction\":
-					{
-						\"spaceRestrictions\":[\"Card Here Fits Restriction\"]
+						\"cardRestrictions\":[\"Is Character\",\"Directly In Front of Source\"]
 					}
 				}",
 				"{
@@ -40,8 +36,8 @@
 		}
 	],
 	"n":2,
-	"e":2,
-	"s":2,
+	"e":1,
+	"s":1,
 	"w":0,
 	"subtypeText":""
 }

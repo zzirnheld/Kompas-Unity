@@ -27,7 +27,8 @@
 				"{
 					\"subeffType\":\"Conditionally Jump\",
 					\"condition\":\"X >= Constant\",
-					\"jumpIndex\":0
+					\"constant\":1,
+					\"jumpIndex\":1
 				}"
 			]	
 		}
