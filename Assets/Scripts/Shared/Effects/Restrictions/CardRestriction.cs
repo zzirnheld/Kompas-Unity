@@ -124,7 +124,6 @@ namespace KompasCore.Effects
         public int cSpaces;
         public string[] adjacencySubtypes = new string[0];
 
-
         [System.NonSerialized]
         private CardRestriction secondaryRestriction;
         public string secondaryRestrictionString = null;

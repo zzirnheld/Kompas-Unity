@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using KompasCore.Cards;
-using KompasServer.GameCore;
+﻿using KompasCore.Cards;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using KompasClient.Effects;
 
 namespace KompasCore.Effects
 {
@@ -19,7 +17,6 @@ namespace KompasCore.Effects
         public const string EnemyTurn = "Enemy Turn";
         public const string InPlay = "In Play";
         public const string Location = "Location";
-        //public const string StackEmpty = "Stack Empty";
         public const string ControllerActivates = "Controller Activates";
         public const string NotNegated = "Not Negated";
         public const string CardExists = "Card Exists";
@@ -63,7 +60,6 @@ namespace KompasCore.Effects
                 case EnemyTurn: return Effect.Game.TurnPlayer != activator;
                 case InPlay: return Effect.Source.Location == CardLocation.Field;
                 case Location: return Effect.Source.Location == (CardLocation)location;
-                //case StackEmpty: return Effect.Game.CurrStackEntry == null; //TODO make client game actually track current stack entry
                 case ControllerActivates: return activator == Card.Controller;
                 case NotNegated: return !Effect.Negated;
                 case CardExists: return Effect.Game.Cards.Any(c => existsRestriction.Evaluate(c));

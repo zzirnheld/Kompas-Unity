@@ -24,6 +24,14 @@ namespace KompasServer.Effects
         {
             switch (type)
             {
+                //look at Type.GetType(string), which you have to pass the name.
+                //which means i need to find-and-replace the current strings with the type names
+                //which is fine. totally fine. why do you ask.
+                //probably means i need a mapping for the client
+                //or just delete having clients have subeffects, and send stuff via packet.
+                //man, this'll be a heckin refactor.
+                //TODO return JsonUtility.FromJson(subeffJson, System.Type)
+
                 //targeting
                 case BoardTarget: return JsonUtility.FromJson<BoardTargetSubeffect>(subeffJson);
                 case DeckTarget: return JsonUtility.FromJson<DeckTargetSubeffect>(subeffJson);

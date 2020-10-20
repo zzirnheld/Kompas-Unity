@@ -219,11 +219,7 @@ namespace KompasServer.GameCore
             else uiCtrl.UpdateEnemyPips(pipsToSet);
         }
 
-        public void GiveTurnPlayerPips()
-        {
-            Debug.Log($"Giving turn player pips when leyload is {Leyload} on turn {TurnCount}");
-            GivePlayerPips(TurnPlayer, TurnPlayer.Pips + Leyload);
-        }
+        public void GiveTurnPlayerPips() => GivePlayerPips(TurnPlayer, TurnPlayer.Pips + Leyload);
 
         public void Attack(GameCard attacker, GameCard defender, ServerPlayer instigator, bool playerInitiated = false)
         {

@@ -33,9 +33,9 @@ namespace KompasServer.Effects
         private ServerTrigger currentOptionalTrigger;
 
         //trigger maps
-        private readonly Dictionary<string, List<ServerTrigger>> triggerMap 
+        private readonly Dictionary<string, List<ServerTrigger>> triggerMap
             = new Dictionary<string, List<ServerTrigger>>();
-        private readonly Dictionary<string, List<HangingEffect>> hangingEffectMap 
+        private readonly Dictionary<string, List<HangingEffect>> hangingEffectMap
             = new Dictionary<string, List<HangingEffect>>();
         private readonly Dictionary<string, List<HangingEffect>> hangingEffectFallOffMap
             = new Dictionary<string, List<HangingEffect>>();
@@ -43,7 +43,7 @@ namespace KompasServer.Effects
         private bool priorityHeld = false;
         public IServerStackable CurrStackEntry { get; private set; }
         
-        //nothign is happening if nothing is in the stack, nothing is currently resolving, and no one is waiting to add something to the stack.
+        //nothing is happening if nothing is in the stack, nothing is currently resolving, and no one is waiting to add something to the stack.
         public bool NothingHappening => stack.Empty && CurrStackEntry == null && !priorityHeld;
 
         #region the stack
