@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Starbirth to discard\",
@@ -22,33 +22,33 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"CountXLoopSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CountXLoopSubeffect\",
 					\"canDecline\":true,
 					\"jumpTo\":0
 				}",
 				"{
-					\"subeffType\":\"TargetAvatarSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetAvatarSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.XChangeNESWSubeffect\",
 					\"sMult\":1
 				}",
 				"{
-					\"subeffType\":\"DrawXSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.DrawXSubeffect\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"AddPipsSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.AddPipsSubeffect\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"AnnihilateSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.AnnihilateSubeffect\"
 				}"
 			]	
 		}

@@ -22,25 +22,25 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"TargetAugmentsSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetAugmentsSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"ConditionalEndSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ConditionalEndSubeffect\",
 					\"condition\":\"Number Targets <= Constant\",
 					\"constant\":2
 				}",
 				"{
-					\"subeffType\":\"AttachSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.AttachSubeffect\",
 					\"attachmentTarget\":0
 				}",
 				"{
-					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.LoopWhileHaveTargetsSubeffect\",
 					\"delete\":true,
 					\"remainingTargets\":2,
 					\"jumpTo\":4

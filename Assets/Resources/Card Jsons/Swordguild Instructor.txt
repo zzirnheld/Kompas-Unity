@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Warrior for Instructor to give +1W\",
@@ -22,7 +22,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChangeNESWSubeffect\",
 					\"nChange\":0,
 					\"eChange\":0,
 					\"sChange\":0,

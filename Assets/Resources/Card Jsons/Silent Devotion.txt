@@ -14,7 +14,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"ChooseFromListSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChooseFromListSubeffect\",
 					\"maxCanChoose\":1,
 					\"cardRestriction\":
 					{
@@ -24,7 +24,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where to play new Silent Devotee\",
@@ -32,7 +32,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"KompasServer.Effects.PlaySubeffect\"
 				}"
 			]	
 		}

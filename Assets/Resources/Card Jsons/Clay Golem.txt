@@ -13,13 +13,13 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"DeckTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.DeckTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Clay Golem to summon\",
@@ -28,7 +28,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"to play the card you chose\",
@@ -36,7 +36,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"KompasServer.Effects.PlaySubeffect\"
 				}"
 			]
 		}

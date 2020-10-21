@@ -19,10 +19,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.XChangeNESWSubeffect\",
 					\"sMod\":1
 				}"
 			]
@@ -36,14 +36,14 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"PayStatsSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.PayStatsSubeffect\",
 					\"sMod\":9
 				}",
 				"{
-					\"subeffType\":\"ChooseFromListSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChooseFromListSubeffect\",
 					\"maxCanChoose\":1,
 					\"cardRestriction\":
 					{
@@ -53,7 +53,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where for Altar Builder to cast its target Altar\",
@@ -61,7 +61,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"KompasServer.Effects.PlaySubeffect\"
 				}"
 			]
 		}

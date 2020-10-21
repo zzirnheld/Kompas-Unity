@@ -13,14 +13,14 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Board\",\"Is Character\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChangeNESWSubeffect\",
 					\"eChange\":5
 				}"
 			]	

@@ -15,7 +15,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"character for Wheel of Fortune to swap N of (1/2)\",
@@ -23,7 +23,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"character for Wheel of Fortune to swap N of (2/2)\",
@@ -31,7 +31,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"SwapNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SwapNESWSubeffect\",
 					\"targetIndices\":[-1,-2],
 					\"swapN\":true
 				}"

@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"to ride the winds\",
@@ -22,7 +22,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where to ride\",
@@ -31,7 +31,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"MoveSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.MoveSubeffect\"
 				}"
 			]	
 		}

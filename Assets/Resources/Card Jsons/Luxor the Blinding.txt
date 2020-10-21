@@ -14,7 +14,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"adjacent character for Luxor to kill\",
@@ -22,7 +22,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\"
 				}"
 			]	
 		},
@@ -38,14 +38,14 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChangeNESWSubeffect\",
 					\"eChange\":-1
 				}",
 				"{
-					\"subeffType\":\"ChangeAllNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChangeAllNESWSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Adjacent\"]

@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"adjacent Summoned character for Memory Guide to resummon\",
@@ -21,7 +21,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"ResummonSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.ResummonSubeffect\"
 				}"
 			]	
 		}

@@ -15,7 +15,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"character for Moon to swap EW\",
@@ -23,12 +23,12 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"SwapOwnNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SwapOwnNESWSubeffect\",
 					\"Stat1\":1,
 					\"Stat2\":3
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"character for Moon to swap EW\",
@@ -36,7 +36,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"SwapNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SwapNESWSubeffect\",
 					\"targetIndices\":[-1,-2],
 					\"swapE\":true,
 					\"swapW\":true

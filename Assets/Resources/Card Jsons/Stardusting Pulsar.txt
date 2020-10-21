@@ -21,7 +21,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Summoned character for Stardusting Pulsar to buff\",
@@ -29,7 +29,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.XChangeNESWSubeffect\",
 					\"nMod\":1,
 					\"eMod\":1,
 					\"sMod\":1,
@@ -55,7 +55,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Summoned character for Stardusting Pulsar to debuff\",
@@ -63,7 +63,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.XChangeNESWSubeffect\",
 					\"nMod\":-1,
 					\"eMod\":-1,
 					\"sMod\":-1,

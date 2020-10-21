@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"SetXBoardRestrictionSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SetXBoardRestrictionSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
@@ -22,7 +22,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"AddPipsSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.AddPipsSubeffect\",
 					\"xMultiplier\":1,
 					\"xDivisor\":2,
 					\"xModifier\":0

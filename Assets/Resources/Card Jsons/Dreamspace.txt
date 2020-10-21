@@ -13,10 +13,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"ChooseFromListSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChooseFromListSubeffect\",
 					\"cardRestriction\":{
 						\"blurb\":\"copy of Dreamspace to decksummon\",
 						\"cardRestrictions\":[\"Friendly\",\"Same Name as Target\"]
@@ -24,7 +24,7 @@
 					\"maxCanChoose\":1
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where for Dreamspace to decksummon a copy of itself\",
@@ -32,7 +32,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"KompasServer.Effects.PlaySubeffect\"
 				}"
 			]	
 		}

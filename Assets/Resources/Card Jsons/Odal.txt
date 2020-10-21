@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"character for Odal to kill\",
@@ -21,19 +21,19 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"SetXByTargetValueSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SetXByTargetValueSubeffect\",
 					\"whatToCount\":\"S\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"PayPipsSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.PayPipsSubeffect\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"DeckTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.DeckTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Runar for Odal to deck-summon\",
@@ -42,7 +42,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where for Odal to deck-summon its target\",
@@ -50,7 +50,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"KompasServer.Effects.PlaySubeffect\"
 				}"
 			]	
 		}

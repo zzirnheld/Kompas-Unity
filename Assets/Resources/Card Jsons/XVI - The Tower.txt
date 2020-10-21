@@ -15,13 +15,13 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Summoned character for Tower to give -XE\",
@@ -29,11 +29,11 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.XChangeNESWSubeffect\",
 					\"eMult\":-1
 				}",
 				"{
-					\"subeffType\":\"DrawXSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.DrawXSubeffect\",
 					\"xMultiplier\":1
 				}"
 			]

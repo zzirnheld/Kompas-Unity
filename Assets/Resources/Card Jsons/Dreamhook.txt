@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"enemy character to move adjacent to\",
@@ -21,7 +21,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Friendly Shaper to move the enemy adjacent to\",
@@ -30,7 +30,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where to move the Shaper\",
@@ -39,10 +39,10 @@
 					\"targetIndex\":-2
 				}",
 				"{
-					\"subeffType\":\"MoveSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.MoveSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"AttackSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.AttackSubeffect\"
 				}"
 			]
 		}

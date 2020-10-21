@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\"],
@@ -21,20 +21,20 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"SetXByTargetCostSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SetXByTargetCostSubeffect\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"ClearOptionSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChooseOptionSubeffect\",
 					\"ChoiceBlurb\":\"Hand-summon or revive a Golem?\",
 					\"OptionBlurbs\":[\"Hand-summon\",\"Revive\"],
 					\"OptionJumpIndices\":[4,6]
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Hand\",\"S<X\"],
@@ -42,11 +42,11 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"JumpSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.JumpSubeffect\",
 					\"indexToJumpTo\":7
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Discard\",\"S<X\"],
@@ -54,17 +54,17 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"KompasServer.Effects.PlaySubeffect\"
 				}",
 				"{
-					\"subeffType\":\"ActivateSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.ActivateSubeffect\"
 				}"
 			]	
 		}

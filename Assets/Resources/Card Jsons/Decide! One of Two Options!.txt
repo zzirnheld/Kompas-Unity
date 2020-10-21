@@ -16,7 +16,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Crazy Idea for Decide! to Ificate\",
@@ -25,12 +25,12 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"PayPipsSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.PayPipsSubeffect\",
 					\"xMultiplier\":0,
 					\"xModifier\":1
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where Decide! to play targeted Crazy Idea\",
@@ -38,7 +38,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"KompasServer.Effects.PlaySubeffect\"
 				}"
 			]
 		},
@@ -52,7 +52,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"character for Decide! to maybe kill (1/2)\",
@@ -60,7 +60,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"character for Decide! to maybe kill (2/2)\",
@@ -68,13 +68,13 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"DelaySubeffect\",
+					\"subeffType\":\"KompasServer.Effects.DelaySubeffect\",
 					\"numTimesToDelay\":1,
 					\"indexToResume\":3,
 					\"triggerCondition\":\"Turn Start\"
 				}",
 				"{
-					\"subeffType\":\"ChooseFromListSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChooseFromListSubeffect\",
 					\"playerIndex\":1,
 					\"maxCanChoose\":1,
 					\"cardRestriction\":
@@ -84,13 +84,13 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"AnnihilateSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.AnnihilateSubeffect\"
 				}"
 			]
 		}

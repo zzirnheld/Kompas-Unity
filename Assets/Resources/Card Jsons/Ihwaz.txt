@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Ihwaz to swap (1/2)\",
@@ -21,7 +21,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Ihwaz to swap (2/2)\",
@@ -29,7 +29,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"SwapSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.SwapSubeffect\"
 				}"
 			]
 		}

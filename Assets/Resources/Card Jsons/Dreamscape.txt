@@ -18,14 +18,14 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"ResetStatsSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ResetStatsSubeffect\",
 					\"resetE\":true
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChangeNESWSubeffect\",
 					\"nChange\":1
 				}"
 			]	

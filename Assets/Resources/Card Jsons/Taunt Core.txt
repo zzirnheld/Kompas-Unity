@@ -14,10 +14,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetAugmentedCardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetAugmentedCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"TemporaryActivationSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.TemporaryActivationSubeffect\",
 					\"endCondition\":\"Augment Detached\",
 					\"triggerRestriction\":{
 						\"triggerRestrictions\":[\"This Card Triggered\"]
@@ -40,10 +40,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where for Taunt Core to move its target\",
@@ -51,7 +51,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"MoveSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.MoveSubeffect\"
 				}"
 			]	
 		},
@@ -66,10 +66,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"RehandSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.RehandSubeffect\"
 				}"
 			]
 		}

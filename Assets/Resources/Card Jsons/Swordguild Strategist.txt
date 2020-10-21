@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Warrior for Strategist to sacrifice\",
@@ -22,14 +22,14 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"SetXByTargetCostSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SetXByTargetCostSubeffect\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Warrior for Strategist to kill\",
@@ -38,7 +38,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\"
 				}"
 			]
 		}

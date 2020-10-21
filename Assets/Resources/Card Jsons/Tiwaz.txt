@@ -16,10 +16,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChangeNESWSubeffect\",
 					\"eChange\":2,
 					\"sChange\":2,
 					\"wChange\":2

@@ -13,40 +13,40 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetAvatarSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetAvatarSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"ClearOptionSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChooseOptionSubeffect\",
 					\"ChoiceBlurb\":\"Give +5 S or -5 S?\",
 					\"OptionBlurbs\":[\"+5 S\",\"-5 S\"],
 					\"OptionJumpIndices\":[2,4]
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChangeNESWSubeffect\",
 					\"sChange\":5
 				}",
 				"{
-					\"subeffType\":\"JumpSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.JumpSubeffect\",
 					\"indexToJumpTo\":5
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChangeNESWSubeffect\",
 					\"sChange\":-5
 				}",
 				"{
-					\"subeffType\":\"ClearOptionSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChooseOptionSubeffect\",
 					\"ChoiceBlurb\":\"Annihilate me and draw 1?\",
 					\"OptionBlurbs\":[\"Yes\",\"No\"],
 					\"OptionJumpIndices\":[7,100]
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"AnnihilateSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.AnnihilateSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"DrawSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DrawSubeffect\"
 				}"
 			]	
 		}

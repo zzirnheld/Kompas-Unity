@@ -14,7 +14,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetAllSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.TargetAllSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Friendly\",\"Discard\",\"Subtypes Include\"],
@@ -22,39 +22,39 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"ReshuffleSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.ReshuffleSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"DeleteTargetSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DeleteTargetSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"CountXLoopSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CountXLoopSubeffect\",
 					\"canDecline\":false,
 					\"jumpTo\":1
 				}",
 				"{
-					\"subeffType\":\"TargetAvatarSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetAvatarSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"ClearOptionSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChooseOptionSubeffect\",
 					\"ChoiceBlurb\":\"Give +X S or -X S?\",
 					\"OptionBlurbs\":[\"+X S\",\"-X S\"],
 					\"OptionJumpIndices\":[6,8]
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.XChangeNESWSubeffect\",
 					\"sMult\":1
 				}",
 				"{
-					\"subeffType\":\"JumpSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.JumpSubeffect\",
 					\"indexToJumpTo\":9
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.XChangeNESWSubeffect\",
 					\"sMult\":-1
 				}",
 				"{
-					\"subeffType\":\"DrawSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DrawSubeffect\"
 				}"
 			]	
 		}

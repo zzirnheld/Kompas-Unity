@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"adjacent character for the Eldest to kill\",
@@ -21,7 +21,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\"
 				}"
 			]	
 		},
@@ -35,10 +35,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetDefenderSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetDefenderSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\"
 				}"
 			]	
 		}

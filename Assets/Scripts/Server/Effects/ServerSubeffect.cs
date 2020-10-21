@@ -29,6 +29,8 @@ namespace KompasServer.Effects
 
         public static ServerSubeffect FromJson(string subeffJson, ServerEffect parent, int subeffIndex)
         {
+            Debug.Log($"Trying to load subeffect parent from {subeffJson}");
+
             var subeff = JsonUtility.FromJson<Subeffect>(subeffJson);
 
             Debug.Log($"Creating subeffect from json of type {subeff.subeffType} json {subeffJson}");

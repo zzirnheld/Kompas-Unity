@@ -13,10 +13,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChangeNESWSubeffect\",
 					\"sChange\":1
 				}"
 			]
@@ -29,21 +29,21 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"PlayerChooseXSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.PlayerChooseXSubeffect\",
 					\"XRest\":{
 						\"cardRestrictions\":[\">0\",\"<=ThisCost\"]
 					},
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.XChangeNESWSubeffect\",
 					\"sMult\":-1
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"adjacent SX character for Death to kill\",
@@ -52,7 +52,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\"
 				}"
 			]
 		}

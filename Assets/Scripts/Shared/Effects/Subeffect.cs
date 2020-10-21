@@ -9,10 +9,6 @@ namespace KompasCore.Effects
     [System.Serializable]
     public class Subeffect
     {
-        #region subeffect type constants
-        //TODO deprecate change nesw
-        #endregion subeffect type constants
-
         public virtual Effect Effect { get; }
         public virtual Player Controller { get; }
         public virtual Game Game { get; }
@@ -20,6 +16,11 @@ namespace KompasCore.Effects
         public int SubeffIndex { get; protected set; }
 
         public GameCard Source => Effect.Source;
+
+        /// <summary>
+        /// Represents the type of subeffect this is
+        /// </summary>
+        public string subeffType;
 
         /// <summary>
         /// The index in the Effect.targets array for which target this effect uses.
@@ -39,11 +40,6 @@ namespace KompasCore.Effects
         /// The index of player. If 0, this, if 1, enemy. 
         /// </summary>
         public int playerIndex = 0;
-
-        /// <summary>
-        /// Represents the type of subeffect this is
-        /// </summary>
-        public string subeffType;
 
         /// <summary>
         /// If the effect uses X, this is the multiplier to X

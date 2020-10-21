@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"SetXByGamestateSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SetXByGamestateSubeffect\",
 					\"whatToCount\":\"Cards Fitting Restriction\",
 					\"throughRestriction\":
 					{
@@ -23,7 +23,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"character to deafen with silence\",
@@ -31,7 +31,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.XChangeNESWSubeffect\",
 					\"wMult\":-1
 				}"
 			]

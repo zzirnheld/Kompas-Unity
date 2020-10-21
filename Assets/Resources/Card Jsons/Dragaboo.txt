@@ -18,13 +18,13 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"AnnihilateSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.AnnihilateSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"OWO SO DRAGONNNNNNNNN\",
@@ -33,14 +33,14 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"SetXByTargetCostSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SetXByTargetCostSubeffect\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"AddPipsSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.AddPipsSubeffect\",
 					\"xMultiplier\":1
 				}"
 			]	

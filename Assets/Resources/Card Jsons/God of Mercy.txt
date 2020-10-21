@@ -23,7 +23,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetAllSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.TargetAllSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Supplicant to give safe haven\",
@@ -31,14 +31,14 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"TemporaryNegateSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.TemporaryNegateSubeffect\",
 					\"endCondition\":\"Remove\",
 					\"triggerRestriction\":{
 						\"triggerRestrictions\":[\"This Card Triggered\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.LoopWhileHaveTargetsSubeffect\",
 					\"delete\":true,
 					\"jumpTo\":1
 				}"

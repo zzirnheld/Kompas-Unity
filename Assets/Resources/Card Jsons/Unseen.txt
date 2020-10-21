@@ -14,10 +14,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"AnnihilateSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.AnnihilateSubeffect\"
 				}"
 			]
 		},
@@ -33,10 +33,10 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where to revive Unlost\",
@@ -44,12 +44,12 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"PayPipsTargetCostSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.PayPipsTargetCostSubeffect\",
 					\"xDivisor\":2,
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"KompasServer.Effects.PlaySubeffect\"
 				}"
 			]
 		},
@@ -63,7 +63,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":{
 						\"blurb\":\"for Unwanted to discard\",
 						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Subtypes Include\"],
@@ -71,10 +71,10 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"DeckTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.DeckTargetSubeffect\",
 					\"cardRestriction\":{
 						\"blurb\":\"for Unwanted to search\",
 						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Subtypes Include\"],
@@ -82,7 +82,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"RehandSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.RehandSubeffect\"
 				}"
 			]	
 		}

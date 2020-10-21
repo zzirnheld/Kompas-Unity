@@ -13,36 +13,36 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"TargetAllSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.TargetAllSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Not Already Target\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"DeleteTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.DeleteTargetSubeffect\",
 					\"targetIndex\":0
 				}",
 				"{
-					\"subeffType\":\"ReshuffleSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.ReshuffleSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"DeleteTargetSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DeleteTargetSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"CountXLoopSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CountXLoopSubeffect\",
 					\"canDecline\":false,
 					\"jumpTo\":3
 				}",
 				"{
-					\"subeffType\":\"AddPipsSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.AddPipsSubeffect\",
 					\"xMultiplier\":1
 				}"
 			]

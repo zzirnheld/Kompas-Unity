@@ -50,7 +50,7 @@ namespace KompasClient.GameCore
             get => currentPotentialTargets; 
             private set
             {
-                CurrentPotentialTargets = value;
+                currentPotentialTargets = value;
                 ShowValidCardTargets();
             } 
         }

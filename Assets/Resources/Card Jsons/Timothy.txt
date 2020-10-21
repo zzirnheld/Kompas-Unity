@@ -19,15 +19,15 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"PayPipsSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.PayPipsSubeffect\",
 					\"xMultiplier\":0,
 					\"xModifier\":2
 				}",
 				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where, Timothy. Where? Where can I put THIS one?\",
@@ -35,7 +35,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"KompasServer.Effects.PlaySubeffect\"
 				}"
 			]	
 		}

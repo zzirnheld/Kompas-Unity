@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"character to put in TIME OUT!\",
@@ -26,13 +26,13 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"TargetAugmentsSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetAugmentsSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"RehandSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.RehandSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.LoopWhileHaveTargetsSubeffect\",
 					\"delete\":true,
 					\"jumpTo\":2
 				}"

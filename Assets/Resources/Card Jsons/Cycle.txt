@@ -13,17 +13,17 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":{
 						\"blurb\":\"Card to Cycle\",
 						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"ChangeLeyloadSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChangeLeyloadSubeffect\",
 					\"xModifier\":1
 				}"
 			]	

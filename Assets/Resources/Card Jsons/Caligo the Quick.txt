@@ -14,7 +14,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"adjacent character for Caligo to kill\",
@@ -22,7 +22,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\"
 				}"
 			]	
 		},
@@ -34,7 +34,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"enemy character for Caligo to attack\",
@@ -42,16 +42,16 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"SetXByTargetValueSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SetXByTargetValueSubeffect\",
 					\"whatToCount\":\"Distance to Target\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.XChangeNESWSubeffect\",
 					\"eMult\":-1
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"to move Caligo to\",
@@ -59,13 +59,13 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"MoveSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.MoveSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"AttackSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.AttackSubeffect\",
 					\"attackerIndex\":-1,
 					\"targetIndex\":-2
 				}"

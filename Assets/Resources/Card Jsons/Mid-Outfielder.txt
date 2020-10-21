@@ -14,10 +14,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"spaceRestrictions\":[\"Empty\",\"Distance to Target <= Constant\"],
@@ -25,7 +25,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"MoveSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.MoveSubeffect\"
 				}"
 			]
 		}

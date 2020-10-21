@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Rune for Runeloremaster to cast\",
@@ -22,7 +22,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where for Runeloremaster to cast its target Rune\",
@@ -30,14 +30,14 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"PayPipsTargetCostSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.PayPipsTargetCostSubeffect\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"KompasServer.Effects.PlaySubeffect\"
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Rune for Runeloremaster to cast\",
@@ -46,7 +46,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where for Runeloremaster to cast its target Rune\",
@@ -54,11 +54,11 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"PayPipsTargetCostSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.PayPipsTargetCostSubeffect\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"KompasServer.Effects.PlaySubeffect\"
 				}"
 			]
 		}

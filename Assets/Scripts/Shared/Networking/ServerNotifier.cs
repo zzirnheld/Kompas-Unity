@@ -141,7 +141,8 @@ namespace KompasServer.Networking
         public void NotifyAttackStarted(GameCard atk, GameCard def) => SendToBoth(new AttackStartedPacket(atk.ID, def.ID));
 
         #region other effect stuff
-        public void ChooseEffectOption(ChooseOptionSubeffect src) => SendPacket(new GetEffectOptionPacket(src));
+        public void ChooseEffectOption(string cardName, string choiceBlurb, string[] optionBlurbs) 
+            => SendPacket(new GetEffectOptionPacket(cardName, choiceBlurb, optionBlurbs));
 
         public void EffectResolving(ServerEffect eff)
             => SendToBothInverting(new EffectResolvingPacket(eff.Source.ID, eff.EffectIndex, eff.Controller.index, invert: Player.index != 0));

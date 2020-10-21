@@ -16,7 +16,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Crazy Idea for A Frayed Knot to Ificate\",
@@ -25,12 +25,12 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"PayPipsSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.PayPipsSubeffect\",
 					\"xMultiplier\":0,
 					\"xModifier\":1
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where A Frayed Knot to play targeted Crazy Idea\",
@@ -38,7 +38,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"KompasServer.Effects.PlaySubeffect\"
 				}"
 			]
 		},
@@ -53,7 +53,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"card for A Frayed Knot to discard\",
@@ -62,7 +62,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\"
 				}"
 			]
 		}

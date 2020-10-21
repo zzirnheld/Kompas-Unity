@@ -12,7 +12,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"SetXBoardRestrictionSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SetXBoardRestrictionSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
@@ -21,7 +21,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"dead Warrior for Bannerman to reshuffle\",
@@ -30,10 +30,10 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"ReshuffleSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.ReshuffleSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"XTimesSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.XTimesSubeffect\",
 					\"jumpTo\":1
 				}"
 			]	

@@ -1,6 +1,6 @@
 {
 	"cardType":67,
-	"cardName":"Runarunner",
+	"cardName":"Runerunner",
 	"effText":"Once each round, you can pip handcast a Rune.",
 	"effects":[
 		{
@@ -12,7 +12,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Rune for Runarunner to cast\",
@@ -21,7 +21,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where for Runarunner to cast its target Rune\",
@@ -29,11 +29,11 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"PayPipsTargetCostSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.PayPipsTargetCostSubeffect\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"KompasServer.Effects.PlaySubeffect\"
 				}"
 			]
 		}

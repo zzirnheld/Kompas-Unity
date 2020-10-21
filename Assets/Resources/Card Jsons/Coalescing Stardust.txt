@@ -18,10 +18,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"ChangeSpellCSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChangeSpellCSubeffect\",
 					\"xMultiplier\":1
 				}"
 			]
@@ -36,21 +36,21 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"DelaySubeffect\",
+					\"subeffType\":\"KompasServer.Effects.DelaySubeffect\",
 					\"numTimesToDelay\":1,
 					\"indexToResume\":1,
 					\"endCondition\":\"Turn Start\"
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"SetXByTargetValueSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SetXByTargetValueSubeffect\",
 					\"whatToCount\":\"C\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"ChooseFromListSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChooseFromListSubeffect\",
 					\"maxCanChoose\":1,
 					\"cardRestriction\":
 					{
@@ -61,7 +61,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where to play newly coalesced Pulsar\",
@@ -69,7 +69,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"KompasServer.Effects.PlaySubeffect\"
 				}"
 			]
 		}

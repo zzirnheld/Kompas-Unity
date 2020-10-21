@@ -16,7 +16,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Crazy Idea for Right Into My Trap to Ificate\",
@@ -25,12 +25,12 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"PayPipsSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.PayPipsSubeffect\",
 					\"xMultiplier\":0,
 					\"xModifier\":1
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where Right Into My Trap to play targeted Crazy Idea\",
@@ -38,7 +38,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"KompasServer.Effects.PlaySubeffect\"
 				}"
 			]
 		},
@@ -61,10 +61,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"back into my trap\",
@@ -73,10 +73,10 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"MoveSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.MoveSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"ConditionalEndSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ConditionalEndSubeffect\",
 					\"condition\":\"Target Fits Restriction\",
 					\"cardRestriction\":
 					{
@@ -84,10 +84,10 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"AnnihilateSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.AnnihilateSubeffect\"
 				}"
 			]	
 		}

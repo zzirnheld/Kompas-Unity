@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":{
 						\"blurb\":\"Revenant for Salvage Soul to rehand\",
 						\"cardRestrictions\":[\"Friendly\",\"Board\",\"Subtypes Include\"],
@@ -21,20 +21,20 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"RehandSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.RehandSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"DrawSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DrawSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":{
 						\"blurb\":\"card for Salvage Soul to discard\",
 						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\"
 				}"
 			]	
 		}

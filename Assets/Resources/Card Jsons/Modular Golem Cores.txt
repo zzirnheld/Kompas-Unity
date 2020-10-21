@@ -12,7 +12,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Golem Core for Modular Golem Cores to detach\",
@@ -21,10 +21,10 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"DeckTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.DeckTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Golem core for Modular Golem Cores to search\",
@@ -33,7 +33,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"RehandSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.RehandSubeffect\"
 				}"
 			]
 		}

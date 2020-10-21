@@ -13,11 +13,11 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect\",
 					\"jumpTo\":4
 				}",
 				"{
-					\"subeffType\":\"ChooseFromListSaveRestSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChooseFromListSaveRestSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"spell for Perthro to search (to hand)\",
@@ -31,13 +31,13 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"ClearOnImpossibleSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.ClearOnImpossibleSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"RehandSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.RehandSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"BottomdeckRestSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.BottomdeckRestSubeffect\"
 				}"
 			]	
 		}

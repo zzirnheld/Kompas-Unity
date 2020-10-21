@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"to move Evasive Ectoplasm to\",
@@ -25,14 +25,14 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"SpendMovementSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SpendMovementSubeffect\",
 					\"xModifier\":1
 				}",
 				"{
-					\"subeffType\":\"SetXByGamestateSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SetXByGamestateSubeffect\",
 					\"whatToCount\":\"Distance to Coords Through\",
 					\"throughRestriction\":{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
@@ -41,11 +41,11 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.XChangeNESWSubeffect\",
 					\"eMult\":-1
 				}",
 				"{
-					\"subeffType\":\"MoveSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.MoveSubeffect\"
 				}"
 			]
 		},
@@ -59,18 +59,18 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"TargetOtherInFightSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetOtherInFightSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"SetXByTargetValueSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SetXByTargetValueSubeffect\",
 					\"whatToCount\":\"W\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"TemporaryNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.TemporaryNESWBuffSubeffect\",
 					\"wMultiplier\":-1,
 					\"endCondition\":\"Battle End\",
 					\"triggerRestriction\":{

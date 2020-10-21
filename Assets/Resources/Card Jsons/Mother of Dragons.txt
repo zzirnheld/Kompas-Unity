@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Dragon to hand-reshuffle\",
@@ -22,10 +22,10 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"ReshuffleSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.ReshuffleSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"DrawXSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.DrawXSubeffect\",
 					\"xModifier\":2
 				}"
 			]

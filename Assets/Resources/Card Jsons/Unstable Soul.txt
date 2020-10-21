@@ -12,7 +12,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"to move Unstable Soul to\",
@@ -24,14 +24,14 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"SpendMovementSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SpendMovementSubeffect\",
 					\"xModifier\":1
 				}",
 				"{
-					\"subeffType\":\"SetXByGamestateSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SetXByGamestateSubeffect\",
 					\"whatToCount\":\"Distance to Coords Through\",
 					\"throughRestriction\":{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
@@ -40,11 +40,11 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.XChangeNESWSubeffect\",
 					\"eMult\":-1
 				}",
 				"{
-					\"subeffType\":\"MoveSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.MoveSubeffect\"
 				}"
 			]
 		}

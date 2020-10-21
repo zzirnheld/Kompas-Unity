@@ -13,14 +13,14 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
 						\"subtypesInclude\":[\"Warrior\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChangeNESWSubeffect\",
 					\"nChange\":1
 				}"
 			]

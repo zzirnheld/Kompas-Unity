@@ -39,10 +39,7 @@ namespace KompasCore.Networking
         public const string ChooseTriggerOrder = "Choose Trigger Order";
             //from server to client
             //targeting
-        public const string GetCardTarget = "Get Board Target";
-        public const string GetHandTarget = "Get Hand Target";
-        public const string GetDeckTarget = "Get Deck Target";
-        public const string GetDiscardTarget = "Get Discard Target";
+        public const string GetCardTarget = "Get Card Target";
         public const string GetListChoices = "Get List Choices";
         public const string GetSpaceTarget = "Get Space Target";
             //other effect

@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":{
 						\"blurb\":\"Ethereal for Soulselfdestruct to kill\",
 						\"cardRestrictions\":[\"Friendly\",\"Board\",\"Subtypes Include\"],
@@ -21,10 +21,10 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"DeckTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.DeckTargetSubeffect\",
 					\"cardRestriction\":{
 						\"blurb\":\"card for Salvage Soul to discard\",
 						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Subtypes Include\"],
@@ -32,10 +32,10 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"XTimesSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.XTimesSubeffect\",
 					\"jumpTo\":3
 				}"
 			]	

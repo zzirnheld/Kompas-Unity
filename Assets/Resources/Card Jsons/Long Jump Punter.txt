@@ -21,7 +21,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"character within 2 spaces to punt Augment to\",
@@ -30,10 +30,10 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"AttachSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.AttachSubeffect\"
 				}"
 			]
 		}

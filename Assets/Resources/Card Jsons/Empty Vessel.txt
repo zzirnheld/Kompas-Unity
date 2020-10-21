@@ -12,13 +12,13 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"PayPipsTargetCostSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.PayPipsTargetCostSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"ResummonSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.ResummonSubeffect\"
 				}"
 			]	
 		},
@@ -32,10 +32,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChangeNESWSubeffect\",
 					\"nChange\":1,
 					\"eChange\":1,
 					\"sChange\":1,

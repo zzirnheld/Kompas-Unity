@@ -21,10 +21,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"character within 2 spaces to goal-kick Augment to\",
@@ -33,23 +33,23 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"TargetTargetsAugmentedCardSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.TargetTargetsAugmentedCardSubeffect\",
 					\"targetIndex\":0
 				}",
 				"{
-					\"subeffType\":\"TargetAugmentsSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetAugmentsSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"ConditionalEndSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ConditionalEndSubeffect\",
 					\"condition\":\"Number Targets <= Constant\",
 					\"constant\":3
 				}",
 				"{
-					\"subeffType\":\"AttachSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.AttachSubeffect\",
 					\"attachmentTarget\":1
 				}",
 				"{
-					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.LoopWhileHaveTargetsSubeffect\",
 					\"delete\":true,
 					\"remainingTargets\":3,
 					\"jumpTo\":5

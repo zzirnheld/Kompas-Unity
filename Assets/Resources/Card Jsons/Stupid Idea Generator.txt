@@ -16,7 +16,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Crazy Idea for Stupid Idea Generator to Ificate\",
@@ -25,12 +25,12 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"PayPipsSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.PayPipsSubeffect\",
 					\"xMultiplier\":0,
 					\"xModifier\":1
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where Stupid Idea Generator to play targeted Crazy Idea\",
@@ -38,7 +38,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"KompasServer.Effects.PlaySubeffect\"
 				}"
 			]
 		},
@@ -53,7 +53,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Stupid Idea to Generate\",
@@ -61,37 +61,37 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"DrawSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DrawSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"ClearOptionSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChooseOptionSubeffect\",
 					\"ChoiceBlurb\":\"Pay 1 pip or annihilate Stupid?\",
 					\"OptionBlurbs\":[\"Pay 1 pip\",\"Annhihilate\"],
 					\"OptionJumpIndices\":[4,7]
 				}",
 				"{
-					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect\",
 					\"jumpTo\":7
 				}",
 				"{
-					\"subeffType\":\"PayPipsSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.PayPipsSubeffect\",
 					\"xMultiplier\":0,
 					\"xModifier\":1
 				}",
 				"{
-					\"subeffType\":\"EndResolutionSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.EndResolutionSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"ClearOnImpossibleSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.ClearOnImpossibleSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"AnnihilateSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.AnnihilateSubeffect\"
 				}"
 			]	
 		}

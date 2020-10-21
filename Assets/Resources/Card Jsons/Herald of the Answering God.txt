@@ -14,14 +14,14 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"blurb\":\"card to answer prayers\",
 					\"cardRestriction\":{
 						\"cardRestrictions\":[\"Board\",\"Is Character\",\"Turn Player Controls\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"NegateSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.NegateSubeffect\"
 				}"
 			]
 		}

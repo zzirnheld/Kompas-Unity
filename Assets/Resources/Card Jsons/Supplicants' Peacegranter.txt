@@ -19,19 +19,19 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"ClearOptionSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChooseOptionSubeffect\",
 					\"ChoiceBlurb\":\"Draw or search for a \\\"God of Mercy\\\"\",
 					\"OptionBlurbs\":[\"Draw\",\"God\"],
 					\"OptionJumpIndices\":[1,3]
 				}",
 				"{
-					\"subeffType\":\"DrawSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DrawSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"EndResolutionSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.EndResolutionSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"ChooseFromListSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChooseFromListSubeffect\",
 					\"maxCanChoose\":1,
 					\"cardRestriction\":
 					{
@@ -41,7 +41,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"RehandSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.RehandSubeffect\"
 				}"
 			]
 		}

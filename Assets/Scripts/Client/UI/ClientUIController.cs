@@ -247,8 +247,8 @@ namespace KompasClient.UI
             ConfirmTriggerView.SetActive(false);
         }
 
-        public void ShowEffectOptions(DummyChooseOptionSubeffect subeff)
-            => chooseOptionUICtrl.ShowEffectOptions(subeff);
+        public void ShowEffectOptions(string choiceBlurb, string[] optionBlurbs)
+            => chooseOptionUICtrl.ShowEffectOptions(choiceBlurb, optionBlurbs);
 
         public void GetResponse()
         {

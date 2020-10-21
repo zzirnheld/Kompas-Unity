@@ -13,22 +13,22 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"DelaySubeffect\",
+					\"subeffType\":\"KompasServer.Effects.DelaySubeffect\",
 					\"numTimesToDelay\":0,
 					\"indexToResume\":1,
 					\"endCondition\":\"Turn Start\"
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"TargetThisSpaceSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSpaceSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Dragon Hatchling to eat (discard)\",
@@ -37,10 +37,10 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Dragon Hatchling to become (play)\",
@@ -49,7 +49,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"KompasServer.Effects.PlaySubeffect\"
 				}"
 			]
 		}

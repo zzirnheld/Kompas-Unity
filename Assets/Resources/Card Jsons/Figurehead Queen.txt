@@ -13,10 +13,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"ChangeSpellCSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChangeSpellCSubeffect\",
 					\"xModifier\":1
 				}"
 			]
@@ -31,25 +31,25 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"DelaySubeffect\",
+					\"subeffType\":\"KompasServer.Effects.DelaySubeffect\",
 					\"numTimesToDelay\":0,
 					\"indexToResume\":1,
 					\"triggerCondition\":\"Turn Start\"
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"SetXByTargetCostSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SetXByTargetCostSubeffect\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"ConditionalEndSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ConditionalEndSubeffect\",
 					\"condition\":\"X<C\",
 					\"constant\":10
 				}",
 				"{
-					\"subeffType\":\"DeckTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.DeckTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Deck\"],
@@ -57,14 +57,14 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"KompasServer.Effects.PlaySubeffect\"
 				}"
 			]
 		}

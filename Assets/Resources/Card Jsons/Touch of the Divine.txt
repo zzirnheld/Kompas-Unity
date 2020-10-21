@@ -13,17 +13,17 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetAugmentedCardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetAugmentedCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"TemporaryNegateSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.TemporaryNegateSubeffect\",
 					\"endCondition\":\"Augment Detached\",
 					\"triggerRestriction\":{
 						\"triggerRestrictions\":[\"This Card Triggered\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"TemporaryNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.TemporaryNESWBuffSubeffect\",
 					\"nBuff\":2,
 					\"eBuff\":2,
 					\"sBuff\":2,
@@ -50,10 +50,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"RehandSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.RehandSubeffect\"
 				}"
 			]
 		}

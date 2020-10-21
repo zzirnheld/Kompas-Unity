@@ -12,19 +12,19 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"SetXByGamestateSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SetXByGamestateSubeffect\",
 					\"whatToCount\":\"Effect Uses This Turn\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.XChangeNESWSubeffect\",
 					\"eMult\":-1
 				}",
 				"{
-					\"subeffType\":\"ChooseFromListSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChooseFromListSubeffect\",
 					\"maxCanChoose\":1,
 					\"cardRestriction\":
 					{
@@ -34,13 +34,13 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"DelaySubeffect\",
+					\"subeffType\":\"KompasServer.Effects.DelaySubeffect\",
 					\"numTimesToDelay\":1,
 					\"indexToResume\":1,
 					\"triggerCondition\":\"Turn Start\"
 				}",
 				"{
-					\"subeffType\":\"RehandSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.RehandSubeffect\"
 				}"
 			]
 		}

@@ -14,7 +14,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"SetXByGamestateSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SetXByGamestateSubeffect\",
 					\"whatToCount\":\"Cards Fitting Restriction\",
 					\"throughRestriction\":
 					{
@@ -24,28 +24,28 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"TargetAllSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.TargetAllSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"DeleteTargetSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DeleteTargetSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.LoopWhileHaveTargetsSubeffect\",
 					\"jumpTo\":2
 				}",
 				"{
-					\"subeffType\":\"PayPipsSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.PayPipsSubeffect\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"DrawXSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.DrawXSubeffect\",
 					\"xMultiplier\":1
 				}"
 			]	

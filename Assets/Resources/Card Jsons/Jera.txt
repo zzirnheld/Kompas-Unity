@@ -13,15 +13,15 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"ConditionalEndSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ConditionalEndSubeffect\",
 					\"condition\":\"Must be Friendly Turn\"
 				}",
 				"{
-					\"subeffType\":\"AddPipsSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.AddPipsSubeffect\",
 					\"xModifier\":3
 				}",
 				"{
-					\"subeffType\":\"EndTurnSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.EndTurnSubeffect\"
 				}"
 			]	
 		}

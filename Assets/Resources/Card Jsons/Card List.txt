@@ -59,7 +59,7 @@ Taunt Core
 Modular Golem Cores
 Slight Golemodifications
 Runeloremaster
-Runarunner
+Runerunner
 Runecaller
 Runespeaker
 Runepainter

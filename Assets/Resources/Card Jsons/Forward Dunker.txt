@@ -21,16 +21,16 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":{
 						\"cardRestrictions\":[\"Board\",\"Avatar\",\"Adjacent\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"AttachSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.AttachSubeffect\"
 				}"
 			]
 		}

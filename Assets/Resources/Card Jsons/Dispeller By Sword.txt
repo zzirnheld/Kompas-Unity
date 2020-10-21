@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"SetXBoardRestrictionSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SetXBoardRestrictionSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"spell for DispelSubeffectler by Sword to DispelSubeffect\",
@@ -23,7 +23,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Spell\",\"Cost<=X\"]
@@ -31,7 +31,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"DispelSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.DispelSubeffect\",
 					\"targetIndex\":-1
 				}"
 			]

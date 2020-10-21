@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":{
 						\"blurb\":\"Shaper to hand-summon\",
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Hand\"],
@@ -21,7 +21,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where to handsummon the Shaper\",
@@ -29,10 +29,10 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"KompasServer.Effects.PlaySubeffect\"
 				}",
 				"{
-					\"subeffType\":\"HangingAnnihilationSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.HangingAnnihilationSubeffect\",
 					\"endCondition\":\"Turn Start\",
 					\"triggerRestriction\":
 					{

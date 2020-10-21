@@ -17,19 +17,19 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"SetXByTargetValueSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SetXByTargetValueSubeffect\",
 					\"whatToCount\":\"C\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"AddPipsSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.AddPipsSubeffect\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"ChangeSpellCSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChangeSpellCSubeffect\",
 					\"xModifier\":1
 				}"
 			]	

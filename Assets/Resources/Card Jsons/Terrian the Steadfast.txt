@@ -14,14 +14,14 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"],
 					}
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\"
 				}"
 			]	
 		},
@@ -37,24 +37,24 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"PlayerChooseXSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.PlayerChooseXSubeffect\",
 					\"XRest\":{
 						\"xRestrictions\":[\"<=ThisE\"]
 					},
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.XChangeNESWSubeffect\",
 					\"eMult\":-1
 				}",
 				"{
-					\"subeffType\":\"TargetDefenderSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetDefenderSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.XChangeNESWSubeffect\",
 					\"wMult\":-2
 				}"
 			]	

@@ -13,10 +13,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetAugmentedCardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetAugmentedCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChangeNESWSubeffect\",
 					\"nChange\":1
 				}"
 			]

@@ -14,7 +14,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"ChangeAllNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChangeAllNESWSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Adjacent\"]

@@ -17,15 +17,15 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"SetXByTargetValueSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.SetXByTargetValueSubeffect\",
 					\"whatToCount\":\"S\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"MillSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.MillSubeffect\",
 					\"xMultiplier\":1
 				}"
 			]	

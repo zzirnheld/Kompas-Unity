@@ -13,13 +13,13 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"PayPipsTargetCostSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.PayPipsTargetCostSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"ResummonSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.ResummonSubeffect\"
 				}"
 			]	
 		},
@@ -33,14 +33,14 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Friendly\",\"Discard\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"RehandSubeffect\"
+					\"subeffType\":\"KompasServer.Effects.RehandSubeffect\"
 				}"
 			]	
 		}

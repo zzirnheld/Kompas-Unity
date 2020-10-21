@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Gyfu to give +1EW\",
@@ -21,17 +21,17 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.ChangeNESWSubeffect\",
 					\"eChange\":1,
 					\"wChange\":1
 				}",
 				"{
-					\"subeffType\":\"CountXLoopSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.CountXLoopSubeffect\",
 					\"canDecline\":true,
 					\"jumpTo\":0
 				}",
 				"{
-					\"subeffType\":\"AddPipsSubeffect\",
+					\"subeffType\":\"KompasServer.Effects.AddPipsSubeffect\",
 					\"xMultiplier\":1
 				}"
 			]	
