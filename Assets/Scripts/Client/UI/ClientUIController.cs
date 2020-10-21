@@ -277,7 +277,7 @@ namespace KompasClient.UI
 
         #region search
         public void StartSearch(List<GameCard> list, int numToChoose = 1, bool targetingSearch = true) 
-            => StartSearch(new SearchData(list, System.Math.Min(list.Count, numToChoose), targetingSearch, new List<GameCard>()));
+            => StartSearch(new SearchData(list, numToChoose, targetingSearch, new List<GameCard>()));
 
         public void StartSearch(SearchData data)
         {
@@ -342,7 +342,7 @@ namespace KompasClient.UI
         /// <summary>
         /// If this is the last search, hides everything. If it's not, moves on to the next search
         /// </summary>
-        private void ResetSearch()
+        public void ResetSearch()
         {
             //forget what we were searching through. don't just clear the list because that might clear the actual deck or discard
             currSearchData = null; //thank god for garbage collection lol :upside down smiley:

@@ -10,10 +10,12 @@ namespace KompasServer.Effects
         public const string XGreaterThanConst = "X>C";
         public const string XLessThanConst = "X<C";
         public const string NoneFitRestriction = "None Fit Restriction";
+        public const string AnyFitRestriction = "Any Fit Restriction";
         public const string MustBeFriendlyTurn = "Must be Friendly Turn";
         public const string MustBeEnemyTurn = "Must be Enemy Turn";
         public const string TargetViolatesRestriction = "Target Violates Restriction";
         public const string TargetFitsRestriction = "Target Fits Restriction";
+        public const string NumTargetsLTEConstant = "Number Targets <= Constant";
 
         public int constant = 0;
         public CardRestriction cardRestriction = new CardRestriction();
@@ -35,10 +37,12 @@ namespace KompasServer.Effects
                 case XGreaterThanConst:  return ServerEffect.X > constant;
                 case XLessThanConst:     return ServerEffect.X < constant;
                 case NoneFitRestriction: return !ServerGame.Cards.Any(c => cardRestriction.Evaluate(c));
+                case AnyFitRestriction:  return ServerGame.Cards.Any(c => cardRestriction.Evaluate(c));
                 case MustBeFriendlyTurn: return ServerGame.TurnPlayer != Effect.Controller;
                 case MustBeEnemyTurn:    return ServerGame.TurnPlayer == Effect.Controller;
                 case TargetViolatesRestriction: return !cardRestriction.Evaluate(Target);
                 case TargetFitsRestriction:     return cardRestriction.Evaluate(Target);
+                case NumTargetsLTEConstant:     return Effect.Targets.Count() <= constant;
                 default: throw new System.ArgumentException($"Condition {condition} invalid for conditional end subeffect");
             }
         }

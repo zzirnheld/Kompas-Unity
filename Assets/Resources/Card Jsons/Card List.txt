@@ -59,7 +59,7 @@ Taunt Core
 Modular Golem Cores
 Slight Golemodifications
 Runeloremaster
-Runerunner
+Runarunner
 Runecaller
 Runespeaker
 Runepainter
@@ -244,4 +244,20 @@ Supernova
 Starstuff
 Starbirth
 Cannot Be Created Nor Destroyed
+Sportsball
+Sportyball
+Arbiterary
+Runner Fielder
+Forward Dunker
+Relay Long-Jumper
+Long Jump Punter
+Mid-Outfielder
+Inside Goalie Defender
+Go! Play Sportsball!
+Teamwork!
+Goal-Net Touchdown
+Mad Jukes
+Big Brain Plays
+Getcha Getcha Getcha
+Time Out
 a lot of disappointment

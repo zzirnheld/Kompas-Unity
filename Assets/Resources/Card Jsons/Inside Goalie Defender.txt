@@ -1,0 +1,65 @@
+{
+	"cardType":67,
+	"cardName":"Inside Goalie Defender",
+	"effText":"When your adjacent Avatar is augmented, apply their Augment(s) to another character within 1 space of me.",
+	"effects":[
+		{
+			"triggerCondition":"Augment Attached",
+			"trigger":
+			"{
+				\"blurb\":\"Goal Kick\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"Coords Fit Restriction\"],
+					\"spaceRestriction\":
+					{
+						\"spaceRestrictions\":[\"Card Here Fits Restriction\",\"Adjacent to Source\"],
+						\"hereFitsRestriction\":{
+							\"cardRestrictions\":[\"Avatar\",\"Friendly\"]
+						}
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target Triggering Card\"
+				}",
+				"{
+					\"subeffType\":\"Board Target\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"character within 2 spaces to goal-kick Augment to\",
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Within C Spaces\",\"Distinct Name from Other Targets\"],
+						\"cSpaces\":2
+					}
+				}",
+				"{
+					\"subeffType\":\"Target Target's Augmented Card\",
+					\"targetIndex\":0
+				}",
+				"{
+					\"subeffType\":\"Target Augments\"
+				}",
+				"{
+					\"subeffType\":\"Conditionally End Effect Resolution\",
+					\"condition\":\"Number Targets <= Constant\",
+					\"constant\":3
+				}",
+				"{
+					\"subeffType\":\"Attach\",
+					\"attachmentTarget\":1
+				}",
+				"{
+					\"subeffType\":\"Loop While Have Targets\",
+					\"delete\":true,
+					\"remainingTargets\":3,
+					\"jumpTo\":5
+				}"
+			]
+		}
+	],
+	"n":1,
+	"e":5,
+	"s":1,
+	"w":0,
+	"subtypeText":""
+}

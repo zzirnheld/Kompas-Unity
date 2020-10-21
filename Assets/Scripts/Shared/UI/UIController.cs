@@ -87,7 +87,7 @@ namespace KompasCore.UI
             }
 
             //set all common values
-            selectedCardStatsText.text = hoveredCard.StatsString;
+            selectedCardStatsText.text = card.StatsString;
             selectedCardSubtypesText.text = string.IsNullOrEmpty(card.SubtypeText) ? "(No Subtypes)" : card.SubtypeText;
             selectedCardNameText.text = card.CardName;
             selectedCardImage.sprite = card.detailedSprite;

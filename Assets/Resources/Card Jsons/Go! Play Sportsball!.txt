@@ -1,0 +1,45 @@
+{
+	"cardType":83,
+	"cardName":"Go! Play Sportsball!",
+	"effText":"Deck-attach a Sportsball to your Avatar.",
+	"effects":[
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Choose From List\",
+					\"maxCanChoose\":1,
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Sportsball\",
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Is Augment\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Sportsball\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Auto Target\",
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Avatar\",\"Friendly\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Target Target's Space\"
+				}",
+				"{
+					\"subeffType\":\"Play\",
+					\"targetIndex\":-2
+				}"
+			]	
+		}
+	],
+	"c":1,
+	"spellType":"Simple",
+	"subtypes":["Simple"],
+	"subtypeText":"Simple"
+}

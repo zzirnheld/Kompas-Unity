@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Runesaga",
-	"effText":"Must be cast normally. Give a Summoned Runer +25ESW. Handcast any number of Runes.",
+	"effText":"Must be cast normally. Give a Summoned Runar +25ESW. Handcast any number of Runes.",
 	"effects":[
 		{
 			"triggerCondition":"Play",
@@ -16,9 +16,9 @@
 					\"subeffType\":\"Board Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"Runer for Runesaga to give +25ESW\",
+						\"blurb\":\"Runar for Runesaga to give +25ESW\",
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Summoned\",\"Board\"],
-						\"subtypesInclude\":[\"Runer\"]
+						\"subtypesInclude\":[\"Runar\"]
 					}
 				}",
 				"{
@@ -60,6 +60,5 @@
 	},
 	"c":25,
 	"spellType":"Simple",
-	"subtypes":["Runer","Simple"],
-	"subtypeText":"Runer Simple"
+	"subtypeText":"Simple"
 }

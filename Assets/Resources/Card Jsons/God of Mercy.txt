@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"God of Mercy",
-	"effText":"When I arrive adjacent to a Supplicant, negate adjacent characters.",
+	"effText":"When I arrive adjacent to a Supplicant, negate adjacent characters until I'm removed.",
 	"effects":[
 		{
 			"triggerCondition":"Arrive",

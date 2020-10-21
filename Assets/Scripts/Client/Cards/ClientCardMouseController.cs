@@ -38,11 +38,23 @@ namespace KompasClient.Cards
 
         public override void OnMouseUp()
         {
-            if (EventSystem.current.IsPointerOverGameObject()) return;
+            //don't do anything if we're over an event system object, 
+            //because that would let us click on cards underneath prompts
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                Debug.Log($"Released card while pointer over event system object");
+                return;
+            }
             base.OnMouseUp();
 
             //don't allow dragging cards if we're awaiting a target
-            if (Card.Game.targetMode != Game.TargetMode.Free) return;
+            if (Card.Game.targetMode != Game.TargetMode.Free)
+            {
+                Debug.Log($"On mouse up called for {Card.CardName} while in a non-free target mode {Card.Game.targetMode}. Putting back.");
+                Card.PutBack();
+                return;
+            }
+            else Debug.Log($"On mouse up called for {Card.CardName} at {transform.position}");
 
             //get coords w/r/t gameboard
             var boardLocalPosition = Game.boardObject.transform.InverseTransformPoint(Card.gameObject.transform.position);
@@ -57,7 +69,7 @@ namespace KompasClient.Cards
                 if (Card.Location == CardLocation.Field)
                 {
                     var cardThere = Game.boardCtrl.GetCardAt(x, y);
-                    Debug.Log($"Trying to move/attack to {x}, {y}. The controller index, if any, is {cardThere?.ControllerIndex}");
+                    Debug.Log($"Trying to move/attack to {x}, {y}. The controller index, if any, is {(cardThere == null ? -1 : cardThere.ControllerIndex)}");
                     //then check if it's an attack or not
                     if (cardThere != null && cardThere.Controller != Card.Controller)
                         ClientGame.clientNotifier.RequestAttack(Card, cardThere);
@@ -67,23 +79,10 @@ namespace KompasClient.Cards
                 //otherwise, it is being played from somewhere like the hand or discard
                 else ClientGame.clientNotifier.RequestPlay(Card, x, y);
             }
-            //if it's not on the board, maybe it's on top of the discard
-            else if (WithinIgnoreY(Card.gameObject.transform.position, minDiscardX, maxDiscardX, minDiscardZ, maxDiscardZ))
-            {
-                //in that case, discard it //TODO do this by raycasting along another layer to see if you hit deck/discard
-                ClientGame.clientNotifier.RequestDiscard(Card);
-            }
-            //maybe it's on top of the deck
-            else if (WithinIgnoreY(Card.gameObject.transform.position, minDeckX, maxDeckX, minDeckZ, maxDeckZ))
-            {
-                //in that case, topdeck it
-                ClientGame.clientNotifier.RequestTopdeck(Card);
-            }
-            //if it's not in any of those, probably should go back in the hand.
-            else
-            {
-                ClientGame.clientNotifier.RequestRehand(Card);
-            }
+            else Debug.Log($"Card {Card.CardName} dragged to somewhere off the board. Only putting back.");
+
+            //regardless, put the card where it goes until we know where to properly put it
+            Card.PutBack();
         }
     }
 }

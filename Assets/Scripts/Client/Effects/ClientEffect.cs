@@ -81,7 +81,7 @@ namespace KompasClient.Effects
 
             //in case any cards are still showing targets from the last effect, which they will if this happens after another effect in the stack.
             //TODO move this behavior to a "effect end" packet and stuff?
-            ClientGame.ShowNoCardsAsTargets();
+            ClientGame.ShowNoTargets();
         }
     }
 }

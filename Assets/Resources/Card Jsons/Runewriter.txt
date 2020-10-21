@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Runewriter",
-	"effText":"Once each friendly turn, you can hand-reshuffle a Rune to search your deck’s top 10 cards for a Runer.",
+	"effText":"Once each friendly turn, you can hand-reshuffle a Rune to search your deck’s top 10 cards for a Runar.",
 	"effects":[
 		{
 			"activationRestriction":{
@@ -27,35 +27,31 @@
 				}",
 				"{
 					\"subeffType\":\"Jump on Effect Impossible\",
-					\"jumpTo\":5
+					\"jumpTo\":7
 				}",
 				"{
-					\"subeffType\":\"Choose From List\",
+					\"subeffType\":\"Choose From List Saving Rest\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"Runer for Runewriter to search (to hand)\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Index<X\"],
-						\"subtypesInclude\":[\"Runer\"]
+						\"blurb\":\"Runar for Runewriter to search (to hand)\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Index<C\"],
+						\"subtypesInclude\":[\"Runar\"],
+						\"constant\":10
 					},
-					\"maxCanChoose\":1,
-					\"xMultiplier\":1
+					\"restRestriction\":
+					{
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<C\",\"Not Already Target\"],
+						\"constant\":10
+					}
 				}",
 				"{
 					\"subeffType\":\"Clear Jump on Effect Impossible\"
 				}",
 				"{
-					\"subeffType\":\"Add Rest\",
-					\"cardRestriction\":
-					{
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<X\",\"Not Already Target\"]
-					},
-					\"xMultiplier\":1
+					\"subeffType\":\"Bottomdeck Rest\"
 				}",
 				"{
 					\"subeffType\":\"Rehand\"
-				}",
-				"{
-					\"subeffType\":\"Bottomdeck Rest\"
 				}"
 			]
 		}
@@ -64,6 +60,6 @@
 	"e":2,
 	"s":2,
 	"w":2,
-	"subtypes":["Runer","Mage"],
-	"subtypeText":"Runer Mage"
+	"subtypes":["Runar","Mage"],
+	"subtypeText":"Runar Mage"
 }

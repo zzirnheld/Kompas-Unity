@@ -37,7 +37,7 @@ namespace KompasServer.GameCore
 
         public ServerEffect CurrEffect { get; set; }
         public override IStackable CurrStackEntry => EffectsController.CurrStackEntry;
-        public override bool NothingHappening => EffectsController.StackEmpty;
+        public override bool NothingHappening => EffectsController.NothingHappening;
 
         public override int TurnCount 
         { 
@@ -154,7 +154,8 @@ namespace KompasServer.GameCore
 
             Debug.Log($"Setting avatar for player {player.index}");
             player.Avatar = avatar;
-            avatar.Play(player.index * 6, player.index * 6, player, null);
+            //avatar.Play(player.index * 6, player.index * 6, player);
+            Debug.Log($"Avatar successfully played? {avatar.Play(player.index * 6, player.index * 6, player)}");
             //if both players have decks now, then start the game
             lock (CheckAvatarsLock)
             {
@@ -194,7 +195,7 @@ namespace KompasServer.GameCore
             int i;
             for (i = 0; i < x; i++)
             {
-                var toDraw = controller.deckCtrl.PopTopdeck();
+                var toDraw = controller.deckCtrl.Topdeck;
                 if (toDraw == null) break;
                 var eachDrawContext = new ActivationContext(card: toDraw, stackable: stackSrc, triggerer: controller);
                 EffectsController.TriggerForCondition(Trigger.EachDraw, eachDrawContext);
@@ -218,11 +219,7 @@ namespace KompasServer.GameCore
             else uiCtrl.UpdateEnemyPips(pipsToSet);
         }
 
-        public void GiveTurnPlayerPips()
-        {
-            Debug.Log($"Giving turn player pips when leyload is {Leyload} on turn {TurnCount}");
-            GivePlayerPips(TurnPlayer, TurnPlayer.Pips + Leyload);
-        }
+        public void GiveTurnPlayerPips() => GivePlayerPips(TurnPlayer, TurnPlayer.Pips + Leyload);
 
         public void Attack(GameCard attacker, GameCard defender, ServerPlayer instigator, bool playerInitiated = false)
         {
@@ -310,15 +307,6 @@ namespace KompasServer.GameCore
             //trigger turn start effects
             var context = new ActivationContext(triggerer: TurnServerPlayer);
             EffectsController.TriggerForCondition(Trigger.TurnStart, context);
-
-            //then, discard any delayed or vanishing cards
-            foreach(var c in Cards)
-            {
-                if (c.Location == CardLocation.Field && c.CardType == 'S' 
-                    && (c.SpellSubtype == CardBase.VanishingSubtype || c.SpellSubtype == CardBase.DelayedSubtype) 
-                    && c.TurnsOnBoard > c.Arg) 
-                    c.Discard();
-            }
 
             EffectsController.CheckForResponse();
         }

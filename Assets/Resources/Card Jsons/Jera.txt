@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Jera",
-	"effText":"Can’t be cast normally. If it’s your turn, gain 5 pips and end your turn.",
+	"effText":"Can’t be cast normally. If it’s your turn, gain 3 pips and end your turn.",
 	"effects":[
 		{
 			"triggerCondition":"Play",
@@ -18,7 +18,7 @@
 				}",
 				"{
 					\"subeffType\":\"Add Pips\",
-					\"xModifier\":5
+					\"xModifier\":3
 				}",
 				"{
 					\"subeffType\":\"End Turn\"

@@ -16,6 +16,6 @@ namespace KompasClient.Networking
 {
     public class DiscardSimplesClientPacket : DiscardSimplesPacket, IClientOrderPacket
     {
-        public void Execute(ClientGame clientGame) => clientGame.boardCtrl.DiscardSimples();
+        public void Execute(ClientGame clientGame) => clientGame.boardCtrl.ClearSpells();
     }
 }

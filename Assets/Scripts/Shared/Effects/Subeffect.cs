@@ -19,6 +19,7 @@ namespace KompasCore.Effects
         public const string TargetThis = "Target This";
         public const string TargetThisSpace = "Target This Space";
         public const string TargetAugmentedCard = "Target Augmented Card";
+        public const string TargetTargetsAugmentedCard = "Target Target's Augmented Card";
         public const string ChooseFromList = "Choose From List";
         public const string ChooseFromListSaveRest = "Choose From List Saving Rest";
         public const string DeleteTargetFromList = "Delete Target";
@@ -31,6 +32,8 @@ namespace KompasCore.Effects
         public const string TargetTriggeringCard = "Target Triggering Card";
         public const string TargetTriggeringCoords = "Target Triggering Space";
         public const string TargetTargetsSpace = "Target Target's Space";
+        public const string AutoTarget = "Auto Target";
+        public const string TargetAugments = "Target Augments";
 
         //changing values, esp. on cards
         //TODO deprecate change nesw
@@ -55,6 +58,7 @@ namespace KompasCore.Effects
         public const string ResummonAll = "Resummon All";
 
         public const string PayStats = "Pay Stats";
+        public const string ChangeStats = "Change Stats";
 
         //effect x
         public const string SetXByBoardCount = "Set X by Board Count";
@@ -82,6 +86,8 @@ namespace KompasCore.Effects
         public const string DrawX = "Draw X";
         public const string Mill = "Mill";
         public const string BottomdeckRest = "Bottomdeck Rest";
+
+        public const string AttachCard = "Attach";
 
         //loops/control flow
         public const string XTimesLoop = "Loop X Times";

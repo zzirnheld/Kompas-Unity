@@ -45,6 +45,7 @@ namespace KompasClient.Networking
                 clientGame.CurrSpaceRestriction = restriction;
                 //TODO display based on that space
                 clientGame.clientUICtrl.SetCurrState("Choose Space Target", restriction.blurb);
+                clientGame.clientUICtrl.boardUICtrl.ShowSpaceTargets(space => restriction.Evaluate(space));
             }
         }
     }

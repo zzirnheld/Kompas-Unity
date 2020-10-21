@@ -1,6 +1,6 @@
 {
 	"cardType":67,
-	"cardName":"Runerunner",
+	"cardName":"Runarunner",
 	"effText":"Once each round, you can pip handcast a Rune.",
 	"effects":[
 		{
@@ -15,7 +15,7 @@
 					\"subeffType\":\"Hand Target\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"Rune for Runerunner to cast\",
+						\"blurb\":\"Rune for Runarunner to cast\",
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Hand\",\"Can Be Played\",\"Effect Controller can Afford Cost\"],
 						\"subtypesInclude\":[\"Rune\"]
 					}
@@ -24,7 +24,7 @@
 					\"subeffType\":\"Space Target\",
 					\"spaceRestriction\":
 					{
-						\"blurb\":\"where for Runerunner to cast its target Rune\",
+						\"blurb\":\"where for Runarunner to cast its target Rune\",
 						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
@@ -42,6 +42,6 @@
 	"e":3,
 	"s":3,
 	"w":3,
-	"subtypes":["Runer","Mage"],
-	"subtypeText":"Runer Mage"
+	"subtypes":["Runar","Mage"],
+	"subtypeText":"Runar Mage"
 }

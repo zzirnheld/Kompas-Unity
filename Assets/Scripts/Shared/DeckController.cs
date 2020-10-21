@@ -54,24 +54,6 @@ namespace KompasCore.GameCore
             return true;
         }
 
-        public GameCard PopTopdeck()
-        {
-            if (Deck.Count == 0) return null;
-
-            var card = Deck[0];
-            RemoveFromDeck(card);
-            return card;
-        }
-
-        public GameCard PopBottomdeck()
-        {
-            if (Deck.Count == 0) return null;
-
-            GameCard card = Deck[Deck.Count - 1];
-            RemoveFromDeck(card);
-            return card;
-        }
-
         /// <summary>
         /// Random access remove from deck
         /// </summary>

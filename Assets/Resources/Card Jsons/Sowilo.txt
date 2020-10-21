@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Sowilo",
-	"effText":"Can’t be cast normally. I give a character -1E and another +1E. Draw 1 and gain a pip.",
+	"effText":"Can’t be cast normally. I give a character -1E and another +1E. Gain a pip.",
 	"effects":[
 		{
 			"triggerCondition":"Play",
@@ -35,9 +35,6 @@
 				"{
 					\"subeffType\":\"Change NESW\",
 					\"eChange\":1
-				}",
-				"{
-					\"subeffType\":\"Draw\"
 				}",
 				"{
 					\"subeffType\":\"Add Pips\",

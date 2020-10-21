@@ -16,6 +16,9 @@
 			}",
 			"subeffects":[
 				"{
+					\"subeffType\":\"Target Triggering Card\"
+				}",
+				"{
 					\"subeffType\":\"Change NESW\",
 					\"eChange\":2,
 					\"sChange\":2,

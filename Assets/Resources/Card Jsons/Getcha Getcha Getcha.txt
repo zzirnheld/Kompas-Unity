@@ -1,0 +1,33 @@
+{
+	"cardType":83,
+	"cardName":"Getcha Getcha Getcha",
+	"effText":"When a friendly character is augmented, give them +1NW.",
+	"effects":[
+		{
+			"triggerCondition":"Augmented",
+			"trigger":
+			"{
+				\"blurb\":\"Getcha Getcha Getcha\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Friendly\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Target Triggering Card\"
+				}",
+				"{
+					\"subeffType\":\"X Change NESW\",
+					\"nMod\":1,
+					\"wMod\":1
+				}"
+			]
+		}
+	],
+	"c":1,
+	"spellType":"Enchant",
+	"subtypeText":"Sportsball Play Enchant"
+}

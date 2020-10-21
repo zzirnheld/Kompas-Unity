@@ -1,15 +1,13 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using KompasCore.GameCore;
-using KompasCore.Effects;
-using KompasCore.Cards;
-using KompasClient.Cards;
+﻿using KompasClient.Cards;
+using KompasClient.Effects;
 using KompasClient.Networking;
 using KompasClient.UI;
-using KompasClient.Effects;
-using TMPro;
+using KompasCore.Cards;
+using KompasCore.Effects;
+using KompasCore.GameCore;
 using System;
-using System.Linq;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace KompasClient.GameCore
 {
@@ -92,16 +90,6 @@ namespace KompasClient.GameCore
         }
 
         //requesting
-        public void RequestMove(GameCard card, int toX, int toY)
-        {
-            clientNotifier.RequestMove(card, toX, toY);
-        }
-
-        public void RequestPlay(GameCard card, int toX, int toY)
-        {
-            clientNotifier.RequestPlay(card, toX, toY);
-        }
-
         public void TargetCard(GameCard card)
         {
             if (CurrCardRestriction == null)
@@ -126,10 +114,7 @@ namespace KompasClient.GameCore
                     targetMode = TargetMode.OnHold;
                 }
             }
-            else
-            {
-                Debug.LogError($"Tried to target card {card.CardName} while in not understood target mode {targetMode}");
-            }
+            else Debug.LogError($"Tried to target card {card.CardName} while in not understood target mode {targetMode}");
         }
 
         public void SetFirstTurnPlayer(int playerIndex)
@@ -175,15 +160,16 @@ namespace KompasClient.GameCore
             stackEmpty = true;
             clientUICtrl.SetCurrState("Stack Empty");
             foreach (var c in Cards) c.ResetForStack();
-            ShowNoCardsAsTargets();
+            ShowNoTargets();
         }
 
         /// <summary>
         /// Makes each card no longer show any highlight about its status as a target
         /// </summary>
-        public void ShowNoCardsAsTargets()
+        public void ShowNoTargets()
         {
             foreach (var card in Cards) card.cardCtrl.HideTarget();
+            clientUICtrl.boardUICtrl.ShowSpaceTargets(_ => false);
         }
 
         /// <summary>

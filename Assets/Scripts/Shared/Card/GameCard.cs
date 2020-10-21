@@ -92,7 +92,7 @@ namespace KompasCore.Cards
             set
             {
                 (BoardX, BoardY) = value;
-                cardCtrl?.SetPhysicalLocation(Location);
+                if(cardCtrl != null) cardCtrl.SetPhysicalLocation(Location);
                 foreach (var aug in Augments) aug.Position = value;
             }
         }
@@ -196,25 +196,17 @@ namespace KompasCore.Cards
 
         public void SetInfo(SerializableCard serializedCard, int id)
         {
-            base.SetInfo(serializedCard);
+            base.SetInfo(serializedCard); //base is redundant but adds clarity
 
             this.ID = id;
             this.serializedCard = serializedCard;
 
-            TurnsOnBoard = 0;
-            SetSpacesMoved(0, true);
-            SetAttacksThisTurn(0, true);
             MovementRestriction = serializedCard.MovementRestriction ?? new MovementRestriction();
             MovementRestriction.SetInfo(this);
             AttackRestriction = serializedCard.AttackRestriction ?? new AttackRestriction();
             AttackRestriction.SetInfo(this);
             PlayRestriction = serializedCard.PlayRestriction ?? new PlayRestriction();
             PlayRestriction.SetInfo(this);
-
-            if (Effects != null) foreach (var eff in Effects) eff.Reset();
-            //instead of setting negations or activations to 0, so that it updates the client correctly
-            while (Negated) Negated = false;
-            while (Activated) Activated = false;
 
             cardCtrl.ShowForCardType(CardType, false);
         }
@@ -225,7 +217,22 @@ namespace KompasCore.Cards
         /// </summary>
         public virtual void ResetCard()
         {
-            if (serializedCard != null) SetInfo(serializedCard, ID);
+            if(serializedCard == null)
+            {
+                Debug.LogError($"Tried to reset card whose info was never set!");
+                return;
+            }
+
+            base.SetInfo(serializedCard); //base is redundant but adds clarity
+
+            TurnsOnBoard = 0;
+            SetSpacesMoved(0, true);
+            SetAttacksThisTurn(0, true);
+
+            if (Effects != null) foreach (var eff in Effects) eff.Reset();
+            //instead of setting negations or activations to 0, so that it updates the client correctly
+            while (Negated) Negated = false;
+            while (Activated) Activated = false;
         }
 
         /// <summary>
@@ -300,20 +307,39 @@ namespace KompasCore.Cards
         /// <param name="card">The card to check if it's behind this one</param>
         /// <returns><see langword="true"/> if <paramref name="card"/> is behind this, <see langword="false"/> otherwise.</returns>
         public bool CardBehind(GameCard card) => SpaceBehind(card.Position);
+
+        public bool SpaceDirectlyInFront((int x, int y) space)
+            => SubjectiveCoords(space) == (SubjectivePosition.x + 1, SubjectivePosition.y + 1);
+
+        public bool CardDirectlyInFront(GameCard card) => SpaceDirectlyInFront(card.Position);
         #endregion distance/adjacency
 
-        public void PutBack() => cardCtrl?.SetPhysicalLocation(Location);
+        public void PutBack()
+        {
+            if(cardCtrl != null) cardCtrl.SetPhysicalLocation(Location);
+        }
 
         public void CountSpacesMovedTo((int x, int y) to) => SetSpacesMoved(spacesMoved + DistanceTo(to.x, to.y));
 
         #region augments
-        public virtual void AddAugment(GameCard augment, IStackable stackSrc = null)
+        public virtual bool AddAugment(GameCard augment, IStackable stackSrc = null)
         {
-            if (augment == null) return;
-            augment.Remove(stackSrc);
-            augment.Location = CardLocation.Field;
+            //can't add a null augment
+            if (augment == null) return false;
+
+            //if this and the other are in the same place, it doesn't leave play
+            if (augment.Location != Location) augment.Remove(stackSrc);
+            else if (augment.AugmentedCard != null) augment.Detach(stackSrc);
+
+            //regardless, add the augment
             Augments.Add(augment);
+
+            //and update the augment's augmented card, location, and position to reflect its new status
             augment.AugmentedCard = this;
+            augment.Location = Location;
+            augment.Position = Position;
+
+            return true;
         }
 
         protected virtual bool Detach(IStackable stackSrc = null)
@@ -360,6 +386,9 @@ namespace KompasCore.Cards
             SetA(stats.a, stackSrc);
         }
 
+        public void AddToStats((int n, int e, int s, int w, int c, int a) stats, IStackable stackSrc = null)
+            => SetStats((N + stats.n, E + stats.e, S + stats.s, W + stats.w, C + stats.c, A + stats.a), stackSrc);
+
         public void SwapCharStats(GameCard other, bool swapN = true, bool swapE = true, bool swapS = true, bool swapW = true)
         {
             int[] aNewStats = new int[4];
@@ -389,6 +418,9 @@ namespace KompasCore.Cards
 
             switch (Location)
             {
+                case CardLocation.Nowhere:
+                    Debug.Log($"Removing {CardName} from nowehre");
+                    return true;
                 case CardLocation.Field:
                     if (AugmentedCard != null) return Detach(stackSrc);
                     else return Game.boardCtrl.RemoveFromBoard(this);

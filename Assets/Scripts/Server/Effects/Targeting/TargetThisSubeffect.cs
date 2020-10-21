@@ -1,6 +1,6 @@
 ﻿namespace KompasServer.Effects
 {
-    public class TargetThisSubeffect : CardTargetSubeffect
+    public class TargetThisSubeffect : ServerSubeffect
     {
         public override bool Resolve()
         {

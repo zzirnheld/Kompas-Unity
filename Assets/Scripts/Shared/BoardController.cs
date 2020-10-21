@@ -154,16 +154,30 @@ namespace KompasCore.GameCore
         /// <param name="toY">Y coordinate to play the card to</param>
         public virtual bool Play(GameCard toPlay, int toX, int toY, Player controller, IStackable stackSrc = null)
         {
+            if (toPlay == null) return false;
+
             Debug.Log($"In boardctrl, playing {toPlay.CardName} to {toX}, {toY}");
             toPlay.Remove(stackSrc);
 
-            if (toPlay.CardType == 'A') Board[toX, toY].AddAugment(toPlay, stackSrc);
-            else Board[toX, toY] = toPlay;
+            //augments can't be played to a regular space.
+            if (toPlay.CardType == 'A')
+            {
+                //augments therefore just get put on whatever card is on that space rn.
+                var augmented = Board[toX, toY];
+                //if there isn't a card, well, you can't do that.
+                if (augmented == null) return false;
+                //assuming there is a card there, try and add the augment. if it don't work, it borked.
+                if (!Board[toX, toY].AddAugment(toPlay, stackSrc)) return false;
+            }
+            //otherwise, put a card to the requested space
+            else
+            {
+                Board[toX, toY] = toPlay;
+                toPlay.Location = CardLocation.Field;
+                toPlay.Position = (toX, toY);
+            }
 
-            toPlay.Location = CardLocation.Field;
-            toPlay.Position = (toX, toY);
             toPlay.Controller = controller;
-
             return true;
         }
 
@@ -207,11 +221,24 @@ namespace KompasCore.GameCore
             else return Swap(card, toX, toY, playerInitiated, stackSrc);
         }
 
-        public void DiscardSimples()
+        public void ClearSpells()
         {
             foreach (GameCard c in Board)
             {
-                if (c != null && c.SpellSubtype == CardBase.SimpleSubtype) c.Discard();
+                if (c == null) continue;
+                else if (c.CardType == 'S')
+                {
+                    switch (c.SpellSubtype)
+                    {
+                        case CardBase.SimpleSubtype: 
+                            c.Discard();
+                            break;
+                        case CardBase.DelayedSubtype:
+                        case CardBase.VanishingSubtype:
+                            if (c.TurnsOnBoard >= c.Arg) c.Discard();
+                            break;
+                    }
+                }
             }
         }
         #endregion game mechanics

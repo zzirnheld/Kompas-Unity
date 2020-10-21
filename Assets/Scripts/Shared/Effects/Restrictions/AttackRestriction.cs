@@ -14,7 +14,7 @@ namespace KompasCore.Effects
         public const string DefenderIsEnemy = "Defender is Enemy";
         public const string FriendlyTurn = "Friendly Turn";
         public const string MaxPerTurn = "Maximum Per Turn";
-        public const string StackEmpty = "Stack Empty";
+        public const string NothingHappening = "Nothing Happening";
         public const string IsNotAvatar = "Is Not Avatar";
         public const string InPlay = "In Play";
 
@@ -23,7 +23,7 @@ namespace KompasCore.Effects
         public const string ThisIsActive = "This is Activated";
 
         public static readonly string[] DefaultAttackRestrictions = { ThisIsCharacter, DefenderIsCharacter, DefenderIsAdjacent, DefenderIsEnemy,
-            FriendlyTurn, MaxPerTurn, StackEmpty, IsNotAvatar, InPlay };
+            FriendlyTurn, MaxPerTurn, NothingHappening, IsNotAvatar, InPlay };
 
         public static readonly string[] AtAllRestrictions = { ThisIsCharacter, FriendlyTurn, MaxPerTurn, IsNotAvatar, InPlay };
 
@@ -58,7 +58,7 @@ namespace KompasCore.Effects
                 case DefenderIsEnemy: return Card.Controller != defender.Controller;
                 case FriendlyTurn: return Card.Controller == Card.Game.TurnPlayer;
                 case MaxPerTurn: return Card.AttacksThisTurn < maxAttacks;
-                case StackEmpty: return Card.Game.NothingHappening;
+                case NothingHappening: return Card.Game.NothingHappening;
                 case IsNotAvatar: return !Card.IsAvatar;
                 case ThisIsActive: return Card.Activated;
                 case InPlay: return Card.Location == CardLocation.Field;

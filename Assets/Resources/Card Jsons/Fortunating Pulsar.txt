@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Fortunating Pulsar",
-	"effText":"When your Avatar gains S, discard 1, then draw 1.\nWhen your Avatar gains S, give both players a pip.",
+	"effText":"When your Avatar gains S, discard 1, then draw 1.\nWhen your Avatar loses S, give both players a pip.",
 	"effects":[
 		{
 			"triggerCondition":"S Change",

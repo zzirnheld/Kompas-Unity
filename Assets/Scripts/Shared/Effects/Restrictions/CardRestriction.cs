@@ -44,6 +44,11 @@ namespace KompasCore.Effects
         public const string SubtypesInclude = "Subtypes Include";
         public const string SubtypesExclude = "Subtypes Exclude";
 
+        //is
+        public const string IsSource = "Is Source";
+        public const string AugmentsTarget = "Is Augment of Target";
+        public const string WieldsAugmentFittingRestriction = "Wields Augment Fitting Restriction";
+
         //distinct
         public const string DistinctFromSource = "Distinct from Source";
         public const string DistinctFromTarget = "Distinct from Target";
@@ -86,6 +91,7 @@ namespace KompasCore.Effects
 
         //positioning
         public const string Adjacent = "Adjacent";
+        public const string AdjacentToTarget = "Adjacent to Target";
         public const string WithinCSpacesOfSource = "Within C Spaces";
         public const string InAOE = "In AOE";
         public const string NotInAOE = "Not In AOE";
@@ -97,16 +103,17 @@ namespace KompasCore.Effects
         public const string IndexInListLTC = "Index<C";
         public const string IndexInListLTX = "Index<X";
         public const string SameColumnAsSource = "Same Column as Source";
+        public const string DirectlyInFrontOfSource = "Directly In Front of Source";
 
         //misc
         public const string CanBePlayed = "Can Be Played";
         public const string EffectControllerCanPayCost = "Effect Controller can Afford Cost";
+        public const string Augmented = "Augmented";
         #endregion restrictions
 
         //because JsonUtility will fill in all values with defaults if not present
         public string[] cardRestrictions = new string[0];
 
-        public int costsLessThan;
         public string nameIs;
         public string[] subtypesInclude = new string[0];
         public string[] subtypesExclude = new string[0];
@@ -114,9 +121,12 @@ namespace KompasCore.Effects
         public CardLocation[] locations;
         public int costMultiplier = 1;
         public int costDivisor = 1;
-
         public int cSpaces;
         public string[] adjacencySubtypes = new string[0];
+
+        [System.NonSerialized]
+        private CardRestriction secondaryRestriction;
+        public string secondaryRestrictionString = null;
 
         public GameCard Source { get; private set; }
         public Player Controller { get; private set; }
@@ -130,6 +140,13 @@ namespace KompasCore.Effects
             Source = subeff.Source;
             Controller = subeff.Controller;
             Effect = subeff.Effect;
+
+            //if there's any secondary restriction, create it
+            if (secondaryRestrictionString != null)
+            {
+                secondaryRestriction = JsonUtility.FromJson<CardRestriction>(secondaryRestrictionString);
+                secondaryRestriction.Initialize(subeff);
+            }
         }
 
         public void Initialize(GameCard source, Player controller, Effect eff)
@@ -186,6 +203,11 @@ namespace KompasCore.Effects
                 case SubtypesInclude: return subtypesInclude.All(s => potentialTarget.SubtypeText.Contains(s));
                 case SubtypesExclude: return subtypesExclude.All(s => !potentialTarget.SubtypeText.Contains(s));
 
+                //is
+                case IsSource: return potentialTarget == Source;
+                case AugmentsTarget: return potentialTarget.AugmentedCard == Subeffect.Target;
+                case WieldsAugmentFittingRestriction: return potentialTarget.Augments.Any(c => secondaryRestriction.Evaluate(c));
+
                 //distinct
                 case DistinctFromSource: return potentialTarget != Source;
                 case DistinctFromTarget: return potentialTarget != Subeffect.Target;
@@ -228,6 +250,7 @@ namespace KompasCore.Effects
 
                 //positioning
                 case Adjacent:           return potentialTarget.IsAdjacentTo(Source);
+                case AdjacentToTarget:   return potentialTarget.IsAdjacentTo(Subeffect.Target);
                 case AdjacentToSubtype:  return potentialTarget.AdjacentCards.Any(card => adjacencySubtypes.All(s => card.SubtypeText.Contains(s)));
                 case InAOE:              return Source.CardInAOE(potentialTarget);
                 case NotInAOE:           return !Source.CardInAOE(potentialTarget);
@@ -239,10 +262,12 @@ namespace KompasCore.Effects
                 case IndexInListLTC:     return potentialTarget.IndexInList < constant;
                 case IndexInListLTX:     return potentialTarget.IndexInList < x;
                 case SameColumnAsSource: return potentialTarget.SameColumn(Source);
+                case DirectlyInFrontOfSource: return Source.CardDirectlyInFront(potentialTarget);
 
                 //misc
                 case CanBePlayed: return Subeffect.Game.ExistsEffectPlaySpace(Source.PlayRestriction, Effect);
                 case EffectControllerCanPayCost: return Subeffect.Effect.Controller.Pips >= potentialTarget.Cost * costMultiplier / costDivisor;
+                case Augmented: return potentialTarget.Augments.Any();
                 default: throw new ArgumentException($"Invalid card restriction {restriction}", "restriction");
             }
         }

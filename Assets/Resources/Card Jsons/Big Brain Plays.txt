@@ -1,0 +1,46 @@
+{
+	"cardType":83,
+	"cardName":"Big Brain Plays",
+	"effText":"Pip deck-cast a Sportball Play.",
+	"effects":[
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"Choose From List\",
+					\"maxCanChoose\":1,
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Big Brain Play?\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Is Spell\",\"Can Be Played\",\"Effect Controller can Afford Cost\"],
+						\"subtypesInclude\":[\"Sportsball Play\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Space Target\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"Big Brain Play!\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Pay Target's Cost in Pips\",
+					\"xMultiplier\":1
+				}",
+				"{
+					\"subeffType\":\"Play\"
+				}"
+			]
+		}
+	],
+	"c":1,
+	"spellType":"Simple",
+	"subtypeText":"Simple"
+}

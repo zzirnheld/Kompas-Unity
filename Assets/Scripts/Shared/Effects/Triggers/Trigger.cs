@@ -40,8 +40,9 @@ namespace KompasCore.Effects
         public const string Move = "Move";
         public const string Annhilate = "Annihilate";
         public const string Remove = "Remove";
-        public const string AugmentAttached = "Augment Attached";
+        public const string AugmentAttached = "Augment Attached"; //when an augment becomes applied to a card.
         public const string AugmentDetached = "Augment Detached";
+        public const string Augmented = "Augmented"; //when a card has an augment applied to it
 
         public static readonly string[] TriggerConditions = {
             TurnStart,

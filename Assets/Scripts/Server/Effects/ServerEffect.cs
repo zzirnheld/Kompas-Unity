@@ -158,6 +158,7 @@ namespace KompasServer.Effects
         public override void AddTarget(GameCard card)
         {
             base.AddTarget(card);
+            Debug.Log($"Effect of {Source.CardName} adding {card.CardName} as target");
             serverGame.ServerControllerOf(card).ServerNotifier.SetTarget(Source, EffectIndex, card);
         }
 

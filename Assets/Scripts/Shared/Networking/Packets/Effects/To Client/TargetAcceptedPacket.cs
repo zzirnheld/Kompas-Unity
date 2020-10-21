@@ -22,6 +22,8 @@ namespace KompasClient.Networking
             clientGame.CurrCardRestriction = null;
             clientGame.CurrSpaceRestriction = null;
             clientGame.clientUICtrl.SetCurrState("Target Accepted");
+            clientGame.ShowNoTargets();
+            clientGame.clientUICtrl.ResetSearch();
         }
     }
 }
