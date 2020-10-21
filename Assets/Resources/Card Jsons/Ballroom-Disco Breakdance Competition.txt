@@ -25,7 +25,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Pay Pips\",
+					\"subeffType\":\"PayPipsSubeffect\",
 					\"xMultiplier\":0,
 					\"xModifier\":1
 				}",
@@ -61,10 +61,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Triggering Card\"
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Set NESW\",
+					\"subeffType\":\"SetNESWSubeffect\",
 					\"nVal\":0
 				}"
 			]	

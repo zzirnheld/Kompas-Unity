@@ -27,7 +27,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Target Triggering Card\"
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"Attach\"

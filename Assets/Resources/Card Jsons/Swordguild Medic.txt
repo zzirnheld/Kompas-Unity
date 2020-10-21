@@ -22,7 +22,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Change NESW\",
+					\"subeffType\":\"ChangeNESWSubeffect\",
 					\"nChange\":0,
 					\"eChange\":1,
 					\"sChange\":0,

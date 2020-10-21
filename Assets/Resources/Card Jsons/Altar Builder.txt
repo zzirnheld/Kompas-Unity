@@ -22,7 +22,7 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"X Change NESW\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"sMod\":1
 				}"
 			]
@@ -39,7 +39,7 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Pay Stats\",
+					"subeffType\":\"PayStatsSubeffect\",
 					\"sMod\":9
 				}",
 				"{

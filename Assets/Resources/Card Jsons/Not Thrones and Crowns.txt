@@ -23,7 +23,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Change NESW All\",
+					\"subeffType\":\"ChangeAllNESWSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Summoned\",\"Subtypes Exclude\"],

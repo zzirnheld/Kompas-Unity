@@ -41,7 +41,7 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Change NESW\",
+					\"subeffType\":\"ChangeNESWSubeffect\",
 					\"eChange\":-1
 				}",
 				"{
@@ -54,7 +54,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Change NESW\",
+					\"subeffType\":\"ChangeNESWSubeffect\",
 					\"eChange\":2
 				}"
 			]	

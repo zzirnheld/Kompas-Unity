@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Wynn",
-	"effText":"Can’t be cast normally. Dispel a spell.",
+	"effText":"Can’t be cast normally. DispelSubeffect a spell.",
 	"effects":[
 		{
 			"triggerCondition":"Play",
@@ -16,12 +16,12 @@
 					\"subeffType\":\"BoardTargetSubeffect\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"spell for Wynn to dispel\",
+						\"blurb\":\"spell for Wynn to DispelSubeffect\",
 						\"cardRestrictions\":[\"Is Spell\",\"Board\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"Dispel\"
+					\"subeffType\":\"DispelSubeffect\"
 				}"
 			]	
 		}

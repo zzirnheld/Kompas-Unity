@@ -10,38 +10,8 @@ namespace KompasCore.Effects
     public class Subeffect
     {
         #region subeffect type constants
-        //targeting
-        public const string TargetAvatar = "Target Avatar";
-        public const string TargetTriggeringCard = "Target Triggering Card";
-        public const string TargetTriggeringCoords = "Target Triggering Space";
-        public const string TargetTargetsSpace = "Target Target's Space";
-        public const string AutoTarget = "Auto Target";
-        public const string TargetAugments = "Target Augments";
-
         //changing values, esp. on cards
         //TODO deprecate change nesw
-        public const string ChangeNESW = "Change NESW";
-        public const string AddPips = "Add Pips";
-        public const string PayPips = "Pay Pips";
-        public const string XChangeNESW = "X Change NESW";
-        public const string SwapNESW = "Swap NESW"; //swaps two characters' n, e, s, or w
-        public const string Negate = "Negate";
-        public const string Dispel = "Dispel";
-        public const string SwapOwnNESW = "Swap Target's Own NESW"; //swaps one character's n with e, etc.
-        public const string ChangeSpellC = "Change C";
-        public const string SetNESW = "Set NESW";
-        public const string ChangeAllNESW = "Change NESW All";
-        public const string SetAllNESW = "Set NESW All";
-        public const string ResetStats = "Reset Stats";
-        public const string Activate = "Activate";
-        public const string SpendMovement = "Spend Movement";
-        public const string TakeControl = "Take Control";
-        public const string PayPipsByTargetCost = "Pay Target's Cost in Pips";
-        public const string Resummon = "Resummon";
-        public const string ResummonAll = "Resummon All";
-
-        public const string PayStats = "Pay Stats";
-        public const string ChangeStats = "Change Stats";
 
         //effect x
         public const string SetXByBoardCount = "Set X by Board Count";
@@ -92,8 +62,6 @@ namespace KompasCore.Effects
         public const string DelaySubeffect = "Delay Effect Resolution";
         public const string HangingNESWBuff = "Temporary NESW Buff";
         public const string HangingNESWBuffAll = "Temporary NESW Buff All";
-        public const string HangingNegate = "Temporary Negate";
-        public const string HangingActivate = "Temporary Activate";
         public const string HangingAnnihilate = "Hanging Annihilate";
 
         //misc
@@ -101,7 +69,6 @@ namespace KompasCore.Effects
         public const string Attack = "Attack";
         public const string ChangeLeyload = "Change Leyload";
         #endregion subeffect type constants
-
 
         public virtual Effect Effect { get; }
         public virtual Player Controller { get; }

@@ -30,7 +30,7 @@
 					\"jumpTo\":0
 				}",
 				"{
-					\"subeffType\":\"Add Pips\",
+					\"subeffType\":\"AddPipsSubeffect\",
 					\"xMultiplier\":1
 				}",
 				"{

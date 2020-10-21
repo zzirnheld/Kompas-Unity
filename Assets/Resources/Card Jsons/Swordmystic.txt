@@ -32,7 +32,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Pay Target's Cost in Pips\"
+					\"subeffType\":\"PayPipsTargetCostSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"SpaceTargetSubeffect\",

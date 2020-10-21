@@ -23,7 +23,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Pay Target's Cost in Pips\",
+					\"subeffType\":\"PayPipsTargetCostSubeffect\",
 					\"xDivisor\":2
 				}",
 				"{

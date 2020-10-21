@@ -21,7 +21,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Change NESW\",
+					\"subeffType\":\"ChangeNESWSubeffect\",
 					\"eChange\":-1
 				}",
 				"{
@@ -33,11 +33,11 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Change NESW\",
+					\"subeffType\":\"ChangeNESWSubeffect\",
 					\"eChange\":1
 				}",
 				"{
-					\"subeffType\":\"Add Pips\",
+					\"subeffType\":\"AddPipsSubeffect\",
 					\"xModifier\":1
 				}"
 			]

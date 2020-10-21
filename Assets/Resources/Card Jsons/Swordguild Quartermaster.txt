@@ -22,7 +22,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Add Pips\",
+					\"subeffType\":\"AddPipsSubeffect\",
 					\"xMultiplier\":1,
 					\"xDivisor\":2,
 					\"xModifier\":0

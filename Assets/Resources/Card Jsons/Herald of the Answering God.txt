@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Herald of the Answering God",
-	"effText":"When turns start, negate a turn player’s character.",
+	"effText":"When turns start, NegateSubeffect a turn player’s character.",
 	"effects":[
 		{
 			"triggerCondition":"Turn Start",
@@ -21,7 +21,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Negate\"
+					\"subeffType\":\"NegateSubeffect\"
 				}"
 			]
 		}

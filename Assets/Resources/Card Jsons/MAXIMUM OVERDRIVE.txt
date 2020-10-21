@@ -25,7 +25,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Pay Pips\",
+					\"subeffType\":\"PayPipsSubeffect\",
 					\"xMultiplier\":0,
 					\"xModifier\":1
 				}",
@@ -60,7 +60,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Change NESW\",
+					\"subeffType\":\"ChangeNESWSubeffect\",
 					\"nChange\":5,
 					\"wChange\":-5
 				}"

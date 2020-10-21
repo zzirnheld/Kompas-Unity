@@ -21,7 +21,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Temporary Activate\",
+					\"subeffType\":\"TemporaryActivationSubeffect\",
 					\"endCondition\":\"Turn Start\",
 					\"triggerRestriction\":{
 						\"triggerRestrictions\":[\"Friendly Turn\"]

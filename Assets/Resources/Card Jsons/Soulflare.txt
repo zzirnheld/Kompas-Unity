@@ -34,7 +34,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Add Pips\",
+					\"subeffType\":\"AddPipsSubeffect\",
 					\"xMultiplier\":1
 				}"
 			]	

@@ -18,10 +18,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Triggering Card\"
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Target Augments\"
+					\"subeffType\":\"TargetAugmentsSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"Change X by Target Value\",
@@ -35,7 +35,7 @@
 					\"jumpTo\":2
 				}",
 				"{
-					\"subeffType\":\"Change NESW All\",
+					\"subeffType\":\"ChangeAllNESWSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Character\",\"Adjacent to Target\"]

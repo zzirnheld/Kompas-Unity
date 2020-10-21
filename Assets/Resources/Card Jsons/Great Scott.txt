@@ -29,7 +29,7 @@
 					\"subeffType\":\"Draw\"
 				}",
 				"{
-					\"subeffType\":\"Target Triggering Card\"
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"SpaceTargetSubeffect\",

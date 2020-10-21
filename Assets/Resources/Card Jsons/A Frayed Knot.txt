@@ -25,7 +25,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Pay Pips\",
+					\"subeffType\":\"PayPipsSubeffect\",
 					\"xMultiplier\":0,
 					\"xModifier\":1
 				}",

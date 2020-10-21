@@ -17,7 +17,7 @@
 					\"subeffType\":\"TargetAugmentedCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Temporary Activate\",
+					\"subeffType\":\"TemporaryActivationSubeffect\",
 					\"endCondition\":\"Augment Detached\",
 					\"triggerRestriction\":{
 						\"triggerRestrictions\":[\"This Card Triggered\"]

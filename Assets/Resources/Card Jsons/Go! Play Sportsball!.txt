@@ -23,13 +23,13 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Auto Target\",
+					\"subeffType\":\"AutoTargetSubeffect\",
 					\"cardRestriction\":{
 						\"cardRestrictions\":[\"Avatar\",\"Friendly\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"Target Target's Space\"
+					\"subeffType\":\"TargetTargetsSpaceSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"Play\",

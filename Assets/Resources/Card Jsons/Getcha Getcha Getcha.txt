@@ -17,10 +17,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Triggering Card\"
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"X Change NESW\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"nMod\":1,
 					\"wMod\":1
 				}"

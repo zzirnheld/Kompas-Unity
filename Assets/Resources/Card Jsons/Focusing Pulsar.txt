@@ -17,7 +17,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Change NESW All\",
+					\"subeffType\":\"ChangeAllNESWSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Adjacent\"]
@@ -40,7 +40,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Change NESW All\",
+					\"subeffType\":\"ChangeAllNESWSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Adjacent\"]

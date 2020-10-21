@@ -24,7 +24,7 @@
 					\"subeffType\":\"Discard\"
 				}",
 				"{
-					\"subeffType\":\"Add Pips\",
+					\"subeffType\":\"AddPipsSubeffect\",
 					\"xMultiplier\":0,
 					\"xDivisor\":1,
 					\"xModifier\":1

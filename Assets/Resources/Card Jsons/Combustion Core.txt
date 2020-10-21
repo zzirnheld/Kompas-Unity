@@ -1,7 +1,7 @@
 {
 	"cardType":65,
 	"cardName":"Combustion Core",
-	"effText":"Activate this character during enemy turns. (They deactivate on your turn.) When they die (while I'm equipped), rehand me. When your turn starts, pay a pip or dispel me.",
+	"effText":"Activate this character during enemy turns. (They deactivate on your turn.) When they die (while I'm equipped), rehand me. When your turn starts, pay a pip or DispelSubeffect me.",
 	"effects":[
 		{
 			"triggerCondition":"Turn Start",
@@ -17,7 +17,7 @@
 					\"subeffType\":\"TargetAugmentedCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Temporary Activate\",
+					\"subeffType\":\"TemporaryActivationSubeffect\",
 					\"endCondition\":\"Turn Start\",
 					\"triggerRestriction\":{
 						\"triggerRestrictions\":[\"Friendly Turn\"]
@@ -37,8 +37,8 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"Choose Effect Option\",
-					\"ChoiceBlurb\":\"Pay 1 pip or dispel this?\",
-					\"OptionBlurbs\":[\"Pay 1 pip\",\"Dispel\"],
+					\"ChoiceBlurb\":\"Pay 1 pip or DispelSubeffect this?\",
+					\"OptionBlurbs\":[\"Pay 1 pip\",\"DispelSubeffect\"],
 					\"OptionJumpIndices\":[1,5]
 				}",
 				"{
@@ -46,7 +46,7 @@
 					\"jumpTo\":4
 				}",
 				"{
-					\"subeffType\":\"Pay Pips\",
+					\"subeffType\":\"PayPipsSubeffect\",
 					\"xMultiplier\":0,
 					\"xModifier\":1
 				}",

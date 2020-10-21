@@ -29,7 +29,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"X Change NESW\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"nMod\":1,
 					\"eMod\":1,
 					\"sMod\":1,
@@ -63,7 +63,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"X Change NESW\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"nMod\":-1,
 					\"eMod\":-1,
 					\"sMod\":-1,

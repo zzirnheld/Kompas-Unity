@@ -13,10 +13,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Avatar\"
+					\"subeffType\":\"TargetAvatarSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"X Change NESW\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"sMod\":-1
 				}",
 				"{

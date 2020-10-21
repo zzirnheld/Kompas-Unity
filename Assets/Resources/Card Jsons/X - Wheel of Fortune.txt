@@ -31,7 +31,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Swap NESW\",
+					\"subeffType\":\"SwapNESWSubeffect\",
 					\"targetIndices\":[-1,-2],
 					\"swapN\":true
 				}"

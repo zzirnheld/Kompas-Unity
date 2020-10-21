@@ -16,7 +16,7 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Change NESW\",
+					\"subeffType\":\"ChangeNESWSubeffect\",
 					\"sChange\":1
 				}"
 			]
@@ -39,7 +39,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"X Change NESW\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"sMult\":-1
 				}",
 				"{

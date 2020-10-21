@@ -28,7 +28,7 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Spend Movement\",
+					\"subeffType\":\"SpendMovementSubeffect\",
 					\"xModifier\":1
 				}",
 				"{
@@ -41,7 +41,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"X Change NESW\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"eMult\":-1
 				}",
 				"{
@@ -79,7 +79,7 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"X Change NESW\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"eMult\":1,
 					\"sMult\":1,
 					\"wMult\":1

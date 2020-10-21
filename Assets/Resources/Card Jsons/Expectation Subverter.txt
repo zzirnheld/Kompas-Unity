@@ -24,13 +24,13 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Change NESW\",
+					\"subeffType\":\"ChangeNESWSubeffect\",
 					\"eChange\":-3
 				}",
 				"{
 					\"subeffType\":\"Choose Effect Option\",
 					\"ChoiceBlurb\":\"Pay 1 pip or annihilate this?\",
-					\"OptionBlurbs\":[\"Pay 1 pip\",\"Dispel\"],
+					\"OptionBlurbs\":[\"Pay 1 pip\",\"DispelSubeffect\"],
 					\"OptionJumpIndices\":[3,7]
 				}",
 				"{
@@ -38,7 +38,7 @@
 					\"jumpTo\":6
 				}",
 				"{
-					\"subeffType\":\"Pay Pips\",
+					\"subeffType\":\"PayPipsSubeffect\",
 					\"xMultiplier\":0,
 					\"xModifier\":1
 				}",

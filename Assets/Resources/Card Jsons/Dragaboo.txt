@@ -40,7 +40,7 @@
 					\"subeffType\":\"Discard\"
 				}",
 				"{
-					\"subeffType\":\"Add Pips\",
+					\"subeffType\":\"AddPipsSubeffect\",
 					\"xMultiplier\":1
 				}"
 			]	

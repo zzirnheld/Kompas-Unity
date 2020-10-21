@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Avatar\"
+					\"subeffType\":\"TargetAvatarSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"Choose Effect Option\",
@@ -22,7 +22,7 @@
 					\"OptionJumpIndices\":[2,4]
 				}",
 				"{
-					\"subeffType\":\"Change NESW\",
+					\"subeffType\":\"ChangeNESWSubeffect\",
 					\"sChange\":5
 				}",
 				"{
@@ -30,7 +30,7 @@
 					\"indexToJumpTo\":5
 				}",
 				"{
-					\"subeffType\":\"Change NESW\",
+					\"subeffType\":\"ChangeNESWSubeffect\",
 					\"sChange\":-5
 				}",
 				"{

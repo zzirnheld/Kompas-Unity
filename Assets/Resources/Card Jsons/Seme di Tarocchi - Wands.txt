@@ -16,7 +16,7 @@
 					\"subeffType\":\"TargetAugmentedCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Change NESW\",
+					\"subeffType\":\"ChangeNESWSubeffect\",
 					\"sChange\":1
 				}"
 			]

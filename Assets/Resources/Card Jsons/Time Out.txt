@@ -26,7 +26,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Target Augments\"
+					\"subeffType\":\"TargetAugmentsSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"Rehand\"

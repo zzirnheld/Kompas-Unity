@@ -26,12 +26,12 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"X Change NESW\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"eMult\":-1,
 					\"targetIndex\":0
 				}",
 				"{
-					\"subeffType\":\"X Change NESW\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"eMult\":-1,
 					\"targetIndex\":1
 				}"

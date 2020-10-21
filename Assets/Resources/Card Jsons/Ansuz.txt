@@ -20,7 +20,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Set NESW\",
+					\"subeffType\":\"SetNESWSubeffect\",
 					\"nVal\":1,
 					\"eVal\":10,
 					\"sVal\":10,

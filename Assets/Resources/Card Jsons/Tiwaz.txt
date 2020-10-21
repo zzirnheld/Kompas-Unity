@@ -16,10 +16,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Triggering Card\"
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Change NESW\",
+					\"subeffType\":\"ChangeNESWSubeffect\",
 					\"eChange\":2,
 					\"sChange\":2,
 					\"wChange\":2

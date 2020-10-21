@@ -41,7 +41,7 @@
 					\"jumpTo\":2
 				}",
 				"{
-					\"subeffType\":\"Pay Pips\",
+					\"subeffType\":\"PayPipsSubeffect\",
 					\"xMultiplier\":1
 				}",
 				"{

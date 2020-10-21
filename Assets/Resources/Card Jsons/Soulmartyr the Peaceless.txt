@@ -44,7 +44,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Pay Target's Cost in Pips\",
+					\"subeffType\":\"PayPipsTargetCostSubeffect\",
 					\"xDivisor\":2
 				}",
 				"{
@@ -62,7 +62,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Change NESW All\",
+					\"subeffType\":\"ChangeAllNESWSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Subtypes Include\"],
@@ -75,7 +75,7 @@
 					\"condition\":\"Must be Enemy Turn\"
 				}",
 				"{
-					\"subeffType\":\"Add Pips\",
+					\"subeffType\":\"AddPipsSubeffect\",
 					\"xModifier\":1
 				}"
 			]	

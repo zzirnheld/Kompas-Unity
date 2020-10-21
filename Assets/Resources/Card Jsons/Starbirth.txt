@@ -30,10 +30,10 @@
 					\"jumpTo\":0
 				}",
 				"{
-					\"subeffType\":\"Target Avatar\"
+					\"subeffType\":\"TargetAvatarSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"X Change NESW\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"sMult\":1
 				}",
 				"{
@@ -41,7 +41,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Add Pips\",
+					\"subeffType\":\"AddPipsSubeffect\",
 					\"xMultiplier\":1
 				}",
 				"{

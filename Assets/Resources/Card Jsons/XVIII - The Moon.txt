@@ -23,7 +23,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Swap Target's Own NESW\",
+					\"subeffType\":\"SwapOwnNESWSubeffect\",
 					\"Stat1\":1,
 					\"Stat2\":3
 				}",
@@ -36,7 +36,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Swap NESW\",
+					\"subeffType\":\"SwapNESWSubeffect\",
 					\"targetIndices\":[-1,-2],
 					\"swapE\":true,
 					\"swapW\":true

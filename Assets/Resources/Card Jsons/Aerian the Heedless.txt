@@ -38,7 +38,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Change NESW All\",
+					\"subeffType\":\"ChangeAllNESWSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Within C Spaces\"],

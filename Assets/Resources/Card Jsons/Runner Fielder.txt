@@ -21,13 +21,13 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Auto Target\",
+					\"subeffType\":\"AutoTargetSubeffect\",
 					\"cardRestriction\":{
 						\"cardRestrictions\":[\"Is Character\",\"Directly In Front of Source\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"Target Triggering Card\"
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"Attach\"

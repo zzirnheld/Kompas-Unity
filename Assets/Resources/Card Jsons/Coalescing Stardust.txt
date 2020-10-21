@@ -21,7 +21,7 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Change C\",
+					\"subeffType\":\"ChangeSpellCSubeffect\",
 					\"xMultiplier\":1
 				}"
 			]

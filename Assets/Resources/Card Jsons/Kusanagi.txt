@@ -24,7 +24,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"X Change NESW\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"wMod\":-5
 				}"
 			]

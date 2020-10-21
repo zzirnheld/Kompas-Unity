@@ -21,7 +21,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"X Change NESW\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"wMult\":1
 				}"
 			]

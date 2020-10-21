@@ -18,10 +18,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Triggering Card\"
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Change Stats\",
+					"subeffType\":\"ChangeCardStatsSubeffect\",
 					\"aMod\":1
 				}"
 			]
@@ -48,7 +48,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Triggering Card\"
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"Change X by Target Value\",
@@ -59,7 +59,7 @@
 					\"subeffType\":\"TargetTargetsAugmentedCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Change Stats\",
+					"subeffType\":\"ChangeCardStatsSubeffect\",
 					\"eMult\":-1
 				}",
 				"{
@@ -71,7 +71,7 @@
 					\"attachmentTarget\":-1
 				}",
 				"{
-					\"subeffType\":\"Reset Stats\",
+					\"subeffType\":\"ResetStatsSubeffect\",
 					\"targetIndex\":-3,
 					\"resetA\":true
 				}"

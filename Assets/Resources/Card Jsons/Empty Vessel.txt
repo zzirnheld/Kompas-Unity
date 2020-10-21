@@ -15,10 +15,10 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Pay Target's Cost in Pips\"
+					\"subeffType\":\"PayPipsTargetCostSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Resummon\"
+					"subeffType\":\"ResummonSubeffect\"
 				}"
 			]	
 		},
@@ -35,7 +35,7 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Change NESW\",
+					\"subeffType\":\"ChangeNESWSubeffect\",
 					\"nChange\":1,
 					\"eChange\":1,
 					\"sChange\":1,

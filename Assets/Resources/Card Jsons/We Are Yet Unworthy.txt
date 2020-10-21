@@ -40,7 +40,7 @@
 					\"xModifier\":2
 				}",
 				"{
-					\"subeffType\":\"Add Pips\",
+					\"subeffType\":\"AddPipsSubeffect\",
 					\"xModifier\":2
 				}",
 				"{

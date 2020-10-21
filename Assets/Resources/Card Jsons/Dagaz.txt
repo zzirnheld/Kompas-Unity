@@ -25,11 +25,11 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Add Pips\",
+					\"subeffType\":\"AddPipsSubeffect\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Change C\",
+					\"subeffType\":\"ChangeSpellCSubeffect\",
 					\"xModifier\":1
 				}"
 			]	

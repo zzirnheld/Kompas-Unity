@@ -25,7 +25,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Take Control\"
+					"subeffType\":\"TakeControlSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"End Turn\"

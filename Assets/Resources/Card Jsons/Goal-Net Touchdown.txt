@@ -26,16 +26,16 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Auto Target\",
+					\"subeffType\":\"AutoTargetSubeffect\",
 					\"cardRestriction\":{
 						\"cardRestrictions\":[\"Avatar\",\"Enemy\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"Target Triggering Card\"
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Target Augments\"
+					\"subeffType\":\"TargetAugmentsSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"Conditionally End Effect Resolution\",

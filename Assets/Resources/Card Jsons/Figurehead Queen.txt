@@ -16,7 +16,7 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Change C\",
+					\"subeffType\":\"ChangeSpellCSubeffect\",
 					\"xModifier\":1
 				}"
 			]
