@@ -11,10 +11,6 @@ namespace KompasCore.Effects
     {
         #region subeffect type constants
         //TODO deprecate change nesw
-        //misc
-        public const string EndTurn = "End Turn";
-        public const string Attack = "Attack";
-        public const string ChangeLeyload = "Change Leyload";
         #endregion subeffect type constants
 
         public virtual Effect Effect { get; }
