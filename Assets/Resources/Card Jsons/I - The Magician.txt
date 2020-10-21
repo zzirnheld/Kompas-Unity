@@ -25,7 +25,8 @@
 					"subeffType\":\"BottomdeckSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Count X Loop\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"CountXLoopSubeffect\",
 					\"canDecline\":true,
 					\"jumpTo\":0
 				}",

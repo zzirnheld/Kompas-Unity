@@ -49,13 +49,15 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Conditionally Jump\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"ConditionalJumpSubeffect\",
 					\"condition\":\"X >= Constant\",
 					\"constant\":31,
 					\"jumpIndex\":4
 				}",
 				"{
-					\"subeffType\":\"Loop\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"LoopSubeffect\",
 					\"canDecline\":true,
 					\"jumpTo\":0
 				}",
@@ -66,7 +68,8 @@
 					\"subeffType\":\"DeleteTargetSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Loop While Have Targets\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
 					\"jumpTo\":4
 				}",
 				"{

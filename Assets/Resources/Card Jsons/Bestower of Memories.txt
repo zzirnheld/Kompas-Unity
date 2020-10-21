@@ -45,7 +45,8 @@
 					\"xModifier\":1
 				}",
 				"{
-					\"subeffType\":\"Change Leyload\",
+					"subeffType\":\"HangingAnnihilationSubeffect\"
+"subeffType\":\"ChangeLeyloadSubeffect\",
 					\"xModifier\":1
 				}"
 			]	

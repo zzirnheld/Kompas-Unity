@@ -29,12 +29,14 @@
 					"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Loop\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"LoopSubeffect\",
 					\"canDecline\":true,
 					\"jumpTo\":0
 				}",
 				"{
-					\"subeffType\":\"Jump on Effect Impossible\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
 					\"jumpTo\":8
 				}",
 				"{
@@ -55,7 +57,8 @@
 					"subeffType\":\"RehandSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Clear Jump on Effect Impossible\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"ClearOnImpossibleSubeffect\"
 				}",
 				"{
 					"subeffType\":\"Subeffect\"

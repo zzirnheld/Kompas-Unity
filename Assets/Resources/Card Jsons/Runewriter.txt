@@ -26,7 +26,8 @@
 					"subeffType\":\"ReshuffleSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Jump on Effect Impossible\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
 					\"jumpTo\":7
 				}",
 				"{
@@ -45,7 +46,8 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Clear Jump on Effect Impossible\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"ClearOnImpossibleSubeffect\"
 				}",
 				"{
 					"subeffType\":\"Subeffect\"

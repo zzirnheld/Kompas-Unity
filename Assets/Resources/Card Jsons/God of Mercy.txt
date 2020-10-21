@@ -38,7 +38,8 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Loop While Have Targets\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
 					\"delete\":true,
 					\"jumpTo\":1
 				}"

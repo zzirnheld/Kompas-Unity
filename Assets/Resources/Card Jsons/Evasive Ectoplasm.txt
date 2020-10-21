@@ -71,7 +71,8 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Temporary NESW Buff\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"TemporaryNESWSubeffect\",
 					\"wMultiplier\":-1,
 					\"endCondition\":\"Battle End\",
 					\"triggerRestriction\":{

@@ -16,7 +16,8 @@
 					\"subeffType\":\"TargetAvatarSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Choose Effect Option\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"ClearOptionSubeffect\",
 					\"ChoiceBlurb\":\"Give +5 S or -5 S?\",
 					\"OptionBlurbs\":[\"+5 S\",\"-5 S\"],
 					\"OptionJumpIndices\":[2,4]
@@ -26,7 +27,8 @@
 					\"sChange\":5
 				}",
 				"{
-					\"subeffType\":\"Jump to Subeffect\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"JumpSubeffect\",
 					\"indexToJumpTo\":5
 				}",
 				"{
@@ -34,7 +36,8 @@
 					\"sChange\":-5
 				}",
 				"{
-					\"subeffType\":\"Choose Effect Option\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"ClearOptionSubeffect\",
 					\"ChoiceBlurb\":\"Annihilate me and draw 1?\",
 					\"OptionBlurbs\":[\"Yes\",\"No\"],
 					\"OptionJumpIndices\":[7,100]

@@ -43,7 +43,8 @@
 "subeffType\":\"MoveSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Attack\"
+					"subeffType\":\"HangingAnnihilationSubeffect\"
+"subeffType\":\"AttackSubeffect\"
 				}"
 			]
 		}

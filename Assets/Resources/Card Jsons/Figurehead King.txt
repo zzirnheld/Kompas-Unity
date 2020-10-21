@@ -37,7 +37,8 @@
 					\"subeffType\":\"DeleteTargetSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Count X Loop\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"CountXLoopSubeffect\",
 					\"canDecline\":false,
 					\"jumpTo\":3
 				}",

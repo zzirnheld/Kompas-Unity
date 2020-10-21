@@ -40,7 +40,8 @@
 					\"subeffType\":\"TargetAugmentsSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Conditionally End Effect Resolution\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"ConditionalEndSubeffect\",
 					\"condition\":\"Number Targets <= Constant\",
 					\"constant\":3
 				}",
@@ -50,7 +51,8 @@
 					\"attachmentTarget\":1
 				}",
 				"{
-					\"subeffType\":\"Loop While Have Targets\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
 					\"delete\":true,
 					\"remainingTargets\":3,
 					\"jumpTo\":5

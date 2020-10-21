@@ -11,29 +11,6 @@ namespace KompasCore.Effects
     {
         #region subeffect type constants
         //TODO deprecate change nesw
-
-        //loops/control flow
-        public const string XTimesLoop = "Loop X Times";
-        public const string TTimesLoop = "Loop T Times";
-        public const string WhileHaveTargetsLoop = "Loop While Have Targets";
-        public const string ExitLoopIfEffectImpossible = "Loop Until Effect Impossible";
-        public const string JumpOnImpossible = "Jump on Effect Impossible";
-        public const string ClearOnImpossible = "Clear Jump on Effect Impossible";
-        public const string ChooseEffectOption = "Choose Effect Option";
-        public const string EndEffect = "End Effect Resolution";
-        public const string CountXLoop = "Count X Loop";
-        public const string ConditionalEndEffect = "Conditionally End Effect Resolution";
-                                                                                          //TODO deprecate basic loop
-        public const string ConditionalJump = "Conditionally Jump";
-        public const string BasicLoop = "Loop";
-        public const string Jump = "Jump to Subeffect";
-
-        //hanging effects
-        public const string DelaySubeffect = "Delay Effect Resolution";
-        public const string HangingNESWBuff = "Temporary NESW Buff";
-        public const string HangingNESWBuffAll = "Temporary NESW Buff All";
-        public const string HangingAnnihilate = "Hanging Annihilate";
-
         //misc
         public const string EndTurn = "End Turn";
         public const string Attack = "Attack";

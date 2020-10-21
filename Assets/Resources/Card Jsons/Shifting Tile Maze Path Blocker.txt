@@ -60,7 +60,8 @@
 					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Jump on Effect Impossible\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
 					\"jumpTo\":5
 				}",
 				"{
@@ -76,10 +77,12 @@
 "subeffType\":\"MoveSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"End Effect Resolution\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"EndResolutionSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Clear Jump on Effect Impossible\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"ClearOnImpossibleSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"TargetThisSubeffect\"

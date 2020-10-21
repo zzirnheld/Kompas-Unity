@@ -68,7 +68,8 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Delay Effect Resolution\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"DelaySubeffect\",
 					\"numTimesToDelay\":1,
 					\"indexToResume\":3,
 					\"triggerCondition\":\"Turn Start\"

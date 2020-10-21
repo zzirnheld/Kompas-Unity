@@ -32,7 +32,8 @@
 					"subeffType\":\"PlaySubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Hanging Annihilate\",
+					"subeffType\":\"HangingAnnihilationSubeffect\"
+"subeffType\":\"HangingAnnihilationSubeffect\",
 					\"endCondition\":\"Turn Start\",
 					\"triggerRestriction\":
 					{

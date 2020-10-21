@@ -16,7 +16,8 @@
 					\"subeffType\":\"TargetDefenderSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Conditionally End Effect Resolution\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"ConditionalEndSubeffect\",
 					\"condition\":\"Target Violates Restriction\",
 					\"cardRestriction\":
 					{

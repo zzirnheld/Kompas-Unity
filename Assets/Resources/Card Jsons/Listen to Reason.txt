@@ -37,7 +37,8 @@
 					\"subeffType\":\"DeleteTargetSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Loop While Have Targets\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
 					\"jumpTo\":2
 				}",
 				"{

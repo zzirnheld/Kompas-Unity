@@ -77,7 +77,8 @@
 "subeffType\":\"MoveSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Conditionally End Effect Resolution\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"ConditionalEndSubeffect\",
 					\"condition\":\"Target Fits Restriction\",
 					\"cardRestriction\":
 					{

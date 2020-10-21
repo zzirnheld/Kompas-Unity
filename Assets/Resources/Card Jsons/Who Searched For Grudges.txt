@@ -60,7 +60,8 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Jump on Effect Impossible\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
 					\"jumpTo\":4
 				}",
 				"{
@@ -85,10 +86,12 @@
 					\"targetIndex\":-2
 				}",
 				"{
-					\"subeffType\":\"End Effect Resolution\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"EndResolutionSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Clear Jump on Effect Impossible\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"ClearOnImpossibleSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"TargetThisSubeffect\"

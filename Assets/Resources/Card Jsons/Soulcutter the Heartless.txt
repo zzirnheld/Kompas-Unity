@@ -78,7 +78,8 @@
 "subeffType\":\"DrawSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Conditionally End Effect Resolution\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"ConditionalEndSubeffect\",
 					\"condition\":\"Must be Enemy Turn\"
 				}",
 				"{

@@ -68,13 +68,15 @@
 "subeffType\":\"DrawSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Choose Effect Option\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"ClearOptionSubeffect\",
 					\"ChoiceBlurb\":\"Pay 1 pip or annihilate Stupid?\",
 					\"OptionBlurbs\":[\"Pay 1 pip\",\"Annhihilate\"],
 					\"OptionJumpIndices\":[4,7]
 				}",
 				"{
-					\"subeffType\":\"Jump on Effect Impossible\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
 					\"jumpTo\":7
 				}",
 				"{
@@ -83,10 +85,12 @@
 					\"xModifier\":1
 				}",
 				"{
-					\"subeffType\":\"End Effect Resolution\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"EndResolutionSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Clear Jump on Effect Impossible\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"ClearOnImpossibleSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"TargetThisSubeffect\"

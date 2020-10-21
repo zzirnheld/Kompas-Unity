@@ -60,13 +60,15 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Delay Effect Resolution\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"DelaySubeffect\",
 					\"numTimesToDelay\":1,
 					\"indexToResume\":2,
 					\"triggerCondition\":\"Turn Start\"
 				}",
 				"{
-					\"subeffType\":\"Conditionally Jump\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"ConditionalJumpSubeffect\",
 					\"condition\":\"Target Fits Restriction\",
 					\"jumpIndex\":6,
 					\"cardRestriction\":
@@ -82,7 +84,8 @@
 "subeffType\":\"AnnihilateSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"End Effect Resolution\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"EndResolutionSubeffect\"
 				}",
 				"{
 					"subeffType\":\"DiscardSubeffect\"

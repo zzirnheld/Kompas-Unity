@@ -85,7 +85,8 @@
 					"subeffType\":\"RehandSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Loop T Times\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"TTimesSubeffect\",
 					\"T\":3,
 					\"jumpTo\":4
 				}",

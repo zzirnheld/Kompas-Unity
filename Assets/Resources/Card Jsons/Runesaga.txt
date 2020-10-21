@@ -48,7 +48,8 @@
 					"subeffType\":\"PlaySubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Loop\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"LoopSubeffect\",
 					\"canDecline\":true,
 					\"jumpTo\":2
 				}"

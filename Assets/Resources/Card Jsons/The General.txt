@@ -18,7 +18,8 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Jump on Effect Impossible\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
 					\"jumpTo\":8
 				}",
 				"{
@@ -47,7 +48,8 @@
 					"subeffType\":\"PlaySubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Count X Loop\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"CountXLoopSubeffect\",
 					\"canDecline\":true,
 					\"jumpTo\":2,
 					\"increment\":false

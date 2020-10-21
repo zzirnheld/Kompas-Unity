@@ -24,7 +24,8 @@
 					\"xMultiplier\":-1
 				}",
 				"{
-					\"subeffType\":\"Conditionally End Effect Resolution\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"ConditionalEndSubeffect\",
 					\"condition\":\"X<=0\"
 				}",
 				"{

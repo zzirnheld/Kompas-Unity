@@ -28,7 +28,8 @@
 					\"subeffType\":\"DeleteTargetSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Count X Loop\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"CountXLoopSubeffect\",
 					\"canDecline\":false,
 					\"jumpTo\":1
 				}",
@@ -36,7 +37,8 @@
 					\"subeffType\":\"TargetAvatarSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Choose Effect Option\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"ClearOptionSubeffect\",
 					\"ChoiceBlurb\":\"Give +X S or -X S?\",
 					\"OptionBlurbs\":[\"+X S\",\"-X S\"],
 					\"OptionJumpIndices\":[6,8]
@@ -46,7 +48,8 @@
 					\"sMult\":1
 				}",
 				"{
-					\"subeffType\":\"Jump to Subeffect\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"JumpSubeffect\",
 					\"indexToJumpTo\":9
 				}",
 				"{

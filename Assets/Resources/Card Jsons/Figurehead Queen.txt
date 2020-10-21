@@ -31,7 +31,8 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Delay Effect Resolution\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"DelaySubeffect\",
 					\"numTimesToDelay\":0,
 					\"indexToResume\":1,
 					\"triggerCondition\":\"Turn Start\"
@@ -44,7 +45,8 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Conditionally End Effect Resolution\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"ConditionalEndSubeffect\",
 					\"condition\":\"X<C\",
 					\"constant\":10
 				}",

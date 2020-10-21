@@ -13,7 +13,8 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Conditionally End Effect Resolution\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"ConditionalEndSubeffect\",
 					\"condition\":\"Must be Friendly Turn\"
 				}",
 				"{
@@ -21,7 +22,8 @@
 					\"xModifier\":3
 				}",
 				"{
-					\"subeffType\":\"End Turn\"
+					"subeffType\":\"HangingAnnihilationSubeffect\"
+"subeffType\":\"EndTurnSubeffect\"
 				}"
 			]	
 		}

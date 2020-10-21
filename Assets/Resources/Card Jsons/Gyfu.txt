@@ -26,7 +26,8 @@
 					\"wChange\":1
 				}",
 				"{
-					\"subeffType\":\"Count X Loop\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"CountXLoopSubeffect\",
 					\"canDecline\":true,
 					\"jumpTo\":0
 				}",
