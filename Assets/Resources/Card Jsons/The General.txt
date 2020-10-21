@@ -33,7 +33,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Space Target\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where for The General to recruit their Warrior\",

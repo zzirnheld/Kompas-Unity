@@ -19,16 +19,16 @@
 					\"endCondition\":\"Turn Start\"
 				}",
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Target This Space\"
+					\"subeffType\":\"TargetThisSubeffect Space\"
 				}",
 				"{
 					\"subeffType\":\"Discard\"
 				}",
 				"{
-					\"subeffType\":\"Deck Target\",
+					\"subeffType\":\"DeckTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Dragon Egg to become\",

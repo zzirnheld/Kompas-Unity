@@ -22,7 +22,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Discard Target\",
+					\"subeffType\":\"DiscardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Warrior for Swordmystic to revive\",
@@ -35,7 +35,7 @@
 					\"subeffType\":\"Pay Target's Cost in Pips\"
 				}",
 				"{
-					\"subeffType\":\"Space Target\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where for Swordmystic to revive target Warrior\",

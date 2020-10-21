@@ -16,7 +16,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Discard Target\",
+					\"subeffType\":\"DiscardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Crazy Idea for Just a Little Bit More to Ificate\",
@@ -30,7 +30,7 @@
 					\"xModifier\":1
 				}",
 				"{
-					\"subeffType\":\"Space Target\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where Just a Little Bit More to play targeted Crazy Idea\",
@@ -52,7 +52,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Hand Target\",
+					\"subeffType\":\"HandTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Just discard a little bit more\",
@@ -66,7 +66,7 @@
 					\"subeffType\":\"Draw\"
 				}",
 				"{
-					\"subeffType\":\"Board Target\",
+					\"subeffType\":\"BoardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"you! move a little bit to the left...\",
@@ -74,7 +74,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Space Target\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"ok, now move just a little bit more\",
@@ -86,7 +86,7 @@
 					\"subeffType\":\"Move\"
 				}",
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"Annihilate\"

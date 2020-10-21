@@ -17,7 +17,7 @@
 					\"xModifier\":3
 				}",
 				"{
-					\"subeffType\":\"Hand Target\",
+					\"subeffType\":\"HandTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for High Priestess to topdeck (1/3)\",
@@ -28,7 +28,7 @@
 					\"subeffType\":\"Topdeck\"
 				}",
 				"{
-					\"subeffType\":\"Hand Target\",
+					\"subeffType\":\"HandTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for High Priestess to topdeck (2/3)\",
@@ -39,7 +39,7 @@
 					\"subeffType\":\"Topdeck\"
 				}",
 				"{
-					\"subeffType\":\"Hand Target\",
+					\"subeffType\":\"HandTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for High Priestess to topdeck (3/3)\",

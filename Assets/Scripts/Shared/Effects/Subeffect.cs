@@ -11,9 +11,6 @@ namespace KompasCore.Effects
     {
         #region subeffect type constants
         //targeting
-        public const string BoardTarget = "Board Target";
-        public const string DeckTarget = "Deck Target";
-        public const string DiscardTarget = "Discard Target";
         public const string HandTarget = "Hand Target";
         public const string SpaceTarget = "Space Target";
         public const string TargetThis = "Target This";

@@ -40,7 +40,7 @@
 					\"OptionJumpIndices\":[7,100]
 				}",
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"Annihilate\"

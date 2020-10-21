@@ -15,17 +15,17 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target This Space\"
+					\"subeffType\":\"TargetThisSubeffect Space\"
 				}",
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"Discard\",
 					\"targetIndex\":-1
 				}",
 				"{
-					\"subeffType\":\"Deck Target\",
+					\"subeffType\":\"DeckTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Tarocco for Lovers to become\",

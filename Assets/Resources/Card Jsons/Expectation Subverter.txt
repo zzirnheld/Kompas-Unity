@@ -49,7 +49,7 @@
 					\"subeffType\":\"Clear Jump on Effect Impossible\"
 				}",
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"Annihilate\"
