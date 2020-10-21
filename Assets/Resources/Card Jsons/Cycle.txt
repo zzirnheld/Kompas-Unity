@@ -1,0 +1,35 @@
+{
+	"cardType":83,
+	"cardName":"Cycle",
+	"effText":"During your turn, you can discard 1 to increase the leyload by 1.",
+	"effects":[
+		{
+			"blurb":"Pass",
+			"activationRestriction":{
+				"activationRestrictions":[
+ 					"Friendly Turn",
+					"Default"
+				]
+			},
+			"subeffects":[
+				"{
+					\"subeffType\":\"Hand Target\",
+					\"cardRestriction\":{
+						\"blurb\":\"Card to Cycle\",
+						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"Discard\"
+				}",
+				"{
+					\"subeffType\":\"Change Leyload\",
+					\"xModifier\":1
+				}"
+			]	
+		}
+	],
+	"c":1,
+	"spellType":"Enchant",
+	"subtypeText":"Enchant"
+}
