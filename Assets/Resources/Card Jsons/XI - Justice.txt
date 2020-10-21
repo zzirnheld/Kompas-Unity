@@ -13,13 +13,13 @@
 			},
 			"subeffects":[
 				"{
-					"subeffType\":\"SetXByGamestateSubeffect\",
+					\"subeffType\":\"SetXByGamestateSubeffect\",
 					\"whatToCount\":\"Hand Size\",
 					\"playerIndex\":1,
 					\"xMultiplier\":1
 				}",
 				"{
-					"subeffType\":\"ChangeXByGamestateSubeffect\",
+					\"subeffType\":\"ChangeXByGamestateSubeffect\",
 					\"whatToCount\":\"Hand Size\",
 					\"xMultiplier\":-1
 				}",

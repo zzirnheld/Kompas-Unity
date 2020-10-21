@@ -14,7 +14,7 @@
 			}",
 			"subeffects":[
 				"{
-					"subeffType\":\"SetXBoardRestrictionSubeffect\",
+					\"subeffType\":\"SetXBoardRestrictionSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
@@ -29,7 +29,7 @@
 					\"subeffType\":\"TargetThisSpaceSubeffect\"
 				}",
 				"{
-					"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"DeckTargetSubeffect\",
@@ -42,7 +42,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"PlaySubeffect\"
 				}"
 			]
 		}

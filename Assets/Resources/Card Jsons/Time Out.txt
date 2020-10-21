@@ -29,7 +29,7 @@
 					\"subeffType\":\"TargetAugmentsSubeffect\"
 				}",
 				"{
-					"subeffType\":\"RehandSubeffect\"
+					\"subeffType\":\"RehandSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",

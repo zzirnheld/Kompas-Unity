@@ -23,7 +23,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"BottomdeckSubeffect\"
+					\"subeffType\":\"BottomdeckSubeffect\"
 				}"
 			]
 		}

@@ -16,7 +16,7 @@
 					\"subeffType\":\"TargetAugmentedCardSubeffect\"
 				}",
 				"{
-					"subeffType\":\"SetXByTargetValueSubeffect\",
+					\"subeffType\":\"SetXByTargetValueSubeffect\",
 					\"whatToCount\":\"W\",
 					\"xMultiplier\":1
 				}",

@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				"{
-					"subeffType\":\"SetXSubeffect\",
+					\"subeffType\":\"SetXSubeffect\",
 					\"xModifier\":5,
 					\"xMultiplier\":1
 				}",
@@ -44,7 +44,7 @@
 					\"subeffType\":\"PayPipsTargetCostSubeffect\"
 				}",
 				"{
-					"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"PlaySubeffect\"
 				}",
 				"{
 					\"subeffType\":\"CountXLoopSubeffect\",

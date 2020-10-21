@@ -21,7 +21,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}"
 			]	
 		},
@@ -37,7 +37,7 @@
 			}",
 			"subeffects":[
 				"{
-					"subeffType\":\"PlayerChooseXSubeffect\",
+					\"subeffType\":\"PlayerChooseXSubeffect\",
 					\"XRest\":{
 						\"xRestrictions\":[\"<=ThisE\"]
 					},

@@ -32,7 +32,7 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					"subeffType\":\"PlayerChooseXSubeffect\",
+					\"subeffType\":\"PlayerChooseXSubeffect\",
 					\"XRest\":{
 						\"cardRestrictions\":[\">0\",\"<=ThisCost\"]
 					},
@@ -52,7 +52,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}"
 			]
 		}

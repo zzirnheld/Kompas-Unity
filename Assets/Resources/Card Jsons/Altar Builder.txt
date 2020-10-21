@@ -39,7 +39,7 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					"subeffType\":\"PayStatsSubeffect\",
+					\"subeffType\":\"PayStatsSubeffect\",
 					\"sMod\":9
 				}",
 				"{
@@ -61,7 +61,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"PlaySubeffect\"
 				}"
 			]
 		}

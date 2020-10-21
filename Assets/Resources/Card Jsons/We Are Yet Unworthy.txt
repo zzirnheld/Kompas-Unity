@@ -22,7 +22,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"HandTargetSubeffect\",
@@ -33,7 +33,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"ReshuffleSubeffect\"
+					\"subeffType\":\"ReshuffleSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"DrawXSubeffect\",

@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				"{
-					"subeffType\":\"SetXBoardRestrictionSubeffect\",
+					\"subeffType\":\"SetXBoardRestrictionSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Board\",\"Adjacent\",\"Subtypes Include\"],
@@ -41,7 +41,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"PlaySubeffect\"
 				}"
 			]
 		}
