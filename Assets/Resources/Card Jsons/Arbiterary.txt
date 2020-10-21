@@ -80,8 +80,8 @@
 		}
 	],
 	"n":1,
-	"e":14,
-	"s":11,
+	"e":7,
+	"s":7,
 	"w":3,
 	"PlayRestriction":{
 		"normalRestrictions":["Default Normal Restrictions","Unique"],

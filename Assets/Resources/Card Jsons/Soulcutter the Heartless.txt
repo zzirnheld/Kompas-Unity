@@ -17,7 +17,8 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"AnnihilateSubeffect\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"AnnihilateSubeffect\"
 				}"
 			]
 		},
@@ -45,11 +46,10 @@
 				}",
 				"{
 					\"subeffType\":\"PayPipsTargetCostSubeffect\",
-					\"xDivisor\":2,
-					\"xMultiplier\":1
+					\"xDivisor\":2
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					"subeffType\":\"PlaySubeffect\"
 				}"
 			]
 		},
@@ -71,13 +71,15 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"DrawSubeffect\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"DrawSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"ConditionalEndSubeffect\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"ConditionalEndSubeffect\",
 					\"condition\":\"Must be Enemy Turn\"
 				}",
 				"{

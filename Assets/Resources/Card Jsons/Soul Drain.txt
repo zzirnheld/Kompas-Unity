@@ -7,7 +7,6 @@
 			"triggerCondition":"Annihilate",
 			"trigger":
 			"{
-				\"blurb\":\"Soul Drain\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
 					\"cardRestriction\":{
@@ -34,7 +33,7 @@
 		}
 	],
 	"fast":true,
-	"c":4,
+	"c":3,
 	"spellType":"Enchant",
 	"subtypes":["Enchant"],
 	"subtypeText":"Enchant"
