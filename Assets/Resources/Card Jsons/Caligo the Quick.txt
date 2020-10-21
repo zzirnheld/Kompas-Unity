@@ -42,7 +42,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Set X by Target Value\",
+					"subeffType\":\"SetXByTargetValueSubeffect\",
 					\"whatToCount\":\"Distance to Target\",
 					\"xMultiplier\":1
 				}",

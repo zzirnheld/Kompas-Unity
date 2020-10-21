@@ -44,7 +44,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Change X by Target Value\",
+					"subeffType\":\"ChangeXbyTargetValueSubeffect\",
 					\"whatToCount\":\"Cost\",
 					\"xMultiplier\":1
 				}",

@@ -32,7 +32,7 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Set X by Player Choice\",
+					"subeffType\":\"PlayerChooseXSubeffect\",
 					\"XRest\":{
 						\"cardRestrictions\":[\">0\",\"<=ThisCost\"]
 					},

@@ -31,7 +31,7 @@
 					\"xModifier\":1
 				}",
 				"{
-					\"subeffType\":\"Set X by Gamestate Value\",
+					"subeffType\":\"SetXByGamestateSubeffect\",
 					\"whatToCount\":\"Distance to Coords Through\",
 					\"throughRestriction\":{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],

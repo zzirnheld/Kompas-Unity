@@ -38,7 +38,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Set X by Player Choice\",
+					"subeffType\":\"PlayerChooseXSubeffect\",
 					\"XRest\":{
 						\"cardRestrictions\":[\"<=ThisE\"]
 					},

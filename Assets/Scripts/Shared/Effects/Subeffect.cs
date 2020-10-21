@@ -10,20 +10,7 @@ namespace KompasCore.Effects
     public class Subeffect
     {
         #region subeffect type constants
-        //changing values, esp. on cards
         //TODO deprecate change nesw
-
-        //effect x
-        public const string SetXByBoardCount = "Set X by Board Count";
-        public const string SetXByGamestateValue = "Set X by Gamestate Value";
-        public const string SetXByMath = "Set X by Math";
-        public const string SetXByTargetValue = "Set X by Target Value";
-        public const string ChangeXByGamestateValue = "Change X by Gamestate Value";
-                                                                                     //TODO deprecate next 2
-        public const string SetXByTargetS = "Set X by Target S";
-        public const string SetXByTargetCost = "Set X by Target Cost";
-        public const string ChangeXByTargetValue = "Change X by Target Value";
-        public const string PlayerChooseX = "Set X by Player Choice";
 
         //move cards between states
         public const string PlayCard = "Play";
