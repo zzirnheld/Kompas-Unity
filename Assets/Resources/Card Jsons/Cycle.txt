@@ -29,7 +29,7 @@
 			]	
 		}
 	],
-	"c":1,
+	"c":3,
 	"spellType":"Enchant",
 	"subtypeText":"Enchant"
 }

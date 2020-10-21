@@ -42,7 +42,9 @@
 					\"subeffType\":\"Move\"
 				}",
 				"{
-					\"subeffType\":\"Attack\"
+					\"subeffType\":\"Attack\",
+					\"targetIndex\":-2,
+					\"attackerIndex\":-1
 				}"
 			]
 		}
