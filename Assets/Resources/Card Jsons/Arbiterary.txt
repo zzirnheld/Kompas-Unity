@@ -56,7 +56,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Target Target's Augmented Card\"
+					\"subeffType\":\"TargetTargetsAugmentedCardSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"Change Stats\",

@@ -59,7 +59,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Defender\"
+					\"subeffType\":\"TargetDefenderSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"Jump on Effect Impossible\",

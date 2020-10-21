@@ -62,7 +62,7 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Target Other in Fight\"
+					\"subeffType\":\"TargetOtherInFightSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"Set X by Target Value\",

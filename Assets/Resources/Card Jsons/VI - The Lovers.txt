@@ -15,7 +15,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect Space\"
+					\"subeffType\":\"TargetThisSpaceSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"TargetThisSubeffect\"

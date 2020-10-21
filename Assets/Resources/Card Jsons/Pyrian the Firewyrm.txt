@@ -44,7 +44,7 @@
 					\"eChange\":-1
 				}",
 				"{
-					\"subeffType\":\"Target Defender\"
+					\"subeffType\":\"TargetDefenderSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"Change NESW\",

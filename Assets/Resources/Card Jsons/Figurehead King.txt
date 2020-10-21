@@ -20,21 +20,21 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Target All\",
+					\"subeffType\":\"TargetAllSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Not Already Target\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"Delete Target\",
+					\"subeffType\":\"DeleteTargetSubeffect\",
 					\"targetIndex\":0
 				}",
 				"{
 					\"subeffType\":\"Reshuffle\"
 				}",
 				"{
-					\"subeffType\":\"Delete Target\"
+					\"subeffType\":\"DeleteTargetSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"Count X Loop\",

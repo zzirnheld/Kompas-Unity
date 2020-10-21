@@ -35,7 +35,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Defender\"
+					\"subeffType\":\"TargetDefenderSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"Discard\"

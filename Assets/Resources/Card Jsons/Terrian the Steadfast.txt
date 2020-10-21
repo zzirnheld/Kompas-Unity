@@ -51,7 +51,7 @@
 					\"eMult\":-1
 				}",
 				"{
-					\"subeffType\":\"Target Defender\"
+					\"subeffType\":\"TargetDefenderSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"X Change NESW\",

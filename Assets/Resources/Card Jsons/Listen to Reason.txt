@@ -24,7 +24,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Target All\",
+					\"subeffType\":\"TargetAllSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
@@ -34,7 +34,7 @@
 					\"subeffType\":\"Discard\"
 				}",
 				"{
-					\"subeffType\":\"Delete Target\"
+					\"subeffType\":\"DeleteTargetSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"Loop While Have Targets\",

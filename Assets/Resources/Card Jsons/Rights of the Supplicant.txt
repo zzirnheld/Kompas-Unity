@@ -18,7 +18,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Attacker\"
+					\"subeffType\":\"TargetAttackerSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"X Change NESW\",

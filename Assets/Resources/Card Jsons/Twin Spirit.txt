@@ -65,7 +65,7 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Choose From List\",
+					\"subeffType\":\"ChooseFromListSubeffect\",
 					\"cardRestriction\":{
 						\"blurb\":\"copy of Twin Spirit to decksummon\",
 						\"cardRestrictions\":[\"Friendly\",\"Same Name as Target\",\"Deck\"]

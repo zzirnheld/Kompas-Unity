@@ -74,7 +74,7 @@
 					\"triggerCondition\":\"Turn Start\"
 				}",
 				"{
-					\"subeffType\":\"Choose From List\",
+					\"subeffType\":\"ChooseFromListSubeffect\",
 					\"playerIndex\":1,
 					\"maxCanChoose\":1,
 					\"cardRestriction\":

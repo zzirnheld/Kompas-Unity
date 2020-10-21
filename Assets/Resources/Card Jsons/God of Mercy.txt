@@ -23,7 +23,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target All\",
+					\"subeffType\":\"TargetAllSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Supplicant to give safe haven\",

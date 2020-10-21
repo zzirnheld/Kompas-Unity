@@ -17,7 +17,7 @@
 					\"jumpTo\":5
 				}",
 				"{
-					\"subeffType\":\"Choose From List Saving Rest\",
+					\"subeffType\":\"ChooseFromListSaveRestSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"spell for Perthro to search (to hand)\",

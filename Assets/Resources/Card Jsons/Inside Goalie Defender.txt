@@ -33,7 +33,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Target Target's Augmented Card\",
+					\"subeffType\":\"TargetTargetsAugmentedCardSubeffect\",
 					\"targetIndex\":0
 				}",
 				"{

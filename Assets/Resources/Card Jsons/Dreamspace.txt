@@ -16,7 +16,7 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Choose From List\",
+					\"subeffType\":\"ChooseFromListSubeffect\",
 					\"cardRestriction\":{
 						\"blurb\":\"copy of Dreamspace to decksummon\",
 						\"cardRestrictions\":[\"Friendly\",\"Same Name as Target\"]

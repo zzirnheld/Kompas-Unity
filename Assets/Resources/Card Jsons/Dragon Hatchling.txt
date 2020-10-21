@@ -22,7 +22,7 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect Space\"
+					\"subeffType\":\"TargetThisSpaceSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"Discard\"

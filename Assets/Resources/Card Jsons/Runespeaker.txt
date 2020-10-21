@@ -41,7 +41,7 @@
 					\"jumpTo\":8
 				}",
 				"{
-					\"subeffType\":\"Choose From List Saving Rest\",
+					\"subeffType\":\"ChooseFromListSaveRestSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Rune for Runespeaker to search (to hand)\",

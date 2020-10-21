@@ -22,7 +22,7 @@
 					\"jumpTo\":8
 				}",
 				"{
-					\"subeffType\":\"Choose From List\",
+					\"subeffType\":\"ChooseFromListSubeffect\",
 					\"maxCanChoose\":1,
 					\"cardRestriction\":
 					{
@@ -53,7 +53,7 @@
 					\"increment\":false
 				}",
 				"{
-					\"subeffType\":\"Add Rest\",
+					\"subeffType\":\"AddRestSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<X\",\"Not Already Target\"]

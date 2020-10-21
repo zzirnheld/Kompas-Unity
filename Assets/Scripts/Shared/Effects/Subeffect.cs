@@ -11,20 +11,6 @@ namespace KompasCore.Effects
     {
         #region subeffect type constants
         //targeting
-        public const string HandTarget = "Hand Target";
-        public const string SpaceTarget = "Space Target";
-        public const string TargetThis = "Target This";
-        public const string TargetThisSpace = "Target This Space";
-        public const string TargetAugmentedCard = "Target Augmented Card";
-        public const string TargetTargetsAugmentedCard = "Target Target's Augmented Card";
-        public const string ChooseFromList = "Choose From List";
-        public const string ChooseFromListSaveRest = "Choose From List Saving Rest";
-        public const string DeleteTargetFromList = "Delete Target";
-        public const string TargetAll = "Target All";
-        public const string AddRest = "Add Rest";
-        public const string TargetDefender = "Target Defender";
-        public const string TargetAttacker = "Target Attacker";
-        public const string TargetOtherInFight = "Target Other in Fight";
         public const string TargetAvatar = "Target Avatar";
         public const string TargetTriggeringCard = "Target Triggering Card";
         public const string TargetTriggeringCoords = "Target Triggering Space";
