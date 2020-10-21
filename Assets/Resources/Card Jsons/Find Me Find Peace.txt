@@ -31,7 +31,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"RehandSubeffect\"
+					\"subeffType\":\"RehandSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",

@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					"subeffType\":\"SetXByGamestateSubeffect\",
+					\"subeffType\":\"SetXByGamestateSubeffect\",
 					\"whatToCount\":\"Cards Fitting Restriction\",
 					\"throughRestriction\":
 					{

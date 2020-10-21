@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				"{
-					"subeffType\":\"SetXBoardRestrictionSubeffect\",
+					\"subeffType\":\"SetXBoardRestrictionSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"spell for DispelSubeffectler by Sword to DispelSubeffect\",

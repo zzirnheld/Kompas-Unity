@@ -23,7 +23,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"ResummonSubeffect\"
+					\"subeffType\":\"ResummonSubeffect\"
 				}"
 			]	
 		},

@@ -25,7 +25,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"TopdeckSubeffect\"
+					\"subeffType\":\"TopdeckSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"HandTargetSubeffect\",
@@ -36,7 +36,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"TopdeckSubeffect\"
+					\"subeffType\":\"TopdeckSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"HandTargetSubeffect\",
@@ -47,7 +47,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"TopdeckSubeffect\"
+					\"subeffType\":\"TopdeckSubeffect\"
 				}"
 			]	
 		}

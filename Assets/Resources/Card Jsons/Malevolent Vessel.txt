@@ -18,7 +18,7 @@
 					\"subeffType\":\"PayPipsTargetCostSubeffect\"
 				}",
 				"{
-					"subeffType\":\"ResummonSubeffect\"
+					\"subeffType\":\"ResummonSubeffect\"
 				}"
 			]	
 		},
@@ -41,7 +41,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}"
 			]	
 		}

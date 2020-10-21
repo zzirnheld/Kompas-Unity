@@ -21,7 +21,7 @@
 					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					"subeffType\":\"ChangeCardStatsSubeffect\",
+					\"subeffType\":\"ChangeCardStatsSubeffect\",
 					\"aMod\":1
 				}"
 			]
@@ -51,7 +51,7 @@
 					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					"subeffType\":\"ChangeXbyTargetValueSubeffect\",
+					\"subeffType\":\"ChangeXbyTargetValueSubeffect\",
 					\"whatToCount\":\"Cost\",
 					\"xMultiplier\":1
 				}",
@@ -59,7 +59,7 @@
 					\"subeffType\":\"TargetTargetsAugmentedCardSubeffect\"
 				}",
 				"{
-					"subeffType\":\"ChangeCardStatsSubeffect\",
+					\"subeffType\":\"ChangeCardStatsSubeffect\",
 					\"eMult\":-1
 				}",
 				"{

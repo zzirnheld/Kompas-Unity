@@ -21,7 +21,7 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"AddPipsSubeffect\",

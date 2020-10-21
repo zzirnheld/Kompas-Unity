@@ -22,7 +22,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"BottomdeckSubeffect\"
+					\"subeffType\":\"BottomdeckSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"CountXLoopSubeffect\",

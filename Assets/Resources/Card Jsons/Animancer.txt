@@ -21,12 +21,12 @@
 					}
 				}",
 				"{
-					"subeffType\":\"ChangeXbyTargetValueSubeffect\",
+					\"subeffType\":\"ChangeXbyTargetValueSubeffect\",
 					\"whatToCount\":\"Cost\",
 					\"xMultiplier\":1
 				}",
 				"{
-					"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"LoopSubeffect\",
@@ -52,7 +52,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"RehandSubeffect\"
+					\"subeffType\":\"RehandSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"ClearOnImpossibleSubeffect\"

@@ -34,7 +34,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"PlaySubeffect\"
 				}",
 				"{
 					\"subeffType\":\"HandTargetSubeffect\",
@@ -58,7 +58,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"PlaySubeffect\"
 				}"
 			]
 		}

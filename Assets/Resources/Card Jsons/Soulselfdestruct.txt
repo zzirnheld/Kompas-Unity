@@ -21,7 +21,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"DeckTargetSubeffect\",
@@ -32,7 +32,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"XTimesSubeffect\",

@@ -20,7 +20,7 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					"subeffType\":\"SetXByTargetValueSubeffect\",
+					\"subeffType\":\"SetXByTargetValueSubeffect\",
 					\"whatToCount\":\"C\",
 					\"xMultiplier\":1
 				}",

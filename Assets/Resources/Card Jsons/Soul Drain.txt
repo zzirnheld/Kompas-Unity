@@ -20,7 +20,7 @@
 					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					"subeffType\":\"SetXByTargetValueSubeffect\",
+					\"subeffType\":\"SetXByTargetValueSubeffect\",
 					\"whatToCount\":\"S\",
 					\"xMultiplier\":1
 				}",

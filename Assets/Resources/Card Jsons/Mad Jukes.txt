@@ -24,7 +24,7 @@
 					\"subeffType\":\"TargetAugmentsSubeffect\"
 				}",
 				"{
-					"subeffType\":\"ChangeXbyTargetValueSubeffect\",
+					\"subeffType\":\"ChangeXbyTargetValueSubeffect\",
 					\"whatToCount\":\"Cost\",
 					\"xMultiplier\":1
 				}",

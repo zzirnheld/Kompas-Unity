@@ -17,7 +17,7 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					"subeffType\":\"ReshuffleSubeffect\"
+					\"subeffType\":\"ReshuffleSubeffect\"
 				}"
 			]
 		}

@@ -17,7 +17,7 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					"subeffType\":\"RehandSubeffect\"
+					\"subeffType\":\"RehandSubeffect\"
 				}"
 			]
 		},
@@ -30,7 +30,7 @@
 			},
 			"subeffects":[
 				"{
-					"subeffType\":\"SetXByGamestateSubeffect\",
+					\"subeffType\":\"SetXByGamestateSubeffect\",
 					\"whatToCount\":\"Effect Uses This Turn\",
 					\"xMultiplier\":1
 				}",

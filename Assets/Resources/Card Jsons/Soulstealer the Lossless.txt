@@ -48,7 +48,7 @@
 					\"xDivisor\":2
 				}",
 				"{
-					"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"PlaySubeffect\"
 				}"
 			]
 		},

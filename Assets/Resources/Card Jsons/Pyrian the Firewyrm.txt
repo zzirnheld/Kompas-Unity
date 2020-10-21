@@ -21,7 +21,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}"
 			]	
 		},

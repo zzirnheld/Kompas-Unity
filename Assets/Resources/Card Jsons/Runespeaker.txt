@@ -34,7 +34,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"PlaySubeffect\"
 				}",
 				"{
 					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
@@ -59,7 +59,7 @@
 					\"subeffType\":\"ClearOnImpossibleSubeffect\"
 				}",
 				"{
-					"subeffType\":\"RehandSubeffect\"
+					\"subeffType\":\"RehandSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"BottomdeckRestSubeffect\"

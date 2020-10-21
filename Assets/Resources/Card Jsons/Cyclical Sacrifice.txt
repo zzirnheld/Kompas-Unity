@@ -22,7 +22,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"ReshuffleSubeffect\"
+					\"subeffType\":\"ReshuffleSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"CountXLoopSubeffect\",

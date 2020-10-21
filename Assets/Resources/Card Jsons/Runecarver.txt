@@ -24,7 +24,7 @@
 					\"maxCanChoose\":1
 				}",
 				"{
-					"subeffType\":\"ReshuffleSubeffect\",
+					\"subeffType\":\"ReshuffleSubeffect\",
 					\"targetIndex\":-1
 				}",
 				"{

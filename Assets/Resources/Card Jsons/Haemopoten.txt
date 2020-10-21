@@ -12,7 +12,7 @@
 			},
 			"subeffects":[
 				"{
-					"subeffType\":\"SetXByGamestateSubeffect\",
+					\"subeffType\":\"SetXByGamestateSubeffect\",
 					\"whatToCount\":\"Effect Uses This Turn\",
 					\"xMultiplier\":1
 				}",
@@ -40,7 +40,7 @@
 					\"triggerCondition\":\"Turn Start\"
 				}",
 				"{
-					"subeffType\":\"RehandSubeffect\"
+					\"subeffType\":\"RehandSubeffect\"
 				}"
 			]
 		}

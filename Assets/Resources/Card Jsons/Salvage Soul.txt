@@ -21,7 +21,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"RehandSubeffect\"
+					\"subeffType\":\"RehandSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"DrawSubeffect\"
@@ -34,7 +34,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}"
 			]	
 		}

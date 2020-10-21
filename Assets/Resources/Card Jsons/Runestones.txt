@@ -27,7 +27,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"RehandSubeffect\"
+					\"subeffType\":\"RehandSubeffect\"
 				}"
 			]
 		}

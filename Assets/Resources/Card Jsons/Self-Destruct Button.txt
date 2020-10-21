@@ -38,7 +38,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"PlaySubeffect\"
 				}"
 			]
 		},
@@ -68,10 +68,10 @@
 					}
 				}",
 				"{
-					"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
-					"subeffType\":\"DiscardSubeffect\",
+					\"subeffType\":\"DiscardSubeffect\",
 					\"targetIndex\":-2
 				}",
 				"{
@@ -82,7 +82,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"RehandSubeffect\"
+					\"subeffType\":\"RehandSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"TTimesSubeffect\",
@@ -98,7 +98,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"TargetThisSubeffect\"

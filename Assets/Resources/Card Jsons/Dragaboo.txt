@@ -33,11 +33,11 @@
 					}
 				}",
 				"{
-					"subeffType\":\"SetXByTargetCostSubeffect\",
+					\"subeffType\":\"SetXByTargetCostSubeffect\",
 					\"xMultiplier\":1
 				}",
 				"{
-					"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"AddPipsSubeffect\",

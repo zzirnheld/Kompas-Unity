@@ -22,7 +22,7 @@
 					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"DrawSubeffect\"

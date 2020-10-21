@@ -21,7 +21,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"ResummonSubeffect\"
+					\"subeffType\":\"ResummonSubeffect\"
 				}"
 			]	
 		}

@@ -21,11 +21,11 @@
 					}
 				}",
 				"{
-					"subeffType\":\"SetXByTargetCostSubeffect\",
+					\"subeffType\":\"SetXByTargetCostSubeffect\",
 					\"xMultiplier\":1
 				}",
 				"{
-					"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"ClearOptionSubeffect\",
@@ -61,10 +61,10 @@
 					}
 				}",
 				"{
-					"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"PlaySubeffect\"
 				}",
 				"{
-					"subeffType\":\"ActivateSubeffect\"
+					\"subeffType\":\"ActivateSubeffect\"
 				}"
 			]	
 		}

@@ -16,7 +16,7 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"DeckTargetSubeffect\",
@@ -36,7 +36,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"PlaySubeffect\"
 				}"
 			]
 		}

@@ -38,7 +38,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"PlaySubeffect\"
 				}"
 			]
 		},
@@ -84,7 +84,7 @@
 					\"subeffType\":\"EndResolutionSubeffect\"
 				}",
 				"{
-					"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}"
 			]
 		}

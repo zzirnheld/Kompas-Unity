@@ -21,7 +21,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"SetXByTargetValueSubeffect\",
+					\"subeffType\":\"SetXByTargetValueSubeffect\",
 					\"whatToCount\":\"S\",
 					\"xMultiplier\":1
 				}",
@@ -30,7 +30,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					"subeffType\":\"DiscardSubeffect\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"DeckTargetSubeffect\",
@@ -50,7 +50,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"PlaySubeffect\"
 				}"
 			]	
 		}

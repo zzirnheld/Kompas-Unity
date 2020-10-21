@@ -29,7 +29,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"PlaySubeffect\"
 				}",
 				"{
 					\"subeffType\":\"HangingAnnihilationSubeffect\",

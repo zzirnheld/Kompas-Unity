@@ -20,7 +20,7 @@
 					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					"subeffType\":\"RehandSubeffect\"
+					\"subeffType\":\"RehandSubeffect\"
 				}"
 			]	
 		}

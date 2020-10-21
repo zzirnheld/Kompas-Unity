@@ -34,7 +34,7 @@
 					\"subeffType\":\"ClearOnImpossibleSubeffect\"
 				}",
 				"{
-					"subeffType\":\"RehandSubeffect\"
+					\"subeffType\":\"RehandSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"BottomdeckRestSubeffect\"

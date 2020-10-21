@@ -32,7 +32,7 @@
 					\"subeffType\":\"TargetTargetsSpaceSubeffect\"
 				}",
 				"{
-					"subeffType\":\"PlaySubeffect\",
+					\"subeffType\":\"PlaySubeffect\",
 					\"targetIndex\":-2
 				}"
 			]	

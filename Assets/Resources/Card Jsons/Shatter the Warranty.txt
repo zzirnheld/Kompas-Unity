@@ -22,7 +22,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"SetXByTargetCostSubeffect\",
+					\"subeffType\":\"SetXByTargetCostSubeffect\",
 					\"xMultiplier\":1
 				}",
 				"{
