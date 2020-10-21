@@ -12,23 +12,6 @@ namespace KompasCore.Effects
         #region subeffect type constants
         //TODO deprecate change nesw
 
-        //move cards between states
-        public const string PlayCard = "Play";
-        public const string DiscardCard = "Discard";
-        public const string ReshuffleCard = "Reshuffle";
-        public const string RehandCard = "Rehand";
-        public const string Bottomdeck = "Bottomdeck";
-        public const string Topdeck = "Topdeck";
-        public const string Move = "Move";
-        public const string Swap = "Swap";
-        public const string Annihilate = "Annihilate";
-        public const string Draw = "Draw";
-        public const string DrawX = "Draw X";
-        public const string Mill = "Mill";
-        public const string BottomdeckRest = "Bottomdeck Rest";
-
-        public const string AttachCard = "Attach";
-
         //loops/control flow
         public const string XTimesLoop = "Loop X Times";
         public const string TTimesLoop = "Loop T Times";

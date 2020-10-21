@@ -29,7 +29,8 @@
 					\"subeffType\":\"DispelSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Draw X\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"DrawXSubeffect\",
 					\"xMultiplier\":1
 				}"
 			]	

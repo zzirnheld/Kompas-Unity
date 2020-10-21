@@ -38,7 +38,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Play\"
+					"subeffType\":\"PlaySubeffect\"
 				}"
 			]
 		},
@@ -78,13 +78,14 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Annihilate\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"AnnihilateSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"End Effect Resolution\"
 				}",
 				"{
-					\"subeffType\":\"Discard\"
+					"subeffType\":\"DiscardSubeffect\"
 				}"
 			]
 		}

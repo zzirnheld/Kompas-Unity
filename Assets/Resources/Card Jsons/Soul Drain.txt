@@ -25,7 +25,8 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Mill\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"MillSubeffect\",
 					\"xMultiplier\":1
 				}"
 			]	

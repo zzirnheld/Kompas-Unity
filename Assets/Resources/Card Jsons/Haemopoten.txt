@@ -40,7 +40,7 @@
 					\"triggerCondition\":\"Turn Start\"
 				}",
 				"{
-					\"subeffType\":\"Rehand\"
+					"subeffType\":\"RehandSubeffect\"
 				}"
 			]
 		}

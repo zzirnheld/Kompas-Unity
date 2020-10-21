@@ -21,10 +21,11 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Rehand\"
+					"subeffType\":\"RehandSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Draw\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"DrawSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"HandTargetSubeffect\",
@@ -34,7 +35,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Discard\"
+					"subeffType\":\"DiscardSubeffect\"
 				}"
 			]	
 		}

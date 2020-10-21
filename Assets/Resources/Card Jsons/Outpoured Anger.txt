@@ -32,7 +32,8 @@
 					\"targetIndex\":-2
 				}",
 				"{
-					\"subeffType\":\"Move\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"MoveSubeffect\"
 				}"
 			]	
 		}

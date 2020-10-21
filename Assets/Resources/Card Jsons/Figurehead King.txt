@@ -31,7 +31,7 @@
 					\"targetIndex\":0
 				}",
 				"{
-					\"subeffType\":\"Reshuffle\"
+					"subeffType\":\"ReshuffleSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"DeleteTargetSubeffect\"

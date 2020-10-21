@@ -33,7 +33,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Play\"
+					"subeffType\":\"PlaySubeffect\"
 				}"
 			]
 		}

@@ -45,7 +45,8 @@
 					\"eMult\":-1
 				}",
 				"{
-					\"subeffType\":\"Move\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"MoveSubeffect\"
 				}"
 			]
 		},
@@ -72,10 +73,11 @@
 
 				}",
 				"{
-					\"subeffType\":\"Discard\"
+					"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Draw X\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"DrawXSubeffect\",
 					\"xMultiplier\":1
 				}"
 			]	

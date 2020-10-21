@@ -30,7 +30,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Discard\"
+					"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"DeckTargetSubeffect\",
@@ -50,7 +50,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Play\"
+					"subeffType\":\"PlaySubeffect\"
 				}"
 			]	
 		}

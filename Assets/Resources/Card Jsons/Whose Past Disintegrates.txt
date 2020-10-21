@@ -45,7 +45,8 @@
 					\"eMult\":-1
 				}",
 				"{
-					\"subeffType\":\"Move\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"MoveSubeffect\"
 				}"
 			]
 		},

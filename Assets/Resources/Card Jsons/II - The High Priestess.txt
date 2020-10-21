@@ -13,7 +13,8 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"Draw X\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"DrawXSubeffect\",
 					\"xModifier\":3
 				}",
 				"{
@@ -25,7 +26,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Topdeck\"
+					"subeffType\":\"TopdeckSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"HandTargetSubeffect\",
@@ -36,7 +37,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Topdeck\"
+					"subeffType\":\"TopdeckSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"HandTargetSubeffect\",
@@ -47,7 +48,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Topdeck\"
+					"subeffType\":\"TopdeckSubeffect\"
 				}"
 			]	
 		}

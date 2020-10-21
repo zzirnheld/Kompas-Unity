@@ -51,7 +51,8 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Move\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"MoveSubeffect\"
 				}"
 			]	
 		},
@@ -69,7 +70,7 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Rehand\"
+					"subeffType\":\"RehandSubeffect\"
 				}"
 			]
 		}

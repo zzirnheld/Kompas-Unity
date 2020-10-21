@@ -24,7 +24,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Discard\"
+					"subeffType\":\"DiscardSubeffect\"
 				}"
 			]
 		}

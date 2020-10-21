@@ -22,7 +22,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Reshuffle\"
+					"subeffType\":\"ReshuffleSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"DeleteTargetSubeffect\"
@@ -54,7 +54,8 @@
 					\"sMult\":-1
 				}",
 				"{
-					\"subeffType\":\"Draw\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"DrawSubeffect\"
 				}"
 			]	
 		}

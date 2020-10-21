@@ -41,7 +41,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Play\"
+					"subeffType\":\"PlaySubeffect\"
 				}"
 			]
 		}

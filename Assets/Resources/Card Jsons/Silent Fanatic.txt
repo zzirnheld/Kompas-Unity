@@ -32,7 +32,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Play\"
+					"subeffType\":\"PlaySubeffect\"
 				}",
 				"{
 					\"subeffType\":\"ChooseFromListSubeffect\",
@@ -53,7 +53,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Play\"
+					"subeffType\":\"PlaySubeffect\"
 				}"
 			]
 		}

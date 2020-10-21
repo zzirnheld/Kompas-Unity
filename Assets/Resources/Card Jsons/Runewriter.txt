@@ -23,7 +23,7 @@
 					\"maxCanChoose\":1
 				}",
 				"{
-					\"subeffType\":\"Reshuffle\"
+					"subeffType\":\"ReshuffleSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"Jump on Effect Impossible\",
@@ -48,10 +48,11 @@
 					\"subeffType\":\"Clear Jump on Effect Impossible\"
 				}",
 				"{
-					\"subeffType\":\"Bottomdeck Rest\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"BottomdeckRestSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Rehand\"
+					"subeffType\":\"RehandSubeffect\"
 				}"
 			]
 		}

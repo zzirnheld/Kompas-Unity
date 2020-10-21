@@ -17,7 +17,8 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Annihilate\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"AnnihilateSubeffect\"
 				}"
 			]
 		},
@@ -49,7 +50,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Play\"
+					"subeffType\":\"PlaySubeffect\"
 				}"
 			]
 		}

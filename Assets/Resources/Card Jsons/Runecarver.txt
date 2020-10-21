@@ -24,11 +24,12 @@
 					\"maxCanChoose\":1
 				}",
 				"{
-					\"subeffType\":\"Reshuffle\",
+					"subeffType\":\"ReshuffleSubeffect\",
 					\"targetIndex\":-1
 				}",
 				"{
-					\"subeffType\":\"Draw X\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"DrawXSubeffect\",
 					\"xModifier\":2
 				}"
 			]

@@ -12,7 +12,8 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"Draw\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"DrawSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"HandTargetSubeffect\",
@@ -23,7 +24,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Bottomdeck\"
+					"subeffType\":\"BottomdeckSubeffect\"
 				}"
 			]
 		}

@@ -25,7 +25,7 @@
 					\"subeffType\":\"TargetThisSpaceSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Discard\"
+					"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"DeckTargetSubeffect\",
@@ -37,7 +37,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Play\",
+					"subeffType\":\"PlaySubeffect\",
 					\"spaceIndex\":-1,
 					\"targetIndex\":-1
 				}"

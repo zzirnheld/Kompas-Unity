@@ -21,7 +21,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Discard\"
+					"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"DeckTargetSubeffect\",
@@ -32,10 +32,11 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Discard\"
+					"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Loop X Times\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"XTimesSubeffect\",
 					\"jumpTo\":3
 				}"
 			]	

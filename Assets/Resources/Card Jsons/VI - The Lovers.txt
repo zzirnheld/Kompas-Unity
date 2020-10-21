@@ -21,7 +21,7 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Discard\",
+					"subeffType\":\"DiscardSubeffect\",
 					\"targetIndex\":-1
 				}",
 				"{
@@ -35,7 +35,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Play\",
+					"subeffType\":\"PlaySubeffect\",
 					\"targetIndex\":-1,
 					\"SpaceIndex\":-1
 				}"

@@ -22,7 +22,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Discard\"
+					"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"Count X Loop\",
@@ -37,7 +37,8 @@
 					\"sMult\":1
 				}",
 				"{
-					\"subeffType\":\"Draw X\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"DrawXSubeffect\",
 					\"xMultiplier\":1
 				}",
 				"{
@@ -48,7 +49,8 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Annihilate\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"AnnihilateSubeffect\"
 				}"
 			]	
 		}

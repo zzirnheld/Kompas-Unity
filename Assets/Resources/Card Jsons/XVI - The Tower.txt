@@ -18,7 +18,7 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Discard\"
+					"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"BoardTargetSubeffect\",
@@ -33,7 +33,8 @@
 					\"eMult\":-1
 				}",
 				"{
-					\"subeffType\":\"Draw X\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"DrawXSubeffect\",
 					\"xMultiplier\":1
 				}"
 			]

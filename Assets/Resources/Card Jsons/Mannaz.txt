@@ -34,10 +34,11 @@
 					\"subeffType\":\"Clear Jump on Effect Impossible\"
 				}",
 				"{
-					\"subeffType\":\"Rehand\"
+					"subeffType\":\"RehandSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Bottomdeck Rest\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"BottomdeckRestSubeffect\"
 				}"
 			]	
 		}

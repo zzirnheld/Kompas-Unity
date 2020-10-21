@@ -33,7 +33,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Play\"
+					"subeffType\":\"PlaySubeffect\"
 				}"
 			]
 		}

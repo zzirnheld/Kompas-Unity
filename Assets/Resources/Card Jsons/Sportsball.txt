@@ -17,7 +17,7 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Rehand\"
+					"subeffType\":\"RehandSubeffect\"
 				}"
 			]
 		},
@@ -41,7 +41,8 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Attach\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"AttachSubeffect\"
 				}"
 			]
 		},
@@ -70,7 +71,8 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Attach\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"AttachSubeffect\"
 				}"
 			]
 		}

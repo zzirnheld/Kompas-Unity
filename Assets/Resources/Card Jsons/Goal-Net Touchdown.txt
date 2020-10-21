@@ -43,7 +43,8 @@
 					\"constant\":2
 				}",
 				"{
-					\"subeffType\":\"Attach\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"AttachSubeffect\",
 					\"attachmentTarget\":0
 				}",
 				"{

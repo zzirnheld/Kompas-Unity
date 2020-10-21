@@ -20,7 +20,7 @@
 					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Reshuffle\"
+					"subeffType\":\"ReshuffleSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"ChangeAllNESWSubeffect\",
@@ -32,7 +32,8 @@
 					\"wMod\":1
 				}",
 				"{
-					\"subeffType\":\"Draw\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"DrawSubeffect\"
 				}"
 			]
 		}

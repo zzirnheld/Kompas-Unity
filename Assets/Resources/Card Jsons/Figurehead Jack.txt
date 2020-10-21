@@ -13,7 +13,8 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Draw\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"DrawSubeffect\"
 				}"
 			]	
 		}

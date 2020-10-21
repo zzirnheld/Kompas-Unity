@@ -22,7 +22,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Bottomdeck\"
+					"subeffType\":\"BottomdeckSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"Count X Loop\",
@@ -30,7 +30,8 @@
 					\"jumpTo\":0
 				}",
 				"{
-					\"subeffType\":\"Draw X\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"DrawXSubeffect\",
 					\"xMultiplier\":1
 				}"
 			]	

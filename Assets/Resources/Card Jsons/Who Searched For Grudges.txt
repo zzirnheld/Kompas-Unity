@@ -45,7 +45,8 @@
 					\"eMult\":-1
 				}",
 				"{
-					\"subeffType\":\"Move\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"MoveSubeffect\"
 				}"
 			]
 		},
@@ -77,10 +78,10 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Discard\"
+					"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Discard\",
+					"subeffType\":\"DiscardSubeffect\",
 					\"targetIndex\":-2
 				}",
 				"{
@@ -93,7 +94,7 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Discard\"
+					"subeffType\":\"DiscardSubeffect\"
 				}"
 			]	
 		}

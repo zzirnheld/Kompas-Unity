@@ -30,7 +30,8 @@
 					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Attach\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"AttachSubeffect\"
 				}"
 			]
 		}

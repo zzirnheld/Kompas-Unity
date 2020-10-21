@@ -22,7 +22,8 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Annihilate\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"AnnihilateSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"ChooseFromListSubeffect\",
@@ -43,7 +44,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Play\"
+					"subeffType\":\"PlaySubeffect\"
 				}",
 				"{
 					\"subeffType\":\"ChooseFromListSubeffect\",
@@ -64,7 +65,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Play\"
+					"subeffType\":\"PlaySubeffect\"
 				}"
 			]	
 		}

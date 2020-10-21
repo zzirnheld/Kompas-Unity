@@ -29,7 +29,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Play\"
+					"subeffType\":\"PlaySubeffect\"
 				}",
 				"{
 					\"subeffType\":\"Hanging Annihilate\",

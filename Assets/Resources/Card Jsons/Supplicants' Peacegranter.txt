@@ -25,7 +25,8 @@
 					\"OptionJumpIndices\":[1,3]
 				}",
 				"{
-					\"subeffType\":\"Draw\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"DrawSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"End Effect Resolution\"
@@ -41,7 +42,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Rehand\"
+					"subeffType\":\"RehandSubeffect\"
 				}"
 			]
 		}

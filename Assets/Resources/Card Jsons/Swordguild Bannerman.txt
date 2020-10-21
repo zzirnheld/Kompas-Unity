@@ -21,7 +21,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Discard\",
+					"subeffType\":\"DiscardSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"dead Warrior for Bannerman to reshuffle\",
@@ -30,10 +30,11 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Reshuffle\"
+					"subeffType\":\"ReshuffleSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Loop X Times\",
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"XTimesSubeffect\",
 					\"jumpTo\":1
 				}"
 			]	

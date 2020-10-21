@@ -29,7 +29,8 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Swap\"
+					"subeffType\":\"Subeffect\"
+"subeffType\":\"SwapSubeffect\"
 				}"
 			]
 		}
