@@ -55,7 +55,7 @@
 			]
 		}
 	],
-	"c":3,
+	"c":1,
 	"spellType":"Enchant",
 	"subtypeText":"Sportsball Play Enchant"
 }
