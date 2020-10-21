@@ -43,7 +43,7 @@
 					\"sMult\":-1
 				}",
 				"{
-					\"subeffType\":\"BoardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"adjacent SX character for Death to kill\",

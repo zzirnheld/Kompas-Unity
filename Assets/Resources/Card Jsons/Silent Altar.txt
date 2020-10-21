@@ -35,7 +35,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"BoardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Altar(s) to sacrifice\",

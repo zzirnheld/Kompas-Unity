@@ -14,7 +14,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"BoardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"adjacent character for Caligo to kill\",
@@ -34,7 +34,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"BoardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"enemy character for Caligo to attack\",

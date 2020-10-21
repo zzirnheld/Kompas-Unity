@@ -1,4 +1,5 @@
 ﻿using KompasCore.Effects;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace KompasServer.Effects
@@ -17,7 +18,9 @@ namespace KompasServer.Effects
         {
             if (ServerEffect.serverGame.ExistsSpaceTarget(spaceRestriction))
             {
-                EffectController.ServerNotifier.GetSpaceTarget(this);
+                List<(int, int)> spaces = new List<(int, int)>();
+                for (int x = 0; x < 7; x++) for (int y = 0; y < 7; y++) spaces.Add((x, y));
+                EffectController.ServerNotifier.GetSpaceTarget(Source.CardName, spaceRestriction.blurb, spaces.ToArray());
                 return false;
             }
             else

@@ -23,7 +23,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"BoardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Spell\",\"Cost<=X\"]

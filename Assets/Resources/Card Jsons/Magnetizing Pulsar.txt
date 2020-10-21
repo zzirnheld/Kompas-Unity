@@ -21,7 +21,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"BoardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Magnetizing to move\",
@@ -60,7 +60,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"BoardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Magnetizing to move\",

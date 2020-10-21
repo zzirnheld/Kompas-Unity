@@ -16,7 +16,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"DiscardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Crazy Idea for Wait Hold Up to Ificate\",
@@ -53,7 +53,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"HandTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Wait, Hold Up, what are you discarding?\",
@@ -67,7 +67,7 @@
 					\"subeffType\":\"DrawSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"BoardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Wait, Hold Up, what are you moving?\",

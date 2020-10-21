@@ -59,7 +59,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"HandTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Shaping for He Who Knew Runes to cast\",

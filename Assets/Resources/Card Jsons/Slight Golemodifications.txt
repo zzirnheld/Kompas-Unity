@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"BoardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\"],
@@ -34,7 +34,7 @@
 					\"OptionJumpIndices\":[4,6]
 				}",
 				"{
-					\"subeffType\":\"HandTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Hand\",\"S<X\"],
@@ -46,7 +46,7 @@
 					\"indexToJumpTo\":7
 				}",
 				"{
-					\"subeffType\":\"DiscardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Discard\",\"S<X\"],

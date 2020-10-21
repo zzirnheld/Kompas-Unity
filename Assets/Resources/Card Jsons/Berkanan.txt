@@ -17,7 +17,7 @@
 					\"condition\":\"Must be Friendly Turn\"
 				}",
 				"{
-					\"subeffType\":\"BoardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"enemy for Berkanan to charm\",

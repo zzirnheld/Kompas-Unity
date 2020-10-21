@@ -26,7 +26,13 @@ namespace KompasServer.Effects
         protected IEnumerable<GameCard> potentialTargets;
 
         protected void RequestTargets()
-            => ServerPlayer.ServerNotifier.GetChoicesFromList(potentialTargets, listRestriction.maxCanChoose, this);
+        {
+            string name = Source.CardName;
+            string blurb = cardRestriction.blurb;
+            int[] targetIds = potentialTargets.Select(c => c.ID).ToArray();
+            int num = listRestriction.maxCanChoose;
+            ServerPlayer.ServerNotifier.GetCardTarget(name, blurb, targetIds, num: num);
+        }
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {

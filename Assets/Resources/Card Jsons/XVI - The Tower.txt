@@ -21,7 +21,7 @@
 					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"BoardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Summoned character for Tower to give -XE\",

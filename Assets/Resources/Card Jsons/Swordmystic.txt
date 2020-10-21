@@ -22,7 +22,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"DiscardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Warrior for Swordmystic to revive\",

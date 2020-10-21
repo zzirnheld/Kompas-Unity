@@ -62,7 +62,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"HandTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":{
 						\"blurb\":\"for Unwanted to discard\",
 						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Subtypes Include\"],

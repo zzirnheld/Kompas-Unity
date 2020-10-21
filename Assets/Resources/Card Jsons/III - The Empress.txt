@@ -15,7 +15,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"HandTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Empress to hand-summon\",

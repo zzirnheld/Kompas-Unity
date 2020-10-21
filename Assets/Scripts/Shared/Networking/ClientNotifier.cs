@@ -47,7 +47,7 @@ namespace KompasClient.Networking
 
         public void RequestSpaceTarget(int x, int y) => Send(new SpaceTargetPacket(x, y));
 
-        public void RequestListChoices(List<GameCard> choices) => Send(new ListChoicesPacket(choices));
+        public void RequestListChoices(IEnumerable<GameCard> choices) => Send(new ListChoicesPacket(choices));
 
         public void RequestTriggerReponse(bool answer) => Send(new OptionalTriggerAnswerPacket(answer));
 

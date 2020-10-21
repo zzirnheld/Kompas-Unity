@@ -33,7 +33,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"DiscardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Friendly\",\"Discard\"]

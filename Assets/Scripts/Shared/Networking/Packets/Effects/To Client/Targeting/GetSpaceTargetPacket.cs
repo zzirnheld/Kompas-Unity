@@ -9,24 +9,20 @@ namespace KompasCore.Networking
 {
     public class GetSpaceTargetPacket : Packet
     {
-        public int sourceCardId;
-        public int effIndex;
-        public int subeffIndex;
+        public string cardName;
+        public string targetBlurb;
+        public (int, int)[] potentialSpaces;
 
         public GetSpaceTargetPacket() : base(GetSpaceTarget) { }
 
-        public GetSpaceTargetPacket(int sourceCardId, int effIndex, int subeffIndex) : this()
+        public GetSpaceTargetPacket(string cardName, string targetBlurb, (int, int)[] potentialSpaces) : this()
         {
-            this.sourceCardId = sourceCardId;
-            this.effIndex = effIndex;
-            this.subeffIndex = subeffIndex;
+            this.cardName = cardName;
+            this.targetBlurb = targetBlurb;
+            this.potentialSpaces = potentialSpaces;
         }
 
-        public GetSpaceTargetPacket(SpaceRestriction restriction)
-            : this(restriction.Subeffect.Source.ID, restriction.Subeffect.Effect.EffectIndex, restriction.Subeffect.SubeffIndex)
-        { }
-
-        public override Packet Copy() => new GetSpaceTargetPacket(sourceCardId, effIndex, subeffIndex);
+        public override Packet Copy() => new GetSpaceTargetPacket(cardName, targetBlurb, potentialSpaces);
     }
 }
 
@@ -36,17 +32,9 @@ namespace KompasClient.Networking
     {
         public void Execute(ClientGame clientGame)
         {
-            var subeff = clientGame.GetCardWithID(sourceCardId)?.Effects.ElementAt(effIndex).Subeffects[subeffIndex];
-            if (subeff == null) return;
-            var restriction = (subeff as DummySpaceTargetSubeffect)?.spaceRestriction;
-            if (restriction != null)
-            {
-                clientGame.targetMode = Game.TargetMode.SpaceTarget;
-                clientGame.CurrSpaceRestriction = restriction;
-                //TODO display based on that space
-                clientGame.clientUICtrl.SetCurrState("Choose Space Target", restriction.blurb);
-                clientGame.clientUICtrl.boardUICtrl.ShowSpaceTargets(space => restriction.Evaluate(space));
-            }
+            clientGame.targetMode = Game.TargetMode.SpaceTarget;
+            clientGame.CurrentPotentialSpaces = potentialSpaces;
+            clientGame.clientUICtrl.SetCurrState($"Choose {cardName}'s Space Target", targetBlurb);
         }
     }
 }

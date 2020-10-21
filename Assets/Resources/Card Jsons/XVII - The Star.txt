@@ -15,7 +15,7 @@
 					\"subeffType\":\"DrawSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"HandTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Star to hand-bottomdeck\",

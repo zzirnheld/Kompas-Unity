@@ -21,7 +21,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"HandTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":{
 						\"blurb\":\"Great Scott, we have to discard something\",
 						\"cardRestrictions\":[\"Friendly\",\"Hand\"]

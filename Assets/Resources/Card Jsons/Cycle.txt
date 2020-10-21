@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"HandTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":{
 						\"blurb\":\"Card to Cycle\",
 						\"cardRestrictions\":[\"Friendly\",\"Hand\"]

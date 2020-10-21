@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"HandTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":{
 						\"blurb\":\"Ethereal for Unfinding to discard\",
 						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Subtypes Include\"],

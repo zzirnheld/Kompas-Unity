@@ -22,12 +22,12 @@ namespace KompasClient.UI
 
         public struct SearchData
         {
-            public readonly List<GameCard> toSearch;
+            public readonly GameCard[] toSearch;
             public readonly int numToSearch;
             public readonly bool targetingSearch;
             public readonly List<GameCard> searched;
 
-            public SearchData(List<GameCard> toSearch, int numToSearch, bool targetingSearch, List<GameCard> searched)
+            public SearchData(GameCard[] toSearch, int numToSearch, bool targetingSearch, List<GameCard> searched)
             {
                 this.toSearch = toSearch;
                 this.numToSearch = numToSearch;
@@ -276,19 +276,19 @@ namespace KompasClient.UI
         #endregion effects
 
         #region search
-        public void StartSearch(List<GameCard> list, int numToChoose = 1, bool targetingSearch = true) 
+        public void StartSearch(GameCard[] list, int numToChoose = 1, bool targetingSearch = true)
             => StartSearch(new SearchData(list, numToChoose, targetingSearch, new List<GameCard>()));
 
         public void StartSearch(SearchData data)
         {
             //if the list is empty, don't search
-            if (data.toSearch.Count == 0) return;
+            if (data.toSearch.Length == 0) return;
 
             //if should search and already searching, remember current search
             if (currSearchData.HasValue) searchStack.Push(currSearchData.Value);
 
             currSearchData = data;
-            Debug.Log($"Searching a list of {data.toSearch.Count} cards: {string.Join(",", data.toSearch.Select(c => c.CardName))}");
+            Debug.Log($"Searching a list of {data.toSearch.Length} cards: {string.Join(",", data.toSearch.Select(c => c.CardName))}");
 
             //initiate search process
             searchIndex = 0;
@@ -351,19 +351,17 @@ namespace KompasClient.UI
             else StartSearch(searchStack.Pop());
         }
 
-        public void StartDiscardSearch() => StartSearch(clientGame.friendlyDiscardCtrl.Discard);
-
         public void NextCardSearch()
         {
             searchIndex++;
-            searchIndex %= currSearchData.Value.toSearch.Count;
+            searchIndex %= currSearchData.Value.toSearch.Length;
             SearchShowIndex(searchIndex);
         }
 
         public void PrevCardSearch()
         {
             searchIndex--;
-            if (searchIndex < 0) searchIndex += currSearchData.Value.toSearch.Count;
+            if (searchIndex < 0) searchIndex += currSearchData.Value.toSearch.Length;
             SearchShowIndex(searchIndex);
         }
 

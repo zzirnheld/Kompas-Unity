@@ -14,7 +14,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"BoardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"blurb\":\"card to answer prayers\",
 					\"cardRestriction\":{
 						\"cardRestrictions\":[\"Board\",\"Is Character\",\"Turn Player Controls\"]

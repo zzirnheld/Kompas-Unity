@@ -28,7 +28,7 @@
 					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"HandTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Dragon Hatchling to eat (discard)\",
@@ -40,7 +40,7 @@
 					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"HandTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Dragon Hatchling to become (play)\",

@@ -20,7 +20,7 @@
 					\"eChange\":-3
 				}",
 				"{
-					\"subeffType\":\"BoardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Summoned character for Something Cannon to blast for -3E\",

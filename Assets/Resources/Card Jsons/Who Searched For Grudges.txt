@@ -63,14 +63,14 @@
 					\"jumpTo\":4
 				}",
 				"{
-					\"subeffType\":\"HandTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":{
 						\"blurb\":\"for Who Searched For Grudges to discard (1/2)\",
 						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"HandTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":{
 						\"blurb\":\"for Who Searched For Grudges to discard (2/2)\",
 						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Not Already Target\"]

@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"BoardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":{
 						\"blurb\":\"Revenant for Salvage Soul to rehand\",
 						\"cardRestrictions\":[\"Friendly\",\"Board\",\"Subtypes Include\"],
@@ -27,7 +27,7 @@
 					\"subeffType\":\"DrawSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"HandTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":{
 						\"blurb\":\"card for Salvage Soul to discard\",
 						\"cardRestrictions\":[\"Friendly\",\"Hand\"]

@@ -131,27 +131,11 @@ namespace KompasServer.Networking
         #endregion card stats
 
         #region request targets
-        public void GetBoardTarget(BoardTargetSubeffect boardTargetSubeffect)
-            => SendPacket(new GetBoardTargetPacket(boardTargetSubeffect.cardRestriction));
+        public void GetCardTarget(string cardName, string targetBlurb, int[] ids, int num = 1)
+            => SendPacket(new GetCardTargetPacket(cardName, targetBlurb, ids, num));
 
-        public void GetDeckTarget(CardTargetSubeffect cardTargetSubeffect)
-            => SendPacket(new GetDeckTargetPacket(cardTargetSubeffect.cardRestriction));
-
-        public void GetDiscardTarget(CardTargetSubeffect cardTargetSubeffect)
-            => SendPacket(new GetDiscardTargetPacket(cardTargetSubeffect.cardRestriction));
-
-        public void GetHandTarget(CardTargetSubeffect cardTargetSubeffect)
-            => SendPacket(new GetHandTargetPacket(cardTargetSubeffect.cardRestriction));
-
-        public void GetSpaceTarget(SpaceTargetSubeffect spaceTargetSubeffect)
-            => SendPacket(new GetSpaceTargetPacket(spaceTargetSubeffect.spaceRestriction));
-
-        public void GetChoicesFromList(IEnumerable<GameCard> potentialTargets, int maxNum, ChooseFromListSubeffect src)
-        {
-            var p = new GetListChoicesPacket(potentialTargets.Select(c => c.ID).ToArray(), maxNum,
-                src.Source.ID, src.Effect.EffectIndex, src.SubeffIndex);
-            SendPacket(p);
-        }
+        public void GetSpaceTarget(string cardName, string targetBlurb, (int, int)[] spaces)
+            => SendPacket(new GetSpaceTargetPacket(cardName, targetBlurb, spaces));
         #endregion request targets
 
         public void NotifyAttackStarted(GameCard atk, GameCard def) => SendToBoth(new AttackStartedPacket(atk.ID, def.ID));

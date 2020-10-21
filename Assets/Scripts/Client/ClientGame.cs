@@ -7,6 +7,7 @@ using KompasCore.Effects;
 using KompasCore.GameCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace KompasClient.GameCore
@@ -43,8 +44,35 @@ namespace KompasClient.GameCore
         public ClientUIController clientUICtrl;
 
         //targeting
-        public CardRestriction CurrCardRestriction;
-        public SpaceRestriction CurrSpaceRestriction;
+        private GameCard[] currentPotentialTargets;
+        public GameCard[] CurrentPotentialTargets 
+        { 
+            get => currentPotentialTargets; 
+            private set
+            {
+                CurrentPotentialTargets = value;
+                ShowValidCardTargets();
+            } 
+        }
+        public int[] PotentialTargetIds
+        {
+            get => CurrentPotentialTargets.Select(c => c.ID).ToArray();
+            //the following should work, because, to quote the docuemntation,
+            //"The null-conditional operators are short-circuiting."
+            set => CurrentPotentialTargets = value?.Select(i => GetCardWithID(i)).Where(c => c != null).ToArray();
+        }
+
+        private (int, int)[] currentPotentialSpaces;
+        public (int, int)[] CurrentPotentialSpaces
+        {
+            get => currentPotentialSpaces;
+            set
+            {
+                currentPotentialSpaces = value;
+                if (value != null) clientUICtrl.boardUICtrl.ShowSpaceTargets(space => value.Contains(space));
+                else clientUICtrl.boardUICtrl.ShowSpaceTargets(_ => false);
+            }
+        }
 
         //TODO make client aware that effects have been pushed to stack
         private bool stackEmpty = true;
@@ -92,17 +120,17 @@ namespace KompasClient.GameCore
         //requesting
         public void TargetCard(GameCard card)
         {
-            if (CurrCardRestriction == null)
+            if (CurrentPotentialTargets == null)
             {
-                Debug.Log($"Called target card on {card.CardName} while curr card restriction is null");
+                Debug.Log($"Called target card on {card.CardName} while there's no list of potential targets");
                 return;
             }
 
-            //if the player is currently looking for a target on the board,
-            if (targetMode == TargetMode.BoardTarget || targetMode == TargetMode.HandTarget)
+            //if the game is currently looking for a target you can click on,
+            if (targetMode == TargetMode.CardTarget)
             {
-                //check if the target fits the restriction, according to us
-                if (CurrCardRestriction.Evaluate(card, clientNetworkCtrl.X))
+                //check if the target is a valid potential target
+                if (CurrentPotentialTargets.Contains(card))
                 {
                     //if it fits the restriction, send the proposed target to the server
                     clientNotifier.RequestTarget(card);
@@ -114,7 +142,8 @@ namespace KompasClient.GameCore
                     targetMode = TargetMode.OnHold;
                 }
             }
-            else Debug.LogError($"Tried to target card {card.CardName} while in not understood target mode {targetMode}");
+            else Debug.LogError($"Tried to target card {card.CardName} " +
+                $"while in a targetmode {targetMode} where we weren't looking for a target");
         }
 
         public void SetFirstTurnPlayer(int playerIndex)
@@ -169,16 +198,18 @@ namespace KompasClient.GameCore
         public void ShowNoTargets()
         {
             foreach (var card in Cards) card.cardCtrl.HideTarget();
-            clientUICtrl.boardUICtrl.ShowSpaceTargets(_ => false);
         }
 
         /// <summary>
-        /// Show valid target highlight for any valid potential targets
+        /// Show valid target highlight for current potential targets
         /// </summary>
-        /// <param name="predicate"></param>
-        public void ShowValidCardTargets(Func<GameCard, bool> predicate)
+        public void ShowValidCardTargets()
         {
-            foreach (var card in Cards) card.cardCtrl.ShowValidTarget(predicate(card));
+            if (CurrentPotentialTargets != null)
+            {
+                foreach (var card in CurrentPotentialTargets) card.cardCtrl.ShowValidTarget();
+            }
+            else ShowNoTargets();
         }
     }
 }

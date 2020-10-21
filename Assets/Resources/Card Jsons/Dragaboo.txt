@@ -24,7 +24,7 @@
 					\"subeffType\":\"AnnihilateSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"HandTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"OWO SO DRAGONNNNNNNNN\",

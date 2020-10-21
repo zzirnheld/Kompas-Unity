@@ -32,7 +32,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"BoardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":{
 						\"cardRestrictions\":[\"Board\",\"Is Character\",\"Adjacent\"]
 					}
