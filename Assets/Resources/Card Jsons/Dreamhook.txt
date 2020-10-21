@@ -39,12 +39,13 @@
 					\"targetIndex\":-2
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"MoveSubeffect\"
+					\"subeffType\":\"MoveSubeffect\"
 				}",
 				"{
-					"subeffType\":\"HangingAnnihilationSubeffect\"
-"subeffType\":\"AttackSubeffect\"
+					\"subeffType\":\"AttackSubeffect\"
+					\"subeffType\":\"Attack\",
+					\"targetIndex\":-2,
+					\"attackerIndex\":-1
 				}"
 			]
 		}

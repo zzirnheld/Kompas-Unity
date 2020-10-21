@@ -1,7 +1,7 @@
 {
 	"cardType":65,
 	"cardName":"Sportyball",
-	"effText":"Recoverable.\nAt any time, you can set X to the number of uses of this ability this turn. Pay X pips and attach me to an adjacent character. (The first time this ability is used, it costs 1 pip.)",
+	"effText":"Recoverable.\nAt any time, you can set X to the number of uses of this ability this turn - 1. Pay X pips and attach me to an adjacent character. (The first time this ability is used, it costs 0 pips.)",
 	"effects":[
 		{
 			"triggerCondition":"Discard",
@@ -32,7 +32,8 @@
 				"{
 					"subeffType\":\"SetXByGamestateSubeffect\",
 					\"whatToCount\":\"Effect Uses This Turn\",
-					\"xMultiplier\":1
+					\"xMultiplier\":1,
+					\"xModifier\":-1
 				}",
 				"{
 					\"subeffType\":\"PayPipsSubeffect\",

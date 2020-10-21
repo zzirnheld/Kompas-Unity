@@ -44,7 +44,7 @@
 		}
 	],
 	"fast":true,
-	"c":1,
+	"c":3,
 	"spellType":"Simple",
 	"subtypes":["Simple"],
 	"subtypeText":"Simple"

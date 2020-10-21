@@ -17,8 +17,7 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"AnnihilateSubeffect\"
+					\"subeffType\":\"AnnihilateSubeffect\"
 				}"
 			]
 		},
@@ -46,7 +45,8 @@
 				}",
 				"{
 					\"subeffType\":\"PayPipsTargetCostSubeffect\",
-					\"xDivisor\":2
+					\"xDivisor\":2,
+					\"xMultiplier\":1
 				}",
 				"{
 					"subeffType\":\"PlaySubeffect\"
@@ -72,8 +72,7 @@
 					\"eMod\":1
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"ConditionalEndSubeffect\",
+					\"subeffType\":\"ConditionalEndSubeffect\",
 					\"condition\":\"Must be Enemy Turn\"
 				}",
 				"{
