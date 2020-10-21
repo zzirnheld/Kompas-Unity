@@ -66,8 +66,7 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"AttachSubeffect\",
+					\"subeffType\":\"AttachSubeffect\",
 					\"targetIndex\":-3,
 					\"attachmentTarget\":-1
 				}",

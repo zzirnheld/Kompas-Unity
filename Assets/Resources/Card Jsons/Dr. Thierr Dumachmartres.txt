@@ -23,8 +23,7 @@
 					"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"DrawSubeffect\"
+					\"subeffType\":\"DrawSubeffect\"
 				}"
 			]
 		}

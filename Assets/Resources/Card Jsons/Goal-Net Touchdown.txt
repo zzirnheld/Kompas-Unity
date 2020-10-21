@@ -38,19 +38,16 @@
 					\"subeffType\":\"TargetAugmentsSubeffect\"
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"ConditionalEndSubeffect\",
+					\"subeffType\":\"ConditionalEndSubeffect\",
 					\"condition\":\"Number Targets <= Constant\",
 					\"constant\":2
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"AttachSubeffect\",
+					\"subeffType\":\"AttachSubeffect\",
 					\"attachmentTarget\":0
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
+					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
 					\"delete\":true,
 					\"remainingTargets\":2,
 					\"jumpTo\":4

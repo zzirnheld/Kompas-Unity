@@ -52,8 +52,7 @@
 					\"eMult\":-1
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"DrawXSubeffect\",
+					\"subeffType\":\"DrawXSubeffect\",
 					\"xMultiplier\":1
 				}"
 			]	

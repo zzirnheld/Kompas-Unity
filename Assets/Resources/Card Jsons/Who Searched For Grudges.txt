@@ -45,8 +45,7 @@
 					\"eMult\":-1
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"MoveSubeffect\"
+					\"subeffType\":\"MoveSubeffect\"
 				}"
 			]
 		},
@@ -60,8 +59,7 @@
 			}",
 			"subeffects":[
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
+					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
 					\"jumpTo\":4
 				}",
 				"{
@@ -86,12 +84,10 @@
 					\"targetIndex\":-2
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"EndResolutionSubeffect\"
+					\"subeffType\":\"EndResolutionSubeffect\"
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"ClearOnImpossibleSubeffect\"
+					\"subeffType\":\"ClearOnImpossibleSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"TargetThisSubeffect\"

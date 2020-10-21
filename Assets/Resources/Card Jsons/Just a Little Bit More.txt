@@ -63,8 +63,7 @@
 					"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"DrawSubeffect\"
+					\"subeffType\":\"DrawSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"BoardTargetSubeffect\",
@@ -84,15 +83,13 @@
 					}
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"MoveSubeffect\"
+					\"subeffType\":\"MoveSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"AnnihilateSubeffect\"
+					\"subeffType\":\"AnnihilateSubeffect\"
 				}"
 			]
 		}

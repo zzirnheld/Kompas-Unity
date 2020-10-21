@@ -29,8 +29,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"MoveSubeffect\"
+					\"subeffType\":\"MoveSubeffect\"
 				}"
 			]	
 		}

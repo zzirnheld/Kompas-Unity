@@ -24,8 +24,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"ConditionalEndSubeffect\",
+					\"subeffType\":\"ConditionalEndSubeffect\",
 					\"condition\":\"X<C\",
 					\"constant\":10
 				}",

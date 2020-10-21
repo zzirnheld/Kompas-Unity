@@ -23,8 +23,7 @@
 					\"wMod\":1
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"ConditionalEndSubeffect\",
+					\"subeffType\":\"ConditionalEndSubeffect\",
 					\"condition\":\"Target Violates Restriction\",
 					\"cardRestriction\":
 					{

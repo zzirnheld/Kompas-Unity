@@ -45,8 +45,7 @@
 					\"xModifier\":1
 				}",
 				"{
-					"subeffType\":\"HangingAnnihilationSubeffect\"
-"subeffType\":\"ChangeLeyloadSubeffect\",
+					\"subeffType\":\"ChangeLeyloadSubeffect\",
 					\"xModifier\":1
 				}"
 			]	

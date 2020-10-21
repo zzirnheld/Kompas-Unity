@@ -23,8 +23,7 @@
 					"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
-					"subeffType\":\"HangingAnnihilationSubeffect\"
-"subeffType\":\"ChangeLeyloadSubeffect\",
+					\"subeffType\":\"ChangeLeyloadSubeffect\",
 					\"xModifier\":1
 				}"
 			]	

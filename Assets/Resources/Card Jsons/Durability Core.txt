@@ -24,8 +24,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"TemporaryNESWSubeffect\",
+					\"subeffType\":\"TemporaryNESWSubeffect\",
 					\"eBuff\":5,
 					\"endCondition\":\"Augment Detached\",
 					\"triggerRestriction\":{

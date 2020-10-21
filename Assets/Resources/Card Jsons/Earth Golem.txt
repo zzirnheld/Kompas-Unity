@@ -21,8 +21,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"ClearOptionSubeffect\",
+					\"subeffType\":\"ClearOptionSubeffect\",
 					\"ChoiceBlurb\":\"Give +1EW or -1EW?\",
 					\"OptionBlurbs\":[\"+1EW\",\"-1EW\"],
 					\"OptionJumpIndices\":[2,4]
@@ -35,8 +34,7 @@
 					\"wChange\":1
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"EndResolutionSubeffect\"
+					\"subeffType\":\"EndResolutionSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"ChangeNESWSubeffect\",

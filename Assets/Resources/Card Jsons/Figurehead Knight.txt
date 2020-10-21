@@ -13,8 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"TemporaryNESWBuffAllSubeffect\",
+					\"subeffType\":\"TemporaryNESWBuffAllSubeffect\",
 					\"eBuff\":1,
 					\"wBuff\":1,
 					\"endCondition\":\"Turn Start\",

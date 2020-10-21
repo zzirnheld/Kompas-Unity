@@ -13,8 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
+					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
 					\"jumpTo\":5
 				}",
 				"{
@@ -36,21 +35,18 @@
 					}
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"ClearOnImpossibleSubeffect\"
+					\"subeffType\":\"ClearOnImpossibleSubeffect\"
 				}",
 				"{
 					"subeffType\":\"RehandSubeffect\"
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
+					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
 					\"delete\":true,
 					\"jumpTo\":3
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"BottomdeckRestSubeffect\"
+					\"subeffType\":\"BottomdeckRestSubeffect\"
 				}"
 			]	
 		}

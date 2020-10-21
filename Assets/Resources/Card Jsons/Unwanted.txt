@@ -17,8 +17,7 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"AnnihilateSubeffect\"
+					\"subeffType\":\"AnnihilateSubeffect\"
 				}"
 			]
 		},
@@ -74,8 +73,7 @@
 					"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"DrawSubeffect\"
+					\"subeffType\":\"DrawSubeffect\"
 				}"
 			]	
 		}

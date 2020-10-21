@@ -13,8 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"DrawXSubeffect\",
+					\"subeffType\":\"DrawXSubeffect\",
 					\"xModifier\":2
 				}"
 			]	

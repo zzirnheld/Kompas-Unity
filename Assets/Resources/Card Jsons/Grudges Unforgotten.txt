@@ -45,8 +45,7 @@
 					\"eMult\":-1
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"MoveSubeffect\"
+					\"subeffType\":\"MoveSubeffect\"
 				}"
 			]
 		},
@@ -74,8 +73,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"AnnihilateSubeffect\"
+					\"subeffType\":\"AnnihilateSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"TargetThisSubeffect\"

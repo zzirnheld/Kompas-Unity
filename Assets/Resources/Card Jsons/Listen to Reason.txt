@@ -37,8 +37,7 @@
 					\"subeffType\":\"DeleteTargetSubeffect\"
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
+					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
 					\"jumpTo\":2
 				}",
 				"{
@@ -46,8 +45,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"DrawXSubeffect\",
+					\"subeffType\":\"DrawXSubeffect\",
 					\"xMultiplier\":1
 				}"
 			]	

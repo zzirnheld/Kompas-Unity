@@ -28,15 +28,13 @@
 					\"eChange\":-3
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"ClearOptionSubeffect\",
+					\"subeffType\":\"ClearOptionSubeffect\",
 					\"ChoiceBlurb\":\"Pay 1 pip or annihilate this?\",
 					\"OptionBlurbs\":[\"Pay 1 pip\",\"DispelSubeffect\"],
 					\"OptionJumpIndices\":[3,7]
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
+					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
 					\"jumpTo\":6
 				}",
 				"{
@@ -45,19 +43,16 @@
 					\"xModifier\":1
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"EndResolutionSubeffect\"
+					\"subeffType\":\"EndResolutionSubeffect\"
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"ClearOnImpossibleSubeffect\"
+					\"subeffType\":\"ClearOnImpossibleSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"AnnihilateSubeffect\"
+					\"subeffType\":\"AnnihilateSubeffect\"
 				}"
 			]	
 		}

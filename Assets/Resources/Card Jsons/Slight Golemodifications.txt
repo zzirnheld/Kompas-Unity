@@ -28,8 +28,7 @@
 					"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"ClearOptionSubeffect\",
+					\"subeffType\":\"ClearOptionSubeffect\",
 					\"ChoiceBlurb\":\"Hand-summon or revive a Golem?\",
 					\"OptionBlurbs\":[\"Hand-summon\",\"Revive\"],
 					\"OptionJumpIndices\":[4,6]
@@ -43,8 +42,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"JumpSubeffect\",
+					\"subeffType\":\"JumpSubeffect\",
 					\"indexToJumpTo\":7
 				}",
 				"{

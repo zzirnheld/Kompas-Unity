@@ -28,8 +28,7 @@
 					\"subeffType\":\"DeleteTargetSubeffect\"
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"CountXLoopSubeffect\",
+					\"subeffType\":\"CountXLoopSubeffect\",
 					\"canDecline\":false,
 					\"jumpTo\":1
 				}",
@@ -37,8 +36,7 @@
 					\"subeffType\":\"TargetAvatarSubeffect\"
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"ClearOptionSubeffect\",
+					\"subeffType\":\"ClearOptionSubeffect\",
 					\"ChoiceBlurb\":\"Give +X S or -X S?\",
 					\"OptionBlurbs\":[\"+X S\",\"-X S\"],
 					\"OptionJumpIndices\":[6,8]
@@ -48,8 +46,7 @@
 					\"sMult\":1
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"JumpSubeffect\",
+					\"subeffType\":\"JumpSubeffect\",
 					\"indexToJumpTo\":9
 				}",
 				"{
@@ -57,8 +54,7 @@
 					\"sMult\":-1
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"DrawSubeffect\"
+					\"subeffType\":\"DrawSubeffect\"
 				}"
 			]	
 		}

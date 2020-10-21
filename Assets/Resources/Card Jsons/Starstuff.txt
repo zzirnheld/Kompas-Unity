@@ -16,8 +16,7 @@
 					\"subeffType\":\"TargetAvatarSubeffect\"
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"ClearOptionSubeffect\",
+					\"subeffType\":\"ClearOptionSubeffect\",
 					\"ChoiceBlurb\":\"Give +5 S or -5 S?\",
 					\"OptionBlurbs\":[\"+5 S\",\"-5 S\"],
 					\"OptionJumpIndices\":[2,4]
@@ -27,8 +26,7 @@
 					\"sChange\":5
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"JumpSubeffect\",
+					\"subeffType\":\"JumpSubeffect\",
 					\"indexToJumpTo\":5
 				}",
 				"{
@@ -36,8 +34,7 @@
 					\"sChange\":-5
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"ClearOptionSubeffect\",
+					\"subeffType\":\"ClearOptionSubeffect\",
 					\"ChoiceBlurb\":\"Annihilate me and draw 1?\",
 					\"OptionBlurbs\":[\"Yes\",\"No\"],
 					\"OptionJumpIndices\":[7,100]
@@ -46,12 +43,10 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"AnnihilateSubeffect\"
+					\"subeffType\":\"AnnihilateSubeffect\"
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"DrawSubeffect\"
+					\"subeffType\":\"DrawSubeffect\"
 				}"
 			]	
 		}

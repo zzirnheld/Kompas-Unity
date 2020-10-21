@@ -24,8 +24,7 @@
 					"subeffType\":\"RehandSubeffect\"
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"DrawSubeffect\"
+					\"subeffType\":\"DrawSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"HandTargetSubeffect\",

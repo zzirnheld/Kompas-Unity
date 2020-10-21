@@ -33,8 +33,7 @@
 					"subeffType\":\"ReshuffleSubeffect\"
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"XTimesSubeffect\",
+					\"subeffType\":\"XTimesSubeffect\",
 					\"jumpTo\":1
 				}"
 			]	

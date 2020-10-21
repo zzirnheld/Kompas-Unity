@@ -45,8 +45,7 @@
 					\"eMult\":-1
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"MoveSubeffect\"
+					\"subeffType\":\"MoveSubeffect\"
 				}"
 			]
 		},
@@ -71,8 +70,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"TemporaryNESWSubeffect\",
+					\"subeffType\":\"TemporaryNESWSubeffect\",
 					\"wMultiplier\":-1,
 					\"endCondition\":\"Battle End\",
 					\"triggerRestriction\":{

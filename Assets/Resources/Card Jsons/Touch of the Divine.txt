@@ -23,8 +23,7 @@
 					}
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"TemporaryNESWSubeffect\",
+					\"subeffType\":\"TemporaryNESWSubeffect\",
 					\"nBuff\":2,
 					\"eBuff\":2,
 					\"sBuff\":2,

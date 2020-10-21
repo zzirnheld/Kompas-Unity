@@ -62,12 +62,10 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"MoveSubeffect\"
+					\"subeffType\":\"MoveSubeffect\"
 				}",
 				"{
-					"subeffType\":\"HangingAnnihilationSubeffect\"
-"subeffType\":\"AttackSubeffect\",
+					\"subeffType\":\"AttackSubeffect\",
 					\"attackerIndex\":-1,
 					\"targetIndex\":-2
 				}"

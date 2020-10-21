@@ -85,8 +85,7 @@
 					"subeffType\":\"RehandSubeffect\"
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"TTimesSubeffect\",
+					\"subeffType\":\"TTimesSubeffect\",
 					\"T\":3,
 					\"jumpTo\":4
 				}",
@@ -105,8 +104,7 @@
 					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					"subeffType\":\"Subeffect\"
-"subeffType\":\"AnnihilateSubeffect\"
+					\"subeffType\":\"AnnihilateSubeffect\"
 				}"
 			]
 		}
