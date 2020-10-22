@@ -11,18 +11,16 @@ namespace KompasCore.Networking
     {
         public string cardName;
         public string targetBlurb;
-        public (int, int)[] potentialSpaces;
+        public int[] potentialSpaces;
 
         public GetSpaceTargetPacket() : base(GetSpaceTarget) { }
 
-        public GetSpaceTargetPacket(string cardName, string targetBlurb, (int, int)[] potentialSpaces) : this()
+        public GetSpaceTargetPacket(string cardName, string targetBlurb, (int x, int y)[] potentialSpaces) : this()
         {
             this.cardName = cardName;
             this.targetBlurb = targetBlurb;
-            this.potentialSpaces = potentialSpaces;
+            this.potentialSpaces = potentialSpaces.Select(s => s.x * 7 + s.y).ToArray();
         }
-
-        public override Packet Copy() => new GetSpaceTargetPacket(cardName, targetBlurb, potentialSpaces);
     }
 }
 
@@ -33,7 +31,7 @@ namespace KompasClient.Networking
         public void Execute(ClientGame clientGame)
         {
             clientGame.targetMode = Game.TargetMode.SpaceTarget;
-            clientGame.CurrentPotentialSpaces = potentialSpaces;
+            clientGame.CurrentPotentialSpaces = potentialSpaces.Select(s => (s / 7, s % 7)).ToArray();
             clientGame.clientUICtrl.SetCurrState($"Choose {cardName}'s Space Target", targetBlurb);
         }
     }

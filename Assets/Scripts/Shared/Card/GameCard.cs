@@ -97,9 +97,7 @@ namespace KompasCore.Cards
             }
         }
 
-        public int SubjectiveCoord(int coord) => ControllerIndex == 0 ? coord : 6 - coord;
-        public (int, int) SubjectiveCoords((int x, int y) space) => (SubjectiveCoord(space.x), SubjectiveCoord(space.y));
-        public (int x, int y) SubjectivePosition => SubjectiveCoords(Position);
+        public (int x, int y) SubjectivePosition => Controller.SubjectiveCoords(Position);
 
         public int IndexInList
         {
@@ -285,7 +283,7 @@ namespace KompasCore.Cards
         /// </summary>
         /// <param name="space">The space to check if it's in front of this card</param>
         /// <returns><see langword="true"/> if <paramref name="space"/> is in front of this, <see langword="false"/> otherwise.</returns>
-        public bool SpaceInFront((int x, int y) space) => SubjectiveCoord(space.x) > SubjectivePosition.x;
+        public bool SpaceInFront((int x, int y) space) => Controller.SubjectiveCoord(space.x) > SubjectivePosition.x;
 
         /// <summary>
         /// Returns whether the card passed in is in front of this card
@@ -299,7 +297,7 @@ namespace KompasCore.Cards
         /// </summary>
         /// <param name="space">The space to check if it's behind this card</param>
         /// <returns><see langword="true"/> if <paramref name="space"/> is behind this, <see langword="false"/> otherwise.</returns>
-        public bool SpaceBehind((int x, int y) space) => SubjectiveCoord(space.x) < SubjectivePosition.x;
+        public bool SpaceBehind((int x, int y) space) => Controller.SubjectiveCoord(space.x) < SubjectivePosition.x;
 
         /// <summary>
         /// Returns whether the card passed in is behind this card
@@ -309,7 +307,7 @@ namespace KompasCore.Cards
         public bool CardBehind(GameCard card) => SpaceBehind(card.Position);
 
         public bool SpaceDirectlyInFront((int x, int y) space)
-            => SubjectiveCoords(space) == (SubjectivePosition.x + 1, SubjectivePosition.y + 1);
+            => Controller.SubjectiveCoords(space) == (SubjectivePosition.x + 1, SubjectivePosition.y + 1);
 
         public bool CardDirectlyInFront(GameCard card) => SpaceDirectlyInFront(card.Position);
         #endregion distance/adjacency

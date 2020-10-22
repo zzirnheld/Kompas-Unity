@@ -19,7 +19,14 @@ namespace KompasServer.Effects
             if (ServerEffect.serverGame.ExistsSpaceTarget(spaceRestriction))
             {
                 List<(int, int)> spaces = new List<(int, int)>();
-                for (int x = 0; x < 7; x++) for (int y = 0; y < 7; y++) spaces.Add((x, y));
+                for (int x = 0; x < 7; x++)
+                {
+                    for (int y = 0; y < 7; y++)
+                    {
+                        var space = Controller.SubjectiveCoords((x, y));
+                        if(spaceRestriction.Evaluate(space)) spaces.Add(space);
+                    }
+                }
                 EffectController.ServerNotifier.GetSpaceTarget(Source.CardName, spaceRestriction.blurb, spaces.ToArray());
                 return false;
             }
