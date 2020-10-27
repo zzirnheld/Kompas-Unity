@@ -15,7 +15,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Summoned character for Bestower of Memories to resummon\",
@@ -23,7 +23,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ResummonSubeffect\"
+					\"subeffType\":\"ResummonSubeffect\"
 				}"
 			]	
 		},
@@ -41,11 +41,11 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.AddPipsSubeffect\",
+					\"subeffType\":\"AddPipsSubeffect\",
 					\"xModifier\":1
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ChangeLeyloadSubeffect\",
+					\"subeffType\":\"ChangeLeyloadSubeffect\",
 					\"xModifier\":1
 				}"
 			]	

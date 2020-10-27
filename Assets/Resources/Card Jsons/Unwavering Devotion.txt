@@ -19,7 +19,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.ChangeAllNESWSubeffect\",
+					\"subeffType\":\"ChangeAllNESWSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Subtypes Include\"],

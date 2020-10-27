@@ -13,19 +13,19 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.TargetAvatarSubeffect\"
+					\"subeffType\":\"TargetAvatarSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.XChangeNESWSubeffect\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"sMod\":-1
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.SetXByTargetValueSubeffect\",
+					\"subeffType\":\"SetXByTargetValueSubeffect\",
 					\"whatToCount\":\"S\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ConditionalJumpSubeffect\",
+					\"subeffType\":\"ConditionalJumpSubeffect\",
 					\"condition\":\"X >= Constant\",
 					\"constant\":1,
 					\"jumpIndex\":1

@@ -18,7 +18,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.AddPipsSubeffect\",
+					\"subeffType\":\"AddPipsSubeffect\",
 					\"xModifier\":1
 				}"
 			]	

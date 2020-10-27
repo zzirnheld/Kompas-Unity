@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Soulflare to annihilate\",
@@ -22,19 +22,19 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.AnnihilateSubeffect\"
+					\"subeffType\":\"AnnihilateSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.CountXLoopSubeffect\",
+					\"subeffType\":\"CountXLoopSubeffect\",
 					\"canDecline\":true,
 					\"jumpTo\":0
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.DrawXSubeffect\",
+					\"subeffType\":\"DrawXSubeffect\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.AddPipsSubeffect\",
+					\"subeffType\":\"AddPipsSubeffect\",
 					\"xMultiplier\":1
 				}"
 			]	

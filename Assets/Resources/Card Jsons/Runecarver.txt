@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.ChooseFromListSubeffect\",
+					\"subeffType\":\"ChooseFromListSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Rune for Runecarver to reshuffle\",
@@ -24,11 +24,11 @@
 					\"maxCanChoose\":1
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ReshuffleSubeffect\",
+					\"subeffType\":\"ReshuffleSubeffect\",
 					\"targetIndex\":-1
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.DrawXSubeffect\",
+					\"subeffType\":\"DrawXSubeffect\",
 					\"xModifier\":2
 				}"
 			]

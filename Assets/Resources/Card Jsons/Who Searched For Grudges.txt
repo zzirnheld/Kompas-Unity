@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.SpaceTargetSubeffect\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"to move Who Searched for Grudges to\",
@@ -25,14 +25,14 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.SpendMovementSubeffect\",
+					\"subeffType\":\"SpendMovementSubeffect\",
 					\"xModifier\":1
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.SetXByGamestateSubeffect\",
+					\"subeffType\":\"SetXByGamestateSubeffect\",
 					\"whatToCount\":\"Distance to Coords Through\",
 					\"throughRestriction\":{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
@@ -41,11 +41,11 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.XChangeNESWSubeffect\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"eMult\":-1
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.MoveSubeffect\"
+					\"subeffType\":\"MoveSubeffect\"
 				}"
 			]
 		},
@@ -59,41 +59,41 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect\",
+					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
 					\"jumpTo\":4
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":{
 						\"blurb\":\"for Who Searched For Grudges to discard (1/2)\",
 						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":{
 						\"blurb\":\"for Who Searched For Grudges to discard (2/2)\",
 						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Not Already Target\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\",
+					\"subeffType\":\"DiscardSubeffect\",
 					\"targetIndex\":-2
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.EndResolutionSubeffect\"
+					\"subeffType\":\"EndResolutionSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ClearOnImpossibleSubeffect\"
+					\"subeffType\":\"ClearOnImpossibleSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}"
 			]	
 		}

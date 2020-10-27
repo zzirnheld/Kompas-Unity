@@ -17,13 +17,13 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.TargetTriggeringCardSubeffect\"
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ReshuffleSubeffect\"
+					\"subeffType\":\"ReshuffleSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ChangeAllNESWSubeffect\",
+					\"subeffType\":\"ChangeAllNESWSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\"]
@@ -32,7 +32,7 @@
 					\"wMod\":1
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.DrawSubeffect\"
+					\"subeffType\":\"DrawSubeffect\"
 				}"
 			]
 		}

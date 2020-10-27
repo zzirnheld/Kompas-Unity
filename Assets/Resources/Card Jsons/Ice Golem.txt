@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Ice Golem to temporarily NegateSubeffect\",
@@ -21,14 +21,14 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.TemporaryNegateSubeffect\",
+					\"subeffType\":\"TemporaryNegateSubeffect\",
 					\"endCondition\":\"Turn Start\",
 					\"triggerRestriction\":{
 						\"triggerRestrictions\":[\"Friendly Turn\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Ice Golem to temporarily NegateSubeffect\",
@@ -36,7 +36,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.TemporaryNegateSubeffect\",
+					\"subeffType\":\"TemporaryNegateSubeffect\",
 					\"endCondition\":\"Turn Start\",
 					\"triggerRestriction\":{
 						\"triggerRestrictions\":[\"Friendly Turn\"]

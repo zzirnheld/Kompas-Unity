@@ -18,7 +18,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.DeckTargetSubeffect\",
+					\"subeffType\":\"DeckTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Rune for Runestones to search\",
@@ -27,7 +27,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.RehandSubeffect\"
+					\"subeffType\":\"RehandSubeffect\"
 				}"
 			]
 		}

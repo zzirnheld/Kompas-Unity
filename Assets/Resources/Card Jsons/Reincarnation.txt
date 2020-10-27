@@ -16,7 +16,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Summoned character for Reincarnation to resummon\",
@@ -24,7 +24,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ResummonSubeffect\"
+					\"subeffType\":\"ResummonSubeffect\"
 				}"
 			]	
 		}

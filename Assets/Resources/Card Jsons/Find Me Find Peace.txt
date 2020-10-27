@@ -14,7 +14,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.TargetAllSubeffect\",
+					\"subeffType\":\"TargetAllSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<C\",\"Subtypes Include\"],
@@ -23,7 +23,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.AddRestSubeffect\",
+					\"subeffType\":\"AddRestSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<C\",\"Not Already Target\"],
@@ -31,15 +31,15 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.RehandSubeffect\"
+					\"subeffType\":\"RehandSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.LoopWhileHaveTargetsSubeffect\",
+					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
 					\"delete\":true,
 					\"jumpTo\":2
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.BottomdeckRestSubeffect\"
+					\"subeffType\":\"BottomdeckRestSubeffect\"
 				}"
 			]
 		}

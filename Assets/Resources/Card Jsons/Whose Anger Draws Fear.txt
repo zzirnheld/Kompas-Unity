@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.SpaceTargetSubeffect\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"to move Whose Anger Draws Fear to\",
@@ -25,14 +25,14 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.SpendMovementSubeffect\",
+					\"subeffType\":\"SpendMovementSubeffect\",
 					\"xModifier\":1
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.SetXByGamestateSubeffect\",
+					\"subeffType\":\"SetXByGamestateSubeffect\",
 					\"whatToCount\":\"Distance to Coords Through\",
 					\"throughRestriction\":{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
@@ -41,11 +41,11 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.XChangeNESWSubeffect\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"eMult\":-1
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.MoveSubeffect\"
+					\"subeffType\":\"MoveSubeffect\"
 				}"
 			]
 		},
@@ -59,14 +59,14 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.TargetDefenderSubeffect\"
+					\"subeffType\":\"TargetDefenderSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect\",
+					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
 					\"jumpTo\":5
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.SpaceTargetSubeffect\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"to move Whose Anger Draws Fear's attack target to\",
@@ -75,16 +75,16 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.MoveSubeffect\"
+					\"subeffType\":\"MoveSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.EndResolutionSubeffect\"
+					\"subeffType\":\"EndResolutionSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ClearOnImpossibleSubeffect\"
+					\"subeffType\":\"ClearOnImpossibleSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.AnnihilateSubeffect\"
+					\"subeffType\":\"AnnihilateSubeffect\"
 				}"
 			]	
 		}

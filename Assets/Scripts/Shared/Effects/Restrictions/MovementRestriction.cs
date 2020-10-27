@@ -8,6 +8,7 @@ namespace KompasCore.Effects
     public class MovementRestriction
     {
         #region Basic Movement Restrictions
+        private const string DistinctSpace = "Distinct Space";
         //Might seem a bit dumb, but it means that some spells will be able to move themselves
         private const string IsCharacter = "Is Character";
         //Does the character have enough N?
@@ -31,7 +32,10 @@ namespace KompasCore.Effects
         //Default restrictions are that only characters with enough n can move.
         public string[] normalMovementRestrictions = new string[] 
         {
-            IsCharacter, CanMoveEnoughSpaces, DestinationCanMoveHere, StandardSpellMoveRestiction, NothingHappening, IsNotAvatar, IsFriendlyTurn
+            DistinctSpace, IsCharacter, IsNotAvatar, 
+            CanMoveEnoughSpaces, DestinationCanMoveHere, 
+            StandardSpellMoveRestiction, 
+            NothingHappening, IsFriendlyTurn
         };
         public string[] effectMovementRestrictions = new string[] { StandardSpellMoveRestiction };
 
@@ -47,6 +51,7 @@ namespace KompasCore.Effects
             switch (restriction)
             {
                 //normal restrictions
+                case DistinctSpace: return Card.Position != (x, y);
                 case IsCharacter: return Card.CardType == 'C';
                 case CanMoveEnoughSpaces: return Card.SpacesCanMove >= Card.DistanceTo(x, y);
                 case StandardSpellMoveRestiction: return Card.CardType != 'S' || Card.Game.ValidSpellSpace(x, y);

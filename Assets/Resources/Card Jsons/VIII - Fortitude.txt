@@ -16,7 +16,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.DrawSubeffect\"
+					\"subeffType\":\"DrawSubeffect\"
 				}"
 			]	
 		}

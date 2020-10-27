@@ -13,13 +13,13 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.PayPipsTargetCostSubeffect\"
+					\"subeffType\":\"PayPipsTargetCostSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ResummonSubeffect\"
+					\"subeffType\":\"ResummonSubeffect\"
 				}"
 			]	
 		},
@@ -33,7 +33,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.ChangeAllNESWSubeffect\",
+					\"subeffType\":\"ChangeAllNESWSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Adjacent\"]

@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"spell for Wynn to DispelSubeffect\",
@@ -21,7 +21,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.DispelSubeffect\"
+					\"subeffType\":\"DispelSubeffect\"
 				}"
 			]	
 		}

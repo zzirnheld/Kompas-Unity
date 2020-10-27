@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Summoned character for Obsidian Golem to give -4E\",
@@ -21,7 +21,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ChangeNESWSubeffect\",
+					\"subeffType\":\"ChangeNESWSubeffect\",
 					\"eChange\":-5
 				}"
 			]

@@ -9,6 +9,8 @@ namespace KompasServer.Effects
     [System.Serializable]
     public abstract class ServerSubeffect : Subeffect
     {
+        public const string ServerSubeffAssemblyPrefix = "KompasServer.Effects.";
+
         public override Player Controller => EffectController;
         public override Effect Effect => ServerEffect;
         public override Game Game => ServerGame;
@@ -23,7 +25,7 @@ namespace KompasServer.Effects
 
         private static ServerSubeffect FromJson(string subeffType, string subeffJson)
         {
-            var type = System.Type.GetType(subeffType);
+            var type = System.Type.GetType(ServerSubeffAssemblyPrefix + subeffType);
             return JsonUtility.FromJson(subeffJson, type) as ServerSubeffect;
         }
 

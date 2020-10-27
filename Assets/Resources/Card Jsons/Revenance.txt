@@ -19,13 +19,13 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.TargetTriggeringCardSubeffect\"
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.DrawSubeffect\"
+					\"subeffType\":\"DrawSubeffect\"
 				}"
 			]	
 		}

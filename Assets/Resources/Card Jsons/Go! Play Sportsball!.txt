@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.ChooseFromListSubeffect\",
+					\"subeffType\":\"ChooseFromListSubeffect\",
 					\"maxCanChoose\":1,
 					\"cardRestriction\":
 					{
@@ -23,16 +23,16 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.AutoTargetSubeffect\",
+					\"subeffType\":\"AutoTargetSubeffect\",
 					\"cardRestriction\":{
 						\"cardRestrictions\":[\"Avatar\",\"Friendly\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.TargetTargetsSpaceSubeffect\"
+					\"subeffType\":\"TargetTargetsSpaceSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.PlaySubeffect\",
+					\"subeffType\":\"PlaySubeffect\",
 					\"targetIndex\":-2
 				}"
 			]	

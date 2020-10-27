@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.ChooseFromListSubeffect\",
+					\"subeffType\":\"ChooseFromListSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Rune for Runewriter to reshuffle\",
@@ -23,14 +23,14 @@
 					\"maxCanChoose\":1
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ReshuffleSubeffect\"
+					\"subeffType\":\"ReshuffleSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect\",
+					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
 					\"jumpTo\":7
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ChooseFromListSaveRestSubeffect\",
+					\"subeffType\":\"ChooseFromListSaveRestSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Runar for Runewriter to search (to hand)\",
@@ -45,13 +45,13 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ClearOnImpossibleSubeffect\"
+					\"subeffType\":\"ClearOnImpossibleSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.BottomdeckRestSubeffect\"
+					\"subeffType\":\"BottomdeckRestSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.RehandSubeffect\"
+					\"subeffType\":\"RehandSubeffect\"
 				}"
 			]
 		}

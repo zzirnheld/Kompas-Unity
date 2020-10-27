@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Ehwaz to give +2N\",
@@ -21,7 +21,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ChangeNESWSubeffect\",
+					\"subeffType\":\"ChangeNESWSubeffect\",
 					\"nChange\":2
 				}"
 			]	

@@ -14,7 +14,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"No! Not the original 1870s porcelain doll torso collection!\",
@@ -22,14 +22,14 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.SetXByTargetCostSubeffect\",
+					\"subeffType\":\"SetXByTargetCostSubeffect\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.DispelSubeffect\"
+					\"subeffType\":\"DispelSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.DrawXSubeffect\",
+					\"subeffType\":\"DrawXSubeffect\",
 					\"xMultiplier\":1
 				}"
 			]	

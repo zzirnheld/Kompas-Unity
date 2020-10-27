@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"first character for Metal Golem to set N to 0\",
@@ -21,11 +21,11 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.SetNESWSubeffect\",
+					\"subeffType\":\"SetNESWSubeffect\",
 					\"nVal\":0
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"second character for Metal Golem to set N to 0\",
@@ -33,7 +33,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.SetNESWSubeffect\",
+					\"subeffType\":\"SetNESWSubeffect\",
 					\"nVal\":0
 				}"
 

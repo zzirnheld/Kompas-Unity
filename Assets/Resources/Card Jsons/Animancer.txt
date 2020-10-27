@@ -12,7 +12,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Animancer to discard\",
@@ -21,24 +21,24 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ChangeXByTargetValueSubeffect\",
+					\"subeffType\":\"ChangeXByTargetValueSubeffect\",
 					\"whatToCount\":\"Cost\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.LoopSubeffect\",
+					\"subeffType\":\"LoopSubeffect\",
 					\"canDecline\":true,
 					\"jumpTo\":0
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect\",
+					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
 					\"jumpTo\":8
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ChooseFromListSaveRestSubeffect\",
+					\"subeffType\":\"ChooseFromListSaveRestSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Animancer to search\",
@@ -52,13 +52,13 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.RehandSubeffect\"
+					\"subeffType\":\"RehandSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ClearOnImpossibleSubeffect\"
+					\"subeffType\":\"ClearOnImpossibleSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.BottomdeckRestSubeffect\"
+					\"subeffType\":\"BottomdeckRestSubeffect\"
 				}"
 			]
 		}

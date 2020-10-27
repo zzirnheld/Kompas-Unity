@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"adjacent Warrior for Tactician to give +5E or +5W\",
@@ -22,13 +22,13 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ChooseOptionSubeffect\",
+					\"subeffType\":\"ChooseOptionSubeffect\",
 					\"ChoiceBlurb\":\"Give +5E or +5W?\",
 					\"OptionBlurbs\":[\"+5E\",\"+5W\"],
 					\"OptionJumpIndices\":[2,4]
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ChangeNESWSubeffect\",
+					\"subeffType\":\"ChangeNESWSubeffect\",
 					\"nChange\":0,
 					\"eChange\":5,
 					\"sChange\":0,
@@ -36,10 +36,10 @@
 					\"targetIndex\":0
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.EndResolutionSubeffect\"
+					\"subeffType\":\"EndResolutionSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ChangeNESWSubeffect\",
+					\"subeffType\":\"ChangeNESWSubeffect\",
 					\"nChange\":0,
 					\"eChange\":0,
 					\"sChange\":0,

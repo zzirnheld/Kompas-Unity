@@ -1,6 +1,6 @@
 {
 	"cardType":67,
-	"cardName":"DispelSubeffectler By Sword",
+	"cardName":"Dispeller by Sword",
 	"effText":"Once each friendly turn, if I'm adjacent to X Warriors, you can DispelSubeffect a C <= X spell.",
 	"effects":[
 		{
@@ -13,17 +13,17 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.SetXBoardRestrictionSubeffect\",
+					\"subeffType\":\"SetXBoardRestrictionSubeffect\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"spell for DispelSubeffectler by Sword to DispelSubeffect\",
+						\"blurb\":\"spell for Dispeller by Sword to DispelSubeffect\",
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
 						\"subtypesInclude\":[\"Warrior\"]
 					},
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Spell\",\"Cost<=X\"]
@@ -31,7 +31,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.DispelSubeffect\",
+					\"subeffType\":\"DispelSubeffect\",
 					\"targetIndex\":-1
 				}"
 			]

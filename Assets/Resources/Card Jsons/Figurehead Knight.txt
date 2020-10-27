@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.TemporaryNESWBuffAllSubeffect\",
+					\"subeffType\":\"TemporaryNESWBuffAllSubeffect\",
 					\"eBuff\":1,
 					\"wBuff\":1,
 					\"endCondition\":\"Turn Start\",

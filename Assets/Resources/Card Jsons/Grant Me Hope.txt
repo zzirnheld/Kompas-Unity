@@ -14,16 +14,16 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.TargetTriggeringCardSubeffect\"
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.XChangeNESWSubeffect\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"eMod\":1,
 					\"sMod\":1,
 					\"wMod\":1
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ConditionalEndSubeffect\",
+					\"subeffType\":\"ConditionalEndSubeffect\",
 					\"condition\":\"Target Violates Restriction\",
 					\"cardRestriction\":
 					{
@@ -32,7 +32,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.XChangeNESWSubeffect\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"nMod\":2,
 					\"eMod\":2,
 					\"sMod\":2,

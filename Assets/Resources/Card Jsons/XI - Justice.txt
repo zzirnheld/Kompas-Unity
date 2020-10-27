@@ -13,22 +13,22 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.SetXByGamestateSubeffect\",
+					\"subeffType\":\"SetXByGamestateSubeffect\",
 					\"whatToCount\":\"Hand Size\",
 					\"playerIndex\":1,
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ChangeXByGamestateSubeffect\",
+					\"subeffType\":\"ChangeXByGamestateSubeffect\",
 					\"whatToCount\":\"Hand Size\",
 					\"xMultiplier\":-1
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ConditionalEndSubeffect\",
+					\"subeffType\":\"ConditionalEndSubeffect\",
 					\"condition\":\"X<=0\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.DrawXSubeffect\",
+					\"subeffType\":\"DrawXSubeffect\",
 					\"xMultiplier\":1
 				}"
 			]

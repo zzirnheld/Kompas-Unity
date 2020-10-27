@@ -21,16 +21,16 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.AutoTargetSubeffect\",
+					\"subeffType\":\"AutoTargetSubeffect\",
 					\"cardRestriction\":{
 						\"cardRestrictions\":[\"Is Character\",\"Directly In Front of Source\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.TargetTriggeringCardSubeffect\"
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.AttachSubeffect\"
+					\"subeffType\":\"AttachSubeffect\"
 				}"
 			]
 		}

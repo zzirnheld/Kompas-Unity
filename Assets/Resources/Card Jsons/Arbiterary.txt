@@ -18,10 +18,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.TargetTriggeringCardSubeffect\"
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ChangeCardStatsSubeffect\",
+					\"subeffType\":\"ChangeCardStatsSubeffect\",
 					\"aMod\":1
 				}"
 			]
@@ -48,30 +48,30 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.TargetTriggeringCardSubeffect\"
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ChangeXByTargetValueSubeffect\",
+					\"subeffType\":\"ChangeXByTargetValueSubeffect\",
 					\"whatToCount\":\"Cost\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.TargetTargetsAugmentedCardSubeffect\"
+					\"subeffType\":\"TargetTargetsAugmentedCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ChangeCardStatsSubeffect\",
+					\"subeffType\":\"ChangeCardStatsSubeffect\",
 					\"eMult\":-1
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.AttachSubeffect\",
+					\"subeffType\":\"AttachSubeffect\",
 					\"targetIndex\":-3,
 					\"attachmentTarget\":-1
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ResetStatsSubeffect\",
+					\"subeffType\":\"ResetStatsSubeffect\",
 					\"targetIndex\":-3,
 					\"resetA\":true
 				}"

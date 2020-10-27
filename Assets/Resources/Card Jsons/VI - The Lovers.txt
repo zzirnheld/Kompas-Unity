@@ -15,17 +15,17 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.TargetThisSpaceSubeffect\"
+					\"subeffType\":\"TargetThisSpaceSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.TargetThisSubeffect\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.DiscardSubeffect\",
+					\"subeffType\":\"DiscardSubeffect\",
 					\"targetIndex\":-1
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.DeckTargetSubeffect\",
+					\"subeffType\":\"DeckTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Tarocco for Lovers to become\",
@@ -35,7 +35,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.PlaySubeffect\",
+					\"subeffType\":\"PlaySubeffect\",
 					\"targetIndex\":-1,
 					\"SpaceIndex\":-1
 				}"

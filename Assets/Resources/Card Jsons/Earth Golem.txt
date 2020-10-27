@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Earth Golem to buff or debuff\",
@@ -21,23 +21,23 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ChooseOptionSubeffect\",
+					\"subeffType\":\"ChooseOptionSubeffect\",
 					\"ChoiceBlurb\":\"Give +1EW or -1EW?\",
 					\"OptionBlurbs\":[\"+1EW\",\"-1EW\"],
 					\"OptionJumpIndices\":[2,4]
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ChangeNESWSubeffect\",
+					\"subeffType\":\"ChangeNESWSubeffect\",
 					\"nChange\":0,
 					\"eChange\":1,
 					\"sChange\":0,
 					\"wChange\":1
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.EndResolutionSubeffect\"
+					\"subeffType\":\"EndResolutionSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.ChangeNESWSubeffect\",
+					\"subeffType\":\"ChangeNESWSubeffect\",
 					\"nChange\":0,
 					\"eChange\":-1,
 					\"sChange\":0,

@@ -13,11 +13,11 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.ConditionalEndSubeffect\",
+					\"subeffType\":\"ConditionalEndSubeffect\",
 					\"condition\":\"Must be Friendly Turn\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"enemy for Berkanan to charm\",
@@ -25,10 +25,10 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.TakeControlSubeffect\"
+					\"subeffType\":\"TakeControlSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.EndTurnSubeffect\"
+					\"subeffType\":\"EndTurnSubeffect\"
 				}"
 			]	
 		}

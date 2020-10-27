@@ -15,7 +15,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"KompasServer.Effects.CardTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"C <= X spell for Temperance to DispelSubeffect\",
@@ -24,7 +24,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"KompasServer.Effects.DispelSubeffect\"
+					\"subeffType\":\"DispelSubeffect\"
 				}"
 			]
 		}
