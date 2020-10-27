@@ -19,10 +19,9 @@ namespace KompasClient.Networking
         public void Execute(ClientGame clientGame)
         {
             clientGame.targetMode = Game.TargetMode.Free;
-            clientGame.PotentialTargetIds = null;
+            clientGame.ClearPotentialTargets();
             clientGame.CurrentPotentialSpaces = null;
             clientGame.clientUICtrl.SetCurrState("Target Accepted");
-            clientGame.clientUICtrl.ResetSearch();
         }
     }
 }

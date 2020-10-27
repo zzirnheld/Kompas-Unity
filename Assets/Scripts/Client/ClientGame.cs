@@ -44,6 +44,7 @@ namespace KompasClient.GameCore
         public ClientUIController clientUICtrl;
 
         //targeting
+        public int targetsWanted;
         private GameCard[] currentPotentialTargets;
         public GameCard[] CurrentPotentialTargets 
         { 
@@ -53,13 +54,6 @@ namespace KompasClient.GameCore
                 currentPotentialTargets = value;
                 ShowValidCardTargets();
             } 
-        }
-        public int[] PotentialTargetIds
-        {
-            get => CurrentPotentialTargets.Select(c => c.ID).ToArray();
-            //the following should work, because, to quote the docuemntation,
-            //"The null-conditional operators are short-circuiting."
-            set => CurrentPotentialTargets = value?.Select(i => GetCardWithID(i)).Where(c => c != null).ToArray();
         }
 
         private (int, int)[] currentPotentialSpaces;
@@ -192,6 +186,24 @@ namespace KompasClient.GameCore
             ShowNoTargets();
         }
 
+        #region targeting
+        /// <summary>
+        /// Sets up the client for the player to select targets
+        /// </summary>
+        public void SetPotentialTargets(int[] ids, int numWanted)
+        {
+            CurrentPotentialTargets = ids?.Select(i => GetCardWithID(i)).Where(c => c != null).ToArray();
+            if (CurrentPotentialTargets.Any(c => !c.CurrentlyVisible))
+                clientUICtrl.StartSearch(CurrentPotentialTargets, numToChoose: numWanted);
+
+        }
+
+        public void ClearPotentialTargets()
+        {
+            CurrentPotentialTargets = null;
+            clientUICtrl.ResetSearch();
+        }
+
         /// <summary>
         /// Makes each card no longer show any highlight about its status as a target
         /// </summary>
@@ -211,5 +223,6 @@ namespace KompasClient.GameCore
             }
             else ShowNoTargets();
         }
+        #endregion targeting
     }
 }

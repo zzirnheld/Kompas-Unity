@@ -41,10 +41,13 @@ namespace KompasCore.Effects
 
         public GameCard Card { get; private set; }
 
-        public void SetInfo(GameCard card)
-        {
-            Card = card;
-        }
+        /// <summary>
+        /// Sets the restriction's info.
+        /// This is a distinct function in case the required parameters changes,
+        /// to catch any other required intitialization at compile time.
+        /// </summary>
+        /// <param name="card"></param>
+        public void SetInfo(GameCard card) => Card = card;
 
         private bool RestrictionValid(string restriction, int x, int y, bool isSwapTarget, bool byEffect)
         {

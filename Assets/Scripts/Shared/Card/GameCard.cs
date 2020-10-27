@@ -14,6 +14,8 @@ namespace KompasCore.Cards
 
         private SerializableCard serializedCard;
 
+        public bool CurrentlyVisible => gameObject.activeSelf;
+
         #region stats
         public int BaseN => serializedCard.n;
         public int BaseE => serializedCard.e;

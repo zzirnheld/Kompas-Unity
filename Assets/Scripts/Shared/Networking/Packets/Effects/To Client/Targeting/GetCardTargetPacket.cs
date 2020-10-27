@@ -35,10 +35,8 @@ namespace KompasClient.Networking
         public void Execute(ClientGame clientGame)
         {
             clientGame.targetMode = Game.TargetMode.CardTarget;
-            clientGame.PotentialTargetIds = potentialTargetIds;
-            clientGame.clientUICtrl.StartSearch(clientGame.CurrentPotentialTargets, numToChoose: num);
+            clientGame.SetPotentialTargets(potentialTargetIds, num);
             clientGame.clientUICtrl.SetCurrState($"Choose {sourceCardName}'s Card Target", targetBlurb);
-            clientGame.ShowValidCardTargets();
         }
     }
 }
