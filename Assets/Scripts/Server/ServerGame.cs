@@ -212,12 +212,7 @@ namespace KompasServer.GameCore
             return drawn.Count > 0 ? drawn[0] : null;
         }
 
-        public void GivePlayerPips(Player player, int pipsToSet)
-        {
-            player.Pips = pipsToSet;
-            if (player.index == 0) uiCtrl.UpdateFriendlyPips(pipsToSet);
-            else uiCtrl.UpdateEnemyPips(pipsToSet);
-        }
+        public void GivePlayerPips(Player player, int pipsToSet) => player.Pips = pipsToSet;
 
         public void GiveTurnPlayerPips() => GivePlayerPips(TurnPlayer, TurnPlayer.Pips + Leyload);
 

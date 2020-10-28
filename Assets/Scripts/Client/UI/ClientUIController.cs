@@ -46,8 +46,7 @@ namespace KompasClient.UI
         public TMPro.TMP_Text LeyloadText;
         public int Leyload
         {
-            set => LeyloadText.text = $"{value} Pips Leyload," +
-                $"\n{value + 1} Next Turn";
+            set => LeyloadText.text = $"{value} Pips Leyload";
         }
 
         //current state
@@ -96,6 +95,16 @@ namespace KompasClient.UI
 
         //effect option ui
         public TriggerOrderUIController triggerOrderUI;
+
+        public int FriendlyPips
+        {
+            set => friendlyPipsText.text = $"{value} (+{clientGame.Leyload + (clientGame.FriendlyTurn ? 2 : 1)}) Friendly Pips";
+        }
+
+        public int EnemyPips
+        {
+            set => enemyPipsText.text = $"{value} (+{clientGame.Leyload + (clientGame.FriendlyTurn ? 1 : 2)}) Enemy Pips";
+        }
 
         private bool ShowEffect(Effect eff) => eff.CanBeActivatedBy(clientGame.Players[0]);
 

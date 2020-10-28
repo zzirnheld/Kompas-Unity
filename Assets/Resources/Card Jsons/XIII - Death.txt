@@ -24,6 +24,7 @@
 		{
 			"activationRestriction":{
 				"activationRestrictions":[
+					"Friendly Turn",
 					"Default"
 				]
 			},

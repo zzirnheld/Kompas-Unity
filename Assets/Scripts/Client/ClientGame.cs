@@ -43,6 +43,9 @@ namespace KompasClient.GameCore
         public ClientNotifier clientNotifier;
         public ClientUIController clientUICtrl;
 
+        //turn players?
+        public bool FriendlyTurn => TurnPlayerIndex == 0;
+
         //targeting
         public int targetsWanted;
         private GameCard[] currentPotentialTargets;
@@ -157,6 +160,8 @@ namespace KompasClient.GameCore
             clientUICtrl.ChangeTurn(TurnPlayerIndex);
             if (TurnPlayerIndex == FirstTurnPlayer) RoundCount++;
             TurnCount++;
+            clientUICtrl.FriendlyPips = Players[0].Pips;
+            clientUICtrl.EnemyPips = Players[1].Pips;
         }
 
         public override GameCard GetCardWithID(int id) => cardsByID.ContainsKey(id) ? cardsByID[id] : null;

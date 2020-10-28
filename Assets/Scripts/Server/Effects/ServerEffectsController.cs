@@ -133,7 +133,7 @@ namespace KompasServer.Effects
                 //now that all effects have been addressed, see if there's any
                 foreach(var p in ServerGame.Players)
                 {
-                    var thisPlayers = list.Where(t => t.serverEffect.Controller == p);
+                    var thisPlayers = list.Where(t => t.serverEffect.Controller == p && t.Confirmed);
                     if (thisPlayers.Count() == 1) thisPlayers.First().Order = 1;
                 }
 
