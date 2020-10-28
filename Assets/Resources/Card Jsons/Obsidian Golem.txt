@@ -16,7 +16,7 @@
 					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"Summoned character for Obsidian Golem to give -4E\",
+						\"blurb\":\"Summoned character for Obsidian Golem to give -5E\",
 						\"cardRestrictions\":[\"Is Character\",\"Summoned\",\"Board\"]
 					}
 				}",

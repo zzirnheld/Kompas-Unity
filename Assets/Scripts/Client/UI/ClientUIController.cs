@@ -1,5 +1,4 @@
-﻿using KompasClient.Effects;
-using KompasClient.GameCore;
+﻿using KompasClient.GameCore;
 using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasCore.GameCore;
@@ -7,6 +6,7 @@ using KompasCore.UI;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,12 +14,14 @@ namespace KompasClient.UI
 {
     public class ClientUIController : UIController
     {
-        public const string FriendlyTurn = "Friendly Turn";
-        public const string EnemyTurn = "Enemy Turn";
+        private const string FriendlyTurn = "Friendly Turn";
+        private const string EnemyTurn = "Enemy Turn";
 
-        public const string AwaitingResponseMessage = "Awaiting Response";
-        public const string AwaitingEnemyResponse = "Awaiting Enemy Response";
+        private const string AwaitingResponseMessage = "Awaiting Response";
+        private const string AwaitingEnemyResponse = "Awaiting Enemy Response";
 
+        //this is probably deprecated now that you have no reason to search the discard,
+        //but i might eventually let you search your deck, so, uh, nyeh
         public struct SearchData
         {
             public readonly GameCard[] toSearch;
@@ -41,32 +43,28 @@ namespace KompasClient.UI
         public InputField debugPipsField;
 
         //gamestate values
-        public TMPro.TMP_Text CurrTurnText;
+        public TMP_Text CurrTurnText;
         public GameObject EndTurnButton;
-        public TMPro.TMP_Text LeyloadText;
-        public int Leyload
-        {
-            set => LeyloadText.text = $"{value} Pips Leyload";
-        }
+        public TMP_Text LeyloadText;
 
         //current state
         public GameObject CurrStateOverallObj;
-        public TMPro.TMP_Text CurrStateText;
-        public TMPro.TMP_Text CurrStateBonusText;
         public GameObject CurrStateBonusObj;
+        public TMP_Text CurrStateText;
+        public TMP_Text CurrStateBonusText;
 
         //card search
         public GameObject cardSearchView;
         public Image cardSearchImage;
         public GameObject alreadySelectedText;
         public Button searchTargetButton;
-        public TMPro.TMP_Text searchTargetButtonText;
-        public TMPro.TMP_Text nSearchText;
-        public TMPro.TMP_Text eSearchText;
-        public TMPro.TMP_Text sSearchText;
-        public TMPro.TMP_Text wSearchText;
-        public TMPro.TMP_Text cSearchText;
-        public TMPro.TMP_Text aSearchText;
+        public TMP_Text searchTargetButtonText;
+        public TMP_Text nSearchText;
+        public TMP_Text eSearchText;
+        public TMP_Text sSearchText;
+        public TMP_Text wSearchText;
+        public TMP_Text cSearchText;
+        public TMP_Text aSearchText;
         //effects
         public InputField xInput;
         public GameObject setXView;
@@ -76,7 +74,7 @@ namespace KompasClient.UI
         public bool Autodecline => autodeclineEffects.isOn;
         //confirm trigger
         public GameObject ConfirmTriggerView;
-        public TMPro.TMP_Text TriggerBlurbText;
+        public TMP_Text TriggerBlurbText;
         //search
         private int searchIndex = 0;
         private SearchData? currSearchData = null;
@@ -104,6 +102,10 @@ namespace KompasClient.UI
         public int EnemyPips
         {
             set => enemyPipsText.text = $"{value} (+{clientGame.Leyload + (clientGame.FriendlyTurn ? 1 : 2)}) Enemy Pips";
+        }
+        public int Leyload
+        {
+            set => LeyloadText.text = $"{value} Pips Leyload";
         }
 
         private bool ShowEffect(Effect eff) => eff.CanBeActivatedBy(clientGame.Players[0]);

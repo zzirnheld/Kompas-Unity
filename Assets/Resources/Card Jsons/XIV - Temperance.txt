@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"XIV - Temperance",
-	"effText":"Once each round, when you draw X, I can DispelSubeffect a C ≤ X spell.",
+	"effText":"Once each round, when you draw X, I can dispel a C <= X spell.",
 	"effects":[
 		{
 			"triggerCondition":"Draw",

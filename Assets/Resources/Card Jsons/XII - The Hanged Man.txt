@@ -21,7 +21,7 @@
 					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"Summoned character for Hanged Man to swap give -XE\",
+						\"blurb\":\"Summoned character for Hanged Man to also give -XE\",
 						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Summoned\"]
 					}
 				}",
