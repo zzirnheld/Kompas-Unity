@@ -63,6 +63,9 @@ namespace KompasClient.UI
         //choose effect option
         public ClientChooseOptionUIController chooseOptionUICtrl;
 
+        //stack ui
+        public ClientStackPanelController clientStackUICtrl;
+
         //deck select ui
         public DeckSelectUIController DeckSelectCtrl;
         public GameObject DeckSelectUIParent;

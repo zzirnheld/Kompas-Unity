@@ -46,6 +46,7 @@ namespace KompasCore.Networking
         public const string GetEffectOption = "Get Effect Option";
         public const string EffectResolving = "Effect Resolving";
         public const string EffectActivated = "Effect Activated";
+        public const string RemoveStackEntry = "Remove Stack Entry";
         public const string SetEffectsX = "Set Effects X";
         public const string PlayerChooseX = "Player Choose X";
         public const string TargetAccepted = "Target Accepted";

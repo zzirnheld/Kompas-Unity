@@ -41,7 +41,17 @@ namespace KompasServer.Effects
             = new Dictionary<string, List<HangingEffect>>();
 
         private bool priorityHeld = false;
-        public IServerStackable CurrStackEntry { get; private set; }
+        private int currStackIndex;
+        private IServerStackable currStackEntry;
+        public IServerStackable CurrStackEntry 
+        {
+            get => currStackEntry;
+            private set
+            {
+                currStackEntry = value;
+                currStackIndex = stack.Count;
+            } 
+        }
         
         //nothing is happening if nothing is in the stack, nothing is currently resolving, and no one is waiting to add something to the stack.
         public bool NothingHappening => stack.Empty && CurrStackEntry == null && !priorityHeld;
@@ -60,8 +70,6 @@ namespace KompasServer.Effects
         }
 
         public void PushToStack(ServerEffect eff, ActivationContext context) => PushToStack(eff, eff.ServerController, context);
-
-        public IServerStackable CancelStackEntry(int index) => stack.Cancel(index);
 
         private void StackEmptied()
         {
@@ -90,6 +98,7 @@ namespace KompasServer.Effects
         public void FinishStackEntryResolution()
         {
             CurrStackEntry = null;
+            ServerGame.ServerPlayers.First().ServerNotifier.RemoveStackEntry(currStackIndex);
             CheckForResponse();
         }
 

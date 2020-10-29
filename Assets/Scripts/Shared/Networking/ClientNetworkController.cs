@@ -77,6 +77,7 @@ namespace KompasClient.Networking
                 case Packet.GetEffectOption: return JsonUtility.FromJson<GetEffectOptionClientPacket>(json);
                 case Packet.EffectResolving: return JsonUtility.FromJson<EffectResolvingClientPacket>(json);
                 case Packet.EffectActivated: return JsonUtility.FromJson<EffectActivatedClientPacket>(json);
+                case Packet.RemoveStackEntry: return JsonUtility.FromJson<RemoveStackEntryClientPacket>(json);
                 case Packet.SetEffectsX: return JsonUtility.FromJson<SetEffectsXClientPacket>(json);
                 case Packet.PlayerChooseX: return JsonUtility.FromJson<GetPlayerChooseXClientPacket>(json);
                 case Packet.TargetAccepted: return JsonUtility.FromJson<TargetAcceptedClientPacket>(json);
