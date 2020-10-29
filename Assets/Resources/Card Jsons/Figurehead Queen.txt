@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Figurehead Queen",
-	"effText":"When you draw, give me +1C.\nDelay 1 turn. If my C ≥ 10, deck-summon a Tarocco.",
+	"effText":"When you draw X, give me +XC.\nWhen I'm cast, delay 1 turn.\nIf my C ≥ 10, deck-summon a Tarocco.",
 	"effects":[
 		{
 			"triggerCondition":"Draw",
@@ -17,7 +17,7 @@
 				}",
 				"{
 					\"subeffType\":\"ChangeSpellCSubeffect\",
-					\"xModifier\":1
+					\"xMultiplier\":1
 				}"
 			]
 		},
