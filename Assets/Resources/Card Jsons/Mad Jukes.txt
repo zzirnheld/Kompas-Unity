@@ -21,6 +21,9 @@
 					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
+					\"subeffType\":\"SetXSubeffect\"
+				}",
+				"{
 					\"subeffType\":\"TargetAugmentsSubeffect\"
 				}",
 				"{
@@ -32,7 +35,7 @@
 					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
 					\"delete\":true,
 					\"remainingTargets\":1,
-					\"jumpTo\":2
+					\"jumpTo\":3
 				}",
 				"{
 					\"subeffType\":\"ChangeAllNESWSubeffect\",
