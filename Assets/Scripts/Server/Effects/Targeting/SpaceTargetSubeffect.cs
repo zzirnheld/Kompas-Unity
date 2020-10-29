@@ -24,7 +24,7 @@ namespace KompasServer.Effects
                     for (int y = 0; y < 7; y++)
                     {
                         var space = Controller.SubjectiveCoords((x, y));
-                        if(spaceRestriction.Evaluate(space)) spaces.Add(space);
+                        if(spaceRestriction.Evaluate((x, y))) spaces.Add(space);
                     }
                 }
                 EffectController.ServerNotifier.GetSpaceTarget(Source.CardName, spaceRestriction.blurb, spaces.ToArray());
