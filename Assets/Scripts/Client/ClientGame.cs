@@ -46,6 +46,9 @@ namespace KompasClient.GameCore
         //turn players?
         public bool FriendlyTurn => TurnPlayerIndex == 0;
 
+        //search
+        public ClientSearchController searchCtrl;
+
         //targeting
         public int targetsWanted;
         private GameCard[] currentPotentialTargets;
@@ -115,34 +118,6 @@ namespace KompasClient.GameCore
         }
 
         //requesting
-        public void TargetCard(GameCard card)
-        {
-            if (CurrentPotentialTargets == null)
-            {
-                Debug.Log($"Called target card on {card.CardName} while there's no list of potential targets");
-                return;
-            }
-
-            //if the game is currently looking for a target you can click on,
-            if (targetMode == TargetMode.CardTarget)
-            {
-                //check if the target is a valid potential target
-                if (CurrentPotentialTargets.Contains(card))
-                {
-                    //if it fits the restriction, send the proposed target to the server
-                    clientNotifier.RequestTarget(card);
-
-                    //put the relevant card back
-                    card.PutBack();
-
-                    //and change the game's target mode TODO should this do this
-                    targetMode = TargetMode.OnHold;
-                }
-            }
-            else Debug.LogError($"Tried to target card {card.CardName} " +
-                $"while in a targetmode {targetMode} where we weren't looking for a target");
-        }
-
         public void SetFirstTurnPlayer(int playerIndex)
         {
             FirstTurnPlayer = TurnPlayerIndex = playerIndex;
@@ -195,18 +170,17 @@ namespace KompasClient.GameCore
         /// <summary>
         /// Sets up the client for the player to select targets
         /// </summary>
-        public void SetPotentialTargets(int[] ids, int numWanted)
+        public void SetPotentialTargets(int[] ids, ListRestriction listRestriction)
         {
             CurrentPotentialTargets = ids?.Select(i => GetCardWithID(i)).Where(c => c != null).ToArray();
-            if (CurrentPotentialTargets.Any(c => !c.CurrentlyVisible))
-                clientUICtrl.StartSearch(CurrentPotentialTargets, numToChoose: numWanted);
+            searchCtrl.StartSearch(CurrentPotentialTargets, listRestriction);
 
         }
 
         public void ClearPotentialTargets()
         {
             CurrentPotentialTargets = null;
-            clientUICtrl.ResetSearch();
+            searchCtrl.ResetSearch();
         }
 
         /// <summary>

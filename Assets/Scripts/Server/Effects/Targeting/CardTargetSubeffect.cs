@@ -15,7 +15,7 @@ namespace KompasServer.Effects
         {
             AwaitingTarget = true;
             int[] potentialTargetIds = Game.Cards.Where(c => cardRestriction.Evaluate(c)).Select(c => c.ID).ToArray();
-            EffectController.ServerNotifier.GetCardTarget(Source.CardName, cardRestriction.blurb, potentialTargetIds);
+            EffectController.ServerNotifier.GetCardTarget(Source.CardName, cardRestriction.blurb, potentialTargetIds, null);
         }
 
         public override void Initialize(ServerEffect eff, int subeffIndex)

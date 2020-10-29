@@ -42,17 +42,17 @@ namespace KompasCore.Effects
         public int playerIndex = 0;
 
         /// <summary>
-        /// If the effect uses X, this is the multiplier to X
+        /// If the effect uses X, this is the multiplier to X. Default: 0
         /// </summary>
         public int xMultiplier = 0;
 
         /// <summary>
-        /// If the effect uses X, this is the divisor to X
+        /// If the effect uses X, this is the divisor to X. Default: 1
         /// </summary>
         public int xDivisor = 1;
 
         /// <summary>
-        /// If the effect uses X, this is the modifier to X
+        /// If the effect uses X, this is the modifier to X. Default: 0
         /// </summary>
         public int xModifier = 0;
 

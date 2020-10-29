@@ -10,11 +10,16 @@ namespace KompasCore.Effects
     {
         public Subeffect Subeffect { get; private set; }
 
-        public const string CanPayCost = "Can Pay Cost"; // 1 //effect's controller is able to pay the cost of all of them together
         public const string MinCanChoose = "Min Can Choose";
         public const string MaxCanChoose = "Max Can Choose";
 
+        public const string CanPayCost = "Can Pay Cost"; // 1 //effect's controller is able to pay the cost of all of them together
+        public const string DistinctCosts = "Distinct Costs";
+        public const string MaxOfX = "Max Can Choose: X";
+
         public string[] listRestrictions = new string[0];
+
+        public bool HasMax => listRestrictions.Contains(MaxCanChoose) || listRestrictions.Contains(MaxOfX);
 
         /// <summary>
         /// The maximum number of cards that can be chosen.
@@ -29,6 +34,10 @@ namespace KompasCore.Effects
         /// </summary>
         public int minCanChoose = 1;
 
+        /// <summary>
+        /// Default ListRestriction. <br></br>
+        /// Includes a max and min of 1 card.
+        /// </summary>
         public static ListRestriction Default => new ListRestriction()
         {
             listRestrictions = new string[]
@@ -37,22 +46,36 @@ namespace KompasCore.Effects
             }
         };
 
+        /// <summary>
+        /// Default ListRestriction Json. <br></br>
+        /// A json representation of <see cref="Default"/>
+        /// </summary>
+        public static readonly string DefaultJson = JsonUtility.ToJson(Default);
+
         public void Initialize(Subeffect subeffect)
         {
             Subeffect = subeffect;
             if (minCanChoose < 0) minCanChoose = maxCanChoose;
         }
 
+        public void PrepareForSending(int x)
+        {
+            if (listRestrictions.Contains(MaxOfX)) maxCanChoose = x;
+        }
+
         private bool EvaluateRestriction(string restriction, IEnumerable<GameCard> cards)
         {
             switch (restriction)
             {
+                case MinCanChoose: return cards.Count() >= minCanChoose;
+                case MaxCanChoose: return cards.Count() <= maxCanChoose;
                 case CanPayCost:
                     int totalCost = 0;
                     foreach (var card in cards) totalCost += card.Cost;
                     return Subeffect.Controller.Pips >= totalCost;
-                case MinCanChoose: return cards.Count() >= minCanChoose;
-                case MaxCanChoose: return cards.Count() <= maxCanChoose;
+                case DistinctCosts:
+                    return cards.Select(c => c.Cost).Distinct().Count() == cards.Count();
+                case MaxOfX: return cards.Count() <= Subeffect.Effect.X;
                 default: throw new System.ArgumentException($"Invalid list restriction {restriction}", "restriction");
             }
         }

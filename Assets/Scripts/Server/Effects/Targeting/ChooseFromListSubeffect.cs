@@ -30,8 +30,8 @@ namespace KompasServer.Effects
             string name = Source.CardName;
             string blurb = cardRestriction.blurb;
             int[] targetIds = potentialTargets.Select(c => c.ID).ToArray();
-            int num = listRestriction.maxCanChoose;
-            ServerPlayer.ServerNotifier.GetCardTarget(name, blurb, targetIds, num: num);
+            listRestriction.PrepareForSending(Effect.X);
+            ServerPlayer.ServerNotifier.GetCardTarget(name, blurb, targetIds, JsonUtility.ToJson(listRestriction));
         }
 
         public override void Initialize(ServerEffect eff, int subeffIndex)

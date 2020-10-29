@@ -4422,6 +4422,7 @@ GameObject:
   - component: {fileID: 492080562}
   - component: {fileID: 492080563}
   - component: {fileID: 492080564}
+  - component: {fileID: 492080565}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -4491,6 +4492,7 @@ MonoBehaviour:
   clientNetworkCtrl: {fileID: 2001968206}
   clientNotifier: {fileID: 2001968207}
   clientUICtrl: {fileID: 1615817260}
+  searchCtrl: {fileID: 492080565}
   targetsWanted: 0
   canZoom: 0
 --- !u!114 &492080564
@@ -4522,6 +4524,19 @@ MonoBehaviour:
   ServerCharPrefab: {fileID: 0}
   ServerSpellPrefab: {fileID: 0}
   ServerAugPrefab: {fileID: 0}
+--- !u!114 &492080565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492080561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11e56e61aab43a34295faea11b096e7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clientGame: {fileID: 492080563}
 --- !u!1 &509972773
 GameObject:
   m_ObjectHideFlags: 0

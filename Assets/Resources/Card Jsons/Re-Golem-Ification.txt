@@ -1,0 +1,82 @@
+{
+	"cardType":83,
+	"cardName":"Re-Golem-Ification",
+	"effText":"Annihilate me. Discard a cost X Golem. Discard-rehand up to X friendly Golems with different costs.",
+	"effects":[
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"TargetThisSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"AnnihilateSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"CardTargetSubeffect\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\"],
+						\"subtypesInclude\":[\"Golem\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"SetXByTargetCostSubeffect\",
+					\"xMultiplier\":1
+				}",
+				"{
+					\"subeffType\":\"DiscardSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"ChooseOptionSubeffect\",
+					\"ChoiceBlurb\":\"Hand-summon or revive a Golem?\",
+					\"OptionBlurbs\":[\"Hand-summon\",\"Revive\"],
+					\"OptionJumpIndices\":[4,6]
+				}",
+				"{
+					\"subeffType\":\"CardTargetSubeffect\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Hand\",\"S<X\"],
+						\"subtypesInclude\":[\"Golem\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"JumpSubeffect\",
+					\"indexToJumpTo\":7
+				}",
+				"{
+					\"subeffType\":\"CardTargetSubeffect\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Discard\",\"S<X\"],
+						\"subtypesInclude\":[\"Golem\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"spaceRestriction\":
+					{
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"PlaySubeffect\"
+				}",
+				"{
+					\"subeffType\":\"ActivateSubeffect\"
+				}"
+			]	
+		}
+	],
+	"fast":true,
+	"c":1,
+	"spellType":"Simple",
+	"subtypeText":"Golem Simple"
+}

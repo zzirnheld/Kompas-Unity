@@ -131,8 +131,8 @@ namespace KompasServer.Networking
         #endregion card stats
 
         #region request targets
-        public void GetCardTarget(string cardName, string targetBlurb, int[] ids, int num = 1)
-            => SendPacket(new GetCardTargetPacket(cardName, targetBlurb, ids, num));
+        public void GetCardTarget(string cardName, string targetBlurb, int[] ids, string listRestrictionJson)
+            => SendPacket(new GetCardTargetPacket(cardName, targetBlurb, ids, listRestrictionJson));
 
         public void GetSpaceTarget(string cardName, string targetBlurb, (int, int)[] spaces)
             => SendPacket(new GetSpaceTargetPacket(cardName, targetBlurb, spaces));

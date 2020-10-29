@@ -20,24 +20,6 @@ namespace KompasClient.UI
         private const string AwaitingResponseMessage = "Awaiting Response";
         private const string AwaitingEnemyResponse = "Awaiting Enemy Response";
 
-        //this is probably deprecated now that you have no reason to search the discard,
-        //but i might eventually let you search your deck, so, uh, nyeh
-        public struct SearchData
-        {
-            public readonly GameCard[] toSearch;
-            public readonly int numToSearch;
-            public readonly bool targetingSearch;
-            public readonly List<GameCard> searched;
-
-            public SearchData(GameCard[] toSearch, int numToSearch, bool targetingSearch, List<GameCard> searched)
-            {
-                this.toSearch = toSearch;
-                this.numToSearch = numToSearch;
-                this.targetingSearch = targetingSearch;
-                this.searched = searched;
-            }
-        }
-
         public ClientGame clientGame;
         //debug UI 
         public InputField debugPipsField;
@@ -77,8 +59,7 @@ namespace KompasClient.UI
         public TMP_Text TriggerBlurbText;
         //search
         private int searchIndex = 0;
-        private SearchData? currSearchData = null;
-        private readonly Stack<SearchData> searchStack = new Stack<SearchData>();
+        private ClientSearchController.SearchData? CurrSearchData => clientGame.searchCtrl.CurrSearchData;
         //choose effect option
         public ClientChooseOptionUIController chooseOptionUICtrl;
 
@@ -141,7 +122,7 @@ namespace KompasClient.UI
         public override void SelectCard(GameCard card, Game.TargetMode targetMode, bool fromClick)
         {
             base.SelectCard(card, targetMode, fromClick);
-            if (fromClick && card != null) clientGame.TargetCard(card);
+            if (fromClick && card != null) clientGame.searchCtrl.AddTarget(card);
         }
 
         public void ReselectSelectedCard(bool fromClick) => SelectCard(SelectedCard, fromClick);
@@ -287,24 +268,11 @@ namespace KompasClient.UI
         #endregion effects
 
         #region search
-        public void StartSearch(GameCard[] list, int numToChoose = 1, bool targetingSearch = true)
-            => StartSearch(new SearchData(list, numToChoose, targetingSearch, new List<GameCard>()));
-
-        public void StartSearch(SearchData data)
+        public void StartShowingSearch()
         {
-            //if the list is empty, don't search
-            if (data.toSearch.Length == 0) return;
-
-            //if should search and already searching, remember current search
-            if (currSearchData.HasValue) searchStack.Push(currSearchData.Value);
-
-            currSearchData = data;
-            Debug.Log($"Searching a list of {data.toSearch.Length} cards: {string.Join(",", data.toSearch.Select(c => c.CardName))}");
-
-            //initiate search process
             searchIndex = 0;
             SearchShowIndex(searchIndex);
-            if (currSearchData.Value.targetingSearch) searchTargetButtonText.text = "Choose";
+            if (CurrSearchData.Value.targetingSearch) searchTargetButtonText.text = "Choose";
             else searchTargetButtonText.text = "Cancel";
             cardSearchView.SetActive(true);
         }
@@ -312,75 +280,37 @@ namespace KompasClient.UI
         public void SearchSelectedCard()
         {
             //if the list to search through is null, we're not searching atm.
-            if (currSearchData == null) return;
+            if (CurrSearchData == null) return;
 
-            if (!currSearchData.Value.targetingSearch)
-            {
-                ResetSearch();
-                return;
-            }
-
-            GameCard searchSelected = currSearchData.Value.toSearch[searchIndex];
-
-            if (currSearchData.Value.numToSearch == 1)
-            {
-                clientGame.clientNotifier.RequestTarget(searchSelected);
-                ResetSearch();
-            }
-            else if (!currSearchData.Value.searched.Contains(searchSelected))
-            {
-                currSearchData.Value.searched.Add(searchSelected);
-
-                alreadySelectedText.SetActive(true);
-
-                //if we were given a maximum number to be searched, and hit that number, no reason to keep asking
-                if (currSearchData.Value.numToSearch > 1 && currSearchData.Value.searched.Count >= currSearchData.Value.numToSearch)
-                {
-                    //then send the total list
-                    clientGame.clientNotifier.RequestListChoices(currSearchData.Value.searched);
-                    //and reset searching
-                    ResetSearch();
-                }
-            }
+            if (!CurrSearchData.Value.targetingSearch) clientGame.searchCtrl.ResetSearch();
             else
             {
-                //deselect
-                currSearchData.Value.searched.Remove(searchSelected);
-                alreadySelectedText.SetActive(false);
+                GameCard searchSelected = CurrSearchData.Value.toSearch[searchIndex];
+                clientGame.searchCtrl.ToggleTarget(searchSelected);
             }
         }
 
-        /// <summary>
-        /// If this is the last search, hides everything. If it's not, moves on to the next search
-        /// </summary>
-        public void ResetSearch()
-        {
-            //forget what we were searching through. don't just clear the list because that might clear the actual deck or discard
-            currSearchData = null; //thank god for garbage collection lol :upside down smiley:
-
-            if (searchStack.Count == 0) cardSearchView.SetActive(false);
-            else StartSearch(searchStack.Pop());
-        }
+        public void HideSearch() => cardSearchView.SetActive(false);
 
         public void NextCardSearch()
         {
             searchIndex++;
-            searchIndex %= currSearchData.Value.toSearch.Length;
+            searchIndex %= CurrSearchData.Value.toSearch.Length;
             SearchShowIndex(searchIndex);
         }
 
         public void PrevCardSearch()
         {
             searchIndex--;
-            if (searchIndex < 0) searchIndex += currSearchData.Value.toSearch.Length;
+            if (searchIndex < 0) searchIndex += CurrSearchData.Value.toSearch.Length;
             SearchShowIndex(searchIndex);
         }
 
         public void SearchShowIndex(int index)
         {
-            var toShow = currSearchData.Value.toSearch[searchIndex];
+            var toShow = CurrSearchData.Value.toSearch[index];
             cardSearchImage.sprite = toShow.detailedSprite;
-            alreadySelectedText.SetActive(currSearchData.Value.searched.Contains(toShow));
+            alreadySelectedText.SetActive(CurrSearchData.Value.searched.Contains(toShow));
 
             nSearchText.text = $"N\n{toShow.N}";
             eSearchText.text = $"E\n{toShow.E}";
@@ -397,7 +327,9 @@ namespace KompasClient.UI
             aSearchText.gameObject.SetActive(toShow.CardType == 'A');
         }
 
-        public void SelectShownSearchCard() => HoverOver(currSearchData.Value.toSearch[searchIndex]);
+        public void ReshowSearchShown() => SearchShowIndex(searchIndex);
+
+        public void SelectShownSearchCard() => HoverOver(CurrSearchData.Value.toSearch[searchIndex]);
         #endregion
 
         #region flow control
