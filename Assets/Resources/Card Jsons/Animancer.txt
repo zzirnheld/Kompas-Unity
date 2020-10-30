@@ -4,6 +4,7 @@
 	"effText":"During your turn, you can hand-discard Golems with total cost X to search your deck's top X cards a for cost <= X Golem. Bottomdeck the rest.",
 	"effects":[
 		{
+			"blurb":"It's In Here Somewhere",
 			"activationRestriction":{
 				"activationRestrictions":[
 					"Friendly Turn",

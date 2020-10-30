@@ -9,8 +9,6 @@ namespace KompasClient.Networking
     {
         public ClientGame ClientGame;
 
-        public int X { get; set; }
-
         public void Connect(string ip)
         {
             Debug.Log($"Connecting to {ip} on a random port");
@@ -20,10 +18,7 @@ namespace KompasClient.Networking
             Debug.Log("Connected");
         }
 
-        public override void Update()
-        {
-            base.Update();
-        }
+        public override void Update() => base.Update();
 
         private IClientOrderPacket FromJson(string command, string json)
         {
