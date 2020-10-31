@@ -34,7 +34,7 @@
 					\"subeffType\":\"DelaySubeffect\",
 					\"numTimesToDelay\":0,
 					\"indexToResume\":1,
-					\"triggerCondition\":\"Turn Start\"
+					\"endCondition\":\"Turn Start\"
 				}",
 				"{
 					\"subeffType\":\"TargetThisSubeffect\"

@@ -311,7 +311,8 @@ namespace KompasCore.Cards
         public bool SpaceDirectlyInFront((int x, int y) space)
             => Controller.SubjectiveCoords(space) == (SubjectivePosition.x + 1, SubjectivePosition.y + 1);
 
-        public bool CardDirectlyInFront(GameCard card) => SpaceDirectlyInFront(card.Position);
+        public bool CardDirectlyInFront(GameCard card) 
+            => Location == CardLocation.Field && card.Location == CardLocation.Field && SpaceDirectlyInFront(card.Position);
         #endregion distance/adjacency
 
         public void PutBack()

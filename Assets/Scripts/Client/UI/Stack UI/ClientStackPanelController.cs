@@ -26,7 +26,7 @@ namespace KompasClient.UI
         {
             if (stack.Count > index)
             {
-                Destroy(stack[index]);
+                Destroy(stack[index].gameObject);
                 stack.RemoveAt(index);
                 if (stack.Count == 0) gameObject.SetActive(false);
             }
