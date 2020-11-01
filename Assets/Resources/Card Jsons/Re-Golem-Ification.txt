@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Re-Golem-Ification",
-	"effText":"Annihilate me. Discard a cost X Golem. Discard-rehand up to X friendly Golems with different costs.",
+	"effText":"Annihilate me. Choose a cost X Golem among your highest cost discarded Golems. Reshuffle X other discarded Golems, and rehand the chosen one.",
 	"effects":[
 		{
 			"triggerCondition":"Play",
@@ -19,58 +19,44 @@
 					\"subeffType\":\"AnnihilateSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"SetXByGamestateSubeffect\",
+					\"whatToCount\":\"Max Stat Among Restriction\",
+					\"stat\":\"Cost\",
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\"],
+						\"blurb\":\"to re-golem-ificate\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Discard\"],
 						\"subtypesInclude\":[\"Golem\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"SetXByTargetCostSubeffect\",
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"DiscardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"ChooseOptionSubeffect\",
-					\"ChoiceBlurb\":\"Hand-summon or revive a Golem?\",
-					\"OptionBlurbs\":[\"Hand-summon\",\"Revive\"],
-					\"OptionJumpIndices\":[4,6]
-				}",
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
+					\"subeffType\":\"ChooseFromListSubeffect\",
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Hand\",\"S<X\"],
+						\"blurb\":\"to re-golem-ificate\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Discard\",\"Cost==X\"],
 						\"subtypesInclude\":[\"Golem\"]
 					}
-				}",
-				"{
-					\"subeffType\":\"JumpSubeffect\",
-					\"indexToJumpTo\":7
 				}",
 				"{
 					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Discard\",\"S<X\"],
+						\"blurb\":\"for Animancer to discard\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Discard\",\"Not Already Target\"],
 						\"subtypesInclude\":[\"Golem\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
-					{
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
-					}
+					\"subeffType\":\"ReshuffleSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"XTimesSubeffect\",
+					\"jumpTo\":4
 				}",
 				"{
-					\"subeffType\":\"ActivateSubeffect\"
+					\"subeffType\":\"RehandSubeffect\",
+					\"targetIndex\":1
 				}"
 			]	
 		}

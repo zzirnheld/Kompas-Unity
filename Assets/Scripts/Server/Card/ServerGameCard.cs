@@ -61,7 +61,7 @@ namespace KompasServer.Cards
                         knownToEnemy = false;
                         break;
                     default:
-                        UnityEngine.Debug.Log($"Card {CardName} being moved to {Location}. " +
+                        Debug.Log($"Card {CardName} being moved to {Location}. " +
                             $"Not setting knownToEnemy, because enemy knowledge doesn't change");
                         break;
                 }
