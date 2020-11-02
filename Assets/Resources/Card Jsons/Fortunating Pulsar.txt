@@ -41,7 +41,7 @@
 			"{
 				\"blurb\":\"Fortune-pip\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Max Per Turn\",\"X Fits Restriction\",\"Triggerer Fits Restriction\"],
+					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\",\"Triggerer Fits Restriction\"],
 					\"xRestriction\":{
 						\"xRestrictions\":[\"<0\"]
 					},
