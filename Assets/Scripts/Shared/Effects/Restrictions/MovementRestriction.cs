@@ -75,12 +75,12 @@ namespace KompasCore.Effects
             }
         }
 
-        private bool RestrictionValidWithDebug(string restriction, int x, int y, bool isSwapTarget, bool byEffect)
+        /*private bool RestrictionValidWithDebug(string restriction, int x, int y, bool isSwapTarget, bool byEffect)
         {
             bool valid = RestrictionValid(restriction, x, y, isSwapTarget, byEffect);
             if (!valid) Debug.LogWarning($"{Card.CardName} cannot move to {x}, {y} because it flouts the movement restriction {restriction}");
             return valid;
-        }
+        }*/
 
         private bool ValidIndices(int x, int y) => 0 <= x && x < 7 && 0 <= y && y < 7;
 

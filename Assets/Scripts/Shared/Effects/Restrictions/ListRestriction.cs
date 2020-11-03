@@ -10,15 +10,24 @@ namespace KompasCore.Effects
     {
         public Subeffect Subeffect { get; private set; }
 
+        //if i end up living towards the heat death of the universe,
+        //i will refactor this to instead be objects that get deserialized.
+        //they will probably be tiny little classes at the bottom of this.
+        //dang. that actually makes it sound mostly trivial.
+        #region restrictions
         public const string MinCanChoose = "Min Can Choose";
         public const string MaxCanChoose = "Max Can Choose";
 
         public const string CanPayCost = "Can Pay Cost"; // 1 //effect's controller is able to pay the cost of all of them together
         public const string DistinctCosts = "Distinct Costs";
         public const string MaxOfX = "Max Can Choose: X";
+        #endregion restrictions
 
         public string[] listRestrictions = new string[0];
 
+        /// <summary>
+        /// A quick little method that tells you whether the list restriction has a limit to how many can be chosen.
+        /// </summary>
         public bool HasMax => listRestrictions.Contains(MaxCanChoose) || listRestrictions.Contains(MaxOfX);
 
         /// <summary>
@@ -30,9 +39,9 @@ namespace KompasCore.Effects
         /// <summary>
         /// The minimum number of cards that must be chosen.
         /// If is < 0, gets set to maxCanChoose
-        /// Default: one card must be chosen
+        /// Default: set to maxCanChoose
         /// </summary>
-        public int minCanChoose = 1;
+        public int minCanChoose = -1;
 
         /// <summary>
         /// Default ListRestriction. <br></br>
@@ -40,10 +49,7 @@ namespace KompasCore.Effects
         /// </summary>
         public static ListRestriction Default => new ListRestriction()
         {
-            listRestrictions = new string[]
-            {
-                MinCanChoose, MaxCanChoose
-            }
+            listRestrictions = new string[] { MinCanChoose, MaxCanChoose }
         };
 
         /// <summary>
@@ -52,12 +58,23 @@ namespace KompasCore.Effects
         /// </summary>
         public static readonly string DefaultJson = JsonUtility.ToJson(Default);
 
+        /// <summary>
+        /// You can read, you know what this does.
+        /// Initializes the list restriction to know who its daddy is, and make any shtuff match up
+        /// </summary>
+        /// <param name="subeffect"></param>
         public void Initialize(Subeffect subeffect)
         {
             Subeffect = subeffect;
             if (minCanChoose < 0) minCanChoose = maxCanChoose;
         }
 
+        /// <summary>
+        /// Prepares the list restriction to be sent to a player alongside a get card target request.
+        /// This exists in case I ever need to add information, 
+        /// so I can make the compiler tell me where else needs to provide information.
+        /// </summary>
+        /// <param name="x">The value of x to use, in case the list restriction cares about X.</param>
         public void PrepareForSending(int x)
         {
             if (listRestrictions.Contains(MaxOfX)) maxCanChoose = x;
