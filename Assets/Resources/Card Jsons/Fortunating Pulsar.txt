@@ -23,7 +23,7 @@
 				"{
 					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":{
-						\"blurb\":\"Great Scott, we have to discard something\",
+						\"blurb\":\"how fortunate, we have to discard something\",
 						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
 					}
 				}",
@@ -67,8 +67,8 @@
 		}
 	],
 	"n":1,
-	"e":5,
+	"e":4,
 	"s":5,
-	"w":5,
+	"w":4,
 	"subtypeText":"Pulsar"
 }
