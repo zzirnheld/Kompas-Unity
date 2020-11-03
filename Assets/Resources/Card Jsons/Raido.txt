@@ -24,7 +24,7 @@
 					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":{
 						\"blurb\":\"where for Raido to move it starget\",
-						\"spaceRestrictions\":[\"Empty\"]
+						\"spaceRestrictions\":[\"Empty\",\"Can Move Target to This Space\"]
 					}
 				}",
 				"{

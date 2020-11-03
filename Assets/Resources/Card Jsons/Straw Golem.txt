@@ -24,7 +24,7 @@
 					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
-						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\"],
+						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\",\"Can Move Target to This Space\"],
 						\"constant\":3
 					}
 				}",

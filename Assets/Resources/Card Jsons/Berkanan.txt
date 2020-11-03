@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Berkanan",
-	"effText":"Can’t be cast normally. If it’s your turn, take control of an enemy character and end your turn.",
+	"effText":"Can’t be cast normally. Set a character’s NW to 0 and ES to 5.",
 	"effects":[
 		{
 			"triggerCondition":"Play",
@@ -13,22 +13,18 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"ConditionalEndSubeffect\",
-					\"condition\":\"Must be Friendly Turn\"
-				}",
-				"{
 					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"enemy for Berkanan to charm\",
-						\"cardRestrictions\":[\"Is Character\",\"Enemy\",\"Board\"]
+						\"cardRestrictions\":[\"Is Character\",\"Board\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"TakeControlSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"EndTurnSubeffect\"
+					\"subeffType\":\"SetNESWSubeffect\",
+					\"nVal\":0,
+					\"eVal\":5,
+					\"sVal\":5,
+					\"wVal\":0
 				}"
 			]	
 		}
@@ -36,7 +32,7 @@
 	"PlayRestriction":{
 		"normalRestrictions":["Cannot be Played Normally"]
 	},
-	"c":8,
+	"c":1,
 	"spellType":"Simple",
 	"subtypes":["Rune","Simple"],
 	"subtypeText":"Rune Simple"

@@ -33,7 +33,7 @@
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"to move Magnetizing's target to\",
-						\"spaceRestrictions\":[\"Distance to Target == Constant\",\"Further from Source than Target\"],
+						\"spaceRestrictions\":[\"Distance to Target == Constant\",\"Further from Source than Target\",\"Can Move Target to This Space\"],
 						\"constant\":1
 					}
 				}",
@@ -72,7 +72,7 @@
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"to move Magnetizing's target to\",
-						\"spaceRestrictions\":[\"Distance to Target == Constant\",\"Towards Source from Target\"],
+						\"spaceRestrictions\":[\"Distance to Target == Constant\",\"Towards Source from Target\",\"Can Move Target to This Space\"],
 						\"constant\":1
 					}
 				}",
