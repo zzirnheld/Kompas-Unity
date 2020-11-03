@@ -134,5 +134,10 @@ namespace KompasCore.Cards
             SubtypeText = card.subtypeText;
             AugmentSubtypes = card.augSubtypes;
         }
+
+        public override string ToString()
+        {
+            return $"Card named \"{CardName}\"";
+        }
     }
 }

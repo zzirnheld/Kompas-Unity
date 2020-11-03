@@ -108,12 +108,9 @@ namespace KompasCore.GameCore
             return false;
         }
 
-        public bool ValidSpellSpace(int x, int y)
-        {
-            if (x >= 5 && y >= 5) return boardCtrl.CardsAdjacentTo(6, 6).Count(c => c.CardType == 'S') < 1;
-            if (x <= 1 && y <= 1) return boardCtrl.CardsAdjacentTo(0, 0).Count(c => c.CardType == 'S') < 1;
-            return true;
-        }
+        //public bool ValidSpellSpace(int x, int y) => boardCtrl
+
+        public bool ValidSpellSpaceFor(GameCard card, int x, int y) => boardCtrl.ValidSpellSpaceFor(card, x, y);
 
         protected void ResetCardsForTurn()
         {
