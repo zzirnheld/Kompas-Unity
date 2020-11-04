@@ -32,6 +32,8 @@ namespace KompasCore.Effects
         public const string CanMoveTarget = "Can Move Target to This Space";
         public const string Empty = "Empty";
         public const string CardHereFitsRestriction = "Card Here Fits Restriction";
+        public const string OnTargetsDiagonal = "On Target's Diagonal";
+        public const string OnEdge = "On Edge of Board";
 
         public string[] spaceRestrictions;
         public CardRestriction adjacencyRestriction = new CardRestriction();
@@ -80,6 +82,8 @@ namespace KompasCore.Effects
                 case CanMoveTarget: return Subeffect.Target.MovementRestriction.EvaluateEffectMove(x, y);
                 case Empty: return Subeffect.Effect.Game.boardCtrl.GetCardAt(x, y) == null;
                 case CardHereFitsRestriction: return hereFitsRestriction.Evaluate(Subeffect.Effect.Game.boardCtrl.GetCardAt(x, y));
+                case OnTargetsDiagonal: return Subeffect.Target.OnMyDiagonal((x, y));
+                case OnEdge: return x == 0 || x == 6 || y == 0 || y == 6;
                 default: throw new ArgumentException($"Invalid space restriction {restriction}", "restriction");
             }
         }
