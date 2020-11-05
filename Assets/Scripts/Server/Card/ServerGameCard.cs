@@ -76,9 +76,9 @@ namespace KompasServer.Cards
         public virtual void SetInfo(SerializableCard serializedCard, ServerGame game, ServerPlayer owner, ServerEffect[] effects, int id)
         {
             base.SetInfo(serializedCard, id);
+            ServerEffects = effects;
             ServerGame = game;
             ServerController = ServerOwner = owner;
-            ServerEffects = effects;
         }
 
         public override void ResetCard()

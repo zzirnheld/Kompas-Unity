@@ -4,6 +4,7 @@
 	"effText":"Once each round, you can give me and a Summoned character -3E.",
 	"effects":[
 		{
+			"blurb":"Something",
 			"activationRestriction":{
 				"activationRestrictions":[
 					"Max Times Per Round",
