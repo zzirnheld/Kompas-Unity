@@ -4,6 +4,7 @@
 	"effText":"Move each character that you can to a space on its diagonal, on the edge of the board.",
 	"effects":[
 		{
+			"blurb":"Simple Effect",
 			"triggerCondition":"Play",
 			"trigger":
 			"{

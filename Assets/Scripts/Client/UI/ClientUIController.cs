@@ -78,6 +78,14 @@ namespace KompasClient.UI
         //effect option ui
         public TriggerOrderUIController triggerOrderUI;
 
+        //effect activation ui
+        public EffectActivatorUIController activatorUICtrl;
+
+        public GameCard CardToActivateEffectsFor
+        {
+            set => activatorUICtrl.nextShowFor = value;
+        }
+
         public int FriendlyPips
         {
             set => friendlyPipsText.text = $"{value} (+{clientGame.Leyload + (clientGame.FriendlyTurn ? 2 : 1)}) Friendly Pips";
@@ -92,7 +100,13 @@ namespace KompasClient.UI
             set => LeyloadText.text = $"{value} Pips Leyload";
         }
 
-        private bool ShowEffect(Effect eff) => eff.CanBeActivatedBy(clientGame.Players[0]);
+        public void Update()
+        {
+            //when the user releaes a right click, show.
+            if (Input.GetMouseButtonUp(1)) activatorUICtrl.Show();
+        }
+
+        public bool ShowEffect(Effect eff) => eff.CanBeActivatedBy(clientGame.Players[0]);
 
         public override bool ShowInfoFor(GameCard card, bool refresh = false)
         {
@@ -195,10 +209,10 @@ namespace KompasClient.UI
         }
 
         #region effects
-        public void ActivateSelectedCardEff(int index)
-        {
-            clientGame.clientNotifier.RequestResolveEffect(ShownCard, index);
-        }
+        public void ActivateSelectedCardEff(int index) => ActivateCardEff(ShownCard, index);
+
+        public void ActivateCardEff(GameCard card, int index)
+            => clientGame.clientNotifier.RequestActivateEffect(card, index);
 
         public void ToggleHoldingPriority()
         {

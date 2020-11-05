@@ -36,6 +36,22 @@ namespace KompasClient.Cards
             return position.x > minX && position.x < maxX && position.y > minY && position.y < maxY;
         }
 
+        public override void OnMouseExit()
+        {
+            //remove thing even if hovering over something.
+            ClientGame.clientUICtrl.CardToActivateEffectsFor = null;
+            base.OnMouseExit();
+        }
+
+        public override void OnMouseOver()
+        {
+            //reset it every time in case exit reset it after on mouse enter would have set it.
+            //it's just a memory access per frame. it should be fine.
+            //if it leads to counterintuitive behavior, add the is over game object check
+            ClientGame.clientUICtrl.CardToActivateEffectsFor = Card;
+            base.OnMouseOver();
+        }
+
         public override void OnMouseUp()
         {
             //don't do anything if we're over an event system object, 
@@ -45,6 +61,7 @@ namespace KompasClient.Cards
                 Debug.Log($"Released card while pointer over event system object");
                 return;
             }
+
             base.OnMouseUp();
 
             //don't allow dragging cards if we're awaiting a target

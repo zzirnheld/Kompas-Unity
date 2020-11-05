@@ -38,7 +38,7 @@ namespace KompasClient.Networking
 
         public void RequestTarget(GameCard card) => Send(new CardTargetPacket(card.ID));
 
-        public void RequestResolveEffect(GameCard card, int index)
+        public void RequestActivateEffect(GameCard card, int index)
             => Send(new ActivateEffectActionPacket(card.ID, index));
 
         public void RequestSetX(int x) => Send(new SelectXPacket(x));
