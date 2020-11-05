@@ -5,6 +5,7 @@ using KompasServer.Effects;
 using KompasServer.GameCore;
 using KompasServer.Networking;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace KompasServer.Cards
@@ -26,6 +27,7 @@ namespace KompasServer.Cards
                 serverController = value;
                 cardCtrl.SetRotation();
                 ServerNotifier.NotifyChangeController(this, ServerController);
+                foreach (var eff in Effects.Where(e => e != null)) eff.Controller = value;
             }
         }
         public override Player Controller

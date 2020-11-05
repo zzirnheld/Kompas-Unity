@@ -126,6 +126,9 @@ namespace KompasClient.GameCore
             RoundCount = 1;
             TurnCount = 1;
             canZoom = true;
+            //force updating of pips to show correct messages.
+            //there's probably a better way to do this.
+            foreach (var player in Players) player.Pips = player.Pips;
         }
 
         public void EndTurn()
