@@ -2,8 +2,6 @@
 using KompasClient.GameCore;
 using KompasCore.Effects;
 using KompasCore.GameCore;
-using System.Linq;
-using KompasClient.Effects;
 using UnityEngine;
 
 namespace KompasCore.Networking
