@@ -1,4 +1,5 @@
-﻿using KompasCore.Cards;
+﻿using KompasClient.UI;
+using KompasCore.Cards;
 using KompasCore.Effects;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,7 @@ namespace KompasClient.GameCore
         private readonly Stack<SearchData> searchStack = new Stack<SearchData>();
 
         public ClientGame clientGame;
+        public ClientSearchUIController clientSearchUICtrl;
 
         public void StartSearch(GameCard[] list, ListRestriction listRestriction, bool targetingSearch = true)
             => StartSearch(new SearchData(list, listRestriction, targetingSearch, new List<GameCard>()));
@@ -46,7 +48,7 @@ namespace KompasClient.GameCore
             Debug.Log($"Searching a list of {data.toSearch.Length} cards: {string.Join(",", data.toSearch.Select(c => c.CardName))}");
 
             //initiate search process
-            if (data.toSearch.Any(c => !c.CurrentlyVisible)) clientGame.clientUICtrl.StartShowingSearch();
+            if (data.toSearch.Any(c => !c.CurrentlyVisible)) clientSearchUICtrl.StartShowingSearch();
         }
 
         /// <summary>
@@ -57,7 +59,7 @@ namespace KompasClient.GameCore
             //forget what we were searching through. don't just clear the list because that might clear the actual deck or discard
             CurrSearchData = null; //thank god for garbage collection lol :upside down smiley:
 
-            if (searchStack.Count == 0) clientGame.clientUICtrl.HideSearch();
+            if (searchStack.Count == 0) clientSearchUICtrl.HideSearch();
             else StartSearch(searchStack.Pop());
         }
 
@@ -98,13 +100,13 @@ namespace KompasClient.GameCore
             }
             else CurrSearchData.Value.searched.Remove(nextTarget);
 
-            clientGame.clientUICtrl.ReshowSearchShown();
+            clientSearchUICtrl.ReshowSearchShown();
         }
 
         public void RemoveTarget(GameCard target)
         {
             CurrSearchData.Value.searched.Remove(target);
-            clientGame.clientUICtrl.ReshowSearchShown();
+            clientSearchUICtrl.ReshowSearchShown();
         }
 
         public void SendTargets()
