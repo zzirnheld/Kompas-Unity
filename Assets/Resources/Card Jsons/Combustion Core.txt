@@ -4,6 +4,7 @@
 	"effText":"Activate this character during enemy turns. (They deactivate on your turn.) When they die (while I'm equipped), rehand me. When your turn starts, pay a pip or DispelSubeffect me.",
 	"effects":[
 		{
+			"blurb":"Choo Choo Activate",
 			"triggerCondition":"Turn Start",
 			"trigger":
 			"{
@@ -26,6 +27,7 @@
 			]
 		},
 		{
+			"blurb":"Fuel the Choo",
 			"triggerCondition":"Turn Start",
 			"trigger":
 			"{
@@ -65,6 +67,7 @@
 			]
 		},
 		{
+			"blurb":"Core Recovery",
 			"triggerCondition":"Discard",
 			"trigger":
 			"{

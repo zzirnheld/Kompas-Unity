@@ -1144,10 +1144,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clientUICtrl: {fileID: 1615817260}
   nextShowFor: {fileID: 0}
+  hoveringOverThis: 0
   activateableEffParent: {fileID: 105003669}
   activateableEffPrefab: {fileID: 1610736878007827402, guid: 573ad6a08452cbe4d8f99086e7118ea0,
     type: 3}
   cancelButton: {fileID: 1868761369}
+  cardNameText: {fileID: 395001316}
 --- !u!1 &72637579
 GameObject:
   m_ObjectHideFlags: 0

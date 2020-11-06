@@ -88,12 +88,14 @@ namespace KompasClient.UI
 
         public int FriendlyPips
         {
-            set => friendlyPipsText.text = $"{value} (+{clientGame.Leyload + (clientGame.FriendlyTurn ? 2 : 1)}) Friendly Pips";
+            set => friendlyPipsText.text 
+                = $"{value} (+{clientGame.Leyload + (clientGame.FriendlyTurn ? 2 : 1)}) Friendly Pips";
         }
 
         public int EnemyPips
         {
-            set => enemyPipsText.text = $"{value} (+{clientGame.Leyload + (clientGame.FriendlyTurn ? 1 : 2)}) Enemy Pips";
+            set => enemyPipsText.text 
+                = $"{value} (+{clientGame.Leyload + (clientGame.FriendlyTurn ? 1 : 2)}) Enemy Pips";
         }
         public int Leyload
         {
@@ -104,6 +106,7 @@ namespace KompasClient.UI
         {
             //when the user releaes a right click, show.
             if (Input.GetMouseButtonUp(1)) activatorUICtrl.Show();
+            if (Input.GetMouseButtonUp(0)) activatorUICtrl.CancelIfApplicable();
         }
 
         public bool ShowEffect(Effect eff) => eff.CanBeActivatedBy(clientGame.Players[0]);

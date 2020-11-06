@@ -4,6 +4,7 @@
 	"effText":"While equipped, activate this character and give them +5E. When they die (while I'm equipped), rehand me.",
 	"effects":[
 		{
+			"blurb":"Activate",
 			"triggerCondition":"Augment Attached",
 			"trigger":
 			"{
@@ -34,6 +35,7 @@
 			]
 		},
 		{
+			"blurb":"Core Recovery",
 			"triggerCondition":"Discard",
 			"trigger":
 			"{

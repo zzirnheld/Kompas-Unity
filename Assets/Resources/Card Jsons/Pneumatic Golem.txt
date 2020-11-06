@@ -4,6 +4,7 @@
 	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, rehand a character within 2 spaces.",
 	"effects":[
 		{
+			"blurb":"Nope, Go Away",
 			"triggerCondition":"Activate",
 			"trigger":
 			"{
@@ -45,7 +46,7 @@
 	"n":3,
 	"e":4,
 	"s":3,
-	"w":5,
+	"w":1,
 	"subtypes":["Golem"],
 	"subtypeText":"Golem"
 }

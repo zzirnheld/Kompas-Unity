@@ -4,6 +4,7 @@
 	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, I give a character ±1EW.",
 	"effects":[
 		{
+			"blurb":"++ or --",
 			"triggerCondition":"Activate",
 			"trigger":
 			"{

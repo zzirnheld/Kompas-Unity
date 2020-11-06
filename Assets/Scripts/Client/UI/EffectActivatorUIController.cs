@@ -1,18 +1,22 @@
 ﻿using KompasCore.Cards;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace KompasClient.UI
 {
-    public class EffectActivatorUIController : MonoBehaviour
+    public class EffectActivatorUIController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         public ClientUIController clientUICtrl;
         public GameCard nextShowFor;
+        public bool hoveringOverThis;
 
         public Transform activateableEffParent;
         public GameObject activateableEffPrefab;
         public GameObject cancelButton;
+        public TMP_Text cardNameText;
 
         private readonly List<ActivatableEffectUIController> effectButtons = new List<ActivatableEffectUIController>();
 
@@ -44,6 +48,9 @@ namespace KompasClient.UI
                 //with effects after it.
                 cancelButton.transform.SetAsLastSibling();
 
+                //set name
+                cardNameText.text = card.CardName;
+
                 transform.position = Input.mousePosition;
                 gameObject.SetActive(true);
             }
@@ -51,11 +58,19 @@ namespace KompasClient.UI
         }
 
         public void Show() => ShowFor(nextShowFor);
+        public void CancelIfApplicable()
+        {
+            if (!hoveringOverThis) Cancel();
+        }
 
         public void Cancel()
         {
             nextShowFor = null;
             Show();
         }
+
+
+        public void OnPointerExit(PointerEventData eventData) => hoveringOverThis = false;
+        public void OnPointerEnter(PointerEventData eventData) => hoveringOverThis = true;
     }
 }

@@ -4,6 +4,7 @@
 	"effText":"Once each turn, you can detach a Golem Core to search your deck for a Golem Core.",
 	"effects":[
 		{
+			"blurb":"Forget That Mess",
 			"activationRestriction":{
 				"activationRestrictions":[
 					"Max Times Per Turn",

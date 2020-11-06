@@ -4,6 +4,7 @@
 	"effText":"While equipped, activate this character. When they defend, give them +4EW. When they die (while I'm equipped), rehand me.",
 	"effects":[
 		{
+			"blurb":"Defense Activate!",
 			"triggerCondition":"Augment Attached",
 			"trigger":
 			"{
@@ -26,6 +27,7 @@
 			]
 		},
 		{
+			"blurb":"You Shouldn't Have Done That",
 			"triggerCondition":"Defend",
 			"trigger":
 			"{
@@ -46,6 +48,7 @@
 			]	
 		},
 		{
+			"blurb":"Core Recovery",
 			"triggerCondition":"Discard",
 			"trigger":
 			"{
