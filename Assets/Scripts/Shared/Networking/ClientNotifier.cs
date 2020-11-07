@@ -49,6 +49,8 @@ namespace KompasClient.Networking
 
         public void RequestListChoices(IEnumerable<GameCard> choices) => Send(new ListChoicesPacket(choices));
 
+        public void RequestHandSizeChoices(int[] cardIds) => Send(new SendHandSizeChoicesPacket(cardIds));
+
         public void RequestTriggerReponse(bool answer) => Send(new OptionalTriggerAnswerPacket(answer));
 
         public void RequestChooseEffectOption(int option) => Send(new EffectOptionResponsePacket(option));

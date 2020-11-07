@@ -35,6 +35,8 @@ namespace KompasClient.Networking
                 case Packet.SetTurnPlayer: return JsonUtility.FromJson<SetTurnPlayerClientPacket>(json);
                 case Packet.PutCardsBack: return JsonUtility.FromJson<PutCardsBackClientPacket>(json);
                 case Packet.AttackStarted: return JsonUtility.FromJson<AttackStartedClientPacket>(json);
+                case Packet.HandSizeToStack: return JsonUtility.FromJson<HandSizeToStackClientPacket>(json);
+                case Packet.ChooseHandSize: return JsonUtility.FromJson<GetHandSizeChoicesClientPacket>(json);
 
                 //card addition/deletion
                 case Packet.AddCard: return JsonUtility.FromJson<AddCardClientPacket>(json);

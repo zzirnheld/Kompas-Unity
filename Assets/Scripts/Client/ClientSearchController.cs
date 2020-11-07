@@ -70,7 +70,11 @@ namespace KompasClient.GameCore
         /// <returns></returns>
         public void ToggleTarget(GameCard nextTarget)
         {
-            if (CurrSearchData.Value.searched.Contains(nextTarget)) RemoveTarget(nextTarget);
+            if (CurrSearchData.Value.searched.Contains(nextTarget))
+            {
+                RemoveTarget(nextTarget);
+                nextTarget.cardCtrl.ShowValidTarget();
+            }
             //otherwise, deselect
             else AddTarget(nextTarget);
         }
@@ -88,17 +92,17 @@ namespace KompasClient.GameCore
                 Debug.LogError($"Tried to target card {nextTarget.CardName} that isn't a valid target");
 
             CurrSearchData.Value.searched.Add(nextTarget);
+            nextTarget.cardCtrl.ShowCurrentTarget();
+            Debug.Log($"Added {nextTarget.CardName}, targets are now {string.Join(",", CurrSearchData.Value.searched.Select(c => c.CardName))}");
+
             var listRestriction = CurrSearchData.Value.listRestriction;
+            Debug.Log(JsonUtility.ToJson(listRestriction));
 
             if (listRestriction == null) SendTargets();
             //only do the rest of the operations if adding it doesn't violate the list restriction
-            else if (listRestriction.Evaluate(CurrSearchData.Value.searched, clientGame.CurrentPotentialTargets))
-            {
-                //if we were given a maximum number to be searched, and hit that number, no reason to keep asking
-                if (listRestriction.HasMax && CurrSearchData.Value.searched.Count >= listRestriction.maxCanChoose)
-                    SendTargets();
-            }
-            else CurrSearchData.Value.searched.Remove(nextTarget);
+            //if we were given a maximum number to be searched, and hit that number, no reason to keep asking
+            else if (listRestriction.HasMax && CurrSearchData.Value.searched.Count >= listRestriction.maxCanChoose)
+                SendTargets();
 
             clientSearchUICtrl.ReshowSearchShown();
         }
@@ -111,15 +115,18 @@ namespace KompasClient.GameCore
 
         public void SendTargets()
         {
-            if (CurrSearchData.Value.listRestriction == null)
+            Debug.Log($"Sending targets while in target mode {clientGame.targetMode}");
+            if (clientGame.targetMode == ClientGame.TargetMode.HandSize)
+                clientGame.clientNotifier.RequestHandSizeChoices(CurrSearchData.Value.searched.Select(c => c.ID).ToArray());
+            else if (CurrSearchData.Value.listRestriction == null)
                 clientGame.clientNotifier.RequestTarget(CurrSearchData.Value.searched.FirstOrDefault());
-            else 
+            else
                 clientGame.clientNotifier.RequestListChoices(CurrSearchData.Value.searched);
 
-            ResetSearch();
-
             //put the relevant card back
-            foreach(var card in CurrSearchData.Value.searched) card.PutBack();
+            foreach (var card in CurrSearchData.Value.searched) card.PutBack();
+
+            ResetSearch();
 
             //and change the game's target mode TODO should this do this
             clientGame.targetMode = ClientGame.TargetMode.OnHold;

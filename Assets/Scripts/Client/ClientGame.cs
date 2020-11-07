@@ -164,6 +164,7 @@ namespace KompasClient.GameCore
         public void StackEmptied()
         {
             stackEmpty = true;
+            targetMode = TargetMode.Free;
             clientUICtrl.SetCurrState("Stack Empty");
             foreach (var c in Cards) c.ResetForStack();
             ShowNoTargets();

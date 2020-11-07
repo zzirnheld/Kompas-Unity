@@ -12,7 +12,7 @@ namespace KompasClient.UI
 
         public void Initialize(Sprite image, string cardName, string blurb)
         {
-            this.image.sprite = image;
+            if(image != null) this.image.sprite = image;
             cardNameText.text = cardName;
             blurbText.text = blurb;
         }

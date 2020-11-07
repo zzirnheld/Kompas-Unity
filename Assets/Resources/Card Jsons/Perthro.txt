@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Perthro",
-	"effText":"Can’t be cast normally. Search your deck’s top 10 cards for up to 3 spells.",
+	"effText":"Can’t be cast normally. Search your deck’s top 10 cards for 3 spells.",
 	"effects":[
 		{
 			"triggerCondition":"Play",
@@ -30,7 +30,7 @@
 						\"constant\":10
 					},
 					\"listRestriction\":{
-						\"cardRestrictions\":[\"Min Can Choose\",\"Max Can Choose\"],
+						\"cardRestrictions\":[\"Max Can Choose\"],
 						\"maxCanChoose\":3
 					}
 				}",

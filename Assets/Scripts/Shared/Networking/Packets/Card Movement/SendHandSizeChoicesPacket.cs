@@ -1,4 +1,5 @@
 ﻿using KompasCore.Networking;
+using KompasServer.Effects;
 using KompasServer.GameCore;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,12 +9,13 @@ namespace KompasCore.Networking
 {
     public class SendHandSizeChoicesPacket : Packet
     {
-        int[] cardIds;
+        public int[] cardIds;
 
         public SendHandSizeChoicesPacket() : base(HandSizeChoices) { }
 
         public SendHandSizeChoicesPacket(int[] cardIds) : this()
         {
+            Debug.Log($"Hand size choices {string.Join(", ", cardIds)}");
             this.cardIds = cardIds;
         }
 
@@ -27,7 +29,10 @@ namespace KompasServer.Networking
     {
         public void Execute(ServerGame serverGame, ServerPlayer player)
         {
-            throw new System.NotImplementedException();
+            if(serverGame.EffectsController.CurrStackEntry is ServerHandSizeStackable stackable)
+            {
+                stackable.TryAnswer(cardIds);
+            }
         }
     }
 }

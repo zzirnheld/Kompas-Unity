@@ -70,6 +70,8 @@ namespace KompasClient.UI
 
         public void SearchShowIndex(int index)
         {
+            if (!CurrSearchData.HasValue) HideSearch();
+
             var toShow = CurrSearchData.Value.toSearch[index];
             cardSearchImage.sprite = toShow.detailedSprite;
             alreadySelectedText.SetActive(CurrSearchData.Value.searched.Contains(toShow));

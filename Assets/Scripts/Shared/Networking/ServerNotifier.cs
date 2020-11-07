@@ -105,6 +105,11 @@ namespace KompasServer.Networking
 
         public void NotifyAddToDeck(GameCard added)
             => SendToBothInverting(new AddCardPacket(added, invert: Player.index != 0), added.KnownToEnemy);
+
+        public void GetHandSizeChoices(int[] cardIds, string listRestrictionJson)
+            => SendPacket(new GetHandSizeChoicesOrderPacket(cardIds, listRestrictionJson));
+
+        public void NotifyHandSizeToStack(bool friendly) => SendToBothInverting(new HandSizeToStackPacket(friendly));
         #endregion card location
 
         #region card stats

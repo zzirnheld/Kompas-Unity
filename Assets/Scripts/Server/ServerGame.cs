@@ -299,6 +299,9 @@ namespace KompasServer.GameCore
             Draw(TurnPlayerIndex);
             TurnServerPlayer.ServerNotifier.NotifySetTurn(this, TurnPlayerIndex);
 
+            //do hand size
+            EffectsController.PushToStack(new ServerHandSizeStackable(this, EffectsController, TurnServerPlayer), default);
+
             //trigger turn start effects
             var context = new ActivationContext(triggerer: TurnServerPlayer);
             EffectsController.TriggerForCondition(Trigger.TurnStart, context);
