@@ -68,6 +68,8 @@ namespace KompasClient.UI
             SearchShowIndex(searchIndex);
         }
 
+        public void SendList() => ClientGame.searchCtrl.SendTargets();
+
         public void SearchShowIndex(int index)
         {
             if (!CurrSearchData.HasValue) HideSearch();

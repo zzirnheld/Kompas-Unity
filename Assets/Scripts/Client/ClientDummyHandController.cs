@@ -42,6 +42,6 @@ public class ClientDummyHandController : ClientHandController
     public override void SpreadOutCards()
     {
         base.SpreadOutCards();
-        foreach(var c in Hand) c.transform.eulerAngles = new Vector3(0, 0, 180);
+        foreach(var c in hand) c.transform.eulerAngles = new Vector3(0, 0, 180);
     }
 }

@@ -8,8 +8,9 @@ namespace KompasServer.Effects
 
         public override bool AddTargetIfLegal(GameCard card)
         {
+            if (!AwaitingTarget) return false;
             //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
-            if (AwaitingTarget && cardRestriction.Evaluate(card))
+            else if (cardRestriction.Evaluate(card))
             {
                 AwaitingTarget = false;
                 Debug.Log("Adding " + card.CardName + " as target");

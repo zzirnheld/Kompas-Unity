@@ -7,19 +7,18 @@ namespace KompasCore.GameCore
 {
     public abstract class HandController : MonoBehaviour
     {
-        public const int MaxHandSize = 10;
-
         public Player Owner;
 
-        public readonly List<GameCard> Hand = new List<GameCard>();
+        public readonly List<GameCard> hand = new List<GameCard>();
 
-        public int HandSize => Hand.Count;
+        public int HandSize => hand.Count;
+        public int IndexOf(GameCard card) => hand.IndexOf(card);
 
         public virtual bool AddToHand(GameCard card, IStackable stackSrc = null)
         {
             if (card == null) return false;
             card.Remove(stackSrc);
-            Hand.Add(card);
+            hand.Add(card);
             card.ResetCard();
             card.Location = CardLocation.Hand;
             card.Controller = Owner;
@@ -29,16 +28,11 @@ namespace KompasCore.GameCore
             return true;
         }
 
-        public int IndexOf(GameCard card)
-        {
-            return Hand.IndexOf(card);
-        }
-
         public virtual bool RemoveFromHand(GameCard card)
         {
-            if (!Hand.Contains(card)) return false;
+            if (!hand.Contains(card)) return false;
 
-            Hand.Remove(card);
+            hand.Remove(card);
             SpreadOutCards();
             return true;
         }
@@ -46,10 +40,10 @@ namespace KompasCore.GameCore
         public virtual void SpreadOutCards()
         {
             //iterate through children, set the z coord
-            for (int i = 0; i < Hand.Count; i++)
+            for (int i = 0; i < hand.Count; i++)
             {
-                Hand[i].transform.localPosition = new Vector3((-0.8f * (float)Hand.Count) + ((float)i * 2f), 0, 0);
-                Hand[i].transform.eulerAngles = new Vector3(0, 180, 0);
+                hand[i].transform.localPosition = new Vector3((-0.8f * (float)hand.Count) + ((float)i * 2f), 0, 0);
+                hand[i].transform.eulerAngles = new Vector3(0, 180, 0);
             }
         }
     }

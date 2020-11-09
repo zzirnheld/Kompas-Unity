@@ -4,15 +4,16 @@
 	"effText":"When your Avatar gets +-X S, give me +-X C. (If they lose S, I lose C. If they gain S, I gain C.)\nDelay 2 turns.\nSet X to my C. Deck-summon an SX Pulsar.",
 	"effects":[
 		{
+			"blurb":"Coalesce +C",
 			"triggerCondition":"S Change",
 			"trigger":
 			"{
-				\"blurb\":\"Flare\",
+				\"blurb\":\"Coalesce +C\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"This Card in Play\"],
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Board\"]
+						\"cardRestrictions\":[\"Board\",\"Avatar\"]
 					}
 				}
 			}",
@@ -27,9 +28,11 @@
 			]
 		},
 		{
+			"blurb":"Coalesce Summon",
 			"triggerCondition":"Play",
 			"trigger":
 			"{
+				\"blurb\":\"Coalesce Summon\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}

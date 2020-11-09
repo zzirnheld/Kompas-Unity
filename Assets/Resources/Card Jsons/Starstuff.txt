@@ -37,7 +37,7 @@
 					\"subeffType\":\"ChooseOptionSubeffect\",
 					\"ChoiceBlurb\":\"Annihilate me and draw 1?\",
 					\"OptionBlurbs\":[\"Yes\",\"No\"],
-					\"OptionJumpIndices\":[7,100]
+					\"OptionJumpIndices\":[6,100]
 				}",
 				"{
 					\"subeffType\":\"TargetThisSubeffect\"

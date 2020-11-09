@@ -47,8 +47,10 @@ namespace KompasServer.Effects
         /// </summary>
         public virtual bool AddTargetIfLegal(GameCard card)
         {
+            //don't do anyting if we're not waiting for a target selection.
+            if (!AwaitingTarget) return false;
             //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
-            if (AwaitingTarget && cardRestriction.Evaluate(card))
+            else if (cardRestriction.Evaluate(card))
             {
                 AwaitingTarget = false;
                 ServerEffect.AddTarget(card);

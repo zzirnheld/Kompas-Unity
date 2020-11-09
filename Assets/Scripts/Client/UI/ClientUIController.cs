@@ -92,9 +92,11 @@ namespace KompasClient.UI
 
         public void Update()
         {
-            //when the user releaes a right click, show.
+            //when the user releaes a right click, show eff activation ui.
             if (Input.GetMouseButtonUp(1)) activatorUICtrl.Show();
+            //when the user releases a left click, deselect any applicable effect activation ui
             if (Input.GetMouseButtonUp(0)) activatorUICtrl.CancelIfApplicable();
+            //when the user presses escape, show the menu.
             if (Input.GetKeyDown(KeyCode.Escape)) escapeMenuUICtrl.Enable();
         }
 
@@ -205,11 +207,6 @@ namespace KompasClient.UI
 
         public void ActivateCardEff(GameCard card, int index)
             => clientGame.clientNotifier.RequestActivateEffect(card, index);
-
-        public void ToggleHoldingPriority()
-        {
-            throw new System.NotImplementedException();
-        }
 
         public void GetXForEffect() => setXView.SetActive(true);
 

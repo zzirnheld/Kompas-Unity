@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Goal-Net Touchdown",
-	"effText":"When a character moves adjacent to an enemy Avatar, apply their Augment(s) to that Avatar.",
+	"effText":"When a character moves adjacent to an enemy Avatar, apply their Augment(s) to an adjacent enemy Avatar.",
 	"effects":[
 		{
 			"triggerCondition":"Move",
@@ -26,9 +26,9 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"AutoTargetSubeffect\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Avatar\",\"Enemy\"]
+						\"cardRestrictions\":[\"Avatar\",\"Enemy\",\"Adjacent\"]
 					}
 				}",
 				"{

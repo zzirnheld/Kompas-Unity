@@ -8,6 +8,10 @@ namespace KompasCore.Networking
     [System.Serializable]
     public class Packet
     {
+        //TODO replace these all with just the type of the packet?
+        //the sending packet constructor would need to have the associated
+        //string of the type of the server packet.
+        //would that be better?
         #region commands
         public const string Invalid = "Invalid Command";
 
@@ -141,6 +145,10 @@ namespace KompasClient.Networking
 {
     public interface IClientOrderPacket
     {
+        /// <summary>
+        /// Executes the packet for the given client game.
+        /// </summary>
+        /// <param name="clientGame">The client game to execute the packet from.</param>
         void Execute(ClientGame clientGame);
     }
 }
@@ -149,6 +157,12 @@ namespace KompasServer.Networking
 {
     public interface IServerOrderPacket
     {
+        /// <summary>
+        /// Executes the packet for the given server game, 
+        /// and the given player who it came from
+        /// </summary>
+        /// <param name="serverGame">The server game to apply the packet to.</param>
+        /// <param name="player">The player who this packet came from.</param>
         void Execute(ServerGame serverGame, ServerPlayer player);
     }
 }
