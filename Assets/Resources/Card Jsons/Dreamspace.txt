@@ -13,10 +13,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Choose From List\",
+					\"subeffType\":\"ChooseFromListSubeffect\",
 					\"cardRestriction\":{
 						\"blurb\":\"copy of Dreamspace to decksummon\",
 						\"cardRestrictions\":[\"Friendly\",\"Same Name as Target\"]
@@ -24,7 +24,7 @@
 					\"maxCanChoose\":1
 				}",
 				"{
-					\"subeffType\":\"Space Target\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where for Dreamspace to decksummon a copy of itself\",
@@ -32,7 +32,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Play\"
+					\"subeffType\":\"PlaySubeffect\"
 				}"
 			]	
 		}

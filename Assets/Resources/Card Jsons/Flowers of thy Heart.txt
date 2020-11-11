@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Flowers of thy Heart",
-	"effText":"When a negated character dies, rehand them.",
+	"effText":"When a Negated character dies, rehand them.",
 	"effects":[
 		{
 			"triggerCondition":"Discard",
@@ -17,10 +17,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Triggering Card\"
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Rehand\"
+					\"subeffType\":\"RehandSubeffect\"
 				}"
 			]	
 		}

@@ -19,10 +19,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Change C\",
+					\"subeffType\":\"ChangeSpellCSubeffect\",
 					\"xModifier\":1
 				}"
 			]
@@ -35,7 +35,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"Board Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Altar(s) to sacrifice\",
@@ -44,33 +44,33 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Change X by Target Value\",
+					\"subeffType\":\"ChangeXByTargetValueSubeffect\",
 					\"whatToCount\":\"Cost\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Conditionally Jump\",
+					\"subeffType\":\"ConditionalJumpSubeffect\",
 					\"condition\":\"X >= Constant\",
 					\"constant\":31,
 					\"jumpIndex\":4
 				}",
 				"{
-					\"subeffType\":\"Loop\",
+					\"subeffType\":\"LoopSubeffect\",
 					\"canDecline\":true,
 					\"jumpTo\":0
 				}",
 				"{
-					\"subeffType\":\"Discard\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Delete Target\"
+					\"subeffType\":\"DeleteTargetSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Loop While Have Targets\",
+					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
 					\"jumpTo\":4
 				}",
 				"{
-					\"subeffType\":\"Choose From List\",
+					\"subeffType\":\"ChooseFromListSubeffect\",
 					\"maxCanChoose\":1,
 					\"cardRestriction\":
 					{
@@ -79,7 +79,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Space Target\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where to play the result Silent Altar Ritual\",
@@ -87,7 +87,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Play\"
+					\"subeffType\":\"PlaySubeffect\"
 				}"
 			]
 		}

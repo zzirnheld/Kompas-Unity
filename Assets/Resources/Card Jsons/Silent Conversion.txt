@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Board Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"to convert\",
@@ -22,13 +22,13 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Target Target's Space\"
+					\"subeffType\":\"TargetTargetsSpaceSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Discard\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Choose From List\",
+					\"subeffType\":\"ChooseFromListSubeffect\",
 					\"maxCanChoose\":1,
 					\"cardRestriction\":
 					{
@@ -38,7 +38,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Play\"
+					\"subeffType\":\"PlaySubeffect\"
 				}"
 			]
 		}

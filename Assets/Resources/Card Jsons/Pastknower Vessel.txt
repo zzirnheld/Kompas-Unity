@@ -13,13 +13,13 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Pay Target's Cost in Pips\"
+					\"subeffType\":\"PayPipsTargetCostSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Resummon\"
+					\"subeffType\":\"ResummonSubeffect\"
 				}"
 			]	
 		},
@@ -33,7 +33,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Draw\"
+					\"subeffType\":\"DrawSubeffect\"
 				}"
 			]	
 		}

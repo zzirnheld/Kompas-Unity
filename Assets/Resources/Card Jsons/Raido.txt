@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Board Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"card for Raido to move\",
@@ -21,14 +21,14 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Space Target\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":{
 						\"blurb\":\"where for Raido to move it starget\",
-						\"spaceRestrictions\":[\"Empty\"]
+						\"spaceRestrictions\":[\"Empty\",\"Can Move Target to This Space\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"Move\"
+					\"subeffType\":\"MoveSubeffect\"
 				}"
 			]	
 		}

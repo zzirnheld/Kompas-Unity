@@ -14,7 +14,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Hand Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"An oviparous mamal? ORRY THE OVIPAROUS MAMMAL?\",
@@ -23,13 +23,13 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Discard\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Change NESW\",
+					\"subeffType\":\"ChangeNESWSubeffect\",
 					\"wChange\":3
 				}"
 			]	

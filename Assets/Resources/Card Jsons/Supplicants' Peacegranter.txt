@@ -19,19 +19,19 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Choose Effect Option\",
+					\"subeffType\":\"ChooseOptionSubeffect\",
 					\"ChoiceBlurb\":\"Draw or search for a \\\"God of Mercy\\\"\",
 					\"OptionBlurbs\":[\"Draw\",\"God\"],
 					\"OptionJumpIndices\":[1,3]
 				}",
 				"{
-					\"subeffType\":\"Draw\"
+					\"subeffType\":\"DrawSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"End Effect Resolution\"
+					\"subeffType\":\"EndResolutionSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Choose From List\",
+					\"subeffType\":\"ChooseFromListSubeffect\",
 					\"maxCanChoose\":1,
 					\"cardRestriction\":
 					{
@@ -41,7 +41,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Rehand\"
+					\"subeffType\":\"RehandSubeffect\"
 				}"
 			]
 		}

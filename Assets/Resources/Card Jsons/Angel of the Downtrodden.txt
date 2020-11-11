@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"Set X by Board Count\",
+					\"subeffType\":\"SetXBoardRestrictionSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Board\",\"Adjacent\",\"Subtypes Include\"],
@@ -22,7 +22,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Choose From List\",
+					\"subeffType\":\"ChooseFromListSubeffect\",
 					\"maxCanChoose\":1,
 					\"cardRestriction\":
 					{
@@ -33,7 +33,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Space Target\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where to play Supplicants' Plea\",
@@ -41,7 +41,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Play\"
+					\"subeffType\":\"PlaySubeffect\"
 				}"
 			]
 		}

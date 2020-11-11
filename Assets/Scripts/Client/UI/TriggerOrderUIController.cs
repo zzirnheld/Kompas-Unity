@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace KompasClient.UI
 {
@@ -11,6 +12,7 @@ namespace KompasClient.UI
 
         public ClientUIController clientUICtrl;
         public Transform triggerObjectsParent;
+        public Toggle autoOrderToggle;
 
         private readonly List<TriggerUIController> triggerUIs = new List<TriggerUIController>();
 
@@ -20,7 +22,7 @@ namespace KompasClient.UI
         {
             gameObject.SetActive(true);
 
-            //eliminate any old triggers no longer needed.
+            //eliminate any old triggers no longer needed. can't do .Except because types are wrong.
             var noLongerNeeded = triggerUIs.Where(t => !triggers.Contains(t.Trigger)).ToArray();
             foreach (var t in noLongerNeeded) Destroy(t);
 
@@ -35,6 +37,8 @@ namespace KompasClient.UI
                 ctrl.SetInfo(this, t.Source.simpleSprite, t);
                 triggerUIs.Add(ctrl);
             }
+
+            if (autoOrderToggle.isOn) AutoOrder();
         }
 
         public void CancelOrder()

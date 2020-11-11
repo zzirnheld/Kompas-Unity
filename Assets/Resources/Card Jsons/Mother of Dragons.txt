@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"Hand Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Dragon to hand-reshuffle\",
@@ -22,10 +22,10 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Reshuffle\"
+					\"subeffType\":\"ReshuffleSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Draw X\",
+					\"subeffType\":\"DrawXSubeffect\",
 					\"xModifier\":2
 				}"
 			]

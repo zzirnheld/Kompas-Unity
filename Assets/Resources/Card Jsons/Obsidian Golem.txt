@@ -4,6 +4,7 @@
 	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, I give a Summoned character -5E.",
 	"effects":[
 		{
+			"blurb":"Shards of Glass",
 			"triggerCondition":"Activate",
 			"trigger":
 			"{
@@ -13,15 +14,15 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Board Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"Summoned character for Obsidian Golem to give -4E\",
+						\"blurb\":\"Summoned character for Obsidian Golem to give -5E\",
 						\"cardRestrictions\":[\"Is Character\",\"Summoned\",\"Board\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"Change NESW\",
+					\"subeffType\":\"ChangeNESWSubeffect\",
 					\"eChange\":-5
 				}"
 			]

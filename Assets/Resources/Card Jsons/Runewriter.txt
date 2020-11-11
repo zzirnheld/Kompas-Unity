@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"Choose From List\",
+					\"subeffType\":\"ChooseFromListSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Rune for Runewriter to reshuffle\",
@@ -23,14 +23,14 @@
 					\"maxCanChoose\":1
 				}",
 				"{
-					\"subeffType\":\"Reshuffle\"
+					\"subeffType\":\"ReshuffleSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Jump on Effect Impossible\",
+					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
 					\"jumpTo\":7
 				}",
 				"{
-					\"subeffType\":\"Choose From List Saving Rest\",
+					\"subeffType\":\"ChooseFromListSaveRestSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Runar for Runewriter to search (to hand)\",
@@ -45,13 +45,13 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Clear Jump on Effect Impossible\"
+					\"subeffType\":\"ClearOnImpossibleSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Bottomdeck Rest\"
+					\"subeffType\":\"BottomdeckRestSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Rehand\"
+					\"subeffType\":\"RehandSubeffect\"
 				}"
 			]
 		}

@@ -14,10 +14,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Annihilate\"
+					\"subeffType\":\"AnnihilateSubeffect\"
 				}"
 			]
 		},
@@ -33,10 +33,10 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Space Target\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where to revive Unlost\",
@@ -44,20 +44,20 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Pay Target's Cost in Pips\",
+					\"subeffType\":\"PayPipsTargetCostSubeffect\",
 					\"xDivisor\":2,
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Play\"
+					\"subeffType\":\"PlaySubeffect\"
 				}"
 			]
 		}
 	],
 	"n":0,
 	"e":2,
-	"s":6,
-	"w":5,
+	"s":4,
+	"w":3,
 	"subtypes":["Ethereal","Revenant"],
 	"subtypeText":"Ethereal Revenant"
 }

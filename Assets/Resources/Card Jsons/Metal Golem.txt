@@ -4,6 +4,7 @@
 	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, set two characters' N to 0.",
 	"effects":[
 		{
+			"blurb":"Go to Bonky Jail",
 			"triggerCondition":"Activate",
 			"trigger":
 			"{
@@ -13,7 +14,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Board Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"first character for Metal Golem to set N to 0\",
@@ -21,11 +22,11 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Set NESW\",
+					\"subeffType\":\"SetNESWSubeffect\",
 					\"nVal\":0
 				}",
 				"{
-					\"subeffType\":\"Board Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"second character for Metal Golem to set N to 0\",
@@ -33,7 +34,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Set NESW\",
+					\"subeffType\":\"SetNESWSubeffect\",
 					\"nVal\":0
 				}"
 
@@ -58,7 +59,7 @@
 	"n":2,
 	"e":6,
 	"s":4,
-	"w":4,
+	"w":5,
 	"subtypes":["Golem"],
 	"subtypeText":"Golem"
 }

@@ -8,6 +8,10 @@ namespace KompasCore.Networking
     [System.Serializable]
     public class Packet
     {
+        //TODO replace these all with just the type of the packet?
+        //the sending packet constructor would need to have the associated
+        //string of the type of the server packet.
+        //would that be better?
         #region commands
         public const string Invalid = "Invalid Command";
 
@@ -39,16 +43,14 @@ namespace KompasCore.Networking
         public const string ChooseTriggerOrder = "Choose Trigger Order";
             //from server to client
             //targeting
-        public const string GetBoardTarget = "Get Board Target";
-        public const string GetHandTarget = "Get Hand Target";
-        public const string GetDeckTarget = "Get Deck Target";
-        public const string GetDiscardTarget = "Get Discard Target";
+        public const string GetCardTarget = "Get Card Target";
         public const string GetListChoices = "Get List Choices";
         public const string GetSpaceTarget = "Get Space Target";
             //other effect
         public const string GetEffectOption = "Get Effect Option";
         public const string EffectResolving = "Effect Resolving";
         public const string EffectActivated = "Effect Activated";
+        public const string RemoveStackEntry = "Remove Stack Entry";
         public const string SetEffectsX = "Set Effects X";
         public const string PlayerChooseX = "Player Choose X";
         public const string TargetAccepted = "Target Accepted";
@@ -66,6 +68,10 @@ namespace KompasCore.Networking
         public const string SetLeyload = "Set Leyload";
         public const string SetTurnPlayer = "Set Turn Player";
         public const string AttackStarted = "Attack Started";
+        public const string ChooseHandSize = "Choose Hand Size";
+        public const string HandSizeToStack = "Hand Size to Stack";
+        //gamestate (from client to server)
+        public const string HandSizeChoices = "Hand Size Choices";
 
         //card addition/deletion (from server to client)
         public const string DeleteCard = "Delete Card";
@@ -139,6 +145,10 @@ namespace KompasClient.Networking
 {
     public interface IClientOrderPacket
     {
+        /// <summary>
+        /// Executes the packet for the given client game.
+        /// </summary>
+        /// <param name="clientGame">The client game to execute the packet from.</param>
         void Execute(ClientGame clientGame);
     }
 }
@@ -147,6 +157,12 @@ namespace KompasServer.Networking
 {
     public interface IServerOrderPacket
     {
+        /// <summary>
+        /// Executes the packet for the given server game, 
+        /// and the given player who it came from
+        /// </summary>
+        /// <param name="serverGame">The server game to apply the packet to.</param>
+        /// <param name="player">The player who this packet came from.</param>
         void Execute(ServerGame serverGame, ServerPlayer player);
     }
 }

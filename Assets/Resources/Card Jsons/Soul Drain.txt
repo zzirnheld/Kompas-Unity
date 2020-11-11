@@ -7,7 +7,6 @@
 			"triggerCondition":"Annihilate",
 			"trigger":
 			"{
-				\"blurb\":\"Soul Drain\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
 					\"cardRestriction\":{
@@ -18,22 +17,22 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Triggering Card\"
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Set X by Target Value\",
+					\"subeffType\":\"SetXByTargetValueSubeffect\",
 					\"whatToCount\":\"S\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Mill\",
+					\"subeffType\":\"MillSubeffect\",
 					\"xMultiplier\":1
 				}"
 			]	
 		}
 	],
 	"fast":true,
-	"c":4,
+	"c":3,
 	"spellType":"Enchant",
 	"subtypes":["Enchant"],
 	"subtypeText":"Enchant"

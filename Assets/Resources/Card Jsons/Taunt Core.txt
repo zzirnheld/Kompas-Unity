@@ -14,10 +14,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Augmented Card\"
+					\"subeffType\":\"TargetAugmentedCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Temporary Activate\",
+					\"subeffType\":\"TemporaryActivationSubeffect\",
 					\"endCondition\":\"Augment Detached\",
 					\"triggerRestriction\":{
 						\"triggerRestrictions\":[\"This Card Triggered\"]
@@ -40,10 +40,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Triggering Card\"
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Space Target\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where for Taunt Core to move its target\",
@@ -51,7 +51,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Move\"
+					\"subeffType\":\"MoveSubeffect\"
 				}"
 			]	
 		},
@@ -66,10 +66,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Rehand\"
+					\"subeffType\":\"RehandSubeffect\"
 				}"
 			]
 		}

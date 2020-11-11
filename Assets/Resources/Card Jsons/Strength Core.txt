@@ -14,17 +14,17 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Augmented Card\"
+					\"subeffType\":\"TargetAugmentedCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Temporary Activate\",
+					\"subeffType\":\"TemporaryActivationSubeffect\",
 					\"endCondition\":\"Augment Detached\",
 					\"triggerRestriction\":{
 						\"triggerRestrictions\":[\"This Card Triggered\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"Temporary NESW Buff\",
+					\"subeffType\":\"TemporaryNESWBuffSubeffect\",
 					\"wBuff\":4,
 					\"endCondition\":\"Augment Detached\",
 					\"triggerRestriction\":{
@@ -44,10 +44,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Rehand\"
+					\"subeffType\":\"RehandSubeffect\"
 				}"
 			]
 		}

@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Perthro",
-	"effText":"Can’t be cast normally. Search your deck’s top 10 cards for up to 3 spells.",
+	"effText":"Can’t be cast normally. Search your deck’s top 10 cards for 3 spells.",
 	"effects":[
 		{
 			"triggerCondition":"Play",
@@ -13,11 +13,11 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Jump on Effect Impossible\",
+					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
 					\"jumpTo\":5
 				}",
 				"{
-					\"subeffType\":\"Choose From List Saving Rest\",
+					\"subeffType\":\"ChooseFromListSaveRestSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"spell for Perthro to search (to hand)\",
@@ -30,23 +30,23 @@
 						\"constant\":10
 					},
 					\"listRestriction\":{
-						\"cardRestrictions\":[\"Min Can Choose\",\"Max Can Choose\"],
+						\"cardRestrictions\":[\"Max Can Choose\"],
 						\"maxCanChoose\":3
 					}
 				}",
 				"{
-					\"subeffType\":\"Clear Jump on Effect Impossible\"
+					\"subeffType\":\"ClearOnImpossibleSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Rehand\"
+					\"subeffType\":\"RehandSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Loop While Have Targets\",
+					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
 					\"delete\":true,
 					\"jumpTo\":3
 				}",
 				"{
-					\"subeffType\":\"Bottomdeck Rest\"
+					\"subeffType\":\"BottomdeckRestSubeffect\"
 				}"
 			]	
 		}

@@ -13,19 +13,19 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Avatar\"
+					\"subeffType\":\"TargetAvatarSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"X Change NESW\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"sMod\":-1
 				}",
 				"{
-					\"subeffType\":\"Set X by Target Value\",
+					\"subeffType\":\"SetXByTargetValueSubeffect\",
 					\"whatToCount\":\"S\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Conditionally Jump\",
+					\"subeffType\":\"ConditionalJumpSubeffect\",
 					\"condition\":\"X >= Constant\",
 					\"constant\":1,
 					\"jumpIndex\":1

@@ -8,6 +8,7 @@ namespace KompasCore.Effects
     public class MovementRestriction
     {
         #region Basic Movement Restrictions
+        private const string DistinctSpace = "Distinct Space";
         //Might seem a bit dumb, but it means that some spells will be able to move themselves
         private const string IsCharacter = "Is Character";
         //Does the character have enough N?
@@ -31,25 +32,32 @@ namespace KompasCore.Effects
         //Default restrictions are that only characters with enough n can move.
         public string[] normalMovementRestrictions = new string[] 
         {
-            IsCharacter, CanMoveEnoughSpaces, DestinationCanMoveHere, StandardSpellMoveRestiction, NothingHappening, IsNotAvatar, IsFriendlyTurn
+            DistinctSpace, IsCharacter, IsNotAvatar, 
+            CanMoveEnoughSpaces, DestinationCanMoveHere, 
+            StandardSpellMoveRestiction, 
+            NothingHappening, IsFriendlyTurn
         };
         public string[] effectMovementRestrictions = new string[] { StandardSpellMoveRestiction };
 
         public GameCard Card { get; private set; }
 
-        public void SetInfo(GameCard card)
-        {
-            Card = card;
-        }
+        /// <summary>
+        /// Sets the restriction's info.
+        /// This is a distinct function in case the required parameters changes,
+        /// to catch any other required intitialization at compile time.
+        /// </summary>
+        /// <param name="card"></param>
+        public void SetInfo(GameCard card) => Card = card;
 
         private bool RestrictionValid(string restriction, int x, int y, bool isSwapTarget, bool byEffect)
         {
             switch (restriction)
             {
                 //normal restrictions
+                case DistinctSpace: return Card.Position != (x, y);
                 case IsCharacter: return Card.CardType == 'C';
                 case CanMoveEnoughSpaces: return Card.SpacesCanMove >= Card.DistanceTo(x, y);
-                case StandardSpellMoveRestiction: return Card.CardType != 'S' || Card.Game.ValidSpellSpace(x, y);
+                case StandardSpellMoveRestiction: return Card.Game.ValidSpellSpaceFor(Card, x, y);
                 case NothingHappening: return Card.Game.NothingHappening;
                 case IsNotAvatar: return !Card.IsAvatar;
                 case IsFriendlyTurn: return Card.Game.TurnPlayer == Card.Controller;
@@ -67,12 +75,12 @@ namespace KompasCore.Effects
             }
         }
 
-        private bool RestrictionValidWithDebug(string restriction, int x, int y, bool isSwapTarget, bool byEffect)
+        /*private bool RestrictionValidWithDebug(string restriction, int x, int y, bool isSwapTarget, bool byEffect)
         {
             bool valid = RestrictionValid(restriction, x, y, isSwapTarget, byEffect);
             if (!valid) Debug.LogWarning($"{Card.CardName} cannot move to {x}, {y} because it flouts the movement restriction {restriction}");
             return valid;
-        }
+        }*/
 
         private bool ValidIndices(int x, int y) => 0 <= x && x < 7 && 0 <= y && y < 7;
 

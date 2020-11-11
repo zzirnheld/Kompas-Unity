@@ -32,7 +32,7 @@ namespace KompasCore.Cards
             GoToMouse();
         }
 
-        public void OnMouseExit()
+        public virtual void OnMouseExit()
         {
             if (EventSystem.current.IsPointerOverGameObject()) return;
             //don't allow dragging cards if we're awaiting a target
@@ -62,7 +62,7 @@ namespace KompasCore.Cards
             dragging = false;
         }
 
-        public void OnMouseOver()
+        public virtual void OnMouseOver()
         {
             //if the mouse is currently over a ui element, don't swap what you're seeing
             if (EventSystem.current.IsPointerOverGameObject()) return;

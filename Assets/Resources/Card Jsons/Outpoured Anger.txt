@@ -17,13 +17,13 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Triggering Card\"
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Space Target\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"to move Outpoured Anger to\",
@@ -32,7 +32,7 @@
 					\"targetIndex\":-2
 				}",
 				"{
-					\"subeffType\":\"Move\"
+					\"subeffType\":\"MoveSubeffect\"
 				}"
 			]	
 		}

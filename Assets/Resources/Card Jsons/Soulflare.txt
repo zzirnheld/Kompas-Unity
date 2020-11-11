@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Hand Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Soulflare to annihilate\",
@@ -22,19 +22,19 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Annihilate\"
+					\"subeffType\":\"AnnihilateSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Count X Loop\",
+					\"subeffType\":\"CountXLoopSubeffect\",
 					\"canDecline\":true,
 					\"jumpTo\":0
 				}",
 				"{
-					\"subeffType\":\"Draw X\",
+					\"subeffType\":\"DrawXSubeffect\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Add Pips\",
+					\"subeffType\":\"AddPipsSubeffect\",
 					\"xMultiplier\":1
 				}"
 			]	

@@ -13,16 +13,16 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"Set X by Math\",
+					\"subeffType\":\"SetXSubeffect\",
 					\"xModifier\":5,
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Jump on Effect Impossible\",
+					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
 					\"jumpTo\":8
 				}",
 				"{
-					\"subeffType\":\"Choose From List\",
+					\"subeffType\":\"ChooseFromListSubeffect\",
 					\"maxCanChoose\":1,
 					\"cardRestriction\":
 					{
@@ -33,7 +33,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Space Target\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where for The General to recruit their Warrior\",
@@ -41,19 +41,19 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Pay Target's Cost in Pips\"
+					\"subeffType\":\"PayPipsTargetCostSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Play\"
+					\"subeffType\":\"PlaySubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Count X Loop\",
+					\"subeffType\":\"CountXLoopSubeffect\",
 					\"canDecline\":true,
 					\"jumpTo\":2,
 					\"increment\":false
 				}",
 				"{
-					\"subeffType\":\"Add Rest\",
+					\"subeffType\":\"AddRestSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<X\",\"Not Already Target\"]
@@ -61,7 +61,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Bottomdeck Rest\"
+					\"subeffType\":\"BottomdeckRestSubeffect\"
 				}"
 			]
 		}

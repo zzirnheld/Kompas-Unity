@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Ansuz",
-	"effText":"Can’t be cast normally. Set a character’s N to 0 and ESW to 10.",
+	"effText":"Can’t be cast normally. Set a character’s N to 1 and ESW to 10.",
 	"effects":[
 		{
 			"triggerCondition":"Play",
@@ -13,14 +13,14 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Board Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Character\",\"Board\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"Set NESW\",
+					\"subeffType\":\"SetNESWSubeffect\",
 					\"nVal\":1,
 					\"eVal\":10,
 					\"sVal\":10,

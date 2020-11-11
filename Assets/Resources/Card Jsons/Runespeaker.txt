@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"Hand Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Rune for Runespeaker to cast\",
@@ -22,7 +22,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Space Target\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where for Runespeaker to cast its target Rune\",
@@ -30,18 +30,18 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Pay Target's Cost in Pips\",
+					\"subeffType\":\"PayPipsTargetCostSubeffect\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Play\"
+					\"subeffType\":\"PlaySubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Jump on Effect Impossible\",
+					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
 					\"jumpTo\":8
 				}",
 				"{
-					\"subeffType\":\"Choose From List Saving Rest\",
+					\"subeffType\":\"ChooseFromListSaveRestSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Rune for Runespeaker to search (to hand)\",
@@ -56,13 +56,13 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Clear Jump on Effect Impossible\"
+					\"subeffType\":\"ClearOnImpossibleSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Rehand\"
+					\"subeffType\":\"RehandSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Bottomdeck Rest\"
+					\"subeffType\":\"BottomdeckRestSubeffect\"
 				}"
 			]
 		}

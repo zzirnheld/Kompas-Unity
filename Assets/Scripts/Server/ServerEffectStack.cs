@@ -10,6 +10,7 @@ namespace KompasServer.Effects
             = new List<(IServerStackable stackable, ActivationContext)>();
 
         public bool Empty => stack.Count == 0;
+        public int Count => stack.Count;
 
         public void Push((IServerStackable, ActivationContext) entry)
         {

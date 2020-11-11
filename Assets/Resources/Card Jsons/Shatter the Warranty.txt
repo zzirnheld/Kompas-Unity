@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Shatter the Warranty",
-	"effText":"Dispel a friendly CX Enchant. Draw X.",
+	"effText":"DispelSubeffect a friendly CX Enchant. Draw X.",
 	"effects":[
 		{
 			"triggerCondition":"Play",
@@ -14,7 +14,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Board Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"No! Not the original 1870s porcelain doll torso collection!\",
@@ -22,14 +22,14 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Set X by Target Cost\",
+					\"subeffType\":\"SetXByTargetCostSubeffect\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Dispel\"
+					\"subeffType\":\"DispelSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Draw X\",
+					\"subeffType\":\"DrawXSubeffect\",
 					\"xMultiplier\":1
 				}"
 			]	

@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Stardusting Pulsar",
-	"effText":"When your Avatar gains S, give adjacent characters +1 NESW.\nWhen your Avatar loses S, give adjacent characters -1 NESW.",
+	"effText":"When your Avatar gains S, give a Summoned character +1 NESW.\nWhen your Avatar loses S, give a Summoned character -1 NESW.",
 	"effects":[
 		{
 			"triggerCondition":"S Change",
@@ -21,7 +21,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Board Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Summoned character for Stardusting Pulsar to buff\",
@@ -29,7 +29,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"X Change NESW\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"nMod\":1,
 					\"eMod\":1,
 					\"sMod\":1,
@@ -55,7 +55,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Board Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Summoned character for Stardusting Pulsar to debuff\",
@@ -63,7 +63,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"X Change NESW\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"nMod\":-1,
 					\"eMod\":-1,
 					\"sMod\":-1,

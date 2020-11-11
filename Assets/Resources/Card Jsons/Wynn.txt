@@ -13,17 +13,17 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Board Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"spell for Wynn to dispel\",
+						\"blurb\":\"spell for Wynn to Dispel\",
 						\"cardRestrictions\":[\"Is Spell\",\"Board\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"Dispel\"
+					\"subeffType\":\"DispelSubeffect\"
 				}"
-			]	
+			]
 		}
 	],
 	"PlayRestriction":{

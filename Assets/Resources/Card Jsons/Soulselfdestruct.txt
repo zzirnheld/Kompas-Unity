@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Board Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":{
 						\"blurb\":\"Ethereal for Soulselfdestruct to kill\",
 						\"cardRestrictions\":[\"Friendly\",\"Board\",\"Subtypes Include\"],
@@ -21,10 +21,10 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Discard\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Deck Target\",
+					\"subeffType\":\"DeckTargetSubeffect\",
 					\"cardRestriction\":{
 						\"blurb\":\"card for Salvage Soul to discard\",
 						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Subtypes Include\"],
@@ -32,10 +32,10 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Discard\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Loop X Times\",
+					\"subeffType\":\"XTimesSubeffect\",
 					\"jumpTo\":3
 				}"
 			]	

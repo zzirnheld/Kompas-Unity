@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Discard Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Cyclical Sacrifice to reshuffle\",
@@ -22,22 +22,22 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Reshuffle\"
+					\"subeffType\":\"ReshuffleSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Count X Loop\",
+					\"subeffType\":\"CountXLoopSubeffect\",
 					\"canDecline\":true,
 					\"jumpTo\":0
 				}",
 				"{
-					\"subeffType\":\"Add Pips\",
+					\"subeffType\":\"AddPipsSubeffect\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Annihilate\"
+					\"subeffType\":\"AnnihilateSubeffect\"
 				}"
 			]
 		}

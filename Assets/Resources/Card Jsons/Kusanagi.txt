@@ -13,10 +13,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Defender\"
+					\"subeffType\":\"TargetDefenderSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Conditionally End Effect Resolution\",
+					\"subeffType\":\"ConditionalEndSubeffect\",
 					\"condition\":\"Target Violates Restriction\",
 					\"cardRestriction\":
 					{
@@ -24,7 +24,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"X Change NESW\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"wMod\":-5
 				}"
 			]

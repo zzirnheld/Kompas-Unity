@@ -32,8 +32,11 @@ namespace KompasClient.Networking
         {
             var attacker = clientGame.GetCardWithID(attackerId);
             var defender = clientGame.GetCardWithID(defenderId);
-            if(attacker != null && defender != null)
+            if (attacker != null && defender != null)
+            {
                 clientGame.clientUICtrl.SetCurrState("Attack Started", $"{attacker.CardName} attacks {defender.CardName}");
+                clientGame.clientUICtrl.clientStackUICtrl.Add(attacker.simpleSprite, attacker.CardName, $"attacking {defender.CardName}");
+            }
 
             //if (card != null) card.AttacksThisTurn++;
             //don't do this because AttacksThisTurn should be updated by server and told to client

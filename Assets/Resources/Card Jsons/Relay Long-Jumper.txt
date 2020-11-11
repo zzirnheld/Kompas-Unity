@@ -22,25 +22,25 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Target Triggering Card\"
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Target Augments\"
+					\"subeffType\":\"TargetAugmentsSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Conditionally End Effect Resolution\",
+					\"subeffType\":\"ConditionalEndSubeffect\",
 					\"condition\":\"Number Targets <= Constant\",
 					\"constant\":2
 				}",
 				"{
-					\"subeffType\":\"Attach\",
+					\"subeffType\":\"AttachSubeffect\",
 					\"attachmentTarget\":0
 				}",
 				"{
-					\"subeffType\":\"Loop While Have Targets\",
+					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
 					\"delete\":true,
 					\"remainingTargets\":2,
 					\"jumpTo\":4

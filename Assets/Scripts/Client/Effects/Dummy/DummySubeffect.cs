@@ -21,34 +21,7 @@ namespace KompasClient.Effects
             Debug.Log($"Creating subeffect from json {json}");
             DummySubeffect toReturn;
 
-            switch (subeff.subeffType)
-            {
-                case BoardTarget:
-                    toReturn = JsonUtility.FromJson<DummyBoardTargetSubeffect>(json);
-                    break;
-                case DeckTarget:
-                case DiscardTarget:
-                case HandTarget:
-                    toReturn = JsonUtility.FromJson<DummyCardTargetSubeffect>(json);
-                    break;
-                case ChooseFromList:
-                case ChooseFromListSaveRest:
-                    toReturn = JsonUtility.FromJson<DummyListTargetSubeffect>(json);
-                    break;
-                case SpaceTarget:
-                    toReturn = JsonUtility.FromJson<DummySpaceTargetSubeffect>(json);
-                    break;
-                case ChooseEffectOption:
-                    toReturn = JsonUtility.FromJson<DummyChooseOptionSubeffect>(json);
-                    break;
-                case PlayerChooseX:
-                    toReturn = JsonUtility.FromJson<DummyPlayerChooseXSubeffect>(json);
-                    break;
-                default:
-                    Debug.Log("Creating client subeffect of a type other than one that has a specific dummy.");
-                    toReturn = new DummySubeffect();
-                    break;
-            }
+            toReturn = new DummySubeffect();
 
             if (toReturn != null)
             {

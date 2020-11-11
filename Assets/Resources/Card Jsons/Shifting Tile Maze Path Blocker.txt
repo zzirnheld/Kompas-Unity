@@ -16,7 +16,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Discard Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Crazy Idea for Maze Blocker to Ificate\",
@@ -25,12 +25,12 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Pay Pips\",
+					\"subeffType\":\"PayPipsSubeffect\",
 					\"xMultiplier\":0,
 					\"xModifier\":1
 				}",
 				"{
-					\"subeffType\":\"Space Target\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where Maze Blocker to play targeted Crazy Idea\",
@@ -38,7 +38,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Play\"
+					\"subeffType\":\"PlaySubeffect\"
 				}"
 			]
 		},
@@ -57,14 +57,14 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Triggering Card\"
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Jump on Effect Impossible\",
+					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
 					\"jumpTo\":5
 				}",
 				"{
-					\"subeffType\":\"Space Target\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where for Shifting Tile Maze Path Blocker to move its target\",
@@ -72,19 +72,19 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Move\"
+					\"subeffType\":\"MoveSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"End Effect Resolution\"
+					\"subeffType\":\"EndResolutionSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Clear Jump on Effect Impossible\"
+					\"subeffType\":\"ClearOnImpossibleSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Annihilate\"
+					\"subeffType\":\"AnnihilateSubeffect\"
 				}"
 			]	
 		}

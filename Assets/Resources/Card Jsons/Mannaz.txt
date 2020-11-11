@@ -13,11 +13,11 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Jump on Effect Impossible\",
+					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
 					\"jumpTo\":4
 				}",
 				"{
-					\"subeffType\":\"Choose From List Saving Rest\",
+					\"subeffType\":\"ChooseFromListSaveRestSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"spell for Perthro to search (to hand)\",
@@ -31,13 +31,13 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Clear Jump on Effect Impossible\"
+					\"subeffType\":\"ClearOnImpossibleSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Rehand\"
+					\"subeffType\":\"RehandSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Bottomdeck Rest\"
+					\"subeffType\":\"BottomdeckRestSubeffect\"
 				}"
 			]	
 		}

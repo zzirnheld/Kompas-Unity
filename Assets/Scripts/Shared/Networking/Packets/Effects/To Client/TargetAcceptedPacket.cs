@@ -19,11 +19,9 @@ namespace KompasClient.Networking
         public void Execute(ClientGame clientGame)
         {
             clientGame.targetMode = Game.TargetMode.Free;
-            clientGame.CurrCardRestriction = null;
-            clientGame.CurrSpaceRestriction = null;
+            clientGame.ClearPotentialTargets();
+            clientGame.CurrentPotentialSpaces = null;
             clientGame.clientUICtrl.SetCurrState("Target Accepted");
-            clientGame.ShowNoTargets();
-            clientGame.clientUICtrl.ResetSearch();
         }
     }
 }

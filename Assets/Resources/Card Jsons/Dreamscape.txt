@@ -18,14 +18,14 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Triggering Card\"
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Reset Stats\",
+					\"subeffType\":\"ResetStatsSubeffect\",
 					\"resetE\":true
 				}",
 				"{
-					\"subeffType\":\"Change NESW\",
+					\"subeffType\":\"ChangeNESWSubeffect\",
 					\"nChange\":1
 				}"
 			]	

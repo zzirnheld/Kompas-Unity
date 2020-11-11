@@ -145,19 +145,5 @@ namespace KompasCore.UI
             if (card != null) ShowInfoFor(card);
             else ShowInfoFor(SelectedCard);
         }
-
-        #region updating pips
-        public void UpdateFriendlyPips(int num)
-        {
-            friendlyPipsText.text = $"{num} Friendly Pips";
-        }
-
-        public void UpdateEnemyPips(int num)
-        {
-            enemyPipsText.text = $"{num} Enemy Pips";
-        }
-        #endregion
-
-
     }
 }

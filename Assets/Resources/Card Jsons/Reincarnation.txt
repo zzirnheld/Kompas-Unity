@@ -16,7 +16,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Board Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Summoned character for Reincarnation to resummon\",
@@ -24,7 +24,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Resummon\"
+					\"subeffType\":\"ResummonSubeffect\"
 				}"
 			]	
 		}

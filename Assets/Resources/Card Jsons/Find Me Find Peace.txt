@@ -14,7 +14,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target All\",
+					\"subeffType\":\"TargetAllSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<C\",\"Subtypes Include\"],
@@ -23,7 +23,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Add Rest\",
+					\"subeffType\":\"AddRestSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<C\",\"Not Already Target\"],
@@ -31,15 +31,15 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Rehand\"
+					\"subeffType\":\"RehandSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Loop While Have Targets\",
+					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
 					\"delete\":true,
 					\"jumpTo\":2
 				}",
 				"{
-					\"subeffType\":\"Bottomdeck Rest\"
+					\"subeffType\":\"BottomdeckRestSubeffect\"
 				}"
 			]
 		}

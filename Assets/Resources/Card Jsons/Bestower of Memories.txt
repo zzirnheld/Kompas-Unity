@@ -15,7 +15,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Board Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Summoned character for Bestower of Memories to resummon\",
@@ -23,7 +23,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Resummon\"
+					\"subeffType\":\"ResummonSubeffect\"
 				}"
 			]	
 		},
@@ -41,11 +41,11 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Add Pips\",
+					\"subeffType\":\"AddPipsSubeffect\",
 					\"xModifier\":1
 				}",
 				"{
-					\"subeffType\":\"Change Leyload\",
+					\"subeffType\":\"ChangeLeyloadSubeffect\",
 					\"xModifier\":1
 				}"
 			]	

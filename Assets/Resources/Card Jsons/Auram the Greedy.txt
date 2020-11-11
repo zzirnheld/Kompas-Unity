@@ -14,7 +14,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Board Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"adjacent character for Auram to kill\",
@@ -22,7 +22,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Discard\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}"
 			]	
 		},
@@ -38,21 +38,21 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Set X by Player Choice\",
+					\"subeffType\":\"PlayerChooseXSubeffect\",
 					\"XRest\":{
 						\"cardRestrictions\":[\"<=ThisE\"]
 					},
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"X Change NESW\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"eMult\":-1
 				}",
 				"{
-					\"subeffType\":\"Draw X\",
+					\"subeffType\":\"DrawXSubeffect\",
 					\"xMultiplier\":1
 				}"
 			]	

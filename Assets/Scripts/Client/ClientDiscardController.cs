@@ -8,7 +8,7 @@ namespace KompasClient.GameCore
 
         public void OnMouseDown()
         {
-            ClientGame.clientUICtrl.StartSearch(Discard, targetingSearch: false);
+            ClientGame.searchCtrl.StartSearch(Discard.ToArray(), null, targetingSearch: false);
         }
     }
 }

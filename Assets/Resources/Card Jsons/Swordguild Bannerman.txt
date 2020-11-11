@@ -12,7 +12,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Set X by Board Count\",
+					\"subeffType\":\"SetXBoardRestrictionSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
@@ -21,7 +21,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Discard\",
+					\"subeffType\":\"DiscardSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"dead Warrior for Bannerman to reshuffle\",
@@ -30,10 +30,10 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Reshuffle\"
+					\"subeffType\":\"ReshuffleSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Loop X Times\",
+					\"subeffType\":\"XTimesSubeffect\",
 					\"jumpTo\":1
 				}"
 			]	

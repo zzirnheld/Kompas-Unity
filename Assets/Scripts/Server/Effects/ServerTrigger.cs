@@ -63,7 +63,7 @@ namespace KompasServer.Effects
             toReturn.serverEffect = parent;
             //it also better have a trigger restriction, even if it's a generic one
             if (toReturn.triggerRestriction == null) 
-                    throw new System.ArgumentNullException($"null trigger restriction for effect of {toReturn.serverEffect.Source.CardName}");
+                    throw new System.ArgumentNullException("triggerRestriction", $"null trigger restriction for effect of {toReturn.serverEffect.Source.CardName}");
             var dummy = new TriggerDummySubeffect(parent);
             toReturn.triggerRestriction.Initialize(dummy, parent.Source, toReturn);
 

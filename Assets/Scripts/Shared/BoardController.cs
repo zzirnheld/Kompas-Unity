@@ -34,6 +34,29 @@ namespace KompasCore.GameCore
         #region helper methods
         public bool ValidIndices(int x, int y) => x >= 0 && y >= 0 && x < 7 && y < 7;
 
+        /// <summary>
+        /// Checks whether there's too many spells already next to an Avatar
+        /// </summary>
+        /// <param name="card">The card to be checking whether it can go there</param>
+        /// <param name="x">The x coordinate to check for</param>
+        /// <param name="y">The y coordinate to check for</param>
+        /// <returns><see langword="false"/> if the card is a spell, 
+        /// <paramref name="x"/> and <paramref name="y"/> are next to an Avatar, 
+        /// and there's already another spell next to that Avatar. <br></br> 
+        /// <see langword="true"/> otherwise.</returns>
+        public bool ValidSpellSpaceFor(GameCard card, int x, int y)
+        {
+            //true for non-spells
+            if (card == null || card.CardType != 'S') return true;
+
+            //if it's a spell going to a relevant location, count other adjacent spells to the avatar
+            if (x >= 5 && y >= 5) return CardsAdjacentTo(6, 6).Count(c => c != card && c.CardType == 'S') < 1;
+            else if (x <= 1 && y <= 1) return CardsAdjacentTo(0, 0).Count(c => c != card && c.CardType == 'S') < 1;
+
+            //if it's not in a relevant location, everything is fine
+            return true;
+        }
+
         //get game data
         public GameCard GetCardAt(int x, int y) => ValidIndices(x, y) ? Board[x, y] : null;
 
@@ -155,6 +178,12 @@ namespace KompasCore.GameCore
         public virtual bool Play(GameCard toPlay, int toX, int toY, Player controller, IStackable stackSrc = null)
         {
             if (toPlay == null) return false;
+            if (!ValidSpellSpaceFor(toPlay, toX, toY))
+            {
+                Debug.LogError($"Tried to play {toPlay} to space {toX}, {toY}. " +
+                    $"This isn't ok, that's an invalid spell spot.");
+                return false;
+            }
 
             Debug.Log($"In boardctrl, playing {toPlay.CardName} to {toX}, {toY}");
             toPlay.Remove(stackSrc);
@@ -191,6 +220,15 @@ namespace KompasCore.GameCore
 
             var (tempX, tempY) = card.Position;
             GameCard temp = Board[toX, toY];
+            //check valid spell positioning
+            if (!ValidSpellSpaceFor(card, toX, toY) || !ValidSpellSpaceFor(temp, tempX, tempY))
+            {
+                Debug.LogError($"Tried to move {card} to space {toX}, {toY}. " +
+                    $"{(temp == null ? "" : $"This would swap {temp.CardName} to {tempX}, {tempY}.")}" +
+                    $"This isn't ok, that's an invalid spell spot.");
+                return false;
+            }
+
             Board[toX, toY] = card;
             Board[tempX, tempY] = temp;
 

@@ -1,10 +1,10 @@
 {
 	"cardType":83,
 	"cardName":"Grant Me Hope",
-	"effText":"Unique. (Can't be played if you control a copy)\nWhen a character is negated, give them +1ESW. If they're a Supplicant, also give them +2NESW.",
+	"effText":"Unique. (Can't be played if you control a copy)\nWhen a character is Negated, give them +1ESW. If they're a Supplicant, also give them +2NESW.",
 	"effects":[
 		{
-			"triggerCondition":"Negate",
+			"triggerCondition":"NegateSubeffect",
 			"trigger":
 			"{
 				\"blurb\":\"Grant Hope\",
@@ -14,16 +14,16 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Triggering Card\"
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"X Change NESW\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"eMod\":1,
 					\"sMod\":1,
 					\"wMod\":1
 				}",
 				"{
-					\"subeffType\":\"Conditionally End Effect Resolution\",
+					\"subeffType\":\"ConditionalEndSubeffect\",
 					\"condition\":\"Target Violates Restriction\",
 					\"cardRestriction\":
 					{
@@ -32,7 +32,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"X Change NESW\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"nMod\":2,
 					\"eMod\":2,
 					\"sMod\":2,

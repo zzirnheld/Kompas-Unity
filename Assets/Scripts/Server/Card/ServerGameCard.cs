@@ -5,6 +5,7 @@ using KompasServer.Effects;
 using KompasServer.GameCore;
 using KompasServer.Networking;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace KompasServer.Cards
@@ -26,6 +27,7 @@ namespace KompasServer.Cards
                 serverController = value;
                 cardCtrl.SetRotation();
                 ServerNotifier.NotifyChangeController(this, ServerController);
+                foreach (var eff in Effects.Where(e => e != null)) eff.Controller = value;
             }
         }
         public override Player Controller
@@ -61,7 +63,7 @@ namespace KompasServer.Cards
                         knownToEnemy = false;
                         break;
                     default:
-                        UnityEngine.Debug.Log($"Card {CardName} being moved to {Location}. " +
+                        Debug.Log($"Card {CardName} being moved to {Location}. " +
                             $"Not setting knownToEnemy, because enemy knowledge doesn't change");
                         break;
                 }
@@ -74,9 +76,9 @@ namespace KompasServer.Cards
         public virtual void SetInfo(SerializableCard serializedCard, ServerGame game, ServerPlayer owner, ServerEffect[] effects, int id)
         {
             base.SetInfo(serializedCard, id);
+            ServerEffects = effects;
             ServerGame = game;
             ServerController = ServerOwner = owner;
-            ServerEffects = effects;
         }
 
         public override void ResetCard()

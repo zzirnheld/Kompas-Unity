@@ -4,6 +4,7 @@
 	"effText":"While equipped, activate this character. When they defend, give them +4EW. When they die (while I'm equipped), rehand me.",
 	"effects":[
 		{
+			"blurb":"Defense Activate!",
 			"triggerCondition":"Augment Attached",
 			"trigger":
 			"{
@@ -14,10 +15,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Augmented Card\"
+					\"subeffType\":\"TargetAugmentedCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Temporary Activate\",
+					\"subeffType\":\"TemporaryActivationSubeffect\",
 					\"endCondition\":\"Augment Detached\",
 					\"triggerRestriction\":{
 						\"triggerRestrictions\":[\"This Card Triggered\"]
@@ -26,6 +27,7 @@
 			]
 		},
 		{
+			"blurb":"You Shouldn't Have Done That",
 			"triggerCondition":"Defend",
 			"trigger":
 			"{
@@ -36,16 +38,17 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Augmented Card\"
+					\"subeffType\":\"TargetAugmentedCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Change NESW\",
+					\"subeffType\":\"ChangeNESWSubeffect\",
 					\"eChange\":4,
 					\"wChange\":4
 				}"
 			]	
 		},
 		{
+			"blurb":"Core Recovery",
 			"triggerCondition":"Discard",
 			"trigger":
 			"{
@@ -56,10 +59,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Rehand\"
+					\"subeffType\":\"RehandSubeffect\"
 				}"
 			]
 		}

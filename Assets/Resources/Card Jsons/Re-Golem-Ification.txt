@@ -1,0 +1,68 @@
+{
+	"cardType":83,
+	"cardName":"Re-Golem-Ification",
+	"effText":"Annihilate me. Choose a cost X Golem among your highest cost discarded Golems. Reshuffle X other discarded Golems, and rehand the chosen one.",
+	"effects":[
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"TargetThisSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"AnnihilateSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"SetXByGamestateSubeffect\",
+					\"whatToCount\":\"Max Stat Among Restriction\",
+					\"stat\":\"Cost\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"to re-golem-ificate\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Discard\"],
+						\"subtypesInclude\":[\"Golem\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"ChooseFromListSubeffect\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"to re-golem-ificate\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Discard\",\"Cost==X\"],
+						\"subtypesInclude\":[\"Golem\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"CardTargetSubeffect\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"for Animancer to discard\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Discard\",\"Not Already Target\"],
+						\"subtypesInclude\":[\"Golem\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"ReshuffleSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"XTimesSubeffect\",
+					\"jumpTo\":4
+				}",
+				"{
+					\"subeffType\":\"RehandSubeffect\",
+					\"targetIndex\":1
+				}"
+			]	
+		}
+	],
+	"fast":true,
+	"c":1,
+	"spellType":"Simple",
+	"subtypeText":"Golem Simple"
+}

@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Cannot Be Created Nor Destroyed",
-	"effText":"When turns start, reshuffle all X friendly discarded Pulsars, give your Avatar +-X S, and draw 1.",
+	"effText":"Unique.\nWhen turns start, reshuffle all X friendly discarded Pulsars, give your Avatar +-X S, and draw 1.",
 	"effects":[
 		{
 			"triggerCondition":"Turn Start",
@@ -14,7 +14,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target All\",
+					\"subeffType\":\"TargetAllSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Friendly\",\"Discard\",\"Subtypes Include\"],
@@ -22,39 +22,39 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Reshuffle\"
+					\"subeffType\":\"ReshuffleSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Delete Target\"
+					\"subeffType\":\"DeleteTargetSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Count X Loop\",
+					\"subeffType\":\"CountXLoopSubeffect\",
 					\"canDecline\":false,
 					\"jumpTo\":1
 				}",
 				"{
-					\"subeffType\":\"Target Avatar\"
+					\"subeffType\":\"TargetAvatarSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Choose Effect Option\",
+					\"subeffType\":\"ChooseOptionSubeffect\",
 					\"ChoiceBlurb\":\"Give +X S or -X S?\",
 					\"OptionBlurbs\":[\"+X S\",\"-X S\"],
 					\"OptionJumpIndices\":[6,8]
 				}",
 				"{
-					\"subeffType\":\"X Change NESW\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"sMult\":1
 				}",
 				"{
-					\"subeffType\":\"Jump to Subeffect\",
+					\"subeffType\":\"JumpSubeffect\",
 					\"indexToJumpTo\":9
 				}",
 				"{
-					\"subeffType\":\"X Change NESW\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"sMult\":-1
 				}",
 				"{
-					\"subeffType\":\"Draw\"
+					\"subeffType\":\"DrawSubeffect\"
 				}"
 			]	
 		}

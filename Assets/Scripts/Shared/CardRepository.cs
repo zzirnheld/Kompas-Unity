@@ -132,12 +132,20 @@ public class CardRepository : MonoBehaviour
 
         try
         {
+            Debug.Log("loading avatar json");
             SerializableCard charCard = JsonUtility.FromJson<SerializableCard>(cardJsons[cardName]);
+            Debug.Log("loading avatar gameobj");
             AvatarServerGameCard avatar = Instantiate(ServerAvatarPrefab).GetComponent<AvatarServerGameCard>();
+            if (avatar == null) Debug.LogError("AVATAR WAS NULL");
+            Debug.Log("loading avatar effs");
             ServerEffect[] effects = CreateServerEffects(charCard.effects, avatar, serverGame, owner);
+            Debug.Log("setting avatar info");
             avatar.SetInfo(charCard, serverGame, owner, effects, id);
+            Debug.Log("loading avatar img");
             avatar.cardCtrl.SetImage(avatar.CardName, false);
+            Debug.Log("loading avatar id");
             serverGame.cardsByID.Add(id, avatar);
+            Debug.Log("returning avatar");
             return avatar;
         }
         catch (System.ArgumentException argEx)

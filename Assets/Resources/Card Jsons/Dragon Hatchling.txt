@@ -13,22 +13,22 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Delay Effect Resolution\",
+					\"subeffType\":\"DelaySubeffect\",
 					\"numTimesToDelay\":0,
 					\"indexToResume\":1,
 					\"endCondition\":\"Turn Start\"
 				}",
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Target This Space\"
+					\"subeffType\":\"TargetThisSpaceSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Discard\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Hand Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Dragon Hatchling to eat (discard)\",
@@ -37,10 +37,10 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Discard\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Hand Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Dragon Hatchling to become (play)\",
@@ -49,7 +49,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Play\"
+					\"subeffType\":\"PlaySubeffect\"
 				}"
 			]
 		}

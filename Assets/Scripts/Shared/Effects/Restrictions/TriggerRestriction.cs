@@ -31,12 +31,13 @@ namespace KompasCore.Effects
         public const string ControllerTriggered = "Controller Triggered"; //200,
         public const string EnemyTriggered = "Enemy Triggered"; //201,
 
-        //note: turns are the exception to the rule in that they are the only triggers where the triggering event
-        //(in their case, the turn passing)
-        //happens before the trigger is called, 
-        //instead of the trigger being called at the moment before it happens.
-        //in short, note that the turn will pass, then the trigger for turn start is called.
-        //this means that checking for friendly/enemy turn will check whose turn the current (just-changed-to) turn is.
+        /* note: turns are the exception to the rule in that they are the only triggers where the triggering event
+        * (in their case, the turn passing)
+        * happens before the trigger is called, 
+        * instead of the trigger being called at the moment before it happens.
+        * in short, note that the turn will pass, then the trigger for turn start is called.
+        * this means that checking for friendly/enemy turn will check whose turn the current (just-changed-to) turn is. *
+        */
         public const string FriendlyTurn = "Friendly Turn"; //300,
         public const string EnemyTurn = "Enemy Turn"; //301,
 

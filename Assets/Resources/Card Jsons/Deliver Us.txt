@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Set X by Gamestate Value\",
+					\"subeffType\":\"SetXByGamestateSubeffect\",
 					\"whatToCount\":\"Cards Fitting Restriction\",
 					\"throughRestriction\":
 					{
@@ -24,12 +24,12 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Conditionally End Effect Resolution\",
+					\"subeffType\":\"ConditionalEndSubeffect\",
 					\"condition\":\"X<C\",
 					\"constant\":10
 				}",
 				"{
-					\"subeffType\":\"Choose From List\",
+					\"subeffType\":\"ChooseFromListSubeffect\",
 					\"maxCanChoose\":1,
 					\"cardRestriction\":
 					{
@@ -39,7 +39,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Space Target\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where to play God of Mercy\",
@@ -47,7 +47,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Play\"
+					\"subeffType\":\"PlaySubeffect\"
 				}"
 			]
 		}

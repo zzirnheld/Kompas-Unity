@@ -16,15 +16,15 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Space Target\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
-						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\"],
+						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\",\"Can Move Target to This Space\"],
 						\"constant\":1
 					}
 				}",
 				"{
-					\"subeffType\":\"Move\"
+					\"subeffType\":\"MoveSubeffect\"
 				}"
 			]	
 		}

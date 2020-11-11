@@ -13,40 +13,40 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Avatar\"
+					\"subeffType\":\"TargetAvatarSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Choose Effect Option\",
+					\"subeffType\":\"ChooseOptionSubeffect\",
 					\"ChoiceBlurb\":\"Give +5 S or -5 S?\",
 					\"OptionBlurbs\":[\"+5 S\",\"-5 S\"],
 					\"OptionJumpIndices\":[2,4]
 				}",
 				"{
-					\"subeffType\":\"Change NESW\",
+					\"subeffType\":\"ChangeNESWSubeffect\",
 					\"sChange\":5
 				}",
 				"{
-					\"subeffType\":\"Jump to Subeffect\",
+					\"subeffType\":\"JumpSubeffect\",
 					\"indexToJumpTo\":5
 				}",
 				"{
-					\"subeffType\":\"Change NESW\",
+					\"subeffType\":\"ChangeNESWSubeffect\",
 					\"sChange\":-5
 				}",
 				"{
-					\"subeffType\":\"Choose Effect Option\",
+					\"subeffType\":\"ChooseOptionSubeffect\",
 					\"ChoiceBlurb\":\"Annihilate me and draw 1?\",
 					\"OptionBlurbs\":[\"Yes\",\"No\"],
-					\"OptionJumpIndices\":[7,100]
+					\"OptionJumpIndices\":[6,100]
 				}",
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Annihilate\"
+					\"subeffType\":\"AnnihilateSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Draw\"
+					\"subeffType\":\"DrawSubeffect\"
 				}"
 			]	
 		}

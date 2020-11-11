@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"IV - The Emperor",
-	"effText":"When you draw X, I give an adjacent character +XEW.",
+	"effText":"When you draw X, I give an adjacent Summoned character +XEW.",
 	"effects":[
 		{
 			"triggerCondition":"Draw",
@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Board Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Summoned character for Emperor to buff\",
@@ -21,7 +21,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"X Change NESW\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"eMult\":1,
 					\"wMult\":1
 				}"

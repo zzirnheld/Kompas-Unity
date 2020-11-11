@@ -17,7 +17,17 @@ namespace KompasServer.Effects
 
         public override bool Resolve()
         {
-            var potentialTarget = Game.Cards.SingleOrDefault(c => cardRestriction.Evaluate(c));
+            GameCard potentialTarget = null;
+            try
+            {
+                potentialTarget = Game.Cards.SingleOrDefault(c => cardRestriction.Evaluate(c));
+            }
+            catch (System.InvalidOperationException) 
+            {
+                Debug.LogError($"More than one card fit the card restriction {cardRestriction} " +
+                    $"for the effect {Effect.Blurb} of {Source.CardName}");
+            }
+
             if (potentialTarget == null) return ServerEffect.EffectImpossible();
             else
             {

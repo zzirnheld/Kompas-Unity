@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Goal-Net Touchdown",
-	"effText":"When a character moves adjacent to an enemy Avatar, apply their Augment(s) to that Avatar.",
+	"effText":"When a character moves adjacent to an enemy Avatar, apply their Augment(s) to an adjacent enemy Avatar.",
 	"effects":[
 		{
 			"triggerCondition":"Move",
@@ -26,28 +26,29 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Auto Target\",
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Avatar\",\"Enemy\"]
+						\"cardRestrictions\":[\"Avatar\",\"Enemy\",\"Adjacent to Target\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"Target Triggering Card\"
+					\"subeffType\":\"TargetAugmentsSubeffect\",
+					\"targetIndex\":0
 				}",
 				"{
-					\"subeffType\":\"Target Augments\"
-				}",
-				"{
-					\"subeffType\":\"Conditionally End Effect Resolution\",
+					\"subeffType\":\"ConditionalEndSubeffect\",
 					\"condition\":\"Number Targets <= Constant\",
 					\"constant\":2
 				}",
 				"{
-					\"subeffType\":\"Attach\",
-					\"attachmentTarget\":0
+					\"subeffType\":\"AttachSubeffect\",
+					\"attachmentTarget\":1
 				}",
 				"{
-					\"subeffType\":\"Loop While Have Targets\",
+					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
 					\"delete\":true,
 					\"remainingTargets\":2,
 					\"jumpTo\":4
@@ -55,7 +56,7 @@
 			]
 		}
 	],
-	"c":3,
+	"c":1,
 	"spellType":"Enchant",
 	"subtypeText":"Sportsball Play Enchant"
 }

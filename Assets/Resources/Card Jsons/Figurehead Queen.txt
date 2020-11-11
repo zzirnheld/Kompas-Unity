@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Figurehead Queen",
-	"effText":"When you draw, give me +1C.\nDelay 1 turn. If my C ≥ 10, deck-summon a Tarocco.",
+	"effText":"When you draw X, give me +XC.\nWhen I'm cast, delay 1 turn.\nIf my C ≥ 10, deck-summon a Tarocco.",
 	"effects":[
 		{
 			"triggerCondition":"Draw",
@@ -13,11 +13,11 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Change C\",
-					\"xModifier\":1
+					\"subeffType\":\"ChangeSpellCSubeffect\",
+					\"xMultiplier\":1
 				}"
 			]
 		},
@@ -31,25 +31,25 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Delay Effect Resolution\",
+					\"subeffType\":\"DelaySubeffect\",
 					\"numTimesToDelay\":0,
 					\"indexToResume\":1,
-					\"triggerCondition\":\"Turn Start\"
+					\"endCondition\":\"Turn Start\"
 				}",
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Set X by Target Cost\",
+					\"subeffType\":\"SetXByTargetCostSubeffect\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Conditionally End Effect Resolution\",
+					\"subeffType\":\"ConditionalEndSubeffect\",
 					\"condition\":\"X<C\",
 					\"constant\":10
 				}",
 				"{
-					\"subeffType\":\"Deck Target\",
+					\"subeffType\":\"DeckTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Deck\"],
@@ -57,14 +57,14 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Space Target\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"Play\"
+					\"subeffType\":\"PlaySubeffect\"
 				}"
 			]
 		}

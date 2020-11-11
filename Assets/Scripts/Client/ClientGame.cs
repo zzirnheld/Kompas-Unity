@@ -7,6 +7,7 @@ using KompasCore.Effects;
 using KompasCore.GameCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace KompasClient.GameCore
@@ -42,9 +43,36 @@ namespace KompasClient.GameCore
         public ClientNotifier clientNotifier;
         public ClientUIController clientUICtrl;
 
+        //turn players?
+        public bool FriendlyTurn => TurnPlayerIndex == 0;
+
+        //search
+        public ClientSearchController searchCtrl;
+
         //targeting
-        public CardRestriction CurrCardRestriction;
-        public SpaceRestriction CurrSpaceRestriction;
+        public int targetsWanted;
+        private GameCard[] currentPotentialTargets;
+        public GameCard[] CurrentPotentialTargets 
+        { 
+            get => currentPotentialTargets; 
+            private set
+            {
+                currentPotentialTargets = value;
+                ShowValidCardTargets();
+            } 
+        }
+
+        private (int, int)[] currentPotentialSpaces;
+        public (int, int)[] CurrentPotentialSpaces
+        {
+            get => currentPotentialSpaces;
+            set
+            {
+                currentPotentialSpaces = value;
+                if (value != null) clientUICtrl.boardUICtrl.ShowSpaceTargets(space => value.Contains(space));
+                else clientUICtrl.boardUICtrl.ShowSpaceTargets(_ => false);
+            }
+        }
 
         //TODO make client aware that effects have been pushed to stack
         private bool stackEmpty = true;
@@ -90,33 +118,6 @@ namespace KompasClient.GameCore
         }
 
         //requesting
-        public void TargetCard(GameCard card)
-        {
-            if (CurrCardRestriction == null)
-            {
-                Debug.Log($"Called target card on {card.CardName} while curr card restriction is null");
-                return;
-            }
-
-            //if the player is currently looking for a target on the board,
-            if (targetMode == TargetMode.BoardTarget || targetMode == TargetMode.HandTarget)
-            {
-                //check if the target fits the restriction, according to us
-                if (CurrCardRestriction.Evaluate(card, clientNetworkCtrl.X))
-                {
-                    //if it fits the restriction, send the proposed target to the server
-                    clientNotifier.RequestTarget(card);
-
-                    //put the relevant card back
-                    card.PutBack();
-
-                    //and change the game's target mode TODO should this do this
-                    targetMode = TargetMode.OnHold;
-                }
-            }
-            else Debug.LogError($"Tried to target card {card.CardName} while in not understood target mode {targetMode}");
-        }
-
         public void SetFirstTurnPlayer(int playerIndex)
         {
             FirstTurnPlayer = TurnPlayerIndex = playerIndex;
@@ -125,6 +126,9 @@ namespace KompasClient.GameCore
             RoundCount = 1;
             TurnCount = 1;
             canZoom = true;
+            //force updating of pips to show correct messages.
+            //there's probably a better way to do this.
+            foreach (var player in Players) player.Pips = player.Pips;
         }
 
         public void EndTurn()
@@ -134,6 +138,8 @@ namespace KompasClient.GameCore
             clientUICtrl.ChangeTurn(TurnPlayerIndex);
             if (TurnPlayerIndex == FirstTurnPlayer) RoundCount++;
             TurnCount++;
+            clientUICtrl.FriendlyPips = Players[0].Pips;
+            clientUICtrl.EnemyPips = Players[1].Pips;
         }
 
         public override GameCard GetCardWithID(int id) => cardsByID.ContainsKey(id) ? cardsByID[id] : null;
@@ -158,9 +164,27 @@ namespace KompasClient.GameCore
         public void StackEmptied()
         {
             stackEmpty = true;
+            targetMode = TargetMode.Free;
             clientUICtrl.SetCurrState("Stack Empty");
             foreach (var c in Cards) c.ResetForStack();
             ShowNoTargets();
+        }
+
+        #region targeting
+        /// <summary>
+        /// Sets up the client for the player to select targets
+        /// </summary>
+        public void SetPotentialTargets(int[] ids, ListRestriction listRestriction)
+        {
+            CurrentPotentialTargets = ids?.Select(i => GetCardWithID(i)).Where(c => c != null).ToArray();
+            searchCtrl.StartSearch(CurrentPotentialTargets, listRestriction);
+
+        }
+
+        public void ClearPotentialTargets()
+        {
+            CurrentPotentialTargets = null;
+            searchCtrl.ResetSearch();
         }
 
         /// <summary>
@@ -169,16 +193,19 @@ namespace KompasClient.GameCore
         public void ShowNoTargets()
         {
             foreach (var card in Cards) card.cardCtrl.HideTarget();
-            clientUICtrl.boardUICtrl.ShowSpaceTargets(_ => false);
         }
 
         /// <summary>
-        /// Show valid target highlight for any valid potential targets
+        /// Show valid target highlight for current potential targets
         /// </summary>
-        /// <param name="predicate"></param>
-        public void ShowValidCardTargets(Func<GameCard, bool> predicate)
+        public void ShowValidCardTargets()
         {
-            foreach (var card in Cards) card.cardCtrl.ShowValidTarget(predicate(card));
+            if (CurrentPotentialTargets != null)
+            {
+                foreach (var card in CurrentPotentialTargets) card.cardCtrl.ShowValidTarget();
+            }
+            else ShowNoTargets();
         }
+        #endregion targeting
     }
 }

@@ -59,7 +59,7 @@ Taunt Core
 Modular Golem Cores
 Slight Golemodifications
 Runeloremaster
-Runarunner
+Runerunner
 Runecaller
 Runespeaker
 Runepainter
@@ -260,5 +260,5 @@ Mad Jukes
 Big Brain Plays
 Getcha Getcha Getcha
 Time Out
-Cycle
+Antiprecatium Golem
 a lot of disappointment

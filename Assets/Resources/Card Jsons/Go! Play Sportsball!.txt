@@ -13,7 +13,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Choose From List\",
+					\"subeffType\":\"ChooseFromListSubeffect\",
 					\"maxCanChoose\":1,
 					\"cardRestriction\":
 					{
@@ -23,16 +23,16 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Auto Target\",
+					\"subeffType\":\"AutoTargetSubeffect\",
 					\"cardRestriction\":{
 						\"cardRestrictions\":[\"Avatar\",\"Friendly\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"Target Target's Space\"
+					\"subeffType\":\"TargetTargetsSpaceSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Play\",
+					\"subeffType\":\"PlaySubeffect\",
 					\"targetIndex\":-2
 				}"
 			]	
@@ -41,5 +41,5 @@
 	"c":1,
 	"spellType":"Simple",
 	"subtypes":["Simple"],
-	"subtypeText":"Simple"
+	"subtypeText":"Simple Sportsball Play"
 }

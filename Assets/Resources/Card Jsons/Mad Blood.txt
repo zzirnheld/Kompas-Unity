@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Mad Blood",
-	"effText":"The first time each turn a friendly Cultist dies, annihilate me and deck-summon 2 Cultist Followers. (If this effect is negated, it can trigger again another turn.)",
+	"effText":"The first time each turn a friendly Cultist dies, annihilate me and deck-summon 2 Cultist Followers. (If this effect is Negated, it can trigger again another turn.)",
 	"effects":[
 		{
 			"triggerCondition":"Discard",
@@ -19,13 +19,13 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Annihilate\"
+					\"subeffType\":\"AnnihilateSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Choose From List\",
+					\"subeffType\":\"ChooseFromListSubeffect\",
 					\"maxCanChoose\":1,
 					\"cardRestriction\":
 					{
@@ -35,7 +35,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Space Target\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where to play Mad Blood's new bloodcurse (1/2)\",
@@ -43,10 +43,10 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Play\"
+					\"subeffType\":\"PlaySubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Choose From List\",
+					\"subeffType\":\"ChooseFromListSubeffect\",
 					\"maxCanChoose\":1,
 					\"cardRestriction\":
 					{
@@ -56,7 +56,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Space Target\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where to play Mad Blood's new bloodcurse (2/2)\",
@@ -64,7 +64,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Play\"
+					\"subeffType\":\"PlaySubeffect\"
 				}"
 			]	
 		}

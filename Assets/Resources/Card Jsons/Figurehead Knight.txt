@@ -1,31 +1,49 @@
 {
 	"cardType":83,
 	"cardName":"Figurehead Knight",
-	"effText":"When you draw, give each friendly character +1EW for the turn.",
+	"effText":"When you draw on a friendly turn, give each friendly Summoned character +1W.\nWhen you draw on a enemy turn, give each friendly Summoned character +1E.",
 	"effects":[
 		{
 			"triggerCondition":"Draw",
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\"]
+					\"triggerRestrictions\":[\"This Card in Play\",\"Friendly Turn\"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Temporary NESW Buff All\",
-					\"eBuff\":1,
-					\"wBuff\":1,
-					\"endCondition\":\"Turn Start\",
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Friendly\",\"Is Character\"]
-					}
+					\"subeffType\":\"ChangeAllNESWSubeffect\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Summoned\"]
+					},
+					\"wMod\":1
+				}"
+			]
+		},
+		{
+			"triggerCondition":"Draw",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"Enemy Turn\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"ChangeAllNESWSubeffect\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Summoned\"]
+					},
+					\"eMod\":1
 				}"
 			]
 		}
 	],
 	"fast":false,
-	"c":3,
+	"c":5,
 	"spellType":"Enchant",
 	"subtypes":["Tarocco","Enchant"],
 	"subtypeText":"Tarocco Enchant"

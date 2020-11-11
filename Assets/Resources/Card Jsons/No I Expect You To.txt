@@ -16,7 +16,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Discard Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Crazy Idea for No I Expect You To to Ificate\",
@@ -25,12 +25,12 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Pay Pips\",
+					\"subeffType\":\"PayPipsSubeffect\",
 					\"xMultiplier\":0,
 					\"xModifier\":1
 				}",
 				"{
-					\"subeffType\":\"Space Target\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where No I Expect You To to play targeted Crazy Idea\",
@@ -38,7 +38,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Play\"
+					\"subeffType\":\"PlaySubeffect\"
 				}"
 			]
 		},
@@ -52,7 +52,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Board Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"character for No I Expect You To maybe kill\",
@@ -60,13 +60,13 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Delay Effect Resolution\",
+					\"subeffType\":\"DelaySubeffect\",
 					\"numTimesToDelay\":1,
 					\"indexToResume\":2,
 					\"triggerCondition\":\"Turn Start\"
 				}",
 				"{
-					\"subeffType\":\"Conditionally Jump\",
+					\"subeffType\":\"ConditionalJumpSubeffect\",
 					\"condition\":\"Target Fits Restriction\",
 					\"jumpIndex\":6,
 					\"cardRestriction\":
@@ -75,16 +75,16 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Annihilate\"
+					\"subeffType\":\"AnnihilateSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"End Effect Resolution\"
+					\"subeffType\":\"EndResolutionSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Discard\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}"
 			]
 		}

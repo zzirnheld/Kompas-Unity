@@ -15,23 +15,23 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Board Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"Summoned character for Hanged Man to swap give -XE\",
+						\"blurb\":\"Summoned character for Hanged Man to also give -XE\",
 						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Summoned\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"X Change NESW\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"eMult\":-1,
 					\"targetIndex\":0
 				}",
 				"{
-					\"subeffType\":\"X Change NESW\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"eMult\":-1,
 					\"targetIndex\":1
 				}"

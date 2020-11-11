@@ -212,12 +212,7 @@ namespace KompasServer.GameCore
             return drawn.Count > 0 ? drawn[0] : null;
         }
 
-        public void GivePlayerPips(Player player, int pipsToSet)
-        {
-            player.Pips = pipsToSet;
-            if (player.index == 0) uiCtrl.UpdateFriendlyPips(pipsToSet);
-            else uiCtrl.UpdateEnemyPips(pipsToSet);
-        }
+        public void GivePlayerPips(Player player, int pipsToSet) => player.Pips = pipsToSet;
 
         public void GiveTurnPlayerPips() => GivePlayerPips(TurnPlayer, TurnPlayer.Pips + Leyload);
 
@@ -303,6 +298,9 @@ namespace KompasServer.GameCore
             //draw for turn and store what was drawn
             Draw(TurnPlayerIndex);
             TurnServerPlayer.ServerNotifier.NotifySetTurn(this, TurnPlayerIndex);
+
+            //do hand size
+            EffectsController.PushToStack(new ServerHandSizeStackable(this, EffectsController, TurnServerPlayer), default);
 
             //trigger turn start effects
             var context = new ActivationContext(triggerer: TurnServerPlayer);

@@ -38,7 +38,7 @@ namespace KompasClient.Networking
 
         public void RequestTarget(GameCard card) => Send(new CardTargetPacket(card.ID));
 
-        public void RequestResolveEffect(GameCard card, int index)
+        public void RequestActivateEffect(GameCard card, int index)
             => Send(new ActivateEffectActionPacket(card.ID, index));
 
         public void RequestSetX(int x) => Send(new SelectXPacket(x));
@@ -47,7 +47,9 @@ namespace KompasClient.Networking
 
         public void RequestSpaceTarget(int x, int y) => Send(new SpaceTargetPacket(x, y));
 
-        public void RequestListChoices(List<GameCard> choices) => Send(new ListChoicesPacket(choices));
+        public void RequestListChoices(IEnumerable<GameCard> choices) => Send(new ListChoicesPacket(choices));
+
+        public void RequestHandSizeChoices(int[] cardIds) => Send(new SendHandSizeChoicesPacket(cardIds));
 
         public void RequestTriggerReponse(bool answer) => Send(new OptionalTriggerAnswerPacket(answer));
 

@@ -23,7 +23,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target All\",
+					\"subeffType\":\"TargetAllSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Supplicant to give safe haven\",
@@ -31,14 +31,14 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Temporary Negate\",
+					\"subeffType\":\"TemporaryNegateSubeffect\",
 					\"endCondition\":\"Remove\",
 					\"triggerRestriction\":{
 						\"triggerRestrictions\":[\"This Card Triggered\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"Loop While Have Targets\",
+					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
 					\"delete\":true,
 					\"jumpTo\":1
 				}"

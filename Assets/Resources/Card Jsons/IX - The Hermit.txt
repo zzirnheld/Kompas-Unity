@@ -15,7 +15,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Board Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Hermit to move\",
@@ -23,23 +23,23 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Space Target\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where Hermit to move its target\",
-						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == X\"]
+						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == X\",\"Can Move Target to This Space\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"Move\"
+					\"subeffType\":\"MoveSubeffect\"
 				}"
 			]
 		}
 	],
 	"n":2,
 	"e":2,
-	"s":4,
-	"w":4,
+	"s":2,
+	"w":2,
 	"subtypes":["Tarocco","Mage"],
 	"subtypeText":"Tarocco Mage"
 }

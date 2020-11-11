@@ -1,5 +1,4 @@
-﻿using KompasClient.Effects;
-using KompasClient.GameCore;
+﻿using KompasClient.GameCore;
 using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasCore.GameCore;
@@ -7,6 +6,7 @@ using KompasCore.UI;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,60 +14,27 @@ namespace KompasClient.UI
 {
     public class ClientUIController : UIController
     {
-        public const string FriendlyTurn = "Friendly Turn";
-        public const string EnemyTurn = "Enemy Turn";
+        private const string FriendlyTurn = "Friendly Turn";
+        private const string EnemyTurn = "Enemy Turn";
 
-        public const string AwaitingResponseMessage = "Awaiting Response";
-        public const string AwaitingEnemyResponse = "Awaiting Enemy Response";
-
-        public struct SearchData
-        {
-            public readonly List<GameCard> toSearch;
-            public readonly int numToSearch;
-            public readonly bool targetingSearch;
-            public readonly List<GameCard> searched;
-
-            public SearchData(List<GameCard> toSearch, int numToSearch, bool targetingSearch, List<GameCard> searched)
-            {
-                this.toSearch = toSearch;
-                this.numToSearch = numToSearch;
-                this.targetingSearch = targetingSearch;
-                this.searched = searched;
-            }
-        }
+        private const string AwaitingResponseMessage = "Awaiting Response";
+        private const string AwaitingEnemyResponse = "Awaiting Enemy Response";
 
         public ClientGame clientGame;
         //debug UI 
         public InputField debugPipsField;
 
         //gamestate values
-        public TMPro.TMP_Text CurrTurnText;
+        public TMP_Text CurrTurnText;
         public GameObject EndTurnButton;
-        public TMPro.TMP_Text LeyloadText;
-        public int Leyload
-        {
-            set => LeyloadText.text = $"{value} Pips Leyload," +
-                $"\n{value + 1} Next Turn";
-        }
+        public TMP_Text LeyloadText;
 
         //current state
         public GameObject CurrStateOverallObj;
-        public TMPro.TMP_Text CurrStateText;
-        public TMPro.TMP_Text CurrStateBonusText;
         public GameObject CurrStateBonusObj;
+        public TMP_Text CurrStateText;
+        public TMP_Text CurrStateBonusText;
 
-        //card search
-        public GameObject cardSearchView;
-        public Image cardSearchImage;
-        public GameObject alreadySelectedText;
-        public Button searchTargetButton;
-        public TMPro.TMP_Text searchTargetButtonText;
-        public TMPro.TMP_Text nSearchText;
-        public TMPro.TMP_Text eSearchText;
-        public TMPro.TMP_Text sSearchText;
-        public TMPro.TMP_Text wSearchText;
-        public TMPro.TMP_Text cSearchText;
-        public TMPro.TMP_Text aSearchText;
         //effects
         public InputField xInput;
         public GameObject setXView;
@@ -77,13 +44,12 @@ namespace KompasClient.UI
         public bool Autodecline => autodeclineEffects.isOn;
         //confirm trigger
         public GameObject ConfirmTriggerView;
-        public TMPro.TMP_Text TriggerBlurbText;
-        //search
-        private int searchIndex = 0;
-        private SearchData? currSearchData = null;
-        private readonly Stack<SearchData> searchStack = new Stack<SearchData>();
+        public TMP_Text TriggerBlurbText;
         //choose effect option
         public ClientChooseOptionUIController chooseOptionUICtrl;
+
+        //stack ui
+        public ClientStackPanelController clientStackUICtrl;
 
         //deck select ui
         public DeckSelectUIController DeckSelectCtrl;
@@ -97,7 +63,44 @@ namespace KompasClient.UI
         //effect option ui
         public TriggerOrderUIController triggerOrderUI;
 
-        private bool ShowEffect(Effect eff) => eff.CanBeActivatedBy(clientGame.Players[0]);
+        //effect activation ui
+        public EffectActivatorUIController activatorUICtrl;
+
+        //escape menu
+        public ClientEscapeMenuUIController escapeMenuUICtrl;
+
+        public GameCard CardToActivateEffectsFor
+        {
+            set => activatorUICtrl.nextShowFor = value;
+        }
+
+        public int FriendlyPips
+        {
+            set => friendlyPipsText.text 
+                = $"{value} (+{clientGame.Leyload + (clientGame.FriendlyTurn ? 2 : 1)}) Friendly Pips";
+        }
+
+        public int EnemyPips
+        {
+            set => enemyPipsText.text 
+                = $"{value} (+{clientGame.Leyload + (clientGame.FriendlyTurn ? 1 : 2)}) Enemy Pips";
+        }
+        public int Leyload
+        {
+            set => LeyloadText.text = $"{value} Pips Leyload";
+        }
+
+        public void Update()
+        {
+            //when the user releaes a right click, show eff activation ui.
+            if (Input.GetMouseButtonUp(1)) activatorUICtrl.Show();
+            //when the user releases a left click, deselect any applicable effect activation ui
+            if (Input.GetMouseButtonUp(0)) activatorUICtrl.CancelIfApplicable();
+            //when the user presses escape, show the menu.
+            if (Input.GetKeyDown(KeyCode.Escape)) escapeMenuUICtrl.Enable();
+        }
+
+        public bool ShowEffect(Effect eff) => eff.CanBeActivatedBy(clientGame.Players[0]);
 
         public override bool ShowInfoFor(GameCard card, bool refresh = false)
         {
@@ -130,7 +133,7 @@ namespace KompasClient.UI
         public override void SelectCard(GameCard card, Game.TargetMode targetMode, bool fromClick)
         {
             base.SelectCard(card, targetMode, fromClick);
-            if (fromClick && card != null) clientGame.TargetCard(card);
+            if (fromClick && card != null) clientGame.searchCtrl.AddTarget(card);
         }
 
         public void ReselectSelectedCard(bool fromClick) => SelectCard(SelectedCard, fromClick);
@@ -200,15 +203,10 @@ namespace KompasClient.UI
         }
 
         #region effects
-        public void ActivateSelectedCardEff(int index)
-        {
-            clientGame.clientNotifier.RequestResolveEffect(ShownCard, index);
-        }
+        public void ActivateSelectedCardEff(int index) => ActivateCardEff(ShownCard, index);
 
-        public void ToggleHoldingPriority()
-        {
-            throw new System.NotImplementedException();
-        }
+        public void ActivateCardEff(GameCard card, int index)
+            => clientGame.clientNotifier.RequestActivateEffect(card, index);
 
         public void GetXForEffect() => setXView.SetActive(true);
 
@@ -247,8 +245,8 @@ namespace KompasClient.UI
             ConfirmTriggerView.SetActive(false);
         }
 
-        public void ShowEffectOptions(DummyChooseOptionSubeffect subeff)
-            => chooseOptionUICtrl.ShowEffectOptions(subeff);
+        public void ShowEffectOptions(string choiceBlurb, string[] optionBlurbs)
+            => chooseOptionUICtrl.ShowEffectOptions(choiceBlurb, optionBlurbs);
 
         public void GetResponse()
         {
@@ -275,121 +273,6 @@ namespace KompasClient.UI
         }
         #endregion effects
 
-        #region search
-        public void StartSearch(List<GameCard> list, int numToChoose = 1, bool targetingSearch = true) 
-            => StartSearch(new SearchData(list, numToChoose, targetingSearch, new List<GameCard>()));
-
-        public void StartSearch(SearchData data)
-        {
-            //if the list is empty, don't search
-            if (data.toSearch.Count == 0) return;
-
-            //if should search and already searching, remember current search
-            if (currSearchData.HasValue) searchStack.Push(currSearchData.Value);
-
-            currSearchData = data;
-            Debug.Log($"Searching a list of {data.toSearch.Count} cards: {string.Join(",", data.toSearch.Select(c => c.CardName))}");
-
-            //initiate search process
-            searchIndex = 0;
-            SearchShowIndex(searchIndex);
-            if (currSearchData.Value.targetingSearch) searchTargetButtonText.text = "Choose";
-            else searchTargetButtonText.text = "Cancel";
-            cardSearchView.SetActive(true);
-        }
-
-        public void SearchSelectedCard()
-        {
-            //if the list to search through is null, we're not searching atm.
-            if (currSearchData == null) return;
-
-            if (!currSearchData.Value.targetingSearch)
-            {
-                ResetSearch();
-                return;
-            }
-
-            GameCard searchSelected = currSearchData.Value.toSearch[searchIndex];
-
-            if (currSearchData.Value.numToSearch == 1)
-            {
-                clientGame.clientNotifier.RequestTarget(searchSelected);
-                ResetSearch();
-            }
-            else if (!currSearchData.Value.searched.Contains(searchSelected))
-            {
-                currSearchData.Value.searched.Add(searchSelected);
-
-                alreadySelectedText.SetActive(true);
-
-                //if we were given a maximum number to be searched, and hit that number, no reason to keep asking
-                if (currSearchData.Value.numToSearch > 1 && currSearchData.Value.searched.Count >= currSearchData.Value.numToSearch)
-                {
-                    //then send the total list
-                    clientGame.clientNotifier.RequestListChoices(currSearchData.Value.searched);
-                    //and reset searching
-                    ResetSearch();
-                }
-            }
-            else
-            {
-                //deselect
-                currSearchData.Value.searched.Remove(searchSelected);
-                alreadySelectedText.SetActive(false);
-            }
-        }
-
-        /// <summary>
-        /// If this is the last search, hides everything. If it's not, moves on to the next search
-        /// </summary>
-        public void ResetSearch()
-        {
-            //forget what we were searching through. don't just clear the list because that might clear the actual deck or discard
-            currSearchData = null; //thank god for garbage collection lol :upside down smiley:
-
-            if (searchStack.Count == 0) cardSearchView.SetActive(false);
-            else StartSearch(searchStack.Pop());
-        }
-
-        public void StartDiscardSearch() => StartSearch(clientGame.friendlyDiscardCtrl.Discard);
-
-        public void NextCardSearch()
-        {
-            searchIndex++;
-            searchIndex %= currSearchData.Value.toSearch.Count;
-            SearchShowIndex(searchIndex);
-        }
-
-        public void PrevCardSearch()
-        {
-            searchIndex--;
-            if (searchIndex < 0) searchIndex += currSearchData.Value.toSearch.Count;
-            SearchShowIndex(searchIndex);
-        }
-
-        public void SearchShowIndex(int index)
-        {
-            var toShow = currSearchData.Value.toSearch[searchIndex];
-            cardSearchImage.sprite = toShow.detailedSprite;
-            alreadySelectedText.SetActive(currSearchData.Value.searched.Contains(toShow));
-
-            nSearchText.text = $"N\n{toShow.N}";
-            eSearchText.text = $"E\n{toShow.E}";
-            sSearchText.text = $"S\n{toShow.S}";
-            wSearchText.text = $"W\n{toShow.W}";
-            cSearchText.text = $"C\n{toShow.C}";
-            aSearchText.text = $"A\n{toShow.A}";
-
-            nSearchText.gameObject.SetActive(toShow.CardType == 'C');
-            eSearchText.gameObject.SetActive(toShow.CardType == 'C');
-            sSearchText.gameObject.SetActive(toShow.CardType == 'C');
-            wSearchText.gameObject.SetActive(toShow.CardType == 'C');
-            cSearchText.gameObject.SetActive(toShow.CardType == 'S');
-            aSearchText.gameObject.SetActive(toShow.CardType == 'A');
-        }
-
-        public void SelectShownSearchCard() => HoverOver(currSearchData.Value.toSearch[searchIndex]);
-        #endregion
 
         #region flow control
         public void PassTurn()

@@ -14,7 +14,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Set X by Board Count\",
+					\"subeffType\":\"SetXBoardRestrictionSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
@@ -23,16 +23,16 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Target This Space\"
+					\"subeffType\":\"TargetThisSpaceSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Discard\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Deck Target\",
+					\"subeffType\":\"DeckTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Swordguild Warrior for Trainee to become\",
@@ -42,7 +42,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Play\"
+					\"subeffType\":\"PlaySubeffect\"
 				}"
 			]
 		}

@@ -4,6 +4,7 @@
 	"effText":"During your turn, you can hand-discard Golems with total cost X to search your deck's top X cards a for cost <= X Golem. Bottomdeck the rest.",
 	"effects":[
 		{
+			"blurb":"It's In Here Somewhere",
 			"activationRestriction":{
 				"activationRestrictions":[
 					"Friendly Turn",
@@ -12,7 +13,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"Hand Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Animancer to discard\",
@@ -21,24 +22,24 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Change X by Target Value\",
+					\"subeffType\":\"ChangeXByTargetValueSubeffect\",
 					\"whatToCount\":\"Cost\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Discard\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Loop\",
+					\"subeffType\":\"LoopSubeffect\",
 					\"canDecline\":true,
 					\"jumpTo\":0
 				}",
 				"{
-					\"subeffType\":\"Jump on Effect Impossible\",
+					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
 					\"jumpTo\":8
 				}",
 				"{
-					\"subeffType\":\"Choose From List Saving Rest\",
+					\"subeffType\":\"ChooseFromListSaveRestSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Animancer to search\",
@@ -52,13 +53,13 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Rehand\"
+					\"subeffType\":\"RehandSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Clear Jump on Effect Impossible\"
+					\"subeffType\":\"ClearOnImpossibleSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Bottomdeck Rest\"
+					\"subeffType\":\"BottomdeckRestSubeffect\"
 				}"
 			]
 		}

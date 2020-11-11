@@ -21,7 +21,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Board Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Magnetizing to move\",
@@ -29,16 +29,16 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Space Target\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"to move Magnetizing's target to\",
-						\"spaceRestrictions\":[\"Distance to Target == Constant\",\"Further from Source than Target\"],
+						\"spaceRestrictions\":[\"Distance to Target == Constant\",\"Further from Source than Target\",\"Can Move Target to This Space\"],
 						\"constant\":1
 					}
 				}",
 				"{
-					\"subeffType\":\"Move\"
+					\"subeffType\":\"MoveSubeffect\"
 				}"
 			]
 		},
@@ -60,7 +60,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Board Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Magnetizing to move\",
@@ -68,16 +68,16 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Space Target\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"to move Magnetizing's target to\",
-						\"spaceRestrictions\":[\"Distance to Target == Constant\",\"Towards Source from Target\"],
+						\"spaceRestrictions\":[\"Distance to Target == Constant\",\"Towards Source from Target\",\"Can Move Target to This Space\"],
 						\"constant\":1
 					}
 				}",
 				"{
-					\"subeffType\":\"Move\"
+					\"subeffType\":\"MoveSubeffect\"
 				}"
 			]
 		}

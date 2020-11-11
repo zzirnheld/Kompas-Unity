@@ -1,0 +1,54 @@
+{
+	"cardType":83,
+	"cardName":"None Defy the Lines",
+	"effText":"Move each character that you can to a space on its diagonal, on the edge of the board.",
+	"effects":[
+		{
+			"blurb":"Simple Effect",
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
+					\"jumpTo\":10
+				}",
+				"{
+					\"subeffType\":\"CardTargetSubeffect\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"who to next be brought low by the Lines\",
+						\"cardRestrictions\":[\"Friendly\",\"Board\",\"Not Already Target\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
+					\"jumpTo\":5
+				}",
+				"{
+					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where on the Lines to bring them\",
+						\"spaceRestrictions\":[\"Empty\",\"On Target's Diagonal\",\"On Edge of Board\",\"Can Move Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"MoveSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"LoopSubeffect\",
+					\"jumpTo\":0
+				}"
+			]	
+		}
+	],
+	"c":4,
+	"spellType":"Simple",
+	"subtypes":["Simple"],
+	"subtypeText":"Simple"
+}

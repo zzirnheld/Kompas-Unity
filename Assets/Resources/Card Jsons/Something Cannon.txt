@@ -4,6 +4,7 @@
 	"effText":"Once each round, you can give me and a Summoned character -3E.",
 	"effects":[
 		{
+			"blurb":"Something",
 			"activationRestriction":{
 				"activationRestrictions":[
 					"Max Times Per Round",
@@ -13,14 +14,14 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Change NESW\",
+					\"subeffType\":\"ChangeNESWSubeffect\",
 					\"eChange\":-3
 				}",
 				"{
-					\"subeffType\":\"Board Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Summoned character for Something Cannon to blast for -3E\",
@@ -28,7 +29,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Change NESW\",
+					\"subeffType\":\"ChangeNESWSubeffect\",
 					\"eChange\":-3
 				}"
 			]	

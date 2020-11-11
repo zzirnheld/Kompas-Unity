@@ -13,15 +13,15 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Augmented Card\"
+					\"subeffType\":\"TargetAugmentedCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Set X by Target Value\",
+					\"subeffType\":\"SetXByTargetValueSubeffect\",
 					\"whatToCount\":\"W\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"X Change NESW\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"wMult\":1
 				}"
 			]

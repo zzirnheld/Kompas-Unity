@@ -21,10 +21,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Triggering Card\"
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Board Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"character within 2 spaces to goal-kick Augment to\",
@@ -33,23 +33,23 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Target Target's Augmented Card\",
+					\"subeffType\":\"TargetTargetsAugmentedCardSubeffect\",
 					\"targetIndex\":0
 				}",
 				"{
-					\"subeffType\":\"Target Augments\"
+					\"subeffType\":\"TargetAugmentsSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Conditionally End Effect Resolution\",
+					\"subeffType\":\"ConditionalEndSubeffect\",
 					\"condition\":\"Number Targets <= Constant\",
 					\"constant\":3
 				}",
 				"{
-					\"subeffType\":\"Attach\",
+					\"subeffType\":\"AttachSubeffect\",
 					\"attachmentTarget\":1
 				}",
 				"{
-					\"subeffType\":\"Loop While Have Targets\",
+					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
 					\"delete\":true,
 					\"remainingTargets\":3,
 					\"jumpTo\":5

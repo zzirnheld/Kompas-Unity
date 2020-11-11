@@ -10,26 +10,14 @@ public class MainMenuUICtrl : MonoBehaviour
     public const int ServerScene = 2;
     public const int DeckbuildScene = 3;
 
-    public void StartServer()
-    {
-        //load the server scene
-        SceneManager.LoadScene(ServerScene);
-    }
+    //load the server scene
+    public void StartServer() => SceneManager.LoadScene(ServerScene);
 
-    public void StartClient()
-    {
-        //load the client scene
-        SceneManager.LoadScene(ClientScene);
-    }
+    //load the client scene
+    public void StartClient() => SceneManager.LoadScene(ClientScene);
 
-    public void BuildDeck()
-    {
-        //load the deck building scene
-        SceneManager.LoadScene(DeckbuildScene);
-    }
+    //load the deck building scene
+    public void BuildDeck() => SceneManager.LoadScene(DeckbuildScene);
 
-    public void CloseGame()
-    {
-        Application.Quit();
-    }
+    public void CloseGame() => Application.Quit();
 }

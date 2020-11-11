@@ -4,6 +4,7 @@
 	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, move an enemy card 3 spaces.",
 	"effects":[
 		{
+			"blurb":"Go Elsewhere",
 			"triggerCondition":"Activate",
 			"trigger":
 			"{
@@ -13,7 +14,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Board Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"enemy card for Straw Golem to move.\",
@@ -21,15 +22,15 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Space Target\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
-						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\"],
+						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\",\"Can Move Target to This Space\"],
 						\"constant\":3
 					}
 				}",
 				"{
-					\"subeffType\":\"Move\"
+					\"subeffType\":\"MoveSubeffect\"
 				}"
 			]
 		}

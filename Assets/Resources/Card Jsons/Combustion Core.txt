@@ -1,9 +1,10 @@
 {
 	"cardType":65,
 	"cardName":"Combustion Core",
-	"effText":"Activate this character during enemy turns. (They deactivate on your turn.) When they die (while I'm equipped), rehand me. When your turn starts, pay a pip or dispel me.",
+	"effText":"Activate this character during enemy turns. (They deactivate on your turn.) When they die (while I'm equipped), rehand me. When your turn starts, pay a pip or DispelSubeffect me.",
 	"effects":[
 		{
+			"blurb":"Choo Choo Activate",
 			"triggerCondition":"Turn Start",
 			"trigger":
 			"{
@@ -14,10 +15,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Augmented Card\"
+					\"subeffType\":\"TargetAugmentedCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Temporary Activate\",
+					\"subeffType\":\"TemporaryActivationSubeffect\",
 					\"endCondition\":\"Turn Start\",
 					\"triggerRestriction\":{
 						\"triggerRestrictions\":[\"Friendly Turn\"]
@@ -26,6 +27,7 @@
 			]
 		},
 		{
+			"blurb":"Fuel the Choo",
 			"triggerCondition":"Turn Start",
 			"trigger":
 			"{
@@ -36,35 +38,36 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Choose Effect Option\",
-					\"ChoiceBlurb\":\"Pay 1 pip or dispel this?\",
-					\"OptionBlurbs\":[\"Pay 1 pip\",\"Dispel\"],
+					\"subeffType\":\"ChooseOptionSubeffect\",
+					\"ChoiceBlurb\":\"Pay 1 pip or DispelSubeffect this?\",
+					\"OptionBlurbs\":[\"Pay 1 pip\",\"DispelSubeffect\"],
 					\"OptionJumpIndices\":[1,5]
 				}",
 				"{
-					\"subeffType\":\"Jump on Effect Impossible\",
+					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
 					\"jumpTo\":4
 				}",
 				"{
-					\"subeffType\":\"Pay Pips\",
+					\"subeffType\":\"PayPipsSubeffect\",
 					\"xMultiplier\":0,
 					\"xModifier\":1
 				}",
 				"{
-					\"subeffType\":\"End Effect Resolution\"
+					\"subeffType\":\"EndResolutionSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Clear Jump on Effect Impossible\"
+					\"subeffType\":\"ClearOnImpossibleSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Discard\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}"
 			]
 		},
 		{
+			"blurb":"Core Recovery",
 			"triggerCondition":"Discard",
 			"trigger":
 			"{
@@ -75,10 +78,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Rehand\"
+					\"subeffType\":\"RehandSubeffect\"
 				}"
 			]
 		}

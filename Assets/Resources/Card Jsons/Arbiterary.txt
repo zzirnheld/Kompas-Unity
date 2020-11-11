@@ -18,10 +18,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Triggering Card\"
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Change Stats\",
+					\"subeffType\":\"ChangeCardStatsSubeffect\",
 					\"aMod\":1
 				}"
 			]
@@ -48,30 +48,30 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Triggering Card\"
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Change X by Target Value\",
+					\"subeffType\":\"ChangeXByTargetValueSubeffect\",
 					\"whatToCount\":\"Cost\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Target Target's Augmented Card\"
+					\"subeffType\":\"TargetTargetsAugmentedCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Change Stats\",
+					\"subeffType\":\"ChangeCardStatsSubeffect\",
 					\"eMult\":-1
 				}",
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Attach\",
+					\"subeffType\":\"AttachSubeffect\",
 					\"targetIndex\":-3,
 					\"attachmentTarget\":-1
 				}",
 				"{
-					\"subeffType\":\"Reset Stats\",
+					\"subeffType\":\"ResetStatsSubeffect\",
 					\"targetIndex\":-3,
 					\"resetA\":true
 				}"
@@ -79,8 +79,8 @@
 		}
 	],
 	"n":1,
-	"e":14,
-	"s":11,
+	"e":7,
+	"s":7,
 	"w":3,
 	"PlayRestriction":{
 		"normalRestrictions":["Default Normal Restrictions","Unique"],

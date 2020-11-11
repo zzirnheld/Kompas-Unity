@@ -1,7 +1,7 @@
 {
 	"cardType":65,
 	"cardName":"Touch of the Divine",
-	"effText":"While equipped, negate this character and give them +2NESW. When this character dies, if they’re a Supplicant, rehand me.",
+	"effText":"While equipped, NegateSubeffect this character and give them +2NESW. When this character dies, if they’re a Supplicant, rehand me.",
 	"effects":[
 		{
 			"triggerCondition":"Augment Attached",
@@ -13,17 +13,17 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Augmented Card\"
+					\"subeffType\":\"TargetAugmentedCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Temporary Negate\",
+					\"subeffType\":\"TemporaryNegateSubeffect\",
 					\"endCondition\":\"Augment Detached\",
 					\"triggerRestriction\":{
 						\"triggerRestrictions\":[\"This Card Triggered\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"Temporary NESW Buff\",
+					\"subeffType\":\"TemporaryNESWBuffSubeffect\",
 					\"nBuff\":2,
 					\"eBuff\":2,
 					\"sBuff\":2,
@@ -50,10 +50,10 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Rehand\"
+					\"subeffType\":\"RehandSubeffect\"
 				}"
 			]
 		}

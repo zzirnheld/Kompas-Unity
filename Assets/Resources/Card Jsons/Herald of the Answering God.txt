@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Herald of the Answering God",
-	"effText":"When turns start, negate a turn player’s character.",
+	"effText":"When turns start, NegateSubeffect a turn player’s character.",
 	"effects":[
 		{
 			"triggerCondition":"Turn Start",
@@ -14,14 +14,14 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Board Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"blurb\":\"card to answer prayers\",
 					\"cardRestriction\":{
 						\"cardRestrictions\":[\"Board\",\"Is Character\",\"Turn Player Controls\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"Negate\"
+					\"subeffType\":\"NegateSubeffect\"
 				}"
 			]
 		}

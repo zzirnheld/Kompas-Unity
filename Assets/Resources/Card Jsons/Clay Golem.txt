@@ -4,6 +4,7 @@
 	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, tribute me and deck-summon a Golem.",
 	"effects":[
 		{
+			"blurb":"Golemorph",
 			"triggerCondition":"Activate",
 			"trigger":
 			"{
@@ -13,13 +14,13 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Discard\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Deck Target\",
+					\"subeffType\":\"DeckTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Clay Golem to summon\",
@@ -28,7 +29,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Space Target\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"to play the card you chose\",
@@ -36,7 +37,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Play\"
+					\"subeffType\":\"PlaySubeffect\"
 				}"
 			]
 		}

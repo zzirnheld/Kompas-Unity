@@ -13,8 +13,8 @@
             set
             {
                 base.Pips = value;
-                if (index == 0) clientGame.uiCtrl.UpdateFriendlyPips(Pips);
-                else clientGame.uiCtrl.UpdateEnemyPips(Pips);
+                if (index == 0) clientGame.clientUICtrl.FriendlyPips = Pips; 
+                else clientGame.clientUICtrl.EnemyPips = Pips;
             }
         }
     }

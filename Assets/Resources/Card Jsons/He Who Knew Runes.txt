@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"Space Target\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"to move He Who Knew Runes to\",
@@ -25,14 +25,14 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Spend Movement\",
+					\"subeffType\":\"SpendMovementSubeffect\",
 					\"xModifier\":1
 				}",
 				"{
-					\"subeffType\":\"Set X by Gamestate Value\",
+					\"subeffType\":\"SetXByGamestateSubeffect\",
 					\"whatToCount\":\"Distance to Coords Through\",
 					\"throughRestriction\":{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
@@ -41,11 +41,11 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"X Change NESW\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"eMult\":-1
 				}",
 				"{
-					\"subeffType\":\"Move\"
+					\"subeffType\":\"MoveSubeffect\"
 				}"
 			]
 		},
@@ -53,13 +53,14 @@
 			"triggerCondition":"Move",
 			"trigger":
 			"{
+				\"optional\":true,
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Hand Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Shaping for He Who Knew Runes to cast\",
@@ -69,7 +70,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Space Target\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where for He Who Knew Runes to cast its target Shaping\",
@@ -77,7 +78,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Play\"
+					\"subeffType\":\"PlaySubeffect\"
 				}"
 			]	
 		}

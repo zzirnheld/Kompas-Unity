@@ -18,24 +18,27 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target Triggering Card\"
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Target Augments\"
+					\"subeffType\":\"SetXSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Change X by Target Value\",
+					\"subeffType\":\"TargetAugmentsSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"ChangeXByTargetValueSubeffect\",
 					\"whatToCount\":\"Cost\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Loop While Have Targets\",
+					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
 					\"delete\":true,
 					\"remainingTargets\":1,
-					\"jumpTo\":2
+					\"jumpTo\":3
 				}",
 				"{
-					\"subeffType\":\"Change NESW All\",
+					\"subeffType\":\"ChangeAllNESWSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Character\",\"Adjacent to Target\"]

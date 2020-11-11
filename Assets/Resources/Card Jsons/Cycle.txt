@@ -13,23 +13,23 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"Hand Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":{
 						\"blurb\":\"Card to Cycle\",
 						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
 					}
 				}",
 				"{
-					\"subeffType\":\"Discard\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Change Leyload\",
+					\"subeffType\":\"ChangeLeyloadSubeffect\",
 					\"xModifier\":1
 				}"
 			]	
 		}
 	],
-	"c":3,
+	"c":1,
 	"spellType":"Enchant",
 	"subtypeText":"Enchant"
 }

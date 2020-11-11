@@ -13,15 +13,15 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Conditionally End Effect Resolution\",
+					\"subeffType\":\"ConditionalEndSubeffect\",
 					\"condition\":\"Must be Friendly Turn\"
 				}",
 				"{
-					\"subeffType\":\"Add Pips\",
+					\"subeffType\":\"AddPipsSubeffect\",
 					\"xModifier\":3
 				}",
 				"{
-					\"subeffType\":\"End Turn\"
+					\"subeffType\":\"EndTurnSubeffect\"
 				}"
 			]	
 		}

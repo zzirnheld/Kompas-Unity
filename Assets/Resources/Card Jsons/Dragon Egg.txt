@@ -13,22 +13,22 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Delay Effect Resolution\",
+					\"subeffType\":\"DelaySubeffect\",
 					\"numTimesToDelay\":1,
 					\"indexToResume\":1,
 					\"endCondition\":\"Turn Start\"
 				}",
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Target This Space\"
+					\"subeffType\":\"TargetThisSpaceSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Discard\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Deck Target\",
+					\"subeffType\":\"DeckTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Dragon Egg to become\",
@@ -37,7 +37,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Play\",
+					\"subeffType\":\"PlaySubeffect\",
 					\"spaceIndex\":-1,
 					\"targetIndex\":-1
 				}"

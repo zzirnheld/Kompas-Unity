@@ -9,8 +9,6 @@ namespace KompasClient.Networking
     {
         public ClientGame ClientGame;
 
-        public int X { get; set; }
-
         public void Connect(string ip)
         {
             Debug.Log($"Connecting to {ip} on a random port");
@@ -20,10 +18,7 @@ namespace KompasClient.Networking
             Debug.Log("Connected");
         }
 
-        public override void Update()
-        {
-            base.Update();
-        }
+        public override void Update() => base.Update();
 
         private IClientOrderPacket FromJson(string command, string json)
         {
@@ -40,6 +35,8 @@ namespace KompasClient.Networking
                 case Packet.SetTurnPlayer: return JsonUtility.FromJson<SetTurnPlayerClientPacket>(json);
                 case Packet.PutCardsBack: return JsonUtility.FromJson<PutCardsBackClientPacket>(json);
                 case Packet.AttackStarted: return JsonUtility.FromJson<AttackStartedClientPacket>(json);
+                case Packet.HandSizeToStack: return JsonUtility.FromJson<HandSizeToStackClientPacket>(json);
+                case Packet.ChooseHandSize: return JsonUtility.FromJson<GetHandSizeChoicesClientPacket>(json);
 
                 //card addition/deletion
                 case Packet.AddCard: return JsonUtility.FromJson<AddCardClientPacket>(json);
@@ -71,16 +68,13 @@ namespace KompasClient.Networking
 
                 //effects
                     //targeting
-                case Packet.GetBoardTarget: return JsonUtility.FromJson<GetBoardTargetClientPacket>(json);
-                case Packet.GetHandTarget: return JsonUtility.FromJson<GetHandTargetClientPacket>(json);
-                case Packet.GetDeckTarget: return JsonUtility.FromJson<GetDeckTargetClientPacket>(json);
-                case Packet.GetDiscardTarget: return JsonUtility.FromJson<GetDiscardTargetClientPacket>(json);
-                case Packet.GetListChoices: return JsonUtility.FromJson<GetListChoicesClientPacket>(json);
+                case Packet.GetCardTarget: return JsonUtility.FromJson<GetCardTargetClientPacket>(json);
                 case Packet.GetSpaceTarget: return JsonUtility.FromJson<GetSpaceTargetClientPacket>(json);
                     //other
                 case Packet.GetEffectOption: return JsonUtility.FromJson<GetEffectOptionClientPacket>(json);
                 case Packet.EffectResolving: return JsonUtility.FromJson<EffectResolvingClientPacket>(json);
                 case Packet.EffectActivated: return JsonUtility.FromJson<EffectActivatedClientPacket>(json);
+                case Packet.RemoveStackEntry: return JsonUtility.FromJson<RemoveStackEntryClientPacket>(json);
                 case Packet.SetEffectsX: return JsonUtility.FromJson<SetEffectsXClientPacket>(json);
                 case Packet.PlayerChooseX: return JsonUtility.FromJson<GetPlayerChooseXClientPacket>(json);
                 case Packet.TargetAccepted: return JsonUtility.FromJson<TargetAcceptedClientPacket>(json);

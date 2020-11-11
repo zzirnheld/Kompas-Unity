@@ -49,4 +49,7 @@ public abstract class Player : MonoBehaviour{
         TcpClient = tcpClient;
         this.index = index;
     }
+
+    public int SubjectiveCoord(int coord) => index == 0 ? coord : 6 - coord;
+    public (int, int) SubjectiveCoords((int x, int y) space) => (SubjectiveCoord(space.x), SubjectiveCoord(space.y));
 }

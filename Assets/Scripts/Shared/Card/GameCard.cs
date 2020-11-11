@@ -8,11 +8,21 @@ namespace KompasCore.Cards
 {
     public abstract class GameCard : CardBase
     {
+        public const string Nimbleness = "N";
+        public const string Endurance = "E";
+        public const string SummoningCost = "S";
+        public const string Wounding = "W";
+        public const string CastingCost = "C";
+        public const string AugmentCost = "A";
+        public const string CostStat = "Cost";
+
         public abstract Game Game { get; }
         public int ID { get; private set; }
         public CardController cardCtrl;
 
         private SerializableCard serializedCard;
+
+        public bool CurrentlyVisible => gameObject.activeSelf;
 
         #region stats
         public int BaseN => serializedCard.n;
@@ -97,9 +107,7 @@ namespace KompasCore.Cards
             }
         }
 
-        public int SubjectiveCoord(int coord) => ControllerIndex == 0 ? coord : 6 - coord;
-        public (int, int) SubjectiveCoords((int x, int y) space) => (SubjectiveCoord(space.x), SubjectiveCoord(space.y));
-        public (int x, int y) SubjectivePosition => SubjectiveCoords(Position);
+        public (int x, int y) SubjectivePosition => Controller.SubjectiveCoords(Position);
 
         public int IndexInList
         {
@@ -285,7 +293,7 @@ namespace KompasCore.Cards
         /// </summary>
         /// <param name="space">The space to check if it's in front of this card</param>
         /// <returns><see langword="true"/> if <paramref name="space"/> is in front of this, <see langword="false"/> otherwise.</returns>
-        public bool SpaceInFront((int x, int y) space) => SubjectiveCoord(space.x) > SubjectivePosition.x;
+        public bool SpaceInFront((int x, int y) space) => Controller.SubjectiveCoord(space.x) > SubjectivePosition.x;
 
         /// <summary>
         /// Returns whether the card passed in is in front of this card
@@ -299,7 +307,7 @@ namespace KompasCore.Cards
         /// </summary>
         /// <param name="space">The space to check if it's behind this card</param>
         /// <returns><see langword="true"/> if <paramref name="space"/> is behind this, <see langword="false"/> otherwise.</returns>
-        public bool SpaceBehind((int x, int y) space) => SubjectiveCoord(space.x) < SubjectivePosition.x;
+        public bool SpaceBehind((int x, int y) space) => Controller.SubjectiveCoord(space.x) < SubjectivePosition.x;
 
         /// <summary>
         /// Returns whether the card passed in is behind this card
@@ -309,9 +317,12 @@ namespace KompasCore.Cards
         public bool CardBehind(GameCard card) => SpaceBehind(card.Position);
 
         public bool SpaceDirectlyInFront((int x, int y) space)
-            => SubjectiveCoords(space) == (SubjectivePosition.x + 1, SubjectivePosition.y + 1);
+            => Controller.SubjectiveCoords(space) == (SubjectivePosition.x + 1, SubjectivePosition.y + 1);
 
-        public bool CardDirectlyInFront(GameCard card) => SpaceDirectlyInFront(card.Position);
+        public bool CardDirectlyInFront(GameCard card) 
+            => Location == CardLocation.Field && card.Location == CardLocation.Field && SpaceDirectlyInFront(card.Position);
+
+        public bool OnMyDiagonal((int x, int y) space) => BoardX == space.x || BoardY == space.y;
         #endregion distance/adjacency
 
         public void PutBack()
@@ -353,6 +364,21 @@ namespace KompasCore.Cards
         #endregion augments
 
         #region statfuncs
+        public int GetStat(string stat)
+        {
+            switch (stat)
+            {
+                case Nimbleness: return N;
+                case Endurance: return E;
+                case SummoningCost: return S;
+                case Wounding: return W;
+                case CastingCost: return C;
+                case AugmentCost: return A;
+                case CostStat: return Cost;
+                default: throw new System.ArgumentException($"I'm sorry, but {stat} is not a valid stat you stunted mongoose!", stat);
+            }
+        }
+
         public virtual void SetN(int n, IStackable stackSrc = null) => N = n;
         public virtual void SetE(int e, IStackable stackSrc = null) => E = e;
         public virtual void SetS(int s, IStackable stackSrc = null) => S = s;

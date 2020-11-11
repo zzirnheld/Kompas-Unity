@@ -14,14 +14,14 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Board Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"],
 					}
 				}",
 				"{
-					\"subeffType\":\"Discard\"
+					\"subeffType\":\"DiscardSubeffect\"
 				}"
 			]	
 		},
@@ -37,24 +37,24 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Set X by Player Choice\",
+					\"subeffType\":\"PlayerChooseXSubeffect\",
 					\"XRest\":{
 						\"xRestrictions\":[\"<=ThisE\"]
 					},
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"X Change NESW\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"eMult\":-1
 				}",
 				"{
-					\"subeffType\":\"Target Defender\"
+					\"subeffType\":\"TargetDefenderSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"X Change NESW\",
+					\"subeffType\":\"XChangeNESWSubeffect\",
 					\"wMult\":-2
 				}"
 			]	

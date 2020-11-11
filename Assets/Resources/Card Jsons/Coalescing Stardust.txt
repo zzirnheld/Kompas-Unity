@@ -4,53 +4,56 @@
 	"effText":"When your Avatar gets +-X S, give me +-X C. (If they lose S, I lose C. If they gain S, I gain C.)\nDelay 2 turns.\nSet X to my C. Deck-summon an SX Pulsar.",
 	"effects":[
 		{
+			"blurb":"Coalesce +C",
 			"triggerCondition":"S Change",
 			"trigger":
 			"{
-				\"blurb\":\"Flare\",
+				\"blurb\":\"Coalesce +C\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"This Card in Play\"],
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Board\"]
+						\"cardRestrictions\":[\"Board\",\"Avatar\"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Change C\",
+					\"subeffType\":\"ChangeSpellCSubeffect\",
 					\"xMultiplier\":1
 				}"
 			]
 		},
 		{
+			"blurb":"Coalesce Summon",
 			"triggerCondition":"Play",
 			"trigger":
 			"{
+				\"blurb\":\"Coalesce Summon\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"Delay Effect Resolution\",
+					\"subeffType\":\"DelaySubeffect\",
 					\"numTimesToDelay\":1,
 					\"indexToResume\":1,
 					\"endCondition\":\"Turn Start\"
 				}",
 				"{
-					\"subeffType\":\"Target This\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"Set X by Target Value\",
+					\"subeffType\":\"SetXByTargetValueSubeffect\",
 					\"whatToCount\":\"C\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Choose From List\",
+					\"subeffType\":\"ChooseFromListSubeffect\",
 					\"maxCanChoose\":1,
 					\"cardRestriction\":
 					{
@@ -61,7 +64,7 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"Space Target\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where to play newly coalesced Pulsar\",
@@ -69,7 +72,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Play\"
+					\"subeffType\":\"PlaySubeffect\"
 				}"
 			]
 		}

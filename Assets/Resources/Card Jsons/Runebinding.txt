@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Runebinding",
-	"effText":"Once each enemy turn, you can handcast a Rune (even if it isn’t Fast).",
+	"effText":"Once each enemy turn, you can handcast a Rune (this ignores Fast).",
 	"effects":[
 		{
 			"activationRestriction":{
@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"Hand Target\",
+					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Rune for Runebinding to cast\",
@@ -22,7 +22,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Space Target\",
+					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
 						\"blurb\":\"where for Runebinding to cast its target Rune\",
@@ -30,7 +30,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"Play\"
+					\"subeffType\":\"PlaySubeffect\"
 				}"
 			]
 		}

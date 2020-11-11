@@ -14,6 +14,6 @@
 
         public ActivationRestriction activationRestriction;
 
-        public string blurb;
+        public string blurb = "Effect";
     }
 }

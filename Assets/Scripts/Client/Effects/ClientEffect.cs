@@ -72,6 +72,7 @@ namespace KompasClient.Effects
             TimesUsedThisStack++;
 
             ClientGame.EffectActivated(this);
+            ClientGame.clientUICtrl.clientStackUICtrl.Add(Source.simpleSprite, Source.CardName, Blurb);
         }
 
         public override void StartResolution(ActivationContext context)
