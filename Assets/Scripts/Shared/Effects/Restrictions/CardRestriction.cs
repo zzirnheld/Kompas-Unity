@@ -52,6 +52,7 @@ namespace KompasCore.Effects
         //distinct
         public const string DistinctFromSource = "Distinct from Source";
         public const string DistinctFromTarget = "Distinct from Target";
+        public const string DistinctFromAugmentedCard = "Distinct From Augmented Card";
 
         //location
         public const string Hand = "Hand";
@@ -211,6 +212,7 @@ namespace KompasCore.Effects
                 //distinct
                 case DistinctFromSource: return potentialTarget != Source;
                 case DistinctFromTarget: return potentialTarget != Subeffect.Target;
+                case DistinctFromAugmentedCard: return potentialTarget != Source.AugmentedCard;
 
                 //location
                 case Hand:           return potentialTarget.Location == CardLocation.Hand;
