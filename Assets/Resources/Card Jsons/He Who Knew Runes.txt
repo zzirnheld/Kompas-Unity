@@ -53,6 +53,7 @@
 			"triggerCondition":"Move",
 			"trigger":
 			"{
+				\"optional\":true,
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}

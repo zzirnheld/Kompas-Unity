@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Berkanan",
-	"effText":"Can’t be cast normally. Set a character’s NW to 0 and ES to 5.",
+	"effText":"Can’t be cast normally. Set a Summoned character’s NW to 0 and ES to 5.",
 	"effects":[
 		{
 			"triggerCondition":"Play",
@@ -16,7 +16,7 @@
 					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Board\"]
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Summoned\"]
 					}
 				}",
 				"{

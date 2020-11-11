@@ -41,5 +41,5 @@
 	"c":1,
 	"spellType":"Simple",
 	"subtypes":["Simple"],
-	"subtypeText":"Simple"
+	"subtypeText":"Simple Sportsball Play"
 }

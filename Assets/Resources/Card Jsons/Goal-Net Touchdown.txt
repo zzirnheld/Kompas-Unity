@@ -26,16 +26,17 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Avatar\",\"Enemy\",\"Adjacent\"]
-					}
-				}",
-				"{
 					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"TargetAugmentsSubeffect\"
+					\"subeffType\":\"CardTargetSubeffect\",
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Avatar\",\"Enemy\",\"Adjacent to Target\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"TargetAugmentsSubeffect\",
+					\"targetIndex\":0
 				}",
 				"{
 					\"subeffType\":\"ConditionalEndSubeffect\",
@@ -44,7 +45,7 @@
 				}",
 				"{
 					\"subeffType\":\"AttachSubeffect\",
-					\"attachmentTarget\":0
+					\"attachmentTarget\":1
 				}",
 				"{
 					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
