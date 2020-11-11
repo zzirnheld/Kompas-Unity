@@ -297,9 +297,19 @@ namespace KompasCore.Cards
             if (card.CardType == 'S' && card.SpellSubtype == CardBase.RadialSubtype) aoeController.Show(card.Arg);
         }
 
-        public void ShowValidTarget(bool valid = true) => validTargetObject.SetActive(valid);
+        //public void ShowValidTarget(bool valid = true) => validTargetObject.SetActive(valid);
+        public void ShowValidTarget(bool valid = true)
+        {
+            validTargetObject.SetActive(valid);
+            Debug.Log($"Showing as current target? {valid}");
+        }
 
-        public void ShowCurrentTarget(bool current = true) => currentTargetObject.SetActive(current);
+        //public void ShowCurrentTarget(bool current = true) => currentTargetObject.SetActive(current);
+        public void ShowCurrentTarget(bool current = true)
+        {
+            currentTargetObject.SetActive(current);
+            Debug.Log($"Showing as current target? {current}");
+        }
 
         public void HideTarget()
         {
