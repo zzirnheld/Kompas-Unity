@@ -66,7 +66,7 @@
 				}",
 				"{
 					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"eMult\":-1
+					\"wMult\":-1
 				}"
 			]	
 		}
