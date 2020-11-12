@@ -22,7 +22,7 @@
 			]	
 		}
 	],
-	"c":3,
+	"c":2,
 	"spellType":"Radial",
 	"subtypes":["Radial"],
 	"subtypeText":"Radial",

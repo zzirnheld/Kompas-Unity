@@ -26,7 +26,7 @@
 		}
 	],
 	"fast":false,
-	"c":4,
+	"c":3,
 	"spellType":"Enchant",
 	"subtypes":["Enchant"],
 	"subtypeText":"Enchant"
