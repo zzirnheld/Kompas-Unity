@@ -73,7 +73,7 @@
 					\"subeffType\":\"AnnihilateSubeffect\"
 				}"
 			]
-		},
+		}
 	],
 	"c":1,
 	"spellType":"Enchant",

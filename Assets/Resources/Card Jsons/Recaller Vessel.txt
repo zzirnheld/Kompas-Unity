@@ -7,7 +7,6 @@
 			"blurb":"Pip Resummon",
 			"activationRestriction":{
 				"activationRestrictions":[
-					"Friendly Turn",
 					"Default"
 				]
 			},
