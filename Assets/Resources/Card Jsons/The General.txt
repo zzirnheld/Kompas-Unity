@@ -13,6 +13,10 @@
 			},
 			"subeffects":[
 				"{
+					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
+					\"jumpTo\":6
+				}",
+				"{
 					\"subeffType\":\"ChooseFromListSaveRestSubeffect\",
 					\"maxCanChoose\":1,
 					\"cardRestriction\":
@@ -23,11 +27,11 @@
 					},
 					\"restRestriction\":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Cost<=X\",\"Index<X\",\"Not Already Target\"],
-						\"subtypesInclude\":[\"Golem\"]
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<X\",\"Not Already Target\"]
 					},
 					\"listRestriction\":{
-						\"listRestrictions\":[\"Can Pay Cost\"]
+						\"listRestrictions\":[\"Can Pay Cost\",\"Min Can Choose\"],
+						\"minCanChoose\":1
 					},
 					\"xModifier\":5
 				}",
@@ -48,7 +52,7 @@
 				"{
 					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
 					\"delete\":true,
-					\"jumpTo\":1
+					\"jumpTo\":2
 				}",
 				"{
 					\"subeffType\":\"BottomdeckRestSubeffect\"

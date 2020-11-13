@@ -274,17 +274,24 @@ namespace KompasCore.Effects
             }
         }
 
+        public bool RestrictionValidDebug(string restriction, GameCard potentialTarget, int x)
+        {
+            bool answer = RestrictionValid(restriction, potentialTarget, x);
+            if (!answer) Debug.Log($"{potentialTarget.CardName} flouts {restriction}");
+            return answer;
+        }
+
         /// <summary>
         /// Checks whether the card in question fits the relevant retrictions, for the given value of X
         /// </summary>
         /// <param name="potentialTarget">The card to see if it fits all restrictions</param>
         /// <param name="x">The value of X for which to consider this effect's restriction</param>
         /// <returns><see langword="true"/> if the card fits all restrictions, <see langword="false"/> if it doesn't fit at least one</returns>
-        public virtual bool Evaluate(GameCard potentialTarget, int x)
+        public bool Evaluate(GameCard potentialTarget, int x)
         {
             if (potentialTarget == null) return false;
 
-            return cardRestrictions.All(r => RestrictionValid(r, potentialTarget, x));
+            return cardRestrictions.All(r => RestrictionValidDebug(r, potentialTarget, x));
         }
 
         /// <summary>
@@ -292,6 +299,6 @@ namespace KompasCore.Effects
         /// </summary>
         /// <param name="potentialTarget">The card to see if it fits all restrictions</param>
         /// <returns><see langword="true"/> if the card fits all restrictions, <see langword="false"/> if it doesn't fit at least one</returns>
-        public virtual bool Evaluate(GameCard potentialTarget) => Evaluate(potentialTarget, Effect?.X ?? 0);
+        public bool Evaluate(GameCard potentialTarget) => Evaluate(potentialTarget, Subeffect?.Count ?? 0);
     }
 }

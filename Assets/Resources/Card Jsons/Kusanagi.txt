@@ -20,7 +20,7 @@
 					\"condition\":\"Target Violates Restriction\",
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Behind Source\"],
+						\"cardRestrictions\":[\"Behind Source\"]
 					}
 				}",
 				"{

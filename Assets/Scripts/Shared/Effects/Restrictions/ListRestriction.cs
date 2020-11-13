@@ -66,7 +66,8 @@ namespace KompasCore.Effects
         public void Initialize(Subeffect subeffect)
         {
             Subeffect = subeffect;
-            if (minCanChoose < 0) minCanChoose = maxCanChoose;
+            if (minCanChoose < 0 && listRestrictions.Contains(MaxCanChoose))
+                minCanChoose = maxCanChoose;
         }
 
         /// <summary>
@@ -124,6 +125,8 @@ namespace KompasCore.Effects
 
         private bool EvaluateValidListChoice(string restriction, IEnumerable<GameCard> potentialTargets)
         {
+            Debug.Log($"Testing list restriction {restriction} for potential valid targets " +
+                $"{string.Join(", ", potentialTargets.Select(c => c.CardName))}");
             switch (restriction)
             {
                 case CanPayCost:
@@ -131,10 +134,12 @@ namespace KompasCore.Effects
                     int i = 0;
                     foreach(var card in potentialTargets.OrderBy(c => c.Cost))
                     {
+                        Debug.Log($"Testing card number {i}, {card.CardName} with cost {card.Cost}");
                         if (i > minCanChoose) break;
                         costAccumulation += card.Cost;
                         i++;
                     }
+                    Debug.Log($"Total min cost: {costAccumulation}");
                     if(i < minCanChoose) return false;
                     return costAccumulation <= Subeffect.Controller.Pips;
                 case MinCanChoose: return potentialTargets.Count() >= minCanChoose;
