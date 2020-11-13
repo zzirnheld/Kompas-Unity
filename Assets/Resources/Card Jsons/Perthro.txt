@@ -30,7 +30,7 @@
 						\"constant\":10
 					},
 					\"listRestriction\":{
-						\"cardRestrictions\":[\"Max Can Choose\"],
+						\"listRestrictions\":[\"Max Can Choose\"],
 						\"maxCanChoose\":3
 					}
 				}",
