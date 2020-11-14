@@ -31,6 +31,25 @@
 				}",
 				"{
 					\"subeffType\":\"MoveSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"CardTargetSubeffect\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"enemy card for Straw Golem to move.\",
+						\"cardRestrictions\":[\"Board\",\"Enemy\",\"Not Already Target\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"spaceRestriction\":
+					{
+						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\",\"Can Move Target to This Space\"],
+						\"constant\":3
+					}
+				}",
+				"{
+					\"subeffType\":\"MoveSubeffect\"
 				}"
 			]
 		}
@@ -51,9 +70,9 @@
 		]
 	},
 	"n":2,
-	"e":3,
+	"e":1,
 	"s":2,
-	"w":3,
+	"w":1,
 	"subtypes":["Golem"],
 	"subtypeText":"Golem"
 }
