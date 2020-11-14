@@ -44,7 +44,8 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"PayPipsTargetCostSubeffect\"
+					\"subeffType\":\"PayPipsTargetCostSubeffect\",
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"PlaySubeffect\"

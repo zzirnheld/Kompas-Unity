@@ -40,7 +40,7 @@
 		}
 	],
 	"n":3,
-	"e":4,
+	"e":1,
 	"s":4,
 	"w":4,
 	"subtypes":["Swordguild","Warrior"],

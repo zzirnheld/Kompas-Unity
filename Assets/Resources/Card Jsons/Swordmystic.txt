@@ -32,7 +32,8 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"PayPipsTargetCostSubeffect\"
+					\"subeffType\":\"PayPipsTargetCostSubeffect\",
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"SpaceTargetSubeffect\",

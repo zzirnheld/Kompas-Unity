@@ -131,11 +131,11 @@ namespace KompasCore.Effects
             {
                 case CanPayCost:
                     int costAccumulation = 0;
-                    int i = 0;
+                    int i = 1;
                     foreach(var card in potentialTargets.OrderBy(c => c.Cost))
                     {
-                        Debug.Log($"Testing card number {i}, {card.CardName} with cost {card.Cost}");
                         if (i > minCanChoose) break;
+                        Debug.Log($"Testing card number {i}, {card.CardName} with cost {card.Cost}");
                         costAccumulation += card.Cost;
                         i++;
                     }
