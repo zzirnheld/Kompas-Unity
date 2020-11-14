@@ -23,6 +23,7 @@
 			]	
 		},
 		{
+			"blurb":"Empty Memories",
 			"triggerCondition":"Play",
 			"trigger":
 			"{
@@ -44,10 +45,10 @@
 			]	
 		}
 	],
-	"n":1,
+	"n":0,
 	"e":1,
-	"s":3,
-	"w":1,
+	"s":2,
+	"w":0,
 	"subtypes":["Geminii"],
 	"subtypeText":"Geminii"
 }

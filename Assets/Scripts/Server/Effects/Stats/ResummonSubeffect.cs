@@ -6,7 +6,8 @@ namespace KompasServer.Effects
     {
         public override bool Resolve()
         {
-            if (Target == null) return ServerEffect.EffectImpossible();
+            if (Target == null || Target.Location != CardLocation.Field)
+                return ServerEffect.EffectImpossible();
 
             var ctxt = new ActivationContext(card: Target, stackable: Effect, triggerer: EffectController, space: Target.Position);
             ServerEffect.EffectsController.TriggerForCondition(Trigger.Play, ctxt);
