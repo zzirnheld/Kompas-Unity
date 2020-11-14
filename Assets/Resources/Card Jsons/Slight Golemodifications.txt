@@ -39,7 +39,8 @@
 					{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Hand\",\"S<X\"],
 						\"subtypesInclude\":[\"Golem\"]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"JumpSubeffect\",
@@ -51,7 +52,8 @@
 					{
 						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Discard\",\"S<X\"],
 						\"subtypesInclude\":[\"Golem\"]
-					}
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"SpaceTargetSubeffect\",

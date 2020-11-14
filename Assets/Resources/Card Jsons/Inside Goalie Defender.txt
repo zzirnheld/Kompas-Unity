@@ -4,18 +4,15 @@
 	"effText":"When your adjacent Avatar is augmented, apply their Augment(s) to another character within 1 space of me.",
 	"effects":[
 		{
-			"triggerCondition":"Augment Attached",
+			"triggerCondition":"Augmented",
 			"trigger":
 			"{
 				\"blurb\":\"Goal Kick\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Coords Fit Restriction\"],
-					\"spaceRestriction\":
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
+					\"cardRestriction\":
 					{
-						\"spaceRestrictions\":[\"Card Here Fits Restriction\",\"Adjacent to Source\"],
-						\"hereFitsRestriction\":{
-							\"cardRestrictions\":[\"Avatar\",\"Friendly\"]
-						}
+						\"cardRestrictions\":[\"Board\",\"Avatar\",\"Friendly\"]
 					}
 				}
 			}",
@@ -28,13 +25,9 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"character within 2 spaces to goal-kick Augment to\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Within C Spaces\",\"Distinct Name from Other Targets\"],
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Within C Spaces\",\"Distinct Name from Other Targets\",\"Distinct from Source\"],
 						\"cSpaces\":2
 					}
-				}",
-				"{
-					\"subeffType\":\"TargetTargetsAugmentedCardSubeffect\",
-					\"targetIndex\":0
 				}",
 				"{
 					\"subeffType\":\"TargetAugmentsSubeffect\"
@@ -42,7 +35,7 @@
 				"{
 					\"subeffType\":\"ConditionalEndSubeffect\",
 					\"condition\":\"Number Targets <= Constant\",
-					\"constant\":3
+					\"constant\":2
 				}",
 				"{
 					\"subeffType\":\"AttachSubeffect\",
@@ -52,7 +45,7 @@
 					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
 					\"delete\":true,
 					\"remainingTargets\":3,
-					\"jumpTo\":5
+					\"jumpTo\":4
 				}"
 			]
 		}

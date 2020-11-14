@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Bestower of Memories",
-	"effText":"When turns start, resummon a character.\nThe first time each stack a character is summoned, resummon them.",
+	"effText":"When friendly turns start, resummon a character.\nThe first time each stack a character is summoned, resummon them.",
 	"effects":[
 		{
 			"triggerCondition":"Turn Start",
