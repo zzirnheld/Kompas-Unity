@@ -197,6 +197,8 @@ namespace KompasCore.Cards
         {
             zoomedInTex = Resources.Load<Texture>("Card Detailed Textures/" + cardFileName);
             zoomedOutTex = Resources.Load<Texture>("Unzoomed Card Textures/" + cardFileName);
+            if (zoomedInTex == null) zoomedInTex = zoomedOutTex;
+            else if (zoomedOutTex == null) zoomedOutTex = zoomedInTex;
         }
 
         /// <summary>

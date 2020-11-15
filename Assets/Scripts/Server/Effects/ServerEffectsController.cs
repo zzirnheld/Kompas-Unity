@@ -82,10 +82,10 @@ namespace KompasServer.Effects
         public void ResolveNextStackEntry()
         {
             var (stackable, context) = stack.Pop();
-            Debug.Log($"Resolving next stack entry: {stackable}, {context}");
             if (stackable == null) StackEmptied();
             else
             {
+                Debug.Log($"Resolving next stack entry: {stackable}, {context}");
                 foreach (var p in ServerGame.ServerPlayers) p.ServerNotifier.RequestNoResponse();
                 CurrStackEntry = stackable;
                 stackable.StartResolution(context);
