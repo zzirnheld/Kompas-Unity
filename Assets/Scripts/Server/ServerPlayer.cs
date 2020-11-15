@@ -68,7 +68,6 @@ namespace KompasServer.GameCore
 
         public void TryMove(GameCard toMove, int x, int y)
         {
-            Debug.Log($"Requested move {toMove?.CardName} to {x}, {y}");
             //if it's not a valid place to do, put the cards back
             if (serverGame.ValidMove(toMove, x, y)) toMove.Move(x, y, true);
             else ServerNotifier.NotifyPutBack();

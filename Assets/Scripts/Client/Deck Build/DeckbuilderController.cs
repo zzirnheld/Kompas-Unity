@@ -71,7 +71,7 @@ namespace KompasDeckbuilder
             }
 
             //load initially selected deck
-            Debug.Log("Load initially selected deck");
+            DeckNameDropdown.RefreshShownValue();
             LoadDeck(0);
         }
 
@@ -111,8 +111,6 @@ namespace KompasDeckbuilder
 
         public void LoadDeck(string deckName)
         {
-            Debug.Log($"Loading {deckName}");
-
             if (IsDeckDirty)
             {
                 Debug.Log($"{deckName} is dirty, showing confirm dialog instead");
@@ -120,6 +118,7 @@ namespace KompasDeckbuilder
                 return;
             }
 
+            Debug.Log($"Loading {deckName}");
             //then add new cards
             string filePath = deckFilesFolderPath + "/" + deckName + ".txt";
 
@@ -129,12 +128,8 @@ namespace KompasDeckbuilder
 
         public void LoadDeck(int i)
         {
-            if (i >= deckNames.Count)
-            {
-                Debug.LogError($"Tried to load deck at index {i} out of bounds");
-                return;
-            }
-            LoadDeck(deckNames[i]);
+            if (i < deckNames.Count) LoadDeck(deckNames[i]);
+            else Debug.LogError($"Tried to load deck at index {i} out of bounds");
         }
 
         public void ConfirmLoadDeck()
@@ -218,10 +213,7 @@ namespace KompasDeckbuilder
             {
                 Debug.Log($"Deleting {currDeckName}");
                 string deckFilePath = deckFilesFolderPath + "/" + currDeckName + ".txt";
-                if (File.Exists(deckFilePath))
-                {
-                    File.Delete(deckFilePath);
-                }
+                if (File.Exists(deckFilePath)) File.Delete(deckFilePath);
 
                 ClearDeck();
                 deckNames.RemoveAt(index);
@@ -238,16 +230,11 @@ namespace KompasDeckbuilder
                     currDeckName = deckNames[index];
                     DeckNameDropdown.value = index;
                 }
-                else
-                {
-                    currDeckName = "";
-                }
+                else currDeckName = "";
+
                 DeckNameDropdown.RefreshShownValue();
             }
-            else
-            {
-                ErrorDialog.ShowError(DeckDeleteFailedErrorMsg);
-            }
+            else ErrorDialog.ShowError(DeckDeleteFailedErrorMsg);
         }
 
         public void ImportDeck(string decklist, string deckName)

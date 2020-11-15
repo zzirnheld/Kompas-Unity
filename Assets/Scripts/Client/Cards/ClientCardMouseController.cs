@@ -67,11 +67,9 @@ namespace KompasClient.Cards
             //don't allow dragging cards if we're awaiting a target
             if (Card.Game.targetMode != Game.TargetMode.Free)
             {
-                Debug.Log($"On mouse up called for {Card.CardName} while in a non-free target mode {Card.Game.targetMode}. Putting back.");
                 Card.PutBack();
                 return;
             }
-            else Debug.Log($"On mouse up called for {Card.CardName} at {transform.position}");
 
             //get coords w/r/t gameboard
             var boardLocalPosition = Game.boardObject.transform.InverseTransformPoint(Card.gameObject.transform.position);
@@ -86,7 +84,7 @@ namespace KompasClient.Cards
                 if (Card.Location == CardLocation.Field)
                 {
                     var cardThere = Game.boardCtrl.GetCardAt(x, y);
-                    Debug.Log($"Trying to move/attack to {x}, {y}. The controller index, if any, is {(cardThere == null ? -1 : cardThere.ControllerIndex)}");
+                    // Debug.Log($"Trying to move/attack to {x}, {y}. The controller index, if any, is {(cardThere == null ? -1 : cardThere.ControllerIndex)}");
                     //then check if it's an attack or not
                     if (cardThere != null && cardThere.Controller != Card.Controller)
                         ClientGame.clientNotifier.RequestAttack(Card, cardThere);
@@ -96,7 +94,7 @@ namespace KompasClient.Cards
                 //otherwise, it is being played from somewhere like the hand or discard
                 else ClientGame.clientNotifier.RequestPlay(Card, x, y);
             }
-            else Debug.Log($"Card {Card.CardName} dragged to somewhere off the board. Only putting back.");
+            //else Debug.Log($"Card {Card.CardName} dragged to somewhere off the board. Only putting back.");
 
             //regardless, put the card where it goes until we know where to properly put it
             Card.PutBack();

@@ -14,7 +14,7 @@ namespace KompasClient.Cards
 
         public override bool Remove(IStackable stackSrc = null)
         {
-            Debug.LogWarning("Remove called for Avatar - doing nothing");
+            // Debug.LogWarning("Remove called for Avatar - doing nothing");
             if (Summoned) return base.Remove(stackSrc);
             else return Location == CardLocation.Nowhere;
         }

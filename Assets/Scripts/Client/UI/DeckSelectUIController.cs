@@ -50,7 +50,7 @@ namespace KompasClient.UI
             }
 
             //load initially selected deck
-            Debug.Log("Load initially selected deck");
+            DeckNameDropdown.RefreshShownValue();
             LoadDeck(0);
         }
 

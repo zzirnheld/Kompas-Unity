@@ -188,6 +188,7 @@ namespace KompasCore.Cards
             get => location;
             set
             {
+                Debug.Log($"Card {ID} location set to {value}");
                 location = value;
                 if (cardCtrl == null) Debug.LogWarning($"Missing a card control. Is this a debug card?");
                 else cardCtrl.SetPhysicalLocation(location);
@@ -227,7 +228,7 @@ namespace KompasCore.Cards
         {
             if(serializedCard == null)
             {
-                Debug.LogError($"Tried to reset card whose info was never set!");
+                Debug.Log("Tried to reset card whose info was never set! This should only happen at game start");
                 return;
             }
 
@@ -440,13 +441,11 @@ namespace KompasCore.Cards
         //so that notify stuff can be sent in the server
         public virtual bool Remove(IStackable stackSrc = null)
         {
-            Debug.Log($"Removing {CardName} id {ID} from {Location}");
+            // Debug.Log($"Removing {CardName} id {ID} from {Location}");
 
             switch (Location)
             {
-                case CardLocation.Nowhere:
-                    Debug.Log($"Removing {CardName} from nowehre");
-                    return true;
+                case CardLocation.Nowhere: return true;
                 case CardLocation.Field:
                     if (AugmentedCard != null) return Detach(stackSrc);
                     else return Game.boardCtrl.RemoveFromBoard(this);

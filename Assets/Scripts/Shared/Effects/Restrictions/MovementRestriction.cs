@@ -75,7 +75,10 @@ namespace KompasCore.Effects
             }
         }
 
-        /*private bool RestrictionValidWithDebug(string restriction, int x, int y, bool isSwapTarget, bool byEffect)
+        /* This exists to debug a card's movement restriction,
+         * but should not be usually used because it prints a ton whenever
+         * the game checks to see if a person has a response.
+         * private bool RestrictionValidWithDebug(string restriction, int x, int y, bool isSwapTarget, bool byEffect)
         {
             bool valid = RestrictionValid(restriction, x, y, isSwapTarget, byEffect);
             if (!valid) Debug.LogWarning($"{Card.CardName} cannot move to {x}, {y} because it flouts the movement restriction {restriction}");

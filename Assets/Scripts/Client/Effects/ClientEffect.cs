@@ -36,7 +36,6 @@ namespace KompasClient.Effects
                 catch (System.ArgumentException)
                 {
                     Debug.LogError($"Failed to load trigger of type {se.triggerCondition} from json {se.trigger}");
-                    throw;
                 }
             }
 

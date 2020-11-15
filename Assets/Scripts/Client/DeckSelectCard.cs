@@ -21,11 +21,6 @@ namespace KompasClient.UI
         {
             detailedSprite = Resources.Load<Sprite>("Detailed Sprites/" + cardFileName);
             simpleSprite = Resources.Load<Sprite>("Simple Sprites/" + cardFileName);
-            //check if either is null. if so, log to debug and return
-            if (detailedSprite == null || simpleSprite == null)
-            {
-                Debug.LogError("Could not find sprite with name " + cardFileName);
-            }
             Image.sprite = simpleSprite;
         }
 

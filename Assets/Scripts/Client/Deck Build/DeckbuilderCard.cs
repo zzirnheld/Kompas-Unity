@@ -11,7 +11,6 @@ namespace KompasDeckbuilder
         protected DeckbuilderController deckbuildCtrl => cardSearchController.DeckbuilderCtrl;
 
         protected Image image;
-        private bool InDeck;
 
         public abstract string BlurbString { get; }
 
@@ -24,7 +23,6 @@ namespace KompasDeckbuilder
         {
             SetInfo(card);
             SetImage(CardName);
-            InDeck = inDeck;
             cardSearchController = searchCtrl;
         }
 
@@ -54,11 +52,6 @@ namespace KompasDeckbuilder
         {
             detailedSprite = Resources.Load<Sprite>("Detailed Sprites/" + cardFileName);
             simpleSprite = Resources.Load<Sprite>("Simple Sprites/" + cardFileName);
-            //check if either is null. if so, log to debug and return
-            if (detailedSprite == null || simpleSprite == null)
-            {
-                Debug.LogError("Could not find sprite with name " + cardFileName);
-            }
             image.sprite = simpleSprite;
         }
 
@@ -76,7 +69,6 @@ namespace KompasDeckbuilder
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            Debug.Log($"Pointer Up on {CardName}");
             deckbuildCtrl.CurrentDrag = null;
         }
 

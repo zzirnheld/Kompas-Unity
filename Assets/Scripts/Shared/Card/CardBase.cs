@@ -116,13 +116,13 @@ namespace KompasCore.Cards
             //(check this by card name. cards should never have a pic that doesn't match their name)
             if (card.cardName != CardName)
             {
-                Debug.Log($"Names are different, changing card pics to match name {card.cardName}");
+                //Debug.Log($"Names are different, changing card pics to match name {card.cardName}");
                 detailedSprite = Resources.Load<Sprite>("Detailed Sprites/" + card.cardName);
                 simpleSprite = Resources.Load<Sprite>("Simple Sprites/" + card.cardName);
                 if (detailedSprite == null) detailedSprite = simpleSprite;
                 if (simpleSprite == null) simpleSprite = detailedSprite;
             }
-            else Debug.Log("Names match. Set Info not updating pics.");
+            //else Debug.Log("Names match. Set Info not updating pics.");
 
             Subtext = card.subtext;
             SpellSubtype = card.spellType;

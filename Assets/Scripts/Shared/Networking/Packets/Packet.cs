@@ -114,8 +114,9 @@ namespace KompasCore.Networking
 
         /// <summary>
         /// Contains the command that is sent.
+        /// Default is invalid to raise a problem if a sent packet has no command.
         /// </summary>
-        public string command;
+        public string command = Invalid;
 
         //Json serializer needs a parameterless constructor
         public Packet() { }

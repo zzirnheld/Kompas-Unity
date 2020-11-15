@@ -101,7 +101,8 @@ namespace KompasCore.Effects
         private bool EvaluateRestrictionWithDebug(string restriction, IEnumerable<GameCard> cards)
         {
             bool valid = EvaluateRestriction(restriction, cards);
-            if (!valid) Debug.Log($"Invalid list of cards {string.Join(", ", cards.Select(c => c.CardName))} flouts list restriction {restriction}");
+            if (!valid) Debug.Log($"Invalid list of cards {string.Join(", ", cards.Select(c => c.CardName))} " +
+                $"flouts list restriction {restriction}");
             return valid;
         }
 
@@ -115,18 +116,16 @@ namespace KompasCore.Effects
         {
             if (choices.Except(potentialTargets).Any())
             {
-                /*Debug.Log($"Some cards in list of choices {string.Join(",", choices.Select(c => c.CardName))}" +
-                    $" don't appear in the list of potential targets {string.Join(",", potentialTargets.Select(c => c.CardName))}.");*/
-                Debug.Log("Some choices don't appear in the list of potential targets");
+                Debug.Log($"Some cards in list of choices {string.Join(",", choices.Select(c => c.CardName))}" +
+                    $" don't appear in the list of potential targets {string.Join(",", potentialTargets.Select(c => c.CardName))}.");
                 return false;
             }
+            
             return listRestrictions.All(r => EvaluateRestrictionWithDebug(r, choices));
         }
 
-        private bool EvaluateValidListChoice(string restriction, IEnumerable<GameCard> potentialTargets)
+        private bool RestrictionAllowsValidChoice(string restriction, IEnumerable<GameCard> potentialTargets)
         {
-            Debug.Log($"Testing list restriction {restriction} for potential valid targets " +
-                $"{string.Join(", ", potentialTargets.Select(c => c.CardName))}");
             switch (restriction)
             {
                 case CanPayCost:
@@ -135,11 +134,9 @@ namespace KompasCore.Effects
                     foreach(var card in potentialTargets.OrderBy(c => c.Cost))
                     {
                         if (i > minCanChoose) break;
-                        Debug.Log($"Testing card number {i}, {card.CardName} with cost {card.Cost}");
                         costAccumulation += card.Cost;
                         i++;
                     }
-                    Debug.Log($"Total min cost: {costAccumulation}");
                     if(i < minCanChoose) return false;
                     return costAccumulation <= Subeffect.Controller.Pips;
                 case MinCanChoose: return potentialTargets.Count() >= minCanChoose;
@@ -149,6 +146,6 @@ namespace KompasCore.Effects
         }
 
         public bool ExistsValidChoice(IEnumerable<GameCard> potentialTargets) 
-            => listRestrictions.All(r => EvaluateValidListChoice(r, potentialTargets));
+            => listRestrictions.All(r => RestrictionAllowsValidChoice(r, potentialTargets));
     }
 }

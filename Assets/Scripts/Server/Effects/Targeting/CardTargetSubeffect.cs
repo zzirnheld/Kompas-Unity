@@ -11,10 +11,13 @@ namespace KompasServer.Effects
 
         public bool AwaitingTarget { get; protected set; }
 
-        protected virtual void GetTargets()
+        protected virtual int[] PotentialTargetIds
+            => Game.Cards.Where(c => cardRestriction.Evaluate(c)).Select(c => c.ID).ToArray();
+
+        protected virtual void GetTargets(int[] potentialTargetIds)
         {
             AwaitingTarget = true;
-            int[] potentialTargetIds = Game.Cards.Where(c => cardRestriction.Evaluate(c)).Select(c => c.ID).ToArray();
+            Debug.Log($"Asking for card target among ids {string.Join(", ", potentialTargetIds)}");
             EffectController.ServerNotifier.GetCardTarget(Source.CardName, cardRestriction.blurb, potentialTargetIds, null);
         }
 
@@ -26,8 +29,10 @@ namespace KompasServer.Effects
 
         public override bool Resolve()
         {
+            var potentialTargetIds = PotentialTargetIds;
+
             //check first that there exist valid targets. if there exist no valid targets, finish resolution here
-            if (!ThisCard.Game.ExistsCardTarget(cardRestriction))
+            if (!potentialTargetIds.Any())
             {
                 Debug.Log($"No target exists for {ThisCard.CardName} effect");
                 return ServerEffect.EffectImpossible();
@@ -36,7 +41,7 @@ namespace KompasServer.Effects
             //ask the client that is this effect's controller for a target. 
             //give the card if whose effect it is, the index of the effect, and the index of the subeffect
             //since only the server resolves effects, this should never be called for a client. 
-            GetTargets();
+            GetTargets(potentialTargetIds);
 
             //then wait for the network controller to call the continue method
             return false;
@@ -57,9 +62,11 @@ namespace KompasServer.Effects
                 EffectController.ServerNotifier.AcceptTarget();
                 return ServerEffect.ResolveNextSubeffect();
             }
-            else GetTargets();
-
-            return false;
+            else
+            {
+                GetTargets(PotentialTargetIds);
+                return false;
+            }
         }
     }
 }

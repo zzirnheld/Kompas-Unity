@@ -168,8 +168,6 @@ namespace KompasCore.Effects
         {
             if (potentialTarget == null) return false;
 
-            /*Debug.Log($"Considering restriction {restriction} for card {potentialTarget.CardName} when X equals {x}, " +
-                $"controller is {(Controller == null ? -1 : Controller.index)}, potential target controlled by {potentialTarget.ControllerIndex}");*/
             switch (restriction)
             {
                 //targets
@@ -274,12 +272,14 @@ namespace KompasCore.Effects
             }
         }
 
+        /* This exists to debug a card restriction,
+         * but should not be usually used because it prints a ton 
         public bool RestrictionValidDebug(string restriction, GameCard potentialTarget, int x)
         {
             bool answer = RestrictionValid(restriction, potentialTarget, x);
             // if (!answer) Debug.Log($"{potentialTarget.CardName} flouts {restriction}");
             return answer;
-        }
+        } */
 
         /// <summary>
         /// Checks whether the card in question fits the relevant retrictions, for the given value of X
@@ -291,7 +291,7 @@ namespace KompasCore.Effects
         {
             if (potentialTarget == null) return false;
 
-            return cardRestrictions.All(r => RestrictionValidDebug(r, potentialTarget, x));
+            return cardRestrictions.All(r => RestrictionValid(r, potentialTarget, x));
         }
 
         /// <summary>

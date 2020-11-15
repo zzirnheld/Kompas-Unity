@@ -27,12 +27,9 @@ namespace KompasCore.Networking
 
         public virtual void Update()
         {
-            if (tcpClient == null) return;
-            NetworkStream networkStream = tcpClient.GetStream();
+            NetworkStream networkStream = tcpClient?.GetStream();
             //if there's nothing to be read, return
-            if (!tcpClient.GetStream().DataAvailable) return;
-
-            //Debug.Log("Data available");
+            if (networkStream == null || !networkStream.DataAvailable) return;
 
             if (awaitingInt) ReadInt(networkStream);
             else ReadPacket(networkStream);
@@ -70,10 +67,6 @@ namespace KompasCore.Networking
         public void SendPacket(Packet packet)
         {
             if (packet == null) return;
-            /*{
-                Debug.Log("Tried to send a null packet");
-                return;
-            }*/
 
             NetworkStream networkStream = tcpClient.GetStream();
             // we won't use a binary writer, because the endianness is unhelpful

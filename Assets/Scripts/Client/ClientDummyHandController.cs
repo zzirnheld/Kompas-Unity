@@ -19,7 +19,6 @@ public class ClientDummyHandController : ClientHandController
         card.SetClientGame(clientGame);
         dummyHand.Add(card);
         AddToHand(card);
-        Debug.Log("Incrementing dummy hand");
     }
 
     public void DecrementHand() => RemoveFromHand(dummyHand.LastOrDefault());

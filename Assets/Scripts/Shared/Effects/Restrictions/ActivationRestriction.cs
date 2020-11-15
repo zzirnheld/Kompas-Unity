@@ -37,13 +37,12 @@ namespace KompasCore.Effects
             Effect = eff;
             existsRestriction.Initialize(eff.Source, eff.Controller, eff);
             if (activationRestrictions.Contains("Default")) activationRestrictions.AddRange(DefaultRestrictions);
-            Debug.Log($"Initializing activation restriction for {Card.CardName} with restrictions: {string.Join(", ", activationRestrictions)}");
-            //Debug.Log($"Serialized version: {JsonUtility.ToJson(this)}");
+            Debug.Log($"Initializing activation restriction for {Card.CardName} " +
+                $"with restrictions: {string.Join(", ", activationRestrictions)}");
         }
 
         private bool RestrictionValid(string r, Player activator)
         {
-            //Debug.Log($"Considering activation restriction {r} for {Effect.Source.CardName}");
             if(Card == null || Card.Game == null)
             {
                 //stuff is still getting set up
@@ -67,18 +66,21 @@ namespace KompasCore.Effects
             }
         }
 
+        /* This exists to debug a card's activation restriction,
+         * but should not be usually used because it prints a ton whenever
+         * a card's effect buttons are considered, or when the game checks to see if a person has a response.
         public bool RestrictionValidWithDebug(string restriction, Player activator)
         {
             bool valid = RestrictionValid(restriction, activator);
-            /*if (!valid) Debug.Log($"Card {Card.CardName} effect # {Effect.EffectIndex} activation restriction " +
-                $"flouts restriction {restriction} for activator {activator.index}");*/
+            if (!valid) Debug.Log($"Card {Card.CardName} effect # {Effect.EffectIndex} activation restriction " +
+                $"flouts restriction {restriction} for activator {activator.index}");
             return valid;
-        }
+        } */
 
         public bool Evaluate(Player activator)
-            => activationRestrictions.All(r => RestrictionValidWithDebug(r, activator));
+            => activationRestrictions.All(r => RestrictionValid(r, activator));
 
         public bool EvaluateAtAll(Player activator)
-            => activationRestrictions.Intersect(AtAllRestrictions).All(r => RestrictionValidWithDebug(r, activator));
+            => activationRestrictions.Intersect(AtAllRestrictions).All(r => RestrictionValid(r, activator));
     }
 }

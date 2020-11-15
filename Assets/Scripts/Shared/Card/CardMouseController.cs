@@ -53,7 +53,7 @@ namespace KompasCore.Cards
             //don't do anything if we're over an event system object, 
             //because that would let us click on cards underneath prompts
             if (EventSystem.current.IsPointerOverGameObject()) return;
-            Debug.Log($"On mouse up on {Card.CardName} in target mode {Game.targetMode}");
+            Debug.Log($"On mouse up on {Card.CardName} in target mode {Game.targetMode} at {transform.position}");
 
             //select cards if the player releases the mouse button while over one
             Game.uiCtrl.SelectCard(Card, true);

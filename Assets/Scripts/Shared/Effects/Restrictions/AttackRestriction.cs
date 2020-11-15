@@ -48,7 +48,6 @@ namespace KompasCore.Effects
                 return false;
             }
 
-            //Debug.Log($"Considering restriction {restriction} for attack of {Card.CardName} on {(defender == null ? "" : defender.CardName)}");
             switch (restriction)
             {
                 case Default: return true;
@@ -66,17 +65,20 @@ namespace KompasCore.Effects
             }
         }
 
+        /* This exists to debug a card's attack restriction,
+         * but should not be usually used because it prints a ton whenever
+         * the game checks to see if a person has a response.
         private bool RestrictionValidWithDebug(string restriction, GameCard defender)
         {
             bool valid = RestrictionValid(restriction, defender);
             //if (!valid) Debug.LogWarning($"{Card.CardName} cannot attack {defender} because it flouts the attack restriction {restriction}");
             return valid;
-        }
+        } */
 
         public bool Evaluate(GameCard defender)
         {
             if (defender == null) return false;
-            return attackRestrictions.All(r => RestrictionValidWithDebug(r, defender));
+            return attackRestrictions.All(r => RestrictionValid(r, defender));
         }
 
         /// <summary>
@@ -86,7 +88,7 @@ namespace KompasCore.Effects
         /// <returns><see langword="true"/> If this character can attack at all, 
         /// <see langword="false"/> otherwise.</returns>
         public bool EvaluateAtAll()
-            => attackRestrictions.Intersect(AtAllRestrictions).All(r => RestrictionValidWithDebug(r, null));
+            => attackRestrictions.Intersect(AtAllRestrictions).All(r => RestrictionValid(r, null));
 
         /// <summary>
         /// Checks to see if this card can currently attack (any card).

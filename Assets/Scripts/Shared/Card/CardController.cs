@@ -51,6 +51,8 @@ namespace KompasCore.Cards
 
         private string currImageCardName;
         private bool currImageZoomLevel;
+        private Texture zoomedInTex;
+        private Texture zoomedOutTex;
 
         public int N 
         {
@@ -191,28 +193,24 @@ namespace KompasCore.Cards
         public void SetRotation()
             => card.transform.eulerAngles = new Vector3(0, 180 + 180 * card.ControllerIndex, 0);
 
+        private void ReloadImages(string cardFileName)
+        {
+            zoomedInTex = Resources.Load<Texture>("Card Detailed Textures/" + cardFileName);
+            zoomedOutTex = Resources.Load<Texture>("Unzoomed Card Textures/" + cardFileName);
+        }
+
         /// <summary>
         /// Set the sprites of this card and gameobject
         /// </summary>
         public void SetImage(string cardFileName, bool zoomed)
         {
             if (cardFileName == currImageCardName && currImageZoomLevel == zoomed) return;
+            if (currImageCardName != cardFileName) ReloadImages(cardFileName);
 
             currImageCardName = cardFileName;
             currImageZoomLevel = zoomed;
 
-            Texture pic;
-            if (zoomed) pic = Resources.Load<Texture>("Card Detailed Textures/" + cardFileName);
-            else pic = Resources.Load<Texture>("Unzoomed Card Textures/" + cardFileName);
-
-            //check if either is null. if so, log to debug and return
-            if (pic == null)
-            {
-                Debug.Log("Could not find sprite with name " + cardFileName);
-                return;
-            }
-
-            cardFaceRenderer.material.mainTexture = pic;
+            cardFaceRenderer.material.mainTexture = zoomed ? zoomedInTex : zoomedOutTex;
         }
 
 
@@ -297,19 +295,9 @@ namespace KompasCore.Cards
             if (card.CardType == 'S' && card.SpellSubtype == CardBase.RadialSubtype) aoeController.Show(card.Arg);
         }
 
-        //public void ShowValidTarget(bool valid = true) => validTargetObject.SetActive(valid);
-        public void ShowValidTarget(bool valid = true)
-        {
-            validTargetObject.SetActive(valid);
-            Debug.Log($"Showing as current target? {valid}");
-        }
+        public void ShowValidTarget(bool valid = true) => validTargetObject.SetActive(valid);
 
-        //public void ShowCurrentTarget(bool current = true) => currentTargetObject.SetActive(current);
-        public void ShowCurrentTarget(bool current = true)
-        {
-            currentTargetObject.SetActive(current);
-            Debug.Log($"Showing as current target? {current}");
-        }
+        public void ShowCurrentTarget(bool current = true) => currentTargetObject.SetActive(current);
 
         public void HideTarget()
         {

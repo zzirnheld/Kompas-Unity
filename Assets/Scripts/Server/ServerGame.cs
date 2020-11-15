@@ -218,7 +218,7 @@ namespace KompasServer.GameCore
 
         public void Attack(GameCard attacker, GameCard defender, ServerPlayer instigator, bool playerInitiated = false)
         {
-            Debug.Log($"ServerNetworkController {attacker.CardName} attacking {defender.CardName} at {defender.BoardX}, {defender.BoardY}");
+            Debug.Log($"{attacker.CardName} attacking {defender.CardName} at {defender.BoardX}, {defender.BoardY}");
             //push the attack to the stack, then check if any player wants to respond before resolving it
             var attack = new ServerAttack(this, instigator, attacker, defender);
             EffectsController.PushToStack(attack, new ActivationContext());
@@ -237,7 +237,7 @@ namespace KompasServer.GameCore
                 return true;
             }
 
-            Debug.Log("Trying to play " + card.CardName + " to " + toX + ", " + toY);
+            Debug.Log($"Checking validity of playing {card.CardName} to {toX}, {toY}");
             return card != null
                 && boardCtrl.ValidIndices(toX, toY)
                 && boardCtrl.GetCardAt(toX, toY) == null
@@ -252,8 +252,7 @@ namespace KompasServer.GameCore
                 return true;
             }
 
-            Debug.Log($"Checking valid augment of {card.CardName} to {toX}, {toY}, on {boardCtrl.GetCardAt(toX, toY)}");
-
+            Debug.Log($"Checking validity augment of {card.CardName} to {toX}, {toY}, on {boardCtrl.GetCardAt(toX, toY)}");
             return card != null
                 && card.CardType == 'A'
                 && boardCtrl.ValidIndices(toX, toY)
@@ -269,6 +268,7 @@ namespace KompasServer.GameCore
                 return true;
             }
 
+            Debug.Log($"Checking validity of moving {toMove.CardName} to {toX}, {toY}");
             if (toMove.Position == (toX, toY) || (toMove.IsAvatar && !toMove.Summoned)
                 || EffectsController.CurrStackEntry != null) return false;
             return toMove.MovementRestriction.EvaluateNormalMove(toX, toY);
@@ -282,6 +282,7 @@ namespace KompasServer.GameCore
                 return attacker != null && defender != null;
             }
 
+            Debug.Log($"Checking validity of attack of {attacker.CardName} on {defender} by {instigator.index}");
             return attacker.AttackRestriction.Evaluate(defender);
         }
         #endregion

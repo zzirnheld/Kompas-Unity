@@ -84,21 +84,23 @@ namespace KompasClient.GameCore
         {
             if(CurrSearchData == null)
             {
-                Debug.Log($"Called target card on {nextTarget.CardName} while there's no list of potential targets");
+                Debug.LogError($"Called target card on {nextTarget.CardName} while there's no list of potential targets");
                 return;
             }
 
             //check if the target is a valid potential target
             if (!CurrSearchData.Value.toSearch.Contains(nextTarget))
+            {
                 Debug.LogError($"Tried to target card {nextTarget.CardName} that isn't a valid target");
+                return;
+            }
 
             CurrSearchData.Value.searched.Add(nextTarget);
             nextTarget.cardCtrl.ShowCurrentTarget();
             nextTarget.cardCtrl.ShowValidTarget(false);
-            Debug.Log($"Added {nextTarget.CardName}, targets are now {string.Join(",", CurrSearchData.Value.searched.Select(c => c.CardName))}");
+            // Debug.Log($"Added {nextTarget.CardName}, targets are now {string.Join(",", CurrSearchData.Value.searched.Select(c => c.CardName))}");
 
             var listRestriction = CurrSearchData.Value.listRestriction;
-            Debug.Log(JsonUtility.ToJson(listRestriction));
 
             if (listRestriction == null) SendTargets();
             //only do the rest of the operations if adding it doesn't violate the list restriction
@@ -117,7 +119,8 @@ namespace KompasClient.GameCore
 
         public void SendTargets()
         {
-            Debug.Log($"Sending targets while in target mode {clientGame.targetMode}");
+            Debug.Log($"Sending targets {string.Join(",", CurrSearchData.Value.searched.Select(c => c.CardName))} " +
+                $"while in target mode {clientGame.targetMode}");
             if (clientGame.targetMode == ClientGame.TargetMode.HandSize)
                 clientGame.clientNotifier.RequestHandSizeChoices(CurrSearchData.Value.searched.Select(c => c.ID).ToArray());
             else if (CurrSearchData.Value.listRestriction == null)

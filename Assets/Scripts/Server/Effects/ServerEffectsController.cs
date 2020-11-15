@@ -193,7 +193,7 @@ namespace KompasServer.Effects
         {
             if (CurrStackEntry != null)
             {
-                Debug.LogWarning($"Tried to check for response while {CurrStackEntry?.Source?.CardName} is resolving");
+                Debug.LogWarning($"Tried to check for response while {CurrStackEntry} is resolving");
                 return;
             }
 
@@ -270,8 +270,6 @@ namespace KompasServer.Effects
 
         public void TriggerForCondition(string condition, ActivationContext context)
         {
-            Debug.Log($"Attempting to trigger {condition}, with context {context}");
-
             //first resolve any hanging effects
             ResolveHangingEffects(condition, context);
 
@@ -284,7 +282,8 @@ namespace KompasServer.Effects
                     .ToArray();
                 if (!validTriggers.Any()) return;
                 var triggers = new TriggersTriggered(triggers: validTriggers, context: context);
-                Debug.Log($"Triggers triggered: {string.Join(", ", triggers.triggers.Select(t => t.blurb))}");
+                Debug.Log($"Triggers triggered for condition {condition}, context {context}: " +
+                    $"{string.Join(", ", triggers.triggers.Select(t => t.blurb))}");
                 lock (triggerStackLock)
                 {
                     triggeredTriggers.Enqueue(triggers);
