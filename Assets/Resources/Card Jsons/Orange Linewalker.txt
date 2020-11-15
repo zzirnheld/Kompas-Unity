@@ -13,11 +13,11 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"SpendMovementSubeffect\",
-					\"xModifier\":1
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"SpendMovementSubeffect\",
+					\"xModifier\":1
 				}",
 				"{
 					\"subeffType\":\"SpaceTargetSubeffect\",
@@ -46,7 +46,11 @@
 					\"subeffType\":\"ChooseOptionSubeffect\",
 					\"ChoiceBlurb\":\"Reshuffle your hand and draw X?\",
 					\"OptionBlurbs\":[\"Yes\",\"No\"],
-					\"OptionJumpIndices\":[1,5]
+					\"OptionJumpIndices\":[1,6]
+				}",
+				"{
+					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
+					\"jumpTo\":6
 				}",
 				"{
 					\"subeffType\":\"TargetAllSubeffect\",
@@ -68,11 +72,14 @@
 					\"xMultiplier\":1
 				}",
 				"{
+					\"subeffType\":\"ClearOnImpossibleSubeffect\"
+				}",
+				"{
 					\"subeffType\":\"ChooseOptionSubeffect\",
 					\"playerIndex\":1,
 					\"ChoiceBlurb\":\"Reshuffle your hand and draw X?\",
 					\"OptionBlurbs\":[\"Yes\",\"No\"],
-					\"OptionJumpIndices\":[6,100]
+					\"OptionJumpIndices\":[8,100]
 				}",
 				"{
 					\"subeffType\":\"TargetAllSubeffect\",
@@ -87,7 +94,7 @@
 				"{
 					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
 					\"delete\":true,
-					\"jumpTo\":7
+					\"jumpTo\":9
 				}",
 				"{
 					\"subeffType\":\"DrawXSubeffect\",

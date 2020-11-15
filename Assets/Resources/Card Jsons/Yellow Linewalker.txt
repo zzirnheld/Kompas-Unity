@@ -13,11 +13,11 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"SpendMovementSubeffect\",
-					\"xModifier\":1
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"SpendMovementSubeffect\",
+					\"xModifier\":1
 				}",
 				"{
 					\"subeffType\":\"SpaceTargetSubeffect\",
