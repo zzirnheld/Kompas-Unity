@@ -8,7 +8,7 @@
 
         private void AskForOptionChoice()
         {
-            EffectController.ServerNotifier.ChooseEffectOption(Source.CardName, ChoiceBlurb, OptionBlurbs);
+            ServerPlayer.ServerNotifier.ChooseEffectOption(Source.CardName, ChoiceBlurb, OptionBlurbs);
         }
 
         public override bool Resolve()

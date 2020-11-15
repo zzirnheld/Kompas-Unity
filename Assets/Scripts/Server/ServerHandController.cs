@@ -19,7 +19,9 @@ namespace KompasServer.GameCore
             var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
             EffectsController.TriggerForCondition(Trigger.Rehand, context);
             ServerNotifier.NotifyRehand(card);
-            return base.AddToHand(card);
+            bool success = base.AddToHand(card);
+            if(success) card.ResetCard();
+            return success;
         }
     }
 }

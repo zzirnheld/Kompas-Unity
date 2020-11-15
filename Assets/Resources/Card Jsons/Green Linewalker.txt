@@ -1,0 +1,62 @@
+{
+	"cardType":67,
+	"cardName":"Green Linewalker",
+	"effText":"Linewalk.\nWhen I move X spaces, give characters within 1 space of me +X W. (This includes me).",
+	"effects":[
+		{
+			"blurb":"Linewalk",
+			"activationRestriction":{
+				"activationRestrictions":[
+					"Friendly Turn",
+					"Default"
+				]
+			},
+			"subeffects":[
+				"{
+					\"subeffType\":\"SpendMovementSubeffect\",
+					\"xModifier\":1
+				}",
+				"{
+					\"subeffType\":\"TargetThisSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"to Linewalk to\",
+						\"spaceRestrictions\":[\"Empty\",\"On Target's Diagonal\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"MoveSubeffect\"
+				}"
+			]
+		},
+		{
+			"blurb":"Red Linewalked",
+			"triggerCondition":"Move",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"ChangeAllNESWSubeffect\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Within C Spaces\"],
+						\"cSpaces\":1
+					},
+					\"wMult\":1
+				}"
+			]
+		}
+	],
+	"n":1,
+	"e":3,
+	"s":5,
+	"w":1,
+	"subtypeText":"Linewalker Mage"
+}

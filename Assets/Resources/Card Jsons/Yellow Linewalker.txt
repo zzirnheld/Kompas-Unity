@@ -1,0 +1,57 @@
+{
+	"cardType":67,
+	"cardName":"Yellow Linewalker",
+	"effText":"Linewalk.\nWhen I move X spaces, increase the leyload X.",
+	"effects":[
+		{
+			"blurb":"Linewalk",
+			"activationRestriction":{
+				"activationRestrictions":[
+					"Friendly Turn",
+					"Default"
+				]
+			},
+			"subeffects":[
+				"{
+					\"subeffType\":\"SpendMovementSubeffect\",
+					\"xModifier\":1
+				}",
+				"{
+					\"subeffType\":\"TargetThisSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"to Linewalk to\",
+						\"spaceRestrictions\":[\"Empty\",\"On Target's Diagonal\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"MoveSubeffect\"
+				}"
+			]
+		},
+		{
+			"blurb":"Yellow Linewalked",
+			"triggerCondition":"Move",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"ChangeLeyloadSubeffect\",
+					\"xMultiplier\":1
+				}"
+			]
+		}
+	],
+	"n":1,
+	"e":5,
+	"s":5,
+	"w":5,
+	"subtypeText":"Linewalker Mage"
+}

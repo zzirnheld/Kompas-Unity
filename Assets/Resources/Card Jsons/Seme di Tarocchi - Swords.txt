@@ -1,7 +1,7 @@
 {
 	"cardType":65,
 	"cardName":"Seme di Tarocchi - Swords",
-	"effText":"When you draw, I give this character +1W.",
+	"effText":"When you draw X, I give this character +X W.",
 	"effects":[
 		{
 			"triggerCondition":"Draw",
@@ -16,8 +16,8 @@
 					\"subeffType\":\"TargetAugmentedCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"wChange\":1
+					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"wMult\":1
 				}"
 			]
 		}
