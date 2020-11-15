@@ -61,7 +61,7 @@
 				}",
 				"{
 					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"nChange\":5,
+					\"nChange\":2,
 					\"wChange\":-5
 				}",
 				"{
