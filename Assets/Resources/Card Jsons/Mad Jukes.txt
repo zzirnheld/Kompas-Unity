@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Mad Jukes",
-	"effText":"When a friendly character wielding Augments with total A X moves, give adjacent characters -X W.\nWhen turns start, unless there's a friendly Sportsball, annihilate me.",
+	"effText":"When a friendly character wielding Augments with total A X moves, give adjacent characters -X W.\nWhen turns start, unless there's a friendly Sportsball Augment, annihilate me.",
 	"effects":[
 		{
 			"triggerCondition":"Move",
@@ -62,7 +62,7 @@
 					\"condition\":\"Any Fit Restriction\",
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Board\"],
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Board\",\"Is Augment\"],
 						\"subtypesInclude\":[\"Sportsball\"]
 					}
 				}",

@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"XIX - The Sun",
-	"effText":"When you draw, I can give a character -1E and another +1E.",
+	"effText":"When you draw, I can give a Summoned character -1E and another +1E.",
 	"effects":[
 		{
 			"triggerCondition":"Draw",
@@ -19,7 +19,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"character for Sun to give -1E\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\"]
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Summoned\"]
 					}
 				}",
 				"{
@@ -42,10 +42,10 @@
 			]
 		}
 	],
-	"n":2,
-	"e":9,
+	"n":1,
+	"e":8,
 	"s":9,
-	"w":9,
+	"w":8,
 	"subtypes":["Tarocco","Mage"],
 	"subtypeText":"Tarocco Mage"
 }

@@ -30,7 +30,7 @@
 	],
 	"n":2,
 	"e":2,
-	"s":4,
+	"s":3,
 	"w":2,
 	"subtypeText":"Cultist Warrior"
 }
