@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"MAXIMUM OVERDRIVE",
-	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nGive a character +2N and -5W. Annihilate me.",
+	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nGive a character +5N and -5W. Annihilate me.",
 	"effects":[
 		{
 			"triggerCondition":"Discard",
@@ -61,7 +61,7 @@
 				}",
 				"{
 					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"nChange\":2,
+					\"nChange\":5,
 					\"wChange\":-5
 				}",
 				"{

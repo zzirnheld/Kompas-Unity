@@ -60,7 +60,7 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
-					\"jumpTo\":4
+					\"jumpTo\":6
 				}",
 				"{
 					\"subeffType\":\"CardTargetSubeffect\",
