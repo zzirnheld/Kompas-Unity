@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"XIX - The Sun",
-	"effText":"When you draw, I can give a Summoned character -1E and another +1E.",
+	"effText":"When you draw, I can give a Summoned character -1E and a different character +1E.",
 	"effects":[
 		{
 			"triggerCondition":"Draw",

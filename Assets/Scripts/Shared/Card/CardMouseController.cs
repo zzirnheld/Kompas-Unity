@@ -22,7 +22,7 @@ namespace KompasCore.Cards
         }
 
         //actual interaction
-        public void OnMouseDrag()
+        public virtual void OnMouseDrag()
         {
             if (EventSystem.current.IsPointerOverGameObject()) return;
             //don't allow dragging cards if we're awaiting a target

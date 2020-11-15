@@ -36,6 +36,12 @@ namespace KompasClient.Cards
             return position.x > minX && position.x < maxX && position.y > minY && position.y < maxY;
         }
 
+        public override void OnMouseDrag()
+        {
+            base.OnMouseDrag();
+            ClientGame.MarkCardDirty(Card);
+        }
+
         public override void OnMouseExit()
         {
             //remove thing even if hovering over something.
@@ -54,6 +60,7 @@ namespace KompasClient.Cards
 
         public override void OnMouseUp()
         {
+            ClientGame.MarkCardDirty(Card);
             //don't do anything if we're over an event system object, 
             //because that would let us click on cards underneath prompts
             if (EventSystem.current.IsPointerOverGameObject())
