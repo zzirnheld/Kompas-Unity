@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Maya, Mistress of Reality",
-	"effText":"Shape: During your turn, use a space of movement and give me -XE to move me through X Ethereal characters.\nWhen a friendly Shaper moves X, you can discard X to draw X.",
+	"effText":"Shape: During your turn, use a space of movement and give me -XE to move me through X Ethereal characters.\nWhen a friendly Shaper moves X, you can discard 1, give me -XE, and draw X.",
 	"effects":[
 		{
 			"blurb":"Shape",
@@ -71,17 +71,14 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"XTimesSubeffect\",
-					\"xMultiplier\":1,
-					\"jumpTo\":0
+					\"subeffType\":\"TargetThisSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"eMult\":-1
 				}",
 				"{
 					\"subeffType\":\"DiscardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
-					\"delete\":true,
-					\"jumpTo\":2
 				}",
 				"{
 					\"subeffType\":\"DrawXSubeffect\",
@@ -91,9 +88,8 @@
 		}
 	],
 	"n":1,
-	"e":2,
-	"s":5,
-	"w":7,
-	"subtypes":["Ethereal","Shaper","Mage"],
+	"e":7,
+	"s":8,
+	"w":9,
 	"subtypeText":"Ethereal Shaper Mage"
 }
