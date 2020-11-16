@@ -36,10 +36,6 @@ Figurehead Jack
 Figurehead Queen
 Figurehead King
 Figurehead Knight
-Seme di Tarocchi - Coins
-Seme di Tarocchi - Cups
-Seme di Tarocchi - Swords
-Seme di Tarocchi - Wands
 Animancer
 Earth Golem
 Ice Golem

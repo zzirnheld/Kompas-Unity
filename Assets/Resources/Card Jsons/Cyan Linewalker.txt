@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Cyan Linewalker",
-	"effText":"Linewalk.\nWhen I move X spaces, move an enemy card X spaces.",
+	"effText":"Linewalk.\nWhen I move X spaces, move a non-Linewalker card X spaces.",
 	"effects":[
 		{
 			"blurb":"Linewalk",
@@ -33,7 +33,7 @@
 			]
 		},
 		{
-			"blurb":"Yellow Linewalked",
+			"blurb":"Cyan Linewalked",
 			"triggerCondition":"Move",
 			"trigger":
 			"{
@@ -47,7 +47,8 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Cyan to move\",
-						\"cardRestrictions\":[\"Board\",\"Enemy\"]
+						\"cardRestrictions\":[\"Board\",\"Subtypes Exclude\"],
+						\"subtypesExclude\":[\"Linewalker\"]
 					}
 				}",
 				"{

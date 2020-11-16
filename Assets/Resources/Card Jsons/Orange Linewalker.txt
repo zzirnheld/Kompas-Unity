@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Orange Linewalker",
-	"effText":"Linewalk.\nWhen I move X spaces, each player can reshuffle their hand and draw X.",
+	"effText":"Linewalk.\nWhen I move X spaces, each player can reshuffle their hand and draw X. (Players whose hand is empty can't draw.)",
 	"effects":[
 		{
 			"blurb":"Linewalk",
@@ -65,7 +65,7 @@
 				"{
 					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
 					\"delete\":true,
-					\"jumpTo\":2
+					\"jumpTo\":3
 				}",
 				"{
 					\"subeffType\":\"DrawXSubeffect\",
