@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"MAXIMUM OVERDRIVE",
-	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nGive a character +5N and -5W. Annihilate me.",
+	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nGive a character -5W. If they're Crazy, give them +5 N.",
 	"effects":[
 		{
 			"triggerCondition":"Discard",
@@ -60,15 +60,21 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"nChange\":5,
-					\"wChange\":-5
+					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"wMod\":-5
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					\"subeffType\":\"ConditionalEndSubeffect\",
+					\"condition\":\"Target Violates Restriction\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Crazy\"]
+					}
 				}",
 				"{
-					\"subeffType\":\"AnnihilateSubeffect\"
+					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"nMod\":-5
 				}"
 			]
 		}
