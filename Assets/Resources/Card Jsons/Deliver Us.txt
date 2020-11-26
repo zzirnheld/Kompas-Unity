@@ -15,7 +15,7 @@
 				"{
 					\"subeffType\":\"SetXByGamestateSubeffect\",
 					\"whatToCount\":\"Cards Fitting Restriction\",
-					\"throughRestriction\":
+					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Character\",\"Multiple Possible Locations\",\"Friendly\",\"Subtypes Include\"],
 						\"subtypesInclude\":[\"Supplicant\"],

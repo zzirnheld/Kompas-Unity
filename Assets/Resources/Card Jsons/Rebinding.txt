@@ -1,0 +1,66 @@
+{
+	"cardType":83,
+	"cardName":"Rebinding",
+	"effText":"Kill a friendly SX character. Give two cards +X cost (characters get +X S, spells get +X C, augments get +X A).",
+	"effects":[
+		{
+			"blurb":"Simple",
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"CardTargetSubeffect\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"for Rebinding to kill\",
+						\"cardRestrictions\":[\"Friendly\",\"Board\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"SetXByTargetValueSubeffect\",
+					\"whatToCount\":\"S\",
+					\"xMultiplier\":1
+				}",
+				"{
+					\"subeffType\":\"DiscardSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"CardTargetSubeffect\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"for Rebinding to buff\",
+						\"cardRestrictions\":[\"Board\",\"Not Already Target\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"ChangeCardStatsSubeffect\",
+					\"sMult\":1,
+					\"cMult\":1,
+					\"aMult\":1
+				}",
+				"{
+					\"subeffType\":\"CardTargetSubeffect\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"for Rebinding to buff\",
+						\"cardRestrictions\":[\"Board\",\"Not Already Target\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"ChangeCardStatsSubeffect\",
+					\"sMult\":1,
+					\"cMult\":1,
+					\"aMult\":1
+				}"
+			]
+		}
+	],
+	"c":1,
+	"spellType":"Simple",
+	"subtypeText":"Ley Simple"
+}

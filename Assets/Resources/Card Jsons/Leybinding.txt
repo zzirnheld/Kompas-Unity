@@ -16,7 +16,7 @@
 				"{
 					\"subeffType\":\"SetXByGamestateSubeffect\",
 					\"whatToCount\":\"Cards Fitting Restriction\",
-					\"throughRestriction\":
+					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Character\",\"Board\"]
 					},

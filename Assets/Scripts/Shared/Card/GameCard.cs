@@ -380,39 +380,52 @@ namespace KompasCore.Cards
             }
         }
 
-        public virtual void SetN(int n, IStackable stackSrc = null) => N = n;
-        public virtual void SetE(int e, IStackable stackSrc = null) => E = e;
-        public virtual void SetS(int s, IStackable stackSrc = null) => S = s;
-        public virtual void SetW(int w, IStackable stackSrc = null) => W = w;
-        public virtual void SetC(int c, IStackable stackSrc = null) => C = c;
-        public virtual void SetA(int a, IStackable stackSrc = null) => A = a;
+        /* This must happen through setters, not properties, so that notifications and stack sending
+         * can be managed as intended. */
+        public virtual void SetN(int n, IStackable stackSrc = null, bool notify = true) => N = n;
+        public virtual void SetE(int e, IStackable stackSrc = null, bool notify = true) => E = e;
+        public virtual void SetS(int s, IStackable stackSrc = null, bool notify = true) => S = s;
+        public virtual void SetW(int w, IStackable stackSrc = null, bool notify = true) => W = w;
+        public virtual void SetC(int c, IStackable stackSrc = null, bool notify = true) => C = c;
+        public virtual void SetA(int a, IStackable stackSrc = null, bool notify = true) => A = a;
 
-        public void SetCharStats(int n, int e, int s, int w, IStackable stackSrc = null)
+        /// <summary>
+        /// Shorthand for modifying a card's NESW all at once.
+        /// On the server, this only notifies the clients of stat changes once.
+        /// </summary>
+        public virtual void SetCharStats(int n, int e, int s, int w, IStackable stackSrc = null)
         {
-            SetN(n, stackSrc);
-            SetE(e, stackSrc);
-            SetS(s, stackSrc);
-            SetW(w, stackSrc);
+            SetN(n, stackSrc, notify: false);
+            SetE(e, stackSrc, notify: false);
+            SetS(s, stackSrc, notify: false);
+            SetW(w, stackSrc, notify: false);
         }
 
+        /// <summary>
+        /// Shorthand for modifying a card's NESW all at once.
+        /// On the server, this only notifies the clients of stat changes once.
+        /// </summary>
         public void AddToCharStats(int n, int e, int s, int w, IStackable stackSrc = null)
+            => SetCharStats(N + n, S + s, E + e, W + w, stackSrc: stackSrc);
+
+        /// <summary>
+        /// Shorthand for modifying a card's stats all at once.
+        /// On the server, this only notifies the clients of stat changes once.
+        /// </summary>
+        public virtual void SetStats((int n, int e, int s, int w, int c, int a) stats, IStackable stackSrc = null)
         {
-            SetN(N + n, stackSrc);
-            SetE(E + e, stackSrc);
-            SetS(S + s, stackSrc);
-            SetW(W + w, stackSrc);
+            SetN(stats.n, stackSrc, notify: false);
+            SetE(stats.e, stackSrc, notify: false);
+            SetS(stats.s, stackSrc, notify: false);
+            SetW(stats.w, stackSrc, notify: false);
+            SetC(stats.c, stackSrc, notify: false);
+            SetA(stats.a, stackSrc, notify: false);
         }
 
-        public void SetStats((int n, int e, int s, int w, int c, int a) stats, IStackable stackSrc = null)
-        {
-            SetN(stats.n, stackSrc);
-            SetE(stats.e, stackSrc);
-            SetS(stats.s, stackSrc);
-            SetW(stats.w, stackSrc);
-            SetC(stats.c, stackSrc);
-            SetA(stats.a, stackSrc);
-        }
-
+        /// <summary>
+        /// Shorthand for modifying a card's stats all at once.
+        /// On the server, this only notifies the clients of stat changes once.
+        /// </summary>
         public void AddToStats((int n, int e, int s, int w, int c, int a) stats, IStackable stackSrc = null)
             => SetStats((N + stats.n, E + stats.e, S + stats.s, W + stats.w, C + stats.c, A + stats.a), stackSrc);
 
