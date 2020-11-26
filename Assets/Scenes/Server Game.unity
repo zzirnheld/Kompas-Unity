@@ -1415,6 +1415,7 @@ MonoBehaviour:
   debugToggle: {fileID: 1289263650}
   augmentPrefab: {fileID: 0}
   useEffectButtonPrefab: {fileID: 0}
+  boardUICtrl: {fileID: 0}
   friendlyPipsText: {fileID: 578422658}
   enemyPipsText: {fileID: 1782240893}
   selectedUIParent: {fileID: 255874121}
@@ -2628,7 +2629,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &1297197250
 GameObject:
   m_ObjectHideFlags: 0
