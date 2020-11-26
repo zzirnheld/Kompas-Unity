@@ -48,7 +48,7 @@ namespace KompasServer.Effects
             OnLoopExit();
 
             //then skip to after the loop
-            return ServerEffect.ResolveSubeffect(SubeffIndex + 1);
+            return ServerEffect.ResolveNextSubeffect();
         }
 
         public override bool OnImpossible()

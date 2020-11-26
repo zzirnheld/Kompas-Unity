@@ -48,7 +48,7 @@ namespace KompasServer.Effects
                 ServerEffect.ResolveNextSubeffect();
                 return true;
             }
-            else Debug.Log($"{x}, {y} not valid");
+            else Debug.LogError($"{x}, {y} not valid for restriction {spaceRestriction}");
 
             return false;
         }

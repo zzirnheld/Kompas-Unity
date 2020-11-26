@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Antiprecatium Golem",
-	"effText":"Golem: While I’m inactive, I can’t attack or move.\nWhen I'm activated, dispel an adjacent spell.",
+	"effText":"Golem: While I’m inactive, I can’t attack or move.\nWhen I'm activated, dispel a spell.",
 	"effects":[
 		{
 			"blurb":"Dispel",
@@ -18,7 +18,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"spell for Wynn to DispelSubeffect\",
-						\"cardRestrictions\":[\"Is Spell\",\"Board\",\"Adjacent\"]
+						\"cardRestrictions\":[\"Is Spell\",\"Board\"]
 					}
 				}",
 				"{

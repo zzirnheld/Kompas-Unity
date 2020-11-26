@@ -1,0 +1,73 @@
+{
+	"cardType":67,
+	"cardName":"Cyan Linewalker",
+	"effText":"Linewalk.\nWhen I move X spaces, move a non-Linewalker card X spaces.",
+	"effects":[
+		{
+			"blurb":"Linewalk",
+			"activationRestriction":{
+				"activationRestrictions":[
+					"Friendly Turn",
+					"Default"
+				]
+			},
+			"subeffects":[
+				"{
+					\"subeffType\":\"TargetThisSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"SpendMovementSubeffect\",
+					\"xModifier\":1
+				}",
+				"{
+					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"to Linewalk to\",
+						\"spaceRestrictions\":[\"Empty\",\"On Target's Diagonal\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"MoveSubeffect\"
+				}"
+			]
+		},
+		{
+			"blurb":"Cyan Linewalked",
+			"triggerCondition":"Move",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"CardTargetSubeffect\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"for Cyan to move\",
+						\"cardRestrictions\":[\"Board\",\"Subtypes Exclude\"],
+						\"subtypesExclude\":[\"Linewalker\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where Cyan to move its target\",
+						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == X\",\"Can Move Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"MoveSubeffect\"
+				}"
+			]
+		}
+	],
+	"n":1,
+	"e":5,
+	"s":5,
+	"w":5,
+	"subtypeText":"Linewalker Mage"
+}

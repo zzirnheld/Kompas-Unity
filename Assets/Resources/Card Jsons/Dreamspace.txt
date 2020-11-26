@@ -19,7 +19,7 @@
 					\"subeffType\":\"ChooseFromListSubeffect\",
 					\"cardRestriction\":{
 						\"blurb\":\"copy of Dreamspace to decksummon\",
-						\"cardRestrictions\":[\"Friendly\",\"Same Name as Target\"]
+						\"cardRestrictions\":[\"Friendly\",\"Same Name as Target\",\"Deck\"]
 					},
 					\"maxCanChoose\":1
 				}",

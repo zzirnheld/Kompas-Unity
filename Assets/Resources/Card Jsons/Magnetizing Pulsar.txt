@@ -15,7 +15,7 @@
 					},
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Board\",\"Avatar\"]
+						\"cardRestrictions\":[\"Board\",\"Avatar\",\"Friendly\"]
 					}
 				}
 			}",
@@ -25,7 +25,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Magnetizing to move\",
-						\"cardRestrictions\":[\"Board\"]
+						\"cardRestrictions\":[\"Board\",\"Distinct from Source\"]
 					}
 				}",
 				"{
@@ -54,7 +54,7 @@
 					},
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Board\",\"Avatar\"]
+						\"cardRestrictions\":[\"Board\",\"Avatar\",\"Friendly\"]
 					}
 				}
 			}",
@@ -64,7 +64,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"for Magnetizing to move\",
-						\"cardRestrictions\":[\"Board\"]
+						\"cardRestrictions\":[\"Board\",\"Distinct from Source\"]
 					}
 				}",
 				"{

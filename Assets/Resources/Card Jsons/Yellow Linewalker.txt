@@ -1,0 +1,74 @@
+{
+	"cardType":67,
+	"cardName":"Yellow Linewalker",
+	"effText":"Linewalk.\nWhen I move X spaces, hand-summon an S <= X Linewalker.",
+	"effects":[
+		{
+			"blurb":"Linewalk",
+			"activationRestriction":{
+				"activationRestrictions":[
+					"Friendly Turn",
+					"Default"
+				]
+			},
+			"subeffects":[
+				"{
+					\"subeffType\":\"TargetThisSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"SpendMovementSubeffect\",
+					\"xModifier\":1
+				}",
+				"{
+					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"to Linewalk to\",
+						\"spaceRestrictions\":[\"Empty\",\"On Target's Diagonal\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"MoveSubeffect\"
+				}"
+			]
+		},
+		{
+			"blurb":"Yellow Linewalked",
+			"triggerCondition":"Move",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"CardTargetSubeffect\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"for Yellow to hand-summon\",
+						\"cardRestrictions\":[\"Is Character\",\"Friendly\",\"Hand\",\"S<=X\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Linewalker\"]
+					},
+					\"xMultiplier\":1
+				}",
+				"{
+					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where Yellow to hand-summon\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"PlaySubeffect\"
+				}"
+			]	
+		}
+	],
+	"n":1,
+	"e":3,
+	"s":5,
+	"w":3,
+	"subtypeText":"Linewalker Mage"
+}

@@ -42,13 +42,15 @@
 					\"subeffType\":\"MoveSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"AttackSubeffect\"
+					\"subeffType\":\"AttackSubeffect\",
+					\"targetIndex\":-2,
+					\"attackerIndex\":-1
 				}"
 			]
 		}
 	],
-	"fast":true,
-	"c":2,
+	"fast":false,
+	"c":4,
 	"spellType":"Simple",
 	"subtypes":["Simple","Shaping"],
 	"subtypeText":"Simple Shaping"

@@ -52,6 +52,7 @@ namespace KompasCore.Effects
         //distinct
         public const string DistinctFromSource = "Distinct from Source";
         public const string DistinctFromTarget = "Distinct from Target";
+        public const string DistinctFromAugmentedCard = "Distinct From Augmented Card";
 
         //location
         public const string Hand = "Hand";
@@ -167,8 +168,6 @@ namespace KompasCore.Effects
         {
             if (potentialTarget == null) return false;
 
-            /*Debug.Log($"Considering restriction {restriction} for card {potentialTarget.CardName} when X equals {x}, " +
-                $"controller is {(Controller == null ? -1 : Controller.index)}, potential target controlled by {potentialTarget.ControllerIndex}");*/
             switch (restriction)
             {
                 //targets
@@ -211,6 +210,7 @@ namespace KompasCore.Effects
                 //distinct
                 case DistinctFromSource: return potentialTarget != Source;
                 case DistinctFromTarget: return potentialTarget != Subeffect.Target;
+                case DistinctFromAugmentedCard: return potentialTarget != Source.AugmentedCard;
 
                 //location
                 case Hand:           return potentialTarget.Location == CardLocation.Hand;
@@ -272,13 +272,22 @@ namespace KompasCore.Effects
             }
         }
 
+        /* This exists to debug a card restriction,
+         * but should not be usually used because it prints a ton 
+        public bool RestrictionValidDebug(string restriction, GameCard potentialTarget, int x)
+        {
+            bool answer = RestrictionValid(restriction, potentialTarget, x);
+            // if (!answer) Debug.Log($"{potentialTarget.CardName} flouts {restriction}");
+            return answer;
+        } */
+
         /// <summary>
         /// Checks whether the card in question fits the relevant retrictions, for the given value of X
         /// </summary>
         /// <param name="potentialTarget">The card to see if it fits all restrictions</param>
         /// <param name="x">The value of X for which to consider this effect's restriction</param>
         /// <returns><see langword="true"/> if the card fits all restrictions, <see langword="false"/> if it doesn't fit at least one</returns>
-        public virtual bool Evaluate(GameCard potentialTarget, int x)
+        public bool Evaluate(GameCard potentialTarget, int x)
         {
             if (potentialTarget == null) return false;
 
@@ -290,6 +299,6 @@ namespace KompasCore.Effects
         /// </summary>
         /// <param name="potentialTarget">The card to see if it fits all restrictions</param>
         /// <returns><see langword="true"/> if the card fits all restrictions, <see langword="false"/> if it doesn't fit at least one</returns>
-        public virtual bool Evaluate(GameCard potentialTarget) => Evaluate(potentialTarget, Effect?.X ?? 0);
+        public bool Evaluate(GameCard potentialTarget) => Evaluate(potentialTarget, Subeffect?.Count ?? 0);
     }
 }

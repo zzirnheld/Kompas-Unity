@@ -35,7 +35,6 @@ namespace KompasClient.Networking
         public void Execute(ClientGame clientGame)
         {
             var card = clientGame.GetCardWithID(sourceCardId);
-            UnityEngine.Debug.Log("Setting X to " + x);
             if (card != null) card.Effects.ElementAt(effIndex).X = x;
         }
     }

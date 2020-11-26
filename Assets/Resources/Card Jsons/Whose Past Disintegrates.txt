@@ -54,7 +54,7 @@
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\"],
+					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\",\"This Card Triggered\"],
 					\"xRestriction\":{
 						\"xRestrictions\":[\"<0\"]
 					}
@@ -66,7 +66,7 @@
 				}",
 				"{
 					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"eMult\":-1
+					\"wMult\":-1
 				}"
 			]	
 		}

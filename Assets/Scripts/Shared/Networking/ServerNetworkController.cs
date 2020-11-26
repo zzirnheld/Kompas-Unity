@@ -63,7 +63,7 @@ namespace KompasServer.Networking
                 return;
             }
 
-            Debug.Log($"Processing {packetInfo.json} from {Player.index}");
+            //Debug.Log($"Processing {packetInfo.json} from {Player.index}");
 
             var packet = FromJson(packetInfo.command, packetInfo.json);
             packet.Execute(sGame, Player);

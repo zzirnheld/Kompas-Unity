@@ -19,7 +19,6 @@ namespace KompasCore.GameCore
             if (card == null) return false;
             card.Remove(stackSrc);
             hand.Add(card);
-            card.ResetCard();
             card.Location = CardLocation.Hand;
             card.Controller = Owner;
 

@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Mad Jukes",
-	"effText":"When a friendly character wielding Augments with total A X moves, give adjacent characters -X W.",
+	"effText":"When a friendly character wielding Augments with total A X moves, give adjacent characters -X W.\nWhen turns start, unless there's a friendly Sportsball Augment, annihilate me.",
 	"effects":[
 		{
 			"triggerCondition":"Move",
@@ -44,6 +44,33 @@
 						\"cardRestrictions\":[\"Is Character\",\"Adjacent to Target\"]
 					},
 					\"wMult\":-1
+				}"
+			]
+		},
+		{
+			"triggerCondition":"Turn Start",
+			"trigger":
+			"{
+				\"blurb\":\"Sustain the Vuvuzelas\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"ConditionalEndSubeffect\",
+					\"condition\":\"Any Fit Restriction\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Board\",\"Is Augment\"],
+						\"subtypesInclude\":[\"Sportsball\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"TargetThisSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"AnnihilateSubeffect\"
 				}"
 			]
 		}

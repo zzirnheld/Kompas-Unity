@@ -9,9 +9,13 @@
 			"{
 				\"blurb\":\"Enfocus\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\"],
+					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\",\"Triggerer Fits Restriction\"],
 					\"xRestriction\":{
 						\"xRestrictions\":[\">0\"]
+					},
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Board\",\"Avatar\",\"Friendly\"]
 					}
 				}
 			}",
@@ -32,9 +36,13 @@
 			"{
 				\"blurb\":\"Unfocus\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\"],
+					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\",\"Triggerer Fits Restriction\"],
 					\"xRestriction\":{
 						\"xRestrictions\":[\"<0\"]
+					},
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Board\",\"Avatar\",\"Friendly\"]
 					}
 				}
 			}",

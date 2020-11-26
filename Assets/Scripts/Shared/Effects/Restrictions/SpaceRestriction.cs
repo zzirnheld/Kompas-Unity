@@ -92,10 +92,11 @@ namespace KompasCore.Effects
 
         public bool Evaluate(int x, int y)
         {
-            //Debug.Log($"Space restriction for {Subeffect?.Source?.CardName} evaluating {x}, {y}");
             if (!Subeffect.Effect.Game.boardCtrl.ValidIndices(x, y)) return false;
 
             return spaceRestrictions.All(r => RestrictionValid(r, x, y));
         }
+
+        public override string ToString() => JsonUtility.ToJson(this);
     }
 }

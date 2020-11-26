@@ -1,7 +1,6 @@
 ﻿using KompasCore.Networking;
 using KompasClient.GameCore;
-using System.Linq;
-using System.Diagnostics;
+using UnityEngine;
 
 namespace KompasCore.Networking
 {
@@ -32,8 +31,8 @@ namespace KompasClient.Networking
     {
         public void Execute(ClientGame clientGame)
         {
+            Debug.Log($"Rehand packet to rehand {cardId}");
             var card = clientGame.GetCardWithID(cardId);
-            UnityEngine.Debug.Log($"Rehand packet to rehand {card?.CardName} that has controller {card?.ControllerIndex}");
             if (card != null) card.Rehand();
         }
     }

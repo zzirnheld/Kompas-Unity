@@ -80,6 +80,9 @@ namespace KompasClient.GameCore
 
         public bool canZoom = false;
 
+        //dirty card set
+        private HashSet<GameCard> dirtyCardList = new HashSet<GameCard>();
+
         public override int Leyload 
         { 
             get => base.Leyload;
@@ -95,9 +98,12 @@ namespace KompasClient.GameCore
             clientNotifier.RequestSpaceTarget(x, y);
         }
 
+        public void MarkCardDirty(GameCard card) => dirtyCardList.Add(card);
+
         public void PutCardsBack()
         {
-            foreach (var c in Cards) c.PutBack();
+            foreach (var c in dirtyCardList) c.PutBack();
+            dirtyCardList.Clear();
         }
 
         public void SetAvatar(int player, string avatarName, int avatarID)

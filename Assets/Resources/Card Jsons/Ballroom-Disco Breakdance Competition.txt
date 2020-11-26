@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Ballroom-Disco Breakdance Competition",
-	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nWhen a character moves into my area of effect, set their N to 0. When a character leaves my area of effect, annihilate me.",
+	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nWhen a character moves in my area of effect, set their N to 0. When a character leaves my area of effect, destroy me.",
 	"effects":[
 		{
 			"triggerCondition":"Discard",
@@ -48,11 +48,7 @@
 			"{
 				\"blurb\":\"N = 0\",
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Triggerer Fits Restriction\",\"Coords Fit Restriction\",\"This Card in Play\"],
-					\"cardRestriction\":
-					{
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Not In AOE\"]
-					},
+					\"triggerRestrictions\":[\"Coords Fit Restriction\",\"This Card in Play\"],
 					\"spaceRestriction\":
 					{
 						\"spaceRestrictions\":[\"In AOE\"]

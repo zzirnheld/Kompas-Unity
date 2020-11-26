@@ -62,10 +62,10 @@ namespace KompasServer.Cards
                     case CardLocation.Deck:
                         knownToEnemy = false;
                         break;
-                    default:
+                    /* default:
                         Debug.Log($"Card {CardName} being moved to {Location}. " +
                             $"Not setting knownToEnemy, because enemy knowledge doesn't change");
-                        break;
+                        break; */
                 }
             }
         }
@@ -220,7 +220,7 @@ namespace KompasServer.Cards
         {
             base.SetAttacksThisTurn(attacksThisTurn, fromReset);
             if (ServerController != null && !fromReset) ServerController.ServerNotifier.NotifyAttacksThisTurn(this);
-            Debug.Log($"Setting attacks this turn for {CardName} to {attacksThisTurn}");
+            // Debug.Log($"Setting attacks this turn for {CardName} to {attacksThisTurn}");
         }
         #endregion stats
     }

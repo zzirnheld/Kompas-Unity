@@ -1,0 +1,44 @@
+{
+	"cardType":83,
+	"cardName":"Linewalk",
+	"effText":"Move a Linewalker to an empty space on their diagonal.",
+	"effects":[
+		{
+			"blurb":"Simple Effect",
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"CardTargetSubeffect\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Character to Linewalk\",
+						\"cardRestrictions\":[\"Subtypes Include\",\"Board\",\"Friendly\"],
+						\"subtypesInclude\":[\"Linewalker\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"to Linewalk to\",
+						\"spaceRestrictions\":[\"Empty\",\"On Target's Diagonal\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"MoveSubeffect\"
+				}"
+			]	
+		}
+	],
+	"c":1,
+	"fast":true,
+	"spellType":"Simple",
+	"subtypes":["Simple"],
+	"subtypeText":"Simple"
+}

@@ -13,7 +13,7 @@
 					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"This Card in Play\"],
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Board\",\"Avatar\"]
+						\"cardRestrictions\":[\"Board\",\"Avatar\",\"Friendly\"]
 					}
 				}
 			}",

@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Runeloremaster",
-	"effText":"Once each friendly turn, you can pip handcast two Runes.",
+	"effText":"Thrice each friendly turn, you can pip handcast a Rune.",
 	"effects":[
 		{
 			"activationRestriction":{
@@ -9,33 +9,10 @@
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"Default"
-				]
+				],
+				"maxTimes":3
 			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
-					{
-						\"blurb\":\"Rune for Runeloremaster to cast\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Hand\",\"Can Be Played\",\"Effect Controller can Afford Cost\"],
-						\"subtypesInclude\":[\"Rune\"]
-					}
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
-					{
-						\"blurb\":\"where for Runeloremaster to cast its target Rune\",
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
-					}
-				}",
-				"{
-					\"subeffType\":\"PayPipsTargetCostSubeffect\",
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"PlaySubeffect\"
-				}",
 				"{
 					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
@@ -64,9 +41,9 @@
 		}
 	],
 	"n":1,
-	"e":5,
-	"s":5,
-	"w":5,
+	"e":10,
+	"s":10,
+	"w":10,
 	"subtypes":["Runar","Mage"],
 	"subtypeText":"Runar Mage"
 }

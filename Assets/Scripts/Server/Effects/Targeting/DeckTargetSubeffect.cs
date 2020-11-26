@@ -19,7 +19,7 @@ namespace KompasServer.Effects
                 card.Controller.deckCtrl.Shuffle();
                 return ServerEffect.ResolveNextSubeffect();
             }
-            else GetTargets();
+            else GetTargets(PotentialTargetIds);
 
             return false;
         }

@@ -31,6 +31,7 @@ namespace KompasServer.Effects
             string blurb = cardRestriction.blurb;
             int[] targetIds = potentialTargets.Select(c => c.ID).ToArray();
             listRestriction.PrepareForSending(Effect.X);
+            Debug.Log($"Potential targets {string.Join(", ", targetIds)}");
             ServerPlayer.ServerNotifier.GetCardTarget(name, blurb, targetIds, JsonUtility.ToJson(listRestriction));
         }
 
@@ -63,9 +64,11 @@ namespace KompasServer.Effects
             potentialTargets = GetPossibleTargets();
             //if there's no possible valid combo, throw effect impossible
             if (!listRestriction.ExistsValidChoice(potentialTargets))
+            {
+                Debug.Log($"List restriction {listRestriction} finds no possible list of targets among potential targets" +
+                    $"{string.Join(",", potentialTargets.Select(c => c.CardName))}");
                 return NoPossibleTargets();
-
-            Debug.Log($"Potential targets {string.Join(", ", potentialTargets.Select(t => t.CardName))}");
+            }
 
             RequestTargets();
             return false;

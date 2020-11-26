@@ -36,10 +36,6 @@ Figurehead Jack
 Figurehead Queen
 Figurehead King
 Figurehead Knight
-Seme di Tarocchi - Coins
-Seme di Tarocchi - Cups
-Seme di Tarocchi - Swords
-Seme di Tarocchi - Wands
 Animancer
 Earth Golem
 Ice Golem
@@ -261,4 +257,13 @@ Big Brain Plays
 Getcha Getcha Getcha
 Time Out
 Antiprecatium Golem
+Red Linewalker
+Orange Linewalker
+Yellow Linewalker
+Green Linewalker
+Cyan Linewalker
+Blue Linewalker
+Purple Linewalker
+None Defy the Lines
+Linewalk
 a lot of disappointment

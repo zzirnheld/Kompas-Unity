@@ -14,7 +14,7 @@ namespace KompasClient.Networking
 
         private void Send(Packet packet)
         {
-            if (packet != null) Debug.Log($"Sending packet {packet}");
+            //if (packet != null) Debug.Log($"Sending packet {packet}");
             clientNetworkCtrl.SendPacket(packet);
         }
 

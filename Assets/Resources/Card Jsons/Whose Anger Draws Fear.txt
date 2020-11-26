@@ -90,7 +90,7 @@
 		}
 	],
 	"n":1,
-	"e":5,
+	"e":4,
 	"s":2,
 	"w":0,
 	"subtypes":["Ethereal","Shaper"],

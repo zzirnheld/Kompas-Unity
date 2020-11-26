@@ -58,7 +58,6 @@ namespace KompasCore.UI
             SelectedCard = null;
             hoveredCard = null;
             ShownCard = null;
-            //Debug.Log("Selecting Null");
             selectedCardNameText.text = "No Card Selected";
             selectedCardImage.sprite = Resources.Load<Sprite>("Kompas Circle Background");
             selectedCardStatsText.text = "";

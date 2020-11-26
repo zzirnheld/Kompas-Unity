@@ -48,9 +48,9 @@
 					},
 					\"restRestriction\":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Cost<=X\",\"Index<X\",\"Not Already Target\"],
-						\"subtypesInclude\":[\"Golem\"]
-					}
+						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<X\",\"Not Already Target\"]
+					},
+					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"RehandSubeffect\"

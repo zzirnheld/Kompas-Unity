@@ -15,7 +15,7 @@
 					},
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Board\",\"Avatar\"]
+						\"cardRestrictions\":[\"Board\",\"Avatar\",\"Friendly\"]
 					}
 				}
 			}",
@@ -41,7 +41,7 @@
 					},
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Board\",\"Avatar\"]
+						\"cardRestrictions\":[\"Board\",\"Avatar\",\"Friendly\"]
 					}
 				}
 			}",

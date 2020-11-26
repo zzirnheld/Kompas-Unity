@@ -75,19 +75,11 @@ namespace KompasDeckbuilder
             card.Show();
         }
 
-        /*
-        private SerializableCard LoadCard(string json)
-        {
-            Debug.Log(json);
-            return JsonUtility.FromJson<SerializableCard>(json);
-        }*/
-
         private void SearchCards()
         {
             //first clear all shown cards
             foreach (var card in shownCards)
             {
-                Debug.Log($"Destroying {card.cardName.text}");
                 card.Kill();
                 Destroy(card.gameObject);
             }
@@ -104,11 +96,6 @@ namespace KompasDeckbuilder
             string textLower = textToSearch?.ToLower();
 
             var serializeds = CardRepository.SerializableCards;
-
-            foreach(var s in serializeds)
-            {
-                if(s.subtypeText == null) Debug.Log(s.cardName);
-            }
 
             if (!string.IsNullOrWhiteSpace(nameLower) && nameLower.Length >= 2)
                 serializeds = serializeds.Where(s => s.cardName.ToLower().Contains(nameLower));

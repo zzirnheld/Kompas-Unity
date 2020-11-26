@@ -1,14 +1,13 @@
 {
 	"cardType":67,
 	"cardName":"Bestower of Memories",
-	"effText":"When your turn starts, you can resummon a Summoned character. When you summon a character, gain a pip and increase the Leyload by 1.",
+	"effText":"When friendly turns start, resummon a character.\nThe first time each stack a character is summoned, resummon them.",
 	"effects":[
 		{
 			"triggerCondition":"Turn Start",
 			"trigger":
 			"{
 				\"blurb\":\"Resummon a Summoned character? (This triggers any relevant on-summon effects.)\",
-				\"optional\":true,
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Friendly Turn\"]
 				}
@@ -19,7 +18,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"Summoned character for Bestower of Memories to resummon\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Summoned\"]
+						\"cardRestrictions\":[\"Is Character\",\"Board\"]
 					}
 				}",
 				"{
@@ -32,7 +31,7 @@
 			"trigger":
 			"{
 				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\",\"Triggerer Fits Restriction\"],
+					\"triggerRestrictions\":[\"Max Per Stack\",\"This Card in Play\",\"Controller Triggered\",\"Triggerer Fits Restriction\"],
 					\"cardRestriction\":
 					{
 						\"cardRestrictions\":[\"Is Character\"]
@@ -41,20 +40,18 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"AddPipsSubeffect\",
-					\"xModifier\":1
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"ChangeLeyloadSubeffect\",
-					\"xModifier\":1
+					\"subeffType\":\"ResummonSubeffect\"
 				}"
 			]	
 		}
 	],
 	"n":1,
 	"e":7,
-	"s":14,
-	"w":11,
+	"s":10,
+	"w":9,
 	"subtypes":["Geminii","God"],
 	"subtypeText":"Geminii God"
 }

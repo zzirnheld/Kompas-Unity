@@ -9997,7 +9997,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_Spacing: 20
   m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 0
+  m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
@@ -11368,11 +11368,17 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Effects
 
+    text
+
     t
 
-    e
+    t
 
-    x
+    t
+
+    t
+
+    t
 
     t'
   m_isRightToLeft: 0
@@ -11402,12 +11408,12 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24
+  m_fontSize: 23.35
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 24
   m_fontStyle: 0
   m_textAlignment: 257
   m_characterSpacing: 0
@@ -11443,12 +11449,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1609596040}
-    characterCount: 15
+    characterCount: 24
     spriteCount: 0
-    spaceCount: 4
-    wordCount: 5
+    spaceCount: 7
+    wordCount: 8
     linkCount: 0
-    lineCount: 5
+    lineCount: 8
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -11492,7 +11498,7 @@ MonoBehaviour:
   m_PreferredWidth: 200
   m_PreferredHeight: 180
   m_FlexibleWidth: 1
-  m_FlexibleHeight: -1
+  m_FlexibleHeight: 0
   m_LayoutPriority: 1
 --- !u!1 &1663425111
 GameObject:

@@ -1,7 +1,7 @@
 {
 	"cardType":65,
 	"cardName":"Sportsball",
-	"effText":"Recoverable.\nThe first time each turn I arrive, attach me to an adjacent character.\nThe first time each turn a character arrives adjacent to me, attach me to them.",
+	"effText":"Recoverable.\nThe first time each turn I arrive, attach me to an adjacent character.\nThe first time each turn a character other than my current augmented card arrives adjacent to me, attach me to them.",
 	"effects":[
 		{
 			"triggerCondition":"Discard",
@@ -54,7 +54,7 @@
 					\"triggerRestrictions\":[\"This Card in Play\",\"Max Per Turn\",\"Coords Fit Restriction\",\"Triggerer Fits Restriction\"],
 					\"cardRestriction\":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Distinct from Source\"]
+						\"cardRestrictions\":[\"Is Character\",\"Distinct from Source\",\"Distinct From Augmented Card\"]
 					},
 					\"spaceRestriction\":
 					{

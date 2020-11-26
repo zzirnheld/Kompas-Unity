@@ -106,7 +106,7 @@ namespace KompasServer.Effects
                 return true;
             }
 
-            Debug.Log($"Resolving subeffect of type {ServerSubeffects[index].GetType()}");
+            // Debug.Log($"Resolving subeffect of type {ServerSubeffects[index].GetType()}");
             SubeffectIndex = index;
             ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
             return ServerSubeffects[index].Resolve();
@@ -138,7 +138,7 @@ namespace KompasServer.Effects
         /// </summary>
         public bool EffectImpossible()
         {
-            Debug.Log($"Effect of {Source.CardName} is being declared impossible");
+            Debug.Log($"Effect of {Source.CardName} is being declared impossible at subeffect {ServerSubeffects[SubeffectIndex].GetType()}");
             if (OnImpossible == null)
             {
                 FinishResolution();
@@ -158,7 +158,6 @@ namespace KompasServer.Effects
         public override void AddTarget(GameCard card)
         {
             base.AddTarget(card);
-            Debug.Log($"Effect of {Source.CardName} adding {card.CardName} as target");
             serverGame.ServerControllerOf(card).ServerNotifier.SetTarget(Source, EffectIndex, card);
         }
 

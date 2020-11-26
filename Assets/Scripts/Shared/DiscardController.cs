@@ -15,8 +15,6 @@ namespace KompasCore.GameCore
         //adding/removing cards
         public virtual bool AddToDiscard(GameCard card, IStackable stackSrc = null)
         {
-            Debug.Assert(card != null);
-            Debug.Log("Adding to discard: " + card.CardName);
             card.Remove(stackSrc);
             Discard.Add(card);
             card.Controller = Owner;
