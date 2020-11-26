@@ -1,0 +1,48 @@
+{
+	"cardType":67,
+	"cardName":"Dragonbinder",
+	"effText":"When I'm summoned, give the enemy Avatar +X E, then give me +X S (yes, X does have to be positive).",
+	"effects":[
+		{
+			"blurb":"Dragonbind",
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"blurb\":\"Dragonbind\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"AutoTargetSubeffect\",
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Avatar\",\"Enemy\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"PlayerChooseXSubeffect\",
+					\"XRest\":{
+						\"cardRestrictions\":[\">0\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"eMult\":1
+				}",
+				"{
+					\"subeffType\":\"TargetThisSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"sMult\":1
+				}"
+			]
+		}
+	],
+	"n":1,
+	"e":1,
+	"s":1,
+	"w":1,
+	"subtypeText":""
+}

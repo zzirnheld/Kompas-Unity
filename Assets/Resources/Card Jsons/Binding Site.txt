@@ -1,0 +1,35 @@
+{
+	"cardType":67,
+	"cardName":"Binding Site",
+	"effText":"When I’m summoned, give a character +3 S.",
+	"effects":[
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"CardTargetSubeffect\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"for Binding Site to bind\",
+						\"cardRestrictions\":[\"Board\",\"Is Character\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"sMod\":3
+				}"
+			]	
+		}
+	],
+	"n":0,
+	"e":1,
+	"s":2,
+	"w":0,
+	"subtypeText":""
+}

@@ -1,0 +1,44 @@
+{
+	"cardType":67,
+	"cardName":"Bound Offering",
+	"effText":"When I die, annihilate me, gain a pip, and give the enemy Avatar +1E.",
+	"effects":[
+		{
+			"triggerCondition":"Discard",
+			"trigger":
+			"{
+				\"blurb\":\"Annihilate\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\",\"From Field\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"TargetThisSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"AnnihilateSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"AddPipsSubeffect\",
+					\"xModifier\":1
+				}",
+				"{
+					\"subeffType\":\"AutoTargetSubeffect\",
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Avatar\",\"Enemy\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"eMod\":1
+				}"
+			]
+		}
+	],
+	"n":0,
+	"e":1,
+	"s":2,
+	"w":0,
+	"subtypeText":""
+}

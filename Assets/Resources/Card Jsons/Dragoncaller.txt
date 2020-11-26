@@ -1,0 +1,58 @@
+{
+	"cardType":67,
+	"cardName":"Dragoncaller",
+	"effText":"You can kill another friendly SX character to give me +X ES or SW.",
+	"effects":[
+		{
+			"blurb":"Dragoncall",
+			"activationRestriction":{
+				"activationRestrictions":["Default"]
+			},
+			"subeffects":[
+				"{
+					\"subeffType\":\"CardTargetSubeffect\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"for Dragoncaller to kill\",
+						\"cardRestrictions\":[\"Friendly\",\"Board\",\"Is Character\",\"Distinct from Source\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"ChangeXByTargetValueSubeffect\",
+					\"whatToCount\":\"S\",
+					\"xMultiplier\":1
+				}",
+				"{
+					\"subeffType\":\"DiscardSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"TargetThisSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"ChooseOptionSubeffect\",
+					\"ChoiceBlurb\":\"Give +X ES or SW?\",
+					\"OptionBlurbs\":[\"+X ES\",\"+X SW\"],
+					\"OptionJumpIndices\":[6,8]
+				}",
+				"{
+					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"eMult\":1,
+					\"sMult\":1
+				}",
+				"{
+					\"subeffType\":\"EndResolutionSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"sMult\":1,
+					\"wMult\":1
+				}"
+			]
+		}
+	],
+	"n":1,
+	"e":1,
+	"s":3,
+	"w":1,
+	"subtypeText":""
+}

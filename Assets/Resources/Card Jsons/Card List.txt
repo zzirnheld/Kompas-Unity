@@ -90,19 +90,6 @@ Dagaz
 Runesaga
 Runebinding
 Runestones
-Pyrian the Firewyrm
-Luxor the Blinding
-Terrian the Steadfast
-Auram the Greedy
-The Eldest
-Caligo the Quick
-Aerian the Heedless
-Obscurian the Non
-Aquarian the Returner
-Dragon Egg
-Pseudodragon
-Mother of Dragons
-Fields of Dragons' Blood
 Unstable Soul
 Maya, Mistress of Reality
 Who Searched For Grudges
@@ -218,10 +205,6 @@ Rights of the Supplicant
 Save the People
 Supplicants' Refuge
 Touch of the Divine
-Dragonfeed
-Dragaboo
-Dragon Hatchling
-Leyblood
 Ride the Winds
 Durendal
 Thuan Thien

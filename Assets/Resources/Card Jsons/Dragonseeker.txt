@@ -1,0 +1,44 @@
+{
+	"cardType":67,
+	"cardName":"Dragonseeker",
+	"effText":"You can hand-reshuffle your SX Dragon to give me +X S.",
+	"effects":[
+		{
+			"blurb":"Dragonseek",
+			"activationRestriction":{
+				"activationRestrictions":["Default"]
+			},
+			"subeffects":[
+				"{
+					\"subeffType\":\"CardTargetSubeffect\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"for Dragonseeker to reshuffle\",
+						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Is Character\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Dragon\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"ChangeXByTargetValueSubeffect\",
+					\"whatToCount\":\"S\",
+					\"xMultiplier\":1
+				}",
+				"{
+					\"subeffType\":\"ReshuffleSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"TargetThisSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"sMult\":1
+				}"
+			]
+		}
+	],
+	"n":1,
+	"e":1,
+	"s":3,
+	"w":1,
+	"subtypeText":""
+}

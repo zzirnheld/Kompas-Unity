@@ -1,0 +1,44 @@
+{
+	"cardType":67,
+	"cardName":"Trapped Offering",
+	"effText":"When I die, annihilate me, gain 2 pips, and give the enemy Avatar +2E.",
+	"effects":[
+		{
+			"triggerCondition":"Discard",
+			"trigger":
+			"{
+				\"blurb\":\"Annihilate\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\",\"From Field\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"TargetThisSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"AnnihilateSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"AddPipsSubeffect\",
+					\"xModifier\":2
+				}",
+				"{
+					\"subeffType\":\"AutoTargetSubeffect\",
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Avatar\",\"Enemy\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"eMod\":2
+				}"
+			]
+		}
+	],
+	"n":0,
+	"e":1,
+	"s":2,
+	"w":0,
+	"subtypeText":""
+}
