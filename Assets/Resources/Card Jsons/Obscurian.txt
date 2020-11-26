@@ -1,0 +1,93 @@
+{
+	"cardType":67,
+	"cardName":"Obscurian",
+	"effText":"Territorial: When turns start, move an adjacent character 1 space, then I attack them.\nWhen I attack a character with X less E than my W, give their controller’s Avatar -X E.",
+	"effects":[
+		{
+			"blurb":"Territorial",
+			"triggerCondition":"Turn Start",
+			"trigger":
+			"{
+				\"blurb\":\"Territorial\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"CardTargetSubeffect\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"for Fyrian to move and attack\",
+						\"cardRestrictions\":[\"Board\",\"Is Character\",\"Adjacent\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where Hermit to move its target\",
+						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\",\"Can Move Target to This Space\"],
+						\"constant\":1
+					}
+				}",
+				"{
+					\"subeffType\":\"MoveSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"TargetThisSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"AttackSubeffect\",
+					\"attackerIndex\":-1,
+					\"targetIndex\":-2
+				}"
+			]	
+		},
+		{
+			"blurb":"Dark Breath",
+			"triggerCondition":"Attack",
+			"trigger":
+			"{
+				\"blurb\":\"Dark Breath\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"TargetThisSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"SetXByTargetValueSubeffect\",
+					\"whatToCount\":\"W\",
+					\"xMultiplier\":1
+				}",
+				"{
+					\"subeffType\":\"TargetDefenderSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"SetXByTargetValueSubeffect\",
+					\"whatToCount\":\"E\",
+					\"change\":true,
+					\"xMultiplier\":-1
+				}",
+				"{
+					\"subeffType\":\"AutoTargetSubeffect\",
+					\"cardRestriction\":{
+						\"cardRestrictions\":[\"Avatar\",\"Controller Matches Target's\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"eMult\":-1
+				}"
+			]	
+		}
+	],
+	"n":3,
+	"e":10,
+	"s":13,
+	"w":13,
+	"subtypeText":"Dragon"
+}

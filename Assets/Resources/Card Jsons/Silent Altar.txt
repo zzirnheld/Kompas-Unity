@@ -35,6 +35,9 @@
 			},
 			"subeffects":[
 				"{
+					\"subeffType\":\"SetXSubeffect\"
+				}",
+				"{
 					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
@@ -44,20 +47,20 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"ChangeXByTargetValueSubeffect\",
+					\"subeffType\":\"SetXByTargetValueSubeffect\",
 					\"whatToCount\":\"Cost\",
+					\"change\":true,
 					\"xMultiplier\":1
 				}",
 				"{
 					\"subeffType\":\"ConditionalJumpSubeffect\",
 					\"condition\":\"X >= Constant\",
 					\"constant\":31,
-					\"jumpIndex\":4
+					\"jumpIndex\":5
 				}",
 				"{
 					\"subeffType\":\"LoopSubeffect\",
-					\"canDecline\":true,
-					\"jumpTo\":0
+					\"jumpTo\":1
 				}",
 				"{
 					\"subeffType\":\"DiscardSubeffect\"
@@ -67,7 +70,7 @@
 				}",
 				"{
 					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
-					\"jumpTo\":4
+					\"jumpTo\":5
 				}",
 				"{
 					\"subeffType\":\"ChooseFromListSubeffect\",

@@ -1,0 +1,93 @@
+{
+	"cardType":67,
+	"cardName":"Cidian",
+	"effText":"Territorial: When turns start, move an adjacent character 1 space, then I attack them.\nWhen I attack a character with X less E than my W, give other characters adjacent to them -X EW.",
+	"effects":[
+		{
+			"blurb":"Territorial",
+			"triggerCondition":"Turn Start",
+			"trigger":
+			"{
+				\"blurb\":\"Territorial\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"CardTargetSubeffect\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"for Fyrian to move and attack\",
+						\"cardRestrictions\":[\"Board\",\"Is Character\",\"Adjacent\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where Hermit to move its target\",
+						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\",\"Can Move Target to This Space\"],
+						\"constant\":1
+					}
+				}",
+				"{
+					\"subeffType\":\"MoveSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"TargetThisSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"AttackSubeffect\",
+					\"attackerIndex\":-1,
+					\"targetIndex\":-2
+				}"
+			]	
+		},
+		{
+			"blurb":"Acid Breath",
+			"triggerCondition":"Attack",
+			"trigger":
+			"{
+				\"blurb\":\"Acid Breath\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"TargetThisSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"SetXByTargetValueSubeffect\",
+					\"whatToCount\":\"W\",
+					\"xMultiplier\":1
+				}",
+				"{
+					\"subeffType\":\"TargetDefenderSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"SetXByTargetValueSubeffect\",
+					\"whatToCount\":\"E\",
+					\"change\":true,
+					\"xMultiplier\":-1
+				}",
+				"{
+					\"subeffType\":\"ChangeAllNESWSubeffect\",
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Adjacent to Target\",\"Distinct from Source\"],
+						\"cSpaces\":1
+					},
+					\"eMult\":-1,
+					\"wMult\":-1
+				}"
+			]	
+		}
+	],
+	"n":3,
+	"e":12,
+	"s":15,
+	"w":15,
+	"subtypeText":"Dragon"
+}

@@ -16,6 +16,9 @@
 			}",
 			"subeffects":[
 				"{
+					\"subeffType\":\"SetXSubeffect\"
+				}",
+				"{
 					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
@@ -24,8 +27,9 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"ChangeXByTargetValueSubeffect\",
+					\"subeffType\":\"SetXByTargetValueSubeffect\",
 					\"whatToCount\":\"S\",
+					\"change\":true,
 					\"xMultiplier\":1
 				}",
 				"{
@@ -34,11 +38,11 @@
 				"{
 					\"subeffType\":\"LoopSubeffect\",
 					\"canDecline\":true,
-					\"jumpTo\":0
+					\"jumpTo\":1
 				}",
 				"{
 					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
-					\"jumpTo\":9
+					\"jumpTo\":10
 				}",
 				"{
 					\"subeffType\":\"ChooseFromListSaveRestSubeffect\",

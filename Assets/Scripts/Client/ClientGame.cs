@@ -77,11 +77,13 @@ namespace KompasClient.GameCore
         //TODO make client aware that effects have been pushed to stack
         private bool stackEmpty = true;
         public override bool NothingHappening => stackEmpty;
+        //TODO keep track of actual effects on client.
+        public override IEnumerable<IStackable> StackEntries => new IStackable[] { };
 
         public bool canZoom = false;
 
         //dirty card set
-        private HashSet<GameCard> dirtyCardList = new HashSet<GameCard>();
+        private readonly HashSet<GameCard> dirtyCardList = new HashSet<GameCard>();
 
         public override int Leyload 
         { 

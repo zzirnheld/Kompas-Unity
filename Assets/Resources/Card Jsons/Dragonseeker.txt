@@ -19,7 +19,7 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"ChangeXByTargetValueSubeffect\",
+					\"subeffType\":\"SetXByTargetValueSubeffect\",
 					\"whatToCount\":\"S\",
 					\"xMultiplier\":1
 				}",

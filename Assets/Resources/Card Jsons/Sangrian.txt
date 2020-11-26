@@ -1,0 +1,92 @@
+{
+	"cardType":67,
+	"cardName":"Sangrian",
+	"effText":"Territorial: When turns start, move an adjacent character 1 space, then I attack them.\nWhen an SX character I’m attacking dies, give a character +X ESW.",
+	"effects":[
+		{
+			"blurb":"Territorial",
+			"triggerCondition":"Turn Start",
+			"trigger":
+			"{
+				\"blurb\":\"Territorial\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"CardTargetSubeffect\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"for Fyrian to move and attack\",
+						\"cardRestrictions\":[\"Board\",\"Is Character\",\"Adjacent\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where Hermit to move its target\",
+						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\",\"Can Move Target to This Space\"],
+						\"constant\":1
+					}
+				}",
+				"{
+					\"subeffType\":\"MoveSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"TargetThisSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"AttackSubeffect\",
+					\"attackerIndex\":-1,
+					\"targetIndex\":-2
+				}"
+			]	
+		},
+		{
+			"blurb":"Bloody Breath",
+			"triggerCondition":"Discard",
+			"trigger":
+			"{
+				\"blurb\":\"Bloody Breath\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Is Defending From Source\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"SetXByTargetValueSubeffect\",
+					\"whatToCount\":\"S\",
+					\"xMultiplier\":1
+				}",
+				"{
+					\"subeffType\":\"CardTargetSubeffect\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"for Sangrian to feed\",
+						\"cardRestrictions\":[\"Board\",\"Is Character\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"eMult\":1,
+					\"sMult\":1,
+					\"wMult\":1
+				}"
+			]	
+		}
+	],
+	"n":3,
+	"e":11,
+	"s":14,
+	"w":14,
+	"subtypeText":"Dragon"
+}

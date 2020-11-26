@@ -26,6 +26,7 @@ namespace KompasServer.Effects
         public ServerGame ServerGame;
 
         private readonly ServerEffectStack stack = new ServerEffectStack();
+        public IEnumerable<IServerStackable> StackEntries => stack.StackEntries;
 
         //queue of triggers triggered throughout the resolution of the effect, to be ordered after the effect resolves
         private Queue<TriggersTriggered> triggeredTriggers = new Queue<TriggersTriggered>();

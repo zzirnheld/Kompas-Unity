@@ -34,6 +34,7 @@ namespace KompasCore.Effects
         public const string SameOwner = "Same Owner as Source";
         public const string TurnPlayerControls = "Turn Player Controls";
         public const string AdjacentToEnemy = "Adjacent to Enemy";
+        public const string ControllerMatchesTarget = "Controller Matches Target's";
 
         //summoned
         public const string Summoned = "Summoned"; //non-avatar character
@@ -94,6 +95,7 @@ namespace KompasCore.Effects
         public const string Adjacent = "Adjacent";
         public const string AdjacentToTarget = "Adjacent to Target";
         public const string WithinCSpacesOfSource = "Within C Spaces";
+        public const string WithinCSpacesOfTarget = "Within C Spaces of Target";
         public const string InAOE = "In AOE";
         public const string NotInAOE = "Not In AOE";
         public const string AdjacentToSubtype = "Adjacent to Subtype";
@@ -110,6 +112,7 @@ namespace KompasCore.Effects
         public const string CanBePlayed = "Can Be Played";
         public const string EffectControllerCanPayCost = "Effect Controller can Afford Cost";
         public const string Augmented = "Augmented";
+        public const string IsDefendingFromSource = "Is Defending From Source";
         #endregion restrictions
 
         //because JsonUtility will fill in all values with defaults if not present
@@ -255,6 +258,7 @@ namespace KompasCore.Effects
                 case InAOE:              return Source.CardInAOE(potentialTarget);
                 case NotInAOE:           return !Source.CardInAOE(potentialTarget);
                 case WithinCSpacesOfSource: return potentialTarget.WithinSpaces(cSpaces, Source);
+                case WithinCSpacesOfTarget: return potentialTarget.WithinSpaces(cSpaces, Subeffect.Target);
                 case ExactlyXSpaces:     return potentialTarget.DistanceTo(Source) == x;
                 case InFrontOfSource:    return Source.CardInFront(potentialTarget);
                 case BehindSource:       return Source.CardBehind(potentialTarget);
@@ -268,6 +272,8 @@ namespace KompasCore.Effects
                 case CanBePlayed: return Subeffect.Game.ExistsEffectPlaySpace(Source.PlayRestriction, Effect);
                 case EffectControllerCanPayCost: return Subeffect.Effect.Controller.Pips >= potentialTarget.Cost * costMultiplier / costDivisor;
                 case Augmented: return potentialTarget.Augments.Any();
+                case IsDefendingFromSource:
+                    return Source.Game.StackEntries.Any(s => s is Attack atk && atk.attacker == Source && atk.defender == potentialTarget);
                 default: throw new ArgumentException($"Invalid card restriction {restriction}", "restriction");
             }
         }

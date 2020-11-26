@@ -19,8 +19,9 @@
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"ChangeXByGamestateSubeffect\",
+					\"subeffType\":\"SetXByGamestateSubeffect\",
 					\"whatToCount\":\"Hand Size\",
+					\"change\":true,
 					\"xMultiplier\":-1
 				}",
 				"{

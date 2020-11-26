@@ -22,8 +22,9 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"ChangeXByTargetValueSubeffect\",
+					\"subeffType\":\"SetXByTargetValueSubeffect\",
 					\"whatToCount\":\"Cost\",
+					\"change\":true,
 					\"xMultiplier\":1
 				}",
 				"{
