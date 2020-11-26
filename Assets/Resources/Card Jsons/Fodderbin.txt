@@ -1,0 +1,29 @@
+{
+	"cardType":83,
+	"cardName":"Fodderbin",
+	"effText":"When a friendly character dies here during an enemy turn, draw 1.",
+	"effects":[
+		{
+			"triggerCondition":"Discard",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\",\"Enemy Turn\",\"Triggerer Fits Restriction\"],
+					\"cardRestriction\":
+					{
+						\"cardRestrictions\":[\"Friendly\",\"In AOE\"]
+					}
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"DrawSubeffect\"
+				}"
+			]	
+		}
+	],
+	"c":1,
+	"spellType":"Radial",
+	"subtypeText":"Radial",
+	"arg":1
+}
