@@ -406,7 +406,7 @@ namespace KompasCore.Cards
         /// On the server, this only notifies the clients of stat changes once.
         /// </summary>
         public void AddToCharStats(int n, int e, int s, int w, IStackable stackSrc = null)
-            => SetCharStats(N + n, S + s, E + e, W + w, stackSrc: stackSrc);
+            => SetCharStats(N + n, E + e, S + s, W + w, stackSrc: stackSrc);
 
         /// <summary>
         /// Shorthand for modifying a card's stats all at once.

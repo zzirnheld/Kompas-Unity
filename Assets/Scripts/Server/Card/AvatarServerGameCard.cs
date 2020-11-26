@@ -10,10 +10,10 @@ namespace KompasServer.Cards
     {
         public override bool CanRemove => Summoned || Location == CardLocation.Nowhere;
 
-        public override void SetE(int e, IStackable stackSrc = null)
+        public override void SetE(int e, IStackable stackSrc = null, bool notify = true)
         {
-            base.SetE(e, stackSrc);
-            if (E < 0) ServerGame.Lose(ControllerIndex);
+            base.SetE(e, stackSrc, notify);
+            if (E <= 0) ServerGame.Lose(ControllerIndex);
         }
 
         //TODO make this return whether the Avatar is summoned yet

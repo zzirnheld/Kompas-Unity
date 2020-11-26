@@ -47,8 +47,9 @@ namespace KompasServer.Effects
             //do anything necessary to clean up the loop
             OnLoopExit();
 
-            //then skip to after the loop
-            return ServerEffect.ResolveNextSubeffect();
+            //then skip to after the loop (exitloop will sometimes be called while the effect is waiting on a target,
+            //on a subeffect that isn't this one. resolvenext won't work in that situation.
+            return ServerEffect.ResolveSubeffect(SubeffIndex + 1);
         }
 
         public override bool OnImpossible()
