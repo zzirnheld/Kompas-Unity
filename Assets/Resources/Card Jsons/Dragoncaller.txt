@@ -32,7 +32,7 @@
 					\"subeffType\":\"ChooseOptionSubeffect\",
 					\"ChoiceBlurb\":\"Give +X ES or SW?\",
 					\"OptionBlurbs\":[\"+X ES\",\"+X SW\"],
-					\"OptionJumpIndices\":[6,8]
+					\"OptionJumpIndices\":[5,7]
 				}",
 				"{
 					\"subeffType\":\"XChangeNESWSubeffect\",

@@ -273,7 +273,8 @@ namespace KompasCore.Effects
                 case EffectControllerCanPayCost: return Subeffect.Effect.Controller.Pips >= potentialTarget.Cost * costMultiplier / costDivisor;
                 case Augmented: return potentialTarget.Augments.Any();
                 case IsDefendingFromSource:
-                    return Source.Game.StackEntries.Any(s => s is Attack atk && atk.attacker == Source && atk.defender == potentialTarget);
+                    return Source.Game.StackEntries.Any(s => s is Attack atk && atk.attacker == Source && atk.defender == potentialTarget)
+                        || (Source.Game.CurrStackEntry is Attack atk2 && atk2.attacker == Source && atk2.defender == potentialTarget);
                 default: throw new ArgumentException($"Invalid card restriction {restriction}", "restriction");
             }
         }

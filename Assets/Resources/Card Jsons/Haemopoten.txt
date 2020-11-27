@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Haemopoten",
-	"effText":"During your turn, you can set X to the number of uses of this effect  this turn. Give me -XE. Annihilate your topdeck. Delay 1. Rehand it.",
+	"effText":"During your turn, you can set X to the number of uses of this effect this turn. Give me -XE. Annihilate your topdeck. Delay 1. Rehand it.",
 	"effects":[
 		{
 			"activationRestriction":{

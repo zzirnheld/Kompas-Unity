@@ -30,7 +30,8 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"TargetAugmentsSubeffect\"
+					\"subeffType\":\"TargetAugmentsSubeffect\",
+					\"targetIndex\":-2
 				}",
 				"{
 					\"subeffType\":\"ConditionalEndSubeffect\",
