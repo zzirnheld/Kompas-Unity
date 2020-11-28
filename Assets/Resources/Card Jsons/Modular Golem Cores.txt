@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Modular Golem Cores",
-	"effText":"Once each turn, you can detach a Golem Core to search your deck for a Golem Core.",
+	"effText":"Once each turn, you can choose one:\nDetach a Golem Core to search your deck for a Golem Core.\nPip hand-cast a Golem Core.",
 	"effects":[
 		{
 			"blurb":"Forget That Mess",
@@ -12,6 +12,12 @@
 				]
 			},
 			"subeffects":[
+				"{
+					\"subeffType\":\"ChooseOptionSubeffect\",
+					\"ChoiceBlurb\":\"Destroy and search, or pip hand-apply?\",
+					\"OptionBlurbs\":[\"Search\",\"Apply\"],
+					\"OptionJumpIndices\":[1,6]
+				}",
 				"{
 					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
@@ -35,6 +41,33 @@
 				}",
 				"{
 					\"subeffType\":\"RehandSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"EndResolutionSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"CardTargetSubeffect\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"Golem Core for Modular to apply\",
+						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Is Augment\",\"Subtypes Include\",\"Can Be Played\",\"Effect Controller can Afford Cost\"],
+						\"subtypesInclude\":[\"Golem Core\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"spaceRestriction\":
+					{
+						\"blurb\":\"where for Runarunner to cast its target Rune\",
+						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"PayPipsTargetCostSubeffect\",
+					\"xMultiplier\":1
+				}",
+				"{
+					\"subeffType\":\"PlaySubeffect\"
 				}"
 			]
 		}
