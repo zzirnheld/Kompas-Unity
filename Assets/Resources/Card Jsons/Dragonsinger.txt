@@ -1,0 +1,61 @@
+{
+	"cardType":67,
+	"cardName":"Dragonsinger",
+	"effText":"When turns start, you can hand-reshuffle X of your Dragons to give me +X S and draw X.",
+	"effects":[
+		{
+			"blurb":"Dragonsing",
+			"triggerCondition":"Turn Start",
+			"trigger":
+			"{
+				\"blurb\":\"Hand-reshuffle X Dragons to give Dragonsinger +X S and draw X?\",
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card in Play\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"SetXSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"CardTargetSubeffect\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"for Dragonseeker to reshuffle\",
+						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Is Character\",\"Subtypes Include\"],
+						\"subtypesInclude\":[\"Dragon\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"SetXSubeffect\",
+					\"change\":true,
+					\"xMultiplier\":1
+				}",
+				"{
+					\"subeffType\":\"ReshuffleSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"LoopSubeffect\",
+					\"canDecline\":true,
+					\"jumpTo\":1
+				}",
+				"{
+					\"subeffType\":\"TargetThisSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"sMult\":1
+				}",
+				"{
+					\"subeffType\":\"DrawXSubeffect\",
+					\"xMultiplier\":1
+				}"
+			]
+		}
+	],
+	"n":2,
+	"e":5,
+	"s":5,
+	"w":5,
+	"subtypeText":""
+}

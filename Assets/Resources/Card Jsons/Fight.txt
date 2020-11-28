@@ -1,0 +1,43 @@
+{
+	"cardType":83,
+	"cardName":"Fight",
+	"effText":"A friendly character attacks an adjacent enemy character. (The two things fighting must be adjacent.)",
+	"effects":[
+		{
+			"triggerCondition":"Play",
+			"trigger":
+			"{
+				\"triggerRestriction\":{
+					\"triggerRestrictions\":[\"This Card Triggered\"]
+				}
+			}",
+			"subeffects":[
+				"{
+					\"subeffType\":\"CardTargetSubeffect\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"friendly character that should attack\",
+						\"cardRestrictions\":[\"Is Character\",\"Friendly\",\"Board\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"CardTargetSubeffect\",
+					\"cardRestriction\":
+					{
+						\"blurb\":\"enemy character to attack\",
+						\"cardRestrictions\":[\"Is Character\",\"Enemy\",\"Board\",\"Adjacent to Target\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"AttackSubeffect\",
+					\"targetIndex\":-1,
+					\"attackerIndex\":-2
+				}"
+			]
+		}
+	],
+	"fast":true,
+	"c":2,
+	"spellType":"Simple",
+	"subtypeText":"Simple"
+}

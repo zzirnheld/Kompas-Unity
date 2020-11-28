@@ -113,6 +113,7 @@ namespace KompasCore.Effects
         public const string EffectControllerCanPayCost = "Effect Controller can Afford Cost";
         public const string Augmented = "Augmented";
         public const string IsDefendingFromSource = "Is Defending From Source";
+        public const string CanPlayTargetToThisCharactersSpace = "Can Play Target to This Character's Space";
         #endregion restrictions
 
         //because JsonUtility will fill in all values with defaults if not present
@@ -275,6 +276,8 @@ namespace KompasCore.Effects
                 case IsDefendingFromSource:
                     return Source.Game.StackEntries.Any(s => s is Attack atk && atk.attacker == Source && atk.defender == potentialTarget)
                         || (Source.Game.CurrStackEntry is Attack atk2 && atk2.attacker == Source && atk2.defender == potentialTarget);
+                case CanPlayTargetToThisCharactersSpace:
+                    return Subeffect.Target.PlayRestriction.EvaluateEffectPlay(potentialTarget.BoardX, potentialTarget.BoardY, Effect);
                 default: throw new ArgumentException($"Invalid card restriction {restriction}", "restriction");
             }
         }

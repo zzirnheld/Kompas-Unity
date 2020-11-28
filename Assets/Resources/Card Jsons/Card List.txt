@@ -253,11 +253,13 @@ Mother of Dragons
 Dragoncaller
 Dragonspeaker
 Dragonseeker
+Dragonsinger
 Dragonbinder
 Bound Offering
 Trapped Offering
 Demagogue
 Binding Site
+Aeolian
 Fyrian
 Obscurian
 Sangrian
@@ -265,4 +267,5 @@ Cidian
 Leybinding
 Rebinding
 Fodderbin
+Fight
 a lot of disappointment

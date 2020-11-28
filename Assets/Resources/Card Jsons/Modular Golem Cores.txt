@@ -55,19 +55,23 @@
 					}
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+					\"subeffType\":\"CardTargetSubeffect\",
+					\"cardRestriction\":
 					{
-						\"blurb\":\"where for Runarunner to cast its target Rune\",
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+						\"blurb\":\"where for Modular to apply Golem Core\",
+						\"cardRestrictions\":[\"Board\",\"Can Play Target to This Character's Space\"]
 					}
+				}",
+				"{
+					\"subeffType\":\"TargetTargetsSpaceSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"PayPipsTargetCostSubeffect\",
 					\"xMultiplier\":1
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					\"subeffType\":\"PlaySubeffect\",
+					\"targetIndex\":-2
 				}"
 			]
 		}

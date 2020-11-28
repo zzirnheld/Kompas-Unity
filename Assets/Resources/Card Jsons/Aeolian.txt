@@ -1,7 +1,7 @@
 {
 	"cardType":67,
-	"cardName":"Fyrian",
-	"effText":"Territorial: When turns start, move an adjacent character 1 space, then I attack them.\nWhen I attack, give characters within 1 space of my target -3E.",
+	"cardName":"Aeolian",
+	"effText":"Territorial: When turns start, move an adjacent character 1 space, then I attack them.\nWhen I attack, move my target anywhere.",
 	"effects":[
 		{
 			"blurb":"Territorial",
@@ -59,20 +59,21 @@
 					\"subeffType\":\"TargetDefenderSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"ChangeAllNESWSubeffect\",
-					\"cardRestriction\":
-					{
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Within C Spaces of Target\"],
-						\"cSpaces\":1
-					},
-					\"eMod\":-3
+					\"subeffType\":\"SpaceTargetSubeffect\",
+					\"spaceRestriction\":{
+						\"blurb\":\"where for Aeolian to move its target\",
+						\"spaceRestrictions\":[\"Empty\",\"Can Move Target to This Space\"]
+					}
+				}",
+				"{
+					\"subeffType\":\"MoveSubeffect\"
 				}"
 			]	
 		}
 	],
 	"n":3,
-	"e":9,
-	"s":12,
-	"w":12,
+	"e":8,
+	"s":11,
+	"w":11,
 	"subtypeText":"Dragon"
 }
