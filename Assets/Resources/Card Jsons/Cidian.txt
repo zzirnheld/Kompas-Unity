@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Cidian",
-	"effText":"Territorial: When turns start, move an adjacent character 1 space, then I attack them.\nWhen I attack a character with X less E than my W, give other characters adjacent to them -X EW.",
+	"effText":"Territorial: When turns start, move an adjacent character 1 space, then I attack them.\nWhen I attack a character with X less E than my W, give characters adjacent to them, other than me, -X EW.",
 	"effects":[
 		{
 			"blurb":"Territorial",

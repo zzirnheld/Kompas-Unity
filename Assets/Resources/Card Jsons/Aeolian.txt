@@ -18,7 +18,7 @@
 					\"subeffType\":\"CardTargetSubeffect\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"for Fyrian to move and attack\",
+						\"blurb\":\"for Aeolian to move and attack\",
 						\"cardRestrictions\":[\"Board\",\"Is Character\",\"Adjacent\"]
 					}
 				}",
@@ -26,7 +26,7 @@
 					\"subeffType\":\"SpaceTargetSubeffect\",
 					\"spaceRestriction\":
 					{
-						\"blurb\":\"where Hermit to move its target\",
+						\"blurb\":\"where Aeolian to move its target\",
 						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\",\"Can Move Target to This Space\"],
 						\"constant\":1
 					}
@@ -45,11 +45,11 @@
 			]	
 		},
 		{
-			"blurb":"Fire Breath",
+			"blurb":"Air Breath",
 			"triggerCondition":"Attack",
 			"trigger":
 			"{
-				\"blurb\":\"Fire Breath\",
+				\"blurb\":\"Air Breath\",
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\"]
 				}

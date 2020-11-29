@@ -196,6 +196,7 @@ namespace KompasCore.Effects
                 case Enemy:     return potentialTarget.Controller != Controller;
                 case SameOwner: return potentialTarget.Owner == Controller;
                 case TurnPlayerControls: return potentialTarget.Controller == Subeffect.Game.TurnPlayer;
+                case ControllerMatchesTarget: return potentialTarget.Controller == Subeffect.Target.Controller;
 
                 //summoned
                 case Summoned:  return potentialTarget.Summoned;

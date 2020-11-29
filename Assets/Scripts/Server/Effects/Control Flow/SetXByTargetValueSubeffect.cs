@@ -3,6 +3,7 @@
     public class SetXByTargetValueSubeffect : SetXSubeffect
     {
         public const string Cost = "Cost";
+        public const string E = "E";
         public const string S = "S";
         public const string W = "W";
         public const string C = "C";
@@ -17,6 +18,7 @@
                 switch (whatToCount)
                 {
                     case Cost: return Target.Cost;
+                    case E: return Target.E;
                     case S: return Target.S;
                     case W: return Target.W;
                     case C: return Target.C;
