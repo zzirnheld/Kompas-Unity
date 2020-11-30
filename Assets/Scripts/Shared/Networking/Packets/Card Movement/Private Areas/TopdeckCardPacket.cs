@@ -11,10 +11,10 @@ namespace KompasCore.Networking
 
         public TopdeckCardPacket() : base(TopdeckCard) { }
 
-        public TopdeckCardPacket(int cardId, int controllerIndex) : this()
+        public TopdeckCardPacket(int cardId, int controllerIndex, bool invert = false) : this()
         {
             this.cardId = cardId;
-            this.controllerIndex = controllerIndex;
+            this.controllerIndex = invert ? 1 - controllerIndex : controllerIndex;
         }
 
         public override Packet Copy() => new TopdeckCardPacket(cardId, controllerIndex);
