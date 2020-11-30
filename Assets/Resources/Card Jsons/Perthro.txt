@@ -4,9 +4,9 @@
 	"effText":"Can’t be cast normally. Search your deck’s top 10 cards for 3 spells.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

@@ -5,9 +5,9 @@
 	"effects":[
 		{
 			"blurb":"Simple Effect",
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

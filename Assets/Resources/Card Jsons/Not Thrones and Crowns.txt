@@ -4,9 +4,9 @@
 	"effText":"Set X to the number of friendly Supplicants. Give all Summoned non-Supplicants -XE.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

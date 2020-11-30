@@ -4,9 +4,9 @@
 	"effText":"Choose a friendly Shaper. Move an enemy character to be adjacent to the chosen Shaper.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

@@ -4,9 +4,9 @@
 	"effText":"Unloopable: 1/name/turn. Resummon all characters.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

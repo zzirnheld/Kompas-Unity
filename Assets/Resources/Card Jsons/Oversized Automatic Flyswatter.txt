@@ -4,10 +4,10 @@
 	"effText":"When a character arrives adjacent to me, give them -1E.",
 	"effects":[
 		{
-			"triggerCondition":"Arrive",
 			"triggerData":
 			"{
 				"blurb":"BEGONE! SWAT!",
+				"triggerCondition":"Arrive",
 				"triggerRestriction":{
 					"triggerRestrictions":["Coords Fit Restriction"],
 					"spaceRestriction":

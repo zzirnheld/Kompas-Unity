@@ -4,9 +4,9 @@
 	"effText":"Can’t be cast normally. Choose an SX character. Pay X pips. Kill the chosen character and deck-summon an SX Runar.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

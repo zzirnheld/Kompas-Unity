@@ -4,9 +4,9 @@
 	"effText":"When a distinctly named Shaper moves, I can move adjacent to them.",
 	"effects":[
 		{
-			"triggerCondition":"Move",
 			"triggerData":
 			"{
+				"triggerCondition":"Move",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":{

@@ -4,9 +4,9 @@
 	"effText":"When I move 3 spaces, discard a Crazy Idea, and give me +3W.",
 	"effects":[
 		{
-			"triggerCondition":"Move",
 			"triggerData":
 			"{
+				"triggerCondition":"Move",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered","Distance from Triggerer to Space == Constant"],
 					"distance":3

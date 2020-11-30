@@ -5,9 +5,9 @@
 	"effects":[
 		{
 			"blurb":"Shards of Glass",
-			"triggerCondition":"Activate",
 			"triggerData":
 			"{
+				"triggerCondition":"Activate",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
