@@ -108,12 +108,12 @@ namespace KompasClient.GameCore
             dirtyCardList.Clear();
         }
 
-        public void SetAvatar(int player, string avatarName, int avatarID)
+        public void SetAvatar(int player, string json, int avatarID)
         {
             if (player >= 2) throw new System.ArgumentException();
 
             var owner = ClientPlayers[player];
-            var avatar = cardRepo.InstantiateClientAvatar(avatarName, this, owner, avatarID);
+            var avatar = cardRepo.InstantiateClientAvatar(json, this, owner, avatarID);
             owner.Avatar = avatar;
             avatar.Play(player * 6, player * 6, owner);
         }

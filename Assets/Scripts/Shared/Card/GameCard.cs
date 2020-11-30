@@ -195,6 +195,8 @@ namespace KompasCore.Cards
             }
         }
 
+        public string BaseJson => Game.cardRepo.GetJsonFromName(CardName);
+
         /// <summary>
         /// Represents whether this card is currently known to the enemy of this player.
         /// TODO: make this also be accurate on client, remembering what thigns have been revealed

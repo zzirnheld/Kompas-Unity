@@ -9,7 +9,7 @@ namespace KompasCore.Networking
     public class AddCardPacket : Packet
     {
         public int cardId;
-        public string cardName;
+        public string json;
         public CardLocation location;
         public int controllerIndex;
         public int x;
@@ -18,27 +18,30 @@ namespace KompasCore.Networking
 
         public AddCardPacket() : base(AddCard) { }
 
-        public AddCardPacket(int cardId, string cardName, CardLocation location, int controllerIndex, bool invert = false) : this()
+        public AddCardPacket(int cardId, string json, CardLocation location, int controllerIndex, bool invert = false) : this()
         {
             this.cardId = cardId;
-            this.cardName = cardName;
+            this.json = json;
             this.location = location;
             this.controllerIndex = invert ? 1 - controllerIndex : controllerIndex;
         }
 
-        public AddCardPacket(int cardId, string cardName, CardLocation location, int controllerIndex, int x, int y, bool attached, bool invert = false) 
-            : this(cardId, cardName, location, controllerIndex, invert)
+        public AddCardPacket(int cardId, string json, CardLocation location, int controllerIndex, 
+            int x, int y, bool attached, bool invert = false) 
+            : this(cardId, json, location, controllerIndex, invert)
         {
             this.x = invert ? 6 - x : x;
             this.y = invert ? 6 - y : y;
             this.attached = attached;
         }
 
+        //TODO allow for card to be added with stats not as defaults.
+        //this will require using a json library that allows for polymorphism-ish stuff
         public AddCardPacket(GameCard card, bool invert = false)
-            : this(card.ID, card.CardName, card.Location, card.ControllerIndex, card.BoardX, card.BoardY, card.Attached, invert: invert)
+            : this(card.ID, card.BaseJson, card.Location, card.ControllerIndex, card.BoardX, card.BoardY, card.Attached, invert: invert)
         { }
 
-        public override Packet Copy() => new AddCardPacket(cardId, cardName, location, controllerIndex, x, y, attached);
+        public override Packet Copy() => new AddCardPacket(cardId, json, location, controllerIndex, x, y, attached);
 
         public override Packet GetInversion(bool known)
         {
@@ -51,7 +54,7 @@ namespace KompasCore.Networking
                     default: throw new System.ArgumentException($"What should add card packet do when a card is added to the hidden location {location}");
                 }
             }
-            else return new AddCardPacket(cardId, cardName, location, controllerIndex, x, y, attached, invert: true);
+            else return new AddCardPacket(cardId, json, location, controllerIndex, x, y, attached, invert: true);
         }
     }
 }
@@ -63,7 +66,7 @@ namespace KompasClient.Networking
         public void Execute(ClientGame clientGame)
         {
             var controller = clientGame.ClientPlayers[controllerIndex];
-            var card = clientGame.cardRepo.InstantiateClientNonAvatar(cardName, clientGame, controller, cardId);
+            var card = clientGame.cardRepo.InstantiateClientNonAvatar(json, clientGame, controller, cardId);
             clientGame.cardsByID.Add(cardId, card);
             switch (location)
             {

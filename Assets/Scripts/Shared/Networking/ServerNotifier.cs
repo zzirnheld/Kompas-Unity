@@ -35,8 +35,8 @@ namespace KompasServer.Networking
 
         public void DeckAccepted() => SendPacket(new DeckAcceptedPacket());
 
-        public void SetFriendlyAvatar(string cardName, int cardID)
-            => SendToBothInverting(new SetAvatarPacket(0, cardName, cardID));
+        public void SetFriendlyAvatar(string json, int cardID)
+            => SendToBothInverting(new SetAvatarPacket(0, json, cardID));
 
         /// <summary>
         /// Takes care of inverting first turn player

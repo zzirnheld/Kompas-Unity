@@ -205,17 +205,11 @@ public class CardRepository : MonoBehaviour
         return effects;
     }
 
-    public AvatarClientGameCard InstantiateClientAvatar(string cardName, ClientGame clientGame, ClientPlayer owner, int id)
+    public AvatarClientGameCard InstantiateClientAvatar(string json, ClientGame clientGame, ClientPlayer owner, int id)
     {
-        if (!cardJsons.ContainsKey(cardName))
-        {
-            Debug.LogError($"Tried to create an avatar for a name that doesn't have a json");
-            return null;
-        }
-
         try
         {
-            SerializableCard charCard = JsonUtility.FromJson<SerializableCard>(cardJsons[cardName]);
+            SerializableCard charCard = JsonUtility.FromJson<SerializableCard>(json);
             if (charCard.cardType != 'C') return null;
             AvatarClientGameCard avatar = Instantiate(ClientAvatarPrefab).GetComponent<AvatarClientGameCard>();
             ClientEffect[] effects = CreateClientEffects(charCard.effects, avatar, clientGame, owner);
@@ -228,14 +222,13 @@ public class CardRepository : MonoBehaviour
         catch (System.ArgumentException argEx)
         {
             //Catch JSON parse error
-            Debug.LogError($"Failed to load {cardName} as Avatar, argument exception with message {argEx.Message} \nJson was {cardJsons[cardName]}");
+            Debug.LogError($"Failed to load client Avatar, argument exception with message {argEx.Message}, for json:\n{json}");
             return null;
         }
     }
 
-    public ClientGameCard InstantiateClientNonAvatar(string name, ClientGame clientGame, ClientPlayer owner, int id)
+    public ClientGameCard InstantiateClientNonAvatar(string json, ClientGame clientGame, ClientPlayer owner, int id)
     {
-        string json = cardJsons[name] ?? throw new System.ArgumentException($"Name {name} not associated with json");
         try
         {
             //TODO later try setting serializableCard in the switch, and moving set info outside
