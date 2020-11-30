@@ -5,24 +5,24 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Grant Hope",
 				"triggerCondition":"Negate",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
 					"eMod":1,
 					"sMod":1,
 					"wMod":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
 					"condition":"Target Violates Restriction",
 					"cardRestriction":
@@ -30,14 +30,14 @@
 						"cardRestrictions":["Subtypes Include"],
 						"subtypesInclude":["Supplicant"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
 					"nMod":2,
 					"eMod":2,
 					"sMod":2,
 					"wMod":2
-				}"
+				}
 			]
 		}
 	],

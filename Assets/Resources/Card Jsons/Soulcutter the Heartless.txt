@@ -5,20 +5,20 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Annihilate",
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered","From Field"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.AnnihilateSubeffect"
-				}"
+				}
 			]
 		},
 		{
@@ -32,58 +32,58 @@
 				"location":2
 			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
 						"blurb":"where to revive Unlost",
 						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
 					"xDivisor":2,
 					"xMultiplier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PlaySubeffect"
-				}"
+				}
 			]
 		},
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Annihilate",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":{
 						"blurb":"for Soulcutter to discard",
 						"cardRestrictions":["Friendly","Hand","Subtypes Include"],
 						"subtypesInclude":["Revenant"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DiscardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DrawSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
 					"condition":"Must be Enemy Turn"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
 					"xModifier":1
-				}"
+				}
 			]	
 		}
 	],

@@ -12,7 +12,7 @@
 				]
 			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -22,15 +22,15 @@
 						"subtypesInclude":["Rune"]
 					},
 					"maxCanChoose":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp",
 					"targetIndex":-1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
 					"xModifier":2
-				}"
+				}
 			]
 		}
 	],

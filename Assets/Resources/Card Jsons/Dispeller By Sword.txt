@@ -12,7 +12,7 @@
 				]
 			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -21,19 +21,19 @@
 						"subtypesInclude":["Warrior"]
 					},
 					"xMultiplier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"cardRestrictions":["Is Spell","Cost<=X"]
 					},
 					"xMultiplier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DispelSubeffect, Assembly-CSharp",
 					"targetIndex":-1
-				}"
+				}
 			]
 		}
 	],

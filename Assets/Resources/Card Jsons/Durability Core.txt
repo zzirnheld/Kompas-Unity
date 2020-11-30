@@ -6,51 +6,51 @@
 		{
 			"blurb":"Activate",
 			"triggerData":
-			"{
+			{
 				"blurb":"Activate Golem",
 				"triggerCondition":"Augment Attached",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TemporaryActivationSubeffect, Assembly-CSharp",
 					"endCondition":"Augment Detached",
 					"triggerRestriction":{
 						"triggerRestrictions":["This Card Triggered"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
 					"eBuff":5,
 					"endCondition":"Augment Detached",
 					"triggerRestriction":{
 						"triggerRestrictions":["This Card Triggered"]
 					}
-				}"
+				}
 			]
 		},
 		{
 			"blurb":"Core Recovery",
 			"triggerData":
-			"{
+			{
 				"blurb":"Core Recovery",
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["Augmented Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.RehandSubeffect"
-				}"
+				}
 			]
 		}
 	],

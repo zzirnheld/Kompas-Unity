@@ -5,30 +5,30 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Resummon a Summoned character? (This triggers any relevant on-summon effects.)",
 				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Friendly Turn"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"Summoned character for Bestower of Memories to resummon",
 						"cardRestrictions":["Is Character","Board"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ResummonSubeffect"
-				}"
+				}
 			]	
 		},
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["Max Per Stack","This Card in Play","Controller Triggered","Triggerer Fits Restriction"],
@@ -37,14 +37,14 @@
 						"cardRestrictions":["Is Character"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ResummonSubeffect"
-				}"
+				}
 			]	
 		}
 	],

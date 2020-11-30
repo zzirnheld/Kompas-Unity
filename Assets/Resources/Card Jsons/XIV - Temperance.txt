@@ -5,16 +5,16 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"optional":true,
 				"blurb":"DispelSubeffect a C <= X spell? (X is the number of cards you just drew)",
 				"triggerCondition":"Draw",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Controller Triggered","Max Per Round"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -22,10 +22,10 @@
 						"cardRestrictions":["Is Spell","Board","Cost<=X"]
 					},
 					"xMultiplier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DispelSubeffect"
-				}"
+				}
 			]
 		}
 	],

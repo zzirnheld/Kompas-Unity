@@ -4,7 +4,7 @@
 	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nThe first time each stack a character moves into here, move them 1 space to an empty space here. If you can't, annihilate me.",
 	"effects":[
 		{
-			"triggerData":"{
+			"triggerData":{
 				"blurb":"Ificate",
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
@@ -13,9 +13,9 @@
 						"cardRestrictions":["Hand"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -23,28 +23,28 @@
 						"cardRestrictions":["Subtypes Include","Discard","Friendly","Distinct from Source"],
 						"subtypesInclude":["Crazy Idea"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
 					"xMultiplier":0,
 					"xModifier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
 						"blurb":"where Maze Blocker to play targeted Crazy Idea",
 						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PlaySubeffect"
-				}"
+				}
 			]
 		},
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Maze Block",
 				"triggerCondition":"Move",
 				"triggerRestriction":{
@@ -58,16 +58,16 @@
 						"spaceRestrictions":["In AOE"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
 					"jumpTo":5
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
@@ -75,22 +75,22 @@
 						"spaceRestrictions":["Empty","In AOE","Can Move Target to This Space","Distance to Target == Constant"],
 						"constant":1
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.MoveSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.EndResolutionSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.AnnihilateSubeffect"
-				}"
+				}
 			]	
 		}
 	],

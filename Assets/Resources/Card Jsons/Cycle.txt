@@ -12,20 +12,20 @@
 				]
 			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":{
 						"blurb":"Card to Cycle",
 						"cardRestrictions":["Friendly","Hand"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DiscardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChangeLeyloadSubeffect, Assembly-CSharp",
 					"xModifier":1
-				}"
+				}
 			]	
 		}
 	],

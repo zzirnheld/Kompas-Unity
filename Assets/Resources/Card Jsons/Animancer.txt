@@ -12,7 +12,7 @@
 				]
 			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -20,26 +20,26 @@
 						"cardRestrictions":["Subtypes Include","Friendly","Hand","Not Already Target"],
 						"subtypesInclude":["Golem"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
 					"whatToCount":"Cost",
 					"change":true,
 					"xMultiplier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DiscardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
 					"canDecline":true,
 					"jumpTo":0
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
 					"jumpTo":14
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChooseFromListSaveRestSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -52,40 +52,40 @@
 						"cardRestrictions":["Friendly","Deck","Index<X","Not Already Target"]
 					},
 					"xMultiplier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.BottomdeckRestSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
 					"ChoiceBlurb":"Rehand the Golem or search again?",
 					"OptionBlurbs":["Rehand","Search"],
 					"OptionJumpIndices":[12,9]
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
 					"whatToCount":"Cost",
 					"xMultiplier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DiscardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.JumpSubeffect, Assembly-CSharp",
 					"indexToJumpTo":4
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.RehandSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.EndResolutionSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.BottomdeckRestSubeffect"
-				}"
+				}
 			]
 		}
 	],

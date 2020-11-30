@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Strengthen Builder",
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
@@ -16,15 +16,15 @@
 						"subtypesInclude":["Cultist"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
 					"sMod":1
-				}"
+				}
 			]
 		},
 		{
@@ -35,14 +35,14 @@
 				]
 			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PayStatsSubeffect, Assembly-CSharp",
 					"sMod":9
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
 					"maxCanChoose":1,
 					"cardRestriction":
@@ -51,18 +51,18 @@
 						"cardRestrictions":["Subtypes Include","Friendly","Deck","Is Spell"],
 						"subtypesInclude":["Altar","Radial"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
 						"blurb":"where for Altar Builder to cast its target Altar",
 						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PlaySubeffect"
-				}"
+				}
 			]
 		}
 	],

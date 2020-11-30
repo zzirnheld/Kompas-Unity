@@ -5,41 +5,41 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"character for Sowilo to give -1E.",
 						"cardRestrictions":["Is Character","Board"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
 					"eChange":-1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"other character for Sowilo to give +1E.",
 						"cardRestrictions":["Is Character","Board","Not Already Target"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
 					"eChange":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
 					"xModifier":1
-				}"
+				}
 			]
 		}
 	],

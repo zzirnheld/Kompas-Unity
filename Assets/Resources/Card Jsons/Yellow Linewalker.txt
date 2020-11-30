@@ -12,37 +12,37 @@
 				]
 			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SpendMovementSubeffect, Assembly-CSharp",
 					"xModifier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
 						"blurb":"to Linewalk to",
 						"spaceRestrictions":["Empty","On Target's Diagonal"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.MoveSubeffect"
-				}"
+				}
 			]
 		},
 		{
 			"blurb":"Yellow Linewalked",
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Move",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -51,18 +51,18 @@
 						"subtypesInclude":["Linewalker"]
 					},
 					"xMultiplier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
 						"blurb":"where Yellow to hand-summon",
 						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PlaySubeffect"
-				}"
+				}
 			]	
 		}
 	],

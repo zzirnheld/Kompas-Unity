@@ -11,7 +11,7 @@
 				]
 			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
@@ -22,15 +22,15 @@
 							"subtypesInclude":["Ethereal"]
 						}
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SpendMovementSubeffect, Assembly-CSharp",
 					"xModifier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
 					"whatToCount":"Distance to Coords Through",
 					"throughRestriction":{
@@ -38,14 +38,14 @@
 						"subtypesInclude":["Ethereal"]
 					},
 					"xMultiplier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
 					"eMult":-1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.MoveSubeffect"
-				}"
+				}
 			]
 		}
 	],

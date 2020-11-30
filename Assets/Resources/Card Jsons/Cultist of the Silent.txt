@@ -5,20 +5,20 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Reshuffle",
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered","From Field"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ReshuffleSubeffect"
-				}"
+				}
 			]
 		}
 	],

@@ -11,27 +11,27 @@
 				]
 			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ResummonSubeffect"
-				}"
+				}
 			]	
 		},
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -39,10 +39,10 @@
 						"cardRestrictions":["Is Character","Board","Within C Spaces"],
 						"cSpaces":1
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DiscardSubeffect"
-				}"
+				}
 			]	
 		}
 	],

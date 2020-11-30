@@ -5,14 +5,14 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
 					"whatToCount":"Cards Fitting Restriction",
 					"cardRestriction":
@@ -21,8 +21,8 @@
 						"subtypesInclude":["Supplicant"]
 					},
 					"xMultiplier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChangeAllNESWSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -30,8 +30,8 @@
 						"subtypesInclude":["Supplicant"]
 					},
 					"eMult":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChangeAllNESWSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -39,7 +39,7 @@
 						"subtypesInclude":["Supplicant"]
 					},
 					"wMult":3
-				}"
+				}
 			]
 		}
 	],

@@ -5,20 +5,20 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.AnnihilateSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
 					"whatToCount":"Max Stat Among Restriction",
 					"stat":"Cost",
@@ -28,8 +28,8 @@
 						"cardRestrictions":["Subtypes Include","Friendly","Discard"],
 						"subtypesInclude":["Golem"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -37,8 +37,8 @@
 						"cardRestrictions":["Subtypes Include","Friendly","Discard","Cost==X"],
 						"subtypesInclude":["Golem"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -46,18 +46,18 @@
 						"cardRestrictions":["Subtypes Include","Friendly","Discard","Not Already Target"],
 						"subtypesInclude":["Golem"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ReshuffleSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",
 					"jumpTo":4
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp",
 					"targetIndex":1
-				}"
+				}
 			]	
 		}
 	],

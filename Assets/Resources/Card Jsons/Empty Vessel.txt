@@ -11,37 +11,37 @@
 				]
 			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ResummonSubeffect"
-				}"
+				}
 			]	
 		},
 		{
 			"blurb":"Empty Memories",
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
 					"nChange":1,
 					"eChange":1,
 					"sChange":1,
 					"wChange":1
-				}"
+				}
 			]	
 		}
 	],

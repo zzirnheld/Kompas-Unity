@@ -5,26 +5,26 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Lovers' death",
 				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
 					"eMod":-1
-				}"
+				}
 			]
 		},
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Lovers fleeing together",
 				"triggerCondition":"Play",
 				"triggerRestriction":{
@@ -33,27 +33,27 @@
 						"cardRestrictions":["Hand"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
 					"cardRestriction":{
 						"blurb":"Fleeing Lover to decksummon",
 						"cardRestrictions":["Friendly","Same Name as Source","Deck"]
 					},
 					"maxCanChoose":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
 						"blurb":"where to summon the other Fleeing Lover",
 						"spaceRestrictions":["Can Play Target to This Space","Adjacent to Source"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PlaySubeffect"
-				}"
+				}
 			]	
 		}
 	],

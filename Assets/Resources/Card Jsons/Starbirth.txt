@@ -5,14 +5,14 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -20,36 +20,36 @@
 						"cardRestrictions":["Friendly","Hand","Subtypes Include"],
 						"subtypesInclude":["Pulsar"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DiscardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
 					"canDecline":true,
 					"jumpTo":0
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TargetAvatarSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
 					"sMult":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
 					"xMultiplier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
 					"xMultiplier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.AnnihilateSubeffect"
-				}"
+				}
 			]	
 		}
 	],

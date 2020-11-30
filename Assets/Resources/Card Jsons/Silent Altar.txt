@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Reshuffle",
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
@@ -16,15 +16,15 @@
 						"subtypesInclude":["Cultist"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChangeSpellCSubeffect, Assembly-CSharp",
 					"xModifier":1
-				}"
+				}
 			]
 		},
 		{
@@ -34,10 +34,10 @@
 				]
 			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.SetXSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -45,34 +45,34 @@
 						"cardRestrictions":["Is Spell","Subtypes Include","Friendly","Hand","Not Already Target"],
 						"subtypesInclude":["Altar"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
 					"whatToCount":"Cost",
 					"change":true,
 					"xMultiplier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
 					"condition":"X >= Constant",
 					"constant":31,
 					"jumpIndex":5
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
 					"jumpTo":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DiscardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DeleteTargetSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
 					"jumpTo":5
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
 					"maxCanChoose":1,
 					"cardRestriction":
@@ -80,18 +80,18 @@
 						"blurb":"culmination of the Silent Altar Ritual",
 						"cardRestrictions":["Friendly","Deck","Is Character"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
 						"blurb":"where to play the result Silent Altar Ritual",
 						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PlaySubeffect"
-				}"
+				}
 			]
 		}
 	],

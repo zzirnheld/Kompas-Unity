@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Controller Triggered"],
@@ -14,16 +14,16 @@
 						"subtypesInclude":["Rune"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
 					"eChange":1,
 					"wChange":1
-				}"
+				}
 			]	
 		}
 	],

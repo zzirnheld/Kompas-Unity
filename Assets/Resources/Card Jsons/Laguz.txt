@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Move",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Max Per Stack","Not From Effect"],
@@ -13,19 +13,19 @@
 						"spaceRestrictions":["In AOE"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
 						"spaceRestrictions":["Empty","Distance to Target == Constant","Can Move Target to This Space"],
 						"constant":1
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.MoveSubeffect"
-				}"
+				}
 			]	
 		}
 	],

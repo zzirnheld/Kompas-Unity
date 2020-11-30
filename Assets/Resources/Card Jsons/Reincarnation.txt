@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
@@ -13,19 +13,19 @@
 						"cardRestrictions":["Board","Is Character"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"Summoned character for Reincarnation to resummon",
 						"cardRestrictions":["Is Character","Board","Summoned"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ResummonSubeffect"
-				}"
+				}
 			]	
 		}
 	],

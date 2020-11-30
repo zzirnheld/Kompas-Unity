@@ -5,35 +5,35 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"for Gyfu to give +1EW",
 						"cardRestrictions":["Is Character","Enemy","Board","Not Already Target"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
 					"eChange":1,
 					"wChange":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
 					"canDecline":true,
 					"jumpTo":0
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
 					"xMultiplier":1
-				}"
+				}
 			]	
 		}
 	],

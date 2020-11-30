@@ -6,24 +6,24 @@
 		{
 			"blurb":"Dispel",
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Activate",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"spell for Wynn to DispelSubeffect, Assembly-CSharp",
 						"cardRestrictions":["Is Spell","Board"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DispelSubeffect"
-				}"
+				}
 			]
 		}
 	],

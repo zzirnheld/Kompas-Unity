@@ -5,15 +5,15 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Give Safe Haven",
 				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
 					"maxCanChoose":1,
 					"cardRestriction":
@@ -23,18 +23,18 @@
 						"subtypesInclude":["Supplicant"],
 						"constant":1
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
 						"blurb":"haven to play the Supplicant",
 						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PlaySubeffect"
-				}"
+				}
 			]
 		}
 	],

@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Dreamscape",
 				"triggerCondition":"Move",
 				"triggerRestriction":{
@@ -15,19 +15,19 @@
 						"subtypesInclude":["Shaper"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ResetStatsSubeffect, Assembly-CSharp",
 					"resetE":true
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
 					"nChange":1
-				}"
+				}
 			]	
 		}
 	],

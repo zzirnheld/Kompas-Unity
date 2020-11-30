@@ -12,7 +12,7 @@
 				]
 			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -20,15 +20,15 @@
 						"cardRestrictions":["Subtypes Include","Is Character","Board","Adjacent"],
 						"subtypesInclude":["Warrior"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
 					"nChange":0,
 					"eChange":0,
 					"sChange":0,
 					"wChange":1,
 					"targetIndex":0
-				}"
+				}
 			]
 		}
 	],

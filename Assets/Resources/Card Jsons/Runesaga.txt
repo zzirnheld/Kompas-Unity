@@ -5,14 +5,14 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -20,14 +20,14 @@
 						"cardRestrictions":["Subtypes Include","Is Character","Summoned","Board"],
 						"subtypesInclude":["Runar"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
 					"eChange":25,
 					"sChange":25,
 					"wChange":25
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -35,23 +35,23 @@
 						"cardRestrictions":["Subtypes Include","Is Spell","Friendly","Hand","Not Already Target"],
 						"subtypesInclude":["Rune"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
 						"blurb":"where for Runesaga to cast its target Rune",
 						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PlaySubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
 					"canDecline":true,
 					"jumpTo":2
-				}"
+				}
 			]
 		}
 	],

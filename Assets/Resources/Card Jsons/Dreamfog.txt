@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"optional":true,
 				"blurb":"Tribute Dreamfog to gain a pip?",
 				"triggerCondition":"Move",
@@ -15,18 +15,18 @@
 						"cardRestrictions":["Is Character"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DiscardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
 					"xModifier":1
-				}"
+				}
 			]	
 		}
 	],

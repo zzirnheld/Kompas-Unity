@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Annihilate",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
@@ -14,20 +14,20 @@
 						"subtypesInclude":["Revenant"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
 					"whatToCount":"S",
 					"xMultiplier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.MillSubeffect, Assembly-CSharp",
 					"xMultiplier":1
-				}"
+				}
 			]	
 		}
 	],

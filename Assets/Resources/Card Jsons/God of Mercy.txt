@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Mercy",
 				"triggerCondition":"Arrive",
 				"triggerRestriction":{
@@ -20,28 +20,28 @@
 						}
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"Supplicant to give safe haven",
 						"cardRestrictions":["Board","Is Character","Adjacent"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TemporaryNegateSubeffect, Assembly-CSharp",
 					"endCondition":"Remove",
 					"triggerRestriction":{
 						"triggerRestrictions":["This Card Triggered"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
 					"delete":true,
 					"jumpTo":1
-				}"
+				}
 			]
 		}
 	],

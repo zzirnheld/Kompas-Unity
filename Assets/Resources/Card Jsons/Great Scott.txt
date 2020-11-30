@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Move",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Max Per Turn"],
@@ -13,25 +13,25 @@
 						"cardRestrictions":["Is Character"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":{
 						"blurb":"Great Scott, we have to discard something",
 						"cardRestrictions":["Friendly","Hand"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DiscardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DrawSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
@@ -39,10 +39,10 @@
 						"spaceRestrictions":["Empty","Distance to Target == Constant","Can Move Target to This Space"],
 						"constant":1
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.MoveSubeffect"
-				}"
+				}
 			]	
 		}
 	],

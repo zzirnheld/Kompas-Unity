@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Eat Heart",
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
@@ -15,16 +15,16 @@
 						"cardRestrictions":["Is Character","Board","Friendly"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
 					"eMod":1,
 					"wMod":1
-				}"
+				}
 			]
 		}
 	],

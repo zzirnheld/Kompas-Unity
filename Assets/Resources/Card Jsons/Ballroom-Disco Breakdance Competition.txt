@@ -4,7 +4,7 @@
 	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nWhen a character moves in my area of effect, set their N to 0. When a character leaves my area of effect, destroy me.",
 	"effects":[
 		{
-			"triggerData":"{
+			"triggerData":{
 				"blurb":"Ificate",
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
@@ -13,9 +13,9 @@
 						"cardRestrictions":["Hand"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -23,28 +23,28 @@
 						"cardRestrictions":["Subtypes Include","Discard","Friendly","Distinct from Source"],
 						"subtypesInclude":["Crazy Idea"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
 					"xMultiplier":0,
 					"xModifier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
 						"blurb":"where Ballroom-Disco Breakdance Competition to play targeted Crazy Idea",
 						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PlaySubeffect"
-				}"
+				}
 			]
 		},
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"N = 0",
 				"triggerCondition":"Move",
 				"triggerRestriction":{
@@ -54,20 +54,20 @@
 						"spaceRestrictions":["In AOE"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SetNESWSubeffect, Assembly-CSharp",
 					"nVal":0
-				}"
+				}
 			]	
 		},
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Annihilate this",
 				"triggerCondition":"Move",
 				"triggerRestriction":{
@@ -81,14 +81,14 @@
 						"spaceRestrictions":["Not In AOE"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.AnnihilateSubeffect"
-				}"
+				}
 			]	
 		}
 	],

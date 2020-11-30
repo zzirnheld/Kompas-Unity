@@ -12,37 +12,37 @@
 				]
 			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SpendMovementSubeffect, Assembly-CSharp",
 					"xModifier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
 						"blurb":"to Linewalk to",
 						"spaceRestrictions":["Empty","On Target's Diagonal"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.MoveSubeffect"
-				}"
+				}
 			]
 		},
 		{
 			"blurb":"Red Linewalked",
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Move",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.ChangeAllNESWSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -50,7 +50,7 @@
 						"cSpaces":1
 					},
 					"wMult":-1
-				}"
+				}
 			]
 		}
 	],

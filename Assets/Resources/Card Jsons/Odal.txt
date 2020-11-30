@@ -5,34 +5,34 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"character for Odal to kill",
 						"cardRestrictions":["Is Character","Summoned"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
 					"whatToCount":"S",
 					"xMultiplier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
 					"xMultiplier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DiscardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -40,18 +40,18 @@
 						"cardRestrictions":["Subtypes Include","Is Character","Friendly","Deck"],
 						"subtypesInclude":["Runar"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
 						"blurb":"where for Odal to deck-summon its target",
 						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PlaySubeffect"
-				}"
+				}
 			]	
 		}
 	],

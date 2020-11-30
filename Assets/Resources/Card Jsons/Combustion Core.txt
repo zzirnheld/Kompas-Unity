@@ -6,83 +6,83 @@
 		{
 			"blurb":"Choo Choo Activate",
 			"triggerData":
-			"{
+			{
 				"blurb":"Activate Golem",
 				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Enemy Turn"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TemporaryActivationSubeffect, Assembly-CSharp",
 					"endCondition":"Turn Start",
 					"triggerRestriction":{
 						"triggerRestrictions":["Friendly Turn"]
 					}
-				}"
+				}
 			]
 		},
 		{
 			"blurb":"Fuel the Choo",
 			"triggerData":
-			"{
+			{
 				"blurb":"Combustion Maintenance",
 				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Friendly Turn"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
 					"ChoiceBlurb":"Pay 1 pip or destroy this?",
 					"OptionBlurbs":["Pay 1 pip","Destroy"],
 					"OptionJumpIndices":[1,5]
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
 					"jumpTo":4
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
 					"xMultiplier":0,
 					"xModifier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.EndResolutionSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DiscardSubeffect"
-				}"
+				}
 			]
 		},
 		{
 			"blurb":"Core Recovery",
 			"triggerData":
-			"{
+			{
 				"blurb":"Core Recovery",
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["Augmented Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.RehandSubeffect"
-				}"
+				}
 			]
 		}
 	],

@@ -5,49 +5,49 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Sportsball Recovery",
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["Augmented Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.RehandSubeffect"
-				}"
+				}
 			]
 		},
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Bounce On Arrival",
 				"triggerCondition":"Arrive",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered","Max Per Turn"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":{
 						"cardRestrictions":["Board","Is Character","Adjacent"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.AttachSubeffect"
-				}"
+				}
 			]
 		},
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Bounce To Arrival",
 				"triggerCondition":"Arrive",
 				"triggerRestriction":{
@@ -61,17 +61,17 @@
 						"spaceRestrictions":["Adjacent to Source"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.AttachSubeffect"
-				}"
+				}
 			]
 		}
 	],

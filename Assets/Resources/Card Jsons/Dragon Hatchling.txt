@@ -5,29 +5,29 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
 					"numTimesToDelay":0,
 					"indexToResume":1,
 					"endCondition":"Turn Start"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TargetThisSpaceSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DiscardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -35,11 +35,11 @@
 						"cardRestrictions":["Friendly","Is Character","Hand","Subtypes Include"],
 						"subtypesInclude":["Dragon"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DiscardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -47,10 +47,10 @@
 						"cardRestrictions":["Friendly","Is Character","Hand","Subtypes Include","Can Be Played"],
 						"subtypesInclude":["Dragon"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PlaySubeffect"
-				}"
+				}
 			]
 		}
 	],

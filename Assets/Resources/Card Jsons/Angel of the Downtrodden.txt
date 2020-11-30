@@ -12,7 +12,7 @@
 				]
 			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -20,8 +20,8 @@
 						"subtypesInclude":["Supplicant"]
 					},
 					"xMultiplier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
 					"maxCanChoose":1,
 					"cardRestriction":
@@ -31,18 +31,18 @@
 						"subtypesInclude":["Plea"]
 					},
 					"xMultiplier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
 						"blurb":"where to play Supplicants' Plea",
 						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PlaySubeffect"
-				}"
+				}
 			]
 		}
 	],

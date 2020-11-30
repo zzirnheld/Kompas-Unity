@@ -6,23 +6,23 @@
 		{
 			"blurb":"Territorial",
 			"triggerData":
-			"{
+			{
 				"blurb":"Territorial",
 				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"for Fyrian to move and attack",
 						"cardRestrictions":["Board","Is Character","Adjacent"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
@@ -30,58 +30,58 @@
 						"spaceRestrictions":["Empty","Distance to Target == Constant","Can Move Target to This Space"],
 						"constant":1
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.MoveSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
 					"attackerIndex":-1,
 					"targetIndex":-2
-				}"
+				}
 			]	
 		},
 		{
 			"blurb":"Dark Breath",
 			"triggerData":
-			"{
+			{
 				"blurb":"Dark Breath",
 				"triggerCondition":"Attack",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
 					"whatToCount":"W",
 					"xMultiplier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TargetDefenderSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
 					"whatToCount":"E",
 					"change":true,
 					"xMultiplier":-1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":{
 						"cardRestrictions":["Avatar","Controller Matches Target's"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
 					"eMult":-1
-				}"
+				}
 			]	
 		}
 	],

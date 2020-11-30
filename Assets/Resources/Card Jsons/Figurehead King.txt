@@ -5,46 +5,46 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"cardRestrictions":["Friendly","Hand"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"cardRestrictions":["Friendly","Hand","Not Already Target"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp",
 					"targetIndex":0
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ReshuffleSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DeleteTargetSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
 					"canDecline":false,
 					"jumpTo":3
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
 					"xMultiplier":1
-				}"
+				}
 			]
 		}
 	],

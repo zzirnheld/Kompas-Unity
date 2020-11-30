@@ -4,14 +4,14 @@
 	"effText":"When I die, reshuffle a dead Warrior for each Warrior adjacent to where I died.",
 	"effects":[
 		{
-			"triggerData":"{
+			"triggerData":{
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -19,8 +19,8 @@
 						"subtypesInclude":["Warrior"]
 					},
 					"xMultiplier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -28,14 +28,14 @@
 						"cardRestrictions":["Subtypes Include","Is Character","Discard"],
 						"subtypesInclude":["Warrior"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ReshuffleSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",
 					"jumpTo":1
-				}"
+				}
 			]	
 		}
 	],

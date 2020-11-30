@@ -12,7 +12,7 @@
 				]
 			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -20,15 +20,15 @@
 						"cardRestrictions":["Subtypes Include","Is Character","Board"],
 						"subtypesInclude":["Warrior"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SetXByTargetCostSubeffect, Assembly-CSharp",
 					"xMultiplier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DiscardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -36,10 +36,10 @@
 						"cardRestrictions":["Is Character","Board","S<=X"]
 					},
 					"xMultiplier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DiscardSubeffect"
-				}"
+				}
 			]
 		}
 	],

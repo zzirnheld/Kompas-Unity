@@ -5,24 +5,24 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
 					"condition":"Must be Friendly Turn"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
 					"xModifier":3
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.EndTurnSubeffect"
-				}"
+				}
 			]	
 		}
 	],

@@ -4,7 +4,7 @@
 	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nChoose a character in front of me. Delay 2. If they’re still in front of me, kill them. If not, annihilate me. ",
 	"effects":[
 		{
-			"triggerData":"{
+			"triggerData":{
 				"blurb":"Ificate",
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
@@ -13,9 +13,9 @@
 						"cardRestrictions":["Hand"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -23,49 +23,49 @@
 						"cardRestrictions":["Subtypes Include","Discard","Friendly","Distinct from Source"],
 						"subtypesInclude":["Crazy Idea"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
 					"xMultiplier":0,
 					"xModifier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
 						"blurb":"where No I Expect You To to play targeted Crazy Idea",
 						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PlaySubeffect"
-				}"
+				}
 			]
 		},
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"character for No I Expect You To maybe kill",
 						"cardRestrictions":["Is Character","Board","In Front of Source"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
 					"numTimesToDelay":1,
 					"indexToResume":2,
 					"triggerCondition":"Turn Start"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
 					"condition":"Target Fits Restriction",
 					"jumpIndex":6,
@@ -73,19 +73,19 @@
 					{
 						"cardRestrictions":["Is Character","Board","In Front of Source"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.AnnihilateSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.EndResolutionSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DiscardSubeffect"
-				}"
+				}
 			]
 		}
 	],

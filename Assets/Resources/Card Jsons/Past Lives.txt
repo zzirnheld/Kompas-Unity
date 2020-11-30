@@ -5,20 +5,20 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.ResummonAllSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"cardRestrictions":["Is Character","Summoned","Board"]
 					}
-				}"
+				}
 			]	
 		}
 	],

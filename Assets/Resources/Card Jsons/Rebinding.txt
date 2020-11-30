@@ -6,57 +6,57 @@
 		{
 			"blurb":"Simple",
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"for Rebinding to kill",
 						"cardRestrictions":["Friendly","Board"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
 					"whatToCount":"S",
 					"xMultiplier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DiscardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"for Rebinding to buff",
 						"cardRestrictions":["Board","Not Already Target"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"sMult":1,
 					"cMult":1,
 					"aMult":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"for Rebinding to buff",
 						"cardRestrictions":["Board","Not Already Target"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"sMult":1,
 					"cMult":1,
 					"aMult":1
-				}"
+				}
 			]
 		}
 	],

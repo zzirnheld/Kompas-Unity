@@ -4,7 +4,7 @@
 	"effText":"When you summon a Warrior, you can tribute me to gain a pip.",
 	"effects":[
 		{
-			"triggerData":"{
+			"triggerData":{
 				"optional":true,
 				"triggerCondition":"Play",
 				"triggerRestriction":{
@@ -15,20 +15,20 @@
 						"subtypesInclude":["Warrior"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DiscardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
 					"xMultiplier":0,
 					"xDivisor":1,
 					"xModifier":1
-				}"
+				}
 			]	
 		}
 	],

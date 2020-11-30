@@ -13,26 +13,26 @@
 				]
 			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"for Magician to hand-bottomdeck",
 						"cardRestrictions":["Friendly","Hand"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.BottomdeckSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
 					"canDecline":true,
 					"jumpTo":0
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
 					"xMultiplier":1
-				}"
+				}
 			]	
 		}
 	],

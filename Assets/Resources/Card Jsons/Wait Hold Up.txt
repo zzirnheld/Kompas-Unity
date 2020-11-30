@@ -4,7 +4,7 @@
 	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nDiscard 1. Draw 1. Move an enemy character up to 3 spaces. Annihilate me.",
 	"effects":[
 		{
-			"triggerData":"{
+			"triggerData":{
 				"blurb":"Ificate",
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
@@ -13,9 +13,9 @@
 						"cardRestrictions":["Hand"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -23,58 +23,58 @@
 						"cardRestrictions":["Subtypes Include","Discard","Friendly","Distinct from Source"],
 						"subtypesInclude":["Crazy Idea"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
 					"xMultiplier":0,
 					"xModifier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
 						"blurb":"where Wait Hold Up to play targeted Crazy Idea",
 						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PlaySubeffect"
-				}"
+				}
 			]
 		},
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Wait Hold Up",
 				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"Wait, Hold Up, what are you discarding?",
 						"cardRestrictions":["Friendly","Hand"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DiscardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DrawSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"Wait, Hold Up, what are you moving?",
 						"cardRestrictions":["Board","Enemy","Summoned"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
@@ -82,16 +82,16 @@
 						"spaceRestrictions":["Empty","Distance to Target <= Constant","Can Move Target to This Space"],
 						"constant":3
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.MoveSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.AnnihilateSubeffect"
-				}"
+				}
 			]
 		}
 	],

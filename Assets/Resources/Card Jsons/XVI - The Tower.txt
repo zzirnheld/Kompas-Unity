@@ -5,40 +5,40 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"optional":true,
 				"blurb":"Tribute me to bottomdeck X cards from your hand and draw twice X? (X is the number of cards you just drew)",
 				"triggerCondition":"Draw",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Controller Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DiscardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"for Tower to hand-bottomdeck",
 						"cardRestrictions":["Friendly","Hand"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.BottomdeckSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",
 					"jumpTo":2
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
 					"xMultiplier":2
-				}"
+				}
 			]
 		}
 	],

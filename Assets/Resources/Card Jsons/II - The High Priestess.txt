@@ -12,43 +12,43 @@
 				]
 			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
 					"xModifier":3
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"for High Priestess to topdeck (1/3)",
 						"cardRestrictions":["Friendly","Hand"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TopdeckSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"for High Priestess to topdeck (2/3)",
 						"cardRestrictions":["Friendly","Hand","Not Already Target"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TopdeckSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"for High Priestess to topdeck (3/3)",
 						"cardRestrictions":["Friendly","Hand","Not Already Target"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TopdeckSubeffect"
-				}"
+				}
 			]	
 		}
 	],

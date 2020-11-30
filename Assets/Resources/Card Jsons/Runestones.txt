@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Max Per Turn"],
@@ -15,9 +15,9 @@
 						"subtypesInclude":["Rune"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -25,10 +25,10 @@
 						"cardRestrictions":["Subtypes Include","Friendly","Deck"],
 						"subtypesInclude":["Rune"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.RehandSubeffect"
-				}"
+				}
 			]
 		}
 	],

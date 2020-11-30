@@ -5,15 +5,15 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Grant Refuge",
 				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
 					"maxCanChoose":1,
 					"cardRestriction":
@@ -22,10 +22,10 @@
 						"cardRestrictions":["Friendly","Discard","Is Character","Subtypes Include"],
 						"subtypesInclude":["Supplicant"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.RehandSubeffect"
-				}"
+				}
 			]	
 		},
 		{
@@ -35,16 +35,16 @@
 				]
 			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.AnnihilateSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
 					"xModifier":3
-				}"
+				}
 			]
 		}
 	],

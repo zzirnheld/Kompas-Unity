@@ -5,15 +5,15 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Move",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered","Distance from Triggerer to Space == Constant"],
 					"distance":3
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -21,17 +21,17 @@
 						"cardRestrictions":["Friendly","Hand","Subtypes Include"],
 						"subtypesInclude":["Crazy Idea"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DiscardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
 					"wChange":3
-				}"
+				}
 			]	
 		}
 	],

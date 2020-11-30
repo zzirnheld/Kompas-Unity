@@ -12,13 +12,13 @@
 				]
 			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
 					"ChoiceBlurb":"Destroy and search, or pip hand-apply?",
 					"OptionBlurbs":["Search","Apply"],
 					"OptionJumpIndices":[1,6]
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -26,11 +26,11 @@
 						"cardRestrictions":["Subtypes Include","Is Augment","Board"],
 						"subtypesInclude":["Golem", "Core"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DiscardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -38,14 +38,14 @@
 						"cardRestrictions":["Subtypes Include","Is Augment","Deck"],
 						"subtypesInclude":["Golem", "Core"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.RehandSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.EndResolutionSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -53,26 +53,26 @@
 						"cardRestrictions":["Friendly","Hand","Is Augment","Subtypes Include","Can Be Played","Effect Controller can Afford Cost"],
 						"subtypesInclude":["Golem Core"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"where for Modular to apply Golem Core",
 						"cardRestrictions":["Board","Can Play Target to This Character's Space"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TargetTargetsSpaceSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
 					"xMultiplier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp",
 					"targetIndex":-2
-				}"
+				}
 			]
 		}
 	],

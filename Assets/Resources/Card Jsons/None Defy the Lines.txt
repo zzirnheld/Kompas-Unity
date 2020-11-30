@@ -6,44 +6,44 @@
 		{
 			"blurb":"Simple Effect",
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
 					"jumpTo":10
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"who to next be brought low by the Lines",
 						"cardRestrictions":["Friendly","Board","Not Already Target"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
 					"jumpTo":5
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
 						"blurb":"where on the Lines to bring them",
 						"spaceRestrictions":["Empty","On Target's Diagonal","On Edge of Board","Can Move Target to This Space"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.MoveSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
 					"jumpTo":0
-				}"
+				}
 			]	
 		}
 	],

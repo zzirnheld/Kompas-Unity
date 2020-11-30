@@ -5,14 +5,14 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
 					"whatToCount":"Cards Fitting Restriction",
 					"cardRestriction":
@@ -21,19 +21,19 @@
 						"subtypesInclude":["Cultist"]
 					},
 					"xMultiplier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"character to deafen with silence",
 						"cardRestrictions":["Is Character","Board"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
 					"wMult":-1
-				}"
+				}
 			]
 		}
 	],

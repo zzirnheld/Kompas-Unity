@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Leyblood",
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
@@ -18,12 +18,12 @@
 						"subtypesInclude":["Dragon"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
 					"xModifier":1
-				}"
+				}
 			]	
 		}
 	],

@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Enfocus",
 				"triggerCondition":"S Change",
 				"triggerRestriction":{
@@ -18,21 +18,21 @@
 						"cardRestrictions":["Board","Avatar","Friendly"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.ChangeAllNESWSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"cardRestrictions":["Is Character","Board","Adjacent"]
 					},
 					"wMod":1
-				}"
+				}
 			]	
 		},
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Unfocus",
 				"triggerCondition":"S Change",
 				"triggerRestriction":{
@@ -45,16 +45,16 @@
 						"cardRestrictions":["Board","Avatar","Friendly"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.ChangeAllNESWSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"cardRestrictions":["Is Character","Board","Adjacent"]
 					},
 					"wMod":-1
-				}"
+				}
 			]	
 		}
 	],

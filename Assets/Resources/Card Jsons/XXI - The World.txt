@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Reshuffle, buff, draw",
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
@@ -14,15 +14,15 @@
 						"cardRestrictions":["Board"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ReshuffleSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChangeAllNESWSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -30,10 +30,10 @@
 					},
 					"eMod":1,
 					"wMod":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DrawSubeffect"
-				}"
+				}
 			]
 		}
 	],

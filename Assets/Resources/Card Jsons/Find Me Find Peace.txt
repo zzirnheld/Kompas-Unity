@@ -5,15 +5,15 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Play",
 				"blurb":"Find Me, Find Peace",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -21,26 +21,26 @@
 						"subtypesInclude":["Supplicant"],
 						"constant":4
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.AddRestSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"cardRestrictions":["Friendly","Deck","Index<C","Not Already Target"],
 						"constant":4
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.RehandSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
 					"delete":true,
 					"jumpTo":2
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.BottomdeckRestSubeffect"
-				}"
+				}
 			]
 		}
 	],

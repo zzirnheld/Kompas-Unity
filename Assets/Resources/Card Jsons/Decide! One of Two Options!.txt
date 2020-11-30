@@ -4,7 +4,7 @@
 	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nChoose two characters. Delay 2 turns. Your opponent chooses one that I kill. Annihilate me.",
 	"effects":[
 		{
-			"triggerData":"{
+			"triggerData":{
 				"blurb":"Ificate",
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
@@ -13,9 +13,9 @@
 						"cardRestrictions":["Hand"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -23,57 +23,57 @@
 						"cardRestrictions":["Subtypes Include","Discard","Friendly","Distinct from Source"],
 						"subtypesInclude":["Crazy Idea"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
 					"xMultiplier":0,
 					"xModifier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
 						"blurb":"where Decide! to play targeted Crazy Idea",
 						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PlaySubeffect"
-				}"
+				}
 			]
 		},
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"character for Decide! to maybe kill (1/2)",
 						"cardRestrictions":["Is Character","Board"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"character for Decide! to maybe kill (2/2)",
 						"cardRestrictions":["Is Character","Board","Distinct from Target"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
 					"numTimesToDelay":1,
 					"indexToResume":3,
 					"triggerCondition":"Turn Start"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
 					"playerIndex":1,
 					"maxCanChoose":1,
@@ -82,16 +82,16 @@
 						"blurb":"card for Decide! to kill",
 						"cardRestrictions":["Already Target"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DiscardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.AnnihilateSubeffect"
-				}"
+				}
 			]
 		}
 	],

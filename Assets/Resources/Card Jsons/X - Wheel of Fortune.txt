@@ -5,36 +5,36 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"optional":true,
 				"blurb":"Swap two characters' N?",
 				"triggerCondition":"Draw",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Controller Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"character for Wheel of Fortune to swap N of (1/2)",
 						"cardRestrictions":["Is Character","Board"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"character for Wheel of Fortune to swap N of (2/2)",
 						"cardRestrictions":["Is Character","Board","Not Already Target"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SwapNESWSubeffect, Assembly-CSharp",
 					"targetIndices":[-1,-2],
 					"swapN":true
-				}"
+				}
 			]
 		}
 	],

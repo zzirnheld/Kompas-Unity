@@ -4,16 +4,16 @@
 	"effText":"When turns start, if I'm adjacent to X Warriors, you can tribute me to decksummon an S ≤ X Swordguild Warrior where I was.",
 	"effects":[
 		{
-			"triggerData":"{
+			"triggerData":{
 				"optional":true,
 				"triggerCondition":"Turn Start",
 				"triggerRestriction":
 				{
 					"triggerRestrictions":["This Card in Play"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -21,17 +21,17 @@
 						"subtypesInclude":["Warrior"]
 					},
 					"xMultiplier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TargetThisSpaceSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DiscardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -40,10 +40,10 @@
 						"subtypesInclude":["Warrior"]
 					},
 					"xMultiplier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PlaySubeffect"
-				}"
+				}
 			]
 		}
 	],

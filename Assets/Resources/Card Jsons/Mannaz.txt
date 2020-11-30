@@ -5,18 +5,18 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
 					"jumpTo":4
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChooseFromListSaveRestSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -29,16 +29,16 @@
 						"cardRestrictions":["Friendly","Deck","Index<C","Not Already Target"],
 						"constant":10
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.RehandSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.BottomdeckRestSubeffect"
-				}"
+				}
 			]	
 		}
 	],

@@ -12,7 +12,7 @@
 				]
 			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -20,32 +20,32 @@
 						"cardRestrictions":["Subtypes Include","Is Character","Board","Adjacent"],
 						"subtypesInclude":["Warrior"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
 					"ChoiceBlurb":"Give +5E or +5W?",
 					"OptionBlurbs":["+5E","+5W"],
 					"OptionJumpIndices":[2,4]
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
 					"nChange":0,
 					"eChange":5,
 					"sChange":0,
 					"wChange":0,
 					"targetIndex":0
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.EndResolutionSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
 					"nChange":0,
 					"eChange":0,
 					"sChange":0,
 					"wChange":5,
 					"targetIndex":0
-				}"
+				}
 			]
 		}
 	],

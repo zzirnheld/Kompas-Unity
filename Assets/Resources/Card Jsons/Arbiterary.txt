@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Score Pass",
 				"triggerCondition":"Augment Attached",
 				"triggerRestriction":{
@@ -15,20 +15,20 @@
 						"cardRestrictions":["Friendly"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"aMod":1
-				}"
+				}
 			]
 		},
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Score Goal!",
 				"triggerCondition":"Augment Attached",
 				"triggerRestriction":{
@@ -45,36 +45,36 @@
 						}
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
 					"whatToCount":"Cost",
 					"xMultiplier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TargetTargetsAugmentedCardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"eMult":-1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
 					"targetIndex":-3,
 					"attachmentTarget":-1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ResetStatsSubeffect, Assembly-CSharp",
 					"targetIndex":-3,
 					"resetA":true
-				}"
+				}
 			]
 		}
 	],

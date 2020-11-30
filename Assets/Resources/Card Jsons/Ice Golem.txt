@@ -6,28 +6,28 @@
 		{
 			"blurb":"Fun Not Allowed",
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Activate",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"for Ice Golem to temporarily negate",
 						"cardRestrictions":["Is Character","Board"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TemporaryNegateSubeffect, Assembly-CSharp",
 					"endCondition":"Turn Start",
 					"triggerRestriction":{
 						"triggerRestrictions":["Friendly Turn"]
 					}
-				}"
+				}
 			]
 		}
 	],

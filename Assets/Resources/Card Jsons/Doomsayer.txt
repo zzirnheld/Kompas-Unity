@@ -13,7 +13,7 @@
 				]
 			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
 					"maxCanChoose":1,
 					"cardRestriction":
@@ -22,10 +22,10 @@
 						"cardRestrictions":["Subtypes Include","Friendly","Deck"],
 						"subtypesInclude":["Cultist"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.RehandSubeffect"
-				}"
+				}
 			]
 		}
 	],

@@ -5,21 +5,21 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Draw",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Controller Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
 					"nMult":1,
 					"wMult":1
-				}"
+				}
 			]	
 		}
 	],

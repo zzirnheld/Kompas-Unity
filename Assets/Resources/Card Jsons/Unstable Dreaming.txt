@@ -5,40 +5,40 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":{
 						"blurb":"Shaper to hand-summon",
 						"cardRestrictions":["Subtypes Include","Is Character","Friendly","Hand"],
 						"subtypesInclude":["Shaper"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
 						"blurb":"where to handsummon the Shaper",
 						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PlaySubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.HangingAnnihilationSubeffect, Assembly-CSharp",
 					"endCondition":"Turn Start",
 					"triggerRestriction":
 					{
 						"triggerRestrictions":["Friendly Turn"]
 					}
-				}"
+				}
 			]
 		}
 	],

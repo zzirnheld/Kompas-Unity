@@ -6,25 +6,25 @@
 		{
 			"blurb":"Shards of Glass",
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Activate",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"Summoned character for Obsidian Golem to give -5E",
 						"cardRestrictions":["Is Character","Summoned","Board"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
 					"eChange":-5
-				}"
+				}
 			]
 		}
 	],

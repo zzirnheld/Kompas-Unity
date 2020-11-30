@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"BEGONE! SWAT!",
 				"triggerCondition":"Arrive",
 				"triggerRestriction":{
@@ -15,15 +15,15 @@
 						"spaceRestrictions":["Adjacent to Source"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
 					"eChange":-1
-				}"
+				}
 			]	
 		}
 	],

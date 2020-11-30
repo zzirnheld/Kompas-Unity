@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Fortune-card",
 				"triggerCondition":"S Change",
 				"triggerRestriction":{
@@ -18,26 +18,26 @@
 						"cardRestrictions":["Board","Avatar","Friendly"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":{
 						"blurb":"how fortunate, we have to discard something",
 						"cardRestrictions":["Friendly","Hand"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DiscardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DrawSubeffect"
-				}"
+				}
 			]	
 		},
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Fortune-pip",
 				"triggerCondition":"S Change",
 				"triggerRestriction":{
@@ -50,19 +50,19 @@
 						"cardRestrictions":["Board","Avatar","Friendly"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
 					"xMultiplier":0,
 					"xModifier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
 					"xMultiplier":0,
 					"xModifier":1,
 					"playerIndex":1
-				}"
+				}
 			]	
 		}
 	],

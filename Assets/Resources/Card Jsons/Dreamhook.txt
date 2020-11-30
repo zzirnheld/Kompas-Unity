@@ -5,22 +5,22 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"enemy character to move adjacent to",
 						"cardRestrictions":["Is Character","Enemy","Board"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -28,8 +28,8 @@
 						"cardRestrictions":["Subtypes Include","Is Character","Friendly","Board"],
 						"subtypesInclude":["Shaper"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
@@ -37,15 +37,15 @@
 						"spaceRestrictions":["Adjacent to Target"]
 					},
 					"targetIndex":-2
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.MoveSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
 					"targetIndex":-2,
 					"attackerIndex":-1
-				}"
+				}
 			]
 		}
 	],

@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Dragonfeed",
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
@@ -18,16 +18,16 @@
 						"subtypesInclude":["Dragon"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
 					"eChange":1,
 					"wChange":1
-				}"
+				}
 			]	
 		}
 	],

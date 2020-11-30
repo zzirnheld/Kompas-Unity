@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Teamwork! Draw!",
 				"triggerCondition":"Augment Attached",
 				"triggerRestriction":{
@@ -18,11 +18,11 @@
 						}
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.DrawSubeffect"
-				}"
+				}
 			]
 		}
 	],

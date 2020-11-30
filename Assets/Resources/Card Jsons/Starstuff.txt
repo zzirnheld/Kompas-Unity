@@ -5,49 +5,49 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetAvatarSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
 					"ChoiceBlurb":"Give +5 S or -5 S?",
 					"OptionBlurbs":["+5 S","-5 S"],
 					"OptionJumpIndices":[2,4]
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
 					"sChange":5
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.JumpSubeffect, Assembly-CSharp",
 					"indexToJumpTo":5
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
 					"sChange":-5
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
 					"ChoiceBlurb":"Annihilate me and draw 1?",
 					"OptionBlurbs":["Yes","No"],
 					"OptionJumpIndices":[6,100]
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.AnnihilateSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DrawSubeffect"
-				}"
+				}
 			]	
 		}
 	],

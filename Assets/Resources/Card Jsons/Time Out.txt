@@ -5,37 +5,37 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"character to put in TIME OUT!",
 						"cardRestrictions":["Board","Is Character","Enemy","Wields Augment Fitting Restriction"],
 						"secondaryRestrictionString":
-						"{
+						{
 							\\"cardRestrictions\\":[\\"Friendly\\",\\"Subtypes Include\\"],
 							\\"subtypesInclude\\":[\\"Sportsball\\"]
-						}"
+						}
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TargetAugmentsSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.RehandSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
 					"delete":true,
 					"jumpTo":2
-				}"
+				}
 			]
 		}
 	],

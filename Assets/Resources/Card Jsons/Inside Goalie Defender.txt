@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Goal Kick",
 				"triggerCondition":"Augmented",
 				"triggerRestriction":{
@@ -15,12 +15,12 @@
 						"cardRestrictions":["Board","Avatar","Friendly"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -28,26 +28,26 @@
 						"cardRestrictions":["Is Character","Board","Within C Spaces","Distinct Name from Other Targets","Distinct from Source"],
 						"cSpaces":2
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp",
 					"targetIndex":-2
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
 					"condition":"Number Targets <= Constant",
 					"constant":2
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
 					"attachmentTarget":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
 					"delete":true,
 					"remainingTargets":3,
 					"jumpTo":4
-				}"
+				}
 			]
 		}
 	],

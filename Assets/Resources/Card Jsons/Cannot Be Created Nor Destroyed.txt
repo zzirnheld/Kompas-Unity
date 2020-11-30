@@ -5,57 +5,57 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Repurpose Starstuff",
 				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"cardRestrictions":["Friendly","Discard","Subtypes Include"],
 						"subtypesInclude":["Pulsar"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ReshuffleSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DeleteTargetSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
 					"canDecline":false,
 					"jumpTo":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TargetAvatarSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
 					"ChoiceBlurb":"Give +X S or -X S?",
 					"OptionBlurbs":["+X S","-X S"],
 					"OptionJumpIndices":[6,8]
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
 					"sMult":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.JumpSubeffect, Assembly-CSharp",
 					"indexToJumpTo":9
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
 					"sMult":-1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DrawSubeffect"
-				}"
+				}
 			]	
 		}
 	],

@@ -6,21 +6,21 @@
 		{
 			"blurb":"Heheh. Grenade.",
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Activate",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.ChangeAllNESWSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"cardRestrictions":["Is Character","Board","Adjacent"]
 					},
 					"eMod":-3
-				}"
+				}
 			]
 		}
 	],

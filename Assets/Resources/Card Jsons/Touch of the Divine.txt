@@ -5,24 +5,24 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Augment Attached",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TemporaryNegateSubeffect, Assembly-CSharp",
 					"endCondition":"Augment Detached",
 					"triggerRestriction":{
 						"triggerRestrictions":["This Card Triggered"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
 					"nBuff":2,
 					"eBuff":2,
@@ -32,12 +32,12 @@
 					"triggerRestriction":{
 						"triggerRestrictions":["This Card Triggered"]
 					}
-				}"
+				}
 			]
 		},
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Augmented Card Triggered","Triggerer Fits Restriction"],
@@ -47,14 +47,14 @@
 						"subtypesInclude":["Supplicant"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.RehandSubeffect"
-				}"
+				}
 			]
 		}
 	],

@@ -5,27 +5,27 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"cardRestrictions":["Is Character","Board","Summoned"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SetNESWSubeffect, Assembly-CSharp",
 					"nVal":0,
 					"eVal":5,
 					"sVal":5,
 					"wVal":0
-				}"
+				}
 			]	
 		}
 	],

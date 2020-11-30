@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"optional":true,
 				"blurb":"Draw 1? (An enemy just deck-rehanded a card)",
 				"triggerCondition":"Rehand",
@@ -15,11 +15,11 @@
 						"cardRestrictions":["Enemy"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.DrawSubeffect"
-				}"
+				}
 			]
 		}
 	],

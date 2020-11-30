@@ -6,18 +6,18 @@
 		{
 			"blurb":"Dragonsing",
 			"triggerData":
-			"{
+			{
 				"blurb":"Hand-reshuffle X Dragons to give Dragonsinger +X S and draw X?",
 				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.SetXSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -25,31 +25,31 @@
 						"cardRestrictions":["Friendly","Hand","Is Character","Subtypes Include"],
 						"subtypesInclude":["Dragon"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SetXSubeffect, Assembly-CSharp",
 					"change":true,
 					"xModifier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ReshuffleSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
 					"canDecline":true,
 					"jumpTo":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
 					"sMult":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
 					"xMultiplier":1
-				}"
+				}
 			]
 		}
 	],

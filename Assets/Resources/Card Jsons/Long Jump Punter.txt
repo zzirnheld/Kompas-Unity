@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Punt Augment",
 				"triggerCondition":"Augment Attached",
 				"triggerRestriction":{
@@ -18,9 +18,9 @@
 						}
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -28,13 +28,13 @@
 						"cardRestrictions":["Is Character","Board","Within C Spaces"],
 						"cSpaces":2
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.AttachSubeffect"
-				}"
+				}
 			]
 		}
 	],

@@ -6,64 +6,64 @@
 		{
 			"blurb":"Defense Activate!",
 			"triggerData":
-			"{
+			{
 				"blurb":"Activate Golem",
 				"triggerCondition":"Augment Attached",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TemporaryActivationSubeffect, Assembly-CSharp",
 					"endCondition":"Augment Detached",
 					"triggerRestriction":{
 						"triggerRestrictions":["This Card Triggered"]
 					}
-				}"
+				}
 			]
 		},
 		{
 			"blurb":"You Shouldn't Have Done That",
 			"triggerData":
-			"{
+			{
 				"blurb":"Golem Defense",
 				"triggerCondition":"Defend",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Augmented Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
 					"eChange":4,
 					"wChange":4
-				}"
+				}
 			]	
 		},
 		{
 			"blurb":"Core Recovery",
 			"triggerData":
-			"{
+			{
 				"blurb":"Core Recovery",
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["Augmented Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.RehandSubeffect"
-				}"
+				}
 			]
 		}
 	],

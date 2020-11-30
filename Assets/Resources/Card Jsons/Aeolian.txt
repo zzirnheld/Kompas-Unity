@@ -6,23 +6,23 @@
 		{
 			"blurb":"Territorial",
 			"triggerData":
-			"{
+			{
 				"blurb":"Territorial",
 				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"for Aeolian to move and attack",
 						"cardRestrictions":["Board","Is Character","Adjacent"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
@@ -30,44 +30,44 @@
 						"spaceRestrictions":["Empty","Distance to Target == Constant","Can Move Target to This Space"],
 						"constant":1
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.MoveSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
 					"attackerIndex":-1,
 					"targetIndex":-2
-				}"
+				}
 			]	
 		},
 		{
 			"blurb":"Air Breath",
 			"triggerData":
-			"{
+			{
 				"blurb":"Air Breath",
 				"triggerCondition":"Attack",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetDefenderSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":{
 						"blurb":"where for Aeolian to move its target",
 						"spaceRestrictions":["Empty","Can Move Target to This Space"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.MoveSubeffect"
-				}"
+				}
 			]	
 		}
 	],

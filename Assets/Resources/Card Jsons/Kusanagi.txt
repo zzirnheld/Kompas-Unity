@@ -5,28 +5,28 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"triggerCondition":"Attack",
 				"triggerRestriction":{
 					"triggerRestrictions":["Augmented Card Triggered","Max Per Round"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetDefenderSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
 					"condition":"Target Violates Restriction",
 					"cardRestriction":
 					{
 						"cardRestrictions":["Behind Source"]
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
 					"wMod":-5
-				}"
+				}
 			]
 		}
 	],

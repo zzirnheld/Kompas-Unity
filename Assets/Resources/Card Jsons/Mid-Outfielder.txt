@@ -5,28 +5,28 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Run Augment Outfield",
 				"triggerCondition":"Augmented",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
 						"spaceRestrictions":["Empty","Distance to Target <= Constant"],
 						"constant":2
 					}
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.MoveSubeffect"
-				}"
+				}
 			]
 		}
 	],

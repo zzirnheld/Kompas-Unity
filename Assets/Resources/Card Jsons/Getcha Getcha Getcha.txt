@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Getcha Getcha Getcha",
 				"triggerCondition":"Augmented",
 				"triggerRestriction":{
@@ -14,16 +14,16 @@
 						"cardRestrictions":["Friendly"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
 					"nMod":1,
 					"wMod":1
-				}"
+				}
 			]
 		}
 	],

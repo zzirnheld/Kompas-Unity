@@ -5,26 +5,26 @@
 	"effects":[
 		{
 			"triggerData":
-			"{
+			{
 				"blurb":"Tribute me to deck-summon Tarocco with S <= X?",
 				"optional":true,
 				"triggerCondition":"Draw",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Controller Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
+				{
 					"$type":"KompasServer.Effects.TargetThisSpaceSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect"
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp",
 					"targetIndex":-1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -33,12 +33,12 @@
 						"subtypesInclude":["Tarocco"]
 					},
 					"xMultiplier":1
-				}",
-				"{
+				},
+				{
 					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp",
 					"targetIndex":-1,
 					"SpaceIndex":-1
-				}"
+				}
 			]	
 		}
 	],
