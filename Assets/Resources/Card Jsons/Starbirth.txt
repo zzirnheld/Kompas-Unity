@@ -22,7 +22,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect"
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
@@ -30,7 +30,7 @@
 					"jumpTo":0
 				},
 				{
-					"$type":"KompasServer.Effects.TargetAvatarSubeffect"
+					"$type":"KompasServer.Effects.TargetAvatarSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
@@ -45,7 +45,7 @@
 					"xMultiplier":1
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect"
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.AnnihilateSubeffect"

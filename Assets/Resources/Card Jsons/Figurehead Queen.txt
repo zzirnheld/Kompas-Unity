@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect"
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeSpellCSubeffect, Assembly-CSharp",
@@ -37,7 +37,7 @@
 					"endCondition":"Turn Start"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect"
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.SetXByTargetCostSubeffect, Assembly-CSharp",

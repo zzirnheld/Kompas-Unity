@@ -12,7 +12,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect"
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",

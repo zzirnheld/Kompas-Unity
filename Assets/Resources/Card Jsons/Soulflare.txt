@@ -22,7 +22,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.AnnihilateSubeffect"
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",

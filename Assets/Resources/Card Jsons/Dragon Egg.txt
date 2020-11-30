@@ -19,13 +19,13 @@
 					"endCondition":"Turn Start"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect"
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSpaceSubeffect"
+					"$type":"KompasServer.Effects.TargetThisSpaceSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect"
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",

@@ -24,10 +24,10 @@
 					"xMultiplier":1
 				},
 				{
-					"$type":"KompasServer.Effects.ReshuffleSubeffect"
+					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect"
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",

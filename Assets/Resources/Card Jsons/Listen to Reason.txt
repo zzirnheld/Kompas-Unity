@@ -31,10 +31,10 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect"
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DeleteTargetSubeffect"
+					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",

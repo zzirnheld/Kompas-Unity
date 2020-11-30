@@ -68,7 +68,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect"
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp",
@@ -82,7 +82,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect"
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.TTimesSubeffect, Assembly-CSharp",
@@ -98,10 +98,10 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect"
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect"
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.AnnihilateSubeffect"

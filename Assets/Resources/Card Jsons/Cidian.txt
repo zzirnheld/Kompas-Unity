@@ -32,10 +32,10 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.MoveSubeffect"
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect"
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
@@ -56,7 +56,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect"
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
@@ -64,7 +64,7 @@
 					"xMultiplier":1
 				},
 				{
-					"$type":"KompasServer.Effects.TargetDefenderSubeffect"
+					"$type":"KompasServer.Effects.TargetDefenderSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",

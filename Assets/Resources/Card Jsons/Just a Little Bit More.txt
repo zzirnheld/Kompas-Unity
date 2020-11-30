@@ -60,10 +60,10 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect"
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect"
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
@@ -83,10 +83,10 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.MoveSubeffect"
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect"
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.AnnihilateSubeffect"

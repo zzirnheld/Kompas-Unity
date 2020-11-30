@@ -31,10 +31,10 @@
 					"targetIndex":0
 				},
 				{
-					"$type":"KompasServer.Effects.ReshuffleSubeffect"
+					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DeleteTargetSubeffect"
+					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",

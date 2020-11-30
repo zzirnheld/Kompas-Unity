@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect"
+					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",

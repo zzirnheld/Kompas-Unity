@@ -21,7 +21,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect"
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
@@ -32,7 +32,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect"
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",

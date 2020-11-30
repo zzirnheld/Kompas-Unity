@@ -25,7 +25,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect"
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.SpendMovementSubeffect, Assembly-CSharp",
@@ -59,7 +59,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetDefenderSubeffect"
+					"$type":"KompasServer.Effects.TargetDefenderSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
@@ -75,13 +75,13 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.MoveSubeffect"
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.EndResolutionSubeffect"
+					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect"
+					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.AnnihilateSubeffect"

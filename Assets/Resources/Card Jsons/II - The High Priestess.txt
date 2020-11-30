@@ -25,7 +25,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.TopdeckSubeffect"
+					"$type":"KompasServer.Effects.TopdeckSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
@@ -36,7 +36,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.TopdeckSubeffect"
+					"$type":"KompasServer.Effects.TopdeckSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",

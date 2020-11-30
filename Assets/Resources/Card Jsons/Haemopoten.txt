@@ -17,7 +17,7 @@
 					"xMultiplier":1
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect"
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
@@ -33,7 +33,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.AnnihilateSubeffect"
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",

@@ -29,7 +29,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.TargetTargetsSpaceSubeffect"
+					"$type":"KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp",

@@ -25,7 +25,7 @@
 					"xMultiplier":1
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect"
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
@@ -63,7 +63,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect"
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.ActivateSubeffect"

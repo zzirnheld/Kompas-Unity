@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect"
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.SpendMovementSubeffect, Assembly-CSharp",
@@ -60,7 +60,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ReshuffleSubeffect"
+					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
@@ -72,7 +72,7 @@
 					"xMultiplier":1
 				},
 				{
-					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect"
+					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
@@ -89,7 +89,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ReshuffleSubeffect"
+					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",

@@ -75,13 +75,13 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect"
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.AnnihilateSubeffect"
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.EndResolutionSubeffect"
+					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.DiscardSubeffect"

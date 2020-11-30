@@ -19,17 +19,17 @@
 						"blurb":"character to put in TIME OUT!",
 						"cardRestrictions":["Board","Is Character","Enemy","Wields Augment Fitting Restriction"],
 						"secondaryRestrictionString":
-						{
-							\\"cardRestrictions\\":[\\"Friendly\\",\\"Subtypes Include\\"],
-							\\"subtypesInclude\\":[\\"Sportsball\\"]
-						}
+						"{
+							\"cardRestrictions\":[\"Friendly\",\"Subtypes Include\"],
+							\"subtypesInclude\":[\"Sportsball\"]
+						}"
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.TargetAugmentsSubeffect"
+					"$type":"KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect"
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",

@@ -33,7 +33,7 @@
 					"wMod":1
 				},
 				{
-					"$type":"KompasServer.Effects.EndResolutionSubeffect"
+					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",

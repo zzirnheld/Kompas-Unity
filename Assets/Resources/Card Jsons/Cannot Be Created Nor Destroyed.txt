@@ -22,10 +22,10 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ReshuffleSubeffect"
+					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DeleteTargetSubeffect"
+					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
@@ -33,7 +33,7 @@
 					"jumpTo":1
 				},
 				{
-					"$type":"KompasServer.Effects.TargetAvatarSubeffect"
+					"$type":"KompasServer.Effects.TargetAvatarSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",

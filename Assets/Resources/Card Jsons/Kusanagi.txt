@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetDefenderSubeffect"
+					"$type":"KompasServer.Effects.TargetDefenderSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",

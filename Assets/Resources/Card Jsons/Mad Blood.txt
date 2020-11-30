@@ -19,10 +19,10 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect"
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.AnnihilateSubeffect"
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
@@ -43,7 +43,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect"
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",

@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect"
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",

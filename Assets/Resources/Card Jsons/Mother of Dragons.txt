@@ -16,7 +16,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.SetXSubeffect"
+					"$type":"KompasServer.Effects.SetXSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
@@ -33,7 +33,7 @@
 					"xMultiplier":1
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect"
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
@@ -67,10 +67,10 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect"
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect"
+					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.BottomdeckRestSubeffect"

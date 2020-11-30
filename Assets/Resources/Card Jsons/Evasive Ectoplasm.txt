@@ -25,7 +25,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect"
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.SpendMovementSubeffect, Assembly-CSharp",
@@ -59,10 +59,10 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect"
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetOtherInFightSubeffect"
+					"$type":"KompasServer.Effects.TargetOtherInFightSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",

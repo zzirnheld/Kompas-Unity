@@ -28,7 +28,7 @@
 					"xMultiplier":1
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect"
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
@@ -54,10 +54,10 @@
 					"xMultiplier":1
 				},
 				{
-					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect"
+					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.BottomdeckRestSubeffect"
+					"$type":"KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
@@ -71,17 +71,17 @@
 					"xMultiplier":1
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect"
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.JumpSubeffect, Assembly-CSharp",
 					"indexToJumpTo":4
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect"
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.EndResolutionSubeffect"
+					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.BottomdeckRestSubeffect"

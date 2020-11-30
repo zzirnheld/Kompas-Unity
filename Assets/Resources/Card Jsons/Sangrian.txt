@@ -32,10 +32,10 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.MoveSubeffect"
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect"
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
@@ -60,7 +60,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",

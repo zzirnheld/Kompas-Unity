@@ -15,7 +15,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect"
+					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.TemporaryActivationSubeffect, Assembly-CSharp",
@@ -46,7 +46,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect"
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.RehandSubeffect"

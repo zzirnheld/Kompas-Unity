@@ -22,13 +22,13 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect"
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetAugmentsSubeffect"
+					"$type":"KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",

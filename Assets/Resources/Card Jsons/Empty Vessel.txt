@@ -12,10 +12,10 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect"
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect"
+					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.ResummonSubeffect"
@@ -33,7 +33,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect"
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
