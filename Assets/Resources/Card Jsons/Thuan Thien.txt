@@ -4,9 +4,9 @@
 	"effText":"The first time each round this character fights, set X to their W, then give them +X W.",
 	"effects":[
 		{
-			"triggerCondition":"Battle Start",
 			"triggerData":
 			"{
+				"triggerCondition":"Battle Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["Augmented Card Triggered","Max Per Round"]
 				}

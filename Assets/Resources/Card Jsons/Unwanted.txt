@@ -4,10 +4,10 @@
 	"effText":"Revenant: When I die, annihilate me. During your turn, you can pip revive me for half cost.\nWhen I'm summoned, discard a Revenant and draw 1.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
 			"triggerData":
 			"{
 				"blurb":"Annihilate",
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered","From Field"]
 				}
@@ -53,9 +53,9 @@
 			]
 		},
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

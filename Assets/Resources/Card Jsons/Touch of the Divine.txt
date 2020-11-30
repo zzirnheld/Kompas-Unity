@@ -4,9 +4,9 @@
 	"effText":"While equipped, NegateSubeffect this character and give them +2NESW. When this character dies, if they’re a Supplicant, rehand me.",
 	"effects":[
 		{
-			"triggerCondition":"Augment Attached",
 			"triggerData":
 			"{
+				"triggerCondition":"Augment Attached",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
@@ -36,9 +36,9 @@
 			]
 		},
 		{
-			"triggerCondition":"Discard",
 			"triggerData":
 			"{
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Augmented Card Triggered","Triggerer Fits Restriction"],
 					"cardRestriction":

@@ -4,9 +4,9 @@
 	"effText":"Choose an enemy character wielding a friendly Sportsball. Rehand their Augments (to their owners), then rehand the character.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

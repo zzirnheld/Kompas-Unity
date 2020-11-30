@@ -4,10 +4,10 @@
 	"effText":"While equipped, activate this character. The first time each stack an adjacent character moves, move them to any space adjacent to me. When they die (while I'm equipped), rehand me.",
 	"effects":[
 		{
-			"triggerCondition":"Augment Attached",
 			"triggerData":
 			"{
 				"blurb":"Activate Golem",
+				"triggerCondition":"Augment Attached",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
@@ -26,10 +26,10 @@
 			]
 		},
 		{
-			"triggerCondition":"Move",
 			"triggerData":
 			"{
 				"blurb":"Taunt",
+				"triggerCondition":"Move",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Max Per Stack"],
 					"cardRestriction":
@@ -56,10 +56,10 @@
 			]	
 		},
 		{
-			"triggerCondition":"Discard",
 			"triggerData":
 			"{
 				"blurb":"Core Recovery",
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["Augmented Card Triggered"]
 				}

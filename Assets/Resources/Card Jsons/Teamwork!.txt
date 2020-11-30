@@ -4,10 +4,10 @@
 	"effText":"Unique.\nWhen a friendly character is augmented, draw 1.",
 	"effects":[
 		{
-			"triggerCondition":"Augment Attached",
 			"triggerData":
 			"{
 				"blurb":"Teamwork! Draw!",
+				"triggerCondition":"Augment Attached",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Coords Fit Restriction"],
 					"spaceRestriction":

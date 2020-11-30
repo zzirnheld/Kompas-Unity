@@ -4,10 +4,10 @@
 	"effText":"The first time each turn you hand-discard a Crazy Idea, pay 2 pips and discard-play it.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
 			"triggerData":
 			"{
 				"blurb":"Play discarded Crazy",
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Max Per Turn"],
 					"cardRestriction":

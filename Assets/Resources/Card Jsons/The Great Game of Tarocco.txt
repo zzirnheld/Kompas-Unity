@@ -4,9 +4,9 @@
 	"effText":"Set X to the number of friendly Tarocco. Draw X.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

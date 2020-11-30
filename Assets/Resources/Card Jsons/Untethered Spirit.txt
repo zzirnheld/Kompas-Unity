@@ -4,9 +4,9 @@
 	"effText":"When I'm summoned adjacent to a Shaper, gain a pip.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Fits Restriction","Coords Fit Restriction"],
 					"spaceRestriction":{

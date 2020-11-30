@@ -4,9 +4,9 @@
 	"effText":"When I’m cast, handsummon a Shaper, but annihilate them when your turns start.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
