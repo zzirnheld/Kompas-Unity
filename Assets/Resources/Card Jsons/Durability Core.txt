@@ -5,10 +5,10 @@
 	"effects":[
 		{
 			"blurb":"Activate",
-			"triggerCondition":"Augment Attached",
 			"triggerData":
 			"{
 				"blurb":"Activate Golem",
+				"triggerCondition":"Augment Attached",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
@@ -36,10 +36,10 @@
 		},
 		{
 			"blurb":"Core Recovery",
-			"triggerCondition":"Discard",
 			"triggerData":
 			"{
 				"blurb":"Core Recovery",
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["Augmented Card Triggered"]
 				}

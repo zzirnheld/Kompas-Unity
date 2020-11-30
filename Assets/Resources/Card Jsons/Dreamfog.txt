@@ -4,11 +4,11 @@
 	"effText":"When a character moves, you can tribute me to gain a pip.",
 	"effects":[
 		{
-			"triggerCondition":"Move",
 			"triggerData":
 			"{
 				"optional":true,
 				"blurb":"Tribute Dreamfog to gain a pip?",
+				"triggerCondition":"Move",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":{

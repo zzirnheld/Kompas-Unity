@@ -4,9 +4,9 @@
 	"effText":"If there's at least 10 friendly Supplicants dead or in play, deck-summon a "God of Mercy".",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

@@ -4,9 +4,9 @@
 	"effText":"Unique.\nWhen you summon a Pulsar with more S than your Avatar, gain a pip.\nWhen you summon a Pulsar with less S than your Avatar, draw 1.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["Controller Triggered","Triggerer Fits Restriction","This Card in Play"],
 					"cardRestriction":{
@@ -23,9 +23,9 @@
 			]	
 		},
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["Controller Triggered","Triggerer Fits Restriction","This Card in Play"],
 					"cardRestriction":{

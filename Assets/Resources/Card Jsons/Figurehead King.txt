@@ -4,9 +4,9 @@
 	"effText":"Choose a card in your hand, then reshuffle the other X. Gain X pips.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

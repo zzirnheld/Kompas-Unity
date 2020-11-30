@@ -4,9 +4,9 @@
 	"effText":"The first time each turn you hand-discard a card, discard-rehand your card.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
 			"triggerData":
 			"{
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Max Per Turn","Controller Triggered"],
 					"cardRestriction":

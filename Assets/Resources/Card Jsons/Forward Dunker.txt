@@ -4,10 +4,10 @@
 	"effText":"The first time each stack I'm augmented, attach that Augment to an adjacent Avatar.",
 	"effects":[
 		{
-			"triggerCondition":"Augment Attached",
 			"triggerData":
 			"{
 				"blurb":"Run Forward!",
+				"triggerCondition":"Augment Attached",
 				"triggerRestriction":{
 					"triggerRestrictions":["Max Per Stack","This Card in Play","Coords Fit Restriction"],
 					"spaceRestriction":

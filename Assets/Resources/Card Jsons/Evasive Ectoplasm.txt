@@ -50,9 +50,9 @@
 			]
 		},
 		{
-			"triggerCondition":"Battle Start",
 			"triggerData":
 			"{
+				"triggerCondition":"Battle Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered","Max Per Round"]
 				}

@@ -4,9 +4,9 @@
 	"effText":"When you draw on a friendly turn, give each friendly Summoned character +1W.\nWhen you draw on a enemy turn, give each friendly Summoned character +1E.",
 	"effects":[
 		{
-			"triggerCondition":"Draw",
 			"triggerData":
 			"{
+				"triggerCondition":"Draw",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Friendly Turn"]
 				}
@@ -23,9 +23,9 @@
 			]
 		},
 		{
-			"triggerCondition":"Draw",
 			"triggerData":
 			"{
+				"triggerCondition":"Draw",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Enemy Turn"]
 				}

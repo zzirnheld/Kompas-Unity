@@ -4,10 +4,10 @@
 	"effText":"The first time each turn your Avatar gains S, give them +1 S.\nThe first time each turn your Avatar loses S, give them -1 S.",
 	"effects":[
 		{
-			"triggerCondition":"S Change",
 			"triggerData":
 			"{
 				"blurb":"Echo Up",
+				"triggerCondition":"S Change",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction","Max Per Turn"],
 					"xRestriction":{
@@ -30,10 +30,10 @@
 			]
 		},
 		{
-			"triggerCondition":"S Change",
 			"triggerData":
 			"{
 				"blurb":"Echo Down",
+				"triggerCondition":"S Change",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction","Max Per Turn"],
 					"xRestriction":{

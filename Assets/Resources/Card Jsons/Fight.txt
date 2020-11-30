@@ -4,9 +4,9 @@
 	"effText":"A friendly character attacks an adjacent enemy character. (The two things fighting must be adjacent.)",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

@@ -4,9 +4,9 @@
 	"effText":"After I’m summoned, delay 1 turn, then tribute me, discard a Dragon, and hand-summon a Dragon where I was.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

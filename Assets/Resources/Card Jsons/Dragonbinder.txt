@@ -5,10 +5,10 @@
 	"effects":[
 		{
 			"blurb":"Dragonbind",
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
 				"blurb":"Dragonbind",
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

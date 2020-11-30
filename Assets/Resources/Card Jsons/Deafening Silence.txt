@@ -4,9 +4,9 @@
 	"effText":"Set X to the number of your dead Cultists. Give a character -XW.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

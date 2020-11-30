@@ -4,9 +4,9 @@
 	"effText":"When I'm summoned adjacent to a Shaper, draw 1.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered","Coords Fit Restriction"],
 					"spaceRestriction":{

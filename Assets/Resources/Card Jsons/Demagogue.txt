@@ -4,9 +4,9 @@
 	"effText":"When I’m summoned, give adjacent characters +1 S.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

@@ -5,10 +5,10 @@
 	"effects":[
 		{
 			"blurb":"Choo Choo Activate",
-			"triggerCondition":"Turn Start",
 			"triggerData":
 			"{
 				"blurb":"Activate Golem",
+				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Enemy Turn"]
 				}
@@ -28,10 +28,10 @@
 		},
 		{
 			"blurb":"Fuel the Choo",
-			"triggerCondition":"Turn Start",
 			"triggerData":
 			"{
 				"blurb":"Combustion Maintenance",
+				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Friendly Turn"]
 				}
@@ -68,10 +68,10 @@
 		},
 		{
 			"blurb":"Core Recovery",
-			"triggerCondition":"Discard",
 			"triggerData":
 			"{
 				"blurb":"Core Recovery",
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["Augmented Card Triggered"]
 				}

@@ -5,10 +5,10 @@
 	"effects":[
 		{
 			"blurb":"Coalesce +C",
-			"triggerCondition":"S Change",
 			"triggerData":
 			"{
 				"blurb":"Coalesce +C",
+				"triggerCondition":"S Change",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","This Card in Play"],
 					"cardRestriction":
@@ -29,10 +29,10 @@
 		},
 		{
 			"blurb":"Coalesce Summon",
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
 				"blurb":"Coalesce Summon",
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

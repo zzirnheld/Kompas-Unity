@@ -4,10 +4,10 @@
 	"effText":"The first time each turn a Shaper moves, reset their E and give them +1N.",
 	"effects":[
 		{
-			"triggerCondition":"Move",
 			"triggerData":
 			"{
 				"blurb":"Dreamscape",
+				"triggerCondition":"Move",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Max Per Turn"],
 					"cardRestriction":{

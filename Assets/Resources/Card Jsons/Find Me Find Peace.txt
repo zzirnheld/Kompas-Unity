@@ -4,9 +4,9 @@
 	"effText":"Rehand all Supplicants from your deck’s top 4 cards. Bottomdeck the rest.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"blurb":"Find Me, Find Peace",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]

@@ -5,9 +5,9 @@
 	"effects":[
 		{
 			"blurb":"Golemorph",
-			"triggerCondition":"Activate",
 			"triggerData":
 			"{
+				"triggerCondition":"Activate",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

@@ -4,10 +4,10 @@
 	"effText":"When turns start, give the closest other character in front of me in my column -3E, then pay a pip or annihilate me.",
 	"effects":[
 		{
-			"triggerCondition":"Turn Start",
 			"triggerData":
 			"{
 				"blurb":"Subvert Expectations",
+				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play"]
 				}

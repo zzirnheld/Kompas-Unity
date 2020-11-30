@@ -4,9 +4,9 @@
 	"effText":"Move a Shaper to be adjacent to an enemy character. They fight.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

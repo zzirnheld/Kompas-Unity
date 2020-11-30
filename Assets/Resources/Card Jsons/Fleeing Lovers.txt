@@ -4,10 +4,10 @@
 	"effText":"When turns start, give me -1E.\nWhen I’m hand-summoned, deck-summon a copy of me.",
 	"effects":[
 		{
-			"triggerCondition":"Turn Start",
 			"triggerData":
 			"{
 				"blurb":"Lovers' death",
+				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play"]
 				}
@@ -23,10 +23,10 @@
 			]
 		},
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
 				"blurb":"Lovers fleeing together",
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered","This Card Fits Restriction"],
 					"cardRestriction":{

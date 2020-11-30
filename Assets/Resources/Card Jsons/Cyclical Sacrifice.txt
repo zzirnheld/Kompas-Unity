@@ -4,9 +4,9 @@
 	"effText":"Reshuffle X of your dead Cultists. Gain X pips. Annihilate me.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

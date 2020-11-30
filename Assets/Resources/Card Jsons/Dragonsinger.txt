@@ -5,10 +5,10 @@
 	"effects":[
 		{
 			"blurb":"Dragonsing",
-			"triggerCondition":"Turn Start",
 			"triggerData":
 			"{
 				"blurb":"Hand-reshuffle X Dragons to give Dragonsinger +X S and draw X?",
+				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play"]
 				}

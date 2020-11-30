@@ -4,9 +4,9 @@
 	"effText":"When you draw X, give me +XC.\nWhen I'm cast, delay 1 turn.\nIf my C ≥ 10, deck-summon a Tarocco.",
 	"effects":[
 		{
-			"triggerCondition":"Draw",
 			"triggerData":
 			"{
+				"triggerCondition":"Draw",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play"]
 				}
@@ -22,9 +22,9 @@
 			]
 		},
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

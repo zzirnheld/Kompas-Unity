@@ -5,10 +5,10 @@
 	"effects":[
 		{
 			"blurb":"Defense Activate!",
-			"triggerCondition":"Augment Attached",
 			"triggerData":
 			"{
 				"blurb":"Activate Golem",
+				"triggerCondition":"Augment Attached",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
@@ -28,10 +28,10 @@
 		},
 		{
 			"blurb":"You Shouldn't Have Done That",
-			"triggerCondition":"Defend",
 			"triggerData":
 			"{
 				"blurb":"Golem Defense",
+				"triggerCondition":"Defend",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Augmented Card Triggered"]
 				}
@@ -49,10 +49,10 @@
 		},
 		{
 			"blurb":"Core Recovery",
-			"triggerCondition":"Discard",
 			"triggerData":
 			"{
 				"blurb":"Core Recovery",
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["Augmented Card Triggered"]
 				}

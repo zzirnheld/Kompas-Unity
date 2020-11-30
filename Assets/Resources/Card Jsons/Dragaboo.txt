@@ -4,10 +4,10 @@
 	"effText":"When a Dragon kills me, you can annihilate me to discard an SX Dragon and gain X pips.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
 			"triggerData":
 			"{
 				"blurb":"*notices your dragon*",
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered","Stackable Source Fits Restriction"],
 					"sourceRestriction":{

@@ -4,9 +4,9 @@
 	"effText":"When a friendly character dies here during an enemy turn, draw 1.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
 			"triggerData":
 			"{
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Enemy Turn","Triggerer Fits Restriction"],
 					"cardRestriction":
