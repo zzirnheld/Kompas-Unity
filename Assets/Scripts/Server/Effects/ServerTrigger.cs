@@ -11,7 +11,11 @@ namespace KompasServer.Effects
         public ServerEffect serverEffect;
 
         public override GameCard Source => serverEffect.Source;
-        public override Effect Effect => serverEffect;
+        public override Effect Effect
+        {
+            get => serverEffect;
+            protected set => serverEffect = value as ServerEffect;
+        }
 
         private bool responded = false;
         /// <summary>
@@ -48,11 +52,12 @@ namespace KompasServer.Effects
         }
         public bool Ordered => order != -1;
 
-        public ServerTrigger(TriggerData triggerData, ServerEffect parent) : base(triggerData, parent.Game)
+        public ServerTrigger(TriggerData triggerData, ServerEffect parent) : base(triggerData, parent)
         {
-            serverEffect = parent;
             if(!TriggerConditions.Contains(triggerData.triggerCondition))
                 throw new System.ArgumentNullException("triggerRestriction", $"null trigger restriction for effect of {parent.Source.CardName}");
+
+            parent.serverGame.EffectsController.RegisterTrigger(TriggerCondition, this);
         }
 
         /// <summary>

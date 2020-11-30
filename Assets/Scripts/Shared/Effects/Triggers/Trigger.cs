@@ -54,16 +54,18 @@ namespace KompasCore.Effects
 
         public TriggerData TriggerData { get; }
         public abstract GameCard Source { get; }
-        public abstract Effect Effect { get; }
+        public abstract Effect Effect { get; protected set; }
 
+        public string TriggerCondition => TriggerData.triggerCondition;
         public TriggerRestriction TriggerRestriction => TriggerData.triggerRestriction;
         public bool Optional => TriggerData.optional;
         public string Blurb => TriggerData.blurb;
 
-        public Trigger(TriggerData triggerData, Game game)
+        public Trigger(TriggerData triggerData, Effect effect)
         {
             TriggerData = triggerData;
-            triggerData.triggerRestriction.Initialize(game, Source, this);
+            Effect = effect;
+            triggerData.triggerRestriction.Initialize(effect.Game, Source, this);
         }
     }
 }
