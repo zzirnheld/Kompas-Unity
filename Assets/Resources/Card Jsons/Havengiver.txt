@@ -7,33 +7,33 @@
 			"triggerCondition":"Turn Start",
 			"triggerJson":
 			"{
-				\"blurb\":\"Give Safe Haven\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\"]
+				"blurb":"Give Safe Haven",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"ChooseFromListSubeffect\",
-					\"maxCanChoose\":1,
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose":1,
+					"cardRestriction":
 					{
-						\"blurb\":\"Supplicant to give safe haven\",
-						\"cardRestrictions\":[\"Friendly\",\"Discard\",\"Is Character\",\"S<=C\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Supplicant\"],
-						\"constant\":1
+						"blurb":"Supplicant to give safe haven",
+						"cardRestrictions":["Friendly","Discard","Is Character","S<=C","Subtypes Include"],
+						"subtypesInclude":["Supplicant"],
+						"constant":1
 					}
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"haven to play the Supplicant\",
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+						"blurb":"haven to play the Supplicant",
+						"spaceRestrictions":["Can Play Target to This Space"]
 					}
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					"$type":"KompasServer.Effects.PlaySubeffect"
 				}"
 			]
 		}

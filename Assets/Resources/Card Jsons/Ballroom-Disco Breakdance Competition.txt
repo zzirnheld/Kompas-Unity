@@ -6,39 +6,39 @@
 		{
 			"triggerCondition":"Discard",
 			"triggerJson":"{
-				\"blurb\":\"Ificate\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\",\"Triggerer Fits Restriction\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Hand\"]
+				"blurb":"Ificate",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Hand"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Crazy Idea for Ballroom-Disco to Ificate\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Friendly\",\"Distinct from Source\"],
-						\"subtypesInclude\":[\"Crazy Idea\"]
+						"blurb":"Crazy Idea for Ballroom-Disco to Ificate",
+						"cardRestrictions":["Subtypes Include","Discard","Friendly","Distinct from Source"],
+						"subtypesInclude":["Crazy Idea"]
 					}
 				}",
 				"{
-					\"subeffType\":\"PayPipsSubeffect\",
-					\"xMultiplier\":0,
-					\"xModifier\":1
+					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
+					"xMultiplier":0,
+					"xModifier":1
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where Ballroom-Disco Breakdance Competition to play targeted Crazy Idea\",
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+						"blurb":"where Ballroom-Disco Breakdance Competition to play targeted Crazy Idea",
+						"spaceRestrictions":["Can Play Target to This Space"]
 					}
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					"$type":"KompasServer.Effects.PlaySubeffect"
 				}"
 			]
 		},
@@ -46,22 +46,22 @@
 			"triggerCondition":"Move",
 			"triggerJson":
 			"{
-				\"blurb\":\"N = 0\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Coords Fit Restriction\",\"This Card in Play\"],
-					\"spaceRestriction\":
+				"blurb":"N = 0",
+				"triggerRestriction":{
+					"triggerRestrictions":["Coords Fit Restriction","This Card in Play"],
+					"spaceRestriction":
 					{
-						\"spaceRestrictions\":[\"In AOE\"]
+						"spaceRestrictions":["In AOE"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"SetNESWSubeffect\",
-					\"nVal\":0
+					"$type":"KompasServer.Effects.SetNESWSubeffect, Assembly-CSharp",
+					"nVal":0
 				}"
 			]	
 		},
@@ -69,25 +69,25 @@
 			"triggerCondition":"Move",
 			"triggerJson":
 			"{
-				\"blurb\":\"Annihilate this\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Triggerer Fits Restriction\",\"Coords Fit Restriction\",\"This Card in Play\"],
-					\"cardRestriction\":
+				"blurb":"Annihilate this",
+				"triggerRestriction":{
+					"triggerRestrictions":["Triggerer Fits Restriction","Coords Fit Restriction","This Card in Play"],
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"In AOE\"]
+						"cardRestrictions":["Is Character","Board","In AOE"]
 					},
-					\"spaceRestriction\":
+					"spaceRestriction":
 					{
-						\"spaceRestrictions\":[\"Not In AOE\"]
+						"spaceRestrictions":["Not In AOE"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"AnnihilateSubeffect\"
+					"$type":"KompasServer.Effects.AnnihilateSubeffect"
 				}"
 			]	
 		}

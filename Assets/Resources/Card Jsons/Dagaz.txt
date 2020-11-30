@@ -7,30 +7,30 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Spell\"],
-						\"subtypesInclude\":[\"Rune\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Subtypes Include","Is Spell"],
+						"subtypesInclude":["Rune"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"SetXByTargetValueSubeffect\",
-					\"whatToCount\":\"C\",
-					\"xMultiplier\":1
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"C",
+					"xMultiplier":1
 				}",
 				"{
-					\"subeffType\":\"AddPipsSubeffect\",
-					\"xMultiplier\":1
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xMultiplier":1
 				}",
 				"{
-					\"subeffType\":\"ChangeSpellCSubeffect\",
-					\"xModifier\":1
+					"$type":"KompasServer.Effects.ChangeSpellCSubeffect, Assembly-CSharp",
+					"xModifier":1
 				}"
 			]	
 		}

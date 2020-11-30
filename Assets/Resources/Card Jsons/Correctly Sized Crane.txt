@@ -7,25 +7,25 @@
 			"triggerCondition":"Discard",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"Max Per Turn\",\"Controller Triggered\"],
-					\"cardRestriction\":
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Max Per Turn","Controller Triggered"],
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Hand\"]
+						"cardRestrictions":["Hand"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"card for Correctly Sized Crane to grab\",
-						\"cardRestrictions\":[\"Friendly\",\"Discard\"]
+						"blurb":"card for Correctly Sized Crane to grab",
+						"cardRestrictions":["Friendly","Discard"]
 					}
 				}",
 				"{
-					\"subeffType\":\"RehandSubeffect\"
+					"$type":"KompasServer.Effects.RehandSubeffect"
 				}"
 			]	
 		}

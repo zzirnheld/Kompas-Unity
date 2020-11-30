@@ -12,37 +12,37 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"SetXByGamestateSubeffect\",
-					\"whatToCount\":\"Effect Uses This Turn\",
-					\"xMultiplier\":1
+					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount":"Effect Uses This Turn",
+					"xMultiplier":1
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"eMult\":-1
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"eMult":-1
 				}",
 				"{
-					\"subeffType\":\"AutoTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"for Haemopoten to draw\",
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<C\"],
-						\"constant\":1
+						"blurb":"for Haemopoten to draw",
+						"cardRestrictions":["Friendly","Deck","Index<C"],
+						"constant":1
 					}
 				}",
 				"{
-					\"subeffType\":\"AnnihilateSubeffect\"
+					"$type":"KompasServer.Effects.AnnihilateSubeffect"
 				}",
 				"{
-					\"subeffType\":\"DelaySubeffect\",
-					\"numTimesToDelay\":0,
-					\"indexToResume\":6,
-					\"endCondition\":\"Turn Start\"
+					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay":0,
+					"indexToResume":6,
+					"endCondition":"Turn Start"
 				}",
 				"{
-					\"subeffType\":\"RehandSubeffect\"
+					"$type":"KompasServer.Effects.RehandSubeffect"
 				}"
 			]
 		}

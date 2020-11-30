@@ -7,52 +7,52 @@
 			"triggerCondition":"Turn Start",
 			"triggerJson":
 			"{
-				\"blurb\":\"Subvert Expectations\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\"]
+				"blurb":"Subvert Expectations",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"ChooseFromListSubeffect\",
-					\"orderBy\":\"Closest\",
-					\"maxCanChoose\":1,
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"orderBy":"Closest",
+					"maxCanChoose":1,
+					"cardRestriction":
 					{
-						\"blurb\":\"for Expectation Subverter to subvert expectations (-3E)\",
-						\"cardRestrictions\":[\"Board\",\"Is Character\",\"Same Column as Source\",\"In Front of Source\",\"Distinct from Source\"]
+						"blurb":"for Expectation Subverter to subvert expectations (-3E)",
+						"cardRestrictions":["Board","Is Character","Same Column as Source","In Front of Source","Distinct from Source"]
 					}
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"eChange\":-3
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"eChange":-3
 				}",
 				"{
-					\"subeffType\":\"ChooseOptionSubeffect\",
-					\"ChoiceBlurb\":\"Pay 1 pip or annihilate this?\",
-					\"OptionBlurbs\":[\"Pay 1 pip\",\"DispelSubeffect\"],
-					\"OptionJumpIndices\":[3,7]
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"ChoiceBlurb":"Pay 1 pip or annihilate this?",
+					"OptionBlurbs":["Pay 1 pip","DispelSubeffect"],
+					"OptionJumpIndices":[3,7]
 				}",
 				"{
-					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
-					\"jumpTo\":6
+					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"jumpTo":6
 				}",
 				"{
-					\"subeffType\":\"PayPipsSubeffect\",
-					\"xMultiplier\":0,
-					\"xModifier\":1
+					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
+					"xMultiplier":0,
+					"xModifier":1
 				}",
 				"{
-					\"subeffType\":\"EndResolutionSubeffect\"
+					"$type":"KompasServer.Effects.EndResolutionSubeffect"
 				}",
 				"{
-					\"subeffType\":\"ClearOnImpossibleSubeffect\"
+					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect"
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"AnnihilateSubeffect\"
+					"$type":"KompasServer.Effects.AnnihilateSubeffect"
 				}"
 			]	
 		}

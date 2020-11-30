@@ -12,18 +12,18 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"DrawSubeffect\"
+					"$type":"KompasServer.Effects.DrawSubeffect"
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"for Star to hand-bottomdeck\",
-						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
+						"blurb":"for Star to hand-bottomdeck",
+						"cardRestrictions":["Friendly","Hand"]
 					}
 				}",
 				"{
-					\"subeffType\":\"BottomdeckSubeffect\"
+					"$type":"KompasServer.Effects.BottomdeckSubeffect"
 				}"
 			]
 		}

@@ -13,11 +13,11 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"sMod\":1
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"sMod":1
 				}"
 			]
 		},
@@ -31,11 +31,11 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"sMod\":-1
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"sMod":-1
 				}"
 			]
 		}

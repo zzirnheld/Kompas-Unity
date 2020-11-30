@@ -12,13 +12,13 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"PayPipsTargetCostSubeffect\"
+					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect"
 				}",
 				"{
-					\"subeffType\":\"ResummonSubeffect\"
+					"$type":"KompasServer.Effects.ResummonSubeffect"
 				}"
 			]	
 		},
@@ -26,20 +26,20 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Discard\"]
+						"cardRestrictions":["Friendly","Discard"]
 					}
 				}",
 				"{
-					\"subeffType\":\"RehandSubeffect\"
+					"$type":"KompasServer.Effects.RehandSubeffect"
 				}"
 			]	
 		}

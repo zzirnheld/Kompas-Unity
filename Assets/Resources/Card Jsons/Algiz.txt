@@ -7,21 +7,21 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Board\",\"Is Character\"]
+						"cardRestrictions":["Board","Is Character"]
 					}
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"eChange\":5
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"eChange":5
 				}"
 			]	
 		}

@@ -7,24 +7,24 @@
 			"triggerCondition":"Attack",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"eChange\":-1
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"eChange":-1
 				}",
 				"{
-					\"subeffType\":\"TargetDefenderSubeffect\"
+					"$type":"KompasServer.Effects.TargetDefenderSubeffect"
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"eChange\":-1
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"eChange":-1
 				}"
 			]	
 		}

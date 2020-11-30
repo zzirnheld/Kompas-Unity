@@ -7,34 +7,34 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":{
-						\"blurb\":\"Revenant for Salvage Soul to rehand\",
-						\"cardRestrictions\":[\"Friendly\",\"Board\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Revenant\"]
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"blurb":"Revenant for Salvage Soul to rehand",
+						"cardRestrictions":["Friendly","Board","Subtypes Include"],
+						"subtypesInclude":["Revenant"]
 					}
 				}",
 				"{
-					\"subeffType\":\"RehandSubeffect\"
+					"$type":"KompasServer.Effects.RehandSubeffect"
 				}",
 				"{
-					\"subeffType\":\"DrawSubeffect\"
+					"$type":"KompasServer.Effects.DrawSubeffect"
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":{
-						\"blurb\":\"card for Salvage Soul to discard\",
-						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"blurb":"card for Salvage Soul to discard",
+						"cardRestrictions":["Friendly","Hand"]
 					}
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					"$type":"KompasServer.Effects.DiscardSubeffect"
 				}"
 			]	
 		}

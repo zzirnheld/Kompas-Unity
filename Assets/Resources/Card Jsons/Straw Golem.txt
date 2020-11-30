@@ -8,48 +8,48 @@
 			"triggerCondition":"Activate",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"enemy card for Straw Golem to move.\",
-						\"cardRestrictions\":[\"Board\",\"Enemy\",\"Not Avatar\"]
+						"blurb":"enemy card for Straw Golem to move.",
+						"cardRestrictions":["Board","Enemy","Not Avatar"]
 					}
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\",\"Can Move Target to This Space\"],
-						\"constant\":3
+						"spaceRestrictions":["Empty","Distance to Target == Constant","Can Move Target to This Space"],
+						"constant":3
 					}
 				}",
 				"{
-					\"subeffType\":\"MoveSubeffect\"
+					"$type":"KompasServer.Effects.MoveSubeffect"
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"enemy card for Straw Golem to move.\",
-						\"cardRestrictions\":[\"Board\",\"Enemy\",\"Not Already Target\",\"Not Avatar\"]
+						"blurb":"enemy card for Straw Golem to move.",
+						"cardRestrictions":["Board","Enemy","Not Already Target","Not Avatar"]
 					}
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\",\"Can Move Target to This Space\"],
-						\"constant\":3
+						"spaceRestrictions":["Empty","Distance to Target == Constant","Can Move Target to This Space"],
+						"constant":3
 					}
 				}",
 				"{
-					\"subeffType\":\"MoveSubeffect\"
+					"$type":"KompasServer.Effects.MoveSubeffect"
 				}"
 			]
 		}

@@ -7,32 +7,32 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"ChooseFromListSubeffect\",
-					\"cardRestriction\":{
-						\"blurb\":\"copy of Dreamspace to decksummon\",
-						\"cardRestrictions\":[\"Friendly\",\"Same Name as Target\",\"Deck\"]
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"blurb":"copy of Dreamspace to decksummon",
+						"cardRestrictions":["Friendly","Same Name as Target","Deck"]
 					},
-					\"maxCanChoose\":1
+					"maxCanChoose":1
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where for Dreamspace to decksummon a copy of itself\",
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+						"blurb":"where for Dreamspace to decksummon a copy of itself",
+						"spaceRestrictions":["Can Play Target to This Space"]
 					}
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					"$type":"KompasServer.Effects.PlaySubeffect"
 				}"
 			]	
 		}

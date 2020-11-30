@@ -12,18 +12,18 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Dr. Thierr Dumachmartres' evil scheme for today\",
-						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
+						"blurb":"Dr. Thierr Dumachmartres' evil scheme for today",
+						"cardRestrictions":["Friendly","Hand"]
 					}
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					"$type":"KompasServer.Effects.DiscardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"DrawSubeffect\"
+					"$type":"KompasServer.Effects.DrawSubeffect"
 				}"
 			]
 		}

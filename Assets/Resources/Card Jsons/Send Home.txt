@@ -7,22 +7,22 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"character to ANNIHILATE\",
-						\"cardRestrictions\":[\"Board\",\"Is Character\",\"Adjacent to Subtype\"],
-						\"adjacencySubtypes\":[\"Shaper\"]
+						"blurb":"character to ANNIHILATE",
+						"cardRestrictions":["Board","Is Character","Adjacent to Subtype"],
+						"adjacencySubtypes":["Shaper"]
 					}
 				}",
 				"{
-					\"subeffType\":\"AnnihilateSubeffect\"
+					"$type":"KompasServer.Effects.AnnihilateSubeffect"
 				}"
 			]
 		}

@@ -7,22 +7,22 @@
 			"triggerCondition":"Turn Start",
 			"triggerJson":
 			"{
-				\"blurb\":\"Territorial\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\"]
+				"blurb":"Territorial",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"adjacent character for Aerian to kill\",
-						\"cardRestrictions\":[\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"]
+						"blurb":"adjacent character for Aerian to kill",
+						"cardRestrictions":["Is Character","Friendly","Board","Adjacent"]
 					}
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					"$type":"KompasServer.Effects.DiscardSubeffect"
 				}"
 			]	
 		},
@@ -30,21 +30,21 @@
 			"triggerCondition":"Attack",
 			"triggerJson":
 			"{
-				\"blurb\":\"Give the attacking Aerian and all other characters within 2 spaces -2E?\",
-				\"optional\":true,
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"blurb":"Give the attacking Aerian and all other characters within 2 spaces -2E?",
+				"optional":true,
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"ChangeAllNESWSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.ChangeAllNESWSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Within C Spaces\"],
-						\"cSpaces\":2
+						"cardRestrictions":["Is Character","Board","Within C Spaces"],
+						"cSpaces":2
 					},
-					\"eMod\":-2
+					"eMod":-2
 				}"
 			]	
 		}

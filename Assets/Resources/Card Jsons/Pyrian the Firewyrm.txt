@@ -7,21 +7,21 @@
 			"triggerCondition":"Turn Start",
 			"triggerJson":
 			"{
-				\"blurb\":\"Territorial\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\"]
+				"blurb":"Territorial",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"]
+						"cardRestrictions":["Is Character","Friendly","Board","Adjacent"]
 					}
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					"$type":"KompasServer.Effects.DiscardSubeffect"
 				}"
 			]	
 		},
@@ -29,26 +29,26 @@
 			"triggerCondition":"Attack",
 			"triggerJson":
 			"{
-				\"blurb\":\"Give the attacking Pyrian -1E to give their target -4E?\",
-				\"optional\":true,
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"blurb":"Give the attacking Pyrian -1E to give their target -4E?",
+				"optional":true,
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"eChange\":-1
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"eChange":-1
 				}",
 				"{
-					\"subeffType\":\"TargetDefenderSubeffect\"
+					"$type":"KompasServer.Effects.TargetDefenderSubeffect"
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"eChange\":-4
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"eChange":-4
 				}"
 			]	
 		}

@@ -12,13 +12,13 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"PayPipsTargetCostSubeffect\"
+					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect"
 				}",
 				"{
-					\"subeffType\":\"ResummonSubeffect\"
+					"$type":"KompasServer.Effects.ResummonSubeffect"
 				}"
 			]	
 		},
@@ -26,20 +26,20 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"ChangeAllNESWSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.ChangeAllNESWSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Adjacent\"]
+						"cardRestrictions":["Is Character","Board","Adjacent"]
 					},
-					\"eMod\":1,
-					\"sMod\":1,
-					\"wMod\":1
+					"eMod":1,
+					"sMod":1,
+					"wMod":1
 				}"
 			]	
 		}

@@ -7,25 +7,25 @@
 			"triggerCondition":"Each Card Drawn",
 			"triggerJson":
 			"{
-				\"blurb\":\"Discard the drawn Revenant to draw 1?\",
-				\"optional\":true,
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\",\"Triggerer Fits Restriction\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Revenant\"]
+				"blurb":"Discard the drawn Revenant to draw 1?",
+				"optional":true,
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Controller Triggered","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Subtypes Include"],
+						"subtypesInclude":["Revenant"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					"$type":"KompasServer.Effects.DiscardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"DrawSubeffect\"
+					"$type":"KompasServer.Effects.DrawSubeffect"
 				}"
 			]	
 		}

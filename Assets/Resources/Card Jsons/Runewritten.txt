@@ -7,22 +7,22 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"Controller Triggered\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\"],
-						\"subtypesInclude\":[\"Rune\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Controller Triggered"],
+					"cardRestriction":{
+						"cardRestrictions":["Subtypes Include","Is Spell","Friendly"],
+						"subtypesInclude":["Rune"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"eChange\":1,
-					\"wChange\":1
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"eChange":1,
+					"wChange":1
 				}"
 			]	
 		}

@@ -13,42 +13,42 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Rune for Runechanneler to reshuffle\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Discard\"],
-						\"subtypesInclude\":[\"Rune\"]
+						"blurb":"Rune for Runechanneler to reshuffle",
+						"cardRestrictions":["Subtypes Include","Friendly","Discard"],
+						"subtypesInclude":["Rune"]
 					}
 				}",
 				"{
-					\"subeffType\":\"ReshuffleSubeffect\"
+					"$type":"KompasServer.Effects.ReshuffleSubeffect"
 				}",
 				"{
-					\"subeffType\":\"CountXLoopSubeffect\",
-					\"canDecline\":true,
-					\"jumpTo\":0
+					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
+					"canDecline":true,
+					"jumpTo":0
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Rune for Runechanneler to cast\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Hand\",\"Can Be Played\",\"Cost<=X\"],
-						\"subtypesInclude\":[\"Rune\"]
+						"blurb":"Rune for Runechanneler to cast",
+						"cardRestrictions":["Subtypes Include","Is Spell","Friendly","Hand","Can Be Played","Cost<=X"],
+						"subtypesInclude":["Rune"]
 					},
-					\"xMultiplier\":1
+					"xMultiplier":1
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where for Runechanneler to cast its target Rune\",
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+						"blurb":"where for Runechanneler to cast its target Rune",
+						"spaceRestrictions":["Can Play Target to This Space"]
 					}
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					"$type":"KompasServer.Effects.PlaySubeffect"
 				}"
 			]
 		}

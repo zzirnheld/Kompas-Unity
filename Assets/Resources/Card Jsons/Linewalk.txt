@@ -8,30 +8,30 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Character to Linewalk\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Board\",\"Friendly\"],
-						\"subtypesInclude\":[\"Linewalker\"]
+						"blurb":"Character to Linewalk",
+						"cardRestrictions":["Subtypes Include","Board","Friendly"],
+						"subtypesInclude":["Linewalker"]
 					}
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"to Linewalk to\",
-						\"spaceRestrictions\":[\"Empty\",\"On Target's Diagonal\"]
+						"blurb":"to Linewalk to",
+						"spaceRestrictions":["Empty","On Target's Diagonal"]
 					}
 				}",
 				"{
-					\"subeffType\":\"MoveSubeffect\"
+					"$type":"KompasServer.Effects.MoveSubeffect"
 				}"
 			]	
 		}

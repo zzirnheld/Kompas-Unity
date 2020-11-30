@@ -7,22 +7,22 @@
 			"triggerCondition":"Attack",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Is Character\",\"Friendly\",\"Board\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Is Character","Friendly","Board"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"eChange\":2,
-					\"sChange\":2,
-					\"wChange\":2
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"eChange":2,
+					"sChange":2,
+					"wChange":2
 				}"
 			]
 		}

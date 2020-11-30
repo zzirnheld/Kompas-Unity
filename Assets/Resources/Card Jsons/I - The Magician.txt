@@ -14,24 +14,24 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"for Magician to hand-bottomdeck\",
-						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
+						"blurb":"for Magician to hand-bottomdeck",
+						"cardRestrictions":["Friendly","Hand"]
 					}
 				}",
 				"{
-					\"subeffType\":\"BottomdeckSubeffect\"
+					"$type":"KompasServer.Effects.BottomdeckSubeffect"
 				}",
 				"{
-					\"subeffType\":\"CountXLoopSubeffect\",
-					\"canDecline\":true,
-					\"jumpTo\":0
+					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
+					"canDecline":true,
+					"jumpTo":0
 				}",
 				"{
-					\"subeffType\":\"DrawXSubeffect\",
-					\"xMultiplier\":1
+					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xMultiplier":1
 				}"
 			]	
 		}

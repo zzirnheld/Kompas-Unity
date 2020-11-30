@@ -7,22 +7,22 @@
 			"triggerCondition":"Arrive",
 			"triggerJson":
 			"{
-				\"blurb\":\"BEGONE! SWAT!\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Coords Fit Restriction\"],
-					\"spaceRestriction\":
+				"blurb":"BEGONE! SWAT!",
+				"triggerRestriction":{
+					"triggerRestrictions":["Coords Fit Restriction"],
+					"spaceRestriction":
 					{
-						\"spaceRestrictions\":[\"Adjacent to Source\"]
+						"spaceRestrictions":["Adjacent to Source"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"eChange\":-1
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"eChange":-1
 				}"
 			]	
 		}

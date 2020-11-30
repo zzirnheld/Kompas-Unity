@@ -7,28 +7,28 @@
 			"triggerCondition":"Augment Attached",
 			"triggerJson":
 			"{
-				\"blurb\":\"Activate Golem\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"blurb":"Activate Golem",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetAugmentedCardSubeffect\"
+					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"TemporaryActivationSubeffect\",
-					\"endCondition\":\"Augment Detached\",
-					\"triggerRestriction\":{
-						\"triggerRestrictions\":[\"This Card Triggered\"]
+					"$type":"KompasServer.Effects.TemporaryActivationSubeffect, Assembly-CSharp",
+					"endCondition":"Augment Detached",
+					"triggerRestriction":{
+						"triggerRestrictions":["This Card Triggered"]
 					}
 				}",
 				"{
-					\"subeffType\":\"TemporaryNESWBuffSubeffect\",
-					\"nBuff\":1,
-					\"endCondition\":\"Augment Detached\",
-					\"triggerRestriction\":{
-						\"triggerRestrictions\":[\"This Card Triggered\"]
+					"$type":"KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
+					"nBuff":1,
+					"endCondition":"Augment Detached",
+					"triggerRestriction":{
+						"triggerRestrictions":["This Card Triggered"]
 					}
 				}"
 			]
@@ -37,17 +37,17 @@
 			"triggerCondition":"Discard",
 			"triggerJson":
 			"{
-				\"blurb\":\"Core Recovery\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Augmented Card Triggered\"]
+				"blurb":"Core Recovery",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Augmented Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"RehandSubeffect\"
+					"$type":"KompasServer.Effects.RehandSubeffect"
 				}"
 			]
 		}

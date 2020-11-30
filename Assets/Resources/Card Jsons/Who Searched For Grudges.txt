@@ -13,39 +13,39 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"to move Who Searched for Grudges to\",
-						\"spaceRestrictions\":[\"Connected to Source by Cards Fitting Restriction\"],
-						\"connectednessRestriction\":{
-							\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
-							\"subtypesInclude\":[\"Ethereal\"]
+						"blurb":"to move Who Searched for Grudges to",
+						"spaceRestrictions":["Connected to Source by Cards Fitting Restriction"],
+						"connectednessRestriction":{
+							"cardRestrictions":["Subtypes Include","Is Character","Board"],
+							"subtypesInclude":["Ethereal"]
 						}
 					}
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"SpendMovementSubeffect\",
-					\"xModifier\":1
+					"$type":"KompasServer.Effects.SpendMovementSubeffect, Assembly-CSharp",
+					"xModifier":1
 				}",
 				"{
-					\"subeffType\":\"SetXByGamestateSubeffect\",
-					\"whatToCount\":\"Distance to Coords Through\",
-					\"throughRestriction\":{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
-						\"subtypesInclude\":[\"Ethereal\"]
+					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount":"Distance to Coords Through",
+					"throughRestriction":{
+						"cardRestrictions":["Subtypes Include","Is Character","Board"],
+						"subtypesInclude":["Ethereal"]
 					},
-					\"xMultiplier\":1
+					"xMultiplier":1
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"eMult\":-1
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"eMult":-1
 				}",
 				"{
-					\"subeffType\":\"MoveSubeffect\"
+					"$type":"KompasServer.Effects.MoveSubeffect"
 				}"
 			]
 		},
@@ -53,47 +53,47 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
-					\"jumpTo\":6
+					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"jumpTo":6
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":{
-						\"blurb\":\"for Who Searched For Grudges to discard (1/2)\",
-						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"blurb":"for Who Searched For Grudges to discard (1/2)",
+						"cardRestrictions":["Friendly","Hand"]
 					}
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":{
-						\"blurb\":\"for Who Searched For Grudges to discard (2/2)\",
-						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Not Already Target\"]
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"blurb":"for Who Searched For Grudges to discard (2/2)",
+						"cardRestrictions":["Friendly","Hand","Not Already Target"]
 					}
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					"$type":"KompasServer.Effects.DiscardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\",
-					\"targetIndex\":-2
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp",
+					"targetIndex":-2
 				}",
 				"{
-					\"subeffType\":\"EndResolutionSubeffect\"
+					"$type":"KompasServer.Effects.EndResolutionSubeffect"
 				}",
 				"{
-					\"subeffType\":\"ClearOnImpossibleSubeffect\"
+					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect"
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					"$type":"KompasServer.Effects.DiscardSubeffect"
 				}"
 			]	
 		}

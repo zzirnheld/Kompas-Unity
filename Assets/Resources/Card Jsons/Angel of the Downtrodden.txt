@@ -13,35 +13,35 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"SetXBoardRestrictionSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Board\",\"Adjacent\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Supplicant\"]
+						"cardRestrictions":["Board","Adjacent","Subtypes Include"],
+						"subtypesInclude":["Supplicant"]
 					},
-					\"xMultiplier\":1
+					"xMultiplier":1
 				}",
 				"{
-					\"subeffType\":\"ChooseFromListSubeffect\",
-					\"maxCanChoose\":1,
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose":1,
+					"cardRestriction":
 					{
-						\"blurb\":\"Supplicants' Plea\",
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Is Spell\",\"Cost<=X\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Plea\"]
+						"blurb":"Supplicants' Plea",
+						"cardRestrictions":["Friendly","Deck","Is Spell","Cost<=X","Subtypes Include"],
+						"subtypesInclude":["Plea"]
 					},
-					\"xMultiplier\":1
+					"xMultiplier":1
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where to play Supplicants' Plea\",
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+						"blurb":"where to play Supplicants' Plea",
+						"spaceRestrictions":["Can Play Target to This Space"]
 					}
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					"$type":"KompasServer.Effects.PlaySubeffect"
 				}"
 			]
 		}

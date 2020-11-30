@@ -7,22 +7,22 @@
 			"triggerCondition":"Turn Start",
 			"triggerJson":
 			"{
-				\"blurb\":\"Territorial\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\"]
+				"blurb":"Territorial",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"adjacent character for Caligo to kill\",
-						\"cardRestrictions\":[\"Is Character\",\"Friendly\",\"Board\",\"Adjacent\"]
+						"blurb":"adjacent character for Caligo to kill",
+						"cardRestrictions":["Is Character","Friendly","Board","Adjacent"]
 					}
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					"$type":"KompasServer.Effects.DiscardSubeffect"
 				}"
 			]	
 		},
@@ -34,40 +34,40 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"enemy character for Caligo to attack\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Adjacent\"]
+						"blurb":"enemy character for Caligo to attack",
+						"cardRestrictions":["Is Character","Board","Adjacent"]
 					}
 				}",
 				"{
-					\"subeffType\":\"SetXByTargetValueSubeffect\",
-					\"whatToCount\":\"Distance to Target\",
-					\"xMultiplier\":1
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"Distance to Target",
+					"xMultiplier":1
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"eMult\":-1
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"eMult":-1
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"to move Caligo to\",
-						\"spaceRestrictions\":[\"Adjacent to Target\"]
+						"blurb":"to move Caligo to",
+						"spaceRestrictions":["Adjacent to Target"]
 					}
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"MoveSubeffect\"
+					"$type":"KompasServer.Effects.MoveSubeffect"
 				}",
 				"{
-					\"subeffType\":\"AttackSubeffect\",
-					\"attackerIndex\":-1,
-					\"targetIndex\":-2
+					"$type":"KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"attackerIndex":-1,
+					"targetIndex":-2
 				}"
 			]	
 		}

@@ -7,18 +7,18 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"SetAllNESWSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.SetAllNESWSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Adjacent\"]
+						"cardRestrictions":["Is Character","Board","Adjacent"]
 					},
-					\"nVal\":0
+					"nVal":0
 				}"
 			]	
 		}

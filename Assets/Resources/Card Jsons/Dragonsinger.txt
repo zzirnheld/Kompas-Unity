@@ -8,47 +8,47 @@
 			"triggerCondition":"Turn Start",
 			"triggerJson":
 			"{
-				\"blurb\":\"Hand-reshuffle X Dragons to give Dragonsinger +X S and draw X?\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\"]
+				"blurb":"Hand-reshuffle X Dragons to give Dragonsinger +X S and draw X?",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"SetXSubeffect\"
+					"$type":"KompasServer.Effects.SetXSubeffect"
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"for Dragonseeker to reshuffle\",
-						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Is Character\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Dragon\"]
+						"blurb":"for Dragonseeker to reshuffle",
+						"cardRestrictions":["Friendly","Hand","Is Character","Subtypes Include"],
+						"subtypesInclude":["Dragon"]
 					}
 				}",
 				"{
-					\"subeffType\":\"SetXSubeffect\",
-					\"change\":true,
-					\"xModifier\":1
+					"$type":"KompasServer.Effects.SetXSubeffect, Assembly-CSharp",
+					"change":true,
+					"xModifier":1
 				}",
 				"{
-					\"subeffType\":\"ReshuffleSubeffect\"
+					"$type":"KompasServer.Effects.ReshuffleSubeffect"
 				}",
 				"{
-					\"subeffType\":\"LoopSubeffect\",
-					\"canDecline\":true,
-					\"jumpTo\":1
+					"$type":"KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
+					"canDecline":true,
+					"jumpTo":1
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"sMult\":1
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"sMult":1
 				}",
 				"{
-					\"subeffType\":\"DrawXSubeffect\",
-					\"xMultiplier\":1
+					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xMultiplier":1
 				}"
 			]
 		}

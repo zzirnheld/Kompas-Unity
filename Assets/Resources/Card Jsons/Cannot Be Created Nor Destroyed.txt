@@ -7,54 +7,54 @@
 			"triggerCondition":"Turn Start",
 			"triggerJson":
 			"{
-				\"blurb\":\"Repurpose Starstuff\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\"]
+				"blurb":"Repurpose Starstuff",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetAllSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Discard\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Pulsar\"]
+						"cardRestrictions":["Friendly","Discard","Subtypes Include"],
+						"subtypesInclude":["Pulsar"]
 					}
 				}",
 				"{
-					\"subeffType\":\"ReshuffleSubeffect\"
+					"$type":"KompasServer.Effects.ReshuffleSubeffect"
 				}",
 				"{
-					\"subeffType\":\"DeleteTargetSubeffect\"
+					"$type":"KompasServer.Effects.DeleteTargetSubeffect"
 				}",
 				"{
-					\"subeffType\":\"CountXLoopSubeffect\",
-					\"canDecline\":false,
-					\"jumpTo\":1
+					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
+					"canDecline":false,
+					"jumpTo":1
 				}",
 				"{
-					\"subeffType\":\"TargetAvatarSubeffect\"
+					"$type":"KompasServer.Effects.TargetAvatarSubeffect"
 				}",
 				"{
-					\"subeffType\":\"ChooseOptionSubeffect\",
-					\"ChoiceBlurb\":\"Give +X S or -X S?\",
-					\"OptionBlurbs\":[\"+X S\",\"-X S\"],
-					\"OptionJumpIndices\":[6,8]
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"ChoiceBlurb":"Give +X S or -X S?",
+					"OptionBlurbs":["+X S","-X S"],
+					"OptionJumpIndices":[6,8]
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"sMult\":1
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"sMult":1
 				}",
 				"{
-					\"subeffType\":\"JumpSubeffect\",
-					\"indexToJumpTo\":9
+					"$type":"KompasServer.Effects.JumpSubeffect, Assembly-CSharp",
+					"indexToJumpTo":9
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"sMult\":-1
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"sMult":-1
 				}",
 				"{
-					\"subeffType\":\"DrawSubeffect\"
+					"$type":"KompasServer.Effects.DrawSubeffect"
 				}"
 			]	
 		}

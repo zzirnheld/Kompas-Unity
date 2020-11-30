@@ -7,20 +7,20 @@
 			"triggerCondition":"Turn Start",
 			"triggerJson":
 			"{
-				\"blurb\":\"Grant Refuge\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\"]
+				"blurb":"Grant Refuge",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"ChangeAllNESWSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.ChangeAllNESWSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"In AOE\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Supplicant\"]
+						"cardRestrictions":["Is Character","Board","In AOE","Subtypes Include"],
+						"subtypesInclude":["Supplicant"]
 					},
-					\"eMod\":1
+					"eMod":1
 				}"
 			]	
 		},
@@ -32,14 +32,14 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"AnnihilateSubeffect\"
+					"$type":"KompasServer.Effects.AnnihilateSubeffect"
 				}",
 				"{
-					\"subeffType\":\"AddPipsSubeffect\",
-					\"xModifier\":3
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier":3
 				}"
 			]
 		}

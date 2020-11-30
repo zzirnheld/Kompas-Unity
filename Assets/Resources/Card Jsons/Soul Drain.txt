@@ -7,26 +7,26 @@
 			"triggerCondition":"Annihilate",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\"],
-						\"subtypesInclude\":[\"Revenant\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Subtypes Include","Is Character"],
+						"subtypesInclude":["Revenant"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"SetXByTargetValueSubeffect\",
-					\"whatToCount\":\"S\",
-					\"xMultiplier\":1
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"S",
+					"xMultiplier":1
 				}",
 				"{
-					\"subeffType\":\"MillSubeffect\",
-					\"xMultiplier\":1
+					"$type":"KompasServer.Effects.MillSubeffect, Assembly-CSharp",
+					"xMultiplier":1
 				}"
 			]	
 		}

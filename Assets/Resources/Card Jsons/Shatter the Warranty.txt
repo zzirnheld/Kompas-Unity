@@ -7,30 +7,30 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"blurb\":\"Hi-yah!\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"blurb":"Hi-yah!",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"No! Not the original 1870s porcelain doll torso collection!\",
-						\"cardRestrictions\":[\"Friendly\",\"Board\",\"Is Spell\",\"Distinct from Source\"]
+						"blurb":"No! Not the original 1870s porcelain doll torso collection!",
+						"cardRestrictions":["Friendly","Board","Is Spell","Distinct from Source"]
 					}
 				}",
 				"{
-					\"subeffType\":\"SetXByTargetCostSubeffect\",
-					\"xMultiplier\":1
+					"$type":"KompasServer.Effects.SetXByTargetCostSubeffect, Assembly-CSharp",
+					"xMultiplier":1
 				}",
 				"{
-					\"subeffType\":\"DispelSubeffect\"
+					"$type":"KompasServer.Effects.DispelSubeffect"
 				}",
 				"{
-					\"subeffType\":\"DrawXSubeffect\",
-					\"xMultiplier\":1
+					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xMultiplier":1
 				}"
 			]	
 		}

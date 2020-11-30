@@ -7,23 +7,23 @@
 			"triggerCondition":"Discard",
 			"triggerJson":
 			"{
-				\"blurb\":\"Strengthen Builder\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Triggerer Fits Restriction\",\"From Field\"],
-					\"cardRestriction\":
+				"blurb":"Strengthen Builder",
+				"triggerRestriction":{
+					"triggerRestrictions":["Triggerer Fits Restriction","From Field"],
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Board\",\"Friendly\"],
-						\"subtypesInclude\":[\"Cultist\"]
+						"cardRestrictions":["Subtypes Include","Board","Friendly"],
+						"subtypesInclude":["Cultist"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"sMod\":1
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"sMod":1
 				}"
 			]
 		},
@@ -36,32 +36,32 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"PayStatsSubeffect\",
-					\"sMod\":9
+					"$type":"KompasServer.Effects.PayStatsSubeffect, Assembly-CSharp",
+					"sMod":9
 				}",
 				"{
-					\"subeffType\":\"ChooseFromListSubeffect\",
-					\"maxCanChoose\":1,
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose":1,
+					"cardRestriction":
 					{
-						\"blurb\":\"Altar for Altar Builder to play\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Is Spell\"],
-						\"subtypesInclude\":[\"Altar\",\"Radial\"]
+						"blurb":"Altar for Altar Builder to play",
+						"cardRestrictions":["Subtypes Include","Friendly","Deck","Is Spell"],
+						"subtypesInclude":["Altar","Radial"]
 					}
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where for Altar Builder to cast its target Altar\",
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+						"blurb":"where for Altar Builder to cast its target Altar",
+						"spaceRestrictions":["Can Play Target to This Space"]
 					}
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					"$type":"KompasServer.Effects.PlaySubeffect"
 				}"
 			]
 		}

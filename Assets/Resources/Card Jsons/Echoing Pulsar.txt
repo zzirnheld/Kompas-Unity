@@ -7,25 +7,25 @@
 			"triggerCondition":"S Change",
 			"triggerJson":
 			"{
-				\"blurb\":\"Echo Up\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\",\"Triggerer Fits Restriction\",\"Max Per Turn\"],
-					\"xRestriction\":{
-						\"xRestrictions\":[\">0\"]
+				"blurb":"Echo Up",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction","Max Per Turn"],
+					"xRestriction":{
+						"xRestrictions":[">0"]
 					},
-					\"cardRestriction\":
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Board\",\"Avatar\",\"Friendly\"]
+						"cardRestrictions":["Board","Avatar","Friendly"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"sMod\":1
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"sMod":1
 				}"
 			]
 		},
@@ -33,25 +33,25 @@
 			"triggerCondition":"S Change",
 			"triggerJson":
 			"{
-				\"blurb\":\"Echo Down\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\",\"Triggerer Fits Restriction\",\"Max Per Turn\"],
-					\"xRestriction\":{
-						\"xRestrictions\":[\"<0\"]
+				"blurb":"Echo Down",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction","Max Per Turn"],
+					"xRestriction":{
+						"xRestrictions":["<0"]
 					},
-					\"cardRestriction\":
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Board\",\"Avatar\",\"Friendly\"]
+						"cardRestrictions":["Board","Avatar","Friendly"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"sMod\":-1
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"sMod":-1
 				}"
 			]
 		}

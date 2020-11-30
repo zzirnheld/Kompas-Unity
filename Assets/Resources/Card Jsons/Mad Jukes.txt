@@ -7,44 +7,44 @@
 			"triggerCondition":"Move",
 			"triggerJson":
 			"{
-				\"blurb\":\"Mad Jukes My Dude!\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
-					\"cardRestriction\":
+				"blurb":"Mad Jukes My Dude!",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Friendly\",\"Augmented\"]
+						"cardRestrictions":["Is Character","Friendly","Augmented"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"SetXSubeffect\"
+					"$type":"KompasServer.Effects.SetXSubeffect"
 				}",
 				"{
-					\"subeffType\":\"TargetAugmentsSubeffect\"
+					"$type":"KompasServer.Effects.TargetAugmentsSubeffect"
 				}",
 				"{
-					\"subeffType\":\"SetXByTargetValueSubeffect\",
-					\"whatToCount\":\"Cost\",
-					\"change\":true,
-					\"xMultiplier\":1
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"Cost",
+					"change":true,
+					"xMultiplier":1
 				}",
 				"{
-					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
-					\"delete\":true,
-					\"remainingTargets\":1,
-					\"jumpTo\":3
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"remainingTargets":1,
+					"jumpTo":3
 				}",
 				"{
-					\"subeffType\":\"ChangeAllNESWSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.ChangeAllNESWSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Adjacent to Target\"]
+						"cardRestrictions":["Is Character","Adjacent to Target"]
 					},
-					\"wMult\":-1
+					"wMult":-1
 				}"
 			]
 		},
@@ -52,26 +52,26 @@
 			"triggerCondition":"Turn Start",
 			"triggerJson":
 			"{
-				\"blurb\":\"Sustain the Vuvuzelas\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\"]
+				"blurb":"Sustain the Vuvuzelas",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"ConditionalEndSubeffect\",
-					\"condition\":\"Any Fit Restriction\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition":"Any Fit Restriction",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Board\",\"Is Augment\"],
-						\"subtypesInclude\":[\"Sportsball\"]
+						"cardRestrictions":["Subtypes Include","Friendly","Board","Is Augment"],
+						"subtypesInclude":["Sportsball"]
 					}
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"AnnihilateSubeffect\"
+					"$type":"KompasServer.Effects.AnnihilateSubeffect"
 				}"
 			]
 		}

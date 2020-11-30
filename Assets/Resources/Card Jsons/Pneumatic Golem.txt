@@ -8,22 +8,22 @@
 			"triggerCondition":"Activate",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"character within 2 spaces of Pneumatic Golem for it to rehand\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Within C Spaces\"],
-						\"cSpaces\":2
+						"blurb":"character within 2 spaces of Pneumatic Golem for it to rehand",
+						"cardRestrictions":["Is Character","Board","Within C Spaces"],
+						"cSpaces":2
 					}
 				}",
 				"{
-					\"subeffType\":\"RehandSubeffect\"
+					"$type":"KompasServer.Effects.RehandSubeffect"
 				}"
 			]
 		}

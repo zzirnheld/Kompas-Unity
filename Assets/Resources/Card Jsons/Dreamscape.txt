@@ -7,26 +7,26 @@
 			"triggerCondition":"Move",
 			"triggerJson":
 			"{
-				\"blurb\":\"Dreamscape\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"Max Per Turn\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\"],
-						\"subtypesInclude\":[\"Shaper\"]
+				"blurb":"Dreamscape",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Max Per Turn"],
+					"cardRestriction":{
+						"cardRestrictions":["Subtypes Include","Friendly"],
+						"subtypesInclude":["Shaper"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"ResetStatsSubeffect\",
-					\"resetE\":true
+					"$type":"KompasServer.Effects.ResetStatsSubeffect, Assembly-CSharp",
+					"resetE":true
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"nChange\":1
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"nChange":1
 				}"
 			]	
 		}

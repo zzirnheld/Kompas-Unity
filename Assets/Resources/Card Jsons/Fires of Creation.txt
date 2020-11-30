@@ -7,18 +7,18 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Controller Triggered\",\"Triggerer Fits Restriction\",\"This Card in Play\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Cost>Avatar\"],
-						\"subtypesInclude\":[\"Pulsar\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["Controller Triggered","Triggerer Fits Restriction","This Card in Play"],
+					"cardRestriction":{
+						"cardRestrictions":["Subtypes Include","Cost>Avatar"],
+						"subtypesInclude":["Pulsar"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"AddPipsSubeffect\",
-					\"xModifier\":1
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier":1
 				}"
 			]	
 		},
@@ -26,17 +26,17 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Controller Triggered\",\"Triggerer Fits Restriction\",\"This Card in Play\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Cost<Avatar\"],
-						\"subtypesInclude\":[\"Pulsar\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["Controller Triggered","Triggerer Fits Restriction","This Card in Play"],
+					"cardRestriction":{
+						"cardRestrictions":["Subtypes Include","Cost<Avatar"],
+						"subtypesInclude":["Pulsar"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"DrawSubeffect\"
+					"$type":"KompasServer.Effects.DrawSubeffect"
 				}"
 			]	
 		}

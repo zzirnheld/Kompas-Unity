@@ -7,33 +7,33 @@
 			"triggerCondition":"S Change",
 			"triggerJson":
 			"{
-				\"blurb\":\"Flare\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\",\"Triggerer Fits Restriction\"],
-					\"xRestriction\":{
-						\"xRestrictions\":[\">0\"]
+				"blurb":"Flare",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction"],
+					"xRestriction":{
+						"xRestrictions":[">0"]
 					},
-					\"cardRestriction\":
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Board\",\"Avatar\",\"Friendly\"]
+						"cardRestrictions":["Board","Avatar","Friendly"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Summoned character for Stardusting Pulsar to buff\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Summoned\"]
+						"blurb":"Summoned character for Stardusting Pulsar to buff",
+						"cardRestrictions":["Is Character","Board","Summoned"]
 					}
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"nMod\":1,
-					\"eMod\":1,
-					\"sMod\":1,
-					\"wMod\":1
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"nMod":1,
+					"eMod":1,
+					"sMod":1,
+					"wMod":1
 				}"
 			]
 		},
@@ -41,33 +41,33 @@
 			"triggerCondition":"S Change",
 			"triggerJson":
 			"{
-				\"blurb\":\"Diminish\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\",\"Triggerer Fits Restriction\"],
-					\"xRestriction\":{
-						\"xRestrictions\":[\"<0\"]
+				"blurb":"Diminish",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction"],
+					"xRestriction":{
+						"xRestrictions":["<0"]
 					},
-					\"cardRestriction\":
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Board\",\"Avatar\",\"Friendly\"]
+						"cardRestrictions":["Board","Avatar","Friendly"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Summoned character for Stardusting Pulsar to debuff\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Summoned\"]
+						"blurb":"Summoned character for Stardusting Pulsar to debuff",
+						"cardRestrictions":["Is Character","Board","Summoned"]
 					}
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"nMod\":-1,
-					\"eMod\":-1,
-					\"sMod\":-1,
-					\"wMod\":-1
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"nMod":-1,
+					"eMod":-1,
+					"sMod":-1,
+					"wMod":-1
 				}"
 			]
 		}

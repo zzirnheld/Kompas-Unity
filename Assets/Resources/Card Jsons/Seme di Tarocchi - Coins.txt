@@ -7,17 +7,17 @@
 			"triggerCondition":"Draw",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Controller Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetAugmentedCardSubeffect\"
+					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"nChange\":1
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"nChange":1
 				}"
 			]
 		}

@@ -7,22 +7,22 @@
 			"triggerCondition":"Turn Start",
 			"triggerJson":
 			"{
-				\"blurb\":\"Territorial\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\"]
+				"blurb":"Territorial",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"adjacent character for Aquarian to kill\",
-						\"cardRestrictions\":[\"Is Character\",\"Friendly\",\"Board\"]
+						"blurb":"adjacent character for Aquarian to kill",
+						"cardRestrictions":["Is Character","Friendly","Board"]
 					}
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					"$type":"KompasServer.Effects.DiscardSubeffect"
 				}"
 			]	
 		},
@@ -30,32 +30,32 @@
 			"triggerCondition":"Attack",
 			"triggerJson":
 			"{
-				\"blurb\":\"Give the attacking Aquarian -1E to give another Dragon +2E?\",
-				\"optional\":true,
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"blurb":"Give the attacking Aquarian -1E to give another Dragon +2E?",
+				"optional":true,
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"eChange\":-1
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"eChange":-1
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"another Dragon for Aquarian to heal\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Distinct from Source\",\"Board\"],
-						\"subtypesInclude\":[\"Dragon\"]
+						"blurb":"another Dragon for Aquarian to heal",
+						"cardRestrictions":["Subtypes Include","Is Character","Friendly","Distinct from Source","Board"],
+						"subtypesInclude":["Dragon"]
 					}
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"eChange\":2
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"eChange":2
 				}"
 			]	
 		}

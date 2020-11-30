@@ -10,42 +10,42 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"for Dragoncaller to kill\",
-						\"cardRestrictions\":[\"Friendly\",\"Board\",\"Is Character\",\"Distinct from Source\"]
+						"blurb":"for Dragoncaller to kill",
+						"cardRestrictions":["Friendly","Board","Is Character","Distinct from Source"]
 					}
 				}",
 				"{
-					\"subeffType\":\"SetXByTargetValueSubeffect\",
-					\"whatToCount\":\"S\",
-					\"xMultiplier\":1
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"S",
+					"xMultiplier":1
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					"$type":"KompasServer.Effects.DiscardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"ChooseOptionSubeffect\",
-					\"ChoiceBlurb\":\"Give +X ES or SW?\",
-					\"OptionBlurbs\":[\"+X ES\",\"+X SW\"],
-					\"OptionJumpIndices\":[5,7]
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"ChoiceBlurb":"Give +X ES or SW?",
+					"OptionBlurbs":["+X ES","+X SW"],
+					"OptionJumpIndices":[5,7]
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"eMult\":1,
-					\"sMult\":1
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"eMult":1,
+					"sMult":1
 				}",
 				"{
-					\"subeffType\":\"EndResolutionSubeffect\"
+					"$type":"KompasServer.Effects.EndResolutionSubeffect"
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"sMult\":1,
-					\"wMult\":1
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"sMult":1,
+					"wMult":1
 				}"
 			]
 		}

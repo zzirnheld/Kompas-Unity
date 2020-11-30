@@ -7,37 +7,37 @@
 			"triggerCondition":"Draw",
 			"triggerJson":
 			"{
-				\"blurb\":\"Tribute me to deck-summon Tarocco with S <= X?\",
-				\"optional\":true,
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\"]
+				"blurb":"Tribute me to deck-summon Tarocco with S <= X?",
+				"optional":true,
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Controller Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSpaceSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSpaceSubeffect"
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\",
-					\"targetIndex\":-1
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp",
+					"targetIndex":-1
 				}",
 				"{
-					\"subeffType\":\"DeckTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Tarocco for Lovers to become\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Deck\",\"S<=X\"],
-						\"subtypesInclude\":[\"Tarocco\"]
+						"blurb":"Tarocco for Lovers to become",
+						"cardRestrictions":["Subtypes Include","Is Character","Deck","S<=X"],
+						"subtypesInclude":["Tarocco"]
 					},
-					\"xMultiplier\":1
+					"xMultiplier":1
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\",
-					\"targetIndex\":-1,
-					\"SpaceIndex\":-1
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp",
+					"targetIndex":-1,
+					"SpaceIndex":-1
 				}"
 			]	
 		}

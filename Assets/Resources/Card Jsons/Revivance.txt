@@ -7,29 +7,29 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Revenant\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Subtypes Include"],
+						"subtypesInclude":["Revenant"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where to move the revived Revenant\",
-						\"spaceRestrictions\":[\"Distance to Target == Constant\"],
-						\"constant\":1
+						"blurb":"where to move the revived Revenant",
+						"spaceRestrictions":["Distance to Target == Constant"],
+						"constant":1
 					}
 				}",
 				"{
-					\"subeffType\":\"MoveSubeffect\"
+					"$type":"KompasServer.Effects.MoveSubeffect"
 				}"
 			]	
 		}

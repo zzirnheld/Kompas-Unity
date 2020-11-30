@@ -7,26 +7,26 @@
 			"triggerCondition":"Discard",
 			"triggerJson":
 			"{
-				\"blurb\":\"Dragonfeed\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"Stackable Source Fits Restriction\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Is Character\"]
+				"blurb":"Dragonfeed",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Stackable Source Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Is Character"]
 					},
-					\"sourceRestriction\":{
-						\"cardRestrictions\":[\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Dragon\"]
+					"sourceRestriction":{
+						"cardRestrictions":["Subtypes Include"],
+						"subtypesInclude":["Dragon"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"eChange\":1,
-					\"wChange\":1
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"eChange":1,
+					"wChange":1
 				}"
 			]	
 		}

@@ -6,39 +6,39 @@
 		{
 			"triggerCondition":"Discard",
 			"triggerJson":"{
-				\"blurb\":\"Ificate\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\",\"Triggerer Fits Restriction\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Hand\"]
+				"blurb":"Ificate",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Hand"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Crazy Idea for A Frayed Knot to Ificate\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Friendly\",\"Distinct from Source\"],
-						\"subtypesInclude\":[\"Crazy Idea\"]
+						"blurb":"Crazy Idea for A Frayed Knot to Ificate",
+						"cardRestrictions":["Subtypes Include","Discard","Friendly","Distinct from Source"],
+						"subtypesInclude":["Crazy Idea"]
 					}
 				}",
 				"{
-					\"subeffType\":\"PayPipsSubeffect\",
-					\"xMultiplier\":0,
-					\"xModifier\":1
+					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
+					"xMultiplier":0,
+					"xModifier":1
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where A Frayed Knot to play targeted Crazy Idea\",
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+						"blurb":"where A Frayed Knot to play targeted Crazy Idea",
+						"spaceRestrictions":["Can Play Target to This Space"]
 					}
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					"$type":"KompasServer.Effects.PlaySubeffect"
 				}"
 			]
 		},
@@ -46,23 +46,23 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"blurb\":\"A Frayed Knot\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"blurb":"A Frayed Knot",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"card for A Frayed Knot to discard\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Hand\"],
-						\"subtypesInclude\":[\"Crazy Idea\"]
+						"blurb":"card for A Frayed Knot to discard",
+						"cardRestrictions":["Subtypes Include","Friendly","Hand"],
+						"subtypesInclude":["Crazy Idea"]
 					}
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					"$type":"KompasServer.Effects.DiscardSubeffect"
 				}"
 			]
 		}

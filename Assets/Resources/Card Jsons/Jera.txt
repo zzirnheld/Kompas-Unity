@@ -7,21 +7,21 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"ConditionalEndSubeffect\",
-					\"condition\":\"Must be Friendly Turn\"
+					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition":"Must be Friendly Turn"
 				}",
 				"{
-					\"subeffType\":\"AddPipsSubeffect\",
-					\"xModifier\":3
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier":3
 				}",
 				"{
-					\"subeffType\":\"EndTurnSubeffect\"
+					"$type":"KompasServer.Effects.EndTurnSubeffect"
 				}"
 			]	
 		}

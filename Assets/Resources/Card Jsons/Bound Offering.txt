@@ -7,31 +7,31 @@
 			"triggerCondition":"Discard",
 			"triggerJson":
 			"{
-				\"blurb\":\"Annihilate\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\",\"From Field\"]
+				"blurb":"Annihilate",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","From Field"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"AnnihilateSubeffect\"
+					"$type":"KompasServer.Effects.AnnihilateSubeffect"
 				}",
 				"{
-					\"subeffType\":\"AddPipsSubeffect\",
-					\"xModifier\":1
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier":1
 				}",
 				"{
-					\"subeffType\":\"AutoTargetSubeffect\",
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Avatar\",\"Enemy\"]
+					"$type":"KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"cardRestrictions":["Avatar","Enemy"]
 					}
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"eMod\":1
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"eMod":1
 				}"
 			]
 		}

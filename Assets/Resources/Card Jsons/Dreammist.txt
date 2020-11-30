@@ -7,20 +7,20 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\",\"Coords Fit Restriction\"],
-					\"spaceRestriction\":{
-						\"spaceRestrictions\":[\"Adjacent to a Card that Fits Restriction\"],
-						\"adjacencyRestriction\":{
-							\"cardRestrictions\":[\"Subtypes Include\"],
-							\"subtypesInclude\":[\"Ethereal\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","Coords Fit Restriction"],
+					"spaceRestriction":{
+						"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
+						"adjacencyRestriction":{
+							"cardRestrictions":["Subtypes Include"],
+							"subtypesInclude":["Ethereal"]
 						}
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"DrawSubeffect\"
+					"$type":"KompasServer.Effects.DrawSubeffect"
 				}"
 			]	
 		}

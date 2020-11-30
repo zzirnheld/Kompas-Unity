@@ -13,26 +13,26 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"SetXBoardRestrictionSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"spell for Dispeller by Sword to DispelSubeffect\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
-						\"subtypesInclude\":[\"Warrior\"]
+						"blurb":"spell for Dispeller by Sword to DispelSubeffect, Assembly-CSharp",
+						"cardRestrictions":["Subtypes Include","Is Character","Board","Adjacent"],
+						"subtypesInclude":["Warrior"]
 					},
-					\"xMultiplier\":1
+					"xMultiplier":1
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Spell\",\"Cost<=X\"]
+						"cardRestrictions":["Is Spell","Cost<=X"]
 					},
-					\"xMultiplier\":1
+					"xMultiplier":1
 				}",
 				"{
-					\"subeffType\":\"DispelSubeffect\",
-					\"targetIndex\":-1
+					"$type":"KompasServer.Effects.DispelSubeffect, Assembly-CSharp",
+					"targetIndex":-1
 				}"
 			]
 		}

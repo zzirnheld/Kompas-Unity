@@ -7,14 +7,14 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"DrawXSubeffect\",
-					\"xModifier\":2
+					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xModifier":2
 				}"
 			]	
 		}

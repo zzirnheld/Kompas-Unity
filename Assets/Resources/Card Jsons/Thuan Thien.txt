@@ -7,22 +7,22 @@
 			"triggerCondition":"Battle Start",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Augmented Card Triggered\",\"Max Per Round\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["Augmented Card Triggered","Max Per Round"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetAugmentedCardSubeffect\"
+					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"SetXByTargetValueSubeffect\",
-					\"whatToCount\":\"W\",
-					\"xMultiplier\":1
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"W",
+					"xMultiplier":1
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"wMult\":1
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"wMult":1
 				}"
 			]
 		}

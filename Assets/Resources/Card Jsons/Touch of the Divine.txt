@@ -7,30 +7,30 @@
 			"triggerCondition":"Augment Attached",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetAugmentedCardSubeffect\"
+					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"TemporaryNegateSubeffect\",
-					\"endCondition\":\"Augment Detached\",
-					\"triggerRestriction\":{
-						\"triggerRestrictions\":[\"This Card Triggered\"]
+					"$type":"KompasServer.Effects.TemporaryNegateSubeffect, Assembly-CSharp",
+					"endCondition":"Augment Detached",
+					"triggerRestriction":{
+						"triggerRestrictions":["This Card Triggered"]
 					}
 				}",
 				"{
-					\"subeffType\":\"TemporaryNESWBuffSubeffect\",
-					\"nBuff\":2,
-					\"eBuff\":2,
-					\"sBuff\":2,
-					\"wBuff\":2,
-					\"endCondition\":\"Augment Detached\",
-					\"triggerRestriction\":{
-						\"triggerRestrictions\":[\"This Card Triggered\"]
+					"$type":"KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
+					"nBuff":2,
+					"eBuff":2,
+					"sBuff":2,
+					"wBuff":2,
+					"endCondition":"Augment Detached",
+					"triggerRestriction":{
+						"triggerRestrictions":["This Card Triggered"]
 					}
 				}"
 			]
@@ -39,21 +39,21 @@
 			"triggerCondition":"Discard",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Augmented Card Triggered\",\"Triggerer Fits Restriction\"],
-					\"cardRestriction\":
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Augmented Card Triggered","Triggerer Fits Restriction"],
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Supplicant\"]
+						"cardRestrictions":["Subtypes Include"],
+						"subtypesInclude":["Supplicant"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"RehandSubeffect\"
+					"$type":"KompasServer.Effects.RehandSubeffect"
 				}"
 			]
 		}

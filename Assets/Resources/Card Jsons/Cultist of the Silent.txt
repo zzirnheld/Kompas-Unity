@@ -7,17 +7,17 @@
 			"triggerCondition":"Discard",
 			"triggerJson":
 			"{
-				\"blurb\":\"Reshuffle\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\",\"From Field\"]
+				"blurb":"Reshuffle",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","From Field"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"ReshuffleSubeffect\"
+					"$type":"KompasServer.Effects.ReshuffleSubeffect"
 				}"
 			]
 		}

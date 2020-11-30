@@ -7,24 +7,24 @@
 			"triggerCondition":"Activate",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"character for Tallow Golem to temporarily activate\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\"]
+						"blurb":"character for Tallow Golem to temporarily activate",
+						"cardRestrictions":["Is Character","Board"]
 					}
 				}",
 				"{
-					\"subeffType\":\"TemporaryActivationSubeffect\",
-					\"endCondition\":\"Turn Start\",
-					\"triggerRestriction\":{
-						\"triggerRestrictions\":[\"Friendly Turn\"]
+					"$type":"KompasServer.Effects.TemporaryActivationSubeffect, Assembly-CSharp",
+					"endCondition":"Turn Start",
+					"triggerRestriction":{
+						"triggerRestrictions":["Friendly Turn"]
 					}
 				}"
 			]

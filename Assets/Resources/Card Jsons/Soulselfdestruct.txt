@@ -7,36 +7,36 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":{
-						\"blurb\":\"Ethereal for Soulselfdestruct to kill\",
-						\"cardRestrictions\":[\"Friendly\",\"Board\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Ethereal\"]
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"blurb":"Ethereal for Soulselfdestruct to kill",
+						"cardRestrictions":["Friendly","Board","Subtypes Include"],
+						"subtypesInclude":["Ethereal"]
 					}
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					"$type":"KompasServer.Effects.DiscardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"DeckTargetSubeffect\",
-					\"cardRestriction\":{
-						\"blurb\":\"card for Salvage Soul to discard\",
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Revenant\"]
+					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"blurb":"card for Salvage Soul to discard",
+						"cardRestrictions":["Friendly","Deck","Subtypes Include"],
+						"subtypesInclude":["Revenant"]
 					}
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					"$type":"KompasServer.Effects.DiscardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"XTimesSubeffect\",
-					\"jumpTo\":3
+					"$type":"KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",
+					"jumpTo":3
 				}"
 			]	
 		}

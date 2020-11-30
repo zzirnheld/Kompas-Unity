@@ -7,21 +7,21 @@
 			"triggerCondition":"Augment Attached",
 			"triggerJson":
 			"{
-				\"blurb\":\"Teamwork! Draw!\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Coords Fit Restriction\"],
-					\"spaceRestriction\":
+				"blurb":"Teamwork! Draw!",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Coords Fit Restriction"],
+					"spaceRestriction":
 					{
-						\"spaceRestrictions\":[\"Card Here Fits Restriction\"],
-						\"hereFitsRestriction\":{
-							\"cardRestrictions\":[\"Friendly\"]
+						"spaceRestrictions":["Card Here Fits Restriction"],
+						"hereFitsRestriction":{
+							"cardRestrictions":["Friendly"]
 						}
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"DrawSubeffect\"
+					"$type":"KompasServer.Effects.DrawSubeffect"
 				}"
 			]
 		}

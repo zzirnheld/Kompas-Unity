@@ -7,17 +7,17 @@
 			"triggerCondition":"Discard",
 			"triggerJson":
 			"{
-				\"blurb\":\"Sportyball Recovery\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Augmented Card Triggered\"]
+				"blurb":"Sportyball Recovery",
+				"triggerRestriction":{
+					"triggerRestrictions":["Augmented Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"RehandSubeffect\"
+					"$type":"KompasServer.Effects.RehandSubeffect"
 				}"
 			]
 		},
@@ -30,26 +30,26 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"SetXByGamestateSubeffect\",
-					\"whatToCount\":\"Effect Uses This Turn\",
-					\"xMultiplier\":1
+					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount":"Effect Uses This Turn",
+					"xMultiplier":1
 				}",
 				"{
-					\"subeffType\":\"PayPipsSubeffect\",
-					\"xMultiplier\":1,
-					\"xModifier\":0
+					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
+					"xMultiplier":1,
+					"xModifier":0
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Board\",\"Is Character\",\"Adjacent\"]
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"cardRestrictions":["Board","Is Character","Adjacent"]
 					}
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"AttachSubeffect\"
+					"$type":"KompasServer.Effects.AttachSubeffect"
 				}"
 			]
 		}

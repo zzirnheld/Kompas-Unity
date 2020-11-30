@@ -7,28 +7,28 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"card for Raido to move\",
-						\"cardRestrictions\":[\"Board\"]
+						"blurb":"card for Raido to move",
+						"cardRestrictions":["Board"]
 					}
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":{
-						\"blurb\":\"where for Raido to move it starget\",
-						\"spaceRestrictions\":[\"Empty\",\"Can Move Target to This Space\"]
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":{
+						"blurb":"where for Raido to move it starget",
+						"spaceRestrictions":["Empty","Can Move Target to This Space"]
 					}
 				}",
 				"{
-					\"subeffType\":\"MoveSubeffect\"
+					"$type":"KompasServer.Effects.MoveSubeffect"
 				}"
 			]	
 		}

@@ -13,39 +13,39 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"to move Whose Anger Draws Fear to\",
-						\"spaceRestrictions\":[\"Connected to Source by Cards Fitting Restriction\"],
-						\"connectednessRestriction\":{
-							\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
-							\"subtypesInclude\":[\"Ethereal\"]
+						"blurb":"to move Whose Anger Draws Fear to",
+						"spaceRestrictions":["Connected to Source by Cards Fitting Restriction"],
+						"connectednessRestriction":{
+							"cardRestrictions":["Subtypes Include","Is Character","Board"],
+							"subtypesInclude":["Ethereal"]
 						}
 					}
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"SpendMovementSubeffect\",
-					\"xModifier\":1
+					"$type":"KompasServer.Effects.SpendMovementSubeffect, Assembly-CSharp",
+					"xModifier":1
 				}",
 				"{
-					\"subeffType\":\"SetXByGamestateSubeffect\",
-					\"whatToCount\":\"Distance to Coords Through\",
-					\"throughRestriction\":{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
-						\"subtypesInclude\":[\"Ethereal\"]
+					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount":"Distance to Coords Through",
+					"throughRestriction":{
+						"cardRestrictions":["Subtypes Include","Is Character","Board"],
+						"subtypesInclude":["Ethereal"]
 					},
-					\"xMultiplier\":1
+					"xMultiplier":1
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"eMult\":-1
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"eMult":-1
 				}",
 				"{
-					\"subeffType\":\"MoveSubeffect\"
+					"$type":"KompasServer.Effects.MoveSubeffect"
 				}"
 			]
 		},
@@ -53,38 +53,38 @@
 			"triggerCondition":"Attack",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetDefenderSubeffect\"
+					"$type":"KompasServer.Effects.TargetDefenderSubeffect"
 				}",
 				"{
-					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
-					\"jumpTo\":5
+					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"jumpTo":5
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"to move Whose Anger Draws Fear's attack target to\",
-						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\",\"Further from Source than Target\"],
-						\"constant\":1
+						"blurb":"to move Whose Anger Draws Fear's attack target to",
+						"spaceRestrictions":["Empty","Distance to Target == Constant","Further from Source than Target"],
+						"constant":1
 					}
 				}",
 				"{
-					\"subeffType\":\"MoveSubeffect\"
+					"$type":"KompasServer.Effects.MoveSubeffect"
 				}",
 				"{
-					\"subeffType\":\"EndResolutionSubeffect\"
+					"$type":"KompasServer.Effects.EndResolutionSubeffect"
 				}",
 				"{
-					\"subeffType\":\"ClearOnImpossibleSubeffect\"
+					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect"
 				}",
 				"{
-					\"subeffType\":\"AnnihilateSubeffect\"
+					"$type":"KompasServer.Effects.AnnihilateSubeffect"
 				}"
 			]	
 		}

@@ -7,17 +7,17 @@
 			"triggerCondition":"Discard",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Enemy Turn\",\"Triggerer Fits Restriction\"],
-					\"cardRestriction\":
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Enemy Turn","Triggerer Fits Restriction"],
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"In AOE\"]
+						"cardRestrictions":["Friendly","In AOE"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"DrawSubeffect\"
+					"$type":"KompasServer.Effects.DrawSubeffect"
 				}"
 			]	
 		}

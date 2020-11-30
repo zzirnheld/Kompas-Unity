@@ -7,39 +7,39 @@
 			"triggerCondition":"Draw",
 			"triggerJson":
 			"{
-				\"optional\":true,
-				\"blurb\":\"Swap character E and W, characters' EW?\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\"]
+				"optional":true,
+				"blurb":"Swap character E and W, characters' EW?",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Controller Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"character for Moon to swap EW\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Summoned\"]
+						"blurb":"character for Moon to swap EW",
+						"cardRestrictions":["Is Character","Board","Summoned"]
 					}
 				}",
 				"{
-					\"subeffType\":\"SwapOwnNESWSubeffect\",
-					\"Stat1\":1,
-					\"Stat2\":3
+					"$type":"KompasServer.Effects.SwapOwnNESWSubeffect, Assembly-CSharp",
+					"Stat1":1,
+					"Stat2":3
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"character for Moon to swap EW\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Summoned\",\"Not Already Target\"]
+						"blurb":"character for Moon to swap EW",
+						"cardRestrictions":["Is Character","Board","Summoned","Not Already Target"]
 					}
 				}",
 				"{
-					\"subeffType\":\"SwapNESWSubeffect\",
-					\"targetIndices\":[-1,-2],
-					\"swapE\":true,
-					\"swapW\":true
+					"$type":"KompasServer.Effects.SwapNESWSubeffect, Assembly-CSharp",
+					"targetIndices":[-1,-2],
+					"swapE":true,
+					"swapW":true
 				}"
 			]
 		}

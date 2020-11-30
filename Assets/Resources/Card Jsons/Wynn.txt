@@ -7,21 +7,21 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"spell for Wynn to Dispel\",
-						\"cardRestrictions\":[\"Is Spell\",\"Board\"]
+						"blurb":"spell for Wynn to Dispel",
+						"cardRestrictions":["Is Spell","Board"]
 					}
 				}",
 				"{
-					\"subeffType\":\"DispelSubeffect\"
+					"$type":"KompasServer.Effects.DispelSubeffect"
 				}"
 			]
 		}

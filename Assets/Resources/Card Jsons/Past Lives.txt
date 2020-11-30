@@ -7,16 +7,16 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"ResummonAllSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.ResummonAllSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Summoned\",\"Board\"]
+						"cardRestrictions":["Is Character","Summoned","Board"]
 					}
 				}"
 			]	

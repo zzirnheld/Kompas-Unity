@@ -7,23 +7,23 @@
 			"triggerCondition":"Discard",
 			"triggerJson":
 			"{
-				\"blurb\":\"Reshuffle\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Triggerer Fits Restriction\",\"From Field\"],
-					\"cardRestriction\":
+				"blurb":"Reshuffle",
+				"triggerRestriction":{
+					"triggerRestrictions":["Triggerer Fits Restriction","From Field"],
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Board\",\"Friendly\"],
-						\"subtypesInclude\":[\"Cultist\"]
+						"cardRestrictions":["Subtypes Include","Board","Friendly"],
+						"subtypesInclude":["Cultist"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"ChangeSpellCSubeffect\",
-					\"xModifier\":1
+					"$type":"KompasServer.Effects.ChangeSpellCSubeffect, Assembly-CSharp",
+					"xModifier":1
 				}"
 			]
 		},
@@ -35,62 +35,62 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"SetXSubeffect\"
+					"$type":"KompasServer.Effects.SetXSubeffect"
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Altar(s) to sacrifice\",
-						\"cardRestrictions\":[\"Is Spell\",\"Subtypes Include\",\"Friendly\",\"Hand\",\"Not Already Target\"],
-						\"subtypesInclude\":[\"Altar\"]
+						"blurb":"Altar(s) to sacrifice",
+						"cardRestrictions":["Is Spell","Subtypes Include","Friendly","Hand","Not Already Target"],
+						"subtypesInclude":["Altar"]
 					}
 				}",
 				"{
-					\"subeffType\":\"SetXByTargetValueSubeffect\",
-					\"whatToCount\":\"Cost\",
-					\"change\":true,
-					\"xMultiplier\":1
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"Cost",
+					"change":true,
+					"xMultiplier":1
 				}",
 				"{
-					\"subeffType\":\"ConditionalJumpSubeffect\",
-					\"condition\":\"X >= Constant\",
-					\"constant\":31,
-					\"jumpIndex\":5
+					"$type":"KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"condition":"X >= Constant",
+					"constant":31,
+					"jumpIndex":5
 				}",
 				"{
-					\"subeffType\":\"LoopSubeffect\",
-					\"jumpTo\":1
+					"$type":"KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
+					"jumpTo":1
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					"$type":"KompasServer.Effects.DiscardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"DeleteTargetSubeffect\"
+					"$type":"KompasServer.Effects.DeleteTargetSubeffect"
 				}",
 				"{
-					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
-					\"jumpTo\":5
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"jumpTo":5
 				}",
 				"{
-					\"subeffType\":\"ChooseFromListSubeffect\",
-					\"maxCanChoose\":1,
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose":1,
+					"cardRestriction":
 					{
-						\"blurb\":\"culmination of the Silent Altar Ritual\",
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Is Character\"]
+						"blurb":"culmination of the Silent Altar Ritual",
+						"cardRestrictions":["Friendly","Deck","Is Character"]
 					}
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where to play the result Silent Altar Ritual\",
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+						"blurb":"where to play the result Silent Altar Ritual",
+						"spaceRestrictions":["Can Play Target to This Space"]
 					}
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					"$type":"KompasServer.Effects.PlaySubeffect"
 				}"
 			]
 		}

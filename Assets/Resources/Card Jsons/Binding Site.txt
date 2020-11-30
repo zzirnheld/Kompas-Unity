@@ -7,22 +7,22 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"for Binding Site to bind\",
-						\"cardRestrictions\":[\"Board\",\"Is Character\"]
+						"blurb":"for Binding Site to bind",
+						"cardRestrictions":["Board","Is Character"]
 					}
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"sMod\":3
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"sMod":3
 				}"
 			]	
 		}

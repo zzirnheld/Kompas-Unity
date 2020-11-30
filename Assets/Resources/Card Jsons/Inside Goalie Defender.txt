@@ -7,46 +7,46 @@
 			"triggerCondition":"Augmented",
 			"triggerJson":
 			"{
-				\"blurb\":\"Goal Kick\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
-					\"cardRestriction\":
+				"blurb":"Goal Kick",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Board\",\"Avatar\",\"Friendly\"]
+						"cardRestrictions":["Board","Avatar","Friendly"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"character within 2 spaces to goal-kick Augment to\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Within C Spaces\",\"Distinct Name from Other Targets\",\"Distinct from Source\"],
-						\"cSpaces\":2
+						"blurb":"character within 2 spaces to goal-kick Augment to",
+						"cardRestrictions":["Is Character","Board","Within C Spaces","Distinct Name from Other Targets","Distinct from Source"],
+						"cSpaces":2
 					}
 				}",
 				"{
-					\"subeffType\":\"TargetAugmentsSubeffect\",
-					\"targetIndex\":-2
+					"$type":"KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp",
+					"targetIndex":-2
 				}",
 				"{
-					\"subeffType\":\"ConditionalEndSubeffect\",
-					\"condition\":\"Number Targets <= Constant\",
-					\"constant\":2
+					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition":"Number Targets <= Constant",
+					"constant":2
 				}",
 				"{
-					\"subeffType\":\"AttachSubeffect\",
-					\"attachmentTarget\":1
+					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"attachmentTarget":1
 				}",
 				"{
-					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
-					\"delete\":true,
-					\"remainingTargets\":3,
-					\"jumpTo\":4
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"remainingTargets":3,
+					"jumpTo":4
 				}"
 			]
 		}

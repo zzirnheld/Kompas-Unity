@@ -6,43 +6,43 @@
 		{
 			"triggerCondition":"Turn Start",
 			"triggerJson":"{
-				\"triggerRestriction\":
+				"triggerRestriction":
 				{
-					\"optional\":true,
-					\"triggerRestrictions\":[\"This Card in Play\"]
+					"optional":true,
+					"triggerRestrictions":["This Card in Play"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"SetXBoardRestrictionSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
-						\"subtypesInclude\":[\"Warrior\"]
+						"cardRestrictions":["Subtypes Include","Is Character","Board","Adjacent"],
+						"subtypesInclude":["Warrior"]
 					},
-					\"xMultiplier\":1
+					"xMultiplier":1
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"TargetThisSpaceSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSpaceSubeffect"
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					"$type":"KompasServer.Effects.DiscardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"DeckTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Swordguild Warrior for Trainee to become\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Deck\",\"S<=X\"],
-						\"subtypesInclude\":[\"Warrior\"]
+						"blurb":"Swordguild Warrior for Trainee to become",
+						"cardRestrictions":["Subtypes Include","Is Character","Deck","S<=X"],
+						"subtypesInclude":["Warrior"]
 					},
-					\"xMultiplier\":1
+					"xMultiplier":1
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					"$type":"KompasServer.Effects.PlaySubeffect"
 				}"
 			]
 		}

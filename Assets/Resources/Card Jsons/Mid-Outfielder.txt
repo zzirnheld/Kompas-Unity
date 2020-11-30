@@ -7,25 +7,25 @@
 			"triggerCondition":"Augmented",
 			"triggerJson":
 			"{
-				\"blurb\":\"Run Augment Outfield\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"blurb":"Run Augment Outfield",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"spaceRestrictions\":[\"Empty\",\"Distance to Target <= Constant\"],
-						\"constant\":2
+						"spaceRestrictions":["Empty","Distance to Target <= Constant"],
+						"constant":2
 					}
 				}",
 				"{
-					\"subeffType\":\"MoveSubeffect\"
+					"$type":"KompasServer.Effects.MoveSubeffect"
 				}"
 			]
 		}

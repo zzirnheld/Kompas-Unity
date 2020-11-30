@@ -13,78 +13,78 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"for Animancer to discard\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Hand\",\"Not Already Target\"],
-						\"subtypesInclude\":[\"Golem\"]
+						"blurb":"for Animancer to discard",
+						"cardRestrictions":["Subtypes Include","Friendly","Hand","Not Already Target"],
+						"subtypesInclude":["Golem"]
 					}
 				}",
 				"{
-					\"subeffType\":\"SetXByTargetValueSubeffect\",
-					\"whatToCount\":\"Cost\",
-					\"change\":true,
-					\"xMultiplier\":1
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"Cost",
+					"change":true,
+					"xMultiplier":1
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					"$type":"KompasServer.Effects.DiscardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"LoopSubeffect\",
-					\"canDecline\":true,
-					\"jumpTo\":0
+					"$type":"KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
+					"canDecline":true,
+					"jumpTo":0
 				}",
 				"{
-					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
-					\"jumpTo\":14
+					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"jumpTo":14
 				}",
 				"{
-					\"subeffType\":\"ChooseFromListSaveRestSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.ChooseFromListSaveRestSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"for Animancer to search\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Cost<=X\",\"Index<X\"],
-						\"subtypesInclude\":[\"Golem\"]
+						"blurb":"for Animancer to search",
+						"cardRestrictions":["Subtypes Include","Friendly","Deck","Cost<=X","Index<X"],
+						"subtypesInclude":["Golem"]
 					},
-					\"restRestriction\":
+					"restRestriction":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<X\",\"Not Already Target\"]
+						"cardRestrictions":["Friendly","Deck","Index<X","Not Already Target"]
 					},
-					\"xMultiplier\":1
+					"xMultiplier":1
 				}",
 				"{
-					\"subeffType\":\"ClearOnImpossibleSubeffect\"
+					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect"
 				}",
 				"{
-					\"subeffType\":\"BottomdeckRestSubeffect\"
+					"$type":"KompasServer.Effects.BottomdeckRestSubeffect"
 				}",
 				"{
-					\"subeffType\":\"ChooseOptionSubeffect\",
-					\"ChoiceBlurb\":\"Rehand the Golem or search again?\",
-					\"OptionBlurbs\":[\"Rehand\",\"Search\"],
-					\"OptionJumpIndices\":[12,9]
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"ChoiceBlurb":"Rehand the Golem or search again?",
+					"OptionBlurbs":["Rehand","Search"],
+					"OptionJumpIndices":[12,9]
 				}",
 				"{
-					\"subeffType\":\"SetXByTargetValueSubeffect\",
-					\"whatToCount\":\"Cost\",
-					\"xMultiplier\":1
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"Cost",
+					"xMultiplier":1
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					"$type":"KompasServer.Effects.DiscardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"JumpSubeffect\",
-					\"indexToJumpTo\":4
+					"$type":"KompasServer.Effects.JumpSubeffect, Assembly-CSharp",
+					"indexToJumpTo":4
 				}",
 				"{
-					\"subeffType\":\"RehandSubeffect\"
+					"$type":"KompasServer.Effects.RehandSubeffect"
 				}",
 				"{
-					\"subeffType\":\"EndResolutionSubeffect\"
+					"$type":"KompasServer.Effects.EndResolutionSubeffect"
 				}",
 				"{
-					\"subeffType\":\"BottomdeckRestSubeffect\"
+					"$type":"KompasServer.Effects.BottomdeckRestSubeffect"
 				}"
 			]
 		}

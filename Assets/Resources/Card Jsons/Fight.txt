@@ -7,31 +7,31 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"friendly character that should attack\",
-						\"cardRestrictions\":[\"Is Character\",\"Friendly\",\"Board\"]
+						"blurb":"friendly character that should attack",
+						"cardRestrictions":["Is Character","Friendly","Board"]
 					}
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"enemy character to attack\",
-						\"cardRestrictions\":[\"Is Character\",\"Enemy\",\"Board\",\"Adjacent to Target\"]
+						"blurb":"enemy character to attack",
+						"cardRestrictions":["Is Character","Enemy","Board","Adjacent to Target"]
 					}
 				}",
 				"{
-					\"subeffType\":\"AttackSubeffect\",
-					\"targetIndex\":-1,
-					\"attackerIndex\":-2
+					"$type":"KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"targetIndex":-1,
+					"attackerIndex":-2
 				}"
 			]
 		}

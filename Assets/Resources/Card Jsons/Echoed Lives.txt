@@ -7,16 +7,16 @@
 			"triggerCondition":"Turn Start",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"ResummonAllSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.ResummonAllSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Summoned\",\"Board\",\"In AOE\"]
+						"cardRestrictions":["Is Character","Summoned","Board","In AOE"]
 					}
 				}"
 			]	

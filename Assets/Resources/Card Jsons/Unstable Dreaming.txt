@@ -7,36 +7,36 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":{
-						\"blurb\":\"Shaper to hand-summon\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Hand\"],
-						\"subtypesInclude\":[\"Shaper\"]
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"blurb":"Shaper to hand-summon",
+						"cardRestrictions":["Subtypes Include","Is Character","Friendly","Hand"],
+						"subtypesInclude":["Shaper"]
 					}
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where to handsummon the Shaper\",
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+						"blurb":"where to handsummon the Shaper",
+						"spaceRestrictions":["Can Play Target to This Space"]
 					}
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					"$type":"KompasServer.Effects.PlaySubeffect"
 				}",
 				"{
-					\"subeffType\":\"HangingAnnihilationSubeffect\",
-					\"endCondition\":\"Turn Start\",
-					\"triggerRestriction\":
+					"$type":"KompasServer.Effects.HangingAnnihilationSubeffect, Assembly-CSharp",
+					"endCondition":"Turn Start",
+					"triggerRestriction":
 					{
-						\"triggerRestrictions\":[\"Friendly Turn\"]
+						"triggerRestrictions":["Friendly Turn"]
 					}
 				}"
 			]

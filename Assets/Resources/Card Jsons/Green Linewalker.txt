@@ -13,22 +13,22 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"SpendMovementSubeffect\",
-					\"xModifier\":1
+					"$type":"KompasServer.Effects.SpendMovementSubeffect, Assembly-CSharp",
+					"xModifier":1
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"to Linewalk to\",
-						\"spaceRestrictions\":[\"Empty\",\"On Target's Diagonal\"]
+						"blurb":"to Linewalk to",
+						"spaceRestrictions":["Empty","On Target's Diagonal"]
 					}
 				}",
 				"{
-					\"subeffType\":\"MoveSubeffect\"
+					"$type":"KompasServer.Effects.MoveSubeffect"
 				}"
 			]
 		},
@@ -37,19 +37,19 @@
 			"triggerCondition":"Move",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"ChangeAllNESWSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.ChangeAllNESWSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Within C Spaces\"],
-						\"cSpaces\":1
+						"cardRestrictions":["Is Character","Board","Within C Spaces"],
+						"cSpaces":1
 					},
-					\"wMult\":1
+					"wMult":1
 				}"
 			]
 		}

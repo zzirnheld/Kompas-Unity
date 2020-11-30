@@ -7,25 +7,25 @@
 			"triggerCondition":"Attack",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Augmented Card Triggered\",\"Max Per Round\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["Augmented Card Triggered","Max Per Round"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetDefenderSubeffect\"
+					"$type":"KompasServer.Effects.TargetDefenderSubeffect"
 				}",
 				"{
-					\"subeffType\":\"ConditionalEndSubeffect\",
-					\"condition\":\"Target Violates Restriction\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition":"Target Violates Restriction",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Behind Source\"]
+						"cardRestrictions":["Behind Source"]
 					}
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"wMod\":-5
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"wMod":-5
 				}"
 			]
 		}

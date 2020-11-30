@@ -8,54 +8,54 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"for Rebinding to kill\",
-						\"cardRestrictions\":[\"Friendly\",\"Board\"]
+						"blurb":"for Rebinding to kill",
+						"cardRestrictions":["Friendly","Board"]
 					}
 				}",
 				"{
-					\"subeffType\":\"SetXByTargetValueSubeffect\",
-					\"whatToCount\":\"S\",
-					\"xMultiplier\":1
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"S",
+					"xMultiplier":1
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					"$type":"KompasServer.Effects.DiscardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"for Rebinding to buff\",
-						\"cardRestrictions\":[\"Board\",\"Not Already Target\"]
+						"blurb":"for Rebinding to buff",
+						"cardRestrictions":["Board","Not Already Target"]
 					}
 				}",
 				"{
-					\"subeffType\":\"ChangeCardStatsSubeffect\",
-					\"sMult\":1,
-					\"cMult\":1,
-					\"aMult\":1
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"sMult":1,
+					"cMult":1,
+					"aMult":1
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"for Rebinding to buff\",
-						\"cardRestrictions\":[\"Board\",\"Not Already Target\"]
+						"blurb":"for Rebinding to buff",
+						"cardRestrictions":["Board","Not Already Target"]
 					}
 				}",
 				"{
-					\"subeffType\":\"ChangeCardStatsSubeffect\",
-					\"sMult\":1,
-					\"cMult\":1,
-					\"aMult\":1
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"sMult":1,
+					"cMult":1,
+					"aMult":1
 				}"
 			]
 		}

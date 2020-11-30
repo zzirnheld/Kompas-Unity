@@ -4,39 +4,39 @@
 	"effText":"Unique. (Can't be played if you control a copy)\nWhen a character is Negated, give them +1ESW. If they're a Supplicant, also give them +2NESW.",
 	"effects":[
 		{
-			"triggerCondition":"NegateSubeffect",
+			"triggerCondition":"NegateSubeffect, Assembly-CSharp",
 			"triggerJson":
 			"{
-				\"blurb\":\"Grant Hope\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"blurb":"Grant Hope",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"eMod\":1,
-					\"sMod\":1,
-					\"wMod\":1
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"eMod":1,
+					"sMod":1,
+					"wMod":1
 				}",
 				"{
-					\"subeffType\":\"ConditionalEndSubeffect\",
-					\"condition\":\"Target Violates Restriction\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition":"Target Violates Restriction",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Supplicant\"]
+						"cardRestrictions":["Subtypes Include"],
+						"subtypesInclude":["Supplicant"]
 					}
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"nMod\":2,
-					\"eMod\":2,
-					\"sMod\":2,
-					\"wMod\":2
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"nMod":2,
+					"eMod":2,
+					"sMod":2,
+					"wMod":2
 				}"
 			]
 		}

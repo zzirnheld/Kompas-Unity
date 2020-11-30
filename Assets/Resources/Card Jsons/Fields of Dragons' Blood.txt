@@ -7,18 +7,18 @@
 			"triggerCondition":"NESW Change",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"Stackable Source is Triggerer\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Board\",\"In AOE\"],
-						\"subtypesInclude\":[\"Dragon\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Stackable Source is Triggerer"],
+					"cardRestriction":{
+						"cardRestrictions":["Subtypes Include","Board","In AOE"],
+						"subtypesInclude":["Dragon"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"AddPipsSubeffect\",
-					\"xModifier\":1
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier":1
 				}"
 			]	
 		}

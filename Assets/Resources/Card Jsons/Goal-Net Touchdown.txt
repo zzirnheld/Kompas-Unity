@@ -7,51 +7,51 @@
 			"triggerCondition":"Move",
 			"triggerJson":
 			"{
-				\"blurb\":\"Touchdown!\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Coords Fit Restriction\",\"Triggerer Fits Restriction\"],
-					\"cardRestriction\":
+				"blurb":"Touchdown!",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction"],
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\"]
+						"cardRestrictions":["Is Character"]
 					},
-					\"spaceRestriction\":
+					"spaceRestriction":
 					{
-						\"spaceRestrictions\":[\"Adjacent to a Card that Fits Restriction\"],
-						\"adjacencyRestriction\":
+						"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
+						"adjacencyRestriction":
 						{
-							\"cardRestrictions\":[\"Avatar\",\"Enemy\"]
+							"cardRestrictions":["Avatar","Enemy"]
 						}
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Avatar\",\"Enemy\",\"Adjacent to Target\"]
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"cardRestrictions":["Avatar","Enemy","Adjacent to Target"]
 					}
 				}",
 				"{
-					\"subeffType\":\"TargetAugmentsSubeffect\",
-					\"targetIndex\":0
+					"$type":"KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp",
+					"targetIndex":0
 				}",
 				"{
-					\"subeffType\":\"ConditionalEndSubeffect\",
-					\"condition\":\"Number Targets <= Constant\",
-					\"constant\":2
+					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition":"Number Targets <= Constant",
+					"constant":2
 				}",
 				"{
-					\"subeffType\":\"AttachSubeffect\",
-					\"attachmentTarget\":1
+					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"attachmentTarget":1
 				}",
 				"{
-					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
-					\"delete\":true,
-					\"remainingTargets\":2,
-					\"jumpTo\":4
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"remainingTargets":2,
+					"jumpTo":4
 				}"
 			]
 		}

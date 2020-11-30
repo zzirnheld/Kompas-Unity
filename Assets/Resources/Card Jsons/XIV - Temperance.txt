@@ -7,24 +7,24 @@
 			"triggerCondition":"Draw",
 			"triggerJson":
 			"{
-				\"optional\":true,
-				\"blurb\":\"DispelSubeffect a C <= X spell? (X is the number of cards you just drew)\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\",\"Max Per Round\"]
+				"optional":true,
+				"blurb":"DispelSubeffect a C <= X spell? (X is the number of cards you just drew)",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Controller Triggered","Max Per Round"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"C <= X spell for Temperance to DispelSubeffect\",
-						\"cardRestrictions\":[\"Is Spell\",\"Board\",\"Cost<=X\"]
+						"blurb":"C <= X spell for Temperance to DispelSubeffect, Assembly-CSharp",
+						"cardRestrictions":["Is Spell","Board","Cost<=X"]
 					},
-					\"xMultiplier\":1
+					"xMultiplier":1
 				}",
 				"{
-					\"subeffType\":\"DispelSubeffect\"
+					"$type":"KompasServer.Effects.DispelSubeffect"
 				}"
 			]
 		}

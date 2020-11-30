@@ -7,43 +7,43 @@
 			"triggerCondition":"Move",
 			"triggerJson":
 			"{
-				\"blurb\":\"Relay Long-Jump\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Coords Fit Restriction\",\"Triggerer Fits Restriction\"],
-					\"cardRestriction\":
+				"blurb":"Relay Long-Jump",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction"],
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Distinct from Source\"]
+						"cardRestrictions":["Is Character","Distinct from Source"]
 					},
-					\"spaceRestriction\":
+					"spaceRestriction":
 					{
-						\"spaceRestrictions\":[\"Adjacent to Source\"]
+						"spaceRestrictions":["Adjacent to Source"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"TargetAugmentsSubeffect\"
+					"$type":"KompasServer.Effects.TargetAugmentsSubeffect"
 				}",
 				"{
-					\"subeffType\":\"ConditionalEndSubeffect\",
-					\"condition\":\"Number Targets <= Constant\",
-					\"constant\":2
+					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition":"Number Targets <= Constant",
+					"constant":2
 				}",
 				"{
-					\"subeffType\":\"AttachSubeffect\",
-					\"attachmentTarget\":0
+					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"attachmentTarget":0
 				}",
 				"{
-					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
-					\"delete\":true,
-					\"remainingTargets\":2,
-					\"jumpTo\":4
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"remainingTargets":2,
+					"jumpTo":4
 				}"
 			]
 		}

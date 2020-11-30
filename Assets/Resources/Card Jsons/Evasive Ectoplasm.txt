@@ -13,39 +13,39 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"to move Evasive Ectoplasm to\",
-						\"spaceRestrictions\":[\"Connected to Source by Cards Fitting Restriction\"],
-						\"connectednessRestriction\":{
-							\"spaceRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
-							\"subtypesInclude\":[\"Ethereal\"]
+						"blurb":"to move Evasive Ectoplasm to",
+						"spaceRestrictions":["Connected to Source by Cards Fitting Restriction"],
+						"connectednessRestriction":{
+							"spaceRestrictions":["Subtypes Include","Is Character","Board"],
+							"subtypesInclude":["Ethereal"]
 						}
 					}
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"SpendMovementSubeffect\",
-					\"xModifier\":1
+					"$type":"KompasServer.Effects.SpendMovementSubeffect, Assembly-CSharp",
+					"xModifier":1
 				}",
 				"{
-					\"subeffType\":\"SetXByGamestateSubeffect\",
-					\"whatToCount\":\"Distance to Coords Through\",
-					\"throughRestriction\":{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
-						\"subtypesInclude\":[\"Ethereal\"]
+					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount":"Distance to Coords Through",
+					"throughRestriction":{
+						"cardRestrictions":["Subtypes Include","Is Character","Board"],
+						"subtypesInclude":["Ethereal"]
 					},
-					\"xMultiplier\":1
+					"xMultiplier":1
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"eMult\":-1
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"eMult":-1
 				}",
 				"{
-					\"subeffType\":\"MoveSubeffect\"
+					"$type":"KompasServer.Effects.MoveSubeffect"
 				}"
 			]
 		},
@@ -53,28 +53,28 @@
 			"triggerCondition":"Battle Start",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\",\"Max Per Round\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","Max Per Round"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"TargetOtherInFightSubeffect\"
+					"$type":"KompasServer.Effects.TargetOtherInFightSubeffect"
 				}",
 				"{
-					\"subeffType\":\"SetXByTargetValueSubeffect\",
-					\"whatToCount\":\"W\",
-					\"xMultiplier\":1
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"W",
+					"xMultiplier":1
 				}",
 				"{
-					\"subeffType\":\"TemporaryNESWBuffSubeffect\",
-					\"wMultiplier\":-1,
-					\"endCondition\":\"Battle End\",
-					\"triggerRestriction\":{
-						\"triggerRestrictions\":[\"This Card Triggered\"]
+					"$type":"KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
+					"wMultiplier":-1,
+					"endCondition":"Battle End",
+					"triggerRestriction":{
+						"triggerRestrictions":["This Card Triggered"]
 					}
 				}"
 			]	

@@ -6,35 +6,35 @@
 		{
 			"triggerCondition":"Discard",
 			"triggerJson":"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"SetXBoardRestrictionSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
-						\"subtypesInclude\":[\"Warrior\"]
+						"cardRestrictions":["Subtypes Include","Is Character","Board","Adjacent"],
+						"subtypesInclude":["Warrior"]
 					},
-					\"xMultiplier\":1
+					"xMultiplier":1
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"dead Warrior for Bannerman to reshuffle\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Discard\"],
-						\"subtypesInclude\":[\"Warrior\"]
+						"blurb":"dead Warrior for Bannerman to reshuffle",
+						"cardRestrictions":["Subtypes Include","Is Character","Discard"],
+						"subtypesInclude":["Warrior"]
 					}
 				}",
 				"{
-					\"subeffType\":\"ReshuffleSubeffect\"
+					"$type":"KompasServer.Effects.ReshuffleSubeffect"
 				}",
 				"{
-					\"subeffType\":\"XTimesSubeffect\",
-					\"jumpTo\":1
+					"$type":"KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",
+					"jumpTo":1
 				}"
 			]	
 		}

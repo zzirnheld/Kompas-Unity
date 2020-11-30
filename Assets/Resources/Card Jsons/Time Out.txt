@@ -7,34 +7,34 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"character to put in TIME OUT!\",
-						\"cardRestrictions\":[\"Board\",\"Is Character\",\"Enemy\",\"Wields Augment Fitting Restriction\"],
-						\"secondaryRestrictionString\":
-						\"{
-							\\\"cardRestrictions\\\":[\\\"Friendly\\\",\\\"Subtypes Include\\\"],
-							\\\"subtypesInclude\\\":[\\\"Sportsball\\\"]
-						}\"
+						"blurb":"character to put in TIME OUT!",
+						"cardRestrictions":["Board","Is Character","Enemy","Wields Augment Fitting Restriction"],
+						"secondaryRestrictionString":
+						"{
+							\\"cardRestrictions\\":[\\"Friendly\\",\\"Subtypes Include\\"],
+							\\"subtypesInclude\\":[\\"Sportsball\\"]
+						}"
 					}
 				}",
 				"{
-					\"subeffType\":\"TargetAugmentsSubeffect\"
+					"$type":"KompasServer.Effects.TargetAugmentsSubeffect"
 				}",
 				"{
-					\"subeffType\":\"RehandSubeffect\"
+					"$type":"KompasServer.Effects.RehandSubeffect"
 				}",
 				"{
-					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
-					\"delete\":true,
-					\"jumpTo\":2
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"jumpTo":2
 				}"
 			]
 		}

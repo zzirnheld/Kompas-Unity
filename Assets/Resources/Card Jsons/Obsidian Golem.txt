@@ -8,22 +8,22 @@
 			"triggerCondition":"Activate",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Summoned character for Obsidian Golem to give -5E\",
-						\"cardRestrictions\":[\"Is Character\",\"Summoned\",\"Board\"]
+						"blurb":"Summoned character for Obsidian Golem to give -5E",
+						"cardRestrictions":["Is Character","Summoned","Board"]
 					}
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"eChange\":-5
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"eChange":-5
 				}"
 			]
 		}

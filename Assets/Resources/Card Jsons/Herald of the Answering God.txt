@@ -7,21 +7,21 @@
 			"triggerCondition":"Turn Start",
 			"triggerJson":
 			"{
-				\"blurb\":\"Answer Prayer\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\"]
+				"blurb":"Answer Prayer",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"blurb\":\"card to answer prayers\",
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Board\",\"Is Character\",\"Turn Player Controls\"]
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"blurb":"card to answer prayers",
+					"cardRestriction":{
+						"cardRestrictions":["Board","Is Character","Turn Player Controls"]
 					}
 				}",
 				"{
-					\"subeffType\":\"NegateSubeffect\"
+					"$type":"KompasServer.Effects.NegateSubeffect"
 				}"
 			]
 		}

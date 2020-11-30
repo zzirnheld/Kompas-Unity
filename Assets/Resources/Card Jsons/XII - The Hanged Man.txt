@@ -7,33 +7,33 @@
 			"triggerCondition":"Draw",
 			"triggerJson":
 			"{
-				\"optional\":true,
-				\"blurb\":\"Give me and a Summoned character -XE? (X is the number of cards you just drew)\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\"]
+				"optional":true,
+				"blurb":"Give me and a Summoned character -XE? (X is the number of cards you just drew)",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Controller Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Summoned character for Hanged Man to also give -XE\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Summoned\"]
+						"blurb":"Summoned character for Hanged Man to also give -XE",
+						"cardRestrictions":["Is Character","Board","Summoned"]
 					}
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"eMult\":-1,
-					\"targetIndex\":0
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"eMult":-1,
+					"targetIndex":0
 				}",
 				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"eMult\":-1,
-					\"targetIndex\":1
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"eMult":-1,
+					"targetIndex":1
 				}"
 			]
 		}

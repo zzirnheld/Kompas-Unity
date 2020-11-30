@@ -12,13 +12,13 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"PayPipsTargetCostSubeffect\"
+					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect"
 				}",
 				"{
-					\"subeffType\":\"ResummonSubeffect\"
+					"$type":"KompasServer.Effects.ResummonSubeffect"
 				}"
 			]	
 		},
@@ -26,22 +26,22 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"character for Malevolent Vessel to kill within 1 space of them\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Within C Spaces\"],
-						\"cSpaces\":1
+						"blurb":"character for Malevolent Vessel to kill within 1 space of them",
+						"cardRestrictions":["Is Character","Board","Within C Spaces"],
+						"cSpaces":1
 					}
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					"$type":"KompasServer.Effects.DiscardSubeffect"
 				}"
 			]	
 		}

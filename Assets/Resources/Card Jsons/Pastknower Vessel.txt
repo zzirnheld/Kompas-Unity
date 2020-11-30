@@ -13,13 +13,13 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"PayPipsTargetCostSubeffect\"
+					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect"
 				}",
 				"{
-					\"subeffType\":\"ResummonSubeffect\"
+					"$type":"KompasServer.Effects.ResummonSubeffect"
 				}"
 			]	
 		},
@@ -27,13 +27,13 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"DrawSubeffect\"
+					"$type":"KompasServer.Effects.DrawSubeffect"
 				}"
 			]	
 		}

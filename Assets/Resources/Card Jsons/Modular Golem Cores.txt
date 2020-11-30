@@ -13,65 +13,65 @@
 			},
 			"subeffects":[
 				"{
-					\"subeffType\":\"ChooseOptionSubeffect\",
-					\"ChoiceBlurb\":\"Destroy and search, or pip hand-apply?\",
-					\"OptionBlurbs\":[\"Search\",\"Apply\"],
-					\"OptionJumpIndices\":[1,6]
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"ChoiceBlurb":"Destroy and search, or pip hand-apply?",
+					"OptionBlurbs":["Search","Apply"],
+					"OptionJumpIndices":[1,6]
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Golem Core for Modular Golem Cores to detach\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Augment\",\"Board\"],
-						\"subtypesInclude\":[\"Golem\", \"Core\"]
+						"blurb":"Golem Core for Modular Golem Cores to detach",
+						"cardRestrictions":["Subtypes Include","Is Augment","Board"],
+						"subtypesInclude":["Golem", "Core"]
 					}
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					"$type":"KompasServer.Effects.DiscardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"DeckTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Golem core for Modular Golem Cores to search\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Augment\",\"Deck\"],
-						\"subtypesInclude\":[\"Golem\", \"Core\"]
+						"blurb":"Golem core for Modular Golem Cores to search",
+						"cardRestrictions":["Subtypes Include","Is Augment","Deck"],
+						"subtypesInclude":["Golem", "Core"]
 					}
 				}",
 				"{
-					\"subeffType\":\"RehandSubeffect\"
+					"$type":"KompasServer.Effects.RehandSubeffect"
 				}",
 				"{
-					\"subeffType\":\"EndResolutionSubeffect\"
+					"$type":"KompasServer.Effects.EndResolutionSubeffect"
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Golem Core for Modular to apply\",
-						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Is Augment\",\"Subtypes Include\",\"Can Be Played\",\"Effect Controller can Afford Cost\"],
-						\"subtypesInclude\":[\"Golem Core\"]
+						"blurb":"Golem Core for Modular to apply",
+						"cardRestrictions":["Friendly","Hand","Is Augment","Subtypes Include","Can Be Played","Effect Controller can Afford Cost"],
+						"subtypesInclude":["Golem Core"]
 					}
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"where for Modular to apply Golem Core\",
-						\"cardRestrictions\":[\"Board\",\"Can Play Target to This Character's Space\"]
+						"blurb":"where for Modular to apply Golem Core",
+						"cardRestrictions":["Board","Can Play Target to This Character's Space"]
 					}
 				}",
 				"{
-					\"subeffType\":\"TargetTargetsSpaceSubeffect\"
+					"$type":"KompasServer.Effects.TargetTargetsSpaceSubeffect"
 				}",
 				"{
-					\"subeffType\":\"PayPipsTargetCostSubeffect\",
-					\"xMultiplier\":1
+					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"xMultiplier":1
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\",
-					\"targetIndex\":-2
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp",
+					"targetIndex":-2
 				}"
 			]
 		}

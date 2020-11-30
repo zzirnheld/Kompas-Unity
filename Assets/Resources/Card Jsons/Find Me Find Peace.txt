@@ -7,39 +7,39 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"blurb\":\"Find Me, Find Peace\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"blurb":"Find Me, Find Peace",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetAllSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<C\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Supplicant\"],
-						\"constant\":4
+						"cardRestrictions":["Friendly","Deck","Index<C","Subtypes Include"],
+						"subtypesInclude":["Supplicant"],
+						"constant":4
 					}
 				}",
 				"{
-					\"subeffType\":\"AddRestSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.AddRestSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<C\",\"Not Already Target\"],
-						\"constant\":4
+						"cardRestrictions":["Friendly","Deck","Index<C","Not Already Target"],
+						"constant":4
 					}
 				}",
 				"{
-					\"subeffType\":\"RehandSubeffect\"
+					"$type":"KompasServer.Effects.RehandSubeffect"
 				}",
 				"{
-					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
-					\"delete\":true,
-					\"jumpTo\":2
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"jumpTo":2
 				}",
 				"{
-					\"subeffType\":\"BottomdeckRestSubeffect\"
+					"$type":"KompasServer.Effects.BottomdeckRestSubeffect"
 				}"
 			]
 		}

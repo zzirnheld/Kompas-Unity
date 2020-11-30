@@ -7,18 +7,18 @@
 			"triggerCondition":"Draw",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Friendly Turn\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Friendly Turn"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"ChangeAllNESWSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.ChangeAllNESWSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Summoned\"]
+						"cardRestrictions":["Is Character","Board","Friendly","Summoned"]
 					},
-					\"wMod\":1
+					"wMod":1
 				}"
 			]
 		},
@@ -26,18 +26,18 @@
 			"triggerCondition":"Draw",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Enemy Turn\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Enemy Turn"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"ChangeAllNESWSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.ChangeAllNESWSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Summoned\"]
+						"cardRestrictions":["Is Character","Board","Friendly","Summoned"]
 					},
-					\"eMod\":1
+					"eMod":1
 				}"
 			]
 		}

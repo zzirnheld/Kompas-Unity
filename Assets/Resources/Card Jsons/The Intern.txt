@@ -7,13 +7,13 @@
 			"triggerCondition":"Draw",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Max Per Stack\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Max Per Stack"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"DrawSubeffect\"
+					"$type":"KompasServer.Effects.DrawSubeffect"
 				}"
 			]	
 		}

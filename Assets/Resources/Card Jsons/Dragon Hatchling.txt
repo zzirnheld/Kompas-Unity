@@ -7,49 +7,49 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"DelaySubeffect\",
-					\"numTimesToDelay\":0,
-					\"indexToResume\":1,
-					\"endCondition\":\"Turn Start\"
+					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay":0,
+					"indexToResume":1,
+					"endCondition":"Turn Start"
 				}",
 				"{
-					\"subeffType\":\"TargetThisSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSubeffect"
 				}",
 				"{
-					\"subeffType\":\"TargetThisSpaceSubeffect\"
+					"$type":"KompasServer.Effects.TargetThisSpaceSubeffect"
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					"$type":"KompasServer.Effects.DiscardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"for Dragon Hatchling to eat (discard)\",
-						\"cardRestrictions\":[\"Friendly\",\"Is Character\",\"Hand\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Dragon\"]
+						"blurb":"for Dragon Hatchling to eat (discard)",
+						"cardRestrictions":["Friendly","Is Character","Hand","Subtypes Include"],
+						"subtypesInclude":["Dragon"]
 					}
 				}",
 				"{
-					\"subeffType\":\"DiscardSubeffect\"
+					"$type":"KompasServer.Effects.DiscardSubeffect"
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"for Dragon Hatchling to become (play)\",
-						\"cardRestrictions\":[\"Friendly\",\"Is Character\",\"Hand\",\"Subtypes Include\",\"Can Be Played\"],
-						\"subtypesInclude\":[\"Dragon\"]
+						"blurb":"for Dragon Hatchling to become (play)",
+						"cardRestrictions":["Friendly","Is Character","Hand","Subtypes Include","Can Be Played"],
+						"subtypesInclude":["Dragon"]
 					}
 				}",
 				"{
-					\"subeffType\":\"PlaySubeffect\"
+					"$type":"KompasServer.Effects.PlaySubeffect"
 				}"
 			]
 		}

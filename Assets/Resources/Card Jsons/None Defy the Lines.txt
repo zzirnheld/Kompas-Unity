@@ -8,41 +8,41 @@
 			"triggerCondition":"Play",
 			"triggerJson":
 			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
-					\"jumpTo\":10
+					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"jumpTo":10
 				}",
 				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"who to next be brought low by the Lines\",
-						\"cardRestrictions\":[\"Friendly\",\"Board\",\"Not Already Target\"]
+						"blurb":"who to next be brought low by the Lines",
+						"cardRestrictions":["Friendly","Board","Not Already Target"]
 					}
 				}",
 				"{
-					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
-					\"jumpTo\":5
+					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"jumpTo":5
 				}",
 				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where on the Lines to bring them\",
-						\"spaceRestrictions\":[\"Empty\",\"On Target's Diagonal\",\"On Edge of Board\",\"Can Move Target to This Space\"]
+						"blurb":"where on the Lines to bring them",
+						"spaceRestrictions":["Empty","On Target's Diagonal","On Edge of Board","Can Move Target to This Space"]
 					}
 				}",
 				"{
-					\"subeffType\":\"MoveSubeffect\"
+					"$type":"KompasServer.Effects.MoveSubeffect"
 				}",
 				"{
-					\"subeffType\":\"LoopSubeffect\",
-					\"jumpTo\":0
+					"$type":"KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
+					"jumpTo":0
 				}"
 			]	
 		}

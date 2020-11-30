@@ -7,18 +7,18 @@
 			"triggerCondition":"Rehand",
 			"triggerJson":
 			"{
-				\"optional\":true,
-				\"blurb\":\"Draw 1? (An enemy just deck-rehanded a card)\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"From Deck\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Enemy\"]
+				"optional":true,
+				"blurb":"Draw 1? (An enemy just deck-rehanded a card)",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","From Deck"],
+					"cardRestriction":{
+						"cardRestrictions":["Enemy"]
 					}
 				}
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"DrawSubeffect\"
+					"$type":"KompasServer.Effects.DrawSubeffect"
 				}"
 			]
 		}
