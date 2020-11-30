@@ -50,9 +50,9 @@
 			]
 		},
 		{
-			"triggerCondition":"E Change",
 			"triggerData":
 			"{
+				"triggerCondition":"E Change",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","X Fits Restriction","This Card Triggered"],
 					"xRestriction":{

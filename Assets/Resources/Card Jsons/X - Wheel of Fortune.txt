@@ -4,11 +4,11 @@
 	"effText":"When you draw, I can swap two characters’ N.",
 	"effects":[
 		{
-			"triggerCondition":"Draw",
 			"triggerData":
 			"{
 				"optional":true,
 				"blurb":"Swap two characters' N?",
+				"triggerCondition":"Draw",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Controller Triggered"]
 				}

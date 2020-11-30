@@ -4,9 +4,9 @@
 	"effText":"When a friendly character attacks, draw 1.",
 	"effects":[
 		{
-			"triggerCondition":"Attack",
 			"triggerData":
 			"{
+				"triggerCondition":"Attack",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":{

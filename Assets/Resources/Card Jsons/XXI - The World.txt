@@ -4,10 +4,10 @@
 	"effText":"When a character dies, reshuffle them, give friendly characters +1EW, and draw 1.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
 			"triggerData":
 			"{
 				"blurb":"Reshuffle, buff, draw",
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":{

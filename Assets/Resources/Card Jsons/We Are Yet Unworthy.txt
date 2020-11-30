@@ -4,9 +4,9 @@
 	"effText":"Kill a friendly Cultist. Hand-reshuffle a card. Draw 2. Gain 2 Pips. Annihilate me.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

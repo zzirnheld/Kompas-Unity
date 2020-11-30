@@ -4,11 +4,11 @@
 	"effText":"When you draw X, I can kill an S ≤ X character.",
 	"effects":[
 		{
-			"triggerCondition":"Draw",
 			"triggerData":
 			"{
 				"optional":true,
 				"blurb":"Kill an S <= X character? (X is the number of cards you just drew)",
+				"triggerCondition":"Draw",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Controller Triggered"]
 				}

@@ -4,9 +4,9 @@
 	"effText":"When you draw, I get +1S. During your turn, I can pay XS to kill an adjacent SX character.",
 	"effects":[
 		{
-			"triggerCondition":"Draw",
 			"triggerData":
 			"{
+				"triggerCondition":"Draw",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Controller Triggered"]
 				}
