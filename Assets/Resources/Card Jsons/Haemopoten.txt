@@ -38,7 +38,7 @@
 				"{
 					\"subeffType\":\"DelaySubeffect\",
 					\"numTimesToDelay\":0,
-					\"indexToResume\":5,
+					\"indexToResume\":6,
 					\"endCondition\":\"Turn Start\"
 				}",
 				"{
