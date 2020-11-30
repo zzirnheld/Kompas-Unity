@@ -77,6 +77,9 @@ namespace KompasServer.Cards
         {
             base.SetInfo(serializedCard, id);
             ServerEffects = effects;
+            int i = 0;
+            foreach (var eff in effects) eff.SetInfo(this, game, owner, i++);
+            Debug.Log($"Setting card with effects: {string.Join(", ", effects.Select(e => e.ToString()))}");
             ServerGame = game;
             ServerController = ServerOwner = owner;
         }

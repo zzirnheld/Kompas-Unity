@@ -52,6 +52,7 @@ namespace KompasCore.Effects
             if (effectRestrictions.Contains(AugEffect)) effectRestrictions.AddRange(AugmentEffectRestrictions);
 
             onCardRestriction.Initialize(card, card.Controller, null);
+            Debug.Log($"Finished setting info for play restriction of card {card.CardName}");
         }
 
         private bool RestrictionValid(string r, int x, int y, Player player, bool normal)

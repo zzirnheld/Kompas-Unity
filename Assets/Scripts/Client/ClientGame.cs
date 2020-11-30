@@ -166,7 +166,7 @@ namespace KompasClient.GameCore
         {
             stackEmpty = false;
             clientUICtrl.SetCurrState($"{(eff.Controller.index == 0 ? "Friendly" : "Enemy")} {eff.Source.CardName} Effect Activated",
-                eff.Blurb);
+                eff.blurb);
         }
 
         public void StackEmptied()

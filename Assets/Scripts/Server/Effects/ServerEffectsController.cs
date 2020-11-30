@@ -212,7 +212,7 @@ namespace KompasServer.Effects
             {
                 var players = ServerGame.ServerPlayers
                     .Where(player => !player.passedPriority &&
-                        ServerGame.Cards.Any(c => c.Effects.Any(e => e.ActivationRestriction.Evaluate(player))))
+                        ServerGame.Cards.Any(c => c.Effects.Any(e => e.activationRestriction.Evaluate(player))))
                     .ToArray(); //call toArray so that we don't create the collection twice.
                 //remove the .ToArray() later if it turns out Linq is smart enough to only execute once, but I'm pretty sure it can't know.
 

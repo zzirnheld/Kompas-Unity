@@ -1,5 +1,6 @@
 ﻿namespace KompasServer.Effects
 {
+    [System.Serializable]
     public class RehandSubeffect : CardChangeStateSubeffect
     {
         public override bool Resolve()

@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace KompasServer.Effects
 {
+    [System.Serializable]
     public class ChooseFromListSubeffect : ServerSubeffect
     {
         public const string NoOrder = "No Order";

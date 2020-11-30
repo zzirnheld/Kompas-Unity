@@ -268,4 +268,5 @@ Leybinding
 Rebinding
 Fodderbin
 Fight
+Blank Card
 a lot of disappointment

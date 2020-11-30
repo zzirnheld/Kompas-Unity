@@ -11,6 +11,7 @@ using KompasServer.GameCore;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Newtonsoft.Json;
 
 public class CardRepository : MonoBehaviour
 {
@@ -110,16 +111,6 @@ public class CardRepository : MonoBehaviour
         return JsonUtility.FromJson<SerializableCard>(cardJsons[name]);
     }
 
-    private ServerEffect[] CreateServerEffects(SerializableEffect[] serEffs, GameCard card, ServerGame serverGame, ServerPlayer owner)
-    {
-        ServerEffect[] effects = new ServerEffect[serEffs.Length];
-        for (int i = 0; i < effects.Length; i++)
-        {
-            effects[i] = new ServerEffect(serEffs[i], card, serverGame, owner, i);
-        }
-        return effects;
-    }
-
     public AvatarServerGameCard InstantiateServerAvatar(string cardName, ServerGame serverGame, ServerPlayer owner, int id)
     {
         Debug.Log($"Instantiating server avatar named {cardName}");
@@ -130,17 +121,18 @@ public class CardRepository : MonoBehaviour
             return null;
         }
 
+
+
         try
         {
             Debug.Log("loading avatar json");
-            SerializableCard charCard = JsonUtility.FromJson<SerializableCard>(cardJsons[cardName]);
+            ServerSerializableCard card = JsonConvert.DeserializeObject<ServerSerializableCard>(cardJsons[cardName],
+                new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
             Debug.Log("loading avatar gameobj");
             AvatarServerGameCard avatar = Instantiate(ServerAvatarPrefab).GetComponent<AvatarServerGameCard>();
             if (avatar == null) Debug.LogError("AVATAR WAS NULL");
-            Debug.Log("loading avatar effs");
-            ServerEffect[] effects = CreateServerEffects(charCard.effects, avatar, serverGame, owner);
             Debug.Log("setting avatar info");
-            avatar.SetInfo(charCard, serverGame, owner, effects, id);
+            avatar.SetInfo(card, serverGame, owner, card.effects, id);
             Debug.Log("loading avatar img");
             avatar.cardCtrl.SetImage(avatar.CardName, false);
             Debug.Log("loading avatar id");
@@ -151,7 +143,8 @@ public class CardRepository : MonoBehaviour
         catch (System.ArgumentException argEx)
         {
             //Catch JSON parse error
-            Debug.LogError($"Failed to load {cardName} as Avatar, argument exception with message {argEx.Message} \nJson was {cardJsons[cardName]}");
+            Debug.LogError($"Failed to load {cardName} as Avatar, argument exception with message {argEx.Message}, stack trace:\n" +
+                $"{argEx.StackTrace}\nJson was {cardJsons[cardName]}");
             return null;
         }
     }
@@ -161,12 +154,12 @@ public class CardRepository : MonoBehaviour
         Debug.Log($"Instantiating new server non avatar for name {name}");
         string json = cardJsons[name] ?? throw new System.ArgumentException($"Name {name} not associated with json");
         ServerGameCard card = null;
-        ServerEffect[] effects;
 
         try
         {
             //TODO later try setting serializableCard in the switch, and moving set info outside
-            SerializableCard serializableCard = JsonUtility.FromJson<SerializableCard>(json);
+            ServerSerializableCard serializableCard = JsonConvert.DeserializeObject<ServerSerializableCard>(cardJsons[name],
+                new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
             switch (serializableCard.cardType)
             {
                 case 'C':
@@ -182,8 +175,7 @@ public class CardRepository : MonoBehaviour
                     Debug.LogError("Unrecognized type character " + serializableCard.cardType + " in " + json);
                     return null;
             }
-            effects = CreateServerEffects(serializableCard.effects, card, serverGame, owner);
-            card?.SetInfo(serializableCard, serverGame, owner, effects, id);
+            card?.SetInfo(serializableCard, serverGame, owner, serializableCard.effects, id);
             card?.cardCtrl?.SetImage(card.CardName, false);
             return card;
         }
@@ -195,25 +187,14 @@ public class CardRepository : MonoBehaviour
         }
     }
 
-    private ClientEffect[] CreateClientEffects(SerializableEffect[] serEffs, GameCard card, ClientGame clientGame, ClientPlayer owner)
-    {
-        ClientEffect[] effects = new ClientEffect[serEffs.Length];
-        for (int i = 0; i < effects.Length; i++)
-        {
-            effects[i] = new ClientEffect(serEffs[i], card, clientGame, i, owner);
-        }
-        return effects;
-    }
-
     public AvatarClientGameCard InstantiateClientAvatar(string json, ClientGame clientGame, ClientPlayer owner, int id)
     {
         try
         {
-            SerializableCard charCard = JsonUtility.FromJson<SerializableCard>(json);
+            ClientSerializableCard charCard = JsonUtility.FromJson<ClientSerializableCard>(json);
             if (charCard.cardType != 'C') return null;
             AvatarClientGameCard avatar = Instantiate(ClientAvatarPrefab).GetComponent<AvatarClientGameCard>();
-            ClientEffect[] effects = CreateClientEffects(charCard.effects, avatar, clientGame, owner);
-            avatar.SetInfo(charCard, clientGame, owner, effects, id);
+            avatar.SetInfo(charCard, clientGame, owner, charCard.effects, id);
             avatar.gameObject.GetComponentInChildren<ClientCardMouseController>().ClientGame = clientGame;
             avatar.cardCtrl.SetImage(avatar.CardName, false);
             clientGame.cardsByID.Add(id, avatar);
@@ -232,7 +213,7 @@ public class CardRepository : MonoBehaviour
         try
         {
             //TODO later try setting serializableCard in the switch, and moving set info outside
-            SerializableCard serializableCard = JsonUtility.FromJson<SerializableCard>(json);
+            ClientSerializableCard serializableCard = JsonUtility.FromJson<ClientSerializableCard>(json);
             ClientGameCard card;
             switch (serializableCard.cardType)
             {
@@ -250,8 +231,7 @@ public class CardRepository : MonoBehaviour
                     return null;
             }
             Debug.Log($"Successfully created a card? {card != null} for json {json}");
-            ClientEffect[] effects = CreateClientEffects(serializableCard.effects, card, clientGame, owner);
-            card.SetInfo(serializableCard, clientGame, owner, effects, id);
+            card.SetInfo(serializableCard, clientGame, owner, serializableCard.effects, id);
             card.cardCtrl.SetImage(card.CardName, false);
             card.gameObject.GetComponentInChildren<ClientCardMouseController>().ClientGame = clientGame;
             return card;
