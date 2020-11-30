@@ -4,9 +4,9 @@
 	"effText":"Can’t be cast normally. Move a card anywhere (that there isn't already a card).",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

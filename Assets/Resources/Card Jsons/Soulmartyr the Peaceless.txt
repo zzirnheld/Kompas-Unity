@@ -4,10 +4,10 @@
 	"effText":"Revenant: When I die, annihilate me. During your turn, you can pip revive me for half cost.\nWhen a card is annihilated, give friendly Ethereals +1W, and if it's an enemy turn, gain a pip.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
 			"triggerData":
 			"{
 				"blurb":"Annihilate",
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered","From Field"]
 				}
@@ -54,9 +54,9 @@
 			]
 		},
 		{
-			"triggerCondition":"Annihilate",
 			"triggerData":
 			"{
+				"triggerCondition":"Annihilate",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play"]
 				}

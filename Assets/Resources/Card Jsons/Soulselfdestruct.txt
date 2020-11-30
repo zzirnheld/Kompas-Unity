@@ -4,9 +4,9 @@
 	"effText":"Kill a friendly SX Ethereal. Mill X Revenants. (Discard them from your deck.)",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

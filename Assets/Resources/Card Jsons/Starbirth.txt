@@ -4,9 +4,9 @@
 	"effText":"Hand-discard X Pulsars. Give your Avatar +X S. Draw X and gain X pips. Annihilate me.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

@@ -4,10 +4,10 @@
 	"effText":"When your Avatar gains S, give a Summoned character +1 NESW.\nWhen your Avatar loses S, give a Summoned character -1 NESW.",
 	"effects":[
 		{
-			"triggerCondition":"S Change",
 			"triggerData":
 			"{
 				"blurb":"Flare",
+				"triggerCondition":"S Change",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction"],
 					"xRestriction":{
@@ -38,10 +38,10 @@
 			]
 		},
 		{
-			"triggerCondition":"S Change",
 			"triggerData":
 			"{
 				"blurb":"Diminish",
+				"triggerCondition":"S Change",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction"],
 					"xRestriction":{

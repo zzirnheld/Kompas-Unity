@@ -4,10 +4,10 @@
 	"effText":"When turns start, give Supplicants here +1E.\nYou can annihilate me to gain 3 pips.",
 	"effects":[
 		{
-			"triggerCondition":"Turn Start",
 			"triggerData":
 			"{
 				"blurb":"Grant Refuge",
+				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play"]
 				}

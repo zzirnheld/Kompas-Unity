@@ -4,9 +4,9 @@
 	"effText":"Kill a character adjacent to a friendly Cultist. Deck-summon a Cultist Follower where they were.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

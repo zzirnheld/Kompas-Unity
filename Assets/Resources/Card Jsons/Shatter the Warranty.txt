@@ -1,13 +1,13 @@
 {
 	"cardType":83,
 	"cardName":"Shatter the Warranty",
-	"effText":"DispelSubeffect a friendly CX Enchant. Draw X.",
+	"effText":"Dispel a friendly CX Enchant. Draw X.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
 				"blurb":"Hi-yah!",
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

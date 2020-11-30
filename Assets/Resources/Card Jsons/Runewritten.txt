@@ -4,9 +4,9 @@
 	"effText":"When you cast a Rune, I give myself +1EW.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Controller Triggered"],
 					"cardRestriction":{

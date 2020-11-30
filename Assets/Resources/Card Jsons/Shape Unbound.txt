@@ -4,9 +4,9 @@
 	"effText":"Annihilate a friendly Summoned Shaper. Deck-summon a Shaper.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

@@ -4,9 +4,9 @@
 	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nThe first time each stack a character moves into here, move them 1 space to an empty space here. If you can't, annihilate me.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
 			"triggerData":"{
 				"blurb":"Ificate",
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered","Triggerer Fits Restriction"],
 					"cardRestriction":{
@@ -43,10 +43,10 @@
 			]
 		},
 		{
-			"triggerCondition":"Move",
 			"triggerData":
 			"{
 				"blurb":"Maze Block",
+				"triggerCondition":"Move",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Coords Fit Restriction","Max Per Stack"],
 					"cardRestriction":

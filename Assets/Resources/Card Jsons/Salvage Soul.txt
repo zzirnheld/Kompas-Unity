@@ -4,9 +4,9 @@
 	"effText":"Rehand a friendly Revenant. Draw 1. Discard 1.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

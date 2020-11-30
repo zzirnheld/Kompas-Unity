@@ -4,10 +4,10 @@
 	"effText":"The first time each turn a Supplicant dies, draw a card or search your deck for a "God of the Supplicants".",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
 			"triggerData":
 			"{
 				"blurb":"Grant peace",
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","From Field","Max Per Turn"],
 					"cardRestriction":

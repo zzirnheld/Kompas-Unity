@@ -4,10 +4,10 @@
 	"effText":"When I'm augmented, attach that Augment to the character directly in front of me.",
 	"effects":[
 		{
-			"triggerCondition":"Augment Attached",
 			"triggerData":
 			"{
 				"blurb":"Run Forward!",
+				"triggerCondition":"Augment Attached",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Coords Fit Restriction"],
 					"spaceRestriction":

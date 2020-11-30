@@ -4,9 +4,9 @@
 	"effText":"Unique.\nThe first time each turn you cast a Rune, you can search your deck for a Rune.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Max Per Turn"],
 					"cardRestriction":

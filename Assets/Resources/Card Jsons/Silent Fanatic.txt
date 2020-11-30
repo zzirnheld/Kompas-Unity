@@ -4,10 +4,10 @@
 	"effText":"When I die, deck-summon 2 Cultist Followers.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
 			"triggerData":
 			"{
-				"blurb":"Reshuffle",
+				"blurb":"Deck-summon followers",
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered","From Field"]
 				}

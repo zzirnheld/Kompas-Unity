@@ -4,11 +4,11 @@
 	"effText":"When turns start, if I'm adjacent to X Warriors, you can tribute me to decksummon an S ≤ X Swordguild Warrior where I was.",
 	"effects":[
 		{
-			"triggerCondition":"Turn Start",
 			"triggerData":"{
+				"optional":true,
+				"triggerCondition":"Turn Start",
 				"triggerRestriction":
 				{
-					"optional":true,
 					"triggerRestrictions":["This Card in Play"]
 				}
 			}",

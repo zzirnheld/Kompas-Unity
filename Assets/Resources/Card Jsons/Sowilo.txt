@@ -4,9 +4,9 @@
 	"effText":"Can’t be cast normally. I give a character -1E and another +1E. Gain a pip.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

@@ -4,9 +4,9 @@
 	"effText":"Annihilate me. Choose a cost X Golem among your highest cost discarded Golems. Reshuffle X other discarded Golems, and rehand the chosen one.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

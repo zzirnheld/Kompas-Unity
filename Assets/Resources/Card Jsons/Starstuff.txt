@@ -4,9 +4,9 @@
 	"effText":"Give your Avatar +-5 S. You can then annihilate me to draw 1.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

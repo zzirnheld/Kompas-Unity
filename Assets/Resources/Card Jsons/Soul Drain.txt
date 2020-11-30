@@ -4,9 +4,9 @@
 	"effText":"When an SX Revenant is annihilated, mill your deck’s top X.",
 	"effects":[
 		{
-			"triggerCondition":"Annihilate",
 			"triggerData":
 			"{
+				"triggerCondition":"Annihilate",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":{

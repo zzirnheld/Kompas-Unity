@@ -4,9 +4,9 @@
 	"effText":"When you summon a Warrior, you can tribute me to gain a pip.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":"{
 				"optional":true,
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":

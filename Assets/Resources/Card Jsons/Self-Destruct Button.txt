@@ -4,9 +4,9 @@
 	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nDestroy two friendly cards. Discard-rehand up to 3 Crazy Ideas. Discard 1. Annihilate me.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
 			"triggerData":"{
 				"blurb":"Ificate",
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered","Triggerer Fits Restriction"],
 					"cardRestriction":{
@@ -43,9 +43,9 @@
 			]
 		},
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

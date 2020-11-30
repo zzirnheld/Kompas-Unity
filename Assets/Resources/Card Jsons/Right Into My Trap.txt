@@ -4,9 +4,9 @@
 	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nWhen a character here moves out of my area of effect, move them a space towards me, then if they’re no longer in my area of effect, annihilate me.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
 			"triggerData":"{
 				"blurb":"Ificate",
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered","Triggerer Fits Restriction"],
 					"cardRestriction":{
@@ -43,10 +43,10 @@
 			]
 		},
 		{
-			"triggerCondition":"Move",
 			"triggerData":
 			"{
 				"blurb":"Back Into My Trap",
+				"triggerCondition":"Move",
 				"triggerRestriction":{
 					"triggerRestrictions":["Triggerer Fits Restriction","Coords Fit Restriction"],
 					"cardRestriction":

@@ -4,10 +4,10 @@
 	"effText":"When friendly turns start, deck-summon a Cultist Follower.",
 	"effects":[
 		{
-			"triggerCondition":"Turn Start",
 			"triggerData":
 			"{
 				"blurb":"New Silent Devotee",
+				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Friendly Turn"]
 				}

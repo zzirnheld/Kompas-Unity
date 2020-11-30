@@ -4,11 +4,11 @@
 	"effText":"When you draw a Revenant, you can discard it and draw 1.\n(Discarded when the third turn starts after I’m played)",
 	"effects":[
 		{
-			"triggerCondition":"Each Card Drawn",
 			"triggerData":
 			"{
 				"blurb":"Discard the drawn Revenant to draw 1?",
 				"optional":true,
+				"triggerCondition":"Each Card Drawn",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Controller Triggered","Triggerer Fits Restriction"],
 					"cardRestriction":{

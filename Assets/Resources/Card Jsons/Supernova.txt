@@ -4,9 +4,9 @@
 	"effText":"Repeat the following until your Avatar's S is 0: Give your Avatar -1S.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

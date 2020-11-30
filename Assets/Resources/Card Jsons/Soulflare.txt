@@ -4,9 +4,9 @@
 	"effText":"Annihilate X Revenants from your hand. Draw X. Gain X pips.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

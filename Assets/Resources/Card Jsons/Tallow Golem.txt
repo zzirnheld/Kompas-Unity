@@ -4,9 +4,9 @@
 	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, I activate a character until your next turn.",
 	"effects":[
 		{
-			"triggerCondition":"Activate",
 			"triggerData":
 			"{
+				"triggerCondition":"Activate",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

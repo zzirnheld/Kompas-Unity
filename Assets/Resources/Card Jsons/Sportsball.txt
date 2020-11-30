@@ -4,10 +4,10 @@
 	"effText":"Recoverable.\nThe first time each turn I arrive, attach me to an adjacent character.\nThe first time each turn a character other than my current augmented card arrives adjacent to me, attach me to them.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
 			"triggerData":
 			"{
 				"blurb":"Sportsball Recovery",
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["Augmented Card Triggered"]
 				}
@@ -22,10 +22,10 @@
 			]
 		},
 		{
-			"triggerCondition":"Arrive",
 			"triggerData":
 			"{
 				"blurb":"Bounce On Arrival",
+				"triggerCondition":"Arrive",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered","Max Per Turn"]
 				}
@@ -46,10 +46,10 @@
 			]
 		},
 		{
-			"triggerCondition":"Arrive",
 			"triggerData":
 			"{
 				"blurb":"Bounce To Arrival",
+				"triggerCondition":"Arrive",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Max Per Turn","Coords Fit Restriction","Triggerer Fits Restriction"],
 					"cardRestriction":

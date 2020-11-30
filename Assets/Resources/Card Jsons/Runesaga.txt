@@ -4,9 +4,9 @@
 	"effText":"Must be cast normally. Give a Summoned Runar +25ESW. Handcast any number of Runes.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

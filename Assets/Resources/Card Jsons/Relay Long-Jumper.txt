@@ -4,10 +4,10 @@
 	"effText":"When a character moves adjacent to me, attach their Augment(s) to me.",
 	"effects":[
 		{
-			"triggerCondition":"Move",
 			"triggerData":
 			"{
 				"blurb":"Relay Long-Jump",
+				"triggerCondition":"Move",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction"],
 					"cardRestriction":

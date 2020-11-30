@@ -5,10 +5,10 @@
 	"effects":[
 		{
 			"blurb":"Territorial",
-			"triggerCondition":"Turn Start",
 			"triggerData":
 			"{
 				"blurb":"Territorial",
+				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play"]
 				}
@@ -46,10 +46,10 @@
 		},
 		{
 			"blurb":"Bloody Breath",
-			"triggerCondition":"Discard",
 			"triggerData":
 			"{
 				"blurb":"Bloody Breath",
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":

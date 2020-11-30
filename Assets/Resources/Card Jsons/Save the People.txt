@@ -4,9 +4,9 @@
 	"effText":"Rehand X of your dead Supplicants. Gain X pips. Annihilate me.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
