@@ -28,21 +28,17 @@
 					\"OptionJumpIndices\":[2,4]
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"nChange\":0,
-					\"eChange\":1,
-					\"sChange\":0,
-					\"wChange\":1
+					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"eMod\":1,
+					\"wMod\":1
 				}",
 				"{
 					\"subeffType\":\"EndResolutionSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"nChange\":0,
-					\"eChange\":-1,
-					\"sChange\":0,
-					\"wChange\":-1
+					\"subeffType\":\"XChangeNESWSubeffect\",
+					\"eMod\":-1,
+					\"wMod\":-1
 				}"
 			]
 		}

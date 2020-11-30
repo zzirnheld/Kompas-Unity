@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Animancer",
-	"effText":"During your turn, you can hand-discard Golems with total cost X to search your deck's top X cards a for cost <= X Golem. Bottomdeck the rest.",
+	"effText":"During your turn, you can hand-discard Golems with total cost X to search your deck's top X cards a for cost <= X Golem. Bottomdeck the rest.\nYou can rehand the searched Golem, or discard it to set X to that Golem's cost and search again.",
 	"effects":[
 		{
 			"blurb":"It's In Here Somewhere",
@@ -37,7 +37,7 @@
 				}",
 				"{
 					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
-					\"jumpTo\":8
+					\"jumpTo\":14
 				}",
 				"{
 					\"subeffType\":\"ChooseFromListSaveRestSubeffect\",
@@ -54,10 +54,34 @@
 					\"xMultiplier\":1
 				}",
 				"{
+					\"subeffType\":\"ClearOnImpossibleSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"BottomdeckRestSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"ChooseOptionSubeffect\",
+					\"ChoiceBlurb\":\"Rehand the Golem or search again?\",
+					\"OptionBlurbs\":[\"Rehand\",\"Search\"],
+					\"OptionJumpIndices\":[12,9]
+				}",
+				"{
+					\"subeffType\":\"SetXByTargetValueSubeffect\",
+					\"whatToCount\":\"Cost\",
+					\"xMultiplier\":1
+				}",
+				"{
+					\"subeffType\":\"DiscardSubeffect\"
+				}",
+				"{
+					\"subeffType\":\"JumpSubeffect\",
+					\"indexToJumpTo\":4
+				}",
+				"{
 					\"subeffType\":\"RehandSubeffect\"
 				}",
 				"{
-					\"subeffType\":\"ClearOnImpossibleSubeffect\"
+					\"subeffType\":\"EndResolutionSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"BottomdeckRestSubeffect\"
