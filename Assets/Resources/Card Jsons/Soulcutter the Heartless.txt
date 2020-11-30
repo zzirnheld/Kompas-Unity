@@ -17,7 +17,7 @@
 					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.AnnihilateSubeffect"
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
 				}
 			]
 		},
@@ -49,7 +49,7 @@
 					"xMultiplier":1
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect"
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
 			]
 		},

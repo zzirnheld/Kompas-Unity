@@ -22,7 +22,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ResummonSubeffect"
+					"$type":"KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
 				}
 			]	
 		},
@@ -43,7 +43,7 @@
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ResummonSubeffect"
+					"$type":"KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
 				}
 			]	
 		}

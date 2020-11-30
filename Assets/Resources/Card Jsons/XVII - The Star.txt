@@ -23,7 +23,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.BottomdeckSubeffect"
+					"$type":"KompasServer.Effects.BottomdeckSubeffect, Assembly-CSharp"
 				}
 			]
 		}

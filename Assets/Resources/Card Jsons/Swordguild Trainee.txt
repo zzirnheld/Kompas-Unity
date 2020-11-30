@@ -42,7 +42,7 @@
 					"xMultiplier":1
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect"
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
 			]
 		}

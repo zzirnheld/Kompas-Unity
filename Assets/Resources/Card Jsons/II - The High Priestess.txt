@@ -47,7 +47,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.TopdeckSubeffect"
+					"$type":"KompasServer.Effects.TopdeckSubeffect, Assembly-CSharp"
 				}
 			]	
 		}

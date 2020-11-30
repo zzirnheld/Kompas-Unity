@@ -73,7 +73,7 @@
 					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.BottomdeckRestSubeffect"
+					"$type":"KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
 				}
 			]
 		}

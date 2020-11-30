@@ -24,7 +24,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ResummonSubeffect"
+					"$type":"KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
 				}
 			]	
 		}

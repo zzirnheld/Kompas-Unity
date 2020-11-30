@@ -29,7 +29,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SwapSubeffect"
+					"$type":"KompasServer.Effects.SwapSubeffect, Assembly-CSharp"
 				}
 			]
 		}

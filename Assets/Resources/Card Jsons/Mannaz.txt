@@ -37,7 +37,7 @@
 					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.BottomdeckRestSubeffect"
+					"$type":"KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
 				}
 			]	
 		}

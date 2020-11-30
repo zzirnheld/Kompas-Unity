@@ -20,7 +20,7 @@
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect"
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				}
 			]	
 		}

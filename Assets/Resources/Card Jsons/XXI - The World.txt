@@ -32,7 +32,7 @@
 					"wMod":1
 				},
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect"
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
 			]
 		}

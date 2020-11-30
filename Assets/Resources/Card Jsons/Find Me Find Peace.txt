@@ -39,7 +39,7 @@
 					"jumpTo":2
 				},
 				{
-					"$type":"KompasServer.Effects.BottomdeckRestSubeffect"
+					"$type":"KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
 				}
 			]
 		}

@@ -32,7 +32,7 @@
 					"targetIndex":-2
 				},
 				{
-					"$type":"KompasServer.Effects.MoveSubeffect"
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
 				}
 			]	
 		}

@@ -24,7 +24,7 @@
 					"xMultiplier":1
 				},
 				{
-					"$type":"KompasServer.Effects.DispelSubeffect"
+					"$type":"KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
 				}
 			]
 		}

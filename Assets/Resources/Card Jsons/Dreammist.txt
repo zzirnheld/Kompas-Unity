@@ -20,7 +20,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect"
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
 			]	
 		}

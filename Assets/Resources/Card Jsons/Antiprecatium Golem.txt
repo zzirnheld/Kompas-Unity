@@ -22,7 +22,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DispelSubeffect"
+					"$type":"KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
 				}
 			]
 		}

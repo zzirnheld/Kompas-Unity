@@ -21,7 +21,7 @@
 					"xModifier":3
 				},
 				{
-					"$type":"KompasServer.Effects.EndTurnSubeffect"
+					"$type":"KompasServer.Effects.EndTurnSubeffect, Assembly-CSharp"
 				}
 			]	
 		}

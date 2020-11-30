@@ -18,7 +18,7 @@
 					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ResummonSubeffect"
+					"$type":"KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
 				}
 			]	
 		},
@@ -39,7 +39,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect"
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				}
 			]	
 		}
