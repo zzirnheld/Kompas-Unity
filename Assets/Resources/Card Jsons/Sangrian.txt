@@ -60,7 +60,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetDefenderSubeffect\"
+					\"subeffType\":\"TargetTriggeringCardSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"SetXByTargetValueSubeffect\",

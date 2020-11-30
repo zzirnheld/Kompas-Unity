@@ -56,7 +56,7 @@
 			}",
 			"subeffects":[
 				"{
-					\"subeffType\":\"TargetDefenderSubeffect\"
+					\"subeffType\":\"TargetThisSubeffect\"
 				}",
 				"{
 					\"subeffType\":\"SetXByTargetValueSubeffect\",
