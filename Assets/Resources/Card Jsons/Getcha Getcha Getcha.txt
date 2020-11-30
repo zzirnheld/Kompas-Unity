@@ -4,10 +4,10 @@
 	"effText":"When a friendly character is augmented, give them +1NW.",
 	"effects":[
 		{
-			"triggerCondition":"Augmented",
 			"triggerData":
 			"{
 				"blurb":"Getcha Getcha Getcha",
+				"triggerCondition":"Augmented",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":{

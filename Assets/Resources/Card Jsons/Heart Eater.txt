@@ -4,10 +4,10 @@
 	"effText":"When a friendly character dies, I get +1EW.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
 			"triggerData":
 			"{
 				"blurb":"Eat Heart",
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","From Field"],
 					"cardRestriction":

@@ -4,9 +4,9 @@
 	"effText":"Can’t be cast normally. If it’s your turn, gain 3 pips and end your turn.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

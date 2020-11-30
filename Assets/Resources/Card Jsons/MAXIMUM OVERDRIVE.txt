@@ -4,9 +4,9 @@
 	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nGive a character -5W. If they're Crazy, give them +5 N.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
 			"triggerData":"{
 				"blurb":"Ificate",
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered","Triggerer Fits Restriction"],
 					"cardRestriction":{
@@ -43,10 +43,10 @@
 			]
 		},
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
 				"blurb":"MAXIMUM OVERDRIVE",
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

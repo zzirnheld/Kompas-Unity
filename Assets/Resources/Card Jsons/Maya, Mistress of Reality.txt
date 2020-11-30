@@ -50,10 +50,10 @@
 			]
 		},
 		{
-			"triggerCondition":"Move",
 			"triggerData":
 			"{
 				"blurb":"Discard Draw",
+				"triggerCondition":"Move",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":{

@@ -4,10 +4,10 @@
 	"effText":"When turns start, NegateSubeffect a turn player’s character.",
 	"effects":[
 		{
-			"triggerCondition":"Turn Start",
 			"triggerData":
 			"{
 				"blurb":"Answer Prayer",
+				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play"]
 				}

@@ -4,10 +4,10 @@
 	"effText":"Discard your hand, including X Crazy Ideas. Pay X pips. Draw X.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
 				"blurb":"Please",
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

@@ -4,10 +4,10 @@
 	"effText":"When I'm augmented, move me up to 2 spaces.",
 	"effects":[
 		{
-			"triggerCondition":"Augmented",
 			"triggerData":
 			"{
 				"blurb":"Run Augment Outfield",
+				"triggerCondition":"Augmented",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

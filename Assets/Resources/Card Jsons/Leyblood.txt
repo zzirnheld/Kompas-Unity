@@ -4,10 +4,10 @@
 	"effText":"When a friendly Dragon kills a character, gain a pip.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
 			"triggerData":
 			"{
 				"blurb":"Leyblood",
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Stackable Source Fits Restriction"],
 					"cardRestriction":{

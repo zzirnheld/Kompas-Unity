@@ -4,9 +4,9 @@
 	"effText":"Can’t be cast normally. I set any adjacent characters’ N to 0.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

@@ -4,10 +4,10 @@
 	"effText":"When a friendly character wielding Augments with total A X moves, give adjacent characters -X W.\nWhen turns start, unless there's a friendly Sportsball Augment, annihilate me.",
 	"effects":[
 		{
-			"triggerCondition":"Move",
 			"triggerData":
 			"{
 				"blurb":"Mad Jukes My Dude!",
+				"triggerCondition":"Move",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":
@@ -49,10 +49,10 @@
 			]
 		},
 		{
-			"triggerCondition":"Turn Start",
 			"triggerData":
 			"{
 				"blurb":"Sustain the Vuvuzelas",
+				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play"]
 				}

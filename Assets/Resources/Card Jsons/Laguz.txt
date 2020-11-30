@@ -4,9 +4,9 @@
 	"effText":"Can’t be cast normally. The first time each stack a character moves themselves adjacent to me, move them 1 space.",
 	"effects":[
 		{
-			"triggerCondition":"Move",
 			"triggerData":
 			"{
+				"triggerCondition":"Move",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Max Per Stack","Not From Effect"],
 					"spaceRestriction":{

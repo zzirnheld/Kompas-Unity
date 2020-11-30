@@ -4,10 +4,10 @@
 	"effText":"The first time each stack I'm augmented, apply that Augment to another character within 2 spaces of me.",
 	"effects":[
 		{
-			"triggerCondition":"Augment Attached",
 			"triggerData":
 			"{
 				"blurb":"Punt Augment",
+				"triggerCondition":"Augment Attached",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Max Per Stack","Coords Fit Restriction"],
 					"spaceRestriction":

@@ -4,9 +4,9 @@
 	"effText":"Can’t be cast normally. Give a Summoned character -3EW.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

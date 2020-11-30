@@ -4,10 +4,10 @@
 	"effText":"When a character moves adjacent to an enemy Avatar, apply their Augment(s) to an adjacent enemy Avatar.",
 	"effects":[
 		{
-			"triggerCondition":"Move",
 			"triggerData":
 			"{
 				"blurb":"Touchdown!",
+				"triggerCondition":"Move",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction"],
 					"cardRestriction":

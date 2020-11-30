@@ -4,9 +4,9 @@
 	"effText":"Can’t be cast normally. Give X enemy characters +1EW. Gain X pips.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

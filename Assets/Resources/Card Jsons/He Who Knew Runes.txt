@@ -50,10 +50,10 @@
 			]
 		},
 		{
-			"triggerCondition":"Move",
 			"triggerData":
 			"{
 				"optional":true,
+				"triggerCondition":"Move",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

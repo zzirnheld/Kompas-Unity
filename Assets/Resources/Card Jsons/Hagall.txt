@@ -4,9 +4,9 @@
 	"effText":"Can’t be cast normally. When turns start, I give all characters here -1NE.",
 	"effects":[
 		{
-			"triggerCondition":"Turn Start",
 			"triggerData":
 			"{
+				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play"]
 				}

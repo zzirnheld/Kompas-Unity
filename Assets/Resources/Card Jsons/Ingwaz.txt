@@ -4,9 +4,9 @@
 	"effText":"Can’t be cast normally. Pip recast a distinctly named Rune for half cost (rounding down).",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

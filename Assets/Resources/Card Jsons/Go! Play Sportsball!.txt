@@ -4,9 +4,9 @@
 	"effText":"Deck-attach a Sportsball to your Avatar.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

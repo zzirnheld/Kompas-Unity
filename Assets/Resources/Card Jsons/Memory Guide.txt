@@ -4,9 +4,9 @@
 	"effText":"When your turn starts, resummon an adjacent Summoned character.",
 	"effects":[
 		{
-			"triggerCondition":"Turn Start",
 			"triggerData":
 			"{
+				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Friendly Turn"]
 				}

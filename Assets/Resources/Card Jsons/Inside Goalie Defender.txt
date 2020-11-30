@@ -4,10 +4,10 @@
 	"effText":"When your adjacent Avatar is augmented, apply their Augment(s) to another character within 1 space of me.",
 	"effects":[
 		{
-			"triggerCondition":"Augmented",
 			"triggerData":
 			"{
 				"blurb":"Goal Kick",
+				"triggerCondition":"Augmented",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":

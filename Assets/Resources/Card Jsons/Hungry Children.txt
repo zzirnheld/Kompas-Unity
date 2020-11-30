@@ -4,10 +4,10 @@
 	"effText":"When turns start, give me -1E.",
 	"effects":[
 		{
-			"triggerCondition":"Turn Start",
 			"triggerData":
 			"{
 				"blurb":"Starvation",
+				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play"]
 				}

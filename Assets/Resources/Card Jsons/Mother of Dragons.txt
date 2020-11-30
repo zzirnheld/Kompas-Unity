@@ -5,11 +5,11 @@
 	"effects":[
 		{
 			"blurb":"Dragonbirth",
-			"triggerCondition":"Turn Start",
 			"triggerData":
 			"{
 				"blurb":"Dragonbirth",
  				"optional":true,
+				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Enemy Turn"]
 				}

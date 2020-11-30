@@ -4,11 +4,11 @@
 	"effText":"Once each turn, when you draw X, you can hand-summon a character with S <= X.",
 	"effects":[
 		{
-			"triggerCondition":"Draw",
 			"triggerData":
 			"{
 				"blurb":"Hand-summon character with S <= X?",
 				"optional":true,
+				"triggerCondition":"Draw",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Controller Triggered","Max Per Turn"]
 				}

@@ -4,10 +4,10 @@
 	"effText":"The first time each turn a friendly Cultist dies, annihilate me and deck-summon 2 Cultist Followers. (If this effect is Negated, it can trigger again another turn.)",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
 			"triggerData":
 			"{
 				"blurb":"Mad Bloodcurse",
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","From Field","Max Per Turn"],
 					"cardRestriction":

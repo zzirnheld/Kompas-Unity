@@ -4,10 +4,10 @@
 	"effText":"When turns start, you can revive an S <= 1 Supplicant.",
 	"effects":[
 		{
-			"triggerCondition":"Turn Start",
 			"triggerData":
 			"{
 				"blurb":"Give Safe Haven",
+				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play"]
 				}

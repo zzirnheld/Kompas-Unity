@@ -4,10 +4,10 @@
 	"effText":"Unique. (Can't be played if you control a copy)\nWhen a character is Negated, give them +1ESW. If they're a Supplicant, also give them +2NESW.",
 	"effects":[
 		{
-			"triggerCondition":"NegateSubeffect, Assembly-CSharp",
 			"triggerData":
 			"{
 				"blurb":"Grant Hope",
+				"triggerCondition":"Negate",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

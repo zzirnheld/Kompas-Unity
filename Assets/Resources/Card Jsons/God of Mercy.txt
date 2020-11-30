@@ -4,10 +4,10 @@
 	"effText":"When I arrive adjacent to a Supplicant, negate adjacent characters until I'm removed.",
 	"effects":[
 		{
-			"triggerCondition":"Arrive",
 			"triggerData":
 			"{
 				"blurb":"Mercy",
+				"triggerCondition":"Arrive",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered","Coords Fit Restriction"],
 					"spaceRestriction":

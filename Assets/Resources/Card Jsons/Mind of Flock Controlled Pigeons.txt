@@ -4,10 +4,10 @@
 	"effText":"When I deal combat damage, discard a Crazy Idea and draw 1.",
 	"effects":[
 		{
-			"triggerCondition":"Deal Combat Damage",
 			"triggerData":
 			"{
 				"blurb":"bawk bawk bawk",
+				"triggerCondition":"Deal Combat Damage",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

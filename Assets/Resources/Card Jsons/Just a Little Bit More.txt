@@ -4,9 +4,9 @@
 	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nDiscard 1. Draw 1. Move a card 1 space. (You can’t move a spell next to 2 other spells.) Annihilate me.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
 			"triggerData":"{
 				"blurb":"Ificate",
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered","Triggerer Fits Restriction"],
 					"cardRestriction":{
@@ -43,9 +43,9 @@
 			]
 		},
 		{
-			"triggerCondition":"Play",
 			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
