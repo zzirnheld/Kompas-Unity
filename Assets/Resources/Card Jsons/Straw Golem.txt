@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Straw Golem",
-	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, move two enemy cards each 3 spaces.",
+	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, move two enemy cards, other than Avatars, each 3 spaces.",
 	"effects":[
 		{
 			"blurb":"Go Elsewhere",
@@ -18,7 +18,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"enemy card for Straw Golem to move.\",
-						\"cardRestrictions\":[\"Board\",\"Enemy\"]
+						\"cardRestrictions\":[\"Board\",\"Enemy\",\"Not Avatar\"]
 					}
 				}",
 				"{
@@ -37,7 +37,7 @@
 					\"cardRestriction\":
 					{
 						\"blurb\":\"enemy card for Straw Golem to move.\",
-						\"cardRestrictions\":[\"Board\",\"Enemy\",\"Not Already Target\"]
+						\"cardRestrictions\":[\"Board\",\"Enemy\",\"Not Already Target\",\"Not Avatar\"]
 					}
 				}",
 				"{

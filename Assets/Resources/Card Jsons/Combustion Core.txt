@@ -39,8 +39,8 @@
 			"subeffects":[
 				"{
 					\"subeffType\":\"ChooseOptionSubeffect\",
-					\"ChoiceBlurb\":\"Pay 1 pip or DispelSubeffect this?\",
-					\"OptionBlurbs\":[\"Pay 1 pip\",\"DispelSubeffect\"],
+					\"ChoiceBlurb\":\"Pay 1 pip or destroy this?\",
+					\"OptionBlurbs\":[\"Pay 1 pip\",\"Destroy\"],
 					\"OptionJumpIndices\":[1,5]
 				}",
 				"{
