@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Each Card Drawn",
-			"trigger":
+			"triggerJson":
 			"{
 				\"blurb\":\"Discard the drawn Revenant to draw 1?\",
 				\"optional\":true,

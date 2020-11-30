@@ -6,7 +6,7 @@
 		{
 			"blurb":"Go Elsewhere",
 			"triggerCondition":"Activate",
-			"trigger":
+			"triggerJson":
 			"{
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\"]

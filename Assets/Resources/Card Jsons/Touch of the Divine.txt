@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Augment Attached",
-			"trigger":
+			"triggerJson":
 			"{
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\"]
@@ -37,7 +37,7 @@
 		},
 		{
 			"triggerCondition":"Discard",
-			"trigger":
+			"triggerJson":
 			"{
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Augmented Card Triggered\",\"Triggerer Fits Restriction\"],

@@ -6,7 +6,7 @@
 		{
 			"blurb":"Choo Choo Activate",
 			"triggerCondition":"Turn Start",
-			"trigger":
+			"triggerJson":
 			"{
 				\"blurb\":\"Activate Golem\",
 				\"triggerRestriction\":{
@@ -29,7 +29,7 @@
 		{
 			"blurb":"Fuel the Choo",
 			"triggerCondition":"Turn Start",
-			"trigger":
+			"triggerJson":
 			"{
 				\"blurb\":\"Combustion Maintenance\",
 				\"triggerRestriction\":{
@@ -69,7 +69,7 @@
 		{
 			"blurb":"Core Recovery",
 			"triggerCondition":"Discard",
-			"trigger":
+			"triggerJson":
 			"{
 				\"blurb\":\"Core Recovery\",
 				\"triggerRestriction\":{

@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Augment Attached",
-			"trigger":
+			"triggerJson":
 			"{
 				\"blurb\":\"Activate Golem\",
 				\"triggerRestriction\":{
@@ -27,7 +27,7 @@
 		},
 		{
 			"triggerCondition":"Move",
-			"trigger":
+			"triggerJson":
 			"{
 				\"blurb\":\"Taunt\",
 				\"triggerRestriction\":{
@@ -57,7 +57,7 @@
 		},
 		{
 			"triggerCondition":"Discard",
-			"trigger":
+			"triggerJson":
 			"{
 				\"blurb\":\"Core Recovery\",
 				\"triggerRestriction\":{

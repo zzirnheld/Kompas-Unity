@@ -6,7 +6,7 @@
 		{
 			"blurb":"Heheh. Grenade.",
 			"triggerCondition":"Activate",
-			"trigger":
+			"triggerJson":
 			"{
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\"]

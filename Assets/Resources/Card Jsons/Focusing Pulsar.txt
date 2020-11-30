@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"S Change",
-			"trigger":
+			"triggerJson":
 			"{
 				\"blurb\":\"Enfocus\",
 				\"triggerRestriction\":{
@@ -32,7 +32,7 @@
 		},
 		{
 			"triggerCondition":"S Change",
-			"trigger":
+			"triggerJson":
 			"{
 				\"blurb\":\"Unfocus\",
 				\"triggerRestriction\":{

@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Augmented",
-			"trigger":
+			"triggerJson":
 			"{
 				\"blurb\":\"Run Augment Outfield\",
 				\"triggerRestriction\":{

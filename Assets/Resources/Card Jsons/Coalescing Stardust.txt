@@ -6,7 +6,7 @@
 		{
 			"blurb":"Coalesce +C",
 			"triggerCondition":"S Change",
-			"trigger":
+			"triggerJson":
 			"{
 				\"blurb\":\"Coalesce +C\",
 				\"triggerRestriction\":{
@@ -30,7 +30,7 @@
 		{
 			"blurb":"Coalesce Summon",
 			"triggerCondition":"Play",
-			"trigger":
+			"triggerJson":
 			"{
 				\"blurb\":\"Coalesce Summon\",
 				\"triggerRestriction\":{

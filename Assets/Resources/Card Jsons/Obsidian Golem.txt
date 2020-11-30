@@ -6,7 +6,7 @@
 		{
 			"blurb":"Shards of Glass",
 			"triggerCondition":"Activate",
-			"trigger":
+			"triggerJson":
 			"{
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\"]

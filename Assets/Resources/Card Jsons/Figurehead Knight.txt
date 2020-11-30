@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Draw",
-			"trigger":
+			"triggerJson":
 			"{
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Friendly Turn\"]
@@ -24,7 +24,7 @@
 		},
 		{
 			"triggerCondition":"Draw",
-			"trigger":
+			"triggerJson":
 			"{
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"Enemy Turn\"]

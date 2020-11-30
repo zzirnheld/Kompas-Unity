@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Turn Start",
-			"trigger":
+			"triggerJson":
 			"{
 				\"blurb\":\"Subvert Expectations\",
 				\"triggerRestriction\":{

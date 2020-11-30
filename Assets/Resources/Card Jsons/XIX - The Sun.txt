@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Draw",
-			"trigger":
+			"triggerJson":
 			"{
 				\"optional\":true,
 				\"blurb\":\"Give one character -1E and another +1E?\",

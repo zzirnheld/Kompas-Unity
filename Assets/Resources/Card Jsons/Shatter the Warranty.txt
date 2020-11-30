@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Play",
-			"trigger":
+			"triggerJson":
 			"{
 				\"blurb\":\"Hi-yah!\",
 				\"triggerRestriction\":{

@@ -51,7 +51,7 @@
 		},
 		{
 			"triggerCondition":"Move",
-			"trigger":
+			"triggerJson":
 			"{
 				\"blurb\":\"Discard Draw\",
 				\"triggerRestriction\":{

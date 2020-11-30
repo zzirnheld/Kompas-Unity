@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Discard",
-			"trigger":
+			"triggerJson":
 			"{
 				\"blurb\":\"Ificate\",
 				\"triggerRestriction\":{

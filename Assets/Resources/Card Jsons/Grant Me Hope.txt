@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"NegateSubeffect",
-			"trigger":
+			"triggerJson":
 			"{
 				\"blurb\":\"Grant Hope\",
 				\"triggerRestriction\":{

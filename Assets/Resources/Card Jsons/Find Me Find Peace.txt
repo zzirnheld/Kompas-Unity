@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Play",
-			"trigger":
+			"triggerJson":
 			"{
 				\"blurb\":\"Find Me, Find Peace\",
 				\"triggerRestriction\":{

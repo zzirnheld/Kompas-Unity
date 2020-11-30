@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Move",
-			"trigger":
+			"triggerJson":
 			"{
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\",\"Distance from Triggerer to Space == Constant\"],

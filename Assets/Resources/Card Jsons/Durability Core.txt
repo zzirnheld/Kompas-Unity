@@ -6,7 +6,7 @@
 		{
 			"blurb":"Activate",
 			"triggerCondition":"Augment Attached",
-			"trigger":
+			"triggerJson":
 			"{
 				\"blurb\":\"Activate Golem\",
 				\"triggerRestriction\":{
@@ -37,7 +37,7 @@
 		{
 			"blurb":"Core Recovery",
 			"triggerCondition":"Discard",
-			"trigger":
+			"triggerJson":
 			"{
 				\"blurb\":\"Core Recovery\",
 				\"triggerRestriction\":{

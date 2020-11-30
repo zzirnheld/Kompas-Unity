@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Arrive",
-			"trigger":
+			"triggerJson":
 			"{
 				\"blurb\":\"acid/lava burn with ghost pirhanas\",
 				\"triggerRestriction\":{

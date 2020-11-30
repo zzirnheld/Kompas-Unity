@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Draw",
-			"trigger":
+			"triggerJson":
 			"{
 				\"optional\":true,
 				\"blurb\":\"Tribute me to bottomdeck X cards from your hand and draw twice X? (X is the number of cards you just drew)\",

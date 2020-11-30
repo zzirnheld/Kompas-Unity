@@ -6,7 +6,7 @@
 		{
 			"blurb":"Dragonbind",
 			"triggerCondition":"Play",
-			"trigger":
+			"triggerJson":
 			"{
 				\"blurb\":\"Dragonbind\",
 				\"triggerRestriction\":{

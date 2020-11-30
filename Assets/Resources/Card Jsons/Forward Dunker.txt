@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Augment Attached",
-			"trigger":
+			"triggerJson":
 			"{
 				\"blurb\":\"Run Forward!\",
 				\"triggerRestriction\":{

@@ -6,7 +6,7 @@
 		{
 			"blurb":"Go to Bonky Jail",
 			"triggerCondition":"Activate",
-			"trigger":
+			"triggerJson":
 			"{
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\"]

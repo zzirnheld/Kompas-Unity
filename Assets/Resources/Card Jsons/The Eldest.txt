@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Turn Start",
-			"trigger":
+			"triggerJson":
 			"{
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\"]
@@ -27,7 +27,7 @@
 		},
 		{
 			"triggerCondition":"Attack",
-			"trigger":
+			"triggerJson":
 			"{
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\"]

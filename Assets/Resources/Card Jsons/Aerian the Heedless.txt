@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Turn Start",
-			"trigger":
+			"triggerJson":
 			"{
 				\"blurb\":\"Territorial\",
 				\"triggerRestriction\":{
@@ -28,7 +28,7 @@
 		},
 		{
 			"triggerCondition":"Attack",
-			"trigger":
+			"triggerJson":
 			"{
 				\"blurb\":\"Give the attacking Aerian and all other characters within 2 spaces -2E?\",
 				\"optional\":true,

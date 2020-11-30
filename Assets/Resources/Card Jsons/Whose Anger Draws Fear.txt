@@ -51,7 +51,7 @@
 		},
 		{
 			"triggerCondition":"Attack",
-			"trigger":
+			"triggerJson":
 			"{
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\"]

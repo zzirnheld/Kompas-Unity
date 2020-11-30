@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Discard",
-			"trigger":
+			"triggerJson":
 			"{
 				\"blurb\":\"Annihilate\",
 				\"triggerRestriction\":{
@@ -55,7 +55,7 @@
 		},
 		{
 			"triggerCondition":"Play",
-			"trigger":
+			"triggerJson":
 			"{
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card Triggered\"]

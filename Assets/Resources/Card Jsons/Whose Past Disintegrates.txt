@@ -51,7 +51,7 @@
 		},
 		{
 			"triggerCondition":"E Change",
-			"trigger":
+			"triggerJson":
 			"{
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\",\"This Card Triggered\"],

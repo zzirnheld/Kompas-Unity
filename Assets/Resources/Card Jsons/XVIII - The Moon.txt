@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Draw",
-			"trigger":
+			"triggerJson":
 			"{
 				\"optional\":true,
 				\"blurb\":\"Swap character E and W, characters' EW?\",

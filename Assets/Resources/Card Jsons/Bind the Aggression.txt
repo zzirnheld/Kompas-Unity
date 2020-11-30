@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Discard",
-			"trigger":
+			"triggerJson":
 			"{
 				\"triggerRestriction\":{
 					\"triggerRestrictions\":[1,140]
