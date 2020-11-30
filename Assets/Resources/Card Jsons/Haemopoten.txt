@@ -24,20 +24,22 @@
 					\"eMult\":-1
 				}",
 				"{
-					\"subeffType\":\"ChooseFromListSubeffect\",
-					\"maxCanChoose\":1,
+					\"subeffType\":\"AutoTargetSubeffect\",
 					\"cardRestriction\":
 					{
-						\"blurb\":\"for Necropoten to draw\",
+						\"blurb\":\"for Haemopoten to draw\",
 						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<C\"],
 						\"constant\":1
 					}
 				}",
 				"{
+					\"subeffType\":\"AnnihilateSubeffect\"
+				}",
+				"{
 					\"subeffType\":\"DelaySubeffect\",
-					\"numTimesToDelay\":1,
-					\"indexToResume\":1,
-					\"triggerCondition\":\"Turn Start\"
+					\"numTimesToDelay\":0,
+					\"indexToResume\":5,
+					\"endCondition\":\"Turn Start\"
 				}",
 				"{
 					\"subeffType\":\"RehandSubeffect\"
