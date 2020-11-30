@@ -6,7 +6,7 @@
 		{
 			"blurb":"Territorial",
 			"triggerCondition":"Turn Start",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Territorial",
 				"triggerRestriction":{
@@ -47,7 +47,7 @@
 		{
 			"blurb":"Dark Breath",
 			"triggerCondition":"Attack",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Dark Breath",
 				"triggerRestriction":{

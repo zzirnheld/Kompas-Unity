@@ -5,9 +5,9 @@
 	"effects":[
 		{
 			"blurb":"Dispel",
-			"triggerCondition":"Activate",
-			"triggerJson":
+			"triggerData":
 			"{
+				"triggerCondition":"Activate",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

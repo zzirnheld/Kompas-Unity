@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Turn Start",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Grant Refuge",
 				"triggerRestriction":{

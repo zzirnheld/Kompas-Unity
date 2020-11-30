@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Move",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Mad Jukes My Dude!",
 				"triggerRestriction":{
@@ -50,7 +50,7 @@
 		},
 		{
 			"triggerCondition":"Turn Start",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Sustain the Vuvuzelas",
 				"triggerRestriction":{

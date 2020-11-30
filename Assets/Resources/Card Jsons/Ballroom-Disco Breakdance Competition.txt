@@ -4,9 +4,9 @@
 	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nWhen a character moves in my area of effect, set their N to 0. When a character leaves my area of effect, destroy me.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
-			"triggerJson":"{
+			"triggerData":"{
 				"blurb":"Ificate",
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered","Triggerer Fits Restriction"],
 					"cardRestriction":{
@@ -43,10 +43,10 @@
 			]
 		},
 		{
-			"triggerCondition":"Move",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"N = 0",
+				"triggerCondition":"Move",
 				"triggerRestriction":{
 					"triggerRestrictions":["Coords Fit Restriction","This Card in Play"],
 					"spaceRestriction":
@@ -66,10 +66,10 @@
 			]	
 		},
 		{
-			"triggerCondition":"Move",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Annihilate this",
+				"triggerCondition":"Move",
 				"triggerRestriction":{
 					"triggerRestrictions":["Triggerer Fits Restriction","Coords Fit Restriction","This Card in Play"],
 					"cardRestriction":

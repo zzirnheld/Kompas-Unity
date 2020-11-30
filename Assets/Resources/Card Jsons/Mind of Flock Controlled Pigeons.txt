@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Deal Combat Damage",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"bawk bawk bawk",
 				"triggerRestriction":{

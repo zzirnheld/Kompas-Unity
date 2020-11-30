@@ -4,9 +4,9 @@
 	"effText":"Can’t be cast normally. Set a Summoned character’s NW to 0 and ES to 5.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"triggerJson":
+			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

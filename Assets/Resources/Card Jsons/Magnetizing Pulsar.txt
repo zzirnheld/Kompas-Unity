@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"S Change",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Repel",
 				"triggerRestriction":{
@@ -44,7 +44,7 @@
 		},
 		{
 			"triggerCondition":"S Change",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Attract",
 				"triggerRestriction":{

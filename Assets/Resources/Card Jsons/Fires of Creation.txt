@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Play",
-			"triggerJson":
+			"triggerData":
 			"{
 				"triggerRestriction":{
 					"triggerRestrictions":["Controller Triggered","Triggerer Fits Restriction","This Card in Play"],
@@ -24,7 +24,7 @@
 		},
 		{
 			"triggerCondition":"Play",
-			"triggerJson":
+			"triggerData":
 			"{
 				"triggerRestriction":{
 					"triggerRestrictions":["Controller Triggered","Triggerer Fits Restriction","This Card in Play"],

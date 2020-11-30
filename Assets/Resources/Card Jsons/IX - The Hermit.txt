@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Draw",
-			"triggerJson":
+			"triggerData":
 			"{
 				"optional":true,
 				"blurb":"Move card X slots?",

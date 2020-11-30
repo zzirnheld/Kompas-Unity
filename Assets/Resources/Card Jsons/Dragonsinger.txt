@@ -6,7 +6,7 @@
 		{
 			"blurb":"Dragonsing",
 			"triggerCondition":"Turn Start",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Hand-reshuffle X Dragons to give Dragonsinger +X S and draw X?",
 				"triggerRestriction":{

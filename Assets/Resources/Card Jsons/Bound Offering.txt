@@ -4,10 +4,10 @@
 	"effText":"When I die, annihilate me, gain a pip, and give the enemy Avatar +1E.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Annihilate",
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered","From Field"]
 				}

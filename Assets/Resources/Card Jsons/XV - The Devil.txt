@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Rehand",
-			"triggerJson":
+			"triggerData":
 			"{
 				"optional":true,
 				"blurb":"Draw 1? (An enemy just deck-rehanded a card)",

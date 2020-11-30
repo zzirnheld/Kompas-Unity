@@ -6,7 +6,7 @@
 		{
 			"blurb":"Dragonbirth",
 			"triggerCondition":"Turn Start",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Dragonbirth",
  				"optional":true,

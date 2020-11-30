@@ -284,7 +284,7 @@ namespace KompasServer.Effects
                 if (!validTriggers.Any()) return;
                 var triggers = new TriggersTriggered(triggers: validTriggers, context: context);
                 Debug.Log($"Triggers triggered for condition {condition}, context {context}: " +
-                    $"{string.Join(", ", triggers.triggers.Select(t => t.blurb))}");
+                    $"{string.Join(", ", triggers.triggers.Select(t => t.Blurb))}");
                 lock (triggerStackLock)
                 {
                     triggeredTriggers.Enqueue(triggers);

@@ -4,10 +4,10 @@
 	"effText":"The first time each round a Cultist dies, give me -2E and decksummon 2 Cultist Followers.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Bloodcurse",
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","From Field","Max Per Round"],
 					"cardRestriction":

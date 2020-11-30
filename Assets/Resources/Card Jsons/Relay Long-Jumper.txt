@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Move",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Relay Long-Jump",
 				"triggerRestriction":{

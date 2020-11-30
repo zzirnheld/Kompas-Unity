@@ -5,10 +5,10 @@
 	"effects":[
 		{
 			"blurb":"Territorial",
-			"triggerCondition":"Turn Start",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Territorial",
+				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play"]
 				}
@@ -46,10 +46,10 @@
 		},
 		{
 			"blurb":"Air Breath",
-			"triggerCondition":"Attack",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Air Breath",
+				"triggerCondition":"Attack",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

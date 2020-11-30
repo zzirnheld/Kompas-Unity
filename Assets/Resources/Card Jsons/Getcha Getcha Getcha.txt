@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Augmented",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Getcha Getcha Getcha",
 				"triggerRestriction":{

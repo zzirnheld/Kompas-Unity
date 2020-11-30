@@ -4,10 +4,10 @@
 	"effText":"When a friendly Cultist dies, I get +1S.\nI can pay 9S to deck-cast an Altar Radial.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Strengthen Builder",
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["Triggerer Fits Restriction","From Field"],
 					"cardRestriction":

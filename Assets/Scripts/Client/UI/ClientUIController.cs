@@ -235,7 +235,7 @@ namespace KompasClient.UI
 
         public void ShowOptionalTrigger(Trigger t, int? x)
         {
-            TriggerBlurbText.text = t.blurb;
+            TriggerBlurbText.text = t.Blurb;
             ConfirmTriggerView.SetActive(true);
         }
 

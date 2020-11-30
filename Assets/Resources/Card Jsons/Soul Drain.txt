@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Annihilate",
-			"triggerJson":
+			"triggerData":
 			"{
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],

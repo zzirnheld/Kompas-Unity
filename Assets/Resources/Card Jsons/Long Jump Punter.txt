@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Augment Attached",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Punt Augment",
 				"triggerRestriction":{

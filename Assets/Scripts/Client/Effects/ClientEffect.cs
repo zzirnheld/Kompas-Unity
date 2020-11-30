@@ -26,18 +26,7 @@ namespace KompasClient.Effects
         {
             base.SetInfo(thisCard, effectIndex, owner);
             this.ClientGame = clientGame;
-
-            if (!string.IsNullOrEmpty(triggerJson))
-            {
-                try
-                {
-                    ClientTrigger = ClientTrigger.FromJson(triggerCondition, triggerJson, this);
-                }
-                catch (System.ArgumentException)
-                {
-                    Debug.LogError($"Failed to load trigger of type {triggerCondition} from json {triggerJson}");
-                }
-            }
+            if (triggerData != null) ClientTrigger = new ClientTrigger(triggerData, this);
         }
 
         public override void AddTarget(GameCard card)

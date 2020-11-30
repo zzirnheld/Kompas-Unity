@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Augmented",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Goal Kick",
 				"triggerRestriction":{

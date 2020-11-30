@@ -4,8 +4,8 @@
 	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nDiscard a Crazy Idea",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
-			"triggerJson":"{
+			"triggerData":"{
+				"triggerCondition":"Discard",
 				"blurb":"Ificate",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered","Triggerer Fits Restriction"],
@@ -43,9 +43,9 @@
 			]
 		},
 		{
-			"triggerCondition":"Play",
-			"triggerJson":
+			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"blurb":"A Frayed Knot",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]

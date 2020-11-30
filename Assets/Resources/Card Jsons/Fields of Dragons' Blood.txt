@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"NESW Change",
-			"triggerJson":
+			"triggerData":
 			"{
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Stackable Source is Triggerer"],

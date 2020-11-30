@@ -51,7 +51,7 @@
 		},
 		{
 			"triggerCondition":"Play",
-			"triggerJson":
+			"triggerData":
 			"{
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered","This Card Fits Restriction"],

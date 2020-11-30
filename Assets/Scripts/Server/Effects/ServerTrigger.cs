@@ -1,5 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
+using System.Linq;
 using UnityEngine;
 
 namespace KompasServer.Effects
@@ -18,7 +19,7 @@ namespace KompasServer.Effects
         /// </summary>
         public bool Responded
         {
-            get => !optional || responded;
+            get => !Optional || responded;
             set => responded = value;
         }
 
@@ -28,7 +29,7 @@ namespace KompasServer.Effects
         /// </summary>
         public bool Confirmed
         {
-            get => !optional || confirmed;
+            get => !Optional || confirmed;
             set => confirmed = value;
         }
 
@@ -47,27 +48,11 @@ namespace KompasServer.Effects
         }
         public bool Ordered => order != -1;
 
-        /// <summary>
-        /// Creates a trigger from a json
-        /// </summary>
-        /// <param name="condition">The condition on which to trigger the effect.</param>
-        /// <param name="json">The json to create the object from.</param>
-        /// <param name="parent">The effect this trigger will trigger.</param>
-        /// <returns>The trigger with these characteristics.</returns>
-        public static ServerTrigger FromJson(string condition, string json, ServerEffect parent)
+        public ServerTrigger(TriggerData triggerData, ServerEffect parent) : base(triggerData, parent.Game)
         {
-            ServerTrigger toReturn = JsonUtility.FromJson<ServerTrigger>(json);
-
-            //set all values shared by all triggers
-            toReturn.triggerCondition = condition;
-            toReturn.serverEffect = parent;
-            //it also better have a trigger restriction, even if it's a generic one
-            if (toReturn.triggerRestriction == null) 
-                    throw new System.ArgumentNullException("triggerRestriction", $"null trigger restriction for effect of {toReturn.serverEffect.Source.CardName}");
-            var dummy = new TriggerDummySubeffect(parent);
-            toReturn.triggerRestriction.Initialize(dummy, parent.Source, toReturn);
-
-            return toReturn;
+            serverEffect = parent;
+            if(!TriggerConditions.Contains(triggerData.triggerCondition))
+                throw new System.ArgumentNullException("triggerRestriction", $"null trigger restriction for effect of {parent.Source.CardName}");
         }
 
         /// <summary>
@@ -77,14 +62,14 @@ namespace KompasServer.Effects
         /// <param name="stackTrigger">The effect or attack that triggered this, if any.</param>
         /// <param name="x">If the action that triggered this has a value of x, it goes here. Otherwise, null.</param>
         /// <returns>Whether all restrictions of the trigger are fulfilled.</returns>
-        public bool ValidForContext(ActivationContext context) => !Source.Negated && triggerRestriction.Evaluate(context);
+        public bool ValidForContext(ActivationContext context) => !Source.Negated && TriggerRestriction.Evaluate(context);
 
         /// <summary>
         /// Rechecks any trigger restrictions that might have changed between the trigger triggering and being ordered.
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
-        public bool StillValidForContext(ActivationContext context) => triggerRestriction.Reevaluate(context);
+        public bool StillValidForContext(ActivationContext context) => TriggerRestriction.Reevaluate(context);
 
         /// <summary>
         /// Resets Confirmed and Responded, for the next time this effect might be triggered
@@ -102,7 +87,7 @@ namespace KompasServer.Effects
         /// </summary>
         public void Ask()
         {
-            if (!optional) 
+            if (!Optional) 
                 throw new System.InvalidOperationException("Can't ask the player to okay a trigger that isn't optional");
 
             serverEffect.ServerController.ServerNotifier.AskForTrigger(this);
@@ -114,7 +99,7 @@ namespace KompasServer.Effects
         /// <param name="answerer"></param>
         public void Answered(bool answer, Player answerer)
         {
-            if (!optional) 
+            if (!Optional) 
                 throw new System.InvalidOperationException("Can't answer a trigger that isn't optional");
             if (answerer != Effect.Controller) 
                 throw new System.InvalidOperationException("Player other than the owner tried to answer a trigger");

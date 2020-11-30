@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Draw",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Tribute me to deck-summon Tarocco with S <= X?",
 				"optional":true,

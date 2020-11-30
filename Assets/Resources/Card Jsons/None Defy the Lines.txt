@@ -6,7 +6,7 @@
 		{
 			"blurb":"Simple Effect",
 			"triggerCondition":"Play",
-			"triggerJson":
+			"triggerData":
 			"{
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]

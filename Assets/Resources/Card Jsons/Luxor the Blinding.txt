@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Turn Start",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Territorial",
 				"triggerRestriction":{
@@ -28,7 +28,7 @@
 		},
 		{
 			"triggerCondition":"Attack",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Give the attacking Luxor -1E to give adjacent characters -2E?",
 				"optional":true,

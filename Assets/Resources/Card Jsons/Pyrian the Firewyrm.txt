@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Turn Start",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Territorial",
 				"triggerRestriction":{
@@ -27,7 +27,7 @@
 		},
 		{
 			"triggerCondition":"Attack",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Give the attacking Pyrian -1E to give their target -4E?",
 				"optional":true,

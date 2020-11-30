@@ -34,8 +34,7 @@ namespace KompasCore.Effects
         public int X = 0;
 
         //Triggering and Activating
-        public string triggerJson;
-        public string triggerCondition;
+        public TriggerData triggerData;
         public abstract Trigger Trigger { get; }
         public ActivationRestriction activationRestriction;
         public string blurb;

@@ -35,7 +35,7 @@
 		{
 			"blurb":"Orange Linewalked",
 			"triggerCondition":"Move",
-			"triggerJson":
+			"triggerData":
 			"{
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]

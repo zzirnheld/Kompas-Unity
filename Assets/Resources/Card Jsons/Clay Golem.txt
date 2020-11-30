@@ -6,7 +6,7 @@
 		{
 			"blurb":"Golemorph",
 			"triggerCondition":"Activate",
-			"triggerJson":
+			"triggerData":
 			"{
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]

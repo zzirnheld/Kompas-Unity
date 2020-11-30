@@ -4,9 +4,9 @@
 	"effText":"When I’m summoned, deck-summon a Cultist Follower.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"triggerJson":
+			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

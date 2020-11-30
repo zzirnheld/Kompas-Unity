@@ -4,9 +4,9 @@
 	"effText":"Pip deck-cast a Sportball Play.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"triggerJson":
+			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

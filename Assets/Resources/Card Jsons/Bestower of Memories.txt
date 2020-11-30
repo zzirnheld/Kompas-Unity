@@ -4,10 +4,10 @@
 	"effText":"When friendly turns start, resummon a character.\nThe first time each stack a character is summoned, resummon them.",
 	"effects":[
 		{
-			"triggerCondition":"Turn Start",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Resummon a Summoned character? (This triggers any relevant on-summon effects.)",
+				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Friendly Turn"]
 				}
@@ -27,9 +27,9 @@
 			]	
 		},
 		{
-			"triggerCondition":"Play",
-			"triggerJson":
+			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["Max Per Stack","This Card in Play","Controller Triggered","Triggerer Fits Restriction"],
 					"cardRestriction":

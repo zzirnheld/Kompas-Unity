@@ -22,14 +22,14 @@ namespace KompasServer.Effects
         {
             //conditions for falling off
             var triggerRest = new TriggerRestriction() { triggerRestrictions = fallOffRestrictions };
-            triggerRest.Initialize(this, card, null);
+            triggerRest.Initialize(Game, card, null);
             return triggerRest;
         }
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
-            triggerRestriction.Initialize(this, ThisCard, null);
+            triggerRestriction.Initialize(Game, ThisCard, null);
         }
 
         public override bool Resolve()

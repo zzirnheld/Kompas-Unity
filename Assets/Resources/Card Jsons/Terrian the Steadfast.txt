@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Turn Start",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Territorial",
 				"triggerRestriction":{
@@ -27,7 +27,7 @@
 		},
 		{
 			"triggerCondition":"Attack",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Give the attacking Terrian -XE to give its taret -2XW? (You choose X)",
 				"optional":true,

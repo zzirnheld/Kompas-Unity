@@ -4,9 +4,9 @@
 	"effText":"Can’t be cast normally. Give a character +5E.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"triggerJson":
+			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

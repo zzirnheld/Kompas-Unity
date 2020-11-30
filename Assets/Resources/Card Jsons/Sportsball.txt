@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Discard",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Sportsball Recovery",
 				"triggerRestriction":{
@@ -23,7 +23,7 @@
 		},
 		{
 			"triggerCondition":"Arrive",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Bounce On Arrival",
 				"triggerRestriction":{
@@ -47,7 +47,7 @@
 		},
 		{
 			"triggerCondition":"Arrive",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Bounce To Arrival",
 				"triggerRestriction":{

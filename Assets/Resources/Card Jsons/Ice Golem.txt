@@ -6,7 +6,7 @@
 		{
 			"blurb":"Fun Not Allowed",
 			"triggerCondition":"Activate",
-			"triggerJson":
+			"triggerData":
 			"{
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]

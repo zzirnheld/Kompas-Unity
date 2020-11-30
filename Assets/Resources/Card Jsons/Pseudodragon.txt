@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Attack",
-			"triggerJson":
+			"triggerData":
 			"{
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]

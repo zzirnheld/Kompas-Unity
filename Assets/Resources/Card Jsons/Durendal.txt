@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Battle Start",
-			"triggerJson":
+			"triggerData":
 			"{
 				"triggerRestriction":{
 					"triggerRestrictions":["Augmented Card Triggered","Max Per Round"]

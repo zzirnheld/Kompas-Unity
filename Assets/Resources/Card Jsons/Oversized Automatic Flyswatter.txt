@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Arrive",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"BEGONE! SWAT!",
 				"triggerRestriction":{

@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"S Change",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Fortune-card",
 				"triggerRestriction":{
@@ -37,7 +37,7 @@
 		},
 		{
 			"triggerCondition":"S Change",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Fortune-pip",
 				"triggerRestriction":{

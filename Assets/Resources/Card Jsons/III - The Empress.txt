@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Draw",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Hand-summon character with S <= X?",
 				"optional":true,

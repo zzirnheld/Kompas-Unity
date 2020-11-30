@@ -9,6 +9,9 @@ namespace KompasCore.Effects
     public class SpaceRestriction
     {
         public Subeffect Subeffect { get; private set; }
+        public GameCard Source { get; private set; }
+        public Player Controller { get; private set; }
+        public Effect Effect { get; private set; }
 
         //adjacency
         public const string AdjacentToThisCard = "Adjacent to Source";
@@ -46,9 +49,21 @@ namespace KompasCore.Effects
 
         public string blurb = "";
 
+        public void Initialize(GameCard source, Player controller, Effect effect)
+        {
+            Source = source;
+            Controller = controller;
+            Effect = effect;
+            adjacencyRestriction.Initialize(source, controller, effect);
+            connectednessRestriction.Initialize(source, controller, effect);
+            limitAdjacencyRestriction.Initialize(source, controller, effect);
+            hereFitsRestriction.Initialize(source, controller, effect);
+        }
+
         public void Initialize(Subeffect subeffect)
         {
-            this.Subeffect = subeffect;
+            Initialize(subeffect.Source, subeffect.Controller, subeffect.Effect);
+            Subeffect = subeffect;
             adjacencyRestriction.Initialize(subeffect);
             connectednessRestriction.Initialize(subeffect);
             limitAdjacencyRestriction.Initialize(subeffect);

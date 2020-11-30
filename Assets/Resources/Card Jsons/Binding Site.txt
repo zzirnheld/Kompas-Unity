@@ -4,9 +4,9 @@
 	"effText":"When I’m summoned, give a character +3 S.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"triggerJson":
+			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

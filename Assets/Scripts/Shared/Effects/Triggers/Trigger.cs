@@ -1,4 +1,5 @@
 ﻿using KompasCore.Cards;
+using KompasCore.GameCore;
 
 namespace KompasCore.Effects
 {
@@ -51,13 +52,18 @@ namespace KompasCore.Effects
             EachDraw, DrawX, Arrive, Play, Discard, Rehand, Reshuffle, Topdeck, Bottomdeck, ToDeck, Move, Annhilate, Remove, AugmentAttached, AugmentDetached
         };
 
-        public string triggerCondition;
-        public TriggerRestriction triggerRestriction = new TriggerRestriction();
-
-        public bool optional = false;
-        public string blurb = "Trigger";
-
+        public TriggerData TriggerData { get; }
         public abstract GameCard Source { get; }
         public abstract Effect Effect { get; }
+
+        public TriggerRestriction TriggerRestriction => TriggerData.triggerRestriction;
+        public bool Optional => TriggerData.optional;
+        public string Blurb => TriggerData.blurb;
+
+        public Trigger(TriggerData triggerData, Game game)
+        {
+            TriggerData = triggerData;
+            triggerData.triggerRestriction.Initialize(game, Source, this);
+        }
     }
 }

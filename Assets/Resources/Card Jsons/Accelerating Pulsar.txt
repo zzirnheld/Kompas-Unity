@@ -4,10 +4,10 @@
 	"effText":"When your Avatar gains S, give adjacent characters +1 N.\nWhen your Avatar loses S, give adjacent characters -1 N.",
 	"effects":[
 		{
-			"triggerCondition":"S Change",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Accelerate",
+				"triggerCondition":"S Change",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction"],
 					"xRestriction":{
@@ -31,10 +31,10 @@
 			]	
 		},
 		{
-			"triggerCondition":"S Change",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Decelerate",
+				"triggerCondition":"S Change",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction"],
 					"xRestriction":{

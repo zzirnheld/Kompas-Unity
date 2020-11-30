@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"S Change",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Flare",
 				"triggerRestriction":{
@@ -39,7 +39,7 @@
 		},
 		{
 			"triggerCondition":"S Change",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Diminish",
 				"triggerRestriction":{

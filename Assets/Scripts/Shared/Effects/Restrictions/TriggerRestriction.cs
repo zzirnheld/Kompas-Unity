@@ -1,4 +1,5 @@
 ﻿using KompasCore.Cards;
+using KompasCore.GameCore;
 using KompasServer.Effects;
 using System.Linq;
 using UnityEngine;
@@ -8,7 +9,7 @@ namespace KompasCore.Effects
     [System.Serializable]
     public class TriggerRestriction
     {
-        public Subeffect Subeffect { get; private set; }
+        public Game Game { get; private set; }
 
         public const string ThisCardTriggered = "This Card Triggered"; //0,
 
@@ -64,14 +65,14 @@ namespace KompasCore.Effects
 
         public GameCard ThisCard { get; private set; }
 
-        public ServerTrigger ThisTrigger { get; private set; }
+        public Trigger ThisTrigger { get; private set; }
 
-        public void Initialize(ServerSubeffect subeff, GameCard thisCard, ServerTrigger thisTrigger)
+        public void Initialize(Game game, GameCard thisCard, Trigger thisTrigger)
         {
-            Subeffect = subeff;
-            cardRestriction.Initialize(subeff);
-            xRestriction.Initialize(subeff);
-            spaceRestriction.Initialize(subeff);
+            Game = game;
+            cardRestriction.Initialize(thisCard, thisTrigger.Effect.Controller, thisTrigger.Effect);
+            xRestriction.Initialize(thisCard);
+            spaceRestriction.Initialize(thisCard, thisTrigger.Effect.Controller, thisTrigger.Effect);
             this.ThisCard = thisCard;
             this.ThisTrigger = thisTrigger;
         }
@@ -103,16 +104,16 @@ namespace KompasCore.Effects
                     return context.Card.DistanceTo(context.Space.Value) == distance;
 
                 //gamestate
-                case FriendlyTurn:  return Subeffect.Game.TurnPlayer == ThisCard.Controller;
-                case EnemyTurn:     return Subeffect.Game.TurnPlayer != ThisCard.Controller;
+                case FriendlyTurn:  return Game.TurnPlayer == ThisCard.Controller;
+                case EnemyTurn:     return Game.TurnPlayer != ThisCard.Controller;
                 case FromField:     return context.Card.Location == CardLocation.Field;
                 case FromDeck:      return context.Card.Location == CardLocation.Deck;
                 case NotFromEffect: return context.Stackable is Effect;
 
                 //max
-                case MaxPerRound: return ThisTrigger.serverEffect.TimesUsedThisRound < maxPerRound;
-                case MaxPerTurn:  return ThisTrigger.serverEffect.TimesUsedThisTurn < maxTimesPerTurn;
-                case MaxPerStack: return ThisTrigger.serverEffect.TimesUsedThisStack < maxPerStack;
+                case MaxPerRound: return ThisTrigger.Effect.TimesUsedThisRound < maxPerRound;
+                case MaxPerTurn:  return ThisTrigger.Effect.TimesUsedThisTurn < maxTimesPerTurn;
+                case MaxPerStack: return ThisTrigger.Effect.TimesUsedThisStack < maxPerStack;
 
                 //misc
                 default: throw new System.ArgumentException($"Invalid trigger restriction {restriction}");

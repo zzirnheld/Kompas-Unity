@@ -4,10 +4,10 @@
 	"effText":"When another character arrives adjacent to me, annihilate me to give them -11E.",
 	"effects":[
 		{
-			"triggerCondition":"Arrive",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"acid/lava burn with ghost pirhanas",
+				"triggerCondition":"Arrive",
 				"triggerRestriction":{
 					"triggerRestrictions":["Coords Fit Restriction","Triggerer Fits Restriction"],
 					"cardRestriction":

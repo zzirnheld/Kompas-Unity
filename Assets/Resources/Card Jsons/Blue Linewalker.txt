@@ -34,9 +34,9 @@
 		},
 		{
 			"blurb":"Red Linewalked",
-			"triggerCondition":"Move",
-			"triggerJson":
+			"triggerData":
 			"{
+				"triggerCondition":"Move",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

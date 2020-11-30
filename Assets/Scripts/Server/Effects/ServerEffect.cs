@@ -31,19 +31,7 @@ namespace KompasServer.Effects
             this.serverGame = serverGame;
             this.ServerController = controller;
 
-            if (!string.IsNullOrEmpty(triggerJson))
-            {
-                try
-                {
-                    ServerTrigger = ServerTrigger.FromJson(triggerCondition, triggerJson, this);
-                    EffectsController.RegisterTrigger(triggerCondition, ServerTrigger);
-                }
-                catch (System.ArgumentException)
-                {
-                    Debug.LogError($"Failed to load trigger of type {triggerCondition} from json {triggerJson}");
-                    throw;
-                }
-            }
+            if (triggerData != null) ServerTrigger = new ServerTrigger(triggerData, this);
 
             int i = 0;
             foreach (var subeff in subeffects) subeff.Initialize(this, i++);

@@ -6,7 +6,7 @@
 		{
 			"blurb":"Defense Activate!",
 			"triggerCondition":"Augment Attached",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Activate Golem",
 				"triggerRestriction":{
@@ -29,7 +29,7 @@
 		{
 			"blurb":"You Shouldn't Have Done That",
 			"triggerCondition":"Defend",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Golem Defense",
 				"triggerRestriction":{
@@ -50,7 +50,7 @@
 		{
 			"blurb":"Core Recovery",
 			"triggerCondition":"Discard",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Core Recovery",
 				"triggerRestriction":{

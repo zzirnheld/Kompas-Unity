@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"Move",
-			"triggerJson":
+			"triggerData":
 			"{
 				"optional":true,
 				"blurb":"Tribute Dreamfog to gain a pip?",

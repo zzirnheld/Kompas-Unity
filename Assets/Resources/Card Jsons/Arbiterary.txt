@@ -4,10 +4,10 @@
 	"effText":"Unique: Can’t be played if you control a copy.\nWhen a friendly Augment is attached, give it +1 A.\nWhen a friendly AX Augment is attached to an enemy Avatar, give them -X E, attach the augment to me, and reset the Augment's A.",
 	"effects":[
 		{
-			"triggerCondition":"Augment Attached",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Score Pass",
+				"triggerCondition":"Augment Attached",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":
@@ -27,10 +27,10 @@
 			]
 		},
 		{
-			"triggerCondition":"Augment Attached",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Score Goal!",
+				"triggerCondition":"Augment Attached",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction"],
 					"cardRestriction":

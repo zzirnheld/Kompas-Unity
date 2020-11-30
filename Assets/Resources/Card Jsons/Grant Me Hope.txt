@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"triggerCondition":"NegateSubeffect, Assembly-CSharp",
-			"triggerJson":
+			"triggerData":
 			"{
 				"blurb":"Grant Hope",
 				"triggerRestriction":{

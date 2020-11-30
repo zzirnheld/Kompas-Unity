@@ -4,9 +4,9 @@
 	"effText":"Can’t be cast normally. Set a character’s N to 1 and ESW to 10.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"triggerJson":
+			"triggerData":
 			"{
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
