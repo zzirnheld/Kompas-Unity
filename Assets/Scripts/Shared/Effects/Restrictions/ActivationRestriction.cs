@@ -28,15 +28,19 @@ namespace KompasCore.Effects
 
         public int maxTimes = 1;
         public int location = (int) CardLocation.Field;
-        public CardRestriction existsRestriction = new CardRestriction();
+        public CardRestriction existsRestriction;
 
         public List<string> activationRestrictions = new List<string>{ "Default" };
 
         public void Initialize(Effect eff)
         {
             Effect = eff;
+
+            existsRestriction = existsRestriction ?? new CardRestriction();
             existsRestriction.Initialize(eff.Source, eff.Controller, eff);
+
             if (activationRestrictions.Contains("Default")) activationRestrictions.AddRange(DefaultRestrictions);
+
             Debug.Log($"Initializing activation restriction for {Card.CardName} " +
                 $"with restrictions: {string.Join(", ", activationRestrictions)}");
         }

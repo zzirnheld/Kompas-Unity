@@ -7,7 +7,7 @@ using UnityEngine;
 public class TriggerData
 {
     public string triggerCondition;
-    public TriggerRestriction triggerRestriction = new TriggerRestriction();
+    public TriggerRestriction triggerRestriction;
 
     public bool optional = false;
     public string blurb = "Trigger";

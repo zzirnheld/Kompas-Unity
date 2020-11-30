@@ -54,10 +54,10 @@ namespace KompasCore.Effects
         public static readonly string[] ReevalationRestrictions = { MaxPerTurn, MaxPerRound, MaxPerStack };
 
         public string[] triggerRestrictions = new string[0];
-        public CardRestriction cardRestriction = new CardRestriction();
-        public XRestriction xRestriction = new XRestriction();
-        public SpaceRestriction spaceRestriction = new SpaceRestriction();
-        public CardRestriction sourceRestriction = new CardRestriction();
+        public CardRestriction cardRestriction;
+        public XRestriction xRestriction;
+        public SpaceRestriction spaceRestriction;
+        public CardRestriction sourceRestriction;
         public int maxTimesPerTurn = 1;
         public int maxPerRound = 1;
         public int maxPerStack = 1;
@@ -70,9 +70,16 @@ namespace KompasCore.Effects
         public void Initialize(Game game, GameCard thisCard, Trigger thisTrigger)
         {
             Game = game;
+
+            cardRestriction = cardRestriction ?? new CardRestriction();
+            sourceRestriction = sourceRestriction ?? new CardRestriction();
+            xRestriction = xRestriction ?? new XRestriction();
+            spaceRestriction = spaceRestriction ?? new SpaceRestriction();
+
             cardRestriction.Initialize(thisCard, thisTrigger.Effect.Controller, thisTrigger.Effect);
             xRestriction.Initialize(thisCard);
             spaceRestriction.Initialize(thisCard, thisTrigger.Effect.Controller, thisTrigger.Effect);
+
             this.ThisCard = thisCard;
             this.ThisTrigger = thisTrigger;
         }

@@ -59,7 +59,7 @@ namespace KompasCore.Effects
         {
             Source = source != null ? source : throw new System.ArgumentNullException("source", "Effect cannot be attached to null card");
             Controller = owner;
-            activationRestriction.Initialize(this);
+            activationRestriction?.Initialize(this);
             EffectIndex = effIndex;
             TimesUsedThisTurn = 0;
         }

@@ -7,7 +7,7 @@ namespace KompasServer.Effects
     [System.Serializable]
     public abstract class TemporaryCardChangeSubeffect : ServerSubeffect
     {
-        public TriggerRestriction triggerRestriction = new TriggerRestriction();
+        public TriggerRestriction triggerRestriction;
         public string endCondition;
         public virtual bool ContinueResolution => true;
 
@@ -29,6 +29,7 @@ namespace KompasServer.Effects
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
+            triggerRestriction = triggerRestriction ?? new TriggerRestriction();
             triggerRestriction.Initialize(Game, ThisCard, null);
         }
 

@@ -13,17 +13,18 @@ namespace KompasServer.Effects
         public int wBuff;
 
         //default to making sure things are characters before changing their stats
-        public CardRestriction cardRestriction = new CardRestriction()
-        {
-            cardRestrictions = new string[]
-            {
-                CardRestriction.IsCharacter
-            }
-        };
+        public CardRestriction cardRestriction;
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
+            cardRestriction = cardRestriction ?? new CardRestriction()
+            {
+                cardRestrictions = new string[]
+                {
+                    CardRestriction.IsCharacter
+                }
+            };
             cardRestriction.Initialize(this);
         }
 

@@ -39,11 +39,11 @@ namespace KompasCore.Effects
         public const string OnEdge = "On Edge of Board";
 
         public string[] spaceRestrictions;
-        public CardRestriction adjacencyRestriction = new CardRestriction();
-        public CardRestriction limitAdjacencyRestriction = new CardRestriction();
+        public CardRestriction adjacencyRestriction;
+        public CardRestriction limitAdjacencyRestriction;
         public int adjacencyLimit;
-        public CardRestriction connectednessRestriction = new CardRestriction();
-        public CardRestriction hereFitsRestriction = new CardRestriction();
+        public CardRestriction connectednessRestriction;
+        public CardRestriction hereFitsRestriction;
 
         public int constant;
 
@@ -54,6 +54,12 @@ namespace KompasCore.Effects
             Source = source;
             Controller = controller;
             Effect = effect;
+
+            adjacencyRestriction = adjacencyRestriction ?? new CardRestriction();
+            connectednessRestriction = connectednessRestriction ?? new CardRestriction();
+            limitAdjacencyRestriction = limitAdjacencyRestriction ?? new CardRestriction();
+            hereFitsRestriction = hereFitsRestriction ?? new CardRestriction();
+
             adjacencyRestriction.Initialize(source, controller, effect);
             connectednessRestriction.Initialize(source, controller, effect);
             limitAdjacencyRestriction.Initialize(source, controller, effect);
