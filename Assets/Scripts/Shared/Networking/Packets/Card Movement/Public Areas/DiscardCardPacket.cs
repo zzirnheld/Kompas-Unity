@@ -8,28 +8,28 @@ namespace KompasCore.Networking
     public class DiscardCardPacket : Packet
     {
         public int cardId;
-        public string cardName;
+        public string json;
         public int controllerIndex;
 
         public DiscardCardPacket() : base(DiscardCard) { }
 
-        public DiscardCardPacket(int cardId, string cardName, int controllerIndex, bool invert = false) : this()
+        public DiscardCardPacket(int cardId, string json, int controllerIndex, bool invert = false) : this()
         {
             this.cardId = cardId;
-            this.cardName = cardName;
+            this.json = json;
             this.controllerIndex = invert ? 1 - controllerIndex : controllerIndex;
         }
 
         public DiscardCardPacket(GameCard card, bool invert = false)
-            : this(card.ID, card.CardName, card.ControllerIndex, invert: invert)
+            : this(card.ID, card.BaseJson, card.ControllerIndex, invert: invert)
         { }
 
-        public override Packet Copy() => new DiscardCardPacket(cardId, cardName, controllerIndex, invert: false);
+        public override Packet Copy() => new DiscardCardPacket(cardId, json, controllerIndex, invert: false);
 
         public override Packet GetInversion(bool known)
         {
-            if (known) return new DiscardCardPacket(cardId, cardName, controllerIndex, invert: true);
-            else return new AddCardPacket(cardId, cardName, CardLocation.Discard, controllerIndex, invert: true);
+            if (known) return new DiscardCardPacket(cardId, json, controllerIndex, invert: true);
+            else return new AddCardPacket(cardId, json, CardLocation.Discard, controllerIndex, invert: true);
         }
     }
 }
