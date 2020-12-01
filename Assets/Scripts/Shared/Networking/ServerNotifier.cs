@@ -91,7 +91,7 @@ namespace KompasServer.Networking
         public void NotifyDecrementHand() => SendPacket(new ChangeEnemyHandCountPacket(-1));
 
         public void NotifyAnnhilate(GameCard toAnnhilate)
-            => SendToBothInverting(new AnnihilateCardPacket(toAnnhilate.ID, toAnnhilate.CardName, toAnnhilate.ControllerIndex, invert: Player.index != 0), 
+            => SendToBothInverting(new AnnihilateCardPacket(toAnnhilate.ID, toAnnhilate.BaseJson, toAnnhilate.ControllerIndex, invert: Player.index != 0), 
                 known: toAnnhilate.KnownToEnemy);
 
         public void NotifyTopdeck(GameCard card)
