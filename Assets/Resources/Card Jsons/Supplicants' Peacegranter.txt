@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Supplicants' Peacegranter",
-	"effText":"The first time each turn a Supplicant dies, draw a card or search your deck for a "God of the Supplicants".",
+	"effText":"The first time each turn a Supplicant dies, draw a card or search your deck for a \"God of Mercy\".",
 	"effects":[
 		{
 			"triggerData":
@@ -20,7 +20,7 @@
 			"subeffects":[
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Draw or search for a \\"God of Mercy\\"",
+					"ChoiceBlurb":"Draw or search for a \"God of Mercy\"",
 					"OptionBlurbs":["Draw","God"],
 					"OptionJumpIndices":[1,3]
 				},

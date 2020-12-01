@@ -8,7 +8,12 @@ namespace KompasServer.Effects
     {
         public override bool Resolve()
         {
-            for(int i = 0; i < Count; i++) Controller.deckCtrl.Topdeck.Discard();
+            for (int i = 0; i < Count; i++)
+            {
+                var card = Controller.deckCtrl.Topdeck;
+                if (card == null) return ServerEffect.EffectImpossible();
+                card.Discard();
+            }
 
             return ServerEffect.ResolveNextSubeffect();
         }

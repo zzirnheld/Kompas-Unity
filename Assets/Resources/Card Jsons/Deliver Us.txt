@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Deliver Us",
-	"effText":"If there's at least 10 friendly Supplicants dead or in play, deck-summon a "God of Mercy".",
+	"effText":"If there's at least 10 friendly Supplicants dead or in play, deck-summon a \"God of Mercy\".",
 	"effects":[
 		{
 			"triggerData":
