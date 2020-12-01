@@ -26,7 +26,8 @@ namespace KompasClient.Effects
         {
             base.SetInfo(thisCard, effectIndex, owner);
             this.ClientGame = clientGame;
-            if (triggerData != null) ClientTrigger = new ClientTrigger(triggerData, this);
+            if (triggerData != null && !string.IsNullOrEmpty(triggerData.triggerCondition))
+                ClientTrigger = new ClientTrigger(triggerData, this);
         }
 
         public override void AddTarget(GameCard card)

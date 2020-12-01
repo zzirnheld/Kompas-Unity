@@ -58,8 +58,7 @@ namespace KompasServer.Networking
 
         public void NotifySetPips(int pipsToSet)
             => SendToBothInverting(new SetPipsPacket(pipsToSet, Player.index, invert: Player.index != 0));
-        public void NotifySetTurn(ServerGame sGame, int indexToSet)
-            => SendToBothInverting(new SetTurnPlayerPacket(indexToSet, invert: Player.index != 0));
+        public void NotifyYourTurn() => SendToBothInverting(new SetTurnPlayerPacket(0));
         #endregion game stats
 
         #region card location
@@ -75,7 +74,7 @@ namespace KompasServer.Networking
             if (toPlay.CardType == 'A') return;
 
             //tell everyone to do it
-            var p = new PlayCardPacket(toPlay.ID, toPlay.CardName, toPlay.ControllerIndex, x, y, invert: Player.index != 0);
+            var p = new PlayCardPacket(toPlay.ID, toPlay.BaseJson, toPlay.ControllerIndex, x, y, invert: Player.index != 0);
             var q = p.GetInversion(toPlay.KnownToEnemy);
             SendPackets(p, q);
         }

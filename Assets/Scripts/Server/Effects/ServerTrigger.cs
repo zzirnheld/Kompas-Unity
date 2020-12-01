@@ -55,7 +55,7 @@ namespace KompasServer.Effects
         public ServerTrigger(TriggerData triggerData, ServerEffect parent) : base(triggerData, parent)
         {
             if(!TriggerConditions.Contains(triggerData.triggerCondition))
-                throw new System.ArgumentNullException("triggerRestriction", $"null trigger restriction for effect of {parent.Source.CardName}");
+                throw new System.ArgumentNullException("triggerCondition", $"invalid trigger condition for effect of {parent.Source.CardName}");
 
             parent.serverGame.EffectsController.RegisterTrigger(TriggerCondition, this);
         }

@@ -31,7 +31,8 @@ namespace KompasServer.Effects
             this.serverGame = serverGame;
             this.ServerController = controller;
 
-            if (triggerData != null) ServerTrigger = new ServerTrigger(triggerData, this);
+            if (triggerData != null && !string.IsNullOrEmpty(triggerData.triggerCondition))
+                ServerTrigger = new ServerTrigger(triggerData, this);
 
             int i = 0;
             foreach (var subeff in subeffects) subeff.Initialize(this, i++);

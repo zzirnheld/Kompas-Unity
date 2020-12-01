@@ -12,7 +12,7 @@ namespace KompasCore.GameCore
         public const int SpacesInGrid = 7;
         public const float BoardLenOffset = 7f;
         public const float LenOneSpace = 2f;
-        public const float SpaceOffset = LenOneSpace / 2;
+        public const float SpaceOffset = LenOneSpace / 2f;
 
         public Game game;
 

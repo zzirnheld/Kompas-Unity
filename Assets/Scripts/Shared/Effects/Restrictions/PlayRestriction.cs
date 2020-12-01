@@ -36,14 +36,17 @@ namespace KompasCore.Effects
             { PlayedByCardOwner, FromHand, OnBoardCardFriendlyOrAdjacent, StandardSpellRestriction, FriendlyTurnIfNotFast, HasCostInPips, FastOrNothingIsResolving };
         public static readonly string[] AugmentEffectRestrictions = { StandardSpellRestriction, OnBoardCardFriendlyOrAdjacent };
 
-        public List<string> normalRestrictions = new List<string> { DefaultNormal };
-        public List<string> effectRestrictions = new List<string> { DefaultEffect };
+        public List<string> normalRestrictions = null;
+        public List<string> effectRestrictions = null;
 
         public CardRestriction onCardRestriction;
 
         public void SetInfo(GameCard card)
         {
             Card = card;
+
+            normalRestrictions = normalRestrictions ?? new List<string> { DefaultNormal };
+            effectRestrictions = effectRestrictions ?? new List<string> { DefaultEffect };
 
             if (normalRestrictions.Contains(DefaultNormal)) normalRestrictions.AddRange(DefaultNormalRestrictions);
             if (normalRestrictions.Contains(AugNormal)) normalRestrictions.AddRange(AugmentNormalRestrictions);

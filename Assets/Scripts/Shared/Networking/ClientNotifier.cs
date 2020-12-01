@@ -21,6 +21,7 @@ namespace KompasClient.Networking
         #region Normal Request Actions
         public void RequestPlay(GameCard card, int toX, int toY)
         {
+            Debug.Log($"Requesting to play {card} to {toX}, {toY}");
             if (card.CardType == 'A') Send(new AugmentActionPacket(card.ID, toX, toY));
             else Send(new PlayActionPacket(card.ID, toX, toY));
         }

@@ -14,9 +14,9 @@ namespace KompasCore.Cards
         public string effText;
         public string subtypeText;
 
-        public MovementRestriction MovementRestriction;
-        public AttackRestriction AttackRestriction;
-        public PlayRestriction PlayRestriction;
+        public MovementRestriction MovementRestriction = null;
+        public AttackRestriction AttackRestriction = null;
+        public PlayRestriction PlayRestriction = null;
 
         public int n;
         public int e;

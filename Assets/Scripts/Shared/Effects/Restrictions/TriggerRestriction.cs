@@ -67,7 +67,7 @@ namespace KompasCore.Effects
 
         public Trigger ThisTrigger { get; private set; }
 
-        public void Initialize(Game game, GameCard thisCard, Trigger thisTrigger)
+        public void Initialize(Game game, GameCard thisCard, Trigger thisTrigger, Effect effect)
         {
             Game = game;
 
@@ -76,9 +76,9 @@ namespace KompasCore.Effects
             xRestriction = xRestriction ?? new XRestriction();
             spaceRestriction = spaceRestriction ?? new SpaceRestriction();
 
-            cardRestriction.Initialize(thisCard, thisTrigger.Effect.Controller, thisTrigger.Effect);
+            cardRestriction.Initialize(thisCard, effect.Controller, effect);
             xRestriction.Initialize(thisCard);
-            spaceRestriction.Initialize(thisCard, thisTrigger.Effect.Controller, thisTrigger.Effect);
+            spaceRestriction.Initialize(thisCard, effect.Controller, effect);
 
             this.ThisCard = thisCard;
             this.ThisTrigger = thisTrigger;

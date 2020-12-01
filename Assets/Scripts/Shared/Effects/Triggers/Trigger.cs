@@ -49,7 +49,8 @@ namespace KompasCore.Effects
             TurnStart,
             NESWChange, Activate, Deactivate, NChange, EChange, SChange, WChange, CChange, AChange,
             Defends, Attacks, TakeCombatDamage, DealCombatDamage, Battles, BattleEnds,
-            EachDraw, DrawX, Arrive, Play, Discard, Rehand, Reshuffle, Topdeck, Bottomdeck, ToDeck, Move, Annhilate, Remove, AugmentAttached, AugmentDetached
+            EachDraw, DrawX, Arrive, Play, Discard, Rehand, Reshuffle, Topdeck, Bottomdeck, ToDeck, Move, Annhilate, Remove, 
+            AugmentAttached, AugmentDetached, Augmented
         };
 
         public TriggerData TriggerData { get; }
@@ -65,7 +66,7 @@ namespace KompasCore.Effects
         {
             TriggerData = triggerData;
             Effect = effect;
-            triggerData.triggerRestriction.Initialize(effect.Game, Source, this);
+            triggerData.triggerRestriction.Initialize(effect.Game, Source, this, effect);
         }
     }
 }
