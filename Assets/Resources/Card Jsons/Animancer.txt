@@ -65,7 +65,7 @@
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
 					"ChoiceBlurb":"Rehand the Golem or search again?",
-					"OptionBlurbs":["Rehand","Discard, Search Again"],
+					"OptionBlurbs":["Gimme that","Something Else"],
 					"OptionJumpIndices":[13,10]
 				},
 				{
