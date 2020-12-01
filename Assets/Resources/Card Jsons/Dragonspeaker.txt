@@ -6,7 +6,7 @@
 		{
 			"blurb":"Dragonspeak",
 			"activationRestriction":{
-				"activationRestrictions":["Default"]
+				"activationRestrictionArray":["Default"]
 			},
 			"subeffects":[
 				{

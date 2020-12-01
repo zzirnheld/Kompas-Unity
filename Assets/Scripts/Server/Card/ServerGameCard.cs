@@ -128,7 +128,7 @@ namespace KompasServer.Cards
 
             //copy the colleciton  so that you can edit the original
             var augments = Augments.ToArray();
-            foreach (var aug in augments) aug.Discard();
+            foreach (var aug in augments) aug.Discard(stackSrc);
             return true;
         }
 

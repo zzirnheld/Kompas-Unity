@@ -6,7 +6,7 @@
 		{
 			"blurb":"Surge",
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Max Times Per Turn",
 					"Default"
 				]
@@ -24,7 +24,7 @@
 		{
 			"blurb":"Shrink",
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Max Times Per Turn",
 					"Default"
 				]

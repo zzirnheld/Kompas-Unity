@@ -24,7 +24,7 @@
 		{
 			"blurb":"Pass",
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Default"
 				]
 			},

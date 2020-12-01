@@ -6,7 +6,7 @@
 		{
 			"blurb":"Pip Resummon",
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Default"
 				]
 			},

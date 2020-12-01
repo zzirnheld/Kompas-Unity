@@ -6,7 +6,7 @@
 		{
 			"blurb":"Pass",
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
  					"Friendly Turn",
 					"Default"
 				]

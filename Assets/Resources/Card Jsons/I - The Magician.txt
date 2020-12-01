@@ -6,7 +6,7 @@
 		{
 			"blurb":"Redraw",
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"Default"

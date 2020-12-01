@@ -6,7 +6,7 @@
 		{
 			"blurb":"Something",
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Max Times Per Round",
 					"Default"
 				],

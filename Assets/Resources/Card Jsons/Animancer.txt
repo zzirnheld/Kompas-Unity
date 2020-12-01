@@ -6,7 +6,7 @@
 		{
 			"blurb":"It's In Here Somewhere",
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Friendly Turn",
 					"Default"
 				]

@@ -6,7 +6,7 @@
 		{
 			"blurb":"Forget That Mess",
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Max Times Per Turn",
 					"Default"
 				]

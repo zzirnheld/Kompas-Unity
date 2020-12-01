@@ -30,7 +30,7 @@
 		{
 			"blurb":"Build Altar",
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Default"
 				]
 			},

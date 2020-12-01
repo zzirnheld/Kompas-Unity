@@ -6,7 +6,7 @@
 		{
 			"blurb":"Ride the Winds",
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Max Times Per Turn",
 					"Default"
 				]

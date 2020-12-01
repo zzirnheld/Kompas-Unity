@@ -45,7 +45,7 @@
 		},
 		{
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Max Times Per Turn",
 					"Default"
 				],

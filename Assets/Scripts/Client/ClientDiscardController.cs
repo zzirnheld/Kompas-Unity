@@ -1,4 +1,5 @@
-﻿using KompasCore.GameCore;
+﻿using KompasCore.Cards;
+using KompasCore.GameCore;
 
 namespace KompasClient.GameCore
 {

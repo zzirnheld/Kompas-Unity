@@ -5,7 +5,7 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Max Times Per Turn",
 					"Enemy Turn",
 					"Default"

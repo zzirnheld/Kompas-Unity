@@ -46,6 +46,12 @@ namespace KompasClient.Cards
         public override IEnumerable<Effect> Effects => ClientEffects;
         public override bool IsAvatar => false;
 
+        public override bool Remove(IStackable stackSrc = null)
+        {
+            ClientGame.MarkCardDirty(this);
+            return base.Remove(stackSrc);
+        }
+
         public virtual void SetInfo(SerializableCard serializedCard, ClientGame game, ClientPlayer owner, ClientEffect[] effects, int id)
         {
             base.SetInfo(serializedCard, id);

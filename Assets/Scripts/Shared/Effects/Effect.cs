@@ -58,9 +58,11 @@ namespace KompasCore.Effects
         protected void SetInfo(GameCard source, int effIndex, Player owner)
         {
             Source = source != null ? source : throw new System.ArgumentNullException("source", "Effect cannot be attached to null card");
-            Controller = owner;
-            activationRestriction?.Initialize(this);
             EffectIndex = effIndex;
+            Controller = owner;
+
+            blurb = string.IsNullOrEmpty(blurb) ? "Effect" : blurb;
+            activationRestriction?.Initialize(this);
             TimesUsedThisTurn = 0;
         }
 

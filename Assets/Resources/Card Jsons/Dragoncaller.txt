@@ -6,7 +6,7 @@
 		{
 			"blurb":"Dragoncall",
 			"activationRestriction":{
-				"activationRestrictions":["Default"]
+				"activationRestrictionArray":["Default"]
 			},
 			"subeffects":[
 				{
