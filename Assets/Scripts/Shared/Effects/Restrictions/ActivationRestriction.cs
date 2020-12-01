@@ -46,7 +46,7 @@ namespace KompasCore.Effects
             if (activationRestrictions != null) ActivationRestrictions.AddRange(activationRestrictions);
 
             Debug.Log($"Initializing activation restriction for {Card.CardName} " +
-                $"with restrictions: {string.Join(", ", activationRestrictions)}");
+                $"with restrictions: {string.Join(", ", ActivationRestrictions)}");
         }
 
         private bool RestrictionValid(string r, Player activator)
