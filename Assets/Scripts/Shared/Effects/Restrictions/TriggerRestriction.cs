@@ -1,6 +1,7 @@
 ﻿using KompasCore.Cards;
 using KompasCore.GameCore;
 using KompasServer.Effects;
+using System;
 using System.Linq;
 using UnityEngine;
 
@@ -82,6 +83,8 @@ namespace KompasCore.Effects
 
             this.ThisCard = thisCard;
             this.ThisTrigger = thisTrigger;
+
+            Debug.Log($"Initializing trigger for {thisCard?.CardName}. game is null? {game}");
         }
 
         private bool RestrictionValid(string restriction, ActivationContext context)
@@ -127,7 +130,19 @@ namespace KompasCore.Effects
             }
         }
 
-        public bool Evaluate(ActivationContext context) => triggerRestrictions.All(r => RestrictionValid(r, context));
+        public bool Evaluate(ActivationContext context)
+        {
+            try
+            {
+                return triggerRestrictions.All(r => RestrictionValid(r, context));
+            }
+            catch (NullReferenceException nullref)
+            {
+                Debug.LogError($"Trigger restriction of {ThisCard?.CardName} threw a null ref.\n{nullref.Message}\n{nullref.StackTrace}." +
+                    $"game was {Game}, this card was {ThisCard}");
+                return false;
+            }
+        }
 
         /// <summary>
         /// Reevaluates the trigger to check that any restrictions that could change between it being triggered

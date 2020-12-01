@@ -175,8 +175,8 @@ public class CardRepository : MonoBehaviour
                     Debug.LogError("Unrecognized type character " + serializableCard.cardType + " in " + json);
                     return null;
             }
-            card?.SetInfo(serializableCard, serverGame, owner, serializableCard.effects, id);
-            card?.cardCtrl?.SetImage(card.CardName, false);
+            card.SetInfo(serializableCard, serverGame, owner, serializableCard.effects, id);
+            card.cardCtrl.SetImage(card.CardName, false);
             return card;
         }
         catch (System.ArgumentException argEx)

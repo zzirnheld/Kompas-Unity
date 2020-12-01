@@ -2,6 +2,7 @@
 using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasClient.GameCore;
+using KompasCore.GameCore;
 
 namespace KompasClient.Effects
 {
@@ -15,6 +16,7 @@ namespace KompasClient.Effects
             set { ClientController = value as ClientPlayer; }
         }
         public ClientGame ClientGame { get; private set; }
+        public override Game Game => ClientGame;
         public DummySubeffect[] DummySubeffects { get; }
         public ClientTrigger ClientTrigger { get; private set; }
 

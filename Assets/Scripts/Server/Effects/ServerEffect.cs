@@ -1,5 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
+using KompasCore.GameCore;
 using KompasServer.GameCore;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace KompasServer.Effects
     public class ServerEffect : Effect, IServerStackable
     {
         public ServerGame serverGame;
+        public override Game Game => serverGame;
         public ServerEffectsController EffectsController => serverGame.EffectsController;
         public ServerPlayer ServerController { get; set; }
         public override Player Controller

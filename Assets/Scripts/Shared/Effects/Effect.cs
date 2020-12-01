@@ -11,7 +11,7 @@ namespace KompasCore.Effects
     [System.Serializable]
     public abstract class Effect : IStackable
     {
-        public Game Game => Source.Game;
+        public abstract Game Game { get; }
 
         public int EffectIndex { get; private set; }
         public GameCard Source { get; private set; }
