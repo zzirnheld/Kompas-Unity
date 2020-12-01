@@ -113,32 +113,13 @@ public class CardRepository : MonoBehaviour
 
     public AvatarServerGameCard InstantiateServerAvatar(string cardName, ServerGame serverGame, ServerPlayer owner, int id)
     {
-        Debug.Log($"Instantiating server avatar named {cardName}");
-
-        if (!cardJsons.ContainsKey(cardName))
-        {
-            Debug.LogError($"Tried to create an avatar for a name that doesn't have a json");
-            return null;
-        }
-
-
+        if (!cardJsons.ContainsKey(cardName)) return null;
+        ServerSerializableCard card;
 
         try
         {
-            Debug.Log("loading avatar json");
-            ServerSerializableCard card = JsonConvert.DeserializeObject<ServerSerializableCard>(cardJsons[cardName],
+            card = JsonConvert.DeserializeObject<ServerSerializableCard>(cardJsons[cardName],
                 new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
-            Debug.Log("loading avatar gameobj");
-            AvatarServerGameCard avatar = Instantiate(ServerAvatarPrefab).GetComponent<AvatarServerGameCard>();
-            if (avatar == null) Debug.LogError("AVATAR WAS NULL");
-            Debug.Log("setting avatar info");
-            avatar.SetInfo(card, serverGame, owner, card.effects, id);
-            Debug.Log("loading avatar img");
-            avatar.cardCtrl.SetImage(avatar.CardName, false);
-            Debug.Log("loading avatar id");
-            serverGame.cardsByID.Add(id, avatar);
-            Debug.Log("returning avatar");
-            return avatar;
         }
         catch (System.ArgumentException argEx)
         {
@@ -147,58 +128,43 @@ public class CardRepository : MonoBehaviour
                 $"{argEx.StackTrace}\nJson was {cardJsons[cardName]}");
             return null;
         }
+
+        AvatarServerGameCard avatar = Instantiate(ServerAvatarPrefab).GetComponent<AvatarServerGameCard>();
+        avatar.SetInfo(card, serverGame, owner, card.effects, id);
+        avatar.cardCtrl.SetImage(avatar.CardName, false);
+        serverGame.cardsByID.Add(id, avatar);
+        return avatar;
     }
 
     public ServerGameCard InstantiateServerNonAvatar(string name, ServerGame serverGame, ServerPlayer owner, int id)
     {
-        Debug.Log($"Instantiating new server non avatar for name {name}");
         string json = cardJsons[name] ?? throw new System.ArgumentException($"Name {name} not associated with json");
-        ServerGameCard card = null;
+        ServerGameCard card = Instantiate(ServerCharPrefab).GetComponent<ServerGameCard>(); ;
+        ServerSerializableCard cardInfo;
 
         try
         {
-            //TODO later try setting serializableCard in the switch, and moving set info outside
-            ServerSerializableCard serializableCard = JsonConvert.DeserializeObject<ServerSerializableCard>(cardJsons[name],
+            cardInfo = JsonConvert.DeserializeObject<ServerSerializableCard>(cardJsons[name],
                 new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
-            switch (serializableCard.cardType)
-            {
-                case 'C':
-                    card = Instantiate(ServerCharPrefab).GetComponent<ServerGameCard>();
-                    break;
-                case 'S':
-                    card = Instantiate(ServerSpellPrefab).GetComponent<ServerGameCard>();
-                    break;
-                case 'A':
-                    card = Instantiate(ServerAugPrefab).GetComponent<ServerGameCard>();
-                    break;
-                default:
-                    Debug.LogError("Unrecognized type character " + serializableCard.cardType + " in " + json);
-                    return null;
-            }
-            card.SetInfo(serializableCard, serverGame, owner, serializableCard.effects, id);
-            card.cardCtrl.SetImage(card.CardName, false);
-            return card;
         }
         catch (System.ArgumentException argEx)
         {
             //Catch JSON parse error
-            Debug.LogError($"Failed to load {json}, argument exception with message {argEx.Message}");
+            Debug.LogError($"Failed to load {json}, argument exception with message {argEx.Message}, stacktrace {argEx.StackTrace}");
             return null;
         }
+        card.SetInfo(cardInfo, serverGame, owner, cardInfo.effects, id);
+        card.cardCtrl.SetImage(card.CardName, false);
+        return card;
     }
 
     public AvatarClientGameCard InstantiateClientAvatar(string json, ClientGame clientGame, ClientPlayer owner, int id)
     {
+        ClientSerializableCard cardInfo;
         try
         {
-            ClientSerializableCard charCard = JsonUtility.FromJson<ClientSerializableCard>(json);
-            if (charCard.cardType != 'C') return null;
-            AvatarClientGameCard avatar = Instantiate(ClientAvatarPrefab).GetComponent<AvatarClientGameCard>();
-            avatar.SetInfo(charCard, clientGame, owner, charCard.effects, id);
-            avatar.gameObject.GetComponentInChildren<ClientCardMouseController>().ClientGame = clientGame;
-            avatar.cardCtrl.SetImage(avatar.CardName, false);
-            clientGame.cardsByID.Add(id, avatar);
-            return avatar;
+            cardInfo = JsonUtility.FromJson<ClientSerializableCard>(json);
+            if (cardInfo.cardType != 'C') return null;
         }
         catch (System.ArgumentException argEx)
         {
@@ -206,35 +172,20 @@ public class CardRepository : MonoBehaviour
             Debug.LogError($"Failed to load client Avatar, argument exception with message {argEx.Message},\n {argEx.StackTrace}, for json:\n{json}");
             return null;
         }
+        AvatarClientGameCard avatar = Instantiate(ClientAvatarPrefab).GetComponent<AvatarClientGameCard>();
+        avatar.SetInfo(cardInfo, clientGame, owner, cardInfo.effects, id);
+        avatar.gameObject.GetComponentInChildren<ClientCardMouseController>().ClientGame = clientGame;
+        avatar.cardCtrl.SetImage(avatar.CardName, false);
+        clientGame.cardsByID.Add(id, avatar);
+        return avatar;
     }
 
     public ClientGameCard InstantiateClientNonAvatar(string json, ClientGame clientGame, ClientPlayer owner, int id)
     {
+        ClientSerializableCard cardInfo;
         try
         {
-            //TODO later try setting serializableCard in the switch, and moving set info outside
-            ClientSerializableCard serializableCard = JsonUtility.FromJson<ClientSerializableCard>(json);
-            ClientGameCard card;
-            switch (serializableCard.cardType)
-            {
-                case 'C':
-                    card = Instantiate(ClientCharPrefab).GetComponent<ClientGameCard>();
-                    break;
-                case 'S':
-                    card = Instantiate(ClientSpellPrefab).GetComponent<ClientGameCard>();
-                    break;
-                case 'A':
-                    card = Instantiate(ClientAugPrefab).GetComponent<ClientGameCard>();
-                    break;
-                default:
-                    Debug.LogError("Unrecognized type character " + serializableCard.cardType + " in " + json);
-                    return null;
-            }
-            Debug.Log($"Successfully created a card? {card != null} for json {json}");
-            card.SetInfo(serializableCard, clientGame, owner, serializableCard.effects, id);
-            card.cardCtrl.SetImage(card.CardName, false);
-            card.gameObject.GetComponentInChildren<ClientCardMouseController>().ClientGame = clientGame;
-            return card;
+            cardInfo = JsonUtility.FromJson<ClientSerializableCard>(json);
         }
         catch (System.ArgumentException argEx)
         {
@@ -242,6 +193,12 @@ public class CardRepository : MonoBehaviour
             Debug.LogError($"Failed to load {json}, argument exception with message {argEx.Message}, {argEx.StackTrace}");
             return null;
         }
+        ClientGameCard card = Instantiate(ClientCharPrefab).GetComponent<ClientGameCard>();
+        Debug.Log($"Successfully created a card? {card != null} for json {json}");
+        card.SetInfo(cardInfo, clientGame, owner, cardInfo.effects, id);
+        card.cardCtrl.SetImage(card.CardName, false);
+        card.gameObject.GetComponentInChildren<ClientCardMouseController>().ClientGame = clientGame;
+        return card;
     }
 
     public DeckSelectCard InstantiateDeckSelectCard(string json, Transform parent, DeckSelectCard prefab, DeckSelectUIController uiCtrl)

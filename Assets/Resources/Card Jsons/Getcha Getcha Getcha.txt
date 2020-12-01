@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Getcha Getcha Getcha",
-	"effText":"When a friendly character is augmented, give them +1NW.",
+	"effText":"When a friendly character is augmented, give them +1N.",
 	"effects":[
 		{
 			"triggerData":
@@ -21,8 +21,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
-					"nMod":1,
-					"wMod":1
+					"nMod":1
 				}
 			]
 		}

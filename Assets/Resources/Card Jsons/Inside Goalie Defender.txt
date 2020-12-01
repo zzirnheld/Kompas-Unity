@@ -24,7 +24,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"character within 2 spaces to goal-kick Augment to",
+						"blurb":"character to goal-kick Augment to",
 						"cardRestrictions":["Is Character","Board","Within C Spaces","Distinct Name from Other Targets","Distinct from Source"],
 						"cSpaces":2
 					}

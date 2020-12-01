@@ -13,6 +13,7 @@ namespace KompasServer.GameCore
 {
     public class ServerGame : Game
     {
+        public const int AvatarNPenalty = 10;
         public const int AvatarEBonus = 10;
         public const int AvatarWPenalty = 10;
 
@@ -181,6 +182,7 @@ namespace KompasServer.GameCore
             foreach (var p in ServerPlayers) 
             {
                 p.ServerNotifier.SetFirstTurnPlayer(FirstTurnPlayer);
+                p.Avatar.SetN(p.Avatar.N - AvatarNPenalty);
                 p.Avatar.SetE(p.Avatar.E + AvatarEBonus);
                 p.Avatar.SetW(p.Avatar.W - AvatarWPenalty);
                 DrawX(p.index, 5);
