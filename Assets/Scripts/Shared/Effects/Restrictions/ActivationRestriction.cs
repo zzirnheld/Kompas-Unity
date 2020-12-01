@@ -30,7 +30,8 @@ namespace KompasCore.Effects
         public int location = (int) CardLocation.Field;
         public CardRestriction existsRestriction;
 
-        public List<string> activationRestrictions = new List<string>{ "Default" };
+        private readonly List<string> ActivationRestrictions = new List<string>();
+        public string[] activationRestrictions = null;
 
         public void Initialize(Effect eff)
         {
@@ -39,7 +40,10 @@ namespace KompasCore.Effects
             existsRestriction = existsRestriction ?? new CardRestriction();
             existsRestriction.Initialize(eff.Source, eff.Controller, eff);
 
-            if (activationRestrictions.Contains("Default")) activationRestrictions.AddRange(DefaultRestrictions);
+            if (activationRestrictions == null || activationRestrictions.Contains("Default")) 
+                ActivationRestrictions.AddRange(DefaultRestrictions);
+
+            if (activationRestrictions != null) ActivationRestrictions.AddRange(activationRestrictions);
 
             Debug.Log($"Initializing activation restriction for {Card.CardName} " +
                 $"with restrictions: {string.Join(", ", activationRestrictions)}");
