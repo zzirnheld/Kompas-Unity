@@ -37,7 +37,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
-					"jumpTo":14
+					"jumpTo":15
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseFromListSaveRestSubeffect, Assembly-CSharp",
@@ -49,7 +49,7 @@
 					},
 					"restRestriction":
 					{
-						"cardRestrictions":["Friendly","Deck","Index<X","Not Already Target"]
+						"cardRestrictions":["Friendly","Deck","Index<X"]
 					},
 					"xMultiplier":1
 				},
@@ -60,10 +60,13 @@
 					"$type":"KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
 				},
 				{
+					"$type":"KompasServer.Effects.ClearRestSubeffect, Assembly-CSharp"
+				},
+				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
 					"ChoiceBlurb":"Rehand the Golem or search again?",
-					"OptionBlurbs":["Rehand","Search"],
-					"OptionJumpIndices":[12,9]
+					"OptionBlurbs":["Rehand","Discard, Search Again"],
+					"OptionJumpIndices":[13,10]
 				},
 				{
 					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
