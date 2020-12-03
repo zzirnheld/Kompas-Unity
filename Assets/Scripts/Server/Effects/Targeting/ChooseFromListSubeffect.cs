@@ -93,7 +93,7 @@ namespace KompasServer.Effects
             //add all cards in the chosen list to targets
             AddList(choices);
             //everything's cool
-            EffectController.ServerNotifier.AcceptTarget();
+            ServerPlayer.ServerNotifier.AcceptTarget();
             return ServerEffect.ResolveNextSubeffect();
         }
 

@@ -27,7 +27,7 @@ namespace KompasServer.Effects
                         if(spaceRestriction.Evaluate((x, y))) spaces.Add(space);
                     }
                 }
-                EffectController.ServerNotifier.GetSpaceTarget(Source.CardName, spaceRestriction.blurb, spaces.ToArray());
+                ServerPlayer.ServerNotifier.GetSpaceTarget(Source.CardName, spaceRestriction.blurb, spaces.ToArray());
                 return false;
             }
             else
@@ -44,7 +44,7 @@ namespace KompasServer.Effects
             {
                 Debug.Log($"Adding {x}, {y} as coords");
                 ServerEffect.Coords.Add((x, y));
-                EffectController.ServerNotifier.AcceptTarget();
+                ServerPlayer.ServerNotifier.AcceptTarget();
                 ServerEffect.ResolveNextSubeffect();
                 return true;
             }

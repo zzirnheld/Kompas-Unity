@@ -12,10 +12,7 @@ namespace KompasServer.Effects
             XRest.Initialize(Source);
         }
 
-        private void AskForX()
-        {
-            EffectController.ServerNotifier.GetXForEffect();
-        }
+        private void AskForX() => ServerPlayer.ServerNotifier.GetXForEffect();
 
         public override bool Resolve()
         {
