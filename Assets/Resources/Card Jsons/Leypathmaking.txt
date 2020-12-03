@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Linewalker for Leypathmaking to reshuffle",
-						"cardRestrictions":["Friendly","Deck","Subtypes Include"],
+						"cardRestrictions":["Friendly","Hand","Subtypes Include"],
 						"subtypesInclude":["Linewalker"]
 					}
 				},

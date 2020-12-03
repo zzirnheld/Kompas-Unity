@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Leybinder",
-	"effText":"The first time each turn a friendly character moves X, hand-summon an SX character.",
+	"effText":"The first time each turn a character moves X, their controller hand-summons an SX character.",
 	"effects":[
 		{
 			"triggerData":
@@ -18,7 +18,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Leybinder to hand-summon",
-						"cardRestrictions":["Is Character","Friendly","Hand","S<=X"]
+						"cardRestrictions":["Is Character","Friendly","Hand","S==X"]
 					},
 					"xMultiplier":1
 				},

@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Yellow Linewalker",
-	"effText":"Linewalk.\nWhen I move X spaces, hand-summon an S <= X Linewalker.",
+	"effText":"Linewalk.\nWhen I move X spaces, give both players X pips.",
 	"effects":[
 		{
 			"blurb":"Linewalk",
@@ -43,25 +43,13 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"for Yellow to hand-summon",
-						"cardRestrictions":["Is Character","Friendly","Hand","S<=X","Subtypes Include"],
-						"subtypesInclude":["Linewalker"]
-					},
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
 					"xMultiplier":1
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where Yellow to hand-summon",
-						"spaceRestrictions":["Can Play Target to This Space"]
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xMultiplier":1,
+					"playerIndex":1
 				}
 			]	
 		}
