@@ -29,6 +29,7 @@ namespace KompasCore.Effects
         public const string DistanceToTargetLTEC = "Distance to Target <= Constant";
         public const string FurtherFromSourceThanTarget = "Further from Source than Target";
         public const string TowardsSourceFromTarget = "Towards Source from Target";
+        public const string DirectlyAwayFromTarget = "Directly Away from Target";
 
         //misc
         public const string CanPlayTarget = "Can Play Target to This Space";
@@ -97,6 +98,7 @@ namespace KompasCore.Effects
                 case DistanceToTargetLTEC:        return Subeffect.Target.DistanceTo(x, y) <= constant;
                 case FurtherFromSourceThanTarget: return Source.DistanceTo(x, y) > Source.DistanceTo(Subeffect.Target);
                 case TowardsSourceFromTarget:     return Source.DistanceTo(x, y) < Source.DistanceTo(Subeffect.Target);
+                case DirectlyAwayFromTarget:      return Subeffect.Target.SpaceDirectlyAwayFrom((x, y), Source);
 
                 //misc
                 case CanPlayTarget: return Subeffect.Target.PlayRestriction.EvaluateEffectPlay(x, y, Subeffect.Effect, Subeffect.Player);

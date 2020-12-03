@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Maya, Mistress of Reality",
-	"effText":"Shape: During your turn, use a space of movement and give me -XE to move me through X Ethereal characters.\nWhen a friendly Shaper moves X, discard 1, give me -XE, and draw X.",
+	"effText":"Unique.\nShape.\nWhen a friendly Shaper moves X, discard 1, give me -XE, and draw X.",
 	"effects":[
 		{
 			"blurb":"Shape",
@@ -89,8 +89,12 @@
 		}
 	],
 	"n":1,
-	"e":7,
-	"s":8,
-	"w":9,
+	"e":4,
+	"s":5,
+	"w":3,
+	"PlayRestriction":{
+		"normalRestrictions":["Default Normal Restrictions","Unique"],
+		"effectRestrictions":["Default Effect Restrictions","Unique"]
+	},
 	"subtypeText":"Ethereal Shaper Mage"
 }

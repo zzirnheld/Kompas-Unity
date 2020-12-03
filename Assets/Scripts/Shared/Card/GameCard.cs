@@ -328,6 +328,28 @@ namespace KompasCore.Cards
             => Location == CardLocation.Field && card.Location == CardLocation.Field && SpaceDirectlyInFront(card.Position);
 
         public bool OnMyDiagonal((int x, int y) space) => BoardX == space.x || BoardY == space.y;
+
+        /// <summary>
+        /// Refers to this situation: <br></br>
+        /// | <paramref name="space"/> | <br></br>
+        /// | this card | <br></br>
+        /// | <paramref name="card"/> param | <br></br>
+        /// </summary>
+        /// <param name="space">The space in the same axis as this card and <paramref name="card"/> param</param>
+        /// <param name="card">The card in the same axis as this card and the <paramref name="space"/> param.</param>
+        /// <returns></returns>
+        public bool SpaceDirectlyAwayFrom((int x, int y) space, GameCard card)
+        {
+            if (card.Location != CardLocation.Field || Location != CardLocation.Field) return false;
+            int xDiffCard = card.BoardX - BoardX;
+            int yDiffCard = card.BoardY - BoardY;
+            int xDiffSpace = space.x - BoardX;
+            int yDiffSpace = space.y - BoardY;
+
+            return (xDiffCard == 0 && xDiffSpace == 0)
+                || (yDiffCard == 0 && yDiffSpace == 0)
+                || (xDiffCard == yDiffCard && xDiffSpace == yDiffSpace);
+        }
         #endregion distance/adjacency
 
         public void PutBack()
