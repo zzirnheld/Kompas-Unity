@@ -19,7 +19,7 @@ namespace KompasServer.Effects
         protected override bool NoPossibleTargets()
         {
             var rest = ServerGame.Cards.Where(c => restRestriction.Evaluate(c));
-            ServerEffect.Rest.AddRange(rest);
+            ServerEffect.rest.AddRange(rest);
             return base.NoPossibleTargets();
         }
 
@@ -27,7 +27,7 @@ namespace KompasServer.Effects
         {
             base.AddList(choices);
             var rest = ServerGame.Cards.Where(c => restRestriction.Evaluate(c) && !choices.Contains(c));
-            ServerEffect.Rest.AddRange(rest);
+            ServerEffect.rest.AddRange(rest);
         }
     }
 }

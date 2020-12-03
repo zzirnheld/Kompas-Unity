@@ -96,7 +96,10 @@ namespace KompasCore.Effects
         public bool EvaluateNormalPlay(int x, int y, Player player)
             => normalRestrictions.All(r => RestrictionValid(r, x, y, player, true));
 
+        public bool EvaluateEffectPlay(int x, int y, Effect effect, Player controller)
+            => effectRestrictions.All(r => RestrictionValid(r, x, y, controller, false));
+
         public bool EvaluateEffectPlay(int x, int y, Effect effect)
-            => effectRestrictions.All(r => RestrictionValid(r, x, y, effect.Controller, false));
+            => EvaluateEffectPlay(x, y, effect, effect.Controller);
     }
 }

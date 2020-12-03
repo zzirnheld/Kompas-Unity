@@ -24,7 +24,7 @@ namespace KompasServer.Effects
         public override bool Resolve()
         {
             //TODO better shuffling algorithm
-            var list = Shuffle(Effect.Rest);
+            var list = Shuffle(Effect.rest);
             foreach (GameCard c in list) c.Bottomdeck(c.Owner, Effect);
 
             return ServerEffect.ResolveNextSubeffect();

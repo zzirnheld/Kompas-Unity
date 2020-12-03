@@ -23,7 +23,7 @@ namespace KompasServer.Effects
                 {
                     for (int y = 0; y < 7; y++)
                     {
-                        var space = Controller.SubjectiveCoords((x, y));
+                        var space = Player.SubjectiveCoords((x, y));
                         if(spaceRestriction.Evaluate((x, y))) spaces.Add(space);
                     }
                 }
@@ -43,7 +43,7 @@ namespace KompasServer.Effects
             if (spaceRestriction.Evaluate(x, y))
             {
                 Debug.Log($"Adding {x}, {y} as coords");
-                ServerEffect.Coords.Add((x, y));
+                ServerEffect.coords.Add((x, y));
                 ServerPlayer.ServerNotifier.AcceptTarget();
                 ServerEffect.ResolveNextSubeffect();
                 return true;

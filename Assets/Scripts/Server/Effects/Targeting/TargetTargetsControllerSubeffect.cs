@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace KompasServer.Effects
 {
-    [System.Serializable]
-    public class ClearRestSubeffect : ServerSubeffect
+    public class TargetTargetsControllerSubeffect : ServerSubeffect
     {
         public override bool Resolve()
         {
-            Effect.rest.Clear();
+            if (Target == null) return ServerEffect.EffectImpossible();
+            Effect.players.Add(Target.Controller);
             return ServerEffect.ResolveNextSubeffect();
         }
     }

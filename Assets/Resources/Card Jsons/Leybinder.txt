@@ -14,11 +14,17 @@
 			},
 			"subeffects":[
 				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp"
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"for Leybinder to hand-summon",
-						"cardRestrictions":["Is Character","Friendly","Hand","S==X"]
+						"cardRestrictions":["Is Character","Controller Matches Player Target","Hand","S==X"]
 					},
 					"xMultiplier":1
 				},

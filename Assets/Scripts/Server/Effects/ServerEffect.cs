@@ -62,8 +62,14 @@ namespace KompasServer.Effects
             //set context parameters
             CurrActivationContext = context;
             X = context.X ?? 0;
-            TargetsList.Clear();
-            if(context.Targets != null) TargetsList.AddRange(context.Targets);
+
+            targetsList.Clear();
+            if (context.Targets != null) targetsList.AddRange(context.Targets);
+
+            coords.Clear();
+            
+            players.Clear();
+            players.Add(Controller);
 
             //notify relevant to this effect starting
             ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
@@ -74,10 +80,7 @@ namespace KompasServer.Effects
             else ResolveSubeffect(context.StartIndex);
         }
 
-        public bool ResolveNextSubeffect()
-        {
-            return ResolveSubeffect(SubeffectIndex + 1);
-        }
+        public bool ResolveNextSubeffect() => ResolveSubeffect(SubeffectIndex + 1);
 
         public bool ResolveSubeffect(int index)
         {
@@ -106,8 +109,8 @@ namespace KompasServer.Effects
         {
             SubeffectIndex = 0;
             X = 0;
-            TargetsList.Clear();
-            Rest.Clear();
+            targetsList.Clear();
+            rest.Clear();
             OnImpossible = null;
             ServerController.ServerNotifier.NotifyBothPutBack();
             EffectsController.FinishStackEntryResolution();

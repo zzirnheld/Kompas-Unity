@@ -13,14 +13,17 @@
 			},
 			"subeffects":[
 				{
+					"$type":"KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+				},
+				{
 					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
 					"whatToCount":"Hand Size",
-					"playerIndex":1,
 					"xMultiplier":1
 				},
 				{
 					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
 					"whatToCount":"Hand Size",
+					"playerIndex":-2,
 					"change":true,
 					"xMultiplier":-1
 				},
@@ -30,6 +33,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"playerIndex":-2,
 					"xMultiplier":1
 				}
 			]

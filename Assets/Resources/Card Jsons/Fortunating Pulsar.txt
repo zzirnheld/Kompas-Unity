@@ -58,10 +58,12 @@
 					"xModifier":1
 				},
 				{
+					"$type":"KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+				},
+				{
 					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
 					"xMultiplier":0,
-					"xModifier":1,
-					"playerIndex":1
+					"xModifier":1
 				}
 			]	
 		}

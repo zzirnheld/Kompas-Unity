@@ -1,7 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.GameCore;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace KompasCore.Effects
 {
@@ -24,10 +23,11 @@ namespace KompasCore.Effects
         public Subeffect CurrSubeffect => Subeffects[SubeffectIndex];
 
         //Targets
-        protected List<GameCard> TargetsList { get; } = new List<GameCard>();
-        public IEnumerable<GameCard> Targets => TargetsList;
-        public List<(int x, int y)> Coords { get; private set; } = new List<(int x, int y)>();
-        public List<GameCard> Rest { get; private set; } = new List<GameCard>();
+        protected readonly List<GameCard> targetsList = new List<GameCard>();
+        public IEnumerable<GameCard> Targets => targetsList;
+        public readonly List<(int x, int y)> coords = new List<(int x, int y)>();
+        public readonly List<Player> players = new List<Player>();
+        public readonly List<GameCard> rest = new List<GameCard>();
         /// <summary>
         /// X value for card effect text (not coordinates)
         /// </summary>
@@ -80,8 +80,8 @@ namespace KompasCore.Effects
 
         public virtual void Negate() => Negated = true;
 
-        public virtual void AddTarget(GameCard card) => TargetsList.Add(card);
-        public virtual void RemoveTarget(GameCard card) => TargetsList.Remove(card);
+        public virtual void AddTarget(GameCard card) => targetsList.Add(card);
+        public virtual void RemoveTarget(GameCard card) => targetsList.Remove(card);
 
         public virtual bool CanBeActivatedBy(Player controller)
             => Trigger == null && activationRestriction != null && activationRestriction.Evaluate(controller);
@@ -93,14 +93,20 @@ namespace KompasCore.Effects
 
         public GameCard GetTarget(int num)
         {
-            int trueIndex = num < 0 ? num + TargetsList.Count : num;
-            return trueIndex < 0 ? null : TargetsList[trueIndex];
+            int trueIndex = num < 0 ? num + targetsList.Count : num;
+            return trueIndex < 0 ? null : targetsList[trueIndex];
         }
 
         public (int x, int y) GetSpace(int num)
         {
-            var trueIndex = num < 0 ? num + Coords.Count : num;
-            return trueIndex < 0 ? (0, 0) : Coords[trueIndex];
+            var trueIndex = num < 0 ? num + coords.Count : num;
+            return trueIndex < 0 ? (0, 0) : coords[trueIndex];
+        }
+
+        public Player GetPlayer(int num)
+        {
+            int trueIndex = num < 0 ? num + players.Count : num;
+            return trueIndex < 0 ? null : players[trueIndex];
         }
     }
 }

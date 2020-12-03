@@ -4,7 +4,7 @@
     {
         public override bool Resolve()
         {
-            Effect.Coords.Add(Target.Position);
+            Effect.coords.Add(Target.Position);
             return ServerEffect.ResolveNextSubeffect();
         }
     }

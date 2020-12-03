@@ -18,8 +18,7 @@ namespace KompasServer.Effects
         public ServerPlayer EffectController => ServerEffect.ServerController;
         public GameCard ThisCard => ServerEffect.Source;
 
-        public ServerPlayer ServerPlayer 
-            => ServerGame.ServerPlayers[(Controller.index + playerIndex) % ServerGame.ServerPlayers.Length];
+        public ServerPlayer ServerPlayer => Player as ServerPlayer;
 
         /// <summary>
         /// Server Subeffect resolve method. Does whatever this type of subeffect does,

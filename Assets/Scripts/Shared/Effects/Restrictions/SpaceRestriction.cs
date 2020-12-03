@@ -99,7 +99,7 @@ namespace KompasCore.Effects
                 case TowardsSourceFromTarget:     return Source.DistanceTo(x, y) < Source.DistanceTo(Subeffect.Target);
 
                 //misc
-                case CanPlayTarget: return Subeffect.Target.PlayRestriction.EvaluateEffectPlay(x, y, Subeffect.Effect);
+                case CanPlayTarget: return Subeffect.Target.PlayRestriction.EvaluateEffectPlay(x, y, Subeffect.Effect, Subeffect.Player);
                 case CanMoveTarget: return Subeffect.Target.MovementRestriction.EvaluateEffectMove(x, y);
                 case Empty: return Source.Game.boardCtrl.GetCardAt(x, y) == null;
                 case CardHereFitsRestriction: return hereFitsRestriction.Evaluate(Source.Game.boardCtrl.GetCardAt(x, y));
