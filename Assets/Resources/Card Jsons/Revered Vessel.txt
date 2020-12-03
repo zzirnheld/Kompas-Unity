@@ -6,41 +6,42 @@
 		{
 			"blurb":"Pip Resummon",
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Default"
 				]
 			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"PayPipsTargetCostSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"ResummonSubeffect\"
-				}"
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+				}
 			]	
 		},
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"ChangeAllNESWSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.ChangeAllNESWSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Adjacent\"]
+						"cardRestrictions":["Is Character","Board","Adjacent"]
 					},
-					\"eMod\":1,
-					\"sMod\":1,
-					\"wMod\":1
-				}"
+					"eMod":1,
+					"sMod":1,
+					"wMod":1
+				}
 			]	
 		}
 	],

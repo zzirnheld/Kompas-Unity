@@ -4,32 +4,32 @@
 	"effText":"Repeat the following until your Avatar's S is 0: Give your Avatar -1S.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetAvatarSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"sMod\":-1
-				}",
-				"{
-					\"subeffType\":\"SetXByTargetValueSubeffect\",
-					\"whatToCount\":\"S\",
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"ConditionalJumpSubeffect\",
-					\"condition\":\"X >= Constant\",
-					\"constant\":1,
-					\"jumpIndex\":1
-				}"
+				{
+					"$type":"KompasServer.Effects.TargetAvatarSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"sMod":-1
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"S",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"condition":"X >= Constant",
+					"constant":1,
+					"jumpIndex":1
+				}
 			]	
 		}
 	],

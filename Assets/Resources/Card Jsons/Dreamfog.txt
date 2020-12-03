@@ -4,29 +4,29 @@
 	"effText":"When a character moves, you can tribute me to gain a pip.",
 	"effects":[
 		{
-			"triggerCondition":"Move",
-			"trigger":
-			"{
-				\"optional\":true,
-				\"blurb\":\"Tribute Dreamfog to gain a pip?\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Is Character\"]
+			"triggerData":
+			{
+				"optional":true,
+				"blurb":"Tribute Dreamfog to gain a pip?",
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Is Character"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"DiscardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"AddPipsSubeffect\",
-					\"xModifier\":1
-				}"
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier":1
+				}
 			]	
 		}
 	],

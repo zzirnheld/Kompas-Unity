@@ -5,75 +5,75 @@
 	"effects":[
 		{
 			"blurb":"Coalesce +C",
-			"triggerCondition":"S Change",
-			"trigger":
-			"{
-				\"blurb\":\"Coalesce +C\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"This Card in Play\"],
-					\"cardRestriction\":
+			"triggerData":
+			{
+				"blurb":"Coalesce +C",
+				"triggerCondition":"S Change",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","This Card in Play"],
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Board\",\"Avatar\",\"Friendly\"]
+						"cardRestrictions":["Board","Avatar","Friendly"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"ChangeSpellCSubeffect\",
-					\"xMultiplier\":1
-				}"
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeSpellCSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				}
 			]
 		},
 		{
 			"blurb":"Coalesce Summon",
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"blurb\":\"Coalesce Summon\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"blurb":"Coalesce Summon",
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"DelaySubeffect\",
-					\"numTimesToDelay\":1,
-					\"indexToResume\":1,
-					\"endCondition\":\"Turn Start\"
-				}",
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"SetXByTargetValueSubeffect\",
-					\"whatToCount\":\"C\",
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"ChooseFromListSubeffect\",
-					\"maxCanChoose\":1,
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay":1,
+					"indexToResume":1,
+					"endCondition":"Turn Start"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"C",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose":1,
+					"cardRestriction":
 					{
-						\"blurb\":\"Pulsar to coalesce\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Is Character\",\"S==X\"],
-						\"subtypesInclude\":[\"Pulsar\"]
+						"blurb":"Pulsar to coalesce",
+						"cardRestrictions":["Subtypes Include","Friendly","Deck","Is Character","S==X"],
+						"subtypesInclude":["Pulsar"]
 					},
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where to play newly coalesced Pulsar\",
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+						"blurb":"where to play newly coalesced Pulsar",
+						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
-					\"subeffType\":\"PlaySubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

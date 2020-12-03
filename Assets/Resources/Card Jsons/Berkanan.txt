@@ -4,28 +4,28 @@
 	"effText":"Can’t be cast normally. Set a Summoned character’s NW to 0 and ES to 5.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Summoned\"]
+						"cardRestrictions":["Is Character","Board","Summoned"]
 					}
-				}",
-				"{
-					\"subeffType\":\"SetNESWSubeffect\",
-					\"nVal\":0,
-					\"eVal\":5,
-					\"sVal\":5,
-					\"wVal\":0
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.SetNESWSubeffect, Assembly-CSharp",
+					"nVal":0,
+					"eVal":5,
+					"sVal":5,
+					"wVal":0
+				}
 			]	
 		}
 	],

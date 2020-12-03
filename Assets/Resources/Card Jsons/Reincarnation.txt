@@ -4,28 +4,28 @@
 	"effText":"When a character dies, resummon a character.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Board\",\"Is Character\"]
+			"triggerData":
+			{
+				"triggerCondition":"Discard",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Board","Is Character"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Summoned character for Reincarnation to resummon\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Summoned\"]
+						"blurb":"Summoned character for Reincarnation to resummon",
+						"cardRestrictions":["Is Character","Board","Summoned"]
 					}
-				}",
-				"{
-					\"subeffType\":\"ResummonSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+				}
 			]	
 		}
 	],

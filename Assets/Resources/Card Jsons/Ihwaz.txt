@@ -4,33 +4,33 @@
 	"effText":"Can’t be cast normally. Swap two non-Augment cards' positions",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"for Ihwaz to swap (1/2)\",
-						\"cardRestrictions\":[\"Not Augment\",\"Board\"]
+						"blurb":"for Ihwaz to swap (1/2)",
+						"cardRestrictions":["Not Augment","Board"]
 					}
-				}",
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"for Ihwaz to swap (2/2)\",
-						\"cardRestrictions\":[\"Not Augment\",\"Board\",\"Not Already Target\"]
+						"blurb":"for Ihwaz to swap (2/2)",
+						"cardRestrictions":["Not Augment","Board","Not Already Target"]
 					}
-				}",
-				"{
-					\"subeffType\":\"SwapSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.SwapSubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

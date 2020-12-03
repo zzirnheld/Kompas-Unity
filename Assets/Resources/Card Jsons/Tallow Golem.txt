@@ -4,29 +4,29 @@
 	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, I activate a character until your next turn.",
 	"effects":[
 		{
-			"triggerCondition":"Activate",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Activate",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"character for Tallow Golem to temporarily activate\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\"]
+						"blurb":"character for Tallow Golem to temporarily activate",
+						"cardRestrictions":["Is Character","Board"]
 					}
-				}",
-				"{
-					\"subeffType\":\"TemporaryActivationSubeffect\",
-					\"endCondition\":\"Turn Start\",
-					\"triggerRestriction\":{
-						\"triggerRestrictions\":[\"Friendly Turn\"]
+				},
+				{
+					"$type":"KompasServer.Effects.TemporaryActivationSubeffect, Assembly-CSharp",
+					"endCondition":"Turn Start",
+					"triggerRestriction":{
+						"triggerRestrictions":["Friendly Turn"]
 					}
-				}"
+				}
 			]
 		}
 	],

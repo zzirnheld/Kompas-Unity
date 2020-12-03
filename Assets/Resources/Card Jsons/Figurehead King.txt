@@ -4,47 +4,47 @@
 	"effText":"Choose a card in your hand, then reshuffle the other X. Gain X pips.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
+						"cardRestrictions":["Friendly","Hand"]
 					}
-				}",
-				"{
-					\"subeffType\":\"TargetAllSubeffect\",
-					\"cardRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Not Already Target\"]
+						"cardRestrictions":["Friendly","Hand","Not Already Target"]
 					}
-				}",
-				"{
-					\"subeffType\":\"DeleteTargetSubeffect\",
-					\"targetIndex\":0
-				}",
-				"{
-					\"subeffType\":\"ReshuffleSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"DeleteTargetSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"CountXLoopSubeffect\",
-					\"canDecline\":false,
-					\"jumpTo\":3
-				}",
-				"{
-					\"subeffType\":\"AddPipsSubeffect\",
-					\"xMultiplier\":1
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp",
+					"targetIndex":0
+				},
+				{
+					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
+					"canDecline":false,
+					"jumpTo":3
+				},
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				}
 			]
 		}
 	],

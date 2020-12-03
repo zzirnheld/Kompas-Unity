@@ -4,44 +4,44 @@
 	"effText":"When I arrive adjacent to a Supplicant, negate adjacent characters until I'm removed.",
 	"effects":[
 		{
-			"triggerCondition":"Arrive",
-			"trigger":
-			"{
-				\"blurb\":\"Mercy\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\",\"Coords Fit Restriction\"],
-					\"spaceRestriction\":
+			"triggerData":
+			{
+				"blurb":"Mercy",
+				"triggerCondition":"Arrive",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","Coords Fit Restriction"],
+					"spaceRestriction":
 					{
-						\"spaceRestrictions\":[\"Adjacent to a Card that Fits Restriction\"],
-						\"adjacencyRestriction\":
+						"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
+						"adjacencyRestriction":
 						{
-							\"cardRestrictions\":[\"Subtypes Include\"],
-							\"subtypesInclude\":[\"Supplicant\"]
+							"cardRestrictions":["Subtypes Include"],
+							"subtypesInclude":["Supplicant"]
 						}
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetAllSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Supplicant to give safe haven\",
-						\"cardRestrictions\":[\"Board\",\"Is Character\",\"Adjacent\"]
+						"blurb":"Supplicant to give safe haven",
+						"cardRestrictions":["Board","Is Character","Adjacent"]
 					}
-				}",
-				"{
-					\"subeffType\":\"TemporaryNegateSubeffect\",
-					\"endCondition\":\"Remove\",
-					\"triggerRestriction\":{
-						\"triggerRestrictions\":[\"This Card Triggered\"]
+				},
+				{
+					"$type":"KompasServer.Effects.TemporaryNegateSubeffect, Assembly-CSharp",
+					"endCondition":"Remove",
+					"triggerRestriction":{
+						"triggerRestrictions":["This Card Triggered"]
 					}
-				}",
-				"{
-					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
-					\"delete\":true,
-					\"jumpTo\":1
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"jumpTo":1
+				}
 			]
 		}
 	],

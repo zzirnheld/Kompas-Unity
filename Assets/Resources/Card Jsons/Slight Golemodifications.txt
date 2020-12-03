@@ -4,70 +4,70 @@
 	"effText":"Tribute a friendly SX Golem. Hand-summon or revive a Golem with S < X and activate it.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\"],
-						\"subtypesInclude\":[\"Golem\"]
+						"cardRestrictions":["Subtypes Include","Is Character","Friendly","Board"],
+						"subtypesInclude":["Golem"]
 					}
-				}",
-				"{
-					\"subeffType\":\"SetXByTargetCostSubeffect\",
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"DiscardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"ChooseOptionSubeffect\",
-					\"ChoiceBlurb\":\"Hand-summon or revive a Golem?\",
-					\"OptionBlurbs\":[\"Hand-summon\",\"Revive\"],
-					\"OptionJumpIndices\":[4,6]
-				}",
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetCostSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"ChoiceBlurb":"Hand-summon or revive a Golem?",
+					"OptionBlurbs":["Hand-summon","Revive"],
+					"OptionJumpIndices":[4,6]
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Hand\",\"S<X\"],
-						\"subtypesInclude\":[\"Golem\"]
+						"cardRestrictions":["Subtypes Include","Is Character","Hand","S<X"],
+						"subtypesInclude":["Golem"]
 					},
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"JumpSubeffect\",
-					\"indexToJumpTo\":7
-				}",
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.JumpSubeffect, Assembly-CSharp",
+					"indexToJumpTo":7
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Discard\",\"S<X\"],
-						\"subtypesInclude\":[\"Golem\"]
+						"cardRestrictions":["Subtypes Include","Is Character","Discard","S<X"],
+						"subtypesInclude":["Golem"]
 					},
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
-					\"subeffType\":\"PlaySubeffect\"
-				}",
-				"{
-					\"subeffType\":\"ActivateSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+				}
 			]	
 		}
 	],

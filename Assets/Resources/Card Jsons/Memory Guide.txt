@@ -4,25 +4,25 @@
 	"effText":"When your turn starts, resummon an adjacent Summoned character.",
 	"effects":[
 		{
-			"triggerCondition":"Turn Start",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Friendly Turn\"]
+			"triggerData":
+			{
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Friendly Turn"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"adjacent Summoned character for Memory Guide to resummon\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Summoned\",\"Adjacent\"]
+						"blurb":"adjacent Summoned character for Memory Guide to resummon",
+						"cardRestrictions":["Is Character","Board","Summoned","Adjacent"]
 					}
-				}",
-				"{
-					\"subeffType\":\"ResummonSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+				}
 			]	
 		}
 	],

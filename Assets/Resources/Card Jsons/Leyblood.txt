@@ -4,26 +4,26 @@
 	"effText":"When a friendly Dragon kills a character, gain a pip.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
-			"trigger":
-			"{
-				\"blurb\":\"Leyblood\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"Stackable Source Fits Restriction\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Is Character\"]
+			"triggerData":
+			{
+				"blurb":"Leyblood",
+				"triggerCondition":"Discard",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Stackable Source Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Is Character"]
 					},
-					\"sourceRestriction\":{
-						\"cardRestrictions\":[\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Dragon\"]
+					"sourceRestriction":{
+						"cardRestrictions":["Subtypes Include"],
+						"subtypesInclude":["Dragon"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"AddPipsSubeffect\",
-					\"xModifier\":1
-				}"
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier":1
+				}
 			]	
 		}
 	],

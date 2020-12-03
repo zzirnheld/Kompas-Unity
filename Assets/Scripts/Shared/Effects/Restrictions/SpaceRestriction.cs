@@ -9,6 +9,9 @@ namespace KompasCore.Effects
     public class SpaceRestriction
     {
         public Subeffect Subeffect { get; private set; }
+        public GameCard Source { get; private set; }
+        public Player Controller { get; private set; }
+        public Effect Effect { get; private set; }
 
         //adjacency
         public const string AdjacentToThisCard = "Adjacent to Source";
@@ -36,19 +39,37 @@ namespace KompasCore.Effects
         public const string OnEdge = "On Edge of Board";
 
         public string[] spaceRestrictions;
-        public CardRestriction adjacencyRestriction = new CardRestriction();
-        public CardRestriction limitAdjacencyRestriction = new CardRestriction();
+        public CardRestriction adjacencyRestriction;
+        public CardRestriction limitAdjacencyRestriction;
         public int adjacencyLimit;
-        public CardRestriction connectednessRestriction = new CardRestriction();
-        public CardRestriction hereFitsRestriction = new CardRestriction();
+        public CardRestriction connectednessRestriction;
+        public CardRestriction hereFitsRestriction;
 
         public int constant;
 
         public string blurb = "";
 
+        public void Initialize(GameCard source, Player controller, Effect effect)
+        {
+            Source = source;
+            Controller = controller;
+            Effect = effect;
+
+            adjacencyRestriction = adjacencyRestriction ?? new CardRestriction();
+            connectednessRestriction = connectednessRestriction ?? new CardRestriction();
+            limitAdjacencyRestriction = limitAdjacencyRestriction ?? new CardRestriction();
+            hereFitsRestriction = hereFitsRestriction ?? new CardRestriction();
+
+            adjacencyRestriction.Initialize(source, controller, effect);
+            connectednessRestriction.Initialize(source, controller, effect);
+            limitAdjacencyRestriction.Initialize(source, controller, effect);
+            hereFitsRestriction.Initialize(source, controller, effect);
+        }
+
         public void Initialize(Subeffect subeffect)
         {
-            this.Subeffect = subeffect;
+            Initialize(subeffect.Source, subeffect.Controller, subeffect.Effect);
+            Subeffect = subeffect;
             adjacencyRestriction.Initialize(subeffect);
             connectednessRestriction.Initialize(subeffect);
             limitAdjacencyRestriction.Initialize(subeffect);
@@ -60,28 +81,28 @@ namespace KompasCore.Effects
             switch (restriction)
             {
                 //adjacency
-                case AdjacentToThisCard:        return Subeffect.Source.IsAdjacentTo(x, y);
-                case AdjacentToWithRestriction: return Subeffect.Game.boardCtrl.CardsAdjacentTo(x, y).Any(c => adjacencyRestriction.Evaluate(c));
+                case AdjacentToThisCard:        return Source.IsAdjacentTo(x, y);
+                case AdjacentToWithRestriction: return Source.Game.boardCtrl.CardsAdjacentTo(x, y).Any(c => adjacencyRestriction.Evaluate(c));
                 case AdjacentToTarget:          return Subeffect.Target.IsAdjacentTo(x, y);
-                case ConnectedToSourceBy:       return Subeffect.Game.boardCtrl.ShortestPath(Subeffect.Source, x, y, connectednessRestriction) < 50;
-                case InAOE:                     return Subeffect.Source.SpaceInAOE(x, y);
-                case NotInAOE:                  return !Subeffect.Source.SpaceInAOE(x, y);
+                case ConnectedToSourceBy:       return Source.Game.boardCtrl.ShortestPath(Subeffect.Source, x, y, connectednessRestriction) < 50;
+                case InAOE:                     return Source.SpaceInAOE(x, y);
+                case NotInAOE:                  return !Source.SpaceInAOE(x, y);
                 case LimitAdjacentCardsFittingRestriction:
-                    return Subeffect.Game.boardCtrl.CardsAdjacentTo(x, y).Where(c => limitAdjacencyRestriction.Evaluate(c)).Count() <= adjacencyLimit;
+                    return Source.Game.boardCtrl.CardsAdjacentTo(x, y).Where(c => limitAdjacencyRestriction.Evaluate(c)).Count() <= adjacencyLimit;
 
                 //distance
-                case DistanceX:                   return Subeffect.Source.DistanceTo(x, y) == Subeffect.Effect.X;
+                case DistanceX:                   return Source.DistanceTo(x, y) == Subeffect.Effect.X;
                 case DistanceToTargetX:           return Subeffect.Target.DistanceTo(x, y) == Subeffect.Effect.X;
                 case DistanceToTargetC:           return Subeffect.Target.DistanceTo(x, y) == constant;
                 case DistanceToTargetLTEC:        return Subeffect.Target.DistanceTo(x, y) <= constant;
-                case FurtherFromSourceThanTarget: return Subeffect.Source.DistanceTo(x, y) > Subeffect.Source.DistanceTo(Subeffect.Target);
-                case TowardsSourceFromTarget:     return Subeffect.Source.DistanceTo(x, y) < Subeffect.Source.DistanceTo(Subeffect.Target);
+                case FurtherFromSourceThanTarget: return Source.DistanceTo(x, y) > Source.DistanceTo(Subeffect.Target);
+                case TowardsSourceFromTarget:     return Source.DistanceTo(x, y) < Source.DistanceTo(Subeffect.Target);
 
                 //misc
                 case CanPlayTarget: return Subeffect.Target.PlayRestriction.EvaluateEffectPlay(x, y, Subeffect.Effect);
                 case CanMoveTarget: return Subeffect.Target.MovementRestriction.EvaluateEffectMove(x, y);
-                case Empty: return Subeffect.Effect.Game.boardCtrl.GetCardAt(x, y) == null;
-                case CardHereFitsRestriction: return hereFitsRestriction.Evaluate(Subeffect.Effect.Game.boardCtrl.GetCardAt(x, y));
+                case Empty: return Source.Game.boardCtrl.GetCardAt(x, y) == null;
+                case CardHereFitsRestriction: return hereFitsRestriction.Evaluate(Source.Game.boardCtrl.GetCardAt(x, y));
                 case OnTargetsDiagonal: return Subeffect.Target.OnMyDiagonal((x, y));
                 case OnEdge: return x == 0 || x == 6 || y == 0 || y == 6;
                 default: throw new ArgumentException($"Invalid space restriction {restriction}", "restriction");
@@ -92,7 +113,7 @@ namespace KompasCore.Effects
 
         public bool Evaluate(int x, int y)
         {
-            if (!Subeffect.Effect.Game.boardCtrl.ValidIndices(x, y)) return false;
+            if (!Source.Game.boardCtrl.ValidIndices(x, y)) return false;
 
             return spaceRestrictions.All(r => RestrictionValid(r, x, y));
         }

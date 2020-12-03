@@ -4,36 +4,36 @@
 	"effText":"When a distinctly named Shaper moves, I can move adjacent to them.",
 	"effects":[
 		{
-			"triggerCondition":"Move",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Distinct Name from Source\"],
-						\"subtypesInclude\":[\"Shaper\"]
+			"triggerData":
+			{
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Subtypes Include","Friendly","Distinct Name from Source"],
+						"subtypesInclude":["Shaper"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"to move Outpoured Anger to\",
-						\"spaceRestrictions\":[\"Adjacent to Target\"]
+						"blurb":"to move Outpoured Anger to",
+						"spaceRestrictions":["Adjacent to Target"]
 					},
-					\"targetIndex\":-2
-				}",
-				"{
-					\"subeffType\":\"MoveSubeffect\"
-				}"
+					"targetIndex":-2
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
 			]	
 		}
 	],

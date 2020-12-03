@@ -4,57 +4,57 @@
 	"effText":"While equipped, NegateSubeffect this character and give them +2NESW. When this character dies, if they’re a Supplicant, rehand me.",
 	"effects":[
 		{
-			"triggerCondition":"Augment Attached",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Augment Attached",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetAugmentedCardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"TemporaryNegateSubeffect\",
-					\"endCondition\":\"Augment Detached\",
-					\"triggerRestriction\":{
-						\"triggerRestrictions\":[\"This Card Triggered\"]
+				{
+					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TemporaryNegateSubeffect, Assembly-CSharp",
+					"endCondition":"Augment Detached",
+					"triggerRestriction":{
+						"triggerRestrictions":["This Card Triggered"]
 					}
-				}",
-				"{
-					\"subeffType\":\"TemporaryNESWBuffSubeffect\",
-					\"nBuff\":2,
-					\"eBuff\":2,
-					\"sBuff\":2,
-					\"wBuff\":2,
-					\"endCondition\":\"Augment Detached\",
-					\"triggerRestriction\":{
-						\"triggerRestrictions\":[\"This Card Triggered\"]
+				},
+				{
+					"$type":"KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
+					"nBuff":2,
+					"eBuff":2,
+					"sBuff":2,
+					"wBuff":2,
+					"endCondition":"Augment Detached",
+					"triggerRestriction":{
+						"triggerRestrictions":["This Card Triggered"]
 					}
-				}"
+				}
 			]
 		},
 		{
-			"triggerCondition":"Discard",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Augmented Card Triggered\",\"Triggerer Fits Restriction\"],
-					\"cardRestriction\":
+			"triggerData":
+			{
+				"triggerCondition":"Discard",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Augmented Card Triggered","Triggerer Fits Restriction"],
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Supplicant\"]
+						"cardRestrictions":["Subtypes Include"],
+						"subtypesInclude":["Supplicant"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"RehandSubeffect\"
-				}"
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

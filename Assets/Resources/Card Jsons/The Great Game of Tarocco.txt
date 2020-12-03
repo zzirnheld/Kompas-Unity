@@ -4,27 +4,27 @@
 	"effText":"Set X to the number of friendly Tarocco. Draw X.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"SetXBoardRestrictionSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Board\"],
-						\"subtypesInclude\":[\"Tarocco\"]
+						"cardRestrictions":["Subtypes Include","Friendly","Board"],
+						"subtypesInclude":["Tarocco"]
 					},
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"DrawXSubeffect\",
-					\"xMultiplier\":1
-				}"
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				}
 			]
 		}
 	],

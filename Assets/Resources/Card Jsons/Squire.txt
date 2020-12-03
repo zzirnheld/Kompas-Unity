@@ -4,31 +4,31 @@
 	"effText":"When you summon a Warrior, you can tribute me to gain a pip.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":"{
-				\"optional\":true,
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
-					\"cardRestriction\":
+			"triggerData":{
+				"optional":true,
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Warrior\"]
+						"cardRestrictions":["Subtypes Include"],
+						"subtypesInclude":["Warrior"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"DiscardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"AddPipsSubeffect\",
-					\"xMultiplier\":0,
-					\"xDivisor\":1,
-					\"xModifier\":1
-				}"
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xMultiplier":0,
+					"xDivisor":1,
+					"xModifier":1
+				}
 			]	
 		}
 	],

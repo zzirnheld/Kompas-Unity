@@ -4,25 +4,25 @@
 	"effText":"When I'm summoned adjacent to a Shaper, gain a pip.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Fits Restriction\",\"Coords Fit Restriction\"],
-					\"spaceRestriction\":{
-						\"spaceRestrictions\":[\"Adjacent to a Card that Fits Restriction\"],
-						\"adjacencyRestriction\":{
-							\"cardRestrictions\":[\"Subtypes Include\"],
-							\"subtypesInclude\":[\"Ethereal\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Fits Restriction","Coords Fit Restriction"],
+					"spaceRestriction":{
+						"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
+						"adjacencyRestriction":{
+							"cardRestrictions":["Subtypes Include"],
+							"subtypesInclude":["Ethereal"]
 						}
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"AddPipsSubeffect\",
-					\"xModifier\":1
-				}"
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier":1
+				}
 			]	
 		}
 	],

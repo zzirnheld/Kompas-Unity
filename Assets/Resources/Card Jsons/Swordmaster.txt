@@ -5,27 +5,27 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"Default"
 				]
 			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"adjacent Warrior for Swordmaster to give +1EW\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
-						\"subtypesInclude\":[\"Warrior\"]
+						"blurb":"adjacent Warrior for Swordmaster to give +1EW",
+						"cardRestrictions":["Subtypes Include","Is Character","Board","Adjacent"],
+						"subtypesInclude":["Warrior"]
 					}
-				}",
-				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"eChange\":1,
-					\"wChange\":1
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"eChange":1,
+					"wChange":1
+				}
 			]
 		}
 	],

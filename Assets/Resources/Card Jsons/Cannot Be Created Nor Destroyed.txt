@@ -4,58 +4,58 @@
 	"effText":"Unique.\nWhen turns start, reshuffle all X friendly discarded Pulsars, give your Avatar +-X S, and draw 1.",
 	"effects":[
 		{
-			"triggerCondition":"Turn Start",
-			"trigger":
-			"{
-				\"blurb\":\"Repurpose Starstuff\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\"]
+			"triggerData":
+			{
+				"blurb":"Repurpose Starstuff",
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetAllSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Discard\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Pulsar\"]
+						"cardRestrictions":["Friendly","Discard","Subtypes Include"],
+						"subtypesInclude":["Pulsar"]
 					}
-				}",
-				"{
-					\"subeffType\":\"ReshuffleSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"DeleteTargetSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"CountXLoopSubeffect\",
-					\"canDecline\":false,
-					\"jumpTo\":1
-				}",
-				"{
-					\"subeffType\":\"TargetAvatarSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"ChooseOptionSubeffect\",
-					\"ChoiceBlurb\":\"Give +X S or -X S?\",
-					\"OptionBlurbs\":[\"+X S\",\"-X S\"],
-					\"OptionJumpIndices\":[6,8]
-				}",
-				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"sMult\":1
-				}",
-				"{
-					\"subeffType\":\"JumpSubeffect\",
-					\"indexToJumpTo\":9
-				}",
-				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"sMult\":-1
-				}",
-				"{
-					\"subeffType\":\"DrawSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
+					"canDecline":false,
+					"jumpTo":1
+				},
+				{
+					"$type":"KompasServer.Effects.TargetAvatarSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"ChoiceBlurb":"Give +X S or -X S?",
+					"OptionBlurbs":["+X S","-X S"],
+					"OptionJumpIndices":[6,8]
+				},
+				{
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"sMult":1
+				},
+				{
+					"$type":"KompasServer.Effects.JumpSubeffect, Assembly-CSharp",
+					"indexToJumpTo":9
+				},
+				{
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"sMult":-1
+				},
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
 			]	
 		}
 	],

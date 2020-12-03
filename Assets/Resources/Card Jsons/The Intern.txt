@@ -4,17 +4,17 @@
 	"effText":"Cannot be Avatar. (He’s not ready for that kind of responsibility.)\nThe first time each stack you draw, draw 1.",
 	"effects":[
 		{
-			"triggerCondition":"Draw",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Max Per Stack\"]
+			"triggerData":
+			{
+				"triggerCondition":"Draw",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Max Per Stack"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"DrawSubeffect\"
-				}"
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
 			]	
 		}
 	],

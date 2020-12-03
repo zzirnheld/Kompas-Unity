@@ -5,73 +5,73 @@
 	"effects":[
 		{
 			"blurb":"Territorial",
-			"triggerCondition":"Turn Start",
-			"trigger":
-			"{
-				\"blurb\":\"Territorial\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\"]
+			"triggerData":
+			{
+				"blurb":"Territorial",
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"for Fyrian to move and attack\",
-						\"cardRestrictions\":[\"Board\",\"Is Character\",\"Adjacent\"]
+						"blurb":"for Fyrian to move and attack",
+						"cardRestrictions":["Board","Is Character","Adjacent"]
 					}
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where Hermit to move its target\",
-						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\",\"Can Move Target to This Space\"],
-						\"constant\":1
+						"blurb":"where Hermit to move its target",
+						"spaceRestrictions":["Empty","Distance to Target == Constant","Can Move Target to This Space"],
+						"constant":1
 					}
-				}",
-				"{
-					\"subeffType\":\"MoveSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"AttackSubeffect\",
-					\"attackerIndex\":-1,
-					\"targetIndex\":-2
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"attackerIndex":-1,
+					"targetIndex":-2
+				}
 			]	
 		},
 		{
 			"blurb":"Fire Breath",
-			"triggerCondition":"Attack",
-			"trigger":
-			"{
-				\"blurb\":\"Fire Breath\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Attack",
+				"blurb":"Fire Breath",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetDefenderSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"ChangeAllNESWSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.TargetDefenderSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeAllNESWSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Within C Spaces of Target\"],
-						\"cSpaces\":1
+						"cardRestrictions":["Is Character","Board","Within C Spaces of Target"],
+						"cSpaces":1
 					},
-					\"eMod\":-3
-				}"
+					"eMod":-3
+				}
 			]	
 		}
 	],
 	"n":3,
-	"e":9,
+	"e":11,
 	"s":12,
 	"w":12,
 	"subtypeText":"Dragon"

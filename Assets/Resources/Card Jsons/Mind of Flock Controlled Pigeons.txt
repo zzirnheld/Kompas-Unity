@@ -4,31 +4,31 @@
 	"effText":"When I deal combat damage, discard a Crazy Idea and draw 1.",
 	"effects":[
 		{
-			"triggerCondition":"Deal Combat Damage",
-			"trigger":
-			"{
-				\"blurb\":\"bawk bawk bawk\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"blurb":"bawk bawk bawk",
+				"triggerCondition":"Deal Combat Damage",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Mind bawk bawk Controlled Pigeons\",
-						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Crazy Idea\"]
+						"blurb":"Mind bawk bawk Controlled Pigeons",
+						"cardRestrictions":["Friendly","Hand","Subtypes Include"],
+						"subtypesInclude":["Crazy Idea"]
 					}
-				}",
-				"{
-					\"subeffType\":\"DiscardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"DrawXSubeffect\",
-					\"xModifier\":2
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xModifier":2
+				}
 			]	
 		}
 	],

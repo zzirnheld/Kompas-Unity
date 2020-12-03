@@ -17,6 +17,8 @@ namespace KompasClient.UI
 
         public void GoToMainMenu() => SceneManager.LoadScene(MainMenuUICtrl.MainMenuScene);
 
+        public void Rematch() => SceneManager.LoadScene(MainMenuUICtrl.ClientScene);
+
         public void Exit() => Application.Quit();
 
         public void Cancel() => gameObject.SetActive(false);

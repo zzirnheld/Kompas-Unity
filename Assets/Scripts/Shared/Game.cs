@@ -1,6 +1,7 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasCore.UI;
+using KompasServer.Effects;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -4,43 +4,43 @@
 	"effText":"After I’m summoned, delay 2 turns, then tribute me and deck-summon a Dragon where I was.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"DelaySubeffect\",
-					\"numTimesToDelay\":1,
-					\"indexToResume\":1,
-					\"endCondition\":\"Turn Start\"
-				}",
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"TargetThisSpaceSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"DiscardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"DeckTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay":1,
+					"indexToResume":1,
+					"endCondition":"Turn Start"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSpaceSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"for Dragon Egg to become\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Deck\",\"Can Be Played\"],
-						\"subtypesInclude\":[\"Dragon\"]
+						"blurb":"for Dragon Egg to become",
+						"cardRestrictions":["Subtypes Include","Is Character","Deck","Can Be Played"],
+						"subtypesInclude":["Dragon"]
 					}
-				}",
-				"{
-					\"subeffType\":\"PlaySubeffect\",
-					\"spaceIndex\":-1,
-					\"targetIndex\":-1
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp",
+					"spaceIndex":-1,
+					"targetIndex":-1
+				}
 			]
 		}
 	],

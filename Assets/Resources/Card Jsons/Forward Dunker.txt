@@ -4,34 +4,34 @@
 	"effText":"The first time each stack I'm augmented, attach that Augment to an adjacent Avatar.",
 	"effects":[
 		{
-			"triggerCondition":"Augment Attached",
-			"trigger":
-			"{
-				\"blurb\":\"Run Forward!\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Max Per Stack\",\"This Card in Play\",\"Coords Fit Restriction\"],
-					\"spaceRestriction\":
+			"triggerData":
+			{
+				"blurb":"Run Forward!",
+				"triggerCondition":"Augment Attached",
+				"triggerRestriction":{
+					"triggerRestrictions":["Max Per Stack","This Card in Play","Coords Fit Restriction"],
+					"spaceRestriction":
 					{
-						\"spaceRestrictions\":[\"Card Here Fits Restriction\"],
-						\"hereFitsRestriction\":{
-							\"cardRestrictions\":[\"Is Source\"]
+						"spaceRestrictions":["Card Here Fits Restriction"],
+						"hereFitsRestriction":{
+							"cardRestrictions":["Is Source"]
 						}
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Board\",\"Avatar\",\"Adjacent\"]
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"cardRestrictions":["Board","Avatar","Adjacent"]
 					}
-				}",
-				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"AttachSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

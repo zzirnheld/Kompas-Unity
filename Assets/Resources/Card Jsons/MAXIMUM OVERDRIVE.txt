@@ -4,78 +4,78 @@
 	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nGive a character -5W. If they're Crazy, give them +5 N.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
-			"trigger":"{
-				\"blurb\":\"Ificate\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\",\"Triggerer Fits Restriction\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Hand\"]
+			"triggerData":{
+				"blurb":"Ificate",
+				"triggerCondition":"Discard",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Hand"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Crazy Idea for MAXIMUM OVERDRIVE to Ificate\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Friendly\",\"Distinct from Source\"],
-						\"subtypesInclude\":[\"Crazy Idea\"]
+						"blurb":"Crazy Idea for MAXIMUM OVERDRIVE to Ificate",
+						"cardRestrictions":["Subtypes Include","Discard","Friendly","Distinct from Source"],
+						"subtypesInclude":["Crazy Idea"]
 					}
-				}",
-				"{
-					\"subeffType\":\"PayPipsSubeffect\",
-					\"xMultiplier\":0,
-					\"xModifier\":1
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
+					"xMultiplier":0,
+					"xModifier":1
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where MAXIMUM OVERDRIVE to play targeted Crazy Idea\",
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+						"blurb":"where MAXIMUM OVERDRIVE to play targeted Crazy Idea",
+						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
-					\"subeffType\":\"PlaySubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
 			]
 		},
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"blurb\":\"MAXIMUM OVERDRIVE\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"blurb":"MAXIMUM OVERDRIVE",
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"blurb\":\"character to MAXIMUM OVERDRIVE\",
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Is Character\",\"Board\"]
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"blurb":"character to MAXIMUM OVERDRIVE",
+					"cardRestriction":{
+						"cardRestrictions":["Is Character","Board"]
 					}
-				}",
-				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"wMod\":-5
-				}",
-				"{
-					\"subeffType\":\"ConditionalEndSubeffect\",
-					\"condition\":\"Target Violates Restriction\",
-					\"cardRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"wMod":-5
+				},
+				{
+					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition":"Target Violates Restriction",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Crazy\"]
+						"cardRestrictions":["Subtypes Include"],
+						"subtypesInclude":["Crazy"]
 					}
-				}",
-				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"nMod\":-5
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"nMod":5
+				}
 			]
 		}
 	],

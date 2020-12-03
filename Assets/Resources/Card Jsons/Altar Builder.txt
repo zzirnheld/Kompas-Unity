@@ -4,65 +4,65 @@
 	"effText":"When a friendly Cultist dies, I get +1S.\nI can pay 9S to deck-cast an Altar Radial.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
-			"trigger":
-			"{
-				\"blurb\":\"Strengthen Builder\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Triggerer Fits Restriction\",\"From Field\"],
-					\"cardRestriction\":
+			"triggerData":
+			{
+				"blurb":"Strengthen Builder",
+				"triggerCondition":"Discard",
+				"triggerRestriction":{
+					"triggerRestrictions":["Triggerer Fits Restriction","From Field"],
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Board\",\"Friendly\"],
-						\"subtypesInclude\":[\"Cultist\"]
+						"cardRestrictions":["Subtypes Include","Board","Friendly"],
+						"subtypesInclude":["Cultist"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"sMod\":1
-				}"
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"sMod":1
+				}
 			]
 		},
 		{
 			"blurb":"Build Altar",
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Default"
 				]
 			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"PayStatsSubeffect\",
-					\"sMod\":9
-				}",
-				"{
-					\"subeffType\":\"ChooseFromListSubeffect\",
-					\"maxCanChoose\":1,
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.PayStatsSubeffect, Assembly-CSharp",
+					"sMod":9
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose":1,
+					"cardRestriction":
 					{
-						\"blurb\":\"Altar for Altar Builder to play\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Is Spell\"],
-						\"subtypesInclude\":[\"Altar\",\"Radial\"]
+						"blurb":"Altar for Altar Builder to play",
+						"cardRestrictions":["Subtypes Include","Friendly","Deck","Is Spell"],
+						"subtypesInclude":["Altar","Radial"]
 					}
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where for Altar Builder to cast its target Altar\",
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+						"blurb":"where for Altar Builder to cast its target Altar",
+						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
-					\"subeffType\":\"PlaySubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

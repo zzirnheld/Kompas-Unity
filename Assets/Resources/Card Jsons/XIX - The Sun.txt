@@ -4,40 +4,40 @@
 	"effText":"When you draw, I can give a Summoned character -1E and a different character +1E.",
 	"effects":[
 		{
-			"triggerCondition":"Draw",
-			"trigger":
-			"{
-				\"optional\":true,
-				\"blurb\":\"Give one character -1E and another +1E?\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\"]
+			"triggerData":
+			{
+				"optional":true,
+				"blurb":"Give one character -1E and another +1E?",
+				"triggerCondition":"Draw",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Controller Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"character for Sun to give -1E\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Summoned\"]
+						"blurb":"character for Sun to give -1E",
+						"cardRestrictions":["Is Character","Board","Summoned"]
 					}
-				}",
-				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"eChange\":-1
-				}",
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"eChange":-1
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"character for Sun to give +1E\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Not Already Target\"]
+						"blurb":"character for Sun to give +1E",
+						"cardRestrictions":["Is Character","Board","Not Already Target"]
 					}
-				}",
-				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"eChange\":1
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"eChange":1
+				}
 
 			]
 		}

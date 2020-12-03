@@ -77,6 +77,9 @@ namespace KompasServer.Cards
         {
             base.SetInfo(serializedCard, id);
             ServerEffects = effects;
+            int i = 0;
+            foreach (var eff in effects) eff.SetInfo(this, game, owner, i++);
+            Debug.Log($"Setting card with effects: {string.Join(", ", effects.Select(e => e.ToString()))}");
             ServerGame = game;
             ServerController = ServerOwner = owner;
         }
@@ -125,7 +128,7 @@ namespace KompasServer.Cards
 
             //copy the colleciton  so that you can edit the original
             var augments = Augments.ToArray();
-            foreach (var aug in augments) aug.Discard();
+            foreach (var aug in augments) aug.Discard(stackSrc);
             return true;
         }
 

@@ -220,6 +220,8 @@ namespace KompasCore.Cards
             PlayRestriction.SetInfo(this);
 
             cardCtrl.ShowForCardType(CardType, false);
+
+            Debug.Log($"Finished setting up info for card {CardName}");
         }
 
         /// <summary>

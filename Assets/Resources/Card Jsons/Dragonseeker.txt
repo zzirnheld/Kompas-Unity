@@ -6,33 +6,33 @@
 		{
 			"blurb":"Dragonseek",
 			"activationRestriction":{
-				"activationRestrictions":["Default"]
+				"activationRestrictionArray":["Default"]
 			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"for Dragonseeker to reshuffle\",
-						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Is Character\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Dragon\"]
+						"blurb":"for Dragonseeker to reshuffle",
+						"cardRestrictions":["Friendly","Hand","Is Character","Subtypes Include"],
+						"subtypesInclude":["Dragon"]
 					}
-				}",
-				"{
-					\"subeffType\":\"SetXByTargetValueSubeffect\",
-					\"whatToCount\":\"S\",
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"ReshuffleSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"sMult\":1
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"S",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"sMult":1
+				}
 			]
 		}
 	],

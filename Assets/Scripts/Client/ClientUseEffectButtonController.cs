@@ -15,7 +15,7 @@ namespace KompasClient.UI
         public void Initialize(Effect eff, ClientUIController clientUICtrl)
         {
             this.eff = eff;
-            buttonText.text = string.IsNullOrEmpty(eff.Blurb) ? EffDefaultUIString : eff.Blurb;
+            buttonText.text = string.IsNullOrEmpty(eff.blurb) ? EffDefaultUIString : eff.blurb;
             this.clientUICtrl = clientUICtrl;
         }
 

@@ -5,25 +5,25 @@
 	"effects":[
 		{
 			"blurb":"Dispel",
-			"triggerCondition":"Activate",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Activate",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"spell for Wynn to DispelSubeffect\",
-						\"cardRestrictions\":[\"Is Spell\",\"Board\"]
+						"blurb":"spell for Wynn to DispelSubeffect, Assembly-CSharp",
+						"cardRestrictions":["Is Spell","Board"]
 					}
-				}",
-				"{
-					\"subeffType\":\"DispelSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

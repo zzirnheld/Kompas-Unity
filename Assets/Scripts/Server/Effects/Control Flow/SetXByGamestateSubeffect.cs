@@ -14,12 +14,14 @@ namespace KompasServer.Effects
         public string whatToCount;
 
         public string stat;
-        public CardRestriction throughRestriction = new CardRestriction();
-        public CardRestriction cardRestriction = new CardRestriction();
+        public CardRestriction throughRestriction;
+        public CardRestriction cardRestriction;
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
+            throughRestriction = throughRestriction ?? new CardRestriction();
+            cardRestriction = cardRestriction ?? new CardRestriction();
             throughRestriction.Initialize(this);
         }
 

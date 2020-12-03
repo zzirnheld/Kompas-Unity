@@ -4,38 +4,38 @@
 	"effText":"Choose an enemy character wielding a friendly Sportsball. Rehand their Augments (to their owners), then rehand the character.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"character to put in TIME OUT!\",
-						\"cardRestrictions\":[\"Board\",\"Is Character\",\"Enemy\",\"Wields Augment Fitting Restriction\"],
-						\"secondaryRestrictionString\":
-						\"{
-							\\\"cardRestrictions\\\":[\\\"Friendly\\\",\\\"Subtypes Include\\\"],
-							\\\"subtypesInclude\\\":[\\\"Sportsball\\\"]
-						}\"
+						"blurb":"character to put in TIME OUT!",
+						"cardRestrictions":["Board","Is Character","Enemy","Wields Augment Fitting Restriction"],
+						"secondaryRestrictionString":
+						"{
+							\"cardRestrictions\":[\"Friendly\",\"Subtypes Include\"],
+							\"subtypesInclude\":[\"Sportsball\"]
+						}"
 					}
-				}",
-				"{
-					\"subeffType\":\"TargetAugmentsSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"RehandSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
-					\"delete\":true,
-					\"jumpTo\":2
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"jumpTo":2
+				}
 			]
 		}
 	],

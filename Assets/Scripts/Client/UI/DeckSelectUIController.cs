@@ -105,6 +105,8 @@ namespace KompasClient.UI
             //first clear deck
             ClearDeck();
 
+            Debug.Log($"Loading decklist: {decklist}");
+
             decklist = decklist.Replace("\u200B", "");
             decklist = decklist.Replace("\r", "");
             decklist = decklist.Replace("\t", "");

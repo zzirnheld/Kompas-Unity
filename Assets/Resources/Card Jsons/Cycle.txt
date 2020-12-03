@@ -6,26 +6,26 @@
 		{
 			"blurb":"Pass",
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
  					"Friendly Turn",
 					"Default"
 				]
 			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":{
-						\"blurb\":\"Card to Cycle\",
-						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"blurb":"Card to Cycle",
+						"cardRestrictions":["Friendly","Hand"]
 					}
-				}",
-				"{
-					\"subeffType\":\"DiscardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"ChangeLeyloadSubeffect\",
-					\"xModifier\":1
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeLeyloadSubeffect, Assembly-CSharp",
+					"xModifier":1
+				}
 			]	
 		}
 	],

@@ -4,35 +4,35 @@
 	"effText":"When I die, annihilate me, gain 2 pips, and give the enemy Avatar +2E.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
-			"trigger":
-			"{
-				\"blurb\":\"Annihilate\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\",\"From Field\"]
+			"triggerData":
+			{
+				"blurb":"Annihilate",
+				"triggerCondition":"Discard",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","From Field"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"AnnihilateSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"AddPipsSubeffect\",
-					\"xModifier\":2
-				}",
-				"{
-					\"subeffType\":\"AutoTargetSubeffect\",
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Avatar\",\"Enemy\"]
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier":2
+				},
+				{
+					"$type":"KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"cardRestrictions":["Avatar","Enemy"]
 					}
-				}",
-				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"eMod\":2
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"eMod":2
+				}
 			]
 		}
 	],

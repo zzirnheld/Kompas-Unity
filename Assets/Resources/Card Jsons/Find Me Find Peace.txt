@@ -4,43 +4,43 @@
 	"effText":"Rehand all Supplicants from your deck’s top 4 cards. Bottomdeck the rest.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"blurb\":\"Find Me, Find Peace\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"blurb":"Find Me, Find Peace",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetAllSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<C\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Supplicant\"],
-						\"constant\":4
+						"cardRestrictions":["Friendly","Deck","Index<C","Subtypes Include"],
+						"subtypesInclude":["Supplicant"],
+						"constant":4
 					}
-				}",
-				"{
-					\"subeffType\":\"AddRestSubeffect\",
-					\"cardRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.AddRestSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<C\",\"Not Already Target\"],
-						\"constant\":4
+						"cardRestrictions":["Friendly","Deck","Index<C","Not Already Target"],
+						"constant":4
 					}
-				}",
-				"{
-					\"subeffType\":\"RehandSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
-					\"delete\":true,
-					\"jumpTo\":2
-				}",
-				"{
-					\"subeffType\":\"BottomdeckRestSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"jumpTo":2
+				},
+				{
+					"$type":"KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

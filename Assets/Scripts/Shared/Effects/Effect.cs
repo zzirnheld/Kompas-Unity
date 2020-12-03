@@ -8,12 +8,13 @@ namespace KompasCore.Effects
     /// <summary>
     /// Effects will only be resolved on server. Clients will just get to know what effects they can use
     /// </summary>
+    [System.Serializable]
     public abstract class Effect : IStackable
     {
-        public Game Game => Source.Game;
+        public abstract Game Game { get; }
 
-        public readonly int EffectIndex;
-        public GameCard Source { get; }
+        public int EffectIndex { get; private set; }
+        public GameCard Source { get; private set; }
         public abstract Player Controller { get; set; }
 
         //subeffects
@@ -33,9 +34,11 @@ namespace KompasCore.Effects
         public int X = 0;
 
         //Triggering and Activating
+        public TriggerData triggerData;
         public abstract Trigger Trigger { get; }
-        public ActivationRestriction ActivationRestriction { get; }
-        public string Blurb { get; }
+        public ActivationRestriction activationRestriction;
+        public string blurb;
+
         public ActivationContext CurrActivationContext { get; protected set; }
         public int TimesUsedThisTurn { get; protected set; }
         public int TimesUsedThisRound { get; protected set; }
@@ -52,14 +55,14 @@ namespace KompasCore.Effects
             }
         }
 
-        public Effect(ActivationRestriction restriction, GameCard source, string blurb, int effIndex, Player owner)
+        protected void SetInfo(GameCard source, int effIndex, Player owner)
         {
             Source = source != null ? source : throw new System.ArgumentNullException("source", "Effect cannot be attached to null card");
-            Controller = owner;
-            ActivationRestriction = restriction;
-            ActivationRestriction.Initialize(this);
-            Blurb = blurb;
             EffectIndex = effIndex;
+            Controller = owner;
+
+            blurb = string.IsNullOrEmpty(blurb) ? "Effect" : blurb;
+            activationRestriction?.Initialize(this);
             TimesUsedThisTurn = 0;
         }
 
@@ -81,10 +84,10 @@ namespace KompasCore.Effects
         public virtual void RemoveTarget(GameCard card) => TargetsList.Remove(card);
 
         public virtual bool CanBeActivatedBy(Player controller)
-            => Trigger == null && ActivationRestriction.Evaluate(controller);
+            => Trigger == null && activationRestriction != null && activationRestriction.Evaluate(controller);
 
         public virtual bool CanBeActivatedAtAllBy(Player activator)
-            => Trigger == null && ActivationRestriction.EvaluateAtAll(activator);
+            => Trigger == null && activationRestriction != null && activationRestriction.EvaluateAtAll(activator);
 
         public abstract void StartResolution(ActivationContext context);
 

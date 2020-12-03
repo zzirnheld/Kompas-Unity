@@ -4,21 +4,21 @@
 	"effText":"When a friendly character dies here during an enemy turn, draw 1.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Enemy Turn\",\"Triggerer Fits Restriction\"],
-					\"cardRestriction\":
+			"triggerData":
+			{
+				"triggerCondition":"Discard",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Enemy Turn","Triggerer Fits Restriction"],
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"In AOE\"]
+						"cardRestrictions":["Friendly","In AOE"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"DrawSubeffect\"
-				}"
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
 			]	
 		}
 	],

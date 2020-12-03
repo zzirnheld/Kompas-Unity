@@ -1,14 +1,17 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
+using KompasCore.GameCore;
 using KompasServer.GameCore;
 using UnityEngine;
 
 
 namespace KompasServer.Effects
 {
+    [System.Serializable]
     public class ServerEffect : Effect, IServerStackable
     {
         public ServerGame serverGame;
+        public override Game Game => serverGame;
         public ServerEffectsController EffectsController => serverGame.EffectsController;
         public ServerPlayer ServerController { get; set; }
         public override Player Controller
@@ -17,46 +20,24 @@ namespace KompasServer.Effects
             set => ServerController = value as ServerPlayer;
         }
 
-        public ServerSubeffect[] ServerSubeffects { get; }
-        public override Subeffect[] Subeffects => ServerSubeffects;
-        public ServerTrigger ServerTrigger { get; }
+        public ServerSubeffect[] subeffects;
+        public override Subeffect[] Subeffects => subeffects;
+        public ServerTrigger ServerTrigger { get; private set; }
         public override Trigger Trigger => ServerTrigger;
 
         public ServerSubeffect OnImpossible = null;
 
-        public ServerEffect(SerializableEffect se, GameCard thisCard, ServerGame serverGame, ServerPlayer controller, int effectIndex)
-            : base(se.activationRestriction ?? new ActivationRestriction(), thisCard, se.blurb, effectIndex, controller)
+        public void SetInfo(GameCard thisCard, ServerGame serverGame, ServerPlayer controller, int effectIndex)
         {
+            base.SetInfo(thisCard, effectIndex, controller);
             this.serverGame = serverGame;
             this.ServerController = controller;
-            ServerSubeffects = new ServerSubeffect[se.subeffects.Length];
 
-            if (!string.IsNullOrEmpty(se.trigger))
-            {
-                try
-                {
-                    ServerTrigger = ServerTrigger.FromJson(se.triggerCondition, se.trigger, this);
-                    EffectsController.RegisterTrigger(se.triggerCondition, ServerTrigger);
-                }
-                catch (System.ArgumentException)
-                {
-                    Debug.LogError($"Failed to load trigger of type {se.triggerCondition} from json {se.trigger}");
-                    throw;
-                }
-            }
+            if (triggerData != null && !string.IsNullOrEmpty(triggerData.triggerCondition))
+                ServerTrigger = new ServerTrigger(triggerData, this);
 
-            for (int i = 0; i < se.subeffects.Length; i++)
-            {
-                try
-                {
-                    ServerSubeffects[i] = ServerSubeffect.FromJson(se.subeffects[i], this, i);
-                }
-                catch (System.ArgumentException)
-                {
-                    Debug.LogError($"Failed to load subeffect from json {se.subeffects[i]}");
-                    throw;
-                }
-            }
+            int i = 0;
+            foreach (var subeff in subeffects) subeff.Initialize(this, i++);
         }
 
         public override bool CanBeActivatedBy(Player controller)
@@ -100,7 +81,7 @@ namespace KompasServer.Effects
 
         public bool ResolveSubeffect(int index)
         {
-            if (index >= ServerSubeffects.Length)
+            if (index >= subeffects.Length)
             {
                 FinishResolution();
                 return true;
@@ -109,7 +90,7 @@ namespace KompasServer.Effects
             // Debug.Log($"Resolving subeffect of type {ServerSubeffects[index].GetType()}");
             SubeffectIndex = index;
             ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
-            return ServerSubeffects[index].Resolve();
+            return subeffects[index].Resolve();
         }
 
         public bool EndResolution()
@@ -138,7 +119,7 @@ namespace KompasServer.Effects
         /// </summary>
         public bool EffectImpossible()
         {
-            Debug.Log($"Effect of {Source.CardName} is being declared impossible at subeffect {ServerSubeffects[SubeffectIndex].GetType()}");
+            Debug.Log($"Effect of {Source.CardName} is being declared impossible at subeffect {subeffects[SubeffectIndex].GetType()}");
             if (OnImpossible == null)
             {
                 FinishResolution();

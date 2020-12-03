@@ -6,68 +6,68 @@
 		{
 			"blurb":"Shape",
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Friendly Turn",
 					"Default"
 				]
 			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"to move Whose Past Disintegrates to\",
-						\"spaceRestrictions\":[\"Connected to Source by Cards Fitting Restriction\"],
-						\"connectednessRestriction\":{
-							\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
-							\"subtypesInclude\":[\"Ethereal\"]
+						"blurb":"to move Whose Past Disintegrates to",
+						"spaceRestrictions":["Connected to Source by Cards Fitting Restriction"],
+						"connectednessRestriction":{
+							"cardRestrictions":["Subtypes Include","Is Character","Board"],
+							"subtypesInclude":["Ethereal"]
 						}
 					}
-				}",
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"SpendMovementSubeffect\",
-					\"xModifier\":1
-				}",
-				"{
-					\"subeffType\":\"SetXByGamestateSubeffect\",
-					\"whatToCount\":\"Distance to Coords Through\",
-					\"throughRestriction\":{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
-						\"subtypesInclude\":[\"Ethereal\"]
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SpendMovementSubeffect, Assembly-CSharp",
+					"xModifier":1
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount":"Distance to Coords Through",
+					"throughRestriction":{
+						"cardRestrictions":["Subtypes Include","Is Character","Board"],
+						"subtypesInclude":["Ethereal"]
 					},
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"eMult\":-1
-				}",
-				"{
-					\"subeffType\":\"MoveSubeffect\"
-				}"
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"eMult":-1
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
 			]
 		},
 		{
-			"triggerCondition":"E Change",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\",\"This Card Triggered\"],
-					\"xRestriction\":{
-						\"xRestrictions\":[\"<0\"]
+			"triggerData":
+			{
+				"triggerCondition":"E Change",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","X Fits Restriction","This Card Triggered"],
+					"xRestriction":{
+						"xRestrictions":["<0"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"wMult\":-1
-				}"
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"wMult":-1
+				}
 			]	
 		}
 	],

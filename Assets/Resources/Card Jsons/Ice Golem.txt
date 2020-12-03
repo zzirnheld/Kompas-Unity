@@ -5,29 +5,29 @@
 	"effects":[
 		{
 			"blurb":"Fun Not Allowed",
-			"triggerCondition":"Activate",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Activate",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"for Ice Golem to temporarily negate\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\"]
+						"blurb":"for Ice Golem to temporarily negate",
+						"cardRestrictions":["Is Character","Board"]
 					}
-				}",
-				"{
-					\"subeffType\":\"TemporaryNegateSubeffect\",
-					\"endCondition\":\"Turn Start\",
-					\"triggerRestriction\":{
-						\"triggerRestrictions\":[\"Friendly Turn\"]
+				},
+				{
+					"$type":"KompasServer.Effects.TemporaryNegateSubeffect, Assembly-CSharp",
+					"endCondition":"Turn Start",
+					"triggerRestriction":{
+						"triggerRestrictions":["Friendly Turn"]
 					}
-				}"
+				}
 			]
 		}
 	],

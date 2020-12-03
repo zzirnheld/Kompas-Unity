@@ -6,101 +6,101 @@
 		{
 			"blurb":"Linewalk",
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Friendly Turn",
 					"Default"
 				]
 			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"SpendMovementSubeffect\",
-					\"xModifier\":1
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SpendMovementSubeffect, Assembly-CSharp",
+					"xModifier":1
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"to Linewalk to\",
-						\"spaceRestrictions\":[\"Empty\",\"On Target's Diagonal\"]
+						"blurb":"to Linewalk to",
+						"spaceRestrictions":["Empty","On Target's Diagonal"]
 					}
-				}",
-				"{
-					\"subeffType\":\"MoveSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
 			]
 		},
 		{
 			"blurb":"Orange Linewalked",
-			"triggerCondition":"Move",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"ChooseOptionSubeffect\",
-					\"ChoiceBlurb\":\"Reshuffle your hand and draw X?\",
-					\"OptionBlurbs\":[\"Yes\",\"No\"],
-					\"OptionJumpIndices\":[1,6]
-				}",
-				"{
-					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
-					\"jumpTo\":6
-				}",
-				"{
-					\"subeffType\":\"TargetAllSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"ChoiceBlurb":"Reshuffle your hand and draw X?",
+					"OptionBlurbs":["Yes","No"],
+					"OptionJumpIndices":[1,6]
+				},
+				{
+					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"jumpTo":6
+				},
+				{
+					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
+						"cardRestrictions":["Friendly","Hand"]
 					}
-				}",
-				"{
-					\"subeffType\":\"ReshuffleSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
-					\"delete\":true,
-					\"jumpTo\":3
-				}",
-				"{
-					\"subeffType\":\"DrawXSubeffect\",
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"ClearOnImpossibleSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"ChooseOptionSubeffect\",
-					\"playerIndex\":1,
-					\"ChoiceBlurb\":\"Reshuffle your hand and draw X?\",
-					\"OptionBlurbs\":[\"Yes\",\"No\"],
-					\"OptionJumpIndices\":[8,100]
-				}",
-				"{
-					\"subeffType\":\"TargetAllSubeffect\",
-					\"cardRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"jumpTo":3
+				},
+				{
+					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"playerIndex":1,
+					"ChoiceBlurb":"Reshuffle your hand and draw X?",
+					"OptionBlurbs":["Yes","No"],
+					"OptionJumpIndices":[8,100]
+				},
+				{
+					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Enemy\",\"Hand\"]
+						"cardRestrictions":["Enemy","Hand"]
 					}
-				}",
-				"{
-					\"subeffType\":\"ReshuffleSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
-					\"delete\":true,
-					\"jumpTo\":9
-				}",
-				"{
-					\"subeffType\":\"DrawXSubeffect\",
-					\"playerIndex\":1,
-					\"xMultiplier\":1
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"jumpTo":9
+				},
+				{
+					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"playerIndex":1,
+					"xMultiplier":1
+				}
 			]
 		}
 	],

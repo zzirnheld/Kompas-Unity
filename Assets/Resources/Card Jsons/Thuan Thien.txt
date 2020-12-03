@@ -4,26 +4,26 @@
 	"effText":"The first time each round this character fights, set X to their W, then give them +X W.",
 	"effects":[
 		{
-			"triggerCondition":"Battle Start",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Augmented Card Triggered\",\"Max Per Round\"]
+			"triggerData":
+			{
+				"triggerCondition":"Battle Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["Augmented Card Triggered","Max Per Round"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetAugmentedCardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"SetXByTargetValueSubeffect\",
-					\"whatToCount\":\"W\",
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"wMult\":1
-				}"
+				{
+					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"W",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"wMult":1
+				}
 			]
 		}
 	],

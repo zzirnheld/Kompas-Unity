@@ -4,36 +4,36 @@
 	"effText":"When another character arrives adjacent to me, annihilate me to give them -11E.",
 	"effects":[
 		{
-			"triggerCondition":"Arrive",
-			"trigger":
-			"{
-				\"blurb\":\"acid/lava burn with ghost pirhanas\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Coords Fit Restriction\",\"Triggerer Fits Restriction\"],
-					\"cardRestriction\":
+			"triggerData":
+			{
+				"blurb":"acid/lava burn with ghost pirhanas",
+				"triggerCondition":"Arrive",
+				"triggerRestriction":{
+					"triggerRestrictions":["Coords Fit Restriction","Triggerer Fits Restriction"],
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Distinct from Source\"]
+						"cardRestrictions":["Is Character","Distinct from Source"]
 					},
-					\"spaceRestriction\":
+					"spaceRestriction":
 					{
-						\"spaceRestrictions\":[\"Adjacent to Source\"]
+						"spaceRestrictions":["Adjacent to Source"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"AnnihilateSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"eChange\":-11
-				}"
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"eChange":-11
+				}
 			]	
 		}
 	],

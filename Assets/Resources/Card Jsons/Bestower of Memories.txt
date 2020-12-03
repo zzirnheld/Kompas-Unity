@@ -4,47 +4,47 @@
 	"effText":"When friendly turns start, resummon a character.\nThe first time each stack a character is summoned, resummon them.",
 	"effects":[
 		{
-			"triggerCondition":"Turn Start",
-			"trigger":
-			"{
-				\"blurb\":\"Resummon a Summoned character? (This triggers any relevant on-summon effects.)\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Friendly Turn\"]
+			"triggerData":
+			{
+				"blurb":"Resummon a Summoned character? (This triggers any relevant on-summon effects.)",
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Friendly Turn"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Summoned character for Bestower of Memories to resummon\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\"]
+						"blurb":"Summoned character for Bestower of Memories to resummon",
+						"cardRestrictions":["Is Character","Board"]
 					}
-				}",
-				"{
-					\"subeffType\":\"ResummonSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+				}
 			]	
 		},
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Max Per Stack\",\"This Card in Play\",\"Controller Triggered\",\"Triggerer Fits Restriction\"],
-					\"cardRestriction\":
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["Max Per Stack","This Card in Play","Controller Triggered","Triggerer Fits Restriction"],
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\"]
+						"cardRestrictions":["Is Character"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"ResummonSubeffect\"
-				}"
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+				}
 			]	
 		}
 	],

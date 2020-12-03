@@ -4,30 +4,30 @@
 	"effText":"When an SX Revenant is annihilated, mill your deck’s top X.",
 	"effects":[
 		{
-			"triggerCondition":"Annihilate",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\"],
-						\"subtypesInclude\":[\"Revenant\"]
+			"triggerData":
+			{
+				"triggerCondition":"Annihilate",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Subtypes Include","Is Character"],
+						"subtypesInclude":["Revenant"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"SetXByTargetValueSubeffect\",
-					\"whatToCount\":\"S\",
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"MillSubeffect\",
-					\"xMultiplier\":1
-				}"
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"S",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.MillSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				}
 			]	
 		}
 	],

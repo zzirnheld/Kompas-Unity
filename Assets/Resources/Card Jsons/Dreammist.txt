@@ -4,24 +4,24 @@
 	"effText":"When I'm summoned adjacent to a Shaper, draw 1.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\",\"Coords Fit Restriction\"],
-					\"spaceRestriction\":{
-						\"spaceRestrictions\":[\"Adjacent to a Card that Fits Restriction\"],
-						\"adjacencyRestriction\":{
-							\"cardRestrictions\":[\"Subtypes Include\"],
-							\"subtypesInclude\":[\"Ethereal\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","Coords Fit Restriction"],
+					"spaceRestriction":{
+						"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
+						"adjacencyRestriction":{
+							"cardRestrictions":["Subtypes Include"],
+							"subtypesInclude":["Ethereal"]
 						}
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"DrawSubeffect\"
-				}"
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
 			]	
 		}
 	],

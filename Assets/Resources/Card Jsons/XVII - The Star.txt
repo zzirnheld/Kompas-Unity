@@ -5,26 +5,26 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Max Times Per Turn",
 					"Default"
 				]
 			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"DrawSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"for Star to hand-bottomdeck\",
-						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
+						"blurb":"for Star to hand-bottomdeck",
+						"cardRestrictions":["Friendly","Hand"]
 					}
-				}",
-				"{
-					\"subeffType\":\"BottomdeckSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.BottomdeckSubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

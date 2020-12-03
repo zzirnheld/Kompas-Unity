@@ -32,6 +32,7 @@ namespace KompasCore.GameCore
             if (!Discard.Contains(card)) return false;
 
             Discard.Remove(card);
+            SpreadOutCards();
             return true;
         }
 

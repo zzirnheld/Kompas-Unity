@@ -5,88 +5,88 @@
 	"effects":[
 		{
 			"blurb":"Territorial",
-			"triggerCondition":"Turn Start",
-			"trigger":
-			"{
-				\"blurb\":\"Territorial\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\"]
+			"triggerData":
+			{
+				"blurb":"Territorial",
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"for Fyrian to move and attack\",
-						\"cardRestrictions\":[\"Board\",\"Is Character\",\"Adjacent\"]
+						"blurb":"for Fyrian to move and attack",
+						"cardRestrictions":["Board","Is Character","Adjacent"]
 					}
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where Hermit to move its target\",
-						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == Constant\",\"Can Move Target to This Space\"],
-						\"constant\":1
+						"blurb":"where Hermit to move its target",
+						"spaceRestrictions":["Empty","Distance to Target == Constant","Can Move Target to This Space"],
+						"constant":1
 					}
-				}",
-				"{
-					\"subeffType\":\"MoveSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"AttackSubeffect\",
-					\"attackerIndex\":-1,
-					\"targetIndex\":-2
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"attackerIndex":-1,
+					"targetIndex":-2
+				}
 			]	
 		},
 		{
 			"blurb":"Acid Breath",
-			"triggerCondition":"Attack",
-			"trigger":
-			"{
-				\"blurb\":\"Acid Breath\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"blurb":"Acid Breath",
+				"triggerCondition":"Attack",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"SetXByTargetValueSubeffect\",
-					\"whatToCount\":\"W\",
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"TargetDefenderSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"SetXByTargetValueSubeffect\",
-					\"whatToCount\":\"E\",
-					\"change\":true,
-					\"xMultiplier\":-1
-				}",
-				"{
-					\"subeffType\":\"ChangeAllNESWSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"W",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.TargetDefenderSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"E",
+					"change":true,
+					"xMultiplier":-1
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeAllNESWSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Adjacent to Target\",\"Distinct from Source\"],
-						\"cSpaces\":1
+						"cardRestrictions":["Is Character","Board","Adjacent to Target","Distinct from Source"],
+						"cSpaces":1
 					},
-					\"eMult\":-1,
-					\"wMult\":-1
-				}"
+					"eMult":-1,
+					"wMult":-1
+				}
 			]	
 		}
 	],
 	"n":3,
-	"e":12,
+	"e":14,
 	"s":15,
 	"w":15,
 	"subtypeText":"Dragon"

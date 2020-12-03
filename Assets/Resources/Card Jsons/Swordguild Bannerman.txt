@@ -4,38 +4,38 @@
 	"effText":"When I die, reshuffle a dead Warrior for each Warrior adjacent to where I died.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
-			"trigger":"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":{
+				"triggerCondition":"Discard",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"SetXBoardRestrictionSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
-						\"subtypesInclude\":[\"Warrior\"]
+						"cardRestrictions":["Subtypes Include","Is Character","Board","Adjacent"],
+						"subtypesInclude":["Warrior"]
 					},
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"DiscardSubeffect\",
-					\"cardRestriction\":
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"dead Warrior for Bannerman to reshuffle\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Discard\"],
-						\"subtypesInclude\":[\"Warrior\"]
+						"blurb":"dead Warrior for Bannerman to reshuffle",
+						"cardRestrictions":["Subtypes Include","Is Character","Discard"],
+						"subtypesInclude":["Warrior"]
 					}
-				}",
-				"{
-					\"subeffType\":\"ReshuffleSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"XTimesSubeffect\",
-					\"jumpTo\":1
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",
+					"jumpTo":1
+				}
 			]	
 		}
 	],

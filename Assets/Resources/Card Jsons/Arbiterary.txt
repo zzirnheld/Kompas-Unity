@@ -4,77 +4,77 @@
 	"effText":"Unique: Can’t be played if you control a copy.\nWhen a friendly Augment is attached, give it +1 A.\nWhen a friendly AX Augment is attached to an enemy Avatar, give them -X E, attach the augment to me, and reset the Augment's A.",
 	"effects":[
 		{
-			"triggerCondition":"Augment Attached",
-			"trigger":
-			"{
-				\"blurb\":\"Score Pass\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
-					\"cardRestriction\":
+			"triggerData":
+			{
+				"blurb":"Score Pass",
+				"triggerCondition":"Augment Attached",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Friendly\"]
+						"cardRestrictions":["Friendly"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"ChangeCardStatsSubeffect\",
-					\"aMod\":1
-				}"
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"aMod":1
+				}
 			]
 		},
 		{
-			"triggerCondition":"Augment Attached",
-			"trigger":
-			"{
-				\"blurb\":\"Score Goal!\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Coords Fit Restriction\",\"Triggerer Fits Restriction\"],
-					\"cardRestriction\":
+			"triggerData":
+			{
+				"blurb":"Score Goal!",
+				"triggerCondition":"Augment Attached",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction"],
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Friendly\"]
+						"cardRestrictions":["Friendly"]
 					},
-					\"spaceRestriction\":
+					"spaceRestriction":
 					{
-						\"spaceRestrictions\":[\"Card Here Fits Restriction\"],
-						\"hereFitsRestriction\":{
-							\"cardRestrictions\":[\"Avatar\",\"Enemy\"]
+						"spaceRestrictions":["Card Here Fits Restriction"],
+						"hereFitsRestriction":{
+							"cardRestrictions":["Avatar","Enemy"]
 						}
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"SetXByTargetValueSubeffect\",
-					\"whatToCount\":\"Cost\",
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"TargetTargetsAugmentedCardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"ChangeCardStatsSubeffect\",
-					\"eMult\":-1
-				}",
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"AttachSubeffect\",
-					\"targetIndex\":-3,
-					\"attachmentTarget\":-1
-				}",
-				"{
-					\"subeffType\":\"ResetStatsSubeffect\",
-					\"targetIndex\":-3,
-					\"resetA\":true
-				}"
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"Cost",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTargetsAugmentedCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMult":-1
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"targetIndex":-3,
+					"attachmentTarget":-1
+				},
+				{
+					"$type":"KompasServer.Effects.ResetStatsSubeffect, Assembly-CSharp",
+					"targetIndex":-3,
+					"resetA":true
+				}
 			]
 		}
 	],

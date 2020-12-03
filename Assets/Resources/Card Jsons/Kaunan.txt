@@ -4,27 +4,27 @@
 	"effText":"Can’t be cast normally. Give a Summoned character -3EW.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"for Kaunan to give -3EW\",
-						\"cardRestrictions\":[\"Is Character\",\"Summoned\",\"Board\"]
+						"blurb":"for Kaunan to give -3EW",
+						"cardRestrictions":["Is Character","Summoned","Board"]
 					}
-				}",
-				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"eChange\":-3,
-					\"wChange\":-3
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"eChange":-3,
+					"wChange":-3
+				}
 			]	
 		}
 	],

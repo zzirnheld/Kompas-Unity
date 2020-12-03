@@ -4,30 +4,30 @@
 	"effText":"The first time each turn a Shaper moves, reset their E and give them +1N.",
 	"effects":[
 		{
-			"triggerCondition":"Move",
-			"trigger":
-			"{
-				\"blurb\":\"Dreamscape\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"Max Per Turn\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\"],
-						\"subtypesInclude\":[\"Shaper\"]
+			"triggerData":
+			{
+				"blurb":"Dreamscape",
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Max Per Turn"],
+					"cardRestriction":{
+						"cardRestrictions":["Subtypes Include","Friendly"],
+						"subtypesInclude":["Shaper"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"ResetStatsSubeffect\",
-					\"resetE\":true
-				}",
-				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"nChange\":1
-				}"
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ResetStatsSubeffect, Assembly-CSharp",
+					"resetE":true
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"nChange":1
+				}
 			]	
 		}
 	],

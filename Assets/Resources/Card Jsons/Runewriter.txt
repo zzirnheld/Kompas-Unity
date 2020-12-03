@@ -5,54 +5,54 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"Default"
 				]
 			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"ChooseFromListSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Rune for Runewriter to reshuffle\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Hand\"],
-						\"subtypesInclude\":[\"Rune\"]
+						"blurb":"Rune for Runewriter to reshuffle",
+						"cardRestrictions":["Subtypes Include","Friendly","Hand"],
+						"subtypesInclude":["Rune"]
 					},
-					\"maxCanChoose\":1
-				}",
-				"{
-					\"subeffType\":\"ReshuffleSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
-					\"jumpTo\":7
-				}",
-				"{
-					\"subeffType\":\"ChooseFromListSaveRestSubeffect\",
-					\"cardRestriction\":
+					"maxCanChoose":1
+				},
+				{
+					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"jumpTo":7
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSaveRestSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Runar for Runewriter to search (to hand)\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Index<C\"],
-						\"subtypesInclude\":[\"Runar\"],
-						\"constant\":10
+						"blurb":"Runar for Runewriter to search (to hand)",
+						"cardRestrictions":["Subtypes Include","Friendly","Deck","Index<C"],
+						"subtypesInclude":["Runar"],
+						"constant":10
 					},
-					\"restRestriction\":
+					"restRestriction":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<C\",\"Not Already Target\"],
-						\"constant\":10
+						"cardRestrictions":["Friendly","Deck","Index<C","Not Already Target"],
+						"constant":10
 					}
-				}",
-				"{
-					\"subeffType\":\"ClearOnImpossibleSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"BottomdeckRestSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"RehandSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

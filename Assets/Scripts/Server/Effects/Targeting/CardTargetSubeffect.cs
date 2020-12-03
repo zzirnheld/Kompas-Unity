@@ -7,7 +7,7 @@ namespace KompasServer.Effects
 {
     public class CardTargetSubeffect : ServerSubeffect
     {
-        public CardRestriction cardRestriction = new CardRestriction();
+        public CardRestriction cardRestriction;
 
         public bool AwaitingTarget { get; protected set; }
 
@@ -24,6 +24,7 @@ namespace KompasServer.Effects
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
+            cardRestriction = cardRestriction ?? new CardRestriction();
             cardRestriction.Initialize(this);
         }
 

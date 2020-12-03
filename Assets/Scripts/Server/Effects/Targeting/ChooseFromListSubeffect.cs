@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace KompasServer.Effects
 {
+    [System.Serializable]
     public class ChooseFromListSubeffect : ServerSubeffect
     {
         public const string NoOrder = "No Order";
@@ -14,12 +15,12 @@ namespace KompasServer.Effects
         /// <summary>
         /// Restriction that each card must fulfill
         /// </summary>
-        public CardRestriction cardRestriction = new CardRestriction();
+        public CardRestriction cardRestriction;
 
         /// <summary>
         /// Restriction that the list collectively must fulfill
         /// </summary>
-        public ListRestriction listRestriction = ListRestriction.Default;
+        public ListRestriction listRestriction;
 
         public string orderBy = NoOrder;
 
@@ -38,7 +39,9 @@ namespace KompasServer.Effects
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
+            cardRestriction = cardRestriction ?? new CardRestriction();
             cardRestriction.Initialize(this);
+            listRestriction = listRestriction ?? ListRestriction.Default;
             listRestriction.Initialize(this);
         }
 

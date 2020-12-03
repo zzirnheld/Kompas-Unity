@@ -4,22 +4,22 @@
 	"effText":"When a Dragon here changes their own stats by effect, gain a pip.",
 	"effects":[
 		{
-			"triggerCondition":"NESW Change",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"Stackable Source is Triggerer\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Board\",\"In AOE\"],
-						\"subtypesInclude\":[\"Dragon\"]
+			"triggerData":
+			{
+				"triggerCondition":"NESW Change",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Stackable Source is Triggerer"],
+					"cardRestriction":{
+						"cardRestrictions":["Subtypes Include","Board","In AOE"],
+						"subtypesInclude":["Dragon"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"AddPipsSubeffect\",
-					\"xModifier\":1
-				}"
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier":1
+				}
 			]	
 		}
 	],

@@ -4,42 +4,42 @@
 	"effText":"Kill a character adjacent to a friendly Cultist. Deck-summon a Cultist Follower where they were.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"to convert\",
-						\"cardRestrictions\":[\"Board\",\"Is Character\",\"Summoned\",\"Adjacent to Subtype\"],
-						\"adjacencySubtypes\":[\"Cultist\"]
+						"blurb":"to convert",
+						"cardRestrictions":["Board","Is Character","Summoned","Adjacent to Subtype"],
+						"adjacencySubtypes":["Cultist"]
 					}
-				}",
-				"{
-					\"subeffType\":\"TargetTargetsSpaceSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"DiscardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"ChooseFromListSubeffect\",
-					\"maxCanChoose\":1,
-					\"cardRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose":1,
+					"cardRestriction":
 					{
-						\"blurb\":\"Silent convert\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Is Character\"],
-						\"subtypesInclude\":[\"Cultist Follower\"]
+						"blurb":"Silent convert",
+						"cardRestrictions":["Subtypes Include","Friendly","Deck","Is Character"],
+						"subtypesInclude":["Cultist Follower"]
 					}
-				}",
-				"{
-					\"subeffType\":\"PlaySubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

@@ -4,29 +4,29 @@
 	"effText":"Unique.\nWhen a friendly Cultist dies, give friendly Cultists +1W.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
-			"trigger":
-			"{
-				\"blurb\":\"Unwavering Devotion\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"From Field\"],
-					\"cardRestriction\":
+			"triggerData":
+			{
+				"blurb":"Unwavering Devotion",
+				"triggerCondition":"Discard",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","From Field"],
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Cultist\"]
+						"cardRestrictions":["Is Character","Board","Friendly","Subtypes Include"],
+						"subtypesInclude":["Cultist"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"ChangeAllNESWSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.ChangeAllNESWSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Cultist\"]
+						"cardRestrictions":["Is Character","Board","Friendly","Subtypes Include"],
+						"subtypesInclude":["Cultist"]
 					},
-					\"wMod\":1
-				}"
+					"wMod":1
+				}
 			]	
 		}
 	],

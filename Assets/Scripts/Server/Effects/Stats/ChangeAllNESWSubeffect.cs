@@ -22,18 +22,19 @@ namespace KompasServer.Effects
         public int W => wMult * Effect.X + wMod;
 
         //default to making sure things are characters before changing their stats
-        public CardRestriction cardRestriction = new CardRestriction()
-        {
-            cardRestrictions = new string[]
-            {
-            CardRestriction.IsCharacter,
-            CardRestriction.Board
-            }
-        };
+        public CardRestriction cardRestriction;
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
+            cardRestriction = cardRestriction ?? new CardRestriction()
+            {
+                cardRestrictions = new string[]
+                {
+                    CardRestriction.IsCharacter,
+                    CardRestriction.Board
+                }
+            };
             cardRestriction.Initialize(this);
         }
 

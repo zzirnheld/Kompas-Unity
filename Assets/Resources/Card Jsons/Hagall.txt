@@ -4,23 +4,23 @@
 	"effText":"Can’t be cast normally. When turns start, I give all characters here -1NE.",
 	"effects":[
 		{
-			"triggerCondition":"Turn Start",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\"]
+			"triggerData":
+			{
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"ChangeAllNESWSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.ChangeAllNESWSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"In AOE\"]
+						"cardRestrictions":["Is Character","Board","In AOE"]
 					},
-					\"nMod\":-1,
-					\"eMod\":-1
-				}"
+					"nMod":-1,
+					"eMod":-1
+				}
 			]	
 		}
 	],

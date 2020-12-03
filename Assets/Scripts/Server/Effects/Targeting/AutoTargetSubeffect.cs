@@ -7,11 +7,12 @@ namespace KompasServer.Effects
 {
     public class AutoTargetSubeffect : ServerSubeffect
     {
-        public CardRestriction cardRestriction = new CardRestriction();
+        public CardRestriction cardRestriction;
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
+            cardRestriction = cardRestriction ?? new CardRestriction();
             cardRestriction.Initialize(this);
         }
 
@@ -25,7 +26,7 @@ namespace KompasServer.Effects
             catch (System.InvalidOperationException) 
             {
                 Debug.LogError($"More than one card fit the card restriction {cardRestriction} " +
-                    $"for the effect {Effect.Blurb} of {Source.CardName}");
+                    $"for the effect {Effect.blurb} of {Source.CardName}");
             }
 
             if (potentialTarget == null) return ServerEffect.EffectImpossible();

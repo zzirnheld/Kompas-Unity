@@ -4,31 +4,31 @@
 	"effText":"Unique.\nThe first time each turn you cast a Rune, you can search your deck for a Rune.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"Max Per Turn\"],
-					\"cardRestriction\":
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Max Per Turn"],
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\"],
-						\"subtypesInclude\":[\"Rune\"]
+						"cardRestrictions":["Subtypes Include","Is Spell","Friendly"],
+						"subtypesInclude":["Rune"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"DeckTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Rune for Runestones to search\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\"],
-						\"subtypesInclude\":[\"Rune\"]
+						"blurb":"Rune for Runestones to search",
+						"cardRestrictions":["Subtypes Include","Friendly","Deck"],
+						"subtypesInclude":["Rune"]
 					}
-				}",
-				"{
-					\"subeffType\":\"RehandSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

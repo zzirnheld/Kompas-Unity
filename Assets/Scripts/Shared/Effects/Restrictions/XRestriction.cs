@@ -1,4 +1,6 @@
-﻿namespace KompasCore.Effects
+﻿using KompasCore.Cards;
+
+namespace KompasCore.Effects
 {
     [System.Serializable]
     public class XRestriction
@@ -10,11 +12,11 @@
 
         public string[] xRestrictions = new string[0];
 
-        public Subeffect Subeffect { get; private set; }
+        public GameCard Source { get; private set; }
 
-        public void Initialize(Subeffect subeff)
+        public void Initialize(GameCard source)
         {
-            Subeffect = subeff;
+            Source = source;
         }
 
         public bool Evaluate(int x)
@@ -30,10 +32,10 @@
                         if (x >= 0) return false;
                         break;
                     case LessThanEqualThisCost:
-                        if (x > Subeffect.Source.Cost) return false;
+                        if (x > Source.Cost) return false;
                         break;
                     case LessThanEqualThisE:
-                        if (x > Subeffect.Source.E) return false;
+                        if (x > Source.E) return false;
                         break;
                     default:
                         throw new System.ArgumentException($"Invalid X restriction {r} in X Restriction.");

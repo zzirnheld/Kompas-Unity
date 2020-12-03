@@ -4,29 +4,29 @@
 	"effText":"The first time each turn you hand-discard a card, discard-rehand your card.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"Max Per Turn\",\"Controller Triggered\"],
-					\"cardRestriction\":
+			"triggerData":
+			{
+				"triggerCondition":"Discard",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Max Per Turn","Controller Triggered"],
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Hand\"]
+						"cardRestrictions":["Hand"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"card for Correctly Sized Crane to grab\",
-						\"cardRestrictions\":[\"Friendly\",\"Discard\"]
+						"blurb":"card for Correctly Sized Crane to grab",
+						"cardRestrictions":["Friendly","Discard"]
 					}
-				}",
-				"{
-					\"subeffType\":\"RehandSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				}
 			]	
 		}
 	],

@@ -7,24 +7,24 @@ namespace KompasCore.Networking
     public class AnnihilateCardPacket : Packet
     {
         public int cardId;
-        public string cardName;
+        public string json;
         public int controllerIndex;
 
         public AnnihilateCardPacket() : base(AnnihilateCard) { }
 
-        public AnnihilateCardPacket(int cardId, string cardName, int controllerIndex, bool invert = false) : this()
+        public AnnihilateCardPacket(int cardId, string json, int controllerIndex, bool invert = false) : this()
         {
             this.cardId = cardId;
-            this.cardName = cardName;
+            this.json = json;
             this.controllerIndex = invert ? 1 - controllerIndex : controllerIndex;
         }
 
-        public override Packet Copy() => new AnnihilateCardPacket(cardId, cardName, controllerIndex, invert: false);
+        public override Packet Copy() => new AnnihilateCardPacket(cardId, json, controllerIndex, invert: false);
 
         public override Packet GetInversion(bool known)
         {
-            if (known) return new AnnihilateCardPacket(cardId, cardName, controllerIndex, invert: true);
-            else return new AddCardPacket(cardId, cardName, CardLocation.Annihilation, controllerIndex, invert: true);
+            if (known) return new AnnihilateCardPacket(cardId, json, controllerIndex, invert: true);
+            else return new AddCardPacket(cardId, json, CardLocation.Annihilation, controllerIndex, invert: true);
         }
     }
 }

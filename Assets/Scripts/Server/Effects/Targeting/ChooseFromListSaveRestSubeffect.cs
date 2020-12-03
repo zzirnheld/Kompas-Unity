@@ -7,7 +7,7 @@ namespace KompasServer.Effects
 {
     public class ChooseFromListSaveRestSubeffect : ChooseFromListSubeffect
     {
-        public CardRestriction restRestriction = null;
+        public CardRestriction restRestriction;
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
