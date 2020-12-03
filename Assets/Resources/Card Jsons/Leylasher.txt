@@ -1,0 +1,33 @@
+{
+	"cardType":67,
+	"cardName":"Leylasher",
+	"effText":"The first time each turn a friendly character moves X, hand-summon an SX character.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Leybind",
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Max Per Turn"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"eMult":1,
+					"sMult":1,
+					"wMult":1
+				}
+			]	
+		}
+	],
+	"n":1,
+	"e":5,
+	"s":5,
+	"w":5,
+	"subtypeText":"Ley Mage"
+}
