@@ -16,7 +16,7 @@
 					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SpendMovementSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.SpendRemainingMovementSubeffect, Assembly-CSharp",
 					"xModifier":1
 				},
 				{
