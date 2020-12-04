@@ -13,9 +13,9 @@ namespace KompasServer.GameCore
 {
     public class ServerGame : Game
     {
-        public const int AvatarNPenalty = 10;
-        public const int AvatarEBonus = 10;
-        public const int AvatarWPenalty = 10;
+        public const int AvatarNPenalty = 15;
+        public const int AvatarEBonus = 15;
+        public const int AvatarWPenalty = 15;
 
         //model is basically: players request to the server to do something:
         //if server oks, it tells all players to do the thing

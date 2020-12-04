@@ -12,7 +12,7 @@
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":
 					{
-						"cardRestrictions":["Board","Avatar","Friendly"]
+						"cardRestrictions":["Board","Avatar","Friendly","Adjacent"]
 					}
 				}
 			},
