@@ -7594,6 +7594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clientUICtrl: {fileID: 1615817260}
+  endButton: {fileID: 837412196}
   cardSearchView: {fileID: 588346723}
   cardSearchImage: {fileID: 728813001}
   alreadySelectedText: {fileID: 1253791918}
@@ -9916,7 +9917,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1615817260}
+        - m_Target: {fileID: 588346725}
           m_MethodName: SelectShownSearchCard
           m_Mode: 1
           m_Arguments:

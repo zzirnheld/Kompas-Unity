@@ -98,8 +98,8 @@ namespace KompasServer.Effects
         /// </summary>
         public void FinishStackEntryResolution()
         {
-            CurrStackEntry = null;
             ServerGame.ServerPlayers.First().ServerNotifier.RemoveStackEntry(currStackIndex);
+            CurrStackEntry = null;
             CheckForResponse();
         }
 
