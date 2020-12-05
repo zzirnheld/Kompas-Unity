@@ -36,7 +36,7 @@ namespace KompasCore.Effects
         {
             Card = card;
             if (attackRestrictions.Contains(Default)) attackRestrictions.AddRange(DefaultAttackRestrictions);
-            Debug.Log($"Initializing attack restriction for {Card.CardName} with restrictions: {string.Join(", ", attackRestrictions)}");
+            Debug.Log($"Finished initializing attack restriction for {Card.CardName} with restrictions: {string.Join(", ", attackRestrictions)}");
         }
 
         private bool RestrictionValid(string restriction, GameCard defender)

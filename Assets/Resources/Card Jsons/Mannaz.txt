@@ -4,41 +4,41 @@
 	"effText":"Can’t be cast normally. Search your deck’s top 10 cards for a character.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
-					\"jumpTo\":4
-				}",
-				"{
-					\"subeffType\":\"ChooseFromListSaveRestSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"jumpTo":4
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSaveRestSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"spell for Perthro to search (to hand)\",
-						\"cardRestrictions\":[\"Is Character\",\"Friendly\",\"Deck\",\"Index<C\"],
-						\"constant\":10
+						"blurb":"spell for Perthro to search (to hand)",
+						"cardRestrictions":["Is Character","Friendly","Deck","Index<C"],
+						"constant":10
 					},
-					\"restRestriction\":
+					"restRestriction":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<C\",\"Not Already Target\"],
-						\"constant\":10
+						"cardRestrictions":["Friendly","Deck","Index<C","Not Already Target"],
+						"constant":10
 					}
-				}",
-				"{
-					\"subeffType\":\"ClearOnImpossibleSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"RehandSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"BottomdeckRestSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
+				}
 			]	
 		}
 	],

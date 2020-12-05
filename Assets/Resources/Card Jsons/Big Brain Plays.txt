@@ -4,39 +4,39 @@
 	"effText":"Pip deck-cast a Sportball Play.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"ChooseFromListSubeffect\",
-					\"maxCanChoose\":1,
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose":1,
+					"cardRestriction":
 					{
-						\"blurb\":\"Big Brain Play?\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Is Spell\",\"Can Be Played\",\"Effect Controller can Afford Cost\"],
-						\"subtypesInclude\":[\"Sportsball Play\"]
+						"blurb":"Big Brain Play?",
+						"cardRestrictions":["Subtypes Include","Friendly","Deck","Is Spell","Can Be Played","Effect Controller can Afford Cost"],
+						"subtypesInclude":["Sportsball Play"]
 					}
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"Big Brain Play!\",
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+						"blurb":"Big Brain Play!",
+						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
-					\"subeffType\":\"PayPipsTargetCostSubeffect\",
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"PlaySubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

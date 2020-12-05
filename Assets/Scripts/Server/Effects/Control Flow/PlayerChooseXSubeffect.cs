@@ -9,13 +9,10 @@ namespace KompasServer.Effects
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
-            XRest.Initialize(this);
+            XRest.Initialize(Source);
         }
 
-        private void AskForX()
-        {
-            EffectController.ServerNotifier.GetXForEffect();
-        }
+        private void AskForX() => ServerPlayer.ServerNotifier.GetXForEffect();
 
         public override bool Resolve()
         {

@@ -5,30 +5,30 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"Default"
 				]
 			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Warrior for Instructor to give +1W\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\",\"Adjacent\"],
-						\"subtypesInclude\":[\"Warrior\"]
+						"blurb":"Warrior for Instructor to give +1W",
+						"cardRestrictions":["Subtypes Include","Is Character","Board","Adjacent"],
+						"subtypesInclude":["Warrior"]
 					}
-				}",
-				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"nChange\":0,
-					\"eChange\":0,
-					\"sChange\":0,
-					\"wChange\":1,
-					\"targetIndex\":0
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"nChange":0,
+					"eChange":0,
+					"sChange":0,
+					"wChange":1,
+					"targetIndex":0
+				}
 			]
 		}
 	],

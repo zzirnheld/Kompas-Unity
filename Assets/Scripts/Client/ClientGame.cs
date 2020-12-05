@@ -77,11 +77,13 @@ namespace KompasClient.GameCore
         //TODO make client aware that effects have been pushed to stack
         private bool stackEmpty = true;
         public override bool NothingHappening => stackEmpty;
+        //TODO keep track of actual effects on client.
+        public override IEnumerable<IStackable> StackEntries => new IStackable[] { };
 
         public bool canZoom = false;
 
         //dirty card set
-        private HashSet<GameCard> dirtyCardList = new HashSet<GameCard>();
+        private readonly HashSet<GameCard> dirtyCardList = new HashSet<GameCard>();
 
         public override int Leyload 
         { 
@@ -106,12 +108,12 @@ namespace KompasClient.GameCore
             dirtyCardList.Clear();
         }
 
-        public void SetAvatar(int player, string avatarName, int avatarID)
+        public void SetAvatar(int player, string json, int avatarID)
         {
             if (player >= 2) throw new System.ArgumentException();
 
             var owner = ClientPlayers[player];
-            var avatar = cardRepo.InstantiateClientAvatar(avatarName, this, owner, avatarID);
+            var avatar = cardRepo.InstantiateClientAvatar(json, this, owner, avatarID);
             owner.Avatar = avatar;
             avatar.Play(player * 6, player * 6, owner);
         }
@@ -137,9 +139,9 @@ namespace KompasClient.GameCore
             foreach (var player in Players) player.Pips = player.Pips;
         }
 
-        public void EndTurn()
+        public void SetTurn(int index)
         {
-            TurnPlayerIndex = 1 - TurnPlayerIndex;
+            TurnPlayerIndex = index;
             ResetCardsForTurn();
             clientUICtrl.ChangeTurn(TurnPlayerIndex);
             if (TurnPlayerIndex == FirstTurnPlayer) RoundCount++;
@@ -152,9 +154,9 @@ namespace KompasClient.GameCore
 
         public void ShowCardsByZoom(bool zoomed)
         {
-            foreach (var c in Cards)
+            foreach (var c in Cards.Where(c => c != null && c.gameObject.activeSelf))
             {
-                if(c.gameObject.activeSelf) c.cardCtrl.ShowForCardType(c.CardType, zoomed);
+                c.cardCtrl.ShowForCardType(c.CardType, zoomed);
             }
         }
 
@@ -164,7 +166,7 @@ namespace KompasClient.GameCore
         {
             stackEmpty = false;
             clientUICtrl.SetCurrState($"{(eff.Controller.index == 0 ? "Friendly" : "Enemy")} {eff.Source.CardName} Effect Activated",
-                eff.Blurb);
+                eff.blurb);
         }
 
         public void StackEmptied()

@@ -5,44 +5,44 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"Default"
 				]
 			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"eChange\":-1
-				}",
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"eChange":-1
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"card in hand that is also discard\",
-						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Crazy Idea\"]
+						"blurb":"card in hand that is also discard",
+						"cardRestrictions":["Friendly","Hand","Subtypes Include"],
+						"subtypesInclude":["Crazy Idea"]
 					}
-				}",
-				"{
-					\"subeffType\":\"DiscardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"character that is also +1W\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Distinct from Source\"]
+						"blurb":"character that is also +1W",
+						"cardRestrictions":["Is Character","Board","Distinct from Source"]
 					}
-				}",
-				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"wChange\":1
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"wChange":1
+				}
 			]	
 		}
 	],

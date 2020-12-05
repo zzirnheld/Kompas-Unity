@@ -4,43 +4,43 @@
 	"effText":"When you draw, I can swap a Summoned character's E and W, then swap their EW with another Summoned character's.",
 	"effects":[
 		{
-			"triggerCondition":"Draw",
-			"trigger":
-			"{
-				\"optional\":true,
-				\"blurb\":\"Swap character E and W, characters' EW?\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\"]
+			"triggerData":
+			{
+				"optional":true,
+				"blurb":"Swap character E and W, characters' EW?",
+				"triggerCondition":"Draw",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Controller Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"character for Moon to swap EW\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Summoned\"]
+						"blurb":"character for Moon to swap EW",
+						"cardRestrictions":["Is Character","Board","Summoned"]
 					}
-				}",
-				"{
-					\"subeffType\":\"SwapOwnNESWSubeffect\",
-					\"Stat1\":1,
-					\"Stat2\":3
-				}",
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.SwapOwnNESWSubeffect, Assembly-CSharp",
+					"Stat1":1,
+					"Stat2":3
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"character for Moon to swap EW\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Summoned\",\"Not Already Target\"]
+						"blurb":"character for Moon to swap EW",
+						"cardRestrictions":["Is Character","Board","Summoned","Not Already Target"]
 					}
-				}",
-				"{
-					\"subeffType\":\"SwapNESWSubeffect\",
-					\"targetIndices\":[-1,-2],
-					\"swapE\":true,
-					\"swapW\":true
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.SwapNESWSubeffect, Assembly-CSharp",
+					"targetIndices":[-1,-2],
+					"swapE":true,
+					"swapW":true
+				}
 			]
 		}
 	],

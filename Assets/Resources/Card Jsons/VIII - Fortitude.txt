@@ -4,20 +4,20 @@
 	"effText":"When a friendly character attacks, draw 1.",
 	"effects":[
 		{
-			"triggerCondition":"Attack",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Friendly\"]
+			"triggerData":
+			{
+				"triggerCondition":"Attack",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Friendly"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"DrawSubeffect\"
-				}"
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
 			]	
 		}
 	],

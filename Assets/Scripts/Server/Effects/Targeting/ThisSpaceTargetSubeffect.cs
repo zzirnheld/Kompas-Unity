@@ -4,7 +4,7 @@
     {
         public override bool Resolve()
         {
-            ServerEffect.Coords.Add((ThisCard.BoardX, ThisCard.BoardY));
+            ServerEffect.coords.Add((ThisCard.BoardX, ThisCard.BoardY));
             return ServerEffect.ResolveNextSubeffect();
         }
     }

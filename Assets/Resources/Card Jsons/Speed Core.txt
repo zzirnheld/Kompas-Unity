@@ -4,51 +4,51 @@
 	"effText":"While equipped, activate this character and give them +1N. When they die (while I'm equipped), rehand me.",
 	"effects":[
 		{
-			"triggerCondition":"Augment Attached",
-			"trigger":
-			"{
-				\"blurb\":\"Activate Golem\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"blurb":"Activate Golem",
+				"triggerCondition":"Augment Attached",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetAugmentedCardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"TemporaryActivationSubeffect\",
-					\"endCondition\":\"Augment Detached\",
-					\"triggerRestriction\":{
-						\"triggerRestrictions\":[\"This Card Triggered\"]
+				{
+					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TemporaryActivationSubeffect, Assembly-CSharp",
+					"endCondition":"Augment Detached",
+					"triggerRestriction":{
+						"triggerRestrictions":["This Card Triggered"]
 					}
-				}",
-				"{
-					\"subeffType\":\"TemporaryNESWBuffSubeffect\",
-					\"nBuff\":1,
-					\"endCondition\":\"Augment Detached\",
-					\"triggerRestriction\":{
-						\"triggerRestrictions\":[\"This Card Triggered\"]
+				},
+				{
+					"$type":"KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
+					"nBuff":1,
+					"endCondition":"Augment Detached",
+					"triggerRestriction":{
+						"triggerRestrictions":["This Card Triggered"]
 					}
-				}"
+				}
 			]
 		},
 		{
-			"triggerCondition":"Discard",
-			"trigger":
-			"{
-				\"blurb\":\"Core Recovery\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Augmented Card Triggered\"]
+			"triggerData":
+			{
+				"blurb":"Core Recovery",
+				"triggerCondition":"Discard",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Augmented Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"RehandSubeffect\"
-				}"
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

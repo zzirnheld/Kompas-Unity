@@ -4,33 +4,33 @@
 	"effText":"Can't be cast normally. When a friendly character attacks, I give them +2ESW.",
 	"effects":[
 		{
-			"triggerCondition":"Attack",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Is Character\",\"Friendly\",\"Board\"]
+			"triggerData":
+			{
+				"triggerCondition":"Attack",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Is Character","Friendly","Board"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"eChange\":2,
-					\"sChange\":2,
-					\"wChange\":2
-				}"
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"eChange":2,
+					"sChange":2,
+					"wChange":2
+				}
 			]
 		}
 	],
 	"PlayRestriction":{
 		"normalRestrictions":["Cannot be Played Normally"]
 	},
-	"c":1,
+	"c":2,
 	"spellType":"Enchant",
 	"subtypes":["Rune","Enchant"],
 	"subtypeText":"Rune Enchant"

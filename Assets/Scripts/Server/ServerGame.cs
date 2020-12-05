@@ -13,8 +13,9 @@ namespace KompasServer.GameCore
 {
     public class ServerGame : Game
     {
-        public const int AvatarEBonus = 10;
-        public const int AvatarWPenalty = 10;
+        public const int AvatarNPenalty = 15;
+        public const int AvatarEBonus = 15;
+        public const int AvatarWPenalty = 15;
 
         //model is basically: players request to the server to do something:
         //if server oks, it tells all players to do the thing
@@ -37,6 +38,7 @@ namespace KompasServer.GameCore
 
         public ServerEffect CurrEffect { get; set; }
         public override IStackable CurrStackEntry => EffectsController.CurrStackEntry;
+        public override IEnumerable<IStackable> StackEntries => EffectsController.StackEntries;
         public override bool NothingHappening => EffectsController.NothingHappening;
 
         public override int TurnCount 
@@ -180,6 +182,7 @@ namespace KompasServer.GameCore
             foreach (var p in ServerPlayers) 
             {
                 p.ServerNotifier.SetFirstTurnPlayer(FirstTurnPlayer);
+                p.Avatar.SetN(p.Avatar.N - AvatarNPenalty);
                 p.Avatar.SetE(p.Avatar.E + AvatarEBonus);
                 p.Avatar.SetW(p.Avatar.W - AvatarWPenalty);
                 DrawX(p.index, 5);
@@ -290,6 +293,8 @@ namespace KompasServer.GameCore
         public void SwitchTurn()
         {
             TurnPlayerIndex = 1 - TurnPlayerIndex;
+            Debug.Log($"Turn swapping to the turn of index {TurnPlayerIndex}");
+
             if (TurnPlayerIndex == FirstTurnPlayer) RoundCount++;
             TurnCount++;
             GiveTurnPlayerPips();
@@ -298,7 +303,7 @@ namespace KompasServer.GameCore
 
             //draw for turn and store what was drawn
             Draw(TurnPlayerIndex);
-            TurnServerPlayer.ServerNotifier.NotifySetTurn(this, TurnPlayerIndex);
+            TurnServerPlayer.ServerNotifier.NotifyYourTurn();
 
             //do hand size
             EffectsController.PushToStack(new ServerHandSizeStackable(this, EffectsController, TurnServerPlayer), default);

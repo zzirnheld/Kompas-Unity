@@ -4,45 +4,45 @@
 	"effText":"Annihilate a friendly Summoned Shaper. Deck-summon a Shaper.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"character to ANNIHILATE\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Summoned\",\"Board\"],
-						\"subtypesInclude\":[\"Shaper\"]
+						"blurb":"character to ANNIHILATE",
+						"cardRestrictions":["Subtypes Include","Friendly","Summoned","Board"],
+						"subtypesInclude":["Shaper"]
 					}
-				}",
-				"{
-					\"subeffType\":\"AnnihilateSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"DeckTargetSubeffect\",
-					\"cardRestriction\":{
-						\"blurb\":\"Shaper to decksummon\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Deck\"],
-						\"subtypesInclude\":[\"Shaper\"]
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"blurb":"Shaper to decksummon",
+						"cardRestrictions":["Subtypes Include","Is Character","Friendly","Deck"],
+						"subtypesInclude":["Shaper"]
 					}
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where to decksummon the Shaper\",
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+						"blurb":"where to decksummon the Shaper",
+						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
-					\"subeffType\":\"PlaySubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

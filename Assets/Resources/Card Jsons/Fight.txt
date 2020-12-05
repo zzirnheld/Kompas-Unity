@@ -1,0 +1,43 @@
+{
+	"cardType":83,
+	"cardName":"Fight",
+	"effText":"A friendly character attacks an adjacent enemy character. (The two things fighting must be adjacent.)",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"friendly character that should attack",
+						"cardRestrictions":["Is Character","Friendly","Board"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"enemy character to attack",
+						"cardRestrictions":["Is Character","Enemy","Board","Adjacent to Target"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"targetIndex":-1,
+					"attackerIndex":-2
+				}
+			]
+		}
+	],
+	"fast":true,
+	"c":2,
+	"spellType":"Simple",
+	"subtypeText":"Simple"
+}

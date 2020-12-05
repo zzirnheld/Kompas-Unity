@@ -1,41 +1,78 @@
 {
 	"cardType":83,
 	"cardName":"Modular Golem Cores",
-	"effText":"Once each turn, you can detach a Golem Core to search your deck for a Golem Core.",
+	"effText":"Once each turn, you can choose one:\nDetach a Golem Core to search your deck for a Golem Core.\nPip hand-cast a Golem Core.",
 	"effects":[
 		{
 			"blurb":"Forget That Mess",
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Max Times Per Turn",
 					"Default"
 				]
 			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"ChoiceBlurb":"Destroy and search, or pip hand-apply?",
+					"OptionBlurbs":["Search","Apply"],
+					"OptionJumpIndices":[1,6]
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Golem Core for Modular Golem Cores to detach\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Augment\",\"Board\"],
-						\"subtypesInclude\":[\"Golem\", \"Core\"]
+						"blurb":"Golem Core for Modular Golem Cores to detach",
+						"cardRestrictions":["Subtypes Include","Is Augment","Board"],
+						"subtypesInclude":["Golem", "Core"]
 					}
-				}",
-				"{
-					\"subeffType\":\"DiscardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"DeckTargetSubeffect\",
-					\"cardRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Golem core for Modular Golem Cores to search\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Augment\",\"Deck\"],
-						\"subtypesInclude\":[\"Golem\", \"Core\"]
+						"blurb":"Golem core for Modular Golem Cores to search",
+						"cardRestrictions":["Subtypes Include","Is Augment","Deck"],
+						"subtypesInclude":["Golem", "Core"]
 					}
-				}",
-				"{
-					\"subeffType\":\"RehandSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Golem Core for Modular to apply",
+						"cardRestrictions":["Friendly","Hand","Is Augment","Subtypes Include","Can Be Played","Effect Controller can Afford Cost"],
+						"subtypesInclude":["Golem Core"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"where for Modular to apply Golem Core",
+						"cardRestrictions":["Board","Can Play Target to This Character's Space"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp",
+					"targetIndex":-2
+				}
 			]
 		}
 	],

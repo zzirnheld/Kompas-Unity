@@ -1,0 +1,93 @@
+{
+	"cardType":67,
+	"cardName":"Obscurian",
+	"effText":"Territorial: When turns start, move an adjacent character 1 space, then I attack them.\nWhen I attack a character with X less E than my W, give their controller’s Avatar -X E.",
+	"effects":[
+		{
+			"blurb":"Territorial",
+			"triggerData":
+			{
+				"blurb":"Territorial",
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"for Fyrian to move and attack",
+						"cardRestrictions":["Board","Is Character","Adjacent"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where Hermit to move its target",
+						"spaceRestrictions":["Empty","Distance to Target == Constant","Can Move Target to This Space"],
+						"constant":1
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"attackerIndex":-1,
+					"targetIndex":-2
+				}
+			]	
+		},
+		{
+			"blurb":"Dark Breath",
+			"triggerData":
+			{
+				"blurb":"Dark Breath",
+				"triggerCondition":"Attack",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"W",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.TargetDefenderSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"E",
+					"change":true,
+					"xMultiplier":-1
+				},
+				{
+					"$type":"KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"cardRestrictions":["Avatar","Controller Matches Target's"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"eMult":-1
+				}
+			]	
+		}
+	],
+	"n":3,
+	"e":12,
+	"s":13,
+	"w":13,
+	"subtypeText":"Dragon"
+}

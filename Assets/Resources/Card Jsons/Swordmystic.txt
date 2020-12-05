@@ -5,47 +5,47 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"Default"
 				]
 			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"SetXBoardRestrictionSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
-						\"subtypesInclude\":[\"Warrior\"]
+						"cardRestrictions":["Subtypes Include","Is Character","Board"],
+						"subtypesInclude":["Warrior"]
 					},
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Warrior for Swordmystic to revive\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Discard\",\"S<=X\"],
-						\"subtypesInclude\":[\"Warrior\"]
+						"blurb":"Warrior for Swordmystic to revive",
+						"cardRestrictions":["Subtypes Include","Is Character","Discard","S<=X"],
+						"subtypesInclude":["Warrior"]
 					},
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"PayPipsTargetCostSubeffect\",
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where for Swordmystic to revive target Warrior\",
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+						"blurb":"where for Swordmystic to revive target Warrior",
+						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
-					\"subeffType\":\"PlaySubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

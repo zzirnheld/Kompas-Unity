@@ -4,37 +4,37 @@
 	"effText":"The first time each stack I'm augmented, apply that Augment to another character within 2 spaces of me.",
 	"effects":[
 		{
-			"triggerCondition":"Augment Attached",
-			"trigger":
-			"{
-				\"blurb\":\"Punt Augment\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Max Per Stack\",\"Coords Fit Restriction\"],
-					\"spaceRestriction\":
+			"triggerData":
+			{
+				"blurb":"Punt Augment",
+				"triggerCondition":"Augment Attached",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Max Per Stack","Coords Fit Restriction"],
+					"spaceRestriction":
 					{
-						\"spaceRestrictions\":[\"Card Here Fits Restriction\"],
-						\"hereFitsRestriction\":{
-							\"cardRestrictions\":[\"Is Source\"]
+						"spaceRestrictions":["Card Here Fits Restriction"],
+						"hereFitsRestriction":{
+							"cardRestrictions":["Is Source"]
 						}
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"character within 2 spaces to punt Augment to\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Within C Spaces\"],
-						\"cSpaces\":2
+						"blurb":"character within 2 spaces to punt Augment to",
+						"cardRestrictions":["Is Character","Board","Within C Spaces","Distinct from Source"],
+						"cSpaces":2
 					}
-				}",
-				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"AttachSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

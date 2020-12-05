@@ -4,68 +4,68 @@
 	"effText":"The first time each turn a friendly Cultist dies, annihilate me and deck-summon 2 Cultist Followers. (If this effect is Negated, it can trigger again another turn.)",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
-			"trigger":
-			"{
-				\"blurb\":\"Mad Bloodcurse\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"From Field\",\"Max Per Turn\"],
-					\"cardRestriction\":
+			"triggerData":
+			{
+				"blurb":"Mad Bloodcurse",
+				"triggerCondition":"Discard",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","From Field","Max Per Turn"],
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Cultist\"]
+						"cardRestrictions":["Is Character","Board","Friendly","Subtypes Include"],
+						"subtypesInclude":["Cultist"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"AnnihilateSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"ChooseFromListSubeffect\",
-					\"maxCanChoose\":1,
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose":1,
+					"cardRestriction":
 					{
-						\"blurb\":\"Silent Cult Follower to bloodcurse (1/2)\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Is Character\"],
-						\"subtypesInclude\":[\"Cultist Follower\"]
+						"blurb":"Silent Cult Follower to bloodcurse (1/2)",
+						"cardRestrictions":["Subtypes Include","Friendly","Deck","Is Character"],
+						"subtypesInclude":["Cultist Follower"]
 					}
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where to play Mad Blood's new bloodcurse (1/2)\",
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+						"blurb":"where to play Mad Blood's new bloodcurse (1/2)",
+						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
-					\"subeffType\":\"PlaySubeffect\"
-				}",
-				"{
-					\"subeffType\":\"ChooseFromListSubeffect\",
-					\"maxCanChoose\":1,
-					\"cardRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose":1,
+					"cardRestriction":
 					{
-						\"blurb\":\"Silent Cult Follower to bloodcurse (2/2)\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Is Character\"],
-						\"subtypesInclude\":[\"Cultist Follower\"]
+						"blurb":"Silent Cult Follower to bloodcurse (2/2)",
+						"cardRestrictions":["Subtypes Include","Friendly","Deck","Is Character"],
+						"subtypesInclude":["Cultist Follower"]
 					}
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where to play Mad Blood's new bloodcurse (2/2)\",
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+						"blurb":"where to play Mad Blood's new bloodcurse (2/2)",
+						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
-					\"subeffType\":\"PlaySubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
 			]	
 		}
 	],

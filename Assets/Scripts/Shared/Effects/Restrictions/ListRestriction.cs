@@ -26,9 +26,21 @@ namespace KompasCore.Effects
         public string[] listRestrictions = new string[0];
 
         /// <summary>
-        /// A quick little method that tells you whether the list restriction has a limit to how many can be chosen.
+        /// A quick little property that tells you whether the list restriction has a limit to how many can be chosen.
         /// </summary>
         public bool HasMax => listRestrictions.Contains(MaxCanChoose) || listRestrictions.Contains(MaxOfX);
+
+        /// <summary>
+        /// Quick little property that informs you whether the list restriction has minimum
+        /// </summary>
+        public bool HasMin => listRestrictions.Contains(MinCanChoose);
+
+        /// <summary>
+        /// Quick little method that tells you if you have selected enough items.
+        /// </summary>
+        /// <param name="count">Number of items currently selected</param>
+        /// <returns>Whether the number of items currently selected is enough.</returns>
+        public bool HaveEnough(int count) => !HasMin || count >= minCanChoose;
 
         /// <summary>
         /// The maximum number of cards that can be chosen.

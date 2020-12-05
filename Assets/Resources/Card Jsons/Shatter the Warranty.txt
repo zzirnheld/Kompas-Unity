@@ -1,37 +1,37 @@
 {
 	"cardType":83,
 	"cardName":"Shatter the Warranty",
-	"effText":"DispelSubeffect a friendly CX Enchant. Draw X.",
+	"effText":"Dispel a friendly CX Enchant. Draw X.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"blurb\":\"Hi-yah!\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"blurb":"Hi-yah!",
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"No! Not the original 1870s porcelain doll torso collection!\",
-						\"cardRestrictions\":[\"Friendly\",\"Board\",\"Is Spell\",\"Distinct from Source\"]
+						"blurb":"No! Not the original 1870s porcelain doll torso collection!",
+						"cardRestrictions":["Friendly","Board","Is Spell","Distinct from Source"]
 					}
-				}",
-				"{
-					\"subeffType\":\"SetXByTargetCostSubeffect\",
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"DispelSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"DrawXSubeffect\",
-					\"xMultiplier\":1
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetCostSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				}
 			]	
 		}
 	],

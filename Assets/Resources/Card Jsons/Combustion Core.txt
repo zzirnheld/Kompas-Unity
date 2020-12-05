@@ -1,88 +1,88 @@
 {
 	"cardType":65,
 	"cardName":"Combustion Core",
-	"effText":"Activate this character during enemy turns. (They deactivate on your turn.) When they die (while I'm equipped), rehand me. When your turn starts, pay a pip or DispelSubeffect me.",
+	"effText":"Activate this character during enemy turns. (They deactivate on your turn.) When they die (while I'm equipped), rehand me. When your turn starts, pay a pip or destroy me.",
 	"effects":[
 		{
 			"blurb":"Choo Choo Activate",
-			"triggerCondition":"Turn Start",
-			"trigger":
-			"{
-				\"blurb\":\"Activate Golem\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Enemy Turn\"]
+			"triggerData":
+			{
+				"blurb":"Activate Golem",
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Enemy Turn"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetAugmentedCardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"TemporaryActivationSubeffect\",
-					\"endCondition\":\"Turn Start\",
-					\"triggerRestriction\":{
-						\"triggerRestrictions\":[\"Friendly Turn\"]
+				{
+					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TemporaryActivationSubeffect, Assembly-CSharp",
+					"endCondition":"Turn Start",
+					"triggerRestriction":{
+						"triggerRestrictions":["Friendly Turn"]
 					}
-				}"
+				}
 			]
 		},
 		{
 			"blurb":"Fuel the Choo",
-			"triggerCondition":"Turn Start",
-			"trigger":
-			"{
-				\"blurb\":\"Combustion Maintenance\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Friendly Turn\"]
+			"triggerData":
+			{
+				"blurb":"Combustion Maintenance",
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Friendly Turn"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"ChooseOptionSubeffect\",
-					\"ChoiceBlurb\":\"Pay 1 pip or DispelSubeffect this?\",
-					\"OptionBlurbs\":[\"Pay 1 pip\",\"DispelSubeffect\"],
-					\"OptionJumpIndices\":[1,5]
-				}",
-				"{
-					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
-					\"jumpTo\":4
-				}",
-				"{
-					\"subeffType\":\"PayPipsSubeffect\",
-					\"xMultiplier\":0,
-					\"xModifier\":1
-				}",
-				"{
-					\"subeffType\":\"EndResolutionSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"ClearOnImpossibleSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"DiscardSubeffect\"
-				}"
+				{
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"ChoiceBlurb":"Pay 1 pip or destroy this?",
+					"OptionBlurbs":["Pay 1 pip","Destroy"],
+					"OptionJumpIndices":[1,5]
+				},
+				{
+					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"jumpTo":4
+				},
+				{
+					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
+					"xMultiplier":0,
+					"xModifier":1
+				},
+				{
+					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				}
 			]
 		},
 		{
 			"blurb":"Core Recovery",
-			"triggerCondition":"Discard",
-			"trigger":
-			"{
-				\"blurb\":\"Core Recovery\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Augmented Card Triggered\"]
+			"triggerData":
+			{
+				"blurb":"Core Recovery",
+				"triggerCondition":"Discard",
+				"triggerRestriction":{
+					"triggerRestrictions":["Augmented Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"RehandSubeffect\"
-				}"
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

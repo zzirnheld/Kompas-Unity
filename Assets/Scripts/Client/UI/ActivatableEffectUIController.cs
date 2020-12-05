@@ -16,7 +16,7 @@ namespace KompasClient.UI
             set
             {
                 (eff, parentCtrl) = value;
-                effNameText.text = eff.Blurb;
+                effNameText.text = eff.blurb;
             }
         }
 

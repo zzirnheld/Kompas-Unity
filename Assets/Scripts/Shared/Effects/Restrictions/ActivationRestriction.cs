@@ -11,6 +11,8 @@ namespace KompasCore.Effects
         public Effect Effect { get; private set; }
         public GameCard Card => Effect.Source;
 
+        public const string Never = "Never";
+
         public const string TimesPerTurn = "Max Times Per Turn";
         public const string TimesPerRound = "Max Times Per Round";
         public const string FriendlyTurn = "Friendly Turn";
@@ -28,17 +30,28 @@ namespace KompasCore.Effects
 
         public int maxTimes = 1;
         public int location = (int) CardLocation.Field;
-        public CardRestriction existsRestriction = new CardRestriction();
+        public CardRestriction existsRestriction;
 
-        public List<string> activationRestrictions = new List<string>{ "Default" };
+        private readonly List<string> ActivationRestrictions = new List<string>();
+        public string[] activationRestrictionArray = null;
 
         public void Initialize(Effect eff)
         {
             Effect = eff;
-            existsRestriction.Initialize(eff.Source, eff.Controller, eff);
-            if (activationRestrictions.Contains("Default")) activationRestrictions.AddRange(DefaultRestrictions);
-            Debug.Log($"Initializing activation restriction for {Card.CardName} " +
-                $"with restrictions: {string.Join(", ", activationRestrictions)}");
+
+            if(activationRestrictionArray == null) ActivationRestrictions.Add(Never);
+            else
+            {
+                ActivationRestrictions.AddRange(activationRestrictionArray);
+                if (activationRestrictionArray.Contains("Default"))
+                    ActivationRestrictions.AddRange(DefaultRestrictions);
+
+                existsRestriction = existsRestriction ?? new CardRestriction();
+                existsRestriction.Initialize(eff.Source, eff.Controller, eff);
+
+                Debug.Log($"Initializing activation restriction for {Card.CardName} " +
+                    $"with restrictions: {string.Join(", ", ActivationRestrictions)}");
+            }
         }
 
         private bool RestrictionValid(string r, Player activator)
@@ -52,6 +65,7 @@ namespace KompasCore.Effects
 
             switch (r)
             {
+                case Never: return false;
                 case Default: return true;
                 case TimesPerTurn: return Effect.TimesUsedThisTurn < maxTimes;
                 case TimesPerRound: return Effect.TimesUsedThisRound < maxTimes;
@@ -78,9 +92,9 @@ namespace KompasCore.Effects
         } */
 
         public bool Evaluate(Player activator)
-            => activationRestrictions.All(r => RestrictionValid(r, activator));
+            => activationRestrictionArray.All(r => RestrictionValid(r, activator));
 
         public bool EvaluateAtAll(Player activator)
-            => activationRestrictions.Intersect(AtAllRestrictions).All(r => RestrictionValid(r, activator));
+            => activationRestrictionArray.Intersect(AtAllRestrictions).All(r => RestrictionValid(r, activator));
     }
 }

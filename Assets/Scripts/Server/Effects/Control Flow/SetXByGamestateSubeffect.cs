@@ -14,12 +14,14 @@ namespace KompasServer.Effects
         public string whatToCount;
 
         public string stat;
-        public CardRestriction throughRestriction = new CardRestriction();
-        public CardRestriction cardRestriction = new CardRestriction();
+        public CardRestriction throughRestriction;
+        public CardRestriction cardRestriction;
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
+            throughRestriction = throughRestriction ?? new CardRestriction();
+            cardRestriction = cardRestriction ?? new CardRestriction();
             throughRestriction.Initialize(this);
         }
 
@@ -34,7 +36,7 @@ namespace KompasServer.Effects
                         var (x, y) = Space;
                         return Game.boardCtrl.ShortestPath(Source, x, y, throughRestriction);
                     case CardsFittingRestriction:
-                        return Game.Cards.Where(c => throughRestriction.Evaluate(c)).Count();
+                        return Game.Cards.Where(c => cardRestriction.Evaluate(c)).Count();
                     case EffectUsesThisTurn: return Effect.TimesUsedThisTurn;
                     case MaxStatAmongRestriction:
                         return Game.Cards.Where(c => cardRestriction.Evaluate(c)).Max(c => c.GetStat(stat));

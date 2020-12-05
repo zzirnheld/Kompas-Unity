@@ -4,35 +4,35 @@
 	"effText":"When I’m summoned, deck-summon a Cultist Follower.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"ChooseFromListSubeffect\",
-					\"maxCanChoose\":1,
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose":1,
+					"cardRestriction":
 					{
-						\"blurb\":\"Silent Cult Follower to convert\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Is Character\"],
-						\"subtypesInclude\":[\"Cultist Follower\"]
+						"blurb":"Silent Cult Follower to convert",
+						"cardRestrictions":["Subtypes Include","Friendly","Deck","Is Character"],
+						"subtypesInclude":["Cultist Follower"]
 					}
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where to play Zealous Convert's new convert\",
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+						"blurb":"where to play Zealous Convert's new convert",
+						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
-					\"subeffType\":\"PlaySubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

@@ -4,60 +4,60 @@
 	"effText":"Annihilate me. Choose a cost X Golem among your highest cost discarded Golems. Reshuffle X other discarded Golems, and rehand the chosen one.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"AnnihilateSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"SetXByGamestateSubeffect\",
-					\"whatToCount\":\"Max Stat Among Restriction\",
-					\"stat\":\"Cost\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount":"Max Stat Among Restriction",
+					"stat":"Cost",
+					"cardRestriction":
 					{
-						\"blurb\":\"to re-golem-ificate\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Discard\"],
-						\"subtypesInclude\":[\"Golem\"]
+						"blurb":"to re-golem-ificate",
+						"cardRestrictions":["Subtypes Include","Friendly","Discard"],
+						"subtypesInclude":["Golem"]
 					}
-				}",
-				"{
-					\"subeffType\":\"ChooseFromListSubeffect\",
-					\"cardRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"to re-golem-ificate\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Discard\",\"Cost==X\"],
-						\"subtypesInclude\":[\"Golem\"]
+						"blurb":"to re-golem-ificate",
+						"cardRestrictions":["Subtypes Include","Friendly","Discard","Cost==X"],
+						"subtypesInclude":["Golem"]
 					}
-				}",
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"for Animancer to discard\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Discard\",\"Not Already Target\"],
-						\"subtypesInclude\":[\"Golem\"]
+						"blurb":"for Animancer to discard",
+						"cardRestrictions":["Subtypes Include","Friendly","Discard","Not Already Target"],
+						"subtypesInclude":["Golem"]
 					}
-				}",
-				"{
-					\"subeffType\":\"ReshuffleSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"XTimesSubeffect\",
-					\"jumpTo\":4
-				}",
-				"{
-					\"subeffType\":\"RehandSubeffect\",
-					\"targetIndex\":1
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",
+					"jumpTo":4
+				},
+				{
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp",
+					"targetIndex":1
+				}
 			]	
 		}
 	],

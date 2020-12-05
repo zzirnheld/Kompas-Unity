@@ -4,25 +4,25 @@
 	"effText":"Can’t be cast normally. Give a character +5E.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Board\",\"Is Character\"]
+						"cardRestrictions":["Board","Is Character"]
 					}
-				}",
-				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"eChange\":5
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"eChange":5
+				}
 			]	
 		}
 	],

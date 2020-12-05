@@ -16,7 +16,7 @@ namespace KompasServer.Networking
 
         public void SendPacket(Packet packet)
         {
-            //if (packet != null) Debug.Log($"Sending packet to {Player.index} with info {packet}");
+            // if (packet != null) Debug.Log($"Sending packet to {Player.index} with info {packet}");
             ServerNetworkCtrl.SendPacket(packet);
         }
 
@@ -35,8 +35,8 @@ namespace KompasServer.Networking
 
         public void DeckAccepted() => SendPacket(new DeckAcceptedPacket());
 
-        public void SetFriendlyAvatar(string cardName, int cardID)
-            => SendToBothInverting(new SetAvatarPacket(0, cardName, cardID));
+        public void SetFriendlyAvatar(string json, int cardID)
+            => SendToBothInverting(new SetAvatarPacket(0, json, cardID));
 
         /// <summary>
         /// Takes care of inverting first turn player
@@ -58,8 +58,7 @@ namespace KompasServer.Networking
 
         public void NotifySetPips(int pipsToSet)
             => SendToBothInverting(new SetPipsPacket(pipsToSet, Player.index, invert: Player.index != 0));
-        public void NotifySetTurn(ServerGame sGame, int indexToSet)
-            => SendToBothInverting(new SetTurnPlayerPacket(indexToSet, invert: Player.index != 0));
+        public void NotifyYourTurn() => SendToBothInverting(new SetTurnPlayerPacket(0));
         #endregion game stats
 
         #region card location
@@ -75,7 +74,7 @@ namespace KompasServer.Networking
             if (toPlay.CardType == 'A') return;
 
             //tell everyone to do it
-            var p = new PlayCardPacket(toPlay.ID, toPlay.CardName, toPlay.ControllerIndex, x, y, invert: Player.index != 0);
+            var p = new PlayCardPacket(toPlay.ID, toPlay.BaseJson, toPlay.ControllerIndex, x, y, invert: Player.index != 0);
             var q = p.GetInversion(toPlay.KnownToEnemy);
             SendPackets(p, q);
         }
@@ -92,19 +91,23 @@ namespace KompasServer.Networking
         public void NotifyDecrementHand() => SendPacket(new ChangeEnemyHandCountPacket(-1));
 
         public void NotifyAnnhilate(GameCard toAnnhilate)
-            => SendToBothInverting(new AnnihilateCardPacket(toAnnhilate.ID, toAnnhilate.CardName, toAnnhilate.ControllerIndex), toAnnhilate.KnownToEnemy);
+            => SendToBothInverting(new AnnihilateCardPacket(toAnnhilate.ID, toAnnhilate.BaseJson, toAnnhilate.ControllerIndex, invert: Player.index != 0), 
+                known: toAnnhilate.KnownToEnemy);
 
         public void NotifyTopdeck(GameCard card)
-            => SendToBothInverting(new TopdeckCardPacket(card.ID, card.OwnerIndex), card.KnownToEnemy);
+            => SendToBothInverting(new TopdeckCardPacket(card.ID, card.OwnerIndex, invert: Player.index != 0), 
+                known: card.KnownToEnemy);
 
         public void NotifyBottomdeck(GameCard card)
-            => SendToBothInverting(new BottomdeckCardPacket(card.ID, card.OwnerIndex), card.KnownToEnemy);
+            => SendToBothInverting(new BottomdeckCardPacket(card.ID, card.OwnerIndex, invert: Player.index != 0),
+                known: card.KnownToEnemy);
 
         public void NotifyReshuffle(GameCard toReshuffle)
-            => SendToBothInverting(new ReshuffleCardPacket(toReshuffle.ID, toReshuffle.OwnerIndex), toReshuffle.KnownToEnemy);
+            => SendToBothInverting(new ReshuffleCardPacket(toReshuffle.ID, toReshuffle.OwnerIndex, invert: Player.index != 0),
+                known: toReshuffle.KnownToEnemy);
 
         public void NotifyAddToDeck(GameCard added)
-            => SendToBothInverting(new AddCardPacket(added, invert: Player.index != 0), added.KnownToEnemy);
+            => SendToBothInverting(new AddCardPacket(added, invert: Player.index != 0), known: added.KnownToEnemy);
 
         public void GetHandSizeChoices(int[] cardIds, string listRestrictionJson)
             => SendPacket(new GetHandSizeChoicesOrderPacket(cardIds, listRestrictionJson));

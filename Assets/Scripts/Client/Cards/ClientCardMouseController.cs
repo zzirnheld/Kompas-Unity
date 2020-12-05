@@ -101,7 +101,7 @@ namespace KompasClient.Cards
                 //otherwise, it is being played from somewhere like the hand or discard
                 else ClientGame.clientNotifier.RequestPlay(Card, x, y);
             }
-            //else Debug.Log($"Card {Card.CardName} dragged to somewhere off the board. Only putting back.");
+            else Debug.Log($"Card {Card.CardName} dragged to somewhere off the board, board local pos {boardLocalPosition}. Only putting back.");
 
             //regardless, put the card where it goes until we know where to properly put it
             Card.PutBack();

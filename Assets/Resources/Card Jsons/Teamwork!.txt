@@ -4,25 +4,25 @@
 	"effText":"Unique.\nWhen a friendly character is augmented, draw 1.",
 	"effects":[
 		{
-			"triggerCondition":"Augment Attached",
-			"trigger":
-			"{
-				\"blurb\":\"Teamwork! Draw!\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Coords Fit Restriction\"],
-					\"spaceRestriction\":
+			"triggerData":
+			{
+				"blurb":"Teamwork! Draw!",
+				"triggerCondition":"Augment Attached",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Coords Fit Restriction"],
+					"spaceRestriction":
 					{
-						\"spaceRestrictions\":[\"Card Here Fits Restriction\"],
-						\"hereFitsRestriction\":{
-							\"cardRestrictions\":[\"Friendly\"]
+						"spaceRestrictions":["Card Here Fits Restriction"],
+						"hereFitsRestriction":{
+							"cardRestrictions":["Friendly"]
 						}
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"DrawSubeffect\"
-				}"
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

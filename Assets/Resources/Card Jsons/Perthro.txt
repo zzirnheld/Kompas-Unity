@@ -4,50 +4,50 @@
 	"effText":"Can’t be cast normally. Search your deck’s top 10 cards for 3 spells.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"SkipToEffectOnImpossibleSubeffect\",
-					\"jumpTo\":5
-				}",
-				"{
-					\"subeffType\":\"ChooseFromListSaveRestSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"jumpTo":5
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSaveRestSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"spell for Perthro to search (to hand)\",
-						\"cardRestrictions\":[\"Is Spell\",\"Friendly\",\"Deck\",\"Index<C\"],
-						\"constant\":10
+						"blurb":"spell for Perthro to search (to hand)",
+						"cardRestrictions":["Is Spell","Friendly","Deck","Index<C"],
+						"constant":10
 					},
-					\"restRestriction\":
+					"restRestriction":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Index<C\",\"Not Already Target\"],
-						\"constant\":10
+						"cardRestrictions":["Friendly","Deck","Index<C","Not Already Target"],
+						"constant":10
 					},
-					\"listRestriction\":{
-						\"listRestrictions\":[\"Max Can Choose\"],
-						\"maxCanChoose\":3
+					"listRestriction":{
+						"listRestrictions":["Max Can Choose"],
+						"maxCanChoose":3
 					}
-				}",
-				"{
-					\"subeffType\":\"ClearOnImpossibleSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"RehandSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
-					\"delete\":true,
-					\"jumpTo\":3
-				}",
-				"{
-					\"subeffType\":\"BottomdeckRestSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"jumpTo":3
+				},
+				{
+					"$type":"KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
+				}
 			]	
 		}
 	],

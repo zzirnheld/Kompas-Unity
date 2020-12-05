@@ -77,6 +77,9 @@ namespace KompasServer.Cards
         {
             base.SetInfo(serializedCard, id);
             ServerEffects = effects;
+            int i = 0;
+            foreach (var eff in effects) eff.SetInfo(this, game, owner, i++);
+            Debug.Log($"Setting card with effects: {string.Join(", ", effects.Select(e => e.ToString()))}");
             ServerGame = game;
             ServerController = ServerOwner = owner;
         }
@@ -125,65 +128,89 @@ namespace KompasServer.Cards
 
             //copy the colleciton  so that you can edit the original
             var augments = Augments.ToArray();
-            foreach (var aug in augments) aug.Discard();
+            foreach (var aug in augments) aug.Discard(stackSrc);
             return true;
         }
 
         #region stats
-        public override void SetN(int n, IStackable stackSrc = null)
+        public override void SetN(int n, IStackable stackSrc = null, bool notify = true)
         {
+            if (CardType != 'C') return;
             var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: n - N);
             EffectsController.TriggerForCondition(Trigger.NChange, context);
             EffectsController.TriggerForCondition(Trigger.NESWChange, context);
             base.SetN(n, stackSrc);
-            ServerNotifier.NotifyStats(this);
+
+            if(notify) ServerNotifier.NotifyStats(this);
         }
 
-        public override void SetE(int e, IStackable stackSrc = null)
+        public override void SetE(int e, IStackable stackSrc = null, bool notify = true)
         {
+            if (CardType != 'C') return;
             var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: e - E);
             EffectsController.TriggerForCondition(Trigger.EChange, context);
             EffectsController.TriggerForCondition(Trigger.NESWChange, context);
             base.SetE(e, stackSrc);
-            ServerNotifier.NotifyStats(this);
+
+            if (notify) ServerNotifier.NotifyStats(this);
 
             //kill if applicable
             if (E <= 0 && CardType == 'C') Discard(stackSrc);
         }
 
-        public override void SetS(int s, IStackable stackSrc = null)
+        public override void SetS(int s, IStackable stackSrc = null, bool notify = true)
         {
+            if (CardType != 'C') return;
             var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: s - S);
             EffectsController.TriggerForCondition(Trigger.SChange, context);
             EffectsController.TriggerForCondition(Trigger.NESWChange, context);
             base.SetS(s, stackSrc);
-            ServerNotifier.NotifyStats(this);
+
+            if (notify) ServerNotifier.NotifyStats(this);
         }
 
-        public override void SetW(int w, IStackable stackSrc = null)
+        public override void SetW(int w, IStackable stackSrc = null, bool notify = true)
         {
+            if (CardType != 'C') return;
             var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: w - W);
             EffectsController.TriggerForCondition(Trigger.WChange, context);
             EffectsController.TriggerForCondition(Trigger.NESWChange, context);
             base.SetW(w, stackSrc);
-            ServerNotifier.NotifyStats(this);
+
+            if (notify) ServerNotifier.NotifyStats(this);
         }
 
-        public override void SetC(int c, IStackable stackSrc = null)
+        public override void SetC(int c, IStackable stackSrc = null, bool notify = true)
         {
+            if (CardType != 'S') return;
             var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: c - C);
             EffectsController.TriggerForCondition(Trigger.CChange, context);
             EffectsController.TriggerForCondition(Trigger.NESWChange, context);
             base.SetC(c, stackSrc);
-            ServerNotifier.NotifyStats(this);
+
+            if (notify) ServerNotifier.NotifyStats(this);
         }
 
-        public override void SetA(int a, IStackable stackSrc = null)
+        public override void SetA(int a, IStackable stackSrc = null, bool notify = true)
         {
+            if (CardType != 'A') return;
             var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: a - A);
             EffectsController.TriggerForCondition(Trigger.AChange, context);
             EffectsController.TriggerForCondition(Trigger.NESWChange, context);
             base.SetA(a, stackSrc);
+
+            if (notify) ServerNotifier.NotifyStats(this);
+        }
+
+        public override void SetCharStats(int n, int e, int s, int w, IStackable stackSrc = null)
+        {
+            base.SetCharStats(n, e, s, w, stackSrc);
+            ServerNotifier.NotifyStats(this);
+        }
+
+        public override void SetStats((int n, int e, int s, int w, int c, int a) stats, IStackable stackSrc = null)
+        {
+            base.SetStats(stats, stackSrc);
             ServerNotifier.NotifyStats(this);
         }
 

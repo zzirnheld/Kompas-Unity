@@ -36,14 +36,17 @@ namespace KompasCore.Effects
             { PlayedByCardOwner, FromHand, OnBoardCardFriendlyOrAdjacent, StandardSpellRestriction, FriendlyTurnIfNotFast, HasCostInPips, FastOrNothingIsResolving };
         public static readonly string[] AugmentEffectRestrictions = { StandardSpellRestriction, OnBoardCardFriendlyOrAdjacent };
 
-        public List<string> normalRestrictions = new List<string> { DefaultNormal };
-        public List<string> effectRestrictions = new List<string> { DefaultEffect };
+        public List<string> normalRestrictions = null;
+        public List<string> effectRestrictions = null;
 
-        public CardRestriction onCardRestriction = new CardRestriction();
+        public CardRestriction onCardRestriction;
 
         public void SetInfo(GameCard card)
         {
             Card = card;
+
+            normalRestrictions = normalRestrictions ?? new List<string> { DefaultNormal };
+            effectRestrictions = effectRestrictions ?? new List<string> { DefaultEffect };
 
             if (normalRestrictions.Contains(DefaultNormal)) normalRestrictions.AddRange(DefaultNormalRestrictions);
             if (normalRestrictions.Contains(AugNormal)) normalRestrictions.AddRange(AugmentNormalRestrictions);
@@ -51,7 +54,9 @@ namespace KompasCore.Effects
             if (effectRestrictions.Contains(DefaultEffect)) effectRestrictions.AddRange(DefaultEffectRestrictions);
             if (effectRestrictions.Contains(AugEffect)) effectRestrictions.AddRange(AugmentEffectRestrictions);
 
+            onCardRestriction = onCardRestriction ?? new CardRestriction();
             onCardRestriction.Initialize(card, card.Controller, null);
+            Debug.Log($"Finished setting info for play restriction of card {card.CardName}");
         }
 
         private bool RestrictionValid(string r, int x, int y, Player player, bool normal)
@@ -91,7 +96,10 @@ namespace KompasCore.Effects
         public bool EvaluateNormalPlay(int x, int y, Player player)
             => normalRestrictions.All(r => RestrictionValid(r, x, y, player, true));
 
+        public bool EvaluateEffectPlay(int x, int y, Effect effect, Player controller)
+            => effectRestrictions.All(r => RestrictionValid(r, x, y, controller, false));
+
         public bool EvaluateEffectPlay(int x, int y, Effect effect)
-            => effectRestrictions.All(r => RestrictionValid(r, x, y, effect.Controller, false));
+            => EvaluateEffectPlay(x, y, effect, effect.Controller);
     }
 }

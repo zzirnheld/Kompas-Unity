@@ -6,62 +6,62 @@
 		{
 			"blurb":"Linewalk",
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Friendly Turn",
 					"Default"
 				]
 			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"SpendMovementSubeffect\",
-					\"xModifier\":1
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SpendRemainingMovementSubeffect, Assembly-CSharp",
+					"xModifier":1
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"to Linewalk to\",
-						\"spaceRestrictions\":[\"Empty\",\"On Target's Diagonal\"]
+						"blurb":"to Linewalk to",
+						"spaceRestrictions":["Empty","On Target's Diagonal"]
 					}
-				}",
-				"{
-					\"subeffType\":\"MoveSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
 			]
 		},
 		{
 			"blurb":"Cyan Linewalked",
-			"triggerCondition":"Move",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"for Cyan to move\",
-						\"cardRestrictions\":[\"Board\",\"Subtypes Exclude\"],
-						\"subtypesExclude\":[\"Linewalker\"]
+						"blurb":"for Cyan to move",
+						"cardRestrictions":["Board","Subtypes Exclude"],
+						"subtypesExclude":["Linewalker"]
 					}
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where Cyan to move its target\",
-						\"spaceRestrictions\":[\"Empty\",\"Distance to Target == X\",\"Can Move Target to This Space\"]
+						"blurb":"where Cyan to move its target",
+						"spaceRestrictions":["Empty","Distance to Target == X","Can Move Target to This Space"]
 					}
-				}",
-				"{
-					\"subeffType\":\"MoveSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

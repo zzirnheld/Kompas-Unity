@@ -1,0 +1,58 @@
+{
+	"cardType":83,
+	"cardName":"Leypathmaking",
+	"effText":"Hand-reshuffle a Linewalker. Search your deck for two Linewalkers with names different from each other and from the reshuffled Linewalker.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Linewalker for Leypathmaking to reshuffle",
+						"cardRestrictions":["Friendly","Hand","Subtypes Include"],
+						"subtypesInclude":["Linewalker"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Linewalker for Leypathmaking to search",
+						"cardRestrictions":["Friendly","Deck","Subtypes Include","Distinct Name from Other Targets"],
+						"subtypesInclude":["Linewalker"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Linewalker for Leypathmaking to search",
+						"cardRestrictions":["Friendly","Deck","Subtypes Include","Distinct Name from Other Targets"],
+						"subtypesInclude":["Linewalker"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp",
+					"targetIndex":-2
+				}
+			]
+		}
+	],
+	"c":1,
+	"spellType":"Simple",
+	"subtypeText":"Ley Simple"
+}

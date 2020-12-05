@@ -1,0 +1,50 @@
+{
+	"cardType":67,
+	"cardName":"Leybinder",
+	"effText":"The first time each turn a character moves X, their controller hand-summons an SX character.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Leybind",
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Max Per Turn"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"for Leybinder to hand-summon",
+						"cardRestrictions":["Is Character","Controller Matches Player Target","Hand","S==X"]
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where Leybinder to hand-summon",
+						"spaceRestrictions":["Can Play Target to This Space"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+	"n":1,
+	"e":5,
+	"s":5,
+	"w":5,
+	"subtypeText":"Ley Mage"
+}

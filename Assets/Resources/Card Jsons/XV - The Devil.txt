@@ -4,22 +4,22 @@
 	"effText":"When an enemy deck-rehands a card, you can draw 1.",
 	"effects":[
 		{
-			"triggerCondition":"Rehand",
-			"trigger":
-			"{
-				\"optional\":true,
-				\"blurb\":\"Draw 1? (An enemy just deck-rehanded a card)\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"From Deck\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Enemy\"]
+			"triggerData":
+			{
+				"optional":true,
+				"blurb":"Draw 1? (An enemy just deck-rehanded a card)",
+				"triggerCondition":"Rehand",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","From Deck"],
+					"cardRestriction":{
+						"cardRestrictions":["Enemy"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"DrawSubeffect\"
-				}"
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

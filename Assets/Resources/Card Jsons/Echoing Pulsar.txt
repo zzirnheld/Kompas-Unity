@@ -4,55 +4,55 @@
 	"effText":"The first time each turn your Avatar gains S, give them +1 S.\nThe first time each turn your Avatar loses S, give them -1 S.",
 	"effects":[
 		{
-			"triggerCondition":"S Change",
-			"trigger":
-			"{
-				\"blurb\":\"Echo Up\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\",\"Triggerer Fits Restriction\",\"Max Per Turn\"],
-					\"xRestriction\":{
-						\"xRestrictions\":[\">0\"]
+			"triggerData":
+			{
+				"blurb":"Echo Up",
+				"triggerCondition":"S Change",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction","Max Per Turn"],
+					"xRestriction":{
+						"xRestrictions":[">0"]
 					},
-					\"cardRestriction\":
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Board\",\"Avatar\",\"Friendly\"]
+						"cardRestrictions":["Board","Avatar","Friendly"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"sMod\":1
-				}"
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"sMod":1
+				}
 			]
 		},
 		{
-			"triggerCondition":"S Change",
-			"trigger":
-			"{
-				\"blurb\":\"Echo Down\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\",\"Triggerer Fits Restriction\",\"Max Per Turn\"],
-					\"xRestriction\":{
-						\"xRestrictions\":[\"<0\"]
+			"triggerData":
+			{
+				"blurb":"Echo Down",
+				"triggerCondition":"S Change",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction","Max Per Turn"],
+					"xRestriction":{
+						"xRestrictions":["<0"]
 					},
-					\"cardRestriction\":
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Board\",\"Avatar\",\"Friendly\"]
+						"cardRestrictions":["Board","Avatar","Friendly"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"sMod\":-1
-				}"
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"sMod":-1
+				}
 			]
 		}
 	],

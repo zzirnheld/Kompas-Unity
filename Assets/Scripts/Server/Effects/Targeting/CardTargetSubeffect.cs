@@ -7,7 +7,7 @@ namespace KompasServer.Effects
 {
     public class CardTargetSubeffect : ServerSubeffect
     {
-        public CardRestriction cardRestriction = new CardRestriction();
+        public CardRestriction cardRestriction;
 
         public bool AwaitingTarget { get; protected set; }
 
@@ -18,12 +18,13 @@ namespace KompasServer.Effects
         {
             AwaitingTarget = true;
             Debug.Log($"Asking for card target among ids {string.Join(", ", potentialTargetIds)}");
-            EffectController.ServerNotifier.GetCardTarget(Source.CardName, cardRestriction.blurb, potentialTargetIds, null);
+            ServerPlayer.ServerNotifier.GetCardTarget(Source.CardName, cardRestriction.blurb, potentialTargetIds, null);
         }
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
+            cardRestriction = cardRestriction ?? new CardRestriction();
             cardRestriction.Initialize(this);
         }
 
@@ -59,7 +60,7 @@ namespace KompasServer.Effects
             {
                 AwaitingTarget = false;
                 ServerEffect.AddTarget(card);
-                EffectController.ServerNotifier.AcceptTarget();
+                ServerPlayer.ServerNotifier.AcceptTarget();
                 return ServerEffect.ResolveNextSubeffect();
             }
             else

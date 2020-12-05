@@ -4,26 +4,26 @@
 	"effText":"When you cast a Rune, I give myself +1EW.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"Controller Triggered\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\"],
-						\"subtypesInclude\":[\"Rune\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Controller Triggered"],
+					"cardRestriction":{
+						"cardRestrictions":["Subtypes Include","Is Spell","Friendly"],
+						"subtypesInclude":["Rune"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"eChange\":1,
-					\"wChange\":1
-				}"
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"eChange":1,
+					"wChange":1
+				}
 			]	
 		}
 	],

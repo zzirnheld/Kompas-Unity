@@ -4,43 +4,43 @@
 	"effText":"When turns start, give Supplicants here +1E.\nYou can annihilate me to gain 3 pips.",
 	"effects":[
 		{
-			"triggerCondition":"Turn Start",
-			"trigger":
-			"{
-				\"blurb\":\"Grant Refuge\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\"]
+			"triggerData":
+			{
+				"blurb":"Grant Refuge",
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"ChangeAllNESWSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.ChangeAllNESWSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"In AOE\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Supplicant\"]
+						"cardRestrictions":["Is Character","Board","In AOE","Subtypes Include"],
+						"subtypesInclude":["Supplicant"]
 					},
-					\"eMod\":1
-				}"
+					"eMod":1
+				}
 			]	
 		},
 		{
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Default"
 				]
 			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"AnnihilateSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"AddPipsSubeffect\",
-					\"xModifier\":3
-				}"
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier":3
+				}
 			]
 		}
 	],

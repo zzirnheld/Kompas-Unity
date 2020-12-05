@@ -1,40 +1,86 @@
 {
 	"cardType":67,
 	"cardName":"Mother of Dragons",
-	"effText":"Once each friendly turn, you can hand-reshuffle a Dragon to draw 2.",
+	"effText":"When enemy turns start, you can kill any number of friendly Summoned characters with total S X. Deck-summon an S <= X Dragon from your deck's top X cards.",
 	"effects":[
 		{
-			"activationRestriction":{
-				"activationRestrictions":[
-					"Max Times Per Turn",
-					"Friendly Turn",
-					"Default"
-				]
+			"blurb":"Dragonbirth",
+			"triggerData":
+			{
+				"blurb":"Dragonbirth",
+ 				"optional":true,
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Enemy Turn"]
+				}
 			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.SetXSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Dragon to hand-reshuffle\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Hand\"],
-						\"subtypesInclude\":[\"Dragon\"]
+						"blurb":"for Mother of Dragons to kill",
+						"cardRestrictions":["Friendly","Board","Summoned","Not Already Target"]
 					}
-				}",
-				"{
-					\"subeffType\":\"ReshuffleSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"DrawXSubeffect\",
-					\"xModifier\":2
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"S",
+					"change":true,
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
+					"canDecline":true,
+					"jumpTo":1
+				},
+				{
+					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"jumpTo":10
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSaveRestSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"for Mother of Dragons to birth",
+						"cardRestrictions":["Friendly","Deck","Is Character","Cost<=X","Index<X","Subtypes Include"],
+						"subtypesInclude":["Dragon"]
+					},
+					"restRestriction":
+					{
+						"cardRestrictions":["Friendly","Deck","Index<X","Not Already Target"]
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where Mother of Dragons to birth",
+						"spaceRestrictions":["Can Play Target to This Space"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],
-	"n":1,
+	"n":0,
 	"e":10,
-	"s":9,
-	"w":6,
-	"subtypes":[],
+	"s":10,
+	"w":0,
 	"subtypeText":""
 }

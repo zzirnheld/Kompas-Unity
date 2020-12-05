@@ -4,30 +4,30 @@
 	"effText":"When you play a Crazy Idea, if I’m adjacent to an enemy character, give a friendly character +1W.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"This Card Fits Restriction\"],
-					\"cardRestriction\":
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","This Card Fits Restriction"],
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Adjacent to Enemy\"]
+						"cardRestrictions":["Adjacent to Enemy"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"friendly character for Crab Robot Crab Minion to give intel\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\"]
+						"blurb":"friendly character for Crab Robot Crab Minion to give intel",
+						"cardRestrictions":["Is Character","Board","Friendly"]
 					}
-				}",
-				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"wChange\":1
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"wChange":1
+				}
 			]	
 		}
 	],

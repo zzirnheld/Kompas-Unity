@@ -1,6 +1,7 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasCore.UI;
+using KompasServer.Effects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,6 +48,7 @@ namespace KompasCore.GameCore
         public abstract GameCard GetCardWithID(int id);
 
         public virtual IStackable CurrStackEntry => null;
+        public abstract IEnumerable<IStackable> StackEntries { get; }
         public abstract bool NothingHappening { get; }
 
         //game mechanics

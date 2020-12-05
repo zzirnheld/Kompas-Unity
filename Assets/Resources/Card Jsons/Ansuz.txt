@@ -4,28 +4,28 @@
 	"effText":"Can’t be cast normally. Set a character’s N to 1 and ESW to 10.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Board\"]
+						"cardRestrictions":["Is Character","Board"]
 					}
-				}",
-				"{
-					\"subeffType\":\"SetNESWSubeffect\",
-					\"nVal\":1,
-					\"eVal\":10,
-					\"sVal\":10,
-					\"wVal\":10
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.SetNESWSubeffect, Assembly-CSharp",
+					"nVal":1,
+					"eVal":10,
+					"sVal":10,
+					"wVal":10
+				}
 			]	
 		}
 	],

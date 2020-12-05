@@ -1,19 +1,19 @@
 ﻿using KompasCore.Cards;
 using KompasCore.GameCore;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace KompasCore.Effects
 {
     /// <summary>
     /// Effects will only be resolved on server. Clients will just get to know what effects they can use
     /// </summary>
+    [System.Serializable]
     public abstract class Effect : IStackable
     {
-        public Game Game => Source.Game;
+        public abstract Game Game { get; }
 
-        public readonly int EffectIndex;
-        public GameCard Source { get; }
+        public int EffectIndex { get; private set; }
+        public GameCard Source { get; private set; }
         public abstract Player Controller { get; set; }
 
         //subeffects
@@ -23,19 +23,22 @@ namespace KompasCore.Effects
         public Subeffect CurrSubeffect => Subeffects[SubeffectIndex];
 
         //Targets
-        protected List<GameCard> TargetsList { get; } = new List<GameCard>();
-        public IEnumerable<GameCard> Targets => TargetsList;
-        public List<(int x, int y)> Coords { get; private set; } = new List<(int x, int y)>();
-        public List<GameCard> Rest { get; private set; } = new List<GameCard>();
+        protected readonly List<GameCard> targetsList = new List<GameCard>();
+        public IEnumerable<GameCard> Targets => targetsList;
+        public readonly List<(int x, int y)> coords = new List<(int x, int y)>();
+        public readonly List<Player> players = new List<Player>();
+        public readonly List<GameCard> rest = new List<GameCard>();
         /// <summary>
         /// X value for card effect text (not coordinates)
         /// </summary>
         public int X = 0;
 
         //Triggering and Activating
+        public TriggerData triggerData;
         public abstract Trigger Trigger { get; }
-        public ActivationRestriction ActivationRestriction { get; }
-        public string Blurb { get; }
+        public ActivationRestriction activationRestriction;
+        public string blurb;
+
         public ActivationContext CurrActivationContext { get; protected set; }
         public int TimesUsedThisTurn { get; protected set; }
         public int TimesUsedThisRound { get; protected set; }
@@ -52,14 +55,14 @@ namespace KompasCore.Effects
             }
         }
 
-        public Effect(ActivationRestriction restriction, GameCard source, string blurb, int effIndex, Player owner)
+        protected void SetInfo(GameCard source, int effIndex, Player owner)
         {
             Source = source != null ? source : throw new System.ArgumentNullException("source", "Effect cannot be attached to null card");
-            Controller = owner;
-            ActivationRestriction = restriction;
-            ActivationRestriction.Initialize(this);
-            Blurb = blurb;
             EffectIndex = effIndex;
+            Controller = owner;
+
+            blurb = string.IsNullOrEmpty(blurb) ? "Effect" : blurb;
+            activationRestriction?.Initialize(this);
             TimesUsedThisTurn = 0;
         }
 
@@ -77,27 +80,33 @@ namespace KompasCore.Effects
 
         public virtual void Negate() => Negated = true;
 
-        public virtual void AddTarget(GameCard card) => TargetsList.Add(card);
-        public virtual void RemoveTarget(GameCard card) => TargetsList.Remove(card);
+        public virtual void AddTarget(GameCard card) => targetsList.Add(card);
+        public virtual void RemoveTarget(GameCard card) => targetsList.Remove(card);
 
         public virtual bool CanBeActivatedBy(Player controller)
-            => Trigger == null && ActivationRestriction.Evaluate(controller);
+            => Trigger == null && activationRestriction != null && activationRestriction.Evaluate(controller);
 
         public virtual bool CanBeActivatedAtAllBy(Player activator)
-            => Trigger == null && ActivationRestriction.EvaluateAtAll(activator);
+            => Trigger == null && activationRestriction != null && activationRestriction.EvaluateAtAll(activator);
 
         public abstract void StartResolution(ActivationContext context);
 
         public GameCard GetTarget(int num)
         {
-            int trueIndex = num < 0 ? num + TargetsList.Count : num;
-            return trueIndex < 0 ? null : TargetsList[trueIndex];
+            int trueIndex = num < 0 ? num + targetsList.Count : num;
+            return trueIndex < 0 ? null : targetsList[trueIndex];
         }
 
         public (int x, int y) GetSpace(int num)
         {
-            var trueIndex = num < 0 ? num + Coords.Count : num;
-            return trueIndex < 0 ? (0, 0) : Coords[trueIndex];
+            var trueIndex = num < 0 ? num + coords.Count : num;
+            return trueIndex < 0 ? (0, 0) : coords[trueIndex];
+        }
+
+        public Player GetPlayer(int num)
+        {
+            int trueIndex = num < 0 ? num + players.Count : num;
+            return trueIndex < 0 ? null : players[trueIndex];
         }
     }
 }

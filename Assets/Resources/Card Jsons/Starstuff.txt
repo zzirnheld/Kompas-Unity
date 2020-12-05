@@ -4,50 +4,50 @@
 	"effText":"Give your Avatar +-5 S. You can then annihilate me to draw 1.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetAvatarSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"ChooseOptionSubeffect\",
-					\"ChoiceBlurb\":\"Give +5 S or -5 S?\",
-					\"OptionBlurbs\":[\"+5 S\",\"-5 S\"],
-					\"OptionJumpIndices\":[2,4]
-				}",
-				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"sChange\":5
-				}",
-				"{
-					\"subeffType\":\"JumpSubeffect\",
-					\"indexToJumpTo\":5
-				}",
-				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"sChange\":-5
-				}",
-				"{
-					\"subeffType\":\"ChooseOptionSubeffect\",
-					\"ChoiceBlurb\":\"Annihilate me and draw 1?\",
-					\"OptionBlurbs\":[\"Yes\",\"No\"],
-					\"OptionJumpIndices\":[6,100]
-				}",
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"AnnihilateSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"DrawSubeffect\"
-				}"
+				{
+					"$type":"KompasServer.Effects.TargetAvatarSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"ChoiceBlurb":"Give +5 S or -5 S?",
+					"OptionBlurbs":["+5 S","-5 S"],
+					"OptionJumpIndices":[2,4]
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"sChange":5
+				},
+				{
+					"$type":"KompasServer.Effects.JumpSubeffect, Assembly-CSharp",
+					"indexToJumpTo":5
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"sChange":-5
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"ChoiceBlurb":"Annihilate me and draw 1?",
+					"OptionBlurbs":["Yes","No"],
+					"OptionJumpIndices":[6,100]
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
 			]	
 		}
 	],

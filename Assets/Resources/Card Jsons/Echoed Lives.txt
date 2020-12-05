@@ -4,25 +4,25 @@
 	"effText":"When turns start, resummon characters here.",
 	"effects":[
 		{
-			"triggerCondition":"Turn Start",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\"]
+			"triggerData":
+			{
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"ResummonAllSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.ResummonAllSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Summoned\",\"Board\",\"In AOE\"]
+						"cardRestrictions":["Is Character","Summoned","Board","In AOE"]
 					}
-				}"
+				}
 			]	
 		}
 	],
-	"c":1,
+	"c":3,
 	"spellType":"Radial",
 	"subtypes":["Radial"],
 	"subtypeText":"Radial",

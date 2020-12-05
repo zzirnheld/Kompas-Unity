@@ -1,95 +1,100 @@
 {
 	"cardType":67,
 	"cardName":"Maya, Mistress of Reality",
-	"effText":"Shape: During your turn, use a space of movement and give me -XE to move me through X Ethereal characters.\nWhen a friendly Shaper moves X, you can discard 1, give me -XE, and draw X.",
+	"effText":"Unique.\nShape.\nWhen a friendly Shaper moves X, discard 1, give me -XE, and draw X.",
 	"effects":[
 		{
 			"blurb":"Shape",
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Friendly Turn",
 					"Default"
 				]
 			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"to move Maya to\",
-						\"spaceRestrictions\":[\"Connected to Source by Cards Fitting Restriction\"],
-						\"connectednessRestriction\":{
-							\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
-							\"subtypesInclude\":[\"Ethereal\"]
+						"blurb":"to move Maya to",
+						"spaceRestrictions":["Connected to Source by Cards Fitting Restriction"],
+						"connectednessRestriction":{
+							"cardRestrictions":["Subtypes Include","Is Character","Board"],
+							"subtypesInclude":["Ethereal"]
 						}
 					}
-				}",
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"SpendMovementSubeffect\",
-					\"xModifier\":1
-				}",
-				"{
-					\"subeffType\":\"SetXByGamestateSubeffect\",
-					\"whatToCount\":\"Distance to Coords Through\",
-					\"throughRestriction\":{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
-						\"subtypesInclude\":[\"Ethereal\"]
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SpendMovementSubeffect, Assembly-CSharp",
+					"xModifier":1
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount":"Distance to Coords Through",
+					"throughRestriction":{
+						"cardRestrictions":["Subtypes Include","Is Character","Board"],
+						"subtypesInclude":["Ethereal"]
 					},
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"eMult\":-1
-				}",
-				"{
-					\"subeffType\":\"MoveSubeffect\"
-				}"
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"eMult":-1
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
 			]
 		},
 		{
-			"triggerCondition":"Move",
-			"trigger":
-			"{
-				\"blurb\":\"Discard Draw\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\"],
-						\"subtypesInclude\":[\"Shaper\"]
+			"triggerData":
+			{
+				"blurb":"Discard Draw",
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Subtypes Include","Friendly"],
+						"subtypesInclude":["Shaper"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":{
-						\"blurb\":\"for Maya to discard\",
-						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"blurb":"for Maya to discard",
+						"cardRestrictions":["Friendly","Hand"]
 					}
-				}",
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"eMult\":-1
-				}",
-				"{
-					\"subeffType\":\"DiscardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"DrawXSubeffect\",
-					\"xMultiplier\":1
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"eMult":-1
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp",
+					"targetIndex":-2
+				},
+				{
+					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				}
 			]	
 		}
 	],
 	"n":1,
-	"e":7,
-	"s":8,
-	"w":9,
+	"e":4,
+	"s":5,
+	"w":3,
+	"PlayRestriction":{
+		"normalRestrictions":["Default Normal Restrictions","Unique"],
+		"effectRestrictions":["Default Effect Restrictions","Unique"]
+	},
 	"subtypeText":"Ethereal Shaper Mage"
 }

@@ -9,6 +9,8 @@ namespace KompasServer.Effects
         private readonly List<(IServerStackable stackable, ActivationContext context)> stack
             = new List<(IServerStackable stackable, ActivationContext)>();
 
+        public IEnumerable<IServerStackable> StackEntries => stack.Select(entry => entry.stackable);
+
         public bool Empty => stack.Count == 0;
         public int Count => stack.Count;
 

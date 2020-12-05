@@ -24,6 +24,6 @@ namespace KompasClient.Networking
 {
     public class SetTurnPlayerClientPacket : SetTurnPlayerPacket, IClientOrderPacket
     {
-        public void Execute(ClientGame clientGame) => clientGame.EndTurn();
+        public void Execute(ClientGame clientGame) => clientGame.SetTurn(turnPlayer);
     }
 }

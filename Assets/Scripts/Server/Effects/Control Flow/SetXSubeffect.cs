@@ -4,7 +4,9 @@
     {
         public virtual int BaseCount => Effect.X;
 
-        public int TrueCount => (BaseCount * xMultiplier / xDivisor) + xModifier;
+        public int TrueCount => (BaseCount * xMultiplier / xDivisor) + xModifier + (change ? Effect.X : 0);
+
+        public bool change = false;
 
         public override bool Resolve()
         {

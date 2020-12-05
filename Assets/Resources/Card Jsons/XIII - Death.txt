@@ -4,57 +4,57 @@
 	"effText":"When you draw, I get +1S. During your turn, I can pay XS to kill an adjacent SX character.",
 	"effects":[
 		{
-			"triggerCondition":"Draw",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Controller Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Draw",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Controller Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"sChange\":1
-				}"
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"sChange":1
+				}
 			]
 		},
 		{
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Friendly Turn",
 					"Default"
 				]
 			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"PlayerChooseXSubeffect\",
-					\"XRest\":{
-						\"cardRestrictions\":[\">0\",\"<=ThisCost\"]
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.PlayerChooseXSubeffect, Assembly-CSharp",
+					"XRest":{
+						"cardRestrictions":[">0","<=ThisCost"]
 					},
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"sMult\":-1
-				}",
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"sMult":-1
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"adjacent SX character for Death to kill\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"S==X\",\"Adjacent\",\"Summoned\"]
+						"blurb":"adjacent SX character for Death to kill",
+						"cardRestrictions":["Is Character","Board","S==X","Adjacent","Summoned"]
 					},
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"DiscardSubeffect\"
-				}"
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

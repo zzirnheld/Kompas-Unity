@@ -1,0 +1,58 @@
+{
+	"cardType":67,
+	"cardName":"Dragoncaller",
+	"effText":"You can kill another friendly SX character to give me +X ES or SW.",
+	"effects":[
+		{
+			"blurb":"Dragoncall",
+			"activationRestriction":{
+				"activationRestrictionArray":["Default"]
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"for Dragoncaller to kill",
+						"cardRestrictions":["Friendly","Board","Is Character","Distinct from Source"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"S",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"ChoiceBlurb":"Give +X ES or SW?",
+					"OptionBlurbs":["+X ES","+X SW"],
+					"OptionJumpIndices":[5,7]
+				},
+				{
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"eMult":1,
+					"sMult":1
+				},
+				{
+					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"sMult":1,
+					"wMult":1
+				}
+			]
+		}
+	],
+	"n":1,
+	"e":1,
+	"s":3,
+	"w":1,
+	"subtypeText":""
+}

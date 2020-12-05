@@ -6,26 +6,26 @@
 		{
 			"blurb":"DOOM",
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"Default"
 				]
 			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"ChooseFromListSubeffect\",
-					\"maxCanChoose\":1,
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose":1,
+					"cardRestriction":
 					{
-						\"blurb\":\"Cultist for Doomsayer to search\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\"],
-						\"subtypesInclude\":[\"Cultist\"]
+						"blurb":"Cultist for Doomsayer to search",
+						"cardRestrictions":["Subtypes Include","Friendly","Deck"],
+						"subtypesInclude":["Cultist"]
 					}
-				}",
-				"{
-					\"subeffType\":\"RehandSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

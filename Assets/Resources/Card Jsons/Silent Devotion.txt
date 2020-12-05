@@ -4,36 +4,36 @@
 	"effText":"When friendly turns start, deck-summon a Cultist Follower.",
 	"effects":[
 		{
-			"triggerCondition":"Turn Start",
-			"trigger":
-			"{
-				\"blurb\":\"New Silent Devotee\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Friendly Turn\"]
+			"triggerData":
+			{
+				"blurb":"New Silent Devotee",
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Friendly Turn"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"ChooseFromListSubeffect\",
-					\"maxCanChoose\":1,
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose":1,
+					"cardRestriction":
 					{
-						\"blurb\":\"New Silent Devotee\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Friendly\",\"Deck\",\"Is Character\"],
-						\"subtypesInclude\":[\"Cultist Follower\"]
+						"blurb":"New Silent Devotee",
+						"cardRestrictions":["Subtypes Include","Friendly","Deck","Is Character"],
+						"subtypesInclude":["Cultist Follower"]
 					}
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where to play new Silent Devotee\",
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+						"blurb":"where to play new Silent Devotee",
+						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
-					\"subeffType\":\"PlaySubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
 			]	
 		}
 	],

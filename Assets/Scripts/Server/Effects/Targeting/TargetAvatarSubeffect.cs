@@ -4,7 +4,7 @@
     {
         public override bool Resolve()
         {
-            Effect.AddTarget(Controller.Avatar);
+            Effect.AddTarget(Player.Avatar);
             return ServerEffect.ResolveNextSubeffect();
         }
     }

@@ -9,20 +9,13 @@ namespace KompasClient.Effects
         public ClientEffect ClientEffect { get; private set; }
 
         public override GameCard Source => ClientEffect.Source;
-        public override Effect Effect => ClientEffect;
-
-        public static ClientTrigger FromJson(string condition, string json, ClientEffect parent)
+        public override Effect Effect
         {
-            var toReturn = JsonUtility.FromJson<ClientTrigger>(json);
-
-            if (toReturn != null)
-            {
-                //set all values shared by all triggers
-                toReturn.triggerCondition = condition;
-                toReturn.ClientEffect = parent;
-            }
-
-            return toReturn;
+            get => ClientEffect;
+            protected set => ClientEffect = value as ClientEffect;
         }
+
+
+        public ClientTrigger(TriggerData triggerData, ClientEffect parent) : base(triggerData, parent) { }
     }
 }

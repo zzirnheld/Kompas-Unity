@@ -4,45 +4,45 @@
 	"effText":"When a Dragon kills me, you can annihilate me to discard an SX Dragon and gain X pips.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
-			"trigger":
-			"{
-				\"blurb\":\"*notices your dragon*\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\",\"Stackable Source Fits Restriction\"],
-					\"sourceRestriction\":{
-						\"cardRestrictions\":[\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Dragon\"]
+			"triggerData":
+			{
+				"blurb":"*notices your dragon*",
+				"triggerCondition":"Discard",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","Stackable Source Fits Restriction"],
+					"sourceRestriction":{
+						"cardRestrictions":["Subtypes Include"],
+						"subtypesInclude":["Dragon"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"AnnihilateSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"OWO SO DRAGONNNNNNNNN\",
-						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Dragon\"]
+						"blurb":"OWO SO DRAGONNNNNNNNN",
+						"cardRestrictions":["Friendly","Hand","Subtypes Include"],
+						"subtypesInclude":["Dragon"]
 					}
-				}",
-				"{
-					\"subeffType\":\"SetXByTargetCostSubeffect\",
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"DiscardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"AddPipsSubeffect\",
-					\"xMultiplier\":1
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetCostSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				}
 			]	
 		}
 	],

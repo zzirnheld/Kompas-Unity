@@ -4,50 +4,50 @@
 	"effText":"Discard your hand, including X Crazy Ideas. Pay X pips. Draw X.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"blurb\":\"Please\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"blurb":"Please",
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"SetXByGamestateSubeffect\",
-					\"whatToCount\":\"Cards Fitting Restriction\",
-					\"throughRestriction\":
+				{
+					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount":"Cards Fitting Restriction",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Crazy Idea\"]
+						"cardRestrictions":["Friendly","Hand","Subtypes Include"],
+						"subtypesInclude":["Crazy Idea"]
 					},
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"TargetAllSubeffect\",
-					\"cardRestriction\":
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
+						"cardRestrictions":["Friendly","Hand"]
 					}
-				}",
-				"{
-					\"subeffType\":\"DiscardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"DeleteTargetSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"LoopWhileHaveTargetsSubeffect\",
-					\"jumpTo\":2
-				}",
-				"{
-					\"subeffType\":\"PayPipsSubeffect\",
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"DrawXSubeffect\",
-					\"xMultiplier\":1
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"jumpTo":2
+				},
+				{
+					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				}
 			]	
 		}
 	],

@@ -4,40 +4,40 @@
 	"effText":"Unique.\nWhen you summon a Pulsar with more S than your Avatar, gain a pip.\nWhen you summon a Pulsar with less S than your Avatar, draw 1.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Controller Triggered\",\"Triggerer Fits Restriction\",\"This Card in Play\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Cost>Avatar\"],
-						\"subtypesInclude\":[\"Pulsar\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["Controller Triggered","Triggerer Fits Restriction","This Card in Play"],
+					"cardRestriction":{
+						"cardRestrictions":["Subtypes Include","Cost>Avatar"],
+						"subtypesInclude":["Pulsar"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"AddPipsSubeffect\",
-					\"xModifier\":1
-				}"
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier":1
+				}
 			]	
 		},
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Controller Triggered\",\"Triggerer Fits Restriction\",\"This Card in Play\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Cost<Avatar\"],
-						\"subtypesInclude\":[\"Pulsar\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["Controller Triggered","Triggerer Fits Restriction","This Card in Play"],
+					"cardRestriction":{
+						"cardRestrictions":["Subtypes Include","Cost<Avatar"],
+						"subtypesInclude":["Pulsar"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"DrawSubeffect\"
-				}"
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
 			]	
 		}
 	],

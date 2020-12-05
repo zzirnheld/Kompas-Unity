@@ -4,27 +4,27 @@
 	"effText":"Revenant: When I die, annihilate me. During your turn, you can pip revive me for half cost.\nWhen I'm summoned, discard a Revenant and search your deck for a Revenant.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
-			"trigger":
-			"{
-				\"blurb\":\"Annihilate\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\",\"From Field\"]
+			"triggerData":
+			{
+				"blurb":"Annihilate",
+				"triggerCondition":"Discard",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","From Field"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"AnnihilateSubeffect\"
-				}"
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				}
 			]
 		},
 		{
 			"blurb":"Revive",
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Location",
 					"Controller Activates",
 					"Not Negated"
@@ -32,58 +32,58 @@
 				"location":2
 			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where to revive Unlost\",
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+						"blurb":"where to revive Unlost",
+						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
-					\"subeffType\":\"PayPipsTargetCostSubeffect\",
-					\"xDivisor\":2,
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"PlaySubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"xDivisor":2,
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
 			]
 		},
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":{
-						\"blurb\":\"for Unwanted to discard\",
-						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Revenant\"]
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"blurb":"for Unwanted to discard",
+						"cardRestrictions":["Friendly","Hand","Subtypes Include"],
+						"subtypesInclude":["Revenant"]
 					}
-				}",
-				"{
-					\"subeffType\":\"DiscardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"DeckTargetSubeffect\",
-					\"cardRestriction\":{
-						\"blurb\":\"for Unwanted to search\",
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Revenant\"]
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"blurb":"for Unwanted to search",
+						"cardRestrictions":["Friendly","Deck","Subtypes Include"],
+						"subtypesInclude":["Revenant"]
 					}
-				}",
-				"{
-					\"subeffType\":\"RehandSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				}
 			]	
 		}
 	],

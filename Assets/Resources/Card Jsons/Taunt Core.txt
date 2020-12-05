@@ -4,73 +4,73 @@
 	"effText":"While equipped, activate this character. The first time each stack an adjacent character moves, move them to any space adjacent to me. When they die (while I'm equipped), rehand me.",
 	"effects":[
 		{
-			"triggerCondition":"Augment Attached",
-			"trigger":
-			"{
-				\"blurb\":\"Activate Golem\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"blurb":"Activate Golem",
+				"triggerCondition":"Augment Attached",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetAugmentedCardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"TemporaryActivationSubeffect\",
-					\"endCondition\":\"Augment Detached\",
-					\"triggerRestriction\":{
-						\"triggerRestrictions\":[\"This Card Triggered\"]
+				{
+					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TemporaryActivationSubeffect, Assembly-CSharp",
+					"endCondition":"Augment Detached",
+					"triggerRestriction":{
+						"triggerRestrictions":["This Card Triggered"]
 					}
-				}"
+				}
 			]
 		},
 		{
-			"triggerCondition":"Move",
-			"trigger":
-			"{
-				\"blurb\":\"Taunt\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"Triggerer Fits Restriction\",\"Max Per Stack\"],
-					\"cardRestriction\":
+			"triggerData":
+			{
+				"blurb":"Taunt",
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Max Per Stack"],
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Adjacent\"]
+						"cardRestrictions":["Adjacent"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where for Taunt Core to move its target\",
-						\"spaceRestrictions\":[\"Empty\",\"Adjacent to Source\",\"Can Move Target to This Space\"]
+						"blurb":"where for Taunt Core to move its target",
+						"spaceRestrictions":["Empty","Adjacent to Source","Can Move Target to This Space"]
 					}
-				}",
-				"{
-					\"subeffType\":\"MoveSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
 			]	
 		},
 		{
-			"triggerCondition":"Discard",
-			"trigger":
-			"{
-				\"blurb\":\"Core Recovery\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Augmented Card Triggered\"]
+			"triggerData":
+			{
+				"blurb":"Core Recovery",
+				"triggerCondition":"Discard",
+				"triggerRestriction":{
+					"triggerRestrictions":["Augmented Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"RehandSubeffect\"
-				}"
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

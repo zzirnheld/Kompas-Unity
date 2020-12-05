@@ -1,5 +1,7 @@
 ﻿using KompasCore.Cards;
+using KompasCore.GameCore;
 using KompasServer.Effects;
+using System;
 using System.Linq;
 using UnityEngine;
 
@@ -8,7 +10,7 @@ namespace KompasCore.Effects
     [System.Serializable]
     public class TriggerRestriction
     {
-        public Subeffect Subeffect { get; private set; }
+        public Game Game { get; private set; }
 
         public const string ThisCardTriggered = "This Card Triggered"; //0,
 
@@ -19,6 +21,7 @@ namespace KompasCore.Effects
         public const string ThisCardFitsRestriction = "This Card Fits Restriction"; //100,
         public const string TriggererFitsRestriction = "Triggerer Fits Restriction"; //101,
         public const string TriggerersAugmentedCardFitsRestriction = "Triggerer's Augmented Card Fits Restriction";
+
         public const string AdjacentToRestriction = "Adjacent to Restriction";
         public const string CoordsFitRestriction = "Coords Fit Restriction"; //120,
         public const string XFitsRestriction = "X Fits Restriction"; //130,
@@ -52,10 +55,10 @@ namespace KompasCore.Effects
         public static readonly string[] ReevalationRestrictions = { MaxPerTurn, MaxPerRound, MaxPerStack };
 
         public string[] triggerRestrictions = new string[0];
-        public CardRestriction cardRestriction = new CardRestriction();
-        public XRestriction xRestriction = new XRestriction();
-        public SpaceRestriction spaceRestriction = new SpaceRestriction();
-        public CardRestriction sourceRestriction = new CardRestriction();
+        public CardRestriction cardRestriction;
+        public XRestriction xRestriction;
+        public SpaceRestriction spaceRestriction;
+        public CardRestriction sourceRestriction;
         public int maxTimesPerTurn = 1;
         public int maxPerRound = 1;
         public int maxPerStack = 1;
@@ -63,16 +66,25 @@ namespace KompasCore.Effects
 
         public GameCard ThisCard { get; private set; }
 
-        public ServerTrigger ThisTrigger { get; private set; }
+        public Trigger ThisTrigger { get; private set; }
 
-        public void Initialize(ServerSubeffect subeff, GameCard thisCard, ServerTrigger thisTrigger)
+        public void Initialize(Game game, GameCard thisCard, Trigger thisTrigger, Effect effect)
         {
-            Subeffect = subeff;
-            cardRestriction.Initialize(subeff);
-            xRestriction.Initialize(subeff);
-            spaceRestriction.Initialize(subeff);
+            Game = game;
+
+            cardRestriction = cardRestriction ?? new CardRestriction();
+            sourceRestriction = sourceRestriction ?? new CardRestriction();
+            xRestriction = xRestriction ?? new XRestriction();
+            spaceRestriction = spaceRestriction ?? new SpaceRestriction();
+
+            cardRestriction.Initialize(thisCard, effect.Controller, effect);
+            xRestriction.Initialize(thisCard);
+            spaceRestriction.Initialize(thisCard, effect.Controller, effect);
+
             this.ThisCard = thisCard;
             this.ThisTrigger = thisTrigger;
+
+            Debug.Log($"Initializing trigger for {thisCard?.CardName}. game is null? {game}");
         }
 
         private bool RestrictionValid(string restriction, ActivationContext context)
@@ -102,23 +114,35 @@ namespace KompasCore.Effects
                     return context.Card.DistanceTo(context.Space.Value) == distance;
 
                 //gamestate
-                case FriendlyTurn:  return Subeffect.Game.TurnPlayer == ThisCard.Controller;
-                case EnemyTurn:     return Subeffect.Game.TurnPlayer != ThisCard.Controller;
+                case FriendlyTurn:  return Game.TurnPlayer == ThisCard.Controller;
+                case EnemyTurn:     return Game.TurnPlayer != ThisCard.Controller;
                 case FromField:     return context.Card.Location == CardLocation.Field;
                 case FromDeck:      return context.Card.Location == CardLocation.Deck;
                 case NotFromEffect: return context.Stackable is Effect;
 
                 //max
-                case MaxPerRound: return ThisTrigger.serverEffect.TimesUsedThisRound < maxPerRound;
-                case MaxPerTurn:  return ThisTrigger.serverEffect.TimesUsedThisTurn < maxTimesPerTurn;
-                case MaxPerStack: return ThisTrigger.serverEffect.TimesUsedThisStack < maxPerStack;
+                case MaxPerRound: return ThisTrigger.Effect.TimesUsedThisRound < maxPerRound;
+                case MaxPerTurn:  return ThisTrigger.Effect.TimesUsedThisTurn < maxTimesPerTurn;
+                case MaxPerStack: return ThisTrigger.Effect.TimesUsedThisStack < maxPerStack;
 
                 //misc
                 default: throw new System.ArgumentException($"Invalid trigger restriction {restriction}");
             }
         }
 
-        public bool Evaluate(ActivationContext context) => triggerRestrictions.All(r => RestrictionValid(r, context));
+        public bool Evaluate(ActivationContext context)
+        {
+            try
+            {
+                return triggerRestrictions.All(r => RestrictionValid(r, context));
+            }
+            catch (NullReferenceException nullref)
+            {
+                Debug.LogError($"Trigger restriction of {ThisCard?.CardName} threw a null ref.\n{nullref.Message}\n{nullref.StackTrace}." +
+                    $"game was {Game}, this card was {ThisCard}");
+                return false;
+            }
+        }
 
         /// <summary>
         /// Reevaluates the trigger to check that any restrictions that could change between it being triggered

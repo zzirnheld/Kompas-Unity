@@ -4,53 +4,53 @@
 	"effText":"Recoverable.\nAt any time, you can set X to the number of uses of this ability this turn. Pay X pips and attach me to an adjacent character. (The first time this ability is used, it costs 1 pip.)",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
-			"trigger":
-			"{
-				\"blurb\":\"Sportyball Recovery\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"Augmented Card Triggered\"]
+			"triggerData":
+			{
+				"blurb":"Sportyball Recovery",
+				"triggerCondition":"Discard",
+				"triggerRestriction":{
+					"triggerRestrictions":["Augmented Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"RehandSubeffect\"
-				}"
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				}
 			]
 		},
 		{
 			"blurb":"Pass",
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Default"
 				]
 			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"SetXByGamestateSubeffect\",
-					\"whatToCount\":\"Effect Uses This Turn\",
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"PayPipsSubeffect\",
-					\"xMultiplier\":1,
-					\"xModifier\":0
-				}",
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Board\",\"Is Character\",\"Adjacent\"]
+				{
+					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount":"Effect Uses This Turn",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
+					"xMultiplier":1,
+					"xModifier":0
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"cardRestrictions":["Board","Is Character","Adjacent"]
 					}
-				}",
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"AttachSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

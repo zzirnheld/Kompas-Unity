@@ -4,34 +4,34 @@
 	"effText":"When I move 3 spaces, discard a Crazy Idea, and give me +3W.",
 	"effects":[
 		{
-			"triggerCondition":"Move",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\",\"Distance from Triggerer to Space == Constant\"],
-					\"distance\":3
+			"triggerData":
+			{
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","Distance from Triggerer to Space == Constant"],
+					"distance":3
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"An oviparous mamal? ORRY THE OVIPAROUS MAMMAL?\",
-						\"cardRestrictions\":[\"Friendly\",\"Hand\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Crazy Idea\"]
+						"blurb":"An oviparous mamal? ORRY THE OVIPAROUS MAMMAL?",
+						"cardRestrictions":["Friendly","Hand","Subtypes Include"],
+						"subtypesInclude":["Crazy Idea"]
 					}
-				}",
-				"{
-					\"subeffType\":\"DiscardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"wChange\":3
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"wChange":3
+				}
 			]	
 		}
 	],

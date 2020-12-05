@@ -4,23 +4,23 @@
 	"effText":"When turns start, give adjacent characters -1W.",
 	"effects":[
 		{
-			"triggerCondition":"Turn Start",
-			"trigger":
-			"{
-				\"blurb\":\"Death by Grief\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\"]
+			"triggerData":
+			{
+				"blurb":"Death by Grief",
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"ChangeAllNESWSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.ChangeAllNESWSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Adjacent\"]
+						"cardRestrictions":["Is Character","Board","Adjacent"]
 					},
-					\"wMod\":-1
-				}"
+					"wMod":-1
+				}
 			]
 		}
 	],

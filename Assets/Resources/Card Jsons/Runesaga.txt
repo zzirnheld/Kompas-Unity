@@ -4,54 +4,54 @@
 	"effText":"Must be cast normally. Give a Summoned Runar +25ESW. Handcast any number of Runes.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Runar for Runesaga to give +25ESW\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Summoned\",\"Board\"],
-						\"subtypesInclude\":[\"Runar\"]
+						"blurb":"Runar for Runesaga to give +25ESW",
+						"cardRestrictions":["Subtypes Include","Is Character","Summoned","Board"],
+						"subtypesInclude":["Runar"]
 					}
-				}",
-				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"eChange\":25,
-					\"sChange\":25,
-					\"wChange\":25
-				}",
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"eChange":25,
+					"sChange":25,
+					"wChange":25
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Rune for Runesaga to cast\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Spell\",\"Friendly\",\"Hand\",\"Not Already Target\"],
-						\"subtypesInclude\":[\"Rune\"]
+						"blurb":"Rune for Runesaga to cast",
+						"cardRestrictions":["Subtypes Include","Is Spell","Friendly","Hand","Not Already Target"],
+						"subtypesInclude":["Rune"]
 					}
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where for Runesaga to cast its target Rune\",
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+						"blurb":"where for Runesaga to cast its target Rune",
+						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
-					\"subeffType\":\"PlaySubeffect\"
-				}",
-				"{
-					\"subeffType\":\"LoopSubeffect\",
-					\"canDecline\":true,
-					\"jumpTo\":2
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
+					"canDecline":true,
+					"jumpTo":2
+				}
 			]
 		}
 	],

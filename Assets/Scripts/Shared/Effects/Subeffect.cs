@@ -39,7 +39,7 @@ namespace KompasCore.Effects
         /// <summary>
         /// The index of player. If 0, this, if 1, enemy. 
         /// </summary>
-        public int playerIndex = 0;
+        public int playerIndex = -1;
 
         /// <summary>
         /// If the effect uses X, this is the multiplier to X. Default: 0
@@ -63,7 +63,7 @@ namespace KompasCore.Effects
 
         public GameCard Target => Effect.GetTarget(targetIndex);
         public (int x, int y) Space => Effect.GetSpace(spaceIndex);
-        public Player Player => Game.Players[(Controller.index + playerIndex) % Game.Players.Length];
+        public Player Player => Effect.GetPlayer(playerIndex);
 
         public bool RemoveTarget()
         {

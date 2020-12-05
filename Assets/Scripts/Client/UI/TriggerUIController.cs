@@ -34,7 +34,7 @@ namespace KompasClient.UI
             this.triggerOrderUI = triggerOrderUI;
             image.sprite = sprite;
             orderText.text = "";
-            blurbText.text = trigger.blurb;
+            blurbText.text = trigger.Blurb;
             Trigger = trigger;
         }
 

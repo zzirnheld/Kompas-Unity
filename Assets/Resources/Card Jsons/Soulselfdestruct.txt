@@ -4,40 +4,40 @@
 	"effText":"Kill a friendly SX Ethereal. Mill X Revenants. (Discard them from your deck.)",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":{
-						\"blurb\":\"Ethereal for Soulselfdestruct to kill\",
-						\"cardRestrictions\":[\"Friendly\",\"Board\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Ethereal\"]
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"blurb":"Ethereal for Soulselfdestruct to kill",
+						"cardRestrictions":["Friendly","Board","Subtypes Include"],
+						"subtypesInclude":["Ethereal"]
 					}
-				}",
-				"{
-					\"subeffType\":\"DiscardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"DeckTargetSubeffect\",
-					\"cardRestriction\":{
-						\"blurb\":\"card for Salvage Soul to discard\",
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Revenant\"]
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"blurb":"card for Salvage Soul to discard",
+						"cardRestrictions":["Friendly","Deck","Subtypes Include"],
+						"subtypesInclude":["Revenant"]
 					}
-				}",
-				"{
-					\"subeffType\":\"DiscardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"XTimesSubeffect\",
-					\"jumpTo\":3
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",
+					"jumpTo":3
+				}
 			]	
 		}
 	],

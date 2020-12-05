@@ -5,38 +5,38 @@
 	"effects":[
 		{
 			"blurb":"Go to Bonky Jail",
-			"triggerCondition":"Activate",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Activate",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"first character for Metal Golem to set N to 0\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\"]
+						"blurb":"first character for Metal Golem to set N to 0",
+						"cardRestrictions":["Is Character","Board"]
 					}
-				}",
-				"{
-					\"subeffType\":\"SetNESWSubeffect\",
-					\"nVal\":0
-				}",
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.SetNESWSubeffect, Assembly-CSharp",
+					"nVal":0
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"second character for Metal Golem to set N to 0\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Not Already Target\"]
+						"blurb":"second character for Metal Golem to set N to 0",
+						"cardRestrictions":["Is Character","Board","Not Already Target"]
 					}
-				}",
-				"{
-					\"subeffType\":\"SetNESWSubeffect\",
-					\"nVal\":0
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.SetNESWSubeffect, Assembly-CSharp",
+					"nVal":0
+				}
 
 			]
 		}

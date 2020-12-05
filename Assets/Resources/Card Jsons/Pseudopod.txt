@@ -4,43 +4,43 @@
 	"effText":"Choose a friendly Shaper. Move an enemy character to be adjacent to the chosen Shaper.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Friendly Shaper to move the enemy adjacent to\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Board\"],
-						\"subtypesInclude\":[\"Shaper\"]
+						"blurb":"Friendly Shaper to move the enemy adjacent to",
+						"cardRestrictions":["Subtypes Include","Is Character","Friendly","Board"],
+						"subtypesInclude":["Shaper"]
 					}
-				}",
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"enemy character to move\",
-						\"cardRestrictions\":[\"Is Character\",\"Enemy\",\"Board\"]
+						"blurb":"enemy character to move",
+						"cardRestrictions":["Is Character","Enemy","Board"]
 					}
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where to move the enemy character\",
-						\"spaceRestrictions\":[\"Adjacent to Target\"]
+						"blurb":"where to move the enemy character",
+						"spaceRestrictions":["Adjacent to Target"]
 					},
-					\"targetIndex\":-2
-				}",
-				"{
-					\"subeffType\":\"MoveSubeffect\"
-				}"
+					"targetIndex":-2
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

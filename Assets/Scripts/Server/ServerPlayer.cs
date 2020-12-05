@@ -32,7 +32,7 @@ namespace KompasServer.GameCore
             set
             {
                 base.Avatar = value;
-                ServerNotifier.SetFriendlyAvatar(value.CardName, value.ID);
+                ServerNotifier.SetFriendlyAvatar(value.BaseJson, value.ID);
             }
         }
 

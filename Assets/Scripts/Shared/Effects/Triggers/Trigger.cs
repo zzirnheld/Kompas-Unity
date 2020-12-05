@@ -1,4 +1,5 @@
 ﻿using KompasCore.Cards;
+using KompasCore.GameCore;
 
 namespace KompasCore.Effects
 {
@@ -48,16 +49,24 @@ namespace KompasCore.Effects
             TurnStart,
             NESWChange, Activate, Deactivate, NChange, EChange, SChange, WChange, CChange, AChange,
             Defends, Attacks, TakeCombatDamage, DealCombatDamage, Battles, BattleEnds,
-            EachDraw, DrawX, Arrive, Play, Discard, Rehand, Reshuffle, Topdeck, Bottomdeck, ToDeck, Move, Annhilate, Remove, AugmentAttached, AugmentDetached
+            EachDraw, DrawX, Arrive, Play, Discard, Rehand, Reshuffle, Topdeck, Bottomdeck, ToDeck, Move, Annhilate, Remove, 
+            AugmentAttached, AugmentDetached, Augmented
         };
 
-        public string triggerCondition;
-        public TriggerRestriction triggerRestriction = new TriggerRestriction();
-
-        public bool optional = false;
-        public string blurb = "Trigger";
-
+        public TriggerData TriggerData { get; }
         public abstract GameCard Source { get; }
-        public abstract Effect Effect { get; }
+        public abstract Effect Effect { get; protected set; }
+
+        public string TriggerCondition => TriggerData.triggerCondition;
+        public TriggerRestriction TriggerRestriction => TriggerData.triggerRestriction;
+        public bool Optional => TriggerData.optional;
+        public string Blurb => TriggerData.blurb;
+
+        public Trigger(TriggerData triggerData, Effect effect)
+        {
+            TriggerData = triggerData;
+            Effect = effect;
+            triggerData.triggerRestriction.Initialize(effect.Game, Source, this, effect);
+        }
     }
 }

@@ -1,68 +1,58 @@
 {
 	"cardType":67,
 	"cardName":"Yellow Linewalker",
-	"effText":"Linewalk.\nWhen I move X spaces, hand-summon an S <= X Linewalker.",
+	"effText":"Linewalk.\nWhen I move X spaces, give both players X pips.",
 	"effects":[
 		{
 			"blurb":"Linewalk",
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Friendly Turn",
 					"Default"
 				]
 			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"SpendMovementSubeffect\",
-					\"xModifier\":1
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SpendRemainingMovementSubeffect, Assembly-CSharp",
+					"xModifier":1
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"to Linewalk to\",
-						\"spaceRestrictions\":[\"Empty\",\"On Target's Diagonal\"]
+						"blurb":"to Linewalk to",
+						"spaceRestrictions":["Empty","On Target's Diagonal"]
 					}
-				}",
-				"{
-					\"subeffType\":\"MoveSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
 			]
 		},
 		{
 			"blurb":"Yellow Linewalked",
-			"triggerCondition":"Move",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
-					{
-						\"blurb\":\"for Yellow to hand-summon\",
-						\"cardRestrictions\":[\"Is Character\",\"Friendly\",\"Hand\",\"S<=X\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Linewalker\"]
-					},
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
-					{
-						\"blurb\":\"where Yellow to hand-summon\",
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
-					}
-				}",
-				"{
-					\"subeffType\":\"PlaySubeffect\"
-				}"
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				}
 			]	
 		}
 	],

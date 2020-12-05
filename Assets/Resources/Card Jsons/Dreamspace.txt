@@ -4,36 +4,36 @@
 	"effText":"When I'm summoned, deck-summon a copy of me.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"ChooseFromListSubeffect\",
-					\"cardRestriction\":{
-						\"blurb\":\"copy of Dreamspace to decksummon\",
-						\"cardRestrictions\":[\"Friendly\",\"Same Name as Target\",\"Deck\"]
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"blurb":"copy of Dreamspace to decksummon",
+						"cardRestrictions":["Friendly","Same Name as Target","Deck"]
 					},
-					\"maxCanChoose\":1
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+					"maxCanChoose":1
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where for Dreamspace to decksummon a copy of itself\",
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+						"blurb":"where for Dreamspace to decksummon a copy of itself",
+						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
-					\"subeffType\":\"PlaySubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
 			]	
 		}
 	],

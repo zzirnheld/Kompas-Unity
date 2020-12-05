@@ -4,42 +4,42 @@
 	"effText":"Set X to the number of friendly Supplicants. Give all friendly Supplicants +XE. Give all friendly Negated Supplicants +XW.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"SetXByGamestateSubeffect\",
-					\"whatToCount\":\"Cards Fitting Restriction\",
-					\"throughRestriction\":
+				{
+					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount":"Cards Fitting Restriction",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Supplicant\"]
+						"cardRestrictions":["Is Character","Board","Friendly","Subtypes Include"],
+						"subtypesInclude":["Supplicant"]
 					},
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"ChangeAllNESWSubeffect\",
-					\"cardRestriction\":
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeAllNESWSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Summoned\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Supplicant\"]
+						"cardRestrictions":["Is Character","Board","Summoned","Subtypes Include"],
+						"subtypesInclude":["Supplicant"]
 					},
-					\"eMult\":1
-				}",
-				"{
-					\"subeffType\":\"ChangeAllNESWSubeffect\",
-					\"cardRestriction\":
+					"eMult":1
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeAllNESWSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Negated\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Supplicant\"]
+						"cardRestrictions":["Is Character","Board","Friendly","Negated","Subtypes Include"],
+						"subtypesInclude":["Supplicant"]
 					},
-					\"wMult\":3
-				}"
+					"wMult":3
+				}
 			]
 		}
 	],

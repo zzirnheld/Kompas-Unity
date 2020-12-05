@@ -13,6 +13,9 @@ namespace KompasClient.UI
         public ClientUIController clientUICtrl;
         private ClientGame ClientGame => clientUICtrl.clientGame;
 
+        //search buttons
+        public GameObject endButton;
+
         //card search
         public GameObject cardSearchView;
         public Image cardSearchImage;
@@ -81,6 +84,8 @@ namespace KompasClient.UI
             var toShow = CurrSearchData.Value.toSearch[index];
             cardSearchImage.sprite = toShow.detailedSprite;
             alreadySelectedText.SetActive(CurrSearchData.Value.searched.Contains(toShow));
+
+            endButton.SetActive(CurrSearchData.Value.listRestriction.HaveEnough(CurrSearchData.Value.searched.Count));
 
             nSearchText.text = $"N\n{toShow.N}";
             eSearchText.text = $"E\n{toShow.E}";

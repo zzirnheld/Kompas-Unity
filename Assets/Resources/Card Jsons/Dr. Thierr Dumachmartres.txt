@@ -5,33 +5,33 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Max Times Per Round",
 					"Default"
 				]
 			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Dr. Thierr Dumachmartres' evil scheme for today\",
-						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
+						"blurb":"Dr. Thierr Dumachmartres' evil scheme for today",
+						"cardRestrictions":["Friendly","Hand"]
 					}
-				}",
-				"{
-					\"subeffType\":\"DiscardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"DrawSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],
 	"n":1,
 	"e":7,
-	"s":7,
-	"w":7,
+	"s":4,
+	"w":0,
 	"PlayRestriction":{
 		"normalRestrictions":["Default Normal Restrictions","Unique"],
 		"effectRestrictions":["Default Effect Restrictions","Unique"]

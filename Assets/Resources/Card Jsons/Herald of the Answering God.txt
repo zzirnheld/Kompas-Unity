@@ -4,25 +4,25 @@
 	"effText":"When turns start, NegateSubeffect a turn player’s character.",
 	"effects":[
 		{
-			"triggerCondition":"Turn Start",
-			"trigger":
-			"{
-				\"blurb\":\"Answer Prayer\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\"]
+			"triggerData":
+			{
+				"blurb":"Answer Prayer",
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"blurb\":\"card to answer prayers\",
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Board\",\"Is Character\",\"Turn Player Controls\"]
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"blurb":"card to answer prayers",
+					"cardRestriction":{
+						"cardRestrictions":["Board","Is Character","Turn Player Controls"]
 					}
-				}",
-				"{
-					\"subeffType\":\"NegateSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.NegateSubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

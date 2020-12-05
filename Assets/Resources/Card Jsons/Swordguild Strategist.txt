@@ -5,41 +5,41 @@
 	"effects":[
 		{
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"Default"
 				]
 			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Warrior for Strategist to sacrifice\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Board\"],
-						\"subtypesInclude\":[\"Warrior\"]
+						"blurb":"Warrior for Strategist to sacrifice",
+						"cardRestrictions":["Subtypes Include","Is Character","Board"],
+						"subtypesInclude":["Warrior"]
 					}
-				}",
-				"{
-					\"subeffType\":\"SetXByTargetCostSubeffect\",
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"DiscardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetCostSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Warrior for Strategist to kill\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"S<=X\"]
+						"blurb":"Warrior for Strategist to kill",
+						"cardRestrictions":["Is Character","Board","S<=X"]
 					},
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"DiscardSubeffect\"
-				}"
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

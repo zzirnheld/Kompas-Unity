@@ -4,88 +4,88 @@
 	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nChoose a character in front of me. Delay 2. If they’re still in front of me, kill them. If not, annihilate me. ",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
-			"trigger":"{
-				\"blurb\":\"Ificate\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\",\"Triggerer Fits Restriction\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Hand\"]
+			"triggerData":{
+				"blurb":"Ificate",
+				"triggerCondition":"Discard",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Hand"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"Crazy Idea for No I Expect You To to Ificate\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Discard\",\"Friendly\",\"Distinct from Source\"],
-						\"subtypesInclude\":[\"Crazy Idea\"]
+						"blurb":"Crazy Idea for No I Expect You To to Ificate",
+						"cardRestrictions":["Subtypes Include","Discard","Friendly","Distinct from Source"],
+						"subtypesInclude":["Crazy Idea"]
 					}
-				}",
-				"{
-					\"subeffType\":\"PayPipsSubeffect\",
-					\"xMultiplier\":0,
-					\"xModifier\":1
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
+					"xMultiplier":0,
+					"xModifier":1
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where No I Expect You To to play targeted Crazy Idea\",
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+						"blurb":"where No I Expect You To to play targeted Crazy Idea",
+						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
-					\"subeffType\":\"PlaySubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
 			]
 		},
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"character for No I Expect You To maybe kill\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"In Front of Source\"]
+						"blurb":"character for No I Expect You To maybe kill",
+						"cardRestrictions":["Is Character","Board","In Front of Source"]
 					}
-				}",
-				"{
-					\"subeffType\":\"DelaySubeffect\",
-					\"numTimesToDelay\":1,
-					\"indexToResume\":2,
-					\"triggerCondition\":\"Turn Start\"
-				}",
-				"{
-					\"subeffType\":\"ConditionalJumpSubeffect\",
-					\"condition\":\"Target Fits Restriction\",
-					\"jumpIndex\":6,
-					\"cardRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay":1,
+					"indexToResume":2,
+					"triggerCondition":"Turn Start"
+				},
+				{
+					"$type":"KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"condition":"Target Fits Restriction",
+					"jumpIndex":6,
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"In Front of Source\"]
+						"cardRestrictions":["Is Character","Board","In Front of Source"]
 					}
-				}",
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"AnnihilateSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"EndResolutionSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"DiscardSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

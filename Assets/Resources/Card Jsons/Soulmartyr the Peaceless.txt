@@ -4,27 +4,27 @@
 	"effText":"Revenant: When I die, annihilate me. During your turn, you can pip revive me for half cost.\nWhen a card is annihilated, give friendly Ethereals +1W, and if it's an enemy turn, gain a pip.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
-			"trigger":
-			"{
-				\"blurb\":\"Annihilate\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\",\"From Field\"]
+			"triggerData":
+			{
+				"blurb":"Annihilate",
+				"triggerCondition":"Discard",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","From Field"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"AnnihilateSubeffect\"
-				}"
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				}
 			]
 		},
 		{
 			"blurb":"Revive",
 			"activationRestriction":{
-				"activationRestrictions":[
+				"activationRestrictionArray":[
 					"Location",
 					"Controller Activates",
 					"Not Negated"
@@ -32,52 +32,53 @@
 				"location":2
 			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where to revive Unlost\",
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+						"blurb":"where to revive Unlost",
+						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
-					\"subeffType\":\"PayPipsTargetCostSubeffect\",
-					\"xDivisor\":2
-				}",
-				"{
-					\"subeffType\":\"PlaySubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"xDivisor":2,
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
 			]
 		},
 		{
-			"triggerCondition":"Annihilate",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\"]
+			"triggerData":
+			{
+				"triggerCondition":"Annihilate",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"ChangeAllNESWSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.ChangeAllNESWSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Board\",\"Friendly\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Ethereal\"]
+						"cardRestrictions":["Is Character","Board","Friendly","Subtypes Include"],
+						"subtypesInclude":["Ethereal"]
 					},
-					\"wMod\":1
-				}",
-				"{
-					\"subeffType\":\"ConditionalEndSubeffect\",
-					\"condition\":\"Must be Enemy Turn\"
-				}",
-				"{
-					\"subeffType\":\"AddPipsSubeffect\",
-					\"xModifier\":1
-				}"
+					"wMod":1
+				},
+				{
+					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition":"Must be Enemy Turn"
+				},
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier":1
+				}
 			]	
 		}
 	],

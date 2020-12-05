@@ -9,8 +9,6 @@ namespace KompasServer.Effects
     [System.Serializable]
     public abstract class ServerSubeffect : Subeffect
     {
-        public const string ServerSubeffAssemblyPrefix = "KompasServer.Effects.";
-
         public override Player Controller => EffectController;
         public override Effect Effect => ServerEffect;
         public override Game Game => ServerGame;
@@ -20,27 +18,7 @@ namespace KompasServer.Effects
         public ServerPlayer EffectController => ServerEffect.ServerController;
         public GameCard ThisCard => ServerEffect.Source;
 
-        public ServerPlayer ServerPlayer 
-            => ServerGame.ServerPlayers[(Controller.index + playerIndex) % ServerGame.ServerPlayers.Length];
-
-        private static ServerSubeffect FromJson(string subeffType, string subeffJson)
-        {
-            var type = System.Type.GetType(ServerSubeffAssemblyPrefix + subeffType);
-            return JsonUtility.FromJson(subeffJson, type) as ServerSubeffect;
-        }
-
-        public static ServerSubeffect FromJson(string subeffJson, ServerEffect parent, int subeffIndex)
-        {
-            Debug.Log($"Trying to load subeffect parent from {subeffJson}");
-
-            var subeff = JsonUtility.FromJson<Subeffect>(subeffJson);
-
-            Debug.Log($"Creating subeffect from json of type {subeff.subeffType} json {subeffJson}");
-
-            var toReturn = FromJson(subeff.subeffType, subeffJson);
-            toReturn?.Initialize(parent, subeffIndex);
-            return toReturn;
-        }
+        public ServerPlayer ServerPlayer => Player as ServerPlayer;
 
         /// <summary>
         /// Server Subeffect resolve method. Does whatever this type of subeffect does,

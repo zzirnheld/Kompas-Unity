@@ -4,65 +4,67 @@
 	"effText":"When your Avatar gains S, discard 1, then draw 1.\nWhen your Avatar loses S, give both players a pip.",
 	"effects":[
 		{
-			"triggerCondition":"S Change",
-			"trigger":
-			"{
-				\"blurb\":\"Fortune-card\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\",\"Triggerer Fits Restriction\"],
-					\"xRestriction\":{
-						\"xRestrictions\":[\">0\"]
+			"triggerData":
+			{
+				"blurb":"Fortune-card",
+				"triggerCondition":"S Change",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction"],
+					"xRestriction":{
+						"xRestrictions":[">0"]
 					},
-					\"cardRestriction\":
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Board\",\"Avatar\",\"Friendly\"]
+						"cardRestrictions":["Board","Avatar","Friendly"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":{
-						\"blurb\":\"how fortunate, we have to discard something\",
-						\"cardRestrictions\":[\"Friendly\",\"Hand\"]
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"blurb":"how fortunate, we have to discard something",
+						"cardRestrictions":["Friendly","Hand"]
 					}
-				}",
-				"{
-					\"subeffType\":\"DiscardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"DrawSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
 			]	
 		},
 		{
-			"triggerCondition":"S Change",
-			"trigger":
-			"{
-				\"blurb\":\"Fortune-pip\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\",\"Triggerer Fits Restriction\"],
-					\"xRestriction\":{
-						\"xRestrictions\":[\"<0\"]
+			"triggerData":
+			{
+				"blurb":"Fortune-pip",
+				"triggerCondition":"S Change",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction"],
+					"xRestriction":{
+						"xRestrictions":["<0"]
 					},
-					\"cardRestriction\":
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Board\",\"Avatar\",\"Friendly\"]
+						"cardRestrictions":["Board","Avatar","Friendly"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"AddPipsSubeffect\",
-					\"xMultiplier\":0,
-					\"xModifier\":1
-				}",
-				"{
-					\"subeffType\":\"AddPipsSubeffect\",
-					\"xMultiplier\":0,
-					\"xModifier\":1,
-					\"playerIndex\":1
-				}"
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xMultiplier":0,
+					"xModifier":1
+				},
+				{
+					"$type":"KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xMultiplier":0,
+					"xModifier":1
+				}
 			]	
 		}
 	],

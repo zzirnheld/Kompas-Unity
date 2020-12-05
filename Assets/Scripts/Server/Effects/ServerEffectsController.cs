@@ -26,6 +26,7 @@ namespace KompasServer.Effects
         public ServerGame ServerGame;
 
         private readonly ServerEffectStack stack = new ServerEffectStack();
+        public IEnumerable<IServerStackable> StackEntries => stack.StackEntries;
 
         //queue of triggers triggered throughout the resolution of the effect, to be ordered after the effect resolves
         private Queue<TriggersTriggered> triggeredTriggers = new Queue<TriggersTriggered>();
@@ -97,8 +98,8 @@ namespace KompasServer.Effects
         /// </summary>
         public void FinishStackEntryResolution()
         {
-            CurrStackEntry = null;
             ServerGame.ServerPlayers.First().ServerNotifier.RemoveStackEntry(currStackIndex);
+            CurrStackEntry = null;
             CheckForResponse();
         }
 
@@ -211,7 +212,7 @@ namespace KompasServer.Effects
             {
                 var players = ServerGame.ServerPlayers
                     .Where(player => !player.passedPriority &&
-                        ServerGame.Cards.Any(c => c.Effects.Any(e => e.ActivationRestriction.Evaluate(player))))
+                        ServerGame.Cards.Any(c => c.Effects.Any(e => e.CanBeActivatedBy(player))))
                     .ToArray(); //call toArray so that we don't create the collection twice.
                 //remove the .ToArray() later if it turns out Linq is smart enough to only execute once, but I'm pretty sure it can't know.
 
@@ -283,7 +284,7 @@ namespace KompasServer.Effects
                 if (!validTriggers.Any()) return;
                 var triggers = new TriggersTriggered(triggers: validTriggers, context: context);
                 Debug.Log($"Triggers triggered for condition {condition}, context {context}: " +
-                    $"{string.Join(", ", triggers.triggers.Select(t => t.blurb))}");
+                    $"{string.Join(", ", triggers.triggers.Select(t => t.Blurb))}");
                 lock (triggerStackLock)
                 {
                     triggeredTriggers.Enqueue(triggers);

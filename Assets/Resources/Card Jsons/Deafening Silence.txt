@@ -4,36 +4,36 @@
 	"effText":"Set X to the number of your dead Cultists. Give a character -XW.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"SetXByGamestateSubeffect\",
-					\"whatToCount\":\"Cards Fitting Restriction\",
-					\"throughRestriction\":
+				{
+					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount":"Cards Fitting Restriction",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Discard\",\"Friendly\"],
-						\"subtypesInclude\":[\"Cultist\"]
+						"cardRestrictions":["Subtypes Include","Is Character","Discard","Friendly"],
+						"subtypesInclude":["Cultist"]
 					},
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"character to deafen with silence\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\"]
+						"blurb":"character to deafen with silence",
+						"cardRestrictions":["Is Character","Board"]
 					}
-				}",
-				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"wMult\":-1
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"wMult":-1
+				}
 			]
 		}
 	],

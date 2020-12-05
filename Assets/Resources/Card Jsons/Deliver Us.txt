@@ -4,51 +4,51 @@
 	"effText":"If there's at least 10 friendly Supplicants dead or in play, deck-summon a \"God of Mercy\".",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"SetXByGamestateSubeffect\",
-					\"whatToCount\":\"Cards Fitting Restriction\",
-					\"throughRestriction\":
+				{
+					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount":"Cards Fitting Restriction",
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Is Character\",\"Multiple Possible Locations\",\"Friendly\",\"Subtypes Include\"],
-						\"subtypesInclude\":[\"Supplicant\"],
-						\"locations\":[1,2]
+						"cardRestrictions":["Is Character","Multiple Possible Locations","Friendly","Subtypes Include"],
+						"subtypesInclude":["Supplicant"],
+						"locations":[1,2]
 					},
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"ConditionalEndSubeffect\",
-					\"condition\":\"X<C\",
-					\"constant\":10
-				}",
-				"{
-					\"subeffType\":\"ChooseFromListSubeffect\",
-					\"maxCanChoose\":1,
-					\"cardRestriction\":
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition":"X<C",
+					"constant":10
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose":1,
+					"cardRestriction":
 					{
-						\"blurb\":\"God of the Supplicants\",
-						\"cardRestrictions\":[\"Friendly\",\"Deck\",\"Name Is\"],
-						\"nameIs\":\"God of Mercy\"
+						"blurb":"God of the Supplicants",
+						"cardRestrictions":["Friendly","Deck","Name Is"],
+						"nameIs":"God of Mercy"
 					}
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where to play God of Mercy\",
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+						"blurb":"where to play God of Mercy",
+						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
-					\"subeffType\":\"PlaySubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

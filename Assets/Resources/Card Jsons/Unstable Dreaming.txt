@@ -4,41 +4,41 @@
 	"effText":"When I’m cast, handsummon a Shaper, but annihilate them when your turns start.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":{
-						\"blurb\":\"Shaper to hand-summon\",
-						\"cardRestrictions\":[\"Subtypes Include\",\"Is Character\",\"Friendly\",\"Hand\"],
-						\"subtypesInclude\":[\"Shaper\"]
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"blurb":"Shaper to hand-summon",
+						"cardRestrictions":["Subtypes Include","Is Character","Friendly","Hand"],
+						"subtypesInclude":["Shaper"]
 					}
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where to handsummon the Shaper\",
-						\"spaceRestrictions\":[\"Can Play Target to This Space\"]
+						"blurb":"where to handsummon the Shaper",
+						"spaceRestrictions":["Can Play Target to This Space"]
 					}
-				}",
-				"{
-					\"subeffType\":\"PlaySubeffect\"
-				}",
-				"{
-					\"subeffType\":\"HangingAnnihilationSubeffect\",
-					\"endCondition\":\"Turn Start\",
-					\"triggerRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.HangingAnnihilationSubeffect, Assembly-CSharp",
+					"endCondition":"Turn Start",
+					"triggerRestriction":
 					{
-						\"triggerRestrictions\":[\"Friendly Turn\"]
+						"triggerRestrictions":["Friendly Turn"]
 					}
-				}"
+				}
 			]
 		}
 	],

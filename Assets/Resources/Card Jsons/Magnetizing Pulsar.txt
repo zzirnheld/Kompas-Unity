@@ -4,81 +4,81 @@
 	"effText":"When your Avatar gains S, move another card one space away from me.\nWhen your Avatar loses S, move another card one space towards me.",
 	"effects":[
 		{
-			"triggerCondition":"S Change",
-			"trigger":
-			"{
-				\"blurb\":\"Repel\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\",\"Triggerer Fits Restriction\"],
-					\"xRestriction\":{
-						\"xRestrictions\":[\">0\"]
+			"triggerData":
+			{
+				"blurb":"Repel",
+				"triggerCondition":"S Change",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction"],
+					"xRestriction":{
+						"xRestrictions":[">0"]
 					},
-					\"cardRestriction\":
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Board\",\"Avatar\",\"Friendly\"]
+						"cardRestrictions":["Board","Avatar","Friendly"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"for Magnetizing to move\",
-						\"cardRestrictions\":[\"Board\",\"Distinct from Source\"]
+						"blurb":"for Magnetizing to move",
+						"cardRestrictions":["Board","Distinct from Source"]
 					}
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"to move Magnetizing's target to\",
-						\"spaceRestrictions\":[\"Distance to Target == Constant\",\"Further from Source than Target\",\"Can Move Target to This Space\"],
-						\"constant\":1
+						"blurb":"to move Magnetizing's target to",
+						"spaceRestrictions":["Distance to Target == Constant","Further from Source than Target","Can Move Target to This Space"],
+						"constant":1
 					}
-				}",
-				"{
-					\"subeffType\":\"MoveSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
 			]
 		},
 		{
-			"triggerCondition":"S Change",
-			"trigger":
-			"{
-				\"blurb\":\"Attract\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\",\"X Fits Restriction\",\"Triggerer Fits Restriction\"],
-					\"xRestriction\":{
-						\"xRestrictions\":[\"<0\"]
+			"triggerData":
+			{
+				"blurb":"Attract",
+				"triggerCondition":"S Change",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction"],
+					"xRestriction":{
+						"xRestrictions":["<0"]
 					},
-					\"cardRestriction\":
+					"cardRestriction":
 					{
-						\"cardRestrictions\":[\"Board\",\"Avatar\",\"Friendly\"]
+						"cardRestrictions":["Board","Avatar","Friendly"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"for Magnetizing to move\",
-						\"cardRestrictions\":[\"Board\",\"Distinct from Source\"]
+						"blurb":"for Magnetizing to move",
+						"cardRestrictions":["Board","Distinct from Source"]
 					}
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"to move Magnetizing's target to\",
-						\"spaceRestrictions\":[\"Distance to Target == Constant\",\"Towards Source from Target\",\"Can Move Target to This Space\"],
-						\"constant\":1
+						"blurb":"to move Magnetizing's target to",
+						"spaceRestrictions":["Distance to Target == Constant","Towards Source from Target","Can Move Target to This Space"],
+						"constant":1
 					}
-				}",
-				"{
-					\"subeffType\":\"MoveSubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],

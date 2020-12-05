@@ -4,36 +4,36 @@
 	"effText":"Can’t be cast normally. Give X enemy characters +1EW. Gain X pips.",
 	"effects":[
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"for Gyfu to give +1EW\",
-						\"cardRestrictions\":[\"Is Character\",\"Enemy\",\"Board\",\"Not Already Target\"]
+						"blurb":"for Gyfu to give +1EW",
+						"cardRestrictions":["Is Character","Enemy","Board","Not Already Target"]
 					}
-				}",
-				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"eChange\":1,
-					\"wChange\":1
-				}",
-				"{
-					\"subeffType\":\"CountXLoopSubeffect\",
-					\"canDecline\":true,
-					\"jumpTo\":0
-				}",
-				"{
-					\"subeffType\":\"AddPipsSubeffect\",
-					\"xMultiplier\":1
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"eChange":1,
+					"wChange":1
+				},
+				{
+					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
+					"canDecline":true,
+					"jumpTo":0
+				},
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				}
 			]	
 		}
 	],

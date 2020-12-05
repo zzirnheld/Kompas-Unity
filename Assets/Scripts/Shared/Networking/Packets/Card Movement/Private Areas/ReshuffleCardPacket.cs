@@ -10,19 +10,16 @@ namespace KompasCore.Networking
 
         public ReshuffleCardPacket() : base(ReshuffleCard) { }
 
-        public ReshuffleCardPacket(int cardId, int controllerIndex) : this()
+        public ReshuffleCardPacket(int cardId, int controllerIndex, bool invert = false) : this()
         {
             this.cardId = cardId;
-            this.controllerIndex = controllerIndex;
+            this.controllerIndex = invert ? 1 - controllerIndex : controllerIndex;
         }
 
         public override Packet Copy() => new ReshuffleCardPacket(cardId, controllerIndex);
 
         public override Packet GetInversion(bool known)
-        {
-            if (known) return new DeleteCardPacket(cardId);
-            else return null;
-        }
+            => known ? new DeleteCardPacket(cardId) : null;
     }
 }
 

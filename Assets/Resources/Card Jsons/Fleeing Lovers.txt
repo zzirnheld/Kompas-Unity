@@ -4,56 +4,56 @@
 	"effText":"When turns start, give me -1E.\nWhen I’m hand-summoned, deck-summon a copy of me.",
 	"effects":[
 		{
-			"triggerCondition":"Turn Start",
-			"trigger":
-			"{
-				\"blurb\":\"Lovers' death\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card in Play\"]
+			"triggerData":
+			{
+				"blurb":"Lovers' death",
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetThisSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"XChangeNESWSubeffect\",
-					\"eMod\":-1
-				}"
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"eMod":-1
+				}
 			]
 		},
 		{
-			"triggerCondition":"Play",
-			"trigger":
-			"{
-				\"blurb\":\"Lovers fleeing together\",
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\",\"This Card Fits Restriction\"],
-					\"cardRestriction\":{
-						\"cardRestrictions\":[\"Hand\"]
+			"triggerData":
+			{
+				"blurb":"Lovers fleeing together",
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","This Card Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Hand"]
 					}
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"ChooseFromListSubeffect\",
-					\"cardRestriction\":{
-						\"blurb\":\"Fleeing Lover to decksummon\",
-						\"cardRestrictions\":[\"Friendly\",\"Same Name as Source\",\"Deck\"]
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"blurb":"Fleeing Lover to decksummon",
+						"cardRestrictions":["Friendly","Same Name as Source","Deck"]
 					},
-					\"maxCanChoose\":1
-				}",
-				"{
-					\"subeffType\":\"SpaceTargetSubeffect\",
-					\"spaceRestriction\":
+					"maxCanChoose":1
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						\"blurb\":\"where to summon the other Fleeing Lover\",
-						\"spaceRestrictions\":[\"Can Play Target to This Space\",\"Adjacent to Source\"]
+						"blurb":"where to summon the other Fleeing Lover",
+						"spaceRestrictions":["Can Play Target to This Space","Adjacent to Source"]
 					}
-				}",
-				"{
-					\"subeffType\":\"PlaySubeffect\"
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
 			]	
 		}
 	],

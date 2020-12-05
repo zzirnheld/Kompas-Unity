@@ -4,26 +4,26 @@
 	"effText":"When this character kills an SX character, gain X pips.",
 	"effects":[
 		{
-			"triggerCondition":"Discard",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[1,140]
+			"triggerData":
+			{
+				"triggerCondition":"Discard",
+				"triggerRestriction":{
+					"triggerRestrictions":[1,140]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"TargetTriggeringCardSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"SetXByTargetValueSubeffect\",
-					\"whatToCount\":\"S\",
-					\"xMultiplier\":1
-				}",
-				"{
-					\"subeffType\":\"AddPipsSubeffect\",
-					\"xMultiplier\":1
-				}"
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"S",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				}
 			]
 		}
 	],

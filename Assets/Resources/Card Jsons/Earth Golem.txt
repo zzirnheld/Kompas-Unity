@@ -5,45 +5,41 @@
 	"effects":[
 		{
 			"blurb":"++ or --",
-			"triggerCondition":"Activate",
-			"trigger":
-			"{
-				\"triggerRestriction\":{
-					\"triggerRestrictions\":[\"This Card Triggered\"]
+			"triggerData":
+			{
+				"triggerCondition":"Activate",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
 				}
-			}",
+			},
 			"subeffects":[
-				"{
-					\"subeffType\":\"CardTargetSubeffect\",
-					\"cardRestriction\":
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
 					{
-						\"blurb\":\"for Earth Golem to buff or debuff\",
-						\"cardRestrictions\":[\"Is Character\",\"Board\"]
+						"blurb":"for Earth Golem to buff or debuff",
+						"cardRestrictions":["Is Character","Board"]
 					}
-				}",
-				"{
-					\"subeffType\":\"ChooseOptionSubeffect\",
-					\"ChoiceBlurb\":\"Give +1EW or -1EW?\",
-					\"OptionBlurbs\":[\"+1EW\",\"-1EW\"],
-					\"OptionJumpIndices\":[2,4]
-				}",
-				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"nChange\":0,
-					\"eChange\":1,
-					\"sChange\":0,
-					\"wChange\":1
-				}",
-				"{
-					\"subeffType\":\"EndResolutionSubeffect\"
-				}",
-				"{
-					\"subeffType\":\"ChangeNESWSubeffect\",
-					\"nChange\":0,
-					\"eChange\":-1,
-					\"sChange\":0,
-					\"wChange\":-1
-				}"
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"ChoiceBlurb":"Give +1EW or -1EW?",
+					"OptionBlurbs":["+1EW","-1EW"],
+					"OptionJumpIndices":[2,4]
+				},
+				{
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"eMod":1,
+					"wMod":1
+				},
+				{
+					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"eMod":-1,
+					"wMod":-1
+				}
 			]
 		}
 	],

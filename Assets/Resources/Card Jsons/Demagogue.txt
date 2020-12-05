@@ -1,0 +1,31 @@
+{
+	"cardType":67,
+	"cardName":"Demagogue",
+	"effText":"When I’m summoned, give adjacent characters +1 S.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.ChangeAllNESWSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character","Board","Adjacent"]
+					},
+					"sMod":1
+				}
+			]	
+		}
+	],
+	"n":0,
+	"e":1,
+	"s":1,
+	"w":0,
+	"subtypeText":""
+}
