@@ -159,22 +159,19 @@ namespace KompasDeckbuilder
             if (!string.IsNullOrWhiteSpace(textLower) && textLower.Length >= 2)
                 serializeds = serializeds.Where(s => s.effText.ToLower().Contains(textLower));
 
-            int nMin, eMin, sMin, wMin, cMin, aMin;
-            int nMax, eMax, sMax, wMax, cMax, aMax;
+            if (int.TryParse(NMin.text.Trim(nbsp), out int nMin)) serializeds = serializeds.Where(s => s.n >= nMin);
+            if (int.TryParse(EMin.text.Trim(nbsp), out int eMin)) serializeds = serializeds.Where(s => s.e >= eMin);
+            if (int.TryParse(SMin.text.Trim(nbsp), out int sMin)) serializeds = serializeds.Where(s => s.s >= sMin);
+            if (int.TryParse(WMin.text.Trim(nbsp), out int wMin)) serializeds = serializeds.Where(s => s.w >= wMin);
+            if (int.TryParse(CMin.text.Trim(nbsp), out int cMin)) serializeds = serializeds.Where(s => s.c >= cMin);
+            if (int.TryParse(AMin.text.Trim(nbsp), out int aMin)) serializeds = serializeds.Where(s => s.a >= aMin);
 
-            if (int.TryParse(NMin.text.Trim(nbsp), out nMin)) serializeds = serializeds.Where(s => s.n >= nMin);
-            if (int.TryParse(EMin.text.Trim(nbsp), out eMin)) serializeds = serializeds.Where(s => s.e >= eMin);
-            if (int.TryParse(SMin.text.Trim(nbsp), out sMin)) serializeds = serializeds.Where(s => s.s >= sMin);
-            if (int.TryParse(WMin.text.Trim(nbsp), out wMin)) serializeds = serializeds.Where(s => s.w >= wMin);
-            if (int.TryParse(CMin.text.Trim(nbsp), out cMin)) serializeds = serializeds.Where(s => s.c >= cMin);
-            if (int.TryParse(AMin.text.Trim(nbsp), out aMin)) serializeds = serializeds.Where(s => s.a >= aMin);
-
-            if (int.TryParse(NMax.text.Trim(nbsp), out nMax)) serializeds = serializeds.Where(s => s.n <= nMax);
-            if (int.TryParse(EMax.text.Trim(nbsp), out eMax)) serializeds = serializeds.Where(s => s.e <= eMax);
-            if (int.TryParse(SMax.text.Trim(nbsp), out sMax)) serializeds = serializeds.Where(s => s.s <= sMax);
-            if (int.TryParse(WMax.text.Trim(nbsp), out wMax)) serializeds = serializeds.Where(s => s.w <= wMax);
-            if (int.TryParse(CMax.text.Trim(nbsp), out cMax)) serializeds = serializeds.Where(s => s.c <= cMax);
-            if (int.TryParse(AMax.text.Trim(nbsp), out aMax)) serializeds = serializeds.Where(s => s.a <= aMax);
+            if (int.TryParse(NMax.text.Trim(nbsp), out int nMax)) serializeds = serializeds.Where(s => s.n <= nMax);
+            if (int.TryParse(EMax.text.Trim(nbsp), out int eMax)) serializeds = serializeds.Where(s => s.e <= eMax);
+            if (int.TryParse(SMax.text.Trim(nbsp), out int sMax)) serializeds = serializeds.Where(s => s.s <= sMax);
+            if (int.TryParse(WMax.text.Trim(nbsp), out int wMax)) serializeds = serializeds.Where(s => s.w <= wMax);
+            if (int.TryParse(CMax.text.Trim(nbsp), out int cMax)) serializeds = serializeds.Where(s => s.c <= cMax);
+            if (int.TryParse(AMax.text.Trim(nbsp), out int aMax)) serializeds = serializeds.Where(s => s.a <= aMax);
 
             serializeds = serializeds.Where(s => ValidCardType(s.cardType));
 
