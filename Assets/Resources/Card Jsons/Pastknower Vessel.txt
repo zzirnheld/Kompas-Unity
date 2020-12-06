@@ -1,13 +1,12 @@
 {
 	"cardType":67,
 	"cardName":"Pastknower Vessel",
-	"effText":"Geminii: You can pip resummon me. When I'm summoned, draw 1.",
+	"effText":"Geminii.\nWhen I'm summoned, draw 1.",
 	"effects":[
 		{
 			"blurb":"Pip Resummon",
 			"activationRestriction":{
 				"activationRestrictionArray":[
-					"Friendly Turn",
 					"Default"
 				]
 			},
