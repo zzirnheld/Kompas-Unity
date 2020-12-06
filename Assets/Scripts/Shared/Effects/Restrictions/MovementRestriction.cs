@@ -1,4 +1,5 @@
 ﻿using KompasCore.Cards;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -7,7 +8,10 @@ namespace KompasCore.Effects
     [System.Serializable]
     public class MovementRestriction
     {
+        private const string Default = "Default";
+
         #region Basic Movement Restrictions
+        private const string InPlay = "In Play";
         private const string DistinctSpace = "Distinct Space";
         //Might seem a bit dumb, but it means that some spells will be able to move themselves
         private const string IsCharacter = "Is Character";
@@ -30,14 +34,32 @@ namespace KompasCore.Effects
 
         //The actual list of restrictions, set by json.
         //Default restrictions are that only characters with enough n can move.
-        public string[] normalMovementRestrictions = new string[] 
+        public static readonly string[] defaultNormalMovementRestrictions = new string[]
         {
-            DistinctSpace, IsCharacter, IsNotAvatar, 
-            CanMoveEnoughSpaces, DestinationCanMoveHere, 
-            StandardSpellMoveRestiction, 
+            InPlay,
+            DistinctSpace, IsCharacter, IsNotAvatar,
+            CanMoveEnoughSpaces, DestinationCanMoveHere,
+            StandardSpellMoveRestiction,
             NothingHappening, IsFriendlyTurn
         };
+
+        /// <summary>
+        /// The array to be loaded in and defaults addressed
+        /// </summary>
+        public string[] normalMovementRestrictions = new string[] { Default };
+        /// <summary>
+        /// The array to be loaded in and defaults addressed
+        /// </summary>
         public string[] effectMovementRestrictions = new string[] { StandardSpellMoveRestiction };
+
+        /// <summary>
+        /// The actual list to use
+        /// </summary>
+        public readonly List<string> normalRestrictions = new List<string>();
+        /// <summary>
+        /// The actual list to use
+        /// </summary>
+        public readonly List<string> effectRestrictions = new List<string>();
 
         public GameCard Card { get; private set; }
 
@@ -47,13 +69,24 @@ namespace KompasCore.Effects
         /// to catch any other required intitialization at compile time.
         /// </summary>
         /// <param name="card"></param>
-        public void SetInfo(GameCard card) => Card = card;
+        public void SetInfo(GameCard card)
+        {
+            Card = card;
+
+            normalRestrictions.AddRange(normalMovementRestrictions);
+            if (normalMovementRestrictions.Contains(Default)) 
+                normalRestrictions.AddRange(defaultNormalMovementRestrictions);
+
+            effectRestrictions.AddRange(effectMovementRestrictions);
+        }
 
         private bool RestrictionValid(string restriction, int x, int y, bool isSwapTarget, bool byEffect)
         {
             switch (restriction)
             {
+                case Default: return true;
                 //normal restrictions
+                case InPlay: return Card.Location == CardLocation.Field;
                 case DistinctSpace: return Card.Position != (x, y);
                 case IsCharacter: return Card.CardType == 'C';
                 case CanMoveEnoughSpaces: return Card.SpacesCanMove >= Card.DistanceTo(x, y);
