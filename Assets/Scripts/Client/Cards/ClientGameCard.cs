@@ -45,6 +45,7 @@ namespace KompasClient.Cards
         public ClientEffect[] ClientEffects { get; private set; }
         public override IEnumerable<Effect> Effects => ClientEffects;
         public override bool IsAvatar => false;
+        public ClientCardMouseController mouseCtrl;
 
         public override bool Remove(IStackable stackSrc = null)
         {
@@ -58,6 +59,7 @@ namespace KompasClient.Cards
             ClientGame = game;
             ClientController = ClientOwner = owner;
             ClientEffects = effects;
+            mouseCtrl.ClientGame = game;
             int i = 0;
             foreach (var eff in effects) eff.SetInfo(this, game, i++, owner);
         }

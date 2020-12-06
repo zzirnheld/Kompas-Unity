@@ -29,6 +29,8 @@ namespace KompasServer.Networking
             var currSubeff = serverGame.CurrEffect?.CurrSubeffect;
             var card = serverGame.GetCardWithID(cardId);
 
+            UnityEngine.Debug.Log($"Attempting to target {card?.CardName} in subeffect {currSubeff}");
+
             if (currSubeff is CardTargetSubeffect cardTargetSubeffect)
                 cardTargetSubeffect.AddTargetIfLegal(card);
             else if (currSubeff is ChooseFromListSubeffect listSubeffect)

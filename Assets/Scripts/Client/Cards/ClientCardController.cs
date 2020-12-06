@@ -1,4 +1,5 @@
-﻿using KompasCore.Cards;
+﻿using KompasClient.Cards;
+using KompasCore.Cards;
 
 public class ClientCardController : CardController
 {

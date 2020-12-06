@@ -38,8 +38,10 @@ namespace KompasClient.Networking
 
             try
             {
-                if(listRestrictionJson != null)
-                    listRestriction = JsonUtility.FromJson<ListRestriction>(listRestrictionJson);
+                if (string.IsNullOrEmpty(listRestrictionJson)) listRestriction = ListRestriction.Default;
+                else listRestriction = JsonUtility.FromJson<ListRestriction>(listRestrictionJson);
+
+                listRestriction.Initialize(null);
             }
             catch(System.ArgumentException)
             {

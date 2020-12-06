@@ -46,11 +46,11 @@ namespace KompasCore.Effects
         /// <summary>
         /// The array to be loaded in and defaults addressed
         /// </summary>
-        public string[] normalMovementRestrictions = new string[] { Default };
+        public string[] normalRestrictionsFromJson = new string[] { Default };
         /// <summary>
         /// The array to be loaded in and defaults addressed
         /// </summary>
-        public string[] effectMovementRestrictions = new string[] { StandardSpellMoveRestiction };
+        public string[] effectRestrictionsFromJson = new string[] { StandardSpellMoveRestiction };
 
         /// <summary>
         /// The actual list to use
@@ -73,11 +73,13 @@ namespace KompasCore.Effects
         {
             Card = card;
 
-            normalRestrictions.AddRange(normalMovementRestrictions);
-            if (normalMovementRestrictions.Contains(Default)) 
+            normalRestrictions.AddRange(normalRestrictionsFromJson);
+            if (normalRestrictionsFromJson.Contains(Default)) 
                 normalRestrictions.AddRange(defaultNormalMovementRestrictions);
 
-            effectRestrictions.AddRange(effectMovementRestrictions);
+            Debug.Log($"Setting up movement restriction with normal:\n{string.Join(", ", normalRestrictions)}");
+
+            effectRestrictions.AddRange(effectRestrictionsFromJson);
         }
 
         private bool RestrictionValid(string restriction, int x, int y, bool isSwapTarget, bool byEffect)
@@ -138,7 +140,7 @@ namespace KompasCore.Effects
         /// If this is true, ignores "Destination Can Move Here" restriction, because otherwise you would have infinite recursion.</param>
         /// <returns><see langword="true"/> if the card can move to (x, y); <see langword="false"/> otherwise.</returns>
         public bool EvaluateNormalMove(int x, int y, bool isSwapTarget = false)
-            => ValidIndices(x, y) && normalMovementRestrictions.All(r => RestrictionValid(r, x, y, isSwapTarget, false));
+            => ValidIndices(x, y) && normalRestrictions.All(r => RestrictionValid(r, x, y, isSwapTarget, false));
 
         /// <summary>
         /// Checks whether the card this is attached to can move to (x, y) as part of an effect
@@ -158,6 +160,6 @@ namespace KompasCore.Effects
         /// If this is true, ignores "Destination Can Move Here" restriction, because otherwise you would have infinite recursion.</param>
         /// <returns><see langword="true"/> if the card can move to (x, y); <see langword="false"/> otherwise.</returns>
         public bool EvaluateEffectMove(int x, int y, bool isSwapTarget = false)
-            => ValidIndices(x, y) && effectMovementRestrictions.All(r => RestrictionValid(r, x, y, isSwapTarget: false, byEffect: true));
+            => ValidIndices(x, y) && effectRestrictions.All(r => RestrictionValid(r, x, y, isSwapTarget: false, byEffect: true));
     }
 }

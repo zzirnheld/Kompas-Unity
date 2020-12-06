@@ -28,7 +28,7 @@
 		}
 	],
 	"MovementRestriction":{
-		"normalMovementRestrictions":[
+		"normalRestrictionsFromJson":[
 			"Default",
 			"Activated"
 		]

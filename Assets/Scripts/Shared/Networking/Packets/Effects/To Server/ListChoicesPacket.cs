@@ -35,7 +35,7 @@ namespace KompasServer.Networking
             var currSubeff = serverGame.CurrEffect?.CurrSubeffect;
             if (currSubeff is ChooseFromListSubeffect listEff)
                 listEff.AddListIfLegal(choices);
-            else if (currSubeff is DeckTargetSubeffect deckTargetSubeffect)
+            else if (currSubeff is CardTargetSubeffect deckTargetSubeffect)
                 deckTargetSubeffect.AddTargetIfLegal(choices.FirstOrDefault());
         }
     }

@@ -1300,6 +1300,7 @@ MonoBehaviour:
   simpleSprite: {fileID: 0}
   cardCtrl: {fileID: 1007021757811295171}
   attacksThisTurn: 0
+  mouseCtrl: {fileID: 1889302329618885808}
 --- !u!114 &1007021757811295171
 MonoBehaviour:
   m_ObjectHideFlags: 0
