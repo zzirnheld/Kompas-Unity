@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Soul Drain",
-	"effText":"When an SX Revenant is annihilated, mill your deck’s top X.",
+	"effText":"Unique.\nWhen an SX Revenant is annihilated, mill your deck’s top X.",
 	"effects":[
 		{
 			"triggerData":

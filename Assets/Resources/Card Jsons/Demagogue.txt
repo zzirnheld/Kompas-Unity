@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Demagogue",
-	"effText":"When I’m summoned, give adjacent characters +1 S.",
+	"effText":"When I'm summoned, give adjacent characters +1 S.",
 	"effects":[
 		{
 			"triggerData":

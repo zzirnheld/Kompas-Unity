@@ -13,7 +13,7 @@
 						"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
 						"adjacencyRestriction":{
 							"cardRestrictions":["Subtypes Include"],
-							"subtypesInclude":["Ethereal"]
+							"subtypesInclude":["Shaper"]
 						}
 					}
 				}

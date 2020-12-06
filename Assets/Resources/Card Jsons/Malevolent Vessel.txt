@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Malevolent Vessel",
-	"effText":"Geminii: You can pip resummon me. When I’m summoned, kill a Summoned character within 1 space of me (that includes me).",
+	"effText":"Geminii: You can pip resummon me. When I'm summoned, kill a Summoned character within 1 space of me (that includes me).",
 	"effects":[
 		{
 			"blurb":"Pip Resummon",

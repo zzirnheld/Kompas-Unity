@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Zealous Convert",
-	"effText":"When I’m summoned, deck-summon a Cultist Follower.",
+	"effText":"When I'm summoned, deck-summon a Cultist Follower.",
 	"effects":[
 		{
 			"triggerData":

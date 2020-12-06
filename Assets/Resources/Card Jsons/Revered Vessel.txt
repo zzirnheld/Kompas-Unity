@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Revered Vessel",
-	"effText":"Geminii: You can pip resummon me. When I’m summoned, give adjacent characters +1ESW.",
+	"effText":"Geminii: You can pip resummon me. When I'm summoned, give adjacent characters +1ESW.",
 	"effects":[
 		{
 			"blurb":"Pip Resummon",

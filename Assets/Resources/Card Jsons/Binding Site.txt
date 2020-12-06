@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Binding Site",
-	"effText":"When I’m summoned, give a character +3 S.",
+	"effText":"When I'm summoned, give a character +3 S.",
 	"effects":[
 		{
 			"triggerData":

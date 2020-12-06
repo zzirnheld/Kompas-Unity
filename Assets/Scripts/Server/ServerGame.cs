@@ -13,6 +13,8 @@ namespace KompasServer.GameCore
 {
     public class ServerGame : Game
     {
+        public const int MinDeckSize = 49;
+
         public const int AvatarNPenalty = 15;
         public const int AvatarEBonus = 15;
         public const int AvatarWPenalty = 15;
@@ -97,7 +99,7 @@ namespace KompasServer.GameCore
         private bool ValidDeck(List<string> deck)
         {
             if (uiCtrl.DebugMode) return true;
-            if (deck.Count < 49) return false;
+            if (deck.Count < MinDeckSize) return false;
             //first name should be that of the Avatar
             if (cardRepo.GetCardFromName(deck[0]).cardType != 'C') return false;
 
