@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Self-Destruct Button",
-	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nDestroy two friendly cards. Discard-rehand up to 3 Crazy Ideas. Discard 1. Annihilate me.",
+	"effText":"Ificate.\nDestroy two friendly cards. Discard-rehand up to 3 Crazy Ideas. Discard 1. Annihilate me.",
 	"effects":[
 		{
 			"triggerData":{
@@ -112,5 +112,5 @@
 	"c":5,
 	"spellType":"Simple",
 	"subtypes":["Simple","Crazy Idea"],
-	"subtypeText":"Simple Crazy Idea"
+	"subtypeText":"Simple Crazy Idea Ificator"
 }

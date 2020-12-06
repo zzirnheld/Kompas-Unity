@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Yeet Modification",
-	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nOnce each turn, you can move a turn player's card one space (to an empty space).",
+	"effText":"Ificate.\nOnce each turn, you can move a turn player's card one space (to an empty space).",
 	"effects":[
 		{
 			"triggerData":
@@ -76,5 +76,5 @@
 	],
 	"c":5,
 	"spellType":"Enchant",
-	"subtypeText":"Enchant Crazy Idea"
+	"subtypeText":"Enchant Crazy Idea Ificator"
 }

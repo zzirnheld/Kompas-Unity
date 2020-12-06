@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Stupid Idea Generator",
-	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nWhen enemy turns start, discard 1, draw 1, then pay a pip or annihilate me.",
+	"effText":"Ificate.\nWhen enemy turns start, discard 1, draw 1, then pay a pip or annihilate me.",
 	"effects":[
 		{
 			"triggerData":{
@@ -99,5 +99,5 @@
 	"c":5,
 	"spellType":"Enchant",
 	"subtypes":["Enchant","Crazy Idea"],
-	"subtypeText":"Enchant Crazy Idea"
+	"subtypeText":"Enchant Crazy Idea Ificator"
 }

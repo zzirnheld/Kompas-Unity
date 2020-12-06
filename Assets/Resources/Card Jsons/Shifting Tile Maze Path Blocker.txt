@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Shifting Tile Maze Path Blocker",
-	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nThe first time each stack a character moves into here, move them 1 space to an empty space here. If you can't, annihilate me.",
+	"effText":"Ificate.\nThe first time each stack a character moves into here, move them 1 space to an empty space here. If you can't, annihilate me.",
 	"effects":[
 		{
 			"triggerData":{
@@ -96,6 +96,6 @@
 	],
 	"c":5,
 	"spellType":"Radial",
-	"subtypeText":"Lemon-Flavored Crazy Idea Radial",
+	"subtypeText":"Lemon-Flavored Radial Crazy Idea Ificator",
 	"arg":1
 }

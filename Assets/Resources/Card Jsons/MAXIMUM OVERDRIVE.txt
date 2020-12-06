@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"MAXIMUM OVERDRIVE",
-	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nGive a character -5W. If they're Crazy, give them +5 N.",
+	"effText":"Ificate.\nGive a character -5W. If they're Crazy, give them +5 N.",
 	"effects":[
 		{
 			"triggerData":{
@@ -82,5 +82,5 @@
 	"c":5,
 	"spellType":"Simple",
 	"subtypes":["Simple","Crazy Idea"],
-	"subtypeText":"Simple Crazy Idea"
+	"subtypeText":"Simple Crazy Idea Ificator"
 }

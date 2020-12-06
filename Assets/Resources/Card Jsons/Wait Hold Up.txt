@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Wait Hold Up",
-	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nDiscard 1. Draw 1. Move an enemy character up to 3 spaces. Annihilate me.",
+	"effText":"Ificate.\nDiscard 1. Draw 1. Move an enemy character up to 3 spaces. Annihilate me.",
 	"effects":[
 		{
 			"triggerData":{
@@ -98,5 +98,5 @@
 	"c":5,
 	"spellType":"Simple",
 	"subtypes":["Simple","Crazy Idea"],
-	"subtypeText":"Simple Crazy Idea"
+	"subtypeText":"Simple Crazy Idea Ificator"
 }

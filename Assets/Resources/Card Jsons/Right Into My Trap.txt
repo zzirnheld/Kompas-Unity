@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Right Into My Trap",
-	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nWhen a character here moves out of my area of effect, move them a space towards me, then if they’re no longer in my area of effect, annihilate me.",
+	"effText":"Ificate.\nWhen a character here moves out of my area of effect, move them a space towards me, then if they’re no longer in my area of effect, annihilate me.",
 	"effects":[
 		{
 			"triggerData":{
@@ -94,6 +94,6 @@
 	],
 	"c":5,
 	"spellType":"Radial",
-	"subtypeText":"Crazy Idea Radial",
+	"subtypeText":"Crazy Idea Radial Ificator",
 	"arg":1
 }

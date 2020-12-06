@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"No I Expect You To",
-	"effText":"Ificate: When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it.\nChoose a character in front of me. Delay 2. If they’re still in front of me, kill them. If not, annihilate me. ",
+	"effText":"Ificate.\nChoose a character in front of me. Delay 2. If they’re still in front of me, kill them. If not, annihilate me. ",
 	"effects":[
 		{
 			"triggerData":{
@@ -92,6 +92,6 @@
 	"c":5,
 	"spellType":"Delayed",
 	"subtypes":["Delayed","Crazy Idea"],
-	"subtypeText":"Delayed Crazy Idea",
+	"subtypeText":"Delayed Crazy Idea Ificator",
 	"arg":2
 }
