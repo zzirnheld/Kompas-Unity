@@ -48,7 +48,7 @@ namespace KompasCore.GameCore
             return cards;
         }
 
-        public void SpreadOutCards()
+        public virtual void SpreadOutCards()
         {
             int wrapLen = (int)(Mathf.Sqrt(Discard.Count) + 0.5f);
             int x = 0, y = 0;
