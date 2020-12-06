@@ -23,17 +23,17 @@ namespace KompasClient.GameCore
         public IEnumerable<ClientGameCard> ClientCards => cardsByID.Values;
         public override IEnumerable<GameCard> Cards => ClientCards;
 
-        public HandController friendlyHandCtrl;
-        public DeckController friendlyDeckCtrl;
-        public DiscardController friendlyDiscardCtrl;
+        public ClientHandController friendlyHandCtrl;
+        public ClientDeckController friendlyDeckCtrl;
+        public ClientDiscardController friendlyDiscardCtrl;
 
         public GameObject friendlyHandObj;
         public GameObject friendlyDeckObj;
         public GameObject friendlyDiscardObj;
 
         public ClientDummyHandController enemyHandCtrl;
-        public DeckController enemyDeckCtrl;
-        public DiscardController enemyDiscardCtrl;
+        public ClientDeckController enemyDeckCtrl;
+        public ClientDiscardController enemyDiscardCtrl;
 
         public GameObject enemyHandObj;
         public GameObject enemyDeckObj;

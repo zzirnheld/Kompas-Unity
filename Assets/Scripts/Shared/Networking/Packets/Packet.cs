@@ -70,6 +70,7 @@ namespace KompasCore.Networking
         public const string AttackStarted = "Attack Started";
         public const string ChooseHandSize = "Choose Hand Size";
         public const string HandSizeToStack = "Hand Size to Stack";
+        public const string SetDeckCount = "Set Deck Count";
         //gamestate (from client to server)
         public const string HandSizeChoices = "Hand Size Choices";
 

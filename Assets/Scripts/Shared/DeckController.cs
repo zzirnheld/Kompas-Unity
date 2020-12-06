@@ -6,12 +6,12 @@ using UnityEngine;
 
 namespace KompasCore.GameCore
 {
-    public class DeckController : MonoBehaviour
+    public abstract class DeckController : MonoBehaviour
     {
         public const string BLANK_CARD_PATH = "Card Jsons/Blank Card";
 
         public Game game;
-        public Player Owner;
+        public abstract Player Owner { get; }
 
         //rng for shuffling
         private static readonly System.Random rng = new System.Random();

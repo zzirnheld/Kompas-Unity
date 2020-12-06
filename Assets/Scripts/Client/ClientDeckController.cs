@@ -11,7 +11,17 @@ namespace KompasClient.GameCore
     {
         public ClientGame ClientGame;
 
+        public ClientPlayer owner;
+        public override Player Owner => owner;
+
         public TMP_Text deckCountLabel;
+        public int DeckCount
+        {
+            set
+            {
+                deckCountLabel.text = $"{value}";
+            }
+        }
 
         public void OnMouseDown()
         {
@@ -19,7 +29,7 @@ namespace KompasClient.GameCore
             if (ClientGame.friendlyDeckCtrl == this) ClientGame.clientNotifier.RequestDraw();
         }
 
-        private void UpdateDeckCount() => deckCountLabel.text = $"{Deck.Count}";
+        /*private void UpdateDeckCount() => DeckCount = Deck.Count;
 
         protected override bool AddCard(GameCard card, IStackable stackSrc = null)
         {
@@ -33,6 +43,6 @@ namespace KompasClient.GameCore
             var success = base.RemoveFromDeck(card);
             UpdateDeckCount();
             return success;
-        }
+        }*/
     }
 }

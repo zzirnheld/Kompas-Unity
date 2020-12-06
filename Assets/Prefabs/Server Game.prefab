@@ -216,7 +216,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3349460599440499646}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3349460598585194324
 MeshFilter:
@@ -290,8 +290,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 3349460599440499645}
-  Owner: {fileID: 3349460599362718998}
   ServerGame: {fileID: 3349460599440499645}
+  owner: {fileID: 3349460599362718998}
 --- !u!1 &3349460599359394084
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,10 +452,7 @@ MonoBehaviour:
   deckObject: {fileID: 3349460598585194321}
   discardObject: {fileID: 3349460600222469959}
   handObject: {fileID: 3349460599439595599}
-  fastCards: []
   passedPriority: 0
-  holdPriority: 0
-  allowResponses: 1
   ServerEnemy: {fileID: 3349460600153624845}
   serverGame: {fileID: 3349460599440499645}
   ServerNetworkCtrl: {fileID: 3349460600183653181}
@@ -489,7 +486,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3349460599440499646}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2552304637567336340
 MonoBehaviour:
@@ -534,9 +531,9 @@ Transform:
   m_LocalPosition: {x: 0.24349792, y: -2.786243, z: -3.2726886}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3349460599439595600}
   - {fileID: 3349460598585194325}
   - {fileID: 3349460600222469963}
+  - {fileID: 3349460599439595600}
   - {fileID: 3349460599535151378}
   - {fileID: 3349460599359394088}
   - {fileID: 3349460600343111960}
@@ -751,8 +748,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 3349460599440499645}
-  Owner: {fileID: 3349460600153624845}
   ServerGame: {fileID: 3349460599440499645}
+  owner: {fileID: 3349460600153624845}
 --- !u!1 &3349460600153624844
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,10 +802,7 @@ MonoBehaviour:
   deckObject: {fileID: 3349460599535151374}
   discardObject: {fileID: 3349460599359394084}
   handObject: {fileID: 3349460600343111959}
-  fastCards: []
   passedPriority: 0
-  holdPriority: 0
-  allowResponses: 1
   ServerEnemy: {fileID: 3349460599362718998}
   serverGame: {fileID: 3349460599440499645}
   ServerNetworkCtrl: {fileID: 3349460599522625673}
@@ -907,7 +901,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3349460599440499646}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3349460600222469962
 MeshFilter:

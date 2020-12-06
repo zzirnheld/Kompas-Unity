@@ -9405,7 +9405,6 @@ GameObject:
   - component: {fileID: 699377836}
   - component: {fileID: 699377840}
   - component: {fileID: 699377839}
-  - component: {fileID: 699377838}
   - component: {fileID: 699377837}
   m_Layer: 0
   m_Name: Card Frame Bottom
@@ -9441,20 +9440,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9134086, y: 0, z: 1.9134086}
   m_Center: {x: 0, y: -0.025000002, z: 0}
---- !u!114 &699377838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 699377835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13351909bd3483f4e98c4d1696cf3e85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Card: {fileID: 0}
-  ClientGame: {fileID: 0}
 --- !u!23 &699377839
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10282,8 +10267,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 492080563}
-  Owner: {fileID: 1841194802}
   ClientGame: {fileID: 492080563}
+  owner: {fileID: 1829834588}
   deckCountLabel: {fileID: 1730378959}
 --- !u!1 &748852962
 GameObject:
@@ -24491,7 +24476,6 @@ GameObject:
   - component: {fileID: 4489504195381824926}
   - component: {fileID: 2438835110700781899}
   - component: {fileID: 4758638616848090756}
-  - component: {fileID: 1350596533602662914}
   - component: {fileID: 5617701929992244199}
   m_Layer: 0
   m_Name: Card Frame Bottom
@@ -24572,20 +24556,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1350596533602662914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 30472493498958961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13351909bd3483f4e98c4d1696cf3e85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Card: {fileID: 0}
-  ClientGame: {fileID: 0}
 --- !u!4 &1499788527183363863
 Transform:
   m_ObjectHideFlags: 0
@@ -24840,8 +24810,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 492080563}
-  Owner: {fileID: 1829834588}
   ClientGame: {fileID: 492080563}
+  owner: {fileID: 1829834588}
   deckCountLabel: {fileID: 1106341060}
 --- !u!4 &2552880263252158134
 Transform:
