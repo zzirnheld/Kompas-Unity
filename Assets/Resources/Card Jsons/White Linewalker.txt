@@ -35,7 +35,7 @@
 	],
 	"n":1,
 	"e":1,
-	"s":2,
+	"s":3,
 	"w":1,
 	"subtypeText":"Linewalker Mage"
 }

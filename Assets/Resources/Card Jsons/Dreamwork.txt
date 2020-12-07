@@ -9,7 +9,7 @@
 				"blurb":"Dreamwork! Pass!",
 				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Enemy Turn"]
+					"triggerRestrictions":["This Card in Play"]
 				}
 			},
 			"subeffects":[
