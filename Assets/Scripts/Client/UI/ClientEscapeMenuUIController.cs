@@ -13,11 +13,15 @@ namespace KompasClient.UI
             if (Input.GetKeyDown(KeyCode.Escape)) Cancel();
         }
 
+        public ClientUISettingsController settingsCtrl;
+
         public void Enable() => gameObject.SetActive(true);
 
         public void GoToMainMenu() => SceneManager.LoadScene(MainMenuUICtrl.MainMenuScene);
 
         public void Rematch() => SceneManager.LoadScene(MainMenuUICtrl.ClientScene);
+
+        public void Settings() => settingsCtrl.Show();
 
         public void Exit() => Application.Quit();
 

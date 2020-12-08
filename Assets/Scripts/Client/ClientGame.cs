@@ -42,6 +42,7 @@ namespace KompasClient.GameCore
         public ClientNetworkController clientNetworkCtrl;
         public ClientNotifier clientNotifier;
         public ClientUIController clientUICtrl;
+        public ClientUISettingsController clientUISettingsCtrl;
 
         //turn players?
         public bool FriendlyTurn => TurnPlayerIndex == 0;
@@ -93,6 +94,12 @@ namespace KompasClient.GameCore
                 base.Leyload = value;
                 clientUICtrl.Leyload = Leyload;
             }
+        }
+
+        private void Awake()
+        {
+            clientUISettingsCtrl.LoadSettings();
+            ApplySettings();
         }
 
         public override void OnClickBoard(int x, int y)
@@ -176,6 +183,12 @@ namespace KompasClient.GameCore
             clientUICtrl.SetCurrState("Stack Empty");
             foreach (var c in Cards) c.ResetForStack();
             ShowNoTargets();
+        }
+
+        public void ApplySettings()
+        {
+            var uiSettings = clientUISettingsCtrl.ClientUISettings;
+            foreach (var card in ClientCards) card.clientCardCtrl.ApplySettings(uiSettings);
         }
 
         #region targeting

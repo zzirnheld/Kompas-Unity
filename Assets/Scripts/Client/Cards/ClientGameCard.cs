@@ -46,6 +46,7 @@ namespace KompasClient.Cards
         public override IEnumerable<Effect> Effects => ClientEffects;
         public override bool IsAvatar => false;
         public ClientCardMouseController mouseCtrl;
+        public ClientCardController clientCardCtrl;
 
         public override bool Remove(IStackable stackSrc = null)
         {
