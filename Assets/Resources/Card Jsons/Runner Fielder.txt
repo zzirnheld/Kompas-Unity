@@ -1,22 +1,15 @@
 {
 	"cardType":67,
 	"cardName":"Runner Fielder",
-	"effText":"When I'm augmented, attach that Augment to the character directly in front of me.",
+	"effText":"When I'm augmented, attach my Augments to the character directly in front of me.",
 	"effects":[
 		{
 			"triggerData":
 			{
 				"blurb":"Run Forward!",
-				"triggerCondition":"Augment Attached",
+				"triggerCondition":"Augmented",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Coords Fit Restriction"],
-					"spaceRestriction":
-					{
-						"spaceRestrictions":["Card Here Fits Restriction"],
-						"hereFitsRestriction":{
-							"cardRestrictions":["Is Source"]
-						}
-					}
+					"triggerRestrictions":["This Card Triggered"]
 				}
 			},
 			"subeffects":[
@@ -27,10 +20,25 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp",
+					"targetIndex":1
+				},
+				{
+					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"attachmentTarget":0,
+					"targetIndex":-1
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"remainingTargets":1,
+					"jumpTo":4
 				}
 			]
 		}

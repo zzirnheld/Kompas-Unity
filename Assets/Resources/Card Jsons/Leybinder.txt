@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Leybinder",
-	"effText":"The first time each turn a character moves X, their controller hand-summons an SX character.",
+	"effText":"The first time each turn a character moves X, give me -XE, then their controller hand-summons an SX character.",
 	"effects":[
 		{
 			"triggerData":
@@ -13,6 +13,13 @@
 				}
 			},
 			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"eMult":-1
+				},
 				{
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},

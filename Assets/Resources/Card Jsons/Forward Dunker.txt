@@ -1,22 +1,15 @@
 {
 	"cardType":67,
 	"cardName":"Forward Dunker",
-	"effText":"The first time each stack I'm augmented, attach that Augment to an adjacent Avatar.",
+	"effText":"The first time each stack I'm augmented, attach my Augments to an adjacent Avatar.",
 	"effects":[
 		{
 			"triggerData":
 			{
-				"blurb":"Run Forward!",
-				"triggerCondition":"Augment Attached",
+				"blurb":"Slam Dunk!",
+				"triggerCondition":"Augmented",
 				"triggerRestriction":{
-					"triggerRestrictions":["Max Per Stack","This Card in Play","Coords Fit Restriction"],
-					"spaceRestriction":
-					{
-						"spaceRestrictions":["Card Here Fits Restriction"],
-						"hereFitsRestriction":{
-							"cardRestrictions":["Is Source"]
-						}
-					}
+					"triggerRestrictions":["Max Per Stack","This Card Triggered"]
 				}
 			},
 			"subeffects":[
@@ -27,15 +20,30 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp",
+					"targetIndex":1
+				},
+				{
+					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"attachmentTarget":0,
+					"targetIndex":-1
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"remainingTargets":1,
+					"jumpTo":4
 				}
 			]
 		}
 	],
-	"n":3,
+	"n":2,
 	"e":2,
 	"s":2,
 	"w":0,

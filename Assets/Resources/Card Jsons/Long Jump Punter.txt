@@ -1,22 +1,16 @@
 {
 	"cardType":67,
 	"cardName":"Long Jump Punter",
-	"effText":"The first time each stack I'm augmented, apply that Augment to another character within 2 spaces of me.",
+	"effText":"The first time each stack I'm augmented, apply my Augments to another character within 2 spaces of me.",
 	"effects":[
 		{
 			"triggerData":
 			{
 				"blurb":"Punt Augment",
 				"triggerCondition":"Augment Attached",
+				"triggerCondition":"Augmented",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Max Per Stack","Coords Fit Restriction"],
-					"spaceRestriction":
-					{
-						"spaceRestrictions":["Card Here Fits Restriction"],
-						"hereFitsRestriction":{
-							"cardRestrictions":["Is Source"]
-						}
-					}
+					"triggerRestrictions":["Max Per Stack","This Card Triggered"]
 				}
 			},
 			"subeffects":[
@@ -30,10 +24,25 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp",
+					"targetIndex":1
+				},
+				{
+					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"attachmentTarget":0,
+					"targetIndex":-1
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"remainingTargets":1,
+					"jumpTo":4
 				}
 			]
 		}

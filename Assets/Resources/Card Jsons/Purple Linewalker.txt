@@ -33,7 +33,7 @@
 			]
 		},
 		{
-			"blurb":"Red Linewalked",
+			"blurb":"Purple Linewalked",
 			"triggerData":
 			{
 				"triggerCondition":"Move",
@@ -57,6 +57,6 @@
 	"n":1,
 	"e":7,
 	"s":5,
-	"w":1,
+	"w":0,
 	"subtypeText":"Linewalker Mage"
 }
