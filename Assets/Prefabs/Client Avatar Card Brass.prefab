@@ -1586,11 +1586,11 @@ MonoBehaviour:
   unzoomedCharFrame: {fileID: 1457058967496682558}
   unzoomedAllFrame: {fileID: 1381182798238114637}
   zoomedCharStatBackgrounds: {fileID: 6649678038580982359}
-  unzoomedCharStatBackgrounds: {fileID: 0}
+  unzoomedCharStatBackgrounds: {fileID: 4484887762729981957}
   zoomedSpellStatBackgrounds: {fileID: 6362096710813375021}
-  unzoomedSpellStatBackgrounds: {fileID: 0}
+  unzoomedSpellStatBackgrounds: {fileID: 9200787146226218536}
   zoomedAugStatBackgrounds: {fileID: 2074378642539114013}
-  unzoomedAugStatBackgrounds: {fileID: 0}
+  unzoomedAugStatBackgrounds: {fileID: 7958550959631281897}
   zoomedNText: {fileID: 43076038857365400}
   zoomedEText: {fileID: 2927600502923973182}
   zoomedSText: {fileID: 7969599412030038954}
