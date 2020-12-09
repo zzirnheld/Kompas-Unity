@@ -63,12 +63,13 @@ public class CardRepository : MonoBehaviour
             cardNames.Add(nameClean);
 
             //load the json
-            string json = Resources.Load<TextAsset>(cardJsonsFolderpath + nameClean)?.text;
-            if (json == null)
+            var jsonAsset = Resources.Load<TextAsset>(cardJsonsFolderpath + nameClean);
+            if (jsonAsset == null)
             {
                 Debug.LogError($"Failed to load json for {nameClean}");
                 continue;
             }
+            string json = jsonAsset.text;
             //remove problematic chars for from json function
             json = json.Replace('\n', ' ');
             json = json.Replace("\r", "");
