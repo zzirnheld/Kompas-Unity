@@ -38,7 +38,6 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
-					"nChange":1,
 					"eChange":1,
 					"sChange":1,
 					"wChange":1
