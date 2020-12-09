@@ -1,17 +1,14 @@
 ﻿using KompasClient.Cards;
-using KompasClient.Effects;
 using KompasClient.GameCore;
 using KompasClient.UI;
 using KompasCore.Cards;
-using KompasCore.Effects;
 using KompasDeckbuilder;
 using KompasServer.Cards;
-using KompasServer.Effects;
 using KompasServer.GameCore;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Newtonsoft.Json;
 
 public class CardRepository : MonoBehaviour
 {
