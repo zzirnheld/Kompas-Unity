@@ -69,6 +69,9 @@ namespace KompasClient.UI
         //escape menu
         public ClientEscapeMenuUIController escapeMenuUICtrl;
 
+        //card view ui
+        public CardInfoViewClientUIController cardInfoViewUICtrl;
+
         public GameCard CardToActivateEffectsFor
         {
             set => activatorUICtrl.nextShowFor = value;
