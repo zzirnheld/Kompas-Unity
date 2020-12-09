@@ -59,6 +59,8 @@ namespace KompasServer.Networking
         public void NotifySetPips(int pipsToSet)
             => SendToBothInverting(new SetPipsPacket(pipsToSet, Player.index, invert: Player.index != 0));
         public void NotifyYourTurn() => SendToBothInverting(new SetTurnPlayerPacket(0));
+
+        public void NotifyDeckCount(int count) => SendToBothInverting(new SetDeckCountPacket(0, count));
         #endregion game stats
 
         #region card location

@@ -65,6 +65,7 @@ namespace KompasServer.Effects
             }
             else
             {
+                Debug.Log($"{card?.CardName} not a valid target for {cardRestriction}");
                 GetTargets(PotentialTargetIds);
                 return false;
             }

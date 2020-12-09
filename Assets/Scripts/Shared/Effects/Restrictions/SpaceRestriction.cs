@@ -49,6 +49,7 @@ namespace KompasCore.Effects
         public int constant;
 
         public string blurb = "";
+        public bool mustBeEmpty = true;
 
         public void Initialize(GameCard source, Player controller, Effect effect)
         {
@@ -116,6 +117,7 @@ namespace KompasCore.Effects
         public bool Evaluate(int x, int y)
         {
             if (!Source.Game.boardCtrl.ValidIndices(x, y)) return false;
+            if (mustBeEmpty && Source.Game.boardCtrl.GetCardAt(x, y) != null) return false;
 
             return spaceRestrictions.All(r => RestrictionValid(r, x, y));
         }

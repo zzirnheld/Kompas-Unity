@@ -1,0 +1,46 @@
+{
+	"cardType":67,
+	"cardName":"Dispeller by Sword",
+	"effText":"Once each friendly turn, if I'm adjacent to X Warriors, you can dispel a C <= X spell.",
+	"effects":[
+		{
+			"activationRestriction":{
+				"activationRestrictionArray":[
+					"Max Times Per Turn",
+					"Friendly Turn",
+					"Default"
+				]
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"spell for Dispeller by Sword to dispel, Assembly-CSharp",
+						"cardRestrictions":["Subtypes Include","Is Character","Board","Adjacent"],
+						"subtypesInclude":["Warrior"]
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Spell","Cost<=X"]
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.DispelSubeffect, Assembly-CSharp",
+					"targetIndex":-1
+				}
+			]
+		}
+	],
+	"n":3,
+	"e":5,
+	"s":6,
+	"w":6,
+	"subtypes":["Swordguild","Warrior","Mage"],
+	"subtypeText":"Swordguild Warrior Mage"
+}

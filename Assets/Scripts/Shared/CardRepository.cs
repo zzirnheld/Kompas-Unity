@@ -1,17 +1,14 @@
 ﻿using KompasClient.Cards;
-using KompasClient.Effects;
 using KompasClient.GameCore;
 using KompasClient.UI;
 using KompasCore.Cards;
-using KompasCore.Effects;
 using KompasDeckbuilder;
 using KompasServer.Cards;
-using KompasServer.Effects;
 using KompasServer.GameCore;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Newtonsoft.Json;
 
 public class CardRepository : MonoBehaviour
 {
@@ -66,12 +63,13 @@ public class CardRepository : MonoBehaviour
             cardNames.Add(nameClean);
 
             //load the json
-            string json = Resources.Load<TextAsset>(cardJsonsFolderpath + nameClean)?.text;
-            if (json == null)
+            var jsonAsset = Resources.Load<TextAsset>(cardJsonsFolderpath + nameClean);
+            if (jsonAsset == null)
             {
                 Debug.LogError($"Failed to load json for {nameClean}");
                 continue;
             }
+            string json = jsonAsset.text;
             //remove problematic chars for from json function
             json = json.Replace('\n', ' ');
             json = json.Replace("\r", "");
@@ -177,6 +175,7 @@ public class CardRepository : MonoBehaviour
         avatar.gameObject.GetComponentInChildren<ClientCardMouseController>().ClientGame = clientGame;
         avatar.cardCtrl.SetImage(avatar.CardName, false);
         clientGame.cardsByID.Add(id, avatar);
+        avatar.clientCardCtrl.ApplySettings(clientGame.clientUISettingsCtrl.ClientUISettings);
         return avatar;
     }
 
@@ -198,6 +197,7 @@ public class CardRepository : MonoBehaviour
         card.SetInfo(cardInfo, clientGame, owner, cardInfo.effects, id);
         card.cardCtrl.SetImage(card.CardName, false);
         card.gameObject.GetComponentInChildren<ClientCardMouseController>().ClientGame = clientGame;
+        card.clientCardCtrl.ApplySettings(clientGame.clientUISettingsCtrl.ClientUISettings);
         return card;
     }
 

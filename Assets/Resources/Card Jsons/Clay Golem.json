@@ -1,0 +1,63 @@
+{
+	"cardType":67,
+	"cardName":"Clay Golem",
+	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, tribute me and deck-summon a Golem.",
+	"effects":[
+		{
+			"blurb":"Golemorph",
+			"triggerData":
+			{
+				"triggerCondition":"Activate",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"for Clay Golem to summon",
+						"cardRestrictions":["Subtypes Include","Is Character","Deck"],
+						"subtypesInclude":["Golem"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"to play the card you chose",
+						"spaceRestrictions":["Can Play Target to This Space"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"MovementRestriction":{
+		"normalRestrictionsFromJson":[
+			"Default",
+			"Activated"
+		]
+	},
+	"AttackRestriction":{
+		"attackRestrictions":[
+			"Default",
+			"This is Activated"
+		]
+	},
+	"n":1,
+	"e":2,
+	"s":1,
+	"w":2,
+	"subtypes":["Golem"],
+	"subtypeText":"Golem"
+}

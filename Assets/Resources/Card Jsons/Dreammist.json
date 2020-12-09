@@ -1,0 +1,34 @@
+{
+	"cardType":67,
+	"cardName":"Dreammist",
+	"effText":"When I'm summoned adjacent to a Shaper, draw 1.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","Coords Fit Restriction"],
+					"spaceRestriction":{
+						"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
+						"adjacencyRestriction":{
+							"cardRestrictions":["Subtypes Include"],
+							"subtypesInclude":["Shaper"]
+						}
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+	"n":0,
+	"e":1,
+	"s":1,
+	"w":0,
+	"subtypes":["Ethereal"],
+	"subtypeText":"Ethereal"
+}

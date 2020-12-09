@@ -1,0 +1,49 @@
+{
+	"cardType":67,
+	"cardName":"Obsidian Golem",
+	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, I give a Summoned character -5E.",
+	"effects":[
+		{
+			"blurb":"Shards of Glass",
+			"triggerData":
+			{
+				"triggerCondition":"Activate",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Summoned character for Obsidian Golem to give -5E",
+						"cardRestrictions":["Is Character","Summoned","Board"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
+					"eChange":-5
+				}
+			]
+		}
+	],
+	"MovementRestriction":{
+		"normalRestrictionsFromJson":[
+			"Default",
+			"Activated"
+		]
+	},
+	"AttackRestriction":{
+		"attackRestrictions":[
+			"Default",
+			"This is Activated"
+		]
+	},
+	"n":2,
+	"e":2,
+	"s":5,
+	"w":7,
+	"subtypes":["Golem"],
+	"subtypeText":"Golem"
+}

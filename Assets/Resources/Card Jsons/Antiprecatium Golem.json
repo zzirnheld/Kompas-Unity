@@ -1,0 +1,48 @@
+{
+	"cardType":67,
+	"cardName":"Antiprecatium Golem",
+	"effText":"Golem: While I’m inactive, I can’t attack or move.\nWhen I'm activated, dispel a spell.",
+	"effects":[
+		{
+			"blurb":"Dispel",
+			"triggerData":
+			{
+				"triggerCondition":"Activate",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"spell for Wynn to DispelSubeffect, Assembly-CSharp",
+						"cardRestrictions":["Is Spell","Board"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"MovementRestriction":{
+		"normalRestrictionsFromJson":[
+			"Default",
+			"Activated"
+		]
+	},
+	"AttackRestriction":{
+		"attackRestrictions":[
+			"Default",
+			"This is Activated"
+		]
+	},
+	"n":1,
+	"e":6,
+	"s":5,
+	"w":6,
+	"subtypes":["Golem"],
+	"subtypeText":"Golem"
+}

@@ -1,0 +1,99 @@
+{
+	"cardType":83,
+	"cardName":"Right Into My Trap",
+	"effText":"Ificate.\nWhen a character here moves out of my area of effect, move them a space towards me, then if they’re no longer in my area of effect, annihilate me.",
+	"effects":[
+		{
+			"triggerData":{
+				"blurb":"Ificate",
+				"triggerCondition":"Discard",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Hand"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Crazy Idea for Right Into My Trap to Ificate",
+						"cardRestrictions":["Subtypes Include","Discard","Friendly","Distinct from Source"],
+						"subtypesInclude":["Crazy Idea"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
+					"xMultiplier":0,
+					"xModifier":1
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where Right Into My Trap to play targeted Crazy Idea",
+						"spaceRestrictions":["Can Play Target to This Space"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]
+		},
+		{
+			"triggerData":
+			{
+				"blurb":"Back Into My Trap",
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["Triggerer Fits Restriction","Coords Fit Restriction"],
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character","Board","In AOE"]
+					},
+					"spaceRestriction":
+					{
+						"spaceRestrictions":["Not In AOE"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"back into my trap",
+						"spaceRestrictions":["Empty","Distance to Target == Constant","Can Move Target to This Space","Towards Source from Target"],
+						"constant":1
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition":"Target Fits Restriction",
+					"cardRestriction":
+					{
+						"cardRestrictions":["In AOE"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+	"c":5,
+	"spellType":"Radial",
+	"subtypeText":"Crazy Idea Radial Ificator",
+	"arg":1
+}

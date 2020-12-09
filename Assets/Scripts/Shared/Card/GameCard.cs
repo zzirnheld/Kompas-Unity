@@ -284,7 +284,8 @@ namespace KompasCore.Cards
         public bool WithinSpaces(int numSpaces, GameCard card)
             => card != null && card.Location == CardLocation.Field && Location == CardLocation.Field && DistanceTo(card) <= numSpaces;
         public bool WithinSpaces(int numSpaces, int x, int y) => DistanceTo(x, y) <= numSpaces;
-        public bool IsAdjacentTo(GameCard card) => Location == CardLocation.Field && card != null && DistanceTo(card) == 1;
+        public bool IsAdjacentTo(GameCard card) => Location == CardLocation.Field && card != null 
+            && card.Location == CardLocation.Field && DistanceTo(card) == 1;
         public bool IsAdjacentTo(int x, int y) => Location == CardLocation.Field && DistanceTo(x, y) == 1;
         public bool CardInAOE(GameCard c) => SpaceInAOE(c.Position);
         public bool SpaceInAOE((int x, int y) space) => SpaceInAOE(space.x, space.y);

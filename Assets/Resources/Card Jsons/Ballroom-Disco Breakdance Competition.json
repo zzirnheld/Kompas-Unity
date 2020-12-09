@@ -1,0 +1,99 @@
+{
+	"cardType":83,
+	"cardName":"Ballroom-Disco Breakdance Competition",
+	"effText":"Ificate.\nWhen a character moves in my area of effect, set their N to 0. When a character leaves my area of effect, destroy me.",
+	"effects":[
+		{
+			"triggerData":{
+				"blurb":"Ificate",
+				"triggerCondition":"Discard",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Hand"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Crazy Idea for Ballroom-Disco to Ificate",
+						"cardRestrictions":["Subtypes Include","Discard","Friendly","Distinct from Source"],
+						"subtypesInclude":["Crazy Idea"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
+					"xMultiplier":0,
+					"xModifier":1
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where Ballroom-Disco Breakdance Competition to play targeted Crazy Idea",
+						"spaceRestrictions":["Can Play Target to This Space"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]
+		},
+		{
+			"triggerData":
+			{
+				"blurb":"N = 0",
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["Coords Fit Restriction","This Card in Play"],
+					"spaceRestriction":
+					{
+						"spaceRestrictions":["In AOE"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetNESWSubeffect, Assembly-CSharp",
+					"nVal":0
+				}
+			]	
+		},
+		{
+			"triggerData":
+			{
+				"blurb":"Annihilate this",
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["Triggerer Fits Restriction","Coords Fit Restriction","This Card in Play"],
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character","Board","In AOE"]
+					},
+					"spaceRestriction":
+					{
+						"spaceRestrictions":["Not In AOE"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+	"c":5,
+	"spellType":"Radial",
+	"subtypeText":"Radial Crazy Idea Ificator",
+	"arg":1
+}

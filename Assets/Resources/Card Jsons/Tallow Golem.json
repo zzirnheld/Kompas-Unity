@@ -1,0 +1,51 @@
+{
+	"cardType":67,
+	"cardName":"Tallow Golem",
+	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, I activate a character until your next turn.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Activate",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"character for Tallow Golem to temporarily activate",
+						"cardRestrictions":["Is Character","Board"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.TemporaryActivationSubeffect, Assembly-CSharp",
+					"endCondition":"Turn Start",
+					"triggerRestriction":{
+						"triggerRestrictions":["Friendly Turn"]
+					}
+				}
+			]
+		}
+	],
+	"MovementRestriction":{
+		"normalRestrictionsFromJson":[
+			"Default",
+			"Activated"
+		]
+	},
+	"AttackRestriction":{
+		"attackRestrictions":[
+			"Default",
+			"This is Activated"
+		]
+	},
+	"n":2,
+	"e":3,
+	"s":2,
+	"w":2,
+	"subtypes":["Golem"],
+	"subtypeText":"Golem"
+}

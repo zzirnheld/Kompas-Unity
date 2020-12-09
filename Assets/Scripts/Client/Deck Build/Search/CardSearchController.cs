@@ -11,8 +11,9 @@ namespace KompasDeckbuilder
 {
     public class CardSearchController : MonoBehaviour
     {
-        public const string cardBackPath = "Detailed Sprites/Square Kompas Logo";
-        public const char nbsp = (char)8203;
+        public const string CardBackPath = "Detailed Sprites/Square Kompas Logo";
+        public const char NBSP = (char)8203;
+        public const int MaxToShow = 100;
 
         public GameObject deckSearchInfoObj;
 
@@ -72,7 +73,7 @@ namespace KompasDeckbuilder
             shownCards = new List<DeckSearchInfoController>();
 
             //get image to show when no card is selected
-            CardBack = Resources.Load<Sprite>(cardBackPath);
+            CardBack = Resources.Load<Sprite>(CardBackPath);
             //show the blank card
             ShowSelectedCard();
         }
@@ -122,9 +123,9 @@ namespace KompasDeckbuilder
             }
             shownCards.Clear();
 
-            cardNameToSearch = NameToSearch.text.Replace("\u200B", "");
-            subtypeToSearch = SubtypeToSearch.text.Replace("\u200B", "");
-            textToSearch = TextToSearch.text.Replace("\u200B", "");
+            //assume that name/subtype/text to search have already been set.
+            //setting them right now, if this is called as an event for on edit,
+            //will cause the value currently in .text to be the value **before** the edit.
 
             //don't do anything if it's an invalid string to search with
             if ((string.IsNullOrWhiteSpace(cardNameToSearch) || cardNameToSearch.Length < 2)
@@ -150,32 +151,36 @@ namespace KompasDeckbuilder
 
             var serializeds = CardRepository.SerializableCards;
 
-            if (!string.IsNullOrWhiteSpace(nameLower) && nameLower.Length >= 2)
+            if (!string.IsNullOrWhiteSpace(nameLower))
                 serializeds = serializeds.Where(s => s.cardName.ToLower().Contains(nameLower));
 
-            if (!string.IsNullOrWhiteSpace(subtypesLower) && subtypesLower.Length >= 2)
+            if (!string.IsNullOrWhiteSpace(subtypesLower))
                 serializeds = serializeds.Where(s => s.subtypeText.ToLower().Contains(subtypesLower));
 
-            if (!string.IsNullOrWhiteSpace(textLower) && textLower.Length >= 2)
+            if (!string.IsNullOrWhiteSpace(textLower))
                 serializeds = serializeds.Where(s => s.effText.ToLower().Contains(textLower));
 
-            if (int.TryParse(NMin.text.Trim(nbsp), out int nMin)) serializeds = serializeds.Where(s => s.n >= nMin);
-            if (int.TryParse(EMin.text.Trim(nbsp), out int eMin)) serializeds = serializeds.Where(s => s.e >= eMin);
-            if (int.TryParse(SMin.text.Trim(nbsp), out int sMin)) serializeds = serializeds.Where(s => s.s >= sMin);
-            if (int.TryParse(WMin.text.Trim(nbsp), out int wMin)) serializeds = serializeds.Where(s => s.w >= wMin);
-            if (int.TryParse(CMin.text.Trim(nbsp), out int cMin)) serializeds = serializeds.Where(s => s.c >= cMin);
-            if (int.TryParse(AMin.text.Trim(nbsp), out int aMin)) serializeds = serializeds.Where(s => s.a >= aMin);
+            if (int.TryParse(NMin.text.Trim(NBSP), out int nMin)) serializeds = serializeds.Where(s => s.n >= nMin);
+            if (int.TryParse(EMin.text.Trim(NBSP), out int eMin)) serializeds = serializeds.Where(s => s.e >= eMin);
+            if (int.TryParse(SMin.text.Trim(NBSP), out int sMin)) serializeds = serializeds.Where(s => s.s >= sMin);
+            if (int.TryParse(WMin.text.Trim(NBSP), out int wMin)) serializeds = serializeds.Where(s => s.w >= wMin);
+            if (int.TryParse(CMin.text.Trim(NBSP), out int cMin)) serializeds = serializeds.Where(s => s.c >= cMin);
+            if (int.TryParse(AMin.text.Trim(NBSP), out int aMin)) serializeds = serializeds.Where(s => s.a >= aMin);
 
-            if (int.TryParse(NMax.text.Trim(nbsp), out int nMax)) serializeds = serializeds.Where(s => s.n <= nMax);
-            if (int.TryParse(EMax.text.Trim(nbsp), out int eMax)) serializeds = serializeds.Where(s => s.e <= eMax);
-            if (int.TryParse(SMax.text.Trim(nbsp), out int sMax)) serializeds = serializeds.Where(s => s.s <= sMax);
-            if (int.TryParse(WMax.text.Trim(nbsp), out int wMax)) serializeds = serializeds.Where(s => s.w <= wMax);
-            if (int.TryParse(CMax.text.Trim(nbsp), out int cMax)) serializeds = serializeds.Where(s => s.c <= cMax);
-            if (int.TryParse(AMax.text.Trim(nbsp), out int aMax)) serializeds = serializeds.Where(s => s.a <= aMax);
+            if (int.TryParse(NMax.text.Trim(NBSP), out int nMax)) serializeds = serializeds.Where(s => s.n <= nMax);
+            if (int.TryParse(EMax.text.Trim(NBSP), out int eMax)) serializeds = serializeds.Where(s => s.e <= eMax);
+            if (int.TryParse(SMax.text.Trim(NBSP), out int sMax)) serializeds = serializeds.Where(s => s.s <= sMax);
+            if (int.TryParse(WMax.text.Trim(NBSP), out int wMax)) serializeds = serializeds.Where(s => s.w <= wMax);
+            if (int.TryParse(CMax.text.Trim(NBSP), out int cMax)) serializeds = serializeds.Where(s => s.c <= cMax);
+            if (int.TryParse(AMax.text.Trim(NBSP), out int aMax)) serializeds = serializeds.Where(s => s.a <= aMax);
 
             serializeds = serializeds.Where(s => ValidCardType(s.cardType));
 
-            var jsonsThatFit = CardRepo.GetJsonsFromNames(serializeds.Select(s => s.cardName));
+            var serializedArray = serializeds.ToArray();
+
+            if (serializedArray.Length > MaxToShow) return;
+
+            var jsonsThatFit = CardRepo.GetJsonsFromNames(serializedArray.Select(s => s.cardName));
 
             //for each of the jsons, add it to the shown cards to be added
             foreach (string json in jsonsThatFit)
@@ -190,6 +195,28 @@ namespace KompasDeckbuilder
             }
         }
 
-        public void ShowMoreSearchOption(bool show) => MoreSearchOptions.SetActive(show);
+        public void SearchName(string name)
+        {
+            cardNameToSearch = name.Replace("\u200B", "");
+            SearchCards();
+        }
+
+        public void SearchSubtypes(string subtypes)
+        {
+            subtypeToSearch = subtypes.Replace("\u200B", "");
+            SearchCards();
+        }
+
+        public void SearchText(string text)
+        {
+            textToSearch = text.Replace("\u200B", "");
+            SearchCards();
+        }
+
+        public void ShowMoreSearchOption(bool show)
+        {
+            MoreSearchOptions.SetActive(show);
+            if (!show) SearchCards();
+        }
     }
 }

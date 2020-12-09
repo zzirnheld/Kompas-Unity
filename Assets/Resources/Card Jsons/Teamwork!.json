@@ -1,0 +1,32 @@
+{
+	"cardType":83,
+	"cardName":"Teamwork!",
+	"effText":"Unique.\nWhen a friendly character is augmented, draw 1.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Teamwork! Draw!",
+				"triggerCondition":"Augmented",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Friendly"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"c":3,
+	"PlayRestriction":{
+		"normalRestrictions":["Default Normal Restrictions","Unique"],
+		"effectRestrictions":["Default Effect Restrictions","Unique"]
+	},
+	"spellType":"Enchant",
+	"subtypeText":"Sportsball Play Enchant"
+}

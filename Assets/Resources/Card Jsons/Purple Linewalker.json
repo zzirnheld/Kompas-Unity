@@ -1,0 +1,62 @@
+{
+	"cardType":67,
+	"cardName":"Purple Linewalker",
+	"effText":"Linewalk.\nWhen I move X spaces, give characters within 1 space of me -X E. (This includes me).",
+	"effects":[
+		{
+			"blurb":"Linewalk",
+			"activationRestriction":{
+				"activationRestrictionArray":[
+					"Friendly Turn",
+					"Default"
+				]
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SpendRemainingMovementSubeffect, Assembly-CSharp",
+					"xModifier":1
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"to Linewalk to",
+						"spaceRestrictions":["Empty","On Target's Diagonal"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
+			]
+		},
+		{
+			"blurb":"Purple Linewalked",
+			"triggerData":
+			{
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.ChangeAllNESWSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character","Board","Within C Spaces"],
+						"cSpaces":1
+					},
+					"eMult":-1
+				}
+			]
+		}
+	],
+	"n":1,
+	"e":7,
+	"s":5,
+	"w":0,
+	"subtypeText":"Linewalker Mage"
+}

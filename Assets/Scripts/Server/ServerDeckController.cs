@@ -13,13 +13,18 @@ namespace KompasServer.GameCore
         public ServerNotifier ServerNotifier => ServerGame.ServerPlayers[Owner.index].ServerNotifier;
         public ServerEffectsController EffectsController => ServerGame.EffectsController;
 
+        public override Player Owner => owner;
+        public ServerPlayer owner;
+
         protected override bool AddCard(GameCard card, IStackable stackSrc = null)
         {
             if (card.CanRemove)
             {
                 var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
                 EffectsController.TriggerForCondition(Trigger.ToDeck, context);
-                return base.AddCard(card);
+                var success = base.AddCard(card);
+                owner.ServerNotifier.NotifyDeckCount(Deck.Count);
+                return success;
             }
             return false;
         }
@@ -65,6 +70,7 @@ namespace KompasServer.GameCore
             if(base.RemoveFromDeck(card))
             {
                 card.ResetCard();
+                owner.ServerNotifier.NotifyDeckCount(Deck.Count);
                 return true;
             }
             return false;

@@ -93,8 +93,9 @@ namespace KompasCore.Effects
             }
         }
 
-        public bool EvaluateNormalPlay(int x, int y, Player player)
-            => normalRestrictions.All(r => RestrictionValid(r, x, y, player, true));
+        public bool EvaluateNormalPlay(int x, int y, Player player, bool checkCanAffordCost = false)
+            => (!checkCanAffordCost || player.Pips >= Card.Cost) 
+            && normalRestrictions.All(r => RestrictionValid(r, x, y, player, true));
 
         public bool EvaluateEffectPlay(int x, int y, Effect effect, Player controller)
             => effectRestrictions.All(r => RestrictionValid(r, x, y, controller, false));

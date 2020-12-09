@@ -1,0 +1,75 @@
+{
+	"cardType":67,
+	"cardName":"Straw Golem",
+	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, move two enemy cards each 3 spaces. (Remember, Avatar's can't be moved.)",
+	"effects":[
+		{
+			"blurb":"Go Elsewhere",
+			"triggerData":
+			{
+				"triggerCondition":"Activate",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"enemy card for Straw Golem to move.",
+						"cardRestrictions":["Board","Enemy","Not Avatar"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"spaceRestrictions":["Empty","Distance to Target == Constant","Can Move Target to This Space"],
+						"constant":3
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"enemy card for Straw Golem to move.",
+						"cardRestrictions":["Board","Enemy","Not Already Target","Not Avatar"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"spaceRestrictions":["Empty","Distance to Target == Constant","Can Move Target to This Space"],
+						"constant":3
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"MovementRestriction":{
+		"normalRestrictionsFromJson":[
+			"Default",
+			"Activated"
+		]
+	},
+	"AttackRestriction":{
+		"attackRestrictions":[
+			"Default",
+			"This is Activated"
+		]
+	},
+	"n":2,
+	"e":1,
+	"s":2,
+	"w":1,
+	"subtypes":["Golem"],
+	"subtypeText":"Golem"
+}

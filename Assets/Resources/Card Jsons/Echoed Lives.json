@@ -1,0 +1,30 @@
+{
+	"cardType":83,
+	"cardName":"Echoed Lives",
+	"effText":"When turns start, resummon Summoned characters here.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.ResummonAllSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character","Summoned","Board","In AOE"]
+					}
+				}
+			]	
+		}
+	],
+	"c":3,
+	"spellType":"Radial",
+	"subtypes":["Radial"],
+	"subtypeText":"Radial",
+	"arg":1
+}

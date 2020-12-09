@@ -1,0 +1,54 @@
+{
+	"cardType":67,
+	"cardName":"Revered Vessel",
+	"effText":"Geminii.\nWhen I'm summoned, give adjacent characters +1ESW.",
+	"effects":[
+		{
+			"blurb":"Pip Resummon",
+			"activationRestriction":{
+				"activationRestrictionArray":[
+					"Default"
+				]
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+				}
+			]	
+		},
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.ChangeAllNESWSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character","Board","Adjacent"]
+					},
+					"eMod":1,
+					"sMod":1,
+					"wMod":1
+				}
+			]	
+		}
+	],
+	"n":1,
+	"e":2,
+	"s":3,
+	"w":2,
+	"subtypes":["Geminii"],
+	"subtypeText":"Geminii"
+}

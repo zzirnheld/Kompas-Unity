@@ -1,0 +1,56 @@
+{
+	"cardType":67,
+	"cardName":"Malevolent Vessel",
+	"effText":"Geminii.\nWhen I'm summoned, kill a Summoned character within 1 space of me (that includes me).",
+	"effects":[
+		{
+			"blurb":"Pip Resummon",
+			"activationRestriction":{
+				"activationRestrictionArray":[
+					"Default"
+				]
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+				}
+			]	
+		},
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"character for Malevolent Vessel to kill within 1 space of them",
+						"cardRestrictions":["Is Character","Board","Within C Spaces"],
+						"cSpaces":1
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+	"n":3,
+	"e":1,
+	"s":5,
+	"w":4,
+	"subtypes":["Geminii","Warrior"],
+	"subtypeText":"Geminii Warrior"
+}

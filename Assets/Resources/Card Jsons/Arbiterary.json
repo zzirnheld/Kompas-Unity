@@ -1,0 +1,73 @@
+{
+	"cardType":67,
+	"cardName":"Arbiterary",
+	"effText":"Unique: Can’t be played if you control a copy.\nWhen a friendly Augment is attached, give it +1 A. If it became attached to an enemy Avatar, set X to the Augment's A, give the Avatar -X E, attach the augment to me, and reset its A.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Score Pass",
+				"triggerCondition":"Augment Attached",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"cardRestriction":
+					{
+						"cardRestrictions":["Friendly"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"aMod":1
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTargetsAugmentedCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition":"Target Violates Restriction",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Avatar","Enemy"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"Cost",
+					"targetIndex":-2,
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMult":-1
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"targetIndex":-3,
+					"attachmentTarget":-1
+				},
+				{
+					"$type":"KompasServer.Effects.ResetStatsSubeffect, Assembly-CSharp",
+					"targetIndex":-3,
+					"resetA":true
+				}
+			]
+		}
+	],
+	"n":1,
+	"e":7,
+	"s":7,
+	"w":3,
+	"PlayRestriction":{
+		"normalRestrictions":["Default Normal Restrictions","Unique"],
+		"effectRestrictions":["Default Effect Restrictions","Unique"]
+	},
+	"subtypeText":""
+}

@@ -1,0 +1,49 @@
+{
+	"cardType":67,
+	"cardName":"Pneumatic Golem",
+	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, rehand a character within 2 spaces.",
+	"effects":[
+		{
+			"blurb":"Nope, Go Away",
+			"triggerData":
+			{
+				"triggerCondition":"Activate",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"character within 2 spaces of Pneumatic Golem for it to rehand",
+						"cardRestrictions":["Is Character","Board","Within C Spaces"],
+						"cSpaces":2
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"MovementRestriction":{
+		"normalRestrictionsFromJson":[
+			"Default",
+			"Activated"
+		]
+	},
+	"AttackRestriction":{
+		"attackRestrictions":[
+			"Default",
+			"This is Activated"
+		]
+	},
+	"n":3,
+	"e":4,
+	"s":3,
+	"w":1,
+	"subtypes":["Golem"],
+	"subtypeText":"Golem"
+}

@@ -1,0 +1,43 @@
+{
+	"cardType":83,
+	"cardName":"Soul Drain",
+	"effText":"Unique.\nWhen an SX Revenant is annihilated, mill your deck’s top X.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Annihilate",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Subtypes Include","Is Character"],
+						"subtypesInclude":["Revenant"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"S",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.MillSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				}
+			]	
+		}
+	],
+	"fast":true,
+	"c":3,
+	"PlayRestriction":{
+		"normalRestrictions":["Default Normal Restrictions","Unique"],
+		"effectRestrictions":["Default Effect Restrictions","Unique"]
+	},
+	"spellType":"Enchant",
+	"subtypes":["Enchant"],
+	"subtypeText":"Enchant"
+}

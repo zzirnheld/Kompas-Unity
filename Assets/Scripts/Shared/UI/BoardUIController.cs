@@ -43,12 +43,14 @@ namespace KompasCore.UI
                 {
                     var cue = spaceCueControllers[i, j];
 
-                    if (card.MovementRestriction.EvaluateNormalMove(i, j)) 
+                    if (card.MovementRestriction.EvaluateNormalMove(i, j))
                         cue.ShowCanMove();
-                    else if (card.AttackRestriction.Evaluate(boardCtrl.GetCardAt(i, j))) 
+                    else if (card.AttackRestriction.Evaluate(boardCtrl.GetCardAt(i, j)))
                         cue.ShowCanAttack();
-                    else 
-                        cue.ShowCanNeither();
+                    else if (card.PlayRestriction.EvaluateNormalPlay(i, j, card.Controller, checkCanAffordCost: true))
+                        cue.ShowCanPlay();
+                    else
+                        cue.ShowCanNone();
                 }
             }
         }
@@ -57,7 +59,7 @@ namespace KompasCore.UI
 
         public void ShowNothing()
         {
-            foreach (var cue in spaceCueControllers) cue.ShowCanNeither();
+            foreach (var cue in spaceCueControllers) cue.ShowCanNone();
         }
 
         public void ShowSpaceTargets(Func<(int, int), bool> predicate)

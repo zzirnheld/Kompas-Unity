@@ -133,7 +133,7 @@ namespace KompasClient.UI
         public override void SelectCard(GameCard card, Game.TargetMode targetMode, bool fromClick)
         {
             base.SelectCard(card, targetMode, fromClick);
-            if (fromClick && card != null) clientGame.searchCtrl.AddTarget(card);
+            if (fromClick && targetMode != Game.TargetMode.Free && card != null) clientGame.searchCtrl.AddTarget(card);
         }
 
         public void ReselectSelectedCard(bool fromClick) => SelectCard(SelectedCard, fromClick);
