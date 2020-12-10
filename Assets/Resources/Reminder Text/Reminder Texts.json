@@ -1,0 +1,16 @@
+{
+	"keywordReminderTexts":[
+		{
+			"keyword":"Linewalk",
+			"reminder":"I can spend all my movement to move anywhere along my diagonal."
+		},
+		{
+			"keyword":"Shape",
+			"reminder":"During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters."
+		},
+		{
+			"keyword":"Shape",
+			"reminder":"During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters."
+		}
+	]
+}

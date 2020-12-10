@@ -7,6 +7,7 @@ using KompasCore.Cards;
 using UnityEngine.EventSystems;
 using System.Linq;
 using KompasClient.GameCore;
+using Newtonsoft.Json;
 
 namespace KompasClient.UI
 {
@@ -14,6 +15,7 @@ namespace KompasClient.UI
     {
         public const string DefaultCharFrame = "Misc Card Icons/Character Frame";
         public const string DefaultNonCharFrame = "Misc Card Icons/Spell Frame";
+        public const string RemindersJsonPath = "Reminder Text/Reminder Texts";
 
         public TMP_Text nameText;
         public TMP_Text subtypesText;
@@ -38,6 +40,13 @@ namespace KompasClient.UI
         public Transform effBtnsParent;
         public GameObject effBtnPrefab;
 
+        private readonly List<ReminderTextClientUIController> reminderCtrls
+            = new List<ReminderTextClientUIController>();
+        public Transform remindersParent;
+        public GameObject reminderPrefab;
+
+        public ReminderTextsContainer Reminders { get; private set; }
+
         private GameCard currShown;
         public GameCard CurrShown
         {
@@ -50,60 +59,85 @@ namespace KompasClient.UI
                 //save value, then
                 currShown = value;
 
-                //null means show nothing
-                if(currShown == null)
-                {
-                    gameObject.SetActive(false);
-                    return;
-                }
-
-                bool isChar = currShown.CardType == 'C';
-                if(isChar) cardFrameImage.sprite = Resources.Load<Sprite>(DefaultCharFrame);
-                else cardFrameImage.sprite = Resources.Load<Sprite>(DefaultNonCharFrame);
-
-                nText.text = $"N\n{currShown.N}";
-                eText.text = $"E\n{currShown.E}";
-                wText.text = $"W\n{currShown.W}";
-                nText.gameObject.SetActive(isChar);
-                eText.gameObject.SetActive(isChar);
-                wText.gameObject.SetActive(isChar);
-
-                //TODO after unity updates: make this a switch expression
-                switch (currShown.CardType)
-                {
-                    case 'C': costText.text = $"S\n{currShown.S}"; break;
-                    case 'S': costText.text = $"C\n{currShown.C}"; break;
-                    case 'A': costText.text = $"A\n{currShown.A}"; break;
-                    default: throw new System.NotImplementedException();
-                }
-
-                nameText.text = currShown.CardName;
-                subtypesText.text = currShown.SubtypeText;
-                effText.text = currShown.EffText;
-
-                conditionParentObject.SetActive(currShown.Negated || currShown.Activated);
-                negatedObject.SetActive(currShown.Negated);
-                activatedObject.SetActive(currShown.Activated);
-
-                var effsArray = currShown.Effects.Where(e => e.CanBeActivatedBy(clientGame.Players[0])).ToArray();
-                effButtonsParentObject.SetActive(effsArray.Any());
-                //clear existing effects
-                foreach(var eff in effBtns)
-                {
-                    Destroy(eff.gameObject);
-                }
-                effBtns.Clear();
-                //make buttons for new effs
-                foreach(var eff in effsArray)
-                {
-                    var obj = Instantiate(effBtnPrefab, effBtnsParent);
-                    var ctrl = obj.GetComponent<ClientUseEffectButtonController>();
-                    ctrl.Initialize(eff, clientGame.clientUICtrl);
-                    effBtns.Add(ctrl);
-                }
-
-                gameObject.SetActive(true);
+                ShowForCurrShown();
             }
+        }
+
+        public void Awake()
+        {
+            var jsonAsset = Resources.Load<TextAsset>(RemindersJsonPath);
+            Reminders = JsonConvert.DeserializeObject<ReminderTextsContainer>(jsonAsset.text);
+            gameObject.SetActive(false);
+        }
+
+        public void ShowForCurrShown()
+        {
+            //null means show nothing
+            if (currShown == null)
+            {
+                gameObject.SetActive(false);
+                return;
+            }
+
+            bool isChar = currShown.CardType == 'C';
+            if (isChar) cardFrameImage.sprite = Resources.Load<Sprite>(DefaultCharFrame);
+            else cardFrameImage.sprite = Resources.Load<Sprite>(DefaultNonCharFrame);
+
+            nText.text = $"N\n{currShown.N}";
+            eText.text = $"E\n{currShown.E}";
+            wText.text = $"W\n{currShown.W}";
+            nText.gameObject.SetActive(isChar);
+            eText.gameObject.SetActive(isChar);
+            wText.gameObject.SetActive(isChar);
+
+            //TODO after unity updates: make this a switch expression
+            switch (currShown.CardType)
+            {
+                case 'C': costText.text = $"S\n{currShown.S}"; break;
+                case 'S': costText.text = $"C\n{currShown.C}"; break;
+                case 'A': costText.text = $"A\n{currShown.A}"; break;
+                default: throw new System.NotImplementedException();
+            }
+
+            nameText.text = currShown.CardName;
+            subtypesText.text = currShown.SubtypeText;
+            effText.text = currShown.EffText;
+
+            conditionParentObject.SetActive(currShown.Negated || currShown.Activated);
+            negatedObject.SetActive(currShown.Negated);
+            activatedObject.SetActive(currShown.Activated);
+
+            var effsArray = currShown.Effects.Where(e => e.CanBeActivatedBy(clientGame.Players[0])).ToArray();
+            effButtonsParentObject.SetActive(effsArray.Any());
+            //clear existing effects
+            foreach (var eff in effBtns) Destroy(eff.gameObject);
+            effBtns.Clear();
+            //make buttons for new effs
+            foreach (var eff in effsArray)
+            {
+                var obj = Instantiate(effBtnPrefab, effBtnsParent);
+                var ctrl = obj.GetComponent<ClientUseEffectButtonController>();
+                ctrl.Initialize(eff, clientGame.clientUICtrl);
+                effBtns.Add(ctrl);
+            }
+
+            //clear existing reminders
+            foreach (var reminderCtrl in reminderCtrls) Destroy(reminderCtrl.gameObject);
+            reminderCtrls.Clear();
+            //create new reminders
+            foreach (var reminder in Reminders.keywordReminderTexts)
+            {
+                if (currShown.EffText.Contains(reminder.keyword))
+                {
+                    var obj = Instantiate(reminderPrefab, remindersParent);
+                    var ctrl = obj.GetComponent<ReminderTextClientUIController>();
+                    ctrl.Initialize(reminder.keyword, reminder.reminder);
+                    reminderCtrls.Add(ctrl);
+                }
+            }
+            remindersParent.gameObject.SetActive(reminderCtrls.Any());
+
+            gameObject.SetActive(true);
         }
 
         public void OnPointerExit(PointerEventData eventData) => CurrShown = null;
