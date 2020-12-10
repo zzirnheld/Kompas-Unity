@@ -2,7 +2,7 @@
 	"keywordReminderTexts":[
 		{
 			"keyword":"Linewalk",
-			"reminder":"I can spend all my movement to move anywhere along my diagonal."
+			"reminder":"During your turn, you can spend all my movement to move anywhere along my diagonal."
 		},
 		{
 			"keyword":"Shape",
@@ -14,7 +14,7 @@
 		},
 		{
 			"keyword":"Revenant",
-			"reminder":"When I die, annihilate me. You can pip revive me for half cost."
+			"reminder":"When I die, annihilate me. During your turn, you can pip revive me for half cost."
 		},
 		{
 			"keyword":"Ificate",
