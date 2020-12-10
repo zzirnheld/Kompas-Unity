@@ -1,7 +1,7 @@
 {
 	"cardType":65,
 	"cardName":"Taunt Core",
-	"effText":"While equipped, activate this character. The first time each stack an adjacent character moves, move them to any space adjacent to me. When they die (while I'm equipped), rehand me.",
+	"effText":"Recoverable.\nWhile equipped, activate this character. The first time each stack an adjacent character moves, move them to any space adjacent to me.",
 	"effects":[
 		{
 			"triggerData":

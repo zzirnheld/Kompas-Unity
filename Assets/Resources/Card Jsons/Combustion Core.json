@@ -1,7 +1,7 @@
 {
 	"cardType":65,
 	"cardName":"Combustion Core",
-	"effText":"Activate this character during enemy turns. (They deactivate on your turn.) When they die (while I'm equipped), rehand me. When your turn starts, pay a pip or destroy me.",
+	"effText":"Recoverable.\nActivate this character during enemy turns. (They deactivate on your turn.) When your turn starts, pay a pip or destroy me.",
 	"effects":[
 		{
 			"blurb":"Choo Choo Activate",

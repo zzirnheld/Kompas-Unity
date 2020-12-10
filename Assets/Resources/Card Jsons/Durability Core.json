@@ -1,7 +1,7 @@
 {
 	"cardType":65,
 	"cardName":"Durability Core",
-	"effText":"While equipped, activate this character and give them +5E. When they die (while I'm equipped), rehand me.",
+	"effText":"Recoverable.\nWhile equipped, activate this character and give them +5E.",
 	"effects":[
 		{
 			"blurb":"Activate",

@@ -1,7 +1,7 @@
 {
 	"cardType":65,
 	"cardName":"Defense Core",
-	"effText":"While equipped, activate this character. When they defend, give them +4EW. When they die (while I'm equipped), rehand me.",
+	"effText":"Recoverable.\nWhile equipped, activate this character. When they defend, give them +4EW.",
 	"effects":[
 		{
 			"blurb":"Defense Activate!",

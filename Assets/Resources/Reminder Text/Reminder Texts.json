@@ -9,8 +9,24 @@
 			"reminder":"During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters."
 		},
 		{
-			"keyword":"Shape",
-			"reminder":"During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters."
+			"keyword":"Geminii",
+			"reminder":"You can pip resummon me."
+		},
+		{
+			"keyword":"Revenant",
+			"reminder":"When I die, annihilate me. You can pip revive me for half cost."
+		},
+		{
+			"keyword":"Ificate",
+			"reminder":"When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it."
+		},
+		{
+			"keyword":"Recoverable",
+			"reminder":"When this character dies (while I'm equipped), rehand me."
+		},
+		{
+			"keyword":"Territorial",
+			"reminder":"When turns start, move an adjacent character 1 space, then I attack them."
 		}
 	]
 }
