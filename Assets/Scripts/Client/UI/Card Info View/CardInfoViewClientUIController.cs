@@ -33,6 +33,11 @@ namespace KompasClient.UI
 
         public ClientGame clientGame;
 
+        private readonly List<ClientUseEffectButtonController> effBtns 
+            = new List<ClientUseEffectButtonController>();
+        public Transform effBtnsParent;
+        public GameObject effBtnPrefab;
+
         private GameCard currShown;
         public GameCard CurrShown
         {
@@ -82,6 +87,20 @@ namespace KompasClient.UI
 
                 var effsArray = currShown.Effects.Where(e => e.CanBeActivatedBy(clientGame.Players[0])).ToArray();
                 effButtonsParentObject.SetActive(effsArray.Any());
+                //clear existing effects
+                foreach(var eff in effBtns)
+                {
+                    Destroy(eff.gameObject);
+                }
+                effBtns.Clear();
+                //make buttons for new effs
+                foreach(var eff in effsArray)
+                {
+                    var obj = Instantiate(effBtnPrefab, effBtnsParent);
+                    var ctrl = obj.GetComponent<ClientUseEffectButtonController>();
+                    ctrl.Initialize(eff, clientGame.clientUICtrl);
+                    effBtns.Add(ctrl);
+                }
 
                 gameObject.SetActive(true);
             }

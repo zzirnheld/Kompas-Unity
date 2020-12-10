@@ -172,6 +172,7 @@ namespace KompasClient.UI
             ConnectToServerParent.SetActive(false);
             DeckWaitingParent.SetActive(false);
             DeckSelectUIParent.SetActive(true);
+            DeckSelectorParent.SetActive(true);
         }
 
         public void AwaitDeckConfirm()

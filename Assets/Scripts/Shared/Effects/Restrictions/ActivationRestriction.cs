@@ -92,9 +92,9 @@ namespace KompasCore.Effects
         } */
 
         public bool Evaluate(Player activator)
-            => activationRestrictionArray.All(r => RestrictionValid(r, activator));
+            => ActivationRestrictions.All(r => RestrictionValid(r, activator));
 
         public bool EvaluateAtAll(Player activator)
-            => activationRestrictionArray.Intersect(AtAllRestrictions).All(r => RestrictionValid(r, activator));
+            => ActivationRestrictions.Intersect(AtAllRestrictions).All(r => RestrictionValid(r, activator));
     }
 }

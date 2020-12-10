@@ -38,7 +38,8 @@ namespace KompasCore.Networking
         //TODO allow for card to be added with stats not as defaults.
         //this will require using a json library that allows for polymorphism-ish stuff
         public AddCardPacket(GameCard card, bool invert = false)
-            : this(card.ID, card.BaseJson, card.Location, card.ControllerIndex, card.BoardX, card.BoardY, card.Attached, invert: invert)
+            : this(cardId: card.ID, json: card.BaseJson, location: card.Location, controllerIndex: card.ControllerIndex, 
+                  x: card.BoardX, y: card.BoardY, attached: card.Attached, invert: invert)
         { }
 
         public override Packet Copy() => new AddCardPacket(cardId, json, location, controllerIndex, x, y, attached);

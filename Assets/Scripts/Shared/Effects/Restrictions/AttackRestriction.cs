@@ -27,7 +27,8 @@ namespace KompasCore.Effects
 
         public static readonly string[] AtAllRestrictions = { ThisIsCharacter, FriendlyTurn, MaxPerTurn, IsNotAvatar, InPlay };
 
-        public List<string> attackRestrictions = new List<string> { Default };
+        public readonly List<string> attackRestrictions = new List<string> { Default };
+        public string[] attackRestrictionsArray = null;
         public int maxAttacks = 1;
 
         public GameCard Card { get; private set; }
@@ -35,7 +36,8 @@ namespace KompasCore.Effects
         public void SetInfo(GameCard card)
         {
             Card = card;
-            if (attackRestrictions.Contains(Default)) attackRestrictions.AddRange(DefaultAttackRestrictions);
+            if (attackRestrictionsArray == null || attackRestrictionsArray.Contains(Default)) 
+                attackRestrictions.AddRange(DefaultAttackRestrictions);
             Debug.Log($"Finished initializing attack restriction for {Card.CardName} with restrictions: {string.Join(", ", attackRestrictions)}");
         }
 
