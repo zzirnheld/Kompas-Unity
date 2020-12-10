@@ -18,7 +18,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"for Fyrian to move and attack",
+						"blurb":"for Sangrian to move and attack",
 						"cardRestrictions":["Board","Is Character","Adjacent"]
 					}
 				},
@@ -26,7 +26,7 @@
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
-						"blurb":"where Hermit to move its target",
+						"blurb":"where Sangrian to move its target",
 						"spaceRestrictions":["Empty","Distance to Target == Constant","Can Move Target to This Space"],
 						"constant":1
 					}
