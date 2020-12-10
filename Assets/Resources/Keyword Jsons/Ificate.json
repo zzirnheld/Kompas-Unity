@@ -1,0 +1,39 @@
+{
+	"triggerData":{
+		"blurb":"Ificate",
+		"triggerCondition":"Discard",
+		"triggerRestriction":{
+			"triggerRestrictions":["This Card Triggered","Triggerer Fits Restriction"],
+			"cardRestriction":{
+				"cardRestrictions":["Hand"]
+			}
+		}
+	},
+	"subeffects":[
+		{
+			"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+			"cardRestriction":
+			{
+				"blurb":"Crazy Idea for Ificator to Ificate",
+				"cardRestrictions":["Subtypes Include","Discard","Friendly","Distinct from Source"],
+				"subtypesInclude":["Crazy Idea"]
+			}
+		},
+		{
+			"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
+			"xMultiplier":0,
+			"xModifier":1
+		},
+		{
+			"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+			"spaceRestriction":
+			{
+				"blurb":"where Ificator to play targeted Crazy Idea",
+				"spaceRestrictions":["Can Play Target to This Space"]
+			}
+		},
+		{
+			"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+		}
+	]
+}

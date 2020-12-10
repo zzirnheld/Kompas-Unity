@@ -4,45 +4,6 @@
 	"effText":"Ificate.\nChoose a character in front of me. Delay 2. If they’re still in front of me, kill them. If not, annihilate me. ",
 	"effects":[
 		{
-			"triggerData":{
-				"blurb":"Ificate",
-				"triggerCondition":"Discard",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered","Triggerer Fits Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Hand"]
-					}
-				}
-			},
-			"subeffects":[
-				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Crazy Idea for No I Expect You To to Ificate",
-						"cardRestrictions":["Subtypes Include","Discard","Friendly","Distinct from Source"],
-						"subtypesInclude":["Crazy Idea"]
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
-					"xMultiplier":0,
-					"xModifier":1
-				},
-				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where No I Expect You To to play targeted Crazy Idea",
-						"spaceRestrictions":["Can Play Target to This Space"]
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
-				}
-			]
-		},
-		{
 			"triggerData":
 			{
 				"triggerCondition":"Play",
@@ -89,6 +50,7 @@
 			]
 		}
 	],
+	"keywords":["Ificate"],
 	"c":5,
 	"spellType":"Delayed",
 	"subtypes":["Delayed","Crazy Idea"],
