@@ -1,58 +1,8 @@
 {
 	"cardType":67,
 	"cardName":"Soulstealer the Lossless",
-	"effText":"Revenant: When I die, annihilate me. During your turn, you can pip revive me for half cost.\nWhen a card is annihilated, give friendly Ethereals +1E, and if it's an enemy turn, gain a pip.",
+	"effText":"Revenant.\nWhen a card is annihilated, give friendly Ethereals +1E, and if it's an enemy turn, gain a pip.",
 	"effects":[
-		{
-			"triggerData":
-			{
-				"blurb":"Annihilate",
-				"triggerCondition":"Discard",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered","From Field"]
-				}
-			},
-			"subeffects":[
-				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
-				}
-			]
-		},
-		{
-			"blurb":"Revive",
-			"activationRestriction":{
-				"activationRestrictionArray":[
-					"Location",
-					"Controller Activates",
-					"Not Negated"
-				],
-				"location":2
-			},
-			"subeffects":[
-				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where to revive Unlost",
-						"spaceRestrictions":["Can Play Target to This Space"]
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
-					"xDivisor":2,
-					"xMultiplier":1
-				},
-				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
-				}
-			]
-		},
 		{
 			"triggerData":
 			{
@@ -82,6 +32,7 @@
 			]	
 		}
 	],
+	"keywords":["Revenant Die","Revenant Revive"],
 	"n":2,
 	"e":4,
 	"s":8,

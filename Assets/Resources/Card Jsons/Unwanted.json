@@ -1,58 +1,8 @@
 {
 	"cardType":67,
 	"cardName":"Unwanted",
-	"effText":"Revenant: When I die, annihilate me. During your turn, you can pip revive me for half cost.\nWhen I'm summoned, discard a Revenant and draw 1.",
+	"effText":"Revenant.\nWhen I'm summoned, discard a Revenant and draw 1.",
 	"effects":[
-		{
-			"triggerData":
-			{
-				"blurb":"Annihilate",
-				"triggerCondition":"Discard",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered","From Field"]
-				}
-			},
-			"subeffects":[
-				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
-				}
-			]
-		},
-		{
-			"blurb":"Revive",
-			"activationRestriction":{
-				"activationRestrictionArray":[
-					"Location",
-					"Controller Activates",
-					"Not Negated"
-				],
-				"location":2
-			},
-			"subeffects":[
-				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where to revive Unlost",
-						"spaceRestrictions":["Can Play Target to This Space"]
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
-					"xMultiplier":2,
-					"xDivisor":2
-				},
-				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
-				}
-			]
-		},
 		{
 			"triggerData":
 			{
@@ -79,6 +29,7 @@
 			]	
 		}
 	],
+	"keywords":["Revenant Die","Revenant Revive"],
 	"n":0,
 	"e":3,
 	"s":6,
