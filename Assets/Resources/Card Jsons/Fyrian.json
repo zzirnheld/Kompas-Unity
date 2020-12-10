@@ -1,49 +1,8 @@
 {
 	"cardType":67,
 	"cardName":"Fyrian",
-	"effText":"Territorial: When turns start, move an adjacent character 1 space, then I attack them.\nWhen I attack, give characters within 1 space of my target -3E.",
+	"effText":"Territorial.\nWhen I attack, give characters within 1 space of my target -3E.",
 	"effects":[
-		{
-			"blurb":"Territorial",
-			"triggerData":
-			{
-				"blurb":"Territorial",
-				"triggerCondition":"Turn Start",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play"]
-				}
-			},
-			"subeffects":[
-				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"for Fyrian to move and attack",
-						"cardRestrictions":["Board","Is Character","Adjacent"]
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where Hermit to move its target",
-						"spaceRestrictions":["Empty","Distance to Target == Constant","Can Move Target to This Space"],
-						"constant":1
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
-					"attackerIndex":-1,
-					"targetIndex":-2
-				}
-			]	
-		},
 		{
 			"blurb":"Fire Breath",
 			"triggerData":
@@ -70,6 +29,7 @@
 			]	
 		}
 	],
+	"keywords":["Territorial"],
 	"n":3,
 	"e":11,
 	"s":12,
