@@ -4,3 +4,5 @@ Geminii
 Revenant Die
 Revenant Revive
 Ificate
+Recoverable
+Territorial

@@ -6,24 +6,6 @@
 		{
 			"triggerData":
 			{
-				"blurb":"Sportsball Recovery",
-				"triggerCondition":"Discard",
-				"triggerRestriction":{
-					"triggerRestrictions":["Augmented Card Triggered"]
-				}
-			},
-			"subeffects":[
-				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
-				}
-			]
-		},
-		{
-			"triggerData":
-			{
 				"blurb":"Bounce On Arrival",
 				"triggerCondition":"Arrive",
 				"triggerRestriction":{
@@ -75,6 +57,7 @@
 			]
 		}
 	],
+	"keywords":["Recoverable"],
 	"PlayRestriction":{
 		"normalRestrictions":["Augment Normal Restrictions"],
 		"effectRestrictions":["Augment Effect Restrictions"]

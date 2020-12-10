@@ -65,27 +65,9 @@
 					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				}
 			]
-		},
-		{
-			"blurb":"Core Recovery",
-			"triggerData":
-			{
-				"blurb":"Core Recovery",
-				"triggerCondition":"Discard",
-				"triggerRestriction":{
-					"triggerRestrictions":["Augmented Card Triggered"]
-				}
-			},
-			"subeffects":[
-				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
-				}
-			]
 		}
 	],
+	"keywords":["Recoverable"],
 	"PlayRestriction":{
 		"normalRestrictions":["Augment Normal Restrictions","On Card that Fits Restriction"],
 		"effectRestrictions":["Augment Effect Restrictions","On Card that Fits Restriction"],
