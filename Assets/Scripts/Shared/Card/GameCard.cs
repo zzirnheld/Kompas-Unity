@@ -367,8 +367,11 @@ namespace KompasCore.Cards
             if (augment == null) return false;
 
             //if this and the other are in the same place, it doesn't leave play
-            if (augment.Location != Location) augment.Remove(stackSrc);
-            else if (augment.AugmentedCard != null) augment.Detach(stackSrc);
+            bool canHappen = false;
+            if (augment.Location != Location) canHappen = augment.Remove(stackSrc);
+            else if (augment.AugmentedCard != null) canHappen = augment.Detach(stackSrc);
+
+            if (!canHappen) return false;
 
             //regardless, add the augment
             Augments.Add(augment);
