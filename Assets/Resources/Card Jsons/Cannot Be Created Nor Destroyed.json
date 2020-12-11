@@ -42,7 +42,7 @@
 					"OptionJumpIndices":[6,8]
 				},
 				{
-					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"sMult":1
 				},
 				{
@@ -50,7 +50,7 @@
 					"indexToJumpTo":9
 				},
 				{
-					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"sMult":-1
 				},
 				{

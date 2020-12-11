@@ -16,7 +16,7 @@
 					"$type":"KompasServer.Effects.TargetAvatarSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"sMod":-1
 				},
 				{

@@ -28,7 +28,7 @@
 					"OptionJumpIndices":[2,4]
 				},
 				{
-					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"eMod":1,
 					"wMod":1
 				},
@@ -36,7 +36,7 @@
 					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"eMod":-1,
 					"wMod":-1
 				}

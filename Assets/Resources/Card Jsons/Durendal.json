@@ -16,7 +16,7 @@
 					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"wMod":5
 				}
 			]
