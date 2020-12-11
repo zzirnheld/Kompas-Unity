@@ -20,7 +20,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SetNESWSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
 					"nVal":0,
 					"eVal":5,
 					"sVal":5,
