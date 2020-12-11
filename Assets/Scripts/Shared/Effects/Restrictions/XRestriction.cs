@@ -1,4 +1,5 @@
 ﻿using KompasCore.Cards;
+using System.Linq;
 
 namespace KompasCore.Effects
 {
@@ -22,33 +23,19 @@ namespace KompasCore.Effects
             Source = source;
         }
 
-        public bool Evaluate(int x)
+        private bool RestrictionValid(string r, int x)
         {
-            foreach (var r in xRestrictions)
+            switch (r)
             {
-                switch (r)
-                {
-                    case Positive:
-                        if (x <= 0) return false;
-                        break;
-                    case Negative:
-                        if (x >= 0) return false;
-                        break;
-                    case LessThanEqualThisCost:
-                        if (x > Source.Cost) return false;
-                        break;
-                    case LessThanEqualThisE:
-                        if (x > Source.E) return false;
-                        break;
-                    case AtLeastConstant:
-                        if (x < constant) return false;
-                        break;
-                    default:
-                        throw new System.ArgumentException($"Invalid X restriction {r} in X Restriction.");
-                }
+                case Positive: return x > 0;
+                case Negative: return x < 0;
+                case LessThanEqualThisCost: return x <= Source.Cost;
+                case LessThanEqualThisE: return x <= Source.E;
+                case AtLeastConstant: return x >= constant;
+                default: throw new System.ArgumentException($"Invalid X restriction {r} in X Restriction.");
             }
-
-            return true;
         }
+
+        public bool Evaluate(int x) => xRestrictions.All(r => RestrictionValid(r, x));
     }
 }
