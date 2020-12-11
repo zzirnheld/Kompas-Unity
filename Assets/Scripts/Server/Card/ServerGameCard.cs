@@ -139,6 +139,8 @@ namespace KompasServer.Cards
             var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: n - N);
             EffectsController.TriggerForCondition(Trigger.NChange, context);
             EffectsController.TriggerForCondition(Trigger.NESWChange, context);
+            var setContext = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: n);
+            EffectsController.TriggerForCondition(Trigger.NSet, setContext);
             base.SetN(n, stackSrc);
 
             if(notify) ServerNotifier.NotifyStats(this);
@@ -150,6 +152,8 @@ namespace KompasServer.Cards
             var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: e - E);
             EffectsController.TriggerForCondition(Trigger.EChange, context);
             EffectsController.TriggerForCondition(Trigger.NESWChange, context);
+            var setContext = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: e);
+            EffectsController.TriggerForCondition(Trigger.ESet, setContext);
             base.SetE(e, stackSrc);
 
             if (notify) ServerNotifier.NotifyStats(this);
@@ -164,6 +168,8 @@ namespace KompasServer.Cards
             var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: s - S);
             EffectsController.TriggerForCondition(Trigger.SChange, context);
             EffectsController.TriggerForCondition(Trigger.NESWChange, context);
+            var setContext = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: s);
+            EffectsController.TriggerForCondition(Trigger.SSet, setContext);
             base.SetS(s, stackSrc);
 
             if (notify) ServerNotifier.NotifyStats(this);
@@ -175,6 +181,8 @@ namespace KompasServer.Cards
             var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: w - W);
             EffectsController.TriggerForCondition(Trigger.WChange, context);
             EffectsController.TriggerForCondition(Trigger.NESWChange, context);
+            var setContext = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: w);
+            EffectsController.TriggerForCondition(Trigger.WSet, setContext);
             base.SetW(w, stackSrc);
 
             if (notify) ServerNotifier.NotifyStats(this);
@@ -186,6 +194,8 @@ namespace KompasServer.Cards
             var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: c - C);
             EffectsController.TriggerForCondition(Trigger.CChange, context);
             EffectsController.TriggerForCondition(Trigger.NESWChange, context);
+            var setContext = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: c);
+            EffectsController.TriggerForCondition(Trigger.CSet, setContext);
             base.SetC(c, stackSrc);
 
             if (notify) ServerNotifier.NotifyStats(this);
@@ -197,6 +207,8 @@ namespace KompasServer.Cards
             var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: a - A);
             EffectsController.TriggerForCondition(Trigger.AChange, context);
             EffectsController.TriggerForCondition(Trigger.NESWChange, context);
+            var setContext = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, x: a);
+            EffectsController.TriggerForCondition(Trigger.ASet, setContext);
             base.SetA(a, stackSrc);
 
             if (notify) ServerNotifier.NotifyStats(this);

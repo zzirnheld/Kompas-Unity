@@ -18,7 +18,7 @@
 
         public override bool Resolve()
         {
-            Target.SetStats((RealNVal, RealEVal, RealSVal, RealWVal, RealCVal, RealAVal));
+            Target.SetStats((RealNVal, RealEVal, RealSVal, RealWVal, RealCVal, RealAVal), Effect);
             return ServerEffect.ResolveNextSubeffect();
         }
     }
