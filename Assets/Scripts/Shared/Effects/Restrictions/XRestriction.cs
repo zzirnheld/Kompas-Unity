@@ -9,8 +9,11 @@ namespace KompasCore.Effects
         public const string LessThanEqualThisE = "<=ThisE";
         public const string Positive = ">0";
         public const string Negative = "<0";
+        public const string AtLeastConstant = ">=Constant";
 
         public string[] xRestrictions = new string[0];
+
+        public int constant;
 
         public GameCard Source { get; private set; }
 
