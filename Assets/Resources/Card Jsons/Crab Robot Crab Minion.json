@@ -25,8 +25,8 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
-					"wChange":1
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wMod":1
 				}
 			]	
 		}

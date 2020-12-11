@@ -22,16 +22,16 @@
 					"OptionJumpIndices":[2,4]
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
-					"sChange":5
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"sMod":5
 				},
 				{
 					"$type":"KompasServer.Effects.JumpSubeffect, Assembly-CSharp",
 					"indexToJumpTo":5
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
-					"sChange":-5
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"sMod":-5
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",

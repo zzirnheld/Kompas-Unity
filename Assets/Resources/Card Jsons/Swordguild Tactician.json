@@ -28,22 +28,22 @@
 					"OptionJumpIndices":[2,4]
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
-					"nChange":0,
-					"eChange":5,
-					"sChange":0,
-					"wChange":0,
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"nMod":0,
+					"eMod":5,
+					"sMod":0,
+					"wMod":0,
 					"targetIndex":0
 				},
 				{
 					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
-					"nChange":0,
-					"eChange":0,
-					"sChange":0,
-					"wChange":5,
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"nMod":0,
+					"eMod":0,
+					"sMod":0,
+					"wMod":5,
 					"targetIndex":0
 				}
 			]

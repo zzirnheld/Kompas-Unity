@@ -16,15 +16,15 @@
 					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
-					"eChange":-1
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod":-1
 				},
 				{
 					"$type":"KompasServer.Effects.TargetDefenderSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
-					"eChange":-1
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod":-1
 				}
 			]	
 		}
