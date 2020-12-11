@@ -40,6 +40,9 @@ namespace KompasCore.Effects
                     case LessThanEqualThisE:
                         if (x > Source.E) return false;
                         break;
+                    case AtLeastConstant:
+                        if (x < constant) return false;
+                        break;
                     default:
                         throw new System.ArgumentException($"Invalid X restriction {r} in X Restriction.");
                 }
