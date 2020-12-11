@@ -1,7 +1,7 @@
 {
 	"cardType":65,
 	"cardName":"Touch of the Divine",
-	"effText":"While equipped, NegateSubeffect this character and give them +2NESW. When this character dies, if they’re a Supplicant, rehand me.",
+	"effText":"While equipped, negate this character and give them +2NESW. When this character dies, if they’re a Supplicant, rehand me.",
 	"effects":[
 		{
 			"triggerData":

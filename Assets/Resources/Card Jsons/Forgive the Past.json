@@ -1,17 +1,17 @@
 {
 	"cardType":83,
 	"cardName":"Forgive the Past",
-	"effText":"When you summon a Supplicant, draw 1.",
+	"effText":"When a friendly Supplicant dies during an enemy turn, draw 1.",
 	"effects":[
 		{
 			"triggerData":
 			{
-				"triggerCondition":"Play",
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Controller Triggered","Triggerer Fits Restriction"],
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Enemy Turn"],
 					"cardRestriction":
 					{
-						"cardRestrictions":["Subtypes Include"],
+						"cardRestrictions":["Board","Subtypes Include"],
 						"subtypesInclude":["Supplicant"]
 					}
 				}
@@ -25,8 +25,8 @@
 	],
 	"c":3,
 	"PlayRestriction":{
-		"normalRestrictions":["Default Normal Restrictions","Unique"],
-		"effectRestrictions":["Default Effect Restrictions","Unique"]
+		"normalRestrictions":["Default Normal Restrictions"],
+		"effectRestrictions":["Default Effect Restrictions"]
 	},
 	"spellType":"Enchant",
 	"subtypeText":"Enchant Plea"
