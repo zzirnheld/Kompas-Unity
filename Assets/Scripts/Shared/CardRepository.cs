@@ -86,8 +86,10 @@ public class CardRepository : MonoBehaviour
 
         keywordJsons = new Dictionary<string, string>();
         string keywordList = Resources.Load<TextAsset>(keywordListFilePath).text;
-        foreach (string keyword in keywordList.Split('\n').Where(s => s != null))
+        var keywords = keywordList.Replace('\r', '\n').Split('\n').Where(s => !string.IsNullOrEmpty(s));
+        foreach (string keyword in keywords)
         {
+            Debug.Log($"Loading keyword json for {keyword}, {string.Join(",", keyword.ToCharArray().Select(c => (int) c))}");
             string json = Resources.Load<TextAsset>(keywordJsonsFolderPath + keyword).text;
             keywordJsons.Add(keyword, json);
         }
