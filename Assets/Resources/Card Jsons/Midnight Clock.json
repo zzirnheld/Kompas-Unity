@@ -35,8 +35,8 @@
 					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeSpellCSubeffect, Assembly-CSharp",
-					"xModifier":1
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"cMod":1
 				}
 			]	
 		},
