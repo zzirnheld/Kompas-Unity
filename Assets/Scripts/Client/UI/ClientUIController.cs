@@ -109,6 +109,7 @@ namespace KompasClient.UI
         {
             if (!base.ShowInfoFor(card, refresh)) return false;
 
+            /*
             if (card != null && card.Effects.Any(eff => ShowEffect(eff)))
             {
                 var children = new List<GameObject>();
@@ -128,7 +129,7 @@ namespace KompasClient.UI
                 selectedUIParent.SetActive(false);
                 selectedUIParent.SetActive(true);
             }
-            else UseEffectParent.SetActive(false);
+            else UseEffectParent.SetActive(false);*/
 
             return true;
         }

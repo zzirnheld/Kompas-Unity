@@ -54,6 +54,7 @@ namespace KompasCore.UI
 
         public virtual void ShowNothing()
         {
+            /*
             selectedUIParent.SetActive(false);
             SelectedCard = null;
             hoveredCard = null;
@@ -62,7 +63,7 @@ namespace KompasCore.UI
             selectedCardImage.sprite = Resources.Load<Sprite>("Kompas Circle Background");
             selectedCardStatsText.text = "";
             selectedCardSubtypesText.text = "";
-            selectedCardEffText.text = "";
+            selectedCardEffText.text = "";*/
 
             boardUICtrl.ShowNothing();
         }
@@ -85,6 +86,7 @@ namespace KompasCore.UI
                 return false;
             }
 
+            /*
             //set all common values
             selectedCardStatsText.text = card.StatsString;
             selectedCardSubtypesText.text = string.IsNullOrEmpty(card.SubtypeText) ? "(No Subtypes)" : card.SubtypeText;
@@ -114,7 +116,7 @@ namespace KompasCore.UI
 
             selectedUIParent.SetActive(true);
 
-            boardUICtrl.ShowForCard(card, refresh);
+            boardUICtrl.ShowForCard(card, refresh);*/
 
             return true;
         }
