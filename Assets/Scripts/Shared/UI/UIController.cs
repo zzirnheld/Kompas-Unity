@@ -54,17 +54,6 @@ namespace KompasCore.UI
 
         public virtual void ShowNothing()
         {
-            /*
-            selectedUIParent.SetActive(false);
-            SelectedCard = null;
-            hoveredCard = null;
-            ShownCard = null;
-            selectedCardNameText.text = "No Card Selected";
-            selectedCardImage.sprite = Resources.Load<Sprite>("Kompas Circle Background");
-            selectedCardStatsText.text = "";
-            selectedCardSubtypesText.text = "";
-            selectedCardEffText.text = "";*/
-
             boardUICtrl.ShowNothing();
         }
 
@@ -85,38 +74,6 @@ namespace KompasCore.UI
                 ShowNothing();
                 return false;
             }
-
-            /*
-            //set all common values
-            selectedCardStatsText.text = card.StatsString;
-            selectedCardSubtypesText.text = string.IsNullOrEmpty(card.SubtypeText) ? "(No Subtypes)" : card.SubtypeText;
-            selectedCardNameText.text = card.CardName;
-            selectedCardImage.sprite = card.detailedSprite;
-            selectedCardEffText.text = card.EffText;
-            //show if card is negated or activated
-            negatedParent.SetActive(card.Negated);
-            activatedParent.SetActive(card.Activated);
-
-            if (card.Augments != null && card.Augments.Any())
-            {
-                var children = new List<GameObject>();
-                foreach (Transform child in AugmentGridParent.transform) children.Add(child.gameObject);
-                foreach (var child in children) Destroy(child);
-
-                foreach (var aug in card.Augments)
-                {
-                    var obj = Instantiate(augmentPrefab, AugmentGridParent.transform);
-                    var img = obj.GetComponent<AugmentImageController>();
-                    img.Initialize(aug, this);
-                }
-
-                AugmentPanelParent.SetActive(true);
-            }
-            else AugmentPanelParent.SetActive(false);
-
-            selectedUIParent.SetActive(true);
-
-            boardUICtrl.ShowForCard(card, refresh);*/
 
             return true;
         }

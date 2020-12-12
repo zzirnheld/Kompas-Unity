@@ -109,28 +109,6 @@ namespace KompasClient.UI
         {
             if (!base.ShowInfoFor(card, refresh)) return false;
 
-            /*
-            if (card != null && card.Effects.Any(eff => ShowEffect(eff)))
-            {
-                var children = new List<GameObject>();
-                foreach (Transform child in UseEffectGridParent.transform) children.Add(child.gameObject);
-                foreach (var child in children) Destroy(child);
-
-                foreach (var eff in card.Effects)
-                {
-                    if (!ShowEffect(eff)) continue;
-
-                    var obj = Instantiate(useEffectButtonPrefab, UseEffectGridParent.transform);
-                    var btn = obj.GetComponent<ClientUseEffectButtonController>();
-                    btn.Initialize(eff, this);
-                }
-
-                UseEffectParent.SetActive(true);
-                selectedUIParent.SetActive(false);
-                selectedUIParent.SetActive(true);
-            }
-            else UseEffectParent.SetActive(false);*/
-
             return true;
         }
 
