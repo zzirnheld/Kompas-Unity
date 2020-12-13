@@ -50,7 +50,7 @@
 					{
 						"xRestrictions":[">=Constant"],
 						"constant":5
-					},
+					}
 				}
 			},
 			"subeffects":[

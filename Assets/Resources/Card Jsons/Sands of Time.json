@@ -46,11 +46,11 @@
 				"triggerCondition":"C Set",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","X Fits Restriction","This Card Triggered"],
-						"xRestriction":
+					"xRestriction":
 					{
 						"xRestrictions":[">=Constant"],
 						"constant":2
-					},
+					}
 				}
 			},
 			"subeffects":[
