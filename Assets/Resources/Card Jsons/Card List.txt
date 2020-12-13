@@ -107,7 +107,6 @@ Bind the Aggression
 Pseudopod
 Send Home
 Dreamhook
-Dreamflow
 Shape Unbound
 Unstable Dreaming
 Dreamscape
@@ -275,4 +274,3 @@ Whats Gonna Work
 Midnight Clock
 Sands of Time
 Resummon
-a lot of disappointment
