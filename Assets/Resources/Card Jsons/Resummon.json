@@ -1,0 +1,34 @@
+{
+	"cardType":83,
+	"cardName":"Resummon",
+	"effText":"Resummon a Geminii.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"character to resummon",
+						"cardRestrictions":["Board","Is Character","Subtypes Include"],
+						"subtypesInclude":["Geminii"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+	"fast":true,
+	"c":1,
+	"spellType":"Simple",
+	"subtypeText":"Geminii Simple"
+}
