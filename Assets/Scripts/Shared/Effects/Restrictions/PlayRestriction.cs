@@ -17,8 +17,8 @@ namespace KompasCore.Effects
         public const string FriendlyTurnIfNotFast = "Friendly Turn";
         public const string HasCostInPips = "Has Cost in Pips";
         public const string FastOrNothingIsResolving = "Nothing is Resolving";
+        public const string CheckUnique = "Check Unique";
 
-        public const string Unique = "Unique";
         public const string NotNormally = "Cannot be Played Normally";
         public const string MustNormally = "Must be Played Normally";
         public const string OnBoardCardFriendlyOrAdjacent = "On Board Card";
@@ -27,14 +27,16 @@ namespace KompasCore.Effects
         public const string DefaultNormal = "Default Normal Restrictions";
         public const string DefaultEffect = "Default Effect Restrictions";
         public static readonly string[] DefaultNormalRestrictions =
-            { PlayedByCardOwner, FromHand, StandardPlayRestriction, StandardSpellRestriction, FriendlyTurnIfNotFast, HasCostInPips, FastOrNothingIsResolving };
-        public static readonly string[] DefaultEffectRestrictions = { StandardSpellRestriction, StandardPlayRestriction };
+            { PlayedByCardOwner, FromHand, StandardPlayRestriction, StandardSpellRestriction, 
+            FriendlyTurnIfNotFast, HasCostInPips, FastOrNothingIsResolving, CheckUnique };
+        public static readonly string[] DefaultEffectRestrictions = { StandardSpellRestriction, StandardPlayRestriction, CheckUnique };
 
         public const string AugNormal = "Augment Normal Restrictions";
         public const string AugEffect = "Augment Effect Restrictions";
         public static readonly string[] AugmentNormalRestrictions =
-            { PlayedByCardOwner, FromHand, OnBoardCardFriendlyOrAdjacent, StandardSpellRestriction, FriendlyTurnIfNotFast, HasCostInPips, FastOrNothingIsResolving };
-        public static readonly string[] AugmentEffectRestrictions = { StandardSpellRestriction, OnBoardCardFriendlyOrAdjacent };
+            { PlayedByCardOwner, FromHand, OnBoardCardFriendlyOrAdjacent, StandardSpellRestriction, 
+            FriendlyTurnIfNotFast, HasCostInPips, FastOrNothingIsResolving, CheckUnique };
+        public static readonly string[] AugmentEffectRestrictions = { StandardSpellRestriction, OnBoardCardFriendlyOrAdjacent, CheckUnique };
 
         public List<string> normalRestrictions = null;
         public List<string> effectRestrictions = null;
@@ -86,8 +88,7 @@ namespace KompasCore.Effects
                     return onCardRestriction.Evaluate(Card.Game.boardCtrl.GetCardAt(x, y));
                 case NotNormally: return !normal;
                 case MustNormally: return normal;
-                case Unique: 
-                    return !Card.Game.Cards.Any(c => c.Location == CardLocation.Field && c.Controller == Card.Controller && c.CardName == Card.CardName);
+                case CheckUnique: return !(Card.Unique && Card.AlreadyCopyOnBoard);
 
                 default: throw new System.ArgumentException($"You forgot to check play restriction {r}", "r");
             }

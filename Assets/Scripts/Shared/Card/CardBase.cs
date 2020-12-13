@@ -48,6 +48,7 @@ namespace KompasCore.Cards
         }
 
         public bool Fast { get; private set; }
+        public bool Unique { get; private set; }
 
         public string Subtext { get; private set; }
         public string SpellSubtype { get; private set; }
@@ -127,6 +128,7 @@ namespace KompasCore.Cards
             Subtext = card.subtext;
             SpellSubtype = card.spellType;
             Fast = card.fast;
+            Unique = card.unique;
             Arg = card.arg;
             CardType = card.cardType;
             CardName = card.cardName;

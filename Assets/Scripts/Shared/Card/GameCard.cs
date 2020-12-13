@@ -127,6 +127,8 @@ namespace KompasCore.Cards
             }
         }
         public List<GameCard> AdjacentCards => Game.boardCtrl.CardsAdjacentTo(BoardX, BoardY);
+
+        public bool AlreadyCopyOnBoard => Game.BoardHasCopyOf(this);
         #endregion positioning
 
         #region Augments
@@ -163,8 +165,7 @@ namespace KompasCore.Cards
         #endregion effects
 
         //movement
-        private int spacesMoved = 0;
-        public int SpacesMoved => spacesMoved;
+        public int SpacesMoved { get; private set; } = 0;
         public int SpacesCanMove => N - SpacesMoved;
 
         public int attacksThisTurn = 0;
@@ -358,7 +359,7 @@ namespace KompasCore.Cards
             if(cardCtrl != null) cardCtrl.SetPhysicalLocation(Location);
         }
 
-        public void CountSpacesMovedTo((int x, int y) to) => SetSpacesMoved(spacesMoved + DistanceTo(to.x, to.y));
+        public void CountSpacesMovedTo((int x, int y) to) => SetSpacesMoved(SpacesMoved + DistanceTo(to.x, to.y));
 
         #region augments
         public virtual bool AddAugment(GameCard augment, IStackable stackSrc = null)
@@ -476,7 +477,7 @@ namespace KompasCore.Cards
         public virtual void SetNegated(bool negated, IStackable stackSrc = null) => Negated = negated;
         public virtual void SetActivated(bool activated, IStackable stackSrc = null) => Activated = activated;
 
-        public virtual void SetSpacesMoved(int spacesMoved, bool fromReset = false) => this.spacesMoved = spacesMoved;
+        public virtual void SetSpacesMoved(int spacesMoved, bool fromReset = false) => this.SpacesMoved = spacesMoved;
         public virtual void SetAttacksThisTurn(int attacksThisTurn, bool fromReset = false) => this.attacksThisTurn = attacksThisTurn;
         #endregion statfuncs
 

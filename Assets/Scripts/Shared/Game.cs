@@ -69,6 +69,9 @@ namespace KompasCore.GameCore
             return false;
         }
 
+        public bool BoardHasCopyOf(GameCard card)
+            => Cards.Any(c => c != card && c.Location == CardLocation.Field && c.Controller == card.Controller && c.CardName == card.CardName);
+
         private bool IsFriendlyAdjacentToCoords(int x, int y, GameCard potentialFriendly, Player friendly)
         {
             return boardCtrl.GetCardAt(x, y) == null

@@ -29,6 +29,7 @@ namespace KompasCore.Cards
         public int arg;
         public int a;
         public bool fast;
+        public bool unique;
         public string subtext;
         public string[] augSubtypes;
     }

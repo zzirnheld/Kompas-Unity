@@ -47,9 +47,6 @@
 	"e":4,
 	"s":5,
 	"w":3,
-	"PlayRestriction":{
-		"normalRestrictions":["Default Normal Restrictions","Unique"],
-		"effectRestrictions":["Default Effect Restrictions","Unique"]
-	},
+	"unique":true,
 	"subtypeText":"Ethereal Shaper Mage"
 }

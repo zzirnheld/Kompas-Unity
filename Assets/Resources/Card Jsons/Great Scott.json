@@ -50,9 +50,6 @@
 	"e":6,
 	"s":5,
 	"w":0,
-	"PlayRestriction":{
-		"normalRestrictions":["Default Normal Restrictions","Unique"],
-		"effectRestrictions":["Default Effect Restrictions","Unique"]
-	},
+	"unique":true,
 	"subtypeText":"Doctor"
 }
