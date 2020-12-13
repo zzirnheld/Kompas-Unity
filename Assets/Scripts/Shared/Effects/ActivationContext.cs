@@ -10,6 +10,7 @@ namespace KompasCore.Effects
         public readonly Player Triggerer;
         public readonly int? X;
         public readonly (int, int)? Space;
+        // These two are for delayed
         public readonly int StartIndex;
         public readonly List<GameCard> Targets;
 
