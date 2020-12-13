@@ -100,7 +100,7 @@ namespace KompasClient.UI
             }
 
             nameText.text = currShown.CardName;
-            subtypesText.text = currShown.SubtypeText;
+            subtypesText.text = currShown.QualifiedSubtypeText;
             effText.text = currShown.EffText;
 
             conditionParentObject.SetActive(currShown.Negated || currShown.Activated);

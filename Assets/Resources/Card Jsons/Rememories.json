@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Rememories",
-	"effText":"Unique.\nWhen you summon a character, give them +1 ESW.",
+	"effText":"When you summon a character, give them +1 ESW.",
 	"effects":[
 		{
 			"triggerData":

@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Runestones",
-	"effText":"Unique.\nThe first time each turn you cast a Rune, you can search your deck for a Rune.",
+	"effText":"The first time each turn you cast a Rune, you can search your deck for a Rune.",
 	"effects":[
 		{
 			"triggerData":
