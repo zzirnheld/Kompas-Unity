@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Unwavering Devotion",
-	"effText":"Unique.\nWhen a friendly Cultist dies, give friendly Cultists +1W.",
+	"effText":"When a friendly Cultist dies, give friendly Cultists +1W.",
 	"effects":[
 		{
 			"triggerData":
@@ -19,7 +19,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.ChangeAllNESWSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"cardRestrictions":["Is Character","Board","Friendly","Subtypes Include"],
@@ -31,10 +31,7 @@
 		}
 	],
 	"c":2,
-	"PlayRestriction":{
-		"normalRestrictions":["Default Normal Restrictions","Unique"],
-		"effectRestrictions":["Default Effect Restrictions","Unique"]
-	},
+	"unique":true,
 	"spellType":"Enchant",
 	"subtypeText":"Enchant"
 }

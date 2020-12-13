@@ -4,24 +4,6 @@
 	"effText":"Recoverable.\nAt any time, you can set X to the number of uses of this ability this turn. Pay X pips and attach me to an adjacent character. (The first time this ability is used, it costs 1 pip.)",
 	"effects":[
 		{
-			"triggerData":
-			{
-				"blurb":"Sportyball Recovery",
-				"triggerCondition":"Discard",
-				"triggerRestriction":{
-					"triggerRestrictions":["Augmented Card Triggered"]
-				}
-			},
-			"subeffects":[
-				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
-				}
-			]
-		},
-		{
 			"blurb":"Pass",
 			"activationRestriction":{
 				"activationRestrictionArray":[
@@ -54,6 +36,7 @@
 			]
 		}
 	],
+	"keywords":["Recoverable"],
 	"PlayRestriction":{
 		"normalRestrictions":["Augment Normal Restrictions"],
 		"effectRestrictions":["Augment Effect Restrictions"]

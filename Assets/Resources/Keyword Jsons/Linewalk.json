@@ -1,0 +1,29 @@
+{
+	"blurb":"Linewalk",
+	"activationRestriction":{
+		"activationRestrictionArray":[
+			"Friendly Turn",
+			"Default"
+		]
+	},
+	"subeffects":[
+		{
+			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type":"KompasServer.Effects.SpendRemainingMovementSubeffect, Assembly-CSharp",
+			"xModifier":1
+		},
+		{
+			"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+			"spaceRestriction":
+			{
+				"blurb":"to Linewalk to",
+				"spaceRestrictions":["Empty","On Target's Diagonal"]
+			}
+		},
+		{
+			"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+		}
+	]
+}

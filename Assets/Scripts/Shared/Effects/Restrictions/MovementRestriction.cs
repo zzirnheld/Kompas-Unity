@@ -32,7 +32,6 @@ namespace KompasCore.Effects
         //Whether the character has been activated (for Golems)
         private const string IsActive = "Activated";
 
-        //The actual list of restrictions, set by json.
         //Default restrictions are that only characters with enough n can move.
         public static readonly string[] defaultNormalMovementRestrictions = new string[]
         {
@@ -43,6 +42,13 @@ namespace KompasCore.Effects
             NothingHappening, IsFriendlyTurn
         };
 
+        public static readonly string[] defaultEffectMovementRestrictions = new string[]
+        {
+            InPlay,
+            DistinctSpace, IsNotAvatar,
+            StandardSpellMoveRestiction
+        };
+
         /// <summary>
         /// The array to be loaded in and defaults addressed
         /// </summary>
@@ -50,7 +56,7 @@ namespace KompasCore.Effects
         /// <summary>
         /// The array to be loaded in and defaults addressed
         /// </summary>
-        public string[] effectRestrictionsFromJson = new string[] { StandardSpellMoveRestiction };
+        public string[] effectRestrictionsFromJson = new string[] { Default };
 
         /// <summary>
         /// The actual list to use
@@ -77,9 +83,9 @@ namespace KompasCore.Effects
             if (normalRestrictionsFromJson.Contains(Default)) 
                 normalRestrictions.AddRange(defaultNormalMovementRestrictions);
 
-            Debug.Log($"Setting up movement restriction with normal:\n{string.Join(", ", normalRestrictions)}");
-
             effectRestrictions.AddRange(effectRestrictionsFromJson);
+            if (effectRestrictionsFromJson.Contains(Default))
+                effectRestrictions.AddRange(defaultEffectMovementRestrictions);
         }
 
         private bool RestrictionValid(string restriction, int x, int y, bool isSwapTarget, bool byEffect)

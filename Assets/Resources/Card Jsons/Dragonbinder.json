@@ -27,14 +27,14 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"eMult":1
 				},
 				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"sMult":1
 				}
 			]
@@ -44,5 +44,5 @@
 	"e":1,
 	"s":5,
 	"w":1,
-	"subtypeText":""
+	"subtypeText":"Draconic Mage"
 }

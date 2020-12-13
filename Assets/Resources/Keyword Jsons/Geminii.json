@@ -1,0 +1,20 @@
+{
+	"blurb":"Pip Resummon",
+	"activationRestriction":{
+		"activationRestrictionArray":[
+			"Default"
+		]
+	},
+	"subeffects":[
+		{
+			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+			"xMultiplier":1
+		},
+		{
+			"$type":"KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+		}
+	]	
+}

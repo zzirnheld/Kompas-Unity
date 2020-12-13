@@ -4,26 +4,6 @@
 	"effText":"Geminii.\nWhen I'm summoned, give me +1 ESW.",
 	"effects":[
 		{
-			"blurb":"Pip Resummon",
-			"activationRestriction":{
-				"activationRestrictionArray":[
-					"Default"
-				]
-			},
-			"subeffects":[
-				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
-					"xMultiplier":1
-				},
-				{
-					"$type":"KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
-				}
-			]	
-		},
-		{
 			"blurb":"Empty Memories",
 			"triggerData":
 			{
@@ -37,14 +17,15 @@
 					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
-					"eChange":1,
-					"sChange":1,
-					"wChange":1
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod":1,
+					"sMod":1,
+					"wMod":1
 				}
 			]	
 		}
 	],
+	"keywords":["Geminii"],
 	"n":1,
 	"e":1,
 	"s":3,

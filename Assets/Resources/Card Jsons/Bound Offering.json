@@ -30,7 +30,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"eMod":1
 				}
 			]
@@ -40,5 +40,5 @@
 	"e":1,
 	"s":2,
 	"w":0,
-	"subtypeText":""
+	"subtypeText":"Offering"
 }

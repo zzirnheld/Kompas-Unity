@@ -1,9 +1,11 @@
 ﻿using KompasClient.Cards;
+using KompasClient.Effects;
 using KompasClient.GameCore;
 using KompasClient.UI;
 using KompasCore.Cards;
 using KompasDeckbuilder;
 using KompasServer.Cards;
+using KompasServer.Effects;
 using KompasServer.GameCore;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -14,11 +16,14 @@ public class CardRepository : MonoBehaviour
 {
     public const string cardListFilePath = "Card Jsons/Card List";
     public const string cardJsonsFolderpath = "Card Jsons/";
+    public const string keywordListFilePath = "Keyword Jsons/Keyword List";
+    public const string keywordJsonsFolderPath = "Keyword Jsons/";
 
     private static Dictionary<string, string> cardJsons;
     private static Dictionary<string, int> cardNameIDs;
     private static List<string> cardNames;
     private static List<string> cardNamesToIgnore;
+    private static Dictionary<string, string> keywordJsons;
 
     public static IEnumerable<string> CardJsons => cardJsons.Values;
 
@@ -78,6 +83,16 @@ public class CardRepository : MonoBehaviour
             Debug.Log($"Adding json for \"{nameClean}\" of length {nameClean.Length} to dictionary. Json:\n{json}");
             cardJsons.Add(nameClean, json);
         }
+
+        keywordJsons = new Dictionary<string, string>();
+        string keywordList = Resources.Load<TextAsset>(keywordListFilePath).text;
+        var keywords = keywordList.Replace('\r', '\n').Split('\n').Where(s => !string.IsNullOrEmpty(s));
+        foreach (string keyword in keywords)
+        {
+            Debug.Log($"Loading keyword json for {keyword}, {string.Join(",", keyword.ToCharArray().Select(c => (int) c))}");
+            string json = Resources.Load<TextAsset>(keywordJsonsFolderPath + keyword).text;
+            keywordJsons.Add(keyword, json);
+        }
     }
 
     private bool IsCardToIgnore(string name)
@@ -113,11 +128,20 @@ public class CardRepository : MonoBehaviour
     {
         if (!cardJsons.ContainsKey(cardName)) return null;
         ServerSerializableCard card;
+        List<ServerEffect> effects = new List<ServerEffect>();
 
         try
         {
             card = JsonConvert.DeserializeObject<ServerSerializableCard>(cardJsons[cardName],
                 new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
+            effects.AddRange(card.effects);
+            foreach(var s in card.keywords)
+            {
+                var json = keywordJsons[s];
+                var eff = JsonConvert.DeserializeObject<ServerEffect>(json,
+                    new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
+                effects.Add(eff);
+            }
         }
         catch (System.ArgumentException argEx)
         {
@@ -128,7 +152,7 @@ public class CardRepository : MonoBehaviour
         }
 
         AvatarServerGameCard avatar = Instantiate(ServerAvatarPrefab).GetComponent<AvatarServerGameCard>();
-        avatar.SetInfo(card, serverGame, owner, card.effects, id);
+        avatar.SetInfo(card, serverGame, owner, effects.ToArray(), id);
         avatar.cardCtrl.SetImage(avatar.CardName, false);
         serverGame.cardsByID.Add(id, avatar);
         return avatar;
@@ -139,11 +163,20 @@ public class CardRepository : MonoBehaviour
         string json = cardJsons[name] ?? throw new System.ArgumentException($"Name {name} not associated with json");
         ServerGameCard card = Instantiate(ServerCharPrefab).GetComponent<ServerGameCard>(); ;
         ServerSerializableCard cardInfo;
+        List<ServerEffect> effects = new List<ServerEffect>();
 
         try
         {
             cardInfo = JsonConvert.DeserializeObject<ServerSerializableCard>(cardJsons[name],
                 new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
+            effects.AddRange(cardInfo.effects);
+            foreach (var s in cardInfo.keywords)
+            {
+                var keywordJson = keywordJsons[s];
+                var eff = JsonConvert.DeserializeObject<ServerEffect>(keywordJson,
+                    new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
+                effects.Add(eff);
+            }
         }
         catch (System.ArgumentException argEx)
         {
@@ -151,7 +184,7 @@ public class CardRepository : MonoBehaviour
             Debug.LogError($"Failed to load {json}, argument exception with message {argEx.Message}, stacktrace {argEx.StackTrace}");
             return null;
         }
-        card.SetInfo(cardInfo, serverGame, owner, cardInfo.effects, id);
+        card.SetInfo(cardInfo, serverGame, owner, effects.ToArray(), id);
         card.cardCtrl.SetImage(card.CardName, false);
         return card;
     }
@@ -159,10 +192,20 @@ public class CardRepository : MonoBehaviour
     public AvatarClientGameCard InstantiateClientAvatar(string json, ClientGame clientGame, ClientPlayer owner, int id)
     {
         ClientSerializableCard cardInfo;
+        List<ClientEffect> effects = new List<ClientEffect>();
+
         try
         {
             cardInfo = JsonUtility.FromJson<ClientSerializableCard>(json);
             if (cardInfo.cardType != 'C') return null;
+            effects.AddRange(cardInfo.effects);
+            foreach (var s in cardInfo.keywords)
+            {
+                var keywordJson = keywordJsons[s];
+                var eff = JsonConvert.DeserializeObject<ClientEffect>(keywordJson,
+                    new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
+                effects.Add(eff);
+            }
         }
         catch (System.ArgumentException argEx)
         {
@@ -171,7 +214,7 @@ public class CardRepository : MonoBehaviour
             return null;
         }
         AvatarClientGameCard avatar = Instantiate(ClientAvatarPrefab).GetComponent<AvatarClientGameCard>();
-        avatar.SetInfo(cardInfo, clientGame, owner, cardInfo.effects, id);
+        avatar.SetInfo(cardInfo, clientGame, owner, effects.ToArray(), id);
         avatar.gameObject.GetComponentInChildren<ClientCardMouseController>().ClientGame = clientGame;
         avatar.cardCtrl.SetImage(avatar.CardName, false);
         clientGame.cardsByID.Add(id, avatar);
@@ -182,9 +225,19 @@ public class CardRepository : MonoBehaviour
     public ClientGameCard InstantiateClientNonAvatar(string json, ClientGame clientGame, ClientPlayer owner, int id)
     {
         ClientSerializableCard cardInfo;
+        List<ClientEffect> effects = new List<ClientEffect>();
+
         try
         {
             cardInfo = JsonUtility.FromJson<ClientSerializableCard>(json);
+            effects.AddRange(cardInfo.effects);
+            foreach (var s in cardInfo.keywords)
+            {
+                var keywordJson = keywordJsons[s];
+                var eff = JsonConvert.DeserializeObject<ClientEffect>(keywordJson,
+                    new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
+                effects.Add(eff);
+            }
         }
         catch (System.ArgumentException argEx)
         {
@@ -194,7 +247,7 @@ public class CardRepository : MonoBehaviour
         }
         ClientGameCard card = Instantiate(ClientCharPrefab).GetComponent<ClientGameCard>();
         Debug.Log($"Successfully created a card? {card != null} for json {json}");
-        card.SetInfo(cardInfo, clientGame, owner, cardInfo.effects, id);
+        card.SetInfo(cardInfo, clientGame, owner, effects.ToArray(), id);
         card.cardCtrl.SetImage(card.CardName, false);
         card.gameObject.GetComponentInChildren<ClientCardMouseController>().ClientGame = clientGame;
         card.clientCardCtrl.ApplySettings(clientGame.clientUISettingsCtrl.ClientUISettings);

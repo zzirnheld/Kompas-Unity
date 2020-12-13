@@ -1,0 +1,46 @@
+{
+	"blurb":"Shape",
+	"activationRestriction":{
+		"activationRestrictionArray":[
+			"Friendly Turn",
+			"Default"
+		]
+	},
+	"subeffects":[
+		{
+			"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+			"spaceRestriction":
+			{
+				"blurb":"to move Shaper to",
+				"spaceRestrictions":["Connected to Source by Cards Fitting Restriction"],
+				"connectednessRestriction":{
+					"spaceRestrictions":["Subtypes Include","Is Character","Board"],
+					"subtypesInclude":["Ethereal"]
+				}
+			}
+		},
+		{
+			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type":"KompasServer.Effects.SpendMovementSubeffect, Assembly-CSharp",
+			"xModifier":1
+		},
+		{
+			"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+			"whatToCount":"Distance to Coords Through",
+			"throughRestriction":{
+				"cardRestrictions":["Subtypes Include","Is Character","Board"],
+				"subtypesInclude":["Ethereal"]
+			},
+			"xMultiplier":1
+		},
+		{
+			"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+			"eMult":-1
+		},
+		{
+			"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+		}
+	]
+}

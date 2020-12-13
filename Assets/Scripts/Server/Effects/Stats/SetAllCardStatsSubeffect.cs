@@ -5,17 +5,19 @@ using System.Linq;
 
 namespace KompasServer.Effects
 {
-    public class SetAllNESWSubeffect : SetNESWSubeffect
+    public class SetAllCardStatsSubeffect : SetCardStatsSubeffect
     {
-        private (int, int, int, int) GetRealValues(GameCard c)
+        private (int, int, int, int, int, int) GetRealValues(GameCard card)
         {
-            (int n, int e, int s, int w) = (
-                nVal >= 0 ? nVal : c.N,
-                eVal >= 0 ? eVal : c.E,
-                sVal >= 0 ? sVal : c.S,
-                wVal >= 0 ? wVal : c.W
+            (int n, int e, int s, int w, int c, int a) = (
+                nVal >= 0 ? nVal : card.N,
+                eVal >= 0 ? eVal : card.E,
+                sVal >= 0 ? sVal : card.S,
+                wVal >= 0 ? wVal : card.W,
+                cVal >= 0 ? cVal : card.C,
+                aVal >= 0 ? aVal : card.A
             );
-            return (n, e, s, w);
+            return (n, e, s, w, c, a);
         }
 
         //default to making sure things are characters before changing their stats
@@ -38,13 +40,9 @@ namespace KompasServer.Effects
         public override bool Resolve()
         {
             var targets = ServerGame.Cards.Where(c => cardRestriction.Evaluate(c));
-            foreach (ServerGameCard c in targets)
+            foreach (var c in targets)
             {
-                var (n, e, s, w) = GetRealValues(c);
-                c.SetN(n, ServerEffect);
-                c.SetE(e, ServerEffect);
-                c.SetS(s, ServerEffect);
-                c.SetW(w, ServerEffect);
+                c.SetStats(stats: GetRealValues(c), Effect);
             }
             return ServerEffect.ResolveNextSubeffect();
         }

@@ -1,0 +1,18 @@
+{
+	"triggerData":
+	{
+		"blurb":"Annihilate",
+		"triggerCondition":"Discard",
+		"triggerRestriction":{
+			"triggerRestrictions":["This Card Triggered","From Field"]
+		}
+	},
+	"subeffects":[
+		{
+			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+		}
+	]
+}

@@ -4,35 +4,6 @@
 	"effText":"Linewalk.\nWhen I move X spaces, each player can reshuffle their hand and draw X. (Players whose hand is empty can't draw.)",
 	"effects":[
 		{
-			"blurb":"Linewalk",
-			"activationRestriction":{
-				"activationRestrictionArray":[
-					"Friendly Turn",
-					"Default"
-				]
-			},
-			"subeffects":[
-				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.SpendRemainingMovementSubeffect, Assembly-CSharp",
-					"xModifier":1
-				},
-				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"to Linewalk to",
-						"spaceRestrictions":["Empty","On Target's Diagonal"]
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
-				}
-			]
-		},
-		{
 			"blurb":"Orange Linewalked",
 			"triggerData":
 			{
@@ -105,6 +76,7 @@
 			]
 		}
 	],
+	"keywords":["Linewalk"],
 	"n":1,
 	"e":2,
 	"s":6,

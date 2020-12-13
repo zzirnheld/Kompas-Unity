@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Rememories",
-	"effText":"Unique.\nWhen you summon a character, give them +1 ESW.",
+	"effText":"When you summon a character, give them +1 ESW.",
 	"effects":[
 		{
 			"triggerData":
@@ -20,19 +20,16 @@
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
-					"eChange":1,
-					"sChange":1,
-					"wChange":1
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod":1,
+					"sMod":1,
+					"wMod":1
 				}
 			]	
 		}
 	],
 	"c":3,
-	"PlayRestriction":{
-		"normalRestrictions":["Default Normal Restrictions","Unique"],
-		"effectRestrictions":["Default Effect Restrictions","Unique"]
-	},
+	"unique":true,
 	"spellType":"Enchant",
 	"subtypes":["Enchant"],
 	"subtypeText":"Enchant"

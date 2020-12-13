@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Teamwork!",
-	"effText":"Unique.\nWhen a friendly character is augmented, draw 1.",
+	"effText":"When a friendly character is augmented, draw 1.",
 	"effects":[
 		{
 			"triggerData":
@@ -9,7 +9,7 @@
 				"blurb":"Teamwork! Draw!",
 				"triggerCondition":"Augmented",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"triggerRestrictions":["This Card in Play","Max Per Stack","Triggerer Fits Restriction"],
 					"cardRestriction":{
 						"cardRestrictions":["Friendly"]
 					}
@@ -22,10 +22,10 @@
 			]
 		}
 	],
-	"c":3,
+	"c":1,
 	"PlayRestriction":{
-		"normalRestrictions":["Default Normal Restrictions","Unique"],
-		"effectRestrictions":["Default Effect Restrictions","Unique"]
+		"normalRestrictions":["Default Normal Restrictions"],
+		"effectRestrictions":["Default Effect Restrictions"]
 	},
 	"spellType":"Enchant",
 	"subtypeText":"Sportsball Play Enchant"

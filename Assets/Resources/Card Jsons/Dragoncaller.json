@@ -35,7 +35,7 @@
 					"OptionJumpIndices":[5,7]
 				},
 				{
-					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"eMult":1,
 					"sMult":1
 				},
@@ -43,7 +43,7 @@
 					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"sMult":1,
 					"wMult":1
 				}
@@ -54,5 +54,5 @@
 	"e":1,
 	"s":3,
 	"w":1,
-	"subtypeText":""
+	"subtypeText":"Draconic Mage"
 }

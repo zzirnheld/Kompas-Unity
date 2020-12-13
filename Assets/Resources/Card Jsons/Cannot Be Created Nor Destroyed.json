@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Cannot Be Created Nor Destroyed",
-	"effText":"Unique.\nWhen turns start, reshuffle all X friendly discarded Pulsars, give your Avatar +-X S, and draw 1.",
+	"effText":"When turns start, reshuffle all X friendly discarded Pulsars, give your Avatar +-X S, and draw 1.",
 	"effects":[
 		{
 			"triggerData":
@@ -42,7 +42,7 @@
 					"OptionJumpIndices":[6,8]
 				},
 				{
-					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"sMult":1
 				},
 				{
@@ -50,7 +50,7 @@
 					"indexToJumpTo":9
 				},
 				{
-					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"sMult":-1
 				},
 				{
@@ -60,10 +60,7 @@
 		}
 	],
 	"c":1,
-	"PlayRestriction":{
-		"normalRestrictions":["Default Normal Restrictions","Unique"],
-		"effectRestrictions":["Default Effect Restrictions","Unique"]
-	},
+	"unique":true,
 	"spellType":"Enchant",
 	"subtypeText":"Enchant"
 }

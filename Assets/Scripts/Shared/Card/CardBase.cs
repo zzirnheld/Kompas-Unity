@@ -48,6 +48,7 @@ namespace KompasCore.Cards
         }
 
         public bool Fast { get; private set; }
+        public bool Unique { get; private set; }
 
         public string Subtext { get; private set; }
         public string SpellSubtype { get; private set; }
@@ -57,6 +58,8 @@ namespace KompasCore.Cards
         public string EffText { get; private set; }
         public string SubtypeText { get; private set; }
         public string[] AugmentSubtypes { get; private set; }
+
+        public string QualifiedSubtypeText => AttributesString + SubtypeText;
 
         public int Cost
         {
@@ -84,15 +87,16 @@ namespace KompasCore.Cards
                 }
             }
         }
+        public string AttributesString => $"{(Fast ? " Fast" : "")}{(Unique ? " Unique" : "")} ";
         public string StatsString
         {
             get
             {
                 switch (CardType)
                 {
-                    case 'C': return $"N: {N} / E: {E} / S: {S} / W: {W}";
-                    case 'S': return $"C {C}{(Fast ? " Fast " : " ")}{SpellSubtype}{SpellSubtypeString}";
-                    case 'A': return $"A {A}{(Fast ? " Fast " : " ")}{(AugmentSubtypes != null ? $"Augment: {string.Join(",", AugmentSubtypes)}" : "")}";
+                    case 'C': return $"{AttributesString}N: {N} / E: {E} / S: {S} / W: {W}";
+                    case 'S': return $"C {C}{AttributesString}{SpellSubtype}{SpellSubtypeString}";
+                    case 'A': return $"A {A}{AttributesString}{(AugmentSubtypes != null ? $"Augment: {string.Join(",", AugmentSubtypes)}" : "")}";
                     default: throw new System.NotImplementedException($"Stats string not implemented for card type {CardType}");
                 }
             }
@@ -127,6 +131,7 @@ namespace KompasCore.Cards
             Subtext = card.subtext;
             SpellSubtype = card.spellType;
             Fast = card.fast;
+            Unique = card.unique;
             Arg = card.arg;
             CardType = card.cardType;
             CardName = card.cardName;

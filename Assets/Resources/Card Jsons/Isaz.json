@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.SetAllNESWSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.SetAllCardStatsSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"cardRestrictions":["Is Character","Board","Adjacent"]

@@ -22,11 +22,11 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
-					"nChange":0,
-					"eChange":0,
-					"sChange":0,
-					"wChange":1,
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"nMod":0,
+					"eMod":0,
+					"sMod":0,
+					"wMod":1,
 					"targetIndex":0
 				}
 			]

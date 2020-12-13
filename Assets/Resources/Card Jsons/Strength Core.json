@@ -1,7 +1,7 @@
 {
 	"cardType":65,
 	"cardName":"Strength Core",
-	"effText":"While equipped, activate this character and give them +4W. When they die (while I'm equipped), rehand me.",
+	"effText":"Recoverable.\nWhile equipped, activate this character and give them +4W.",
 	"effects":[
 		{
 			"triggerData":
@@ -32,26 +32,9 @@
 					}
 				}
 			]
-		},
-		{
-			"triggerData":
-			{
-				"blurb":"Core Recovery",
-				"triggerCondition":"Discard",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Augmented Card Triggered"]
-				}
-			},
-			"subeffects":[
-				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
-				}
-			]
 		}
 	],
+	"keywords":["Recoverable"],
 	"PlayRestriction":{
 		"normalRestrictions":["Augment Normal Restrictions","On Card that Fits Restriction"],
 		"effectRestrictions":["Augment Effect Restrictions","On Card that Fits Restriction"],

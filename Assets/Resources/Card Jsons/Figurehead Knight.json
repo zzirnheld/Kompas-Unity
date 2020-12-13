@@ -13,7 +13,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.ChangeAllNESWSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"cardRestrictions":["Is Character","Board","Friendly","Summoned"]
@@ -32,7 +32,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.ChangeAllNESWSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"cardRestrictions":["Is Character","Board","Friendly","Summoned"]

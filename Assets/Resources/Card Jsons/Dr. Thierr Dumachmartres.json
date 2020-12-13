@@ -32,10 +32,7 @@
 	"e":7,
 	"s":4,
 	"w":0,
-	"PlayRestriction":{
-		"normalRestrictions":["Default Normal Restrictions","Unique"],
-		"effectRestrictions":["Default Effect Restrictions","Unique"]
-	},
+	"unique":true,
 	"subtypes":["Doctor"],
 	"subtypeText":"Doctor"
 }

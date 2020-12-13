@@ -1,7 +1,7 @@
 {
 	"cardType":65,
 	"cardName":"Defense Core",
-	"effText":"While equipped, activate this character. When they defend, give them +4EW. When they die (while I'm equipped), rehand me.",
+	"effText":"Recoverable.\nWhile equipped, activate this character. When they defend, give them +4EW.",
 	"effects":[
 		{
 			"blurb":"Defense Activate!",
@@ -41,32 +41,14 @@
 					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeNESWSubeffect, Assembly-CSharp",
-					"eChange":4,
-					"wChange":4
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod":4,
+					"wMod":4
 				}
 			]	
-		},
-		{
-			"blurb":"Core Recovery",
-			"triggerData":
-			{
-				"blurb":"Core Recovery",
-				"triggerCondition":"Discard",
-				"triggerRestriction":{
-					"triggerRestrictions":["Augmented Card Triggered"]
-				}
-			},
-			"subeffects":[
-				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
-				}
-			]
 		}
 	],
+	"keywords":["Recoverable"],
 	"PlayRestriction":{
 		"normalRestrictions":["Augment Normal Restrictions","On Card that Fits Restriction"],
 		"effectRestrictions":["Augment Effect Restrictions","On Card that Fits Restriction"],

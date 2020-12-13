@@ -1,0 +1,32 @@
+{
+	"blurb":"Revive",
+	"activationRestriction":{
+		"activationRestrictionArray":[
+			"Location",
+			"Controller Activates",
+			"Not Negated"
+		],
+		"location":2
+	},
+	"subeffects":[
+		{
+			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+			"spaceRestriction":
+			{
+				"blurb":"where to revive the Revenant",
+				"spaceRestrictions":["Can Play Target to This Space"]
+			}
+		},
+		{
+			"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+			"xDivisor":2,
+			"xMultiplier":1
+		},
+		{
+			"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+		}
+	]
+}

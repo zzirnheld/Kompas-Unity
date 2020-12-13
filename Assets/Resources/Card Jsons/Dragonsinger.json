@@ -43,7 +43,7 @@
 					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.XChangeNESWSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"sMult":1
 				},
 				{
@@ -57,5 +57,5 @@
 	"e":1,
 	"s":2,
 	"w":0,
-	"subtypeText":""
+	"subtypeText":"Draconic Mage"
 }

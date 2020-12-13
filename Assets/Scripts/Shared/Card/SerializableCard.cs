@@ -14,6 +14,8 @@ namespace KompasCore.Cards
         public string effText;
         public string subtypeText;
 
+        public string[] keywords = new string[0];
+
         public MovementRestriction MovementRestriction = null;
         public AttackRestriction AttackRestriction = null;
         public PlayRestriction PlayRestriction = null;
@@ -27,6 +29,7 @@ namespace KompasCore.Cards
         public int arg;
         public int a;
         public bool fast;
+        public bool unique;
         public string subtext;
         public string[] augSubtypes;
     }

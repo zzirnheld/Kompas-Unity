@@ -22,8 +22,8 @@
 					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeSpellCSubeffect, Assembly-CSharp",
-					"xMultiplier":1
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"cMult":1
 				}
 			]
 		},
