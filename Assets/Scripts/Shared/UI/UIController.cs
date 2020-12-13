@@ -52,11 +52,6 @@ namespace KompasCore.UI
         //deck search vars
         public List<GameCard> thingToSearch;
 
-        public virtual void ShowNothing()
-        {
-            boardUICtrl.ShowNothing();
-        }
-
         /// <summary>
         /// Updates the info shown in the ui for the given card.
         /// <br></br> If the card passed in is already being shown, but refresh is false, does nothing.
@@ -64,18 +59,21 @@ namespace KompasCore.UI
         /// <param name="card">The card to show info for.</param>
         /// <param name="refresh">Whether to forcibly refresh all shown info of the card being shown</param>
         /// <returns><see langword="true"/> if the shown info was updated, <see langword="false"/> otherwise.</returns>
-        public virtual bool ShowInfoFor(GameCard card, bool refresh = false)
+        public bool ShowInfoFor(GameCard card, bool refresh = false)
         {
             if (ShownCard == card && !refresh) return false;
 
             ShownCard = card;
             if (card == null)
             {
-                ShowNothing();
+                boardUICtrl.ShowNothing();
                 return false;
             }
-
-            return true;
+            else
+            {
+                boardUICtrl.ShowForCard(card);
+                return true;
+            }
         }
 
         public void RefreshShownCardInfo() => ShowInfoFor(ShownCard, refresh: true);
