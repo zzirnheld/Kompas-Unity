@@ -6,43 +6,6 @@
 		{
 			"triggerData":
 			{
-				"triggerCondition":"Play",
-				"blurb":"C to 0",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
-				}
-			},
-			"subeffects":[
-				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
-					"cVal":0
-				}
-			]	
-		},
-		{
-			"triggerData":
-			{
-				"triggerCondition":"Turn Start",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Friendly Turn"]
-				}
-			},
-			"subeffects":[
-				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"cMod":1
-				}
-			]	
-		},
-				{
-			"triggerData":
-			{
 				"triggerCondition":"C Set",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","X Fits Restriction","This Card Triggered"],
@@ -67,6 +30,7 @@
 			]
 		}
 	],
+	"keywords":["Machinations Play","Machinations Reup"],	
 	"c":2,
 	"spellType":"Enchant",
 	"subtypeText":"Machination Enchant"
