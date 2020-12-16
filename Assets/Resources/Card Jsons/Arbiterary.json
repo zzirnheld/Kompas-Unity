@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Arbiterary",
-	"effText":"Unique: Can’t be played if you control a copy.\nWhen a friendly Augment is attached, give it +1 A. If it became attached to an enemy Avatar, set X to the Augment's A, give the Avatar -X E, attach the augment to me, and reset its A.",
+	"effText":"When a friendly Augment is attached, give it +1 A. If it became attached to an enemy Avatar, set X to the Augment's A, give the Avatar -X E, attach the augment to me, and reset its A.",
 	"effects":[
 		{
 			"triggerData":

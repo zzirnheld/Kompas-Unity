@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Teamwork!",
-	"effText":"When a friendly character is augmented, draw 1.",
+	"effText":"The first time each stack a friendly character is augmented, draw 1.",
 	"effects":[
 		{
 			"triggerData":
