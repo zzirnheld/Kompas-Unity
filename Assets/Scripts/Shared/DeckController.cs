@@ -59,7 +59,11 @@ namespace KompasCore.GameCore
         /// </summary>
         public virtual bool RemoveFromDeck(GameCard card)
         {
-            if (!Deck.Contains(card)) return false;
+            if (!Deck.Contains(card))
+            {
+                Debug.LogError($"Couldn't remove {card.CardName} from deck, it wasn't in deck!");
+                return false;
+            }
 
             Deck.Remove(card);
             return true;

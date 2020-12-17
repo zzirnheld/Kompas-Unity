@@ -16,7 +16,7 @@ namespace KompasServer.Networking
 
         public void SendPacket(Packet packet)
         {
-            // if (packet != null) Debug.Log($"Sending packet to {Player.index} with info {packet}");
+            //if (packet != null) Debug.Log($"Sending packet to {Player.index} with info {packet}");
             ServerNetworkCtrl.SendPacket(packet);
         }
 

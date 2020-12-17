@@ -121,6 +121,7 @@ namespace KompasCore.Cards
                     case CardLocation.Field: return BoardX * 7 + BoardY;
                     case CardLocation.Hand: return Controller.handCtrl.IndexOf(this);
                     case CardLocation.Annihilation: return Game.annihilationCtrl.Cards.IndexOf(this);
+                    case CardLocation.Nowhere: return -1;
                     default:
                         Debug.LogError($"Tried to ask for card index when in location {Location}");
                         return -1;
@@ -191,7 +192,7 @@ namespace KompasCore.Cards
             get => location;
             set
             {
-                Debug.Log($"Card {ID} location set to {value}");
+                Debug.Log($"Card {ID} named {CardName} location set to {value}");
                 location = value;
                 if (cardCtrl == null) Debug.LogWarning($"Missing a card control. Is this a debug card?");
                 else cardCtrl.SetPhysicalLocation(location);
@@ -366,14 +367,23 @@ namespace KompasCore.Cards
         public virtual bool AddAugment(GameCard augment, IStackable stackSrc = null)
         {
             //can't add a null augment
-            if (augment == null) return false;
+            if (augment == null)
+            {
+                Debug.LogError($"Can't add a null augment.");
+                return false;
+            }
 
             //if this and the other are in the same place, it doesn't leave play
             bool canHappen = false;
             if (augment.Location != Location) canHappen = augment.Remove(stackSrc);
             else if (augment.AugmentedCard != null) canHappen = augment.Detach(stackSrc);
 
-            if (!canHappen) return false;
+            if (!canHappen)
+            {
+                Debug.LogError($"Couldn't remove or detach augment from {augment.Location} while this in {Location}," +
+                    $" or {augment.AugmentedCard?.CardName}");
+                return false;
+            }
 
             //regardless, add the augment
             AugmentsList.Add(augment);

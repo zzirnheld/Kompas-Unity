@@ -70,6 +70,8 @@ namespace KompasCore.Effects
 
         public Trigger ThisTrigger { get; private set; }
 
+        private bool initialized = false;
+
         public void Initialize(Game game, GameCard thisCard, Trigger thisTrigger, Effect effect)
         {
             Game = game;
@@ -78,14 +80,17 @@ namespace KompasCore.Effects
             sourceRestriction = sourceRestriction ?? new CardRestriction();
             xRestriction = xRestriction ?? new XRestriction();
             spaceRestriction = spaceRestriction ?? new SpaceRestriction();
+            existsRestriction = existsRestriction ?? new CardRestriction();
 
             cardRestriction.Initialize(thisCard, effect.Controller, effect);
+            existsRestriction.Initialize(thisCard, effect.Controller, effect);
             xRestriction.Initialize(thisCard);
             spaceRestriction.Initialize(thisCard, effect.Controller, effect);
 
             this.ThisCard = thisCard;
             this.ThisTrigger = thisTrigger;
 
+            initialized = true;
             Debug.Log($"Initializing trigger for {thisCard?.CardName}. game is null? {game}");
         }
 
@@ -134,8 +139,17 @@ namespace KompasCore.Effects
             }
         }
 
+        private bool RestrictionValidDebug(string r, ActivationContext ctxt)
+        {
+            var success = RestrictionValid(r, ctxt);
+            if (!success) Debug.Log($"Trigger for {ThisCard.CardName} invalid at restriction {r} for {ctxt}");
+            return success;
+        }
+
         public bool Evaluate(ActivationContext context)
         {
+            if (!initialized) throw new System.ArgumentException("Trigger restriction not initialized!");
+
             try
             {
                 return triggerRestrictions.All(r => RestrictionValid(r, context));

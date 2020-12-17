@@ -51,6 +51,8 @@ namespace KompasCore.Effects
         public string blurb = "";
         public bool mustBeEmpty = true;
 
+        private bool initialized = false;
+
         public void Initialize(GameCard source, Player controller, Effect effect)
         {
             Source = source;
@@ -66,6 +68,8 @@ namespace KompasCore.Effects
             connectednessRestriction.Initialize(source, controller, effect);
             limitAdjacencyRestriction.Initialize(source, controller, effect);
             hereFitsRestriction.Initialize(source, controller, effect);
+
+            initialized = true;
         }
 
         public void Initialize(Subeffect subeffect)
@@ -116,6 +120,7 @@ namespace KompasCore.Effects
 
         public bool Evaluate(int x, int y)
         {
+            if (!initialized) throw new System.ArgumentException("Space restriction not initialized!");
             if (!Source.Game.boardCtrl.ValidIndices(x, y)) return false;
             if (mustBeEmpty && Source.Game.boardCtrl.GetCardAt(x, y) != null) return false;
 

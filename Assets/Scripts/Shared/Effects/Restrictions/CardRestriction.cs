@@ -140,6 +140,8 @@ namespace KompasCore.Effects
 
         public string blurb = "";
 
+        private bool initialized = false;
+
         public void Initialize(Subeffect subeff)
         {
             this.Subeffect = subeff;
@@ -153,6 +155,8 @@ namespace KompasCore.Effects
                 secondaryRestriction = JsonUtility.FromJson<CardRestriction>(secondaryRestrictionString);
                 secondaryRestriction.Initialize(subeff);
             }
+
+            initialized = true;
         }
 
         public void Initialize(GameCard source, Player controller, Effect eff)
@@ -160,6 +164,8 @@ namespace KompasCore.Effects
             Source = source;
             Controller = controller;
             Effect = eff;
+
+            initialized = true;
         }
 
         /// <summary>
@@ -193,6 +199,7 @@ namespace KompasCore.Effects
                 case NotAugment:  return potentialTarget.CardType != 'A';
 
                 //control
+                //Debug.Log($"potential target controller? {potentialTarget.Controller?.index}, my controller {Controller?.index}");
                 case Friendly:  return potentialTarget.Controller == Controller;
                 case Enemy:     return potentialTarget.Controller != Controller;
                 case SameOwner: return potentialTarget.Owner == Controller;
@@ -286,13 +293,13 @@ namespace KompasCore.Effects
         }
 
         /* This exists to debug a card restriction,
-         * but should not be usually used because it prints a ton 
-        public bool RestrictionValidDebug(string restriction, GameCard potentialTarget, int x)
+         * but should not be usually used because it prints a ton */
+        public bool RestrictionValidDebug(string restriction, IGameCardInfo potentialTarget, int x)
         {
             bool answer = RestrictionValid(restriction, potentialTarget, x);
-            // if (!answer) Debug.Log($"{potentialTarget.CardName} flouts {restriction}");
+            if (!answer) Debug.Log($"{potentialTarget.CardName} flouts {restriction}");
             return answer;
-        } */
+        }
 
         /// <summary>
         /// Checks whether the card in question fits the relevant retrictions, for the given value of X
@@ -302,6 +309,8 @@ namespace KompasCore.Effects
         /// <returns><see langword="true"/> if the card fits all restrictions, <see langword="false"/> if it doesn't fit at least one</returns>
         public bool Evaluate(IGameCardInfo potentialTarget, int x)
         {
+            if (!initialized) throw new ArgumentException("Card restriction not initialized!");
+
             if (potentialTarget == null) return false;
 
             return cardRestrictions.All(r => RestrictionValid(r, potentialTarget, x));
