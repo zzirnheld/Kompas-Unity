@@ -7,37 +7,37 @@ namespace KompasCore.Cards
 {
     public interface IGameCardInfo
     {
-        public GameCard Card { get; }
-        public CardLocation Location { get; }
-        public int IndexInList { get; }
-        public string CardName { get; }
-        public char CardType { get; }
-        public Player Controller { get; }
-        public Player Owner { get; }
-        public bool Summoned { get; }
-        public bool IsAvatar { get; }
-        public string SubtypeText { get; }
-        public GameCard AugmentedCard { get; }
-        public IEnumerable<GameCard> Augments { get; }
+        GameCard Card { get; }
+        CardLocation Location { get; }
+        int IndexInList { get; }
+        string CardName { get; }
+        char CardType { get; }
+        Player Controller { get; }
+        Player Owner { get; }
+        bool Summoned { get; }
+        bool IsAvatar { get; }
+        string SubtypeText { get; }
+        GameCard AugmentedCard { get; }
+        IEnumerable<GameCard> Augments { get; }
 
-        public int N { get; }
-        public int E { get; }
-        public int S { get; }
-        public int W { get; }
-        public int C { get; }
-        public int A { get; }
-        public int Cost { get; }
+        int N { get; }
+        int E { get; }
+        int S { get; }
+        int W { get; }
+        int C { get; }
+        int A { get; }
+        int Cost { get; }
 
-        public bool Negated { get; }
-        public IEnumerable<GameCard> AdjacentCards { get; }
+        bool Negated { get; }
+        IEnumerable<GameCard> AdjacentCards { get; }
 
-        public (int x, int y) Position { get; }
+        (int x, int y) Position { get; }
 
-        public int DistanceTo(int x, int y);
-        public int DistanceTo(IGameCardInfo card);
-        public bool IsAdjacentTo(IGameCardInfo card);
-        public bool SameColumn(IGameCardInfo card);
-        public bool WithinSpaces(int spaces, IGameCardInfo card);
+        int DistanceTo(int x, int y);
+        int DistanceTo(IGameCardInfo card);
+        bool IsAdjacentTo(IGameCardInfo card);
+        bool SameColumn(IGameCardInfo card);
+        bool WithinSpaces(int spaces, IGameCardInfo card);
     }
 
     /// <summary>
