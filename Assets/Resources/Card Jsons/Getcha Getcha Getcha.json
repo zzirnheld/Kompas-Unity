@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Getcha Getcha Getcha",
-	"effText":"When a friendly character is augmented, give them +1N.",
+	"effText":"Comeback Play.\nWhen a friendly character is augmented, give them +1N.",
 	"effects":[
 		{
 			"triggerData":
@@ -26,7 +26,9 @@
 			]
 		}
 	],
+	"keywords":["Comeback Play"],
 	"c":1,
-	"spellType":"Enchant",
-	"subtypeText":"Sportsball Play Enchant"
+	"spellType":"Vanishing",
+	"arg":1,
+	"subtypeText":"Sportsball Play Vanishing"
 }

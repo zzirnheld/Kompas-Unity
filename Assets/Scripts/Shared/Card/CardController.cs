@@ -158,7 +158,7 @@ namespace KompasCore.Cards
 
         public void SpreadOutAugs()
         {
-            var augCount = card.Augments.Count;
+            var augCount = card.AugmentsList.Count;
             /*float scale = 0.4f / ((float) (augCount / 4));
             float increment = 0.4f/ ((float) (augCount / 4)); //1f / ((float) (2f * augCount))
             float xOffset = -1f + increment;
@@ -172,7 +172,7 @@ namespace KompasCore.Cards
             }*/
             float scale = 0.4f / ((float)((augCount + 3) / 4));
             int i = 0;
-            foreach(var aug in card.Augments)
+            foreach(var aug in card.AugmentsList)
             {
                 aug.transform.parent = card.transform;
                 aug.transform.localScale = new Vector3(scale, scale, scale);
@@ -290,7 +290,7 @@ namespace KompasCore.Cards
         /// </summary>
         private void MoveTo((int x, int y) to)
         {
-            int heightIndex = card.AugmentedCard == null ? card.Augments.Count : card.AugmentedCard.Augments.IndexOf(card);
+            int heightIndex = card.AugmentedCard == null ? card.AugmentsList.Count : card.AugmentedCard.AugmentsList.IndexOf(card);
             transform.localPosition = BoardController.GridIndicesToPosWithStacking(to.x, to.y, heightIndex);
             gameObject.SetActive(card.AugmentedCard == null);
 

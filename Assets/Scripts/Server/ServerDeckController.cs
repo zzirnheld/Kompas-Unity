@@ -18,49 +18,51 @@ namespace KompasServer.GameCore
 
         protected override bool AddCard(GameCard card, IStackable stackSrc = null)
         {
-            if (card.CanRemove)
+            var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
+            if (base.AddCard(card))
             {
-                var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
                 EffectsController.TriggerForCondition(Trigger.ToDeck, context);
-                var success = base.AddCard(card);
                 owner.ServerNotifier.NotifyDeckCount(Deck.Count);
-                return success;
+                return true;
             }
             return false;
         }
 
         public override bool PushBottomdeck(GameCard card, IStackable stackSrc = null)
         {
-            if (card.CanRemove)
+            var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
+            bool wasKnown = card.KnownToEnemy;
+            if (base.PushBottomdeck(card, stackSrc))
             {
-                var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
                 EffectsController.TriggerForCondition(Trigger.Bottomdeck, context);
-                ServerNotifier.NotifyBottomdeck(card);
-                return base.PushBottomdeck(card, stackSrc);
+                ServerNotifier.NotifyBottomdeck(card, wasKnown);
+                return true;
             }
             return false;
         }
 
         public override bool PushTopdeck(GameCard card, IStackable stackSrc = null)
         {
-            if (card.CanRemove)
+            var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
+            bool wasKnown = card.KnownToEnemy;
+            if (base.PushTopdeck(card, stackSrc))
             {
-                var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
                 EffectsController.TriggerForCondition(Trigger.Topdeck, context);
-                ServerNotifier.NotifyTopdeck(card);
-                return base.PushTopdeck(card, stackSrc);
+                ServerNotifier.NotifyTopdeck(card, wasKnown);
+                return true;
             }
             return false;
         }
 
         public override bool ShuffleIn(GameCard card, IStackable stackSrc = null)
         {
-            if (card.CanRemove)
+            var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
+            bool wasKnown = card.KnownToEnemy;
+            if (base.ShuffleIn(card, stackSrc))
             {
-                var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
                 EffectsController.TriggerForCondition(Trigger.Reshuffle, context);
-                ServerNotifier.NotifyReshuffle(card);
-                return base.ShuffleIn(card, stackSrc);
+                ServerNotifier.NotifyReshuffle(card, wasKnown);
+                return true;
             }
             return false;
         }

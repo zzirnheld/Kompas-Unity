@@ -1,0 +1,35 @@
+{
+	"blurb":"Comeback Play",
+	"triggerData":
+	{
+		"blurb":"Comeback Play",
+		"triggerCondition":"Turn Start",
+		"triggerRestriction":{
+			"triggerRestrictions":["Friendly Turn","This Card Fits Restriction","Card Exists"],
+			"cardRestriction":{
+				"cardRestrictions":["Discard"]
+			},
+			"existsRestriction":
+			{
+				"cardRestrictions":["Friendly","Board","Is Augment","Subtypes Include"],
+				"subtypesInclude":["Sportsball"]
+			}
+		}
+	},
+	"subeffects":[
+		{
+			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+			"spaceRestriction":
+			{
+				"blurb":"where to make a Comeback Play",
+				"spaceRestrictions":["Can Play Target to This Space"]
+			}
+		},
+		{
+			"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+		}
+	]	
+}

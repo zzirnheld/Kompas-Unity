@@ -1,6 +1,7 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace KompasCore.GameCore
@@ -16,7 +17,11 @@ namespace KompasCore.GameCore
 
         public virtual bool AddToHand(GameCard card, IStackable stackSrc = null)
         {
-            if (card == null) return false;
+            if (card == null)
+            {
+                Debug.LogError("Cannot add null card to hand");
+                return false;
+            }
             card.Remove(stackSrc);
             hand.Add(card);
             card.Location = CardLocation.Hand;
@@ -29,7 +34,11 @@ namespace KompasCore.GameCore
 
         public virtual bool RemoveFromHand(GameCard card)
         {
-            if (!hand.Contains(card)) return false;
+            if (!hand.Contains(card))
+            {
+                Debug.LogError($"Hand of \n{string.Join(", ", hand.Select(c => c.CardName))}\n doesn't contain {card}, can't remove it!");
+                return false;
+            }
 
             hand.Remove(card);
             SpreadOutCards();

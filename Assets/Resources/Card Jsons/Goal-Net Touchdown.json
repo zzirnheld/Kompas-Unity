@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Goal-Net Touchdown",
-	"effText":"When a character moves adjacent to an enemy Avatar, apply their Augment(s) to an adjacent enemy Avatar.",
+	"effText":"Comeback Play.\nWhen a character moves adjacent to an enemy Avatar, apply their Augment(s) to an adjacent enemy Avatar.",
 	"effects":[
 		{
 			"triggerData":
@@ -56,7 +56,9 @@
 			]
 		}
 	],
+	"keywords":["Comeback Play"],
 	"c":1,
-	"spellType":"Enchant",
-	"subtypeText":"Sportsball Play Enchant"
+	"spellType":"Vanishing",
+	"arg":1,
+	"subtypeText":"Sportsball Play Vanishing"
 }

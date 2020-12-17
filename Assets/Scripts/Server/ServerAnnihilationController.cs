@@ -10,20 +10,12 @@ namespace KompasServer.GameCore
 
         public override bool Annihilate(GameCard card, IStackable stackSrc = null)
         {
-            if (card.CanRemove)
+            var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: stackSrc?.Controller);
+            bool wasKnown = card.KnownToEnemy;
+            if (base.Annihilate(card, stackSrc))
             {
-                var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: stackSrc?.Controller);
                 ServerGame.EffectsController.TriggerForCondition(Trigger.Annhilate, context);
-                ServerGame.ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyAnnhilate(card);
-                return base.Annihilate(card, stackSrc);
-            }
-            return false;
-        }
-
-        public override bool Remove(GameCard card)
-        {
-            if (base.Remove(card))
-            {
+                ServerGame.ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyAnnhilate(card, wasKnown);
                 card.ResetCard();
                 return true;
             }

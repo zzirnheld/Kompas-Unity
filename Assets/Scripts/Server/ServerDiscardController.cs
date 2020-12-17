@@ -15,17 +15,12 @@ namespace KompasServer.GameCore
 
         public override bool AddToDiscard(GameCard card, IStackable stackSrc = null)
         {
-            if (!card.CanRemove) return false;
             var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
-            EffectsController.TriggerForCondition(Trigger.Discard, context);
-            ServerNotifier.NotifyDiscard(card);
-            return base.AddToDiscard(card);
-        }
-
-        public override bool RemoveFromDiscard(GameCard card)
-        {
-            if(base.RemoveFromDiscard(card))
+            bool wasKnown = card.KnownToEnemy;
+            if (base.AddToDiscard(card, stackSrc))
             {
+                EffectsController.TriggerForCondition(Trigger.Discard, context);
+                ServerNotifier.NotifyDiscard(card, wasKnown);
                 card.ResetCard();
                 return true;
             }

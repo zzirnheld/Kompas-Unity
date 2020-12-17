@@ -89,7 +89,7 @@ namespace KompasCore.GameCore
             foreach(var card in Board)
             {
                 if (predicate(card)) list.Add(card);
-                if (card != null) list.AddRange(card.Augments.Where(predicate));
+                if (card != null) list.AddRange(card.AugmentsList.Where(predicate));
             }
             return list;
         }
@@ -187,7 +187,6 @@ namespace KompasCore.GameCore
             }
 
             Debug.Log($"In boardctrl, playing {toPlay.CardName} to {toX}, {toY}");
-            toPlay.Remove(stackSrc);
 
             //augments can't be played to a regular space.
             if (toPlay.CardType == 'A')
@@ -195,13 +194,18 @@ namespace KompasCore.GameCore
                 //augments therefore just get put on whatever card is on that space rn.
                 var augmented = Board[toX, toY];
                 //if there isn't a card, well, you can't do that.
-                if (augmented == null) return false;
+                if (augmented == null)
+                {
+                    Debug.LogError($"Can't play an augment to empty space at {toX}, {toY}");
+                    return false;
+                }
                 //assuming there is a card there, try and add the augment. if it don't work, it borked.
                 if (!Board[toX, toY].AddAugment(toPlay, stackSrc)) return false;
             }
             //otherwise, put a card to the requested space
             else
             {
+                toPlay.Remove(stackSrc);
                 Board[toX, toY] = toPlay;
                 toPlay.Location = CardLocation.Field;
                 toPlay.Position = (toX, toY);

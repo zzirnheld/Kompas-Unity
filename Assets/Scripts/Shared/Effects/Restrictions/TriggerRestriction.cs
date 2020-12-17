@@ -21,6 +21,7 @@ namespace KompasCore.Effects
         public const string ThisCardFitsRestriction = "This Card Fits Restriction"; //100,
         public const string TriggererFitsRestriction = "Triggerer Fits Restriction"; //101,
         public const string TriggerersAugmentedCardFitsRestriction = "Triggerer's Augmented Card Fits Restriction";
+        public const string CardExists = "Card Exists";
 
         public const string AdjacentToRestriction = "Adjacent to Restriction";
         public const string CoordsFitRestriction = "Coords Fit Restriction"; //120,
@@ -56,6 +57,7 @@ namespace KompasCore.Effects
 
         public string[] triggerRestrictions = new string[0];
         public CardRestriction cardRestriction;
+        public CardRestriction existsRestriction;
         public XRestriction xRestriction;
         public SpaceRestriction spaceRestriction;
         public CardRestriction sourceRestriction;
@@ -68,6 +70,8 @@ namespace KompasCore.Effects
 
         public Trigger ThisTrigger { get; private set; }
 
+        private bool initialized = false;
+
         public void Initialize(Game game, GameCard thisCard, Trigger thisTrigger, Effect effect)
         {
             Game = game;
@@ -76,14 +80,17 @@ namespace KompasCore.Effects
             sourceRestriction = sourceRestriction ?? new CardRestriction();
             xRestriction = xRestriction ?? new XRestriction();
             spaceRestriction = spaceRestriction ?? new SpaceRestriction();
+            existsRestriction = existsRestriction ?? new CardRestriction();
 
             cardRestriction.Initialize(thisCard, effect.Controller, effect);
+            existsRestriction.Initialize(thisCard, effect.Controller, effect);
             xRestriction.Initialize(thisCard);
             spaceRestriction.Initialize(thisCard, effect.Controller, effect);
 
             this.ThisCard = thisCard;
             this.ThisTrigger = thisTrigger;
 
+            initialized = true;
             Debug.Log($"Initializing trigger for {thisCard?.CardName}. game is null? {game}");
         }
 
@@ -92,18 +99,19 @@ namespace KompasCore.Effects
             switch (restriction)
             {
                 //card triggering stuff
-                case ThisCardTriggered:        return context.Card == ThisCard;
+                case ThisCardTriggered:        return context.CardInfo.Card == ThisCard;
                 case ThisCardInPlay:           return ThisCard.Location == CardLocation.Field;
-                case AugmentedCardTriggered:   return context.Card == ThisCard.AugmentedCard;
+                case AugmentedCardTriggered:   return context.CardInfo.Card == ThisCard.AugmentedCard;
+                case CardExists:               return ThisCard.Game.Cards.Any(c => existsRestriction.Evaluate(c));
                 case ThisCardFitsRestriction:  return cardRestriction.Evaluate(ThisCard);
-                case TriggererFitsRestriction: return cardRestriction.Evaluate(context.Card);
-                case TriggerersAugmentedCardFitsRestriction: return cardRestriction.Evaluate(context.Card.AugmentedCard);
+                case TriggererFitsRestriction: return cardRestriction.Evaluate(context.CardInfo);
+                case TriggerersAugmentedCardFitsRestriction: return cardRestriction.Evaluate(context.CardInfo.AugmentedCard);
                 case StackableSourceFitsRestriction: return sourceRestriction.Evaluate(context.Stackable?.Source);
                 
                 //other non-card triggering things
                 case CoordsFitRestriction:    return context.Space != null && spaceRestriction.Evaluate(context.Space.Value);
                 case XFitsRestriction:        return context.X != null && xRestriction.Evaluate(context.X.Value);
-                case EffectSourceIsTriggerer: return context.Stackable is Effect eff && eff.Source == context.Card;
+                case EffectSourceIsTriggerer: return context.Stackable is Effect eff && eff.Source == context.CardInfo.Card;
                 case AdjacentToRestriction:   return ThisCard.AdjacentCards.Any(c => cardRestriction.Evaluate(c));
                 //TODO make these into just something to do with triggered card fitting restriction
                 case ControllerTriggered:     return context.Triggerer == ThisCard.Controller;
@@ -111,13 +119,14 @@ namespace KompasCore.Effects
 
                 case DistanceTriggererToSpaceConstant:
                     if (context.Space == null) return false;
-                    return context.Card.DistanceTo(context.Space.Value) == distance;
+                    var (x, y) = context.Space.Value;
+                    return context.CardInfo.DistanceTo(x, y) == distance;
 
                 //gamestate
                 case FriendlyTurn:  return Game.TurnPlayer == ThisCard.Controller;
                 case EnemyTurn:     return Game.TurnPlayer != ThisCard.Controller;
-                case FromField:     return context.Card.Location == CardLocation.Field;
-                case FromDeck:      return context.Card.Location == CardLocation.Deck;
+                case FromField:     return context.CardInfo.Location == CardLocation.Field;
+                case FromDeck:      return context.CardInfo.Location == CardLocation.Deck;
                 case NotFromEffect: return context.Stackable is Effect;
 
                 //max
@@ -130,8 +139,17 @@ namespace KompasCore.Effects
             }
         }
 
+        private bool RestrictionValidDebug(string r, ActivationContext ctxt)
+        {
+            var success = RestrictionValid(r, ctxt);
+            if (!success) Debug.Log($"Trigger for {ThisCard.CardName} invalid at restriction {r} for {ctxt}");
+            return success;
+        }
+
         public bool Evaluate(ActivationContext context)
         {
+            if (!initialized) throw new System.ArgumentException("Trigger restriction not initialized!");
+
             try
             {
                 return triggerRestrictions.All(r => RestrictionValid(r, context));
