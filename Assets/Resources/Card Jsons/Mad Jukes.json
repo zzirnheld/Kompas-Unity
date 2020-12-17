@@ -47,36 +47,11 @@
 					"wMult":-1
 				}
 			]
-		},
-		{
-			"triggerData":
-			{
-				"blurb":"Sustain the Vuvuzelas",
-				"triggerCondition":"Turn Start",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play"]
-				}
-			},
-			"subeffects":[
-				{
-					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition":"Any Fit Restriction",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Subtypes Include","Friendly","Board","Is Augment"],
-						"subtypesInclude":["Sportsball"]
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
-				}
-			]
 		}
 	],
+	"keywords":["Comeback Play"],
 	"c":1,
-	"spellType":"Enchant",
-	"subtypeText":"Sportsball Play Enchant"
+	"spellType":"Vanishing",
+	"arg":1,
+	"subtypeText":"Sportsball Play Vanishing"
 }

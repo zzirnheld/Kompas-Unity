@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Teamwork!",
-	"effText":"The first time each stack a friendly character is augmented, draw 1.",
+	"effText":"Comeback Play.\nThe first time each stack a friendly character is augmented, draw 1.",
 	"effects":[
 		{
 			"triggerData":
@@ -22,11 +22,9 @@
 			]
 		}
 	],
+	"keywords":["Comeback Play"],
 	"c":1,
-	"PlayRestriction":{
-		"normalRestrictions":["Default Normal Restrictions"],
-		"effectRestrictions":["Default Effect Restrictions"]
-	},
-	"spellType":"Enchant",
-	"subtypeText":"Sportsball Play Enchant"
+	"spellType":"Vanishing",
+	"arg":1,
+	"subtypeText":"Sportsball Play Vanishing"
 }
