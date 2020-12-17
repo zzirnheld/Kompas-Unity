@@ -15,13 +15,16 @@ namespace KompasServer.GameCore
 
         public override bool AddToHand(GameCard card, IStackable stackSrc = null)
         {
-            if (!card.CanRemove) return false;
             var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
-            EffectsController.TriggerForCondition(Trigger.Rehand, context);
-            ServerNotifier.NotifyRehand(card);
-            bool success = base.AddToHand(card);
-            if(success) card.ResetCard();
-            return success;
+            bool wasKnown = card.KnownToEnemy;
+            if (base.AddToHand(card, stackSrc))
+            {
+                EffectsController.TriggerForCondition(Trigger.Rehand, context);
+                ServerNotifier.NotifyRehand(card, wasKnown);
+                card.ResetCard();
+                return true;
+            }
+            return false;
         }
     }
 }

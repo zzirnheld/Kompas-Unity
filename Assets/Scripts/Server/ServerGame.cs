@@ -153,7 +153,7 @@ namespace KompasServer.GameCore
                 }
                 player.deckCtrl.ShuffleIn(card);
                 if (card != null) Debug.Log($"Adding new card {card.CardName} with id {card.ID}");
-                player.ServerNotifier.NotifyAddToDeck(card);
+                player.ServerNotifier.NotifyAddToDeck(card, wasKnown: false);
             }
 
             Debug.Log($"Setting avatar for player {player.index}");
@@ -203,9 +203,12 @@ namespace KompasServer.GameCore
                 var toDraw = controller.deckCtrl.Topdeck;
                 if (toDraw == null) break;
                 var eachDrawContext = new ActivationContext(card: toDraw, stackable: stackSrc, triggerer: controller);
-                EffectsController.TriggerForCondition(Trigger.EachDraw, eachDrawContext);
-                toDraw.Rehand(controller, stackSrc);
-                drawn.Add(toDraw);
+                if (toDraw.Rehand(controller, stackSrc))
+                {
+                    EffectsController.TriggerForCondition(Trigger.EachDraw, eachDrawContext);
+                    drawn.Add(toDraw);
+                }
+                else break;
             }
             var context = new ActivationContext(stackable: stackSrc, triggerer: controller, x: i);
             EffectsController.TriggerForCondition(Trigger.DrawX, context);

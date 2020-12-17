@@ -15,13 +15,14 @@ namespace KompasServer.GameCore
 
         public override bool Play(GameCard toPlay, int toX, int toY, Player controller, IStackable stackSrc = null)
         {
-            if (toPlay.CanRemove)
+            var context = new ActivationContext(card: toPlay, stackable: stackSrc, triggerer: controller, space: (toX, toY));
+            bool wasKnown = toPlay.KnownToEnemy;
+            if (base.Play(toPlay, toX, toY, controller))
             {
-                var context = new ActivationContext(card: toPlay, stackable: stackSrc, triggerer: controller, space: (toX, toY));
                 EffectsController.TriggerForCondition(Trigger.Play, context);
                 EffectsController.TriggerForCondition(Trigger.Arrive, context);
-                if (!toPlay.IsAvatar) ServerNotifierByIndex(toPlay.ControllerIndex).NotifyPlay(toPlay, toX, toY);
-                return base.Play(toPlay, toX, toY, controller);
+                if (!toPlay.IsAvatar) ServerNotifierByIndex(toPlay.ControllerIndex).NotifyPlay(toPlay, toX, toY, wasKnown);
+                return true;
             }
             return false;
         }

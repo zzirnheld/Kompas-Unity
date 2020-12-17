@@ -93,43 +93,45 @@ namespace KompasServer.Cards
 
         public override bool AddAugment(GameCard augment, IStackable stackSrc = null)
         {
-            if (augment == null) return false;
-
             var context = new ActivationContext(card: augment, space: Position, stackable: stackSrc, triggerer: Controller);
-            EffectsController.TriggerForCondition(Trigger.AugmentAttached, context);
-
             var augmentedContext = new ActivationContext(card: this, space: Position, stackable: stackSrc, triggerer: Controller);
-            EffectsController.TriggerForCondition(Trigger.Augmented, augmentedContext);
-
-            ServerGame.ServerPlayers[augment.ControllerIndex].ServerNotifier.NotifyAttach(augment, BoardX, BoardY);
-            return base.AddAugment(augment, stackSrc);
+            bool wasKnown = augment.KnownToEnemy;
+            if (base.AddAugment(augment, stackSrc))
+            {
+                EffectsController.TriggerForCondition(Trigger.AugmentAttached, context);
+                EffectsController.TriggerForCondition(Trigger.Augmented, augmentedContext);
+                ServerGame.ServerPlayers[augment.ControllerIndex].ServerNotifier.NotifyAttach(augment, BoardX, BoardY, wasKnown);
+                return true;
+            }
+            return false;
         }
 
         protected override bool Detach(IStackable stackSrc = null)
         {
             if (AugmentedCard == null) return false;
-
             var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller ?? Controller);
-            EffectsController.TriggerForCondition(Trigger.AugmentDetached, context);
-            return base.Detach(stackSrc);
+            if (base.Detach(stackSrc))
+            {
+                EffectsController.TriggerForCondition(Trigger.AugmentDetached, context);
+                return true;
+            }
+            return false;
         }
 
         public override bool Remove(IStackable stackSrc = null)
         {
-            //if you can't remove, don't even proc the trigger
-            if (!CanRemove) return false;
-
             //proc the trigger before actually removing anything
             var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller ?? Controller);
-            EffectsController.TriggerForCondition(Trigger.Remove, context);
 
-            //remove for realsies
-            base.Remove(stackSrc);
-
-            //copy the colleciton  so that you can edit the original
-            var augments = AugmentsList.ToArray();
-            foreach (var aug in augments) aug.Discard(stackSrc);
-            return true;
+            if (base.Remove(stackSrc))
+            {
+                EffectsController.TriggerForCondition(Trigger.Remove, context);
+                //copy the colleciton  so that you can edit the original
+                var augments = AugmentsList.ToArray();
+                foreach (var aug in augments) aug.Discard(stackSrc);
+                return true;
+            }
+            return false;
         }
 
         #region stats

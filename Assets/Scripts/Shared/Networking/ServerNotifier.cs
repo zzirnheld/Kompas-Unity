@@ -64,52 +64,52 @@ namespace KompasServer.Networking
         #endregion game stats
 
         #region card location
-        public void NotifyAttach(GameCard toAttach, int x, int y)
-            => SendToBothInverting(new AttachCardPacket(toAttach, x, y, invert: Player.index != 0), toAttach.KnownToEnemy);
+        public void NotifyAttach(GameCard toAttach, int x, int y, bool wasKnown)
+            => SendToBothInverting(new AttachCardPacket(toAttach, x, y, invert: Player.index != 0), wasKnown);
 
         /// <summary>
         /// Notifies that the Player corresponding to this notifier played a given card
         /// </summary>
-        public void NotifyPlay(GameCard toPlay, int x, int y)
+        public void NotifyPlay(GameCard toPlay, int x, int y, bool wasKnown)
         {
             //if this card is an augment, don't bother notifying about it. attach will take care of it.
             if (toPlay.CardType == 'A') return;
 
             //tell everyone to do it
             var p = new PlayCardPacket(toPlay.ID, toPlay.BaseJson, toPlay.ControllerIndex, x, y, invert: Player.index != 0);
-            var q = p.GetInversion(toPlay.KnownToEnemy);
+            var q = p.GetInversion(wasKnown);
             SendPackets(p, q);
         }
 
         public void NotifyMove(GameCard toMove, int x, int y)
             => SendToBothInverting(new MoveCardPacket(toMove.ID, x, y, invert: Player.index != 0));
 
-        public void NotifyDiscard(GameCard toDiscard)
-            => SendToBothInverting(new DiscardCardPacket(toDiscard, invert: Player.index != 0), toDiscard.KnownToEnemy);
+        public void NotifyDiscard(GameCard toDiscard, bool wasKnown)
+            => SendToBothInverting(new DiscardCardPacket(toDiscard, invert: Player.index != 0), wasKnown);
 
-        public void NotifyRehand(GameCard toRehand)
-            => SendToBothInverting(new RehandCardPacket(toRehand.ID), toRehand.KnownToEnemy);
+        public void NotifyRehand(GameCard toRehand, bool wasKnown)
+            => SendToBothInverting(new RehandCardPacket(toRehand.ID), wasKnown);
 
         public void NotifyDecrementHand() => SendPacket(new ChangeEnemyHandCountPacket(-1));
 
-        public void NotifyAnnhilate(GameCard toAnnhilate)
+        public void NotifyAnnhilate(GameCard toAnnhilate, bool wasKnown)
             => SendToBothInverting(new AnnihilateCardPacket(toAnnhilate.ID, toAnnhilate.BaseJson, toAnnhilate.ControllerIndex, invert: Player.index != 0), 
-                known: toAnnhilate.KnownToEnemy);
+                known: wasKnown);
 
-        public void NotifyTopdeck(GameCard card)
+        public void NotifyTopdeck(GameCard card, bool wasKnown)
             => SendToBothInverting(new TopdeckCardPacket(card.ID, card.OwnerIndex, invert: Player.index != 0), 
-                known: card.KnownToEnemy);
+                known: wasKnown);
 
-        public void NotifyBottomdeck(GameCard card)
+        public void NotifyBottomdeck(GameCard card, bool wasKnown)
             => SendToBothInverting(new BottomdeckCardPacket(card.ID, card.OwnerIndex, invert: Player.index != 0),
-                known: card.KnownToEnemy);
+                known: wasKnown);
 
-        public void NotifyReshuffle(GameCard toReshuffle)
+        public void NotifyReshuffle(GameCard toReshuffle, bool wasKnown)
             => SendToBothInverting(new ReshuffleCardPacket(toReshuffle.ID, toReshuffle.OwnerIndex, invert: Player.index != 0),
-                known: toReshuffle.KnownToEnemy);
+                known: wasKnown);
 
-        public void NotifyAddToDeck(GameCard added)
-            => SendToBothInverting(new AddCardPacket(added, invert: Player.index != 0), known: added.KnownToEnemy);
+        public void NotifyAddToDeck(GameCard added, bool wasKnown)
+            => SendToBothInverting(new AddCardPacket(added, invert: Player.index != 0), known: wasKnown);
 
         public void GetHandSizeChoices(int[] cardIds, string listRestrictionJson)
             => SendPacket(new GetHandSizeChoicesOrderPacket(cardIds, listRestrictionJson));
