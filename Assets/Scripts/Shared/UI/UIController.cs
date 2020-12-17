@@ -71,7 +71,7 @@ namespace KompasCore.UI
             }
             else
             {
-                boardUICtrl.ShowForCard(card);
+                boardUICtrl.ShowForCard(card, forceRefresh: refresh);
                 return true;
             }
         }
