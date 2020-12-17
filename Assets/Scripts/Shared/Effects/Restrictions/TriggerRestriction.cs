@@ -70,6 +70,8 @@ namespace KompasCore.Effects
 
         public Trigger ThisTrigger { get; private set; }
 
+        // Necessary because json doesn't let you have nice things, like constructors with arguments,
+        // so I need to make sure manually that I've bothered to set up relevant arguments.
         private bool initialized = false;
 
         public void Initialize(Game game, GameCard thisCard, Trigger thisTrigger, Effect effect)

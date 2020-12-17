@@ -140,6 +140,8 @@ namespace KompasCore.Effects
 
         public string blurb = "";
 
+        // Necessary because json doesn't let you have nice things, like constructors with arguments,
+        // so I need to make sure manually that I've bothered to set up relevant arguments.
         private bool initialized = false;
 
         public void Initialize(Subeffect subeff)

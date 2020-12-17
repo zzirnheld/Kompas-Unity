@@ -59,7 +59,7 @@ namespace KompasCore.UI
         /// <param name="card">The card to show info for.</param>
         /// <param name="refresh">Whether to forcibly refresh all shown info of the card being shown</param>
         /// <returns><see langword="true"/> if the shown info was updated, <see langword="false"/> otherwise.</returns>
-        public bool ShowInfoFor(GameCard card, bool refresh = false)
+        public virtual bool ShowInfoFor(GameCard card, bool refresh = false)
         {
             if (ShownCard == card && !refresh) return false;
 
@@ -71,7 +71,7 @@ namespace KompasCore.UI
             }
             else
             {
-                boardUICtrl.ShowForCard(card);
+                boardUICtrl.ShowForCard(card, forceRefresh: refresh);
                 return true;
             }
         }

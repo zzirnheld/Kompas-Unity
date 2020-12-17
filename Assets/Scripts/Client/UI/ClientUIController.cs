@@ -103,6 +103,17 @@ namespace KompasClient.UI
             if (Input.GetKeyDown(KeyCode.Escape)) escapeMenuUICtrl.Enable();
         }
 
+        public override bool ShowInfoFor(GameCard card, bool refresh = false)
+        {
+            bool success = base.ShowInfoFor(card, refresh);
+            if (ShownCard != card || refresh)
+            {
+                cardInfoViewUICtrl.CurrShown = card;
+                cardInfoViewUICtrl.ShowForCurrShown();
+            }
+            return success;
+        }
+
         public bool ShowEffect(Effect eff) => eff.CanBeActivatedBy(clientGame.Players[0]);
 
         public override void SelectCard(GameCard card, Game.TargetMode targetMode, bool fromClick)
