@@ -1,0 +1,19 @@
+{
+	"triggerData":
+	{
+		"triggerCondition":"Play",
+		"blurb":"C to 0",
+		"triggerRestriction":{
+			"triggerRestrictions":["This Card Triggered"]
+		}
+	},
+	"subeffects":[
+		{
+			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type":"KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
+			"cVal":0
+		}
+	]	
+}

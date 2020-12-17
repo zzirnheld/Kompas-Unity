@@ -105,13 +105,6 @@ namespace KompasClient.UI
 
         public bool ShowEffect(Effect eff) => eff.CanBeActivatedBy(clientGame.Players[0]);
 
-        public override bool ShowInfoFor(GameCard card, bool refresh = false)
-        {
-            if (!base.ShowInfoFor(card, refresh)) return false;
-
-            return true;
-        }
-
         public override void SelectCard(GameCard card, Game.TargetMode targetMode, bool fromClick)
         {
             base.SelectCard(card, targetMode, fromClick);

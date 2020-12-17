@@ -178,7 +178,7 @@ namespace KompasCore.GameCore
         public virtual bool Play(GameCard toPlay, int toX, int toY, Player controller, IStackable stackSrc = null)
         {
             if (toPlay == null) return false;
-            if (toPlay.Location == CardLocation.Field) throw new ArgumentException($"Card to play was already on field");
+            if (toPlay.Location == CardLocation.Field) return false;
             if (!ValidSpellSpaceFor(toPlay, toX, toY))
             {
                 Debug.LogError($"Tried to play {toPlay} to space {toX}, {toY}. " +
