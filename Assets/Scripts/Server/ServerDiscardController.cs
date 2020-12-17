@@ -19,17 +19,9 @@ namespace KompasServer.GameCore
             var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
             EffectsController.TriggerForCondition(Trigger.Discard, context);
             ServerNotifier.NotifyDiscard(card);
-            return base.AddToDiscard(card);
-        }
-
-        public override bool RemoveFromDiscard(GameCard card)
-        {
-            if(base.RemoveFromDiscard(card))
-            {
-                card.ResetCard();
-                return true;
-            }
-            return false;
+            bool success = base.AddToDiscard(card);
+            if (success) card.ResetCard();
+            return success;
         }
     }
 }

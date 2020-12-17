@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace KompasCore.Effects
 {
-    public struct ActivationContext
+    public class ActivationContext
     {
-        public readonly GameCard Card;
+        public readonly IGameCardInfo CardInfo;
         public readonly IStackable Stackable;
         public readonly Player Triggerer;
         public readonly int? X;
@@ -17,20 +17,20 @@ namespace KompasCore.Effects
         public ActivationContext(GameCard card = null, IStackable stackable = null, Player triggerer = null,
             int? x = null, (int, int)? space = null, int startIndex = 0, List<GameCard> targets = null)
         {
-            Card = card;
+            CardInfo = card == null ? null : new GameCardInfo(card);
             Stackable = stackable;
             Triggerer = triggerer;
             X = x;
             Space = space;
             StartIndex = startIndex;
-            Targets = targets; //no use ??ing to a new list because there's the default parameterless constructor
+            Targets = targets;
         }
 
         public override string ToString()
         {
             var sb = new System.Text.StringBuilder();
 
-            sb.Append(Card == null ? "No triggering card, " : $"Card: {Card.CardName}, ");
+            sb.Append(CardInfo == null ? "No triggering card, " : $"Card: {CardInfo.CardName}, ");
             sb.Append(Stackable == null ? "No triggering stackable, " : $"Stackable from: {Stackable.Source.CardName}, ");
             sb.Append(Triggerer == null ? "No triggering player, " : $"Triggerer: {Triggerer.index}, ");
             sb.Append(X == null ? "No X, " : $"X: {X}, ");

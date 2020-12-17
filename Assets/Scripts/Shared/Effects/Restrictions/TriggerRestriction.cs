@@ -94,19 +94,19 @@ namespace KompasCore.Effects
             switch (restriction)
             {
                 //card triggering stuff
-                case ThisCardTriggered:        return context.Card == ThisCard;
+                case ThisCardTriggered:        return context.CardInfo.Card == ThisCard;
                 case ThisCardInPlay:           return ThisCard.Location == CardLocation.Field;
-                case AugmentedCardTriggered:   return context.Card == ThisCard.AugmentedCard;
+                case AugmentedCardTriggered:   return context.CardInfo.Card == ThisCard.AugmentedCard;
                 case CardExists:               return ThisCard.Game.Cards.Any(c => existsRestriction.Evaluate(c));
                 case ThisCardFitsRestriction:  return cardRestriction.Evaluate(ThisCard);
-                case TriggererFitsRestriction: return cardRestriction.Evaluate(context.Card);
-                case TriggerersAugmentedCardFitsRestriction: return cardRestriction.Evaluate(context.Card.AugmentedCard);
+                case TriggererFitsRestriction: return cardRestriction.Evaluate(context.CardInfo);
+                case TriggerersAugmentedCardFitsRestriction: return cardRestriction.Evaluate(context.CardInfo.AugmentedCard);
                 case StackableSourceFitsRestriction: return sourceRestriction.Evaluate(context.Stackable?.Source);
                 
                 //other non-card triggering things
                 case CoordsFitRestriction:    return context.Space != null && spaceRestriction.Evaluate(context.Space.Value);
                 case XFitsRestriction:        return context.X != null && xRestriction.Evaluate(context.X.Value);
-                case EffectSourceIsTriggerer: return context.Stackable is Effect eff && eff.Source == context.Card;
+                case EffectSourceIsTriggerer: return context.Stackable is Effect eff && eff.Source == context.CardInfo.Card;
                 case AdjacentToRestriction:   return ThisCard.AdjacentCards.Any(c => cardRestriction.Evaluate(c));
                 //TODO make these into just something to do with triggered card fitting restriction
                 case ControllerTriggered:     return context.Triggerer == ThisCard.Controller;
@@ -114,13 +114,14 @@ namespace KompasCore.Effects
 
                 case DistanceTriggererToSpaceConstant:
                     if (context.Space == null) return false;
-                    return context.Card.DistanceTo(context.Space.Value) == distance;
+                    var (x, y) = context.Space.Value;
+                    return context.CardInfo.DistanceTo(x, y) == distance;
 
                 //gamestate
                 case FriendlyTurn:  return Game.TurnPlayer == ThisCard.Controller;
                 case EnemyTurn:     return Game.TurnPlayer != ThisCard.Controller;
-                case FromField:     return context.Card.Location == CardLocation.Field;
-                case FromDeck:      return context.Card.Location == CardLocation.Deck;
+                case FromField:     return context.CardInfo.Location == CardLocation.Field;
+                case FromDeck:      return context.CardInfo.Location == CardLocation.Deck;
                 case NotFromEffect: return context.Stackable is Effect;
 
                 //max

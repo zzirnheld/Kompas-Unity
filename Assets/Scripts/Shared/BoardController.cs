@@ -89,7 +89,7 @@ namespace KompasCore.GameCore
             foreach(var card in Board)
             {
                 if (predicate(card)) list.Add(card);
-                if (card != null) list.AddRange(card.Augments.Where(predicate));
+                if (card != null) list.AddRange(card.AugmentsList.Where(predicate));
             }
             return list;
         }

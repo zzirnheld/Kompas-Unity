@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace KompasCore.Cards
 {
-    public abstract class GameCard : CardBase
+    public abstract class GameCard : CardBase, IGameCardInfo
     {
         public const string Nimbleness = "N";
         public const string Endurance = "E";
@@ -19,6 +19,7 @@ namespace KompasCore.Cards
         public abstract Game Game { get; }
         public int ID { get; private set; }
         public CardController cardCtrl;
+        public GameCard Card => this;
 
         private SerializableCard serializedCard;
 
@@ -103,7 +104,7 @@ namespace KompasCore.Cards
             {
                 (BoardX, BoardY) = value;
                 if(cardCtrl != null) cardCtrl.SetPhysicalLocation(Location);
-                foreach (var aug in Augments) aug.Position = value;
+                foreach (var aug in AugmentsList) aug.Position = value;
             }
         }
 
@@ -126,13 +127,14 @@ namespace KompasCore.Cards
                 }
             }
         }
-        public List<GameCard> AdjacentCards => Game.boardCtrl.CardsAdjacentTo(BoardX, BoardY);
+        public IEnumerable<GameCard> AdjacentCards => Game.boardCtrl.CardsAdjacentTo(BoardX, BoardY);
 
         public bool AlreadyCopyOnBoard => Game.BoardHasCopyOf(this);
         #endregion positioning
 
         #region Augments
-        public List<GameCard> Augments { get; private set; } = new List<GameCard>();
+        public List<GameCard> AugmentsList { get; private set; } = new List<GameCard>();
+        public IEnumerable<GameCard> Augments => AugmentsList;
         private GameCard augmentedCard;
         public GameCard AugmentedCard
         {
@@ -273,7 +275,7 @@ namespace KompasCore.Cards
         public int DistanceTo(int x, int y)
         {
             if (Location != CardLocation.Field) return int.MaxValue;
-            return Mathf.Abs(x - BoardX) > Mathf.Abs(y - BoardY) ? Mathf.Abs(x - BoardX) : Mathf.Abs(y - BoardY);
+            return Mathf.Abs(x - Position.x) > Mathf.Abs(y - Position.y) ? Mathf.Abs(x - Position.x) : Mathf.Abs(y - Position.y);
             /* equivalent to
              * if (Mathf.Abs(card.X - X) > Mathf.Abs(card.Y - Y)) return Mathf.Abs(card.X - X);
              * else return Mathf.Abs(card.Y - Y);
@@ -281,19 +283,18 @@ namespace KompasCore.Cards
             */
         }
         public int DistanceTo((int x, int y) space) => DistanceTo(space.x, space.y);
-        public int DistanceTo(GameCard card) => DistanceTo(card.BoardX, card.BoardY);
-        public bool WithinSpaces(int numSpaces, GameCard card)
+        public int DistanceTo(IGameCardInfo card) => DistanceTo(card.Position);
+        public bool WithinSpaces(int numSpaces, IGameCardInfo card)
             => card != null && card.Location == CardLocation.Field && Location == CardLocation.Field && DistanceTo(card) <= numSpaces;
-        public bool WithinSpaces(int numSpaces, int x, int y) => DistanceTo(x, y) <= numSpaces;
-        public bool IsAdjacentTo(GameCard card) => Location == CardLocation.Field && card != null 
+        public bool IsAdjacentTo(IGameCardInfo card) => Location == CardLocation.Field && card != null
             && card.Location == CardLocation.Field && DistanceTo(card) == 1;
         public bool IsAdjacentTo(int x, int y) => Location == CardLocation.Field && DistanceTo(x, y) == 1;
-        public bool CardInAOE(GameCard c) => SpaceInAOE(c.Position);
+        public bool CardInAOE(IGameCardInfo c) => SpaceInAOE(c.Position);
         public bool SpaceInAOE((int x, int y) space) => SpaceInAOE(space.x, space.y);
         public bool SpaceInAOE(int x, int y)
-            => CardType == 'S' && SpellSubtype == RadialSubtype && DistanceTo(x, y) <= Arg;
-        public bool SameColumn(int x, int y) => BoardX - BoardY == x - y;
-        public bool SameColumn(GameCard c) => c.Location == CardLocation.Field && SameColumn(c.BoardX, c.BoardY);
+            => CardType == 'S' && SpellSubtype == CardBase.RadialSubtype && DistanceTo(x, y) <= Arg;
+        public bool SameColumn(int x, int y) => Position.x - Position.y == x - y;
+        public bool SameColumn(IGameCardInfo c) => c.Location == CardLocation.Field && SameColumn(c.Position.x, c.Position.y);
 
         /// <summary>
         /// Returns whether the <paramref name="space"/> passed in is in front of this card
@@ -307,7 +308,7 @@ namespace KompasCore.Cards
         /// </summary>
         /// <param name="card">The card to check if it's in front of this one</param>
         /// <returns><see langword="true"/> if <paramref name="card"/> is in front of this, <see langword="false"/> otherwise.</returns>
-        public bool CardInFront(GameCard card) => SpaceInFront(card.Position);
+        public bool CardInFront(IGameCardInfo card) => SpaceInFront(card.Position);
 
         /// <summary>
         /// Returns whether the <paramref name="space"/> passed in is behind this card
@@ -321,15 +322,15 @@ namespace KompasCore.Cards
         /// </summary>
         /// <param name="card">The card to check if it's behind this one</param>
         /// <returns><see langword="true"/> if <paramref name="card"/> is behind this, <see langword="false"/> otherwise.</returns>
-        public bool CardBehind(GameCard card) => SpaceBehind(card.Position);
+        public bool CardBehind(IGameCardInfo card) => SpaceBehind(card.Position);
 
         public bool SpaceDirectlyInFront((int x, int y) space)
             => Controller.SubjectiveCoords(space) == (SubjectivePosition.x + 1, SubjectivePosition.y + 1);
 
-        public bool CardDirectlyInFront(GameCard card) 
+        public bool CardDirectlyInFront(IGameCardInfo card)
             => Location == CardLocation.Field && card.Location == CardLocation.Field && SpaceDirectlyInFront(card.Position);
 
-        public bool OnMyDiagonal((int x, int y) space) => Location == CardLocation.Field && (BoardX == space.x || BoardY == space.y);
+        public bool OnMyDiagonal((int x, int y) space) => Location == CardLocation.Field && (Position.x == space.x || Position.y == space.y);
 
         /// <summary>
         /// Refers to this situation: <br></br>
@@ -340,13 +341,13 @@ namespace KompasCore.Cards
         /// <param name="space">The space in the same axis as this card and <paramref name="card"/> param</param>
         /// <param name="card">The card in the same axis as this card and the <paramref name="space"/> param.</param>
         /// <returns></returns>
-        public bool SpaceDirectlyAwayFrom((int x, int y) space, GameCard card)
+        public bool SpaceDirectlyAwayFrom((int x, int y) space, IGameCardInfo card)
         {
             if (card.Location != CardLocation.Field || Location != CardLocation.Field) return false;
-            int xDiffCard = card.BoardX - BoardX;
-            int yDiffCard = card.BoardY - BoardY;
-            int xDiffSpace = space.x - BoardX;
-            int yDiffSpace = space.y - BoardY;
+            int xDiffCard = card.Position.x - Position.x;
+            int yDiffCard = card.Position.y - Position.y;
+            int xDiffSpace = space.x - Position.x;
+            int yDiffSpace = space.y - Position.y;
 
             return (xDiffCard == 0 && xDiffSpace == 0)
                 || (yDiffCard == 0 && yDiffSpace == 0)
@@ -375,7 +376,7 @@ namespace KompasCore.Cards
             if (!canHappen) return false;
 
             //regardless, add the augment
-            Augments.Add(augment);
+            AugmentsList.Add(augment);
 
             //and update the augment's augmented card, location, and position to reflect its new status
             augment.AugmentedCard = this;
@@ -389,7 +390,7 @@ namespace KompasCore.Cards
         {
             if (AugmentedCard == null) return false;
 
-            AugmentedCard.Augments.Remove(this);
+            AugmentedCard.AugmentsList.Remove(this);
             AugmentedCard = null;
             return true;
         }

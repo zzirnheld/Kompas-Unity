@@ -169,7 +169,7 @@ namespace KompasCore.Effects
         /// <param name="potentialTarget">The card to consider the restriction for.</param>
         /// <param name="x">The value of x for which to consider the restriction</param>
         /// <returns><see langword="true"/> if the card fits the restriction for the given value of x, <see langword="false"/> otherwise.</returns>
-        private bool RestrictionValid(string restriction, GameCard potentialTarget, int x)
+        private bool RestrictionValid(string restriction, IGameCardInfo potentialTarget, int x)
         {
             if (potentialTarget == null) return false;
 
@@ -210,14 +210,14 @@ namespace KompasCore.Effects
                 case SubtypesExclude: return subtypesExclude.All(s => !potentialTarget.SubtypeText.Contains(s));
 
                 //is
-                case IsSource: return potentialTarget == Source;
+                case IsSource: return potentialTarget.Card == Source;
                 case AugmentsTarget: return potentialTarget.AugmentedCard == Subeffect.Target;
                 case WieldsAugmentFittingRestriction: return potentialTarget.Augments.Any(c => secondaryRestriction.Evaluate(c));
 
                 //distinct
-                case DistinctFromSource: return potentialTarget != Source;
-                case DistinctFromTarget: return potentialTarget != Subeffect.Target;
-                case DistinctFromAugmentedCard: return potentialTarget != Source.AugmentedCard;
+                case DistinctFromSource: return potentialTarget.Card != Source;
+                case DistinctFromTarget: return potentialTarget.Card != Subeffect.Target;
+                case DistinctFromAugmentedCard: return potentialTarget.Card != Source.AugmentedCard;
 
                 //location
                 case Hand:           return potentialTarget.Location == CardLocation.Hand;
@@ -277,10 +277,10 @@ namespace KompasCore.Effects
                 case EffectControllerCanPayCost: return Subeffect.Effect.Controller.Pips >= potentialTarget.Cost * costMultiplier / costDivisor;
                 case Augmented: return potentialTarget.Augments.Any();
                 case IsDefendingFromSource:
-                    return Source.Game.StackEntries.Any(s => s is Attack atk && atk.attacker == Source && atk.defender == potentialTarget)
-                        || (Source.Game.CurrStackEntry is Attack atk2 && atk2.attacker == Source && atk2.defender == potentialTarget);
+                    return Source.Game.StackEntries.Any(s => s is Attack atk && atk.attacker == Source && atk.defender == potentialTarget.Card)
+                        || (Source.Game.CurrStackEntry is Attack atk2 && atk2.attacker == Source && atk2.defender == potentialTarget.Card);
                 case CanPlayTargetToThisCharactersSpace:
-                    return Subeffect.Target.PlayRestriction.EvaluateEffectPlay(potentialTarget.BoardX, potentialTarget.BoardY, Effect);
+                    return Subeffect.Target.PlayRestriction.EvaluateEffectPlay(potentialTarget.Position.x, potentialTarget.Position.y, Effect);
                 default: throw new ArgumentException($"Invalid card restriction {restriction}", "restriction");
             }
         }
@@ -300,7 +300,7 @@ namespace KompasCore.Effects
         /// <param name="potentialTarget">The card to see if it fits all restrictions</param>
         /// <param name="x">The value of X for which to consider this effect's restriction</param>
         /// <returns><see langword="true"/> if the card fits all restrictions, <see langword="false"/> if it doesn't fit at least one</returns>
-        public bool Evaluate(GameCard potentialTarget, int x)
+        public bool Evaluate(IGameCardInfo potentialTarget, int x)
         {
             if (potentialTarget == null) return false;
 
@@ -312,6 +312,6 @@ namespace KompasCore.Effects
         /// </summary>
         /// <param name="potentialTarget">The card to see if it fits all restrictions</param>
         /// <returns><see langword="true"/> if the card fits all restrictions, <see langword="false"/> if it doesn't fit at least one</returns>
-        public bool Evaluate(GameCard potentialTarget) => Evaluate(potentialTarget, Subeffect?.Count ?? 0);
+        public bool Evaluate(IGameCardInfo potentialTarget) => Evaluate(potentialTarget, Subeffect?.Count ?? 0);
     }
 }
