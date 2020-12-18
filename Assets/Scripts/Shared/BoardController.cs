@@ -254,7 +254,7 @@ namespace KompasCore.GameCore
 
             if (card.AugmentedCard != null)
             {
-                if (card.Remove(stackSrc))
+                if (Board[toX, toY] != null && card.Remove(stackSrc))
                 {
                     Board[toX, toY].AddAugment(card, stackSrc);
                     return true;

@@ -18,7 +18,7 @@
 					"cardRestriction":
 					{
 						"blurb":"enemy card for Straw Golem to move.",
-						"cardRestrictions":["Board","Enemy","Not Avatar"]
+						"cardRestrictions":["Board","Enemy","Not Avatar","Not Augment"]
 					}
 				},
 				{
@@ -37,7 +37,7 @@
 					"cardRestriction":
 					{
 						"blurb":"enemy card for Straw Golem to move.",
-						"cardRestrictions":["Board","Enemy","Not Already Target","Not Avatar"]
+						"cardRestrictions":["Board","Enemy","Not Already Target","Not Avatar","Not Augment"]
 					}
 				},
 				{
