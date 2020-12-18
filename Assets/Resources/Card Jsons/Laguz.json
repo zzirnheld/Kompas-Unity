@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Laguz",
-	"effText":"Can’t be cast normally. The first time each stack a character moves themselves adjacent to me, move them 1 space.",
+	"effText":"Runic.\nThe first time each stack a character moves themselves adjacent to me, move them 1 space.",
 	"effects":[
 		{
 			"triggerData":

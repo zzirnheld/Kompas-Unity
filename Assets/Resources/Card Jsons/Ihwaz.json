@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Ihwaz",
-	"effText":"Can’t be cast normally. Swap two non-Augment cards' positions",
+	"effText":"Runic.\nSwap two non-Augment cards' positions",
 	"effects":[
 		{
 			"triggerData":

@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Ansuz",
-	"effText":"Can’t be cast normally. Set a character’s N to 1 and ESW to 10.",
+	"effText":"Runic.\nSet a character’s N to 1 and ESW to 10.",
 	"effects":[
 		{
 			"triggerData":

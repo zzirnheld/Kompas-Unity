@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Kaunan",
-	"effText":"Can’t be cast normally. Give a Summoned character -3EW.",
+	"effText":"Runic.\nGive a Summoned character -3EW.",
 	"effects":[
 		{
 			"triggerData":

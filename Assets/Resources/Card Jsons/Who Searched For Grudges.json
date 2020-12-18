@@ -54,9 +54,9 @@
 	],
 	"keywords":["Shape"],
 	"n":1,
-	"e":1,
+	"e":4,
 	"s":3,
-	"w":4,
+	"w":1,
 	"subtypes":["Ethereal","Shaper"],
 	"subtypeText":"Ethereal Shaper"
 }

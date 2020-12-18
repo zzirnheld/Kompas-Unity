@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Wynn",
-	"effText":"Can’t be cast normally. Dispel a spell.",
+	"effText":"Runic.\nDispel a spell.",
 	"effects":[
 		{
 			"triggerData":

@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Sowilo",
-	"effText":"Can’t be cast normally. I give a character -1E and another +1E. Gain a pip.",
+	"effText":"Runic.\nI give a character -1E and another +1E. Gain a pip.",
 	"effects":[
 		{
 			"triggerData":

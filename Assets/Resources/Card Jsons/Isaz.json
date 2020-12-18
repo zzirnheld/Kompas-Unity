@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Isaz",
-	"effText":"Can’t be cast normally. I set any adjacent characters’ N to 0.",
+	"effText":"Runic.\nI set any adjacent characters’ N to 0.",
 	"effects":[
 		{
 			"triggerData":

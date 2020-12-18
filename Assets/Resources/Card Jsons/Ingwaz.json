@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Ingwaz",
-	"effText":"Can’t be cast normally. Pip recast a distinctly named Rune for half cost (rounding down).",
+	"effText":"Runic.\nPip recast a distinctly named Rune for half cost (rounding down).",
 	"effects":[
 		{
 			"triggerData":

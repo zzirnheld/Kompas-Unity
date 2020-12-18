@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Naudiz",
-	"effText":"Can’t be cast normally. Give all enemy characters -2E.",
+	"effText":"Runic.\nGive all enemy characters -2E.",
 	"effects":[
 		{
 			"triggerData":

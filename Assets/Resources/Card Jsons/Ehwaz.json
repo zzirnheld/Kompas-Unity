@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Ehwaz",
-	"effText":"Can’t be cast normally. Give a character +2N.",
+	"effText":"Runic.\nGive a character +2N.",
 	"effects":[
 		{
 			"triggerData":

@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Perthro",
-	"effText":"Can’t be cast normally. Search your deck’s top 10 cards for 3 spells.",
+	"effText":"Runic.\nSearch your deck’s top 10 cards for 3 spells.",
 	"effects":[
 		{
 			"triggerData":

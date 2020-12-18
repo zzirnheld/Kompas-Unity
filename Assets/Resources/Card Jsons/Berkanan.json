@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Berkanan",
-	"effText":"Can’t be cast normally. Set a Summoned character’s NW to 0 and ES to 5.",
+	"effText":"Runic.\nSet a Summoned character’s NW to 0 and ES to 5.",
 	"effects":[
 		{
 			"triggerData":
@@ -32,7 +32,7 @@
 	"PlayRestriction":{
 		"normalRestrictions":["Cannot be Played Normally"]
 	},
-	"c":1,
+	"c":2,
 	"spellType":"Simple",
 	"subtypes":["Rune","Simple"],
 	"subtypeText":"Rune Simple"

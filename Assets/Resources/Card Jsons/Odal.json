@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Odal",
-	"effText":"Can’t be cast normally. Choose an SX character. Pay X pips. Kill the chosen character and deck-summon an SX Runar.",
+	"effText":"Runic.\nChoose an SX character. Pay X pips. Kill the chosen character and deck-summon an SX Runar.",
 	"effects":[
 		{
 			"triggerData":

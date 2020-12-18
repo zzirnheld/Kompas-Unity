@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Raido",
-	"effText":"Can’t be cast normally. Move a card anywhere (that there isn't already a card).",
+	"effText":"Runic.\nMove a card anywhere (that there isn't already a card).",
 	"effects":[
 		{
 			"triggerData":

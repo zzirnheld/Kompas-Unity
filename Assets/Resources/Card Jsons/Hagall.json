@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Hagall",
-	"effText":"Can’t be cast normally. When turns start, I give all characters here -1NE.",
+	"effText":"Runic.\nWhen turns start, I give all characters here -1NE.",
 	"effects":[
 		{
 			"triggerData":

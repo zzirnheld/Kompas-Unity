@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Dagaz",
-	"effText":"Can’t be cast normally. When you cast a Rune while I have CX, gain X pips, then give me +1C.",
+	"effText":"Runic.\nWhen you cast a Rune while I have CX, gain X pips, then give me +1C.",
 	"effects":[
 		{
 			"triggerData":

@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Fehu",
-	"effText":"Can’t be cast normally. Draw 2.",
+	"effText":"Runic.\nDraw 2.",
 	"effects":[
 		{
 			"triggerData":
