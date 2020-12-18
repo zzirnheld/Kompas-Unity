@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Ice Golem",
-	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, I negate a character until your next turn.",
+	"effText":"Golem. When I'm activated, I negate a character until your next turn.",
 	"effects":[
 		{
 			"blurb":"Fun Not Allowed",

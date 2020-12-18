@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Clay Golem",
-	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, tribute me and deck-summon a Golem.",
+	"effText":"Golem. When I'm activated, tribute me and deck-summon a Golem.",
 	"effects":[
 		{
 			"blurb":"Golemorph",

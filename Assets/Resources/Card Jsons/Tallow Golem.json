@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Tallow Golem",
-	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, I activate a character until your next turn.",
+	"effText":"Golem. When I'm activated, I activate a character until your next turn.",
 	"effects":[
 		{
 			"triggerData":

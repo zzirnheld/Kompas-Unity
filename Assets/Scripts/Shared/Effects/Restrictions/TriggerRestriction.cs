@@ -103,7 +103,7 @@ namespace KompasCore.Effects
                 //card triggering stuff
                 case ThisCardTriggered:        return context.CardInfo.Card == ThisCard;
                 case ThisCardInPlay:           return ThisCard.Location == CardLocation.Field;
-                case AugmentedCardTriggered:   return context.CardInfo.Card == ThisCard.AugmentedCard;
+                case AugmentedCardTriggered:   return context.CardInfo.Augments.Contains(ThisCard);
                 case CardExists:               return ThisCard.Game.Cards.Any(c => existsRestriction.Evaluate(c));
                 case ThisCardFitsRestriction:  return cardRestriction.Evaluate(ThisCard);
                 case TriggererFitsRestriction: return cardRestriction.Evaluate(context.CardInfo);

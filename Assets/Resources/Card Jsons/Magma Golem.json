@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Magma Golem",
-	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, I give all adjacent characters -3E.",
+	"effText":"Golem. When I'm activated, I give all adjacent characters -3E.",
 	"effects":[
 		{
 			"blurb":"Heheh. Grenade.",

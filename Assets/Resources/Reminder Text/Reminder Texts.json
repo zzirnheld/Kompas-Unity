@@ -35,6 +35,10 @@
 		{
 			"keyword":"Runic.",
 			"reminder":"Can’t be cast normally."
+		},
+		{
+			"keyword":"Golem.",
+			"reminder":"While I’m inactive, I can’t attack or move."
 		}
 	]
 }

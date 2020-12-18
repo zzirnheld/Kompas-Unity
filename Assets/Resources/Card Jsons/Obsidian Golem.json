@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Obsidian Golem",
-	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, I give a Summoned character -5E.",
+	"effText":"Golem. When I'm activated, I give a Summoned character -5E.",
 	"effects":[
 		{
 			"blurb":"Shards of Glass",

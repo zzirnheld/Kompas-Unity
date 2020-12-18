@@ -8,13 +8,10 @@
 			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered","This Card Fits Restriction","Coords Fit Restriction"],
-					"spaceRestriction":{
-						"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
-						"adjacencyRestriction":{
-							"cardRestrictions":["Subtypes Include"],
-							"subtypesInclude":["Ethereal"]
-						}
+					"triggerRestrictions":["This Card Triggered","This Card Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Adjacent to Subtype"],
+						"adjacencySubtypes":["Shaper"]
 					}
 				}
 			},

@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Pneumatic Golem",
-	"effText":"Golem: While I’m inactive, I can’t attack or move. When I'm activated, rehand a character within 2 spaces.",
+	"effText":"Golem. When I'm activated, rehand a character within 2 spaces.",
 	"effects":[
 		{
 			"blurb":"Nope, Go Away",
