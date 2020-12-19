@@ -49,6 +49,7 @@ namespace KompasCore.Effects
         //is
         public const string IsSource = "Is Source";
         public const string AugmentsTarget = "Is Augment of Target";
+        public const string AugmentedBySource = "Is Augmented by Source";
         public const string WieldsAugmentFittingRestriction = "Wields Augment Fitting Restriction";
 
         //distinct
@@ -221,6 +222,7 @@ namespace KompasCore.Effects
                 //is
                 case IsSource: return potentialTarget.Card == Source;
                 case AugmentsTarget: return potentialTarget.AugmentedCard == Subeffect.Target;
+                case AugmentedBySource: return potentialTarget.Augments.Contains(Source);
                 case WieldsAugmentFittingRestriction: return potentialTarget.Augments.Any(c => secondaryRestriction.Evaluate(c));
 
                 //distinct

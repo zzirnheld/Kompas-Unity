@@ -10,7 +10,8 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Max Per Stack","Not From Effect"],
 					"spaceRestriction":{
-						"spaceRestrictions":["In AOE"]
+						"spaceRestrictions":["In AOE"],
+						"mustBeEmpty":false
 					}
 				}
 			},

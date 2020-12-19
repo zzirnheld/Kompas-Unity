@@ -27,7 +27,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
-					"xModifier":2
+					"xModifier":1
 				}
 			]	
 		}

@@ -118,13 +118,24 @@ namespace KompasCore.Effects
             }
         }
 
+        private bool RestrictionValidWithDebug(string r, int x, int y)
+        {
+            bool success = RestrictionValid(r, x, y);
+            if (!success) Debug.Log($"Space resetriction {r} was flouted by {x}, {y}");
+            return success;
+        }
+
         public bool Evaluate((int x, int y) space) => Evaluate(space.x, space.y);
 
         public bool Evaluate(int x, int y)
         {
             if (!initialized) throw new System.ArgumentException("Space restriction not initialized!");
             if (!Source.Game.boardCtrl.ValidIndices(x, y)) return false;
-            if (mustBeEmpty && Source.Game.boardCtrl.GetCardAt(x, y) != null) return false;
+            if (mustBeEmpty && Source.Game.boardCtrl.GetCardAt(x, y) != null)
+            {
+                Debug.Log($"Space for {Source.CardName} needed to be empty and wasn't.");
+                return false;
+            }
 
             return spaceRestrictions.All(r => RestrictionValid(r, x, y));
         }

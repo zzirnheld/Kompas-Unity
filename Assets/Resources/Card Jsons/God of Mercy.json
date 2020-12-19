@@ -17,7 +17,8 @@
 						{
 							"cardRestrictions":["Subtypes Include"],
 							"subtypesInclude":["Supplicant"]
-						}
+						},
+						"mustBeEmpty":false
 					}
 				}
 			},

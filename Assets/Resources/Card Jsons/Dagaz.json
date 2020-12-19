@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Dagaz",
-	"effText":"Runic.\nWhen you cast a Rune while I have CX, gain X pips, then give me +1C.",
+	"effText":"Runic.\nWhen you cast a Rune (including me), gain a pip.",
 	"effects":[
 		{
 			"triggerData":
@@ -17,20 +17,8 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
-					"whatToCount":"C",
-					"xMultiplier":1
-				},
-				{
 					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xMultiplier":1
-				},
-				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"cMod":1
+					"xModifier":1
 				}
 			]	
 		}
@@ -39,6 +27,7 @@
 		"normalRestrictions":["Cannot be Played Normally"]
 	},
 	"c":1,
+	"unique":true,
 	"spellType":"Vanishing",
 	"subtypes":["Rune","Vanishing"],
 	"subtypeText":"Rune Vanishing",

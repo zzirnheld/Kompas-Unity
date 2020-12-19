@@ -12,7 +12,8 @@
 					"triggerRestrictions":["Coords Fit Restriction"],
 					"spaceRestriction":
 					{
-						"spaceRestrictions":["Adjacent to Source"]
+						"spaceRestrictions":["Adjacent to Source"],
+						"mustBeEmpty":false
 					}
 				}
 			},

@@ -12,7 +12,8 @@
 					"triggerRestrictions":["Coords Fit Restriction","This Card in Play"],
 					"spaceRestriction":
 					{
-						"spaceRestrictions":["In AOE"]
+						"spaceRestrictions":["In AOE"],
+						"mustBeEmpty":false
 					}
 				}
 			},
@@ -39,7 +40,8 @@
 					},
 					"spaceRestriction":
 					{
-						"spaceRestrictions":["Not In AOE"]
+						"spaceRestrictions":["Not In AOE"],
+						"mustBeEmpty":false
 					}
 				}
 			},

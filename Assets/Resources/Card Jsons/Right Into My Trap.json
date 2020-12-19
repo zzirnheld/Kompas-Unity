@@ -16,7 +16,8 @@
 					},
 					"spaceRestriction":
 					{
-						"spaceRestrictions":["Not In AOE"]
+						"spaceRestrictions":["Not In AOE"],
+						"mustBeEmpty":false
 					}
 				}
 			},

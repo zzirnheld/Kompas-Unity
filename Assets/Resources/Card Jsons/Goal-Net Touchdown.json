@@ -20,7 +20,8 @@
 						"adjacencyRestriction":
 						{
 							"cardRestrictions":["Avatar","Enemy"]
-						}
+						},
+						"mustBeEmpty":false
 					}
 				}
 			},

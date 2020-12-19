@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Runesaga",
-	"effText":"Must be cast normally. Give a Summoned Runar +25ESW. Handcast any number of Runes.",
+	"effText":"Must be cast normally. Give a Summoned Runar +25ESW. Handcast any number of spells (for free. Yes, seriously).",
 	"effects":[
 		{
 			"triggerData":
@@ -32,8 +32,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Rune for Runesaga to cast",
-						"cardRestrictions":["Subtypes Include","Is Spell","Friendly","Hand","Not Already Target"],
-						"subtypesInclude":["Rune"]
+						"cardRestrictions":["Is Spell","Friendly","Hand","Not Already Target","Can Be Played"]
 					}
 				},
 				{
