@@ -1,14 +1,14 @@
 {
 	"cardType":83,
 	"cardName":"Fodderbin",
-	"effText":"When a friendly character dies here during an enemy turn, draw 1.",
+	"effText":"The first time each stack a friendly character dies here during an enemy turn, draw 1.",
 	"effects":[
 		{
 			"triggerData":
 			{
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Enemy Turn","Triggerer Fits Restriction"],
+					"triggerRestrictions":["Max Per Stack","This Card in Play","Enemy Turn","Triggerer Fits Restriction"],
 					"cardRestriction":
 					{
 						"cardRestrictions":["Friendly","In AOE"]

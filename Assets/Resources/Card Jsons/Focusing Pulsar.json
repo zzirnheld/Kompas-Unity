@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Focusing Pulsar",
-	"effText":"The first time each stack your Avatar gains S, give adjacent characters +1 W.\n The first time each stack your Avatar loses S, give adjacent characters -1 W.",
+	"effText":"The first time each stack your Avatar gains S, give adjacent characters +1 W.\nThe first time each stack your Avatar loses S, give adjacent characters -1 W.",
 	"effects":[
 		{
 			"triggerData":
