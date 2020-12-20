@@ -16,7 +16,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"character to resummon",
+						"blurb":"character to echo",
 						"cardRestrictions":["Board","Is Character","Subtypes Include"],
 						"subtypesInclude":["Geminii"]
 					}

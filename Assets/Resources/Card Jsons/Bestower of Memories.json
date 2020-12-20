@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Bestower of Memories",
-	"effText":"When friendly turns start, resummon a character.\nThe first time each stack a character is summoned, resummon them.",
+	"effText":"When friendly turns start, echo a character.\nThe first time each stack a character is summoned, echo them.",
 	"effects":[
 		{
 			"triggerData":
@@ -17,7 +17,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"Summoned character for Bestower of Memories to resummon",
+						"blurb":"Summoned character for Bestower of Memories to echo",
 						"cardRestrictions":["Is Character","Board"]
 					}
 				},
