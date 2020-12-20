@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Focusing Pulsar",
-	"effText":"When your Avatar gains S, give adjacent characters +1 W.\nWhen your Avatar loses S, give adjacent characters -1 W.",
+	"effText":"The first time each stack your Avatar gains S, give adjacent characters +1 W.\n The first time each stack your Avatar loses S, give adjacent characters -1 W.",
 	"effects":[
 		{
 			"triggerData":
@@ -9,7 +9,7 @@
 				"blurb":"Enfocus",
 				"triggerCondition":"S Change",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction"],
+					"triggerRestrictions":["Max Per Stack","This Card in Play","X Fits Restriction","Triggerer Fits Restriction"],
 					"xRestriction":{
 						"xRestrictions":[">0"]
 					},
@@ -36,7 +36,7 @@
 				"blurb":"Unfocus",
 				"triggerCondition":"S Change",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction"],
+					"triggerRestrictions":["Max Per Stack","This Card in Play","X Fits Restriction","Triggerer Fits Restriction"],
 					"xRestriction":{
 						"xRestrictions":["<0"]
 					},
