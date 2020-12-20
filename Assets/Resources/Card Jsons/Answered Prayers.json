@@ -1,55 +1,33 @@
 {
 	"cardType":83,
 	"cardName":"Answered Prayers",
-	"effText":"When turns start, rehand a dead Supplicant.\nYou can annihilate me to gain 3 pips.",
+	"effText":"When a negated character dies, rehand them (to their owner's hand).",
 	"effects":[
 		{
 			"triggerData":
 			{
-				"blurb":"Grant Refuge",
-				"triggerCondition":"Turn Start",
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play"]
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Is Character","Negated"]
+					}
 				}
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
-					"maxCanChoose":1,
-					"cardRestriction":
-					{
-						"blurb":"Supplicant to answer prayers",
-						"cardRestrictions":["Friendly","Discard","Is Character","Subtypes Include"],
-						"subtypesInclude":["Supplicant"]
-					}
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				}
-			]	
-		},
-		{
-			"activationRestriction":{
-				"activationRestrictionArray":[
-					"Default"
-				]
-			},
-			"subeffects":[
-				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xModifier":3
-				}
 			]
 		}
 	],
-	"c":3,
-	"unique":true,
+	"c":1,
 	"spellType":"Enchant",
 	"subtypeText":"Enchant Plea"
 }

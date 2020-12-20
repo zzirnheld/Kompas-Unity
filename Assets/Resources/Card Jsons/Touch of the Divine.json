@@ -1,67 +1,34 @@
 {
-	"cardType":65,
+	"cardType":83,
 	"cardName":"Touch of the Divine",
-	"effText":"While equipped, negate this character and give them +2NESW. When this character dies, if they’re a Supplicant, rehand me.",
+	"effText":"When a friendly character is negated, give them +2 NESW.",
 	"effects":[
 		{
 			"triggerData":
 			{
-				"triggerCondition":"Augment Attached",
+				"triggerCondition":"Negate",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
-				}
-			},
-			"subeffects":[
-				{
-					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.TemporaryNegateSubeffect, Assembly-CSharp",
-					"endCondition":"Augment Detached",
-					"triggerRestriction":{
-						"triggerRestrictions":["This Card Triggered"]
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
-					"nBuff":2,
-					"eBuff":2,
-					"sBuff":2,
-					"wBuff":2,
-					"endCondition":"Augment Detached",
-					"triggerRestriction":{
-						"triggerRestrictions":["This Card Triggered"]
-					}
-				}
-			]
-		},
-		{
-			"triggerData":
-			{
-				"triggerCondition":"Discard",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Augmented Card Triggered","Triggerer Fits Restriction"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Subtypes Include"],
-						"subtypesInclude":["Supplicant"]
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Friendly","Is Character"]
 					}
 				}
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"nMod":2,
+					"eMod":2,
+					"sMod":2,
+					"wMod":2
 				}
 			]
 		}
 	],
-	"PlayRestriction":{
-		"normalRestrictions":["Augment Normal Restrictions"],
-		"effectRestrictions":["Augment Effect Restrictions"]
-	},
-	"a":3,
-	"subtypeText":""
+	"c":2,
+	"spellType":"Enchant",
+	"subtypeText":"Enchant Plea"
 }

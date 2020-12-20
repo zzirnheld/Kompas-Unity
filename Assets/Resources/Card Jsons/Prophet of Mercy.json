@@ -1,0 +1,54 @@
+{
+	"cardType":67,
+	"cardName":"Prophet of Mercy",
+	"effText":"When turns start, set X to the number of adjacent Supplicants. Deck-cast an S <= X Plea.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Board","Adjacent","Subtypes Include"],
+						"subtypesInclude":["Supplicant"]
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose":1,
+					"cardRestriction":
+					{
+						"blurb":"Supplicants' Plea",
+						"cardRestrictions":["Friendly","Deck","Is Spell","Cost<=X","Subtypes Include"],
+						"subtypesInclude":["Plea"]
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where to play Supplicants' Plea",
+						"spaceRestrictions":["Can Play Target to This Space"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"n":0,
+	"e":3,
+	"s":5,
+	"w":0,
+	"subtypeText":"Kind Mage"
+}

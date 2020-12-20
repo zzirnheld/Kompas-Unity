@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Find Me Find Peace",
-	"effText":"Rehand all Supplicants from your deck’s top 4 cards. Bottomdeck the rest.",
+	"effText":"Search your deck's top 7 cards for any number of Supplicants.",
 	"effects":[
 		{
 			"triggerData":
@@ -19,7 +19,7 @@
 					{
 						"cardRestrictions":["Friendly","Deck","Index<C","Subtypes Include"],
 						"subtypesInclude":["Supplicant"],
-						"constant":4
+						"constant":7
 					}
 				},
 				{
@@ -27,7 +27,7 @@
 					"cardRestriction":
 					{
 						"cardRestrictions":["Friendly","Deck","Index<C","Not Already Target"],
-						"constant":4
+						"constant":7
 					}
 				},
 				{
@@ -44,7 +44,7 @@
 			]
 		}
 	],
-	"c":2,
+	"c":1,
 	"spellType":"Simple",
 	"subtypeText":"Simple"
 }
