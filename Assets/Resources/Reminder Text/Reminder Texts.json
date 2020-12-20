@@ -39,6 +39,10 @@
 		{
 			"keyword":"Golem.",
 			"reminder":"While I’m inactive, I can’t attack or move."
+		},
+		{
+			"keyword":"Supplicant.",
+			"reminder":"When I fight, kill me."
 		}
 	]
 }

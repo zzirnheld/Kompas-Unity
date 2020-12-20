@@ -1,0 +1,52 @@
+{
+	"cardType":67,
+	"cardName":"Desperate Footpad",
+	"effText":"Supplicant.\nThe first time each stack a character arrives adjacent to a Supplicant, move them to another space adjacent to a Supplicant.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Hunger",
+				"triggerCondition":"Arrive",
+				"triggerRestriction":{
+					"triggerRestrictions":["Max Per Turn","This Card in Play","Coords Fit Restriction"],
+					"spaceRestriction":
+					{
+						"mustBeEmpty":false,
+						"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
+						"adjacencyRestriction":{
+							"cardRestrictions":["Subtypes Include"],
+							"subtypesInclude":["Supplicant"]
+						}
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where to escape the footpad",
+						"spaceRestrictions":["Can Move Target to This Space","Adjacent to a Card that Fits Restriction"],
+						"adjacencyRestriction":{
+							"cardRestrictions":["Subtypes Include"],
+							"subtypesInclude":["Supplicant"]
+						}
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"keywords":["Supplicant"],
+	"n":0,
+	"e":1,
+	"s":1,
+	"w":0,
+	"subtypeText":"Supplicant"
+}

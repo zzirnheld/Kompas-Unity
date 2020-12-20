@@ -1,32 +1,41 @@
 {
 	"cardType":67,
 	"cardName":"Widowed Mother",
-	"effText":"When turns start, give adjacent characters -1W.",
+	"effText":"Supplicant.\nWhen a character arrives adjacent to a Supplicant, give that character -1 W.",
 	"effects":[
 		{
 			"triggerData":
 			{
-				"blurb":"Death by Grief",
-				"triggerCondition":"Turn Start",
+				"blurb":"Sobbing",
+				"triggerCondition":"Arrive",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play"]
+					"triggerRestrictions":["This Card in Play","Coords Fit Restriction"],
+					"spaceRestriction":
+					{
+						"mustBeEmpty":false,
+						"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
+						"adjacencyRestriction":{
+							"cardRestrictions":["Subtypes Include"],
+							"subtypesInclude":["Supplicant"]
+						}
+					}
 				}
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Is Character","Board","Adjacent"]
-					},
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"wMod":-1
 				}
 			]
 		}
 	],
+	"keywords":["Supplicant"],
 	"n":0,
 	"e":1,
 	"s":1,
-	"w":1,
+	"w":0,
 	"subtypeText":"Supplicant"
 }

@@ -1,7 +1,7 @@
 {
 	"cardType":67,
-	"cardName":"Hungry Children",
-	"effText":"Supplicant.\nWhen a character arrives adjacent to a Supplicant, give that character -1 N.",
+	"cardName":"Disfigured Beggar",
+	"effText":"Supplicant.\nThe first time each turn a character arrives adjacent to a Supplicant, move that character one space.",
 	"effects":[
 		{
 			"triggerData":
@@ -9,7 +9,7 @@
 				"blurb":"Hunger",
 				"triggerCondition":"Arrive",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Coords Fit Restriction"],
+					"triggerRestrictions":["Max Per Turn","This Card in Play","Coords Fit Restriction"],
 					"spaceRestriction":
 					{
 						"mustBeEmpty":false,
@@ -26,8 +26,16 @@
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"dMod":-1
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"ok, now move just a little bit more",
+						"spaceRestrictions":["Empty","Distance to Target == Constant","Can Move Target to This Space"],
+						"constant":1
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
 				}
 			]
 		}
