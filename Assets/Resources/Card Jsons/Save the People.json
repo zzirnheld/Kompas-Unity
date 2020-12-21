@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Save the People",
-	"effText":"When turns start, if your topdeck is a Supplicant, deck-summon it.",
+	"effText":"When turns start, shuffle your deck. Then, if your topdeck is a Supplicant, deck-summon it.",
 	"effects":[
 		{
 			"triggerData":
@@ -12,6 +12,9 @@
 				}
 			},
 			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.ShuffleDeckSubeffect, Assembly-CSharp"
+				},
 				{
 					"$type":"KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
