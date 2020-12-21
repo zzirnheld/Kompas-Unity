@@ -57,7 +57,7 @@ namespace KompasCore.Effects
             TurnStart,
             NESWChange, Activate, Deactivate, NChange, EChange, SChange, WChange, CChange, AChange,
             NSet, ESet, SSet, WSet, CSet, ASet,
-            Defends, Attacks, TakeCombatDamage, DealCombatDamage, Battles, BattleEnds,
+            Defends, Attacks, TakeCombatDamage, DealCombatDamage, Battles, BattleEnds, Negate,
             EachDraw, DrawX, Arrive, Play, Discard, Rehand, Reshuffle, Topdeck, Bottomdeck, ToDeck, Move, Annhilate, Remove, 
             AugmentAttached, AugmentDetached, Augmented
         };

@@ -24,12 +24,8 @@
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
-						"blurb":"where to escape the footpad",
-						"spaceRestrictions":["Can Move Target to This Space","Adjacent to a Card that Fits Restriction"],
-						"adjacencyRestriction":{
-							"cardRestrictions":["Subtypes Include"],
-							"subtypesInclude":["Supplicant"]
-						}
+						"blurb":"where to move the supplicant's attacker",
+						"spaceRestrictions":["Can Move Target to This Space"]
 					}
 				},
 				{

@@ -6,9 +6,9 @@
 		{
 			"triggerData":
 			{
-				"triggerCondition":"Play",
+				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+					"triggerRestrictions":["This Card in Play"]
 				}
 			},
 			"subeffects":[
