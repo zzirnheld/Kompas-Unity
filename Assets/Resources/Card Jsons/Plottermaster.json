@@ -64,7 +64,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
-				},
+				}
 			]
 		}
 	],
