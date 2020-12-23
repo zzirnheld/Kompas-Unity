@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Evermellow Field",
-	"effText":"Machinations. When my C is set to 3 or more, set my C to 0, then give characters here -5 W.",
+	"effText":"Machinations.\nWhen my C is set to 3 or more, set my C to 0, then give characters here -5 W.",
 	"effects":[
 		{
 			"triggerData":

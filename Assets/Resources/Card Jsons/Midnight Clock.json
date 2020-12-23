@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Midnight Clock",
-	"effText":"Machinations. When my C is set to 12 or more, set my C to 0, then kill a character.",
+	"effText":"Machinations.\nWhen my C is set to 12 or more, set my C to 0, then kill a character.",
 	"effects":[
 		{
 			"triggerData":

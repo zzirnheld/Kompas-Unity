@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Pulse of Leylines",
-	"effText":"Machinations. When my C is set to 2 or more, set my C to 0, then gain a pip.",
+	"effText":"Machinations.\nWhen my C is set to 2 or more, set my C to 0, then gain a pip.",
 	"effects":[
 		{
 			"triggerData":

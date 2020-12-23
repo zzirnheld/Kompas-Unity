@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Everflowing Clepsydra",
-	"effText":"Machinations. The first time each stack my C is set to 2 or more, set my C to 0, then give all friendly Machinations +1 C.",
+	"effText":"Machinations.\nThe first time each stack my C is set to 2 or more, set my C to 0, then give all friendly Machinations +1 C.",
 	"effects":[
 		{
 			"triggerData":

@@ -1,7 +1,7 @@
 {
 	"cardType":83,
-	"cardName":"Font of Vigor",
-	"effText":"Machinations.\nWhen my C is set to 2 or more, set my C to 0, then give a character +5 W.",
+	"cardName":"Everspinning Clockface",
+	"effText":"Machinations.\nWhen my C is set to 2 or more, set my C to 0, then move a card 1 space.",
 	"effects":[
 		{
 			"triggerData":
@@ -12,7 +12,7 @@
 						"xRestriction":
 					{
 						"xRestrictions":[">=Constant"],
-						"constant":2
+						"constant":5
 					}
 				}
 			},
@@ -26,20 +26,28 @@
 				},
 				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Board","Is Character"]
+					"blurb":"card to move 1 space",
+					"cardRestriction":{
+						"cardRestrictions":["Board",]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wMod":5
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where to move target card",
+						"spaceRestrictions":["Distance to Target == Constant","Can Move Target to This Space"],
+						"constant":1
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
 	"keywords":["Machinations Play","Machinations Reup"],	
-	"c":2,
+	"c":4,
 	"unique":true,
 	"spellType":"Enchant",
 	"subtypeText":"Machination Enchant"

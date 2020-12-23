@@ -1,7 +1,7 @@
 {
 	"cardType":83,
-	"cardName":"Font of Vigor",
-	"effText":"Machinations.\nWhen my C is set to 2 or more, set my C to 0, then give a character +5 W.",
+	"cardName":"Font of Speed",
+	"effText":"Machinations.\nWhen my C is set to 5 or more, set my C to 0, then give a Summoned character +5 N.",
 	"effects":[
 		{
 			"triggerData":
@@ -12,7 +12,7 @@
 						"xRestriction":
 					{
 						"xRestrictions":[">=Constant"],
-						"constant":2
+						"constant":5
 					}
 				}
 			},
@@ -28,18 +28,18 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Board","Is Character"]
+						"cardRestrictions":["Board","Is Character","Summoned"]
 					}
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wMod":5
+					"nMod":5
 				}
 			]
 		}
 	],
 	"keywords":["Machinations Play","Machinations Reup"],	
-	"c":2,
+	"c":4,
 	"unique":true,
 	"spellType":"Enchant",
 	"subtypeText":"Machination Enchant"
