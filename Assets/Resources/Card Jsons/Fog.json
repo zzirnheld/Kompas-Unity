@@ -1,0 +1,38 @@
+{
+	"cardType":83,
+	"cardName":"Fog",
+	"effText":"Weather.\nWhen a character arrives here, both players draw 1.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Fog",
+				"triggerCondition":"Arrive",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Coords Fit Restriction"],
+					"spaceRestriction":
+					{
+						"mustBeEmpty":false,
+						"spaceRestrictions":["In AOE"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+	"keywords":["Weather"],
+	"c":4,
+	"spellType":"Radial",
+	"subtypeText":"Weather Radial",
+	"arg":1
+}

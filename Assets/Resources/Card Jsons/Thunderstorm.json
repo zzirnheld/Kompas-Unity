@@ -1,0 +1,36 @@
+{
+	"cardType":83,
+	"cardName":"Thunderstorm",
+	"effText":"Weather.\nWhen a character arrives here, give them -3 E.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Flood",
+				"triggerCondition":"Arrive",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Coords Fit Restriction"],
+					"spaceRestriction":
+					{
+						"mustBeEmpty":false,
+						"spaceRestrictions":["In AOE"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod":-3
+				}
+			]	
+		}
+	],
+	"keywords":["Weather"],
+	"c":3,
+	"spellType":"Radial",
+	"subtypeText":"Weather Radial",
+	"arg":1
+}

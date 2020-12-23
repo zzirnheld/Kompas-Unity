@@ -274,3 +274,10 @@ Everending Field
 Evermellow Field
 Machinations
 Machinate
+Fog
+Overcast
+Flood
+Thundersun
+Peltrain
+Thunderstorm
+Dapplesun
