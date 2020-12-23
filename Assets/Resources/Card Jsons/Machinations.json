@@ -23,10 +23,9 @@
 				}
 			]
 		}
-	],
-	"keywords":["Machinations Play","Machinations Reup"],	
+	],	
 	"c":2,
 	"spellType":"Radial",
-	"subtypeText":"Machination Enchant",
+	"subtypeText":"Enchant",
 	"arg":1
 }

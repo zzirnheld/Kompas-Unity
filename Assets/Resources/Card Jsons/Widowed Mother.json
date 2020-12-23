@@ -9,7 +9,11 @@
 				"blurb":"Sobbing",
 				"triggerCondition":"Arrive",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Coords Fit Restriction"],
+					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction"],
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character","Distinct from Source"]
+					},
 					"spaceRestriction":
 					{
 						"mustBeEmpty":false,
