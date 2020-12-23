@@ -1,0 +1,32 @@
+{
+	"cardType":67,
+	"cardName":"Interseer",
+	"effText":"Once each round, you can give friendly Machinations +1 C.",
+	"effects":[
+		{
+			"blurb":"Extreme Intercession",
+			"activationRestriction":{
+				"activationRestrictionArray":[
+					"Max Times Per Turn",
+					"Default"
+				]
+			},
+			"subeffects":[				
+				{
+					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Board","Friendly","Subtypes Include"],
+						"subtypesInclude":["Machination"]
+					},
+					"cMod":1
+				}
+			]
+		}
+	],
+	"n":1,
+	"e":5,
+	"s":7,
+	"w":1,
+	"subtypeText":"Craftsman"
+}

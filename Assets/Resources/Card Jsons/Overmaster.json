@@ -1,0 +1,33 @@
+{
+	"cardType":67,
+	"cardName":"Overmaster",
+	"effText":"When turns start, give friendly Machinations +1 C.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Increase motivation",
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
+				}
+			},
+			"subeffects":[				
+				{
+					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Board","Friendly","Subtypes Include"],
+						"subtypesInclude":["Machination"]
+					},
+					"cMod":1
+				}
+			]
+		}
+	],
+	"n":1,
+	"e":5,
+	"s":7,
+	"w":1,
+	"subtypeText":"Craftsman"
+}

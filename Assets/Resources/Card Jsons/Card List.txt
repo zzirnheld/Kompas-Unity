@@ -281,3 +281,7 @@ Thundersun
 Peltrain
 Thunderstorm
 Dapplesun
+Clockspinner
+Silverweaver
+Overmaster
+Interseer
