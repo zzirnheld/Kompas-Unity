@@ -41,7 +41,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Select a scheme",
-						"cardRestrictions":["Friendly","Deck","Cost<=X","Subtypes Include"],
+						"cardRestrictions":["Friendly","Deck","Cost<=X","Subtypes Include","Can Be Played"],
 						"subtypesInclude":["Machination"]
 					},
 					"xMultiplier":1

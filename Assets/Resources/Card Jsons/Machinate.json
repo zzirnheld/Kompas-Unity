@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Machinate",
-	"effText":"Repeat the following any number of times:Hand-discard a CX Machination. Give a Machination +X C.",
+	"effText":"Repeat the following any number of times: Hand-discard a CX Machination. Give a Machination +X C.",
 	"effects":[
 		{
 			"triggerData":
@@ -16,7 +16,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"for Animancer to discard",
+						"blurb":"for Machinate to discard",
 						"cardRestrictions":["Subtypes Include","Friendly","Hand","Not Already Target"],
 						"subtypesInclude":["Machination"]
 					}

@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Font of Youth",
-	"effText":"Machinations. When my C is set to 3 or more, set my C to 0, then give a character +5 E.",
+	"effText":"Machinations. When my C is set to 3 or more, set my C to 0, then give a Summoned character +5 E.",
 	"effects":[
 		{
 			"triggerData":
@@ -28,7 +28,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Board","Is Character"]
+						"cardRestrictions":["Board","Is Character","Summoned"]
 					}
 				},
 				{
@@ -40,6 +40,7 @@
 	],
 	"keywords":["Machinations Play","Machinations Reup"],	
 	"c":2,
+	"unique":true,
 	"spellType":"Enchant",
 	"subtypeText":"Machination Enchant"
 }
