@@ -133,7 +133,7 @@ namespace KompasCore.Effects
             if (!Source.Game.boardCtrl.ValidIndices(x, y)) return false;
             if (mustBeEmpty && Source.Game.boardCtrl.GetCardAt(x, y) != null)
             {
-                Debug.Log($"Space for {Source.CardName} needed to be empty and wasn't.");
+                //Debug.Log($"Space for {Source.CardName} needed to be empty and wasn't.");
                 return false;
             }
 

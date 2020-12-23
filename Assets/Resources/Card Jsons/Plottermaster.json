@@ -18,32 +18,31 @@
 					"$type":"KompasServer.Effects.SetXSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
-					"whatToCount":"Cards Fitting Restriction",
+					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"cardRestrictions":["Board","Friendly","Subtypes Include"],
 						"subtypesInclude":["Machination"]
-					},
-					"xMultiplier":1
+					}
 				},
 				{
 					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
-					"whatToCount":"S",
+					"whatToCount":"Cost",
 					"change":true,
 					"xMultiplier":1
 				},
 				{
-					"$type":"KompasServer.Effects.ChooseFromListSaveRestSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"jumpTo":2
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"Select a scheme",
 						"cardRestrictions":["Friendly","Deck","Cost<=X","Subtypes Include"],
 						"subtypesInclude":["Machination"]
-					},
-					"restRestriction":
-					{
-						"cardRestrictions":["Friendly","Deck","Not Already Target"]
 					},
 					"xMultiplier":1
 				},
@@ -61,9 +60,6 @@
 				},
 				{
 					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
 				}
 			]
 		}
