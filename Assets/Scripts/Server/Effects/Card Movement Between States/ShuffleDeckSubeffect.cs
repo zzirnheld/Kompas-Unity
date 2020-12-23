@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace KompasServer.Effects
+﻿namespace KompasServer.Effects
 {
     public class ShuffleDeckSubeffect : ServerSubeffect
     {

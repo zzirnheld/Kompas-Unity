@@ -43,6 +43,14 @@
 		{
 			"keyword":"Supplicant.",
 			"reminder":"When I fight, kill me."
+		},
+		{
+			"keyword":"Weather.",
+			"reminder":"When turns start, deck-cast a Weather adjacent to me. Regardless, annihilate me."
+		},
+		{
+			"keyword":"martyr",
+			"reminder":"A character is martyred when they die during an enemy turn."
 		}
 	]
 }
