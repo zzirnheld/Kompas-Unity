@@ -1,0 +1,36 @@
+{
+	"cardType":83,
+	"cardName":"Everflowing Clepsydra",
+	"effText":"Machinations. The first time each stack my C is set to 2 or more, set my C to 0, then give all friendly Machinations +1 C.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"C Set",
+				"triggerRestriction":{
+					"triggerRestrictions":["Max Per Stack","This Card in Play","X Fits Restriction","This Card Triggered"],
+						"xRestriction":
+					{
+						"xRestrictions":[">=Constant"],
+						"constant":2
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Board","Friendly","Subtypes Include"],
+						"subtypesInclude":["Machination"]
+					},
+					"cMod":1
+				}
+			]
+		}
+	],
+	"keywords":["Machinations Play","Machinations Reup"],	
+	"c":3,
+	"spellType":"Enchant",
+	"subtypeText":"Machination Enchant"
+}

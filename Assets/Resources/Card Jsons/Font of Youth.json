@@ -1,7 +1,7 @@
 {
 	"cardType":83,
-	"cardName":"Midnight Clock",
-	"effText":"Machinations. When my C is set to 5 or more, set my C to 0, then kill a character.",
+	"cardName":"Font of Youth",
+	"effText":"Machinations. When my C is set to 3 or more, set my C to 0, then give a character +5 E.",
 	"effects":[
 		{
 			"triggerData":
@@ -12,34 +12,27 @@
 						"xRestriction":
 					{
 						"xRestrictions":[">=Constant"],
-						"constant":5
+						"constant":3
 					}
 				}
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
-					"cVal":0
-				},
-				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"Death by Clockwork",
-						"cardRestrictions":["Board","Is Character","Summoned"]
+						"cardRestrictions":["Board","Is Character"]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod":5
 				}
 			]
 		}
 	],
 	"keywords":["Machinations Play","Machinations Reup"],	
-	"c":3,
+	"c":2,
 	"spellType":"Enchant",
 	"subtypeText":"Machination Enchant"
 }

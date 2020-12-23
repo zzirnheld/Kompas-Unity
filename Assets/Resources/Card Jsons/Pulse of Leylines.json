@@ -1,7 +1,7 @@
 {
 	"cardType":83,
-	"cardName":"Midnight Clock",
-	"effText":"Machinations. When my C is set to 5 or more, set my C to 0, then kill a character.",
+	"cardName":"Pulse of Leylines",
+	"effText":"Machinations. When my C is set to 2 or more, set my C to 0, then gain a pip.",
 	"effects":[
 		{
 			"triggerData":
@@ -12,7 +12,7 @@
 						"xRestriction":
 					{
 						"xRestrictions":[">=Constant"],
-						"constant":5
+						"constant":2
 					}
 				}
 			},
@@ -25,21 +25,15 @@
 					"cVal":0
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Death by Clockwork",
-						"cardRestrictions":["Board","Is Character","Summoned"]
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xMultiplier":0,
+					"xModifier":1
 				}
 			]
 		}
 	],
 	"keywords":["Machinations Play","Machinations Reup"],	
-	"c":3,
+	"c":2,
 	"spellType":"Enchant",
 	"subtypeText":"Machination Enchant"
 }

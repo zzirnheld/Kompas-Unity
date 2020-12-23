@@ -1,0 +1,57 @@
+{
+	"cardType":83,
+	"cardName":"Machinate",
+	"effText":"Repeat the following any number of times:Hand-discard a CX Machination. Give a Machination +X C.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"for Animancer to discard",
+						"cardRestrictions":["Subtypes Include","Friendly","Hand","Not Already Target"],
+						"subtypesInclude":["Machination"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"Cost",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Plan to advance",
+						"cardRestrictions":["Board","Subtypes Include"],
+						"subtypesInclude":["Machination"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"cMult":1
+				},
+				{
+					"$type":"KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
+					"canDecline":true,
+					"jumpTo":0
+				}
+			]	
+		}
+	],
+	"c":1,
+	"spellType":"Simple",
+	"subtypes":["Simple"],
+	"subtypeText":"Simple"
+}

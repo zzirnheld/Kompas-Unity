@@ -1,0 +1,36 @@
+{
+	"cardType":83,
+	"cardName":"Evermellow Field",
+	"effText":"Machinations. When my C is set to 3 or more, set my C to 0, then give characters here -5 W.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"C Set",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","X Fits Restriction","This Card Triggered"],
+						"xRestriction":
+					{
+						"xRestrictions":[">=Constant"],
+						"constant":3
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character","Board","In AOE"]
+					},
+					"wMod":-5
+				}
+			]
+		}
+	],
+	"keywords":["Machinations Play","Machinations Reup"],	
+	"c":2,
+	"spellType":"Radial",
+	"subtypeText":"Machination Enchant",
+	"arg":1
+}
