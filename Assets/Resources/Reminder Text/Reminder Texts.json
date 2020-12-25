@@ -51,6 +51,10 @@
 		{
 			"keyword":"martyr",
 			"reminder":"A character is martyred when they die during an enemy turn."
+		},
+		{
+			"keyword":"Machinations.",
+			"reminder":"When I'm cast, set my C to 0. When friendly turns start, give me +1 C."
 		}
 	]
 }
