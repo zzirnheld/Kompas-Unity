@@ -287,3 +287,5 @@ Plottermaster
 Midnight Clock
 Font of Speed
 Everspinning Clockface
+Machimaster
+Overclock
