@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Overclock",
-	"effText":"Give a Machination +1 C. Then, destroy it (without negating it) and search your deck for a Machination.",
+	"effText":"Give a Machination +1 C. Set X to its C. Destroy it (without negating it) and draw X.",
 	"effects":[
 		{
 			"triggerData":
@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Machinate to discard",
-						"cardRestrictions":["Subtypes Include","Friendly","Hand","Not Already Target"],
+						"cardRestrictions":["Subtypes Include","Friendly","Board"],
 						"subtypesInclude":["Machination"]
 					}
 				},
@@ -26,19 +26,16 @@
 					"cMod":1
 				},
 				{
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"Cost",
+					"xMultiplier":1
+				},
+				{
 					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Select a machination",
-						"cardRestrictions":["Friendly","Deck","Subtypes Include"],
-						"subtypesInclude":["Machination"]
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xMultiplier":1
 				}
 			]	
 		}

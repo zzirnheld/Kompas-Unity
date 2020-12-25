@@ -12,7 +12,7 @@
 						"xRestriction":
 					{
 						"xRestrictions":[">=Constant"],
-						"constant":5
+						"constant":2
 					}
 				}
 			},
@@ -28,7 +28,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"blurb":"card to move 1 space",
 					"cardRestriction":{
-						"cardRestrictions":["Board",]
+						"cardRestrictions":["Board"]
 					}
 				},
 				{
@@ -47,7 +47,7 @@
 		}
 	],
 	"keywords":["Machinations Play","Machinations Reup"],	
-	"c":4,
+	"c":3,
 	"unique":true,
 	"spellType":"Enchant",
 	"subtypeText":"Machination Enchant"
