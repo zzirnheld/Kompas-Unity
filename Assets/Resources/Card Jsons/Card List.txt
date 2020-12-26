@@ -289,3 +289,5 @@ Font of Speed
 Everspinning Clockface
 Machimaster
 Overclock
+Gunpowder Golem
+Woolen Golem

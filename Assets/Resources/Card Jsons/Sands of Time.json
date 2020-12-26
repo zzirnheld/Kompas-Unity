@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Sands of Time",
-	"effText":"Machinations: When I'm cast, set my C to 0. When friendly turns start, give me +1 C. When my C is set to 2 or more, set my C to 0, then draw 1.",
+	"effText":"Machinations.\nWhen my C is set to 2 or more, set my C to 0, then draw 1.",
 	"effects":[
 		{
 			"triggerData":
