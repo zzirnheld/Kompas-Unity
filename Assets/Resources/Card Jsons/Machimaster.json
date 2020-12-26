@@ -38,7 +38,7 @@
 				{
 					"$type":"KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
 					"canDecline":true,
-					"jumpTo":0
+					"jumpTo":1
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
@@ -64,9 +64,9 @@
 			]
 		}
 	],
-	"n":1,
+	"n":0,
 	"e":8,
-	"s":6,
-	"w":3,
+	"s":3,
+	"w":0,
 	"subtypeText":"Craftsman"
 }

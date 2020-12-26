@@ -32,6 +32,11 @@
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"eMult":-1
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMult":-1,
+					"targetIndex":-2
 				}
 			]
 		}
