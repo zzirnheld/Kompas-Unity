@@ -39,7 +39,7 @@ namespace KompasCore.Effects
             if (attackRestrictionsArray == null || attackRestrictionsArray.Contains(Default)) 
                 attackRestrictions.AddRange(DefaultAttackRestrictions);
 
-            attackRestrictions.AddRange(attackRestrictionsArray);
+            if (attackRestrictionsArray != null) attackRestrictions.AddRange(attackRestrictionsArray);
             Debug.Log($"Finished initializing attack restriction for {Card.CardName} with restrictions: {string.Join(", ", attackRestrictions)}");
         }
 
