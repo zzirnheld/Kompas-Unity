@@ -1,7 +1,7 @@
 {
 	"cardType":83,
-	"cardName":"Font of Youth",
-	"effText":"Machinations.\nWhen my C is set to 3 or more, set my C to 0, then give an adjacent character +5 E.",
+	"cardName":"Font of Vigor",
+	"effText":"Machinations.\nWhen my C is set to 2 or more, set my C to 0, then give an adjacent character +5 W.",
 	"effects":[
 		{
 			"triggerData":
@@ -12,7 +12,7 @@
 						"xRestriction":
 					{
 						"xRestrictions":[">=Constant"],
-						"constant":3
+						"constant":2
 					}
 				}
 			},
@@ -33,7 +33,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":5
+					"wMod":5
 				}
 			]
 		}

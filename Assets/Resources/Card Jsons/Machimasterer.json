@@ -1,13 +1,13 @@
 {
 	"cardType":67,
 	"cardName":"Machimasterer",
-	"effText":"Once each turn, you can give a Machination +5 C.",
+	"effText":"Once each round, you can give a Machination +3 C.",
 	"effects":[
 		{
 			"blurb":"Machimasterate",
 			"activationRestriction":{
 				"activationRestrictionArray":[
-					"Max Times Per Turn",
+					"Max Times Per Round",
 					"Default"
 				]
 			},
@@ -23,7 +23,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"cMod":5
+					"cMod":3
 				}
 			]
 		}
