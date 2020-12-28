@@ -6,8 +6,7 @@
 		{
 			"activationRestriction":{
 				"activationRestrictionArray":[
-					"Max Times Per Turn",
-					"Friendly Turn",
+					"Max Times Per Round",
 					"Default"
 				]
 			},

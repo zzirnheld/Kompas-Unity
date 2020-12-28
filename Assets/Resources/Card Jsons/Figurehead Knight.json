@@ -43,7 +43,7 @@
 		}
 	],
 	"fast":false,
-	"c":5,
+	"c":7,
 	"spellType":"Enchant",
 	"subtypes":["Tarocco","Enchant"],
 	"subtypeText":"Tarocco Enchant"
