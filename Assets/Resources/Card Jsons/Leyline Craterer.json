@@ -1,0 +1,47 @@
+{
+	"cardType":83,
+	"cardName":"Leyline Craterer",
+	"effText":"Machinations.\nWhen my C is set to 5 or more, set my C to 0 and dispel a spell.",
+	"effects":[
+		{
+			"blurb":"Spell is No",
+			"triggerData":
+			{
+				"triggerCondition":"C Set",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","X Fits Restriction","This Card Triggered"],
+						"xRestriction":
+					{
+						"xRestrictions":[">=Constant"],
+						"constant":6
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
+					"cVal":0
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Spell to No",
+						"cardRestrictions":["Board","Is Spell"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"keywords":["Machinations Play","Machinations Reup"],	
+	"c":1,
+	"unique":true,
+	"spellType":"Enchant",
+	"subtypeText":"Machination Enchant"
+}

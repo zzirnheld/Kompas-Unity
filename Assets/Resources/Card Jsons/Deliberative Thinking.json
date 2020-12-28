@@ -1,0 +1,47 @@
+{
+	"cardType":83,
+	"cardName":"Deliberative Thinking",
+	"effText":"Machinations.\nWhen my C is set to 7 or more, set my C to 0 and search your deck for a card. (Any card.)",
+	"effects":[
+		{
+			"blurb":"Thinking Emoji",
+			"triggerData":
+			{
+				"triggerCondition":"C Set",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","X Fits Restriction","This Card Triggered"],
+						"xRestriction":
+					{
+						"xRestrictions":[">=Constant"],
+						"constant":7
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
+					"cVal":0
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"any card",
+						"cardRestrictions":["Friendly","Deck"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"keywords":["Machinations Play","Machinations Reup"],	
+	"c":1,
+	"unique":true,
+	"spellType":"Enchant",
+	"subtypeText":"Machination Enchant"
+}
