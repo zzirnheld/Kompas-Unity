@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Font of Wrath",
-	"effText":"Machinations.\nWhen my C is set to 2 or more, set my C to 0, then give an adjacent character +3 W.",
+	"effText":"Machinations.\nWhen my C is set to 2 or more, set my C to 0, then give an adjacent character +4 W.",
 	"effects":[
 		{
 			"triggerData":
@@ -33,7 +33,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wMod":3
+					"wMod":4
 				}
 			]
 		}
