@@ -53,10 +53,10 @@
 			"This is Activated"
 		]
 	},
-	"n":1,
-	"e":1,
+	"n":3,
+	"e":2,
 	"s":4,
-	"w":5,
+	"w":6,
 	"subtypes":["Golem"],
 	"subtypeText":"Golem"
 }

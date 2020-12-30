@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Text;
+using UnityEngine;
 
 namespace KompasCore.Cards
 {
@@ -142,7 +143,10 @@ namespace KompasCore.Cards
 
         public override string ToString()
         {
-            return $"Card named \"{CardName}\"";
+            if (CardName == null) return "Null Card";
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(CardName);
+            return sb.ToString();
         }
     }
 }
