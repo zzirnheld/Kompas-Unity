@@ -120,7 +120,7 @@ namespace KompasClient.GameCore
         public void SendTargets()
         {
             Debug.Log($"Sending targets {string.Join(",", CurrSearchData.Value.searched.Select(c => c.CardName))} " +
-                $"while in target mode {clientGame.targetMode}");
+                $"while in target mode {clientGame.targetMode}, with a list restriction {CurrSearchData.Value.listRestriction}");
             if (clientGame.targetMode == ClientGame.TargetMode.HandSize)
                 clientGame.clientNotifier.RequestHandSizeChoices(CurrSearchData.Value.searched.Select(c => c.ID).ToArray());
             else if (CurrSearchData.Value.listRestriction == null)

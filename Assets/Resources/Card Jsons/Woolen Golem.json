@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Woolen Golem",
-	"effText":"Golem.\nWhen I'm activated, set X to my W. Give me and another Summoned character -X E.",
+	"effText":"Golem.\nWhen I'm activated, set X to my E. Give me and another Summoned character -X W.",
 	"effects":[
 		{
 			"blurb":"Wooly Wool",
@@ -31,7 +31,8 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wMult":-1
+					"wMult":-1,
+					"targetIndex":-2
 				}
 			]
 		}
@@ -49,9 +50,9 @@
 		]
 	},
 	"n":1,
-	"e":4,
-	"s":3,
-	"w":4,
+	"e":3,
+	"s":1,
+	"w":3,
 	"subtypes":["Golem"],
 	"subtypeText":"Golem"
 }
