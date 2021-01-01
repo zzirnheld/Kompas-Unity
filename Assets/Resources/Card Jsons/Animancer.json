@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Animancer",
-	"effText":"During your turn, you can hand-discard Golems with total cost X to search your deck's top X cards a for cost <= X Golem.\nBottomdeck the rest.\nYou can rehand the searched Golem, or discard it to set X to that Golem's cost and search again.",
+	"effText":"During your turn, you can discard Golems with total cost X. Search your deck's top X cards for a cost <= X Golem. You can discard that cost X Golem to search again.",
 	"effects":[
 		{
 			"blurb":"It's In Here Somewhere",
