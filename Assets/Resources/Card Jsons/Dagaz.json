@@ -1,8 +1,36 @@
 {
 	"cardType":83,
 	"cardName":"Dagaz",
-	"effText":"Runic.\nWhen you cast a Rune (including me), gain a pip.",
+	"effText":"Runic.\nWhen I’m cast, pay X pips (X can be 0).  Give me +X C.\nWhen you cast another Rune, set X to my C. Gain X pips. Give me -1 C.\nWhen I’m removed from the board, annihilate me.",
 	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.PlayerChooseXSubeffect, Assembly-CSharp",
+					"XRest":{
+						"cardRestrictions":[">=0","<= Controller's Pips"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"cMult":1
+				}
+			]	
+		},
 		{
 			"triggerData":
 			{
@@ -10,15 +38,47 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":{
-						"cardRestrictions":["Subtypes Include","Is Spell"],
+						"cardRestrictions":["Distinct from Source","Is Spell","Subtypes Include"],
 						"subtypesInclude":["Rune"]
 					}
 				}
 			},
 			"subeffects":[
 				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"Cost",
+					"xMultiplier":1
+				},
+				{
 					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xModifier":1
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"cMod":-1
+				}
+			]	
+		},
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Remove",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Board"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
 				}
 			]	
 		}
