@@ -6,6 +6,7 @@ namespace KompasCore.Cards
     public abstract class CardBase : MonoBehaviour
     {
         public const string SimpleSubtype = "Simple";
+        public const string EnchantSubtype = "Enchant";
         public const string DelayedSubtype = "Delayed";
         public const string RadialSubtype = "Radial";
         public const string VanishingSubtype = "Vanishing";
@@ -84,6 +85,7 @@ namespace KompasCore.Cards
                 {
                     case RadialSubtype: return $" {Arg}";
                     case DelayedSubtype: return $" {Arg} turns";
+                    case VanishingSubtype: return $"{Arg} turns";
                     default: return "";
                 }
             }
