@@ -85,7 +85,7 @@ namespace KompasCore.Cards
                 {
                     case RadialSubtype: return $" {Arg}";
                     case DelayedSubtype: return $" {Arg} turns";
-                    case VanishingSubtype: return $"{Arg} turns";
+                    case VanishingSubtype: return $" {Arg} turns";
                     default: return "";
                 }
             }
