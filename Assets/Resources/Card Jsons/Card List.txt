@@ -299,3 +299,4 @@ Booming Boomerator
 Deliberative Thinking
 Fruition
 Reallocation
+Chain Dispel
