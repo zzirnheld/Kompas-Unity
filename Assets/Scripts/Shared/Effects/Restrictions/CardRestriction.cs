@@ -62,6 +62,7 @@ namespace KompasCore.Effects
         public const string Discard = "Discard";
         public const string Deck = "Deck";
         public const string Board = "Board";
+        public const string Annihilated = "Annihilated";
         public const string LocationInList = "Multiple Possible Locations";
 
         //stats
@@ -237,6 +238,7 @@ namespace KompasCore.Effects
                 case Deck:           return potentialTarget.Location == CardLocation.Deck;
                 case Discard:        return potentialTarget.Location == CardLocation.Discard;
                 case Board:          return potentialTarget.Location == CardLocation.Field;
+                case Annihilated:    return potentialTarget.Location == CardLocation.Annihilation;
                 case LocationInList: return locations.Contains(potentialTarget.Location);
 
                 //stats
