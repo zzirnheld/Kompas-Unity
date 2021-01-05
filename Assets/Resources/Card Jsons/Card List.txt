@@ -300,3 +300,6 @@ Deliberative Thinking
 Fruition
 Reallocation
 Chain Dispel
+Willshaper
+Skybreaker
+Windrunner
