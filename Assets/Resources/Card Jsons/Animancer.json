@@ -36,21 +36,14 @@
 					"jumpTo":0
 				},
 				{
-					"$type":"KompasServer.Effects.ChooseFromListSaveRestSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"for Animancer to search",
 						"cardRestrictions":["Subtypes Include","Friendly","Deck","Index<X"],
 						"subtypesInclude":["Golem"]
 					},
-					"restRestriction":
-					{
-						"cardRestrictions":["Friendly","Deck"]
-					},
 					"xMultiplier":1
-				},
-				{
-					"$type":"KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
