@@ -303,3 +303,7 @@ Chain Dispel
 Willshaper
 Skybreaker
 Windrunner
+Truthwatcher
+Bondsmith
+Elsecaller
+Lightweaver
