@@ -22,21 +22,20 @@
 					"xMultiplier":1
 				},
 				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMult":-1
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"Summoned character for Gunpowder Golem to give -XE",
-						"cardRestrictions":["Is Character","Summoned","Board"]
+						"cardRestrictions":["Is Character","Summoned","Board","Distinct from Source"]
 					}
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"eMult":-1
-				},
-				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMult":-1,
-					"targetIndex":-2
 				}
 			]
 		}

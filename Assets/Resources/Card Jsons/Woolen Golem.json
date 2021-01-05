@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Woolen Golem",
-	"effText":"Golem.\nWhen I'm activated, set X to my E. Give me and another Summoned character -X W.",
+	"effText":"Golem.\nWhen I'm activated, set X to my E. Give me and another character -X W.",
 	"effects":[
 		{
 			"blurb":"Wooly Wool",
@@ -22,21 +22,20 @@
 					"xMultiplier":1
 				},
 				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wMult":-1
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"character for Woolen Golem to give -XW",
-						"cardRestrictions":["Is Character","Board"]
+						"cardRestrictions":["Is Character","Board","Distinct from Source"]
 					}
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"wMult":-1
-				},
-				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wMult":-1,
-					"targetIndex":-2
 				}
 			]
 		}

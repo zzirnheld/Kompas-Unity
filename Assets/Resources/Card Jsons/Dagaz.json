@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Dagaz",
-	"effText":"Runic.\nWhen I’m cast, pay X pips (X can be 0).  Give me +X C.\nWhen you cast another Rune, set X to my C. Gain X pips. Give me -1 C.\nWhen I’m removed from the board, annihilate me.",
+	"effText":"Runic.\nWhen I’m cast, pay X pips (X can be 0). Give me +X C.\nWhen you cast another Rune, set X to my C. Gain X pips. Give me -X/2 C.\nWhen I’m removed from the board, annihilate me.",
 	"effects":[
 		{
 			"triggerData":
@@ -19,7 +19,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
 					"xMultiplier":1
 				},
 				{
@@ -58,7 +58,8 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"cMod":-1
+					"cMult":-1,
+					"cDiv":2
 				}
 			]	
 		},
