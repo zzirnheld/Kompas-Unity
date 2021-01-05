@@ -1,0 +1,54 @@
+{
+	"cardType":83,
+	"cardName":"Everspinning Clockface",
+	"effText":"Machinations.\nWhen my C is set to 2 or more, move a card 1 space and set my C to 0.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"C Set",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","X Fits Restriction","This Card Triggered"],
+						"xRestriction":
+					{
+						"xRestrictions":[">=Constant"],
+						"constant":2
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"blurb":"card to move 1 space",
+					"cardRestriction":{
+						"cardRestrictions":["Board"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where to move target card",
+						"spaceRestrictions":["Distance to Target == Constant","Can Move Target to This Space"],
+						"constant":1
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
+					"cVal":0
+				}
+			]
+		}
+	],
+	"keywords":["Machinations Play","Machinations Reup"],	
+	"c":1,
+	"unique":true,
+	"spellType":"Enchant",
+	"subtypeText":"Machination Enchant"
+}

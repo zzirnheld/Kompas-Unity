@@ -1,0 +1,44 @@
+{
+	"cardType":83,
+	"cardName":"Everending Field",
+	"effText":"Machinations.\nWhen my C is set to 4 or more, give characters here -5 E and set my C to 0.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"C Set",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","X Fits Restriction","This Card Triggered"],
+						"xRestriction":
+					{
+						"xRestrictions":[">=Constant"],
+						"constant":4
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character","Board","In AOE"]
+					},
+					"eMod":-5
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
+					"cVal":0
+				}
+			]
+		}
+	],
+	"keywords":["Machinations Play","Machinations Reup"],	
+	"c":3,
+	"unique":true,
+	"spellType":"Radial",
+	"subtypeText":"Machination Enchant",
+	"arg":1
+}

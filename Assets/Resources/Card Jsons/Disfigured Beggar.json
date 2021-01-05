@@ -1,0 +1,53 @@
+{
+	"cardType":67,
+	"cardName":"Disfigured Beggar",
+	"effText":"Supplicant.\nThe first time each turn a character arrives adjacent to a Supplicant, move that character one space.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Hunger",
+				"triggerCondition":"Arrive",
+				"triggerRestriction":{
+					"triggerRestrictions":["Max Per Turn","This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction"],
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character","Distinct from Source"]
+					},
+					"spaceRestriction":
+					{
+						"mustBeEmpty":false,
+						"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
+						"adjacencyRestriction":{
+							"cardRestrictions":["Subtypes Include"],
+							"subtypesInclude":["Supplicant"]
+						}
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"ok, now move just a little bit more",
+						"spaceRestrictions":["Empty","Distance to Target == Constant","Can Move Target to This Space"],
+						"constant":1
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"keywords":["Supplicant"],
+	"n":0,
+	"e":1,
+	"s":2,
+	"w":0,
+	"subtypeText":"Supplicant"
+}

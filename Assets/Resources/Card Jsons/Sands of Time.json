@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Sands of Time",
-	"effText":"Machinations: When I'm cast, set my C to 0. When friendly turns start, give me +1 C. When my C is set to 2 or more, set my C to 0, then draw 1.",
+	"effText":"Machinations.\nWhen my C is set to 2 or more, draw 1 and set my C to 0.",
 	"effects":[
 		{
 			"triggerData":
@@ -18,20 +18,21 @@
 			},
 			"subeffects":[
 				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				},
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
 					"cVal":0
-				},
-				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
 	"keywords":["Machinations Play","Machinations Reup"],	
-	"c":2,
+	"c":1,
+	"unique":true,
 	"spellType":"Enchant",
 	"subtypeText":"Machination Enchant"
 }

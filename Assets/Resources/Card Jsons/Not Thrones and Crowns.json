@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Not Thrones and Crowns",
-	"effText":"Set X to the number of friendly Supplicants. Give all Summoned non-Supplicants -XE.",
+	"effText":"Move each enemy character adjacent to a friendly Supplicant anywhere else, if you can.",
 	"effects":[
 		{
 			"triggerData":
@@ -13,29 +13,34 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
-					"whatToCount":"Cards Fitting Restriction",
+					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Board","Friendly","Subtypes Include"],
-						"subtypesInclude":["Supplicant"]
-					},
-					"xMultiplier":1
+						"cardRestrictions":["Is Character","Enemy","Board","Adjacent to Subtype"],
+						"adjacencySubtypes":["Supplicant"]
+					}
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
-					"cardRestriction":
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
 					{
-						"cardRestrictions":["Is Character","Board","Summoned","Subtypes Exclude"],
-						"subtypesExclude":["Supplicant"]
-					},
-					"eMult":-1
+						"blurb":"where to move the supplicant's attacker",
+						"spaceRestrictions":["Can Move Target to This Space"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"jumpTo":1
 				}
 			]
 		}
 	],
-	"c":6,
-	"unique":true,
+	"c":3,
+	"fast":true,
 	"spellType":"Simple",
 	"subtypeText":"Simple Plea"
 }

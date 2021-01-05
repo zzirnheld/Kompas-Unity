@@ -98,6 +98,7 @@ namespace KompasCore.Effects
         public const string AdjacentToTarget = "Adjacent to Target";
         public const string WithinCSpacesOfSource = "Within C Spaces";
         public const string WithinCSpacesOfTarget = "Within C Spaces of Target";
+        public const string WithinXSpacesOfSource = "Within X Spaces";
         public const string InAOE = "In AOE";
         public const string NotInAOE = "Not In AOE";
         public const string AdjacentToSubtype = "Adjacent to Subtype";
@@ -274,6 +275,7 @@ namespace KompasCore.Effects
                 case NotInAOE:           return !Source.CardInAOE(potentialTarget);
                 case WithinCSpacesOfSource: return potentialTarget.WithinSpaces(cSpaces, Source);
                 case WithinCSpacesOfTarget: return potentialTarget.WithinSpaces(cSpaces, Subeffect.Target);
+                case WithinXSpacesOfSource: return potentialTarget.WithinSpaces(Effect.X, Source);
                 case ExactlyXSpaces:     return potentialTarget.DistanceTo(Source) == x;
                 case InFrontOfSource:    return Source.CardInFront(potentialTarget);
                 case BehindSource:       return Source.CardBehind(potentialTarget);

@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Pneumatic Golem",
-	"effText":"Golem. When I'm activated, rehand a character within 2 spaces.",
+	"effText":"Golem.\nWhen I'm activated, set X to my N. Rehand a character within X spaces of me.",
 	"effects":[
 		{
 			"blurb":"Nope, Go Away",
@@ -14,12 +14,19 @@
 			},
 			"subeffects":[
 				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"N",
+					"xMultiplier":1
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"character within 2 spaces of Pneumatic Golem for it to rehand",
-						"cardRestrictions":["Is Character","Board","Within C Spaces"],
-						"cSpaces":2
+						"blurb":"character within N spaces of Pneumatic Golem for it to rehand",
+						"cardRestrictions":["Is Character","Board","Within X Spaces"]
 					}
 				},
 				{
@@ -40,7 +47,7 @@
 			"This is Activated"
 		]
 	},
-	"n":3,
+	"n":2,
 	"e":4,
 	"s":3,
 	"w":1,

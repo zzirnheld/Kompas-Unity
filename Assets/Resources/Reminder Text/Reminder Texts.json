@@ -10,7 +10,7 @@
 		},
 		{
 			"keyword":"Geminii.",
-			"reminder":"You can pip resummon me."
+			"reminder":"You can pip echo me."
 		},
 		{
 			"keyword":"Revenant.",
@@ -39,6 +39,22 @@
 		{
 			"keyword":"Golem.",
 			"reminder":"While I’m inactive, I can’t attack or move."
+		},
+		{
+			"keyword":"Supplicant.",
+			"reminder":"When I fight, kill me."
+		},
+		{
+			"keyword":"Weather.",
+			"reminder":"When turns start, deck-cast a Weather adjacent to me. Regardless, annihilate me."
+		},
+		{
+			"keyword":"martyr",
+			"reminder":"A character is martyred when they die during an enemy turn."
+		},
+		{
+			"keyword":"Machinations.",
+			"reminder":"When I'm cast, set my C to 0. When friendly turns start, give me +1 C."
 		}
 	]
 }

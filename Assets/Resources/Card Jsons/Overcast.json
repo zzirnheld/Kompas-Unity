@@ -1,0 +1,11 @@
+{
+	"cardType":83,
+	"cardName":"Overcast",
+	"effText":"Weather.",
+	"effects":[],
+	"keywords":["Weather"],
+	"c":1,
+	"spellType":"Radial",
+	"subtypeText":"Weather Radial",
+	"arg":1
+}

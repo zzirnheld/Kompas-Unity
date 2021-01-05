@@ -1,0 +1,72 @@
+{
+	"cardType":67,
+	"cardName":"Plottermaster",
+	"effText":"When turns start, set X to the total C of all friendly Machinations. You can Pip deck-cast a C <= X Machination.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Set things in motion",
+				"triggerCondition":"Turn Start",
+				"optional":true,
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.SetXSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Board","Friendly","Subtypes Include"],
+						"subtypesInclude":["Machination"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"Cost",
+					"change":true,
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"jumpTo":2
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Select a scheme",
+						"cardRestrictions":["Friendly","Deck","Cost<=X","Subtypes Include","Can Be Played","Effect Controller can Afford Cost"],
+						"subtypesInclude":["Machination"]
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"Where to start the plot",
+						"spaceRestrictions":["Can Play Target to This Space"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"n":1,
+	"e":9,
+	"s":6,
+	"w":3,
+	"subtypeText":"Craftsman"
+}

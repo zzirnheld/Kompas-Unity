@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Reincarnation",
-	"effText":"When a character dies, resummon a character.",
+	"effText":"When a character dies, echo a character.",
 	"effects":[
 		{
 			"triggerData":
@@ -19,7 +19,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"Summoned character for Reincarnation to resummon",
+						"blurb":"Summoned character for Reincarnation to echo",
 						"cardRestrictions":["Is Character","Board","Summoned"]
 					}
 				},

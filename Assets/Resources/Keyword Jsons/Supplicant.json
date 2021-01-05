@@ -1,0 +1,18 @@
+{
+	"triggerData":
+	{
+		"blurb":"Die",
+		"triggerCondition":"Battle Start",
+		"triggerRestriction":{
+			"triggerRestrictions":["This Card Triggered"]
+		}
+	},
+	"subeffects":[
+		{
+			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+		}
+	]
+}

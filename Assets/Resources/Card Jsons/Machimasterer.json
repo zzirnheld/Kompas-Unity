@@ -1,0 +1,36 @@
+{
+	"cardType":67,
+	"cardName":"Machimasterer",
+	"effText":"Once each round, you can give a Machination +3 C.",
+	"effects":[
+		{
+			"blurb":"Machimasterate",
+			"activationRestriction":{
+				"activationRestrictionArray":[
+					"Max Times Per Round",
+					"Default"
+				]
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Select a plan to accelerate",
+						"cardRestrictions":["Board","Subtypes Include"],
+						"subtypesInclude":["Machination"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"cMod":3
+				}
+			]
+		}
+	],
+	"n":0,
+	"e":9,
+	"s":5,
+	"w":3,
+	"subtypeText":"Probably Evil Craftsman"
+}

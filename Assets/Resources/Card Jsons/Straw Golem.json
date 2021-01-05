@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Straw Golem",
-	"effText":"Golem. When I'm activated, move two enemy cards each 3 spaces. (Remember, Avatar's can't be moved.)",
+	"effText":"Golem.\nWhen I'm activated, move two enemy cards each 3 spaces. (Remember, Avatar's can't be moved.)",
 	"effects":[
 		{
 			"blurb":"Go Elsewhere",

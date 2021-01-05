@@ -2,6 +2,7 @@
 using UnityEngine;
 using KompasCore.Cards;
 using System.Linq;
+using System.Text;
 
 namespace KompasCore.Effects
 {
@@ -159,5 +160,13 @@ namespace KompasCore.Effects
 
         public bool ExistsValidChoice(IEnumerable<GameCard> potentialTargets) 
             => listRestrictions.All(r => RestrictionAllowsValidChoice(r, potentialTargets));
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("List Restriction:");
+            foreach (var r in listRestrictions) sb.AppendLine(r);
+            return sb.ToString();
+        }
     }
 }

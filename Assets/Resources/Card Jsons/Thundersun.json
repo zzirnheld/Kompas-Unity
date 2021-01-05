@@ -1,0 +1,33 @@
+{
+	"cardType":83,
+	"cardName":"Thundersun",
+	"effText":"Weather.\nWhen a character arrives here, increase the leyload by 1.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Thundersun",
+				"triggerCondition":"Arrive",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Coords Fit Restriction"],
+					"spaceRestriction":
+					{
+						"mustBeEmpty":false,
+						"spaceRestrictions":["In AOE"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.ChangeLeyloadSubeffect, Assembly-CSharp",
+					"xModifier":1
+				}
+			]	
+		}
+	],
+	"keywords":["Weather"],
+	"c":7,
+	"spellType":"Radial",
+	"subtypeText":"Weather Radial",
+	"arg":1
+}

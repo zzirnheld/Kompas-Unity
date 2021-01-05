@@ -1,0 +1,46 @@
+{
+	"blurb":"Weather",
+	"triggerData":
+	{
+		"blurb":"Weather",
+		"triggerCondition":"Turn Start",
+		"triggerRestriction":{
+			"triggerRestrictions":["This Card in Play"]
+		}
+	},
+	"subeffects":[
+		{
+			"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+			"jumpTo":4
+		},
+		{
+			"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+			"cardRestriction":{
+				"blurb":"Weather to deck-cast",
+				"cardRestrictions":["Friendly","Deck","Is Spell","Distinct Name from Source","Subtypes Include"],
+				"subtypesInclude":["Weather"]
+			},
+			"maxCanChoose":1
+		},
+		{
+			"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+			"spaceRestriction":
+			{
+				"blurb":"where to make a Comeback Play",
+				"spaceRestrictions":["Can Play Target to This Space","Adjacent to Source"]
+			}
+		},
+		{
+			"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+		},
+		{
+			"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+		}
+	]	
+}

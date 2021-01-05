@@ -2,6 +2,8 @@
 {
     public class SetCardStatsSubeffect : ServerSubeffect
     {
+        public bool forbidNotBoard = true;
+
         public int nVal = -1;
         public int eVal = -1;
         public int sVal = -1;
@@ -18,6 +20,9 @@
 
         public override bool Resolve()
         {
+            if (Target == null) return ServerEffect.EffectImpossible();
+            if (forbidNotBoard && Target.Location != CardLocation.Field) return ServerEffect.EffectImpossible();
+
             Target.SetStats((RealNVal, RealEVal, RealSVal, RealWVal, RealCVal, RealAVal), Effect);
             return ServerEffect.ResolveNextSubeffect();
         }

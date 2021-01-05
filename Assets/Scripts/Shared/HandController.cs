@@ -22,7 +22,13 @@ namespace KompasCore.GameCore
                 Debug.LogError("Cannot add null card to hand");
                 return false;
             }
-            card.Remove(stackSrc);
+
+            if (!card.Remove(stackSrc))
+            {
+                Debug.LogWarning($"Could not remove card named {card.CardName} in location {card.Location}");
+                return false;
+            }
+
             hand.Add(card);
             card.Location = CardLocation.Hand;
             card.Controller = Owner;

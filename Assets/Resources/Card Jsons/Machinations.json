@@ -1,0 +1,31 @@
+{
+	"cardType":83,
+	"cardName":"Machinations",
+	"effText":"When turns start, give Machinations here +1 C.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Board","Friendly","In AOE","Subtypes Include"],
+						"subtypesInclude":["Machination"]
+					},
+					"cMod":1
+				}
+			]
+		}
+	],	
+	"c":2,
+	"spellType":"Radial",
+	"subtypeText":"Enchant",
+	"arg":1
+}

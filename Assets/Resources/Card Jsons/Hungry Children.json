@@ -1,31 +1,45 @@
 {
 	"cardType":67,
 	"cardName":"Hungry Children",
-	"effText":"When turns start, give me -1E.",
+	"effText":"Supplicant.\nWhen a character arrives adjacent to a Supplicant, give that character -1 N.",
 	"effects":[
 		{
 			"triggerData":
 			{
-				"blurb":"Starvation",
-				"triggerCondition":"Turn Start",
+				"blurb":"Hunger",
+				"triggerCondition":"Arrive",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play"]
+					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction"],
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character","Distinct from Source"]
+					},
+					"spaceRestriction":
+					{
+						"mustBeEmpty":false,
+						"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
+						"adjacencyRestriction":{
+							"cardRestrictions":["Subtypes Include"],
+							"subtypesInclude":["Supplicant"]
+						}
+					}
 				}
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":-1
+					"nMod":-1
 				}
 			]
 		}
 	],
-	"n":3,
-	"e":2,
-	"s":1,
+	"keywords":["Supplicant"],
+	"n":0,
+	"e":1,
+	"s":2,
 	"w":0,
 	"subtypeText":"Supplicant"
 }

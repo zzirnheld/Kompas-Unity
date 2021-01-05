@@ -1,0 +1,36 @@
+{
+	"cardType":67,
+	"cardName":"Silverweaver",
+	"effText":"Once each turn, you can give a Machination +1 C.",
+	"effects":[
+		{
+			"blurb":"Planweave",
+			"activationRestriction":{
+				"activationRestrictionArray":[
+					"Max Times Per Turn",
+					"Default"
+				]
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Select a plan to accelerate",
+						"cardRestrictions":["Board","Subtypes Include"],
+						"subtypesInclude":["Machination"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"cMod":1
+				}
+			]
+		}
+	],
+	"n":0,
+	"e":4,
+	"s":1,
+	"w":0,
+	"subtypeText":"Craftsman"
+}

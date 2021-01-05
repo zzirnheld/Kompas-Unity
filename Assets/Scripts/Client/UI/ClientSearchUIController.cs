@@ -104,7 +104,8 @@ namespace KompasClient.UI
 
         public void ReshowSearchShown() => SearchShowIndex(searchIndex);
 
-        public void SelectShownSearchCard() => clientUICtrl.HoverOver(CurrSearchData.Value.toSearch[searchIndex]);
+        public void SelectShownSearchCard() 
+            => clientUICtrl.cardInfoViewUICtrl.CurrShown = CurrSearchData.Value.toSearch[searchIndex];
         #endregion
     }
 }

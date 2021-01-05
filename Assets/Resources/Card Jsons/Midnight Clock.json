@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Midnight Clock",
-	"effText":"Machinations: When I'm cast, set my C to 0. When friendly turns start, give me +1 C. When my C is set to 5 or more, set my C to 0, then kill a character.",
+	"effText":"Machinations.\nWhen my C is set to 12 or more, kill a character and set my C to 0.",
 	"effects":[
 		{
 			"triggerData":
@@ -12,18 +12,11 @@
 						"xRestriction":
 					{
 						"xRestrictions":[">=Constant"],
-						"constant":5
+						"constant":12
 					}
 				}
 			},
 			"subeffects":[
-				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
-					"cVal":0
-				},
 				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
@@ -34,12 +27,20 @@
 				},
 				{
 					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
+					"cVal":0
 				}
 			]
 		}
 	],
 	"keywords":["Machinations Play","Machinations Reup"],	
-	"c":3,
+	"c":1,
+	"unique":true,
 	"spellType":"Enchant",
 	"subtypeText":"Machination Enchant"
 }

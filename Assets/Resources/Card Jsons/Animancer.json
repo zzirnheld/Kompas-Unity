@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Animancer",
-	"effText":"During your turn, you can hand-discard Golems with total cost X to search your deck's top X cards a for cost <= X Golem. Bottomdeck the rest.\nYou can rehand the searched Golem, or discard it to set X to that Golem's cost and search again.",
+	"effText":"During your turn, you can discard Golems with total cost X. Search your deck for a cost < X Golem.",
 	"effects":[
 		{
 			"blurb":"It's In Here Somewhere",
@@ -36,58 +36,18 @@
 					"jumpTo":0
 				},
 				{
-					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
-					"jumpTo":15
-				},
-				{
-					"$type":"KompasServer.Effects.ChooseFromListSaveRestSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"for Animancer to search",
-						"cardRestrictions":["Subtypes Include","Friendly","Deck","Cost<=X","Index<X"],
+						"cardRestrictions":["Subtypes Include","Friendly","Deck","Cost<=X"],
 						"subtypesInclude":["Golem"]
 					},
-					"restRestriction":
-					{
-						"cardRestrictions":["Friendly","Deck","Index<X"]
-					},
-					"xMultiplier":1
-				},
-				{
-					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.ClearRestSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Rehand the Golem or search again?",
-					"OptionBlurbs":["Gimme that","Something Else"],
-					"OptionJumpIndices":[13,10]
-				},
-				{
-					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
-					"whatToCount":"Cost",
-					"xMultiplier":1
-				},
-				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.JumpSubeffect, Assembly-CSharp",
-					"indexToJumpTo":4
+					"xMultiplier":1,
+					"xModifier":-1
 				},
 				{
 					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
 				}
 			]
 		}

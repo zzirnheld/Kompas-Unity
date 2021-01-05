@@ -1,0 +1,61 @@
+{
+	"cardType":67,
+	"cardName":"Woolen Golem",
+	"effText":"Golem.\nWhen I'm activated, set X to my E. Give me and another character -X W.",
+	"effects":[
+		{
+			"blurb":"Wooly Wool",
+			"triggerData":
+			{
+				"triggerCondition":"Activate",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"E",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wMult":-1
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"character for Woolen Golem to give -XW",
+						"cardRestrictions":["Is Character","Board","Distinct from Source"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wMult":-1
+				}
+			]
+		}
+	],
+	"MovementRestriction":{
+		"normalRestrictionsFromJson":[
+			"Default",
+			"Activated"
+		]
+	},
+	"AttackRestriction":{
+		"attackRestrictionsArray":[
+			"Default",
+			"This is Activated"
+		]
+	},
+	"n":1,
+	"e":5,
+	"s":1,
+	"w":5,
+	"subtypes":["Golem"],
+	"subtypeText":"Golem"
+}

@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Echoed Lives",
-	"effText":"When turns start, resummon Summoned characters here.",
+	"effText":"When turns start, echo Summoned characters here.",
 	"effects":[
 		{
 			"triggerData":

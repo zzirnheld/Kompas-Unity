@@ -1,0 +1,33 @@
+{
+	"cardType":67,
+	"cardName":"Clockspinner",
+	"effText":"When turns start, give adjacent Machinations +1 C.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Turn forward the clocks",
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Board","Adjacent","Subtypes Include"],
+						"subtypesInclude":["Machination"]
+					},
+					"cMod":1
+				}
+			]
+		}
+	],
+	"n":0,
+	"e":4,
+	"s":2,
+	"w":1,
+	"subtypeText":"Craftsman"
+}

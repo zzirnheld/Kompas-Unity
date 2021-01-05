@@ -179,29 +179,6 @@ The Unspeakable
 Unwavering Devotion
 We Are Yet Unworthy
 Zealous Convert
-Angel of the Downtrodden
-Fleeing Lovers
-Havengiver
-Hungry Children
-Ostracized Leper
-Sickly Old Man
-Supplicants' Peacegranter
-Widowed Mother
-Answered Prayers
-Deliver Us
-Find Me Find Peace
-Flowers of thy Heart
-Forgive the Past
-God of Mercy
-Grant Me Hope
-Herald of the Answering God
-Hope for Future
-Not Thrones and Crowns
-Protect Us
-Rights of the Supplicant
-Save the People
-Supplicants' Refuge
-Touch of the Divine
 Ride the Winds
 Durendal
 Thuan Thien
@@ -271,6 +248,55 @@ White Linewalker
 Leylasher
 Leybinder
 Whats Gonna Work
-Midnight Clock
 Sands of Time
 Resummon
+Ostracized Leper
+Widowed Mother
+Hungry Children
+Disfigured Beggar
+Desperate Footpad
+Not Thrones and Crowns
+Find Me Find Peace
+Save the People
+Deliver Us
+Touch of the Divine
+Answered Prayers
+God of Mercy
+Prophet of Mercy
+Havengranter
+Kindly Old Doctor
+Pulse of Leylines
+Everflowing Clepsydra
+Font of Youth
+Font of Wrath
+Everending Field
+Evermellow Field
+Machinate
+Fog
+Overcast
+Flood
+Thundersun
+Peltrain
+Thunderstorm
+Dapplesun
+Clockspinner
+Silverweaver
+Overmaster
+Interseer
+Plottermaster
+Midnight Clock
+Font of Speed
+Everspinning Clockface
+Machimaster
+Overclock
+Gunpowder Golem
+Woolen Golem
+Enlargening Brain
+Machimasterer
+Whirlwind Fan
+Leyline Craterer
+Booming Boomerator
+Deliberative Thinking
+Fruition
+Reallocation
+Chain Dispel

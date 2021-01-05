@@ -23,6 +23,7 @@ namespace KompasServer.Effects
             throughRestriction = throughRestriction ?? new CardRestriction();
             cardRestriction = cardRestriction ?? new CardRestriction();
             throughRestriction.Initialize(this);
+            cardRestriction.Initialize(this);
         }
 
         public override int BaseCount
