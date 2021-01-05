@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Everending Field",
-	"effText":"Machinations.\nWhen my C is set to 4 or more, set my C to 0, then give characters here -5 E.",
+	"effText":"Machinations.\nWhen my C is set to 4 or more, give characters here -5 E and set my C to 0.",
 	"effects":[
 		{
 			"triggerData":
@@ -18,19 +18,19 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
-					"cVal":0
-				},
-				{
 					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"cardRestrictions":["Is Character","Board","In AOE"]
 					},
 					"eMod":-5
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
+					"cVal":0
 				}
 			]
 		}

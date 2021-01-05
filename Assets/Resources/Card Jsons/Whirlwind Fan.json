@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Whirlwind Fan",
-	"effText":"Machinations.\nWhen my C is set to 5 or more, set my C to 0 and rehand a character.",
+	"effText":"Machinations.\nWhen my C is set to 5 or more, rehand a character and set my C to 0.",
 	"effects":[
 		{
 			"blurb":"Not a fan",
@@ -10,7 +10,7 @@
 				"triggerCondition":"C Set",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","X Fits Restriction","This Card Triggered"],
-						"xRestriction":
+					"xRestriction":
 					{
 						"xRestrictions":[">=Constant"],
 						"constant":5
@@ -18,13 +18,6 @@
 				}
 			},
 			"subeffects":[
-				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
-					"cVal":0
-				},
 				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
@@ -35,6 +28,13 @@
 				},
 				{
 					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
+					"cVal":0
 				}
 			]
 		}

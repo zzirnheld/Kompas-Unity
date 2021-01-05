@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Booming Boomerator",
-	"effText":"Machinations.\nWhen my C is set to 10 or more, set my C to 0 and destroy a card. (Destroyed spells aren't inherently negated.)",
+	"effText":"Machinations.\nWhen my C is set to 10 or more, destroy a card and set my C to 0. (Destroyed spells aren't inherently negated.)",
 	"effects":[
 		{
 			"blurb":"Boom",
@@ -19,13 +19,6 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
-					"cVal":0
-				},
-				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -35,6 +28,13 @@
 				},
 				{
 					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
+					"cVal":0
 				}
 			]
 		}

@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Deliberative Thinking",
-	"effText":"Machinations.\nWhen my C is set to 7 or more, set my C to 0 and search your deck for a card. (Any card.)",
+	"effText":"Machinations.\nWhen my C is set to 7 or more, search your deck for a card (any card) and set my C to 0.",
 	"effects":[
 		{
 			"blurb":"Thinking Emoji",
@@ -19,13 +19,6 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
-					"cVal":0
-				},
-				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -35,6 +28,13 @@
 				},
 				{
 					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
+					"cVal":0
 				}
 			]
 		}

@@ -3,6 +3,8 @@
     [System.Serializable]
     public class ChangeCardStatsSubeffect : ServerSubeffect
     {
+        public bool forbidNotBoard = true;
+
         public int nMult = 0;
         public int eMult = 0;
         public int sMult = 0;
@@ -34,6 +36,9 @@
 
         public override bool Resolve()
         {
+            if (Target == null) return ServerEffect.EffectImpossible();
+            if (forbidNotBoard && Target.Location != CardLocation.Field) return ServerEffect.EffectImpossible();
+
             Target.AddToStats(StatValues, Effect);
             return ServerEffect.ResolveNextSubeffect();
         }

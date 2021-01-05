@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Font of Youth",
-	"effText":"Machinations.\nWhen my C is set to 3 or more, set my C to 0, then give an adjacent character +4 E.",
+	"effText":"Machinations.\nWhen my C is set to 3 or more, give an adjacent character +4 E and set my C to 0.",
 	"effects":[
 		{
 			"triggerData":
@@ -18,13 +18,6 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
-					"cVal":0
-				},
-				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -34,6 +27,13 @@
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"eMod":4
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
+					"cVal":0
 				}
 			]
 		}

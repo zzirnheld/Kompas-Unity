@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Enlargening Brain",
-	"effText":"Machinations.\nThe first time each stack my C is set to 4 or more, set my C to 0 and give another Machination +9 C.",
+	"effText":"Machinations.\nThe first time each stack my C is set to 4 or more, give another Machination +9 C and set my C to 0.",
 	"effects":[
 		{
 			"triggerData":
@@ -18,24 +18,24 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
-					"cVal":0
-				},
-				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"Select a plan to accelerate",
-						"cardRestrictions":["Board","Subtypes Include"],
+						"cardRestrictions":["Board","Subtypes Include","Distinct from Source"],
 						"subtypesInclude":["Machination"]
 					}
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"cMod":9
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
+					"cVal":0
 				}
 			]
 		}
