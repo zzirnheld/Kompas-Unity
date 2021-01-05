@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Animancer",
-	"effText":"During your turn, you can discard Golems with total cost X. Search your deck's top X cards for a cost <= X Golem. You can discard that cost X Golem to search again.",
+	"effText":"During your turn, you can discard Golems with total cost X. Search your deck for a cost < X Golem.",
 	"effects":[
 		{
 			"blurb":"It's In Here Somewhere",
@@ -36,58 +36,24 @@
 					"jumpTo":0
 				},
 				{
-					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
-					"jumpTo":15
-				},
-				{
 					"$type":"KompasServer.Effects.ChooseFromListSaveRestSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"for Animancer to search",
-						"cardRestrictions":["Subtypes Include","Friendly","Deck","Cost<=X","Index<X"],
+						"cardRestrictions":["Subtypes Include","Friendly","Deck","Index<X"],
 						"subtypesInclude":["Golem"]
 					},
 					"restRestriction":
 					{
-						"cardRestrictions":["Friendly","Deck","Index<X"]
+						"cardRestrictions":["Friendly","Deck"]
 					},
 					"xMultiplier":1
 				},
 				{
-					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
-				},
-				{
 					"$type":"KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.ClearRestSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Rehand the Golem or search again?",
-					"OptionBlurbs":["Gimme that","Something Else"],
-					"OptionJumpIndices":[13,10]
-				},
-				{
-					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
-					"whatToCount":"Cost",
-					"xMultiplier":1
-				},
-				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.JumpSubeffect, Assembly-CSharp",
-					"indexToJumpTo":4
 				},
 				{
 					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
 				}
 			]
 		}
