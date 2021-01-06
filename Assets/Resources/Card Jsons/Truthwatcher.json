@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Truthwatcher",
-	"effText":"When you cast a Weather, set X to the number of friendly characters there. Search your deck's top X cards for a card.",
+	"effText":"When you cast a Weather, set X to the number of friendly characters there. Search your deck's top X cards for a cost <= X card.",
 	"effects":[
 		{
 			"triggerData":
@@ -18,6 +18,9 @@
 			},
 			"subeffects":[
 				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
 					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
 					"whatToCount":"Cards Fitting Restriction",
 					"cardRestriction":
@@ -31,7 +34,7 @@
 					"cardRestriction":
 					{
 						"blurb":"card for Truthwatcher to search out",
-						"cardRestrictions":["Friendly","Deck","Index<X"]
+						"cardRestrictions":["Friendly","Deck","Index<X","Cost<=X"]
 					},
 					"restRestriction":
 					{
@@ -48,6 +51,7 @@
 			]
 		}
 	],
+	"unique":true,
 	"n":1,
 	"e":2,
 	"s":4,

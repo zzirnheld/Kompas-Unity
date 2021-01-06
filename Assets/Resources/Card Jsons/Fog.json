@@ -9,7 +9,10 @@
 				"blurb":"Fog",
 				"triggerCondition":"Arrive",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Coords Fit Restriction"],
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Coords Fit Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Is Character"]
+					},
 					"spaceRestriction":
 					{
 						"mustBeEmpty":false,
@@ -31,6 +34,7 @@
 		}
 	],
 	"keywords":["Weather"],
+	"unique":true,
 	"c":4,
 	"spellType":"Radial",
 	"subtypeText":"Weather Radial",

@@ -16,7 +16,10 @@
 					}
 				}
 			},
-			"subeffects":[				
+			"subeffects":[			
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},	
 				{
 					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
 					"cardRestriction":
@@ -28,9 +31,9 @@
 			]
 		}
 	],
-	"n":2,
+	"n":0,
 	"e":2,
 	"s":2,
-	"w":0,
+	"w":2,
 	"subtypeText":"Skyknight"
 }

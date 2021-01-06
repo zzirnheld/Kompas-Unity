@@ -16,7 +16,10 @@
 					}
 				}
 			},
-			"subeffects":[				
+			"subeffects":[	
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},			
 				{
 					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
 					"cardRestriction":

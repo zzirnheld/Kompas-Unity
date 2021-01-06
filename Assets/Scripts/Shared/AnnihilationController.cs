@@ -13,7 +13,7 @@ namespace KompasCore.GameCore
 
         public virtual bool Annihilate(GameCard card, IStackable stackSrc = null)
         {
-            card.Remove(stackSrc);
+            if(!card.Remove(stackSrc)) return false;
             Cards.Add(card);
             card.Location = CardLocation.Annihilation;
             return true;
