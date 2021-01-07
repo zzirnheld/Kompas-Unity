@@ -27,10 +27,13 @@ namespace KompasServer.Networking {
         public int? PlayerXChoice { get; set; }
 
 
+        //TODO also make sure that when decline target is set, it also wakes up relevant targeting semaphores
         public bool DeclineTarget { get; set; }
         public GameCard CardTarget { get; set; }
         public IEnumerable<GameCard> CardListTargets { get; set; }
         public (int, int)? SpaceTarget { get; set; }
+
+        public int[] HandSizeChoices { get; set; }
         #endregion awaited values
 
         #region locks
@@ -43,6 +46,8 @@ namespace KompasServer.Networking {
         private readonly object CardTargetLock = new object();
         private readonly object CardListTargetsLock = new object();
         private readonly object SpaceTargetLock = new object();
+
+        private readonly object HandSizeChoicesLock = new object();
         #endregion locks
 
         #region trigger things
@@ -225,5 +230,26 @@ namespace KompasServer.Networking {
             }
         }
         #endregion targeting
+
+        #region misc get stuff
+        public async Task<int[]> GetHandSizeChoices(int[] cardIds, string listRestrictionJson)
+        {
+            serverNotifier.GetHandSizeChoices(cardIds, listRestrictionJson);
+            while (true)
+            {
+                lock (HandSizeChoicesLock)
+                {
+                    if (HandSizeChoices != null)
+                    {
+                        var choices = HandSizeChoices;
+                        HandSizeChoices = null;
+                        return choices;
+                    }
+                }
+
+                await Task.Delay(TargetCheckDelay);
+            }
+        }
+        #endregion misc get stuff
     }
 }

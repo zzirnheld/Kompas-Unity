@@ -30,10 +30,7 @@ namespace KompasServer.Networking
     {
         public Task Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
         {
-            if(serverGame.EffectsController.CurrStackEntry is ServerHandSizeStackable stackable)
-            {
-                stackable.TryAnswer(cardIds);
-            }
+            awaiter.HandSizeChoices = cardIds;
             return Task.CompletedTask;
         }
     }

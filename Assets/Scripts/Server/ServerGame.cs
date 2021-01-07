@@ -311,7 +311,7 @@ namespace KompasServer.GameCore
             TurnServerPlayer.ServerNotifier.NotifyYourTurn();
 
             //do hand size
-            EffectsController.PushToStack(new ServerHandSizeStackable(this, EffectsController, TurnServerPlayer), default);
+            EffectsController.PushToStack(new ServerHandSizeStackable(this, TurnServerPlayer), default);
 
             //trigger turn start effects
             var context = new ActivationContext(triggerer: TurnServerPlayer);
