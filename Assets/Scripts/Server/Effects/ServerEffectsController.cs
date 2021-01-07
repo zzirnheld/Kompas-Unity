@@ -91,6 +91,8 @@ namespace KompasServer.Effects
                 foreach (var p in ServerGame.ServerPlayers) p.ServerNotifier.RequestNoResponse();
                 CurrStackEntry = stackable;
                 await stackable.StartResolution(context);
+                //after that entry resolves, check for responses, triggers, etc.
+                await CheckForResponse();
             }
         }
 
