@@ -17,7 +17,7 @@ namespace KompasServer.Effects
             cardRestriction.Initialize(this);
         }
 
-        public override async Task<ResolutionInfo> Resolve()
+        public override Task<ResolutionInfo> Resolve()
         {
             GameCard potentialTarget = null;
             try
@@ -30,11 +30,11 @@ namespace KompasServer.Effects
                     $"for the effect {Effect.blurb} of {Source.CardName}");
             }
 
-            if (potentialTarget == null) return ResolutionInfo.Impossible(NoValidCardTarget);
+            if (potentialTarget == null) return Task.FromResult(ResolutionInfo.Impossible(NoValidCardTarget));
             else
             {
                 ServerEffect.AddTarget(potentialTarget);
-                return ResolutionInfo.Next;
+                return Task.FromResult(ResolutionInfo.Next);
             }
         }
     }

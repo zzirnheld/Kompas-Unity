@@ -50,18 +50,18 @@ namespace KompasServer.Effects
         /// then returns a ResolutionInfo struct containing what to do next.
         /// <returns><see langword="true"/> if the effect finished resolving successfully, <see langword="false"/> if it's awaiting response</returns>
         /// </summary>
-        public virtual async Task<ResolutionInfo> Resolve() { return ResolutionInfo.Next; }
+        public abstract Task<ResolutionInfo> Resolve();
 
 
         /// <summary>
         /// Optional method. If implemented, does something when the effect is declared impossible.
         /// Default implementation just finishes resolution of the effect
         /// </summary>
-        public virtual async Task<ResolutionInfo> OnImpossible(string why)
+        public virtual Task<ResolutionInfo> OnImpossible(string why)
         {
             Debug.Log($"Base On Impossible called for {GetType()}");
             ServerEffect.OnImpossible = null;
-            return ResolutionInfo.Impossible(why);
+            return Task.FromResult(ResolutionInfo.Impossible(why));
         }
     }
 

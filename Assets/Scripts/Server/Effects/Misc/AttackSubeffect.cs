@@ -7,14 +7,14 @@ namespace KompasServer.Effects
     {
         public int attackerIndex = -2;
 
-        public override async Task<ResolutionInfo> Resolve()
+        public override Task<ResolutionInfo> Resolve()
         {
             var attacker = Effect.GetTarget(attackerIndex);
             var defender = Target;
-            if (attacker == null || defender == null) return ResolutionInfo.Impossible(TargetWasNull);
+            if (attacker == null || defender == null) return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
 
             ServerGame.Attack(attacker, defender, ServerEffect.ServerController);
-            return ResolutionInfo.Next;
+            return Task.FromResult(ResolutionInfo.Next);
         }
     }
 }

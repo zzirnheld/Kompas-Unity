@@ -4,10 +4,10 @@ namespace KompasServer.Effects
 {
     public class AddPipsSubeffect : ServerSubeffect
     {
-        public override async Task<ResolutionInfo> Resolve()
+        public override Task<ResolutionInfo> Resolve()
         {
             Player.Pips += Count;
-            return ResolutionInfo.Next;
+            return Task.FromResult(ResolutionInfo.Next);
         }
     }
 }
