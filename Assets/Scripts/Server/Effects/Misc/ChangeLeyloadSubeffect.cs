@@ -10,7 +10,7 @@ namespace KompasServer.Effects
         public override Task<ResolutionInfo> Resolve()
         {
             ServerGame.Leyload += Count;
-            return Task.FromResult(ResolutionInfo.Next));
+            return Task.FromResult(ResolutionInfo.Next);
         }
     }
 }

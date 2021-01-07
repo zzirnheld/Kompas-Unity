@@ -1,13 +1,15 @@
-﻿namespace KompasServer.Effects
+﻿using System.Threading.Tasks;
+
+namespace KompasServer.Effects
 {
     public class MoveSubeffect : CardChangeStateSubeffect
     {
-        public override bool Resolve()
+        public override Task<ResolutionInfo> Resolve()
         {
             var (x, y) = Space;
-            if (Target != null && Target.Move(x, y, false, Effect))
-                return ServerEffect.ResolveNextSubeffect();
-            else return ServerEffect.EffectImpossible();
+            if (Target == null) return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
+            else if (Target.Move(x, y, false, Effect)) return Task.FromResult(ResolutionInfo.Next);
+            else return Task.FromResult(ResolutionInfo.Impossible(MovementFailed));
         }
     }
 }

@@ -1,12 +1,14 @@
-﻿namespace KompasServer.Effects
+﻿using System.Threading.Tasks;
+
+namespace KompasServer.Effects
 {
     public class DrawSubeffect : ServerSubeffect
     {
-        public override bool Resolve()
+        public override Task<ResolutionInfo> Resolve()
         {
             var drawn = ServerGame.Draw(Player.index);
-            if (drawn == null) return ServerEffect.EffectImpossible();
-            else return ServerEffect.ResolveNextSubeffect();
+            if (drawn == null) return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
+            else return Task.FromResult(ResolutionInfo.Next);
         }
     }
 }
