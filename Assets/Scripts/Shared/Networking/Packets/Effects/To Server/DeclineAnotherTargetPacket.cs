@@ -17,6 +17,6 @@ namespace KompasServer.Networking
 {
     public class DeclineAnotherTargetServerPacket : DeclineAnotherTargetPacket, IServerOrderPacket
     {
-        public void Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter) => serverGame.CurrEffect?.DeclineAnotherTarget();
+        public void Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter) => awaiter.DeclineTarget = true;
     }
 }

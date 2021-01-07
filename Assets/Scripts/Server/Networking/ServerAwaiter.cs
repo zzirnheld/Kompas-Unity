@@ -26,6 +26,8 @@ namespace KompasServer.Networking {
         public int? EffOption { get; set; }
         public int? PlayerXChoice { get; set; }
 
+
+        public bool DeclineTarget { get; set; }
         public GameCard CardTarget { get; set; }
         public IEnumerable<GameCard> CardListTargets { get; set; }
         public (int, int)? SpaceTarget { get; set; }
@@ -134,7 +136,17 @@ namespace KompasServer.Networking {
         #endregion effect flow control
 
         #region targeting
-        public async Task<GameCard> GetCardTarget(string sourceCardName, string blurb, int[] ids, string listRestrictionJson)
+        /// <summary>
+        /// Gets a card target, waiting until the client sends one or sends that they don't want to choose a target
+        /// </summary>
+        /// <param name="sourceCardName">The card whose effect is asking for a target</param>
+        /// <param name="blurb">The description of the target to get</param>
+        /// <param name="ids">The list of card ids of valid targets</param>
+        /// <param name="listRestrictionJson">The list resriction, if any</param>
+        /// <returns>The card the person chose and false if they chose a target;<br></br>
+        /// null and true if they declined to choose a target</returns>
+        public async Task<(GameCard target, bool declined)> GetCardTarget
+            (string sourceCardName, string blurb, int[] ids, string listRestrictionJson)
         {
             serverNotifier.GetCardTarget(sourceCardName, blurb, ids, listRestrictionJson);
             while (true)
@@ -145,34 +157,55 @@ namespace KompasServer.Networking {
                     {
                         var target = CardTarget;
                         CardTarget = null;
-                        return target;
+                        return (target, false);
                     }
+                    else if (DeclineTarget) return (null, true);
                 }
 
                 await Task.Delay(TargetCheckDelay);
             }
         }
 
-        public async Task<IEnumerable<GameCard>> GetCardListTargets(string sourceCardName, string blurb, int[] ids, string listRestructionJson)
+        /// <summary>
+        /// Gets a list of card targets, waiting until the client sends one or sends that they don't want to choose targets
+        /// </summary>
+        /// <param name="sourceCardName">The card whose effect is asking for targets</param>
+        /// <param name="blurb">The description of the targets to get</param>
+        /// <param name="ids">The list of card ids of valid targets</param>
+        /// <param name="listRestrictionJson">The list resriction, if any</param>
+        /// <returns>The cards the person chose and false if they chose targets;<br></br>
+        /// null and true if they declined to choose targets</returns>
+        public async Task<(IEnumerable<GameCard> chocies, bool declined)> GetCardListTargets
+            (string sourceCardName, string blurb, int[] ids, string listRestructionJson)
         {
             serverNotifier.GetCardTarget(sourceCardName, blurb, ids, listRestructionJson);
             while (true)
             {
                 lock (CardListTargetsLock)
                 {
-                    if(CardListTargets != null)
+                    if (CardListTargets != null)
                     {
                         var targets = CardListTargets;
                         CardListTargets = null;
-                        return targets;
+                        return (targets, false);
                     }
+                    else if (DeclineTarget) return (null, true);
                 }
 
                 await Task.Delay(TargetCheckDelay);
             }
         }
 
-        public async Task<(int, int)> GetSpaceTarget(string cardName, string blurb, (int, int)[] spaces)
+        /// <summary>
+        /// Gets a space target, waiting until the client sends one or send that they don't want to choose a space.
+        /// </summary>
+        /// <param name="cardName">The card whose effect is asking for a space</param>
+        /// <param name="blurb">The description of the space to target</param>
+        /// <param name="spaces">The list of valid spaces</param>
+        /// <returns>The space and false if the player chose a space<br></br>
+        /// default and true if the player declined to choose a space</returns>
+        public async Task<((int, int) space, bool declined)> GetSpaceTarget
+            (string cardName, string blurb, (int, int)[] spaces)
         {
             serverNotifier.GetSpaceTarget(cardName, blurb, spaces);
             while (true)
@@ -183,8 +216,9 @@ namespace KompasServer.Networking {
                     {
                         var space = SpaceTarget.Value;
                         SpaceTarget = null;
-                        return space;
+                        return (space, false);
                     }
+                    else if (DeclineTarget) return (default, true);
                 }
 
                 await Task.Delay(TargetCheckDelay);

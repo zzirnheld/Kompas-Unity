@@ -21,6 +21,8 @@ namespace KompasServer.Effects
         public const string CantAffordPips = "Can't afford pips";
         public const string CantAffordStats = "Can't afford stats";
 
+        public const string DeclinedFurtherTargets = "Declined further targets";
+
         //card movement failure
         public const string AnnihilationFailed = "Target couldn't be annihilated";
         public const string AttachFailed = "Attach as augment failed";

@@ -36,7 +36,7 @@ namespace KompasServer.Effects
             listRestriction.Initialize(this);
         }
 
-        protected async Task<IEnumerable<GameCard>> RequestTargets()
+        protected async Task<(IEnumerable<GameCard>, bool)> RequestTargets()
         {
             string name = Source.CardName;
             string blurb = cardRestriction.blurb;
@@ -76,9 +76,11 @@ namespace KompasServer.Effects
             }
 
             IEnumerable<GameCard> targets = null;
+            bool decline = false;
             while (!AddListIfLegal(targets))
             {
-                targets = await RequestTargets();
+                (targets, decline) = await RequestTargets();
+                if (decline && ServerEffect.CanDeclineTarget) return ResolutionInfo.Impossible(DeclinedFurtherTargets);
             }
 
             return ResolutionInfo.Next;

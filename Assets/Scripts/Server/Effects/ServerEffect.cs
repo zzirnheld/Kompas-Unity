@@ -29,6 +29,7 @@ namespace KompasServer.Effects
         public override Trigger Trigger => ServerTrigger;
 
         public ServerSubeffect OnImpossible = null;
+        public bool CanDeclineTarget = false;
 
         public void SetInfo(GameCard thisCard, ServerGame serverGame, ServerPlayer controller, int effectIndex)
         {

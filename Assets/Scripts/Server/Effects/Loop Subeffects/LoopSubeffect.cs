@@ -31,6 +31,7 @@ namespace KompasServer.Effects
                 {
                     ServerPlayer.ServerNotifier.EnableDecliningTarget();
                     ServerEffect.OnImpossible = this;
+                    ServerEffect.CanDeclineTarget = true;
                 }
                 return Task.FromResult(ResolutionInfo.Index(jumpTo));
             }
@@ -44,6 +45,7 @@ namespace KompasServer.Effects
         {
             //let parent know the loop is over
             if (ServerEffect.OnImpossible == this) ServerEffect.OnImpossible = null;
+            ServerEffect.CanDeclineTarget = false;
 
             //do anything necessary to clean up the loop
             OnLoopExit();
