@@ -2,6 +2,7 @@
 using KompasCore.Networking;
 using KompasServer.GameCore;
 using KompasServer.Effects;
+using System.Threading.Tasks;
 
 namespace KompasCore.Networking
 {
@@ -25,7 +26,10 @@ namespace KompasServer.Networking
     public class CardTargetServerPacket : CardTargetPacket, IServerOrderPacket
     {
 
-        public void Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
-            => awaiter.CardTarget = serverGame.GetCardWithID(cardId);
+        public Task Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
+        {
+            awaiter.CardTarget = serverGame.GetCardWithID(cardId);
+            return Task.CompletedTask;
+        }
     }
 }

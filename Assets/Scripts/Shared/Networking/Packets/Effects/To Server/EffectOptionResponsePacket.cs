@@ -2,6 +2,7 @@
 using KompasCore.Networking;
 using KompasServer.GameCore;
 using KompasServer.Effects;
+using System.Threading.Tasks;
 
 namespace KompasCore.Networking
 {
@@ -24,7 +25,10 @@ namespace KompasServer.Networking
 {
     public class EffectOptionResponseServerPacket : EffectOptionResponsePacket, IServerOrderPacket
     {
-        public void Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
-            => awaiter.EffOption = option;
+        public Task Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
+        {
+            awaiter.EffOption = option;
+            return Task.CompletedTask;
+        }
     }
 }

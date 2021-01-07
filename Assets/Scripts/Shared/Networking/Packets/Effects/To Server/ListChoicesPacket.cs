@@ -4,6 +4,7 @@ using KompasServer.GameCore;
 using KompasServer.Effects;
 using System.Linq;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace KompasCore.Networking
 {
@@ -28,11 +29,12 @@ namespace KompasServer.Networking
 {
     public class ListChoicesServerPacket : ListChoicesPacket, IServerOrderPacket
     {
-        public void Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
+        public Task Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
         {
             var choices = cardIds.Select(c => serverGame.GetCardWithID(c)).Where(c => c != null).Distinct();
 
             awaiter.CardListTargets = choices;
+            return Task.CompletedTask;
         }
     }
 }

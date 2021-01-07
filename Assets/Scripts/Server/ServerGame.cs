@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Linq;
 using UnityEngine;
+using System.Threading.Tasks;
 
 namespace KompasServer.GameCore
 {
@@ -233,7 +234,6 @@ namespace KompasServer.GameCore
             //check for triggers related to the attack (if this were in the constructor, the triggers would go on the stack under the attack
             attack.Declare();
             if (playerInitiated) attacker.SetAttacksThisTurn(attacker.attacksThisTurn + 1);
-            EffectsController.CheckForResponse();
         }
 
         #region check validity
@@ -295,7 +295,7 @@ namespace KompasServer.GameCore
         }
         #endregion
 
-        public void SwitchTurn()
+        public async Task SwitchTurn()
         {
             TurnPlayerIndex = 1 - TurnPlayerIndex;
             Debug.Log($"Turn swapping to the turn of index {TurnPlayerIndex}");
@@ -317,7 +317,7 @@ namespace KompasServer.GameCore
             var context = new ActivationContext(triggerer: TurnServerPlayer);
             EffectsController.TriggerForCondition(Trigger.TurnStart, context);
 
-            EffectsController.CheckForResponse();
+            await EffectsController.CheckForResponse();
         }
 
         public override GameCard GetCardWithID(int id) => cardsByID.ContainsKey(id) ? cardsByID[id] : null;

@@ -4,10 +4,10 @@ namespace KompasServer.Effects
 {
     public class ActivateSubeffect : ServerSubeffect
     {
-        public override async Task<ResolutionInfo> Resolve()
+        public override Task<ResolutionInfo> Resolve()
         {
             Target.SetActivated(true, Effect);
-            return ResolutionInfo.Next;
+            return Task.FromResult(ResolutionInfo.Next);
         }
     }
 }

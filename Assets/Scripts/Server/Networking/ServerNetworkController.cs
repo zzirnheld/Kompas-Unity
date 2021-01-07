@@ -4,6 +4,8 @@ using KompasServer.Effects;
 using KompasServer.GameCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace KompasServer.Networking
@@ -56,7 +58,13 @@ namespace KompasServer.Networking
             }
         }
 
-        public override void ProcessPacket((string command, string json) packetInfo)
+        protected override async void Update()
+        {
+            base.Update();
+            if (packets.Count != 0) await ProcessPacket(packets.Dequeue());
+        }
+
+        public override async Task ProcessPacket((string command, string json) packetInfo)
         {
             if(packetInfo.command == Packet.Invalid)
             {
@@ -67,7 +75,7 @@ namespace KompasServer.Networking
             //Debug.Log($"Processing {packetInfo.json} from {Player.index}");
 
             var packet = FromJson(packetInfo.command, packetInfo.json);
-            packet.Execute(sGame, Player, serverAwaiter);
+            await packet.Execute(sGame, Player, serverAwaiter);
         }
     }
 }

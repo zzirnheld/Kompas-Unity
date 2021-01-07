@@ -5,6 +5,7 @@ using KompasServer.Effects;
 using System.Linq;
 using Boo.Lang;
 using KompasCore.Effects;
+using System.Threading.Tasks;
 
 namespace KompasCore.Networking
 {
@@ -31,10 +32,10 @@ namespace KompasServer.Networking
 {
     public class TriggerOrderResponseServerPacket : TriggerOrderResponsePacket, IServerOrderPacket
     {
-        public bool IsValid
-            => cardIds.Length == orders.Length && orders.Length == effIndices.Length;
-
-        public void Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
-            => awaiter.TriggerOrders = (cardIds, effIndices, orders);
+        public Task Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
+        {
+            awaiter.TriggerOrders = (cardIds, effIndices, orders);
+            return Task.CompletedTask;
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using KompasCore.Networking;
 using KompasServer.GameCore;
+using System.Threading.Tasks;
 
 namespace KompasCore.Networking
 {
@@ -15,7 +16,7 @@ namespace KompasServer.Networking
 {
     public class DebugDrawServerPacket : DebugDrawPacket, IServerOrderPacket
     {
-        public void Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
+        public Task Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
         {
             if (serverGame.uiCtrl.DebugMode)
             {
@@ -23,6 +24,7 @@ namespace KompasServer.Networking
                 serverGame.Draw(player.index);
             }
             else UnityEngine.Debug.LogError($"Tried to debug draw while NOT in debug mode!");
+            return Task.CompletedTask;
         }
     }
 }

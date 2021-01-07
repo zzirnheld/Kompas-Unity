@@ -22,13 +22,13 @@ namespace KompasServer.Effects
             return list;
         }
 
-        public override async Task<ResolutionInfo> Resolve()
+        public override Task<ResolutionInfo> Resolve()
         {
             //TODO better shuffling algorithm
             var list = Shuffle(Effect.rest);
             foreach (GameCard c in list) c.Bottomdeck(c.Owner, Effect);
 
-            return ResolutionInfo.Next;
+            return Task.FromResult(ResolutionInfo.Next);
         }
     }
 }

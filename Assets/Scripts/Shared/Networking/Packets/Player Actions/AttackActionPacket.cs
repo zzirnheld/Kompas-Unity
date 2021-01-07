@@ -1,5 +1,6 @@
 ﻿using KompasCore.Networking;
 using KompasServer.GameCore;
+using System.Threading.Tasks;
 
 namespace KompasCore.Networking
 {
@@ -24,11 +25,11 @@ namespace KompasServer.Networking
 {
     public class AttackActionServerPacket : AttackActionPacket, IServerOrderPacket
     {
-        public void Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
+        public async Task Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
         {
             var attacker = serverGame.GetCardWithID(attackerId);
             var defender = serverGame.GetCardWithID(defenderId);
-            player.TryAttack(attacker, defender);
+            await player.TryAttack(attacker, defender);
         }
     }
 }

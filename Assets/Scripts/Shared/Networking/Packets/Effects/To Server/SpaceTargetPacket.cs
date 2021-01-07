@@ -2,6 +2,7 @@
 using KompasCore.Networking;
 using KompasServer.GameCore;
 using KompasServer.Effects;
+using System.Threading.Tasks;
 
 namespace KompasCore.Networking
 {
@@ -26,17 +27,16 @@ namespace KompasServer.Networking
 {
     public class SpaceTargetServerPacket : SpaceTargetPacket, IServerOrderPacket
     {
-        public void Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
+        public Task Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
         {
-            var currSubeff = serverGame.CurrEffect?.CurrSubeffect;
             if(player.index != 0)
             {
                 x = 6 - x;
                 y = 6 - y;
             }
 
-            if (currSubeff is SpaceTargetSubeffect spaceTargetSubeffect)
-                spaceTargetSubeffect.SetTargetIfValid(x, y);
+            awaiter.SpaceTarget = (x, y);
+            return Task.CompletedTask;
         }
     }
 }

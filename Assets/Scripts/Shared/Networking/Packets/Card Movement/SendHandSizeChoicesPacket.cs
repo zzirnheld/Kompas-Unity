@@ -3,6 +3,7 @@ using KompasServer.Effects;
 using KompasServer.GameCore;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace KompasCore.Networking
@@ -27,12 +28,13 @@ namespace KompasServer.Networking
 {
     public class SendHandSizeChoicesServerPacket : SendHandSizeChoicesPacket, IServerOrderPacket
     {
-        public void Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
+        public Task Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
         {
             if(serverGame.EffectsController.CurrStackEntry is ServerHandSizeStackable stackable)
             {
                 stackable.TryAnswer(cardIds);
             }
+            return Task.CompletedTask;
         }
     }
 }
