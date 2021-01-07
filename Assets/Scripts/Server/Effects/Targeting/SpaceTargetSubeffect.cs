@@ -1,5 +1,6 @@
 ﻿using KompasCore.Effects;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace KompasServer.Effects
@@ -14,7 +15,7 @@ namespace KompasServer.Effects
             spaceRestriction.Initialize(this);
         }
 
-        public override bool Resolve()
+        public override async Task<ResolutionInfo> Resolve()
         {
             if (ServerEffect.serverGame.ExistsSpaceTarget(spaceRestriction))
             {
@@ -27,13 +28,18 @@ namespace KompasServer.Effects
                         if(spaceRestriction.Evaluate((x, y))) spaces.Add(space);
                     }
                 }
-                ServerPlayer.ServerNotifier.GetSpaceTarget(Source.CardName, spaceRestriction.blurb, spaces.ToArray());
-                return false;
+
+                var (a, b) = (-1, -1);
+                while (!SetTargetIfValid(a, b))
+                {
+                    (a, b) = await ServerPlayer.serverAwaiter.GetSpaceTarget(Source.CardName, spaceRestriction.blurb, spaces.ToArray());
+                }
+                return ResolutionInfo.Next;
             }
             else
             {
                 Debug.Log($"No valid coords exist for {ThisCard.CardName} effect");
-                return ServerEffect.EffectImpossible();
+                return ResolutionInfo.Impossible(NoValidSpaceTarget);
             }
         }
 
@@ -45,7 +51,6 @@ namespace KompasServer.Effects
                 Debug.Log($"Adding {x}, {y} as coords");
                 ServerEffect.coords.Add((x, y));
                 ServerPlayer.ServerNotifier.AcceptTarget();
-                ServerEffect.ResolveNextSubeffect();
                 return true;
             }
             else Debug.LogError($"{x}, {y} not valid for restriction {spaceRestriction}");

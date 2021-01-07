@@ -28,6 +28,7 @@ namespace KompasServer.Networking {
 
         public GameCard CardTarget { get; set; }
         public IEnumerable<GameCard> CardListTargets { get; set; }
+        public (int, int)? SpaceTarget { get; set; }
         #endregion awaited values
 
         #region locks
@@ -39,6 +40,7 @@ namespace KompasServer.Networking {
 
         private readonly object CardTargetLock = new object();
         private readonly object CardListTargetsLock = new object();
+        private readonly object SpaceTargetLock = new object();
         #endregion locks
 
         #region trigger things
@@ -163,6 +165,25 @@ namespace KompasServer.Networking {
                         var targets = CardListTargets;
                         CardListTargets = null;
                         return targets;
+                    }
+                }
+
+                await Task.Delay(TargetCheckDelay);
+            }
+        }
+
+        public async Task<(int, int)> GetSpaceTarget(string cardName, string blurb, (int, int)[] spaces)
+        {
+            serverNotifier.GetSpaceTarget(cardName, blurb, spaces);
+            while (true)
+            {
+                lock (SpaceTargetLock)
+                {
+                    if (SpaceTarget.HasValue)
+                    {
+                        var space = SpaceTarget.Value;
+                        SpaceTarget = null;
+                        return space;
                     }
                 }
 
