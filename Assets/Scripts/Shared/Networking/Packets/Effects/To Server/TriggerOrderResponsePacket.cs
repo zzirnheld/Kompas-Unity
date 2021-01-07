@@ -31,16 +31,10 @@ namespace KompasServer.Networking
 {
     public class TriggerOrderResponseServerPacket : TriggerOrderResponsePacket, IServerOrderPacket
     {
+        public bool IsValid
+            => cardIds.Length == orders.Length && orders.Length == effIndices.Length;
+
         public void Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
-        {
-            for(int i = 0; i < cardIds.Length; i++)
-            {
-                var card = serverGame.GetCardWithID(cardIds[i]);
-                if (card == null) continue;
-                if (card.Effects.ElementAt(effIndices[i]).Trigger is ServerTrigger trigger) 
-                    trigger.Order = orders[i];
-            }
-            serverGame.EffectsController.CheckForResponse();
-        }
+            => awaiter.TriggerOrders = (cardIds, effIndices, orders);
     }
 }

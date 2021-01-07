@@ -24,24 +24,8 @@ namespace KompasServer.Networking
 {
     public class CardTargetServerPacket : CardTargetPacket, IServerOrderPacket
     {
-        private ServerGame serverGame;
-
-        public GameCard Target => serverGame?.GetCardWithID(cardId);
 
         public void Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
-        {
-            this.serverGame = serverGame;
-            awaiter.EnqueuePacket(this);
-            /*
-            var currSubeff = serverGame.CurrEffect?.CurrSubeffect;
-            var card = serverGame.GetCardWithID(cardId);
-
-            UnityEngine.Debug.Log($"Attempting to target {card?.CardName} in subeffect {currSubeff}");
-
-            if (currSubeff is CardTargetSubeffect cardTargetSubeffect)
-                cardTargetSubeffect.AddTargetIfLegal(card);
-            else if (currSubeff is ChooseFromListSubeffect listSubeffect)
-                listSubeffect.AddListIfLegal(new GameCard[] { card });*/
-        }
+            => awaiter.CardTarget = serverGame.GetCardWithID(cardId);
     }
 }

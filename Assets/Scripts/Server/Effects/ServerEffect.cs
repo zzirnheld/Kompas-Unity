@@ -2,6 +2,7 @@
 using KompasCore.Effects;
 using KompasCore.GameCore;
 using KompasServer.GameCore;
+using System.Threading.Tasks;
 using UnityEngine;
 
 
@@ -54,7 +55,7 @@ namespace KompasServer.Effects
         }
 
         #region resolution
-        public override void StartResolution(ActivationContext context)
+        public async Task StartResolution(ActivationContext context)
         {
             Debug.Log($"Resolving effect {EffectIndex} of {Source.CardName} in context {context}");
             serverGame.CurrEffect = this;

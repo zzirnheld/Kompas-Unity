@@ -4,6 +4,7 @@ using KompasServer.GameCore;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace KompasServer.Effects
@@ -74,7 +75,7 @@ namespace KompasServer.Effects
             ServerController.ServerNotifier.GetHandSizeChoices(cardIds, listRestrictionJson);
         }
 
-        public void StartResolution(ActivationContext context) => RequestTargets();
+        public async Task StartResolution(ActivationContext context) => RequestTargets();
 
         public void TryAnswer(int[] cardIds)
         {

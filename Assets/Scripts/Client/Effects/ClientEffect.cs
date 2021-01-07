@@ -54,7 +54,7 @@ namespace KompasClient.Effects
             ClientGame.clientUICtrl.clientStackUICtrl.Add(Source.simpleSprite, Source.CardName, blurb);
         }
 
-        public override void StartResolution(ActivationContext context)
+        public void StartResolution(ActivationContext context)
         {
             ClientGame.clientUICtrl.SetCurrState($"Resolving Effect of {Source.CardName}", $"{blurb}");
             targetsList.Clear();

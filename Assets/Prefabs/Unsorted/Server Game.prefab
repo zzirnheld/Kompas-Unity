@@ -457,6 +457,7 @@ MonoBehaviour:
   serverGame: {fileID: 3349460599440499645}
   ServerNetworkCtrl: {fileID: 3349460600183653181}
   ServerNotifier: {fileID: 3349460600183653180}
+  serverAwaiter: {fileID: 3880283263965619043}
 --- !u!1 &3349460599439595599
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,6 +824,7 @@ MonoBehaviour:
   serverGame: {fileID: 3349460599440499645}
   ServerNetworkCtrl: {fileID: 3349460599522625673}
   ServerNotifier: {fileID: 3349460599522625671}
+  serverAwaiter: {fileID: 8650473152113250034}
 --- !u!1 &3349460600183653179
 GameObject:
   m_ObjectHideFlags: 0

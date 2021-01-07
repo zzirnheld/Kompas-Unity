@@ -13,6 +13,7 @@ namespace KompasServer.GameCore
         public ServerGame serverGame;
         public ServerNetworkController ServerNetworkCtrl;
         public ServerNotifier ServerNotifier;
+        public ServerAwaiter serverAwaiter;
 
         public override Player Enemy => ServerEnemy;
 

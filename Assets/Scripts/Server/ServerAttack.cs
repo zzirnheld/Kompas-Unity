@@ -1,6 +1,7 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasServer.GameCore;
+using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
@@ -43,7 +44,7 @@ namespace KompasServer.Effects
             }
         }
 
-        public void StartResolution(ActivationContext context)
+        public async Task StartResolution(ActivationContext context)
         {
             //deal the damage
             if (StillValidAttack) DealDamage();

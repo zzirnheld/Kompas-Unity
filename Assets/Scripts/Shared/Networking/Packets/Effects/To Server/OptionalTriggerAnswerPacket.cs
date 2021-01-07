@@ -25,6 +25,6 @@ namespace KompasServer.Networking
     public class OptionalTriggerAnswerServerPacket : OptionalTriggerAnswerPacket, IServerOrderPacket
     {
         public void Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
-            => serverGame.EffectsController.OptionalTriggerAnswered(answer, player);
+            => awaiter.OptionalTriggerAnswer = answer;
     }
 }

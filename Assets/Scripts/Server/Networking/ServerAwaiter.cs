@@ -1,5 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Networking;
+using KompasServer.Effects;
 using KompasServer.Networking;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,34 +11,71 @@ using UnityEngine;
 namespace KompasServer.Networking {
     public class ServerAwaiter : MonoBehaviour
     {
+        private const int DefaultDelay = 100;
         private const int TargetCheckDelay = 100;
 
         public ServerNotifier serverNotifier;
         public ServerNetworkController serverNetCtrl;
 
-        private Dictionary<string, Queue<Packet>> packets;
+        #region awaited values
+        /*the following are properties so that later i can override the setter to 
+         * also signal a semaphore to awaken the relevant awaiting request. */
+        public bool? OptionalTriggerAnswer { get; set; }
+        public (int[] cardIds, int[] effIndices, int[] orders)? TriggerOrders { get; set; }
+        public GameCard CardTarget { get; set; }
+        #endregion awaited values
 
         #region locks
-        private readonly object packetDictLock = new object();
+        private readonly object OptionalTriggerLock = new object();
+        private readonly object TriggerOrderLock = new object();
+        private readonly object CardTargetLock = new object();
         #endregion locks
 
-        private Packet PacketForCommand(string command)
+        public async Task<bool> GetOptionalTriggerChoice(ServerTrigger trigger)
         {
-            if (packets.ContainsKey(command))
+            serverNotifier.AskForTrigger(trigger);
+            //TODO later use a semaphore or something to signal once packet is available
+            while (true)
             {
-                var q = packets[command];
-                if (q == null || q.Count == 0) return null;
-                else return q.Dequeue();
+                lock (OptionalTriggerLock)
+                {
+                    if (OptionalTriggerAnswer.HasValue)
+                    {
+                        bool answer = OptionalTriggerAnswer.Value;
+                        OptionalTriggerAnswer = null;
+                        return answer;
+                    }
+                }
+                
+                await Task.Delay(DefaultDelay); 
             }
-            else return null;
         }
 
-        public void EnqueuePacket(Packet p)
+        public async Task GetTriggerOrder(IEnumerable<ServerTrigger> triggers)
         {
-            lock (packetDictLock)
+            serverNotifier.GetTriggerOrder(triggers);
+            while (true)
             {
-                if (packets[p.command] == null) packets[p.command] = new Queue<Packet>();
-                packets[p.command].Enqueue(p);
+                lock (TriggerOrderLock)
+                {
+                    if (TriggerOrders.HasValue)
+                    {
+                        (int[] cardIds, int[] effIndices, int[] orders) = TriggerOrders.Value;
+                        for (int i = 0; i < effIndices.Length; i++)
+                        {
+                            //TODO deal with garbage values here
+                            var card = serverNetCtrl.sGame.GetCardWithID(cardIds[i]);
+                            if (card == null) continue;
+                            if (card.Effects.ElementAt(effIndices[i]).Trigger is ServerTrigger trigger)
+                                trigger.Order = orders[i];
+                        }
+
+                        TriggerOrders = null;
+                        return;
+                    }
+                }
+                
+                await Task.Delay(DefaultDelay);
             }
         }
 
@@ -46,9 +84,17 @@ namespace KompasServer.Networking {
             serverNotifier.GetCardTarget(sourceCardName, blurb, ids, listRestrictionJson);
             while (true)
             {
-                var packet = PacketForCommand(Packet.CardTargetChosen);
-                if (packet is CardTargetServerPacket p) return p.Target;
-                else await Task.Delay(TargetCheckDelay);
+                lock (CardTargetLock)
+                {
+                    if (CardTarget != null)
+                    {
+                        var target = CardTarget;
+                        CardTarget = null;
+                        return target;
+                    }
+                }
+
+                await Task.Delay(TargetCheckDelay);
             }
         }
     }
