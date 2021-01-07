@@ -18,6 +18,7 @@ namespace KompasServer.Effects
         //card movement failure
         public const string AnnihilationFailed = "Target couldn't be annihilated";
         public const string AttachFailed = "Attach as augment failed";
+        public const string BottomdeckFailed = "Bottomdeck failed";
         #endregion reasons for impossible
 
         public override Player Controller => EffectController;

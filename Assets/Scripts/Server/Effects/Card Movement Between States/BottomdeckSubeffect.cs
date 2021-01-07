@@ -1,12 +1,14 @@
-﻿namespace KompasServer.Effects
+﻿using System.Threading.Tasks;
+
+namespace KompasServer.Effects
 {
     public class BottomdeckSubeffect : CardChangeStateSubeffect
     {
-        public override bool Resolve()
+        public override async Task<ResolutionInfo> Resolve()
         {
-            if (Target != null && Target.Bottomdeck(Target.Owner, Effect))
-                return ServerEffect.ResolveNextSubeffect();
-            else return ServerEffect.EffectImpossible();
+            if (Target == null) return ResolutionInfo.Impossible(TargetWasNull);
+            else if (Target.Bottomdeck(Target.Owner, Effect)) return ResolutionInfo.Next;
+            else return ResolutionInfo.Impossible(BottomdeckFailed);
         }
     }
 }
