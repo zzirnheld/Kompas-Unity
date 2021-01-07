@@ -1,10 +1,12 @@
-﻿namespace KompasServer.Effects
+﻿using System.Threading.Tasks;
+
+namespace KompasServer.Effects
 {
     public class EndResolutionSubeffect : ServerSubeffect
     {
-        public override bool Resolve()
+        public override Task<ResolutionInfo> Resolve()
         {
-            return ServerEffect.ResolveSubeffect(ServerEffect.Subeffects.Length);
+            return Task.FromResult(ResolutionInfo.End(EndOnPurpose));
         }
     }
 }

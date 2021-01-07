@@ -32,11 +32,7 @@ namespace KompasServer.Networking
         {
             var choices = cardIds.Select(c => serverGame.GetCardWithID(c)).Where(c => c != null).Distinct();
 
-            var currSubeff = serverGame.CurrEffect?.CurrSubeffect;
-            if (currSubeff is ChooseFromListSubeffect listEff)
-                listEff.AddListIfLegal(choices);
-            else if (currSubeff is CardTargetSubeffect deckTargetSubeffect)
-                deckTargetSubeffect.AddTargetIfLegal(choices.FirstOrDefault());
+            awaiter.CardListTargets = choices;
         }
     }
 }

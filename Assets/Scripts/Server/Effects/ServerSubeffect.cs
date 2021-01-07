@@ -15,6 +15,7 @@ namespace KompasServer.Effects
         public const string TargetAlreadyThere = "Target was already in the place to move it to";
         public const string NoValidCardTarget = "No valid card to target";
         public const string ChangedStatsOfCardOffBoard = "Can't change stats of card not on the board";
+        public const string EndOnPurpose = "Ended early on purpose";
 
         //card movement failure
         public const string AnnihilationFailed = "Target couldn't be annihilated";

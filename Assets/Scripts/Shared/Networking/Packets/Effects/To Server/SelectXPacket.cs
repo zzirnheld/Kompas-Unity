@@ -25,11 +25,6 @@ namespace KompasServer.Networking
     public class SelectXServerPacket : SelectXPacket, IServerOrderPacket
     {
         public void Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
-        {
-            var currSubeff = serverGame.CurrEffect?.CurrSubeffect;
-
-            if (currSubeff is PlayerChooseXSubeffect chooseXSubeffect)
-                chooseXSubeffect.SetXIfLegal(x);
-        }
+            => awaiter.PlayerXChoice = x;
     }
 }

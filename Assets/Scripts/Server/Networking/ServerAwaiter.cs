@@ -24,6 +24,7 @@ namespace KompasServer.Networking {
         public (int[] cardIds, int[] effIndices, int[] orders)? TriggerOrders { get; set; }
 
         public int? EffOption { get; set; }
+        public int? PlayerXChoice { get; set; }
 
         public GameCard CardTarget { get; set; }
         public IEnumerable<GameCard> CardListTargets { get; set; }
@@ -34,6 +35,7 @@ namespace KompasServer.Networking {
         private readonly object TriggerOrderLock = new object();
 
         private readonly object EffectOptionsLock = new object();
+        private readonly object PlayerChooseXLock = new object();
 
         private readonly object CardTargetLock = new object();
         private readonly object CardListTargetsLock = new object();
@@ -101,6 +103,25 @@ namespace KompasServer.Networking {
                     {
                         int val = EffOption.Value;
                         EffOption = null;
+                        return val;
+                    }
+                }
+
+                await Task.Delay(DefaultDelay);
+            }
+        }
+
+        public async Task<int> GetPlayerXValue()
+        {
+            serverNotifier.GetXForEffect();
+            while (true)
+            {
+                lock (PlayerChooseXLock)
+                {
+                    if (PlayerXChoice.HasValue)
+                    {
+                        int val = PlayerXChoice.Value;
+                        PlayerXChoice = null;
                         return val;
                     }
                 }
