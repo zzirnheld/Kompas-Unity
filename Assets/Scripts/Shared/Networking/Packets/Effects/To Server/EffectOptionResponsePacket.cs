@@ -24,7 +24,7 @@ namespace KompasServer.Networking
 {
     public class EffectOptionResponseServerPacket : EffectOptionResponsePacket, IServerOrderPacket
     {
-        public void Execute(ServerGame serverGame, ServerPlayer player)
+        public void Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
         {
             if (serverGame.CurrEffect?.CurrSubeffect is ChooseOptionSubeffect optionSubeff) 
                 optionSubeff.ChooseOption(option);

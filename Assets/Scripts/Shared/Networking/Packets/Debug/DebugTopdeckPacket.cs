@@ -22,7 +22,7 @@ namespace KompasServer.Networking
 {
     public class DebugTopdeckServerPacket : DebugTopdeckPacket, IServerOrderPacket
     {
-        public void Execute(ServerGame serverGame, ServerPlayer player)
+        public void Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
         {
             var card = serverGame.GetCardWithID(cardId);
             if (card == null) return;

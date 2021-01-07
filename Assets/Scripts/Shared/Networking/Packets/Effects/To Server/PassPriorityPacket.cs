@@ -17,7 +17,7 @@ namespace KompasServer.Networking
 {
     public class PassPriorityServerPacket : PassPriorityPacket, IServerOrderPacket
     {
-        public void Execute(ServerGame serverGame, ServerPlayer player)
+        public void Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
         {
             player.passedPriority = true;
             serverGame.EffectsController.CheckForResponse(reset: false);

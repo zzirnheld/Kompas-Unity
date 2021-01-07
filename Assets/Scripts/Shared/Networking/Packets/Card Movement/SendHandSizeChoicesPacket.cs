@@ -27,7 +27,7 @@ namespace KompasServer.Networking
 {
     public class SendHandSizeChoicesServerPacket : SendHandSizeChoicesPacket, IServerOrderPacket
     {
-        public void Execute(ServerGame serverGame, ServerPlayer player)
+        public void Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
         {
             if(serverGame.EffectsController.CurrStackEntry is ServerHandSizeStackable stackable)
             {

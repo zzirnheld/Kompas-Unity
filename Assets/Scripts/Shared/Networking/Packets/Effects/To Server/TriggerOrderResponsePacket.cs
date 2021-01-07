@@ -31,7 +31,7 @@ namespace KompasServer.Networking
 {
     public class TriggerOrderResponseServerPacket : TriggerOrderResponsePacket, IServerOrderPacket
     {
-        public void Execute(ServerGame serverGame, ServerPlayer player)
+        public void Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
         {
             for(int i = 0; i < cardIds.Length; i++)
             {

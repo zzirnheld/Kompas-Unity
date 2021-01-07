@@ -26,7 +26,7 @@ namespace KompasServer.Networking
 {
     public class SpaceTargetServerPacket : SpaceTargetPacket, IServerOrderPacket
     {
-        public void Execute(ServerGame serverGame, ServerPlayer player)
+        public void Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
         {
             var currSubeff = serverGame.CurrEffect?.CurrSubeffect;
             if(player.index != 0)

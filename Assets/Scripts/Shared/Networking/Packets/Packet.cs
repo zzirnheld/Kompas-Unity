@@ -165,6 +165,6 @@ namespace KompasServer.Networking
         /// </summary>
         /// <param name="serverGame">The server game to apply the packet to.</param>
         /// <param name="player">The player who this packet came from.</param>
-        void Execute(ServerGame serverGame, ServerPlayer player);
+        void Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter);
     }
 }

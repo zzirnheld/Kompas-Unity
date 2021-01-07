@@ -24,8 +24,15 @@ namespace KompasServer.Networking
 {
     public class CardTargetServerPacket : CardTargetPacket, IServerOrderPacket
     {
-        public void Execute(ServerGame serverGame, ServerPlayer player)
+        private ServerGame serverGame;
+
+        public GameCard Target => serverGame?.GetCardWithID(cardId);
+
+        public void Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
         {
+            this.serverGame = serverGame;
+            awaiter.EnqueuePacket(this);
+            /*
             var currSubeff = serverGame.CurrEffect?.CurrSubeffect;
             var card = serverGame.GetCardWithID(cardId);
 
@@ -34,7 +41,7 @@ namespace KompasServer.Networking
             if (currSubeff is CardTargetSubeffect cardTargetSubeffect)
                 cardTargetSubeffect.AddTargetIfLegal(card);
             else if (currSubeff is ChooseFromListSubeffect listSubeffect)
-                listSubeffect.AddListIfLegal(new GameCard[] { card });
+                listSubeffect.AddListIfLegal(new GameCard[] { card });*/
         }
     }
 }

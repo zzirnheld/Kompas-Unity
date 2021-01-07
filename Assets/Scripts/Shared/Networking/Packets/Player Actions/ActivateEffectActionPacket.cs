@@ -26,7 +26,7 @@ namespace KompasServer.Networking
 {
     public class ActivateEffectActionServerPacket : ActivateEffectActionPacket, IServerOrderPacket
     {
-        public void Execute(ServerGame serverGame, ServerPlayer player)
+        public void Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
         {
             var card = serverGame.GetCardWithID(cardId);
             if (card == null) return;

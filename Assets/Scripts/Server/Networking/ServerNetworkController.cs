@@ -14,6 +14,7 @@ namespace KompasServer.Networking
         public ServerPlayer Player;
         public ServerGame sGame;
         public ServerNotifier ServerNotifier;
+        public ServerAwaiter serverAwaiter;
 
         private IServerOrderPacket FromJson(string command, string json)
         {
@@ -66,7 +67,7 @@ namespace KompasServer.Networking
             //Debug.Log($"Processing {packetInfo.json} from {Player.index}");
 
             var packet = FromJson(packetInfo.command, packetInfo.json);
-            packet.Execute(sGame, Player);
+            packet.Execute(sGame, Player, serverAwaiter);
         }
     }
 }

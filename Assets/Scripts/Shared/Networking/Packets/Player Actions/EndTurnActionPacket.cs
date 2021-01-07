@@ -15,7 +15,7 @@ namespace KompasServer.Networking
 {
     public class EndTurnActionServerPacket : EndTurnActionPacket, IServerOrderPacket
     {
-        public void Execute(ServerGame serverGame, ServerPlayer player)
+        public void Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
         {
             player.TryEndTurn();
         }

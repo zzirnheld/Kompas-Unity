@@ -23,6 +23,6 @@ namespace KompasServer.Networking
 {
     public class SetDeckServerPacket : SetDeckPacket, IServerOrderPacket
     {
-        public void Execute(ServerGame serverGame, ServerPlayer player) => serverGame.SetDeck(player, decklist);
+        public void Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter) => serverGame.SetDeck(player, decklist);
     }
 }

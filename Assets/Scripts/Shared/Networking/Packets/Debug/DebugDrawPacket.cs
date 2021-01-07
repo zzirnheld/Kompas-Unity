@@ -15,7 +15,7 @@ namespace KompasServer.Networking
 {
     public class DebugDrawServerPacket : DebugDrawPacket, IServerOrderPacket
     {
-        public void Execute(ServerGame serverGame, ServerPlayer player)
+        public void Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
         {
             if (serverGame.uiCtrl.DebugMode)
             {
