@@ -23,7 +23,7 @@ namespace KompasServer.Effects
         protected virtual async Task<GameCard> GetTargets(int[] potentialTargetIds)
         {
             Debug.Log($"Asking for card target among ids {string.Join(", ", potentialTargetIds)}");
-            return await ServerEffect.ServerController.serverAwaiter.GetCardTarget(Source.CardName, cardRestriction.blurb, potentialTargetIds, null);
+            return await ServerPlayer.serverAwaiter.GetCardTarget(Source.CardName, cardRestriction.blurb, potentialTargetIds, null);
         }
 
         public override async Task<ResolutionInfo> Resolve()

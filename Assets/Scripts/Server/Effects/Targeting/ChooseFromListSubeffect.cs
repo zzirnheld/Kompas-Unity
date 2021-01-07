@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using KompasCore.Cards;
 using KompasCore.Effects;
 using UnityEngine;
@@ -26,16 +27,6 @@ namespace KompasServer.Effects
 
         protected IEnumerable<GameCard> potentialTargets;
 
-        protected void RequestTargets()
-        {
-            string name = Source.CardName;
-            string blurb = cardRestriction.blurb;
-            int[] targetIds = potentialTargets.Select(c => c.ID).ToArray();
-            listRestriction.PrepareForSending(Effect.X);
-            Debug.Log($"Potential targets {string.Join(", ", targetIds)}");
-            ServerPlayer.ServerNotifier.GetCardTarget(name, blurb, targetIds, JsonUtility.ToJson(listRestriction));
-        }
-
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
@@ -43,6 +34,16 @@ namespace KompasServer.Effects
             cardRestriction.Initialize(this);
             listRestriction = listRestriction ?? ListRestriction.Default;
             listRestriction.Initialize(this);
+        }
+
+        protected async Task<IEnumerable<GameCard>> RequestTargets()
+        {
+            string name = Source.CardName;
+            string blurb = cardRestriction.blurb;
+            int[] targetIds = potentialTargets.Select(c => c.ID).ToArray();
+            listRestriction.PrepareForSending(Effect.X);
+            Debug.Log($"Potential targets {string.Join(", ", targetIds)}");
+            return await ServerPlayer.serverAwaiter.GetCardListTargets(name, blurb, targetIds, JsonUtility.ToJson(listRestriction));
         }
 
         private IEnumerable<GameCard> GetPossibleTargets()
@@ -60,9 +61,10 @@ namespace KompasServer.Effects
             }
         }
 
-        protected virtual bool NoPossibleTargets() => ServerEffect.EffectImpossible();
+        protected virtual Task<ResolutionInfo> NoPossibleTargets()
+            => Task.FromResult(ResolutionInfo.Impossible(NoValidCardTarget));
 
-        public override bool Resolve()
+        public override async Task<ResolutionInfo> Resolve()
         {
             potentialTargets = GetPossibleTargets();
             //if there's no possible valid combo, throw effect impossible
@@ -70,11 +72,16 @@ namespace KompasServer.Effects
             {
                 Debug.Log($"List restriction {listRestriction} finds no possible list of targets among potential targets" +
                     $"{string.Join(",", potentialTargets.Select(c => c.CardName))}");
-                return NoPossibleTargets();
+                return await NoPossibleTargets();
             }
 
-            RequestTargets();
-            return false;
+            IEnumerable<GameCard> targets = null;
+            while (!AddListIfLegal(targets))
+            {
+                targets = await RequestTargets();
+            }
+
+            return ResolutionInfo.Next;
         }
 
         protected virtual void AddList(IEnumerable<GameCard> choices)
@@ -86,17 +93,13 @@ namespace KompasServer.Effects
         {
             Debug.Log($"Potentially adding list {string.Join(",", choices)}");
 
-            if (!listRestriction.Evaluate(choices, potentialTargets))
-            {
-                RequestTargets();
-                return false;
-            }
+            if (!listRestriction.Evaluate(choices, potentialTargets)) return false;
 
             //add all cards in the chosen list to targets
             AddList(choices);
             //everything's cool
             ServerPlayer.ServerNotifier.AcceptTarget();
-            return ServerEffect.ResolveNextSubeffect();
+            return true;
         }
 
     }

@@ -14,6 +14,7 @@ namespace KompasServer.Effects
         public const string TargetWasNull = "No target to affect";
         public const string TargetAlreadyThere = "Target was already in the place to move it to";
         public const string NoValidCardTarget = "No valid card to target";
+        public const string ChangedStatsOfCardOffBoard = "Can't change stats of card not on the board";
 
         //card movement failure
         public const string AnnihilationFailed = "Target couldn't be annihilated";

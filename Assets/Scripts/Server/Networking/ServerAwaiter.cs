@@ -23,12 +23,14 @@ namespace KompasServer.Networking {
         public bool? OptionalTriggerAnswer { get; set; }
         public (int[] cardIds, int[] effIndices, int[] orders)? TriggerOrders { get; set; }
         public GameCard CardTarget { get; set; }
+        public IEnumerable<GameCard> CardListTargets { get; set; }
         #endregion awaited values
 
         #region locks
         private readonly object OptionalTriggerLock = new object();
         private readonly object TriggerOrderLock = new object();
         private readonly object CardTargetLock = new object();
+        private readonly object CardListTargetsLock = new object();
         #endregion locks
 
         public async Task<bool> GetOptionalTriggerChoice(ServerTrigger trigger)
@@ -91,6 +93,25 @@ namespace KompasServer.Networking {
                         var target = CardTarget;
                         CardTarget = null;
                         return target;
+                    }
+                }
+
+                await Task.Delay(TargetCheckDelay);
+            }
+        }
+
+        public async Task<IEnumerable<GameCard>> GetCardListTargets(string sourceCardName, string blurb, int[] ids, string listRestructionJson)
+        {
+            serverNotifier.GetCardTarget(sourceCardName, blurb, ids, listRestructionJson);
+            while (true)
+            {
+                lock (CardListTargetsLock)
+                {
+                    if(CardListTargets != null)
+                    {
+                        var targets = CardListTargets;
+                        CardListTargets = null;
+                        return targets;
                     }
                 }
 

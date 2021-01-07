@@ -1,6 +1,7 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
@@ -23,13 +24,13 @@ namespace KompasServer.Effects
             cardRestriction.Initialize(this);
         }
 
-        public override bool Resolve()
+        public override Task<ResolutionInfo> Resolve()
         {
             var targets = ServerGame.Cards.Where(c => cardRestriction.Evaluate(c));
             var stats = (NVal, EVal, SVal, WVal, CVal, AVal);
             foreach (var c in targets) c.AddToStats(stats, Effect);
 
-            return ServerEffect.ResolveNextSubeffect();
+            return Task.FromResult(ResolutionInfo.Next);
         }
     }
 }

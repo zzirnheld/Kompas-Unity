@@ -1,4 +1,6 @@
-﻿namespace KompasServer.Effects
+﻿using System.Threading.Tasks;
+
+namespace KompasServer.Effects
 {
     [System.Serializable]
     public class ChangeCardStatsSubeffect : ServerSubeffect
@@ -34,13 +36,14 @@
         public int AVal => ServerEffect.X * aMult / aDiv + aMod;
         public (int, int, int, int, int, int) StatValues => (NVal, EVal, SVal, WVal, CVal, AVal);
 
-        public override bool Resolve()
+        public override Task<ResolutionInfo> Resolve()
         {
-            if (Target == null) return ServerEffect.EffectImpossible();
-            if (forbidNotBoard && Target.Location != CardLocation.Field) return ServerEffect.EffectImpossible();
+            if (Target == null) return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
+            if (forbidNotBoard && Target.Location != CardLocation.Field)
+                return Task.FromResult(ResolutionInfo.Impossible(ChangedStatsOfCardOffBoard));
 
             Target.AddToStats(StatValues, Effect);
-            return ServerEffect.ResolveNextSubeffect();
+            return Task.FromResult(ResolutionInfo.Next);
         }
     }
 }
