@@ -1,5 +1,6 @@
 ﻿using KompasCore.Effects;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
@@ -48,10 +49,10 @@ namespace KompasServer.Effects
             }
         }
 
-        public override bool Resolve()
+        public override Task<ResolutionInfo> Resolve()
         {
-            if (ShouldEnd(condition)) return ServerEffect.EndResolution();
-            else return ServerEffect.ResolveNextSubeffect();
+            if (ShouldEnd(condition)) return Task.FromResult(ResolutionInfo.End(condition));
+            else return Task.FromResult(ResolutionInfo.Next);
         }
     }
 }

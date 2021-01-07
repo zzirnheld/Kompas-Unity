@@ -1,11 +1,13 @@
-﻿namespace KompasServer.Effects
+﻿using System.Threading.Tasks;
+
+namespace KompasServer.Effects
 {
     public class DeleteTargetSubeffect : ServerSubeffect
     {
-        public override bool Resolve()
+        public override Task<ResolutionInfo> Resolve()
         {
-            if (RemoveTarget()) return ServerEffect.ResolveNextSubeffect();
-            else return ServerEffect.EffectImpossible();
+            if (RemoveTarget()) return Task.FromResult(ResolutionInfo.Next);
+            else return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
         }
     }
 }

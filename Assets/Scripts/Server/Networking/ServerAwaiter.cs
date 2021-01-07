@@ -22,6 +22,9 @@ namespace KompasServer.Networking {
          * also signal a semaphore to awaken the relevant awaiting request. */
         public bool? OptionalTriggerAnswer { get; set; }
         public (int[] cardIds, int[] effIndices, int[] orders)? TriggerOrders { get; set; }
+
+        public int? EffOption { get; set; }
+
         public GameCard CardTarget { get; set; }
         public IEnumerable<GameCard> CardListTargets { get; set; }
         #endregion awaited values
@@ -29,10 +32,14 @@ namespace KompasServer.Networking {
         #region locks
         private readonly object OptionalTriggerLock = new object();
         private readonly object TriggerOrderLock = new object();
+
+        private readonly object EffectOptionsLock = new object();
+
         private readonly object CardTargetLock = new object();
         private readonly object CardListTargetsLock = new object();
         #endregion locks
 
+        #region trigger things
         public async Task<bool> GetOptionalTriggerChoice(ServerTrigger trigger)
         {
             serverNotifier.AskForTrigger(trigger);
@@ -80,7 +87,30 @@ namespace KompasServer.Networking {
                 await Task.Delay(DefaultDelay);
             }
         }
+        #endregion trigger things
 
+        #region effect flow control
+        public async Task<int> GetEffectOption(string cardName, string choiceBlurb, string[] optionBlurbs)
+        {
+            serverNotifier.ChooseEffectOption(cardName, choiceBlurb, optionBlurbs);
+            while (true)
+            {
+                lock (EffectOptionsLock)
+                {
+                    if (EffOption.HasValue)
+                    {
+                        int val = EffOption.Value;
+                        EffOption = null;
+                        return val;
+                    }
+                }
+
+                await Task.Delay(DefaultDelay);
+            }
+        }
+        #endregion effect flow control
+
+        #region targeting
         public async Task<GameCard> GetCardTarget(string sourceCardName, string blurb, int[] ids, string listRestrictionJson)
         {
             serverNotifier.GetCardTarget(sourceCardName, blurb, ids, listRestrictionJson);
@@ -118,5 +148,6 @@ namespace KompasServer.Networking {
                 await Task.Delay(TargetCheckDelay);
             }
         }
+        #endregion targeting
     }
 }
