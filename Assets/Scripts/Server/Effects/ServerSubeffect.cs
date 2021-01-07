@@ -10,6 +10,16 @@ namespace KompasServer.Effects
     [System.Serializable]
     public abstract class ServerSubeffect : Subeffect
     {
+        #region reasons for impossible
+        public const string TargetWasNull = "No target to affect";
+        public const string TargetAlreadyThere = "Target was already in the place to move it to";
+        public const string NoValidCardTarget = "No valid card to target";
+
+        //card movement failure
+        public const string AnnihilationFailed = "Target couldn't be annihilated";
+        public const string AttachFailed = "Attach as augment failed";
+        #endregion reasons for impossible
+
         public override Player Controller => EffectController;
         public override Effect Effect => ServerEffect;
         public override Game Game => ServerGame;

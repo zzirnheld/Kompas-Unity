@@ -1,15 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
     public class ActivateSubeffect : ServerSubeffect
     {
-        public override bool Resolve()
+        public override async Task<ResolutionInfo> Resolve()
         {
             Target.SetActivated(true, Effect);
-            return ServerEffect.ResolveNextSubeffect();
+            return ResolutionInfo.Next;
         }
     }
 }

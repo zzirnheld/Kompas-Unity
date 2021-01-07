@@ -1,4 +1,6 @@
-﻿namespace KompasServer.Effects
+﻿using System.Threading.Tasks;
+
+namespace KompasServer.Effects
 {
     public class AttachSubeffect : ServerSubeffect
     {
@@ -6,15 +8,15 @@
         //default is two targets ago
         public int attachmentTarget = -2;
 
-        public override bool Resolve()
+        public override async Task<ResolutionInfo> Resolve()
         {
             var toAttach = Target;
             var attachTo = Effect.GetTarget(attachmentTarget);
 
             //if everything goes to plan, resolve the next subeffect
-            if (toAttach != null && attachTo != null && attachTo.AddAugment(toAttach, Effect))
-                return ServerEffect.ResolveNextSubeffect();
-            else return ServerEffect.EffectImpossible();
+            if (toAttach == null || attachTo == null) return ResolutionInfo.Impossible(TargetWasNull);
+            else if (attachTo.AddAugment(toAttach, Effect)) return ResolutionInfo.Next;
+            else return ResolutionInfo.Impossible(AttachFailed);
         }
     }
 }
