@@ -1,17 +1,18 @@
 ﻿using KompasCore.Effects;
+using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
     public class TargetDefenderSubeffect : ServerSubeffect
     {
-        public override bool Resolve()
+        public override Task<ResolutionInfo> Resolve()
         {
             if (ServerEffect.CurrActivationContext.Stackable is Attack attack)
             {
                 ServerEffect.AddTarget(attack.defender);
-                return ServerEffect.ResolveNextSubeffect();
+                return Task.FromResult(ResolutionInfo.Next);
             }
-            else return ServerEffect.EffectImpossible();
+            else return Task.FromResult(ResolutionInfo.Impossible(NoValidCardTarget));
         }
     }
 }
