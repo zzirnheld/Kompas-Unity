@@ -17,6 +17,9 @@ namespace KompasServer.Effects
         public const string ChangedStatsOfCardOffBoard = "Can't change stats of card not on the board";
         public const string EndOnPurpose = "Ended early on purpose";
 
+        public const string CantAffordPips = "Can't afford pips";
+        public const string CantAffordStats = "Can't afford stats";
+
         //card movement failure
         public const string AnnihilationFailed = "Target couldn't be annihilated";
         public const string AttachFailed = "Attach as augment failed";

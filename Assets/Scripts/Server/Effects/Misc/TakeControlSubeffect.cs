@@ -1,4 +1,6 @@
-﻿namespace KompasServer.Effects
+﻿using System.Threading.Tasks;
+
+namespace KompasServer.Effects
 {
     public class TakeControlSubeffect : ServerSubeffect
     {
@@ -7,10 +9,10 @@
         //TODO abstract this logic into a parent class with other player offset things
         private Player NewController => ServerGame.Players[(EffectController.index + ControllerIndexOffset) % ServerGame.Players.Length];
 
-        public override bool Resolve()
+        public override Task<ResolutionInfo> Resolve()
         {
             Target.Controller = NewController;
-            return ServerEffect.ResolveNextSubeffect();
+            return Task.FromResult(ResolutionInfo.Next);
         }
     }
 }

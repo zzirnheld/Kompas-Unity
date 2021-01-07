@@ -1,4 +1,6 @@
-﻿namespace KompasServer.Effects
+﻿using System.Threading.Tasks;
+
+namespace KompasServer.Effects
 {
     public class SetXSubeffect : ServerSubeffect
     {
@@ -8,10 +10,10 @@
 
         public bool change = false;
 
-        public override bool Resolve()
+        public override Task<ResolutionInfo> Resolve()
         {
             Effect.X = TrueCount;
-            return ServerEffect.ResolveNextSubeffect();
+            return Task.FromResult(ResolutionInfo.Next);
         }
     }
 }

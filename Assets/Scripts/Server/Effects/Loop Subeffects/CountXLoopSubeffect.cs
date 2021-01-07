@@ -1,4 +1,6 @@
-﻿namespace KompasServer.Effects
+﻿using System.Threading.Tasks;
+
+namespace KompasServer.Effects
 {
     public class CountXLoopSubeffect : LoopSubeffect
     {
@@ -22,6 +24,6 @@
         }
 
         //Specifically for this type of loop, if another target isn't found, that's when we exit the loop
-        public override bool OnImpossible() => ExitLoop();
+        public override Task<ResolutionInfo> OnImpossible(string why) => ExitLoop();
     }
 }

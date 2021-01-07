@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Threading.Tasks;
+using UnityEngine;
 
 namespace KompasServer.Effects
 {
@@ -19,7 +20,7 @@ namespace KompasServer.Effects
 
         protected virtual bool ShouldContinueLoop => true;
 
-        public override bool Resolve()
+        public override Task<ResolutionInfo> Resolve()
         {
             //loop again if necessary
             Debug.Log($"im in ur loop of type {GetType()}, the one that jumps to {jumpTo}");
@@ -31,7 +32,7 @@ namespace KompasServer.Effects
                     ServerPlayer.ServerNotifier.EnableDecliningTarget();
                     ServerEffect.OnImpossible = this;
                 }
-                return ServerEffect.ResolveSubeffect(jumpTo);
+                return Task.FromResult(ResolutionInfo.Index(jumpTo));
             }
             else return ExitLoop();
         }
@@ -39,7 +40,7 @@ namespace KompasServer.Effects
         /// <summary>
         /// Cancels the loop (because the player declined another target, or because there are no more valid targets)
         /// </summary>
-        public bool ExitLoop()
+        public Task<ResolutionInfo> ExitLoop()
         {
             //let parent know the loop is over
             if (ServerEffect.OnImpossible == this) ServerEffect.OnImpossible = null;
@@ -49,13 +50,13 @@ namespace KompasServer.Effects
 
             //then skip to after the loop (exitloop will sometimes be called while the effect is waiting on a target,
             //on a subeffect that isn't this one. resolvenext won't work in that situation.
-            return ServerEffect.ResolveSubeffect(SubeffIndex + 1);
+            return Task.FromResult(ResolutionInfo.Index(SubeffIndex + 1));
         }
 
-        public override bool OnImpossible()
+        public override Task<ResolutionInfo> OnImpossible(string why)
         {
             if (canDecline) return ExitLoop();
-            else return base.OnImpossible();
+            else return base.OnImpossible(why);
         }
     }
 }
