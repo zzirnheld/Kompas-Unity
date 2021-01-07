@@ -60,6 +60,7 @@ namespace KompasServer.Networking
 
         protected override async void Update()
         {
+            //Debug.Log("SERVER NET CTRL UPDATE");
             base.Update();
             if (packets.Count != 0) await ProcessPacket(packets.Dequeue());
         }
@@ -72,7 +73,7 @@ namespace KompasServer.Networking
                 return;
             }
 
-            //Debug.Log($"Processing {packetInfo.json} from {Player.index}");
+            Debug.Log($"Processing {packetInfo.json} from {Player.index}");
 
             var packet = FromJson(packetInfo.command, packetInfo.json);
             await packet.Execute(sGame, Player, serverAwaiter);

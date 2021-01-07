@@ -93,7 +93,7 @@ namespace KompasServer.Effects
 
         public bool AddListIfLegal(IEnumerable<GameCard> choices)
         {
-            Debug.Log($"Potentially adding list {string.Join(",", choices)}");
+            Debug.Log($"Potentially adding list {string.Join(",", choices ?? new List<GameCard>())}");
 
             if (!listRestriction.Evaluate(choices, potentialTargets)) return false;
 

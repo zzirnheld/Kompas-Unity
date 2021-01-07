@@ -30,7 +30,16 @@ namespace KompasServer.Networking {
         //TODO also make sure that when decline target is set, it also wakes up relevant targeting semaphores
         public bool DeclineTarget { get; set; }
         public GameCard CardTarget { get; set; }
-        public IEnumerable<GameCard> CardListTargets { get; set; }
+        private IEnumerable<GameCard> cardListTargets;
+        public IEnumerable<GameCard> CardListTargets
+        {
+            get => cardListTargets;
+            set
+            {
+                cardListTargets = value;
+                //Debug.Log($"Card list targets set to {(value == null ? "null" : string.Join(", ", value))}");
+            }
+        }
         public (int, int)? SpaceTarget { get; set; }
 
         public int[] HandSizeChoices { get; set; }
@@ -153,7 +162,7 @@ namespace KompasServer.Networking {
         public async Task<(GameCard target, bool declined)> GetCardTarget
             (string sourceCardName, string blurb, int[] ids, string listRestrictionJson)
         {
-            serverNotifier.GetCardTarget(sourceCardName, blurb, ids, listRestrictionJson);
+            serverNotifier.GetCardTarget(sourceCardName, blurb, ids, listRestrictionJson, list: false);
             while (true)
             {
                 lock (CardTargetLock)
@@ -164,7 +173,11 @@ namespace KompasServer.Networking {
                         CardTarget = null;
                         return (target, false);
                     }
-                    else if (DeclineTarget) return (null, true);
+                    else if (DeclineTarget)
+                    {
+                        DeclineTarget = false;
+                        return (null, true);
+                    }
                 }
 
                 await Task.Delay(TargetCheckDelay);
@@ -183,9 +196,10 @@ namespace KompasServer.Networking {
         public async Task<(IEnumerable<GameCard> chocies, bool declined)> GetCardListTargets
             (string sourceCardName, string blurb, int[] ids, string listRestructionJson)
         {
-            serverNotifier.GetCardTarget(sourceCardName, blurb, ids, listRestructionJson);
+            serverNotifier.GetCardTarget(sourceCardName, blurb, ids, listRestructionJson, list: true);
             while (true)
             {
+                //Debug.Log($"Checking if list present yet: {CardListTargets != null}");
                 lock (CardListTargetsLock)
                 {
                     if (CardListTargets != null)
@@ -194,7 +208,11 @@ namespace KompasServer.Networking {
                         CardListTargets = null;
                         return (targets, false);
                     }
-                    else if (DeclineTarget) return (null, true);
+                    else if (DeclineTarget)
+                    {
+                        DeclineTarget = false;
+                        return (null, true);
+                    }
                 }
 
                 await Task.Delay(TargetCheckDelay);
@@ -223,7 +241,11 @@ namespace KompasServer.Networking {
                         SpaceTarget = null;
                         return (space, false);
                     }
-                    else if (DeclineTarget) return (default, true);
+                    else if (DeclineTarget)
+                    {
+                        DeclineTarget = false;
+                        return (default, true);
+                    }
                 }
 
                 await Task.Delay(TargetCheckDelay);
