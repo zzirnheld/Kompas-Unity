@@ -159,7 +159,7 @@ namespace KompasServer.Networking {
         /// <param name="listRestrictionJson">The list resriction, if any</param>
         /// <returns>The card the person chose and false if they chose a target;<br></br>
         /// null and true if they declined to choose a target</returns>
-        public async Task<(GameCard target, bool declined)> GetCardTarget
+        public async Task<GameCard> GetCardTarget
             (string sourceCardName, string blurb, int[] ids, string listRestrictionJson)
         {
             serverNotifier.GetCardTarget(sourceCardName, blurb, ids, listRestrictionJson, list: false);
@@ -171,12 +171,12 @@ namespace KompasServer.Networking {
                     {
                         var target = CardTarget;
                         CardTarget = null;
-                        return (target, false);
+                        return target;
                     }
                     else if (DeclineTarget)
                     {
                         DeclineTarget = false;
-                        return (null, true);
+                        return null;
                     }
                 }
 
@@ -193,7 +193,7 @@ namespace KompasServer.Networking {
         /// <param name="listRestrictionJson">The list resriction, if any</param>
         /// <returns>The cards the person chose and false if they chose targets;<br></br>
         /// null and true if they declined to choose targets</returns>
-        public async Task<(IEnumerable<GameCard> chocies, bool declined)> GetCardListTargets
+        public async Task<IEnumerable<GameCard>> GetCardListTargets
             (string sourceCardName, string blurb, int[] ids, string listRestructionJson)
         {
             serverNotifier.GetCardTarget(sourceCardName, blurb, ids, listRestructionJson, list: true);
@@ -206,12 +206,12 @@ namespace KompasServer.Networking {
                     {
                         var targets = CardListTargets;
                         CardListTargets = null;
-                        return (targets, false);
-                    }
+                        return targets;
+                    } //TODO throw exception if there's a problem translating the ids, etc. into targets
                     else if (DeclineTarget)
                     {
                         DeclineTarget = false;
-                        return (null, true);
+                        return null;
                     }
                 }
 
@@ -227,7 +227,7 @@ namespace KompasServer.Networking {
         /// <param name="spaces">The list of valid spaces</param>
         /// <returns>The space and false if the player chose a space<br></br>
         /// default and true if the player declined to choose a space</returns>
-        public async Task<((int, int) space, bool declined)> GetSpaceTarget
+        public async Task<(int, int)> GetSpaceTarget
             (string cardName, string blurb, (int, int)[] spaces)
         {
             serverNotifier.GetSpaceTarget(cardName, blurb, spaces);
@@ -239,12 +239,12 @@ namespace KompasServer.Networking {
                     {
                         var space = SpaceTarget.Value;
                         SpaceTarget = null;
-                        return (space, false);
+                        return space;
                     }
                     else if (DeclineTarget)
                     {
                         DeclineTarget = false;
-                        return (default, true);
+                        return (-1, -1); //TODO define somewhere as const
                     }
                 }
 

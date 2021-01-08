@@ -30,11 +30,10 @@ namespace KompasServer.Effects
                 }
 
                 var (a, b) = (-1, -1);
-                bool decline = false;
                 while (!SetTargetIfValid(a, b))
                 {
-                    ((a, b), decline) = await ServerPlayer.serverAwaiter.GetSpaceTarget(Source.CardName, spaceRestriction.blurb, spaces.ToArray());
-                    if (decline && ServerEffect.CanDeclineTarget) return ResolutionInfo.Impossible(DeclinedFurtherTargets);
+                    (a, b) = await ServerPlayer.serverAwaiter.GetSpaceTarget(Source.CardName, spaceRestriction.blurb, spaces.ToArray());
+                    if ((a, b) == (-1, -1) && ServerEffect.CanDeclineTarget) return ResolutionInfo.Impossible(DeclinedFurtherTargets);
                 }
                 return ResolutionInfo.Next;
             }

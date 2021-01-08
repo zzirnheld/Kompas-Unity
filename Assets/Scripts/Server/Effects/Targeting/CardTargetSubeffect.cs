@@ -20,7 +20,7 @@ namespace KompasServer.Effects
         protected virtual int[] PotentialTargetIds
             => Game.Cards.Where(c => cardRestriction.Evaluate(c)).Select(c => c.ID).ToArray();
 
-        protected virtual async Task<(GameCard, bool)> GetTargets(int[] potentialTargetIds)
+        protected virtual async Task<GameCard> GetTargets(int[] potentialTargetIds)
         {
             Debug.Log($"Asking for card target among ids {string.Join(", ", potentialTargetIds)}");
             return await ServerPlayer.serverAwaiter.GetCardTarget(Source.CardName, cardRestriction.blurb, potentialTargetIds, null);
@@ -38,13 +38,12 @@ namespace KompasServer.Effects
             }
 
             GameCard card = null;
-            bool decline = false;
             //while the target is invalid (and null cards, the default value, are invalid), ask the client for a new target.
             //awaiting this means that the potential new target will be evaluated once there is indeed a new target
             while (!AddTargetIfLegal(card))
             {
-                (card, decline) = await GetTargets(potentialTargetIds);
-                if (decline && ServerEffect.CanDeclineTarget) return ResolutionInfo.Impossible(DeclinedFurtherTargets);
+                card = await GetTargets(potentialTargetIds);
+                if (card == null && ServerEffect.CanDeclineTarget) return ResolutionInfo.Impossible(DeclinedFurtherTargets);
             }
 
             return ResolutionInfo.Next;
