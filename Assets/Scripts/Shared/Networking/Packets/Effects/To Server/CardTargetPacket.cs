@@ -2,6 +2,7 @@
 using KompasCore.Networking;
 using KompasServer.GameCore;
 using KompasServer.Effects;
+using System.Threading.Tasks;
 
 namespace KompasCore.Networking
 {
@@ -24,17 +25,11 @@ namespace KompasServer.Networking
 {
     public class CardTargetServerPacket : CardTargetPacket, IServerOrderPacket
     {
-        public void Execute(ServerGame serverGame, ServerPlayer player)
+
+        public Task Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
         {
-            var currSubeff = serverGame.CurrEffect?.CurrSubeffect;
-            var card = serverGame.GetCardWithID(cardId);
-
-            UnityEngine.Debug.Log($"Attempting to target {card?.CardName} in subeffect {currSubeff}");
-
-            if (currSubeff is CardTargetSubeffect cardTargetSubeffect)
-                cardTargetSubeffect.AddTargetIfLegal(card);
-            else if (currSubeff is ChooseFromListSubeffect listSubeffect)
-                listSubeffect.AddListIfLegal(new GameCard[] { card });
+            awaiter.CardTarget = serverGame.GetCardWithID(cardId);
+            return Task.CompletedTask;
         }
     }
 }

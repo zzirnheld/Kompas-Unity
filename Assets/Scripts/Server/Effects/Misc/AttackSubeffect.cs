@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
@@ -6,14 +7,14 @@ namespace KompasServer.Effects
     {
         public int attackerIndex = -2;
 
-        public override bool Resolve()
+        public override Task<ResolutionInfo> Resolve()
         {
             var attacker = Effect.GetTarget(attackerIndex);
             var defender = Target;
-            if (attacker == null || defender == null) ServerEffect.EffectImpossible();
+            if (attacker == null || defender == null) return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
 
             ServerGame.Attack(attacker, defender, ServerEffect.ServerController);
-            return ServerEffect.ResolveNextSubeffect();
+            return Task.FromResult(ResolutionInfo.Next);
         }
     }
 }

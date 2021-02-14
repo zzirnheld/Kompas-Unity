@@ -1,0 +1,60 @@
+{
+	"cardType":67,
+	"cardName":"Truthwatcher",
+	"effText":"When you cast a Weather, set X to the number of friendly characters there. Search your deck's top X cards for a cost <= X card.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Watch for Truth",
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Controller Triggered"],
+					"cardRestriction":{
+						"cardRestrictions":["Friendly","Is Spell","Subtypes Include"],
+						"subtypesInclude":["Weather"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount":"Cards Fitting Restriction",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character","Board","Friendly","In Target's AOE"]
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSaveRestSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"card for Truthwatcher to search out",
+						"cardRestrictions":["Friendly","Deck","Index<X","Cost<=X"]
+					},
+					"restRestriction":
+					{
+						"cardRestrictions":["Friendly","Deck","Index<X","Not Already Target"]
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"unique":true,
+	"n":1,
+	"e":2,
+	"s":4,
+	"w":2,
+	"subtypeText":"Skyknight"
+}

@@ -1,6 +1,7 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace KompasServer.Effects
@@ -9,18 +10,6 @@ namespace KompasServer.Effects
     {
         public CardRestriction cardRestriction;
 
-        public bool AwaitingTarget { get; protected set; }
-
-        protected virtual int[] PotentialTargetIds
-            => Game.Cards.Where(c => cardRestriction.Evaluate(c)).Select(c => c.ID).ToArray();
-
-        protected virtual void GetTargets(int[] potentialTargetIds)
-        {
-            AwaitingTarget = true;
-            Debug.Log($"Asking for card target among ids {string.Join(", ", potentialTargetIds)}");
-            ServerPlayer.ServerNotifier.GetCardTarget(Source.CardName, cardRestriction.blurb, potentialTargetIds, null);
-        }
-
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
@@ -28,7 +17,16 @@ namespace KompasServer.Effects
             cardRestriction.Initialize(this);
         }
 
-        public override bool Resolve()
+        protected virtual int[] PotentialTargetIds
+            => Game.Cards.Where(c => cardRestriction.Evaluate(c)).Select(c => c.ID).ToArray();
+
+        protected virtual async Task<GameCard> GetTargets(int[] potentialTargetIds)
+        {
+            Debug.Log($"Asking for card target among ids {string.Join(", ", potentialTargetIds)}");
+            return await ServerPlayer.serverAwaiter.GetCardTarget(Source.CardName, cardRestriction.blurb, potentialTargetIds, null);
+        }
+
+        public override async Task<ResolutionInfo> Resolve()
         {
             var potentialTargetIds = PotentialTargetIds;
 
@@ -36,16 +34,19 @@ namespace KompasServer.Effects
             if (!potentialTargetIds.Any())
             {
                 Debug.Log($"No target exists for {ThisCard.CardName} effect");
-                return ServerEffect.EffectImpossible();
+                return ResolutionInfo.Impossible(NoValidCardTarget);
             }
 
-            //ask the client that is this effect's controller for a target. 
-            //give the card if whose effect it is, the index of the effect, and the index of the subeffect
-            //since only the server resolves effects, this should never be called for a client. 
-            GetTargets(potentialTargetIds);
+            GameCard card = null;
+            //while the target is invalid (and null cards, the default value, are invalid), ask the client for a new target.
+            //awaiting this means that the potential new target will be evaluated once there is indeed a new target
+            while (!AddTargetIfLegal(card))
+            {
+                card = await GetTargets(potentialTargetIds);
+                if (card == null && ServerEffect.CanDeclineTarget) return ResolutionInfo.Impossible(DeclinedFurtherTargets);
+            }
 
-            //then wait for the network controller to call the continue method
-            return false;
+            return ResolutionInfo.Next;
         }
 
         /// <summary>
@@ -53,20 +54,16 @@ namespace KompasServer.Effects
         /// </summary>
         public virtual bool AddTargetIfLegal(GameCard card)
         {
-            //don't do anyting if we're not waiting for a target selection.
-            if (!AwaitingTarget) return false;
             //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
-            else if (cardRestriction.Evaluate(card))
+            if (cardRestriction.Evaluate(card))
             {
-                AwaitingTarget = false;
                 ServerEffect.AddTarget(card);
                 ServerPlayer.ServerNotifier.AcceptTarget();
-                return ServerEffect.ResolveNextSubeffect();
+                return true;
             }
             else
             {
                 Debug.Log($"{card?.CardName} not a valid target for {cardRestriction}");
-                GetTargets(PotentialTargetIds);
                 return false;
             }
         }

@@ -4,6 +4,7 @@ using KompasServer.GameCore;
 using KompasServer.Effects;
 using System.Linq;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace KompasCore.Networking
 {
@@ -28,15 +29,12 @@ namespace KompasServer.Networking
 {
     public class ListChoicesServerPacket : ListChoicesPacket, IServerOrderPacket
     {
-        public void Execute(ServerGame serverGame, ServerPlayer player)
+        public Task Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
         {
             var choices = cardIds.Select(c => serverGame.GetCardWithID(c)).Where(c => c != null).Distinct();
 
-            var currSubeff = serverGame.CurrEffect?.CurrSubeffect;
-            if (currSubeff is ChooseFromListSubeffect listEff)
-                listEff.AddListIfLegal(choices);
-            else if (currSubeff is CardTargetSubeffect deckTargetSubeffect)
-                deckTargetSubeffect.AddTargetIfLegal(choices.FirstOrDefault());
+            awaiter.CardListTargets = choices;
+            return Task.CompletedTask;
         }
     }
 }

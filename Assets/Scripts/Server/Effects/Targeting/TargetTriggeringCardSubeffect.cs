@@ -1,14 +1,16 @@
-﻿namespace KompasServer.Effects
+﻿using System.Threading.Tasks;
+
+namespace KompasServer.Effects
 {
     public class TargetTriggeringCardSubeffect : ServerSubeffect
     {
-        public override bool Resolve()
+        public override Task<ResolutionInfo> Resolve()
         {
             if (ServerEffect.CurrActivationContext.CardInfo == null)
-                return ServerEffect.EffectImpossible();
+                return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
 
             ServerEffect.AddTarget(ServerEffect.CurrActivationContext.CardInfo.Card);
-            return ServerEffect.ResolveNextSubeffect();
+            return Task.FromResult(ResolutionInfo.Next);
         }
     }
 }

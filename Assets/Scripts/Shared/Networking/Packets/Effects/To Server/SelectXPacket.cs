@@ -2,6 +2,7 @@
 using KompasCore.Networking;
 using KompasServer.GameCore;
 using KompasServer.Effects;
+using System.Threading.Tasks;
 
 namespace KompasCore.Networking
 {
@@ -24,12 +25,10 @@ namespace KompasServer.Networking
 {
     public class SelectXServerPacket : SelectXPacket, IServerOrderPacket
     {
-        public void Execute(ServerGame serverGame, ServerPlayer player)
+        public Task Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
         {
-            var currSubeff = serverGame.CurrEffect?.CurrSubeffect;
-
-            if (currSubeff is PlayerChooseXSubeffect chooseXSubeffect)
-                chooseXSubeffect.SetXIfLegal(x);
+            awaiter.PlayerXChoice = x;
+            return Task.CompletedTask;
         }
     }
 }

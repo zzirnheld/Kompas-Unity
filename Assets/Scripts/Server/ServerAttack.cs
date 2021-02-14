@@ -1,6 +1,7 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasServer.GameCore;
+using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
@@ -43,15 +44,15 @@ namespace KompasServer.Effects
             }
         }
 
-        public void StartResolution(ActivationContext context)
+        public Task StartResolution(ActivationContext context)
         {
             //deal the damage
             if (StillValidAttack) DealDamage();
             var attackerContext = new ActivationContext(card: attacker, stackable: this, triggerer: Controller);
             var defenderContext = new ActivationContext(card: defender, stackable: this, triggerer: Controller);
             EffCtrl.TriggerForCondition(Trigger.BattleEnds, attackerContext, defenderContext);
-            //then finish the resolution
-            EffCtrl.FinishStackEntryResolution();
+            //then finish the resolution by just returning that completed the task. (don't need to call anything)
+            return Task.CompletedTask;
         }
 
         private void DealDamage()

@@ -1,16 +1,18 @@
-﻿namespace KompasServer.Effects
+﻿using System.Threading.Tasks;
+
+namespace KompasServer.Effects
 {
     public class SpendMovementSubeffect : ServerSubeffect
     {
-        public override bool Resolve()
+        public override Task<ResolutionInfo> Resolve()
         {
             var spaces = Count;
             if (Target.SpacesCanMove >= spaces)
             {
                 Target.SetSpacesMoved(Target.SpacesMoved + spaces);
-                return ServerEffect.ResolveNextSubeffect();
+                return Task.FromResult(ResolutionInfo.Next);
             }
-            else return ServerEffect.EffectImpossible();
+            else return Task.FromResult(ResolutionInfo.Impossible(CantAffordStats));
         }
     }
 }

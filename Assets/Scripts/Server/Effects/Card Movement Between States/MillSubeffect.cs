@@ -1,21 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace KompasServer.Effects
 {
     public class MillSubeffect : ServerSubeffect
     {
-        public override bool Resolve()
+        public override Task<ResolutionInfo> Resolve()
         {
             for (int i = 0; i < Count; i++)
             {
                 var card = Player.deckCtrl.Topdeck;
-                if (card == null) return ServerEffect.EffectImpossible();
+                if (card == null) return Task.FromResult(ResolutionInfo.Impossible(CouldntMillAllX));
                 card.Discard();
             }
 
-            return ServerEffect.ResolveNextSubeffect();
+            return Task.FromResult(ResolutionInfo.Next);
         }
     }
 }

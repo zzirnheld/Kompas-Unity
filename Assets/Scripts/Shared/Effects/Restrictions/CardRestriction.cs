@@ -62,6 +62,7 @@ namespace KompasCore.Effects
         public const string Discard = "Discard";
         public const string Deck = "Deck";
         public const string Board = "Board";
+        public const string Annihilated = "Annihilated";
         public const string LocationInList = "Multiple Possible Locations";
 
         //stats
@@ -100,6 +101,7 @@ namespace KompasCore.Effects
         public const string WithinCSpacesOfTarget = "Within C Spaces of Target";
         public const string WithinXSpacesOfSource = "Within X Spaces";
         public const string InAOE = "In AOE";
+        public const string InTargetsAOE = "In Target's AOE";
         public const string NotInAOE = "Not In AOE";
         public const string AdjacentToSubtype = "Adjacent to Subtype";
         public const string ExactlyXSpaces = "Exactly X Spaces to Source";
@@ -236,6 +238,7 @@ namespace KompasCore.Effects
                 case Deck:           return potentialTarget.Location == CardLocation.Deck;
                 case Discard:        return potentialTarget.Location == CardLocation.Discard;
                 case Board:          return potentialTarget.Location == CardLocation.Field;
+                case Annihilated:    return potentialTarget.Location == CardLocation.Annihilation;
                 case LocationInList: return locations.Contains(potentialTarget.Location);
 
                 //stats
@@ -272,6 +275,7 @@ namespace KompasCore.Effects
                 case AdjacentToTarget:   return potentialTarget.IsAdjacentTo(Subeffect.Target);
                 case AdjacentToSubtype:  return potentialTarget.AdjacentCards.Any(card => adjacencySubtypes.All(s => card.SubtypeText.Contains(s)));
                 case InAOE:              return Source.CardInAOE(potentialTarget);
+                case InTargetsAOE:       return Subeffect.Target.CardInAOE(potentialTarget);
                 case NotInAOE:           return !Source.CardInAOE(potentialTarget);
                 case WithinCSpacesOfSource: return potentialTarget.WithinSpaces(cSpaces, Source);
                 case WithinCSpacesOfTarget: return potentialTarget.WithinSpaces(cSpaces, Subeffect.Target);

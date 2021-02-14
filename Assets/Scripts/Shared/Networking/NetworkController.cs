@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading.Tasks;
 using UnityEngine;
 
 
@@ -12,7 +13,7 @@ namespace KompasCore.Networking
 
         public readonly Queue<(string, string)> packets = new Queue<(string, string)>();
 
-        private bool awaitingInt = true;
+        protected bool awaitingInt = true;
         private int numBytesToRead;
         private int numBytesRead = 0;
         private byte[] bytesRead = new byte[sizeof(int)];
@@ -23,9 +24,9 @@ namespace KompasCore.Networking
             this.tcpClient = tcpClient;
         }
 
-        public abstract void ProcessPacket((string command, string json) packetInfo);
+        public abstract Task ProcessPacket((string command, string json) packetInfo);
 
-        public virtual void Update()
+        protected virtual void Update()
         {
             if (tcpClient == null || !tcpClient.Connected) return;
             NetworkStream networkStream = tcpClient.GetStream();
@@ -34,8 +35,6 @@ namespace KompasCore.Networking
 
             if (awaitingInt) ReadInt(networkStream);
             else ReadPacket(networkStream);
-            
-            if (packets.Count != 0) ProcessPacket(packets.Dequeue());
         }
 
         #region serialization

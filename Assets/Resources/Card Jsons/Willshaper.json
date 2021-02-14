@@ -1,0 +1,39 @@
+{
+	"cardType":67,
+	"cardName":"Willshaper",
+	"effText":"When you cast a Weather, give friendly characters there +1 E.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Shape Will",
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Controller Triggered"],
+					"cardRestriction":{
+						"cardRestrictions":["Friendly","Is Spell","Subtypes Include"],
+						"subtypesInclude":["Weather"]
+					}
+				}
+			},
+			"subeffects":[	
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},			
+				{
+					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Board","Friendly","Is Character","In Target's AOE"]
+					},
+					"eMod":1
+				}
+			]
+		}
+	],
+	"n":2,
+	"e":1,
+	"s":2,
+	"w":1,
+	"subtypeText":"Skyknight"
+}

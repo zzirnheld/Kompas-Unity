@@ -1,5 +1,6 @@
 ﻿using KompasCore.Cards;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
@@ -21,13 +22,13 @@ namespace KompasServer.Effects
             return list;
         }
 
-        public override bool Resolve()
+        public override Task<ResolutionInfo> Resolve()
         {
             //TODO better shuffling algorithm
             var list = Shuffle(Effect.rest);
             foreach (GameCard c in list) c.Bottomdeck(c.Owner, Effect);
 
-            return ServerEffect.ResolveNextSubeffect();
+            return Task.FromResult(ResolutionInfo.Next);
         }
     }
 }

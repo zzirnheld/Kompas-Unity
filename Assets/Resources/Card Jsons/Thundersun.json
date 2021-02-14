@@ -26,6 +26,7 @@
 		}
 	],
 	"keywords":["Weather"],
+	"unique":true,
 	"c":7,
 	"spellType":"Radial",
 	"subtypeText":"Weather Radial",

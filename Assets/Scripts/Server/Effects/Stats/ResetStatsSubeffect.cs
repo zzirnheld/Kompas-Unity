@@ -1,4 +1,6 @@
-﻿namespace KompasServer.Effects
+﻿using System.Threading.Tasks;
+
+namespace KompasServer.Effects
 {
     public class ResetStatsSubeffect : ServerSubeffect
     {
@@ -9,7 +11,7 @@
         public bool resetC = false;
         public bool resetA = false;
 
-        public override bool Resolve()
+        public override Task<ResolutionInfo> Resolve()
         {
             if (resetN) Target.SetN(Target.BaseN, Effect);
             if (resetE) Target.SetE(Target.BaseE, Effect);
@@ -18,7 +20,7 @@
             if (resetC) Target.SetC(Target.BaseC, Effect);
             if (resetA) Target.SetA(Target.BaseA, Effect);
 
-            return ServerEffect.ResolveNextSubeffect();
+            return Task.FromResult(ResolutionInfo.Next);
         }
     }
 }

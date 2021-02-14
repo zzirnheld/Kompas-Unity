@@ -1,6 +1,7 @@
 ﻿using KompasClient.GameCore;
 using KompasCore.Networking;
 using KompasServer.GameCore;
+using System.Threading.Tasks;
 
 namespace KompasCore.Networking
 {
@@ -27,7 +28,7 @@ namespace KompasServer.Networking
 {
     public class AugmentActionServerPacket : AugmentActionPacket, IServerOrderPacket
     {
-        public void Execute(ServerGame serverGame, ServerPlayer player)
+        public async Task Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
         {
             if (player.index == 1)
             {
@@ -35,7 +36,7 @@ namespace KompasServer.Networking
                 y = 6 - y;
             }
             var card = serverGame.GetCardWithID(cardId);
-            player.TryAugment(card, x, y);
+            await player.TryAugment(card, x, y);
         }
     }
 }

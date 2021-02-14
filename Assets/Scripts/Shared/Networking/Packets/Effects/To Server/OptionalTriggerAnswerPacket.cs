@@ -2,6 +2,7 @@
 using KompasCore.Networking;
 using KompasServer.GameCore;
 using KompasServer.Effects;
+using System.Threading.Tasks;
 
 namespace KompasCore.Networking
 {
@@ -24,7 +25,10 @@ namespace KompasServer.Networking
 {
     public class OptionalTriggerAnswerServerPacket : OptionalTriggerAnswerPacket, IServerOrderPacket
     {
-        public void Execute(ServerGame serverGame, ServerPlayer player)
-            => serverGame.EffectsController.OptionalTriggerAnswered(answer, player);
+        public Task Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
+        {
+            awaiter.OptionalTriggerAnswer = answer;
+            return Task.CompletedTask;
+        }
     }
 }

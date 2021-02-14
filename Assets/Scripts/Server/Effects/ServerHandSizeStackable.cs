@@ -1,9 +1,8 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasServer.GameCore;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace KompasServer.Effects
@@ -34,23 +33,22 @@ namespace KompasServer.Effects
         };
 
         private readonly ServerGame serverGame;
-        private readonly ServerEffectsController effectsController;
 
-        private bool awaiting;
+        private bool awaitingChoices;
 
-        public ServerHandSizeStackable(ServerGame serverGame, ServerEffectsController effectsController, ServerPlayer controller)
+        public ServerHandSizeStackable(ServerGame serverGame, ServerPlayer controller)
         {
             this.ServerController = controller;
-            this.effectsController = effectsController;
             this.serverGame = serverGame;
 
             //tell the players this is here now
             ServerController.ServerNotifier.NotifyHandSizeToStack(true);
         }
+        public async Task StartResolution(ActivationContext context) => await RequestTargets();
 
-        private void RequestTargets()
+        private async Task RequestTargets()
         {
-            awaiting = true;
+            awaitingChoices = true;
             cardRestriction.Initialize(Source, Controller, null);
 
             int[] cardIds = serverGame.Cards
@@ -61,8 +59,7 @@ namespace KompasServer.Effects
             int overHandSize = cardIds.Count() - MaxHandSize;
             if (overHandSize <= 0)
             {
-                awaiting = false;
-                effectsController.FinishStackEntryResolution();
+                awaitingChoices = false;
                 return;
             }
 
@@ -71,14 +68,18 @@ namespace KompasServer.Effects
             listRestriction.maxCanChoose = overHandSize;
             string listRestrictionJson = JsonUtility.ToJson(listRestriction);
 
-            ServerController.ServerNotifier.GetHandSizeChoices(cardIds, listRestrictionJson);
+            int[] choices = null;
+            while (!TryAnswer(choices))
+            {
+                choices = await ServerController.serverAwaiter.GetHandSizeChoices(cardIds, listRestrictionJson);
+            }
         }
 
-        public void StartResolution(ActivationContext context) => RequestTargets();
-
-        public void TryAnswer(int[] cardIds)
+        public bool TryAnswer(int[] cardIds)
         {
-            if (!awaiting) return;
+            if (!awaitingChoices) return false;
+            if (cardIds == null) return false;
+
             GameCard[] cards = cardIds
                 .Distinct()
                 .Select(i => serverGame.GetCardWithID(i))
@@ -88,15 +89,11 @@ namespace KompasServer.Effects
             int count = cards.Count();
             int correctCount = serverGame.Cards.Count(c => cardRestriction.Evaluate(c)) - MaxHandSize;
 
-            if(count != correctCount || cards.Any(c => !cardRestriction.Evaluate(c)))
-            {
-                RequestTargets();
-                return;
-            }
+            if (count != correctCount || cards.Any(c => !cardRestriction.Evaluate(c))) return false;
 
             foreach (var card in cards) card.Reshuffle();
-            awaiting = false;
-            effectsController.FinishStackEntryResolution();
+            awaitingChoices = false;
+            return true;
         }
     }
 }

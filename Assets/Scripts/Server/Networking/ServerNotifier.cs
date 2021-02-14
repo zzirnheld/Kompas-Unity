@@ -16,7 +16,7 @@ namespace KompasServer.Networking
 
         public void SendPacket(Packet packet)
         {
-            //if (packet != null) Debug.Log($"Sending packet to {Player.index} with info {packet}");
+            if (packet != null) Debug.Log($"Sending packet to {Player.index} with info {packet}");
             ServerNetworkCtrl.SendPacket(packet);
         }
 
@@ -141,8 +141,8 @@ namespace KompasServer.Networking
         #endregion card stats
 
         #region request targets
-        public void GetCardTarget(string cardName, string targetBlurb, int[] ids, string listRestrictionJson)
-            => SendPacket(new GetCardTargetPacket(cardName, targetBlurb, ids, listRestrictionJson));
+        public void GetCardTarget(string cardName, string targetBlurb, int[] ids, string listRestrictionJson, bool list)
+            => SendPacket(new GetCardTargetPacket(cardName, targetBlurb, ids, listRestrictionJson, list));
 
         public void GetSpaceTarget(string cardName, string targetBlurb, (int, int)[] spaces)
             => SendPacket(new GetSpaceTargetPacket(cardName, targetBlurb, spaces));

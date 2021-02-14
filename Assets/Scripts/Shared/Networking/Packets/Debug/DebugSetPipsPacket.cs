@@ -1,5 +1,6 @@
 ﻿using KompasCore.Networking;
 using KompasServer.GameCore;
+using System.Threading.Tasks;
 
 namespace KompasCore.Networking
 {
@@ -22,7 +23,7 @@ namespace KompasServer.Networking
 {
     public class DebugSetPipsServerPacket : DebugSetPipsPacket, IServerOrderPacket
     {
-        public void Execute(ServerGame serverGame, ServerPlayer player)
+        public Task Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
         {
             if (serverGame.uiCtrl.DebugMode)
             {
@@ -30,6 +31,7 @@ namespace KompasServer.Networking
                 player.Pips = numPips;
             }
             else UnityEngine.Debug.LogError($"Tried to debug set pips of player {player.index} to {numPips} while NOT in debug mode!");
+            return Task.CompletedTask;
         }
     }
 }

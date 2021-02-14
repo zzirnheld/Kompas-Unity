@@ -1,4 +1,6 @@
-﻿namespace KompasServer.Effects
+﻿using System.Threading.Tasks;
+
+namespace KompasServer.Effects
 {
     public class ChooseOptionSubeffect : ServerSubeffect
     {
@@ -6,27 +8,18 @@
         public string[] OptionBlurbs;
         public int[] OptionJumpIndices;
 
-        private void AskForOptionChoice()
-        {
-            ServerPlayer.ServerNotifier.ChooseEffectOption(Source.CardName, ChoiceBlurb, OptionBlurbs);
-        }
+        private async Task<int> AskForOptionChoice()
+            => await ServerPlayer.serverAwaiter.GetEffectOption(Source.CardName, ChoiceBlurb, OptionBlurbs);
 
-        public override bool Resolve()
+        public override async Task<ResolutionInfo> Resolve()
         {
-            AskForOptionChoice();
-            return false;
-        }
-
-        public void ChooseOption(int optionIndex)
-        {
-            if (optionIndex >= OptionJumpIndices.Length)
+            int choice = -1;
+            while(choice < 0 || choice >= OptionJumpIndices.Length)
             {
-                //ask again
-                AskForOptionChoice();
-                return;
+                choice = await AskForOptionChoice();
             }
 
-            ServerEffect.ResolveSubeffect(OptionJumpIndices[optionIndex]);
+            return ResolutionInfo.Index(OptionJumpIndices[choice]);
         }
     }
 }

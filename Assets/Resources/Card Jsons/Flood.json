@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Flood",
-	"effText":"Weather.\nWhen a character arrives here, give them -2 N",
+	"effText":"Weather.\nWhen a character arrives here, give them -2 N.",
 	"effects":[
 		{
 			"triggerData":
@@ -29,6 +29,7 @@
 		}
 	],
 	"keywords":["Weather"],
+	"unique":true,
 	"c":4,
 	"spellType":"Radial",
 	"subtypeText":"Weather Radial",

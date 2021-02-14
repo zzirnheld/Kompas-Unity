@@ -2,6 +2,7 @@
 using KompasCore.Effects;
 using KompasCore.GameCore;
 using KompasServer.GameCore;
+using System.Threading.Tasks;
 using UnityEngine;
 
 
@@ -10,6 +11,8 @@ namespace KompasServer.Effects
     [System.Serializable]
     public class ServerEffect : Effect, IServerStackable
     {
+        public const string EffectWasNegated = "Effect was negated";
+
         public ServerGame serverGame;
         public override Game Game => serverGame;
         public ServerEffectsController EffectsController => serverGame.EffectsController;
@@ -26,6 +29,7 @@ namespace KompasServer.Effects
         public override Trigger Trigger => ServerTrigger;
 
         public ServerSubeffect OnImpossible = null;
+        public bool CanDeclineTarget = false;
 
         public void SetInfo(GameCard thisCard, ServerGame serverGame, ServerPlayer controller, int effectIndex)
         {
@@ -54,7 +58,7 @@ namespace KompasServer.Effects
         }
 
         #region resolution
-        public override void StartResolution(ActivationContext context)
+        public async Task StartResolution(ActivationContext context)
         {
             Debug.Log($"Resolving effect {EffectIndex} of {Source.CardName} in context {context}");
             serverGame.CurrEffect = this;
@@ -76,30 +80,54 @@ namespace KompasServer.Effects
             ServerController.ServerNotifier.EffectResolving(this);
 
             //resolve the effect if possible
-            if (Negated) EffectImpossible();
-            else ResolveSubeffect(context.StartIndex);
+            if (Negated) await EffectImpossible(EffectWasNegated);
+            else await Resolve(context.StartIndex);
+
+            //after all subeffects have finished, clean up
+            FinishResolution();
+
+            //then return. server effects controller will interpret returning as effect being done.
         }
 
-        public bool ResolveNextSubeffect() => ResolveSubeffect(SubeffectIndex + 1);
-
-        public bool ResolveSubeffect(int index)
+        private async Task Resolve(int index)
         {
-            if (index >= subeffects.Length)
-            {
-                FinishResolution();
-                return true;
-            }
+            //get first result
+            ResolutionInfo result = await ResolveSubeffect(index);
 
+            //then, so long as we should keep going, resolve subeffects
+            bool resolve = true;
+            while (resolve)
+            {
+                switch (result.result)
+                {
+                    case ResolutionResult.Next:
+                        index++;
+                        if (index < subeffects.Length) result = await ResolveSubeffect(index);
+                        else resolve = false; //stop if next subeffect index is out of bounds
+                        break;
+                    case ResolutionResult.Index:
+                        index = result.index;
+                        if (index < subeffects.Length) result = await ResolveSubeffect(index);
+                        else resolve = false; //stop if that subeffect index is out of bounds
+                        break;
+                    case ResolutionResult.Impossible:
+                        result = await EffectImpossible(result.reason);
+                        break;
+                    case ResolutionResult.End:
+                        resolve = false;
+                        break;
+                    default:
+                        throw new System.ArgumentException($"Invalid resolution result {result.result}");
+                }
+            }
+        }
+
+        public async Task<ResolutionInfo> ResolveSubeffect(int index)
+        {
             // Debug.Log($"Resolving subeffect of type {ServerSubeffects[index].GetType()}");
             SubeffectIndex = index;
             ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
-            return subeffects[index].Resolve();
-        }
-
-        public bool EndResolution()
-        {
-            FinishResolution();
-            return true;
+            return await subeffects[index].Resolve();
         }
 
         /// <summary>
@@ -113,31 +141,28 @@ namespace KompasServer.Effects
             rest.Clear();
             OnImpossible = null;
             ServerController.ServerNotifier.NotifyBothPutBack();
-            EffectsController.FinishStackEntryResolution();
         }
 
         /// <summary>
         /// Cancels resolution of the effect, 
         /// or, if there is something pending if the effect becomes impossible, resolves that
         /// </summary>
-        public bool EffectImpossible()
+        public async Task<ResolutionInfo> EffectImpossible(string why)
         {
             Debug.Log($"Effect of {Source.CardName} is being declared impossible at subeffect {subeffects[SubeffectIndex].GetType()}");
             if (OnImpossible == null)
             {
-                FinishResolution();
+                //TODO make the notifier tell the client why the effect was impossible
                 ServerController.ServerNotifier.EffectImpossible();
-                return false;
+                return ResolutionInfo.End(ResolutionInfo.EndedBecauseImpossible);
             }
             else
             {
                 SubeffectIndex = OnImpossible.SubeffIndex;
-                return OnImpossible.OnImpossible();
+                return await OnImpossible.OnImpossible(why);
             }
         }
         #endregion resolution
-
-        public void DeclineAnotherTarget() => OnImpossible?.OnImpossible();
 
         public override void AddTarget(GameCard card)
         {

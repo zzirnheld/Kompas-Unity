@@ -89,8 +89,6 @@ namespace KompasCore.Effects
         public virtual bool CanBeActivatedAtAllBy(Player activator)
             => Trigger == null && activationRestriction != null && activationRestriction.EvaluateAtAll(activator);
 
-        public abstract void StartResolution(ActivationContext context);
-
         public GameCard GetTarget(int num)
         {
             int trueIndex = num < 0 ? num + targetsList.Count : num;

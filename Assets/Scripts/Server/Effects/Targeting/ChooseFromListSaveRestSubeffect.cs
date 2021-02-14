@@ -2,6 +2,7 @@
 using KompasCore.Effects;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
@@ -16,7 +17,7 @@ namespace KompasServer.Effects
             else restRestriction.Initialize(this);
         }
 
-        protected override bool NoPossibleTargets()
+        protected override Task<ResolutionInfo> NoPossibleTargets()
         {
             var rest = ServerGame.Cards.Where(c => restRestriction.Evaluate(c));
             ServerEffect.rest.AddRange(rest);

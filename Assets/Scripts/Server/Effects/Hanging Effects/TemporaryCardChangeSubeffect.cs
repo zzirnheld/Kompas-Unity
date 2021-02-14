@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using KompasCore.Effects;
 using KompasCore.Cards;
+using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
@@ -33,7 +34,7 @@ namespace KompasServer.Effects
             triggerRestriction.Initialize(Game, ThisCard, thisTrigger: null, effect: Effect);
         }
 
-        public override bool Resolve()
+        public override Task<ResolutionInfo> Resolve()
         {
             //create the hanging effects, of which there can be multiple
             var effectsApplied = CreateHangingEffects();
@@ -47,8 +48,8 @@ namespace KompasServer.Effects
             }
 
             //after all that's done, make it do the next subeffect
-            if (ContinueResolution) return ServerEffect.ResolveNextSubeffect();
-            else return ServerEffect.EndResolution();
+            if (ContinueResolution) return Task.FromResult(ResolutionInfo.Next);
+            else return Task.FromResult(ResolutionInfo.End(EndOnPurpose));
         }
 
         protected abstract IEnumerable<HangingEffect> CreateHangingEffects();

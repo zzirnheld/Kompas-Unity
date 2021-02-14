@@ -3,6 +3,7 @@ using KompasCore.Effects;
 using KompasServer.Effects;
 using KompasServer.Networking;
 using System.Net.Sockets;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace KompasServer.GameCore
@@ -13,6 +14,7 @@ namespace KompasServer.GameCore
         public ServerGame serverGame;
         public ServerNetworkController ServerNetworkCtrl;
         public ServerNotifier ServerNotifier;
+        public ServerAwaiter serverAwaiter;
 
         public override Player Enemy => ServerEnemy;
 
@@ -50,29 +52,35 @@ namespace KompasServer.GameCore
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        public void TryAugment(GameCard aug, int x, int y)
+        public async Task TryAugment(GameCard aug, int x, int y)
         {
-            if (serverGame.ValidAugment(aug, x, y, this)) aug.Play(x, y, this, payCost: true);
+            if (serverGame.ValidAugment(aug, x, y, this))
+            {
+                aug.Play(x, y, this, payCost: true);
+                await serverGame.EffectsController.CheckForResponse();
+            }
             else ServerNotifier.NotifyPutBack();
-
-            serverGame.EffectsController.CheckForResponse();
         }
 
-        public void TryPlay(GameCard card, int x, int y)
+        public async Task TryPlay(GameCard card, int x, int y)
         {
-            if (serverGame.ValidBoardPlay(card, x, y, this)) card.Play(x, y, this, payCost: true);
+            if (serverGame.ValidBoardPlay(card, x, y, this))
+            {
+                card.Play(x, y, this, payCost: true);
+                await serverGame.EffectsController.CheckForResponse();
+            }
             else ServerNotifier.NotifyPutBack();
-
-            serverGame.EffectsController.CheckForResponse();
         }
 
-        public void TryMove(GameCard toMove, int x, int y)
+        public async Task TryMove(GameCard toMove, int x, int y)
         {
             //if it's not a valid place to do, put the cards back
-            if (serverGame.ValidMove(toMove, x, y)) toMove.Move(x, y, true);
+            if (serverGame.ValidMove(toMove, x, y))
+            {
+                toMove.Move(x, y, true);
+                await serverGame.EffectsController.CheckForResponse();
+            }
             else ServerNotifier.NotifyPutBack();
-
-            serverGame.EffectsController.CheckForResponse();
         }
 
         /// <summary>
@@ -80,31 +88,32 @@ namespace KompasServer.GameCore
         /// </summary>
         /// <param name="effect"></param>
         /// <param name="controller"></param>
-        public void TryActivateEffect(ServerEffect effect)
+        public async Task TryActivateEffect(ServerEffect effect)
         {
             Debug.Log($"Player {index} trying to activate effect of {effect?.Source?.CardName}");
             if (effect.CanBeActivatedBy(this))
             {
                 serverGame.EffectsController.PushToStack(effect, this, new ActivationContext());
-                serverGame.EffectsController.CheckForResponse();
+                await serverGame.EffectsController.CheckForResponse();
             }
         }
 
-        public void TryAttack(GameCard attacker, GameCard defender)
+        public async Task TryAttack(GameCard attacker, GameCard defender)
         {
             ServerNotifier.NotifyBothPutBack();
 
             if (serverGame.ValidAttack(attacker, defender, this))
+            {
                 serverGame.Attack(attacker, defender, this, true);
-
-            serverGame.EffectsController.CheckForResponse();
+                await serverGame.EffectsController.CheckForResponse();
+            }
         }
 
-        public void TryEndTurn()
+        public async Task TryEndTurn()
         {
             if (serverGame.EffectsController.CurrStackEntry == null &&
                 serverGame.TurnPlayer == this) 
-                serverGame.SwitchTurn();
+                await serverGame.SwitchTurn();
         }
         #endregion Player Control Methods
     }

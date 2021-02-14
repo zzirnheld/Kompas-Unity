@@ -12,18 +12,20 @@ namespace KompasCore.Networking
         public string targetBlurb;
         public int[] potentialTargetIds;
         public string listRestrictionJson;
+        public bool list;
 
         public GetCardTargetPacket() : base(GetCardTarget) { }
 
-        public GetCardTargetPacket(string sourceCardName, string targetBlurb, int[] potentialTargetIds, string listRestrictionJson) : this()
+        public GetCardTargetPacket(string sourceCardName, string targetBlurb, int[] potentialTargetIds, string listRestrictionJson, bool list) : this()
         {
             this.sourceCardName = sourceCardName;
             this.targetBlurb = targetBlurb;
             this.potentialTargetIds = potentialTargetIds;
             this.listRestrictionJson = listRestrictionJson;
+            this.list = list;
         }
 
-        public override Packet Copy() => new GetCardTargetPacket(sourceCardName, targetBlurb, potentialTargetIds, listRestrictionJson);
+        public override Packet Copy() => new GetCardTargetPacket(sourceCardName, targetBlurb, potentialTargetIds, listRestrictionJson, list);
     }
 }
 
@@ -33,7 +35,7 @@ namespace KompasClient.Networking
     {
         public void Execute(ClientGame clientGame)
         {
-            clientGame.targetMode = Game.TargetMode.CardTarget;
+            clientGame.targetMode = list ? Game.TargetMode.CardTargetList : Game.TargetMode.CardTarget;
             ListRestriction listRestriction = null;
 
             try

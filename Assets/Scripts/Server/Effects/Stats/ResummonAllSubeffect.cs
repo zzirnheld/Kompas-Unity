@@ -1,5 +1,6 @@
 ﻿using KompasCore.Effects;
 using KompasCore.GameCore;
+using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
@@ -14,7 +15,7 @@ namespace KompasServer.Effects
             cardRestriction.Initialize(this);
         }
 
-        public override bool Resolve()
+        public override Task<ResolutionInfo> Resolve()
         {
             foreach (var c in Game.boardCtrl.CardsWhere(c => cardRestriction.Evaluate(c)))
             {
@@ -23,7 +24,7 @@ namespace KompasServer.Effects
                 ServerEffect.EffectsController.TriggerForCondition(Trigger.Arrive, ctxt);
             }
 
-            return ServerEffect.ResolveNextSubeffect();
+            return Task.FromResult(ResolutionInfo.Next);
         }
     }
 }

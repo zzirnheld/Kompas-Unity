@@ -36,7 +36,7 @@ namespace KompasClient.Networking
         {
             var card = clientGame.GetCardWithID(sourceCardId);
             if (card == null) return;
-            var eff = card.Effects.ElementAt(effIndex);
+            var eff = card.Effects.ElementAt(effIndex) as ClientEffect;
             eff.Controller = clientGame.Players[controllerIndex];
             eff.StartResolution(default); //TODO eventually make this be real
         }

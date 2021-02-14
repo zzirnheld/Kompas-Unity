@@ -2,6 +2,7 @@
 using KompasCore.Networking;
 using KompasServer.GameCore;
 using KompasServer.Effects;
+using System.Threading.Tasks;
 
 namespace KompasCore.Networking
 {
@@ -17,10 +18,10 @@ namespace KompasServer.Networking
 {
     public class PassPriorityServerPacket : PassPriorityPacket, IServerOrderPacket
     {
-        public void Execute(ServerGame serverGame, ServerPlayer player)
+        public async Task Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
         {
             player.passedPriority = true;
-            serverGame.EffectsController.CheckForResponse(reset: false);
+            await serverGame.EffectsController.CheckForResponse(reset: false);
         }
     }
 }

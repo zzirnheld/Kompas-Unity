@@ -123,10 +123,11 @@ namespace KompasClient.GameCore
                 $"while in target mode {clientGame.targetMode}, with a list restriction {CurrSearchData.Value.listRestriction}");
             if (clientGame.targetMode == ClientGame.TargetMode.HandSize)
                 clientGame.clientNotifier.RequestHandSizeChoices(CurrSearchData.Value.searched.Select(c => c.ID).ToArray());
-            else if (CurrSearchData.Value.listRestriction == null)
+            else if (clientGame.targetMode == ClientGame.TargetMode.CardTarget)
                 clientGame.clientNotifier.RequestTarget(CurrSearchData.Value.searched.FirstOrDefault());
-            else
+            else if (clientGame.targetMode == ClientGame.TargetMode.CardTargetList)
                 clientGame.clientNotifier.RequestListChoices(CurrSearchData.Value.searched);
+            else throw new System.ArgumentException($"Unknown target mode {clientGame.targetMode} in search ctrl");
 
             //put the relevant card back
             foreach (var card in CurrSearchData.Value.searched) card.PutBack();

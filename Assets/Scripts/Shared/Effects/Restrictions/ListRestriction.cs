@@ -127,6 +127,8 @@ namespace KompasCore.Effects
         /// <see langword="false"/> otherwise</returns>
         public bool Evaluate(IEnumerable<GameCard> choices, IEnumerable<GameCard> potentialTargets)
         {
+            if (choices == null) return false;
+
             if (choices.Except(potentialTargets).Any())
             {
                 Debug.Log($"Some cards in list of choices {string.Join(",", choices.Select(c => c.CardName))}" +

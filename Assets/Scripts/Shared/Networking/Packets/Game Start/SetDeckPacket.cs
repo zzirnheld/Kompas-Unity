@@ -1,6 +1,7 @@
 ﻿using KompasClient.GameCore;
 using KompasCore.Networking;
 using KompasServer.GameCore;
+using System.Threading.Tasks;
 
 namespace KompasCore.Networking
 {
@@ -23,6 +24,10 @@ namespace KompasServer.Networking
 {
     public class SetDeckServerPacket : SetDeckPacket, IServerOrderPacket
     {
-        public void Execute(ServerGame serverGame, ServerPlayer player) => serverGame.SetDeck(player, decklist);
+        public Task Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
+        {
+            serverGame.SetDeck(player, decklist);
+            return Task.CompletedTask;
+        }
     }
 }

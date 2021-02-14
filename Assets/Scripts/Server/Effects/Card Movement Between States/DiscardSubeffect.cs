@@ -1,12 +1,14 @@
-﻿namespace KompasServer.Effects
+﻿using System.Threading.Tasks;
+
+namespace KompasServer.Effects
 {
     public class DiscardSubeffect : CardChangeStateSubeffect
     {
-        public override bool Resolve()
+        public override Task<ResolutionInfo> Resolve()
         {
-            if (Target != null && Target.Discard(ServerEffect))
-                return ServerEffect.ResolveNextSubeffect();
-            else return ServerEffect.EffectImpossible();
+            if (Target == null) return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
+            if (Target.Discard(ServerEffect)) return Task.FromResult(ResolutionInfo.Next);
+            else return Task.FromResult(ResolutionInfo.Impossible(DiscardFailed));
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using KompasCore.Networking;
 using KompasServer.GameCore;
+using System.Threading.Tasks;
 
 namespace KompasCore.Networking
 {
@@ -22,10 +23,11 @@ namespace KompasServer.Networking
 {
     public class DebugDiscardServerPacket : DebugDiscardPacket, IServerOrderPacket
     {
-        public void Execute(ServerGame serverGame, ServerPlayer player)
+        public Task Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
         {
             var card = serverGame.GetCardWithID(cardId);
-            if (card == null) return;
+            if (card == null)
+                return Task.CompletedTask;
             else if (serverGame.uiCtrl.DebugMode)
             {
                 UnityEngine.Debug.LogWarning($"Debug discarding card with id {cardId}");
@@ -36,6 +38,7 @@ namespace KompasServer.Networking
                 UnityEngine.Debug.LogError($"Tried to debug discard card with id {cardId} while NOT in debug mode!");
                 player.ServerNotifier.NotifyPutBack();
             }
+            return Task.CompletedTask;
         }
     }
 }

@@ -4,6 +4,8 @@ using KompasServer.Effects;
 using KompasServer.GameCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace KompasServer.Networking
@@ -14,6 +16,7 @@ namespace KompasServer.Networking
         public ServerPlayer Player;
         public ServerGame sGame;
         public ServerNotifier ServerNotifier;
+        public ServerAwaiter serverAwaiter;
 
         private IServerOrderPacket FromJson(string command, string json)
         {
@@ -55,7 +58,14 @@ namespace KompasServer.Networking
             }
         }
 
-        public override void ProcessPacket((string command, string json) packetInfo)
+        protected override async void Update()
+        {
+            //Debug.Log("SERVER NET CTRL UPDATE");
+            base.Update();
+            if (packets.Count != 0) await ProcessPacket(packets.Dequeue());
+        }
+
+        public override async Task ProcessPacket((string command, string json) packetInfo)
         {
             if(packetInfo.command == Packet.Invalid)
             {
@@ -63,10 +73,10 @@ namespace KompasServer.Networking
                 return;
             }
 
-            //Debug.Log($"Processing {packetInfo.json} from {Player.index}");
+            Debug.Log($"Processing {packetInfo.json} from {Player.index}");
 
             var packet = FromJson(packetInfo.command, packetInfo.json);
-            packet.Execute(sGame, Player);
+            await packet.Execute(sGame, Player, serverAwaiter);
         }
     }
 }

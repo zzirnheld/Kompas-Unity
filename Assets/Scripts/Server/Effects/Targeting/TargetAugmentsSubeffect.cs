@@ -1,6 +1,7 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace KompasServer.Effects
@@ -16,14 +17,15 @@ namespace KompasServer.Effects
             cardRestriction.Initialize(this);
         }
 
-        public override bool Resolve()
+        public override Task<ResolutionInfo> Resolve()
         {
-            if (Target == null || !Target.AugmentsList.Any(c => cardRestriction.Evaluate(c)))
-                return ServerEffect.EffectImpossible();
+            if (Target == null) return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
+            if (!Target.AugmentsList.Any(c => cardRestriction.Evaluate(c)))
+                return Task.FromResult(ResolutionInfo.Impossible(NoValidCardTarget));
 
             var potentialTargets = Target.AugmentsList.Where(c => cardRestriction.Evaluate(c));
             foreach(var c in potentialTargets) ServerEffect.AddTarget(c);
-            return ServerEffect.ResolveNextSubeffect();
+            return Task.FromResult(ResolutionInfo.Next);
         }
     }
 }

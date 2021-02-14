@@ -1,4 +1,5 @@
 ﻿using KompasCore.Effects;
+using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
@@ -12,22 +13,27 @@ namespace KompasServer.Effects
             XRest.Initialize(Source);
         }
 
-        private void AskForX() => ServerPlayer.ServerNotifier.GetXForEffect();
+        private async Task<int> AskForX() => await ServerPlayer.serverAwaiter.GetPlayerXValue();
 
-        public override bool Resolve()
+        public override async Task<ResolutionInfo> Resolve()
         {
-            AskForX();
-            return false;
+            bool xLegal = false;
+            while (!xLegal)
+            {
+                int x = await AskForX();
+                xLegal = SetXIfLegal(x);
+            }
+            return ResolutionInfo.Next;
         }
 
-        public void SetXIfLegal(int x)
+        public bool SetXIfLegal(int x)
         {
             if (XRest.Evaluate(x))
             {
                 ServerEffect.X = x;
-                ServerEffect.ResolveNextSubeffect();
+                return true;
             }
-            else AskForX();
+            return false;
         }
     }
 }

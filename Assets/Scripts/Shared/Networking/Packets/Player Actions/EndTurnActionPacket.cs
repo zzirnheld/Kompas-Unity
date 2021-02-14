@@ -1,5 +1,6 @@
 ﻿using KompasCore.Networking;
 using KompasServer.GameCore;
+using System.Threading.Tasks;
 
 namespace KompasCore.Networking
 {
@@ -15,9 +16,9 @@ namespace KompasServer.Networking
 {
     public class EndTurnActionServerPacket : EndTurnActionPacket, IServerOrderPacket
     {
-        public void Execute(ServerGame serverGame, ServerPlayer player)
+        public async Task Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
         {
-            player.TryEndTurn();
+            await player.TryEndTurn();
         }
     }
 }

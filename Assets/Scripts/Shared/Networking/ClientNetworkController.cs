@@ -1,6 +1,7 @@
 ﻿using KompasClient.GameCore;
 using KompasCore.Networking;
 using System.Net;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace KompasClient.Networking
@@ -18,7 +19,11 @@ namespace KompasClient.Networking
             Debug.Log("Connected");
         }
 
-        public override void Update() => base.Update();
+        protected override void Update()
+        {
+            base.Update();
+            if (packets.Count != 0) ProcessPacket(packets.Dequeue());
+        }
 
         private IClientOrderPacket FromJson(string command, string json)
         {
@@ -94,12 +99,12 @@ namespace KompasClient.Networking
             }
         }
 
-        public override void ProcessPacket((string command, string json) packetInfo)
+        public override Task ProcessPacket((string command, string json) packetInfo)
         {
             if (packetInfo.command == Packet.Invalid)
             {
                 Debug.LogError("Invalid packet");
-                return;
+                return Task.CompletedTask;
             }
 
             var p = FromJson(packetInfo.command, packetInfo.json);
@@ -107,6 +112,7 @@ namespace KompasClient.Networking
             p.Execute(ClientGame);
             ClientGame.RefreshShownCards();
             ClientGame.clientUICtrl.RefreshShownCardInfo();
+            return Task.CompletedTask;
         }
     }
 }

@@ -1,13 +1,15 @@
-﻿namespace KompasServer.Effects
+﻿using System.Threading.Tasks;
+
+namespace KompasServer.Effects
 {
     public class JumpSubeffect : ServerSubeffect
     {
         public int indexToJumpTo;
 
-        public override bool Resolve()
+        public override Task<ResolutionInfo> Resolve()
         {
             //this will always jump to the given subeffect index
-            return ServerEffect.ResolveSubeffect(indexToJumpTo);
+            return Task.FromResult(ResolutionInfo.Index(indexToJumpTo));
         }
     }
 }

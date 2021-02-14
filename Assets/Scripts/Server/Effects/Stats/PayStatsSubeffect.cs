@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace KompasServer.Effects
@@ -21,16 +22,16 @@ namespace KompasServer.Effects
         public int S => sMult * Effect.X + sMod;
         public int W => wMult * Effect.X + wMod;
 
-        public override bool Resolve()
+        public override Task<ResolutionInfo> Resolve()
         {
             if (Target.N < N ||
                 Target.E < E ||
                 Target.S < S ||
                 Target.W < W)
-                return ServerEffect.EffectImpossible();
+                return Task.FromResult(ResolutionInfo.Impossible(CantAffordStats));
 
             Target.AddToCharStats(-1 * N, -1 * E, -1 * S, -1 * W, Effect);
-            return ServerEffect.ResolveNextSubeffect();
+            return Task.FromResult(ResolutionInfo.Next);
         }
     }
 }

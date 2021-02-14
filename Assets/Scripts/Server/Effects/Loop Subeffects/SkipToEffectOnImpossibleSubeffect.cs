@@ -1,4 +1,6 @@
-﻿namespace KompasServer.Effects
+﻿using System.Threading.Tasks;
+
+namespace KompasServer.Effects
 {
     /// <summary>
     /// Resolves a specified subeffect if at any point the effect is declared impossible
@@ -7,17 +9,17 @@
     {
         public int jumpTo;
 
-        public override bool Resolve()
+        public override Task<ResolutionInfo> Resolve()
         {
             ServerEffect.OnImpossible = this;
-            return ServerEffect.ResolveNextSubeffect();
+            return Task.FromResult(ResolutionInfo.Next);
         }
 
-        public override bool OnImpossible()
+        public override Task<ResolutionInfo> OnImpossible(string why)
         {
             //forget about this effect on impossible, and jump to a new one
             ServerEffect.OnImpossible = null;
-            return ServerEffect.ResolveSubeffect(jumpTo);
+            return Task.FromResult(ResolutionInfo.Index(jumpTo));
         }
     }
 }

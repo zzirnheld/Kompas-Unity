@@ -2,6 +2,7 @@
 using KompasCore.Effects;
 using KompasCore.GameCore;
 using KompasServer.GameCore;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace KompasServer.Effects
@@ -9,6 +10,33 @@ namespace KompasServer.Effects
     [System.Serializable]
     public abstract class ServerSubeffect : Subeffect
     {
+        #region reasons for impossible
+        public const string TargetWasNull = "No target to affect";
+        public const string TargetAlreadyThere = "Target was already in the place to move it to";
+        public const string NoValidCardTarget = "No valid card to target";
+        public const string NoValidSpaceTarget = "No valid space to target";
+        public const string ChangedStatsOfCardOffBoard = "Can't change stats of card not on the board";
+        public const string EndOnPurpose = "Ended early on purpose";
+
+        public const string CantAffordPips = "Can't afford pips";
+        public const string CantAffordStats = "Can't afford stats";
+
+        public const string DeclinedFurtherTargets = "Declined further targets";
+
+        //card movement failure
+        public const string AnnihilationFailed = "Target couldn't be annihilated";
+        public const string AttachFailed = "Attach as augment failed";
+        public const string BottomdeckFailed = "Bottomdeck failed";
+        public const string DiscardFailed = "Discard failed";
+        public const string CouldntDrawAllX = "Couldn't draw all X cards";
+        public const string CouldntMillAllX = "Couldn't mill all X cards";
+        public const string MovementFailed = "Movement failed";
+        public const string PlayingFailed = "Playing card failed";
+        public const string RehandFailed = "Rehanding card failed";
+        public const string ReshuffleFailed = "Reshuffle failed";
+        public const string TopdeckFailed = "Topdeck failed";
+        #endregion reasons for impossible
+
         public override Player Controller => EffectController;
         public override Effect Effect => ServerEffect;
         public override Game Game => ServerGame;
@@ -19,20 +47,6 @@ namespace KompasServer.Effects
         public GameCard ThisCard => ServerEffect.Source;
 
         public ServerPlayer ServerPlayer => Player as ServerPlayer;
-
-        /// <summary>
-        /// Server Subeffect resolve method. Does whatever this type of subeffect does,
-        /// then executes the next subeffect.<br></br>
-        /// Usually, this involves a call to ResolveNextSubeffect(),
-        /// but if the subeffect does control flow, it calles ResolveSubeffect for a specific thing.<br></br>
-        /// TODO refactor to return an enum/int to represent different control flow states (negatives being special values):<br></br>
-        ///     effect impossible, 
-        ///     resolve next, 
-        ///     resolve specific, 
-        ///     awaiting player input.<br></br>
-        /// <returns><see langword="true"/> if the effect finished resolving successfully, <see langword="false"/> if it's awaiting response</returns>
-        /// </summary>
-        public abstract bool Resolve();
 
         /// <summary>
         /// Sets up the subeffect with whatever necessary values.
@@ -48,14 +62,43 @@ namespace KompasServer.Effects
         }
 
         /// <summary>
+        /// Server Subeffect resolve method. Does whatever this type of subeffect does,
+        /// then returns a ResolutionInfo struct containing what to do next.
+        /// <returns><see langword="true"/> if the effect finished resolving successfully, <see langword="false"/> if it's awaiting response</returns>
+        /// </summary>
+        public abstract Task<ResolutionInfo> Resolve();
+
+
+        /// <summary>
         /// Optional method. If implemented, does something when the effect is declared impossible.
         /// Default implementation just finishes resolution of the effect
         /// </summary>
-        public virtual bool OnImpossible()
+        public virtual Task<ResolutionInfo> OnImpossible(string why)
         {
             Debug.Log($"Base On Impossible called for {GetType()}");
             ServerEffect.OnImpossible = null;
-            return ServerEffect.EffectImpossible();
+            return Task.FromResult(ResolutionInfo.Impossible(why));
         }
+    }
+
+    public struct ResolutionInfo
+    {
+        public const string EndedBecauseImpossible = "Ended because effect was impossible";
+
+        public ResolutionResult result;
+
+        public int index;
+
+        public string reason;
+
+        public static ResolutionInfo Next => new ResolutionInfo { result = ResolutionResult.Next };
+        public static ResolutionInfo Index(int index) => new ResolutionInfo { result = ResolutionResult.Index, index = index };
+        public static ResolutionInfo Impossible(string why) => new ResolutionInfo { result = ResolutionResult.Impossible, reason = why };
+        public static ResolutionInfo End(string why) => new ResolutionInfo { result = ResolutionResult.End, reason = why };
+    }
+
+    public enum ResolutionResult
+    {
+        Next, Index, Impossible, End
     }
 }
