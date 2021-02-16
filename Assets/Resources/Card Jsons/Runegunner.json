@@ -1,0 +1,64 @@
+{
+	"cardType":67,
+	"cardName":"Runegunner",
+	"effText":"Once each turn, you can pip hand-cast a Rune, X spaces from me (following normal placement rules). X times: pay its cost, then echo it. (If you run out of pips, you don't echo it).",
+	"effects":[
+		{
+			"activationRestriction":{
+				"activationRestrictionArray":[
+					"Max Times Per Turn",
+					"Default"
+				],
+				"maxTimes":1
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Rune for Runegunner to cast",
+						"cardRestrictions":["Subtypes Include","Is Spell","Friendly","Hand","Can Be Played","Effect Controller can Afford Cost"],
+						"subtypesInclude":["Rune"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where for Runeloremaster to cast its target Rune",
+						"spaceRestrictions":["Can Play Target to This Space"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"Distance to Target",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",
+					"jumpTo":5
+				}
+			]
+		}
+	],
+	"n":0,
+	"e":5,
+	"s":10,
+	"w":0,
+	"subtypes":["Runar","Mage"],
+	"subtypeText":"Runar Mage"
+}
