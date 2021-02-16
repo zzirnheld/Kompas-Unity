@@ -1,0 +1,52 @@
+{
+	"cardType":67,
+	"cardName":"Wispflux Generator",
+	"effText":"When turns start, if I'm in a corner, give me -2 E and deck->summon a Wisp adjacent to me.",
+	"effects":[
+		{
+			"blurb":"Generate Wispflux",
+			"triggerData":
+			{
+				"blurb":"Generate Wispflux",
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMult":-1
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"blurb":"Wispflux to deck->summon",
+						"cardRestrictions":["Friendly","Deck","Is Spell","Distinct Name from Source","Subtypes Include"],
+						"subtypesInclude":["Weather"]
+					},
+					"maxCanChoose":1
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where to generate Wispflux",
+						"spaceRestrictions":["Can Play Target to This Space","Adjacent to Source"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+	"n":0,
+	"e":10,
+	"s":5,
+	"w":0,
+	"subtypeText":""
+}
