@@ -309,3 +309,7 @@ Elsecaller
 Lightweaver
 Everstorm
 Pricklewisp
+Sickiwisp
+Pishiwisp
+Wispflux Generator
+Runegunner
