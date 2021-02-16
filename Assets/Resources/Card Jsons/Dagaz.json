@@ -1,36 +1,8 @@
 {
 	"cardType":83,
 	"cardName":"Dagaz",
-	"effText":"Runic.\nWhen I’m cast, pay X pips (X can be 0). Give me +X C.\nWhen you cast another Rune, set X to my C. Gain X pips. Give me -X/2 C.\nWhen I’m removed from the board, annihilate me.",
+	"effText":"Runic.\nWhen you cast another Rune, gain a pip.",
 	"effects":[
-		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
-				}
-			},
-			"subeffects":[
-				{
-					"$type":"KompasServer.Effects.PlayerChooseXSubeffect, Assembly-CSharp",
-					"XRest":{
-						"cardRestrictions":[">=0","<= Controller's Pips"]
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
-					"xMultiplier":1
-				},
-				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"cMult":1
-				}
-			]	
-		},
 		{
 			"triggerData":
 			{
@@ -45,41 +17,8 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
-					"whatToCount":"Cost",
-					"xMultiplier":1
-				},
-				{
 					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xMultiplier":1
-				},
-				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"cMult":-1,
-					"cDiv":2
-				}
-			]	
-		},
-		{
-			"triggerData":
-			{
-				"triggerCondition":"Remove",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered","Triggerer Fits Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Board"]
-					}
-				}
-			},
-			"subeffects":[
-				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"xModifier":1
 				}
 			]	
 		}
