@@ -10,7 +10,10 @@
 				"blurb":"Generate Wispflux",
 				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play"]
+					"triggerRestrictions":["This Card in Play","This Card Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["In a Corner"]
+					}
 				}
 			},
 			"subeffects":[

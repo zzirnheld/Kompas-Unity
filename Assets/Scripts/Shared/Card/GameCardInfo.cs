@@ -38,6 +38,7 @@ namespace KompasCore.Cards
         bool IsAdjacentTo(IGameCardInfo card);
         bool SameColumn(IGameCardInfo card);
         bool WithinSpaces(int spaces, IGameCardInfo card);
+        bool InCorner();
     }
 
     /// <summary>
@@ -165,6 +166,8 @@ namespace KompasCore.Cards
             => Location == CardLocation.Field && card.Location == CardLocation.Field && SpaceDirectlyInFront(card.Position);
 
         public bool OnMyDiagonal((int x, int y) space) => Location == CardLocation.Field && (Position.x == space.x || Position.y == space.y);
+
+        public bool InCorner() => (Position.x == 0 || Position.x == 6) && (Position.y == 0 || Position.y == 6);
 
         /// <summary>
         /// Refers to this situation: <br></br>

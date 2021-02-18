@@ -354,6 +354,7 @@ namespace KompasCore.Cards
                 || (yDiffCard == 0 && yDiffSpace == 0)
                 || (xDiffCard == yDiffCard && xDiffSpace == yDiffSpace);
         }
+        public bool InCorner() => (Position.x == 0 || Position.x == 6) && (Position.y == 0 || Position.y == 6);
         #endregion distance/adjacency
 
         public void PutBack()
