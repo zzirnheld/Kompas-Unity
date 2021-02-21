@@ -312,6 +312,7 @@ Pricklewisp
 Sickiwisp
 Pishiwisp
 Nippiwisp
+Flippiwisp
 Wispflux Generator
 Erratic Wisps
 Wispiwisp
