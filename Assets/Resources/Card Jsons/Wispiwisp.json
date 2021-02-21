@@ -1,0 +1,50 @@
+{
+	"cardType":67,
+	"cardName":"Wispiwisp",
+	"effText":"Wisp.\nWhen I move, kill a friendly SX Wisp and give me +X ESW. (If there's no other Wisps to kill, I die.)",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Ethereal for Grudges Unforgotten to annihilate and absorb",
+						"cardRestrictions":["Subtypes Include","Is Character","Board"],
+						"subtypesInclude":["Wisp"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"S",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMult":1,
+					"sMult":1,
+					"wMult":1
+				}
+			]	
+		}
+	],
+	"keywords":["Wisp Summon","Wisp Turn Start"],
+	"n":0,
+	"e":1,
+	"s":2,
+	"w":1,
+	"subtypeText":"Wisp"
+}

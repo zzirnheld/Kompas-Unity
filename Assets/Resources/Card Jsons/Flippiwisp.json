@@ -1,0 +1,87 @@
+{
+	"cardType":67,
+	"cardName":"Flippiwisp",
+	"effText":"Wisp.\nWhen I move, both players can each pay 1 pip, draw 1, then discard 1.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"ChoiceBlurb":"Pay 1 pip, discard 1, and draw 1?",
+					"OptionBlurbs":["Yes","No"],
+					"OptionJumpIndices":[1,6]
+				},
+				{
+					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"jumpTo":6
+				},
+				{
+					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"xModifier":1
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Friendly","Hand"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"ChoiceBlurb":"Pay 1 pip, discard 1, and draw 1?",
+					"OptionBlurbs":["Yes","No"],
+					"OptionJumpIndices":[1,6]
+				},
+				{
+					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"jumpTo":6
+				},
+				{
+					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"xModifier":1
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Friendly","Hand"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
+				},
+			]	
+		}
+	],
+	"keywords":["Wisp Summon","Wisp Turn Start"],
+	"n":0,
+	"e":1,
+	"s":2,
+	"w":0,
+	"subtypeText":"Wisp"
+}
