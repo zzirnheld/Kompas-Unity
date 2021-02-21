@@ -28,8 +28,8 @@
 					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
 					"cardRestriction":{
 						"blurb":"Wispflux to deck->summon",
-						"cardRestrictions":["Friendly","Deck","Is Spell","Distinct Name from Source","Subtypes Include"],
-						"subtypesInclude":["Weather"]
+						"cardRestrictions":["Friendly","Deck","Is Character","Subtypes Include"],
+						"subtypesInclude":["Wisp"]
 					},
 					"maxCanChoose":1
 				},
