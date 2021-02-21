@@ -11,4 +11,5 @@ Machinations Reup
 Comeback Play
 Supplicant
 Weather
-Wisp
+Wisp Summon
+Wisp Turn Start
