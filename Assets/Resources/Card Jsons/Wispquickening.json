@@ -26,7 +26,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"blurb":"card to slightly yeet",
 					"cardRestriction":{
-						"cardRestrictions":["Board","Turn Player Controls"]
+						"cardRestrictions":["Board"]
 					}
 				},
 				{

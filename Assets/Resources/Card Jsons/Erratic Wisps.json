@@ -59,7 +59,6 @@
 		}
 	],
 	"c":1,
-	"spellType":"Radial",
-	"subtypeText":"",
-	"arg":1
+	"spellType":"Enchant",
+	"subtypeText":"Enchant"
 }
