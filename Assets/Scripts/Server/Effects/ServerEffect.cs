@@ -114,6 +114,8 @@ namespace KompasServer.Effects
                         result = await EffectImpossible(result.reason);
                         break;
                     case ResolutionResult.End:
+                        //TODO send to player why resolution ended (including "[cardname] effect finished resolving")
+                        Debug.Log($"Finished resolution of effect of {Source.CardName} because {result.reason}");
                         resolve = false;
                         break;
                     default:
