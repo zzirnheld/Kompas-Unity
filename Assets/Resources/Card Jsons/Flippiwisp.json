@@ -23,14 +23,14 @@
 					"jumpTo":6
 				},
 				{
-					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
 					"xModifier":1
 				},
 				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Friendly","Hand"]
+						"cardRestrictions":["Controller Matches Player Target","Hand"]
 					}
 				},
 				{
@@ -56,14 +56,14 @@
 					"jumpTo":6
 				},
 				{
-					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
 					"xModifier":1
 				},
 				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Friendly","Hand"]
+						"cardRestrictions":["Controller Matches Player Target","Hand"]
 					}
 				},
 				{
