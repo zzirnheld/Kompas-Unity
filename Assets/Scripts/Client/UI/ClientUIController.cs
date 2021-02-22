@@ -3,6 +3,7 @@ using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasCore.GameCore;
 using KompasCore.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -131,17 +132,8 @@ namespace KompasClient.UI
             if (string.IsNullOrEmpty(ip) && acceptEmpty) ip = "127.0.0.1";
             if (!IPAddress.TryParse(ip, out _)) return;
 
-            try
-            {
-                HideConnectUI();
-                clientGame.clientNetworkCtrl.Connect(ip);
-                ShowConnectedWaitingUI();
-            }
-            catch (System.Exception e)
-            {
-                Debug.LogError($"Failed to connect, stack trace: {e.StackTrace}");
-                ShowConnectUI();
-            }
+            HideConnectUI();
+            clientGame.clientNetworkCtrl.Connect(ip);
         }
 
         public void HideConnectUI() => networkingParent.SetActive(false);
