@@ -70,6 +70,7 @@ namespace KompasClient.GameCore
         /// <returns></returns>
         public void ToggleTarget(GameCard nextTarget)
         {
+            //if it's already selected, deselect it
             if (CurrSearchData.Value.searched.Contains(nextTarget))
             {
                 RemoveTarget(nextTarget);
@@ -80,7 +81,11 @@ namespace KompasClient.GameCore
             else AddTarget(nextTarget);
         }
 
-        public void AddTarget(GameCard nextTarget)
+        /// <summary>
+        /// Adds the target to the current list of targets, if applicable
+        /// </summary>
+        /// <param name="nextTarget"></param>
+        private void AddTarget(GameCard nextTarget)
         {
             if(CurrSearchData == null)
             {

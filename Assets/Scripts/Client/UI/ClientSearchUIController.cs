@@ -42,6 +42,9 @@ namespace KompasClient.UI
             cardSearchView.SetActive(true);
         }
 
+        /// <summary>
+        /// Called by "choose" button
+        /// </summary>
         public void SearchSelectedCard()
         {
             //if the list to search through is null, we're not searching atm.
@@ -83,7 +86,10 @@ namespace KompasClient.UI
 
             var toShow = CurrSearchData.Value.toSearch[index];
             cardSearchImage.sprite = toShow.detailedSprite;
-            alreadySelectedText.SetActive(CurrSearchData.Value.searched.Contains(toShow));
+            bool currentTgt = CurrSearchData.Value.searched.Contains(toShow);
+            alreadySelectedText.SetActive(currentTgt);
+            toShow.cardCtrl.ShowCurrentTarget(currentTgt);
+            toShow.cardCtrl.ShowValidTarget(!currentTgt);
 
             endButton.SetActive(CurrSearchData.Value.listRestriction.HaveEnough(CurrSearchData.Value.searched.Count));
 
