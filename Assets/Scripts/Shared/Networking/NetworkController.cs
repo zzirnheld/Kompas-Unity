@@ -9,7 +9,7 @@ namespace KompasCore.Networking
 {
     public abstract class NetworkController : MonoBehaviour
     {
-        public const int port = 8888;
+        public const int port = 8448;
 
         public readonly Queue<(string, string)> packets = new Queue<(string, string)>();
 
