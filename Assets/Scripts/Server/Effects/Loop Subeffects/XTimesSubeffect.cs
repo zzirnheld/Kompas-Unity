@@ -1,4 +1,6 @@
-﻿namespace KompasServer.Effects
+﻿using System.Threading.Tasks;
+
+namespace KompasServer.Effects
 {
     public class XTimesSubeffect : LoopSubeffect
     {
@@ -17,6 +19,12 @@
         {
             base.OnLoopExit();
             count = 0;
+        }
+
+        public override Task<ResolutionInfo> OnImpossible(string why)
+        {
+            count = 0;
+            return base.OnImpossible(why);
         }
     }
 }
