@@ -1,7 +1,8 @@
 {
-	"blurb":"Wisp Summon",
+	"blurb":"Wisp Turn Start",
 	"triggerData":
 	{
+		"blurb":"Wisp Turn Start",
 		"triggerCondition":"Turn Start",
 		"triggerRestriction":{
 			"triggerRestrictions":["This Card in Play"]

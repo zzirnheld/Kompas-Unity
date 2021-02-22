@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Here'n'gone",
-	"effText":"When I'm cast, deck-summon 3 Wisps, but kill them when I'm removed (no matter whether that's because I vanished or was dispelled).\n(Vanishes after 1 turn.)",
+	"effText":"When I'm cast, deck-summon 3 Wisps adjacent to me, but kill them when I'm removed (no matter whether that's because I vanished or was dispelled).\n(Vanishes after 1 turn.)",
 	"effects":[
 		{
 			"triggerData":
@@ -24,35 +24,8 @@
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
-						"blurb":"where to deck->summon the Shaper",
-						"spaceRestrictions":["Can Play Target to This Space","Adjacent"]
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.HangingDiscardSubeffect, Assembly-CSharp",
-					"endCondition":"Remove",
-					"triggerRestriction":
-					{
-						"triggerRestrictions":["This Card Triggered"]
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":{
-						"blurb":"Wisp to deck->summon",
-						"cardRestrictions":["Subtypes Include","Is Character","Friendly","Deck"],
-						"subtypesInclude":["Wisp"]
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where to deck->summon the Shaper",
-						"spaceRestrictions":["Can Play Target to This Space","Adjacent"]
+						"blurb":"where to deck->summon the Wisp",
+						"spaceRestrictions":["Can Play Target to This Space","Adjacent to Source"]
 					}
 				},
 				{
@@ -79,7 +52,34 @@
 					"spaceRestriction":
 					{
 						"blurb":"where to deck->summon the Wisp",
-						"spaceRestrictions":["Can Play Target to This Space","Adjacent"]
+						"spaceRestrictions":["Can Play Target to This Space","Adjacent to Source"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.HangingDiscardSubeffect, Assembly-CSharp",
+					"endCondition":"Remove",
+					"triggerRestriction":
+					{
+						"triggerRestrictions":["This Card Triggered"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"blurb":"Wisp to deck->summon",
+						"cardRestrictions":["Subtypes Include","Is Character","Friendly","Deck"],
+						"subtypesInclude":["Wisp"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where to deck->summon the Wisp",
+						"spaceRestrictions":["Can Play Target to This Space","Adjacent to Source"]
 					}
 				},
 				{

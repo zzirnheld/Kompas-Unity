@@ -15,7 +15,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"Rune for Runarunner to cast",
+						"blurb":"Rune for Runerunner to cast",
 						"cardRestrictions":["Subtypes Include","Is Spell","Friendly","Hand","Can Be Played","Effect Controller can Afford Cost"],
 						"subtypesInclude":["Rune"]
 					}
@@ -24,7 +24,7 @@
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
-						"blurb":"where for Runarunner to cast its target Rune",
+						"blurb":"where for Runerunner to cast its target Rune",
 						"spaceRestrictions":["Can Play Target to This Space"]
 					}
 				},
