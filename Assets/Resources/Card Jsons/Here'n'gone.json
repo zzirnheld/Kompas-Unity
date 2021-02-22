@@ -32,7 +32,7 @@
 					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.HangingAnnihilationSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.HangingDiscardSubeffect, Assembly-CSharp",
 					"endCondition":"Remove",
 					"triggerRestriction":
 					{
@@ -59,7 +59,7 @@
 					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.HangingAnnihilationSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.HangingDiscardSubeffect, Assembly-CSharp",
 					"endCondition":"Remove",
 					"triggerRestriction":
 					{
@@ -78,7 +78,7 @@
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
-						"blurb":"where to deck->summon the Shaper",
+						"blurb":"where to deck->summon the Wisp",
 						"spaceRestrictions":["Can Play Target to This Space","Adjacent"]
 					}
 				},
@@ -86,7 +86,7 @@
 					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.HangingAnnihilationSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.HangingDiscardSubeffect, Assembly-CSharp",
 					"endCondition":"Remove",
 					"triggerRestriction":
 					{
@@ -100,5 +100,6 @@
 	"c":1,
 	"spellType":"Simple",
 	"subtypes":["Simple"],
-	"subtypeText":"Simple"
+	"subtypeText":"Simple",
+	"arg":1
 }
