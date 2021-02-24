@@ -191,7 +191,7 @@ namespace KompasServer.GameCore
                 DrawX(p.index, 5);
             }
 
-            await TurnStartOperations();
+            await TurnStartOperations(notFirstTurn: false);
         }
         #endregion
 
