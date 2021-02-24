@@ -198,8 +198,11 @@ namespace KompasServer.GameCore
         #region turn
         public async Task TurnStartOperations(bool notFirstTurn = true)
         {
-            if (TurnPlayerIndex == FirstTurnPlayer) RoundCount++;
-            TurnCount++;
+            if (notFirstTurn)
+            {
+                if (TurnPlayerIndex == FirstTurnPlayer) RoundCount++;
+                TurnCount++;
+            }
 
             TurnServerPlayer.ServerNotifier.NotifyYourTurn();
             ResetCardsForTurn();
