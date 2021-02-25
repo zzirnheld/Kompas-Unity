@@ -48,6 +48,10 @@ namespace KompasClient.UI
         public ReminderTextsContainer Reminders { get; private set; }
 
         private GameCard currShown;
+        /// <summary>
+        /// The currently shown card by this card info view control controller.
+        /// Setting this also takes care of showing the relevant info.
+        /// </summary>
         public GameCard CurrShown
         {
             get => currShown;

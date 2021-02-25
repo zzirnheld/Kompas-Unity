@@ -11,6 +11,7 @@ namespace KompasClient.UI
     public class ClientSearchUIController : MonoBehaviour
     {
         public ClientUIController clientUICtrl;
+        public CardInfoViewClientUIController cardInfoView;
         private ClientGame ClientGame => clientUICtrl.clientGame;
 
         //search buttons
@@ -18,26 +19,26 @@ namespace KompasClient.UI
 
         //card search
         public GameObject cardSearchView;
-        public Image cardSearchImage;
+        //public Image cardSearchImage;
         public GameObject alreadySelectedText;
         public Button searchTargetButton;
         public TMP_Text searchTargetButtonText;
-        public TMP_Text nSearchText;
-        public TMP_Text eSearchText;
-        public TMP_Text sSearchText;
-        public TMP_Text wSearchText;
-        public TMP_Text cSearchText;
-        public TMP_Text aSearchText;
+        public Image nextSearchImage;
+        public Image prevSearchImage;
         //search
         private int searchIndex = 0;
-        private ClientSearchController.SearchData? CurrSearchData => ClientGame.searchCtrl.CurrSearchData;
+        private int NextSearchIndex => (searchIndex + 1) % (Searching ? CurrSearchData.toSearch.Length : 1);
+        private int PrevSearchIndex => (searchIndex - 1) % (Searching ? CurrSearchData.toSearch.Length : 1);
+        private bool Searching => ClientGame.searchCtrl.CurrSearchData.HasValue;
+        private ClientSearchController.SearchData CurrSearchData => ClientGame.searchCtrl.CurrSearchData.Value;
 
         #region search
         public void StartShowingSearch()
         {
+            Debug.Assert(Searching, "Curr search data must have a value to show a search.");
             searchIndex = 0;
             SearchShowIndex(searchIndex);
-            if (CurrSearchData.Value.targetingSearch) searchTargetButtonText.text = "Choose";
+            if (CurrSearchData.targetingSearch) searchTargetButtonText.text = "Choose";
             else searchTargetButtonText.text = "Cancel";
             cardSearchView.SetActive(true);
         }
@@ -48,12 +49,12 @@ namespace KompasClient.UI
         public void SearchSelectedCard()
         {
             //if the list to search through is null, we're not searching atm.
-            if (CurrSearchData == null) return;
+            if (!Searching) return;
 
-            if (!CurrSearchData.Value.targetingSearch) ClientGame.searchCtrl.ResetSearch();
+            if (!CurrSearchData.targetingSearch) ClientGame.searchCtrl.ResetSearch();
             else
             {
-                GameCard searchSelected = CurrSearchData.Value.toSearch[searchIndex];
+                GameCard searchSelected = CurrSearchData.toSearch[searchIndex];
                 ClientGame.searchCtrl.ToggleTarget(searchSelected);
             }
         }
@@ -62,15 +63,13 @@ namespace KompasClient.UI
 
         public void NextCardSearch()
         {
-            searchIndex++;
-            searchIndex %= CurrSearchData.Value.toSearch.Length;
+            searchIndex = NextSearchIndex;
             SearchShowIndex(searchIndex);
         }
 
         public void PrevCardSearch()
         {
-            searchIndex--;
-            if (searchIndex < 0) searchIndex += CurrSearchData.Value.toSearch.Length;
+            searchIndex = PrevSearchIndex;
             SearchShowIndex(searchIndex);
         }
 
@@ -78,40 +77,27 @@ namespace KompasClient.UI
 
         public void SearchShowIndex(int index)
         {
-            if (!CurrSearchData.HasValue)
+            if (!Searching)
             {
                 HideSearch();
                 return;
             }
 
-            var toShow = CurrSearchData.Value.toSearch[index];
-            cardSearchImage.sprite = toShow.simpleSprite;
-            bool currentTgt = CurrSearchData.Value.searched.Contains(toShow);
+            cardSearchView.SetActive(true);
+
+            var toShow = CurrSearchData.toSearch[index];
+            cardInfoView.CurrShown = toShow;
+            bool currentTgt = CurrSearchData.searched.Contains(toShow);
             alreadySelectedText.SetActive(currentTgt);
             toShow.cardCtrl.ShowCurrentTarget(currentTgt);
             toShow.cardCtrl.ShowValidTarget(!currentTgt);
+            nextSearchImage.sprite = CurrSearchData.searched[NextSearchIndex].simpleSprite;
+            prevSearchImage.sprite = CurrSearchData.searched[PrevSearchIndex].simpleSprite;
 
-            endButton.SetActive(CurrSearchData.Value.listRestriction.HaveEnough(CurrSearchData.Value.searched.Count));
-
-            nSearchText.text = $"N\n{toShow.N}";
-            eSearchText.text = $"E\n{toShow.E}";
-            sSearchText.text = $"S\n{toShow.S}";
-            wSearchText.text = $"W\n{toShow.W}";
-            cSearchText.text = $"C\n{toShow.C}";
-            aSearchText.text = $"A\n{toShow.A}";
-
-            nSearchText.gameObject.SetActive(toShow.CardType == 'C');
-            eSearchText.gameObject.SetActive(toShow.CardType == 'C');
-            sSearchText.gameObject.SetActive(toShow.CardType == 'C');
-            wSearchText.gameObject.SetActive(toShow.CardType == 'C');
-            cSearchText.gameObject.SetActive(toShow.CardType == 'S');
-            aSearchText.gameObject.SetActive(toShow.CardType == 'A');
+            endButton.SetActive(CurrSearchData.HaveEnough);
         }
 
         public void ReshowSearchShown() => SearchShowIndex(searchIndex);
-
-        public void SelectShownSearchCard() 
-            => clientUICtrl.cardInfoViewUICtrl.CurrShown = CurrSearchData.Value.toSearch[searchIndex];
         #endregion
     }
 }

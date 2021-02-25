@@ -9,8 +9,6 @@ namespace KompasClient.GameCore
 {
     public class ClientSearchController : MonoBehaviour
     {
-        //this is probably deprecated now that you have no reason to search the discard,
-        //but i might eventually let you search your deck, so, uh, nyeh
         public struct SearchData
         {
             public readonly GameCard[] toSearch;
@@ -25,6 +23,12 @@ namespace KompasClient.GameCore
                 this.targetingSearch = targetingSearch;
                 this.searched = searched;
             }
+
+            /// <summary>
+            /// Whether the list restriction of this search data determines that enough cards have <b>already</b> been searched 
+            /// that the search can end before the maximum possible number of cards have been searched.
+            /// </summary>
+            public bool HaveEnough => listRestriction.HaveEnough(searched.Count);
         }
 
         public SearchData? CurrSearchData { get; private set; } = null;
