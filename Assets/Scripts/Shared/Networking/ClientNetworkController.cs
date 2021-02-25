@@ -125,7 +125,7 @@ namespace KompasClient.Networking
             // Debug.Log($"Parsing packet {p}");
             p.Execute(ClientGame);
             ClientGame.RefreshShownCards();
-            ClientGame.clientUICtrl.RefreshShownCardInfo();
+            ClientGame.clientUICtrl.RefreshShownCardInfo(ignoreWhetherSearching: false);
             return Task.CompletedTask;
         }
     }

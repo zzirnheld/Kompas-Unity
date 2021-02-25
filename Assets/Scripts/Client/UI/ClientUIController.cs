@@ -18,6 +18,8 @@ namespace KompasClient.UI
         private const string FriendlyTurn = "Friendly Turn";
         private const string EnemyTurn = "Enemy Turn";
 
+        private const string GameStarting = "Game is Starting";
+
         private const string AwaitingResponseMessage = "Awaiting Response";
         private const string AwaitingEnemyResponse = "Awaiting Enemy Response";
 
@@ -94,7 +96,7 @@ namespace KompasClient.UI
             set => LeyloadText.text = $"{value} Pips Leyload";
         }
 
-        public void Update()
+        private void Update()
         {
             //when the user releaes a right click, show eff activation ui.
             if (Input.GetMouseButtonUp(1)) activatorUICtrl.Show();
@@ -104,8 +106,15 @@ namespace KompasClient.UI
             if (Input.GetKeyDown(KeyCode.Escape)) escapeMenuUICtrl.Enable();
         }
 
-        public override bool ShowInfoFor(GameCard card, bool refresh = false)
+        private void Awake()
         {
+            SetCurrState(GameStarting);
+        }
+
+        public override bool ShowInfoFor(GameCard card, bool refresh = false, bool ignoreWhetherSearching = true)
+        {
+            if (!ignoreWhetherSearching && cardInfoViewUICtrl.searchUICtrl.Searching) return false;
+
             bool success = base.ShowInfoFor(card, refresh);
             if (ShownCard != card || refresh)
             {

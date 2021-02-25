@@ -86,6 +86,7 @@ namespace KompasClient.UI
         {
             if (!Searching)
             {
+                Debug.LogWarning("Not searching. Hiding search ui in search show index");
                 HideSearch();
                 return;
             }

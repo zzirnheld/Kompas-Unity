@@ -59,7 +59,7 @@ namespace KompasCore.UI
         /// <param name="card">The card to show info for.</param>
         /// <param name="refresh">Whether to forcibly refresh all shown info of the card being shown</param>
         /// <returns><see langword="true"/> if the shown info was updated, <see langword="false"/> otherwise.</returns>
-        public virtual bool ShowInfoFor(GameCard card, bool refresh = false)
+        public virtual bool ShowInfoFor(GameCard card, bool refresh = false, bool ignoreWhetherSearching = true)
         {
             if (ShownCard == card && !refresh) return false;
 
@@ -76,7 +76,7 @@ namespace KompasCore.UI
             }
         }
 
-        public void RefreshShownCardInfo() => ShowInfoFor(ShownCard, refresh: true);
+        public void RefreshShownCardInfo(bool ignoreWhetherSearching = true) => ShowInfoFor(ShownCard, refresh: true, ignoreWhetherSearching: ignoreWhetherSearching);
 
         /// <summary>
         /// updates the ui with the given selection. if the selection is null, hides the ui.
