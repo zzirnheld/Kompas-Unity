@@ -2,6 +2,7 @@
 using UnityEngine;
 using TMPro;
 using KompasCore.UI;
+using UnityEngine.UI;
 
 namespace KompasCore.Cards
 {
@@ -17,7 +18,7 @@ namespace KompasCore.Cards
 
         public CardAOEController aoeController;
 
-        public MeshRenderer cardFaceRenderer;
+        //public MeshRenderer cardFaceRenderer;
         public GameObject zoomedCharFrame;
         public GameObject zoomedAllFrame;
         public GameObject unzoomedCharFrame;
@@ -51,8 +52,9 @@ namespace KompasCore.Cards
 
         private string currImageCardName;
         private bool currImageZoomLevel;
-        private Texture zoomedInTex;
-        private Texture zoomedOutTex;
+        private Sprite cardImageSprite;
+        public Image cardImageImage;
+        public Image zoomMaskImage;
 
         public int N 
         {
@@ -195,10 +197,7 @@ namespace KompasCore.Cards
 
         private void ReloadImages(string cardFileName)
         {
-            zoomedInTex = Resources.Load<Texture>("Card Detailed Textures/" + cardFileName);
-            zoomedOutTex = Resources.Load<Texture>("Unzoomed Card Textures/" + cardFileName);
-            if (zoomedInTex == null) zoomedInTex = zoomedOutTex;
-            else if (zoomedOutTex == null) zoomedOutTex = zoomedInTex;
+            cardImageSprite = Resources.Load<Sprite>("Simple Sprites/" + cardFileName);
         }
 
         /// <summary>
@@ -212,7 +211,9 @@ namespace KompasCore.Cards
             currImageCardName = cardFileName;
             currImageZoomLevel = zoomed;
 
-            cardFaceRenderer.material.mainTexture = zoomed ? zoomedInTex : zoomedOutTex;
+            //cardFaceRenderer.material.mainTexture = zoomed ? zoomedInTex : zoomedOutTex;
+            cardImageImage.sprite = cardImageSprite;
+            zoomMaskImage.enabled = zoomed;
         }
 
 
