@@ -26,6 +26,7 @@ namespace KompasClient.UI
         public TMP_Text effText;
 
         public Image cardFrameImage;
+        public Image cardFaceImage;
 
         public GameObject conditionParentObject;
         public GameObject negatedObject;
@@ -44,6 +45,8 @@ namespace KompasClient.UI
             = new List<ReminderTextClientUIController>();
         public Transform remindersParent;
         public GameObject reminderPrefab;
+
+        public ClientSearchUIController searchUICtrl;
 
         public ReminderTextsContainer Reminders { get; private set; }
 
@@ -86,6 +89,8 @@ namespace KompasClient.UI
             bool isChar = currShown.CardType == 'C';
             if (isChar) cardFrameImage.sprite = Resources.Load<Sprite>(DefaultCharFrame);
             else cardFrameImage.sprite = Resources.Load<Sprite>(DefaultNonCharFrame);
+
+            cardFaceImage.sprite = currShown.simpleSprite;
 
             nText.text = $"N\n{currShown.N}";
             eText.text = $"E\n{currShown.E}";
@@ -141,10 +146,16 @@ namespace KompasClient.UI
             }
             remindersParent.gameObject.SetActive(reminderCtrls.Any());
 
+            searchUICtrl.HideIfNotShowingCurrSearchIndex();
+
             gameObject.SetActive(true);
         }
 
-        public void OnPointerExit(PointerEventData eventData) => CurrShown = null;
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            if (searchUICtrl.Searching) searchUICtrl.ReshowSearchShown();
+            else CurrShown = null;
+        }
 
         private void Update()
         {
