@@ -124,8 +124,13 @@ namespace KompasClient.Networking
             var p = FromJson(packetInfo.command, packetInfo.json);
             // Debug.Log($"Parsing packet {p}");
             p.Execute(ClientGame);
+
+            //clean up any visual differences after the latest packet.
+            //TODO make this more efficient, probably with dirty lists
             ClientGame.RefreshShownCards();
-            ClientGame.clientUICtrl.RefreshShownCardInfo(ignoreWhetherSearching: false);
+            ClientGame.clientUICtrl.RefreshShownCardInfo();
+            ClientGame.clientUICtrl.cardInfoViewUICtrl.searchUICtrl.ReshowSearchShown();
+
             return Task.CompletedTask;
         }
     }

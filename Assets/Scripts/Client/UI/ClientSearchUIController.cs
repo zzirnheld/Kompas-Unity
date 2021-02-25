@@ -41,7 +41,7 @@ namespace KompasClient.UI
             SearchShowIndex(searchIndex);
             if (CurrSearchData.targetingSearch) searchTargetButtonText.text = "Choose";
             else searchTargetButtonText.text = "Cancel";
-            cardSearchView.SetActive(true);
+            cardSearchView.SetActive(CurrSearchData.AnyToSearchNotVisible);
         }
 
         /// <summary>
@@ -86,12 +86,12 @@ namespace KompasClient.UI
         {
             if (!Searching)
             {
-                Debug.LogWarning("Not searching. Hiding search ui in search show index");
+                //Debug.LogWarning("Not searching. Hiding search ui in search show index");
                 HideSearch();
                 return;
             }
 
-            cardSearchView.SetActive(true);
+            cardSearchView.SetActive(CurrSearchData.AnyToSearchNotVisible);
 
             var toShow = CurrSearchData.toSearch[index];
             cardInfoView.CurrShown = toShow;
@@ -105,6 +105,10 @@ namespace KompasClient.UI
             endButton.SetActive(CurrSearchData.HaveEnough);
         }
 
+        /// <summary>
+        /// Show the currently search-looking-at card, if there is any.
+        /// If not searching, hides the search ui appropriately.
+        /// </summary>
         public void ReshowSearchShown() => SearchShowIndex(searchIndex);
         #endregion
     }

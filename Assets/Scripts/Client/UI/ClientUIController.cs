@@ -111,10 +111,10 @@ namespace KompasClient.UI
             SetCurrState(GameStarting);
         }
 
-        public override bool ShowInfoFor(GameCard card, bool refresh = false, bool ignoreWhetherSearching = true)
+        public override bool ShowInfoFor(GameCard card, bool refresh = false)
         {
             bool success = base.ShowInfoFor(card, refresh);
-            if ((ShownCard != card || refresh) && (ignoreWhetherSearching || cardInfoViewUICtrl.searchUICtrl.Searching))
+            if (ShownCard != card || refresh)
             {
                 cardInfoViewUICtrl.CurrShown = card;
             }

@@ -29,10 +29,20 @@ namespace KompasClient.GameCore
             /// that the search can end before the maximum possible number of cards have been searched.
             /// </summary>
             public bool HaveEnough => listRestriction.HaveEnough(searched.Count);
+
+            /// <summary>
+            /// Whether any cards currently able to be searched can't currently be seen and clicked on.
+            /// </summary>
+            public bool AnyToSearchNotVisible => toSearch.Any(c => !c.CurrentlyVisible);
         }
 
         public SearchData? CurrSearchData { get; private set; } = null;
         private readonly Stack<SearchData> searchStack = new Stack<SearchData>();
+
+        /// <summary>
+        /// Whether there's currently any card that the player can target in their search, that isn't visible right in front of them.
+        /// </summary>
+        public bool CanSearchNotVisibleCard => CurrSearchData.HasValue && CurrSearchData.Value.AnyToSearchNotVisible;
 
         public ClientGame clientGame;
         public ClientSearchUIController clientSearchUICtrl;
@@ -52,7 +62,7 @@ namespace KompasClient.GameCore
             Debug.Log($"Searching a list of {data.toSearch.Length} cards: {string.Join(",", data.toSearch.Select(c => c.CardName))}");
 
             //initiate search process
-            if (data.toSearch.Any(c => !c.CurrentlyVisible)) clientSearchUICtrl.StartShowingSearch();
+            if (CanSearchNotVisibleCard) clientSearchUICtrl.StartShowingSearch();
         }
 
         /// <summary>
