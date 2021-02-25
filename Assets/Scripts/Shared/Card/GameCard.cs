@@ -194,8 +194,8 @@ namespace KompasCore.Cards
             {
                 Debug.Log($"Card {ID} named {CardName} location set to {value}");
                 location = value;
-                if (cardCtrl == null) Debug.LogWarning($"Missing a card control. Is this a debug card?");
-                else cardCtrl.SetPhysicalLocation(location);
+                if (cardCtrl != null) cardCtrl.SetPhysicalLocation(location);
+                //else Debug.LogWarning($"Missing a card control. Is this a debug card?");
             }
         }
 

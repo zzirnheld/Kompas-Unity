@@ -85,7 +85,7 @@ namespace KompasClient.UI
             }
 
             var toShow = CurrSearchData.Value.toSearch[index];
-            cardSearchImage.sprite = toShow.detailedSprite;
+            cardSearchImage.sprite = toShow.simpleSprite;
             bool currentTgt = CurrSearchData.Value.searched.Contains(toShow);
             alreadySelectedText.SetActive(currentTgt);
             toShow.cardCtrl.ShowCurrentTarget(currentTgt);
