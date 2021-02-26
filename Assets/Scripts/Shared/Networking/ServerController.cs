@@ -53,5 +53,10 @@ namespace KompasServer.Networking
                 if(currGame.AddPlayer(client) >= 2) currGame = null;
             }
         }
+
+        public void DumpGameInfo()
+        {
+            foreach (var game in games) game.DumpGameInfo();
+        }
     }
 }

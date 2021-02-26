@@ -4,6 +4,7 @@ using KompasCore.Effects;
 using KompasServer.GameCore;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Text;
 
 namespace KompasServer.Effects
 {
@@ -30,9 +31,7 @@ namespace KompasServer.Effects
         public IEnumerable<IServerStackable> StackEntries => stack.StackEntries;
 
         //queue of triggers triggered throughout the resolution of the effect, to be ordered after the effect resolves
-        private Queue<TriggersTriggered> triggeredTriggers = new Queue<TriggersTriggered>();
-        //current optional trigger considered, if any
-        private ServerTrigger currentOptionalTrigger;
+        private readonly Queue<TriggersTriggered> triggeredTriggers = new Queue<TriggersTriggered>();
 
         //trigger maps
         private readonly Dictionary<string, List<ServerTrigger>> triggerMap
@@ -42,7 +41,7 @@ namespace KompasServer.Effects
         private readonly Dictionary<string, List<HangingEffect>> hangingEffectFallOffMap
             = new Dictionary<string, List<HangingEffect>>();
 
-        private bool priorityHeld = false;
+        private bool currentlyCheckingResponses = false;
         private int currStackIndex;
         private IServerStackable currStackEntry;
         public IServerStackable CurrStackEntry 
@@ -56,7 +55,38 @@ namespace KompasServer.Effects
         }
         
         //nothing is happening if nothing is in the stack, nothing is currently resolving, and no one is waiting to add something to the stack.
-        public bool NothingHappening => stack.Empty && CurrStackEntry == null && !priorityHeld;
+        public bool NothingHappening => stack.Empty && CurrStackEntry == null;
+
+        public override string ToString()
+        {
+            if (CurrStackEntry == null) return string.Empty;
+
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Stack:");
+            foreach(var s in stack.StackEntries)
+            {
+                sb.AppendLine(s.ToString());
+            }
+
+            sb.AppendLine("Currently Resolving:");
+            sb.AppendLine(CurrStackEntry.ToString());
+            if(CurrStackEntry is ServerEffect se)
+            {
+                if (se.Targets.Any())
+                {
+                    sb.Append("Targets: ");
+                    sb.AppendLine(string.Join(", ", se.Targets.Select(c => c.ToString())));
+                }
+                if (se.coords.Any())
+                {
+                    sb.Append("Coords: ");
+                    sb.AppendLine(string.Join(", ", se.coords.Select(c => $"({c.x}, {c.y})")));
+                }
+                sb.AppendLine($"X: {se.X}");
+                sb.AppendLine($"Controller: {se.Controller.index}");
+            }
+            return sb.ToString();
+        }
 
         #region the stack
         public void PushToStack(IServerStackable eff, ActivationContext context)
@@ -88,23 +118,27 @@ namespace KompasServer.Effects
             else
             {
                 Debug.Log($"Resolving next stack entry: {stackable}, {context}");
+                //inform the players that they no longer can respond, in case they were somehow still thinking they could
                 foreach (var p in ServerGame.ServerPlayers) p.ServerNotifier.RequestNoResponse();
+
+                //set the current stack entry to the appropriate value. this is used to check if something is currently resolving.
                 CurrStackEntry = stackable;
+
+                //actually resolve the thing
                 await stackable.StartResolution(context);
-                await FinishStackEntryResolution();
+
+                //after it resolves, tell the clients it's done resolving
+                ServerGame.ServerPlayers.First().ServerNotifier.RemoveStackEntry(currStackIndex);
+                //take note that nothing is resolving
+                CurrStackEntry = null;
+                //and see if there's antyhing to resolve next.
+                await CheckForResponse();
             }
         }
 
         /// <summary>
-        /// The last effect that resolved is now done.
+        /// Clears the passed priority flag for all players
         /// </summary>
-        public async Task FinishStackEntryResolution()
-        {
-            ServerGame.ServerPlayers.First().ServerNotifier.RemoveStackEntry(currStackIndex);
-            CurrStackEntry = null;
-            await CheckForResponse();
-        }
-
         public void ResetPassingPriority()
         {
             foreach (var player in ServerGame.ServerPlayers) player.passedPriority = false;
@@ -112,21 +146,19 @@ namespace KompasServer.Effects
         #endregion the stack
 
         /// <summary>
-        /// Checks to see if anything needs to be done with triggers before checking for other responses
+        /// Accounts for optional triggers and ordering triggers, then pushes appropriate triggers to the stack.
         /// </summary>
-        /// <param name="turnPlayer"></param>
-        /// <returns><see langword="true"/> if all triggers have been addressed, <see langword="false"/> otherwise</returns>
+        /// <param name="turnPlayer">The turn player, whose effects get pushed to the stack first.</param>
         private async Task CheckTriggers(ServerPlayer turnPlayer)
         {
             //get the list of triggers, and see if they're all still valid
-            var triggered = triggeredTriggers.Peek();
+            var triggered = triggeredTriggers.Dequeue();
             var stillValid = triggered.triggers.Where(t => t.StillValidForContext(triggered.context));
 
             //if there's no triggers, skip all this logic
             if (!stillValid.Any())
             {
                 Debug.Log($"Triggers that were valid from {string.Join(",", triggered.triggers)} aren't anymore");
-                triggeredTriggers.Dequeue();
                 return;
             }
 
@@ -137,30 +169,34 @@ namespace KompasServer.Effects
                 if (!t.Responded) await t.Ask();
             }
 
-            //now that all effects have been addressed, see if there's any
+            //now that all optional triggers have been answered, time to deal with ordering.
+            //if a player only has one trigger, don't bother asking them for an order.
             foreach(var p in ServerGame.Players)
             {
                 var thisPlayers = stillValid.Where(t => t.serverEffect.Controller == p && t.Confirmed);
                 if (thisPlayers.Count() == 1) thisPlayers.First().Order = 1;
             }
 
-            //if all triggers have been responded to
+            //now, if there's any triggers that have been confirmed but not ordered (that is, more than one confirmed trigger),
+            //then get an ordering from the player in question.
             var confirmed = stillValid.Where(t => t.Confirmed);
             if (!confirmed.All(t => t.Ordered))
-            { 
+            {
+                //create a list to hold the tasks, so you can get trigger orderings from both players at once.
+                List<Task> triggerOrderings = new List<Task>();
                 foreach (var p in ServerGame.ServerPlayers)
                 {
                     var thisPlayers = confirmed.Where(t => t.serverEffect.Controller == p);
-                    if (thisPlayers.Any(t => !t.Ordered)) await p.serverAwaiter.GetTriggerOrder(thisPlayers);
+                    if (thisPlayers.Any(t => !t.Ordered)) triggerOrderings.Add(p.serverAwaiter.GetTriggerOrder(thisPlayers));
                 }
+                await Task.WhenAll(triggerOrderings);
             }
 
+            //finally, push the triggers to the stack, in the proscribed order, starting with the turn player's
             foreach (var t in confirmed.Where(t => t.serverEffect.Controller == turnPlayer).OrderBy(t => t.Order))
                 PushToStack(t.serverEffect, triggered.context);
             foreach (var t in confirmed.Where(t => t.serverEffect.Controller == turnPlayer.Enemy).OrderBy(t => t.Order))
                 PushToStack(t.serverEffect, triggered.context);
-
-            triggeredTriggers.Dequeue();
         }
         
         /// <summary>
@@ -184,26 +220,39 @@ namespace KompasServer.Effects
 
         public async Task CheckForResponse(bool reset = true)
         {
-            if (CurrStackEntry != null)
-            {
-                //Debug.LogWarning($"Tried to check for response while {CurrStackEntry} is resolving");
-                return;
-            }
+            //if we're already checking for response, don't check again.
+            //checking again could cause us to consider the same set of triggers twice,
+            //then dequeue twice, which would not consider that set of triggers.
+            if (currentlyCheckingResponses || CurrStackEntry != null) return;
+            currentlyCheckingResponses = true;
 
             if (reset) ResetPassingPriority();
 
             //if there's any triggers triggered that haven't been dealt with, mark priority being held and return
             await CheckAllTriggers(ServerGame.TurnServerPlayer);
 
-            var players = ServerGame.ServerPlayers
+            var playersHoldingPriority = ServerGame.ServerPlayers
                 .Where(player => !player.passedPriority)
                 .ToArray(); //call toArray so that we don't create the collection twice.
                             //remove the .ToArray() later if it turns out Linq is smart enough to only execute once, but I'm pretty sure it can't know.
 
             //for any player that is holding priority, request a response from them
-            if (players.Any()) foreach (var p in players) p.ServerNotifier.RequestResponse();
+            if (playersHoldingPriority.Any())
+            {
+                foreach (var p in playersHoldingPriority) p.ServerNotifier.RequestResponse();
+                //after asking for responses, then we're done with this CheckForResponse call. 
+                //now, if any more response-inducing events come in, we won't ask for responses an extra time,
+                //nor will we check for triggers an extra time.
+                currentlyCheckingResponses = false;
+            }
             //if no one holds priority, move on to the next effect
-            else await ResolveNextStackEntry();
+            else
+            {
+                //ResolveNextStackEntry eventually calls CheckForResponse again.
+                //turn the flag off so that we can reenter CheckForResponse by the time that happens.
+                currentlyCheckingResponses = false;
+                await ResolveNextStackEntry();
+            }
         }
 
         private void ResolveHangingEffects(string condition, ActivationContext context)

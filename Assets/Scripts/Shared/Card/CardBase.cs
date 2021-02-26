@@ -104,7 +104,6 @@ namespace KompasCore.Cards
                 }
             }
         }
-
         #endregion
 
         public Sprite detailedSprite;
@@ -146,9 +145,7 @@ namespace KompasCore.Cards
         public override string ToString()
         {
             if (CardName == null) return "Null Card";
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine(CardName);
-            return sb.ToString();
+            return $"{CardName}, {N}/{E}/{S}/{W}/{C}/{A}";
         }
     }
 }

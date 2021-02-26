@@ -8,7 +8,9 @@ namespace KompasCore.Effects
     [Serializable]
     public class CardRestriction
     {
-        public Subeffect Subeffect { get; private set; }
+        [NonSerialized]
+        private Subeffect subeffect;
+        public Subeffect Subeffect { get => subeffect; private set => subeffect = value; }
 
         #region restrictions
         //targets

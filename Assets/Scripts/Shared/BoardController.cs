@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using KompasCore.Effects;
 using KompasCore.Cards;
+using System.Text;
 
 namespace KompasCore.GameCore
 {
@@ -300,6 +301,20 @@ namespace KompasCore.GameCore
                 //then, if the game is a clientgame, request a space target
                 game.OnClickBoard(xIntersection, yIntersection);
             }
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            for(int i = 0; i < 7; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    var card = Board[i, j];
+                    if (card != null) sb.Append($"At {i}, {j}, {card.CardName} id {card.ID}");
+                }
+            }
+            return sb.ToString();
         }
     }
 }

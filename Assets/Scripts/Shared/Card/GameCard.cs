@@ -2,6 +2,7 @@
 using KompasCore.GameCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using UnityEngine;
 
 namespace KompasCore.Cards
@@ -210,6 +211,16 @@ namespace KompasCore.Cards
         public virtual bool KnownToEnemy => !Game.HiddenLocations.Contains(Location);
         public int TurnsOnBoard { get; private set; }
         public abstract bool IsAvatar { get; }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(base.ToString());
+            sb.Append($"id {ID} controlled by {ControllerIndex}, owned by {OwnerIndex}, in location {location}, position {BoardX}, {BoardY}, ");
+            if (AugmentedCard != null) sb.Append($"augmented card is {AugmentedCard.CardName} id {AugmentedCard.ID}, ");
+            if (Augments.Count() > 0) sb.Append($"augments are {string.Join(", ", Augments.Select(c => $"{c.CardName} id {c.ID}"))}");
+            return sb.ToString();
+        }
 
         public void SetInfo(SerializableCard serializedCard, int id)
         {

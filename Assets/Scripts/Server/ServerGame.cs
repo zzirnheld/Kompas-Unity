@@ -334,5 +334,16 @@ namespace KompasServer.GameCore
         public override GameCard GetCardWithID(int id) => cardsByID.ContainsKey(id) ? cardsByID[id] : null;
 
         public ServerPlayer ServerControllerOf(GameCard card) => ServerPlayers[card.ControllerIndex];
+
+        public void DumpGameInfo()
+        {
+            Debug.Log("BEGIN GAME INFO DUMP");
+            Debug.Log("Cards:");
+            foreach (var c in Cards) Debug.Log(c.ToString());
+
+            Debug.Log($"Cards on board:\n{boardCtrl.ToString()}");
+
+            Debug.Log(EffectsController.ToString());
+        }
     }
 }

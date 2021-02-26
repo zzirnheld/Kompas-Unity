@@ -6,6 +6,7 @@ using KompasServer.GameCore;
 using KompasServer.Networking;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using UnityEngine;
 
 namespace KompasServer.Cards
@@ -72,6 +73,18 @@ namespace KompasServer.Cards
 
         private bool knownToEnemy = false;
         public override bool KnownToEnemy => knownToEnemy;
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(base.ToString());
+            foreach (var eff in Effects)
+            {
+                sb.Append(eff.ToString());
+                sb.Append(", ");
+            }
+            return sb.ToString();
+        }
 
         public virtual void SetInfo(SerializableCard serializedCard, ServerGame game, ServerPlayer owner, ServerEffect[] effects, int id)
         {

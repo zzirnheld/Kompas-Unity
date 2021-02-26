@@ -183,8 +183,8 @@ namespace KompasServer.Effects
         {
             var sb = new System.Text.StringBuilder();
 
-            sb.Append($"Effect of {Source.CardName}:\n");
-            foreach (var s in Subeffects) sb.Append($"{s.GetType()},\n");
+            sb.Append($"Effect of {Source.CardName}: ");
+            foreach (var s in Subeffects) sb.Append($"{s.GetType()}, ");
 
             return sb.ToString();
         }
