@@ -57,6 +57,7 @@ namespace KompasClient.UI
             {
                 GameCard searchSelected = CurrSearchData.toSearch[searchIndex];
                 ClientGame.searchCtrl.ToggleTarget(searchSelected);
+                ClientGame.searchCtrl.ResetSearch();
             }
         }
 

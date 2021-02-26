@@ -15,7 +15,7 @@ namespace KompasServer.Effects
 
             //if everything goes to plan, resolve the next subeffect
             if (toAttach == null || attachTo == null) return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
-            else if (attachTo.AddAugment(toAttach, Effect)) return Task.FromResult(ResolutionInfo.Next);
+            else if (attachTo.AddAugment(toAttach, stackSrc: Effect)) return Task.FromResult(ResolutionInfo.Next);
             else return Task.FromResult(ResolutionInfo.Impossible(AttachFailed));
         }
     }

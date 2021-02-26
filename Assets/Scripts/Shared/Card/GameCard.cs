@@ -376,8 +376,8 @@ namespace KompasCore.Cards
 
             //if this and the other are in the same place, it doesn't leave play
             bool canHappen = false;
-            if (augment.Location != Location) canHappen = augment.Remove(stackSrc);
-            else if (augment.AugmentedCard != null) canHappen = augment.Detach(stackSrc);
+            if (augment.Location != Location || augment.AugmentedCard != null) 
+                canHappen = augment.Remove(stackSrc);
 
             if (!canHappen)
             {
@@ -389,10 +389,8 @@ namespace KompasCore.Cards
             //regardless, add the augment
             AugmentsList.Add(augment);
 
-            //and update the augment's augmented card, location, and position to reflect its new status
+            //and update the augment's augmented card, to reflect its new status
             augment.AugmentedCard = this;
-            augment.Location = Location;
-            augment.Position = Position;
 
             return true;
         }

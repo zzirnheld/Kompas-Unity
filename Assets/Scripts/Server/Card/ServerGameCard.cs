@@ -93,12 +93,12 @@ namespace KompasServer.Cards
 
         public override bool AddAugment(GameCard augment, IStackable stackSrc = null)
         {
-            var context = new ActivationContext(card: augment, space: Position, stackable: stackSrc, triggerer: Controller);
+            var attachedContext = new ActivationContext(card: augment, space: Position, stackable: stackSrc, triggerer: Controller);
             var augmentedContext = new ActivationContext(card: this, space: Position, stackable: stackSrc, triggerer: Controller);
             bool wasKnown = augment.KnownToEnemy;
             if (base.AddAugment(augment, stackSrc))
             {
-                EffectsController.TriggerForCondition(Trigger.AugmentAttached, context);
+                EffectsController.TriggerForCondition(Trigger.AugmentAttached, attachedContext);
                 EffectsController.TriggerForCondition(Trigger.Augmented, augmentedContext);
                 ServerGame.ServerPlayers[augment.ControllerIndex].ServerNotifier.NotifyAttach(augment, BoardX, BoardY, wasKnown);
                 return true;
