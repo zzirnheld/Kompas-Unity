@@ -102,7 +102,9 @@ namespace KompasCore.Cards
             get => (BoardX, BoardY);
             set
             {
+                Debug.Log($"Position of {CardName} set to {BoardX}, {BoardY}");
                 (BoardX, BoardY) = value;
+                //card controller will be null on server. not using null ? because of monobehavior
                 if(cardCtrl != null) cardCtrl.SetPhysicalLocation(Location);
                 foreach (var aug in AugmentsList) aug.Position = value;
             }

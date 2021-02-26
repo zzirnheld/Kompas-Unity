@@ -111,6 +111,8 @@ namespace KompasClient.UI
         /// If not searching, hides the search ui appropriately.
         /// </summary>
         public void ReshowSearchShown() => SearchShowIndex(searchIndex);
+
+        public void ReshowSearchShownIfSearching () { if (Searching) ReshowSearchShown(); }
         #endregion
     }
 }

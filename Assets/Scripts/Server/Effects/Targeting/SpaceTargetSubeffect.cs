@@ -54,7 +54,7 @@ namespace KompasServer.Effects
                 ServerPlayer.ServerNotifier.AcceptTarget();
                 return true;
             }
-            else Debug.LogError($"{x}, {y} not valid for restriction {spaceRestriction}");
+            //else Debug.LogError($"{x}, {y} not valid for restriction {spaceRestriction}");
 
             return false;
         }

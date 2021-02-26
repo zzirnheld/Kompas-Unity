@@ -111,6 +111,7 @@ namespace KompasServer.Effects
                         else resolve = false; //stop if that subeffect index is out of bounds
                         break;
                     case ResolutionResult.Impossible:
+                        Debug.Log($"Effect of {Source.CardName} was impossible at index {index} because {result.reason}. Going to OnImpossible if applicable");
                         result = await EffectImpossible(result.reason);
                         break;
                     case ResolutionResult.End:

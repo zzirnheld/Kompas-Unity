@@ -13,6 +13,11 @@ namespace KompasServer.Networking
     //handles networking and such for a server game
     public class ServerNetworkController : NetworkController
     {
+        public static readonly string[] DontLogThesePackets =
+        {
+            Packet.PassPriority
+        };
+
         public ServerPlayer Player;
         public ServerGame sGame;
         public ServerNotifier ServerNotifier;
@@ -73,7 +78,7 @@ namespace KompasServer.Networking
                 return;
             }
 
-            Debug.Log($"Processing {packetInfo.json} from {Player.index}");
+            if(!DontLogThesePackets.Contains(packetInfo.command)) Debug.Log($"Processing {packetInfo.json} from {Player.index}");
 
             var packet = FromJson(packetInfo.command, packetInfo.json);
             await packet.Execute(sGame, Player, serverAwaiter);

@@ -145,6 +145,7 @@ namespace KompasCore.Cards
                     MoveTo((card.BoardX, card.BoardY));
                     SetRotation();
                     if (card.CardType == 'S' && card.SpellSubtype == CardBase.RadialSubtype) aoeController.Show(card.Arg);
+                    gameObject.SetActive(true);
                     break;
                 case CardLocation.Hand:
                     card.gameObject.transform.SetParent(card.Controller.handObject.transform);
@@ -165,7 +166,7 @@ namespace KompasCore.Cards
         /// </summary>
         private void MoveTo((int x, int y) to)
         {
-            transform.localPosition = BoardController.GridIndicesToPos(to.x, to.y);
+            transform.localPosition = BoardController.GridIndicesToCardPos(to.x, to.y);
         }
 
         public void SpreadOutAugs()

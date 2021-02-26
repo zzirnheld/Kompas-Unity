@@ -186,7 +186,7 @@ namespace KompasServer.Effects
         {
             if (CurrStackEntry != null)
             {
-                Debug.LogWarning($"Tried to check for response while {CurrStackEntry} is resolving");
+                //Debug.LogWarning($"Tried to check for response while {CurrStackEntry} is resolving");
                 return;
             }
 
