@@ -7,11 +7,12 @@ using UnityEngine;
 
 namespace KompasCore.Effects
 {
-    [System.Serializable]
+    [Serializable]
     public class TriggerRestriction
     {
         public Game Game { get; private set; }
 
+        #region trigger conditions
         public const string ThisCardTriggered = "This Card Triggered"; //0,
 
         //todo deprecate this card in play to this card fits restriction
@@ -52,6 +53,7 @@ namespace KompasCore.Effects
         public const string NotFromEffect = "Not From Effect"; //501,
         public const string MaxPerRound = "Max Per Round"; //502
         public const string MaxPerStack = "Max Per Stack";
+        #endregion trigger conditions
 
         public static readonly string[] ReevalationRestrictions = { MaxPerTurn, MaxPerRound, MaxPerStack };
 
@@ -89,11 +91,11 @@ namespace KompasCore.Effects
             xRestriction.Initialize(thisCard);
             spaceRestriction.Initialize(thisCard, effect.Controller, effect);
 
-            this.ThisCard = thisCard;
-            this.ThisTrigger = thisTrigger;
+            ThisCard = thisCard;
+            ThisTrigger = thisTrigger;
 
             initialized = true;
-            Debug.Log($"Initializing trigger for {thisCard?.CardName}. game is null? {game}");
+            //Debug.Log($"Initializing trigger restriction for {thisCard?.CardName}. game is null? {game}");
         }
 
         private bool RestrictionValid(string restriction, ActivationContext context)
@@ -137,7 +139,7 @@ namespace KompasCore.Effects
                 case MaxPerStack: return ThisTrigger.Effect.TimesUsedThisStack < maxPerStack;
 
                 //misc
-                default: throw new System.ArgumentException($"Invalid trigger restriction {restriction}");
+                default: throw new ArgumentException($"Invalid trigger restriction {restriction}");
             }
         }
 
@@ -150,7 +152,7 @@ namespace KompasCore.Effects
 
         public bool Evaluate(ActivationContext context)
         {
-            if (!initialized) throw new System.ArgumentException("Trigger restriction not initialized!");
+            if (!initialized) throw new ArgumentException("Trigger restriction not initialized!");
 
             try
             {
