@@ -13,9 +13,14 @@ namespace KompasClient.UI
 {
     public class CardInfoViewClientUIController : MonoBehaviour, IPointerExitHandler
     {
-        public const string DefaultCharFrame = "Misc Card Icons/Character Frame";
-        public const string DefaultNonCharFrame = "Misc Card Icons/Spell Frame";
+        //public const string DefaultCharFrame = "Misc Card Icons/Character Frame";
+        //public const string DefaultNonCharFrame = "Misc Card Icons/Spell Frame";
         public const string RemindersJsonPath = "Reminder Text/Reminder Texts";
+
+        public Sprite charHaze;
+        public Sprite nonCharHaze;
+        public Sprite charFrame;
+        public Sprite nonCharFrame;
 
         public TMP_Text nameText;
         public TMP_Text subtypesText;
@@ -27,6 +32,7 @@ namespace KompasClient.UI
 
         public Image cardFrameImage;
         public Image cardFaceImage;
+        public Image cardImageHaze;
 
         public GameObject conditionParentObject;
         public GameObject negatedObject;
@@ -87,8 +93,16 @@ namespace KompasClient.UI
             }
 
             bool isChar = currShown.CardType == 'C';
-            if (isChar) cardFrameImage.sprite = Resources.Load<Sprite>(DefaultCharFrame);
-            else cardFrameImage.sprite = Resources.Load<Sprite>(DefaultNonCharFrame);
+            if (isChar)
+            {
+                cardFrameImage.sprite = charFrame;
+                cardImageHaze.sprite = charHaze;
+            }
+            else
+            {
+                cardFrameImage.sprite = nonCharFrame;
+                cardImageHaze.sprite = nonCharHaze;
+            }
 
             cardFaceImage.sprite = currShown.simpleSprite;
 

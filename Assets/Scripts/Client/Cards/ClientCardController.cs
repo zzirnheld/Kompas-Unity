@@ -13,11 +13,23 @@ public class ClientCardController : CardController
     public Image cUnzoomedImage;
     public Image aUnzoomedImage;
 
+    public Image hazeImage;
+    public Sprite charHaze;
+    public Sprite nonCharHaze;
+
     public override void SetPhysicalLocation(CardLocation location)
     {
         base.SetPhysicalLocation(location);
 
         ShowForCardType(card.CardType, ClientCameraController.Main.Zoomed);
+    }
+
+    public override void SetImage(string cardFileName, bool zoomed)
+    {
+        base.SetImage(cardFileName, zoomed);
+
+        hazeImage.enabled = zoomed;
+        hazeImage.sprite = card.CardType == 'C' ? charHaze : nonCharHaze;
     }
 
     public void ApplySettings(ClientUISettings settings)

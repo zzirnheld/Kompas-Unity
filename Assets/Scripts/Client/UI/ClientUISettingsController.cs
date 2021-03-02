@@ -53,7 +53,7 @@ namespace KompasClient.UI
                 string settingsJson = JsonConvert.SerializeObject(ClientUISettings);
                 File.WriteAllText(ClientUISettingsPath, settingsJson);
             }
-            catch (System.ArgumentException a)
+            catch (ArgumentException a)
             {
                 Debug.LogError($"Failed to serialize settings.\n{a.Message}.\n{a.StackTrace}");
             }
@@ -89,7 +89,7 @@ namespace KompasClient.UI
 
     public enum StatHighlight { NoHighlight, ColoredBack }
 
-    [System.Serializable]
+    [Serializable]
     public class ClientUISettings
     {
         public StatHighlight statHighlight;

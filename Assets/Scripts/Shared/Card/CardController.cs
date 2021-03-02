@@ -54,7 +54,7 @@ namespace KompasCore.Cards
         private bool currImageZoomLevel;
         private Sprite cardImageSprite;
         public Image cardImageImage;
-        public Image zoomMaskImage;
+        //public Image zoomMaskImage;
 
         public int N 
         {
@@ -203,7 +203,7 @@ namespace KompasCore.Cards
         /// <summary>
         /// Set the sprites of this card and gameobject
         /// </summary>
-        public void SetImage(string cardFileName, bool zoomed)
+        public virtual void SetImage(string cardFileName, bool zoomed)
         {
             if (cardFileName == currImageCardName && currImageZoomLevel == zoomed) return;
             if (currImageCardName != cardFileName) ReloadImages(cardFileName);
@@ -213,7 +213,7 @@ namespace KompasCore.Cards
 
             //cardFaceRenderer.material.mainTexture = zoomed ? zoomedInTex : zoomedOutTex;
             cardImageImage.sprite = cardImageSprite;
-            zoomMaskImage.enabled = zoomed;
+            //zoomMaskImage.enabled = zoomed;
         }
 
 
