@@ -46,7 +46,7 @@ namespace KompasCore.Networking
 
         public override Packet GetInversion(bool known)
         {
-            if (Game.HiddenLocations.Contains(location))
+            if (Game.IsHiddenLocation(location))
             {
                 switch (location)
                 {

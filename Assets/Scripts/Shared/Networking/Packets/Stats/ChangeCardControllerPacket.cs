@@ -19,7 +19,8 @@ namespace KompasCore.Networking
 
         public override Packet Copy() => new ChangeCardControllerPacket(cardId, controllerIndex);
 
-        public override Packet GetInversion(bool known) => new ChangeCardControllerPacket(cardId, controllerIndex, invert: true);
+        //don't try and tell the client to change the controller of a card they don't know about
+        public override Packet GetInversion(bool known) => known ? new ChangeCardControllerPacket(cardId, controllerIndex, invert: true) : null;
     }
 }
 
@@ -32,6 +33,7 @@ namespace KompasClient.Networking
             var card = clientGame.GetCardWithID(cardId);
             var controller = clientGame.Players[controllerIndex];
             if (card != null && controller != null) card.Controller = controller;
+            //If this fails, it's probably because the card doesn't exist, because it's a card that hasn't been sent to the client.
             else Debug.Log($"Could not set card controller, card: {card}; controller: {controller}");
         }
     }
