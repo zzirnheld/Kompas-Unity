@@ -22,6 +22,7 @@ namespace KompasCore.Effects
         /// </summary>
         public string subeffType;
 
+        #region targeting indices
         /// <summary>
         /// The index in the Effect.targets array for which target this effect uses.
         /// If positive, just an index.
@@ -40,7 +41,9 @@ namespace KompasCore.Effects
         /// The index of player. If 0, this, if 1, enemy. 
         /// </summary>
         public int playerIndex = -1;
+        #endregion targeting indices
 
+        #region effect x
         /// <summary>
         /// If the effect uses X, this is the multiplier to X. Default: 0
         /// </summary>
@@ -60,6 +63,7 @@ namespace KompasCore.Effects
         /// If the effect uses X, this is the adjusted value of X
         /// </summary>
         public int Count => (Effect.X * xMultiplier / xDivisor) + xModifier;
+        #endregion effect x
 
         public GameCard Target => Effect.GetTarget(targetIndex);
         public (int x, int y) Space => Effect.GetSpace(spaceIndex);

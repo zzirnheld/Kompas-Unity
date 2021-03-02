@@ -375,17 +375,17 @@ namespace KompasCore.Cards
             if(cardCtrl != null) cardCtrl.SetPhysicalLocation(Location);
         }
 
+        /// <summary>
+        /// Accumulates the distance to <paramref name="to"/> into the number of spaces this card moved this turn.
+        /// </summary>
+        /// <param name="to">The space being moved to</param>
         public void CountSpacesMovedTo((int x, int y) to) => SetSpacesMoved(SpacesMoved + DistanceTo(to.x, to.y));
 
         #region augments
         public virtual bool AddAugment(GameCard augment, IStackable stackSrc = null)
         {
             //can't add a null augment
-            if (augment == null)
-            {
-                Debug.LogError($"Can't add a null augment.");
-                return false;
-            }
+            if (augment == null) throw new System.ArgumentNullException("augment", $"Cannot add a null augment (to {CardName})");
 
             //if this and the other are in the same place, it doesn't leave play
             bool canHappen = false;

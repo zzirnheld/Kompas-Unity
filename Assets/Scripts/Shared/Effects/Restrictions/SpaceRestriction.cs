@@ -13,6 +13,7 @@ namespace KompasCore.Effects
         public Player Controller { get; private set; }
         public Effect Effect { get; private set; }
 
+        #region space restrictions
         //adjacency
         public const string AdjacentToThisCard = "Adjacent to Source";
         public const string AdjacentToWithRestriction = "Adjacent to a Card that Fits Restriction";
@@ -38,6 +39,7 @@ namespace KompasCore.Effects
         public const string CardHereFitsRestriction = "Card Here Fits Restriction";
         public const string OnTargetsDiagonal = "On Target's Diagonal";
         public const string OnEdge = "On Edge of Board";
+        #endregion space restrictions
 
         public string[] spaceRestrictions;
         public CardRestriction adjacencyRestriction;
