@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Warrior for Medic to give +1E",
-						"cardRestrictions":["Subtypes Include","Is Character","Board","Adjacent"],
+						"cardRestrictions":["Subtypes Include","Is Character","Board","Adjacent to Source"],
 						"subtypesInclude":["Warrior"]
 					}
 				},

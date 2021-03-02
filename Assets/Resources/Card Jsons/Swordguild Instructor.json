@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Warrior for Instructor to give +1W",
-						"cardRestrictions":["Subtypes Include","Is Character","Board","Adjacent"],
+						"cardRestrictions":["Subtypes Include","Is Character","Board","Adjacent to Source"],
 						"subtypesInclude":["Warrior"]
 					}
 				},

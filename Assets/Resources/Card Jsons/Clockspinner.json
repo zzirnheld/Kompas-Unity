@@ -17,7 +17,7 @@
 					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Board","Adjacent","Subtypes Include"],
+						"cardRestrictions":["Board","Adjacent to Source","Subtypes Include"],
 						"subtypesInclude":["Machination"]
 					},
 					"cMod":1

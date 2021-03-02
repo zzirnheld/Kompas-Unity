@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"spell for Chain Dispel to Dispel",
-						"cardRestrictions":["Is Spell","Board","Adjacent"]
+						"cardRestrictions":["Is Spell","Board","Adjacent to Source"]
 					}
 				},
 				{

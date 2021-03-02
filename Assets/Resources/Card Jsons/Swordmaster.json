@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"adjacent Warrior for Swordmaster to give +1EW",
-						"cardRestrictions":["Subtypes Include","Is Character","Board","Adjacent"],
+						"cardRestrictions":["Subtypes Include","Is Character","Board","Adjacent to Source"],
 						"subtypesInclude":["Warrior"]
 					}
 				},

@@ -50,8 +50,8 @@ namespace KompasCore.Effects
 
         //is
         public const string IsSource = "Is Source";
-        public const string AugmentsTarget = "Is Augment of Target";
-        public const string AugmentedBySource = "Is Augmented by Source";
+        public const string AugmentsTarget = "Augments Current Target";
+        public const string AugmentedBySource = "Source Augments";
         public const string WieldsAugmentFittingRestriction = "Wields Augment Fitting Restriction";
 
         //distinct
@@ -97,7 +97,7 @@ namespace KompasCore.Effects
         public const string Negated = "Negated";
 
         //positioning
-        public const string Adjacent = "Adjacent";
+        public const string AdjacentToSource = "Adjacent to Source";
         public const string AdjacentToTarget = "Adjacent to Target";
         public const string WithinCSpacesOfSource = "Within C Spaces";
         public const string WithinCSpacesOfTarget = "Within C Spaces of Target";
@@ -274,7 +274,7 @@ namespace KompasCore.Effects
                 case Negated:  return potentialTarget.Negated;
 
                 //positioning
-                case Adjacent:           return potentialTarget.IsAdjacentTo(Source);
+                case AdjacentToSource:           return potentialTarget.IsAdjacentTo(Source);
                 case AdjacentToTarget:   return potentialTarget.IsAdjacentTo(Subeffect.Target);
                 case AdjacentToSubtype:  return potentialTarget.AdjacentCards.Any(card => adjacencySubtypes.All(s => card.SubtypeText.Contains(s)));
                 case InAOE:              return Source.CardInAOE(potentialTarget);

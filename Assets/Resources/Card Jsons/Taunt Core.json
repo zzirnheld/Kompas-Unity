@@ -34,7 +34,7 @@
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Max Per Stack"],
 					"cardRestriction":
 					{
-						"cardRestrictions":["Adjacent"]
+						"cardRestrictions":["Adjacent to Source"]
 					}
 				}
 			},
