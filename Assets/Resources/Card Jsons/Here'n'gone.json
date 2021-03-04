@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Here'n'gone",
-	"effText":"When I'm cast, deck-summon 3 Wisps adjacent to me, but kill them when I'm removed (no matter whether that's because I vanished or was dispelled).\n(Vanishes after 1 turn.)",
+	"effText":"When I'm cast, deck-summon 3 Wisps adjacent to me, but kill them when I'm removed (when the stack empties).",
 	"effects":[
 		{
 			"triggerData":
