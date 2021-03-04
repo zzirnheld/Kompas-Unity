@@ -1,4 +1,5 @@
-﻿using KompasCore.Effects;
+﻿using KompasCore.Cards;
+using KompasCore.Effects;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -15,9 +16,9 @@ namespace KompasServer.Effects
             spaceRestriction.Initialize(this);
         }
 
-        public override async Task<ResolutionInfo> Resolve()
+        public List<(int, int)> ValidSpaces
         {
-            if (ServerEffect.serverGame.ExistsSpaceTarget(spaceRestriction))
+            get
             {
                 List<(int, int)> spaces = new List<(int, int)>();
                 for (int x = 0; x < 7; x++)
@@ -25,10 +26,40 @@ namespace KompasServer.Effects
                     for (int y = 0; y < 7; y++)
                     {
                         var space = Player.SubjectiveCoords((x, y));
-                        if(spaceRestriction.Evaluate((x, y))) spaces.Add(space);
+                        if (spaceRestriction.Evaluate((x, y))) spaces.Add(space);
                     }
                 }
+                return spaces;
+            }
+        }
 
+        public override bool IsImpossible() => ValidSpaces.Count == 0;
+
+        /// <summary>
+        /// Whether this space target subeffect will be valid if the given theoretical target is targeted.
+        /// </summary>
+        /// <param name="theoreticalTarget">The card to theoretically be targeted.</param>
+        /// <returns><see langword="true"/> if there's a valid space,
+        /// assuming you pick <paramref name="theoreticalTarget"/>,
+        /// <see langword="false"/> otherwise</returns>
+        public bool WillBePossibleIfCardTargeted(GameCard theoreticalTarget)
+        {
+            for(int x = 0; x < 7; x++)
+            {
+                for(int y = 0; y < 7; y++)
+                {
+                    if (spaceRestriction.Evaluate(x, y, theoreticalTarget)) return true;
+                }
+            }
+
+            return false;
+        }
+
+        public override async Task<ResolutionInfo> Resolve()
+        {
+            var spaces = ValidSpaces;
+            if (spaces.Count > 0)
+            {
                 var (a, b) = (-1, -1);
                 while (!SetTargetIfValid(a, b))
                 {

@@ -13,14 +13,19 @@
 			},
 			"subeffects":[
 				{
+					"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+					"subeffIndices":[3,4],
+					"skipIndex":8
+				},
+				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
 					"ChoiceBlurb":"Pay 1 pip, discard 1, and draw 1?",
 					"OptionBlurbs":["Yes","No"],
-					"OptionJumpIndices":[1,6]
+					"OptionJumpIndices":[2,7]
 				},
 				{
 					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
-					"jumpTo":6
+					"jumpTo":7
 				},
 				{
 					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
@@ -46,14 +51,14 @@
 					"$type":"KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
 				},
 				{
+					"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+					"subeffIndices":[11,12]
+				},
+				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
 					"ChoiceBlurb":"Pay 1 pip, discard 1, and draw 1?",
 					"OptionBlurbs":["Yes","No"],
-					"OptionJumpIndices":[9,100]
-				},
-				{
-					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
-					"jumpTo":6
+					"OptionJumpIndices":[11,100]
 				},
 				{
 					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
@@ -71,9 +76,6 @@
 				},
 				{
 					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
 				}
 			]	
 		}

@@ -68,6 +68,12 @@ namespace KompasServer.Effects
         /// </summary>
         public abstract Task<ResolutionInfo> Resolve();
 
+        /// <summary>
+        /// Whether this subeffect will be considered EffectImpossible at this point
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool IsImpossible() => true;
+
 
         /// <summary>
         /// Optional method. If implemented, does something when the effect is declared impossible.

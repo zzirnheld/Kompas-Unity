@@ -57,19 +57,6 @@ namespace KompasCore.GameCore
 
         public bool ExistsCardTarget(CardRestriction restriction) => Cards.Any(c => restriction.Evaluate(c));
 
-        public bool ExistsSpaceTarget(SpaceRestriction restriction)
-        {
-            for (int x = 0; x < 7; x++)
-            {
-                for (int y = 0; y < 7; y++)
-                {
-                    if (restriction.Evaluate(x, y)) return true;
-                }
-            }
-
-            return false;
-        }
-
         public bool BoardHasCopyOf(GameCard card)
             => Cards.Any(c => c != card && c.Location == CardLocation.Field && c.Controller == card.Controller && c.CardName == card.CardName);
 

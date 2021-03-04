@@ -1,4 +1,5 @@
 ﻿using KompasCore.Cards;
+using KompasServer.Effects;
 using System;
 using System.Linq;
 using UnityEngine;
@@ -122,6 +123,7 @@ namespace KompasCore.Effects
         public const string Augmented = "Augmented";
         public const string IsDefendingFromSource = "Is Defending From Source";
         public const string CanPlayTargetToThisCharactersSpace = "Can Play Target to This Character's Space";
+        public const string SpaceRestrictionValidIfThisTargetChosen = "Space Restriction Valid With This Target Chosen";
         #endregion restrictions
 
         //because JsonUtility will fill in all values with defaults if not present
@@ -136,8 +138,9 @@ namespace KompasCore.Effects
         public int costDivisor = 1;
         public int cSpaces;
         public string[] adjacencySubtypes = new string[0];
+        public int spaceRestrictionIndex;
 
-        [System.NonSerialized]
+        [NonSerialized]
         private CardRestriction secondaryRestriction;
         public string secondaryRestrictionString = null;
 
@@ -302,6 +305,10 @@ namespace KompasCore.Effects
                         || (Source.Game.CurrStackEntry is Attack atk2 && atk2.attacker == Source && atk2.defender == potentialTarget.Card);
                 case CanPlayTargetToThisCharactersSpace:
                     return Subeffect.Target.PlayRestriction.EvaluateEffectPlay(potentialTarget.Position.x, potentialTarget.Position.y, Effect);
+                case SpaceRestrictionValidIfThisTargetChosen:
+                    if (Effect.Subeffects[spaceRestrictionIndex] is SpaceTargetSubeffect spaceTgtSubeff)
+                        return spaceTgtSubeff.WillBePossibleIfCardTargeted(theoreticalTarget: potentialTarget.Card);
+                    else return false;
                 default: throw new ArgumentException($"Invalid card restriction {restriction}", "restriction");
             }
         }

@@ -22,8 +22,12 @@ namespace KompasServer.Effects
         public int S => sMult * Effect.X + sMod;
         public int W => wMult * Effect.X + wMod;
 
+        public override bool IsImpossible() => Target == null || Target.N < N || Target.E < E || Target.S < S || Target.W < W;
+
         public override Task<ResolutionInfo> Resolve()
         {
+            if (Target == null) return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
+
             if (Target.N < N ||
                 Target.E < E ||
                 Target.S < S ||

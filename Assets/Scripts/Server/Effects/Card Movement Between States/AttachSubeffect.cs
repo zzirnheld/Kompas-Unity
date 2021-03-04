@@ -8,6 +8,9 @@ namespace KompasServer.Effects
         //default is two targets ago
         public int attachmentTarget = -2;
 
+        //leaving this here in case i actually want to implement it later.
+        //public override bool IsImpossible() => Target == null || Effect.GetTarget(attachmentTarget) == null;
+
         public override Task<ResolutionInfo> Resolve()
         {
             var toAttach = Target;
