@@ -73,8 +73,8 @@ namespace KompasClient.GameCore
             //forget what we were searching through. don't just clear the list because that might clear the actual deck or discard
             CurrSearchData = null; //thank god for garbage collection lol :upside down smiley:
 
-            if (searchStack.Count == 0) clientSearchUICtrl.HideSearch();
-            else StartSearch(searchStack.Pop());
+            if (clientSearchUICtrl.SearchLength == 0) clientSearchUICtrl.HideSearch();
+            else if(searchStack.Count > 0) StartSearch(searchStack.Pop());
         }
 
         /// <summary>

@@ -27,7 +27,7 @@ namespace KompasClient.UI
         public Image prevSearchImage;
         //search
         private int searchIndex = 0;
-        private int SearchLength => Searching ? CurrSearchData.toSearch.Length : 1;
+        public int SearchLength => Searching ? CurrSearchData.toSearch.Length : 1;
         private int NextSearchIndex => (searchIndex + 1) % SearchLength;
         private int PrevSearchIndex => (searchIndex - 1) + (searchIndex == 0 ? SearchLength : 0);
         public bool Searching => ClientGame.searchCtrl.CurrSearchData.HasValue;
@@ -57,7 +57,6 @@ namespace KompasClient.UI
             {
                 GameCard searchSelected = CurrSearchData.toSearch[searchIndex];
                 ClientGame.searchCtrl.ToggleTarget(searchSelected);
-                ClientGame.searchCtrl.ResetSearch();
             }
         }
 
