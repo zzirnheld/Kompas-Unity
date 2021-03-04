@@ -65,7 +65,7 @@ namespace KompasClient.UI
 
         public void HideIfNotShowingCurrSearchIndex()
         {
-            if (!Searching || cardInfoView.CurrShown != CurrSearchData.toSearch[searchIndex]) 
+            if (!Searching || searchIndex > SearchLength || cardInfoView.CurrShown != CurrSearchData.toSearch[searchIndex]) 
                 HideSearch();
         }
 
@@ -85,7 +85,7 @@ namespace KompasClient.UI
 
         public void SearchShowIndex(int index)
         {
-            if (!Searching)
+            if (!Searching || index > SearchLength)
             {
                 //Debug.LogWarning("Not searching. Hiding search ui in search show index");
                 HideSearch();

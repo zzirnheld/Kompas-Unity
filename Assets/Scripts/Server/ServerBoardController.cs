@@ -35,6 +35,7 @@ namespace KompasServer.GameCore
 
             //calculate distance before doing the swap
             int distance = card.DistanceTo(toX, toY);
+            var at = GetCardAt(toX, toY);
 
             if (base.Swap(card, toX, toY, playerInitiated))
             {
@@ -50,7 +51,6 @@ namespace KompasServer.GameCore
                         triggerer: playerInitiated ? aug.Controller : stackSrc?.Controller, x: distance));
                 }
 
-                var at = GetCardAt(toX, toY);
                 if (at != null)
                 {
                     //then trigger this card's triggers
