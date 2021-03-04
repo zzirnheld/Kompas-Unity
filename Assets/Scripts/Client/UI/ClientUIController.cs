@@ -45,6 +45,8 @@ namespace KompasClient.UI
         public GameObject declineEffectView;
         public Toggle autodeclineEffects;
         public bool Autodecline => autodeclineEffects.isOn;
+        public Toggle autoYesOptional;
+        public bool AutoYesOptional => autoYesOptional.isOn;
         //confirm trigger
         public GameObject ConfirmTriggerView;
         public TMP_Text TriggerBlurbText;
@@ -220,8 +222,15 @@ namespace KompasClient.UI
 
         public void ShowOptionalTrigger(Trigger t, int? x)
         {
-            TriggerBlurbText.text = t.Blurb;
-            ConfirmTriggerView.SetActive(true);
+            if (AutoYesOptional)
+            {
+                RespondToTrigger(true);
+            }
+            else
+            {
+                TriggerBlurbText.text = t.Blurb;
+                ConfirmTriggerView.SetActive(true);
+            }
         }
 
         public void RespondToTrigger(bool answer)
