@@ -25,7 +25,8 @@
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
 					"ChoiceBlurb":"Give +5E or +5W?",
 					"OptionBlurbs":["+5E","+5W"],
-					"OptionJumpIndices":[2,4]
+					"OptionJumpIndices":[2,4],
+					"hasDefault":false
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",

@@ -29,6 +29,7 @@ namespace KompasClient.UI
             foreach(var blurb in optionBlurbs)
             {
                 var obj = Instantiate(optionPrefab, optionsGridParent);
+                obj.transform.SetSiblingIndex(0);
                 var ctrl = obj.GetComponent<ClientEffectOptionUIController>();
                 ctrl.Initialize(this, blurb, i++);
                 options.Add(ctrl);

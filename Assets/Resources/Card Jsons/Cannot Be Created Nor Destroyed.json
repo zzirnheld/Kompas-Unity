@@ -39,7 +39,8 @@
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
 					"ChoiceBlurb":"Give +X S or -X S?",
 					"OptionBlurbs":["+X S","-X S"],
-					"OptionJumpIndices":[6,8]
+					"OptionJumpIndices":[6,8],
+					"hasDefault":false
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",

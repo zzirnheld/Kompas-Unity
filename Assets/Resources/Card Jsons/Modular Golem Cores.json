@@ -16,7 +16,8 @@
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
 					"ChoiceBlurb":"Destroy and search, or pip hand-apply?",
 					"OptionBlurbs":["Search","Apply"],
-					"OptionJumpIndices":[1,6]
+					"OptionJumpIndices":[1,6],
+					"hasDefault":false
 				},
 				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
