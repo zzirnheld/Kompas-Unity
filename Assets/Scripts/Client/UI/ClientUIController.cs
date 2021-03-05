@@ -265,6 +265,12 @@ namespace KompasClient.UI
             declineEffectView.SetActive(false);
             clientGame.clientNotifier.DeclineResponse();
         }
+
+        //called by the checkbox for auto decline changing state
+        public void DeclineResponse(bool b)
+        {
+            if (b) DeclineResponse();
+        }
         #endregion effects
 
 
