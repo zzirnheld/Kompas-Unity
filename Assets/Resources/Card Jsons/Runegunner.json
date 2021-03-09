@@ -25,7 +25,7 @@
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
-						"blurb":"where for Runeloremaster to cast its target Rune",
+						"blurb":"where for Runegunner to cast its target Rune",
 						"spaceRestrictions":["Can Play Target to This Space"]
 					}
 				},
@@ -55,6 +55,7 @@
 			]
 		}
 	],
+	"unique":true,
 	"n":0,
 	"e":5,
 	"s":10,

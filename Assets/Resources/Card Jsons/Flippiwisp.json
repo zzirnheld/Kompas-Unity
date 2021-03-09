@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Flippiwisp",
-	"effText":"Wisp.\nWhen I move, both players can each pay 1 pip, draw 1, then discard 1.",
+	"effText":"Wisp.\nWhen I move, both players can each pay 1 pip, discard 1, then draw 1.",
 	"effects":[
 		{
 			"triggerData":
