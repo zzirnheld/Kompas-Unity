@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Tiwaz",
-	"effText":"Can't be cast normally. When a friendly character attacks, I give them +1 ESW.",
+	"effText":"Can't be cast normally. When a friendly character attacks, I give them +1 ESW. (This triggers and resolves before damage is dealt.)",
 	"effects":[
 		{
 			"triggerData":
