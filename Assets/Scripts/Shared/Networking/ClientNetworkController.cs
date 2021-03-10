@@ -1,5 +1,6 @@
 ﻿using KompasClient.GameCore;
 using KompasCore.Networking;
+using System;
 using System.Net;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -9,14 +10,27 @@ namespace KompasClient.Networking
     public class ClientNetworkController : NetworkController
     {
         public ClientGame ClientGame;
+        private bool connecting = false;
 
-        public void Connect(string ip)
+        public async void Connect(string ip)
         {
-            Debug.Log($"Connecting to {ip} on a random port");
+            if (connecting) return;
+
+            connecting = true;
             var address = IPAddress.Parse(ip);
             tcpClient = new System.Net.Sockets.TcpClient();
-            tcpClient.Connect(address, port);
+            try
+            {
+                await tcpClient.ConnectAsync(address, port);
+            }
+            catch(Exception e)
+            {
+                Debug.LogError($"Failed to connect to {ip}. Stack trace:\n{e.StackTrace}");
+                ClientGame.clientUICtrl.ShowConnectUI();
+            }
             Debug.Log("Connected");
+            if(tcpClient.Connected) ClientGame.clientUICtrl.ShowConnectedWaitingUI();
+            connecting = false;
         }
 
         protected override void Update()
@@ -110,8 +124,13 @@ namespace KompasClient.Networking
             var p = FromJson(packetInfo.command, packetInfo.json);
             // Debug.Log($"Parsing packet {p}");
             p.Execute(ClientGame);
+
+            //clean up any visual differences after the latest packet.
+            //TODO make this more efficient, probably with dirty lists
             ClientGame.RefreshShownCards();
             ClientGame.clientUICtrl.RefreshShownCardInfo();
+            ClientGame.clientUICtrl.cardInfoViewUICtrl.searchUICtrl.ReshowSearchShown();
+
             return Task.CompletedTask;
         }
     }

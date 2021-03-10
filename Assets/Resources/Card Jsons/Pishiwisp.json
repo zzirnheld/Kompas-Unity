@@ -1,0 +1,44 @@
+{
+	"cardType":67,
+	"cardName":"Pishiwisp",
+	"effText":"Wisp.\nWhen I move, move an adjacent distinctly named character 1 space.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"adjacent character for Pishiwisp to move",
+						"cardRestrictions":["Is Character","Board","Adjacent to Source","Distinct Name from Source"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where Pishiwisp to move its target",
+						"spaceRestrictions":["Empty","Distance to Target == Constant","Can Move Target to This Space"],
+						"constant":1
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+	"keywords":["Wisp Summon","Wisp Turn Start"],
+	"n":0,
+	"e":1,
+	"s":2,
+	"w":1,
+	"subtypeText":"Wisp"
+}

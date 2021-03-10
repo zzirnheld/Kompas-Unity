@@ -46,6 +46,7 @@ namespace KompasClient.Cards
         {
             //remove thing even if hovering over something.
             ClientGame.clientUICtrl.CardToActivateEffectsFor = null;
+            ClientGame.clientUICtrl.cardInfoViewUICtrl.searchUICtrl.ReshowSearchShownIfSearching();
             base.OnMouseExit();
         }
 

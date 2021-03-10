@@ -3,6 +3,7 @@ using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasCore.GameCore;
 using KompasCore.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -16,6 +17,8 @@ namespace KompasClient.UI
     {
         private const string FriendlyTurn = "Friendly Turn";
         private const string EnemyTurn = "Enemy Turn";
+
+        private const string GameStarting = "Game is Starting";
 
         private const string AwaitingResponseMessage = "Awaiting Response";
         private const string AwaitingEnemyResponse = "Awaiting Enemy Response";
@@ -42,6 +45,8 @@ namespace KompasClient.UI
         public GameObject declineEffectView;
         public Toggle autodeclineEffects;
         public bool Autodecline => autodeclineEffects.isOn;
+        public Toggle autoYesOptional;
+        public bool AutoYesOptional => autoYesOptional.isOn;
         //confirm trigger
         public GameObject ConfirmTriggerView;
         public TMP_Text TriggerBlurbText;
@@ -93,7 +98,7 @@ namespace KompasClient.UI
             set => LeyloadText.text = $"{value} Pips Leyload";
         }
 
-        public void Update()
+        private void Update()
         {
             //when the user releaes a right click, show eff activation ui.
             if (Input.GetMouseButtonUp(1)) activatorUICtrl.Show();
@@ -103,13 +108,17 @@ namespace KompasClient.UI
             if (Input.GetKeyDown(KeyCode.Escape)) escapeMenuUICtrl.Enable();
         }
 
+        private void Awake()
+        {
+            SetCurrState(GameStarting);
+        }
+
         public override bool ShowInfoFor(GameCard card, bool refresh = false)
         {
             bool success = base.ShowInfoFor(card, refresh);
             if (ShownCard != card || refresh)
             {
                 cardInfoViewUICtrl.CurrShown = card;
-                cardInfoViewUICtrl.ShowForCurrShown();
             }
             return success;
         }
@@ -119,7 +128,7 @@ namespace KompasClient.UI
         public override void SelectCard(GameCard card, Game.TargetMode targetMode, bool fromClick)
         {
             base.SelectCard(card, targetMode, fromClick);
-            if (fromClick && targetMode != Game.TargetMode.Free && card != null) clientGame.searchCtrl.AddTarget(card);
+            if (fromClick && targetMode != Game.TargetMode.Free && card != null) clientGame.searchCtrl.ToggleTarget(card);
         }
 
         public void ReselectSelectedCard(bool fromClick) => SelectCard(SelectedCard, fromClick);
@@ -131,17 +140,8 @@ namespace KompasClient.UI
             if (string.IsNullOrEmpty(ip) && acceptEmpty) ip = "127.0.0.1";
             if (!IPAddress.TryParse(ip, out _)) return;
 
-            try
-            {
-                HideConnectUI();
-                clientGame.clientNetworkCtrl.Connect(ip);
-                ShowConnectedWaitingUI();
-            }
-            catch (System.Exception e)
-            {
-                Debug.LogError($"Failed to connect, stack trace: {e.StackTrace}");
-                ShowConnectUI();
-            }
+            HideConnectUI();
+            clientGame.clientNetworkCtrl.Connect(ip);
         }
 
         public void HideConnectUI() => networkingParent.SetActive(false);
@@ -222,8 +222,15 @@ namespace KompasClient.UI
 
         public void ShowOptionalTrigger(Trigger t, int? x)
         {
-            TriggerBlurbText.text = t.Blurb;
-            ConfirmTriggerView.SetActive(true);
+            if (AutoYesOptional)
+            {
+                RespondToTrigger(true);
+            }
+            else
+            {
+                TriggerBlurbText.text = t.Blurb;
+                ConfirmTriggerView.SetActive(true);
+            }
         }
 
         public void RespondToTrigger(bool answer)
@@ -257,6 +264,12 @@ namespace KompasClient.UI
         {
             declineEffectView.SetActive(false);
             clientGame.clientNotifier.DeclineResponse();
+        }
+
+        //called by the checkbox for auto decline changing state
+        public void DeclineResponse(bool b)
+        {
+            if (b) DeclineResponse();
         }
         #endregion effects
 

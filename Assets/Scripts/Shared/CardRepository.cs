@@ -80,7 +80,7 @@ public class CardRepository : MonoBehaviour
             json = json.Replace("\r", "");
             json = json.Replace("\t", "");
             //add the cleaned json to the dictionary
-            Debug.Log($"Adding json for \"{nameClean}\" of length {nameClean.Length} to dictionary. Json:\n{json}");
+            //Debug.Log($"Adding json for \"{nameClean}\" of length {nameClean.Length} to dictionary. Json:\n{json}");
             cardJsons.Add(nameClean, json);
         }
 
@@ -89,7 +89,7 @@ public class CardRepository : MonoBehaviour
         var keywords = keywordList.Replace('\r', '\n').Split('\n').Where(s => !string.IsNullOrEmpty(s));
         foreach (string keyword in keywords)
         {
-            Debug.Log($"Loading keyword json for {keyword}, {string.Join(",", keyword.ToCharArray().Select(c => (int) c))}");
+            //Debug.Log($"Loading keyword json for {keyword}, {string.Join(",", keyword.ToCharArray().Select(c => (int) c))}");
             string json = Resources.Load<TextAsset>(keywordJsonsFolderPath + keyword).text;
             keywordJsons.Add(keyword, json);
         }

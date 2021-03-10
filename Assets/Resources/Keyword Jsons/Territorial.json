@@ -14,7 +14,7 @@
 			"cardRestriction":
 			{
 				"blurb":"for Dragon to move and attack",
-				"cardRestrictions":["Board","Is Character","Adjacent"]
+				"cardRestrictions":["Board","Is Character","Adjacent to Source"]
 			}
 		},
 		{

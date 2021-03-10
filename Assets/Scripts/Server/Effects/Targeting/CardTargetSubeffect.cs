@@ -17,6 +17,8 @@ namespace KompasServer.Effects
             cardRestriction.Initialize(this);
         }
 
+        public override bool IsImpossible() => !Game.Cards.Any(c => cardRestriction.Evaluate(c));
+
         protected virtual int[] PotentialTargetIds
             => Game.Cards.Where(c => cardRestriction.Evaluate(c)).Select(c => c.ID).ToArray();
 

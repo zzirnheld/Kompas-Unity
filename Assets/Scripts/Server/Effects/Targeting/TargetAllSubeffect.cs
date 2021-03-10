@@ -5,6 +5,8 @@ namespace KompasServer.Effects
 {
     public class TargetAllSubeffect : CardTargetSubeffect
     {
+        public override bool IsImpossible() => !Game.Cards.Any(c => cardRestriction.Evaluate(c));
+
         public override Task<ResolutionInfo> Resolve()
         {
             var targets = ServerGame.Cards.Where(c => cardRestriction.Evaluate(c)).ToArray();

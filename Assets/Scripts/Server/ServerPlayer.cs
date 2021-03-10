@@ -104,15 +104,14 @@ namespace KompasServer.GameCore
 
             if (serverGame.ValidAttack(attacker, defender, this))
             {
-                serverGame.Attack(attacker, defender, this, true);
+                serverGame.Attack(attacker, defender, this, playerInitiated: true);
                 await serverGame.EffectsController.CheckForResponse();
             }
         }
 
         public async Task TryEndTurn()
         {
-            if (serverGame.EffectsController.CurrStackEntry == null &&
-                serverGame.TurnPlayer == this) 
+            if (serverGame.NothingHappening && serverGame.TurnPlayer == this) 
                 await serverGame.SwitchTurn();
         }
         #endregion Player Control Methods

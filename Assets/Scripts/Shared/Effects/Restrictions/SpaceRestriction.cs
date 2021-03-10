@@ -1,5 +1,6 @@
 ﻿using KompasCore.Cards;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ namespace KompasCore.Effects
         public Player Controller { get; private set; }
         public Effect Effect { get; private set; }
 
+        #region space restrictions
         //adjacency
         public const string AdjacentToThisCard = "Adjacent to Source";
         public const string AdjacentToWithRestriction = "Adjacent to a Card that Fits Restriction";
@@ -38,6 +40,7 @@ namespace KompasCore.Effects
         public const string CardHereFitsRestriction = "Card Here Fits Restriction";
         public const string OnTargetsDiagonal = "On Target's Diagonal";
         public const string OnEdge = "On Edge of Board";
+        #endregion space restrictions
 
         public string[] spaceRestrictions;
         public CardRestriction adjacencyRestriction;
@@ -84,14 +87,25 @@ namespace KompasCore.Effects
             hereFitsRestriction.Initialize(subeffect);
         }
 
-        private bool RestrictionValid(string restriction, int x, int y)
+        /// <summary>
+        /// Whether the given restriction is valid for the given space.
+        /// </summary>
+        /// <param name="restriction">The restriction to be evaluated</param>
+        /// <param name="x">The x coordinate of the space</param>
+        /// <param name="y">The y coordinate of the space</param>
+        /// <param name="theoreticalTarget">If this space restriction is being considered with a theoretical additional target, this is it</param>
+        /// <returns></returns>
+        private bool RestrictionValid(string restriction, int x, int y, GameCard theoreticalTarget)
         {
+            //would use ?? but GameCard inherits from monobehavior which overrides comparison with null
+            var target = theoreticalTarget != null ? theoreticalTarget : Subeffect?.Target;
+
             switch (restriction)
             {
                 //adjacency
                 case AdjacentToThisCard:        return Source.IsAdjacentTo(x, y);
                 case AdjacentToWithRestriction: return Source.Game.boardCtrl.CardsAdjacentTo(x, y).Any(c => adjacencyRestriction.Evaluate(c));
-                case AdjacentToTarget:          return Subeffect.Target.IsAdjacentTo(x, y);
+                case AdjacentToTarget:          return target.IsAdjacentTo(x, y);
                 case ConnectedToSourceBy:       return Source.Game.boardCtrl.ShortestPath(Subeffect.Source, x, y, connectednessRestriction) < 50;
                 case InAOE:                     return Source.SpaceInAOE(x, y);
                 case NotInAOE:                  return !Source.SpaceInAOE(x, y);
@@ -100,36 +114,36 @@ namespace KompasCore.Effects
 
                 //distance
                 case DistanceX:                   return Source.DistanceTo(x, y) == Subeffect.Effect.X;
-                case DistanceToTargetX:           return Subeffect.Target.DistanceTo(x, y) == Subeffect.Effect.X;
-                case DistanceToTargetC:           return Subeffect.Target.DistanceTo(x, y) == constant;
-                case DistanceToTargetLTEC:        return Subeffect.Target.DistanceTo(x, y) <= constant;
-                case FurtherFromSourceThanTarget: return Source.DistanceTo(x, y) > Source.DistanceTo(Subeffect.Target);
-                case TowardsSourceFromTarget:     return Source.DistanceTo(x, y) < Source.DistanceTo(Subeffect.Target);
-                case DirectlyAwayFromTarget:      return Subeffect.Target.SpaceDirectlyAwayFrom((x, y), Source);
+                case DistanceToTargetX:           return target.DistanceTo(x, y) == Subeffect.Effect.X;
+                case DistanceToTargetC:           return target.DistanceTo(x, y) == constant;
+                case DistanceToTargetLTEC:        return target.DistanceTo(x, y) <= constant;
+                case FurtherFromSourceThanTarget: return Source.DistanceTo(x, y) > Source.DistanceTo(target);
+                case TowardsSourceFromTarget:     return Source.DistanceTo(x, y) < Source.DistanceTo(target);
+                case DirectlyAwayFromTarget:      return target.SpaceDirectlyAwayFrom((x, y), Source);
 
                 //misc
-                case CanPlayTarget: return Subeffect.Target.PlayRestriction.EvaluateEffectPlay(x, y, Subeffect.Effect, Subeffect.Player);
-                case CanMoveTarget: return Subeffect.Target.MovementRestriction.EvaluateEffectMove(x, y);
+                case CanPlayTarget: return target.PlayRestriction.EvaluateEffectPlay(x, y, Subeffect.Effect, Subeffect.Player);
+                case CanMoveTarget: return target.MovementRestriction.EvaluateEffectMove(x, y);
                 case Empty: return Source.Game.boardCtrl.GetCardAt(x, y) == null;
                 case CardHereFitsRestriction: return hereFitsRestriction.Evaluate(Source.Game.boardCtrl.GetCardAt(x, y));
-                case OnTargetsDiagonal: return Subeffect.Target.OnMyDiagonal((x, y));
+                case OnTargetsDiagonal: return target.OnMyDiagonal((x, y));
                 case OnEdge: return x == 0 || x == 6 || y == 0 || y == 6;
                 default: throw new ArgumentException($"Invalid space restriction {restriction}", "restriction");
             }
         }
 
-        private bool RestrictionValidWithDebug(string r, int x, int y)
+        private bool RestrictionValidWithDebug(string r, int x, int y, GameCard theoreticalTarget)
         {
-            bool success = RestrictionValid(r, x, y);
+            bool success = RestrictionValid(r, x, y, theoreticalTarget);
             if (!success) Debug.Log($"Space resetriction {r} was flouted by {x}, {y}");
             return success;
         }
 
-        public bool Evaluate((int x, int y) space) => Evaluate(space.x, space.y);
+        public bool Evaluate((int x, int y) space, GameCard theoreticalTarget = null) => Evaluate(space.x, space.y, theoreticalTarget);
 
-        public bool Evaluate(int x, int y)
+        public bool Evaluate(int x, int y, GameCard theoreticalTarget = null)
         {
-            if (!initialized) throw new System.ArgumentException("Space restriction not initialized!");
+            if (!initialized) throw new ArgumentException("Space restriction not initialized!");
             if (!Source.Game.boardCtrl.ValidIndices(x, y)) return false;
             if (mustBeEmpty && Source.Game.boardCtrl.GetCardAt(x, y) != null)
             {
@@ -137,7 +151,7 @@ namespace KompasCore.Effects
                 return false;
             }
 
-            return spaceRestrictions.All(r => RestrictionValid(r, x, y));
+            return spaceRestrictions.All(r => RestrictionValid(r, x, y, theoreticalTarget));
         }
 
         public override string ToString() => JsonUtility.ToJson(this);

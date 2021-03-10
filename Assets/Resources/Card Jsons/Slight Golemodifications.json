@@ -31,7 +31,8 @@
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
 					"ChoiceBlurb":"Hand-summon or revive a Golem?",
 					"OptionBlurbs":["Hand-summon","Revive"],
-					"OptionJumpIndices":[4,6]
+					"OptionJumpIndices":[4,6],
+					"hasDefault":false
 				},
 				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",

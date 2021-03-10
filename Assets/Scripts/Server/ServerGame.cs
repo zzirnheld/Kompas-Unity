@@ -114,7 +114,7 @@ namespace KompasServer.GameCore
                 .ToList();
         }
 
-        public void SetDeck(ServerPlayer player, string decklist)
+        public async Task SetDeck(ServerPlayer player, string decklist)
         {
             List<string> deck = SanitizeDeck(decklist);
 
@@ -169,10 +169,10 @@ namespace KompasServer.GameCore
                     if (p.Avatar == null) return;
                 }
             }
-            StartGame();
+            await StartGame();
         }
 
-        public void StartGame()
+        public async Task StartGame()
         {
             //set initial pips (based on avatars' S)
             Debug.Log($"Starting game. Player 0 avatar is null? {Players[0].Avatar == null}. Player 1 is null? {Players[1].Avatar == null}.");
@@ -190,9 +190,45 @@ namespace KompasServer.GameCore
                 p.Avatar.SetW(p.Avatar.W - AvatarWPenalty);
                 DrawX(p.index, 5);
             }
-            GiveTurnPlayerPips();
+
+            await TurnStartOperations(notFirstTurn: false);
         }
         #endregion
+
+        #region turn
+        public async Task TurnStartOperations(bool notFirstTurn = true)
+        {
+            if (notFirstTurn)
+            {
+                if (TurnPlayerIndex == FirstTurnPlayer) RoundCount++;
+                TurnCount++;
+            }
+
+            TurnServerPlayer.ServerNotifier.NotifyYourTurn();
+            ResetCardsForTurn();
+
+            GiveTurnPlayerPips();
+            if(notFirstTurn) Draw(TurnPlayerIndex);
+
+            //do hand size
+            EffectsController.PushToStack(new ServerHandSizeStackable(this, TurnServerPlayer), default);
+
+            //trigger turn start effects
+            var context = new ActivationContext(triggerer: TurnServerPlayer);
+            EffectsController.TriggerForCondition(Trigger.TurnStart, context);
+
+            await EffectsController.CheckForResponse();
+        }
+
+
+        public async Task SwitchTurn()
+        {
+            TurnPlayerIndex = 1 - TurnPlayerIndex;
+            Debug.Log($"Turn swapping to the turn of index {TurnPlayerIndex}");
+
+            await TurnStartOperations();
+        }
+        #endregion turn
 
         public List<GameCard> DrawX(int player, int x, IStackable stackSrc = null)
         {
@@ -295,33 +331,19 @@ namespace KompasServer.GameCore
         }
         #endregion
 
-        public async Task SwitchTurn()
-        {
-            TurnPlayerIndex = 1 - TurnPlayerIndex;
-            Debug.Log($"Turn swapping to the turn of index {TurnPlayerIndex}");
-
-            if (TurnPlayerIndex == FirstTurnPlayer) RoundCount++;
-            TurnCount++;
-            GiveTurnPlayerPips();
-
-            ResetCardsForTurn();
-
-            //draw for turn and store what was drawn
-            Draw(TurnPlayerIndex);
-            TurnServerPlayer.ServerNotifier.NotifyYourTurn();
-
-            //do hand size
-            EffectsController.PushToStack(new ServerHandSizeStackable(this, TurnServerPlayer), default);
-
-            //trigger turn start effects
-            var context = new ActivationContext(triggerer: TurnServerPlayer);
-            EffectsController.TriggerForCondition(Trigger.TurnStart, context);
-
-            await EffectsController.CheckForResponse();
-        }
-
         public override GameCard GetCardWithID(int id) => cardsByID.ContainsKey(id) ? cardsByID[id] : null;
 
         public ServerPlayer ServerControllerOf(GameCard card) => ServerPlayers[card.ControllerIndex];
+
+        public void DumpGameInfo()
+        {
+            Debug.Log("BEGIN GAME INFO DUMP");
+            Debug.Log("Cards:");
+            foreach (var c in Cards) Debug.Log(c.ToString());
+
+            Debug.Log($"Cards on board:\n{boardCtrl.ToString()}");
+
+            Debug.Log(EffectsController.ToString());
+        }
     }
 }

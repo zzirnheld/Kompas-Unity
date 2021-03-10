@@ -110,9 +110,9 @@ namespace KompasServer.Networking {
         #endregion trigger things
 
         #region effect flow control
-        public async Task<int> GetEffectOption(string cardName, string choiceBlurb, string[] optionBlurbs)
+        public async Task<int> GetEffectOption(string cardName, string choiceBlurb, string[] optionBlurbs, bool hasDefault)
         {
-            serverNotifier.ChooseEffectOption(cardName, choiceBlurb, optionBlurbs);
+            serverNotifier.ChooseEffectOption(cardName, choiceBlurb, optionBlurbs, hasDefault);
             while (true)
             {
                 lock (EffectOptionsLock)

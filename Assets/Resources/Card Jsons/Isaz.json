@@ -16,7 +16,7 @@
 					"$type":"KompasServer.Effects.SetAllCardStatsSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Board","Adjacent"]
+						"cardRestrictions":["Is Character","Board","Adjacent to Source"]
 					},
 					"nVal":0
 				}

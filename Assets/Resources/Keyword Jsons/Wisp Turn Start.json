@@ -1,0 +1,28 @@
+{
+	"blurb":"Wisp Turn Start",
+	"triggerData":
+	{
+		"blurb":"Wisp Turn Start",
+		"triggerCondition":"Turn Start",
+		"triggerRestriction":{
+			"triggerRestrictions":["This Card in Play"]
+		}
+	},
+	"subeffects":[
+		{
+			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+			"spaceRestriction":
+			{
+				"blurb":"where Wisp to move",
+				"spaceRestrictions":["Empty","Distance to Target == Constant","Can Move Target to This Space"],
+				"constant":1
+			}
+		},
+		{
+			"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+		}
+	]	
+}

@@ -55,6 +55,10 @@
 		{
 			"keyword":"Machinations.",
 			"reminder":"When I'm cast, set my C to 0. When friendly turns start, give me +1 C."
+		},
+		{
+			"keyword":"Wisp.",
+			"reminder":"When I'm summoned, move me 1 space. When turns start, move me 1 space."
 		}
 	]
 }

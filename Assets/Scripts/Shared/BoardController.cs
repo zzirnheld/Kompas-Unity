@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using KompasCore.Effects;
 using KompasCore.Cards;
+using System.Text;
 
 namespace KompasCore.GameCore
 {
@@ -22,11 +23,8 @@ namespace KompasCore.GameCore
         public static float GridIndexToPos(int gridIndex)
             => (float)((gridIndex * LenOneSpace) + SpaceOffset - BoardLenOffset);
 
-        public static Vector3 GridIndicesToPos(int x, int y)
-            => new Vector3(GridIndexToPos(x), 0.01f, GridIndexToPos(y));
-
-        public static Vector3 GridIndicesToPosWithStacking(int x, int y, int stackHeight)
-            => new Vector3(GridIndexToPos(x), 0.2f * (1 + stackHeight), GridIndexToPos(y));
+        public static Vector3 GridIndicesToCardPos(int x, int y)
+            => new Vector3(GridIndexToPos(x), 0.1f, GridIndexToPos(y));
 
         public readonly GameCard[,] Board = new GameCard[SpacesInGrid, SpacesInGrid];
 
@@ -303,6 +301,20 @@ namespace KompasCore.GameCore
                 //then, if the game is a clientgame, request a space target
                 game.OnClickBoard(xIntersection, yIntersection);
             }
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            for(int i = 0; i < 7; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    var card = Board[i, j];
+                    if (card != null) sb.Append($"At {i}, {j}, {card.CardName} id {card.ID}");
+                }
+            }
+            return sb.ToString();
         }
     }
 }

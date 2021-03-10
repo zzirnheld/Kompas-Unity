@@ -111,9 +111,12 @@ namespace KompasServer.Effects
                         else resolve = false; //stop if that subeffect index is out of bounds
                         break;
                     case ResolutionResult.Impossible:
+                        Debug.Log($"Effect of {Source.CardName} was impossible at index {index} because {result.reason}. Going to OnImpossible if applicable");
                         result = await EffectImpossible(result.reason);
                         break;
                     case ResolutionResult.End:
+                        //TODO send to player why resolution ended (including "[cardname] effect finished resolving")
+                        Debug.Log($"Finished resolution of effect of {Source.CardName} because {result.reason}");
                         resolve = false;
                         break;
                     default:
@@ -180,8 +183,8 @@ namespace KompasServer.Effects
         {
             var sb = new System.Text.StringBuilder();
 
-            sb.Append($"Effect of {Source.CardName}:\n");
-            foreach (var s in Subeffects) sb.Append($"{s.GetType()},\n");
+            sb.Append($"Effect of {Source.CardName}: ");
+            foreach (var s in Subeffects) sb.Append($"{s.GetType()}, ");
 
             return sb.ToString();
         }

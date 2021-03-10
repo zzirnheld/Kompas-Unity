@@ -16,7 +16,7 @@ namespace KompasServer.Networking
 
         public void SendPacket(Packet packet)
         {
-            if (packet != null) Debug.Log($"Sending packet to {Player.index} with info {packet}");
+            //if (packet != null) Debug.Log($"Sending packet to {Player.index} with info {packet}");
             ServerNetworkCtrl.SendPacket(packet);
         }
 
@@ -151,8 +151,8 @@ namespace KompasServer.Networking
         public void NotifyAttackStarted(GameCard atk, GameCard def) => SendToBoth(new AttackStartedPacket(atk.ID, def.ID));
 
         #region other effect stuff
-        public void ChooseEffectOption(string cardName, string choiceBlurb, string[] optionBlurbs) 
-            => SendPacket(new GetEffectOptionPacket(cardName, choiceBlurb, optionBlurbs));
+        public void ChooseEffectOption(string cardName, string choiceBlurb, string[] optionBlurbs, bool hasDefault) 
+            => SendPacket(new GetEffectOptionPacket(cardName, choiceBlurb, optionBlurbs, hasDefault));
 
         public void EffectResolving(ServerEffect eff)
             => SendToBothInverting(new EffectResolvingPacket(eff.Source.ID, eff.EffectIndex, eff.Controller.index, invert: Player.index != 0));

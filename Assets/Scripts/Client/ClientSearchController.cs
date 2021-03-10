@@ -9,8 +9,6 @@ namespace KompasClient.GameCore
 {
     public class ClientSearchController : MonoBehaviour
     {
-        //this is probably deprecated now that you have no reason to search the discard,
-        //but i might eventually let you search your deck, so, uh, nyeh
         public struct SearchData
         {
             public readonly GameCard[] toSearch;
@@ -25,10 +23,26 @@ namespace KompasClient.GameCore
                 this.targetingSearch = targetingSearch;
                 this.searched = searched;
             }
+
+            /// <summary>
+            /// Whether the list restriction of this search data determines that enough cards have <b>already</b> been searched 
+            /// that the search can end before the maximum possible number of cards have been searched.
+            /// </summary>
+            public bool HaveEnough => listRestriction.HaveEnough(searched.Count);
+
+            /// <summary>
+            /// Whether any cards currently able to be searched can't currently be seen and clicked on.
+            /// </summary>
+            public bool AnyToSearchNotVisible => toSearch.Any(c => !c.CurrentlyVisible);
         }
 
         public SearchData? CurrSearchData { get; private set; } = null;
         private readonly Stack<SearchData> searchStack = new Stack<SearchData>();
+
+        /// <summary>
+        /// Whether there's currently any card that the player can target in their search, that isn't visible right in front of them.
+        /// </summary>
+        public bool CanSearchNotVisibleCard => CurrSearchData.HasValue && CurrSearchData.Value.AnyToSearchNotVisible;
 
         public ClientGame clientGame;
         public ClientSearchUIController clientSearchUICtrl;
@@ -48,7 +62,7 @@ namespace KompasClient.GameCore
             Debug.Log($"Searching a list of {data.toSearch.Length} cards: {string.Join(",", data.toSearch.Select(c => c.CardName))}");
 
             //initiate search process
-            if (data.toSearch.Any(c => !c.CurrentlyVisible)) clientSearchUICtrl.StartShowingSearch();
+            if (CanSearchNotVisibleCard) clientSearchUICtrl.StartShowingSearch();
         }
 
         /// <summary>
@@ -59,8 +73,8 @@ namespace KompasClient.GameCore
             //forget what we were searching through. don't just clear the list because that might clear the actual deck or discard
             CurrSearchData = null; //thank god for garbage collection lol :upside down smiley:
 
-            if (searchStack.Count == 0) clientSearchUICtrl.HideSearch();
-            else StartSearch(searchStack.Pop());
+            if (clientSearchUICtrl.SearchLength == 0) clientSearchUICtrl.HideSearch();
+            else if(searchStack.Count > 0) StartSearch(searchStack.Pop());
         }
 
         /// <summary>
@@ -70,6 +84,7 @@ namespace KompasClient.GameCore
         /// <returns></returns>
         public void ToggleTarget(GameCard nextTarget)
         {
+            //if it's already selected, deselect it
             if (CurrSearchData.Value.searched.Contains(nextTarget))
             {
                 RemoveTarget(nextTarget);
@@ -80,7 +95,11 @@ namespace KompasClient.GameCore
             else AddTarget(nextTarget);
         }
 
-        public void AddTarget(GameCard nextTarget)
+        /// <summary>
+        /// Adds the target to the current list of targets, if applicable
+        /// </summary>
+        /// <param name="nextTarget"></param>
+        private void AddTarget(GameCard nextTarget)
         {
             if(CurrSearchData == null)
             {

@@ -15,7 +15,7 @@
 					"$type":"KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Subtypes Include","Is Character","Board","Adjacent"],
+						"cardRestrictions":["Subtypes Include","Is Character","Board","Adjacent to Source"],
 						"subtypesInclude":["Warrior"]
 					},
 					"xMultiplier":1

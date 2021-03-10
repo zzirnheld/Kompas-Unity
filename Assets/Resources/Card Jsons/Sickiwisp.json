@@ -1,0 +1,36 @@
+{
+	"cardType":67,
+	"cardName":"Sickiwisp",
+	"effText":"Wisp.\nWhen I move, give an adjacent character -1 N.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"adjacent character for Pricklewisp to give -1 N",
+						"cardRestrictions":["Is Character","Board","Adjacent to Source"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"nMod":-1
+				}
+			]	
+		}
+	],
+	"keywords":["Wisp Summon","Wisp Turn Start"],
+	"n":0,
+	"e":1,
+	"s":2,
+	"w":0,
+	"subtypeText":"Wisp"
+}

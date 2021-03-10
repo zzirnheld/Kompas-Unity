@@ -12,7 +12,8 @@ namespace KompasCore.GameCore
     public abstract class Game : MonoBehaviour
     {
         public const string CardListPath = "Card Jsons/Card List";
-        public static readonly CardLocation[] HiddenLocations = 
+
+        public static readonly CardLocation[] HiddenLocations =
             new CardLocation[] { CardLocation.Nowhere, CardLocation.Deck, CardLocation.Hand };
 
         public enum TargetMode { Free, OnHold, CardTarget, CardTargetList, SpaceTarget, HandSize }
@@ -52,25 +53,14 @@ namespace KompasCore.GameCore
         public abstract bool NothingHappening { get; }
 
         //game mechanics
-        //checking for valid target
+        public static bool IsHiddenLocation(CardLocation l) => HiddenLocations.Contains(l);
 
         public bool ExistsCardTarget(CardRestriction restriction) => Cards.Any(c => restriction.Evaluate(c));
 
-        public bool ExistsSpaceTarget(SpaceRestriction restriction)
-        {
-            for (int x = 0; x < 7; x++)
-            {
-                for (int y = 0; y < 7; y++)
-                {
-                    if (restriction.Evaluate(x, y)) return true;
-                }
-            }
-
-            return false;
-        }
-
         public bool BoardHasCopyOf(GameCard card)
             => Cards.Any(c => c != card && c.Location == CardLocation.Field && c.Controller == card.Controller && c.CardName == card.CardName);
+
+        public bool ValidSpellSpaceFor(GameCard card, int x, int y) => boardCtrl.ValidSpellSpaceFor(card, x, y);
 
         private bool IsFriendlyAdjacentToCoords(int x, int y, GameCard potentialFriendly, Player friendly)
         {
@@ -113,9 +103,6 @@ namespace KompasCore.GameCore
             return false;
         }
 
-        //public bool ValidSpellSpace(int x, int y) => boardCtrl
-
-        public bool ValidSpellSpaceFor(GameCard card, int x, int y) => boardCtrl.ValidSpellSpaceFor(card, x, y);
 
         protected void ResetCardsForTurn()
         {

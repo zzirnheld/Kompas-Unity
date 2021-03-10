@@ -10,7 +10,7 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Stackable Source Fits Restriction"],
 					"sourceRestriction":{
-						"cardRestrictions":["Is Augmented by Source"]
+						"cardRestrictions":["Source Augments"]
 					}
 				}
 			},

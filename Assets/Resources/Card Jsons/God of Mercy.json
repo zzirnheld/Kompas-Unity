@@ -28,7 +28,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Supplicant to give safe haven",
-						"cardRestrictions":["Board","Is Character","Adjacent"]
+						"cardRestrictions":["Board","Is Character","Adjacent to Source"]
 					}
 				},
 				{

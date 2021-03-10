@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Sowilo",
-	"effText":"Runic.\nI give a character -1E and another +1E. Gain a pip.",
+	"effText":"Runic.\nI give a character -1E and another +1E.",
 	"effects":[
 		{
 			"triggerData":
@@ -35,10 +35,6 @@
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"eMod":1
-				},
-				{
-					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xModifier":1
 				}
 			]
 		}

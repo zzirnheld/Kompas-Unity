@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"spell for Dispeller by Sword to dispel, Assembly-CSharp",
-						"cardRestrictions":["Subtypes Include","Is Character","Board","Adjacent"],
+						"cardRestrictions":["Subtypes Include","Is Character","Board","Adjacent to Source"],
 						"subtypesInclude":["Warrior"]
 					},
 					"xMultiplier":1

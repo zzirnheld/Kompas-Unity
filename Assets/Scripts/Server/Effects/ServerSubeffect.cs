@@ -56,7 +56,7 @@ namespace KompasServer.Effects
         /// <param name="subeffIndex">The index in the subeffect array of its parent <paramref name="eff"/> this subeffect is.</param>
         public virtual void Initialize(ServerEffect eff, int subeffIndex)
         {
-            Debug.Log($"Finishing setup for new effect of type {GetType()}");
+            //Debug.Log($"Finishing setup for new subeffect of type {GetType()}");
             ServerEffect = eff;
             SubeffIndex = subeffIndex;
         }
@@ -67,6 +67,12 @@ namespace KompasServer.Effects
         /// <returns><see langword="true"/> if the effect finished resolving successfully, <see langword="false"/> if it's awaiting response</returns>
         /// </summary>
         public abstract Task<ResolutionInfo> Resolve();
+
+        /// <summary>
+        /// Whether this subeffect will be considered EffectImpossible at this point
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool IsImpossible() => true;
 
 
         /// <summary>

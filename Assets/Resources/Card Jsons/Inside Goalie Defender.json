@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Inside Goalie Defender",
-	"effText":"When your adjacent Avatar is augmented, apply their Augment(s) to another character within 1 space of me.",
+	"effText":"When your adjacent Avatar is augmented, apply their Augment(s) to an adjacent character.",
 	"effects":[
 		{
 			"triggerData":
@@ -12,7 +12,7 @@
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":
 					{
-						"cardRestrictions":["Board","Avatar","Friendly","Adjacent"]
+						"cardRestrictions":["Board","Avatar","Friendly","Adjacent to Source"]
 					}
 				}
 			},
@@ -45,7 +45,7 @@
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
 					"delete":true,
-					"remainingTargets":3,
+					"remainingTargets":2,
 					"jumpTo":4
 				}
 			]

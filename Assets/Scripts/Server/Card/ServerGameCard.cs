@@ -6,6 +6,7 @@ using KompasServer.GameCore;
 using KompasServer.Networking;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using UnityEngine;
 
 namespace KompasServer.Cards
@@ -73,6 +74,18 @@ namespace KompasServer.Cards
         private bool knownToEnemy = false;
         public override bool KnownToEnemy => knownToEnemy;
 
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(base.ToString());
+            foreach (var eff in Effects)
+            {
+                sb.Append(eff.ToString());
+                sb.Append(", ");
+            }
+            return sb.ToString();
+        }
+
         public virtual void SetInfo(SerializableCard serializedCard, ServerGame game, ServerPlayer owner, ServerEffect[] effects, int id)
         {
             base.SetInfo(serializedCard, id);
@@ -93,12 +106,12 @@ namespace KompasServer.Cards
 
         public override bool AddAugment(GameCard augment, IStackable stackSrc = null)
         {
-            var context = new ActivationContext(card: augment, space: Position, stackable: stackSrc, triggerer: Controller);
+            var attachedContext = new ActivationContext(card: augment, space: Position, stackable: stackSrc, triggerer: Controller);
             var augmentedContext = new ActivationContext(card: this, space: Position, stackable: stackSrc, triggerer: Controller);
             bool wasKnown = augment.KnownToEnemy;
             if (base.AddAugment(augment, stackSrc))
             {
-                EffectsController.TriggerForCondition(Trigger.AugmentAttached, context);
+                EffectsController.TriggerForCondition(Trigger.AugmentAttached, attachedContext);
                 EffectsController.TriggerForCondition(Trigger.Augmented, augmentedContext);
                 ServerGame.ServerPlayers[augment.ControllerIndex].ServerNotifier.NotifyAttach(augment, BoardX, BoardY, wasKnown);
                 return true;

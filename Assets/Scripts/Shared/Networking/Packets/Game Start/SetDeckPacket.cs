@@ -24,10 +24,9 @@ namespace KompasServer.Networking
 {
     public class SetDeckServerPacket : SetDeckPacket, IServerOrderPacket
     {
-        public Task Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
+        public async Task Execute(ServerGame serverGame, ServerPlayer player, ServerAwaiter awaiter)
         {
-            serverGame.SetDeck(player, decklist);
-            return Task.CompletedTask;
+            await serverGame.SetDeck(player, decklist);
         }
     }
 }

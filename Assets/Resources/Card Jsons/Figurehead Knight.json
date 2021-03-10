@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Figurehead Knight",
-	"effText":"When you draw on a friendly turn, give each friendly Summoned character +1W.\nWhen you draw on a enemy turn, give each friendly Summoned character +1E.",
+	"effText":"When you draw on a friendly turn, give each friendly character +1W.\nWhen you draw on a enemy turn, give each friendly character +1E.",
 	"effects":[
 		{
 			"triggerData":
@@ -16,7 +16,7 @@
 					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Board","Friendly","Summoned"]
+						"cardRestrictions":["Is Character","Board","Friendly"]
 					},
 					"wMod":1
 				}
@@ -35,7 +35,7 @@
 					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Board","Friendly","Summoned"]
+						"cardRestrictions":["Is Character","Board","Friendly"]
 					},
 					"eMod":1
 				}

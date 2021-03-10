@@ -12,7 +12,7 @@
 					"Default"
 				],
 				"existsRestriction":{
-					"cardRestrictions":["Enemy","Adjacent","Board"]
+					"cardRestrictions":["Enemy","Adjacent to Source","Board"]
 				}
 			},
 			"subeffects":[

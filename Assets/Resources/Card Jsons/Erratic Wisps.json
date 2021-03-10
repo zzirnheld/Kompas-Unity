@@ -1,0 +1,65 @@
+{
+	"cardType":83,
+	"cardName":"Erratic Wisps",
+	"effText":"The first time each turn a non-Wisp character arrives adjacent to a Wisp(s), move the Wisp(s each) 1 space.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Maze Block",
+				"triggerCondition":"Arrive",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Coords Fit Restriction","Max Per Turn"],
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character","Subtypes Exclude"],
+						"subtypesExclude":["Wisp"]
+					},
+					"spaceRestriction":
+					{
+						"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
+						"adjacencyRestriction":{
+							"cardRestrictions":["Subtypes Include"],
+							"subtypesInclude":["Wisp"]
+						},
+						"mustBeEmpty":false
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Friendly","Board","Adjacent to Target","Subtypes Include"],
+						"subtypesInclude":["Wisp"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where for Erratic Wisps to move a Wisp",
+						"spaceRestrictions":["Empty","Can Move Target to This Space","Distance to Target == Constant"],
+						"constant":1
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"remainingTargets":1,
+					"jumpTo":2
+				}
+			]	
+		}
+	],
+	"c":1,
+	"spellType":"Enchant",
+	"subtypeText":"Enchant"
+}

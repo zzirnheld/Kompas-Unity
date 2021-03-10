@@ -61,7 +61,7 @@ namespace KompasCore.Cards
         public string SubtypeText { get; private set; }
         public string[] AugmentSubtypes { get; private set; }
 
-        public string QualifiedSubtypeText => AttributesString + SubtypeText;
+        public string QualifiedSubtypeText => AttributesString + SubtypeText + SpellSubtypeString;
 
         public int Cost
         {
@@ -83,7 +83,7 @@ namespace KompasCore.Cards
                 if (CardType != 'S') return "";
                 switch (SpellSubtype)
                 {
-                    case RadialSubtype: return $" {Arg}";
+                    case RadialSubtype: return $" {Arg} spaces";
                     case DelayedSubtype: return $" {Arg} turns";
                     case VanishingSubtype: return $" {Arg} turns";
                     default: return "";
@@ -104,7 +104,6 @@ namespace KompasCore.Cards
                 }
             }
         }
-
         #endregion
 
         public Sprite detailedSprite;
@@ -146,9 +145,7 @@ namespace KompasCore.Cards
         public override string ToString()
         {
             if (CardName == null) return "Null Card";
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine(CardName);
-            return sb.ToString();
+            return $"{CardName}, {N}/{E}/{S}/{W}/{C}/{A}";
         }
     }
 }

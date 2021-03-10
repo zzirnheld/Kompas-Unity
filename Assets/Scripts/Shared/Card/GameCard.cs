@@ -2,6 +2,7 @@
 using KompasCore.GameCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using UnityEngine;
 
 namespace KompasCore.Cards
@@ -102,7 +103,9 @@ namespace KompasCore.Cards
             get => (BoardX, BoardY);
             set
             {
+                Debug.Log($"Position of {CardName} set to {BoardX}, {BoardY}");
                 (BoardX, BoardY) = value;
+                //card controller will be null on server. not using null ? because of monobehavior
                 if(cardCtrl != null) cardCtrl.SetPhysicalLocation(Location);
                 foreach (var aug in AugmentsList) aug.Position = value;
             }
@@ -194,8 +197,8 @@ namespace KompasCore.Cards
             {
                 Debug.Log($"Card {ID} named {CardName} location set to {value}");
                 location = value;
-                if (cardCtrl == null) Debug.LogWarning($"Missing a card control. Is this a debug card?");
-                else cardCtrl.SetPhysicalLocation(location);
+                if (cardCtrl != null) cardCtrl.SetPhysicalLocation(location);
+                //else Debug.LogWarning($"Missing a card control. Is this a debug card?");
             }
         }
 
@@ -208,6 +211,16 @@ namespace KompasCore.Cards
         public virtual bool KnownToEnemy => !Game.HiddenLocations.Contains(Location);
         public int TurnsOnBoard { get; private set; }
         public abstract bool IsAvatar { get; }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(base.ToString());
+            sb.Append($"id {ID} controlled by {ControllerIndex}, owned by {OwnerIndex}, in location {location}, position {BoardX}, {BoardY}, ");
+            if (AugmentedCard != null) sb.Append($"augmented card is {AugmentedCard.CardName} id {AugmentedCard.ID}, ");
+            if (Augments.Count() > 0) sb.Append($"augments are {string.Join(", ", Augments.Select(c => $"{c.CardName} id {c.ID}"))}");
+            return sb.ToString();
+        }
 
         public void SetInfo(SerializableCard serializedCard, int id)
         {
@@ -354,6 +367,7 @@ namespace KompasCore.Cards
                 || (yDiffCard == 0 && yDiffSpace == 0)
                 || (xDiffCard == yDiffCard && xDiffSpace == yDiffSpace);
         }
+        public bool InCorner() => (Position.x == 0 || Position.x == 6) && (Position.y == 0 || Position.y == 6);
         #endregion distance/adjacency
 
         public void PutBack()
@@ -361,22 +375,22 @@ namespace KompasCore.Cards
             if(cardCtrl != null) cardCtrl.SetPhysicalLocation(Location);
         }
 
+        /// <summary>
+        /// Accumulates the distance to <paramref name="to"/> into the number of spaces this card moved this turn.
+        /// </summary>
+        /// <param name="to">The space being moved to</param>
         public void CountSpacesMovedTo((int x, int y) to) => SetSpacesMoved(SpacesMoved + DistanceTo(to.x, to.y));
 
         #region augments
         public virtual bool AddAugment(GameCard augment, IStackable stackSrc = null)
         {
             //can't add a null augment
-            if (augment == null)
-            {
-                Debug.LogError($"Can't add a null augment.");
-                return false;
-            }
+            if (augment == null) throw new System.ArgumentNullException("augment", $"Cannot add a null augment (to {CardName})");
 
             //if this and the other are in the same place, it doesn't leave play
             bool canHappen = false;
-            if (augment.Location != Location) canHappen = augment.Remove(stackSrc);
-            else if (augment.AugmentedCard != null) canHappen = augment.Detach(stackSrc);
+            if (augment.Location != Location || augment.AugmentedCard != null) 
+                canHappen = augment.Remove(stackSrc);
 
             if (!canHappen)
             {
@@ -388,10 +402,8 @@ namespace KompasCore.Cards
             //regardless, add the augment
             AugmentsList.Add(augment);
 
-            //and update the augment's augmented card, location, and position to reflect its new status
+            //and update the augment's augmented card, to reflect its new status
             augment.AugmentedCard = this;
-            augment.Location = Location;
-            augment.Position = Position;
 
             return true;
         }

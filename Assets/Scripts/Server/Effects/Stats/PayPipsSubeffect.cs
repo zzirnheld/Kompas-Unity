@@ -1,9 +1,16 @@
 ﻿using System.Threading.Tasks;
+using UnityEngine;
 
 namespace KompasServer.Effects
 {
     public class PayPipsSubeffect : ServerSubeffect
     {
+        public override bool IsImpossible() 
+        {
+            Debug.Log($"Checking if player index {Player.index} can afford {Count} with {Player.Pips} pips");
+            return Player.Pips < Count;
+        }
+
         public override Task<ResolutionInfo> Resolve()
         {
             int toPay = Count;

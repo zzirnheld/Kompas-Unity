@@ -1,4 +1,5 @@
 ﻿using KompasCore.Cards;
+using KompasServer.Effects;
 using System;
 using System.Linq;
 using UnityEngine;
@@ -8,7 +9,9 @@ namespace KompasCore.Effects
     [Serializable]
     public class CardRestriction
     {
-        public Subeffect Subeffect { get; private set; }
+        [NonSerialized]
+        private Subeffect subeffect;
+        public Subeffect Subeffect { get => subeffect; private set => subeffect = value; }
 
         #region restrictions
         //targets
@@ -48,8 +51,8 @@ namespace KompasCore.Effects
 
         //is
         public const string IsSource = "Is Source";
-        public const string AugmentsTarget = "Is Augment of Target";
-        public const string AugmentedBySource = "Is Augmented by Source";
+        public const string AugmentsTarget = "Augments Current Target";
+        public const string AugmentedBySource = "Source Augments";
         public const string WieldsAugmentFittingRestriction = "Wields Augment Fitting Restriction";
 
         //distinct
@@ -95,7 +98,7 @@ namespace KompasCore.Effects
         public const string Negated = "Negated";
 
         //positioning
-        public const string Adjacent = "Adjacent";
+        public const string AdjacentToSource = "Adjacent to Source";
         public const string AdjacentToTarget = "Adjacent to Target";
         public const string WithinCSpacesOfSource = "Within C Spaces";
         public const string WithinCSpacesOfTarget = "Within C Spaces of Target";
@@ -112,6 +115,7 @@ namespace KompasCore.Effects
         public const string IndexInListLTX = "Index<X";
         public const string SameColumnAsSource = "Same Column as Source";
         public const string DirectlyInFrontOfSource = "Directly In Front of Source";
+        public const string InACorner = "In a Corner";
 
         //misc
         public const string CanBePlayed = "Can Be Played";
@@ -119,6 +123,7 @@ namespace KompasCore.Effects
         public const string Augmented = "Augmented";
         public const string IsDefendingFromSource = "Is Defending From Source";
         public const string CanPlayTargetToThisCharactersSpace = "Can Play Target to This Character's Space";
+        public const string SpaceRestrictionValidIfThisTargetChosen = "Space Restriction Valid With This Target Chosen";
         #endregion restrictions
 
         //because JsonUtility will fill in all values with defaults if not present
@@ -133,8 +138,9 @@ namespace KompasCore.Effects
         public int costDivisor = 1;
         public int cSpaces;
         public string[] adjacencySubtypes = new string[0];
+        public int spaceRestrictionIndex;
 
-        [System.NonSerialized]
+        [NonSerialized]
         private CardRestriction secondaryRestriction;
         public string secondaryRestrictionString = null;
 
@@ -271,7 +277,7 @@ namespace KompasCore.Effects
                 case Negated:  return potentialTarget.Negated;
 
                 //positioning
-                case Adjacent:           return potentialTarget.IsAdjacentTo(Source);
+                case AdjacentToSource:           return potentialTarget.IsAdjacentTo(Source);
                 case AdjacentToTarget:   return potentialTarget.IsAdjacentTo(Subeffect.Target);
                 case AdjacentToSubtype:  return potentialTarget.AdjacentCards.Any(card => adjacencySubtypes.All(s => card.SubtypeText.Contains(s)));
                 case InAOE:              return Source.CardInAOE(potentialTarget);
@@ -288,6 +294,7 @@ namespace KompasCore.Effects
                 case IndexInListLTX:     return potentialTarget.IndexInList < x;
                 case SameColumnAsSource: return potentialTarget.SameColumn(Source);
                 case DirectlyInFrontOfSource: return Source.CardDirectlyInFront(potentialTarget);
+                case InACorner:          return potentialTarget.InCorner();
 
                 //misc
                 case CanBePlayed: return Subeffect.Game.ExistsEffectPlaySpace(Source.PlayRestriction, Effect);
@@ -298,6 +305,10 @@ namespace KompasCore.Effects
                         || (Source.Game.CurrStackEntry is Attack atk2 && atk2.attacker == Source && atk2.defender == potentialTarget.Card);
                 case CanPlayTargetToThisCharactersSpace:
                     return Subeffect.Target.PlayRestriction.EvaluateEffectPlay(potentialTarget.Position.x, potentialTarget.Position.y, Effect);
+                case SpaceRestrictionValidIfThisTargetChosen:
+                    if (Effect.Subeffects[spaceRestrictionIndex] is SpaceTargetSubeffect spaceTgtSubeff)
+                        return spaceTgtSubeff.WillBePossibleIfCardTargeted(theoreticalTarget: potentialTarget.Card);
+                    else return false;
                 default: throw new ArgumentException($"Invalid card restriction {restriction}", "restriction");
             }
         }

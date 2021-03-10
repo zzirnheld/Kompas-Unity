@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"adjacent Summoned character for Memory Guide to echo",
-						"cardRestrictions":["Is Character","Board","Summoned","Adjacent"]
+						"cardRestrictions":["Is Character","Board","Summoned","Adjacent to Source"]
 					}
 				},
 				{

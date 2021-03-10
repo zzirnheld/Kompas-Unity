@@ -19,15 +19,15 @@ namespace KompasCore.UI
         //normal UI
         public BoardUIController boardUICtrl;
         //pips
-        public TMPro.TMP_Text friendlyPipsText;
-        public TMPro.TMP_Text enemyPipsText;
+        public TMP_Text friendlyPipsText;
+        public TMP_Text enemyPipsText;
         //show selected card data
         public GameObject selectedUIParent;
-        public TMPro.TMP_Text selectedCardNameText;
+        public TMP_Text selectedCardNameText;
         public Image selectedCardImage;
-        public TMPro.TMP_Text selectedCardStatsText;
-        public TMPro.TMP_Text selectedCardSubtypesText;
-        public TMPro.TMP_Text selectedCardEffText;
+        public TMP_Text selectedCardStatsText;
+        public TMP_Text selectedCardSubtypesText;
+        public TMP_Text selectedCardEffText;
         public GameObject UseEffectParent;
         public GameObject UseEffectGridParent;
         public GameObject AugmentPanelParent;
@@ -35,7 +35,7 @@ namespace KompasCore.UI
         public GameObject negatedParent;
         public GameObject activatedParent;
         //current state text (reminds the player what's happening right now)
-        public TMPro.TMP_Text currentStateText;
+        public TMP_Text currentStateText;
         //networking
         public TMP_InputField ipInputField;
         public GameObject networkingParent;

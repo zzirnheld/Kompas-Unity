@@ -2,6 +2,7 @@
 using UnityEngine;
 using TMPro;
 using KompasCore.UI;
+using UnityEngine.UI;
 
 namespace KompasCore.Cards
 {
@@ -17,7 +18,7 @@ namespace KompasCore.Cards
 
         public CardAOEController aoeController;
 
-        public MeshRenderer cardFaceRenderer;
+        //public MeshRenderer cardFaceRenderer;
         public GameObject zoomedCharFrame;
         public GameObject zoomedAllFrame;
         public GameObject unzoomedCharFrame;
@@ -51,8 +52,9 @@ namespace KompasCore.Cards
 
         private string currImageCardName;
         private bool currImageZoomLevel;
-        private Texture zoomedInTex;
-        private Texture zoomedOutTex;
+        private Sprite cardImageSprite;
+        public Image cardImageImage;
+        //public Image zoomMaskImage;
 
         public int N 
         {
@@ -115,6 +117,7 @@ namespace KompasCore.Cards
 
             aoeController.Hide();
 
+            //is the card augmenting something?
             if(card.AugmentedCard != null)
             {
                 gameObject.SetActive(true);
@@ -122,6 +125,7 @@ namespace KompasCore.Cards
                 return;
             }
 
+            //Here on out, we assume the card's not an augment
             card.transform.localScale = Vector3.one;
 
             switch (location)
@@ -140,7 +144,8 @@ namespace KompasCore.Cards
                     card.gameObject.transform.SetParent(card.Game.boardObject.transform);
                     MoveTo((card.BoardX, card.BoardY));
                     SetRotation();
-                    //Card game object active-ness is set in moveTo
+                    if (card.CardType == 'S' && card.SpellSubtype == CardBase.RadialSubtype) aoeController.Show(card.Arg);
+                    gameObject.SetActive(true);
                     break;
                 case CardLocation.Hand:
                     card.gameObject.transform.SetParent(card.Controller.handObject.transform);
@@ -156,20 +161,17 @@ namespace KompasCore.Cards
             SpreadOutAugs();
         }
 
+        /// <summary>
+        /// Updates the local position of this card, given a board position
+        /// </summary>
+        private void MoveTo((int x, int y) to)
+        {
+            transform.localPosition = BoardController.GridIndicesToCardPos(to.x, to.y);
+        }
+
         public void SpreadOutAugs()
         {
             var augCount = card.AugmentsList.Count;
-            /*float scale = 0.4f / ((float) (augCount / 4));
-            float increment = 0.4f/ ((float) (augCount / 4)); //1f / ((float) (2f * augCount))
-            float xOffset = -1f + increment;
-            float zOffset = 1f - increment;
-            foreach(var aug in card.Augments)
-            {
-                aug.transform.parent = card.transform;
-                aug.transform.localScale = new Vector3(scale, scale, scale);
-                aug.transform.localPosition = new Vector3(xOffset, 0.2f, zOffset);
-                xOffset += increment + increment;
-            }*/
             float scale = 0.4f / ((float)((augCount + 3) / 4));
             int i = 0;
             foreach(var aug in card.AugmentsList)
@@ -195,16 +197,13 @@ namespace KompasCore.Cards
 
         private void ReloadImages(string cardFileName)
         {
-            zoomedInTex = Resources.Load<Texture>("Card Detailed Textures/" + cardFileName);
-            zoomedOutTex = Resources.Load<Texture>("Unzoomed Card Textures/" + cardFileName);
-            if (zoomedInTex == null) zoomedInTex = zoomedOutTex;
-            else if (zoomedOutTex == null) zoomedOutTex = zoomedInTex;
+            cardImageSprite = Resources.Load<Sprite>("Simple Sprites/" + cardFileName);
         }
 
         /// <summary>
         /// Set the sprites of this card and gameobject
         /// </summary>
-        public void SetImage(string cardFileName, bool zoomed)
+        public virtual void SetImage(string cardFileName, bool zoomed)
         {
             if (cardFileName == currImageCardName && currImageZoomLevel == zoomed) return;
             if (currImageCardName != cardFileName) ReloadImages(cardFileName);
@@ -212,7 +211,9 @@ namespace KompasCore.Cards
             currImageCardName = cardFileName;
             currImageZoomLevel = zoomed;
 
-            cardFaceRenderer.material.mainTexture = zoomed ? zoomedInTex : zoomedOutTex;
+            //cardFaceRenderer.material.mainTexture = zoomed ? zoomedInTex : zoomedOutTex;
+            cardImageImage.sprite = cardImageSprite;
+            //zoomMaskImage.enabled = zoomed;
         }
 
 
@@ -283,18 +284,6 @@ namespace KompasCore.Cards
             }
 
             SetImage(card.CardName, zoomed);
-        }
-
-        /// <summary>
-        /// Sets this card's x and y values and updates its transform
-        /// </summary>
-        private void MoveTo((int x, int y) to)
-        {
-            int heightIndex = card.AugmentedCard == null ? card.AugmentsList.Count : card.AugmentedCard.AugmentsList.IndexOf(card);
-            transform.localPosition = BoardController.GridIndicesToPosWithStacking(to.x, to.y, heightIndex);
-            gameObject.SetActive(card.AugmentedCard == null);
-
-            if (card.CardType == 'S' && card.SpellSubtype == CardBase.RadialSubtype) aoeController.Show(card.Arg);
         }
 
         public void ShowValidTarget(bool valid = true) => validTargetObject.SetActive(valid);

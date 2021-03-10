@@ -48,7 +48,7 @@
 					"cardRestriction":
 					{
 						"blurb":"adjacent SX character for Death to kill",
-						"cardRestrictions":["Is Character","Board","S==X","Adjacent","Summoned"]
+						"cardRestrictions":["Is Character","Board","S==X","Adjacent to Source","Summoned"]
 					},
 					"xMultiplier":1
 				},

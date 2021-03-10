@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Lightweaver",
-	"effText":"When you cast a Weather, set X to the number of friendly characters there. Hand-summon an S X character.",
+	"effText":"The first time each turn you cast a Weather, set X to the number of friendly characters there. Hand-summon an S X character.",
 	"effects":[
 		{
 			"triggerData":
@@ -9,7 +9,7 @@
 				"blurb":"Weave Light",
 				"triggerCondition":"Play",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Controller Triggered"],
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Controller Triggered","Max Per Turn"],
 					"cardRestriction":{
 						"cardRestrictions":["Friendly","Is Spell","Subtypes Include"],
 						"subtypesInclude":["Weather"]
