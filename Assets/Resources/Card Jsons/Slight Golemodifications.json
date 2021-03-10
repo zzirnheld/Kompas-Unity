@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Slight Golemodifications",
-	"effText":"Tribute a friendly SX Golem.\nHand-summon or revive a Golem with S < X and activate it.",
+	"effText":"Tribute a friendly SX Golem.\nHand-summon or revive a Golem with S < X and activate it (permanently).",
 	"effects":[
 		{
 			"triggerData":

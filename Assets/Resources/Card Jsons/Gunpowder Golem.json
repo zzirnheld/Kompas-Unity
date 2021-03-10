@@ -4,7 +4,7 @@
 	"effText":"Golem.\nWhen I'm activated, set X to my W. Give me and another Summoned character -X E.",
 	"effects":[
 		{
-			"blurb":"Shards of Glass",
+			"blurb":"Boom",
 			"triggerData":
 			{
 				"triggerCondition":"Activate",
