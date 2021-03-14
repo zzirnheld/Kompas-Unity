@@ -1,0 +1,44 @@
+{
+	"cardType":83,
+	"cardName":"Regrowth",
+	"effText":"When turns start, reshuffle a dead Tree and heal a character. (You only heal if you reshuffled a Tree.)",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Regrowth",
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Friendly","Discard","Subtypes Include"],
+						"subtypesInclude":["Tree"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Who to heal",
+						"cardRestrictions":["Can Be Healed"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.HealSubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+	"c":1,
+	"spellType":"Enchant",
+	"subtypeText":"Enchant"
+}

@@ -1,0 +1,38 @@
+{
+	"cardType":83,
+	"cardName":"Pruning",
+	"effText":"Give a friendly character -5 E, +3 W, and +1 N. Draw 1.",
+	"effects":[
+		{
+			"blurb":"Simple",
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Board","Is Character","Friendly"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod":-5,
+					"nMod":1,
+					"wMod":3
+				},
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"c":1,
+	"spellType":"Simple",
+	"subtypeText":"Ley Simple"
+}
