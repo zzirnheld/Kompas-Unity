@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Regrowth",
-	"effText":"When turns start, reshuffle a dead Tree and heal a character. (You only heal if you reshuffled a Tree.)",
+	"effText":"When turns start, heal a Tree",
 	"effects":[
 		{
 			"triggerData":
@@ -17,19 +17,9 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Friendly","Discard","Subtypes Include"],
-						"subtypesInclude":["Tree"]
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
 						"blurb":"Who to heal",
-						"cardRestrictions":["Can Be Healed"]
+						"cardRestrictions":["Can Be Healed","Subtypes Include"],
+						"subtypesInclude":["Tree"]
 					}
 				},
 				{
