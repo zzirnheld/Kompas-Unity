@@ -60,7 +60,11 @@ namespace KompasClient.UI
             }
         }
 
-        public void HideSearch() => cardSearchView.SetActive(false);
+        public void HideSearch()
+        {
+            cardSearchView.SetActive(false);
+            alreadySelectedText.SetActive(false);
+        }
 
         public void HideIfNotShowingCurrSearchIndex()
         {

@@ -14,10 +14,15 @@
 			},
 			"subeffects":[
 				{
+					"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+					"subeffIndices":[3,4],
+					"skipIndex":8
+				},
+				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
 					"ChoiceBlurb":"Reshuffle your hand and draw X?",
 					"OptionBlurbs":["Yes","No"],
-					"OptionJumpIndices":[1,6]
+					"OptionJumpIndices":[2,7]
 				},
 				{
 					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
@@ -49,10 +54,14 @@
 					"$type":"KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
 				},
 				{
+					"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+					"subeffIndices":[11,12]
+				},
+				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
 					"ChoiceBlurb":"Reshuffle your hand and draw X?",
 					"OptionBlurbs":["Yes","No"],
-					"OptionJumpIndices":[9,100]
+					"OptionJumpIndices":[11,100]
 				},
 				{
 					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
