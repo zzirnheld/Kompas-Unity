@@ -35,6 +35,9 @@ namespace KompasServer.Effects
         public const string RehandFailed = "Rehanding card failed";
         public const string ReshuffleFailed = "Reshuffle failed";
         public const string TopdeckFailed = "Topdeck failed";
+
+        //misc
+        public const string TooMuchEForHeal = "Target already has at least their printed E";
         #endregion reasons for impossible
 
         public override Player Controller => EffectController;

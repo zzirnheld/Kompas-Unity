@@ -94,6 +94,7 @@ namespace KompasCore.Effects
         //misc statlike
         public const string CostLTAvatar = "Cost<Avatar";
         public const string CostGTAvatar = "Cost>Avatar";
+        public const string CanBeHealed = "Can Be Healed";
 
         public const string Negated = "Negated";
 
@@ -273,6 +274,8 @@ namespace KompasCore.Effects
                     //misc
                 case CostLTAvatar: return potentialTarget.Cost < Source.Controller.Avatar.Cost;
                 case CostGTAvatar: return potentialTarget.Cost > Source.Controller.Avatar.Cost;
+                case CanBeHealed: return potentialTarget.CardType == 'C' && potentialTarget.Location == CardLocation.Field 
+                        && potentialTarget.E < potentialTarget.BaseE;
 
                 case Negated:  return potentialTarget.Negated;
 

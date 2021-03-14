@@ -1,0 +1,56 @@
+{
+	"cardType":67,
+	"cardName":"The Man Who Replants",
+	"effText":"When turns start, you can pip revive a Tree, then give it -3 ES.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Replant Tree",
+				"optional":true,
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Tree for the Man to Replant",
+						"cardRestrictions":["Subtypes Include","Is Character","Discard"],
+						"subtypesInclude":["Tree"]
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where for Man to replant the Tree",
+						"spaceRestrictions":["Can Play Target to This Space"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod":-3,
+					"sMod":-3
+				}
+			]
+		}
+	],
+	"n":1,
+	"e":7,
+	"s":6,
+	"w":2,
+	"unique":true,
+	"subtypeText":"Person"
+}

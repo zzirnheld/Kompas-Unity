@@ -27,6 +27,7 @@ namespace KompasCore.Cards
         int C { get; }
         int A { get; }
         int Cost { get; }
+        int BaseE { get; }
 
         bool Negated { get; }
         IEnumerable<GameCard> AdjacentCards { get; }
@@ -70,6 +71,7 @@ namespace KompasCore.Cards
         public int C { get; }
         public int A { get; }
         public int Cost { get; }
+        public int BaseE { get; }
 
         public bool Negated { get; }
         public IEnumerable<GameCard> AdjacentCards { get; }
@@ -99,6 +101,7 @@ namespace KompasCore.Cards
             W = card.W;
             C = card.C;
             A = card.A;
+            BaseE = card.BaseE;
             Cost = card.Cost;
             Negated = card.Negated;
             AdjacentCards = card.AdjacentCards.ToArray();
