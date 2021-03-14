@@ -1,0 +1,39 @@
+{
+	"cardType":67,
+	"cardName":"Custodian of the Forest",
+	"effText":"When turns start, heal adjacent characters.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Replant Tree",
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Adjacent to Source","Can Be Healed"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.HealSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"jumpTo":1
+				}
+			]
+		}
+	],
+	"n":3,
+	"e":6,
+	"s":5,
+	"w":0,
+	"subtypeText":"Person"
+}
