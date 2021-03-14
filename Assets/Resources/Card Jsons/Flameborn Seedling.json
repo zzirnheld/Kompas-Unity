@@ -6,7 +6,7 @@
 		{
 			"triggerData":
 			{
-				"triggerCondition":"Play",
+				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
