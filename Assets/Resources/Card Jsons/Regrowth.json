@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Regrowth",
-	"effText":"When turns start, heal a Tree.",
+	"effText":"When friendly turns start, heal a Tree.",
 	"effects":[
 		{
 			"triggerData":
@@ -9,7 +9,7 @@
 				"blurb":"Regrowth",
 				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play"]
+					"triggerRestrictions":["This Card in Play","Friendly Turn"]
 				}
 			},
 			"subeffects":[
