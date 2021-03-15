@@ -15,7 +15,7 @@
 			"subeffects":[
 				{
 					"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
-					"subeffIndices":[3,4],
+					"subeffIndices":[3],
 					"skipIndex":8
 				},
 				{
@@ -55,7 +55,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
-					"subeffIndices":[11,12]
+					"subeffIndices":[11]
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
