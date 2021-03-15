@@ -290,6 +290,7 @@ namespace KompasServer.Effects
 
         public void TriggerForCondition(string condition, ActivationContext context)
         {
+            Debug.Log($"Triggering for condition {condition}, context {context}");
             //first resolve any hanging effects
             ResolveHangingEffects(condition, context);
 
@@ -302,8 +303,7 @@ namespace KompasServer.Effects
                     .ToArray();
                 if (!validTriggers.Any()) return;
                 var triggers = new TriggersTriggered(triggers: validTriggers, context: context);
-                Debug.Log($"Triggers triggered for condition {condition}, context {context}: " +
-                    $"{string.Join(", ", triggers.triggers.Select(t => t.Blurb))}");
+                Debug.Log($"Triggers triggered: {string.Join(", ", triggers.triggers.Select(t => t.Blurb))}");
                 lock (triggerStackLock)
                 {
                     triggeredTriggers.Enqueue(triggers);

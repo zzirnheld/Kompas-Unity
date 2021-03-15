@@ -12,6 +12,7 @@ namespace KompasCore.Effects
         public const string Negative = "<0";
         public const string Nonnegative = ">=0";
         public const string AtLeastConstant = ">=Constant";
+        public const string EqualsConstant = "==Constant";
         public const string LessThanEqualControllerPips = "<= Controller's Pips";
 
         public string[] xRestrictions = new string[0];
@@ -36,6 +37,7 @@ namespace KompasCore.Effects
                 case LessThanEqualThisE: return x <= Source.E;
                 case LessThanEqualControllerPips: return x <= Source.Controller.Pips;
                 case AtLeastConstant: return x >= constant;
+                case EqualsConstant: return x == constant;
                 default: throw new System.ArgumentException($"Invalid X restriction {r} in X Restriction.");
             }
         }

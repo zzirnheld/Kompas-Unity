@@ -8,8 +8,12 @@
 			{
 				"triggerCondition":"Move",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered","Distance from Triggerer to Space == Constant"],
-					"distance":3
+					"triggerRestrictions":["This Card Triggered","X Fits Restriction"],
+					"xRestriction":
+					{
+						"xRestrictions":[">=Constant"],
+						"constant":3
+					}
 				}
 			},
 			"subeffects":[

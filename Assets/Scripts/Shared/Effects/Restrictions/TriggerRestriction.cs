@@ -121,11 +121,6 @@ namespace KompasCore.Effects
                 case ControllerTriggered:     return context.Triggerer == ThisCard.Controller;
                 case EnemyTriggered:          return context.Triggerer != ThisCard.Controller;
 
-                case DistanceTriggererToSpaceConstant:
-                    if (context.Space == null) return false;
-                    var (x, y) = context.Space.Value;
-                    return context.CardInfo.DistanceTo(x, y) == distance;
-
                 //gamestate
                 case FriendlyTurn:  return Game.TurnPlayer == ThisCard.Controller;
                 case EnemyTurn:     return Game.TurnPlayer != ThisCard.Controller;
