@@ -37,6 +37,8 @@ namespace KompasClient.UI
         public GameObject CurrStateBonusObj;
         public TMP_Text CurrStateText;
         public TMP_Text CurrStateBonusText;
+        private string primaryState;
+        private string secondaryState;
 
         //effects
         public InputField xInput;
@@ -181,13 +183,18 @@ namespace KompasClient.UI
             EndTurnButton.SetActive(index == 0);
         }
 
-        public void SetCurrState(string primaryState, string secondaryState = "")
+        public void SetCurrState(string primaryState, string secondaryState = "", string numTargetsChosen = "")
         {
+            this.primaryState = primaryState;
+            this.secondaryState = secondaryState;
             CurrStateOverallObj.SetActive(!string.IsNullOrEmpty(primaryState));
-            CurrStateText.text = primaryState;
+            CurrStateText.text = primaryState + numTargetsChosen;
             CurrStateBonusText.text = secondaryState;
             CurrStateBonusObj.SetActive(!string.IsNullOrWhiteSpace(secondaryState));
         }
+
+        public void UpdateCurrState(string primaryState = null, string secondaryState = null, string numTargetsChosen = null)
+            => SetCurrState(primaryState ?? this.primaryState, secondaryState ?? this.secondaryState, numTargetsChosen ?? string.Empty);
 
         #region effects
         public void ActivateSelectedCardEff(int index) => ActivateCardEff(ShownCard, index);

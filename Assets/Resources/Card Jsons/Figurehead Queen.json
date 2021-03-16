@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Figurehead Queen",
-	"effText":"When you draw X, give me +XC.\nAfter I'm cast, delay 1 turn.\nIf my C ≥ 10, deck-summon a Tarocco.",
+	"effText":"When you draw X, give me +XC.\nAfter I'm cast, delay 1 turn.\nSet X to my C. Deck-summon an S <= X Tarocco.",
 	"effects":[
 		{
 			"triggerData":
@@ -44,17 +44,13 @@
 					"xMultiplier":1
 				},
 				{
-					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition":"X<C",
-					"constant":10
-				},
-				{
 					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Subtypes Include","Is Character","Deck"],
+						"cardRestrictions":["Is Character","Deck","S<=X","Subtypes Include"],
 						"subtypesInclude":["Tarocco"]
-					}
+					},
+					"xMultiplier":1
 				},
 				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
@@ -69,8 +65,7 @@
 			]
 		}
 	],
-	"fast":false,
-	"c":5,
+	"c":4,
 	"spellType":"Delayed",
 	"subtypes":["Tarocco","Delayed"],
 	"subtypeText":"Tarocco Delayed",

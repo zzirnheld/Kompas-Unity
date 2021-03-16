@@ -34,6 +34,20 @@ namespace KompasClient.GameCore
             /// Whether any cards currently able to be searched can't currently be seen and clicked on.
             /// </summary>
             public bool AnyToSearchNotVisible => toSearch.Any(c => !c.CurrentlyVisible);
+
+            public string SearchProgress
+            {
+                get
+                {
+                    int numSearched = searched.Count;
+                    if (listRestriction == null) return null;
+                    else if (listRestriction.HasMin && listRestriction.HasMax)
+                        return $"{numSearched} / {listRestriction.minCanChoose} - {listRestriction.maxCanChoose}";
+                    else if (listRestriction.HasMax) return $"{numSearched} / {listRestriction.maxCanChoose}";
+                    else if (listRestriction.HasMin) return $"{numSearched} / {listRestriction.minCanChoose}";
+                    else return null;
+                }
+            }
         }
 
         public SearchData? CurrSearchData { get; private set; } = null;

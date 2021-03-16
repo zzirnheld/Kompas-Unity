@@ -107,6 +107,8 @@ namespace KompasClient.UI
             prevSearchImage.sprite = CurrSearchData.toSearch[PrevSearchIndex].simpleSprite;
 
             endButton.SetActive(CurrSearchData.HaveEnough);
+            var progress = CurrSearchData.SearchProgress;
+            if(progress != null) clientUICtrl.UpdateCurrState(numTargetsChosen: progress);
         }
 
         /// <summary>
