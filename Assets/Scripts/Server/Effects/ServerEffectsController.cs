@@ -166,7 +166,7 @@ namespace KompasServer.Effects
             //this is saved so that we know what trigger to okay or not if it's responded
             foreach(var t in stillValid)
             {
-                if (!t.Responded) await t.Ask();
+                if (!t.Responded) await t.Ask(triggered.context.X ?? 0);
             }
 
             //now that all optional triggers have been answered, time to deal with ordering.

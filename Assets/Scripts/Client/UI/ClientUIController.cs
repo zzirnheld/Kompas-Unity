@@ -47,8 +47,11 @@ namespace KompasClient.UI
         public GameObject declineEffectView;
         public Toggle autodeclineEffects;
         public bool Autodecline => autodeclineEffects.isOn;
-        public Toggle autoYesOptional;
-        public bool AutoYesOptional => autoYesOptional.isOn;
+        public Dropdown autoOptionalEff;
+        public const int OptionalEffManual = 0;
+        public const int OptionalEffYes = 1;
+        public const int OptionalEffNo = 2;
+        public int OptionalEffAutoResponse => autoOptionalEff.value;
         //confirm trigger
         public GameObject ConfirmTriggerView;
         public TMP_Text TriggerBlurbText;
@@ -227,15 +230,13 @@ namespace KompasClient.UI
             clientGame.clientNotifier.DeclineAnotherTarget();
         }
 
-        public void ShowOptionalTrigger(Trigger t, int? x)
+        public void ShowOptionalTrigger(Trigger t, bool showX, int x)
         {
-            if (AutoYesOptional)
-            {
-                RespondToTrigger(true);
-            }
+            if (OptionalEffAutoResponse == OptionalEffYes) RespondToTrigger(true);
+            else if (OptionalEffAutoResponse == OptionalEffNo) RespondToTrigger(false);
             else
             {
-                TriggerBlurbText.text = t.Blurb;
+                TriggerBlurbText.text = showX ? $"{t.Blurb} (X = {x})" : t.Blurb;
                 ConfirmTriggerView.SetActive(true);
             }
         }
@@ -246,8 +247,8 @@ namespace KompasClient.UI
             ConfirmTriggerView.SetActive(false);
         }
 
-        public void ShowEffectOptions(string choiceBlurb, string[] optionBlurbs)
-            => chooseOptionUICtrl.ShowEffectOptions(choiceBlurb, optionBlurbs);
+        public void ShowEffectOptions(string choiceBlurb, string[] optionBlurbs, bool showX, int x)
+            => chooseOptionUICtrl.ShowEffectOptions(choiceBlurb, optionBlurbs, showX, x);
 
         public void GetResponse()
         {
