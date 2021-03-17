@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Flippant Emo Daughter",
-	"effText":"When you play a Crazy Idea, give me +1ESW.",
+	"effText":"When you play a Crazy Idea, give me +2ESW.",
 	"effects":[
 		{
 			"triggerData":
@@ -22,9 +22,9 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":1,
-					"sMod":1,
-					"wMod":1
+					"eMod":2,
+					"sMod":2,
+					"wMod":2
 				}
 			]	
 		}
