@@ -47,7 +47,7 @@ namespace KompasClient.UI
         public GameObject declineEffectView;
         public Toggle autodeclineEffects;
         public bool Autodecline => autodeclineEffects.isOn;
-        public Dropdown autoOptionalEff;
+        public TMP_Dropdown autoOptionalEff;
         public const int OptionalEffManual = 0;
         public const int OptionalEffYes = 1;
         public const int OptionalEffNo = 2;

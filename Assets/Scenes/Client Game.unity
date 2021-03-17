@@ -22686,7 +22686,7 @@ MonoBehaviour:
   declineAnotherTargetView: {fileID: 2128304641}
   declineEffectView: {fileID: 1955749635}
   autodeclineEffects: {fileID: 1049328079}
-  autoOptionalEff: {fileID: 0}
+  autoOptionalEff: {fileID: 535984623}
   ConfirmTriggerView: {fileID: 1409840298}
   TriggerBlurbText: {fileID: 659674731}
   chooseOptionUICtrl: {fileID: 1241039935}
