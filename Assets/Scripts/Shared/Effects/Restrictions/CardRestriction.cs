@@ -101,6 +101,7 @@ namespace KompasCore.Effects
         //positioning
         public const string AdjacentToSource = "Adjacent to Source";
         public const string AdjacentToTarget = "Adjacent to Target";
+        public const string AdjacentToCoords = "Adjacent to Coords";
         public const string WithinCSpacesOfSource = "Within C Spaces";
         public const string WithinCSpacesOfTarget = "Within C Spaces of Target";
         public const string WithinXSpacesOfSource = "Within X Spaces";
@@ -282,6 +283,7 @@ namespace KompasCore.Effects
                 //positioning
                 case AdjacentToSource:           return potentialTarget.IsAdjacentTo(Source);
                 case AdjacentToTarget:   return potentialTarget.IsAdjacentTo(Subeffect.Target);
+                case AdjacentToCoords:   return potentialTarget.IsAdjacentTo(Subeffect.Space);
                 case AdjacentToSubtype:  return potentialTarget.AdjacentCards.Any(card => adjacencySubtypes.All(s => card.SubtypeText.Contains(s)));
                 case InAOE:              return Source.CardInAOE(potentialTarget);
                 case InTargetsAOE:       return Subeffect.Target.CardInAOE(potentialTarget);
