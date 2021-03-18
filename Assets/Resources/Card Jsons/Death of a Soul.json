@@ -43,7 +43,9 @@
 					{
 						"blurb":"character whose soul to kill",
 						"cardRestrictions":["Board","Is Character","Cost<=X"]
-					}
+					},
+					"xMultiplier":1,
+					"xDivisor":1
 				},
 				{
 					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
@@ -52,7 +54,7 @@
 		}
 	],
 	"fast":true,
-	"c":4,
+	"c":2,
 	"spellType":"Simple",
 	"subtypes":["Simple","Shaping"],
 	"subtypeText":"Simple Shaping"
