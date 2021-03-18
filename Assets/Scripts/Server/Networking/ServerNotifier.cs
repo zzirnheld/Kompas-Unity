@@ -151,8 +151,8 @@ namespace KompasServer.Networking
         public void NotifyAttackStarted(GameCard atk, GameCard def) => SendToBoth(new AttackStartedPacket(atk.ID, def.ID));
 
         #region other effect stuff
-        public void ChooseEffectOption(string cardName, string choiceBlurb, string[] optionBlurbs, bool hasDefault) 
-            => SendPacket(new GetEffectOptionPacket(cardName, choiceBlurb, optionBlurbs, hasDefault));
+        public void ChooseEffectOption(string cardName, string choiceBlurb, string[] optionBlurbs, bool hasDefault, bool showX, int x) 
+            => SendPacket(new GetEffectOptionPacket(cardName, choiceBlurb, optionBlurbs, hasDefault, showX, x));
 
         public void EffectResolving(ServerEffect eff)
             => SendToBothInverting(new EffectResolvingPacket(eff.Source.ID, eff.EffectIndex, eff.Controller.index, invert: Player.index != 0));
@@ -195,8 +195,8 @@ namespace KompasServer.Networking
 
         public void DiscardSimples() => SendToBoth(new DiscardSimplesPacket());
 
-        public void AskForTrigger(ServerTrigger t) 
-            => SendPacket(new OptionalTriggerPacket(t.serverEffect.Source.ID, t.serverEffect.EffectIndex));
+        public void AskForTrigger(ServerTrigger t, int x, bool showX) 
+            => SendPacket(new OptionalTriggerPacket(t.serverEffect.Source.ID, t.serverEffect.EffectIndex, x, showX));
 
         public void GetTriggerOrder(IEnumerable<ServerTrigger> triggers)
         {

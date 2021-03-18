@@ -28,10 +28,15 @@
 					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				},
 				{
+					"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+					"subeffIndices":[6],
+					"skipIndex":8
+				},
+				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
 					"ChoiceBlurb":"Pay 1 pip or annihilate Stupid?",
 					"OptionBlurbs":["Pay 1 pip","Annhihilate"],
-					"OptionJumpIndices":[4,7]
+					"OptionJumpIndices":[5,8]
 				},
 				{
 					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",

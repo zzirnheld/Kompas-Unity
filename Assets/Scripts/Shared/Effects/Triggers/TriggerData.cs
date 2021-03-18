@@ -11,4 +11,5 @@ public class TriggerData
 
     public bool optional = false;
     public string blurb = "Trigger";
+    public bool showX = false;
 }

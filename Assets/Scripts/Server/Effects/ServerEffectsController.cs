@@ -166,7 +166,7 @@ namespace KompasServer.Effects
             //this is saved so that we know what trigger to okay or not if it's responded
             foreach(var t in stillValid)
             {
-                if (!t.Responded) await t.Ask();
+                if (!t.Responded) await t.Ask(triggered.context.X ?? 0);
             }
 
             //now that all optional triggers have been answered, time to deal with ordering.
@@ -290,6 +290,7 @@ namespace KompasServer.Effects
 
         public void TriggerForCondition(string condition, ActivationContext context)
         {
+            Debug.Log($"Triggering for condition {condition}, context {context}");
             //first resolve any hanging effects
             ResolveHangingEffects(condition, context);
 
@@ -302,8 +303,7 @@ namespace KompasServer.Effects
                     .ToArray();
                 if (!validTriggers.Any()) return;
                 var triggers = new TriggersTriggered(triggers: validTriggers, context: context);
-                Debug.Log($"Triggers triggered for condition {condition}, context {context}: " +
-                    $"{string.Join(", ", triggers.triggers.Select(t => t.Blurb))}");
+                Debug.Log($"Triggers triggered: {string.Join(", ", triggers.triggers.Select(t => t.Blurb))}");
                 lock (triggerStackLock)
                 {
                     triggeredTriggers.Enqueue(triggers);

@@ -8,9 +8,10 @@ namespace KompasServer.Effects
         public string[] OptionBlurbs;
         public int[] OptionJumpIndices;
         public bool hasDefault = true;
+        public bool showX = false;
 
         private async Task<int> AskForOptionChoice()
-            => await ServerPlayer.serverAwaiter.GetEffectOption(Source.CardName, ChoiceBlurb, OptionBlurbs, hasDefault);
+            => await ServerPlayer.serverAwaiter.GetEffectOption(Source.CardName, ChoiceBlurb, OptionBlurbs, hasDefault, showX, Count);
 
         public override async Task<ResolutionInfo> Resolve()
         {

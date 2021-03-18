@@ -4,6 +4,7 @@ using KompasCore.GameCore;
 using KompasServer.Effects;
 using KompasServer.Networking;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace KompasServer.GameCore
 {
@@ -36,16 +37,23 @@ namespace KompasServer.GameCore
             //calculate distance before doing the swap
             int distance = card.DistanceTo(toX, toY);
             var at = GetCardAt(toX, toY);
+            //save info before for triggers
+            var atInfo = at == null ? null : new GameCardInfo(at);
+            var atAugs = new List<GameCardInfo>();
+            if (at != null) atAugs.AddRange(at.Augments.Select(a => new GameCardInfo(a)));
+            var cardInfo = new GameCardInfo(card);
+            var cardAugs = new List<GameCardInfo>(card.Augments.Select(a => new GameCardInfo(a)));
+
 
             if (base.Swap(card, toX, toY, playerInitiated))
             {
                 //then trigger appropriate triggers. list of contexts:
                 List<ActivationContext> ctxts = new List<ActivationContext>();
                 //trigger for first card
-                ctxts.Add(new ActivationContext(card: card, stackable: stackSrc, space: (toX, toY),
+                ctxts.Add(new ActivationContext(card: cardInfo, stackable: stackSrc, space: (toX, toY),
                     triggerer: playerInitiated ? card.Controller : stackSrc?.Controller, x: distance));
                 //trigger for first card's augments
-                foreach (var aug in card.Augments)
+                foreach (var aug in cardAugs)
                 {
                     ctxts.Add(new ActivationContext(card: aug, stackable: null, space: (toX, toY),
                         triggerer: playerInitiated ? aug.Controller : stackSrc?.Controller, x: distance));
@@ -54,11 +62,11 @@ namespace KompasServer.GameCore
                 if (at != null)
                 {
                     //then trigger this card's triggers
-                    ctxts.Add(new ActivationContext(card: at, stackable: stackSrc, space: (toX, toY),
+                    ctxts.Add(new ActivationContext(card: atInfo, stackable: stackSrc, space: (toX, toY),
                         triggerer: playerInitiated ? card.Controller : stackSrc?.Controller, x: distance));
 
                     //trigger for first card's augments
-                    foreach (var aug in at.Augments)
+                    foreach (var aug in atAugs)
                     {
                         ctxts.Add( new ActivationContext(card: aug, stackable: null, space: (toX, toY),
                             triggerer: playerInitiated ? aug.Controller : stackSrc?.Controller, x: distance));

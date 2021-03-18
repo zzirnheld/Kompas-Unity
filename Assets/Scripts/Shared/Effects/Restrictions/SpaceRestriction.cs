@@ -40,6 +40,7 @@ namespace KompasCore.Effects
         public const string CardHereFitsRestriction = "Card Here Fits Restriction";
         public const string OnTargetsDiagonal = "On Target's Diagonal";
         public const string OnEdge = "On Edge of Board";
+        public const string Corner = "Corner";
         #endregion space restrictions
 
         public string[] spaceRestrictions;
@@ -128,6 +129,7 @@ namespace KompasCore.Effects
                 case CardHereFitsRestriction: return hereFitsRestriction.Evaluate(Source.Game.boardCtrl.GetCardAt(x, y));
                 case OnTargetsDiagonal: return target.OnMyDiagonal((x, y));
                 case OnEdge: return x == 0 || x == 6 || y == 0 || y == 6;
+                case Corner: return (x == 0 || x == 6) && (y == 0 || y == 6);
                 default: throw new ArgumentException($"Invalid space restriction {restriction}", "restriction");
             }
         }

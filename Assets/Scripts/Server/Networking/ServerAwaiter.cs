@@ -60,9 +60,9 @@ namespace KompasServer.Networking {
         #endregion locks
 
         #region trigger things
-        public async Task<bool> GetOptionalTriggerChoice(ServerTrigger trigger)
+        public async Task<bool> GetOptionalTriggerChoice(ServerTrigger trigger, int x, bool showX)
         {
-            serverNotifier.AskForTrigger(trigger);
+            serverNotifier.AskForTrigger(trigger, x, showX);
             //TODO later use a semaphore or something to signal once packet is available
             while (true)
             {
@@ -110,9 +110,9 @@ namespace KompasServer.Networking {
         #endregion trigger things
 
         #region effect flow control
-        public async Task<int> GetEffectOption(string cardName, string choiceBlurb, string[] optionBlurbs, bool hasDefault)
+        public async Task<int> GetEffectOption(string cardName, string choiceBlurb, string[] optionBlurbs, bool hasDefault, bool showX, int x)
         {
-            serverNotifier.ChooseEffectOption(cardName, choiceBlurb, optionBlurbs, hasDefault);
+            serverNotifier.ChooseEffectOption(cardName, choiceBlurb, optionBlurbs, hasDefault, showX, x);
             while (true)
             {
                 lock (EffectOptionsLock)

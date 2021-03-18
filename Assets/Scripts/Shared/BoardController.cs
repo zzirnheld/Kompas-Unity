@@ -48,8 +48,8 @@ namespace KompasCore.GameCore
             if (card == null || card.CardType != 'S') return true;
 
             //if it's a spell going to a relevant location, count other adjacent spells to the avatar
-            if (x >= 5 && y >= 5) return CardsAdjacentTo(6, 6).Count(c => c != card && c.CardType == 'S') < 1;
-            else if (x <= 1 && y <= 1) return CardsAdjacentTo(0, 0).Count(c => c != card && c.CardType == 'S') < 1;
+            if (x >= 5 && y >= 5) return CardsAdjacentTo(6, 6).Count(c => c != card && c.CardType == 'S' && c.Controller == card.Controller) < 1;
+            else if (x <= 1 && y <= 1) return CardsAdjacentTo(0, 0).Count(c => c != card && c.CardType == 'S' && c.Controller == card.Controller) < 1;
 
             //if it's not in a relevant location, everything is fine
             return true;

@@ -60,7 +60,11 @@ namespace KompasClient.UI
             }
         }
 
-        public void HideSearch() => cardSearchView.SetActive(false);
+        public void HideSearch()
+        {
+            cardSearchView.SetActive(false);
+            alreadySelectedText.SetActive(false);
+        }
 
         public void HideIfNotShowingCurrSearchIndex()
         {
@@ -103,6 +107,8 @@ namespace KompasClient.UI
             prevSearchImage.sprite = CurrSearchData.toSearch[PrevSearchIndex].simpleSprite;
 
             endButton.SetActive(CurrSearchData.HaveEnough);
+            var progress = CurrSearchData.SearchProgress;
+            if(progress != null) clientUICtrl.UpdateCurrState(numTargetsChosen: progress);
         }
 
         /// <summary>

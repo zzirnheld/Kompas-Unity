@@ -1,17 +1,18 @@
 {
 	"cardType":67,
 	"cardName":"VIII - Fortitude",
-	"effText":"When a friendly character attacks, draw 1.",
+	"effText":"The first three times each turn a friendly character attacks, draw 1.",
 	"effects":[
 		{
 			"triggerData":
 			{
 				"triggerCondition":"Attack",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Max Per Turn"],
 					"cardRestriction":{
 						"cardRestrictions":["Friendly"]
-					}
+					},
+					"maxTimesPerTurn":3
 				}
 			},
 			"subeffects":[

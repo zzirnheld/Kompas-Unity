@@ -1,0 +1,59 @@
+{
+	"cardType":83,
+	"cardName":"Yeeterator",
+	"effText":"Ificate.\nThe first time each stack a character moves here, move them to a corner. If you can't, annihilate me.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Yeeterate",
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Max Per Stack"],
+					"spaceRestriction":
+					{
+						"spaceRestrictions":["In AOE"],
+						"mustBeEmpty":false
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"jumpTo":5
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where for Shifting Tile Maze Path Blocker to move its target",
+						"spaceRestrictions":["Empty","Corner","Can Move Target to This Space"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+	"keywords":["Ificate"],
+	"c":5,
+	"spellType":"Radial",
+	"subtypeText":"Radial Crazy Idea Ificator",
+	"arg":1
+}

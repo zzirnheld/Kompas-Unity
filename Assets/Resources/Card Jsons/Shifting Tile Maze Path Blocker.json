@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Shifting Tile Maze Path Blocker",
-	"effText":"Ificate.\nThe first time each stack a character moves into here, move them 1 space to an empty space here. If you can't, annihilate me.",
+	"effText":"Ificate.\nThe first time each stack a character moves here, move them 1 space to another space here. If you can't, annihilate me.",
 	"effects":[
 		{
 			"triggerData":
@@ -9,11 +9,7 @@
 				"blurb":"Maze Block",
 				"triggerCondition":"Move",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Coords Fit Restriction","Max Per Stack"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Is Character","Board","Not In AOE"]
-					},
+					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Max Per Stack"],
 					"spaceRestriction":
 					{
 						"spaceRestrictions":["In AOE"],

@@ -1,55 +1,40 @@
 {
 	"cardType":83,
 	"cardName":"Right Into My Trap",
-	"effText":"Ificate.\nWhen a character here moves out of my area of effect, move them a space towards me, then if they’re no longer in my area of effect, annihilate me.",
+	"effText":"Ificate.\nWhen a character moves adjacent to a Crazy card, set X to the number of Crazy cards adjacent to where they are now, and give them -X W.",
 	"effects":[
 		{
 			"triggerData":
 			{
-				"blurb":"Back Into My Trap",
+				"blurb":"Right Into My Trap",
 				"triggerCondition":"Move",
 				"triggerRestriction":{
-					"triggerRestrictions":["Triggerer Fits Restriction","Coords Fit Restriction"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Is Character","Board","In AOE"]
-					},
+					"triggerRestrictions":["This Card in Play","Coords Fit Restriction"],
 					"spaceRestriction":
 					{
-						"spaceRestrictions":["Not In AOE"],
+						"spaceRestrictions":["Adjacent to Subtype"],
+						"adjacencySubtypes":["Crazy"],
 						"mustBeEmpty":false
 					}
 				}
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"back into my trap",
-						"spaceRestrictions":["Empty","Distance to Target == Constant","Can Move Target to This Space","Towards Source from Target"],
-						"constant":1
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition":"Target Fits Restriction",
-					"cardRestriction":
-					{
-						"cardRestrictions":["In AOE"]
-					}
-				},
-				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount":"Cards Fitting Restriction",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Subtypes Include","Adjacent to Target"],
+						"subtypesInclude":["Crazy"]
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wMult":-1
 				}
 			]	
 		}
@@ -57,6 +42,6 @@
 	"keywords":["Ificate"],
 	"c":5,
 	"spellType":"Radial",
-	"subtypeText":"Crazy Idea Radial Ificator",
+	"subtypeText":"Crazy Idea Enchant Ificator",
 	"arg":1
 }

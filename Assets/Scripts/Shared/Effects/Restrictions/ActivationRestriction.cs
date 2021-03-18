@@ -26,7 +26,7 @@ namespace KompasCore.Effects
         public const string Default = "Default";
         public static readonly string[] DefaultRestrictions = { ControllerActivates, NotNegated, InPlay };
 
-        public static readonly string[] AtAllRestrictions = { TimesPerTurn, TimesPerRound, FriendlyTurn, EnemyTurn, NotNegated, InPlay };
+        public static readonly string[] AtAllRestrictions = { TimesPerTurn, TimesPerRound, FriendlyTurn, EnemyTurn, NotNegated, InPlay, Location };
 
         public int maxTimes = 1;
         public int location = (int) CardLocation.Field;

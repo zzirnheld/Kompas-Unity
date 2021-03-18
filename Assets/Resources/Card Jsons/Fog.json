@@ -1,13 +1,13 @@
 {
 	"cardType":83,
 	"cardName":"Fog",
-	"effText":"Weather.\nWhen a character arrives here, both players draw 1.",
+	"effText":"Weather.\nWhen a character ends movement here, both players draw 1.",
 	"effects":[
 		{
 			"triggerData":
 			{
 				"blurb":"Fog",
-				"triggerCondition":"Arrive",
+				"triggerCondition":"Move",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Coords Fit Restriction"],
 					"cardRestriction":{

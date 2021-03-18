@@ -1,0 +1,34 @@
+{
+	"cardType":83,
+	"cardName":"Regrowth",
+	"effText":"When friendly turns start, heal a Tree.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Regrowth",
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Friendly Turn"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Who to heal",
+						"cardRestrictions":["Can Be Healed","Subtypes Include"],
+						"subtypesInclude":["Tree"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.HealSubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+	"c":1,
+	"spellType":"Enchant",
+	"subtypeText":"Enchant"
+}

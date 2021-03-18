@@ -16,14 +16,14 @@ namespace KompasClient.UI
 
         public List<ClientEffectOptionUIController> options = new List<ClientEffectOptionUIController>();
 
-        public void ShowEffectOptions(string choiceBlurb, string[] optionBlurbs)
+        public void ShowEffectOptions(string choiceBlurb, string[] optionBlurbs, bool showX, int x)
         {
             //remove old options
             foreach (var o in options) Destroy(o.gameObject);
             options.Clear();
 
             //set new information
-            choiceBlurbText.text = choiceBlurb;
+            choiceBlurbText.text = showX ? $"{choiceBlurb} (X = {x})" : choiceBlurb;
 
             int i = 0;
             foreach(var blurb in optionBlurbs)

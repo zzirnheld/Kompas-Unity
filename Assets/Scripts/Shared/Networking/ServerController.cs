@@ -41,16 +41,16 @@ namespace KompasServer.Networking
 
             while (true)
             {
-                if(currGame == null)
+                Debug.Log("Waiting for next client");
+                var client = await listener.AcceptTcpClientAsync();
+                Debug.Log("Connected to a client");
+                if (currGame == null)
                 {
                     currGame = Instantiate(GamePrefab).GetComponent<ServerGame>();
                     currGame.Init(UICtrl, CardRepo);
                     games.Add(currGame);
                 }
-                Debug.Log("Waiting for next client");
-                var client = await listener.AcceptTcpClientAsync();
-                Debug.Log("Connected to a client");
-                if(currGame.AddPlayer(client) >= 2) currGame = null;
+                if (currGame.AddPlayer(client) >= 2) currGame = null;
             }
         }
 

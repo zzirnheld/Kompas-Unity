@@ -68,6 +68,7 @@ namespace KompasServer.Networking
             //Debug.Log("SERVER NET CTRL UPDATE");
             base.Update();
             if (packets.Count != 0) await ProcessPacket(packets.Dequeue());
+            if (sGame.Players.Any(p => p.TcpClient != null && !p.TcpClient.Connected)) Destroy(sGame.gameObject); //TODO notify player that no
         }
 
         public override async Task ProcessPacket((string command, string json) packetInfo)

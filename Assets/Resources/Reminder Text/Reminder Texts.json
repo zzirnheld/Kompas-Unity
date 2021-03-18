@@ -46,7 +46,7 @@
 		},
 		{
 			"keyword":"Weather.",
-			"reminder":"When turns start, deck-cast a Weather adjacent to me. Regardless, annihilate me."
+			"reminder":"When turns start, deck-cast a different Weather adjacent to me. Regardless, annihilate me."
 		},
 		{
 			"keyword":"martyr",

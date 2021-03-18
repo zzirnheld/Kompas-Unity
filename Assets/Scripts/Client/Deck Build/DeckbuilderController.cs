@@ -200,7 +200,7 @@ namespace KompasDeckbuilder
             IsDeckDirty = true;
             currDeck.Add(toAdd);
             toAdd.gameObject.SetActive(true);
-            toAdd.transform.parent = DeckViewScrollPane.transform;
+            toAdd.transform.SetParent(DeckViewScrollPane.transform);
             toAdd.transform.localScale = Vector3.one;
             SetDeckCountText();
         }

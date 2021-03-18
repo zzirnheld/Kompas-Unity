@@ -127,7 +127,7 @@ namespace KompasServer.Effects
 
         public async Task<ResolutionInfo> ResolveSubeffect(int index)
         {
-            // Debug.Log($"Resolving subeffect of type {ServerSubeffects[index].GetType()}");
+            Debug.Log($"Resolving subeffect of type {subeffects[index].GetType()}");
             SubeffectIndex = index;
             ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
             return await subeffects[index].Resolve();

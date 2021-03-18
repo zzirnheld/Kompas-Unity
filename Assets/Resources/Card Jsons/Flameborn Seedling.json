@@ -1,0 +1,46 @@
+{
+	"cardType":67,
+	"cardName":"Flameborn Seedling",
+	"effText":"When I die, deck-summon a Tree where I was and give them -3 ES.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Discard",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"for Seedling to become",
+						"cardRestrictions":["Subtypes Include","Is Character","Deck","Can Be Played"],
+						"subtypesInclude":["Tree"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod":-3,
+					"sMod":-3
+				}
+			]
+		}
+	],
+	"n":0,
+	"e":2,
+	"s":3,
+	"w":0,
+	"subtypeText":""
+}

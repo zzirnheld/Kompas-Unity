@@ -94,12 +94,14 @@ namespace KompasCore.Effects
         //misc statlike
         public const string CostLTAvatar = "Cost<Avatar";
         public const string CostGTAvatar = "Cost>Avatar";
+        public const string CanBeHealed = "Can Be Healed";
 
         public const string Negated = "Negated";
 
         //positioning
         public const string AdjacentToSource = "Adjacent to Source";
         public const string AdjacentToTarget = "Adjacent to Target";
+        public const string AdjacentToCoords = "Adjacent to Coords";
         public const string WithinCSpacesOfSource = "Within C Spaces";
         public const string WithinCSpacesOfTarget = "Within C Spaces of Target";
         public const string WithinXSpacesOfSource = "Within X Spaces";
@@ -273,12 +275,15 @@ namespace KompasCore.Effects
                     //misc
                 case CostLTAvatar: return potentialTarget.Cost < Source.Controller.Avatar.Cost;
                 case CostGTAvatar: return potentialTarget.Cost > Source.Controller.Avatar.Cost;
+                case CanBeHealed: return potentialTarget.CardType == 'C' && potentialTarget.Location == CardLocation.Field 
+                        && potentialTarget.E < potentialTarget.BaseE;
 
                 case Negated:  return potentialTarget.Negated;
 
                 //positioning
                 case AdjacentToSource:           return potentialTarget.IsAdjacentTo(Source);
                 case AdjacentToTarget:   return potentialTarget.IsAdjacentTo(Subeffect.Target);
+                case AdjacentToCoords:   return potentialTarget.IsAdjacentTo(Subeffect.Space);
                 case AdjacentToSubtype:  return potentialTarget.AdjacentCards.Any(card => adjacencySubtypes.All(s => card.SubtypeText.Contains(s)));
                 case InAOE:              return Source.CardInAOE(potentialTarget);
                 case InTargetsAOE:       return Subeffect.Target.CardInAOE(potentialTarget);
