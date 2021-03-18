@@ -37,6 +37,7 @@
 	"e":4,
 	"s":8,
 	"w":3,
+	"unique":true,
 	"subtypes":["Ethereal","Revenant"],
 	"subtypeText":"Ethereal Revenant"
 }

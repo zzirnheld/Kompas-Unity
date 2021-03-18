@@ -34,7 +34,6 @@
 	"fast":true,
 	"c":3,
 	"unique":true,
-	"spellType":"Vanishing",
-	"subtypeText":"Vanishing",
-	"arg":2
+	"spellType":"Enchant",
+	"subtypeText":"Enchant",
 }
