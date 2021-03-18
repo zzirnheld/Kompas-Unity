@@ -120,11 +120,9 @@ namespace KompasClient.UI
 
         public override bool ShowInfoFor(GameCard card, bool refresh = false)
         {
+            bool reshow = ShownCard != card || refresh;
             bool success = base.ShowInfoFor(card, refresh);
-            if (ShownCard != card || refresh)
-            {
-                cardInfoViewUICtrl.CurrShown = card;
-            }
+            if (reshow) cardInfoViewUICtrl.ShowInfoFor(card, refresh);
             return success;
         }
 

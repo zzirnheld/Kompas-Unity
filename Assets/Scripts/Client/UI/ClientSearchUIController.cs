@@ -98,7 +98,7 @@ namespace KompasClient.UI
             cardSearchView.SetActive(CurrSearchData.AnyToSearchNotVisible);
 
             var toShow = CurrSearchData.toSearch[index];
-            cardInfoView.CurrShown = toShow;
+            cardInfoView.ShowInfoFor(toShow);
             bool currentTgt = CurrSearchData.searched.Contains(toShow);
             alreadySelectedText.SetActive(currentTgt);
             toShow.cardCtrl.ShowCurrentTarget(currentTgt);

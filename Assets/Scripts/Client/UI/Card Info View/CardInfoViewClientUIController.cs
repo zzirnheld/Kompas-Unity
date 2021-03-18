@@ -56,25 +56,11 @@ namespace KompasClient.UI
 
         public ReminderTextsContainer Reminders { get; private set; }
 
-        private GameCard currShown;
         /// <summary>
         /// The currently shown card by this card info view control controller.
         /// Setting this also takes care of showing the relevant info.
         /// </summary>
-        public GameCard CurrShown
-        {
-            get => currShown;
-            set
-            {
-                //don't waste time updating if currently showing that.
-                if (currShown == value) return;
-
-                //save value, then
-                currShown = value;
-
-                ShowForCurrShown();
-            }
-        }
+        public GameCard CurrShown { get; private set; }
 
         public void Awake()
         {
@@ -83,16 +69,24 @@ namespace KompasClient.UI
             gameObject.SetActive(false);
         }
 
+        public void ShowInfoFor(GameCard card, bool refresh = false)
+        {
+            bool reshow = card != CurrShown || refresh;
+            CurrShown = card;
+
+            if(reshow) ShowForCurrShown();
+        }
+
         public void ShowForCurrShown()
         {
             //null means show nothing
-            if (currShown == null)
+            if (CurrShown == null)
             {
                 gameObject.SetActive(false);
                 return;
             }
 
-            bool isChar = currShown.CardType == 'C';
+            bool isChar = CurrShown.CardType == 'C';
             if (isChar)
             {
                 cardFrameImage.sprite = charFrame;
@@ -104,33 +98,33 @@ namespace KompasClient.UI
                 cardImageHaze.sprite = nonCharHaze;
             }
 
-            cardFaceImage.sprite = currShown.simpleSprite;
+            cardFaceImage.sprite = CurrShown.simpleSprite;
 
-            nText.text = $"N\n{currShown.N}";
-            eText.text = $"E\n{currShown.E}";
-            wText.text = $"W\n{currShown.W}";
+            nText.text = $"N\n{CurrShown.N}";
+            eText.text = $"E\n{CurrShown.E}";
+            wText.text = $"W\n{CurrShown.W}";
             nText.gameObject.SetActive(isChar);
             eText.gameObject.SetActive(isChar);
             wText.gameObject.SetActive(isChar);
 
             //TODO after unity updates: make this a switch expression
-            switch (currShown.CardType)
+            switch (CurrShown.CardType)
             {
-                case 'C': costText.text = $"S\n{currShown.S}"; break;
-                case 'S': costText.text = $"C\n{currShown.C}"; break;
-                case 'A': costText.text = $"A\n{currShown.A}"; break;
+                case 'C': costText.text = $"S\n{CurrShown.S}"; break;
+                case 'S': costText.text = $"C\n{CurrShown.C}"; break;
+                case 'A': costText.text = $"A\n{CurrShown.A}"; break;
                 default: throw new System.NotImplementedException();
             }
 
-            nameText.text = currShown.CardName;
-            subtypesText.text = currShown.QualifiedSubtypeText;
-            effText.text = currShown.EffText;
+            nameText.text = CurrShown.CardName;
+            subtypesText.text = CurrShown.QualifiedSubtypeText;
+            effText.text = CurrShown.EffText;
 
-            conditionParentObject.SetActive(currShown.Negated || currShown.Activated);
-            negatedObject.SetActive(currShown.Negated);
-            activatedObject.SetActive(currShown.Activated);
+            conditionParentObject.SetActive(CurrShown.Negated || CurrShown.Activated);
+            negatedObject.SetActive(CurrShown.Negated);
+            activatedObject.SetActive(CurrShown.Activated);
 
-            var effsArray = currShown.Effects.Where(e => e.CanBeActivatedBy(clientGame.Players[0])).ToArray();
+            var effsArray = CurrShown.Effects.Where(e => e.CanBeActivatedBy(clientGame.Players[0])).ToArray();
             effButtonsParentObject.SetActive(effsArray.Any());
             //clear existing effects
             foreach (var eff in effBtns) Destroy(eff.gameObject);
@@ -150,7 +144,7 @@ namespace KompasClient.UI
             //create new reminders
             foreach (var reminder in Reminders.keywordReminderTexts)
             {
-                if (currShown.EffText.Contains(reminder.keyword))
+                if (CurrShown.EffText.Contains(reminder.keyword))
                 {
                     var obj = Instantiate(reminderPrefab, remindersParent);
                     var ctrl = obj.GetComponent<ReminderTextClientUIController>();
