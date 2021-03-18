@@ -39,6 +39,7 @@ namespace KompasDeckbuilder
         public GameObject DeckViewScrollPane;
         public TMP_Dropdown DeckNameDropdown;
         public TMP_Text CardsInDeckText;
+        public GameObject confirmDeleteDeckView;
 
         //deck data
         private List<string> deckNames;
@@ -211,6 +212,16 @@ namespace KompasDeckbuilder
             toAdd.transform.SetParent(DeckViewScrollPane.transform);
             toAdd.transform.localScale = Vector3.one;
             SetDeckCountText();
+        }
+
+        public void AskDeleteDeck()
+        {
+            confirmDeleteDeckView.SetActive(true);
+        }
+
+        public void HideConfirmDeleteDeck()
+        {
+            confirmDeleteDeckView.SetActive(false);
         }
 
         public void DeleteDeck()
