@@ -14,10 +14,15 @@ namespace KompasCore.Effects
         public readonly int StartIndex;
         public readonly List<GameCard> Targets;
 
-        public ActivationContext(GameCard card = null, IStackable stackable = null, Player triggerer = null,
+        public ActivationContext(GameCard card, IStackable stackable = null, Player triggerer = null,
+            int? x = null, (int, int)? space = null, int startIndex = 0, List<GameCard> targets = null)
+            : this(card == null ? null : new GameCardInfo(card), stackable, triggerer, x, space, startIndex, targets)
+        { }
+
+        public ActivationContext(IGameCardInfo card = null, IStackable stackable = null, Player triggerer = null,
             int? x = null, (int, int)? space = null, int startIndex = 0, List<GameCard> targets = null)
         {
-            CardInfo = card == null ? null : new GameCardInfo(card);
+            CardInfo = card;
             Stackable = stackable;
             Triggerer = triggerer;
             X = x;

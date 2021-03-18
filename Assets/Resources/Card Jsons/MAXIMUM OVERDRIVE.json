@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"MAXIMUM OVERDRIVE",
-	"effText":"Ificate.\nGive a character -5W. If they're Crazy, give them +5 N.",
+	"effText":"Ificate.\nGive a character -7W. If they're Crazy, give them +5 N.",
 	"effects":[
 		{
 			"triggerData":
@@ -22,7 +22,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wMod":-5
+					"wMod":-7
 				},
 				{
 					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
