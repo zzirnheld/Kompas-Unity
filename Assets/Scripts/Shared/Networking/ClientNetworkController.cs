@@ -12,24 +12,17 @@ namespace KompasClient.Networking
         public ClientGame ClientGame;
         private bool connecting = false;
 
-        public async void Connect(string ip)
+        public void Connect(string ip)
         {
             if (connecting) return;
 
             connecting = true;
             var address = IPAddress.Parse(ip);
-            tcpClient = new System.Net.Sockets.TcpClient();
-            try
-            {
-                await tcpClient.ConnectAsync(address, port);
-            }
-            catch(Exception e)
-            {
-                Debug.LogError($"Failed to connect to {ip}. Stack trace:\n{e.StackTrace}");
-                ClientGame.clientUICtrl.ShowConnectUI();
-            }
-            Debug.Log("Connected");
-            if(tcpClient.Connected) ClientGame.clientUICtrl.ShowConnectedWaitingUI();
+            IPEndPoint ipep = new IPEndPoint(address, port);
+            socket = new System.Net.Sockets.Socket(ipep.AddressFamily, System.Net.Sockets.SocketType.Stream, System.Net.Sockets.ProtocolType.Tcp);
+            socket.Connect(ipep);
+            if (socket.Connected) ClientGame.clientUICtrl.ShowConnectedWaitingUI();
+            else ClientGame.clientUICtrl.ShowConnectUI();
             connecting = false;
         }
 

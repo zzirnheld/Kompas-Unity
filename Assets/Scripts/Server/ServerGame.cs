@@ -71,12 +71,12 @@ namespace KompasServer.GameCore
         }
 
         #region players and game starting
-        public int AddPlayer(TcpClient tcpClient)
+        public int AddPlayer(Socket socket)
         {
             Debug.Log($"Adding player #{currPlayerCount}");
             if (currPlayerCount >= 2) return -1;
 
-            Players[currPlayerCount].SetInfo(tcpClient, currPlayerCount);
+            Players[currPlayerCount].SetInfo(socket, currPlayerCount);
             currPlayerCount++;
 
             //if at least two players, start the game startup process by getting avatars

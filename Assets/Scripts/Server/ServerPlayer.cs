@@ -38,11 +38,11 @@ namespace KompasServer.GameCore
             }
         }
 
-        public override void SetInfo(TcpClient tcpClient, int index)
+        public override void SetInfo(Socket socket, int index)
         {
-            base.SetInfo(tcpClient, index);
+            base.SetInfo(socket, index);
 
-            ServerNetworkCtrl.SetInfo(tcpClient);
+            ServerNetworkCtrl.SetInfo(socket);
         }
 
         //If the player tries to do something, it goes here to check if it's ok, then do it if it is ok.

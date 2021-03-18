@@ -37,16 +37,16 @@ public abstract class Player : MonoBehaviour{
     public GameObject discardObject;
     public GameObject handObject;
 
-    public TcpClient TcpClient { get; private set; }
+    public Socket Socket { get; private set; }
 
     /// <summary>
     /// Whether the player has yet passed priority
     /// </summary>
     public bool passedPriority = false;
 
-    public virtual void SetInfo(TcpClient tcpClient, int index)
+    public virtual void SetInfo(Socket socket, int index)
     {
-        TcpClient = tcpClient;
+        Socket = socket;
         this.index = index;
     }
 
