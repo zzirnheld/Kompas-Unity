@@ -13,6 +13,10 @@
 			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 		},
 		{
+			"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+			"subeffIndices":[3,4]
+		},
+		{
 			"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 			"spaceRestriction":
 			{
