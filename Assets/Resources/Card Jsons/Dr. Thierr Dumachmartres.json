@@ -33,6 +33,5 @@
 	"s":4,
 	"w":0,
 	"unique":true,
-	"subtypes":["Doctor"],
-	"subtypeText":"Doctor"
+	"subtypeText":"Crazy Doctor"
 }
