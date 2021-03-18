@@ -134,6 +134,8 @@ namespace KompasCore.Cards
         public IEnumerable<GameCard> AdjacentCards => Game.boardCtrl.CardsAdjacentTo(BoardX, BoardY);
 
         public bool AlreadyCopyOnBoard => Game.BoardHasCopyOf(this);
+
+        public bool IsFriendlyCopyOf(GameCard c) => c != this && c.Controller == Controller && c.CardName == CardName;
         #endregion positioning
 
         #region Augments

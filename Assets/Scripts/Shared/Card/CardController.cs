@@ -46,6 +46,7 @@ namespace KompasCore.Cards
 
         public GameObject currentTargetObject;
         public GameObject validTargetObject;
+        public GameObject uniqueCopyObject;
 
         public OscillatingController attackOscillator;
         public OscillatingController effectOscillator;
@@ -295,5 +296,7 @@ namespace KompasCore.Cards
             validTargetObject.SetActive(false);
             currentTargetObject.SetActive(false);
         }
+
+        public void ShowUniqueCopy(bool copy = true) => uniqueCopyObject.SetActive(copy);
     }
 }

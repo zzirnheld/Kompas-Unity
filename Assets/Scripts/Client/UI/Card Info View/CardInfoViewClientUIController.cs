@@ -54,6 +54,8 @@ namespace KompasClient.UI
 
         public ClientSearchUIController searchUICtrl;
 
+        private readonly List<GameCard> shownUniqueCopies = new List<GameCard>();
+
         public ReminderTextsContainer Reminders { get; private set; }
 
         /// <summary>
@@ -77,15 +79,8 @@ namespace KompasClient.UI
             if(reshow) ShowForCurrShown();
         }
 
-        public void ShowForCurrShown()
+        private void ShowViewForCardType()
         {
-            //null means show nothing
-            if (CurrShown == null)
-            {
-                gameObject.SetActive(false);
-                return;
-            }
-
             bool isChar = CurrShown.CardType == 'C';
             if (isChar)
             {
@@ -97,15 +92,16 @@ namespace KompasClient.UI
                 cardFrameImage.sprite = nonCharFrame;
                 cardImageHaze.sprite = nonCharHaze;
             }
-
-            cardFaceImage.sprite = CurrShown.simpleSprite;
-
-            nText.text = $"N\n{CurrShown.N}";
-            eText.text = $"E\n{CurrShown.E}";
-            wText.text = $"W\n{CurrShown.W}";
             nText.gameObject.SetActive(isChar);
             eText.gameObject.SetActive(isChar);
             wText.gameObject.SetActive(isChar);
+        }
+
+        private void ShowCurrShownStats()
+        {
+            nText.text = $"N\n{CurrShown.N}";
+            eText.text = $"E\n{CurrShown.E}";
+            wText.text = $"W\n{CurrShown.W}";
 
             //TODO after unity updates: make this a switch expression
             switch (CurrShown.CardType)
@@ -119,11 +115,10 @@ namespace KompasClient.UI
             nameText.text = CurrShown.CardName;
             subtypesText.text = CurrShown.QualifiedSubtypeText;
             effText.text = CurrShown.EffText;
+        }
 
-            conditionParentObject.SetActive(CurrShown.Negated || CurrShown.Activated);
-            negatedObject.SetActive(CurrShown.Negated);
-            activatedObject.SetActive(CurrShown.Activated);
-
+        private void ShowEffButtons()
+        {
             var effsArray = CurrShown.Effects.Where(e => e.CanBeActivatedBy(clientGame.Players[0])).ToArray();
             effButtonsParentObject.SetActive(effsArray.Any());
             //clear existing effects
@@ -137,7 +132,10 @@ namespace KompasClient.UI
                 ctrl.Initialize(eff, clientGame.clientUICtrl);
                 effBtns.Add(ctrl);
             }
+        }
 
+        private void ShowReminderText()
+        {
             //clear existing reminders
             foreach (var reminderCtrl in reminderCtrls) Destroy(reminderCtrl.gameObject);
             reminderCtrls.Clear();
@@ -153,8 +151,49 @@ namespace KompasClient.UI
                 }
             }
             remindersParent.gameObject.SetActive(reminderCtrls.Any());
+        }
+
+        private void ShowUniqueCopies()
+        {
+            if (CurrShown.Unique)
+            {
+                //deal with unique cards
+                var copies = clientGame.Cards.Where(c => c.Location == CardLocation.Field && c.IsFriendlyCopyOf(CurrShown));
+                foreach (var copy in copies)
+                {
+                    copy.cardCtrl.ShowUniqueCopy(true);
+                    shownUniqueCopies.Add(copy);
+                }
+            }
+        }
+
+        public void ShowForCurrShown()
+        {
+            foreach (var c in shownUniqueCopies) c.cardCtrl.ShowUniqueCopy(false);
+            shownUniqueCopies.Clear();
+
+            //null means show nothing
+            if (CurrShown == null)
+            {
+                gameObject.SetActive(false);
+                return;
+            }
+
+            ShowViewForCardType();
+            cardFaceImage.sprite = CurrShown.simpleSprite;
+
+            ShowCurrShownStats();
+
+            conditionParentObject.SetActive(CurrShown.Negated || CurrShown.Activated);
+            negatedObject.SetActive(CurrShown.Negated);
+            activatedObject.SetActive(CurrShown.Activated);
+
+            ShowEffButtons();
+            ShowReminderText();
 
             searchUICtrl.HideIfNotShowingCurrSearchIndex();
+
+            ShowUniqueCopies();
 
             gameObject.SetActive(true);
         }
