@@ -75,6 +75,14 @@ namespace KompasDeckbuilder
             LoadDeck(0);
         }
 
+        private void Update()
+        {
+            if(Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
+            {
+                if (Input.GetKeyUp(KeyCode.S)) SaveDeck();
+            }
+        }
+
         #region actions that need to be confirmed
         public void ToMainMenu()
         {
@@ -233,6 +241,7 @@ namespace KompasDeckbuilder
                 else currDeckName = "";
 
                 DeckNameDropdown.RefreshShownValue();
+                LoadDeck(DeckNameDropdown.value);
             }
             else ErrorDialog.ShowError(DeckDeleteFailedErrorMsg);
         }

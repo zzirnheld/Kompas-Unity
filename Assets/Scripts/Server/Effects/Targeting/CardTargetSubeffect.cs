@@ -10,6 +10,9 @@ namespace KompasServer.Effects
     {
         public CardRestriction cardRestriction;
 
+        public enum TargetType { Normal = 0, Debuff = 1 }
+        public TargetType targetType;
+
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);

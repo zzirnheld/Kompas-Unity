@@ -104,7 +104,7 @@ namespace KompasServer.GameCore
 
             if (serverGame.ValidAttack(attacker, defender, this))
             {
-                serverGame.Attack(attacker, defender, this, playerInitiated: true);
+                serverGame.Attack(attacker, defender, this, manual: true);
                 await serverGame.EffectsController.CheckForResponse();
             }
         }

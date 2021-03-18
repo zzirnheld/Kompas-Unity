@@ -261,7 +261,8 @@ namespace KompasServer.GameCore
 
         public void GiveTurnPlayerPips() => GivePlayerPips(TurnPlayer, TurnPlayer.Pips + Leyload);
 
-        public void Attack(GameCard attacker, GameCard defender, ServerPlayer instigator, bool playerInitiated = false)
+        /// <param name="manual">Whether a player instigated the attack without an effect.</param>
+        public void Attack(GameCard attacker, GameCard defender, ServerPlayer instigator, bool manual = false)
         {
             Debug.Log($"{attacker.CardName} attacking {defender.CardName} at {defender.BoardX}, {defender.BoardY}");
             //push the attack to the stack, then check if any player wants to respond before resolving it
@@ -269,7 +270,7 @@ namespace KompasServer.GameCore
             EffectsController.PushToStack(attack, new ActivationContext());
             //check for triggers related to the attack (if this were in the constructor, the triggers would go on the stack under the attack
             attack.Declare();
-            if (playerInitiated) attacker.SetAttacksThisTurn(attacker.attacksThisTurn + 1);
+            if (manual) attacker.SetAttacksThisTurn(attacker.attacksThisTurn + 1);
         }
 
         #region check validity
