@@ -1,0 +1,59 @@
+{
+	"cardType":67,
+	"cardName":"Whirlwind of Emotions",
+	"effText":"When I'm summoned, tribute other friendly Spirits with total S X. Give me +X ESW",
+	"effects":[
+		{
+			"blurb":"Whirlwind",
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.SetXSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"for Animancer to discard",
+						"cardRestrictions":["Friendly","Board","Distinct from Source","Not Already Target","Subtypes Include"],
+						"subtypesInclude":["Spirit"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"Cost",
+					"change":true,
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
+					"canDecline":true,
+					"jumpTo":1
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMult":1,
+					"sMult":1,
+					"wMult":1
+				}
+			]
+		}
+	],
+	"n":2,
+	"e":1,
+	"s":6,
+	"w":1,
+	"subtypeText":"Ethereal Spirit"
+}
