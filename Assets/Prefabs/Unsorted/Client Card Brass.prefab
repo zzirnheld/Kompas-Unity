@@ -147,6 +147,114 @@ MonoBehaviour:
   cardCtrl: {fileID: 4066127554904995548}
   aoeBlock: {fileID: 73508152710300350}
   aoeBlockRenderer: {fileID: 7070274522059740127}
+--- !u!1 &185389920966010200
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4213678189914821790}
+  - component: {fileID: 879063249797717157}
+  - component: {fileID: 3938564056448794251}
+  - component: {fileID: 4692120322779398176}
+  - component: {fileID: 2939722350346238546}
+  m_Layer: 0
+  m_Name: Unique Copy Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &4213678189914821790
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185389920966010200}
+  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: -0.09, z: 0}
+  m_LocalScale: {x: 1.8, y: 0.01, z: 1.8}
+  m_Children: []
+  m_Father: {fileID: 2157426566985455359}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
+--- !u!33 &879063249797717157
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185389920966010200}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &3938564056448794251
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185389920966010200}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 7d89e5d566897544aabb902ad76ecaa0, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &4692120322779398176
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185389920966010200}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2939722350346238546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185389920966010200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5edb3e0ef7d92c1449e4ca7649024eef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardCtrl: {fileID: 4066127554904995548}
+  aoeBlock: {fileID: 185389920966010200}
+  aoeBlockRenderer: {fileID: 3938564056448794251}
 --- !u!1 &225620853862557126
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,7 +550,7 @@ Transform:
   - {fileID: 5848277206144281572}
   - {fileID: 1763936724378602716}
   m_Father: {fileID: 2157426566985455359}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &642374838214709955
 GameObject:
@@ -1751,6 +1859,7 @@ Transform:
   - {fileID: 6319184827096598779}
   - {fileID: 3629095749149528434}
   - {fileID: 3631329233800968167}
+  - {fileID: 4213678189914821790}
   - {fileID: 6674575355594943231}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1811,6 +1920,7 @@ MonoBehaviour:
   unzoomedAText: {fileID: 3625382427361149801}
   currentTargetObject: {fileID: 892734220689329047}
   validTargetObject: {fileID: 225620853862557126}
+  uniqueCopyObject: {fileID: 185389920966010200}
   attackOscillator: {fileID: 1973804285973971107}
   effectOscillator: {fileID: 1522275852091522916}
   cardImageImage: {fileID: 2688850599674813244}

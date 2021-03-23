@@ -39,6 +39,7 @@ namespace KompasDeckbuilder
         public GameObject DeckViewScrollPane;
         public TMP_Dropdown DeckNameDropdown;
         public TMP_Text CardsInDeckText;
+        public GameObject confirmDeleteDeckView;
 
         //deck data
         private List<string> deckNames;
@@ -73,6 +74,14 @@ namespace KompasDeckbuilder
             //load initially selected deck
             DeckNameDropdown.RefreshShownValue();
             LoadDeck(0);
+        }
+
+        private void Update()
+        {
+            if(Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
+            {
+                if (Input.GetKeyUp(KeyCode.S)) SaveDeck();
+            }
         }
 
         #region actions that need to be confirmed
@@ -205,6 +214,16 @@ namespace KompasDeckbuilder
             SetDeckCountText();
         }
 
+        public void AskDeleteDeck()
+        {
+            confirmDeleteDeckView.SetActive(true);
+        }
+
+        public void HideConfirmDeleteDeck()
+        {
+            confirmDeleteDeckView.SetActive(false);
+        }
+
         public void DeleteDeck()
         {
             int index = deckNames.IndexOf(currDeckName);
@@ -233,6 +252,7 @@ namespace KompasDeckbuilder
                 else currDeckName = "";
 
                 DeckNameDropdown.RefreshShownValue();
+                LoadDeck(DeckNameDropdown.value);
             }
             else ErrorDialog.ShowError(DeckDeleteFailedErrorMsg);
         }

@@ -60,7 +60,7 @@ namespace KompasClient.Cards
             {
                 ClientGame.clientUICtrl.cardInfoViewUICtrl.CurrShown = Card;
             }*/
-            ClientGame.clientUICtrl.cardInfoViewUICtrl.CurrShown = Card;
+            ClientGame.clientUICtrl.ShowInfoFor(Card);
             base.OnMouseOver();
         }
 

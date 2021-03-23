@@ -4,6 +4,11 @@ namespace KompasServer.Effects
 {
     public class PlaySubeffect : CardChangeStateSubeffect
     {
+        public override bool IsImpossible()
+        {
+            return Target == null || Target.Location == CardLocation.Field;
+        }
+
         public override Task<ResolutionInfo> Resolve()
         {
             var (x, y) = Space;

@@ -161,6 +161,7 @@ namespace KompasClient.GameCore
 
         public void ShowCardsByZoom(bool zoomed)
         {
+            //TODO make this better with a dirty list
             foreach (var c in Cards.Where(c => c != null && c.gameObject.activeSelf))
             {
                 c.cardCtrl.ShowForCardType(c.CardType, zoomed);
