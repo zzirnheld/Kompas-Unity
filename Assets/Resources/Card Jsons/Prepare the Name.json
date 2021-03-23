@@ -1,0 +1,38 @@
+{
+	"cardType":83,
+	"cardName":"Prepare the Name",
+	"effText":"Hand-topdeck a Spirit. Gain 3 pips.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"blurb":"Prepare the Name",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Spirit whose name to prepare",
+						"cardRestrictions":["Friendly","Hand","Subtypes Include"],
+						"subtypesInclude":["Spirit"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.TopdeckSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier":3
+				}
+			]
+		}
+	],
+	"c":1,
+	"spellType":"Simple",
+	"subtypeText":""
+}
