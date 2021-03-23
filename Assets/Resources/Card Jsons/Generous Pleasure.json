@@ -1,0 +1,28 @@
+{
+	"cardType":67,
+	"cardName":"Generous Pleasure",
+	"effText":"When I'm summoned, gain 4 pips.",
+	"effects":[
+		{
+			"blurb":"Pleasure",
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier":4
+				}
+			]	
+		}
+	],
+	"n":1,
+	"e":1,
+	"s":6,
+	"w":2,
+	"subtypeText":"Ethereal Spirit"
+}
