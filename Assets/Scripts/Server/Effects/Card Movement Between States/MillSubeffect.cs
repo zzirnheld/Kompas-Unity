@@ -13,7 +13,8 @@ namespace KompasServer.Effects
             {
                 var card = Player.deckCtrl.Topdeck;
                 if (card == null) return Task.FromResult(ResolutionInfo.Impossible(CouldntMillAllX));
-                card.Discard();
+                ServerEffect.AddTarget(card);
+                card.Discard(ServerEffect);
             }
 
             return Task.FromResult(ResolutionInfo.Next);
