@@ -59,6 +59,7 @@ namespace KompasCore.Effects
 
         public string[] triggerRestrictions = new string[0];
         public CardRestriction cardRestriction;
+        public CardRestriction adjacencyRestriction;
         public CardRestriction existsRestriction;
         public XRestriction xRestriction;
         public SpaceRestriction spaceRestriction;
@@ -81,6 +82,7 @@ namespace KompasCore.Effects
             Game = game;
 
             cardRestriction = cardRestriction ?? new CardRestriction();
+            adjacencyRestriction = adjacencyRestriction ?? new CardRestriction();
             sourceRestriction = sourceRestriction ?? new CardRestriction();
             xRestriction = xRestriction ?? new XRestriction();
             spaceRestriction = spaceRestriction ?? new SpaceRestriction();

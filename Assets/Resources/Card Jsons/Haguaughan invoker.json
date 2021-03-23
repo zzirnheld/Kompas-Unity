@@ -10,7 +10,7 @@
 				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Adjacent to Restriction"],
-					"cardRestriction":
+					"adjacencyRestriction":
 					{
 						"cardRestrictions":["Board","Avatar","Enemy"]
 					}

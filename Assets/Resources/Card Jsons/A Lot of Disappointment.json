@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"A Lot of Disappointment",
-	"effText":"When I'm summoned, set X to my W, then give an adjacent character -X W.",
+	"effText":"When I'm revived adjacent to a Mage, set X to my W, then give an adjacent character -X W.",
 	"effects":[
 		{
 			"blurb":"Disappointment",
@@ -9,7 +9,16 @@
 			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+					"triggerRestrictions":["This Card Triggered","Adjacent to Restriction","Triggerer Fits Restriction"],
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character","Distinct from Source"]
+					},
+					"adjacencyRestriction":
+					{
+						"cardRestrictions":["Board","Subtypes Include"],
+						"subtypesInclude":["Mage"]
+					}
 				}
 			},
 			"subeffects":[
@@ -35,9 +44,9 @@
 			]
 		}
 	],
-	"n":0,
-	"e":1,
+	"n":1,
+	"e":7,
 	"s":6,
-	"w":5,
+	"w":7,
 	"subtypeText":"Ethereal Spirit"
 }

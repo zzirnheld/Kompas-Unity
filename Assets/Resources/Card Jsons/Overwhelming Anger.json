@@ -1,10 +1,10 @@
 {
 	"cardType":67,
 	"cardName":"Overwhelming Anger",
-	"effText":"When I'm summoned, set X to my W, then give an adjacent character -X E.",
+	"effText":"When I'm revived adjacent to a Mage, set X to my E, then give an adjacent character -X E.",
 	"effects":[
 		{
-			"blurb":"Pleasure",
+			"blurb":"Anger",
 			"triggerData":
 			{
 				"triggerCondition":"Play",
@@ -36,8 +36,8 @@
 		}
 	],
 	"n":0,
-	"e":1,
+	"e":7,
 	"s":6,
-	"w":5,
+	"w":7,
 	"subtypeText":"Ethereal Spirit"
 }

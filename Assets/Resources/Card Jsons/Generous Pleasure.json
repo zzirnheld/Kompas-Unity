@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Generous Pleasure",
-	"effText":"When I'm summoned, gain 4 pips.",
+	"effText":"When I'm revived adjacent to a Mage, gain 4 pips.",
 	"effects":[
 		{
 			"blurb":"Pleasure",
@@ -9,7 +9,16 @@
 			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+					"triggerRestrictions":["This Card Triggered","Adjacent to Restriction","Triggerer Fits Restriction"],
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character","Distinct from Source"]
+					},
+					"adjacencyRestriction":
+					{
+						"cardRestrictions":["Board","Subtypes Include"],
+						"subtypesInclude":["Mage"]
+					}
 				}
 			},
 			"subeffects":[
@@ -21,7 +30,7 @@
 		}
 	],
 	"n":1,
-	"e":1,
+	"e":10,
 	"s":6,
 	"w":2,
 	"subtypeText":"Ethereal Spirit"

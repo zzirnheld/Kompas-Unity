@@ -1,15 +1,24 @@
 {
 	"cardType":67,
 	"cardName":"Allconsuming Frustration",
-	"effText":"When I'm summoned, negate an adjacent character.",
+	"effText":"When I'm revived adjacent to a Mage, negate an adjacent character.",
 	"effects":[
 		{
-			"blurb":"Disappointment",
+			"blurb":"Frustration",
 			"triggerData":
 			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+					"triggerRestrictions":["This Card Triggered","Adjacent to Restriction","Triggerer Fits Restriction"],
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character","Distinct from Source"]
+					},
+					"adjacencyRestriction":
+					{
+						"cardRestrictions":["Board","Subtypes Include"],
+						"subtypesInclude":["Mage"]
+					}
 				}
 			},
 			"subeffects":[
@@ -26,9 +35,9 @@
 			]
 		}
 	],
-	"n":0,
-	"e":1,
+	"n":2,
+	"e":6,
 	"s":6,
-	"w":4,
+	"w":6,
 	"subtypeText":"Ethereal Spirit"
 }
