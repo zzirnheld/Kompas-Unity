@@ -22,7 +22,8 @@
 					"xMultiplier":1
 				},
 				{
-					"$type":"KompasServer.Effects.MillSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.MillSubeffect, Assembly-CSharp",
+					"xModifier":1
 				},
 				{
 					"$type":"KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
@@ -31,6 +32,7 @@
 					{
 						"cardRestrictions":["Is Character","S<X"]
 					},
+					"jumpIndex":2,
 					"xMultiplier":1
 				},
 				{
