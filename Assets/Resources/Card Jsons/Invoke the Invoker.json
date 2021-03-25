@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Invoke the Invoker",
-	"effText":"Hand->reshuffle Spirits with total cost > 7. Hand-> or deck->summon an Invoker.",
+	"effText":"Hand->reshuffle a Spirit. Hand->summon an Invoker.",
 	"effects":[
 		{
 			"triggerData":
@@ -13,9 +13,6 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.SetXSubeffect, Assembly-CSharp"
-				},
-				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -25,21 +22,6 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
-					"whatToCount":"S",
-					"change":true,
-					"xMultiplier":1
-				},
-				{
-					"$type":"KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
-					"condition":"X Fits Restriction",
-					"xRestriction":{
-						"xRestrictions":["<=Constant"],
-						"constant":7
-					},
-					"xMultiplier":1
-				},
-				{
 					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
 					"maxCanChoose":1,
 					"cardRestriction":
@@ -47,7 +29,7 @@
 						"blurb":"Invoker to summon",
 						"cardRestrictions":["Friendly","Subtypes Include","Multiple Possible Locations"],
 						"subtypesInclude":["Invoker"],
-						"locations":[3,4]
+						"locations":[3]
 					}
 				}
 			]	
