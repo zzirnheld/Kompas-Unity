@@ -59,6 +59,10 @@
 		{
 			"keyword":"Wisp.",
 			"reminder":"When I'm summoned, move me 1 space. When turns start, move me 1 space."
+		},
+		{
+			"keyword":"Invoke",
+			"reminder":"Mill until you mill a character with S < my S. Revive them."
 		}
 	]
 }
