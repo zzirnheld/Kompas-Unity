@@ -22,6 +22,9 @@
 					}
 				},
 				{
+					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+				},
+				{
 					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
 					"maxCanChoose":1,
 					"cardRestriction":
@@ -31,6 +34,17 @@
 						"subtypesInclude":["Invoker"],
 						"locations":[3]
 					}
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where to Invoke",
+						"spaceRestrictions":["Can Play Target to This Space"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
 			]	
 		}

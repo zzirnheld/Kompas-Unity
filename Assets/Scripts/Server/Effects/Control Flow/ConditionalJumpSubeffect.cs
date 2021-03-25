@@ -33,6 +33,7 @@ namespace KompasServer.Effects
                     case TargetFitsRestriction: return cardRestriction.Evaluate(Target);
                     case TargetViolatesRestriction: return !cardRestriction.Evaluate(Target);
                     case XGreaterEqualConstant: return Effect.X >= constant;
+                    case XFitsRestriction: return xRestriction.Evaluate(Effect.X);
                     default: throw new System.ArgumentException($"Invalid conditional jump condition {condition}");
                 }
             }
