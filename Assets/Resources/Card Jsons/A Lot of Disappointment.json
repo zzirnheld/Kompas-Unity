@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"A Lot of Disappointment",
-	"effText":"When I'm revived adjacent to a Mage, set X to my W, then give an adjacent character -X W.",
+	"effText":"When I'm revived, set X to my W, then give an adjacent character -X W.",
 	"effects":[
 		{
 			"blurb":"Disappointment",
@@ -9,15 +9,10 @@
 			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered","Adjacent to Restriction","Triggerer Fits Restriction"],
+					"triggerRestrictions":["This Card Triggered","Triggerer Fits Restriction"],
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Distinct from Source"]
-					},
-					"adjacencyRestriction":
-					{
-						"cardRestrictions":["Board","Subtypes Include"],
-						"subtypesInclude":["Mage"]
+						"cardRestrictions":["Is Character","Discard"]
 					}
 				}
 			},

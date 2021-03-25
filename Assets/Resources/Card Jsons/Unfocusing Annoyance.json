@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Unfocusing Annoyance",
-	"effText":"When I'm revived adjacent to a Mage, dispel an adjacent spell.",
+	"effText":"When I'm revived, dispel an adjacent spell.",
 	"effects":[
 		{
 			"blurb":"Annoyance",
@@ -9,15 +9,10 @@
 			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered","Adjacent to Restriction","Triggerer Fits Restriction"],
+					"triggerRestrictions":["This Card Triggered","Triggerer Fits Restriction"],
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Distinct from Source"]
-					},
-					"adjacencyRestriction":
-					{
-						"cardRestrictions":["Board","Subtypes Include"],
-						"subtypesInclude":["Mage"]
+						"cardRestrictions":["Is Character","Discard"]
 					}
 				}
 			},
