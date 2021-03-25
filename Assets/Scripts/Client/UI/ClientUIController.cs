@@ -234,6 +234,7 @@ namespace KompasClient.UI
             else if (OptionalEffAutoResponse == OptionalEffNo) RespondToTrigger(false);
             else
             {
+                Debug.Log($"Showing eff response parent");
                 TriggerBlurbText.text = showX ? $"{t.Blurb} (X = {x})" : t.Blurb;
                 ConfirmTriggerView.SetActive(true);
             }

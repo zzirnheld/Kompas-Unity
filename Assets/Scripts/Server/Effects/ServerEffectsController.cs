@@ -223,7 +223,11 @@ namespace KompasServer.Effects
             //if we're already checking for response, don't check again.
             //checking again could cause us to consider the same set of triggers twice,
             //then dequeue twice, which would not consider that set of triggers.
-            if (currentlyCheckingResponses || CurrStackEntry != null) return;
+            if (currentlyCheckingResponses || CurrStackEntry != null)
+            {
+                Debug.Log($"Checked response while currently checking for response {currentlyCheckingResponses} or curr stack entry not null {CurrStackEntry != null}");
+                return;
+            }
             currentlyCheckingResponses = true;
 
             if (reset) ResetPassingPriority();
