@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Memory Guide",
-	"effText":"When your turn starts, echo an adjacent Summoned character.",
+	"effText":"When friendly turns start, echo an adjacent Summoned character.",
 	"effects":[
 		{
 			"triggerData":
