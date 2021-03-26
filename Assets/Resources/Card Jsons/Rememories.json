@@ -1,14 +1,14 @@
 {
 	"cardType":83,
 	"cardName":"Rememories",
-	"effText":"When you summon a character, give them +1 ESW.",
+	"effText":"The first time each turn you summon any character, give them +1 EW.\nWhen you summon a Geminii, give them +1 EW.",
 	"effects":[
 		{
 			"triggerData":
 			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Controller Triggered","Triggerer Fits Restriction"],
+					"triggerRestrictions":["This Card in Play","Max Per Turn","Controller Triggered","Triggerer Fits Restriction"],
 					"cardRestriction":
 					{
 						"cardRestrictions":["Is Character"]
@@ -22,15 +22,36 @@
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"eMod":1,
-					"sMod":1,
+					"wMod":1
+				}
+			]	
+		},
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Controller Triggered","Triggerer Fits Restriction"],
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character","Subtypes Include"],
+						"subtypesInclude":["Geminii"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod":1,
 					"wMod":1
 				}
 			]	
 		}
 	],
-	"c":4,
-	"unique":true,
+	"c":2,
 	"spellType":"Enchant",
-	"subtypes":["Enchant"],
-	"subtypeText":"Enchant"
+	"subtypeText":""
 }
