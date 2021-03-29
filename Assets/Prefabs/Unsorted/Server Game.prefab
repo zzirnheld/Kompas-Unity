@@ -183,6 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 3349460599440499645}
+  owner: {fileID: 3349460599362718998}
   ServerGame: {fileID: 3349460599440499645}
 --- !u!1 &3349460598585194321
 GameObject:
@@ -1180,4 +1181,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 3349460599440499645}
+  owner: {fileID: 3349460600153624845}
   ServerGame: {fileID: 3349460599440499645}

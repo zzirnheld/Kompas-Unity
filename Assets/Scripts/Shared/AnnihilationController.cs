@@ -8,6 +8,7 @@ namespace KompasCore.GameCore
     public class AnnihilationController : MonoBehaviour
     {
         public Game game;
+        public Player owner;
 
         public List<GameCard> Cards { get; } = new List<GameCard>();
 
@@ -31,11 +32,13 @@ namespace KompasCore.GameCore
 
         public void SpreadOutCards()
         {
+            float spreadOutMultipler = 2f * (owner.index == 0 ? -1f : 1f);
+            int max = Cards.Count - 1;
+
             //iterate through children, set the z coord
             for (int i = 0; i < Cards.Count; i++)
             {
-                Cards[i].transform.localPosition = new Vector3((-0.8f * (float)Cards.Count) - ((float)i * 2f), 0, 0);
-                Cards[i].transform.eulerAngles = new Vector3(0, 180, 0);
+                Cards[i].transform.localPosition = new Vector3(spreadOutMultipler * (float)(max - i), 0, 0);
             }
         }
     }
