@@ -154,7 +154,9 @@ namespace KompasCore.Cards
                     gameObject.SetActive(true);
                     break;
                 case CardLocation.Annihilation:
-                    gameObject.SetActive(false);
+                    card.gameObject.transform.SetParent(card.Controller.annihilationCtrl.gameObject.transform);
+                    gameObject.SetActive(true);
+                    card.Controller.annihilationCtrl.SpreadOutCards();
                     break;
                 default: throw new System.ArgumentException($"Invalid card location {location} to put card physically at");
             }

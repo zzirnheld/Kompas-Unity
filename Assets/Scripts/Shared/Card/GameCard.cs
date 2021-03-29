@@ -123,7 +123,7 @@ namespace KompasCore.Cards
                     case CardLocation.Discard: return Controller.discardCtrl.IndexOf(this);
                     case CardLocation.Field: return BoardX * 7 + BoardY;
                     case CardLocation.Hand: return Controller.handCtrl.IndexOf(this);
-                    case CardLocation.Annihilation: return Game.annihilationCtrl.Cards.IndexOf(this);
+                    case CardLocation.Annihilation: return Controller.annihilationCtrl.Cards.IndexOf(this);
                     case CardLocation.Nowhere: return -1;
                     default:
                         Debug.LogError($"Tried to ask for card index when in location {Location}");
@@ -526,7 +526,7 @@ namespace KompasCore.Cards
                 case CardLocation.Deck:
                     return Controller.deckCtrl.RemoveFromDeck(this);
                 case CardLocation.Annihilation:
-                    return Game.annihilationCtrl.Remove(this);
+                    return Controller.annihilationCtrl.Remove(this);
                 default:
                     Debug.LogWarning($"Tried to remove card {CardName} from invalid location {Location}");
                     return false;

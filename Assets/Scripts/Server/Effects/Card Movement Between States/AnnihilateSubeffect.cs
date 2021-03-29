@@ -11,7 +11,7 @@ namespace KompasServer.Effects
         {
             if (Target == null) return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
             else if (Target.Location == CardLocation.Annihilation) return Task.FromResult(ResolutionInfo.Impossible(TargetAlreadyThere));
-            else if (Game.annihilationCtrl.Annihilate(Target, Effect)) return Task.FromResult(ResolutionInfo.Next);
+            else if (Target.Owner.annihilationCtrl.Annihilate(Target, Effect)) return Task.FromResult(ResolutionInfo.Next);
             else return Task.FromResult(ResolutionInfo.Impossible(AnnihilationFailed));
         }
     }

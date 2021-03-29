@@ -16,6 +16,7 @@ namespace KompasCore.GameCore
             if(!card.Remove(stackSrc)) return false;
             Cards.Add(card);
             card.Location = CardLocation.Annihilation;
+            SpreadOutCards();
             return true;
         }
 
@@ -24,7 +25,18 @@ namespace KompasCore.GameCore
             if (!Cards.Contains(card)) return false;
 
             Cards.Remove(card);
+            SpreadOutCards();
             return true;
+        }
+
+        public void SpreadOutCards()
+        {
+            //iterate through children, set the z coord
+            for (int i = 0; i < Cards.Count; i++)
+            {
+                Cards[i].transform.localPosition = new Vector3((-0.8f * (float)Cards.Count) - ((float)i * 2f), 0, 0);
+                Cards[i].transform.eulerAngles = new Vector3(0, 180, 0);
+            }
         }
     }
 }

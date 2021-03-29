@@ -21,7 +21,7 @@ namespace KompasServer.Effects
 
         protected override void Resolve()
         {
-            serverGame.annihilationCtrl.Annihilate(target);
+            target.Owner.annihilationCtrl.Annihilate(target);
         }
     }
 }

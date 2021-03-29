@@ -23,7 +23,6 @@ namespace KompasCore.GameCore
 
         //game mechanics
         public BoardController boardCtrl;
-        public AnnihilationController annihilationCtrl;
         //game objects
         public GameObject boardObject;
 

@@ -86,7 +86,7 @@ namespace KompasClient.Networking
                     card.Topdeck();
                     break;
                 case CardLocation.Annihilation:
-                    clientGame.annihilationCtrl.Annihilate(card);
+                    card.Controller.annihilationCtrl.Annihilate(card);
                     break;
                 default:
                     throw new System.ArgumentException($"Invalid location {location} for Add Card Client Packet to put card");
