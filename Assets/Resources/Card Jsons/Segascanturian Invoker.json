@@ -9,7 +9,7 @@
 				"blurb":"Invoke",
 				"triggerCondition":"Play",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Coords Fit Restriction"],
+					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Enemy Triggered"],
 					"spaceRestriction":
 					{
 						"spaceRestrictions":["Adjacent to Source"],

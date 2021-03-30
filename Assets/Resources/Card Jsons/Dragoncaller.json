@@ -31,7 +31,7 @@
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
 					"ChoiceBlurb":"Give +2*X ES or SW?",
-					"OptionBlurbs":["+2*X ES","+2*X SW"],
+					"OptionBlurbs":["ES","SW"],
 					"OptionJumpIndices":[5,7],
 					"hasDefault":false
 				},
@@ -51,9 +51,9 @@
 			]
 		}
 	],
-	"n":1,
+	"n":0,
 	"e":1,
-	"s":3,
-	"w":1,
+	"s":1,
+	"w":0,
 	"subtypeText":"Draconic Mage"
 }
