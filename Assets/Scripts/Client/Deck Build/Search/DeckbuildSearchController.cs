@@ -9,7 +9,7 @@ using System;
 
 namespace KompasDeckbuilder
 {
-    public class CardSearchController : MonoBehaviour
+    public class DeckbuildSearchController : MonoBehaviour
     {
         public const string CardBackPath = "Detailed Sprites/Square Kompas Logo";
         public const char NBSP = (char)8203;
@@ -19,9 +19,14 @@ namespace KompasDeckbuilder
 
         //card data pane ui elements
         public GameObject CardSearchPaneParentObj;
+
+        public GameObject cardViewParentObj;
         public Image CardImage;
         public TMP_Text CardNameText;
-        public TMP_Text StatsText;
+        public TMP_Text nText;
+        public TMP_Text eText;
+        public TMP_Text scaText;
+        public TMP_Text wText;
         public TMP_Text SubtypesText;
         public TMP_Text EffectText;
 
@@ -83,6 +88,7 @@ namespace KompasDeckbuilder
         /// </summary>
         public void ShowSelectedCard()
         {
+            cardViewParentObj.SetActive(selectedCard != null);
             //if there is a selected card, show it
             if (selectedCard != null) selectedCard.Show();
             //otherwise, show data for no card, and show the card back as the sprite
@@ -90,7 +96,6 @@ namespace KompasDeckbuilder
             {
                 CardImage.sprite = CardBack;
                 CardNameText.text = "";
-                StatsText.text = "";
                 SubtypesText.text = "";
                 EffectText.text = "";
             }
@@ -99,6 +104,7 @@ namespace KompasDeckbuilder
         public void Select(DeckbuilderCard card)
         {
             selectedCard = card;
+            cardViewParentObj.SetActive(true);
             card.Show();
         }
 
