@@ -22,7 +22,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
-					"whatToCount":"S",
+					"whatToCount":"E",
 					"xMultiplier":1
 				},
 				{
@@ -42,6 +42,6 @@
 	"n":0,
 	"e":7,
 	"s":6,
-	"w":7,
+	"w":1,
 	"subtypeText":"Ethereal Spirit"
 }
