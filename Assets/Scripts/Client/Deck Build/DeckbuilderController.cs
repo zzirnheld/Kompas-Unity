@@ -29,7 +29,7 @@ namespace KompasDeckbuilder
 
         //other ui element controllersS
         public CardRepository CardRepo;
-        public CardSearchController CardSearchCtrl;
+        public DeckbuildSearchController CardSearchCtrl;
         public ConfirmDialogController ConfirmDialog;
         public ErrorDialogController ErrorDialog;
         public ImportDeckController ImportDialog;
@@ -82,6 +82,8 @@ namespace KompasDeckbuilder
             {
                 if (Input.GetKeyUp(KeyCode.S)) SaveDeck();
             }
+
+            if (Input.GetKeyUp(KeyCode.Escape)) ToMainMenu();
         }
 
         #region actions that need to be confirmed
