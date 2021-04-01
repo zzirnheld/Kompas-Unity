@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Trapped Offering",
-	"effText":"When I die, annihilate me, gain 2 pips, and give the enemy Avatar +2E.",
+	"effText":"When I die having SX, annihilate me, gain X/2 pips, and draw 1.",
 	"effects":[
 		{
 			"triggerData":
@@ -20,24 +20,25 @@
 					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
 				},
 				{
+					"$type":"KompasServer.Effects.SetXByTriggeringCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"S"
+					},
+					"xMultiplier":1
+				},
+				{
 					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xModifier":2
+					"xMultiplier":1,
+					"xDivisor":2
 				},
 				{
-					"$type":"KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":{
-						"cardRestrictions":["Avatar","Enemy"]
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":2
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
 	"n":0,
-	"e":2,
+	"e":3,
 	"s":3,
 	"w":0,
 	"subtypeText":"Offering"
