@@ -13,3 +13,4 @@ Supplicant
 Weather
 Wisp Summon
 Wisp Turn Start
+Flashback

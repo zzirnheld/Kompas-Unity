@@ -63,6 +63,10 @@
 		{
 			"keyword":"Invoke",
 			"reminder":"Mill until you mill a character with S < my S. Revive them."
+		},
+		{
+			"keyword":"Flashback.",
+			"reminder":"You can pip discard->cast me, then annihilate me. (If this ability is resolving and I’m not in the discard pile, it fails.)"
 		}
 	]
 }
