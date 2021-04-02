@@ -11,6 +11,7 @@ namespace KompasCore.Effects
     {
         #region values
         private const string SummoningCost = "S";
+        private const string Wounding = "W";
         #endregion values
 
         public string value;
@@ -25,6 +26,7 @@ namespace KompasCore.Effects
             switch (value)
             {
                 case SummoningCost: return card.S;
+                case Wounding:      return card.W;
                 default: throw new ArgumentException($"Invalid value string {value}", "value");
             }
         }

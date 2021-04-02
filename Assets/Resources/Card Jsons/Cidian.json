@@ -1,35 +1,33 @@
 {
 	"cardType":67,
 	"cardName":"Cidian",
-	"effText":"Territorial.\nWhen I attack a character with X less E than my W, give characters adjacent to them, other than me, -X EW.",
+	"effText":"Territorial.\nWhen while attacking I deal X more combat damage than my defender's W, give characters adjacent to them, other than me, -X EW.",
 	"effects":[
 		{
 			"blurb":"Acid Breath",
 			"triggerData":
 			{
 				"blurb":"Acid Breath",
-				"triggerCondition":"Attack",
+				"triggerCondition":"Take Combat Damage",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+					"triggerRestrictions":["This Card Triggered","Triggerer Fits Restriction"],
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Defending From Source"]
+					}
 				}
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
-					"whatToCount":"W",
-					"xMultiplier":1
+					"$type":"KompasServer.Effects.SetXByTriggeringCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"W"
+					},
+					"change":true,
+					"xMultiplier":-1
 				},
 				{
 					"$type":"KompasServer.Effects.TargetDefenderSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
-					"whatToCount":"E",
-					"change":true,
-					"xMultiplier":-1
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
