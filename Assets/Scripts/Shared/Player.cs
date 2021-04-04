@@ -31,6 +31,7 @@ public abstract class Player : MonoBehaviour{
     public DeckController deckCtrl;
     public DiscardController discardCtrl;
     public HandController handCtrl;
+    public AnnihilationController annihilationCtrl;
 
     //friendly
     public GameObject deckObject;

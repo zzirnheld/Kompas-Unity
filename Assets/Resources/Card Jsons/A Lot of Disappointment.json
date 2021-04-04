@@ -1,0 +1,47 @@
+{
+	"cardType":67,
+	"cardName":"A Lot of Disappointment",
+	"effText":"When I'm revived, set X to my W, then give an adjacent character -X W.",
+	"effects":[
+		{
+			"blurb":"Disappointment",
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","Triggerer Fits Restriction"],
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character","Discard"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"S",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Board","Is Character","Adjacent to Source"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wMult":-1
+				}
+			]
+		}
+	],
+	"n":1,
+	"e":7,
+	"s":6,
+	"w":7,
+	"subtypeText":"Ethereal Spirit"
+}

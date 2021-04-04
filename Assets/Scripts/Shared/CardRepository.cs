@@ -271,7 +271,7 @@ public class CardRepository : MonoBehaviour
         }
     }
 
-    public DeckbuilderCard InstantiateDeckbuilderCard(string json, CardSearchController searchCtrl, bool inDeck)
+    public DeckbuilderCard InstantiateDeckbuilderCard(string json, DeckbuildSearchController searchCtrl, bool inDeck)
     {
         try
         {

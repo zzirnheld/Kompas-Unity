@@ -36,7 +36,7 @@ namespace KompasClient.Networking
         public void Execute(ClientGame clientGame)
         {
             var card = clientGame.GetCardWithID(cardId);
-            if (card != null) clientGame.annihilationCtrl.Annihilate(card);
+            if (card != null) card.Owner.annihilationCtrl.Annihilate(card);
         }
     }
 }

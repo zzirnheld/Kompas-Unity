@@ -11,9 +11,9 @@ namespace KompasDeckbuilder
         public TMP_Text cardBlurb;
 
         private DeckbuilderCard card;
-        private CardSearchController cardSearchCtrl;
+        private DeckbuildSearchController cardSearchCtrl;
 
-        public void Initialize(DeckbuilderCard card, CardSearchController cardSearchCtrl)
+        public void Initialize(DeckbuilderCard card, DeckbuildSearchController cardSearchCtrl)
         {
             simpleImage.sprite = card.simpleSprite;
             cardName.text = card.CardName;

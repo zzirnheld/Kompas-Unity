@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Dragonseeker",
-	"effText":"You can hand-reshuffle your SX Dragon to give me +X S.",
+	"effText":"You can hand-reshuffle your SX Dragon to give me +X/2 S.",
 	"effects":[
 		{
 			"blurb":"Dragonseek",
@@ -21,7 +21,8 @@
 				{
 					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
 					"whatToCount":"S",
-					"xMultiplier":1
+					"xMultiplier":1,
+					"xDivisor":2
 				},
 				{
 					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"

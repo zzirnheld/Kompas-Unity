@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Dragoncaller",
-	"effText":"You can kill another friendly SX character to give me +X ES or SW.",
+	"effText":"You can kill another friendly SX character to give me +2 * X ES or SW.",
 	"effects":[
 		{
 			"blurb":"Dragoncall",
@@ -30,30 +30,30 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Give +X ES or SW?",
-					"OptionBlurbs":["+X ES","+X SW"],
+					"ChoiceBlurb":"Give +2*X ES or SW?",
+					"OptionBlurbs":["ES","SW"],
 					"OptionJumpIndices":[5,7],
 					"hasDefault":false
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMult":1,
-					"sMult":1
+					"eMult":2,
+					"sMult":2
 				},
 				{
 					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"sMult":1,
-					"wMult":1
+					"sMult":2,
+					"wMult":2
 				}
 			]
 		}
 	],
-	"n":1,
+	"n":0,
 	"e":1,
-	"s":3,
-	"w":1,
+	"s":1,
+	"w":0,
 	"subtypeText":"Draconic Mage"
 }

@@ -7,7 +7,7 @@ namespace KompasDeckbuilder
 {
     public abstract class DeckbuilderCard : CardBase, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler
     {
-        protected CardSearchController cardSearchController;
+        protected DeckbuildSearchController cardSearchController;
         protected DeckbuilderController deckbuildCtrl => cardSearchController.DeckbuilderCtrl;
 
         protected Image image;
@@ -19,7 +19,7 @@ namespace KompasDeckbuilder
             image = GetComponent<Image>();
         }
 
-        public virtual void SetInfo(CardSearchController searchCtrl, SerializableCard card, bool inDeck)
+        public virtual void SetInfo(DeckbuildSearchController searchCtrl, SerializableCard card, bool inDeck)
         {
             SetInfo(card);
             SetImage(CardName);
@@ -36,11 +36,23 @@ namespace KompasDeckbuilder
         /// </summary>
         public virtual void Show()
         {
-            cardSearchController.CardImage.sprite = detailedSprite;
+            cardSearchController.cardViewParentObj.SetActive(true);
+
+            cardSearchController.CardImage.sprite = simpleSprite;
             cardSearchController.CardNameText.text = CardName;
             cardSearchController.SubtypesText.text = SubtypeText;
             cardSearchController.EffectText.text = EffText;
-            cardSearchController.StatsText.text = StatsString;
+
+            cardSearchController.nText.gameObject.SetActive(CardType == 'C');
+            cardSearchController.eText.gameObject.SetActive(CardType == 'C');
+            cardSearchController.wText.gameObject.SetActive(CardType == 'C');
+            cardSearchController.nText.text = $"N\n{N}";
+            cardSearchController.eText.text = $"E\n{E}";
+            cardSearchController.wText.text = $"W\n{W}";
+
+            cardSearchController.scaText.text = CardType == 'C' ? $"S\n{S}" :
+                                                CardType == 'S' ? $"C\n{C}" :
+                                              /*CardType == 'A'*/ $"A\n{A}";
         }
 
         public void Unshow()

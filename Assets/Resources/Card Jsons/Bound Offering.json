@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Bound Offering",
-	"effText":"When I die, annihilate me, gain a pip, and give the enemy Avatar +1E.",
+	"effText":"When I die having SX, annihilate me and gain X/2 pips.",
 	"effects":[
 		{
 			"triggerData":
@@ -20,25 +20,23 @@
 					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
 				},
 				{
+					"$type":"KompasServer.Effects.SetXByTriggeringCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"S"
+					},
+					"xMultiplier":1
+				},
+				{
 					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xModifier":1
-				},
-				{
-					"$type":"KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":{
-						"cardRestrictions":["Avatar","Enemy"]
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":1
+					"xMultiplier":1,
+					"xDivisor":2
 				}
 			]
 		}
 	],
 	"n":0,
 	"e":1,
-	"s":2,
+	"s":1,
 	"w":0,
-	"subtypeText":"Offering"
+	"subtypeText":"Person Offering"
 }

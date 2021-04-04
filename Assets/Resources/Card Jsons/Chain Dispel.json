@@ -53,6 +53,5 @@
 	],
 	"c":3,
 	"spellType":"Simple",
-	"subtypes":["Rune","Simple"],
-	"subtypeText":"Rune Simple"
+	"subtypeText":"Simple"
 }

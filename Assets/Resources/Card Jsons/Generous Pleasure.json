@@ -1,0 +1,32 @@
+{
+	"cardType":67,
+	"cardName":"Generous Pleasure",
+	"effText":"When I'm revived, gain 4 pips.",
+	"effects":[
+		{
+			"blurb":"Pleasure",
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","Triggerer Fits Restriction"],
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character","Discard"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier":4
+				}
+			]	
+		}
+	],
+	"n":1,
+	"e":10,
+	"s":6,
+	"w":2,
+	"subtypeText":"Ethereal Spirit"
+}

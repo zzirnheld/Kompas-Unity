@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Dragonspeaker",
-	"effText":"You can kill another friendly SX character to give me +X S and draw 1.",
+	"effText":"You can kill another friendly SX character to give me +2 * X S and draw 1.",
 	"effects":[
 		{
 			"blurb":"Dragonspeak",
@@ -30,7 +30,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"sMult":1
+					"sMult":2
 				},
 				{
 					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
@@ -38,9 +38,9 @@
 			]
 		}
 	],
-	"n":1,
-	"e":2,
-	"s":3,
-	"w":2,
+	"n":0,
+	"e":1,
+	"s":1,
+	"w":0,
 	"subtypeText":"Draconic Mage"
 }

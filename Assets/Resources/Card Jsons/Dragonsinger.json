@@ -7,6 +7,7 @@
 			"blurb":"Dragonsing",
 			"triggerData":
 			{
+				"optional":true,
 				"blurb":"Hand-reshuffle X Dragons to give Dragonsinger +X S and draw X?",
 				"triggerCondition":"Turn Start",
 				"triggerRestriction":{

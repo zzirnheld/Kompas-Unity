@@ -1,0 +1,38 @@
+{
+	"cardType":67,
+	"cardName":"Allconsuming Frustration",
+	"effText":"When I'm revived, negate an adjacent character.",
+	"effects":[
+		{
+			"blurb":"Frustration",
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","Triggerer Fits Restriction"],
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character","Discard"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Board","Is Character","Adjacent to Source"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.NegateSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"n":2,
+	"e":6,
+	"s":6,
+	"w":6,
+	"subtypeText":"Ethereal Spirit"
+}
