@@ -1,0 +1,41 @@
+{
+	"blurb":"Wanderer",
+	"triggerData":
+	{
+		"blurb":"Wander",
+		"triggerCondition":"Turn Start",
+		"triggerRestriction":{
+			"triggerRestrictions":["This Card in Play"]
+		}
+	},
+	"subeffects":[
+		{
+			"$type":"KompasServer.Effects.TargetThisSpaceSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+			"cardRestriction":
+			{
+				"blurb":"Wanderer to Wander into",
+				"cardRestrictions":["Is Character","Deck","Subtypes Include","Card Value Fits X Restriction"],
+				"subtypesInclude":["Wanderer"]
+			},
+			"cardValue":{
+				"value":"S"
+			},
+			"xRestriction":{
+				"xRestrictions":["<X"]
+			},
+			"xMultiplier":1
+		},
+		{
+			"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+		}
+	]	
+}

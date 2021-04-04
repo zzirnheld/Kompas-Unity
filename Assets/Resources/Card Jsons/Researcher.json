@@ -1,0 +1,44 @@
+{
+	"cardType":67,
+	"cardName":"Researcher",
+	"effText":"Wanderer.\nWhen I'm summoned, annihilate any card from your deck. Delay 1 turn. Rehand it.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"card to research",
+						"cardRestrictions":["Deck"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay":0,
+					"indexToResume":3,
+					"endCondition":"Turn Start"
+				},
+				{
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+	"keywords":["Wanderer"],
+	"n":1,
+	"e":2,
+	"s":6,
+	"w":2,
+	"subtypeText":"Wanderer Person"
+}

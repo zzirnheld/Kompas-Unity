@@ -15,16 +15,20 @@ namespace KompasCore.Effects
         public const string LTEConstant = "<=Constant";
         public const string EqualsConstant = "==Constant";
         public const string LessThanEqualControllerPips = "<= Controller's Pips";
+        public const string LessThanEffectX = "<X";
+        public const string EqualsEffectX = "=X";
 
         public string[] xRestrictions = new string[0];
 
         public int constant;
 
         public GameCard Source { get; private set; }
+        public Subeffect Subeffect { get; private set; }
 
-        public void Initialize(GameCard source)
+        public void Initialize(GameCard source, Subeffect subeffect = null)
         {
             Source = source;
+            Subeffect = subeffect;
         }
 
         private bool RestrictionValid(string r, int x)
@@ -40,6 +44,7 @@ namespace KompasCore.Effects
                 case AtLeastConstant: return x >= constant;
                 case LTEConstant: return x <= constant;
                 case EqualsConstant: return x == constant;
+                case LessThanEffectX: return x < Subeffect.Count;
                 default: throw new System.ArgumentException($"Invalid X restriction {r} in X Restriction.");
             }
         }

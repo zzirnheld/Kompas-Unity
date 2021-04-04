@@ -69,6 +69,7 @@ namespace KompasCore.Effects
         public const string LocationInList = "Multiple Possible Locations";
 
         //stats
+        public const string CardValueFitsXRestriction = "Card Value Fits X Restriction";
             //<=X
         public const string NLTEX = "N<=X";
         public const string ELTEX = "E<=X";
@@ -141,6 +142,9 @@ namespace KompasCore.Effects
         public int cSpaces;
         public string[] adjacencySubtypes = new string[0];
         public int spaceRestrictionIndex;
+
+        public CardValue cardValue;
+        public XRestriction xRestriction;
 
         [NonSerialized]
         private CardRestriction secondaryRestriction;
@@ -250,6 +254,7 @@ namespace KompasCore.Effects
                 case LocationInList: return locations.Contains(potentialTarget.Location);
 
                 //stats
+                case CardValueFitsXRestriction: return xRestriction.Evaluate(cardValue.GetValueOf(potentialTarget));
                     //<=
                 case NLTEX:    return potentialTarget.N <= x;
                 case ELTEX:    return potentialTarget.E <= x;
