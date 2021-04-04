@@ -163,18 +163,7 @@ namespace KompasCore.Effects
         public void Initialize(Subeffect subeff)
         {
             this.Subeffect = subeff;
-            Source = subeff.Source;
-            Controller = subeff.Controller;
-            Effect = subeff.Effect;
-
-            //if there's any secondary restriction, create it
-            if (secondaryRestrictionString != null)
-            {
-                secondaryRestriction = JsonUtility.FromJson<CardRestriction>(secondaryRestrictionString);
-                secondaryRestriction.Initialize(subeff);
-            }
-
-            initialized = true;
+            Initialize(subeff.Source, subeff.Controller, subeff.Effect);
         }
 
         public void Initialize(GameCard source, Player controller, Effect eff)
@@ -182,6 +171,14 @@ namespace KompasCore.Effects
             Source = source;
             Controller = controller;
             Effect = eff;
+            //if there's any secondary restriction, create it
+            if (secondaryRestrictionString != null)
+            {
+                secondaryRestriction = JsonUtility.FromJson<CardRestriction>(secondaryRestrictionString);
+                secondaryRestriction.Initialize(Subeffect);
+            }
+
+            if (xRestriction != null) xRestriction.Initialize(Source, Subeffect);
 
             initialized = true;
         }

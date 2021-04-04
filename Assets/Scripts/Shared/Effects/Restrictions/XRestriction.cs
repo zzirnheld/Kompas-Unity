@@ -17,6 +17,7 @@ namespace KompasCore.Effects
         public const string LessThanEqualControllerPips = "<= Controller's Pips";
         public const string LessThanEffectX = "<X";
         public const string EqualsEffectX = "=X";
+        public const string LessThanEqualEffectX = "<=X";
 
         public string[] xRestrictions = new string[0];
 
@@ -45,6 +46,8 @@ namespace KompasCore.Effects
                 case LTEConstant: return x <= constant;
                 case EqualsConstant: return x == constant;
                 case LessThanEffectX: return x < Subeffect.Count;
+                case EqualsEffectX: return x == Subeffect.Count;
+                case LessThanEqualEffectX: return x <= Subeffect.Count;
                 default: throw new System.ArgumentException($"Invalid X restriction {r} in X Restriction.");
             }
         }

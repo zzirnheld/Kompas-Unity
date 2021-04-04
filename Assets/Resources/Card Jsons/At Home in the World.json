@@ -1,0 +1,35 @@
+{
+	"cardType":83,
+	"cardName":"At Home in the World",
+	"effText":"When you reshuffle a Wanderer, delay a turn, then gain a pip.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Reshuffle",
+				"triggerRestriction":{
+					"triggerRestrictions":["Controller Triggered","Triggerer Fits Restriction","This Card in Play"],
+					"cardRestriction":{
+						"cardRestrictions":["Subtypes Include"],
+						"subtypesInclude":["Wanderer"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay":0,
+					"indexToResume":3,
+					"endCondition":"Turn Start"
+				},
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier":1
+				}
+			]	
+		}
+	],
+	"c":3,
+	"spellType":"Enchant",
+	"subtypeText":"Enchant"
+}
