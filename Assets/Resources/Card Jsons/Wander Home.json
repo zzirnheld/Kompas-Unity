@@ -70,14 +70,15 @@
 					"targetIndex":1
 				},
 				{
-					"$type":"KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp",
+					"targetIndex":1
 				},
 				{
 					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"character to summon",
-						"cardRestrictions":["Is Character","Enemy","Deck","Subtypes Include","Card Value Fits X Restriction"],
+						"cardRestrictions":["Is Character","Controller Matches Player Target","Deck","Subtypes Include","Card Value Fits X Restriction"],
 						"subtypesInclude":["Wanderer"]
 					},
 					"cardValue":{

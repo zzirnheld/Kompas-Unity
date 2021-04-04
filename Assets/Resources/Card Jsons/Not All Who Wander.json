@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Not All Who Wander",
-	"effText":"When you reshuffle a Wanderer, delay a turn, then draw.",
+	"effText":"When you board->reshuffle a Wanderer, delay a turn, then draw.",
 	"effects":[
 		{
 			"triggerData":
@@ -10,7 +10,7 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["Controller Triggered","Triggerer Fits Restriction","This Card in Play"],
 					"cardRestriction":{
-						"cardRestrictions":["Subtypes Include"],
+						"cardRestrictions":["Board","Subtypes Include"],
 						"subtypesInclude":["Wanderer"]
 					}
 				}
