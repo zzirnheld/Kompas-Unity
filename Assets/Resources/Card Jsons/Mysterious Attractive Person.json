@@ -51,7 +51,7 @@
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
-						"blurb":"where Ificator to play targeted Crazy Idea",
+						"blurb":"where Person to charm out another person",
 						"spaceRestrictions":["Can Play Target to This Space"]
 					}
 				},
@@ -63,8 +63,8 @@
 	],
 	"keywords":["Wanderer"],
 	"n":1,
-	"e":3,
+	"e":7,
 	"s":5,
-	"w":3,
+	"w":2,
 	"subtypeText":"Wanderer Person"
 }
