@@ -16,6 +16,13 @@
 			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 		},
 		{
+			"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+			"cardValue":{
+				"value":"S"
+			},
+			"xMultiplier":1
+		},
+		{
 			"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
 		},
 		{
@@ -24,15 +31,16 @@
 			{
 				"blurb":"Wanderer to Wander into",
 				"cardRestrictions":["Is Character","Deck","Subtypes Include","Card Value Fits X Restriction"],
-				"subtypesInclude":["Wanderer"]
+				"subtypesInclude":["Wanderer"],
+				"cardValue":{
+					"value":"S"
+				},
+				"xRestriction":{
+					"xRestrictions":["=X"]
+				}
 			},
-			"cardValue":{
-				"value":"S"
-			},
-			"xRestriction":{
-				"xRestrictions":["<X"]
-			},
-			"xMultiplier":1
+			"xMultiplier":1,
+			"xModifier":-1
 		},
 		{
 			"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"

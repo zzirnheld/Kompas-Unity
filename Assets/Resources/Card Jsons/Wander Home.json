@@ -22,8 +22,10 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
-					"whatToCount":"S",
+					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"S"
+					},
 					"xMultiplier":1
 				},
 				{
@@ -43,14 +45,13 @@
 					"cardRestriction":
 					{
 						"blurb":"Wanderer to inspire with music",
-						"cardRestrictions":["Is Character","Deck","Subtypes Include","Card Value Fits X Restriction"],
-						"subtypesInclude":["Wanderer"]
-					},
-					"cardValue":{
-						"value":"S"
-					},
-					"xRestriction":{
-						"xRestrictions":["<X"]
+						"cardRestrictions":["Is Character","Controller Matches Player Target","Deck","Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"S"
+						},
+						"xRestriction":{
+							"xRestrictions":["<X"]
+						}
 					},
 					"xMultiplier":1
 				},
@@ -78,14 +79,13 @@
 					"cardRestriction":
 					{
 						"blurb":"character to summon",
-						"cardRestrictions":["Is Character","Controller Matches Player Target","Deck","Subtypes Include","Card Value Fits X Restriction"],
-						"subtypesInclude":["Wanderer"]
-					},
-					"cardValue":{
-						"value":"S"
-					},
-					"xRestriction":{
-						"xRestrictions":["<X"]
+						"cardRestrictions":["Is Character","Controller Matches Player Target","Deck","Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"S"
+						},
+						"xRestriction":{
+							"xRestrictions":["<X"]
+						}
 					},
 					"xMultiplier":1
 				},

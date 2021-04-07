@@ -21,8 +21,10 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
-					"whatToCount":"S",
+					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"S"
+					},
 					"xMultiplier":1
 				},
 				{
@@ -37,13 +39,13 @@
 					{
 						"blurb":"character to summon",
 						"cardRestrictions":["Is Character","Enemy","Deck","Subtypes Include","Card Value Fits X Restriction"],
-						"subtypesInclude":["Wanderer"]
-					},
-					"cardValue":{
-						"value":"S"
-					},
-					"xRestriction":{
-						"xRestrictions":["<X"]
+						"subtypesInclude":["Wanderer"],
+						"cardValue":{
+							"value":"S"
+						},
+						"xRestriction":{
+							"xRestrictions":["<X"]
+						}
 					},
 					"xMultiplier":1
 				},
