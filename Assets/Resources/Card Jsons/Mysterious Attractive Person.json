@@ -38,8 +38,7 @@
 					"cardRestriction":
 					{
 						"blurb":"character to summon",
-						"cardRestrictions":["Is Character","Enemy","Deck","Subtypes Include","Card Value Fits X Restriction"],
-						"subtypesInclude":["Wanderer"],
+						"cardRestrictions":["Is Character","Enemy","Deck","Card Value Fits X Restriction"],
 						"cardValue":{
 							"value":"S"
 						},
