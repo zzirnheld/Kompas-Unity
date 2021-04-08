@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Wanderlust",
-	"effText":"Choose a friendly character. Repeat the following any number of times:\nReshuffle the last chosen S X character. Hand->summon an S X - 1 character.\n(This triggers any on-summon effects of each of those characters.)",
+	"effText":"Choose a friendly character. Repeat the following any number of times:\nReshuffle the last chosen S X character. Hand->summon an S < X character.\n(This triggers any on-summon effects of each of those characters.)",
 	"effects":[
 		{
 			"triggerData":
@@ -33,7 +33,13 @@
 					"cardRestriction":
 					{
 						"blurb":"for Empress to hand-summon",
-						"cardRestrictions":["Is Character","Friendly","Hand","S<=X"]
+						"cardRestrictions":["Is Character","Friendly","Hand","Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"S"
+						},
+						"xRestriction":{
+							"xRestrictions":["<X"]
+						}
 					},
 					"xMultiplier":1
 				},
@@ -56,7 +62,7 @@
 			]	
 		}
 	],
-	"c":4,
+	"c":3,
 	"spellType":"Simple",
 	"subtypeText":"Simple"
 }
