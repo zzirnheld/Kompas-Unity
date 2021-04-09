@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Wander Home",
-	"effText":"Choose a friendly S X Wanderer, then another character adjacent to them. Reshuffle the Wanderer. Deck-summon an S < X character. Reshuffle the other character. Their controller deck-summons an S < X character.",
+	"effText":"Choose a friendly Wanderer, then another character adjacent to them. Reshuffle the S X Wanderer. Deck-summon an S < X character. Reshuffle the other S X character. Their controller deck-summons an S < X character.",
 	"effects":[
 		{
 			"triggerData":
@@ -22,19 +22,20 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"S"
-					},
-					"xMultiplier":1
-				},
-				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"othercharacter to wander home",
 						"cardRestrictions":["Board","Is Character","Adjacent to Target"]
 					}
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"S"
+					},
+					"xMultiplier":1,
+					"targetIndex":0
 				},
 				{
 					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp",
@@ -67,11 +68,19 @@
 					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"S"
+					},
+					"xMultiplier":1,
 					"targetIndex":1
 				},
 				{
 					"$type":"KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp",
+					"targetIndex":1
+				},
+				{
+					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp",
 					"targetIndex":1
 				},
 				{
