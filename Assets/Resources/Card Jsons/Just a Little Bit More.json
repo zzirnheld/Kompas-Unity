@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Just a Little Bit More",
-	"effText":"Ificate.\nDiscard 1. Draw 1. Move a card 1 space. (You can’t move a spell next to 2 other spells.) Annihilate me.",
+	"effText":"Ificate.\nDiscard 1. Draw 1. Move a card 1 space. Annihilate me.",
 	"effects":[
 		{
 			"triggerData":

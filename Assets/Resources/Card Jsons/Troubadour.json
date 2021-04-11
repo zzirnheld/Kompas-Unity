@@ -51,7 +51,7 @@
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
-						"blurb":"where Ificator to play targeted Crazy Idea",
+						"blurb":"where to play the new Wanderer",
 						"spaceRestrictions":["Can Play Target to This Space"]
 					}
 				},
