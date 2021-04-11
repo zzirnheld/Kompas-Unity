@@ -43,9 +43,9 @@
 		}
 	],
 	"n":0,
-	"e":4,
-	"s":7,
-	"w":2,
+	"e":7,
+	"s":5,
+	"w":0,
 	"subtypes":["Tarocco"],
 	"subtypeText":"Tarocco"
 }

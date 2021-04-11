@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"XIII - Death",
-	"effText":"When you draw, I get +1S. During your turn, I can pay XS to kill an adjacent SX character.",
+	"effText":"When you draw, I get +1W. During your turn, I can pay XW to kill an adjacent SX character.",
 	"effects":[
 		{
 			"triggerData":
@@ -17,7 +17,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"sMod":1
+					"wMod":1
 				}
 			]
 		},
@@ -33,24 +33,31 @@
 					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.PlayerChooseXSubeffect, Assembly-CSharp",
-					"XRest":{
-						"cardRestrictions":[">0","<=ThisCost"]
+					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"W"
 					},
 					"xMultiplier":1
-				},
-				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"sMult":-1
 				},
 				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"adjacent SX character for Death to kill",
-						"cardRestrictions":["Is Character","Board","S==X","Adjacent to Source","Summoned"]
+						"blurb":"adjacent character for Death to kill",
+						"cardRestrictions":["Is Character","Board","Adjacent to Source","Summoned","Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"S"
+						},
+						"xRestriction":{
+							"xRestrictions":["<=X"]
+						}
 					},
 					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"sMult":-1,
+					"targetIndex":-2
 				},
 				{
 					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
@@ -59,9 +66,9 @@
 		}
 	],
 	"n":5,
-	"e":3,
+	"e":1,
 	"s":8,
-	"w":1,
+	"w":7,
 	"subtypes":["Tarocco","Mage"],
 	"subtypeText":"Tarocco Mage"
 }
