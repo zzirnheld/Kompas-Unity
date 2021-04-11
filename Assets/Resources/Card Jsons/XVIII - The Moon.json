@@ -1,13 +1,13 @@
 {
 	"cardType":67,
 	"cardName":"XVIII - The Moon",
-	"effText":"When you draw, I can swap a Summoned character's E and W, then swap their EW with another Summoned character's.",
+	"effText":"When you draw, you can swap a Summoned character's E and W, then you can swap their EW with another Summoned character's.",
 	"effects":[
 		{
 			"triggerData":
 			{
 				"optional":true,
-				"blurb":"Swap character E and W, characters' EW?",
+				"blurb":"Swap character's E and W and/or characters' EW?",
 				"triggerCondition":"Draw",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Controller Triggered"]
@@ -23,9 +23,21 @@
 					}
 				},
 				{
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"ChoiceBlurb":"Swap one character's own EW?",
+					"OptionBlurbs":["Yes","No"],
+					"OptionJumpIndices":[2,3]
+				},
+				{
 					"$type":"KompasServer.Effects.SwapOwnNESWSubeffect, Assembly-CSharp",
 					"Stat1":1,
 					"Stat2":3
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"ChoiceBlurb":"Swap ",
+					"OptionBlurbs":["Yes","No"],
+					"OptionJumpIndices":[4,100]
 				},
 				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
