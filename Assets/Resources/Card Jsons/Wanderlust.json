@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Wanderlust",
-	"effText":"Choose a friendly character. Repeat the following any number of times:\nReshuffle the last chosen S X character. Hand->summon an S < X character.\n(This triggers any on-summon effects of each of those characters.)",
+	"effText":"Choose a friendly character. Repeat the following any number of times:\nReshuffle the last chosen S X character. Hand->summon an S X + 1 character.\n(This triggers any on-summon effects of each of those characters.)",
 	"effects":[
 		{
 			"triggerData":
@@ -38,10 +38,11 @@
 							"value":"S"
 						},
 						"xRestriction":{
-							"xRestrictions":["<X"]
+							"xRestrictions":["=X"]
 						}
 					},
-					"xMultiplier":1
+					"xMultiplier":1,
+					"xModifier":1
 				},
 				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
@@ -62,7 +63,8 @@
 			]	
 		}
 	],
-	"c":3,
+	"c":1,
+	"fast":true,
 	"spellType":"Simple",
 	"subtypeText":"Simple"
 }
