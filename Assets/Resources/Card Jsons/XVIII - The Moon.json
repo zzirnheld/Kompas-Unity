@@ -1,13 +1,13 @@
 {
 	"cardType":67,
 	"cardName":"XVIII - The Moon",
-	"effText":"When you draw, you can swap a Summoned character's E and W, then you can swap their EW with another Summoned character's.",
+	"effText":"When you draw, choose a Summoned character. You can swap their E and W, then you can swap their EW with another Summoned character's.",
 	"effects":[
 		{
+			"blurb":"Swap EW",
 			"triggerData":
 			{
-				"optional":true,
-				"blurb":"Swap character's E and W and/or characters' EW?",
+				"blurb":"Swap EW",
 				"triggerCondition":"Draw",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Controller Triggered"]
