@@ -82,15 +82,5 @@ namespace KompasServer.GameCore
             }
             return false;
         }
-
-        public override bool RemoveFromBoard(GameCard toRemove)
-        {
-            if (base.RemoveFromBoard(toRemove))
-            {
-                toRemove.ResetCard();
-                return true;
-            }
-            return false;
-        }
     }
 }

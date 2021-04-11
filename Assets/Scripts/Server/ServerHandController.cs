@@ -21,7 +21,6 @@ namespace KompasServer.GameCore
             {
                 EffectsController.TriggerForCondition(Trigger.Rehand, context);
                 ServerNotifier.NotifyRehand(card, wasKnown);
-                card.ResetCard();
                 return true;
             }
             return false;
