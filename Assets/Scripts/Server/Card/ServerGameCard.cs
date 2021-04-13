@@ -52,6 +52,9 @@ namespace KompasServer.Cards
             {
                 if (Location == CardLocation.Hand && value != CardLocation.Hand && !KnownToEnemy)
                     ServerController.ServerEnemy.ServerNotifier.NotifyDecrementHand();
+
+                if(Location != value) ResetCard();
+
                 base.Location = value;
                 switch (Location)
                 {
@@ -142,7 +145,7 @@ namespace KompasServer.Cards
                 //copy the colleciton  so that you can edit the original
                 var augments = AugmentsList.ToArray();
                 foreach (var aug in augments) aug.Discard(stackSrc);
-                ResetCard();
+                
                 return true;
             }
             return false;
