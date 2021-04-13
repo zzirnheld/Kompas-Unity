@@ -32,7 +32,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"for Empress to hand-summon",
+						"blurb":"for Wanderlust to hand-summon",
 						"cardRestrictions":["Is Character","Friendly","Hand","Card Value Fits X Restriction"],
 						"cardValue":{
 							"value":"S"
@@ -48,7 +48,7 @@
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
-						"blurb":"where Empress to hand-summon",
+						"blurb":"where Wanderlust to hand-summon",
 						"spaceRestrictions":["Can Play Target to This Space"]
 					}
 				},
@@ -56,9 +56,10 @@
 					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
-					"canDecline":true,
-					"jumpTo":1
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"ChoiceBlurb":"Reshuffle to summon again?",
+					"OptionBlurbs":["Yes","No"],
+					"OptionJumpIndices":[1,100]
 				}
 			]	
 		}
