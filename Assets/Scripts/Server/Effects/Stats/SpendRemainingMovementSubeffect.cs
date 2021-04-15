@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using UnityEngine;
 
 namespace KompasServer.Effects
 {
@@ -11,7 +12,8 @@ namespace KompasServer.Effects
         public override Task<ResolutionInfo> Resolve()
         {
             int toSpend = (Target.SpacesCanMove * mult / div) + mod;
-            if (Target.SpacesCanMove < toSpend) return Task.FromResult(ResolutionInfo.Impossible(CantAffordStats));
+            if (toSpend <= 0 || Target.SpacesCanMove < toSpend) return Task.FromResult(ResolutionInfo.Impossible(CantAffordStats));
+
             int toSet = Target.SpacesMoved + toSpend;
             Target.SetSpacesMoved(toSet);
             return Task.FromResult(ResolutionInfo.Next);

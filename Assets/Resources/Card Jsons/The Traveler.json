@@ -1,12 +1,12 @@
 {
 	"cardType":67,
 	"cardName":"The Traveler",
-	"effText":"Once each turn, you can rehand a friendly S X character. Hand-summon a distinct S <= X + 1 character.",
+	"effText":"Once each round, you can rehand a friendly S X character. Hand-summon a distinct S <= X + 1 character.",
 	"effects":[
 		{
 			"activationRestriction":{
 				"activationRestrictionArray":[
-					"Max Times Per Turn",
+					"Max Times Per Round",
 					"Default"
 				]
 			},
