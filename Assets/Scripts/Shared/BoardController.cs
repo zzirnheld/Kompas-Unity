@@ -199,18 +199,25 @@ namespace KompasCore.GameCore
                 }
                 //assuming there is a card there, try and add the augment. if it don't work, it borked.
                 if (!Board[toX, toY].AddAugment(toPlay, stackSrc)) return false;
+
+                toPlay.Controller = controller;
+                return true;
             }
             //otherwise, put a card to the requested space
             else
             {
-                toPlay.Remove(stackSrc);
-                Board[toX, toY] = toPlay;
-                toPlay.Location = CardLocation.Field;
-                toPlay.Position = (toX, toY);
+                if (toPlay.Remove(stackSrc))
+                {
+                    Board[toX, toY] = toPlay;
+                    toPlay.Location = CardLocation.Field;
+                    toPlay.Position = (toX, toY);
+
+                    toPlay.Controller = controller;
+                    return true;
+                }
             }
 
-            toPlay.Controller = controller;
-            return true;
+            return false;
         }
 
         //movement

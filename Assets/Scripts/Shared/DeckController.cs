@@ -25,10 +25,13 @@ namespace KompasCore.GameCore
 
         protected virtual bool AddCard(GameCard card, IStackable stackSrc = null)
         {
-            card.Remove(stackSrc);
-            card.Location = CardLocation.Deck;
-            card.Controller = Owner;
-            return true;
+            if (card.Remove(stackSrc)) 
+            { 
+                card.Location = CardLocation.Deck;
+                card.Controller = Owner;
+                return true;
+            }
+            return false;
         }
 
         //adding and removing cards

@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Self-Destruct Button",
-	"effText":"Ificate.\nDestroy two friendly cards. Discard-rehand up to 3 Crazy Ideas. Discard 1. Annihilate me.",
+	"effText":"Ificate.\nDestroy another friendly Crazy Idea. Rehand all friendly discarded Crazy Ideas. Discard 1.",
 	"effects":[
 		{
 			"triggerData":
@@ -16,56 +16,43 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"No! Not the Self-Destruct Button installed on all Ificator (TM) systems! (1/2)",
-						"cardRestrictions":["Friendly","Board"]
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"No! Not the Self-Destruct Button installed on all Ificator (TM) systems! (2/2)",
-						"cardRestrictions":["Friendly","Board","Distinct from Target"]
+						"blurb":"No! Not the Self-Destruct Button installed on all Ificator (TM) systems!",
+						"cardRestrictions":["Friendly","Board","Distinct from Source","Subtypes Include"],
+						"subtypesInclude":["Crazy Idea"]
 					}
 				},
 				{
 					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp",
-					"targetIndex":-2
+					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Friendly","Discard"]
+						"cardRestrictions":["Friendly","Discard","Subtypes Include"],
+						"subtypesInclude":["Crazy Idea"]
 					}
 				},
 				{
 					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TTimesSubeffect, Assembly-CSharp",
-					"T":3,
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
 					"jumpTo":4
 				},
 				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"oh, and the self-destruct button on the -ificator in my hand, curse you, Orry",
+						"blurb":"oh, and the self-destruct button on the -ificator in my hand, too. Curse you.",
 						"cardRestrictions":["Friendly","Hand"]
 					}
 				},
 				{
 					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
 				}
 			]
 		}

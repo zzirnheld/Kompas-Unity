@@ -20,7 +20,7 @@
 			"cardRestriction":
 			{
 				"blurb":"Crazy Idea for Ificator to Ificate",
-				"cardRestrictions":["Subtypes Include","Discard","Friendly","Distinct from Source"],
+				"cardRestrictions":["Discard","Friendly","Distinct from Source","Subtypes Include"],
 				"subtypesInclude":["Crazy Idea"]
 			}
 		},
