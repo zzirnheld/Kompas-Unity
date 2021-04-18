@@ -12,8 +12,12 @@
 					"triggerRestrictions":["This Card in Play","Coords Fit Restriction"],
 					"spaceRestriction":
 					{
-						"spaceRestrictions":["Adjacent to Subtype"],
-						"adjacencySubtypes":["Crazy"],
+						"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
+						"cardRestriction":
+						{
+							"cardRestrictions":["Subtypes Include"],
+							"subtypesInclude":["Crazy"]
+						},
 						"mustBeEmpty":false
 					}
 				}

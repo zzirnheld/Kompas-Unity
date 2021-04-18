@@ -154,7 +154,7 @@ namespace KompasCore.GameCore
         #endregion
 
         #region game mechanics
-        public bool RemoveFromBoard(GameCard toRemove)
+        public virtual bool RemoveFromBoard(GameCard toRemove)
         {
             var (x, y) = toRemove.Position;
             if (toRemove.Location == CardLocation.Field && Board[x, y] == toRemove)
@@ -165,7 +165,7 @@ namespace KompasCore.GameCore
             return false;
         }
 
-        public void RemoveFromBoard(int x, int y) => Board[x, y] = null;
+        private void RemoveFromBoard(int x, int y) => Board[x, y] = null;
 
         /// <summary>
         /// Puts the card on the board
@@ -199,18 +199,25 @@ namespace KompasCore.GameCore
                 }
                 //assuming there is a card there, try and add the augment. if it don't work, it borked.
                 if (!Board[toX, toY].AddAugment(toPlay, stackSrc)) return false;
+
+                toPlay.Controller = controller;
+                return true;
             }
             //otherwise, put a card to the requested space
             else
             {
-                toPlay.Remove(stackSrc);
-                Board[toX, toY] = toPlay;
-                toPlay.Location = CardLocation.Field;
-                toPlay.Position = (toX, toY);
+                if (toPlay.Remove(stackSrc))
+                {
+                    Board[toX, toY] = toPlay;
+                    toPlay.Location = CardLocation.Field;
+                    toPlay.Position = (toX, toY);
+
+                    toPlay.Controller = controller;
+                    return true;
+                }
             }
 
-            toPlay.Controller = controller;
-            return true;
+            return false;
         }
 
         //movement

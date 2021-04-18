@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Dragoncaller",
-	"effText":"You can kill another friendly SX character to give me +2 * X ES or SW.",
+	"effText":"You can kill a friendly SX character to give me +2 * X ES or SW.",
 	"effects":[
 		{
 			"blurb":"Dragoncall",
@@ -14,7 +14,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Dragoncaller to kill",
-						"cardRestrictions":["Friendly","Board","Is Character","Distinct from Source"]
+						"cardRestrictions":["Friendly","Board","Is Character","Summoned"]
 					}
 				},
 				{

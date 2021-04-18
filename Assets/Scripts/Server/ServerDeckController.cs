@@ -71,7 +71,6 @@ namespace KompasServer.GameCore
         {
             if(base.RemoveFromDeck(card))
             {
-                card.ResetCard();
                 owner.ServerNotifier.NotifyDeckCount(Deck.Count);
                 return true;
             }

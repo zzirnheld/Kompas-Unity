@@ -16,7 +16,6 @@ namespace KompasServer.GameCore
             {
                 ServerGame.EffectsController.TriggerForCondition(Trigger.Annhilate, context);
                 ServerGame.ServerPlayers[card.ControllerIndex].ServerNotifier.NotifyAnnhilate(card, wasKnown);
-                card.ResetCard();
                 return true;
             }
             return false;

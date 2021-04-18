@@ -1,0 +1,34 @@
+{
+	"cardType":83,
+	"cardName":"Not All Who Wander",
+	"effText":"When you board->reshuffle a Wanderer, delay a turn, then draw.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Reshuffle",
+				"triggerRestriction":{
+					"triggerRestrictions":["Controller Triggered","Triggerer Fits Restriction","This Card in Play"],
+					"cardRestriction":{
+						"cardRestrictions":["Board","Subtypes Include"],
+						"subtypesInclude":["Wanderer"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay":0,
+					"indexToResume":1,
+					"endCondition":"Turn Start"
+				},
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+	"c":4,
+	"spellType":"Enchant",
+	"subtypeText":"Enchant"
+}

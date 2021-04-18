@@ -1,0 +1,35 @@
+{
+	"cardType":67,
+	"cardName":"Sellsword",
+	"effText":"Wanderer.\nWhen I'm summoned, give a character +1 W.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Board","Is Character"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wMod":1
+				}
+			]	
+		}
+	],
+	"keywords":["Wanderer"],
+	"n":1,
+	"e":3,
+	"s":3,
+	"w":1,
+	"subtypeText":"Wanderer Person"
+}

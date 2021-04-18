@@ -15,11 +15,14 @@ namespace KompasCore.GameCore
         //adding/removing cards
         public virtual bool AddToDiscard(GameCard card, IStackable stackSrc = null)
         {
-            card.Remove(stackSrc);
-            Discard.Add(card);
-            card.Controller = Owner;
-            card.Location = CardLocation.Discard;
-            return true;
+            if (card.Remove(stackSrc))
+            {
+                Discard.Add(card);
+                card.Controller = Owner;
+                card.Location = CardLocation.Discard;
+                return true;
+            }
+            return false;
         }
 
         public int IndexOf(GameCard card)

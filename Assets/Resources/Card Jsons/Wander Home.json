@@ -1,0 +1,119 @@
+{
+	"cardType":83,
+	"cardName":"Wander Home",
+	"effText":"Choose a friendly Wanderer, then another character adjacent to them. Reshuffle the S X Wanderer. Deck-summon an S < X character. Reshuffle the other S X character. Their controller deck-summons an S < X character.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"othercharacter to wander home",
+						"cardRestrictions":["Board","Is Character","Friendly","Subtypes Include"],
+						"subtypesInclude":["Wanderer"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"othercharacter to wander home",
+						"cardRestrictions":["Board","Is Character","Adjacent to Target"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"S"
+					},
+					"xMultiplier":1,
+					"targetIndex":0
+				},
+				{
+					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp",
+					"targetIndex":0
+				},
+				{
+					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Wanderer to inspire with music",
+						"cardRestrictions":["Is Character","Controller Matches Player Target","Deck","Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"S"
+						},
+						"xRestriction":{
+							"xRestrictions":["<X"]
+						}
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where Ificator to play targeted Crazy Idea",
+						"spaceRestrictions":["Can Play Target to This Space"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"S"
+					},
+					"xMultiplier":1,
+					"targetIndex":1
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp",
+					"targetIndex":1
+				},
+				{
+					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp",
+					"targetIndex":1
+				},
+				{
+					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"character to summon",
+						"cardRestrictions":["Is Character","Controller Matches Player Target","Deck","Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"S"
+						},
+						"xRestriction":{
+							"xRestrictions":["<X"]
+						}
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where to play who is wandering home",
+						"spaceRestrictions":["Can Play Target to This Space"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"fast":true,
+	"c":1,
+	"spellType":"Simple",
+	"subtypeText":""
+}

@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Aeolian",
-	"effText":"Territorial.\nWhen I attack, move my target anywhere.",
+	"effText":"Territorial.\nWhen I attack, move my target X spaces, then give them -X E. (You can move them anywhere.)",
 	"effects":[
 		{
 			"blurb":"Air Breath",
@@ -25,7 +25,16 @@
 					}
 				},
 				{
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"Distance Between Target and Target Space",
+					"xMultiplier":1
+				},
+				{
 					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMult":-1
 				}
 			]	
 		}

@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Shifting Tile Maze Path Blocker",
-	"effText":"Ificate.\nThe first time each stack a character moves here, move them 1 space to another space here. If you can't, annihilate me.",
+	"effText":"Ificate.\nThe first time each stack a card moves here, move them 1 space to another space here. If you can't, annihilate me.",
 	"effects":[
 		{
 			"triggerData":

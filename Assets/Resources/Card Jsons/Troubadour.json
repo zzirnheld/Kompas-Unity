@@ -1,0 +1,70 @@
+{
+	"cardType":67,
+	"cardName":"Troubadour",
+	"effText":"Wanderer.\nWhen I'm summoned, reshuffle a friendly S X character. Deck-summon an S X - 1 character.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"character to reshuffle",
+						"cardRestrictions":["Is Character","Board","Friendly","Summoned"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"S"
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Wanderer to inspire with music",
+						"cardRestrictions":["Is Character","Deck","Subtypes Include","Card Value Fits X Restriction"],
+						"subtypesInclude":["Wanderer"],
+						"cardValue":{
+							"value":"S"
+						},
+						"xRestriction":{
+							"xRestrictions":["=X"]
+						}
+					},
+					"xMultiplier":1,
+					"xModifier":-1
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where to play the new Wanderer",
+						"spaceRestrictions":["Can Play Target to This Space"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+	"keywords":["Wanderer"],
+	"n":1,
+	"e":4,
+	"s":4,
+	"w":2,
+	"subtypeText":"Wanderer Person"
+}

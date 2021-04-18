@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Reincarnation",
-	"effText":"When a character dies, echo a character.",
+	"effText":"When a character dies, echo a Geminii.",
 	"effects":[
 		{
 			"triggerData":
@@ -20,7 +20,8 @@
 					"cardRestriction":
 					{
 						"blurb":"Summoned character for Reincarnation to echo",
-						"cardRestrictions":["Is Character","Board","Summoned"]
+						"cardRestrictions":["Is Character","Board","Summoned","Subtypes Include"],
+						"subtypesInclude":["Geminii"]
 					}
 				},
 				{

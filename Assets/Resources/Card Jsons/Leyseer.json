@@ -1,0 +1,28 @@
+{
+	"cardType":67,
+	"cardName":"Leyseer",
+	"effText":"Wanderer.\nWhen I'm summoned, gain a pip.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier":1
+				}
+			]	
+		}
+	],
+	"keywords":["Wanderer"],
+	"n":1,
+	"e":3,
+	"s":3,
+	"w":1,
+	"subtypeText":"Wanderer Person"
+}

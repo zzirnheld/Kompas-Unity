@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Cidian",
-	"effText":"Territorial.\nWhen while attacking I deal X more combat damage than my defender's W, give characters adjacent to them, other than me, -X EW.",
+	"effText":"Territorial.\nWhen while attacking I deal X more combat damage than my defender's E, give characters adjacent to them, other than me, -X EW.",
 	"effects":[
 		{
 			"blurb":"Acid Breath",
@@ -10,7 +10,7 @@
 				"blurb":"Acid Breath",
 				"triggerCondition":"Take Combat Damage",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered","Triggerer Fits Restriction"],
+					"triggerRestrictions":["Triggerer Fits Restriction"],
 					"cardRestriction":
 					{
 						"cardRestrictions":["Is Defending From Source"]
@@ -21,7 +21,7 @@
 				{
 					"$type":"KompasServer.Effects.SetXByTriggeringCardValueSubeffect, Assembly-CSharp",
 					"cardValue":{
-						"value":"W"
+						"value":"E"
 					},
 					"change":true,
 					"xMultiplier":-1

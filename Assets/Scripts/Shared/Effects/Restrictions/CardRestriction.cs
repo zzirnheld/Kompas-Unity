@@ -69,6 +69,7 @@ namespace KompasCore.Effects
         public const string LocationInList = "Multiple Possible Locations";
 
         //stats
+        public const string CardValueFitsXRestriction = "Card Value Fits X Restriction";
             //<=X
         public const string NLTEX = "N<=X";
         public const string ELTEX = "E<=X";
@@ -142,6 +143,9 @@ namespace KompasCore.Effects
         public string[] adjacencySubtypes = new string[0];
         public int spaceRestrictionIndex;
 
+        public CardValue cardValue;
+        public XRestriction xRestriction;
+
         [NonSerialized]
         private CardRestriction secondaryRestriction;
         public string secondaryRestrictionString = null;
@@ -159,18 +163,7 @@ namespace KompasCore.Effects
         public void Initialize(Subeffect subeff)
         {
             this.Subeffect = subeff;
-            Source = subeff.Source;
-            Controller = subeff.Controller;
-            Effect = subeff.Effect;
-
-            //if there's any secondary restriction, create it
-            if (secondaryRestrictionString != null)
-            {
-                secondaryRestriction = JsonUtility.FromJson<CardRestriction>(secondaryRestrictionString);
-                secondaryRestriction.Initialize(subeff);
-            }
-
-            initialized = true;
+            Initialize(subeff.Source, subeff.Controller, subeff.Effect);
         }
 
         public void Initialize(GameCard source, Player controller, Effect eff)
@@ -178,6 +171,14 @@ namespace KompasCore.Effects
             Source = source;
             Controller = controller;
             Effect = eff;
+            //if there's any secondary restriction, create it
+            if (secondaryRestrictionString != null)
+            {
+                secondaryRestriction = JsonUtility.FromJson<CardRestriction>(secondaryRestrictionString);
+                secondaryRestriction.Initialize(Subeffect);
+            }
+
+            if (xRestriction != null) xRestriction.Initialize(Source, Subeffect);
 
             initialized = true;
         }
@@ -250,6 +251,7 @@ namespace KompasCore.Effects
                 case LocationInList: return locations.Contains(potentialTarget.Location);
 
                 //stats
+                case CardValueFitsXRestriction: return xRestriction.Evaluate(cardValue.GetValueOf(potentialTarget));
                     //<=
                 case NLTEX:    return potentialTarget.N <= x;
                 case ELTEX:    return potentialTarget.E <= x;
@@ -339,7 +341,15 @@ namespace KompasCore.Effects
 
             if (potentialTarget == null) return false;
 
-            return cardRestrictions.All(r => RestrictionValid(r, potentialTarget, x));
+            try
+            {
+                return cardRestrictions.All(r => RestrictionValid(r, potentialTarget, x));
+            }
+            catch (ArgumentException e)
+            {
+                Debug.LogError(e);
+                return false;
+            }
         }
 
         /// <summary>

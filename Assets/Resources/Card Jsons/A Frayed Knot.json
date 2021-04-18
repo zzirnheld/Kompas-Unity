@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"A Frayed Knot",
-	"effText":"Ificate.\nDiscard a Crazy Idea",
+	"effText":"Ificate.\nDiscard your hand.",
 	"effects":[
 		{
 			"triggerData":
@@ -14,16 +14,20 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"card for A Frayed Knot to discard",
-						"cardRestrictions":["Subtypes Include","Friendly","Hand"],
-						"subtypesInclude":["Crazy Idea"]
+						"cardRestrictions":["Friendly","Hand"]
 					}
 				},
 				{
 					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"jumpTo":1
 				}
 			]
 		}

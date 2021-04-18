@@ -39,6 +39,7 @@
 					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
 					"numTimesToDelay":0,
 					"indexToResume":6,
+					"fallOffCondition":"",
 					"endCondition":"Turn Start"
 				},
 				{
