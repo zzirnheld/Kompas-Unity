@@ -341,7 +341,15 @@ namespace KompasCore.Effects
 
             if (potentialTarget == null) return false;
 
-            return cardRestrictions.All(r => RestrictionValid(r, potentialTarget, x));
+            try
+            {
+                return cardRestrictions.All(r => RestrictionValid(r, potentialTarget, x));
+            }
+            catch (ArgumentException e)
+            {
+                Debug.LogError(e);
+                return false;
+            }
         }
 
         /// <summary>
