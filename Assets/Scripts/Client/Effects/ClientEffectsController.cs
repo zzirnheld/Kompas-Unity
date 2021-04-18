@@ -13,7 +13,7 @@ namespace KompasClient.Effects
         public void Add(IClientStackable stackable, ActivationContext context = default)
         {
             stack.Push((stackable, context));
-            clientStackPanelCtrl.Add(stackable.PrimarySprite, stackable.SecondarySprite, stackable.StackableBlurb);
+            clientStackPanelCtrl.Add(stackable);
         }
 
         public void Remove(int index)

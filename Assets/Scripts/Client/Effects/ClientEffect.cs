@@ -24,8 +24,10 @@ namespace KompasClient.Effects
         public override Trigger Trigger => ClientTrigger;
 
         public Sprite PrimarySprite => Source.simpleSprite;
+        public CardController PrimaryCardController => Source.cardCtrl;
 
         public Sprite SecondarySprite => default;
+        public CardController SecondaryCardController => default;
 
         public string StackableBlurb => blurb;
 

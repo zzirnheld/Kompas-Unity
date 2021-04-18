@@ -1,4 +1,5 @@
-﻿using KompasCore.Effects;
+﻿using KompasCore.Cards;
+using KompasCore.Effects;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,9 +14,19 @@ namespace KompasClient.Effects
         Sprite PrimarySprite { get; }
 
         /// <summary>
-        /// The secondary card for this stackable. The defender
+        /// The primary card for this stackable. The source of an effect, or an attacker
+        /// </summary>
+        CardController PrimaryCardController { get; }
+
+        /// <summary>
+        /// The secondary card for this stackable. The defender of an attack
         /// </summary>
         Sprite SecondarySprite { get; }
+
+        /// <summary>
+        /// The secondary card for this stackable. The defender of an attack
+        /// </summary>
+        CardController SecondaryCardController { get; }
 
         /// <summary>
         /// The blurb for this stackable

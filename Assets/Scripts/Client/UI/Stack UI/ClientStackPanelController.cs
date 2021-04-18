@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using KompasCore.Effects;
+using KompasClient.Effects;
 
 namespace KompasClient.UI
 {
@@ -12,13 +13,13 @@ namespace KompasClient.UI
 
         private readonly List<ClientStackPanelElementController> stack = new List<ClientStackPanelElementController>();
 
-        public void Add(Sprite primarySprite, Sprite secondarySprite, string blurb)
+        public void Add(IClientStackable stackable)
         {
             if (stack.Count == 0) gameObject.SetActive(true);
 
             var element = Instantiate(stackPanelElementPrefab, parent: contentParent)
                 .GetComponent<ClientStackPanelElementController>();
-            element.Initialize(primarySprite, secondarySprite, blurb);
+            element.Initialize(stackable);
             stack.Add(element);
         }
 

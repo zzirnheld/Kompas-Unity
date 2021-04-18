@@ -1,24 +1,49 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using KompasCore.Cards;
+using KompasClient.Effects;
+using UnityEngine.EventSystems;
 
 namespace KompasClient.UI
 {
-    public class ClientStackPanelElementController : MonoBehaviour
+    public class ClientStackPanelElementController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         public Image primaryImage;
         public Image secondaryImage;
         public TMP_Text blurbText;
 
-        public void Initialize(Sprite primary, Sprite secondary, string blurb)
+        private IClientStackable stackable;
+        private CardController primaryCardCtrl;
+        private CardController secondaryCardCtrl;
+
+        public void Initialize(IClientStackable stackable)
         {
+            var primary = stackable.PrimarySprite;
             if(primary != null) primaryImage.sprite = primary;
             primaryImage.gameObject.SetActive(primary != null);
 
-            if(secondary != null) secondaryImage.sprite = secondary;
+            var secondary = stackable.SecondarySprite;
+            if (secondary != null) secondaryImage.sprite = secondary;
             secondaryImage.gameObject.SetActive(secondary != null);
 
-            blurbText.text = blurb;
+            blurbText.text = stackable.StackableBlurb;
+
+            this.stackable = stackable;
+            primaryCardCtrl = stackable.PrimaryCardController;
+            secondaryCardCtrl = stackable.SecondaryCardController;
         }
+
+        private void ShowStackableRoles(bool show)
+        {
+            if (primaryCardCtrl != null) primaryCardCtrl.ShowPrimaryOfStackable(show);
+            if (secondaryCardCtrl != null) secondaryCardCtrl.ShowSecondaryOfStackable(show);
+        }
+
+        public void OnPointerEnter(PointerEventData eventData) => ShowStackableRoles(true);
+
+        public void OnPointerExit(PointerEventData eventData) => ShowStackableRoles(false);
+
+        public void OnDestroy() => ShowStackableRoles(false);
     }
 }
