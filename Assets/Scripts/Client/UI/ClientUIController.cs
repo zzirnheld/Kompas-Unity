@@ -52,6 +52,8 @@ namespace KompasClient.UI
         public const int OptionalEffYes = 1;
         public const int OptionalEffNo = 2;
         public int OptionalEffAutoResponse => autoOptionalEff.value;
+
+        private Trigger currOptionalTrigger;
         //confirm trigger
         public GameObject ConfirmTriggerView;
         public TMP_Text TriggerBlurbText;
@@ -246,6 +248,7 @@ namespace KompasClient.UI
                     TriggerBlurbText.text = blurb;
                     ConfirmTriggerView.SetActive(true);
                     SetCurrState("Choose optional trigger");
+                    currOptionalTrigger = t;
                 }
             }
             else
@@ -254,10 +257,15 @@ namespace KompasClient.UI
             }
         }
 
+        public void ShowOptionalTriggerSource() => currOptionalTrigger?.Source.cardCtrl.ShowPrimaryOfStackable(true);
+        public void HideOptionalTriggerSource() => currOptionalTrigger?.Source.cardCtrl.ShowPrimaryOfStackable(false);
+
         public void RespondToTrigger(bool answer)
         {
+            HideOptionalTriggerSource();
             clientGame.clientNotifier.RequestTriggerReponse(answer);
             ConfirmTriggerView.SetActive(false);
+            currOptionalTrigger = default;
         }
 
         public void ShowEffectOptions(string choiceBlurb, string[] optionBlurbs, bool showX, int x)
