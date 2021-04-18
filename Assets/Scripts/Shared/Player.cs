@@ -24,8 +24,8 @@ public abstract class Player : MonoBehaviour{
     }
 
     //other game data
-    public bool friendly;
-    public int index;
+    public abstract bool Friendly { get; }
+    public int Index { get; private set; }
 
     //friendly
     public DeckController deckCtrl;
@@ -48,9 +48,9 @@ public abstract class Player : MonoBehaviour{
     public virtual void SetInfo(TcpClient tcpClient, int index)
     {
         TcpClient = tcpClient;
-        this.index = index;
+        this.Index = index;
     }
 
-    public int SubjectiveCoord(int coord) => index == 0 ? coord : 6 - coord;
+    public int SubjectiveCoord(int coord) => Index == 0 ? coord : 6 - coord;
     public (int, int) SubjectiveCoords((int x, int y) space) => (SubjectiveCoord(space.x), SubjectiveCoord(space.y));
 }

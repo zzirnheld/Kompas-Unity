@@ -106,7 +106,6 @@ namespace KompasCore.Cards
         }
         #endregion
 
-        public Sprite detailedSprite;
         public Sprite simpleSprite;
 
         protected void SetInfo(SerializableCard card)
@@ -123,10 +122,7 @@ namespace KompasCore.Cards
             if (card.cardName != CardName)
             {
                 //Debug.Log($"Names are different, changing card pics to match name {card.cardName}");
-                detailedSprite = Resources.Load<Sprite>("Detailed Sprites/" + card.cardName);
                 simpleSprite = Resources.Load<Sprite>("Simple Sprites/" + card.cardName);
-                if (detailedSprite == null) detailedSprite = simpleSprite;
-                if (simpleSprite == null) simpleSprite = detailedSprite;
             }
             //else Debug.Log("Names match. Set Info not updating pics.");
 

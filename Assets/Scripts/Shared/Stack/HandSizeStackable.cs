@@ -1,0 +1,46 @@
+﻿using KompasCore.Cards;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace KompasCore.Effects
+{
+    public abstract class HandSizeStackable : IStackable
+    {
+        public const int MaxHandSize = 7;
+
+        public abstract Player Controller { get; }
+
+        public abstract GameCard Source { get; }
+
+        public ListRestriction HandSizeListRestriction
+        {
+            get
+            {
+                var l = new ListRestriction()
+                {
+                    listRestrictions = new string[]
+                    {
+                        ListRestriction.MaxCanChoose, ListRestriction.MinCanChoose
+                    }
+                };
+                return l;
+            }
+        }
+
+        public CardRestriction HandSizeCardRestriction 
+        {
+            get {
+                var c = new CardRestriction()
+                {
+                    cardRestrictions = new string[]
+                    {
+                    CardRestriction.Friendly, CardRestriction.Hand
+                    }
+                };
+                c.Initialize(Source, Controller, eff: default);
+                return c;
+            }
+        }
+    }
+}

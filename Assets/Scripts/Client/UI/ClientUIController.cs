@@ -230,6 +230,8 @@ namespace KompasClient.UI
 
         public void ShowOptionalTrigger(Trigger t, bool showX, int x)
         {
+            if(t.Effect.Controller.Friendly)
+
             if (OptionalEffAutoResponse == OptionalEffYes) RespondToTrigger(true);
             else if (OptionalEffAutoResponse == OptionalEffNo) RespondToTrigger(false);
             else

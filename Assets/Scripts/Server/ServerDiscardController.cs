@@ -10,7 +10,7 @@ namespace KompasServer.GameCore
     {
         public ServerGame ServerGame;
 
-        public ServerNotifier ServerNotifier => ServerGame.ServerPlayers[Owner.index].ServerNotifier;
+        public ServerNotifier ServerNotifier => ServerGame.ServerPlayers[Owner.Index].ServerNotifier;
         public ServerEffectsController EffectsController => ServerGame.EffectsController;
 
         public override bool AddToDiscard(GameCard card, IStackable stackSrc = null)

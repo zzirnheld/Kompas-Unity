@@ -17,6 +17,7 @@ namespace KompasServer.GameCore
         public ServerAwaiter serverAwaiter;
 
         public override Player Enemy => ServerEnemy;
+        public override bool Friendly => false;
 
         public override int Pips
         {
@@ -90,7 +91,7 @@ namespace KompasServer.GameCore
         /// <param name="controller"></param>
         public async Task TryActivateEffect(ServerEffect effect)
         {
-            Debug.Log($"Player {index} trying to activate effect of {effect?.Source?.CardName}");
+            Debug.Log($"Player {Index} trying to activate effect of {effect?.Source?.CardName}");
             if (effect.CanBeActivatedBy(this))
             {
                 serverGame.EffectsController.PushToStack(effect, this, new ActivationContext());

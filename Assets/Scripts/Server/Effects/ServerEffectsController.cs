@@ -23,11 +23,10 @@ namespace KompasServer.Effects
         }
 
         private readonly object triggerStackLock = new object();
-        private readonly object responseLock = new object();
 
         public ServerGame ServerGame;
 
-        private readonly ServerEffectStack stack = new ServerEffectStack();
+        private readonly EffectStack<IServerStackable> stack = new EffectStack<IServerStackable>();
         public IEnumerable<IServerStackable> StackEntries => stack.StackEntries;
 
         //queue of triggers triggered throughout the resolution of the effect, to be ordered after the effect resolves
@@ -83,7 +82,7 @@ namespace KompasServer.Effects
                     sb.AppendLine(string.Join(", ", se.coords.Select(c => $"({c.x}, {c.y})")));
                 }
                 sb.AppendLine($"X: {se.X}");
-                sb.AppendLine($"Controller: {se.Controller.index}");
+                sb.AppendLine($"Controller: {se.Controller.Index}");
             }
             return sb.ToString();
         }

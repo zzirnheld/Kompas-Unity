@@ -27,10 +27,10 @@ namespace KompasServer.Networking
         {
             if (serverGame.uiCtrl.DebugMode)
             {
-                UnityEngine.Debug.LogWarning($"Debug setting player {player.index} pips to {numPips}");
+                UnityEngine.Debug.LogWarning($"Debug setting player {player.Index} pips to {numPips}");
                 player.Pips = numPips;
             }
-            else UnityEngine.Debug.LogError($"Tried to debug set pips of player {player.index} to {numPips} while NOT in debug mode!");
+            else UnityEngine.Debug.LogError($"Tried to debug set pips of player {player.Index} to {numPips} while NOT in debug mode!");
             return Task.CompletedTask;
         }
     }

@@ -1,4 +1,5 @@
-﻿using KompasClient.GameCore;
+﻿using KompasClient.Effects;
+using KompasClient.GameCore;
 using KompasCore.Networking;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,19 +9,18 @@ namespace KompasCore.Networking
 {
     public class HandSizeToStackPacket : Packet
     {
-        public bool friendly;
-        public string FriendlyString => friendly ? "Friendly" : "Enemy"; 
+        public int controllerIndex;
 
         public HandSizeToStackPacket() : base(HandSizeToStack) { }
 
-        public HandSizeToStackPacket(bool friendly) : this()
+        public HandSizeToStackPacket(int controllerIndex) : this()
         {
-            this.friendly = friendly;
+            this.controllerIndex = controllerIndex;
         }
 
-        public override Packet Copy() => new HandSizeToStackPacket(friendly);
+        public override Packet Copy() => new HandSizeToStackPacket(controllerIndex);
 
-        public override Packet GetInversion(bool known = true) => new HandSizeToStackPacket(!friendly);
+        public override Packet GetInversion(bool known = true) => new HandSizeToStackPacket(1 - controllerIndex);
     }
 }
 
@@ -30,7 +30,8 @@ namespace KompasClient.Networking
     {
         public void Execute(ClientGame clientGame)
         {
-            clientGame.clientUICtrl.clientStackUICtrl.Add(null, FriendlyString, "Hand Size");
+            var controller = clientGame.ClientPlayers[controllerIndex];
+            clientGame.clientEffectsCtrl.Add(new ClientHandSizeStackable(controller));
         }
     }
 }

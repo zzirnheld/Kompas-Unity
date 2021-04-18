@@ -26,7 +26,6 @@ namespace KompasClient.Networking
 {
     public class RemoveStackEntryClientPacket : RemoveStackEntryPacket, IClientOrderPacket
     {
-        public void Execute(ClientGame clientGame)
-            => clientGame.clientUICtrl.clientStackUICtrl.Remove(indexToRemove);
+        public void Execute(ClientGame clientGame) => clientGame.clientEffectsCtrl.Remove(indexToRemove);
     }
 }

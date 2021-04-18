@@ -43,6 +43,7 @@ namespace KompasClient.GameCore
         public ClientNotifier clientNotifier;
         public ClientUIController clientUICtrl;
         public ClientUISettingsController clientUISettingsCtrl;
+        public ClientEffectsController clientEffectsCtrl;
 
         //turn players?
         public bool FriendlyTurn => TurnPlayerIndex == 0;
@@ -176,7 +177,7 @@ namespace KompasClient.GameCore
         public void EffectActivated(ClientEffect eff)
         {
             stackEmpty = false;
-            clientUICtrl.SetCurrState($"{(eff.Controller.index == 0 ? "Friendly" : "Enemy")} {eff.Source.CardName} Effect Activated",
+            clientUICtrl.SetCurrState($"{(eff.Controller.Friendly ? "Friendly" : "Enemy")} {eff.Source.CardName} Effect Activated",
                 eff.blurb);
         }
 
