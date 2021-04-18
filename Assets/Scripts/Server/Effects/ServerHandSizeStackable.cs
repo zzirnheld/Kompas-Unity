@@ -7,30 +7,12 @@ using UnityEngine;
 
 namespace KompasServer.Effects
 {
-    public class ServerHandSizeStackable : IServerStackable
+    public class ServerHandSizeStackable : HandSizeStackable, IServerStackable
     {
-        public const int MaxHandSize = 7;
-
         public ServerPlayer ServerController { get; }
-        public Player Controller => ServerController;
+        public override Player Controller => ServerController;
 
-        public GameCard Source => null;
-
-        public ListRestriction HandSizeListRestriction => new ListRestriction()
-        {
-            listRestrictions = new string[]
-            {
-                ListRestriction.MaxCanChoose, ListRestriction.MinCanChoose
-            }
-        };
-
-        public static readonly CardRestriction cardRestriction = new CardRestriction()
-        {
-            cardRestrictions = new string[]
-            {
-                CardRestriction.Friendly, CardRestriction.Hand
-            }
-        };
+        public override GameCard Source => null;
 
         private readonly ServerGame serverGame;
 
@@ -42,17 +24,16 @@ namespace KompasServer.Effects
             this.serverGame = serverGame;
 
             //tell the players this is here now
-            ServerController.ServerNotifier.NotifyHandSizeToStack(true);
+            ServerController.ServerNotifier.NotifyHandSizeToStack();
         }
         public async Task StartResolution(ActivationContext context) => await RequestTargets();
 
         private async Task RequestTargets()
         {
             awaitingChoices = true;
-            cardRestriction.Initialize(Source, Controller, null);
 
             int[] cardIds = serverGame.Cards
-                .Where(c => cardRestriction.Evaluate(c))
+                .Where(c => HandSizeCardRestriction.Evaluate(c))
                 .Select(c => c.ID)
                 .ToArray();
 
@@ -87,9 +68,9 @@ namespace KompasServer.Effects
                 .ToArray();
 
             int count = cards.Count();
-            int correctCount = serverGame.Cards.Count(c => cardRestriction.Evaluate(c)) - MaxHandSize;
+            int correctCount = serverGame.Cards.Count(c => HandSizeCardRestriction.Evaluate(c)) - MaxHandSize;
 
-            if (count != correctCount || cards.Any(c => !cardRestriction.Evaluate(c))) return false;
+            if (count != correctCount || cards.Any(c => !HandSizeCardRestriction.Evaluate(c))) return false;
 
             foreach (var card in cards) card.Reshuffle();
             awaitingChoices = false;

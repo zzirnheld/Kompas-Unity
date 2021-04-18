@@ -26,7 +26,7 @@ namespace KompasServer.Effects
         /// </summary>
         public void Declare()
         {
-            ServerController.ServerNotifier.NotifyAttackStarted(attacker, defender);
+            ServerController.ServerNotifier.NotifyAttackStarted(attacker, defender, controller);
 
             var attackerContext = new ActivationContext(card: attacker, stackable: this, triggerer: Controller);
             var defenderContext = new ActivationContext(card: defender, stackable: this, triggerer: Controller);

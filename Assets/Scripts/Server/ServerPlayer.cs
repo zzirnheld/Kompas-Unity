@@ -17,6 +17,7 @@ namespace KompasServer.GameCore
         public ServerAwaiter serverAwaiter;
 
         public override Player Enemy => ServerEnemy;
+        public override bool Friendly => false;
 
         public override int Pips
         {

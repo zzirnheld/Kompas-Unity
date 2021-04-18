@@ -52,6 +52,8 @@ namespace KompasClient.UI
         public const int OptionalEffYes = 1;
         public const int OptionalEffNo = 2;
         public int OptionalEffAutoResponse => autoOptionalEff.value;
+
+        private Trigger currOptionalTrigger;
         //confirm trigger
         public GameObject ConfirmTriggerView;
         public TMP_Text TriggerBlurbText;
@@ -66,6 +68,7 @@ namespace KompasClient.UI
         public GameObject DeckSelectUIParent;
         public GameObject ConnectToServerParent;
         public GameObject DeckSelectorParent;
+        public GameObject DeckSelectConfirmParent;
         public GameObject DeckWaitingParent;
         public GameObject DeckAcceptedParent;
         public GameObject ConnectedWaitingParent;
@@ -159,11 +162,13 @@ namespace KompasClient.UI
             DeckWaitingParent.SetActive(false);
             DeckSelectUIParent.SetActive(true);
             DeckSelectorParent.SetActive(true);
+            DeckSelectConfirmParent.SetActive(true);
         }
 
         public void AwaitDeckConfirm()
         {
             DeckSelectorParent.SetActive(false);
+            DeckSelectConfirmParent.SetActive(false);
             DeckAcceptedParent.SetActive(false);
             DeckWaitingParent.SetActive(true);
         }
@@ -171,6 +176,7 @@ namespace KompasClient.UI
         public void ShowDeckAcceptedUI()
         {
             DeckSelectorParent.SetActive(false);
+            DeckSelectConfirmParent.SetActive(false);
             DeckWaitingParent.SetActive(false);
             DeckAcceptedParent.SetActive(true);
         }
@@ -230,20 +236,36 @@ namespace KompasClient.UI
 
         public void ShowOptionalTrigger(Trigger t, bool showX, int x)
         {
-            if (OptionalEffAutoResponse == OptionalEffYes) RespondToTrigger(true);
-            else if (OptionalEffAutoResponse == OptionalEffNo) RespondToTrigger(false);
+            var blurb = showX ? $"{t.Blurb} (X = {x})" : t.Blurb;
+
+            if (t.Effect.Controller.Friendly)
+            {
+                if (OptionalEffAutoResponse == OptionalEffYes) RespondToTrigger(true);
+                else if (OptionalEffAutoResponse == OptionalEffNo) RespondToTrigger(false);
+                else
+                {
+                    //Debug.Log($"Showing eff response parent");
+                    TriggerBlurbText.text = blurb;
+                    ConfirmTriggerView.SetActive(true);
+                    SetCurrState("Choose optional trigger");
+                    currOptionalTrigger = t;
+                }
+            }
             else
             {
-                Debug.Log($"Showing eff response parent");
-                TriggerBlurbText.text = showX ? $"{t.Blurb} (X = {x})" : t.Blurb;
-                ConfirmTriggerView.SetActive(true);
+                SetCurrState("Awaiting other player choice", secondaryState: blurb);
             }
         }
 
+        public void ShowOptionalTriggerSource() => currOptionalTrigger?.Source.cardCtrl.ShowPrimaryOfStackable(true);
+        public void HideOptionalTriggerSource() => currOptionalTrigger?.Source.cardCtrl.ShowPrimaryOfStackable(false);
+
         public void RespondToTrigger(bool answer)
         {
+            HideOptionalTriggerSource();
             clientGame.clientNotifier.RequestTriggerReponse(answer);
             ConfirmTriggerView.SetActive(false);
+            currOptionalTrigger = default;
         }
 
         public void ShowEffectOptions(string choiceBlurb, string[] optionBlurbs, bool showX, int x)

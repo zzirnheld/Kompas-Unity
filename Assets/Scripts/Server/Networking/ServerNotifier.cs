@@ -114,7 +114,7 @@ namespace KompasServer.Networking
         public void GetHandSizeChoices(int[] cardIds, string listRestrictionJson)
             => SendPacket(new GetHandSizeChoicesOrderPacket(cardIds, listRestrictionJson));
 
-        public void NotifyHandSizeToStack(bool friendly) => SendToBothInverting(new HandSizeToStackPacket(friendly));
+        public void NotifyHandSizeToStack() => SendToBothInverting(new HandSizeToStackPacket(0));
         #endregion card location
 
         #region card stats
@@ -148,7 +148,8 @@ namespace KompasServer.Networking
             => SendPacket(new GetSpaceTargetPacket(cardName, targetBlurb, spaces));
         #endregion request targets
 
-        public void NotifyAttackStarted(GameCard atk, GameCard def) => SendToBoth(new AttackStartedPacket(atk.ID, def.ID));
+        public void NotifyAttackStarted(GameCard atk, GameCard def, Player initiator) 
+            => SendToBoth(new AttackStartedPacket(atk.ID, def.ID, initiator.index));
 
         #region other effect stuff
         public void ChooseEffectOption(string cardName, string choiceBlurb, string[] optionBlurbs, bool hasDefault, bool showX, int x) 
@@ -196,7 +197,7 @@ namespace KompasServer.Networking
         public void DiscardSimples() => SendToBoth(new DiscardSimplesPacket());
 
         public void AskForTrigger(ServerTrigger t, int x, bool showX) 
-            => SendPacket(new OptionalTriggerPacket(t.serverEffect.Source.ID, t.serverEffect.EffectIndex, x, showX));
+            => SendToBothInverting(new OptionalTriggerPacket(t.serverEffect.Source.ID, t.serverEffect.EffectIndex, x, showX));
 
         public void GetTriggerOrder(IEnumerable<ServerTrigger> triggers)
         {

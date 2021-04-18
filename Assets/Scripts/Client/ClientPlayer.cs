@@ -6,6 +6,7 @@
         public ClientGame clientGame;
 
         public override Player Enemy => ClientEnemy;
+        public override bool Friendly => index == 0;
 
         public override int Pips 
         { 

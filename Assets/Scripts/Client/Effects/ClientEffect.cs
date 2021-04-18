@@ -7,7 +7,7 @@ using KompasCore.GameCore;
 namespace KompasClient.Effects
 {
     [System.Serializable]
-    public class ClientEffect : Effect
+    public class ClientEffect : Effect, IClientStackable
     {
         public ClientPlayer ClientController;
         public override Player Controller
@@ -23,6 +23,13 @@ namespace KompasClient.Effects
         public override Subeffect[] Subeffects => DummySubeffects;
         public override Trigger Trigger => ClientTrigger;
 
+        public Sprite PrimarySprite => Source.simpleSprite;
+        public CardController PrimaryCardController => Source.cardCtrl;
+
+        public Sprite SecondarySprite => default;
+        public CardController SecondaryCardController => default;
+
+        public string StackableBlurb => blurb;
 
         public void SetInfo (GameCard thisCard, ClientGame clientGame, int effectIndex, ClientPlayer owner)
         {
@@ -44,14 +51,15 @@ namespace KompasClient.Effects
             card.cardCtrl.ShowCurrentTarget(false);
         }
 
-        public void Activated()
+        //TODO eventually make client aware of activation contexts
+        public void Activated(ActivationContext context = default)
         {
             TimesUsedThisTurn++;
             TimesUsedThisRound++;
             TimesUsedThisStack++;
 
             ClientGame.EffectActivated(this);
-            ClientGame.clientUICtrl.clientStackUICtrl.Add(Source.simpleSprite, Source.CardName, blurb);
+            ClientGame.clientEffectsCtrl.Add(this, context);
         }
 
         public void StartResolution(ActivationContext context)

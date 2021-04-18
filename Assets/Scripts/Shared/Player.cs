@@ -24,7 +24,8 @@ public abstract class Player : MonoBehaviour{
     }
 
     //other game data
-    public bool friendly;
+    public abstract bool Friendly { get; }
+    //this is not a property so it can be assigned in the inspector for client players
     public int index;
 
     //friendly

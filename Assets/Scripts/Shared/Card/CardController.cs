@@ -47,6 +47,8 @@ namespace KompasCore.Cards
         public GameObject currentTargetObject;
         public GameObject validTargetObject;
         public GameObject uniqueCopyObject;
+        public GameObject primaryStackableObject;
+        public GameObject secondaryStackableObject;
 
         public OscillatingController attackOscillator;
         public OscillatingController effectOscillator;
@@ -301,5 +303,8 @@ namespace KompasCore.Cards
         }
 
         public void ShowUniqueCopy(bool copy = true) => uniqueCopyObject.SetActive(copy);
+
+        public void ShowPrimaryOfStackable(bool show = true) => primaryStackableObject.SetActive(show);
+        public void ShowSecondaryOfStackable(bool show = true) => secondaryStackableObject.SetActive(show);
     }
 }

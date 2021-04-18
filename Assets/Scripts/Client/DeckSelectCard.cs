@@ -19,7 +19,6 @@ namespace KompasClient.UI
 
         protected void SetImage(string cardFileName)
         {
-            detailedSprite = Resources.Load<Sprite>("Detailed Sprites/" + cardFileName);
             simpleSprite = Resources.Load<Sprite>("Simple Sprites/" + cardFileName);
             Image.sprite = simpleSprite;
         }
