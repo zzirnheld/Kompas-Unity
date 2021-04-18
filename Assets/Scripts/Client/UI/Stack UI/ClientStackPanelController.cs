@@ -12,17 +12,17 @@ namespace KompasClient.UI
 
         private readonly List<ClientStackPanelElementController> stack = new List<ClientStackPanelElementController>();
 
-        private void Add(Sprite image, string cardName, string blurb)
+        public void Add(Sprite primarySprite, Sprite secondarySprite, string blurb)
         {
             if (stack.Count == 0) gameObject.SetActive(true);
 
             var element = Instantiate(stackPanelElementPrefab, parent: contentParent)
                 .GetComponent<ClientStackPanelElementController>();
-            element.Initialize(image, cardName, blurb);
+            element.Initialize(primarySprite, secondarySprite, blurb);
             stack.Add(element);
         }
 
-        private void Remove(int index)
+        public void Remove(int index)
         {
             if (stack.Count > index)
             {

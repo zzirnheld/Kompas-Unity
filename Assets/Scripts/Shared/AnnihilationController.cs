@@ -32,7 +32,7 @@ namespace KompasCore.GameCore
 
         public void SpreadOutCards()
         {
-            float spreadOutMultipler = 2f * (owner.Index == 0 ? -1f : 1f);
+            float spreadOutMultipler = 2f * (owner.index == 0 ? -1f : 1f);
             int max = Cards.Count - 1;
 
             //iterate through children, set the z coord

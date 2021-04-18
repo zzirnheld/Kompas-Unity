@@ -79,7 +79,7 @@ namespace KompasServer.Networking
                 return;
             }
 
-            if(!DontLogThesePackets.Contains(packetInfo.command)) Debug.Log($"Processing {packetInfo.json} from {Player.Index}");
+            if(!DontLogThesePackets.Contains(packetInfo.command)) Debug.Log($"Processing {packetInfo.json} from {Player.index}");
 
             var packet = FromJson(packetInfo.command, packetInfo.json);
             await packet.Execute(sGame, Player, serverAwaiter);

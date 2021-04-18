@@ -8,16 +8,18 @@ namespace KompasClient.Effects
     {
         public ClientStackPanelController clientStackPanelCtrl;
 
-        private readonly EffectStack<IStackable> stack = new EffectStack<IStackable>();
+        private readonly EffectStack<IClientStackable> stack = new EffectStack<IClientStackable>();
 
-        public void Add(IStackable stackable, ActivationContext context = default)
+        public void Add(IClientStackable stackable, ActivationContext context = default)
         {
             stack.Push((stackable, context));
+            clientStackPanelCtrl.Add(stackable.PrimarySprite, stackable.SecondarySprite, stackable.StackableBlurb);
         }
 
         public void Remove(int index)
         {
             stack.Cancel(index);
+            clientStackPanelCtrl.Remove(index);
         }
     }
 }

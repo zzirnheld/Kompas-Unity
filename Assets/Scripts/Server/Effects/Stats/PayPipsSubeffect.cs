@@ -7,7 +7,7 @@ namespace KompasServer.Effects
     {
         public override bool IsImpossible() 
         {
-            Debug.Log($"Checking if player index {Player.Index} can afford {Count} with {Player.Pips} pips");
+            Debug.Log($"Checking if player index {Player.index} can afford {Count} with {Player.Pips} pips");
             return Player.Pips < Count;
         }
 

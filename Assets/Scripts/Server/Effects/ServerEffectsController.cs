@@ -82,7 +82,7 @@ namespace KompasServer.Effects
                     sb.AppendLine(string.Join(", ", se.coords.Select(c => $"({c.x}, {c.y})")));
                 }
                 sb.AppendLine($"X: {se.X}");
-                sb.AppendLine($"Controller: {se.Controller.Index}");
+                sb.AppendLine($"Controller: {se.Controller.index}");
             }
             return sb.ToString();
         }

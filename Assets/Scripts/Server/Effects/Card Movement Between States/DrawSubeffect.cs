@@ -6,7 +6,7 @@ namespace KompasServer.Effects
     {
         public override Task<ResolutionInfo> Resolve()
         {
-            var drawn = ServerGame.Draw(Player.Index);
+            var drawn = ServerGame.Draw(Player.index);
             if (drawn == null) return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
             else return Task.FromResult(ResolutionInfo.Next);
         }

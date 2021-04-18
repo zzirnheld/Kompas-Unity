@@ -7823,6 +7823,7 @@ GameObject:
   - component: {fileID: 492080563}
   - component: {fileID: 492080564}
   - component: {fileID: 492080565}
+  - component: {fileID: 492080566}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -7885,6 +7886,7 @@ MonoBehaviour:
   clientNotifier: {fileID: 2001968207}
   clientUICtrl: {fileID: 1615817260}
   clientUISettingsCtrl: {fileID: 1411603331}
+  clientEffectsCtrl: {fileID: 492080566}
   searchCtrl: {fileID: 492080565}
   targetsWanted: 0
   canZoom: 0
@@ -7931,6 +7933,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clientGame: {fileID: 492080563}
   clientSearchUICtrl: {fileID: 588346725}
+--- !u!114 &492080566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492080561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66ac08a0888c93b47bd093a5df400560, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clientStackPanelCtrl: {fileID: 634618064}
 --- !u!1 &494019029
 GameObject:
   m_ObjectHideFlags: 0
@@ -23340,6 +23355,7 @@ MonoBehaviour:
   DeckSelectUIParent: {fileID: 2134909798}
   ConnectToServerParent: {fileID: 867960088}
   DeckSelectorParent: {fileID: 72637579}
+  DeckSelectConfirmParent: {fileID: 118102910}
   DeckWaitingParent: {fileID: 2061236177}
   DeckAcceptedParent: {fileID: 259802650}
   ConnectedWaitingParent: {fileID: 410188369}
@@ -24904,7 +24920,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a321c3cd7ec714449918746a18686773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  friendly: 1
   index: 0
   deckCtrl: {fileID: 2534840227050861151}
   discardCtrl: {fileID: 540378492}
@@ -25307,7 +25322,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a321c3cd7ec714449918746a18686773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  friendly: 0
   index: 1
   deckCtrl: {fileID: 733957028}
   discardCtrl: {fileID: 116530641}

@@ -157,10 +157,10 @@ namespace KompasServer.GameCore
                 player.ServerNotifier.NotifyAddToDeck(card, wasKnown: false);
             }
 
-            Debug.Log($"Setting avatar for player {player.Index}");
+            Debug.Log($"Setting avatar for player {player.index}");
             player.Avatar = avatar;
             //avatar.Play(player.index * 6, player.index * 6, player);
-            Debug.Log($"Avatar successfully played? {avatar.Play(player.Index * 6, player.Index * 6, player)}");
+            Debug.Log($"Avatar successfully played? {avatar.Play(player.index * 6, player.index * 6, player)}");
             //if both players have decks now, then start the game
             lock (CheckAvatarsLock)
             {
@@ -188,7 +188,7 @@ namespace KompasServer.GameCore
                 p.Avatar.SetN(p.Avatar.N - AvatarNPenalty);
                 p.Avatar.SetE(p.Avatar.E + AvatarEBonus);
                 p.Avatar.SetW(p.Avatar.W - AvatarWPenalty);
-                DrawX(p.Index, 5);
+                DrawX(p.index, 5);
             }
 
             await TurnStartOperations(notFirstTurn: false);
@@ -327,7 +327,7 @@ namespace KompasServer.GameCore
                 return attacker != null && defender != null;
             }
 
-            Debug.Log($"Checking validity of attack of {attacker.CardName} on {defender} by {instigator.Index}");
+            Debug.Log($"Checking validity of attack of {attacker.CardName} on {defender} by {instigator.index}");
             return attacker.AttackRestriction.Evaluate(defender);
         }
         #endregion

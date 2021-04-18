@@ -21,7 +21,7 @@ namespace KompasServer.Networking
             if (serverGame.uiCtrl.DebugMode)
             {
                 UnityEngine.Debug.LogWarning($"Debug drawing");
-                serverGame.Draw(player.Index);
+                serverGame.Draw(player.index);
             }
             else UnityEngine.Debug.LogError($"Tried to debug draw while NOT in debug mode!");
             return Task.CompletedTask;

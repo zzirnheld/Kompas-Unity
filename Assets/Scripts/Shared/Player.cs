@@ -25,7 +25,8 @@ public abstract class Player : MonoBehaviour{
 
     //other game data
     public abstract bool Friendly { get; }
-    public int Index { get; private set; }
+    //this is not a property so it can be assigned in the inspector for client players
+    public int index;
 
     //friendly
     public DeckController deckCtrl;
@@ -48,9 +49,9 @@ public abstract class Player : MonoBehaviour{
     public virtual void SetInfo(TcpClient tcpClient, int index)
     {
         TcpClient = tcpClient;
-        this.Index = index;
+        this.index = index;
     }
 
-    public int SubjectiveCoord(int coord) => Index == 0 ? coord : 6 - coord;
+    public int SubjectiveCoord(int coord) => index == 0 ? coord : 6 - coord;
     public (int, int) SubjectiveCoords((int x, int y) space) => (SubjectiveCoord(space.x), SubjectiveCoord(space.y));
 }

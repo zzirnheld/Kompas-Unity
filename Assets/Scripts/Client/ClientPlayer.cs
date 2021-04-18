@@ -6,7 +6,7 @@
         public ClientGame clientGame;
 
         public override Player Enemy => ClientEnemy;
-        public override bool Friendly => Index == 0;
+        public override bool Friendly => index == 0;
 
         public override int Pips 
         { 
@@ -14,7 +14,7 @@
             set
             {
                 base.Pips = value;
-                if (Index == 0) clientGame.clientUICtrl.FriendlyPips = Pips; 
+                if (index == 0) clientGame.clientUICtrl.FriendlyPips = Pips; 
                 else clientGame.clientUICtrl.EnemyPips = Pips;
             }
         }

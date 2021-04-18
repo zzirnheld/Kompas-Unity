@@ -6,7 +6,7 @@ namespace KompasServer.Effects
     {
         public override Task<ResolutionInfo> Resolve()
         {
-            var drawn = ServerGame.DrawX(Player.Index, Count);
+            var drawn = ServerGame.DrawX(Player.index, Count);
             if (drawn.Count < Count) return Task.FromResult(ResolutionInfo.Impossible(CouldntDrawAllX));
             else return Task.FromResult(ResolutionInfo.Next);
         }
