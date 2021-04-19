@@ -161,6 +161,8 @@ namespace KompasCore.GameCore
 
         public int ShortestEmptyPath(GameCard src, (int x, int y) destination)
         {
+            if (Board[destination.x, destination.y] != null) return 50;
+
             int[,] dist = new int[7, 7];
             bool[,] seen = new bool[7, 7];
 
