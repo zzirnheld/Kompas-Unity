@@ -98,9 +98,9 @@ namespace KompasCore.GameCore
         /// <param name="src">The card to start looking from</param>
         /// <param name="x">The x coordinate you want a distance to</param>
         /// <param name="y">The y coordinate you want a distance to</param>
-        /// <param name="through">What all cards you go through must fit</param>
+        /// <param name="throughPredicate">What all cards you go through must fit</param>
         /// <returns></returns>
-        public int ShortestPath(GameCard src, int x, int y, CardRestriction through)
+        public int ShortestPath(GameCard src, int x, int y, Func<GameCard, bool> throughPredicate)
         {
             //record shortest distances to cards
             var dist = new Dictionary<GameCard, int>();
@@ -119,7 +119,7 @@ namespace KompasCore.GameCore
             {
                 //consider the next node's adjacent cards
                 var next = queue.Dequeue();
-                foreach (var card in next.AdjacentCards.Where(c => through.Evaluate(c)))
+                foreach (var card in next.AdjacentCards.Where(throughPredicate))
                 {
                     //if that adjacent card is never seen before, initialize its distance and add it to the structures
                     if (!seen.Contains(card))
@@ -142,6 +142,9 @@ namespace KompasCore.GameCore
             }
             return min;
         }
+
+        public int ShortestPath(GameCard source, int x, int y, CardRestriction restriction)
+            => ShortestPath(source, x, y, c => restriction.Evaluate(c));
 
         private IEnumerable<(int, int)> AdjacentEmptySpacesTo((int x, int y) space)
         {

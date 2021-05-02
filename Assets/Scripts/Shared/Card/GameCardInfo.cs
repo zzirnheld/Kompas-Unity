@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -41,6 +42,7 @@ namespace KompasCore.Cards
         bool SameColumn(IGameCardInfo card);
         bool WithinSpaces(int spaces, IGameCardInfo card);
         bool InCorner();
+        int ShortestPath(int x, int y, Func<GameCard, bool> throughPredicate);
     }
 
     /// <summary>
@@ -195,6 +197,9 @@ namespace KompasCore.Cards
                 || (yDiffCard == 0 && yDiffSpace == 0)
                 || (xDiffCard == yDiffCard && xDiffSpace == yDiffSpace);
         }
+
+        public int ShortestPath(int x, int y, Func<GameCard, bool> throughPredicate)
+            => Card.Game.boardCtrl.ShortestPath(Card, x, y, throughPredicate);
         #endregion distance/adjacency
     }
 }

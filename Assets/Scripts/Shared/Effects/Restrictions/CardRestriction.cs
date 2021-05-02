@@ -119,6 +119,7 @@ namespace KompasCore.Effects
         public const string SameColumnAsSource = "Same Column as Source";
         public const string DirectlyInFrontOfSource = "Directly In Front of Source";
         public const string InACorner = "In a Corner";
+        public const string ConnectedToSourceBy = "Connected to Source By";
 
         //misc
         public const string CanBePlayed = "Can Be Played";
@@ -150,6 +151,8 @@ namespace KompasCore.Effects
         private CardRestriction secondaryRestriction;
         public string secondaryRestrictionString = null;
 
+        public CardRestriction connectednessRestriction;
+
         public GameCard Source { get; private set; }
         public Player Controller { get; private set; }
         public Effect Effect { get; private set; }
@@ -180,7 +183,19 @@ namespace KompasCore.Effects
 
             if (xRestriction != null) xRestriction.Initialize(Source, Subeffect);
 
+            /*
+            if (cardRestrictions.Contains(ConnectedToSourceBy))
+            {
+                if (connectednessRestriction == null) Debug.LogError($"Couldn't load connectedness restriction");
+                else Debug.Log($"Connectedness restriction: {connectednessRestriction}");
+            }*/
+
             initialized = true;
+        }
+
+        public override string ToString()
+        {
+            return $"Card Restriction.\nRestrictions: {string.Join(", ", cardRestrictions)}";
         }
 
         /// <summary>
@@ -302,6 +317,7 @@ namespace KompasCore.Effects
                 case SameColumnAsSource: return potentialTarget.SameColumn(Source);
                 case DirectlyInFrontOfSource: return Source.CardDirectlyInFront(potentialTarget);
                 case InACorner:          return potentialTarget.InCorner();
+                case ConnectedToSourceBy: return potentialTarget.ShortestPath(Source.BoardX, Source.BoardY, connectednessRestriction.Evaluate) < 50; 
 
                 //misc
                 case CanBePlayed: return Subeffect.Game.ExistsEffectPlaySpace(Source.PlayRestriction, Effect);
