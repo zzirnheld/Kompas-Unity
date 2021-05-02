@@ -97,7 +97,7 @@ namespace KompasCore.Effects
                 case InPlay: return Card.Location == CardLocation.Field;
                 case DistinctSpace: return Card.Position != (x, y);
                 case IsCharacter: return Card.CardType == 'C';
-                case CanMoveEnoughSpaces: return Card.SpacesCanMove >= Card.DistanceTo(x, y);
+                case CanMoveEnoughSpaces: return Card.SpacesCanMove >= Card.Game.boardCtrl.ShortestEmptyPath(Card, (x, y));
                 case StandardSpellMoveRestiction: return Card.Game.ValidSpellSpaceFor(Card, x, y);
                 case NothingHappening: return Card.Game.NothingHappening;
                 case IsNotAvatar: return !Card.IsAvatar;

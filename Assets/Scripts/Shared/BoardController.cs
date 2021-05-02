@@ -143,6 +143,53 @@ namespace KompasCore.GameCore
             return min;
         }
 
+        private IEnumerable<(int, int)> AdjacentEmptySpacesTo((int x, int y) space)
+        {
+            var list = new List<(int, int)>();
+            for(int x = space.x - 1; x <= space.x + 1; x++)
+            {
+                for(int y = space.y - 1; y <= space.y + 1; y++)
+                {
+                    if (x == space.x && y == space.y) continue;
+                    else if (x < 0 || x >= 7 || y < 0 || y >= 7) continue;
+                    else if (Board[x, y] != null) continue;
+                    else list.Add((x, y));
+                }
+            }
+            return list;
+        }
+
+        public int ShortestEmptyPath(GameCard src, (int x, int y) destination)
+        {
+            if (Board[destination.x, destination.y] != null) return 50;
+
+            int[,] dist = new int[7, 7];
+            bool[,] seen = new bool[7, 7];
+
+            var queue = new Queue<(int x, int y)>();
+
+            queue.Enqueue(src.Position);
+            dist[src.Position.x, src.Position.y] = 0;
+            seen[src.Position.x, src.Position.y] = true;
+
+            while (queue.Any())
+            {
+                var next = queue.Dequeue();
+                foreach((int x, int y) s in AdjacentEmptySpacesTo(next))
+                {
+                    if(!seen[s.x, s.y])
+                    {
+                        seen[s.x, s.y] = true;
+                        queue.Enqueue(s);
+                        dist[s.x, s.y] = dist[next.x, next.y] + 1;
+                    }
+                    else if (dist[next.x, next.y] + 1 < dist[s.x, s.y]) dist[s.x, s.y] = dist[next.x, next.y] + 1;
+                }
+            }
+
+            return dist[destination.x, destination.y];
+        }
+
         public bool ExistsCardOnBoard(Func<GameCard, bool> predicate)
         {
             foreach (var c in Board)
