@@ -1,0 +1,40 @@
+{
+	"cardType":67,
+	"cardName":"Unwary Student",
+	"effText":"When turns start, activate all cards connected to me by Conductors.",
+    "effects":[
+		{
+			"activationRestriction":{
+				"activationRestrictionArray":[
+					"Max Times Per Round",
+					"Default"
+				]
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Friendly","Board","Adjacent to Coords"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"jumpTo":2
+				}
+			]	
+		}
+	],
+	"n":1,
+	"e":1,
+	"s":1,
+	"w":1,
+	"subtypeText":"Stupid Person and Conductor"
+}
