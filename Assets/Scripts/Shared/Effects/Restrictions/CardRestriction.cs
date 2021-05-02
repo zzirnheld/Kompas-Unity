@@ -182,7 +182,7 @@ namespace KompasCore.Effects
                 secondaryRestriction.Initialize(Subeffect);
             }
 
-            if (xRestriction != null) xRestriction.Initialize(Source, Subeffect);
+            xRestriction?.Initialize(Source, Subeffect);
 
             /*
             if (cardRestrictions.Contains(ConnectedToSourceBy))
@@ -190,6 +190,7 @@ namespace KompasCore.Effects
                 if (connectednessRestriction == null) Debug.LogError($"Couldn't load connectedness restriction");
                 else Debug.Log($"Connectedness restriction: {connectednessRestriction}");
             }*/
+            connectednessRestriction?.Initialize(source, controller, eff);
 
             initialized = true;
         }

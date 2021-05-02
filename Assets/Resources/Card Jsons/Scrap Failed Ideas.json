@@ -16,9 +16,9 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"for Cyclical Sacrifice to reshuffle",
+						"blurb":"for Scrap Failed Ideas to reshuffle",
 						"cardRestrictions":["Friendly","Discard","Subtypes Include"],
-						"subtypesInclude":["Cultist"]
+						"subtypesInclude":["Conductor"]
 					}
 				},
 				{
