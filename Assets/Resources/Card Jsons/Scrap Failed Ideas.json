@@ -1,0 +1,42 @@
+{
+	"cardType":83,
+	"cardName":"Scrap Failed Ideas",
+	"effText":"Reshuffle X friendly discarded Conductors. Draw X.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"for Cyclical Sacrifice to reshuffle",
+						"cardRestrictions":["Friendly","Discard","Subtypes Include"],
+						"subtypesInclude":["Cultist"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
+					"canDecline":true,
+					"jumpTo":0
+				},
+				{
+					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				}
+			]	
+		}
+	],
+	"c":1,
+	"spellType":"Simple",
+	"subtypeText":"Conductor"
+}

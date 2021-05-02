@@ -120,6 +120,7 @@ namespace KompasCore.Effects
         public const string DirectlyInFrontOfSource = "Directly In Front of Source";
         public const string InACorner = "In a Corner";
         public const string ConnectedToSourceBy = "Connected to Source By";
+        public const string ConnectedToTargetBy = "Connected to Target By";
 
         //misc
         public const string CanBePlayed = "Can Be Played";
@@ -317,7 +318,10 @@ namespace KompasCore.Effects
                 case SameColumnAsSource: return potentialTarget.SameColumn(Source);
                 case DirectlyInFrontOfSource: return Source.CardDirectlyInFront(potentialTarget);
                 case InACorner:          return potentialTarget.InCorner();
-                case ConnectedToSourceBy: return potentialTarget.ShortestPath(Source.BoardX, Source.BoardY, connectednessRestriction.Evaluate) < 50; 
+                case ConnectedToSourceBy: 
+                    return potentialTarget.ShortestPath(Source.BoardX, Source.BoardY, connectednessRestriction.Evaluate) < 50; 
+                case ConnectedToTargetBy: 
+                    return potentialTarget.ShortestPath(Subeffect.Target.BoardX, Subeffect.Target.BoardY, connectednessRestriction.Evaluate) < 50; 
 
                 //misc
                 case CanBePlayed: return Subeffect.Game.ExistsEffectPlaySpace(Source.PlayRestriction, Effect);
