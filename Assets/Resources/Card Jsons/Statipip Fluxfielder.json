@@ -21,6 +21,13 @@
 			},
 			"subeffects":[
 				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
+					"activate":false
+				},
+				{
 					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
 					"xModifier":1
 				}
