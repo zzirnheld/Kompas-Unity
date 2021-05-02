@@ -1,0 +1,55 @@
+{
+	"cardType":83,
+	"cardName":"Torzal Coil",
+	"effText":"Charge X: Give an adjacent character -X E.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Activate",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","This Card Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Connected to Source By"],
+						"connectednessRestriction":
+						{
+							"cardRestrictions":["Subtypes Include","Board"],
+							"subtypesInclude":["Conductor"]
+						}
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringStackableSourceSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+				},
+                {
+                    "$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+                    "whatToCount":"Distance to Coords Through",
+                    "throughRestriction":{
+                        "cardRestrictions":["Subtypes Include","Is Character","Board"],
+                        "subtypesInclude":["Conductor"]
+                    },
+                    "xMultiplier":1
+                },
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Board","Is Character","Adjacent to Source","Distinct Name from Source"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMult":-1
+				}
+			]
+		}
+	],
+	"c":1,
+	"spellType":"Enchant",
+	"subtypeText":"Painful Conductor"
+}

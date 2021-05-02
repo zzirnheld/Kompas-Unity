@@ -1,0 +1,43 @@
+{
+	"cardType":83,
+	"cardName":"Relay",
+	"effText":"Charge: Draw 1, then discard 1.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Activate",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","This Card Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Connected to Source By"],
+						"connectednessRestriction":
+						{
+							"cardRestrictions":["Subtypes Include","Board"],
+							"subtypesInclude":["Conductor"]
+						}
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Relay discard",
+						"cardRestrictions":["Friendly","Hand"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"c":1,
+	"spellType":"Enchant",
+	"subtypeText":"Conductor"
+}

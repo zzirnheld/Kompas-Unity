@@ -1,0 +1,33 @@
+{
+	"cardType":83,
+	"cardName":"Statipip Fluxfielder",
+	"effText":"Charge: Gain a pip.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Activate",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","This Card Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Connected to Source By"],
+						"connectednessRestriction":
+						{
+							"cardRestrictions":["Subtypes Include","Board"],
+							"subtypesInclude":["Conductor"]
+						}
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier":1
+				}
+			]
+		}
+	],
+	"c":3,
+	"spellType":"Enchant",
+	"subtypeText":"Conductor"
+}
