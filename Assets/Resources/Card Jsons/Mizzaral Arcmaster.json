@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Mizzaral Arcmaster",
-	"effText":"When turns start, activate all cards connected to me by Conductors.",
+	"effText":"Once each round, you can activate all cards connected to me by Conductors.",
     "effects":[
 		{
 			"activationRestriction":{

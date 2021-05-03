@@ -31,7 +31,8 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Board","Is Character","Adjacent to Source","Distinct Name from Source"]
+						"cardRestrictions":["Board","Adjacent to Source","Distinct Name from Source","Subtypes Include"],
+                        "subtypesInclude":["Conductor"]
 					}
 				},
 				{

@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Vitioshock Therapy",
-	"effText":"Charge X: Give an adjacent character -X E.",
+	"effText":"Charge X: Give an adjacent character +X E.",
 	"effects":[
 		{
 			"triggerData":
@@ -56,7 +56,7 @@
 			]
 		}
 	],
-	"c":1,
+	"c":2,
 	"spellType":"Enchant",
 	"subtypeText":"Painful Chargeable Conductor"
 }
