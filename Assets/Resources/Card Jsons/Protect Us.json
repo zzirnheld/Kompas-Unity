@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Protect Us",
-	"effText":"Set X to the number of friendly Supplicants. Give all friendly Supplicants +XE. Give all friendly Negated Supplicants +XW.",
+	"effText":"Set X to the number of friendly Supplicants. Give all friendly Supplicants +X E. Give all friendly Negated Supplicants +X W.",
 	"effects":[
 		{
 			"triggerData":

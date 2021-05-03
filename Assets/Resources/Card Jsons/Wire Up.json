@@ -1,0 +1,52 @@
+{
+	"cardType":83,
+	"cardName":"Wire Up",
+	"effText":"Deck->play a Conductor distinct from all friendly cards, to a space connected to your Avatar by Conductors.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose":1,
+					"cardRestriction":
+					{
+						"blurb":"Conductor to wire up",
+						"cardRestrictions":["Friendly","Deck","Effect Controller can Afford Cost","Subtypes Include"],
+						"subtypesInclude":["Conductor"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where to wire up Conductor",
+						"spaceRestrictions":["Can Play Target to This Space","Connected to Avatar by"],
+                        "connectednessRestriction":
+						{
+							"cardRestrictions":["Subtypes Include","Board"],
+							"subtypesInclude":["Conductor"]
+						}
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+	"c":1,
+    "fast":true,
+	"spellType":"Simple",
+	"subtypeText":"Conductor"
+}

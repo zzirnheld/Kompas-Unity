@@ -1,7 +1,7 @@
 {
 	"cardType":67,
-	"cardName":"Statipip Fluxfielder",
-	"effText":"Charge X: Gain a pip and give me +X E.",
+	"cardName":"Electrocreative",
+	"effText":"Charge X: Draw 1 and give me +X E.",
 	"effects":[
 		{
 			"triggerData":
@@ -21,8 +21,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xModifier":1
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				},
                 {
                     "$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",

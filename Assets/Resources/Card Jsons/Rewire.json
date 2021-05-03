@@ -1,0 +1,53 @@
+{
+	"cardType":83,
+	"cardName":"Rewire",
+	"effText":"Move any number of Conductors, each to a space connected to your Avatar by Conductors.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose":1,
+					"cardRestriction":
+					{
+						"blurb":"Conductor to rewire",
+						"cardRestrictions":["Friendly","Deck","Subtypes Include","Not Already Target"],
+						"subtypesInclude":["Conductor"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where to rewire Conductor",
+						"spaceRestrictions":["Can Move Target to This Space","Connected to Avatar by"],
+                        "connectednessRestriction":
+						{
+							"cardRestrictions":["Subtypes Include","Board"],
+							"subtypesInclude":["Conductor"]
+						}
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
+					"canDecline":true,
+					"jumpTo":0
+				}
+			]	
+		}
+	],
+	"c":2,
+    "fast":true,
+	"spellType":"Simple",
+	"subtypeText":"Conductor"
+}

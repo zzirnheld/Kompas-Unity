@@ -10,6 +10,7 @@ namespace KompasServer.Effects
         public const string CardsFittingRestriction = "Cards Fitting Restriction";
         public const string EffectUsesThisTurn = "Effect Uses This Turn";
         public const string MaxStatAmongRestriction = "Max Stat Among Restriction";
+        public const string NumberOfTargets = "Number of Targets";
 
         public string whatToCount;
 
@@ -41,6 +42,7 @@ namespace KompasServer.Effects
                     case EffectUsesThisTurn: return Effect.TimesUsedThisTurn;
                     case MaxStatAmongRestriction:
                         return Game.Cards.Where(c => cardRestriction.Evaluate(c)).Max(c => c.GetStat(stat));
+                    case NumberOfTargets: return Effect.Targets.Count();
                     default:
                         throw new System.ArgumentException($"Invalid 'what to count' string {whatToCount} in x by gamestate value subeffect");
                 }

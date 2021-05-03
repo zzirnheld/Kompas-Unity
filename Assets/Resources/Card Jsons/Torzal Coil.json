@@ -1,7 +1,7 @@
 {
-	"cardType":83,
+	"cardType":67,
 	"cardName":"Torzal Coil",
-	"effText":"Charge X: Give an adjacent character -X E.",
+	"effText":"Charge X: Give me +X E and an adjacent character -X E.",
 	"effects":[
 		{
 			"triggerData":
@@ -21,10 +21,8 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringStackableSourceSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier":1
 				},
                 {
                     "$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
@@ -36,10 +34,18 @@
                     "xMultiplier":1
                 },
 				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMult":1
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Board","Is Character","Adjacent to Source","Distinct Name from Source"]
+						"blurb":"character for Torzal Coil to zap for X E",
+						"cardRestrictions":["Is Character","Board","Adjacent to Source"]
 					}
 				},
 				{
@@ -49,7 +55,9 @@
 			]
 		}
 	],
-	"c":3,
-	"spellType":"Enchant",
-	"subtypeText":"Painful Chargeable Conductor"
+	"n":1,
+	"e":1,
+	"s":3,
+	"w":1,
+	"subtypeText":"Crazy Arrogant Chargeable Conductor"
 }

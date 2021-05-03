@@ -368,10 +368,12 @@ Mizzaral Arcmaster
 Unwary Student
 Relay
 Conductor
-Torzal Coil
-Vitioshock Therapy
-Electrocreative Generator
 Statipip Fluxfielder
 Lightning Arctist
 Charge
-Scrap Failed Ideas
+Torzal Coil
+Electrocreative
+Master of Circuitries
+Rewire
+Shoddy Solder
+Wire Up
