@@ -102,6 +102,8 @@ namespace KompasCore.GameCore
         /// <returns></returns>
         public int ShortestPath(GameCard src, int x, int y, Func<GameCard, bool> throughPredicate)
         {
+            Debug.Log($"Finding shortest path from {src.CardName} to {x}, {y}");
+
             //record shortest distances to cards
             var dist = new Dictionary<GameCard, int>();
             //and if you've seen them

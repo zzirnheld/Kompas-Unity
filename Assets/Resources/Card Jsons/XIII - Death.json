@@ -55,8 +55,15 @@
 					"xMultiplier":1
 				},
 				{
+					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"S"
+					},
+					"xMultiplier":1
+				},
+				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"sMult":-1,
+					"wMult":-1,
 					"targetIndex":-2
 				},
 				{
