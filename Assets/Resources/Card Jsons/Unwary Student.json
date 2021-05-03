@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Unwary Student",
-	"effText":"When turns start, activate all cards connected to me by Conductors.",
+	"effText":"When I die, activate all Conductors adjacent to where I was.",
     "effects":[
 		{
 			"activationRestriction":{

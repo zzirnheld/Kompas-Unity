@@ -190,7 +190,7 @@ namespace KompasCore.GameCore
                 }
             }
 
-            return dist[destination.x, destination.y];
+            return dist[destination.x, destination.y] <= 0 ? 50 : dist[destination.x, destination.y];
         }
 
         public bool ExistsCardOnBoard(Func<GameCard, bool> predicate)
