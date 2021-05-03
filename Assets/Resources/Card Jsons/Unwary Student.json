@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Unwary Student",
-	"effText":"When I die, activate all Conductors adjacent to where I was.",
+	"effText":"When I die, pulse all Conductors adjacent to where I was.",
     "effects":[
 		{
 			"activationRestriction":{
@@ -23,6 +23,10 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
+					"activate":false
 				},
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",

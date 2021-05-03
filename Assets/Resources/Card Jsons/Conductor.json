@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Conductor",
-	"effText":"Charge: Activate an adjacent distinct Conductor.",
+	"effText":"Charge: Pulse an adjacent distinct Conductor.",
 	"effects":[
 		{
 			"triggerData":
@@ -21,13 +21,6 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
-					"activate":false
-				},
-				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
@@ -37,6 +30,10 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
+					"activate":false
 				}
 			]
 		}

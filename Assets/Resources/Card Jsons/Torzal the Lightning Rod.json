@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Torzal the Lightning Rod",
-	"effText":"When turns start, activate all cards connected to me by Conductors.",
+	"effText":"When turns start, pulse all cards connected to me by Conductors.",
     "effects":[
 		{
 			"triggerData":
@@ -31,6 +31,10 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
+					"activate":false
 				},
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",

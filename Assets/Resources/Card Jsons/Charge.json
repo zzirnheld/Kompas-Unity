@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Charge",
-	"effText":"Activate cards connected to your Avatar by Conductors. (Cards adjacent to other cards are always connected.)",
+	"effText":"Pulse cards connected to me by Conductors. (Cards adjacent to other cards are always connected.)",
 	"effects":[
 		{
 			"triggerData":
@@ -13,13 +13,10 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetAvatarSubeffect, Assembly-CSharp"
-				},
-				{
 					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Friendly","Board","Connected to Target By"],
+						"cardRestrictions":["Friendly","Board","Connected to Source By"],
 						"connectednessRestriction":
 						{
 							"cardRestrictions":["Subtypes Include","Board"],
@@ -28,16 +25,16 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp",
-					"targetIndex":0
+					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
+					"activate":false
 				},
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
 					"delete":true,
-					"jumpTo":3
+					"jumpTo":1
 				}
 			]	
 		}

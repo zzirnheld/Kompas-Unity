@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Mizzaral Arcmaster",
-	"effText":"Once each round, you can activate all cards connected to me by Conductors.",
+	"effText":"Once each round, you can pulse all cards connected to me by Conductors.",
     "effects":[
 		{
 			"activationRestriction":{
@@ -25,6 +25,10 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
+					"activate":false
 				},
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
