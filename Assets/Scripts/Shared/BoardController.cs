@@ -144,7 +144,7 @@ namespace KompasCore.GameCore
         }
 
         public int ShortestPath(GameCard source, int x, int y, CardRestriction restriction)
-            => ShortestPath(source, x, y, c => restriction.Evaluate(c));
+            => ShortestPath(source, x, y, restriction.Evaluate);
 
         private IEnumerable<(int, int)> AdjacentEmptySpacesTo((int x, int y) space)
         {

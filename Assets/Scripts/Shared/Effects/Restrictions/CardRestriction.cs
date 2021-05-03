@@ -319,7 +319,7 @@ namespace KompasCore.Effects
                 case SameColumnAsSource: return potentialTarget.SameColumn(Source);
                 case DirectlyInFrontOfSource: return Source.CardDirectlyInFront(potentialTarget);
                 case InACorner:          return potentialTarget.InCorner();
-                case ConnectedToSourceBy: 
+                case ConnectedToSourceBy:
                     return potentialTarget.ShortestPath(Source.BoardX, Source.BoardY, connectednessRestriction.Evaluate) < 50; 
                 case ConnectedToTargetBy: 
                     return potentialTarget.ShortestPath(Subeffect.Target.BoardX, Subeffect.Target.BoardY, connectednessRestriction.Evaluate) < 50; 

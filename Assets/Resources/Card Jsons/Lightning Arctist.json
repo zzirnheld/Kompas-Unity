@@ -37,7 +37,7 @@
                     "$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
                     "whatToCount":"Distance to Coords Through",
                     "throughRestriction":{
-                        "cardRestrictions":["Subtypes Include","Is Character","Board"],
+                        "cardRestrictions":["Subtypes Include"],
                         "subtypesInclude":["Conductor"]
                     },
                     "xMultiplier":1
