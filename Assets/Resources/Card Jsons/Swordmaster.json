@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Swordmaster",
-	"effText":"Once each friendly turn, you can give an adjacent Warrior +1EW.",
+	"effText":"Once each friendly turn, you can give an adjacent Warrior +1 EW.",
 	"effects":[
 		{
 			"activationRestriction":{
@@ -16,7 +16,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"adjacent Warrior for Swordmaster to give +1EW",
+						"blurb":"adjacent Warrior for Swordmaster to give +1 EW",
 						"cardRestrictions":["Subtypes Include","Is Character","Board","Adjacent to Source"],
 						"subtypesInclude":["Warrior"]
 					}

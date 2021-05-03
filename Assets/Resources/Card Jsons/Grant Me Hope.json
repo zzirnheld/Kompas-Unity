@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Grant Me Hope",
-	"effText":"Unique. (Can't be played if you control a copy)\nWhen a character is Negated, give them +1ESW. If they're a Supplicant, also give them +2NESW.",
+	"effText":"Unique. (Can't be played if you control a copy)\nWhen a character is Negated, give them +1 ESW. If they're a Supplicant, also give them +2 NESW.",
 	"effects":[
 		{
 			"triggerData":

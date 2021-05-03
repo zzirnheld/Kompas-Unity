@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Orry the Oviparous Mammal",
-	"effText":"When I move 3 spaces at once, discard a Crazy Idea, and give me +3W.",
+	"effText":"When I move 3 spaces at once, discard a Crazy Idea, and give me + 3W.",
 	"effects":[
 		{
 			"triggerData":

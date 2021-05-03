@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Bloodcurser",
-	"effText":"The first time each round a Cultist dies, give me -2E and decksummon 2 Cultist Followers.",
+	"effText":"The first time each round a Cultist dies, give me -2 E and decksummon 2 Cultist Followers.",
 	"effects":[
 		{
 			"triggerData":

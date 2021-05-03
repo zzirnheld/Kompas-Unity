@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Crab Robot Crab Minion",
-	"effText":"When you play a Crazy Idea, if I’m adjacent to an enemy character, give a friendly character +1W.",
+	"effText":"When you play a Crazy Idea, if I’m adjacent to an enemy character, give a friendly character +1 W.",
 	"effects":[
 		{
 			"triggerData":

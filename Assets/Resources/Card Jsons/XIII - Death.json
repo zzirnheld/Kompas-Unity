@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"XIII - Death",
-	"effText":"When you draw, I get +1W. During your turn, I can pay XW to kill an adjacent SX character.",
+	"effText":"When you draw, I get +1 W. During your turn, I can pay XW to kill an adjacent SX character.",
 	"effects":[
 		{
 			"triggerData":

@@ -1,7 +1,7 @@
 {
 	"cardType":65,
 	"cardName":"Defense Core",
-	"effText":"Recoverable.\nWhile equipped, activate this character. When they defend, give them +4EW.",
+	"effText":"Recoverable.\nWhile equipped, activate this character. When they defend, give them +4 EW.",
 	"effects":[
 		{
 			"blurb":"Defense Activate!",

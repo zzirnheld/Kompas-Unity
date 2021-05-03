@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Runewritten",
-	"effText":"When you cast a Rune, I give myself +1EW.",
+	"effText":"When you cast a Rune, I give myself +1 EW.",
 	"effects":[
 		{
 			"triggerData":

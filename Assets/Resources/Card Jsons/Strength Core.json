@@ -1,7 +1,7 @@
 {
 	"cardType":65,
 	"cardName":"Strength Core",
-	"effText":"Recoverable.\nWhile equipped, activate this character and give them +4W.",
+	"effText":"Recoverable.\nWhile equipped, activate this character and give them +4 W.",
 	"effects":[
 		{
 			"triggerData":

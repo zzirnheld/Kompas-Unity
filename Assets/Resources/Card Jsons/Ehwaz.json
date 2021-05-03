@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Ehwaz",
-	"effText":"Runic.\nGive a character +2N.",
+	"effText":"Runic.\nGive a character +2 N.",
 	"effects":[
 		{
 			"triggerData":
@@ -16,7 +16,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"for Ehwaz to give +2N",
+						"blurb":"for Ehwaz to give +2 N",
 						"cardRestrictions":["Is Character","Board"]
 					}
 				},

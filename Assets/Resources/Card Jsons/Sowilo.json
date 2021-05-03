@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Sowilo",
-	"effText":"Runic.\nI give a character -1E and another +1E.",
+	"effText":"Runic.\nI give a character -1 E and another +1 E.",
 	"effects":[
 		{
 			"triggerData":
@@ -16,7 +16,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"character for Sowilo to give -1E.",
+						"blurb":"character for Sowilo to give -1 E.",
 						"cardRestrictions":["Is Character","Board"]
 					}
 				},
@@ -28,7 +28,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"other character for Sowilo to give +1E.",
+						"blurb":"other character for Sowilo to give +1 E.",
 						"cardRestrictions":["Is Character","Board","Not Already Target"]
 					}
 				},

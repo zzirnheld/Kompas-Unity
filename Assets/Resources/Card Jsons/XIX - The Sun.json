@@ -1,13 +1,13 @@
 {
 	"cardType":67,
 	"cardName":"XIX - The Sun",
-	"effText":"When you draw, I can give a Summoned character -1E and a different character +1E.",
+	"effText":"When you draw, I can give a Summoned character -1 E and a different character +1 E.",
 	"effects":[
 		{
 			"triggerData":
 			{
 				"optional":true,
-				"blurb":"Give one character -1E and another +1E?",
+				"blurb":"Give one character -1 E and another +1 E?",
 				"triggerCondition":"Draw",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Controller Triggered"]
@@ -18,7 +18,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"character for Sun to give -1E",
+						"blurb":"character for Sun to give -1 E",
 						"cardRestrictions":["Is Character","Board","Summoned"]
 					}
 				},
@@ -30,7 +30,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"character for Sun to give +1E",
+						"blurb":"character for Sun to give +1 E",
 						"cardRestrictions":["Is Character","Board","Not Already Target"]
 					}
 				},

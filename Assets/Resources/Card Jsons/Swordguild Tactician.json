@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Swordguild Tactician",
-	"effText":"Once each friendly turn, I can give an adjacent Warrior +5E or +5W.",
+	"effText":"Once each friendly turn, I can give an adjacent Warrior +5 E or +5 W.",
 	"effects":[
 		{
 			"activationRestriction":{
@@ -16,15 +16,15 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"adjacent Warrior for Tactician to give +5E or +5W",
+						"blurb":"adjacent Warrior for Tactician to give +5 E or +5 W",
 						"cardRestrictions":["Subtypes Include","Is Character","Board","Adjacent to Source"],
 						"subtypesInclude":["Warrior"]
 					}
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Give +5E or +5W?",
-					"OptionBlurbs":["+5E","+5W"],
+					"ChoiceBlurb":"Give +5 E or +5 W?",
+					"OptionBlurbs":["+5 E","+5 W"],
 					"OptionJumpIndices":[2,4],
 					"hasDefault":false
 				},

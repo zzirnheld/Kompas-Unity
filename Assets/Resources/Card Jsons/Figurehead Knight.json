@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Figurehead Knight",
-	"effText":"When you draw on a friendly turn, give each friendly character +1W.\nWhen you draw on a enemy turn, give each friendly character +1E.",
+	"effText":"When you draw on a friendly turn, give each friendly character +1 W.\nWhen you draw on a enemy turn, give each friendly character +1 E.",
 	"effects":[
 		{
 			"triggerData":
