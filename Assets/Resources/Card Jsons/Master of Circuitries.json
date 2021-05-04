@@ -4,11 +4,12 @@
 	"effText":"When I'm summoned, pulse all X cards connected to me by Conductors. Give me +X ESW.",
     "effects":[
 		{
-			"activationRestriction":{
-				"activationRestrictionArray":[
-					"Max Times Per Round",
-					"Default"
-				]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
 			},
 			"subeffects":[
 				{
