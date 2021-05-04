@@ -23,6 +23,12 @@
 				{
 					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				},
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringStackableSourceSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+				},
                 {
                     "$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
                     "whatToCount":"Distance to Coords Through",
