@@ -17,7 +17,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"spell for Wynn to DispelSubeffect, Assembly-CSharp",
+						"blurb":"spell to stab with green rocks and thereby dispel",
 						"cardRestrictions":["Is Spell","Board"]
 					}
 				},
