@@ -18,7 +18,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Conductor to rewire",
-						"cardRestrictions":["Friendly","Deck","Subtypes Include","Not Already Target"],
+						"cardRestrictions":["Friendly","Board","Subtypes Include","Not Already Target"],
 						"subtypesInclude":["Conductor"]
 					}
 				},
