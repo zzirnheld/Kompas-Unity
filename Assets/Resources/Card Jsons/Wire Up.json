@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Wire Up",
-	"effText":"Deck->play a Conductor distinct from all friendly cards, to a space connected to your Avatar by Conductors.",
+	"effText":"Pip deck->play a Conductor distinct from all friendly cards, to a space connected to your Avatar by Conductors.",
 	"effects":[
 		{
 			"triggerData":
