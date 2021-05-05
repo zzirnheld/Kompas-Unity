@@ -6,7 +6,7 @@
 		{
 			"triggerData":
 			{
-				"blurb":"Regrowth",
+				"blurb":"Re-solder",
 				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Friendly Turn"]

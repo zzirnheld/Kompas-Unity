@@ -4,11 +4,13 @@
 	"effText":"When I die, pulse all Conductors adjacent to where I was.",
     "effects":[
 		{
-			"activationRestriction":{
-				"activationRestrictionArray":[
-					"Max Times Per Round",
-					"Default"
-				]
+			"triggerData":
+			{
+				"blurb":"Annihilate",
+				"triggerCondition":"Discard",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","From Field"]
+				}
 			},
 			"subeffects":[
 				{
