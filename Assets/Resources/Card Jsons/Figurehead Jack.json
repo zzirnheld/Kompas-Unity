@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Figurehead Jack",
-	"effText":"Draw 1.",
+	"effText":"Draw 1. Hand-bottomdeck a Tarocco. Draw 1.",
 	"effects":[
 		{
 			"triggerData":
@@ -12,6 +12,21 @@
 				}
 			},
 			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"for Jack to hand-bottomdeck",
+						"cardRestrictions":["Friendly","Hand","Subtypes Include"],
+						"subtypesInclude":["Tarocco"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.BottomdeckSubeffect, Assembly-CSharp"
+				},
 				{
 					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
