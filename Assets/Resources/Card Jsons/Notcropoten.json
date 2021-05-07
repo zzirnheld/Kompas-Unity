@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Notcropoten",
-	"effText":"When friendly turns start, you can give me -X E. Annihilate your deck's top X. Delay 1. Rehand it.",
+	"effText":"When friendly turns start, you can have me pay X E. Annihilate your deck's top X. Delay 1. Rehand it.",
 	"effects":[
 		{
 			"activationRestriction":{
