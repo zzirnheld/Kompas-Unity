@@ -17,7 +17,8 @@
 				},
 				{
 					"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
-					"subeffIndices":[3]
+					"subeffIndices":[3],
+					"skipIndex":8
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
@@ -37,10 +38,12 @@
 					"$type":"KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp",
+					"playerIndex":-2
 				},
 				{
 					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"playerIndex":-2,
 					"xModifier":1
 				},
 				{

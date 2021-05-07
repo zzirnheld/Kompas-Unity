@@ -1,0 +1,57 @@
+{
+	"cardType":67,
+	"cardName":"Frontline Reporter",
+	"effText":"When I'm summoned, your opponent can reveal a spell. If they don't, draw 2.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+					"subeffIndices":[3],
+					"skipIndex":6
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"ChoiceBlurb":"Reveal a spell?",
+					"OptionBlurbs":["Yes","No"],
+					"OptionJumpIndices":[3,6]
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"spell to reveal",
+						"cardRestrictions":["Friendly","Hand","Fast","Is Spell"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"playerIndex":-2,
+					"xModifier":2
+				}
+			]	
+		}
+	],
+	"fast":true,
+	"n":1,
+	"e":2,
+	"s":2,
+	"w":2,
+	"subtypeText":"Reporter Person"
+}
