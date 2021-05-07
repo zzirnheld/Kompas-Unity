@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Uruz",
-	"effText":"Runic.\nGive ajacent characters +2E.",
+	"effText":"Runic.\nGive ajacent characters +2 E.",
 	"effects":[
 		{
 			"triggerData":

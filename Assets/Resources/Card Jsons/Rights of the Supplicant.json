@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Rights of the Supplicant",
-	"effText":"When a Supplicant defends, give their attacker -1EW. (This enchant must be in play when the attack is declared to trigger the effect.)",
+	"effText":"When a Supplicant defends, give their attacker -1 EW. (This enchant must be in play when the attack is declared to trigger the effect.)",
 	"effects":[
 		{
 			"triggerData":

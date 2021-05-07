@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Pseudodragon",
-	"effText":"When I attack, give me and my target -1E.",
+	"effText":"When I attack, give me and my target -1 E.",
 	"effects":[
 		{
 			"triggerData":

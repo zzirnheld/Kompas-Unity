@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Algiz",
-	"effText":"Runic.\nGive a character +5E.",
+	"effText":"Runic.\nGive a character +5 E.",
 	"effects":[
 		{
 			"triggerData":

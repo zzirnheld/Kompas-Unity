@@ -1,0 +1,47 @@
+{
+	"cardType":67,
+	"cardName":"Mizzaral Arcmaster",
+	"effText":"Once each round, you can pulse all cards connected to me by Conductors.",
+    "effects":[
+		{
+			"activationRestriction":{
+				"activationRestrictionArray":[
+					"Max Times Per Round",
+					"Default"
+				]
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Friendly","Board","Connected to Source By"],
+						"connectednessRestriction":
+						{
+							"cardRestrictions":["Subtypes Include","Board"],
+							"subtypesInclude":["Conductor"]
+						}
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
+					"activate":false
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"jumpTo":1
+				}
+			]	
+		}
+	],
+	"n":1,
+	"e":2,
+	"s":3,
+	"w":4,
+	"unique":true,
+	"subtypeText":"Sane but Excited Conductor Mage Person"
+}

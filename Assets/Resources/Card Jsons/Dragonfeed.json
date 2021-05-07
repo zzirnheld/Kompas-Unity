@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Dragonfeed",
-	"effText":"When a friendly Dragon kills a character, give the Dragon +1EW.",
+	"effText":"When a friendly Dragon kills a character, give the Dragon +1 EW.",
 	"effects":[
 		{
 			"triggerData":

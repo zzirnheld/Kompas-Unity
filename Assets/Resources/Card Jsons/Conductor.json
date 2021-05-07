@@ -1,0 +1,44 @@
+{
+	"cardType":83,
+	"cardName":"Conductor",
+	"effText":"Charge: Pulse an adjacent distinct Conductor.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Activate",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","This Card Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Connected to Source By"],
+						"connectednessRestriction":
+						{
+							"cardRestrictions":["Subtypes Include","Board"],
+							"subtypesInclude":["Conductor"]
+						}
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Board","Adjacent to Source","Distinct Name from Source","Subtypes Include"],
+                        "subtypesInclude":["Conductor"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
+					"activate":false
+				}
+			]
+		}
+	],
+	"c":1,
+	"spellType":"Enchant",
+	"subtypeText":"Chargeable Conductor"
+}

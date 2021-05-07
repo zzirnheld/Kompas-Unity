@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Yeeterator",
-	"effText":"Ificate.\nThe first time each stack a character moves here, move them to a corner. If you can't, annihilate me.",
+	"effText":"Ificate.\nThe first time each stack another card moves here, move them to a corner. If you can't, annihilate me.",
 	"effects":[
 		{
 			"triggerData":
@@ -9,7 +9,11 @@
 				"blurb":"Yeeterate",
 				"triggerCondition":"Move",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Max Per Stack"],
+					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Max Per Stack","Triggerer Fits Restriction"],
+					"cardRestriction":
+					{
+						"cardRestrictions":["Distinct from Source"]
+					},
 					"spaceRestriction":
 					{
 						"spaceRestrictions":["In AOE"],

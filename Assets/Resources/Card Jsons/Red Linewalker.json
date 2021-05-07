@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Red Linewalker",
-	"effText":"Linewalk.\nWhen I move X spaces, give characters within 1 space of me +XE. (This includes me).",
+	"effText":"Linewalk.\nWhen I move X spaces, give characters within 1 space of me +X E. (This includes me).",
 	"effects":[
 		{
 			"blurb":"Red Linewalked",

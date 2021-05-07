@@ -1,5 +1,6 @@
 ﻿using KompasCore.Effects;
 using KompasCore.GameCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -371,6 +372,9 @@ namespace KompasCore.Cards
                 || (xDiffCard == yDiffCard && xDiffSpace == yDiffSpace);
         }
         public bool InCorner() => (Position.x == 0 || Position.x == 6) && (Position.y == 0 || Position.y == 6);
+
+        public int ShortestPath(int x, int y, Func<GameCard, bool> throughPredicate) 
+            => Game.boardCtrl.ShortestPath(this, x, y, throughPredicate);
         #endregion distance/adjacency
 
         public void PutBack()

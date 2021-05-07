@@ -20,6 +20,8 @@ namespace KompasCore.Effects
         public const string AdjacentToWithRestriction = "Adjacent to a Card that Fits Restriction";
         public const string AdjacentToTarget = "Adjacent to Target";
         public const string ConnectedToSourceBy = "Connected to Source by Cards Fitting Restriction";
+        public const string ConnectedToTargetBy = "Connected to Target by";
+        public const string ConnectedToAvatarBy = "Connected to Avatar by";
         public const string InAOE = "In AOE";
         public const string NotInAOE = "Not In AOE";
         public const string LimitAdjacentCardsFittingRestriction = "Limit Number of Adjacent Cards Fitting Restriction";
@@ -108,6 +110,8 @@ namespace KompasCore.Effects
                 case AdjacentToWithRestriction: return Source.Game.boardCtrl.CardsAdjacentTo(x, y).Any(c => adjacencyRestriction.Evaluate(c));
                 case AdjacentToTarget:          return target.IsAdjacentTo(x, y);
                 case ConnectedToSourceBy:       return Source.Game.boardCtrl.ShortestPath(Subeffect.Source, x, y, connectednessRestriction) < 50;
+                case ConnectedToTargetBy:       return Source.Game.boardCtrl.ShortestPath(Subeffect.Target, x, y, connectednessRestriction) < 50;
+                case ConnectedToAvatarBy:       return Source.Game.boardCtrl.ShortestPath(Source.Controller.Avatar, x, y, connectednessRestriction) < 50;
                 case InAOE:                     return Source.SpaceInAOE(x, y);
                 case NotInAOE:                  return !Source.SpaceInAOE(x, y);
                 case LimitAdjacentCardsFittingRestriction:

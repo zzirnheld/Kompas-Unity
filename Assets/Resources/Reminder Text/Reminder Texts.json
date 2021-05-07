@@ -6,7 +6,7 @@
 		},
 		{
 			"keyword":"Shape.",
-			"reminder":"During your turn, you can use a space of movement and give me -XE to move me through X Ethereal characters."
+			"reminder":"During your turn, you can use a space of movement and give me -X E to move me through X Ethereal characters."
 		},
 		{
 			"keyword":"Geminii.",
@@ -71,6 +71,10 @@
 		{
 			"keyword":"Wanderer.",
 			"reminder":"When turns start, set X to my S. Reshuffle me and deck->summon an S X - 1 Wanderer where I was. (Since the summoned character won't have been on the board when the turn started, their turn start effect, if any, doesn't trigger.)"
+		},
+		{
+			"keyword":"Charge",
+			"reminder":"When I'm activated by a card connected to me by X Conductors..."
 		}
 	]
 }

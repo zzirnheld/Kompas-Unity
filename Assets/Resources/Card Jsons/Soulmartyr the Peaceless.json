@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Soulmartyr the Peaceless",
-	"effText":"Revenant.\nWhen a card is annihilated, give friendly Ethereals +1W, and if it's an enemy turn, gain a pip.",
+	"effText":"Revenant.\nWhen a card is annihilated, give friendly Ethereals +1 W, and if it's an enemy turn, gain a pip.",
 	"effects":[
 		{
 			"triggerData":

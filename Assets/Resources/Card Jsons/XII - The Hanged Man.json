@@ -1,13 +1,13 @@
 {
 	"cardType":67,
 	"cardName":"XII - The Hanged Man",
-	"effText":"When you draw X, I can give myself and a Summoned character -XE.",
+	"effText":"When you draw X, I can give myself and a Summoned character -X E.",
 	"effects":[
 		{
 			"triggerData":
 			{
 				"optional":true,
-				"blurb":"Give me and a Summoned character -XE? (X is the number of cards you just drew)",
+				"blurb":"Give me and a Summoned character -X E? (X is the number of cards you just drew)",
 				"triggerCondition":"Draw",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Controller Triggered"]
@@ -21,7 +21,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"Summoned character for Hanged Man to also give -XE",
+						"blurb":"Summoned character for Hanged Man to also give -X E",
 						"cardRestrictions":["Is Character","Board","Summoned"]
 					}
 				},

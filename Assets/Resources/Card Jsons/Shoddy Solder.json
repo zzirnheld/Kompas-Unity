@@ -1,0 +1,61 @@
+{
+	"cardType":83,
+	"cardName":"Shoddy Solder",
+	"effText":"When friendly turns start, pip discard->play a Conductor to a space connected to your Avatar by Conductors. Delay a turn. Destroy them.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Re-solder",
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Friendly Turn"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose":1,
+					"cardRestriction":
+					{
+						"blurb":"Conductor to wire up",
+						"cardRestrictions":["Friendly","Discard","Effect Controller can Afford Cost","Subtypes Include"],
+						"subtypesInclude":["Conductor"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where to wire up Conductor",
+						"spaceRestrictions":["Can Play Target to This Space","Connected to Avatar by"],
+                        "connectednessRestriction":
+						{
+							"cardRestrictions":["Subtypes Include","Board"],
+							"subtypesInclude":["Conductor"]
+						}
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay":0,
+					"indexToResume":5,
+					"endCondition":"Turn Start"
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+	"c":1,
+	"spellType":"Enchant",
+	"subtypeText":"Conductor"
+}

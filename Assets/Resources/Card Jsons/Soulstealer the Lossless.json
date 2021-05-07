@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Soulstealer the Lossless",
-	"effText":"Revenant.\nWhen a card is annihilated, give friendly Ethereals +1E, and if it's an enemy turn, gain a pip.",
+	"effText":"Revenant.\nWhen a card is annihilated, give friendly Ethereals +1 E, and if it's an enemy turn, gain a pip.",
 	"effects":[
 		{
 			"triggerData":

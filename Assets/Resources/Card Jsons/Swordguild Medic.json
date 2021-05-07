@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Swordguild Medic",
-	"effText":"Once each friendly turn, I can give an adjacent Warrior +1E.",
+	"effText":"Once each friendly turn, I can give an adjacent Warrior +1 E.",
 	"effects":[
 		{
 			"activationRestriction":{
@@ -16,7 +16,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"Warrior for Medic to give +1E",
+						"blurb":"Warrior for Medic to give +1 E",
 						"cardRestrictions":["Subtypes Include","Is Character","Board","Adjacent to Source"],
 						"subtypesInclude":["Warrior"]
 					}

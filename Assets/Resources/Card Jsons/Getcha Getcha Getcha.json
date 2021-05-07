@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Getcha Getcha Getcha",
-	"effText":"Comeback Play.\nWhen a friendly character is augmented, give them +1N.",
+	"effText":"Comeback Play.\nWhen a friendly character is augmented, give them +1 N.",
 	"effects":[
 		{
 			"triggerData":

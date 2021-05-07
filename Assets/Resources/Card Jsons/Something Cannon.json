@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Something Cannon",
-	"effText":"Once each round, you can give me and a Summoned character -3E.",
+	"effText":"Once each round, you can give me and a Summoned character -3 E.",
 	"effects":[
 		{
 			"blurb":"Something",
@@ -24,7 +24,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"Summoned character for Something Cannon to blast for -3E",
+						"blurb":"Summoned character for Something Cannon to blast for -3 E",
 						"cardRestrictions":["Is Character","Board","Summoned"]
 					}
 				},

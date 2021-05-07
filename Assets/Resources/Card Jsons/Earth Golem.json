@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Earth Golem",
-	"effText":"Golem.\nWhen I'm activated, I give a character ±1EW.",
+	"effText":"Golem.\nWhen I'm activated, I give a character ±1 EW.",
 	"effects":[
 		{
 			"blurb":"++ or --",
@@ -23,8 +23,8 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Give +1EW or -1EW?",
-					"OptionBlurbs":["+1EW","-1EW"],
+					"ChoiceBlurb":"Give +1 EW or -1 EW?",
+					"OptionBlurbs":["+1 EW","-1 EW"],
 					"OptionJumpIndices":[2,4],
 					"hasDefault":false
 				},

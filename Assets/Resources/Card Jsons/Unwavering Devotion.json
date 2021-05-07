@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Unwavering Devotion",
-	"effText":"When a friendly Cultist dies, give friendly Cultists +1W.",
+	"effText":"When a friendly Cultist dies, give friendly Cultists +1 W.",
 	"effects":[
 		{
 			"triggerData":

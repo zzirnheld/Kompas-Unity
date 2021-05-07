@@ -1,0 +1,56 @@
+{
+	"cardType":67,
+	"cardName":"Electrocreative",
+	"effText":"Charge X: Draw 1 and give me +X E.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Activate",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","This Card Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Connected to Source By"],
+						"connectednessRestriction":
+						{
+							"cardRestrictions":["Subtypes Include","Board"],
+							"subtypesInclude":["Conductor"]
+						}
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringStackableSourceSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+				},
+                {
+                    "$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+                    "whatToCount":"Distance to Coords Through",
+                    "throughRestriction":{
+                        "cardRestrictions":["Subtypes Include"],
+                        "subtypesInclude":["Conductor"]
+                    },
+                    "xMultiplier":1
+                },
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMult":1
+				}
+			]
+		}
+	],
+	"n":1,
+	"e":1,
+	"s":2,
+	"w":0,
+	"subtypeText":"Crazy Arrogant Chargeable Conductor"
+}

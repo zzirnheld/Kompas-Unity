@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Weird Idea That is Also",
-	"effText":"Once each friendly turn, you can give me -1E, discard a Crazy Idea, and give another character +1W.",
+	"effText":"Once each friendly turn, you can give me -1 E, discard a Crazy Idea, and give another character +1 W.",
 	"effects":[
 		{
 			"activationRestriction":{
@@ -35,7 +35,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"character that is also +1W",
+						"blurb":"character that is also +1 W",
 						"cardRestrictions":["Is Character","Board","Distinct from Source"]
 					}
 				},
