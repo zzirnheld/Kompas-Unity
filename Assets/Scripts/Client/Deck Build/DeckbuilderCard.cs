@@ -40,7 +40,7 @@ namespace KompasDeckbuilder
 
             cardSearchController.CardImage.sprite = simpleSprite;
             cardSearchController.CardNameText.text = CardName;
-            cardSearchController.SubtypesText.text = SubtypeText;
+            cardSearchController.SubtypesText.text = QualifiedSubtypeText;
             cardSearchController.EffectText.text = EffText;
 
             cardSearchController.nText.gameObject.SetActive(CardType == 'C');
