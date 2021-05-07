@@ -7,7 +7,6 @@
 			"activationRestriction":{
 				"activationRestrictionArray":[
 					"Max Times Per Turn",
-					"Card Exists",
 					"Default"
 				]
 			},
