@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Wait Hold Up",
-	"effText":"Ificate.\nDiscard 1. Draw 1. Move an enemy character up to 3 spaces. Annihilate me.",
+	"effText":"Ificate.\nDiscard 1. Draw 1. Move an enemy character up to 3 spaces.",
 	"effects":[
 		{
 			"triggerData":
@@ -46,12 +46,6 @@
 				},
 				{
 					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
 				}
 			]
 		}
@@ -60,5 +54,5 @@
 	"c":5,
 	"spellType":"Simple",
 	"subtypes":["Simple","Crazy Idea"],
-	"subtypeText":"Simple Crazy Idea Ificator"
+	"subtypeText":"Crazy Idea Ificator"
 }
