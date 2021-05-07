@@ -569,6 +569,12 @@ namespace KompasCore.Cards
             SetNegated(true, stackSrc);
             Discard(stackSrc);
         }
+
+        public virtual bool Reveal(IStackable stackSrc = null) 
+        {
+            //Reveal should only succeed if the card is not known to the enemy
+            return !KnownToEnemy; 
+        }
         #endregion moveCard
     }
 }

@@ -30,6 +30,7 @@ namespace KompasCore.Effects
         public const string IsSpell = "Is Spell";
         public const string IsAugment = "Is Augment";
         public const string NotAugment = "Not Augment";
+        public const string Fast = "Fast";
 
         //control
         public const string Friendly = "Friendly";
@@ -67,6 +68,8 @@ namespace KompasCore.Effects
         public const string Board = "Board";
         public const string Annihilated = "Annihilated";
         public const string LocationInList = "Multiple Possible Locations";
+
+        public const string Hidden = "Hidden";
 
         //stats
         public const string CardValueFitsXRestriction = "Card Value Fits X Restriction";
@@ -229,6 +232,7 @@ namespace KompasCore.Effects
                 case IsSpell:     return potentialTarget.CardType == 'S';
                 case IsAugment:   return potentialTarget.CardType == 'A';
                 case NotAugment:  return potentialTarget.CardType != 'A';
+                case Fast:        return potentialTarget.Fast;
 
                 //control
                 //Debug.Log($"potential target controller? {potentialTarget.Controller?.index}, my controller {Controller?.index}");
@@ -266,6 +270,8 @@ namespace KompasCore.Effects
                 case Board:          return potentialTarget.Location == CardLocation.Field;
                 case Annihilated:    return potentialTarget.Location == CardLocation.Annihilation;
                 case LocationInList: return locations.Contains(potentialTarget.Location);
+
+                case Hidden:         return !potentialTarget.KnownToEnemy;
 
                 //stats
                 case CardValueFitsXRestriction: return xRestriction.Evaluate(cardValue.GetValueOf(potentialTarget));

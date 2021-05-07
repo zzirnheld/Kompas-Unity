@@ -151,6 +151,21 @@ namespace KompasServer.Cards
             return false;
         }
 
+        public override bool Reveal(IStackable stackSrc = null)
+        {
+            var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller);
+            if (base.Reveal(stackSrc))
+            {
+                EffectsController.TriggerForCondition(Trigger.Revealed, context);
+                //logic for actually revealing to client has to happen server-side.
+                knownToEnemy = true;
+                ServerController.ServerEnemy.ServerNotifier.NotifyDecrementHand();
+                ServerController.ServerEnemy.ServerNotifier.NotifyRevealCard(this);
+                return true;
+            }
+            return false;
+        }
+
         #region stats
         public override void SetN(int n, IStackable stackSrc = null, bool notify = true)
         {

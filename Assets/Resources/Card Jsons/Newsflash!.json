@@ -1,0 +1,100 @@
+{
+	"cardType":83,
+	"cardName":"Newsflash!",
+	"effText":"Your opponent can reveal a Fast card. If they do, draw 1 and gain a pip. If they don't, move a Reporter anywhere. The Reporter can attack a character adjacent to them.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+					"subeffIndices":[3]
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"ChoiceBlurb":"Reveal a Fast card?",
+					"OptionBlurbs":["Yes","No"],
+					"OptionJumpIndices":[3,8]
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"fast card to reveal",
+						"cardRestrictions":["Friendly","Hand","Fast","Hidden"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier":1
+				},
+				{
+					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"playerIndex":-2,
+					"cardRestriction":
+					{
+						"blurb":"friendly Reporter to move",
+						"cardRestrictions":["Is Character","Friendly","Board","Subtypes Include"],
+						"subtypesInclude":["Reporter"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"playerIndex":-2,
+					"spaceRestriction":{
+						"blurb":"where for Newsflash! to move it starget",
+						"spaceRestrictions":["Empty","Can Move Target to This Space"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp",
+					"playerIndex":-2
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"playerIndex":-2,
+					"ChoiceBlurb":"Does the Reporter attack?",
+					"OptionBlurbs":["Yes","No"],
+					"OptionJumpIndices":[12,100]
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"playerIndex":-2,
+					"cardRestriction":
+					{
+						"blurb":"enemy character to attack",
+						"cardRestrictions":["Is Character","Enemy","Board","Adjacent to Target"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"playerIndex":-2,
+					"targetIndex":-1,
+					"attackerIndex":-2
+				}
+			]
+		}
+	],
+	"fast":true,
+	"c":1,
+	"spellType":"Simple",
+	"subtypeText":"News"
+}

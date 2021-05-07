@@ -10,7 +10,7 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":{
-						"cardRestrictions":["Subtypes Include","Friendly","Distinct Name from Source"],
+						"cardRestrictions":["Friendly","Distinct Name from Source","Subtypes Include"],
 						"subtypesInclude":["Shaper"]
 					}
 				}
