@@ -113,7 +113,7 @@ namespace KompasServer.Networking
 
         public void NotifyRevealCard(GameCard revealed)
         {
-            NotifyDecrementHand();
+            //NotifyDecrementHand();
             SendPacket(new AddCardPacket(revealed, invert: Player.index != 0));
         }
 
