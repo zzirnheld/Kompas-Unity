@@ -1,0 +1,46 @@
+{
+	"cardType":67,
+	"cardName":"Star Reporter",
+	"effText":"When an enemy card is revealed, give friendly characters +1 SW and enemy characters -1 SW.",
+	"effects":[
+		{
+            "blurb":"Starstruck",
+			"triggerData":
+			{
+				"triggerCondition":"Revealed",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"cardRestriction":
+					{
+						"cardRestrictions":["Enemy"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character","Board","Friendly"]
+					},
+					"sMod":1,
+					"wMod":1
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character","Board","Enemy"]
+					},
+					"sMod":-1,
+					"wMod":-1
+				}
+			]	
+		}
+	],
+	"n":1,
+	"e":5,
+	"s":5,
+	"w":5,
+	"subtypeText":"Pulsar Reporter"
+}
