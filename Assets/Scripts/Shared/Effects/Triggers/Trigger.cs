@@ -60,7 +60,7 @@ namespace KompasCore.Effects
             NSet, ESet, SSet, WSet, CSet, ASet,
             Defends, Attacks, TakeCombatDamage, DealCombatDamage, Battles, BattleEnds, Negate,
             EachDraw, DrawX, Arrive, Play, Discard, Rehand, Reshuffle, Topdeck, Bottomdeck, ToDeck, Move, Annhilate, Remove, 
-            AugmentAttached, AugmentDetached, Augmented
+            AugmentAttached, AugmentDetached, Augmented, Revealed
         };
 
         public TriggerData TriggerData { get; }
