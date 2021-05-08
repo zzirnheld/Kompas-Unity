@@ -14,6 +14,7 @@ namespace KompasCore.GameCore
         public const float BoardLenOffset = 7f;
         public const float LenOneSpace = 2f;
         public const float SpaceOffset = LenOneSpace / 2f;
+        public const float CardHeight = 0.15f;
 
         public Game game;
 
@@ -24,7 +25,7 @@ namespace KompasCore.GameCore
             => (float)((gridIndex * LenOneSpace) + SpaceOffset - BoardLenOffset);
 
         public static Vector3 GridIndicesToCardPos(int x, int y)
-            => new Vector3(GridIndexToPos(x), 0.1f, GridIndexToPos(y));
+            => new Vector3(GridIndexToPos(x), CardHeight, GridIndexToPos(y));
 
         public readonly GameCard[,] Board = new GameCard[SpacesInGrid, SpacesInGrid];
 
