@@ -31,7 +31,7 @@
 					"cardRestriction":
 					{
 						"blurb":"spell to reveal",
-						"cardRestrictions":["Controller Matches Player Target","Hand","Fast","Is Spell"]
+						"cardRestrictions":["Controller Matches Player Target","Hand","Is Spell"]
 					}
 				},
 				{

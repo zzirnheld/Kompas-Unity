@@ -31,7 +31,7 @@
 					"cardRestriction":
 					{
 						"blurb":"cards to reveal",
-						"cardRestrictions":["Friendly","Hand","Hidden"]
+						"cardRestrictions":["Controller Matches Player Target","Hand","Hidden"]
 					},
 					"listRestriction":{
 						"listRestrictions":["Min Can Choose","Max Can Choose"],
