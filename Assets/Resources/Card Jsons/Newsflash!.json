@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Newsflash!",
-	"effText":"Your opponent can reveal a Fast card. If they do, draw 1 and gain a pip. If they don't, move a Reporter anywhere. The Reporter can attack a character adjacent to them.",
+	"effText":"Your opponent can reveal a spell. If they do, draw 1 and gain a pip. If they don't, move a Reporter anywhere. The Reporter can attack a character adjacent to them.",
 	"effects":[
 		{
 			"triggerData":
@@ -22,7 +22,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Reveal a Fast card?",
+					"ChoiceBlurb":"Reveal a spell?",
 					"OptionBlurbs":["Yes","No"],
 					"OptionJumpIndices":[3,8]
 				},
@@ -30,8 +30,8 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"fast card to reveal",
-						"cardRestrictions":["Controller Matches Player Target","Hand","Fast","Hidden"]
+						"blurb":"spell to reveal",
+						"cardRestrictions":["Controller Matches Player Target","Hand","Is Spell","Hidden"]
 					}
 				},
 				{
