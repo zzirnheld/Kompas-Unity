@@ -46,7 +46,7 @@
 					"cardRestriction":
 					{
 						"blurb":"character to reveal",
-						"cardRestrictions":["Controller Matches Player Target","Hand","Is Character","Cost<=X"]
+						"cardRestrictions":["Controller Matches Player Target","Hand","Is Character","Cost<=X","Hidden"]
 					},
 					"xMultiplier":1
 				},
