@@ -4,6 +4,24 @@
 	"effText":"When turns start, annihilate me.\nWhen I’m summoned, you can ask an enemy to reveal 2 cards. If they don’t, give me +4 NEWS.",
 	"effects":[
 		{
+            "blurb":"Annihilate me",
+			"triggerData":
+			{
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				}
+			]
+        },
+		{
 			"triggerData":
 			{
 				"triggerCondition":"Play",
