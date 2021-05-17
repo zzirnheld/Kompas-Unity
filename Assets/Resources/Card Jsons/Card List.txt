@@ -390,3 +390,5 @@ Temp Reporter
 Angry Reporter
 Fast Talker
 Online Reporter
+Well-Read Reporter
+Nature Reporter
