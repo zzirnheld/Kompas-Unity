@@ -1,0 +1,69 @@
+{
+	"cardType":67,
+	"cardName":"Fast Talker",
+	"effText":"When you draw X, ask your opponent to reveal X cards. If they don’t, give me +X ESW.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Draw",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Controller Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+					"subeffIndices":[3],
+					"skipIndex":7
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"ChoiceBlurb":"Reveal X cards?",
+					"OptionBlurbs":["Yes","No"],
+					"OptionJumpIndices":[3,7],
+					"showX":true
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"cards to reveal",
+						"cardRestrictions":["Controller Matches Player Target","Hand","Hidden"]
+					},
+					"listRestriction":{
+						"listRestrictions":["Min Can Choose: X","Max Can Choose: X"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"jumpTo":4
+				},
+				{
+					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMult":1,
+					"sMult":1,
+					"wMult":1
+				}
+			]	
+		}
+	],
+	"n":1,
+	"e":3,
+	"s":4,
+	"w":3,
+	"subtypeText":"Tarocco Reporter Mage"
+}
