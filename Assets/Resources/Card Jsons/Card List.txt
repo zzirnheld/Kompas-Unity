@@ -387,3 +387,4 @@ Harvald S Thonstrop
 Star Reporter
 Weather Reporter
 Temp Reporter
+Angry Reporter

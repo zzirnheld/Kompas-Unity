@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"spell to reveal",
-						"cardRestrictions":["Controller Matches Player Target","Hand","Subtypes Include"],
+						"cardRestrictions":["Controller Matches Player Target","Hand","Subtypes Include","Hidden"],
 						"subtypesInclude":["Reporter"]
 					}
 				},
@@ -49,7 +49,7 @@
 					"cardRestriction":
 					{
 						"blurb":"character to reveal",
-						"cardRestrictions":["Controller Matches Player Target","Hand","Is Character","Cost==X"]
+						"cardRestrictions":["Controller Matches Player Target","Hand","Is Character","Cost==X","Hidden"]
 					},
 					"xMultiplier":1
 				},
@@ -84,7 +84,7 @@
 					"playerIndex":-2,
 					"spaceRestriction":
 					{
-						"blurb":"where to wire up Conductor",
+						"blurb":"where for new Reporter to report",
 						"spaceRestrictions":["Can Play Target to This Space"]
 					}
 				},
