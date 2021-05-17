@@ -386,3 +386,4 @@ Al Angus Aston
 Harvald S Thonstrop
 Star Reporter
 Weather Reporter
+Temp Reporter
