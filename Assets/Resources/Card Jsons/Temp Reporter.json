@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Temp Reporter",
-	"effText":"When turns start, annihilate me.\nWhen I’m summoned, you can ask an enemy to reveal 2 cards. If they don’t, give me +4 NEWS.",
+	"effText":"When turns start, annihilate me.\nWhen I’m summoned, ask an enemy to reveal 2 cards. If they don’t, give me +4 NEWS.",
 	"effects":[
 		{
             "blurb":"Annihilate me",

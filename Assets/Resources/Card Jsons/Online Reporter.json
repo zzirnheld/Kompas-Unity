@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Online Reporter",
-	"effText":"Linewalk.\nWhen I move X, you can ask an enemy to reveal a cost < X card. If they don’t, give me +X ESW.",
+	"effText":"Linewalk.\nWhen I move X, ask an enemy to reveal a cost < X card. If they don’t, give me +X ESW.",
 	"effects":[
 		{
 			"blurb":"Onlinewalked",
