@@ -1,0 +1,64 @@
+{
+	"cardType":67,
+	"cardName":"Online Reporter",
+	"effText":"Linewalk.\nWhen I move X, you can ask an enemy to reveal a cost < X card. If they don’t, give me +X ESW.",
+	"effects":[
+		{
+			"blurb":"Onlinewalked",
+			"triggerData":
+			{
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+					"subeffIndices":[3],
+					"skipIndex":6
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"ChoiceBlurb":"Reveal an cost < X card?",
+					"OptionBlurbs":["Yes","No"],
+					"OptionJumpIndices":[3,6],
+					"showX":true
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"cost > X card to reveal",
+						"cardRestrictions":["Controller Matches Player Target","Hand","Cost<X","Hidden"]
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMult":1,
+					"sMult":1,
+					"wMult":1
+				}
+			]
+		}
+	],
+	"keywords":["Linewalk"],
+	"n":1,
+	"e":1,
+	"s":4,
+	"w":1,
+	"subtypeText":"Linewalker Reporter Mage"
+}

@@ -31,13 +31,13 @@
 				{
 					"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
 					"subeffIndices":[5],
-					"skipIndex":9
+					"skipIndex":8
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
 					"ChoiceBlurb":"Reveal an cost > X card?",
 					"OptionBlurbs":["Yes","No"],
-					"OptionJumpIndices":[5,9],
+					"OptionJumpIndices":[5,8],
 					"showX":true
 				},
 				{
@@ -51,10 +51,6 @@
 				},
 				{
 					"$type":"KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp",
-					"playerIndex":-2
 				},
 				{
 					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
