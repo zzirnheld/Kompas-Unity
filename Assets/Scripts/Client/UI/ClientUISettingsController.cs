@@ -15,6 +15,7 @@ namespace KompasClient.UI
 
         public ClientGame clientGame;
         public TMP_Dropdown statHighlightDropdown;
+        public TMP_InputField zoomThresholdInput;
 
         public void ApplySettings()
         {
@@ -35,7 +36,7 @@ namespace KompasClient.UI
             try
             {
                 if (string.IsNullOrEmpty(settingsJson)) ClientUISettings = ClientUISettings.Default;
-                else ClientUISettings = JsonConvert.DeserializeObject<ClientUISettings>(settingsJson);
+                else ClientUISettings = JsonConvert.DeserializeObject<ClientUISettings>(settingsJson).Cleanup();
             }
             catch (ArgumentException a)
             {
@@ -71,6 +72,7 @@ namespace KompasClient.UI
                 statHighlightDropdown.options.Add(new TMP_Dropdown.OptionData() { text = o.ToString() });
             }
             statHighlightDropdown.value = (int) ClientUISettings.statHighlight;
+            zoomThresholdInput.text = ClientUISettings.zoomThreshold.ToString("n1");
 
             gameObject.SetActive(true);
         }
@@ -78,6 +80,16 @@ namespace KompasClient.UI
         public void SetStatHighlight(int index)
         {
             ClientUISettings.statHighlight = (StatHighlight)index;
+            ApplySettings();
+        }
+
+        public void SetZoomThreshold(string thresholdString)
+        {
+            if (!float.TryParse(thresholdString, out ClientUISettings.zoomThreshold)
+                || ClientUISettings.zoomThreshold < 5f)
+                ClientUISettings.zoomThreshold = ClientUISettings.DefaultZoomThreshold;
+
+            zoomThresholdInput.text = ClientUISettings.zoomThreshold.ToString("n1");
             ApplySettings();
         }
 
@@ -92,13 +104,26 @@ namespace KompasClient.UI
     [Serializable]
     public class ClientUISettings
     {
+        public const float DefaultZoomThreshold = 14f;
+
         public StatHighlight statHighlight;
+        public float zoomThreshold;
 
         public static ClientUISettings Default => new ClientUISettings()
         {
-            statHighlight = StatHighlight.NoHighlight
+            statHighlight = StatHighlight.NoHighlight,
+            zoomThreshold = DefaultZoomThreshold
         };
 
+        /// <summary>
+        /// Updates any json-default values to their regular defaults
+        /// </summary>
+        /// <returns><see cref="this"/></returns>
+        public ClientUISettings Cleanup()
+        {
+            if (zoomThreshold == default) zoomThreshold = DefaultZoomThreshold;
 
+            return this;
+        }
     }
 }
