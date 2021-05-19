@@ -261,6 +261,7 @@ public class CardRepository : MonoBehaviour
         //if don't use .where .first it still grabs components that should be destroyed, and are destroyed as far as i can tell
         var avatar = avatarObj.GetComponents<AvatarClientGameCard>().Where(c => c is AvatarClientGameCard).First();
         avatarObj.GetComponents<CardController>().Where(c => c is ClientCardController).First().card = avatar;
+
         avatar.SetInfo(cardInfo, clientGame, owner, effects.ToArray(), id);
         avatar.gameObject.GetComponentInChildren<ClientCardMouseController>().ClientGame = clientGame;
         avatar.cardCtrl.SetImage(avatar.CardName, false);
@@ -306,7 +307,9 @@ public class CardRepository : MonoBehaviour
 
         //if don't use .where .first it still grabs components that should be destroyed, and are destroyed as far as i can tell
         var card = cardObj.GetComponents<ClientGameCard>().Where(c => !(c is AvatarClientGameCard)).First();
-        cardObj.GetComponents<CardController>().Where(c => c is ClientCardController).First().card = card;
+        var ctrl = cardObj.GetComponents<ClientCardController>().Where(c => c is ClientCardController).First();
+        ctrl.card = card;
+        ctrl.mouseCtrl.Card = card;
 
         Debug.Log($"Successfully created a card? {card != null} for json {json}");
         card.SetInfo(cardInfo, clientGame, owner, effects.ToArray(), id);

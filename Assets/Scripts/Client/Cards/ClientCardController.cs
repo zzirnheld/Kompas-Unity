@@ -28,6 +28,7 @@ public class ClientCardController : CardController
 
     private void OnDestroy()
     {
+        Debug.Log("Destroying a client card ctrl. Destroying this ctrl's mouse ctrl.");
         Destroy(mouseCtrl);
     }
 
