@@ -75,7 +75,17 @@ namespace KompasServer.Cards
         }
 
         private bool knownToEnemy = false;
-        public override bool KnownToEnemy => knownToEnemy;
+        public override bool KnownToEnemy
+        {
+            get => knownToEnemy;
+            set
+            {
+                bool old = knownToEnemy;
+                knownToEnemy = value;
+                //update clients if changed
+                if(old != value) ServerNotifier.NotifyKnownToEnemy(this, old);
+            }
+        }
 
         public override string ToString()
         {
@@ -158,8 +168,7 @@ namespace KompasServer.Cards
             {
                 EffectsController.TriggerForCondition(Trigger.Revealed, context);
                 //logic for actually revealing to client has to happen server-side.
-                knownToEnemy = true;
-                ServerController.ServerEnemy.ServerNotifier.NotifyDecrementHand();
+                KnownToEnemy = true;
                 ServerController.ServerEnemy.ServerNotifier.NotifyRevealCard(this);
                 return true;
             }

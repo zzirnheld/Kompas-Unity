@@ -211,7 +211,7 @@ namespace KompasCore.Cards
         /// Represents whether this card is currently known to the enemy of this player.
         /// TODO: make this also be accurate on client, remembering what thigns have been revealed
         /// </summary>
-        public virtual bool KnownToEnemy => !Game.HiddenLocations.Contains(Location);
+        public abstract bool KnownToEnemy { get; set; }
         public int TurnsOnBoard { get; private set; }
         public abstract bool IsAvatar { get; }
 

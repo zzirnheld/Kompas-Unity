@@ -17,6 +17,13 @@ public class ClientCardController : CardController
     public Sprite charHaze;
     public Sprite nonCharHaze;
 
+    public GameObject revealedImage;
+
+    public bool Revealed
+    {
+        set => revealedImage.SetActive(value);
+    }
+
     public override void SetPhysicalLocation(CardLocation location)
     {
         base.SetPhysicalLocation(location);

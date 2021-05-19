@@ -113,9 +113,12 @@ namespace KompasServer.Networking
 
         public void NotifyRevealCard(GameCard revealed)
         {
-            //NotifyDecrementHand();
+            NotifyDecrementHand();
             SendPacket(new AddCardPacket(revealed, invert: Player.index != 0));
         }
+
+        public void NotifyKnownToEnemy(GameCard toUpdate, bool wasKnown)
+            => SendToBothInverting(new UpdateKnownToEnemyPacket(toUpdate.KnownToEnemy, toUpdate.ID), known: wasKnown);
 
         public void GetHandSizeChoices(int[] cardIds, string listRestrictionJson)
             => SendPacket(new GetHandSizeChoicesOrderPacket(cardIds, listRestrictionJson));

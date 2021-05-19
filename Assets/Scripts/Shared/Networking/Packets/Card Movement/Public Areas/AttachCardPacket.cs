@@ -33,7 +33,7 @@ namespace KompasCore.Networking
         public override Packet GetInversion(bool known)
         {
             if (known) return new AttachCardPacket(cardId, json, 1 - controllerIndex, x, y, invert: true);
-            else return new AddCardPacket(cardId, json, CardLocation.Field, controllerIndex, x, y, true, invert: true);
+            else return new AddCardPacket(cardId, json, CardLocation.Field, controllerIndex, x, y, attached: true, known: true, invert: true);
         }
     }
 }
