@@ -146,6 +146,8 @@ namespace KompasServer.Cards
 
         public override bool Remove(IStackable stackSrc = null)
         {
+            Debug.Log($"Trying to remove {CardName} from {Location}");
+
             //proc the trigger before actually removing anything
             var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller ?? Controller);
 

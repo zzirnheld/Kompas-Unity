@@ -19,9 +19,17 @@ public class ClientCardController : CardController
 
     public GameObject revealedImage;
 
+    public ClientCardMouseController mouseCtrl;
+
     public bool Revealed
     {
         set => revealedImage.SetActive(value);
+    }
+
+    private void OnDestroy()
+    {
+        Debug.Log("Destroying a client card ctrl. Destroying this ctrl's mouse ctrl.");
+        Destroy(mouseCtrl);
     }
 
     public override void SetPhysicalLocation(CardLocation location)
