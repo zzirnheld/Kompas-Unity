@@ -114,6 +114,8 @@ namespace KompasCore.Cards
 
         public (int x, int y) SubjectivePosition => Controller.SubjectiveCoords(Position);
 
+        public bool InHiddenLocation => Game.IsHiddenLocation(Location);
+
         public int IndexInList
         {
             get

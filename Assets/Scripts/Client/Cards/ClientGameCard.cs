@@ -55,7 +55,7 @@ namespace KompasClient.Cards
             set
             {
                 knownToEnemy = value;
-                clientCardCtrl.Revealed = value;
+                clientCardCtrl.Revealed = KnownToEnemy && InHiddenLocation;
             }
         }
 
