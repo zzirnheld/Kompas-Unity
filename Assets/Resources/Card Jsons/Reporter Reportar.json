@@ -64,11 +64,6 @@
 					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
-					"playerIndex":-2,
-					"xModifier":2
-				},
-				{
 					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
 					"playerIndex":-2,
 					"maxCanChoose":1,

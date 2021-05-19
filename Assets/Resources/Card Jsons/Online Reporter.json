@@ -32,7 +32,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"cost > X card to reveal",
+						"blurb":"cost < X card to reveal",
 						"cardRestrictions":["Controller Matches Player Target","Hand","Cost<X","Hidden"]
 					},
 					"xMultiplier":1

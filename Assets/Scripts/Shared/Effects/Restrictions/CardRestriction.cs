@@ -91,11 +91,14 @@ namespace KompasCore.Effects
         public const string ELTX = "E<X";
         public const string SLTX = "S<X";
         public const string WLTX = "W<X";
+        public const string CostLTX = "Cost<X";
             //<=C
         public const string NLTEC = "N<=C";
         public const string ELTEC = "E<=C";
         public const string SLTEC = "S<=C";
         public const string WLTEC = "W<=C";
+        //>X
+        public const string CostGTX = "Cost>X";
         //misc statlike
         public const string CostLTAvatar = "Cost<Avatar";
         public const string CostGTAvatar = "Cost>Avatar";
@@ -294,11 +297,13 @@ namespace KompasCore.Effects
                 case ELTX:     return potentialTarget.E < x;
                 case SLTX:     return potentialTarget.S < x;
                 case WLTX:     return potentialTarget.W < x;
+                case CostLTX:  return potentialTarget.Cost < x;
                     //<=C
                 case NLTEC:    return potentialTarget.N <= constant;
                 case ELTEC:    return potentialTarget.E <= constant;
                 case SLTEC:    return potentialTarget.S <= constant;
                 case WLTEC:    return potentialTarget.W <= constant;
+                case CostGTX:  return potentialTarget.Cost > x;
                     //misc
                 case CostLTAvatar: return potentialTarget.Cost < Source.Controller.Avatar.Cost;
                 case CostGTAvatar: return potentialTarget.Cost > Source.Controller.Avatar.Cost;
