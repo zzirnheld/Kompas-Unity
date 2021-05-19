@@ -193,6 +193,7 @@ namespace KompasClient.GameCore
         public void ApplySettings()
         {
             var uiSettings = clientUISettingsCtrl.ClientUISettings;
+            ClientCameraController.ZoomThreshold = uiSettings.zoomThreshold;
             foreach (var card in ClientCards) card.clientCardCtrl.ApplySettings(uiSettings);
         }
 
