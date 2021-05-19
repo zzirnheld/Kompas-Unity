@@ -180,14 +180,9 @@ namespace KompasCore.Effects
             Source = source;
             Controller = controller;
             Effect = eff;
-            //if there's any secondary restriction, create it
-            if (secondaryRestrictionString != null)
-            {
-                secondaryRestriction = JsonUtility.FromJson<CardRestriction>(secondaryRestrictionString);
-                secondaryRestriction.Initialize(Subeffect);
-            }
 
-            xRestriction?.Initialize(Source, Subeffect);
+            secondaryRestriction?.Initialize(source, controller, eff);
+            xRestriction?.Initialize(source, Subeffect);
 
             /*
             if (cardRestrictions.Contains(ConnectedToSourceBy))
