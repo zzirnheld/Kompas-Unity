@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Wander Home",
-	"effText":"Choose a friendly Wanderer, then another character adjacent to them. Reshuffle the S X Wanderer. Deck-summon an S < X character. Reshuffle the other S X character. Their controller deck-summons an S < X character.",
+	"effText":"Reshuffle an adjacent friendly S X Wanderer. Deck-summon an S < X character. Reshuffle another adjacent S X character. Their controller deck-summons an S < X character.",
 	"effects":[
 		{
 			"triggerData":
@@ -17,16 +17,8 @@
 					"cardRestriction":
 					{
 						"blurb":"othercharacter to wander home",
-						"cardRestrictions":["Board","Is Character","Friendly","Subtypes Include"],
+						"cardRestrictions":["Board","Is Character","Friendly","Subtypes Include","Adjacent to Source"],
 						"subtypesInclude":["Wanderer"]
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"othercharacter to wander home",
-						"cardRestrictions":["Board","Is Character","Adjacent to Target"]
 					}
 				},
 				{
@@ -34,18 +26,16 @@
 					"cardValue":{
 						"value":"S"
 					},
-					"xMultiplier":1,
-					"targetIndex":0
+					"xMultiplier":1
 				},
 				{
-					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp",
-					"targetIndex":0
+					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"Wanderer to inspire with music",
+						"blurb":"character to wander out",
 						"cardRestrictions":["Is Character","Controller Matches Player Target","Deck","Card Value Fits X Restriction"],
 						"cardValue":{
 							"value":"S"
@@ -68,20 +58,25 @@
 					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				},
 				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"other character to wander home",
+						"cardRestrictions":["Board","Is Character","Adjacent to Source"]
+					}
+				},
+				{
 					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
 					"cardValue":{
 						"value":"S"
 					},
-					"xMultiplier":1,
-					"targetIndex":1
+					"xMultiplier":1
 				},
 				{
-					"$type":"KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp",
-					"targetIndex":1
+					"$type":"KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp",
-					"targetIndex":1
+					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
