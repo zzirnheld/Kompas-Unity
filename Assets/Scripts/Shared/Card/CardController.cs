@@ -44,6 +44,10 @@ namespace KompasCore.Cards
         public TMP_Text unzoomedCText;
         public TMP_Text unzoomedAText;
 
+        public TMP_Text zoomedNameText;
+        public TMP_Text zoomedSubtypesText;
+        public TMP_Text zoomedEffText;
+
         public GameObject currentTargetObject;
         public GameObject validTargetObject;
         public GameObject uniqueCopyObject;
@@ -261,6 +265,13 @@ namespace KompasCore.Cards
             bool unzoomedAug = cardType == 'A' && !zoomed;
             unzoomedAText.gameObject.SetActive(unzoomedAug);
             unzoomedAugStatBackgrounds.gameObject.SetActive(unzoomedAug);
+
+            zoomedNameText.gameObject.SetActive(zoomed);
+            zoomedSubtypesText.gameObject.SetActive(zoomed);
+            zoomedEffText.gameObject.SetActive(zoomed);
+            zoomedNameText.text = card.CardName;
+            zoomedSubtypesText.text = card.QualifiedSubtypeText;
+            zoomedEffText.text = card.EffText;
 
             zoomedAllFrame.SetActive(zoomed);
             unzoomedAllFrame.SetActive(!zoomed);
