@@ -7951,18 +7951,8 @@ MonoBehaviour:
   DeckbuilderCharPrefab: {fileID: 0}
   DeckbuilderSpellPrefab: {fileID: 0}
   DeckbuilderAugPrefab: {fileID: 0}
-  ClientAvatarPrefab: {fileID: 3146857051703895276, guid: eedbf9517c9afa440a613c7bf437a80e,
+  CardPrefab: {fileID: 3146857051703895276, guid: eedbf9517c9afa440a613c7bf437a80e,
     type: 3}
-  ClientCharPrefab: {fileID: 3146857051703895276, guid: 46ba5fc0233bfa34b8f702966c564175,
-    type: 3}
-  ClientSpellPrefab: {fileID: 3146857051703895276, guid: 46ba5fc0233bfa34b8f702966c564175,
-    type: 3}
-  ClientAugPrefab: {fileID: 3146857051703895276, guid: 46ba5fc0233bfa34b8f702966c564175,
-    type: 3}
-  ServerAvatarPrefab: {fileID: 0}
-  ServerCharPrefab: {fileID: 0}
-  ServerSpellPrefab: {fileID: 0}
-  ServerAugPrefab: {fileID: 0}
 --- !u!114 &492080565
 MonoBehaviour:
   m_ObjectHideFlags: 0

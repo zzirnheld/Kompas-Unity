@@ -1603,9 +1603,13 @@ GameObject:
   m_Component:
   - component: {fileID: 2157426566985455359}
   - component: {fileID: 5887324738723848399}
+  - component: {fileID: 8589791269361689367}
+  - component: {fileID: 4888445485465765321}
+  - component: {fileID: 4110055565959001442}
   - component: {fileID: 1007021757811295171}
+  - component: {fileID: -3233482119781338202}
   m_Layer: 0
-  m_Name: Client Avatar Card Brass
+  m_Name: Card Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1657,6 +1661,53 @@ MonoBehaviour:
   attacksThisTurn: 0
   mouseCtrl: {fileID: 1889302329618885808}
   clientCardCtrl: {fileID: 1007021757811295171}
+--- !u!114 &8589791269361689367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146857051703895276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5eaf700679447a438067b5b33bda12a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  simpleSprite: {fileID: 0}
+  cardCtrl: {fileID: 1007021757811295171}
+  attacksThisTurn: 0
+  mouseCtrl: {fileID: 1889302329618885808}
+  clientCardCtrl: {fileID: 1007021757811295171}
+--- !u!114 &4888445485465765321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146857051703895276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4738e24b32f68694fb5119b5e9f811e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  simpleSprite: {fileID: 0}
+  cardCtrl: {fileID: -3233482119781338202}
+  attacksThisTurn: 0
+--- !u!114 &4110055565959001442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146857051703895276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bcb8e7268d0fa643be59da4e538ebf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  simpleSprite: {fileID: 0}
+  cardCtrl: {fileID: -3233482119781338202}
+  attacksThisTurn: 0
 --- !u!114 &1007021757811295171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1711,6 +1762,51 @@ MonoBehaviour:
   charHaze: {fileID: 21300000, guid: 6a72156f301626e4cbd955ff2f237f7b, type: 3}
   nonCharHaze: {fileID: 21300000, guid: 7ad7e44fbcc316546b7d0e0095407166, type: 3}
   revealedImage: {fileID: 4144494382504138341}
+  mouseCtrl: {fileID: 1889302329618885808}
+--- !u!114 &-3233482119781338202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146857051703895276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6075e39016768b143af40ac75b10bc93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  card: {fileID: 4888445485465765321}
+  aoeController: {fileID: 3800830204807716009}
+  zoomedCharFrame: {fileID: 4269587110842798765}
+  zoomedAllFrame: {fileID: 7187772228533361689}
+  unzoomedCharFrame: {fileID: 1457058967496682558}
+  unzoomedAllFrame: {fileID: 1381182798238114637}
+  zoomedCharStatBackgrounds: {fileID: 6649678038580982359}
+  unzoomedCharStatBackgrounds: {fileID: 4484887762729981957}
+  zoomedSpellStatBackgrounds: {fileID: 6362096710813375021}
+  unzoomedSpellStatBackgrounds: {fileID: 9200787146226218536}
+  zoomedAugStatBackgrounds: {fileID: 2074378642539114013}
+  unzoomedAugStatBackgrounds: {fileID: 7958550959631281897}
+  zoomedNText: {fileID: 43076038857365400}
+  zoomedEText: {fileID: 2927600502923973182}
+  zoomedSText: {fileID: 7969599412030038954}
+  zoomedWText: {fileID: 1127007106016459297}
+  zoomedCText: {fileID: 7223276028854072480}
+  zoomedAText: {fileID: 7959067451288392212}
+  unzoomedNText: {fileID: 3625382428148799892}
+  unzoomedEText: {fileID: 7694190298499242399}
+  unzoomedSText: {fileID: 3625382428050118368}
+  unzoomedWText: {fileID: 3625382429207079244}
+  unzoomedCText: {fileID: 3625382428906105486}
+  unzoomedAText: {fileID: 3625382427361149801}
+  currentTargetObject: {fileID: 2284527895036328886}
+  validTargetObject: {fileID: 1704564887540371528}
+  uniqueCopyObject: {fileID: 8141676246729589860}
+  primaryStackableObject: {fileID: 8376111146485280923}
+  secondaryStackableObject: {fileID: 3737563041996298483}
+  attackOscillator: {fileID: 6079762201271065829}
+  effectOscillator: {fileID: 3077842578521903605}
+  cardImageImage: {fileID: 3907843146035040887}
 --- !u!1 &3506276986830655662
 GameObject:
   m_ObjectHideFlags: 0

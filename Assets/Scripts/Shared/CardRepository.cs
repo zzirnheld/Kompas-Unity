@@ -34,6 +34,7 @@ public class CardRepository : MonoBehaviour
     public GameObject DeckbuilderSpellPrefab;
     public GameObject DeckbuilderAugPrefab;
 
+    /*
     public GameObject ClientAvatarPrefab;
     public GameObject ClientCharPrefab;
     public GameObject ClientSpellPrefab;
@@ -43,6 +44,8 @@ public class CardRepository : MonoBehaviour
     public GameObject ServerCharPrefab;
     public GameObject ServerSpellPrefab;
     public GameObject ServerAugPrefab;
+    */
+    public GameObject CardPrefab;
     #endregion prefabs
 
     void Awake()
@@ -151,7 +154,18 @@ public class CardRepository : MonoBehaviour
             return null;
         }
 
-        AvatarServerGameCard avatar = Instantiate(ServerAvatarPrefab).GetComponent<AvatarServerGameCard>();
+        var avatarObj = Instantiate(CardPrefab);
+        var cardComponents = avatarObj
+            .GetComponents(typeof(GameCard))
+            .Where(c => !(c is AvatarServerGameCard));
+        foreach (var c in cardComponents) Destroy(c);
+
+        var cardCtrlComponents = avatarObj
+            .GetComponents(typeof(CardController))
+            .Where(c => c is ClientCardController);
+        foreach (var c in cardCtrlComponents) Destroy(c);
+
+        var avatar = avatarObj.GetComponents<AvatarServerGameCard>().Where(c => c is AvatarServerGameCard).First();
         avatar.SetInfo(card, serverGame, owner, effects.ToArray(), id);
         avatar.cardCtrl.SetImage(avatar.CardName, false);
         serverGame.cardsByID.Add(id, avatar);
@@ -161,7 +175,7 @@ public class CardRepository : MonoBehaviour
     public ServerGameCard InstantiateServerNonAvatar(string name, ServerGame serverGame, ServerPlayer owner, int id)
     {
         string json = cardJsons[name] ?? throw new System.ArgumentException($"Name {name} not associated with json");
-        ServerGameCard card = Instantiate(ServerCharPrefab).GetComponent<ServerGameCard>(); ;
+        var cardObj = Instantiate(CardPrefab);
         ServerSerializableCard cardInfo;
         List<ServerEffect> effects = new List<ServerEffect>();
 
@@ -184,6 +198,25 @@ public class CardRepository : MonoBehaviour
             Debug.LogError($"Failed to load {json}, argument exception with message {argEx.Message}, stacktrace {argEx.StackTrace}");
             return null;
         }
+
+        var cardComponents = cardObj
+            .GetComponents(typeof(GameCard))
+            .Where(c => c is AvatarServerGameCard || !(c is ServerGameCard));
+        foreach (var c in cardComponents)
+        {
+            Debug.Log($"going to delete {c.GetType()}");
+        }
+        foreach (var c in cardComponents) Destroy(c);
+
+        var cardCtrlComponents = cardObj
+            .GetComponents(typeof(CardController))
+            .Where(c => c is ClientCardController);
+        foreach (var c in cardCtrlComponents) Destroy(c);
+
+        //if don't use .where .first it still grabs components that should be destroyed, and are destroyed as far as i can tell
+        var card = cardObj.GetComponents<ServerGameCard>().Where(c => !(c is AvatarServerGameCard)).First();
+        cardObj.GetComponents<CardController>().Where(c => !(c is ClientCardController)).First().card = card;
+
         card.SetInfo(cardInfo, serverGame, owner, effects.ToArray(), id);
         card.cardCtrl.SetImage(card.CardName, false);
         return card;
@@ -213,7 +246,21 @@ public class CardRepository : MonoBehaviour
             Debug.LogError($"Failed to load client Avatar, argument exception with message {argEx.Message},\n {argEx.StackTrace}, for json:\n{json}");
             return null;
         }
-        AvatarClientGameCard avatar = Instantiate(ClientAvatarPrefab).GetComponent<AvatarClientGameCard>();
+        var avatarObj = Instantiate(CardPrefab);
+
+        var cardComponents = avatarObj
+            .GetComponents(typeof(GameCard))
+            .Where(c => !(c is AvatarClientGameCard));
+        foreach (var c in cardComponents) Destroy(c);
+
+        var cardCtrlComponents = avatarObj
+            .GetComponents(typeof(CardController))
+            .Where(c => !(c is ClientCardController));
+        foreach (var c in cardCtrlComponents) Destroy(c);
+
+        //if don't use .where .first it still grabs components that should be destroyed, and are destroyed as far as i can tell
+        var avatar = avatarObj.GetComponents<AvatarClientGameCard>().Where(c => c is AvatarClientGameCard).First();
+        avatarObj.GetComponents<CardController>().Where(c => c is ClientCardController).First().card = avatar;
         avatar.SetInfo(cardInfo, clientGame, owner, effects.ToArray(), id);
         avatar.gameObject.GetComponentInChildren<ClientCardMouseController>().ClientGame = clientGame;
         avatar.cardCtrl.SetImage(avatar.CardName, false);
@@ -245,7 +292,22 @@ public class CardRepository : MonoBehaviour
             Debug.LogError($"Failed to load {json}, argument exception with message {argEx.Message}, {argEx.StackTrace}");
             return null;
         }
-        ClientGameCard card = Instantiate(ClientCharPrefab).GetComponent<ClientGameCard>();
+        var cardObj = Instantiate(CardPrefab);
+
+        var cardComponents = cardObj
+            .GetComponents(typeof(GameCard))
+            .Where(c => c is AvatarClientGameCard || !(c is ClientGameCard));
+        foreach (var c in cardComponents) Destroy(c);
+
+        var cardCtrlComponents = cardObj
+            .GetComponents(typeof(CardController))
+            .Where(c => !(c is ClientCardController));
+        foreach (var c in cardCtrlComponents) Destroy(c);
+
+        //if don't use .where .first it still grabs components that should be destroyed, and are destroyed as far as i can tell
+        var card = cardObj.GetComponents<ClientGameCard>().Where(c => !(c is AvatarClientGameCard)).First();
+        cardObj.GetComponents<CardController>().Where(c => c is ClientCardController).First().card = card;
+
         Debug.Log($"Successfully created a card? {card != null} for json {json}");
         card.SetInfo(cardInfo, clientGame, owner, effects.ToArray(), id);
         card.cardCtrl.SetImage(card.CardName, false);
