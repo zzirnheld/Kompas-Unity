@@ -40,6 +40,7 @@ namespace KompasCore.Effects
         public const string AdjacentToEnemy = "Adjacent to Enemy";
         public const string ControllerMatchesTarget = "Controller Matches Target's";
         public const string ControllerMatchesPlayerTarget = "Controller Matches Player Target";
+        public const string ControllerIsntPlayerTarget = "Controller Isn't Player Target";
 
         //summoned
         public const string Summoned = "Summoned"; //non-avatar character
@@ -242,6 +243,7 @@ namespace KompasCore.Effects
                 case TurnPlayerControls: return potentialTarget.Controller == Subeffect.Game.TurnPlayer;
                 case ControllerMatchesTarget: return potentialTarget.Controller == Subeffect.Target.Controller;
                 case ControllerMatchesPlayerTarget: return potentialTarget.Controller == Subeffect.Player;
+                case ControllerIsntPlayerTarget: return potentialTarget.Controller != Subeffect.Player;
 
                 //summoned
                 case Summoned:  return potentialTarget.Summoned;

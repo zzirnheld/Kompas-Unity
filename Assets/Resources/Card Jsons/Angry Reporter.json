@@ -60,14 +60,13 @@
 					"cardRestriction":
 					{
 						"blurb":"enemy character to attack",
-						"cardRestrictions":["Is Character","Enemy","Board","Adjacent to Target"]
-					},
-                    "targetIndex":-2
+						"cardRestrictions":["Is Character","Controller Isn't Player Target","Board","Adjacent to Target"]
+					}
 				},
 				{
 					"$type":"KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
 					"targetIndex":-1,
-					"attackerIndex":-3
+					"attackerIndex":-2
 				}
 			]	
 		}
