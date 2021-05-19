@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Field Report",
-	"effText":"Choose a friendly SX Reporter. Your opponent can reveal a character with S <= X. If they do, draw 1. If they don't, search your deck for an S <= X Reporter.",
+	"effText":"Set X to the S of an adjacent friendly Reporter. Your opponent can reveal a character with S <= X. If they do, draw 1. If they don't, search your deck for an S <= X Reporter.",
 	"effects":[
 		{
 			"triggerData":

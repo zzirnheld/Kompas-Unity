@@ -155,9 +155,7 @@ namespace KompasCore.Effects
         public CardValue cardValue;
         public XRestriction xRestriction;
 
-        [NonSerialized]
-        private CardRestriction secondaryRestriction;
-        public string secondaryRestrictionString = null;
+        public CardRestriction secondaryRestriction;
 
         public CardRestriction connectednessRestriction;
 

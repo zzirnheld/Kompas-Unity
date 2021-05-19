@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Death of a Soul",
-	"effText":"Annihilate friendly dead Revenants with total S X. Annihilate an S <= X / 2 character.",
+	"effText":"Annihilate friendly dead Revenants with total S X. Annihilate an adjacent S <= X / 2 character.",
 	"effects":[
 		{
 			"triggerData":
@@ -42,7 +42,7 @@
 					"cardRestriction":
 					{
 						"blurb":"character whose soul to kill",
-						"cardRestrictions":["Board","Is Character","Cost<=X"]
+						"cardRestrictions":["Board","Is Character","Cost<=X","Adjacent to Source"]
 					},
 					"xMultiplier":1,
 					"xDivisor":2

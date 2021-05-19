@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Past Lives",
-	"effText":"Unloopable: 1/name/turn. Resummon all characters.",
+	"effText":"Echo all characters.",
 	"effects":[
 		{
 			"triggerData":

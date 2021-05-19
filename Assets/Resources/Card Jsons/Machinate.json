@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Machinate",
-	"effText":"Repeat the following any number of times: Hand-discard a CX Machination. Give a Machination +X C.",
+	"effText":"Repeat the following any number of times: Hand-discard a CX Machination. Give an adjacent Machination +X C.",
 	"effects":[
 		{
 			"triggerData":
@@ -34,7 +34,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Plan to advance",
-						"cardRestrictions":["Board","Subtypes Include"],
+						"cardRestrictions":["Board","Adjacent to Source","Subtypes Include"],
 						"subtypesInclude":["Machination"]
 					}
 				},

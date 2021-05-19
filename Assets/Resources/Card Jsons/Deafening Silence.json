@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Deafening Silence",
-	"effText":"Set X to the number of your dead Cultists. Give a character -XW.",
+	"effText":"Set X to the number of your dead Cultists. Give a character -X EW.",
 	"effects":[
 		{
 			"triggerData":
@@ -32,6 +32,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMult":-1,
 					"wMult":-1
 				}
 			]

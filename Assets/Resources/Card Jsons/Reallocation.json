@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Reallocation",
-	"effText":"Rehand a friendly CX spell. Give a friendly character +X ESW. (This doesn't negate anything the spell was doing.)",
+	"effText":"Rehand a distinct adjacent friendly CX spell. Give an adjacent friendly character +X ESW. (This doesn't negate anything the spell was doing.)",
 	"effects":[
 		{
 			"triggerData":
@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Machination that has come to Fruition",
-						"cardRestrictions":["Is Spell","Friendly","Board"]
+						"cardRestrictions":["Is Spell","Friendly","Board","Adjacent to Source","Distinct Name from Source"]
 					}
 				},
 				{

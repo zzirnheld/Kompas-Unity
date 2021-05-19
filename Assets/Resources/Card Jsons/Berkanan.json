@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Berkanan",
-	"effText":"Runic.\nSet a Summoned character’s NW to 0 and ES to 5.",
+	"effText":"Runic.\nSet an adjacent Summoned character’s NW to 0 and ES to 5.",
 	"effects":[
 		{
 			"triggerData":
@@ -16,7 +16,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Board","Summoned"]
+						"cardRestrictions":["Is Character","Board","Summoned","Adjacent to Source"]
 					}
 				},
 				{

@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Rebinding",
-	"effText":"Kill a friendly SX character. Give two cards +X cost (characters get +X S, spells get +X C, augments get +X A).",
+	"effText":"Kill an adjacent friendly SX character. Give two cards +X cost (characters get +X S, spells get +X C, augments get +X A).",
 	"effects":[
 		{
 			"blurb":"Simple",
@@ -18,7 +18,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Rebinding to kill",
-						"cardRestrictions":["Friendly","Board"]
+						"cardRestrictions":["Friendly","Board","Adjacent to Source"]
 					}
 				},
 				{

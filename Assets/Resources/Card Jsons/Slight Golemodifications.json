@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Slight Golemodifications",
-	"effText":"Tribute a friendly SX Golem.\nHand-summon or revive a Golem with S < X and activate it (permanently).",
+	"effText":"Tribute an adjacent friendly SX Golem.\nHand-summon or revive a Golem with S < X and activate it (permanently).",
 	"effects":[
 		{
 			"triggerData":
@@ -16,7 +16,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Subtypes Include","Is Character","Friendly","Board"],
+						"cardRestrictions":["Subtypes Include","Is Character","Friendly","Board","Adjacent to Source"],
 						"subtypesInclude":["Golem"]
 					}
 				},

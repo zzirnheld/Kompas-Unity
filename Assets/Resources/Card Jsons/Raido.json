@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Raido",
-	"effText":"Runic.\nMove a card anywhere (that there isn't already a card).",
+	"effText":"Runic.\nMove an adjacent card to any empty space.",
 	"effects":[
 		{
 			"triggerData":
@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"card for Raido to move",
-						"cardRestrictions":["Board"]
+						"cardRestrictions":["Board","Adjacent to Source"]
 					}
 				},
 				{

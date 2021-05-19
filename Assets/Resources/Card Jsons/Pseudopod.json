@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Pseudopod",
-	"effText":"Choose a friendly Shaper. Move an enemy character to be adjacent to the chosen Shaper.",
+	"effText":"Choose a friendly Shaper. Move an enemy character to a space adjacent to the chosen Shaper.",
 	"effects":[
 		{
 			"triggerData":
