@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Dreamscape",
-	"effText":"The first time each turn a Shaper moves, reset their E and give them +1 N.",
+	"effText":"The first time each turn a Shaper moves, give them +1 N and heal them.",
 	"effects":[
 		{
 			"triggerData":
@@ -21,12 +21,11 @@
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ResetStatsSubeffect, Assembly-CSharp",
-					"resetE":true
-				},
-				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"nMod":1
+				},
+				{
+					"$type":"KompasServer.Effects.HealSubeffect, Assembly-CSharp"
 				}
 			]	
 		}
