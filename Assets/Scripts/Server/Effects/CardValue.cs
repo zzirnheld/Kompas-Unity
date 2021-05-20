@@ -14,6 +14,10 @@ namespace KompasCore.Effects
         private const string Endurance = "E";
         private const string SummoningCost = "S";
         private const string Wounding = "W";
+        private const string CastingCost = "C";
+        private const string AugmentCost = "A";
+
+        private const string Cost = "Cost";
         #endregion values
 
         public string value;
@@ -31,6 +35,10 @@ namespace KompasCore.Effects
                 case Endurance:     return card.E;
                 case SummoningCost: return card.S;
                 case Wounding:      return card.W;
+                case CastingCost:   return card.C;
+                case AugmentCost:   return card.A;
+
+                case Cost:          return card.Cost;
                 default: throw new ArgumentException($"Invalid value string {value}", "value");
             }
         }
