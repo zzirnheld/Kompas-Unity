@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Soulflare",
-	"effText":"Annihilate X Revenants from your hand. Draw X. Gain X pips.",
+	"effText":"Hand->annihilate X Revenants. Draw X. Gain X pips.",
 	"effects":[
 		{
 			"triggerData":

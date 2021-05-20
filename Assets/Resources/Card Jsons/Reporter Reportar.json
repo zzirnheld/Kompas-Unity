@@ -1,0 +1,102 @@
+{
+	"cardType":67,
+	"cardName":"Reporter Reportar",
+	"effText":"Once each friendly turn, you can reveal an SX Reporter. Your opponent can reveal an SX character. If they do, draw 1. If they don't, pip deck->summon an S <= X character.",
+	"effects":[
+		{
+			"activationRestriction":{
+				"activationRestrictionArray":[
+					"Max Times Per Turn",
+					"Friendly Turn",
+					"Default"
+				]
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"spell to reveal",
+						"cardRestrictions":["Controller Matches Player Target","Hand","Subtypes Include","Hidden"],
+						"subtypesInclude":["Reporter"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"S",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+					"subeffIndices":[6],
+					"skipIndex":10
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"ChoiceBlurb":"Reveal an SX character?",
+					"OptionBlurbs":["Yes","No"],
+					"OptionJumpIndices":[6,10],
+					"showX":true
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"character to reveal",
+						"cardRestrictions":["Controller Matches Player Target","Hand","Is Character","Cost==X","Hidden"]
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp",
+					"playerIndex":-2
+				},
+				{
+					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"playerIndex":-2,
+					"maxCanChoose":1,
+					"cardRestriction":
+					{
+						"blurb":"character to report",
+						"cardRestrictions":["Friendly","Deck","Is Character","Effect Controller can Afford Cost"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"playerIndex":-2,
+					"spaceRestriction":
+					{
+						"blurb":"where for new Reporter to report",
+						"spaceRestrictions":["Can Play Target to This Space"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"playerIndex":-2,
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp",
+					"playerIndex":-2
+				}
+			]	
+		}
+	],
+	"n":1,
+	"e":3,
+	"s":4,
+	"w":4,
+	"subtypeText":"Reporter Reporter"
+}

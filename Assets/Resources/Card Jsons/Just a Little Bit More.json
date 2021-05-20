@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Just a Little Bit More",
-	"effText":"Ificate.\nDiscard 1. Draw 1. Move a card 1 space. Annihilate me.",
+	"effText":"Ificate.\nDiscard 1. Draw 1. Move a card 1 space.",
 	"effects":[
 		{
 			"triggerData":
@@ -45,12 +45,6 @@
 				},
 				{
 					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
 				}
 			]
 		}

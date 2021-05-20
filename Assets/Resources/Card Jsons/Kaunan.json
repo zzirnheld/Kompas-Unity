@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Kaunan",
-	"effText":"Runic.\nGive a Summoned character -3 EW.",
+	"effText":"Runic.\nGive an adjacent character -3 EW.",
 	"effects":[
 		{
 			"triggerData":
@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Kaunan to give -3 EW",
-						"cardRestrictions":["Is Character","Summoned","Board"]
+						"cardRestrictions":["Is Character","Adjacent to Source","Board"]
 					}
 				},
 				{

@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Send Home",
-	"effText":"Annihilate a character adjacent to a Shaper.",
+	"effText":"Annihilate a character adjacent to me and a Shaper.",
 	"effects":[
 		{
 			"triggerData":
@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"character to ANNIHILATE",
-						"cardRestrictions":["Board","Is Character","Adjacent to Subtype"],
+						"cardRestrictions":["Board","Is Character","Adjacent to Subtype","Adjacent to Source"],
 						"adjacencySubtypes":["Shaper"]
 					}
 				},

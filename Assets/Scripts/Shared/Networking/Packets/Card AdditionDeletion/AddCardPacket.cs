@@ -15,6 +15,7 @@ namespace KompasCore.Networking
         public int x;
         public int y;
         public bool attached;
+        public bool known;
 
         public AddCardPacket() : base(AddCard) { }
 
@@ -27,22 +28,23 @@ namespace KompasCore.Networking
         }
 
         public AddCardPacket(int cardId, string json, CardLocation location, int controllerIndex, 
-            int x, int y, bool attached, bool invert = false) 
+            int x, int y, bool attached, bool known, bool invert = false) 
             : this(cardId, json, location, controllerIndex, invert)
         {
             this.x = invert ? 6 - x : x;
             this.y = invert ? 6 - y : y;
             this.attached = attached;
+            this.known = known;
         }
 
         //TODO allow for card to be added with stats not as defaults.
         //this will require using a json library that allows for polymorphism-ish stuff
         public AddCardPacket(GameCard card, bool invert = false)
             : this(cardId: card.ID, json: card.BaseJson, location: card.Location, controllerIndex: card.ControllerIndex, 
-                  x: card.BoardX, y: card.BoardY, attached: card.Attached, invert: invert)
+                  x: card.BoardX, y: card.BoardY, attached: card.Attached, known: card.KnownToEnemy, invert: invert)
         { }
 
-        public override Packet Copy() => new AddCardPacket(cardId, json, location, controllerIndex, x, y, attached);
+        public override Packet Copy() => new AddCardPacket(cardId, json, location, controllerIndex, x, y, attached, known);
 
         public override Packet GetInversion(bool known)
         {
@@ -55,7 +57,7 @@ namespace KompasCore.Networking
                     default: throw new System.ArgumentException($"What should add card packet do when a card is added to the hidden location {location}");
                 }
             }
-            else return new AddCardPacket(cardId, json, location, controllerIndex, x, y, attached, invert: true);
+            else return new AddCardPacket(cardId, json, location, controllerIndex, x, y, attached, known, invert: true);
         }
     }
 }
@@ -91,6 +93,7 @@ namespace KompasClient.Networking
                 default:
                     throw new System.ArgumentException($"Invalid location {location} for Add Card Client Packet to put card");
             }
+            card.KnownToEnemy = known;
         }
     }
 }

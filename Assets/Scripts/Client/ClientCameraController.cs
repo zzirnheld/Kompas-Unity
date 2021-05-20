@@ -15,7 +15,8 @@ public class ClientCameraController : MonoBehaviour
     public const float MinCameraHeight = 2f;
     public const float MaxCameraHeight = 30f;
     public const float MaxCameraPan = 12f;
-    public const float ZoomThreshold = 14f; //TODO allow player to change this in settings
+
+    public static float ZoomThreshold = 14f;
 
     public float PanFactor => Mathf.Log10(transform.position.y) * PanFactorBase;
     public float RotationAngle => Mathf.Log10(transform.position.y) * RotationFactorBase;

@@ -114,6 +114,8 @@ namespace KompasCore.Cards
 
         public (int x, int y) SubjectivePosition => Controller.SubjectiveCoords(Position);
 
+        public bool InHiddenLocation => Game.IsHiddenLocation(Location);
+
         public int IndexInList
         {
             get
@@ -211,7 +213,7 @@ namespace KompasCore.Cards
         /// Represents whether this card is currently known to the enemy of this player.
         /// TODO: make this also be accurate on client, remembering what thigns have been revealed
         /// </summary>
-        public virtual bool KnownToEnemy => !Game.HiddenLocations.Contains(Location);
+        public abstract bool KnownToEnemy { get; set; }
         public int TurnsOnBoard { get; private set; }
         public abstract bool IsAvatar { get; }
 
@@ -568,6 +570,12 @@ namespace KompasCore.Cards
         {
             SetNegated(true, stackSrc);
             Discard(stackSrc);
+        }
+
+        public virtual bool Reveal(IStackable stackSrc = null) 
+        {
+            //Reveal should only succeed if the card is not known to the enemy
+            return !KnownToEnemy; 
         }
         #endregion moveCard
     }

@@ -22,7 +22,8 @@ namespace KompasServer.Cards
         //public override int CombatDamage => Summoned ? base.CombatDamage : 0;
 
         public override bool Remove(IStackable stackSrc = null)
-        {   
+        {
+            Debug.Log($"Trying to remove AVATAR {CardName} from {Location}");
             if (Summoned) return base.Remove(stackSrc);
             else return Location == CardLocation.Nowhere;
         }

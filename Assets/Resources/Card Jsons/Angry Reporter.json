@@ -1,0 +1,81 @@
+{
+	"cardType":67,
+	"cardName":"Angry Reporter",
+	"effText":"Once each friendly turn, you can choose a friendly WX character and ask an opponent to reveal a cost > X card. If they don’t, the chosen character attacks.",
+	"effects":[
+		{
+			"activationRestriction":{
+				"activationRestrictionArray":[
+					"Max Times Per Turn",
+					"Friendly Turn",
+					"Default"
+				]
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"angry WX character that might attack",
+						"cardRestrictions":["Controller Matches Player Target","Board"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"W",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+					"subeffIndices":[5],
+					"skipIndex":8
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"ChoiceBlurb":"Reveal an cost > X card?",
+					"OptionBlurbs":["Yes","No"],
+					"OptionJumpIndices":[5,8],
+					"showX":true
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"cost > X card to reveal",
+						"cardRestrictions":["Controller Matches Player Target","Hand","Cost>X","Hidden"]
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"enemy character to attack",
+						"cardRestrictions":["Is Character","Controller Isn't Player Target","Board","Adjacent to Target"]
+					},
+					"playerIndex":-2
+				},
+				{
+					"$type":"KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"playerIndex":-2,
+					"targetIndex":-1,
+					"attackerIndex":-2
+				}
+			]	
+		}
+	],
+	"n":2,
+	"e":2,
+	"s":4,
+	"w":5,
+	"subtypeText":"Ethereal Reporter Spirit"
+}

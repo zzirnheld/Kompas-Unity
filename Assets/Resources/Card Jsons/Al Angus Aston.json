@@ -1,0 +1,77 @@
+{
+	"cardType":67,
+	"cardName":"Al Angus Aston",
+	"effText":"Once each round, you can ask your opponent to reveal 2 cards. If they don't, give all friendly Reporters +1 NEWS and draw 1. (NEWS is NESW, but thematic.)",
+	"effects":[
+		{
+			"activationRestriction":{
+				"activationRestrictionArray":[
+					"Max Times Per Round",
+					"Default"
+				]
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+					"subeffIndices":[3],
+					"skipIndex":7
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"ChoiceBlurb":"Reveal two cards?",
+					"OptionBlurbs":["Yes","No"],
+					"OptionJumpIndices":[3,7],
+					"showX":true
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"cards to reveal",
+						"cardRestrictions":["Controller Matches Player Target","Hand","Hidden"]
+					},
+					"listRestriction":{
+						"listRestrictions":["Min Can Choose","Max Can Choose"],
+                        "minCanChoose":2,
+						"maxCanChoose":2
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.RevealSubeffect, Assembly-CSharp",
+                    "targetIndex":-2
+				},
+				{
+					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp",
+					"playerIndex":-2
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character","Board","Friendly","Subtypes Include"],
+						"subtypesInclude":["Reporter"]
+					},
+					"nMod":1,
+					"eMod":1,
+					"sMod":1,
+					"wMod":1
+				}
+			]	
+		}
+	],
+	"unique":true,
+	"n":1,
+	"e":5,
+	"s":6,
+	"w":6,
+	"subtypeText":"Probably Crazy Libelous Reporter Person"
+}

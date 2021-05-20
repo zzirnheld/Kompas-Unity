@@ -1,0 +1,62 @@
+{
+	"cardType":67,
+	"cardName":"Harvald S Thonstrop",
+	"effText":"The first time each turn an enemy card is revealed, Invoke.",
+	"effects":[
+		{
+            "blurb":"I knEW IT",
+			"triggerData":
+			{
+				"triggerCondition":"Revealed",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Max Per Turn","Triggerer Fits Restriction"],
+					"cardRestriction":
+					{
+						"cardRestrictions":["Enemy"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
+					"whatToCount":"S",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.MillSubeffect, Assembly-CSharp",
+					"xModifier":1
+				},
+				{
+					"$type":"KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"condition":"Target Violates Restriction",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character","S<X"]
+					},
+					"jumpIndex":2,
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where to Invoke",
+						"spaceRestrictions":["Can Play Target to This Space"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+	"unique":true,
+	"n":1,
+	"e":5,
+	"s":8,
+	"w":5,
+	"subtypeText":"Crazy Intoxicated Reporter Person"
+}

@@ -1,0 +1,89 @@
+{
+	"cardType":67,
+	"cardName":"Temp Reporter",
+	"effText":"When turns start, annihilate me.\nWhen I’m summoned, ask an enemy to reveal 2 cards. If they don’t, give me +4 NEWS.",
+	"effects":[
+		{
+            "blurb":"Annihilate me",
+			"triggerData":
+			{
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				}
+			]
+        },
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+					"subeffIndices":[3],
+					"skipIndex":7
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"ChoiceBlurb":"Reveal two cards?",
+					"OptionBlurbs":["Yes","No"],
+					"OptionJumpIndices":[3,7],
+					"showX":true
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"cards to reveal",
+						"cardRestrictions":["Controller Matches Player Target","Hand","Hidden"]
+					},
+					"listRestriction":{
+						"listRestrictions":["Min Can Choose","Max Can Choose"],
+                        "minCanChoose":2,
+						"maxCanChoose":2
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.RevealSubeffect, Assembly-CSharp",
+                    "targetIndex":-2
+				},
+				{
+					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"nMod":4,
+					"eMod":4,
+					"sMod":4,
+					"wMod":4
+				}
+			]	
+		}
+	],
+	"n":1,
+	"e":1,
+	"s":2,
+	"w":1,
+	"subtypeText":"Ethereal Reporter"
+}

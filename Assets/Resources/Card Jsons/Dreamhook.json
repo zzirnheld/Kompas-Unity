@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Dreamhook",
-	"effText":"Move a Shaper to be adjacent to an enemy character. They fight.",
+	"effText":"Move an adjacent Shaper to be adjacent to an enemy character. They fight.",
 	"effects":[
 		{
 			"triggerData":
@@ -16,17 +16,17 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"enemy character to move adjacent to",
-						"cardRestrictions":["Is Character","Enemy","Board"]
+						"blurb":"Friendly Shaper to move",
+						"cardRestrictions":["Subtypes Include","Is Character","Friendly","Board","Adjacent to Source"],
+						"subtypesInclude":["Shaper"]
 					}
 				},
 				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"Friendly Shaper to move the enemy adjacent to",
-						"cardRestrictions":["Subtypes Include","Is Character","Friendly","Board"],
-						"subtypesInclude":["Shaper"]
+						"blurb":"enemy character to move adjacent to",
+						"cardRestrictions":["Is Character","Enemy","Board"]
 					}
 				},
 				{

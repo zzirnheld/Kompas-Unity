@@ -154,7 +154,7 @@ namespace KompasServer.GameCore
                 }
                 player.deckCtrl.ShuffleIn(card);
                 if (card != null) Debug.Log($"Adding new card {card.CardName} with id {card.ID}");
-                player.ServerNotifier.NotifyAddToDeck(card, wasKnown: false);
+                player.ServerNotifier.NotifyCreateCard(card, wasKnown: false);
             }
 
             Debug.Log($"Setting avatar for player {player.index}");

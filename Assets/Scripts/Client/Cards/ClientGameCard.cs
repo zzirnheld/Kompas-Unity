@@ -48,6 +48,17 @@ namespace KompasClient.Cards
         public ClientCardMouseController mouseCtrl;
         public ClientCardController clientCardCtrl;
 
+        private bool knownToEnemy = false;
+        public override bool KnownToEnemy
+        {
+            get => knownToEnemy;
+            set
+            {
+                knownToEnemy = value;
+                clientCardCtrl.Revealed = KnownToEnemy && InHiddenLocation;
+            }
+        }
+
         public override bool Remove(IStackable stackSrc = null)
         {
             ClientGame.MarkCardDirty(this);

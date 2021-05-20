@@ -20,6 +20,9 @@ namespace KompasCore.Cards
         string SubtypeText { get; }
         GameCard AugmentedCard { get; }
         IEnumerable<GameCard> Augments { get; }
+        bool KnownToEnemy { get; }
+
+        bool Fast { get; }
 
         int N { get; }
         int E { get; }
@@ -66,6 +69,9 @@ namespace KompasCore.Cards
         public string SubtypeText { get; }
         public GameCard AugmentedCard { get; }
         public IEnumerable<GameCard> Augments { get; }
+        public bool KnownToEnemy { get; }
+
+        public bool Fast { get; }
 
         public int N { get; }
         public int E { get; }
@@ -98,6 +104,8 @@ namespace KompasCore.Cards
             SubtypeText = card.SubtypeText;
             AugmentedCard = card.AugmentedCard;
             Augments = card.Augments.ToArray();
+            KnownToEnemy = card.KnownToEnemy;
+            Fast = card.Fast;
             N = card.N;
             E = card.E;
             S = card.S;

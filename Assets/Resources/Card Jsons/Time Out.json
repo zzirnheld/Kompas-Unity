@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Time Out",
-	"effText":"Choose an enemy character wielding a friendly Sportsball. Rehand their Augments (to their owners), then rehand the character.",
+	"effText":"Choose an adjacent enemy character wielding a friendly Sportsball. Rehand their Augments (to their owners), then rehand the character.",
 	"effects":[
 		{
 			"triggerData":
@@ -17,12 +17,12 @@
 					"cardRestriction":
 					{
 						"blurb":"character to put in TIME OUT!",
-						"cardRestrictions":["Board","Is Character","Enemy","Wields Augment Fitting Restriction"],
-						"secondaryRestrictionString":
-						"{
-							\"cardRestrictions\":[\"Friendly\",\"Subtypes Include\"],
-							\"subtypesInclude\":[\"Sportsball\"]
-						}"
+						"cardRestrictions":["Board","Is Character","Enemy","Wields Augment Fitting Restriction","Adjacent to Source"],
+						"secondaryRestriction":
+						{
+							"cardRestrictions":["Friendly","Subtypes Include"],
+							"subtypesInclude":["Sportsball"]
+						}
 					}
 				},
 				{

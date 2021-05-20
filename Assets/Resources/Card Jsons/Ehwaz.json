@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Ehwaz",
-	"effText":"Runic.\nGive a character +2 N.",
+	"effText":"Runic.\nGive an adjacent character +2 N.",
 	"effects":[
 		{
 			"triggerData":
@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Ehwaz to give +2 N",
-						"cardRestrictions":["Is Character","Board"]
+						"cardRestrictions":["Is Character","Board","Adjacent to Source"]
 					}
 				},
 				{

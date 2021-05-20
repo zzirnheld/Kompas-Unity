@@ -108,8 +108,17 @@ namespace KompasServer.Networking
             => SendToBothInverting(new ReshuffleCardPacket(toReshuffle.ID, toReshuffle.OwnerIndex, invert: Player.index != 0),
                 known: wasKnown);
 
-        public void NotifyAddToDeck(GameCard added, bool wasKnown)
+        public void NotifyCreateCard(GameCard added, bool wasKnown)
             => SendToBothInverting(new AddCardPacket(added, invert: Player.index != 0), known: wasKnown);
+
+        public void NotifyRevealCard(GameCard revealed)
+        {
+            NotifyDecrementHand();
+            SendPacket(new AddCardPacket(revealed, invert: Player.index != 0));
+        }
+
+        public void NotifyKnownToEnemy(GameCard toUpdate, bool wasKnown)
+            => SendToBothInverting(new UpdateKnownToEnemyPacket(toUpdate.KnownToEnemy, toUpdate.ID), known: wasKnown);
 
         public void GetHandSizeChoices(int[] cardIds, string listRestrictionJson)
             => SendPacket(new GetHandSizeChoicesOrderPacket(cardIds, listRestrictionJson));

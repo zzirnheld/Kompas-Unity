@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Overclock",
-	"effText":"Give a Machination +1 C. Set X to its C. Destroy it (without negating it) and draw X.",
+	"effText":"Give an adjacent Machination +1 C. Set X to its C. Destroy it (without negating it) and draw X.",
 	"effects":[
 		{
 			"triggerData":
@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Machinate to discard",
-						"cardRestrictions":["Subtypes Include","Friendly","Board"],
+						"cardRestrictions":["Subtypes Include","Friendly","Board","Adjacent to Source"],
 						"subtypesInclude":["Machination"]
 					}
 				},

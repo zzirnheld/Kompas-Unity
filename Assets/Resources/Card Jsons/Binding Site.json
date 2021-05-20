@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Binding Site",
-	"effText":"When I'm summoned, give a character +3 S.",
+	"effText":"When I'm summoned, give an adjacent character +3 S.",
 	"effects":[
 		{
 			"triggerData":
@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Binding Site to bind",
-						"cardRestrictions":["Board","Is Character"]
+						"cardRestrictions":["Board","Is Character","Adjacent to Source"]
 					}
 				},
 				{

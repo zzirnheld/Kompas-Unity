@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Wynn",
-	"effText":"Runic.\nDispel a spell.",
+	"effText":"Runic.\nDispel an adjacent spell.",
 	"effects":[
 		{
 			"triggerData":
@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"spell for Wynn to Dispel",
-						"cardRestrictions":["Is Spell","Board"]
+						"cardRestrictions":["Is Spell","Board","Adjacent to Source"]
 					}
 				},
 				{

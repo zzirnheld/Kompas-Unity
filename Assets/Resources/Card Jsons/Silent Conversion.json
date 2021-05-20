@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Silent Conversion",
-	"effText":"Kill a character adjacent to a friendly Cultist. Deck-summon a Cultist Follower where they were.",
+	"effText":"Kill a character adjacent to me and a Cultist. Deck-summon a Cultist Follower where they were.",
 	"effects":[
 		{
 			"triggerData":
@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"to convert",
-						"cardRestrictions":["Board","Is Character","Summoned","Adjacent to Subtype"],
+						"cardRestrictions":["Board","Is Character","Summoned","Adjacent to Subtype","Adjacent to Source"],
 						"adjacencySubtypes":["Cultist"]
 					}
 				},

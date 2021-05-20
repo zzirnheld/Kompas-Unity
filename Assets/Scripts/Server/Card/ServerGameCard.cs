@@ -75,7 +75,17 @@ namespace KompasServer.Cards
         }
 
         private bool knownToEnemy = false;
-        public override bool KnownToEnemy => knownToEnemy;
+        public override bool KnownToEnemy
+        {
+            get => knownToEnemy;
+            set
+            {
+                bool old = knownToEnemy;
+                knownToEnemy = value;
+                //update clients if changed
+                if(old != value) ServerNotifier.NotifyKnownToEnemy(this, old);
+            }
+        }
 
         public override string ToString()
         {
@@ -136,6 +146,8 @@ namespace KompasServer.Cards
 
         public override bool Remove(IStackable stackSrc = null)
         {
+            Debug.Log($"Trying to remove {CardName} from {Location}");
+
             //proc the trigger before actually removing anything
             var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller ?? Controller);
 
@@ -146,6 +158,20 @@ namespace KompasServer.Cards
                 var augments = AugmentsList.ToArray();
                 foreach (var aug in augments) aug.Discard(stackSrc);
                 
+                return true;
+            }
+            return false;
+        }
+
+        public override bool Reveal(IStackable stackSrc = null)
+        {
+            var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller);
+            if (base.Reveal(stackSrc))
+            {
+                EffectsController.TriggerForCondition(Trigger.Revealed, context);
+                //logic for actually revealing to client has to happen server-side.
+                KnownToEnemy = true;
+                ServerController.ServerEnemy.ServerNotifier.NotifyRevealCard(this);
                 return true;
             }
             return false;

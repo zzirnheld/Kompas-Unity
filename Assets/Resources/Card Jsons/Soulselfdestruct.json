@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Soulselfdestruct",
-	"effText":"Kill a friendly SX Ethereal. Mill X Revenants. (Discard them from your deck.)",
+	"effText":"Kill an adjacent friendly SX Ethereal. Mill X Revenants.",
 	"effects":[
 		{
 			"triggerData":
@@ -16,7 +16,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":{
 						"blurb":"Ethereal for Soulselfdestruct to kill",
-						"cardRestrictions":["Friendly","Board","Subtypes Include"],
+						"cardRestrictions":["Friendly","Board","Subtypes Include","Adjacent to Source"],
 						"subtypesInclude":["Ethereal"]
 					}
 				},

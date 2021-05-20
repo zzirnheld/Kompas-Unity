@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Sowilo",
-	"effText":"Runic.\nI give a character -1 E and another +1 E.",
+	"effText":"Runic.\nI give an adjacent character -1 E and another adjacent character +1 E. Draw.",
 	"effects":[
 		{
 			"triggerData":
@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"character for Sowilo to give -1 E.",
-						"cardRestrictions":["Is Character","Board"]
+						"cardRestrictions":["Is Character","Board","Adjacent to Source"]
 					}
 				},
 				{
@@ -29,12 +29,15 @@
 					"cardRestriction":
 					{
 						"blurb":"other character for Sowilo to give +1 E.",
-						"cardRestrictions":["Is Character","Board","Not Already Target"]
+						"cardRestrictions":["Is Character","Board","Adjacent to Source","Not Already Target"]
 					}
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"eMod":1
+				},
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
 			]
 		}

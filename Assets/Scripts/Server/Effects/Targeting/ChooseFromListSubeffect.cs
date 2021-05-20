@@ -36,6 +36,12 @@ namespace KompasServer.Effects
             listRestriction.Initialize(this);
         }
 
+        public override bool IsImpossible()
+        {
+            var possibleTargets = GetPossibleTargets();
+            return !listRestriction.ExistsValidChoice(possibleTargets);
+        }
+
         protected async Task<IEnumerable<GameCard>> RequestTargets()
         {
             string name = Source.CardName;

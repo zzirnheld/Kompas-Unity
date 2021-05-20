@@ -21,6 +21,8 @@ namespace KompasCore.Effects
 
         public const string CanPayCost = "Can Pay Cost"; // 1 //effect's controller is able to pay the cost of all of them together
         public const string DistinctCosts = "Distinct Costs";
+
+        public const string MinOfX = "Min Can Choose: X";
         public const string MaxOfX = "Max Can Choose: X";
         #endregion restrictions
 
@@ -34,7 +36,7 @@ namespace KompasCore.Effects
         /// <summary>
         /// Quick little property that informs you whether the list restriction has minimum
         /// </summary>
-        public bool HasMin => listRestrictions.Contains(MinCanChoose);
+        public bool HasMin => listRestrictions.Contains(MinCanChoose) || listRestrictions.Contains(MinOfX);
 
         /// <summary>
         /// Quick little method that tells you if you have selected enough items.
@@ -58,7 +60,7 @@ namespace KompasCore.Effects
 
         /// <summary>
         /// Default ListRestriction. <br></br>
-        /// Includes a max and min of 1 card.
+        /// Specifies a max and min of 1 card.
         /// </summary>
         public static ListRestriction Default => new ListRestriction()
         {
@@ -91,6 +93,7 @@ namespace KompasCore.Effects
         /// <param name="x">The value of x to use, in case the list restriction cares about X.</param>
         public void PrepareForSending(int x)
         {
+            if (listRestrictions.Contains(MinOfX)) minCanChoose = x;
             if (listRestrictions.Contains(MaxOfX)) maxCanChoose = x;
         }
 
@@ -106,6 +109,7 @@ namespace KompasCore.Effects
                     return Subeffect.Controller.Pips >= totalCost;
                 case DistinctCosts:
                     return cards.Select(c => c.Cost).Distinct().Count() == cards.Count();
+                case MinOfX: return cards.Count() <= Subeffect.Effect.X;
                 case MaxOfX: return cards.Count() <= Subeffect.Effect.X;
                 default: throw new System.ArgumentException($"Invalid list restriction {restriction}", "restriction");
             }
@@ -154,8 +158,12 @@ namespace KompasCore.Effects
                     }
                     if(i < minCanChoose) return false;
                     return costAccumulation <= Subeffect.Controller.Pips;
+                case MinOfX: return potentialTargets.Count() >= Subeffect.Effect.X;
                 case MinCanChoose: return potentialTargets.Count() >= minCanChoose;
-                case MaxCanChoose: return true;
+                case DistinctCosts: return potentialTargets.Select(c => c.Cost).Distinct().Count() > (HasMin ? 0 : minCanChoose);
+                case MaxOfX:
+                case MaxCanChoose: 
+                    return true;
                 default: throw new System.ArgumentException($"Invalid list restriction {restriction}", "restriction");
             }
         }

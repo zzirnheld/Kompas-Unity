@@ -52,6 +52,7 @@ namespace KompasCore.Effects
         public const string AugmentAttached = "Augment Attached"; //when an augment becomes applied to a card.
         public const string AugmentDetached = "Augment Detached";
         public const string Augmented = "Augmented"; //when a card has an augment applied to it
+        public const string Revealed = "Revealed";
 
         public static readonly string[] TriggerConditions = {
             TurnStart,
@@ -59,7 +60,7 @@ namespace KompasCore.Effects
             NSet, ESet, SSet, WSet, CSet, ASet,
             Defends, Attacks, TakeCombatDamage, DealCombatDamage, Battles, BattleEnds, Negate,
             EachDraw, DrawX, Arrive, Play, Discard, Rehand, Reshuffle, Topdeck, Bottomdeck, ToDeck, Move, Annhilate, Remove, 
-            AugmentAttached, AugmentDetached, Augmented
+            AugmentAttached, AugmentDetached, Augmented, Revealed
         };
 
         public TriggerData TriggerData { get; }

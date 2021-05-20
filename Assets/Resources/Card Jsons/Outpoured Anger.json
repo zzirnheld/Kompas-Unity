@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Outpoured Anger",
-	"effText":"When a distinctly named Shaper moves, I can move adjacent to them.",
+	"effText":"When a distinct Shaper moves, I can move adjacent to them.",
 	"effects":[
 		{
 			"triggerData":
@@ -10,7 +10,7 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":{
-						"cardRestrictions":["Subtypes Include","Friendly","Distinct Name from Source"],
+						"cardRestrictions":["Friendly","Distinct Name from Source","Subtypes Include"],
 						"subtypesInclude":["Shaper"]
 					}
 				}

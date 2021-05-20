@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Pruning",
-	"effText":"Give a friendly character -4 E, +3 W, and +1 N. Draw 1.",
+	"effText":"Give an adjacent friendly character -4 E, +3 W, and +1 N. Draw 1.",
 	"effects":[
 		{
 			"blurb":"Simple",
@@ -17,7 +17,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Board","Is Character","Friendly"]
+						"cardRestrictions":["Board","Is Character","Friendly","Adjacent to Source"]
 					}
 				},
 				{

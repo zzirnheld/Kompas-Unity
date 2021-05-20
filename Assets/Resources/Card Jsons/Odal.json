@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Odal",
-	"effText":"Runic.\nChoose an SX character. Pay X pips. Kill the chosen character and deck-summon an SX Runar.",
+	"effText":"Runic.\nChoose an adjacent SX character. Pay X pips. Kill the chosen character and deck-summon an SX Runar.",
 	"effects":[
 		{
 			"triggerData":
@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"character for Odal to kill",
-						"cardRestrictions":["Is Character","Summoned"]
+						"cardRestrictions":["Is Character","Summoned","Adjacent to Source"]
 					}
 				},
 				{

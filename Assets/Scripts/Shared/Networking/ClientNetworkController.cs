@@ -64,6 +64,7 @@ namespace KompasClient.Networking
                 case Packet.ChangeEnemyHandCount: return JsonUtility.FromJson<ChangeEnemyHandCountClientPacket>(json);
 
                 //card movement
+                case Packet.KnownToEnemy: return JsonUtility.FromJson<UpdateKnownToEnemyClientPacket>(json);
                     //public areas
                 case Packet.PlayCard: return JsonUtility.FromJson<PlayCardClientPacket>(json);
                 case Packet.AttachCard: return JsonUtility.FromJson<AttachCardClientPacket>(json);

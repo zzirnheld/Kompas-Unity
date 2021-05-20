@@ -61,7 +61,7 @@ namespace KompasCore.Cards
         public string SubtypeText { get; private set; }
         public string[] AugmentSubtypes { get; private set; }
 
-        public string QualifiedSubtypeText => AttributesString + SubtypeText + SpellSubtypeString;
+        public string QualifiedSubtypeText => AttributesString + SubtypeText + SpellSubtypesString + ArgsString;
 
         public int Cost
         {
@@ -76,18 +76,31 @@ namespace KompasCore.Cards
                 }
             }
         }
-        private string SpellSubtypeString
+        private string SpellSubtypesString
         {
             get
             {
                 if (CardType != 'S') return "";
-                switch (SpellSubtype)
+                return $" {SpellSubtype}";
+            }
+        }
+        private string ArgsString
+        {
+            get
+            {
+                if(CardType == 'A') return AugmentSubtypes == null ? "" : $"Augment: {string.Join(",", AugmentSubtypes)}";
+                else if (CardType == 'S')
                 {
-                    case RadialSubtype: return $" {Arg} spaces";
-                    case DelayedSubtype: return $" {Arg} turns";
-                    case VanishingSubtype: return $" {Arg} turns";
-                    default: return "";
+                    switch (SpellSubtype)
+                    {
+                        case RadialSubtype: return $" {Arg} spaces";
+                        case DelayedSubtype: return $" {Arg} turns";
+                        case VanishingSubtype: return $" {Arg} turns";
+                        default: return "";
+                    }
                 }
+
+                return "";
             }
         }
         public string AttributesString => $"{(Fast ? " Fast" : "")}{(Unique ? " Unique" : "")} ";
@@ -97,9 +110,9 @@ namespace KompasCore.Cards
             {
                 switch (CardType)
                 {
-                    case 'C': return $"{AttributesString}N: {N} / E: {E} / S: {S} / W: {W}";
-                    case 'S': return $"C {C}{AttributesString}{SpellSubtype}{SpellSubtypeString}";
-                    case 'A': return $"A {A}{AttributesString}{(AugmentSubtypes != null ? $"Augment: {string.Join(",", AugmentSubtypes)}" : "")}";
+                    case 'C': return $"N: {N} / E: {E} / S: {S} / W: {W}";
+                    case 'S': return $"C {C}";
+                    case 'A': return $"A {A}";
                     default: throw new System.NotImplementedException($"Stats string not implemented for card type {CardType}");
                 }
             }

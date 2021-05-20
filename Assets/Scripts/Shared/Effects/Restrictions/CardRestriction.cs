@@ -30,6 +30,7 @@ namespace KompasCore.Effects
         public const string IsSpell = "Is Spell";
         public const string IsAugment = "Is Augment";
         public const string NotAugment = "Not Augment";
+        public const string Fast = "Fast";
 
         //control
         public const string Friendly = "Friendly";
@@ -39,6 +40,7 @@ namespace KompasCore.Effects
         public const string AdjacentToEnemy = "Adjacent to Enemy";
         public const string ControllerMatchesTarget = "Controller Matches Target's";
         public const string ControllerMatchesPlayerTarget = "Controller Matches Player Target";
+        public const string ControllerIsntPlayerTarget = "Controller Isn't Player Target";
 
         //summoned
         public const string Summoned = "Summoned"; //non-avatar character
@@ -68,6 +70,8 @@ namespace KompasCore.Effects
         public const string Annihilated = "Annihilated";
         public const string LocationInList = "Multiple Possible Locations";
 
+        public const string Hidden = "Hidden";
+
         //stats
         public const string CardValueFitsXRestriction = "Card Value Fits X Restriction";
             //<=X
@@ -87,11 +91,14 @@ namespace KompasCore.Effects
         public const string ELTX = "E<X";
         public const string SLTX = "S<X";
         public const string WLTX = "W<X";
+        public const string CostLTX = "Cost<X";
             //<=C
         public const string NLTEC = "N<=C";
         public const string ELTEC = "E<=C";
         public const string SLTEC = "S<=C";
         public const string WLTEC = "W<=C";
+        //>X
+        public const string CostGTX = "Cost>X";
         //misc statlike
         public const string CostLTAvatar = "Cost<Avatar";
         public const string CostGTAvatar = "Cost>Avatar";
@@ -148,9 +155,7 @@ namespace KompasCore.Effects
         public CardValue cardValue;
         public XRestriction xRestriction;
 
-        [NonSerialized]
-        private CardRestriction secondaryRestriction;
-        public string secondaryRestrictionString = null;
+        public CardRestriction secondaryRestriction;
 
         public CardRestriction connectednessRestriction;
 
@@ -175,14 +180,9 @@ namespace KompasCore.Effects
             Source = source;
             Controller = controller;
             Effect = eff;
-            //if there's any secondary restriction, create it
-            if (secondaryRestrictionString != null)
-            {
-                secondaryRestriction = JsonUtility.FromJson<CardRestriction>(secondaryRestrictionString);
-                secondaryRestriction.Initialize(Subeffect);
-            }
 
-            xRestriction?.Initialize(Source, Subeffect);
+            secondaryRestriction?.Initialize(source, controller, eff);
+            xRestriction?.Initialize(source, Subeffect);
 
             /*
             if (cardRestrictions.Contains(ConnectedToSourceBy))
@@ -229,6 +229,7 @@ namespace KompasCore.Effects
                 case IsSpell:     return potentialTarget.CardType == 'S';
                 case IsAugment:   return potentialTarget.CardType == 'A';
                 case NotAugment:  return potentialTarget.CardType != 'A';
+                case Fast:        return potentialTarget.Fast;
 
                 //control
                 //Debug.Log($"potential target controller? {potentialTarget.Controller?.index}, my controller {Controller?.index}");
@@ -238,6 +239,7 @@ namespace KompasCore.Effects
                 case TurnPlayerControls: return potentialTarget.Controller == Subeffect.Game.TurnPlayer;
                 case ControllerMatchesTarget: return potentialTarget.Controller == Subeffect.Target.Controller;
                 case ControllerMatchesPlayerTarget: return potentialTarget.Controller == Subeffect.Player;
+                case ControllerIsntPlayerTarget: return potentialTarget.Controller != Subeffect.Player;
 
                 //summoned
                 case Summoned:  return potentialTarget.Summoned;
@@ -267,6 +269,8 @@ namespace KompasCore.Effects
                 case Annihilated:    return potentialTarget.Location == CardLocation.Annihilation;
                 case LocationInList: return locations.Contains(potentialTarget.Location);
 
+                case Hidden:         return !potentialTarget.KnownToEnemy;
+
                 //stats
                 case CardValueFitsXRestriction: return xRestriction.Evaluate(cardValue.GetValueOf(potentialTarget));
                     //<=
@@ -286,11 +290,13 @@ namespace KompasCore.Effects
                 case ELTX:     return potentialTarget.E < x;
                 case SLTX:     return potentialTarget.S < x;
                 case WLTX:     return potentialTarget.W < x;
+                case CostLTX:  return potentialTarget.Cost < x;
                     //<=C
                 case NLTEC:    return potentialTarget.N <= constant;
                 case ELTEC:    return potentialTarget.E <= constant;
                 case SLTEC:    return potentialTarget.S <= constant;
                 case WLTEC:    return potentialTarget.W <= constant;
+                case CostGTX:  return potentialTarget.Cost > x;
                     //misc
                 case CostLTAvatar: return potentialTarget.Cost < Source.Controller.Avatar.Cost;
                 case CostGTAvatar: return potentialTarget.Cost > Source.Controller.Avatar.Cost;
