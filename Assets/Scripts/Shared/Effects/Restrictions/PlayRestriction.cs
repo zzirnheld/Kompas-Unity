@@ -109,5 +109,8 @@ namespace KompasCore.Effects
 
         public bool EvaluateEffectPlay(int x, int y, Effect effect)
             => EvaluateEffectPlay(x, y, effect, effect.Controller);
+
+        public bool EvaluateEffectPlay((int x, int y) space, Effect effect, Player controller)
+            => EvaluateEffectPlay(space.x, space.y, effect, controller);
     }
 }

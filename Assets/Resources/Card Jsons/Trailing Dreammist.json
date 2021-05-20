@@ -21,7 +21,8 @@
 					"cardRestriction":
 					{
 						"blurb":"for Trailing Dreammist to hand-summon",
-						"cardRestrictions":["Is Character","Friendly","Hand","Card Value Fits X Restriction"],
+						"cardRestrictions":["Is Character","Friendly","Hand","Card Value Fits X Restriction","Subtypes Include","Can be Played to Target Space"],
+						"subtypesInclude":["Ethereal"],
                         "cardValue":{
                             "value":"S"
                         },

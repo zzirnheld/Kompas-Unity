@@ -136,6 +136,7 @@ namespace KompasCore.Effects
         public const string IsDefendingFromSource = "Is Defending From Source";
         public const string CanPlayTargetToThisCharactersSpace = "Can Play Target to This Character's Space";
         public const string SpaceRestrictionValidIfThisTargetChosen = "Space Restriction Valid With This Target Chosen";
+        public const string CanPlayToTargetSpace = "Can be Played to Target Space";
         #endregion restrictions
 
         //because JsonUtility will fill in all values with defaults if not present
@@ -343,6 +344,8 @@ namespace KompasCore.Effects
                     if (Effect.Subeffects[spaceRestrictionIndex] is SpaceTargetSubeffect spaceTgtSubeff)
                         return spaceTgtSubeff.WillBePossibleIfCardTargeted(theoreticalTarget: potentialTarget.Card);
                     else return false;
+                case CanPlayToTargetSpace:
+                    return potentialTarget.PlayRestriction.EvaluateEffectPlay(Subeffect.Space, Effect, Subeffect.Player);
                 default: throw new ArgumentException($"Invalid card restriction {restriction}", "restriction");
             }
         }
