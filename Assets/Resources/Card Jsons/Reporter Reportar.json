@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Reporter Reportar",
-	"effText":"Once each friendly turn, you can reveal an SX Reporter. Your opponent can reveal an SX character. If they do, draw 1. If they don't, pip deck->summon an S <= X Reporter.",
+	"effText":"Once each friendly turn, you can reveal an SX Reporter. Your opponent can reveal an SX character. If they do, draw 1. If they don't, pip deck->summon an S <= X character.",
 	"effects":[
 		{
 			"activationRestriction":{
@@ -69,9 +69,8 @@
 					"maxCanChoose":1,
 					"cardRestriction":
 					{
-						"blurb":"Reporter to report",
-						"cardRestrictions":["Friendly","Deck","Is Character","Effect Controller can Afford Cost","Subtypes Include"],
-						"subtypesInclude":["Reporter"]
+						"blurb":"character to report",
+						"cardRestrictions":["Friendly","Deck","Is Character","Effect Controller can Afford Cost"]
 					}
 				},
 				{
