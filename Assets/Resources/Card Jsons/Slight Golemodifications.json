@@ -33,7 +33,8 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp",
+					"targetIndex":0
 				},
 				{
 					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp",
@@ -60,16 +61,17 @@
 					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"attachmentTarget":-1,
+					"targetIndex":-2
 				},
 				{
-					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
-					"attachmentTarget":0,
-					"targetIndex":-1
+					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp",
+					"targetIndex":-2
 				},
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
-					"delete":true,
+					"remainingTargets":1,
 					"jumpTo":9
 				}
 			]	
