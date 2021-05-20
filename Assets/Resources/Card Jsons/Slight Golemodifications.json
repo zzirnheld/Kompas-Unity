@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Slight Golemodifications",
-	"effText":"Tribute an adjacent friendly SX Golem.\nHand-summon or revive a Golem with S < X and activate it (permanently).",
+	"effText":"Tribute an adjacent SX Golem.\nHand->summon or revive a Golem with S < X.  Discard-apply all Golem Cores the first wielded to the second.",
 	"effects":[
 		{
 			"triggerData":
@@ -25,34 +25,27 @@
 					"xMultiplier":1
 				},
 				{
+					"$type":"KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Subtypes Include"],
+						"subtypesInclude":["Golem","Core"]
+					}
+				},
+				{
 					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Hand-summon or revive a Golem?",
-					"OptionBlurbs":["Hand-summon","Revive"],
-					"OptionJumpIndices":[4,6],
-					"hasDefault":false
+					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp",
+					"targetIndex":0
 				},
 				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Subtypes Include","Is Character","Hand","S<X"],
-						"subtypesInclude":["Golem"]
-					},
-					"xMultiplier":1
-				},
-				{
-					"$type":"KompasServer.Effects.JumpSubeffect, Assembly-CSharp",
-					"indexToJumpTo":7
-				},
-				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Subtypes Include","Is Character","Discard","S<X"],
-						"subtypesInclude":["Golem"]
+						"cardRestrictions":["Subtypes Include","Is Character","S<X","Multiple Possible Locations"],
+						"subtypesInclude":["Golem"],
+						"locations":[2,3]
 					},
 					"xMultiplier":1
 				},
@@ -67,13 +60,23 @@
 					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"attachmentTarget":0,
+					"targetIndex":-1
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"jumpTo":9
 				}
 			]	
 		}
 	],
 	"fast":true,
-	"c":1,
+	"c":2,
 	"spellType":"Simple",
 	"subtypes":["Simple"],
 	"subtypeText":"Simple"
