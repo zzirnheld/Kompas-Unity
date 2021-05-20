@@ -11,7 +11,7 @@ namespace KompasServer.Effects
         public bool showX = false;
 
         private async Task<int> AskForOptionChoice()
-            => await ServerPlayer.serverAwaiter.GetEffectOption(Source.CardName, ChoiceBlurb, OptionBlurbs, hasDefault, showX, Count);
+            => await ServerPlayer.serverAwaiter.GetEffectOption(Source.CardName, ChoiceBlurb, OptionBlurbs, hasDefault, showX, Effect.X);
 
         public override async Task<ResolutionInfo> Resolve()
         {
