@@ -23,6 +23,7 @@ namespace KompasCore.Effects
         public const string MustNormally = "Must be Played Normally";
         public const string OnBoardCardFriendlyOrAdjacent = "On Board Card";
         public const string OnCardFittingRestriction = "On Card that Fits Restriction";
+        public const string AdjacentToCardFittingRestriction = "Adjacent to Card Fitting Restriction";
 
         public const string DefaultNormal = "Default Normal Restrictions";
         public const string DefaultEffect = "Default Effect Restrictions";
@@ -42,6 +43,7 @@ namespace KompasCore.Effects
         public List<string> effectRestrictions = null;
 
         public CardRestriction onCardRestriction;
+        public CardRestriction adjacentCardRestriction;
 
         public void SetInfo(GameCard card)
         {
@@ -57,7 +59,9 @@ namespace KompasCore.Effects
             if (effectRestrictions.Contains(AugEffect)) effectRestrictions.AddRange(AugmentEffectRestrictions);
 
             onCardRestriction = onCardRestriction ?? new CardRestriction();
-            onCardRestriction.Initialize(card, card.Controller, null);
+            onCardRestriction.Initialize(card, card.Controller, eff: default);
+            adjacentCardRestriction = adjacentCardRestriction ?? new CardRestriction();
+            adjacentCardRestriction.Initialize(card, card.Controller, eff: default);
             Debug.Log($"Finished setting info for play restriction of card {card.CardName}");
         }
 
@@ -89,6 +93,8 @@ namespace KompasCore.Effects
                 case NotNormally: return !normal;
                 case MustNormally: return normal;
                 case CheckUnique: return !(Card.Unique && Card.AlreadyCopyOnBoard);
+                case AdjacentToCardFittingRestriction: 
+                    return Card.Game.boardCtrl.CardsAdjacentTo(x, y).Any(c => adjacentCardRestriction.Evaluate(c));
 
                 default: throw new System.ArgumentException($"You forgot to check play restriction {r}", "r");
             }
