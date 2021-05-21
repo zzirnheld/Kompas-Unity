@@ -38,8 +38,8 @@ namespace KompasServer.Effects
                 case XLessThanEqual0:    return ServerEffect.X <= 0;
                 case XGreaterThanConst:  return ServerEffect.X > constant;
                 case XLessThanConst:     return ServerEffect.X < constant;
-                case NoneFitRestriction: return !ServerGame.Cards.Any(c => cardRestriction.Evaluate(c));
-                case AnyFitRestriction:  return ServerGame.Cards.Any(c => cardRestriction.Evaluate(c));
+                case NoneFitRestriction: return !ServerGame.Cards.Any(cardRestriction.Evaluate);
+                case AnyFitRestriction:  return ServerGame.Cards.Any(cardRestriction.Evaluate);
                 case MustBeFriendlyTurn: return ServerGame.TurnPlayer != Effect.Controller;
                 case MustBeEnemyTurn:    return ServerGame.TurnPlayer == Effect.Controller;
                 case TargetViolatesRestriction: return !cardRestriction.Evaluate(Target);

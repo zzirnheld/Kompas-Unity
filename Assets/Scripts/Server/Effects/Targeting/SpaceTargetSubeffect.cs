@@ -1,6 +1,7 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -16,7 +17,7 @@ namespace KompasServer.Effects
             spaceRestriction.Initialize(this);
         }
 
-        public List<(int, int)> ValidSpaces
+        public List<(int x, int y)> ValidSpaces
         {
             get
             {
@@ -26,7 +27,7 @@ namespace KompasServer.Effects
                     for (int y = 0; y < 7; y++)
                     {
                         var space = Player.SubjectiveCoords((x, y));
-                        if (spaceRestriction.Evaluate((x, y))) spaces.Add(space);
+                        if (spaceRestriction.Evaluate((x, y), theoreticalTarget: Target)) spaces.Add(space);
                     }
                 }
                 return spaces;
@@ -57,13 +58,14 @@ namespace KompasServer.Effects
 
         public override async Task<ResolutionInfo> Resolve()
         {
-            var spaces = ValidSpaces;
-            if (spaces.Count > 0)
+            var spaces = ValidSpaces.ToArray();
+            var recommendedSpaces = spaces.Where(s => Source.PlayRestriction.RecommendedPlay(s.x, s.y, Player, normal: false)).ToArray();
+            if (spaces.Length > 0)
             {
                 var (a, b) = (-1, -1);
                 while (!SetTargetIfValid(a, b))
                 {
-                    (a, b) = await ServerPlayer.serverAwaiter.GetSpaceTarget(Source.CardName, spaceRestriction.blurb, spaces.ToArray());
+                    (a, b) = await ServerPlayer.serverAwaiter.GetSpaceTarget(Source.CardName, spaceRestriction.blurb, spaces, recommendedSpaces);
                     if ((a, b) == (-1, -1) && ServerEffect.CanDeclineTarget) return ResolutionInfo.Impossible(DeclinedFurtherTargets);
                 }
                 return ResolutionInfo.Next;

@@ -41,6 +41,7 @@ namespace KompasCore.Effects
 
         public List<string> normalRestrictions = null;
         public List<string> effectRestrictions = null;
+        public List<string> recommendationRestrictions = null;
 
         public CardRestriction onCardRestriction;
         public CardRestriction adjacentCardRestriction;
@@ -51,6 +52,7 @@ namespace KompasCore.Effects
 
             normalRestrictions = normalRestrictions ?? new List<string> { DefaultNormal };
             effectRestrictions = effectRestrictions ?? new List<string> { DefaultEffect };
+            recommendationRestrictions = recommendationRestrictions ?? new List<string>();
 
             if (normalRestrictions.Contains(DefaultNormal)) normalRestrictions.AddRange(DefaultNormalRestrictions);
             if (normalRestrictions.Contains(AugNormal)) normalRestrictions.AddRange(AugmentNormalRestrictions);
@@ -100,6 +102,7 @@ namespace KompasCore.Effects
             }
         }
 
+
         public bool EvaluateNormalPlay(int x, int y, Player player, bool checkCanAffordCost = false)
             => (!checkCanAffordCost || player.Pips >= Card.Cost) 
             && normalRestrictions.All(r => RestrictionValid(r, x, y, player, true));
@@ -109,5 +112,12 @@ namespace KompasCore.Effects
 
         public bool EvaluateEffectPlay(int x, int y, Effect effect)
             => EvaluateEffectPlay(x, y, effect, effect.Controller);
+
+        public bool RecommendedPlay(int x, int y, Player controller, bool normal)
+            => recommendationRestrictions.All(r => RestrictionValid(r, x, y, controller, normal: normal));
+
+        public bool RecommendedNormalPlay(int x, int y, Player player, bool checkCanAffordCost = false)
+            => EvaluateNormalPlay(x, y, player, checkCanAffordCost)
+            && RecommendedPlay(x, y, player, true);
     }
 }
