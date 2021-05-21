@@ -1,394 +1,394 @@
-Dispeller by Sword
-Squire
-Swordguild Bannerman
-Swordguild Instructor
-Swordguild Medic
-Swordguild Quartermaster
-Swordguild Strategist
-Swordguild Tactician
-Swordguild Trainee
-Swordguild Trainer
-Swordmaster
-Swordmystic
-The General
-I - The Magician
-II - The High Priestess
-III - The Empress
-IV - The Emperor
-V - The Hierophant
-VI - The Lovers
-VII - The Chariot
-VIII - Fortitude
-IX - The Hermit
-X - Wheel of Fortune
-XI - Justice
-XII - The Hanged Man
-XIII - Death
-XIV - Temperance
-XV - The Devil
-XVI - The Tower
-XVII - The Star
-XVIII - The Moon
-XIX - The Sun
-XX - Judgement
-XXI - The World
-Figurehead Jack
-Figurehead Queen
-Figurehead King
-Figurehead Knight
-Animancer
-Earth Golem
-Ice Golem
-Pneumatic Golem
-Magma Golem
-Straw Golem
-Metal Golem
-Clay Golem
-Obsidian Golem
-Tallow Golem
-Speed Core
-Durability Core
-Strength Core
-Defense Core
-Combustion Core
-Taunt Core
-Modular Golem Cores
-Slight Golemodifications
-Runeloremaster
-Runerunner
-Runecaller
-Runespeaker
-Runepainter
-Runechanneler
-Runecarver
-Runewriter
-Runewritten
-Ansuz
-Algiz
-Raido
-Thurisaz
-Gyfu
-Jera
-Naudiz
-Perthro
-Mannaz
-Ingwaz
-Kaunan
-Fehu
-Berkanan
-Isaz
-Hagall
-Sowilo
-Tiwaz
-Ihwaz
-Ehwaz
-Uruz
-Laguz
-Wynn
-Odal
-Dagaz
-Runesaga
-Runebinding
-Runestones
-Maya, Mistress of Reality
-Who Searched For Grudges
-Evasive Ectoplasm
-Grudges Unforgotten
-Twin Spirit
-He Who Knew Runes
-Whose Past Disintegrates
-Whose Anger Draws Fear
-Dreammist
-Untethered Spirit
-Dreamspace
-Outpoured Anger
-Dreamfog
 Bind the Aggression
-Pseudopod
-Send Home
-Dreamhook
-Shape Unbound
-Unstable Dreaming
-Dreamscape
-Bestower of Memories
-Malevolent Vessel
-Pastknower Vessel
-Revered Vessel
-Empty Vessel
-Recaller Vessel
-Memory Guide
-Rememories
-Past Lives
-Echoed Lives
-Reincarnation
-Unlost
-Unsought
-Unfound
-Unwanted
-Unseen
-Unmoving
-Soulstealer the Lossless
-Soulmartyr the Peaceless
-Soulcutter the Heartless
-Unpresent
-Undone
-Unfinding
-Revenance
-Revivance
-Salvage Soul
-Soulflare
-Soul Drain
-Soulselfdestruct
-Dr. Thierr Dumachmartres
-Stupid Idea Generator
-Self-Destruct Button
-Wait Hold Up
-Just a Little Bit More
-MAXIMUM OVERDRIVE
-A Frayed Knot
-Yeet Modification
-Shifting Tile Maze Path Blocker
-Ballroom-Disco Breakdance Competition
-Something Cannon
-Mind of Flock Controlled Pigeons
-Weird Idea That is Also
-Orry the Oviparous Mammal
-Acid Lava Pit of Ghost Piranhas
-Great Scott
-The Intern
-Timothy
-Flippant Emo Daughter
-Correctly Sized Crane
-Listen to Reason
-Shatter the Warranty
-Haemopoten
-Altar Builder
-Bloodcurser
-Cultist of the Silent
-Cyclical Sacrifice
-Deafening Silence
-Doomsayer
-Heart Eater
-Mad Blood
-Silent Altar
-Silent Conversion
-Silent Devotion
-Silent Fanatic
-Silent Recruiter
-The Unspeakable
-Unwavering Devotion
-We Are Yet Unworthy
-Zealous Convert
-Ride the Winds
-Durendal
-Thuan Thien
-Kusanagi
-Starheart
-Focusing Pulsar
-Boldening Pulsar
-Accelerating Pulsar
-Fortunating Pulsar
-Magnetizing Pulsar
-Echoing Pulsar
-Stardusting Pulsar
-Coalescing Stardust
-Fires of Creation
-Supernova
-Starstuff
-Starbirth
-Cannot Be Created Nor Destroyed
-Sportsball
-Sportyball
-Arbiterary
-Runner Fielder
-Forward Dunker
-Relay Long-Jumper
-Long Jump Punter
-Mid-Outfielder
-Inside Goalie Defender
-Go! Play Sportsball!
-Teamwork!
-Goal-Net Touchdown
-Mad Jukes
-Big Brain Plays
-Getcha Getcha Getcha
-Time Out
-Antiprecatium Golem
-Red Linewalker
-Orange Linewalker
-Yellow Linewalker
-Green Linewalker
-Cyan Linewalker
-Blue Linewalker
-Purple Linewalker
-None Defy the Lines
-Linewalk
-Mother of Dragons
-Dragoncaller
-Dragonspeaker
-Dragonseeker
-Dragonsinger
-Dragonbinder
-Bound Offering
-Trapped Offering
-Demagogue
 Binding Site
-Aeolian
-Fyrian
-Obscurian
-Sangrian
-Cidian
-Leybinding
-Rebinding
-Fodderbin
-Fight
-Dreamwork
-Leypathmaking
-White Linewalker
-Leylasher
-Leybinder
-Whats Gonna Work
-Sands of Time
-Resummon
-Ostracized Leper
-Widowed Mother
-Hungry Children
-Disfigured Beggar
-Desperate Footpad
-Not Thrones and Crowns
-Find Me Find Peace
-Save the People
-Deliver Us
-Touch of the Divine
-Answered Prayers
-God of Mercy
-Prophet of Mercy
-Havengranter
-Kindly Old Doctor
-Pulse of Leylines
-Everflowing Clepsydra
-Font of Youth
-Font of Wrath
-Everending Field
-Evermellow Field
-Machinate
-Fog
-Overcast
-Flood
-Thundersun
-Peltrain
-Thunderstorm
-Dapplesun
-Clockspinner
-Silverweaver
-Overmaster
-Interseer
-Plottermaster
-Midnight Clock
-Font of Speed
-Everspinning Clockface
-Machimaster
-Overclock
-Gunpowder Golem
-Woolen Golem
-Enlargening Brain
-Machimasterer
-Whirlwind Fan
-Leyline Craterer
-Booming Boomerator
-Deliberative Thinking
-Fruition
-Reallocation
+Bound Offering
 Chain Dispel
-Willshaper
-Skybreaker
-Windrunner
-Truthwatcher
-Bondsmith
-Elsecaller
-Lightweaver
-Everstorm
-Pricklewisp
-Sickiwisp
-Pishiwisp
-Nippiwisp
-Flippiwisp
-Wispflux Generator
-Erratic Wisps
-Wispiwisp
-Here'n'gone
-Wispquickening
-Runegunner
-Strongtree
-Lithetree
-Sharetree
-Thinktree
-Choketree
-Custodian of the Forest
-Pruning
-Master Graftsman
-Forest Fire
-Regrowth
-Seedling
-Flameborn Seedling
-The Man Who Replants
-Yeeterator
-Bounce Pad
-Death of a Soul
-Right Into My Trap
-Haguaughan Invoker
-Segascanturian Invoker
-Waungh Invoker
-Generous Pleasure
-Overwhelming Anger
-A Lot of Disappointment
-Whirlwind of Emotions
-Unfocusing Annoyance
-Allconsuming Frustration
-Prepare the Name
-Invoke the Invoker
-Spiritual Advice
-Wanderer
-Merchant
-Mendicant
-Leper
-Leyseer
-Sellsword
-Wisewoman
-Troubadour
-Mysterious Attractive Person
-Researcher
-At Home in the World
-Not All Who Wander
-The Traveler
-Wander Home
-Wanderlust
-Torzal the Lightning Rod
-Mizzaral Arcmaster
-Unwary Student
-Relay
-Conductor
-Statipip Fluxfielder
-Lightning Arctist
-Charge
-Torzal Coil
-Electrocreative
-Master of Circuitries
-Rewire
-Shoddy Solder
-Wire Up
+Conductors/Charge
+Conductors/Conductor
+Conductors/Electrocreative
+Conductors/Lightning Arctist
+Conductors/Master of Circuitries
+Conductors/Mizzaral Arcmaster
+Conductors/Relay
+Conductors/Rewire
+Conductors/Shoddy Solder
+Conductors/Statipip Fluxfielder
+Conductors/Torzal Coil
+Conductors/Torzal the Lightning Rod
+Conductors/Unwary Student
+Conductors/Wire Up
+Correctly Sized Crane
+Crazy Ideas/A Frayed Knot
+Crazy Ideas/Acid Lava Pit of Ghost Piranhas
+Crazy Ideas/Ballroom-Disco Breakdance Competition
+Crazy Ideas/Bounce Pad
+Crazy Ideas/Dr. Thierr Dumachmartres
+Crazy Ideas/Flippant Emo Daughter
+Crazy Ideas/Great Scott
+Crazy Ideas/Just a Little Bit More
+Crazy Ideas/Listen to Reason
+Crazy Ideas/MAXIMUM OVERDRIVE
+Crazy Ideas/Mind of Flock Controlled Pigeons
+Crazy Ideas/Orry the Oviparous Mammal
+Crazy Ideas/Right Into My Trap
+Crazy Ideas/Self-Destruct Button
+Crazy Ideas/Shifting Tile Maze Path Blocker
+Crazy Ideas/Something Cannon
+Crazy Ideas/Stupid Idea Generator
+The Intern
+Crazy Ideas/Timothy
+Crazy Ideas/Wait Hold Up
+Crazy Ideas/Weird Idea That is Also
+Crazy Ideas/Yeet Modification
+Crazy Ideas/Yeeterator
+Cultists/Altar Builder
+Cultists/Bloodcurser
+Cultists/Cultist of the Silent
+Cultists/Cyclical Sacrifice
+Cultists/Deafening Silence
+Cultists/Doomsayer
+Cultists/Heart Eater
+Cultists/Mad Blood
+Cultists/Silent Altar
+Cultists/Silent Conversion
+Cultists/Silent Devotion
+Cultists/Silent Fanatic
+Cultists/Silent Recruiter
+Cultists/Unwavering Devotion
+Cultists/We Are Yet Unworthy
+Cultists/Zealous Convert
+Demagogue
+Dragons/Aeolian
+Dragons/Cidian
+Dragons/Dragonbinder
+Dragons/Dragoncaller
+Dragons/Dragonseeker
+Dragons/Dragonsinger
+Dragons/Dragonspeaker
+Dragons/Fyrian
+Dragons/Mother of Dragons
+Dragons/Obscurian
+Dragons/Sangrian
+Dreamfog
+Durendal
+Fight
+Fodderbin
+Geminii/Bestower of Memories
+Geminii/Echoed Lives
+Geminii/Empty Vessel
+Geminii/Malevolent Vessel
+Geminii/Memory Guide
+Geminii/Past Lives
+Geminii/Pastknower Vessel
+Geminii/Recaller Vessel
+Geminii/Reincarnation
+Geminii/Rememories
+Geminii/Resummon
+Geminii/Revered Vessel
+Golems/Animancer
+Golems/Antiprecatium Golem
+Golems/Clay Golem
+Golems/Combustion Core
+Golems/Defense Core
+Golems/Durability Core
+Golems/Earth Golem
+Golems/Gunpowder Golem
+Golems/Ice Golem
+Golems/Magma Golem
+Golems/Metal Golem
+Golems/Modular Golem Cores
+Golems/Obsidian Golem
+Golems/Pneumatic Golem
+Golems/Slight Golemodifications
+Golems/Speed Core
+Golems/Straw Golem
+Golems/Strength Core
+Golems/Tallow Golem
+Golems/Taunt Core
+Golems/Woolen Golem
+Haemopoten
+Invokers/Haguaughan Invoker
+Invokers/Invoke the Invoker
+Invokers/Prepare the Name
+Invokers/Segascanturian Invoker
+Invokers/Waungh Invoker
+Kusanagi
+Leybinder
+Leybinding
+Leylasher
+Linewalkers/Blue Linewalker
+Linewalkers/Cyan Linewalker
+Linewalkers/Green Linewalker
+Linewalkers/Leypathmaking
+Linewalkers/Linewalk
+Linewalkers/Orange Linewalker
+Linewalkers/Purple Linewalker
+Linewalkers/Red Linewalker
+Linewalkers/White Linewalker
+Linewalkers/Yellow Linewalker
+Machinations/Booming Boomerator
+Machinations/Clockspinner
+Machinations/Deliberative Thinking
+Machinations/Enlargening Brain
+Machinations/Everending Field
+Machinations/Everflowing Clepsydra
+Machinations/Evermellow Field
+Machinations/Everspinning Clockface
+Machinations/Font of Speed
+Machinations/Font of Wrath
+Machinations/Font of Youth
+Machinations/Fruition
+Machinations/Interseer
+Machinations/Leyline Craterer
+Machinations/Machimaster
+Machinations/Machimasterer
+Machinations/Machinate
+Machinations/Midnight Clock
+Machinations/Overclock
+Machinations/Overmaster
+Machinations/Plottermaster
+Machinations/Pulse of Leylines
+Machinations/Sands of Time
+Machinations/Silverweaver
+Machinations/Whirlwind Fan
+None Defy the Lines
 Notcropoten
-Newsflash!
-Frontline Reporter
-Field Report
-Reporter Reportar
-Al Angus Aston
-Harvald S Thonstrop
-Star Reporter
-Weather Reporter
-Temp Reporter
-Angry Reporter
-Fast Talker
-Online Reporter
-Well-Read Reporter
-Nature Reporter
+Pulsars/Accelerating Pulsar
+Pulsars/Boldening Pulsar
+Pulsars/Cannot Be Created Nor Destroyed
+Pulsars/Coalescing Stardust
+Pulsars/Echoing Pulsar
+Pulsars/Fires of Creation
+Pulsars/Focusing Pulsar
+Pulsars/Fortunating Pulsar
+Pulsars/Magnetizing Pulsar
+Pulsars/Starbirth
+Pulsars/Stardusting Pulsar
+Pulsars/Starheart
+Pulsars/Starstuff
+Pulsars/Supernova
+Machinations/Reallocation
+Rebinding
+Reporters/Al Angus Aston
+Reporters/Angry Reporter
+Reporters/Fast Talker
+Reporters/Field Report
+Reporters/Frontline Reporter
+Reporters/Harvald S Thonstrop
+Reporters/Nature Reporter
+Reporters/Newsflash!
+Reporters/Online Reporter
+Reporters/Reporter Reportar
+Reporters/Star Reporter
+Reporters/Temp Reporter
+Reporters/Weather Reporter
+Reporters/Well-Read Reporter
+Revenants/Death of a Soul
+Revenants/Revenance
+Revenants/Revivance
+Revenants/Salvage Soul
+Revenants/Soul Drain
+Revenants/Soulcutter the Heartless
+Revenants/Soulflare
+Revenants/Soulmartyr the Peaceless
+Revenants/Soulselfdestruct
+Revenants/Soulstealer the Lossless
+Revenants/Undone
+Revenants/Unfound
+Revenants/Unlost
+Revenants/Unmoving
+Revenants/Unpresent
+Revenants/Unseen
+Revenants/Unsought
+Revenants/Unwanted
+Ride the Winds
+Runar/Algiz
+Runar/Ansuz
+Runar/Berkanan
+Runar/Dagaz
+Runar/Ehwaz
+Runar/Fehu
+Runar/Gyfu
+Runar/Hagall
+Runar/Ihwaz
+Runar/Ingwaz
+Runar/Isaz
+Runar/Jera
+Runar/Kaunan
+Runar/Laguz
+Runar/Mannaz
+Runar/Naudiz
+Runar/Odal
+Runar/Perthro
+Runar/Raido
+Runar/Runebinding
+Runar/Runecaller
+Runar/Runecarver
+Runar/Runechanneler
+Runar/Runegunner
+Runar/Runeloremaster
+Runar/Runepainter
+Runar/Runerunner
+Runar/Runesaga
+Runar/Runespeaker
+Runar/Runestones
+Runar/Runewriter
+Runar/Runewritten
+Runar/Sowilo
+Runar/Thurisaz
+Runar/Tiwaz
+Runar/Uruz
+Runar/Wynn
+Shapers/Dreamhook
+Shapers/Dreammist
+Shapers/Dreamscape
+Dreamspace
+Shapers/Evasive Ectoplasm
+Shapers/Grudges Unforgotten
+Shapers/He Who Knew Runes
+Shapers/Maya, Mistress of Reality
+Shapers/Outpoured Anger
+Shapers/Pseudopod
+Shapers/Send Home
+Shapers/Shape Unbound
+Shapers/Twin Spirit
+Shapers/Unstable Dreaming
+Shapers/Untethered Spirit
+Shapers/Who Searched For Grudges
+Shapers/Whose Anger Draws Fear
+Shapers/Whose Past Disintegrates
+Shatter the Warranty
+Spirits/A Lot of Disappointment
+Spirits/Allconsuming Frustration
+Spirits/Generous Pleasure
+Spirits/Overwhelming Anger
+Spirits/Spiritual Advice
+Spirits/Unfocusing Annoyance
+Spirits/Whirlwind of Emotions
+Sportsball/Arbiterary
+Sportsball/Big Brain Plays
+Sportsball/Dreamwork
+Sportsball/Forward Dunker
+Sportsball/Getcha Getcha Getcha
+Sportsball/Go! Play Sportsball!
+Sportsball/Goal-Net Touchdown
+Sportsball/Inside Goalie Defender
+Sportsball/Long Jump Punter
+Sportsball/Mad Jukes
+Sportsball/Mid-Outfielder
+Sportsball/Relay Long-Jumper
+Sportsball/Runner Fielder
+Sportsball/Sportsball
+Sportsball/Sportyball
+Sportsball/Teamwork!
+Sportsball/Time Out
+Sportsball/Whats Gonna Work
+Supplicants/Answered Prayers
+Supplicants/Deliver Us
+Supplicants/Desperate Footpad
+Supplicants/Disfigured Beggar
+Supplicants/Find Me Find Peace
+Supplicants/God of Mercy
+Supplicants/Havengranter
+Supplicants/Hungry Children
+Supplicants/Kindly Old Doctor
+Supplicants/Not Thrones and Crowns
+Supplicants/Ostracized Leper
+Supplicants/Prophet of Mercy
+Supplicants/Save the People
+Supplicants/Touch of the Divine
+Supplicants/Widowed Mother
+Swordguild/Dispeller by Sword
+Swordguild/Squire
+Swordguild/Swordguild Bannerman
+Swordguild/Swordguild Instructor
+Swordguild/Swordguild Medic
+Swordguild/Swordguild Quartermaster
+Swordguild/Swordguild Strategist
+Swordguild/Swordguild Tactician
+Swordguild/Swordguild Trainee
+Swordguild/Swordguild Trainer
+Swordguild/Swordmaster
+Swordguild/Swordmystic
+Swordguild/The General
+Tarocco/Figurehead Jack
+Tarocco/Figurehead King
+Tarocco/Figurehead Knight
+Tarocco/Figurehead Queen
+Tarocco/I - The Magician
+Tarocco/II - The High Priestess
+Tarocco/III - The Empress
+Tarocco/IV - The Emperor
+Tarocco/IX - The Hermit
+Tarocco/V - The Hierophant
+Tarocco/VI - The Lovers
+Tarocco/VII - The Chariot
+Tarocco/VIII - Fortitude
+Tarocco/X - Wheel of Fortune
+Tarocco/XI - Justice
+Tarocco/XII - The Hanged Man
+Tarocco/XIII - Death
+Tarocco/XIV - Temperance
+Tarocco/XIX - The Sun
+Tarocco/XV - The Devil
+Tarocco/XVI - The Tower
+Tarocco/XVII - The Star
+Tarocco/XVIII - The Moon
+Tarocco/XX - Judgement
+Tarocco/XXI - The World
+The Unspeakable
+Thuan Thien
+Trapped Offering
+Trees/Choketree
+Trees/Custodian of the Forest
+Trees/Flameborn Seedling
+Trees/Forest Fire
+Trees/Lithetree
+Trees/Master Graftsman
+Trees/Pruning
+Trees/Regrowth
+Trees/Seedling
+Trees/Sharetree
+Trees/Strongtree
+Trees/The Man Who Replants
+Trees/Thinktree
+Unfinding
+Wanderers/At Home in the World
+Wanderers/Leper
+Wanderers/Leyseer
+Wanderers/Mendicant
+Wanderers/Merchant
+Wanderers/Mysterious Attractive Person
+Wanderers/Not All Who Wander
+Wanderers/Researcher
+Wanderers/Sellsword
+Wanderers/The Traveler
+Wanderers/Troubadour
+Wanderers/Wander Home
+Wanderers/Wanderer
+Wanderers/Wanderlust
+Wanderers/Wisewoman
+Weather/Bondsmith
+Weather/Dapplesun
+Weather/Elsecaller
+Weather/Everstorm
+Weather/Flood
+Weather/Fog
+Weather/Lightweaver
+Weather/Overcast
+Weather/Peltrain
+Weather/Skybreaker
+Weather/Thunderstorm
+Weather/Thundersun
+Weather/Truthwatcher
+Weather/Willshaper
+Weather/Windrunner
+Wisps/Erratic Wisps
+Wisps/Flippiwisp
+Wisps/Here'n'gone
+Wisps/Nippiwisp
+Wisps/Pishiwisp
+Wisps/Pricklewisp
+Wisps/Sickiwisp
+Wisps/Wispflux Generator
+Wisps/Wispiwisp
+Wisps/Wispquickening

@@ -19,11 +19,15 @@ public class CardRepository : MonoBehaviour
     public const string keywordListFilePath = "Keyword Jsons/Keyword List";
     public const string keywordJsonsFolderPath = "Keyword Jsons/";
 
-    private static Dictionary<string, string> cardJsons;
-    private static Dictionary<string, int> cardNameIDs;
-    private static List<string> cardNames;
-    private static List<string> cardNamesToIgnore;
-    private static Dictionary<string, string> keywordJsons;
+    private static readonly string[] cardNamesToIgnore = new string[] {
+            "Square Kompas Logo"
+        };
+
+    private static readonly Dictionary<string, string> cardJsons = new Dictionary<string, string>();
+    private static readonly Dictionary<string, int> cardNameIDs = new Dictionary<string, int>();
+    private static readonly List<string> cardNames = new List<string>();
+    private static readonly Dictionary<string, string> keywordJsons = new Dictionary<string, string>();
+    private static bool initalized = false;
 
     public static IEnumerable<string> CardJsons => cardJsons.Values;
 
@@ -34,47 +38,30 @@ public class CardRepository : MonoBehaviour
     public GameObject DeckbuilderSpellPrefab;
     public GameObject DeckbuilderAugPrefab;
 
-    /*
-    public GameObject ClientAvatarPrefab;
-    public GameObject ClientCharPrefab;
-    public GameObject ClientSpellPrefab;
-    public GameObject ClientAugPrefab;
-
-    public GameObject ServerAvatarPrefab;
-    public GameObject ServerCharPrefab;
-    public GameObject ServerSpellPrefab;
-    public GameObject ServerAugPrefab;
-    */
     public GameObject CardPrefab;
     #endregion prefabs
 
     void Awake()
     {
-        cardNamesToIgnore = new List<string>(new string[] {
-            "Square Kompas Logo"
-        });
+        if (initalized) return;
+        initalized = true;
 
-        cardJsons = new Dictionary<string, string>();
-        cardNameIDs = new Dictionary<string, int>();
-        cardNames = new List<string>();
-        string cardList = Resources.Load<TextAsset>(cardListFilePath).text;
-        cardList = cardList.Replace('\r', '\n');
-        string[] cardNameArray = cardList.Split('\n');
+        string cardFilenameList = Resources.Load<TextAsset>(cardListFilePath).text;
+        cardFilenameList = cardFilenameList.Replace('\r', '\n');
+        string[] cardFilenameArray = cardFilenameList.Split('\n');
 
-        foreach (string name in cardNameArray)
+        foreach (string filename in cardFilenameArray)
         {
-            string nameClean = name.Substring(0, name.Length).Replace(":", "");
+            //sanitize the filename. for some reason, doing substring fixes stuff
+            string filenameClean = filename.Substring(0, filename.Length);
             //don't add duplicate cards
-            if (IsCardToIgnore(nameClean) || CardExists(nameClean)) continue;
-            //add the card's name to the list of card names
-            cardNameIDs.Add(name, cardNames.Count);
-            cardNames.Add(nameClean);
+            if (IsCardToIgnore(filenameClean) || CardExists(filenameClean)) continue;
 
             //load the json
-            var jsonAsset = Resources.Load<TextAsset>(cardJsonsFolderpath + nameClean);
+            var jsonAsset = Resources.Load<TextAsset>(cardJsonsFolderpath + filenameClean);
             if (jsonAsset == null)
             {
-                Debug.LogError($"Failed to load json for {nameClean}");
+                Debug.LogError($"Failed to load json for {filenameClean}");
                 continue;
             }
             string json = jsonAsset.text;
@@ -82,12 +69,18 @@ public class CardRepository : MonoBehaviour
             json = json.Replace('\n', ' ');
             json = json.Replace("\r", "");
             json = json.Replace("\t", "");
+            //load the cleaned json to get the card's name according to itself
+            var card = JsonConvert.DeserializeObject<SerializableCard>(json,
+                new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
+            string cardName = card.cardName;
+
             //add the cleaned json to the dictionary
-            //Debug.Log($"Adding json for \"{nameClean}\" of length {nameClean.Length} to dictionary. Json:\n{json}");
-            cardJsons.Add(nameClean, json);
+            cardJsons.Add(cardName, json);
+            //add the card's name to the list of card names
+            cardNameIDs.Add(cardName, cardNames.Count);
+            cardNames.Add(cardName);
         }
 
-        keywordJsons = new Dictionary<string, string>();
         string keywordList = Resources.Load<TextAsset>(keywordListFilePath).text;
         var keywords = keywordList.Replace('\r', '\n').Split('\n').Where(s => !string.IsNullOrEmpty(s));
         foreach (string keyword in keywords)
@@ -124,7 +117,8 @@ public class CardRepository : MonoBehaviour
     {
         if (!CardExists(name)) return null;
 
-        return JsonUtility.FromJson<SerializableCard>(cardJsons[name]);
+        return JsonConvert.DeserializeObject<SerializableCard>(cardJsons[name],
+                new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
     }
 
     public AvatarServerGameCard InstantiateServerAvatar(string cardName, ServerGame serverGame, ServerPlayer owner, int id)
