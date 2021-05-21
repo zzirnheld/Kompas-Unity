@@ -34,7 +34,7 @@ Crazy Ideas/Self-Destruct Button
 Crazy Ideas/Shifting Tile Maze Path Blocker
 Crazy Ideas/Something Cannon
 Crazy Ideas/Stupid Idea Generator
-Crazy Ideas/The Intern
+The Intern
 Crazy Ideas/Timothy
 Crazy Ideas/Wait Hold Up
 Crazy Ideas/Weird Idea That is Also
@@ -123,7 +123,6 @@ Linewalkers/Linewalk
 Linewalkers/Orange Linewalker
 Linewalkers/Purple Linewalker
 Linewalkers/Red Linewalker
-Linewalkers/Whats Gonna Work
 Linewalkers/White Linewalker
 Linewalkers/Yellow Linewalker
 Machinations/Booming Boomerator
@@ -167,7 +166,7 @@ Pulsars/Stardusting Pulsar
 Pulsars/Starheart
 Pulsars/Starstuff
 Pulsars/Supernova
-Reallocation
+Machinations/Reallocation
 Rebinding
 Reporters/Al Angus Aston
 Reporters/Angry Reporter
@@ -242,7 +241,7 @@ Runar/Wynn
 Shapers/Dreamhook
 Shapers/Dreammist
 Shapers/Dreamscape
-Shapers/Dreamspace
+Dreamspace
 Shapers/Evasive Ectoplasm
 Shapers/Grudges Unforgotten
 Shapers/He Who Knew Runes
@@ -282,6 +281,7 @@ Sportsball/Sportsball
 Sportsball/Sportyball
 Sportsball/Teamwork!
 Sportsball/Time Out
+Sportsball/Whats Gonna Work
 Supplicants/Answered Prayers
 Supplicants/Deliver Us
 Supplicants/Desperate Footpad
