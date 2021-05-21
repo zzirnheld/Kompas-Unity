@@ -256,6 +256,10 @@ Shapers/Untethered Spirit
 Shapers/Who Searched For Grudges
 Shapers/Whose Anger Draws Fear
 Shapers/Whose Past Disintegrates
+Shapers/Riali, Master of Irrealities
+Shapers/Trailing Dreammist
+Shapers/Tethered Dreammist
+Shapers/Infolding Hopelessness
 Shatter the Warranty
 Spirits/A Lot of Disappointment
 Spirits/Allconsuming Frustration
@@ -392,7 +396,3 @@ Wisps/Sickiwisp
 Wisps/Wispflux Generator
 Wisps/Wispiwisp
 Wisps/Wispquickening
-Riali, Master of Irrealities
-Trailing Dreammist
-Tethered Dreammist
-Infolding Hopelessness
