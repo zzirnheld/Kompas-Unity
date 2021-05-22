@@ -11,6 +11,8 @@ namespace KompasServer.Effects
     {
         public SpaceRestriction spaceRestriction;
 
+        private bool ForPlay => spaceRestriction.spaceRestrictions.Contains(SpaceRestriction.CanPlayTarget);
+
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
@@ -59,7 +61,8 @@ namespace KompasServer.Effects
         public override async Task<ResolutionInfo> Resolve()
         {
             var spaces = ValidSpaces.ToArray();
-            var recommendedSpaces = spaces.Where(s => Source.PlayRestriction.RecommendedPlay(s.x, s.y, Player, normal: false)).ToArray();
+            var recommendedSpaces 
+                = ForPlay ? spaces.Where(s => Target.PlayRestriction.RecommendedPlay(s.x, s.y, Player, normal: false)).ToArray() : spaces;
             if (spaces.Length > 0)
             {
                 var (a, b) = (-1, -1);

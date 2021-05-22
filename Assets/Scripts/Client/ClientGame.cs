@@ -71,10 +71,7 @@ namespace KompasClient.GameCore
             set
             {
                 currentPotentialSpaces = value;
-                if (value != null)
-                {
-                    clientUICtrl.boardUICtrl.ShowSpaceTargets(space => value.Contains(space));
-                }
+                if (value != null) clientUICtrl.boardUICtrl.ShowSpaceTargets(space => value.Contains(space));
                 else clientUICtrl.boardUICtrl.ShowSpaceTargets(_ => false);
             }
         }
