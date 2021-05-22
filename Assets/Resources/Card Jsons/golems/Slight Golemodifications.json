@@ -77,6 +77,14 @@
 			]	
 		}
 	],
+	"PlayRestriction":{
+		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
+		"adjacentCardRestriction":
+		{
+			"cardRestrictions":["Is Character","Subtypes Include"],
+			"subtypesInclude":["Golem"]
+		}
+	},
 	"fast":true,
 	"c":2,
 	"spellType":"Simple",

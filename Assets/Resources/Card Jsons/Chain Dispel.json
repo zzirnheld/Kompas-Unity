@@ -51,6 +51,13 @@
 			]
 		}
 	],
+	"PlayRestriction":{
+		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
+		"adjacentCardRestriction":
+		{
+			"cardRestrictions":["Is Spell"]
+		}
+	},
 	"c":3,
 	"spellType":"Simple",
 	"subtypeText":"Simple"
