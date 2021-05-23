@@ -40,6 +40,13 @@
 			]
 		}
 	],
+	"PlayRestriction":{
+		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
+		"adjacentCardRestriction":
+		{
+			"cardRestrictions":["Is Character"]
+		}
+	},
 	"keywords":["Ificate"],
 	"c":5,
 	"spellType":"Simple",

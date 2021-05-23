@@ -34,7 +34,12 @@
 		}
 	],
 	"PlayRestriction":{
-		"normalRestrictions":["Cannot be Played Normally"]
+		"normalRestrictions":["Cannot be Played Normally"],
+		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
+		"adjacentCardRestriction":
+		{
+			"cardRestrictions":["Is Character"]
+		}
 	},
 	"c":6,
 	"spellType":"Simple",

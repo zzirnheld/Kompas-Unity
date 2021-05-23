@@ -20,10 +20,10 @@ namespace KompasServer.Effects
             cardRestriction.Initialize(this);
         }
 
-        public override bool IsImpossible() => !Game.Cards.Any(c => cardRestriction.Evaluate(c));
+        public override bool IsImpossible() => !Game.Cards.Any(cardRestriction.Evaluate);
 
         protected virtual int[] PotentialTargetIds
-            => Game.Cards.Where(c => cardRestriction.Evaluate(c)).Select(c => c.ID).ToArray();
+            => Game.Cards.Where(cardRestriction.Evaluate).Select(c => c.ID).ToArray();
 
         protected virtual async Task<GameCard> GetTargets(int[] potentialTargetIds)
         {

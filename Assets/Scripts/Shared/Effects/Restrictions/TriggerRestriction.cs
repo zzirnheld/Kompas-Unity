@@ -118,7 +118,7 @@ namespace KompasCore.Effects
                 case CoordsFitRestriction:    return context.Space != null && spaceRestriction.Evaluate(context.Space.Value);
                 case XFitsRestriction:        return context.X != null && xRestriction.Evaluate(context.X.Value);
                 case EffectSourceIsTriggerer: return context.Stackable is Effect eff && eff.Source == context.CardInfo.Card;
-                case AdjacentToRestriction:   return ThisCard.AdjacentCards.Any(c => cardRestriction.Evaluate(c));
+                case AdjacentToRestriction:   return ThisCard.AdjacentCards.Any(cardRestriction.Evaluate);
                 //TODO make these into just something to do with triggered card fitting restriction
                 case ControllerTriggered:     return context.Triggerer == ThisCard.Controller;
                 case EnemyTriggered:          return context.Triggerer != ThisCard.Controller;

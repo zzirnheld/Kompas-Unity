@@ -53,6 +53,13 @@
 			]
 		}
 	],
+	"PlayRestriction":{
+		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
+		"adjacentCardRestriction":
+		{
+			"cardRestrictions":["Is Character"]
+		}
+	},
 	"fast":true,
 	"c":2,
 	"spellType":"Simple",
