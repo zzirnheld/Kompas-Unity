@@ -1,0 +1,36 @@
+{
+	"cardType":67,
+	"cardName":"Carla",
+	"effText":"Once each friendly turn, you can rehand a friendly discarded Crazy Idea.",
+	"effects":[
+		{
+			"blurb":"Intern Nonsense",
+			"activationRestriction":{
+				"activationRestrictionArray":[
+					"Max Times Per Turn",
+					"Default"
+				]
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Friendly","Discard","Subtypes Include"],
+                        "subtypesInclude":["Crazy Idea"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+    "unique":true,
+	"n":1,
+	"e":1,
+	"s":1,
+	"w":0,
+	"subtypes":["Crazy","Intern","Person"],
+	"subtypeText":"Crazy Intern Person"
+}
