@@ -26,7 +26,7 @@
 			"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 			"spaceRestriction":
 			{
-				"blurb":"where to make a Comeback Play",
+				"blurb":"where to cast the Weather",
 				"spaceRestrictions":["Can Play Target to This Space","Adjacent to Source"]
 			}
 		},

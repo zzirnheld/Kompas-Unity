@@ -383,6 +383,8 @@ Weather/Emezene, Who Reads the Breeze
 Weather/Outaroud, Who Scouts the Clouds
 Weather/Zussastuss, Who Trusts the Gusts
 Weather/Sterrasterr, Who Stirs the Storm
+Weather/Cloudshift
+Weather/Stormfront
 Wisps/Erratic Wisps
 Wisps/Flippiwisp
 Wisps/Here'n'gone

@@ -29,6 +29,7 @@ namespace KompasCore.Effects
 
         //distance
         public const string DistanceX = "Distance to Source == X";
+        public const string DistanceFitsXRestriction = "Distance to Source Fits X Restriction";
         public const string DistanceToTargetX = "Distance to Target == X";
         public const string DistanceToTargetC = "Distance to Target == Constant";
         public const string DistanceToTargetLTEC = "Distance to Target <= Constant";
@@ -52,6 +53,8 @@ namespace KompasCore.Effects
         public int adjacencyLimit;
         public CardRestriction connectednessRestriction;
         public CardRestriction hereFitsRestriction;
+
+        public XRestriction distanceXRestriction;
 
         public int constant;
 
@@ -121,6 +124,7 @@ namespace KompasCore.Effects
 
                 //distance
                 case DistanceX:                   return Source.DistanceTo(x, y) == Subeffect.Effect.X;
+                case DistanceFitsXRestriction:    return distanceXRestriction.Evaluate(Source.DistanceTo(x, y));
                 case DistanceToTargetX:           return target.DistanceTo(x, y) == Subeffect.Effect.X;
                 case DistanceToTargetC:           return target.DistanceTo(x, y) == constant;
                 case DistanceToTargetLTEC:        return target.DistanceTo(x, y) <= constant;
