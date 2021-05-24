@@ -1,10 +1,10 @@
 {
 	"cardType":67,
-	"cardName":"Shardstorm Elemental",
-	"effText":"Weather Event.\nWhen I’m summoned, counter an adjacent character whose effect is on the stack.",
+	"cardName":"Hailstrike Elemental",
+	"effText":"Weather Event.\nWhen I'm summoned, give -1 NESW to characters in Weather that can't move themselves. (That is, characters that have moved themselves at least as many spaces as they have N.)",
 	"effects":[
 		{
-            "blurb":"Shardstrike",
+            "blurb":"Hailstrike",
 			"triggerData":
 			{
 				"triggerCondition":"Play",
@@ -14,18 +14,20 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"adjacent character for Shardstorm Elemental to counter",
-						"cardRestrictions":["Is Character","Board","Adjacent to Source","Effect is on the Stack"]
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.NegateSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+						"cardRestrictions":["Is Character","Board","Out of Movement","In AOE of Card Fitting Restriction"],
+                        "inAOEOfRestriction":
+                        {
+                            "cardRestrictions":["Subtypes Include"],
+                            "subtypesInclude":["Weather"]
+                        }
+					},
+					"nMod":-1,
+					"eMod":-1,
+					"sMod":-1,
+					"wMod":-1
 				}
 			]	
 		}
@@ -42,17 +44,12 @@
             "numberOfCardsInAOEOfRestriction":{
                 "xRestrictions":["<=X"]
             }
-        },
-		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
-		"adjacentCardRestriction":
-		{
-			"cardRestrictions":["Is Character","Effect is on the Stack"]
-		}
+        }
 	},
     "fast":true,
 	"n":2,
 	"e":5,
-	"s":6,
-	"w":7,
+	"s":5,
+	"w":5,
 	"subtypeText":"Weather Event Elemental"
 }

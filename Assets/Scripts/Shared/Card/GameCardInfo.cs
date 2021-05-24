@@ -34,6 +34,8 @@ namespace KompasCore.Cards
         int BaseE { get; }
 
         bool Negated { get; }
+        int SpacesMoved { get; }
+        int SpacesCanMove { get; }
         IEnumerable<GameCard> AdjacentCards { get; }
 
         (int x, int y) Position { get; }
@@ -84,6 +86,8 @@ namespace KompasCore.Cards
         public int BaseE { get; }
 
         public bool Negated { get; }
+        public int SpacesMoved { get; }
+        public int SpacesCanMove { get; }
         public IEnumerable<GameCard> AdjacentCards { get; }
 
         public (int x, int y) Position { get; }
@@ -116,6 +120,8 @@ namespace KompasCore.Cards
             BaseE = card.BaseE;
             Cost = card.Cost;
             Negated = card.Negated;
+            SpacesMoved = card.SpacesMoved;
+            SpacesCanMove = card.SpacesCanMove;
             AdjacentCards = card.AdjacentCards.ToArray();
             Position = card.Position;
         }

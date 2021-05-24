@@ -50,7 +50,7 @@
 		},
 		{
 			"keyword":"Weather Event.",
-			"reminder":"Can’t be played during friendly turns. Must be played in two Weathers."
+			"reminder":"Can’t be played normally during friendly turns. Must be played in two Weathers."
 		},
 		{
 			"keyword":"martyr",

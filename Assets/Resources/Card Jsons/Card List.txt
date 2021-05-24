@@ -386,6 +386,9 @@ Weather/Sterrasterr, Who Stirs the Storm
 Weather/Cloudshift
 Weather/Stormfront
 Weather/Unusual Weather
+Weather/Lightning Elemental
+Weather/Shardstorm Elemental
+Weather/Hailstrike Elemental
 Wisps/Erratic Wisps
 Wisps/Flippiwisp
 Wisps/Here'n'gone

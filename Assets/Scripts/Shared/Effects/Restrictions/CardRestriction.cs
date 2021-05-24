@@ -106,6 +106,7 @@ namespace KompasCore.Effects
         public const string CanBeHealed = "Can Be Healed";
 
         public const string Negated = "Negated";
+        public const string OutOfMovement = "Out of Movement";
 
         //positioning
         public const string AdjacentToSource = "Adjacent to Source";
@@ -315,6 +316,7 @@ namespace KompasCore.Effects
                         && potentialTarget.E < potentialTarget.BaseE;
 
                 case Negated:  return potentialTarget.Negated;
+                case OutOfMovement: return potentialTarget.SpacesCanMove <= 0;
 
                 //positioning
                 case AdjacentToSource:           return potentialTarget.IsAdjacentTo(Source);
@@ -362,6 +364,8 @@ namespace KompasCore.Effects
                 case AttackingCardFittingRestriction:
                     return Source.Game.StackEntries
                         .Any(e => e is Attack atk && atk.attacker == potentialTarget.Card && attackedCardRestriction.Evaluate(atk.defender));
+                case EffectIsOnTheStack:
+                    return Source.Game.StackEntries.Any(e => e is Effect eff && eff.Source == potentialTarget.Card);
                 default: throw new ArgumentException($"Invalid card restriction {restriction}", "restriction");
             }
         }
