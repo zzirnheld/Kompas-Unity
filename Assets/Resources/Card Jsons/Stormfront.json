@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Stormfront",
-	"effText":"Annihilate a friendly adjacent Weather encompassing X Skyknights. Deck->cast a copy of that Weather, up to X spaces from me, ignoring placement rules.",
+	"effText":"Annihilate a friendly adjacent Weather encompassing X Skyknight. Deck->cast a copy of that Weather, up to X spaces from me, ignoring placement rules.",
 	"effects":[
 		{
 			"triggerData":
@@ -27,7 +27,7 @@
 					"cardRestriction":
 					{
 						"cardRestrictions":["Board","In Target's AOE","Subtypes Include"],
-						"subtypesInclude":["Skyknights"]
+						"subtypesInclude":["Skyknight"]
 					},
 					"xMultiplier":1
 				},

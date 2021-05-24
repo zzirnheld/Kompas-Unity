@@ -385,6 +385,7 @@ Weather/Zussastuss, Who Trusts the Gusts
 Weather/Sterrasterr, Who Stirs the Storm
 Weather/Cloudshift
 Weather/Stormfront
+Weather/Unusual Weather
 Wisps/Erratic Wisps
 Wisps/Flippiwisp
 Wisps/Here'n'gone

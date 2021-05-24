@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Zussastuss, Who Trusts the Gusts",
-	"effText":"When you cast Radial Weather encompassing X Skyknights, including me, you can give all characters in that Weather +X ESW.",
+	"effText":"When you cast Radial Weather encompassing X Skyknight, including me, you can give all characters in that Weather +X ESW.",
 	"effects":[
 		{
 			"triggerData":
@@ -30,7 +30,7 @@
 					"cardRestriction":
 					{
 						"cardRestrictions":["Board","In Target's AOE","Subtypes Include"],
-						"subtypesInclude":["Skyknights"]
+						"subtypesInclude":["Skyknight"]
 					},
 					"xMultiplier":1
 				},

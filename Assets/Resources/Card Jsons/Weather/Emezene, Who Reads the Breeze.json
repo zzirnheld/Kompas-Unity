@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Emezene, Who Reads the Breeze",
-	"effText":"When you cast Radial Weather encompassing X Skyknights, including me, search your deck's top X for a card.",
+	"effText":"When you cast Radial Weather encompassing X Skyknight, including me, search your deck's top X for a card.",
 	"effects":[
 		{
 			"triggerData":
@@ -30,7 +30,7 @@
 					"cardRestriction":
 					{
 						"cardRestrictions":["Board","In Target's AOE","Subtypes Include"],
-						"subtypesInclude":["Skyknights"]
+						"subtypesInclude":["Skyknight"]
 					},
 					"xMultiplier":1
 				},

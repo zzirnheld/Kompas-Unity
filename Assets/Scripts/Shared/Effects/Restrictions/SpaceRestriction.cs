@@ -25,6 +25,7 @@ namespace KompasCore.Effects
         public const string InAOE = "In AOE";
         public const string NotInAOE = "Not In AOE";
         public const string InTargetsAOE = "In Target's AOE";
+        public const string InAOEOf = "In AOE Of";
         public const string LimitAdjacentCardsFittingRestriction = "Limit Number of Adjacent Cards Fitting Restriction";
 
         //distance
@@ -53,6 +54,7 @@ namespace KompasCore.Effects
         public int adjacencyLimit;
         public CardRestriction connectednessRestriction;
         public CardRestriction hereFitsRestriction;
+        public CardRestriction inAOERestriction;
 
         public XRestriction distanceXRestriction;
 
@@ -119,6 +121,7 @@ namespace KompasCore.Effects
                 case InAOE:                     return Source.SpaceInAOE(x, y);
                 case NotInAOE:                  return !Source.SpaceInAOE(x, y);
                 case InTargetsAOE:              return target.SpaceInAOE((x, y));
+                case InAOEOf:                   return Source.Game.Cards.Any(c => c.SpaceInAOE((x, y)) && inAOERestriction.Evaluate(c));
                 case LimitAdjacentCardsFittingRestriction:
                     return Source.Game.boardCtrl.CardsAdjacentTo(x, y).Where(c => limitAdjacencyRestriction.Evaluate(c)).Count() <= adjacencyLimit;
 
