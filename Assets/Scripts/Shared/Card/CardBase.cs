@@ -61,7 +61,7 @@ namespace KompasCore.Cards
         public string SubtypeText { get; private set; }
         public string[] AugmentSubtypes { get; private set; }
 
-        public string QualifiedSubtypeText => AttributesString + SubtypeText + SpellSubtypesString + ArgsString;
+        public string QualifiedSubtypeText => AttributesString + SubtypeText + ArgsString;
 
         public int Cost
         {
@@ -74,14 +74,6 @@ namespace KompasCore.Cards
                     case 'A': return A;
                     default: throw new System.NotImplementedException($"Cost not implemented for card type {CardType}");
                 }
-            }
-        }
-        private string SpellSubtypesString
-        {
-            get
-            {
-                if (CardType != 'S') return "";
-                return $" {SpellSubtype}";
             }
         }
         private string ArgsString
