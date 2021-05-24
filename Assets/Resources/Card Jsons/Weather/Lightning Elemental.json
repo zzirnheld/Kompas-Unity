@@ -50,7 +50,8 @@
                 "subtypesInclude":["Weather"]
             },
             "numberOfCardsInAOEOfRestriction":{
-                "xRestrictions":["<=X"]
+                "xRestrictions":[">=Constant"],
+				"constant":2
             }
         },
 		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
