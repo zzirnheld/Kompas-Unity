@@ -114,10 +114,13 @@ namespace KompasCore.Effects
         public const string WithinCSpacesOfSource = "Within C Spaces";
         public const string WithinCSpacesOfTarget = "Within C Spaces of Target";
         public const string WithinXSpacesOfSource = "Within X Spaces";
+
         public const string InAOE = "In AOE";
         public const string InTargetsAOE = "In Target's AOE";
         public const string SourceInThisAOE = "Source in This' AOE";
         public const string NotInAOE = "Not In AOE";
+        public const string InAOEOfCardFittingRestriction = "In AOE of Card Fitting Restriction";
+
         public const string AdjacentToSubtype = "Adjacent to Subtype";
         public const string ExactlyXSpaces = "Exactly X Spaces to Source";
         public const string InFrontOfSource = "In Front of Source";
@@ -138,6 +141,7 @@ namespace KompasCore.Effects
         public const string IsDefendingFromSource = "Is Defending From Source";
         public const string CanPlayTargetToThisCharactersSpace = "Can Play Target to This Character's Space";
         public const string SpaceRestrictionValidIfThisTargetChosen = "Space Restriction Valid With This Target Chosen";
+        public const string AttackingCardFittingRestriction = "Attacking Card Fitting Restriction";
         #endregion restrictions
 
         //because JsonUtility will fill in all values with defaults if not present
@@ -161,6 +165,8 @@ namespace KompasCore.Effects
         public CardRestriction secondaryRestriction;
 
         public CardRestriction connectednessRestriction;
+        public CardRestriction attackedCardRestriction;
+        public CardRestriction inAOEOfRestriction;
 
         public GameCard Source { get; private set; }
         public Player Controller { get; private set; }
@@ -194,6 +200,7 @@ namespace KompasCore.Effects
                 else Debug.Log($"Connectedness restriction: {connectednessRestriction}");
             }*/
             connectednessRestriction?.Initialize(source, controller, eff);
+            attackedCardRestriction?.Initialize(source, controller, eff);
 
             initialized = true;
         }
@@ -313,10 +320,14 @@ namespace KompasCore.Effects
                 case AdjacentToTarget:   return potentialTarget.IsAdjacentTo(Subeffect.Target);
                 case AdjacentToCoords:   return potentialTarget.IsAdjacentTo(Subeffect.Space);
                 case AdjacentToSubtype:  return potentialTarget.AdjacentCards.Any(card => adjacencySubtypes.All(s => card.SubtypeText.Contains(s)));
+
                 case InAOE:              return Source.CardInAOE(potentialTarget);
                 case InTargetsAOE:       return Subeffect.Target.CardInAOE(potentialTarget);
                 case SourceInThisAOE:    return potentialTarget.CardInAOE(Source);
                 case NotInAOE:           return !Source.CardInAOE(potentialTarget);
+                case InAOEOfCardFittingRestriction: 
+                    return Source.Game.Cards.Any(c => c.CardInAOE(potentialTarget) && inAOEOfRestriction.Evaluate(c));
+
                 case WithinCSpacesOfSource: return potentialTarget.WithinSpaces(cSpaces, Source);
                 case WithinCSpacesOfTarget: return potentialTarget.WithinSpaces(cSpaces, Subeffect.Target);
                 case WithinXSpacesOfSource: return potentialTarget.WithinSpaces(Effect.X, Source);
@@ -347,6 +358,9 @@ namespace KompasCore.Effects
                     if (Effect.Subeffects[spaceRestrictionIndex] is SpaceTargetSubeffect spaceTgtSubeff)
                         return spaceTgtSubeff.WillBePossibleIfCardTargeted(theoreticalTarget: potentialTarget.Card);
                     else return false;
+                case AttackingCardFittingRestriction:
+                    return Source.Game.StackEntries
+                        .Any(e => e is Attack atk && atk.attacker == potentialTarget.Card && attackedCardRestriction.Evaluate(atk.defender));
                 default: throw new ArgumentException($"Invalid card restriction {restriction}", "restriction");
             }
         }

@@ -49,6 +49,10 @@
 			"reminder":"When turns start, deck-cast a different Weather adjacent to me. Regardless, annihilate me."
 		},
 		{
+			"keyword":"Weather Event.",
+			"reminder":"Can’t be played during friendly turns. Must be played in two Weathers."
+		},
+		{
 			"keyword":"martyr",
 			"reminder":"A character is martyred when they die during an enemy turn."
 		},

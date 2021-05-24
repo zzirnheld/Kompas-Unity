@@ -19,11 +19,14 @@ namespace KompasCore.Effects
         public const string FastOrNothingIsResolving = "Nothing is Resolving";
         public const string CheckUnique = "Check Unique";
 
+        public const string EnemyTurn = "Enemy Turn";
         public const string NotNormally = "Cannot be Played Normally";
         public const string MustNormally = "Must be Played Normally";
         public const string OnBoardCardFriendlyOrAdjacent = "On Board Card";
         public const string OnCardFittingRestriction = "On Card that Fits Restriction";
         public const string AdjacentToCardFittingRestriction = "Adjacent to Card Fitting Restriction";
+
+        public const string SpaceFitsRestriction = "Space Must Fit Restriction";
 
         public const string DefaultNormal = "Default Normal Restrictions";
         public const string DefaultEffect = "Default Effect Restrictions";
@@ -43,8 +46,10 @@ namespace KompasCore.Effects
         public List<string> effectRestrictions = null;
         public List<string> recommendationRestrictions = null;
 
-        public CardRestriction onCardRestriction;
-        public CardRestriction adjacentCardRestriction;
+        public CardRestriction onCardRestriction = new CardRestriction();
+        public CardRestriction adjacentCardRestriction = new CardRestriction();
+
+        public SpaceRestriction spaceRestriction = new SpaceRestriction();
 
         public void SetInfo(GameCard card)
         {
@@ -61,11 +66,11 @@ namespace KompasCore.Effects
             if (effectRestrictions.Contains(DefaultEffect)) effectRestrictions.AddRange(DefaultEffectRestrictions);
             if (effectRestrictions.Contains(AugEffect)) effectRestrictions.AddRange(AugmentEffectRestrictions);
 
-            onCardRestriction = onCardRestriction ?? new CardRestriction();
             onCardRestriction.Initialize(card, card.Controller, eff: default);
-            adjacentCardRestriction = adjacentCardRestriction ?? new CardRestriction();
             adjacentCardRestriction.Initialize(card, card.Controller, eff: default);
-            Debug.Log($"Finished setting info for play restriction of card {card.CardName}");
+
+            spaceRestriction.Initialize(card, card.Controller, effect: default);
+            //Debug.Log($"Finished setting info for play restriction of card {card.CardName}");
         }
 
         private bool RestrictionValid(string r, int x, int y, Player player, bool normal)
@@ -86,6 +91,7 @@ namespace KompasCore.Effects
                 case FriendlyTurnIfNotFast: return Card.Fast || Card.Game.TurnPlayer == Card.Controller;
                 case FastOrNothingIsResolving: return Card.Fast || Card.Game.NothingHappening;
 
+                case EnemyTurn: return Card.Game.TurnPlayer != Card.Controller;
                 case OnBoardCardFriendlyOrAdjacent:
                     var cardThere = Card.Game.boardCtrl.GetCardAt(x, y);
                     return cardThere != null 

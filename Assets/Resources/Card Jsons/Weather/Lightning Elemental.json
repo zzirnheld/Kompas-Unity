@@ -1,0 +1,76 @@
+{
+	"cardType":67,
+	"cardName":"Lightning Elemental",
+	"effText":"Weather Event.\nWhen I’m summoned, I attack an adjacent character, that's attacking a character in a Weather.",
+	"effects":[
+		{
+            "blurb":"Strike Lightning",
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"adjacent character for Lightning Elemental to attack",
+						"cardRestrictions":["Is Character","Board","Adjacent to Source","Attacking Card Fitting Restriction"],
+                        "attackedCardRestriction":{
+                            "cardRestrictions":["In AOE of Card Fitting Restriction"],
+                            "inAOEOfRestriction":
+                            {
+                                "cardRestrictions":["Subtypes Include"],
+                                "subtypesInclude":["Weather"]
+                            }
+                        }
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"targetIndex":-2,
+					"attackerIndex":-1
+				}
+			]	
+		}
+	],
+	"PlayRestriction":{
+		"normalRestrictions":["Default Normal Restrictions","Enemy Turn","Space Must Fit Restriction"],
+        "spaceRestriction":{
+            "spaceRestrictions":["In AOE of Number of Cards Fitting Restriction"],
+            "inAOEOfRestriction":
+            {
+                "cardRestrictions":["Subtypes Include"],
+                "subtypesInclude":["Weather"]
+            },
+            "numberOfCardsInAOEOfRestriction":{
+                "xRestrictions":["<=X"]
+            }
+        },
+		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
+		"adjacentCardRestriction":
+		{
+			"cardRestrictions":["Is Character","Attacking Card Fitting Restriction"],
+            "attackedCardRestriction":{
+                "cardRestrictions":["In AOE of Card Fitting Restriction"],
+                "inAOEOfRestriction":
+                {
+                    "cardRestrictions":["Subtypes Include"],
+                    "subtypesInclude":["Weather"]
+                }
+            }
+		}
+	},
+    "fast":true,
+	"n":3,
+	"e":1,
+	"s":4,
+	"w":9,
+	"subtypeText":"Elemental"
+}
