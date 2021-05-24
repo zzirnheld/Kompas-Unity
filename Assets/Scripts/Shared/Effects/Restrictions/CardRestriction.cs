@@ -203,6 +203,7 @@ namespace KompasCore.Effects
             }*/
             connectednessRestriction?.Initialize(source, controller, eff);
             attackedCardRestriction?.Initialize(source, controller, eff);
+            inAOEOfRestriction?.Initialize(source, controller, eff);
 
             initialized = true;
         }
@@ -242,6 +243,7 @@ namespace KompasCore.Effects
                 case IsAugment:   return potentialTarget.CardType == 'A';
                 case NotAugment:  return potentialTarget.CardType != 'A';
                 case Fast:        return potentialTarget.Fast;
+                case SpellSubtypes: return spellSubtypes.Any(s => s == potentialTarget.SpellSubtype);
 
                 //control
                 //Debug.Log($"potential target controller? {potentialTarget.Controller?.index}, my controller {Controller?.index}");

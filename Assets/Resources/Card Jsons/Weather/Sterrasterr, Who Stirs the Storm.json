@@ -26,7 +26,7 @@
 					"cardRestriction":
 					{
 						"blurb":"enemy character for Sterrasterr to stir into the storm",
-						"cardRestrictions":["Is Character","Enemy","Board"]
+						"cardRestrictions":["Is Character","Enemy","Board","Summoned"]
 					}
 				},
 				{
@@ -37,7 +37,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"where for Sterrasterr to stir the character into the storm",
-						"spaceRestrictions":["In Target's AOE"]
+						"spaceRestrictions":["In Target's AOE","Can Move Target to This Space"]
 					}
 				},
 				{

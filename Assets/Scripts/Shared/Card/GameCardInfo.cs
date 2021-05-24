@@ -18,6 +18,7 @@ namespace KompasCore.Cards
         bool Summoned { get; }
         bool IsAvatar { get; }
         string SubtypeText { get; }
+        string SpellSubtype { get; }
         GameCard AugmentedCard { get; }
         IEnumerable<GameCard> Augments { get; }
         bool KnownToEnemy { get; }

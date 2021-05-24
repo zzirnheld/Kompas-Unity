@@ -60,7 +60,7 @@ namespace KompasCore.Effects
 
         public string[] triggerRestrictions = new string[0];
         public CardRestriction cardRestriction;
-        public CardRestriction nowRestriction;
+        public CardRestriction nowRestriction = new CardRestriction();
         public CardRestriction adjacencyRestriction;
         public CardRestriction existsRestriction;
         public XRestriction xRestriction;
@@ -92,6 +92,7 @@ namespace KompasCore.Effects
 
             cardRestriction.Initialize(thisCard, effect.Controller, effect);
             existsRestriction.Initialize(thisCard, effect.Controller, effect);
+            nowRestriction.Initialize(thisCard, effect.Controller, effect);
             xRestriction.Initialize(thisCard);
             spaceRestriction.Initialize(thisCard, effect.Controller, effect);
 

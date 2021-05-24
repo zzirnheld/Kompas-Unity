@@ -104,6 +104,8 @@ namespace KompasCore.Effects
                 case CheckUnique: return !(Card.Unique && Card.AlreadyCopyOnBoard);
                 case AdjacentToCardFittingRestriction: 
                     return Card.Game.boardCtrl.CardsAdjacentTo(x, y).Any(adjacentCardRestriction.Evaluate);
+                case SpaceFitsRestriction:
+                    return spaceRestriction.Evaluate(x, y);
 
                 default: throw new System.ArgumentException($"You forgot to check play restriction {r}", "r");
             }

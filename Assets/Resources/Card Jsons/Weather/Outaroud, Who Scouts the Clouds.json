@@ -26,7 +26,7 @@
 					"cardRestriction":
 					{
 						"blurb":"friendly character for Outaroud to bring scouting",
-						"cardRestrictions":["Is Character","Friendly","Board"]
+						"cardRestrictions":["Is Character","Friendly","Board","Summoned"]
 					}
 				},
 				{
@@ -37,7 +37,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"where for Outaroud to bring friendly character scouting",
-						"spaceRestrictions":["In Target's AOE"]
+						"spaceRestrictions":["In Target's AOE","Can Move Target to This Space"]
 					}
 				},
 				{
