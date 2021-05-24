@@ -142,6 +142,7 @@ namespace KompasCore.Effects
         public const string CanPlayTargetToThisCharactersSpace = "Can Play Target to This Character's Space";
         public const string SpaceRestrictionValidIfThisTargetChosen = "Space Restriction Valid With This Target Chosen";
         public const string AttackingCardFittingRestriction = "Attacking Card Fitting Restriction";
+        public const string EffectIsOnTheStack = "Effect is on the Stack";
         #endregion restrictions
 
         //because JsonUtility will fill in all values with defaults if not present
