@@ -21,6 +21,7 @@ namespace KompasCore.Effects
 
         public const string ThisCardFitsRestriction = "This Card Fits Restriction"; //100,
         public const string TriggererFitsRestriction = "Triggerer Fits Restriction"; //101,
+        public const string TriggererNowFitsRestirction = "Triggerer Now Fits Restriction";
         public const string TriggerersAugmentedCardFitsRestriction = "Triggerer's Augmented Card Fits Restriction";
         public const string CardExists = "Card Exists";
 
@@ -59,6 +60,7 @@ namespace KompasCore.Effects
 
         public string[] triggerRestrictions = new string[0];
         public CardRestriction cardRestriction;
+        public CardRestriction nowRestriction;
         public CardRestriction adjacencyRestriction;
         public CardRestriction existsRestriction;
         public XRestriction xRestriction;
@@ -111,6 +113,7 @@ namespace KompasCore.Effects
                 case CardExists:               return ThisCard.Game.Cards.Any(c => existsRestriction.Evaluate(c));
                 case ThisCardFitsRestriction:  return cardRestriction.Evaluate(ThisCard);
                 case TriggererFitsRestriction: return cardRestriction.Evaluate(context.CardInfo);
+                case TriggererNowFitsRestirction: return nowRestriction.Evaluate(context.CardInfo.Card);
                 case TriggerersAugmentedCardFitsRestriction: return cardRestriction.Evaluate(context.CardInfo.AugmentedCard);
                 case StackableSourceFitsRestriction: return sourceRestriction.Evaluate(context.Stackable?.Source);
                 

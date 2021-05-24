@@ -1,0 +1,65 @@
+{
+	"cardType":67,
+	"cardName":"Emezene, Who Reads the Breeze",
+	"effText":"When you cast Radial Weather encompassing X Skyknights, including me, search your deck's top X for a card.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Watch for Truth",
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Controller Triggered","Max Per Turn","Triggerer Now Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Friendly","Is Spell","Subtypes Include","Spell Subtypes"],
+						"subtypesInclude":["Weather"],
+                        "spellSubtypes":["Radial"]
+					},
+					"nowRestriction":{
+						"cardRestrictions":["Source in This' AOE"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount":"Cards Fitting Restriction",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Board","In Target's AOE","Subtypes Include"],
+						"subtypesInclude":["Skyknights"]
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSaveRestSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"card for Emezene to read in the breeze",
+						"cardRestrictions":["Friendly","Deck","Index<X"]
+					},
+					"restRestriction":
+					{
+						"cardRestrictions":["Friendly","Deck","Index<X","Not Already Target"]
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"n":1,
+	"e":4,
+	"s":4,
+	"w":4,
+	"unique":true,
+	"subtypeText":"Skyknight Mage"
+}

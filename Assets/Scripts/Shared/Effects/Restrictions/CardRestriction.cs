@@ -31,6 +31,7 @@ namespace KompasCore.Effects
         public const string IsAugment = "Is Augment";
         public const string NotAugment = "Not Augment";
         public const string Fast = "Fast";
+        public const string SpellSubtypes = "Spell Subtypes";
 
         //control
         public const string Friendly = "Friendly";
@@ -115,6 +116,7 @@ namespace KompasCore.Effects
         public const string WithinXSpacesOfSource = "Within X Spaces";
         public const string InAOE = "In AOE";
         public const string InTargetsAOE = "In Target's AOE";
+        public const string SourceInThisAOE = "Source in This' AOE";
         public const string NotInAOE = "Not In AOE";
         public const string AdjacentToSubtype = "Adjacent to Subtype";
         public const string ExactlyXSpaces = "Exactly X Spaces to Source";
@@ -146,6 +148,7 @@ namespace KompasCore.Effects
         public string[] subtypesExclude = new string[0];
         public int constant;
         public CardLocation[] locations;
+        public string[] spellSubtypes = new string[0];
         public int costMultiplier = 1;
         public int costDivisor = 1;
         public int cSpaces;
@@ -312,6 +315,7 @@ namespace KompasCore.Effects
                 case AdjacentToSubtype:  return potentialTarget.AdjacentCards.Any(card => adjacencySubtypes.All(s => card.SubtypeText.Contains(s)));
                 case InAOE:              return Source.CardInAOE(potentialTarget);
                 case InTargetsAOE:       return Subeffect.Target.CardInAOE(potentialTarget);
+                case SourceInThisAOE:    return potentialTarget.CardInAOE(Source);
                 case NotInAOE:           return !Source.CardInAOE(potentialTarget);
                 case WithinCSpacesOfSource: return potentialTarget.WithinSpaces(cSpaces, Source);
                 case WithinCSpacesOfTarget: return potentialTarget.WithinSpaces(cSpaces, Subeffect.Target);

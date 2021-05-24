@@ -368,21 +368,21 @@ Wanderers/Wander Home
 Wanderers/Wanderer
 Wanderers/Wanderlust
 Wanderers/Wisewoman
-Weather/Bondsmith
 Weather/Dapplesun
-Weather/Elsecaller
-Weather/Everstorm
-Weather/Flood
-Weather/Fog
-Weather/Lightweaver
+Weather/Puffyclouds
+Weather/Crispbreeze
 Weather/Overcast
+Weather/Flashflood
 Weather/Peltrain
-Weather/Skybreaker
+Weather/Muggyclouds
 Weather/Thunderstorm
+Weather/Thinkfog
 Weather/Thundersun
-Weather/Truthwatcher
-Weather/Willshaper
-Weather/Windrunner
+Weather/Iriaid, Who Rides the Skies
+Weather/Emezene, Who Reads the Breeze
+Weather/Outaroud, Who Scouts the Clouds
+Weather/Zussastuss, Who Trusts the Gusts
+Weather/Sterrasterr, Who Stirs the Storm
 Wisps/Erratic Wisps
 Wisps/Flippiwisp
 Wisps/Here'n'gone

@@ -1,0 +1,55 @@
+{
+	"cardType":67,
+	"cardName":"Outaroud, Who Scouts the Clouds",
+	"effText":"When you cast Radial Weather encompassing me, you can move a friendly character to a space in that Weather.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Watch for Truth",
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Controller Triggered","Max Per Turn","Triggerer Now Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Friendly","Is Spell","Subtypes Include","Spell Subtypes"],
+						"subtypesInclude":["Weather"],
+                        "spellSubtypes":["Radial"]
+					},
+					"nowRestriction":{
+						"cardRestrictions":["Source in This' AOE"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"friendly character for Outaroud to bring scouting",
+						"cardRestrictions":["Is Character","Friendly","Board"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where for Outaroud to bring friendly character scouting",
+						"spaceRestrictions":["In Target's AOE"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"n":4,
+	"e":3,
+	"s":6,
+	"w":4,
+	"unique":true,
+	"subtypeText":"Skyknight Warrior"
+}

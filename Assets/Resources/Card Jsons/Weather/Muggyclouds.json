@@ -1,7 +1,7 @@
 {
 	"cardType":83,
-	"cardName":"Peltrain",
-	"effText":"Weather.\nWhen a character arrives here, give them -4 W.",
+	"cardName":"Muggyclouds",
+	"effText":"Weather.\nWhen a character arrives here, give them -1 S.",
 	"effects":[
 		{
 			"triggerData":
@@ -23,14 +23,14 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wMod":-4
+					"sMod":-1
 				}
 			]	
 		}
 	],
 	"keywords":["Weather"],
 	"unique":true,
-	"c":5,
+	"c":1,
 	"spellType":"Radial",
 	"subtypeText":"Weather Radial",
 	"arg":1

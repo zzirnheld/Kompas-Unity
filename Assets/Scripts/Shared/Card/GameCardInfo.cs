@@ -46,6 +46,7 @@ namespace KompasCore.Cards
         bool WithinSpaces(int spaces, IGameCardInfo card);
         bool InCorner();
         int ShortestPath(int x, int y, Func<GameCard, bool> throughPredicate);
+        bool CardInAOE(IGameCardInfo c);
     }
 
     /// <summary>

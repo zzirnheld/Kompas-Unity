@@ -24,6 +24,7 @@ namespace KompasCore.Effects
         public const string ConnectedToAvatarBy = "Connected to Avatar by";
         public const string InAOE = "In AOE";
         public const string NotInAOE = "Not In AOE";
+        public const string InTargetsAOE = "In Target's AOE";
         public const string LimitAdjacentCardsFittingRestriction = "Limit Number of Adjacent Cards Fitting Restriction";
 
         //distance
@@ -114,6 +115,7 @@ namespace KompasCore.Effects
                 case ConnectedToAvatarBy:       return Source.Game.boardCtrl.ShortestPath(Source.Controller.Avatar, x, y, connectednessRestriction) < 50;
                 case InAOE:                     return Source.SpaceInAOE(x, y);
                 case NotInAOE:                  return !Source.SpaceInAOE(x, y);
+                case InTargetsAOE:              return target.SpaceInAOE((x, y));
                 case LimitAdjacentCardsFittingRestriction:
                     return Source.Game.boardCtrl.CardsAdjacentTo(x, y).Where(c => limitAdjacencyRestriction.Evaluate(c)).Count() <= adjacencyLimit;
 

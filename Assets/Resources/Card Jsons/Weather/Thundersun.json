@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Thundersun",
-	"effText":"Weather.\nWhen a character arrives here, increase the leyload by 1.",
+	"effText":"Weather.\nThe first five times each turn a character arrives here, give both players a pip.",
 	"effects":[
 		{
 			"triggerData":
@@ -9,17 +9,27 @@
 				"blurb":"Thundersun",
 				"triggerCondition":"Arrive",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Coords Fit Restriction"],
+					"triggerRestrictions":["Max Per Turn","This Card in Play","Coords Fit Restriction"],
 					"spaceRestriction":
 					{
 						"mustBeEmpty":false,
 						"spaceRestrictions":["In AOE"]
-					}
+					},
+					"maxTimesPerTurn":3
 				}
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.ChangeLeyloadSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xMultiplier":0,
+					"xModifier":1
+				},
+				{
+					"$type":"KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xMultiplier":0,
 					"xModifier":1
 				}
 			]	
@@ -27,7 +37,7 @@
 	],
 	"keywords":["Weather"],
 	"unique":true,
-	"c":7,
+	"c":9,
 	"spellType":"Radial",
 	"subtypeText":"Weather Radial",
 	"arg":1
