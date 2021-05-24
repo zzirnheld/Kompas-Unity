@@ -15,7 +15,7 @@
 						"mustBeEmpty":false,
 						"spaceRestrictions":["In AOE"]
 					},
-					"maxTimesPerTurn":3
+					"maxTimesPerTurn":5
 				}
 			},
 			"subeffects":[
