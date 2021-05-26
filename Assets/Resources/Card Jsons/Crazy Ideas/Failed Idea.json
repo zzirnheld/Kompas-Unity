@@ -1,0 +1,44 @@
+{
+	"cardType":67,
+	"cardName":"Failed Idea",
+	"effText":"When you discard an Ificator, mill a Crazy Idea and kill me. (Since you mill before killing me, you still get to mill if I’m dead by the time my ability resolves.)",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Discard",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Controller Triggered","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Hand","Subtypes Include"],
+                        "subtypesInclude":["Ificator"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"blurb":"card for Failed Idea to mill",
+						"cardRestrictions":["Friendly","Deck","Subtypes Include"],
+						"subtypesInclude":["Crazy","Idea"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+                {
+                    "$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+                },
+                {
+                    "$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+                }
+			]	
+		}
+	],
+    "n":1,
+    "e":1,
+    "s":1,
+    "w":0,
+	"subtypeText":"Crazy Failure"
+}
