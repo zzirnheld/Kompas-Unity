@@ -75,6 +75,6 @@
 	},
 	"c":2,
 	"spellType":"Enchant",
-	"subtypes":["Rune","Enchant"],
-	"subtypeText":"Rune Enchant"
+	"subtypes":["Enchant"],
+	"subtypeText":"Enchant"
 }
