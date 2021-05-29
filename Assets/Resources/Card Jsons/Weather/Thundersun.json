@@ -9,7 +9,10 @@
 				"blurb":"Thundersun",
 				"triggerCondition":"Arrive",
 				"triggerRestriction":{
-					"triggerRestrictions":["Max Per Turn","This Card in Play","Coords Fit Restriction"],
+					"triggerRestrictions":["Max Per Turn","This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Is Character"]
+					},
 					"spaceRestriction":
 					{
 						"mustBeEmpty":false,
