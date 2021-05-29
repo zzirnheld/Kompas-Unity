@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using KompasCore.Cards;
 using System.Linq;
 using UnityEngine;
@@ -41,6 +41,7 @@ namespace KompasCore.Effects
 
         public List<string> normalRestrictions = null;
         public List<string> effectRestrictions = null;
+        public List<string> recommendationRestrictions = null;
 
         public CardRestriction onCardRestriction;
         public CardRestriction adjacentCardRestriction;
@@ -51,6 +52,8 @@ namespace KompasCore.Effects
 
             normalRestrictions = normalRestrictions ?? new List<string> { DefaultNormal };
             effectRestrictions = effectRestrictions ?? new List<string> { DefaultEffect };
+            recommendationRestrictions = recommendationRestrictions ?? new List<string>();
+            //if (recommendationRestrictions.Count > 0) Debug.Log($"More than one recommendation restriction: {string.Join(recommendationRestrictions)}");
 
             if (normalRestrictions.Contains(DefaultNormal)) normalRestrictions.AddRange(DefaultNormalRestrictions);
             if (normalRestrictions.Contains(AugNormal)) normalRestrictions.AddRange(AugmentNormalRestrictions);
@@ -94,11 +97,12 @@ namespace KompasCore.Effects
                 case MustNormally: return normal;
                 case CheckUnique: return !(Card.Unique && Card.AlreadyCopyOnBoard);
                 case AdjacentToCardFittingRestriction: 
-                    return Card.Game.boardCtrl.CardsAdjacentTo(x, y).Any(c => adjacentCardRestriction.Evaluate(c));
+                    return Card.Game.boardCtrl.CardsAdjacentTo(x, y).Any(adjacentCardRestriction.Evaluate);
 
                 default: throw new System.ArgumentException($"You forgot to check play restriction {r}", "r");
             }
         }
+
 
         public bool EvaluateNormalPlay(int x, int y, Player player, bool checkCanAffordCost = false)
             => (!checkCanAffordCost || player.Pips >= Card.Cost) 
@@ -107,10 +111,18 @@ namespace KompasCore.Effects
         public bool EvaluateEffectPlay(int x, int y, Effect effect, Player controller)
             => effectRestrictions.All(r => RestrictionValid(r, x, y, controller, false));
 
-        public bool EvaluateEffectPlay(int x, int y, Effect effect)
-            => EvaluateEffectPlay(x, y, effect, effect.Controller);
-
         public bool EvaluateEffectPlay((int x, int y) space, Effect effect, Player controller)
             => EvaluateEffectPlay(space.x, space.y, effect, controller);
+      
+        public bool RecommendedPlay(int x, int y, Player controller, bool normal)
+        //=> recommendationRestrictions.All(r => RestrictionValid(r, x, y, controller, normal: normal));
+        {
+            Debug.Log($"Checking {x}, {y} against recommendations {string.Join(", ", recommendationRestrictions)}");
+            return recommendationRestrictions.All(r => RestrictionValid(r, x, y, controller, normal: normal));
+        }
+
+        public bool RecommendedNormalPlay(int x, int y, Player player, bool checkCanAffordCost = false)
+            => EvaluateNormalPlay(x, y, player, checkCanAffordCost)
+            && RecommendedPlay(x, y, player, true);
     }
 }

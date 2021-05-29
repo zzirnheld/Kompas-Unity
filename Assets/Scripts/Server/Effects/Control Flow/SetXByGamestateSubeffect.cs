@@ -38,10 +38,10 @@ namespace KompasServer.Effects
                         var (x, y) = Space;
                         return Game.boardCtrl.ShortestPath(Source, x, y, throughRestriction);
                     case CardsFittingRestriction:
-                        return Game.Cards.Where(c => cardRestriction.Evaluate(c)).Count();
+                        return Game.Cards.Where(cardRestriction.Evaluate).Count();
                     case EffectUsesThisTurn: return Effect.TimesUsedThisTurn;
                     case MaxStatAmongRestriction:
-                        return Game.Cards.Where(c => cardRestriction.Evaluate(c)).Max(c => c.GetStat(stat));
+                        return Game.Cards.Where(cardRestriction.Evaluate).Max(c => c.GetStat(stat));
                     case NumberOfTargets: return Effect.Targets.Count();
                     default:
                         throw new System.ArgumentException($"Invalid 'what to count' string {whatToCount} in x by gamestate value subeffect");

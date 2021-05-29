@@ -228,9 +228,9 @@ namespace KompasServer.Networking {
         /// <returns>The space and false if the player chose a space<br></br>
         /// default and true if the player declined to choose a space</returns>
         public async Task<(int, int)> GetSpaceTarget
-            (string cardName, string blurb, (int, int)[] spaces)
+            (string cardName, string blurb, (int, int)[] spaces, (int, int)[] recommendedSpaces)
         {
-            serverNotifier.GetSpaceTarget(cardName, blurb, spaces);
+            serverNotifier.GetSpaceTarget(cardName, blurb, spaces, recommendedSpaces);
             while (true)
             {
                 lock (SpaceTargetLock)

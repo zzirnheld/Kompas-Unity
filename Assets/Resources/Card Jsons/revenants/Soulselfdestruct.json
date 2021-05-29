@@ -46,6 +46,14 @@
 			]	
 		}
 	],
+	"PlayRestriction":{
+		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
+		"adjacentCardRestriction":
+		{
+			"cardRestrictions":["Is Character","Subtypes Include"],
+			"subtypesInclude":["Ethereal"]
+		}
+	},
 	"fast":true,
 	"c":1,
 	"spellType":"Simple",

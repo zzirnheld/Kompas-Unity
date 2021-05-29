@@ -107,6 +107,14 @@
 			]
 		}
 	],
+	"PlayRestriction":{
+		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
+		"adjacentCardRestriction":
+		{
+			"cardRestrictions":["Is Character","Subtypes Include"],
+			"subtypesInclude":["Wanderer"]
+		}
+	},
 	"fast":true,
 	"c":1,
 	"spellType":"Simple",

@@ -365,7 +365,7 @@ namespace KompasCore.Effects
         /// <param name="potentialTarget">The card to see if it fits all restrictions</param>
         /// <param name="x">The value of X for which to consider this effect's restriction</param>
         /// <returns><see langword="true"/> if the card fits all restrictions, <see langword="false"/> if it doesn't fit at least one</returns>
-        public bool Evaluate(IGameCardInfo potentialTarget, int x)
+        private bool Evaluate(IGameCardInfo potentialTarget, int x)
         {
             if (!initialized) throw new ArgumentException("Card restriction not initialized!");
 

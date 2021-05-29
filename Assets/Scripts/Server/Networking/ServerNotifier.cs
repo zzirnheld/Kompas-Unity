@@ -153,8 +153,8 @@ namespace KompasServer.Networking
         public void GetCardTarget(string cardName, string targetBlurb, int[] ids, string listRestrictionJson, bool list)
             => SendPacket(new GetCardTargetPacket(cardName, targetBlurb, ids, listRestrictionJson, list));
 
-        public void GetSpaceTarget(string cardName, string targetBlurb, (int, int)[] spaces)
-            => SendPacket(new GetSpaceTargetPacket(cardName, targetBlurb, spaces));
+        public void GetSpaceTarget(string cardName, string targetBlurb, (int, int)[] spaces, (int, int)[] recommendedSpaces)
+            => SendPacket(new GetSpaceTargetPacket(cardName, targetBlurb, spaces, recommendedSpaces));
         #endregion request targets
 
         public void NotifyAttackStarted(GameCard atk, GameCard def, Player initiator) 
