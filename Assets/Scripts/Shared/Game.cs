@@ -95,7 +95,7 @@ namespace KompasCore.GameCore
             {
                 for(int y = 0; y < 7; y++)
                 {
-                    if (restriction.EvaluateEffectPlay(x, y, eff)) return true;
+                    if (restriction.EvaluateEffectPlay(x, y, eff, eff.Controller)) return true;
                 }
             }
 
