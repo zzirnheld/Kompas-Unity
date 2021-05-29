@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KompasCore.Effects;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,8 @@ namespace KompasCore.Cards
         GameCard AugmentedCard { get; }
         IEnumerable<GameCard> Augments { get; }
         bool KnownToEnemy { get; }
+
+        PlayRestriction PlayRestriction { get; }
 
         bool Fast { get; }
 
@@ -71,6 +74,8 @@ namespace KompasCore.Cards
         public IEnumerable<GameCard> Augments { get; }
         public bool KnownToEnemy { get; }
 
+        public PlayRestriction PlayRestriction { get; }
+
         public bool Fast { get; }
 
         public int N { get; }
@@ -105,6 +110,7 @@ namespace KompasCore.Cards
             AugmentedCard = card.AugmentedCard;
             Augments = card.Augments.ToArray();
             KnownToEnemy = card.KnownToEnemy;
+            PlayRestriction = card.PlayRestriction;
             Fast = card.Fast;
             N = card.N;
             E = card.E;

@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Animancer",
-	"effText":"During your turn, you can discard Golems with total cost X. Search your deck for a cost < X Golem.",
+	"effText":"During friendly turns, you can discard Golems with total cost X. Search your deck for a cost < X Golem.",
 	"effects":[
 		{
 			"blurb":"It's In Here Somewhere",
