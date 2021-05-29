@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Outaroud, Who Scouts the Clouds",
-	"effText":"When you cast Radial Weather encompassing me, you can move a friendly character to a space in that Weather.",
+	"effText":"When you cast Radial Weather encompassing me, move a friendly character to a space in that Weather.",
 	"effects":[
 		{
 			"triggerData":

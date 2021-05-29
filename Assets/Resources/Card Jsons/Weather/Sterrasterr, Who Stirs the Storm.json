@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Sterrasterr, Who Stirs the Storm",
-	"effText":"When you cast Radial Weather encompassing me, you can move an enemy card to a space there.",
+	"effText":"When you cast Radial Weather, move an enemy card to a space there.",
 	"effects":[
 		{
 			"triggerData":
@@ -9,14 +9,11 @@
 				"blurb":"Watch for Truth",
 				"triggerCondition":"Play",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Controller Triggered","Triggerer Now Fits Restriction"],
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Controller Triggered"],
 					"cardRestriction":{
 						"cardRestrictions":["Friendly","Is Spell","Subtypes Include","Spell Subtypes"],
 						"subtypesInclude":["Weather"],
                         "spellSubtypes":["Radial"]
-					},
-					"nowRestriction":{
-						"cardRestrictions":["Source in This' AOE"]
 					}
 				}
 			},

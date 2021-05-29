@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Iriaid, Who Rides the Skies",
-	"effText":"When you cast Radial Weather, you can move me to a space there.",
+	"effText":"When you cast Radial Weather, move me to a space there.",
 	"effects":[
 		{
 			"triggerData":

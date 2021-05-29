@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Newsflash!",
-	"effText":"Your opponent can reveal a Fast card. If they do, draw 1 and gain a pip. If they don't, move a Reporter anywhere.",
+	"effText":"Your opponent can reveal a Fast card. If they do, draw 1 and gain a pip. If they don't, move an adjacent Reporter anywhere.",
 	"effects":[
 		{
 			"triggerData":
@@ -55,7 +55,7 @@
 					"cardRestriction":
 					{
 						"blurb":"friendly Reporter to move",
-						"cardRestrictions":["Is Character","Friendly","Board","Subtypes Include"],
+						"cardRestrictions":["Is Character","Friendly","Board","Adjacent to Source","Subtypes Include"],
 						"subtypesInclude":["Reporter"]
 					}
 				},
