@@ -50,7 +50,7 @@
     "fast":true,
 	"n":4,
 	"e":6,
-	"s":5,
+	"s":2,
 	"w":4,
 	"subtypeText":"Weather Event Elemental"
 }

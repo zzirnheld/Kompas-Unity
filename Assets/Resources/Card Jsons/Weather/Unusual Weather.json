@@ -70,9 +70,6 @@
 			]
 		}
 	],
-	"PlayRestriction":{
-		"normalRestrictions":["Cannot be Played Normally"]
-	},
 	"c":4,
 	"spellType":"Enchant",
 	"subtypes":["Enchant"],

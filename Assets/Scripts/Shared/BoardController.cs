@@ -292,15 +292,16 @@ namespace KompasCore.GameCore
                 return false;
             }
 
-            Board[toX, toY] = card;
-            Board[tempX, tempY] = temp;
-
-            //then let the cards know they've been moved
+            //then let the cards know they've been moved, but before moving them, so you can count properly
             if (playerInitiated)
             {
                 card.CountSpacesMovedTo((toX, toY));
                 temp?.CountSpacesMovedTo((tempX, tempY));
             }
+
+            Board[toX, toY] = card;
+            Board[tempX, tempY] = temp;
+
             card.Position = (toX, toY);
             if (temp != null) temp.Position = (tempX, tempY);
             return true;
