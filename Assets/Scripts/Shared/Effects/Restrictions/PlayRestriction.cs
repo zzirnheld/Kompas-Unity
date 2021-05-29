@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using KompasCore.Cards;
 using System.Linq;
 using UnityEngine;
@@ -119,9 +119,9 @@ namespace KompasCore.Effects
         public bool EvaluateEffectPlay(int x, int y, Effect effect, Player controller)
             => effectRestrictions.All(r => RestrictionValid(r, x, y, controller, false));
 
-        public bool EvaluateEffectPlay(int x, int y, Effect effect)
-            => EvaluateEffectPlay(x, y, effect, effect.Controller);
-
+        public bool EvaluateEffectPlay((int x, int y) space, Effect effect, Player controller)
+            => EvaluateEffectPlay(space.x, space.y, effect, controller);
+      
         public bool RecommendedPlay(int x, int y, Player controller, bool normal)
         //=> recommendationRestrictions.All(r => RestrictionValid(r, x, y, controller, normal: normal));
         {

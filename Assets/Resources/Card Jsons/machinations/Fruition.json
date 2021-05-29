@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Fruition",
-	"effText":"During your turn, you can board-rehand a friendly CX Machination to give another friendly spell +X C. (Just to be clear, you can do this in response to effects happening. Doesn't negate the effect, though.)",
+	"effText":"During friendly turns, you can board-rehand a friendly CX Machination to give another friendly spell +X C. (Just to be clear, you can do this in response to effects happening. Doesn't negate the effect, though.)",
 	"effects":[
 		{
 			"blurb":"My Plans",

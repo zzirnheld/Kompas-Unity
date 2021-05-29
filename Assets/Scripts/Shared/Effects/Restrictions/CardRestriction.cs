@@ -144,6 +144,7 @@ namespace KompasCore.Effects
         public const string SpaceRestrictionValidIfThisTargetChosen = "Space Restriction Valid With This Target Chosen";
         public const string AttackingCardFittingRestriction = "Attacking Card Fitting Restriction";
         public const string EffectIsOnTheStack = "Effect is on the Stack";
+        public const string CanPlayToTargetSpace = "Can be Played to Target Space";
         #endregion restrictions
 
         //because JsonUtility will fill in all values with defaults if not present
@@ -368,6 +369,8 @@ namespace KompasCore.Effects
                         .Any(e => e is Attack atk && atk.attacker == potentialTarget.Card && attackedCardRestriction.Evaluate(atk.defender));
                 case EffectIsOnTheStack:
                     return Source.Game.StackEntries.Any(e => e is Effect eff && eff.Source == potentialTarget.Card);
+                case CanPlayToTargetSpace:
+                    return potentialTarget.PlayRestriction.EvaluateEffectPlay(Subeffect.Space, Effect, Subeffect.Player);
                 default: throw new ArgumentException($"Invalid card restriction {restriction}", "restriction");
             }
         }

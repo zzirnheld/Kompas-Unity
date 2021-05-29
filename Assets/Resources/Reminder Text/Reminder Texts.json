@@ -2,11 +2,11 @@
 	"keywordReminderTexts":[
 		{
 			"keyword":"Linewalk.",
-			"reminder":"During your turn, you can spend all my movement to move anywhere along my diagonal."
+			"reminder":"During friendly turns, you can spend all my movement to move anywhere along my diagonal."
 		},
 		{
 			"keyword":"Shape.",
-			"reminder":"During your turn, you can use a space of movement and give me -X E to move me through X Ethereal characters."
+			"reminder":"During friendly turns, you can use a space of movement and give me -X E to move me through X Ethereal characters."
 		},
 		{
 			"keyword":"Geminii.",
@@ -14,7 +14,7 @@
 		},
 		{
 			"keyword":"Revenant.",
-			"reminder":"When I die, annihilate me. During your turn, you can pip revive me for half cost."
+			"reminder":"When I die, annihilate me. During friendly turns, you can pip revive me at half cost."
 		},
 		{
 			"keyword":"Ificate.",

@@ -388,7 +388,7 @@ namespace KompasCore.Cards
         /// Accumulates the distance to <paramref name="to"/> into the number of spaces this card moved this turn.
         /// </summary>
         /// <param name="to">The space being moved to</param>
-        public void CountSpacesMovedTo((int x, int y) to) => SetSpacesMoved(SpacesMoved + DistanceTo(to.x, to.y));
+        public void CountSpacesMovedTo((int x, int y) to) => SetSpacesMoved(SpacesMoved + Game.boardCtrl.ShortestEmptyPath(this, to));
 
         #region augments
         public virtual bool AddAugment(GameCard augment, IStackable stackSrc = null)
