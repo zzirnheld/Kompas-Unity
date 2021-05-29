@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Cloudshift",
-	"effText":"Annihilate an adjacent Weather. Deck->cast a Weather adjacent to me.",
+	"effText":"Annihilate an adjacent Weather. Deck->cast a distinct Weather Radial adjacent to me.",
 	"effects":[
 		{
 			"triggerData":
@@ -28,8 +28,9 @@
                     "$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
                     "cardRestriction":{
                         "blurb":"Weather to deck-cast",
-                        "cardRestrictions":["Friendly","Deck","Is Spell","Subtypes Include"],
-                        "subtypesInclude":["Weather"]
+                        "cardRestrictions":["Friendly","Deck","Is Spell","Distinct Name from Other Targets","Subtypes Include","Spell Subtypes"],
+						"subtypesInclude":["Weather"],
+                        "spellSubtypes":["Radial"]
                     },
                     "maxCanChoose":1
                 },
