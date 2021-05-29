@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Newsflash!",
-	"effText":"Your opponent can reveal a Fast card. If they do, draw 1 and gain a pip. If they don't, move an adjacent Reporter anywhere.",
+	"effText":"Your opponent can reveal a Fast card. If they don't, move an adjacent Reporter anywhere.",
 	"effects":[
 		{
 			"triggerData":
@@ -18,13 +18,13 @@
 				{
 					"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
 					"subeffIndices":[3],
-					"skipIndex":8
+					"skipIndex":6
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
 					"ChoiceBlurb":"Reveal a Fast card?",
 					"OptionBlurbs":["Yes","No"],
-					"OptionJumpIndices":[3,8]
+					"OptionJumpIndices":[3,6]
 				},
 				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
@@ -36,15 +36,6 @@
 				},
 				{
 					"$type":"KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp",
-					"playerIndex":-2
-				},
-				{
-					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"playerIndex":-2,
-					"xModifier":1
 				},
 				{
 					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
