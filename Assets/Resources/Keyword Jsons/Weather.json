@@ -17,7 +17,7 @@
 			"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
 			"cardRestriction":{
 				"blurb":"Weather to deck-cast",
-				"cardRestrictions":["Friendly","Deck","Is Spell","Distinct Name from Source","Subtypes Include"],
+				"cardRestrictions":["Friendly","Deck","Is Spell","Distinct Name from Source","Subtypes Include","Can Be Played"],
 				"subtypesInclude":["Weather"]
 			},
 			"maxCanChoose":1
