@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Dapplesun",
-	"effText":"Weather.\nWhen a character arrives here, give them +1 E.",
+	"effText":"Weather.\nWhen a character arrives here, give them +2 E.",
 	"effects":[
 		{
 			"triggerData":
@@ -26,7 +26,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":1
+					"eMod":2
 				}
 			]	
 		}

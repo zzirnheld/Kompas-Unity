@@ -58,6 +58,10 @@ namespace KompasCore.GameCore
 
         public bool BoardHasCopyOf(GameCard card)
             => Cards.Any(c => c != card && c.Location == CardLocation.Field && c.Controller == card.Controller && c.CardName == card.CardName);
+        /*{
+            Debug.Log($"Checking if board has copy of {card.CardName} with controller index {card.ControllerIndex}");
+            return Cards.Any(c => c != card && c.Location == CardLocation.Field && c.Controller == card.Controller && c.CardName == card.CardName);
+        }*/
 
         public bool ValidSpellSpaceFor(GameCard card, int x, int y) => boardCtrl.ValidSpellSpaceFor(card, x, y);
 

@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Crispbreeze",
-	"effText":"Weather.\nWhen a character arrives here, give them +1 W.",
+	"effText":"Weather.\nWhen a character arrives here, give them +3 W.",
 	"effects":[
 		{
 			"triggerData":
@@ -26,7 +26,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wMod":1
+					"wMod":3
 				}
 			]	
 		}
