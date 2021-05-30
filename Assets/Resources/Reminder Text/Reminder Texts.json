@@ -77,7 +77,11 @@
 			"reminder":"When turns start, set X to my S. Reshuffle me and deck->summon an S X - 1 Wanderer where I was. (Since the summoned character won't have been on the board when the turn started, their turn start effect, if any, doesn't trigger.)"
 		},
 		{
-			"keyword":"Charge",
+			"keyword":"Charge:",
+			"reminder":"When I'm activated by a card connected to me by Conductors..."
+		},
+		{
+			"keyword":"Charge X:",
 			"reminder":"When I'm activated by a card connected to me by X Conductors..."
 		}
 	]

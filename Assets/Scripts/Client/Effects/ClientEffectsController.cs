@@ -1,6 +1,7 @@
 ﻿using KompasCore.Effects;
 using KompasClient.UI;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace KompasClient.Effects
 {
@@ -9,6 +10,8 @@ namespace KompasClient.Effects
         public ClientStackPanelController clientStackPanelCtrl;
 
         private readonly EffectStack<IClientStackable> stack = new EffectStack<IClientStackable>();
+
+        public IEnumerable<IClientStackable> StackEntries => stack.StackEntries;
 
         public void Add(IClientStackable stackable, ActivationContext context = default)
         {
