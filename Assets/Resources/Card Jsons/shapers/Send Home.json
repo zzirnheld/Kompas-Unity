@@ -27,6 +27,18 @@
 			]
 		}
 	],
+	"PlayRestriction":{
+		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
+		"adjacentCardRestriction":
+		{
+			"cardRestrictions":["Is Character","Enemy","Adjacent to Card Restriction"],
+			"adjacentCardRestriction":
+			{
+				"cardRestrictions":["Is Character","Friendly","Subtypes Include"],
+				"subtypesInclude":["Shaper"]
+			}
+		}
+	},
 	"fast":true,
 	"c":4,
 	"spellType":"Simple",

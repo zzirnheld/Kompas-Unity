@@ -124,6 +124,7 @@ namespace KompasCore.Effects
         public const string InAOEOfCardFittingRestriction = "In AOE of Card Fitting Restriction";
 
         public const string AdjacentToSubtype = "Adjacent to Subtype";
+        public const string AdjacentToRestriction = "Adjacent to Card Restriction";
         public const string ExactlyXSpaces = "Exactly X Spaces to Source";
         public const string InFrontOfSource = "In Front of Source";
         public const string BehindSource = "Behind Source";
@@ -169,6 +170,7 @@ namespace KompasCore.Effects
 
         public CardRestriction secondaryRestriction;
 
+        public CardRestriction adjacentCardRestriction;
         public CardRestriction connectednessRestriction;
         public CardRestriction attackedCardRestriction;
         public CardRestriction inAOEOfRestriction;
@@ -204,6 +206,7 @@ namespace KompasCore.Effects
                 if (connectednessRestriction == null) Debug.LogError($"Couldn't load connectedness restriction");
                 else Debug.Log($"Connectedness restriction: {connectednessRestriction}");
             }*/
+            adjacentCardRestriction?.Initialize(source, controller, eff);
             connectednessRestriction?.Initialize(source, controller, eff);
             attackedCardRestriction?.Initialize(source, controller, eff);
             inAOEOfRestriction?.Initialize(source, controller, eff);
@@ -329,6 +332,7 @@ namespace KompasCore.Effects
                 case AdjacentToTarget:   return potentialTarget.IsAdjacentTo(Subeffect.Target);
                 case AdjacentToCoords:   return potentialTarget.IsAdjacentTo(Subeffect.Space);
                 case AdjacentToSubtype:  return potentialTarget.AdjacentCards.Any(card => adjacencySubtypes.All(s => card.SubtypeText.Contains(s)));
+                case AdjacentToRestriction: return potentialTarget.AdjacentCards.Any(adjacentCardRestriction.Evaluate);
 
                 case InAOE:              return Source.CardInAOE(potentialTarget);
                 case InTargetsAOE:       return Subeffect.Target.CardInAOE(potentialTarget);
