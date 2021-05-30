@@ -137,6 +137,7 @@ namespace KompasCore.Effects
 
         //misc
         public const string CanBePlayed = "Can Be Played";
+        //public const string TargetCanBePlayed = "Target Can Be Played";
         public const string EffectControllerCanPayCost = "Effect Controller can Afford Cost";
         public const string Augmented = "Augmented";
         public const string IsDefendingFromSource = "Is Defending From Source";
@@ -352,7 +353,7 @@ namespace KompasCore.Effects
                     return potentialTarget.ShortestPath(Subeffect.Target.BoardX, Subeffect.Target.BoardY, connectednessRestriction.Evaluate) < 50; 
 
                 //misc
-                case CanBePlayed: return Subeffect.Game.ExistsEffectPlaySpace(Source.PlayRestriction, Effect);
+                case CanBePlayed: return Subeffect.Game.ExistsEffectPlaySpace(potentialTarget.PlayRestriction, Effect);
                 case EffectControllerCanPayCost: return Subeffect.Effect.Controller.Pips >= potentialTarget.Cost * costMultiplier / costDivisor;
                 case Augmented: return potentialTarget.Augments.Any();
                 case IsDefendingFromSource:
