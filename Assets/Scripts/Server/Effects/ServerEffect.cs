@@ -57,6 +57,12 @@ namespace KompasServer.Effects
             ctrl.ServerNotifier.NotifyEffectActivated(this);
         }
 
+        public override void Negate()
+        {
+            base.Negate();
+            EffectsController.Cancel(this);
+        }
+
         #region resolution
         public async Task StartResolution(ActivationContext context)
         {

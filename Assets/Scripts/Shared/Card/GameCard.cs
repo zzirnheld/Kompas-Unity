@@ -75,7 +75,7 @@ namespace KompasCore.Cards
                 if (value) Negations++;
                 else Negations--;
 
-                foreach (var e in Effects) e.Negated = value;
+                foreach (var e in Effects) e.Negate();
             }
         }
         public int Activations { get; private set; } = 0;

@@ -48,7 +48,7 @@ namespace KompasCore.Effects
         public bool Negated
         {
             get => negations > 0;
-            set
+            private set
             {
                 if (value) negations++;
                 else negations--;

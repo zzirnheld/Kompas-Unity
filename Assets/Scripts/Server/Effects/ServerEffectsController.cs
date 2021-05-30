@@ -135,6 +135,18 @@ namespace KompasServer.Effects
             }
         }
 
+        public void Cancel(Effect eff)
+        {
+            for (int i = stack.Count - 1; i >= 0; i--)
+            {
+                if (stack.StackEntries.ElementAt(i) == eff)
+                {
+                    stack.Cancel(i);
+                    ServerGame.ServerPlayers.First().ServerNotifier.RemoveStackEntry(i - 1);
+                }
+            }
+        }
+
         /// <summary>
         /// Clears the passed priority flag for all players
         /// </summary>

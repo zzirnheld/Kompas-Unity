@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Well-Read Reporter",
-	"effText":"When you cast a CX spell, ask an enemy to reveal a C > X spell. If they don’t, give me +2 NEWS.",
+	"effText":"When you cast a CX spell, ask an enemy to reveal a C > X spell. If they don’t, give me +3 NEWS.",
 	"effects":[
 		{
 			"triggerData":
@@ -53,18 +53,21 @@
 					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
 				},
 				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"nMod":2,
-					"eMod":2,
-					"sMod":2,
-					"wMod":2
+					"nMod":3,
+					"eMod":3,
+					"sMod":3,
+					"wMod":3
 				}
 			]	
 		}
 	],
 	"n":1,
-	"e":2,
+	"e":1,
 	"s":3,
-	"w":2,
+	"w":1,
 	"subtypeText":"Runar Reporter Mage"
 }
