@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Outaroud, Who Scouts the Clouds",
-	"effText":"When you cast Radial Weather, move a friendly character to a space in that Weather.",
+	"effText":"When you cast Radial Weather, move a friendly Skyknight to a space in that Weather.",
 	"effects":[
 		{
 			"triggerData":
@@ -23,7 +23,8 @@
 					"cardRestriction":
 					{
 						"blurb":"friendly character for Outaroud to bring scouting",
-						"cardRestrictions":["Is Character","Friendly","Board","Summoned"]
+						"cardRestrictions":["Is Character","Friendly","Board","Summoned","Subtypes Include"],
+						"subtypesInclude":["Skyknight"]
 					}
 				},
 				{
