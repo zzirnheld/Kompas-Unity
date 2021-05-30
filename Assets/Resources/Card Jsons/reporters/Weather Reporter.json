@@ -28,7 +28,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
-					"xMultiplier":2,
+					"xMultiplier":1,
 					"xDivisor":2
 				},
 				{

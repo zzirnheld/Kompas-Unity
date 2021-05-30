@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Reporter Reportar",
-	"effText":"Once each friendly turn, you can reveal an SX Reporter. Your opponent can reveal an SX character. If they do, draw 1. If they don't, pip deck->summon an S <= X character.",
+	"effText":"Once each friendly turn, you can reveal an SX Reporter. Your opponent can reveal an SX character. If they don't, pip deck->summon an S <= X character at half cost.",
 	"effects":[
 		{
 			"activationRestriction":{
@@ -35,13 +35,13 @@
 				{
 					"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
 					"subeffIndices":[6],
-					"skipIndex":10
+					"skipIndex":9
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
 					"ChoiceBlurb":"Reveal an SX character?",
 					"OptionBlurbs":["Yes","No"],
-					"OptionJumpIndices":[6,10],
+					"OptionJumpIndices":[6,9],
 					"showX":true
 				},
 				{
@@ -57,10 +57,6 @@
 					"$type":"KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp",
-					"playerIndex":-2
-				},
-				{
 					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
 				},
 				{
@@ -70,7 +66,8 @@
 					"cardRestriction":
 					{
 						"blurb":"character to report",
-						"cardRestrictions":["Friendly","Deck","Is Character","Effect Controller can Afford Cost"]
+						"cardRestrictions":["Friendly","Deck","Is Character","Cost<=X","Effect Controller can Afford Cost"],
+						"costDivisor":2
 					}
 				},
 				{
@@ -85,7 +82,8 @@
 				{
 					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
 					"playerIndex":-2,
-					"xMultiplier":1
+					"xMultiplier":1,
+					"xDivisor":2
 				},
 				{
 					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp",
