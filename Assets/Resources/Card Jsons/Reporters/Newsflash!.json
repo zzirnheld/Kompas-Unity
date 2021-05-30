@@ -4,6 +4,7 @@
 	"effText":"Your opponent can reveal a Fast card. If they don't, move an adjacent Reporter anywhere.",
 	"effects":[
 		{
+			"blurb":"Newsflash!",
 			"triggerData":
 			{
 				"triggerCondition":"Play",
