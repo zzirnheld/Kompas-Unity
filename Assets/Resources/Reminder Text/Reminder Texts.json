@@ -2,7 +2,7 @@
 	"keywordReminderTexts":[
 		{
 			"keyword":"Linewalk.",
-			"reminder":"During friendly turns, you can spend all my movement to move anywhere along my diagonal."
+			"reminder":"During friendly turns, if I have movement, you can spend all my movement to move anywhere along my diagonal."
 		},
 		{
 			"keyword":"Shape.",

@@ -22,15 +22,17 @@ namespace KompasCore.Effects
         public const string ControllerActivates = "Controller Activates";
         public const string NotNegated = "Not Negated";
         public const string CardExists = "Card Exists";
+        public const string ThisFitsRestriction = "This Card Fits Restriction";
 
         public const string Default = "Default";
         public static readonly string[] DefaultRestrictions = { ControllerActivates, NotNegated, InPlay };
 
-        public static readonly string[] AtAllRestrictions = { TimesPerTurn, TimesPerRound, FriendlyTurn, EnemyTurn, NotNegated, InPlay, Location };
+        public static readonly string[] AtAllRestrictions = { TimesPerTurn, TimesPerRound, FriendlyTurn, EnemyTurn, NotNegated, InPlay, Location, ThisFitsRestriction };
 
         public int maxTimes = 1;
         public int location = (int) CardLocation.Field;
-        public CardRestriction existsRestriction;
+        public CardRestriction existsRestriction = new CardRestriction();
+        public CardRestriction thisCardRestriction = new CardRestriction();
 
         private readonly List<string> ActivationRestrictions = new List<string>();
         public string[] activationRestrictionArray = null;
@@ -46,8 +48,8 @@ namespace KompasCore.Effects
                 if (activationRestrictionArray.Contains("Default"))
                     ActivationRestrictions.AddRange(DefaultRestrictions);
 
-                existsRestriction = existsRestriction ?? new CardRestriction();
                 existsRestriction.Initialize(eff.Source, eff.Controller, eff);
+                thisCardRestriction.Initialize(eff.Source, eff.Controller, eff);
 
                 Debug.Log($"Initializing activation restriction for {Card.CardName} " +
                     $"with restrictions: {string.Join(", ", ActivationRestrictions)}");
@@ -75,7 +77,8 @@ namespace KompasCore.Effects
                 case Location: return Effect.Source.Location == (CardLocation)location;
                 case ControllerActivates: return activator == Card.Controller;
                 case NotNegated: return !Effect.Negated;
-                case CardExists: return Effect.Game.Cards.Any(c => existsRestriction.Evaluate(c));
+                case CardExists: return Effect.Game.Cards.Any(existsRestriction.Evaluate);
+                case ThisFitsRestriction: return thisCardRestriction.Evaluate(Card);
                 default: throw new System.ArgumentException($"Invalid activation restriction {r}");
             }
         }

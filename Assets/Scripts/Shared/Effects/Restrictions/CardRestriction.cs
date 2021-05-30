@@ -106,6 +106,7 @@ namespace KompasCore.Effects
         public const string CanBeHealed = "Can Be Healed";
 
         public const string Negated = "Negated";
+        public const string HasMovement = "Has Movement";
         public const string OutOfMovement = "Out of Movement";
 
         //positioning
@@ -320,6 +321,7 @@ namespace KompasCore.Effects
                         && potentialTarget.E < potentialTarget.BaseE;
 
                 case Negated:  return potentialTarget.Negated;
+                case HasMovement: return potentialTarget.SpacesCanMove > 0;
                 case OutOfMovement: return potentialTarget.SpacesCanMove <= 0;
 
                 //positioning
