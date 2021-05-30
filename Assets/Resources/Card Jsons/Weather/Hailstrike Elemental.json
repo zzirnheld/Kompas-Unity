@@ -49,8 +49,8 @@
 	},
     "fast":true,
 	"n":4,
-	"e":6,
-	"s":2,
+	"e":9,
+	"s":3,
 	"w":4,
 	"subtypeText":"Weather Event Elemental"
 }
