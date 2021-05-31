@@ -4,6 +4,7 @@
 	"effText":"Your opponent can reveal a Fast card. If they don't, move an adjacent Reporter anywhere.",
 	"effects":[
 		{
+			"blurb":"Newsflash!",
 			"triggerData":
 			{
 				"triggerCondition":"Play",
@@ -65,6 +66,14 @@
 			]
 		}
 	],
+	"PlayRestriction":{
+		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
+		"adjacentCardRestriction":
+		{
+			"cardRestrictions":["Is Character","Subtypes Include"],
+			"subtypesInclude":["Reporter"]
+		}
+	},
 	"fast":true,
 	"c":1,
 	"spellType":"Simple",

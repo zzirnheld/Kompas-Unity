@@ -61,10 +61,10 @@ namespace KompasServer.Cards
                     case CardLocation.Discard:
                     case CardLocation.Field:
                     case CardLocation.Annihilation:
-                        knownToEnemy = true;
+                        KnownToEnemy = true;
                         break;
                     case CardLocation.Deck:
-                        knownToEnemy = false;
+                        KnownToEnemy = false;
                         break;
                     /* default:
                         Debug.Log($"Card {CardName} being moved to {Location}. " +

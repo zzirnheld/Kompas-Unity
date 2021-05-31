@@ -128,7 +128,10 @@ namespace KompasCore.Effects
                 case InTargetsAOE:              return target.SpaceInAOE((x, y));
                 case InAOEOf:                   return Source.Game.Cards.Any(c => c.SpaceInAOE((x, y)) && inAOERestriction.Evaluate(c));
                 case InAOEOfNumberFittingRestriction:
-                    return numberOfCardsInAOEOfRestriction.Evaluate(Source.Game.Cards.Count(c => c.SpaceInAOE((x, y)) && inAOERestriction.Evaluate(c)));
+                    //return numberOfCardsInAOEOfRestriction.Evaluate(Source.Game.Cards.Count(c => c.SpaceInAOE((x, y)) && inAOERestriction.Evaluate(c)));
+                    var count = Source.Game.Cards.Count(c => c.SpaceInAOE((x, y)) && inAOERestriction.Evaluate(c));
+                    Debug.Log($"{x}, {y} is in the aoe of {count} cards fitting the restriction {inAOERestriction}");
+                    return numberOfCardsInAOEOfRestriction.Evaluate(count);
                 case LimitAdjacentCardsFittingRestriction:
                     return Source.Game.boardCtrl.CardsAdjacentTo(x, y).Where(c => limitAdjacencyRestriction.Evaluate(c)).Count() <= adjacencyLimit;
 

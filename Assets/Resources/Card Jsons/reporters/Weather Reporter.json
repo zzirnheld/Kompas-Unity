@@ -28,7 +28,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
-					"xMultiplier":2,
+					"xMultiplier":1,
 					"xDivisor":2
 				},
 				{
@@ -46,8 +46,8 @@
 		}
 	],
 	"n":1,
-	"e":2,
-	"s":2,
-	"w":2,
+	"e":1,
+	"s":1,
+	"w":1,
 	"subtypeText":"Weather Reporter Person"
 }

@@ -37,10 +37,10 @@
 			]
 		}
 	],
-	"n":3,
-	"e":3,
+	"n":4,
+	"e":2,
 	"s":5,
-	"w":3,
+	"w":2,
 	"unique":true,
 	"subtypeText":"Skyknight Warrior"
 }
