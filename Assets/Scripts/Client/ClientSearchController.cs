@@ -1,6 +1,7 @@
 ﻿using KompasClient.UI;
 using KompasCore.Cards;
 using KompasCore.Effects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -19,6 +20,7 @@ namespace KompasClient.GameCore
             public SearchData(GameCard[] toSearch, ListRestriction searchRestriction, bool targetingSearch, List<GameCard> searched)
             {
                 this.toSearch = toSearch;
+                Array.Sort(this.toSearch);
                 this.listRestriction = searchRestriction;
                 this.targetingSearch = targetingSearch;
                 this.searched = searched;

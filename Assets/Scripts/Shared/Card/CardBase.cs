@@ -1,9 +1,10 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using UnityEngine;
 
 namespace KompasCore.Cards
 {
-    public abstract class CardBase : MonoBehaviour
+    public abstract class CardBase : MonoBehaviour, IComparable
     {
         public const string SimpleSubtype = "Simple";
         public const string EnchantSubtype = "Enchant";
@@ -147,6 +148,37 @@ namespace KompasCore.Cards
         {
             if (CardName == null) return "Null Card";
             return $"{CardName}, {N}/{E}/{S}/{W}/{C}/{A}";
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (obj == null) return 1;
+
+            var other = obj as CardBase;
+            if (other == null) throw new ArgumentException("Other object is not a CardBase!");
+
+            int compare = CardName.CompareTo(other.CardName);
+            if (compare != 0) return compare;
+
+            compare = N.CompareTo(other.N);
+            if (compare != 0) return compare;
+
+            compare = E.CompareTo(other.E);
+            if (compare != 0) return compare;
+
+            compare = S.CompareTo(other.S);
+            if (compare != 0) return compare;
+
+            compare = W.CompareTo(other.W);
+            if (compare != 0) return compare;
+
+            compare = C.CompareTo(other.C);
+            if (compare != 0) return compare;
+
+            compare = A.CompareTo(other.A);
+            if (compare != 0) return compare;
+
+            return 0;
         }
     }
 }

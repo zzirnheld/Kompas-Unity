@@ -28,8 +28,44 @@ namespace KompasClient.UI
         //search
         private int searchIndex = 0;
         public int SearchLength => Searching ? CurrSearchData.toSearch.Length : 1;
-        private int NextSearchIndex => (searchIndex + 1) % SearchLength;
-        private int PrevSearchIndex => (searchIndex - 1) + (searchIndex == 0 ? SearchLength : 0);
+        private int NextSearchIndex
+        {
+            get 
+            {
+                if (!Input.GetKeyDown(KeyCode.LeftShift))
+                {
+                    for (int i = (searchIndex + 1) % SearchLength; i != searchIndex; i = (i + 1) % SearchLength)
+                    {
+                        //if they're not the same, not just not identical references, which is what != checks
+                        if (CurrSearchData.toSearch[i].CompareTo(CurrSearchData.toSearch[searchIndex]) != 0)
+                            return i;
+                    }
+                }
+                
+                //fallback, or if holding shift
+                return (searchIndex + 1) % SearchLength;
+            }
+        }
+        private int PrevSearchIndex
+        {
+            get
+            {
+                if (!Input.GetKeyDown(KeyCode.LeftShift))
+                {
+                    for (int i = (searchIndex - 1) + (searchIndex == 0 ? SearchLength : 0); 
+                        i != searchIndex; 
+                        i = (i - 1) + (i == 0 ? SearchLength : 0))
+                    {
+                        //if they're not the same, not just not identical references, which is what != checks
+                        if (CurrSearchData.toSearch[i].CompareTo(CurrSearchData.toSearch[searchIndex]) != 0)
+                            return i;
+                    }
+                }
+
+                //fallback, or if holding shift
+                return (searchIndex - 1) + (searchIndex == 0 ? SearchLength : 0);
+            }
+        }
         public bool Searching => ClientGame.searchCtrl.CurrSearchData.HasValue;
         private ClientSearchController.SearchData CurrSearchData => ClientGame.searchCtrl.CurrSearchData.GetValueOrDefault();
 
