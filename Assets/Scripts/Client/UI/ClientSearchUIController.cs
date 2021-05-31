@@ -32,7 +32,7 @@ namespace KompasClient.UI
         {
             get 
             {
-                if (!Input.GetKeyDown(KeyCode.LeftShift))
+                if (!Input.GetKey(KeyCode.LeftShift))
                 {
                     for (int i = (searchIndex + 1) % SearchLength; i != searchIndex; i = (i + 1) % SearchLength)
                     {
@@ -50,7 +50,7 @@ namespace KompasClient.UI
         {
             get
             {
-                if (!Input.GetKeyDown(KeyCode.LeftShift))
+                if (!Input.GetKey(KeyCode.LeftShift))
                 {
                     for (int i = (searchIndex - 1) + (searchIndex == 0 ? SearchLength : 0); 
                         i != searchIndex; 
@@ -68,6 +68,11 @@ namespace KompasClient.UI
         }
         public bool Searching => ClientGame.searchCtrl.CurrSearchData.HasValue;
         private ClientSearchController.SearchData CurrSearchData => ClientGame.searchCtrl.CurrSearchData.GetValueOrDefault();
+
+        private void Update()
+        {
+            if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.LeftShift)) ReshowSearchShownIfSearching();
+        }
 
         #region search
         public void StartShowingSearch()
