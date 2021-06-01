@@ -31,7 +31,14 @@ namespace KompasCore.GameCore
 
         //helper methods
         #region helper methods
-        public bool ValidIndices(int x, int y) => x >= 0 && y >= 0 && x < 7 && y < 7;
+        public static int DistanceBetween((int x, int y) a, (int x, int y) b)
+            => Math.Max(Math.Abs(a.x - b.x), Math.Abs(a.y - b.y));
+
+        public static bool Adjacent((int, int) a, (int, int) b)
+            => DistanceBetween(a, b) == 1;
+
+        public static bool ValidIndices(int x, int y) 
+            => x >= 0 && y >= 0 && x < 7 && y < 7;
 
         /// <summary>
         /// Checks whether there's too many spells already next to an Avatar

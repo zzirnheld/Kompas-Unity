@@ -284,7 +284,7 @@ namespace KompasServer.GameCore
 
             Debug.Log($"Checking validity of playing {card.CardName} to {toX}, {toY}");
             return card != null
-                && boardCtrl.ValidIndices(toX, toY)
+                && BoardController.ValidIndices(toX, toY)
                 && boardCtrl.GetCardAt(toX, toY) == null
                 && card.PlayRestriction.EvaluateNormalPlay(toX, toY, player);
         }
@@ -300,7 +300,7 @@ namespace KompasServer.GameCore
             Debug.Log($"Checking validity augment of {card.CardName} to {toX}, {toY}, on {boardCtrl.GetCardAt(toX, toY)}");
             return card != null
                 && card.CardType == 'A'
-                && boardCtrl.ValidIndices(toX, toY)
+                && BoardController.ValidIndices(toX, toY)
                 && boardCtrl.GetCardAt(toX, toY) != null
                 && card.PlayRestriction.EvaluateNormalPlay(toX, toY, player);
         }

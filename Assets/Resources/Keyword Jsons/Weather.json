@@ -10,8 +10,13 @@
 	},
 	"subeffects":[
 		{
-			"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
-			"jumpTo":4
+			"$type":"KompasServer.Effects.TargetThisSpaceSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
 		},
 		{
 			"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
@@ -27,20 +32,12 @@
 			"spaceRestriction":
 			{
 				"blurb":"where to cast the Weather",
-				"spaceRestrictions":["Can Play Target to This Space","Adjacent to Source"]
+				"spaceRestrictions":["Can Play Target to This Space","Adjacent to Coords"],
+				"playRestrictionsToIgnore":["Adjacent to Friendly Card"]
 			}
 		},
 		{
 			"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
-		},
-		{
-			"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
-		},
-		{
-			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-		},
-		{
-			"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
 		}
 	]	
 }

@@ -294,12 +294,7 @@ namespace KompasCore.Cards
         public int DistanceTo(int x, int y)
         {
             if (Location != CardLocation.Field) return int.MaxValue;
-            return Mathf.Abs(x - Position.x) > Mathf.Abs(y - Position.y) ? Mathf.Abs(x - Position.x) : Mathf.Abs(y - Position.y);
-            /* equivalent to
-             * if (Mathf.Abs(card.X - X) > Mathf.Abs(card.Y - Y)) return Mathf.Abs(card.X - X);
-             * else return Mathf.Abs(card.Y - Y);
-             * is card.X - X > card.Y - Y? If so, return card.X -X, otherwise return card.Y - Y
-            */
+            else return BoardController.DistanceBetween(Position, (x, y));
         }
         public int DistanceTo((int x, int y) space) => DistanceTo(space.x, space.y);
         public int DistanceTo(IGameCardInfo card) => DistanceTo(card.Position);
