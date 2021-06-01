@@ -23,7 +23,6 @@ public struct Space
 
     public int Index => 7 * x + y;
     public Space Inverse => new Space(6 - x, 6 - y);
-    public (int x, int y) AsTuple => (x, y);
 
     public int DistanceTo(Space other) => Math.Max(Math.Abs(x - other.x), Math.Abs(y - other.y));
 

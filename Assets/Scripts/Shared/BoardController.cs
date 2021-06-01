@@ -220,7 +220,7 @@ namespace KompasCore.GameCore
         #region game mechanics
         public virtual bool RemoveFromBoard(GameCard toRemove)
         {
-            var (x, y) = toRemove.Position.AsTuple;
+            var (x, y) = toRemove.Position;
             if (toRemove.Location == CardLocation.Field && Board[x, y] == toRemove)
             {
                 RemoveFromBoard(toRemove.Position);
@@ -231,7 +231,7 @@ namespace KompasCore.GameCore
 
         private void RemoveFromBoard(Space space)
         {
-            var (x, y) = space.AsTuple;
+            var (x, y) = space;
             Board[x, y] = null;
         }
 
