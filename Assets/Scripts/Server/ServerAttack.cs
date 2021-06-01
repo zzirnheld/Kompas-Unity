@@ -12,12 +12,16 @@ namespace KompasServer.Effects
         public ServerPlayer ServerController { get; }
 
         private ServerEffectsController EffCtrl => ServerGame.EffectsController;
+        private readonly Space attackerInitialSpace;
+        private readonly Space defenderInitialSpace;
 
         public ServerAttack(ServerGame serverGame, ServerPlayer controller, GameCard attacker, GameCard defender)
             : base(controller, attacker, defender)
         {
             this.ServerGame = serverGame != null ? serverGame : throw new System.ArgumentNullException("serverGame", "Server game cannot be null for attack");
             this.ServerController = controller != null ? controller : throw new System.ArgumentNullException("controller", "Attack must have a non-null controller");
+            attackerInitialSpace = attacker.Position;
+            defenderInitialSpace = defender.Position;
         }
 
         /// <summary>
@@ -35,12 +39,15 @@ namespace KompasServer.Effects
             EffCtrl.TriggerForCondition(Trigger.Battles, attackerContext, defenderContext);
         }
 
+        //this is factored out so i can maybe eventually add some indication of whether an attack is still gonna be valid
         private bool StillValidAttack
         {
             get
             {
-                return attacker.Location == CardLocation.Field &&
-                    defender.Location == CardLocation.Field;
+                return attacker.Location == CardLocation.Field 
+                    && defender.Location == CardLocation.Field
+                    && attacker.Position == attackerInitialSpace
+                    && defender.Position == defenderInitialSpace;
             }
         }
 
