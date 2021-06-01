@@ -133,7 +133,7 @@ namespace KompasCore.Cards
                 }
             }
         }
-        public IEnumerable<GameCard> AdjacentCards => Game.boardCtrl.CardsAdjacentTo(BoardX, BoardY);
+        public IEnumerable<GameCard> AdjacentCards => Game.boardCtrl.CardsAdjacentTo(Position);
 
         public bool AlreadyCopyOnBoard => Game.BoardHasCopyOf(this);
 
@@ -366,8 +366,8 @@ namespace KompasCore.Cards
         }
         public bool InCorner() => (Position.x == 0 || Position.x == 6) && (Position.y == 0 || Position.y == 6);
 
-        public int ShortestPath(int x, int y, Func<GameCard, bool> throughPredicate) 
-            => Game.boardCtrl.ShortestPath(this, x, y, throughPredicate);
+        public int ShortestPath(Space space, Func<GameCard, bool> throughPredicate) 
+            => Game.boardCtrl.ShortestPath(this, space, throughPredicate);
         #endregion distance/adjacency
 
         public void PutBack()

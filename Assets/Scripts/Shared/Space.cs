@@ -15,7 +15,7 @@ public struct Space
     }
 
     public bool Valid => x >= 0 && y >= 0 && x < 7 && y < 7;
-    public bool Corner => (x == 0 || x == 6) && (y == 0 || y == 6);
+    public bool IsCorner => (x == 0 || x == 6) && (y == 0 || y == 6);
 
     public int Index => 7 * x + y;
     public Space Inverse => new Space(6 - x, 6 - y);
@@ -33,6 +33,11 @@ public struct Space
 
     public override string ToString() => $"{x}, {y}";
 
+    public override bool Equals(object obj) => obj is Space spc && this == spc;
     public static bool operator ==(Space a, Space b) => a.x == b.x && a.y == b.y;
     public static bool operator !=(Space a, Space b) => !(a == b);
+    public static bool operator ==(Space a, (int x, int y) b) => a.x == b.x && a.y == b.y;
+    public static bool operator !=(Space a, (int x, int y) b) => !(a == b);
+    public static bool operator ==((int x, int y) a, Space b) => a.x == b.x && a.y == b.y;
+    public static bool operator !=((int x, int y) a, Space b) => !(a == b);
 }

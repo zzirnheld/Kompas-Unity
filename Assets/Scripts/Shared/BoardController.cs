@@ -66,16 +66,16 @@ namespace KompasCore.GameCore
         //get game data
         public GameCard GetCardAt(int x, int y) => ValidIndices(x, y) ? Board[x, y] : null;
 
-        public List<GameCard> CardsAdjacentTo(int x, int y)
+        public List<GameCard> CardsAdjacentTo(Space space)
         {
             var list = new List<GameCard>();
 
-            for (int i = x - 1; i <= x + 1; i++)
+            for (int i = space.x - 1; i <= space.x + 1; i++)
             {
-                for (int j = y - 1; j <= y + 1; j++)
+                for (int j = space.y - 1; j <= space.y + 1; j++)
                 {
                     var card = GetCardAt(i, j);
-                    if ((i, j) != (x, y) && card != null) list.Add(card);
+                    if ((i, j) != space && card != null) list.Add(card);
                 }
             }
 
@@ -108,7 +108,7 @@ namespace KompasCore.GameCore
         /// <param name="y">The y coordinate you want a distance to</param>
         /// <param name="throughPredicate">What all cards you go through must fit</param>
         /// <returns></returns>
-        public int ShortestPath(GameCard src, int x, int y, Func<GameCard, bool> throughPredicate)
+        public int ShortestPath(GameCard src, Space space, Func<GameCard, bool> throughPredicate)
         {
             Debug.Log($"Finding shortest path from {src.CardName} to {x}, {y}");
 
@@ -146,7 +146,7 @@ namespace KompasCore.GameCore
             //then, go through the list of cards adjacent to our target location
             //choose the card that's closest to our source
             int min = 50;
-            foreach (var card in CardsAdjacentTo(x, y))
+            foreach (var card in CardsAdjacentTo(space))
             {
                 if (dist.ContainsKey(card) && dist[card] < min) min = dist[card];
             }

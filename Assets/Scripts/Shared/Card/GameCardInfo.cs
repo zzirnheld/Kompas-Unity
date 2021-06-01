@@ -187,6 +187,8 @@ namespace KompasCore.Cards
 
         public bool OnMyDiagonal(Space space) => Location == CardLocation.Field && Position.SameDiagonal(space);
 
+        public bool InCorner() => Location == CardLocation.Field && Position.IsCorner;
+
         /// <summary>
         /// Refers to this situation: <br></br>
         /// | <paramref name="space"/> | <br></br>
@@ -209,7 +211,7 @@ namespace KompasCore.Cards
                 || (xDiffCard == yDiffCard && xDiffSpace == yDiffSpace);
         }
 
-        public int ShortestPath(int x, int y, Func<GameCard, bool> throughPredicate)
+        public int ShortestPath(Space space, Func<GameCard, bool> throughPredicate)
             => Card.Game.boardCtrl.ShortestPath(Card, x, y, throughPredicate);
         #endregion distance/adjacency
     }
