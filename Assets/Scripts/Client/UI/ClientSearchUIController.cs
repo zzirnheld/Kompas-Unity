@@ -32,7 +32,10 @@ namespace KompasClient.UI
         {
             get 
             {
-                if (!Input.GetKey(KeyCode.LeftShift))
+                //if not holding shift and you're only choosing one item,
+                //or you're holding shift but you're choosing more than one item,
+                //find the next different card to skip to
+                if (!(Input.GetKey(KeyCode.LeftShift) ^ CurrSearchData.listRestriction.ChooseMultiple))
                 {
                     for (int i = (searchIndex + 1) % SearchLength; i != searchIndex; i = (i + 1) % SearchLength)
                     {
@@ -42,7 +45,7 @@ namespace KompasClient.UI
                     }
                 }
                 
-                //fallback, or if holding shift
+                //fallback
                 return (searchIndex + 1) % SearchLength;
             }
         }
@@ -50,7 +53,10 @@ namespace KompasClient.UI
         {
             get
             {
-                if (!Input.GetKey(KeyCode.LeftShift))
+                //if not holding shift and you're only choosing one item,
+                //or you're holding shift but you're choosing more than one item,
+                //find the last different card to skip to
+                if (!(Input.GetKey(KeyCode.LeftShift) ^ CurrSearchData.listRestriction.ChooseMultiple))
                 {
                     for (int i = (searchIndex - 1) + (searchIndex == 0 ? SearchLength : 0); 
                         i != searchIndex; 
@@ -62,7 +68,7 @@ namespace KompasClient.UI
                     }
                 }
 
-                //fallback, or if holding shift
+                //fallback
                 return (searchIndex - 1) + (searchIndex == 0 ? SearchLength : 0);
             }
         }
