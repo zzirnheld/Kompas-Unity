@@ -56,8 +56,12 @@ namespace KompasCore.GameCore
             if (card == null || card.CardType != 'S') return true;
 
             //if it's a spell going to a relevant location, count other adjacent spells to the avatar
-            if (x >= 5 && y >= 5) return CardsAdjacentTo(6, 6).Count(c => c != card && c.CardType == 'S' && c.Controller == card.Controller) < 1;
-            else if (x <= 1 && y <= 1) return CardsAdjacentTo(0, 0).Count(c => c != card && c.CardType == 'S' && c.Controller == card.Controller) < 1;
+            if (x >= 5 && y >= 5) 
+                return CardsAdjacentTo(Space.FarCorner)
+                    .Count(c => c != card && c.CardType == 'S' && c.Controller == card.Controller) < 1;
+            else if (x <= 1 && y <= 1) 
+                return CardsAdjacentTo(Space.NearCorner)
+                    .Count(c => c != card && c.CardType == 'S' && c.Controller == card.Controller) < 1;
 
             //if it's not in a relevant location, everything is fine
             return true;
@@ -110,7 +114,7 @@ namespace KompasCore.GameCore
         /// <returns></returns>
         public int ShortestPath(GameCard src, Space space, Func<GameCard, bool> throughPredicate)
         {
-            Debug.Log($"Finding shortest path from {src.CardName} to {x}, {y}");
+            Debug.Log($"Finding shortest path from {src.CardName} to {space}");
 
             //record shortest distances to cards
             var dist = new Dictionary<GameCard, int>();
@@ -153,12 +157,12 @@ namespace KompasCore.GameCore
             return min;
         }
 
-        public int ShortestPath(GameCard source, int x, int y, CardRestriction restriction)
-            => ShortestPath(source, x, y, restriction.Evaluate);
+        public int ShortestPath(GameCard source, Space space, CardRestriction restriction)
+            => ShortestPath(source, space, restriction.Evaluate);
 
-        private IEnumerable<(int, int)> AdjacentEmptySpacesTo((int x, int y) space)
+        private IEnumerable<Space> AdjacentEmptySpacesTo(Space space)
         {
-            var list = new List<(int, int)>();
+            var list = new List<Space>();
             for(int x = space.x - 1; x <= space.x + 1; x++)
             {
                 for(int y = space.y - 1; y <= space.y + 1; y++)
@@ -166,20 +170,20 @@ namespace KompasCore.GameCore
                     if (x == space.x && y == space.y) continue;
                     else if (x < 0 || x >= 7 || y < 0 || y >= 7) continue;
                     else if (Board[x, y] != null) continue;
-                    else list.Add((x, y));
+                    else list.Add(new Space(x, y));
                 }
             }
             return list;
         }
 
-        public int ShortestEmptyPath(GameCard src, (int x, int y) destination)
+        public int ShortestEmptyPath(GameCard src, Space destination)
         {
             if (Board[destination.x, destination.y] != null) return 50;
 
             int[,] dist = new int[7, 7];
             bool[,] seen = new bool[7, 7];
 
-            var queue = new Queue<(int x, int y)>();
+            var queue = new Queue<Space>();
 
             queue.Enqueue(src.Position);
             dist[src.Position.x, src.Position.y] = 0;
@@ -188,7 +192,7 @@ namespace KompasCore.GameCore
             while (queue.Any())
             {
                 var next = queue.Dequeue();
-                foreach((int x, int y) s in AdjacentEmptySpacesTo(next))
+                foreach(Space s in AdjacentEmptySpacesTo(next))
                 {
                     if(!seen[s.x, s.y])
                     {
@@ -216,16 +220,20 @@ namespace KompasCore.GameCore
         #region game mechanics
         public virtual bool RemoveFromBoard(GameCard toRemove)
         {
-            var (x, y) = toRemove.Position;
+            var (x, y) = toRemove.Position.AsTuple;
             if (toRemove.Location == CardLocation.Field && Board[x, y] == toRemove)
             {
-                RemoveFromBoard(x, y);
+                RemoveFromBoard(toRemove.Position);
                 return true;
             }
             return false;
         }
 
-        private void RemoveFromBoard(int x, int y) => Board[x, y] = null;
+        private void RemoveFromBoard(Space space)
+        {
+            var (x, y) = space.AsTuple;
+            Board[x, y] = null;
+        }
 
         /// <summary>
         /// Puts the card on the board
@@ -270,7 +278,7 @@ namespace KompasCore.GameCore
                 {
                     Board[toX, toY] = toPlay;
                     toPlay.Location = CardLocation.Field;
-                    toPlay.Position = (toX, toY);
+                    toPlay.Position = new Space(toX, toY);
 
                     toPlay.Controller = controller;
                     return true;

@@ -126,7 +126,7 @@ namespace KompasServer.Cards
             {
                 EffectsController.TriggerForCondition(Trigger.AugmentAttached, attachedContext);
                 EffectsController.TriggerForCondition(Trigger.Augmented, augmentedContext);
-                ServerGame.ServerPlayers[augment.ControllerIndex].ServerNotifier.NotifyAttach(augment, BoardX, BoardY, wasKnown);
+                ServerGame.ServerPlayers[augment.ControllerIndex].ServerNotifier.NotifyAttach(augment, Position, wasKnown);
                 return true;
             }
             return false;

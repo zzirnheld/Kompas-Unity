@@ -25,7 +25,7 @@ namespace KompasCore.Effects
         //Targets
         protected readonly List<GameCard> targetsList = new List<GameCard>();
         public IEnumerable<GameCard> Targets => targetsList;
-        public readonly List<(int x, int y)> coords = new List<(int x, int y)>();
+        public readonly List<Space> coords = new List<Space>();
         public readonly List<Player> players = new List<Player>();
         public readonly List<GameCard> rest = new List<GameCard>();
         /// <summary>
@@ -95,10 +95,10 @@ namespace KompasCore.Effects
             return trueIndex < 0 ? null : targetsList[trueIndex];
         }
 
-        public (int x, int y) GetSpace(int num)
+        public Space GetSpace(int num)
         {
             var trueIndex = num < 0 ? num + coords.Count : num;
-            return trueIndex < 0 ? (0, 0) : coords[trueIndex];
+            return trueIndex < 0 ? default : coords[trueIndex];
         }
 
         public Player GetPlayer(int num)

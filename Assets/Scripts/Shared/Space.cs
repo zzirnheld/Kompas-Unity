@@ -14,11 +14,15 @@ public struct Space
         this.y = y;
     }
 
+    public static Space NearCorner => new Space(0, 0);
+    public static Space FarCorner => new Space(6, 6);
+
     public bool Valid => x >= 0 && y >= 0 && x < 7 && y < 7;
     public bool IsCorner => (x == 0 || x == 6) && (y == 0 || y == 6);
 
     public int Index => 7 * x + y;
     public Space Inverse => new Space(6 - x, 6 - y);
+    public (int x, int y) AsTuple => (x, y);
 
     public int DistanceTo(Space other) => Math.Max(Math.Abs(x - other.x), Math.Abs(y - other.y));
 
@@ -40,4 +44,13 @@ public struct Space
     public static bool operator !=(Space a, (int x, int y) b) => !(a == b);
     public static bool operator ==((int x, int y) a, Space b) => a.x == b.x && a.y == b.y;
     public static bool operator !=((int x, int y) a, Space b) => !(a == b);
+
+    public static implicit operator (int x, int y)(Space space) => (space.x, space.y);
+    public static implicit operator Space((int x, int y) s) => new Space(s.x, s.y);
+
+    public void Deconstruct(out int xCoord, out int yCoord)
+    {
+        xCoord = x;
+        yCoord = y;
+    }
 }

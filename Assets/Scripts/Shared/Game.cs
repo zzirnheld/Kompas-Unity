@@ -65,17 +65,17 @@ namespace KompasCore.GameCore
 
         public bool ValidSpellSpaceFor(GameCard card, int x, int y) => boardCtrl.ValidSpellSpaceFor(card, x, y);
 
-        private bool IsFriendlyAdjacentToCoords(int x, int y, GameCard potentialFriendly, Player friendly)
+        private bool IsFriendlyAdjacentToCoords(Space space, GameCard potentialFriendly, Player friendly)
         {
-            return boardCtrl.GetCardAt(x, y) == null
-                && potentialFriendly != null && potentialFriendly.IsAdjacentTo(x, y)
+            return boardCtrl.GetCardAt(space) == null
+                && potentialFriendly != null && potentialFriendly.IsAdjacentTo(space)
                 && potentialFriendly.Controller == friendly;
         }
 
-        public bool ValidStandardPlaySpace(int x, int y, Player friendly)
+        public bool ValidStandardPlaySpace(Space space, Player friendly)
         {
             //first see if there's an adjacent friendly card to this space
-            if (boardCtrl.ExistsCardOnBoard(c => IsFriendlyAdjacentToCoords(x, y, c, friendly))) return true;
+            if (boardCtrl.ExistsCardOnBoard(c => IsFriendlyAdjacentToCoords(space, c, friendly))) return true;
             //if there isn't, check if the player is Surrounded
             else
             {
