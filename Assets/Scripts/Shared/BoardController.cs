@@ -31,15 +31,6 @@ namespace KompasCore.GameCore
 
         //helper methods
         #region helper methods
-        public static int DistanceBetween((int x, int y) a, (int x, int y) b)
-            => Math.Max(Math.Abs(a.x - b.x), Math.Abs(a.y - b.y));
-
-        public static bool Adjacent((int, int) a, (int, int) b)
-            => DistanceBetween(a, b) == 1;
-
-        public static bool ValidIndices(int x, int y) 
-            => x >= 0 && y >= 0 && x < 7 && y < 7;
-
         /// <summary>
         /// Checks whether there's too many spells already next to an Avatar
         /// </summary>
@@ -50,32 +41,45 @@ namespace KompasCore.GameCore
         /// <paramref name="x"/> and <paramref name="y"/> are next to an Avatar, 
         /// and there's already another spell next to that Avatar. <br></br> 
         /// <see langword="true"/> otherwise.</returns>
-        public bool ValidSpellSpaceFor(GameCard card, int x, int y)
+        public bool ValidSpellSpaceFor(GameCard card, Space space)
         {
             //true for non-spells
             if (card == null || card.CardType != 'S') return true;
 
+            var (x, y) = space;
             //if it's a spell going to a relevant location, count other adjacent spells to the avatar
-            if (x >= 5 && y >= 5) return CardsAdjacentTo(6, 6).Count(c => c != card && c.CardType == 'S' && c.Controller == card.Controller) < 1;
-            else if (x <= 1 && y <= 1) return CardsAdjacentTo(0, 0).Count(c => c != card && c.CardType == 'S' && c.Controller == card.Controller) < 1;
+            if (x >= 5 && y >= 5) 
+                return CardsAdjacentTo(Space.FarCorner)
+                    .Count(c => c != card && c.CardType == 'S' && c.Controller == card.Controller) < 1;
+            else if (x <= 1 && y <= 1) 
+                return CardsAdjacentTo(Space.NearCorner)
+                    .Count(c => c != card && c.CardType == 'S' && c.Controller == card.Controller) < 1;
 
             //if it's not in a relevant location, everything is fine
             return true;
         }
 
         //get game data
-        public GameCard GetCardAt(int x, int y) => ValidIndices(x, y) ? Board[x, y] : null;
+        public GameCard GetCardAt(Space s)
+        {
+            if (s.Valid)
+            {
+                var (x, y) = s;
+                return Board[x, y];
+            }
+            else return null;
+        }
 
-        public List<GameCard> CardsAdjacentTo(int x, int y)
+        public List<GameCard> CardsAdjacentTo(Space space)
         {
             var list = new List<GameCard>();
 
-            for (int i = x - 1; i <= x + 1; i++)
+            for (int i = space.x - 1; i <= space.x + 1; i++)
             {
-                for (int j = y - 1; j <= y + 1; j++)
+                for (int j = space.y - 1; j <= space.y + 1; j++)
                 {
-                    var card = GetCardAt(i, j);
-                    if ((i, j) != (x, y) && card != null) list.Add(card);
+                    var card = GetCardAt((i, j));
+                    if ((i, j) != space && card != null) list.Add(card);
                 }
             }
 
@@ -108,9 +112,9 @@ namespace KompasCore.GameCore
         /// <param name="y">The y coordinate you want a distance to</param>
         /// <param name="throughPredicate">What all cards you go through must fit</param>
         /// <returns></returns>
-        public int ShortestPath(GameCard src, int x, int y, Func<GameCard, bool> throughPredicate)
+        public int ShortestPath(GameCard src, Space space, Func<GameCard, bool> throughPredicate)
         {
-            Debug.Log($"Finding shortest path from {src.CardName} to {x}, {y}");
+            Debug.Log($"Finding shortest path from {src.CardName} to {space}");
 
             //record shortest distances to cards
             var dist = new Dictionary<GameCard, int>();
@@ -146,19 +150,19 @@ namespace KompasCore.GameCore
             //then, go through the list of cards adjacent to our target location
             //choose the card that's closest to our source
             int min = 50;
-            foreach (var card in CardsAdjacentTo(x, y))
+            foreach (var card in CardsAdjacentTo(space))
             {
                 if (dist.ContainsKey(card) && dist[card] < min) min = dist[card];
             }
             return min;
         }
 
-        public int ShortestPath(GameCard source, int x, int y, CardRestriction restriction)
-            => ShortestPath(source, x, y, restriction.Evaluate);
+        public int ShortestPath(GameCard source, Space space, CardRestriction restriction)
+            => ShortestPath(source, space, restriction.Evaluate);
 
-        private IEnumerable<(int, int)> AdjacentEmptySpacesTo((int x, int y) space)
+        private IEnumerable<Space> AdjacentEmptySpacesTo(Space space)
         {
-            var list = new List<(int, int)>();
+            var list = new List<Space>();
             for(int x = space.x - 1; x <= space.x + 1; x++)
             {
                 for(int y = space.y - 1; y <= space.y + 1; y++)
@@ -166,20 +170,20 @@ namespace KompasCore.GameCore
                     if (x == space.x && y == space.y) continue;
                     else if (x < 0 || x >= 7 || y < 0 || y >= 7) continue;
                     else if (Board[x, y] != null) continue;
-                    else list.Add((x, y));
+                    else list.Add(new Space(x, y));
                 }
             }
             return list;
         }
 
-        public int ShortestEmptyPath(GameCard src, (int x, int y) destination)
+        public int ShortestEmptyPath(GameCard src, Space destination)
         {
             if (Board[destination.x, destination.y] != null) return 50;
 
             int[,] dist = new int[7, 7];
             bool[,] seen = new bool[7, 7];
 
-            var queue = new Queue<(int x, int y)>();
+            var queue = new Queue<Space>();
 
             queue.Enqueue(src.Position);
             dist[src.Position.x, src.Position.y] = 0;
@@ -188,7 +192,7 @@ namespace KompasCore.GameCore
             while (queue.Any())
             {
                 var next = queue.Dequeue();
-                foreach((int x, int y) s in AdjacentEmptySpacesTo(next))
+                foreach(Space s in AdjacentEmptySpacesTo(next))
                 {
                     if(!seen[s.x, s.y])
                     {
@@ -219,13 +223,17 @@ namespace KompasCore.GameCore
             var (x, y) = toRemove.Position;
             if (toRemove.Location == CardLocation.Field && Board[x, y] == toRemove)
             {
-                RemoveFromBoard(x, y);
+                RemoveFromBoard(toRemove.Position);
                 return true;
             }
             return false;
         }
 
-        private void RemoveFromBoard(int x, int y) => Board[x, y] = null;
+        private void RemoveFromBoard(Space space)
+        {
+            var (x, y) = space;
+            Board[x, y] = null;
+        }
 
         /// <summary>
         /// Puts the card on the board
@@ -233,32 +241,33 @@ namespace KompasCore.GameCore
         /// <param name="toPlay">Card to be played</param>
         /// <param name="toX">X coordinate to play the card to</param>
         /// <param name="toY">Y coordinate to play the card to</param>
-        public virtual bool Play(GameCard toPlay, int toX, int toY, Player controller, IStackable stackSrc = null)
+        public virtual bool Play(GameCard toPlay, Space to, Player controller, IStackable stackSrc = null)
         {
             if (toPlay == null) return false;
             if (toPlay.Location == CardLocation.Field) return false;
-            if (!ValidSpellSpaceFor(toPlay, toX, toY))
+            if (!ValidSpellSpaceFor(toPlay, to))
             {
-                Debug.LogError($"Tried to play {toPlay} to space {toX}, {toY}. " +
+                Debug.LogError($"Tried to play {toPlay} to space {to}. " +
                     $"This isn't ok, that's an invalid spell spot.");
                 return false;
+                //TODO make this instead an exception that's caught by subeffs
             }
 
-            Debug.Log($"In boardctrl, playing {toPlay.CardName} to {toX}, {toY}");
+            Debug.Log($"In boardctrl, playing {toPlay.CardName} to {to}");
 
             //augments can't be played to a regular space.
             if (toPlay.CardType == 'A')
             {
                 //augments therefore just get put on whatever card is on that space rn.
-                var augmented = Board[toX, toY];
+                var augmented = GetCardAt(to);
                 //if there isn't a card, well, you can't do that.
                 if (augmented == null)
                 {
-                    Debug.LogError($"Can't play an augment to empty space at {toX}, {toY}");
+                    Debug.LogError($"Can't play an augment to empty space at {to}");
                     return false;
                 }
                 //assuming there is a card there, try and add the augment. if it don't work, it borked.
-                if (!Board[toX, toY].AddAugment(toPlay, stackSrc)) return false;
+                if (!augmented.AddAugment(toPlay, stackSrc)) return false;
 
                 toPlay.Controller = controller;
                 return true;
@@ -268,9 +277,10 @@ namespace KompasCore.GameCore
             {
                 if (toPlay.Remove(stackSrc))
                 {
+                    var (toX, toY) = to;
                     Board[toX, toY] = toPlay;
                     toPlay.Location = CardLocation.Field;
-                    toPlay.Position = (toX, toY);
+                    toPlay.Position = to;
 
                     toPlay.Controller = controller;
                     return true;
@@ -281,17 +291,19 @@ namespace KompasCore.GameCore
         }
 
         //movement
-        public virtual bool Swap(GameCard card, int toX, int toY, bool playerInitiated, IStackable stackSrc = null)
+        public virtual bool Swap(GameCard card, Space to, bool playerInitiated, IStackable stackSrc = null)
         {
-            Debug.Log($"Swapping {card?.CardName} to {toX}, {toY}");
+            Debug.Log($"Swapping {card?.CardName} to {to}");
 
-            if (!ValidIndices(toX, toY) || card == null) return false;
+            if (!to.Valid || card == null) return false;
             if (card.AugmentedCard != null) throw new NotImplementedException();
 
             var (tempX, tempY) = card.Position;
+            var from = card.Position;
+            var (toX, toY) = to;
             GameCard temp = Board[toX, toY];
             //check valid spell positioning
-            if (!ValidSpellSpaceFor(card, toX, toY) || !ValidSpellSpaceFor(temp, tempX, tempY))
+            if (!ValidSpellSpaceFor(card, to) || !ValidSpellSpaceFor(temp, from))
             {
                 Debug.LogError($"Tried to move {card} to space {toX}, {toY}. " +
                     $"{(temp == null ? "" : $"This would swap {temp.CardName} to {tempX}, {tempY}.")}" +
@@ -309,17 +321,18 @@ namespace KompasCore.GameCore
             Board[toX, toY] = card;
             Board[tempX, tempY] = temp;
 
-            card.Position = (toX, toY);
-            if (temp != null) temp.Position = (tempX, tempY);
+            card.Position = to;
+            if (temp != null) temp.Position = from;
             return true;
         }
 
-        public bool Move(GameCard card, int toX, int toY, bool playerInitiated, IStackable stackSrc = null)
+        public bool Move(GameCard card, Space to, bool playerInitiated, IStackable stackSrc = null)
         {
-            if (!ValidIndices(toX, toY)) return false;
+            if (!to.Valid) return false;
 
             if (card.AugmentedCard != null)
             {
+                var (toX, toY) = to;
                 if (Board[toX, toY] != null && card.Remove(stackSrc))
                 {
                     Board[toX, toY].AddAugment(card, stackSrc);
@@ -327,7 +340,7 @@ namespace KompasCore.GameCore
                 }
                 return false;
             }
-            else return Swap(card, toX, toY, playerInitiated, stackSrc);
+            else return Swap(card, to, playerInitiated, stackSrc);
         }
 
         public void ClearSpells()

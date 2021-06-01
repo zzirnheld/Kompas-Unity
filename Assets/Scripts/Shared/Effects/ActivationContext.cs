@@ -9,18 +9,18 @@ namespace KompasCore.Effects
         public readonly IStackable Stackable;
         public readonly Player Triggerer;
         public readonly int? X;
-        public readonly (int, int)? Space;
+        public readonly Space? Space;
         // These two are for delayed
         public readonly int StartIndex;
         public readonly List<GameCard> Targets;
 
         public ActivationContext(GameCard card, IStackable stackable = null, Player triggerer = null,
-            int? x = null, (int, int)? space = null, int startIndex = 0, List<GameCard> targets = null)
+            int? x = null, Space? space = null, int startIndex = 0, List<GameCard> targets = null)
             : this(card == null ? null : new GameCardInfo(card), stackable, triggerer, x, space, startIndex, targets)
         { }
 
         public ActivationContext(IGameCardInfo card = null, IStackable stackable = null, Player triggerer = null,
-            int? x = null, (int, int)? space = null, int startIndex = 0, List<GameCard> targets = null)
+            int? x = null, Space? space = null, int startIndex = 0, List<GameCard> targets = null)
         {
             CardInfo = card;
             Stackable = stackable;

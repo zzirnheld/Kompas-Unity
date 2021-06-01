@@ -96,7 +96,7 @@ namespace KompasClient.Cards
                 //if the card is being moved on the field, that means it's just being moved
                 if (Card.Location == CardLocation.Field)
                 {
-                    var cardThere = Game.boardCtrl.GetCardAt(x, y);
+                    var cardThere = Game.boardCtrl.GetCardAt((x, y));
                     // Debug.Log($"Trying to move/attack to {x}, {y}. The controller index, if any, is {(cardThere == null ? -1 : cardThere.ControllerIndex)}");
                     //then check if it's an attack or not
                     if (cardThere != null && cardThere.Controller != Card.Controller)

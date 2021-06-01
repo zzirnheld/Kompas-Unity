@@ -159,8 +159,12 @@ namespace KompasServer.GameCore
 
             Debug.Log($"Setting avatar for player {player.index}");
             player.Avatar = avatar;
-            //avatar.Play(player.index * 6, player.index * 6, player);
-            Debug.Log($"Avatar successfully played? {avatar.Play(player.index * 6, player.index * 6, player)}");
+            Space to = player.index == 0 ? Space.NearCorner : Space.FarCorner;
+            avatar.Play(to, player);
+            /*
+            bool playedAvatar = avatar.Play(player.index * 6, player.index * 6, player);
+            Debug.Log($"Successfully played avatar? {playedAvatar}");
+            */
             //if both players have decks now, then start the game
             lock (CheckAvatarsLock)
             {
@@ -264,7 +268,7 @@ namespace KompasServer.GameCore
         /// <param name="manual">Whether a player instigated the attack without an effect.</param>
         public void Attack(GameCard attacker, GameCard defender, ServerPlayer instigator, bool manual = false)
         {
-            Debug.Log($"{attacker.CardName} attacking {defender.CardName} at {defender.BoardX}, {defender.BoardY}");
+            Debug.Log($"{attacker.CardName} attacking {defender.CardName} at {defender.Position}");
             //push the attack to the stack, then check if any player wants to respond before resolving it
             var attack = new ServerAttack(this, instigator, attacker, defender);
             EffectsController.PushToStack(attack, new ActivationContext());
@@ -274,7 +278,7 @@ namespace KompasServer.GameCore
         }
 
         #region check validity
-        public bool ValidBoardPlay(GameCard card, int toX, int toY, ServerPlayer player)
+        public bool ValidBoardPlay(GameCard card, Space to, ServerPlayer player)
         {
             if (uiCtrl.DebugMode)
             {
@@ -282,14 +286,13 @@ namespace KompasServer.GameCore
                 return true;
             }
 
-            Debug.Log($"Checking validity of playing {card.CardName} to {toX}, {toY}");
-            return card != null
-                && BoardController.ValidIndices(toX, toY)
-                && boardCtrl.GetCardAt(toX, toY) == null
-                && card.PlayRestriction.EvaluateNormalPlay(toX, toY, player);
+            Debug.Log($"Checking validity of playing {card.CardName} to {to}");
+            return card != null && to.Valid
+                && boardCtrl.GetCardAt(to) == null
+                && card.PlayRestriction.EvaluateNormalPlay(to, player);
         }
 
-        public bool ValidAugment(GameCard card, int toX, int toY, ServerPlayer player)
+        public bool ValidAugment(GameCard card, Space to, ServerPlayer player)
         {
             if (uiCtrl.DebugMode)
             {
@@ -297,15 +300,13 @@ namespace KompasServer.GameCore
                 return true;
             }
 
-            Debug.Log($"Checking validity augment of {card.CardName} to {toX}, {toY}, on {boardCtrl.GetCardAt(toX, toY)}");
-            return card != null
-                && card.CardType == 'A'
-                && BoardController.ValidIndices(toX, toY)
-                && boardCtrl.GetCardAt(toX, toY) != null
-                && card.PlayRestriction.EvaluateNormalPlay(toX, toY, player);
+            Debug.Log($"Checking validity augment of {card.CardName} to {to}, on {boardCtrl.GetCardAt(to)}");
+            return card != null && card.CardType == 'A' && to.Valid
+                && boardCtrl.GetCardAt(to) != null
+                && card.PlayRestriction.EvaluateNormalPlay(to, player);
         }
 
-        public bool ValidMove(GameCard toMove, int toX, int toY)
+        public bool ValidMove(GameCard toMove, Space to)
         {
             if (uiCtrl.DebugMode)
             {
@@ -313,10 +314,9 @@ namespace KompasServer.GameCore
                 return true;
             }
 
-            Debug.Log($"Checking validity of moving {toMove.CardName} to {toX}, {toY}");
-            if (toMove.Position == (toX, toY) || (toMove.IsAvatar && !toMove.Summoned)
-                || EffectsController.CurrStackEntry != null) return false;
-            return toMove.MovementRestriction.EvaluateNormalMove(toX, toY);
+            Debug.Log($"Checking validity of moving {toMove.CardName} to {to}");
+            if (toMove.Position == to || (toMove.IsAvatar && !toMove.Summoned)) return false;
+            else return toMove.MovementRestriction.EvaluateNormalMove(to);
         }
 
         public bool ValidAttack(GameCard attacker, GameCard defender, ServerPlayer instigator)

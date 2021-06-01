@@ -66,7 +66,7 @@ namespace KompasCore.Effects
         #endregion effect x
 
         public GameCard Target => Effect.GetTarget(targetIndex);
-        public (int x, int y) Space => Effect.GetSpace(spaceIndex);
+        public Space Space => Effect.GetSpace(spaceIndex);
         public Player Player => Effect.GetPlayer(playerIndex);
 
         public bool RemoveTarget()

@@ -120,7 +120,8 @@ namespace KompasClient.GameCore
             var owner = ClientPlayers[player];
             var avatar = cardRepo.InstantiateClientAvatar(json, this, owner, avatarID);
             owner.Avatar = avatar;
-            avatar.Play(player * 6, player * 6, owner);
+            Space to = player == 0 ? Space.NearCorner : Space.FarCorner;
+            avatar.Play(to, owner);
         }
 
         public void Delete(GameCard card)

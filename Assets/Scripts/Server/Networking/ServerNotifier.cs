@@ -64,25 +64,25 @@ namespace KompasServer.Networking
         #endregion game stats
 
         #region card location
-        public void NotifyAttach(GameCard toAttach, int x, int y, bool wasKnown)
-            => SendToBothInverting(new AttachCardPacket(toAttach, x, y, invert: Player.index != 0), wasKnown);
+        public void NotifyAttach(GameCard toAttach, Space space, bool wasKnown)
+            => SendToBothInverting(new AttachCardPacket(toAttach, space.x, space.y, invert: Player.index != 0), wasKnown);
 
         /// <summary>
         /// Notifies that the Player corresponding to this notifier played a given card
         /// </summary>
-        public void NotifyPlay(GameCard toPlay, int x, int y, bool wasKnown)
+        public void NotifyPlay(GameCard toPlay, Space space, bool wasKnown)
         {
             //if this card is an augment, don't bother notifying about it. attach will take care of it.
             if (toPlay.CardType == 'A') return;
 
             //tell everyone to do it
-            var p = new PlayCardPacket(toPlay.ID, toPlay.BaseJson, toPlay.ControllerIndex, x, y, invert: Player.index != 0);
+            var p = new PlayCardPacket(toPlay.ID, toPlay.BaseJson, toPlay.ControllerIndex, space.x, space.y, invert: Player.index != 0);
             var q = p.GetInversion(wasKnown);
             SendPackets(p, q);
         }
 
-        public void NotifyMove(GameCard toMove, int x, int y)
-            => SendToBothInverting(new MoveCardPacket(toMove.ID, x, y, invert: Player.index != 0));
+        public void NotifyMove(GameCard toMove, Space space)
+            => SendToBothInverting(new MoveCardPacket(toMove.ID, space.x, space.y, invert: Player.index != 0));
 
         public void NotifyDiscard(GameCard toDiscard, bool wasKnown)
             => SendToBothInverting(new DiscardCardPacket(toDiscard, invert: Player.index != 0), wasKnown);

@@ -35,8 +35,7 @@ namespace KompasServer.Effects
                 {
                     case HandSize: return Player.handCtrl.HandSize;
                     case DistanceToCoordsThrough:
-                        var (x, y) = Space;
-                        return Game.boardCtrl.ShortestPath(Source, x, y, throughRestriction);
+                        return Game.boardCtrl.ShortestPath(Source, Space, throughRestriction);
                     case CardsFittingRestriction:
                         return Game.Cards.Where(cardRestriction.Evaluate).Count();
                     case EffectUsesThisTurn: return Effect.TimesUsedThisTurn;

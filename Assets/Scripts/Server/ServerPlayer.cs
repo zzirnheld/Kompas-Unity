@@ -53,32 +53,32 @@ namespace KompasServer.GameCore
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        public async Task TryAugment(GameCard aug, int x, int y)
+        public async Task TryAugment(GameCard aug, Space space)
         {
-            if (serverGame.ValidAugment(aug, x, y, this))
+            if (serverGame.ValidAugment(aug, space, this))
             {
-                aug.Play(x, y, this, payCost: true);
+                aug.Play(space, this, payCost: true);
                 await serverGame.EffectsController.CheckForResponse();
             }
             else ServerNotifier.NotifyPutBack();
         }
 
-        public async Task TryPlay(GameCard card, int x, int y)
+        public async Task TryPlay(GameCard card, Space space)
         {
-            if (serverGame.ValidBoardPlay(card, x, y, this))
+            if (serverGame.ValidBoardPlay(card, space, this))
             {
-                card.Play(x, y, this, payCost: true);
+                card.Play(space, this, payCost: true);
                 await serverGame.EffectsController.CheckForResponse();
             }
             else ServerNotifier.NotifyPutBack();
         }
 
-        public async Task TryMove(GameCard toMove, int x, int y)
+        public async Task TryMove(GameCard toMove, Space space)
         {
             //if it's not a valid place to do, put the cards back
-            if (serverGame.ValidMove(toMove, x, y))
+            if (serverGame.ValidMove(toMove, space))
             {
-                toMove.Move(x, y, true);
+                toMove.Move(space, true);
                 await serverGame.EffectsController.CheckForResponse();
             }
             else ServerNotifier.NotifyPutBack();
