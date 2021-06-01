@@ -45,7 +45,7 @@ namespace KompasClient.Networking
         public void Execute(ClientGame clientGame)
         {
             var toAttach = clientGame.GetCardWithID(cardId);
-            var attachedTo = clientGame.boardCtrl.GetCardAt(x, y);
+            var attachedTo = clientGame.boardCtrl.GetCardAt((x, y));
 
             if (toAttach != null && attachedTo != null) attachedTo.AddAugment(toAttach);
         }

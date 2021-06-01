@@ -19,6 +19,7 @@ public struct Space
 
     public bool Valid => x >= 0 && y >= 0 && x < 7 && y < 7;
     public bool IsCorner => (x == 0 || x == 6) && (y == 0 || y == 6);
+    public bool IsEdge => x == 0 || x == 6 || y == 0 || y == 6;
 
     public int Index => 7 * x + y;
     public Space Inverse => new Space(6 - x, 6 - y);

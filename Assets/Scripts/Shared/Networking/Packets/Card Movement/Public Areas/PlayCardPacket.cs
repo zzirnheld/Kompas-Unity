@@ -41,7 +41,7 @@ namespace KompasClient.Networking
         {
             var controller = clientGame.ClientPlayers[controllerIndex];
             var card = clientGame.GetCardWithID(cardId);
-            card.Play(x, y, controller);
+            card.Play((x, y), controller);
         }
     }
 }

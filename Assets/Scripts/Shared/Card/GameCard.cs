@@ -544,9 +544,9 @@ namespace KompasCore.Cards
         public bool Bottomdeck(Player controller, IStackable stackSrc = null) => controller.deckCtrl.PushBottomdeck(this, stackSrc);
         public bool Bottomdeck(IStackable stackSrc = null) => Bottomdeck(Controller, stackSrc);
 
-        public bool Play(int toX, int toY, Player controller, IStackable stackSrc = null, bool payCost = false)
+        public bool Play(Space to, Player controller, IStackable stackSrc = null, bool payCost = false)
         {
-            if (Game.boardCtrl.Play(this, toX, toY, controller))
+            if (Game.boardCtrl.Play(this, to, controller))
             {
                 if (payCost) controller.Pips -= Cost;
                 return true;
@@ -554,8 +554,8 @@ namespace KompasCore.Cards
             return false;
         }
 
-        public bool Move(int toX, int toY, bool normalMove, IStackable stackSrc = null)
-            => Game.boardCtrl.Move(this, toX, toY, normalMove, stackSrc);
+        public bool Move(Space to, bool normalMove, IStackable stackSrc = null)
+            => Game.boardCtrl.Move(this, to, normalMove, stackSrc);
 
         public void Dispel(IStackable stackSrc = null)
         {

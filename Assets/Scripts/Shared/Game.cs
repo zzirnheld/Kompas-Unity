@@ -63,7 +63,7 @@ namespace KompasCore.GameCore
             return Cards.Any(c => c != card && c.Location == CardLocation.Field && c.Controller == card.Controller && c.CardName == card.CardName);
         }*/
 
-        public bool ValidSpellSpaceFor(GameCard card, int x, int y) => boardCtrl.ValidSpellSpaceFor(card, x, y);
+        public bool ValidSpellSpaceFor(GameCard card, Space space) => boardCtrl.ValidSpellSpaceFor(card, space);
 
         private bool IsFriendlyAdjacentToCoords(Space space, GameCard potentialFriendly, Player friendly)
         {
@@ -85,7 +85,7 @@ namespace KompasCore.GameCore
                     for (int j = 0; j < 7; j++)
                     {
                         //if there *is* a possible space to play it to, they're not surrounded
-                        if (boardCtrl.ExistsCardOnBoard(c => IsFriendlyAdjacentToCoords(i, j, c, friendly))) return false;
+                        if (boardCtrl.ExistsCardOnBoard(c => IsFriendlyAdjacentToCoords((i, j), c, friendly))) return false;
                     }
                 }
                 //if we didn't find a single place to play a card normally, any space is fair game, by the Surrounded rule
@@ -99,7 +99,7 @@ namespace KompasCore.GameCore
             {
                 for(int y = 0; y < 7; y++)
                 {
-                    if (restriction.EvaluateEffectPlay(x, y, eff, eff.Controller)) return true;
+                    if (restriction.EvaluateEffectPlay((x, y), eff, eff.Controller)) return true;
                 }
             }
 

@@ -149,7 +149,7 @@ namespace KompasCore.Cards
                 case CardLocation.Field:
                     card.gameObject.transform.localScale = Vector3.one;
                     card.gameObject.transform.SetParent(card.Game.boardObject.transform);
-                    MoveTo((card.BoardX, card.BoardY));
+                    MoveTo(card.Position);
                     SetRotation();
                     if (card.CardType == 'S' && card.SpellSubtype == CardBase.RadialSubtype) aoeController.Show(card.Arg);
                     gameObject.SetActive(true);

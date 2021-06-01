@@ -354,9 +354,9 @@ namespace KompasCore.Effects
                 case DirectlyInFrontOfSource: return Source.CardDirectlyInFront(potentialTarget);
                 case InACorner:          return potentialTarget.InCorner();
                 case ConnectedToSourceBy:
-                    return potentialTarget.ShortestPath(Source.BoardX, Source.BoardY, connectednessRestriction.Evaluate) < 50; 
+                    return potentialTarget.ShortestPath(Source.Position, connectednessRestriction.Evaluate) < 50; 
                 case ConnectedToTargetBy: 
-                    return potentialTarget.ShortestPath(Subeffect.Target.BoardX, Subeffect.Target.BoardY, connectednessRestriction.Evaluate) < 50; 
+                    return potentialTarget.ShortestPath(Subeffect.Target.Position, connectednessRestriction.Evaluate) < 50; 
 
                 //misc
                 case CanBePlayed: return Subeffect.Game.ExistsEffectPlaySpace(potentialTarget.PlayRestriction, Effect);

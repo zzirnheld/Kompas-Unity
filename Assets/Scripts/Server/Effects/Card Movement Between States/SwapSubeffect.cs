@@ -11,7 +11,7 @@ namespace KompasServer.Effects
         public override Task<ResolutionInfo> Resolve()
         {
             if (Target == null || SecondTarget == null) return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
-            else if (Target.Move(SecondTarget.BoardX, SecondTarget.BoardY, false, ServerEffect))
+            else if (Target.Move(SecondTarget.Position, false, ServerEffect))
                 return Task.FromResult(ResolutionInfo.Next);
             else return Task.FromResult(ResolutionInfo.Impossible(MovementFailed));
         }
