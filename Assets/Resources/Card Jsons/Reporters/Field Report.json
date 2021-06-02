@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"friendly Reporter to set X by S of",
-						"cardRestrictions":["Is Character","Friendly","Board","Subtypes Include"],
+						"cardRestrictions":["Is Character","Friendly","Board","Subtypes Include","Adjacent to Source"],
 						"subtypesInclude":["Reporter"]
 					}
 				},

@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Algiz",
-	"effText":"Runic.\nGive an adjacent character +5 E.",
+	"effText":"Runic.\nGive an adjacent character +4 E.",
 	"effects":[
 		{
 			"triggerData":
@@ -21,7 +21,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":5
+					"eMod":4
 				}
 			]	
 		}
