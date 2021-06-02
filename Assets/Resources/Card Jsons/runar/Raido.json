@@ -41,7 +41,7 @@
 			"cardRestrictions":["Is Character"]
 		}
 	},
-	"c":6,
+	"c":4,
 	"spellType":"Simple",
 	"subtypes":["Rune","Simple"],
 	"subtypeText":"Rune Simple"

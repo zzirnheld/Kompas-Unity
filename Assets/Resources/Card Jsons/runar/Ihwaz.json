@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Ihwaz",
-	"effText":"Runic.\nSwap two non-Augment cards' positions",
+	"effText":"Runic.\nSwap an adjacent card with another card.",
 	"effects":[
 		{
 			"triggerData":
@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Ihwaz to swap (1/2)",
-						"cardRestrictions":["Not Augment","Board"]
+						"cardRestrictions":["Not Augment","Board","Adjacent to Source"]
 					}
 				},
 				{
@@ -37,7 +37,7 @@
 	"PlayRestriction":{
 		"normalRestrictions":["Cannot be Played Normally"]
 	},
-	"c":3,
+	"c":4,
 	"spellType":"Simple",
 	"subtypes":["Rune","Simple"],
 	"subtypeText":"Rune Simple"
