@@ -63,6 +63,7 @@
 					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
 					"playerIndex":-2,
 					"maxCanChoose":1,
+					"xMultiplier":1,
 					"cardRestriction":
 					{
 						"blurb":"character to report",

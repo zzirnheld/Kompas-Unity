@@ -4,6 +4,7 @@
 	"effText":"Thrice each friendly turn, you can pip hand-cast a Rune.",
 	"effects":[
 		{
+			"blurb":"Master Runelore",
 			"activationRestriction":{
 				"activationRestrictionArray":[
 					"Max Times Per Turn",
