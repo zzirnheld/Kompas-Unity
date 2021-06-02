@@ -30,7 +30,7 @@
 	"PlayRestriction":{
 		"normalRestrictions":["Cannot be Played Normally"]
 	},
-	"c":2,
+	"c":3,
 	"spellType":"Enchant",
 	"subtypes":["Rune","Enchant"],
 	"subtypeText":"Rune Enchant"

@@ -1,0 +1,40 @@
+{
+	"cardType":83,
+	"cardName":"Flashflood",
+	"effText":"Weather.\nWhen a character arrives here, give them -2 N.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Flood",
+				"triggerCondition":"Arrive",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Is Character"]
+					},
+					"spaceRestriction":
+					{
+						"mustBeEmpty":false,
+						"spaceRestrictions":["In AOE"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"nMod":-2
+				}
+			]	
+		}
+	],
+	"keywords":["Weather"],
+	"unique":true,
+	"c":6,
+	"spellType":"Radial",
+	"subtypeText":"Weather Radial",
+	"arg":1
+}

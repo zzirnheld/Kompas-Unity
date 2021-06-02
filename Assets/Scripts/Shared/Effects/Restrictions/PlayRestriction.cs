@@ -19,11 +19,14 @@ namespace KompasCore.Effects
         public const string FastOrNothingIsResolving = "Nothing is Resolving";
         public const string CheckUnique = "Check Unique";
 
+        public const string EnemyTurn = "Enemy Turn";
         public const string NotNormally = "Cannot be Played Normally";
         public const string MustNormally = "Must be Played Normally";
         public const string OnBoardCardFriendlyOrAdjacent = "On Board Card";
         public const string OnCardFittingRestriction = "On Card that Fits Restriction";
         public const string AdjacentToCardFittingRestriction = "Adjacent to Card Fitting Restriction";
+
+        public const string SpaceFitsRestriction = "Space Must Fit Restriction";
 
         public const string DefaultNormal = "Default Normal Restrictions";
         public const string DefaultEffect = "Default Effect Restrictions";
@@ -43,8 +46,10 @@ namespace KompasCore.Effects
         public List<string> effectRestrictions = null;
         public List<string> recommendationRestrictions = null;
 
-        public CardRestriction onCardRestriction;
-        public CardRestriction adjacentCardRestriction;
+        public CardRestriction onCardRestriction = new CardRestriction();
+        public CardRestriction adjacentCardRestriction = new CardRestriction();
+
+        public SpaceRestriction spaceRestriction = new SpaceRestriction();
 
         public void SetInfo(GameCard card)
         {
@@ -61,14 +66,14 @@ namespace KompasCore.Effects
             if (effectRestrictions.Contains(DefaultEffect)) effectRestrictions.AddRange(DefaultEffectRestrictions);
             if (effectRestrictions.Contains(AugEffect)) effectRestrictions.AddRange(AugmentEffectRestrictions);
 
-            onCardRestriction = onCardRestriction ?? new CardRestriction();
             onCardRestriction.Initialize(card, card.Controller, eff: default);
-            adjacentCardRestriction = adjacentCardRestriction ?? new CardRestriction();
             adjacentCardRestriction.Initialize(card, card.Controller, eff: default);
-            Debug.Log($"Finished setting info for play restriction of card {card.CardName}");
+
+            spaceRestriction.Initialize(card, card.Controller, effect: default);
+            //Debug.Log($"Finished setting info for play restriction of card {card.CardName}");
         }
 
-        private bool RestrictionValid(string r, int x, int y, Player player, bool normal)
+        private bool RestrictionValid(string r, Space space, Player player, bool normal)
         {
             switch (r)
             {
@@ -80,49 +85,51 @@ namespace KompasCore.Effects
 
                 case PlayedByCardOwner: return player == Card.Owner;
                 case FromHand: return Card.Location == CardLocation.Hand;
-                case StandardPlayRestriction: return Card.Game.ValidStandardPlaySpace(x, y, Card.Controller);
-                case StandardSpellRestriction: return Card.Game.ValidSpellSpaceFor(Card, x, y);
+                case StandardPlayRestriction: return Card.Game.ValidStandardPlaySpace(space, Card.Controller);
+                case StandardSpellRestriction: return Card.Game.ValidSpellSpaceFor(Card, space);
                 case HasCostInPips: return Card.Controller.Pips >= Card.Cost;
                 case FriendlyTurnIfNotFast: return Card.Fast || Card.Game.TurnPlayer == Card.Controller;
                 case FastOrNothingIsResolving: return Card.Fast || Card.Game.NothingHappening;
 
+                case EnemyTurn: return Card.Game.TurnPlayer != Card.Controller;
                 case OnBoardCardFriendlyOrAdjacent:
-                    var cardThere = Card.Game.boardCtrl.GetCardAt(x, y);
+                    var cardThere = Card.Game.boardCtrl.GetCardAt(space);
                     return cardThere != null 
                         && (cardThere.Controller == Card.Controller || cardThere.AdjacentCards.Any(c => c.Controller == Card.Controller));
                 case OnCardFittingRestriction:
                     onCardRestriction.Initialize(Card, player, null);
-                    return onCardRestriction.Evaluate(Card.Game.boardCtrl.GetCardAt(x, y));
+                    return onCardRestriction.Evaluate(Card.Game.boardCtrl.GetCardAt(space));
                 case NotNormally: return !normal;
                 case MustNormally: return normal;
                 case CheckUnique: return !(Card.Unique && Card.AlreadyCopyOnBoard);
                 case AdjacentToCardFittingRestriction: 
-                    return Card.Game.boardCtrl.CardsAdjacentTo(x, y).Any(adjacentCardRestriction.Evaluate);
+                    return Card.Game.boardCtrl.CardsAdjacentTo(space).Any(adjacentCardRestriction.Evaluate);
+                case SpaceFitsRestriction:
+                    return spaceRestriction.Evaluate(space);
 
                 default: throw new System.ArgumentException($"You forgot to check play restriction {r}", "r");
             }
         }
 
 
-        public bool EvaluateNormalPlay(int x, int y, Player player, bool checkCanAffordCost = false)
+        public bool EvaluateNormalPlay(Space to, Player player, bool checkCanAffordCost = false)
             => (!checkCanAffordCost || player.Pips >= Card.Cost) 
-            && normalRestrictions.All(r => RestrictionValid(r, x, y, player, true));
+            && normalRestrictions.All(r => RestrictionValid(r, to, player, true));
 
-        public bool EvaluateEffectPlay(int x, int y, Effect effect, Player controller)
-            => effectRestrictions.All(r => RestrictionValid(r, x, y, controller, false));
-
-        public bool EvaluateEffectPlay((int x, int y) space, Effect effect, Player controller)
-            => EvaluateEffectPlay(space.x, space.y, effect, controller);
+        public bool EvaluateEffectPlay(Space to, Effect effect, Player controller, string[] ignoring = default)
+            => effectRestrictions
+            .Except(ignoring ?? new string[0])
+            .All(r => RestrictionValid(r, to, controller, false));
       
-        public bool RecommendedPlay(int x, int y, Player controller, bool normal)
+        public bool RecommendedPlay(Space space, Player controller, bool normal)
         //=> recommendationRestrictions.All(r => RestrictionValid(r, x, y, controller, normal: normal));
         {
-            Debug.Log($"Checking {x}, {y} against recommendations {string.Join(", ", recommendationRestrictions)}");
-            return recommendationRestrictions.All(r => RestrictionValid(r, x, y, controller, normal: normal));
+            Debug.Log($"Checking {space} against recommendations {string.Join(", ", recommendationRestrictions)}");
+            return recommendationRestrictions.All(r => RestrictionValid(r, space, controller, normal: normal));
         }
 
-        public bool RecommendedNormalPlay(int x, int y, Player player, bool checkCanAffordCost = false)
-            => EvaluateNormalPlay(x, y, player, checkCanAffordCost)
-            && RecommendedPlay(x, y, player, true);
+        public bool RecommendedNormalPlay(Space space, Player player, bool checkCanAffordCost = false)
+            => EvaluateNormalPlay(space, player, checkCanAffordCost)
+            && RecommendedPlay(space, player, true);
     }
 }

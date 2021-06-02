@@ -88,23 +88,23 @@ namespace KompasCore.Effects
                 effectRestrictions.AddRange(defaultEffectMovementRestrictions);
         }
 
-        private bool RestrictionValid(string restriction, int x, int y, bool isSwapTarget, bool byEffect)
+        private bool RestrictionValid(string restriction, Space space, bool isSwapTarget, bool byEffect)
         {
             switch (restriction)
             {
                 case Default: return true;
                 //normal restrictions
                 case InPlay: return Card.Location == CardLocation.Field;
-                case DistinctSpace: return Card.Position != (x, y);
+                case DistinctSpace: return Card.Position != space;
                 case IsCharacter: return Card.CardType == 'C';
-                case CanMoveEnoughSpaces: return Card.SpacesCanMove >= Card.Game.boardCtrl.ShortestEmptyPath(Card, (x, y));
-                case StandardSpellMoveRestiction: return Card.Game.ValidSpellSpaceFor(Card, x, y);
+                case CanMoveEnoughSpaces: return Card.SpacesCanMove >= Card.Game.boardCtrl.ShortestEmptyPath(Card, space);
+                case StandardSpellMoveRestiction: return Card.Game.ValidSpellSpaceFor(Card, space);
                 case NothingHappening: return Card.Game.NothingHappening;
                 case IsNotAvatar: return !Card.IsAvatar;
                 case IsFriendlyTurn: return Card.Game.TurnPlayer == Card.Controller;
                 case DestinationCanMoveHere:
                     if (isSwapTarget) return true;
-                    var atDest = Card.Game.boardCtrl.GetCardAt(x, y);
+                    var atDest = Card.Game.boardCtrl.GetCardAt(space);
                     if (atDest == null) return true;
                     if (byEffect) return atDest.MovementRestriction.EvaluateEffectMove(Card.Position, isSwapTarget: true);
                     else if (atDest.Controller != Card.Controller) return false; //TODO later allow for cards that *can* swap with enemies
@@ -126,17 +126,6 @@ namespace KompasCore.Effects
             return valid;
         }*/
 
-        private bool ValidIndices(int x, int y) => 0 <= x && x < 7 && 0 <= y && y < 7;
-
-        /// <summary>
-        /// Checks whether the card this is attached to can move to (x, y) as a normal action
-        /// </summary>
-        /// <param name="space">Space this card might move to</param>
-        /// <param name="isSwapTarget">Whether this card is the target of a swap. <br></br>
-        /// If this is true, ignores "Destination Can Move Here" restriction, because otherwise you would have infinite recursion.</param>
-        /// <returns><see langword="true"/> if the card can move to (x, y); <see langword="false"/> otherwise.</returns>
-        public bool EvaluateNormalMove((int x, int y) space, bool isSwapTarget = false) => EvaluateNormalMove(space.x, space.y, isSwapTarget);
-
         /// <summary>
         /// Checks whether the card this is attached to can move to (x, y) as a normal action
         /// </summary>
@@ -145,17 +134,8 @@ namespace KompasCore.Effects
         /// <param name="isSwapTarget">Whether this card is the target of a swap. <br></br>
         /// If this is true, ignores "Destination Can Move Here" restriction, because otherwise you would have infinite recursion.</param>
         /// <returns><see langword="true"/> if the card can move to (x, y); <see langword="false"/> otherwise.</returns>
-        public bool EvaluateNormalMove(int x, int y, bool isSwapTarget = false)
-            => ValidIndices(x, y) && normalRestrictions.All(r => RestrictionValid(r, x, y, isSwapTarget, false));
-
-        /// <summary>
-        /// Checks whether the card this is attached to can move to (x, y) as part of an effect
-        /// </summary>
-        /// <param name="space">Space this card might move to</param>
-        /// <param name="isSwapTarget">Whether this card is the target of a swap. <br></br>
-        /// If this is true, ignores "Destination Can Move Here" restriction, because otherwise you would have infinite recursion.</param>
-        /// <returns><see langword="true"/> if the card can move to (x, y); <see langword="false"/> otherwise.</returns>
-        public bool EvaluateEffectMove((int x, int y) space, bool isSwapTarget = false) => EvaluateEffectMove(space.x, space.y, isSwapTarget);
+        public bool EvaluateNormalMove(Space space, bool isSwapTarget = false)
+            => space.Valid && normalRestrictions.All(r => RestrictionValid(r, space, isSwapTarget, false));
 
         /// <summary>
         /// Checks whether the card this is attached to can move to (x, y) as part of an effect
@@ -165,7 +145,7 @@ namespace KompasCore.Effects
         /// <param name="isSwapTarget">Whether this card is the target of a swap. <br></br>
         /// If this is true, ignores "Destination Can Move Here" restriction, because otherwise you would have infinite recursion.</param>
         /// <returns><see langword="true"/> if the card can move to (x, y); <see langword="false"/> otherwise.</returns>
-        public bool EvaluateEffectMove(int x, int y, bool isSwapTarget = false)
-            => ValidIndices(x, y) && effectRestrictions.All(r => RestrictionValid(r, x, y, isSwapTarget: false, byEffect: true));
+        public bool EvaluateEffectMove(Space space, bool isSwapTarget = false)
+            => space.Valid && effectRestrictions.All(r => RestrictionValid(r, space, isSwapTarget: false, byEffect: true));
     }
 }

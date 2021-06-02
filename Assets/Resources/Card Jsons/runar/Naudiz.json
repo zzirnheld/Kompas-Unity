@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Naudiz",
-	"effText":"Runic.\nGive all enemy characters -2 E.",
+	"effText":"Runic.\nGive all enemy characters -3 E.",
 	"effects":[
 		{
 			"triggerData":
@@ -18,7 +18,7 @@
 					{
 						"cardRestrictions":["Is Character","Enemy","Board"]
 					},
-					"eMod":-2
+					"eMod":-3
 				}
 			]	
 		}

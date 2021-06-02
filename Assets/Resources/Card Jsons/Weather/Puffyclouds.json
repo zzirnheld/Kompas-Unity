@@ -1,0 +1,40 @@
+{
+	"cardType":83,
+	"cardName":"Puffyclouds",
+	"effText":"Weather.\nWhen a character arrives here, give them +1 S.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Inspiring Clouds",
+				"triggerCondition":"Arrive",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Is Character"]
+					},
+					"spaceRestriction":
+					{
+						"mustBeEmpty":false,
+						"spaceRestrictions":["In AOE"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"sMod":1
+				}
+			]	
+		}
+	],
+	"keywords":["Weather"],
+	"unique":true,
+	"c":1,
+	"spellType":"Radial",
+	"subtypeText":"Weather Radial",
+	"arg":1
+}

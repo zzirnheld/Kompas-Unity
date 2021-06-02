@@ -61,10 +61,10 @@ namespace KompasServer.Cards
                     case CardLocation.Discard:
                     case CardLocation.Field:
                     case CardLocation.Annihilation:
-                        knownToEnemy = true;
+                        KnownToEnemy = true;
                         break;
                     case CardLocation.Deck:
-                        knownToEnemy = false;
+                        KnownToEnemy = false;
                         break;
                     /* default:
                         Debug.Log($"Card {CardName} being moved to {Location}. " +
@@ -126,7 +126,7 @@ namespace KompasServer.Cards
             {
                 EffectsController.TriggerForCondition(Trigger.AugmentAttached, attachedContext);
                 EffectsController.TriggerForCondition(Trigger.Augmented, augmentedContext);
-                ServerGame.ServerPlayers[augment.ControllerIndex].ServerNotifier.NotifyAttach(augment, BoardX, BoardY, wasKnown);
+                ServerGame.ServerPlayers[augment.ControllerIndex].ServerNotifier.NotifyAttach(augment, Position, wasKnown);
                 return true;
             }
             return false;

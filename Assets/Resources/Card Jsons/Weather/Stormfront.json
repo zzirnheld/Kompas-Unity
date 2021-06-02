@@ -1,0 +1,67 @@
+{
+	"cardType":83,
+	"cardName":"Stormfront",
+	"effText":"Annihilate a friendly adjacent Weather encompassing X Skyknight. Deck->cast a copy of that Weather, up to X spaces from me, ignoring placement rules.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"adjacent Weather to annihilate",
+						"cardRestrictions":["Friendly","Board","Adjacent to Source","Subtypes Include"],
+                        "subtypesInclude":["Weather"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount":"Cards Fitting Restriction",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Board","In Target's AOE","Subtypes Include"],
+						"subtypesInclude":["Skyknight"]
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				},
+                {
+                    "$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+                    "cardRestriction":{
+                        "blurb":"Weather to deck-cast",
+                        "cardRestrictions":["Friendly","Deck","Same Name as Target"]
+                    },
+                    "maxCanChoose":1
+                },
+                {
+                    "$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+                    "spaceRestriction":
+                    {
+                        "blurb":"where to cast the Weather",
+                        "spaceRestrictions":["Can Play Target to This Space","Distance to Source Fits X Restriction"],
+                        "distanceXRestriction":{
+                            "xRestrictions":["<=X"]
+                        }
+                    },
+					"xMultiplier":1
+                },
+                {
+                    "$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+                }
+			]
+		}
+	],
+	"fast":true,
+	"c":1,
+	"spellType":"Simple",
+	"subtypeText":"Simple"
+}

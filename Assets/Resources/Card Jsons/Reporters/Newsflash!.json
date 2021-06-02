@@ -1,9 +1,10 @@
 {
 	"cardType":83,
 	"cardName":"Newsflash!",
-	"effText":"Your opponent can reveal a Fast card. If they do, draw 1 and gain a pip. If they don't, move a Reporter anywhere.",
+	"effText":"Your opponent can reveal a Fast card. If they don't, move an adjacent Reporter anywhere.",
 	"effects":[
 		{
+			"blurb":"Newsflash!",
 			"triggerData":
 			{
 				"triggerCondition":"Play",
@@ -18,13 +19,13 @@
 				{
 					"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
 					"subeffIndices":[3],
-					"skipIndex":8
+					"skipIndex":6
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
 					"ChoiceBlurb":"Reveal a Fast card?",
 					"OptionBlurbs":["Yes","No"],
-					"OptionJumpIndices":[3,8]
+					"OptionJumpIndices":[3,6]
 				},
 				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
@@ -38,15 +39,6 @@
 					"$type":"KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp",
-					"playerIndex":-2
-				},
-				{
-					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"playerIndex":-2,
-					"xModifier":1
-				},
-				{
 					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
 				},
 				{
@@ -55,7 +47,7 @@
 					"cardRestriction":
 					{
 						"blurb":"friendly Reporter to move",
-						"cardRestrictions":["Is Character","Friendly","Board","Subtypes Include"],
+						"cardRestrictions":["Is Character","Friendly","Board","Adjacent to Source","Subtypes Include"],
 						"subtypesInclude":["Reporter"]
 					}
 				},
@@ -74,6 +66,14 @@
 			]
 		}
 	],
+	"PlayRestriction":{
+		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
+		"adjacentCardRestriction":
+		{
+			"cardRestrictions":["Is Character","Subtypes Include"],
+			"subtypesInclude":["Reporter"]
+		}
+	},
 	"fast":true,
 	"c":1,
 	"spellType":"Simple",

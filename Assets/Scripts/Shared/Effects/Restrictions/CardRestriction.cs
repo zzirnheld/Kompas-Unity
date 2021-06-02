@@ -31,6 +31,7 @@ namespace KompasCore.Effects
         public const string IsAugment = "Is Augment";
         public const string NotAugment = "Not Augment";
         public const string Fast = "Fast";
+        public const string SpellSubtypes = "Spell Subtypes";
 
         //control
         public const string Friendly = "Friendly";
@@ -105,6 +106,8 @@ namespace KompasCore.Effects
         public const string CanBeHealed = "Can Be Healed";
 
         public const string Negated = "Negated";
+        public const string HasMovement = "Has Movement";
+        public const string OutOfMovement = "Out of Movement";
 
         //positioning
         public const string AdjacentToSource = "Adjacent to Source";
@@ -113,10 +116,15 @@ namespace KompasCore.Effects
         public const string WithinCSpacesOfSource = "Within C Spaces";
         public const string WithinCSpacesOfTarget = "Within C Spaces of Target";
         public const string WithinXSpacesOfSource = "Within X Spaces";
+
         public const string InAOE = "In AOE";
         public const string InTargetsAOE = "In Target's AOE";
+        public const string SourceInThisAOE = "Source in This' AOE";
         public const string NotInAOE = "Not In AOE";
+        public const string InAOEOfCardFittingRestriction = "In AOE of Card Fitting Restriction";
+
         public const string AdjacentToSubtype = "Adjacent to Subtype";
+        public const string AdjacentToRestriction = "Adjacent to Card Restriction";
         public const string ExactlyXSpaces = "Exactly X Spaces to Source";
         public const string InFrontOfSource = "In Front of Source";
         public const string BehindSource = "Behind Source";
@@ -131,11 +139,14 @@ namespace KompasCore.Effects
 
         //misc
         public const string CanBePlayed = "Can Be Played";
+        //public const string TargetCanBePlayed = "Target Can Be Played";
         public const string EffectControllerCanPayCost = "Effect Controller can Afford Cost";
         public const string Augmented = "Augmented";
         public const string IsDefendingFromSource = "Is Defending From Source";
         public const string CanPlayTargetToThisCharactersSpace = "Can Play Target to This Character's Space";
         public const string SpaceRestrictionValidIfThisTargetChosen = "Space Restriction Valid With This Target Chosen";
+        public const string AttackingCardFittingRestriction = "Attacking Card Fitting Restriction";
+        public const string EffectIsOnTheStack = "Effect is on the Stack";
         public const string CanPlayToTargetSpace = "Can be Played to Target Space";
         #endregion restrictions
 
@@ -147,6 +158,7 @@ namespace KompasCore.Effects
         public string[] subtypesExclude = new string[0];
         public int constant;
         public CardLocation[] locations;
+        public string[] spellSubtypes = new string[0];
         public int costMultiplier = 1;
         public int costDivisor = 1;
         public int cSpaces;
@@ -158,7 +170,10 @@ namespace KompasCore.Effects
 
         public CardRestriction secondaryRestriction;
 
+        public CardRestriction adjacentCardRestriction;
         public CardRestriction connectednessRestriction;
+        public CardRestriction attackedCardRestriction;
+        public CardRestriction inAOEOfRestriction;
 
         public GameCard Source { get; private set; }
         public Player Controller { get; private set; }
@@ -191,7 +206,10 @@ namespace KompasCore.Effects
                 if (connectednessRestriction == null) Debug.LogError($"Couldn't load connectedness restriction");
                 else Debug.Log($"Connectedness restriction: {connectednessRestriction}");
             }*/
+            adjacentCardRestriction?.Initialize(source, controller, eff);
             connectednessRestriction?.Initialize(source, controller, eff);
+            attackedCardRestriction?.Initialize(source, controller, eff);
+            inAOEOfRestriction?.Initialize(source, controller, eff);
 
             initialized = true;
         }
@@ -231,6 +249,7 @@ namespace KompasCore.Effects
                 case IsAugment:   return potentialTarget.CardType == 'A';
                 case NotAugment:  return potentialTarget.CardType != 'A';
                 case Fast:        return potentialTarget.Fast;
+                case SpellSubtypes: return spellSubtypes.Any(s => s == potentialTarget.SpellSubtype);
 
                 //control
                 //Debug.Log($"potential target controller? {potentialTarget.Controller?.index}, my controller {Controller?.index}");
@@ -305,15 +324,23 @@ namespace KompasCore.Effects
                         && potentialTarget.E < potentialTarget.BaseE;
 
                 case Negated:  return potentialTarget.Negated;
+                case HasMovement: return potentialTarget.SpacesCanMove > 0;
+                case OutOfMovement: return potentialTarget.SpacesCanMove <= 0;
 
                 //positioning
                 case AdjacentToSource:           return potentialTarget.IsAdjacentTo(Source);
                 case AdjacentToTarget:   return potentialTarget.IsAdjacentTo(Subeffect.Target);
                 case AdjacentToCoords:   return potentialTarget.IsAdjacentTo(Subeffect.Space);
                 case AdjacentToSubtype:  return potentialTarget.AdjacentCards.Any(card => adjacencySubtypes.All(s => card.SubtypeText.Contains(s)));
+                case AdjacentToRestriction: return potentialTarget.AdjacentCards.Any(adjacentCardRestriction.Evaluate);
+
                 case InAOE:              return Source.CardInAOE(potentialTarget);
                 case InTargetsAOE:       return Subeffect.Target.CardInAOE(potentialTarget);
+                case SourceInThisAOE:    return potentialTarget.CardInAOE(Source);
                 case NotInAOE:           return !Source.CardInAOE(potentialTarget);
+                case InAOEOfCardFittingRestriction: 
+                    return Source.Game.Cards.Any(c => c.CardInAOE(potentialTarget) && inAOEOfRestriction.Evaluate(c));
+
                 case WithinCSpacesOfSource: return potentialTarget.WithinSpaces(cSpaces, Source);
                 case WithinCSpacesOfTarget: return potentialTarget.WithinSpaces(cSpaces, Subeffect.Target);
                 case WithinXSpacesOfSource: return potentialTarget.WithinSpaces(Effect.X, Source);
@@ -327,23 +354,28 @@ namespace KompasCore.Effects
                 case DirectlyInFrontOfSource: return Source.CardDirectlyInFront(potentialTarget);
                 case InACorner:          return potentialTarget.InCorner();
                 case ConnectedToSourceBy:
-                    return potentialTarget.ShortestPath(Source.BoardX, Source.BoardY, connectednessRestriction.Evaluate) < 50; 
+                    return potentialTarget.ShortestPath(Source.Position, connectednessRestriction.Evaluate) < 50; 
                 case ConnectedToTargetBy: 
-                    return potentialTarget.ShortestPath(Subeffect.Target.BoardX, Subeffect.Target.BoardY, connectednessRestriction.Evaluate) < 50; 
+                    return potentialTarget.ShortestPath(Subeffect.Target.Position, connectednessRestriction.Evaluate) < 50; 
 
                 //misc
-                case CanBePlayed: return Subeffect.Game.ExistsEffectPlaySpace(Source.PlayRestriction, Effect);
+                case CanBePlayed: return Subeffect.Game.ExistsEffectPlaySpace(potentialTarget.PlayRestriction, Effect);
                 case EffectControllerCanPayCost: return Subeffect.Effect.Controller.Pips >= potentialTarget.Cost * costMultiplier / costDivisor;
                 case Augmented: return potentialTarget.Augments.Any();
                 case IsDefendingFromSource:
                     return Source.Game.StackEntries.Any(s => s is Attack atk && atk.attacker == Source && atk.defender == potentialTarget.Card)
                         || (Source.Game.CurrStackEntry is Attack atk2 && atk2.attacker == Source && atk2.defender == potentialTarget.Card);
                 case CanPlayTargetToThisCharactersSpace:
-                    return Subeffect.Target.PlayRestriction.EvaluateEffectPlay(potentialTarget.Position.x, potentialTarget.Position.y, Effect);
+                    return Subeffect.Target.PlayRestriction.EvaluateEffectPlay(potentialTarget.Position, Effect, Subeffect.Player);
                 case SpaceRestrictionValidIfThisTargetChosen:
                     if (Effect.Subeffects[spaceRestrictionIndex] is SpaceTargetSubeffect spaceTgtSubeff)
                         return spaceTgtSubeff.WillBePossibleIfCardTargeted(theoreticalTarget: potentialTarget.Card);
                     else return false;
+                case AttackingCardFittingRestriction:
+                    return Source.Game.StackEntries
+                        .Any(e => e is Attack atk && atk.attacker == potentialTarget.Card && attackedCardRestriction.Evaluate(atk.defender));
+                case EffectIsOnTheStack:
+                    return Source.Game.StackEntries.Any(e => e is Effect eff && eff.Source == potentialTarget.Card);
                 case CanPlayToTargetSpace:
                     return potentialTarget.PlayRestriction.EvaluateEffectPlay(Subeffect.Space, Effect, Subeffect.Player);
                 default: throw new ArgumentException($"Invalid card restriction {restriction}", "restriction");

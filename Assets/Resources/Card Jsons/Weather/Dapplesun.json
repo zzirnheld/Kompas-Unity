@@ -1,15 +1,18 @@
 {
 	"cardType":83,
 	"cardName":"Dapplesun",
-	"effText":"Weather.\nWhen a character arrives here, give them +1 E.",
+	"effText":"Weather.\nWhen a character arrives here, give them +2 E.",
 	"effects":[
 		{
 			"triggerData":
 			{
-				"blurb":"Flood",
+				"blurb":"Sun",
 				"triggerCondition":"Arrive",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Coords Fit Restriction"],
+					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Is Character"]
+					},
 					"spaceRestriction":
 					{
 						"mustBeEmpty":false,
@@ -23,14 +26,14 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":1
+					"eMod":2
 				}
 			]	
 		}
 	],
 	"keywords":["Weather"],
 	"unique":true,
-	"c":3,
+	"c":5,
 	"spellType":"Radial",
 	"subtypeText":"Weather Radial",
 	"arg":1

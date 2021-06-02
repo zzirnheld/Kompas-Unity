@@ -41,7 +41,7 @@ namespace KompasCore.Networking
         //this will require using a json library that allows for polymorphism-ish stuff
         public AddCardPacket(GameCard card, bool invert = false)
             : this(cardId: card.ID, json: card.BaseJson, location: card.Location, controllerIndex: card.ControllerIndex, 
-                  x: card.BoardX, y: card.BoardY, attached: card.Attached, known: card.KnownToEnemy, invert: invert)
+                  x: card.Position.x, y: card.Position.y, attached: card.Attached, known: card.KnownToEnemy, invert: invert)
         { }
 
         public override Packet Copy() => new AddCardPacket(cardId, json, location, controllerIndex, x, y, attached, known);
@@ -75,8 +75,8 @@ namespace KompasClient.Networking
             {
                 case CardLocation.Nowhere: break;
                 case CardLocation.Field:
-                    if (attached) clientGame.boardCtrl.GetCardAt(x, y).AddAugment(card);
-                    else card.Play(x, y, controller);
+                    if (attached) clientGame.boardCtrl.GetCardAt((x, y)).AddAugment(card);
+                    else card.Play((x, y), controller);
                     break;
                 case CardLocation.Discard:
                     card.Discard();

@@ -1,0 +1,59 @@
+{
+	"cardType":67,
+	"cardName":"Shardstorm Elemental",
+	"effText":"Weather Event.\nWhen I’m summoned, counter an adjacent character whose effect is on the stack.",
+	"effects":[
+		{
+            "blurb":"Shardstrike",
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"adjacent character for Shardstorm Elemental to counter",
+						"cardRestrictions":["Is Character","Board","Adjacent to Source","Effect is on the Stack"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.NegateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+	"PlayRestriction":{
+		"normalRestrictions":["Default Normal Restrictions","Enemy Turn","Space Must Fit Restriction"],
+        "spaceRestriction":{
+            "spaceRestrictions":["In AOE of Number of Cards Fitting Restriction"],
+            "inAOEOfRestriction":
+            {
+                "cardRestrictions":["Subtypes Include"],
+                "subtypesInclude":["Weather"]
+            },
+            "numberOfCardsInAOEOfRestriction":{
+                "xRestrictions":[">=Constant"],
+				"constant":2
+            }
+        },
+		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
+		"adjacentCardRestriction":
+		{
+			"cardRestrictions":["Is Character","Effect is on the Stack"]
+		}
+	},
+    "fast":true,
+	"n":3,
+	"e":6,
+	"s":3,
+	"w":6,
+	"subtypeText":"Weather Event Elemental"
+}

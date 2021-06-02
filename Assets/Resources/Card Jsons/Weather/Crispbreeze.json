@@ -1,0 +1,40 @@
+{
+	"cardType":83,
+	"cardName":"Crispbreeze",
+	"effText":"Weather.\nWhen a character arrives here, give them +3 W.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Breeze",
+				"triggerCondition":"Arrive",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Is Character"]
+					},
+					"spaceRestriction":
+					{
+						"mustBeEmpty":false,
+						"spaceRestrictions":["In AOE"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wMod":3
+				}
+			]	
+		}
+	],
+	"keywords":["Weather"],
+	"unique":true,
+	"c":4,
+	"spellType":"Radial",
+	"subtypeText":"Weather Radial",
+	"arg":1
+}

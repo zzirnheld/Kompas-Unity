@@ -36,7 +36,7 @@ namespace KompasServer.Networking
                 y = 6 - y;
             }
             var card = serverGame.GetCardWithID(cardId);
-            await player.TryAugment(card, x, y);
+            await player.TryAugment(card, (x, y));
         }
     }
 }

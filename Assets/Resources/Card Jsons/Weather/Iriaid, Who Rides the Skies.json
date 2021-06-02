@@ -1,0 +1,46 @@
+{
+	"cardType":67,
+	"cardName":"Iriaid, Who Rides the Skies",
+	"effText":"When you cast Radial Weather, move me to a space there.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Watch for Truth",
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Controller Triggered"],
+					"cardRestriction":{
+						"cardRestrictions":["Friendly","Is Spell","Subtypes Include","Spell Subtypes"],
+						"subtypesInclude":["Weather"],
+                        "spellSubtypes":["Radial"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"spaceRestrictions":["In Target's AOE"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"n":4,
+	"e":2,
+	"s":5,
+	"w":2,
+	"unique":true,
+	"subtypeText":"Skyknight Warrior"
+}

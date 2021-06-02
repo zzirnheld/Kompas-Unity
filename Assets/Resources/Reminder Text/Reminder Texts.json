@@ -2,7 +2,7 @@
 	"keywordReminderTexts":[
 		{
 			"keyword":"Linewalk.",
-			"reminder":"During friendly turns, you can spend all my movement to move anywhere along my diagonal."
+			"reminder":"During friendly turns, if I can still move spaces, you can count me as moving as many spaces as I can and move me anywhere along my diagonal."
 		},
 		{
 			"keyword":"Shape.",
@@ -46,7 +46,11 @@
 		},
 		{
 			"keyword":"Weather.",
-			"reminder":"When turns start, deck-cast a different Weather adjacent to me. Regardless, annihilate me."
+			"reminder":"When turns start, annihilate me. Deck->cast a different Weather adjacent to where I was."
+		},
+		{
+			"keyword":"Weather Event.",
+			"reminder":"Can’t be played normally during friendly turns. Must be played in two Weathers."
 		},
 		{
 			"keyword":"martyr",
@@ -73,7 +77,11 @@
 			"reminder":"When turns start, set X to my S. Reshuffle me and deck->summon an S X - 1 Wanderer where I was. (Since the summoned character won't have been on the board when the turn started, their turn start effect, if any, doesn't trigger.)"
 		},
 		{
-			"keyword":"Charge",
+			"keyword":"Charge:",
+			"reminder":"When I'm activated by a card connected to me by Conductors..."
+		},
+		{
+			"keyword":"Charge X:",
 			"reminder":"When I'm activated by a card connected to me by X Conductors..."
 		}
 	]

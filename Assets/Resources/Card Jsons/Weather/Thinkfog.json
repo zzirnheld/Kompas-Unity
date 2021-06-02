@@ -1,0 +1,57 @@
+{
+	"cardType":83,
+	"cardName":"Fog",
+	"effText":"Weather.\nWhen a character arrives here, their controller can pay a pip to draw 1.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Fog",
+				"triggerCondition":"Arrive",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Coords Fit Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Is Character"]
+					},
+					"spaceRestriction":
+					{
+						"mustBeEmpty":false,
+						"spaceRestrictions":["In AOE"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+					"subeffIndices":[4]
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"ChoiceBlurb":"Pay 1 pip to draw?",
+					"OptionBlurbs":["Yes","No"],
+					"OptionJumpIndices":[4,100]
+				},
+				{
+					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
+					"xMultiplier":0,
+					"xModifier":1
+				},
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+	"keywords":["Weather"],
+	"unique":true,
+	"c":6,
+	"spellType":"Radial",
+	"subtypeText":"Weather Radial",
+	"arg":1
+}

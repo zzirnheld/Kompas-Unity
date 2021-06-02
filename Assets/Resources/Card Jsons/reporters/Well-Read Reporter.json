@@ -4,6 +4,7 @@
 	"effText":"When you cast a CX spell, ask an enemy to reveal a C > X spell. If they don’t, give me +2 NEWS.",
 	"effects":[
 		{
+			"blurb":"Reveal a spell?",
 			"triggerData":
 			{
 				"triggerCondition":"Play",
@@ -51,6 +52,9 @@
 				},
 				{
 					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",

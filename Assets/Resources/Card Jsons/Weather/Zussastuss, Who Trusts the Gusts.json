@@ -1,0 +1,57 @@
+{
+	"cardType":67,
+	"cardName":"Zussastuss, Who Trusts the Gusts",
+	"effText":"When you cast Radial Weather encompassing X Skyknights, including me, give all characters in that Weather +X NESW.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Watch for Truth",
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Controller Triggered","Max Per Turn","Triggerer Now Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Friendly","Is Spell","Subtypes Include","Spell Subtypes"],
+						"subtypesInclude":["Weather"],
+                        "spellSubtypes":["Radial"]
+					},
+					"nowRestriction":{
+						"cardRestrictions":["Source in This' AOE"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount":"Cards Fitting Restriction",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Board","In Target's AOE","Subtypes Include"],
+						"subtypesInclude":["Skyknight"]
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Board","In Target's AOE"]
+					},
+					"nMult":1,
+					"eMult":1,
+					"sMult":1,
+					"wMult":1
+				}
+			]
+		}
+	],
+	"n":2,
+	"e":5,
+	"s":7,
+	"w":5,
+	"unique":true,
+	"subtypeText":"Skyknight Mage"
+}

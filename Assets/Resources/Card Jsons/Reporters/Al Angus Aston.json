@@ -4,6 +4,7 @@
 	"effText":"Once each round, you can ask your opponent to reveal 2 cards. If they don't, give all friendly Reporters +1 NEWS and draw 1. (NEWS is NESW, but thematic.)",
 	"effects":[
 		{
+			"blurb":"SHOW ME 2 CARDS",
 			"activationRestriction":{
 				"activationRestrictionArray":[
 					"Max Times Per Round",

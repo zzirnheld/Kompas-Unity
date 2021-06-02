@@ -19,6 +19,7 @@ namespace KompasCore.Cards
         bool Summoned { get; }
         bool IsAvatar { get; }
         string SubtypeText { get; }
+        string SpellSubtype { get; }
         GameCard AugmentedCard { get; }
         IEnumerable<GameCard> Augments { get; }
         bool KnownToEnemy { get; }
@@ -37,18 +38,21 @@ namespace KompasCore.Cards
         int BaseE { get; }
 
         bool Negated { get; }
+        int SpacesMoved { get; }
+        int SpacesCanMove { get; }
         IEnumerable<GameCard> AdjacentCards { get; }
 
-        (int x, int y) Position { get; }
+        Space Position { get; }
 
-        int DistanceTo(int x, int y);
+        int DistanceTo(Space space);
         int DistanceTo(IGameCardInfo card);
         bool IsAdjacentTo(IGameCardInfo card);
-        bool IsAdjacentTo((int x, int y) pos);
+        bool IsAdjacentTo(Space pos);
         bool SameColumn(IGameCardInfo card);
         bool WithinSpaces(int spaces, IGameCardInfo card);
         bool InCorner();
-        int ShortestPath(int x, int y, Func<GameCard, bool> throughPredicate);
+        int ShortestPath(Space space, Func<GameCard, bool> throughPredicate);
+        bool CardInAOE(IGameCardInfo c);
     }
 
     /// <summary>
@@ -88,10 +92,12 @@ namespace KompasCore.Cards
         public int BaseE { get; }
 
         public bool Negated { get; }
+        public int SpacesMoved { get; }
+        public int SpacesCanMove { get; }
         public IEnumerable<GameCard> AdjacentCards { get; }
 
-        public (int x, int y) Position { get; }
-        public (int x, int y) SubjectivePosition => Controller.SubjectiveCoords(Position);
+        public Space Position { get; }
+        public Space SubjectivePosition => Controller.SubjectiveCoords(Position);
 
         public GameCardInfo(GameCard card)
         {
@@ -121,43 +127,36 @@ namespace KompasCore.Cards
             BaseE = card.BaseE;
             Cost = card.Cost;
             Negated = card.Negated;
+            SpacesMoved = card.SpacesMoved;
+            SpacesCanMove = card.SpacesCanMove;
             AdjacentCards = card.AdjacentCards.ToArray();
             Position = card.Position;
         }
 
         #region distance/adjacency
-        public int DistanceTo(int x, int y)
-        {
-            if (Location != CardLocation.Field) return int.MaxValue;
-            return Mathf.Abs(x - Position.x) > Mathf.Abs(y - Position.y) ? Mathf.Abs(x - Position.x) : Mathf.Abs(y - Position.y);
-            /* equivalent to
-             * if (Mathf.Abs(card.X - X) > Mathf.Abs(card.Y - Y)) return Mathf.Abs(card.X - X);
-             * else return Mathf.Abs(card.Y - Y);
-             * is card.X - X > card.Y - Y? If so, return card.X -X, otherwise return card.Y - Y
-            */
-        }
-        public int DistanceTo((int x, int y) space) => DistanceTo(space.x, space.y);
+        public int DistanceTo(Space space)
+            => Location == CardLocation.Field ? Position.DistanceTo(space) : int.MaxValue;
         public int DistanceTo(IGameCardInfo card) => DistanceTo(card.Position);
+
         public bool WithinSpaces(int numSpaces, IGameCardInfo card)
             => card != null && card.Location == CardLocation.Field && Location == CardLocation.Field && DistanceTo(card) <= numSpaces;
-        public bool WithinSpaces(int numSpaces, int x, int y) => DistanceTo(x, y) <= numSpaces;
+
         public bool IsAdjacentTo(IGameCardInfo card) => Location == CardLocation.Field && card != null
-            && card.Location == CardLocation.Field && DistanceTo(card) == 1;
-        public bool IsAdjacentTo(int x, int y) => Location == CardLocation.Field && DistanceTo(x, y) == 1;
-        public bool IsAdjacentTo((int x, int y) pos) => IsAdjacentTo(pos.x, pos.y);
+            && card.Location == CardLocation.Field && Position.AdjacentTo(card.Position);
+        public bool IsAdjacentTo(Space space) => Location == CardLocation.Field && Position.AdjacentTo(space);
+
+        public bool SpaceInAOE(Space space) => SpellSubtype == CardBase.RadialSubtype && DistanceTo(space) <= Arg;
         public bool CardInAOE(IGameCardInfo c) => SpaceInAOE(c.Position);
-        public bool SpaceInAOE((int x, int y) space) => SpaceInAOE(space.x, space.y);
-        public bool SpaceInAOE(int x, int y)
-            => CardType == 'S' && SpellSubtype == CardBase.RadialSubtype && DistanceTo(x, y) <= Arg;
-        public bool SameColumn(int x, int y) => Position.x - Position.y == x - y;
-        public bool SameColumn(IGameCardInfo c) => c.Location == CardLocation.Field && SameColumn(c.Position.x, c.Position.y);
+
+        public bool SameColumn(Space space) => Location == CardLocation.Field && Position.SameColumn(space);
+        public bool SameColumn(IGameCardInfo c) => c.Location == CardLocation.Field && SameColumn(c.Position);
 
         /// <summary>
         /// Returns whether the <paramref name="space"/> passed in is in front of this card
         /// </summary>
         /// <param name="space">The space to check if it's in front of this card</param>
         /// <returns><see langword="true"/> if <paramref name="space"/> is in front of this, <see langword="false"/> otherwise.</returns>
-        public bool SpaceInFront((int x, int y) space) => Controller.SubjectiveCoord(space.x) > SubjectivePosition.x;
+        public bool SpaceInFront(Space space) => Controller.SubjectiveCoords(space).NorthOf(SubjectivePosition);
 
         /// <summary>
         /// Returns whether the card passed in is in front of this card
@@ -171,7 +170,7 @@ namespace KompasCore.Cards
         /// </summary>
         /// <param name="space">The space to check if it's behind this card</param>
         /// <returns><see langword="true"/> if <paramref name="space"/> is behind this, <see langword="false"/> otherwise.</returns>
-        public bool SpaceBehind((int x, int y) space) => Controller.SubjectiveCoord(space.x) < SubjectivePosition.x;
+        public bool SpaceBehind(Space space) => SubjectivePosition.NorthOf(Controller.SubjectiveCoords(space));
 
         /// <summary>
         /// Returns whether the card passed in is behind this card
@@ -180,15 +179,15 @@ namespace KompasCore.Cards
         /// <returns><see langword="true"/> if <paramref name="card"/> is behind this, <see langword="false"/> otherwise.</returns>
         public bool CardBehind(IGameCardInfo card) => SpaceBehind(card.Position);
 
-        public bool SpaceDirectlyInFront((int x, int y) space)
-            => Controller.SubjectiveCoords(space) == (SubjectivePosition.x + 1, SubjectivePosition.y + 1);
+        public bool SpaceDirectlyInFront(Space space)
+            => Location == CardLocation.Field && Controller.SubjectiveCoords(space) == SubjectivePosition.DueNorth;
 
         public bool CardDirectlyInFront(IGameCardInfo card)
-            => Location == CardLocation.Field && card.Location == CardLocation.Field && SpaceDirectlyInFront(card.Position);
+            => card.Location == CardLocation.Field && SpaceDirectlyInFront(card.Position);
 
-        public bool OnMyDiagonal((int x, int y) space) => Location == CardLocation.Field && (Position.x == space.x || Position.y == space.y);
+        public bool OnMyDiagonal(Space space) => Location == CardLocation.Field && Position.SameDiagonal(space);
 
-        public bool InCorner() => (Position.x == 0 || Position.x == 6) && (Position.y == 0 || Position.y == 6);
+        public bool InCorner() => Location == CardLocation.Field && Position.IsCorner;
 
         /// <summary>
         /// Refers to this situation: <br></br>
@@ -212,8 +211,8 @@ namespace KompasCore.Cards
                 || (xDiffCard == yDiffCard && xDiffSpace == yDiffSpace);
         }
 
-        public int ShortestPath(int x, int y, Func<GameCard, bool> throughPredicate)
-            => Card.Game.boardCtrl.ShortestPath(Card, x, y, throughPredicate);
+        public int ShortestPath(Space space, Func<GameCard, bool> throughPredicate)
+            => Card.Game.boardCtrl.ShortestPath(Card, space, throughPredicate);
         #endregion distance/adjacency
     }
 }

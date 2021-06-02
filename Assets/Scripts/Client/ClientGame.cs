@@ -76,11 +76,8 @@ namespace KompasClient.GameCore
             }
         }
 
-        //TODO make client aware that effects have been pushed to stack
-        private bool stackEmpty = true;
-        public override bool NothingHappening => stackEmpty;
-        //TODO keep track of actual effects on client.
-        public override IEnumerable<IStackable> StackEntries => new IStackable[] { };
+        public override bool NothingHappening => !clientEffectsCtrl.StackEntries.Any();
+        public override IEnumerable<IStackable> StackEntries => clientEffectsCtrl.StackEntries;
 
         public bool canZoom = false;
 
@@ -123,7 +120,8 @@ namespace KompasClient.GameCore
             var owner = ClientPlayers[player];
             var avatar = cardRepo.InstantiateClientAvatar(json, this, owner, avatarID);
             owner.Avatar = avatar;
-            avatar.Play(player * 6, player * 6, owner);
+            Space to = player == 0 ? Space.NearCorner : Space.FarCorner;
+            avatar.Play(to, owner);
         }
 
         public void Delete(GameCard card)
@@ -176,14 +174,12 @@ namespace KompasClient.GameCore
 
         public void EffectActivated(ClientEffect eff)
         {
-            stackEmpty = false;
             clientUICtrl.SetCurrState($"{(eff.Controller.Friendly ? "Friendly" : "Enemy")} {eff.Source.CardName} Effect Activated",
                 eff.blurb);
         }
 
         public void StackEmptied()
         {
-            stackEmpty = true;
             targetMode = TargetMode.Free;
             clientUICtrl.SetCurrState("Stack Empty");
             foreach (var c in Cards) c.ResetForStack();

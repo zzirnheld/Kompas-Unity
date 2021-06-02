@@ -1,0 +1,55 @@
+{
+	"cardType":83,
+	"cardName":"Cloudshift",
+	"effText":"Annihilate an adjacent Weather. Deck->cast a distinct Weather Radial adjacent to me.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"adjacent Weather to annihilate",
+						"cardRestrictions":["Friendly","Board","Adjacent to Source","Subtypes Include"],
+                        "subtypesInclude":["Weather"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				},
+                {
+                    "$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+                    "cardRestriction":{
+                        "blurb":"Weather to deck-cast",
+                        "cardRestrictions":["Friendly","Deck","Is Spell","Distinct Name from Other Targets","Subtypes Include","Spell Subtypes"],
+						"subtypesInclude":["Weather"],
+                        "spellSubtypes":["Radial"]
+                    },
+                    "maxCanChoose":1
+                },
+                {
+                    "$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+                    "spaceRestriction":
+                    {
+                        "blurb":"where to cast the Weather",
+                        "spaceRestrictions":["Can Play Target to This Space","Adjacent to Source"]
+                    }
+                },
+                {
+                    "$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+                }
+			]
+		}
+	],
+	"fast":true,
+	"c":1,
+	"spellType":"Simple",
+	"subtypeText":"Simple"
+}

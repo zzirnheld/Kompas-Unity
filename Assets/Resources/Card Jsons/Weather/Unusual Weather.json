@@ -1,0 +1,77 @@
+{
+	"cardType":83,
+	"cardName":"Unusual Weather",
+	"effText":"When a Skyknight arrives in Weather, give them +1 EW.\nWhen a non-Skyknight arrives in Weather, give them -1 EW.",
+	"effects":[
+		{
+            "blurb":"Unusual Weather Buff",
+			"triggerData":
+			{
+				"triggerCondition":"Arrive",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Coords Fit Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Is Character","Subtypes Include"],
+                        "subtypesInclude":["Skyknight"]
+					},
+					"spaceRestriction":
+					{
+						"mustBeEmpty":false,
+						"spaceRestrictions":["In AOE Of"],
+                        "inAOERestriction":{
+                            "cardRestrictions":["Subtypes Include"],
+                            "subtypesInclude":["Weather"]
+                        }
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod":1,
+					"wMod":1
+				}
+			]
+		},
+		{
+            "blurb":"Unusual Weather Debuff",
+			"triggerData":
+			{
+				"triggerCondition":"Arrive",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Coords Fit Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Is Character","Subtypes Exclude"],
+                        "subtypesExclude":["Skyknight"]
+					},
+					"spaceRestriction":
+					{
+						"mustBeEmpty":false,
+						"spaceRestrictions":["In AOE Of"],
+                        "inAOERestriction":{
+                            "cardRestrictions":["Subtypes Include"],
+                            "subtypesInclude":["Weather"]
+                        }
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod":-1,
+					"wMod":-1
+				}
+			]
+		}
+	],
+	"c":2,
+	"spellType":"Enchant",
+	"subtypes":["Enchant"],
+	"subtypeText":"Enchant"
+}

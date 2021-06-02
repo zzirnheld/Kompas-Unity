@@ -39,6 +39,11 @@ namespace KompasCore.Effects
         public bool HasMin => listRestrictions.Contains(MinCanChoose) || listRestrictions.Contains(MinOfX);
 
         /// <summary>
+        /// Quick little property to summarize whether or not we're choosing more than one card.
+        /// </summary>
+        public bool ChooseMultiple => !(HasMax && maxCanChoose <= 1);
+
+        /// <summary>
         /// Quick little method that tells you if you have selected enough items.
         /// </summary>
         /// <param name="count">Number of items currently selected</param>

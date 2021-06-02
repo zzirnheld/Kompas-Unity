@@ -10,14 +10,19 @@
 	},
 	"subeffects":[
 		{
-			"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
-			"jumpTo":4
+			"$type":"KompasServer.Effects.TargetThisSpaceSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
 		},
 		{
 			"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
 			"cardRestriction":{
 				"blurb":"Weather to deck-cast",
-				"cardRestrictions":["Friendly","Deck","Is Spell","Distinct Name from Source","Subtypes Include"],
+				"cardRestrictions":["Friendly","Deck","Is Spell","Distinct Name from Source","Subtypes Include","Can Be Played"],
 				"subtypesInclude":["Weather"]
 			},
 			"maxCanChoose":1
@@ -26,21 +31,13 @@
 			"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 			"spaceRestriction":
 			{
-				"blurb":"where to make a Comeback Play",
-				"spaceRestrictions":["Can Play Target to This Space","Adjacent to Source"]
+				"blurb":"where to cast the Weather",
+				"spaceRestrictions":["Can Play Target to This Space","Adjacent to Coords"],
+				"playRestrictionsToIgnore":["Adjacent to Friendly Card"]
 			}
 		},
 		{
 			"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
-		},
-		{
-			"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
-		},
-		{
-			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-		},
-		{
-			"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
 		}
 	]	
 }

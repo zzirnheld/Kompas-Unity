@@ -6,10 +6,13 @@
 		{
 			"triggerData":
 			{
-				"blurb":"Flood",
+				"blurb":"Rain",
 				"triggerCondition":"Arrive",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Coords Fit Restriction"],
+					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Is Character"]
+					},
 					"spaceRestriction":
 					{
 						"mustBeEmpty":false,
@@ -30,7 +33,7 @@
 	],
 	"keywords":["Weather"],
 	"unique":true,
-	"c":2,
+	"c":5,
 	"spellType":"Radial",
 	"subtypeText":"Weather Radial",
 	"arg":1

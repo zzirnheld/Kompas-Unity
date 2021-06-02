@@ -42,7 +42,13 @@
 					"cardRestriction":
 					{
 						"blurb":"E > X character to reveal",
-						"cardRestrictions":["Controller Matches Player Target","Hand","E>X","Hidden","Is Character"]
+						"cardRestrictions":["Controller Matches Player Target","Hand","Card Value Fits X Restriction","Hidden","Is Character"],
+                        "cardValue":{
+                            "value":"E"
+                        },
+                        "xRestriction":{
+                            "xRestrictions":["<X"]
+                        }
 					},
 					"xMultiplier":1
 				},
