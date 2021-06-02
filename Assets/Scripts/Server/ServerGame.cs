@@ -306,7 +306,7 @@ namespace KompasServer.GameCore
                 && card.PlayRestriction.EvaluateNormalPlay(to, player);
         }
 
-        public bool ValidMove(GameCard toMove, Space to)
+        public bool ValidMove(GameCard toMove, Space to, Player by)
         {
             if (uiCtrl.DebugMode)
             {
@@ -315,6 +315,7 @@ namespace KompasServer.GameCore
             }
 
             Debug.Log($"Checking validity of moving {toMove.CardName} to {to}");
+            if (toMove.Controller != by) return false;
             if (toMove.Position == to || (toMove.IsAvatar && !toMove.Summoned)) return false;
             else return toMove.MovementRestriction.EvaluateNormalMove(to);
         }

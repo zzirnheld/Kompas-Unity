@@ -76,7 +76,7 @@ namespace KompasServer.GameCore
         public async Task TryMove(GameCard toMove, Space space)
         {
             //if it's not a valid place to do, put the cards back
-            if (serverGame.ValidMove(toMove, space))
+            if (serverGame.ValidMove(toMove, space, this))
             {
                 toMove.Move(space, true);
                 await serverGame.EffectsController.CheckForResponse();
