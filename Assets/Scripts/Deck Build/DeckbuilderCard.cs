@@ -53,6 +53,8 @@ namespace KompasDeckbuilder
             cardSearchController.scaText.text = CardType == 'C' ? $"S\n{S}" :
                                                 CardType == 'S' ? $"C\n{C}" :
                                               /*CardType == 'A'*/ $"A\n{A}";
+
+            cardSearchController.ShowReminderText(this);
         }
 
         public void Unshow()

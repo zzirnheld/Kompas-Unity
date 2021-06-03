@@ -6,12 +6,15 @@ using UnityEngine.UI;
 using System.Linq;
 using KompasCore.Cards;
 using System;
+using KompasClient.UI;
+using Newtonsoft.Json;
 
 namespace KompasDeckbuilder
 {
     public class DeckbuildSearchController : MonoBehaviour
     {
         public const string CardBackPath = "Detailed Sprites/Square Kompas Logo";
+        public const string RemindersJsonPath = "Reminder Text/Reminder Texts";
         public const char NBSP = (char)8203;
         public const int MaxToShow = 100;
 
@@ -31,6 +34,11 @@ namespace KompasDeckbuilder
         public TMP_Text EffectText;
 
         private Sprite CardBack;
+        private readonly List<ReminderTextClientUIController> reminderCtrls 
+            = new List<ReminderTextClientUIController>();
+        public Transform remindersParent;
+        public GameObject reminderPrefab;
+        public ReminderTextsContainer Reminders { get; private set; }
 
         //card prefabs
         public GameObject CharPrefab;
@@ -81,6 +89,9 @@ namespace KompasDeckbuilder
             CardBack = Resources.Load<Sprite>(CardBackPath);
             //show the blank card
             ShowSelectedCard();
+
+            var jsonAsset = Resources.Load<TextAsset>(RemindersJsonPath);
+            Reminders = JsonConvert.DeserializeObject<ReminderTextsContainer>(jsonAsset.text);
         }
 
         /// <summary>
@@ -99,6 +110,33 @@ namespace KompasDeckbuilder
                 SubtypesText.text = "";
                 EffectText.text = "";
             }
+
+            ShowReminderText(selectedCard);
+        }
+
+
+        public void ShowReminderText(CardBase cardInfo)
+        {
+            //clear existing reminders
+            foreach (var reminderCtrl in reminderCtrls) Destroy(reminderCtrl.gameObject);
+            reminderCtrls.Clear();
+            if (cardInfo == null)
+            {
+                remindersParent.gameObject.SetActive(false);
+                return;
+            }
+            //create new reminders
+            foreach (var reminder in Reminders.keywordReminderTexts)
+            {
+                if (cardInfo.EffText.Contains(reminder.keyword))
+                {
+                    var obj = Instantiate(reminderPrefab, remindersParent);
+                    var ctrl = obj.GetComponent<ReminderTextClientUIController>();
+                    ctrl.Initialize(reminder.keyword, reminder.reminder);
+                    reminderCtrls.Add(ctrl);
+                }
+            }
+            remindersParent.gameObject.SetActive(reminderCtrls.Any());
         }
 
         public void Select(DeckbuilderCard card)

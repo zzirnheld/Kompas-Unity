@@ -538,7 +538,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1248521067}
   m_HandleRect: {fileID: 1248521066}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1731,6 +1731,9 @@ MonoBehaviour:
   wText: {fileID: 1012006729}
   SubtypesText: {fileID: 915265284}
   EffectText: {fileID: 2042495848}
+  remindersParent: {fileID: 308113012}
+  reminderPrefab: {fileID: 172806740024015070, guid: 9bec5b8056b590c4b9bb4a4f76ae71db,
+    type: 3}
   CharPrefab: {fileID: 3989091764113213402, guid: 8a425cb37bcc0c545807a7aff1449f4b,
     type: 3}
   SpellPrefab: {fileID: 3211160473117395004, guid: b225db4bd9babeb43b973fc238150f70,
@@ -4996,8 +4999,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -562.7}
-  m_SizeDelta: {x: 400, y: 120.7}
+  m_AnchoredPosition: {x: 10, y: -325}
+  m_SizeDelta: {x: 20, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &308113013
 CanvasRenderer:
@@ -7236,14 +7239,7 @@ MonoBehaviour:
     type: 3}
   DeckbuilderAugPrefab: {fileID: 6156539215506979954, guid: 104fae637567a2d41949672925893586,
     type: 3}
-  ClientAvatarPrefab: {fileID: 0}
-  ClientCharPrefab: {fileID: 0}
-  ClientSpellPrefab: {fileID: 0}
-  ClientAugPrefab: {fileID: 0}
-  ServerAvatarPrefab: {fileID: 0}
-  ServerCharPrefab: {fileID: 0}
-  ServerSpellPrefab: {fileID: 0}
-  ServerAugPrefab: {fileID: 0}
+  CardPrefab: {fileID: 0}
 --- !u!1 &479898341
 GameObject:
   m_ObjectHideFlags: 0
@@ -13101,7 +13097,7 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: 320
   m_MinHeight: -1
-  m_PreferredWidth: -1
+  m_PreferredWidth: 320
   m_PreferredHeight: -1
   m_FlexibleWidth: 0
   m_FlexibleHeight: 1
@@ -19904,6 +19900,7 @@ MonoBehaviour:
   ErrorDialog: {fileID: 359598263}
   ImportDialog: {fileID: 765227643}
   ExportDialog: {fileID: 1861377603}
+  saveAsCtrl: {fileID: 2055507496}
   DeckViewScrollPane: {fileID: 747553270}
   DeckNameDropdown: {fileID: 479898343}
   CardsInDeckText: {fileID: 109958566}

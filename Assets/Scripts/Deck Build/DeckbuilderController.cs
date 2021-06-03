@@ -34,6 +34,7 @@ namespace KompasDeckbuilder
         public ErrorDialogController ErrorDialog;
         public ImportDeckController ImportDialog;
         public ExportDeckController ExportDialog;
+        public SaveDeckAsController saveAsCtrl;
 
         //ui elements
         public GameObject DeckViewScrollPane;
@@ -81,6 +82,19 @@ namespace KompasDeckbuilder
             if(Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
             {
                 if (Input.GetKeyUp(KeyCode.S)) SaveDeck();
+                //other control shortcuts here
+                else if (Input.GetKeyUp(KeyCode.C))
+                {
+                    //this isn't working and i'm not yet sure why, but don't feel like investigating this right now
+                    //because this is a personal project, not work.
+                    //CardSearchCtrl.NameToSearch.text = CardSearchCtrl.CardNameText.text;
+                    CardSearchCtrl.SearchName(CardSearchCtrl.CardNameText.text);
+                }
+                else if (Input.GetKeyUp(KeyCode.N))
+                {
+                    ClearDeck();
+                    saveAsCtrl.Show();
+                }
             }
 
             if (Input.GetKeyUp(KeyCode.Escape)) ToMainMenu();
@@ -158,9 +172,7 @@ namespace KompasDeckbuilder
 
         #region helper methods
         private void SetDeckCountText()
-        {
-            CardsInDeckText.text = $"Cards in Deck: {currDeck.Count}";
-        }
+            => CardsInDeckText.text = $"Cards in Deck: {currDeck.Count}";
 
         public void ClearDeck()
         {
@@ -171,6 +183,7 @@ namespace KompasDeckbuilder
                 currDeck.RemoveAt(i);
                 Destroy(c.gameObject);
             }
+            SetDeckCountText();
         }
 
         private string GetCurrentDeckAsString()
