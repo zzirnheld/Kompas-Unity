@@ -9,7 +9,7 @@
 				"blurb":"Watch for Truth",
 				"triggerCondition":"Play",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Controller Triggered","Max Per Turn","Triggerer Now Fits Restriction"],
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Controller Triggered","Triggerer Now Fits Restriction"],
 					"cardRestriction":{
 						"cardRestrictions":["Friendly","Is Spell","Subtypes Include","Spell Subtypes"],
 						"subtypesInclude":["Weather"],
