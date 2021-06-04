@@ -93,7 +93,7 @@ namespace KompasCore.Effects
                 case EnemyTurn: return Card.Game.TurnPlayer != Card.Controller;
                 case OnBoardCardFriendlyOrAdjacent:
                     var cardThere = Card.Game.boardCtrl.GetCardAt(space);
-                    return cardThere != null 
+                    return cardThere != null && cardThere.CardType != 'A'
                         && (cardThere.Controller == Card.Controller || cardThere.AdjacentCards.Any(c => c.Controller == Card.Controller));
                 case OnCardFittingRestriction:
                     return onCardRestriction.Evaluate(Card.Game.boardCtrl.GetCardAt(space));
