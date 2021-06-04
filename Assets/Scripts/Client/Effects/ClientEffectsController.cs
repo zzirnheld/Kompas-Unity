@@ -21,7 +21,15 @@ namespace KompasClient.Effects
 
         public void Remove(int index)
         {
-            stack.Cancel(index);
+            try
+            {
+                stack.Cancel(index);
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                index = stack.Count - 1;
+                stack.Cancel(index);
+            }
             clientStackPanelCtrl.Remove(index);
         }
     }
