@@ -130,13 +130,13 @@ public class CardRepository : MonoBehaviour
         try
         {
             card = JsonConvert.DeserializeObject<ServerSerializableCard>(cardJsons[cardName],
-                new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
+                new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto, MaxDepth = null, ReferenceLoopHandling = ReferenceLoopHandling.Serialize });
             effects.AddRange(card.effects);
             foreach(var s in card.keywords)
             {
                 var json = keywordJsons[s];
                 var eff = JsonConvert.DeserializeObject<ServerEffect>(json,
-                    new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
+                    new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto, MaxDepth = null, ReferenceLoopHandling = ReferenceLoopHandling.Serialize });
                 effects.Add(eff);
             }
         }
@@ -176,13 +176,13 @@ public class CardRepository : MonoBehaviour
         try
         {
             cardInfo = JsonConvert.DeserializeObject<ServerSerializableCard>(cardJsons[name],
-                new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
+                new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto, MaxDepth = null, ReferenceLoopHandling = ReferenceLoopHandling.Serialize });
             effects.AddRange(cardInfo.effects);
             foreach (var s in cardInfo.keywords)
             {
                 var keywordJson = keywordJsons[s];
                 var eff = JsonConvert.DeserializeObject<ServerEffect>(keywordJson,
-                    new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
+                    new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto, MaxDepth = null, ReferenceLoopHandling = ReferenceLoopHandling.Serialize });
                 effects.Add(eff);
             }
         }
@@ -223,14 +223,15 @@ public class CardRepository : MonoBehaviour
 
         try
         {
-            cardInfo = JsonUtility.FromJson<ClientSerializableCard>(json);
+            cardInfo = JsonConvert.DeserializeObject<ClientSerializableCard>(json,
+                    new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto, MaxDepth = null, ReferenceLoopHandling = ReferenceLoopHandling.Serialize });
             if (cardInfo.cardType != 'C') return null;
             effects.AddRange(cardInfo.effects);
             foreach (var s in cardInfo.keywords)
             {
                 var keywordJson = keywordJsons[s];
                 var eff = JsonConvert.DeserializeObject<ClientEffect>(keywordJson,
-                    new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
+                    new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto, MaxDepth = null, ReferenceLoopHandling = ReferenceLoopHandling.Serialize });
                 effects.Add(eff);
             }
         }
@@ -271,13 +272,14 @@ public class CardRepository : MonoBehaviour
 
         try
         {
-            cardInfo = JsonUtility.FromJson<ClientSerializableCard>(json);
+            cardInfo = JsonConvert.DeserializeObject<ClientSerializableCard>(json,
+                    new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto, MaxDepth = null, ReferenceLoopHandling = ReferenceLoopHandling.Serialize });
             effects.AddRange(cardInfo.effects);
             foreach (var s in cardInfo.keywords)
             {
                 var keywordJson = keywordJsons[s];
                 var eff = JsonConvert.DeserializeObject<ClientEffect>(keywordJson,
-                    new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
+                    new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto, ReferenceLoopHandling = ReferenceLoopHandling.Serialize });
                 effects.Add(eff);
             }
         }

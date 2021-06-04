@@ -8,7 +8,7 @@
 			{
 				"triggerCondition":"Draw",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Max Per Stack"]
+					"triggerRestrictions":["This Card in Play","Max Per Stack","Controller Triggered"]
 				}
 			},
 			"subeffects":[

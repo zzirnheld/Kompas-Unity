@@ -53,4 +53,9 @@ public abstract class Player : MonoBehaviour{
     }
 
     public Space SubjectiveCoords(Space space) => index == 0 ? space : space.Inverse;
+
+    public override string ToString()
+    {
+        return $"Player {index}";
+    }
 }

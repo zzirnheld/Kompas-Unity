@@ -11,7 +11,7 @@ namespace KompasCore.Effects
 
         public abstract Player Controller { get; }
 
-        public abstract GameCard Source { get; }
+        public GameCard Source => Controller.Avatar;
 
         public ListRestriction HandSizeListRestriction
         {
@@ -38,7 +38,7 @@ namespace KompasCore.Effects
                     CardRestriction.Friendly, CardRestriction.Hand
                     }
                 };
-                c.Initialize(Source, Controller, eff: default);
+                c.Initialize(Source, eff: default);
                 return c;
             }
         }

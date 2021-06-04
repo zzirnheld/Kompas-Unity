@@ -34,7 +34,7 @@
 			"cardRestrictions":["Is Character","Enemy","Adjacent to Card Restriction"],
 			"adjacentCardRestriction":
 			{
-				"cardRestrictions":["Is Character","Friendly","Subtypes Include"],
+				"cardRestrictions":["Is Character","Subtypes Include"],
 				"subtypesInclude":["Shaper"]
 			}
 		}

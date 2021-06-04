@@ -12,8 +12,6 @@ namespace KompasServer.Effects
         public ServerPlayer ServerController { get; }
         public override Player Controller => ServerController;
 
-        public override GameCard Source => null;
-
         private readonly ServerGame serverGame;
 
         private bool awaitingChoices;
