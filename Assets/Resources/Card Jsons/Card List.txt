@@ -17,30 +17,30 @@ conductors/Torzal the Lightning Rod
 conductors/Unwary Student
 conductors/Wire Up
 Correctly Sized Crane
-crazy Ideas/A Frayed Knot
-crazy Ideas/Acid Lava Pit of Ghost Piranhas
-crazy Ideas/Ballroom-Disco Breakdance Competition
-crazy Ideas/Bounce Pad
-crazy Ideas/Dr. Thierr Dumachmartres
-crazy Ideas/Flippant Emo Daughter
-crazy Ideas/Great Scott
-crazy Ideas/Just a Little Bit More
-crazy Ideas/Listen to Reason
-crazy Ideas/MAXIMUM OVERDRIVE
-crazy Ideas/Mind of Flock Controlled Pigeons
-crazy Ideas/Orry the Oviparous Mammal
-crazy Ideas/Right Into My Trap
-crazy Ideas/Self-Destruct Button
-crazy Ideas/Shifting Tile Maze Path Blocker
-crazy Ideas/Something Cannon
-crazy Ideas/Stupid Idea Generator
+crazy_Ideas/A Frayed Knot
+crazy_Ideas/Acid Lava Pit of Ghost Piranhas
+crazy_Ideas/Ballroom-Disco Breakdance Competition
+crazy_Ideas/Bounce Pad
+crazy_Ideas/Dr. Thierr Dumachmartres
+crazy_Ideas/Flippant Emo Daughter
+crazy_Ideas/Great Scott
+crazy_Ideas/Just a Little Bit More
+crazy_Ideas/Listen to Reason
+crazy_Ideas/MAXIMUM OVERDRIVE
+crazy_Ideas/Mind of Flock Controlled Pigeons
+crazy_Ideas/Orry the Oviparous Mammal
+crazy_Ideas/Right Into My Trap
+crazy_Ideas/Self-Destruct Button
+crazy_Ideas/Shifting Tile Maze Path Blocker
+crazy_Ideas/Something Cannon
+crazy_Ideas/Stupid Idea Generator
 The Intern
-crazy Ideas/Timothy
-crazy Ideas/Wait Hold Up
-crazy Ideas/Weird Idea That is Also
-crazy Ideas/Yeet Modification
-crazy Ideas/Yeeterator
-crazy Ideas/Carla
+crazy_Ideas/Timothy
+crazy_Ideas/Wait Hold Up
+crazy_Ideas/Weird Idea That is Also
+crazy_Ideas/Yeet Modification
+crazy_Ideas/Yeeterator
+crazy_Ideas/Carla
 cultists/Altar Builder
 cultists/Bloodcurser
 cultists/Cultist of the Silent
