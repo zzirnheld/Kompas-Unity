@@ -8,7 +8,7 @@
 			{
 				"triggerCondition":"Draw",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Friendly Turn"]
+					"triggerRestrictions":["This Card in Play","Friendly Turn","Controller Triggered"]
 				}
 			},
 			"subeffects":[
@@ -27,7 +27,7 @@
 			{
 				"triggerCondition":"Draw",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Enemy Turn"]
+					"triggerRestrictions":["This Card in Play","Enemy Turn","Controller Triggered"]
 				}
 			},
 			"subeffects":[

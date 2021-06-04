@@ -50,8 +50,8 @@ namespace KompasCore.Effects
                 if (activationRestrictionArray.Contains("Default"))
                     ActivationRestrictions.AddRange(DefaultRestrictions);
 
-                existsRestriction.Initialize(eff.Source, eff.Controller, eff);
-                thisCardRestriction.Initialize(eff.Source, eff.Controller, eff);
+                existsRestriction.Initialize(eff.Source, eff);
+                thisCardRestriction.Initialize(eff.Source, eff);
 
                 Debug.Log($"Initializing activation restriction for {Card.CardName} " +
                     $"with restrictions: {string.Join(", ", ActivationRestrictions)}");

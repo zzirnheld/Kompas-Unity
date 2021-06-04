@@ -12,9 +12,6 @@ namespace KompasClient.Effects {
         private readonly ClientPlayer clientController;
 
         public override Player Controller => clientController;
-        
-        //Hand size stackable doesn't come from any card
-        public override GameCard Source => default;
 
         public Sprite PrimarySprite => default;
         public CardController PrimaryCardController => default;

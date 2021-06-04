@@ -176,7 +176,7 @@ namespace KompasCore.Effects
         public CardRestriction inAOEOfRestriction;
 
         public GameCard Source { get; private set; }
-        public Player Controller { get; private set; }
+        public Player Controller => Source?.Controller;
         public Effect Effect { get; private set; }
 
         public string blurb = "";
@@ -188,16 +188,15 @@ namespace KompasCore.Effects
         public void Initialize(Subeffect subeff)
         {
             this.Subeffect = subeff;
-            Initialize(subeff.Source, subeff.Controller, subeff.Effect);
+            Initialize(subeff.Source, subeff.Effect);
         }
 
-        public void Initialize(GameCard source, Player controller, Effect eff)
+        public void Initialize(GameCard source, Effect eff)
         {
             Source = source;
-            Controller = controller;
             Effect = eff;
 
-            secondaryRestriction?.Initialize(source, controller, eff);
+            secondaryRestriction?.Initialize(source, eff);
             xRestriction?.Initialize(source, Subeffect);
 
             /*
@@ -206,10 +205,10 @@ namespace KompasCore.Effects
                 if (connectednessRestriction == null) Debug.LogError($"Couldn't load connectedness restriction");
                 else Debug.Log($"Connectedness restriction: {connectednessRestriction}");
             }*/
-            adjacentCardRestriction?.Initialize(source, controller, eff);
-            connectednessRestriction?.Initialize(source, controller, eff);
-            attackedCardRestriction?.Initialize(source, controller, eff);
-            inAOEOfRestriction?.Initialize(source, controller, eff);
+            adjacentCardRestriction?.Initialize(source, eff);
+            connectednessRestriction?.Initialize(source, eff);
+            attackedCardRestriction?.Initialize(source, eff);
+            inAOEOfRestriction?.Initialize(source, eff);
 
             initialized = true;
         }
@@ -229,6 +228,7 @@ namespace KompasCore.Effects
         private bool RestrictionValid(string restriction, IGameCardInfo potentialTarget, int x)
         {
             if (potentialTarget == null) return false;
+            //Debug.Log($"potential target controller? {potentialTarget.Controller}, my controller {Controller}");
 
             switch (restriction)
             {
@@ -252,7 +252,6 @@ namespace KompasCore.Effects
                 case SpellSubtypes: return spellSubtypes.Any(s => s == potentialTarget.SpellSubtype);
 
                 //control
-                //Debug.Log($"potential target controller? {potentialTarget.Controller?.index}, my controller {Controller?.index}");
                 case Friendly:  return potentialTarget.Controller == Controller;
                 case Enemy:     return potentialTarget.Controller != Controller;
                 case SameOwner: return potentialTarget.Owner == Controller;
@@ -332,7 +331,11 @@ namespace KompasCore.Effects
                 case AdjacentToTarget:   return potentialTarget.IsAdjacentTo(Subeffect.Target);
                 case AdjacentToCoords:   return potentialTarget.IsAdjacentTo(Subeffect.Space);
                 case AdjacentToSubtype:  return potentialTarget.AdjacentCards.Any(card => adjacencySubtypes.All(s => card.SubtypeText.Contains(s)));
-                case AdjacentToRestriction: return potentialTarget.AdjacentCards.Any(adjacentCardRestriction.Evaluate);
+                case AdjacentToRestriction:
+                    var cards = potentialTarget.AdjacentCards;
+                    Debug.Log($"Cards adjacent to {potentialTarget} are {string.Join(", ", cards.Select(c => c.ToString()))}");
+                    //Debug.Log($"Cards null? {cards == null} restriction null? {adjacentCardRestriction == null}");
+                    return cards.Any(c => adjacentCardRestriction.Evaluate(c));
 
                 case InAOE:              return Source.CardInAOE(potentialTarget);
                 case InTargetsAOE:       return Subeffect.Target.CardInAOE(potentialTarget);

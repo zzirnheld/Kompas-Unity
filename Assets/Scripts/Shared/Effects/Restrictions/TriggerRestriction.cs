@@ -82,6 +82,8 @@ namespace KompasCore.Effects
         public void Initialize(Game game, GameCard thisCard, Trigger thisTrigger, Effect effect)
         {
             Game = game;
+            ThisCard = thisCard;
+            ThisTrigger = thisTrigger;
 
             cardRestriction = cardRestriction ?? new CardRestriction();
             adjacencyRestriction = adjacencyRestriction ?? new CardRestriction();
@@ -90,14 +92,11 @@ namespace KompasCore.Effects
             spaceRestriction = spaceRestriction ?? new SpaceRestriction();
             existsRestriction = existsRestriction ?? new CardRestriction();
 
-            cardRestriction.Initialize(thisCard, effect.Controller, effect);
-            existsRestriction.Initialize(thisCard, effect.Controller, effect);
-            nowRestriction.Initialize(thisCard, effect.Controller, effect);
+            cardRestriction.Initialize(thisCard, effect);
+            existsRestriction.Initialize(thisCard, effect);
+            nowRestriction.Initialize(thisCard, effect);
             xRestriction.Initialize(thisCard);
-            spaceRestriction.Initialize(thisCard, effect.Controller, effect);
-
-            ThisCard = thisCard;
-            ThisTrigger = thisTrigger;
+            spaceRestriction.Initialize(thisCard, thisCard.Controller, effect);
 
             initialized = true;
             //Debug.Log($"Initializing trigger restriction for {thisCard?.CardName}. game is null? {game}");

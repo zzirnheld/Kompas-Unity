@@ -12,7 +12,7 @@ namespace KompasCore.Effects
     {
         public Subeffect Subeffect { get; private set; }
         public GameCard Source { get; private set; }
-        public Player Controller { get; private set; }
+        public Player Controller => Source.Controller;
         public Effect Effect { get; private set; }
 
         #region space restrictions
@@ -76,7 +76,6 @@ namespace KompasCore.Effects
         public void Initialize(GameCard source, Player controller, Effect effect)
         {
             Source = source;
-            Controller = controller;
             Effect = effect;
 
             adjacencyRestriction = adjacencyRestriction ?? new CardRestriction();
@@ -84,11 +83,11 @@ namespace KompasCore.Effects
             limitAdjacencyRestriction = limitAdjacencyRestriction ?? new CardRestriction();
             hereFitsRestriction = hereFitsRestriction ?? new CardRestriction();
 
-            adjacencyRestriction.Initialize(source, controller, effect);
-            connectednessRestriction.Initialize(source, controller, effect);
-            limitAdjacencyRestriction.Initialize(source, controller, effect);
-            hereFitsRestriction.Initialize(source, controller, effect);
-            inAOERestriction?.Initialize(source, controller, effect);
+            adjacencyRestriction.Initialize(source, effect);
+            connectednessRestriction.Initialize(source, effect);
+            limitAdjacencyRestriction.Initialize(source, effect);
+            hereFitsRestriction.Initialize(source, effect);
+            inAOERestriction?.Initialize(source, effect);
             distanceXRestriction?.Initialize(source);
             numberOfCardsInAOEOfRestriction?.Initialize(source);
 

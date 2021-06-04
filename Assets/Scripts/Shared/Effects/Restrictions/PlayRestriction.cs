@@ -66,10 +66,9 @@ namespace KompasCore.Effects
             if (effectRestrictions.Contains(DefaultEffect)) effectRestrictions.AddRange(DefaultEffectRestrictions);
             if (effectRestrictions.Contains(AugEffect)) effectRestrictions.AddRange(AugmentEffectRestrictions);
 
-            onCardRestriction.Initialize(card, card.Controller, eff: default);
-            adjacentCardRestriction.Initialize(card, card.Controller, eff: default);
-
-            spaceRestriction.Initialize(card, card.Controller, effect: default);
+            onCardRestriction.Initialize(Card, eff: default);
+            adjacentCardRestriction.Initialize(Card, eff: default);
+            spaceRestriction.Initialize(Card, Card.Controller, effect: default);
             //Debug.Log($"Finished setting info for play restriction of card {card.CardName}");
         }
 
@@ -97,7 +96,6 @@ namespace KompasCore.Effects
                     return cardThere != null 
                         && (cardThere.Controller == Card.Controller || cardThere.AdjacentCards.Any(c => c.Controller == Card.Controller));
                 case OnCardFittingRestriction:
-                    onCardRestriction.Initialize(Card, player, null);
                     return onCardRestriction.Evaluate(Card.Game.boardCtrl.GetCardAt(space));
                 case NotNormally: return !normal;
                 case MustNormally: return normal;
@@ -113,18 +111,22 @@ namespace KompasCore.Effects
 
 
         public bool EvaluateNormalPlay(Space to, Player player, bool checkCanAffordCost = false)
-            => (!checkCanAffordCost || player.Pips >= Card.Cost) 
-            && normalRestrictions.All(r => RestrictionValid(r, to, player, true));
+        { 
+            return (!checkCanAffordCost || player.Pips >= Card.Cost)
+                && normalRestrictions.All(r => RestrictionValid(r, to, player, true));
+        }
 
         public bool EvaluateEffectPlay(Space to, Effect effect, Player controller, string[] ignoring = default)
-            => effectRestrictions
-            .Except(ignoring ?? new string[0])
-            .All(r => RestrictionValid(r, to, controller, false));
+        {
+            return effectRestrictions
+                .Except(ignoring ?? new string[0])
+                .All(r => RestrictionValid(r, to, controller, false));
+        }
       
         public bool RecommendedPlay(Space space, Player controller, bool normal)
         //=> recommendationRestrictions.All(r => RestrictionValid(r, x, y, controller, normal: normal));
         {
-            Debug.Log($"Checking {space} against recommendations {string.Join(", ", recommendationRestrictions)}");
+            //Debug.Log($"Checking {space} against recommendations {string.Join(", ", recommendationRestrictions)}");
             return recommendationRestrictions.All(r => RestrictionValid(r, space, controller, normal: normal));
         }
 
