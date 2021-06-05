@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Riali, Master of Irrealities",
-	"effText":"Shape.\nWhen a friendly Shaper moves X, give them +X EW.",
+	"effText":"Shape.\nWhen a friendly Shaper moves X, give them +X E.",
 	"effects":[
 		{
             "blurb":"Empower the Shaper",
@@ -22,8 +22,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMult":1,
-					"wMult":1
+					"eMult":1
 				}
 			]	
 		}
