@@ -60,7 +60,7 @@ namespace KompasCore.Effects
 
         public string[] triggerRestrictions = new string[0];
         public CardRestriction cardRestriction;
-        public CardRestriction nowRestriction = new CardRestriction();
+        public CardRestriction nowRestriction;
         public CardRestriction adjacencyRestriction;
         public CardRestriction existsRestriction;
         public XRestriction xRestriction;
@@ -85,18 +85,11 @@ namespace KompasCore.Effects
             ThisCard = thisCard;
             ThisTrigger = thisTrigger;
 
-            cardRestriction = cardRestriction ?? new CardRestriction();
-            adjacencyRestriction = adjacencyRestriction ?? new CardRestriction();
-            sourceRestriction = sourceRestriction ?? new CardRestriction();
-            xRestriction = xRestriction ?? new XRestriction();
-            spaceRestriction = spaceRestriction ?? new SpaceRestriction();
-            existsRestriction = existsRestriction ?? new CardRestriction();
-
-            cardRestriction.Initialize(thisCard, effect);
-            existsRestriction.Initialize(thisCard, effect);
-            nowRestriction.Initialize(thisCard, effect);
-            xRestriction.Initialize(thisCard);
-            spaceRestriction.Initialize(thisCard, thisCard.Controller, effect);
+            cardRestriction?.Initialize(thisCard, effect);
+            existsRestriction?.Initialize(thisCard, effect);
+            nowRestriction?.Initialize(thisCard, effect);
+            xRestriction?.Initialize(thisCard);
+            spaceRestriction?.Initialize(thisCard, thisCard.Controller, effect);
 
             initialized = true;
             //Debug.Log($"Initializing trigger restriction for {thisCard?.CardName}. game is null? {game}");

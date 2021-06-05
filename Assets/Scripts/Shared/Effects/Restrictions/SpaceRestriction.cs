@@ -57,7 +57,7 @@ namespace KompasCore.Effects
         public int adjacencyLimit;
         public CardRestriction connectednessRestriction;
         public CardRestriction hereFitsRestriction;
-        public CardRestriction inAOERestriction = new CardRestriction();
+        public CardRestriction inAOERestriction;
 
         public XRestriction distanceXRestriction;
         public XRestriction numberOfCardsInAOEOfRestriction;
@@ -78,15 +78,10 @@ namespace KompasCore.Effects
             Source = source;
             Effect = effect;
 
-            adjacencyRestriction = adjacencyRestriction ?? new CardRestriction();
-            connectednessRestriction = connectednessRestriction ?? new CardRestriction();
-            limitAdjacencyRestriction = limitAdjacencyRestriction ?? new CardRestriction();
-            hereFitsRestriction = hereFitsRestriction ?? new CardRestriction();
-
-            adjacencyRestriction.Initialize(source, effect);
-            connectednessRestriction.Initialize(source, effect);
-            limitAdjacencyRestriction.Initialize(source, effect);
-            hereFitsRestriction.Initialize(source, effect);
+            adjacencyRestriction?.Initialize(source, effect);
+            connectednessRestriction?.Initialize(source, effect);
+            limitAdjacencyRestriction?.Initialize(source, effect);
+            hereFitsRestriction?.Initialize(source, effect);
             inAOERestriction?.Initialize(source, effect);
             distanceXRestriction?.Initialize(source);
             numberOfCardsInAOEOfRestriction?.Initialize(source);

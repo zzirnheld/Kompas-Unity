@@ -46,10 +46,10 @@ namespace KompasCore.Effects
         public List<string> effectRestrictions = null;
         public List<string> recommendationRestrictions = null;
 
-        public CardRestriction onCardRestriction = new CardRestriction();
-        public CardRestriction adjacentCardRestriction = new CardRestriction();
+        public CardRestriction onCardRestriction;
+        public CardRestriction adjacentCardRestriction;
 
-        public SpaceRestriction spaceRestriction = new SpaceRestriction();
+        public SpaceRestriction spaceRestriction;
 
         public void SetInfo(GameCard card)
         {
@@ -66,9 +66,9 @@ namespace KompasCore.Effects
             if (effectRestrictions.Contains(DefaultEffect)) effectRestrictions.AddRange(DefaultEffectRestrictions);
             if (effectRestrictions.Contains(AugEffect)) effectRestrictions.AddRange(AugmentEffectRestrictions);
 
-            onCardRestriction.Initialize(Card, eff: default);
-            adjacentCardRestriction.Initialize(Card, eff: default);
-            spaceRestriction.Initialize(Card, Card.Controller, effect: default);
+            onCardRestriction?.Initialize(Card, eff: default);
+            adjacentCardRestriction?.Initialize(Card, eff: default);
+            spaceRestriction?.Initialize(Card, Card.Controller, effect: default);
             //Debug.Log($"Finished setting info for play restriction of card {card.CardName}");
         }
 
