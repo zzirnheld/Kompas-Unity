@@ -93,10 +93,10 @@ namespace KompasCore.Effects
         {
             Initialize(subeffect.Source, subeffect.Controller, subeffect.Effect);
             Subeffect = subeffect;
-            adjacencyRestriction.Initialize(subeffect);
-            connectednessRestriction.Initialize(subeffect);
-            limitAdjacencyRestriction.Initialize(subeffect);
-            hereFitsRestriction.Initialize(subeffect);
+            adjacencyRestriction?.Initialize(subeffect);
+            connectednessRestriction?.Initialize(subeffect);
+            limitAdjacencyRestriction?.Initialize(subeffect);
+            hereFitsRestriction?.Initialize(subeffect);
         }
 
         /// <summary>
