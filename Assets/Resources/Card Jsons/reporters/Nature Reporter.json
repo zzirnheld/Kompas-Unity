@@ -47,7 +47,7 @@
                             "value":"E"
                         },
                         "xRestriction":{
-                            "xRestrictions":["<X"]
+                            "xRestrictions":[">X"]
                         }
 					},
 					"xMultiplier":1
