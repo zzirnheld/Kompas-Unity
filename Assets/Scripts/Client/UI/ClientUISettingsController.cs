@@ -15,6 +15,7 @@ namespace KompasClient.UI
 
         public ClientGame clientGame;
         public TMP_Dropdown statHighlightDropdown;
+        public TMP_Dropdown confirmTargetsDropdown;
         public TMP_InputField zoomThresholdInput;
 
         public void ApplySettings()
@@ -29,19 +30,21 @@ namespace KompasClient.UI
             {
                 ClientUISettings = ClientUISettings.Default;
                 SaveSettings();
-                return;
             }
+            else
+            {
 
-            string settingsJson = File.ReadAllText(ClientUISettingsPath);
-            try
-            {
-                if (string.IsNullOrEmpty(settingsJson)) ClientUISettings = ClientUISettings.Default;
-                else ClientUISettings = JsonConvert.DeserializeObject<ClientUISettings>(settingsJson).Cleanup();
-            }
-            catch (ArgumentException a)
-            {
-                Debug.LogError($"Failed to load settings.\n{a.Message}.\n{a.StackTrace}");
-                ClientUISettings = ClientUISettings.Default;
+                string settingsJson = File.ReadAllText(ClientUISettingsPath);
+                try
+                {
+                    if (string.IsNullOrEmpty(settingsJson)) ClientUISettings = ClientUISettings.Default;
+                    else ClientUISettings = JsonConvert.DeserializeObject<ClientUISettings>(settingsJson).Cleanup();
+                }
+                catch (ArgumentException a)
+                {
+                    Debug.LogError($"Failed to load settings.\n{a.Message}.\n{a.StackTrace}");
+                    ClientUISettings = ClientUISettings.Default;
+                }
             }
 
             if (gameObject.activeSelf) Show();
@@ -71,7 +74,15 @@ namespace KompasClient.UI
             {
                 statHighlightDropdown.options.Add(new TMP_Dropdown.OptionData() { text = o.ToString() });
             }
+            confirmTargetsDropdown.ClearOptions();
+            foreach (var o in Enum.GetValues(typeof(ConfirmTargets)))
+            {
+                confirmTargetsDropdown.options.Add(new TMP_Dropdown.OptionData() { text = o.ToString() });
+            }
+
+
             statHighlightDropdown.value = (int) ClientUISettings.statHighlight;
+            confirmTargetsDropdown.value = (int) ClientUISettings.confirmTargets;
             zoomThresholdInput.text = ClientUISettings.zoomThreshold.ToString("n1");
 
             gameObject.SetActive(true);
@@ -80,6 +91,12 @@ namespace KompasClient.UI
         public void SetStatHighlight(int index)
         {
             ClientUISettings.statHighlight = (StatHighlight)index;
+            ApplySettings();
+        }
+
+        public void SetConfirmTargets(int index)
+        {
+            ClientUISettings.confirmTargets = (ConfirmTargets)index;
             ApplySettings();
         }
 
@@ -100,6 +117,7 @@ namespace KompasClient.UI
     }
 
     public enum StatHighlight { NoHighlight, ColoredBack }
+    public enum ConfirmTargets { No, Prompt }
 
     [Serializable]
     public class ClientUISettings
@@ -108,11 +126,13 @@ namespace KompasClient.UI
 
         public StatHighlight statHighlight;
         public float zoomThreshold;
+        public ConfirmTargets confirmTargets;
 
         public static ClientUISettings Default => new ClientUISettings()
         {
             statHighlight = StatHighlight.NoHighlight,
-            zoomThreshold = DefaultZoomThreshold
+            zoomThreshold = DefaultZoomThreshold,
+            confirmTargets = ConfirmTargets.No
         };
 
         /// <summary>

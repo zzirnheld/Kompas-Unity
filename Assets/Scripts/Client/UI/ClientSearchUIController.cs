@@ -19,6 +19,7 @@ namespace KompasClient.UI
 
         //card search
         public GameObject cardSearchView;
+        public GameObject confirmTargetPrompt;
         //public Image cardSearchImage;
         public GameObject alreadySelectedText;
         public Button searchTargetButton;
