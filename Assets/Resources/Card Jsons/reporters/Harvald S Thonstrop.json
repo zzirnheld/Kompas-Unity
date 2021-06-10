@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Harvald S Thonstrop",
-	"effText":"The first time each turn an enemy card is revealed, Invoke.",
+	"effText":"The first time each round an enemy card is revealed, Invoke.",
 	"effects":[
 		{
             "blurb":"I knEW IT",
@@ -9,7 +9,7 @@
 			{
 				"triggerCondition":"Revealed",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Max Per Turn","Triggerer Fits Restriction"],
+					"triggerRestrictions":["This Card in Play","Max Per Round","Triggerer Fits Restriction"],
 					"cardRestriction":
 					{
 						"cardRestrictions":["Enemy"]
