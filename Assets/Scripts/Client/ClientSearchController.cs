@@ -62,6 +62,7 @@ namespace KompasClient.GameCore
 
         public ClientGame clientGame;
         public ClientSearchUIController clientSearchUICtrl;
+        public ConfirmTargetsUIController confirmTargetsCtrl;
 
         public void StartSearch(GameCard[] list, ListRestriction listRestriction, bool targetingSearch = true)
             => StartSearch(new SearchData(list, listRestriction, targetingSearch, new List<GameCard>()));
@@ -152,8 +153,14 @@ namespace KompasClient.GameCore
             clientSearchUICtrl.ReshowSearchShown();
         }
 
-        public void SendTargets()
+        public void SendTargets(bool confirmed = false)
         {
+            if (clientGame.ClientUISettings.confirmTargets == ConfirmTargets.Prompt && !confirmed)
+            {
+                confirmTargetsCtrl.Show(CurrSearchData.Value.searched);
+                return;
+            }
+
             Debug.Log($"Sending targets {string.Join(",", CurrSearchData.Value.searched.Select(c => c.CardName))} " +
                 $"while in target mode {clientGame.targetMode}, with a list restriction {CurrSearchData.Value.listRestriction}");
             if (clientGame.targetMode == ClientGame.TargetMode.HandSize)

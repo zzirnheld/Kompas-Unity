@@ -80,6 +80,7 @@ namespace KompasClient.GameCore
         public override IEnumerable<IStackable> StackEntries => clientEffectsCtrl.StackEntries;
 
         public bool canZoom = false;
+        public ClientUISettings ClientUISettings => clientUISettingsCtrl.ClientUISettings;
 
         //dirty card set
         private readonly HashSet<GameCard> dirtyCardList = new HashSet<GameCard>();
