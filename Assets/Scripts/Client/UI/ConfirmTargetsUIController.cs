@@ -15,6 +15,11 @@ namespace KompasClient.UI
 
         private readonly List<GameObject> images = new List<GameObject>();
 
+        private void Update()
+        {
+            if (Input.GetKeyUp(KeyCode.Return) && gameObject.activeInHierarchy) Confirm();
+        }
+
         public void Show(IEnumerable<GameCard> targets)
         {
             foreach (var obj in images) Destroy(obj);
@@ -39,6 +44,7 @@ namespace KompasClient.UI
 
         public void Cancel()
         {
+            searchCtrl.ResetCurrentTargets();
             gameObject.SetActive(false);
         }
     }

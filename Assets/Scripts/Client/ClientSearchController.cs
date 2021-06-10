@@ -153,6 +153,12 @@ namespace KompasClient.GameCore
             clientSearchUICtrl.ReshowSearchShown();
         }
 
+        public void ResetCurrentTargets()
+        {
+            var currTargets = CurrSearchData.Value.searched.ToArray();
+            foreach (var c in currTargets) RemoveTarget(c);
+        }
+
         public void SendTargets(bool confirmed = false)
         {
             if (clientGame.ClientUISettings.confirmTargets == ConfirmTargets.Prompt && !confirmed)
