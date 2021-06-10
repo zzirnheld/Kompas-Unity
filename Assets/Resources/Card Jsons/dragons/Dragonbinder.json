@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Dragonbinder",
-	"effText":"When I'm summoned, give the enemy Avatar +X E, then give me +X S (yes, X does have to be positive).",
+	"effText":"When I'm summoned, choose X. Give the enemy Avatar +2 * X E, then give me +X S (yes, X does have to be positive).",
 	"effects":[
 		{
 			"blurb":"Dragonbind",
@@ -28,7 +28,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMult":1
+					"eMult":2
 				},
 				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
@@ -40,9 +40,9 @@
 			]
 		}
 	],
-	"n":1,
+	"n":0,
 	"e":1,
 	"s":5,
-	"w":1,
+	"w":0,
 	"subtypeText":"Draconic Mage"
 }
