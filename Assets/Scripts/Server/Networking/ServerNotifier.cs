@@ -81,6 +81,9 @@ namespace KompasServer.Networking
             SendPackets(p, q);
         }
 
+        public void NotifyIncarnated(GameCard who, bool incarnated)
+            => SendToBothInverting(new SetIncarnatedPacket(who.ID, incarnated));
+
         public void NotifyMove(GameCard toMove, Space space)
             => SendToBothInverting(new MoveCardPacket(toMove.ID, space.x, space.y, invert: Player.index != 0));
 

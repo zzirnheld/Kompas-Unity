@@ -30,6 +30,7 @@ namespace KompasServer.Cards
                 SetN(N - BaseN, stackSrc: stackSrc);
                 SetW(W - BaseW, stackSrc: stackSrc);
                 summoned = false;
+                ServerNotifier.NotifyIncarnated(this, incarnated: false);
                 return true;
             }
             else return Location == CardLocation.Nowhere;
@@ -42,6 +43,7 @@ namespace KompasServer.Cards
             SetN(N + BaseN, stackSrc: stackSrc);
             SetW(W + BaseW, stackSrc: stackSrc);
             summoned = true;
+            ServerNotifier.NotifyIncarnated(this, incarnated: true);
             EffectsController.TriggerForCondition(Trigger.Play, playContext);
             return true;
         }
