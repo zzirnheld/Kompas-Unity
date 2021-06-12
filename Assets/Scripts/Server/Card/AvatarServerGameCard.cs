@@ -31,7 +31,7 @@ namespace KompasServer.Cards
                 SetW(W - BaseW, stackSrc: stackSrc);
                 summoned = false;
                 ServerNotifier.NotifyIncarnated(this, incarnated: false);
-                return true;
+                return false;
             }
             else return Location == CardLocation.Nowhere;
         }
