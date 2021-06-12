@@ -30,6 +30,7 @@ namespace KompasCore.Networking
         public const string AttackAction = "Player Attack Action";
         public const string EndTurnAction = "Player End Turn Action";
         public const string ActivateEffectAction = "Player Activate Effect Action";
+        public const string IncarnateAction = "Player Incarnate Action";
 
         //effect commands
             //from client to server

@@ -38,6 +38,7 @@ namespace KompasServer.Networking
                 case Packet.EndTurnAction:        return JsonUtility.FromJson<EndTurnActionServerPacket>(json);
                 case Packet.ActivateEffectAction: return JsonUtility.FromJson<ActivateEffectActionServerPacket>(json);
                 case Packet.HandSizeChoices:      return JsonUtility.FromJson<SendHandSizeChoicesServerPacket>(json);
+                case Packet.IncarnateAction:      return JsonUtility.FromJson<IncarnateActionServerPacket>(json);
 
                 //effects
                 case Packet.CardTargetChosen:        return JsonUtility.FromJson<CardTargetServerPacket>(json);
