@@ -25,7 +25,10 @@ namespace KompasServer.Cards
             Debug.Log($"Trying to remove AVATAR {CardName} from {Location}");
             if (Summoned)
             {
-                Move(to: Space.AvatarCornerFor(ControllerIndex), normalMove: false, stackSrc: stackSrc);
+                var corner = Space.AvatarCornerFor(ControllerIndex);
+                var unfortunate = Game.boardCtrl.GetCardAt(corner);
+                if(unfortunate != null) unfortunate.Owner.annihilationCtrl.Annihilate(unfortunate, stackSrc: stackSrc);
+                Move(to: corner, normalMove: false, stackSrc: stackSrc);
                 SetN(N - BaseN, stackSrc: stackSrc);
                 SetW(W - BaseW, stackSrc: stackSrc);
                 summoned = false;

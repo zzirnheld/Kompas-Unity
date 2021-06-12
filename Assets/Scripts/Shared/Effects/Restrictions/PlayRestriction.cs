@@ -123,26 +123,9 @@ namespace KompasCore.Effects
                 .All(r => RestrictionValid(r, to, player, true));
         }
 
-        public bool WhatNotWorkingNormalPlay(Space to, Player player, bool checkCanAffordCost = false, string[] ignoring = default)
-        {
-            if(checkCanAffordCost && player.Pips < Card.Cost)
-            {
-                Debug.Log($"Player {player.index} can't afford {Card.Cost}!");
-                return false;
-            }
-            foreach(var r in normalRestrictions.Except(ignoring ?? new string[0]))
-            {
-                if(!RestrictionValid(r, to, player, normal: true))
-                {
-                    Debug.Log($"Restriction {r} invalid for {to}, {player.index}");
-                }
-            }
-            return true;
-        }
-
         public bool EvaluateIncarnate()
             => Card.IsAvatar && !Card.Summoned &&
-            WhatNotWorkingNormalPlay(Card.Position, Card.Controller, checkCanAffordCost: true, ignoring: IgnoreForIncarnate);
+            EvaluateNormalPlay(Card.Position, Card.Controller, checkCanAffordCost: true, ignoring: IgnoreForIncarnate);
 
         public bool EvaluateEffectPlay(Space to, Effect effect, Player controller, string[] ignoring = default)
         {
