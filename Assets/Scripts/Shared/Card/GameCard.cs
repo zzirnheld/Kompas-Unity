@@ -554,6 +554,9 @@ namespace KompasCore.Cards
             return false;
         }
 
+        // returns false by default because you can't incarnate non-avatars
+        public virtual bool Incarnate(IStackable stackSrc = null) => false;
+
         public bool Move(Space to, bool normalMove, IStackable stackSrc = null)
             => Game.boardCtrl.Move(this, to, normalMove, stackSrc);
 

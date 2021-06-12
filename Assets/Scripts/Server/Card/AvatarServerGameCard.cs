@@ -16,21 +16,34 @@ namespace KompasServer.Cards
             if (E <= 0) ServerGame.Lose(ControllerIndex);
         }
 
-        //TODO make this return whether the Avatar is summoned yet
-        public override bool Summoned => false;
+        private bool summoned = false;
+        public override bool Summoned => summoned;
         public override bool IsAvatar => true;
         //public override int CombatDamage => Summoned ? base.CombatDamage : 0;
 
         public override bool Remove(IStackable stackSrc = null)
         {
             Debug.Log($"Trying to remove AVATAR {CardName} from {Location}");
-            if (Summoned) return base.Remove(stackSrc);
+            if (Summoned)
+            {
+                Move(to: Space.AvatarCornerFor(ControllerIndex), normalMove: false, stackSrc: stackSrc);
+                SetN(N - BaseN, stackSrc: stackSrc);
+                SetW(W - BaseW, stackSrc: stackSrc);
+                summoned = false;
+                return true;
+            }
             else return Location == CardLocation.Nowhere;
         }
 
-        public override void SetInfo(SerializableCard serializedCard, ServerGame game, ServerPlayer owner, ServerEffect[] effects, int id)
+        public override bool Incarnate(IStackable stackSrc = null)
         {
-            base.SetInfo(serializedCard, game, owner, effects, id);
+            if (Summoned) return false;
+            var playContext = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, space: Position);
+            SetN(N + BaseN, stackSrc: stackSrc);
+            SetW(W + BaseW, stackSrc: stackSrc);
+            summoned = true;
+            EffectsController.TriggerForCondition(Trigger.Play, playContext);
+            return true;
         }
     }
 }

@@ -16,6 +16,7 @@ public struct Space
 
     public static Space NearCorner => new Space(0, 0);
     public static Space FarCorner => new Space(6, 6);
+    public static Space AvatarCornerFor(int index) => index == 0 ? NearCorner : FarCorner;
 
     public bool Valid => x >= 0 && y >= 0 && x < 7 && y < 7;
     public bool IsCorner => (x == 0 || x == 6) && (y == 0 || y == 6);
