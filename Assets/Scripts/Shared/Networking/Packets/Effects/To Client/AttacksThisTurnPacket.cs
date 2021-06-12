@@ -34,7 +34,7 @@ namespace KompasClient.Networking
             if (card != null)
             {
                 card.SetAttacksThisTurn(attacksThisTurn);
-                clientGame.uiCtrl.RefreshShownCardInfo();
+                clientGame.uiCtrl.Refresh();
             }
         }
     }

@@ -171,7 +171,12 @@ namespace KompasClient.GameCore
         /// <summary>
         /// Makes cards show again, in case information changed after the packet.
         /// </summary>
-        public void RefreshShownCards() => ShowCardsByZoom(ClientCameraController.Main.Zoomed);
+        public void Refresh()
+        {
+            ShowCardsByZoom(ClientCameraController.Main.Zoomed);
+            clientUICtrl.Refresh();
+            clientUICtrl.cardInfoViewUICtrl.searchUICtrl.ReshowSearchShown();
+        }
 
         public void EffectActivated(ClientEffect eff)
         {

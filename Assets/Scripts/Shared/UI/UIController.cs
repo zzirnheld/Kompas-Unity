@@ -76,7 +76,7 @@ namespace KompasCore.UI
             }
         }
 
-        public void RefreshShownCardInfo() => ShowInfoFor(ShownCard, refresh: true);
+        public virtual void Refresh() => ShowInfoFor(ShownCard, refresh: true);
 
         /// <summary>
         /// updates the ui with the given selection. if the selection is null, hides the ui.

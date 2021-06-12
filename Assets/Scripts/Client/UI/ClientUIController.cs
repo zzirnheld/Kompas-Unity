@@ -84,6 +84,7 @@ namespace KompasClient.UI
 
         //card view ui
         public CardInfoViewClientUIController cardInfoViewUICtrl;
+        public GameObject incarnateButton;
 
         public GameCard CardToActivateEffectsFor
         {
@@ -119,6 +120,13 @@ namespace KompasClient.UI
         private void Awake()
         {
             SetCurrState(GameStarting);
+        }
+
+        public override void Refresh()
+        {
+            base.Refresh();
+            var avatar = clientGame.Players[0]?.Avatar;
+            if(avatar != null) incarnateButton.SetActive(avatar.PlayRestriction.EvaluateIncarnate());
         }
 
         public override bool ShowInfoFor(GameCard card, bool refresh = false)

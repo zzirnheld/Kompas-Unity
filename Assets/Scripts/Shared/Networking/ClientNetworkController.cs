@@ -129,9 +129,7 @@ namespace KompasClient.Networking
 
             //clean up any visual differences after the latest packet.
             //TODO make this more efficient, probably with dirty lists
-            ClientGame.RefreshShownCards();
-            ClientGame.clientUICtrl.RefreshShownCardInfo();
-            ClientGame.clientUICtrl.cardInfoViewUICtrl.searchUICtrl.ReshowSearchShown();
+            ClientGame.Refresh();
 
             return Task.CompletedTask;
         }
