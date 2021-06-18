@@ -1,0 +1,76 @@
+{
+    "cardType":83,
+    "cardName":"Sandstrike",
+    "effText":"A friendly Desert attacks an enemy character adjacent to them.",
+    "effects":[
+        {
+            "triggerData":
+            {
+                "triggerCondition":"Play",
+                "triggerRestriction":{
+                    "triggerRestrictions":["This Card Triggered"]
+                }
+            },
+            "subeffects":[
+                {
+                    "$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+                    "cardRestriction":
+                    {
+                        "blurb":"friendly character that should attack",
+                        "cardRestrictions":["Is Character","Friendly","Board","Subtypes Include"],
+                        "subtypesInclude":["Desert"]
+                    }
+                },
+                {
+                    "$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+                    "cardRestriction":
+                    {
+                        "blurb":"enemy character to attack",
+                        "cardRestrictions":["Is Character","Enemy","Board","Adjacent to Target"]
+                    }
+                },
+                {
+                    "$type":"KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+                    "targetIndex":-1,
+                    "attackerIndex":-2
+                }
+            ]
+        },
+        {
+            "blurb":"Shifting",
+            "triggerData":
+            {
+                "blurb":"Shifting",
+                "triggerCondition":"Discard",
+                "triggerRestriction":{
+                    "triggerRestrictions":["This Card Triggered","Triggerer Fits Restriction","Stackable Source Fits Restriction"],
+                    "cardRestriction":{
+                        "cardRestrictions":["Hand"]
+                    },
+                    "sourceRestriction":{
+                        "cardRestrictions":["Subtypes Include"],
+                        "subtypesInclude":["Desert"]
+                    }
+                }
+            },
+            "subeffects":[
+                {
+                    "$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+                    "cardRestriction":
+                    {
+                        "blurb":"Desert augment to search",
+                        "cardRestrictions":["Subtypes Include","Friendly","Deck","Is Augment"],
+                        "subtypesInclude":["Desert"]
+                    }
+                },
+                {
+                    "$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+                }
+            ]
+        }
+    ],
+    "fast":true,
+    "c":1,
+    "spellType":"Simple",
+    "subtypeText":"Simple"
+}

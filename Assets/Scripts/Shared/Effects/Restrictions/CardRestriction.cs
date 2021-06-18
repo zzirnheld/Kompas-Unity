@@ -142,6 +142,7 @@ namespace KompasCore.Effects
         //public const string TargetCanBePlayed = "Target Can Be Played";
         public const string EffectControllerCanPayCost = "Effect Controller can Afford Cost";
         public const string Augmented = "Augmented";
+        public const string IsDefending = "Is Defending";
         public const string IsDefendingFromSource = "Is Defending From Source";
         public const string CanPlayTargetToThisCharactersSpace = "Can Play Target to This Character's Space";
         public const string SpaceRestrictionValidIfThisTargetChosen = "Space Restriction Valid With This Target Chosen";
@@ -368,6 +369,8 @@ namespace KompasCore.Effects
                 case IsDefendingFromSource:
                     return Source.Game.StackEntries.Any(s => s is Attack atk && atk.attacker == Source && atk.defender == potentialTarget.Card)
                         || (Source.Game.CurrStackEntry is Attack atk2 && atk2.attacker == Source && atk2.defender == potentialTarget.Card);
+                case IsDefending:
+                    return Source.Game.StackEntries.Any(s => s is Attack atk && atk.defender == potentialTarget.Card);
                 case CanPlayTargetToThisCharactersSpace:
                     return Subeffect.Target.PlayRestriction.EvaluateEffectPlay(potentialTarget.Position, Effect, Subeffect.Player);
                 case SpaceRestrictionValidIfThisTargetChosen:

@@ -1,0 +1,53 @@
+{
+    "cardType":67,
+    "cardName":"Sand Avenger",
+    "effText":"Shifting: Search a Desert spell.\nAmbush: adjacent to a friendly defending Desert character.",
+    "effects":[
+        {
+            "blurb":"Shifting",
+            "triggerData":
+            {
+                "blurb":"Shifting",
+                "triggerCondition":"Discard",
+                "triggerRestriction":{
+                    "triggerRestrictions":["This Card Triggered","Triggerer Fits Restriction","Stackable Source Fits Restriction"],
+                    "cardRestriction":{
+                        "cardRestrictions":["Hand"]
+                    },
+                    "sourceRestriction":{
+                        "cardRestrictions":["Subtypes Include"],
+                        "subtypesInclude":["Desert"]
+                    }
+                }
+            },
+            "subeffects":[
+                {
+                    "$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+                    "cardRestriction":
+                    {
+                        "blurb":"Desert spell to search",
+                        "cardRestrictions":["Subtypes Include","Friendly","Deck","Is Spell"],
+                        "subtypesInclude":["Desert"]
+                    }
+                },
+                {
+                    "$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+                }
+            ]
+        }
+    ],
+    "PlayRestriction":{
+        "normalRestrictions":["Cannot be Played Normally"],
+        "recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
+        "adjacentCardRestriction":
+        {
+            "cardRestrictions":["Is Character","Friendly","Subtypes Include","Adjacent to Source","Is Defending"],
+            "subtypesInclude":"Desert"
+        }
+    },
+    "n":1,
+    "e":3,
+    "s":2,
+    "w":5,
+    "subtypeText":"Desert Warrior"
+}
