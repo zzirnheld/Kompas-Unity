@@ -19,6 +19,21 @@
 					"xModifier":2
 				},
 				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition":"Target Violates Restriction",
+					"cardRestriction":
+					{
+						"cardRestrictions":["In AOE of Card Fitting Restriction"],
+						"cardRestriction":{
+							"cardRestrictions":["Subtypes Include"],
+							"subtypesInclude":["Water"]
+						}
+					}
+				},
+				{
 					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{

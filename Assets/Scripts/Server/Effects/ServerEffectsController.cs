@@ -108,6 +108,7 @@ namespace KompasServer.Effects
             foreach (var c in ServerGame.Cards) c.ResetForStack();
             ServerGame.boardCtrl.ClearSpells();
             ServerGame.ServerPlayers.First().ServerNotifier.StackEmpty();
+            TriggerForCondition(Trigger.StackEnd, new ActivationContext());
         }
 
         public async Task ResolveNextStackEntry()

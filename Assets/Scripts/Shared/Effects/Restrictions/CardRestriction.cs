@@ -122,6 +122,7 @@ namespace KompasCore.Effects
         public const string SourceInThisAOE = "Source in This' AOE";
         public const string NotInAOE = "Not In AOE";
         public const string InAOEOfCardFittingRestriction = "In AOE of Card Fitting Restriction";
+        public const string NotInAOEOfCardFittingRestriction = "Not In AOE of Card Fitting Restriction";
 
         public const string AdjacentToSubtype = "Adjacent to Subtype";
         public const string AdjacentToRestriction = "Adjacent to Card Restriction";
@@ -343,6 +344,8 @@ namespace KompasCore.Effects
                 case NotInAOE:           return !Source.CardInAOE(potentialTarget);
                 case InAOEOfCardFittingRestriction: 
                     return Source.Game.Cards.Any(c => c.CardInAOE(potentialTarget) && inAOEOfRestriction.Evaluate(c));
+                case NotInAOEOfCardFittingRestriction:
+                    return !Source.Game.Cards.Any(c => c.CardInAOE(potentialTarget) || inAOEOfRestriction.Evaluate(c));
 
                 case WithinCSpacesOfSource: return potentialTarget.WithinSpaces(cSpaces, Source);
                 case WithinCSpacesOfTarget: return potentialTarget.WithinSpaces(cSpaces, Subeffect.Target);
