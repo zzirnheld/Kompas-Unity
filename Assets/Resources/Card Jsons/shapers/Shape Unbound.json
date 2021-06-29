@@ -56,7 +56,7 @@
 	},
 	"fast":true,
 	"c":1,
-	"spellType":"Simple",
+	"spellTypes":["Simple"],
 	"subtypes":["Simple","Shaping"],
 	"subtypeText":"Simple Shaping"
 }

@@ -58,6 +58,6 @@
 		"EffectRestrictions":["Must be Played Normally"]
 	},
 	"c":25,
-	"spellType":"Simple",
+	"spellTypes":["Simple"],
 	"subtypeText":"Simple"
 }

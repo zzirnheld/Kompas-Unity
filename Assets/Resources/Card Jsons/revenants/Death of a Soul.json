@@ -62,7 +62,7 @@
 	},
 	"fast":true,
 	"c":2,
-	"spellType":"Simple",
+	"spellTypes":["Simple"],
 	"subtypes":["Simple","Shaping"],
 	"subtypeText":"Simple Shaping"
 }

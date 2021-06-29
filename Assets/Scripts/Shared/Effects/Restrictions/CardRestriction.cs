@@ -250,7 +250,7 @@ namespace KompasCore.Effects
                 case IsAugment:   return potentialTarget.CardType == 'A';
                 case NotAugment:  return potentialTarget.CardType != 'A';
                 case Fast:        return potentialTarget.Fast;
-                case SpellSubtypes: return spellSubtypes.Any(s => s == potentialTarget.SpellSubtype);
+                case SpellSubtypes: return potentialTarget.SpellSubtypes.Intersect(spellSubtypes).Any();
 
                 //control
                 case Friendly:  return potentialTarget.Controller == Controller;

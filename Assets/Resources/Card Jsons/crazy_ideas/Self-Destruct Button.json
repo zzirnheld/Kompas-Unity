@@ -69,7 +69,7 @@
 	],
 	"keywords":["Ificate"],
 	"c":5,
-	"spellType":"Simple",
+	"spellTypes":["Simple"],
 	"subtypes":["Simple","Crazy Idea"],
 	"subtypeText":"Simple Crazy Idea Ificator"
 }

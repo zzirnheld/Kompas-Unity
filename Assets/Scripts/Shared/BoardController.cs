@@ -350,15 +350,18 @@ namespace KompasCore.GameCore
                 if (c == null) continue;
                 else if (c.CardType == 'S')
                 {
-                    switch (c.SpellSubtype)
+                    foreach (string s in c.SpellSubtypes)
                     {
-                        case CardBase.SimpleSubtype: 
-                            c.Discard();
-                            break;
-                        case CardBase.DelayedSubtype:
-                        case CardBase.VanishingSubtype:
-                            if (c.TurnsOnBoard >= c.Arg) c.Discard();
-                            break;
+                        switch (s)
+                        {
+                            case CardBase.SimpleSubtype:
+                                c.Discard();
+                                break;
+                            case CardBase.DelayedSubtype:
+                            case CardBase.VanishingSubtype:
+                                if (c.TurnsOnBoard >= c.Duration) c.Discard();
+                                break;
+                        }
                     }
                 }
             }

@@ -38,7 +38,7 @@
 		"normalRestrictions":["Cannot be Played Normally"]
 	},
 	"c":4,
-	"spellType":"Simple",
+	"spellTypes":["Simple"],
 	"subtypes":["Rune","Simple"],
 	"subtypeText":"Rune Simple"
 }

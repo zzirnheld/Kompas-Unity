@@ -63,6 +63,6 @@
 	],
 	"fast":true,
 	"c":1,
-	"spellType":"Simple",
+	"spellTypes":["Simple"],
 	"subtypeText":"Golem Simple"
 }

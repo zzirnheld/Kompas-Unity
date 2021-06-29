@@ -48,6 +48,6 @@
 	],
 	"c":2,
     "fast":true,
-	"spellType":"Simple",
+	"spellTypes":["Simple"],
 	"subtypeText":"Conductor"
 }

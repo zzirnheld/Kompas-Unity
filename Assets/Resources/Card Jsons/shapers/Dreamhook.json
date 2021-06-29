@@ -59,7 +59,7 @@
 	},
 	"fast":false,
 	"c":4,
-	"spellType":"Simple",
+	"spellTypes":["Simple"],
 	"subtypes":["Simple","Shaping"],
 	"subtypeText":"Simple Shaping"
 }

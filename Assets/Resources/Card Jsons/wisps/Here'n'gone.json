@@ -98,7 +98,7 @@
 	],
 	"fast":true,
 	"c":1,
-	"spellType":"Simple",
+	"spellTypes":["Simple"],
 	"subtypes":["Simple"],
 	"subtypeText":"Simple",
 	"arg":1
