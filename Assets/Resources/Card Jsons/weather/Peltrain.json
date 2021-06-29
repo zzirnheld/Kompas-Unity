@@ -35,6 +35,6 @@
 	"unique":true,
 	"c":5,
 	"spellTypes":["Radial"],
-	"subtypeText":"Weather Radial",
+	"subtypeText":"Radial Water Weather",
 	"radius":1
 }
