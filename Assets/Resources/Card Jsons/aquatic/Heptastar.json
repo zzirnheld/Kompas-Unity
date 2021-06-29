@@ -1,0 +1,24 @@
+{
+	"cardType":67,
+	"cardName":"Heptastar",
+	"effText":"Waterborn Waterdweller.",
+	"effects":[],
+	"keywords":["Waterdweller"],
+	"PlayRestriction":{
+		"normalRestrictions":["Default Normal Restrictions","Space Must Fit Restriction"],
+		"effectRestrictions":["Default Effect Restrictions","Space Must Fit Restriction"],
+        "spaceRestriction":{
+            "spaceRestrictions":["In AOE Of"],
+            "inAOEOfRestriction":
+            {
+                "cardRestrictions":["Subtypes Include"],
+                "subtypesInclude":["Water"]
+            }
+        }
+	},
+	"n":7,
+	"e":9,
+	"s":7,
+	"w":9,
+	"subtypeText":"Aquatic Fish Monster"
+}

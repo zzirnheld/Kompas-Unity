@@ -61,7 +61,6 @@
 			]	
 		}
 	],
-	"keywords":["Shape"],
 	"PlayRestriction":{
 		"normalRestrictions":["Default Normal Restrictions","Space Must Fit Restriction"],
 		"effectRestrictions":["Default Effect Restrictions","Space Must Fit Restriction"],
