@@ -80,7 +80,7 @@
 	],
 	"fast":false,
 	"c":1,
-	"spellType":"Enchant",
+	"spellTypes":["Enchant"],
 	"subtypes":["Enchant"],
 	"subtypeText":"Enchant"
 }

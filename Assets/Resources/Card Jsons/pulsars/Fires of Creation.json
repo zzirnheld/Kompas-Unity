@@ -43,6 +43,6 @@
 	],
 	"c":3,
 	"unique":true,
-	"spellType":"Enchant",
+	"spellTypes":["Enchant"],
 	"subtypeText":"Enchant"
 }

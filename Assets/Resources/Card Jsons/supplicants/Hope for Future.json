@@ -29,6 +29,6 @@
 		"normalRestrictions":["Default Normal Restrictions"],
 		"effectRestrictions":["Default Effect Restrictions"]
 	},
-	"spellType":"Enchant",
+	"spellTypes":["Enchant"],
 	"subtypeText":"Enchant Plea"
 }
