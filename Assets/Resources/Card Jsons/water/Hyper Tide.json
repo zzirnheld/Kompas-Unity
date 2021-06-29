@@ -1,0 +1,28 @@
+{
+	"cardType":83,
+	"cardName":"Hyper Tide",
+	"effText":"When turns start, increase the leyload by 1.\n(Vanishes after 1 turns.)",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"HYPER TIIIIIIDE",
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.ChangeLeyloadSubeffect, Assembly-CSharp",
+					"xModifier":1
+				}
+			]	
+		}
+	],
+	"c":3,
+	"spellTypes":["Vanishing","Radial"],
+	"duration":3,
+    "radius":2,
+	"subtypeText":"Radial 2 Vanishing 3 Water"
+}

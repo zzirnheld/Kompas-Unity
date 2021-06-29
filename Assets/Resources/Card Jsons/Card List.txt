@@ -361,6 +361,8 @@ trees/The Man Who Replants
 trees/Thinktree
 Unfinding
 water/High Tide
+water/Nuisance Flooding
+water/Hyper Tide
 wanderers/At Home in the World
 wanderers/Leper
 wanderers/Leyseer
