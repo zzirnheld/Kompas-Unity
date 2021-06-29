@@ -66,8 +66,8 @@
 		}
 	],
 	"c":3,
-	"spellType":"Delayed",
+	"spellTypes":["Delayed"],
 	"subtypes":["Tarocco","Delayed"],
 	"subtypeText":"Tarocco Delayed",
-	"arg":1
+	"duration":1
 }

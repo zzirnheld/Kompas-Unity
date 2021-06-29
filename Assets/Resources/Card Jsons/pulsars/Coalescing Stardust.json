@@ -78,7 +78,7 @@
 		}
 	],
 	"c":1,
-	"spellType":"Delayed",
+	"spellTypes":["Delayed"],
 	"subtypeText":"Delayed",
 	"arg":2
 }

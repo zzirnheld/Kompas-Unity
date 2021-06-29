@@ -41,7 +41,7 @@
 	"keywords":["Weather"],
 	"unique":true,
 	"c":9,
-	"spellType":"Radial",
+	"spellTypes":["Radial"],
 	"subtypeText":"Weather Radial",
-	"arg":1
+	"radius":1
 }

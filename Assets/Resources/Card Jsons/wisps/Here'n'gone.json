@@ -101,5 +101,5 @@
 	"spellTypes":["Simple"],
 	"subtypes":["Simple"],
 	"subtypeText":"Simple",
-	"arg":1
+	"radius":1
 }

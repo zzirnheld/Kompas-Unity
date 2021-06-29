@@ -45,7 +45,7 @@
 	],
 	"keywords":["Ificate"],
 	"c":5,
-	"spellType":"Radial",
+	"spellTypes":["Radial"],
 	"subtypeText":"Crazy Idea Enchant Ificator",
-	"arg":1
+	"radius":1
 }
