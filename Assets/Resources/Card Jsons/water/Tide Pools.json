@@ -1,0 +1,34 @@
+{
+	"cardType":83,
+	"cardName":"Tide Pools",
+	"effText":"When turns start, if I'm not in Water, rehand me. (This checks whether it should trigger before Vanishing cards vanish.)",
+	"effects":[
+        {
+            "blurb":"Dry Up",
+            "triggerData":
+            {
+                "blurb":"Dry Up",
+                "triggerCondition":"Turn Start",
+                "triggerRestriction":{
+                    "triggerRestrictions":["Not In AOE of Card Fitting Restriction"],
+                    "inAOEOfRestriction":{
+                        "cardRestrictions":["Subtypes Include"],
+                        "subtypesInclude":["Water"]
+                    }
+                }
+            },
+            "subeffects":[
+                {
+                    "$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+                },
+                {
+                    "$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+                }
+            ]	
+        }
+    ],
+	"c":1,
+	"spellTypes":["Radial"],
+    "radius":1,
+	"subtypeText":"Radial 1"
+}
