@@ -115,7 +115,7 @@ namespace KompasCore.Effects
                 case TriggerersAugmentedCardFitsRestriction: return cardRestriction.Evaluate(context.CardInfo.AugmentedCard);
                 case StackableSourceFitsRestriction: return sourceRestriction.Evaluate(context.Stackable?.Source);
 
-                case ContextsStackablesMatch: return context.Stackable == secondary.Stackable;
+                case ContextsStackablesMatch: return context.Stackable == secondary?.Stackable;
 
                 //other non-card triggering things
                 case CoordsFitRestriction:    return context.Space != null && spaceRestriction.Evaluate(context.Space.Value);
