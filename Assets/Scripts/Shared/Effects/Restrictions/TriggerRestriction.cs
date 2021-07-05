@@ -32,6 +32,8 @@ namespace KompasCore.Effects
         public const string EffectSourceIsThisCard = "Stackable Source is This Card"; //140,
         public const string EffectSourceIsTriggerer = "Stackable Source is Triggerer"; //149,
 
+        public const string ContextsStackablesMatch = "Contexts Stackables Match";
+
         public const string DistanceTriggererToSpaceConstant = "Distance from Triggerer to Space == Constant";
 
         public const string ControllerTriggered = "Controller Triggered"; //200,
@@ -74,6 +76,7 @@ namespace KompasCore.Effects
         public GameCard ThisCard { get; private set; }
 
         public Trigger ThisTrigger { get; private set; }
+        public Effect SourceEffect { get; private set; }
 
         // Necessary because json doesn't let you have nice things, like constructors with arguments,
         // so I need to make sure manually that I've bothered to set up relevant arguments.
@@ -84,6 +87,7 @@ namespace KompasCore.Effects
             Game = game;
             ThisCard = thisCard;
             ThisTrigger = thisTrigger;
+            SourceEffect = effect;
 
             cardRestriction?.Initialize(thisCard, effect);
             existsRestriction?.Initialize(thisCard, effect);
@@ -95,7 +99,8 @@ namespace KompasCore.Effects
             //Debug.Log($"Initializing trigger restriction for {thisCard?.CardName}. game is null? {game}");
         }
 
-        private bool RestrictionValid(string restriction, ActivationContext context)
+
+        private bool RestrictionValid(string restriction, ActivationContext context, ActivationContext secondary = default)
         {
             switch (restriction)
             {
@@ -109,7 +114,9 @@ namespace KompasCore.Effects
                 case TriggererNowFitsRestirction: return nowRestriction.Evaluate(context.CardInfo.Card);
                 case TriggerersAugmentedCardFitsRestriction: return cardRestriction.Evaluate(context.CardInfo.AugmentedCard);
                 case StackableSourceFitsRestriction: return sourceRestriction.Evaluate(context.Stackable?.Source);
-                
+
+                case ContextsStackablesMatch: return context.Stackable == secondary.Stackable;
+
                 //other non-card triggering things
                 case CoordsFitRestriction:    return context.Space != null && spaceRestriction.Evaluate(context.Space.Value);
                 case XFitsRestriction:        return context.X != null && xRestriction.Evaluate(context.X.Value);
@@ -136,14 +143,22 @@ namespace KompasCore.Effects
             }
         }
 
+        /*
         private bool RestrictionValidDebug(string r, ActivationContext ctxt)
         {
             var success = RestrictionValid(r, ctxt);
             if (!success) Debug.Log($"Trigger for {ThisCard.CardName} invalid at restriction {r} for {ctxt}");
             return success;
-        }
+        }*/
 
-        public bool Evaluate(ActivationContext context)
+        /// <summary>
+        /// Checks whether this trigger restriction is valid for the given context where the trigger occurred.
+        /// Can optionally be triggered w/r/t a secondary activation context, for various reasons. See <paramref name="secondary"/>
+        /// </summary>
+        /// <param name="context">The activation context to evaluate this trigger restriction for</param>
+        /// <param name="secondary">A secondary piece of context, like what the activation context was when a hanging effect was applied.</param>
+        /// <returns></returns>
+        public bool Evaluate(ActivationContext context, ActivationContext secondary = default)
         {
             if (!initialized) throw new ArgumentException("Trigger restriction not initialized!");
 

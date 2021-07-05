@@ -17,13 +17,17 @@ namespace KompasServer.Effects
 
         protected override IEnumerable<HangingEffect> CreateHangingEffects()
         {
-            var temp = new TemporaryNESWBuff(ServerGame, triggerRestriction, endCondition, 
-                fallOffCondition, CreateFallOffRestriction(Target),
-                Target,
-                nBuff + Effect.X * nMultiplier,
-                eBuff + Effect.X * eMultiplier,
-                sBuff + Effect.X * sMultiplier,
-                wBuff + Effect.X * wMultiplier);
+            var temp = new TemporaryNESWBuff(game: ServerGame,
+                                             triggerRestriction: triggerRestriction,
+                                             endCondition: endCondition,
+                                             fallOffCondition: fallOffCondition,
+                                             fallOffRestriction: CreateFallOffRestriction(Target),
+                                             currentContext: Effect.CurrActivationContext,
+                                             buffRecipient: Target,
+                                             nBuff: nBuff + Effect.X * nMultiplier,
+                                             eBuff: eBuff + Effect.X * eMultiplier,
+                                             sBuff: sBuff + Effect.X * sMultiplier,
+                                             wBuff: wBuff + Effect.X * wMultiplier);
 
             return new List<HangingEffect>() { temp };
         }

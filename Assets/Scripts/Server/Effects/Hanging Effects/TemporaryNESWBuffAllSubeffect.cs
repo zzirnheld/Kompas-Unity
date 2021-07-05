@@ -36,9 +36,17 @@ namespace KompasServer.Effects
 
             foreach (var card in cards)
             {
-                var temp = new TemporaryNESWBuff(ServerGame, triggerRestriction, endCondition, 
-                    fallOffCondition, CreateFallOffRestriction(card),
-                    card, nBuff, eBuff, sBuff, wBuff);
+                var temp = new TemporaryNESWBuff(game: ServerGame,
+                                                 triggerRestriction: triggerRestriction,
+                                                 endCondition: endCondition,
+                                                 fallOffCondition: fallOffCondition,
+                                                 fallOffRestriction: CreateFallOffRestriction(card),
+                                                 currentContext: Effect.CurrActivationContext,
+                                                 buffRecipient: card,
+                                                 nBuff: nBuff,
+                                                 eBuff: eBuff,
+                                                 sBuff: sBuff,
+                                                 wBuff: wBuff);
             }
 
             return effs;

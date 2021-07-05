@@ -12,12 +12,14 @@ namespace KompasServer.Effects
         private bool ended = false;
         private readonly TriggerRestriction triggerRestriction;
         protected readonly ServerGame serverGame;
+        private readonly ActivationContext savedContext;
 
         public HangingEffect(ServerGame serverGame, TriggerRestriction triggerRestriction, string endCondition, 
-            string fallOffCondition, TriggerRestriction fallOffRestriction)
+            string fallOffCondition, TriggerRestriction fallOffRestriction, ActivationContext currentContext)
         {
             this.serverGame = serverGame != null ? serverGame : throw new System.ArgumentNullException("serverGame", "ServerGame in HangingEffect must not be null");
             this.triggerRestriction = triggerRestriction ?? throw new System.ArgumentNullException("triggerRestriction", "Trigger Restriction in HangingEffect must not be null");
+            savedContext = currentContext;
             EndCondition = endCondition;
             FallOffCondition = fallOffCondition;
             FallOffRestriction = fallOffRestriction;
@@ -45,7 +47,7 @@ namespace KompasServer.Effects
         {
             //if we've already ended this hanging effect, we shouldn't end it again.
             if (ended) return false;
-            return triggerRestriction.Evaluate(context);
+            return triggerRestriction.Evaluate(context, secondary: savedContext);
         }
 
         protected abstract void Resolve();

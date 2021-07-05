@@ -1,0 +1,53 @@
+{
+	"cardType":67,
+	"cardName":"Unexpected Shark",
+	"effText":"Waterborn Waterdweller.\nWhen I attack, dispel adjacent spells. ",
+	"effects":[
+		{
+			"blurb":"Unexpected",
+			"triggerData":
+			{
+				"blurb":"Unexpected",
+				"triggerCondition":"Attack",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Friendly","Board","Adjacent to Source","Is Spell"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"jumpTo":1
+				}
+			]	
+		}
+	],
+	"keywords":["Waterdweller"],
+	"PlayRestriction":{
+		"normalRestrictions":["Default Normal Restrictions","Space Must Fit Restriction"],
+		"effectRestrictions":["Default Effect Restrictions","Space Must Fit Restriction"],
+        "spaceRestriction":{
+            "spaceRestrictions":["In AOE Of"],
+            "inAOEOfRestriction":
+            {
+                "cardRestrictions":["Subtypes Include"],
+                "subtypesInclude":["Water"]
+            }
+        }
+	},
+	"n":3,
+	"e":6,
+	"s":5,
+	"w":6,
+	"subtypeText":"Aquatic Fish Monster"
+}

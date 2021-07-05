@@ -1,0 +1,49 @@
+{
+	"cardType":67,
+	"cardName":"Squid Ex Nihilo",
+	"effText":"Waterborn Waterdweller.\nWhen I attack, give me +5 W for that fight.",
+	"effects":[
+		{
+			"blurb":"Unexpected",
+			"triggerData":
+			{
+				"blurb":"Unexpected",
+				"triggerCondition":"Attack",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
+					"wModifier":5,
+					"endCondition":"Battle End",
+					"triggerRestriction":{
+						"triggerRestrictions":["Contexts Stackables Match"]
+					}
+				}
+			]	
+		}
+	],
+	"keywords":["Waterdweller"],
+	"PlayRestriction":{
+		"normalRestrictions":["Default Normal Restrictions","Space Must Fit Restriction"],
+		"effectRestrictions":["Default Effect Restrictions","Space Must Fit Restriction"],
+        "spaceRestriction":{
+            "spaceRestrictions":["In AOE Of"],
+            "inAOEOfRestriction":
+            {
+                "cardRestrictions":["Subtypes Include"],
+                "subtypesInclude":["Water"]
+            }
+        }
+	},
+	"n":3,
+	"e":6,
+	"s":5,
+	"w":6,
+	"subtypeText":"Aquatic Fish Monster"
+}
