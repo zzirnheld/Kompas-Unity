@@ -83,6 +83,10 @@
 		{
 			"keyword":"Charge X:",
 			"reminder":"When I'm activated by a card connected to me by X Conductors..."
+		},
+		{
+			"keyword":"Agile",
+			"reminder":"I can move during enemy turns. (Otherwise, the same rules apply as normal: nothing must be happening, I must have enough N, etc.)"
 		}
 	]
 }

@@ -1,0 +1,29 @@
+{
+	"cardType":67,
+	"cardName":"Leapingfish",
+	"effText":"Agile Waterborn Waterdweller.",
+	"effects":[],
+	"keywords":["Waterdweller"],
+	"PlayRestriction":{
+		"normalRestrictions":["Default Normal Restrictions","Space Must Fit Restriction"],
+		"effectRestrictions":["Default Effect Restrictions","Space Must Fit Restriction"],
+        "spaceRestriction":{
+            "spaceRestrictions":["In AOE Of"],
+            "inAOEOfRestriction":
+            {
+                "cardRestrictions":["Subtypes Include"],
+                "subtypesInclude":["Water"]
+            }
+        }
+	},
+	"MovementRestriction":{
+		"normalRestrictionsToIgnore":[
+			"Is Friendly Turn"
+		]
+	},
+	"n":4,
+	"e":4,
+	"s":6,
+	"w":6,
+	"subtypeText":"Aquatic Fish"
+}
