@@ -1,16 +1,21 @@
 {
 	"cardType":83,
 	"cardName":"Tiwaz",
-	"effText":"Can't be cast normally. When a friendly character attacks, I give them +1 ESW. (This triggers and resolves before damage is dealt.)",
+	"effText":"Can't be cast normally. When a friendly character here attacks, I give them +1 ESW. (This triggers and resolves before damage is dealt.)",
 	"effects":[
 		{
 			"triggerData":
 			{
 				"triggerCondition":"Attack",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Coords Fit Restriction"],
 					"cardRestriction":{
 						"cardRestrictions":["Is Character","Friendly","Board"]
+					},
+					"spaceRestriction":
+					{
+						"mustBeEmpty":false,
+						"spaceRestrictions":["In AOE"]
 					}
 				}
 			},
@@ -30,8 +35,9 @@
 	"PlayRestriction":{
 		"normalRestrictions":["Cannot be Played Normally"]
 	},
-	"c":3,
-	"spellTypes":["Enchant"],
-	"subtypes":["Rune","Enchant"],
-	"subtypeText":"Rune Enchant"
+	"c":2,
+	"spellTypes":["Enchant","Radial"],
+	"subtypes":["Rune","Enchant","Radial"],
+	"subtypeText":"Radial 1 Rune Enchant",
+	"arg":1
 }
