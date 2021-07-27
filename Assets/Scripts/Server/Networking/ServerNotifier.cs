@@ -2,6 +2,7 @@
 using KompasCore.Networking;
 using KompasServer.Effects;
 using KompasServer.GameCore;
+using KompasShared.Effects;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -150,8 +151,8 @@ namespace KompasServer.Networking
         #endregion card stats
 
         #region request targets
-        public void GetCardTarget(string cardName, string targetBlurb, int[] ids, string listRestrictionJson, bool list)
-            => SendPacket(new GetCardTargetPacket(cardName, targetBlurb, ids, listRestrictionJson, list));
+        public void GetCardTarget(string cardName, string targetBlurb, int[] ids, string listRestrictionJson, bool list, TargetType targetType)
+            => SendPacket(new GetCardTargetPacket(cardName, targetBlurb, ids, listRestrictionJson, list, targetType));
 
         public void GetSpaceTarget(string cardName, string targetBlurb, (int, int)[] spaces, (int, int)[] recommendedSpaces)
             => SendPacket(new GetSpaceTargetPacket(cardName, targetBlurb, spaces, recommendedSpaces));

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using KompasCore.Cards;
 using KompasCore.Effects;
+using KompasShared.Effects;
 using UnityEngine;
 
 namespace KompasServer.Effects
@@ -12,6 +13,8 @@ namespace KompasServer.Effects
     {
         public const string NoOrder = "No Order";
         public const string Closest = "Closest";
+
+        public TargetType targetType = TargetType.Normal;
 
         /// <summary>
         /// Restriction that each card must fulfill
@@ -49,7 +52,8 @@ namespace KompasServer.Effects
             int[] targetIds = potentialTargets.Select(c => c.ID).ToArray();
             listRestriction.PrepareForSending(Effect.X);
             Debug.Log($"Potential targets {string.Join(", ", targetIds)}");
-            return await ServerPlayer.serverAwaiter.GetCardListTargets(name, blurb, targetIds, JsonUtility.ToJson(listRestriction));
+            return await ServerPlayer.serverAwaiter
+                .GetCardListTargets(name, blurb, targetIds, JsonUtility.ToJson(listRestriction), targetType);
         }
 
         private IEnumerable<GameCard> GetPossibleTargets()

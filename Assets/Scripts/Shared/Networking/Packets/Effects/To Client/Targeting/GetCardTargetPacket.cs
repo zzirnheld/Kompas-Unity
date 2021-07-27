@@ -3,6 +3,7 @@ using KompasClient.GameCore;
 using KompasCore.Effects;
 using KompasCore.GameCore;
 using UnityEngine;
+using KompasShared.Effects;
 
 namespace KompasCore.Networking
 {
@@ -13,19 +14,23 @@ namespace KompasCore.Networking
         public int[] potentialTargetIds;
         public string listRestrictionJson;
         public bool list;
+        public TargetType targetType;
 
         public GetCardTargetPacket() : base(GetCardTarget) { }
 
-        public GetCardTargetPacket(string sourceCardName, string targetBlurb, int[] potentialTargetIds, string listRestrictionJson, bool list) : this()
+        public GetCardTargetPacket(string sourceCardName, string targetBlurb, int[] potentialTargetIds, 
+            string listRestrictionJson, bool list, TargetType targetType) : this()
         {
             this.sourceCardName = sourceCardName;
             this.targetBlurb = targetBlurb;
             this.potentialTargetIds = potentialTargetIds;
             this.listRestrictionJson = listRestrictionJson;
             this.list = list;
+            this.targetType = targetType;
         }
 
-        public override Packet Copy() => new GetCardTargetPacket(sourceCardName, targetBlurb, potentialTargetIds, listRestrictionJson, list);
+        public override Packet Copy() 
+            => new GetCardTargetPacket(sourceCardName, targetBlurb, potentialTargetIds, listRestrictionJson, list, targetType);
     }
 }
 

@@ -2,6 +2,7 @@
 using KompasCore.Networking;
 using KompasServer.Effects;
 using KompasServer.Networking;
+using KompasShared.Effects;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -160,9 +161,9 @@ namespace KompasServer.Networking {
         /// <returns>The card the person chose and false if they chose a target;<br></br>
         /// null and true if they declined to choose a target</returns>
         public async Task<GameCard> GetCardTarget
-            (string sourceCardName, string blurb, int[] ids, string listRestrictionJson)
+            (string sourceCardName, string blurb, int[] ids, string listRestrictionJson, TargetType targetType)
         {
-            serverNotifier.GetCardTarget(sourceCardName, blurb, ids, listRestrictionJson, list: false);
+            serverNotifier.GetCardTarget(sourceCardName, blurb, ids, listRestrictionJson, list: false, targetType: targetType);
             while (true)
             {
                 lock (CardTargetLock)
@@ -194,9 +195,9 @@ namespace KompasServer.Networking {
         /// <returns>The cards the person chose and false if they chose targets;<br></br>
         /// null and true if they declined to choose targets</returns>
         public async Task<IEnumerable<GameCard>> GetCardListTargets
-            (string sourceCardName, string blurb, int[] ids, string listRestructionJson)
+            (string sourceCardName, string blurb, int[] ids, string listRestructionJson, TargetType targetType)
         {
-            serverNotifier.GetCardTarget(sourceCardName, blurb, ids, listRestructionJson, list: true);
+            serverNotifier.GetCardTarget(sourceCardName, blurb, ids, listRestructionJson, list: true, targetType: targetType);
             while (true)
             {
                 //Debug.Log($"Checking if list present yet: {CardListTargets != null}");

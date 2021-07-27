@@ -1,5 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
+using KompasShared.Effects;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -10,8 +11,7 @@ namespace KompasServer.Effects
     {
         public CardRestriction cardRestriction;
 
-        public enum TargetType { Normal = 0, Debuff = 1 }
-        public TargetType targetType;
+        public TargetType targetType = TargetType.Normal;
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
@@ -28,7 +28,7 @@ namespace KompasServer.Effects
         protected virtual async Task<GameCard> GetTargets(int[] potentialTargetIds)
         {
             Debug.Log($"Asking for card target among ids {string.Join(", ", potentialTargetIds)}");
-            return await ServerPlayer.serverAwaiter.GetCardTarget(Source.CardName, cardRestriction.blurb, potentialTargetIds, null);
+            return await ServerPlayer.serverAwaiter.GetCardTarget(Source.CardName, cardRestriction.blurb, potentialTargetIds, null, targetType);
         }
 
         public override async Task<ResolutionInfo> Resolve()
