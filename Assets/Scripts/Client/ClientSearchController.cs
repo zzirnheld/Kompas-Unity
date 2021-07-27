@@ -105,8 +105,8 @@ namespace KompasClient.GameCore
             if (CurrSearchData.Value.searched.Contains(nextTarget))
             {
                 RemoveTarget(nextTarget);
-                nextTarget.cardCtrl.ShowValidTarget();
-                nextTarget.cardCtrl.ShowCurrentTarget(false);
+                nextTarget.cardCtrl.ShowValidTarget(clientGame.CurrentTargetType, valid: true);
+                nextTarget.cardCtrl.ShowCurrentTarget(current: false);
             }
             //otherwise, deselect
             else AddTarget(nextTarget);
@@ -133,7 +133,7 @@ namespace KompasClient.GameCore
 
             CurrSearchData.Value.searched.Add(nextTarget);
             nextTarget.cardCtrl.ShowCurrentTarget();
-            nextTarget.cardCtrl.ShowValidTarget(false);
+            nextTarget.cardCtrl.ShowValidTarget(clientGame.CurrentTargetType, valid: false);
             // Debug.Log($"Added {nextTarget.CardName}, targets are now {string.Join(",", CurrSearchData.Value.searched.Select(c => c.CardName))}");
 
             var listRestriction = CurrSearchData.Value.listRestriction;

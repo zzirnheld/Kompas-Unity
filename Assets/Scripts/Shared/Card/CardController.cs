@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using KompasCore.UI;
 using UnityEngine.UI;
+using KompasShared.Effects;
 
 namespace KompasCore.Cards
 {
@@ -15,6 +16,9 @@ namespace KompasCore.Cards
         public const float SmallUnzoomedTextFontSize = 22f;
 
         public GameCard card;
+
+        public Material normalCardTargetMaterial;
+        public Material debuffCardTargetMaterial;
 
         public CardAOEController aoeController;
 
@@ -303,7 +307,23 @@ namespace KompasCore.Cards
             SetImage(card.CardName, zoomed);
         }
 
-        public void ShowValidTarget(bool valid = true) => validTargetObject.SetActive(valid);
+        public void ShowValidTarget(TargetType targetType, bool valid = true)
+        {
+            var renderer = validTargetObject.GetComponent<Renderer>();
+
+            switch (targetType)
+            {
+                case TargetType.Normal:
+                    renderer.material = normalCardTargetMaterial;
+                    break;
+                case TargetType.Debuff:
+                    renderer.material = debuffCardTargetMaterial;
+                    break;
+                default:
+                    throw new System.ArgumentException($"Invalid target type {targetType} to display material for");
+            }
+            validTargetObject.SetActive(valid);
+        }
 
         public void ShowCurrentTarget(bool current = true) => currentTargetObject.SetActive(current);
 

@@ -2,6 +2,7 @@
 using KompasCore.Effects;
 using KompasCore.GameCore;
 using KompasCore.Networking;
+using KompasShared.Effects;
 using UnityEngine;
 
 namespace KompasCore.Networking
@@ -42,7 +43,7 @@ namespace KompasClient.Networking
                 Debug.LogError($"Error loading list restriction from json: {listRestrictionJson}");
             }
 
-            clientGame.SetPotentialTargets(cardIds, listRestriction);
+            clientGame.SetPotentialTargets(cardIds, listRestriction, TargetType.HandSize);
             //TODO make the blurb plural if asking for multiple targets
             clientGame.clientUICtrl.SetCurrState("Reshuffle Down to Hand Size");
         }

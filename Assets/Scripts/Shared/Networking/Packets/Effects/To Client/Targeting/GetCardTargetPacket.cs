@@ -55,7 +55,7 @@ namespace KompasClient.Networking
                 Debug.LogError($"Error loading list restriction from json: {listRestrictionJson}");
             }
 
-            clientGame.SetPotentialTargets(potentialTargetIds, listRestriction);
+            clientGame.SetPotentialTargets(potentialTargetIds, listRestriction, targetType);
             //TODO make the blurb plural if asking for multiple targets
             clientGame.clientUICtrl.SetCurrState($"Choose {sourceCardName}'s Card Target", targetBlurb);
         }

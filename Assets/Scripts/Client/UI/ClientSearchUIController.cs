@@ -1,5 +1,6 @@
 ﻿using KompasClient.GameCore;
 using KompasCore.Cards;
+using KompasShared.Effects;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -150,7 +151,7 @@ namespace KompasClient.UI
             bool currentTgt = CurrSearchData.searched.Contains(toShow);
             alreadySelectedText.SetActive(currentTgt);
             toShow.cardCtrl.ShowCurrentTarget(currentTgt);
-            toShow.cardCtrl.ShowValidTarget(!currentTgt);
+            toShow.cardCtrl.ShowValidTarget(ClientGame.CurrentTargetType, !currentTgt);
             nextSearchImage.sprite = CurrSearchData.toSearch[NextSearchIndex].simpleSprite;
             prevSearchImage.sprite = CurrSearchData.toSearch[PrevSearchIndex].simpleSprite;
 

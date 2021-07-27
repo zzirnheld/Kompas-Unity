@@ -5,6 +5,7 @@ using KompasClient.UI;
 using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasCore.GameCore;
+using KompasShared.Effects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,6 +54,7 @@ namespace KompasClient.GameCore
 
         //targeting
         public int targetsWanted;
+        public TargetType CurrentTargetType { get; private set; }
         private GameCard[] currentPotentialTargets;
         public GameCard[] CurrentPotentialTargets 
         { 
@@ -198,11 +200,11 @@ namespace KompasClient.GameCore
         /// <summary>
         /// Sets up the client for the player to select targets
         /// </summary>
-        public void SetPotentialTargets(int[] ids, ListRestriction listRestriction)
+        public void SetPotentialTargets(int[] ids, ListRestriction listRestriction, TargetType targetType)
         {
+            CurrentTargetType = targetType;
             CurrentPotentialTargets = ids?.Select(i => GetCardWithID(i)).Where(c => c != null).ToArray();
             searchCtrl.StartSearch(CurrentPotentialTargets, listRestriction);
-
         }
 
         public void ClearPotentialTargets()
@@ -226,7 +228,7 @@ namespace KompasClient.GameCore
         {
             if (CurrentPotentialTargets != null)
             {
-                foreach (var card in CurrentPotentialTargets) card.cardCtrl.ShowValidTarget();
+                foreach (var card in CurrentPotentialTargets) card.cardCtrl.ShowValidTarget(CurrentTargetType);
             }
             else ShowNoTargets();
         }

@@ -1876,6 +1876,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   card: {fileID: 5887324738723848399}
+  normalCardTargetMaterial: {fileID: 2100000, guid: 6eec4b114bd8eef479e4f4bed4b9e404,
+    type: 2}
+  debuffCardTargetMaterial: {fileID: 2100000, guid: 0e9f471106099ab4b8be1633a3193f67,
+    type: 2}
   aoeController: {fileID: 3800830204807716009}
   zoomedCharFrame: {fileID: 4269587110842798765}
   zoomedAllFrame: {fileID: 7187772228533361689}
@@ -1934,6 +1938,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   card: {fileID: 4888445485465765321}
+  normalCardTargetMaterial: {fileID: 2100000, guid: 6eec4b114bd8eef479e4f4bed4b9e404,
+    type: 2}
+  debuffCardTargetMaterial: {fileID: 2100000, guid: 0e9f471106099ab4b8be1633a3193f67,
+    type: 2}
   aoeController: {fileID: 3800830204807716009}
   zoomedCharFrame: {fileID: 4269587110842798765}
   zoomedAllFrame: {fileID: 7187772228533361689}
