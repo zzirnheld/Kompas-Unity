@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Squid Ex Nihilo",
-	"effText":"Waterborn Waterdweller.\nWhen I attack, give me +3 W.",
+	"effText":"Waterborn Waterdweller.\nWhen I attack, give me +5 W until the fight ends.",
 	"effects":[
 		{
 			"blurb":"Ex Nihilo",
@@ -42,7 +42,7 @@
         }
 	},
 	"n":3,
-	"e":3,
+	"e":4,
 	"s":4,
 	"w":4,
 	"subtypeText":"Aquatic Fish Monster"
