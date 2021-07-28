@@ -39,5 +39,5 @@
 	"spellTypes":["Enchant","Radial"],
 	"subtypes":["Rune","Enchant","Radial"],
 	"subtypeText":"Radial 1 Rune Enchant",
-	"arg":1
+	"radius":1
 }

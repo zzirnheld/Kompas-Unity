@@ -87,6 +87,14 @@
 		{
 			"keyword":"Agile",
 			"reminder":"I can move during enemy turns. (Otherwise, the same rules apply as normal: nothing must be happening, I must have enough N, etc.)"
+		},
+		{
+			"keyword":"Waterborn",
+			"reminder":"Must be played in Water."
+		},
+		{
+			"keyword":"Waterdweller",
+			"reminder":"When nothing is happening, if I'm not in Water, kill me."
 		}
 	]
 }
