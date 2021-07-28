@@ -12,7 +12,7 @@
                 "triggerRestriction":{
                     "triggerRestrictions":["This Card Fits Restriction"],
 					"cardRestriction":{
-						"cardRestrictions":["Not In AOE of Card Fitting Restriction"],
+						"cardRestrictions":["Board","Not In AOE of Card Fitting Restriction"],
                         "inAOEOfRestriction":{
                             "cardRestrictions":["Subtypes Include"],
                             "subtypesInclude":["Water"]
