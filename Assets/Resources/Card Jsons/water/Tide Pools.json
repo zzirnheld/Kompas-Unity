@@ -10,11 +10,14 @@
                 "blurb":"Dry Up",
                 "triggerCondition":"Turn Start",
                 "triggerRestriction":{
-                    "triggerRestrictions":["Not In AOE of Card Fitting Restriction"],
-                    "inAOEOfRestriction":{
-                        "cardRestrictions":["Subtypes Include"],
-                        "subtypesInclude":["Water"]
-                    }
+                    "triggerRestrictions":["This Card Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Not In AOE of Card Fitting Restriction"],
+                        "inAOEOfRestriction":{
+                            "cardRestrictions":["Subtypes Include"],
+                            "subtypesInclude":["Water"]
+                        }
+					}
                 }
             },
             "subeffects":[
