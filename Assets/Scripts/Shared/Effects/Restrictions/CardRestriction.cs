@@ -345,7 +345,7 @@ namespace KompasCore.Effects
                 case InAOEOfCardFittingRestriction: 
                     return Source.Game.Cards.Any(c => c.CardInAOE(potentialTarget) && inAOEOfRestriction.Evaluate(c));
                 case NotInAOEOfCardFittingRestriction:
-                    return !Source.Game.Cards.Any(c => c.CardInAOE(potentialTarget) || inAOEOfRestriction.Evaluate(c));
+                    return !Source.Game.Cards.Any(c => c.CardInAOE(potentialTarget) && inAOEOfRestriction.Evaluate(c));
 
                 case WithinCSpacesOfSource: return potentialTarget.WithinSpaces(cSpaces, Source);
                 case WithinCSpacesOfTarget: return potentialTarget.WithinSpaces(cSpaces, Subeffect.Target);
