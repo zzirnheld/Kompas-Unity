@@ -7,11 +7,11 @@
 		"triggerRestriction":{
 			"triggerRestrictions":["Friendly Turn","This Card Fits Restriction"],
 			"cardRestriction":{
-				"cardRestrictions":["Not Avatar","Not In AOE of Card Fitting Restriction"]
-			},
-			"inAOEOfRestriction":{
-				"cardRestrictions":["Subtypes Include"],
-                "subtypesInclude":["Water"]
+				"cardRestrictions":["Not Avatar","Not In AOE of Card Fitting Restriction"],
+				"inAOEOfRestriction":{
+					"cardRestrictions":["Subtypes Include"],
+					"subtypesInclude":["Water"]
+				}
 			}
 		}
 	},

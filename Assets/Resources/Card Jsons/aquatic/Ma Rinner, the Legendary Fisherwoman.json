@@ -23,7 +23,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition":"Target Violates Restriction",
+					"condition":"Target Fits Restriction",
 					"cardRestriction":
 					{
 						"cardRestrictions":["In AOE of Card Fitting Restriction"],
