@@ -27,7 +27,7 @@
 					"cardRestriction":
 					{
 						"cardRestrictions":["In AOE of Card Fitting Restriction"],
-						"cardRestriction":{
+						"inAOEOfRestriction":{
 							"cardRestrictions":["Subtypes Include"],
 							"subtypesInclude":["Water"]
 						}
