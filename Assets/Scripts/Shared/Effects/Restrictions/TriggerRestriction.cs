@@ -115,7 +115,11 @@ namespace KompasCore.Effects
                 case TriggerersAugmentedCardFitsRestriction: return cardRestriction.Evaluate(context.CardInfo.AugmentedCard);
                 case StackableSourceFitsRestriction: return sourceRestriction.Evaluate(context.Stackable?.Source);
 
-                case ContextsStackablesMatch: return context.Stackable == secondary?.Stackable;
+                case ContextsStackablesMatch:
+                    Debug.Log($"Primary stackable: {context.Stackable}");
+                    Debug.Log($"Secondary stackable: {secondary?.Stackable}");
+                    Debug.Log($"Equal? {context.Stackable == secondary?.Stackable}");
+                    return context.Stackable == secondary?.Stackable;
 
                 //other non-card triggering things
                 case CoordsFitRestriction:    return context.Space != null && spaceRestriction.Evaluate(context.Space.Value);
@@ -164,7 +168,7 @@ namespace KompasCore.Effects
 
             try
             {
-                return triggerRestrictions.All(r => RestrictionValid(r, context));
+                return triggerRestrictions.All(r => RestrictionValid(r, context, secondary: secondary));
             }
             catch (NullReferenceException nullref)
             {

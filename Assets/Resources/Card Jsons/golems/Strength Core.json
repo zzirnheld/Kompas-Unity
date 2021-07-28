@@ -25,7 +25,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
-					"wBuff":4,
+					"wModifier":4,
 					"endCondition":"Augment Detached",
 					"triggerRestriction":{
 						"triggerRestrictions":["This Card Triggered"]

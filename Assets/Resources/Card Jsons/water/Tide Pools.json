@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Tide Pools",
-	"effText":"When turns start, if I'm not in Water, rehand me. (This checks whether it should trigger before Vanishing cards vanish.)",
+	"effText":"When turns start, if I'm not in distinct Water, rehand me. (This checks whether it should trigger before Vanishing cards vanish.)",
 	"effects":[
         {
             "blurb":"Dry Up",
@@ -14,7 +14,7 @@
 					"cardRestriction":{
 						"cardRestrictions":["Board","Not In AOE of Card Fitting Restriction"],
                         "inAOEOfRestriction":{
-                            "cardRestrictions":["Subtypes Include"],
+                            "cardRestrictions":["Subtypes Include","Distinct Name from Source"],
                             "subtypesInclude":["Water"]
                         }
 					}

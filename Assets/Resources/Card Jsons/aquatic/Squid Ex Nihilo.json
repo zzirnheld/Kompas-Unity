@@ -18,8 +18,12 @@
 					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wMod":3
+					"$type":"KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
+					"wModifier":5,
+					"endCondition":"Battle End",
+					"triggerRestriction":{
+						"triggerRestrictions":["Contexts Stackables Match"]
+					}
 				}
 			]	
 		}
