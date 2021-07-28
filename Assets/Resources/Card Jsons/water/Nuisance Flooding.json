@@ -3,7 +3,7 @@
 	"cardName":"Nuisance Flooding",
 	"effText":"(Vanishes after 3 turns.)",
 	"effects":[],
-	"c":3,
+	"c":2,
 	"spellTypes":["Vanishing","Radial"],
 	"duration":3,
     "radius":2,

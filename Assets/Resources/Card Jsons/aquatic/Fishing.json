@@ -1,0 +1,62 @@
+{
+	"cardType":83,
+	"cardName":"Fishing",
+	"effText":"Draw 3. Hand->annihilate an Aquatic or Water. If you can't, annihilate your hand.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xModifier":3
+				},
+				{
+					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"jumpTo":6
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"blurb":"Ethereal for Unfinding to discard",
+						"cardRestrictions":["Friendly","Hand","Subtypes Include"],
+						"subtypesInclude":["Ethereal"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Friendly","Hand"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"jumpTo":7
+				}
+			]	
+		}
+	],
+	"c":1,
+	"spellTypes":["Simple"],
+	"subtypes":["Aquatic","Simple"],
+	"subtypeText":"Aquatic Simple"
+}
