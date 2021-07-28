@@ -5,9 +5,9 @@
 		"blurb":"Waterdweller",
 		"triggerCondition":"Stack End",
 		"triggerRestriction":{
-			"triggerRestrictions":["Friendly Turn","Not In AOE of Card Fitting Restriction","This Card Fits Restriction"],
+			"triggerRestrictions":["Friendly Turn","This Card Fits Restriction"],
 			"cardRestriction":{
-				"cardRestrictions":["Not Avatar"]
+				"cardRestrictions":["Not Avatar","Not In AOE of Card Fitting Restriction"]
 			},
 			"inAOEOfRestriction":{
 				"cardRestrictions":["Subtypes Include"],

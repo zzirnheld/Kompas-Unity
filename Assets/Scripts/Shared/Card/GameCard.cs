@@ -301,7 +301,8 @@ namespace KompasCore.Cards
             && card.Location == CardLocation.Field && Position.AdjacentTo(card.Position);
         public bool IsAdjacentTo(Space space) => Location == CardLocation.Field && Position.AdjacentTo(space);
 
-        public bool SpaceInAOE(Space space) => SpellSubtypes.Any(s => s == CardBase.RadialSubtype) && DistanceTo(space) <= Radius;
+        public bool SpaceInAOE(Space space) 
+            => SpellSubtypes != null && SpellSubtypes.Any(s => s == CardBase.RadialSubtype) && DistanceTo(space) <= Radius;
         public bool CardInAOE(IGameCardInfo c) => SpaceInAOE(c.Position);
 
         public bool SameColumn(Space space) => Location == CardLocation.Field && Position.SameColumn(space);
