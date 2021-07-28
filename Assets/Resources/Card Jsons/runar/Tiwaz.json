@@ -10,12 +10,7 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Coords Fit Restriction"],
 					"cardRestriction":{
-						"cardRestrictions":["Is Character","Friendly","Board"]
-					},
-					"spaceRestriction":
-					{
-						"mustBeEmpty":false,
-						"spaceRestrictions":["In AOE"]
+						"cardRestrictions":["Is Character","Friendly","Board","In AOE"]
 					}
 				}
 			},

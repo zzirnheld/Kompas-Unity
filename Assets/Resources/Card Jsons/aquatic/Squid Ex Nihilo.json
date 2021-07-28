@@ -1,13 +1,13 @@
 {
 	"cardType":67,
 	"cardName":"Squid Ex Nihilo",
-	"effText":"Waterborn Waterdweller.\nWhen I attack, give me +5 W for that fight.",
+	"effText":"Waterborn Waterdweller.\nWhen I attack, give me +3 W.",
 	"effects":[
 		{
-			"blurb":"Unexpected",
+			"blurb":"Ex Nihilo",
 			"triggerData":
 			{
-				"blurb":"Unexpected",
+				"blurb":"Ex Nihilo",
 				"triggerCondition":"Attack",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
@@ -18,12 +18,8 @@
 					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
-					"wModifier":5,
-					"endCondition":"Battle End",
-					"triggerRestriction":{
-						"triggerRestrictions":["Contexts Stackables Match"]
-					}
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wMod":3
 				}
 			]	
 		}
