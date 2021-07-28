@@ -57,7 +57,7 @@ namespace KompasCore.Effects
         public int adjacencyLimit;
         public CardRestriction connectednessRestriction;
         public CardRestriction hereFitsRestriction;
-        public CardRestriction inAOERestriction;
+        public CardRestriction inAOEOfRestriction;
 
         public XRestriction distanceXRestriction;
         public XRestriction numberOfCardsInAOEOfRestriction;
@@ -82,7 +82,7 @@ namespace KompasCore.Effects
             connectednessRestriction?.Initialize(source, effect);
             limitAdjacencyRestriction?.Initialize(source, effect);
             hereFitsRestriction?.Initialize(source, effect);
-            inAOERestriction?.Initialize(source, effect);
+            inAOEOfRestriction?.Initialize(source, effect);
             distanceXRestriction?.Initialize(source);
             numberOfCardsInAOEOfRestriction?.Initialize(source);
 
@@ -125,11 +125,11 @@ namespace KompasCore.Effects
                 case InAOE:                     return Source.SpaceInAOE(space);
                 case NotInAOE:                  return !Source.SpaceInAOE(space);
                 case InTargetsAOE:              return target.SpaceInAOE(space);
-                case InAOEOf:                   return Source.Game.Cards.Any(c => c.SpaceInAOE(space) && inAOERestriction.Evaluate(c));
+                case InAOEOf:                   return Source.Game.Cards.Any(c => c.SpaceInAOE(space) && inAOEOfRestriction.Evaluate(c));
                 case InAOEOfNumberFittingRestriction:
                     //return numberOfCardsInAOEOfRestriction.Evaluate(Source.Game.Cards.Count(c => c.SpaceInAOE((x, y)) && inAOERestriction.Evaluate(c)));
-                    var count = Source.Game.Cards.Count(c => c.SpaceInAOE(space) && inAOERestriction.Evaluate(c));
-                    Debug.Log($"{space} is in the aoe of {count} cards fitting the restriction {inAOERestriction}");
+                    var count = Source.Game.Cards.Count(c => c.SpaceInAOE(space) && inAOEOfRestriction.Evaluate(c));
+                    Debug.Log($"{space} is in the aoe of {count} cards fitting the restriction {inAOEOfRestriction}");
                     return numberOfCardsInAOEOfRestriction.Evaluate(count);
                 case LimitAdjacentCardsFittingRestriction:
                     return Source.Game.boardCtrl.CardsAdjacentTo(space).Where(c => limitAdjacencyRestriction.Evaluate(c)).Count() <= adjacencyLimit;
