@@ -26,7 +26,8 @@
 					{
 						"blurb":"Summoned character for Something Cannon to blast for -3 E",
 						"cardRestrictions":["Is Character","Board","Summoned"]
-					}
+					},
+					"targetType":1
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
