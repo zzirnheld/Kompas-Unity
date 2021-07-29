@@ -1,7 +1,7 @@
 {
 	"cardType":67,
-	"cardName":"Leapingfish",
-	"effText":"Agile Waterborn Waterdweller.",
+	"cardName":"Big Tuna",
+	"effText":"Waterborn Waterdweller.",
 	"effects":[],
 	"keywords":["Waterdweller"],
 	"PlayRestriction":{
@@ -16,14 +16,9 @@
             }
         }
 	},
-	"MovementRestriction":{
-		"normalRestrictionsToIgnore":[
-			"Is Friendly Turn"
-		]
-	},
-	"n":4,
-	"e":3,
-	"s":4,
-	"w":6,
-	"subtypeText":"Aquatic Fish"
+	"n":1,
+	"e":4,
+	"s":1,
+	"w":1,
+	"subtypeText":"Aquatic Fish Monster"
 }

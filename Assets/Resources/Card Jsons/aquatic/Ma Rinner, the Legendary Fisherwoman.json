@@ -37,7 +37,7 @@
 					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"spell for Ma Rinner to reshuffle",
+						"blurb":"cards for Ma Rinner to topdeck",
 						"cardRestrictions":["Friendly","Hand"]
 					},
 					"listRestriction":{

@@ -1,7 +1,7 @@
 {
 	"cardType":67,
-	"cardName":"Leapingfish",
-	"effText":"Agile Waterborn Waterdweller.",
+	"cardName":"Sawfish",
+	"effText":"Waterborn Waterdweller.",
 	"effects":[],
 	"keywords":["Waterdweller"],
 	"PlayRestriction":{
@@ -16,14 +16,9 @@
             }
         }
 	},
-	"MovementRestriction":{
-		"normalRestrictionsToIgnore":[
-			"Is Friendly Turn"
-		]
-	},
-	"n":4,
-	"e":3,
-	"s":4,
-	"w":6,
-	"subtypeText":"Aquatic Fish"
+	"n":2,
+	"e":2,
+	"s":2,
+	"w":4,
+	"subtypeText":"Aquatic Fish Monster"
 }

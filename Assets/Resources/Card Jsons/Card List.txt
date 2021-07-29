@@ -1,7 +1,11 @@
+aquatic/Big Thuan
+aquatic/Changing Tides
+aquatic/Fishing
 aquatic/Ma Rinner, the Legendary Fisherwoman
 aquatic/Heptastar
 aquatic/Expected Shark
 aquatic/Unexpected Shark
+aquatic/Sawfish
 aquatic/Squid Ex Nihilo
 aquatic/Leapingfish
 Bind the Aggression
@@ -368,6 +372,7 @@ water/Nuisance Flooding
 water/Hyper Tide
 water/Placid Waters
 water/Tide Pools
+water/Hungry Tide
 wanderers/At Home in the World
 wanderers/Leper
 wanderers/Leyseer
