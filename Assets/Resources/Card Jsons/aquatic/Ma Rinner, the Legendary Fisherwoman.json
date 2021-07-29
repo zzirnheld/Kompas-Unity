@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Ma Rinner, the Legendary Fisherwoman",
-	"effText":"Waterborn.\nWhen turns start, draw 2. Then, unless I'm in Water, hand->topdeck 3.",
+	"effText":"Waterborn.\nWhen turns start, draw 2. Then, unless I'm in Water, hand->bottomdeck 3.",
 	"effects":[
 		{
             "blurb":"Fish",
@@ -37,7 +37,7 @@
 					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"cards for Ma Rinner to topdeck",
+						"blurb":"cards for Ma Rinner to bottomdeck",
 						"cardRestrictions":["Friendly","Hand"]
 					},
 					"listRestriction":{
@@ -47,15 +47,15 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.TopdeckSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.BottomdeckSubeffect, Assembly-CSharp",
                     "targetIndex":-1
 				},
 				{
-					"$type":"KompasServer.Effects.TopdeckSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.BottomdeckSubeffect, Assembly-CSharp",
                     "targetIndex":-2
 				},
 				{
-					"$type":"KompasServer.Effects.TopdeckSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.BottomdeckSubeffect, Assembly-CSharp",
                     "targetIndex":-3
 				}
 			]	
