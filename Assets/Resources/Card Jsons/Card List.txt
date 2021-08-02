@@ -9,6 +9,8 @@ aquatic/Unexpected Shark
 aquatic/Sawfish
 aquatic/Squid Ex Nihilo
 aquatic/Leapingfish
+aquatic/Kraken
+aquatic/Dragon Turtle
 aquatic/Shifting Tides
 aquatic/Sacrifice to the Old Sea Gods
 aquatic/Here Be Monsters
