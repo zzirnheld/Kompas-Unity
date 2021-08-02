@@ -1,0 +1,63 @@
+{
+	"cardType":83,
+	"cardName":"Here Be Monsters",
+	"effText":"Set X to the total cost of Water I'm in. Annihilate me and deck->summon an S <= X Aquatic character where I was.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount":"Cards Fitting Restriction",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Subtypes Include","Source in This' AOE"],
+						"subtypesInclude":["Water"]
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Monster here",
+						"cardRestrictions":["Is Character","Friendly","Deck","Can Be Played","Subtypes Include","Card Value Fits X Restriction"],
+						"subtypesInclude":["Aquatic"],
+						"cardValue":{
+							"value":"S"
+						},
+						"xRestriction":{
+							"xRestrictions":["<=X"]
+						}
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+	"c":1,
+	"spellTypes":["Simple"],
+	"subtypes":["Aquatic","Simple"],
+	"subtypeText":"Aquatic Simple"
+}

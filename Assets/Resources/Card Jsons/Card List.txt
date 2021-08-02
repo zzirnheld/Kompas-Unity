@@ -11,6 +11,7 @@ aquatic/Squid Ex Nihilo
 aquatic/Leapingfish
 aquatic/Shifting Tides
 aquatic/Sacrifice to the Old Sea Gods
+aquatic/Here Be Monsters
 Bind the Aggression
 Binding Site
 Bound Offering
