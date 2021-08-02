@@ -1,0 +1,69 @@
+{
+	"cardType":83,
+	"cardName":"Wave",
+	"effText":"Choose a Water spell. Remember all characters in it. Move the Water through empty spaces in Water. Move the characters to spaces in that Water.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where will the wave crash",
+						"spaceRestrictions":["Can Move Target to This Space","Connected to Target by Spaces Fitting Restriction"],
+                        "spaceConnectednessRestriction":
+                        {
+                            "spaceRestrictions":["In AOE Of"],
+                            "inAOEOfRestriction":{
+                                "cardRestrictions":["Subtypes Include"],
+                                "subtypesInclude":["Water"]
+                            }
+                        }
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["In AOE"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp",
+                    "targetIndex":0
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"spaceRestrictions":["In Target's AOE"]
+					},
+                    "targetIndex":0
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"remainingTargets":1,
+					"jumpTo":4
+				}
+			]	
+		}
+	],
+	"c":1,
+	"spellTypes":["Simple"],
+	"subtypes":["Aquatic","Simple"],
+	"subtypeText":"Aquatic Simple"
+}
