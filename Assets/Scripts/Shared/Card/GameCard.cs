@@ -368,7 +368,7 @@ namespace KompasCore.Cards
         public bool InCorner() => (Position.x == 0 || Position.x == 6) && (Position.y == 0 || Position.y == 6);
 
         public int ShortestPath(Space space, Func<GameCard, bool> throughPredicate) 
-            => Game.boardCtrl.ShortestPath(this, space, throughPredicate);
+            => Game.boardCtrl.ShortestPath(Position, space, throughPredicate);
         #endregion distance/adjacency
 
         public void PutBack()

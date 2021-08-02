@@ -214,7 +214,7 @@ namespace KompasCore.Cards
         }
 
         public int ShortestPath(Space space, Func<GameCard, bool> throughPredicate)
-            => Card.Game.boardCtrl.ShortestPath(Card, space, throughPredicate);
+            => Card.Game.boardCtrl.ShortestPath(Card.Position, space, throughPredicate);
         #endregion distance/adjacency
     }
 }

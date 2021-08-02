@@ -2,6 +2,7 @@ aquatic/Big Tuna
 aquatic/Changing Tides
 aquatic/Fishing
 aquatic/Ma Rinner, the Legendary Fisherwoman
+aquatic/Seigh Lorre, the Legendary Fisherman
 aquatic/Heptastar
 aquatic/Expected Shark
 aquatic/Unexpected Shark

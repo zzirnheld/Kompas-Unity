@@ -112,16 +112,14 @@ namespace KompasCore.GameCore
         /// <param name="y">The y coordinate you want a distance to</param>
         /// <param name="throughPredicate">What all cards you go through must fit</param>
         /// <returns></returns>
-        public int ShortestPath(GameCard src, Space space, Func<GameCard, bool> throughPredicate)
+        public int ShortestPath(Space src, Space space, Func<Space, bool> throughPredicate)
         {
-            Debug.Log($"Finding shortest path from {src.CardName} to {space}");
-
             //record shortest distances to cards
-            var dist = new Dictionary<GameCard, int>();
+            var dist = new Dictionary<Space, int>();
             //and if you've seen them
-            var seen = new HashSet<GameCard>();
+            var seen = new HashSet<Space>();
             //the queue of nodes to process next. things should only go on here once, the first time they're seen
-            var queue = new Queue<GameCard>();
+            var queue = new Queue<Space>();
 
             //set up the structures with the source node
             queue.Enqueue(src);
@@ -133,7 +131,7 @@ namespace KompasCore.GameCore
             {
                 //consider the next node's adjacent cards
                 var next = queue.Dequeue();
-                foreach (var card in next.AdjacentCards.Where(throughPredicate))
+                foreach (var card in space.AdjacentSpaces.Where(throughPredicate))
                 {
                     //if that adjacent card is never seen before, initialize its distance and add it to the structures
                     if (!seen.Contains(card))
@@ -150,15 +148,18 @@ namespace KompasCore.GameCore
             //then, go through the list of cards adjacent to our target location
             //choose the card that's closest to our source
             int min = 50;
-            foreach (var card in CardsAdjacentTo(space))
+            foreach (var s in space.AdjacentSpaces)
             {
-                if (dist.ContainsKey(card) && dist[card] < min) min = dist[card];
+                if (dist.ContainsKey(s) && dist[s] < min) min = dist[s];
             }
             return min;
         }
 
+        public int ShortestPath(Space source, Space end, Func<GameCard, bool> throughPredicate)
+            => ShortestPath(source, end, s => throughPredicate(GetCardAt(s)));
+
         public int ShortestPath(GameCard source, Space space, CardRestriction restriction)
-            => ShortestPath(source, space, restriction.Evaluate);
+            => ShortestPath(source.Position, space, restriction.Evaluate);
 
         private IEnumerable<Space> AdjacentEmptySpacesTo(Space space)
         {
