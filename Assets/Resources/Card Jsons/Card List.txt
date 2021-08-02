@@ -10,6 +10,7 @@ aquatic/Sawfish
 aquatic/Squid Ex Nihilo
 aquatic/Leapingfish
 aquatic/Shifting Tides
+aquatic/Sacrifice to the Old Sea Gods
 Bind the Aggression
 Binding Site
 Bound Offering

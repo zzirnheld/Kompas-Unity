@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Fishing",
-	"effText":"Draw 3. Hand->annihilate an Aquatic or Water. If you can't, annihilate your hand.",
+	"effText":"Draw 3. Hand->annihilate an Aquatic card. If you can't, annihilate your hand.",
 	"effects":[
 		{
 			"triggerData":
@@ -23,9 +23,9 @@
 				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":{
-						"blurb":"Ethereal for Unfinding to discard",
+						"blurb":"Aquatic for Fishing to annihilate",
 						"cardRestrictions":["Friendly","Hand","Subtypes Include"],
-						"subtypesInclude":["Ethereal"]
+						"subtypesInclude":["Aquatic"]
 					}
 				},
 				{
