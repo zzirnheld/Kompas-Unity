@@ -486,8 +486,12 @@ namespace KompasCore.Cards
         public virtual void SetNegated(bool negated, IStackable stackSrc = null) => Negated = negated;
         public virtual void SetActivated(bool activated, IStackable stackSrc = null) => Activated = activated;
 
-        public virtual void SetSpacesMoved(int spacesMoved, bool fromReset = false) => this.SpacesMoved = spacesMoved;
-        public virtual void SetAttacksThisTurn(int attacksThisTurn, bool fromReset = false) => this.attacksThisTurn = attacksThisTurn;
+        public virtual void SetSpacesMoved(int spacesMoved, bool fromReset = false)
+            => this.SpacesMoved = spacesMoved;
+        public virtual void SetAttacksThisTurn(int attacksThisTurn, bool fromReset = false) 
+            => this.attacksThisTurn = attacksThisTurn;
+        public virtual void SetTurnsOnBoard(int turnsOnBoard, IStackable stackSrc = null, bool fromReset = false) 
+            => this.TurnsOnBoard = turnsOnBoard;
         #endregion statfuncs
 
         #region moveCard

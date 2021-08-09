@@ -1,18 +1,18 @@
 {
 	"cardType":83,
 	"cardName":"Tide Pools",
-	"effText":"When turns start, if I'm not in distinct Water, rehand me. (This checks whether it should trigger before Vanishing cards vanish.)",
+	"effText":"When turns start, if I'm in distinct Water, reset my turn count. (This triggers before Vanishing cards vanish.)\n(Vanishes after 2 turns.)",
 	"effects":[
         {
-            "blurb":"Dry Up",
+            "blurb":"Refill",
             "triggerData":
             {
-                "blurb":"Dry Up",
+                "blurb":"Refill",
                 "triggerCondition":"Turn Start",
                 "triggerRestriction":{
                     "triggerRestrictions":["This Card Fits Restriction"],
 					"cardRestriction":{
-						"cardRestrictions":["Board","Not In AOE of Card Fitting Restriction"],
+						"cardRestrictions":["Board","In AOE of Card Fitting Restriction"],
                         "inAOEOfRestriction":{
                             "cardRestrictions":["Subtypes Include","Distinct Name from Source"],
                             "subtypesInclude":["Water"]
@@ -22,16 +22,14 @@
             },
             "subeffects":[
                 {
-                    "$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-                },
-                {
-                    "$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+                    "$type":"KompasServer.Effects.SetTurnsOnBoardSubeffect, Assembly-CSharp"
                 }
             ]	
         }
     ],
 	"c":1,
-	"spellTypes":["Radial"],
+	"spellTypes":["Vanishing","Radial"],
+    "duration":2,
     "radius":1,
-	"subtypeText":"Radial 1 Water"
+	"subtypeText":"Vanishing 2 Radial 1 Water"
 }
