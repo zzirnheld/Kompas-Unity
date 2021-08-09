@@ -14,7 +14,10 @@
 			"subeffects":[
 				{
 					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
-					"whatToCount":"Cards Fitting Restriction",
+					"whatToCount":"Total Card Value of Cards Fitting Restriction",
+					"cardValue":{
+						"value":"Cost"
+					},
 					"cardRestriction":
 					{
 						"cardRestrictions":["Subtypes Include","Source in This' AOE"],

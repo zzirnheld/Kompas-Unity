@@ -420,21 +420,6 @@ namespace KompasCore.Cards
         #endregion augments
 
         #region statfuncs
-        public int GetStat(string stat)
-        {
-            switch (stat)
-            {
-                case Nimbleness: return N;
-                case Endurance: return E;
-                case SummoningCost: return S;
-                case Wounding: return W;
-                case CastingCost: return C;
-                case AugmentCost: return A;
-                case CostStat: return Cost;
-                default: throw new System.ArgumentException($"I'm sorry, but {stat} is not a valid stat you stunted mongoose!", stat);
-            }
-        }
-
         /* This must happen through setters, not properties, so that notifications and stack sending
          * can be managed as intended. */
         public virtual void SetN(int n, IStackable stackSrc = null, bool notify = true) => N = n;

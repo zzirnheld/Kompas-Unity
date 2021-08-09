@@ -20,8 +20,10 @@
 				},
 				{
 					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
-					"whatToCount":"Max Stat Among Restriction",
-					"stat":"Cost",
+					"whatToCount":"Max Card Value of Cards Fitting Restriction",
+					"cardValue":{
+						"value":"Cost"
+					},
 					"cardRestriction":
 					{
 						"blurb":"to re-golem-ificate",
