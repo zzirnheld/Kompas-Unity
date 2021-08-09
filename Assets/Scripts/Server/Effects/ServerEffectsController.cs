@@ -102,19 +102,20 @@ namespace KompasServer.Effects
 
         public void PushToStack(ServerEffect eff, ActivationContext context) => PushToStack(eff, eff.ServerController, context);
 
-        private void StackEmptied()
+        private async Task StackEmptied()
         {
             //stack ends
             foreach (var c in ServerGame.Cards) c.ResetForStack();
             ServerGame.boardCtrl.ClearSpells();
             ServerGame.ServerPlayers.First().ServerNotifier.StackEmpty();
             TriggerForCondition(Trigger.StackEnd, new ActivationContext());
+            await CheckForResponse();
         }
 
         public async Task ResolveNextStackEntry()
         {
             var (stackable, context) = stack.Pop();
-            if (stackable == null) StackEmptied();
+            if (stackable == null) await StackEmptied();
             else
             {
                 Debug.Log($"Resolving next stack entry: {stackable}, {context}");

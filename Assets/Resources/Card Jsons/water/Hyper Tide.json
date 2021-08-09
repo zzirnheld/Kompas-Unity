@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Hyper Tide",
-	"effText":"When turns start, increase the leyload by 1.\n(Vanishes after 1 turns.)",
+	"effText":"When turns start, increase the leyload by 1.\n(Vanishes after 3 turns.)",
 	"effects":[
 		{
 			"triggerData":

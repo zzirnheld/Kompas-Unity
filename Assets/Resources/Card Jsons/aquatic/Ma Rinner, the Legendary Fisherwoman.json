@@ -7,7 +7,7 @@
             "blurb":"Fish",
 			"triggerData":
 			{
-				"blurb":"Activate",
+				"blurb":"Fish",
 				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play"]

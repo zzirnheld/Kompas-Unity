@@ -18,7 +18,7 @@
 					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Friendly","Board","Adjacent to Source","Is Spell"]
+						"cardRestrictions":["Board","Adjacent to Source","Is Spell"]
 					}
 				},
 				{
