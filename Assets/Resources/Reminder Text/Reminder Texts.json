@@ -90,7 +90,7 @@
 		},
 		{
 			"keyword":"Waterborn",
-			"reminder":"Must be played in Water."
+			"reminder":"Must be played in Water, but doesn't have to be played adjacent to a friendly card."
 		},
 		{
 			"keyword":"Waterdweller",

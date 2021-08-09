@@ -109,7 +109,7 @@ namespace KompasServer.Effects
             ServerGame.boardCtrl.ClearSpells();
             ServerGame.ServerPlayers.First().ServerNotifier.StackEmpty();
             TriggerForCondition(Trigger.StackEnd, new ActivationContext());
-            await CheckForResponse();
+            if (!stack.Empty) await CheckForResponse();
         }
 
         public async Task ResolveNextStackEntry()
