@@ -22,6 +22,9 @@
             },
             "subeffects":[
                 {
+                    "$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+                },
+                {
                     "$type":"KompasServer.Effects.SetTurnsOnBoardSubeffect, Assembly-CSharp"
                 }
             ]	
