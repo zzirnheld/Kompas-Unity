@@ -125,7 +125,9 @@ namespace KompasCore.Effects
                 case CoordsFitRestriction:    return context.Space != null && spaceRestriction.Evaluate(context.Space.Value);
                 case XFitsRestriction:        return context.X != null && xRestriction.Evaluate(context.X.Value);
                 case EffectSourceIsTriggerer: return context.Stackable is Effect eff && eff.Source == context.CardInfo.Card;
-                case AdjacentToRestriction:   return ThisCard.AdjacentCards.Any(cardRestriction.Evaluate);
+                case AdjacentToRestriction:
+                    Debug.Log($"Card {ThisCard?.CardName} with adjacent cards {ThisCard?.AdjacentCards}");
+                    return ThisCard.AdjacentCards.Any(cardRestriction.Evaluate);
                 //TODO make these into just something to do with triggered card fitting restriction
                 case ControllerTriggered:     return context.Triggerer == ThisCard.Controller;
                 case EnemyTriggered:          return context.Triggerer != ThisCard.Controller;
@@ -173,6 +175,12 @@ namespace KompasCore.Effects
             catch (NullReferenceException nullref)
             {
                 Debug.LogError($"Trigger restriction of {ThisCard?.CardName} threw a null ref.\n{nullref.Message}\n{nullref.StackTrace}." +
+                    $"game was {Game}, this card was {ThisCard}");
+                return false;
+            }
+            catch (ArgumentException argEx)
+            {
+                Debug.LogError($"Trigger restriction of {ThisCard?.CardName} hit arg ex.\n{argEx.Message}\n{argEx.StackTrace}." +
                     $"game was {Game}, this card was {ThisCard}");
                 return false;
             }
