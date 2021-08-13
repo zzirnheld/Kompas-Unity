@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Forest Fire",
-	"effText":"Give all characters adjacent to a Tree -5 E. (This includes other Trees, but it doesn't matter how many Trees are adjacent to a particular character.)",
+	"effText":"Give all characters adjacent to at least one Tree -5 E.",
 	"effects":[
 		{
 			"blurb":"Simple",

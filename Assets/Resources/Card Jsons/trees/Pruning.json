@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Pruning",
-	"effText":"Give an adjacent friendly character -4 E, +3 W, and +1 N. Draw 1.",
+	"effText":"Give an adjacent friendly character -3 E, +2 W, and +1 N. Draw 1 card.",
 	"effects":[
 		{
 			"blurb":"Simple",
@@ -22,9 +22,9 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":-4,
-					"nMod":1,
-					"wMod":3
+					"eMod":-3,
+					"wMod":2,
+					"nMod":1
 				},
 				{
 					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
