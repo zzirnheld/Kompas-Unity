@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Sacrifice to the Old Sea Gods",
-	"effText":"Annihilate an adjacent friendly Aquatic card. Deck->cast Water where it was. Draw 1.",
+	"effText":"Annihilate an adjacent friendly Aquatic card, then me. Deck->cast Water where it was. Draw 1.",
 	"effects":[
 		{
 			"triggerData":
@@ -23,6 +23,12 @@
 				},
 				{
 					"$type":"KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"

@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Hyper Tide",
-	"effText":"When turns start, increase the leyload by 1.\n(Vanishes after 3 turns.)",
+	"effText":"When turns start, increase the leyload by 1.\n(Vanishes after 4 turns.)",
 	"effects":[
 		{
 			"triggerData":
@@ -22,7 +22,7 @@
 	],
 	"c":4,
 	"spellTypes":["Vanishing","Radial"],
-	"duration":3,
+	"duration":4,
     "radius":2,
-	"subtypeText":"Radial 2 Vanishing 3 Water"
+	"subtypeText":"Radial 2 Vanishing 4 Water"
 }
