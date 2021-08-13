@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Not All Who Wander",
-	"effText":"When you board->reshuffle a Wanderer, delay a turn, then draw.",
+	"effText":"After you board->reshuffle a Wanderer, delay a turn, then draw 1 card.",
 	"effects":[
 		{
 			"triggerData":

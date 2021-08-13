@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"At Home in the World",
-	"effText":"When you board->reshuffle a Wanderer, delay a turn, then gain a pip.",
+	"effText":"After you board->reshuffle a Wanderer, delay a turn, then gain a pip.",
 	"effects":[
 		{
 			"triggerData":

@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Mysterious Attractive Person",
-	"effText":"Wanderer.\nWhen I'm summoned, reshuffle an enemy S X character. Their controller deck-summons a character with S < X.",
+	"effText":"Wanderer.\nWhen I'm summoned, reshuffle an enemy S X character. Their controller deck->summons an S < X character.",
 	"effects":[
 		{
 			"triggerData":

@@ -13,21 +13,17 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"for Animancer to discard",
-						"cardRestrictions":["Subtypes Include","Friendly","Hand","Not Already Target"],
+						"blurb":"to feed the tide",
+						"cardRestrictions":["Is Spell","Friendly","Hand","Subtypes Include"],
 						"subtypesInclude":["Water"]
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"for Animancer to discard",
-						"cardRestrictions":["Subtypes Include","Friendly","Hand","Not Already Target"],
-						"subtypesInclude":["Water"]
+					},
+					"listRestriction":{
+						"listRestrictions":["Min Can Choose","Max Can Choose"],
+                        "minCanChoose":2,
+						"maxCanChoose":2
 					}
 				},
 				{
@@ -41,7 +37,7 @@
 					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"for Animancer to search",
+						"blurb":"for the tide to belch",
 						"cardRestrictions":["Subtypes Include","Friendly","Deck"],
 						"subtypesInclude":["Aquatic"]
 					}
