@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Wave",
-	"effText":"Choose a Water spell. Remember any characters in it. Move the Water through empty spaces in Water. Move all those characters to spaces in that Water.",
+	"effText":"Choose a Water spell. Remember any Summoned characters in it. Move the Water through empty spaces in Water. Move all those characters to spaces in that Water.",
 	"effects":[
 		{
 			"triggerData":
@@ -45,7 +45,7 @@
 					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["In AOE"]
+						"cardRestrictions":["In Target's AOE","Summoned","Is Character"]
 					}
 				},
 				{

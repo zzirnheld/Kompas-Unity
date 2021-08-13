@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Squid Ex Nihilo",
-	"effText":"Waterborn Waterdweller.\nWhen I attack, give me +5 W until the fight ends.",
+	"effText":"Waterborn Waterdweller.\nWhen I attack, give me +7 W until the fight ends.",
 	"effects":[
 		{
 			"blurb":"Ex Nihilo",
@@ -19,7 +19,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
-					"wModifier":5,
+					"wModifier":7,
 					"endCondition":"Battle End",
 					"triggerRestriction":{
 						"triggerRestrictions":["Contexts Stackables Match"]
@@ -46,6 +46,6 @@
 	"n":3,
 	"e":4,
 	"s":3,
-	"w":4,
+	"w":2,
 	"subtypeText":"Aquatic Fish Monster"
 }

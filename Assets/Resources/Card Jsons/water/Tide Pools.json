@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Tide Pools",
-	"effText":"When turns start, if I'm in distinct Water, reset my turn count. (This triggers before Vanishing cards vanish.)\n(Vanishes after 2 turns.)",
+	"effText":"When turns start, if I'm in distinct Water, reset my turn count. (This triggers before Vanishing cards vanish. Otherwise, vanishes after 2 turns.)",
 	"effects":[
         {
             "blurb":"Refill",

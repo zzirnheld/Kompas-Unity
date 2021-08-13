@@ -11,7 +11,7 @@
 					"triggerRestrictions":["Max Per Stack","This Card in Play","Enemy Turn","Triggerer Fits Restriction"],
 					"cardRestriction":
 					{
-						"cardRestrictions":["Friendly","In AOE"]
+						"cardRestrictions":["Friendly","In AOE","Is Character"]
 					}
 				}
 			},

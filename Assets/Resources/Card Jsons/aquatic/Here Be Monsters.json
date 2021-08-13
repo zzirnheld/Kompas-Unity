@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Here Be Monsters",
-	"effText":"Set X to the total cost of Water I'm in. Annihilate me and deck->summon an S <= X Aquatic character where I was.",
+	"effText":"Set X to the total cost of Water I'm in. Annihilate me and deck->summon an S <= X Aquatic character where I was, but annihilate them when friendly turns start.",
 	"effects":[
 		{
 			"triggerData":
@@ -54,7 +54,12 @@
 					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.HangingAnnihilationSubeffect, Assembly-CSharp",
+					"endCondition":"Turn Start",
+					"triggerRestriction":
+					{
+						"triggerRestrictions":["Friendly Turn"]
+					}
 				}
 			]	
 		}
