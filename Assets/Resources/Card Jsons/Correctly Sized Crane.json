@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Correctly Sized Crane",
-	"effText":"The first time each turn you hand-discard a card, discard-rehand a friendly card. (It doesn't have to be the card you discarded.)",
+	"effText":"The first time each turn you hand->discard a card, discard->hand any friendly card.",
 	"effects":[
 		{
 			"triggerData":

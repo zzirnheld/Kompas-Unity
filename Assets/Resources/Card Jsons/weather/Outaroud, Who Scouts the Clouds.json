@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Outaroud, Who Scouts the Clouds",
-	"effText":"When you cast Radial Weather, move a friendly Skyknight to a space in that Weather.",
+	"effText":"When you cast Radial Weather, move a friendly Skyknight to a space in it.",
 	"effects":[
 		{
 			"triggerData":
