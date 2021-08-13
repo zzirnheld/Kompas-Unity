@@ -16,6 +16,7 @@ aquatic/Sacrifice to the Old Sea Gods
 aquatic/Here Be Monsters
 aquatic/Wave
 aquatic/Raincaller Carp
+aquatic/Inevitable Crab
 Bind the Aggression
 Binding Site
 Bound Offering
