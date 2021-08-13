@@ -1,19 +1,18 @@
 {
 	"cardType":67,
 	"cardName":"XV - The Devil",
-	"effText":"When an enemy deck-rehands a card, you can draw 1.",
+	"effText":"The first six times each turn an enemy deck-rehands a card, draw 1 card.",
 	"effects":[
 		{
 			"triggerData":
 			{
-				"optional":true,
-				"blurb":"Draw 1? (An enemy just deck-rehanded a card)",
 				"triggerCondition":"Rehand",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","From Deck"],
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","From Deck","Max Per Turn"],
 					"cardRestriction":{
 						"cardRestrictions":["Enemy"]
-					}
+					},
+					"maxTimesPerTurn":3
 				}
 			},
 			"subeffects":[

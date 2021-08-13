@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"II - The High Priestess",
-	"effText":"Once each round, you can draw 3, then hand-topdeck 3.",
+	"effText":"Once each round, you can draw 3 cards, then hand->topdeck 3 cards.",
 	"effects":[
 		{
 			"activationRestriction":{

@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"XVIII - The Moon",
-	"effText":"When you draw, choose a Summoned character. You can swap their E and W, then you can swap their EW with another Summoned character's.",
+	"effText":"When you draw, swap a character's W with a character's E. (It can be the same character.)",
 	"effects":[
 		{
 			"blurb":"Swap EW",
@@ -18,48 +18,36 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"character for Moon to swap EW",
+						"blurb":"character whose W to swap",
 						"cardRestrictions":["Is Character","Board","Summoned"]
 					}
-				},
-				{
-					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Swap one character's own EW?",
-					"OptionBlurbs":["Yes","No"],
-					"OptionJumpIndices":[2,3]
-				},
-				{
-					"$type":"KompasServer.Effects.SwapOwnNESWSubeffect, Assembly-CSharp",
-					"Stat1":1,
-					"Stat2":3
-				},
-				{
-					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Swap ",
-					"OptionBlurbs":["Yes","No"],
-					"OptionJumpIndices":[4,100]
 				},
 				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"character for Moon to swap EW",
-						"cardRestrictions":["Is Character","Board","Summoned","Not Already Target"]
+						"blurb":"character whose E to swap",
+						"cardRestrictions":["Is Character","Board","Summoned"]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SwapNESWSubeffect, Assembly-CSharp",
-					"targetIndices":[-1,-2],
-					"swapE":true,
-					"swapW":true
+					"$type":"KompasServer.Effects.SwapStatSubeffect, Assembly-CSharp",
+					"targetIndex":-2,
+					"secondTargetIndex":-1,
+					"firstTargetStat":{
+						"value":"W"
+					},
+					"secondTargetStat":{
+						"value":"E"
+					}
 				}
 			]
 		}
 	],
 	"n":1,
-	"e":12,
+	"e":9,
 	"s":9,
-	"w":1,
+	"w":0,
 	"subtypes":["Tarocco","Mage"],
 	"subtypeText":"Tarocco Mage"
 }

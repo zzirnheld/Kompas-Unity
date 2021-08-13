@@ -42,5 +42,32 @@ namespace KompasCore.Effects
                 default: throw new ArgumentException($"Invalid value string {value}", "value");
             }
         }
+
+        public void SetValueOf(GameCard card, int num, IStackable stackSrc = null)
+        {
+            if (card == null) throw new ArgumentException("Cannot set value of null card", "card");
+
+            switch (value)
+            {
+                case Nimbleness: 
+                    card.SetN(num, stackSrc: stackSrc);
+                    break;
+                case Endurance:
+                    card.SetE(num, stackSrc: stackSrc);
+                    break;
+                case SummoningCost:
+                    card.SetS(num, stackSrc: stackSrc);
+                    break;
+                case Wounding:
+                    card.SetW(num, stackSrc: stackSrc);
+                    break;
+                case CastingCost:
+                    card.SetC(num, stackSrc: stackSrc);
+                    break;
+                case AugmentCost:
+                    card.SetA(num, stackSrc: stackSrc);
+                    break;
+            }
+        }
     }
 }

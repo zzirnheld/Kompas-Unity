@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"V - The Hierophant",
-	"effText":"When you draw X, I get +XW.",
+	"effText":"When you draw X cards, give me +XW.",
 	"effects":[
 		{
 			"triggerData":

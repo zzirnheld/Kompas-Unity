@@ -1,12 +1,11 @@
 {
 	"cardType":67,
 	"cardName":"X - Wheel of Fortune",
-	"effText":"When you draw, I can swap two characters’ N.",
+	"effText":"When you draw, swap two characters’ N.",
 	"effects":[
 		{
 			"triggerData":
 			{
-				"optional":true,
 				"blurb":"Swap two characters' N?",
 				"triggerCondition":"Draw",
 				"triggerRestriction":{
