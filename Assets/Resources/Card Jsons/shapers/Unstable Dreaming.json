@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Unstable Dreaming",
-	"effText":"When I’m cast, handsummon a Shaper, but annihilate them when friendly turns start.",
+	"effText":"When I’m cast, hand->summon a Shaper, but annihilate them when friendly turns start.",
 	"effects":[
 		{
 			"triggerData":

@@ -1,12 +1,11 @@
 {
 	"cardType":67,
 	"cardName":"He Who Knew Runes",
-	"effText":"Shape.\nWhen I move X, you can hand-cast a CX Shaping.",
+	"effText":"Shape.\nWhen I move X spaces, hand->cast a CX Shaping.",
 	"effects":[
 		{
 			"triggerData":
 			{
-				"optional":true,
 				"triggerCondition":"Move",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
