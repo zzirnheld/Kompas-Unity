@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Raincaller Carp",
-	"effText":"Waterdweller (but not Waterborn).\nWhen I'm summoned, pip deck->cast a Water spell.",
+	"effText":"Waterdweller (but NOT Waterborn).\nWhen I'm summoned, pip deck->cast a Water spell.",
 	"effects":[
 		{
 			"blurb":"Call Rain",
@@ -45,6 +45,6 @@
 	"n":2,
 	"e":4,
 	"s":2,
-	"w":3,
-	"subtypeText":"Aquatic Fish Monster"
+	"w":2,
+	"subtypeText":"Aquatic Fish"
 }

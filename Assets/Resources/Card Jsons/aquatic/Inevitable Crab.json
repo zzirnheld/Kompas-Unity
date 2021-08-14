@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"The Crab",
-	"effText":"Waterdweller.",
+	"effText":"Waterdweller (but NOT Waterborn).",
 	"effects":[],
 	"keywords":["Waterdweller"],
 	"n":0,
