@@ -48,8 +48,9 @@
 			]
 		}
     ],
-	"c":3,
-	"spellTypes":["Radial","Enchant"],
+	"c":2,
+	"spellTypes":["Radial","Vanishing"],
     "radius":1,
-	"subtypeText":"Radial 1 Water Enchant"
+	"duration":2,
+	"subtypeText":"Radial 1 Vanishing 2 Water"
 }
