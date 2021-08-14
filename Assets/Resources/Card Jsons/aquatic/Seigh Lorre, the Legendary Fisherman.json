@@ -19,7 +19,7 @@
 					"cardRestriction":
 					{
 						"blurb":"what will sail",
-						"cardRestrictions":["Friendly","Board","In AOE of Card Fitting Restriction"],
+						"cardRestrictions":["Board","In AOE of Card Fitting Restriction"],
 						"inAOEOfRestriction":{
 							"cardRestrictions":["Subtypes Include"],
 							"subtypesInclude":["Water"]

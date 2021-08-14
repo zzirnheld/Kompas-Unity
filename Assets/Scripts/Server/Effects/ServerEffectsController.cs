@@ -104,6 +104,7 @@ namespace KompasServer.Effects
 
         private async Task StackEmptied()
         {
+            Debug.Log($"Stack is emptied");
             //stack ends
             foreach (var c in ServerGame.Cards) c.ResetForStack();
             ServerGame.boardCtrl.ClearSpells();
