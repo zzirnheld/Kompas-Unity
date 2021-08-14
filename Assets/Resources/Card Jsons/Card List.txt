@@ -145,31 +145,6 @@ linewalkers/Purple Linewalker
 linewalkers/Red Linewalker
 linewalkers/White Linewalker
 linewalkers/Yellow Linewalker
-machinations/Booming Boomerator
-machinations/Clockspinner
-machinations/Deliberative Thinking
-machinations/Enlargening Brain
-machinations/Everending Field
-machinations/Everflowing Clepsydra
-machinations/Evermellow Field
-machinations/Everspinning Clockface
-machinations/Font of Speed
-machinations/Font of Wrath
-machinations/Font of Youth
-machinations/Fruition
-machinations/Interseer
-machinations/Leyline Craterer
-machinations/Machimaster
-machinations/Machimasterer
-machinations/Machinate
-machinations/Midnight Clock
-machinations/Overclock
-machinations/Overmaster
-machinations/Plottermaster
-machinations/Pulse of Leylines
-machinations/Sands of Time
-machinations/Silverweaver
-machinations/Whirlwind Fan
 None Defy the Lines
 Notcropoten
 pulsars/Accelerating Pulsar

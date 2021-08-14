@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Starstuff",
-	"effText":"Give your Avatar +-5 S. You can then annihilate me to draw 1.",
+	"effText":"Give your Avatar +5 or -5 S. You can then annihilate me to draw 1 card.",
 	"effects":[
 		{
 			"triggerData":

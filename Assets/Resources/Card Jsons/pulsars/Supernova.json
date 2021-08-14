@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Supernova",
-	"effText":"Repeat the following until your Avatar's S is 0: Give your Avatar -1 S.",
+	"effText":"Repeat until your Avatar's S is 0:\nGive your Avatar -1 S.",
 	"effects":[
 		{
 			"triggerData":

@@ -24,7 +24,16 @@
 			"spaceRestriction":
 			{
 				"blurb":"to Linewalk to",
-				"spaceRestrictions":["Empty","On Target's Diagonal"]
+				"spaceRestrictions":["Empty","On Target's Diagonal","Can Move Target to This Space","Connected to Target by Spaces Fitting Restriction"],
+				"spaceConnectednessRestriction":
+				{
+					"mustBeEmpty":true,
+					"spaceRestrictions":["In AOE Of"],
+					"inAOEOfRestriction":{
+						"cardRestrictions":["Subtypes Include"],
+						"subtypesInclude":["Water"]
+					}
+				}
 			}
 		},
 		{

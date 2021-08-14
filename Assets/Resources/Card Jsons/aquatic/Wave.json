@@ -29,6 +29,7 @@
 						"spaceRestrictions":["Can Move Target to This Space","Connected to Target by Spaces Fitting Restriction"],
                         "spaceConnectednessRestriction":
                         {
+							"mustBeEmpty":true,
                             "spaceRestrictions":["In AOE Of"],
                             "inAOEOfRestriction":{
                                 "cardRestrictions":["Subtypes Include"],

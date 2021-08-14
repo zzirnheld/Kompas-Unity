@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Coalescing Stardust",
-	"effText":"When your Avatar gets +-X S, give me +-X C. (If they lose S, I lose C. If they gain S, I gain C.)\nDelay 2 turns.\nSet X to my C. Deck-summon an SX Pulsar.",
+	"effText":"When your Avatar gets +X or -X S, give me matching +X or -X C.\nAfter I'm cast, delay 2 turns.\nSet X to my C. Deck->summon an SX Pulsar.",
 	"effects":[
 		{
 			"blurb":"Coalesce +C",
