@@ -1,5 +1,6 @@
 ﻿using KompasCore.Effects;
 using KompasServer.GameCore;
+using UnityEngine;
 
 namespace KompasServer.Effects
 {
@@ -47,9 +48,15 @@ namespace KompasServer.Effects
         {
             //if we've already ended this hanging effect, we shouldn't end it again.
             if (ended) return false;
+            Debug.Log($"Checking whether {this} should end");
             return triggerRestriction.Evaluate(context, secondary: savedContext);
         }
 
         protected abstract void Resolve();
+
+        public override string ToString()
+        {
+            return $"{GetType()} ending when {EndCondition}";
+        }
     }
 }

@@ -23,5 +23,10 @@ namespace KompasServer.Effects
         {
             target.Owner.annihilationCtrl.Annihilate(target);
         }
+
+        public override string ToString()
+        {
+            return $"{base.ToString()} affecting {target}";
+        }
     }
 }
