@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Linq;
 using KompasCore.Cards;
-using System;
 using KompasClient.UI;
 using Newtonsoft.Json;
 
@@ -148,13 +146,13 @@ namespace KompasDeckbuilder
 
         private bool ValidCardType(char cardType)
         {
-            switch (cardType)
+            return cardType switch
             {
-                case 'C': return CharacterToggle.isOn;
-                case 'S': return SpellToggle.isOn;
-                case 'A': return AugmentToggle.isOn;
-                default: return false;
-            }
+                'C' => CharacterToggle.isOn,
+                'S' => SpellToggle.isOn,
+                'A' => AugmentToggle.isOn,
+                _ => false,
+            };
         }
 
         public void SearchCards()

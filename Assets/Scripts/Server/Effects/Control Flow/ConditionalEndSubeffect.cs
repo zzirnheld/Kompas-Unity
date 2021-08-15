@@ -32,21 +32,21 @@ namespace KompasServer.Effects
 
         private bool ShouldEnd(string condition)
         {
-            switch (condition)
+            return condition switch
             {
-                case XLessThan0:         return ServerEffect.X < 0;
-                case XLessThanEqual0:    return ServerEffect.X <= 0;
-                case XGreaterThanConst:  return ServerEffect.X > constant;
-                case XLessThanConst:     return ServerEffect.X < constant;
-                case NoneFitRestriction: return !ServerGame.Cards.Any(cardRestriction.Evaluate);
-                case AnyFitRestriction:  return ServerGame.Cards.Any(cardRestriction.Evaluate);
-                case MustBeFriendlyTurn: return ServerGame.TurnPlayer != Effect.Controller;
-                case MustBeEnemyTurn:    return ServerGame.TurnPlayer == Effect.Controller;
-                case TargetViolatesRestriction: return !cardRestriction.Evaluate(Target);
-                case TargetFitsRestriction:     return cardRestriction.Evaluate(Target);
-                case NumTargetsLTEConstant:     return Effect.Targets.Count() <= constant;
-                default: throw new System.ArgumentException($"Condition {condition} invalid for conditional end subeffect");
-            }
+                XLessThan0                  => ServerEffect.X < 0,
+                XLessThanEqual0             => ServerEffect.X <= 0,
+                XGreaterThanConst           => ServerEffect.X > constant,
+                XLessThanConst              => ServerEffect.X < constant,
+                NoneFitRestriction          => !ServerGame.Cards.Any(cardRestriction.Evaluate),
+                AnyFitRestriction           => ServerGame.Cards.Any(cardRestriction.Evaluate),
+                MustBeFriendlyTurn          => ServerGame.TurnPlayer != Effect.Controller,
+                MustBeEnemyTurn             => ServerGame.TurnPlayer == Effect.Controller,
+                TargetViolatesRestriction   => !cardRestriction.Evaluate(Target),
+                TargetFitsRestriction       => cardRestriction.Evaluate(Target),
+                NumTargetsLTEConstant       => Effect.Targets.Count() <= constant,
+                _ => throw new System.ArgumentException($"Condition {condition} invalid for conditional end subeffect"),
+            };
         }
 
         public override Task<ResolutionInfo> Resolve()

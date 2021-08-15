@@ -28,14 +28,14 @@ namespace KompasServer.Effects
         {
             get
             {
-                switch (condition)
+                return condition switch
                 {
-                    case TargetFitsRestriction: return cardRestriction.Evaluate(Target);
-                    case TargetViolatesRestriction: return !cardRestriction.Evaluate(Target);
-                    case XGreaterEqualConstant: return Effect.X >= constant;
-                    case XFitsRestriction: return xRestriction.Evaluate(Effect.X);
-                    default: throw new System.ArgumentException($"Invalid conditional jump condition {condition}");
-                }
+                    TargetFitsRestriction       => cardRestriction.Evaluate(Target),
+                    TargetViolatesRestriction   => !cardRestriction.Evaluate(Target),
+                    XGreaterEqualConstant       => Effect.X >= constant,
+                    XFitsRestriction            => xRestriction.Evaluate(Effect.X),
+                    _ => throw new System.ArgumentException($"Invalid conditional jump condition {condition}"),
+                };
             }
         }
 

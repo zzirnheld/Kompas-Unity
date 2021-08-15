@@ -19,19 +19,18 @@
         {
             get
             {
-                switch (whatToCount)
+                return whatToCount switch
                 {
-                    case Cost: return Target.Cost;
-                    case N: return Target.N;
-                    case E: return Target.E;
-                    case S: return Target.S;
-                    case W: return Target.W;
-                    case C: return Target.C;
-                    case DistanceToTarget: return Source.DistanceTo(Target);
-                    case DistanceBetweenTargetAndCoords: return Target.DistanceTo(Space);
-                    default:
-                        throw new System.ArgumentException($"Invalid 'what to count' string {whatToCount} in x by gamestate value subeffect");
-                }
+                    Cost => Target.Cost,
+                    N => Target.N,
+                    E => Target.E,
+                    S => Target.S,
+                    W => Target.W,
+                    C => Target.C,
+                    DistanceToTarget => Source.DistanceTo(Target),
+                    DistanceBetweenTargetAndCoords => Target.DistanceTo(Space),
+                    _ => throw new System.ArgumentException($"Invalid 'what to count' string {whatToCount} in x by gamestate value subeffect"),
+                };
             }
         }
     }

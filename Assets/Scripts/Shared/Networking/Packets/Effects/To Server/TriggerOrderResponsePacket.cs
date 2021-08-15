@@ -1,9 +1,5 @@
-﻿using KompasCore.Cards;
-using KompasCore.Networking;
+﻿using KompasCore.Networking;
 using KompasServer.GameCore;
-using KompasServer.Effects;
-using System.Linq;
-using KompasCore.Effects;
 using System.Threading.Tasks;
 
 namespace KompasCore.Networking

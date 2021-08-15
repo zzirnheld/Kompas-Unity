@@ -1,14 +1,12 @@
 ﻿using KompasCore.Cards;
-using KompasCore.Networking;
 using KompasServer.Effects;
-using KompasServer.Networking;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace KompasServer.Networking {
+namespace KompasServer.Networking
+{
     public class ServerAwaiter : MonoBehaviour
     {
         private const int DefaultDelay = 100;

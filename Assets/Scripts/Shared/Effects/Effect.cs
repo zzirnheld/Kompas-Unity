@@ -34,7 +34,6 @@ namespace KompasCore.Effects
         public int X = 0;
 
         //Triggering and Activating
-        [NonSerialized]
         public TriggerData triggerData;
         public abstract Trigger Trigger { get; }
         public ActivationRestriction activationRestriction;

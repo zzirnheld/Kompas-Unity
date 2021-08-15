@@ -1,5 +1,4 @@
-﻿using KompasCore.Cards;
-using KompasCore.Effects;
+﻿using KompasCore.Effects;
 using System.Linq;
 using System.Threading.Tasks;
 

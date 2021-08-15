@@ -1,5 +1,4 @@
 ﻿using KompasClient.GameCore;
-using KompasCore.GameCore;
 using KompasCore.Networking;
 
 namespace KompasCore.Networking
