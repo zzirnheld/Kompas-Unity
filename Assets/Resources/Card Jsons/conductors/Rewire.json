@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Rewire",
-	"effText":"Move any number of Conductors, each to a space connected to your Avatar by Conductors.",
+	"effText":"Move any number of Conductors to spaces connected to your Avatar by Conductors.",
 	"effects":[
 		{
 			"triggerData":

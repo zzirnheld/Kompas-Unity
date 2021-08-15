@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Relay",
-	"effText":"Charge: Draw 1, then discard 1.",
+	"effText":"Charge: Draw 1 card, then discard 1 card.",
 	"effects":[
 		{
 			"triggerData":

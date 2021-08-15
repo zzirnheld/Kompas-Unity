@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Shoddy Solder",
-	"effText":"When friendly turns start, pip discard->play a Conductor to a space connected to your Avatar by Conductors. Delay a turn. Destroy them.",
+	"effText":"When friendly turns start, pip discard->play a Conductor to a space connected to your Avatar by Conductors. Delay 1 turn. Destroy them.",
 	"effects":[
 		{
 			"triggerData":
