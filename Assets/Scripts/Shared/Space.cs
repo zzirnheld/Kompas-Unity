@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 public struct Space
 {
@@ -41,14 +42,17 @@ public struct Space
             var y = this.y;
             var xs = offsets.Select(o => o + x);
             var ys = offsets.Select(o => o + y);
-            foreach (var xDiff in offsets)
+            foreach (var xCoord in xs)
             {
-                foreach (var yDiff in offsets)
-                {
-                    Space s = (x, y);
-                    if (s.Valid) list.Add(s);
-                }
+                Space s = (xCoord, y);
+                if (s.Valid) list.Add(s);
             }
+            foreach (var yCoord in ys)
+            {
+                Space s = (x, yCoord);
+                if (s.Valid) list.Add(s);
+            }
+            //Debug.Log($"Spaces adjacent to {this} are {string.Join(", ", list.Select(s => s.ToString()))}");
             return list;
         }
     }

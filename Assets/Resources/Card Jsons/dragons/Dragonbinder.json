@@ -23,7 +23,7 @@
 				{
 					"$type":"KompasServer.Effects.PlayerChooseXSubeffect, Assembly-CSharp",
 					"XRest":{
-						"cardRestrictions":[">0"]
+						"xRestrictions":[">0"]
 					}
 				},
 				{
