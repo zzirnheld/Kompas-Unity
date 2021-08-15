@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Listen to Reason",
-	"effText":"Discard your hand, including X Crazy Ideas. Draw X.",
+	"effText":"Discard your hand, including X Crazy Ideas. Draw X cards.",
 	"effects":[
 		{
 			"triggerData":
@@ -49,5 +49,5 @@
 	],
 	"c":2,
 	"spellTypes":["Simple"],
-	"subtypeText":"Simple"
+	"subtypeText":"Crazy Simple"
 }

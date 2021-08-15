@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Just a Little Bit More",
-	"effText":"Ificate.\nDiscard 1. Draw 1. Move a card 1 space.",
+	"effText":"Ificate.\nDiscard 1 card. Draw 1 card. Move a card 1 space.",
 	"effects":[
 		{
 			"triggerData":

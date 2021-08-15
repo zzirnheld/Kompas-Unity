@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Perfectly Normal Help",
-	"effText":"Once each turn, you can discard 1.",
+	"effText":"Once each turn, you can hand->discard 1.",
 	"effects":[
 		{
 			"activationRestriction":{

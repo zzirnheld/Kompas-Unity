@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Self-Destruct Button",
-	"effText":"Ificate.\nDestroy another friendly Crazy Idea. Rehand all friendly discarded Crazy Ideas. Discard 1 to 3 cards.",
+	"effText":"Ificate.\nDestroy another friendly Crazy Idea. Rehand all friendly discarded Crazy Ideas. Discard 1-3 cards.",
 	"effects":[
 		{
 			"triggerData":

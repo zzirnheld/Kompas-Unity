@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Stupid Idea Generator",
-	"effText":"Ificate.\nWhen enemy turns start, discard 1, draw 1, then pay a pip or annihilate me.",
+	"effText":"Ificate.\nWhen enemy turns start, discard 1 card, draw 1 card.",
 	"effects":[
 		{
 			"triggerData":
@@ -26,38 +26,6 @@
 				},
 				{
 					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
-					"subeffIndices":[6],
-					"skipIndex":8
-				},
-				{
-					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Pay 1 pip or annihilate Stupid?",
-					"OptionBlurbs":["Pay 1 pip","Annhihilate"],
-					"OptionJumpIndices":[5,8]
-				},
-				{
-					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
-					"jumpTo":7
-				},
-				{
-					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
-					"xMultiplier":0,
-					"xModifier":1
-				},
-				{
-					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
 				}
 			]	
 		}

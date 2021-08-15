@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Carla",
-	"effText":"Once each friendly turn, you can rehand a friendly discarded Crazy Idea.",
+	"effText":"Once each friendly turn, you can discard->hand a friendly Crazy card.",
 	"effects":[
 		{
 			"blurb":"Intern Nonsense",
@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"cardRestrictions":["Friendly","Discard","Subtypes Include"],
-                        "subtypesInclude":["Crazy Idea"]
+                        "subtypesInclude":["Crazy"]
 					}
 				},
 				{

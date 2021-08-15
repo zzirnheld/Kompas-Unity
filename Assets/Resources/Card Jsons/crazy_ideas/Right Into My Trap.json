@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Right Into My Trap",
-	"effText":"Ificate.\nWhen a character moves adjacent to a Crazy card, set X to the number of Crazy cards adjacent to where they are now, and give them -X W.",
+	"effText":"Ificate.\nWhen a character moves adjacent to a Crazy card, give them -5 W.",
 	"effects":[
 		{
 			"triggerData":
@@ -24,21 +24,11 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
-					"whatToCount":"Cards Fitting Restriction",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Subtypes Include","Adjacent to Target"],
-						"subtypesInclude":["Crazy"]
-					},
-					"xMultiplier":1
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wMult":-1
+					"wMod":-5
 				}
 			]	
 		}
