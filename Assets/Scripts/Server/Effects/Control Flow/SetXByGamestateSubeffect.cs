@@ -7,6 +7,8 @@ namespace KompasServer.Effects
     {
         public const string HandSize = "Hand Size";
         public const string DistanceToCoordsThrough = "Distance to Coords Through";
+        public const string DistanceBetweenTargetAndCoords = "Distance Between Target and Target Space";
+        public const string DistanceFromSourceToTarget = "Distance From Source to Target";
 
         public const string CardsFittingRestriction = "Cards Fitting Restriction";
         public const string TotalCardValueOfCardsFittingRestriction = "Total Card Value of Cards Fitting Restriction";
@@ -37,6 +39,8 @@ namespace KompasServer.Effects
                 {
                     HandSize                => Player.handCtrl.HandSize,
                     DistanceToCoordsThrough => Game.boardCtrl.ShortestPath(Source, Space, throughRestriction),
+                    DistanceBetweenTargetAndCoords => Target.DistanceTo(Space),
+                    DistanceFromSourceToTarget     => Source.DistanceTo(Target),
 
                     CardsFittingRestriction => Game.Cards.Where(cardRestriction.Evaluate).Count(),
                     TotalCardValueOfCardsFittingRestriction 

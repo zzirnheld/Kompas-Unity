@@ -27,8 +27,10 @@
 					"$type":"KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
-					"whatToCount":"Cost",
+					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"A"
+					},
 					"change":true,
 					"xMultiplier":1
 				},
