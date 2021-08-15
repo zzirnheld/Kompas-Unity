@@ -1,3 +1,22 @@
+aquatic/Big Tuna
+aquatic/Changing Tides
+aquatic/Fishing
+aquatic/Ma Rinner, the Legendary Fisherwoman
+aquatic/Seigh Lorre, the Legendary Fisherman
+aquatic/Heptastar
+aquatic/Expected Shark
+aquatic/Unexpected Shark
+aquatic/Sawfish
+aquatic/Squid Ex Nihilo
+aquatic/Leapingfish
+aquatic/Kraken
+aquatic/Dragon Turtle
+aquatic/Shifting Tides
+aquatic/Sacrifice to the Old Sea Gods
+aquatic/Here Be Monsters
+aquatic/Wave
+aquatic/Raincaller Carp
+aquatic/Inevitable Crab
 Bind the Aggression
 Binding Site
 Bound Offering
@@ -126,31 +145,6 @@ linewalkers/Purple Linewalker
 linewalkers/Red Linewalker
 linewalkers/White Linewalker
 linewalkers/Yellow Linewalker
-machinations/Booming Boomerator
-machinations/Clockspinner
-machinations/Deliberative Thinking
-machinations/Enlargening Brain
-machinations/Everending Field
-machinations/Everflowing Clepsydra
-machinations/Evermellow Field
-machinations/Everspinning Clockface
-machinations/Font of Speed
-machinations/Font of Wrath
-machinations/Font of Youth
-machinations/Fruition
-machinations/Interseer
-machinations/Leyline Craterer
-machinations/Machimaster
-machinations/Machimasterer
-machinations/Machinate
-machinations/Midnight Clock
-machinations/Overclock
-machinations/Overmaster
-machinations/Plottermaster
-machinations/Pulse of Leylines
-machinations/Sands of Time
-machinations/Silverweaver
-machinations/Whirlwind Fan
 None Defy the Lines
 Notcropoten
 pulsars/Accelerating Pulsar
@@ -357,6 +351,12 @@ trees/Strongtree
 trees/The Man Who Replants
 trees/Thinktree
 Unfinding
+water/High Tide
+water/Nuisance Flooding
+water/Hyper Tide
+water/Placid Waters
+water/Tide Pools
+water/Hungry Tide
 wanderers/At Home in the World
 wanderers/Leper
 wanderers/Leyseer

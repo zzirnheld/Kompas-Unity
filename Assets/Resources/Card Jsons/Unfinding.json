@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Unfinding",
-	"effText":"Discard an Ethereal. Draw 2.",
+	"effText":"Hand->discard an Ethereal. Draw 2 cards.",
 	"effects":[
 		{
 			"triggerData":
@@ -31,7 +31,7 @@
 		}
 	],
 	"c":1,
-	"spellType":"Simple",
+	"spellTypes":["Simple"],
 	"subtypes":["Simple"],
 	"subtypeText":"Simple"
 }

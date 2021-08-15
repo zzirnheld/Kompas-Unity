@@ -10,9 +10,9 @@ namespace KompasServer.Effects
         private readonly ServerSubeffect source;
 
         public HangingActivationEffect(ServerGame serverGame, TriggerRestriction triggerRestriction, string endCondition, 
-            string fallOffCondition, TriggerRestriction fallOffRestriction,
+            string fallOffCondition, TriggerRestriction fallOffRestriction, ActivationContext currentContext,
             GameCard target, ServerSubeffect source)
-            : base(serverGame, triggerRestriction, endCondition, fallOffCondition, fallOffRestriction)
+            : base(serverGame, triggerRestriction, endCondition, fallOffCondition, fallOffRestriction, currentContext)
         {
             this.target = target != null ? target : throw new System.ArgumentNullException("target", "Cannot target a null card for a hanging activation");
             this.source = source ?? throw new System.ArgumentNullException("source", "Cannot make a hanging activation effect from no subeffect");

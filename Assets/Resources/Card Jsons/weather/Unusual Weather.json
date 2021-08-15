@@ -18,7 +18,7 @@
 					{
 						"mustBeEmpty":false,
 						"spaceRestrictions":["In AOE Of"],
-                        "inAOERestriction":{
+                        "inAOEOfRestriction":{
                             "cardRestrictions":["Subtypes Include"],
                             "subtypesInclude":["Weather"]
                         }
@@ -51,7 +51,7 @@
 					{
 						"mustBeEmpty":false,
 						"spaceRestrictions":["In AOE Of"],
-                        "inAOERestriction":{
+                        "inAOEOfRestriction":{
                             "cardRestrictions":["Subtypes Include"],
                             "subtypesInclude":["Weather"]
                         }
@@ -71,7 +71,7 @@
 		}
 	],
 	"c":3,
-	"spellType":"Enchant",
+	"spellTypes":["Enchant"],
 	"subtypes":["Enchant"],
 	"subtypeText":"Enchant"
 }

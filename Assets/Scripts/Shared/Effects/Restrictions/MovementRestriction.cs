@@ -54,6 +54,10 @@ namespace KompasCore.Effects
         /// </summary>
         public string[] normalRestrictionsFromJson = new string[] { Default };
         /// <summary>
+        /// The array of restrictions to ignore, from the default restrictions (or other future groups of retrictions)
+        /// </summary>
+        public string[] normalRestrictionsToIgnore = new string[0];
+        /// <summary>
         /// The array to be loaded in and defaults addressed
         /// </summary>
         public string[] effectRestrictionsFromJson = new string[] { Default };
@@ -82,6 +86,7 @@ namespace KompasCore.Effects
             normalRestrictions.AddRange(normalRestrictionsFromJson);
             if (normalRestrictionsFromJson.Contains(Default)) 
                 normalRestrictions.AddRange(defaultNormalMovementRestrictions);
+            normalRestrictions.RemoveAll(s => normalRestrictionsToIgnore.Contains(s));
 
             effectRestrictions.AddRange(effectRestrictionsFromJson);
             if (effectRestrictionsFromJson.Contains(Default))

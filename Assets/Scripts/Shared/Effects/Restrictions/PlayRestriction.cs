@@ -48,7 +48,9 @@ namespace KompasCore.Effects
         };
 
         public List<string> normalRestrictions = null;
+        public string[] normalRestrictionsToIgnore = new string[0];
         public List<string> effectRestrictions = null;
+        public string[] effectRestrictionsToIgnore = new string[0];
         public List<string> recommendationRestrictions = null;
 
         public CardRestriction onCardRestriction;
@@ -63,13 +65,21 @@ namespace KompasCore.Effects
             normalRestrictions = normalRestrictions ?? new List<string> { DefaultNormal };
             effectRestrictions = effectRestrictions ?? new List<string> { DefaultEffect };
             recommendationRestrictions = recommendationRestrictions ?? new List<string>();
-            //if (recommendationRestrictions.Count > 0) Debug.Log($"More than one recommendation restriction: {string.Join(recommendationRestrictions)}");
+            //if (recommendationRestrictions.Count > 0) 
+            //  Debug.Log($"More than one recommendation restriction: {string.Join(recommendationRestrictions)}");
 
-            if (normalRestrictions.Contains(DefaultNormal)) normalRestrictions.AddRange(DefaultNormalRestrictions);
-            if (normalRestrictions.Contains(AugNormal)) normalRestrictions.AddRange(AugmentNormalRestrictions);
+            if (normalRestrictions.Contains(DefaultNormal)) 
+                normalRestrictions.AddRange(DefaultNormalRestrictions);
+            if (normalRestrictions.Contains(AugNormal)) 
+                normalRestrictions.AddRange(AugmentNormalRestrictions);
+            normalRestrictions.RemoveAll(normalRestrictionsToIgnore.Contains);
 
-            if (effectRestrictions.Contains(DefaultEffect)) effectRestrictions.AddRange(DefaultEffectRestrictions);
-            if (effectRestrictions.Contains(AugEffect)) effectRestrictions.AddRange(AugmentEffectRestrictions);
+            if (effectRestrictions.Contains(DefaultEffect)) 
+                effectRestrictions.AddRange(DefaultEffectRestrictions);
+            if (effectRestrictions.Contains(AugEffect)) 
+                effectRestrictions.AddRange(AugmentEffectRestrictions);
+            effectRestrictions.RemoveAll(effectRestrictionsToIgnore.Contains);
+
 
             onCardRestriction?.Initialize(Card, eff: default);
             adjacentCardRestriction?.Initialize(Card, eff: default);

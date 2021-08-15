@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Yellow Linewalker",
-	"effText":"Linewalk.\nWhen I move X spaces, give both players X pips.",
+	"effText":"Linewalk.\nWhen I move X spaces, gain X pips, then give your opponent X - 2 pips.",
 	"effects":[
 		{
 			"blurb":"Yellow Linewalked",
@@ -22,7 +22,8 @@
 				},
 				{
 					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xMultiplier":1
+					"xMultiplier":1,
+					"xModifier":-2
 				}
 			]	
 		}

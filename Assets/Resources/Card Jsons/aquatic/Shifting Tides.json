@@ -1,0 +1,49 @@
+{
+	"cardType":83,
+	"cardName":"Shifting Tides",
+	"effText":"During your turn, you can dispel friendly Water to hand->cast Water where it was.",
+	"effects":[
+		{
+			"blurb":"The Tide Shifts",
+			"activationRestriction":{
+				"activationRestrictionArray":[
+					"Friendly Turn",
+					"Default"
+				]
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Shifting tide",
+						"cardRestrictions":["Board","Friendly","Is Spell","Subtypes Include"],
+						"subtypesInclude":["Water"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Tide that Shifts In",
+						"cardRestrictions":["Is Spell","Friendly","Hand","Can Be Played","Subtypes Include"],
+						"subtypesInclude":["Water"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+	"c":1,
+	"spellTypes":["Enchant"],
+	"subtypes":["Aquatic","Enchant"],
+	"subtypeText":"Aquatic Enchant"
+}

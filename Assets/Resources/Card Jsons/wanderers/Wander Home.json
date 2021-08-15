@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Wander Home",
-	"effText":"Reshuffle an adjacent friendly S X Wanderer. Deck-summon an S < X character. Reshuffle another adjacent S X character. Their former controller deck-summons an S < X character.",
+	"effText":"Reshuffle an adjacent friendly S X Wanderer. Deck->summon an S < X character. Reshuffle another adjacent S X character. Their former controller deck->summons an S < X character.",
 	"effects":[
 		{
 			"triggerData":
@@ -117,6 +117,6 @@
 	},
 	"fast":true,
 	"c":1,
-	"spellType":"Simple",
+	"spellTypes":["Simple"],
 	"subtypeText":""
 }

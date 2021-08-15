@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"VI - The Lovers",
-	"effText":"When you draw X, you can tribute me to deck-summon an S ≤ X Tarocco where I was.",
+	"effText":"When you draw X cards, you can tribute me. Deck->summon an S <= X Tarocco where I was.",
 	"effects":[
 		{
 			"triggerData":

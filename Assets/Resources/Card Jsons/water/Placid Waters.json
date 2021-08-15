@@ -1,0 +1,10 @@
+{
+	"cardType":83,
+	"cardName":"Placid Waters",
+	"effText":"(Doesn't do anything, but it's nice to swim in.)",
+	"effects":[],
+	"c":2,
+	"spellTypes":["Radial"],
+    "radius":1,
+	"subtypeText":"Radial 1 Water"
+}

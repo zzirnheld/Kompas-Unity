@@ -301,7 +301,8 @@ namespace KompasCore.Cards
             && card.Location == CardLocation.Field && Position.AdjacentTo(card.Position);
         public bool IsAdjacentTo(Space space) => Location == CardLocation.Field && Position.AdjacentTo(space);
 
-        public bool SpaceInAOE(Space space) => SpellSubtype == CardBase.RadialSubtype && DistanceTo(space) <= Arg;
+        public bool SpaceInAOE(Space space) 
+            => SpellSubtypes != null && SpellSubtypes.Any(s => s == CardBase.RadialSubtype) && DistanceTo(space) <= Radius;
         public bool CardInAOE(IGameCardInfo c) => SpaceInAOE(c.Position);
 
         public bool SameColumn(Space space) => Location == CardLocation.Field && Position.SameColumn(space);
@@ -367,7 +368,7 @@ namespace KompasCore.Cards
         public bool InCorner() => (Position.x == 0 || Position.x == 6) && (Position.y == 0 || Position.y == 6);
 
         public int ShortestPath(Space space, Func<GameCard, bool> throughPredicate) 
-            => Game.boardCtrl.ShortestPath(this, space, throughPredicate);
+            => Game.boardCtrl.ShortestPath(Position, space, throughPredicate);
         #endregion distance/adjacency
 
         public void PutBack()
@@ -419,21 +420,6 @@ namespace KompasCore.Cards
         #endregion augments
 
         #region statfuncs
-        public int GetStat(string stat)
-        {
-            switch (stat)
-            {
-                case Nimbleness: return N;
-                case Endurance: return E;
-                case SummoningCost: return S;
-                case Wounding: return W;
-                case CastingCost: return C;
-                case AugmentCost: return A;
-                case CostStat: return Cost;
-                default: throw new System.ArgumentException($"I'm sorry, but {stat} is not a valid stat you stunted mongoose!", stat);
-            }
-        }
-
         /* This must happen through setters, not properties, so that notifications and stack sending
          * can be managed as intended. */
         public virtual void SetN(int n, IStackable stackSrc = null, bool notify = true) => N = n;
@@ -500,8 +486,12 @@ namespace KompasCore.Cards
         public virtual void SetNegated(bool negated, IStackable stackSrc = null) => Negated = negated;
         public virtual void SetActivated(bool activated, IStackable stackSrc = null) => Activated = activated;
 
-        public virtual void SetSpacesMoved(int spacesMoved, bool fromReset = false) => this.SpacesMoved = spacesMoved;
-        public virtual void SetAttacksThisTurn(int attacksThisTurn, bool fromReset = false) => this.attacksThisTurn = attacksThisTurn;
+        public virtual void SetSpacesMoved(int spacesMoved, bool fromReset = false)
+            => this.SpacesMoved = spacesMoved;
+        public virtual void SetAttacksThisTurn(int attacksThisTurn, bool fromReset = false) 
+            => this.attacksThisTurn = attacksThisTurn;
+        public virtual void SetTurnsOnBoard(int turnsOnBoard, IStackable stackSrc = null, bool fromReset = false) 
+            => this.TurnsOnBoard = turnsOnBoard;
         #endregion statfuncs
 
         #region moveCard

@@ -102,18 +102,22 @@ namespace KompasServer.Effects
 
         public void PushToStack(ServerEffect eff, ActivationContext context) => PushToStack(eff, eff.ServerController, context);
 
-        private void StackEmptied()
+        private async Task StackEmptied()
         {
+            //Debug.Log($"Stack is emptied");
             //stack ends
             foreach (var c in ServerGame.Cards) c.ResetForStack();
             ServerGame.boardCtrl.ClearSpells();
             ServerGame.ServerPlayers.First().ServerNotifier.StackEmpty();
+            TriggerForCondition(Trigger.StackEnd, new ActivationContext());
+            //Must check whether I *should* check for response to avoid an infinite loop
+            if (!stack.Empty || triggeredTriggers.Any()) await CheckForResponse();
         }
 
         public async Task ResolveNextStackEntry()
         {
             var (stackable, context) = stack.Pop();
-            if (stackable == null) StackEmptied();
+            if (stackable == null) await StackEmptied();
             else
             {
                 Debug.Log($"Resolving next stack entry: {stackable}, {context}");
@@ -169,7 +173,7 @@ namespace KompasServer.Effects
             //if there's no triggers, skip all this logic
             if (!stillValid.Any())
             {
-                Debug.Log($"Triggers that were valid from {string.Join(",", triggered.triggers)} aren't anymore");
+                Debug.Log($"All the triggers that were valid from {string.Join(",", triggered.triggers)} aren't anymore");
                 return;
             }
 
@@ -236,20 +240,19 @@ namespace KompasServer.Effects
             //then dequeue twice, which would not consider that set of triggers.
             if (currentlyCheckingResponses || CurrStackEntry != null)
             {
-                Debug.Log($"Checked response while currently checking for response {currentlyCheckingResponses} or curr stack entry not null {CurrStackEntry != null}");
+                Debug.Log($"Checked response while currently checking for response {currentlyCheckingResponses} " +
+                    $"or curr stack entry not null {CurrStackEntry != null}");
                 return;
             }
             currentlyCheckingResponses = true;
 
             if (reset) ResetPassingPriority();
 
-            //if there's any triggers triggered that haven't been dealt with, mark priority being held and return
             await CheckAllTriggers(ServerGame.TurnServerPlayer);
 
             var playersHoldingPriority = ServerGame.ServerPlayers
                 .Where(player => !player.passedPriority)
                 .ToArray(); //call toArray so that we don't create the collection twice.
-                            //remove the .ToArray() later if it turns out Linq is smart enough to only execute once, but I'm pretty sure it can't know.
 
             //for any player that is holding priority, request a response from them
             if (playersHoldingPriority.Any())
@@ -274,26 +277,26 @@ namespace KompasServer.Effects
         {
             if (hangingEffectMap.ContainsKey(condition))
             {
-                var endedEffects = hangingEffectMap[condition]
-                    .Where(he => he.EndIfApplicable(context))
-                    .ToArray(); //must toArray because the map will be modified while iterating.
-                foreach (var t in endedEffects)
+                foreach (var t in hangingEffectMap[condition].ToArray())
                 {
-                    hangingEffectMap[condition].Remove(t);
-                    if (!string.IsNullOrEmpty(t.FallOffCondition))
-                        hangingEffectFallOffMap[t.FallOffCondition].Remove(t);
+                    if (t.EndIfApplicable(context))
+                    {
+                        hangingEffectMap[condition].Remove(t);
+                        if (!string.IsNullOrEmpty(t.FallOffCondition))
+                            hangingEffectFallOffMap[t.FallOffCondition].Remove(t);
+                    }
                 }
             }
 
             if (hangingEffectFallOffMap.ContainsKey(condition))
             {
-                var fallOffToRemove = hangingEffectFallOffMap[condition]
-                    .Where(he => he.FallOffRestriction.Evaluate(context))
-                    .ToArray(); //must toArray because the map will be modified while iterating.
-                foreach (var toRemove in fallOffToRemove)
+                foreach (var toRemove in hangingEffectFallOffMap[condition].ToArray())
                 {
-                    hangingEffectMap[toRemove.EndCondition].Remove(toRemove);
-                    hangingEffectFallOffMap[condition].Remove(toRemove);
+                    if (toRemove.FallOffRestriction.Evaluate(context))
+                    {
+                        hangingEffectMap[toRemove.EndCondition].Remove(toRemove);
+                        hangingEffectFallOffMap[condition].Remove(toRemove);
+                    }
                 }
             }
         }
@@ -345,7 +348,7 @@ namespace KompasServer.Effects
             hangingEffectMap[condition].Add(hangingEff);
         }
 
-        public void RegisterHangingEffectFallOff(string condition, TriggerRestriction restriction, HangingEffect hangingEff)
+        public void RegisterHangingEffectFallOff(string condition, HangingEffect hangingEff)
         {
             Debug.Log($"Registering a new hanging effect to condition {condition}");
             if (!hangingEffectFallOffMap.ContainsKey(condition))

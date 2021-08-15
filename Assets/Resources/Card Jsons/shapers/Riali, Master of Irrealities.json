@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Riali, Master of Irrealities",
-	"effText":"Shape.\nWhen a friendly Shaper moves X, give them +X E.",
+	"effText":"Shape.\nWhen a friendly Shaper moves X spaces, give them +X E.",
 	"effects":[
 		{
             "blurb":"Empower the Shaper",

@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Wispipip",
-	"effText":"When turns start, reshuffle a dead Wisp and gain a pip. (You only get the pip if you reshuffled a Wisp.)",
+	"effText":"When turns start, discard->reshuffle a Wisp and gain a pip. (You only get the pip if you reshuffled a Wisp.)",
 	"effects":[
 		{
 			"triggerData":
@@ -32,6 +32,6 @@
 		}
 	],
 	"c":1,
-	"spellType":"Enchant",
+	"spellTypes":["Enchant"],
 	"subtypeText":"Enchant"
 }

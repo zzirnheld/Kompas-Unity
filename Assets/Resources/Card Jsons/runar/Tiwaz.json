@@ -10,12 +10,7 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Coords Fit Restriction"],
 					"cardRestriction":{
-						"cardRestrictions":["Is Character","Friendly","Board"]
-					},
-					"spaceRestriction":
-					{
-						"mustBeEmpty":false,
-						"spaceRestrictions":["In AOE"]
+						"cardRestrictions":["Is Character","Friendly","Board","In AOE"]
 					}
 				}
 			},
@@ -36,7 +31,8 @@
 		"normalRestrictions":["Cannot be Played Normally"]
 	},
 	"c":2,
-	"spellType":"Radial",
-	"subtypeText":"Radial 1 Rune",
-	"arg":1
+	"spellTypes":["Enchant","Radial"],
+	"subtypes":["Rune","Enchant","Radial"],
+	"subtypeText":"Radial 1 Rune Enchant",
+	"radius":1
 }

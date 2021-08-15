@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Dreammist",
-	"effText":"When I'm summoned adjacent to a Shaper, draw 1.",
+	"effText":"When I'm summoned adjacent to a Shaper, draw 1 card.",
 	"effects":[
 		{
 			"triggerData":

@@ -32,8 +32,8 @@
 	],
 	"fast":false,
 	"c":3,
-	"spellType":"Vanishing",
+	"spellTypes":["Vanishing"],
 	"subtypes":["Vanishing"],
 	"subtypeText":"Vanishing",
-	"arg":1
+	"duration":1
 }

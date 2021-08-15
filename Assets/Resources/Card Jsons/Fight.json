@@ -38,6 +38,6 @@
 	],
 	"fast":true,
 	"c":2,
-	"spellType":"Simple",
+	"spellTypes":["Simple"],
 	"subtypeText":"Simple"
 }

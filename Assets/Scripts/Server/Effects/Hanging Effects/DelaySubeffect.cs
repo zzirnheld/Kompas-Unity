@@ -12,9 +12,17 @@ namespace KompasServer.Effects
 
         protected override IEnumerable<HangingEffect> CreateHangingEffects()
         {
-            var delay = new DelayedHangingEffect(ServerGame, triggerRestriction, endCondition, 
-                fallOffCondition, CreateFallOffRestriction(Source),
-                numTimesToDelay, ServerEffect, indexToResume, EffectController, new List<GameCard>(Effect.Targets));
+            var delay = new DelayedHangingEffect(game: ServerGame,
+                                                 triggerRestriction: triggerRestriction,
+                                                 endCondition: endCondition,
+                                                 fallOffCondition: fallOffCondition,
+                                                 fallOffRestriction: CreateFallOffRestriction(Source),
+                                                 currentContext: Effect.CurrActivationContext,
+                                                 numTimesToDelay: numTimesToDelay,
+                                                 toResume: ServerEffect,
+                                                 indexToResumeResolution: indexToResume,
+                                                 controller: EffectController,
+                                                 targets: new List<GameCard>(Effect.Targets));
             return new List<HangingEffect>() { delay };
         }
     }

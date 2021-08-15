@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Spiritual Advice",
-	"effText":"Flashback.\nReshuffle X dead Spirits. Draw X.",
+	"effText":"Flashback.\nDicard->topdeck X Spirits. Draw 3 * X cards.",
 	"effects":[
 		{
 			"triggerData":
@@ -22,7 +22,7 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.TopdeckSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
@@ -31,13 +31,13 @@
 				},
 				{
 					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
-					"xMultiplier":1
+					"xMultiplier":3
 				}
 			]	
 		}
 	],
 	"keywords":["Flashback"],
 	"c":1,
-	"spellType":"Simple",
+	"spellTypes":["Simple"],
 	"subtypeText":"Simple"
 }

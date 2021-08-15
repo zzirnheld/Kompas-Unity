@@ -28,8 +28,8 @@
 	},
 	"c":1,
 	"unique":true,
-	"spellType":"Vanishing",
+	"spellTypes":["Vanishing"],
 	"subtypes":["Rune","Vanishing"],
 	"subtypeText":"Rune Vanishing",
-	"arg":1
+	"duration":1
 }

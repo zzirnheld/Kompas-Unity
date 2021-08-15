@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"A Frayed Knot",
-	"effText":"Ificate.\nDiscard your hand.",
+	"effText":"Ificate.\nDiscard your hand. (lol)",
 	"effects":[
 		{
 			"triggerData":
@@ -34,7 +34,7 @@
 	],
 	"keywords":["Ificate"],
 	"c":5,
-	"spellType":"Simple",
+	"spellTypes":["Simple"],
 	"subtypes":["Simple","Crazy Idea"],
 	"subtypeText":"Simple Crazy Idea Ificator"
 }

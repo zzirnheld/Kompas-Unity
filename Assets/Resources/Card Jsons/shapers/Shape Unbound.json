@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Shape Unbound",
-	"effText":"Annihilate an adjacent friendly Summoned Shaper. Deck-summon a Shaper.",
+	"effText":"Annihilate an adjacent friendly Summoned Shaper. Deck->summon a Shaper.",
 	"effects":[
 		{
 			"triggerData":
@@ -56,7 +56,7 @@
 	},
 	"fast":true,
 	"c":1,
-	"spellType":"Simple",
+	"spellTypes":["Simple"],
 	"subtypes":["Simple","Shaping"],
 	"subtypeText":"Simple Shaping"
 }

@@ -1,0 +1,26 @@
+{
+	"blurb":"Waterdweller",
+	"triggerData":
+	{
+		"blurb":"Waterdweller",
+		"triggerCondition":"Stack End",
+		"triggerRestriction":{
+			"triggerRestrictions":["This Card Fits Restriction"],
+			"cardRestriction":{
+				"cardRestrictions":["Board","Not Avatar","Not In AOE of Card Fitting Restriction"],
+				"inAOEOfRestriction":{
+					"cardRestrictions":["Subtypes Include"],
+					"subtypesInclude":["Water"]
+				}
+			}
+		}
+	},
+	"subeffects":[
+		{
+			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+		}
+	]	
+}

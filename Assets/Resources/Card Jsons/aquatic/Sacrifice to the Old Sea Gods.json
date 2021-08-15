@@ -1,0 +1,59 @@
+{
+	"cardType":83,
+	"cardName":"Sacrifice to the Old Sea Gods",
+	"effText":"Annihilate an adjacent friendly Aquatic card, then me. Deck->cast Water where it was. Draw 1.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"adjacent Aquatic card to annihilate",
+						"cardRestrictions":["Friendly","Board","Adjacent to Source","Subtypes Include"],
+                        "subtypesInclude":["Aquatic"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Tide that Shifts In",
+						"cardRestrictions":["Is Spell","Friendly","Deck","Can Be Played","Subtypes Include"],
+						"subtypesInclude":["Water"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+    "fast":true,
+	"c":1,
+	"spellTypes":["Simple"],
+	"subtypes":["Aquatic","Simple"],
+	"subtypeText":"Aquatic Simple"
+}

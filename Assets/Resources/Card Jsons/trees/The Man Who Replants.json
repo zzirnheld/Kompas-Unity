@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"The Man Who Replants",
-	"effText":"When turns start, you can pip revive a Tree, then give it -3 ES.",
+	"effText":"When turns start, pip revive a Tree at half cost, then give it -3 ES.",
 	"effects":[
 		{
 			"triggerData":
@@ -19,14 +19,16 @@
 					"cardRestriction":
 					{
 						"blurb":"Tree for the Man to Replant",
-						"cardRestrictions":["Subtypes Include","Is Character","Discard"],
-						"subtypesInclude":["Tree"]
+						"cardRestrictions":["Is Character","Discard","Subtypes Include","Can Be Played","Effect Controller can Afford Cost"],
+						"subtypesInclude":["Tree"],
+						"costDivisor":2
 					},
 					"xMultiplier":1
 				},
 				{
 					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
-					"xMultiplier":1
+					"xMultiplier":1,
+					"xDivisor":2
 				},
 				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",

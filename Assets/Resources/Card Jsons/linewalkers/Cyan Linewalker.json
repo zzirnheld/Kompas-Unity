@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Cyan Linewalker",
-	"effText":"Linewalk.\nWhen I move X spaces, move a non-Linewalker card X spaces.",
+	"effText":"Linewalk.\nWhen I move X spaces, move a distinct card X spaces.",
 	"effects":[
 		{
 			"blurb":"Cyan Linewalked",
@@ -18,8 +18,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Cyan to move",
-						"cardRestrictions":["Board","Subtypes Exclude"],
-						"subtypesExclude":["Linewalker"]
+						"cardRestrictions":["Board","Distinct Name from Source"]
 					}
 				},
 				{

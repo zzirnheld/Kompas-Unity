@@ -1,12 +1,12 @@
 {
 	"cardType":67,
 	"cardName":"XX - Judgement",
-	"effText":"When you draw X, I can kill an S ≤ X character.",
+	"effText":"When you draw X cards, kill an S <= X character.",
 	"effects":[
 		{
+			"blurb":"Judgement",
 			"triggerData":
 			{
-				"optional":true,
 				"blurb":"Kill an S <= X character? (X is the number of cards you just drew)",
 				"triggerCondition":"Draw",
 				"triggerRestriction":{

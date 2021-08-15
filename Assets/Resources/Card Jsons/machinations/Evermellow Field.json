@@ -38,7 +38,7 @@
 	"keywords":["Machinations Play","Machinations Reup"],	
 	"c":1,
 	"unique":true,
-	"spellType":"Radial",
+	"spellTypes":["Radial"],
 	"subtypeText":"Machination Enchant",
-	"arg":1
+	"radius":1
 }

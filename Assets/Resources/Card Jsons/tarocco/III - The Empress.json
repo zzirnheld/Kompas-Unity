@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"III - The Empress",
-	"effText":"Once each turn, when you draw X, you can hand-summon a character with S <= X.",
+	"effText":"Once each turn, when you draw X cards, you can hand-summon an S <= X character.",
 	"effects":[
 		{
 			"triggerData":

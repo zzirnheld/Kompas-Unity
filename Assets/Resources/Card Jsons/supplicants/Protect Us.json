@@ -45,6 +45,6 @@
 	],
 	"c":3,
 	"unique":true,
-	"spellType":"Simple",
+	"spellTypes":["Simple"],
 	"subtypeText":"Simple Plea"
 }

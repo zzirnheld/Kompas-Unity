@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Hailstrike Elemental",
-	"effText":"Weather Event.\nWhen I'm summoned, give -3 NESW to characters in Weather that can't move themselves. (That is, characters that have moved themselves at least as many spaces as they have N.)",
+	"effText":"Weather Event.\nWhen I'm summoned, give -3 NESW to characters in Weather that have fully moved. (Who moved themselves at least as many spaces as they have N.)",
 	"effects":[
 		{
             "blurb":"Hailstrike",

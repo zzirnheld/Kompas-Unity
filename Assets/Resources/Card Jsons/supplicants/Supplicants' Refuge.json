@@ -45,7 +45,7 @@
 		}
 	],
 	"c":3,
-	"spellType":"Radial",
+	"spellTypes":["Radial"],
 	"subtypeText":"Radial",
-	"arg":1
+	"radius":1
 }

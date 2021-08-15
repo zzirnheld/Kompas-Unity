@@ -5,7 +5,7 @@
 	"effects":[],
 	"keywords":["Weather"],
 	"c":1,
-	"spellType":"Radial",
+	"spellTypes":["Radial"],
 	"subtypeText":"Weather Radial",
-	"arg":1
+	"radius":1
 }

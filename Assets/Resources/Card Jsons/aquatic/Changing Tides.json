@@ -1,0 +1,49 @@
+{
+	"cardType":83,
+	"cardName":"Changing Tides",
+	"effText":"Move a Water spell up to 2 spaces. Draw 1.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Changing tide",
+						"cardRestrictions":["Board","Is Spell","Subtypes Include"],
+						"subtypesInclude":["Water"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"The tide moves",
+						"spaceRestrictions":["Empty","Distance to Source Fits X Restriction","Can Move Target to This Space"],
+                        "distanceXRestriction":{
+                            "xRestrictions":["<=X"]
+                        }
+					},
+                    "xModifier":2
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+	"c":1,
+	"spellTypes":["Simple"],
+	"subtypes":["Aquatic","Simple"],
+	"subtypeText":"Aquatic Simple"
+}

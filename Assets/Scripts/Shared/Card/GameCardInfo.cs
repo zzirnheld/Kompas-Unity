@@ -19,7 +19,7 @@ namespace KompasCore.Cards
         bool Summoned { get; }
         bool IsAvatar { get; }
         string SubtypeText { get; }
-        string SpellSubtype { get; }
+        string[] SpellSubtypes { get; }
         GameCard AugmentedCard { get; }
         IEnumerable<GameCard> Augments { get; }
         bool KnownToEnemy { get; }
@@ -63,8 +63,9 @@ namespace KompasCore.Cards
     {
         public GameCard Card { get; }
         public char CardType { get; }
-        public string SpellSubtype { get; }
-        public int Arg { get; }
+        public string[] SpellSubtypes { get; }
+        public int Radius { get; }
+        public int Duration { get; }
 
         public CardLocation Location { get; }
         public int IndexInList { get; }
@@ -106,8 +107,9 @@ namespace KompasCore.Cards
             IndexInList = card.IndexInList;
             CardName = card.CardName;
             CardType = card.CardType;
-            SpellSubtype = card.SpellSubtype;
-            Arg = card.Arg;
+            SpellSubtypes = card.SpellSubtypes;
+            Radius = card.Radius;
+            Duration = card.Duration;
             Controller = card.Controller;
             Owner = card.Owner;
             Summoned = card.Summoned;
@@ -145,7 +147,7 @@ namespace KompasCore.Cards
             && card.Location == CardLocation.Field && Position.AdjacentTo(card.Position);
         public bool IsAdjacentTo(Space space) => Location == CardLocation.Field && Position.AdjacentTo(space);
 
-        public bool SpaceInAOE(Space space) => SpellSubtype == CardBase.RadialSubtype && DistanceTo(space) <= Arg;
+        public bool SpaceInAOE(Space space) => SpellSubtypes.Any(s => s == CardBase.RadialSubtype) && DistanceTo(space) <= Radius;
         public bool CardInAOE(IGameCardInfo c) => SpaceInAOE(c.Position);
 
         public bool SameColumn(Space space) => Location == CardLocation.Field && Position.SameColumn(space);
@@ -212,7 +214,7 @@ namespace KompasCore.Cards
         }
 
         public int ShortestPath(Space space, Func<GameCard, bool> throughPredicate)
-            => Card.Game.boardCtrl.ShortestPath(Card, space, throughPredicate);
+            => Card.Game.boardCtrl.ShortestPath(Card.Position, space, throughPredicate);
         #endregion distance/adjacency
     }
 }

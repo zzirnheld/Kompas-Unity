@@ -28,6 +28,22 @@ public struct Space
     public int DistanceTo(Space other) => Math.Max(Math.Abs(x - other.x), Math.Abs(y - other.y));
 
     public bool AdjacentTo(Space other) => DistanceTo(other) == 1;
+    public IEnumerable<Space> AdjacentSpaces
+    {
+        get
+        {
+            List<Space> list = new List<Space>();
+            for (int x = this.x - 1; x <= this.x + 1; x++)
+            {
+                for (int y = this.y - 1; y <= this.y + 1; y++)
+                {
+                    Space s = (x, y);
+                    if (s.Valid) list.Add((x, y));
+                }
+            }
+            return list;
+        }
+    }
 
     public bool SameColumn(Space other) => x - y == other.x - other.y;
     public bool SameDiagonal(Space other) => x == other.x || y == other.y;

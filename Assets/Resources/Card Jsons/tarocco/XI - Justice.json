@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"XI - Justice",
-	"effText":"Once each friendly turn, if your hand is smaller than an enemy’s, you can draw the difference.",
+	"effText":"Once each friendly turn, if your hand has X fewer cards than an enemy, you can draw X cards.",
 	"effects":[
 		{
 			"activationRestriction":{

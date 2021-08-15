@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Evasive Ectoplasm",
-	"effText":"Shape.\nThe first fight each round, if I’m fighting a WX character, give them -XW for the fight.",
+	"effText":"Shape.\nThe first time each round I fight a character, set X to their W. Give them -X W for that fight.",
 	"effects":[
 		{
 			"triggerData":
@@ -28,7 +28,7 @@
 					"wMultiplier":-1,
 					"endCondition":"Battle End",
 					"triggerRestriction":{
-						"triggerRestrictions":["This Card Triggered"]
+						"triggerRestrictions":["Contexts Stackables Match"]
 					}
 				}
 			]	

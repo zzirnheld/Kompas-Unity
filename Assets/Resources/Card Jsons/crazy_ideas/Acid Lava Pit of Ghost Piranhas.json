@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Acid Lava Pit of Ghost Piranhas",
-	"effText":"When another character arrives adjacent to me, annihilate me to give them -11E.",
+	"effText":"When another character arrives adjacent to me, annihilate me. Give them -11 E.",
 	"effects":[
 		{
 			"triggerData":

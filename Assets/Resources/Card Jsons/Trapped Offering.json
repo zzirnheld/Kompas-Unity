@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Trapped Offering",
-	"effText":"When I die having SX, annihilate me, gain X/2 pips, and draw 1.",
+	"effText":"When I die having X S, annihilate me, gain X/2 pips, and draw 1.",
 	"effects":[
 		{
 			"triggerData":

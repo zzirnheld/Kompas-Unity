@@ -53,7 +53,7 @@ namespace KompasServer.Cards
                 if (Location == CardLocation.Hand && value != CardLocation.Hand && !KnownToEnemy)
                     ServerController.ServerEnemy.ServerNotifier.NotifyDecrementHand();
 
-                if(Location != value) ResetCard();
+                if (Location != value) ResetCard();
 
                 base.Location = value;
                 switch (Location)

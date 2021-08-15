@@ -27,6 +27,6 @@
 	],
 	"c":1,
 	"unique":true,
-	"spellType":"Enchant",
+	"spellTypes":["Enchant"],
 	"subtypeText":"Enchant Plea"
 }

@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Dreamhook",
-	"effText":"Move an adjacent Shaper to a space adjacent to an enemy character. They fight.",
+	"effText":"Move an adjacent Shaper to a space adjacent to an enemy character. The Shaper attacks the enemy.",
 	"effects":[
 		{
 			"triggerData":
@@ -59,7 +59,7 @@
 	},
 	"fast":false,
 	"c":4,
-	"spellType":"Simple",
+	"spellTypes":["Simple"],
 	"subtypes":["Simple","Shaping"],
 	"subtypeText":"Simple Shaping"
 }

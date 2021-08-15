@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Figurehead Queen",
-	"effText":"When you draw X, give me +XC.\nAfter I'm cast, delay 1 turn.\nSet X to my C. Deck-summon an S <= X Tarocco.",
+	"effText":"When you draw X cards, give me +XC.\nAfter I'm cast, delay 1 turn.\nSet X to my C. Deck->summon an S <= X Tarocco.",
 	"effects":[
 		{
 			"triggerData":
@@ -66,8 +66,8 @@
 		}
 	],
 	"c":3,
-	"spellType":"Delayed",
+	"spellTypes":["Delayed"],
 	"subtypes":["Tarocco","Delayed"],
 	"subtypeText":"Tarocco Delayed",
-	"arg":1
+	"duration":1
 }

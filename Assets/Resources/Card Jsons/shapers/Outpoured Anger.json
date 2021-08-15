@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Outpoured Anger",
-	"effText":"Shaper.\nWhen a distinct Shaper moves, I move adjacent to them.",
+	"effText":"Shaper.\nWhen a distinct Shaper moves, move me adjacent to them.",
 	"effects":[
 		{
 			"triggerData":

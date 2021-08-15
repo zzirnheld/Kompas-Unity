@@ -44,7 +44,7 @@ namespace KompasServer.Effects
             {
                 ServerGame.EffectsController.RegisterHangingEffect(endCondition, eff);
                 if(!string.IsNullOrEmpty(fallOffCondition))
-                    ServerGame.EffectsController.RegisterHangingEffectFallOff(fallOffCondition, eff.FallOffRestriction, eff);
+                    ServerGame.EffectsController.RegisterHangingEffectFallOff(fallOffCondition, eff);
             }
 
             //after all that's done, make it do the next subeffect

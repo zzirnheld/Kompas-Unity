@@ -96,7 +96,7 @@
 		}
 	],
 	"c":5,
-	"spellType":"Radial",
+	"spellTypes":["Radial"],
 	"subtypeText":"Altar Radial",
-	"arg":1
+	"radius":1
 }
