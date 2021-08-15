@@ -19,7 +19,7 @@ namespace KompasCore.Effects
         public const string EqualsEffectX = "=X";
         public const string LessThanEqualEffectX = "<=X";
 
-        public string[] xRestrictions = new string[0];
+        public string[] xRestrictions;
 
         public int constant;
 

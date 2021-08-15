@@ -7,7 +7,6 @@ using UnityEngine;
 
 namespace KompasCore.Effects
 {
-    [Serializable]
     public class TriggerRestriction
     {
         public Game Game { get; private set; }

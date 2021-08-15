@@ -6,7 +6,6 @@ using UnityEngine;
 
 namespace KompasCore.Effects
 {
-    [Serializable]
     public class CardRestriction
     {
         [NonSerialized]
@@ -152,18 +151,18 @@ namespace KompasCore.Effects
         #endregion restrictions
 
         //because JsonUtility will fill in all values with defaults if not present
-        public string[] cardRestrictions = new string[0];
+        public string[] cardRestrictions;
 
         public string nameIs;
-        public string[] subtypesInclude = new string[0];
-        public string[] subtypesExclude = new string[0];
+        public string[] subtypesInclude;
+        public string[] subtypesExclude;
         public int constant;
         public CardLocation[] locations;
-        public string[] spellSubtypes = new string[0];
+        public string[] spellSubtypes;
         public int costMultiplier = 1;
         public int costDivisor = 1;
         public int cSpaces;
-        public string[] adjacencySubtypes = new string[0];
+        public string[] adjacencySubtypes;
         public int spaceRestrictionIndex;
 
         public CardValue cardValue;
@@ -177,7 +176,7 @@ namespace KompasCore.Effects
         public CardRestriction inAOEOfRestriction;
 
         public GameCard Source { get; private set; }
-        public Player Controller => Source?.Controller;
+        public Player Controller => Source == null ? null : Source.Controller;
         public Effect Effect { get; private set; }
 
         public string blurb = "";

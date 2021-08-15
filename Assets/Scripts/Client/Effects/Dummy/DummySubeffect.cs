@@ -2,6 +2,7 @@
 using KompasCore.Effects;
 using KompasCore.GameCore;
 using KompasClient.GameCore;
+using Newtonsoft.Json;
 
 namespace KompasClient.Effects
 {
@@ -16,7 +17,7 @@ namespace KompasClient.Effects
 
         public static DummySubeffect FromJson(string json, ClientEffect parent, int subeffIndex)
         {
-            var subeff = JsonUtility.FromJson<Subeffect>(json);
+            var subeff = JsonConvert.DeserializeObject<Subeffect>(json);
 
             Debug.Log($"Creating subeffect from json {json}");
             DummySubeffect toReturn;

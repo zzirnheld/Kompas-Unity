@@ -1,13 +1,13 @@
 ﻿using KompasCore.Cards;
 using KompasCore.GameCore;
 using System.Collections.Generic;
+using System;
 
 namespace KompasCore.Effects
 {
     /// <summary>
     /// Effects will only be resolved on server. Clients will just get to know what effects they can use
     /// </summary>
-    [System.Serializable]
     public abstract class Effect : IStackable
     {
         public abstract Game Game { get; }
@@ -34,6 +34,7 @@ namespace KompasCore.Effects
         public int X = 0;
 
         //Triggering and Activating
+        [NonSerialized]
         public TriggerData triggerData;
         public abstract Trigger Trigger { get; }
         public ActivationRestriction activationRestriction;

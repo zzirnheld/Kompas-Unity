@@ -6,7 +6,6 @@ using UnityEngine;
 
 namespace KompasCore.Effects
 {
-    [Serializable]
     public class CardValue
     {
         #region values

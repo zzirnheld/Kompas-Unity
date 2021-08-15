@@ -7,7 +7,6 @@ using UnityEngine;
 
 namespace KompasCore.Effects
 {
-    [Serializable]
     public class SpaceRestriction
     {
         public Subeffect Subeffect { get; private set; }
