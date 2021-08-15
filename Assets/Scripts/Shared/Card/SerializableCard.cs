@@ -25,8 +25,9 @@ namespace KompasCore.Cards
         public int s;
         public int w;
         public int c;
-        public string spellType;
-        public int arg;
+        public string[] spellTypes;
+        public int radius;
+        public int duration;
         public int a;
         public bool fast;
         public bool unique;

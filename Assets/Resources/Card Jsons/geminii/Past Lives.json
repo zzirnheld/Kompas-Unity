@@ -24,7 +24,7 @@
 	],
 	"fast":true,
 	"c":3,
-	"spellType":"Simple",
+	"spellTypes":["Simple"],
 	"subtypes":["Simple"],
 	"subtypeText":"Simple"
 }

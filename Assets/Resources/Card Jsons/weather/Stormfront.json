@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Stormfront",
-	"effText":"Annihilate a friendly adjacent Weather encompassing X Skyknight. Deck->cast a copy of that Weather, up to X spaces from me, ignoring placement rules.",
+	"effText":"Annihilate a friendly adjacent Weather encompassing X Skyknights. Choose an empty space up to X spaces from me. Deck->cast a copy of that Weather there",
 	"effects":[
 		{
 			"triggerData":
@@ -62,6 +62,6 @@
 	],
 	"fast":true,
 	"c":1,
-	"spellType":"Simple",
+	"spellTypes":["Simple"],
 	"subtypeText":"Simple"
 }

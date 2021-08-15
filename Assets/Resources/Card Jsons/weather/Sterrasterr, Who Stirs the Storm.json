@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Sterrasterr, Who Stirs the Storm",
-	"effText":"When you cast Radial Weather, move an enemy character to a space there.",
+	"effText":"When you cast Radial Weather, move an enemy character to a space in it.",
 	"effects":[
 		{
 			"triggerData":

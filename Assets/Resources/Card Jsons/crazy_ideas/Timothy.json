@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Timothy",
-	"effText":"The first time each turn you hand-discard a Crazy Idea, pay 2 pips and discard-play it.",
+	"effText":"The first time each turn you hand->discard a Crazy Idea, pay 2 pips and discard-play it.",
 	"effects":[
 		{
 			"triggerData":
@@ -41,8 +41,8 @@
 		}
 	],
 	"n":1,
-	"e":5,
-	"s":6,
+	"e":2,
+	"s":3,
 	"w":3,
 	"subtypeText":"Supreme Lab Assistant Lord of Labcoats Deacon of Decontamination"
 }

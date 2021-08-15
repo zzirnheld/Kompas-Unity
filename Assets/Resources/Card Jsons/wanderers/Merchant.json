@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Merchant",
-	"effText":"Wanderer.\nWhen I'm summoned, draw.",
+	"effText":"Wanderer.\nWhen I'm summoned, draw 1 card.",
 	"effects":[
 		{
 			"triggerData":

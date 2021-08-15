@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Weird Idea That is Also",
-	"effText":"Once each friendly turn, you can give me -1 E, discard a Crazy Idea, and give another character +1 W.",
+	"effText":"Once each friendly turn, you can give me -1 E. Hand->discard a Crazy Idea. Give another character +1 W.",
 	"effects":[
 		{
 			"activationRestriction":{

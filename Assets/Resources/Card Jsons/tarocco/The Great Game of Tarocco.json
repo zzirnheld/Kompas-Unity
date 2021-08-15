@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"The Great Game of Tarocco",
-	"effText":"Set X to the number of friendly Tarocco. Draw X.",
+	"effText":"Set X to the number of friendly Tarocco. Draw X cards.",
 	"effects":[
 		{
 			"triggerData":
@@ -29,8 +29,8 @@
 		}
 	],
 	"fast":true,
-	"c":4,
-	"spellType":"Simple",
+	"c":3,
+	"spellTypes":["Simple"],
 	"subtypes":["Tarocco","Simple"],
 	"subtypeText":"Tarocco Simple"
 }

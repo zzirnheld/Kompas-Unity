@@ -12,9 +12,9 @@ namespace KompasServer.Effects
         private readonly GameCard target;
 
         public HangingDiscardEffect(ServerGame serverGame, TriggerRestriction triggerRestriction, string endCondition,
-            string fallOffCondition, TriggerRestriction fallOffRestriction,
+            string fallOffCondition, TriggerRestriction fallOffRestriction, ActivationContext currentContext,
             GameCard target)
-            : base(serverGame, triggerRestriction, endCondition, fallOffCondition, fallOffRestriction)
+            : base(serverGame, triggerRestriction, endCondition, fallOffCondition, fallOffRestriction, currentContext)
         {
             this.target = target;
         }

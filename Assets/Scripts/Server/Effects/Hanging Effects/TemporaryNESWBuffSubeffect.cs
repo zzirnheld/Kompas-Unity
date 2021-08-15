@@ -1,14 +1,15 @@
 ﻿using KompasCore.Cards;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace KompasServer.Effects
 {
     public class TemporaryNESWBuffSubeffect : TemporaryCardChangeSubeffect
     {
-        public int nBuff = 0;
-        public int eBuff = 0;
-        public int sBuff = 0;
-        public int wBuff = 0;
+        public int nModifier = 0;
+        public int eModifier = 0;
+        public int sModifier = 0;
+        public int wModifier = 0;
 
         public int nMultiplier = 0;
         public int eMultiplier = 0;
@@ -17,13 +18,18 @@ namespace KompasServer.Effects
 
         protected override IEnumerable<HangingEffect> CreateHangingEffects()
         {
-            var temp = new TemporaryNESWBuff(ServerGame, triggerRestriction, endCondition, 
-                fallOffCondition, CreateFallOffRestriction(Target),
-                Target,
-                nBuff + Effect.X * nMultiplier,
-                eBuff + Effect.X * eMultiplier,
-                sBuff + Effect.X * sMultiplier,
-                wBuff + Effect.X * wMultiplier);
+            Debug.Log($"Creating temp NESW buff effect during context {Effect.CurrActivationContext}");
+            var temp = new TemporaryNESWBuff(game: ServerGame,
+                                             triggerRestriction: triggerRestriction,
+                                             endCondition: endCondition,
+                                             fallOffCondition: fallOffCondition,
+                                             fallOffRestriction: CreateFallOffRestriction(Target),
+                                             currentContext: Effect.CurrActivationContext,
+                                             buffRecipient: Target,
+                                             nBuff: nModifier + Effect.X * nMultiplier,
+                                             eBuff: eModifier + Effect.X * eMultiplier,
+                                             sBuff: sModifier + Effect.X * sMultiplier,
+                                             wBuff: wModifier + Effect.X * wMultiplier);
 
             return new List<HangingEffect>() { temp };
         }

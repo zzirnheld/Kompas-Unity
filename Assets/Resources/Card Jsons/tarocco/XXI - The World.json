@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"XXI - The World",
-	"effText":"When a character dies, reshuffle them, give friendly characters +1 EW, and draw 1.",
+	"effText":"When a character dies, reshuffle them. Draw 1 card. Give characters adjacent to where they died +1 EW.",
 	"effects":[
 		{
 			"triggerData":
@@ -11,7 +11,7 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":{
-						"cardRestrictions":["Board"]
+						"cardRestrictions":["Board","Is Character"]
 					}
 				}
 			},
@@ -23,16 +23,19 @@
 					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
 				},
 				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
+				},
+				{
 					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Board","Friendly"]
+						"cardRestrictions":["Is Character","Board","Adjacent to Coords"]
 					},
 					"eMod":1,
 					"wMod":1
-				},
-				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
 			]
 		}

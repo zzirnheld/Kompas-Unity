@@ -1,0 +1,50 @@
+{
+	"cardType":67,
+	"cardName":"Raincaller Carp",
+	"effText":"Waterdweller (but NOT Waterborn).\nWhen I'm summoned, pip deck->cast a Water spell.",
+	"effects":[
+		{
+			"blurb":"Call Rain",
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose":1,
+					"cardRestriction":
+					{
+						"blurb":"RAIN PLEASE",
+						"cardRestrictions":["Subtypes Include","Friendly","Deck","Is Spell","Can Be Played","Effect Controller can Afford Cost"],
+						"subtypesInclude":["Water"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"RAAAAAAAAAAIN!",
+						"spaceRestrictions":["Can Play Target to This Space"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"keywords":["Waterdweller"],
+	"n":2,
+	"e":4,
+	"s":2,
+	"w":2,
+	"subtypeText":"Aquatic Fish"
+}

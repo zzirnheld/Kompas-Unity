@@ -24,8 +24,8 @@
 		}
 	],
 	"c":3,
-	"spellType":"Radial",
+	"spellTypes":["Radial"],
 	"subtypes":["Radial"],
 	"subtypeText":"Radial",
-	"arg":1
+	"radius":1
 }

@@ -1,0 +1,71 @@
+{
+	"cardType":67,
+	"cardName":"Seigh Lorre, the Legendary Fisherman",
+	"effText":"Waterborn.\nWhen turns start, move a card in Water through spaces in Water to another empty space. (The card you move can be Water, if you want.)",
+	"effects":[
+		{
+            "blurb":"Sail",
+			"triggerData":
+			{
+				"blurb":"Activate",
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"what will sail",
+						"cardRestrictions":["Board","In AOE of Card Fitting Restriction"],
+						"inAOEOfRestriction":{
+							"cardRestrictions":["Subtypes Include"],
+							"subtypesInclude":["Water"]
+						}
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where to sail them to",
+						"spaceRestrictions":["Can Move Target to This Space","Connected to Target by Spaces Fitting Restriction"],
+                        "spaceConnectednessRestriction":
+                        {
+                            "spaceRestrictions":["In AOE Of"],
+                            "inAOEOfRestriction":{
+                                "cardRestrictions":["Subtypes Include"],
+                                "subtypesInclude":["Water"]
+                            }
+                        }
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+	"PlayRestriction":{
+		"normalRestrictions":["Default Normal Restrictions","Space Must Fit Restriction"],
+		"normalRestrictionsToIgnore":["Adjacent to Friendly Card"],
+		"effectRestrictions":["Default Effect Restrictions","Space Must Fit Restriction"],
+		"effectRestrictionsToIgnore":["Adjacent to Friendly Card"],
+        "spaceRestriction":{
+            "spaceRestrictions":["In AOE Of"],
+            "inAOEOfRestriction":
+            {
+                "cardRestrictions":["Subtypes Include"],
+                "subtypesInclude":["Water"]
+            }
+        }
+	},
+	"unique":true,
+	"n":3,
+	"e":3,
+	"s":3,
+	"w":3,
+	"subtypeText":"Aquatic Person"
+}

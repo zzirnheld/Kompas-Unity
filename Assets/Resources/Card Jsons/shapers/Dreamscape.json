@@ -32,7 +32,7 @@
 	],
 	"fast":true,
 	"c":3,
-	"spellType":"Enchant",
+	"spellTypes":["Enchant"],
 	"subtypes":["Enchant","Shaping"],
 	"subtypeText":"Enchant Shaping"
 }

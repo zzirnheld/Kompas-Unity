@@ -36,6 +36,6 @@
 		}
 	],
 	"c":7,
-	"spellType":"Enchant",
+	"spellTypes":["Enchant"],
 	"subtypeText":"Runar Enchant"
 }

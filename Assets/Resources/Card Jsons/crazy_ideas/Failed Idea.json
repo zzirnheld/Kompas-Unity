@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Failed Idea",
-	"effText":"When you discard an Ificator, mill a Crazy Idea and kill me. (Since you mill before killing me, you still get to mill if I’m dead by the time my ability resolves.)",
+	"effText":"When you discard an Ificator, mill a Crazy Idea, then discard me (from wherever I am by then).",
 	"effects":[
 		{
 			"triggerData":

@@ -1,0 +1,11 @@
+{
+	"cardType":83,
+	"cardName":"Nuisance Flooding",
+	"effText":"(Vanishes after 4 turns.)",
+	"effects":[],
+	"c":2,
+	"spellTypes":["Vanishing","Radial"],
+	"duration":4,
+    "radius":2,
+	"subtypeText":"Radial 2 Vanishing 4 Water"
+}

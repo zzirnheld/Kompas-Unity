@@ -51,7 +51,7 @@
 	],
 	"keywords":["Comeback Play"],
 	"c":1,
-	"spellType":"Vanishing",
-	"arg":1,
+	"spellTypes":["Vanishing"],
+	"duration":1,
 	"subtypeText":"Sportsball Play Vanishing"
 }

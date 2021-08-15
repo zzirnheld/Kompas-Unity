@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Modular Golem Cores",
-	"effText":"Once each turn, you can choose one:\nDetach a Golem Core to search your deck for a Golem Core.\nPip hand-cast a Golem Core.",
+	"effText":"Once each turn, you can choose one:\nDetach a Golem Core to search your deck for a Golem Core.\nPip hand->apply a Golem Core.",
 	"effects":[
 		{
 			"blurb":"Forget That Mess",
@@ -80,7 +80,7 @@
 	],
 	"fast":false,
 	"c":1,
-	"spellType":"Enchant",
+	"spellTypes":["Enchant"],
 	"subtypes":["Enchant"],
 	"subtypeText":"Enchant"
 }

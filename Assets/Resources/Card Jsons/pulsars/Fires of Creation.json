@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Fires of Creation",
-	"effText":"When you summon a Pulsar with more S than your Avatar, gain a pip.\nWhen you summon a Pulsar with less S than your Avatar, draw 1.",
+	"effText":"When you summon a Pulsar with more S than your Avatar, gain a pip.\nWhen you summon a Pulsar with less S than your Avatar, draw 1 card.",
 	"effects":[
 		{
 			"triggerData":
@@ -43,6 +43,6 @@
 	],
 	"c":3,
 	"unique":true,
-	"spellType":"Enchant",
+	"spellTypes":["Enchant"],
 	"subtypeText":"Enchant"
 }

@@ -50,7 +50,7 @@
 	],
 	"fast":false,
 	"c":1,
-	"spellType":"Simple",
+	"spellTypes":["Simple"],
 	"subtypes":["Tarocco","Simple"],
 	"subtypeText":"Tarocco Simple"
 }

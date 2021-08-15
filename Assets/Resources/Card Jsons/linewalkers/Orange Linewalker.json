@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Orange Linewalker",
-	"effText":"Linewalk.\nWhen I move X spaces, each player can reshuffle their hand and draw X. (Players whose hand is empty can't draw.)",
+	"effText":"Linewalk.\nWhen I move X spaces, each player can reshuffle their hand and draw X cards. (Players whose hand is empty can't draw.)",
 	"effects":[
 		{
 			"blurb":"Orange Linewalked",

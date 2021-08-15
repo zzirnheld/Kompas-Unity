@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using KompasCore.UI;
 using UnityEngine.UI;
+using System.Linq;
 
 namespace KompasCore.Cards
 {
@@ -151,7 +152,7 @@ namespace KompasCore.Cards
                     card.gameObject.transform.SetParent(card.Game.boardObject.transform);
                     MoveTo(card.Position);
                     SetRotation();
-                    if (card.CardType == 'S' && card.SpellSubtype == CardBase.RadialSubtype) aoeController.Show(card.Arg);
+                    if (card.CardType == 'S' && card.SpellSubtypes.Any(s => s == CardBase.RadialSubtype)) aoeController.Show(card.Radius);
                     gameObject.SetActive(true);
                     break;
                 case CardLocation.Hand:

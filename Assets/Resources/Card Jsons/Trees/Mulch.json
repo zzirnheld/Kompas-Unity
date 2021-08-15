@@ -1,0 +1,46 @@
+{
+	"cardType":83,
+	"cardName":"Mulch",
+	"effText":"When a Tree dies, heal friendly Trees.",
+	"effects":[
+		{
+            "blurb":"Mulch",
+			"triggerData":
+			{
+				"blurb":"Mulch",
+				"triggerCondition":"Discard",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"cardRestriction":
+					{
+						"cardRestrictions":["Subtypes Include","Board"],
+						"subtypesInclude":["Tree"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"for Haemopoten to draw",
+						"cardRestrictions":["Friendly","Board","Subtypes Include"],
+						"subtypesInclude":["Tree"]
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.HealSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"jumpTo":1
+				}
+			]	
+		}
+	],
+	"c":1,
+	"spellTypes":["Enchant"],
+	"subtypeText":"Enchant"
+}

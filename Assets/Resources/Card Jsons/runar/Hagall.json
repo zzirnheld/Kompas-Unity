@@ -28,8 +28,8 @@
 		"normalRestrictions":["Cannot be Played Normally"]
 	},
 	"c":2,
-	"spellType":"Radial",
+	"spellTypes":["Radial"],
 	"subtypes":["Rune","Radial"],
 	"subtypeText":"Rune Radial",
-	"arg":1
+	"radius":1
 }

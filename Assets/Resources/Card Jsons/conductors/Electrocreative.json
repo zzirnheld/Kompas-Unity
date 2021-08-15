@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Electrocreative",
-	"effText":"Charge X: Draw 1 and give me +X E.",
+	"effText":"Charge X: Draw 1 card and give me +X E.",
 	"effects":[
 		{
 			"triggerData":

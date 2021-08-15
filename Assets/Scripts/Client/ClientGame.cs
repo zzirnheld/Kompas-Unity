@@ -92,6 +92,11 @@ namespace KompasClient.GameCore
             {
                 base.Leyload = value;
                 clientUICtrl.Leyload = Leyload;
+                //Refresh next turn pips shown.
+                foreach (var player in Players)
+                {
+                    player.Pips = player.Pips;
+                }
             }
         }
 

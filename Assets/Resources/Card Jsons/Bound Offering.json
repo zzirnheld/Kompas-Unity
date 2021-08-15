@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Bound Offering",
-	"effText":"When I die having SX, annihilate me and gain X/2 pips.",
+	"effText":"When I die having X S, annihilate me and gain X/2 pips.",
 	"effects":[
 		{
 			"triggerData":

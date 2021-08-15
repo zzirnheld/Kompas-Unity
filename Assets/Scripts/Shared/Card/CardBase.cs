@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Text;
 using UnityEngine;
 
@@ -54,8 +55,9 @@ namespace KompasCore.Cards
         public bool Unique { get; private set; }
 
         public string Subtext { get; private set; }
-        public string SpellSubtype { get; private set; }
-        public int Arg { get; private set; }
+        public string[] SpellSubtypes { get; private set; }
+        public int Radius { get; private set; }
+        public int Duration { get; private set; }
         public char CardType { get; private set; }
         public string CardName { get; private set; }
         public string EffText { get; private set; }
@@ -84,11 +86,11 @@ namespace KompasCore.Cards
                 if(CardType == 'A') return AugmentSubtypes == null ? "" : $"Augment: {string.Join(",", AugmentSubtypes)}";
                 else if (CardType == 'S')
                 {
-                    switch (SpellSubtype)
+                    switch (SpellSubtypes.FirstOrDefault())
                     {
-                        case RadialSubtype: return $" {Arg} spaces";
-                        case DelayedSubtype: return $" {Arg} turns";
-                        case VanishingSubtype: return $" {Arg} turns";
+                        case RadialSubtype: return $" {Radius} spaces";
+                        case DelayedSubtype: return $" {Duration} turns";
+                        case VanishingSubtype: return $" {Duration} turns";
                         default: return "";
                     }
                 }
@@ -133,10 +135,11 @@ namespace KompasCore.Cards
             //else Debug.Log("Names match. Set Info not updating pics.");
 
             Subtext = card.subtext;
-            SpellSubtype = card.spellType;
+            SpellSubtypes = card.spellTypes;
             Fast = card.fast;
             Unique = card.unique;
-            Arg = card.arg;
+            Radius = card.radius;
+            Duration = card.duration;
             CardType = card.cardType;
             CardName = card.cardName;
             EffText = card.effText;

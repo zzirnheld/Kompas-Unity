@@ -41,6 +41,6 @@
 	"keywords":["Machinations Play","Machinations Reup"],	
 	"c":1,
 	"unique":true,
-	"spellType":"Enchant",
+	"spellTypes":["Enchant"],
 	"subtypeText":"Machination Enchant"
 }

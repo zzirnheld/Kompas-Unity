@@ -6,6 +6,7 @@ namespace KompasCore.Effects
     public abstract class Trigger
     {
         public const string TurnStart = "Turn Start";
+        public const string StackEnd = "Stack End";
 
         //change card stats
         public const string NESWChange = "NESW Change";
@@ -55,7 +56,7 @@ namespace KompasCore.Effects
         public const string Revealed = "Revealed";
 
         public static readonly string[] TriggerConditions = {
-            TurnStart,
+            TurnStart, StackEnd,
             NESWChange, Activate, Deactivate, NChange, EChange, SChange, WChange, CChange, AChange,
             NSet, ESet, SSet, WSet, CSet, ASet,
             Defends, Attacks, TakeCombatDamage, DealCombatDamage, Battles, BattleEnds, Negate,

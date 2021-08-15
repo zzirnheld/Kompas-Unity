@@ -52,6 +52,6 @@
 		}
 	],
 	"c":2,
-	"spellType":"Enchant",
-	"subtypeText":""
+	"spellTypes":["Enchant"],
+	"subtypeText":"Enchant"
 }

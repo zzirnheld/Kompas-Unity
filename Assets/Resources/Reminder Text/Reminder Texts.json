@@ -2,7 +2,7 @@
 	"keywordReminderTexts":[
 		{
 			"keyword":"Linewalk.",
-			"reminder":"During friendly turns, if I can still move spaces, you can count me as moving as many spaces as I can and move me anywhere along my diagonal."
+			"reminder":"During friendly turns, you can count me as moving as many spaces as I can to move me through empty spaces to any space along my diagonal."
 		},
 		{
 			"keyword":"Shape.",
@@ -83,6 +83,18 @@
 		{
 			"keyword":"Charge X:",
 			"reminder":"When I'm activated by a card connected to me by X Conductors..."
+		},
+		{
+			"keyword":"Agile",
+			"reminder":"I can move during enemy turns. (Otherwise, the same rules apply as normal: nothing must be happening, I must have enough N, etc.)"
+		},
+		{
+			"keyword":"Waterborn",
+			"reminder":"Must be played in Water, but doesn't have to be played adjacent to a friendly card."
+		},
+		{
+			"keyword":"Waterdweller",
+			"reminder":"When nothing is happening, if I'm not in Water, kill me."
 		}
 	]
 }

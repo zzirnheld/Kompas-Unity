@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Fog",
-	"effText":"Weather.\nWhen a character arrives here, their controller can pay a pip to draw 1.",
+	"effText":"Weather.\nWhen a character arrives here, their controller can pay a pip to draw 1 card.",
 	"effects":[
 		{
 			"triggerData":
@@ -51,7 +51,7 @@
 	"keywords":["Weather"],
 	"unique":true,
 	"c":6,
-	"spellType":"Radial",
+	"spellTypes":["Radial"],
 	"subtypeText":"Weather Radial",
-	"arg":1
+	"radius":1
 }

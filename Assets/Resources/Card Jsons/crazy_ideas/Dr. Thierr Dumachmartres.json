@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Dr. Thierr Dumachmartres",
-	"effText":"Once each round, you can discard 1 to draw 1.",
+	"effText":"Once each round, you can discard 1 card. Draw 1 card.",
 	"effects":[
 		{
 			"activationRestriction":{

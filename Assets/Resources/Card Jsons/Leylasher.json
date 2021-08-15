@@ -9,7 +9,11 @@
 				"blurb":"Leybind",
 				"triggerCondition":"Move",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Max Per Turn"]
+					"triggerRestrictions":["This Card in Play","Max Per Turn","Triggerer Fits Restriction"],
+					"cardRestriction":
+					{
+						"cardRestrictions":["Friendly","Is Character"]
+					}
 				}
 			},
 			"subeffects":[

@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Linewalk",
-	"effText":"Move a friendly Linewalker to an empty space on their diagonal.",
+	"effText":"Move a friendly Linewalker though empty spaces to an empty space on their diagonal.",
 	"effects":[
 		{
 			"blurb":"Simple Effect",
@@ -27,7 +27,16 @@
 					"spaceRestriction":
 					{
 						"blurb":"to Linewalk to",
-						"spaceRestrictions":["Empty","On Target's Diagonal"]
+						"spaceRestrictions":["Empty","On Target's Diagonal","Can Move Target to This Space","Connected to Target by Spaces Fitting Restriction"],
+                        "spaceConnectednessRestriction":
+                        {
+							"mustBeEmpty":true,
+                            "spaceRestrictions":["In AOE Of"],
+                            "inAOEOfRestriction":{
+                                "cardRestrictions":["Subtypes Include"],
+                                "subtypesInclude":["Water"]
+                            }
+                        }
 					}
 				},
 				{
@@ -38,7 +47,7 @@
 	],
 	"c":1,
 	"fast":true,
-	"spellType":"Simple",
+	"spellTypes":["Simple"],
 	"subtypes":["Simple"],
 	"subtypeText":"Simple"
 }
