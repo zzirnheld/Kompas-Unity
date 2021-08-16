@@ -151,7 +151,7 @@ namespace KompasCore.Effects
         #endregion restrictions
 
         //because JsonUtility will fill in all values with defaults if not present
-        public string[] cardRestrictions;
+        public string[] cardRestrictions = new string[0];
 
         public string nameIs;
         public string[] subtypesInclude;

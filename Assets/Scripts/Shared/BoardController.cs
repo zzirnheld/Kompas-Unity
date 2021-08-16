@@ -48,10 +48,10 @@ namespace KompasCore.GameCore
 
             var (x, y) = space;
             //if it's a spell going to a relevant location, count other adjacent spells to the avatar
-            if (x >= 5 && y >= 5) 
+            if (x >= 5 && y >= 5 && space != (5, 5)) 
                 return CardsAdjacentTo(Space.FarCorner)
                     .Count(c => c != card && c.CardType == 'S' && c.Controller == card.Controller) < 1;
-            else if (x <= 1 && y <= 1) 
+            else if (x <= 1 && y <= 1 && space != (1, 1)) 
                 return CardsAdjacentTo(Space.NearCorner)
                     .Count(c => c != card && c.CardType == 'S' && c.Controller == card.Controller) < 1;
 
