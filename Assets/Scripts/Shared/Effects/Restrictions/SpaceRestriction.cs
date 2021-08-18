@@ -37,6 +37,7 @@ namespace KompasCore.Effects
         public const string DistanceToTargetC = "Distance to Target == Constant";
         public const string DistanceToTargetLTEC = "Distance to Target <= Constant";
         public const string FurtherFromSourceThanTarget = "Further from Source than Target";
+        public const string FurtherFromSourceThanCoords = "Further from Source than Coords";
         public const string TowardsSourceFromTarget = "Towards Source from Target";
         public const string DirectlyAwayFromTarget = "Directly Away from Target";
 
@@ -148,6 +149,7 @@ namespace KompasCore.Effects
                 case DistanceToTargetC:           return target.DistanceTo(space) == constant;
                 case DistanceToTargetLTEC:        return target.DistanceTo(space) <= constant;
                 case FurtherFromSourceThanTarget: return Source.DistanceTo(space) > Source.DistanceTo(target);
+                case FurtherFromSourceThanCoords: return Source.DistanceTo(space) > Source.DistanceTo(Subeffect.Space);
                 case TowardsSourceFromTarget:     return Source.DistanceTo(space) < Source.DistanceTo(target);
                 case DirectlyAwayFromTarget:      return target.SpaceDirectlyAwayFrom(space, Source);
 

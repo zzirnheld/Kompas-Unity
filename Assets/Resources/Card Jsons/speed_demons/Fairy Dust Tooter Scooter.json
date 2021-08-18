@@ -1,0 +1,34 @@
+{
+	"cardType":67,
+	"cardName":"Fairy Dust Tooter Scooter",
+	"effText":"Speed Demon.\nAfter I move, give characters adjacent to the space I moved from +1 SW.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character","Board","Adjacent to Coords"],
+						"cSpaces":1
+					},
+					"sMod":1,
+					"wMod":1
+				}
+			]
+		}
+	],
+	"keywords":["Speed Demon"],
+	"n":1,
+	"e":3,
+	"s":3,
+	"w":3,
+	"subtypeText":"Speed Demon"
+}
