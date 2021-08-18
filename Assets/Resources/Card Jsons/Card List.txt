@@ -256,6 +256,8 @@ shapers/Trailing Dreammist
 shapers/Tethered Dreammist
 shapers/Infolding Hopelessness
 Shatter the Warranty
+speed_demons/Coach Speed
+speed_demons/Mr Power Vacuum
 spirits/A Lot of Disappointment
 spirits/Allconsuming Frustration
 spirits/Generous Pleasure

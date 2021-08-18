@@ -1,0 +1,43 @@
+{
+	"cardType":67,
+	"cardName":"Coach Speed",
+	"effText":"Speed Demon.\nOnce each turn, you can move a card 1 space.",
+	"effects":[
+		{
+			"activationRestriction":{
+				"activationRestrictionArray":[
+					"Max Times Per Turn",
+					"Default"
+				]
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"blurb":"card to teach speed",
+					"cardRestriction":{
+						"cardRestrictions":["Board"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where to show them speed",
+						"spaceRestrictions":["Distance to Target == Constant","Can Move Target to This Space"],
+						"constant":1
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"keywords":["Speed Demon"],
+	"n":3,
+	"e":1,
+	"s":4,
+	"w":1,
+	"unique":true,
+	"subtypeText":"Kind Speed Demon"
+}

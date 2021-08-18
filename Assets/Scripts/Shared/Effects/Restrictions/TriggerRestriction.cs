@@ -92,6 +92,7 @@ namespace KompasCore.Effects
             nowRestriction?.Initialize(thisCard, effect);
             xRestriction?.Initialize(thisCard);
             spaceRestriction?.Initialize(thisCard, thisCard.Controller, effect);
+            sourceRestriction?.Initialize(thisCard, effect);
 
             initialized = true;
             //Debug.Log($"Initializing trigger restriction for {thisCard?.CardName}. game is null? {game}");

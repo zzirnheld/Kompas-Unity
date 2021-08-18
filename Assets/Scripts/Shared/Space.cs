@@ -66,11 +66,9 @@ public struct Space
     public Space DirectionFromThisTo(Space other)
     {
         (int x, int y) diff = (x - other.x, y - other.y);
-        if (diff == (0, 0)) return (0, 0);
-        else if (diff.x == 0) return (0, 1);
-        else if (diff.y == 0) return (1, 0);
-        else if (diff.x % diff.y == 0) return (diff.x / diff.y, 1);
-        else if (diff.y % diff.x == 0) return (1, diff.y / diff.x);
+        if (diff.x == 0 || diff.y == 0) return (Math.Sign(diff.x), Math.Sign(diff.y));
+        else if (diff.x % diff.y == 0) return (Math.Sign(diff.x) * (diff.x / diff.y), Math.Sign(diff.y));
+        else if (diff.y % diff.x == 0) return (Math.Sign(diff.x), Math.Sign(diff.y) * (diff.y / diff.x));
         else return diff;
     }
 

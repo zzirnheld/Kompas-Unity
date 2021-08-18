@@ -212,6 +212,7 @@ namespace KompasCore.Effects
             inAOEOfRestriction?.Initialize(source, eff);
 
             initialized = true;
+            Debug.Log($"Initialized {this}");
         }
 
         public override string ToString()
@@ -228,7 +229,7 @@ namespace KompasCore.Effects
         /// <returns><see langword="true"/> if the card fits the restriction for the given value of x, <see langword="false"/> otherwise.</returns>
         private bool RestrictionValid(string restriction, IGameCardInfo potentialTarget, int x)
         {
-            if (potentialTarget == null) return false;
+            //if (potentialTarget == null) return false;
             //Debug.Log($"potential target controller? {potentialTarget.Controller}, my controller {Controller}");
 
             switch (restriction)
@@ -271,8 +272,8 @@ namespace KompasCore.Effects
                 case SubtypesExclude: return subtypesExclude.All(s => !potentialTarget.SubtypeText.Contains(s));
 
                 //is
-                case IsSource: return potentialTarget.Card == Source;
-                case NotSource: return potentialTarget.Card != Source;
+                case IsSource: return potentialTarget?.Card == Source;
+                case NotSource: return potentialTarget?.Card != Source;
                 case AugmentsTarget: return potentialTarget.AugmentedCard == Subeffect.Target;
                 case AugmentedBySource: return potentialTarget.Augments.Contains(Source);
                 case WieldsAugmentFittingRestriction: return potentialTarget.Augments.Any(c => secondaryRestriction.Evaluate(c));
@@ -408,7 +409,7 @@ namespace KompasCore.Effects
         {
             if (!initialized) throw new ArgumentException("Card restriction not initialized!");
 
-            if (potentialTarget == null) return false;
+            //if (potentialTarget == null) return false;
 
             try
             {

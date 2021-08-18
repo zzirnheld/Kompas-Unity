@@ -159,8 +159,10 @@ namespace KompasCore.Effects
                 case OnTargetsDiagonal: return target.OnMyDiagonal(space);
                 case OnEdge: return space.IsEdge;
                 case Corner: return space.IsCorner;
-                case OppositeDirectionFromTargetThanSpace: 
-                    return space.DirectionFromThisTo(Source.Position) * -1 == Subeffect.Space.DirectionFromThisTo(Source.Position);
+                case OppositeDirectionFromTargetThanSpace:
+                    /*Debug.Log($"Comparing {space} and {Subeffect.Space}, w/r/t {Source.Position}\n" +
+                        $"Directions:{Source.Position.DirectionFromThisTo(space)} to {Source.Position.DirectionFromThisTo(Subeffect.Space)}");*/
+                    return Source.Position.DirectionFromThisTo(space) * -1 == Source.Position.DirectionFromThisTo(Subeffect.Space);
                 default: throw new ArgumentException($"Invalid space restriction {restriction}", "restriction");
             }
         }
