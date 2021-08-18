@@ -24,7 +24,7 @@
 				{
 					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
 					"cardValue":{
-						"value":"S"
+						"value":"Cost"
 					},
 					"change":true,
 					"xMultiplier":1
