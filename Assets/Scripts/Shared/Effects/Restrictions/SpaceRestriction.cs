@@ -48,6 +48,7 @@ namespace KompasCore.Effects
         public const string OnTargetsDiagonal = "On Target's Diagonal";
         public const string OnEdge = "On Edge of Board";
         public const string Corner = "Corner";
+        public const string OppositeDirectionFromTargetThanSpace = "Opposite Direction From Target Than Space";
         #endregion space restrictions
 
         public string[] spaceRestrictions;
@@ -158,6 +159,8 @@ namespace KompasCore.Effects
                 case OnTargetsDiagonal: return target.OnMyDiagonal(space);
                 case OnEdge: return space.IsEdge;
                 case Corner: return space.IsCorner;
+                case OppositeDirectionFromTargetThanSpace: 
+                    return space.DirectionFromThisTo(Source.Position) * -1 == Subeffect.Space.DirectionFromThisTo(Source.Position);
                 default: throw new ArgumentException($"Invalid space restriction {restriction}", "restriction");
             }
         }

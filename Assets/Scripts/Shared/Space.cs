@@ -63,6 +63,19 @@ public struct Space
     public bool NorthOf(Space other) => x > other.x || y > other.y;
     public Space DueNorth => new Space(x + 1, y + 1);
 
+    public Space DirectionFromThisTo(Space other)
+    {
+        (int x, int y) diff = (x - other.x, y - other.y);
+        if (diff == (0, 0)) return (0, 0);
+        else if (diff.x == 0) return (0, 1);
+        else if (diff.y == 0) return (1, 0);
+        else if (diff.x % diff.y == 0) return (diff.x / diff.y, 1);
+        else if (diff.y % diff.x == 0) return (1, diff.y / diff.x);
+        else return diff;
+    }
+
+    public static Space operator *(Space s, int i) => (s.x * i, s.y * i);
+
     public static bool operator ==(Space a, Space b) => a.x == b.x && a.y == b.y;
     public static bool operator !=(Space a, Space b) => !(a == b);
     public static bool operator ==(Space a, (int x, int y) b) => a.x == b.x && a.y == b.y;
