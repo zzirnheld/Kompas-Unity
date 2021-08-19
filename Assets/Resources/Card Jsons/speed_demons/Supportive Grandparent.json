@@ -1,0 +1,50 @@
+{
+	"cardType":67,
+	"cardName":"Supportive Grandparent",
+	"effText":"When I'm summoned, choose a character. Whenever they move, give them +1 ESW.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"for Grandparent to support (i.e. with cookies)",
+						"cardRestrictions":["Board","Is Character","Adjacent to Source"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"indexToResume":2,
+					"endCondition":"Move",
+                    "triggerRestriction":{
+                        "triggerRestrictions":["Triggerer Fits Restriction"],
+                        "cardRestriction":
+                        {
+                            "cardRestrictions":["Is Target"]
+                        }
+                    },
+                    "clearWhenResume":false
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod":1,
+					"sMod":1,
+					"wMod":1
+				}
+			]
+		}
+	],
+	"n":0,
+	"e":1,
+	"s":2,
+	"w":1,
+	"subtypeText":"Random Nobody"
+}

@@ -6,7 +6,7 @@
 		{
 			"triggerData":
 			{
-				"triggerCondition":"Move",
+				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}
@@ -31,6 +31,7 @@
                             "cardRestrictions":["Is Target"]
                         }
                     },
+                    "clearWhenResume":false,
                     "targetIndex":0
 				},
 				{
