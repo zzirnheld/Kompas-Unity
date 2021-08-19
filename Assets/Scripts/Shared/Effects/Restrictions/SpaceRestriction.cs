@@ -49,6 +49,9 @@ namespace KompasCore.Effects
         public const string OnTargetsDiagonal = "On Target's Diagonal";
         public const string OnEdge = "On Edge of Board";
         public const string Corner = "Corner";
+        //TODO: eventually make a "targetdirection" subeffect that appends the direction as a Space to the list of coords,
+        // then replace these with something comparing directions
+        public const string SameDirectionFromTargetAsSpace = "Same Direction From Target As Source From Space";
         public const string OppositeDirectionFromTargetThanSpace = "Opposite Direction From Target Than Space";
         #endregion space restrictions
 
@@ -161,6 +164,8 @@ namespace KompasCore.Effects
                 case OnTargetsDiagonal: return target.OnMyDiagonal(space);
                 case OnEdge: return space.IsEdge;
                 case Corner: return space.IsCorner;
+                case SameDirectionFromTargetAsSpace:
+                    return target.Position.DirectionFromThisTo(space) == Subeffect.Space.DirectionFromThisTo(Source.Position);
                 case OppositeDirectionFromTargetThanSpace:
                     /*Debug.Log($"Comparing {space} and {Subeffect.Space}, w/r/t {Source.Position}\n" +
                         $"Directions:{Source.Position.DirectionFromThisTo(space)} to {Source.Position.DirectionFromThisTo(Subeffect.Space)}");*/
