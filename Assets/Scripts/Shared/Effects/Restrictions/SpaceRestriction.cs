@@ -39,11 +39,13 @@ namespace KompasCore.Effects
         public const string FurtherFromSourceThanTarget = "Further from Source than Target";
         public const string FurtherFromSourceThanCoords = "Further from Source than Coords";
         public const string TowardsSourceFromTarget = "Towards Source from Target";
+        public const string TowardsTargetFromSource = "Towards Target from Source";
         public const string DirectlyAwayFromTarget = "Directly Away from Target";
 
         //misc
         public const string CanPlayTarget = "Can Play Target to This Space";
         public const string CanMoveTarget = "Can Move Target to This Space";
+        public const string CanMoveSource = "Can Move Source to This Space";
         public const string Empty = "Empty";
         public const string CardHereFitsRestriction = "Card Here Fits Restriction";
         public const string OnTargetsDiagonal = "On Target's Diagonal";
@@ -154,11 +156,13 @@ namespace KompasCore.Effects
                 case FurtherFromSourceThanTarget: return Source.DistanceTo(space) > Source.DistanceTo(target);
                 case FurtherFromSourceThanCoords: return Source.DistanceTo(space) > Source.DistanceTo(Subeffect.Space);
                 case TowardsSourceFromTarget:     return Source.DistanceTo(space) < Source.DistanceTo(target);
+                case TowardsTargetFromSource:     return target.DistanceTo(space) < target.DistanceTo(Source);
                 case DirectlyAwayFromTarget:      return target.SpaceDirectlyAwayFrom(space, Source);
 
                 //misc
                 case CanPlayTarget: return target.PlayRestriction.EvaluateEffectPlay(space, Subeffect.Effect, Subeffect.Player, ignoring: playRestrictionsToIgnore);
                 case CanMoveTarget: return target.MovementRestriction.EvaluateEffectMove(space);
+                case CanMoveSource: return Source.MovementRestriction.EvaluateEffectMove(space);
                 case Empty: return Source.Game.boardCtrl.GetCardAt(space) == null;
                 case CardHereFitsRestriction: return hereFitsRestriction.Evaluate(Source.Game.boardCtrl.GetCardAt(space));
                 case OnTargetsDiagonal: return target.OnMyDiagonal(space);

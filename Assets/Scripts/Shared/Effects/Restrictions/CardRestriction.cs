@@ -54,6 +54,7 @@ namespace KompasCore.Effects
         //is
         public const string IsSource = "Is Source";
         public const string NotSource = "Not Source";
+        public const string IsTarget = "Is Target";
         public const string AugmentsTarget = "Augments Current Target";
         public const string AugmentedBySource = "Source Augments";
         public const string WieldsAugmentFittingRestriction = "Wields Augment Fitting Restriction";
@@ -137,6 +138,7 @@ namespace KompasCore.Effects
         public const string InACorner = "In a Corner";
         public const string ConnectedToSourceBy = "Connected to Source By";
         public const string ConnectedToTargetBy = "Connected to Target By";
+        public const string SameDiagonalAsSource = "Same Diagonal as Source";
 
         //misc
         public const string CanBePlayed = "Can Be Played";
@@ -274,6 +276,7 @@ namespace KompasCore.Effects
                 //is
                 case IsSource: return potentialTarget?.Card == Source;
                 case NotSource: return potentialTarget?.Card != Source;
+                case IsTarget: return potentialTarget?.Card == Subeffect.Target;
                 case AugmentsTarget: return potentialTarget.AugmentedCard == Subeffect.Target;
                 case AugmentedBySource: return potentialTarget.Augments.Contains(Source);
                 case WieldsAugmentFittingRestriction: return potentialTarget.Augments.Any(c => secondaryRestriction.Evaluate(c));
@@ -364,7 +367,10 @@ namespace KompasCore.Effects
                 case ConnectedToSourceBy:
                     return potentialTarget.ShortestPath(Source.Position, connectednessRestriction.Evaluate) < 50; 
                 case ConnectedToTargetBy: 
-                    return potentialTarget.ShortestPath(Subeffect.Target.Position, connectednessRestriction.Evaluate) < 50; 
+                    return potentialTarget.ShortestPath(Subeffect.Target.Position, connectednessRestriction.Evaluate) < 50;
+
+                case SameDiagonalAsSource:
+                    return potentialTarget.Position.SameDiagonal(Source.Position);
 
                 //misc
                 case CanBePlayed: return Subeffect.Game.ExistsEffectPlaySpace(potentialTarget.PlayRestriction, Effect);

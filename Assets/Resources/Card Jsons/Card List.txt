@@ -260,6 +260,9 @@ speed_demons/Coach Speed
 speed_demons/Mr Power Vacuum
 speed_demons/Boing Boing Launcher Guy
 speed_demons/Fairy Dust Tooter Scooter
+speed_demons/Dust Eater
+speed_demons/Fanatic Follower
+speed_demons/Hypnosympatheticizer
 spirits/A Lot of Disappointment
 spirits/Allconsuming Frustration
 spirits/Generous Pleasure

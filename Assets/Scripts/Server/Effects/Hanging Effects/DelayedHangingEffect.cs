@@ -13,10 +13,12 @@ namespace KompasServer.Effects
         private readonly int indexToResumeResolution;
         private readonly ServerPlayer controller;
         private readonly List<GameCard> targets;
+        private readonly bool clearIfResolve;
 
         public DelayedHangingEffect(ServerGame game, TriggerRestriction triggerRestriction, string endCondition,
             string fallOffCondition, TriggerRestriction fallOffRestriction, ActivationContext currentContext,
-            int numTimesToDelay, ServerEffect toResume, int indexToResumeResolution, ServerPlayer controller, IEnumerable<GameCard> targets)
+            int numTimesToDelay, ServerEffect toResume, int indexToResumeResolution, ServerPlayer controller, IEnumerable<GameCard> targets, 
+            bool clearIfResolve)
             : base(game, triggerRestriction, endCondition, fallOffCondition, fallOffRestriction, currentContext)
         {
             this.numTimesToDelay = numTimesToDelay;
@@ -24,7 +26,13 @@ namespace KompasServer.Effects
             this.indexToResumeResolution = indexToResumeResolution;
             this.controller = controller;
             this.targets = new List<GameCard>(targets);
+            this.clearIfResolve = clearIfResolve;
             numTimesDelayed = 0;
+        }
+
+        public override bool EndIfApplicable(ActivationContext context)
+        {
+            return base.EndIfApplicable(context) && clearIfResolve;
         }
 
         protected override bool ShouldEnd(ActivationContext context)

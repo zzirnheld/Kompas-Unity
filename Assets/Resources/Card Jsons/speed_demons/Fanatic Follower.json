@@ -1,0 +1,73 @@
+{
+	"cardType":67,
+	"cardName":"Fanatic Follower",
+	"effText":"When I'm summoned, choose a character. Whenever they move, move 1 space towards them. If I'm now adjacent to them, give me +1 EW. (Disgusting.)",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"for Binding Site to bind",
+						"cardRestrictions":["Board","Is Character"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"indexToResume":2,
+					"endCondition":"Move",
+                    "triggerRestriction":{
+                        "triggerRestrictions":["Triggerer Fits Restriction"],
+                        "cardRestriction":
+                        {
+                            "cardRestrictions":["Is Target"]
+                        }
+                    },
+                    "targetIndex":0
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"to move Fanatic Follower to",
+						"spaceRestrictions":["Distance to Target == Constant","Towards Target from Source","Can Move Source to This Space"],
+						"constant":1
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition":"Source Violates Restriction",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Adjacent to Target"]
+					},
+                    "targetIndex":0
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod":1,
+					"wMod":1
+				}
+			]
+		}
+	],
+	"n":0,
+	"e":1,
+	"s":2,
+	"w":1,
+	"subtypeText":"Random Nobody"
+}
