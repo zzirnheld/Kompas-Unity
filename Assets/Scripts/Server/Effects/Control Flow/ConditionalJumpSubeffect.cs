@@ -1,10 +1,12 @@
 ﻿using KompasCore.Effects;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
     public class ConditionalJumpSubeffect : ServerSubeffect
     {
+        public const string CardFitsRestriction = "Card Fits Restriction";
         public const string TargetFitsRestriction = "Target Fits Restriction";
         public const string TargetViolatesRestriction = "Target Violates Restriction";
         public const string XGreaterEqualConstant = "X >= Constant";
@@ -30,6 +32,7 @@ namespace KompasServer.Effects
             {
                 return condition switch
                 {
+                    CardFitsRestriction         => Game.Cards.Any(cardRestriction.Evaluate),
                     TargetFitsRestriction       => cardRestriction.Evaluate(Target),
                     TargetViolatesRestriction   => !cardRestriction.Evaluate(Target),
                     XGreaterEqualConstant       => Effect.X >= constant,

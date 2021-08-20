@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Sonic Resonator",
-	"effText":"When a character moves, give me +1 C, but reset my turn count.\nWhen I vanish having C X, deck->summon distinct Speed Demons with total S < X. Move each 1 space.",
+	"effText":"When a character moves, give me +1 C, but set my turn count to -1.\nWhen I vanish having C X, deck->summon distinct Speed Demons with total S < X. Move each 1 space.",
 	"effects":[
 		{
 			"blurb":"Sonic +C",
@@ -23,7 +23,8 @@
 				},
                 {
                     "$type":"KompasServer.Effects.SetTurnsOnBoardSubeffect, Assembly-CSharp",
-                    "xMultiplier":0
+                    "xMultiplier":0,
+                    "xModifier":-1
                 }
 			]
 		},
@@ -86,7 +87,7 @@
 		}
 	],
 	"c":1,
-	"spellTypes":["Delayed"],
-	"subtypeText":"Delayed",
-	"duration":2
+	"spellTypes":["Vanishing"],
+	"subtypeText":"Vanishing",
+	"duration":1
 }
