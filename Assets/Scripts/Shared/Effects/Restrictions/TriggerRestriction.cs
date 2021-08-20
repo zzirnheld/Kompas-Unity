@@ -22,6 +22,7 @@ namespace KompasCore.Effects
         public const string TriggererNowFitsRestirction = "Triggerer Now Fits Restriction";
         public const string TriggerersAugmentedCardFitsRestriction = "Triggerer's Augmented Card Fits Restriction";
         public const string CardExists = "Card Exists";
+        public const string TriggererIsSecondaryContextTarget = "Triggerer is Secondary Context Target";
 
         public const string CardNowFurtherFromSourceThanItWas = "Card is now Further from Source than it Was";
 
@@ -128,6 +129,7 @@ namespace KompasCore.Effects
                 case TriggererNowFitsRestirction: return nowRestriction.Evaluate(context.CardInfo.Card);
                 case TriggerersAugmentedCardFitsRestriction: return cardRestriction.Evaluate(context.CardInfo.AugmentedCard);
                 case StackableSourceFitsRestriction: return sourceRestriction.Evaluate(context.Stackable?.Source);
+                case TriggererIsSecondaryContextTarget: return secondary?.Targets.Any(c => c == context.CardInfo?.Card) ?? false;
 
                 case CardNowFurtherFromSourceThanItWas:
                     return ThisCard.DistanceTo(context.CardInfo.Card.Position) > ThisCard.DistanceTo(context.CardInfo.Position); 

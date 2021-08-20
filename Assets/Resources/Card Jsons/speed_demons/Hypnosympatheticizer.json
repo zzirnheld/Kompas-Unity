@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Hypnosympatheticizer",
-	"effText":"Speed Demon.\nAfter I move, give characters adjacent to the space I moved from +1 SW.",
+	"effText":"Speed Demon.\nThe first two times each turn I move 1 space, move a distinct character 1 space the same direction I moved.",
 	"effects":[
 		{
 			"triggerData":
@@ -17,9 +17,9 @@
                 },
 				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"blurb":"card to vakoom",
+					"blurb":"card to sympa",
 					"cardRestriction":{
-						"cardRestrictions":["Board","Adjacent to Coords"]
+						"cardRestrictions":["Board","Adjacent to Coords","Distinct from Source"]
 					}
 				},
                 {

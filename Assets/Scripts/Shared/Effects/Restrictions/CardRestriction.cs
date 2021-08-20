@@ -241,157 +241,158 @@ namespace KompasCore.Effects
                 case NotAlreadyTarget: return !Effect.Targets.Contains(potentialTarget);
 
                 //names
-                case NameIs:                  return potentialTarget.CardName == nameIs;
-                case SameName:                return Subeffect.Target.CardName == potentialTarget.CardName;
-                case SameNameAsSource:        return potentialTarget.CardName == Source.CardName;
-                case DistinctNameFromTargets: return Effect.Targets.All(card => card.CardName != potentialTarget.CardName);
-                case DistinctNameFromSource:  return Source.CardName != potentialTarget.CardName;
+                case NameIs:                  return potentialTarget?.CardName == nameIs;
+                case SameName:                return Subeffect.Target.CardName == potentialTarget?.CardName;
+                case SameNameAsSource:        return potentialTarget?.CardName == Source.CardName;
+                case DistinctNameFromTargets: return Effect.Targets.All(card => card.CardName != potentialTarget?.CardName);
+                case DistinctNameFromSource:  return Source.CardName != potentialTarget?.CardName;
 
                 //card types
-                case IsCharacter: return potentialTarget.CardType == 'C';
-                case IsSpell:     return potentialTarget.CardType == 'S';
-                case IsAugment:   return potentialTarget.CardType == 'A';
-                case NotAugment:  return potentialTarget.CardType != 'A';
-                case Fast:        return potentialTarget.Fast;
-                case SpellSubtypes: return potentialTarget.SpellSubtypes.Intersect(spellSubtypes).Any();
+                case IsCharacter: return potentialTarget?.CardType == 'C';
+                case IsSpell:     return potentialTarget?.CardType == 'S';
+                case IsAugment:   return potentialTarget?.CardType == 'A';
+                case NotAugment:  return potentialTarget?.CardType != 'A';
+                case Fast:        return potentialTarget?.Fast ?? false;
+                case SpellSubtypes: return potentialTarget?.SpellSubtypes.Intersect(spellSubtypes).Any() ?? false;
 
                 //control
-                case Friendly:  return potentialTarget.Controller == Controller;
-                case Enemy:     return potentialTarget.Controller != Controller;
-                case SameOwner: return potentialTarget.Owner == Controller;
-                case TurnPlayerControls: return potentialTarget.Controller == Subeffect.Game.TurnPlayer;
-                case ControllerMatchesTarget: return potentialTarget.Controller == Subeffect.Target.Controller;
-                case ControllerMatchesPlayerTarget: return potentialTarget.Controller == Subeffect.Player;
-                case ControllerIsntPlayerTarget: return potentialTarget.Controller != Subeffect.Player;
+                case Friendly:  return potentialTarget?.Controller == Controller;
+                case Enemy:     return potentialTarget?.Controller != Controller;
+                case SameOwner: return potentialTarget?.Owner == Controller;
+                case TurnPlayerControls: return potentialTarget?.Controller == Subeffect.Game.TurnPlayer;
+                case ControllerMatchesTarget: return potentialTarget?.Controller == Subeffect.Target.Controller;
+                case ControllerMatchesPlayerTarget: return potentialTarget?.Controller == Subeffect.Player;
+                case ControllerIsntPlayerTarget: return potentialTarget?.Controller != Subeffect.Player;
 
                 //summoned
-                case Summoned:  return potentialTarget.Summoned;
-                case Avatar:    return potentialTarget.IsAvatar;
-                case NotAvatar: return !potentialTarget.IsAvatar;
+                case Summoned:  return potentialTarget?.Summoned ?? false;
+                case Avatar:    return potentialTarget?.IsAvatar ?? false;
+                case NotAvatar: return !potentialTarget?.IsAvatar ?? false;
 
                 //subtypes
-                case SubtypesInclude: return subtypesInclude.All(s => potentialTarget.SubtypeText.Contains(s));
-                case SubtypesExclude: return subtypesExclude.All(s => !potentialTarget.SubtypeText.Contains(s));
+                case SubtypesInclude: return subtypesInclude.All(s => potentialTarget?.SubtypeText.Contains(s) ?? false);
+                case SubtypesExclude: return subtypesExclude.All(s => !potentialTarget?.SubtypeText.Contains(s) ?? false);
 
                 //is
                 case IsSource: return potentialTarget?.Card == Source;
                 case NotSource: return potentialTarget?.Card != Source;
                 case IsTarget: return potentialTarget?.Card == Subeffect.Target;
-                case AugmentsTarget: return potentialTarget.AugmentedCard == Subeffect.Target;
-                case AugmentedBySource: return potentialTarget.Augments.Contains(Source);
-                case WieldsAugmentFittingRestriction: return potentialTarget.Augments.Any(c => secondaryRestriction.Evaluate(c));
+                case AugmentsTarget: return potentialTarget?.AugmentedCard == Subeffect.Target;
+                case AugmentedBySource: return potentialTarget?.Augments.Contains(Source) ?? false;
+                case WieldsAugmentFittingRestriction: return potentialTarget?.Augments.Any(c => secondaryRestriction.Evaluate(c)) ?? false;
 
                 //distinct
-                case DistinctFromSource: return potentialTarget.Card != Source;
-                case DistinctFromTarget: return potentialTarget.Card != Subeffect.Target;
-                case DistinctFromAugmentedCard: return potentialTarget.Card != Source.AugmentedCard;
+                case DistinctFromSource: return potentialTarget?.Card != Source;
+                case DistinctFromTarget: return potentialTarget?.Card != Subeffect.Target;
+                case DistinctFromAugmentedCard: return potentialTarget?.Card != Source.AugmentedCard;
 
                 //location
-                case Hand:           return potentialTarget.Location == CardLocation.Hand;
-                case Deck:           return potentialTarget.Location == CardLocation.Deck;
-                case Discard:        return potentialTarget.Location == CardLocation.Discard;
-                case Board:          return potentialTarget.Location == CardLocation.Field;
-                case Annihilated:    return potentialTarget.Location == CardLocation.Annihilation;
-                case LocationInList: return locations.Contains(potentialTarget.Location);
+                case Hand:           return potentialTarget?.Location == CardLocation.Hand;
+                case Deck:           return potentialTarget?.Location == CardLocation.Deck;
+                case Discard:        return potentialTarget?.Location == CardLocation.Discard;
+                case Board:          return potentialTarget?.Location == CardLocation.Field;
+                case Annihilated:    return potentialTarget?.Location == CardLocation.Annihilation;
+                case LocationInList: return locations.Contains(potentialTarget?.Location ?? CardLocation.Nowhere);
 
-                case Hidden:         return !potentialTarget.KnownToEnemy;
+                case Hidden:         return !potentialTarget?.KnownToEnemy ?? false;
 
                 //stats
                 case CardValueFitsXRestriction: return xRestriction.Evaluate(cardValue.GetValueOf(potentialTarget));
                     //<=
-                case NLTEX:    return potentialTarget.N <= x;
-                case ELTEX:    return potentialTarget.E <= x;
-                case SLTEX:    return potentialTarget.S <= x;
-                case WLTEX:    return potentialTarget.W <= x;
-                case CostLTEX: return potentialTarget.Cost <= x;
+                case NLTEX:    return potentialTarget?.N <= x;
+                case ELTEX:    return potentialTarget?.E <= x;
+                case SLTEX:    return potentialTarget?.S <= x;
+                case WLTEX:    return potentialTarget?.W <= x;
+                case CostLTEX: return potentialTarget?.Cost <= x;
                     //==
-                case NEX:      return potentialTarget.N == x;
-                case EEX:      return potentialTarget.E == x;
-                case SEX:      return potentialTarget.S == x;
-                case WEX:      return potentialTarget.W == x;
-                case CostEX:   return potentialTarget.Cost == x;
+                case NEX:      return potentialTarget?.N == x;
+                case EEX:      return potentialTarget?.E == x;
+                case SEX:      return potentialTarget?.S == x;
+                case WEX:      return potentialTarget?.W == x;
+                case CostEX:   return potentialTarget?.Cost == x;
                     //<
-                case NLTX:     return potentialTarget.N < x;
-                case ELTX:     return potentialTarget.E < x;
-                case SLTX:     return potentialTarget.S < x;
-                case WLTX:     return potentialTarget.W < x;
-                case CostLTX:  return potentialTarget.Cost < x;
+                case NLTX:     return potentialTarget?.N < x;
+                case ELTX:     return potentialTarget?.E < x;
+                case SLTX:     return potentialTarget?.S < x;
+                case WLTX:     return potentialTarget?.W < x;
+                case CostLTX:  return potentialTarget?.Cost < x;
                     //<=C
-                case NLTEC:    return potentialTarget.N <= constant;
-                case ELTEC:    return potentialTarget.E <= constant;
-                case SLTEC:    return potentialTarget.S <= constant;
-                case WLTEC:    return potentialTarget.W <= constant;
-                case CostGTX:  return potentialTarget.Cost > x;
+                case NLTEC:    return potentialTarget?.N <= constant;
+                case ELTEC:    return potentialTarget?.E <= constant;
+                case SLTEC:    return potentialTarget?.S <= constant;
+                case WLTEC:    return potentialTarget?.W <= constant;
+                case CostGTX:  return potentialTarget?.Cost > x;
                     //misc
-                case CostLTAvatar: return potentialTarget.Cost < Source.Controller.Avatar.Cost;
-                case CostGTAvatar: return potentialTarget.Cost > Source.Controller.Avatar.Cost;
-                case CanBeHealed: return potentialTarget.CardType == 'C' && potentialTarget.Location == CardLocation.Field 
-                        && potentialTarget.E < potentialTarget.BaseE;
+                case CostLTAvatar: return potentialTarget?.Cost < Source.Controller.Avatar.Cost;
+                case CostGTAvatar: return potentialTarget?.Cost > Source.Controller.Avatar.Cost;
+                case CanBeHealed: return potentialTarget?.CardType == 'C' && potentialTarget?.Location == CardLocation.Field 
+                        && potentialTarget?.E < potentialTarget?.BaseE;
 
-                case Negated:  return potentialTarget.Negated;
-                case HasMovement: return potentialTarget.SpacesCanMove > 0;
-                case OutOfMovement: return potentialTarget.SpacesCanMove <= 0;
+                case Negated:  return potentialTarget?.Negated ?? false;
+                case HasMovement: return potentialTarget?.SpacesCanMove > 0;
+                case OutOfMovement: return potentialTarget?.SpacesCanMove <= 0;
 
                 //positioning
-                case AdjacentToSource:           return potentialTarget.IsAdjacentTo(Source);
-                case AdjacentToTarget:   return potentialTarget.IsAdjacentTo(Subeffect.Target);
-                case AdjacentToCoords:   return potentialTarget.IsAdjacentTo(Subeffect.Space);
-                case AdjacentToSubtype:  return potentialTarget.AdjacentCards.Any(card => adjacencySubtypes.All(s => card.SubtypeText.Contains(s)));
+                case AdjacentToSource:           return potentialTarget?.IsAdjacentTo(Source) ?? false;
+                case AdjacentToTarget:   return potentialTarget?.IsAdjacentTo(Subeffect.Target) ?? false;
+                case AdjacentToCoords:   return potentialTarget?.IsAdjacentTo(Subeffect.Space) ?? false;
+                case AdjacentToSubtype:  
+                    return potentialTarget?.AdjacentCards.Any(card => adjacencySubtypes.All(s => card.SubtypeText.Contains(s))) ?? false;
                 case AdjacentToRestriction:
-                    var cards = potentialTarget.AdjacentCards;
+                    var cards = potentialTarget?.AdjacentCards;
                     Debug.Log($"Cards adjacent to {potentialTarget} are {string.Join(", ", cards.Select(c => c.ToString()))}");
                     //Debug.Log($"Cards null? {cards == null} restriction null? {adjacentCardRestriction == null}");
                     return cards.Any(c => adjacentCardRestriction.Evaluate(c));
 
                 case InAOE:              return Source.CardInAOE(potentialTarget);
                 case InTargetsAOE:       return Subeffect.Target.CardInAOE(potentialTarget);
-                case SourceInThisAOE:    return potentialTarget.CardInAOE(Source);
+                case SourceInThisAOE:    return potentialTarget?.CardInAOE(Source) ?? false;
                 case NotInAOE:           return !Source.CardInAOE(potentialTarget);
                 case InAOEOfCardFittingRestriction: 
                     return Source.Game.Cards.Any(c => c.CardInAOE(potentialTarget) && inAOEOfRestriction.Evaluate(c));
                 case NotInAOEOfCardFittingRestriction:
                     return !Source.Game.Cards.Any(c => c.CardInAOE(potentialTarget) && inAOEOfRestriction.Evaluate(c));
 
-                case WithinCSpacesOfSource: return potentialTarget.WithinSpaces(cSpaces, Source);
-                case WithinCSpacesOfTarget: return potentialTarget.WithinSpaces(cSpaces, Subeffect.Target);
-                case WithinXSpacesOfSource: return potentialTarget.WithinSpaces(Effect.X, Source);
-                case ExactlyXSpaces:     return potentialTarget.DistanceTo(Source) == x;
+                case WithinCSpacesOfSource: return potentialTarget?.WithinSpaces(cSpaces, Source) ?? false;
+                case WithinCSpacesOfTarget: return potentialTarget?.WithinSpaces(cSpaces, Subeffect.Target) ?? false;
+                case WithinXSpacesOfSource: return potentialTarget?.WithinSpaces(Effect.X, Source) ?? false;
+                case ExactlyXSpaces:     return potentialTarget?.DistanceTo(Source) == x;
                 case InFrontOfSource:    return Source.CardInFront(potentialTarget);
                 case BehindSource:       return Source.CardBehind(potentialTarget);
-                case IndexInListGTC:     return potentialTarget.IndexInList > constant;
-                case IndexInListLTC:     return potentialTarget.IndexInList < constant;
-                case IndexInListLTX:     return potentialTarget.IndexInList < x;
-                case SameColumnAsSource: return potentialTarget.SameColumn(Source);
+                case IndexInListGTC:     return potentialTarget?.IndexInList > constant;
+                case IndexInListLTC:     return potentialTarget?.IndexInList < constant;
+                case IndexInListLTX:     return potentialTarget?.IndexInList < x;
+                case SameColumnAsSource: return potentialTarget?.SameColumn(Source) ?? false;
                 case DirectlyInFrontOfSource: return Source.CardDirectlyInFront(potentialTarget);
-                case InACorner:          return potentialTarget.InCorner();
+                case InACorner:          return potentialTarget?.InCorner() ?? false;
                 case ConnectedToSourceBy:
-                    return potentialTarget.ShortestPath(Source.Position, connectednessRestriction.Evaluate) < 50; 
+                    return potentialTarget?.ShortestPath(Source.Position, connectednessRestriction.Evaluate) < 50; 
                 case ConnectedToTargetBy: 
-                    return potentialTarget.ShortestPath(Subeffect.Target.Position, connectednessRestriction.Evaluate) < 50;
+                    return potentialTarget?.ShortestPath(Subeffect.Target.Position, connectednessRestriction.Evaluate) < 50;
 
                 case SameDiagonalAsSource:
-                    return potentialTarget.Position.SameDiagonal(Source.Position);
+                    return potentialTarget?.Position.SameDiagonal(Source.Position) ?? false;
 
                 //misc
-                case CanBePlayed: return Subeffect.Game.ExistsEffectPlaySpace(potentialTarget.PlayRestriction, Effect);
-                case EffectControllerCanPayCost: return Subeffect.Effect.Controller.Pips >= potentialTarget.Cost * costMultiplier / costDivisor;
-                case Augmented: return potentialTarget.Augments.Any();
+                case CanBePlayed: return Subeffect.Game.ExistsEffectPlaySpace(potentialTarget?.PlayRestriction, Effect);
+                case EffectControllerCanPayCost: return Subeffect.Effect.Controller.Pips >= potentialTarget?.Cost * costMultiplier / costDivisor;
+                case Augmented: return potentialTarget?.Augments.Any() ?? false;
                 case IsDefendingFromSource:
-                    return Source.Game.StackEntries.Any(s => s is Attack atk && atk.attacker == Source && atk.defender == potentialTarget.Card)
-                        || (Source.Game.CurrStackEntry is Attack atk2 && atk2.attacker == Source && atk2.defender == potentialTarget.Card);
+                    return Source.Game.StackEntries.Any(s => s is Attack atk && atk.attacker == Source && atk.defender == potentialTarget?.Card)
+                        || (Source.Game.CurrStackEntry is Attack atk2 && atk2.attacker == Source && atk2.defender == potentialTarget?.Card);
                 case CanPlayTargetToThisCharactersSpace:
-                    return Subeffect.Target.PlayRestriction.EvaluateEffectPlay(potentialTarget.Position, Effect, Subeffect.Player);
+                    return Subeffect.Target.PlayRestriction.EvaluateEffectPlay(potentialTarget?.Position ?? default, Effect, Subeffect.Player);
                 case SpaceRestrictionValidIfThisTargetChosen:
                     if (Effect.Subeffects[spaceRestrictionIndex] is SpaceTargetSubeffect spaceTgtSubeff)
-                        return spaceTgtSubeff.WillBePossibleIfCardTargeted(theoreticalTarget: potentialTarget.Card);
+                        return spaceTgtSubeff.WillBePossibleIfCardTargeted(theoreticalTarget: potentialTarget?.Card);
                     else return false;
                 case AttackingCardFittingRestriction:
                     return Source.Game.StackEntries
-                        .Any(e => e is Attack atk && atk.attacker == potentialTarget.Card && attackedCardRestriction.Evaluate(atk.defender));
+                        .Any(e => e is Attack atk && atk.attacker == potentialTarget?.Card && attackedCardRestriction.Evaluate(atk.defender));
                 case EffectIsOnTheStack:
-                    return Source.Game.StackEntries.Any(e => e is Effect eff && eff.Source == potentialTarget.Card);
+                    return Source.Game.StackEntries.Any(e => e is Effect eff && eff.Source == potentialTarget?.Card);
                 case CanPlayToTargetSpace:
-                    return potentialTarget.PlayRestriction.EvaluateEffectPlay(Subeffect.Space, Effect, Subeffect.Player);
+                    return potentialTarget?.PlayRestriction.EvaluateEffectPlay(Subeffect.Space, Effect, Subeffect.Player) ?? false;
                 default: throw new ArgumentException($"Invalid card restriction {restriction}", "restriction");
             }
         }
@@ -401,7 +402,7 @@ namespace KompasCore.Effects
         public bool RestrictionValidDebug(string restriction, IGameCardInfo potentialTarget, int x)
         {
             bool answer = RestrictionValid(restriction, potentialTarget, x);
-            if (!answer) Debug.Log($"{potentialTarget.CardName} flouts {restriction}");
+            if (!answer) Debug.Log($"{potentialTarget?.CardName} flouts {restriction}");
             return answer;
         }
 

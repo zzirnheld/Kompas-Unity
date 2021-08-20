@@ -25,11 +25,7 @@
 					"indexToResume":2,
 					"endCondition":"Move",
                     "triggerRestriction":{
-                        "triggerRestrictions":["Triggerer Fits Restriction"],
-                        "cardRestriction":
-                        {
-                            "cardRestrictions":["Is Target"]
-                        }
+                        "triggerRestrictions":["Triggerer is Secondary Context Target"]
                     },
                     "clearWhenResume":false
 				},

@@ -20,7 +20,7 @@
 						"cardRestrictions":["Discard","Name Is"],
                         "nameIs":"Ready"
 					},
-					"jumpIndex":4,
+					"jumpIndex":6,
 					"xMultiplier":1
 				},
 				{
@@ -34,6 +34,12 @@
 				},
 				{
 					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
