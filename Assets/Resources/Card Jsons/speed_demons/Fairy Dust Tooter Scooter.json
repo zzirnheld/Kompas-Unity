@@ -4,6 +4,7 @@
 	"effText":"Speed Demon.\nAfter I move, give characters adjacent to the space I moved from +1 SW.",
 	"effects":[
 		{
+			"blurb":"scoot scoot doot doot",
 			"triggerData":
 			{
 				"triggerCondition":"Move",
@@ -12,6 +13,9 @@
 				}
 			},
 			"subeffects":[
+                {
+                    "$type":"KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
+                },
 				{
 					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
 					"cardRestriction":

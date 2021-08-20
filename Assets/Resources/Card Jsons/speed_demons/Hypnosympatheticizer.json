@@ -4,12 +4,14 @@
 	"effText":"Speed Demon.\nThe first two times each turn I move 1 space, move a distinct character 1 space the same direction I moved.",
 	"effects":[
 		{
+			"blurb":"hyyyypnoooo SYMP",
 			"triggerData":
 			{
 				"triggerCondition":"Move",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
-				}
+					"triggerRestrictions":["This Card Triggered","Max Per Turn"]
+				},
+				"maxTimesPerTurn":2
 			},
 			"subeffects":[
                 {
@@ -19,7 +21,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"blurb":"card to sympa",
 					"cardRestriction":{
-						"cardRestrictions":["Board","Adjacent to Coords","Distinct from Source"]
+						"cardRestrictions":["Board","Distinct from Source"]
 					}
 				},
                 {

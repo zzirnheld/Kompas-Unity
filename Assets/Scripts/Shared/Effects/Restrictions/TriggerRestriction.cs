@@ -129,7 +129,7 @@ namespace KompasCore.Effects
                 case TriggererNowFitsRestirction: return nowRestriction.Evaluate(context.CardInfo.Card);
                 case TriggerersAugmentedCardFitsRestriction: return cardRestriction.Evaluate(context.CardInfo.AugmentedCard);
                 case StackableSourceFitsRestriction: return sourceRestriction.Evaluate(context.Stackable?.Source);
-                case TriggererIsSecondaryContextTarget: return secondary?.Targets.Any(c => c == context.CardInfo?.Card) ?? false;
+                case TriggererIsSecondaryContextTarget: return secondary?.Targets?.Any(c => c == context.CardInfo?.Card) ?? false;
 
                 case CardNowFurtherFromSourceThanItWas:
                     return ThisCard.DistanceTo(context.CardInfo.Card.Position) > ThisCard.DistanceTo(context.CardInfo.Position); 

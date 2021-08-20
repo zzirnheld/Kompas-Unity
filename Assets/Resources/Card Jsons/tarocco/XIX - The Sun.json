@@ -1,13 +1,12 @@
 {
 	"cardType":67,
 	"cardName":"XIX - The Sun",
-	"effText":"When you draw, I can give a Summoned character -1 E and a distinct character +1 E.",
+	"effText":"When you draw, give a Summoned character -1 E and a distinct character +1 E.",
 	"effects":[
 		{
+			"blurb":"Scorching Heat",
 			"triggerData":
 			{
-				"optional":true,
-				"blurb":"Give one character -1 E and another +1 E?",
 				"triggerCondition":"Draw",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Controller Triggered"]

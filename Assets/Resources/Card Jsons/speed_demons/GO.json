@@ -24,7 +24,7 @@
 					"xMultiplier":1
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"Ready for Set to search",
@@ -69,7 +69,7 @@
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
 					"delete":true,
-					"jumpTo":4
+					"jumpTo":7
 				}
 			]
 		}
