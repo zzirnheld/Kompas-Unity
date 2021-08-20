@@ -263,6 +263,9 @@ speed_demons/Fairy Dust Tooter Scooter
 speed_demons/Dust Eater
 speed_demons/Fanatic Follower
 speed_demons/Hypnosympatheticizer
+speed_demons/Supportive Grandparent
+speed_demons/ZOOMIN
+speed_demons/Sonic Resonator
 spirits/A Lot of Disappointment
 spirits/Allconsuming Frustration
 spirits/Generous Pleasure
