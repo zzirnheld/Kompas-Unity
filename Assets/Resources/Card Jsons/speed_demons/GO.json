@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"GO",
-	"effText":"If there’s no friendly discarded “Ready!”, search your deck for it and reshuffle me. If there is, move each Speed Demon 1 space.",
+	"effText":"If there’s no friendly discarded \"Set\", search your deck for \"Ready\" and reshuffle me. If there is, move each Speed Demon 1 space.",
 	"effects":[
 		{
 			"triggerData":
@@ -48,11 +48,14 @@
 					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"for Haemopoten to draw",
 						"cardRestrictions":["Friendly","Board","Summoned","Subtypes Include"],
 						"subtypesInclude":["Speed Demon"]
 					},
 					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"jumpTo":10
 				},
 				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
@@ -65,6 +68,9 @@
 				},
 				{
 					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
