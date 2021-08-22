@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 
 namespace KompasCore.Cards
@@ -70,13 +69,13 @@ namespace KompasCore.Cards
         {
             get
             {
-                switch (CardType)
+                return CardType switch
                 {
-                    case 'C': return S;
-                    case 'S': return C;
-                    case 'A': return A;
-                    default: throw new System.NotImplementedException($"Cost not implemented for card type {CardType}");
-                }
+                    'C' => S,
+                    'S' => C,
+                    'A' => A,
+                    _ => throw new System.NotImplementedException($"Cost not implemented for card type {CardType}"),
+                };
             }
         }
         private string ArgsString
@@ -86,13 +85,13 @@ namespace KompasCore.Cards
                 if(CardType == 'A') return AugmentSubtypes == null ? "" : $"Augment: {string.Join(",", AugmentSubtypes)}";
                 else if (CardType == 'S')
                 {
-                    switch (SpellSubtypes.FirstOrDefault())
+                    return (SpellSubtypes.FirstOrDefault()) switch
                     {
-                        case RadialSubtype: return $" {Radius} spaces";
-                        case DelayedSubtype: return $" {Duration} turns";
-                        case VanishingSubtype: return $" {Duration} turns";
-                        default: return "";
-                    }
+                        RadialSubtype => $" {Radius} spaces",
+                        DelayedSubtype => $" {Duration} turns",
+                        VanishingSubtype => $" {Duration} turns",
+                        _ => "",
+                    };
                 }
 
                 return "";
@@ -103,13 +102,13 @@ namespace KompasCore.Cards
         {
             get
             {
-                switch (CardType)
+                return CardType switch
                 {
-                    case 'C': return $"N: {N} / E: {E} / S: {S} / W: {W}";
-                    case 'S': return $"C {C}";
-                    case 'A': return $"A {A}";
-                    default: throw new System.NotImplementedException($"Stats string not implemented for card type {CardType}");
-                }
+                    'C' => $"N: {N} / E: {E} / S: {S} / W: {W}",
+                    'S' => $"C {C}",
+                    'A' => $"A {A}",
+                    _ => throw new System.NotImplementedException($"Stats string not implemented for card type {CardType}"),
+                };
             }
         }
         #endregion

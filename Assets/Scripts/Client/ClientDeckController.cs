@@ -1,8 +1,4 @@
-﻿using KompasClient.Cards;
-using KompasCore.Cards;
-using KompasCore.Effects;
-using KompasCore.GameCore;
-using System.Collections.Generic;
+﻿using KompasCore.GameCore;
 using TMPro;
 
 namespace KompasClient.GameCore

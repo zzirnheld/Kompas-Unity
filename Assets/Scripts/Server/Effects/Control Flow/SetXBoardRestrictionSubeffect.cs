@@ -1,6 +1,4 @@
-﻿using KompasCore.Cards;
-using KompasCore.Effects;
-using UnityEngine;
+﻿using KompasCore.Effects;
 
 namespace KompasServer.Effects
 {

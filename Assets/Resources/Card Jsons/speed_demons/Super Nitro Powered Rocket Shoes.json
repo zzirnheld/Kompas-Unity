@@ -1,0 +1,43 @@
+{
+	"cardType":65,
+	"cardName":"Super Nitro Powered Rocket Shoes",
+	"effText":"When this character is moved by something other than our effects, move them 1 space in the same direction.",
+	"effects":[
+        {
+            "blurb":"Speed Shoes",
+            "triggerCondition":"Move",
+            "triggerRestriction":{
+                "triggerRestrictions":["This Card Triggered","Stackable Source Fits Restriction"],
+                "sourceRestriction":{
+                    "cardRestrictions":["Not Source","Source Doesn't Augment"]
+                }
+            },
+            "subeffects":[
+                {
+                    "$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+                },
+                {
+                    "$type":"KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
+                },
+                {
+                    "$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+                    "spaceRestriction":
+                    {
+                        "blurb":"where for speed victim to move",
+                        "spaceRestrictions":["Distance to Target == Constant","Opposite Direction From Target Than Space"],
+                        "constant":1
+                    }
+                },
+                {
+                    "$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+                }
+            ]
+        }	
+	],
+	"PlayRestriction":{
+		"normalRestrictions":["Augment Normal Restrictions"],
+		"effectRestrictions":["Augment Effect Restrictions"]
+	},
+	"a":1,
+	"subtypeText":"Shoes"
+}

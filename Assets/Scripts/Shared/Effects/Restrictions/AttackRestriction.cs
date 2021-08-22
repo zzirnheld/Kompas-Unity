@@ -52,21 +52,24 @@ namespace KompasCore.Effects
                 return false;
             }
 
-            switch (restriction)
+            return restriction switch
             {
-                case Default: return true;
-                case ThisIsCharacter: return Card.CardType == 'C';
-                case DefenderIsCharacter: return defender.CardType == 'C';
-                case DefenderIsAdjacent: return Card.IsAdjacentTo(defender);
-                case DefenderIsEnemy: return Card.Controller != defender.Controller;
-                case FriendlyTurn: return Card.Controller == Card.Game.TurnPlayer;
-                case MaxPerTurn: return Card.AttacksThisTurn < maxAttacks;
-                case NothingHappening: return Card.Game.NothingHappening;
-                case IsNotAvatar: return !Card.IsAvatar;
-                case ThisIsActive: return Card.Activated;
-                case InPlay: return Card.Location == CardLocation.Field;
-                default: throw new System.ArgumentException($"Could not understand attack restriction {restriction}");
-            }
+                Default => true,
+
+                ThisIsCharacter     => Card.CardType == 'C',
+                DefenderIsCharacter => defender.CardType == 'C',
+                DefenderIsAdjacent  => Card.IsAdjacentTo(defender),
+                DefenderIsEnemy     => Card.Controller != defender.Controller,
+                FriendlyTurn        => Card.Controller == Card.Game.TurnPlayer,
+                MaxPerTurn          => Card.AttacksThisTurn < maxAttacks,
+                NothingHappening    => Card.Game.NothingHappening,
+
+                IsNotAvatar         => !Card.IsAvatar,
+                ThisIsActive        => Card.Activated,
+                InPlay              => Card.Location == CardLocation.Field,
+
+                _ => throw new System.ArgumentException($"Could not understand attack restriction {restriction}"),
+            };
         }
 
         /* This exists to debug a card's attack restriction,

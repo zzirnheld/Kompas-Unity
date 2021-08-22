@@ -1,5 +1,4 @@
-﻿using KompasClient.GameCore;
-using KompasCore.Networking;
+﻿using KompasCore.Networking;
 using KompasServer.GameCore;
 using System.Threading.Tasks;
 

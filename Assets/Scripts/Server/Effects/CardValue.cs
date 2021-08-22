@@ -1,12 +1,8 @@
 ﻿using KompasCore.Cards;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace KompasCore.Effects
 {
-    [Serializable]
     public class CardValue
     {
         #region values
@@ -29,18 +25,17 @@ namespace KompasCore.Effects
         {
             if (card == null) throw new ArgumentException("Cannot get value of null card", "card");
 
-            switch (value)
+            return value switch
             {
-                case Nimbleness:    return card.N;
-                case Endurance:     return card.E;
-                case SummoningCost: return card.S;
-                case Wounding:      return card.W;
-                case CastingCost:   return card.C;
-                case AugmentCost:   return card.A;
-
-                case Cost:          return card.Cost;
-                default: throw new ArgumentException($"Invalid value string {value}", "value");
-            }
+                Nimbleness      => card.N,
+                Endurance       => card.E,
+                SummoningCost   => card.S,
+                Wounding        => card.W,
+                CastingCost     => card.C,
+                AugmentCost     => card.A,
+                Cost            => card.Cost,
+                _ => throw new ArgumentException($"Invalid value string {value}", "value"),
+            };
         }
 
         public void SetValueOf(GameCard card, int num, IStackable stackSrc = null)

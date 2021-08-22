@@ -1,6 +1,4 @@
-﻿using KompasCore.Cards;
-
-namespace KompasDeckbuilder
+﻿namespace KompasDeckbuilder
 {
     public class DeckbuilderSpellCard : DeckbuilderCard
     {

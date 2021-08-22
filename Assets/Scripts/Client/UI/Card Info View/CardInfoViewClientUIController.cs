@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
@@ -104,14 +103,13 @@ namespace KompasClient.UI
             wText.text = $"W\n{CurrShown.W}";
 
             //TODO after unity updates: make this a switch expression
-            switch (CurrShown.CardType)
+            costText.text = CurrShown.CardType switch
             {
-                case 'C': costText.text = $"S\n{CurrShown.S}"; break;
-                case 'S': costText.text = $"C\n{CurrShown.C}"; break;
-                case 'A': costText.text = $"A\n{CurrShown.A}"; break;
-                default: throw new System.NotImplementedException();
-            }
-
+                'C' => $"S\n{CurrShown.S}",
+                'S' => $"C\n{CurrShown.C}",
+                'A' => $"A\n{CurrShown.A}",
+                _ => throw new System.NotImplementedException(),
+            };
             nameText.text = CurrShown.CardName;
             subtypesText.text = CurrShown.QualifiedSubtypeText;
             effText.text = CurrShown.EffText;

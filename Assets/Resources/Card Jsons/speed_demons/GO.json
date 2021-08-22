@@ -1,0 +1,87 @@
+{
+	"cardType":83,
+	"cardName":"GO",
+	"effText":"If there’s no friendly discarded \"Set\", search your deck for \"Ready\" and reshuffle me. If there is, move each Speed Demon 1 space.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"condition":"Card Fits Restriction",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Discard","Name Is"],
+                        "nameIs":"Ready"
+					},
+					"jumpIndex":6,
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Ready for Set to search",
+						"cardRestrictions":["Friendly","Deck","Name Is"],
+                        "nameIs":"Ready"
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Friendly","Board","Summoned","Subtypes Include"],
+						"subtypesInclude":["Speed Demon"]
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"jumpTo":10
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"ok, now move just a little bit more",
+						"spaceRestrictions":["Distance to Target == Constant","Can Move Target to This Space"],
+						"constant":1
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"jumpTo":7
+				}
+			]
+		}
+	],
+    "fast":true,
+	"c":1,
+	"spellTypes":["Simple"],
+	"subtypeText":"Simple"
+}

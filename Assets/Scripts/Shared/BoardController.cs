@@ -48,10 +48,10 @@ namespace KompasCore.GameCore
 
             var (x, y) = space;
             //if it's a spell going to a relevant location, count other adjacent spells to the avatar
-            if (x >= 5 && y >= 5) 
+            if (x >= 5 && y >= 5 && space != (5, 5)) 
                 return CardsAdjacentTo(Space.FarCorner)
                     .Count(c => c != card && c.CardType == 'S' && c.Controller == card.Controller) < 1;
-            else if (x <= 1 && y <= 1) 
+            else if (x <= 1 && y <= 1 && space != (1, 1)) 
                 return CardsAdjacentTo(Space.NearCorner)
                     .Count(c => c != card && c.CardType == 'S' && c.Controller == card.Controller) < 1;
 
@@ -74,13 +74,10 @@ namespace KompasCore.GameCore
         {
             var list = new List<GameCard>();
 
-            for (int i = space.x - 1; i <= space.x + 1; i++)
-            {
-                for (int j = space.y - 1; j <= space.y + 1; j++)
-                {
-                    var card = GetCardAt((i, j));
-                    if ((i, j) != space && card != null) list.Add(card);
-                }
+            foreach (var s in space.AdjacentSpaces)
+            { 
+                var card = GetCardAt(s);
+                if (card != null) list.Add(card);
             }
 
             return list;
@@ -163,18 +160,7 @@ namespace KompasCore.GameCore
 
         private IEnumerable<Space> AdjacentEmptySpacesTo(Space space)
         {
-            var list = new List<Space>();
-            for(int x = space.x - 1; x <= space.x + 1; x++)
-            {
-                for(int y = space.y - 1; y <= space.y + 1; y++)
-                {
-                    if (x == space.x && y == space.y) continue;
-                    else if (x < 0 || x >= 7 || y < 0 || y >= 7) continue;
-                    else if (Board[x, y] != null) continue;
-                    else list.Add(new Space(x, y));
-                }
-            }
-            return list;
+            return space.AdjacentSpaces.Where(s => GetCardAt(s) == null);
         }
 
         public int ShortestEmptyPath(GameCard src, Space destination)

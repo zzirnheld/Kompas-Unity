@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Runegunner",
-	"effText":"Once each turn, you can pip hand-cast a Rune, X spaces from me (following normal placement rules). X times: pay its cost, then echo it. (If you run out of pips, you don't echo it).",
+	"effText":"Once each turn, you can pip hand->cast a Rune, X spaces from me (following normal placement rules). Pip echo it X times. (If you run out of pips, stop echoing it).",
 	"effects":[
 		{
 			"activationRestriction":{
@@ -37,8 +37,8 @@
 					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
-					"whatToCount":"Distance to Target",
+					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount":"Distance From Source to Target",
 					"xMultiplier":1
 				},
 				{

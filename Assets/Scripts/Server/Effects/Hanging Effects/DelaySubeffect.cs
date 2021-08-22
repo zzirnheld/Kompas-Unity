@@ -8,10 +8,13 @@ namespace KompasServer.Effects
     {
         public int numTimesToDelay = 0;
         public int indexToResume;
+        public bool clearWhenResume = true;
         public override bool ContinueResolution => false;
 
         protected override IEnumerable<HangingEffect> CreateHangingEffects()
         {
+            Effect.CurrActivationContext.Targets.Clear();
+            Effect.CurrActivationContext.Targets.AddRange(Effect.Targets);
             var delay = new DelayedHangingEffect(game: ServerGame,
                                                  triggerRestriction: triggerRestriction,
                                                  endCondition: endCondition,
@@ -22,7 +25,8 @@ namespace KompasServer.Effects
                                                  toResume: ServerEffect,
                                                  indexToResumeResolution: indexToResume,
                                                  controller: EffectController,
-                                                 targets: new List<GameCard>(Effect.Targets));
+                                                 targets: new List<GameCard>(Effect.Targets),
+                                                 clearIfResolve: clearWhenResume);
             return new List<HangingEffect>() { delay };
         }
     }

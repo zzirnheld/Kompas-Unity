@@ -1,13 +1,11 @@
 ﻿using KompasCore.Cards;
 using KompasCore.GameCore;
-using KompasServer.Effects;
 using System;
 using System.Linq;
 using UnityEngine;
 
 namespace KompasCore.Effects
 {
-    [Serializable]
     public class TriggerRestriction
     {
         public Game Game { get; private set; }
@@ -24,6 +22,9 @@ namespace KompasCore.Effects
         public const string TriggererNowFitsRestirction = "Triggerer Now Fits Restriction";
         public const string TriggerersAugmentedCardFitsRestriction = "Triggerer's Augmented Card Fits Restriction";
         public const string CardExists = "Card Exists";
+        public const string TriggererIsSecondaryContextTarget = "Triggerer is Secondary Context Target";
+
+        public const string CardNowFurtherFromSourceThanItWas = "Card is now Further from Source than it Was";
 
         public const string AdjacentToRestriction = "Adjacent to Restriction";
         public const string CoordsFitRestriction = "Coords Fit Restriction"; //120,
@@ -77,23 +78,37 @@ namespace KompasCore.Effects
 
         public Trigger ThisTrigger { get; private set; }
         public Effect SourceEffect { get; private set; }
+        public Subeffect Subeffect { get; private set; }
 
         // Necessary because json doesn't let you have nice things, like constructors with arguments,
         // so I need to make sure manually that I've bothered to set up relevant arguments.
         private bool initialized = false;
 
-        public void Initialize(Game game, GameCard thisCard, Trigger thisTrigger, Effect effect)
+        public void Initialize(Game game, GameCard thisCard, Trigger thisTrigger, Effect effect, Subeffect subeff = default)
         {
             Game = game;
             ThisCard = thisCard;
             ThisTrigger = thisTrigger;
             SourceEffect = effect;
 
-            cardRestriction?.Initialize(thisCard, effect);
-            existsRestriction?.Initialize(thisCard, effect);
-            nowRestriction?.Initialize(thisCard, effect);
+            if (subeff == default)
+            {
+                cardRestriction?.Initialize(thisCard, effect);
+                existsRestriction?.Initialize(thisCard, effect);
+                nowRestriction?.Initialize(thisCard, effect);
+                spaceRestriction?.Initialize(thisCard, thisCard.Controller, effect);
+                sourceRestriction?.Initialize(thisCard, effect);
+            }
+            else
+            {
+                Subeffect = subeff;
+                cardRestriction?.Initialize(subeff);
+                existsRestriction?.Initialize(subeff);
+                nowRestriction?.Initialize(subeff);
+                spaceRestriction?.Initialize(subeff);
+                sourceRestriction?.Initialize(subeff);
+            }
             xRestriction?.Initialize(thisCard);
-            spaceRestriction?.Initialize(thisCard, thisCard.Controller, effect);
 
             initialized = true;
             //Debug.Log($"Initializing trigger restriction for {thisCard?.CardName}. game is null? {game}");
@@ -114,6 +129,12 @@ namespace KompasCore.Effects
                 case TriggererNowFitsRestirction: return nowRestriction.Evaluate(context.CardInfo.Card);
                 case TriggerersAugmentedCardFitsRestriction: return cardRestriction.Evaluate(context.CardInfo.AugmentedCard);
                 case StackableSourceFitsRestriction: return sourceRestriction.Evaluate(context.Stackable?.Source);
+                case TriggererIsSecondaryContextTarget:
+                    Debug.Log($"Targets are {string.Join(",", secondary?.Targets?.Select(c => c.ToString()) ?? new string[] { "Null" })}");
+                    return secondary?.Targets?.Any(c => c == context.CardInfo?.Card) ?? false;
+
+                case CardNowFurtherFromSourceThanItWas:
+                    return ThisCard.DistanceTo(context.CardInfo.Card.Position) > ThisCard.DistanceTo(context.CardInfo.Position); 
 
                 case ContextsStackablesMatch:
                     Debug.Log($"Primary stackable: {context.Stackable}");

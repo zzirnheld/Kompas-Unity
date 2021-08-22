@@ -1,5 +1,4 @@
 ﻿using KompasCore.Effects;
-using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {

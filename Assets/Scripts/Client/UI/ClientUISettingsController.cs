@@ -119,7 +119,6 @@ namespace KompasClient.UI
     public enum StatHighlight { NoHighlight, ColoredBack }
     public enum ConfirmTargets { No, Prompt }
 
-    [Serializable]
     public class ClientUISettings
     {
         public const float DefaultZoomThreshold = 14f;

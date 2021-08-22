@@ -1,0 +1,57 @@
+{
+	"cardType":67,
+	"cardName":"Mr Power Vacuum",
+	"effText":"Speed Demon.\nAfter I move, move a card adjacent to the space I moved from, to that space. If they were a Speed Demon, annihilate any of those cards you didn’t move.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+                {
+                    "$type":"KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
+                },
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"blurb":"card to vakoom",
+					"cardRestriction":{
+						"cardRestrictions":["Board","Adjacent to Coords"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Board","Adjacent to Coords","Not Already Target"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp",
+                    "targetIndex":0
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"jumpTo":5
+				}
+			]
+		}
+	],
+	"keywords":["Speed Demon"],
+	"n":1,
+	"e":2,
+	"s":5,
+	"w":1,
+	"unique":true,
+	"subtypeText":"Speed Demon"
+}

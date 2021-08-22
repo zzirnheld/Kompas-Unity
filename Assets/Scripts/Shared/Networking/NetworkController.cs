@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,7 +51,7 @@ namespace KompasCore.Networking
             string json = Encoding.UTF8.GetString(bytes);
             try
             {
-                Packet p = JsonUtility.FromJson<Packet>(json);
+                Packet p = JsonConvert.DeserializeObject<Packet>(json);
                 return (p.command, json);
             }
             catch (System.ArgumentException argEx)

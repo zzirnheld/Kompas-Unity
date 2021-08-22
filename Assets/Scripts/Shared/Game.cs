@@ -1,8 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasCore.UI;
-using KompasServer.Effects;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -13,6 +11,7 @@ namespace KompasCore.GameCore
     {
         public const string CardListPath = "Card Jsons/Card List";
 
+        // The list of locations where cards generally shouldn't be made visible to the opponent
         public static readonly CardLocation[] HiddenLocations =
             new CardLocation[] { CardLocation.Nowhere, CardLocation.Deck, CardLocation.Hand };
 

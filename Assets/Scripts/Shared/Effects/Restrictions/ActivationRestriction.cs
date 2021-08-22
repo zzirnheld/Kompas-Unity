@@ -67,23 +67,31 @@ namespace KompasCore.Effects
                 return false;
             }
 
-            switch (r)
+            return r switch
             {
-                case Never: return false;
-                case Default: return true;
-                case TimesPerTurn: return Effect.TimesUsedThisTurn < maxTimes;
-                case TimesPerRound: return Effect.TimesUsedThisRound < maxTimes;
-                case FriendlyTurn: return Effect.Game.TurnPlayer == activator;
-                case EnemyTurn: return Effect.Game.TurnPlayer != activator;
-                case InPlay: return Effect.Source.Location == CardLocation.Field;
-                case Location: return Effect.Source.Location == (CardLocation)location;
-                case ControllerActivates: return activator == Card.Controller;
-                case NotNegated: return !Effect.Negated;
-                case CardExists: return Effect.Game.Cards.Any(existsRestriction.Evaluate);
-                case ThisFitsRestriction: return thisCardRestriction.Evaluate(Card);
-                case NotCurrentlyActivated: return !Effect.Game.StackEntries.Any(e => e == Effect);
-                default: throw new System.ArgumentException($"Invalid activation restriction {r}");
-            }
+                Never => false,
+                Default => true,
+
+                TimesPerTurn            => Effect.TimesUsedThisTurn < maxTimes,
+                TimesPerRound           => Effect.TimesUsedThisRound < maxTimes,
+
+                FriendlyTurn            => Effect.Game.TurnPlayer == activator,
+                EnemyTurn               => Effect.Game.TurnPlayer != activator,
+
+                InPlay                  => Effect.Source.Location == CardLocation.Field,
+                Location                => Effect.Source.Location == (CardLocation)location,
+
+                ControllerActivates     => activator == Card.Controller,
+
+                NotNegated              => !Effect.Negated,
+
+                CardExists              => Effect.Game.Cards.Any(existsRestriction.Evaluate),
+                ThisFitsRestriction     => thisCardRestriction.Evaluate(Card),
+
+                NotCurrentlyActivated   => !Effect.Game.StackEntries.Any(e => e == Effect),
+
+                _ => throw new System.ArgumentException($"Invalid activation restriction {r}"),
+            };
         }
 
         /* This exists to debug a card's activation restriction,

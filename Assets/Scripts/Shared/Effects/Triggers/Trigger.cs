@@ -1,5 +1,4 @@
 ﻿using KompasCore.Cards;
-using KompasCore.GameCore;
 
 namespace KompasCore.Effects
 {

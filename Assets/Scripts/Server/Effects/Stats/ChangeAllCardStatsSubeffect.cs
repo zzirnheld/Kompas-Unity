@@ -1,5 +1,4 @@
-﻿using KompasCore.Cards;
-using KompasCore.Effects;
+﻿using KompasCore.Effects;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,7 +12,7 @@ namespace KompasServer.Effects
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
-            cardRestriction = cardRestriction ?? new CardRestriction()
+            cardRestriction ??= new CardRestriction()
             {
                 cardRestrictions = new string[]
                 {

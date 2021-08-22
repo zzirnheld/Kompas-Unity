@@ -290,6 +290,8 @@ namespace KompasCore.Cards
         }
 
         #region distance/adjacency
+        public int RadialDistanceTo(Space space)
+            => Location == CardLocation.Field ? Position.RadialDistanceTo(space) : int.MaxValue;
         public int DistanceTo(Space space)
             => Location == CardLocation.Field ? Position.DistanceTo(space) : int.MaxValue;
         public int DistanceTo(IGameCardInfo card) => DistanceTo(card.Position);
@@ -301,8 +303,12 @@ namespace KompasCore.Cards
             && card.Location == CardLocation.Field && Position.AdjacentTo(card.Position);
         public bool IsAdjacentTo(Space space) => Location == CardLocation.Field && Position.AdjacentTo(space);
 
-        public bool SpaceInAOE(Space space) 
-            => SpellSubtypes != null && SpellSubtypes.Any(s => s == CardBase.RadialSubtype) && DistanceTo(space) <= Radius;
+        public bool SpaceInAOE(Space space)
+            => SpellSubtypes != null && SpellSubtypes.Any(s => s switch
+            {
+                RadialSubtype => RadialDistanceTo(space) <= Radius,
+                _ => false
+            });
         public bool CardInAOE(IGameCardInfo c) => SpaceInAOE(c.Position);
 
         public bool SameColumn(Space space) => Location == CardLocation.Field && Position.SameColumn(space);

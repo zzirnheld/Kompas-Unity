@@ -7,6 +7,8 @@ namespace KompasServer.Effects
     {
         public const string HandSize = "Hand Size";
         public const string DistanceToCoordsThrough = "Distance to Coords Through";
+        public const string DistanceBetweenTargetAndCoords = "Distance Between Target and Target Space";
+        public const string DistanceFromSourceToTarget = "Distance From Source to Target";
 
         public const string CardsFittingRestriction = "Cards Fitting Restriction";
         public const string TotalCardValueOfCardsFittingRestriction = "Total Card Value of Cards Fitting Restriction";
@@ -33,24 +35,24 @@ namespace KompasServer.Effects
         {
             get
             {
-                switch (whatToCount)
+                return whatToCount switch
                 {
-                    case HandSize: return Player.handCtrl.HandSize;
-                    case DistanceToCoordsThrough:
-                        return Game.boardCtrl.ShortestPath(Source, Space, throughRestriction);
+                    HandSize                => Player.handCtrl.HandSize,
+                    DistanceToCoordsThrough => Game.boardCtrl.ShortestPath(Source, Space, throughRestriction),
+                    DistanceBetweenTargetAndCoords => Target.DistanceTo(Space),
+                    DistanceFromSourceToTarget     => Source.DistanceTo(Target),
 
-                    case CardsFittingRestriction:
-                        return Game.Cards.Where(cardRestriction.Evaluate).Count();
-                    case TotalCardValueOfCardsFittingRestriction:
-                        return Game.Cards.Where(cardRestriction.Evaluate).Sum(cardValue.GetValueOf);
-                    case MaxCardValueOfCardsFittingRestriction:
-                        return Game.Cards.Where(cardRestriction.Evaluate).Max(cardValue.GetValueOf);
+                    CardsFittingRestriction => Game.Cards.Where(cardRestriction.Evaluate).Count(),
+                    TotalCardValueOfCardsFittingRestriction 
+                        => Game.Cards.Where(cardRestriction.Evaluate).Sum(cardValue.GetValueOf),
+                    MaxCardValueOfCardsFittingRestriction 
+                        => Game.Cards.Where(cardRestriction.Evaluate).Max(cardValue.GetValueOf),
 
-                    case EffectUsesThisTurn: return Effect.TimesUsedThisTurn;
-                    case NumberOfTargets: return Effect.Targets.Count();
-                    default:
-                        throw new System.ArgumentException($"Invalid 'what to count' string {whatToCount} in x by gamestate value subeffect");
-                }
+                    EffectUsesThisTurn  => Effect.TimesUsedThisTurn,
+                    NumberOfTargets     => Effect.Targets.Count(),
+
+                    _ => throw new System.ArgumentException($"Invalid 'what to count' string {whatToCount} in x by gamestate value subeffect"),
+                };
             }
         }
     }

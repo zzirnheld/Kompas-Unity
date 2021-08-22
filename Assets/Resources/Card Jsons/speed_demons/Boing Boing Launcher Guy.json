@@ -1,0 +1,46 @@
+{
+	"cardType":67,
+	"cardName":"Boing Boing Launcher Guy",
+	"effText":"Speed Demon.\nAfter I move, move a card adjacent to the space I moved from, 1 space away from me.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+                {
+                    "$type":"KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
+                },
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"blurb":"card to vakoom",
+					"cardRestriction":{
+						"cardRestrictions":["Board","Adjacent to Coords"]
+					}
+				},
+                {
+                    "$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+                    "spaceRestriction":
+                    {
+                        "blurb":"where for speed victim to move",
+                        "spaceRestrictions":["Distance to Target == Constant","Further from Source than Coords"],
+                        "constant":1
+                    }
+                },
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"keywords":["Speed Demon"],
+	"n":1,
+	"e":3,
+	"s":3,
+	"w":3,
+	"subtypeText":"Speed Demon"
+}

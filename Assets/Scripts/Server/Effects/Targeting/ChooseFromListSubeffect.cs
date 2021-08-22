@@ -30,9 +30,9 @@ namespace KompasServer.Effects
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
-            cardRestriction = cardRestriction ?? new CardRestriction();
+            cardRestriction ??= new CardRestriction();
             cardRestriction.Initialize(this);
-            listRestriction = listRestriction ?? ListRestriction.Default;
+            listRestriction ??= ListRestriction.Default;
             listRestriction.Initialize(this);
         }
 
