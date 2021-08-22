@@ -257,7 +257,8 @@ namespace KompasCore.Cards
                 return;
             }
 
-            base.SetInfo(serializedCard); //base is redundant but adds clarity
+            // Set info in CardBase
+            base.SetInfo(serializedCard);
 
             TurnsOnBoard = 0;
             SetSpacesMoved(0, true);
