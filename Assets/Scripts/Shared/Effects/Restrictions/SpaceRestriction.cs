@@ -165,7 +165,7 @@ namespace KompasCore.Effects
                 case CanMoveSource: return Source.MovementRestriction.EvaluateEffectMove(space);
                 case Empty: return Source.Game.boardCtrl.GetCardAt(space) == null;
                 case CardHereFitsRestriction: return hereFitsRestriction.Evaluate(Source.Game.boardCtrl.GetCardAt(space));
-                case OnTargetsDiagonal: return target.OnMyDiagonal(space);
+                case OnTargetsDiagonal: return target.SameDiagonal(space);
                 case OnEdge: return space.IsEdge;
                 case Corner: return space.IsCorner;
                 case SameDirectionFromTargetAsSpace:

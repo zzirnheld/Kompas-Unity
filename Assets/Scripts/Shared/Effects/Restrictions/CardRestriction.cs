@@ -140,6 +140,7 @@ namespace KompasCore.Effects
         public const string ConnectedToSourceBy = "Connected to Source By";
         public const string ConnectedToTargetBy = "Connected to Target By";
         public const string SameDiagonalAsSource = "Same Diagonal as Source";
+        public const string SameDiagonalAsTarget = "Same Diagonal as Target";
 
         //misc
         public const string CanBePlayed = "Can Be Played";
@@ -365,15 +366,15 @@ namespace KompasCore.Effects
                 case IndexInListLTC:     return potentialTarget?.IndexInList < constant;
                 case IndexInListLTX:     return potentialTarget?.IndexInList < x;
                 case SameColumnAsSource: return potentialTarget?.SameColumn(Source) ?? false;
-                case DirectlyInFrontOfSource: return Source.CardDirectlyInFront(potentialTarget);
                 case InACorner:          return potentialTarget?.InCorner() ?? false;
+                case DirectlyInFrontOfSource: return Source.CardDirectlyInFront(potentialTarget);
                 case ConnectedToSourceBy:
                     return potentialTarget?.ShortestPath(Source.Position, connectednessRestriction.Evaluate) < 50; 
                 case ConnectedToTargetBy: 
                     return potentialTarget?.ShortestPath(Subeffect.Target.Position, connectednessRestriction.Evaluate) < 50;
 
-                case SameDiagonalAsSource:
-                    return potentialTarget?.Position.SameDiagonal(Source.Position) ?? false;
+                case SameDiagonalAsSource: return potentialTarget?.SameDiagonal(Source) ?? false;
+                case SameDiagonalAsTarget: return potentialTarget?.SameDiagonal(Subeffect.Target) ?? false;
 
                 //misc
                 case CanBePlayed: return Subeffect.Game.ExistsEffectPlaySpace(potentialTarget?.PlayRestriction, Effect);

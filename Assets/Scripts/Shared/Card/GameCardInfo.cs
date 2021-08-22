@@ -47,6 +47,7 @@ namespace KompasCore.Cards
         bool IsAdjacentTo(IGameCardInfo card);
         bool IsAdjacentTo(Space pos);
         bool SameColumn(IGameCardInfo card);
+        bool SameDiagonal(IGameCardInfo card);
         bool WithinSpaces(int spaces, IGameCardInfo card);
         bool InCorner();
         int ShortestPath(Space space, Func<GameCard, bool> throughPredicate);
@@ -192,7 +193,8 @@ namespace KompasCore.Cards
         public bool CardDirectlyInFront(IGameCardInfo card)
             => card.Location == CardLocation.Field && SpaceDirectlyInFront(card.Position);
 
-        public bool OnMyDiagonal(Space space) => Location == CardLocation.Field && Position.SameDiagonal(space);
+        public bool SameDiagonal(Space space) => Location == CardLocation.Field && Position.SameDiagonal(space);
+        public bool SameDiagonal(IGameCardInfo card) => card?.Location == CardLocation.Field && SameDiagonal(card.Position);
 
         public bool InCorner() => Location == CardLocation.Field && Position.IsCorner;
 

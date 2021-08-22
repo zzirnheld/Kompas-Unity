@@ -348,7 +348,8 @@ namespace KompasCore.Cards
         public bool CardDirectlyInFront(IGameCardInfo card)
             => card.Location == CardLocation.Field && SpaceDirectlyInFront(card.Position);
 
-        public bool OnMyDiagonal(Space space) => Location == CardLocation.Field && Position.SameDiagonal(space);
+        public bool SameDiagonal(Space space) => Location == CardLocation.Field && Position.SameDiagonal(space);
+        public bool SameDiagonal(IGameCardInfo card) => card?.Location == CardLocation.Field && SameDiagonal(card.Position);
 
         /// <summary>
         /// Refers to this situation: <br></br>

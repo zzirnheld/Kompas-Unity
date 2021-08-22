@@ -1,0 +1,45 @@
+{
+	"cardType":83,
+	"cardName":"Leygrapple",
+	"effText":"When a character is summoned, move a Linewalker on their diagonal to a space adjacent to that character.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"who will Leygrapple",
+						"cardRestrictions":["Board","Is Character","Same Diagonal as Target","Subtypes Include"],
+						"subtypesInclude":["Linewalker"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"to move that Linewalker to",
+						"spaceRestrictions":["Adjacent to Target"]
+					},
+					"targetIndex":-2
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+	"c":3,
+	"spellTypes":["Enchant"],
+	"subtypeText":"Enchant"
+}
