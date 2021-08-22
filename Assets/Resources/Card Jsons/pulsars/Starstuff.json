@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Starstuff",
-	"effText":"Give your Avatar +5 or -5 S. You can then annihilate me to draw 1 card.",
+	"effText":"Double or halve your Avatar’s S. (Round up.) Draw 1 card.",
 	"effects":[
 		{
 			"triggerData":
@@ -16,35 +16,31 @@
 					"$type":"KompasServer.Effects.TargetAvatarSubeffect, Assembly-CSharp"
 				},
 				{
+					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"S"
+					},
+					"xMultiplier":1
+				},
+				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Give +5 S or -5 S?",
-					"OptionBlurbs":["+5 S","-5 S"],
-					"OptionJumpIndices":[2,4],
+					"ChoiceBlurb":"Double or halve?",
+					"OptionBlurbs":["Double","halve"],
+					"OptionJumpIndices":[3,5],
 					"hasDefault":false
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"sMod":5
+					"sMult":1
 				},
 				{
 					"$type":"KompasServer.Effects.JumpSubeffect, Assembly-CSharp",
-					"indexToJumpTo":5
+					"indexToJumpTo":6
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"sMod":-5
-				},
-				{
-					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Annihilate me and draw 1?",
-					"OptionBlurbs":["Yes","No"],
-					"OptionJumpIndices":[6,100]
-				},
-				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"sMult":-1,
+					"sDiv":2
 				},
 				{
 					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
@@ -52,7 +48,6 @@
 			]	
 		}
 	],
-	"fast":true,
 	"c":1,
 	"spellTypes":["Simple"],
 	"subtypeText":"Simple"
