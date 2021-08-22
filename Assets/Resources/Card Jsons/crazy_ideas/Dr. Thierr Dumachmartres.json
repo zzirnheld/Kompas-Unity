@@ -1,14 +1,15 @@
 {
 	"cardType":67,
 	"cardName":"Dr. Thierr Dumachmartres",
-	"effText":"Once each round, you can discard 1 card. Draw 1 card.",
+	"effText":"When an enemy plays a card, discard 1 card. then draw 1 card.",
 	"effects":[
 		{
-			"activationRestriction":{
-				"activationRestrictionArray":[
-					"Max Times Per Round",
-					"Default"
-				]
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Enemy Triggered"]
+				}
 			},
 			"subeffects":[
 				{
