@@ -1,14 +1,15 @@
 {
 	"cardType":83,
 	"cardName":"Slight Golemodifications",
-	"effText":"Tribute an adjacent SX Golem.\nHand->summon or revive a Golem with S < X.  Discard-apply all Golem Cores the first wielded to the second.",
+	"effText":"When turns start, tribute an adjacent S X Golem. Hand->summon or revive a Golem with S < X. Discard-apply all Golem Cores the first wielded to the second.",
 	"effects":[
 		{
+            "blurb":"Modify Golem (Slightly)",
 			"triggerData":
 			{
-				"triggerCondition":"Play",
+				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+					"triggerRestrictions":["This Card in Play"]
 				}
 			},
 			"subeffects":[
@@ -77,17 +78,7 @@
 			]	
 		}
 	],
-	"PlayRestriction":{
-		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
-		"adjacentCardRestriction":
-		{
-			"cardRestrictions":["Is Character","Subtypes Include"],
-			"subtypesInclude":["Golem"]
-		}
-	},
-	"fast":true,
-	"c":2,
-	"spellTypes":["Simple"],
-	"subtypes":["Simple"],
-	"subtypeText":"Simple"
+	"c":3,
+	"spellTypes":["Enchant"],
+	"subtypeText":"Enchant"
 }
