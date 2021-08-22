@@ -1,13 +1,12 @@
 {
 	"cardType":67,
 	"cardName":"III - The Empress",
-	"effText":"Once each turn, when you draw X cards, you can hand-summon an S <= X character.",
+	"effText":"Once each turn, when you draw X cards, you are absolutely required to hand-summon an S <= X character.",
 	"effects":[
 		{
 			"triggerData":
 			{
 				"blurb":"Hand-summon character with S <= X?",
-				"optional":true,
 				"triggerCondition":"Draw",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Controller Triggered","Max Per Turn"]

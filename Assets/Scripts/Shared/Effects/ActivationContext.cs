@@ -16,7 +16,7 @@ namespace KompasCore.Effects
 
         public ActivationContext(GameCard card, IStackable stackable = null, Player triggerer = null,
             int? x = null, Space? space = null, int startIndex = 0, List<GameCard> targets = null)
-            : this(card == null ? null : new GameCardInfo(card), stackable, triggerer, x, space, startIndex, targets)
+            : this(card == null ? null : new GameCardInfo(card), stackable, triggerer, x, space, startIndex, targets ?? new List<GameCard>())
         { }
 
         public ActivationContext(IGameCardInfo card = null, IStackable stackable = null, Player triggerer = null,

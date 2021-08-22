@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Fanatic Follower",
-	"effText":"When I'm summoned, choose a character. Whenever they move, move 1 space towards them. If I'm now adjacent to them, give me +1 EW. (Disgusting.)",
+	"effText":"When I'm summoned, choose a character. Every time they move, move me adjacent to them and give me +1 EW. (Disgusting.)",
 	"effects":[
 		{
 			"triggerData":
@@ -35,8 +35,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"to move Fanatic Follower to",
-						"spaceRestrictions":["Distance to Target == Constant","Towards Target from Source","Can Move Source to This Space"],
-						"constant":1
+						"spaceRestrictions":["Adjacent to Target","Can Move Source to This Space"]
 					}
 				},
 				{
@@ -44,15 +43,6 @@
 				},
 				{
 					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition":"Source Violates Restriction",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Adjacent to Target"]
-					},
-                    "targetIndex":0
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
@@ -64,7 +54,7 @@
 	],
 	"n":0,
 	"e":1,
-	"s":2,
+	"s":3,
 	"w":1,
 	"subtypeText":"Random Nobody"
 }
