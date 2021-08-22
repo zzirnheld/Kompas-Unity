@@ -61,7 +61,7 @@ namespace KompasCore.Effects
             EffectIndex = effIndex;
             Controller = owner;
 
-            blurb = string.IsNullOrEmpty(blurb) ? "Effect" : blurb;
+            blurb = string.IsNullOrEmpty(blurb) ? $"Effect of {source.CardName}" : blurb;
             activationRestriction?.Initialize(this);
             TimesUsedThisTurn = 0;
         }

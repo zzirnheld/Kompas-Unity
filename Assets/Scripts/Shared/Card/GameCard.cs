@@ -395,21 +395,13 @@ namespace KompasCore.Cards
             //can't add a null augment
             if (augment == null) throw new System.ArgumentNullException("augment", $"Cannot add a null augment (to {CardName})");
 
-            //if this and the other are in the same place, it doesn't leave play
-            bool canHappen = false;
-            if (augment.Location != Location || augment.AugmentedCard != null) 
-                canHappen = augment.Remove(stackSrc);
-
-            if (!canHappen)
+            if (!augment.Remove(stackSrc))
             {
-                Debug.LogError($"Couldn't remove or detach augment from {augment.Location} while this in {Location}," +
-                    $" or {augment.AugmentedCard?.CardName}");
+                Debug.LogError($"Couldn't remove augment from {augment.AugmentedCard?.CardName} or {augment.Location} while this in {Location}");
                 return false;
             }
 
-            //regardless, add the augment
             AugmentsList.Add(augment);
-
             //and update the augment's augmented card, to reflect its new status
             augment.AugmentedCard = this;
 

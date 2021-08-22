@@ -72,7 +72,7 @@ namespace KompasCore.Effects
         public string TriggerCondition => TriggerData.triggerCondition;
         public TriggerRestriction TriggerRestriction => TriggerData.triggerRestriction;
         public bool Optional => TriggerData.optional;
-        public string Blurb => TriggerData.blurb;
+        public string Blurb => TriggerData.blurb ?? Effect.blurb;
 
         public Trigger(TriggerData triggerData, Effect effect)
         {
