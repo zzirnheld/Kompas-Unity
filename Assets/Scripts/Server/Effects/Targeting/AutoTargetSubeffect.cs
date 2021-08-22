@@ -17,14 +17,14 @@ namespace KompasServer.Effects
             cardRestriction.Initialize(this);
         }
 
-        public override bool IsImpossible() => !Game.Cards.Any(cardRestriction.Evaluate);
+        public override bool IsImpossible() => !Game.Cards.Any(c => cardRestriction.Evaluate(c, Effect.CurrActivationContext));
 
         public override Task<ResolutionInfo> Resolve()
         {
             GameCard potentialTarget = null;
             try
             {
-                potentialTarget = Game.Cards.SingleOrDefault(cardRestriction.Evaluate);
+                potentialTarget = Game.Cards.SingleOrDefault(c => cardRestriction.Evaluate(c, Effect.CurrActivationContext));
             }
             catch (System.InvalidOperationException) 
             {

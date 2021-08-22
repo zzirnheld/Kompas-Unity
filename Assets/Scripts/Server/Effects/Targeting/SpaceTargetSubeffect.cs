@@ -19,24 +19,11 @@ namespace KompasServer.Effects
             spaceRestriction.Initialize(this);
         }
 
-        public List<(int x, int y)> ValidSpaces
-        {
-            get
-            {
-                List<(int, int)> spaces = new List<(int, int)>();
-                for (int x = 0; x < 7; x++)
-                {
-                    for (int y = 0; y < 7; y++)
-                    {
-                        var space = Player.SubjectiveCoords((x, y));
-                        if (spaceRestriction.Evaluate((x, y), theoreticalTarget: Target)) spaces.Add(space);
-                    }
-                }
-                return spaces;
-            }
-        }
+        public IEnumerable<Space> ValidSpaces => Space.Spaces
+                .Where(s => spaceRestriction.Evaluate(s, Effect.CurrActivationContext, theoreticalTarget: Target))
+                .Select(s => Player.SubjectiveCoords(s));
 
-        public override bool IsImpossible() => ValidSpaces.Count == 0;
+        public override bool IsImpossible() => ValidSpaces.Count() == 0;
 
         /// <summary>
         /// Whether this space target subeffect will be valid if the given theoretical target is targeted.
@@ -51,7 +38,7 @@ namespace KompasServer.Effects
             {
                 for(int y = 0; y < 7; y++)
                 {
-                    if (spaceRestriction.Evaluate((x, y), theoreticalTarget)) return true;
+                    if (spaceRestriction.Evaluate((x, y), Effect.CurrActivationContext, theoreticalTarget)) return true;
                 }
             }
 
@@ -60,9 +47,11 @@ namespace KompasServer.Effects
 
         public override async Task<ResolutionInfo> Resolve()
         {
-            var spaces = ValidSpaces.ToArray();
+            var spaces = ValidSpaces.Select(s => (s.x, s.y)).ToArray();
             var recommendedSpaces 
-                = ForPlay ? spaces.Where(s => Target.PlayRestriction.RecommendedPlay(s, Player, normal: false)).ToArray() : spaces;
+                = ForPlay 
+                ? spaces.Where(s => Target.PlayRestriction.RecommendedPlay(s, Player, Effect.CurrActivationContext, normal: false)).ToArray() 
+                : spaces;
             if (spaces.Length > 0)
             {
                 var (a, b) = (-1, -1);
@@ -83,7 +72,7 @@ namespace KompasServer.Effects
         public bool SetTargetIfValid(int x, int y)
         {
             //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
-            if (spaceRestriction.Evaluate((x, y)))
+            if (spaceRestriction.Evaluate((x, y), Effect.CurrActivationContext))
             {
                 Debug.Log($"Adding {x}, {y} as coords");
                 ServerEffect.coords.Add((x, y));

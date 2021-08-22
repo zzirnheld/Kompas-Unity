@@ -55,6 +55,7 @@ namespace KompasCore.Effects
         public const string IsSource = "Is Source";
         public const string NotSource = "Not Source";
         public const string IsTarget = "Is Target";
+        public const string NotContextCard = "Not Context Card";
         public const string AugmentsTarget = "Augments Current Target";
         public const string AugmentedBySource = "Source Augments";
         public const string NotAugmentedBySource = "Source Doesn't Augment";
@@ -230,8 +231,9 @@ namespace KompasCore.Effects
         /// <param name="restriction">The restriction to check, as defined in the constants above.</param>
         /// <param name="potentialTarget">The card to consider the restriction for.</param>
         /// <param name="x">The value of x for which to consider the restriction</param>
+        /// <param name="context">The activation context relevant here - the context for the Effect or for this triggering event</param>
         /// <returns><see langword="true"/> if the card fits the restriction for the given value of x, <see langword="false"/> otherwise.</returns>
-        private bool RestrictionValid(string restriction, IGameCardInfo potentialTarget, int x)
+        private bool RestrictionValid(string restriction, IGameCardInfo potentialTarget, int x, ActivationContext context)
         {
             //if (potentialTarget == null) return false;
             //Debug.Log($"potential target controller? {potentialTarget.Controller}, my controller {Controller}");
@@ -279,10 +281,11 @@ namespace KompasCore.Effects
                 case IsSource: return potentialTarget?.Card == Source;
                 case NotSource: return potentialTarget?.Card != Source;
                 case IsTarget: return potentialTarget?.Card == Subeffect.Target;
+                case NotContextCard: return potentialTarget?.Card != context?.CardInfo?.Card;
                 case AugmentsTarget: return potentialTarget?.AugmentedCard == Subeffect.Target;
                 case AugmentedBySource: return potentialTarget?.Augments.Contains(Source) ?? false;
                 case NotAugmentedBySource: return !(potentialTarget?.Augments.Contains(Source) ?? true);
-                case WieldsAugmentFittingRestriction: return potentialTarget?.Augments.Any(c => secondaryRestriction.Evaluate(c)) ?? false;
+                case WieldsAugmentFittingRestriction: return potentialTarget?.Augments.Any(c => secondaryRestriction.Evaluate(c, context)) ?? false;
 
                 //distinct
                 case DistinctFromSource: return potentialTarget?.Card != Source;
@@ -345,16 +348,16 @@ namespace KompasCore.Effects
                     var cards = potentialTarget?.AdjacentCards;
                     Debug.Log($"Cards adjacent to {potentialTarget} are {string.Join(", ", cards.Select(c => c.ToString()))}");
                     //Debug.Log($"Cards null? {cards == null} restriction null? {adjacentCardRestriction == null}");
-                    return cards?.Any(c => adjacentCardRestriction.Evaluate(c)) ?? false;
+                    return cards?.Any(c => adjacentCardRestriction.Evaluate(c, context)) ?? false;
 
                 case InAOE:              return Source.CardInAOE(potentialTarget);
                 case InTargetsAOE:       return Subeffect.Target.CardInAOE(potentialTarget);
                 case SourceInThisAOE:    return potentialTarget?.CardInAOE(Source) ?? false;
                 case NotInAOE:           return !Source.CardInAOE(potentialTarget);
                 case InAOEOfCardFittingRestriction: 
-                    return Source.Game.Cards.Any(c => c.CardInAOE(potentialTarget) && inAOEOfRestriction.Evaluate(c));
+                    return Source.Game.Cards.Any(c => c.CardInAOE(potentialTarget) && inAOEOfRestriction.Evaluate(c, context));
                 case NotInAOEOfCardFittingRestriction:
-                    return !Source.Game.Cards.Any(c => c.CardInAOE(potentialTarget) && inAOEOfRestriction.Evaluate(c));
+                    return !Source.Game.Cards.Any(c => c.CardInAOE(potentialTarget) && inAOEOfRestriction.Evaluate(c, context));
 
                 case WithinCSpacesOfSource: return potentialTarget?.WithinSpaces(cSpaces, Source) ?? false;
                 case WithinCSpacesOfTarget: return potentialTarget?.WithinSpaces(cSpaces, Subeffect.Target) ?? false;
@@ -369,9 +372,9 @@ namespace KompasCore.Effects
                 case InACorner:          return potentialTarget?.InCorner() ?? false;
                 case DirectlyInFrontOfSource: return Source.CardDirectlyInFront(potentialTarget);
                 case ConnectedToSourceBy:
-                    return potentialTarget?.ShortestPath(Source.Position, connectednessRestriction.Evaluate) < 50; 
+                    return potentialTarget?.ShortestPath(Source.Position, c => connectednessRestriction.Evaluate(c, context)) < 50; 
                 case ConnectedToTargetBy: 
-                    return potentialTarget?.ShortestPath(Subeffect.Target.Position, connectednessRestriction.Evaluate) < 50;
+                    return potentialTarget?.ShortestPath(Subeffect.Target.Position, c => connectednessRestriction.Evaluate(c, context)) < 50;
 
                 case SameDiagonalAsSource: return potentialTarget?.SameDiagonal(Source) ?? false;
                 case SameDiagonalAsTarget: return potentialTarget?.SameDiagonal(Subeffect.Target) ?? false;
@@ -384,27 +387,27 @@ namespace KompasCore.Effects
                     return Source.Game.StackEntries.Any(s => s is Attack atk && atk.attacker == Source && atk.defender == potentialTarget?.Card)
                         || (Source.Game.CurrStackEntry is Attack atk2 && atk2.attacker == Source && atk2.defender == potentialTarget?.Card);
                 case CanPlayTargetToThisCharactersSpace:
-                    return Subeffect.Target.PlayRestriction.EvaluateEffectPlay(potentialTarget?.Position ?? default, Effect, Subeffect.Player);
+                    return Subeffect.Target.PlayRestriction.EvaluateEffectPlay(potentialTarget?.Position ?? default, Effect, Subeffect.Player, context);
                 case SpaceRestrictionValidIfThisTargetChosen:
                     if (Effect.Subeffects[spaceRestrictionIndex] is SpaceTargetSubeffect spaceTgtSubeff)
                         return spaceTgtSubeff.WillBePossibleIfCardTargeted(theoreticalTarget: potentialTarget?.Card);
                     else return false;
                 case AttackingCardFittingRestriction:
                     return Source.Game.StackEntries
-                        .Any(e => e is Attack atk && atk.attacker == potentialTarget?.Card && attackedCardRestriction.Evaluate(atk.defender));
+                        .Any(e => e is Attack atk && atk.attacker == potentialTarget?.Card && attackedCardRestriction.Evaluate(atk.defender, context));
                 case EffectIsOnTheStack:
                     return Source.Game.StackEntries.Any(e => e is Effect eff && eff.Source == potentialTarget?.Card);
                 case CanPlayToTargetSpace:
-                    return potentialTarget?.PlayRestriction.EvaluateEffectPlay(Subeffect.Space, Effect, Subeffect.Player) ?? false;
+                    return potentialTarget?.PlayRestriction.EvaluateEffectPlay(Subeffect.Space, Effect, Subeffect.Player, context) ?? false;
                 default: throw new ArgumentException($"Invalid card restriction {restriction}", "restriction");
             }
         }
 
         /* This exists to debug a card restriction,
          * but should not be usually used because it prints a ton */
-        public bool RestrictionValidDebug(string restriction, IGameCardInfo potentialTarget, int x)
+        public bool RestrictionValidDebug(string restriction, IGameCardInfo potentialTarget, int x, ActivationContext context)
         {
-            bool answer = RestrictionValid(restriction, potentialTarget, x);
+            bool answer = RestrictionValid(restriction, potentialTarget, x, context);
             if (!answer) Debug.Log($"{potentialTarget?.CardName} flouts {restriction}");
             return answer;
         }
@@ -415,7 +418,7 @@ namespace KompasCore.Effects
         /// <param name="potentialTarget">The card to see if it fits all restrictions</param>
         /// <param name="x">The value of X for which to consider this effect's restriction</param>
         /// <returns><see langword="true"/> if the card fits all restrictions, <see langword="false"/> if it doesn't fit at least one</returns>
-        private bool Evaluate(IGameCardInfo potentialTarget, int x)
+        private bool Evaluate(IGameCardInfo potentialTarget, int x, ActivationContext context)
         {
             if (!initialized) throw new ArgumentException("Card restriction not initialized!");
 
@@ -423,7 +426,7 @@ namespace KompasCore.Effects
 
             try
             {
-                return cardRestrictions.All(r => RestrictionValid(r, potentialTarget, x));
+                return cardRestrictions.All(r => RestrictionValid(r, potentialTarget, x, context));
             }
             catch (ArgumentException e)
             {
@@ -436,7 +439,9 @@ namespace KompasCore.Effects
         /// Checks whether the card in question fits the relevant retrictions, for the current effect value of X
         /// </summary>
         /// <param name="potentialTarget">The card to see if it fits all restrictions</param>
+        /// <param name="context">The activation context relevant here - the context for the Effect or for this triggering event</param>
         /// <returns><see langword="true"/> if the card fits all restrictions, <see langword="false"/> if it doesn't fit at least one</returns>
-        public bool Evaluate(IGameCardInfo potentialTarget) => Evaluate(potentialTarget, Subeffect?.Count ?? 0);
+        public bool Evaluate(IGameCardInfo potentialTarget, ActivationContext context) 
+            => Evaluate(potentialTarget, Subeffect?.Count ?? 0, context);
     }
 }

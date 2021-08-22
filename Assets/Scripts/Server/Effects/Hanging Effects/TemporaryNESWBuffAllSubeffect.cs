@@ -32,7 +32,8 @@ namespace KompasServer.Effects
         {
             var effs = new List<HangingEffect>();
 
-            IEnumerable<GameCard> cards = ServerGame.Cards.Where(cardRestriction.Evaluate);
+            IEnumerable<GameCard> cards 
+                = ServerGame.Cards.Where(c => cardRestriction.Evaluate(c, Effect.CurrActivationContext));
 
             foreach (var card in cards)
             {

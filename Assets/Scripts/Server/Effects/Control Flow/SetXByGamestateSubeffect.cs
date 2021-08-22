@@ -38,15 +38,16 @@ namespace KompasServer.Effects
                 return whatToCount switch
                 {
                     HandSize                => Player.handCtrl.HandSize,
-                    DistanceToCoordsThrough => Game.boardCtrl.ShortestPath(Source, Space, throughRestriction),
+                    DistanceToCoordsThrough => Game.boardCtrl.ShortestPath(Source, Space, throughRestriction, Effect.CurrActivationContext),
                     DistanceBetweenTargetAndCoords => Target.DistanceTo(Space),
                     DistanceFromSourceToTarget     => Source.DistanceTo(Target),
 
-                    CardsFittingRestriction => Game.Cards.Where(cardRestriction.Evaluate).Count(),
+                    CardsFittingRestriction 
+                        => Game.Cards.Where(c => cardRestriction.Evaluate(c, Effect.CurrActivationContext)).Count(),
                     TotalCardValueOfCardsFittingRestriction 
-                        => Game.Cards.Where(cardRestriction.Evaluate).Sum(cardValue.GetValueOf),
+                        => Game.Cards.Where(c => cardRestriction.Evaluate(c, Effect.CurrActivationContext)).Sum(cardValue.GetValueOf),
                     MaxCardValueOfCardsFittingRestriction 
-                        => Game.Cards.Where(cardRestriction.Evaluate).Max(cardValue.GetValueOf),
+                        => Game.Cards.Where(c => cardRestriction.Evaluate(c, Effect.CurrActivationContext)).Max(cardValue.GetValueOf),
 
                     EffectUsesThisTurn  => Effect.TimesUsedThisTurn,
                     NumberOfTargets     => Effect.Targets.Count(),

@@ -124,12 +124,12 @@ namespace KompasCore.Effects
                 case ThisCardTriggered:        return context.CardInfo.Card == ThisCard;
                 case ThisCardInPlay:           return ThisCard.Location == CardLocation.Field;
                 case AugmentedCardTriggered:   return context.CardInfo.Augments.Contains(ThisCard);
-                case CardExists:               return ThisCard.Game.Cards.Any(c => existsRestriction.Evaluate(c));
-                case ThisCardFitsRestriction:  return cardRestriction.Evaluate(ThisCard);
-                case TriggererFitsRestriction: return cardRestriction.Evaluate(context.CardInfo);
-                case TriggererNowFitsRestirction: return nowRestriction.Evaluate(context.CardInfo.Card);
-                case TriggerersAugmentedCardFitsRestriction: return cardRestriction.Evaluate(context.CardInfo.AugmentedCard);
-                case StackableSourceFitsRestriction: return sourceRestriction.Evaluate(context.Stackable?.Source);
+                case CardExists:               return ThisCard.Game.Cards.Any(c => existsRestriction.Evaluate(c, context));
+                case ThisCardFitsRestriction:  return cardRestriction.Evaluate(ThisCard, context);
+                case TriggererFitsRestriction: return cardRestriction.Evaluate(context.CardInfo, context);
+                case TriggererNowFitsRestirction: return nowRestriction.Evaluate(context.CardInfo.Card, context);
+                case TriggerersAugmentedCardFitsRestriction: return cardRestriction.Evaluate(context.CardInfo.AugmentedCard, context);
+                case StackableSourceFitsRestriction: return sourceRestriction.Evaluate(context.Stackable?.Source, context);
                 case TriggererIsSecondaryContextTarget: return secondary?.Targets?.Any(c => c == context.CardInfo?.Card) ?? false;
 
                 case CardNowFurtherFromSourceThanItWas:
@@ -144,12 +144,12 @@ namespace KompasCore.Effects
                 case StackableIsThisEffect: return context.Stackable == SourceEffect;
 
                 //other non-card triggering things
-                case CoordsFitRestriction:    return context.Space != null && spaceRestriction.Evaluate(context.Space.Value);
+                case CoordsFitRestriction:    return context.Space != null && spaceRestriction.Evaluate(context.Space.Value, context);
                 case XFitsRestriction:        return context.X != null && xRestriction.Evaluate(context.X.Value);
                 case EffectSourceIsTriggerer: return context.Stackable is Effect eff && eff.Source == context.CardInfo.Card;
                 case AdjacentToRestriction:
                     Debug.Log($"Card {ThisCard?.CardName} with adjacent cards {ThisCard?.AdjacentCards}");
-                    return ThisCard.AdjacentCards.Any(cardRestriction.Evaluate);
+                    return ThisCard.AdjacentCards.Any(c => cardRestriction.Evaluate(c, context));
                 //TODO make these into just something to do with triggered card fitting restriction
                 case ControllerTriggered:     return context.Triggerer == ThisCard.Controller;
                 case EnemyTriggered:          return context.Triggerer != ThisCard.Controller;

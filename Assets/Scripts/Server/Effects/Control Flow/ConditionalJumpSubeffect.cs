@@ -32,9 +32,9 @@ namespace KompasServer.Effects
             {
                 return condition switch
                 {
-                    CardFitsRestriction         => Game.Cards.Any(cardRestriction.Evaluate),
-                    TargetFitsRestriction       => cardRestriction.Evaluate(Target),
-                    TargetViolatesRestriction   => !cardRestriction.Evaluate(Target),
+                    CardFitsRestriction         => Game.Cards.Any(c => cardRestriction.Evaluate(c, Effect.CurrActivationContext)),
+                    TargetFitsRestriction       => cardRestriction.Evaluate(Target, Effect.CurrActivationContext),
+                    TargetViolatesRestriction   => !cardRestriction.Evaluate(Target, Effect.CurrActivationContext),
                     XGreaterEqualConstant       => Effect.X >= constant,
                     XFitsRestriction            => xRestriction.Evaluate(Effect.X),
                     _ => throw new System.ArgumentException($"Invalid conditional jump condition {condition}"),
