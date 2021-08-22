@@ -16,6 +16,7 @@ namespace KompasServer.Effects
         public const string MustBeEnemyTurn = "Must be Enemy Turn";
         public const string TargetViolatesRestriction = "Target Violates Restriction";
         public const string TargetFitsRestriction = "Target Fits Restriction";
+        public const string SourceViolatesRestriction = "Source Violates Restriction";
         public const string NumTargetsLTEConstant = "Number Targets <= Constant";
 
         public int constant = 0;
@@ -26,7 +27,7 @@ namespace KompasServer.Effects
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
-            cardRestriction = cardRestriction ?? new CardRestriction();
+            cardRestriction ??= new CardRestriction();
             cardRestriction.Initialize(this);
         }
 
@@ -44,6 +45,7 @@ namespace KompasServer.Effects
                 MustBeEnemyTurn             => ServerGame.TurnPlayer == Effect.Controller,
                 TargetViolatesRestriction   => !cardRestriction.Evaluate(Target),
                 TargetFitsRestriction       => cardRestriction.Evaluate(Target),
+                SourceViolatesRestriction   => !cardRestriction.Evaluate(Source),
                 NumTargetsLTEConstant       => Effect.Targets.Count() <= constant,
                 _ => throw new System.ArgumentException($"Condition {condition} invalid for conditional end subeffect"),
             };

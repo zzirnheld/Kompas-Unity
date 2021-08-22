@@ -6,7 +6,6 @@
 		{
 			"triggerData":
 			{
-				"optional":true,
 				"blurb":"Give me and a Summoned character -X E? (X is the number of cards you just drew)",
 				"triggerCondition":"Draw",
 				"triggerRestriction":{

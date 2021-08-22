@@ -1,0 +1,48 @@
+{
+	"cardType":67,
+	"cardName":"Hypnosympatheticizer",
+	"effText":"Speed Demon.\nThe first two times each turn I move 1 space, move a distinct character 1 space the same direction I moved.",
+	"effects":[
+		{
+			"blurb":"hyyyypnoooo SYMP",
+			"triggerData":
+			{
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","Max Per Turn"]
+				},
+				"maxTimesPerTurn":2
+			},
+			"subeffects":[
+                {
+                    "$type":"KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
+                },
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"blurb":"card to sympa",
+					"cardRestriction":{
+						"cardRestrictions":["Board","Distinct from Source"]
+					}
+				},
+                {
+                    "$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+                    "spaceRestriction":
+                    {
+                        "blurb":"where for speed victim to move",
+                        "spaceRestrictions":["Distance to Target == Constant","Same Direction From Target As Source From Space"],
+                        "constant":1
+                    }
+                },
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"keywords":["Speed Demon"],
+	"n":1,
+	"e":4,
+	"s":4,
+	"w":4,
+	"subtypeText":"Speed Demon"
+}

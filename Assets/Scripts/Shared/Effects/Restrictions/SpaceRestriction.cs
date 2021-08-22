@@ -37,17 +37,24 @@ namespace KompasCore.Effects
         public const string DistanceToTargetC = "Distance to Target == Constant";
         public const string DistanceToTargetLTEC = "Distance to Target <= Constant";
         public const string FurtherFromSourceThanTarget = "Further from Source than Target";
+        public const string FurtherFromSourceThanCoords = "Further from Source than Coords";
         public const string TowardsSourceFromTarget = "Towards Source from Target";
+        public const string TowardsTargetFromSource = "Towards Target from Source";
         public const string DirectlyAwayFromTarget = "Directly Away from Target";
 
         //misc
         public const string CanPlayTarget = "Can Play Target to This Space";
         public const string CanMoveTarget = "Can Move Target to This Space";
+        public const string CanMoveSource = "Can Move Source to This Space";
         public const string Empty = "Empty";
         public const string CardHereFitsRestriction = "Card Here Fits Restriction";
         public const string OnTargetsDiagonal = "On Target's Diagonal";
         public const string OnEdge = "On Edge of Board";
         public const string Corner = "Corner";
+        //TODO: eventually make a "targetdirection" subeffect that appends the direction as a Space to the list of coords,
+        // then replace these with something comparing directions
+        public const string SameDirectionFromTargetAsSpace = "Same Direction From Target As Source From Space";
+        public const string OppositeDirectionFromTargetThanSpace = "Opposite Direction From Target Than Space";
         #endregion space restrictions
 
         public string[] spaceRestrictions;
@@ -147,17 +154,26 @@ namespace KompasCore.Effects
                 case DistanceToTargetC:           return target.DistanceTo(space) == constant;
                 case DistanceToTargetLTEC:        return target.DistanceTo(space) <= constant;
                 case FurtherFromSourceThanTarget: return Source.DistanceTo(space) > Source.DistanceTo(target);
+                case FurtherFromSourceThanCoords: return Source.DistanceTo(space) > Source.DistanceTo(Subeffect.Space);
                 case TowardsSourceFromTarget:     return Source.DistanceTo(space) < Source.DistanceTo(target);
+                case TowardsTargetFromSource:     return target.DistanceTo(space) < target.DistanceTo(Source);
                 case DirectlyAwayFromTarget:      return target.SpaceDirectlyAwayFrom(space, Source);
 
                 //misc
                 case CanPlayTarget: return target.PlayRestriction.EvaluateEffectPlay(space, Subeffect.Effect, Subeffect.Player, ignoring: playRestrictionsToIgnore);
                 case CanMoveTarget: return target.MovementRestriction.EvaluateEffectMove(space);
+                case CanMoveSource: return Source.MovementRestriction.EvaluateEffectMove(space);
                 case Empty: return Source.Game.boardCtrl.GetCardAt(space) == null;
                 case CardHereFitsRestriction: return hereFitsRestriction.Evaluate(Source.Game.boardCtrl.GetCardAt(space));
                 case OnTargetsDiagonal: return target.OnMyDiagonal(space);
                 case OnEdge: return space.IsEdge;
                 case Corner: return space.IsCorner;
+                case SameDirectionFromTargetAsSpace:
+                    return target.Position.DirectionFromThisTo(space) == Subeffect.Space.DirectionFromThisTo(Source.Position);
+                case OppositeDirectionFromTargetThanSpace:
+                    /*Debug.Log($"Comparing {space} and {Subeffect.Space}, w/r/t {Source.Position}\n" +
+                        $"Directions:{Source.Position.DirectionFromThisTo(space)} to {Source.Position.DirectionFromThisTo(Subeffect.Space)}");*/
+                    return Source.Position.DirectionFromThisTo(space) * -1 == Source.Position.DirectionFromThisTo(Subeffect.Space);
                 default: throw new ArgumentException($"Invalid space restriction {restriction}", "restriction");
             }
         }

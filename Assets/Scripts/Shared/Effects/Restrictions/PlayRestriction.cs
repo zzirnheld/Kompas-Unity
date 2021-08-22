@@ -56,9 +56,9 @@ namespace KompasCore.Effects
         {
             Card = card;
 
-            normalRestrictions = normalRestrictions ?? new List<string> { DefaultNormal };
-            effectRestrictions = effectRestrictions ?? new List<string> { DefaultEffect };
-            recommendationRestrictions = recommendationRestrictions ?? new List<string>();
+            normalRestrictions ??= new List<string> { DefaultNormal };
+            effectRestrictions ??= new List<string> { DefaultEffect };
+            recommendationRestrictions ??= new List<string>();
             //if (recommendationRestrictions.Count > 0) 
             //  Debug.Log($"More than one recommendation restriction: {string.Join(recommendationRestrictions)}");
 

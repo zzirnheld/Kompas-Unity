@@ -63,6 +63,17 @@ public struct Space
     public bool NorthOf(Space other) => x > other.x || y > other.y;
     public Space DueNorth => new Space(x + 1, y + 1);
 
+    public Space DirectionFromThisTo(Space other)
+    {
+        (int x, int y) diff = (x - other.x, y - other.y);
+        if (diff.x == 0 || diff.y == 0) return (Math.Sign(diff.x), Math.Sign(diff.y));
+        else if (diff.x % diff.y == 0) return (Math.Sign(diff.x) * (diff.x / diff.y), Math.Sign(diff.y));
+        else if (diff.y % diff.x == 0) return (Math.Sign(diff.x), Math.Sign(diff.y) * (diff.y / diff.x));
+        else return diff;
+    }
+
+    public static Space operator *(Space s, int i) => (s.x * i, s.y * i);
+
     public static bool operator ==(Space a, Space b) => a.x == b.x && a.y == b.y;
     public static bool operator !=(Space a, Space b) => !(a == b);
     public static bool operator ==(Space a, (int x, int y) b) => a.x == b.x && a.y == b.y;
