@@ -26,7 +26,7 @@ namespace KompasCore.Effects
         public const string NotCurrentlyActivated = "Not Currently Activated";
 
         public const string Default = "Default";
-        public static readonly string[] DefaultRestrictions = { ControllerActivates, NotNegated, InPlay, NotCurrentlyActivated };
+        public static readonly string[] DefaultRestrictions = { ControllerActivates, NotNegated, InPlay, NotCurrentlyActivated, FriendlyTurn };
 
         public static readonly string[] AtAllRestrictions = 
             { TimesPerTurn, TimesPerRound, FriendlyTurn, EnemyTurn, NotNegated, InPlay, Location, ThisFitsRestriction, NotCurrentlyActivated };
