@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Accelerating Pulsar",
-	"effText":"When your Avatar gains S, give adjacent characters +1 N.\nWhen your Avatar loses S, give adjacent characters -1 N.",
+	"effText":"When your Avatar's S changes, give adjacent characters:\n+S: +1 N.\n-S: -1 N.",
 	"effects":[
 		{
 			"triggerData":

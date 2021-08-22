@@ -1,15 +1,26 @@
 {
 	"cardType":67,
 	"cardName":"Starheart",
-	"effText":"Once each turn, you can give me +1 S.\nOnce each turn, you can give me -1 S.",
+	"effText":"When a card moves adjacent to a Pulsar, give me +1 S.\nWhen a card adjacent to a Pulsar moves, give me -1 S",
 	"effects":[
 		{
 			"blurb":"Surge",
-			"activationRestriction":{
-				"activationRestrictionArray":[
-					"Max Times Per Turn",
-					"Default"
-				]
+			"triggerData":
+			{
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Coords Fit Restriction"],
+					"spaceRestriction":
+					{
+						"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
+						"adjacencyRestriction":
+						{
+							"cardRestrictions":["Subtypes Include","Subtypes Include"],
+							"subtypesInclude":["Pulsar"]
+						},
+						"mustBeEmpty":false
+					}
+				}
 			},
 			"subeffects":[
 				{
@@ -23,11 +34,22 @@
 		},
 		{
 			"blurb":"Shrink",
-			"activationRestriction":{
-				"activationRestrictionArray":[
-					"Max Times Per Turn",
-					"Default"
-				]
+			"triggerData":
+			{
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"cardRestriction":
+					{
+						"cardRestrictions":["Adjacent to Card Restriction"],
+						"adjacentCardRestriction":
+						{
+							"cardRestrictions":["Subtypes Include","Subtypes Include"],
+							"subtypesInclude":["Pulsar"]
+						},
+						"mustBeEmpty":false
+					}
+				}
 			},
 			"subeffects":[
 				{

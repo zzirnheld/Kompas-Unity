@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Magnetizing Pulsar",
-	"effText":"When your Avatar gains S, move another card 1 space away from me.\nWhen your Avatar loses S, move another card 1 space towards me.",
+	"effText":"The first time each stack your Avatar's S changes, move another card 1 space:\n+S: away from me.\n-S: towards me.",
 	"effects":[
 		{
 			"triggerData":
@@ -9,7 +9,7 @@
 				"blurb":"Repel",
 				"triggerCondition":"S Change",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction"],
+					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction","Max Per Stack"],
 					"xRestriction":{
 						"xRestrictions":[">0"]
 					},
@@ -48,7 +48,7 @@
 				"blurb":"Attract",
 				"triggerCondition":"S Change",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction"],
+					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction","Max Per Stack"],
 					"xRestriction":{
 						"xRestrictions":["<0"]
 					},

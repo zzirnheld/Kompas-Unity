@@ -345,7 +345,7 @@ namespace KompasCore.Effects
                     var cards = potentialTarget?.AdjacentCards;
                     Debug.Log($"Cards adjacent to {potentialTarget} are {string.Join(", ", cards.Select(c => c.ToString()))}");
                     //Debug.Log($"Cards null? {cards == null} restriction null? {adjacentCardRestriction == null}");
-                    return cards.Any(c => adjacentCardRestriction.Evaluate(c));
+                    return cards?.Any(c => adjacentCardRestriction.Evaluate(c)) ?? false;
 
                 case InAOE:              return Source.CardInAOE(potentialTarget);
                 case InTargetsAOE:       return Subeffect.Target.CardInAOE(potentialTarget);
