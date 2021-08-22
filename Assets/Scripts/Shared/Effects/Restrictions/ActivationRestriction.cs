@@ -24,9 +24,10 @@ namespace KompasCore.Effects
         public const string CardExists = "Card Exists";
         public const string ThisFitsRestriction = "This Card Fits Restriction";
         public const string NotCurrentlyActivated = "Not Currently Activated";
+        public const string NothingHappening = "Nothing Happening";
 
         public const string Default = "Default";
-        public static readonly string[] DefaultRestrictions = { ControllerActivates, NotNegated, InPlay, NotCurrentlyActivated, FriendlyTurn };
+        public static readonly string[] DefaultRestrictions = { ControllerActivates, NotNegated, InPlay, NotCurrentlyActivated, FriendlyTurn, NothingHappening };
 
         public static readonly string[] AtAllRestrictions = 
             { TimesPerTurn, TimesPerRound, FriendlyTurn, EnemyTurn, NotNegated, InPlay, Location, ThisFitsRestriction, NotCurrentlyActivated };
@@ -89,6 +90,7 @@ namespace KompasCore.Effects
                 ThisFitsRestriction     => thisCardRestriction.Evaluate(Card),
 
                 NotCurrentlyActivated   => !Effect.Game.StackEntries.Any(e => e == Effect),
+                NothingHappening        => Effect.Game.NothingHappening,
 
                 _ => throw new System.ArgumentException($"Invalid activation restriction {r}"),
             };

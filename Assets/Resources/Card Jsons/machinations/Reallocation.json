@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Reallocation",
-	"effText":"Rehand a distinct adjacent friendly CX spell. Give an adjacent friendly character +X ESW. (This doesn't negate anything the spell was doing.)",
+	"effText":"Hand a distinct adjacent friendly CX spell. Give an adjacent friendly character +X ESW. (This doesn't negate anything the spell was doing.)",
 	"effects":[
 		{
 			"triggerData":
@@ -55,7 +55,6 @@
 		}
 	},
 	"c":3,
-	"fast":true,
 	"spellTypes":["Simple"],
 	"subtypes":["Simple"],
 	"subtypeText":"Simple"

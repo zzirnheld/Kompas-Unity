@@ -39,7 +39,6 @@
 			}
 		}
 	},
-	"fast":true,
 	"c":4,
 	"spellTypes":["Simple"],
 	"subtypes":["Simple","Shaping"],

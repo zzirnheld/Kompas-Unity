@@ -62,7 +62,6 @@
 			"cardRestrictions":["Is Character"]
 		}
 	},
-	"fast":true,
 	"c":2,
 	"spellTypes":["Simple"],
 	"subtypes":["Simple","Shaping"],

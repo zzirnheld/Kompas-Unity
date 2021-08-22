@@ -50,7 +50,6 @@
 			"cardRestrictions":["Is Character","Effect is on the Stack"]
 		}
 	},
-    "fast":true,
 	"n":3,
 	"e":6,
 	"s":4,
