@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Laguz",
-	"effText":"Runic.\nThe first time each stack a character moves themselves adjacent to me, move them 1 space.",
+	"effText":"Runic.\nWhen a character moves to a space here normally, move them 1 space.",
 	"effects":[
 		{
 			"triggerData":
@@ -33,9 +33,9 @@
 	"PlayRestriction":{
 		"normalRestrictions":["Cannot be Played Normally"]
 	},
-	"c":2,
+	"c":1,
 	"spellTypes":["Radial"],
 	"subtypes":["Rune","Radial"],
 	"subtypeText":"Rune Radial",
-	"radius":1
+	"radius":2
 }

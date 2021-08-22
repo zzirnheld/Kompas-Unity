@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Here'n'gone",
-	"effText":"When I'm cast, deck->summon 3 Wisps adjacent to me, but kill them when I'm removed (AKA when the stack empties).",
+	"effText":"When I'm cast, deck->summon 3 Wisps here, but kill them when I'm removed (AKA when the stack empties).",
 	"effects":[
 		{
 			"triggerData":
@@ -96,10 +96,8 @@
 			]
 		}
 	],
-	"fast":true,
 	"c":1,
-	"spellTypes":["Simple"],
-	"subtypes":["Simple"],
-	"subtypeText":"Simple",
+	"spellTypes":["Radial","Simple"],
+	"subtypeText":"Radial 1 Simple",
 	"radius":1
 }

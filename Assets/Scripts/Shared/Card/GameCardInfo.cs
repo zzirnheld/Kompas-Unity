@@ -151,7 +151,7 @@ namespace KompasCore.Cards
         public bool SpaceInAOE(Space space) 
             => SpellSubtypes != null && SpellSubtypes.Any(s => s switch
             {
-                CardBase.RadialSubtype => RadialDistanceTo(space) <= Radius,
+                CardBase.RadialSubtype => DistanceTo(space) <= Radius,
                 _ => false
             });
         public bool CardInAOE(IGameCardInfo c) => SpaceInAOE(c.Position);

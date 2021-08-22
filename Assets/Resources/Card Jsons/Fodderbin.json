@@ -25,5 +25,5 @@
 	"c":1,
 	"spellTypes":["Radial","Enchant"],
 	"subtypeText":"Radial Enchant",
-	"radius":1
+	"radius":2
 }
