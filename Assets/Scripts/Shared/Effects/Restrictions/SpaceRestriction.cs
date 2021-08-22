@@ -22,6 +22,7 @@ namespace KompasCore.Effects
         public const string ConnectedToSourceBySpaces = "Connected to Source by Spaces Fitting Restriction";
         public const string ConnectedToTargetBy = "Connected to Target by";
         public const string ConnectedToTargetBySpaces = "Connected to Target by Spaces Fitting Restriction";
+        public const string ConnectedToTargetByXSpaces = "Connected to Target by X Spaces Fitting Restriction";
         public const string ConnectedToAvatarBy = "Connected to Avatar by";
         public const string InAOE = "In AOE";
         public const string NotInAOE = "Not In AOE";
@@ -32,7 +33,8 @@ namespace KompasCore.Effects
 
         //distance
         public const string DistanceX = "Distance to Source == X";
-        public const string DistanceFitsXRestriction = "Distance to Source Fits X Restriction";
+        public const string DistanceToSourceFitsXRestriction = "Distance to Source Fits X Restriction";
+        public const string DistanceToTargetFitsXRestriction = "Distance to Target Fits X Restriction";
         public const string DistanceToTargetX = "Distance to Target == X";
         public const string DistanceToTargetC = "Distance to Target == Constant";
         public const string DistanceToTargetLTEC = "Distance to Target <= Constant";
@@ -67,6 +69,7 @@ namespace KompasCore.Effects
         public CardRestriction inAOEOfRestriction;
 
         public XRestriction distanceXRestriction;
+        public XRestriction connectedSpacesXRestriction;
         public XRestriction numberOfCardsInAOEOfRestriction;
 
         public string[] playRestrictionsToIgnore = new string[0];
@@ -134,6 +137,8 @@ namespace KompasCore.Effects
                 case ConnectedToTargetBy:       return Source.Game.boardCtrl.ShortestPath(target, space, connectednessRestriction) < 50;
                 case ConnectedToTargetBySpaces:
                     return Source.Game.boardCtrl.ShortestPath(target.Position, space, s => spaceConnectednessRestriction.Evaluate(s)) < 50;
+                case ConnectedToTargetByXSpaces:
+                    return connectedSpacesXRestriction.Evaluate(Source.Game.boardCtrl.ShortestPath(target.Position, space, s => spaceConnectednessRestriction.Evaluate(s)));
                 case ConnectedToAvatarBy:       return Source.Game.boardCtrl.ShortestPath(Source.Controller.Avatar, space, connectednessRestriction) < 50;
                 case InAOE:                     return Source.SpaceInAOE(space);
                 case NotInAOE:                  return !Source.SpaceInAOE(space);
@@ -149,7 +154,8 @@ namespace KompasCore.Effects
 
                 //distance
                 case DistanceX:                   return Source.DistanceTo(space) == Subeffect.Effect.X;
-                case DistanceFitsXRestriction:    return distanceXRestriction.Evaluate(Source.DistanceTo(space));
+                case DistanceToSourceFitsXRestriction:    return distanceXRestriction.Evaluate(Source.DistanceTo(space));
+                case DistanceToTargetFitsXRestriction:    return distanceXRestriction.Evaluate(target.DistanceTo(space));
                 case DistanceToTargetX:           return target.DistanceTo(space) == Subeffect.Effect.X;
                 case DistanceToTargetC:           return target.DistanceTo(space) == constant;
                 case DistanceToTargetLTEC:        return target.DistanceTo(space) <= constant;
