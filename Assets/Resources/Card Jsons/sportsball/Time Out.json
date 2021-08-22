@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Time Out",
-	"effText":"Choose an adjacent enemy character wielding a friendly Sportsball. Rehand their Augments (to their owners), then rehand the character.",
+	"effText":"Choose an adjacent character wielding friendly Augment(s). Attach those Augments to your Avatar. Hand the character.",
 	"effects":[
 		{
 			"triggerData":
@@ -13,15 +13,17 @@
 			},
 			"subeffects":[
 				{
+					"$type":"KompasServer.Effects.TargetAvatarSubeffect, Assembly-CSharp"
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"character to put in TIME OUT!",
-						"cardRestrictions":["Board","Is Character","Enemy","Wields Augment Fitting Restriction","Adjacent to Source"],
+						"cardRestrictions":["Board","Is Character","Wields Augment Fitting Restriction","Adjacent to Source"],
 						"secondaryRestriction":
 						{
-							"cardRestrictions":["Friendly","Subtypes Include"],
-							"subtypesInclude":["Sportsball"]
+							"cardRestrictions":["Friendly"]
 						}
 					}
 				},
@@ -29,17 +31,22 @@
 					"$type":"KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"targetIndex":-1,
+					"attachmentTarget":0
 				},
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
 					"delete":true,
-					"jumpTo":2
+					"jumpTo":3
+				},
+				{
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp",
+					"targetIndex":1
 				}
 			]
 		}
 	],
-	"fast":true,
 	"c":1,
 	"spellTypes":["Simple"],
 	"subtypeText":"Simple"
