@@ -1,15 +1,19 @@
 {
 	"cardType":83,
 	"cardName":"Runebinding",
-	"effText":"Once each enemy turn, you can hand-cast a Rune (it doesn't have to be fast).",
+	"effText":"When an enemy casts a spell, hand->cast a Rune.",
 	"effects":[
 		{
-			"activationRestriction":{
-				"activationRestrictionArray":[
-					"Max Times Per Turn",
-					"Enemy Turn",
-					"Default"
-				]
+			"blurb":"Bind Runes",
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Enemy Triggered"],
+					"cardRestriction":{
+						"cardRestrictions":["Is Spell"]
+					}
+				}
 			},
 			"subeffects":[
 				{
@@ -35,7 +39,7 @@
 			]
 		}
 	],
-	"c":7,
+	"c":4,
 	"spellTypes":["Enchant"],
 	"subtypeText":"Runar Enchant"
 }
