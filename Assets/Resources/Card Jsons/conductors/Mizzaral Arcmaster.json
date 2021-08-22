@@ -1,12 +1,12 @@
 {
 	"cardType":67,
 	"cardName":"Mizzaral Arcmaster",
-	"effText":"Once each round, you can pulse all cards connected to me by Conductors.",
+	"effText":"Once each friendly turn, you can pulse all cards connected to me by Conductors.",
     "effects":[
 		{
 			"activationRestriction":{
 				"activationRestrictionArray":[
-					"Max Times Per Round",
+					"Max Times Per Turn",
 					"Default"
 				]
 			},

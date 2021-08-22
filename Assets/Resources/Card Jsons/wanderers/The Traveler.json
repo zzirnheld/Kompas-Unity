@@ -1,12 +1,12 @@
 {
 	"cardType":67,
 	"cardName":"The Traveler",
-	"effText":"Once each round, you can hand a friendly S X character. Hand->summon a distinct S <= X + 1 character.",
+	"effText":"Once each friendly turn, you can hand a friendly S X character. Hand->summon a distinct S <= X + 1 character.",
 	"effects":[
 		{
 			"activationRestriction":{
 				"activationRestrictionArray":[
-					"Max Times Per Round",
+					"Max Times Per Turn",
 					"Default"
 				]
 			},

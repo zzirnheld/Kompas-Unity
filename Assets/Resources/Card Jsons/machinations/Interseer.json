@@ -1,13 +1,13 @@
 {
 	"cardType":67,
 	"cardName":"Interseer",
-	"effText":"Once each round, you can give friendly Machinations +1 C.",
+	"effText":"Once each friendly turn, you can give friendly Machinations +1 C.",
 	"effects":[
 		{
 			"blurb":"Extreme Intercession",
 			"activationRestriction":{
 				"activationRestrictionArray":[
-					"Max Times Per Round",
+					"Max Times Per Turn",
 					"Default"
 				]
 			},
