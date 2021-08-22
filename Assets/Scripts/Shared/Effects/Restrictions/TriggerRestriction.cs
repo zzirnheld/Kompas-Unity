@@ -34,6 +34,7 @@ namespace KompasCore.Effects
         public const string EffectSourceIsTriggerer = "Stackable Source is Triggerer"; //149,
 
         public const string ContextsStackablesMatch = "Contexts Stackables Match";
+        public const string StackableIsThisEffect = "Stackable is This Effect";
 
         public const string DistanceTriggererToSpaceConstant = "Distance from Triggerer to Space == Constant";
 
@@ -129,9 +130,7 @@ namespace KompasCore.Effects
                 case TriggererNowFitsRestirction: return nowRestriction.Evaluate(context.CardInfo.Card);
                 case TriggerersAugmentedCardFitsRestriction: return cardRestriction.Evaluate(context.CardInfo.AugmentedCard);
                 case StackableSourceFitsRestriction: return sourceRestriction.Evaluate(context.Stackable?.Source);
-                case TriggererIsSecondaryContextTarget:
-                    Debug.Log($"Targets are {string.Join(",", secondary?.Targets?.Select(c => c.ToString()) ?? new string[] { "Null" })}");
-                    return secondary?.Targets?.Any(c => c == context.CardInfo?.Card) ?? false;
+                case TriggererIsSecondaryContextTarget: return secondary?.Targets?.Any(c => c == context.CardInfo?.Card) ?? false;
 
                 case CardNowFurtherFromSourceThanItWas:
                     return ThisCard.DistanceTo(context.CardInfo.Card.Position) > ThisCard.DistanceTo(context.CardInfo.Position); 
@@ -141,6 +140,8 @@ namespace KompasCore.Effects
                     Debug.Log($"Secondary stackable: {secondary?.Stackable}");
                     Debug.Log($"Equal? {context.Stackable == secondary?.Stackable}");
                     return context.Stackable == secondary?.Stackable;
+
+                case StackableIsThisEffect: return context.Stackable == SourceEffect;
 
                 //other non-card triggering things
                 case CoordsFitRestriction:    return context.Space != null && spaceRestriction.Evaluate(context.Space.Value);

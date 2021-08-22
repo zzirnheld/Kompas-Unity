@@ -1,12 +1,12 @@
 {
 	"cardType":83,
 	"cardName":"Ballroom-Disco Breakdance Competition",
-	"effText":"Ificate.\nWhen a character moves in my area of effect, set their N to 0. When a character leaves my area of effect, destroy me.",
+	"effText":"Ificate.\nWhen an N X character arrives here, give them -X N until the next time this effect activates.",
 	"effects":[
 		{
 			"triggerData":
 			{
-				"blurb":"N = 0",
+				"blurb":"LET'S BREAKDANCE",
 				"triggerCondition":"Move",
 				"triggerRestriction":{
 					"triggerRestrictions":["Coords Fit Restriction","This Card in Play"],
@@ -22,35 +22,19 @@
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
-					"nVal":0
-				}
-			]	
-		},
-		{
-			"triggerData":
-			{
-				"blurb":"Annihilate this",
-				"triggerCondition":"Move",
-				"triggerRestriction":{
-					"triggerRestrictions":["Triggerer Fits Restriction","Coords Fit Restriction","This Card in Play"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Is Character","Board","In AOE"]
+					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"N"
 					},
-					"spaceRestriction":
-					{
-						"spaceRestrictions":["Not In AOE"],
-						"mustBeEmpty":false
-					}
-				}
-			},
-			"subeffects":[
-				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"xMultiplier":1
 				},
 				{
-					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
+					"nMultiplier":-1,
+					"endCondition":"Effect Pushed to Stack",
+					"triggerRestriction":{
+						"triggerRestrictions":["Stackable is This Effect"]
+					}
 				}
 			]	
 		}

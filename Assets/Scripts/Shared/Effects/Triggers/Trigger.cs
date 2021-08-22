@@ -7,6 +7,8 @@ namespace KompasCore.Effects
         public const string TurnStart = "Turn Start";
         public const string StackEnd = "Stack End";
 
+        public const string EffectPushedToStack = "Effect Pushed to Stack";
+
         //change card stats
         public const string NESWChange = "NESW Change";
         public const string Activate = "Activate";
