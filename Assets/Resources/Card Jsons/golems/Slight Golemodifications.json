@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Slight Golemodifications",
-	"effText":"When turns start, tribute an adjacent S X Golem. Hand->summon or revive a Golem with S < X. Discard-apply all Golem Cores the first wielded to the second.",
+	"effText":"When turns start, tribute an S X Golem. Hand->summon or revive a Golem with S < X. Discard-apply all Golem Cores the first wielded to the second.",
 	"effects":[
 		{
             "blurb":"Modify Golem (Slightly)",
@@ -17,7 +17,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Subtypes Include","Is Character","Friendly","Board","Adjacent to Source"],
+						"cardRestrictions":["Subtypes Include","Is Character","Friendly","Board"],
 						"subtypesInclude":["Golem"]
 					}
 				},
@@ -78,7 +78,7 @@
 			]	
 		}
 	],
-	"c":3,
+	"c":1,
 	"spellTypes":["Enchant"],
 	"subtypeText":"Enchant"
 }

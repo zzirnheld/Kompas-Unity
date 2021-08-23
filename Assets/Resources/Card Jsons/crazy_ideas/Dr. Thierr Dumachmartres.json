@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Dr. Thierr Dumachmartres",
-	"effText":"When an enemy plays a card, discard 1 card. then draw 1 card.",
+	"effText":"When an enemy plays a card, discard 1 card, then draw 1 card.",
 	"effects":[
 		{
 			"triggerData":

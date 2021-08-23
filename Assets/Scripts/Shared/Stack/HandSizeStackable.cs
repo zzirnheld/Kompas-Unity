@@ -10,33 +10,41 @@ namespace KompasCore.Effects
 
         public GameCard Source => Controller.Avatar;
 
+        private ListRestriction handSizeListRestriction;
         public ListRestriction HandSizeListRestriction
         {
             get
             {
-                var l = new ListRestriction()
+                if (handSizeListRestriction == null)
                 {
-                    listRestrictions = new string[]
+                    handSizeListRestriction = new ListRestriction()
                     {
+                        listRestrictions = new string[]
+                        {
                         ListRestriction.MaxCanChoose, ListRestriction.MinCanChoose
-                    }
-                };
-                return l;
+                        }
+                    };
+                }
+                return handSizeListRestriction;
             }
         }
 
+        private CardRestriction handSizeCardRestriction;
         public CardRestriction HandSizeCardRestriction 
         {
             get {
-                var c = new CardRestriction()
+                if (handSizeCardRestriction == null)
                 {
-                    cardRestrictions = new string[]
+                    handSizeCardRestriction = new CardRestriction()
                     {
-                    CardRestriction.Friendly, CardRestriction.Hand
-                    }
-                };
-                c.Initialize(Source, eff: default);
-                return c;
+                        cardRestrictions = new string[]
+                        {
+                        CardRestriction.Friendly, CardRestriction.Hand
+                        }
+                    };
+                    handSizeCardRestriction.Initialize(Source, eff: default);
+                }
+                return handSizeCardRestriction;
             }
         }
     }

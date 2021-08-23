@@ -25,7 +25,7 @@
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
 					"ChoiceBlurb":"Double or halve?",
-					"OptionBlurbs":["Double","halve"],
+					"OptionBlurbs":["Double","Halve"],
 					"OptionJumpIndices":[3,5],
 					"hasDefault":false
 				},

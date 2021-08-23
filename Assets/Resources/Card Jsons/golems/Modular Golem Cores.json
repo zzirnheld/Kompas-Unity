@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Modular Golem Cores",
-	"effText":"The first time each turn an enemy card arrives adjacent to a Golem, destroy all X Augments on the Golem. Deck->augment them with X Golem Cores.",
+	"effText":"The first time each turn an enemy card arrives, choose a Golem adjacent to them. Destroy all X Augments on the Golem. Deck->augment them with X Golem Cores.",
 	"effects":[
 		{
 			"blurb":"Swap Out Modules",
@@ -9,16 +9,7 @@
 			{
 				"triggerCondition":"Arrive",
 				"triggerRestriction":{
-					"triggerRestrictions":["Triggerer Fits Restriction"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Is Character","Enemy","Adjacent to Card Restriction"],
-						"adjacentCardRestriction":
-						{
-							"cardRestrictions":["Subtypes Include"],
-							"subtypesInclude":["Golem"]
-						}
-					}
+					"triggerRestrictions":["This Card in Play","Max Per Turn"]
 				}
 			},
 			"subeffects":[
@@ -51,7 +42,7 @@
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
 					"delete":true,
 					"remainingTargets":2,
-					"jumpTo":3
+					"jumpTo":4
 				},
 				{
 					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
@@ -69,7 +60,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",
-					"jumpTo":5
+					"jumpTo":6
 				}
 			]
 		}
