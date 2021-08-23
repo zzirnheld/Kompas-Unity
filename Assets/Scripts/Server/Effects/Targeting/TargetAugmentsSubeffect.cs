@@ -18,10 +18,10 @@ namespace KompasServer.Effects
         public override Task<ResolutionInfo> Resolve()
         {
             if (Target == null) return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
-            if (!Target.AugmentsList.Any(c => cardRestriction.Evaluate(c, Effect.CurrActivationContext)))
+            if (!Target.AugmentsList.Any(c => cardRestriction.Evaluate(c, Context)))
                 return Task.FromResult(ResolutionInfo.Impossible(NoValidCardTarget));
 
-            var potentialTargets = Target.AugmentsList.Where(c => cardRestriction.Evaluate(c, Effect.CurrActivationContext));
+            var potentialTargets = Target.AugmentsList.Where(c => cardRestriction.Evaluate(c, Context));
             foreach(var c in potentialTargets) ServerEffect.AddTarget(c);
             return Task.FromResult(ResolutionInfo.Next);
         }

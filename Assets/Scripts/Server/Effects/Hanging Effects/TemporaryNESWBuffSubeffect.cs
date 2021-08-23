@@ -17,13 +17,13 @@ namespace KompasServer.Effects
 
         protected override IEnumerable<HangingEffect> CreateHangingEffects()
         {
-            Debug.Log($"Creating temp NESW buff effect during context {Effect.CurrActivationContext}");
+            Debug.Log($"Creating temp NESW buff effect during context {Context}");
             var temp = new TemporaryNESWBuff(game: ServerGame,
                                              triggerRestriction: triggerRestriction,
                                              endCondition: endCondition,
                                              fallOffCondition: fallOffCondition,
                                              fallOffRestriction: CreateFallOffRestriction(Target),
-                                             currentContext: Effect.CurrActivationContext,
+                                             currentContext: Context,
                                              buffRecipient: Target,
                                              nBuff: nModifier + Effect.X * nMultiplier,
                                              eBuff: eModifier + Effect.X * eMultiplier,

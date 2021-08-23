@@ -6,6 +6,6 @@ namespace KompasServer.Effects
     {
         public CardValue cardValue;
 
-        public override int BaseCount => cardValue.GetValueOf(Effect.CurrActivationContext.CardInfo);
+        public override int BaseCount => cardValue.GetValueOf(Context.CardInfo);
     }
 }

@@ -7,7 +7,7 @@ namespace KompasServer.Effects
     {
         public override Task<ResolutionInfo> Resolve()
         {
-            Effect.rest.AddRange(ServerGame.Cards.Where(c => cardRestriction.Evaluate(c, Effect.CurrActivationContext)));
+            Effect.rest.AddRange(ServerGame.Cards.Where(c => cardRestriction.Evaluate(c, Context)));
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

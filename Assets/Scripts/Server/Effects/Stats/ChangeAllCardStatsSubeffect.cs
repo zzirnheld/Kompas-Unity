@@ -25,7 +25,7 @@ namespace KompasServer.Effects
 
         public override Task<ResolutionInfo> Resolve()
         {
-            var targets = ServerGame.Cards.Where(c => cardRestriction.Evaluate(c, Effect.CurrActivationContext));
+            var targets = ServerGame.Cards.Where(c => cardRestriction.Evaluate(c, Context));
             var stats = (NVal, EVal, SVal, WVal, CVal, AVal);
             foreach (var c in targets) c.AddToStats(stats, Effect);
 

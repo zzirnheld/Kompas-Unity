@@ -8,7 +8,7 @@ namespace KompasServer.Effects
     {
         public override Task<ResolutionInfo> Resolve()
         {
-            if (ServerEffect.CurrActivationContext.Stackable is Attack attack)
+            if (Context.Stackable is Attack attack)
             {
                 GameCard newTarget = null;
                 if (attack.attacker == Target) newTarget = attack.defender;

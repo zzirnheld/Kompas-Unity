@@ -6,10 +6,10 @@ namespace KompasServer.Effects
     {
         public override Task<ResolutionInfo> Resolve()
         {
-            if (ServerEffect.CurrActivationContext.Stackable == null)
+            if (Context.Stackable == null)
                 return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
 
-            ServerEffect.AddTarget(ServerEffect.CurrActivationContext.Stackable.Source);
+            ServerEffect.AddTarget(Context.Stackable.Source);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }
