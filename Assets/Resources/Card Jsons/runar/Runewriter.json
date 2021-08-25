@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Runewriter",
-	"effText":"Once each friendly turn, you can hand-reshuffle a Rune to search your deck’s top 10 cards for a Runar.",
+	"effText":"Once each friendly turn, you can hand, field, or discard->reshuffle a Rune to search your deck’s top 10 cards for a Runar.",
 	"effects":[
 		{
 			"activationRestriction":{
@@ -17,7 +17,8 @@
 					"cardRestriction":
 					{
 						"blurb":"Rune for Runewriter to reshuffle",
-						"cardRestrictions":["Subtypes Include","Friendly","Hand"],
+						"cardRestrictions":["Subtypes Include","Friendly","Multiple Possible Locations"],
+						"locations":[1,2,3],
 						"subtypesInclude":["Rune"]
 					},
 					"maxCanChoose":1

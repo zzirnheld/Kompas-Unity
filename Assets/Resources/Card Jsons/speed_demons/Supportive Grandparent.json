@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Supportive Grandparent",
-	"effText":"When I'm summoned, choose a character. Whenever they move, give them +1 ESW.",
+	"effText":"When I'm summoned, choose an adjacent character. Whenever they move, give them +1 ESW.",
 	"effects":[
 		{
 			"triggerData":
