@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Slight Golemodifications",
-	"effText":"When turns start, tribute an S X Golem. Hand->summon or revive a Golem with S < X. Discard-apply all Golem Cores the first wielded to the second.",
+	"effText":"When turns start, tribute an S X Golem. Hand->summon or revive an S <= X + 1 Golem. Discard-apply all Golem Cores the first wielded to the second.",
 	"effects":[
 		{
             "blurb":"Modify Golem (Slightly)",
@@ -45,11 +45,18 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Subtypes Include","Is Character","S<X","Multiple Possible Locations"],
+						"cardRestrictions":["Subtypes Include","Is Character","Multiple Possible Locations","Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"S"
+						},
+						"xRestriction":{
+							"xRestrictions":["<=X"]
+						},
 						"subtypesInclude":["Golem"],
 						"locations":[2,3]
 					},
-					"xMultiplier":1
+					"xMultiplier":1,
+					"xModifier":1
 				},
 				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
@@ -78,7 +85,7 @@
 			]	
 		}
 	],
-	"c":1,
+	"c":2,
 	"spellTypes":["Enchant"],
 	"subtypeText":"Enchant"
 }
