@@ -27,6 +27,7 @@ namespace KompasCore.Effects
         public const string CardNowFurtherFromSourceThanItWas = "Card is now Further from Source than it Was";
 
         public const string AdjacentToRestriction = "Adjacent to Restriction";
+        public const string TargetAdjacentToRestriction = "Target is Adjacent to Restriction";
         public const string CoordsFitRestriction = "Coords Fit Restriction"; //120,
         public const string XFitsRestriction = "X Fits Restriction"; //130,
         public const string StackableSourceFitsRestriction = "Stackable Source Fits Restriction";

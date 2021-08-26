@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Hypnosympatheticizer",
-	"effText":"Speed Demon.\nThe first two times each turn I move 1 space, move a distinct character 1 space the same direction I moved.",
+	"effText":"Speed Demon.\nThe first time each stack I move 1 space, move a distinct character 1 space the same direction I moved.",
 	"effects":[
 		{
 			"blurb":"hyyyypnoooo SYMP",
@@ -9,9 +9,8 @@
 			{
 				"triggerCondition":"Move",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered","Max Per Turn"]
-				},
-				"maxTimesPerTurn":2
+					"triggerRestrictions":["This Card Triggered","Max Per Stack"]
+				}
 			},
 			"subeffects":[
                 {
