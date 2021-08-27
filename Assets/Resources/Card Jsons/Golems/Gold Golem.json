@@ -1,10 +1,10 @@
 {
 	"cardType":67,
-	"cardName":"Magma Golem",
-	"effText":"Golem.\nWhen I'm activated, I give all adjacent characters -4 E.",
+	"cardName":"Gold Golem",
+	"effText":"Golem.\nWhen I'm activated, draw 1 card.",
 	"effects":[
 		{
-			"blurb":"Heheh. Grenade.",
+			"blurb":"Draw draw draw",
 			"triggerData":
 			{
 				"triggerCondition":"Activate",
@@ -14,12 +14,7 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Is Character","Board","Adjacent to Source"]
-					},
-					"eMod":-4
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
 			]
 		}
@@ -36,10 +31,10 @@
 			"This is Activated"
 		]
 	},
-	"n":6,
-	"e":2,
-	"s":3,
-	"w":4,
+	"n":1,
+	"e":1,
+	"s":1,
+	"w":0,
 	"subtypes":["Golem"],
 	"subtypeText":"Golem"
 }
