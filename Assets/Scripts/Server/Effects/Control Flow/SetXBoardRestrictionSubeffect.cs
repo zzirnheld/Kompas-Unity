@@ -1,6 +1,4 @@
-﻿using KompasCore.Cards;
-using KompasCore.Effects;
-using UnityEngine;
+﻿using KompasCore.Effects;
 
 namespace KompasServer.Effects
 {
@@ -14,6 +12,7 @@ namespace KompasServer.Effects
             cardRestriction.Initialize(this);
         }
 
-        public override int BaseCount => Game.boardCtrl.CardsAndAugsWhere(cardRestriction.Evaluate).Count;
+        public override int BaseCount 
+            => Game.boardCtrl.CardsAndAugsWhere(c => cardRestriction.Evaluate(c, Context)).Count;
     }
 }

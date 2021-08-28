@@ -1,0 +1,33 @@
+{
+	"cardType":67,
+	"cardName":"Dust Eater",
+	"effText":"When a character moves directly away from me, give me +2 W.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Card is now Further from Source than it Was","Triggerer Now Fits Restriction"],
+					"nowRestriction":{
+						"cardRestrictions":["Same Diagonal as Source"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wMod":2
+				}
+			]
+		}
+	],
+	"n":1,
+	"e":1,
+	"s":2,
+	"w":1,
+	"subtypeText":"Slowpoke"
+}

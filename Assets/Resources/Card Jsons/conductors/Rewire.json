@@ -47,7 +47,6 @@
 		}
 	],
 	"c":2,
-    "fast":true,
 	"spellTypes":["Simple"],
 	"subtypeText":"Conductor"
 }

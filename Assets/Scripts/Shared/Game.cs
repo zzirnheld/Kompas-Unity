@@ -1,8 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasCore.UI;
-using KompasServer.Effects;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -13,6 +11,7 @@ namespace KompasCore.GameCore
     {
         public const string CardListPath = "Card Jsons/Card List";
 
+        // The list of locations where cards generally shouldn't be made visible to the opponent
         public static readonly CardLocation[] HiddenLocations =
             new CardLocation[] { CardLocation.Nowhere, CardLocation.Deck, CardLocation.Hand };
 
@@ -54,8 +53,6 @@ namespace KompasCore.GameCore
         //game mechanics
         public static bool IsHiddenLocation(CardLocation l) => HiddenLocations.Contains(l);
 
-        public bool ExistsCardTarget(CardRestriction restriction) => Cards.Any(c => restriction.Evaluate(c));
-
         public bool BoardHasCopyOf(GameCard card)
             => Cards.Any(c => c != card && c.Location == CardLocation.Field && c.Controller == card.Controller && c.CardName == card.CardName);
         /*{
@@ -94,17 +91,7 @@ namespace KompasCore.GameCore
         }
 
         public bool ExistsEffectPlaySpace(PlayRestriction restriction, Effect eff)
-        {
-            for(int x = 0; x < 7; x++)
-            {
-                for(int y = 0; y < 7; y++)
-                {
-                    if (restriction.EvaluateEffectPlay((x, y), eff, eff.Controller)) return true;
-                }
-            }
-
-            return false;
-        }
+            => Space.Spaces.Any(s => restriction.EvaluateEffectPlay(s, eff, eff.Controller, eff.CurrActivationContext));
 
 
         protected void ResetCardsForTurn()

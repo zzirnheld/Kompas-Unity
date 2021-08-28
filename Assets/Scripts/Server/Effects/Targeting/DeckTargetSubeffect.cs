@@ -9,7 +9,7 @@ namespace KompasServer.Effects
         public override bool AddTargetIfLegal(GameCard card)
         {
             //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
-            if (cardRestriction.Evaluate(card))
+            if (cardRestriction.Evaluate(card, Context))
             {
                 card.Controller.deckCtrl.Shuffle();
                 ServerEffect.AddTarget(card);

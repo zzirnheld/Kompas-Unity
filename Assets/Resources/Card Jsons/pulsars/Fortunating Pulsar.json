@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Fortunating Pulsar",
-	"effText":"When your Avatar gains S, hand->discard a card, then draw 1 card.\nWhen your Avatar loses S, give both players a pip.",
+	"effText":"The first three times each turn your Avatar's S changes, each:\n+S: hand->discard 1 card, then draw 1 card.\n-S: give both players a pip.",
 	"effects":[
 		{
 			"triggerData":
@@ -9,14 +9,15 @@
 				"blurb":"Fortune-card",
 				"triggerCondition":"S Change",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction"],
+					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction","Max Per Turn"],
 					"xRestriction":{
 						"xRestrictions":[">0"]
 					},
 					"cardRestriction":
 					{
 						"cardRestrictions":["Board","Avatar","Friendly"]
-					}
+					},
+					"maxTimesPerTurn":3
 				}
 			},
 			"subeffects":[
@@ -41,14 +42,15 @@
 				"blurb":"Fortune-pip",
 				"triggerCondition":"S Change",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction"],
+					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction","Max Per Turn"],
 					"xRestriction":{
 						"xRestrictions":["<0"]
 					},
 					"cardRestriction":
 					{
 						"cardRestrictions":["Board","Avatar","Friendly"]
-					}
+					},
+					"maxTimesPerTurn":3
 				}
 			},
 			"subeffects":[
@@ -68,7 +70,7 @@
 			]	
 		}
 	],
-	"n":1,
+	"n":2,
 	"e":4,
 	"s":5,
 	"w":4,

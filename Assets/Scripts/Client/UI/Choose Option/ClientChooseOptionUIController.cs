@@ -1,8 +1,7 @@
-﻿using Boo.Lang;
-using KompasClient.Effects;
-using KompasClient.GameCore;
+﻿using KompasClient.GameCore;
 using TMPro;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace KompasClient.UI
 {

@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using KompasCore.Effects;
 using KompasCore.Cards;
-using KompasClient.Cards;
 using KompasClient.GameCore;
 
-namespace KompasClient.Effects {
+namespace KompasClient.Effects
+{
     public class ClientHandSizeStackable : HandSizeStackable, IClientStackable
     {
         private readonly ClientPlayer clientController;

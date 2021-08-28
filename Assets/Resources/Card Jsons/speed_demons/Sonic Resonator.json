@@ -1,0 +1,100 @@
+{
+	"cardType":83,
+	"cardName":"Sonic Resonator",
+	"effText":"When a character moves, give me +1 C, but set my turn count to -1.\nWhen I vanish having C X, deck->summon distinct Speed Demons with total S < X. Move each 1 space.",
+	"effects":[
+		{
+			"blurb":"Sonic +C",
+			"triggerData":
+			{
+				"blurb":"Sonic +C",
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"cMod":1
+				},
+                {
+                    "$type":"KompasServer.Effects.SetTurnsOnBoardSubeffect, Assembly-CSharp",
+                    "xMultiplier":0,
+                    "xModifier":-1
+                }
+			]
+		},
+		{
+			"blurb":"Resound",
+			"triggerData":
+			{
+				"blurb":"Resound",
+				"triggerCondition":"Discard",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTriggeringCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"C"
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose":1,
+					"cardRestriction":
+					{
+						"blurb":"Speed Demon to resonate",
+						"cardRestrictions":["Is Character","Deck","Subtypes Include","Card Value Fits X Restriction"],
+						"subtypesInclude":["Speed Demon"],
+						"cardValue":{
+							"value":"S"
+						},
+						"xRestriction":{
+							"xRestrictions":["<=X"]
+						}
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTriggeringCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"S"
+					},
+					"xMultiplier":-1
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where to play newly resonated Speed Demon",
+						"spaceRestrictions":["Can Play Target to This Space"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"condition":"X >= Constant",
+					"constant":1,
+					"jumpIndex":2
+				}
+			]
+		}
+	],
+	"c":1,
+	"spellTypes":["Vanishing"],
+	"subtypeText":"Vanishing",
+	"duration":1
+}

@@ -1,9 +1,7 @@
 ﻿using KompasCore.Effects;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 namespace KompasCore.Cards
 {
@@ -49,6 +47,7 @@ namespace KompasCore.Cards
         bool IsAdjacentTo(IGameCardInfo card);
         bool IsAdjacentTo(Space pos);
         bool SameColumn(IGameCardInfo card);
+        bool SameDiagonal(IGameCardInfo card);
         bool WithinSpaces(int spaces, IGameCardInfo card);
         bool InCorner();
         int ShortestPath(Space space, Func<GameCard, bool> throughPredicate);
@@ -136,6 +135,8 @@ namespace KompasCore.Cards
         }
 
         #region distance/adjacency
+        public int RadialDistanceTo(Space space)
+            => Location == CardLocation.Field ? Position.RadialDistanceTo(space) : int.MaxValue;
         public int DistanceTo(Space space)
             => Location == CardLocation.Field ? Position.DistanceTo(space) : int.MaxValue;
         public int DistanceTo(IGameCardInfo card) => DistanceTo(card.Position);
@@ -147,7 +148,12 @@ namespace KompasCore.Cards
             && card.Location == CardLocation.Field && Position.AdjacentTo(card.Position);
         public bool IsAdjacentTo(Space space) => Location == CardLocation.Field && Position.AdjacentTo(space);
 
-        public bool SpaceInAOE(Space space) => SpellSubtypes.Any(s => s == CardBase.RadialSubtype) && DistanceTo(space) <= Radius;
+        public bool SpaceInAOE(Space space) 
+            => SpellSubtypes != null && SpellSubtypes.Any(s => s switch
+            {
+                CardBase.RadialSubtype => DistanceTo(space) <= Radius,
+                _ => false
+            });
         public bool CardInAOE(IGameCardInfo c) => SpaceInAOE(c.Position);
 
         public bool SameColumn(Space space) => Location == CardLocation.Field && Position.SameColumn(space);
@@ -187,7 +193,8 @@ namespace KompasCore.Cards
         public bool CardDirectlyInFront(IGameCardInfo card)
             => card.Location == CardLocation.Field && SpaceDirectlyInFront(card.Position);
 
-        public bool OnMyDiagonal(Space space) => Location == CardLocation.Field && Position.SameDiagonal(space);
+        public bool SameDiagonal(Space space) => Location == CardLocation.Field && Position.SameDiagonal(space);
+        public bool SameDiagonal(IGameCardInfo card) => card?.Location == CardLocation.Field && SameDiagonal(card.Position);
 
         public bool InCorner() => Location == CardLocation.Field && Position.IsCorner;
 

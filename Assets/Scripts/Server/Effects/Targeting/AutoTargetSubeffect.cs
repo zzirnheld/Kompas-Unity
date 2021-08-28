@@ -13,18 +13,18 @@ namespace KompasServer.Effects
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
-            cardRestriction = cardRestriction ?? new CardRestriction();
+            cardRestriction ??= new CardRestriction();
             cardRestriction.Initialize(this);
         }
 
-        public override bool IsImpossible() => !Game.Cards.Any(cardRestriction.Evaluate);
+        public override bool IsImpossible() => !Game.Cards.Any(c => cardRestriction.Evaluate(c, Context));
 
         public override Task<ResolutionInfo> Resolve()
         {
             GameCard potentialTarget = null;
             try
             {
-                potentialTarget = Game.Cards.SingleOrDefault(cardRestriction.Evaluate);
+                potentialTarget = Game.Cards.SingleOrDefault(c => cardRestriction.Evaluate(c, Context));
             }
             catch (System.InvalidOperationException) 
             {

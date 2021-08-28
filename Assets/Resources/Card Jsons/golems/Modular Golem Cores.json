@@ -1,84 +1,79 @@
 {
 	"cardType":83,
 	"cardName":"Modular Golem Cores",
-	"effText":"Once each turn, you can choose one:\nDetach a Golem Core to search your deck for a Golem Core.\nPip hand->apply a Golem Core.",
+	"effText":"The first time each turn an enemy card arrives adjacent to a Golem, choose a Golem adjacent to them. Destroy all X Augments on the Golem. Deck->augment them with X Golem Cores.",
 	"effects":[
 		{
-			"blurb":"Forget That Mess",
-			"activationRestriction":{
-				"activationRestrictionArray":[
-					"Max Times Per Turn",
-					"Default"
-				]
+			"blurb":"Swap Out Modules",
+			"triggerData":
+			{
+				"triggerCondition":"Arrive",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Max Per Turn","Triggerer Now Fits Restriction"],
+					"nowRestriction":
+					{
+						"cardRestrictions":["Adjacent to Card Restriction"],
+						"adjacentCardRestriction":
+						{
+							"cardRestrictions":["Subtypes Include"],
+							"subtypesInclude":["Golem"]
+						}
+					}
+				}
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Destroy and search, or pip hand-apply?",
-					"OptionBlurbs":["Search","Apply"],
-					"OptionJumpIndices":[1,6],
-					"hasDefault":false
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"Golem Core for Modular Golem Cores to detach",
-						"cardRestrictions":["Subtypes Include","Is Augment","Board"],
-						"subtypesInclude":["Golem", "Core"]
+						"blurb":"Golem to swap out modules",
+						"cardRestrictions":["Is Character","Board","Adjacent to Target","Subtypes Include"],
+						"subtypesInclude":["Golem"]
 					}
 				},
 				{
+					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"Number of Augments"
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp"
+				},
+				{
 					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"remainingTargets":2,
+					"jumpTo":4
 				},
 				{
 					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"blurb":"Golem core for Modular Golem Cores to search",
-						"cardRestrictions":["Subtypes Include","Is Augment","Deck"],
+						"cardRestrictions":["Is Augment","Deck","Subtypes Include"],
 						"subtypesInclude":["Golem", "Core"]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"attachmentTarget":1,
+					"targetIndex":-1
 				},
 				{
-					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Golem Core for Modular to apply",
-						"cardRestrictions":["Friendly","Hand","Is Augment","Subtypes Include","Can Be Played","Effect Controller can Afford Cost"],
-						"subtypesInclude":["Golem Core"]
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"where for Modular to apply Golem Core",
-						"cardRestrictions":["Board","Can Play Target to This Character's Space"]
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
-					"xMultiplier":1,
-					"targetIndex":-2
-				},
-				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp",
-					"targetIndex":-2
+					"$type":"KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",
+					"jumpTo":6
 				}
 			]
 		}
 	],
-	"fast":false,
 	"c":1,
 	"spellTypes":["Enchant"],
 	"subtypes":["Enchant"],

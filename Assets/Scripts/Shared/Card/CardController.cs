@@ -190,14 +190,14 @@ namespace KompasCore.Cards
                 aug.transform.parent = card.transform;
                 aug.transform.localScale = new Vector3(scale, scale, scale);
                 float x, z;
-                switch(i % 4)
+                (x, z) = (i % 4) switch
                 {
-                    case 0: (x, z) = (-0.5f, 0.5f); break;
-                    case 1: (x, z) = (0.5f, 0.5f); break;
-                    case 2: (x, z) = (0.5f, -0.5f); break;
-                    case 3: (x, z) = (-0.5f, -0.5f); break;
-                    default: (x, z) = (0f, 0f); break;
-                }
+                    0 => (-0.5f, 0.5f),
+                    1 => (0.5f, 0.5f),
+                    2 => (0.5f, -0.5f),
+                    3 => (-0.5f, -0.5f),
+                    _ => (0f, 0f),
+                };
                 aug.transform.localPosition = new Vector3(x, 0.2f * ((i / 4) + 1), z);
                 i++;
             }

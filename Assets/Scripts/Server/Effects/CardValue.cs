@@ -1,12 +1,9 @@
 ﻿using KompasCore.Cards;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System.Linq;
 
 namespace KompasCore.Effects
 {
-    [Serializable]
     public class CardValue
     {
         #region values
@@ -18,6 +15,7 @@ namespace KompasCore.Effects
         private const string AugmentCost = "A";
 
         private const string Cost = "Cost";
+        private const string NumberOfAugments = "Number of Augments";
         #endregion values
 
         public string value;
@@ -29,18 +27,19 @@ namespace KompasCore.Effects
         {
             if (card == null) throw new ArgumentException("Cannot get value of null card", "card");
 
-            switch (value)
+            return value switch
             {
-                case Nimbleness:    return card.N;
-                case Endurance:     return card.E;
-                case SummoningCost: return card.S;
-                case Wounding:      return card.W;
-                case CastingCost:   return card.C;
-                case AugmentCost:   return card.A;
+                Nimbleness       => card.N,
+                Endurance        => card.E,
+                SummoningCost    => card.S,
+                Wounding         => card.W,
+                CastingCost      => card.C,
+                AugmentCost      => card.A,
 
-                case Cost:          return card.Cost;
-                default: throw new ArgumentException($"Invalid value string {value}", "value");
-            }
+                Cost             => card.Cost,
+                NumberOfAugments => card.Augments.Count(),
+                _ => throw new ArgumentException($"Invalid value string {value}", "value"),
+            };
         }
 
         public void SetValueOf(GameCard card, int num, IStackable stackSrc = null)

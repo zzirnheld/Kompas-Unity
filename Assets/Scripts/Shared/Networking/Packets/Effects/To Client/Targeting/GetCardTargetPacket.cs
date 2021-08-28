@@ -3,6 +3,7 @@ using KompasClient.GameCore;
 using KompasCore.Effects;
 using KompasCore.GameCore;
 using UnityEngine;
+using Newtonsoft.Json;
 
 namespace KompasCore.Networking
 {
@@ -41,7 +42,7 @@ namespace KompasClient.Networking
             try
             {
                 if (string.IsNullOrEmpty(listRestrictionJson)) listRestriction = ListRestriction.Default;
-                else listRestriction = JsonUtility.FromJson<ListRestriction>(listRestrictionJson);
+                else listRestriction = JsonConvert.DeserializeObject<ListRestriction>(listRestrictionJson);
 
                 listRestriction.Initialize(null);
             }

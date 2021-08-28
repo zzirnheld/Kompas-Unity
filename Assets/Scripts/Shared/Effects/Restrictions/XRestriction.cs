@@ -12,14 +12,14 @@ namespace KompasCore.Effects
         public const string Negative = "<0";
         public const string Nonnegative = ">=0";
         public const string AtLeastConstant = ">=Constant";
-        public const string LTEConstant = "<=Constant";
+        public const string NoMoreThanConstant = "<=Constant";
         public const string EqualsConstant = "==Constant";
         public const string LessThanEqualControllerPips = "<= Controller's Pips";
         public const string LessThanEffectX = "<X";
         public const string EqualsEffectX = "=X";
         public const string LessThanEqualEffectX = "<=X";
 
-        public string[] xRestrictions = new string[0];
+        public string[] xRestrictions;
 
         public int constant;
 
@@ -34,22 +34,26 @@ namespace KompasCore.Effects
 
         private bool RestrictionValid(string r, int x)
         {
-            switch (r)
+            return r switch
             {
-                case Positive: return x > 0;
-                case Negative: return x < 0;
-                case Nonnegative: return x >= 0;
-                case LessThanEqualThisCost: return x <= Source.Cost;
-                case LessThanEqualThisE: return x <= Source.E;
-                case LessThanEqualControllerPips: return x <= Source.Controller.Pips;
-                case AtLeastConstant: return x >= constant;
-                case LTEConstant: return x <= constant;
-                case EqualsConstant: return x == constant;
-                case LessThanEffectX: return x < Subeffect.Count;
-                case EqualsEffectX: return x == Subeffect.Count;
-                case LessThanEqualEffectX: return x <= Subeffect.Count;
-                default: throw new System.ArgumentException($"Invalid X restriction {r} in X Restriction.");
-            }
+                Positive => x > 0,
+                Negative => x < 0,
+                Nonnegative => x >= 0,
+
+                LessThanEqualThisCost       => x <= Source.Cost,
+                LessThanEqualThisE          => x <= Source.E,
+                LessThanEqualControllerPips => x <= Source.Controller.Pips,
+
+                AtLeastConstant     => x >= constant,
+                NoMoreThanConstant  => x <= constant,
+                EqualsConstant      => x == constant,
+
+                LessThanEffectX      => x < Subeffect.Count,
+                EqualsEffectX        => x == Subeffect.Count,
+                LessThanEqualEffectX => x <= Subeffect.Count,
+
+                _ => throw new System.ArgumentException($"Invalid X restriction {r} in X Restriction."),
+            };
         }
 
         public bool Evaluate(int x) => xRestrictions.All(r => RestrictionValid(r, x));

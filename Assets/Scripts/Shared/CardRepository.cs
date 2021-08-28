@@ -319,7 +319,7 @@ public class CardRepository : MonoBehaviour
     {
         try
         {
-            SerializableCard serializableCard = JsonUtility.FromJson<SerializableCard>(json);
+            SerializableCard serializableCard = JsonConvert.DeserializeObject<SerializableCard>(json);
             DeckSelectCard card = Instantiate(prefab, parent);
             card.SetInfo(serializableCard, uiCtrl);
             return card;
@@ -336,21 +336,21 @@ public class CardRepository : MonoBehaviour
     {
         try
         {
-            SerializableCard serializableCard = JsonUtility.FromJson<SerializableCard>(json);
+            SerializableCard serializableCard = JsonConvert.DeserializeObject<SerializableCard>(json);
             switch (serializableCard.cardType)
             {
                 case 'C':
-                    SerializableCard serializableChar = JsonUtility.FromJson<SerializableCard>(json);
+                    SerializableCard serializableChar = JsonConvert.DeserializeObject<SerializableCard>(json);
                     var charCard = Instantiate(DeckbuilderCharPrefab).GetComponent<DeckbuilderCharCard>();
                     charCard.SetInfo(searchCtrl, serializableChar, inDeck);
                     return charCard;
                 case 'S':
-                    SerializableCard serializableSpell = JsonUtility.FromJson<SerializableCard>(json);
+                    SerializableCard serializableSpell = JsonConvert.DeserializeObject<SerializableCard>(json);
                     var spellCard = Instantiate(DeckbuilderSpellPrefab).GetComponent<DeckbuilderSpellCard>();
                     spellCard.SetInfo(searchCtrl, serializableSpell, inDeck);
                     return spellCard;
                 case 'A':
-                    SerializableCard serializableAug = JsonUtility.FromJson<SerializableCard>(json);
+                    SerializableCard serializableAug = JsonConvert.DeserializeObject<SerializableCard>(json);
                     var augCard = Instantiate(DeckbuilderAugPrefab).GetComponent<DeckbuilderAugCard>();
                     augCard.SetInfo(searchCtrl, serializableAug, inDeck);
                     return augCard;
@@ -371,7 +371,7 @@ public class CardRepository : MonoBehaviour
     {
         try
         {
-            return JsonUtility.FromJson<SerializableCard>(json);
+            return JsonConvert.DeserializeObject<SerializableCard>(json);
         }
         catch (System.ArgumentException e)
         {

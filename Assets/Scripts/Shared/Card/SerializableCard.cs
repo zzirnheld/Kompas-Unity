@@ -1,9 +1,7 @@
 ﻿using KompasCore.Effects;
-using System;
 
 namespace KompasCore.Cards
 {
-    [Serializable]
     public class SerializableCard
     {
         //card type

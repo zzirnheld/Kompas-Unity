@@ -57,7 +57,6 @@
 			"subtypesInclude":["Shaper"]
 		}
 	},
-	"fast":false,
 	"c":4,
 	"spellTypes":["Simple"],
 	"subtypes":["Simple","Shaping"],

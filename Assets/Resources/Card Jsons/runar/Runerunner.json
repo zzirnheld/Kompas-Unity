@@ -1,12 +1,12 @@
 {
 	"cardType":67,
 	"cardName":"Runerunner",
-	"effText":"Once each round, you can pip hand-cast a Rune.",
+	"effText":"Once each friendly turn, you can pip hand-cast a Rune.",
 	"effects":[
 		{
 			"activationRestriction":{
 				"activationRestrictionArray":[
-					"Max Times Per Round",
+					"Max Times Per Turn",
 					"Default"
 				]
 			},
@@ -39,9 +39,9 @@
 		}
 	],
 	"n":2,
-	"e":3,
-	"s":3,
-	"w":3,
+	"e":2,
+	"s":2,
+	"w":2,
 	"subtypes":["Runar","Mage"],
 	"subtypeText":"Runar Mage"
 }

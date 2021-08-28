@@ -1,5 +1,4 @@
 ﻿using KompasCore.Cards;
-using KompasCore.GameCore;
 
 namespace KompasCore.Effects
 {
@@ -7,6 +6,8 @@ namespace KompasCore.Effects
     {
         public const string TurnStart = "Turn Start";
         public const string StackEnd = "Stack End";
+
+        public const string EffectPushedToStack = "Effect Pushed to Stack";
 
         //change card stats
         public const string NESWChange = "NESW Change";
@@ -71,7 +72,7 @@ namespace KompasCore.Effects
         public string TriggerCondition => TriggerData.triggerCondition;
         public TriggerRestriction TriggerRestriction => TriggerData.triggerRestriction;
         public bool Optional => TriggerData.optional;
-        public string Blurb => TriggerData.blurb;
+        public string Blurb => TriggerData.blurb ?? Effect.blurb;
 
         public Trigger(TriggerData triggerData, Effect effect)
         {

@@ -22,8 +22,10 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
-					"whatToCount":"Cost",
+					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"C"
+					},
 					"xMultiplier":1
 				},
 				{
@@ -44,7 +46,6 @@
 			]
 		}
 	],
-	"fast":false,
 	"c":1,
 	"spellTypes":["Enchant"],
 	"subtypes":["Enchant"],

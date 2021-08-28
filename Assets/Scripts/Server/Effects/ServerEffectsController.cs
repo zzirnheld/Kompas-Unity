@@ -281,6 +281,7 @@ namespace KompasServer.Effects
                 {
                     if (t.EndIfApplicable(context))
                     {
+                        Debug.Log($"{t} ended");
                         hangingEffectMap[condition].Remove(t);
                         if (!string.IsNullOrEmpty(t.FallOffCondition))
                             hangingEffectFallOffMap[t.FallOffCondition].Remove(t);

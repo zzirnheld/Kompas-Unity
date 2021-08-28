@@ -6,10 +6,10 @@ namespace KompasServer.Effects
     {
         public override Task<ResolutionInfo> Resolve()
         {
-            if (ServerEffect.CurrActivationContext.CardInfo == null)
+            if (Context.CardInfo == null)
                 return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
 
-            ServerEffect.coords.Add(ServerEffect.CurrActivationContext.CardInfo.Position);
+            ServerEffect.coords.Add(Context.CardInfo.Position);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

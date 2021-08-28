@@ -1,6 +1,5 @@
 ﻿using KompasCore.Networking;
 using KompasClient.GameCore;
-using System.Linq;
 using KompasCore.Cards;
 
 namespace KompasCore.Networking

@@ -1,0 +1,34 @@
+{
+	"blurb":"Speed Demon",
+	"triggerData":
+	{
+		"blurb":"Speed Demon",
+		"triggerCondition":"Move",
+		"triggerRestriction":{
+			"triggerRestrictions":["This Card Triggered","Stackable Source Fits Restriction"],
+            "sourceRestriction":{
+                "cardRestrictions":["Not Source"]
+            }
+		}
+	},
+	"subeffects":[
+		{
+			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type":"KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+			"spaceRestriction":
+			{
+				"blurb":"where for speed victim to move",
+				"spaceRestrictions":["Distance to Target == Constant","Opposite Direction From Target Than Space"],
+				"constant":1
+			}
+		},
+		{
+			"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+		}
+	]	
+}

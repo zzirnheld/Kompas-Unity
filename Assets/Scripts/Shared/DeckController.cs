@@ -86,12 +86,12 @@ namespace KompasCore.GameCore
             }
         }
 
-        public List<GameCard> CardsThatFitRestriction(CardRestriction cardRestriction)
+        public List<GameCard> CardsThatFitRestriction(CardRestriction cardRestriction, ActivationContext context)
         {
             List<GameCard> cards = new List<GameCard>();
             foreach (GameCard c in Deck)
             {
-                if (c != null && cardRestriction.Evaluate(c))
+                if (c != null && cardRestriction.Evaluate(c, context))
                     cards.Add(c);
             }
             return cards;

@@ -16,6 +16,7 @@ namespace KompasCore.Effects
         public int SubeffIndex { get; protected set; }
 
         public GameCard Source => Effect.Source;
+        public ActivationContext Context => Effect.CurrActivationContext;
 
         /// <summary>
         /// Represents the type of subeffect this is

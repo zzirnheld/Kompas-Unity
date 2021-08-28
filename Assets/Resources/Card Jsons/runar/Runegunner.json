@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Runegunner",
-	"effText":"Once each turn, you can pip hand-cast a Rune, X spaces from me (following normal placement rules). X times: pay its cost, then echo it. (If you run out of pips, you don't echo it).",
+	"effText":"Once each friendly turn, you can hand->cast a Rune, X spaces from me (following normal placement rules). X times: pip echo it.",
 	"effects":[
 		{
 			"activationRestriction":{
@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Rune for Runegunner to cast",
-						"cardRestrictions":["Subtypes Include","Is Spell","Friendly","Hand","Can Be Played","Effect Controller can Afford Cost"],
+						"cardRestrictions":["Subtypes Include","Is Spell","Friendly","Hand","Can Be Played"],
 						"subtypesInclude":["Rune"]
 					}
 				},
@@ -30,15 +30,11 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
-					"xMultiplier":1
-				},
-				{
 					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
-					"whatToCount":"Distance to Target",
+					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount":"Distance From Source to Target",
 					"xMultiplier":1
 				},
 				{
@@ -50,16 +46,16 @@
 				},
 				{
 					"$type":"KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",
-					"jumpTo":5
+					"jumpTo":4
 				}
 			]
 		}
 	],
 	"unique":true,
-	"n":0,
-	"e":5,
+	"n":1,
+	"e":7,
 	"s":10,
-	"w":0,
+	"w":9,
 	"subtypes":["Runar","Mage"],
 	"subtypeText":"Runar Mage"
 }

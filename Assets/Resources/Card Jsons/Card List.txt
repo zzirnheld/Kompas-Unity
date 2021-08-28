@@ -145,6 +145,7 @@ linewalkers/Purple Linewalker
 linewalkers/Red Linewalker
 linewalkers/White Linewalker
 linewalkers/Yellow Linewalker
+linewalkers/Leygrapple
 None Defy the Lines
 Notcropoten
 pulsars/Accelerating Pulsar
@@ -256,6 +257,19 @@ shapers/Trailing Dreammist
 shapers/Tethered Dreammist
 shapers/Infolding Hopelessness
 Shatter the Warranty
+speed_demons/Coach Speed
+speed_demons/Mr Power Vacuum
+speed_demons/Boing Boing Launcher Guy
+speed_demons/Fairy Dust Tooter Scooter
+speed_demons/Dust Eater
+speed_demons/Fanatic Follower
+speed_demons/Hypnosympatheticizer
+speed_demons/Supportive Grandparent
+speed_demons/ZOOMIN
+speed_demons/Sonic Resonator
+speed_demons/Ready
+speed_demons/Set
+speed_demons/GO
 spirits/A Lot of Disappointment
 spirits/Allconsuming Frustration
 spirits/Generous Pleasure

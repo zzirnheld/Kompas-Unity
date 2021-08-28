@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using KompasCore.Cards;
 
 namespace KompasServer.Effects
 {
@@ -12,7 +11,7 @@ namespace KompasServer.Effects
                                                              endCondition: endCondition,
                                                              fallOffCondition: fallOffCondition,
                                                              fallOffRestriction: CreateFallOffRestriction(Target),
-                                                             currentContext: Effect.CurrActivationContext,
+                                                             currentContext: Context,
                                                              target: Target,
                                                              source: this);
             return new List<HangingEffect>() { tempActivation };

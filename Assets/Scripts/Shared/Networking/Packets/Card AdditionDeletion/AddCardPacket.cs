@@ -1,6 +1,5 @@
 ﻿using KompasCore.Networking;
 using KompasClient.GameCore;
-using System.Linq;
 using KompasCore.GameCore;
 using KompasCore.Cards;
 
@@ -50,12 +49,12 @@ namespace KompasCore.Networking
         {
             if (Game.IsHiddenLocation(location))
             {
-                switch (location)
+                return location switch
                 {
-                    case CardLocation.Hand: return new ChangeEnemyHandCountPacket(1);
-                    case CardLocation.Deck: return null;
-                    default: throw new System.ArgumentException($"What should add card packet do when a card is added to the hidden location {location}");
-                }
+                    CardLocation.Hand => new ChangeEnemyHandCountPacket(1),
+                    CardLocation.Deck => null,
+                    _ => throw new System.ArgumentException($"What should add card packet do when a card is added to the hidden location {location}"),
+                };
             }
             else return new AddCardPacket(cardId, json, location, controllerIndex, x, y, attached, known, invert: true);
         }

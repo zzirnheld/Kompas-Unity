@@ -1,14 +1,12 @@
 ﻿using KompasCore.Cards;
-using KompasCore.Networking;
 using KompasServer.Effects;
-using KompasServer.Networking;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace KompasServer.Networking {
+namespace KompasServer.Networking
+{
     public class ServerAwaiter : MonoBehaviour
     {
         private const int DefaultDelay = 100;
@@ -233,6 +231,7 @@ namespace KompasServer.Networking {
             serverNotifier.GetSpaceTarget(cardName, blurb, spaces, recommendedSpaces);
             while (true)
             {
+                //TODO I think locking is fine because I'm not awaiting while locking, check this
                 lock (SpaceTargetLock)
                 {
                     if (SpaceTarget.HasValue)

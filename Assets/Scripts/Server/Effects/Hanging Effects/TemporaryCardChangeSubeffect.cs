@@ -30,8 +30,8 @@ namespace KompasServer.Effects
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
-            triggerRestriction = triggerRestriction ?? new TriggerRestriction();
-            triggerRestriction.Initialize(Game, ThisCard, thisTrigger: null, effect: Effect);
+            triggerRestriction ??= new TriggerRestriction();
+            triggerRestriction.Initialize(Game, ThisCard, thisTrigger: null, effect: Effect, subeff: this);
         }
 
         public override Task<ResolutionInfo> Resolve()

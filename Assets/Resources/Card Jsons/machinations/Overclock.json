@@ -26,8 +26,10 @@
 					"cMod":1
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
-					"whatToCount":"Cost",
+					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"C"
+					},
 					"xMultiplier":1
 				},
 				{
@@ -49,7 +51,6 @@
 		}
 	},
 	"c":1,
-	"fast":true,
 	"spellTypes":["Simple"],
 	"subtypes":["Simple"],
 	"subtypeText":"Simple"

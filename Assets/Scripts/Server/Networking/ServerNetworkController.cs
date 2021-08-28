@@ -1,10 +1,7 @@
-﻿using KompasCore.Cards;
-using KompasCore.Networking;
-using KompasServer.Effects;
+﻿using KompasCore.Networking;
 using KompasServer.GameCore;
-using System.Collections.Generic;
+using Newtonsoft.Json;
 using System.Linq;
-using System.Net.Sockets;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -25,43 +22,39 @@ namespace KompasServer.Networking
 
         private IServerOrderPacket FromJson(string command, string json)
         {
-            switch (command)
+            return command switch
             {
                 //game start
-                case Packet.SetDeck: return JsonUtility.FromJson<SetDeckServerPacket>(json);
-
+                Packet.SetDeck => JsonConvert.DeserializeObject<SetDeckServerPacket>(json),
                 //player actions
-                case Packet.PlayAction:           return JsonUtility.FromJson<PlayActionServerPacket>(json);
-                case Packet.AugmentAction:        return JsonUtility.FromJson<AugmentActionServerPacket>(json);
-                case Packet.MoveAction:           return JsonUtility.FromJson<MoveActionServerPacket>(json);
-                case Packet.AttackAction:         return JsonUtility.FromJson<AttackActionServerPacket>(json);
-                case Packet.EndTurnAction:        return JsonUtility.FromJson<EndTurnActionServerPacket>(json);
-                case Packet.ActivateEffectAction: return JsonUtility.FromJson<ActivateEffectActionServerPacket>(json);
-                case Packet.HandSizeChoices:      return JsonUtility.FromJson<SendHandSizeChoicesServerPacket>(json);
-                case Packet.IncarnateAction:      return JsonUtility.FromJson<IncarnateActionServerPacket>(json);
-
+                Packet.PlayAction           => JsonConvert.DeserializeObject<PlayActionServerPacket>(json),
+                Packet.AugmentAction        => JsonConvert.DeserializeObject<AugmentActionServerPacket>(json),
+                Packet.MoveAction           => JsonConvert.DeserializeObject<MoveActionServerPacket>(json),
+                Packet.AttackAction         => JsonConvert.DeserializeObject<AttackActionServerPacket>(json),
+                Packet.EndTurnAction        => JsonConvert.DeserializeObject<EndTurnActionServerPacket>(json),
+                Packet.ActivateEffectAction => JsonConvert.DeserializeObject<ActivateEffectActionServerPacket>(json),
+                Packet.HandSizeChoices      => JsonConvert.DeserializeObject<SendHandSizeChoicesServerPacket>(json),
+                Packet.IncarnateAction 		=> JsonConvert.DeserializeObject<IncarnateActionServerPacket>(json);
                 //effects
-                case Packet.CardTargetChosen:        return JsonUtility.FromJson<CardTargetServerPacket>(json);
-                case Packet.SpaceTargetChosen:       return JsonUtility.FromJson<SpaceTargetServerPacket>(json);
-                case Packet.XSelectionChosen:        return JsonUtility.FromJson<SelectXServerPacket>(json);
-                case Packet.DeclineAnotherTarget:    return JsonUtility.FromJson<DeclineAnotherTargetServerPacket>(json);
-                case Packet.ListChoicesChosen:       return JsonUtility.FromJson<ListChoicesServerPacket>(json);
-                case Packet.OptionalTriggerResponse: return JsonUtility.FromJson<OptionalTriggerAnswerServerPacket>(json);
-                case Packet.ChooseEffectOption:      return JsonUtility.FromJson<EffectOptionResponseServerPacket>(json);
-                case Packet.PassPriority:            return JsonUtility.FromJson<PassPriorityServerPacket>(json);
-                case Packet.ChooseTriggerOrder:      return JsonUtility.FromJson<TriggerOrderResponseServerPacket>(json);
-
+                Packet.CardTargetChosen         => JsonConvert.DeserializeObject<CardTargetServerPacket>(json),
+                Packet.SpaceTargetChosen        => JsonConvert.DeserializeObject<SpaceTargetServerPacket>(json),
+                Packet.XSelectionChosen         => JsonConvert.DeserializeObject<SelectXServerPacket>(json),
+                Packet.DeclineAnotherTarget     => JsonConvert.DeserializeObject<DeclineAnotherTargetServerPacket>(json),
+                Packet.ListChoicesChosen        => JsonConvert.DeserializeObject<ListChoicesServerPacket>(json),
+                Packet.OptionalTriggerResponse  => JsonConvert.DeserializeObject<OptionalTriggerAnswerServerPacket>(json),
+                Packet.ChooseEffectOption       => JsonConvert.DeserializeObject<EffectOptionResponseServerPacket>(json),
+                Packet.PassPriority             => JsonConvert.DeserializeObject<PassPriorityServerPacket>(json),
+                Packet.ChooseTriggerOrder       => JsonConvert.DeserializeObject<TriggerOrderResponseServerPacket>(json),
                 //debug
-                case Packet.DebugTopdeck: return JsonUtility.FromJson<DebugTopdeckServerPacket>(json);
-                case Packet.DebugDiscard: return JsonUtility.FromJson<DebugDiscardServerPacket>(json);
-                case Packet.DebugRehand:  return JsonUtility.FromJson<DebugRehandServerPacket>(json);
-                case Packet.DebugDraw:    return JsonUtility.FromJson<DebugDrawServerPacket>(json);
-                case Packet.DebugSetNESW: return JsonUtility.FromJson<DebugSetNESWServerPacket>(json);
-                case Packet.DebugSetPips: return JsonUtility.FromJson<DebugSetPipsServerPacket>(json);
-
+                Packet.DebugTopdeck => JsonConvert.DeserializeObject<DebugTopdeckServerPacket>(json),
+                Packet.DebugDiscard => JsonConvert.DeserializeObject<DebugDiscardServerPacket>(json),
+                Packet.DebugRehand  => JsonConvert.DeserializeObject<DebugRehandServerPacket>(json),
+                Packet.DebugDraw    => JsonConvert.DeserializeObject<DebugDrawServerPacket>(json),
+                Packet.DebugSetNESW => JsonConvert.DeserializeObject<DebugSetNESWServerPacket>(json),
+                Packet.DebugSetPips => JsonConvert.DeserializeObject<DebugSetPipsServerPacket>(json),
                 //misc
-                default: throw new System.ArgumentException($"Unrecognized command {command} in packet sent to client");
-            }
+                _ => throw new System.ArgumentException($"Unrecognized command {command} in packet sent to client"),
+            };
         }
 
         protected override async void Update()

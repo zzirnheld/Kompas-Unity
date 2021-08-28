@@ -38,7 +38,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for the tide to belch",
-						"cardRestrictions":["Subtypes Include","Friendly","Deck"],
+						"cardRestrictions":["Is Character","Subtypes Include","Friendly","Deck"],
 						"subtypesInclude":["Aquatic"]
 					}
 				},
@@ -48,7 +48,7 @@
 			]
 		}
     ],
-	"c":2,
+	"c":1,
 	"spellTypes":["Radial","Vanishing"],
     "radius":1,
 	"duration":2,

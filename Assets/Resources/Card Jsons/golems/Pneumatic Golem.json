@@ -17,8 +17,10 @@
 					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
-					"whatToCount":"N",
+					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"N"
+					},
 					"xMultiplier":1
 				},
 				{
@@ -47,7 +49,7 @@
 			"This is Activated"
 		]
 	},
-	"n":2,
+	"n":5,
 	"e":4,
 	"s":3,
 	"w":1,

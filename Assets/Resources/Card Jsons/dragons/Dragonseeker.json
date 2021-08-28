@@ -19,8 +19,10 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
-					"whatToCount":"S",
+					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"S"
+					},
 					"xMultiplier":1,
 					"xDivisor":2
 				},
@@ -37,7 +39,7 @@
 			]
 		}
 	],
-	"n":2,
+	"n":3,
 	"e":5,
 	"s":5,
 	"w":5,

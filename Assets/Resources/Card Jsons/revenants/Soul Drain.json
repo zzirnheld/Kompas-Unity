@@ -20,8 +20,10 @@
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetValueSubeffect, Assembly-CSharp",
-					"whatToCount":"S",
+					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"S"
+					},
 					"xMultiplier":1
 				},
 				{
@@ -31,7 +33,6 @@
 			]	
 		}
 	],
-	"fast":true,
 	"c":3,
 	"unique":true,
 	"spellTypes":["Enchant"],

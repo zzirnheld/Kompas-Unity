@@ -2,7 +2,6 @@
 using KompasClient.GameCore;
 using KompasCore.Cards;
 using KompasCore.Effects;
-using UnityEngine;
 
 namespace KompasClient.Cards
 {

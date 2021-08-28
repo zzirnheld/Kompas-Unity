@@ -30,9 +30,9 @@ namespace KompasServer.Effects
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
-            cardRestriction = cardRestriction ?? new CardRestriction();
+            cardRestriction ??= new CardRestriction();
             cardRestriction.Initialize(this);
-            listRestriction = listRestriction ?? ListRestriction.Default;
+            listRestriction ??= ListRestriction.Default;
             listRestriction.Initialize(this);
         }
 
@@ -54,7 +54,7 @@ namespace KompasServer.Effects
 
         private IEnumerable<GameCard> GetPossibleTargets()
         {
-            var possibleTargets = ServerGame.Cards.Where(cardRestriction.Evaluate);
+            var possibleTargets = ServerGame.Cards.Where(c => cardRestriction.Evaluate(c, Context));
             if (!possibleTargets.Any()) return new GameCard[0];
 
             switch (orderBy)

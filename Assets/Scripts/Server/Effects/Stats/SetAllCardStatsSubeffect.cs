@@ -1,6 +1,5 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
-using KompasServer.Cards;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -27,7 +26,7 @@ namespace KompasServer.Effects
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
-            cardRestriction = cardRestriction ?? new CardRestriction()
+            cardRestriction ??= new CardRestriction()
             {
                 cardRestrictions = new string[]
                 {
@@ -40,7 +39,7 @@ namespace KompasServer.Effects
 
         public override Task<ResolutionInfo> Resolve()
         {
-            var targets = ServerGame.Cards.Where(cardRestriction.Evaluate);
+            var targets = ServerGame.Cards.Where(c => cardRestriction.Evaluate(c, Context));
             foreach (var c in targets)
             {
                 c.SetStats(stats: GetRealValues(c), Effect);

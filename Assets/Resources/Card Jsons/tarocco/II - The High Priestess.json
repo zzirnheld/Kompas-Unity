@@ -1,12 +1,12 @@
 {
 	"cardType":67,
 	"cardName":"II - The High Priestess",
-	"effText":"Once each round, you can draw 3 cards, then hand->topdeck 3 cards.",
+	"effText":"Once each friendly turn, you can draw 3 cards, then hand->topdeck 3 cards.",
 	"effects":[
 		{
 			"activationRestriction":{
 				"activationRestrictionArray":[
-					"Max Times Per Round",
+					"Max Times Per Turn",
 					"Default"
 				]
 			},
@@ -51,7 +51,7 @@
 			]	
 		}
 	],
-	"n":1,
+	"n":2,
 	"e":5,
 	"s":4,
 	"w":1,

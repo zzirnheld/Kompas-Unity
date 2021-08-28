@@ -1,10 +1,12 @@
 ﻿using KompasCore.Effects;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
     public class ConditionalJumpSubeffect : ServerSubeffect
     {
+        public const string CardFitsRestriction = "Card Fits Restriction";
         public const string TargetFitsRestriction = "Target Fits Restriction";
         public const string TargetViolatesRestriction = "Target Violates Restriction";
         public const string XGreaterEqualConstant = "X >= Constant";
@@ -28,14 +30,15 @@ namespace KompasServer.Effects
         {
             get
             {
-                switch (condition)
+                return condition switch
                 {
-                    case TargetFitsRestriction: return cardRestriction.Evaluate(Target);
-                    case TargetViolatesRestriction: return !cardRestriction.Evaluate(Target);
-                    case XGreaterEqualConstant: return Effect.X >= constant;
-                    case XFitsRestriction: return xRestriction.Evaluate(Effect.X);
-                    default: throw new System.ArgumentException($"Invalid conditional jump condition {condition}");
-                }
+                    CardFitsRestriction         => Game.Cards.Any(c => cardRestriction.Evaluate(c, Context)),
+                    TargetFitsRestriction       => cardRestriction.Evaluate(Target, Context),
+                    TargetViolatesRestriction   => !cardRestriction.Evaluate(Target, Context),
+                    XGreaterEqualConstant       => Effect.X >= constant,
+                    XFitsRestriction            => xRestriction.Evaluate(Effect.X),
+                    _ => throw new System.ArgumentException($"Invalid conditional jump condition {condition}"),
+                };
             }
         }
 

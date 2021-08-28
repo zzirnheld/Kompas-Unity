@@ -1,7 +1,8 @@
 ﻿using KompasClient.GameCore;
 using KompasCore.Networking;
-using System;
+using Newtonsoft.Json;
 using System.Net;
+using System.Net.Sockets;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -23,7 +24,7 @@ namespace KompasClient.Networking
             {
                 await tcpClient.ConnectAsync(address, port);
             }
-            catch(Exception e)
+            catch(SocketException e)
             {
                 Debug.LogError($"Failed to connect to {ip}. Stack trace:\n{e.StackTrace}");
                 ClientGame.clientUICtrl.ShowConnectUI();
@@ -41,78 +42,72 @@ namespace KompasClient.Networking
 
         private IClientOrderPacket FromJson(string command, string json)
         {
-            switch (command)
+            return command switch
             {
                 //game start
-                case Packet.GetDeck: return JsonUtility.FromJson<GetDeckClientPacket>(json);
-                case Packet.DeckAccepted: return JsonUtility.FromJson<DeckAcceptedClientPacket>(json);
-                case Packet.SetAvatar: return JsonUtility.FromJson<SetAvatarClientPacket>(json);
-                case Packet.SetFirstTurnPlayer: return JsonUtility.FromJson<SetFirstPlayerClientPacket>(json);
-
+                Packet.GetDeck              => JsonConvert.DeserializeObject<GetDeckClientPacket>(json),
+                Packet.DeckAccepted         => JsonConvert.DeserializeObject<DeckAcceptedClientPacket>(json),
+                Packet.SetAvatar            => JsonConvert.DeserializeObject<SetAvatarClientPacket>(json),
+                Packet.SetFirstTurnPlayer   => JsonConvert.DeserializeObject<SetFirstPlayerClientPacket>(json),
                 //gamestate
-                case Packet.SetLeyload: return JsonUtility.FromJson<SetLeyloadClientPacket>(json);
-                case Packet.SetTurnPlayer: return JsonUtility.FromJson<SetTurnPlayerClientPacket>(json);
-                case Packet.PutCardsBack: return JsonUtility.FromJson<PutCardsBackClientPacket>(json);
-                case Packet.AttackStarted: return JsonUtility.FromJson<AttackStartedClientPacket>(json);
-                case Packet.HandSizeToStack: return JsonUtility.FromJson<HandSizeToStackClientPacket>(json);
-                case Packet.ChooseHandSize: return JsonUtility.FromJson<GetHandSizeChoicesClientPacket>(json);
-                case Packet.SetDeckCount: return JsonUtility.FromJson<SetDeckCountClientPacket>(json);
-
+                Packet.SetLeyload       => JsonConvert.DeserializeObject<SetLeyloadClientPacket>(json),
+                Packet.SetTurnPlayer    => JsonConvert.DeserializeObject<SetTurnPlayerClientPacket>(json),
+                Packet.PutCardsBack     => JsonConvert.DeserializeObject<PutCardsBackClientPacket>(json),
+                Packet.AttackStarted    => JsonConvert.DeserializeObject<AttackStartedClientPacket>(json),
+                Packet.HandSizeToStack  => JsonConvert.DeserializeObject<HandSizeToStackClientPacket>(json),
+                Packet.ChooseHandSize   => JsonConvert.DeserializeObject<GetHandSizeChoicesClientPacket>(json),
+                Packet.SetDeckCount     => JsonConvert.DeserializeObject<SetDeckCountClientPacket>(json),
                 //card addition/deletion
-                case Packet.AddCard: return JsonUtility.FromJson<AddCardClientPacket>(json);
-                case Packet.DeleteCard: return JsonUtility.FromJson<DeleteCardClientPacket>(json);
-                case Packet.ChangeEnemyHandCount: return JsonUtility.FromJson<ChangeEnemyHandCountClientPacket>(json);
-
+                Packet.AddCard              => JsonConvert.DeserializeObject<AddCardClientPacket>(json),
+                Packet.DeleteCard           => JsonConvert.DeserializeObject<DeleteCardClientPacket>(json),
+                Packet.ChangeEnemyHandCount => JsonConvert.DeserializeObject<ChangeEnemyHandCountClientPacket>(json),
                 //card movement
-                case Packet.KnownToEnemy: return JsonUtility.FromJson<UpdateKnownToEnemyClientPacket>(json);
-                case Packet.Incarnate: return JsonUtility.FromJson<SetIncarnatedClientPacket>(json);
-                    //public areas
-                case Packet.PlayCard: return JsonUtility.FromJson<PlayCardClientPacket>(json);
-                case Packet.AttachCard: return JsonUtility.FromJson<AttachCardClientPacket>(json);
-                case Packet.MoveCard: return JsonUtility.FromJson<MoveCardClientPacket>(json);
-                case Packet.DiscardCard: return JsonUtility.FromJson<DiscardCardClientPacket>(json);
-                case Packet.AnnihilateCard: return JsonUtility.FromJson<AnnihilateCardClientPacket>(json);
-                    //private areas
-                case Packet.RehandCard: return JsonUtility.FromJson<RehandCardClientPacket>(json);
-                case Packet.TopdeckCard: return JsonUtility.FromJson<TopdeckCardClientPacket>(json);
-                case Packet.ReshuffleCard: return JsonUtility.FromJson<ReshuffleCardClientPacket>(json);
-                case Packet.BottomdeckCard: return JsonUtility.FromJson<BottomdeckCardClientPacket>(json);
-
+                Packet.KnownToEnemy => JsonConvert.DeserializeObject<UpdateKnownToEnemyClientPacket>(json),
+                Packet.Incarnate: => JsonConvert.DeserializeObject<SetIncarnatedClientPacket>(json),
+                //public areas
+                Packet.PlayCard         => JsonConvert.DeserializeObject<PlayCardClientPacket>(json),
+                Packet.AttachCard       => JsonConvert.DeserializeObject<AttachCardClientPacket>(json),
+                Packet.MoveCard         => JsonConvert.DeserializeObject<MoveCardClientPacket>(json),
+                Packet.DiscardCard      => JsonConvert.DeserializeObject<DiscardCardClientPacket>(json),
+                Packet.AnnihilateCard   => JsonConvert.DeserializeObject<AnnihilateCardClientPacket>(json),
+                //private areas
+                Packet.RehandCard       => JsonConvert.DeserializeObject<RehandCardClientPacket>(json),
+                Packet.TopdeckCard      => JsonConvert.DeserializeObject<TopdeckCardClientPacket>(json),
+                Packet.ReshuffleCard    => JsonConvert.DeserializeObject<ReshuffleCardClientPacket>(json),
+                Packet.BottomdeckCard   => JsonConvert.DeserializeObject<BottomdeckCardClientPacket>(json),
                 //stats
-                case Packet.UpdateCardNumericStats: return JsonUtility.FromJson<ChangeCardNumericStatsClientPacket>(json);
-                case Packet.NegateCard: return JsonUtility.FromJson<NegateCardClientPacket>(json);
-                case Packet.ActivateCard: return JsonUtility.FromJson<ActivateCardClientPacket>(json);
-                case Packet.ResetCard: return JsonUtility.FromJson<ResetCardClientPacket>(json);
-                case Packet.ChangeCardController: return JsonUtility.FromJson<ChangeCardControllerClientPacket>(json);
-                case Packet.SetPips: return JsonUtility.FromJson<SetPipsClientPacket>(json);
-                case Packet.AttacksThisTurn: return JsonUtility.FromJson<AttacksThisTurnClientPacket>(json);
-                case Packet.SpacesMoved: return JsonUtility.FromJson<SpacesMovedClientPacket>(json);
-
+                Packet.UpdateCardNumericStats   => JsonConvert.DeserializeObject<ChangeCardNumericStatsClientPacket>(json),
+                Packet.NegateCard               => JsonConvert.DeserializeObject<NegateCardClientPacket>(json),
+                Packet.ActivateCard             => JsonConvert.DeserializeObject<ActivateCardClientPacket>(json),
+                Packet.ResetCard                => JsonConvert.DeserializeObject<ResetCardClientPacket>(json),
+                Packet.ChangeCardController     => JsonConvert.DeserializeObject<ChangeCardControllerClientPacket>(json),
+                Packet.SetPips                  => JsonConvert.DeserializeObject<SetPipsClientPacket>(json),
+                Packet.AttacksThisTurn          => JsonConvert.DeserializeObject<AttacksThisTurnClientPacket>(json),
+                Packet.SpacesMoved              => JsonConvert.DeserializeObject<SpacesMovedClientPacket>(json),
                 //effects
-                    //targeting
-                case Packet.GetCardTarget: return JsonUtility.FromJson<GetCardTargetClientPacket>(json);
-                case Packet.GetSpaceTarget: return JsonUtility.FromJson<GetSpaceTargetClientPacket>(json);
-                    //other
-                case Packet.GetEffectOption: return JsonUtility.FromJson<GetEffectOptionClientPacket>(json);
-                case Packet.EffectResolving: return JsonUtility.FromJson<EffectResolvingClientPacket>(json);
-                case Packet.EffectActivated: return JsonUtility.FromJson<EffectActivatedClientPacket>(json);
-                case Packet.RemoveStackEntry: return JsonUtility.FromJson<RemoveStackEntryClientPacket>(json);
-                case Packet.SetEffectsX: return JsonUtility.FromJson<SetEffectsXClientPacket>(json);
-                case Packet.PlayerChooseX: return JsonUtility.FromJson<GetPlayerChooseXClientPacket>(json);
-                case Packet.TargetAccepted: return JsonUtility.FromJson<TargetAcceptedClientPacket>(json);
-                case Packet.AddTarget: return JsonUtility.FromJson<AddTargetClientPacket>(json);
-                case Packet.RemoveTarget: return JsonUtility.FromJson<RemoveTargetClientPacket>(json);
-                case Packet.ToggleDecliningTarget: return JsonUtility.FromJson<ToggleDecliningTargetClientPacket>(json);
-                case Packet.DiscardSimples: return JsonUtility.FromJson<DiscardSimplesClientPacket>(json);
-                case Packet.StackEmpty: return JsonUtility.FromJson<StackEmptyClientPacket>(json);
-                case Packet.EffectImpossible: return JsonUtility.FromJson<EffectImpossibleClientPacket>(json);
-                case Packet.OptionalTrigger: return JsonUtility.FromJson<OptionalTriggerClientPacket>(json);
-                case Packet.ToggleAllowResponses: return JsonUtility.FromJson<ToggleAllowResponsesClientPacket>(json);
-                case Packet.GetTriggerOrder: return JsonUtility.FromJson<GetTriggerOrderClientPacket>(json);
-
+                //targeting
+                Packet.GetCardTarget  => JsonConvert.DeserializeObject<GetCardTargetClientPacket>(json),
+                Packet.GetSpaceTarget => JsonConvert.DeserializeObject<GetSpaceTargetClientPacket>(json),
+                //other
+                Packet.GetEffectOption  => JsonConvert.DeserializeObject<GetEffectOptionClientPacket>(json),
+                Packet.EffectResolving  => JsonConvert.DeserializeObject<EffectResolvingClientPacket>(json),
+                Packet.EffectActivated  => JsonConvert.DeserializeObject<EffectActivatedClientPacket>(json),
+                Packet.RemoveStackEntry => JsonConvert.DeserializeObject<RemoveStackEntryClientPacket>(json),
+                Packet.SetEffectsX      => JsonConvert.DeserializeObject<SetEffectsXClientPacket>(json),
+                Packet.PlayerChooseX    => JsonConvert.DeserializeObject<GetPlayerChooseXClientPacket>(json),
+                Packet.TargetAccepted   => JsonConvert.DeserializeObject<TargetAcceptedClientPacket>(json),
+                Packet.AddTarget        => JsonConvert.DeserializeObject<AddTargetClientPacket>(json),
+                Packet.RemoveTarget     => JsonConvert.DeserializeObject<RemoveTargetClientPacket>(json),
+                Packet.ToggleDecliningTarget => JsonConvert.DeserializeObject<ToggleDecliningTargetClientPacket>(json),
+                Packet.DiscardSimples   => JsonConvert.DeserializeObject<DiscardSimplesClientPacket>(json),
+                Packet.StackEmpty       => JsonConvert.DeserializeObject<StackEmptyClientPacket>(json),
+                Packet.EffectImpossible => JsonConvert.DeserializeObject<EffectImpossibleClientPacket>(json),
+                Packet.OptionalTrigger  => JsonConvert.DeserializeObject<OptionalTriggerClientPacket>(json),
+                Packet.ToggleAllowResponses => JsonConvert.DeserializeObject<ToggleAllowResponsesClientPacket>(json),
+                Packet.GetTriggerOrder  => JsonConvert.DeserializeObject<GetTriggerOrderClientPacket>(json),
                 //misc
-                default: throw new System.ArgumentException($"Unrecognized command {command} in packet sent to client");
-            }
+                _ => throw new System.ArgumentException($"Unrecognized command {command} in packet sent to client"),
+            };
         }
 
         public override Task ProcessPacket((string command, string json) packetInfo)
