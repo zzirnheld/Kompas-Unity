@@ -30,7 +30,7 @@
 	"PlayRestriction":{
 		"normalRestrictions":["Cannot be Played Normally"]
 	},
-	"c":2,
+	"c":1,
 	"spellTypes":["Enchant","Radial"],
 	"subtypes":["Rune","Enchant","Radial"],
 	"subtypeText":"Radial 1 Rune Enchant",

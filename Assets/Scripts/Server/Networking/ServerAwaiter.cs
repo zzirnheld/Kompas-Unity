@@ -231,6 +231,7 @@ namespace KompasServer.Networking
             serverNotifier.GetSpaceTarget(cardName, blurb, spaces, recommendedSpaces);
             while (true)
             {
+                //TODO I think locking is fine because I'm not awaiting while locking, check this
                 lock (SpaceTargetLock)
                 {
                     if (SpaceTarget.HasValue)

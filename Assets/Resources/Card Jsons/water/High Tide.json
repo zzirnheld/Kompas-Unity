@@ -6,6 +6,6 @@
 	"c":1,
 	"spellTypes":["Vanishing","Radial"],
 	"duration":2,
-    "radius":2,
+    "radius":3,
 	"subtypeText":"Radial 2 Vanishing 2 Water"
 }

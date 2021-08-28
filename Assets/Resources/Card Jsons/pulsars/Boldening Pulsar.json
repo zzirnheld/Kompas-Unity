@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Boldening Pulsar",
-	"effText":"When your Avatar gains S, give adjacent characters +1 E.\nWhen your Avatar loses S, give adjacent characters -1 E.",
+	"effText":"When your Avatar's S changes, give adjacent characters:\n+S: +1 E.\n-S: -1 E.",
 	"effects":[
 		{
 			"triggerData":

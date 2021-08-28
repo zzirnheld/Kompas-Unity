@@ -17,7 +17,7 @@ namespace KompasServer.Effects
 
         public override Task<ResolutionInfo> Resolve()
         {
-            foreach (var c in Game.boardCtrl.CardsWhere(cardRestriction.Evaluate))
+            foreach (var c in Game.boardCtrl.CardsWhere(c => cardRestriction.Evaluate(c, Context)))
             {
                 var ctxt = new ActivationContext(card: c, stackable: Effect, triggerer: EffectController, space: c.Position);
                 ServerEffect.EffectsController.TriggerForCondition(Trigger.Play, ctxt);

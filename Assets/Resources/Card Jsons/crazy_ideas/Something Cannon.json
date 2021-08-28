@@ -1,36 +1,32 @@
 {
 	"cardType":67,
 	"cardName":"Something Cannon",
-	"effText":"Once each round, you can give me, then a Summoned character, -3 E.",
+	"effText":"When I’m summoned, I attack a character.",
 	"effects":[
 		{
-			"blurb":"Something",
-			"activationRestriction":{
-				"activationRestrictionArray":[
-					"Max Times Per Round",
-					"Default"
-				],
-				"maxTimes":1
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
 			},
 			"subeffects":[
 				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":-3
-				},
-				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"Summoned character for Something Cannon to blast for -3 E",
-						"cardRestrictions":["Is Character","Board","Summoned"]
+						"blurb":"character for Something Cannon to blast",
+						"cardRestrictions":["Is Character","Board"]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":-3
+					"$type":"KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"attackerIndex":-2,
+					"targetIndex":-1
 				}
 			]	
 		}

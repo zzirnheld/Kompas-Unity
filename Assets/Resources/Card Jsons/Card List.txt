@@ -145,6 +145,7 @@ linewalkers/Purple Linewalker
 linewalkers/Red Linewalker
 linewalkers/White Linewalker
 linewalkers/Yellow Linewalker
+linewalkers/Leygrapple
 None Defy the Lines
 Notcropoten
 pulsars/Accelerating Pulsar

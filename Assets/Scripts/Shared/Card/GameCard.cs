@@ -257,7 +257,8 @@ namespace KompasCore.Cards
                 return;
             }
 
-            base.SetInfo(serializedCard); //base is redundant but adds clarity
+            // Set info in CardBase
+            base.SetInfo(serializedCard);
 
             TurnsOnBoard = 0;
             SetSpacesMoved(0, true);
@@ -306,7 +307,7 @@ namespace KompasCore.Cards
         public bool SpaceInAOE(Space space)
             => SpellSubtypes != null && SpellSubtypes.Any(s => s switch
             {
-                RadialSubtype => RadialDistanceTo(space) <= Radius,
+                RadialSubtype => DistanceTo(space) <= Radius,
                 _ => false
             });
         public bool CardInAOE(IGameCardInfo c) => SpaceInAOE(c.Position);
@@ -348,7 +349,8 @@ namespace KompasCore.Cards
         public bool CardDirectlyInFront(IGameCardInfo card)
             => card.Location == CardLocation.Field && SpaceDirectlyInFront(card.Position);
 
-        public bool OnMyDiagonal(Space space) => Location == CardLocation.Field && Position.SameDiagonal(space);
+        public bool SameDiagonal(Space space) => Location == CardLocation.Field && Position.SameDiagonal(space);
+        public bool SameDiagonal(IGameCardInfo card) => card?.Location == CardLocation.Field && SameDiagonal(card.Position);
 
         /// <summary>
         /// Refers to this situation: <br></br>
@@ -394,21 +396,13 @@ namespace KompasCore.Cards
             //can't add a null augment
             if (augment == null) throw new System.ArgumentNullException("augment", $"Cannot add a null augment (to {CardName})");
 
-            //if this and the other are in the same place, it doesn't leave play
-            bool canHappen = false;
-            if (augment.Location != Location || augment.AugmentedCard != null) 
-                canHappen = augment.Remove(stackSrc);
-
-            if (!canHappen)
+            if (!augment.Remove(stackSrc))
             {
-                Debug.LogError($"Couldn't remove or detach augment from {augment.Location} while this in {Location}," +
-                    $" or {augment.AugmentedCard?.CardName}");
+                Debug.LogError($"Couldn't remove augment from {augment.AugmentedCard?.CardName} or {augment.Location} while this in {Location}");
                 return false;
             }
 
-            //regardless, add the augment
             AugmentsList.Add(augment);
-
             //and update the augment's augmented card, to reflect its new status
             augment.AugmentedCard = this;
 

@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Resummon",
-	"effText":"Echo a Geminii. Draw.",
+	"effText":"Echo a Geminii. Draw 1 card.",
 	"effects":[
 		{
 			"triggerData":
@@ -30,7 +30,6 @@
 			]	
 		}
 	],
-	"fast":true,
 	"c":1,
 	"spellTypes":["Simple"],
 	"subtypeText":"Geminii Simple"

@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Echoing Pulsar",
-	"effText":"The first time each stack your Avatar gains S, give them +1 S.\nThe first time each stack your Avatar loses S, give them -1 S.",
+	"effText":"The first time each stack your Avatar's S changes, give them:\n+S: +1 S.\n-S: -1 S.",
 	"effects":[
 		{
 			"triggerData":

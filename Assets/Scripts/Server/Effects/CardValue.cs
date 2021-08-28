@@ -1,5 +1,6 @@
 ﻿using KompasCore.Cards;
 using System;
+using System.Linq;
 
 namespace KompasCore.Effects
 {
@@ -14,6 +15,7 @@ namespace KompasCore.Effects
         private const string AugmentCost = "A";
 
         private const string Cost = "Cost";
+        private const string NumberOfAugments = "Number of Augments";
         #endregion values
 
         public string value;
@@ -27,13 +29,15 @@ namespace KompasCore.Effects
 
             return value switch
             {
-                Nimbleness      => card.N,
-                Endurance       => card.E,
-                SummoningCost   => card.S,
-                Wounding        => card.W,
-                CastingCost     => card.C,
-                AugmentCost     => card.A,
-                Cost            => card.Cost,
+                Nimbleness       => card.N,
+                Endurance        => card.E,
+                SummoningCost    => card.S,
+                Wounding         => card.W,
+                CastingCost      => card.C,
+                AugmentCost      => card.A,
+
+                Cost             => card.Cost,
+                NumberOfAugments => card.Augments.Count(),
                 _ => throw new ArgumentException($"Invalid value string {value}", "value"),
             };
         }

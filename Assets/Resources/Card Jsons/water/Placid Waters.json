@@ -5,6 +5,6 @@
 	"effects":[],
 	"c":2,
 	"spellTypes":["Radial"],
-    "radius":1,
+    "radius":2,
 	"subtypeText":"Radial 1 Water"
 }

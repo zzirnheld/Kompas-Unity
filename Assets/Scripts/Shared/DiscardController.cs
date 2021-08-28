@@ -1,5 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -39,13 +40,13 @@ namespace KompasCore.GameCore
             return true;
         }
 
-        public List<GameCard> CardsThatFitRestriction(CardRestriction cardRestriction)
+        public List<GameCard> CardsThatFit(Func<IGameCardInfo, bool> cardRestriction)
         {
             List<GameCard> cards = new List<GameCard>();
 
             foreach (GameCard c in Discard)
             {
-                if (cardRestriction.Evaluate(c)) cards.Add(c);
+                if (cardRestriction(c)) cards.Add(c);
             }
 
             return cards;

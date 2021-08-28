@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -16,6 +17,26 @@ public struct Space
         this.x = x;
         this.y = y;
     }
+
+    public class SpaceCollection : IEnumerable<Space>
+    {
+        public IEnumerator<Space> GetEnumerator()
+        {
+            for (int x = 0; x < BoardLen; x++)
+            {
+                for (int y = 0; y < BoardLen; y++)
+                {
+                    yield return (x, y);
+                }
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return (IEnumerator)GetEnumerator();
+        }
+    }
+    public static SpaceCollection Spaces => new SpaceCollection();
 
     public static Space NearCorner => new Space(0, 0);
     public static Space FarCorner => new Space(MaxIndex, MaxIndex);

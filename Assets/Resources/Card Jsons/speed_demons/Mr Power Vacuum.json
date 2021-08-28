@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Mr Power Vacuum",
-	"effText":"Speed Demon.\nAfter I move, move a card adjacent to the space I moved from, to that space. If they were a Speed Demon, annihilate any of those cards you didn’t move.",
+	"effText":"Speed Demon.\nAfter I move, move a card adjacent to the space I moved from, to that space. If they were a Speed Demon, annihilate any of those cards you didn’t move, and not me, please.",
 	"effects":[
 		{
 			"triggerData":
@@ -26,10 +26,19 @@
 					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
 				},
 				{
+					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition":"Target Violates Restriction",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Subtypes Include"],
+						"subtypesInclude":["Speed Demon"]
+					}
+				},
+				{
 					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Board","Adjacent to Coords","Not Already Target"]
+						"cardRestrictions":["Board","Adjacent to Coords","Not Already Target","Not Source"]
 					}
 				},
 				{
@@ -42,7 +51,7 @@
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
 					"delete":true,
-					"jumpTo":5
+					"jumpTo":6
 				}
 			]
 		}

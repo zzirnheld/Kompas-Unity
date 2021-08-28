@@ -1,14 +1,15 @@
 {
 	"cardType":83,
 	"cardName":"Slight Golemodifications",
-	"effText":"Tribute an adjacent SX Golem.\nHand->summon or revive a Golem with S < X.  Discard-apply all Golem Cores the first wielded to the second.",
+	"effText":"When turns start, tribute an S X Golem. Hand->summon or revive a distinct S <= X + 1 Golem. Discard-apply all Golem Cores the first wielded to the second (temporarily).",
 	"effects":[
 		{
+            "blurb":"Modify Golem (Slightly)",
 			"triggerData":
 			{
-				"triggerCondition":"Play",
+				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+					"triggerRestrictions":["This Card in Play"]
 				}
 			},
 			"subeffects":[
@@ -16,7 +17,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Subtypes Include","Is Character","Friendly","Board","Adjacent to Source"],
+						"cardRestrictions":["Subtypes Include","Is Character","Friendly","Board"],
 						"subtypesInclude":["Golem"]
 					}
 				},
@@ -25,12 +26,19 @@
 					"xMultiplier":1
 				},
 				{
+					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"jumpTo":4
+				},
+				{
 					"$type":"KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
 						"cardRestrictions":["Subtypes Include"],
 						"subtypesInclude":["Golem","Core"]
 					}
+				},
+				{
+					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp",
@@ -44,11 +52,18 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Subtypes Include","Is Character","S<X","Multiple Possible Locations"],
+						"cardRestrictions":["Subtypes Include","Is Character","Multiple Possible Locations","Card Value Fits X Restriction","Distinct Name from Source"],
+						"cardValue":{
+							"value":"S"
+						},
+						"xRestriction":{
+							"xRestrictions":["<=X"]
+						},
 						"subtypesInclude":["Golem"],
 						"locations":[2,3]
 					},
-					"xMultiplier":1
+					"xMultiplier":1,
+					"xModifier":1
 				},
 				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
@@ -72,22 +87,12 @@
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
 					"remainingTargets":1,
-					"jumpTo":9
+					"jumpTo":10
 				}
 			]	
 		}
 	],
-	"PlayRestriction":{
-		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
-		"adjacentCardRestriction":
-		{
-			"cardRestrictions":["Is Character","Subtypes Include"],
-			"subtypesInclude":["Golem"]
-		}
-	},
-	"fast":true,
 	"c":2,
-	"spellTypes":["Simple"],
-	"subtypes":["Simple"],
-	"subtypeText":"Simple"
+	"spellTypes":["Enchant"],
+	"subtypeText":"Enchant"
 }

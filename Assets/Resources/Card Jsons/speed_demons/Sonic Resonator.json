@@ -67,10 +67,17 @@
 					"xMultiplier":1
 				},
 				{
+					"$type":"KompasServer.Effects.SetXByTriggeringCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"S"
+					},
+					"xMultiplier":-1
+				},
+				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
-						"blurb":"where to play newly coalesced Pulsar",
+						"blurb":"where to play newly resonated Speed Demon",
 						"spaceRestrictions":["Can Play Target to This Space"]
 					}
 				},

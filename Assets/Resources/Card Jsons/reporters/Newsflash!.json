@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Newsflash!",
-	"effText":"Your opponent can reveal a Fast card. If they don't, move an adjacent Reporter anywhere.",
+	"effText":"Your opponent can reveal a Cost 1 card. If they don't, move an adjacent Reporter anywhere.",
 	"effects":[
 		{
 			"blurb":"Newsflash!",
@@ -23,7 +23,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Reveal a Fast card?",
+					"ChoiceBlurb":"Reveal a Cost 1 card?",
 					"OptionBlurbs":["Yes","No"],
 					"OptionJumpIndices":[3,6]
 				},
@@ -32,7 +32,14 @@
 					"cardRestriction":
 					{
 						"blurb":"fast card to reveal",
-						"cardRestrictions":["Controller Matches Player Target","Hand","Fast","Hidden"]
+						"cardRestrictions":["Controller Matches Player Target","Hand","Hidden","Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"Cost"
+						},
+						"xRestriction":{
+							"xRestrictions":["==Constant"],
+							"constant":1
+						}
 					}
 				},
 				{
@@ -74,7 +81,6 @@
 			"subtypesInclude":["Reporter"]
 		}
 	},
-	"fast":true,
 	"c":1,
 	"spellTypes":["Simple"],
 	"subtypeText":"News"

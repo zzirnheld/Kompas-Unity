@@ -36,7 +36,7 @@
 			"subtypesInclude":["Golem"]
 		}
 	},
-	"a":3,
+	"a":1,
 	"subtypeText":"Golem Core",
 	"augSubtypes":["Golem"]
 }

@@ -11,7 +11,7 @@ namespace KompasServer.Effects
                                                          endCondition: endCondition,
                                                          fallOffCondition: fallOffCondition,
                                                          fallOffRestriction: CreateFallOffRestriction(Target),
-                                                         currentContext: Effect.CurrActivationContext,
+                                                         currentContext: Context,
                                                          target: Target,
                                                          source: this);
             return new List<HangingEffect>() { tempNegation };

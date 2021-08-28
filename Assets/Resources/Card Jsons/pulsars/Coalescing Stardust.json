@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Coalescing Stardust",
-	"effText":"When your Avatar gets +X or -X S, give me matching +X or -X C.\nAfter I'm cast, delay 2 turns.\nSet X to my C. Deck->summon an SX Pulsar.",
+	"effText":"When your Avatar gets +X or -X S, give me matching +X or -X C.\nAfter I'm cast, delay 2 turns.\nSet X to my C. Deck->summon an S <= X Pulsar.",
 	"effects":[
 		{
 			"blurb":"Coalesce +C",
@@ -60,7 +60,13 @@
 					"cardRestriction":
 					{
 						"blurb":"Pulsar to coalesce",
-						"cardRestrictions":["Subtypes Include","Friendly","Deck","Is Character","S==X"],
+						"cardRestrictions":["Subtypes Include","Friendly","Deck","Is Character","Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"S"
+						},
+						"xRestriction":{
+							"xRestrictions":["<=X"]
+						},
 						"subtypesInclude":["Pulsar"]
 					},
 					"xMultiplier":1

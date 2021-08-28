@@ -1,0 +1,40 @@
+{
+	"cardType":67,
+	"cardName":"Gold Golem",
+	"effText":"Golem.\nWhen I'm activated, draw 1 card.",
+	"effects":[
+		{
+			"blurb":"Draw draw draw",
+			"triggerData":
+			{
+				"triggerCondition":"Activate",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"MovementRestriction":{
+		"normalRestrictionsFromJson":[
+			"Default",
+			"Activated"
+		]
+	},
+	"AttackRestriction":{
+		"attackRestrictionsArray":[
+			"Default",
+			"This is Activated"
+		]
+	},
+	"n":1,
+	"e":1,
+	"s":1,
+	"w":0,
+	"subtypes":["Golem"],
+	"subtypeText":"Golem"
+}

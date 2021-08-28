@@ -13,9 +13,12 @@ public class ClientCardController : CardController
     public Image cUnzoomedImage;
     public Image aUnzoomedImage;
 
-    public Image hazeImage;
-    public Sprite charHaze;
-    public Sprite nonCharHaze;
+    public Image zoomedHazeImage;
+    public Sprite zoomedCharHaze;
+    public Sprite zoomedNonCharHaze;
+    public Image unzoomedHazeImage;
+    public Sprite unzoomedCharHaze;
+    public Sprite unzoomedNonCharHaze;
 
     public GameObject revealedImage;
 
@@ -43,8 +46,11 @@ public class ClientCardController : CardController
     {
         base.SetImage(cardFileName, zoomed);
 
-        hazeImage.enabled = zoomed;
-        hazeImage.sprite = card.CardType == 'C' ? charHaze : nonCharHaze;
+        zoomedHazeImage.enabled = zoomed;
+        zoomedHazeImage.sprite = card.CardType == 'C' ? zoomedCharHaze : zoomedNonCharHaze;
+
+        unzoomedHazeImage.enabled = !zoomed;
+        unzoomedHazeImage.sprite = card.CardType == 'C' ? unzoomedCharHaze : unzoomedNonCharHaze;
     }
 
     public void ApplySettings(ClientUISettings settings)

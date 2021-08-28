@@ -56,7 +56,6 @@
 			"subtypesInclude":["Ethereal"]
 		}
 	},
-	"fast":true,
 	"c":1,
 	"spellTypes":["Simple"],
 	"subtypes":["Simple"],

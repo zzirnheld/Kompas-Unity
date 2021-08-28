@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Magma Golem",
-	"effText":"Golem.\nWhen I'm activated, I give all adjacent characters -3 E.",
+	"effText":"Golem.\nWhen I'm activated, I give all adjacent characters -4 E.",
 	"effects":[
 		{
 			"blurb":"Heheh. Grenade.",
@@ -19,7 +19,7 @@
 					{
 						"cardRestrictions":["Is Character","Board","Adjacent to Source"]
 					},
-					"eMod":-3
+					"eMod":-4
 				}
 			]
 		}
