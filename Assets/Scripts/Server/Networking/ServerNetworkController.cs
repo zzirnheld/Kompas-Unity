@@ -34,7 +34,7 @@ namespace KompasServer.Networking
                 Packet.EndTurnAction        => JsonConvert.DeserializeObject<EndTurnActionServerPacket>(json),
                 Packet.ActivateEffectAction => JsonConvert.DeserializeObject<ActivateEffectActionServerPacket>(json),
                 Packet.HandSizeChoices      => JsonConvert.DeserializeObject<SendHandSizeChoicesServerPacket>(json),
-                Packet.IncarnateAction 		=> JsonConvert.DeserializeObject<IncarnateActionServerPacket>(json);
+                Packet.IncarnateAction 		=> JsonConvert.DeserializeObject<IncarnateActionServerPacket>(json),
                 //effects
                 Packet.CardTargetChosen         => JsonConvert.DeserializeObject<CardTargetServerPacket>(json),
                 Packet.SpaceTargetChosen        => JsonConvert.DeserializeObject<SpaceTargetServerPacket>(json),

@@ -63,7 +63,7 @@ namespace KompasClient.Networking
                 Packet.ChangeEnemyHandCount => JsonConvert.DeserializeObject<ChangeEnemyHandCountClientPacket>(json),
                 //card movement
                 Packet.KnownToEnemy => JsonConvert.DeserializeObject<UpdateKnownToEnemyClientPacket>(json),
-                Packet.Incarnate: => JsonConvert.DeserializeObject<SetIncarnatedClientPacket>(json),
+                Packet.Incarnate => JsonConvert.DeserializeObject<SetIncarnatedClientPacket>(json),
                 //public areas
                 Packet.PlayCard         => JsonConvert.DeserializeObject<PlayCardClientPacket>(json),
                 Packet.AttachCard       => JsonConvert.DeserializeObject<AttachCardClientPacket>(json),
