@@ -129,7 +129,7 @@ namespace KompasCore.Effects
             return (!checkCanAffordCost || player.Pips >= Card.Cost)
                 && normalRestrictions
                     .Except(ignoring ?? new string[0])
-                    .All(r => RestrictionValid(r, to, player, true));
+                    .All(r => RestrictionValid(r, to, player, new ActivationContext(), true));
         }
 
         public bool EvaluateIncarnate()
