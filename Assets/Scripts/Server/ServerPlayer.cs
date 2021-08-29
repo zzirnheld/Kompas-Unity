@@ -77,7 +77,7 @@ namespace KompasServer.GameCore
         {
             if (Avatar.PlayRestriction.EvaluateIncarnate())
             {
-                Pips -= Avatar.Cost;
+                Pips -= Avatar.BaseS;
                 Avatar.Incarnate();
                 await serverGame.EffectsController.CheckForResponse();
             }

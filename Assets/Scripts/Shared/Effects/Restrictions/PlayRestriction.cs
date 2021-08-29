@@ -133,8 +133,8 @@ namespace KompasCore.Effects
         }
 
         public bool EvaluateIncarnate()
-            => Card.IsAvatar && !Card.Summoned &&
-            EvaluateNormalPlay(Card.Position, Card.Controller, checkCanAffordCost: true, ignoring: IgnoreForIncarnate);
+            => Card.IsAvatar && !Card.Summoned && Card.Controller.Pips >= Card.BaseS &&
+            EvaluateNormalPlay(Card.Position, Card.Controller, checkCanAffordCost: false, ignoring: IgnoreForIncarnate);
 
         public bool EvaluateEffectPlay(Space to, Effect effect, Player controller, ActivationContext context, string[] ignoring = default)
         {
