@@ -61,6 +61,7 @@ namespace KompasServer.Cards
             summoned = true;
             ServerNotifier.NotifyIncarnated(this, incarnated: true);
             EffectsController.TriggerForCondition(Trigger.Play, playContext);
+            DieIfApplicable(stackSrc);
             return true;
         }
 

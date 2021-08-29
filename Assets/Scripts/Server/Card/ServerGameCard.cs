@@ -204,6 +204,10 @@ namespace KompasServer.Cards
             if (notify) ServerNotifier.NotifyStats(this);
 
             //kill if applicable
+            DieIfApplicable(stackSrc);
+        }
+        public void DieIfApplicable(IStackable stackSrc)
+        {
             if (E <= 0 && CardType == 'C') Discard(stackSrc);
         }
 
