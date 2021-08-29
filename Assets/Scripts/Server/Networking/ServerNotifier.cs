@@ -131,7 +131,7 @@ namespace KompasServer.Networking
 
         #region card stats
         public void NotifyStats(GameCard card)
-            => SendToBothInverting(new ChangeCardNumericStatsPacket(card.ID, card.Stats, card.SpacesMoved), card.KnownToEnemy);
+            => SendToBothInverting(new ChangeCardNumericStatsPacket(card.ID, card.Stats, card.Shield, card.SpacesMoved), card.KnownToEnemy);
 
         public void NotifySpacesMoved(GameCard card)
             => SendToBothInverting(new SpacesMovedPacket(card.ID, card.SpacesMoved), card.KnownToEnemy);

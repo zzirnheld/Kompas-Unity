@@ -66,6 +66,16 @@ namespace KompasCore.Cards
             protected set => cardCtrl.A = base.A = value;
         }
 
+        private int shield;
+        public virtual int Shield
+        {
+            get => shield;
+            protected set
+            {
+                cardCtrl.Shield = shield = value;
+            }
+        }
+
         public int Negations { get; private set; } = 0;
         public virtual bool Negated
         {
@@ -428,6 +438,8 @@ namespace KompasCore.Cards
         public virtual void SetW(int w, IStackable stackSrc = null, bool notify = true) => W = w;
         public virtual void SetC(int c, IStackable stackSrc = null, bool notify = true) => C = c;
         public virtual void SetA(int a, IStackable stackSrc = null, bool notify = true) => A = a;
+        public virtual void TakeCombatDamage(int dmg, IStackable stackSrc = null) => SetE(E - dmg, stackSrc: stackSrc);
+        public virtual void SetShield(int shield, IStackable stackSrc = null, bool notify = true) => Shield = shield;
 
         /// <summary>
         /// Shorthand for modifying a card's NESW all at once.

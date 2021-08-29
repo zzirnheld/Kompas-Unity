@@ -68,8 +68,8 @@ namespace KompasServer.Effects
             int attackerDmg = attacker.CombatDamage;
             int defenderDmg = defender.CombatDamage;
             //deal the damage
-            defender.SetE(defender.E - attackerDmg, stackSrc: this);
-            attacker.SetE(attacker.E - defenderDmg, stackSrc: this);
+            defender.TakeCombatDamage(attackerDmg, stackSrc: this);
+            attacker.TakeCombatDamage(defenderDmg, stackSrc: this);
             var attackerDealContext = new ActivationContext(card: attacker, stackable: this, triggerer: Controller, x: attackerDmg);
             var defenderDealContext = new ActivationContext(card: defender, stackable: this, triggerer: Controller, x: defenderDmg);
             var attackerTakeContext = new ActivationContext(card: attacker, stackable: this, triggerer: Controller, x: defenderDmg);

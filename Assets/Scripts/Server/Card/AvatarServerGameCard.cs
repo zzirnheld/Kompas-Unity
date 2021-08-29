@@ -10,10 +10,24 @@ namespace KompasServer.Cards
     {
         public override bool CanRemove => Summoned || Location == CardLocation.Nowhere;
 
-        public override void SetE(int e, IStackable stackSrc = null, bool notify = true)
+        public override int Shield
         {
-            base.SetE(e, stackSrc, notify);
-            if (E <= 0) ServerGame.Lose(ControllerIndex);
+            get => base.Shield;
+            protected set
+            {
+                base.Shield = value;
+                LoseIfDead();
+            }
+        }
+
+        public override int E 
+        { 
+            get => base.E;
+            protected set
+            {
+                base.E = value;
+                LoseIfDead();
+            }
         }
 
         private bool summoned = false;
@@ -49,5 +63,11 @@ namespace KompasServer.Cards
             EffectsController.TriggerForCondition(Trigger.Play, playContext);
             return true;
         }
+
+        public void LoseIfDead()
+        {
+            if (E <= 0 && Shield <= 0) ServerGame.Lose(ControllerIndex);
+        }
+
     }
 }

@@ -19,6 +19,7 @@ namespace KompasServer.GameCore
         public const int AvatarNPenalty = 15;
         public const int AvatarEBonus = 15;
         public const int AvatarWPenalty = 15;
+        public const int AvatarShield = 15;
 
         //model is basically: players request to the server to do something:
         //if server oks, it tells all players to do the thing
@@ -190,8 +191,9 @@ namespace KompasServer.GameCore
             {
                 p.ServerNotifier.SetFirstTurnPlayer(FirstTurnPlayer);
                 p.Avatar.SetN(p.Avatar.N - AvatarNPenalty);
-                p.Avatar.SetE(p.Avatar.E + AvatarEBonus);
+                //p.Avatar.SetE(p.Avatar.E + AvatarEBonus);
                 p.Avatar.SetW(p.Avatar.W - AvatarWPenalty);
+                p.Avatar.SetShield(AvatarShield);
                 DrawX(p.index, 5);
             }
 

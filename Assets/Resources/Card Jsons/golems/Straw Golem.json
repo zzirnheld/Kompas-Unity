@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Straw Golem",
-	"effText":"Golem.\nWhen I'm activated, move two enemy cards each 3 spaces. (Remember, Avatars can't be moved.)",
+	"effText":"Golem.\nWhen I'm activated, move two enemy cards each 3 spaces.",
 	"effects":[
 		{
 			"blurb":"Go Elsewhere",
@@ -18,7 +18,7 @@
 					"cardRestriction":
 					{
 						"blurb":"enemy card for Straw Golem to move.",
-						"cardRestrictions":["Board","Enemy","Not Avatar","Not Augment"]
+						"cardRestrictions":["Board","Enemy","Summoned","Not Augment"]
 					}
 				},
 				{
@@ -37,7 +37,7 @@
 					"cardRestriction":
 					{
 						"blurb":"enemy card for Straw Golem to move.",
-						"cardRestrictions":["Board","Enemy","Not Already Target","Not Avatar","Not Augment"]
+						"cardRestrictions":["Board","Enemy","Not Already Target","Summoned","Not Augment"]
 					}
 				},
 				{

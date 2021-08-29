@@ -25141,6 +25141,7 @@ MonoBehaviour:
   escapeMenuUICtrl: {fileID: 357244920}
   cardInfoViewUICtrl: {fileID: 2083542047}
   incarnateButton: {fileID: 1263574985}
+  incarnateCostText: {fileID: 1872608871}
 --- !u!1 &1623620544
 GameObject:
   m_ObjectHideFlags: 0

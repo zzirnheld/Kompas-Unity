@@ -18,6 +18,7 @@ namespace KompasClient.Cards
             if (Summoned)
             {
                 summoned = false;
+                cardCtrl.SetHitpointsText(E, Shield);
                 return true;
             }
             else return Location == CardLocation.Nowhere;
@@ -27,6 +28,7 @@ namespace KompasClient.Cards
         {
             if (Summoned) return false;
             summoned = true;
+            cardCtrl.SetHitpointsText(E, Shield);
             return true;
         }
     }
