@@ -151,6 +151,6 @@ namespace KompasCore.Effects
         /// If this is true, ignores "Destination Can Move Here" restriction, because otherwise you would have infinite recursion.</param>
         /// <returns><see langword="true"/> if the card can move to (x, y); <see langword="false"/> otherwise.</returns>
         public bool EvaluateEffectMove(Space space, bool isSwapTarget = false)
-            => space.Valid && effectRestrictions.All(r => RestrictionValid(r, space, isSwapTarget: false, byEffect: true));
+            => space.Valid && effectRestrictions.All(r => RestrictionValidWithDebug(r, space, isSwapTarget: false, byEffect: true));
     }
 }
