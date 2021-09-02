@@ -72,6 +72,7 @@ namespace KompasCore.Cards
             get => shield;
             protected set
             {
+                Debug.Log($"Setting {CardName}'s shield to {value}");
                 cardCtrl.Shield = shield = value;
             }
         }

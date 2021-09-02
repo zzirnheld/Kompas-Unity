@@ -4,6 +4,7 @@
 	"effText":"When I'm summoned, choose a character. Every time they move, move me adjacent to them and give me +1 EW. (Disgusting.)",
 	"effects":[
 		{
+			"blurb":"DISGOSTIN!",
 			"triggerData":
 			{
 				"triggerCondition":"Play",
@@ -54,7 +55,7 @@
 	],
 	"n":0,
 	"e":1,
-	"s":1,
+	"s":2,
 	"w":1,
 	"subtypeText":"Random Nobody"
 }

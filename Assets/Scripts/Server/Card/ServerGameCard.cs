@@ -208,7 +208,7 @@ namespace KompasServer.Cards
         }
         public void DieIfApplicable(IStackable stackSrc)
         {
-            if (E <= 0 && CardType == 'C') Discard(stackSrc);
+            if (E <= 0 && CardType == 'C' && Summoned) Discard(stackSrc);
         }
 
         public override void SetS(int s, IStackable stackSrc = null, bool notify = true)
@@ -274,11 +274,13 @@ namespace KompasServer.Cards
             {
                 if (Shield > netDmg)
                 {
-                    netDmg = 0;
+                    Debug.Log($"Shield {Shield} absorbs all {netDmg} damage");
                     SetShield(Shield - netDmg, stackSrc: stackSrc);
+                    netDmg = 0;
                 }
                 else
                 {
+                    Debug.Log($"Shield {Shield} absorbs {netDmg} damage");
                     netDmg -= Shield;
                     SetShield(0, stackSrc: stackSrc);
                 }

@@ -125,6 +125,7 @@ golems/Strength Core
 golems/Tallow Golem
 golems/Taunt Core
 golems/Woolen Golem
+golems/Gold Golem
 Haemopoten
 invokers/Haguaughan Invoker
 invokers/Invoke the Invoker
