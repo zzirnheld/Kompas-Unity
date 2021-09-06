@@ -1,8 +1,8 @@
 {
-	"blurb":"Speed Demon",
+	"blurb":"Speedemon",
 	"triggerData":
 	{
-		"blurb":"Speed Demon",
+		"blurb":"Speedemon",
 		"triggerCondition":"Move",
 		"triggerRestriction":{
 			"triggerRestrictions":["This Card Triggered","Stackable Source Fits Restriction"],

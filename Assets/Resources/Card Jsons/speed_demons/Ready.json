@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Ready",
-	"effText":"Search your deck for \"Set\". Search your deck for a Speed Demon.",
+	"effText":"Search your deck for \"Set\". Search your deck for a Speedemon.",
 	"effects":[
 		{
 			"triggerData":
@@ -30,7 +30,7 @@
 					{
 						"blurb":"Linewalker for Leypathmaking to search",
 						"cardRestrictions":["Friendly","Deck","Subtypes Include"],
-						"subtypesInclude":["Speed Demon"]
+						"subtypesInclude":["Speedemon"]
 					}
 				},
 				{

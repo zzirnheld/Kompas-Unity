@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"GO",
-	"effText":"If there’s no friendly discarded \"Set\", search your deck for \"Ready\" and reshuffle me. If there is, move each Speed Demon 1 space.",
+	"effText":"If there’s no friendly discarded \"Set\", search your deck for \"Ready\" and reshuffle me. If there is, move each Speedemon 1 space.",
 	"effects":[
 		{
 			"triggerData":
@@ -49,7 +49,7 @@
 					"cardRestriction":
 					{
 						"cardRestrictions":["Friendly","Board","Summoned","Subtypes Include"],
-						"subtypesInclude":["Speed Demon"]
+						"subtypesInclude":["Speedemon"]
 					},
 					"xMultiplier":1
 				},

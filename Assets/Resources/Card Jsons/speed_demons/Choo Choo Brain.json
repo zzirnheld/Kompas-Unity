@@ -1,0 +1,44 @@
+{
+	"cardType":67,
+	"cardName":"Choo Choo Brain",
+	"effText":"Speedemon.\nWhen I move, hand->reshuffle a card. (Yes, you have to.) Give me +3 ESW. ",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"fuel for the Choo Choo Brain",
+						"cardRestrictions":["Friendly","Hand"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod":3,
+					"sMod":3,
+					"wMod":3
+				}
+			]
+		}
+	],
+	"keywords":["Speedemon"],
+	"n":3,
+	"e":1,
+	"s":4,
+	"w":1,
+	"subtypeText":"Speedemon"
+}

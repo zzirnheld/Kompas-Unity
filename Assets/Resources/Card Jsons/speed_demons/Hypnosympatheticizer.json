@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Hypnosympatheticizer",
-	"effText":"Speed Demon.\nThe first time each stack I move 1 space, move a distinct character 1 space the same direction I moved.",
+	"effText":"Speedemon.\nThe first time each stack I move 1 space, move a distinct character 1 space the same direction I moved.",
 	"effects":[
 		{
 			"blurb":"hyyyypnoooo SYMP",
@@ -38,10 +38,10 @@
 			]
 		}
 	],
-	"keywords":["Speed Demon"],
+	"keywords":["Speedemon"],
 	"n":1,
 	"e":4,
 	"s":4,
 	"w":4,
-	"subtypeText":"Speed Demon"
+	"subtypeText":"Speedemon"
 }

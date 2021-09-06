@@ -178,6 +178,7 @@ reporters/Star Reporter
 reporters/Temp Reporter
 reporters/Weather Reporter
 reporters/Well-Read Reporter
+reporters/Choo Choo Brain
 revenants/Death of a Soul
 revenants/Revenance
 revenants/Revivance
@@ -270,6 +271,7 @@ speed_demons/Sonic Resonator
 speed_demons/Ready
 speed_demons/Set
 speed_demons/GO
+speed_demons/Choo Choo Brain
 spirits/A Lot of Disappointment
 spirits/Allconsuming Frustration
 spirits/Generous Pleasure
