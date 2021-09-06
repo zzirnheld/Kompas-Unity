@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Fairy Dust Tooter Scooter",
-	"effText":"Speed Demon.\nAfter I move, give characters adjacent to the space I moved from +1 SW.",
+	"effText":"Speedemon.\nAfter I move, give characters adjacent to the space I moved from +1 SW.",
 	"effects":[
 		{
 			"blurb":"scoot scoot doot doot",
@@ -29,10 +29,10 @@
 			]
 		}
 	],
-	"keywords":["Speed Demon"],
+	"keywords":["Speedemon"],
 	"n":1,
 	"e":2,
 	"s":2,
 	"w":2,
-	"subtypeText":"Speed Demon"
+	"subtypeText":"Speedemon"
 }

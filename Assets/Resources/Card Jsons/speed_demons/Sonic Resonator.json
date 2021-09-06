@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Sonic Resonator",
-	"effText":"When a character moves, give me +1 C, but set my turn count to -1.\nWhen I vanish having C X, deck->summon distinct Speed Demons with total S < X. Move each 1 space.",
+	"effText":"When a character moves, give me +1 C, but set my turn count to -1.\nWhen I vanish having C X, deck->summon distinct Speedemons with total S < X. Move each 1 space.",
 	"effects":[
 		{
 			"blurb":"Sonic +C",
@@ -54,9 +54,9 @@
 					"maxCanChoose":1,
 					"cardRestriction":
 					{
-						"blurb":"Speed Demon to resonate",
+						"blurb":"Speedemon to resonate",
 						"cardRestrictions":["Is Character","Deck","Subtypes Include","Card Value Fits X Restriction"],
-						"subtypesInclude":["Speed Demon"],
+						"subtypesInclude":["Speedemon"],
 						"cardValue":{
 							"value":"S"
 						},
@@ -77,7 +77,7 @@
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
-						"blurb":"where to play newly resonated Speed Demon",
+						"blurb":"where to play newly resonated Speedemon",
 						"spaceRestrictions":["Can Play Target to This Space"]
 					}
 				},

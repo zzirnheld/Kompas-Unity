@@ -33,6 +33,7 @@ namespace KompasCore.Effects
         public const string StackableSourceFitsRestriction = "Stackable Source Fits Restriction";
         public const string EffectSourceIsThisCard = "Stackable Source is This Card"; //140,
         public const string EffectSourceIsTriggerer = "Stackable Source is Triggerer"; //149,
+        public const string StackableSourceNotThisEffect = "Stackable Source isn't This Effect";
 
         public const string ContextsStackablesMatch = "Contexts Stackables Match";
         public const string StackableIsThisEffect = "Stackable is This Effect";
@@ -132,6 +133,7 @@ namespace KompasCore.Effects
                 case TriggerersAugmentedCardFitsRestriction: return cardRestriction.Evaluate(context.CardInfo.AugmentedCard, context);
                 case StackableSourceFitsRestriction: return sourceRestriction.Evaluate(context.Stackable?.Source, context);
                 case TriggererIsSecondaryContextTarget: return secondary?.Targets?.Any(c => c == context.CardInfo?.Card) ?? false;
+                case StackableSourceNotThisEffect: return context.Stackable != SourceEffect;
 
                 case CardNowFurtherFromSourceThanItWas:
                     return ThisCard.DistanceTo(context.CardInfo.Card.Position) > ThisCard.DistanceTo(context.CardInfo.Position); 
