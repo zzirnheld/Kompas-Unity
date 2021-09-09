@@ -1,12 +1,12 @@
 {
 	"cardType":67,
 	"cardName":"Leybinder",
-	"effText":"The first time each turn a character moves X, give me -X E. Their controller hand-summons an SX character.",
+	"effText":"The first time each turn a character moves X, deal me X damage. Their controller hand-summons an SX character.",
 	"effects":[
 		{
+			"blurb":"Leybind",
 			"triggerData":
 			{
-				"blurb":"Leybind",
 				"triggerCondition":"Move",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Max Per Turn"]
@@ -17,8 +17,8 @@
 					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMult":-1
+					"$type":"KompasServer.Effects.DamageSubeffect, Assembly-CSharp",
+					"xMultiplier":1
 				},
 				{
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"

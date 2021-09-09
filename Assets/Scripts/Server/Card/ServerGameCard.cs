@@ -263,7 +263,7 @@ namespace KompasServer.Cards
             if (notify) ServerNotifier.NotifyStats(this);
         }
 
-        public override void TakeCombatDamage(int dmg, IStackable stackSrc = null)
+        public override void TakeDamage(int dmg, IStackable stackSrc = null)
         {
             int netDmg = dmg;
             //TODO if I want to use shield for other stuff, I'd need some way to save it for non-avatars
@@ -285,7 +285,7 @@ namespace KompasServer.Cards
                     SetShield(0, stackSrc: stackSrc);
                 }
             }
-            base.TakeCombatDamage(netDmg, stackSrc);
+            base.TakeDamage(netDmg, stackSrc);
         }
 
         public override void SetShield(int shield, IStackable stackSrc = null, bool notify = true)
