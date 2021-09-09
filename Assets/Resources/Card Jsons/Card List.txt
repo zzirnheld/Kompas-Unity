@@ -179,7 +179,7 @@ reporters/Star Reporter
 reporters/Temp Reporter
 reporters/Weather Reporter
 reporters/Well-Read Reporter
-reporters/Choo Choo Brain
+reporters/Late Reporter
 revenants/Death of a Soul
 revenants/Revenance
 revenants/Revivance

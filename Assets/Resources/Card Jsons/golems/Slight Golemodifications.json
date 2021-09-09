@@ -45,14 +45,10 @@
 					"targetIndex":0
 				},
 				{
-					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp",
-					"targetIndex":0
-				},
-				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Subtypes Include","Is Character","Multiple Possible Locations","Card Value Fits X Restriction","Distinct Name from Source"],
+						"cardRestrictions":["Subtypes Include","Is Character","Multiple Possible Locations","Card Value Fits X Restriction","Distinct Name from Other Targets"],
 						"cardValue":{
 							"value":"S"
 						},
@@ -76,6 +72,15 @@
 					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				},
 				{
+					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition":"Target Fits Restriction",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character"]
+					},
+					"targetIndex":-2
+				},
+				{
 					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
 					"attachmentTarget":-1,
 					"targetIndex":-2
@@ -86,7 +91,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
-					"remainingTargets":1,
+					"remainingTargets":2,
 					"jumpTo":10
 				}
 			]	
