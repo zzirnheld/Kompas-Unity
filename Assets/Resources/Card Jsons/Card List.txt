@@ -108,6 +108,7 @@ geminii/Reincarnation
 geminii/Rememories
 geminii/Resummon
 geminii/Revered Vessel
+geminii/Aura of Rememories
 golems/Animancer
 golems/Antiprecatium Golem
 golems/Clay Golem
