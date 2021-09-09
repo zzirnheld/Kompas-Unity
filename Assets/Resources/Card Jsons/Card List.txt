@@ -279,6 +279,8 @@ speed_demons/Ready
 speed_demons/Set
 speed_demons/GO
 speed_demons/Choo Choo Brain
+speed_demons/Grandfather Speed
+speed_demons/Resonator Resonator
 spirits/A Lot of Disappointment
 spirits/Allconsuming Frustration
 spirits/Generous Pleasure
