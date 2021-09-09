@@ -1,0 +1,35 @@
+{
+	"cardType":67,
+	"cardName":"Jacob-John Binglejeimer Schmitzel",
+	"effText":"Once each friendly turn, you can hand->discard a card. (That's it.)",
+	"effects":[
+		{
+			"blurb":"Intern Nonsense",
+			"activationRestriction":{
+				"activationRestrictionArray":[
+					"Max Times Per Turn",
+					"Default"
+				]
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Friendly","Hand"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+    "unique":true,
+	"n":1,
+	"e":1,
+	"s":1,
+	"w":0,
+	"subtypes":["Crazy","Intern","Person"],
+	"subtypeText":"Crazy Intern Person"
+}
