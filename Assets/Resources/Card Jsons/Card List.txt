@@ -88,6 +88,9 @@ dragons/Fyrian
 dragons/Mother of Dragons
 dragons/Obscurian
 dragons/Sangrian
+dragons/Dragonfly
+dragons/Dragon Familiar
+dragons/Hungry Dragonling
 Dreamfog
 Durendal
 Fight
