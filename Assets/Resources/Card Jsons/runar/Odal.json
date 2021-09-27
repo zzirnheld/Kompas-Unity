@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Odal",
-	"effText":"Runic.\nChoose an adjacent SX character. Pay X pips. Kill the chosen character and deck-summon an SX Runar.",
+	"effText":"Runic.\nChoose an adjacent SX character. Pay X pips. Kill the chosen character and deck-summon an S <= X Runar.",
 	"effects":[
 		{
 			"triggerData":
@@ -39,7 +39,13 @@
 					"cardRestriction":
 					{
 						"blurb":"Runar for Odal to deck-summon",
-						"cardRestrictions":["Subtypes Include","Is Character","Friendly","Deck"],
+						"cardRestrictions":["Subtypes Include","Is Character","Friendly","Deck","Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"S"
+						},
+						"xRestriction":{
+							"xRestrictions":["<=X"]
+						},
 						"subtypesInclude":["Runar"]
 					}
 				},

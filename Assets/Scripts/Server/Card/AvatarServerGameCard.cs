@@ -10,27 +10,65 @@ namespace KompasServer.Cards
     {
         public override bool CanRemove => Summoned || Location == CardLocation.Nowhere;
 
-        public override void SetE(int e, IStackable stackSrc = null, bool notify = true)
+        public override int Shield
         {
-            base.SetE(e, stackSrc, notify);
-            if (E <= 0) ServerGame.Lose(ControllerIndex);
+            get => base.Shield;
+            protected set
+            {
+                base.Shield = value;
+                LoseIfDead();
+            }
         }
 
-        //TODO make this return whether the Avatar is summoned yet
-        public override bool Summoned => false;
+        public override int E 
+        { 
+            get => base.E;
+            protected set
+            {
+                base.E = value;
+                LoseIfDead();
+            }
+        }
+
+        private bool summoned = false;
+        public override bool Summoned => summoned;
         public override bool IsAvatar => true;
-        //public override int CombatDamage => Summoned ? base.CombatDamage : 0;
 
         public override bool Remove(IStackable stackSrc = null)
         {
             Debug.Log($"Trying to remove AVATAR {CardName} from {Location}");
-            if (Summoned) return base.Remove(stackSrc);
+            if (Summoned)
+            {
+                var corner = Space.AvatarCornerFor(ControllerIndex);
+                var unfortunate = Game.boardCtrl.GetCardAt(corner);
+                if(unfortunate != null) unfortunate.Owner.annihilationCtrl.Annihilate(unfortunate, stackSrc: stackSrc);
+                Move(to: corner, normalMove: false, stackSrc: stackSrc);
+                SetN(N - BaseN, stackSrc: stackSrc);
+                SetW(W - BaseW, stackSrc: stackSrc);
+                summoned = false;
+                ServerNotifier.NotifyIncarnated(this, incarnated: false);
+                return false;
+            }
             else return Location == CardLocation.Nowhere;
         }
 
-        public override void SetInfo(SerializableCard serializedCard, ServerGame game, ServerPlayer owner, ServerEffect[] effects, int id)
+        public override bool Incarnate(IStackable stackSrc = null)
         {
-            base.SetInfo(serializedCard, game, owner, effects, id);
+            if (Summoned) return false;
+            var playContext = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller, space: Position);
+            SetN(N + BaseN, stackSrc: stackSrc);
+            SetW(W + BaseW, stackSrc: stackSrc);
+            summoned = true;
+            ServerNotifier.NotifyIncarnated(this, incarnated: true);
+            EffectsController.TriggerForCondition(Trigger.Play, playContext);
+            DieIfApplicable(stackSrc);
+            return true;
         }
+
+        public void LoseIfDead()
+        {
+            if (E <= 0 && Shield <= 0) ServerGame.Lose(ControllerIndex);
+        }
+
     }
 }

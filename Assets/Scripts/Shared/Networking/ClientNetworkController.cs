@@ -63,6 +63,7 @@ namespace KompasClient.Networking
                 Packet.ChangeEnemyHandCount => JsonConvert.DeserializeObject<ChangeEnemyHandCountClientPacket>(json),
                 //card movement
                 Packet.KnownToEnemy => JsonConvert.DeserializeObject<UpdateKnownToEnemyClientPacket>(json),
+                Packet.Incarnate => JsonConvert.DeserializeObject<SetIncarnatedClientPacket>(json),
                 //public areas
                 Packet.PlayCard         => JsonConvert.DeserializeObject<PlayCardClientPacket>(json),
                 Packet.AttachCard       => JsonConvert.DeserializeObject<AttachCardClientPacket>(json),
@@ -123,9 +124,7 @@ namespace KompasClient.Networking
 
             //clean up any visual differences after the latest packet.
             //TODO make this more efficient, probably with dirty lists
-            ClientGame.RefreshShownCards();
-            ClientGame.clientUICtrl.RefreshShownCardInfo();
-            ClientGame.clientUICtrl.cardInfoViewUICtrl.searchUICtrl.ReshowSearchShown();
+            ClientGame.Refresh();
 
             return Task.CompletedTask;
         }

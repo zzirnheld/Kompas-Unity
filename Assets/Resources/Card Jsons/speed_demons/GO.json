@@ -17,7 +17,7 @@
 					"condition":"Card Fits Restriction",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Discard","Name Is"],
+						"cardRestrictions":["Discard","Friendly","Name Is"],
                         "nameIs":"Ready"
 					},
 					"jumpIndex":6,
@@ -61,7 +61,7 @@
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
-						"blurb":"ok, now move just a little bit more",
+						"blurb":"ok, now GO!",
 						"spaceRestrictions":["Distance to Target == Constant","Can Move Target to This Space"],
 						"constant":1
 					}

@@ -34,6 +34,8 @@ namespace KompasClient.Networking
         public void RequestDecklistImport(string decklist)
             => Send(new SetDeckPacket(decklist));
 
+        public void RequestIncarnate() => Send(new IncarnateActionPacket());
+
         public void RequestEndTurn() => Send(new EndTurnActionPacket());
 
         public void RequestTarget(GameCard card) => Send(new CardTargetPacket(card.ID));

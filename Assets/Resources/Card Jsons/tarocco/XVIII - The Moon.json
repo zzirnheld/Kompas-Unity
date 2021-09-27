@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"XVIII - The Moon",
-	"effText":"When you draw, swap a character's W with a character's E. (It can be the same character.)",
+	"effText":"When you draw, swap a Summoned character's W with a Summoned character's E. (It can be the same character.)",
 	"effects":[
 		{
 			"blurb":"Swap EW",

@@ -53,6 +53,8 @@ crazy_Ideas/Self-Destruct Button
 crazy_Ideas/Shifting Tile Maze Path Blocker
 crazy_Ideas/Something Cannon
 crazy_Ideas/Stupid Idea Generator
+crazy_Ideas/Jacob-John Binglejeimer Schmitzel
+crazy_Ideas/Johnatheremiah
 The Intern
 crazy_Ideas/Timothy
 crazy_Ideas/Wait Hold Up
@@ -88,6 +90,10 @@ dragons/Fyrian
 dragons/Mother of Dragons
 dragons/Obscurian
 dragons/Sangrian
+dragons/Dragonfly
+dragons/Dragon Familiar
+dragons/Hungry Dragonling
+dragons/Growing Boye
 Dreamfog
 Durendal
 Fight
@@ -104,6 +110,7 @@ geminii/Reincarnation
 geminii/Rememories
 geminii/Resummon
 geminii/Revered Vessel
+geminii/Aura of Rememories
 golems/Animancer
 golems/Antiprecatium Golem
 golems/Clay Golem
@@ -125,6 +132,8 @@ golems/Strength Core
 golems/Tallow Golem
 golems/Taunt Core
 golems/Woolen Golem
+golems/Gold Golem
+golems/Core Scrambling
 Haemopoten
 invokers/Haguaughan Invoker
 invokers/Invoke the Invoker
@@ -178,7 +187,7 @@ reporters/Star Reporter
 reporters/Temp Reporter
 reporters/Weather Reporter
 reporters/Well-Read Reporter
-reporters/Choo Choo Brain
+reporters/Late Reporter
 revenants/Death of a Soul
 revenants/Revenance
 revenants/Revivance
@@ -272,6 +281,8 @@ speed_demons/Ready
 speed_demons/Set
 speed_demons/GO
 speed_demons/Choo Choo Brain
+speed_demons/Grandfather Speed
+speed_demons/Resonator Resonator
 spirits/A Lot of Disappointment
 spirits/Allconsuming Frustration
 spirits/Generous Pleasure

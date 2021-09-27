@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"III - The Empress",
-	"effText":"Once each turn, when you draw X cards, you are absolutely required to hand-summon an S <= X character.",
+	"effText":"When you draw X cards, you are absolutely required to hand-summon an S <= X character.",
 	"effects":[
 		{
 			"triggerData":
@@ -9,7 +9,7 @@
 				"blurb":"Hand-summon character with S <= X?",
 				"triggerCondition":"Draw",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Controller Triggered","Max Per Turn"]
+					"triggerRestrictions":["This Card in Play","Controller Triggered"]
 				}
 			},
 			"subeffects":[
@@ -36,9 +36,9 @@
 			]	
 		}
 	],
-	"n":2,
-	"e":5,
-	"s":4,
+	"n":3,
+	"e":7,
+	"s":7,
 	"w":3,
 	"subtypes":["Tarocco","Mage"],
 	"subtypeText":"Tarocco Mage"

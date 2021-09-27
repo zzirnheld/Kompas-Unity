@@ -73,6 +73,17 @@ namespace KompasServer.GameCore
             else ServerNotifier.NotifyPutBack();
         }
 
+        public async Task TryIncarnate()
+        {
+            if (Avatar.PlayRestriction.EvaluateIncarnate())
+            {
+                Pips -= Avatar.BaseS;
+                Avatar.Incarnate();
+                await serverGame.EffectsController.CheckForResponse();
+            }
+            else ServerNotifier.NotifyPutBack();
+        }
+
         public async Task TryMove(GameCard toMove, Space space)
         {
             //if it's not a valid place to do, put the cards back

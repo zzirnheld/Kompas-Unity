@@ -81,6 +81,9 @@ namespace KompasServer.Networking
             SendPackets(p, q);
         }
 
+        public void NotifyIncarnated(GameCard who, bool incarnated)
+            => SendToBothInverting(new SetIncarnatedPacket(who.ID, incarnated));
+
         public void NotifyMove(GameCard toMove, Space space)
             => SendToBothInverting(new MoveCardPacket(toMove.ID, space.x, space.y, invert: Player.index != 0));
 
@@ -128,7 +131,7 @@ namespace KompasServer.Networking
 
         #region card stats
         public void NotifyStats(GameCard card)
-            => SendToBothInverting(new ChangeCardNumericStatsPacket(card.ID, card.Stats, card.SpacesMoved), card.KnownToEnemy);
+            => SendToBothInverting(new ChangeCardNumericStatsPacket(card.ID, card.Stats, card.Shield, card.SpacesMoved), card.KnownToEnemy);
 
         public void NotifySpacesMoved(GameCard card)
             => SendToBothInverting(new SpacesMovedPacket(card.ID, card.SpacesMoved), card.KnownToEnemy);

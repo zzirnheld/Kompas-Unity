@@ -1,0 +1,34 @@
+{
+	"cardType":83,
+	"cardName":"Cloud of Rememories",
+	"effText":"The first time each turn you summon a character here, give them +1 EW.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Controller Triggered","Triggerer Fits Restriction"],
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character","Board","In AOE"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod":1,
+					"wMod":1
+				}
+			]
+		}
+	],
+	"c":2,
+	"spellTypes":["Enchant","Radial"],
+	"subtypeText":"Enchant Radius",
+	"radius":1
+}

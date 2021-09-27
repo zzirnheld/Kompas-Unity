@@ -30,6 +30,7 @@ namespace KompasCore.Networking
         public const string AttackAction = "Player Attack Action";
         public const string EndTurnAction = "Player End Turn Action";
         public const string ActivateEffectAction = "Player Activate Effect Action";
+        public const string IncarnateAction = "Player Incarnate Action";
 
         //effect commands
             //from client to server
@@ -83,6 +84,7 @@ namespace KompasCore.Networking
         //card movement (from server to client)
         public const string PutCardsBack = "Put Cards Back";
         public const string KnownToEnemy = "Update Known To Enemy";
+        public const string Incarnate = "Incarnate";
             //public locations
         public const string PlayCard = "Play Card";
         public const string AttachCard = "Attach Card";

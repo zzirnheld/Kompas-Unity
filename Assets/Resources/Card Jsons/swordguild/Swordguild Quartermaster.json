@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Swordguild Quartermaster",
-	"effText":"Once each friendly turn, if I'm adjacent to at least 2X Warriors, you can gain X pips.",
+	"effText":"Once each friendly turn, if I'm adjacent to at least X Warriors, you can gain X pips.",
 	"effects":[
 		{
 			"activationRestriction":{
@@ -24,7 +24,6 @@
 				{
 					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
 					"xMultiplier":1,
-					"xDivisor":2,
 					"xModifier":0
 				}
 			]

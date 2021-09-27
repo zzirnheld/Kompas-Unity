@@ -204,7 +204,11 @@ namespace KompasServer.Cards
             if (notify) ServerNotifier.NotifyStats(this);
 
             //kill if applicable
-            if (E <= 0 && CardType == 'C') Discard(stackSrc);
+            DieIfApplicable(stackSrc);
+        }
+        public void DieIfApplicable(IStackable stackSrc)
+        {
+            if (E <= 0 && CardType == 'C' && Summoned) Discard(stackSrc);
         }
 
         public override void SetS(int s, IStackable stackSrc = null, bool notify = true)
@@ -256,6 +260,37 @@ namespace KompasServer.Cards
             EffectsController.TriggerForCondition(Trigger.ASet, setContext);
             base.SetA(a, stackSrc);
 
+            if (notify) ServerNotifier.NotifyStats(this);
+        }
+
+        public override void TakeDamage(int dmg, IStackable stackSrc = null)
+        {
+            int netDmg = dmg;
+            //TODO if I want to use shield for other stuff, I'd need some way to save it for non-avatars
+            if (Shield > 0 && Summoned && !IsAvatar)
+                throw new System.NotImplementedException("Shield is currently not supported for non-avatar characters");
+
+            if (Shield > 0 && !Summoned)
+            {
+                if (Shield > netDmg)
+                {
+                    Debug.Log($"Shield {Shield} absorbs all {netDmg} damage");
+                    SetShield(Shield - netDmg, stackSrc: stackSrc);
+                    netDmg = 0;
+                }
+                else
+                {
+                    Debug.Log($"Shield {Shield} absorbs {netDmg} damage");
+                    netDmg -= Shield;
+                    SetShield(0, stackSrc: stackSrc);
+                }
+            }
+            base.TakeDamage(netDmg, stackSrc);
+        }
+
+        public override void SetShield(int shield, IStackable stackSrc = null, bool notify = true)
+        {
+            base.SetShield(shield, stackSrc);
             if (notify) ServerNotifier.NotifyStats(this);
         }
 

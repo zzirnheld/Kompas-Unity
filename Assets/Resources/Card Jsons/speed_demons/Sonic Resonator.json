@@ -71,6 +71,7 @@
 					"cardValue":{
 						"value":"S"
 					},
+					"change":true,
 					"xMultiplier":-1
 				},
 				{
