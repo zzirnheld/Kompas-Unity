@@ -1,0 +1,48 @@
+{
+	"cardType":67,
+	"cardName":"Master Caster, Recorder Bdaster",
+	"effText":"Once each friendly turn, you can dispel 1 friendly and 1 enemy spell.",
+	"effects":[
+		{
+			"blurb":"oWEEEEEEEEEEEEEEEEEEEEEEE",
+			"activationRestriction":{
+				"activationRestrictionArray":[
+					"Max Times Per Turn",
+					"Default"
+				]
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"my recorder",
+						"cardRestrictions":["Is Spell","Friendly","Board"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"your recorder",
+						"cardRestrictions":["Is Spell","Enemy","Board"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DispelSubeffect, Assembly-CSharp",
+                    "targetIndex":-2
+				}
+			]	
+		}
+	],
+    "unique":true,
+	"n":2,
+	"e":5,
+	"s":5,
+	"w":5,
+	"subtypes":["Bard"],
+	"subtypeText":"Bard"
+}

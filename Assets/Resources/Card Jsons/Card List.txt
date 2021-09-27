@@ -17,6 +17,14 @@ aquatic/Here Be Monsters
 aquatic/Wave
 aquatic/Raincaller Carp
 aquatic/Inevitable Crab
+bards/Jolambertino, Indeci Compos
+bards/Wuonlan, the Inspired
+bards/Henry, Who Has Too Many Ideas
+bards/Meti, Stuck Backstage
+bards/Master Caster, Recorder Bdaster
+bards/Eldir Samplei, Quadruple Hornist
+bards/Dave with the Fonky Keytar
+bards/Earblaster, Tuba Master
 Bind the Aggression
 Binding Site
 Bound Offering

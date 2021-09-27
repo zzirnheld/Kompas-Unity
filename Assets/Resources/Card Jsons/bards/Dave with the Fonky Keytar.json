@@ -1,0 +1,62 @@
+{
+	"cardType":67,
+	"cardName":"Dave with the Fonky Keytar",
+	"effText":"When a distinct Bard casts Music adjacent to me, dispel it and deck->cast Music where it was.",
+	"effects":[
+		{
+			"blurb":"fOnKYYY",
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Stackable Source Fits Restriction","Coords Fit Restriction"],
+					"sourceRestriction":
+					{
+						"cardRestrictions":["Distinct from Source","Subtypes Include"],
+						"subtypesInclude":["Bard"]
+					},
+					"spaceRestriction":
+					{
+						"spaceRestrictions":["Adjacent to Source","Card Here Fits Restriction"],
+                        "hereFitsRestriction":
+                        {
+                            "cardRestrictions":["Friendly","Subtypes Include"],
+                            "subtypesInclude":["Music"]
+                        },
+						"mustBeEmpty":false
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+                        "blurb":"Music to cast",
+						"cardRestrictions":["Friendly","Hand","Distinct Name from Other Targets","Subtypes Include"],
+						"subtypesInclude":["Music"]
+					}
+				},
+                {
+                    "$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+                }
+			]	
+		}
+	],
+    "unique":true,
+	"n":3,
+	"e":4,
+	"s":5,
+	"w":6,
+	"subtypes":["Bard"],
+	"subtypeText":"Bard"
+}

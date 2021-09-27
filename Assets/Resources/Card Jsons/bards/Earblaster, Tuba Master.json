@@ -1,0 +1,69 @@
+{
+	"cardType":67,
+	"cardName":"Earblaster, Tuba Master",
+	"effText":"When an enemy card arrives adjacent to me, dispel each adjacent spell. Deck->cast Music where each dispelled Music was.",
+	"effects":[
+		{
+			"blurb":"DOOBT DOOBT DOOBT DOOBT",
+			"triggerData":
+			{
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Board","Is Spell","Adjacent to Source"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"condition":"Target Violates Restriction",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Subtypes Include"],
+                        "subtypesInclude":["Music"]
+					},
+					"jumpIndex":7
+				},
+				{
+					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+                        "blurb":"Music to cast",
+						"cardRestrictions":["Friendly","Hand","Distinct Name from Other Targets","Subtypes Include"],
+						"subtypesInclude":["Music"]
+					}
+				},
+                {
+                    "$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+                },
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"jumpTo":1
+				}
+			]	
+		}
+	],
+    "unique":true,
+	"n":2,
+	"e":3,
+	"s":3,
+	"w":3,
+	"subtypes":["Bard"],
+	"subtypeText":"Bard"
+}

@@ -4,9 +4,9 @@
 	"effText":"When a character dies, reshuffle them. Draw 1 card. Give characters adjacent to where they died +1 EW.",
 	"effects":[
 		{
+			"blurb":"Reshuffle, buff, draw",
 			"triggerData":
 			{
-				"blurb":"Reshuffle, buff, draw",
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
