@@ -33,7 +33,7 @@
 			"triggerData":
 			{
 				"blurb":"Resound",
-				"triggerCondition":"Discard",
+				"triggerCondition":"Vanish",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered"]
 				}

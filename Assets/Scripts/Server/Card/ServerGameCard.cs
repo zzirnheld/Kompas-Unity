@@ -117,6 +117,17 @@ namespace KompasServer.Cards
             base.ResetCard();
         }
 
+        public override bool Vanish()
+        {
+            ActivationContext context = new ActivationContext(card: this);
+            if (base.Vanish())
+            {
+                EffectsController.TriggerForCondition(Trigger.Vanish, context);
+                return true;
+            }
+            return false;
+        }
+
         public override bool AddAugment(GameCard augment, IStackable stackSrc = null)
         {
             var attachedContext = new ActivationContext(card: augment, space: Position, stackable: stackSrc, triggerer: Controller);

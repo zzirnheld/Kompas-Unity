@@ -1,0 +1,38 @@
+{
+	"cardType":83,
+	"cardName":"Soaring Chorus",
+	"effText":"When I'm cast, give an adjacent character +2 N until I vanish. (If I'm dispelled first, they keep the N forever.)",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"to soar in the chorus",
+						"cardRestrictions":["Board","Is Character","Adjacent to Source"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
+					"nModifier":2,
+					"endCondition":"Vanish",
+					"triggerRestriction":{
+						"triggerRestrictions":["This Card Triggered"]
+					}
+				}
+			]
+		}
+	],
+	"c":1,
+	"spellTypes":["Vanishing"],
+	"duration":2,
+	"subtypeText":"Vanishing 2 Music"
+}

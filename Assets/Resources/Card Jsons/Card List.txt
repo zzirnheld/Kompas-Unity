@@ -163,6 +163,11 @@ linewalkers/Red Linewalker
 linewalkers/White Linewalker
 linewalkers/Yellow Linewalker
 linewalkers/Leygrapple
+music/Soaring Chorus
+music/Surging Verse
+music/Ringing Bridge
+music/Eureka Lyric
+music/Toe Tapper
 None Defy the Lines
 Notcropoten
 pulsars/Accelerating Pulsar

@@ -35,9 +35,9 @@ namespace KompasCore.Cards
         public int BaseC => serializedCard.c;
         public int BaseA => serializedCard.a;
 
-        public override int N 
-        { 
-            get => base.N; 
+        public override int N
+        {
+            get => base.N;
             protected set => cardCtrl.N = base.N = value;
         }
         public override int E
@@ -117,7 +117,7 @@ namespace KompasCore.Cards
                 Debug.Log($"Position of {CardName} set to {value}");
                 position = value;
                 //card controller will be null on server. not using null ? because of monobehavior
-                if(cardCtrl != null) cardCtrl.SetPhysicalLocation(Location);
+                if (cardCtrl != null) cardCtrl.SetPhysicalLocation(Location);
                 foreach (var aug in AugmentsList) aug.Position = value;
             }
         }
@@ -262,7 +262,7 @@ namespace KompasCore.Cards
         /// </summary>
         public virtual void ResetCard()
         {
-            if(serializedCard == null)
+            if (serializedCard == null)
             {
                 Debug.Log("Tried to reset card whose info was never set! This should only happen at game start");
                 return;
@@ -354,7 +354,7 @@ namespace KompasCore.Cards
         /// <returns><see langword="true"/> if <paramref name="card"/> is behind this, <see langword="false"/> otherwise.</returns>
         public bool CardBehind(IGameCardInfo card) => SpaceBehind(card.Position);
 
-        public bool SpaceDirectlyInFront(Space space) 
+        public bool SpaceDirectlyInFront(Space space)
             => Location == CardLocation.Field && Controller.SubjectiveCoords(space) == SubjectivePosition.DueNorth;
 
         public bool CardDirectlyInFront(IGameCardInfo card)
@@ -386,13 +386,13 @@ namespace KompasCore.Cards
         }
         public bool InCorner() => (Position.x == 0 || Position.x == 6) && (Position.y == 0 || Position.y == 6);
 
-        public int ShortestPath(Space space, Func<GameCard, bool> throughPredicate) 
+        public int ShortestPath(Space space, Func<GameCard, bool> throughPredicate)
             => Game.boardCtrl.ShortestPath(Position, space, throughPredicate);
         #endregion distance/adjacency
 
         public void PutBack()
         {
-            if(cardCtrl != null) cardCtrl.SetPhysicalLocation(Location);
+            if (cardCtrl != null) cardCtrl.SetPhysicalLocation(Location);
         }
 
         /// <summary>
@@ -504,9 +504,9 @@ namespace KompasCore.Cards
 
         public virtual void SetSpacesMoved(int spacesMoved, bool fromReset = false)
             => this.SpacesMoved = spacesMoved;
-        public virtual void SetAttacksThisTurn(int attacksThisTurn, bool fromReset = false) 
+        public virtual void SetAttacksThisTurn(int attacksThisTurn, bool fromReset = false)
             => this.attacksThisTurn = attacksThisTurn;
-        public virtual void SetTurnsOnBoard(int turnsOnBoard, IStackable stackSrc = null, bool fromReset = false) 
+        public virtual void SetTurnsOnBoard(int turnsOnBoard, IStackable stackSrc = null, bool fromReset = false)
             => this.TurnsOnBoard = turnsOnBoard;
         #endregion statfuncs
 
@@ -536,6 +536,7 @@ namespace KompasCore.Cards
             }
         }
 
+        public virtual bool Vanish() => Discard();
         public bool Discard(IStackable stackSrc = null) => Controller.discardCtrl.AddToDiscard(this, stackSrc);
 
         public bool Rehand(Player controller, IStackable stackSrc = null) => controller.handCtrl.AddToHand(this, stackSrc);
