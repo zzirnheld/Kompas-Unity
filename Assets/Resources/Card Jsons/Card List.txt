@@ -168,6 +168,11 @@ music/Surging Verse
 music/Ringing Bridge
 music/Eureka Lyric
 music/Toe Tapper
+music/A Real Headbanger
+music/Chonky Noise Rock Bass
+music/Music for Aerports
+music/Play Them Leylines Like a Banjo
+music/Glory Metal
 None Defy the Lines
 Notcropoten
 pulsars/Accelerating Pulsar

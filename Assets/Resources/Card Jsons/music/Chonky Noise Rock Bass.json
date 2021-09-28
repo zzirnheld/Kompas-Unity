@@ -1,0 +1,39 @@
+{
+	"cardType":83,
+	"cardName":"Chonky Noise Rock Bass",
+	"effText":"When I'm cast, give an adjacent character +3 W and -3 E until I vanish.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"to surge in the verse",
+						"cardRestrictions":["Board","Is Character","Adjacent to Source"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
+					"eModifier":-3,
+					"wModifier":3,
+					"endCondition":"Vanish",
+					"triggerRestriction":{
+						"triggerRestrictions":["This Card Triggered"]
+					}
+				}
+			]
+		}
+	],
+	"c":1,
+	"spellTypes":["Vanishing"],
+	"duration":2,
+	"subtypeText":"Vanishing 2 Music"
+}

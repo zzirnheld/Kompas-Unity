@@ -1,0 +1,41 @@
+{
+	"cardType":83,
+	"cardName":"Toe Tapper",
+	"effText":"When enemy turns start, gain 3 pips, but lose 6 pips when I vanish. (If you have <= 0 pips, you can't pay pips for anything.)",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Generate Stupid Idea",
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Enemy Turn"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier":3
+				},
+				{
+					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay":0,
+					"indexToResume":2,
+					"fallOffCondition":"",
+					"endCondition":"Vanish",
+					"triggerRestriction":{
+						"triggerRestrictions":["This Card Triggered"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier":-6
+				}
+			]
+		}
+	],
+	"c":3,
+	"spellTypes":["Vanishing"],
+	"duration":2,
+	"subtypeText":"Vanishing 2 Music"
+}
