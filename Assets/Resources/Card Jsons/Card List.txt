@@ -25,6 +25,11 @@ bards/Master Caster, Recorder Bdaster
 bards/Eldir Samplei, Quadruple Hornist
 bards/Dave with the Fonky Keytar
 bards/Earblaster, Tuba Master
+bards/The Playlist
+bards/Up To Eleven
+bards/Encore
+bards/Beat Drop
+bards/Finale
 Bind the Aggression
 Binding Site
 Bound Offering

@@ -1,0 +1,49 @@
+{
+	"cardType":83,
+	"cardName":"Encore",
+	"effText":"When turns start, pip discard->cast 1 Music at half cost.",
+	"effects":[
+        {
+            "blurb":"Encore!",
+            "triggerData":
+            {
+                "triggerCondition":"Turn Start",
+                "triggerRestriction":{
+                    "triggerRestrictions":["This Card in Play"]
+                }
+            },
+            "subeffects":[
+                {
+                    "$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+                    "cardRestriction":
+                    {
+                        "blurb":"Tree for the Man to Replant",
+                        "cardRestrictions":["Is Spell","Discard","Subtypes Include","Can Be Played","Effect Controller can Afford Cost"],
+                        "subtypesInclude":["Music"],
+                        "costDivisor":2
+                    },
+                    "xMultiplier":1
+                },
+                {
+                    "$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+                    "xMultiplier":1,
+                    "xDivisor":2
+                },
+                {
+                    "$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+                    "spaceRestriction":
+                    {
+                        "blurb":"where for Man to replant the Tree",
+                        "spaceRestrictions":["Can Play Target to This Space"]
+                    }
+                },
+                {
+                    "$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+                }
+            ]
+        }
+	],
+	"c":4,
+	"spellTypes":["Enchant"],
+	"subtypeText":"Enchant"
+}

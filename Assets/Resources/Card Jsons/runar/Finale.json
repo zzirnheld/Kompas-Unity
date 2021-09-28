@@ -1,0 +1,46 @@
+{
+	"cardType":83,
+	"cardName":"Finale",
+	"effText":"Discard->cast as much of your Music as you want.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Music for the Finale to cast",
+						"cardRestrictions":["Is Spell","Friendly","Discard","Not Already Target","Can Be Played","Subtypes Include"],
+						"subtypesInclude":["Music"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where Music",
+						"spaceRestrictions":["Can Play Target to This Space"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
+					"canDecline":true,
+					"jumpTo":2
+				}
+			]
+		}
+	],
+	"c":8,
+	"spellTypes":["Simple"],
+	"subtypeText":"Simple"
+}
