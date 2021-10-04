@@ -1,0 +1,53 @@
+{
+	"cardType":83,
+	"cardName":"Bindslice",
+	"effText":"An adjacent friendly W X character kills an S <= X character adjacent to them.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"friendly character whose W to use",
+						"cardRestrictions":["Is Character","Friendly","Board","Adjacent to Source"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"W"
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"character to bindslice",
+						"cardRestrictions":["Is Character","Board","Adjacent to Target","Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"S"
+						},
+						"xRestriction":{
+							"xRestrictions":["<=X"]
+						}
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"c":3,
+	"spellTypes":["Simple"],
+	"subtypeText":"Simple"
+}
