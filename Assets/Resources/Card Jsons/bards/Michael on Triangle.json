@@ -33,7 +33,7 @@
 					"cardRestriction":
 					{
                         "blurb":"Music to cast",
-						"cardRestrictions":["Friendly","Hand","Distinct Name from Other Targets","Subtypes Include"],
+						"cardRestrictions":["Friendly","Deck","Distinct Name from Other Targets","Subtypes Include"],
 						"subtypesInclude":["Music"]
 					}
 				},
