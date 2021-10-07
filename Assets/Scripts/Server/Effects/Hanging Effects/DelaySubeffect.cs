@@ -1,6 +1,7 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace KompasServer.Effects
 {
@@ -13,8 +14,9 @@ namespace KompasServer.Effects
 
         protected override IEnumerable<HangingEffect> CreateHangingEffects()
         {
-            Context.Targets.Clear();
-            Context.Targets.AddRange(Effect.Targets);
+            Debug.Log($"Is context null? {Context == null}");
+            Context?.Targets?.Clear();
+            Context?.Targets?.AddRange(Effect.Targets);
             var delay = new DelayedHangingEffect(game: ServerGame,
                                                  triggerRestriction: triggerRestriction,
                                                  endCondition: endCondition,
