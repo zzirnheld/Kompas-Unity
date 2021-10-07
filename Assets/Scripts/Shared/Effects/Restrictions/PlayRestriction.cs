@@ -80,9 +80,9 @@ namespace KompasCore.Effects
             effectRestrictions.RemoveAll(effectRestrictionsToIgnore.Contains);
 
 
-            onCardRestriction?.Initialize(Card, eff: default);
-            adjacentCardRestriction?.Initialize(Card, eff: default);
-            spaceRestriction?.Initialize(Card, Card.Controller, effect: default);
+            onCardRestriction?.Initialize(Card, eff: default, subeff: default);
+            adjacentCardRestriction?.Initialize(Card, eff: default, subeff: default);
+            spaceRestriction?.Initialize(Card, Card.Controller, effect: default, subeff: default);
             //Debug.Log($"Finished setting info for play restriction of card {card.CardName}");
         }
 

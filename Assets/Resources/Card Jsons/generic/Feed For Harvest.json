@@ -1,0 +1,47 @@
+{
+	"cardType":65,
+	"cardName":"Feed For Harvest",
+	"effText":"After I'm applied, delay 2 turns. Afterwards, when this character dies, gain 4 pips.",
+	"effects":[
+		{
+			"blurb":"Mark to feed",
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay":1,
+					"indexToResume":1,
+					"endCondition":"Turn Start"
+				},
+				{
+					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"indexToResume":2,
+					"endCondition":"Discard",
+                    "triggerRestriction":{
+                        "triggerRestrictions":["Triggerer Fits Restriction"],
+						"cardRestriction":
+						{
+							"cardRestrictions":["Source Augments"]
+						}
+                    }
+				},
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier":4
+				}
+			]
+		}
+	],
+	"PlayRestriction":{
+		"normalRestrictions":["Augment Normal Restrictions"],
+		"effectRestrictions":["Augment Effect Restrictions"]
+	},
+	"a":2,
+	"subtypeText":"Shoes"
+}

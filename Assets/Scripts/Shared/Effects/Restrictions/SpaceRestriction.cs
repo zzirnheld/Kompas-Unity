@@ -83,32 +83,24 @@ namespace KompasCore.Effects
         // so I need to make sure manually that I've bothered to set up relevant arguments.
         private bool initialized = false;
 
-        public void Initialize(GameCard source, Player controller, Effect effect)
+        public void Initialize(Subeffect subeffect) => Initialize(subeffect.Source, subeffect.Controller, subeffect.Effect, subeffect);
+
+        public void Initialize(GameCard source, Player controller, Effect effect, Subeffect subeff)
         {
+            Subeffect = subeff;
             Source = source;
             Effect = effect;
 
-            adjacencyRestriction?.Initialize(source, effect);
-            connectednessRestriction?.Initialize(source, effect);
-            spaceConnectednessRestriction?.Initialize(source, controller, effect);
-            limitAdjacencyRestriction?.Initialize(source, effect);
-            hereFitsRestriction?.Initialize(source, effect);
-            inAOEOfRestriction?.Initialize(source, effect);
+            adjacencyRestriction?.Initialize(source, effect, subeff);
+            connectednessRestriction?.Initialize(source, effect, subeff);
+            spaceConnectednessRestriction?.Initialize(source, controller, effect, subeff);
+            limitAdjacencyRestriction?.Initialize(source, effect, subeff);
+            hereFitsRestriction?.Initialize(source, effect, subeff);
+            inAOEOfRestriction?.Initialize(source, effect, subeff);
             distanceXRestriction?.Initialize(source);
             numberOfCardsInAOEOfRestriction?.Initialize(source);
 
             initialized = true;
-        }
-
-        public void Initialize(Subeffect subeffect)
-        {
-            Initialize(subeffect.Source, subeffect.Controller, subeffect.Effect);
-            Subeffect = subeffect;
-            adjacencyRestriction?.Initialize(subeffect);
-            connectednessRestriction?.Initialize(subeffect);
-            spaceConnectednessRestriction?.Initialize(subeffect);
-            limitAdjacencyRestriction?.Initialize(subeffect);
-            hereFitsRestriction?.Initialize(subeffect);
         }
 
         /// <summary>

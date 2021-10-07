@@ -23,7 +23,7 @@ namespace KompasServer.Effects
         {
             //conditions for falling off
             var triggerRest = new TriggerRestriction() { triggerRestrictions = fallOffRestrictions };
-            triggerRest.Initialize(Game, card, thisTrigger: null, effect: Effect);
+            triggerRest.Initialize(Game, card, thisTrigger: null, effect: Effect, subeff: this);
             return triggerRest;
         }
 

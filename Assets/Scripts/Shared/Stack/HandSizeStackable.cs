@@ -42,7 +42,7 @@ namespace KompasCore.Effects
                         CardRestriction.Friendly, CardRestriction.Hand
                         }
                     };
-                    handSizeCardRestriction.Initialize(Source, eff: default);
+                    handSizeCardRestriction.Initialize(Source, eff: default, subeff: default);
                 }
                 return handSizeCardRestriction;
             }

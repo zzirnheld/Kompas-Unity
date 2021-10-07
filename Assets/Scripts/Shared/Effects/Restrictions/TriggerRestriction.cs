@@ -96,11 +96,11 @@ namespace KompasCore.Effects
 
             if (subeff == default)
             {
-                cardRestriction?.Initialize(thisCard, effect);
-                existsRestriction?.Initialize(thisCard, effect);
-                nowRestriction?.Initialize(thisCard, effect);
-                spaceRestriction?.Initialize(thisCard, thisCard.Controller, effect);
-                sourceRestriction?.Initialize(thisCard, effect);
+                cardRestriction?.Initialize(thisCard, effect, subeff);
+                existsRestriction?.Initialize(thisCard, effect, subeff);
+                nowRestriction?.Initialize(thisCard, effect, subeff);
+                spaceRestriction?.Initialize(thisCard, thisCard.Controller, effect, subeff);
+                sourceRestriction?.Initialize(thisCard, effect, subeff);
             }
             else
             {

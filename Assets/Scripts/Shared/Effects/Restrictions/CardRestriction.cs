@@ -191,18 +191,15 @@ namespace KompasCore.Effects
         // so I need to make sure manually that I've bothered to set up relevant arguments.
         private bool initialized = false;
 
-        public void Initialize(Subeffect subeff)
+        public void Initialize(Subeffect subeff) => Initialize(subeff.Source, subeff.Effect, subeff);
+
+        public void Initialize(GameCard source, Effect eff, Subeffect subeff)
         {
             this.Subeffect = subeff;
-            Initialize(subeff.Source, subeff.Effect);
-        }
-
-        public void Initialize(GameCard source, Effect eff)
-        {
             Source = source;
             Effect = eff;
 
-            secondaryRestriction?.Initialize(source, eff);
+            secondaryRestriction?.Initialize(source, eff, subeff);
             xRestriction?.Initialize(source, Subeffect);
 
             /*
@@ -211,10 +208,10 @@ namespace KompasCore.Effects
                 if (connectednessRestriction == null) Debug.LogError($"Couldn't load connectedness restriction");
                 else Debug.Log($"Connectedness restriction: {connectednessRestriction}");
             }*/
-            adjacentCardRestriction?.Initialize(source, eff);
-            connectednessRestriction?.Initialize(source, eff);
-            attackedCardRestriction?.Initialize(source, eff);
-            inAOEOfRestriction?.Initialize(source, eff);
+            adjacentCardRestriction?.Initialize(source, eff, subeff);
+            connectednessRestriction?.Initialize(source, eff, subeff);
+            attackedCardRestriction?.Initialize(source, eff, subeff);
+            inAOEOfRestriction?.Initialize(source, eff, subeff);
 
             initialized = true;
             Debug.Log($"Initialized {this}");
