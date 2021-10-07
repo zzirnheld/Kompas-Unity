@@ -34,7 +34,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Music for the Finale to cast",
-						"cardRestrictions":["Is Spell","Friendly","Discard","Not Already Target","Can Be Played","Subtypes Include"],
+						"cardRestrictions":["Is Spell","Friendly","Hand","Not Already Target","Can Be Played","Subtypes Include"],
 						"subtypesInclude":["Music"]
 					}
 				},
