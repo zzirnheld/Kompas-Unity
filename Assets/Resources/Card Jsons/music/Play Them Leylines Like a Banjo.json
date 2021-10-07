@@ -1,6 +1,6 @@
 {
 	"cardType":83,
-	"cardName":"Toe Tapper",
+	"cardName":"Play Them Leylines Like a Banjo",
 	"effText":"When enemy turns start, gain 3 pips, but lose 6 pips when I vanish. (If you have <= 0 pips, you can't pay pips for anything.)",
 	"effects":[
 		{
