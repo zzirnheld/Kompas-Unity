@@ -25,6 +25,7 @@ bards/Master Caster, Recorder Bdaster
 bards/Eldir Samplei, Quadruple Hornist
 bards/Dave with the Fonky Keytar
 bards/Earblaster, Tuba Master
+bards/Michael on Triangle
 bards/The Playlist
 bards/Up To Eleven
 bards/Encore
