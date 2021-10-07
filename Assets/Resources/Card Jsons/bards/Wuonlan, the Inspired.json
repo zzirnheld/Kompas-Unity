@@ -1,15 +1,19 @@
 {
 	"cardType":67,
 	"cardName":"Wuonlan, the Inspired",
-	"effText":"When an enemy plays a card adjacent to friendly Music, rehand 1 Music adjacent to the card and hand->cast distinct Music where the Music was.",
+	"effText":"When an enemy card arrives adjacent to friendly Music, rehand 1 Music adjacent to the card and hand->cast distinct Music where the Music was.",
 	"effects":[
 		{
 			"blurb":"Inspiration!",
 			"triggerData":
 			{
-				"triggerCondition":"Play",
+				"triggerCondition":"Arrive",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Enemy Triggered"],
+					"triggerRestrictions":["Coords Fit Restriction","Triggerer Fits Restriction"],
+					"cardRestriction":
+					{
+						"cardRestrictions":["Enemy"]
+					},
 					"spaceRestriction":
 					{
 						"spaceRestrictions":["Card Here Fits Restriction"],
@@ -62,9 +66,9 @@
 	],
     "unique":true,
 	"n":4,
-	"e":4,
-	"s":6,
-	"w":4,
+	"e":6,
+	"s":4,
+	"w":0,
 	"subtypes":["Bard"],
 	"subtypeText":"Bard"
 }

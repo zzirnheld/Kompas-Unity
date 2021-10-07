@@ -56,9 +56,9 @@
 	],
     "unique":true,
 	"n":2,
-	"e":3,
-	"s":5,
-	"w":4,
+	"e":6,
+	"s":4,
+	"w":2,
 	"subtypes":["Bard"],
 	"subtypeText":"Bard"
 }

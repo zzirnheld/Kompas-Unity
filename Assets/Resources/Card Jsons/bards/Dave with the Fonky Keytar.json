@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Dave with the Fonky Keytar",
-	"effText":"When a distinct Bard casts Music adjacent to me, dispel it and deck->cast Music where it was.",
+	"effText":"When a distinct Bard casts Music adjacent to me, delay until the stack ends, then dispel it and deck->cast Music where it was.",
 	"effects":[
 		{
 			"blurb":"fOnKYYY",
@@ -29,6 +29,13 @@
 			},
 			"subeffects":[
 				{
+					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay":0,
+					"indexToResume":1,
+					"fallOffCondition":"",
+					"endCondition":"Stack End"
+				},
+				{
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
@@ -54,9 +61,9 @@
 	],
     "unique":true,
 	"n":3,
-	"e":4,
-	"s":5,
-	"w":6,
+	"e":6,
+	"s":4,
+	"w":2,
 	"subtypes":["Bard"],
 	"subtypeText":"Bard"
 }
