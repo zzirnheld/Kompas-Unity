@@ -7,9 +7,18 @@
 			"blurb":"DOOBT DOOBT DOOBT DOOBT",
 			"triggerData":
 			{
-				"triggerCondition":"Turn Start",
+				"triggerCondition":"Arrive",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play"]
+					"triggerRestrictions":["Coords Fit Restriction","Triggerer Fits Restriction"],
+					"cardRestriction":
+					{
+						"cardRestrictions":["Enemy"]
+					},
+					"spaceRestriction":
+					{
+						"spaceRestrictions":["Adjacent to Source"],
+						"mustBeEmpty":false
+					}
 				}
 			},
 			"subeffects":[

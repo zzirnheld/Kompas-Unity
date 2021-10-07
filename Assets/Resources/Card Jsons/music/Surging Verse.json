@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Surging Verse",
-	"effText":"When I'm cast, give an adjacent character +5 W until I vanish. (If I'm dispelled first, they keep the N forever.)",
+	"effText":"When I'm cast, give an adjacent character +5 W until I vanish. (If I'm dispelled first, they keep the W forever.)",
 	"effects":[
 		{
 			"triggerData":

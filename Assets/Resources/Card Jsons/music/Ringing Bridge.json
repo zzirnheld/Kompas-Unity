@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Ringing Bridge",
-	"effText":"When I'm cast, give an adjacent character +5 E until I vanish. (If I'm dispelled first, they keep the N forever.)",
+	"effText":"When I'm cast, give an adjacent character +5 E until I vanish. (If I'm dispelled first, they keep the E forever.)",
 	"effects":[
 		{
 			"triggerData":
