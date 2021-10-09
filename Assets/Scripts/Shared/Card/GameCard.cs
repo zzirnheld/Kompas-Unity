@@ -520,8 +520,7 @@ namespace KompasCore.Cards
             {
                 case CardLocation.Nowhere: return true;
                 case CardLocation.Field:
-                    if (AugmentedCard != null) return Detach(stackSrc);
-                    else return Game.boardCtrl.RemoveFromBoard(this);
+                    return AugmentedCard != null ? Detach(stackSrc) : Game.boardCtrl.RemoveFromBoard(this);
                 case CardLocation.Discard:
                     return Controller.discardCtrl.RemoveFromDiscard(this);
                 case CardLocation.Hand:
@@ -553,7 +552,7 @@ namespace KompasCore.Cards
 
         public bool Play(Space to, Player controller, IStackable stackSrc = null, bool payCost = false)
         {
-            if (Game.boardCtrl.Play(this, to, controller))
+            if (Game.boardCtrl.Play(this, to, controller, stackSrc))
             {
                 if (payCost) controller.Pips -= Cost;
                 return true;

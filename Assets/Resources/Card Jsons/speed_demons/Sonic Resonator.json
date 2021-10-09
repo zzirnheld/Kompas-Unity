@@ -51,7 +51,6 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
-					"maxCanChoose":1,
 					"cardRestriction":
 					{
 						"blurb":"Speedemon to resonate",
@@ -67,7 +66,7 @@
 					"xMultiplier":1
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTriggeringCardValueSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
 					"cardValue":{
 						"value":"S"
 					},
