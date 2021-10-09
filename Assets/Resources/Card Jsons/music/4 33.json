@@ -1,0 +1,45 @@
+{
+	"cardType":83,
+	"cardName":"4 33",
+	"effText":"When I’m cast, give an adjacent N X character -X N until I vanish.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"[silence]",
+						"cardRestrictions":["Board","Is Character","Adjacent to Source"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"N"
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
+					"nMultiplier":-1,
+					"endCondition":"Vanish",
+					"triggerRestriction":{
+						"triggerRestrictions":["This Card Triggered"]
+					}
+				}
+			]
+		}
+	],
+	"c":3,
+	"spellTypes":["Vanishing"],
+	"duration":2,
+	"subtypeText":"Vanishing 2 Music"
+}

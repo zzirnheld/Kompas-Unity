@@ -19,7 +19,7 @@ aquatic/Raincaller Carp
 aquatic/Inevitable Crab
 bards/Jolambertino, Indeci Compos
 bards/Wuonlan, the Inspired
-bards/Henry, Who Has Too Many Ideas
+bards/Henry, Whose Bass is Based
 bards/Meti, Prima Diva
 bards/Master Caster, Recorder Bdaster
 bards/Eldir Samplei, Quadruple Hornist
@@ -29,6 +29,7 @@ bards/Michael on Triangle
 bards/The Mystical Medical Doc
 bards/Reyna, Basoonist Backstage
 bards/Impro Visio, Dealing with Nonsezna
+bards/Bards Get Inspiration
 bards/The Playlist
 bards/Up To Eleven
 bards/Encore
@@ -182,6 +183,7 @@ music/Chonky Noise Rock Bass
 music/Music for Aerports
 music/Play Them Leylines Like a Banjo
 music/Glory Metal
+music/4 33
 None Defy the Lines
 Notcropoten
 pulsars/Accelerating Pulsar
