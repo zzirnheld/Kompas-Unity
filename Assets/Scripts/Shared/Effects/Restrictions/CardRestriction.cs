@@ -426,7 +426,7 @@ namespace KompasCore.Effects
 
             try
             {
-                return cardRestrictions.All(r => RestrictionValid(r, potentialTarget, x, context));
+                return cardRestrictions.All(r => RestrictionValidDebug(r, potentialTarget, x, context));
             }
             catch (ArgumentException e)
             {
