@@ -20,12 +20,15 @@ aquatic/Inevitable Crab
 bards/Jolambertino, Indeci Compos
 bards/Wuonlan, the Inspired
 bards/Henry, Who Has Too Many Ideas
-bards/Meti, Stuck Backstage
+bards/Meti, Prima Diva
 bards/Master Caster, Recorder Bdaster
 bards/Eldir Samplei, Quadruple Hornist
 bards/Dave with the Fonky Keytar
 bards/Earblaster, Tuba Master
 bards/Michael on Triangle
+bards/The Mystical Medical Doc
+bards/Reyna, Basoonist Backstage
+bards/Impro Visio, Dealing with Nonsezna
 bards/The Playlist
 bards/Up To Eleven
 bards/Encore

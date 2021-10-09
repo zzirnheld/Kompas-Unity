@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Encore",
-	"effText":"When turns start, pip discard->cast 1 Music at half cost.",
+	"effText":"When turns start, dispel 1 friendly music, then cast it where it was.",
 	"effects":[
         {
             "blurb":"Encore!",
@@ -17,33 +17,24 @@
                     "$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
                     "cardRestriction":
                     {
-                        "blurb":"Tree for the Man to Replant",
-                        "cardRestrictions":["Is Spell","Discard","Subtypes Include","Can Be Played","Effect Controller can Afford Cost"],
-                        "subtypesInclude":["Music"],
-                        "costDivisor":2
-                    },
-                    "xMultiplier":1
-                },
-                {
-                    "$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
-                    "xMultiplier":1,
-                    "xDivisor":2
-                },
-                {
-                    "$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-                    "spaceRestriction":
-                    {
-                        "blurb":"where for Man to replant the Tree",
-                        "spaceRestrictions":["Can Play Target to This Space"]
+                        "blurb":"ENCORE!",
+                        "cardRestrictions":["Is Spell","Board","Subtypes Include","Friendly"],
+                        "subtypesInclude":["Music"]
                     }
                 },
+				{
+					"$type":"KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+				},
                 {
                     "$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
                 }
             ]
         }
 	],
-	"c":4,
+	"c":2,
 	"spellTypes":["Enchant"],
 	"subtypeText":"Enchant"
 }

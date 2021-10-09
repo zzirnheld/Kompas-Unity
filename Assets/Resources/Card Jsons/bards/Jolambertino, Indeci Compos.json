@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Jolambertino, Indeci Compos",
-	"effText":"When friendly turns start, discard->cast 1 Music. Delay until the stack ends. Dispel it. Discard->cast 1 distinct music.",
+	"effText":"When friendly turns start, hand->cast 1 Music. Delay until the stack ends. Dispel it. Discard->cast 1 distinct music.",
 	"effects":[
 		{
 			"blurb":"Decisions, Indecisions",
@@ -18,7 +18,7 @@
 					"cardRestriction":
 					{
                         "blurb":"Music to cast",
-						"cardRestrictions":["Friendly","Discard","Subtypes Include"],
+						"cardRestrictions":["Friendly","Hand","Subtypes Include"],
 						"subtypesInclude":["Music"]
 					}
 				},
