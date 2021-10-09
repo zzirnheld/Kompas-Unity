@@ -207,7 +207,7 @@ namespace KompasCore.Effects
                 return false;
             }
 
-            return spaceRestrictions.All(r => RestrictionValid(r, space, theoreticalTarget, context));
+            return spaceRestrictions.All(r => RestrictionValidWithDebug(r, space, theoreticalTarget, context));
         }
 
         public override string ToString() => JsonUtility.ToJson(this);

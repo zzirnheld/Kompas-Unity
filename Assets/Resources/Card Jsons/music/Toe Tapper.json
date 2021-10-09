@@ -4,14 +4,17 @@
 	"effText":"When cards arrive here (including me), give characters here +1 ESW until I vanish.",
 	"effects":[
 		{
-            "triggerCondition":"Arrive",
-            "triggerRestriction":{
-                "triggerRestrictions":["This Card in Play","Coords Fit Restriction"],
-                "spaceRestriction":
-                {
-                    "mustBeEmpty":false,
-                    "spaceRestrictions":["In AOE"]
-                }
+			"triggerData":
+			{
+				"triggerCondition":"Arrive",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Coords Fit Restriction"],
+					"spaceRestriction":
+					{
+						"mustBeEmpty":false,
+						"spaceRestrictions":["In AOE"]
+					}
+				}
             },
 			"subeffects":[
 				{

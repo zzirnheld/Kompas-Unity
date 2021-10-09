@@ -426,7 +426,6 @@ wanderers/Wisewoman
 weather/Dapplesun
 weather/Puffyclouds
 weather/Crispbreeze
-weather/Overcast
 weather/Flashflood
 weather/Peltrain
 weather/Muggyclouds

@@ -174,13 +174,13 @@ namespace KompasCore.Effects
             }
         }
 
-        /*
-        private bool RestrictionValidDebug(string r, ActivationContext ctxt)
+        
+        private bool RestrictionValidDebug(string r, ActivationContext ctxt, ActivationContext secondary)
         {
-            var success = RestrictionValid(r, ctxt);
+            var success = RestrictionValid(r, ctxt, secondary);
             if (!success) Debug.Log($"Trigger for {ThisCard.CardName} invalid at restriction {r} for {ctxt}");
             return success;
-        }*/
+        }
 
         /// <summary>
         /// Checks whether this trigger restriction is valid for the given context where the trigger occurred.
@@ -195,7 +195,7 @@ namespace KompasCore.Effects
 
             try
             {
-                return triggerRestrictions.All(r => RestrictionValid(r, context, secondary: secondary));
+                return triggerRestrictions.All(r => RestrictionValidDebug(r, context, secondary: secondary));
             }
             catch (NullReferenceException nullref)
             {
