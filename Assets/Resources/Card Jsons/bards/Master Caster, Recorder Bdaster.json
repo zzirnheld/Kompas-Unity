@@ -42,7 +42,7 @@
 	"n":2,
 	"e":5,
 	"s":5,
-	"w":5,
+	"w":1,
 	"subtypes":["Bard"],
 	"subtypeText":"Bard"
 }
