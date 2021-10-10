@@ -44,16 +44,7 @@ namespace KompasCore.Effects
         public int TimesUsedThisRound { get; protected set; }
         public int TimesUsedThisStack { get; set; }
 
-        private int negations = 0;
-        public bool Negated
-        {
-            get => negations > 0;
-            private set
-            {
-                if (value) negations++;
-                else negations--;
-            }
-        }
+        public virtual bool Negated { get; set; }
 
         protected void SetInfo(GameCard source, int effIndex, Player owner)
         {
@@ -77,8 +68,6 @@ namespace KompasCore.Effects
             TimesUsedThisRound = 0;
             TimesUsedThisTurn = 0;
         }
-
-        public virtual void Negate() => Negated = true;
 
         public virtual void AddTarget(GameCard card) => targetsList.Add(card);
         public virtual void RemoveTarget(GameCard card) => targetsList.Remove(card);

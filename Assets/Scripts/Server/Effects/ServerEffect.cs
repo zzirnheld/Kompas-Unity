@@ -31,6 +31,16 @@ namespace KompasServer.Effects
         public ServerSubeffect OnImpossible = null;
         public bool CanDeclineTarget = false;
 
+        public override bool Negated 
+        { 
+            get => base.Negated;
+            set
+            {
+                if (!Negated && !value) EffectsController.Cancel(this);
+                base.Negated = value;
+            }
+        }
+
         public void SetInfo(GameCard thisCard, ServerGame serverGame, ServerPlayer controller, int effectIndex)
         {
             base.SetInfo(thisCard, effectIndex, controller);
@@ -57,12 +67,6 @@ namespace KompasServer.Effects
             serverGame = game;
             Controller = ctrl;
             ctrl.ServerNotifier.NotifyEffectActivated(this);
-        }
-
-        public override void Negate()
-        {
-            base.Negate();
-            EffectsController.Cancel(this);
         }
 
         #region resolution
