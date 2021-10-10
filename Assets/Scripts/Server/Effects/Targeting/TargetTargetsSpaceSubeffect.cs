@@ -6,7 +6,7 @@ namespace KompasServer.Effects
     {
         public override Task<ResolutionInfo> Resolve()
         {
-            Effect.coords.Add(Target.Position);
+            Effect.coords.Add(Target.Position.Copy);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }
