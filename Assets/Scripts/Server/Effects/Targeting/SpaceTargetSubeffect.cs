@@ -75,7 +75,7 @@ namespace KompasServer.Effects
             if (spaceRestriction.Evaluate((x, y), Context))
             {
                 Debug.Log($"Adding {x}, {y} as coords");
-                ServerEffect.coords.Add((x, y));
+                ServerEffect.AddSpace((x, y));
                 ServerPlayer.ServerNotifier.AcceptTarget();
                 return true;
             }

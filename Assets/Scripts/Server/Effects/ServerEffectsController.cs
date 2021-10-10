@@ -76,10 +76,10 @@ namespace KompasServer.Effects
                     sb.Append("Targets: ");
                     sb.AppendLine(string.Join(", ", se.Targets.Select(c => c.ToString())));
                 }
-                if (se.coords.Any())
+                if (se.AnyCoords())
                 {
                     sb.Append("Coords: ");
-                    sb.AppendLine(string.Join(", ", se.coords.Select(c => $"({c.x}, {c.y})")));
+                    sb.AppendLine(string.Join(", ", se.SelectCoords(c => $"({c.x}, {c.y})")));
                 }
                 sb.AppendLine($"X: {se.X}");
                 sb.AppendLine($"Controller: {se.Controller.index}");

@@ -2,6 +2,8 @@
 using KompasCore.GameCore;
 using System.Collections.Generic;
 using System;
+using System.Linq;
+using System.Collections;
 
 namespace KompasCore.Effects
 {
@@ -25,7 +27,7 @@ namespace KompasCore.Effects
         //Targets
         protected readonly List<GameCard> targetsList = new List<GameCard>();
         public IEnumerable<GameCard> Targets => targetsList;
-        public readonly List<Space> coords = new List<Space>();
+        protected readonly List<Space> coords = new List<Space>();
         public readonly List<Player> players = new List<Player>();
         public readonly List<GameCard> rest = new List<GameCard>();
         /// <summary>
@@ -95,5 +97,14 @@ namespace KompasCore.Effects
             int trueIndex = num < 0 ? num + players.Count : num;
             return trueIndex < 0 ? null : players[trueIndex];
         }
+
+        public void AddSpace(Space space)
+        {
+            coords.Add(space.Copy);
+        }
+
+        public bool AnyCoords() => coords.Any();
+
+        public IEnumerable SelectCoords<T>(Func<Space, T> lambda) => coords.Select(lambda);
     }
 }
