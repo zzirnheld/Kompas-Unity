@@ -27,7 +27,19 @@ namespace KompasCore.GameCore
         public static Vector3 GridIndicesToCardPos(int x, int y)
             => new Vector3(GridIndexToPos(x), CardHeight, GridIndexToPos(y));
 
-        public readonly GameCard[,] Board = new GameCard[SpacesInGrid, SpacesInGrid];
+        public readonly GameCard[,] board = new GameCard[SpacesInGrid, SpacesInGrid];
+        public readonly List<GameCard>[,] augments = new List<GameCard>[SpacesInGrid, SpacesInGrid];
+
+        private void Awake()
+        {
+            for (int x = 0; x < SpacesInGrid; x++)
+            {
+                for (int y = 0; y < SpacesInGrid; y++)
+                {
+                    augments[x, y] = new List<GameCard>();
+                }
+            }
+        }
 
         //helper methods
         #region helper methods
@@ -65,7 +77,7 @@ namespace KompasCore.GameCore
             if (s.Valid)
             {
                 var (x, y) = s;
-                return Board[x, y];
+                return board[x, y];
             }
             else return null;
         }
@@ -86,14 +98,14 @@ namespace KompasCore.GameCore
         public List<GameCard> CardsWhere(Func<GameCard, bool> predicate)
         {
             var list = new List<GameCard>();
-            foreach (var card in Board) if (predicate(card)) list.Add(card);
+            foreach (var card in board) if (predicate(card)) list.Add(card);
             return list;
         }
 
         public List<GameCard> CardsAndAugsWhere(Func<GameCard, bool> predicate)
         {
             var list = new List<GameCard>();
-            foreach(var card in Board)
+            foreach(var card in board)
             {
                 if (predicate(card)) list.Add(card);
                 if (card != null) list.AddRange(card.AugmentsList.Where(predicate));
@@ -165,7 +177,7 @@ namespace KompasCore.GameCore
 
         public int ShortestEmptyPath(GameCard src, Space destination)
         {
-            if (Board[destination.x, destination.y] != null) return 50;
+            if (board[destination.x, destination.y] != null) return 50;
 
             int[,] dist = new int[7, 7];
             bool[,] seen = new bool[7, 7];
@@ -196,7 +208,7 @@ namespace KompasCore.GameCore
 
         public bool ExistsCardOnBoard(Func<GameCard, bool> predicate)
         {
-            foreach (var c in Board)
+            foreach (var c in board)
             {
                 if (predicate(c)) return true;
             }
@@ -208,7 +220,7 @@ namespace KompasCore.GameCore
         public virtual bool RemoveFromBoard(GameCard toRemove)
         {
             var (x, y) = toRemove.Position;
-            if (toRemove.Location == CardLocation.Field && Board[x, y] == toRemove)
+            if (toRemove.Location == CardLocation.Field && board[x, y] == toRemove)
             {
                 RemoveFromBoard(toRemove.Position);
                 return true;
@@ -219,7 +231,7 @@ namespace KompasCore.GameCore
         private void RemoveFromBoard(Space space)
         {
             var (x, y) = space;
-            Board[x, y] = null;
+            board[x, y] = null;
         }
 
         /// <summary>
@@ -265,7 +277,7 @@ namespace KompasCore.GameCore
                 if (toPlay.Remove(stackSrc))
                 {
                     var (toX, toY) = to;
-                    Board[toX, toY] = toPlay;
+                    board[toX, toY] = toPlay;
                     toPlay.Location = CardLocation.Field;
                     toPlay.Position = to;
 
@@ -288,7 +300,7 @@ namespace KompasCore.GameCore
             var (tempX, tempY) = card.Position;
             var from = card.Position;
             var (toX, toY) = to;
-            GameCard temp = Board[toX, toY];
+            GameCard temp = board[toX, toY];
             //check valid spell positioning
             if (!ValidSpellSpaceFor(card, to) || !ValidSpellSpaceFor(temp, from))
             {
@@ -305,8 +317,8 @@ namespace KompasCore.GameCore
                 temp?.CountSpacesMovedTo((tempX, tempY));
             }
 
-            Board[toX, toY] = card;
-            Board[tempX, tempY] = temp;
+            board[toX, toY] = card;
+            board[tempX, tempY] = temp;
 
             card.Position = to;
             if (temp != null) temp.Position = from;
@@ -320,9 +332,9 @@ namespace KompasCore.GameCore
             if (card.AugmentedCard != null)
             {
                 var (toX, toY) = to;
-                if (Board[toX, toY] != null && card.Remove(stackSrc))
+                if (board[toX, toY] != null && card.Remove(stackSrc))
                 {
-                    Board[toX, toY].AddAugment(card, stackSrc);
+                    board[toX, toY].AddAugment(card, stackSrc);
                     return true;
                 }
                 return false;
@@ -330,9 +342,19 @@ namespace KompasCore.GameCore
             else return Swap(card, to, playerInitiated, stackSrc);
         }
 
+        public virtual bool PlaceAugment(GameCard aug, Space to, IStackable stackSrc = null)
+        {
+            if (!aug.Remove(stackSrc)) return false;
+
+            var (x, y) = to;
+            augments[x, y].Add(aug);
+
+            return true;
+        }
+
         public void ClearSpells()
         {
-            foreach (GameCard c in Board)
+            foreach (GameCard c in board)
             {
                 if (c == null) continue;
                 else if (c.CardType == 'S')
@@ -381,7 +403,7 @@ namespace KompasCore.GameCore
             {
                 for (int j = 0; j < 7; j++)
                 {
-                    var card = Board[i, j];
+                    var card = board[i, j];
                     if (card != null) sb.Append($"At {i}, {j}, {card.CardName} id {card.ID}");
                 }
             }

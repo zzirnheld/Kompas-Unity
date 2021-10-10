@@ -81,6 +81,13 @@ namespace KompasServer.Networking
             SendPackets(p, q);
         }
 
+        public void NotifyPlaceAugment(GameCard card, Space space, bool wasKnown)
+        {
+            var p = new PlaceAugmentPacket(card, space.x, space.y, invert: Player.index != 0);
+            var q = p.GetInversion(wasKnown);
+            SendPackets(p, q);
+        }
+
         public void NotifyIncarnated(GameCard who, bool incarnated)
             => SendToBothInverting(new SetIncarnatedPacket(who.ID, incarnated));
 

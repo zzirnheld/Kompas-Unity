@@ -150,13 +150,14 @@ namespace KompasServer.Cards
 
             //proc the trigger before actually removing anything
             var context = new ActivationContext(card: this, stackable: stackSrc, triggerer: stackSrc?.Controller ?? Controller);
+            var space = Position.Copy;
 
             if (base.Remove(stackSrc))
             {
                 EffectsController.TriggerForCondition(Trigger.Remove, context);
-                //copy the colleciton  so that you can edit the original
+                //copy the collection  so that you can edit the original
                 var augments = AugmentsList.ToArray();
-                foreach (var aug in augments) aug.Discard(stackSrc);
+                foreach (var aug in augments) Game.boardCtrl.PlaceAugment(aug, space, stackSrc);
                 
                 return true;
             }

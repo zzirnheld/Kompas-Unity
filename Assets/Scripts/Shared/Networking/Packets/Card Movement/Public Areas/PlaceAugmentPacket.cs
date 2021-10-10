@@ -1,10 +1,10 @@
-﻿using KompasCore.Networking;
+using KompasCore.Networking;
 using KompasClient.GameCore;
 using KompasCore.Cards;
 
 namespace KompasCore.Networking
 {
-    public class AttachCardPacket : Packet
+    public class PlaceAugmentPacket : Packet
     {
         public int cardId;
         public string json;
@@ -12,9 +12,9 @@ namespace KompasCore.Networking
         public int x;
         public int y;
 
-        public AttachCardPacket() : base(AttachCard) { }
+        public PlaceAugmentPacket() : base(AttachCard) { }
 
-        public AttachCardPacket(int cardId, string json, int controllerIndex, int x, int y, bool invert = false) : this()
+        public PlaceAugmentPacket(int cardId, string json, int controllerIndex, int x, int y, bool invert = false) : this()
         {
             this.cardId = cardId;
             this.json = json;
@@ -23,31 +23,29 @@ namespace KompasCore.Networking
             this.y = invert ? 6 - y : y;
         }
 
-        public AttachCardPacket(GameCard card, int x, int y, bool invert = false)
+        public PlaceAugmentPacket(GameCard card, int x, int y, bool invert = false)
             : this(card.ID, card.BaseJson, card.ControllerIndex, x, y, invert: invert)
         { }
 
-        public override Packet Copy() => new AttachCardPacket(cardId, json, controllerIndex, x, y);
+        public override Packet Copy() => new PlaceAugmentPacket(cardId, json, controllerIndex, x, y);
 
         public override Packet GetInversion(bool known)
         {
-            if (known) return new AttachCardPacket(cardId, json, controllerIndex, x, y, invert: true);
+            if (known) return new PlaceAugmentPacket(cardId, json, controllerIndex, x, y, invert: true);
             else return new AddCardPacket(cardId, json, CardLocation.Field, controllerIndex, x, y, 
-                attached: true, placedAsAug: false, known: true, invert: true);
+                attached: false, placedAsAug: true, known: true, invert: true);
         }
     }
 }
 
 namespace KompasClient.Networking
 {
-    public class AttachCardClientPacket : AttachCardPacket, IClientOrderPacket
+    public class PlaceAugmentClientPacket : PlaceAugmentPacket, IClientOrderPacket
     {
         public void Execute(ClientGame clientGame)
         {
             var toAttach = clientGame.GetCardWithID(cardId);
-            var attachedTo = clientGame.boardCtrl.GetCardAt((x, y));
-
-            if (toAttach != null && attachedTo != null) attachedTo.AddAugment(toAttach);
+            if (toAttach != null)  clientGame.boardCtrl.PlaceAugment(toAttach, (x, y));
         }
     }
 }

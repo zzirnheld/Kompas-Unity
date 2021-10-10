@@ -14,6 +14,7 @@ namespace KompasCore.Networking
         public int x;
         public int y;
         public bool attached;
+        public bool placedAsAug;
         public bool known;
 
         public AddCardPacket() : base(AddCard) { }
@@ -27,12 +28,13 @@ namespace KompasCore.Networking
         }
 
         public AddCardPacket(int cardId, string json, CardLocation location, int controllerIndex, 
-            int x, int y, bool attached, bool known, bool invert = false) 
+            int x, int y, bool attached, bool placedAsAug, bool known, bool invert = false) 
             : this(cardId, json, location, controllerIndex, invert)
         {
             this.x = invert ? 6 - x : x;
             this.y = invert ? 6 - y : y;
             this.attached = attached;
+            this.placedAsAug = placedAsAug;
             this.known = known;
         }
 
@@ -40,10 +42,11 @@ namespace KompasCore.Networking
         //this will require using a json library that allows for polymorphism-ish stuff
         public AddCardPacket(GameCard card, bool invert = false)
             : this(cardId: card.ID, json: card.BaseJson, location: card.Location, controllerIndex: card.ControllerIndex, 
-                  x: card.Position.x, y: card.Position.y, attached: card.Attached, known: card.KnownToEnemy, invert: invert)
+                  x: card.Position.x, y: card.Position.y, attached: card.Attached, placedAsAug: false, known: card.KnownToEnemy, invert: invert)
         { }
 
-        public override Packet Copy() => new AddCardPacket(cardId, json, location, controllerIndex, x, y, attached, known);
+        public override Packet Copy() => new AddCardPacket(cardId, json, location, controllerIndex, x, y, 
+            attached: attached, placedAsAug: placedAsAug, known: known);
 
         public override Packet GetInversion(bool known)
         {
@@ -56,7 +59,8 @@ namespace KompasCore.Networking
                     _ => throw new System.ArgumentException($"What should add card packet do when a card is added to the hidden location {location}"),
                 };
             }
-            else return new AddCardPacket(cardId, json, location, controllerIndex, x, y, attached, known, invert: true);
+            else return new AddCardPacket(cardId, json, location, controllerIndex, x, y, 
+                attached: attached, placedAsAug: placedAsAug, known: known, invert: true);
         }
     }
 }
@@ -75,6 +79,7 @@ namespace KompasClient.Networking
                 case CardLocation.Nowhere: break;
                 case CardLocation.Field:
                     if (attached) clientGame.boardCtrl.GetCardAt((x, y)).AddAugment(card);
+                    else if (placedAsAug) clientGame.boardCtrl.PlaceAugment(card, (x, y));
                     else card.Play((x, y), controller);
                     break;
                 case CardLocation.Discard:

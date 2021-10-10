@@ -82,5 +82,15 @@ namespace KompasServer.GameCore
             }
             return false;
         }
+
+        public override bool PlaceAugment(GameCard aug, Space to, IStackable stackSrc = null)
+        {
+            bool wasKnown = aug.KnownToEnemy;
+            if (base.PlaceAugment(aug, to, stackSrc))
+            {
+                ServerNotifierByIndex(aug.ControllerIndex).NotifyPlaceAugment(aug, to, wasKnown);
+            }
+            return false;
+        }
     }
 }
