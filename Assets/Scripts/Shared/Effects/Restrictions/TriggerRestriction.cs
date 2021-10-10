@@ -34,6 +34,7 @@ namespace KompasCore.Effects
         public const string EffectSourceIsThisCard = "Stackable Source is This Card"; //140,
         public const string EffectSourceIsTriggerer = "Stackable Source is Triggerer"; //149,
         public const string StackableSourceNotThisEffect = "Stackable Source isn't This Effect";
+        public const string NoStackable = "No Stackable";
 
         public const string ContextsStackablesMatch = "Contexts Stackables Match";
         public const string StackableIsThisEffect = "Stackable is This Effect";
