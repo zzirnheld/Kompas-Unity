@@ -38,6 +38,8 @@ public struct Space
     }
     public static SpaceCollection Spaces => new SpaceCollection();
 
+    public Space Copy => new Space(x, y);
+
     public static Space NearCorner => new Space(0, 0);
     public static Space FarCorner => new Space(MaxIndex, MaxIndex);
     public static Space AvatarCornerFor(int index) => index == 0 ? NearCorner : FarCorner;
