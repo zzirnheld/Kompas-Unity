@@ -1,9 +1,8 @@
 ﻿using KompasCore.Cards;
 using KompasCore.GameCore;
-using System.Collections.Generic;
 using System;
 using System.Linq;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace KompasCore.Effects
 {
@@ -82,19 +81,19 @@ namespace KompasCore.Effects
 
         public GameCard GetTarget(int num)
         {
-            int trueIndex = num < 0 ? num + targetsList.Count : num;
+            int trueIndex = num < 0 ? num + targetsList.Count() : num;
             return trueIndex < 0 ? null : targetsList[trueIndex];
         }
 
         public Space GetSpace(int num)
         {
-            var trueIndex = num < 0 ? num + coords.Count : num;
+            var trueIndex = num < 0 ? num + coords.Count() : num;
             return trueIndex < 0 ? default : coords[trueIndex];
         }
 
         public Player GetPlayer(int num)
         {
-            int trueIndex = num < 0 ? num + players.Count : num;
+            int trueIndex = num < 0 ? num + players.Count() : num;
             return trueIndex < 0 ? null : players[trueIndex];
         }
 
@@ -105,6 +104,6 @@ namespace KompasCore.Effects
 
         public bool AnyCoords() => coords.Any();
 
-        public IEnumerable SelectCoords<T>(Func<Space, T> lambda) => coords.Select(lambda);
+        public IEnumerable<T> SelectCoords<T>(Func<Space, T> lambda) => coords.Select(lambda);
     }
 }

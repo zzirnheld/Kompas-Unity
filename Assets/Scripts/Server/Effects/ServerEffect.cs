@@ -81,6 +81,7 @@ namespace KompasServer.Effects
 
             targetsList.Clear();
             if (context.Targets != null) targetsList.AddRange(context.Targets);
+            if (context.Spaces != null) coords.AddRange(context.Spaces);
 
             coords.Clear();
             

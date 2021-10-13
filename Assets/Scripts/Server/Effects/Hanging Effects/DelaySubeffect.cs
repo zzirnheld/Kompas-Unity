@@ -28,6 +28,7 @@ namespace KompasServer.Effects
                                                  indexToResumeResolution: indexToResume,
                                                  controller: EffectController,
                                                  targets: new List<GameCard>(Effect.Targets),
+                                                 spaces: new List<Space>(Effect.SelectCoords(s => s)),
                                                  clearIfResolve: clearWhenResume);
             return new List<HangingEffect>() { delay };
         }

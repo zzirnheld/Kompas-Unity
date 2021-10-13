@@ -13,14 +13,15 @@ namespace KompasCore.Effects
         // These two are for delayed
         public readonly int StartIndex;
         public readonly List<GameCard> Targets;
+        public readonly List<Space> Spaces;
 
         public ActivationContext(GameCard card, IStackable stackable = null, Player triggerer = null,
-            int? x = null, Space? space = null, int startIndex = 0, List<GameCard> targets = null)
-            : this(card == null ? null : new GameCardInfo(card), stackable, triggerer, x, space, startIndex, targets ?? new List<GameCard>())
+            int? x = null, Space? space = null, int startIndex = 0, List<GameCard> targets = null, List<Space> spaces = null)
+            : this(card == null ? null : new GameCardInfo(card), stackable, triggerer, x, space, startIndex, targets ?? new List<GameCard>(), spaces ?? new List<Space>())
         { }
 
         public ActivationContext(IGameCardInfo card = null, IStackable stackable = null, Player triggerer = null,
-            int? x = null, Space? space = null, int startIndex = 0, List<GameCard> targets = null)
+            int? x = null, Space? space = null, int startIndex = 0, List<GameCard> targets = null, List<Space> spaces = null)
         {
             CardInfo = card;
             Stackable = stackable;
@@ -29,6 +30,7 @@ namespace KompasCore.Effects
             Space = space;
             StartIndex = startIndex;
             Targets = targets;
+            this.Spaces = spaces;
         }
 
         public override string ToString()
