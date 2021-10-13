@@ -32,14 +32,14 @@
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
-				},
-				{
 					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
 					"numTimesToDelay":0,
-					"indexToResume":3,
+					"indexToResume":2,
 					"fallOffCondition":"",
 					"endCondition":"Stack End"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
