@@ -147,6 +147,8 @@ namespace KompasCore.Effects
 
                 case StackableIsThisEffect: return context.Stackable == SourceEffect;
 
+                case NoStackable: return context.Stackable == null;
+
                 //other non-card triggering things
                 case CoordsFitRestriction:    return context.Space != null && spaceRestriction.Evaluate(context.Space.Value, context);
                 case XFitsRestriction:        return context.X != null && xRestriction.Evaluate(context.X.Value);
