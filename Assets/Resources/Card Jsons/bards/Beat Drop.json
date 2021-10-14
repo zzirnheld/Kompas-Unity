@@ -33,7 +33,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"Music for the Finale to cast",
+						"blurb":"*beat drop*",
 						"cardRestrictions":["Is Spell","Friendly","Hand","Can Be Played","Subtypes Include"],
 						"subtypesInclude":["Music"]
 					}
@@ -42,7 +42,7 @@
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
-						"blurb":"where Music",
+						"blurb":"zHHHHHHHHHHHHHHHHHH",
 						"spaceRestrictions":["Can Play Target to This Space"]
 					}
 				},

@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Finale",
-	"effText":"Discard->cast as much of your Music as you want.",
+	"effText":"Discard->cast as much of your Music as you want. (It will still expire later.)",
 	"effects":[
 		{
 			"triggerData":
@@ -40,7 +40,7 @@
 			]
 		}
 	],
-	"c":8,
+	"c":3,
 	"spellTypes":["Simple"],
 	"subtypeText":"Simple"
 }

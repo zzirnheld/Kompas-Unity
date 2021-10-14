@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"The Mystical Medical Doc",
-	"effText":"When a character moves, dispel a friendly spell, discard 1 card, and draw 1 card.",
+	"effText":"When a character moves, dispel a friendly spell, discard 1 card, and draw 2 cards.",
 	"effects":[
 		{
 			"blurb":"At the pinnacle",
@@ -38,7 +38,8 @@
 					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"xModifier":2
 				}
 			]	
 		}
