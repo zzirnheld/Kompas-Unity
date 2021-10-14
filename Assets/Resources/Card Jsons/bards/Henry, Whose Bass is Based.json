@@ -37,7 +37,8 @@
 						"xRestriction":{
 							"xRestrictions":["<X"]
 						}
-					}
+					},
+					"xMultiplier":1
 				},
                 {
                     "$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
