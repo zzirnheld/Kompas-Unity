@@ -18,6 +18,13 @@
 			},
 			"subeffects":[
 				{
+					"$type":"KompasServer.Effects.SetXByTriggeringCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"C"
+					},
+					"xMultiplier":1
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
