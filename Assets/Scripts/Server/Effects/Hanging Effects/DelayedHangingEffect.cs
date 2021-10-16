@@ -18,11 +18,11 @@ namespace KompasServer.Effects
         private readonly List<Space> spaces;
 
         public DelayedHangingEffect(ServerGame game, TriggerRestriction triggerRestriction, string endCondition,
-            string fallOffCondition, TriggerRestriction fallOffRestriction, ActivationContext currentContext,
+            string fallOffCondition, TriggerRestriction fallOffRestriction, Effect sourceEff, ActivationContext currentContext,
             int numTimesToDelay, ServerEffect toResume, int indexToResumeResolution, ServerPlayer controller, 
             IEnumerable<GameCard> targets, IEnumerable<Space> spaces,
             bool clearIfResolve)
-            : base(game, triggerRestriction, endCondition, fallOffCondition, fallOffRestriction, currentContext, clearIfResolve)
+            : base(game, triggerRestriction, endCondition, fallOffCondition, fallOffRestriction, sourceEff, currentContext, clearIfResolve)
         {
             this.numTimesToDelay = numTimesToDelay;
             this.toResume = toResume;

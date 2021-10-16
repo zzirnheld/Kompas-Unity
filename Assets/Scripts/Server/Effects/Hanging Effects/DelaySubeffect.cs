@@ -22,6 +22,7 @@ namespace KompasServer.Effects
                                                  endCondition: endCondition,
                                                  fallOffCondition: fallOffCondition,
                                                  fallOffRestriction: CreateFallOffRestriction(Source),
+                                                 sourceEff: Effect,
                                                  currentContext: Context,
                                                  numTimesToDelay: numTimesToDelay,
                                                  toResume: ServerEffect,

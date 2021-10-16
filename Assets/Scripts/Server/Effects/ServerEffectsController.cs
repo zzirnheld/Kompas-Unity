@@ -139,14 +139,35 @@ namespace KompasServer.Effects
             }
         }
 
+        private void RemoveHangingEffect(HangingEffect hangingEff)
+        {
+            hangingEffectMap[hangingEff.endCondition].Remove(hangingEff);
+            //Not all hanging effects can fall off
+            if (!string.IsNullOrEmpty(hangingEff.fallOffCondition))
+                hangingEffectFallOffMap[hangingEff.fallOffCondition].Remove(hangingEff);
+        }
+
+        /// <summary>
+        /// Cancel any stack entries <paramref name="eff"/> had on the stack, and any hanging effects caused by <paramref name="eff"/>
+        /// </summary>
+        /// <param name="eff"></param>
         public void Cancel(Effect eff)
         {
+            //Remove effect from the stack, going top to bottom
             for (int i = stack.Count - 1; i >= 0; i--)
             {
                 if (stack.StackEntries.ElementAt(i) == eff)
                 {
                     stack.Cancel(i);
                     ServerGame.ServerPlayers.First().ServerNotifier.RemoveStackEntry(i - 1);
+                }
+            }
+            //Remove effect from hanging/delayed
+            foreach(var triggerCondition in Trigger.TriggerConditions)
+            {
+                foreach(var hangingEff in hangingEffectMap[triggerCondition].ToArray())
+                {
+                    if (hangingEff.sourceEff == eff) RemoveHangingEffect(hangingEff);
                 }
             }
         }
@@ -275,30 +296,14 @@ namespace KompasServer.Effects
 
         private void ResolveHangingEffects(string condition, ActivationContext context)
         {
-            if (hangingEffectMap.ContainsKey(condition))
+            foreach (var toEnd in hangingEffectMap[condition].ToArray())
             {
-                foreach (var t in hangingEffectMap[condition].ToArray())
-                {
-                    if (t.EndIfApplicable(context))
-                    {
-                        Debug.Log($"{t} ended");
-                        hangingEffectMap[condition].Remove(t);
-                        if (!string.IsNullOrEmpty(t.FallOffCondition))
-                            hangingEffectFallOffMap[t.FallOffCondition].Remove(t);
-                    }
-                }
+                if (toEnd.EndIfApplicable(context)) RemoveHangingEffect(toEnd);
             }
 
-            if (hangingEffectFallOffMap.ContainsKey(condition))
+            foreach (var toRemove in hangingEffectFallOffMap[condition].ToArray())
             {
-                foreach (var toRemove in hangingEffectFallOffMap[condition].ToArray())
-                {
-                    if (toRemove.FallOffRestriction.Evaluate(context))
-                    {
-                        hangingEffectMap[toRemove.EndCondition].Remove(toRemove);
-                        hangingEffectFallOffMap[condition].Remove(toRemove);
-                    }
-                }
+                if (toRemove.ShouldBeCanceled(context)) RemoveHangingEffect(toRemove);
             }
         }
 

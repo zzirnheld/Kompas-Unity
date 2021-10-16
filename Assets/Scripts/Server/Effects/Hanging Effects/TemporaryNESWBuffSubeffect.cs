@@ -23,6 +23,7 @@ namespace KompasServer.Effects
                                              endCondition: endCondition,
                                              fallOffCondition: fallOffCondition,
                                              fallOffRestriction: CreateFallOffRestriction(Target),
+                                             sourceEff: Effect,
                                              currentContext: Context,
                                              buffRecipient: Target,
                                              nBuff: nModifier + Effect.X * nMultiplier,

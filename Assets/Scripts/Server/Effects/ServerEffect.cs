@@ -36,6 +36,7 @@ namespace KompasServer.Effects
             get => base.Negated;
             set
             {
+                //If being negated, cancel anywhere this was on the stack, and cancel any hanging effects for this
                 if (!Negated && !value) EffectsController.Cancel(this);
                 base.Negated = value;
             }
