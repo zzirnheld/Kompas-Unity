@@ -9,7 +9,7 @@
 			{
 				"triggerCondition":"Remove",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Max Per Turn"],
 					"cardRestriction":{
 						"cardRestrictions":["Board","Friendly","Is Spell"]
 					}
