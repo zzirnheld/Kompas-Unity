@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Prophet of Mercy",
-	"effText":"When turns start, set X to the number of adjacent Supplicants. Deck-cast an S <= X Plea.",
+	"effText":"When turns start, set X to the number of adjacent Supplicants. Deck-cast a C <= X Plea.",
 	"effects":[
 		{
 			"triggerData":
@@ -27,7 +27,13 @@
 					"cardRestriction":
 					{
 						"blurb":"Supplicants' Plea",
-						"cardRestrictions":["Friendly","Deck","Is Spell","Cost<=X","Subtypes Include"],
+						"cardRestrictions":["Friendly","Deck","Is Spell","Subtypes Include","Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"C"
+						},
+						"xRestriction":{
+							"xRestrictions":["<=X"]
+						},
 						"subtypesInclude":["Plea"]
 					},
 					"xMultiplier":1

@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"He Who Knew Runes",
-	"effText":"Shape.\nWhen I move X spaces, hand->cast a CX Shaping.",
+	"effText":"Shape.\nWhen I move X spaces, hand->cast a C X Shaping.",
 	"effects":[
 		{
 			"triggerData":
@@ -17,7 +17,13 @@
 					"cardRestriction":
 					{
 						"blurb":"Shaping for He Who Knew Runes to cast",
-						"cardRestrictions":["Subtypes Include","Is Spell","Friendly","Hand","Cost==X","Can Be Played"],
+						"cardRestrictions":["Subtypes Include","Is Spell","Friendly","Hand","Can Be Played","Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"C"
+						},
+						"xRestriction":{
+							"xRestrictions":["=X"]
+						},
 						"subtypesInclude":["Shaping"]
 					},
 					"xMultiplier":1

@@ -32,8 +32,14 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"Warrior for Strategist to kill",
-						"cardRestrictions":["Is Character","Board","S<=X"]
+						"blurb":"character for Strategist to kill",
+						"cardRestrictions":["Is Character","Board","Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"S"
+						},
+						"xRestriction":{
+							"xRestrictions":["<=X"]
+						}
 					},
 					"xMultiplier":1
 				},

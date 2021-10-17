@@ -39,7 +39,13 @@
 					"cardRestriction":
 					{
 						"blurb":"Select a machination",
-						"cardRestrictions":["Friendly","Deck","Cost<=X","Subtypes Include","Can Be Played"],
+						"cardRestrictions":["Friendly","Deck","Subtypes Include","Can Be Played","Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"Cost"
+						},
+						"xRestriction":{
+							"xRestrictions":["=X"]
+						},
 						"subtypesInclude":["Machination"]
 					},
 					"xMultiplier":1

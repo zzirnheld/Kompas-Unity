@@ -78,34 +78,7 @@ namespace KompasCore.Effects
 
         //stats
         public const string CardValueFitsXRestriction = "Card Value Fits X Restriction";
-            //<=X
-        public const string NLTEX = "N<=X";
-        public const string ELTEX = "E<=X";
-        public const string SLTEX = "S<=X";
-        public const string WLTEX = "W<=X";
-        public const string CostLTEX = "Cost<=X";
-            //==X
-        public const string NEX = "N==X";
-        public const string EEX = "E==X";
-        public const string SEX = "S==X";
-        public const string WEX = "W==X";
-        public const string CostEX = "Cost==X";
-            //<X
-        public const string NLTX = "N<X";
-        public const string ELTX = "E<X";
-        public const string SLTX = "S<X";
-        public const string WLTX = "W<X";
-        public const string CostLTX = "Cost<X";
-            //<=C
-        public const string NLTEC = "N<=C";
-        public const string ELTEC = "E<=C";
-        public const string SLTEC = "S<=C";
-        public const string WLTEC = "W<=C";
-        //>X
-        public const string CostGTX = "Cost>X";
         //misc statlike
-        public const string CostLTAvatar = "Cost<Avatar";
-        public const string CostGTAvatar = "Cost>Avatar";
         public const string CanBeHealed = "Can Be Healed";
 
         public const string Negated = "Negated";
