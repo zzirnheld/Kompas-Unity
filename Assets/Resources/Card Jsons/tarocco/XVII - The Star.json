@@ -13,11 +13,16 @@
 					"triggerRestrictions":["Triggerer Fits Restriction"],
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Enemy","Adjacent to Card Restriction"],
-						"adjacentCardRestriction":
+						"cardRestrictions":["Is Character","Enemy","Space Fits Restriction"],
+						"spaceRestriction":
 						{
-							"cardRestrictions":["Summoned","Subtypes Include"],
-							"subtypesInclude":["Tarocco"]
+							"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
+							"adjacencyRestriction":
+							{
+								"cardRestrictions":["Summoned","Subtypes Include"],
+								"subtypesInclude":["Tarocco"]
+							},
+							"mustBeEmpty":false
 						}
 					}
 				}

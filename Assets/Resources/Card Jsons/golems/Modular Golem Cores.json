@@ -12,11 +12,16 @@
 					"triggerRestrictions":["This Card in Play","Max Per Turn","Triggerer Now Fits Restriction"],
 					"nowRestriction":
 					{
-						"cardRestrictions":["Adjacent to Card Restriction"],
-						"adjacentCardRestriction":
+						"cardRestrictions":["Space Fits Restriction"],
+						"spaceRestriction":
 						{
-							"cardRestrictions":["Subtypes Include"],
-							"subtypesInclude":["Golem"]
+							"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
+							"adjacencyRestriction":
+							{
+								"cardRestrictions":["Subtypes Include"],
+								"subtypesInclude":["Golem"]
+							},
+							"mustBeEmpty":false
 						}
 					}
 				}

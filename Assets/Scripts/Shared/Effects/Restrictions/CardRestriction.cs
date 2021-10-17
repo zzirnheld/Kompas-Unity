@@ -90,21 +90,12 @@ namespace KompasCore.Effects
 
         public const string SourceInThisAOE = "Source in This' AOE";
 
-        public const string AdjacentToSubtype = "Adjacent to Subtype";
-        public const string AdjacentToRestriction = "Adjacent to Card Restriction";
-        public const string ExactlyXSpaces = "Exactly X Spaces to Source";
-        public const string InFrontOfSource = "In Front of Source";
-        public const string BehindSource = "Behind Source";
         public const string IndexInListGTC = "Index>C";
         public const string IndexInListLTC = "Index<C";
         public const string IndexInListLTX = "Index<X";
-        public const string SameColumnAsSource = "Same Column as Source";
-        public const string DirectlyInFrontOfSource = "Directly In Front of Source";
-        public const string InACorner = "In a Corner";
+
         public const string ConnectedToSourceBy = "Connected to Source By";
         public const string ConnectedToTargetBy = "Connected to Target By";
-        public const string SameDiagonalAsSource = "Same Diagonal as Source";
-        public const string SameDiagonalAsTarget = "Same Diagonal as Target";
 
         //misc
         public const string CanBePlayed = "Can Be Played";
@@ -276,37 +267,13 @@ namespace KompasCore.Effects
                 //positioning
                 case SpaceFitsRestriction: return spaceRestriction.Evaluate(potentialTarget?.Position ?? Space.Nowhere, context);
 
-                case AdjacentToTarget:   return potentialTarget?.IsAdjacentTo(Subeffect.Target) ?? false;
-                case AdjacentToCoords:   return potentialTarget?.IsAdjacentTo(Subeffect.Space) ?? false;
-                case AdjacentToSubtype:  
-                    return potentialTarget?.AdjacentCards.Any(card => adjacencySubtypes.All(s => card.SubtypeText.Contains(s))) ?? false;
-                case AdjacentToRestriction:
-                    var cards = potentialTarget?.AdjacentCards;
-                    Debug.Log($"Cards adjacent to {potentialTarget} are {string.Join(", ", cards.Select(c => c.ToString()))}");
-                    //Debug.Log($"Cards null? {cards == null} restriction null? {adjacentCardRestriction == null}");
-                    return cards?.Any(c => adjacentCardRestriction.Evaluate(c, context)) ?? false;
-
-                case InAOE:              return Source.CardInAOE(potentialTarget);
-                case InTargetsAOE:       return Subeffect.Target.CardInAOE(potentialTarget);
                 case SourceInThisAOE:    return potentialTarget?.CardInAOE(Source) ?? false;
-                case NotInAOE:           return !Source.CardInAOE(potentialTarget);
-                case InAOEOfCardFittingRestriction: 
-                    return Source.Game.Cards.Any(c => c.CardInAOE(potentialTarget) && inAOEOfRestriction.Evaluate(c, context));
-                case NotInAOEOfCardFittingRestriction:
-                    return !Source.Game.Cards.Any(c => c.CardInAOE(potentialTarget) && inAOEOfRestriction.Evaluate(c, context));
 
-                case WithinCSpacesOfSource: return potentialTarget?.WithinSpaces(cSpaces, Source) ?? false;
-                case WithinCSpacesOfTarget: return potentialTarget?.WithinSpaces(cSpaces, Subeffect.Target) ?? false;
-                case WithinXSpacesOfSource: return potentialTarget?.WithinSpaces(Effect.X, Source) ?? false;
-                case ExactlyXSpaces:     return potentialTarget?.DistanceTo(Source) == x;
-                case InFrontOfSource:    return Source.CardInFront(potentialTarget);
-                case BehindSource:       return Source.CardBehind(potentialTarget);
                 case IndexInListGTC:     return potentialTarget?.IndexInList > constant;
                 case IndexInListLTC:     return potentialTarget?.IndexInList < constant;
                 case IndexInListLTX:     return potentialTarget?.IndexInList < x;
-                case SameColumnAsSource: return potentialTarget?.SameColumn(Source) ?? false;
+
                 case InACorner:          return potentialTarget?.InCorner() ?? false;
-                case DirectlyInFrontOfSource: return Source.CardDirectlyInFront(potentialTarget);
                 case ConnectedToSourceBy:
                     return potentialTarget?.ShortestPath(Source.Position, c => connectednessRestriction.Evaluate(c, context)) < 50; 
                 case ConnectedToTargetBy: 

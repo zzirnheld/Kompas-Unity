@@ -20,7 +20,12 @@
 					"cardRestriction":
 					{
 						"blurb":"who will Leygrapple",
-						"cardRestrictions":["Board","Is Character","Same Diagonal as Target","Subtypes Include"],
+						"cardRestrictions":["Board","Is Character","Subtypes Include","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["On Target's Diagonal"],
+							"mustBeEmpty":false
+						},
 						"subtypesInclude":["Linewalker"]
 					}
 				},
@@ -39,7 +44,7 @@
 			]	
 		}
 	],
-	"c":3,
+	"c":1,
 	"spellTypes":["Enchant"],
 	"subtypeText":"Enchant"
 }

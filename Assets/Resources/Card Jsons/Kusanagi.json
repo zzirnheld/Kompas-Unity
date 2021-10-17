@@ -20,7 +20,12 @@
 					"condition":"Target Violates Restriction",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Behind Source"]
+						"cardRestrictions":["Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Behind Source"],
+							"mustBeEmpty":false
+						}
 					}
 				},
 				{

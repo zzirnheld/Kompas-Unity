@@ -53,6 +53,7 @@ public struct Space
     public int TaxicabDistanceTo(Space other) => Math.Abs(x - other.x) + Math.Abs(y - other.y);
     public int RadialDistanceTo(Space other) => Math.Max(Math.Abs(x - other.x), Math.Abs(y - other.y));
     public int DistanceTo(Space other) => TaxicabDistanceTo(other);
+    public Space DisplacementTo(Space other) => new Space(x - other.x, y - other.y);
 
     public bool AdjacentTo(Space other) => DistanceTo(other) == 1;
     public IEnumerable<Space> AdjacentSpaces

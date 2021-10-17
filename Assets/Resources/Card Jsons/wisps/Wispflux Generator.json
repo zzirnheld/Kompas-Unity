@@ -12,7 +12,12 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","This Card Fits Restriction"],
 					"cardRestriction":{
-						"cardRestrictions":["In a Corner"]
+						"cardRestrictions":["Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Corner"],
+							"mustBeEmpty":false
+						}
 					}
 				}
 			},

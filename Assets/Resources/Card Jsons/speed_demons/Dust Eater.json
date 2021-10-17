@@ -10,7 +10,12 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Card is now Further from Source than it Was","Triggerer Now Fits Restriction"],
 					"nowRestriction":{
-						"cardRestrictions":["Same Diagonal as Source"]
+						"cardRestrictions":["Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["On Source's Diagonal"],
+							"mustBeEmpty":false
+						}
 					}
 				}
 			},

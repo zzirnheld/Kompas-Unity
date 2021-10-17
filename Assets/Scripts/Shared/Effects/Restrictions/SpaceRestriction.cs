@@ -17,7 +17,7 @@ namespace KompasCore.Effects
         public const string AdjacentToSource = "Adjacent to Source";
         public const string AdjacentToTarget = "Adjacent to Target";
         public const string AdjacentToCoords = "Adjacent to Coords";
-        public const string AdjacentToWithRestriction = "Adjacent to a Card that Fits Restriction";
+        public const string AdjacentToCardRestriction = "Adjacent to a Card that Fits Restriction";
 
         public const string ConnectedToSourceBy = "Connected to Source by Cards Fitting Restriction";
         public const string ConnectedToSourceBySpaces = "Connected to Source by Spaces Fitting Restriction";
@@ -33,6 +33,9 @@ namespace KompasCore.Effects
         public const string NotInAOEOf = "Not In AOE Of";
         public const string LimitAdjacentCardsFittingRestriction = "Limit Number of Adjacent Cards Fitting Restriction";
         public const string InAOEOfNumberFittingRestriction = "In AOE of Number of Cards Fitting Restriction";
+
+        public const string SubjectiveDisplacementFromSource = "Subjective Displacement from Source";
+        public const string BehindSource = "Behind Source";
 
         //distance
         public const string DistanceX = "Distance to Source == X";
@@ -56,7 +59,10 @@ namespace KompasCore.Effects
         public const string CanMoveSource = "Can Move Source to This Space";
         public const string Empty = "Empty";
         public const string CardHereFitsRestriction = "Card Here Fits Restriction";
+
+        public const string OnSourcesDiagonal = "On Source's Diagonal";
         public const string OnTargetsDiagonal = "On Target's Diagonal";
+
         public const string OnEdge = "On Edge of Board";
         public const string Corner = "Corner";
         //TODO: eventually make a "targetdirection" subeffect that appends the direction as a Space to the list of coords,
@@ -81,6 +87,9 @@ namespace KompasCore.Effects
         public string[] playRestrictionsToIgnore = new string[0];
 
         public int constant;
+
+        public int displacementX;
+        public int displacementY;
 
         public string blurb = "";
         public bool mustBeEmpty = true;
@@ -136,7 +145,7 @@ namespace KompasCore.Effects
                 case AdjacentToSource:          return Source.IsAdjacentTo(space);
                 case AdjacentToTarget:          return target.IsAdjacentTo(space);
                 case AdjacentToCoords:          return space.AdjacentTo(Subeffect.Space);
-                case AdjacentToWithRestriction: return Source.Game.boardCtrl.CardsAdjacentTo(space).Any(c => adjacencyRestriction.Evaluate(c, context));
+                case AdjacentToCardRestriction: return Source.Game.boardCtrl.CardsAdjacentTo(space).Any(c => adjacencyRestriction.Evaluate(c, context));
 
                 case ConnectedToSourceBy:       
                     return Source.Game.boardCtrl.ShortestPath(Subeffect.Source, space, connectednessRestriction, context) < 50;
@@ -166,6 +175,10 @@ namespace KompasCore.Effects
                         .Where(c => limitAdjacencyRestriction.Evaluate(c, context))
                         .Count() <= adjacencyLimit;
 
+                case SubjectiveDisplacementFromSource: 
+                    return Controller.SubjectiveCoords(space).DisplacementTo(Controller.SubjectiveCoords(Source.Position)) == (displacementX, displacementY);
+                case BehindSource: return Source.SpaceBehind(space);
+
                 //distance
                 case DistanceX:                   return Source.DistanceTo(space) == Subeffect.Effect.X;
 
@@ -188,7 +201,10 @@ namespace KompasCore.Effects
                 case CanMoveSource: return Source.MovementRestriction.EvaluateEffectMove(space);
                 case Empty: return Source.Game.boardCtrl.GetCardAt(space) == null;
                 case CardHereFitsRestriction: return hereFitsRestriction.Evaluate(Source.Game.boardCtrl.GetCardAt(space), context);
+
+                case OnSourcesDiagonal: return Source.SameDiagonal(space);
                 case OnTargetsDiagonal: return target.SameDiagonal(space);
+
                 case OnEdge: return space.IsEdge;
                 case Corner: return space.IsCorner;
                 case SameDirectionFromTargetAsSpace:

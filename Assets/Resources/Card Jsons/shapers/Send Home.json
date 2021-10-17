@@ -40,11 +40,16 @@
 		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
 		"adjacentCardRestriction":
 		{
-			"cardRestrictions":["Is Character","Enemy","Adjacent to Card Restriction"],
-			"adjacentCardRestriction":
+			"cardRestrictions":["Is Character","Enemy","Space Fits Restriction"],
+			"spaceRestriction":
 			{
-				"cardRestrictions":["Subtypes Include"],
-				"subtypesInclude":["Shaper"]
+				"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
+				"adjacencyRestriction":
+				{
+					"cardRestrictions":["Subtypes Include"],
+					"subtypesInclude":["Shaper"]
+				},
+				"mustBeEmpty":false
 			}
 		}
 	},
