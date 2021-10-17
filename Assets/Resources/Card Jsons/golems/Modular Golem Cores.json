@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Modular Golem Cores",
-	"effText":"The first time each turn a card arrives adjacent to a Golem, choose a Golem adjacent to them. Destroy all X Augments on the Golem. Deck->augment them with X Golem Cores.",
+	"effText":"The first time each turn a card arrives adjacent to a Golem, choose a Golem character adjacent to them. Destroy all X Augments on the Golem. Deck->augment them with X Golem Cores.",
 	"effects":[
 		{
 			"blurb":"Swap Out Modules",
@@ -30,7 +30,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Golem to swap out modules",
-						"cardRestrictions":["Is Character","Board","Adjacent to Target","Subtypes Include"],
+						"cardRestrictions":["Is Character","Board","Adjacent to Target","Subtypes Include","Is Character"],
 						"subtypesInclude":["Golem"]
 					}
 				},
