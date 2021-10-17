@@ -10,11 +10,16 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered","This Card Fits Restriction"],
 					"cardRestriction":{
-						"cardRestrictions":["Connected to Source By"],
-						"connectednessRestriction":
+						"cardRestrictions":["Space Fits Restriction"],
+						"spaceRestriction":
 						{
-							"cardRestrictions":["Subtypes Include","Board"],
-							"subtypesInclude":["Conductor"]
+							"spaceRestrictions":["Connected to Source by Cards Fitting Restriction"],
+							"connectednessRestriction":
+							{
+								"cardRestrictions":["Subtypes Include","Board"],
+								"subtypesInclude":["Conductor"]
+							},
+							"mustBeEmpty":false
 						}
 					}
 				}

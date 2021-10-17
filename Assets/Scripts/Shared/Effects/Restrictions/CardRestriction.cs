@@ -94,9 +94,6 @@ namespace KompasCore.Effects
         public const string IndexInListLTC = "Index<C";
         public const string IndexInListLTX = "Index<X";
 
-        public const string ConnectedToSourceBy = "Connected to Source By";
-        public const string ConnectedToTargetBy = "Connected to Target By";
-
         //misc
         public const string CanBePlayed = "Can Be Played";
         //public const string TargetCanBePlayed = "Target Can Be Played";
@@ -272,15 +269,6 @@ namespace KompasCore.Effects
                 case IndexInListGTC:     return potentialTarget?.IndexInList > constant;
                 case IndexInListLTC:     return potentialTarget?.IndexInList < constant;
                 case IndexInListLTX:     return potentialTarget?.IndexInList < x;
-
-                case InACorner:          return potentialTarget?.InCorner() ?? false;
-                case ConnectedToSourceBy:
-                    return potentialTarget?.ShortestPath(Source.Position, c => connectednessRestriction.Evaluate(c, context)) < 50; 
-                case ConnectedToTargetBy: 
-                    return potentialTarget?.ShortestPath(Subeffect.Target.Position, c => connectednessRestriction.Evaluate(c, context)) < 50;
-
-                case SameDiagonalAsSource: return potentialTarget?.SameDiagonal(Source) ?? false;
-                case SameDiagonalAsTarget: return potentialTarget?.SameDiagonal(Subeffect.Target) ?? false;
 
                 //misc
                 case CanBePlayed: return Subeffect.Game.ExistsEffectPlaySpace(potentialTarget?.PlayRestriction, Effect);
