@@ -22,7 +22,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Select a plan to accelerate",
-						"cardRestrictions":["Board","Subtypes Include","Distinct from Source"],
+						"cardRestrictions":["Board","Subtypes Include","Different from Source"],
 						"subtypesInclude":["Machination"]
 					}
 				},

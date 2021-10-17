@@ -24,6 +24,11 @@ namespace KompasCore.Effects
         public const string DistinctNameFromTargets = "Distinct Name from Other Targets";
         public const string DistinctNameFromSource = "Distinct Name from Source";
 
+        //different
+        public const string DifferentFromSource = "Different from Source";
+        public const string DifferentFromTarget = "Different from Target";
+        public const string DifferentFromAugmentedCard = "Different from Augmented Card";
+
         //card types
         public const string IsCharacter = "Is Character";
         public const string IsSpell = "Is Spell";
@@ -60,11 +65,6 @@ namespace KompasCore.Effects
         public const string AugmentedBySource = "Source Augments";
         public const string NotAugmentedBySource = "Source Doesn't Augment";
         public const string WieldsAugmentFittingRestriction = "Wields Augment Fitting Restriction";
-
-        //distinct
-        public const string DistinctFromSource = "Distinct from Source";
-        public const string DistinctFromTarget = "Distinct from Target";
-        public const string DistinctFromAugmentedCard = "Distinct From Augmented Card";
 
         //location
         public const string Hand = "Hand";
@@ -116,10 +116,12 @@ namespace KompasCore.Effects
         public int constant;
         public CardLocation[] locations;
         public string[] spellSubtypes;
+
+        //used for "can afford cost"
         public int costMultiplier = 1;
         public int costDivisor = 1;
-        public int cSpaces;
-        public string[] adjacencySubtypes;
+
+        //used for "space restriction valid if this target chosen"
         public int spaceRestrictionIndex;
 
         public CardValue cardValue;
@@ -201,6 +203,11 @@ namespace KompasCore.Effects
                 case DistinctNameFromTargets: return Effect.Targets.All(card => card.CardName != potentialTarget?.CardName);
                 case DistinctNameFromSource:  return Source.CardName != potentialTarget?.CardName;
 
+                //different
+                case DifferentFromSource: return potentialTarget?.Card != Source;
+                case DifferentFromTarget: return potentialTarget?.Card != Subeffect.Target;
+                case DifferentFromAugmentedCard: return potentialTarget?.Card != Source.AugmentedCard;
+
                 //card types
                 case IsCharacter: return potentialTarget?.CardType == 'C';
                 case IsSpell:     return potentialTarget?.CardType == 'S';
@@ -236,11 +243,6 @@ namespace KompasCore.Effects
                 case AugmentedBySource: return potentialTarget?.Augments.Contains(Source) ?? false;
                 case NotAugmentedBySource: return !(potentialTarget?.Augments.Contains(Source) ?? true);
                 case WieldsAugmentFittingRestriction: return potentialTarget?.Augments.Any(c => secondaryRestriction.Evaluate(c, context)) ?? false;
-
-                //distinct
-                case DistinctFromSource: return potentialTarget?.Card != Source;
-                case DistinctFromTarget: return potentialTarget?.Card != Subeffect.Target;
-                case DistinctFromAugmentedCard: return potentialTarget?.Card != Source.AugmentedCard;
 
                 //location
                 case Hand:           return potentialTarget?.Location == CardLocation.Hand;

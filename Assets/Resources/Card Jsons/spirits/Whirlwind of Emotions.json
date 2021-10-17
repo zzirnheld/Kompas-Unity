@@ -25,7 +25,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Animancer to discard",
-						"cardRestrictions":["Friendly","Board","Distinct from Source","Not Already Target","Subtypes Include"],
+						"cardRestrictions":["Friendly","Board","Different from Source","Not Already Target","Subtypes Include"],
 						"subtypesInclude":["Spirit"]
 					}
 				},

@@ -11,7 +11,7 @@
 					"triggerRestrictions":["This Card in Play","Controller Triggered","Triggerer Fits Restriction"],
 					"cardRestriction":
 					{
-						"cardRestrictions":["Distinct from Source","Is Character"]
+						"cardRestrictions":["Different from Source","Is Character"]
 					}
 				}
 			},

@@ -36,7 +36,7 @@
 					"triggerRestrictions":["This Card in Play","Max Per Turn","Coords Fit Restriction","Triggerer Fits Restriction"],
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Distinct from Source","Distinct From Augmented Card"]
+						"cardRestrictions":["Is Character","Different from Source","Different from Augmented Card"]
 					},
 					"spaceRestriction":
 					{

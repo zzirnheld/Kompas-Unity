@@ -20,7 +20,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"blurb":"card to sympa",
 					"cardRestriction":{
-						"cardRestrictions":["Board","Distinct from Source"]
+						"cardRestrictions":["Board","Different from Source"]
 					}
 				},
                 {

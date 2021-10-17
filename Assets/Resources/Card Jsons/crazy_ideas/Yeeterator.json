@@ -12,7 +12,7 @@
 					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Max Per Stack","Triggerer Fits Restriction"],
 					"cardRestriction":
 					{
-						"cardRestrictions":["Distinct from Source"]
+						"cardRestrictions":["Different from Source"]
 					},
 					"spaceRestriction":
 					{

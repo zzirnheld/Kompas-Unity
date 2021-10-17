@@ -25,7 +25,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Magnetizing to attract",
-						"cardRestrictions":["Board","Distinct from Source"]
+						"cardRestrictions":["Board","Different from Source"]
 					}
 				},
 				{
@@ -64,7 +64,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Magnetizing to repel",
-						"cardRestrictions":["Board","Distinct from Source"]
+						"cardRestrictions":["Board","Different from Source"]
 					}
 				},
 				{
