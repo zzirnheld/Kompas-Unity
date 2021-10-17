@@ -29,7 +29,12 @@
 					"whatToCount":"Cards Fitting Restriction",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Board","In Target's AOE","Subtypes Include"],
+						"cardRestrictions":["Board","Subtypes Include","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["In Target's AOE"],
+							"mustBeEmpty":false
+						},
 						"subtypesInclude":["Skyknight"]
 					},
 					"xMultiplier":1
@@ -38,7 +43,12 @@
 					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Board","In Target's AOE"]
+						"cardRestrictions":["Board","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["In Target's AOE"],
+							"mustBeEmpty":false
+						}
 					},
 					"nMult":1,
 					"eMult":1,

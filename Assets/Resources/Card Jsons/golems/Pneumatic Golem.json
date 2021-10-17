@@ -28,8 +28,18 @@
 					"cardRestriction":
 					{
 						"blurb":"character within N spaces of Pneumatic Golem for it to rehand",
-						"cardRestrictions":["Is Character","Board","Within X Spaces"]
-					}
+						"cardRestrictions":["Is Character","Board","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Distance to Source Fits X Restriction"],
+							"distanceXRestriction":{
+								"xRestrictions":["<=X"],
+								"constant":1
+							},
+							"mustBeEmpty":false
+						}
+					},
+					"xMultiplier":1
 				},
 				{
 					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"

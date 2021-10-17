@@ -61,8 +61,8 @@ namespace KompasCore.Effects
                 EqualsEffectX        => x == Subeffect.Count,
                 LessThanEqualEffectX => x <= Subeffect.Count,
 
-                LessThanAvatarCardValue => x < avatarCardValue.GetValueOf(Source.Controller.Avatar);
-                GreaterThanAvatarCardValue => x > avatarCardValue.GetValueOf(Source.Controller.Avatar);
+                LessThanAvatarCardValue    => x < avatarCardValue.GetValueOf(Source.Controller.Avatar),
+                GreaterThanAvatarCardValue => x > avatarCardValue.GetValueOf(Source.Controller.Avatar),
 
                 _ => throw new System.ArgumentException($"Invalid X restriction {r} in X Restriction."),
             };

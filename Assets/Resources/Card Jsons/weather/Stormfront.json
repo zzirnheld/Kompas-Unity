@@ -26,7 +26,12 @@
 					"whatToCount":"Cards Fitting Restriction",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Board","In Target's AOE","Subtypes Include"],
+						"cardRestrictions":["Board","Subtypes Include","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["In Target's AOE"],
+							"mustBeEmpty":false
+						},
 						"subtypesInclude":["Skyknight"]
 					},
 					"xMultiplier":1

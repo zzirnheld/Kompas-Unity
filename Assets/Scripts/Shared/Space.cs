@@ -40,6 +40,7 @@ public struct Space
 
     public static Space NearCorner => new Space(0, 0);
     public static Space FarCorner => new Space(MaxIndex, MaxIndex);
+    public static Space Nowhere => new Space(-69, -420);
     public static Space AvatarCornerFor(int index) => index == 0 ? NearCorner : FarCorner;
 
     public bool Valid => x >= 0 && y >= 0 && x < BoardLen && y < BoardLen;

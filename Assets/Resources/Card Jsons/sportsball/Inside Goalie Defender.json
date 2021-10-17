@@ -25,7 +25,12 @@
 					"cardRestriction":
 					{
 						"blurb":"character to goal-kick Augment to",
-						"cardRestrictions":["Is Character","Board","Adjacent to Target","Distinct Name from Other Targets","Distinct from Source"]
+						"cardRestrictions":["Is Character","Board","Distinct Name from Other Targets","Distinct from Source","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to Target"],
+							"mustBeEmpty":false
+						}
 					}
 				},
 				{

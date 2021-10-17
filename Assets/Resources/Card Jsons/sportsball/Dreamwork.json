@@ -30,7 +30,12 @@
 					"cardRestriction":
 					{
 						"blurb":"adjacent character to attach augment to",
-						"cardRestrictions":["Is Character","Board","Adjacent to Target"]
+						"cardRestrictions":["Is Character","Board","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to Target"],
+							"mustBeEmpty":false
+						}
 					}
 				},
 				{

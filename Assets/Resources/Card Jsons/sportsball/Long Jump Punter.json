@@ -7,7 +7,6 @@
 			"triggerData":
 			{
 				"blurb":"Punt Augment",
-				"triggerCondition":"Augment Attached",
 				"triggerCondition":"Augmented",
 				"triggerRestriction":{
 					"triggerRestrictions":["Max Per Stack","This Card Triggered"]
@@ -19,8 +18,16 @@
 					"cardRestriction":
 					{
 						"blurb":"character within 2 spaces to punt Augment to",
-						"cardRestrictions":["Is Character","Board","Within C Spaces","Distinct from Source"],
-						"cSpaces":2
+						"cardRestrictions":["Is Character","Board","Distinct from Source","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Distance to Source Fits X Restriction"],
+							"distanceXRestriction":{
+								"xRestrictions":["<=Constant"],
+								"constant":2
+							},
+							"mustBeEmpty":false
+						}
 					}
 				},
 				{

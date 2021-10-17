@@ -88,19 +88,7 @@ namespace KompasCore.Effects
         //positioning
         public const string SpaceFitsRestriction = "Space Fits Restriction";
 
-        public const string AdjacentToSource = "Adjacent to Source";
-        public const string AdjacentToTarget = "Adjacent to Target";
-        public const string AdjacentToCoords = "Adjacent to Coords";
-        public const string WithinCSpacesOfSource = "Within C Spaces";
-        public const string WithinCSpacesOfTarget = "Within C Spaces of Target";
-        public const string WithinXSpacesOfSource = "Within X Spaces";
-
-        public const string InAOE = "In AOE";
-        public const string InTargetsAOE = "In Target's AOE";
         public const string SourceInThisAOE = "Source in This' AOE";
-        public const string NotInAOE = "Not In AOE";
-        public const string InAOEOfCardFittingRestriction = "In AOE of Card Fitting Restriction";
-        public const string NotInAOEOfCardFittingRestriction = "Not In AOE of Card Fitting Restriction";
 
         public const string AdjacentToSubtype = "Adjacent to Subtype";
         public const string AdjacentToRestriction = "Adjacent to Card Restriction";
@@ -187,7 +175,8 @@ namespace KompasCore.Effects
             attackedCardRestriction?.Initialize(source, eff);
             inAOEOfRestriction?.Initialize(source, eff);
 
-            spaceRestriction?.Initialize(source, eff.Controller, eff);
+            if (Subeffect != null) spaceRestriction?.Initialize(Subeffect);
+            else spaceRestriction?.Initialize(source, eff.Controller, eff);
 
             initialized = true;
             Debug.Log($"Initialized {this}");
@@ -285,9 +274,8 @@ namespace KompasCore.Effects
                 case OutOfMovement: return potentialTarget?.SpacesCanMove <= 0;
 
                 //positioning
-                case SpaceFitsRestriction: return spaceRestriction.Evaluate(potentialTarget.Position, context);
+                case SpaceFitsRestriction: return spaceRestriction.Evaluate(potentialTarget?.Position ?? Space.Nowhere, context);
 
-                case AdjacentToSource:           return potentialTarget?.IsAdjacentTo(Source) ?? false;
                 case AdjacentToTarget:   return potentialTarget?.IsAdjacentTo(Subeffect.Target) ?? false;
                 case AdjacentToCoords:   return potentialTarget?.IsAdjacentTo(Subeffect.Space) ?? false;
                 case AdjacentToSubtype:  

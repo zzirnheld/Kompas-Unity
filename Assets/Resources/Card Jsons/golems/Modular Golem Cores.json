@@ -30,7 +30,12 @@
 					"cardRestriction":
 					{
 						"blurb":"Golem to swap out modules",
-						"cardRestrictions":["Is Character","Board","Adjacent to Target","Subtypes Include"],
+						"cardRestrictions":["Is Character","Board","Subtypes Include","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to Target"],
+							"mustBeEmpty":false
+						},
 						"subtypesInclude":["Golem"]
 					}
 				},
