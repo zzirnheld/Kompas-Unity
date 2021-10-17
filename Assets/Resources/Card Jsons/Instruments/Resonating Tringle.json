@@ -1,0 +1,74 @@
+{
+	"cardType":65,
+	"cardName":"Resonating Tringle",
+	"effText":"Instrument.\nAfter you cast Music adjacent to me, delay until the next turn starts, then discard->cast it adjacent to me.",
+	"effects":[
+		{
+			"blurb":"see: Michael",
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Coords Fit Restriction"],
+					"spaceRestriction":
+					{
+						"spaceRestrictions":["Adjacent to Source","Card Here Fits Restriction"],
+                        "hereFitsRestriction":
+                        {
+                            "cardRestrictions":["Friendly","Subtypes Include"],
+                            "subtypesInclude":["Music"]
+                        },
+						"mustBeEmpty":false
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay":0,
+					"indexToResume":2,
+					"endCondition":"Turn Start",
+					"triggerRestriction":{
+						"triggerRestrictions":["Friendly Turn"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition":"Target Violates Restriction",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Discard"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where Music",
+						"spaceRestrictions":["Adjacent to Source","Can Play Target to This Space"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"keywords":["Instrument"],
+	"PlayRestriction":{
+		"normalRestrictions":["Augment Normal Restrictions","On Card that Flouts Restriction"],
+		"effectRestrictions":["Augment Effect Restrictions","On Card that Flouts Restriction"],
+		"onCardRestriction":{
+			"cardRestrictions":["Has Augment Fitting Restriction"],
+			"augmentRestriction":{
+                "cardRestrictions":["Subtypes Include"],
+                "subtypesInclude":["Instrument"]
+            }
+		}
+	},
+	"a":2,
+	"subtypeText":"Instrument"
+}

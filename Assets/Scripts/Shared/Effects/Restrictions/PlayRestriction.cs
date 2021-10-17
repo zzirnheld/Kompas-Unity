@@ -23,6 +23,7 @@ namespace KompasCore.Effects
         public const string MustNormally = "Must be Played Normally";
         public const string OnBoardCardFriendlyOrAdjacent = "On Board Card";
         public const string OnCardFittingRestriction = "On Card that Fits Restriction";
+        public const string OnCardFloutingRestriction = "On Card that Flouts Restriction";
         public const string AdjacentToCardFittingRestriction = "Adjacent to Card Fitting Restriction";
 
         public const string SpaceFitsRestriction = "Space Must Fit Restriction";
@@ -53,6 +54,7 @@ namespace KompasCore.Effects
         public List<string> recommendationRestrictions = null;
 
         public CardRestriction onCardRestriction;
+        public CardRestriction onCardFloutedRestriction;
         public CardRestriction adjacentCardRestriction;
 
         public SpaceRestriction spaceRestriction;
@@ -111,6 +113,8 @@ namespace KompasCore.Effects
                         && (cardThere.Controller == Card.Controller || cardThere.AdjacentCards.Any(c => c.Controller == Card.Controller));
                 case OnCardFittingRestriction:
                     return onCardRestriction.Evaluate(Card.Game.boardCtrl.GetCardAt(space), context);
+                case OnCardFloutingRestriction:
+                    return onCardFloutedRestriction.Evaluate(Card.Game.boardCtrl.GetCardAt(space), context);
                 case NotNormally: return !normal;
                 case MustNormally: return normal;
                 case CheckUnique: return !(Card.Unique && Card.AlreadyCopyOnBoard);

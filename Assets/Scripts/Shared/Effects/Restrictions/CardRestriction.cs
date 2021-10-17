@@ -154,6 +154,7 @@ namespace KompasCore.Effects
         public const string AttackingCardFittingRestriction = "Attacking Card Fitting Restriction";
         public const string EffectIsOnTheStack = "Effect is on the Stack";
         public const string CanPlayToTargetSpace = "Can be Played to Target Space";
+        public const string HasAugmentFittingRestriction = "Has Augment Fitting Restriction";
         #endregion restrictions
 
         //because JsonUtility will fill in all values with defaults if not present
@@ -180,6 +181,7 @@ namespace KompasCore.Effects
         public CardRestriction connectednessRestriction;
         public CardRestriction attackedCardRestriction;
         public CardRestriction inAOEOfRestriction;
+        public CardRestriction augmentRestriction;
 
         public GameCard Source { get; private set; }
         public Player Controller => Source == null ? null : Source.Controller;

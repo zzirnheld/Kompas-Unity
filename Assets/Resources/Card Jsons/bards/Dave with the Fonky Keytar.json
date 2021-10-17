@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Dave with the Fonky Keytar",
-	"effText":"When a distinct Bard casts Music adjacent to me, delay until the stack ends, then dispel it and deck->cast Music where it was.",
+	"effText":"After a distinct Bard casts Music adjacent to me, delay until the stack ends, then dispel it and deck->cast Music where it was.",
 	"effects":[
 		{
 			"blurb":"fOnKYYY",

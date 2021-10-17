@@ -1,0 +1,67 @@
+{
+	"cardType":65,
+	"cardName":"Horny Jail",
+	"effText":"Instrument.\nWhen you cast C X Music adjacent to me, give a character -X N until your next turn starts.",
+	"effects":[
+		{
+			"blurb":"*horny fanfare*",
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Coords Fit Restriction"],
+					"spaceRestriction":
+					{
+						"spaceRestrictions":["Adjacent to Source","Card Here Fits Restriction"],
+                        "hereFitsRestriction":
+                        {
+                            "cardRestrictions":["Friendly","Subtypes Include"],
+                            "subtypesInclude":["Music"]
+                        },
+						"mustBeEmpty":false
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.SetXByTriggeringCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"C"
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"[CENSORED]",
+						"cardRestrictions":["Is Character","Board"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
+					"nMultiplier":-1,
+					"endCondition":"Turn Start",
+					"fallOffCondition":"",
+					"triggerRestriction":{
+						"triggerRestrictions":["Friendly Turn"]
+					}
+				}
+			]
+		}
+	],
+	"keywords":["Instrument"],
+	"PlayRestriction":{
+		"normalRestrictions":["Augment Normal Restrictions","On Card that Flouts Restriction"],
+		"effectRestrictions":["Augment Effect Restrictions","On Card that Flouts Restriction"],
+		"onCardRestriction":{
+			"cardRestrictions":["Has Augment Fitting Restriction"],
+			"augmentRestriction":{
+                "cardRestrictions":["Subtypes Include"],
+                "subtypesInclude":["Instrument"]
+            }
+		}
+	},
+	"a":2,
+	"subtypeText":"Instrument"
+}
