@@ -86,6 +86,8 @@ namespace KompasCore.Effects
         public const string OutOfMovement = "Out of Movement";
 
         //positioning
+        public const string SpaceFitsRestriction = "Space Fits Restriction";
+
         public const string AdjacentToSource = "Adjacent to Source";
         public const string AdjacentToTarget = "Adjacent to Target";
         public const string AdjacentToCoords = "Adjacent to Coords";
@@ -154,6 +156,8 @@ namespace KompasCore.Effects
         public CardRestriction attackedCardRestriction;
         public CardRestriction inAOEOfRestriction;
 
+        public SpaceRestriction spaceRestriction;
+
         public GameCard Source { get; private set; }
         public Player Controller => Source == null ? null : Source.Controller;
         public Effect Effect { get; private set; }
@@ -178,16 +182,12 @@ namespace KompasCore.Effects
             secondaryRestriction?.Initialize(source, eff);
             xRestriction?.Initialize(source, Subeffect);
 
-            /*
-            if (cardRestrictions.Contains(ConnectedToSourceBy))
-            {
-                if (connectednessRestriction == null) Debug.LogError($"Couldn't load connectedness restriction");
-                else Debug.Log($"Connectedness restriction: {connectednessRestriction}");
-            }*/
             adjacentCardRestriction?.Initialize(source, eff);
             connectednessRestriction?.Initialize(source, eff);
             attackedCardRestriction?.Initialize(source, eff);
             inAOEOfRestriction?.Initialize(source, eff);
+
+            spaceRestriction?.Initialize(source, eff.Controller, eff);
 
             initialized = true;
             Debug.Log($"Initialized {this}");
@@ -277,33 +277,6 @@ namespace KompasCore.Effects
 
                 //stats
                 case CardValueFitsXRestriction: return xRestriction.Evaluate(cardValue.GetValueOf(potentialTarget));
-                    //<=
-                case NLTEX:    return potentialTarget?.N <= x;
-                case ELTEX:    return potentialTarget?.E <= x;
-                case SLTEX:    return potentialTarget?.S <= x;
-                case WLTEX:    return potentialTarget?.W <= x;
-                case CostLTEX: return potentialTarget?.Cost <= x;
-                    //==
-                case NEX:      return potentialTarget?.N == x;
-                case EEX:      return potentialTarget?.E == x;
-                case SEX:      return potentialTarget?.S == x;
-                case WEX:      return potentialTarget?.W == x;
-                case CostEX:   return potentialTarget?.Cost == x;
-                    //<
-                case NLTX:     return potentialTarget?.N < x;
-                case ELTX:     return potentialTarget?.E < x;
-                case SLTX:     return potentialTarget?.S < x;
-                case WLTX:     return potentialTarget?.W < x;
-                case CostLTX:  return potentialTarget?.Cost < x;
-                    //<=C
-                case NLTEC:    return potentialTarget?.N <= constant;
-                case ELTEC:    return potentialTarget?.E <= constant;
-                case SLTEC:    return potentialTarget?.S <= constant;
-                case WLTEC:    return potentialTarget?.W <= constant;
-                case CostGTX:  return potentialTarget?.Cost > x;
-                    //misc
-                case CostLTAvatar: return potentialTarget?.Cost < Source.Controller.Avatar.Cost;
-                case CostGTAvatar: return potentialTarget?.Cost > Source.Controller.Avatar.Cost;
                 case CanBeHealed: return potentialTarget?.CardType == 'C' && potentialTarget?.Location == CardLocation.Field 
                         && potentialTarget?.E < potentialTarget?.BaseE;
 
@@ -312,6 +285,8 @@ namespace KompasCore.Effects
                 case OutOfMovement: return potentialTarget?.SpacesCanMove <= 0;
 
                 //positioning
+                case SpaceFitsRestriction: return spaceRestriction.Evaluate(potentialTarget.Position, context);
+
                 case AdjacentToSource:           return potentialTarget?.IsAdjacentTo(Source) ?? false;
                 case AdjacentToTarget:   return potentialTarget?.IsAdjacentTo(Subeffect.Target) ?? false;
                 case AdjacentToCoords:   return potentialTarget?.IsAdjacentTo(Subeffect.Space) ?? false;

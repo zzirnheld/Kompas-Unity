@@ -15,15 +15,17 @@ namespace KompasCore.Effects
         #region space restrictions
         //adjacency
         public const string AdjacentToThisCard = "Adjacent to Source";
+        public const string AdjacentToTarget = "Adjacent to Target";
         public const string AdjacentToCoords = "Adjacent to Coords";
         public const string AdjacentToWithRestriction = "Adjacent to a Card that Fits Restriction";
-        public const string AdjacentToTarget = "Adjacent to Target";
+
         public const string ConnectedToSourceBy = "Connected to Source by Cards Fitting Restriction";
         public const string ConnectedToSourceBySpaces = "Connected to Source by Spaces Fitting Restriction";
         public const string ConnectedToTargetBy = "Connected to Target by";
         public const string ConnectedToTargetBySpaces = "Connected to Target by Spaces Fitting Restriction";
         public const string ConnectedToTargetByXSpaces = "Connected to Target by X Spaces Fitting Restriction";
         public const string ConnectedToAvatarBy = "Connected to Avatar by";
+
         public const string InAOE = "In AOE";
         public const string NotInAOE = "Not In AOE";
         public const string InTargetsAOE = "In Target's AOE";
@@ -128,9 +130,9 @@ namespace KompasCore.Effects
             {
                 //adjacency
                 case AdjacentToThisCard:        return Source.IsAdjacentTo(space);
-                case AdjacentToWithRestriction: return Source.Game.boardCtrl.CardsAdjacentTo(space).Any(c => adjacencyRestriction.Evaluate(c, context));
                 case AdjacentToTarget:          return target.IsAdjacentTo(space);
                 case AdjacentToCoords:          return space.AdjacentTo(Subeffect.Space);
+                case AdjacentToWithRestriction: return Source.Game.boardCtrl.CardsAdjacentTo(space).Any(c => adjacencyRestriction.Evaluate(c, context));
                 case ConnectedToSourceBy:       
                     return Source.Game.boardCtrl.ShortestPath(Subeffect.Source, space, connectednessRestriction, context) < 50;
                 case ConnectedToSourceBySpaces: 

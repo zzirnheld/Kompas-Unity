@@ -47,7 +47,12 @@
 					"cardRestriction":
 					{
 						"blurb":"character for Torzal Coil to zap for X E",
-						"cardRestrictions":["Is Character","Board","Adjacent to Source"]
+						"cardRestrictions":["Is Character","Board","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to Source"],
+							"mustBeEmpty":false
+						}
 					}
 				},
 				{
