@@ -52,7 +52,7 @@
 		"normalRestrictions":["Augment Normal Restrictions","On Card that Flouts Restriction"],
 		"effectRestrictions":["Augment Effect Restrictions","On Card that Flouts Restriction"],
 		"onCardRestriction":{
-			"cardRestrictions":["Has Augment Fitting Restriction"],
+			"cardRestrictions":["Wields Augment Fitting Restriction"],
 			"augmentRestriction":{
                 "cardRestrictions":["Subtypes Include"],
                 "subtypesInclude":["Instrument"]

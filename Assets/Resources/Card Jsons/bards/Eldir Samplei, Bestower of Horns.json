@@ -1,0 +1,66 @@
+{
+	"cardType":67,
+	"cardName":"Eldir Samplei, Bestower of Horns",
+	"effText":"When you cast Music adjacent to me, deck->attach an Instrument (to a Bard without one). If you do, once the stack ends, dispel the Music.",
+	"effects":[
+		{
+			"blurb":"you get a horn",
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Controller Triggered","Triggerer Fits Restriction","Coords Fit Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Subtypes Include"],
+						"subtypesInclude":["Music"]
+					},
+					"spaceRestriction":
+					{
+						"spaceRestrictions":["Adjacent to Source","Card Here Fits Restriction"],
+                        "hereFitsRestriction":
+                        {
+                            "cardRestrictions":["Friendly","Subtypes Include"],
+                            "subtypesInclude":["Music"]
+                        },
+						"mustBeEmpty":false
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"cardRestrictions":["Friendly","Board","Wields No Augment Fitting Restriction"],
+                        "augmentRestriction":{
+                            "cardRestrictions":["Subtypes Include"],
+                            "subtypesInclude":["Instrument"]
+                        }
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose":1,
+					"cardRestriction":
+					{
+						"blurb":"horn",
+						"cardRestrictions":["Friendly","Deck","Is Augment","Subtypes Include"],
+						"subtypesInclude":["Instrument"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+    "unique":true,
+	"n":1,
+	"e":5,
+	"s":4,
+	"w":2,
+	"subtypes":["Bard"],
+	"subtypeText":"Bard"
+}

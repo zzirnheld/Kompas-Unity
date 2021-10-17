@@ -29,6 +29,7 @@ bards/Michael on Triangle
 bards/The Mystical Medical Doc
 bards/Reyna, Basoonist Backstage
 bards/Impro Visio, Dealing with Nonsezna
+bards/Eldir Samplei, Bestower of Horns
 bards/Bards Get Inspiration
 bards/The Playlist
 bards/Up To Eleven
@@ -153,6 +154,11 @@ golems/Woolen Golem
 golems/Gold Golem
 golems/Core Scrambling
 Haemopoten
+instruments/Assaulting Batterie
+instruments/Gratuitous Sax
+instruments/Gratuitous Violins
+instruments/Horny Jail
+instruments/Resonating Tringle
 invokers/Haguaughan Invoker
 invokers/Invoke the Invoker
 invokers/Prepare the Name

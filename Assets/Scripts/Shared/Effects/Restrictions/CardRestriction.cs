@@ -60,6 +60,7 @@ namespace KompasCore.Effects
         public const string AugmentedBySource = "Source Augments";
         public const string NotAugmentedBySource = "Source Doesn't Augment";
         public const string WieldsAugmentFittingRestriction = "Wields Augment Fitting Restriction";
+        public const string WieldsNoAugmentFittingRestriction = "Wields No Augment Fitting Restriction";
 
         //distinct
         public const string DistinctFromSource = "Distinct from Source";
@@ -154,7 +155,6 @@ namespace KompasCore.Effects
         public const string AttackingCardFittingRestriction = "Attacking Card Fitting Restriction";
         public const string EffectIsOnTheStack = "Effect is on the Stack";
         public const string CanPlayToTargetSpace = "Can be Played to Target Space";
-        public const string HasAugmentFittingRestriction = "Has Augment Fitting Restriction";
         #endregion restrictions
 
         //because JsonUtility will fill in all values with defaults if not present
@@ -287,7 +287,8 @@ namespace KompasCore.Effects
                 case AugmentsTarget: return potentialTarget?.AugmentedCard == Subeffect.Target;
                 case AugmentedBySource: return potentialTarget?.Augments.Contains(Source) ?? false;
                 case NotAugmentedBySource: return !(potentialTarget?.Augments.Contains(Source) ?? true);
-                case WieldsAugmentFittingRestriction: return potentialTarget?.Augments.Any(c => secondaryRestriction.Evaluate(c, context)) ?? false;
+                case WieldsAugmentFittingRestriction: return potentialTarget?.Augments.Any(c => augmentRestriction.Evaluate(c, context)) ?? false;
+                case WieldsNoAugmentFittingRestriction: return !(potentialTarget?.Augments.Any(c => augmentRestriction.Evaluate(c, context)) ?? false);
 
                 //distinct
                 case DistinctFromSource: return potentialTarget?.Card != Source;
