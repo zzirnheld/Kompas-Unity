@@ -6,8 +6,6 @@ namespace KompasCore.Effects
     [System.Serializable]
     public class XRestriction
     {
-        public const string LessThanEqualThisCost = "<=ThisCost";
-        public const string LessThanEqualThisE = "<=ThisE";
         public const string Positive = ">0";
         public const string Negative = "<0";
         public const string Nonnegative = ">=0";
@@ -15,7 +13,6 @@ namespace KompasCore.Effects
         public const string AtLeastConstant = ">=Constant";
         public const string NoMoreThanConstant = "<=Constant";
         public const string EqualsConstant = "==Constant";
-        public const string LessThanEqualControllerPips = "<= Controller's Pips";
 
         public const string LessThanEffectX = "<X";
         public const string GreaterThanEffectX = ">X";
@@ -47,10 +44,6 @@ namespace KompasCore.Effects
                 Positive => x > 0,
                 Negative => x < 0,
                 Nonnegative => x >= 0,
-
-                LessThanEqualThisCost       => x <= Source.Cost,
-                LessThanEqualThisE          => x <= Source.E,
-                LessThanEqualControllerPips => x <= Source.Controller.Pips,
 
                 AtLeastConstant     => x >= constant,
                 NoMoreThanConstant  => x <= constant,
