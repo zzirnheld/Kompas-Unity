@@ -190,6 +190,8 @@ music/Music for Aerports
 music/Play Them Leylines Like a Banjo
 music/Glory Metal
 music/4 33
+music/Backup Track
+music/Hard Rock
 None Defy the Lines
 Notcropoten
 pulsars/Accelerating Pulsar
