@@ -296,14 +296,20 @@ namespace KompasServer.Effects
 
         private void ResolveHangingEffects(string condition, ActivationContext context)
         {
-            foreach (var toEnd in hangingEffectMap[condition].ToArray())
+            if(hangingEffectMap.ContainsKey(condition))
             {
-                if (toEnd.EndIfApplicable(context)) RemoveHangingEffect(toEnd);
+                foreach (var toEnd in hangingEffectMap[condition].ToArray())
+                {
+                    if (toEnd.EndIfApplicable(context)) RemoveHangingEffect(toEnd);
+                }
             }
 
-            foreach (var toRemove in hangingEffectFallOffMap[condition].ToArray())
+            if (hangingEffectFallOffMap.ContainsKey(condition))
             {
-                if (toRemove.ShouldBeCanceled(context)) RemoveHangingEffect(toRemove);
+                foreach (var toRemove in hangingEffectFallOffMap[condition].ToArray())
+                {
+                    if (toRemove.ShouldBeCanceled(context)) RemoveHangingEffect(toRemove);
+                }
             }
         }
 
