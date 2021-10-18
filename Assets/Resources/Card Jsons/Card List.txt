@@ -30,6 +30,7 @@ bards/The Mystical Medical Doc
 bards/Reyna, Basoonist Backstage
 bards/Impro Visio, Dealing with Nonsezna
 bards/Eldir Samplei, Bestower of Horns
+bards/Zach, Sky Singer
 bards/Bards Get Inspiration
 bards/The Playlist
 bards/Up To Eleven
