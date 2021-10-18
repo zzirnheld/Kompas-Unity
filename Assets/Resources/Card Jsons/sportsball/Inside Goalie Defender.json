@@ -12,7 +12,12 @@
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":
 					{
-						"cardRestrictions":["Board","Avatar","Friendly","Adjacent to Source"]
+						"cardRestrictions":["Board","Avatar","Friendly","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to Source"],
+							"mustBeEmpty":false
+						}
 					}
 				}
 			},

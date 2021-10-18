@@ -14,7 +14,12 @@
 			"cardRestriction":
 			{
 				"blurb":"for Dragon to move and attack",
-				"cardRestrictions":["Board","Is Character","Summoned","Adjacent to Source"]
+				"cardRestrictions":["Board","Is Character","Summoned","Space Fits Restriction"],
+				"spaceRestriction":
+				{
+					"spaceRestrictions":["Adjacent to Source"],
+					"mustBeEmpty":false
+				}
 			}
 		},
 		{

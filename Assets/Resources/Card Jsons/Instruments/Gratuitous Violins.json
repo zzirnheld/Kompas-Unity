@@ -31,7 +31,12 @@
 					"cardRestriction":
 					{
 						"blurb":"character for the Violinist to violence",
-						"cardRestrictions":["Is Character","Board","Adjacent to Source"]
+						"cardRestrictions":["Is Character","Board","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to Source"],
+							"mustBeEmpty":false
+						}
 					}
 				},
 				{

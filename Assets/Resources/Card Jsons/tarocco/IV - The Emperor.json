@@ -17,7 +17,12 @@
 					"cardRestriction":
 					{
 						"blurb":"Summoned character for Emperor to buff",
-						"cardRestrictions":["Is Character","Board","Adjacent to Source","Summoned"]
+						"cardRestrictions":["Is Character","Board","Summoned","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to Source"],
+							"mustBeEmpty":false
+						}
 					}
 				},
 				{

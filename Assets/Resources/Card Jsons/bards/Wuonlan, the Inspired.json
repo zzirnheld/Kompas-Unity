@@ -35,7 +35,12 @@
 					"cardRestriction":
 					{
 						"blurb":"Music to rework",
-						"cardRestrictions":["Board","Adjacent to Target","Subtypes Include"],
+						"cardRestrictions":["Board","Subtypes Include","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to Source"],
+							"mustBeEmpty":false
+						},
 						"subtypesInclude":["Music"]
 					}
 				},
