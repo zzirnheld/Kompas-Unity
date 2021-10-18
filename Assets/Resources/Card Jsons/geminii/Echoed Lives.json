@@ -16,7 +16,12 @@
 					"$type":"KompasServer.Effects.ResummonAllSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Summoned","Board","In AOE"]
+						"cardRestrictions":["Is Character","Summoned","Board","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["In AOE"],
+							"mustBeEmpty":false
+						}
 					}
 				}
 			]	

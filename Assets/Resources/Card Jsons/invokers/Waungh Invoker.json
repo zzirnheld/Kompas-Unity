@@ -32,7 +32,13 @@
 					"condition":"Target Violates Restriction",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","S<X"]
+						"cardRestrictions":["Is Character","Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"S"
+						},
+						"xRestriction":{
+							"xRestrictions":["<X"]
+						}
 					},
 					"jumpIndex":2,
 					"xMultiplier":1

@@ -46,7 +46,12 @@
 					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["In Target's AOE","Summoned","Is Character"]
+						"cardRestrictions":["Summoned","Is Character","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["In Target's AOE"],
+							"mustBeEmpty":false
+						}
 					}
 				},
 				{

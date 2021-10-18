@@ -10,7 +10,16 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["Controller Triggered","Triggerer Fits Restriction","This Card in Play"],
 					"cardRestriction":{
-						"cardRestrictions":["Subtypes Include","Cost>Avatar"],
+						"cardRestrictions":["Subtypes Include","Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"S"
+						},
+						"xRestriction":{
+							"xRestrictions":[">Avatar"],
+							"avatarCardValue":{
+								"value":"S"
+							}
+						},
 						"subtypesInclude":["Pulsar"]
 					}
 				}
@@ -29,7 +38,16 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["Controller Triggered","Triggerer Fits Restriction","This Card in Play"],
 					"cardRestriction":{
-						"cardRestrictions":["Subtypes Include","Cost<Avatar"],
+						"cardRestrictions":["Subtypes Include","Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"S"
+						},
+						"xRestriction":{
+							"xRestrictions":["<Avatar"],
+							"avatarCardValue":{
+								"value":"S"
+							}
+						},
 						"subtypesInclude":["Pulsar"]
 					}
 				}

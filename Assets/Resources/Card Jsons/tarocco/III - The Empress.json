@@ -18,7 +18,13 @@
 					"cardRestriction":
 					{
 						"blurb":"for Empress to hand-summon",
-						"cardRestrictions":["Is Character","Friendly","Hand","S<=X"]
+						"cardRestrictions":["Is Character","Friendly","Hand","Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"S"
+						},
+						"xRestriction":{
+							"xRestrictions":["<=X"]
+						}
 					},
 					"xMultiplier":1
 				},

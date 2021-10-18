@@ -17,7 +17,12 @@
 					"cardRestriction":
 					{
 						"blurb":"for Binding Site to bind",
-						"cardRestrictions":["Board","Is Character","Adjacent to Source"]
+						"cardRestrictions":["Board","Is Character","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to Source"],
+							"mustBeEmpty":false
+						}
 					}
 				},
 				{

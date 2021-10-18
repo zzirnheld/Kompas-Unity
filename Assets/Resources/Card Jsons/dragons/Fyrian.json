@@ -21,8 +21,16 @@
 					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Board","Within C Spaces of Target"],
-						"cSpaces":1
+						"cardRestrictions":["Is Character","Board","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Distance to Target Fits X Restriction"],
+							"distanceXRestriction":{
+								"xRestrictions":["<=Constant"],
+								"constant":1
+							},
+							"mustBeEmpty":false
+						}
 					},
 					"eMod":-3
 				}

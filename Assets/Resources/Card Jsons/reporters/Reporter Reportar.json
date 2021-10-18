@@ -51,7 +51,13 @@
 					"cardRestriction":
 					{
 						"blurb":"character to reveal",
-						"cardRestrictions":["Controller Matches Player Target","Hand","Is Character","Cost==X","Hidden"]
+						"cardRestrictions":["Controller Matches Player Target","Hand","Is Character","Hidden","Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"Cost"
+						},
+						"xRestriction":{
+							"xRestrictions":["=X"]
+						}
 					},
 					"xMultiplier":1
 				},

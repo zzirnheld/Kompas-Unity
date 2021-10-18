@@ -44,7 +44,18 @@
 					"cardRestriction":
 					{
 						"blurb":"character whose soul to kill",
-						"cardRestrictions":["Board","Is Character","Cost<=X","Adjacent to Source"]
+						"cardRestrictions":["Board","Is Character","Card Value Fits X Restriction","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to Source"],
+							"mustBeEmpty":false
+						},
+						"cardValue":{
+							"value":"S"
+						},
+						"xRestriction":{
+							"xRestrictions":["<=X"]
+						}
 					},
 					"xMultiplier":1,
 					"xDivisor":2

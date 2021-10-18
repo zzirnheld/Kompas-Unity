@@ -42,7 +42,13 @@
 					"cardRestriction":
 					{
 						"blurb":"for Animancer to search",
-						"cardRestrictions":["Subtypes Include","Friendly","Deck","Cost<=X"],
+						"cardRestrictions":["Subtypes Include","Friendly","Deck","Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"Cost"
+						},
+						"xRestriction":{
+							"xRestrictions":["<=X"]
+						},
 						"subtypesInclude":["Golem"]
 					},
 					"xMultiplier":1,

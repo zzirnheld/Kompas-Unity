@@ -16,8 +16,17 @@
 					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Enemy","Board","Adjacent to Subtype"],
-						"adjacencySubtypes":["Supplicant"]
+						"cardRestrictions":["Is Character","Enemy","Board","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
+							"adjacencyRestriction":
+							{
+								"cardRestrictions":["Subtypes Include"],
+								"subtypesInclude":["Supplicant"]
+							},
+							"mustBeEmpty":false
+						}
 					}
 				},
 				{

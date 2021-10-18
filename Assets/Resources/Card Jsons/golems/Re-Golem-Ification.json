@@ -36,7 +36,13 @@
 					"cardRestriction":
 					{
 						"blurb":"to re-golem-ificate",
-						"cardRestrictions":["Subtypes Include","Friendly","Discard","Cost==X"],
+						"cardRestrictions":["Subtypes Include","Friendly","Discard","Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"Cost"
+						},
+						"xRestriction":{
+							"xRestrictions":["=X"]
+						},
 						"subtypesInclude":["Golem"]
 					}
 				},

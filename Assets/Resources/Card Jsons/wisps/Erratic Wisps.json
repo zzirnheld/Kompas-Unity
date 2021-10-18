@@ -34,7 +34,12 @@
 					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Friendly","Board","Adjacent to Target","Subtypes Include"],
+						"cardRestrictions":["Friendly","Board","Subtypes Include","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to Target"],
+							"mustBeEmpty":false
+						},
 						"subtypesInclude":["Wisp"]
 					}
 				},

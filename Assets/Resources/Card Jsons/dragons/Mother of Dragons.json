@@ -51,7 +51,13 @@
 					"cardRestriction":
 					{
 						"blurb":"for Mother of Dragons to birth",
-						"cardRestrictions":["Friendly","Deck","Is Character","Cost<=X","Index<X","Subtypes Include"],
+						"cardRestrictions":["Friendly","Deck","Is Character","Index<X","Subtypes Include","Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"S"
+						},
+						"xRestriction":{
+							"xRestrictions":["<=X"]
+						},
 						"subtypesInclude":["Dragon"]
 					},
 					"restRestriction":

@@ -40,6 +40,7 @@ public struct Space
 
     public static Space NearCorner => new Space(0, 0);
     public static Space FarCorner => new Space(MaxIndex, MaxIndex);
+    public static Space Nowhere => new Space(-69, -420);
     public static Space AvatarCornerFor(int index) => index == 0 ? NearCorner : FarCorner;
 
     public bool Valid => x >= 0 && y >= 0 && x < BoardLen && y < BoardLen;
@@ -52,6 +53,7 @@ public struct Space
     public int TaxicabDistanceTo(Space other) => Math.Abs(x - other.x) + Math.Abs(y - other.y);
     public int RadialDistanceTo(Space other) => Math.Max(Math.Abs(x - other.x), Math.Abs(y - other.y));
     public int DistanceTo(Space other) => TaxicabDistanceTo(other);
+    public Space DisplacementTo(Space other) => new Space(x - other.x, y - other.y);
 
     public bool AdjacentTo(Space other) => DistanceTo(other) == 1;
     public IEnumerable<Space> AdjacentSpaces
