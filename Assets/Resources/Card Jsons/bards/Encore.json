@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Encore",
-	"effText":"When turns start, dispel 1 friendly music, then cast it where it was.",
+	"effText":"When turns start, dispel 1 friendly Music, then discard->cast it where it was.",
 	"effects":[
         {
             "blurb":"Encore!",

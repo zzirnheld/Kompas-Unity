@@ -73,7 +73,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"enemy card for Straw Golem to move.",
+						"blurb":"enemy card getting absolutely headbanged.",
 						"cardRestrictions":["Board","Summoned","Not Augment"]
 					}
 				},
@@ -92,7 +92,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"enemy card for Straw Golem to move.",
+						"blurb":"enemy card getting absolutely headbanged.",
 						"cardRestrictions":["Board","Not Already Target","Summoned","Not Augment"]
 					}
 				},
