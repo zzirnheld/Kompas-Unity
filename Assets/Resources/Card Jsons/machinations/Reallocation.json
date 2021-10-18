@@ -17,7 +17,12 @@
 					"cardRestriction":
 					{
 						"blurb":"Machination that has come to Fruition",
-						"cardRestrictions":["Is Spell","Friendly","Board","Adjacent to Source","Distinct Name from Source"]
+						"cardRestrictions":["Is Spell","Friendly","Board","Distinct Name from Source","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to Source"],
+							"mustBeEmpty":false
+						}
 					}
 				},
 				{

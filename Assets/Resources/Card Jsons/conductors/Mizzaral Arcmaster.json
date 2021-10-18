@@ -15,11 +15,16 @@
 					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Friendly","Board","Connected to Source By"],
-						"connectednessRestriction":
+						"cardRestrictions":["Friendly","Board","Space Fits Restriction"],
+						"spaceRestriction":
 						{
-							"cardRestrictions":["Subtypes Include","Board"],
-							"subtypesInclude":["Conductor"]
+							"spaceRestrictions":["Connected to Source by Cards Fitting Restriction"],
+							"connectednessRestriction":
+							{
+								"cardRestrictions":["Subtypes Include","Board"],
+								"subtypesInclude":["Conductor"]
+							},
+							"mustBeEmpty":false
 						}
 					}
 				},

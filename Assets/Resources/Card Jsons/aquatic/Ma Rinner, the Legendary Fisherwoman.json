@@ -25,10 +25,15 @@
 					"condition":"Target Fits Restriction",
 					"cardRestriction":
 					{
-						"cardRestrictions":["In AOE of Card Fitting Restriction"],
-						"inAOEOfRestriction":{
-							"cardRestrictions":["Subtypes Include"],
-							"subtypesInclude":["Water"]
+						"cardRestrictions":["Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["In AOE Of"],
+							"inAOEOfRestriction":{
+								"cardRestrictions":["Subtypes Include"],
+								"subtypesInclude":["Water"]
+							},
+							"mustBeEmpty":false
 						}
 					}
 				},

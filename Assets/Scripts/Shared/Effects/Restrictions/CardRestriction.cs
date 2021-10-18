@@ -24,6 +24,11 @@ namespace KompasCore.Effects
         public const string DistinctNameFromTargets = "Distinct Name from Other Targets";
         public const string DistinctNameFromSource = "Distinct Name from Source";
 
+        //different
+        public const string DifferentFromSource = "Different from Source";
+        public const string DifferentFromTarget = "Different from Target";
+        public const string DifferentFromAugmentedCard = "Different from Augmented Card";
+
         //card types
         public const string IsCharacter = "Is Character";
         public const string IsSpell = "Is Spell";
@@ -62,11 +67,6 @@ namespace KompasCore.Effects
         public const string WieldsAugmentFittingRestriction = "Wields Augment Fitting Restriction";
         public const string WieldsNoAugmentFittingRestriction = "Wields No Augment Fitting Restriction";
 
-        //distinct
-        public const string DistinctFromSource = "Distinct from Source";
-        public const string DistinctFromTarget = "Distinct from Target";
-        public const string DistinctFromAugmentedCard = "Distinct From Augmented Card";
-
         //location
         public const string Hand = "Hand";
         public const string Discard = "Discard";
@@ -79,34 +79,7 @@ namespace KompasCore.Effects
 
         //stats
         public const string CardValueFitsXRestriction = "Card Value Fits X Restriction";
-            //<=X
-        public const string NLTEX = "N<=X";
-        public const string ELTEX = "E<=X";
-        public const string SLTEX = "S<=X";
-        public const string WLTEX = "W<=X";
-        public const string CostLTEX = "Cost<=X";
-            //==X
-        public const string NEX = "N==X";
-        public const string EEX = "E==X";
-        public const string SEX = "S==X";
-        public const string WEX = "W==X";
-        public const string CostEX = "Cost==X";
-            //<X
-        public const string NLTX = "N<X";
-        public const string ELTX = "E<X";
-        public const string SLTX = "S<X";
-        public const string WLTX = "W<X";
-        public const string CostLTX = "Cost<X";
-            //<=C
-        public const string NLTEC = "N<=C";
-        public const string ELTEC = "E<=C";
-        public const string SLTEC = "S<=C";
-        public const string WLTEC = "W<=C";
-        //>X
-        public const string CostGTX = "Cost>X";
         //misc statlike
-        public const string CostLTAvatar = "Cost<Avatar";
-        public const string CostGTAvatar = "Cost>Avatar";
         public const string CanBeHealed = "Can Be Healed";
 
         public const string Negated = "Negated";
@@ -114,35 +87,13 @@ namespace KompasCore.Effects
         public const string OutOfMovement = "Out of Movement";
 
         //positioning
-        public const string AdjacentToSource = "Adjacent to Source";
-        public const string AdjacentToTarget = "Adjacent to Target";
-        public const string AdjacentToCoords = "Adjacent to Coords";
-        public const string WithinCSpacesOfSource = "Within C Spaces";
-        public const string WithinCSpacesOfTarget = "Within C Spaces of Target";
-        public const string WithinXSpacesOfSource = "Within X Spaces";
+        public const string SpaceFitsRestriction = "Space Fits Restriction";
 
-        public const string InAOE = "In AOE";
-        public const string InTargetsAOE = "In Target's AOE";
         public const string SourceInThisAOE = "Source in This' AOE";
-        public const string NotInAOE = "Not In AOE";
-        public const string InAOEOfCardFittingRestriction = "In AOE of Card Fitting Restriction";
-        public const string NotInAOEOfCardFittingRestriction = "Not In AOE of Card Fitting Restriction";
 
-        public const string AdjacentToSubtype = "Adjacent to Subtype";
-        public const string AdjacentToRestriction = "Adjacent to Card Restriction";
-        public const string ExactlyXSpaces = "Exactly X Spaces to Source";
-        public const string InFrontOfSource = "In Front of Source";
-        public const string BehindSource = "Behind Source";
         public const string IndexInListGTC = "Index>C";
         public const string IndexInListLTC = "Index<C";
         public const string IndexInListLTX = "Index<X";
-        public const string SameColumnAsSource = "Same Column as Source";
-        public const string DirectlyInFrontOfSource = "Directly In Front of Source";
-        public const string InACorner = "In a Corner";
-        public const string ConnectedToSourceBy = "Connected to Source By";
-        public const string ConnectedToTargetBy = "Connected to Target By";
-        public const string SameDiagonalAsSource = "Same Diagonal as Source";
-        public const string SameDiagonalAsTarget = "Same Diagonal as Target";
 
         //misc
         public const string CanBePlayed = "Can Be Played";
@@ -166,10 +117,12 @@ namespace KompasCore.Effects
         public int constant;
         public CardLocation[] locations;
         public string[] spellSubtypes;
+
+        //used for "can afford cost"
         public int costMultiplier = 1;
         public int costDivisor = 1;
-        public int cSpaces;
-        public string[] adjacencySubtypes;
+
+        //used for "space restriction valid if this target chosen"
         public int spaceRestrictionIndex;
 
         public CardValue cardValue;
@@ -182,6 +135,8 @@ namespace KompasCore.Effects
         public CardRestriction attackedCardRestriction;
         public CardRestriction inAOEOfRestriction;
         public CardRestriction augmentRestriction;
+
+        public SpaceRestriction spaceRestriction;
 
         public GameCard Source { get; private set; }
         public Player Controller => Source == null ? null : Source.Controller;
@@ -207,16 +162,13 @@ namespace KompasCore.Effects
             secondaryRestriction?.Initialize(source, eff);
             xRestriction?.Initialize(source, Subeffect);
 
-            /*
-            if (cardRestrictions.Contains(ConnectedToSourceBy))
-            {
-                if (connectednessRestriction == null) Debug.LogError($"Couldn't load connectedness restriction");
-                else Debug.Log($"Connectedness restriction: {connectednessRestriction}");
-            }*/
             adjacentCardRestriction?.Initialize(source, eff);
             connectednessRestriction?.Initialize(source, eff);
             attackedCardRestriction?.Initialize(source, eff);
             inAOEOfRestriction?.Initialize(source, eff);
+
+            if (Subeffect != null) spaceRestriction?.Initialize(Subeffect);
+            else spaceRestriction?.Initialize(source, eff.Controller, eff);
 
             initialized = true;
             Debug.Log($"Initialized {this}");
@@ -252,6 +204,11 @@ namespace KompasCore.Effects
                 case SameNameAsSource:        return potentialTarget?.CardName == Source.CardName;
                 case DistinctNameFromTargets: return Effect.Targets.All(card => card.CardName != potentialTarget?.CardName);
                 case DistinctNameFromSource:  return Source.CardName != potentialTarget?.CardName;
+
+                //different
+                case DifferentFromSource: return potentialTarget?.Card != Source;
+                case DifferentFromTarget: return potentialTarget?.Card != Subeffect.Target;
+                case DifferentFromAugmentedCard: return potentialTarget?.Card != Source.AugmentedCard;
 
                 //card types
                 case IsCharacter: return potentialTarget?.CardType == 'C';
@@ -290,11 +247,6 @@ namespace KompasCore.Effects
                 case WieldsAugmentFittingRestriction: return potentialTarget?.Augments.Any(c => augmentRestriction.Evaluate(c, context)) ?? false;
                 case WieldsNoAugmentFittingRestriction: return !(potentialTarget?.Augments.Any(c => augmentRestriction.Evaluate(c, context)) ?? false);
 
-                //distinct
-                case DistinctFromSource: return potentialTarget?.Card != Source;
-                case DistinctFromTarget: return potentialTarget?.Card != Subeffect.Target;
-                case DistinctFromAugmentedCard: return potentialTarget?.Card != Source.AugmentedCard;
-
                 //location
                 case Hand:           return potentialTarget?.Location == CardLocation.Hand;
                 case Deck:           return potentialTarget?.Location == CardLocation.Deck;
@@ -307,33 +259,6 @@ namespace KompasCore.Effects
 
                 //stats
                 case CardValueFitsXRestriction: return xRestriction.Evaluate(cardValue.GetValueOf(potentialTarget));
-                    //<=
-                case NLTEX:    return potentialTarget?.N <= x;
-                case ELTEX:    return potentialTarget?.E <= x;
-                case SLTEX:    return potentialTarget?.S <= x;
-                case WLTEX:    return potentialTarget?.W <= x;
-                case CostLTEX: return potentialTarget?.Cost <= x;
-                    //==
-                case NEX:      return potentialTarget?.N == x;
-                case EEX:      return potentialTarget?.E == x;
-                case SEX:      return potentialTarget?.S == x;
-                case WEX:      return potentialTarget?.W == x;
-                case CostEX:   return potentialTarget?.Cost == x;
-                    //<
-                case NLTX:     return potentialTarget?.N < x;
-                case ELTX:     return potentialTarget?.E < x;
-                case SLTX:     return potentialTarget?.S < x;
-                case WLTX:     return potentialTarget?.W < x;
-                case CostLTX:  return potentialTarget?.Cost < x;
-                    //<=C
-                case NLTEC:    return potentialTarget?.N <= constant;
-                case ELTEC:    return potentialTarget?.E <= constant;
-                case SLTEC:    return potentialTarget?.S <= constant;
-                case WLTEC:    return potentialTarget?.W <= constant;
-                case CostGTX:  return potentialTarget?.Cost > x;
-                    //misc
-                case CostLTAvatar: return potentialTarget?.Cost < Source.Controller.Avatar.Cost;
-                case CostGTAvatar: return potentialTarget?.Cost > Source.Controller.Avatar.Cost;
                 case CanBeHealed: return potentialTarget?.CardType == 'C' && potentialTarget?.Location == CardLocation.Field 
                         && potentialTarget?.E < potentialTarget?.BaseE;
 
@@ -342,45 +267,13 @@ namespace KompasCore.Effects
                 case OutOfMovement: return potentialTarget?.SpacesCanMove <= 0;
 
                 //positioning
-                case AdjacentToSource:           return potentialTarget?.IsAdjacentTo(Source) ?? false;
-                case AdjacentToTarget:   return potentialTarget?.IsAdjacentTo(Subeffect.Target) ?? false;
-                case AdjacentToCoords:   return potentialTarget?.IsAdjacentTo(Subeffect.Space) ?? false;
-                case AdjacentToSubtype:  
-                    return potentialTarget?.AdjacentCards.Any(card => adjacencySubtypes.All(s => card.SubtypeText.Contains(s))) ?? false;
-                case AdjacentToRestriction:
-                    var cards = potentialTarget?.AdjacentCards;
-                    Debug.Log($"Cards adjacent to {potentialTarget} are {string.Join(", ", cards.Select(c => c.ToString()))}");
-                    //Debug.Log($"Cards null? {cards == null} restriction null? {adjacentCardRestriction == null}");
-                    return cards?.Any(c => adjacentCardRestriction.Evaluate(c, context)) ?? false;
+                case SpaceFitsRestriction: return spaceRestriction.Evaluate(potentialTarget?.Position ?? Space.Nowhere, context);
 
-                case InAOE:              return Source.CardInAOE(potentialTarget);
-                case InTargetsAOE:       return Subeffect.Target.CardInAOE(potentialTarget);
                 case SourceInThisAOE:    return potentialTarget?.CardInAOE(Source) ?? false;
-                case NotInAOE:           return !Source.CardInAOE(potentialTarget);
-                case InAOEOfCardFittingRestriction: 
-                    return Source.Game.Cards.Any(c => c.CardInAOE(potentialTarget) && inAOEOfRestriction.Evaluate(c, context));
-                case NotInAOEOfCardFittingRestriction:
-                    return !Source.Game.Cards.Any(c => c.CardInAOE(potentialTarget) && inAOEOfRestriction.Evaluate(c, context));
 
-                case WithinCSpacesOfSource: return potentialTarget?.WithinSpaces(cSpaces, Source) ?? false;
-                case WithinCSpacesOfTarget: return potentialTarget?.WithinSpaces(cSpaces, Subeffect.Target) ?? false;
-                case WithinXSpacesOfSource: return potentialTarget?.WithinSpaces(Effect.X, Source) ?? false;
-                case ExactlyXSpaces:     return potentialTarget?.DistanceTo(Source) == x;
-                case InFrontOfSource:    return Source.CardInFront(potentialTarget);
-                case BehindSource:       return Source.CardBehind(potentialTarget);
                 case IndexInListGTC:     return potentialTarget?.IndexInList > constant;
                 case IndexInListLTC:     return potentialTarget?.IndexInList < constant;
                 case IndexInListLTX:     return potentialTarget?.IndexInList < x;
-                case SameColumnAsSource: return potentialTarget?.SameColumn(Source) ?? false;
-                case InACorner:          return potentialTarget?.InCorner() ?? false;
-                case DirectlyInFrontOfSource: return Source.CardDirectlyInFront(potentialTarget);
-                case ConnectedToSourceBy:
-                    return potentialTarget?.ShortestPath(Source.Position, c => connectednessRestriction.Evaluate(c, context)) < 50; 
-                case ConnectedToTargetBy: 
-                    return potentialTarget?.ShortestPath(Subeffect.Target.Position, c => connectednessRestriction.Evaluate(c, context)) < 50;
-
-                case SameDiagonalAsSource: return potentialTarget?.SameDiagonal(Source) ?? false;
-                case SameDiagonalAsTarget: return potentialTarget?.SameDiagonal(Subeffect.Target) ?? false;
 
                 //misc
                 case CanBePlayed: return Subeffect.Game.ExistsEffectPlaySpace(potentialTarget?.PlayRestriction, Effect);

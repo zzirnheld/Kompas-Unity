@@ -19,7 +19,13 @@
 					"cardRestriction":
 					{
 						"blurb":"C <= X spell for Temperance to DispelSubeffect, Assembly-CSharp",
-						"cardRestrictions":["Is Spell","Board","Cost<=X"]
+						"cardRestrictions":["Is Spell","Board","Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"C"
+						},
+						"xRestriction":{
+							"xRestrictions":["<=X"]
+						}
 					},
 					"xMultiplier":1
 				},

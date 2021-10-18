@@ -36,7 +36,12 @@
 					"cardRestriction":
 					{
 						"blurb":"Plan to advance",
-						"cardRestrictions":["Board","Adjacent to Source","Subtypes Include"],
+						"cardRestrictions":["Board","Subtypes Include","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to Source"],
+							"mustBeEmpty":false
+						},
 						"subtypesInclude":["Machination"]
 					}
 				},

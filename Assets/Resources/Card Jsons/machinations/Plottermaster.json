@@ -43,7 +43,13 @@
 					"cardRestriction":
 					{
 						"blurb":"Select a scheme",
-						"cardRestrictions":["Friendly","Deck","Cost<=X","Subtypes Include","Can Be Played","Effect Controller can Afford Cost"],
+						"cardRestrictions":["Friendly","Deck","Subtypes Include","Can Be Played","Effect Controller can Afford Cost","Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"C"
+						},
+						"xRestriction":{
+							"xRestrictions":["<=X"]
+						},
 						"subtypesInclude":["Machination"]
 					},
 					"xMultiplier":1

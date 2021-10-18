@@ -26,7 +26,13 @@
 					"cardRestriction":
 					{
 						"blurb":"Warrior for Swordmystic to revive",
-						"cardRestrictions":["Subtypes Include","Is Character","Discard","S<=X"],
+						"cardRestrictions":["Subtypes Include","Is Character","Discard","Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"S"
+						},
+						"xRestriction":{
+							"xRestrictions":["<=X"]
+						},
 						"subtypesInclude":["Warrior"]
 					},
 					"xMultiplier":1

@@ -33,7 +33,13 @@
 					"cardRestriction":
 					{
 						"blurb":"cost < X card to reveal",
-						"cardRestrictions":["Controller Matches Player Target","Hand","Cost<X","Hidden"]
+						"cardRestrictions":["Controller Matches Player Target","Hand","Hidden","Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"Cost"
+						},
+						"xRestriction":{
+							"xRestrictions":["<X"]
+						}
 					},
 					"xMultiplier":1
 				},

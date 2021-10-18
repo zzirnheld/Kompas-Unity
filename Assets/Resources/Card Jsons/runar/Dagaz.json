@@ -10,7 +10,7 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":{
-						"cardRestrictions":["Distinct from Source","Is Spell","Subtypes Include"],
+						"cardRestrictions":["Different from Source","Is Spell","Subtypes Include"],
 						"subtypesInclude":["Rune"]
 					}
 				}

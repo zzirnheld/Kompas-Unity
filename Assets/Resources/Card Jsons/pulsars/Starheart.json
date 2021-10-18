@@ -41,11 +41,16 @@
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":
 					{
-						"cardRestrictions":["Adjacent to Card Restriction"],
-						"adjacentCardRestriction":
+						"cardRestrictions":["Space Fits Restriction"],
+						"spaceRestriction":
 						{
-							"cardRestrictions":["Not Context Card","Subtypes Include"],
-							"subtypesInclude":["Pulsar"]
+							"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
+							"adjacencyRestriction":
+							{
+								"cardRestrictions":["Not Context Card","Subtypes Include"],
+								"subtypesInclude":["Pulsar"]
+							},
+							"mustBeEmpty":false
 						}
 					}
 				}

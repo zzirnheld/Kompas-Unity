@@ -29,7 +29,12 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"blurb":"card to vakoom",
 					"cardRestriction":{
-						"cardRestrictions":["Board","Adjacent to Coords","Card Value Fits X Restriction"],
+						"cardRestrictions":["Board","Card Value Fits X Restriction","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to Coords"],
+							"mustBeEmpty":false
+						},
 						"cardValue":{
 							"value":"Cost"
 						},

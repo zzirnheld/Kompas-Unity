@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Figurehead Queen",
-	"effText":"When you draw X cards, give me +XC.\nAfter I'm cast, delay 1 turn.\nSet X to my C. Deck->summon an S <= X Tarocco.",
+	"effText":"When you draw X cards, give me +X C.\nAfter I'm cast, delay 1 turn.\nSet X to my C. Deck->summon an S <= X Tarocco.",
 	"effects":[
 		{
 			"triggerData":
@@ -47,7 +47,13 @@
 					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Friendly","Is Character","Deck","S<=X","Subtypes Include"],
+						"cardRestrictions":["Friendly","Is Character","Deck","Subtypes Include","Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"S"
+						},
+						"xRestriction":{
+							"xRestrictions":["<=X"]
+						},
 						"subtypesInclude":["Tarocco"]
 					},
 					"xMultiplier":1

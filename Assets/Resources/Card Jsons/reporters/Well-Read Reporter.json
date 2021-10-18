@@ -43,7 +43,13 @@
 					"cardRestriction":
 					{
 						"blurb":"C > X spell to reveal",
-						"cardRestrictions":["Controller Matches Player Target","Hand","Cost>X","Hidden","Is Spell"]
+						"cardRestrictions":["Controller Matches Player Target","Hand","Hidden","Is Spell","Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"C"
+						},
+						"xRestriction":{
+							"xRestrictions":[">X"]
+						}
 					},
 					"xMultiplier":1
 				},

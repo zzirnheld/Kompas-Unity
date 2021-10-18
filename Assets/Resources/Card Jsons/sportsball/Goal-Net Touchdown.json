@@ -32,7 +32,12 @@
 				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":{
-						"cardRestrictions":["Avatar","Enemy","Adjacent to Target"]
+						"cardRestrictions":["Avatar","Enemy","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to Target"],
+							"mustBeEmpty":false
+						}
 					}
 				},
 				{

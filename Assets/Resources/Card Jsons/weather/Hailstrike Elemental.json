@@ -17,12 +17,16 @@
 					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Board","Out of Movement","In AOE of Card Fitting Restriction"],
-                        "inAOEOfRestriction":
-                        {
-                            "cardRestrictions":["Subtypes Include"],
-                            "subtypesInclude":["Weather"]
-                        }
+						"cardRestrictions":["Is Character","Board","Out of Movement","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["In AOE Of"],
+							"inAOEOfRestriction":{
+								"cardRestrictions":["Subtypes Include"],
+								"subtypesInclude":["Weather"]
+							},
+							"mustBeEmpty":false
+						}
 					},
 					"nMod":-3,
 					"eMod":-3,

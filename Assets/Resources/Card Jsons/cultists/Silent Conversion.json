@@ -17,8 +17,17 @@
 					"cardRestriction":
 					{
 						"blurb":"to convert",
-						"cardRestrictions":["Board","Is Character","Summoned","Adjacent to Subtype","Adjacent to Source"],
-						"adjacencySubtypes":["Cultist"]
+						"cardRestrictions":["Board","Is Character","Summoned","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to Source","Adjacent to a Card that Fits Restriction"],
+							"adjacencyRestriction":
+							{
+								"cardRestrictions":["Subtypes Include"],
+								"subtypesInclude":["Cultist"]
+							},
+							"mustBeEmpty":false
+						}
 					}
 				},
 				{

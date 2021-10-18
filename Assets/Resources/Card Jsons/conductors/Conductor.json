@@ -10,11 +10,16 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered","This Card Fits Restriction"],
 					"cardRestriction":{
-						"cardRestrictions":["Connected to Source By"],
-						"connectednessRestriction":
+						"cardRestrictions":["Space Fits Restriction"],
+						"spaceRestriction":
 						{
-							"cardRestrictions":["Subtypes Include","Board"],
-							"subtypesInclude":["Conductor"]
+							"spaceRestrictions":["Connected to Source by Cards Fitting Restriction"],
+							"connectednessRestriction":
+							{
+								"cardRestrictions":["Subtypes Include","Board"],
+								"subtypesInclude":["Conductor"]
+							},
+							"mustBeEmpty":false
 						}
 					}
 				}
@@ -24,7 +29,12 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Board","Adjacent to Source","Distinct Name from Source","Subtypes Include"],
+						"cardRestrictions":["Board","Distinct Name from Source","Subtypes Include","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to Source"],
+							"mustBeEmpty":false
+						},
                         "subtypesInclude":["Conductor"]
 					}
 				},

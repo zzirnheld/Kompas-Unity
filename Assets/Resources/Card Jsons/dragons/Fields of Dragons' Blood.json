@@ -10,7 +10,12 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Stackable Source is Triggerer"],
 					"cardRestriction":{
-						"cardRestrictions":["Subtypes Include","Board","In AOE"],
+						"cardRestrictions":["Subtypes Include","Board","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["In AOE"],
+							"mustBeEmpty":false
+						},
 						"subtypesInclude":["Dragon"]
 					}
 				}

@@ -10,8 +10,17 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card Triggered","This Card Fits Restriction"],
 					"cardRestriction":{
-						"cardRestrictions":["Adjacent to Subtype"],
-						"adjacencySubtypes":["Shaper"]
+						"cardRestrictions":["Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
+							"adjacencyRestriction":
+							{
+								"cardRestrictions":["Subtypes Include"],
+								"subtypesInclude":["Shaper"]
+							},
+							"mustBeEmpty":false
+						}
 					}
 				}
 			},

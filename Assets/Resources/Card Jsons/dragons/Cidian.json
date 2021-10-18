@@ -33,8 +33,12 @@
 					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Board","Adjacent to Target","Distinct from Source"],
-						"cSpaces":1
+						"cardRestrictions":["Is Character","Board","Different from Source","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to Target"],
+							"mustBeEmpty":false
+						}
 					},
 					"eMult":-1,
 					"wMult":-1

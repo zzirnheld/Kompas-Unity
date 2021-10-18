@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Modular Golem Cores",
-	"effText":"The first time each turn a card arrives adjacent to a Golem, choose a Golem adjacent to them. Destroy all X Augments on the Golem. Deck->augment them with X Golem Cores.",
+	"effText":"The first time each turn a card arrives adjacent to a Golem, choose a Golem character adjacent to them. Destroy all X Augments on the Golem. Deck->augment them with X Golem Cores.",
 	"effects":[
 		{
 			"blurb":"Swap Out Modules",
@@ -12,11 +12,16 @@
 					"triggerRestrictions":["This Card in Play","Max Per Turn","Triggerer Now Fits Restriction"],
 					"nowRestriction":
 					{
-						"cardRestrictions":["Adjacent to Card Restriction"],
-						"adjacentCardRestriction":
+						"cardRestrictions":["Space Fits Restriction"],
+						"spaceRestriction":
 						{
-							"cardRestrictions":["Subtypes Include"],
-							"subtypesInclude":["Golem"]
+							"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
+							"adjacencyRestriction":
+							{
+								"cardRestrictions":["Subtypes Include"],
+								"subtypesInclude":["Golem"]
+							},
+							"mustBeEmpty":false
 						}
 					}
 				}
@@ -30,7 +35,12 @@
 					"cardRestriction":
 					{
 						"blurb":"Golem to swap out modules",
-						"cardRestrictions":["Is Character","Board","Adjacent to Target","Subtypes Include"],
+						"cardRestrictions":["Is Character","Board","Subtypes Include","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to Target"],
+							"mustBeEmpty":false
+						},
 						"subtypesInclude":["Golem"]
 					}
 				},
