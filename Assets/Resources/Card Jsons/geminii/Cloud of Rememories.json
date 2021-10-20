@@ -33,6 +33,6 @@
 	],
 	"c":2,
 	"spellTypes":["Enchant","Radial"],
-	"subtypeText":"Enchant Radius",
+	"subtypeText":"Enchant Radius 1",
 	"radius":1
 }
