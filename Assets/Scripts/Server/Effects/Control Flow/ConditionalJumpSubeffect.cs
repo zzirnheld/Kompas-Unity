@@ -34,6 +34,7 @@ namespace KompasServer.Effects
                 return condition switch
                 {
                     CardFitsRestriction         => Game.Cards.Any(c => cardRestriction.Evaluate(c, Context)),
+                    NoCardFitsRestriction       => !Game.Cards.Any(c => cardRestriction.Evaluate(c, Context)),
                     TargetFitsRestriction       => cardRestriction.Evaluate(Target, Context),
                     TargetViolatesRestriction   => !cardRestriction.Evaluate(Target, Context),
                     XGreaterEqualConstant       => Effect.X >= constant,
