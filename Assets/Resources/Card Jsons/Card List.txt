@@ -22,7 +22,7 @@ bards/Wuonlan, the Inspired
 bards/Henry, Whose Bass is Based
 bards/Meti, Prima Diva
 bards/Master Caster, Recorder Bdaster
-bards/Eldir Samplei, Quadruple Hornist
+bards/Eli, Quadruple Hornist
 bards/Dave with the Fonky Keytar
 bards/Earblaster, Tuba Master
 bards/Michael on Triangle
