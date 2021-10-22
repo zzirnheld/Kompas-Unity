@@ -43,11 +43,13 @@ namespace KompasServer.Cards
                 var unfortunate = Game.boardCtrl.GetCardAt(corner);
                 if(unfortunate != null) unfortunate.Owner.annihilationCtrl.Annihilate(unfortunate, stackSrc: stackSrc);
                 Move(to: corner, normalMove: false, stackSrc: stackSrc);
+                /*
                 SetN(N - BaseN, stackSrc: stackSrc);
                 SetW(W - BaseW, stackSrc: stackSrc);
                 summoned = false;
                 ServerNotifier.NotifyIncarnated(this, incarnated: false);
-                return false;
+                */
+                return true;
             }
             else return Location == CardLocation.Nowhere;
         }
