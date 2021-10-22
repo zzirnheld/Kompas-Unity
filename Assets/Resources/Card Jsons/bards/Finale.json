@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Finale",
-	"effText":"Discard->cast as much of your Music as you want. (It will still expire later.)",
+	"effText":"Discard->cast as much of your Music as you want, and echo each of them. (It will still expire later.)",
 	"effects":[
 		{
 			"triggerData":
@@ -33,6 +33,9 @@
 					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				},
 				{
+					"$type":"KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+				},
+				{
 					"$type":"KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
 					"canDecline":true,
 					"jumpTo":0
@@ -40,7 +43,7 @@
 			]
 		}
 	],
-	"c":3,
+	"c":9,
 	"spellTypes":["Simple"],
 	"subtypeText":"Simple"
 }

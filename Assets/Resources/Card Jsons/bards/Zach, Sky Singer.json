@@ -36,7 +36,7 @@
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
 					"ChoiceBlurb":"Swap Weather into Music or Music into Weather?",
-					"OptionBlurbs":["Music into Weather","Weather into Music"],
+					"OptionBlurbs":["M -> W","W -> M"],
 					"OptionJumpIndices":[9,3],
 					"hasDefault":false
 				},
