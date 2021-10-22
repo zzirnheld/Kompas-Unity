@@ -30,7 +30,7 @@ namespace KompasServer.Cards
             }
         }
 
-        private bool summoned = false;
+        private bool summoned = true;
         public override bool Summoned => summoned;
         public override bool IsAvatar => true;
 

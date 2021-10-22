@@ -26,7 +26,7 @@ namespace KompasClient.GameCore
 
         public void Incarnate()
         {
-            clientGame.clientNotifier.RequestIncarnate();
+            //clientGame.clientNotifier.RequestIncarnate();
         }
     }
 }
