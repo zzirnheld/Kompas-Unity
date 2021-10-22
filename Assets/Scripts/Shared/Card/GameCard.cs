@@ -66,17 +66,6 @@ namespace KompasCore.Cards
             protected set => cardCtrl.A = base.A = value;
         }
 
-        private int shield;
-        public virtual int Shield
-        {
-            get => shield;
-            protected set
-            {
-                Debug.Log($"Setting {CardName}'s shield to {value}");
-                cardCtrl.Shield = shield = value;
-            }
-        }
-
         public int Negations { get; private set; } = 0;
         public virtual bool Negated
         {
@@ -443,7 +432,6 @@ namespace KompasCore.Cards
         /// Inflicts the given amount of damage, which can affect both shield and E. Used by attacks and (rarely) by effects.
         /// </summary>
         public virtual void TakeDamage(int dmg, IStackable stackSrc = null) => SetE(E - dmg, stackSrc: stackSrc);
-        public virtual void SetShield(int shield, IStackable stackSrc = null, bool notify = true) => Shield = shield;
 
         /// <summary>
         /// Shorthand for modifying a card's NESW all at once.
@@ -559,9 +547,6 @@ namespace KompasCore.Cards
             }
             return false;
         }
-
-        // returns false by default because you can't incarnate non-avatars
-        public virtual bool Incarnate(IStackable stackSrc = null) => false;
 
         public bool Move(Space to, bool normalMove, IStackable stackSrc = null)
             => Game.boardCtrl.Move(this, to, normalMove, stackSrc);

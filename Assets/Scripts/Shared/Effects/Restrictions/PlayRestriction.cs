@@ -42,11 +42,6 @@ namespace KompasCore.Effects
             FriendlyTurnIfNotFast, HasCostInPips, FastOrNothingIsResolving, CheckUnique };
         public static readonly string[] AugmentEffectRestrictions = { StandardSpellRestriction, OnBoardCardFriendlyOrAdjacent, CheckUnique };
 
-        public static readonly string[] IgnoreForIncarnate =
-        {
-            FromHand, CheckUnique, StandardPlayRestriction
-        };
-
         public List<string> normalRestrictions = null;
         public string[] normalRestrictionsToIgnore = new string[0];
         public List<string> effectRestrictions = null;
@@ -135,10 +130,6 @@ namespace KompasCore.Effects
                     .Except(ignoring ?? new string[0])
                     .All(r => RestrictionValid(r, to, player, new ActivationContext(), true));
         }
-
-        public bool EvaluateIncarnate()
-            => Card.IsAvatar && !Card.Summoned && Card.Controller.Pips >= Card.BaseS &&
-            EvaluateNormalPlay(Card.Position, Card.Controller, checkCanAffordCost: false, ignoring: IgnoreForIncarnate);
 
         public bool EvaluateEffectPlay(Space to, Effect effect, Player controller, ActivationContext context, string[] ignoring = default)
         {

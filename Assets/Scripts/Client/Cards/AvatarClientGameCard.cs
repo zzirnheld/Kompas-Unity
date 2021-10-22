@@ -7,8 +7,6 @@ namespace KompasClient.Cards
 {
     public class AvatarClientGameCard : ClientGameCard
     {
-        private bool summoned = true;
-        public override bool Summoned => summoned;
         public override bool IsAvatar => true;
         public override int CombatDamage => Summoned ? base.CombatDamage : 0;
 
@@ -17,19 +15,10 @@ namespace KompasClient.Cards
             // Debug.LogWarning("Remove called for Avatar - doing nothing");
             if (Summoned)
             {
-                summoned = false;
-                cardCtrl.SetHitpointsText(E, Shield);
+                cardCtrl.SetHitpointsText(E);
                 return true;
             }
             else return Location == CardLocation.Nowhere;
-        }
-
-        public override bool Incarnate(IStackable stackSrc = null)
-        {
-            if (Summoned) return false;
-            summoned = true;
-            cardCtrl.SetHitpointsText(E, Shield);
-            return true;
         }
     }
 }
