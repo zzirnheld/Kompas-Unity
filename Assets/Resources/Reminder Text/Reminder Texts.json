@@ -99,6 +99,14 @@
 		{
 			"keyword":"Speedemon",
 			"reminder":"After I move by something other than my own effect, move me 1 space in the same direction."
+		},
+		{
+			"keyword":"Instrument",
+			"reminder":"Can only be attached to a character not already wielding an Instrument. After Music is cast adjacent to me, delay until the stack ends. Dispel it."
+		},
+		{
+			"keyword":"Pass Back",
+			"reminder":"When this character defends, attach me to your Avatar."
 		}
 	]
 }

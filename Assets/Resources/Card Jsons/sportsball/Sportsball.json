@@ -1,15 +1,16 @@
 {
 	"cardType":65,
 	"cardName":"Sportsball",
-	"effText":"Recoverable.\nThe first time each turn I arrive, attach me to an adjacent character.\nThe first time each turn a character arrives adjacent to me, attach me to them.",
+	"effText":"Pass Back.\nThe first two times each turn this character moves, attach me to an adjacent character.",
 	"effects":[
 		{
 			"triggerData":
 			{
-				"blurb":"Bounce On Arrival",
-				"triggerCondition":"Arrive",
+				"blurb":"Heads up!",
+				"triggerCondition":"Move",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered","Max Per Turn"]
+					"triggerRestrictions":["Augmented Card Triggered","Max Per Turn"],
+					"maxTimesPerTurn":2
 				}
 			},
 			"subeffects":[
@@ -31,39 +32,9 @@
 					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp"
 				}
 			]
-		},
-		{
-			"triggerData":
-			{
-				"blurb":"Bounce To Arrival",
-				"triggerCondition":"Arrive",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Max Per Turn","Coords Fit Restriction","Triggerer Fits Restriction"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Is Character","Different from Source","Different from Augmented Card"]
-					},
-					"spaceRestriction":
-					{
-						"spaceRestrictions":["Adjacent to Source"],
-						"mustBeEmpty":false
-					}
-				}
-			},
-			"subeffects":[
-				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp"
-				}
-			]
 		}
 	],
-	"keywords":["Recoverable"],
+	"keywords":["Pass Back"],
 	"PlayRestriction":{
 		"normalRestrictions":["Augment Normal Restrictions"],
 		"effectRestrictions":["Augment Effect Restrictions"]

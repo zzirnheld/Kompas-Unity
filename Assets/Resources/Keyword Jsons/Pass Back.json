@@ -1,0 +1,22 @@
+{
+	"blurb":"Recoverable",
+	"triggerData":
+	{
+		"blurb":"Recoverable",
+		"triggerCondition":"Defend",
+		"triggerRestriction":{
+			"triggerRestrictions":["Augmented Card Triggered"]
+		}
+	},
+	"subeffects":[
+        {
+            "$type":"KompasServer.Effects.TargetAvatarSubeffect, Assembly-CSharp"
+        },
+		{
+			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+		},
+        {
+            "$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp"
+        }
+	]
+}
