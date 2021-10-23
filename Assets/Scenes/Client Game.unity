@@ -11886,7 +11886,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 696614908}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5, y: 1, z: 7}
+  m_LocalPosition: {x: 8, y: 1, z: 9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1841194801}
@@ -13692,7 +13692,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 803167335}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5, y: 1, z: -7}
+  m_LocalPosition: {x: -8, y: 1, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1829834587}
@@ -25140,8 +25140,6 @@ MonoBehaviour:
   activatorUICtrl: {fileID: 71818826}
   escapeMenuUICtrl: {fileID: 357244920}
   cardInfoViewUICtrl: {fileID: 2083542047}
-  incarnateButton: {fileID: 1263574985}
-  incarnateCostText: {fileID: 1872608871}
 --- !u!1 &1623620544
 GameObject:
   m_ObjectHideFlags: 0

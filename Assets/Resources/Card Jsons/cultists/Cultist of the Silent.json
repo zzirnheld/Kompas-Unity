@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Cultist of the Silent",
-	"effText":"When I die, reshuffle me.",
+	"effText":"When I die, discard->reshuffle me.",
 	"effects":[
 		{
 			"triggerData":
@@ -15,6 +15,14 @@
 			"subeffects":[
 				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition":"Target Violates Restriction",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Discard"]
+					}
 				},
 				{
 					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"

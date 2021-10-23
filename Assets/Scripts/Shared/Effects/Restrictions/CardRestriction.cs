@@ -27,6 +27,7 @@ namespace KompasCore.Effects
         //different
         public const string DifferentFromSource = "Different from Source";
         public const string DifferentFromTarget = "Different from Target";
+        public const string DifferentFromOtherTargets = "Different from Other Targets";
         public const string DifferentFromAugmentedCard = "Different from Augmented Card";
 
         //card types
@@ -208,6 +209,7 @@ namespace KompasCore.Effects
                 //different
                 case DifferentFromSource: return potentialTarget?.Card != Source;
                 case DifferentFromTarget: return potentialTarget?.Card != Subeffect.Target;
+                case DifferentFromOtherTargets: return Subeffect.Effect.Targets.All(c => !c.Equals(potentialTarget));
                 case DifferentFromAugmentedCard: return potentialTarget?.Card != Source.AugmentedCard;
 
                 //card types

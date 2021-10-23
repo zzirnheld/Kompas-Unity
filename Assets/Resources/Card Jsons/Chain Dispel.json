@@ -34,7 +34,7 @@
 					"cardRestriction":
 					{
 						"blurb":"spell for Chain Dispel to Dispel",
-						"cardRestrictions":["Is Spell","Board","Space Fits Restriction"],
+						"cardRestrictions":["Is Spell","Board","Space Fits Restriction","Different from Other Targets"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["Adjacent to Target"],
