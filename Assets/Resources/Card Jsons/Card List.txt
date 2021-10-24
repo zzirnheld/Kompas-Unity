@@ -155,6 +155,7 @@ golems/Taunt Core
 golems/Woolen Golem
 golems/Gold Golem
 golems/Core Scrambling
+golems/Scrap Golem
 Haemopoten
 instruments/Assaulting Batterie
 instruments/Gratuitous Sax
