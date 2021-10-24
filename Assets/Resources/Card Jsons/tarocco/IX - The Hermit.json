@@ -27,8 +27,12 @@
 					"spaceRestriction":
 					{
 						"blurb":"where Hermit to move its target",
-						"spaceRestrictions":["Empty","Distance to Target == X","Can Move Target to This Space"]
-					}
+						"spaceRestrictions":["Can Move Target to This Space","Distance to Target Fits X Restriction"],
+						"distanceXRestriction":{
+							"xRestrictions":["=X"]
+						}
+					},
+					"xMultiplier":1
 				},
 				{
 					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"

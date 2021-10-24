@@ -33,9 +33,12 @@
 					"spaceRestriction":
 					{
 						"blurb":"to move Magnetizing's target to",
-						"spaceRestrictions":["Distance to Target == Constant","Towards Source from Target","Can Move Target to This Space"],
-						"constant":1
-					}
+						"spaceRestrictions":["Towards Source from Target","Can Move Target to This Space","Distance to Target Fits X Restriction"],
+                        "distanceXRestriction":{
+                            "xRestrictions":["=X"]
+                        }
+					},
+					"xModifier":1
 				},
 				{
 					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
@@ -72,9 +75,12 @@
 					"spaceRestriction":
 					{
 						"blurb":"to move Magnetizing's target to",
-						"spaceRestrictions":["Distance to Target == Constant","Further from Source than Target","Can Move Target to This Space"],
-						"constant":1
-					}
+						"spaceRestrictions":["Further from Source than Target","Can Move Target to This Space","Distance to Target Fits X Restriction"],
+                        "distanceXRestriction":{
+                            "xRestrictions":["=X"]
+                        }
+					},
+					"xModifier":1
 				},
 				{
 					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"

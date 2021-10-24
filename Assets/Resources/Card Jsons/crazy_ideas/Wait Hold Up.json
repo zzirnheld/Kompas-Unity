@@ -39,10 +39,13 @@
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
-						"blurb":"Wait, Hold Up, where?",
-						"spaceRestrictions":["Empty","Distance to Target <= Constant","Can Move Target to This Space"],
-						"constant":3
-					}
+						"blurb":"Wait Hold Up, WHERE",
+						"spaceRestrictions":["Empty","Can Move Target to This Space","Distance to Target Fits X Restriction"],
+                        "distanceXRestriction":{
+                            "xRestrictions":["<=X"]
+                        }
+					},
+					"xModifier":3
 				},
 				{
 					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"

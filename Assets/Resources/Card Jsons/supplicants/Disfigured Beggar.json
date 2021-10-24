@@ -34,9 +34,12 @@
 					"spaceRestriction":
 					{
 						"blurb":"ok, now move just a little bit more",
-						"spaceRestrictions":["Empty","Distance to Target == Constant","Can Move Target to This Space"],
-						"constant":1
-					}
+						"spaceRestrictions":["Can Move Target to This Space","Distance to Target Fits X Restriction"],
+                        "distanceXRestriction":{
+                            "xRestrictions":["=X"]
+                        }
+					},
+					"xModifier":1
 				},
 				{
 					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"

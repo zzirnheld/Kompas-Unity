@@ -24,9 +24,12 @@
 					"spaceRestriction":
 					{
 						"blurb":"to move Whose Anger Draws Fear's attack target to",
-						"spaceRestrictions":["Empty","Distance to Target == Constant","Directly Away from Target"],
-						"constant":1
-					}
+						"spaceRestrictions":["Directly Away from Target","Distance to Target Fits X Restriction"],
+                        "distanceXRestriction":{
+                            "xRestrictions":["=X"]
+                        }
+					},
+					"xModifier":1
 				},
 				{
 					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"

@@ -1,4 +1,5 @@
 ﻿using KompasCore.Cards;
+using KompasCore.GameCore;
 using System;
 using System.Linq;
 using UnityEngine;
@@ -9,6 +10,7 @@ namespace KompasCore.Effects
     {
         public Subeffect Subeffect { get; private set; }
         public GameCard Source { get; private set; }
+        public Game Game => Source.Game;
         public Player Controller => Source.Controller;
         public Effect Effect { get; private set; }
 
@@ -33,19 +35,14 @@ namespace KompasCore.Effects
         public const string NotInAOEOf = "Not In AOE Of";
         public const string LimitAdjacentCardsFittingRestriction = "Limit Number of Adjacent Cards Fitting Restriction";
         public const string InAOEOfNumberFittingRestriction = "In AOE of Number of Cards Fitting Restriction";
+        public const string InAOESourceAlsoIn = "In AOE Source is Also In";
 
         public const string SubjectiveDisplacementFromSource = "Subjective Displacement from Source";
         public const string BehindSource = "Behind Source";
 
         //distance
-        public const string DistanceX = "Distance to Source == X";
-
         public const string DistanceToSourceFitsXRestriction = "Distance to Source Fits X Restriction";
         public const string DistanceToTargetFitsXRestriction = "Distance to Target Fits X Restriction";
-
-        public const string DistanceToTargetX = "Distance to Target == X";
-        public const string DistanceToTargetC = "Distance to Target == Constant";
-        public const string DistanceToTargetLTEC = "Distance to Target <= Constant";
 
         public const string FurtherFromSourceThanTarget = "Further from Source than Target";
         public const string FurtherFromSourceThanCoords = "Further from Source than Coords";
@@ -139,82 +136,64 @@ namespace KompasCore.Effects
             //would use ?? but GameCard inherits from monobehavior which overrides comparison with null
             var target = theoreticalTarget != null ? theoreticalTarget : Subeffect?.Target;
 
-            switch (restriction)
+            return restriction switch
             {
                 //adjacency
-                case AdjacentToSource:          return Source.IsAdjacentTo(space);
-                case AdjacentToTarget:          return target.IsAdjacentTo(space);
-                case AdjacentToCoords:          return space.AdjacentTo(Subeffect.Space);
-                case AdjacentToCardRestriction: return Source.Game.boardCtrl.CardsAdjacentTo(space).Any(c => adjacencyRestriction.Evaluate(c, context));
+                AdjacentToSource => Source.IsAdjacentTo(space),
+                AdjacentToTarget => target.IsAdjacentTo(space),
+                AdjacentToCoords => space.AdjacentTo(Subeffect.Space),
+                AdjacentToCardRestriction => Game.boardCtrl.CardsAdjacentTo(space).Any(c => adjacencyRestriction.Evaluate(c, context)),
 
-                case ConnectedToSourceBy:       
-                    return Source.Game.boardCtrl.ShortestPath(Subeffect.Source, space, connectednessRestriction, context) < 50;
-                case ConnectedToSourceBySpaces: 
-                    return Source.Game.boardCtrl.ShortestPath(Subeffect.Source.Position, space, s => spaceConnectednessRestriction.Evaluate(s, context)) < 50;
-                case ConnectedToTargetBy:       
-                    return Source.Game.boardCtrl.ShortestPath(target, space, connectednessRestriction, context) < 50;
-                case ConnectedToTargetBySpaces:
-                    return Source.Game.boardCtrl.ShortestPath(target.Position, space, s => spaceConnectednessRestriction.Evaluate(s, context)) < 50;
-                case ConnectedToTargetByXSpaces:
-                    return connectedSpacesXRestriction.Evaluate(Source.Game.boardCtrl.ShortestPath(target.Position, space, 
-                        s => spaceConnectednessRestriction.Evaluate(s, context)));
-                case ConnectedToAvatarBy:       return Source.Game.boardCtrl.ShortestPath(Source.Controller.Avatar, space, connectednessRestriction, context) < 50;
+                ConnectedToSourceBy => Game.boardCtrl.ShortestPath(Subeffect.Source, space, connectednessRestriction, context) < 50,
+                ConnectedToSourceBySpaces => Game.boardCtrl.ShortestPath(Subeffect.Source.Position, space, s => spaceConnectednessRestriction.Evaluate(s, context)) < 50,
+                ConnectedToTargetBy => Game.boardCtrl.ShortestPath(target, space, connectednessRestriction, context) < 50,
+                ConnectedToTargetBySpaces => Game.boardCtrl.ShortestPath(target.Position, space, s => spaceConnectednessRestriction.Evaluate(s, context)) < 50,
+                ConnectedToTargetByXSpaces => connectedSpacesXRestriction.Evaluate(Game.boardCtrl.ShortestPath(target.Position, space,
+                                                s => spaceConnectednessRestriction.Evaluate(s, context))),
+                ConnectedToAvatarBy => Game.boardCtrl.ShortestPath(Source.Controller.Avatar, space, connectednessRestriction, context) < 50,
 
-                case InAOE:                     return Source.SpaceInAOE(space);
-                case NotInAOE:                  return !Source.SpaceInAOE(space);
-                case InTargetsAOE:              return target.SpaceInAOE(space);
-                case InAOEOf:                   return Source.Game.Cards.Any(c => c.SpaceInAOE(space) && inAOEOfRestriction.Evaluate(c, context));
-                case NotInAOEOf:                return !Source.Game.Cards.Any(c => c.SpaceInAOE(space) && inAOEOfRestriction.Evaluate(c, context));
-                case InAOEOfNumberFittingRestriction:
-                    //return numberOfCardsInAOEOfRestriction.Evaluate(Source.Game.Cards.Count(c => c.SpaceInAOE((x, y)) && inAOERestriction.Evaluate(c)));
-                    var count = Source.Game.Cards.Count(c => c.SpaceInAOE(space) && inAOEOfRestriction.Evaluate(c, context));
-                    Debug.Log($"{space} is in the aoe of {count} cards fitting the restriction {inAOEOfRestriction}");
-                    return numberOfCardsInAOEOfRestriction.Evaluate(count);
-                case LimitAdjacentCardsFittingRestriction:
-                    return Source.Game.boardCtrl.CardsAdjacentTo(space)
-                        .Where(c => limitAdjacencyRestriction.Evaluate(c, context))
-                        .Count() <= adjacencyLimit;
+                InAOE => Source.SpaceInAOE(space),
+                NotInAOE => !Source.SpaceInAOE(space),
+                InTargetsAOE => target.SpaceInAOE(space),
+                InAOEOf => Game.Cards.Any(c => c.SpaceInAOE(space) && inAOEOfRestriction.Evaluate(c, context)),
+                NotInAOEOf => !Game.Cards.Any(c => c.SpaceInAOE(space) && inAOEOfRestriction.Evaluate(c, context)),
+                InAOEOfNumberFittingRestriction => numberOfCardsInAOEOfRestriction.Evaluate(Game.Cards.Count(c => c.SpaceInAOE(space) && inAOEOfRestriction.Evaluate(c, context))),
+                LimitAdjacentCardsFittingRestriction => Game.boardCtrl.CardsAdjacentTo(space)
+                                                                        .Where(c => limitAdjacencyRestriction.Evaluate(c, context))
+                                                                        .Count() <= adjacencyLimit,
+                InAOESourceAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.CardInAOE(Source)),
 
-                case SubjectiveDisplacementFromSource: 
-                    return Controller.SubjectiveCoords(space).DisplacementTo(Controller.SubjectiveCoords(Source.Position)) == (displacementX, displacementY);
-                case BehindSource: return Source.SpaceBehind(space);
+                SubjectiveDisplacementFromSource => Controller.SubjectiveCoords(space).DisplacementTo(Controller.SubjectiveCoords(Source.Position)) == (displacementX, displacementY),
+                BehindSource => Source.SpaceBehind(space),
 
                 //distance
-                case DistanceX:                   return Source.DistanceTo(space) == Subeffect.Effect.X;
+                DistanceToSourceFitsXRestriction => distanceXRestriction.Evaluate(Source.DistanceTo(space)),
+                DistanceToTargetFitsXRestriction => distanceXRestriction.Evaluate(target.DistanceTo(space)),
 
-                case DistanceToSourceFitsXRestriction:    return distanceXRestriction.Evaluate(Source.DistanceTo(space));
-                case DistanceToTargetFitsXRestriction:    return distanceXRestriction.Evaluate(target.DistanceTo(space));
+                FurtherFromSourceThanTarget => Source.DistanceTo(space) > Source.DistanceTo(target),
+                FurtherFromSourceThanCoords => Source.DistanceTo(space) > Source.DistanceTo(Subeffect.Space),
 
-                case DistanceToTargetX:           return target.DistanceTo(space) == Subeffect.Effect.X;
-                case DistanceToTargetC:           return target.DistanceTo(space) == constant;
-                case DistanceToTargetLTEC:        return target.DistanceTo(space) <= constant;
-                case FurtherFromSourceThanTarget: return Source.DistanceTo(space) > Source.DistanceTo(target);
-                case FurtherFromSourceThanCoords: return Source.DistanceTo(space) > Source.DistanceTo(Subeffect.Space);
-                case TowardsSourceFromTarget:     return Source.DistanceTo(space) < Source.DistanceTo(target);
-                case TowardsTargetFromSource:     return target.DistanceTo(space) < target.DistanceTo(Source);
-                case DirectlyAwayFromTarget:      return target.SpaceDirectlyAwayFrom(space, Source);
+                TowardsSourceFromTarget => Source.DistanceTo(space) < Source.DistanceTo(target),
+                TowardsTargetFromSource => target.DistanceTo(space) < target.DistanceTo(Source),
+
+                DirectlyAwayFromTarget => target.SpaceDirectlyAwayFrom(space, Source),
 
                 //misc
-                case CanPlayTarget: 
-                    return target.PlayRestriction.EvaluateEffectPlay(space, Subeffect.Effect, Subeffect.Player, context, ignoring: playRestrictionsToIgnore);
-                case CanMoveTarget: return target.MovementRestriction.EvaluateEffectMove(space);
-                case CanMoveSource: return Source.MovementRestriction.EvaluateEffectMove(space);
-                case Empty: return Source.Game.boardCtrl.GetCardAt(space) == null;
-                case CardHereFitsRestriction: return hereFitsRestriction.Evaluate(Source.Game.boardCtrl.GetCardAt(space), context);
+                CanPlayTarget => target.PlayRestriction.EvaluateEffectPlay(space, Subeffect.Effect, Subeffect.Player, context, ignoring: playRestrictionsToIgnore),
+                CanMoveTarget => target.MovementRestriction.EvaluateEffectMove(space),
+                CanMoveSource => Source.MovementRestriction.EvaluateEffectMove(space),
 
-                case OnSourcesDiagonal: return Source.SameDiagonal(space);
-                case OnTargetsDiagonal: return target.SameDiagonal(space);
+                Empty => Game.boardCtrl.GetCardAt(space) == null,
+                CardHereFitsRestriction => hereFitsRestriction.Evaluate(Game.boardCtrl.GetCardAt(space), context),
+                OnSourcesDiagonal => Source.SameDiagonal(space),
+                OnTargetsDiagonal => target.SameDiagonal(space),
+                OnEdge => space.IsEdge,
+                Corner => space.IsCorner,
+                SameDirectionFromTargetAsSpace => target.Position.DirectionFromThisTo(space) == Subeffect.Space.DirectionFromThisTo(Source.Position),
+                OppositeDirectionFromTargetThanSpace => Source.Position.DirectionFromThisTo(space) * -1 == Source.Position.DirectionFromThisTo(Subeffect.Space),
 
-                case OnEdge: return space.IsEdge;
-                case Corner: return space.IsCorner;
-                case SameDirectionFromTargetAsSpace:
-                    return target.Position.DirectionFromThisTo(space) == Subeffect.Space.DirectionFromThisTo(Source.Position);
-                case OppositeDirectionFromTargetThanSpace:
-                    /*Debug.Log($"Comparing {space} and {Subeffect.Space}, w/r/t {Source.Position}\n" +
-                        $"Directions:{Source.Position.DirectionFromThisTo(space)} to {Source.Position.DirectionFromThisTo(Subeffect.Space)}");*/
-                    return Source.Position.DirectionFromThisTo(space) * -1 == Source.Position.DirectionFromThisTo(Subeffect.Space);
-                default: throw new ArgumentException($"Invalid space restriction {restriction}", "restriction");
-            }
+                _ => throw new ArgumentException($"Invalid space restriction {restriction}", "restriction"),
+            };
         }
 
         private bool RestrictionValidWithDebug(string r, Space space, GameCard theoreticalTarget, ActivationContext context)
@@ -228,7 +207,7 @@ namespace KompasCore.Effects
         {
             if (!initialized) throw new ArgumentException("Space restriction not initialized!");
             if (!space.Valid) return false;
-            if (mustBeEmpty && Source.Game.boardCtrl.GetCardAt(space) != null)
+            if (mustBeEmpty && Game.boardCtrl.GetCardAt(space) != null)
             {
                 //Debug.Log($"Space for {Source.CardName} needed to be empty and wasn't.");
                 return false;

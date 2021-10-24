@@ -32,9 +32,12 @@
                     "spaceRestriction":
                     {
                         "blurb":"where for speed victim to move",
-                        "spaceRestrictions":["Distance to Target == Constant","Further from Source than Coords"],
-                        "constant":1
-                    }
+                        "spaceRestrictions":["Further from Source than Coords","Distance to Target Fits X Restriction"],
+                        "distanceXRestriction":{
+                            "xRestrictions":["=X"]
+                        }
+					},
+					"xModifier":1
                 },
 				{
 					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
