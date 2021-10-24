@@ -1,15 +1,15 @@
 {
 	"cardType":83,
-	"cardName":"Flashflood",
-	"effText":"Weather.\nWhen a character arrives here, give them -2 N.",
+	"cardName":"Tailwindstorm",
+	"effText":"Weather.\nWhen a character moves at least two spaces at once to get here, give them +1 N.",
 	"effects":[
 		{
-			"blurb":"Floodwaters",
+			"blurb":"Tailwindy",
 			"triggerData":
 			{
-				"triggerCondition":"Arrive",
+				"triggerCondition":"Move",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction"],
+					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction","X Fits Restriction"],
 					"cardRestriction":{
 						"cardRestrictions":["Is Character"]
 					},
@@ -17,6 +17,11 @@
 					{
 						"mustBeEmpty":false,
 						"spaceRestrictions":["In AOE"]
+					},
+					"xRestriction":
+					{
+						"xRestrictions":[">=Constant"],
+						"constant":2
 					}
 				}
 			},
@@ -26,7 +31,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"nMod":-2
+					"nMod":1
 				}
 			]	
 		}
@@ -35,6 +40,6 @@
 	"unique":true,
 	"c":6,
 	"spellTypes":["Radial"],
-	"subtypeText":"Radial Water Weather",
-	"radius":3
+	"subtypeText":"Weather Radial",
+	"radius":2
 }

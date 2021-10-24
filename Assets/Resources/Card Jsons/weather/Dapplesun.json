@@ -4,9 +4,9 @@
 	"effText":"Weather.\nWhen a character arrives here, give them +1 E.",
 	"effects":[
 		{
+			"blurb":"Sun smiles",
 			"triggerData":
 			{
-				"blurb":"Sun",
 				"triggerCondition":"Arrive",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction"],

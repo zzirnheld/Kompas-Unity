@@ -440,6 +440,7 @@ wanderers/Wisewoman
 weather/Dapplesun
 weather/Puffyclouds
 weather/Crispbreeze
+weather/Tailwindstorm
 weather/Flashflood
 weather/Peltrain
 weather/Muggyclouds

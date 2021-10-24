@@ -4,9 +4,9 @@
 	"effText":"Weather.\nWhen a character arrives here, give them -3 E.",
 	"effects":[
 		{
+			"blurb":"Thunderstrike",
 			"triggerData":
 			{
-				"blurb":"Thunderstorm",
 				"triggerCondition":"Arrive",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction"],
@@ -36,5 +36,5 @@
 	"c":7,
 	"spellTypes":["Radial"],
 	"subtypeText":"Radial Water Weather",
-	"radius":2
+	"radius":3
 }
