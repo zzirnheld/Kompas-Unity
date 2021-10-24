@@ -457,6 +457,7 @@ weather/Unusual Weather
 weather/Lightning Elemental
 weather/Shardstorm Elemental
 weather/Hailstrike Elemental
+weather/Weather Apprentice
 wisps/Erratic Wisps
 wisps/Flippiwisp
 wisps/Here'n'gone
