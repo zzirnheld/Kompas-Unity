@@ -114,6 +114,7 @@ dragons/Dragonfly
 dragons/Dragon Familiar
 dragons/Hungry Dragonling
 dragons/Growing Boye
+dragons/Earthwapmer
 Dreamfog
 Durendal
 Fight
