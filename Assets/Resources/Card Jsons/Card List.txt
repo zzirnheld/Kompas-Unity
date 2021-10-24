@@ -452,6 +452,7 @@ weather/Emezene, Who Reads the Breeze
 weather/Outaroud, Who Scouts the Clouds
 weather/Zussastuss, Who Trusts the Gusts
 weather/Sterrasterr, Who Stirs the Storm
+weather/Erelain, Who Trains the Rain
 weather/Cloudshift
 weather/Stormfront
 weather/Unusual Weather
