@@ -9,7 +9,7 @@ namespace KompasServer.Effects
             if (Context.CardInfo == null)
                 return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
 
-            ServerEffect.coords.Add(Context.CardInfo.Position);
+            ServerEffect.AddSpace(Context.CardInfo.Position.Copy);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

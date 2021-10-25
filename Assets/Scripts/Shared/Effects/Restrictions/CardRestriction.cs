@@ -27,6 +27,7 @@ namespace KompasCore.Effects
         //different
         public const string DifferentFromSource = "Different from Source";
         public const string DifferentFromTarget = "Different from Target";
+        public const string DifferentFromOtherTargets = "Different from Other Targets";
         public const string DifferentFromAugmentedCard = "Different from Augmented Card";
 
         //card types
@@ -65,6 +66,7 @@ namespace KompasCore.Effects
         public const string AugmentedBySource = "Source Augments";
         public const string NotAugmentedBySource = "Source Doesn't Augment";
         public const string WieldsAugmentFittingRestriction = "Wields Augment Fitting Restriction";
+        public const string WieldsNoAugmentFittingRestriction = "Wields No Augment Fitting Restriction";
 
         //location
         public const string Hand = "Hand";
@@ -133,6 +135,7 @@ namespace KompasCore.Effects
         public CardRestriction connectednessRestriction;
         public CardRestriction attackedCardRestriction;
         public CardRestriction inAOEOfRestriction;
+        public CardRestriction augmentRestriction;
 
         public SpaceRestriction spaceRestriction;
 
@@ -206,6 +209,7 @@ namespace KompasCore.Effects
                 //different
                 case DifferentFromSource: return potentialTarget?.Card != Source;
                 case DifferentFromTarget: return potentialTarget?.Card != Subeffect.Target;
+                case DifferentFromOtherTargets: return Subeffect.Effect.Targets.All(c => !c.Equals(potentialTarget));
                 case DifferentFromAugmentedCard: return potentialTarget?.Card != Source.AugmentedCard;
 
                 //card types
@@ -242,7 +246,8 @@ namespace KompasCore.Effects
                 case AugmentsTarget: return potentialTarget?.AugmentedCard == Subeffect.Target;
                 case AugmentedBySource: return potentialTarget?.Augments.Contains(Source) ?? false;
                 case NotAugmentedBySource: return !(potentialTarget?.Augments.Contains(Source) ?? true);
-                case WieldsAugmentFittingRestriction: return potentialTarget?.Augments.Any(c => secondaryRestriction.Evaluate(c, context)) ?? false;
+                case WieldsAugmentFittingRestriction: return potentialTarget?.Augments.Any(c => augmentRestriction.Evaluate(c, context)) ?? false;
+                case WieldsNoAugmentFittingRestriction: return !(potentialTarget?.Augments.Any(c => augmentRestriction.Evaluate(c, context)) ?? false);
 
                 //location
                 case Hand:           return potentialTarget?.Location == CardLocation.Hand;
@@ -319,7 +324,7 @@ namespace KompasCore.Effects
 
             try
             {
-                return cardRestrictions.All(r => RestrictionValid(r, potentialTarget, x, context));
+                return cardRestrictions.All(r => RestrictionValidDebug(r, potentialTarget, x, context));
             }
             catch (ArgumentException e)
             {

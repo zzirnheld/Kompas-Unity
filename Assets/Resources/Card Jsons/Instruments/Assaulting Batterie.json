@@ -1,0 +1,64 @@
+{
+	"cardType":65,
+	"cardName":"Assaulting Batterie",
+	"effText":"Instrument.\nWhen you cast C X Music adjacent to me, give a character exactly 2 spaces from me -X E. (That means 1 space past adjacent.)",
+	"effects":[
+		{
+			"blurb":"*boom, bish*",
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Coords Fit Restriction"],
+					"spaceRestriction":
+					{
+						"spaceRestrictions":["Adjacent to Source","Card Here Fits Restriction"],
+                        "hereFitsRestriction":
+                        {
+                            "cardRestrictions":["Friendly","Subtypes Include"],
+                            "subtypesInclude":["Music"]
+                        },
+						"mustBeEmpty":false
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.SetXByTriggeringCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"C"
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"BOOM",
+						"cardRestrictions":["Is Character","Board","Exactly X Spaces to Source"]
+					},
+                    "xMultiplier":0,
+                    "xModifier":2
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMult":-1
+				}
+			]
+		}
+	],
+	"keywords":["Instrument"],
+	"PlayRestriction":{
+		"normalRestrictions":["Augment Normal Restrictions","On Card that Flouts Restriction"],
+		"effectRestrictions":["Augment Effect Restrictions","On Card that Flouts Restriction"],
+		"onCardRestriction":{
+			"cardRestrictions":["Wields Augment Fitting Restriction"],
+			"augmentRestriction":{
+                "cardRestrictions":["Subtypes Include"],
+                "subtypesInclude":["Instrument"]
+            }
+		}
+	},
+	"a":2,
+	"subtypeText":"Instrument"
+}

@@ -1,0 +1,43 @@
+{
+	"cardType":67,
+	"cardName":"Reyna, Basoonist Backstage",
+	"effText":"The first time each turn you draw, discard->cast 1 Music.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Draw",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Controller Triggered","Max Per Turn"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"shishishishishishishisihshi",
+						"cardRestrictions":["Is Spell","Friendly","Discard","Can Be Played","Subtypes Include"],
+						"subtypesInclude":["Music"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"dooooooooooooooooooooooooot",
+						"spaceRestrictions":["Can Play Target to This Space"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+	"n":0,
+	"e":5,
+	"s":4,
+	"w":3,
+	"subtypeText":"Tarocco Bard Stuck Backstage, Picking up Slack, but Missing her Solo"
+}

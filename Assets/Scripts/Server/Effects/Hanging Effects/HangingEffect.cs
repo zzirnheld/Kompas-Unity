@@ -6,9 +6,10 @@ namespace KompasServer.Effects
 {
     public abstract class HangingEffect
     {
-        public readonly string EndCondition;
-        public readonly string FallOffCondition;
-        public readonly TriggerRestriction FallOffRestriction;
+        public readonly Effect sourceEff;
+        public readonly string endCondition;
+        public readonly string fallOffCondition;
+        public readonly TriggerRestriction fallOffRestriction;
 
         private bool ended = false;
         private readonly TriggerRestriction triggerRestriction;
@@ -17,14 +18,18 @@ namespace KompasServer.Effects
         private readonly bool removeIfEnd;
 
         public HangingEffect(ServerGame serverGame, TriggerRestriction triggerRestriction, string endCondition, 
-            string fallOffCondition, TriggerRestriction fallOffRestriction, ActivationContext currentContext, bool removeIfEnd)
+            string fallOffCondition, TriggerRestriction fallOffRestriction, 
+            Effect sourceEff, ActivationContext currentContext, bool removeIfEnd)
         {
             this.serverGame = serverGame != null ? serverGame : throw new System.ArgumentNullException("serverGame", "ServerGame in HangingEffect must not be null");
             this.triggerRestriction = triggerRestriction ?? throw new System.ArgumentNullException("triggerRestriction", "Trigger Restriction in HangingEffect must not be null");
+            this.endCondition = endCondition;
+
+            this.fallOffCondition = fallOffCondition;
+            this.fallOffRestriction = fallOffRestriction;
+
+            this.sourceEff = sourceEff;
             savedContext = currentContext;
-            EndCondition = endCondition;
-            FallOffCondition = fallOffCondition;
-            FallOffRestriction = fallOffRestriction;
             this.removeIfEnd = removeIfEnd;
         }
 
@@ -47,6 +52,8 @@ namespace KompasServer.Effects
             return ended;
         }
 
+        public virtual bool ShouldBeCanceled(ActivationContext context) => fallOffRestriction.Evaluate(context);
+
         protected virtual bool ShouldResolve(ActivationContext context)
         {
             //if we've already ended this hanging effect, we shouldn't end it again.
@@ -59,7 +66,7 @@ namespace KompasServer.Effects
 
         public override string ToString()
         {
-            return $"{GetType()} ending when {EndCondition}";
+            return $"{GetType()} ending when {endCondition}";
         }
     }
 }

@@ -9,7 +9,7 @@ namespace KompasServer.Effects
             if (Context.Space == null)
                 return Task.FromResult(ResolutionInfo.Impossible(NoValidSpaceTarget));
 
-            ServerEffect.coords.Add(Context.Space.Value);
+            ServerEffect.AddSpace(Context.Space.Value);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

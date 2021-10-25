@@ -23,10 +23,5 @@ namespace KompasClient.GameCore
                 pipsUICtrl.Pips = value;
             }
         }
-
-        public void Incarnate()
-        {
-            clientGame.clientNotifier.RequestIncarnate();
-        }
     }
 }

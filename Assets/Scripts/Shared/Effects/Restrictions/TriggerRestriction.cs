@@ -34,6 +34,7 @@ namespace KompasCore.Effects
         public const string EffectSourceIsThisCard = "Stackable Source is This Card"; //140,
         public const string EffectSourceIsTriggerer = "Stackable Source is Triggerer"; //149,
         public const string StackableSourceNotThisEffect = "Stackable Source isn't This Effect";
+        public const string NoStackable = "No Stackable";
 
         public const string ContextsStackablesMatch = "Contexts Stackables Match";
         public const string StackableIsThisEffect = "Stackable is This Effect";
@@ -146,6 +147,8 @@ namespace KompasCore.Effects
 
                 case StackableIsThisEffect: return context.Stackable == SourceEffect;
 
+                case NoStackable: return context.Stackable == null;
+
                 //other non-card triggering things
                 case CoordsFitRestriction:    return context.Space != null && spaceRestriction.Evaluate(context.Space.Value, context);
                 case XFitsRestriction:        return context.X != null && xRestriction.Evaluate(context.X.Value);
@@ -174,13 +177,13 @@ namespace KompasCore.Effects
             }
         }
 
-        /*
-        private bool RestrictionValidDebug(string r, ActivationContext ctxt)
+        
+        private bool RestrictionValidDebug(string r, ActivationContext ctxt, ActivationContext secondary)
         {
-            var success = RestrictionValid(r, ctxt);
+            var success = RestrictionValid(r, ctxt, secondary);
             if (!success) Debug.Log($"Trigger for {ThisCard.CardName} invalid at restriction {r} for {ctxt}");
             return success;
-        }*/
+        }
 
         /// <summary>
         /// Checks whether this trigger restriction is valid for the given context where the trigger occurred.
@@ -195,7 +198,7 @@ namespace KompasCore.Effects
 
             try
             {
-                return triggerRestrictions.All(r => RestrictionValid(r, context, secondary: secondary));
+                return triggerRestrictions.All(r => RestrictionValidDebug(r, context, secondary: secondary));
             }
             catch (NullReferenceException nullref)
             {

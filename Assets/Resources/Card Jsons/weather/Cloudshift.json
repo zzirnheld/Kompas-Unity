@@ -17,7 +17,12 @@
 					"cardRestriction":
 					{
 						"blurb":"adjacent Weather to annihilate",
-						"cardRestrictions":["Friendly","Board","Adjacent to Source","Subtypes Include"],
+						"cardRestrictions":["Friendly","Board","Subtypes Include","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to Source"],
+							"mustBeEmpty":false
+						},
                         "subtypesInclude":["Weather"]
 					}
 				},
@@ -39,7 +44,12 @@
                     "spaceRestriction":
                     {
                         "blurb":"where to cast the Weather",
-                        "spaceRestrictions":["Can Play Target to This Space","Adjacent to Source"]
+                        "spaceRestrictions":["Can Play Target to This Space","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to Source"],
+							"mustBeEmpty":false
+						}
                     }
                 },
                 {

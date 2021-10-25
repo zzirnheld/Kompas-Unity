@@ -191,9 +191,9 @@ namespace KompasServer.GameCore
             {
                 p.ServerNotifier.SetFirstTurnPlayer(FirstTurnPlayer);
                 p.Avatar.SetN(p.Avatar.N - AvatarNPenalty);
-                //p.Avatar.SetE(p.Avatar.E + AvatarEBonus);
+                p.Avatar.SetE(p.Avatar.E + AvatarEBonus);
                 p.Avatar.SetW(p.Avatar.W - AvatarWPenalty);
-                p.Avatar.SetShield(AvatarShield);
+                //p.Avatar.SetShield(AvatarShield);
                 DrawX(p.index, 5);
             }
 

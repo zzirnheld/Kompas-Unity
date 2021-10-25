@@ -12,9 +12,9 @@ namespace KompasServer.Effects
         private readonly GameCard target;
 
         public HangingAnnihilationEffect(ServerGame serverGame, TriggerRestriction triggerRestriction, string endCondition, 
-            string fallOffCondition, TriggerRestriction fallOffRestriction, ActivationContext currentContext,
-            GameCard target)
-            : base(serverGame, triggerRestriction, endCondition, fallOffCondition, fallOffRestriction, currentContext, removeIfEnd: false)
+            string fallOffCondition, TriggerRestriction fallOffRestriction, 
+            Effect sourceEff, ActivationContext currentContext, GameCard target)
+            : base(serverGame, triggerRestriction, endCondition, fallOffCondition, fallOffRestriction, sourceEff, currentContext, removeIfEnd: true)
         {
             this.target = target;
         }

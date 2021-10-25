@@ -35,9 +35,9 @@ namespace KompasCore.Cards
         public int BaseC => serializedCard.c;
         public int BaseA => serializedCard.a;
 
-        public override int N 
-        { 
-            get => base.N; 
+        public override int N
+        {
+            get => base.N;
             protected set => cardCtrl.N = base.N = value;
         }
         public override int E
@@ -66,17 +66,6 @@ namespace KompasCore.Cards
             protected set => cardCtrl.A = base.A = value;
         }
 
-        private int shield;
-        public virtual int Shield
-        {
-            get => shield;
-            protected set
-            {
-                Debug.Log($"Setting {CardName}'s shield to {value}");
-                cardCtrl.Shield = shield = value;
-            }
-        }
-
         public int Negations { get; private set; } = 0;
         public virtual bool Negated
         {
@@ -86,7 +75,7 @@ namespace KompasCore.Cards
                 if (value) Negations++;
                 else Negations--;
 
-                foreach (var e in Effects) e.Negate();
+                foreach (var e in Effects) e.Negated = Negated;
             }
         }
         public int Activations { get; private set; } = 0;
@@ -117,7 +106,7 @@ namespace KompasCore.Cards
                 Debug.Log($"Position of {CardName} set to {value}");
                 position = value;
                 //card controller will be null on server. not using null ? because of monobehavior
-                if(cardCtrl != null) cardCtrl.SetPhysicalLocation(Location);
+                if (cardCtrl != null) cardCtrl.SetPhysicalLocation(Location);
                 foreach (var aug in AugmentsList) aug.Position = value;
             }
         }
@@ -262,7 +251,7 @@ namespace KompasCore.Cards
         /// </summary>
         public virtual void ResetCard()
         {
-            if(serializedCard == null)
+            if (serializedCard == null)
             {
                 Debug.Log("Tried to reset card whose info was never set! This should only happen at game start");
                 return;
@@ -354,7 +343,7 @@ namespace KompasCore.Cards
         /// <returns><see langword="true"/> if <paramref name="card"/> is behind this, <see langword="false"/> otherwise.</returns>
         public bool CardBehind(IGameCardInfo card) => SpaceBehind(card.Position);
 
-        public bool SpaceDirectlyInFront(Space space) 
+        public bool SpaceDirectlyInFront(Space space)
             => Location == CardLocation.Field && Controller.SubjectiveCoords(space) == SubjectivePosition.DueNorth;
 
         public bool CardDirectlyInFront(IGameCardInfo card)
@@ -386,13 +375,13 @@ namespace KompasCore.Cards
         }
         public bool InCorner() => (Position.x == 0 || Position.x == 6) && (Position.y == 0 || Position.y == 6);
 
-        public int ShortestPath(Space space, Func<GameCard, bool> throughPredicate) 
+        public int ShortestPath(Space space, Func<GameCard, bool> throughPredicate)
             => Game.boardCtrl.ShortestPath(Position, space, throughPredicate);
         #endregion distance/adjacency
 
         public void PutBack()
         {
-            if(cardCtrl != null) cardCtrl.SetPhysicalLocation(Location);
+            if (cardCtrl != null) cardCtrl.SetPhysicalLocation(Location);
         }
 
         /// <summary>
@@ -443,7 +432,6 @@ namespace KompasCore.Cards
         /// Inflicts the given amount of damage, which can affect both shield and E. Used by attacks and (rarely) by effects.
         /// </summary>
         public virtual void TakeDamage(int dmg, IStackable stackSrc = null) => SetE(E - dmg, stackSrc: stackSrc);
-        public virtual void SetShield(int shield, IStackable stackSrc = null, bool notify = true) => Shield = shield;
 
         /// <summary>
         /// Shorthand for modifying a card's NESW all at once.
@@ -504,9 +492,9 @@ namespace KompasCore.Cards
 
         public virtual void SetSpacesMoved(int spacesMoved, bool fromReset = false)
             => this.SpacesMoved = spacesMoved;
-        public virtual void SetAttacksThisTurn(int attacksThisTurn, bool fromReset = false) 
+        public virtual void SetAttacksThisTurn(int attacksThisTurn, bool fromReset = false)
             => this.attacksThisTurn = attacksThisTurn;
-        public virtual void SetTurnsOnBoard(int turnsOnBoard, IStackable stackSrc = null, bool fromReset = false) 
+        public virtual void SetTurnsOnBoard(int turnsOnBoard, IStackable stackSrc = null, bool fromReset = false)
             => this.TurnsOnBoard = turnsOnBoard;
         #endregion statfuncs
 
@@ -520,8 +508,7 @@ namespace KompasCore.Cards
             {
                 case CardLocation.Nowhere: return true;
                 case CardLocation.Field:
-                    if (AugmentedCard != null) return Detach(stackSrc);
-                    else return Game.boardCtrl.RemoveFromBoard(this);
+                    return AugmentedCard != null ? Detach(stackSrc) : Game.boardCtrl.RemoveFromBoard(this);
                 case CardLocation.Discard:
                     return Controller.discardCtrl.RemoveFromDiscard(this);
                 case CardLocation.Hand:
@@ -536,6 +523,7 @@ namespace KompasCore.Cards
             }
         }
 
+        public virtual bool Vanish() => Discard();
         public bool Discard(IStackable stackSrc = null) => Controller.discardCtrl.AddToDiscard(this, stackSrc);
 
         public bool Rehand(Player controller, IStackable stackSrc = null) => controller.handCtrl.AddToHand(this, stackSrc);
@@ -552,16 +540,13 @@ namespace KompasCore.Cards
 
         public bool Play(Space to, Player controller, IStackable stackSrc = null, bool payCost = false)
         {
-            if (Game.boardCtrl.Play(this, to, controller))
+            if (Game.boardCtrl.Play(this, to, controller, stackSrc))
             {
                 if (payCost) controller.Pips -= Cost;
                 return true;
             }
             return false;
         }
-
-        // returns false by default because you can't incarnate non-avatars
-        public virtual bool Incarnate(IStackable stackSrc = null) => false;
 
         public bool Move(Space to, bool normalMove, IStackable stackSrc = null)
             => Game.boardCtrl.Move(this, to, normalMove, stackSrc);

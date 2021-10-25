@@ -8,7 +8,7 @@
 			{
 				"triggerCondition":"Attack",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Coords Fit Restriction"],
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":{
 						"cardRestrictions":["Is Character","Friendly","Board","Space Fits Restriction"],
 						"spaceRestriction":

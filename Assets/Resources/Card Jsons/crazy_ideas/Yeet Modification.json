@@ -24,9 +24,12 @@
 					"spaceRestriction":
 					{
 						"blurb":"where to slightly yeet target card",
-						"spaceRestrictions":["Distance to Target == Constant","Can Move Target to This Space","Empty"],
-						"constant":1
-					}
+						"spaceRestrictions":["Can Move Target to This Space","Distance to Target Fits X Restriction"],
+                        "distanceXRestriction":{
+                            "xRestrictions":["=X"]
+                        }
+					},
+					"xModifier":1
 				},
 				{
 					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"

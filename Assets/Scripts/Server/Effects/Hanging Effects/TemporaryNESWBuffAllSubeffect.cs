@@ -42,6 +42,7 @@ namespace KompasServer.Effects
                                                  endCondition: endCondition,
                                                  fallOffCondition: fallOffCondition,
                                                  fallOffRestriction: CreateFallOffRestriction(card),
+                                                 sourceEff: Effect,
                                                  currentContext: Context,
                                                  buffRecipient: card,
                                                  nBuff: nBuff,

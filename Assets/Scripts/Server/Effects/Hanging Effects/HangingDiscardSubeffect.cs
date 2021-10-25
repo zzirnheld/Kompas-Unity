@@ -10,6 +10,7 @@ namespace KompasServer.Effects
                                                triggerRestriction: triggerRestriction,
                                                endCondition: endCondition,
                                                fallOffCondition: fallOffCondition,
+                                               sourceEff: Effect,
                                                fallOffRestriction: CreateFallOffRestriction(Target),
                                                currentContext: Context,
                                                target: Target);

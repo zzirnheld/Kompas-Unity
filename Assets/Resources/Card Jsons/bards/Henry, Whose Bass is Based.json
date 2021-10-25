@@ -1,0 +1,64 @@
+{
+	"cardType":67,
+	"cardName":"Henry, Whose Bass is Based",
+	"effText":"When you cast C X Music normally, deck->cast C < X Music.",
+	"effects":[
+		{
+			"blurb":"BASS",
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","No Stackable","Controller Triggered","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Subtypes Include"],
+						"subtypesInclude":["Music"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.SetXByTriggeringCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"C"
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+                        "blurb":"Music to cast",
+						"cardRestrictions":["Friendly","Deck","Subtypes Include","Card Value Fits X Restriction"],
+						"subtypesInclude":["Music"],
+						"cardValue":{
+							"value":"C"
+						},
+						"xRestriction":{
+							"xRestrictions":["<X"]
+						}
+					},
+					"xMultiplier":1
+				},
+                {
+                    "$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+                    "spaceRestriction":
+                    {
+                        "blurb":"ENCORE!",
+                        "spaceRestrictions":["Can Play Target to This Space"]
+                    }
+                },
+                {
+                    "$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+                }
+			]	
+		}
+	],
+    "unique":true,
+	"n":1,
+	"e":5,
+	"s":4,
+	"w":2,
+	"subtypes":["Bard"],
+	"subtypeText":"Bard"
+}

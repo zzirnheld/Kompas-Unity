@@ -1,6 +1,7 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace KompasServer.Effects
 {
@@ -13,19 +14,22 @@ namespace KompasServer.Effects
 
         protected override IEnumerable<HangingEffect> CreateHangingEffects()
         {
-            Context.Targets.Clear();
-            Context.Targets.AddRange(Effect.Targets);
+            Debug.Log($"Is context null? {Context == null}");
+            Context?.Targets?.Clear();
+            Context?.Targets?.AddRange(Effect.Targets);
             var delay = new DelayedHangingEffect(game: ServerGame,
                                                  triggerRestriction: triggerRestriction,
                                                  endCondition: endCondition,
                                                  fallOffCondition: fallOffCondition,
                                                  fallOffRestriction: CreateFallOffRestriction(Source),
+                                                 sourceEff: Effect,
                                                  currentContext: Context,
                                                  numTimesToDelay: numTimesToDelay,
                                                  toResume: ServerEffect,
                                                  indexToResumeResolution: indexToResume,
                                                  controller: EffectController,
                                                  targets: new List<GameCard>(Effect.Targets),
+                                                 spaces: new List<Space>(Effect.SelectCoords(s => s)),
                                                  clearIfResolve: clearWhenResume);
             return new List<HangingEffect>() { delay };
         }

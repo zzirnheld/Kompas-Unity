@@ -1,0 +1,36 @@
+{
+	"cardType":83,
+	"cardName":"Music for Aerports",
+	"effText":"When a character is summoned, give them +1 EW until I vanish.",
+	"effects":[
+		{
+            "triggerCondition":"Play",
+            "triggerRestriction":{
+                "triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+                "cardRestriction":
+                {
+                    "cardRestrictions":["Is Character"]
+                }
+            },
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
+					"eModifier":1,
+					"wModifier":1,
+					"endCondition":"Vanish",
+					"triggerRestriction":{
+						"triggerRestrictions":["This Card Triggered"]
+					}
+				}
+			]
+		}
+	],
+	"c":3,
+	"spellTypes":["Vanishing"],
+	"duration":2,
+    "radius":1,
+	"subtypeText":"Vanishing 2 Music"
+}

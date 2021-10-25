@@ -17,6 +17,26 @@ aquatic/Here Be Monsters
 aquatic/Wave
 aquatic/Raincaller Carp
 aquatic/Inevitable Crab
+bards/Jolambertino, Indeci Compos
+bards/Wuonlan, the Inspired
+bards/Henry, Whose Bass is Based
+bards/Meti, Prima Diva
+bards/Master Caster, Recorder Bdaster
+bards/Eli, Quadruple Hornist
+bards/Dave with the Fonky Keytar
+bards/Earblaster, Tuba Master
+bards/Michael on Triangle
+bards/The Mystical Medical Doc
+bards/Reyna, Basoonist Backstage
+bards/Impro Visio, Dealing with Nonsezna
+bards/Eldir Samplei, Bestower of Horns
+bards/Zach, Sky Singer
+bards/Bards Get Inspiration
+bards/The Playlist
+bards/Up To Eleven
+bards/Encore
+bards/Beat Drop
+bards/Finale
 Bind the Aggression
 Binding Site
 Bound Offering
@@ -94,6 +114,7 @@ dragons/Dragonfly
 dragons/Dragon Familiar
 dragons/Hungry Dragonling
 dragons/Growing Boye
+dragons/Earthwapmer
 Dreamfog
 Durendal
 Fight
@@ -110,7 +131,7 @@ geminii/Reincarnation
 geminii/Rememories
 geminii/Resummon
 geminii/Revered Vessel
-geminii/Aura of Rememories
+geminii/Cloud of Rememories
 golems/Animancer
 golems/Antiprecatium Golem
 golems/Clay Golem
@@ -134,7 +155,13 @@ golems/Taunt Core
 golems/Woolen Golem
 golems/Gold Golem
 golems/Core Scrambling
+golems/Scrap Golem
 Haemopoten
+instruments/Assaulting Batterie
+instruments/Gratuitous Sax
+instruments/Gratuitous Violins
+instruments/Horny Jail
+instruments/Resonating Tringle
 invokers/Haguaughan Invoker
 invokers/Invoke the Invoker
 invokers/Prepare the Name
@@ -155,6 +182,19 @@ linewalkers/Red Linewalker
 linewalkers/White Linewalker
 linewalkers/Yellow Linewalker
 linewalkers/Leygrapple
+music/Soaring Chorus
+music/Surging Verse
+music/Ringing Bridge
+music/Eureka Lyric
+music/Toe Tapper
+music/A Real Headbanger
+music/Chonky Noise Rock Bass
+music/Music for Aerports
+music/Play Them Leylines Like a Banjo
+music/Glory Metal
+music/4 33
+music/Backup Track
+music/Hard Rock
 None Defy the Lines
 Notcropoten
 pulsars/Accelerating Pulsar
@@ -402,7 +442,7 @@ wanderers/Wisewoman
 weather/Dapplesun
 weather/Puffyclouds
 weather/Crispbreeze
-weather/Overcast
+weather/Tailwindstorm
 weather/Flashflood
 weather/Peltrain
 weather/Muggyclouds
@@ -414,12 +454,14 @@ weather/Emezene, Who Reads the Breeze
 weather/Outaroud, Who Scouts the Clouds
 weather/Zussastuss, Who Trusts the Gusts
 weather/Sterrasterr, Who Stirs the Storm
+weather/Erelain, Who Trains the Rain
 weather/Cloudshift
 weather/Stormfront
 weather/Unusual Weather
 weather/Lightning Elemental
 weather/Shardstorm Elemental
 weather/Hailstrike Elemental
+weather/Weather Apprentice
 wisps/Erratic Wisps
 wisps/Flippiwisp
 wisps/Here'n'gone

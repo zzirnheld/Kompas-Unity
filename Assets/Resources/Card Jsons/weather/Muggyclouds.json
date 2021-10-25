@@ -4,9 +4,9 @@
 	"effText":"Weather.\nWhen a character arrives here, give them -1 S.",
 	"effects":[
 		{
+			"blurb":"Dispiriting clouds",
 			"triggerData":
 			{
-				"blurb":"Dispiriting Clouds",
 				"triggerCondition":"Arrive",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction"],
@@ -36,5 +36,5 @@
 	"c":1,
 	"spellTypes":["Radial"],
 	"subtypeText":"Weather Radial",
-	"radius":2
+	"radius":3
 }

@@ -4,11 +4,12 @@
 	"effText":"When friendly turns start, you can have me pay X E. Annihilate your deck's top X. Delay 1. Rehand it.",
 	"effects":[
 		{
-			"activationRestriction":{
-				"activationRestrictionArray":[
-					"Friendly Turn",
-					"Default"
-				]
+			"triggerData":
+			{
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Friendly Turn"]
+				}
 			},
 			"subeffects":[
 				{

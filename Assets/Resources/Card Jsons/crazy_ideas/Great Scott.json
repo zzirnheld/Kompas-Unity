@@ -37,9 +37,12 @@
 					"spaceRestriction":
 					{
 						"blurb":"Great Scott, Marty, move the card!",
-						"spaceRestrictions":["Empty","Distance to Target == Constant","Can Move Target to This Space"],
-						"constant":1
-					}
+						"spaceRestrictions":["Empty","Can Move Target to This Space","Distance to Target Fits X Restriction"],
+                        "distanceXRestriction":{
+                            "xRestrictions":["=X"]
+                        }
+					},
+					"xModifier":1
 				},
 				{
 					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"

@@ -1,0 +1,57 @@
+{
+	"cardType":83,
+	"cardName":"Death Metal",
+	"effText":"When I'm cast, kill a character, but when I vanish, their owner plays them (from literally wherever they are).",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+                {
+                    "$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+                    "cardRestriction":
+                    {
+                        "blurb":"who to die",
+                        "cardRestrictions":["Is Character","Board"]
+                    }
+                },
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay":0,
+					"indexToResume":3,
+					"fallOffCondition":"",
+					"endCondition":"Vanish",
+					"triggerRestriction":{
+						"triggerRestrictions":["This Card Triggered"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where to play the character killed by death metal",
+						"spaceRestrictions":["Can Play Target to This Space"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"c":6,
+	"spellTypes":["Vanishing"],
+	"duration":1,
+	"subtypeText":"Vanishing 2 Music"
+}

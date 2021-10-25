@@ -81,8 +81,6 @@ namespace KompasClient.UI
 
         //card view ui
         public CardInfoViewClientUIController cardInfoViewUICtrl;
-        public GameObject incarnateButton;
-        public TMPro.TMP_Text incarnateCostText;
 
         public GameCard CardToActivateEffectsFor
         {
@@ -124,11 +122,6 @@ namespace KompasClient.UI
         {
             base.Refresh();
             var avatar = clientGame.Players[0]?.Avatar;
-            if (avatar != null)
-            {
-                incarnateButton.SetActive(avatar.PlayRestriction.EvaluateIncarnate());
-                incarnateCostText.text = $"{avatar.BaseS}";
-            }
         }
 
         public override bool ShowInfoFor(GameCard card, bool refresh = false)

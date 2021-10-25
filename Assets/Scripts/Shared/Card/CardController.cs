@@ -75,7 +75,7 @@ namespace KompasCore.Cards
         }
         public int E
         {
-            set => SetHitpointsText(value, card.Shield);
+            set => SetHitpointsText(value);
         }
         public int S
         {
@@ -113,26 +113,11 @@ namespace KompasCore.Cards
                 unzoomedAText.fontSize = value < 10 ? LargeUnzoomedTextFontSize : SmallUnzoomedTextFontSize;
             }
         }
-        public int Shield
-        {
-            set => SetHitpointsText(card.E, value);
-        }
 
-        public void SetHitpointsText(int e, int shield)
+        public void SetHitpointsText(int e)
         {
-            //TODO make show shield in a smaller font or something if summoned and have shield
-            if (shield > 0 && !card.Summoned)
-            {
-                zoomedEText.text = $"E {e}\n+{shield}";
-                unzoomedEText.text = $"{e + shield}";
-                unzoomedEText.fontSize = e + shield < 10 ? LargeUnzoomedTextFontSize : SmallUnzoomedTextFontSize;
-            }
-            else
-            {
-                zoomedEText.text = $"E\n{e}";
-                unzoomedEText.text = $"{e}";
-                unzoomedEText.fontSize = e < 10 ? LargeUnzoomedTextFontSize : SmallUnzoomedTextFontSize;
-            }
+            zoomedEText.text = $"E {e}";
+            unzoomedEText.text = $"{e}";
         }
 
         public virtual void SetPhysicalLocation(CardLocation location)

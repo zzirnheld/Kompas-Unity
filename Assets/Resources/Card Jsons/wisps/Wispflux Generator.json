@@ -43,7 +43,12 @@
 					"spaceRestriction":
 					{
 						"blurb":"where to generate Wispflux",
-						"spaceRestrictions":["Can Play Target to This Space","Adjacent to Source"]
+						"spaceRestrictions":["Can Play Target to This Space","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to Source"],
+							"mustBeEmpty":false
+						}
 					}
 				},
 				{

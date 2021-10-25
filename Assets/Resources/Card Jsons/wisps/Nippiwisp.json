@@ -17,7 +17,12 @@
 					"cardRestriction":
 					{
 						"blurb":"adjacent character for Pricklewisp to give -1 W",
-						"cardRestrictions":["Is Character","Board","Adjacent to Source"]
+						"cardRestrictions":["Is Character","Board","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to Source"],
+							"mustBeEmpty":false
+						}
 					}
 				},
 				{

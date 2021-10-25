@@ -1,0 +1,76 @@
+{
+	"cardType":67,
+	"cardName":"Jolambertino, Indeci Compos",
+	"effText":"When friendly turns start, hand->cast 1 Music. Delay until the stack ends. Dispel it. Discard->cast 1 distinct music.",
+	"effects":[
+		{
+			"blurb":"Decisions, Indecisions",
+			"triggerData":
+			{
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Friendly Turn"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+                        "blurb":"Music to cast",
+						"cardRestrictions":["Friendly","Hand","Subtypes Include"],
+						"subtypesInclude":["Music"]
+					}
+				},
+                {
+                    "$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+                    "spaceRestriction":
+                    {
+                        "blurb":"where to cast that Music",
+                        "spaceRestrictions":["Can Play Target to This Space"]
+                    }
+                },
+                {
+                    "$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+                },
+				{
+					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay":0,
+					"indexToResume":4,
+					"fallOffCondition":"",
+					"endCondition":"Stack End"
+				},
+				{
+					"$type":"KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+                        "blurb":"no, no, actual Music to cast",
+						"cardRestrictions":["Friendly","Discard","Distinct Name from Other Targets","Subtypes Include"],
+						"subtypesInclude":["Music"]
+					}
+				},
+                {
+                    "$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+                    "spaceRestriction":
+                    {
+                        "blurb":"where to cast that Music",
+                        "spaceRestrictions":["Can Play Target to This Space"]
+                    }
+                },
+                {
+                    "$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+                }
+			]	
+		}
+	],
+    "unique":true,
+	"n":4,
+	"e":5,
+	"s":6,
+	"w":4,
+	"subtypes":["Bard"],
+	"subtypeText":"Bard"
+}

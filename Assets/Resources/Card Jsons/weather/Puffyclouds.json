@@ -4,9 +4,9 @@
 	"effText":"Weather.\nWhen a character arrives here, give them +1 S.",
 	"effects":[
 		{
+			"blurb":"Inspiring clouds",
 			"triggerData":
 			{
-				"blurb":"Inspiring Clouds",
 				"triggerCondition":"Arrive",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction"],

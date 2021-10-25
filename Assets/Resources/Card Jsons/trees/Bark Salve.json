@@ -1,0 +1,48 @@
+{
+	"cardType":83,
+	"cardName":"Bark Salve",
+	"effText":"Heal an adjacent Tree. Draw 1 card.",
+	"effects":[
+		{
+			"blurb":"Simple",
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Board","Is Character","Can Be Healed","Subtypes Include","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to Source"],
+							"mustBeEmpty":false
+						},
+						"subtypesInclude":["Tree"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.HealSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"PlayRestriction":{
+		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
+		"adjacentCardRestriction":
+		{
+			"cardRestrictions":["Is Character"]
+		}
+	},
+	"c":1,
+	"spellTypes":["Simple"],
+	"subtypeText":"Simple"
+}

@@ -18,7 +18,12 @@
 					"cardRestriction":
 					{
 						"blurb":"adjacent character for Shardstorm Elemental to counter",
-						"cardRestrictions":["Is Character","Board","Adjacent to Source","Effect is on the Stack"]
+						"cardRestrictions":["Is Character","Board","Effect is on the Stack","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to Source"],
+							"mustBeEmpty":false
+						}
 					}
 				},
 				{

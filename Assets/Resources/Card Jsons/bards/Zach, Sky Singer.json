@@ -1,0 +1,109 @@
+{
+	"cardType":67,
+	"cardName":"Zach, Sky Singer",
+	"effText":"When turns start, either:\nAnnihilate 1 friendly Weather and deck->cast Music where it was.\nAnnihilate 1 friendly Music and deck->cast Weather where it was.",
+	"effects":[
+		{
+			"blurb":"Can you hear the storm?",
+            "triggerData":
+            {
+                "triggerCondition":"Turn Start",
+                "triggerRestriction":{
+                    "triggerRestrictions":["This Card in Play"]
+                }
+            },
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"condition":"No Card Fits Restriction",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Friendly","Board","Subtypes Include"],
+                        "subtypesInclude":["Weather"]
+					},
+					"jumpIndex":9
+				},
+				{
+					"$type":"KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"condition":"No Card Fits Restriction",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Friendly","Board","Subtypes Include"],
+                        "subtypesInclude":["Music"]
+					},
+					"jumpIndex":3
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"ChoiceBlurb":"Swap Weather into Music or Music into Weather?",
+					"OptionBlurbs":["M -> W","W -> M"],
+					"OptionJumpIndices":[9,3],
+					"hasDefault":false
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Weather to annihilate",
+						"cardRestrictions":["Friendly","Board","Subtypes Include"],
+                        "subtypesInclude":["Weather"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				},
+                {
+                    "$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+                    "cardRestriction":{
+                        "blurb":"Weather to deck-cast",
+                        "cardRestrictions":["Friendly","Deck","Subtypes Include"],
+                        "subtypesInclude":["Music"]
+                    },
+                    "maxCanChoose":1
+                },
+                {
+                    "$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+                },
+				{
+					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Music to annihilate",
+						"cardRestrictions":["Friendly","Board","Subtypes Include"],
+                        "subtypesInclude":["Music"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				},
+                {
+                    "$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+                    "cardRestriction":{
+                        "blurb":"Weather to deck-cast",
+                        "cardRestrictions":["Friendly","Deck","Subtypes Include"],
+                        "subtypesInclude":["Weather"]
+                    },
+                    "maxCanChoose":1
+                },
+                {
+                    "$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+                }
+			]	
+		}
+	],
+    "unique":true,
+	"n":4,
+	"e":7,
+	"s":9,
+	"w":8,
+	"subtypeText":"Skyknight Bard"
+}

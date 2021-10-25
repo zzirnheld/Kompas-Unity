@@ -17,3 +17,5 @@ Flashback
 Wanderer
 Waterdweller
 Speedemon
+Instrument
+Pass Back

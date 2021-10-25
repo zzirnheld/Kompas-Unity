@@ -12,20 +12,18 @@ namespace KompasCore.Networking
         public int w;
         public int c;
         public int a;
-        public int shield;
         public int spacesMoved;
 
         public ChangeCardNumericStatsPacket() : base(UpdateCardNumericStats) { }
 
-        public ChangeCardNumericStatsPacket(int cardId, (int n, int e, int s, int w, int c, int a) stats, int shield, int spacesMoved) : this()
+        public ChangeCardNumericStatsPacket(int cardId, (int n, int e, int s, int w, int c, int a) stats, int spacesMoved) : this()
         {
             this.cardId = cardId;
             (n, e, s, w, c, a) =  stats;
-            this.shield = shield;
             this.spacesMoved = spacesMoved;
         }
 
-        public override Packet Copy() => new ChangeCardNumericStatsPacket(cardId, (n, e, s, w, c, a), shield, spacesMoved);
+        public override Packet Copy() => new ChangeCardNumericStatsPacket(cardId, (n, e, s, w, c, a), spacesMoved);
     }
 }
 
@@ -39,7 +37,6 @@ namespace KompasClient.Networking
             if (card != null)
             {
                 card.SetStats((n, e, s, w, c, a));
-                card.SetShield(shield);
                 card.SetSpacesMoved(spacesMoved);
             }
         }

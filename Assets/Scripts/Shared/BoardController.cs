@@ -346,7 +346,7 @@ namespace KompasCore.GameCore
                                 break;
                             case CardBase.DelayedSubtype:
                             case CardBase.VanishingSubtype:
-                                if (c.TurnsOnBoard >= c.Duration) c.Discard();
+                                if (c.TurnsOnBoard >= c.Duration) c.Vanish();
                                 break;
                         }
                     }

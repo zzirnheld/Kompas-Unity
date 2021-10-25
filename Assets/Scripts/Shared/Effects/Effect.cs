@@ -1,7 +1,8 @@
 ﻿using KompasCore.Cards;
 using KompasCore.GameCore;
-using System.Collections.Generic;
 using System;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace KompasCore.Effects
 {
@@ -25,7 +26,7 @@ namespace KompasCore.Effects
         //Targets
         protected readonly List<GameCard> targetsList = new List<GameCard>();
         public IEnumerable<GameCard> Targets => targetsList;
-        public readonly List<Space> coords = new List<Space>();
+        protected readonly List<Space> coords = new List<Space>();
         public readonly List<Player> players = new List<Player>();
         public readonly List<GameCard> rest = new List<GameCard>();
         /// <summary>
@@ -44,16 +45,7 @@ namespace KompasCore.Effects
         public int TimesUsedThisRound { get; protected set; }
         public int TimesUsedThisStack { get; set; }
 
-        private int negations = 0;
-        public bool Negated
-        {
-            get => negations > 0;
-            private set
-            {
-                if (value) negations++;
-                else negations--;
-            }
-        }
+        public virtual bool Negated { get; set; }
 
         protected void SetInfo(GameCard source, int effIndex, Player owner)
         {
@@ -78,8 +70,6 @@ namespace KompasCore.Effects
             TimesUsedThisTurn = 0;
         }
 
-        public virtual void Negate() => Negated = true;
-
         public virtual void AddTarget(GameCard card) => targetsList.Add(card);
         public virtual void RemoveTarget(GameCard card) => targetsList.Remove(card);
 
@@ -91,20 +81,29 @@ namespace KompasCore.Effects
 
         public GameCard GetTarget(int num)
         {
-            int trueIndex = num < 0 ? num + targetsList.Count : num;
+            int trueIndex = num < 0 ? num + targetsList.Count() : num;
             return trueIndex < 0 ? null : targetsList[trueIndex];
         }
 
         public Space GetSpace(int num)
         {
-            var trueIndex = num < 0 ? num + coords.Count : num;
+            var trueIndex = num < 0 ? num + coords.Count() : num;
             return trueIndex < 0 ? default : coords[trueIndex];
         }
 
         public Player GetPlayer(int num)
         {
-            int trueIndex = num < 0 ? num + players.Count : num;
+            int trueIndex = num < 0 ? num + players.Count() : num;
             return trueIndex < 0 ? null : players[trueIndex];
         }
+
+        public void AddSpace(Space space)
+        {
+            coords.Add(space.Copy);
+        }
+
+        public bool AnyCoords() => coords.Any();
+
+        public IEnumerable<T> SelectCoords<T>(Func<Space, T> lambda) => coords.Select(lambda);
     }
 }

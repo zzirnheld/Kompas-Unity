@@ -1,0 +1,43 @@
+{
+	"cardType":67,
+	"cardName":"Erelain, Who Trains the Rain",
+	"effText":"When a Skyknight moves to a space in Weather, echo them.",
+	"effects":[
+		{
+            "blurb":"Learn the Weather",
+			"triggerData":
+			{
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Is Character","Different from Source","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["In AOE Of"],
+							"inAOEOfRestriction":{
+								"cardRestrictions":["Subtypes Include"],
+								"subtypesInclude":["Weather"]
+							},
+							"mustBeEmpty":false
+						}
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"n":2,
+	"e":2,
+	"s":2,
+	"w":2,
+    "unique":true,
+	"subtypeText":"Skyknight"
+}

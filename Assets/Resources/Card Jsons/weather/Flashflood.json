@@ -4,9 +4,9 @@
 	"effText":"Weather.\nWhen a character arrives here, give them -2 N.",
 	"effects":[
 		{
+			"blurb":"Floodwaters",
 			"triggerData":
 			{
-				"blurb":"Flood",
 				"triggerCondition":"Arrive",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction"],
@@ -36,5 +36,5 @@
 	"c":6,
 	"spellTypes":["Radial"],
 	"subtypeText":"Radial Water Weather",
-	"radius":2
+	"radius":3
 }

@@ -48,9 +48,12 @@
 					"spaceRestriction":
 					{
 						"blurb":"where for Erratic Wisps to move a Wisp",
-						"spaceRestrictions":["Empty","Can Move Target to This Space","Distance to Target == Constant"],
-						"constant":1
-					}
+						"spaceRestrictions":["Can Move Target to This Space","Distance to Target Fits X Restriction"],
+                        "distanceXRestriction":{
+                            "xRestrictions":["=X"]
+                        }
+					},
+					"xModifier":1
 				},
 				{
 					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"

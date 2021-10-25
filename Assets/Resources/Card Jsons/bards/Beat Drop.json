@@ -1,0 +1,62 @@
+{
+	"cardType":83,
+	"cardName":"Beat Drop",
+	"effText":"Rehand X friendly Music. Hand->cast X Music.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"dododododododoododdooooo",
+						"cardRestrictions":["Friendly","Board","Subtypes Include"],
+						"subtypesInclude":["Music"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
+					"canDecline":true,
+					"jumpTo":0
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"*beat drop*",
+						"cardRestrictions":["Is Spell","Friendly","Hand","Can Be Played","Subtypes Include"],
+						"subtypesInclude":["Music"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"zHHHHHHHHHHHHHHHHHH",
+						"spaceRestrictions":["Can Play Target to This Space"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",
+					"jumpTo":3
+				}
+			]
+		}
+	],
+	"c":3,
+	"spellTypes":["Simple"],
+	"subtypeText":"Simple"
+}

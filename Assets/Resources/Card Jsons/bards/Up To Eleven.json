@@ -1,0 +1,30 @@
+{
+	"cardType":83,
+	"cardName":"Up To Eleven",
+	"effText":"Echo all Music.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.ResummonAllSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Board","Subtypes Include"],
+						"subtypesInclude":["Music"]
+					}
+				}
+			]	
+		}
+	],
+	"c":2,
+	"spellTypes":["Simple"],
+	"subtypes":["Simple"],
+	"subtypeText":"Simple"
+}

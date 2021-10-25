@@ -1,0 +1,40 @@
+{
+	"cardType":83,
+	"cardName":"Glory Metal",
+	"effText":"When a character here attacks, I give them +2 EW. (This triggers and resolves before damage is dealt.)",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Attack",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Is Character","Board","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["In AOE"],
+							"mustBeEmpty":false
+						}
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod":2,
+					"wMod":2
+				}
+			]
+		}
+	],
+	"c":3,
+	"spellTypes":["Vanishing","Radial"],
+	"subtypes":["Music","Vanishing","Radial"],
+	"subtypeText":"Vanishing 2 Radius 2 Music",
+    "duration":2,
+	"radius":2
+}

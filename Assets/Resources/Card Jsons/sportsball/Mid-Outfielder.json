@@ -20,9 +20,13 @@
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
-						"spaceRestrictions":["Empty","Distance to Target <= Constant"],
-						"constant":2
-					}
+						"blurb":"wher?",
+						"spaceRestrictions":["Can Move Target to This Space","Distance to Target Fits X Restriction"],
+                        "distanceXRestriction":{
+                            "xRestrictions":["<=X"]
+                        }
+					},
+					"xModifier":2
 				},
 				{
 					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
@@ -34,5 +38,5 @@
 	"e":3,
 	"s":2,
 	"w":0,
-	"subtypeText":""
+	"subtypeText":"Teammate"
 }
