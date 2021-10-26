@@ -121,6 +121,7 @@ namespace KompasCore.Effects
             spaceConnectednessRestriction?.Initialize(subeffect);
             limitAdjacencyRestriction?.Initialize(subeffect);
             hereFitsRestriction?.Initialize(subeffect);
+            distanceXRestriction?.Initialize(subeffect.Source, subeffect);
         }
 
         /// <summary>
