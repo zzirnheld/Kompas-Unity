@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Mother of Dragons",
-	"effText":"When enemy turns start, you can kill any number of friendly Summoned characters with total S X. Deck-summon an S <= X Dragon from your deck's top X cards.",
+	"effText":"When enemy turns start, you can kill any number of friendly Summoned characters with total S X. Deck-summon an S <= X Dragon from your deck's top X cards, then move it 1 space.",
 	"effects":[
 		{
 			"blurb":"Dragonbirth",
@@ -82,6 +82,21 @@
 				},
 				{
 					"$type":"KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"Fly, beloved, fly!",
+						"spaceRestrictions":["Empty","Can Move Target to This Space","Distance to Target Fits X Restriction"],
+                        "distanceXRestriction":{
+                            "xRestrictions":["=X"]
+                        }
+					},
+					"xModifier":1
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
 				}
 			]
 		}

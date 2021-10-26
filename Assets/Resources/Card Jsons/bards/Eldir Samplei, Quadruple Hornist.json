@@ -12,7 +12,7 @@
 					"triggerRestrictions":["This Card in Play","Stackable Source Fits Restriction","Coords Fit Restriction"],
 					"sourceRestriction":
 					{
-						"cardRestrictions":["Distinct from Source","Subtypes Include"],
+						"cardRestrictions":["Distinct Name from Source","Subtypes Include"],
 						"subtypesInclude":["Bard"]
 					},
 					"spaceRestriction":
