@@ -48,7 +48,8 @@
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.TargetTargetsAugmentedCardSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.TargetTargetsAugmentedCardSubeffect, Assembly-CSharp",
+					"targetIndex":-2
 				},
 				{
 					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
