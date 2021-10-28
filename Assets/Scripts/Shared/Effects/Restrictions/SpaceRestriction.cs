@@ -141,7 +141,7 @@ namespace KompasCore.Effects
             {
                 //adjacency
                 AdjacentToSource => Source.IsAdjacentTo(space),
-                AdjacentToTarget => target.IsAdjacentTo(space),
+                AdjacentToTarget => target?.IsAdjacentTo(space) ?? false,
                 AdjacentToCoords => space.AdjacentTo(Subeffect.Space),
                 AdjacentToCardRestriction => Game.boardCtrl.CardsAdjacentTo(space).Any(c => adjacencyRestriction.Evaluate(c, context)),
 
