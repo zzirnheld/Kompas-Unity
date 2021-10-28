@@ -70,6 +70,7 @@
 			]
 		}
 	],
+	"unique":true,
 	"c":3,
 	"spellTypes":["Enchant"],
 	"subtypes":["Enchant"],

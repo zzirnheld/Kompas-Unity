@@ -34,10 +34,10 @@
 			]
 		}
 	],
-	"n":2,
-	"e":2,
-	"s":2,
-	"w":2,
+	"n":4,
+	"e":4,
+	"s":4,
+	"w":0,
     "unique":true,
 	"subtypeText":"Skyknight"
 }
