@@ -54,10 +54,8 @@
 					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
 					"jumpTo":1
 				}
 			]
