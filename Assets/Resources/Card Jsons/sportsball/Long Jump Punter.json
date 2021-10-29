@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Long Jump Punter",
-	"effText":"The first time each stack I'm augmented, apply my Augments to another character within 2 spaces of me.",
+	"effText":"The first time each stack I'm augmented, apply my Augments to another character within 4 spaces of me.",
 	"effects":[
 		{
 			"triggerData":
@@ -24,7 +24,7 @@
 							"spaceRestrictions":["Distance to Source Fits X Restriction"],
 							"distanceXRestriction":{
 								"xRestrictions":["<=Constant"],
-								"constant":2
+								"constant":4
 							},
 							"mustBeEmpty":false
 						}

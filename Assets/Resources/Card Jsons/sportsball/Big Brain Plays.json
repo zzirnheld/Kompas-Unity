@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Big Brain Plays",
-	"effText":"Pip deck-cast a Sportball Play.",
+	"effText":"Pip deck-cast a Sportsball Play.",
 	"effects":[
 		{
 			"triggerData":
