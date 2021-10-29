@@ -1,17 +1,18 @@
 {
 	"cardType":67,
 	"cardName":"Nature Reporter",
-	"effText":"When I gain E, you can ask an enemy to reveal a character with more E than me. If they don’t, give distinct friendly characters +1 NEWS.",
+	"effText":"The first 3 times each turn I gain E, you can ask an enemy to reveal a character with more E than me. If they don’t, give distinct friendly characters +1 NEWS.",
 	"effects":[
 		{
 			"triggerData":
 			{
 				"triggerCondition":"E Change",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","X Fits Restriction","This Card Triggered"],
+					"triggerRestrictions":["This Card in Play","X Fits Restriction","This Card Triggered","Max Per Turn"],
 					"xRestriction":{
 						"xRestrictions":[">0"]
-					}
+					},
+					"maxTimesPerTurn":3
 				}
 			},
 			"subeffects":[

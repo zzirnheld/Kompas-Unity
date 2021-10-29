@@ -1,13 +1,12 @@
 {
 	"cardType":67,
 	"cardName":"Dragonsinger",
-	"effText":"When turns start, you can hand-reshuffle X of your Dragons to give me +X S and draw X.",
+	"effText":"When turns start, hand-reshuffle X of your Dragons to give me +X S and draw X.",
 	"effects":[
 		{
 			"blurb":"Dragonsing",
 			"triggerData":
 			{
-				"optional":true,
 				"blurb":"Hand-reshuffle X Dragons to give Dragonsinger +X S and draw X?",
 				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
