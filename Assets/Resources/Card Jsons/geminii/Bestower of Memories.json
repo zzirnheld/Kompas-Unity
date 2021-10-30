@@ -4,9 +4,9 @@
 	"effText":"When friendly turns start, echo a character.\nThe first time each stack you summon a Geminii, echo them.",
 	"effects":[
 		{
+			"blurb":"Bestow echo",
 			"triggerData":
 			{
-				"blurb":"Resummon a Summoned character? (This triggers any relevant on-summon effects.)",
 				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Friendly Turn"]
@@ -17,7 +17,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"Summoned character for Bestower of Memories to echo",
+						"blurb":"character for Bestower of Memories to echo",
 						"cardRestrictions":["Is Character","Board"]
 					}
 				},
@@ -27,6 +27,7 @@
 			]	
 		},
 		{
+			"blurb":"Otherself's memories",
 			"triggerData":
 			{
 				"triggerCondition":"Play",

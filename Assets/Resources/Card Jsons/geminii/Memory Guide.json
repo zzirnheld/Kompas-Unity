@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Memory Guide",
-	"effText":"When friendly turns start, echo an adjacent Summoned character.",
+	"effText":"When friendly turns start, echo an adjacent character.",
 	"effects":[
 		{
 			"triggerData":
@@ -16,8 +16,8 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"adjacent Summoned character for Memory Guide to echo",
-						"cardRestrictions":["Is Character","Board","Summoned","Space Fits Restriction"],
+						"blurb":"adjacent character for Memory Guide to echo",
+						"cardRestrictions":["Is Character","Board","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["Adjacent to Source"],

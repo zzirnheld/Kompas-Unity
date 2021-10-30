@@ -16,7 +16,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"Runar for Runesaga to give +25ESW",
+						"blurb":"Runar for Runesaga to give +25 ESW",
 						"cardRestrictions":["Subtypes Include","Is Character","Summoned","Board"],
 						"subtypesInclude":["Runar"]
 					}

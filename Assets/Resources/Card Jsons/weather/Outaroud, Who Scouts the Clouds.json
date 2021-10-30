@@ -23,7 +23,7 @@
 					"cardRestriction":
 					{
 						"blurb":"friendly character for Outaroud to bring scouting",
-						"cardRestrictions":["Is Character","Friendly","Board","Summoned","Subtypes Include"],
+						"cardRestrictions":["Is Character","Friendly","Board","Subtypes Include"],
 						"subtypesInclude":["Skyknight"]
 					}
 				},

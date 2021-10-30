@@ -23,7 +23,7 @@
 					"cardRestriction":
 					{
 						"blurb":"enemy character for Sterrasterr to stir into the storm",
-						"cardRestrictions":["Is Character","Enemy","Board","Summoned"]
+						"cardRestrictions":["Is Character","Enemy","Board"]
 					}
 				},
 				{

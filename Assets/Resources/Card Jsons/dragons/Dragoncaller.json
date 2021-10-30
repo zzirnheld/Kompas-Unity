@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Dragoncaller",
-	"effText":"You can kill a friendly SX character to give me +2 * X ES or SW.",
+	"effText":"You can tribute an S X character to give me +2 * X ES or SW.",
 	"effects":[
 		{
 			"blurb":"Dragoncall",

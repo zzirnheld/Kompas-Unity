@@ -19,8 +19,8 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"Summoned character for Reincarnation to echo",
-						"cardRestrictions":["Is Character","Board","Summoned","Subtypes Include"],
+						"blurb":"Geminii for Reincarnation to echo",
+						"cardRestrictions":["Is Character","Board","Subtypes Include"],
 						"subtypesInclude":["Geminii"]
 					}
 				},

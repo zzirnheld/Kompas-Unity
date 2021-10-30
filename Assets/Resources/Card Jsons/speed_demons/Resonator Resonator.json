@@ -1,41 +1,15 @@
 {
 	"cardType":67,
 	"cardName":"Resonator Resonator",
-	"effText":"When I'm summoned, and when turns start while I'm Summoned, search your deck for \"Sonic Resonator\".",
+	"effText":"When turns start, search your deck for \"Sonic Resonator\".",
 	"effects":[
 		{
 			"blurb":"Resonate",
 			"triggerData":
 			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
-				}
-			},
-			"subeffects":[
-				{
-					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Ready?",
-						"cardRestrictions":["Friendly","Deck","Name Is"],
-                        "nameIs":"Sonic Resonator"
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
-				}
-			]	
-		},
-		{
-			"triggerData":
-			{
 				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","This Card Fits Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Summoned"]
-					}
+					"triggerRestrictions":["This Card in Play"]
 				}
 			},
 			"subeffects":[
@@ -43,7 +17,7 @@
 					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"Ready?",
+						"blurb":"Ready to resonate?",
 						"cardRestrictions":["Friendly","Deck","Name Is"],
                         "nameIs":"Sonic Resonator"
 					}

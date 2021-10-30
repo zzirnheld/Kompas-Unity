@@ -48,7 +48,7 @@
 					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Friendly","Board","Summoned","Subtypes Include"],
+						"cardRestrictions":["Friendly","Board","Subtypes Include"],
 						"subtypesInclude":["Speedemon"]
 					},
 					"xMultiplier":1

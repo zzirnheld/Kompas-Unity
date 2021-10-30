@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Mother of Dragons",
-	"effText":"When enemy turns start, you can kill any number of friendly Summoned characters with total S X. Deck-summon an S <= X Dragon from your deck's top X cards, then move it 1 space.",
+	"effText":"When enemy turns start, you can tribute Summoned characters with total S X. Deck->summon an S <= X Dragon from your deck's top X cards, then move it 1 space.",
 	"effects":[
 		{
 			"blurb":"Dragonbirth",

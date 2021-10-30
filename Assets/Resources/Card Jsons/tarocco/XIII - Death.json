@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"XIII - Death",
-	"effText":"When you draw, I get +1 W. During friendly turns, I can pay X W to kill an adjacent SX character.",
+	"effText":"When you draw, I get +1 W. During friendly turns, I can pay X W to kill an adjacent S X character.",
 	"effects":[
 		{
 			"triggerData":
@@ -44,7 +44,7 @@
 					"cardRestriction":
 					{
 						"blurb":"adjacent character for Death to kill",
-						"cardRestrictions":["Is Character","Board","Adjacent to Source","Summoned","Card Value Fits X Restriction"],
+						"cardRestrictions":["Is Character","Board","Adjacent to Source","Card Value Fits X Restriction"],
 						"cardValue":{
 							"value":"S"
 						},

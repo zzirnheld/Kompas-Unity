@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Troubadour",
-	"effText":"Wanderer.\nWhen I'm summoned, reshuffle a friendly S X character. Deck->summon an S X - 1 character.",
+	"effText":"Wanderer.\nWhen I'm summoned, reshuffle a friendly Summoned S X character. Deck->summon an S X - 1 character.",
 	"effects":[
 		{
 			"triggerData":

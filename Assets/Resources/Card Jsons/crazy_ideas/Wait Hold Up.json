@@ -32,7 +32,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Wait, Hold Up, what are you moving?",
-						"cardRestrictions":["Board","Enemy","Summoned"]
+						"cardRestrictions":["Board","Enemy"]
 					}
 				},
 				{

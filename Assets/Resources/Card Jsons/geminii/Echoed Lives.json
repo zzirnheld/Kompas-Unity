@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Echoed Lives",
-	"effText":"When turns start, echo Summoned characters here.",
+	"effText":"When turns start, echo characters here.",
 	"effects":[
 		{
 			"triggerData":
@@ -16,7 +16,7 @@
 					"$type":"KompasServer.Effects.ResummonAllSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Summoned","Board","Space Fits Restriction"],
+						"cardRestrictions":["Is Character","Board","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["In AOE"],

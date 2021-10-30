@@ -16,7 +16,7 @@
 					"$type":"KompasServer.Effects.ResummonAllSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Summoned","Board"]
+						"cardRestrictions":["Is Character","Board"]
 					}
 				}
 			]	
