@@ -1,17 +1,21 @@
 {
 	"cardType":83,
-	"cardName":"Getcha Getcha Getcha",
-	"effText":"Comeback Play.\nWhen a friendly character is augmented, give them +1 N.",
+	"cardName":"Overwhelming Ball Skills",
+	"effText":"Comeback Play.\nWhen a friendly Augment is attached to an enemy character, give them -1 N.",
 	"effects":[
 		{
 			"triggerData":
 			{
-				"blurb":"Getcha Getcha Getcha",
-				"triggerCondition":"Augmented",
+				"blurb":"My balls are SKILLED!",
+				"triggerCondition":"Augment Attached",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Friendly"]
+					"cardRestriction":
+					{
+						"cardRestrictions":["Friendly","Augments Card Fitting Restriction"],
+                        "augmentRestriction":{
+                            "cardRestrictions":["Enemy"]
+                        }
 					}
 				}
 			},
@@ -21,7 +25,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"nMod":1
+					"nMod":-1
 				}
 			]
 		}

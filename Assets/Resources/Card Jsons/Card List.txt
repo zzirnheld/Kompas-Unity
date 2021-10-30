@@ -317,12 +317,7 @@ spirits/Spiritual Advice
 spirits/Unfocusing Annoyance
 spirits/Whirlwind of Emotions
 sportsball/Arbiterary
-sportsball/Big Brain Plays
-sportsball/Dreamwork
 sportsball/Forward Dunker
-sportsball/Getcha Getcha Getcha
-sportsball/Go! Play Sportsball!
-sportsball/Goal-Net Touchdown
 sportsball/Inside Goalie Defender
 sportsball/Long Jump Punter
 sportsball/Mad Jukes
@@ -332,8 +327,15 @@ sportsball/Runner Fielder
 sportsball/Sportsball
 sportsball/Sportyball
 sportsball/Teamwork!
-sportsball/Time Out
+sportsball/Big Brain Plays
+sportsball/Dreamwork
 sportsball/Whats Gonna Work
+sportsball/Getcha Getcha Getcha
+sportsball/Go! Play Sportsball!
+sportsball/Goal-Net Touchdown
+sportsball/Rocket-Propelled Ball Juice
+sportsball/Overwhelming Ball Skills
+sportsball/Penalty Box
 supplicants/Answered Prayers
 supplicants/Deliver Us
 supplicants/Desperate Footpad

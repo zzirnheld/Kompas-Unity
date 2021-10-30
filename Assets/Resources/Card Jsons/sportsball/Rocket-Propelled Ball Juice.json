@@ -1,0 +1,49 @@
+{
+	"cardType":83,
+	"cardName":"Rocket-Propelled Ball Juice",
+	"effText":"Comeback Play.\nWhen a friendly Augment is attached to an enemy character, move that character 1 space.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"blurb":"Rocket my balls!",
+				"triggerCondition":"Augment Attached",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"cardRestriction":
+					{
+						"cardRestrictions":["Friendly","Augments Card Fitting Restriction"],
+                        "augmentRestriction":{
+                            "cardRestrictions":["Enemy"]
+                        }
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"go",
+						"spaceRestrictions":["Can Move Target to This Space","Distance to Target Fits X Restriction"],
+                        "distanceXRestriction":{
+                            "xRestrictions":["=X"]
+                        }
+					},
+					"xModifier":1
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"keywords":["Comeback Play"],
+	"c":1,
+	"spellTypes":["Vanishing"],
+	"duration":1,
+	"subtypeText":"Team Play Vanishing"
+}

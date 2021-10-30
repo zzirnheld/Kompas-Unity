@@ -64,6 +64,7 @@ namespace KompasCore.Effects
         public const string NotContextCard = "Not Context Card";
         public const string AugmentsTarget = "Augments Current Target";
         public const string AugmentedBySource = "Source Augments";
+        public const string AugmentsCardRestriction = "Augments Card Fitting Restriction";
         public const string NotAugmentedBySource = "Source Doesn't Augment";
         public const string WieldsAugmentFittingRestriction = "Wields Augment Fitting Restriction";
         public const string WieldsNoAugmentFittingRestriction = "Wields No Augment Fitting Restriction";
@@ -245,6 +246,7 @@ namespace KompasCore.Effects
                 case NotContextCard: return potentialTarget?.Card != context?.CardInfo?.Card;
                 case AugmentsTarget: return potentialTarget?.AugmentedCard == Subeffect.Target;
                 case AugmentedBySource: return potentialTarget?.Augments.Contains(Source) ?? false;
+                case AugmentsCardRestriction: return augmentRestriction.Evaluate(potentialTarget?.AugmentedCard, x, context);
                 case NotAugmentedBySource: return !(potentialTarget?.Augments.Contains(Source) ?? true);
                 case WieldsAugmentFittingRestriction: return potentialTarget?.Augments.Any(c => augmentRestriction.Evaluate(c, context)) ?? false;
                 case WieldsNoAugmentFittingRestriction: return !(potentialTarget?.Augments.Any(c => augmentRestriction.Evaluate(c, context)) ?? false);

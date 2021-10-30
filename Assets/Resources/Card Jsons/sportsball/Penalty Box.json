@@ -1,0 +1,46 @@
+{
+	"cardType":83,
+	"cardName":"Penalty Box",
+	"effText":"Comeback Play.\nWhen a character wielding a Sportsball defends here, rehand them.",
+	"effects":[
+		{
+            "blurb":"Time out!",
+			"triggerData":
+			{
+                "orderPriority":-5,
+				"triggerCondition":"Defend",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"cardRestriction":
+					{
+						"cardRestrictions":["Wields Augment Fitting Restriction","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["In AOE"],
+							"mustBeEmpty":false
+						},
+						"augmentRestriction":
+						{
+							"cardRestrictions":["Subtypes Include"],
+                            "subtypesInclude":["Sportsball"]
+						}
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"keywords":["Comeback Play"],
+	"c":2,
+	"spellTypes":["Vanishing","Radial"],
+	"duration":1,
+    "radius":1,
+	"subtypeText":"Team Play Vanishing"
+}

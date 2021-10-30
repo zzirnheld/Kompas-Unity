@@ -48,9 +48,11 @@ namespace KompasClient.UI
 
         public void AutoOrder()
         {
-            foreach(var t in triggerUIs)
+            foreach(var t in triggerUIs
+                .Where(t => t.Index < 0)
+                .OrderBy(t => t.Trigger.TriggerData.orderPriority)) //defaults to asending order
             {
-                if (t.Index < 0) t.OnClick();
+                t.OnClick();
             }
 
             ConfirmOrder();
