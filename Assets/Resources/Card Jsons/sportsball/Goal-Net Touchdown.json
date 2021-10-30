@@ -30,6 +30,14 @@
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
+					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition":"Source Violates Restriction",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Augmented"]
+					}
+				},
+				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":{
 						"cardRestrictions":["Avatar","Enemy","Space Fits Restriction"],
@@ -57,7 +65,7 @@
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
 					"delete":true,
 					"remainingTargets":2,
-					"jumpTo":4
+					"jumpTo":5
 				}
 			]
 		}

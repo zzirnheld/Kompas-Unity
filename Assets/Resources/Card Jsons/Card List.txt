@@ -41,20 +41,6 @@ Bind the Aggression
 Binding Site
 Bound Offering
 Chain Dispel
-conductors/Charge
-conductors/Conductor
-conductors/Electrocreative
-conductors/Lightning Arctist
-conductors/Master of Circuitries
-conductors/Mizzaral Arcmaster
-conductors/Relay
-conductors/Rewire
-conductors/Shoddy Solder
-conductors/Statipip Fluxfielder
-conductors/Torzal Coil
-conductors/Torzal the Lightning Rod
-conductors/Unwary Student
-conductors/Wire Up
 Correctly Sized Crane
 crazy_Ideas/A Frayed Knot
 crazy_Ideas/Acid Lava Pit of Ghost Piranhas
