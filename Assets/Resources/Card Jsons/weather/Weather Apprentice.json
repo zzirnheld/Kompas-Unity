@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Weather Apprentice",
-	"effText":"When another character moves to Weather I’m also in, echo them.",
+	"effText":"When a distinct character moves to Weather I’m also in, echo them.",
 	"effects":[
 		{
             "blurb":"Learn the Weather",
@@ -11,7 +11,7 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":{
-						"cardRestrictions":["Is Character","Different from Source","Space Fits Restriction"],
+						"cardRestrictions":["Is Character","Distinct Name from Source","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["In AOE Source is Also In"],

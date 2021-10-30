@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"enemy card for Straw Golem to move.",
-						"cardRestrictions":["Board","Not Avatar","Not Augment"]
+						"cardRestrictions":["Board","Not Augment"]
 					}
 				},
 				{
@@ -39,7 +39,7 @@
 					"cardRestriction":
 					{
 						"blurb":"enemy card for Straw Golem to move.",
-						"cardRestrictions":["Board","Not Already Target","Not Avatar","Not Augment"]
+						"cardRestrictions":["Board","Not Already Target","Not Augment"]
 					}
 				},
 				{
@@ -80,7 +80,7 @@
 					"cardRestriction":
 					{
 						"blurb":"enemy card getting absolutely headbanged.",
-						"cardRestrictions":["Board","Summoned","Not Augment"]
+						"cardRestrictions":["Board","Not Augment"]
 					}
 				},
 				{
@@ -102,7 +102,7 @@
 					"cardRestriction":
 					{
 						"blurb":"enemy card getting absolutely headbanged.",
-						"cardRestrictions":["Board","Not Already Target","Summoned","Not Augment"]
+						"cardRestrictions":["Board","Not Already Target","Not Augment"]
 					}
 				},
 				{

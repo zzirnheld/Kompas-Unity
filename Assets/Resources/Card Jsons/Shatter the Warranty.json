@@ -18,7 +18,7 @@
 					"cardRestriction":
 					{
 						"blurb":"No! Not the original 1870s porcelain doll torso collection!",
-						"cardRestrictions":["Friendly","Board","Is Spell","Different from Source","Space Fits Restriction"],
+						"cardRestrictions":["Friendly","Board","Is Spell","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["Adjacent to Source"],

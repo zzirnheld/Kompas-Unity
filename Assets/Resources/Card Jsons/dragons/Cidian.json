@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Cidian",
-	"effText":"Territorial.\nWhen while attacking I deal X more combat damage than my defender's E, give characters adjacent to them, other than me, -X EW.",
+	"effText":"Territorial.\nWhen I deal X more combat damage than my defender's E while attacking, give other characters adjacent to them, -X EW.",
 	"effects":[
 		{
 			"blurb":"Acid Breath",

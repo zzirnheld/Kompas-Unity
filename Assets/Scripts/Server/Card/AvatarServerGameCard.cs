@@ -17,6 +17,7 @@ namespace KompasServer.Cards
                 LoseIfDead();
             }
         }
+        public override bool Summoned => false;
         public override bool IsAvatar => true;
 
         public override bool Remove(IStackable stackSrc = null)

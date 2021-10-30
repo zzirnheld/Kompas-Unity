@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Woolen Golem",
-	"effText":"Golem.\nWhen I'm activated, set X to my E. Give me and another character -X W.",
+	"effText":"Golem.\nWhen I'm activated, set X to my E. Give me and a distinct character -X W.",
 	"effects":[
 		{
 			"blurb":"Wooly Wool",
@@ -32,7 +32,7 @@
 					"cardRestriction":
 					{
 						"blurb":"character for Woolen Golem to give -XW",
-						"cardRestrictions":["Is Character","Board","Different from Source"]
+						"cardRestrictions":["Is Character","Board","Distinct Name from Source"]
 					}
 				},
 				{

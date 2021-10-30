@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Hungry Children",
-	"effText":"Supplicant.\nWhen a character arrives adjacent to a Supplicant, give that character -1 N.",
+	"effText":"Supplicant.\nWhen another character arrives adjacent to a Supplicant, give that character -1 N.",
 	"effects":[
 		{
 			"triggerData":

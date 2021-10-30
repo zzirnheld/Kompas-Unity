@@ -13,7 +13,7 @@
 					"maxTimesPerTurn":2,
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Different from Source","Different from Augmented Card"]
+						"cardRestrictions":["Is Character","Different from Augmented Card"]
 					},
 					"spaceRestriction":
 					{

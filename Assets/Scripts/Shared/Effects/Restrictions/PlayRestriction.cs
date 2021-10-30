@@ -22,6 +22,7 @@ namespace KompasCore.Effects
         public const string NotNormally = "Cannot be Played Normally";
         public const string MustNormally = "Must be Played Normally";
         public const string OnBoardCardFriendlyOrAdjacent = "On Board Card";
+        public const string OnCharacter = "On Character";
         public const string OnCardFittingRestriction = "On Card that Fits Restriction";
         public const string OnCardFloutingRestriction = "On Card that Flouts Restriction";
         public const string AdjacentToCardFittingRestriction = "Adjacent to Card Fitting Restriction";
@@ -38,7 +39,7 @@ namespace KompasCore.Effects
         public const string AugNormal = "Augment Normal Restrictions";
         public const string AugEffect = "Augment Effect Restrictions";
         public static readonly string[] AugmentNormalRestrictions =
-            { PlayedByCardOwner, FromHand, OnBoardCardFriendlyOrAdjacent, StandardSpellRestriction, 
+            { PlayedByCardOwner, FromHand, OnBoardCardFriendlyOrAdjacent, OnCharacter, StandardSpellRestriction, 
             FriendlyTurnIfNotFast, HasCostInPips, FastOrNothingIsResolving, CheckUnique };
         public static readonly string[] AugmentEffectRestrictions = { StandardSpellRestriction, OnBoardCardFriendlyOrAdjacent, CheckUnique };
 
@@ -106,6 +107,8 @@ namespace KompasCore.Effects
                     var cardThere = Card.Game.boardCtrl.GetCardAt(space);
                     return cardThere != null && cardThere.CardType != 'A'
                         && (cardThere.Controller == Card.Controller || cardThere.AdjacentCards.Any(c => c.Controller == Card.Controller));
+                case OnCharacter:
+                    return Card.Game.boardCtrl.GetCardAt(space)?.CardType == 'C';
                 case OnCardFittingRestriction:
                     return onCardRestriction.Evaluate(Card.Game.boardCtrl.GetCardAt(space), context);
                 case OnCardFloutingRestriction:

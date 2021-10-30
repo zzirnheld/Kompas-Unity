@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Runner Fielder",
-	"effText":"When I'm augmented, attach my Augments to the character directly in front of me.",
+	"effText":"When I'm augmented, attach my Augments to the character 2 spaces due N of me.",
 	"effects":[
 		{
 			"triggerData":

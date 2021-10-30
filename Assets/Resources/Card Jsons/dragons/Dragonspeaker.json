@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Dragonspeaker",
-	"effText":"You can kill another friendly SX character to give me +2 * X S and draw 1.",
+	"effText":"You can kill a distinct friendly SX character to give me +2 * X S and draw 1.",
 	"effects":[
 		{
 			"blurb":"Dragonspeak",
@@ -14,7 +14,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Dragonspeaker to kill",
-						"cardRestrictions":["Friendly","Board","Is Character","Different from Source"]
+						"cardRestrictions":["Friendly","Board","Is Character","Distinct Name from Source"]
 					}
 				},
 				{

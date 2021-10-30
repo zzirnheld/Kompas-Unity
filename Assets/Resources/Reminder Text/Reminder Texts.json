@@ -18,7 +18,7 @@
 		},
 		{
 			"keyword":"Ificate.",
-			"reminder":"When I'm hand-discarded, choose another discarded Crazy Idea. Pay a pip and play it."
+			"reminder":"When I'm hand->discarded, choose another discarded Crazy Idea. Pay a pip and play it."
 		},
 		{
 			"keyword":"Recoverable.",
@@ -30,7 +30,7 @@
 		},
 		{
 			"keyword":"Comeback Play.",
-			"reminder":"When friendly turns start while there's a friendly Sportsball augment, discard-cast me."
+			"reminder":"When friendly turns start while there's a friendly Sportsball augment, discard->cast me."
 		},
 		{
 			"keyword":"Runic.",

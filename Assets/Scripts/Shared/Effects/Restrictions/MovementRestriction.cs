@@ -24,7 +24,6 @@ namespace KompasCore.Effects
         //If this is a spell being moved, it can't be next to 2 other spells
         private const string StandardSpellMoveRestiction = "If Spell, Not Next to 2 Other Spells";
         private const string NothingHappening = "Nothing Happening";
-        private const string Summoned = "Is Not Avatar";
         private const string IsFriendlyTurn = "Is Friendly Turn";
         //TODO add a "default" restriction
         #endregion Basic Movement Restrictions
@@ -36,7 +35,7 @@ namespace KompasCore.Effects
         public static readonly string[] defaultNormalMovementRestrictions = new string[]
         {
             InPlay,
-            DistinctSpace, IsCharacter, Summoned,
+            DistinctSpace, IsCharacter,
             CanMoveEnoughSpaces, DestinationCanMoveHere,
             StandardSpellMoveRestiction,
             NothingHappening, IsFriendlyTurn
@@ -45,7 +44,7 @@ namespace KompasCore.Effects
         public static readonly string[] defaultEffectMovementRestrictions = new string[]
         {
             InPlay,
-            DistinctSpace, Summoned,
+            DistinctSpace,
             StandardSpellMoveRestiction
         };
 
@@ -105,7 +104,6 @@ namespace KompasCore.Effects
                 case CanMoveEnoughSpaces: return Card.SpacesCanMove >= Card.Game.boardCtrl.ShortestEmptyPath(Card, space);
                 case StandardSpellMoveRestiction: return Card.Game.ValidSpellSpaceFor(Card, space);
                 case NothingHappening: return Card.Game.NothingHappening;
-                case Summoned: return Card.Summoned;
                 case IsFriendlyTurn: return Card.Game.TurnPlayer == Card.Controller;
                 case DestinationCanMoveHere:
                     if (isSwapTarget) return true;

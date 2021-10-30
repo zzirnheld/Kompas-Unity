@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Gunpowder Golem",
-	"effText":"Golem.\nWhen I'm activated, set X to my W. Give me and another Summoned character -X E.",
+	"effText":"Golem.\nWhen I'm activated, set X to my W. Give me and a distinct Summoned character -X E.",
 	"effects":[
 		{
 			"blurb":"Boom",
@@ -32,7 +32,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Summoned character for Gunpowder Golem to give -X E",
-						"cardRestrictions":["Is Character","Summoned","Board","Different from Source"]
+						"cardRestrictions":["Is Character","Summoned","Board","Distinct Name from Source"]
 					}
 				},
 				{
