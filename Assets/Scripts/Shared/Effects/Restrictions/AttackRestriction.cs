@@ -63,7 +63,6 @@ namespace KompasCore.Effects
                 MaxPerTurn          => Card.AttacksThisTurn < maxAttacks,
                 NothingHappening    => Card.Game.NothingHappening,
 
-                Summoned            => Card.Summoned,
                 ThisIsActive        => Card.Activated,
                 InPlay              => Card.Location == CardLocation.Field,
 

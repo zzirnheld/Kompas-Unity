@@ -70,12 +70,17 @@ namespace KompasCore.Cards
             {
                 zoomedNText.text = $"N\n{value}";
                 unzoomedNText.text = $"{value}";
-                unzoomedNText.fontSize = value < 10 ? LargeUnzoomedTextFontSize : SmallUnzoomedTextFontSize;
+                unzoomedAText.fontSize = FontSizeForValue(value);
             }
         }
         public int E
         {
-            set => SetHitpointsText(value);
+            set
+            {
+                zoomedNText.text = $"E\n{value}";
+                unzoomedNText.text = $"{value}";
+                unzoomedAText.fontSize = FontSizeForValue(value);
+            }
         }
         public int S
         {
@@ -83,7 +88,7 @@ namespace KompasCore.Cards
             {
                 zoomedSText.text = $"S\n{value}";
                 unzoomedSText.text = $"{value}";
-                unzoomedSText.fontSize = value < 10 ? LargeUnzoomedTextFontSize : SmallUnzoomedTextFontSize;
+                unzoomedAText.fontSize = FontSizeForValue(value);
             }
         }
         public int W
@@ -92,7 +97,7 @@ namespace KompasCore.Cards
             {
                 zoomedWText.text = $"W\n{value}";
                 unzoomedWText.text = $"{value}";
-                unzoomedWText.fontSize = value < 10 ? LargeUnzoomedTextFontSize : SmallUnzoomedTextFontSize;
+                unzoomedAText.fontSize = FontSizeForValue(value);
             }
         }
         public int C
@@ -101,7 +106,7 @@ namespace KompasCore.Cards
             {
                 zoomedCText.text = $"C\n{value}";
                 unzoomedCText.text = $"{value}";
-                unzoomedCText.fontSize = value < 10 ? LargeUnzoomedTextFontSize : SmallUnzoomedTextFontSize;
+                unzoomedAText.fontSize = FontSizeForValue(value);
             }
         }
         public int A
@@ -110,15 +115,11 @@ namespace KompasCore.Cards
             {
                 zoomedAText.text = $"A\n{value}";
                 unzoomedAText.text = $"{value}";
-                unzoomedAText.fontSize = value < 10 ? LargeUnzoomedTextFontSize : SmallUnzoomedTextFontSize;
+                unzoomedAText.fontSize = FontSizeForValue(value);
             }
         }
 
-        public void SetHitpointsText(int e)
-        {
-            zoomedEText.text = $"E {e}";
-            unzoomedEText.text = $"{e}";
-        }
+        private float FontSizeForValue(int value) => value < 10 ? LargeUnzoomedTextFontSize : SmallUnzoomedTextFontSize;
 
         public virtual void SetPhysicalLocation(CardLocation location)
         {
