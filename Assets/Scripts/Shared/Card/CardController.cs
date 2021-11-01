@@ -70,16 +70,16 @@ namespace KompasCore.Cards
             {
                 zoomedNText.text = $"N\n{value}";
                 unzoomedNText.text = $"{value}";
-                unzoomedAText.fontSize = FontSizeForValue(value);
+                unzoomedNText.fontSize = FontSizeForValue(value);
             }
         }
         public int E
         {
             set
             {
-                zoomedNText.text = $"E\n{value}";
-                unzoomedNText.text = $"{value}";
-                unzoomedAText.fontSize = FontSizeForValue(value);
+                zoomedEText.text = $"E\n{value}";
+                unzoomedEText.text = $"{value}";
+                unzoomedEText.fontSize = FontSizeForValue(value);
             }
         }
         public int S
@@ -88,7 +88,7 @@ namespace KompasCore.Cards
             {
                 zoomedSText.text = $"S\n{value}";
                 unzoomedSText.text = $"{value}";
-                unzoomedAText.fontSize = FontSizeForValue(value);
+                unzoomedSText.fontSize = FontSizeForValue(value);
             }
         }
         public int W
@@ -97,7 +97,7 @@ namespace KompasCore.Cards
             {
                 zoomedWText.text = $"W\n{value}";
                 unzoomedWText.text = $"{value}";
-                unzoomedAText.fontSize = FontSizeForValue(value);
+                unzoomedWText.fontSize = FontSizeForValue(value);
             }
         }
         public int C
@@ -106,7 +106,7 @@ namespace KompasCore.Cards
             {
                 zoomedCText.text = $"C\n{value}";
                 unzoomedCText.text = $"{value}";
-                unzoomedAText.fontSize = FontSizeForValue(value);
+                unzoomedCText.fontSize = FontSizeForValue(value);
             }
         }
         public int A
@@ -185,7 +185,7 @@ namespace KompasCore.Cards
         public void SpreadOutAugs()
         {
             var augCount = card.AugmentsList.Count;
-            float scale = 0.4f / ((float)((augCount + 3) / 4));
+            float scale = 0.4f; // / ((float)((augCount + 3) / 4));
             int i = 0;
             foreach(var aug in card.AugmentsList)
             {
