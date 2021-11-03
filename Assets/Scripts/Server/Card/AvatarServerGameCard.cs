@@ -1,5 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
+using KompasCore.Exceptions;
 using KompasServer.Effects;
 using KompasServer.GameCore;
 using UnityEngine;
@@ -20,18 +21,13 @@ namespace KompasServer.Cards
         public override bool Summoned => false;
         public override bool IsAvatar => true;
 
-        public override bool Remove(IStackable stackSrc = null)
+        public override void Remove(IStackable stackSrc = null)
         {
-            Debug.Log($"Trying to remove AVATAR {CardName} from {Location}");
-            if (Summoned)
-            {
-                var corner = Space.AvatarCornerFor(ControllerIndex);
-                var unfortunate = Game.boardCtrl.GetCardAt(corner);
-                if(unfortunate != null && unfortunate != this) unfortunate.Owner.annihilationCtrl.Annihilate(unfortunate, stackSrc: stackSrc);
-                Move(to: corner, normalMove: false, stackSrc: stackSrc);
-                return true;
-            }
-            else return Location == CardLocation.Nowhere;
+            if (Location == CardLocation.Nowhere) return;
+            var corner = Space.AvatarCornerFor(ControllerIndex);
+            var unfortunate = Game.boardCtrl.GetCardAt(corner);
+            if(unfortunate != null && unfortunate != this) unfortunate.Owner.annihilationCtrl.Annihilate(unfortunate, stackSrc: stackSrc);
+            Move(to: corner, normalMove: false, stackSrc: stackSrc);
         }
 
         public void LoseIfDead()

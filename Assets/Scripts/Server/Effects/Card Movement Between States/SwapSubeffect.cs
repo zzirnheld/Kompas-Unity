@@ -7,13 +7,14 @@ namespace KompasServer.Effects
     {
         public int SecondTargetIndex = -2;
         public GameCard SecondTarget => Effect.GetTarget(SecondTargetIndex);
+        public override bool IsImpossible() => Target == null || SecondTarget == null;
 
         public override Task<ResolutionInfo> Resolve()
         {
             if (Target == null || SecondTarget == null) return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
-            else if (Target.Move(SecondTarget.Position, false, ServerEffect))
-                return Task.FromResult(ResolutionInfo.Next);
-            else return Task.FromResult(ResolutionInfo.Impossible(MovementFailed));
+
+            Target.Move(SecondTarget.Position, false, ServerEffect);
+            return Task.FromResult(ResolutionInfo.Next);
         }
     }
 }

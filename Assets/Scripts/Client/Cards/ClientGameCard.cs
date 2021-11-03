@@ -15,7 +15,7 @@ namespace KompasClient.Cards
         public override CardLocation Location
         {
             get => base.Location;
-            set
+            protected set
             {
                 base.Location = value;
                 ClientGame.clientUICtrl.Leyload = Game.Leyload;
@@ -63,10 +63,10 @@ namespace KompasClient.Cards
             }
         }
 
-        public override bool Remove(IStackable stackSrc = null)
+        public override void Remove(IStackable stackSrc = null)
         {
             ClientGame.MarkCardDirty(this);
-            return base.Remove(stackSrc);
+            base.Remove(stackSrc);
         }
 
         public virtual void SetInfo(SerializableCard serializedCard, ClientGame game, ClientPlayer owner, ClientEffect[] effects, int id)

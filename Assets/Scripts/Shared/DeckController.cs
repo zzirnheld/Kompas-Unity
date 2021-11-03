@@ -1,17 +1,20 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
+using KompasCore.Exceptions;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace KompasCore.GameCore
 {
-    public abstract class DeckController : MonoBehaviour
+    public abstract class DeckController : MonoBehaviour, IGameLocation
     {
         public const string BLANK_CARD_PATH = "Card Jsons/Blank Card";
 
         public Game game;
         public abstract Player Owner { get; }
+
+        public CardLocation CardLocation => CardLocation.Deck;
 
         //rng for shuffling
         private static readonly System.Random rng = new System.Random();
@@ -23,53 +26,42 @@ namespace KompasCore.GameCore
         public GameCard Topdeck => Deck.FirstOrDefault();
         public GameCard Bottomdeck => Deck.LastOrDefault();
 
-        protected virtual bool AddCard(GameCard card, IStackable stackSrc = null)
+        protected virtual void AddCard(GameCard card, IStackable stackSrc = null)
         {
-            if (card.Remove(stackSrc)) 
-            { 
-                card.Location = CardLocation.Deck;
-                card.Controller = Owner;
-                return true;
-            }
-            return false;
+            card.Remove(stackSrc);
+            card.GameLocation = this;
+            card.Controller = Owner;
         }
 
         //adding and removing cards
-        public virtual bool PushTopdeck(GameCard card, IStackable stackSrc = null)
+        public virtual void PushTopdeck(GameCard card, IStackable stackSrc = null)
         {
             AddCard(card, stackSrc);
             Deck.Insert(0, card);
-            return true;
         }
 
-        public virtual bool PushBottomdeck(GameCard card, IStackable stackSrc = null)
+        public virtual void PushBottomdeck(GameCard card, IStackable stackSrc = null)
         {
             AddCard(card, stackSrc);
             Deck.Add(card);
-            return true;
         }
 
-        public virtual bool ShuffleIn(GameCard card, IStackable stackSrc = null)
+        public virtual void ShuffleIn(GameCard card, IStackable stackSrc = null)
         {
             AddCard(card, stackSrc);
             Deck.Add(card);
             Shuffle();
-            return true;
         }
 
         /// <summary>
         /// Random access remove from deck
         /// </summary>
-        public virtual bool RemoveFromDeck(GameCard card)
+        public virtual void Remove(GameCard card)
         {
-            if (!Deck.Contains(card))
-            {
-                Debug.LogError($"Couldn't remove {card.CardName} from deck, it wasn't in deck!");
-                return false;
-            }
+            if (!Deck.Contains(card)) throw new CardNotHereException(CardLocation,
+                $"Couldn't remove {card.CardName} from deck, it wasn't in deck!");
 
             Deck.Remove(card);
-            return true;
         }
 
         //misc

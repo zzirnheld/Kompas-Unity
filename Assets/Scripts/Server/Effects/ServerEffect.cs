@@ -1,5 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
+using KompasCore.Exceptions;
 using KompasCore.GameCore;
 using KompasServer.GameCore;
 using System.Threading.Tasks;
@@ -144,7 +145,14 @@ namespace KompasServer.Effects
             Debug.Log($"Resolving subeffect of type {subeffects[index].GetType()}");
             SubeffectIndex = index;
             ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
-            return await subeffects[index].Resolve();
+            try
+            {
+                return await subeffects[index].Resolve();
+            }
+            catch (KompasException e)
+            {
+                return ResolutionInfo.Impossible(e.Message);
+            }
         }
 
         /// <summary>

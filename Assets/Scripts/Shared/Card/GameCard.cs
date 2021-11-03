@@ -1,4 +1,5 @@
 ﻿using KompasCore.Effects;
+using KompasCore.Exceptions;
 using KompasCore.GameCore;
 using System;
 using System.Collections.Generic;
@@ -197,12 +198,23 @@ namespace KompasCore.Cards
         public virtual CardLocation Location
         {
             get => location;
-            set
+            protected set
             {
                 Debug.Log($"Card {ID} named {CardName} location set to {value}");
                 location = value;
                 if (cardCtrl != null) cardCtrl.SetPhysicalLocation(location);
                 //else Debug.LogWarning($"Missing a card control. Is this a debug card?");
+            }
+        }
+
+        private IGameLocation gameLocation;
+        public IGameLocation GameLocation 
+        {
+            get => gameLocation;
+            set
+            {
+                gameLocation = value;
+                Location = value.CardLocation;
             }
         }
 
@@ -391,31 +403,24 @@ namespace KompasCore.Cards
         public void CountSpacesMovedTo((int x, int y) to) => SetSpacesMoved(SpacesMoved + Game.boardCtrl.ShortestEmptyPath(this, to));
 
         #region augments
-        public virtual bool AddAugment(GameCard augment, IStackable stackSrc = null)
+        public virtual void AddAugment(GameCard augment, IStackable stackSrc = null)
         {
             //can't add a null augment
-            if (augment == null) throw new System.ArgumentNullException("augment", $"Cannot add a null augment (to {CardName})");
+            if (augment == null) throw new NullAugmentException(stackSrc, this);
 
-            if (!augment.Remove(stackSrc))
-            {
-                Debug.LogError($"Couldn't remove augment from {augment.AugmentedCard?.CardName} or {augment.Location} while this in {Location}");
-                return false;
-            }
+            augment.Remove(stackSrc);
 
             AugmentsList.Add(augment);
             //and update the augment's augmented card, to reflect its new status
             augment.AugmentedCard = this;
-
-            return true;
         }
 
-        protected virtual bool Detach(IStackable stackSrc = null)
+        protected virtual void Detach(IStackable stackSrc = null)
         {
-            if (AugmentedCard == null) return false;
+            if (AugmentedCard == null) throw new NotAugmentingException(this);
 
             AugmentedCard.AugmentsList.Remove(this);
             AugmentedCard = null;
-            return true;
         }
         #endregion augments
 
@@ -500,55 +505,39 @@ namespace KompasCore.Cards
 
         #region moveCard
         //so that notify stuff can be sent in the server
-        public virtual bool Remove(IStackable stackSrc = null)
+        public virtual void Remove(IStackable stackSrc = null)
         {
             // Debug.Log($"Removing {CardName} id {ID} from {Location}");
 
-            switch (Location)
-            {
-                case CardLocation.Nowhere: return true;
-                case CardLocation.Field:
-                    return AugmentedCard != null ? Detach(stackSrc) : Game.boardCtrl.RemoveFromBoard(this);
-                case CardLocation.Discard:
-                    return Controller.discardCtrl.RemoveFromDiscard(this);
-                case CardLocation.Hand:
-                    return Controller.handCtrl.RemoveFromHand(this);
-                case CardLocation.Deck:
-                    return Controller.deckCtrl.RemoveFromDeck(this);
-                case CardLocation.Annihilation:
-                    return Controller.annihilationCtrl.Remove(this);
-                default:
-                    Debug.LogWarning($"Tried to remove card {CardName} from invalid location {Location}");
-                    return false;
-            }
+            if (Location == CardLocation.Nowhere) return;
+
+            if (AugmentedCard != null) Detach(stackSrc);
+            else GameLocation.Remove(this);
         }
 
-        public virtual bool Vanish() => Discard();
-        public bool Discard(IStackable stackSrc = null) => Controller.discardCtrl.AddToDiscard(this, stackSrc);
+        public virtual void Vanish() => Discard();
+        public void Discard(IStackable stackSrc = null) => Controller.discardCtrl.Add(this, stackSrc);
 
-        public bool Rehand(Player controller, IStackable stackSrc = null) => controller.handCtrl.AddToHand(this, stackSrc);
-        public bool Rehand(IStackable stackSrc = null) => Rehand(Controller, stackSrc);
+        public void Rehand(Player controller, IStackable stackSrc = null) => controller.handCtrl.Add(this, stackSrc);
+        public void Rehand(IStackable stackSrc = null) => Rehand(Controller, stackSrc);
 
-        public bool Reshuffle(Player controller, IStackable stackSrc = null) => controller.deckCtrl.ShuffleIn(this, stackSrc);
-        public bool Reshuffle(IStackable stackSrc = null) => Reshuffle(Controller, stackSrc);
+        public void Reshuffle(Player controller, IStackable stackSrc = null) => controller.deckCtrl.ShuffleIn(this, stackSrc);
+        public void Reshuffle(IStackable stackSrc = null) => Reshuffle(Controller, stackSrc);
 
-        public bool Topdeck(Player controller, IStackable stackSrc = null) => controller.deckCtrl.PushTopdeck(this, stackSrc);
-        public bool Topdeck(IStackable stackSrc = null) => Topdeck(Controller, stackSrc);
+        public void Topdeck(Player controller, IStackable stackSrc = null) => controller.deckCtrl.PushTopdeck(this, stackSrc);
+        public void Topdeck(IStackable stackSrc = null) => Topdeck(Controller, stackSrc);
 
-        public bool Bottomdeck(Player controller, IStackable stackSrc = null) => controller.deckCtrl.PushBottomdeck(this, stackSrc);
-        public bool Bottomdeck(IStackable stackSrc = null) => Bottomdeck(Controller, stackSrc);
+        public void Bottomdeck(Player controller, IStackable stackSrc = null) => controller.deckCtrl.PushBottomdeck(this, stackSrc);
+        public void Bottomdeck(IStackable stackSrc = null) => Bottomdeck(Controller, stackSrc);
 
-        public bool Play(Space to, Player controller, IStackable stackSrc = null, bool payCost = false)
+        public void Play(Space to, Player controller, IStackable stackSrc = null, bool payCost = false)
         {
-            if (Game.boardCtrl.Play(this, to, controller, stackSrc))
-            {
-                if (payCost) controller.Pips -= Cost;
-                return true;
-            }
-            return false;
+            Game.boardCtrl.Play(this, to, controller, stackSrc);
+
+            if (payCost) controller.Pips -= Cost;
         }
 
-        public bool Move(Space to, bool normalMove, IStackable stackSrc = null)
+        public void Move(Space to, bool normalMove, IStackable stackSrc = null)
             => Game.boardCtrl.Move(this, to, normalMove, stackSrc);
 
         public void Dispel(IStackable stackSrc = null)
@@ -557,10 +546,10 @@ namespace KompasCore.Cards
             Discard(stackSrc);
         }
 
-        public virtual bool Reveal(IStackable stackSrc = null) 
+        public virtual void Reveal(IStackable stackSrc = null) 
         {
             //Reveal should only succeed if the card is not known to the enemy
-            return !KnownToEnemy; 
+            if (KnownToEnemy) throw new AlreadyKnownException(this);
         }
         #endregion moveCard
     }

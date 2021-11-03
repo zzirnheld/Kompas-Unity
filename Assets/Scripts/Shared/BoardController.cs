@@ -5,10 +5,11 @@ using UnityEngine;
 using KompasCore.Effects;
 using KompasCore.Cards;
 using System.Text;
+using KompasCore.Exceptions;
 
 namespace KompasCore.GameCore
 {
-    public class BoardController : MonoBehaviour
+    public class BoardController : MonoBehaviour, IGameLocation
     {
         public const int SpacesInGrid = 7;
         public const float BoardLenOffset = 7f;
@@ -17,6 +18,8 @@ namespace KompasCore.GameCore
         public const float CardHeight = 0.15f;
 
         public Game game;
+
+        public CardLocation CardLocation => CardLocation.Field;
 
         public static int PosToGridIndex(float pos) 
             => (int)((pos + BoardLenOffset) / (LenOneSpace));
@@ -205,15 +208,11 @@ namespace KompasCore.GameCore
         #endregion
 
         #region game mechanics
-        public virtual bool RemoveFromBoard(GameCard toRemove)
+        public virtual void Remove(GameCard toRemove)
         {
             var (x, y) = toRemove.Position;
-            if (toRemove.Location == CardLocation.Field && Board[x, y] == toRemove)
-            {
-                RemoveFromBoard(toRemove.Position);
-                return true;
-            }
-            return false;
+            if (toRemove.Location == CardLocation.Field && Board[x, y] == toRemove) RemoveFromBoard(toRemove.Position);
+            else throw new CardNotHereException(CardLocation, $"Card thinks it's at {toRemove.Position}, but {Board[x, y]} is there");
         }
 
         private void RemoveFromBoard(Space space)
@@ -228,17 +227,12 @@ namespace KompasCore.GameCore
         /// <param name="toPlay">Card to be played</param>
         /// <param name="toX">X coordinate to play the card to</param>
         /// <param name="toY">Y coordinate to play the card to</param>
-        public virtual bool Play(GameCard toPlay, Space to, Player controller, IStackable stackSrc = null)
+        public virtual void Play(GameCard toPlay, Space to, Player controller, IStackable stackSrc = null)
         {
-            if (toPlay == null) return false;
-            if (toPlay.Location == CardLocation.Field) return false;
-            if (!ValidSpellSpaceFor(toPlay, to))
-            {
-                Debug.LogError($"Tried to play {toPlay} to space {to}. " +
-                    $"This isn't ok, that's an invalid spell spot.");
-                return false;
-                //TODO make this instead an exception that's caught by subeffs
-            }
+            if (toPlay == null) throw new NullCardException($"Null card to play to {to}");
+            if (toPlay.Location == CardLocation.Field) throw new AlreadyHereException(CardLocation);
+            if (!ValidSpellSpaceFor(toPlay, to)) throw new InvalidSpaceException(to, 
+                $"Tried to play {toPlay} to space {to}. This isn't ok, that's an invalid spell spot.");
 
             Debug.Log($"In boardctrl, playing {toPlay.CardName} to {to}");
 
@@ -248,55 +242,46 @@ namespace KompasCore.GameCore
                 //augments therefore just get put on whatever card is on that space rn.
                 var augmented = GetCardAt(to);
                 //if there isn't a card, well, you can't do that.
-                if (augmented == null)
-                {
-                    Debug.LogError($"Can't play an augment to empty space at {to}");
-                    return false;
-                }
+                if (augmented == null) throw new NullCardException($"Can't play an augment to empty space at {to}");
                 //assuming there is a card there, try and add the augment. if it don't work, it borked.
-                if (!augmented.AddAugment(toPlay, stackSrc)) return false;
+                augmented.AddAugment(toPlay, stackSrc);
 
                 toPlay.Controller = controller;
-                return true;
             }
             //otherwise, put a card to the requested space
             else
             {
-                if (toPlay.Remove(stackSrc))
-                {
-                    var (toX, toY) = to;
-                    Board[toX, toY] = toPlay;
-                    toPlay.Location = CardLocation.Field;
-                    toPlay.Position = to;
+                toPlay.Remove(stackSrc);
+                var (toX, toY) = to;
+                Board[toX, toY] = toPlay;
+                toPlay.GameLocation = this;
+                toPlay.Position = to;
 
-                    toPlay.Controller = controller;
-                    return true;
-                }
+                toPlay.Controller = controller;
             }
-
-            return false;
         }
 
         //movement
-        public virtual bool Swap(GameCard card, Space to, bool playerInitiated, IStackable stackSrc = null)
+        public virtual void Swap(GameCard card, Space to, bool playerInitiated, IStackable stackSrc = null)
         {
             Debug.Log($"Swapping {card?.CardName} to {to}");
 
-            if (!to.Valid || card == null) return false;
+            if (!to.Valid) throw new InvalidSpaceException(to);
+            if (card == null) throw new NullCardException("Card to be swapped must not be null");
             if (card.AugmentedCard != null) throw new NotImplementedException();
+            if (card.Location != CardLocation.Field || card != GetCardAt(card.Position)) 
+                throw new CardNotHereException(CardLocation.Field, 
+                    $"{card} not at {card.Position}, {GetCardAt(card.Position)} is there instead");
 
             var (tempX, tempY) = card.Position;
             var from = card.Position;
             var (toX, toY) = to;
             GameCard temp = Board[toX, toY];
             //check valid spell positioning
-            if (!ValidSpellSpaceFor(card, to) || !ValidSpellSpaceFor(temp, from))
-            {
-                Debug.LogError($"Tried to move {card} to space {toX}, {toY}. " +
-                    $"{(temp == null ? "" : $"This would swap {temp.CardName} to {tempX}, {tempY}.")}" +
-                    $"This isn't ok, that's an invalid spell spot.");
-                return false;
-            }
+            string swapDesc = $"Tried to move {card} to space {toX}, {toY}. " +
+                    $"{(temp == null ? "" : $"This would swap {temp.CardName} to {tempX}, {tempY}.")}";
+            if (!ValidSpellSpaceFor(card, to)) throw new InvalidSpaceException(to, $"{swapDesc}, but space is an invalid spell space");
+            if (!ValidSpellSpaceFor(temp, from)) throw new InvalidSpaceException(from, $"{swapDesc}, but space is an invalid spell space");
 
             //then let the cards know they've been moved, but before moving them, so you can count properly
             if (playerInitiated)
@@ -310,24 +295,17 @@ namespace KompasCore.GameCore
 
             card.Position = to;
             if (temp != null) temp.Position = from;
-            return true;
         }
 
-        public bool Move(GameCard card, Space to, bool playerInitiated, IStackable stackSrc = null)
+        public void Move(GameCard card, Space to, bool playerInitiated, IStackable stackSrc = null)
         {
-            if (!to.Valid) return false;
+            if (card.AugmentedCard == null) Swap(card, to, playerInitiated, stackSrc);
 
-            if (card.AugmentedCard != null)
-            {
-                var (toX, toY) = to;
-                if (Board[toX, toY] != null && card.Remove(stackSrc))
-                {
-                    Board[toX, toY].AddAugment(card, stackSrc);
-                    return true;
-                }
-                return false;
-            }
-            else return Swap(card, to, playerInitiated, stackSrc);
+            if (!to.Valid) throw new InvalidSpaceException(to, $"Can't move {card} to invalid space");
+            var (toX, toY) = to;
+            if (GetCardAt(to) == null) throw new NullCardException($"Null card to attach {card} to at {to}");
+            card.Remove(stackSrc);
+            Board[toX, toY].AddAugment(card, stackSrc);
         }
 
         public void ClearSpells()
