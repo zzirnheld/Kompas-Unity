@@ -151,6 +151,8 @@ namespace KompasServer.Effects
             }
             catch (KompasException e)
             {
+                Debug.LogWarning($"Caught {e.GetType()} while resolving {subeffects[index].GetType()} at {index}." +
+                    $"\nStack trace:\n{e.StackTrace}");
                 return ResolutionInfo.Impossible(e.Message);
             }
         }
@@ -174,7 +176,7 @@ namespace KompasServer.Effects
         /// </summary>
         public async Task<ResolutionInfo> EffectImpossible(string why)
         {
-            Debug.Log($"Effect of {Source.CardName} is being declared impossible at subeffect {subeffects[SubeffectIndex].GetType()}");
+            Debug.Log($"Effect of {Source.CardName} is being declared impossible at subeffect {subeffects[SubeffectIndex].GetType()} because {why}");
             if (OnImpossible == null)
             {
                 //TODO make the notifier tell the client why the effect was impossible
