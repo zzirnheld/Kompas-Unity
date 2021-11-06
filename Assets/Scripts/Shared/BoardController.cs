@@ -299,13 +299,18 @@ namespace KompasCore.GameCore
 
         public void Move(GameCard card, Space to, bool playerInitiated, IStackable stackSrc = null)
         {
-            if (card.AugmentedCard == null) Swap(card, to, playerInitiated, stackSrc);
-
-            if (!to.Valid) throw new InvalidSpaceException(to, $"Can't move {card} to invalid space");
-            var (toX, toY) = to;
-            if (GetCardAt(to) == null) throw new NullCardException($"Null card to attach {card} to at {to}");
-            card.Remove(stackSrc);
-            Board[toX, toY].AddAugment(card, stackSrc);
+            if (card.AugmentedCard == null)
+            {
+                Swap(card, to, playerInitiated, stackSrc);
+            }
+            else
+            {
+                if (!to.Valid) throw new InvalidSpaceException(to, $"Can't move {card} to invalid space");
+                var (toX, toY) = to;
+                if (GetCardAt(to) == null) throw new NullCardException($"Null card to attach {card} to at {to}");
+                card.Remove(stackSrc);
+                Board[toX, toY].AddAugment(card, stackSrc);
+            }
         }
 
         public void ClearSpells()
