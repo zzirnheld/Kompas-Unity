@@ -31,11 +31,7 @@
                         "spaceConnectednessRestriction":
                         {
 							"mustBeEmpty":true,
-                            "spaceRestrictions":["In AOE Of"],
-                            "inAOEOfRestriction":{
-                                "cardRestrictions":["Subtypes Include"],
-                                "subtypesInclude":["Water"]
-                            }
+							"spaceRestrictions":[]
                         }
 					}
 				},

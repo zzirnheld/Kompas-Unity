@@ -162,7 +162,6 @@ linewalkers/Cyan Linewalker
 linewalkers/Green Linewalker
 linewalkers/Leypathmaking
 linewalkers/Linewalk
-linewalkers/Orange Linewalker
 linewalkers/Purple Linewalker
 linewalkers/Red Linewalker
 linewalkers/White Linewalker
