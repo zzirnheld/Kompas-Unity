@@ -314,8 +314,7 @@ namespace KompasServer.GameCore
             }
 
             Debug.Log($"Checking validity of moving {toMove.CardName} to {to}");
-            if (toMove.Controller != by) return false;
-            if (toMove.Position == to || (toMove.IsAvatar && !toMove.Summoned)) return false;
+            if (toMove.Position == to) return false;
             else return toMove.MovementRestriction.EvaluateNormalMove(to);
         }
 
