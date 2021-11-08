@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using KompasCore.Exceptions;
+using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
@@ -15,7 +16,12 @@ namespace KompasServer.Effects
         {
             var target1 = Effect.GetTarget(targetIndices[0]);
             var target2 = Effect.GetTarget(targetIndices[1]);
-            if (target1 == null || target2 == null) return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
+            if (target1 == null || target2 == null) 
+                return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
+            else if (target1.Location != CardLocation.Field)
+                throw new InvalidLocationException(target1.Location, target1, ChangedStatsOfCardOffBoard);
+            else if (target2.Location != CardLocation.Field)
+                throw new InvalidLocationException(target2.Location, target2, ChangedStatsOfCardOffBoard);
 
             target1.SwapCharStats(target2, swapN, swapE, swapS, swapW);
             return Task.FromResult(ResolutionInfo.Next);

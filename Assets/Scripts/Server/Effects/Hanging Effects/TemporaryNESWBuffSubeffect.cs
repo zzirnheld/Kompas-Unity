@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using KompasCore.Exceptions;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace KompasServer.Effects
@@ -17,6 +18,9 @@ namespace KompasServer.Effects
 
         protected override IEnumerable<HangingEffect> CreateHangingEffects()
         {
+            if (Target.Location != CardLocation.Field) 
+                throw new InvalidLocationException(Target.Location, Target, ChangedStatsOfCardOffBoard);
+
             Debug.Log($"Creating temp NESW buff effect during context {Context}");
             var temp = new TemporaryNESWBuff(game: ServerGame,
                                              triggerRestriction: triggerRestriction,

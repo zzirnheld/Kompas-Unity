@@ -22,8 +22,10 @@ namespace KompasServer.Effects
 
         public override Task<ResolutionInfo> Resolve()
         {
-            if (Target == null) return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
-            if (forbidNotBoard && Target.Location != CardLocation.Field) return Task.FromResult(ResolutionInfo.Impossible(ChangedStatsOfCardOffBoard));
+            if (Target == null) 
+                return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
+            else if (forbidNotBoard && Target.Location != CardLocation.Field) 
+                return Task.FromResult(ResolutionInfo.Impossible(ChangedStatsOfCardOffBoard));
 
             Target.SetStats((RealNVal, RealEVal, RealSVal, RealWVal, RealCVal, RealAVal), Effect);
             return Task.FromResult(ResolutionInfo.Next);
