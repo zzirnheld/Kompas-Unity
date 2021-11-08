@@ -7,8 +7,8 @@ namespace KompasCore.Exceptions
         public readonly CardLocation location;
         public readonly GameCard card;
 
-        public InvalidLocationException(CardLocation location, GameCard card, string message = "")
-            : base(message)
+        public InvalidLocationException(CardLocation location, GameCard card, string debugMessage = "", string message = "")
+            : base(debugMessage, message)
         {
             this.location = location;
             this.card = card;

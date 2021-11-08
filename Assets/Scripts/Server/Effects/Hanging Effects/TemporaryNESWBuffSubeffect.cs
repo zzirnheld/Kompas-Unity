@@ -18,7 +18,9 @@ namespace KompasServer.Effects
 
         protected override IEnumerable<HangingEffect> CreateHangingEffects()
         {
-            if (Target.Location != CardLocation.Field) 
+            if (Target == null)
+                throw new NullCardException(TargetWasNull);
+            else if (forbidNotBoard && Target.Location != CardLocation.Field)
                 throw new InvalidLocationException(Target.Location, Target, ChangedStatsOfCardOffBoard);
 
             Debug.Log($"Creating temp NESW buff effect during context {Context}");

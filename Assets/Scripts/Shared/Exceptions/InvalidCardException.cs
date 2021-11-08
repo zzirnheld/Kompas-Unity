@@ -10,8 +10,8 @@ namespace KompasCore.Exceptions
     {
         public readonly GameCard card;
 
-        public InvalidCardException(GameCard card, string message = "")
-            : base(message)
+        public InvalidCardException(GameCard card, string debugMessage = "", string message = "")
+            : base(debugMessage, message)
         {
             this.card = card;
         }

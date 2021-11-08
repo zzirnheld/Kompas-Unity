@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using KompasCore.Exceptions;
+using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
@@ -8,8 +9,7 @@ namespace KompasServer.Effects
 
         public override Task<ResolutionInfo> Resolve()
         {
-            if (Target == null) return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
-            else if (Target.Location == CardLocation.Annihilation) return Task.FromResult(ResolutionInfo.Impossible(TargetAlreadyThere));
+            if (Target == null) throw new NullCardException(TargetWasNull);
 
             Target.Owner.annihilationCtrl.Annihilate(Target, Effect);
             return Task.FromResult(ResolutionInfo.Next);

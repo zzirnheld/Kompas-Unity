@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using KompasCore.Exceptions;
+using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
@@ -16,7 +17,7 @@ namespace KompasServer.Effects
             var attachTo = Effect.GetTarget(attachmentTarget);
 
             //if everything goes to plan, resolve the next subeffect
-            if (toAttach == null || attachTo == null) return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
+            if (toAttach == null || attachTo) throw new NullCardException(TargetWasNull);
 
             attachTo.AddAugment(toAttach, stackSrc: Effect);
             return Task.FromResult(ResolutionInfo.Next);

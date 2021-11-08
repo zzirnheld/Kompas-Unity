@@ -406,7 +406,7 @@ namespace KompasCore.Cards
         public virtual void AddAugment(GameCard augment, IStackable stackSrc = null)
         {
             //can't add a null augment
-            if (augment == null) throw new NullAugmentException(stackSrc, this);
+            if (augment == null) throw new NullAugmentException(stackSrc, this, "Can't add a null augment");
 
             augment.Remove(stackSrc);
 

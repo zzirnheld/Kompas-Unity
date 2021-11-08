@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using KompasCore.Exceptions;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace KompasServer.Effects
@@ -11,7 +12,7 @@ namespace KompasServer.Effects
 
         public override Task<ResolutionInfo> Resolve()
         {
-            if (Target == null) return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
+            if (Target == null) throw new NullCardException(TargetWasNull);
 
             if (ServerPlayer.Pips < ToPay) return Task.FromResult(ResolutionInfo.Impossible(CantAffordPips));
             else

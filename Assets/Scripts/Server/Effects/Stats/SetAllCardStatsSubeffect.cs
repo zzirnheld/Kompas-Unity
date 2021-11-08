@@ -43,7 +43,7 @@ namespace KompasServer.Effects
             var targets = ServerGame.Cards.Where(c => cardRestriction.Evaluate(c, Context));
             foreach (var card in targets)
             {
-                if (card.Location != CardLocation.Field)
+                if (forbidNotBoard && card.Location != CardLocation.Field)
                     throw new InvalidLocationException(card.Location, card, ChangedStatsOfCardOffBoard);
             }
             foreach (var c in targets)

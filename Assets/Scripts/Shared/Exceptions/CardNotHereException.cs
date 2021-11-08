@@ -8,8 +8,8 @@ namespace KompasCore.Exceptions
     {
         public readonly CardLocation location;
 
-        public CardNotHereException(CardLocation location, string message = "")
-            : base(message)
+        public CardNotHereException(CardLocation location, string debugMessage = "", string message = "")
+            : base(debugMessage, message)
         {
             this.location = location;
         }

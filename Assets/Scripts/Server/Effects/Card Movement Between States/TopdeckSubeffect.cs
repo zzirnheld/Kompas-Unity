@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using KompasCore.Exceptions;
+using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
@@ -8,7 +9,7 @@ namespace KompasServer.Effects
 
         public override Task<ResolutionInfo> Resolve()
         {
-            if (Target == null) return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
+            if (Target == null) throw new NullCardException(TargetWasNull);
 
             Target.Topdeck(Target.Owner, Effect);
             return Task.FromResult(ResolutionInfo.Next);

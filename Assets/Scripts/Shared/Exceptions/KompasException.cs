@@ -7,8 +7,12 @@ namespace KompasCore.Exceptions
 {
     public class KompasException : Exception
     {
-        public KompasException(string message)
-            : base(message)
-        { }
+        public string message;
+
+        public KompasException(string debugMessage, string message)
+            : base(debugMessage)
+        {
+            this.message = message;
+        }
     }
 }

@@ -41,7 +41,9 @@ namespace KompasServer.Effects
             //and so test each to be affected before any are affected
             foreach (var card in cards)
             {
-                if (card.Location != CardLocation.Field)
+                if (card == null)
+                    throw new NullCardException(TargetWasNull);
+                else if (forbidNotBoard && card.Location != CardLocation.Field)
                     throw new InvalidLocationException(card.Location, card, ChangedStatsOfCardOffBoard);
             }
 

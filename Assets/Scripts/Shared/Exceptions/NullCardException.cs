@@ -6,8 +6,8 @@ namespace KompasCore.Exceptions
 {
     public class NullCardException : KompasException
     {
-        public NullCardException (string message)
-            : base(message)
+        public NullCardException (string debugMessage, string message = "")
+            : base(debugMessage, message)
         { }
     }
 }

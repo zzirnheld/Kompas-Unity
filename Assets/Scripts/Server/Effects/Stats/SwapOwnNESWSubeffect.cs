@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using KompasCore.Exceptions;
+using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
@@ -13,9 +14,9 @@ namespace KompasServer.Effects
         public override Task<ResolutionInfo> Resolve()
         {
             if (Target == null)
-                return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
-            else if (Target.Location != CardLocation.Field)
-                return Task.FromResult(ResolutionInfo.Impossible(ChangedStatsOfCardOffBoard));
+                throw new NullCardException(TargetWasNull);
+            else if (forbidNotBoard && Target.Location != CardLocation.Field)
+                throw new InvalidLocationException(Target.Location, Target, ChangedStatsOfCardOffBoard);
 
             int[] newStats = { Target.N, Target.E, Target.S, Target.W };
             (newStats[Stat1], newStats[Stat2]) = (newStats[Stat2], newStats[Stat1]);

@@ -9,8 +9,8 @@ namespace KompasCore.Exceptions
     {
         public readonly GameCard card;
 
-        public AlreadyKnownException(GameCard card, string message = "")
-            : base(message)
+        public AlreadyKnownException(GameCard card, string debugMessage = "", string message = "")
+            : base(debugMessage, message)
         {
             this.card = card;
         }

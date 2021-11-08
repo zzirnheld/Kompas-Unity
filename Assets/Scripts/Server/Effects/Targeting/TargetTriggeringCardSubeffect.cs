@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using KompasCore.Exceptions;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace KompasServer.Effects
@@ -7,11 +8,7 @@ namespace KompasServer.Effects
     {
         public override Task<ResolutionInfo> Resolve()
         {
-            if (Context.CardInfo == null)
-            {
-                Debug.LogError($"(see: tiwaz bug) Unable to target triggering card because it's null. Activation context: {Context}");
-                return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
-            }
+            if (Context.CardInfo == null) throw new NullCardException(NoValidCardTarget);
 
             ServerEffect.AddTarget(Context.CardInfo.Card);
             return Task.FromResult(ResolutionInfo.Next);

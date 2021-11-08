@@ -9,8 +9,8 @@ namespace KompasCore.Exceptions
     {
         public readonly CardLocation location;
 
-        public AlreadyHereException(CardLocation location, string message = "")
-            : base(message)
+        public AlreadyHereException(CardLocation location, string debugMessage = "", string message = "")
+            : base(debugMessage, message)
         {
             this.location = location;
         }

@@ -1,4 +1,5 @@
 ﻿using KompasCore.Effects;
+using KompasCore.Exceptions;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,8 +18,8 @@ namespace KompasServer.Effects
 
         public override Task<ResolutionInfo> Resolve()
         {
-            if (Target == null) return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
-            if (!Target.AugmentsList.Any(c => cardRestriction.Evaluate(c, Context)))
+            if (Target == null) throw new NullCardException(TargetWasNull);
+            else if (!Target.AugmentsList.Any(c => cardRestriction.Evaluate(c, Context)))
                 return Task.FromResult(ResolutionInfo.Impossible(NoValidCardTarget));
 
             var potentialTargets = Target.AugmentsList.Where(c => cardRestriction.Evaluate(c, Context));

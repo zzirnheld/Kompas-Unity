@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using KompasCore.Exceptions;
+using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
@@ -10,7 +11,10 @@ namespace KompasServer.Effects
         {
             var attacker = Effect.GetTarget(attackerIndex);
             var defender = Target;
-            if (attacker == null || defender == null) return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
+            if (attacker == null)
+                throw new NullCardException("Attacker was null");
+            else if (defender == null)
+                throw new NullCardException("Defender was null");
 
             ServerGame.Attack(attacker, defender, ServerEffect.ServerController);
             return Task.FromResult(ResolutionInfo.Next);
