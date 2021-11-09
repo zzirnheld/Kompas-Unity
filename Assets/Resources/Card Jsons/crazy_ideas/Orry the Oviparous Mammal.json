@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Orry the Oviparous Mammal",
-	"effText":"When I move exactly 3 spaces at once, hand->discard a Crazy Idea. Give me +3 W.",
+	"effText":"When I move exactly 3 spaces at once, hand->discard a card and give me +3 W.",
 	"effects":[
 		{
 			"triggerData":
@@ -22,8 +22,7 @@
 					"cardRestriction":
 					{
 						"blurb":"An oviparous mamal? ORRY THE OVIPAROUS MAMMAL?",
-						"cardRestrictions":["Friendly","Hand","Subtypes Include"],
-						"subtypesInclude":["Crazy Idea"]
+						"cardRestrictions":["Friendly","Hand"]
 					}
 				},
 				{
