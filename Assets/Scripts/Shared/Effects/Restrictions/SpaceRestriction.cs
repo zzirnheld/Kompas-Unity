@@ -55,6 +55,7 @@ namespace KompasCore.Effects
         public const string CanMoveTarget = "Can Move Target to This Space";
         public const string CanMoveSource = "Can Move Source to This Space";
         public const string Empty = "Empty";
+        public const string Surrounded = "Surrounded";
         public const string CardHereFitsRestriction = "Card Here Fits Restriction";
 
         public const string OnSourcesDiagonal = "On Source's Diagonal";
@@ -185,6 +186,7 @@ namespace KompasCore.Effects
                 CanMoveSource => Source.MovementRestriction.EvaluateEffectMove(space),
 
                 Empty => Game.boardCtrl.GetCardAt(space) == null,
+                Surrounded => Game.boardCtrl.Surrounded(space),
                 CardHereFitsRestriction => hereFitsRestriction.Evaluate(Game.boardCtrl.GetCardAt(space), context),
                 OnSourcesDiagonal => Source.SameDiagonal(space),
                 OnTargetsDiagonal => target.SameDiagonal(space),

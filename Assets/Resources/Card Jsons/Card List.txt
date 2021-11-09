@@ -1,3 +1,4 @@
+generic/Castle
 aquatic/Big Tuna
 aquatic/Changing Tides
 aquatic/Fishing

@@ -62,6 +62,8 @@ namespace KompasCore.GameCore
             return true;
         }
 
+        public bool Surrounded(Space s) => s.AdjacentSpaces.All(s => GetCardAt(s) != null);
+
         //get game data
         public GameCard GetCardAt(Space s)
         {
