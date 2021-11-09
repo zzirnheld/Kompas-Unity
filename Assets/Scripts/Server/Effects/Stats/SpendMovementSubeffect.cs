@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using KompasCore.Exceptions;
+using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
@@ -8,9 +9,9 @@ namespace KompasServer.Effects
 
         public override Task<ResolutionInfo> Resolve()
         {
-            if (Target == null) return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
-
-            if (Target.SpacesCanMove < Count)
+            if (Target == null)
+                throw new NullCardException(TargetWasNull);
+            else if (Target.SpacesCanMove < Count)
                 return Task.FromResult(ResolutionInfo.Impossible(CantAffordStats));
 
             Target.SetSpacesMoved(Target.SpacesMoved + Count);

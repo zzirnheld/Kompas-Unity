@@ -13,17 +13,13 @@ namespace KompasServer.GameCore
         public ServerNotifier ServerNotifier => ServerGame.ServerPlayers[Owner.index].ServerNotifier;
         public ServerEffectsController EffectsController => ServerGame.EffectsController;
 
-        public override bool AddToDiscard(GameCard card, IStackable stackSrc = null)
+        public override void Add(GameCard card, IStackable stackSrc = null)
         {
             var context = new ActivationContext(card: card, stackable: stackSrc, triggerer: Owner);
             bool wasKnown = card.KnownToEnemy;
-            if (base.AddToDiscard(card, stackSrc))
-            {
-                EffectsController.TriggerForCondition(Trigger.Discard, context);
-                ServerNotifier.NotifyDiscard(card, wasKnown);
-                return true;
-            }
-            return false;
+            base.Add(card, stackSrc);
+            EffectsController.TriggerForCondition(Trigger.Discard, context);
+            ServerNotifier.NotifyDiscard(card, wasKnown);
         }
     }
 }

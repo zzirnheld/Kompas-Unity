@@ -18,6 +18,7 @@ namespace KompasServer.Effects
         public const string TargetFitsRestriction = "Target Fits Restriction";
         public const string SourceViolatesRestriction = "Source Violates Restriction";
         public const string NumTargetsLTEConstant = "Number Targets <= Constant";
+        public const string HandFull = "Hand Full";
 
         public int constant = 0;
         public CardRestriction cardRestriction;
@@ -47,6 +48,7 @@ namespace KompasServer.Effects
                 TargetFitsRestriction       => cardRestriction.Evaluate(Target, Context),
                 SourceViolatesRestriction   => !cardRestriction.Evaluate(Source, Context),
                 NumTargetsLTEConstant       => Effect.Targets.Count() <= constant,
+                HandFull                    => Player.handCtrl.HandSize >= HandSizeStackable.MaxHandSize,
                 _ => throw new System.ArgumentException($"Condition {condition} invalid for conditional end subeffect"),
             };
         }

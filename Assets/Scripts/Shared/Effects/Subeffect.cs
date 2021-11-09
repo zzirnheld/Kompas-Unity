@@ -1,4 +1,5 @@
 ﻿using KompasCore.Cards;
+using KompasCore.Exceptions;
 using KompasCore.GameCore;
 
 namespace KompasCore.Effects
@@ -9,6 +10,37 @@ namespace KompasCore.Effects
     [System.Serializable]
     public class Subeffect
     {
+        #region reasons for impossible
+        public const string TargetWasNull = "No target to affect";
+        public const string TargetAlreadyThere = "Target was already in the place to move it to";
+        public const string NoValidCardTarget = "No valid card to target";
+        public const string NoValidSpaceTarget = "No valid space to target";
+        public const string ChangedStatsOfCardOffBoard = "Can't change stats of card not on the board";
+        public const string MovedCardOffBoard = "Moved card not on the board";
+        public const string EndOnPurpose = "Ended early on purpose";
+
+        public const string CantAffordPips = "Can't afford pips";
+        public const string CantAffordStats = "Can't afford stats";
+
+        public const string DeclinedFurtherTargets = "Declined further targets";
+
+        //card movement failure
+        public const string AnnihilationFailed = "Target couldn't be annihilated";
+        public const string AttachFailed = "Attach as augment failed";
+        public const string BottomdeckFailed = "Bottomdeck failed";
+        public const string DiscardFailed = "Discard failed";
+        public const string CouldntDrawAllX = "Couldn't draw all X cards";
+        public const string CouldntMillAllX = "Couldn't mill all X cards";
+        public const string MovementFailed = "Movement failed";
+        public const string PlayingFailed = "Playing card failed";
+        public const string RehandFailed = "Rehanding card failed";
+        public const string ReshuffleFailed = "Reshuffle failed";
+        public const string TopdeckFailed = "Topdeck failed";
+
+        //misc
+        public const string TooMuchEForHeal = "Target already has at least their printed E";
+        #endregion reasons for impossible
+
         public virtual Effect Effect { get; }
         public virtual Player Controller { get; }
         public virtual Game Game { get; }
@@ -21,7 +53,9 @@ namespace KompasCore.Effects
         /// <summary>
         /// Represents the type of subeffect this is
         /// </summary>
-        public string subeffType;
+        //public string subeffType;
+
+        public bool forbidNotBoard = true;
 
         #region targeting indices
         /// <summary>
@@ -70,12 +104,11 @@ namespace KompasCore.Effects
         public Space Space => Effect.GetSpace(spaceIndex);
         public Player Player => Effect.GetPlayer(playerIndex);
 
-        public bool RemoveTarget()
+        public void RemoveTarget()
         {
-            if (Target == null) return false;
+            if (Target == null) throw new NullCardException(TargetWasNull);
 
             Effect.RemoveTarget(Target);
-            return true;
         }
     }
 }

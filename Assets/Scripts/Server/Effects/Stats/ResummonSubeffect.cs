@@ -1,4 +1,5 @@
 ﻿using KompasCore.Effects;
+using KompasCore.Exceptions;
 using System.Threading.Tasks;
 
 namespace KompasServer.Effects
@@ -7,8 +8,10 @@ namespace KompasServer.Effects
     {
         public override Task<ResolutionInfo> Resolve()
         {
-            if (Target == null || Target.Location != CardLocation.Field)
-                return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
+            if (Target == null)
+                throw new NullCardException(TargetWasNull);
+            else if (forbidNotBoard && Target.Location != CardLocation.Field)
+                throw new InvalidLocationException(Target.Location, Target, "Target not on board :(");
 
             var ctxt = new ActivationContext(card: Target, stackable: Effect, triggerer: EffectController, space: Target.Position);
             ServerEffect.EffectsController.TriggerForCondition(Trigger.Play, ctxt);

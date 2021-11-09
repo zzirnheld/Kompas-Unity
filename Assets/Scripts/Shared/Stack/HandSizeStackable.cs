@@ -21,7 +21,7 @@ namespace KompasCore.Effects
                     {
                         listRestrictions = new string[]
                         {
-                        ListRestriction.MaxCanChoose, ListRestriction.MinCanChoose
+                            ListRestriction.MaxCanChoose, ListRestriction.MinCanChoose
                         }
                     };
                 }
@@ -39,7 +39,7 @@ namespace KompasCore.Effects
                     {
                         cardRestrictions = new string[]
                         {
-                        CardRestriction.Friendly, CardRestriction.Hand
+                            CardRestriction.Friendly, CardRestriction.Hand
                         }
                     };
                     handSizeCardRestriction.Initialize(Source, eff: default);

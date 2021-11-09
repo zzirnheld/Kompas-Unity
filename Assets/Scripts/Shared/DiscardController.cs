@@ -1,29 +1,28 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
+using KompasCore.Exceptions;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace KompasCore.GameCore
 {
-    public class DiscardController : MonoBehaviour
+    public class DiscardController : MonoBehaviour, IGameLocation
     {
         public Game game;
         public Player Owner;
 
+        public CardLocation CardLocation => CardLocation.Discard;
+
         public readonly List<GameCard> Discard = new List<GameCard>();
 
         //adding/removing cards
-        public virtual bool AddToDiscard(GameCard card, IStackable stackSrc = null)
+        public virtual void Add(GameCard card, IStackable stackSrc = null)
         {
-            if (card.Remove(stackSrc))
-            {
-                Discard.Add(card);
-                card.Controller = Owner;
-                card.Location = CardLocation.Discard;
-                return true;
-            }
-            return false;
+            card.Remove(stackSrc);
+            Discard.Add(card);
+            card.Controller = Owner;
+            card.GameLocation = this;
         }
 
         public int IndexOf(GameCard card)
@@ -31,13 +30,12 @@ namespace KompasCore.GameCore
             return Discard.IndexOf(card);
         }
 
-        public virtual bool RemoveFromDiscard(GameCard card)
+        public virtual void Remove(GameCard card)
         {
-            if (!Discard.Contains(card)) return false;
+            if (!Discard.Contains(card)) throw new CardNotHereException(CardLocation.Discard);
 
             Discard.Remove(card);
             SpreadOutCards();
-            return true;
         }
 
         public List<GameCard> CardsThatFit(Func<IGameCardInfo, bool> cardRestriction)

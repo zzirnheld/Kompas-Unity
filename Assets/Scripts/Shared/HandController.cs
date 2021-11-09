@@ -1,54 +1,43 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
+using KompasCore.Exceptions;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace KompasCore.GameCore
 {
-    public abstract class HandController : MonoBehaviour
+    public abstract class HandController : MonoBehaviour, IGameLocation
     {
         public Player Owner;
 
+        public CardLocation CardLocation => CardLocation.Hand;
         public readonly List<GameCard> hand = new List<GameCard>();
 
         public int HandSize => hand.Count;
         public int IndexOf(GameCard card) => hand.IndexOf(card);
 
-        public virtual bool AddToHand(GameCard card, IStackable stackSrc = null)
+        public virtual void Add(GameCard card, IStackable stackSrc = null)
         {
-            if (card == null)
-            {
-                Debug.LogError("Cannot add null card to hand");
-                return false;
-            }
+            if (card == null) throw new NullCardException("Cannot add null card to hand");
 
-            if (!card.Remove(stackSrc))
-            {
-                Debug.LogWarning($"Could not remove card named {card.CardName} in location {card.Location}");
-                return false;
-            }
+            card.Remove(stackSrc);
 
             hand.Add(card);
-            card.Location = CardLocation.Hand;
-            card.Controller = Owner;
+            card.GameLocation = this;
+            card.Controller = Owner; //TODO should this be before or after the prev line?
 
             card.transform.rotation = Quaternion.Euler(90, 0, 0);
             SpreadOutCards();
-            return true;
         }
 
-        public virtual bool RemoveFromHand(GameCard card)
+        public virtual void Remove(GameCard card)
         {
-            if (!hand.Contains(card))
-            {
-                Debug.LogError($"Hand of \n{string.Join(", ", hand.Select(c => c.CardName))}\n doesn't contain {card}, can't remove it!");
-                return false;
-            }
+            if (!hand.Contains(card)) throw new CardNotHereException(CardLocation, 
+                $"Hand of \n{string.Join(", ", hand.Select(c => c.CardName))}\n doesn't contain {card}, can't remove it!");
 
             hand.Remove(card);
             SpreadOutCards();
-            return true;
         }
 
         public virtual void SpreadOutCards()

@@ -18,24 +18,23 @@ public class ClientDummyHandController : ClientHandController
         var card = GameObject.Instantiate(dummyCardPrefab, parent: gameObject.transform).GetComponent<DummyClientGameCard>();
         card.SetClientGame(clientGame);
         dummyHand.Add(card);
-        AddToHand(card);
+        Add(card);
     }
 
-    public void DecrementHand() => RemoveFromHand(dummyHand.LastOrDefault());
+    public void DecrementHand() => Remove(dummyHand.LastOrDefault());
 
-    public override bool RemoveFromHand(GameCard card)
+    public override void Remove(GameCard card)
     {
         //if it's a dummy, remove and destroy it
         if (dummyHand.Contains(card))
         {
             dummyHand.Remove(card);
-            RemoveFromHand(card);
+            Remove(card);
             Destroy(card.gameObject);
-            return true;
         }
 
         //remove the card from the real hand if it's actually there
-        return base.RemoveFromHand(card);
+        base.Remove(card);
     }
 
     public override void SpreadOutCards()

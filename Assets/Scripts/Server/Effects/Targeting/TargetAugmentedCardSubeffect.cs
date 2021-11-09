@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using KompasCore.Exceptions;
+using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
@@ -6,7 +7,7 @@ namespace KompasServer.Effects
     {
         public override Task<ResolutionInfo> Resolve()
         {
-            if (ServerEffect.Source.AugmentedCard == null) return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
+            if (ServerEffect.Source.AugmentedCard == null) throw new NullCardException(NoValidCardTarget);
             else
             {
                 ServerEffect.AddTarget(Source.AugmentedCard);

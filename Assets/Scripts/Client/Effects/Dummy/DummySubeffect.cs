@@ -26,7 +26,7 @@ namespace KompasClient.Effects
 
             if (toReturn != null)
             {
-                Debug.Log($"Finishing setup for new effect of type {subeff.subeffType}");
+                Debug.Log($"Finishing setup for new effect of type {subeff.GetType()}");
                 toReturn.Initialize(parent, subeffIndex);
             }
 

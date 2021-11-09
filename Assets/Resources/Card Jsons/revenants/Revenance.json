@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Revenance",
-	"effText":"When you draw a Revenant, you can discard it and draw 1.\n(Discarded when the third turn starts after I’m played)",
+	"effText":"When you draw a Revenant, you can discard it and draw 1.\n(Vanishes when a turn starts.)",
 	"effects":[
 		{
 			"triggerData":

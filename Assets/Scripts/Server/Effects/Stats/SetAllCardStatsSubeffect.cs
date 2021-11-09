@@ -1,5 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
+using KompasCore.Exceptions;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -40,6 +41,11 @@ namespace KompasServer.Effects
         public override Task<ResolutionInfo> Resolve()
         {
             var targets = ServerGame.Cards.Where(c => cardRestriction.Evaluate(c, Context));
+            foreach (var card in targets)
+            {
+                if (forbidNotBoard && card.Location != CardLocation.Field)
+                    throw new InvalidLocationException(card.Location, card, ChangedStatsOfCardOffBoard);
+            }
             foreach (var c in targets)
             {
                 c.SetStats(stats: GetRealValues(c), Effect);

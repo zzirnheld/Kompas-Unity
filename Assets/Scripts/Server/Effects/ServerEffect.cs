@@ -1,5 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
+using KompasCore.Exceptions;
 using KompasCore.GameCore;
 using KompasServer.GameCore;
 using System.Threading.Tasks;
@@ -144,7 +145,16 @@ namespace KompasServer.Effects
             Debug.Log($"Resolving subeffect of type {subeffects[index].GetType()}");
             SubeffectIndex = index;
             ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
-            return await subeffects[index].Resolve();
+            try
+            {
+                return await subeffects[index].Resolve();
+            }
+            catch (KompasException e)
+            {
+                Debug.LogWarning($"Caught {e.GetType()} while resolving {subeffects[index].GetType()} at {index}." +
+                    $"\nStack trace:\n{e.StackTrace}");
+                return ResolutionInfo.Impossible(e.Message);
+            }
         }
 
         /// <summary>
@@ -166,7 +176,7 @@ namespace KompasServer.Effects
         /// </summary>
         public async Task<ResolutionInfo> EffectImpossible(string why)
         {
-            Debug.Log($"Effect of {Source.CardName} is being declared impossible at subeffect {subeffects[SubeffectIndex].GetType()}");
+            Debug.Log($"Effect of {Source.CardName} is being declared impossible at subeffect {subeffects[SubeffectIndex].GetType()} because {why}");
             if (OnImpossible == null)
             {
                 //TODO make the notifier tell the client why the effect was impossible

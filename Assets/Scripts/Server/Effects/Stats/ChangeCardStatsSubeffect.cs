@@ -1,12 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using KompasCore.Exceptions;
+using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
     [System.Serializable]
     public class ChangeCardStatsSubeffect : ServerSubeffect
     {
-        public bool forbidNotBoard = true;
-
         public int nMult = 0;
         public int eMult = 0;
         public int sMult = 0;
@@ -38,9 +37,10 @@ namespace KompasServer.Effects
 
         public override Task<ResolutionInfo> Resolve()
         {
-            if (Target == null) return Task.FromResult(ResolutionInfo.Impossible(TargetWasNull));
-            if (forbidNotBoard && Target.Location != CardLocation.Field)
-                return Task.FromResult(ResolutionInfo.Impossible(ChangedStatsOfCardOffBoard));
+            if (Target == null)
+                throw new NullCardException(TargetWasNull);
+            else if (forbidNotBoard && Target.Location != CardLocation.Field)
+                throw new InvalidLocationException(Target.Location, Target, ChangedStatsOfCardOffBoard);
 
             Target.AddToStats(StatValues, Effect);
             return Task.FromResult(ResolutionInfo.Next);

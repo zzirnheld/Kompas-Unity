@@ -1,5 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
+using KompasCore.Exceptions;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -34,6 +35,17 @@ namespace KompasServer.Effects
 
             IEnumerable<GameCard> cards 
                 = ServerGame.Cards.Where(c => cardRestriction.Evaluate(c, Context));
+
+            //First make sure are allowed to set their stats. 
+            //Testing here so later changes can maybe be allowed to allow this to occur,
+            //and so test each to be affected before any are affected
+            foreach (var card in cards)
+            {
+                if (card == null)
+                    throw new NullCardException(TargetWasNull);
+                else if (forbidNotBoard && card.Location != CardLocation.Field)
+                    throw new InvalidLocationException(card.Location, card, ChangedStatsOfCardOffBoard);
+            }
 
             foreach (var card in cards)
             {

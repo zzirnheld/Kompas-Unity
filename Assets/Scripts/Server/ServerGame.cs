@@ -246,12 +246,9 @@ namespace KompasServer.GameCore
                 var toDraw = controller.deckCtrl.Topdeck;
                 if (toDraw == null) break;
                 var eachDrawContext = new ActivationContext(card: toDraw, stackable: stackSrc, triggerer: controller);
-                if (toDraw.Rehand(controller, stackSrc))
-                {
-                    EffectsController.TriggerForCondition(Trigger.EachDraw, eachDrawContext);
-                    drawn.Add(toDraw);
-                }
-                else break;
+                toDraw.Rehand(controller, stackSrc);
+                EffectsController.TriggerForCondition(Trigger.EachDraw, eachDrawContext);
+                drawn.Add(toDraw);
             }
             var context = new ActivationContext(stackable: stackSrc, triggerer: controller, x: i);
             EffectsController.TriggerForCondition(Trigger.DrawX, context);
@@ -317,8 +314,7 @@ namespace KompasServer.GameCore
             }
 
             Debug.Log($"Checking validity of moving {toMove.CardName} to {to}");
-            if (toMove.Controller != by) return false;
-            if (toMove.Position == to || (toMove.IsAvatar && !toMove.Summoned)) return false;
+            if (toMove.Position == to) return false;
             else return toMove.MovementRestriction.EvaluateNormalMove(to);
         }
 

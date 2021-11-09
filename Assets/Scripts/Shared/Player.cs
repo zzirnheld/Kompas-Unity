@@ -3,7 +3,8 @@ using KompasCore.GameCore;
 using System.Net.Sockets;
 using UnityEngine;
 
-public abstract class Player : MonoBehaviour{
+public abstract class Player : MonoBehaviour
+{
 
     public abstract Player Enemy { get; }
 

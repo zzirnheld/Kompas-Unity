@@ -1,33 +1,35 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
+using KompasCore.Exceptions;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace KompasCore.GameCore
 {
-    public class AnnihilationController : MonoBehaviour
+    public class AnnihilationController : MonoBehaviour, IGameLocation
     {
         public Game game;
         public Player owner;
 
+        public CardLocation CardLocation => CardLocation.Annihilation;
         public List<GameCard> Cards { get; } = new List<GameCard>();
 
-        public virtual bool Annihilate(GameCard card, IStackable stackSrc = null)
+        public virtual void Annihilate(GameCard card, IStackable stackSrc = null)
         {
-            if(!card.Remove(stackSrc)) return false;
+            if (card.GameLocation == this) throw new AlreadyHereException(CardLocation.Annihilation);
+
+            card.Remove(stackSrc);
             Cards.Add(card);
-            card.Location = CardLocation.Annihilation;
+            card.GameLocation = this;
             SpreadOutCards();
-            return true;
         }
 
-        public virtual bool Remove(GameCard card)
+        public virtual void Remove(GameCard card)
         {
-            if (!Cards.Contains(card)) return false;
+            if (!Cards.Contains(card)) throw new CardNotHereException(CardLocation.Annihilation);
 
             Cards.Remove(card);
             SpreadOutCards();
-            return true;
         }
 
         public void SpreadOutCards()
