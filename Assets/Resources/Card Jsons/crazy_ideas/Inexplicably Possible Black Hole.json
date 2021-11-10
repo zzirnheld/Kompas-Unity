@@ -4,7 +4,7 @@
 	"effText":"Can't attack normally.\nWhen a character arrives normally, move them 1 space towards me.",
 	"effects":[
 		{
-            "blurb":"Black Hole",
+            "blurb":"The Suck",
 			"triggerData":
 			{
 				"triggerCondition":"Arrive",
@@ -43,5 +43,5 @@
 	"e":2,
 	"s":5,
 	"w":9,
-	"subtypeText":"Crazy Idea"
+	"subtypeText":"Smol Crazy Idea"
 }
