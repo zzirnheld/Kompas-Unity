@@ -85,7 +85,9 @@ public struct Space
 
     public bool SameColumn(Space other) => x - y == other.x - other.y;
     public bool SameDiagonal(Space other) => x == other.x || y == other.y;
-    public bool SameAxis(Space a, Space b) => ((a.x - b.x) % (b.x - x) == 0) && ((a.y - b.y) % (b.y = y) == 0);
+    public bool SameAxis(Space a, Space b) 
+        => (((a.x - b.x) % (a.x - x) == 0) || ((a.x - x) % (a.x - b.x) == 0))
+        && (((a.y - b.y) % (a.y - y) == 0) || ((a.y - y) % (a.y - b.y) == 0));
 
     public bool NorthOf(Space other) => x > other.x || y > other.y;
     public Space DueNorth => new Space(x + 1, y + 1);

@@ -1,0 +1,88 @@
+{
+	"cardType":67,
+	"cardName":"Giant Ball of Tinfoil",
+	"effText":"Can't move or attack normally.\nWhen turns start, choose an adjacent space, then keep moving me 1 space in that direction until you can't. I attack any adjacent character in the direction I was moving.",
+	"effects":[
+		{
+            "blurb":"THE ENTIRE EASTERN SEABOARD",
+			"triggerData":
+			{
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"rollinnnnnnnn",
+						"spaceRestrictions":["Adjacent to Source","Can Move Target to This Space"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"jumpTo":8
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"rollinnnnnnnn",
+						"spaceRestrictions":["Adjacent to Source","Can Move Target to This Space","On Axis of Last Two Spaces"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.JumpSubeffect, Assembly-CSharp",
+					"indexToJumpTo":5
+				},
+				{
+					"$type":"KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":{
+						"cardRestrictions":["Is Character","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["On Axis of Last Two Spaces"],
+							"mustBeEmpty":false
+						}
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"targetIndex":-1,
+					"attackerIndex":-2
+				}
+			]	
+		}
+	],
+	"AttackRestriction":{
+		"attackRestrictionsArray":[
+			"Default",
+			"Not Normally"
+		]
+	},
+	"MovementRestriction":{
+		"normalRestrictionsFromJson":[
+			"Default",
+			"Not Normally"
+		]
+	},
+	"n":0,
+	"e":9,
+	"s":5,
+	"w":9,
+	"subtypeText":"Crazy Idea"
+}

@@ -31,6 +31,8 @@ namespace KompasCore.Effects
         //Whether the character has been activated (for Golems)
         private const string IsActive = "Activated";
 
+        private const string NotNormally = "Not Normally";
+
         //Default restrictions are that only characters with enough n can move.
         public static readonly string[] defaultNormalMovementRestrictions = new string[]
         {
@@ -115,6 +117,7 @@ namespace KompasCore.Effects
 
                 //special effect restrictions
                 case IsActive: return Card.Activated;
+                case NotNormally: return !byEffect;
                 default: throw new System.ArgumentException($"Could not understand movement restriction {restriction}");
             }
         }
