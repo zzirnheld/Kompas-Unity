@@ -286,9 +286,9 @@ namespace KompasCore.Cards
             if (card.Location == CardLocation.Field)
             {
                 //if you can attack at all, enable the attack indicator
-                if (card.AttackRestriction.EvaluateAtAll())
+                if (card.AttackRestriction.EvaluateAtAll(null))
                     //oscillate the attack indicator if can attack a card right now
-                    attackOscillator.Enable(card.AttackRestriction.EvaluateAny());
+                    attackOscillator.Enable(card.AttackRestriction.EvaluateAny(null));
                 else attackOscillator.Disable();
 
                 //if you can activate any effect, enable the attack indicator

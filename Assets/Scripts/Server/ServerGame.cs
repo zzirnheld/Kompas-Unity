@@ -327,7 +327,7 @@ namespace KompasServer.GameCore
             }
 
             Debug.Log($"Checking validity of attack of {attacker.CardName} on {defender} by {instigator.index}");
-            return attacker.AttackRestriction.Evaluate(defender);
+            return attacker.AttackRestriction.Evaluate(defender, stackSrc: null);
         }
         #endregion
 

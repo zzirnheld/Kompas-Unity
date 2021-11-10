@@ -20,6 +20,7 @@ namespace KompasCore.Effects
         public const string Default = "Default";
 
         public const string ThisIsActive = "This is Activated";
+        public const string NotNormally = "Not Normally";
 
         public static readonly string[] DefaultAttackRestrictions = { ThisIsCharacter, DefenderIsCharacter, DefenderIsAdjacent, DefenderIsEnemy,
             FriendlyTurn, MaxPerTurn, NothingHappening, InPlay };
@@ -42,7 +43,7 @@ namespace KompasCore.Effects
             Debug.Log($"Finished initializing attack restriction for {Card.CardName} with restrictions: {string.Join(", ", attackRestrictions)}");
         }
 
-        private bool RestrictionValid(string restriction, GameCard defender)
+        private bool RestrictionValid(string restriction, GameCard defender, IStackable stackSrc)
         {
             if (Card == null || Card.Game == null)
             {
@@ -65,6 +66,7 @@ namespace KompasCore.Effects
 
                 ThisIsActive        => Card.Activated,
                 InPlay              => Card.Location == CardLocation.Field,
+                NotNormally         => stackSrc != null,
 
                 _ => throw new System.ArgumentException($"Could not understand attack restriction {restriction}"),
             };
@@ -80,10 +82,10 @@ namespace KompasCore.Effects
             return valid;
         } */
 
-        public bool Evaluate(GameCard defender)
+        public bool Evaluate(GameCard defender, IStackable stackSrc)
         {
             if (defender == null) return false;
-            return attackRestrictions.All(r => RestrictionValid(r, defender));
+            return attackRestrictions.All(r => RestrictionValid(r, defender, stackSrc));
         }
 
         /// <summary>
@@ -92,14 +94,15 @@ namespace KompasCore.Effects
         /// </summary>
         /// <returns><see langword="true"/> If this character can attack at all, 
         /// <see langword="false"/> otherwise.</returns>
-        public bool EvaluateAtAll()
-            => attackRestrictions.Intersect(AtAllRestrictions).All(r => RestrictionValid(r, null));
+        public bool EvaluateAtAll(IStackable stackSrc)
+            => attackRestrictions.Intersect(AtAllRestrictions).All(r => RestrictionValid(r, null, stackSrc));
 
         /// <summary>
         /// Checks to see if this card can currently attack (any card).
         /// </summary>
         /// <returns><see langword="true"/> If any card in the game fits this card's atack restriction, 
         /// <see langword="false"/> otherwise.</returns>
-        public bool EvaluateAny() => Card.Game.boardCtrl.ExistsCardOnBoard(c => Evaluate(c));
+        public bool EvaluateAny(IStackable stackSrc) 
+            => Card.Game.boardCtrl.ExistsCardOnBoard(c => Evaluate(c, stackSrc));
     }
 }

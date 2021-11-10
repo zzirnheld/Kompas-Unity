@@ -60,6 +60,7 @@ namespace KompasCore.Effects
 
         public const string OnSourcesDiagonal = "On Source's Diagonal";
         public const string OnTargetsDiagonal = "On Target's Diagonal";
+        public const string OnAxisOfLastTwoSpaces = "On Axis of Last Two Spaces";
 
         public const string OnEdge = "On Edge of Board";
         public const string Corner = "Corner";
@@ -188,8 +189,11 @@ namespace KompasCore.Effects
                 Empty => Game.boardCtrl.GetCardAt(space) == null,
                 Surrounded => Game.boardCtrl.Surrounded(space),
                 CardHereFitsRestriction => hereFitsRestriction.Evaluate(Game.boardCtrl.GetCardAt(space), context),
+
                 OnSourcesDiagonal => Source.SameDiagonal(space),
                 OnTargetsDiagonal => target.SameDiagonal(space),
+                OnAxisOfLastTwoSpaces => space.SameAxis(Subeffect.Space, Subeffect.Effect.GetSpace(-2)),
+
                 OnEdge => space.IsEdge,
                 Corner => space.IsCorner,
                 SameDirectionFromTargetAsSpace => target.Position.DirectionFromThisTo(space) == Subeffect.Space.DirectionFromThisTo(Source.Position),

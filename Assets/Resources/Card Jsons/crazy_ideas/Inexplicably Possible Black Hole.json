@@ -1,0 +1,47 @@
+{
+	"cardType":67,
+	"cardName":"Inexplicably Possible Black Hole",
+	"effText":"Can't attack normally.\nWhen a character arrives normally, move them 1 space towards me.",
+	"effects":[
+		{
+            "blurb":"Black Hole",
+			"triggerData":
+			{
+				"triggerCondition":"Arrive",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","No Stackable"],
+					"cardRestriction":{
+						"cardRestrictions":["Is Character"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"e n t e r t h e h o l e",
+						"spaceRestrictions":["Adjacent to Target","Towards Source from Target","Can Move Target to This Space"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+	"AttackRestriction":{
+		"attackRestrictionsArray":[
+			"Default",
+			"Not Normally"
+		]
+	},
+	"n":0,
+	"e":2,
+	"s":5,
+	"w":9,
+	"subtypeText":"Crazy Idea"
+}
