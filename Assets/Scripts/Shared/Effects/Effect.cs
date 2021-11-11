@@ -88,7 +88,7 @@ namespace KompasCore.Effects
         public Space GetSpace(int num)
         {
             var trueIndex = num < 0 ? num + coords.Count() : num;
-            return trueIndex < 0 ? default : coords[trueIndex];
+            return trueIndex < 0 ? null : coords[trueIndex];
         }
 
         public Player GetPlayer(int num)

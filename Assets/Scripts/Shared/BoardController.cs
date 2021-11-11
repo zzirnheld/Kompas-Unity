@@ -78,6 +78,11 @@ namespace KompasCore.GameCore
         public List<GameCard> CardsAdjacentTo(Space space)
         {
             var list = new List<GameCard>();
+            if (space == null)
+            {
+                //Debug.LogError("Asking for cards adjacent to a null space");
+                return list;
+            }
 
             foreach (var s in space.AdjacentSpaces)
             { 
@@ -256,8 +261,8 @@ namespace KompasCore.GameCore
                 toPlay.Remove(stackSrc);
                 var (toX, toY) = to;
                 Board[toX, toY] = toPlay;
-                toPlay.GameLocation = this;
                 toPlay.Position = to;
+                toPlay.GameLocation = this;
 
                 toPlay.Controller = controller;
             }

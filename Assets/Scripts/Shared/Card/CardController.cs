@@ -140,6 +140,7 @@ namespace KompasCore.Cards
 
             switch (location)
             {
+                case CardLocation.Nowhere: break;
                 case CardLocation.Deck:
                     card.gameObject.transform.SetParent(card.Controller.deckObject.transform);
                     gameObject.SetActive(false);

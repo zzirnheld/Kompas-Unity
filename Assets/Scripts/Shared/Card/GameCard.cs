@@ -356,7 +356,7 @@ namespace KompasCore.Cards
         public bool CardBehind(IGameCardInfo card) => SpaceBehind(card.Position);
 
         public bool SpaceDirectlyInFront(Space space)
-            => Location == CardLocation.Field && Controller.SubjectiveCoords(space) == SubjectivePosition.DueNorth;
+            => Location == CardLocation.Field && Controller.SubjectiveCoords(space).Equals(SubjectivePosition.DueNorth);
 
         public bool CardDirectlyInFront(IGameCardInfo card)
             => card.Location == CardLocation.Field && SpaceDirectlyInFront(card.Position);

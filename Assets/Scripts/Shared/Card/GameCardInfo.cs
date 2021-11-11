@@ -131,7 +131,7 @@ namespace KompasCore.Cards
             SpacesMoved = card.SpacesMoved;
             SpacesCanMove = card.SpacesCanMove;
             AdjacentCards = card.AdjacentCards.ToArray();
-            Position = card.Position;
+            Position = card.Position?.Copy;
         }
 
         #region distance/adjacency

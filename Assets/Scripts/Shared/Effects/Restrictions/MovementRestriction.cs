@@ -101,7 +101,7 @@ namespace KompasCore.Effects
                 case Default: return true;
                 //normal restrictions
                 case InPlay: return Card.Location == CardLocation.Field;
-                case DistinctSpace: return Card.Position != space;
+                case DistinctSpace: return !Card.Position.Equals(space);
                 case IsCharacter: return Card.CardType == 'C';
                 case CanMoveEnoughSpaces: return Card.SpacesCanMove >= Card.Game.boardCtrl.ShortestEmptyPath(Card, space);
                 case StandardSpellMoveRestiction: return Card.Game.ValidSpellSpaceFor(Card, space);

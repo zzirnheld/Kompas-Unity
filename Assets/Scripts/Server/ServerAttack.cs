@@ -32,8 +32,10 @@ namespace KompasServer.Effects
         {
             ServerController.ServerNotifier.NotifyAttackStarted(attacker, defender, controller);
 
-            var attackerContext = new ActivationContext(card: attacker, stackable: this, triggerer: Controller);
-            var defenderContext = new ActivationContext(card: defender, stackable: this, triggerer: Controller);
+            var attackerContext = new ActivationContext(beforeCard: attacker, stackable: this, triggerer: Controller);
+            var defenderContext = new ActivationContext(beforeCard: defender, stackable: this, triggerer: Controller);
+            attackerContext.SetAfterCardInfo(attacker);
+            defenderContext.SetAfterCardInfo(defender);
             EffCtrl.TriggerForCondition(Trigger.Attacks, attackerContext);
             EffCtrl.TriggerForCondition(Trigger.Defends, defenderContext);
             EffCtrl.TriggerForCondition(Trigger.Battles, attackerContext, defenderContext);
@@ -53,10 +55,12 @@ namespace KompasServer.Effects
 
         public Task StartResolution(ActivationContext context)
         {
+            var attackerContext = new ActivationContext(beforeCard: attacker, stackable: this, triggerer: Controller);
+            var defenderContext = new ActivationContext(beforeCard: defender, stackable: this, triggerer: Controller);
             //deal the damage
             if (StillValidAttack) DealDamage();
-            var attackerContext = new ActivationContext(card: attacker, stackable: this, triggerer: Controller);
-            var defenderContext = new ActivationContext(card: defender, stackable: this, triggerer: Controller);
+            attackerContext.SetAfterCardInfo(attacker);
+            defenderContext.SetAfterCardInfo(defender);
             EffCtrl.TriggerForCondition(Trigger.BattleEnds, attackerContext, defenderContext);
             //then finish the resolution by just returning that completed the task. (don't need to call anything)
             return Task.CompletedTask;
@@ -67,13 +71,17 @@ namespace KompasServer.Effects
             //get damage from both, before either takes any damage, in case effects matter on hp
             int attackerDmg = attacker.CombatDamage;
             int defenderDmg = defender.CombatDamage;
+            var attackerDealContext = new ActivationContext(beforeCard: attacker, stackable: this, triggerer: Controller, x: attackerDmg);
+            var defenderDealContext = new ActivationContext(beforeCard: defender, stackable: this, triggerer: Controller, x: defenderDmg);
+            var attackerTakeContext = new ActivationContext(beforeCard: attacker, stackable: this, triggerer: Controller, x: defenderDmg);
+            var defenderTakeContext = new ActivationContext(beforeCard: defender, stackable: this, triggerer: Controller, x: attackerDmg);
             //deal the damage
             defender.TakeDamage(attackerDmg, stackSrc: this);
             attacker.TakeDamage(defenderDmg, stackSrc: this);
-            var attackerDealContext = new ActivationContext(card: attacker, stackable: this, triggerer: Controller, x: attackerDmg);
-            var defenderDealContext = new ActivationContext(card: defender, stackable: this, triggerer: Controller, x: defenderDmg);
-            var attackerTakeContext = new ActivationContext(card: attacker, stackable: this, triggerer: Controller, x: defenderDmg);
-            var defenderTakeContext = new ActivationContext(card: defender, stackable: this, triggerer: Controller, x: attackerDmg);
+            attackerDealContext.SetAfterCardInfo(attacker);
+            defenderDealContext.SetAfterCardInfo(defender);
+            attackerTakeContext.SetAfterCardInfo(attacker);
+            defenderTakeContext.SetAfterCardInfo(defender);
             //trigger effects based on combat damage
             EffCtrl.TriggerForCondition(Trigger.TakeCombatDamage, attackerTakeContext, defenderTakeContext);
             EffCtrl.TriggerForCondition(Trigger.DealCombatDamage, attackerDealContext, defenderDealContext);

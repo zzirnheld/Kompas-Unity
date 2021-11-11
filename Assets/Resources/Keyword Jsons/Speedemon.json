@@ -19,11 +19,18 @@
 			"$type":"KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
 		},
 		{
-			"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+			"$type":"KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp",
+			"after":true
+		},
+		{
+			"$type":"KompasServer.Effects.TargetDisplacementSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type":"KompasServer.Effects.AutoSpaceTargetSubeffect, Assembly-CSharp",
 			"spaceRestriction":
 			{
-				"blurb":"where for speed victim to move",
-				"spaceRestrictions":["Opposite Direction From Target Than Space","Distance to Target Fits X Restriction"],
+				"blurb":"speeeeeeeeeeeeeeeed",
+				"spaceRestrictions":["Source Displacement to Space Matches Coords","Distance to Target Fits X Restriction"],
 				"distanceXRestriction":{
 					"xRestrictions":["=X"]
 				}

@@ -37,6 +37,7 @@ namespace KompasCore.Effects
         public const string InAOEOfNumberFittingRestriction = "In AOE of Number of Cards Fitting Restriction";
         public const string InAOESourceAlsoIn = "In AOE Source is Also In";
 
+        public const string SourceDisplacementToSpaceMatchesCoords = "Source Displacement to Space Matches Coords";
         public const string SubjectiveDisplacementFromSource = "Subjective Displacement from Source";
         public const string BehindSource = "Behind Source";
 
@@ -166,7 +167,9 @@ namespace KompasCore.Effects
                                                                         .Count() <= adjacencyLimit,
                 InAOESourceAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.CardInAOE(Source)),
 
-                SubjectiveDisplacementFromSource => Controller.SubjectiveCoords(space).DisplacementTo(Controller.SubjectiveCoords(Source.Position)) == (displacementX, displacementY),
+                SourceDisplacementToSpaceMatchesCoords => Source.Position.DisplacementTo(space) == Subeffect.Space,
+                SubjectiveDisplacementFromSource 
+                    => Controller.SubjectiveCoords(Source.Position).DisplacementTo(Controller.SubjectiveCoords(space)) == (displacementX, displacementY),
                 BehindSource => Source.SpaceBehind(space),
 
                 //distance

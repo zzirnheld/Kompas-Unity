@@ -245,8 +245,9 @@ namespace KompasServer.GameCore
             {
                 var toDraw = controller.deckCtrl.Topdeck;
                 if (toDraw == null) break;
-                var eachDrawContext = new ActivationContext(card: toDraw, stackable: stackSrc, triggerer: controller);
+                var eachDrawContext = new ActivationContext(beforeCard: toDraw, stackable: stackSrc, triggerer: controller);
                 toDraw.Rehand(controller, stackSrc);
+                eachDrawContext.SetAfterCardInfo(toDraw);
                 EffectsController.TriggerForCondition(Trigger.EachDraw, eachDrawContext);
                 drawn.Add(toDraw);
             }

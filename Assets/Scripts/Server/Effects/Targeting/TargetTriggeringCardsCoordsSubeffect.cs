@@ -1,16 +1,22 @@
 ﻿using KompasCore.Exceptions;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace KompasServer.Effects
 {
     public class TargetTriggeringCardsCoordsSubeffect : ServerSubeffect
     {
+        public bool after = false;
+
         public override Task<ResolutionInfo> Resolve()
         {
-            if (Context.CardInfo == null) throw new NullCardException(TargetWasNull);
-            else if (!Context.CardInfo.Position.Valid) throw new InvalidSpaceException(Context.CardInfo.Position, NoValidSpaceTarget);
+            var cardInfo = after ? Context.AfterCardInfo : Context.BeforeCardInfo;
 
-            ServerEffect.AddSpace(Context.CardInfo.Position.Copy);
+            if (cardInfo == null) throw new NullCardException(TargetWasNull);
+            else if (!cardInfo.Position.Valid) throw new InvalidSpaceException(cardInfo.Position, NoValidSpaceTarget);
+
+            ServerEffect.AddSpace(cardInfo.Position.Copy);
+            Debug.Log($"Just added {Space} from {cardInfo}");
             return Task.FromResult(ResolutionInfo.Next);
         }
     }
