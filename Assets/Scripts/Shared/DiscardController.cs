@@ -23,6 +23,7 @@ namespace KompasCore.GameCore
             Discard.Add(card);
             card.Controller = Owner;
             card.GameLocation = this;
+            card.Position = null;
         }
 
         public int IndexOf(GameCard card)

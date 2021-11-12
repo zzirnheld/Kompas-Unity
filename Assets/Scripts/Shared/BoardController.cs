@@ -34,6 +34,8 @@ namespace KompasCore.GameCore
 
         //helper methods
         #region helper methods
+        public int IndexOf(GameCard card) => card.Position.Index;
+
         /// <summary>
         /// Checks whether there's too many spells already next to an Avatar
         /// </summary>
@@ -217,8 +219,11 @@ namespace KompasCore.GameCore
         #region game mechanics
         public virtual void Remove(GameCard toRemove)
         {
+            if (toRemove.Location != CardLocation.Field) 
+                throw new CardNotHereException(CardLocation, $"Tried to remove {toRemove} not on board");
+            if (toRemove.Position == null) throw new InvalidSpaceException(toRemove.Position, "Can't remove a card from a null space");
             var (x, y) = toRemove.Position;
-            if (toRemove.Location == CardLocation.Field && Board[x, y] == toRemove) RemoveFromBoard(toRemove.Position);
+            if(Board[x, y] == toRemove) RemoveFromBoard(toRemove.Position);
             else throw new CardNotHereException(CardLocation, $"Card thinks it's at {toRemove.Position}, but {Board[x, y]} is there");
         }
 

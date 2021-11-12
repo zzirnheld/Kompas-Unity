@@ -31,6 +31,7 @@ namespace KompasCore.GameCore
             card.Remove(stackSrc);
             card.GameLocation = this;
             card.Controller = Owner;
+            card.Position = null;
         }
 
         //adding and removing cards
