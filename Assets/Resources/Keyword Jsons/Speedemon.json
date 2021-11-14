@@ -23,14 +23,14 @@
 			"after":true
 		},
 		{
-			"$type":"KompasServer.Effects.TargetDisplacementSubeffect, Assembly-CSharp"
+			"$type":"KompasServer.Effects.TargetDirectionSubeffect, Assembly-CSharp"
 		},
 		{
 			"$type":"KompasServer.Effects.AutoSpaceTargetSubeffect, Assembly-CSharp",
 			"spaceRestriction":
 			{
 				"blurb":"speeeeeeeeeeeeeeeed",
-				"spaceRestrictions":["Source Displacement to Space Matches Coords","Distance to Target Fits X Restriction"],
+				"spaceRestrictions":["Source to Space Same Direction as Coords","Distance to Source Fits X Restriction"],
 				"distanceXRestriction":{
 					"xRestrictions":["=X"]
 				}

@@ -29,10 +29,10 @@ namespace KompasServer.Effects
                 ServerEffect.AddSpace(potentialTarget);
                 return Task.FromResult(ResolutionInfo.Next);
             }
-            catch (System.InvalidOperationException)
+            catch (System.InvalidOperationException ioe)
             {
-                Debug.LogError($"More than one space fit the space restriction {spaceRestriction} " +
-                    $"for the effect {Effect.blurb} of {Source.CardName}");
+                Debug.LogError($"Zero, or more than one space fit the space restriction {spaceRestriction} " +
+                    $"for the effect {Effect.blurb} of {Source.CardName}. Exception {ioe}");
                 return Task.FromResult(ResolutionInfo.Impossible(NoValidCardTarget));
             }
         }

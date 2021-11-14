@@ -12,7 +12,7 @@
 					"spaceRestriction":
 					{
 						"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
-						"cardRestriction":
+						"adjacencyRestriction":
 						{
 							"cardRestrictions":["Different from Source","Subtypes Include"],
 							"subtypesInclude":["Speedemon"]

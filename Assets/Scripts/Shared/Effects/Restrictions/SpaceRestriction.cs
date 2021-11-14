@@ -38,12 +38,14 @@ namespace KompasCore.Effects
         public const string InAOESourceAlsoIn = "In AOE Source is Also In";
 
         public const string SourceDisplacementToSpaceMatchesCoords = "Source Displacement to Space Matches Coords";
+        public const string SourceToSpaceSameDirectionAsCoords = "Source to Space Same Direction as Coords";
         public const string SubjectiveDisplacementFromSource = "Subjective Displacement from Source";
         public const string BehindSource = "Behind Source";
 
         //distance
         public const string DistanceToSourceFitsXRestriction = "Distance to Source Fits X Restriction";
         public const string DistanceToTargetFitsXRestriction = "Distance to Target Fits X Restriction";
+        public const string DistanceToCoordsFitsXRestriction = "Distance to Coords Fits X Restriction";
 
         public const string FurtherFromSourceThanTarget = "Further from Source than Target";
         public const string FurtherFromSourceThanCoords = "Further from Source than Coords";
@@ -168,6 +170,7 @@ namespace KompasCore.Effects
                 InAOESourceAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.CardInAOE(Source)),
 
                 SourceDisplacementToSpaceMatchesCoords => Source.Position.DisplacementTo(space) == Subeffect.Space,
+                SourceToSpaceSameDirectionAsCoords => Source.Position.DirectionFromThisTo(space) == Subeffect.Space,
                 SubjectiveDisplacementFromSource 
                     => Controller.SubjectiveCoords(Source.Position).DisplacementTo(Controller.SubjectiveCoords(space)) == (displacementX, displacementY),
                 BehindSource => Source.SpaceBehind(space),
@@ -175,6 +178,7 @@ namespace KompasCore.Effects
                 //distance
                 DistanceToSourceFitsXRestriction => distanceXRestriction.Evaluate(Source.DistanceTo(space)),
                 DistanceToTargetFitsXRestriction => distanceXRestriction.Evaluate(target.DistanceTo(space)),
+                DistanceToCoordsFitsXRestriction => distanceXRestriction.Evaluate(Subeffect.Space.DistanceTo(space)),
 
                 FurtherFromSourceThanTarget => Source.DistanceTo(space) > Source.DistanceTo(target),
                 FurtherFromSourceThanCoords => Source.DistanceTo(space) > Source.DistanceTo(Subeffect.Space),
