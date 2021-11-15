@@ -161,7 +161,7 @@ namespace KompasServer.GameCore
             Debug.Log($"Setting avatar for player {player.index}");
             player.Avatar = avatar;
             Space to = player.index == 0 ? Space.NearCorner : Space.FarCorner;
-            avatar.Play(to, player);
+            avatar.Play(to, player, new GameStartStackable());
             /*
             bool playedAvatar = avatar.Play(player.index * 6, player.index * 6, player);
             Debug.Log($"Successfully played avatar? {playedAvatar}");

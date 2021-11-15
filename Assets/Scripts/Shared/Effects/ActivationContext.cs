@@ -47,7 +47,7 @@ namespace KompasCore.Effects
             var sb = new System.Text.StringBuilder();
 
             sb.Append(BeforeCardInfo == null ? "No triggering card, " : $"Card: {BeforeCardInfo.CardName}, ");
-            sb.Append(Stackable == null ? "No triggering stackable, " : $"Stackable from: {Stackable.Source.CardName}, ");
+            sb.Append(Stackable == null ? "No triggering stackable, " : $"Stackable from: {Stackable.Source?.CardName}, ");
             sb.Append(Triggerer == null ? "No triggering player, " : $"Triggerer: {Triggerer.index}, ");
             sb.Append(X == null ? "No X, " : $"X: {X}, ");
             sb.Append(Space == null ? "No space, " : $"Space: {Space}, ");
