@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Fanatic Follower",
-	"effText":"When I'm summoned, choose a character. Every time they move, move me adjacent to them and give me +1 EW. (Disgusting.)",
+	"effText":"When I'm summoned, choose an adjacent character. Every time they move, move me adjacent to them and give me +1 EW. (Disgusting.)",
 	"effects":[
 		{
 			"blurb":"DISGOSTIN!",
@@ -18,7 +18,12 @@
 					"cardRestriction":
 					{
 						"blurb":"for Binding Site to bind",
-						"cardRestrictions":["Board","Is Character"]
+						"cardRestrictions":["Board","Is Character","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to Source"],
+							"mustBeEmpty":false
+						}
 					}
 				},
 				{
@@ -55,7 +60,7 @@
 	],
 	"n":0,
 	"e":1,
-	"s":2,
+	"s":3,
 	"w":1,
 	"subtypeText":"Random Nobody"
 }

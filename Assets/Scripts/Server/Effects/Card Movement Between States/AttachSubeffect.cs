@@ -17,7 +17,8 @@ namespace KompasServer.Effects
             var attachTo = Effect.GetTarget(attachmentTarget);
 
             //if everything goes to plan, resolve the next subeffect
-            if (toAttach == null || attachTo) throw new NullCardException(TargetWasNull);
+            if (toAttach == null) throw new NullCardException(TargetWasNull);
+            else if (attachTo == null) throw new NullCardException(TargetWasNull);
 
             attachTo.AddAugment(toAttach, stackSrc: Effect);
             return Task.FromResult(ResolutionInfo.Next);
