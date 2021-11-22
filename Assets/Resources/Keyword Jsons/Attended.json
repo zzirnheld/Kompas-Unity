@@ -1,0 +1,32 @@
+{
+	"blurb":"Attended",
+	"triggerData":
+	{
+		"triggerCondition":"Stack End",
+		"triggerRestriction":{
+			"triggerRestrictions":["This Card Fits Restriction","Number of Cards Fitting Restriction Fits X Restriction"],
+			"cardRestriction":{
+				"cardRestrictions":["Board","Not Avatar"]
+			},
+            "cardsFittingCardRestriction":{
+				"cardRestrictions":["Friendly","Space Fits Restriction"],
+                "spaceRestriction":
+                {
+                    "spaceRestrictions":["Adjacent to Source"],
+                    "mustBeEmpty":false
+                }
+            },
+            "cardsFittingXRestriction":{
+                "xRestrictions":["<Arg"]
+            }
+		}
+	},
+	"subeffects":[
+		{
+			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+		},
+		{
+			"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+		}
+	]	
+}

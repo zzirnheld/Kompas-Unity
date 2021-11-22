@@ -39,6 +39,7 @@ namespace KompasCore.Effects
         public abstract Trigger Trigger { get; }
         public ActivationRestriction activationRestriction;
         public string blurb;
+        public int arg; //used for keyword arguments, and such
 
         public ActivationContext CurrActivationContext { get; protected set; }
         public int TimesUsedThisTurn { get; protected set; }

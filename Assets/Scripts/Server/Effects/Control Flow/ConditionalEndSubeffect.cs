@@ -32,30 +32,33 @@ namespace KompasServer.Effects
             cardRestriction.Initialize(this);
         }
 
-        private bool ShouldEnd(string condition)
+        private bool ShouldEnd
         {
-            return condition switch
+            get
             {
-                XLessThan0                  => ServerEffect.X < 0,
-                XLessThanEqual0             => ServerEffect.X <= 0,
-                XGreaterThanConst           => ServerEffect.X > constant,
-                XLessThanConst              => ServerEffect.X < constant,
-                NoneFitRestriction          => !ServerGame.Cards.Any(c => cardRestriction.Evaluate(c, Context)),
-                AnyFitRestriction           => ServerGame.Cards.Any(c => cardRestriction.Evaluate(c, Context)),
-                MustBeFriendlyTurn          => ServerGame.TurnPlayer != Effect.Controller,
-                MustBeEnemyTurn             => ServerGame.TurnPlayer == Effect.Controller,
-                TargetViolatesRestriction   => !cardRestriction.Evaluate(Target, Context),
-                TargetFitsRestriction       => cardRestriction.Evaluate(Target, Context),
-                SourceViolatesRestriction   => !cardRestriction.Evaluate(Source, Context),
-                NumTargetsLTEConstant       => Effect.Targets.Count() <= constant,
-                HandFull                    => Player.handCtrl.HandSize >= HandSizeStackable.MaxHandSize,
-                _ => throw new System.ArgumentException($"Condition {condition} invalid for conditional end subeffect"),
-            };
+                return condition switch
+                {
+                    XLessThan0                  => ServerEffect.X < 0,
+                    XLessThanEqual0             => ServerEffect.X <= 0,
+                    XGreaterThanConst           => ServerEffect.X > constant,
+                    XLessThanConst              => ServerEffect.X < constant,
+                    NoneFitRestriction          => !ServerGame.Cards.Any(c => cardRestriction.Evaluate(c, Context)),
+                    AnyFitRestriction           => ServerGame.Cards.Any(c => cardRestriction.Evaluate(c, Context)),
+                    MustBeFriendlyTurn          => ServerGame.TurnPlayer != Effect.Controller,
+                    MustBeEnemyTurn             => ServerGame.TurnPlayer == Effect.Controller,
+                    TargetViolatesRestriction   => !cardRestriction.Evaluate(Target, Context),
+                    TargetFitsRestriction       => cardRestriction.Evaluate(Target, Context),
+                    SourceViolatesRestriction   => !cardRestriction.Evaluate(Source, Context),
+                    NumTargetsLTEConstant       => Effect.Targets.Count() <= constant,
+                    HandFull                    => Player.handCtrl.HandSize >= HandSizeStackable.MaxHandSize,
+                    _ => throw new System.ArgumentException($"Condition {condition} invalid for conditional end subeffect"),
+                };
+            }
         }
 
         public override Task<ResolutionInfo> Resolve()
         {
-            if (ShouldEnd(condition)) return Task.FromResult(ResolutionInfo.End(condition));
+            if (ShouldEnd) return Task.FromResult(ResolutionInfo.End(condition));
             else return Task.FromResult(ResolutionInfo.Next);
         }
     }

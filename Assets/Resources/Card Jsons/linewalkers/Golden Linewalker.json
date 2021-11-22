@@ -1,0 +1,13 @@
+{
+	"cardType":67,
+	"cardName":"Golden Linewalker",
+	"effText":"Linewalk. Attended 2.",
+	"effects":[],
+	"keywords":["Linewalk","Attended"],
+    "keywordArgs":[-1,2],
+	"n":1,
+	"e":6,
+	"s":2,
+	"w":6,
+	"subtypeText":"Linewalker Mage"
+}

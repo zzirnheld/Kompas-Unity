@@ -36,6 +36,8 @@ namespace KompasCore.Effects
         public const string StackableSourceNotThisEffect = "Stackable Source isn't This Effect";
         public const string NoStackable = "No Stackable";
 
+        public const string NumberOfCardsFittingRestrictionFitsXRestriction = "Number of Cards Fitting Restriction Fits X Restriction";
+
         public const string ContextsStackablesMatch = "Contexts Stackables Match";
         public const string StackableIsThisEffect = "Stackable is This Effect";
 
@@ -73,6 +75,10 @@ namespace KompasCore.Effects
         public XRestriction xRestriction;
         public SpaceRestriction spaceRestriction;
         public CardRestriction sourceRestriction;
+
+        public CardRestriction cardsFittingCardRestriction;
+        public XRestriction cardsFittingXRestriction;
+
         public int maxTimesPerTurn = 1;
         public int maxPerRound = 1;
         public int maxPerStack = 1;

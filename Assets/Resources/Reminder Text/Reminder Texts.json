@@ -107,6 +107,10 @@
 		{
 			"keyword":"Pass Back",
 			"reminder":"When this character defends, attach me to your Avatar."
+		},
+		{
+			"keyword":"Attended",
+			"reminder":"When nothing is happening and I’m adjacent to fewer than that many friendly characters, I die."
 		}
 	]
 }
