@@ -1,0 +1,13 @@
+{
+	"cardType":67,
+	"cardName":"Dragonking",
+	"effText":"Attended 2. Territorial.",
+	"effects":[],
+	"keywords":["Attended","Territorial"],
+    "keywordArgs":[2],
+	"n":5,
+	"e":12,
+	"s":6,
+	"w":12,
+	"subtypeText":"Dragon"
+}

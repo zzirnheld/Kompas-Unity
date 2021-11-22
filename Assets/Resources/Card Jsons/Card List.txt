@@ -1,5 +1,7 @@
 generic/Castle
 generic/Royal Revivalist
+generic/Lonely Titan
+generic/Flighty Survivor
 aquatic/Big Tuna
 aquatic/Changing Tides
 aquatic/Fishing
@@ -105,6 +107,7 @@ dragons/Dragon Familiar
 dragons/Hungry Dragonling
 dragons/Growing Boye
 dragons/Earthwapmer
+dragons/Dragonking
 Dreamfog
 Durendal
 Fight
@@ -295,6 +298,7 @@ shapers/Riali, Master of Irrealities
 shapers/Trailing Dreammist
 shapers/Tethered Dreammist
 shapers/Infolding Hopelessness
+shapers/Kindred Spirit
 Shatter the Warranty
 speed_demons/Coach Speed
 speed_demons/Mr Power Vacuum
