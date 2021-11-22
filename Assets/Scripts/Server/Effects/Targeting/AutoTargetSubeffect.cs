@@ -8,13 +8,18 @@ namespace KompasServer.Effects
 {
     public class AutoTargetSubeffect : ServerSubeffect
     {
+        public const string Maximum = "Maximum";
+
         public CardRestriction cardRestriction;
+        public CardValue tiebreakerValue;
+        public string tiebreakerDirection;
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {
             base.Initialize(eff, subeffIndex);
             cardRestriction ??= new CardRestriction();
             cardRestriction.Initialize(this);
+            tiebreakerValue?.Initialize(eff.Source);
         }
 
         public override bool IsImpossible() => !Game.Cards.Any(c => cardRestriction.Evaluate(c, Context));
@@ -24,7 +29,12 @@ namespace KompasServer.Effects
             GameCard potentialTarget = null;
             try
             {
-                potentialTarget = Game.Cards.SingleOrDefault(c => cardRestriction.Evaluate(c, Context));
+                var potentialTargets = Game.Cards.Where(c => cardRestriction.Evaluate(c, Context));
+                potentialTarget = tiebreakerDirection switch
+                {
+                    Maximum => potentialTargets.OrderByDescending(c => tiebreakerValue.GetValueOf(c)).First(),
+                    _       => potentialTargets.SingleOrDefault(),
+                };
             }
             catch (System.InvalidOperationException) 
             {

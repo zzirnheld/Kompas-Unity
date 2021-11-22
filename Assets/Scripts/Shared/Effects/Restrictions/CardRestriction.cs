@@ -169,6 +169,8 @@ namespace KompasCore.Effects
             attackedCardRestriction?.Initialize(source, eff);
             inAOEOfRestriction?.Initialize(source, eff);
 
+            cardValue?.Initialize(source);
+
             if (Subeffect != null) spaceRestriction?.Initialize(Subeffect);
             else spaceRestriction?.Initialize(source, eff.Controller, eff);
 

@@ -37,6 +37,7 @@ namespace KompasCore.Effects
         {
             Source = source;
             Subeffect = subeffect;
+            avatarCardValue?.Initialize(Source);
         }
 
         private bool RestrictionValid(string r, int x)

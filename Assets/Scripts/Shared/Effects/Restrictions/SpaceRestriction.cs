@@ -71,6 +71,7 @@ namespace KompasCore.Effects
         // then replace these with something comparing directions
         public const string SameDirectionFromTargetAsSpace = "Same Direction From Target As Source From Space";
         public const string OppositeDirectionFromTargetThanSpace = "Opposite Direction From Target Than Space";
+        public const string DirectionFromSource = "Direction From Source"; //In the direction of Subeffect.Space from source
         #endregion space restrictions
 
         public string[] spaceRestrictions;
@@ -205,6 +206,7 @@ namespace KompasCore.Effects
                 Corner => space.IsCorner,
                 SameDirectionFromTargetAsSpace => target.Position.DirectionFromThisTo(space) == Subeffect.Space.DirectionFromThisTo(Source.Position),
                 OppositeDirectionFromTargetThanSpace => Source.Position.DirectionFromThisTo(space) * -1 == Source.Position.DirectionFromThisTo(Subeffect.Space),
+                DirectionFromSource => Source.Position.DirectionFromThisTo(space) == Subeffect.Space,
 
                 _ => throw new ArgumentException($"Invalid space restriction {restriction}", "restriction"),
             };

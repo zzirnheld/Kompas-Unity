@@ -2,6 +2,7 @@ generic/Castle
 generic/Royal Revivalist
 generic/Lonely Titan
 generic/Flighty Survivor
+generic/Volatile Autocannon
 aquatic/Big Tuna
 aquatic/Changing Tides
 aquatic/Fishing
