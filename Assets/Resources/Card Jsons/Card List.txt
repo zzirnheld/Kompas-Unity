@@ -1,4 +1,5 @@
 generic/Castle
+generic/Royal Revivalist
 aquatic/Big Tuna
 aquatic/Changing Tides
 aquatic/Fishing

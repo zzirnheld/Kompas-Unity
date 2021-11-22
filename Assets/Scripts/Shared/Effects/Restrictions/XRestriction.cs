@@ -56,7 +56,7 @@ namespace KompasCore.Effects
                 EqualsEffectX        => x == Subeffect.Count,
                 LessThanEqualEffectX => x <= Subeffect.Count,
 
-                LessThanEffectArg   => x < Subeffect.Effect.arg;
+                LessThanEffectArg   => x < Subeffect.Effect.arg,
 
                 LessThanAvatarCardValue    => x < avatarCardValue.GetValueOf(Source.Controller.Avatar),
                 GreaterThanAvatarCardValue => x > avatarCardValue.GetValueOf(Source.Controller.Avatar),

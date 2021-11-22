@@ -1,0 +1,50 @@
+{
+	"cardType":67,
+	"cardName":"Royal Revivalist",
+	"effText":"Attended 2.\nOnce each friendly turn, you can pip revive a character.",
+	"effects":[
+		{
+			"activationRestriction":{
+				"activationRestrictionArray":[
+					"Max Times Per Turn",
+					"Friendly Turn",
+					"Default"
+				]
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Sire, who shall we revive?",
+						"cardRestrictions":["Is Character","Discard","Effect Controller can Afford Cost"]
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"Sire, where shall we revive them?",
+						"spaceRestrictions":["Can Play Target to This Space"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"keywords":["Attended"],
+    "keywordArgs":[2],
+	"n":2,
+	"e":4,
+	"s":3,
+	"w":2,
+	"unique":true,
+	"subtypeText":"Person"
+}
