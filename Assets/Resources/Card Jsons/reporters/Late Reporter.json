@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Late Reporter",
-	"effText":"Speedemon.\nWhen another of my own effects moves me from a space, move me back there.\nWhen I move, an enemy can reveal a card. If they do, negate me for the turn. If they don't, give me +1 ESW.",
+	"effText":"Speedemon.\nWhen another of my own effects moves me from a space, move me back there.\nWhen I move, an enemy can reveal a card. If they don't, give me +1 ESW.",
 	"effects":[
 		{
 			"triggerData":
@@ -44,7 +44,7 @@
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
 					"ChoiceBlurb":"Reveal a card?",
 					"OptionBlurbs":["Yes","No"],
-					"OptionJumpIndices":[3,8]
+					"OptionJumpIndices":[3,6]
 				},
 				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
@@ -56,16 +56,6 @@
 				},
 				{
 					"$type":"KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.TemporaryNegateSubeffect, Assembly-CSharp",
-					"endCondition":"Turn Start",
-					"triggerRestriction":{
-						"triggerRestrictions":[]
-					}
 				},
 				{
 					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
@@ -85,7 +75,7 @@
 	"keywords":["Speedemon"],
 	"n":2,
 	"e":2,
-	"s":4,
+	"s":6,
 	"w":2,
 	"subtypeText":"Speedemon Reporter"
 }
