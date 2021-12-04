@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Shifting Tile Maze Path Blocker",
-	"effText":"Ificate.\nOnce each stack, the Xth time each turn a card arrives here, move them to a space here through X spaces here.",
+	"effText":"Ificate.\nOnce each stack, the Xth time each turn a card arrives here, move them to a space here through X spaces here (taking the shortest path).",
 	"effects":[
 		{
 			"triggerData":
@@ -43,7 +43,8 @@
                             "xRestrictions":["=X"]
                         },
 						"constant":1
-					}
+					},
+					"xMultiplier":1
 				},
 				{
 					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
@@ -55,5 +56,5 @@
 	"c":5,
 	"spellTypes":["Radial"],
 	"subtypeText":"Lemon-Flavored Radial Crazy Idea Ificator",
-	"radius":3
+	"radius":2
 }
