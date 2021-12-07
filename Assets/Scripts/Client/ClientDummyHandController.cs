@@ -31,6 +31,7 @@ public class ClientDummyHandController : ClientHandController
             dummyHand.Remove(card);
             Remove(card);
             Destroy(card.gameObject);
+            return;
         }
 
         //remove the card from the real hand if it's actually there

@@ -128,7 +128,7 @@ namespace KompasCore.Effects
         private bool RestrictionValidWithDebug(string restriction, Space space, bool isSwapTarget, bool byEffect)
         {
             bool valid = RestrictionValid(restriction, space, isSwapTarget, byEffect);
-            if (!valid) Debug.LogWarning($"{Card.CardName} cannot move to {space} because it flouts the movement restriction {restriction}");
+            //if (!valid) Debug.LogWarning($"{Card.CardName} cannot move to {space} because it flouts the movement restriction {restriction}");
             return valid;
         }
 

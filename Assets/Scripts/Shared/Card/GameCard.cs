@@ -173,7 +173,7 @@ namespace KompasCore.Cards
         public abstract Player Controller { get; set; }
         public int ControllerIndex => Controller?.index ?? 0;
         public abstract Player Owner { get; }
-        public int OwnerIndex => Owner.index;
+        public int OwnerIndex => Owner?.index ?? -1;
 
         //misc
         private CardLocation location;
