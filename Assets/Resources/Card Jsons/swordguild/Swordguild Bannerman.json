@@ -7,7 +7,7 @@
 			"triggerData":{
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+					"triggerRestrictions":["This Card Triggered","From Field"]
 				}
 			},
 			"subeffects":[

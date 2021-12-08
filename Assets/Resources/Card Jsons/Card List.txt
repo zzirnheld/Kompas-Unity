@@ -3,6 +3,7 @@ generic/Royal Revivalist
 generic/Lonely Titan
 generic/Flighty Survivor
 generic/Volatile Autocannon
+generic/Spellbombsetter
 aquatic/Big Tuna
 aquatic/Changing Tides
 aquatic/Fishing
@@ -317,6 +318,7 @@ speed_demons/GO
 speed_demons/Choo Choo Brain
 speed_demons/Grandfather Speed
 speed_demons/Resonator Resonator
+speed_demons/Coach Lap
 spirits/A Lot of Disappointment
 spirits/Allconsuming Frustration
 spirits/Generous Pleasure
