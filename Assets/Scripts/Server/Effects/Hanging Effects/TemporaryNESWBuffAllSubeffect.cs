@@ -8,10 +8,19 @@ namespace KompasServer.Effects
 {
     public class TemporaryNESWBuffAllSubeffect : TemporaryCardChangeSubeffect
     {
-        public int nBuff;
-        public int eBuff;
-        public int sBuff;
-        public int wBuff;
+        public int nModifier = 0;
+        public int eModifier = 0;
+        public int sModifier = 0;
+        public int wModifier = 0;
+        public int cModifier = 0;
+        public int aModifier = 0;
+
+        public int nMultiplier = 0;
+        public int eMultiplier = 0;
+        public int sMultiplier = 0;
+        public int wMultiplier = 0;
+        public int cMultiplier = 0;
+        public int aMultiplier = 0;
 
         //default to making sure things are characters before changing their stats
         public CardRestriction cardRestriction;
@@ -57,10 +66,12 @@ namespace KompasServer.Effects
                                                  sourceEff: Effect,
                                                  currentContext: Context,
                                                  buffRecipient: card,
-                                                 nBuff: nBuff,
-                                                 eBuff: eBuff,
-                                                 sBuff: sBuff,
-                                                 wBuff: wBuff);
+                                                 nBuff: nModifier + Effect.X * nMultiplier,
+                                                 eBuff: eModifier + Effect.X * eMultiplier,
+                                                 sBuff: sModifier + Effect.X * sMultiplier,
+                                                 wBuff: wModifier + Effect.X * wMultiplier,
+                                                 cBuff: cModifier + Effect.X * cMultiplier,
+                                                 aBuff: aModifier + Effect.X * aMultiplier);
             }
 
             return effs;

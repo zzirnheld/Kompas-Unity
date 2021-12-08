@@ -319,6 +319,9 @@ speed_demons/Choo Choo Brain
 speed_demons/Grandfather Speed
 speed_demons/Resonator Resonator
 speed_demons/Coach Lap
+speed_demons/Soul of Speed
+speed_demons/The Sonic Boom
+speed_demons/Sound Barrier
 spirits/A Lot of Disappointment
 spirits/Allconsuming Frustration
 spirits/Generous Pleasure
