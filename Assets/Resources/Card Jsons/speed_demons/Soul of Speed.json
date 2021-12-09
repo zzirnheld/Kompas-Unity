@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Soul of Speed",
-	"effText":"Speedemon.\nWhen a distinct Speedemon moves, move me the same way they moved and give me +1 EW.",
+	"effText":"Speedemon.\nWhen another Speedemon moves normally, move me the same way they moved and give me +1 EW.",
 	"effects":[
         {
             "blurb":"Speedsoul",
@@ -9,9 +9,9 @@
 			{
 				"triggerCondition":"Move",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"triggerRestrictions":["This Card in Play","No Stackable","Triggerer Fits Restriction"],
 					"cardRestriction":{
-						"cardRestrictions":["Distinct Name from Source","Subtypes Include"],
+						"cardRestrictions":["Different from Source","Subtypes Include"],
 						"subtypesInclude":["Speedemon"]
 					}
 				}
