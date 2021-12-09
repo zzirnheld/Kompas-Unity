@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Sound Barrier",
-	"effText":"When a character moves, give me +1 C for the turn. If my C > 15, annihilate me and give that specific character +15 ESW.",
+	"effText":"When a character moves, give me +1 C for the turn. If my C > 20, annihilate me and give that specific character +10 ESW.",
 	"effects":[
 		{
 			"blurb":"Sound Barrier",
@@ -37,7 +37,7 @@
 							"xRestrictions":["<=X"]
 						}
 					},
-                    "xModifier":15
+                    "xModifier":30
 				},
 				{
 					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
