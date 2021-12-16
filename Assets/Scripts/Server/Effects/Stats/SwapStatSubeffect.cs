@@ -10,6 +10,13 @@ namespace KompasServer.Effects
         public CardValue secondTargetStat;
         public int secondTargetIndex = -2;
 
+        public override void Initialize(ServerEffect eff, int subeffIndex)
+        {
+            base.Initialize(eff, subeffIndex);
+            firstTargetStat?.Initialize(eff.Source);
+            secondTargetStat?.Initialize(eff.Source);
+        }
+
         public override Task<ResolutionInfo> Resolve()
         {
             var secondTarget = Effect.GetTarget(secondTargetIndex);

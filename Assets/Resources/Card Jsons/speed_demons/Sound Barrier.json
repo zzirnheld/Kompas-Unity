@@ -1,0 +1,60 @@
+{
+	"cardType":83,
+	"cardName":"Sound Barrier",
+	"effText":"When a character moves, give me +1 C for the turn. If my C > 20, annihilate me and give that specific character +10 ESW.",
+	"effects":[
+		{
+			"blurb":"Sound Barrier",
+			"triggerData":
+			{
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
+					"cModifier":1,
+					"endCondition":"Turn Start",
+					"triggerRestriction":{
+						"triggerRestrictions":[]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition":"Target Fits Restriction",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"C"
+						},
+						"xRestriction":{
+							"xRestrictions":["<=X"]
+						}
+					},
+                    "xModifier":30
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod":15,
+                    "sMod":15,
+                    "wMod":15
+				}
+			]
+		}
+	],
+	"c":1,
+	"spellTypes":["Enchant"],
+	"subtypeText":"Enchant"
+}

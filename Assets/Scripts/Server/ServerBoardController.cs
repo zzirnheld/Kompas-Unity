@@ -17,9 +17,10 @@ namespace KompasServer.GameCore
 
         public override void Play(GameCard toPlay, Space to, Player controller, IStackable stackSrc = null)
         {
-            var context = new ActivationContext(card: toPlay, stackable: stackSrc, triggerer: controller, space: to);
+            var context = new ActivationContext(beforeCard: toPlay, stackable: stackSrc, triggerer: controller, space: to);
             bool wasKnown = toPlay.KnownToEnemy;
             base.Play(toPlay, to, controller);
+            context.SetAfterCardInfo(toPlay);
             EffectsController.TriggerForCondition(Trigger.Play, context);
             EffectsController.TriggerForCondition(Trigger.Arrive, context);
             if (!toPlay.IsAvatar) ServerNotifierByIndex(toPlay.ControllerIndex).NotifyPlay(toPlay, to, wasKnown);
@@ -30,40 +31,39 @@ namespace KompasServer.GameCore
             //calculate distance before doing the swap
             int distance = card.DistanceTo(to);
             var at = GetCardAt(to);
-            //save info before for triggers
-            var atInfo = at == null ? null : new GameCardInfo(at);
-            var atAugs = new List<GameCardInfo>();
-            if (at != null) atAugs.AddRange(at.Augments.Select(a => new GameCardInfo(a)));
-            var cardInfo = new GameCardInfo(card);
-            var cardAugs = new List<GameCardInfo>(card.Augments.Select(a => new GameCardInfo(a)));
-
-            //actually perform the swap
-            base.Swap(card, to, playerInitiated);
 
             //then trigger appropriate triggers. list of contexts:
             List<ActivationContext> ctxts = new List<ActivationContext>();
             //trigger for first card
-            ctxts.Add(new ActivationContext(card: cardInfo, stackable: stackSrc, space: to,
+            ctxts.Add(new ActivationContext(beforeCard: card, stackable: stackSrc, space: to,
                 triggerer: playerInitiated ? card.Controller : stackSrc?.Controller, x: distance));
             //trigger for first card's augments
-            foreach (var aug in cardAugs)
+            foreach (var aug in card.Augments)
             {
-                ctxts.Add(new ActivationContext(card: aug, stackable: null, space: to,
+                ctxts.Add(new ActivationContext(beforeCard: aug, stackable: null, space: to,
                     triggerer: playerInitiated ? aug.Controller : stackSrc?.Controller, x: distance));
             }
 
             if (at != null)
             {
                 //then trigger this card's triggers
-                ctxts.Add(new ActivationContext(card: atInfo, stackable: stackSrc, space: to,
+                ctxts.Add(new ActivationContext(beforeCard: at, stackable: stackSrc, space: to,
                     triggerer: playerInitiated ? card.Controller : stackSrc?.Controller, x: distance));
 
                 //trigger for first card's augments
-                foreach (var aug in atAugs)
+                foreach (var aug in at.Augments)
                 {
-                    ctxts.Add( new ActivationContext(card: aug, stackable: null, space: to,
+                    ctxts.Add(new ActivationContext(beforeCard: aug, stackable: null, space: to,
                         triggerer: playerInitiated ? aug.Controller : stackSrc?.Controller, x: distance));
                 }
+            }
+
+            //actually perform the swap
+            base.Swap(card, to, playerInitiated);
+
+            foreach(var ctxt in ctxts)
+            {
+                ctxt.SetAfterCardInfo(ctxt.BeforeCardInfo.Card);
             }
 
             EffectsController.TriggerForCondition(Trigger.Move, ctxts.ToArray());

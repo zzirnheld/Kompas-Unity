@@ -10,11 +10,15 @@ namespace KompasServer.Effects
         public int eModifier = 0;
         public int sModifier = 0;
         public int wModifier = 0;
+        public int cModifier = 0;
+        public int aModifier = 0;
 
         public int nMultiplier = 0;
         public int eMultiplier = 0;
         public int sMultiplier = 0;
         public int wMultiplier = 0;
+        public int cMultiplier = 0;
+        public int aMultiplier = 0;
 
         protected override IEnumerable<HangingEffect> CreateHangingEffects()
         {
@@ -35,7 +39,9 @@ namespace KompasServer.Effects
                                              nBuff: nModifier + Effect.X * nMultiplier,
                                              eBuff: eModifier + Effect.X * eMultiplier,
                                              sBuff: sModifier + Effect.X * sMultiplier,
-                                             wBuff: wModifier + Effect.X * wMultiplier);
+                                             wBuff: wModifier + Effect.X * wMultiplier,
+                                             cBuff: cModifier + Effect.X * cMultiplier,
+                                             aBuff: aModifier + Effect.X * aMultiplier);
 
             return new List<HangingEffect>() { temp };
         }

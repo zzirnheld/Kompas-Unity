@@ -10,7 +10,7 @@ namespace KompasServer.Effects
             if (Context.Space == null)
                 throw new InvalidSpaceException(Context.Space, NoValidSpaceTarget);
 
-            ServerEffect.AddSpace(Context.Space.Value);
+            ServerEffect.AddSpace(Context.Space);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

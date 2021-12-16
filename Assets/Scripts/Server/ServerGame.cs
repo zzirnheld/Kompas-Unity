@@ -161,7 +161,7 @@ namespace KompasServer.GameCore
             Debug.Log($"Setting avatar for player {player.index}");
             player.Avatar = avatar;
             Space to = player.index == 0 ? Space.NearCorner : Space.FarCorner;
-            avatar.Play(to, player);
+            avatar.Play(to, player, new GameStartStackable());
             /*
             bool playedAvatar = avatar.Play(player.index * 6, player.index * 6, player);
             Debug.Log($"Successfully played avatar? {playedAvatar}");
@@ -245,8 +245,9 @@ namespace KompasServer.GameCore
             {
                 var toDraw = controller.deckCtrl.Topdeck;
                 if (toDraw == null) break;
-                var eachDrawContext = new ActivationContext(card: toDraw, stackable: stackSrc, triggerer: controller);
+                var eachDrawContext = new ActivationContext(beforeCard: toDraw, stackable: stackSrc, triggerer: controller);
                 toDraw.Rehand(controller, stackSrc);
+                eachDrawContext.SetAfterCardInfo(toDraw);
                 EffectsController.TriggerForCondition(Trigger.EachDraw, eachDrawContext);
                 drawn.Add(toDraw);
             }
@@ -327,7 +328,7 @@ namespace KompasServer.GameCore
             }
 
             Debug.Log($"Checking validity of attack of {attacker.CardName} on {defender} by {instigator.index}");
-            return attacker.AttackRestriction.Evaluate(defender);
+            return attacker.AttackRestriction.Evaluate(defender, stackSrc: null);
         }
         #endregion
 

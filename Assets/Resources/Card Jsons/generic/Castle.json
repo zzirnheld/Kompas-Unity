@@ -1,0 +1,46 @@
+{
+	"cardType":83,
+	"cardName":"Castle",
+	"effText":"Move a surrounded Avatar to a corner.",
+	"effects":[
+		{
+            "blurb":"Castle an Avatar",
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Avatar to castle",
+						"cardRestrictions":["Board","Avatar","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Surrounded"],
+							"mustBeEmpty":false
+						}
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"Corner to move them to",
+						"spaceRestrictions":["Can Move Target to This Space","Corner"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"c":1,
+	"spellTypes":["Simple"],
+	"subtypeText":""
+}

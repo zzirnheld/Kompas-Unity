@@ -31,7 +31,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition":"Source Violates Restriction",
+					"condition":"Target Violates Restriction",
 					"cardRestriction":
 					{
 						"cardRestrictions":["Augmented"]

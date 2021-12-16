@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Choo Choo Brain",
-	"effText":"Speedemon.\nWhen I move, hand->reshuffle a card. (Yes, you have to.) Give me +3 ESW. ",
+	"effText":"Speedemon.\nWhen I move, hand->reshuffle a card. (Yes, you have to.) Give me +2 ESW. ",
 	"effects":[
 		{
 			"triggerData":
@@ -28,15 +28,15 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":3,
-					"sMod":3,
-					"wMod":3
+					"eMod":2,
+					"sMod":2,
+					"wMod":2
 				}
 			]
 		}
 	],
 	"keywords":["Speedemon"],
-	"n":3,
+	"n":2,
 	"e":1,
 	"s":4,
 	"w":1,

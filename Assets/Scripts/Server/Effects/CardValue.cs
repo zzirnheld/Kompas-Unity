@@ -16,12 +16,20 @@ namespace KompasCore.Effects
 
         private const string Cost = "Cost";
         private const string NumberOfAugments = "Number of Augments";
+        private const string DistanceToSource = "Distance to Source";
         #endregion values
 
         public string value;
         public int multiplier = 1;
         public int divisor = 1;
         public int modifier = 0;
+
+        public GameCard Source { get; private set; }
+
+        public void Initialize(GameCard source)
+        {
+            Source = source;
+        }
 
         public int GetValueOf(IGameCardInfo card)
         {
@@ -38,6 +46,7 @@ namespace KompasCore.Effects
 
                 Cost             => card.Cost,
                 NumberOfAugments => card.Augments.Count(),
+                DistanceToSource => card.DistanceTo(Source),
                 _ => throw new ArgumentException($"Invalid value string {value}", "value"),
             };
         }
@@ -66,6 +75,8 @@ namespace KompasCore.Effects
                 case AugmentCost:
                     card.SetA(num, stackSrc: stackSrc);
                     break;
+                default:
+                    throw new ArgumentException($"Can't set {value} of a card!");
             }
         }
     }

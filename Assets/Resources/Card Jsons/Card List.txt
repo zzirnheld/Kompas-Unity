@@ -1,3 +1,9 @@
+generic/Castle
+generic/Royal Revivalist
+generic/Lonely Titan
+generic/Flighty Survivor
+generic/Volatile Autocannon
+generic/Spellbombsetter
 aquatic/Big Tuna
 aquatic/Changing Tides
 aquatic/Fishing
@@ -48,9 +54,11 @@ crazy_Ideas/Ballroom-Disco Breakdance Competition
 crazy_Ideas/Bounce Pad
 crazy_Ideas/Dr. Thierr Dumachmartres
 crazy_Ideas/Flippant Emo Daughter
+crazy_Ideas/Giant Ball of Tinfoil
 crazy_Ideas/Great Scott
 crazy_Ideas/Just a Little Bit More
 crazy_Ideas/Listen to Reason
+crazy_Ideas/Inexplicably Possible Black Hole
 crazy_Ideas/MAXIMUM OVERDRIVE
 crazy_Ideas/Mind of Flock Controlled Pigeons
 crazy_Ideas/Orry the Oviparous Mammal
@@ -101,6 +109,7 @@ dragons/Dragon Familiar
 dragons/Hungry Dragonling
 dragons/Growing Boye
 dragons/Earthwapmer
+dragons/Dragonking
 Dreamfog
 Durendal
 Fight
@@ -167,6 +176,7 @@ linewalkers/Red Linewalker
 linewalkers/White Linewalker
 linewalkers/Yellow Linewalker
 linewalkers/Leygrapple
+linewalkers/Golden Linewalker
 music/Soaring Chorus
 music/Surging Verse
 music/Ringing Bridge
@@ -290,6 +300,7 @@ shapers/Riali, Master of Irrealities
 shapers/Trailing Dreammist
 shapers/Tethered Dreammist
 shapers/Infolding Hopelessness
+shapers/Kindred Spirit
 Shatter the Warranty
 speed_demons/Coach Speed
 speed_demons/Mr Power Vacuum
@@ -307,6 +318,10 @@ speed_demons/GO
 speed_demons/Choo Choo Brain
 speed_demons/Grandfather Speed
 speed_demons/Resonator Resonator
+speed_demons/Coach Lap
+speed_demons/Soul of Speed
+speed_demons/The Sonic Boom
+speed_demons/Sound Barrier
 spirits/A Lot of Disappointment
 spirits/Allconsuming Frustration
 spirits/Generous Pleasure
@@ -428,7 +443,6 @@ wanderers/Wisewoman
 weather/Dapplesun
 weather/Puffyclouds
 weather/Crispbreeze
-weather/Tailwindstorm
 weather/Flashflood
 weather/Peltrain
 weather/Muggyclouds

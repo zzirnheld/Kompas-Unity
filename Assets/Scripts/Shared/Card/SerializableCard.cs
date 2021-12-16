@@ -13,6 +13,7 @@ namespace KompasCore.Cards
         public string subtypeText;
 
         public string[] keywords = new string[0];
+        public int[] keywordArgs = new int[0];
 
         public MovementRestriction MovementRestriction = null;
         public AttackRestriction AttackRestriction = null;

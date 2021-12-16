@@ -10,7 +10,7 @@
 				"blurb":"When you [redacted] upon a XVII",
 				"triggerCondition":"Arrive",
 				"triggerRestriction":{
-					"triggerRestrictions":["Triggerer Fits Restriction"],
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":
 					{
 						"cardRestrictions":["Is Character","Enemy","Space Fits Restriction"],

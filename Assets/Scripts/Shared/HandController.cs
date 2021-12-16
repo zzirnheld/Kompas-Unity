@@ -25,6 +25,7 @@ namespace KompasCore.GameCore
 
             hand.Add(card);
             card.GameLocation = this;
+            card.Position = null;
             card.Controller = Owner; //TODO should this be before or after the prev line?
 
             card.transform.rotation = Quaternion.Euler(90, 0, 0);

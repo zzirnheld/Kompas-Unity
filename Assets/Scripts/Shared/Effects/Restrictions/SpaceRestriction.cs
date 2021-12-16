@@ -37,12 +37,15 @@ namespace KompasCore.Effects
         public const string InAOEOfNumberFittingRestriction = "In AOE of Number of Cards Fitting Restriction";
         public const string InAOESourceAlsoIn = "In AOE Source is Also In";
 
+        public const string SourceDisplacementToSpaceMatchesCoords = "Source Displacement to Space Matches Coords";
+        public const string SourceToSpaceSameDirectionAsCoords = "Source to Space Same Direction as Coords";
         public const string SubjectiveDisplacementFromSource = "Subjective Displacement from Source";
         public const string BehindSource = "Behind Source";
 
         //distance
         public const string DistanceToSourceFitsXRestriction = "Distance to Source Fits X Restriction";
         public const string DistanceToTargetFitsXRestriction = "Distance to Target Fits X Restriction";
+        public const string DistanceToCoordsFitsXRestriction = "Distance to Coords Fits X Restriction";
 
         public const string FurtherFromSourceThanTarget = "Further from Source than Target";
         public const string FurtherFromSourceThanCoords = "Further from Source than Coords";
@@ -55,10 +58,12 @@ namespace KompasCore.Effects
         public const string CanMoveTarget = "Can Move Target to This Space";
         public const string CanMoveSource = "Can Move Source to This Space";
         public const string Empty = "Empty";
+        public const string Surrounded = "Surrounded";
         public const string CardHereFitsRestriction = "Card Here Fits Restriction";
 
         public const string OnSourcesDiagonal = "On Source's Diagonal";
         public const string OnTargetsDiagonal = "On Target's Diagonal";
+        public const string OnAxisOfLastTwoSpaces = "On Axis of Last Two Spaces";
 
         public const string OnEdge = "On Edge of Board";
         public const string Corner = "Corner";
@@ -66,6 +71,7 @@ namespace KompasCore.Effects
         // then replace these with something comparing directions
         public const string SameDirectionFromTargetAsSpace = "Same Direction From Target As Source From Space";
         public const string OppositeDirectionFromTargetThanSpace = "Opposite Direction From Target Than Space";
+        public const string DirectionFromSource = "Direction From Source"; //In the direction of Subeffect.Space from source
         #endregion space restrictions
 
         public string[] spaceRestrictions;
@@ -164,12 +170,16 @@ namespace KompasCore.Effects
                                                                         .Count() <= adjacencyLimit,
                 InAOESourceAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.CardInAOE(Source)),
 
-                SubjectiveDisplacementFromSource => Controller.SubjectiveCoords(space).DisplacementTo(Controller.SubjectiveCoords(Source.Position)) == (displacementX, displacementY),
+                SourceDisplacementToSpaceMatchesCoords => Source.Position.DisplacementTo(space) == Subeffect.Space,
+                SourceToSpaceSameDirectionAsCoords => Source.Position.DirectionFromThisTo(space) == Subeffect.Space,
+                SubjectiveDisplacementFromSource 
+                    => Controller.SubjectiveCoords(Source.Position).DisplacementTo(Controller.SubjectiveCoords(space)) == (displacementX, displacementY),
                 BehindSource => Source.SpaceBehind(space),
 
                 //distance
                 DistanceToSourceFitsXRestriction => distanceXRestriction.Evaluate(Source.DistanceTo(space)),
                 DistanceToTargetFitsXRestriction => distanceXRestriction.Evaluate(target.DistanceTo(space)),
+                DistanceToCoordsFitsXRestriction => distanceXRestriction.Evaluate(Subeffect.Space.DistanceTo(space)),
 
                 FurtherFromSourceThanTarget => Source.DistanceTo(space) > Source.DistanceTo(target),
                 FurtherFromSourceThanCoords => Source.DistanceTo(space) > Source.DistanceTo(Subeffect.Space),
@@ -185,13 +195,18 @@ namespace KompasCore.Effects
                 CanMoveSource => Source.MovementRestriction.EvaluateEffectMove(space),
 
                 Empty => Game.boardCtrl.GetCardAt(space) == null,
+                Surrounded => Game.boardCtrl.Surrounded(space),
                 CardHereFitsRestriction => hereFitsRestriction.Evaluate(Game.boardCtrl.GetCardAt(space), context),
+
                 OnSourcesDiagonal => Source.SameDiagonal(space),
                 OnTargetsDiagonal => target.SameDiagonal(space),
+                OnAxisOfLastTwoSpaces => space.SameAxis(Subeffect.Space, Subeffect.Effect.GetSpace(-2)),
+
                 OnEdge => space.IsEdge,
                 Corner => space.IsCorner,
                 SameDirectionFromTargetAsSpace => target.Position.DirectionFromThisTo(space) == Subeffect.Space.DirectionFromThisTo(Source.Position),
                 OppositeDirectionFromTargetThanSpace => Source.Position.DirectionFromThisTo(space) * -1 == Source.Position.DirectionFromThisTo(Subeffect.Space),
+                DirectionFromSource => Source.Position.DirectionFromThisTo(space) == Subeffect.Space,
 
                 _ => throw new ArgumentException($"Invalid space restriction {restriction}", "restriction"),
             };

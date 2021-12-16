@@ -19,6 +19,8 @@ namespace KompasCore.Effects
         public const string EqualsEffectX = "=X";
         public const string LessThanEqualEffectX = "<=X";
 
+        public const string LessThanEffectArg = "<Arg";
+
         public const string LessThanAvatarCardValue = "<Avatar";
         public const string GreaterThanAvatarCardValue = ">Avatar";
 
@@ -35,6 +37,7 @@ namespace KompasCore.Effects
         {
             Source = source;
             Subeffect = subeffect;
+            avatarCardValue?.Initialize(Source);
         }
 
         private bool RestrictionValid(string r, int x)
@@ -53,6 +56,8 @@ namespace KompasCore.Effects
                 GreaterThanEffectX   => x > Subeffect.Count,
                 EqualsEffectX        => x == Subeffect.Count,
                 LessThanEqualEffectX => x <= Subeffect.Count,
+
+                LessThanEffectArg   => x < Subeffect.Effect.arg,
 
                 LessThanAvatarCardValue    => x < avatarCardValue.GetValueOf(Source.Controller.Avatar),
                 GreaterThanAvatarCardValue => x > avatarCardValue.GetValueOf(Source.Controller.Avatar),

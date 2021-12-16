@@ -31,6 +31,8 @@ namespace KompasCore.Effects
         //Whether the character has been activated (for Golems)
         private const string IsActive = "Activated";
 
+        private const string NotNormally = "Not Normally";
+
         //Default restrictions are that only characters with enough n can move.
         public static readonly string[] defaultNormalMovementRestrictions = new string[]
         {
@@ -99,7 +101,7 @@ namespace KompasCore.Effects
                 case Default: return true;
                 //normal restrictions
                 case InPlay: return Card.Location == CardLocation.Field;
-                case DistinctSpace: return Card.Position != space;
+                case DistinctSpace: return !Card.Position.Equals(space);
                 case IsCharacter: return Card.CardType == 'C';
                 case CanMoveEnoughSpaces: return Card.SpacesCanMove >= Card.Game.boardCtrl.ShortestEmptyPath(Card, space);
                 case StandardSpellMoveRestiction: return Card.Game.ValidSpellSpaceFor(Card, space);
@@ -115,6 +117,7 @@ namespace KompasCore.Effects
 
                 //special effect restrictions
                 case IsActive: return Card.Activated;
+                case NotNormally: return !byEffect;
                 default: throw new System.ArgumentException($"Could not understand movement restriction {restriction}");
             }
         }
@@ -125,7 +128,7 @@ namespace KompasCore.Effects
         private bool RestrictionValidWithDebug(string restriction, Space space, bool isSwapTarget, bool byEffect)
         {
             bool valid = RestrictionValid(restriction, space, isSwapTarget, byEffect);
-            if (!valid) Debug.LogWarning($"{Card.CardName} cannot move to {space} because it flouts the movement restriction {restriction}");
+            //if (!valid) Debug.LogWarning($"{Card.CardName} cannot move to {space} because it flouts the movement restriction {restriction}");
             return valid;
         }
 

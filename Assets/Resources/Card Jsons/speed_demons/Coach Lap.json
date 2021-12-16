@@ -1,0 +1,56 @@
+{
+	"cardType":67,
+	"cardName":"Coach Lap",
+	"effText":"Speedemon.\nWhen another character arrives adjacent to me, their controller moves them 1 space.",
+	"effects":[
+		{
+            "blurb":"Lap! Yeah!",
+			"triggerData":
+			{
+				"triggerCondition":"Arrive",
+				"triggerRestriction":{
+					"triggerRestrictions":["Coords Fit Restriction","Triggerer Fits Restriction"],
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character","Different from Source"]
+					},
+					"spaceRestriction":
+					{
+						"spaceRestrictions":["Adjacent to Source"],
+						"mustBeEmpty":false
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTargetsControllerSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"next lap?",
+						"spaceRestrictions":["Can Move Target to This Space","Distance to Target Fits X Restriction"],
+                        "distanceXRestriction":{
+                            "xRestrictions":["=X"]
+                        }
+					},
+					"xModifier":1
+				},
+				{
+					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				}
+			]
+		}
+	],
+	"keywords":["Speedemon"],
+	"n":1,
+	"e":3,
+	"s":4,
+	"w":5,
+	"unique":true,
+	"subtypeText":"Encouraging Speedemon Person"
+}

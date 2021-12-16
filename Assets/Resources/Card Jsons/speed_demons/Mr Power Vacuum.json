@@ -1,14 +1,24 @@
 {
 	"cardType":67,
 	"cardName":"Mr Power Vacuum",
-	"effText":"Speedemon.\nWhen I move to a space adjacent to a Speedemon, annihilate a card that costs less than me, adjacent to the space I left.",
+	"effText":"Speedemon.\nWhen I move to a space adjacent to another Speedemon, annihilate a card that costs less than me, adjacent to the space I left.",
 	"effects":[
 		{
 			"triggerData":
 			{
 				"triggerCondition":"Move",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+					"triggerRestrictions":["This Card Triggered","Coords Fit Restriction"],
+					"spaceRestriction":
+					{
+						"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
+						"adjacencyRestriction":
+						{
+							"cardRestrictions":["Different from Source","Subtypes Include"],
+							"subtypesInclude":["Speedemon"]
+						},
+						"mustBeEmpty":false
+					}
 				}
 			},
 			"subeffects":[

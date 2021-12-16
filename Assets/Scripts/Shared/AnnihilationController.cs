@@ -21,6 +21,7 @@ namespace KompasCore.GameCore
             card.Remove(stackSrc);
             Cards.Add(card);
             card.GameLocation = this;
+            card.Position = null;
             SpreadOutCards();
         }
 
@@ -31,6 +32,8 @@ namespace KompasCore.GameCore
             Cards.Remove(card);
             SpreadOutCards();
         }
+
+        public int IndexOf(GameCard card) => Cards.IndexOf(card);
 
         public void SpreadOutCards()
         {

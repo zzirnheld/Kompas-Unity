@@ -39,6 +39,7 @@ namespace KompasCore.Effects
         public abstract Trigger Trigger { get; }
         public ActivationRestriction activationRestriction;
         public string blurb;
+        public int arg; //used for keyword arguments, and such
 
         public ActivationContext CurrActivationContext { get; protected set; }
         public int TimesUsedThisTurn { get; protected set; }
@@ -88,7 +89,7 @@ namespace KompasCore.Effects
         public Space GetSpace(int num)
         {
             var trueIndex = num < 0 ? num + coords.Count() : num;
-            return trueIndex < 0 ? default : coords[trueIndex];
+            return trueIndex < 0 ? null : coords[trueIndex];
         }
 
         public Player GetPlayer(int num)

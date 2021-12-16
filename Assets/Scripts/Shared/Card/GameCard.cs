@@ -113,27 +113,9 @@ namespace KompasCore.Cards
         }
 
         public Space SubjectivePosition => Controller.SubjectiveCoords(Position);
-
+        public int IndexInList => GameLocation?.IndexOf(this) ?? -1;
         public bool InHiddenLocation => Game.IsHiddenLocation(Location);
 
-        public int IndexInList
-        {
-            get
-            {
-                switch (Location)
-                {
-                    case CardLocation.Deck: return Controller.deckCtrl.IndexOf(this);
-                    case CardLocation.Discard: return Controller.discardCtrl.IndexOf(this);
-                    case CardLocation.Field: return Position.Index;
-                    case CardLocation.Hand: return Controller.handCtrl.IndexOf(this);
-                    case CardLocation.Annihilation: return Controller.annihilationCtrl.Cards.IndexOf(this);
-                    case CardLocation.Nowhere: return -1;
-                    default:
-                        Debug.LogError($"Tried to ask for card index when in location {Location}");
-                        return -1;
-                }
-            }
-        }
         public IEnumerable<GameCard> AdjacentCards => Game.boardCtrl.CardsAdjacentTo(Position);
 
         public bool AlreadyCopyOnBoard => Game.BoardHasCopyOf(this);
@@ -191,7 +173,7 @@ namespace KompasCore.Cards
         public abstract Player Controller { get; set; }
         public int ControllerIndex => Controller?.index ?? 0;
         public abstract Player Owner { get; }
-        public int OwnerIndex => Owner.index;
+        public int OwnerIndex => Owner?.index ?? -1;
 
         //misc
         private CardLocation location;
@@ -356,7 +338,7 @@ namespace KompasCore.Cards
         public bool CardBehind(IGameCardInfo card) => SpaceBehind(card.Position);
 
         public bool SpaceDirectlyInFront(Space space)
-            => Location == CardLocation.Field && Controller.SubjectiveCoords(space) == SubjectivePosition.DueNorth;
+            => Location == CardLocation.Field && Controller.SubjectiveCoords(space).Equals(SubjectivePosition.DueNorth);
 
         public bool CardDirectlyInFront(IGameCardInfo card)
             => card.Location == CardLocation.Field && SpaceDirectlyInFront(card.Position);

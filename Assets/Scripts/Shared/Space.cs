@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public struct Space
+public class Space
 {
     public const int BoardLen = 7;
     public const int MaxIndex = BoardLen - 1;
@@ -55,7 +55,7 @@ public struct Space
     public int TaxicabDistanceTo(Space other) => Math.Abs(x - other.x) + Math.Abs(y - other.y);
     public int RadialDistanceTo(Space other) => Math.Max(Math.Abs(x - other.x), Math.Abs(y - other.y));
     public int DistanceTo(Space other) => TaxicabDistanceTo(other);
-    public Space DisplacementTo(Space other) => new Space(x - other.x, y - other.y);
+    public Space DisplacementTo(Space other) => new Space(other.x - x, other.y - y);
 
     public bool AdjacentTo(Space other) => DistanceTo(other) == 1;
     public IEnumerable<Space> AdjacentSpaces
@@ -85,11 +85,23 @@ public struct Space
 
     public bool SameColumn(Space other) => x - y == other.x - other.y;
     public bool SameDiagonal(Space other) => x == other.x || y == other.y;
+    public bool SameAxis(Space a, Space b) 
+        => (((a.x - b.x) % (a.x - x) == 0) || ((a.x - x) % (a.x - b.x) == 0))
+        && (((a.y - b.y) % (a.y - y) == 0) || ((a.y - y) % (a.y - b.y) == 0));
 
     public bool NorthOf(Space other) => x > other.x || y > other.y;
     public Space DueNorth => new Space(x + 1, y + 1);
 
     public Space DirectionFromThisTo(Space other)
+    {
+        (int x, int y) diff = (other.x - x, other.y - y);
+        if (diff.x == 0 || diff.y == 0) return (Math.Sign(diff.x), Math.Sign(diff.y));
+        else if (diff.x % diff.y == 0) return (diff.x / diff.y, 1);
+        else if (diff.y % diff.x == 0) return (1, diff.y / diff.x);
+        else return diff;
+    }
+
+    public Space GeneralDirectionFromThisTo(Space other)
     {
         (int x, int y) diff = (x - other.x, y - other.y);
         if (diff.x == 0 || diff.y == 0) return (Math.Sign(diff.x), Math.Sign(diff.y));
@@ -100,11 +112,17 @@ public struct Space
 
     public static Space operator *(Space s, int i) => (s.x * i, s.y * i);
 
-    public static bool operator ==(Space a, Space b) => a.x == b.x && a.y == b.y;
+    public static bool operator ==(Space a, Space b)
+    {
+        Debug.Log($"Comparing {a} to {b}");
+        if (a is null) return b is null;
+        else if (b is null) return false;
+        else return a.x == b.x && a.y == b.y;
+    }
     public static bool operator !=(Space a, Space b) => !(a == b);
-    public static bool operator ==(Space a, (int x, int y) b) => a.x == b.x && a.y == b.y;
+    public static bool operator ==(Space a, (int x, int y) b) => a != null && a.x == b.x && a.y == b.y;
     public static bool operator !=(Space a, (int x, int y) b) => !(a == b);
-    public static bool operator ==((int x, int y) a, Space b) => a.x == b.x && a.y == b.y;
+    public static bool operator ==((int x, int y) a, Space b) => b != null && a.x == b.x && a.y == b.y;
     public static bool operator !=((int x, int y) a, Space b) => !(a == b);
 
     public static implicit operator (int x, int y)(Space space) => (space.x, space.y);
@@ -116,7 +134,7 @@ public struct Space
         yCoord = y;
     }
 
-    public override bool Equals(object obj) => obj is Space spc && this == spc;
+    public override bool Equals(object obj) => obj is Space spc && x == spc.x && y == spc.y;
     public override string ToString() => $"{x}, {y}";
     public override int GetHashCode() => x + BoardLen * y;
 }

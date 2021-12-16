@@ -6,6 +6,12 @@ namespace KompasServer.Effects
     {
         public CardValue cardValue;
 
+        public override void Initialize(ServerEffect eff, int subeffIndex)
+        {
+            base.Initialize(eff, subeffIndex);
+            cardValue?.Initialize(eff.Source);
+        }
+
         public override int BaseCount => cardValue.GetValueOf(Target);
     }
 }

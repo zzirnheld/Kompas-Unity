@@ -1,14 +1,14 @@
 {
 	"cardType":67,
 	"cardName":"Dr. Thierr Dumachmartres",
-	"effText":"When an enemy plays a card, discard 1 card, then draw 1 card.",
+	"effText":"When an enemy plays a card normally, discard 1 card, then draw 1 card.",
 	"effects":[
 		{
 			"triggerData":
 			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Enemy Triggered"]
+					"triggerRestrictions":["This Card in Play","Enemy Triggered","No Stackable"]
 				}
 			},
 			"subeffects":[

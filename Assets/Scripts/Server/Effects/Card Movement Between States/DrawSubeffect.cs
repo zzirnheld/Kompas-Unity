@@ -8,8 +8,7 @@ namespace KompasServer.Effects
         public override Task<ResolutionInfo> Resolve()
         {
             ServerGame.Draw(Player.index);
-            if (Target == null) throw new NullCardException(TargetWasNull);
-            else return Task.FromResult(ResolutionInfo.Next);
+            return Task.FromResult(ResolutionInfo.Next);
         }
     }
 }
