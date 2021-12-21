@@ -4,8 +4,6 @@ namespace KompasCore.Effects
 {
     public abstract class HandSizeStackable : IStackable
     {
-        public const int MaxHandSize = 7;
-
         public abstract Player Controller { get; }
 
         public GameCard Source => Controller.Avatar;

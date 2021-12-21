@@ -17,7 +17,7 @@ namespace KompasClient.Effects
         public Sprite SecondarySprite => default;
         public CardController SecondaryCardController => default;
 
-        public string StackableBlurb => $"{(Controller.Friendly ? "Friendly" : "Enemy")} reshuffle to {MaxHandSize} in hand";
+        public string StackableBlurb => $"{(Controller.Friendly ? "Friendly" : "Enemy")} reshuffle to {Controller.HandSizeLimit} in hand";
 
         public ClientHandSizeStackable(ClientPlayer clientController)
         {

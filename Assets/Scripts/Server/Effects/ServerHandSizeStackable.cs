@@ -35,7 +35,7 @@ namespace KompasServer.Effects
                 .Select(c => c.ID)
                 .ToArray();
 
-            int overHandSize = cardIds.Count() - MaxHandSize;
+            int overHandSize = cardIds.Count() - Controller.HandSizeLimit;
             if (overHandSize <= 0)
             {
                 awaitingChoices = false;
@@ -66,7 +66,7 @@ namespace KompasServer.Effects
                 .ToArray();
 
             int count = cards.Count();
-            int correctCount = serverGame.Cards.Count(c => HandSizeCardRestriction.Evaluate(c, new ActivationContext())) - MaxHandSize;
+            int correctCount = serverGame.Cards.Count(c => HandSizeCardRestriction.Evaluate(c, new ActivationContext())) - Controller.HandSizeLimit;
 
             if (count != correctCount || cards.Any(c => !HandSizeCardRestriction.Evaluate(c, new ActivationContext()))) return false;
 

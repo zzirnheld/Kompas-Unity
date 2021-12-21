@@ -6,6 +6,7 @@ namespace KompasServer.Effects
     public class SetXByGamestateSubeffect : SetXSubeffect
     {
         public const string HandSize = "Hand Size";
+        public const string HandSizeLimit = "Hand Size Limit";
         public const string DistanceToCoordsThrough = "Distance to Coords Through";
         public const string DistanceBetweenTargetAndCoords = "Distance Between Target and Target Space";
         public const string DistanceFromSourceToTarget = "Distance From Source to Target";
@@ -39,6 +40,7 @@ namespace KompasServer.Effects
                 return whatToCount switch
                 {
                     HandSize                => Player.handCtrl.HandSize,
+                    HandSizeLimit           => Player.HandSizeLimit;
                     DistanceToCoordsThrough => Game.boardCtrl.ShortestPath(Source, Space, throughRestriction, Context),
                     DistanceBetweenTargetAndCoords => Target.DistanceTo(Space),
                     DistanceFromSourceToTarget     => Source.DistanceTo(Target),

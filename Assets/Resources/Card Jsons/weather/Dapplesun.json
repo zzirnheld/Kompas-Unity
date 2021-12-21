@@ -33,7 +33,7 @@
 	],
 	"keywords":["Weather"],
 	"unique":true,
-	"c":5,
+	"c":3,
 	"spellTypes":["Radial"],
 	"subtypeText":"Weather Radial",
 	"radius":2

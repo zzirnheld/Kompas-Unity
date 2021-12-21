@@ -5,6 +5,7 @@ using UnityEngine;
 
 public abstract class Player : MonoBehaviour
 {
+    public readonly int HandSizeLimit = 7;
 
     public abstract Player Enemy { get; }
 

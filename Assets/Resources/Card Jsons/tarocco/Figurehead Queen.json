@@ -4,7 +4,7 @@
 	"effText":"When you draw X cards, give me +X C.\nAfter I'm cast, delay 1 turn.\nSet X to my C. Deck->summon an S <= X Tarocco.",
 	"effects":[
 		{
-			"blurb":"+1 C",
+			"blurb":"+X C",
 			"triggerData":
 			{
 				"triggerCondition":"Draw",

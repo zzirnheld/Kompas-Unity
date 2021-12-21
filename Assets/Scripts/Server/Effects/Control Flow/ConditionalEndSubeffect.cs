@@ -50,7 +50,7 @@ namespace KompasServer.Effects
                     TargetFitsRestriction       => cardRestriction.Evaluate(Target, Context),
                     SourceViolatesRestriction   => !cardRestriction.Evaluate(Source, Context),
                     NumTargetsLTEConstant       => Effect.Targets.Count() <= constant,
-                    HandFull                    => Player.handCtrl.HandSize >= HandSizeStackable.MaxHandSize,
+                    HandFull                    => Player.handCtrl.HandSize >= Controller.HandSizeLimit,
                     _ => throw new System.ArgumentException($"Condition {condition} invalid for conditional end subeffect"),
                 };
             }

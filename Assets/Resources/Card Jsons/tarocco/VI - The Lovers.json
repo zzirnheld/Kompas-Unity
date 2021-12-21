@@ -4,6 +4,7 @@
 	"effText":"When you draw X cards, you can tribute me. Deck->summon an S <= X Tarocco where I was.",
 	"effects":[
 		{
+			"blurb":"Better together",
 			"triggerData":
 			{
 				"blurb":"Tribute me to deck-summon Tarocco with S <= X?",

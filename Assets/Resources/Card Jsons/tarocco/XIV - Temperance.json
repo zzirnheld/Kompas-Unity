@@ -7,7 +7,7 @@
 			"triggerData":
 			{
 				"optional":true,
-				"blurb":"DispelSubeffect a C <= X spell? (X is the number of cards you just drew)",
+				"blurb":"Dispel a C <= X spell? (X is the number of cards you just drew)",
 				"triggerCondition":"Draw",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Controller Triggered","Max Per Round"]
