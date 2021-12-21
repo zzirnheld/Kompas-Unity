@@ -40,7 +40,7 @@ namespace KompasServer.Effects
                 return whatToCount switch
                 {
                     HandSize                => Player.handCtrl.HandSize,
-                    HandSizeLimit           => Player.HandSizeLimit;
+                    HandSizeLimit           => Player.HandSizeLimit,
                     DistanceToCoordsThrough => Game.boardCtrl.ShortestPath(Source, Space, throughRestriction, Context),
                     DistanceBetweenTargetAndCoords => Target.DistanceTo(Space),
                     DistanceFromSourceToTarget     => Source.DistanceTo(Target),
