@@ -322,6 +322,7 @@ speed_demons/Coach Lap
 speed_demons/Soul of Speed
 speed_demons/The Sonic Boom
 speed_demons/Sound Barrier
+speed_demons/Mach the Porcupine
 spirits/A Lot of Disappointment
 spirits/Allconsuming Frustration
 spirits/Generous Pleasure

@@ -1,0 +1,52 @@
+{
+	"cardType":67,
+	"cardName":"Mach the Porcupine",
+	"effText":"Speedemon. Speedemon. Speedemon.\nWhen I move, give me +1 W.\nAfter I fight, set my W to 0.",
+	"effects":[
+		{
+			"blurb":"go fast (req'd)",
+			"triggerData":
+			{
+				"triggerCondition":"Move",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wMod":1
+				}
+			]
+		},
+		{
+			"blurb":"*drops rings*",
+			"triggerData":
+			{
+				"triggerCondition":"Battle End",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetCardStatsSubeffect, Assembly-CSharp",
+					"wVal":0
+				}
+			]
+		}
+	],
+    "unique":true,
+	"keywords":["Speedemon","Speedemon","Speedemon"],
+	"n":1,
+	"e":5,
+	"s":5,
+	"w":0,
+	"subtypeText":"Speedemon"
+}
