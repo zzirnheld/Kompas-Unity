@@ -38,7 +38,7 @@
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
 					"delete":true,
 					"remainingTargets":1,
-					"jumpTo":3
+					"jumpIndices":[3]
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",

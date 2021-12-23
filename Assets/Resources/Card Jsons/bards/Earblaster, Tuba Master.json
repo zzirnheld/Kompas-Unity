@@ -43,7 +43,7 @@
 						"cardRestrictions":["Subtypes Include"],
                         "subtypesInclude":["Music"]
 					},
-					"jumpIndex":7
+					"jumpIndices":[7]
 				},
 				{
 					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
@@ -63,7 +63,7 @@
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
 					"delete":true,
-					"jumpTo":1
+					"jumpIndices":[1]
 				}
 			]	
 		}

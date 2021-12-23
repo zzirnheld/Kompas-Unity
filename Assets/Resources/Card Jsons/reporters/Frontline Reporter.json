@@ -22,9 +22,9 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Reveal a spell?",
-					"OptionBlurbs":["Yes","No"],
-					"OptionJumpIndices":[3,6]
+					"choiceBlurb":"Reveal a spell?",
+					"optionBlurbs":["Yes","No"],
+					"jumpIndices":[3,6]
 				},
 				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",

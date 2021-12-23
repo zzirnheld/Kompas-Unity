@@ -27,7 +27,7 @@
 				{
 					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
 					"canDecline":true,
-					"jumpTo":0
+					"jumpIndices":[0]
 				},
 				{
 					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",

@@ -58,11 +58,11 @@
 					"$type":"KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
 					"condition":"X >= Constant",
 					"constant":31,
-					"jumpIndex":5
+					"jumpIndices":[5]
 				},
 				{
 					"$type":"KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
-					"jumpTo":1
+					"jumpIndices":[1]
 				},
 				{
 					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
@@ -72,7 +72,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
-					"jumpTo":5
+					"jumpIndices":[5]
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",

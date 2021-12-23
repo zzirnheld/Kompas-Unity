@@ -27,7 +27,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
-					"jumpTo":4
+					"jumpIndices":[4]
 				},
 				{
 					"$type":"KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp",
@@ -92,7 +92,7 @@
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
 					"remainingTargets":2,
-					"jumpTo":10
+					"jumpIndices":[10]
 				}
 			]	
 		}

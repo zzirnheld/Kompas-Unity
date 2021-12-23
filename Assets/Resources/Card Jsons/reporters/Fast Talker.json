@@ -22,9 +22,9 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Reveal X cards?",
-					"OptionBlurbs":["Yes","No"],
-					"OptionJumpIndices":[3,7],
+					"choiceBlurb":"Reveal X cards?",
+					"optionBlurbs":["Yes","No"],
+					"jumpIndices":[3,7],
 					"showX":true
 				},
 				{
@@ -44,7 +44,7 @@
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
 					"delete":true,
-					"jumpTo":4
+					"jumpIndices":[4]
 				},
 				{
 					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"

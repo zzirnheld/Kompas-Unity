@@ -5,7 +5,6 @@ namespace KompasServer.Effects
 {
     public class LoopSubeffect : ServerSubeffect
     {
-        public int jumpTo;
         public bool canDecline = false;
 
         protected virtual void OnLoopExit()
@@ -23,7 +22,7 @@ namespace KompasServer.Effects
         public override Task<ResolutionInfo> Resolve()
         {
             //loop again if necessary
-            Debug.Log($"im in ur loop of type {GetType()}, the one that jumps to {jumpTo}");
+            Debug.Log($"im in ur loop of type {GetType()}, the one that jumps to {JumpIndex}");
             if (ShouldContinueLoop)
             {
                 //tell the client to enable the button to exit the loop
@@ -33,7 +32,7 @@ namespace KompasServer.Effects
                     ServerEffect.OnImpossible = this;
                     ServerEffect.CanDeclineTarget = true;
                 }
-                return Task.FromResult(ResolutionInfo.Index(jumpTo));
+                return Task.FromResult(ResolutionInfo.Index(JumpIndex));
             }
             else return ExitLoop();
         }

@@ -24,9 +24,9 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Double or halve?",
-					"OptionBlurbs":["Double","Halve"],
-					"OptionJumpIndices":[3,5],
+					"choiceBlurb":"Double or halve?",
+					"optionBlurbs":["Double","Halve"],
+					"jumpIndices":[3,5],
 					"hasDefault":false
 				},
 				{
@@ -35,7 +35,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.JumpSubeffect, Assembly-CSharp",
-					"indexToJumpTo":6
+					"jumpIndices":[6]
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",

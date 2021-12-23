@@ -59,9 +59,9 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Reshuffle to summon again?",
-					"OptionBlurbs":["Yes","No"],
-					"OptionJumpIndices":[1,100]
+					"choiceBlurb":"Reshuffle to summon again?",
+					"optionBlurbs":["Yes","No"],
+					"jumpIndices":[1,100]
 				}
 			]	
 		}

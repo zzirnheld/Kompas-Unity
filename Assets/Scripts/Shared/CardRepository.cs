@@ -14,10 +14,14 @@ using UnityEngine;
 
 public class CardRepository : MonoBehaviour
 {
-    public const string cardListFilePath = "Card Jsons/Card List";
-    public const string cardJsonsFolderpath = "Card Jsons/";
-    public const string keywordListFilePath = "Keyword Jsons/Keyword List";
-    public const string keywordJsonsFolderPath = "Keyword Jsons/";
+    public const string cardJsonsFolderPath = "Card Jsons/";
+    public const string cardListFilePath = cardJsonsFolderPath + "Card List";
+
+    public const string keywordJsonsFolderPath = "Keyword Jsons/Full Keywords/";
+    public const string keywordListFilePath = keywordJsonsFolderPath + "Keyword List";
+
+    public const string partialKeywordFolderPath = "Keyword Jsons/Partial Keywords/";
+    public const string partialKeywordListFilePath = partialKeywordFolderPath + "Keyword List";
 
     private static readonly string[] cardNamesToIgnore = new string[] {
             "Square Kompas Logo"
@@ -27,6 +31,7 @@ public class CardRepository : MonoBehaviour
     private static readonly Dictionary<string, int> cardNameIDs = new Dictionary<string, int>();
     private static readonly List<string> cardNames = new List<string>();
     private static readonly Dictionary<string, string> keywordJsons = new Dictionary<string, string>();
+    private static readonly Dictionary<string, string> partialKeywordJsons = new Dictionary<string, string>();
     private static bool initalized = false;
 
     public static IEnumerable<string> CardJsons => cardJsons.Values;
@@ -41,7 +46,7 @@ public class CardRepository : MonoBehaviour
     public GameObject CardPrefab;
     #endregion prefabs
 
-    void Awake()
+    private void Awake()
     {
         if (initalized) return;
         initalized = true;
@@ -58,7 +63,7 @@ public class CardRepository : MonoBehaviour
             if (IsCardToIgnore(filenameClean) || CardExists(filenameClean)) continue;
 
             //load the json
-            var jsonAsset = Resources.Load<TextAsset>(cardJsonsFolderpath + filenameClean);
+            var jsonAsset = Resources.Load<TextAsset>(cardJsonsFolderPath + filenameClean);
             if (jsonAsset == null)
             {
                 Debug.LogError($"Failed to load json for {filenameClean}");
@@ -85,9 +90,16 @@ public class CardRepository : MonoBehaviour
         var keywords = keywordList.Replace('\r', '\n').Split('\n').Where(s => !string.IsNullOrEmpty(s));
         foreach (string keyword in keywords)
         {
-            //Debug.Log($"Loading keyword json for {keyword}, {string.Join(",", keyword.ToCharArray().Select(c => (int) c))}");
             string json = Resources.Load<TextAsset>(keywordJsonsFolderPath + keyword).text;
             keywordJsons.Add(keyword, json);
+        }
+
+        string partialKeywordList = Resources.Load<TextAsset>(partialKeywordListFilePath).text;
+        var partialKeywords = partialKeywordList.Replace('\r', '\n').Split('\n').Where(s => !string.IsNullOrEmpty(s));
+        foreach (string keyword in partialKeywords)
+        {
+            string json = Resources.Load<TextAsset>(partialKeywordFolderPath + keyword).text;
+            partialKeywordJsons.Add(keyword, json);
         }
     }
 

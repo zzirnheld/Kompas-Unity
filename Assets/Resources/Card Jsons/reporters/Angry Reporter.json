@@ -37,9 +37,9 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Reveal an cost > X card?",
-					"OptionBlurbs":["Yes","No"],
-					"OptionJumpIndices":[5,8],
+					"choiceBlurb":"Reveal an cost > X card?",
+					"optionBlurbs":["Yes","No"],
+					"jumpIndices":[5,8],
 					"showX":true
 				},
 				{

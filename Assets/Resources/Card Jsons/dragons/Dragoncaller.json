@@ -32,9 +32,9 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Give +2*X ES or SW?",
-					"OptionBlurbs":["ES","SW"],
-					"OptionJumpIndices":[5,7],
+					"choiceBlurb":"Give +2*X ES or SW?",
+					"optionBlurbs":["ES","SW"],
+					"jumpIndices":[5,7],
 					"hasDefault":false
 				},
 				{

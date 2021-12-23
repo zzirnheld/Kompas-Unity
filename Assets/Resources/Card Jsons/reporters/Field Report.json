@@ -43,9 +43,9 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Reveal a character with S <= X?",
-					"OptionBlurbs":["Yes","No"],
-					"OptionJumpIndices":[5,9],
+					"choiceBlurb":"Reveal a character with S <= X?",
+					"optionBlurbs":["Yes","No"],
+					"jumpIndices":[5,9],
 					"showX":true
 				},
 				{

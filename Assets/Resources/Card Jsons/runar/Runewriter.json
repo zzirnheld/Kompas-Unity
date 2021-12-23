@@ -28,7 +28,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
-					"jumpTo":7
+					"jumpIndices":[7]
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseFromListSaveRestSubeffect, Assembly-CSharp",

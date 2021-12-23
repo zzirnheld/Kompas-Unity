@@ -42,9 +42,9 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Reveal a card?",
-					"OptionBlurbs":["Yes","No"],
-					"OptionJumpIndices":[3,6]
+					"choiceBlurb":"Reveal a card?",
+					"optionBlurbs":["Yes","No"],
+					"jumpIndices":[3,6]
 				},
 				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",

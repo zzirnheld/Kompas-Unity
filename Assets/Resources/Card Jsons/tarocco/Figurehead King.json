@@ -39,7 +39,7 @@
 				{
 					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
 					"canDecline":false,
-					"jumpTo":3
+					"jumpIndices":[3]
 				},
 				{
 					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",

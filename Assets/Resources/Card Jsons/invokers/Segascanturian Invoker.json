@@ -45,7 +45,7 @@
 							"xRestrictions":["<X"]
 						}
 					},
-					"jumpIndex":2,
+					"jumpIndices":[2],
 					"xMultiplier":1
 				},
 				{

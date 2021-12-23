@@ -51,19 +51,23 @@ namespace KompasCore.Effects
         public const string Move = "Move";
         public const string Annhilate = "Annihilate";
         public const string Remove = "Remove";
+
         public const string AugmentAttached = "Augment Attached"; //when an augment becomes applied to a card.
         public const string AugmentDetached = "Augment Detached";
         public const string Augmented = "Augmented"; //when a card has an augment applied to it
+
         public const string Revealed = "Revealed";
         public const string Vanish = "Vanish";
 
         public static readonly string[] TriggerConditions = {
-            TurnStart, StackEnd,
-            NESWChange, Activate, Deactivate, NChange, EChange, SChange, WChange, CChange, AChange,
+            TurnStart, StackEnd, EffectPushedToStack,
+            NESWChange, Activate, Deactivate, Negate,
+            NChange, EChange, SChange, WChange, CChange, AChange,
             NSet, ESet, SSet, WSet, CSet, ASet,
-            Defends, Attacks, TakeCombatDamage, DealCombatDamage, Battles, BattleEnds, Negate,
+            Defends, Attacks, TakeCombatDamage, DealCombatDamage, Battles, BattleEnds, 
             EachDraw, DrawX, Arrive, Play, Discard, Rehand, Reshuffle, Topdeck, Bottomdeck, ToDeck, Move, Annhilate, Remove, 
-            AugmentAttached, AugmentDetached, Augmented, Revealed, Vanish
+            AugmentAttached, AugmentDetached, Augmented, 
+            Revealed, Vanish
         };
 
         public TriggerData TriggerData { get; }

@@ -28,9 +28,9 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Give +5 E or +5 W?",
-					"OptionBlurbs":["+5 E","+5 W"],
-					"OptionJumpIndices":[2,4],
+					"choiceBlurb":"Give +5 E or +5 W?",
+					"optionBlurbs":["+5 E","+5 W"],
+					"jumpIndices":[2,4],
 					"hasDefault":false
 				},
 				{

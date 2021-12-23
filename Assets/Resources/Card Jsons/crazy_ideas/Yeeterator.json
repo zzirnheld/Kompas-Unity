@@ -27,7 +27,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
-					"jumpTo":5
+					"jumpIndices":[5]
 				},
 				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",

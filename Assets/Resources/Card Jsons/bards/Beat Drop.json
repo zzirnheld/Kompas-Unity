@@ -27,7 +27,7 @@
 				{
 					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
 					"canDecline":true,
-					"jumpTo":0
+					"jumpIndices":[0]
 				},
 				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
@@ -51,7 +51,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",
-					"jumpTo":3
+					"jumpIndices":[3]
 				}
 			]
 		}

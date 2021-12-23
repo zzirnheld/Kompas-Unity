@@ -48,7 +48,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",
-					"jumpTo":3
+					"jumpIndices":[3]
 				}
 			]	
 		}
