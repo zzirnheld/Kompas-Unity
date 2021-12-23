@@ -52,8 +52,52 @@ namespace KompasServer.Effects
             if (triggerData != null && !string.IsNullOrEmpty(triggerData.triggerCondition))
                 ServerTrigger = new ServerTrigger(triggerData, this);
 
-            int i = 0;
-            foreach (var subeff in subeffects) subeff.Initialize(this, i++);
+            for (int i = 0; i < subeffects.Length; i++)
+            {
+                subeffects[i].Initialize(this, i);
+            }
+        }
+
+        /// <summary>
+        /// Inserts the given array of subeffects into this effect's <see cref="subeffects"/> array.
+        /// The first subeffect (index 0) of <paramref name="newSubeffects"/> 
+        /// will be at <paramref name="startingAtIndex"/> in the new array.
+        /// </summary>
+        /// <param name="startingAtIndex"></param>
+        /// <param name="newSubeffects"></param>
+        public void InsertSubeffects(int startingAtIndex, params ServerSubeffect[] newSubeffects)
+        {
+            if (newSubeffects == null) throw new System.ArgumentNullException("Can't insert null subeffects");
+
+            ServerSubeffect[] combinedSubeffects = new ServerSubeffect[subeffects.Length + newSubeffects.Length];
+            int oldIndex;
+            int combinedIndex;
+            //Add old subeffects to combined array, until you get to the index where you want to insert the new ones
+            for (oldIndex = 0, combinedIndex = 0; combinedIndex < startingAtIndex; oldIndex++, combinedIndex++)
+            {
+                combinedSubeffects[combinedIndex] = subeffects[oldIndex];
+            }
+            //Add all the new subeffects to the combined array
+            for (int newIndex = 0; newIndex < newSubeffects.Length; newIndex++, combinedIndex++)
+            {
+                combinedSubeffects[combinedIndex] = newSubeffects[newIndex];
+            }
+            //Add the remaining old subeffects to the array
+            for (; oldIndex < subeffects.Length; oldIndex++, combinedIndex++)
+            {
+                combinedSubeffects[combinedIndex] = subeffects[oldIndex];
+            }
+            subeffects = combinedSubeffects;
+
+            //after that's done, update any subeffect indices in the subeffects thereafter to account for the newly inserted subeffects
+            int newSubeffectsCount = newSubeffects.Length;
+            for (int i = startingAtIndex; i < subeffects.Length; i++)
+            {
+                for (int j = 0; j < subeffects[i].jumpIndices.Length; j++)
+                {
+                    subeffects[i].jumpIndices[j] += newSubeffectsCount;
+                }
+            }
         }
 
         public override bool CanBeActivatedBy(Player controller)

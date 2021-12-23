@@ -134,6 +134,8 @@ public class CardRepository : MonoBehaviour
 
     public ServerSubeffect[] InstantiateServerPartialKeyword(string keyword)
     {
+        if (!partialKeywordJsons.ContainsKey(keyword)) return new ServerSubeffect[0];
+
         return JsonConvert.DeserializeObject<ServerSubeffect[]>(partialKeywordJsons[name], cardLoadingSettings);
     }
 
