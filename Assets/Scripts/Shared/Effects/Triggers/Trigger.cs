@@ -14,14 +14,14 @@ namespace KompasCore.Effects
         public const string Activate = "Activate";
         public const string Deactivate = "Deactivate";
         public const string Negate = "Negate";
-
+        //X will be equal to the change in the stat
         public const string NChange = "N Change";
         public const string EChange = "E Change";
         public const string SChange = "S Change";
         public const string WChange = "W Change";
         public const string CChange = "C Change";
         public const string AChange = "A Change";
-
+        //X will be equal to the stat's new value
         public const string NSet = "N Set";
         public const string ESet = "E Set";
         public const string SSet = "S Set";

@@ -99,7 +99,16 @@ namespace KompasCore.Cards
         public Space Position { get; }
         public Space SubjectivePosition => Controller.SubjectiveCoords(Position);
 
-        public GameCardInfo(GameCard card)
+        /// <summary>
+        /// Snapshots the information of a card.
+        /// </summary>
+        /// <param name="card">The card whose information to snapshot</param>
+        /// <returns>A <see cref="GameCardInfo"/> whose information matches the current state of <paramref name="card"/>, 
+        /// or null if <paramref name="card"/> is <see langword="null"/></returns>
+        public static GameCardInfo CardInfoOf(GameCard card)
+            => card == null ? null : new GameCardInfo(card);
+
+        private GameCardInfo(GameCard card)
         {
             Card = card;
             Location = card.Location;
@@ -223,5 +232,10 @@ namespace KompasCore.Cards
         public int ShortestPath(Space space, Func<GameCard, bool> throughPredicate)
             => Card.Game.boardCtrl.ShortestPath(Card.Position, space, throughPredicate);
         #endregion distance/adjacency
+
+        public override string ToString()
+        {
+            return CardName;
+        }
     }
 }

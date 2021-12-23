@@ -76,10 +76,10 @@ namespace KompasServer.Effects
                     sb.Append("Targets: ");
                     sb.AppendLine(string.Join(", ", se.Targets.Select(c => c.ToString())));
                 }
-                if (se.AnyCoords())
+                if (se.Coords.Any())
                 {
                     sb.Append("Coords: ");
-                    sb.AppendLine(string.Join(", ", se.SelectCoords(c => $"({c.x}, {c.y})")));
+                    sb.AppendLine(string.Join(", ", se.Coords.Select(c => c.ToString())));
                 }
                 sb.AppendLine($"X: {se.X}");
                 sb.AppendLine($"Controller: {se.Controller.index}");
@@ -202,7 +202,7 @@ namespace KompasServer.Effects
             //this is saved so that we know what trigger to okay or not if it's responded
             foreach(var t in stillValid)
             {
-                if (!t.Responded) await t.Ask(triggered.context.X ?? 0);
+                if (!t.Responded) await t.Ask(triggered.context.x ?? 0);
             }
 
             //now that all optional triggers have been answered, time to deal with ordering.

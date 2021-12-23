@@ -130,48 +130,48 @@ namespace KompasCore.Effects
             switch (restriction)
             {
                 //card triggering stuff
-                case ThisCardTriggered:        return context.BeforeCardInfo.Card == ThisCard;
+                case ThisCardTriggered:        return context.mainCardInfoBefore.Card == ThisCard;
                 case ThisCardInPlay:           return ThisCard.Location == CardLocation.Field;
-                case AugmentedCardTriggered:   return context.BeforeCardInfo.Augments.Contains(ThisCard);
+                case AugmentedCardTriggered:   return context.mainCardInfoBefore.Augments.Contains(ThisCard);
                 case CardExists:               return ThisCard.Game.Cards.Any(c => existsRestriction.Evaluate(c, context));
                 case ThisCardFitsRestriction:  return cardRestriction.Evaluate(ThisCard, context);
-                case TriggererFitsRestriction: return cardRestriction.Evaluate(context.BeforeCardInfo, context);
-                case TriggererNowFitsRestirction: return nowRestriction.Evaluate(context.AfterCardInfo, context);
-                case TriggerersAugmentedCardFitsRestriction: return cardRestriction.Evaluate(context.BeforeCardInfo.AugmentedCard, context);
-                case StackableSourceFitsRestriction: return sourceRestriction.Evaluate(context.Stackable?.Source, context);
-                case TriggererIsSecondaryContextTarget: return secondary?.Targets?.Any(c => c == context.BeforeCardInfo?.Card) ?? false;
-                case StackableSourceNotThisEffect: return context.Stackable != SourceEffect;
+                case TriggererFitsRestriction: return cardRestriction.Evaluate(context.mainCardInfoBefore, context);
+                case TriggererNowFitsRestirction: return nowRestriction.Evaluate(context.MainCardInfoAfter, context);
+                case TriggerersAugmentedCardFitsRestriction: return cardRestriction.Evaluate(context.mainCardInfoBefore.AugmentedCard, context);
+                case StackableSourceFitsRestriction: return sourceRestriction.Evaluate(context.stackable?.Source, context);
+                case TriggererIsSecondaryContextTarget: return secondary?.targets?.Any(c => c == context.mainCardInfoBefore?.Card) ?? false;
+                case StackableSourceNotThisEffect: return context.stackable != SourceEffect;
 
                 case CardNowFurtherFromSourceThanItWas:
-                    return ThisCard.DistanceTo(context.BeforeCardInfo.Card.Position) > ThisCard.DistanceTo(context.BeforeCardInfo.Position); 
+                    return ThisCard.DistanceTo(context.mainCardInfoBefore.Card.Position) > ThisCard.DistanceTo(context.mainCardInfoBefore.Position); 
 
                 case ContextsStackablesMatch:
-                    Debug.Log($"Primary stackable: {context.Stackable}");
-                    Debug.Log($"Secondary stackable: {secondary?.Stackable}");
-                    Debug.Log($"Equal? {context.Stackable == secondary?.Stackable}");
-                    return context.Stackable == secondary?.Stackable;
+                    Debug.Log($"Primary stackable: {context.stackable}");
+                    Debug.Log($"Secondary stackable: {secondary?.stackable}");
+                    Debug.Log($"Equal? {context.stackable == secondary?.stackable}");
+                    return context.stackable == secondary?.stackable;
 
-                case StackableIsThisEffect: return context.Stackable == SourceEffect;
+                case StackableIsThisEffect: return context.stackable == SourceEffect;
 
-                case NoStackable: return context.Stackable == null;
+                case NoStackable: return context.stackable == null;
 
                 //other non-card triggering things
-                case CoordsFitRestriction:    return context.Space != null && spaceRestriction.Evaluate(context.Space, context);
-                case XFitsRestriction:        return context.X != null && xRestriction.Evaluate(context.X.Value);
-                case EffectSourceIsTriggerer: return context.Stackable is Effect eff && eff.Source == context.BeforeCardInfo.Card;
+                case CoordsFitRestriction:    return context.space != null && spaceRestriction.Evaluate(context.space, context);
+                case XFitsRestriction:        return context.x != null && xRestriction.Evaluate(context.x.Value);
+                case EffectSourceIsTriggerer: return context.stackable is Effect eff && eff.Source == context.mainCardInfoBefore.Card;
                 case AdjacentToRestriction:
                     Debug.Log($"Card {ThisCard?.CardName} with adjacent cards {ThisCard?.AdjacentCards}");
                     return ThisCard.AdjacentCards.Any(c => cardRestriction.Evaluate(c, context));
                 //TODO make these into just something to do with triggered card fitting restriction
-                case ControllerTriggered:     return context.Triggerer == ThisCard.Controller;
-                case EnemyTriggered:          return context.Triggerer != ThisCard.Controller;
+                case ControllerTriggered:     return context.player == ThisCard.Controller;
+                case EnemyTriggered:          return context.player != ThisCard.Controller;
 
                 //gamestate
                 case FriendlyTurn:  return Game.TurnPlayer == ThisCard.Controller;
                 case EnemyTurn:     return Game.TurnPlayer != ThisCard.Controller;
-                case FromField:     return context.BeforeCardInfo.Location == CardLocation.Field;
-                case FromDeck:      return context.BeforeCardInfo.Location == CardLocation.Deck;
-                case NotFromEffect: return context.Stackable is Effect;
+                case FromField:     return context.mainCardInfoBefore.Location == CardLocation.Field;
+                case FromDeck:      return context.mainCardInfoBefore.Location == CardLocation.Deck;
+                case NotFromEffect: return context.stackable is Effect;
 
                 //max
                 case MaxPerRound: return ThisTrigger.Effect.TimesUsedThisRound < maxPerRound;

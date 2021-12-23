@@ -7,10 +7,10 @@ namespace KompasServer.Effects
     {
         public override Task<ResolutionInfo> Resolve()
         {
-            if (Context.Space == null)
-                throw new InvalidSpaceException(Context.Space, NoValidSpaceTarget);
+            if (Context.space == null)
+                throw new InvalidSpaceException(Context.space, NoValidSpaceTarget);
 
-            ServerEffect.AddSpace(Context.Space);
+            ServerEffect.AddSpace(Context.space);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

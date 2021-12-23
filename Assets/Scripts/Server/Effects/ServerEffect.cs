@@ -79,11 +79,11 @@ namespace KompasServer.Effects
 
             //set context parameters
             CurrActivationContext = context;
-            X = context.X ?? 0;
+            X = context.x ?? 0;
 
             targetsList.Clear();
-            if (context.Targets != null) targetsList.AddRange(context.Targets);
-            if (context.Spaces != null) coords.AddRange(context.Spaces);
+            if (context.targets != null) targetsList.AddRange(context.targets);
+            if (context.spaces != null) coords.AddRange(context.spaces);
 
             coords.Clear();
             
@@ -96,7 +96,7 @@ namespace KompasServer.Effects
 
             //resolve the effect if possible
             if (Negated) await EffectImpossible(EffectWasNegated);
-            else await Resolve(context.StartIndex);
+            else await Resolve(context.startIndex);
 
             //after all subeffects have finished, clean up
             FinishResolution();

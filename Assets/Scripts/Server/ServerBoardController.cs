@@ -17,10 +17,10 @@ namespace KompasServer.GameCore
 
         public override void Play(GameCard toPlay, Space to, Player controller, IStackable stackSrc = null)
         {
-            var context = new ActivationContext(beforeCard: toPlay, stackable: stackSrc, triggerer: controller, space: to);
+            var context = new ActivationContext(mainCardBefore: toPlay, stackable: stackSrc, player: controller, space: to);
             bool wasKnown = toPlay.KnownToEnemy;
             base.Play(toPlay, to, controller);
-            context.SetAfterCardInfo(toPlay);
+            context.CacheCardInfoAfter(toPlay);
             EffectsController.TriggerForCondition(Trigger.Play, context);
             EffectsController.TriggerForCondition(Trigger.Arrive, context);
             if (!toPlay.IsAvatar) ServerNotifierByIndex(toPlay.ControllerIndex).NotifyPlay(toPlay, to, wasKnown);
@@ -35,26 +35,26 @@ namespace KompasServer.GameCore
             //then trigger appropriate triggers. list of contexts:
             List<ActivationContext> ctxts = new List<ActivationContext>();
             //trigger for first card
-            ctxts.Add(new ActivationContext(beforeCard: card, stackable: stackSrc, space: to,
-                triggerer: playerInitiated ? card.Controller : stackSrc?.Controller, x: distance));
+            ctxts.Add(new ActivationContext(mainCardBefore: card, stackable: stackSrc, space: to,
+                player: playerInitiated ? card.Controller : stackSrc?.Controller, x: distance));
             //trigger for first card's augments
             foreach (var aug in card.Augments)
             {
-                ctxts.Add(new ActivationContext(beforeCard: aug, stackable: null, space: to,
-                    triggerer: playerInitiated ? aug.Controller : stackSrc?.Controller, x: distance));
+                ctxts.Add(new ActivationContext(mainCardBefore: aug, stackable: null, space: to,
+                    player: playerInitiated ? aug.Controller : stackSrc?.Controller, x: distance));
             }
 
             if (at != null)
             {
                 //then trigger this card's triggers
-                ctxts.Add(new ActivationContext(beforeCard: at, stackable: stackSrc, space: to,
-                    triggerer: playerInitiated ? card.Controller : stackSrc?.Controller, x: distance));
+                ctxts.Add(new ActivationContext(mainCardBefore: at, stackable: stackSrc, space: to,
+                    player: playerInitiated ? card.Controller : stackSrc?.Controller, x: distance));
 
                 //trigger for first card's augments
                 foreach (var aug in at.Augments)
                 {
-                    ctxts.Add(new ActivationContext(beforeCard: aug, stackable: null, space: to,
-                        triggerer: playerInitiated ? aug.Controller : stackSrc?.Controller, x: distance));
+                    ctxts.Add(new ActivationContext(mainCardBefore: aug, stackable: null, space: to,
+                        player: playerInitiated ? aug.Controller : stackSrc?.Controller, x: distance));
                 }
             }
 
@@ -63,7 +63,7 @@ namespace KompasServer.GameCore
 
             foreach(var ctxt in ctxts)
             {
-                ctxt.SetAfterCardInfo(ctxt.BeforeCardInfo.Card);
+                ctxt.CacheCardInfoAfter(ctxt.mainCardInfoBefore.Card);
             }
 
             EffectsController.TriggerForCondition(Trigger.Move, ctxts.ToArray());

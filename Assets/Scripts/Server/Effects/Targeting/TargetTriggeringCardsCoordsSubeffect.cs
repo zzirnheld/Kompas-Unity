@@ -10,7 +10,7 @@ namespace KompasServer.Effects
 
         public override Task<ResolutionInfo> Resolve()
         {
-            var cardInfo = after ? Context.AfterCardInfo : Context.BeforeCardInfo;
+            var cardInfo = after ? Context.MainCardInfoAfter : Context.mainCardInfoBefore;
 
             if (cardInfo == null) throw new NullCardException(TargetWasNull);
             else if (!cardInfo.Position.Valid) throw new InvalidSpaceException(cardInfo.Position, NoValidSpaceTarget);

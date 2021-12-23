@@ -15,10 +15,10 @@ namespace KompasServer.GameCore
 
         public override void Add(GameCard card, IStackable stackSrc = null)
         {
-            var context = new ActivationContext(beforeCard: card, stackable: stackSrc, triggerer: Owner);
+            var context = new ActivationContext(mainCardBefore: card, stackable: stackSrc, player: Owner);
             bool wasKnown = card.KnownToEnemy;
             base.Add(card, stackSrc);
-            context.SetAfterCardInfo(card);
+            context.CacheCardInfoAfter(card);
             EffectsController.TriggerForCondition(Trigger.Rehand, context);
             ServerNotifier.NotifyRehand(card, wasKnown);
         }

@@ -245,7 +245,7 @@ namespace KompasCore.Effects
                 case IsSource: return potentialTarget?.Card == Source;
                 case NotSource: return potentialTarget?.Card != Source;
                 case IsTarget: return potentialTarget?.Card == Subeffect.Target;
-                case NotContextCard: return potentialTarget?.Card != context?.BeforeCardInfo?.Card;
+                case NotContextCard: return potentialTarget?.Card != context?.mainCardInfoBefore?.Card;
                 case AugmentsTarget: return potentialTarget?.AugmentedCard == Subeffect.Target;
                 case AugmentedBySource: return potentialTarget?.Augments.Contains(Source) ?? false;
                 case AugmentsCardRestriction: return augmentRestriction.Evaluate(potentialTarget?.AugmentedCard, x, context);

@@ -18,39 +18,39 @@ namespace KompasServer.GameCore
 
         protected override void AddCard(GameCard card, IStackable stackSrc = null)
         {
-            var context = new ActivationContext(beforeCard: card, stackable: stackSrc, triggerer: Owner);
+            var context = new ActivationContext(mainCardBefore: card, stackable: stackSrc, player: Owner);
             base.AddCard(card);
-            context.SetAfterCardInfo(card);
+            context.CacheCardInfoAfter(card);
             EffectsController.TriggerForCondition(Trigger.ToDeck, context);
             owner.ServerNotifier.NotifyDeckCount(Deck.Count);
         }
 
         public override void PushBottomdeck(GameCard card, IStackable stackSrc = null)
         {
-            var context = new ActivationContext(beforeCard: card, stackable: stackSrc, triggerer: Owner);
+            var context = new ActivationContext(mainCardBefore: card, stackable: stackSrc, player: Owner);
             bool wasKnown = card.KnownToEnemy;
             base.PushBottomdeck(card, stackSrc);
-            context.SetAfterCardInfo(card);
+            context.CacheCardInfoAfter(card);
             EffectsController.TriggerForCondition(Trigger.Bottomdeck, context);
             ServerNotifier.NotifyBottomdeck(card, wasKnown);
         }
 
         public override void PushTopdeck(GameCard card, IStackable stackSrc = null)
         {
-            var context = new ActivationContext(beforeCard: card, stackable: stackSrc, triggerer: Owner);
+            var context = new ActivationContext(mainCardBefore: card, stackable: stackSrc, player: Owner);
             bool wasKnown = card.KnownToEnemy;
             base.PushTopdeck(card, stackSrc);
-            context.SetAfterCardInfo(card);
+            context.CacheCardInfoAfter(card);
             EffectsController.TriggerForCondition(Trigger.Topdeck, context);
             ServerNotifier.NotifyTopdeck(card, wasKnown);
         }
 
         public override void ShuffleIn(GameCard card, IStackable stackSrc = null)
         {
-            var context = new ActivationContext(beforeCard: card, stackable: stackSrc, triggerer: Owner);
+            var context = new ActivationContext(mainCardBefore: card, stackable: stackSrc, player: Owner);
             bool wasKnown = card.KnownToEnemy;
             base.ShuffleIn(card, stackSrc);
-            context.SetAfterCardInfo(card);
+            context.CacheCardInfoAfter(card);
             EffectsController.TriggerForCondition(Trigger.Reshuffle, context);
             ServerNotifier.NotifyReshuffle(card, wasKnown);
         }

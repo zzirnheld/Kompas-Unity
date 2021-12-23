@@ -220,7 +220,7 @@ namespace KompasServer.GameCore
             EffectsController.PushToStack(new ServerHandSizeStackable(this, TurnServerPlayer), default);
 
             //trigger turn start effects
-            var context = new ActivationContext(triggerer: TurnServerPlayer);
+            var context = new ActivationContext(player: TurnServerPlayer);
             EffectsController.TriggerForCondition(Trigger.TurnStart, context);
 
             await EffectsController.CheckForResponse();
@@ -245,13 +245,13 @@ namespace KompasServer.GameCore
             {
                 var toDraw = controller.deckCtrl.Topdeck;
                 if (toDraw == null) break;
-                var eachDrawContext = new ActivationContext(beforeCard: toDraw, stackable: stackSrc, triggerer: controller);
+                var eachDrawContext = new ActivationContext(mainCardBefore: toDraw, stackable: stackSrc, player: controller);
                 toDraw.Rehand(controller, stackSrc);
-                eachDrawContext.SetAfterCardInfo(toDraw);
+                eachDrawContext.CacheCardInfoAfter(toDraw);
                 EffectsController.TriggerForCondition(Trigger.EachDraw, eachDrawContext);
                 drawn.Add(toDraw);
             }
-            var context = new ActivationContext(stackable: stackSrc, triggerer: controller, x: i);
+            var context = new ActivationContext(stackable: stackSrc, player: controller, x: i);
             EffectsController.TriggerForCondition(Trigger.DrawX, context);
             return drawn;
         }

@@ -5,54 +5,90 @@ namespace KompasCore.Effects
 {
     public class ActivationContext
     {
-        public readonly IGameCardInfo BeforeCardInfo;
-        public readonly IStackable Stackable;
-        public readonly Player Triggerer;
-        public readonly int? X;
-        public readonly Space Space;
-        // These two are for delayed
-        public readonly int StartIndex;
-        public readonly List<GameCard> Targets;
-        public readonly List<Space> Spaces;
+        // Information about the relevant triggering situation
+        public readonly IGameCardInfo mainCardInfoBefore;
+        public readonly IGameCardInfo secondaryCardInfoBefore;
+        public readonly IStackable stackable;
+        public readonly Player player;
+        public readonly int? x;
+        public readonly Space space;
 
-        public IGameCardInfo AfterCardInfo { get; private set; }
+        // Used for resuming delayed effects
+        public readonly int startIndex;
+        public readonly List<GameCard> targets;
+        public readonly List<Space> spaces;
 
-        public ActivationContext(GameCard beforeCard, IStackable stackable = null, Player triggerer = null,
-            int? x = null, Space space = null, int startIndex = 0, List<GameCard> targets = null, List<Space> spaces = null)
-            : this(beforeCard == null ? null : new GameCardInfo(beforeCard), 
-                  stackable, triggerer, x, space, startIndex, targets ?? new List<GameCard>(), spaces ?? new List<Space>())
-        { }
+        /// <summary>
+        /// The information for the main triggering card immediately after the triggering event occurred.
+        /// </summary>
+        public IGameCardInfo MainCardInfoAfter { get; private set; }
 
-        public ActivationContext(IGameCardInfo beforeCard = null, IStackable stackable = null, Player triggerer = null,
-            int? x = null, Space? space = null, int startIndex = 0, List<GameCard> targets = null, List<Space> spaces = null)
+        /// <summary>
+        /// The information for the secondary triggering card immediately after the triggering event occurred.
+        /// The secondary card could be the defender in an attacks trigger, etc.
+        /// </summary>
+        public IGameCardInfo SecondaryCardInfoAfter { get; private set; }
+
+        public ActivationContext(GameCard mainCardBefore = null,
+                                 GameCard secondaryCardBefore = null,
+                                 IStackable stackable = null,
+                                 Player player = null,
+                                 int? x = null,
+                                 Space space = null,
+                                 //Used for resuming delayed effects
+                                 int startIndex = 0,
+                                 List<GameCard> targets = null,
+                                 List<Space> spaces = null)
         {
-            BeforeCardInfo = beforeCard;
-            Stackable = stackable;
-            Triggerer = triggerer;
-            X = x;
-            Space = space?.Copy;
-            StartIndex = startIndex;
-            Targets = targets;
-            this.Spaces = spaces;
+            mainCardInfoBefore = GameCardInfo.CardInfoOf(mainCardBefore);
+            secondaryCardInfoBefore = GameCardInfo.CardInfoOf(secondaryCardBefore);
+            this.stackable = stackable;
+            this.player = player;
+            this.x = x;
+            this.space = space?.Copy;
+
+            this.startIndex = startIndex;
+            this.targets = targets ?? new List<GameCard>();
+            this.spaces = spaces ?? new List<Space>();
         }
 
-        public void SetAfterCardInfo(GameCard afterCard)
+        /// <summary>
+        /// Caches the state of the card(s) relevant to the effect immediately after the triggering event occurred
+        /// </summary>
+        /// <param name="mainCard">The main card whose information to cache</param>
+        /// <param name="secondaryCard">The secondary card whose information to cache, if any 
+        /// (like the attacker on a defends proc)</param>
+        public void CacheCardInfoAfter(GameCard mainCard, GameCard secondaryCard = null)
         {
-            if (AfterCardInfo != null) throw new System.ArgumentException("Already initialized AfterCardInfo on this context");
-            AfterCardInfo = new GameCardInfo(afterCard);
+            if (MainCardInfoAfter != null) 
+                throw new System.ArgumentException("Already initialized MainCardInfoAfter on this context");
+            else if (mainCardInfoBefore == null) 
+                throw new System.ArgumentNullException("Never stored mainCardInfoBefore, why are you creating MainCardInfoAfter?");
+            else 
+                MainCardInfoAfter = GameCardInfo.CardInfoOf(mainCard);
+
+            if (secondaryCard != null)
+            {
+                if (SecondaryCardInfoAfter != null)
+                    throw new System.ArgumentException("Already initialized SecondaryCardInfoAfter on this context");
+                else if (secondaryCardInfoBefore == null)
+                    throw new System.ArgumentNullException("Never stored secondaryCardInfoBefore, why are you creating SecondaryCardInfoAfter?");
+                else
+                    SecondaryCardInfoAfter = GameCardInfo.CardInfoOf(mainCard);
+            }
         }
 
         public override string ToString()
         {
             var sb = new System.Text.StringBuilder();
 
-            sb.Append(BeforeCardInfo == null ? "No triggering card, " : $"Card: {BeforeCardInfo.CardName}, ");
-            sb.Append(Stackable == null ? "No triggering stackable, " : $"Stackable from: {Stackable.Source?.CardName}, ");
-            sb.Append(Triggerer == null ? "No triggering player, " : $"Triggerer: {Triggerer.index}, ");
-            sb.Append(X == null ? "No X, " : $"X: {X}, ");
-            sb.Append(Space == null ? "No space, " : $"Space: {Space}, ");
-            sb.Append(Targets == null ? "No targets, " : $"Targets: {string.Join(", ", Targets)}, ");
-            sb.Append($"Starting at {StartIndex}");
+            sb.Append(mainCardInfoBefore == null ? "No triggering card, " : $"Card: {mainCardInfoBefore.CardName}, ");
+            sb.Append(stackable == null ? "No triggering stackable, " : $"Stackable {stackable}, ");
+            sb.Append(player == null ? "No triggering player, " : $"Triggerer: {player.index}, ");
+            sb.Append(x == null ? "No X, " : $"X: {x}, ");
+            sb.Append(space == null ? "No space, " : $"Space: {space}, ");
+            sb.Append(targets == null ? "No targets, " : $"Targets: {string.Join(", ", targets)}, ");
+            sb.Append($"Starting at {startIndex}");
 
             return sb.ToString();
         }

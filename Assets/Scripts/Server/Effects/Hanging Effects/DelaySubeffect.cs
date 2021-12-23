@@ -15,8 +15,8 @@ namespace KompasServer.Effects
         protected override IEnumerable<HangingEffect> CreateHangingEffects()
         {
             Debug.Log($"Is context null? {Context == null}");
-            Context?.Targets?.Clear();
-            Context?.Targets?.AddRange(Effect.Targets);
+            Context?.targets?.Clear();
+            Context?.targets?.AddRange(Effect.Targets);
             var delay = new DelayedHangingEffect(game: ServerGame,
                                                  triggerRestriction: triggerRestriction,
                                                  endCondition: endCondition,
@@ -29,7 +29,7 @@ namespace KompasServer.Effects
                                                  indexToResumeResolution: indexToResume,
                                                  controller: EffectController,
                                                  targets: new List<GameCard>(Effect.Targets),
-                                                 spaces: new List<Space>(Effect.SelectCoords(s => s)),
+                                                 spaces: new List<Space>(Effect.Coords),
                                                  clearIfResolve: clearWhenResume);
             return new List<HangingEffect>() { delay };
         }
