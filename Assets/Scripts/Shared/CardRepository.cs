@@ -23,9 +23,17 @@ public class CardRepository : MonoBehaviour
     public const string partialKeywordFolderPath = "Keyword Jsons/Partial Keywords/";
     public const string partialKeywordListFilePath = partialKeywordFolderPath + "Keyword List";
 
-    private static readonly string[] cardNamesToIgnore = new string[] {
-            "Square Kompas Logo"
-        };
+    private static readonly JsonSerializerSettings cardLoadingSettings = new JsonSerializerSettings 
+    {
+        TypeNameHandling = TypeNameHandling.Auto,
+        MaxDepth = null,
+        ReferenceLoopHandling = ReferenceLoopHandling.Serialize 
+    };
+
+    private static readonly string[] cardNamesToIgnore = new string[] 
+    {
+        "Square Kompas Logo"
+    };
 
     private static readonly Dictionary<string, string> cardJsons = new Dictionary<string, string>();
     private static readonly Dictionary<string, int> cardNameIDs = new Dictionary<string, int>();
@@ -124,13 +132,19 @@ public class CardRepository : MonoBehaviour
     public IEnumerable<string> GetJsonsFromNames(IEnumerable<string> names)
         => names.Select(n => GetJsonFromName(n)).Where(json => json != null);
 
-    #region Create Cards
-    public SerializableCard GetCardFromName(string name)
+    public ServerSubeffect[] InstantiateServerPartialKeyword(string keyword)
     {
-        if (!CardExists(name)) return null;
+        return JsonConvert.DeserializeObject<ServerSubeffect[]>(partialKeywordJsons[name], cardLoadingSettings);
+    }
 
-        return JsonConvert.DeserializeObject<SerializableCard>(cardJsons[name],
+    #region Create Cards
+    public bool CardNameIsCharacter(string name)
+    {
+        if (!CardExists(name)) return false;
+
+        var card = JsonConvert.DeserializeObject<SerializableCard>(cardJsons[name],
                 new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
+        return card.cardType == 'C';
     }
 
     public AvatarServerGameCard InstantiateServerAvatar(string cardName, ServerGame serverGame, ServerPlayer owner, int id)
@@ -141,15 +155,13 @@ public class CardRepository : MonoBehaviour
 
         try
         {
-            card = JsonConvert.DeserializeObject<ServerSerializableCard>(cardJsons[cardName],
-                new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto, MaxDepth = null, ReferenceLoopHandling = ReferenceLoopHandling.Serialize });
+            card = JsonConvert.DeserializeObject<ServerSerializableCard>(cardJsons[cardName], cardLoadingSettings);
             effects.AddRange(card.effects);
             for (int i = 0; i < card.keywords.Length; i++)
             {
                 var s = card.keywords[i];
                 var json = keywordJsons[s];
-                var eff = JsonConvert.DeserializeObject<ServerEffect>(json,
-                    new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto, MaxDepth = null, ReferenceLoopHandling = ReferenceLoopHandling.Serialize });
+                var eff = JsonConvert.DeserializeObject<ServerEffect>(json, cardLoadingSettings);
                 eff.arg = card.keywordArgs.Length > i ? card.keywordArgs[i] : 0;
                 effects.Add(eff);
             }
@@ -189,15 +201,13 @@ public class CardRepository : MonoBehaviour
 
         try
         {
-            cardInfo = JsonConvert.DeserializeObject<ServerSerializableCard>(cardJsons[name],
-                new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto, MaxDepth = null, ReferenceLoopHandling = ReferenceLoopHandling.Serialize });
+            cardInfo = JsonConvert.DeserializeObject<ServerSerializableCard>(cardJsons[name], cardLoadingSettings);
             effects.AddRange(cardInfo.effects);
             for (int i = 0; i < cardInfo.keywords.Length; i++)
             {
                 var s = cardInfo.keywords[i];
                 var keywordJson = keywordJsons[s];
-                var eff = JsonConvert.DeserializeObject<ServerEffect>(keywordJson,
-                    new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto, MaxDepth = null, ReferenceLoopHandling = ReferenceLoopHandling.Serialize });
+                var eff = JsonConvert.DeserializeObject<ServerEffect>(keywordJson, cardLoadingSettings);
                 eff.arg = cardInfo.keywordArgs.Length > i ? cardInfo.keywordArgs[i] : 0;
                 effects.Add(eff);
             }

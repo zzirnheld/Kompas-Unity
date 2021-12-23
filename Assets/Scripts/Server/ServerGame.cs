@@ -103,7 +103,7 @@ namespace KompasServer.GameCore
             if (uiCtrl.DebugMode) return true;
             if (deck.Count < MinDeckSize) return false;
             //first name should be that of the Avatar
-            if (cardRepo.GetCardFromName(deck[0]).cardType != 'C') return false;
+            if (!cardRepo.CardNameIsCharacter(deck[0])) return false;
 
             return true;
         }
