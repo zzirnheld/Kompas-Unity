@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
-    [System.Serializable]
     public abstract class TemporaryCardChangeSubeffect : ServerSubeffect
     {
         public TriggerRestriction triggerRestriction;

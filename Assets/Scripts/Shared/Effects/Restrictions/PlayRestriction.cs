@@ -4,7 +4,6 @@ using System.Linq;
 
 namespace KompasCore.Effects
 {
-    [System.Serializable]
     public class PlayRestriction
     {
         public GameCard Card { get; private set; }

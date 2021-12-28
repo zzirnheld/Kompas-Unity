@@ -1,6 +1,7 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
 using KompasServer.GameCore;
+using Newtonsoft.Json;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -45,7 +46,7 @@ namespace KompasServer.Effects
             var listRestriction = HandSizeListRestriction;
             listRestriction.minCanChoose = overHandSize;
             listRestriction.maxCanChoose = overHandSize;
-            string listRestrictionJson = JsonUtility.ToJson(listRestriction);
+            string listRestrictionJson = JsonConvert.SerializeObject(listRestriction);
 
             int[] choices = null;
             while (!TryAnswer(choices))

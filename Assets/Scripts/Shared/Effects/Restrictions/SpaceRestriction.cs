@@ -1,5 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.GameCore;
+using Newtonsoft.Json;
 using System;
 using System.Linq;
 using UnityEngine;
@@ -232,6 +233,6 @@ namespace KompasCore.Effects
             return spaceRestrictions.All(r => RestrictionValidWithDebug(r, space, theoreticalTarget, context));
         }
 
-        public override string ToString() => JsonUtility.ToJson(this);
+        public override string ToString() => JsonConvert.SerializeObject(this);
     }
 }

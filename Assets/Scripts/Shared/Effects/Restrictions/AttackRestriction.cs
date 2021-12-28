@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace KompasCore.Effects
 {
-    [System.Serializable]
     public class AttackRestriction
     {
         public const string ThisIsCharacter = "This is Character";

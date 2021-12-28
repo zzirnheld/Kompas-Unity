@@ -110,7 +110,7 @@ namespace KompasCore.Effects
         public const string CanPlayToTargetSpace = "Can be Played to Target Space";
         #endregion restrictions
 
-        //because JsonUtility will fill in all values with defaults if not present
+        //because JsonConvert will fill in all values with defaults if not present
         public string[] cardRestrictions = new string[0];
 
         public string nameIs;

@@ -3,7 +3,6 @@ using System.Linq;
 
 namespace KompasCore.Effects
 {
-    [System.Serializable]
     public class XRestriction
     {
         public const string Positive = ">0";

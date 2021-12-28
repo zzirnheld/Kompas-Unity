@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
-    [System.Serializable]
     public class ServerTrigger : Trigger
     {
         public ServerEffect serverEffect;

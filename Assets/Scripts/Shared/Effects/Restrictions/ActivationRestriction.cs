@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace KompasCore.Effects
 {
-    [System.Serializable]
     public class ActivationRestriction
     {
         public Effect Effect { get; private set; }

@@ -6,7 +6,6 @@ using KompasCore.GameCore;
 
 namespace KompasClient.Effects
 {
-    [System.Serializable]
     public class ClientEffect : Effect, IClientStackable
     {
         public ClientPlayer ClientController;

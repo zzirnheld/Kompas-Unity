@@ -7,7 +7,6 @@ namespace KompasCore.Effects
     /// <summary>
     /// Not abstract because it's instantiated as part of loading subeffects
     /// </summary>
-    [System.Serializable]
     public class Subeffect
     {
         #region reasons for impossible

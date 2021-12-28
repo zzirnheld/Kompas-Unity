@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace KompasCore.Effects
 {
-    [System.Serializable]
     public class MovementRestriction
     {
         private const string Default = "Default";

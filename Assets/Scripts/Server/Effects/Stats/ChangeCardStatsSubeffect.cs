@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
-    [System.Serializable]
     public class ChangeCardStatsSubeffect : ServerSubeffect
     {
         public int nMult = 0;

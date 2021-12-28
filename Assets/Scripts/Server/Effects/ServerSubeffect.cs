@@ -7,7 +7,6 @@ using UnityEngine;
 
 namespace KompasServer.Effects
 {
-    [System.Serializable]
     public abstract class ServerSubeffect : Subeffect
     {
         public override Player Controller => EffectController;

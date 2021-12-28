@@ -1,12 +1,12 @@
 ﻿using KompasClient.GameCore;
 using KompasServer.GameCore;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace KompasCore.Networking
 {
     //not abstract so can deserialize to it
-    [System.Serializable]
     public class Packet
     {
         //TODO replace these all with just the type of the packet?
@@ -141,7 +141,7 @@ namespace KompasCore.Networking
         /// <returns></returns>
         public virtual Packet GetInversion(bool known = true) => known ? Copy() : null;
 
-        public override string ToString() => JsonUtility.ToJson(this);
+        public override string ToString() => JsonConvert.SerializeObject(this);
     }
 }
 

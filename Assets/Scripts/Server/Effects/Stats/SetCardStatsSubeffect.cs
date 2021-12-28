@@ -5,8 +5,6 @@ namespace KompasServer.Effects
 {
     public class SetCardStatsSubeffect : ServerSubeffect
     {
-        public bool forbidNotBoard = true;
-
         public int nVal = -1;
         public int eVal = -1;
         public int sVal = -1;

@@ -3,11 +3,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using KompasCore.Cards;
 using KompasCore.Effects;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace KompasServer.Effects
 {
-    [System.Serializable]
     public class ChooseFromListSubeffect : ServerSubeffect
     {
         public const string NoOrder = "No Order";
@@ -49,7 +49,7 @@ namespace KompasServer.Effects
             int[] targetIds = potentialTargets.Select(c => c.ID).ToArray();
             listRestriction.PrepareForSending(Effect.X);
             Debug.Log($"Potential targets {string.Join(", ", targetIds)}");
-            return await ServerPlayer.serverAwaiter.GetCardListTargets(name, blurb, targetIds, JsonUtility.ToJson(listRestriction));
+            return await ServerPlayer.serverAwaiter.GetCardListTargets(name, blurb, targetIds, JsonConvert.SerializeObject(listRestriction));
         }
 
         private IEnumerable<GameCard> GetPossibleTargets()

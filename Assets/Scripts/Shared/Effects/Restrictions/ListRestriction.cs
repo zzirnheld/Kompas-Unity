@@ -6,7 +6,6 @@ using System.Text;
 
 namespace KompasCore.Effects
 {
-    [System.Serializable]
     public class ListRestriction
     {
         public Subeffect Subeffect { get; private set; }
@@ -76,7 +75,7 @@ namespace KompasCore.Effects
         /// Default ListRestriction Json. <br></br>
         /// A json representation of <see cref="Default"/>
         /// </summary>
-        public static readonly string DefaultJson = JsonUtility.ToJson(Default);
+        public static readonly string DefaultJson = JsonConvert.SerializeObject(Default);
 
         /// <summary>
         /// You can read, you know what this does.

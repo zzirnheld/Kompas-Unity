@@ -9,7 +9,6 @@ using UnityEngine;
 
 namespace KompasServer.Effects
 {
-    [System.Serializable]
     public class ServerEffect : Effect, IServerStackable
     {
         public const string EffectWasNegated = "Effect was negated";

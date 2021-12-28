@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 
 namespace KompasServer.Effects
 {
-    [System.Serializable]
     public class RevealSubeffect : CardChangeStateSubeffect
     {
         public override bool IsImpossible() => Target == null;
