@@ -3,6 +3,7 @@ using UnityEngine;
 using KompasCore.Cards;
 using System.Linq;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects
 {
