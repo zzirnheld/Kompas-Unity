@@ -14,9 +14,12 @@ namespace KompasCore.Effects
         public readonly Space space;
 
         // Used for resuming delayed effects
-        public readonly int startIndex;
-        public readonly List<GameCard> targets;
-        public readonly List<Space> spaces;
+        public int StartIndex { get; private set; }
+        public List<GameCard> Targets { get; private set; }
+        public List<Space> Spaces { get; private set; }
+
+        public ActivationContext Copy 
+            => new ActivationContext(mainCardInfoBefore, MainCardInfoAfter, stackable, player, x, space);
 
         /// <summary>
         /// The information for the main triggering card immediately after the triggering event occurred.
@@ -29,27 +32,46 @@ namespace KompasCore.Effects
         /// </summary>
         public IGameCardInfo SecondaryCardInfoAfter { get; private set; }
 
+        private ActivationContext(IGameCardInfo mainCardInfoBefore,
+                                  IGameCardInfo secondaryCardInfoBefore,
+                                  IStackable stackable,
+                                  Player player,
+                                  int? x,
+                                  Space space)
+        {
+            this.mainCardInfoBefore = mainCardInfoBefore;
+            this.secondaryCardInfoBefore = secondaryCardInfoBefore;
+            this.stackable = stackable;
+            this.player = player;
+            this.x = x;
+            this.space = space;
+        }
+
         public ActivationContext(GameCard mainCardBefore = null,
                                  GameCard secondaryCardBefore = null,
                                  IStackable stackable = null,
                                  Player player = null,
                                  int? x = null,
-                                 Space space = null,
-                                 //Used for resuming delayed effects
-                                 int startIndex = 0,
-                                 List<GameCard> targets = null,
-                                 List<Space> spaces = null)
-        {
-            mainCardInfoBefore = GameCardInfo.CardInfoOf(mainCardBefore);
-            secondaryCardInfoBefore = GameCardInfo.CardInfoOf(secondaryCardBefore);
-            this.stackable = stackable;
-            this.player = player;
-            this.x = x;
-            this.space = space?.Copy;
+                                 Space space = null)
+            : this(GameCardInfo.CardInfoOf(mainCardBefore),
+                   GameCardInfo.CardInfoOf(secondaryCardBefore),
+                   stackable,
+                   player,
+                   x,
+                   space?.Copy)
+        { }
 
-            this.startIndex = startIndex;
-            this.targets = targets ?? new List<GameCard>();
-            this.spaces = spaces ?? new List<Space>();
+        /// <summary>
+        /// Set any information relevant to resuming an effect's resolution
+        /// </summary>
+        /// <param name="startIndex">The index at which to start resolving the effect (again)</param>
+        /// <param name="targets">The targets to resume with, if any</param>
+        /// <param name="spaces">The spaces to resume with, if any</param>
+        public void SetResumeInfo(int startIndex, List<GameCard> targets, List<Space> spaces)
+        {
+            StartIndex = startIndex;
+            Targets = targets;
+            Spaces = spaces;
         }
 
         /// <summary>
@@ -87,8 +109,8 @@ namespace KompasCore.Effects
             sb.Append(player == null ? "No triggering player, " : $"Triggerer: {player.index}, ");
             sb.Append(x == null ? "No X, " : $"X: {x}, ");
             sb.Append(space == null ? "No space, " : $"Space: {space}, ");
-            sb.Append(targets == null ? "No targets, " : $"Targets: {string.Join(", ", targets)}, ");
-            sb.Append($"Starting at {startIndex}");
+            sb.Append(Targets == null ? "No targets, " : $"Targets: {string.Join(", ", Targets)}, ");
+            sb.Append($"Starting at {StartIndex}");
 
             return sb.ToString();
         }

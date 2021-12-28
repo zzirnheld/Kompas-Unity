@@ -1,0 +1,21 @@
+[
+    {
+        "$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+        "numTimesToDelay":0,
+        "indexToResume":1,
+        "fallOffCondition":"",
+        "endCondition":"Discard",
+        "triggerRestriction":{
+            "triggerRestrictions":["Triggerer is Secondary Context Target"]
+        }
+    },
+    {
+        "$type":"KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+    },
+    {
+        "$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+    },
+    {
+        "$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+    }
+]

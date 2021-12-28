@@ -31,7 +31,6 @@ namespace KompasServer.Effects
             Debug.Log($"Targets are {string.Join(",", targets?.Select(c => c.ToString()) ?? new string[] { "Null" })}");
             this.targets = new List<GameCard>(targets);
             this.spaces = new List<Space>(spaces);
-            Debug.Log($"Clear when resume? {clearIfResolve}");
             numTimesDelayed = 0;
         }
 
@@ -47,16 +46,18 @@ namespace KompasServer.Effects
                 numTimesDelayed++;
                 return false;
             }
-
-            numTimesDelayed = 0;
-            return true;
+            else
+            {
+                numTimesDelayed = 0;
+                return true;
+            }
         }
 
-        protected override void Resolve()
+        protected override void Resolve(ActivationContext context)
         {
-            Debug.Log($"Resuming {this}");
-            var context = new ActivationContext(startIndex: indexToResumeResolution, targets: targets);
-            serverGame.EffectsController.PushToStack(toResume, controller, context);
+            var myContext = context.Copy;
+            myContext.SetResumeInfo(indexToResumeResolution, targets, spaces);
+            serverGame.EffectsController.PushToStack(toResume, controller, myContext);
         }
     }
 }

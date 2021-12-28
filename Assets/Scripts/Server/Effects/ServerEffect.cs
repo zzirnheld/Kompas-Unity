@@ -126,8 +126,8 @@ namespace KompasServer.Effects
             X = context.x ?? 0;
 
             targetsList.Clear();
-            if (context.targets != null) targetsList.AddRange(context.targets);
-            if (context.spaces != null) coords.AddRange(context.spaces);
+            if (context.Targets != null) targetsList.AddRange(context.Targets);
+            if (context.Spaces != null) coords.AddRange(context.Spaces);
 
             coords.Clear();
             
@@ -140,7 +140,7 @@ namespace KompasServer.Effects
 
             //resolve the effect if possible
             if (Negated) await EffectImpossible(EffectWasNegated);
-            else await Resolve(context.startIndex);
+            else await Resolve(context.StartIndex);
 
             //after all subeffects have finished, clean up
             FinishResolution();

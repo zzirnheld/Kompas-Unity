@@ -10,7 +10,7 @@ namespace KompasCore.Effects
     {
         public Game Game { get; private set; }
 
-        #region trigger conditions
+        #region trigger restrictions
         public const string ThisCardTriggered = "This Card Triggered"; //0,
 
         //todo deprecate this card in play to this card fits restriction
@@ -139,7 +139,7 @@ namespace KompasCore.Effects
                 case TriggererNowFitsRestirction: return nowRestriction.Evaluate(context.MainCardInfoAfter, context);
                 case TriggerersAugmentedCardFitsRestriction: return cardRestriction.Evaluate(context.mainCardInfoBefore.AugmentedCard, context);
                 case StackableSourceFitsRestriction: return sourceRestriction.Evaluate(context.stackable?.Source, context);
-                case TriggererIsSecondaryContextTarget: return secondary?.targets?.Any(c => c == context.mainCardInfoBefore?.Card) ?? false;
+                case TriggererIsSecondaryContextTarget: return secondary?.Targets?.Any(c => c == context.mainCardInfoBefore?.Card) ?? false;
                 case StackableSourceNotThisEffect: return context.stackable != SourceEffect;
 
                 case CardNowFurtherFromSourceThanItWas:

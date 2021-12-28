@@ -19,9 +19,6 @@ namespace KompasServer.Effects
             target.SetNegated(true, source.Effect);
         }
 
-        protected override void Resolve()
-        {
-            target.SetNegated(false, source.Effect);
-        }
+        protected override void Resolve(ActivationContext context) => target.SetNegated(false, source.Effect);
     }
 }

@@ -19,10 +19,8 @@ namespace KompasServer.Effects
             this.target = target;
         }
 
-        protected override void Resolve()
-        {
-            target.Owner.annihilationCtrl.Annihilate(target);
-        }
+        protected override void Resolve(ActivationContext context)
+            => target.Owner.annihilationCtrl.Annihilate(target);
 
         public override string ToString()
         {

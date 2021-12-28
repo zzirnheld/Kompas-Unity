@@ -30,9 +30,7 @@ namespace KompasServer.Effects
             buffRecipient.AddToStats((nBuff, eBuff, sBuff, wBuff, cBuff, aBuff), stackSrc: sourceEff);
         }
 
-        protected override void Resolve()
-        {
-            buffRecipient.AddToStats((-1 * nBuff, -1 * eBuff, -1 * sBuff, -1 * wBuff, -1 * cBuff, -1 * aBuff), stackSrc: sourceEff);
-        }
+        protected override void Resolve(ActivationContext context)
+            => buffRecipient.AddToStats((-1 * nBuff, -1 * eBuff, -1 * sBuff, -1 * wBuff, -1 * cBuff, -1 * aBuff), stackSrc: sourceEff);
     }
 }

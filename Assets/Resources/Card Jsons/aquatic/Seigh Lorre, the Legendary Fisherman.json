@@ -7,7 +7,6 @@
             "blurb":"Sail",
 			"triggerData":
 			{
-				"blurb":"Activate",
 				"triggerCondition":"Turn Start",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play"]
