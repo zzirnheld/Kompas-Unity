@@ -19,7 +19,7 @@ namespace KompasCore.Effects
         public const string MinCanChoose = "Min Can Choose";
         public const string MaxCanChoose = "Max Can Choose";
 
-        public const string CanPayCost = "Can Pay Cost"; // 1 //effect's controller is able to pay the cost of all of them together
+        public const string CanPayCost = "Can Pay Cost"; //effect's controller is able to pay the cost of all of them together
         public const string DistinctCosts = "Distinct Costs";
 
         public const string MinOfX = "Min Can Choose: X";
@@ -104,22 +104,21 @@ namespace KompasCore.Effects
 
         private bool EvaluateRestriction(string restriction, IEnumerable<GameCard> cards)
         {
-            switch (restriction)
+            return restriction switch
             {
-                case MinCanChoose: return cards.Count() >= minCanChoose;
-                case MaxCanChoose: return cards.Count() <= maxCanChoose;
-                case CanPayCost:
-                    int totalCost = 0;
-                    foreach (var card in cards) totalCost += card.Cost;
-                    return Subeffect.Controller.Pips >= totalCost;
-                case DistinctCosts:
-                    return cards.Select(c => c.Cost).Distinct().Count() == cards.Count();
-                case MinOfX: return cards.Count() <= Subeffect.Effect.X;
-                case MaxOfX: return cards.Count() <= Subeffect.Effect.X;
-                default: throw new System.ArgumentException($"Invalid list restriction {restriction}", "restriction");
-            }
+                MinCanChoose    => cards.Count() >= minCanChoose,
+                MaxCanChoose    => cards.Count() <= maxCanChoose,
+
+                CanPayCost      => Subeffect.Controller.Pips >= cards.Sum(c => c.Cost),
+                DistinctCosts   => cards.Select(c => c.Cost).Distinct().Count() == cards.Count(),
+
+                MinOfX          => cards.Count() <= Subeffect.Effect.X,
+                MaxOfX          => cards.Count() <= Subeffect.Effect.X,
+                _ => throw new System.ArgumentException($"Invalid list restriction {restriction}", "restriction"),
+            };
         }
 
+        //TODO use #ifdef to be able to turn on debug with a compile flag or something
         private bool EvaluateRestrictionWithDebug(string restriction, IEnumerable<GameCard> cards)
         {
             bool valid = EvaluateRestriction(restriction, cards);
@@ -163,12 +162,15 @@ namespace KompasCore.Effects
                     }
                     if(i < minCanChoose) return false;
                     return costAccumulation <= Subeffect.Controller.Pips;
+
                 case MinOfX: return potentialTargets.Count() >= Subeffect.Effect.X;
                 case MinCanChoose: return potentialTargets.Count() >= minCanChoose;
                 case DistinctCosts: return potentialTargets.Select(c => c.Cost).Distinct().Count() > (HasMin ? 0 : minCanChoose);
+
                 case MaxOfX:
                 case MaxCanChoose: 
                     return true;
+
                 default: throw new System.ArgumentException($"Invalid list restriction {restriction}", "restriction");
             }
         }

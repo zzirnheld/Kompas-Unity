@@ -53,7 +53,6 @@ namespace KompasServer.Effects
         /// </summary>
         public virtual Task<ResolutionInfo> OnImpossible(string why)
         {
-            Debug.Log($"Base On Impossible called for {GetType()}");
             ServerEffect.OnImpossible = null;
             return Task.FromResult(ResolutionInfo.Impossible(why));
         }
