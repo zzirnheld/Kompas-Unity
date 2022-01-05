@@ -1,0 +1,33 @@
+{
+	"cardType":67,
+	"cardName":"S4MUR41",
+	"effText":"Ephemeral Speedemon Golem.",
+	"effects":[],
+	"MovementRestriction":{
+		"normalRestrictionsFromJson":[
+			"Default",
+			"Activated",
+            "Can Move Enough Through Empty or Restricted Spaces"
+		],
+        "normalRestrictionsToIgnore":[
+            "Can Move Enough Spaces"
+        ],
+        "throughSpacesRestriction":{
+            "spaceRestrictions":[],
+            "mustBeEmpty":false
+        }
+	},
+	"AttackRestriction":{
+		"attackRestrictionsArray":[
+			"Default",
+			"This is Activated"
+		]
+	},
+	"keywords":["Speedemon"],
+	"n":3,
+	"e":4,
+	"s":7,
+	"w":6,
+	"subtypes":["Mech","Golem"],
+	"subtypeText":"Mech Golem"
+}
