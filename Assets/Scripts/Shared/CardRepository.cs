@@ -291,7 +291,7 @@ public class CardRepository : MonoBehaviour
         avatar.gameObject.GetComponentInChildren<ClientCardMouseController>().ClientGame = clientGame;
         avatar.cardCtrl.SetImage(avatar.CardName, false);
         clientGame.cardsByID.Add(id, avatar);
-        avatar.clientCardCtrl.ApplySettings(clientGame.clientUISettingsCtrl.ClientUISettings);
+        avatar.clientCardCtrl.ApplySettings(clientGame.clientUISettingsCtrl.ClientSettings);
         return avatar;
     }
 
@@ -343,7 +343,7 @@ public class CardRepository : MonoBehaviour
         card.SetInfo(cardInfo, clientGame, owner, effects.ToArray(), id);
         card.cardCtrl.SetImage(card.CardName, false);
         card.gameObject.GetComponentInChildren<ClientCardMouseController>().ClientGame = clientGame;
-        card.clientCardCtrl.ApplySettings(clientGame.clientUISettingsCtrl.ClientUISettings);
+        card.clientCardCtrl.ApplySettings(clientGame.clientUISettingsCtrl.ClientSettings);
         return card;
     }
 

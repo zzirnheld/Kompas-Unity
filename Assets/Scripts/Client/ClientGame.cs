@@ -41,8 +41,10 @@ namespace KompasClient.GameCore
         public ClientNetworkController clientNetworkCtrl;
         public ClientNotifier clientNotifier;
         public ClientUIController clientUICtrl;
-        public ClientUISettingsController clientUISettingsCtrl;
+        public ClientSettingsUIController clientUISettingsCtrl;
         public ClientEffectsController clientEffectsCtrl;
+
+        public ClientSettings ClientSettings => clientUISettingsCtrl.ClientSettings;
 
         //turn players?
         public bool FriendlyTurn => TurnPlayerIndex == 0;
@@ -79,7 +81,7 @@ namespace KompasClient.GameCore
         public override IEnumerable<IStackable> StackEntries => clientEffectsCtrl.StackEntries;
 
         public bool canZoom = false;
-        public ClientUISettings ClientUISettings => clientUISettingsCtrl.ClientUISettings;
+        public ClientSettings ClientUISettings => clientUISettingsCtrl.ClientSettings;
 
         //dirty card set
         private readonly HashSet<GameCard> dirtyCardList = new HashSet<GameCard>();
@@ -198,7 +200,7 @@ namespace KompasClient.GameCore
 
         public void ApplySettings()
         {
-            var uiSettings = clientUISettingsCtrl.ClientUISettings;
+            var uiSettings = clientUISettingsCtrl.ClientSettings;
             ClientCameraController.ZoomThreshold = uiSettings.zoomThreshold;
             foreach (var card in ClientCards) card.clientCardCtrl.ApplySettings(uiSettings);
         }

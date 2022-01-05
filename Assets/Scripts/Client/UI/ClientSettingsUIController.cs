@@ -7,11 +7,10 @@ using KompasClient.GameCore;
 
 namespace KompasClient.UI
 {
-    public class ClientUISettingsController : MonoBehaviour
+    public class ClientSettingsUIController : MonoBehaviour
     {
-        public string ClientUISettingsPath => Application.persistentDataPath + "/ClientUISettings.json";
-
-        public ClientUISettings ClientUISettings { get; private set; }
+        public string ClientSettingsPath => Application.persistentDataPath + "/ClientUISettings.json";
+        public ClientSettings ClientSettings { get; private set; }
 
         public ClientGame clientGame;
         public TMP_Dropdown statHighlightDropdown;
@@ -26,24 +25,24 @@ namespace KompasClient.UI
 
         public void LoadSettings()
         {
-            if (!File.Exists(ClientUISettingsPath))
+            if (!File.Exists(ClientSettingsPath))
             {
-                ClientUISettings = ClientUISettings.Default;
+                ClientSettings = ClientSettings.Default;
                 SaveSettings();
             }
             else
             {
 
-                string settingsJson = File.ReadAllText(ClientUISettingsPath);
+                string settingsJson = File.ReadAllText(ClientSettingsPath);
                 try
                 {
-                    if (string.IsNullOrEmpty(settingsJson)) ClientUISettings = ClientUISettings.Default;
-                    else ClientUISettings = JsonConvert.DeserializeObject<ClientUISettings>(settingsJson).Cleanup();
+                    if (string.IsNullOrEmpty(settingsJson)) ClientSettings = ClientSettings.Default;
+                    else ClientSettings = JsonConvert.DeserializeObject<ClientSettings>(settingsJson).Cleanup();
                 }
                 catch (ArgumentException a)
                 {
                     Debug.LogError($"Failed to load settings.\n{a.Message}.\n{a.StackTrace}");
-                    ClientUISettings = ClientUISettings.Default;
+                    ClientSettings = ClientSettings.Default;
                 }
             }
 
@@ -54,8 +53,8 @@ namespace KompasClient.UI
         {
             try
             {
-                string settingsJson = JsonConvert.SerializeObject(ClientUISettings);
-                File.WriteAllText(ClientUISettingsPath, settingsJson);
+                string settingsJson = JsonConvert.SerializeObject(ClientSettings);
+                File.WriteAllText(ClientSettingsPath, settingsJson);
             }
             catch (ArgumentException a)
             {
@@ -80,33 +79,32 @@ namespace KompasClient.UI
                 confirmTargetsDropdown.options.Add(new TMP_Dropdown.OptionData() { text = o.ToString() });
             }
 
-
-            statHighlightDropdown.value = (int) ClientUISettings.statHighlight;
-            confirmTargetsDropdown.value = (int) ClientUISettings.confirmTargets;
-            zoomThresholdInput.text = ClientUISettings.zoomThreshold.ToString("n1");
+            statHighlightDropdown.value = (int) ClientSettings.statHighlight;
+            confirmTargetsDropdown.value = (int) ClientSettings.confirmTargets;
+            zoomThresholdInput.text = ClientSettings.zoomThreshold.ToString("n1");
 
             gameObject.SetActive(true);
         }
 
         public void SetStatHighlight(int index)
         {
-            ClientUISettings.statHighlight = (StatHighlight)index;
+            ClientSettings.statHighlight = (StatHighlight)index;
             ApplySettings();
         }
 
         public void SetConfirmTargets(int index)
         {
-            ClientUISettings.confirmTargets = (ConfirmTargets)index;
+            ClientSettings.confirmTargets = (ConfirmTargets)index;
             ApplySettings();
         }
 
         public void SetZoomThreshold(string thresholdString)
         {
-            if (!float.TryParse(thresholdString, out ClientUISettings.zoomThreshold)
-                || ClientUISettings.zoomThreshold < 5f)
-                ClientUISettings.zoomThreshold = ClientUISettings.DefaultZoomThreshold;
+            if (!float.TryParse(thresholdString, out ClientSettings.zoomThreshold)
+                || ClientSettings.zoomThreshold < 5f)
+                ClientSettings.zoomThreshold = ClientSettings.DefaultZoomThreshold;
 
-            zoomThresholdInput.text = ClientUISettings.zoomThreshold.ToString("n1");
+            zoomThresholdInput.text = ClientSettings.zoomThreshold.ToString("n1");
             ApplySettings();
         }
 
@@ -119,26 +117,28 @@ namespace KompasClient.UI
     public enum StatHighlight { NoHighlight, ColoredBack }
     public enum ConfirmTargets { No, Prompt }
 
-    public class ClientUISettings
+    public class ClientSettings
     {
         public const float DefaultZoomThreshold = 14f;
 
         public StatHighlight statHighlight;
         public float zoomThreshold;
         public ConfirmTargets confirmTargets;
+        public string defaultIP;
 
-        public static ClientUISettings Default => new ClientUISettings()
+        public static ClientSettings Default => new ClientSettings()
         {
             statHighlight = StatHighlight.NoHighlight,
             zoomThreshold = DefaultZoomThreshold,
-            confirmTargets = ConfirmTargets.No
+            confirmTargets = ConfirmTargets.No,
+            defaultIP = ""
         };
 
         /// <summary>
         /// Updates any json-default values to their regular defaults
         /// </summary>
         /// <returns><see cref="this"/></returns>
-        public ClientUISettings Cleanup()
+        public ClientSettings Cleanup()
         {
             if (zoomThreshold == default) zoomThreshold = DefaultZoomThreshold;
 
