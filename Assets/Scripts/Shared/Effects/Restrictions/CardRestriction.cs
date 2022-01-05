@@ -85,6 +85,7 @@ namespace KompasCore.Effects
         public const string CanBeHealed = "Can Be Healed";
 
         public const string Negated = "Negated";
+        public const string Activated = "Activated";
         public const string HasMovement = "Has Movement";
         public const string OutOfMovement = "Out of Movement";
 
@@ -201,17 +202,20 @@ namespace KompasCore.Effects
                 //targets
                 AlreadyTarget       => Effect.Targets.Contains(potentialTarget),
                 NotAlreadyTarget    => !Effect.Targets.Contains(potentialTarget),
+
                 //names
                 NameIs                  => potentialTarget?.CardName == nameIs,
                 SameName                => Subeffect.Target.CardName == potentialTarget?.CardName,
                 SameNameAsSource        => potentialTarget?.CardName == Source.CardName,
                 DistinctNameFromTargets => Effect.Targets.All(card => card.CardName != potentialTarget?.CardName),
                 DistinctNameFromSource  => Source.CardName != potentialTarget?.CardName,
+
                 //different
                 DifferentFromSource         => potentialTarget?.Card != Source,
                 DifferentFromTarget         => potentialTarget?.Card != Subeffect.Target,
                 DifferentFromOtherTargets   => Subeffect.Effect.Targets.All(c => !c.Equals(potentialTarget)),
                 DifferentFromAugmentedCard  => potentialTarget?.Card != Source.AugmentedCard,
+
                 //card types
                 IsCharacter     => potentialTarget?.CardType == 'C',
                 IsSpell         => potentialTarget?.CardType == 'S',
@@ -219,6 +223,7 @@ namespace KompasCore.Effects
                 NotAugment      => potentialTarget?.CardType != 'A',
                 Fast            => potentialTarget?.Fast ?? false,
                 SpellSubtypes   => potentialTarget?.SpellSubtypes.Intersect(spellSubtypes).Any() ?? false,
+
                 //control
                 Friendly            => potentialTarget?.Controller == Controller,
                 Enemy               => potentialTarget?.Controller != Controller,
@@ -228,13 +233,16 @@ namespace KompasCore.Effects
                 ControllerMatchesTarget         => potentialTarget?.Controller == Subeffect.Target.Controller,
                 ControllerMatchesPlayerTarget   => potentialTarget?.Controller == Subeffect.Player,
                 ControllerIsntPlayerTarget      => potentialTarget?.Controller != Subeffect.Player,
+
                 //summoned
                 Summoned    => potentialTarget?.Summoned ?? false,
                 Avatar      => potentialTarget?.IsAvatar ?? false,
                 NotAvatar   => !potentialTarget?.IsAvatar ?? false,
+
                 //subtypes
                 SubtypesInclude => subtypesInclude.All(s => potentialTarget?.SubtypeText.Contains(s) ?? false),
                 SubtypesExclude => subtypesExclude.All(s => !potentialTarget?.SubtypeText.Contains(s) ?? false),
+
                 //is
                 IsSource        => potentialTarget?.Card == Source,
                 NotSource       => potentialTarget?.Card != Source,
@@ -249,39 +257,57 @@ namespace KompasCore.Effects
 
                 WieldsAugmentFittingRestriction     => potentialTarget?.Augments.Any(c => augmentRestriction.Evaluate(c, context)) ?? false,
                 WieldsNoAugmentFittingRestriction   => !(potentialTarget?.Augments.Any(c => augmentRestriction.Evaluate(c, context)) ?? false),
+
                 //location
-                Hand => potentialTarget?.Location == CardLocation.Hand,
-                Deck => potentialTarget?.Location == CardLocation.Deck,
-                Discard => potentialTarget?.Location == CardLocation.Discard,
-                Board => potentialTarget?.Location == CardLocation.Field,
-                Annihilated => potentialTarget?.Location == CardLocation.Annihilation,
-                LocationInList => locations.Contains(potentialTarget?.Location ?? CardLocation.Nowhere),
-                Hidden => !potentialTarget?.KnownToEnemy ?? false,
+                Hand            => potentialTarget?.Location == CardLocation.Hand,
+                Deck            => potentialTarget?.Location == CardLocation.Deck,
+                Discard         => potentialTarget?.Location == CardLocation.Discard,
+                Board           => potentialTarget?.Location == CardLocation.Field,
+                Annihilated     => potentialTarget?.Location == CardLocation.Annihilation,
+                LocationInList  => locations.Contains(potentialTarget?.Location ?? CardLocation.Nowhere),
+                Hidden          => !potentialTarget?.KnownToEnemy ?? false,
+
                 //stats
                 CardValueFitsXRestriction => xRestriction.Evaluate(cardValue.GetValueOf(potentialTarget)),
-                CanBeHealed => potentialTarget?.Hurt ?? false,
-                Negated => potentialTarget?.Negated ?? false,
-                HasMovement => potentialTarget?.SpacesCanMove > 0,
-                OutOfMovement => potentialTarget?.SpacesCanMove <= 0,
+                CanBeHealed     => potentialTarget?.Hurt ?? false,
+                Activated       => potentialTarget?.Activated ?? false,
+                Negated         => potentialTarget?.Negated ?? false,
+                HasMovement     => potentialTarget?.SpacesCanMove > 0,
+                OutOfMovement   => potentialTarget?.SpacesCanMove <= 0,
+
                 //positioning
                 SpaceFitsRestriction => spaceRestriction.Evaluate(potentialTarget?.Position ?? Space.Nowhere, context),
                 SourceInThisAOE => potentialTarget?.CardInAOE(Source) ?? false,
                 IndexInListGTC => potentialTarget?.IndexInList > constant,
                 IndexInListLTC => potentialTarget?.IndexInList < constant,
                 IndexInListLTX => potentialTarget?.IndexInList < x,
+
+                //fights
+                AttackingCardFittingRestriction
+                    => Source.Game.StackEntries.Any(e => e is Attack atk
+                        && atk.attacker == potentialTarget?.Card
+                        && attackedCardRestriction.Evaluate(atk.defender, context)),
+                IsDefendingFromSource
+                    => Source.Game.StackEntries.Any(s => s is Attack atk && atk.attacker == Source && atk.defender == potentialTarget?.Card)
+                    || (Source.Game.CurrStackEntry is Attack atk2 && atk2.attacker == Source && atk2.defender == potentialTarget?.Card),
+
                 //misc
-                CanBePlayed => Subeffect.Game.ExistsEffectPlaySpace(potentialTarget?.PlayRestriction, Effect),
-                EffectControllerCanPayCost => Subeffect.Effect.Controller.Pips >= potentialTarget?.Cost * costMultiplier / costDivisor,
                 Augmented => potentialTarget?.Augments.Any() ?? false,
-                IsDefendingFromSource => Source.Game.StackEntries.Any(s => s is Attack atk && atk.attacker == Source && atk.defender == potentialTarget?.Card)
-|| (Source.Game.CurrStackEntry is Attack atk2 && atk2.attacker == Source && atk2.defender == potentialTarget?.Card),
-                CanPlayTargetToThisCharactersSpace => Subeffect.Target.PlayRestriction.EvaluateEffectPlay(potentialTarget?.Position ?? default, Effect, Subeffect.Player, context),
-                SpaceRestrictionValidIfThisTargetChosen => Effect.Subeffects[spaceRestrictionIndex] is SpaceTargetSubeffect spaceTgtSubeff ?
-spaceTgtSubeff.WillBePossibleIfCardTargeted(theoreticalTarget: potentialTarget?.Card) : false,
-                AttackingCardFittingRestriction => Source.Game.StackEntries
-.Any(e => e is Attack atk && atk.attacker == potentialTarget?.Card && attackedCardRestriction.Evaluate(atk.defender, context)),
+
+                CanBePlayed 
+                    => Subeffect.Game.ExistsEffectPlaySpace(potentialTarget?.PlayRestriction, Effect),
+                CanPlayToTargetSpace 
+                    => potentialTarget?.PlayRestriction.EvaluateEffectPlay(Subeffect.Space, Effect, Subeffect.Player, context) ?? false,
+                CanPlayTargetToThisCharactersSpace
+                    => Subeffect.Target.PlayRestriction.EvaluateEffectPlay(potentialTarget?.Position ?? default, Effect, Subeffect.Player, context),
+
+                EffectControllerCanPayCost => Subeffect.Effect.Controller.Pips >= potentialTarget?.Cost * costMultiplier / costDivisor,
                 EffectIsOnTheStack => Source.Game.StackEntries.Any(e => e is Effect eff && eff.Source == potentialTarget?.Card),
-                CanPlayToTargetSpace => potentialTarget?.PlayRestriction.EvaluateEffectPlay(Subeffect.Space, Effect, Subeffect.Player, context) ?? false,
+
+                SpaceRestrictionValidIfThisTargetChosen 
+                    => Effect.Subeffects[spaceRestrictionIndex] is SpaceTargetSubeffect spaceTgtSubeff 
+                    && spaceTgtSubeff.WillBePossibleIfCardTargeted(theoreticalTarget: potentialTarget?.Card),
+
                 _ => throw new ArgumentException($"Invalid card restriction {restriction}", "restriction"),
             };
         }

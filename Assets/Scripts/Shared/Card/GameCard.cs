@@ -80,10 +80,10 @@ namespace KompasCore.Cards
             }
         }
         public int Activations { get; private set; } = 0;
-        public virtual bool Activated
+        public override bool Activated
         {
             get => Activations > 0;
-            private set
+            protected set
             {
                 if (value) Activations++;
                 else Activations--;

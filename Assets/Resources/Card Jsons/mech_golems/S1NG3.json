@@ -1,0 +1,53 @@
+{
+	"cardType":67,
+	"cardName":"S1NG3",
+	"effText":"Golem.\nWhile I'm activated, when turns start, give adjacent enemy characters -1 E.",
+	"effects":[
+		{
+			"blurb":"Fire see monkey do",
+            "triggerData":
+            {
+                "triggerCondition":"Turn Start",
+                "triggerRestriction":{
+                    "triggerRestrictions":["This Card in Play","This Card Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Activated"]
+					}
+                }
+            },
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character","Board","Enemy","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to Source"],
+							"mustBeEmpty":false
+						}
+					},
+					"eMod":-1
+				}
+			]
+		}
+	],
+	"MovementRestriction":{
+		"normalRestrictionsFromJson":[
+			"Default",
+			"Activated"
+		]
+	},
+	"AttackRestriction":{
+		"attackRestrictionsArray":[
+			"Default",
+			"This is Activated"
+		]
+	},
+	"n":4,
+	"e":8,
+	"s":7,
+	"w":1,
+	"subtypes":["Mech","Golem"],
+	"subtypeText":"Mech Golem"
+}
