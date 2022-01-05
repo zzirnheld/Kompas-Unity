@@ -31,7 +31,7 @@ namespace KompasCore.Effects
             Source = source;
         }
 
-        public int GetValueOf(IGameCardInfo card)
+        public int GetValueOf(GameCardBase card)
         {
             if (card == null) throw new ArgumentException("Cannot get value of null card", "card");
 

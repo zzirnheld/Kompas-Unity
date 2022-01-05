@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace KompasCore.Cards
 {
-    public abstract class GameCard : CardBase, IGameCardInfo
+    public abstract class GameCard : GameCardBase
     {
         public const string Nimbleness = "N";
         public const string Endurance = "E";
@@ -22,7 +22,7 @@ namespace KompasCore.Cards
         public abstract Game Game { get; }
         public int ID { get; private set; }
         public CardController cardCtrl;
-        public GameCard Card => this;
+        public override GameCard Card => this;
 
         private SerializableCard serializedCard;
 
@@ -30,7 +30,7 @@ namespace KompasCore.Cards
 
         #region stats
         public int BaseN => serializedCard.n;
-        public int BaseE => serializedCard.e;
+        public override int BaseE => serializedCard.e;
         public int BaseS => serializedCard.s;
         public int BaseW => serializedCard.w;
         public int BaseC => serializedCard.c;
@@ -68,10 +68,10 @@ namespace KompasCore.Cards
         }
 
         public int Negations { get; private set; } = 0;
-        public virtual bool Negated
+        public override bool Negated
         {
             get => Negations > 0;
-            private set
+            protected set
             {
                 if (value) Negations++;
                 else Negations--;
@@ -90,7 +90,7 @@ namespace KompasCore.Cards
             }
         }
 
-        public virtual bool Summoned => CardType != 'C' || Location == CardLocation.Field;
+        public override bool Summoned => CardType != 'C' || Location == CardLocation.Field;
         public virtual bool CanRemove => true;
         public virtual int CombatDamage => W;
         public (int n, int e, int s, int w) CharStats => (N, E, S, W);
@@ -99,7 +99,7 @@ namespace KompasCore.Cards
 
         #region positioning
         private Space position;
-        public Space Position
+        public override Space Position
         {
             get => position;
             set
@@ -112,11 +112,10 @@ namespace KompasCore.Cards
             }
         }
 
-        public Space SubjectivePosition => Controller.SubjectiveCoords(Position);
-        public int IndexInList => GameLocation?.IndexOf(this) ?? -1;
+        public override int IndexInList => GameLocation?.IndexOf(this) ?? -1;
         public bool InHiddenLocation => Game.IsHiddenLocation(Location);
 
-        public IEnumerable<GameCard> AdjacentCards => Game.boardCtrl.CardsAdjacentTo(Position);
+        public override IEnumerable<GameCard> AdjacentCards => Game.boardCtrl.CardsAdjacentTo(Position);
 
         public bool AlreadyCopyOnBoard => Game.BoardHasCopyOf(this);
 
@@ -125,18 +124,18 @@ namespace KompasCore.Cards
 
         #region Augments
         public List<GameCard> AugmentsList { get; private set; } = new List<GameCard>();
-        public IEnumerable<GameCard> Augments => AugmentsList;
+        public override IEnumerable<GameCard> Augments => AugmentsList;
         private GameCard augmentedCard;
-        public GameCard AugmentedCard
+        public override GameCard AugmentedCard
         {
-            get { return augmentedCard; }
-            private set
+            get => augmentedCard;
+            protected set
             {
                 augmentedCard = value;
-                if (value != null)
+                if (augmentedCard != null)
                 {
-                    Position = value.Position;
-                    Location = value.Location;
+                    Position = augmentedCard.Position;
+                    Location = augmentedCard.Location;
                 }
             }
         }
@@ -158,8 +157,9 @@ namespace KompasCore.Cards
         #endregion effects
 
         //movement
-        public int SpacesMoved { get; private set; } = 0;
-        public int SpacesCanMove => N - SpacesMoved;
+        private int spacesMoved = 0;
+        public override int SpacesMoved => spacesMoved;
+        public override int SpacesCanMove => N - SpacesMoved;
 
         public int attacksThisTurn = 0;
         public int AttacksThisTurn => attacksThisTurn;
@@ -167,24 +167,22 @@ namespace KompasCore.Cards
         //restrictions
         public MovementRestriction MovementRestriction { get; private set; }
         public AttackRestriction AttackRestriction { get; private set; }
-        public PlayRestriction PlayRestriction { get; private set; }
+        public override PlayRestriction PlayRestriction { get; protected set; }
 
         //controller/owners
-        public abstract Player Controller { get; set; }
         public int ControllerIndex => Controller?.index ?? 0;
-        public abstract Player Owner { get; }
         public int OwnerIndex => Owner?.index ?? -1;
 
         //misc
         private CardLocation location;
-        public virtual CardLocation Location
+        public override CardLocation Location 
         {
             get => location;
             protected set
             {
-                Debug.Log($"Card {ID} named {CardName} location set to {value}");
                 location = value;
-                if (cardCtrl != null) cardCtrl.SetPhysicalLocation(location);
+                Debug.Log($"Card {ID} named {CardName} location set to {Location}");
+                if (cardCtrl != null) cardCtrl.SetPhysicalLocation(Location);
                 //else Debug.LogWarning($"Missing a card control. Is this a debug card?");
             }
         }
@@ -202,13 +200,7 @@ namespace KompasCore.Cards
 
         public string BaseJson => Game.cardRepo.GetJsonFromName(CardName);
 
-        /// <summary>
-        /// Represents whether this card is currently known to the enemy of this player.
-        /// TODO: make this also be accurate on client, remembering what thigns have been revealed
-        /// </summary>
-        public abstract bool KnownToEnemy { get; set; }
         public int TurnsOnBoard { get; private set; }
-        public abstract bool IsAvatar { get; }
 
         public override string ToString()
         {
@@ -284,95 +276,6 @@ namespace KompasCore.Cards
             foreach (var e in Effects) e.TimesUsedThisStack = 0;
         }
 
-        #region distance/adjacency
-        public int RadialDistanceTo(Space space)
-            => Location == CardLocation.Field ? Position.RadialDistanceTo(space) : int.MaxValue;
-        public int DistanceTo(Space space)
-            => Location == CardLocation.Field ? Position.DistanceTo(space) : int.MaxValue;
-        public int DistanceTo(IGameCardInfo card) => DistanceTo(card.Position);
-
-        public bool WithinSpaces(int numSpaces, IGameCardInfo card)
-            => card != null && card.Location == CardLocation.Field && Location == CardLocation.Field && DistanceTo(card) <= numSpaces;
-
-        public bool IsAdjacentTo(IGameCardInfo card) => Location == CardLocation.Field && card != null
-            && card.Location == CardLocation.Field && Position.AdjacentTo(card.Position);
-        public bool IsAdjacentTo(Space space) => Location == CardLocation.Field && Position.AdjacentTo(space);
-
-        public bool SpaceInAOE(Space space)
-            => SpellSubtypes != null && SpellSubtypes.Any(s => s switch
-            {
-                RadialSubtype => DistanceTo(space) <= Radius,
-                _ => false
-            });
-        public bool CardInAOE(IGameCardInfo c) => SpaceInAOE(c.Position);
-
-        public bool SameColumn(Space space) => Location == CardLocation.Field && Position.SameColumn(space);
-        public bool SameColumn(IGameCardInfo c) => c.Location == CardLocation.Field && SameColumn(c.Position);
-
-        /// <summary>
-        /// Returns whether the <paramref name="space"/> passed in is in front of this card
-        /// </summary>
-        /// <param name="space">The space to check if it's in front of this card</param>
-        /// <returns><see langword="true"/> if <paramref name="space"/> is in front of this, <see langword="false"/> otherwise.</returns>
-        public bool SpaceInFront(Space space) => Controller.SubjectiveCoords(space).NorthOf(SubjectivePosition);
-
-        /// <summary>
-        /// Returns whether the card passed in is in front of this card
-        /// </summary>
-        /// <param name="card">The card to check if it's in front of this one</param>
-        /// <returns><see langword="true"/> if <paramref name="card"/> is in front of this, <see langword="false"/> otherwise.</returns>
-        public bool CardInFront(IGameCardInfo card) => SpaceInFront(card.Position);
-
-        /// <summary>
-        /// Returns whether the <paramref name="space"/> passed in is behind this card
-        /// </summary>
-        /// <param name="space">The space to check if it's behind this card</param>
-        /// <returns><see langword="true"/> if <paramref name="space"/> is behind this, <see langword="false"/> otherwise.</returns>
-        public bool SpaceBehind(Space space) => SubjectivePosition.NorthOf(Controller.SubjectiveCoords(space));
-
-        /// <summary>
-        /// Returns whether the card passed in is behind this card
-        /// </summary>
-        /// <param name="card">The card to check if it's behind this one</param>
-        /// <returns><see langword="true"/> if <paramref name="card"/> is behind this, <see langword="false"/> otherwise.</returns>
-        public bool CardBehind(IGameCardInfo card) => SpaceBehind(card.Position);
-
-        public bool SpaceDirectlyInFront(Space space)
-            => Location == CardLocation.Field && Controller.SubjectiveCoords(space).Equals(SubjectivePosition.DueNorth);
-
-        public bool CardDirectlyInFront(IGameCardInfo card)
-            => card.Location == CardLocation.Field && SpaceDirectlyInFront(card.Position);
-
-        public bool SameDiagonal(Space space) => Location == CardLocation.Field && Position.SameDiagonal(space);
-        public bool SameDiagonal(IGameCardInfo card) => card?.Location == CardLocation.Field && SameDiagonal(card.Position);
-
-        /// <summary>
-        /// Refers to this situation: <br></br>
-        /// | <paramref name="space"/> | <br></br>
-        /// | this card | <br></br>
-        /// | <paramref name="card"/> param | <br></br>
-        /// </summary>
-        /// <param name="space">The space in the same axis as this card and <paramref name="card"/> param</param>
-        /// <param name="card">The card in the same axis as this card and the <paramref name="space"/> param.</param>
-        /// <returns></returns>
-        public bool SpaceDirectlyAwayFrom((int x, int y) space, IGameCardInfo card)
-        {
-            if (card.Location != CardLocation.Field || Location != CardLocation.Field) return false;
-            int xDiffCard = card.Position.x - Position.x;
-            int yDiffCard = card.Position.y - Position.y;
-            int xDiffSpace = space.x - Position.x;
-            int yDiffSpace = space.y - Position.y;
-
-            return (xDiffCard == 0 && xDiffSpace == 0)
-                || (yDiffCard == 0 && yDiffSpace == 0)
-                || (xDiffCard == yDiffCard && xDiffSpace == yDiffSpace);
-        }
-        public bool InCorner() => (Position.x == 0 || Position.x == 6) && (Position.y == 0 || Position.y == 6);
-
-        public int ShortestPath(Space space, Func<GameCard, bool> throughPredicate)
-            => Game.boardCtrl.ShortestPath(Position, space, throughPredicate);
-        #endregion distance/adjacency
-
         public void PutBack()
         {
             if (cardCtrl != null) cardCtrl.SetPhysicalLocation(Location);
@@ -385,6 +288,7 @@ namespace KompasCore.Cards
         public void CountSpacesMovedTo((int x, int y) to) => SetSpacesMoved(SpacesMoved + Game.boardCtrl.ShortestEmptyPath(this, to));
 
         #region augments
+
         public virtual void AddAugment(GameCard augment, IStackable stackSrc = null)
         {
             //can't add a null augment
@@ -478,7 +382,7 @@ namespace KompasCore.Cards
         public virtual void SetActivated(bool activated, IStackable stackSrc = null) => Activated = activated;
 
         public virtual void SetSpacesMoved(int spacesMoved, bool fromReset = false)
-            => this.SpacesMoved = spacesMoved;
+            => this.spacesMoved = spacesMoved;
         public virtual void SetAttacksThisTurn(int attacksThisTurn, bool fromReset = false)
             => this.attacksThisTurn = attacksThisTurn;
         public virtual void SetTurnsOnBoard(int turnsOnBoard, IStackable stackSrc = null, bool fromReset = false)

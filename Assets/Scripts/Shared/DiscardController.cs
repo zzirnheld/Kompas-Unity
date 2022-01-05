@@ -39,7 +39,7 @@ namespace KompasCore.GameCore
             SpreadOutCards();
         }
 
-        public List<GameCard> CardsThatFit(Func<IGameCardInfo, bool> cardRestriction)
+        public List<GameCard> CardsThatFit(Func<GameCardBase, bool> cardRestriction)
         {
             List<GameCard> cards = new List<GameCard>();
 

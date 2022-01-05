@@ -6,8 +6,8 @@ namespace KompasCore.Effects
     public class ActivationContext
     {
         // Information about the relevant triggering situation
-        public readonly IGameCardInfo mainCardInfoBefore;
-        public readonly IGameCardInfo secondaryCardInfoBefore;
+        public readonly GameCardBase mainCardInfoBefore;
+        public readonly GameCardBase secondaryCardInfoBefore;
         public readonly IStackable stackable;
         public readonly Player player;
         public readonly int? x;
@@ -24,16 +24,16 @@ namespace KompasCore.Effects
         /// <summary>
         /// The information for the main triggering card immediately after the triggering event occurred.
         /// </summary>
-        public IGameCardInfo MainCardInfoAfter { get; private set; }
+        public GameCardBase MainCardInfoAfter { get; private set; }
 
         /// <summary>
         /// The information for the secondary triggering card immediately after the triggering event occurred.
         /// The secondary card could be the defender in an attacks trigger, etc.
         /// </summary>
-        public IGameCardInfo SecondaryCardInfoAfter { get; private set; }
+        public GameCardBase SecondaryCardInfoAfter { get; private set; }
 
-        private ActivationContext(IGameCardInfo mainCardInfoBefore,
-                                  IGameCardInfo secondaryCardInfoBefore,
+        private ActivationContext(GameCardBase mainCardInfoBefore,
+                                  GameCardBase secondaryCardInfoBefore,
                                   IStackable stackable,
                                   Player player,
                                   int? x,

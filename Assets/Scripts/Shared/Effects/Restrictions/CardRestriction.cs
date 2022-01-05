@@ -191,123 +191,104 @@ namespace KompasCore.Effects
         /// <param name="x">The value of x for which to consider the restriction</param>
         /// <param name="context">The activation context relevant here - the context for the Effect or for this triggering event</param>
         /// <returns><see langword="true"/> if the card fits the restriction for the given value of x, <see langword="false"/> otherwise.</returns>
-        private bool RestrictionValid(string restriction, IGameCardInfo potentialTarget, int x, ActivationContext context)
+        private bool RestrictionValid(string restriction, GameCardBase potentialTarget, int x, ActivationContext context)
         {
             //if (potentialTarget == null) return false;
             //Debug.Log($"potential target controller? {potentialTarget.Controller}, my controller {Controller}");
 
-            switch (restriction)
+            return restriction switch
             {
                 //targets
-                case AlreadyTarget:    return Effect.Targets.Contains(potentialTarget);
-                case NotAlreadyTarget: return !Effect.Targets.Contains(potentialTarget);
-
+                AlreadyTarget       => Effect.Targets.Contains(potentialTarget),
+                NotAlreadyTarget    => !Effect.Targets.Contains(potentialTarget),
                 //names
-                case NameIs:                  return potentialTarget?.CardName == nameIs;
-                case SameName:                return Subeffect.Target.CardName == potentialTarget?.CardName;
-                case SameNameAsSource:        return potentialTarget?.CardName == Source.CardName;
-                case DistinctNameFromTargets: return Effect.Targets.All(card => card.CardName != potentialTarget?.CardName);
-                case DistinctNameFromSource:  return Source.CardName != potentialTarget?.CardName;
-
+                NameIs                  => potentialTarget?.CardName == nameIs,
+                SameName                => Subeffect.Target.CardName == potentialTarget?.CardName,
+                SameNameAsSource        => potentialTarget?.CardName == Source.CardName,
+                DistinctNameFromTargets => Effect.Targets.All(card => card.CardName != potentialTarget?.CardName),
+                DistinctNameFromSource  => Source.CardName != potentialTarget?.CardName,
                 //different
-                case DifferentFromSource: return potentialTarget?.Card != Source;
-                case DifferentFromTarget: return potentialTarget?.Card != Subeffect.Target;
-                case DifferentFromOtherTargets: return Subeffect.Effect.Targets.All(c => !c.Equals(potentialTarget));
-                case DifferentFromAugmentedCard: return potentialTarget?.Card != Source.AugmentedCard;
-
+                DifferentFromSource         => potentialTarget?.Card != Source,
+                DifferentFromTarget         => potentialTarget?.Card != Subeffect.Target,
+                DifferentFromOtherTargets   => Subeffect.Effect.Targets.All(c => !c.Equals(potentialTarget)),
+                DifferentFromAugmentedCard  => potentialTarget?.Card != Source.AugmentedCard,
                 //card types
-                case IsCharacter: return potentialTarget?.CardType == 'C';
-                case IsSpell:     return potentialTarget?.CardType == 'S';
-                case IsAugment:   return potentialTarget?.CardType == 'A';
-                case NotAugment:  return potentialTarget?.CardType != 'A';
-                case Fast:        return potentialTarget?.Fast ?? false;
-                case SpellSubtypes: return potentialTarget?.SpellSubtypes.Intersect(spellSubtypes).Any() ?? false;
-
+                IsCharacter     => potentialTarget?.CardType == 'C',
+                IsSpell         => potentialTarget?.CardType == 'S',
+                IsAugment       => potentialTarget?.CardType == 'A',
+                NotAugment      => potentialTarget?.CardType != 'A',
+                Fast            => potentialTarget?.Fast ?? false,
+                SpellSubtypes   => potentialTarget?.SpellSubtypes.Intersect(spellSubtypes).Any() ?? false,
                 //control
-                case Friendly:  return potentialTarget?.Controller == Controller;
-                case Enemy:     return potentialTarget?.Controller != Controller;
-                case SameOwner: return potentialTarget?.Owner == Controller;
-                case TurnPlayerControls: return potentialTarget?.Controller == Subeffect.Game.TurnPlayer;
-                case ControllerMatchesTarget: return potentialTarget?.Controller == Subeffect.Target.Controller;
-                case ControllerMatchesPlayerTarget: return potentialTarget?.Controller == Subeffect.Player;
-                case ControllerIsntPlayerTarget: return potentialTarget?.Controller != Subeffect.Player;
+                Friendly            => potentialTarget?.Controller == Controller,
+                Enemy               => potentialTarget?.Controller != Controller,
+                SameOwner           => potentialTarget?.Owner == Controller,
+                TurnPlayerControls  => potentialTarget?.Controller == Subeffect.Game.TurnPlayer,
 
+                ControllerMatchesTarget         => potentialTarget?.Controller == Subeffect.Target.Controller,
+                ControllerMatchesPlayerTarget   => potentialTarget?.Controller == Subeffect.Player,
+                ControllerIsntPlayerTarget      => potentialTarget?.Controller != Subeffect.Player,
                 //summoned
-                case Summoned:  return potentialTarget?.Summoned ?? false;
-                case Avatar:    return potentialTarget?.IsAvatar ?? false;
-                case NotAvatar: return !potentialTarget?.IsAvatar ?? false;
-
+                Summoned    => potentialTarget?.Summoned ?? false,
+                Avatar      => potentialTarget?.IsAvatar ?? false,
+                NotAvatar   => !potentialTarget?.IsAvatar ?? false,
                 //subtypes
-                case SubtypesInclude: return subtypesInclude.All(s => potentialTarget?.SubtypeText.Contains(s) ?? false);
-                case SubtypesExclude: return subtypesExclude.All(s => !potentialTarget?.SubtypeText.Contains(s) ?? false);
-
+                SubtypesInclude => subtypesInclude.All(s => potentialTarget?.SubtypeText.Contains(s) ?? false),
+                SubtypesExclude => subtypesExclude.All(s => !potentialTarget?.SubtypeText.Contains(s) ?? false),
                 //is
-                case IsSource: return potentialTarget?.Card == Source;
-                case NotSource: return potentialTarget?.Card != Source;
-                case IsTarget: return potentialTarget?.Card == Subeffect.Target;
-                case NotContextCard: return potentialTarget?.Card != context?.mainCardInfoBefore?.Card;
-                case AugmentsTarget: return potentialTarget?.AugmentedCard == Subeffect.Target;
-                case AugmentedBySource: return potentialTarget?.Augments.Contains(Source) ?? false;
-                case AugmentsCardRestriction: return augmentRestriction.Evaluate(potentialTarget?.AugmentedCard, x, context);
-                case NotAugmentedBySource: return !(potentialTarget?.Augments.Contains(Source) ?? true);
-                case WieldsAugmentFittingRestriction: return potentialTarget?.Augments.Any(c => augmentRestriction.Evaluate(c, context)) ?? false;
-                case WieldsNoAugmentFittingRestriction: return !(potentialTarget?.Augments.Any(c => augmentRestriction.Evaluate(c, context)) ?? false);
+                IsSource        => potentialTarget?.Card == Source,
+                NotSource       => potentialTarget?.Card != Source,
+                IsTarget        => potentialTarget?.Card == Subeffect.Target,
+                NotContextCard  => potentialTarget?.Card != context?.mainCardInfoBefore?.Card,
 
+                AugmentsTarget      => potentialTarget?.AugmentedCard == Subeffect.Target,
+                AugmentedBySource   => potentialTarget?.Augments.Contains(Source) ?? false,
+
+                AugmentsCardRestriction => augmentRestriction.Evaluate(potentialTarget?.AugmentedCard, x, context),
+                NotAugmentedBySource    => !(potentialTarget?.Augments.Contains(Source) ?? true),
+
+                WieldsAugmentFittingRestriction     => potentialTarget?.Augments.Any(c => augmentRestriction.Evaluate(c, context)) ?? false,
+                WieldsNoAugmentFittingRestriction   => !(potentialTarget?.Augments.Any(c => augmentRestriction.Evaluate(c, context)) ?? false),
                 //location
-                case Hand:           return potentialTarget?.Location == CardLocation.Hand;
-                case Deck:           return potentialTarget?.Location == CardLocation.Deck;
-                case Discard:        return potentialTarget?.Location == CardLocation.Discard;
-                case Board:          return potentialTarget?.Location == CardLocation.Field;
-                case Annihilated:    return potentialTarget?.Location == CardLocation.Annihilation;
-                case LocationInList: return locations.Contains(potentialTarget?.Location ?? CardLocation.Nowhere);
-
-                case Hidden:         return !potentialTarget?.KnownToEnemy ?? false;
-
+                Hand => potentialTarget?.Location == CardLocation.Hand,
+                Deck => potentialTarget?.Location == CardLocation.Deck,
+                Discard => potentialTarget?.Location == CardLocation.Discard,
+                Board => potentialTarget?.Location == CardLocation.Field,
+                Annihilated => potentialTarget?.Location == CardLocation.Annihilation,
+                LocationInList => locations.Contains(potentialTarget?.Location ?? CardLocation.Nowhere),
+                Hidden => !potentialTarget?.KnownToEnemy ?? false,
                 //stats
-                case CardValueFitsXRestriction: return xRestriction.Evaluate(cardValue.GetValueOf(potentialTarget));
-                case CanBeHealed: return potentialTarget?.CardType == 'C' && potentialTarget?.Location == CardLocation.Field 
-                        && potentialTarget?.E < potentialTarget?.BaseE;
-
-                case Negated:  return potentialTarget?.Negated ?? false;
-                case HasMovement: return potentialTarget?.SpacesCanMove > 0;
-                case OutOfMovement: return potentialTarget?.SpacesCanMove <= 0;
-
+                CardValueFitsXRestriction => xRestriction.Evaluate(cardValue.GetValueOf(potentialTarget)),
+                CanBeHealed => potentialTarget?.Hurt ?? false,
+                Negated => potentialTarget?.Negated ?? false,
+                HasMovement => potentialTarget?.SpacesCanMove > 0,
+                OutOfMovement => potentialTarget?.SpacesCanMove <= 0,
                 //positioning
-                case SpaceFitsRestriction: return spaceRestriction.Evaluate(potentialTarget?.Position ?? Space.Nowhere, context);
-
-                case SourceInThisAOE:    return potentialTarget?.CardInAOE(Source) ?? false;
-
-                case IndexInListGTC:     return potentialTarget?.IndexInList > constant;
-                case IndexInListLTC:     return potentialTarget?.IndexInList < constant;
-                case IndexInListLTX:     return potentialTarget?.IndexInList < x;
-
+                SpaceFitsRestriction => spaceRestriction.Evaluate(potentialTarget?.Position ?? Space.Nowhere, context),
+                SourceInThisAOE => potentialTarget?.CardInAOE(Source) ?? false,
+                IndexInListGTC => potentialTarget?.IndexInList > constant,
+                IndexInListLTC => potentialTarget?.IndexInList < constant,
+                IndexInListLTX => potentialTarget?.IndexInList < x,
                 //misc
-                case CanBePlayed: return Subeffect.Game.ExistsEffectPlaySpace(potentialTarget?.PlayRestriction, Effect);
-                case EffectControllerCanPayCost: return Subeffect.Effect.Controller.Pips >= potentialTarget?.Cost * costMultiplier / costDivisor;
-                case Augmented: return potentialTarget?.Augments.Any() ?? false;
-                case IsDefendingFromSource:
-                    return Source.Game.StackEntries.Any(s => s is Attack atk && atk.attacker == Source && atk.defender == potentialTarget?.Card)
-                        || (Source.Game.CurrStackEntry is Attack atk2 && atk2.attacker == Source && atk2.defender == potentialTarget?.Card);
-                case CanPlayTargetToThisCharactersSpace:
-                    return Subeffect.Target.PlayRestriction.EvaluateEffectPlay(potentialTarget?.Position ?? default, Effect, Subeffect.Player, context);
-                case SpaceRestrictionValidIfThisTargetChosen:
-                    if (Effect.Subeffects[spaceRestrictionIndex] is SpaceTargetSubeffect spaceTgtSubeff)
-                        return spaceTgtSubeff.WillBePossibleIfCardTargeted(theoreticalTarget: potentialTarget?.Card);
-                    else return false;
-                case AttackingCardFittingRestriction:
-                    return Source.Game.StackEntries
-                        .Any(e => e is Attack atk && atk.attacker == potentialTarget?.Card && attackedCardRestriction.Evaluate(atk.defender, context));
-                case EffectIsOnTheStack:
-                    return Source.Game.StackEntries.Any(e => e is Effect eff && eff.Source == potentialTarget?.Card);
-                case CanPlayToTargetSpace:
-                    return potentialTarget?.PlayRestriction.EvaluateEffectPlay(Subeffect.Space, Effect, Subeffect.Player, context) ?? false;
-                default: throw new ArgumentException($"Invalid card restriction {restriction}", "restriction");
-            }
+                CanBePlayed => Subeffect.Game.ExistsEffectPlaySpace(potentialTarget?.PlayRestriction, Effect),
+                EffectControllerCanPayCost => Subeffect.Effect.Controller.Pips >= potentialTarget?.Cost * costMultiplier / costDivisor,
+                Augmented => potentialTarget?.Augments.Any() ?? false,
+                IsDefendingFromSource => Source.Game.StackEntries.Any(s => s is Attack atk && atk.attacker == Source && atk.defender == potentialTarget?.Card)
+|| (Source.Game.CurrStackEntry is Attack atk2 && atk2.attacker == Source && atk2.defender == potentialTarget?.Card),
+                CanPlayTargetToThisCharactersSpace => Subeffect.Target.PlayRestriction.EvaluateEffectPlay(potentialTarget?.Position ?? default, Effect, Subeffect.Player, context),
+                SpaceRestrictionValidIfThisTargetChosen => Effect.Subeffects[spaceRestrictionIndex] is SpaceTargetSubeffect spaceTgtSubeff ?
+spaceTgtSubeff.WillBePossibleIfCardTargeted(theoreticalTarget: potentialTarget?.Card) : false,
+                AttackingCardFittingRestriction => Source.Game.StackEntries
+.Any(e => e is Attack atk && atk.attacker == potentialTarget?.Card && attackedCardRestriction.Evaluate(atk.defender, context)),
+                EffectIsOnTheStack => Source.Game.StackEntries.Any(e => e is Effect eff && eff.Source == potentialTarget?.Card),
+                CanPlayToTargetSpace => potentialTarget?.PlayRestriction.EvaluateEffectPlay(Subeffect.Space, Effect, Subeffect.Player, context) ?? false,
+                _ => throw new ArgumentException($"Invalid card restriction {restriction}", "restriction"),
+            };
         }
 
         /* This exists to debug a card restriction,
          * but should not be usually used because it prints a ton */
-        public bool RestrictionValidDebug(string restriction, IGameCardInfo potentialTarget, int x, ActivationContext context)
+        public bool RestrictionValidDebug(string restriction, GameCardBase potentialTarget, int x, ActivationContext context)
         {
             bool answer = RestrictionValid(restriction, potentialTarget, x, context);
             if (!answer) Debug.Log($"{potentialTarget?.CardName} flouts {restriction}");
@@ -320,7 +301,7 @@ namespace KompasCore.Effects
         /// <param name="potentialTarget">The card to see if it fits all restrictions</param>
         /// <param name="x">The value of X for which to consider this effect's restriction</param>
         /// <returns><see langword="true"/> if the card fits all restrictions, <see langword="false"/> if it doesn't fit at least one</returns>
-        private bool Evaluate(IGameCardInfo potentialTarget, int x, ActivationContext context)
+        private bool Evaluate(GameCardBase potentialTarget, int x, ActivationContext context)
         {
             if (!initialized) throw new ArgumentException("Card restriction not initialized!");
 
@@ -343,7 +324,7 @@ namespace KompasCore.Effects
         /// <param name="potentialTarget">The card to see if it fits all restrictions</param>
         /// <param name="context">The activation context relevant here - the context for the Effect or for this triggering event</param>
         /// <returns><see langword="true"/> if the card fits all restrictions, <see langword="false"/> if it doesn't fit at least one</returns>
-        public bool Evaluate(IGameCardInfo potentialTarget, ActivationContext context) 
+        public bool Evaluate(GameCardBase potentialTarget, ActivationContext context) 
             => Evaluate(potentialTarget, Subeffect?.Count ?? 0, context);
     }
 }
