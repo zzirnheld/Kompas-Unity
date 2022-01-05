@@ -108,7 +108,7 @@ namespace KompasCore.GameCore
             foreach(var card in Board)
             {
                 if (predicate(card)) list.Add(card);
-                if (card != null) list.AddRange(card.AugmentsList.Where(predicate));
+                if (card != null) list.AddRange(card.Augments.Where(predicate));
             }
             return list;
         }
@@ -280,7 +280,7 @@ namespace KompasCore.GameCore
 
             if (!to.Valid) throw new InvalidSpaceException(to);
             if (card == null) throw new NullCardException("Card to be swapped must not be null");
-            if (card.AugmentedCard != null) throw new NotImplementedException();
+            if (card.Attached) throw new NotImplementedException();
             if (card.Location != CardLocation.Field || card != GetCardAt(card.Position)) 
                 throw new CardNotHereException(CardLocation.Field, 
                     $"{card} not at {card.Position}, {GetCardAt(card.Position)} is there instead");
@@ -311,17 +311,17 @@ namespace KompasCore.GameCore
 
         public void Move(GameCard card, Space to, bool playerInitiated, IStackable stackSrc = null)
         {
-            if (card.AugmentedCard == null)
-            {
-                Swap(card, to, playerInitiated, stackSrc);
-            }
-            else
+            if (card.Attached)
             {
                 if (!to.Valid) throw new InvalidSpaceException(to, $"Can't move {card} to invalid space");
                 var (toX, toY) = to;
                 if (GetCardAt(to) == null) throw new NullCardException($"Null card to attach {card} to at {to}");
                 card.Remove(stackSrc);
                 Board[toX, toY].AddAugment(card, stackSrc);
+            }
+            else
+            {
+                Swap(card, to, playerInitiated, stackSrc);
             }
         }
 

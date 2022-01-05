@@ -160,7 +160,7 @@ namespace KompasServer.Cards
             context.CacheCardInfoAfter(this);
             EffectsController.TriggerForCondition(Trigger.Remove, context);
             //copy the colleciton  so that you can edit the original
-            var augments = AugmentsList.ToArray();
+            var augments = Augments.ToArray();
             foreach (var aug in augments) aug.Discard(stackSrc);
         }
 

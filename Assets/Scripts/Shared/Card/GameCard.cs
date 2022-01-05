@@ -108,7 +108,7 @@ namespace KompasCore.Cards
                 position = value;
                 //card controller will be null on server. not using null ? because of monobehavior
                 if (cardCtrl != null) cardCtrl.SetPhysicalLocation(Location);
-                foreach (var aug in AugmentsList) aug.Position = value;
+                foreach (var aug in augmentsList) aug.Position = value;
             }
         }
 
@@ -123,8 +123,9 @@ namespace KompasCore.Cards
         #endregion positioning
 
         #region Augments
-        public List<GameCard> AugmentsList { get; private set; } = new List<GameCard>();
-        public override IEnumerable<GameCard> Augments => AugmentsList;
+        private readonly List<GameCard> augmentsList = new List<GameCard>();
+        public override IEnumerable<GameCard> Augments => augmentsList;
+
         private GameCard augmentedCard;
         public override GameCard AugmentedCard
         {
@@ -207,7 +208,7 @@ namespace KompasCore.Cards
             StringBuilder sb = new StringBuilder();
             sb.Append(base.ToString());
             sb.Append($"id {ID} controlled by {ControllerIndex}, owned by {OwnerIndex}, in location {location}, position {Position}, ");
-            if (AugmentedCard != null) sb.Append($"augmented card is {AugmentedCard.CardName} id {AugmentedCard.ID}, ");
+            if (Attached) sb.Append($"augmented card is {AugmentedCard.CardName} id {AugmentedCard.ID}, ");
             if (Augments.Count() > 0) sb.Append($"augments are {string.Join(", ", Augments.Select(c => $"{c.CardName} id {c.ID}"))}");
             return sb.ToString();
         }
@@ -296,16 +297,16 @@ namespace KompasCore.Cards
 
             augment.Remove(stackSrc);
 
-            AugmentsList.Add(augment);
+            augmentsList.Add(augment);
             //and update the augment's augmented card, to reflect its new status
             augment.AugmentedCard = this;
         }
 
         protected virtual void Detach(IStackable stackSrc = null)
         {
-            if (AugmentedCard == null) throw new NotAugmentingException(this);
+            if (!Attached) throw new NotAugmentingException(this);
 
-            AugmentedCard.AugmentsList.Remove(this);
+            AugmentedCard.augmentsList.Remove(this);
             AugmentedCard = null;
         }
         #endregion augments
@@ -397,7 +398,7 @@ namespace KompasCore.Cards
 
             if (Location == CardLocation.Nowhere) return;
 
-            if (AugmentedCard != null) Detach(stackSrc);
+            if (Attached) Detach(stackSrc);
             else GameLocation.Remove(this);
         }
 

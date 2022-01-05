@@ -128,7 +128,7 @@ namespace KompasCore.Cards
             aoeController.Hide();
 
             //is the card augmenting something?
-            if(card.AugmentedCard != null)
+            if(card.Attached)
             {
                 gameObject.SetActive(true);
                 card.AugmentedCard.cardCtrl.SpreadOutAugs();
@@ -185,10 +185,10 @@ namespace KompasCore.Cards
 
         public void SpreadOutAugs()
         {
-            var augCount = card.AugmentsList.Count;
+            var augCount = card.Augments.Count();
             float scale = 0.4f; // / ((float)((augCount + 3) / 4));
             int i = 0;
-            foreach(var aug in card.AugmentsList)
+            foreach(var aug in card.Augments)
             {
                 aug.transform.parent = card.transform;
                 aug.transform.localScale = new Vector3(scale, scale, scale);

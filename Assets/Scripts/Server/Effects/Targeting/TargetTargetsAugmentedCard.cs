@@ -8,7 +8,7 @@ namespace KompasServer.Effects
         public override Task<ResolutionInfo> Resolve()
         {
             if (Target == null) throw new NullCardException(NoValidCardTarget);
-            else if (Target.AugmentedCard == null) throw new NullCardException(NoValidCardTarget);
+            else if (!Target.Attached) throw new NullCardException(NoValidCardTarget);
             else
             {
                 ServerEffect.AddTarget(Target.AugmentedCard);
