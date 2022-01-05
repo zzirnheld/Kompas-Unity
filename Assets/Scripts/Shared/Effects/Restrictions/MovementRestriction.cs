@@ -143,13 +143,13 @@ namespace KompasCore.Effects
 
         /* This exists to debug a card's movement restriction,
          * but should not be usually used because it prints a ton whenever
-         * the game checks to see if a person has a response.*/
+         * the game checks to see if a person has a response.
         private bool RestrictionValidWithDebug(string restriction, Space space, bool isSwapTarget, bool byEffect)
         {
             bool valid = RestrictionValid(restriction, space, isSwapTarget, byEffect);
             //if (!valid) Debug.LogWarning($"{Card.CardName} cannot move to {space} because it flouts the movement restriction {restriction}");
             return valid;
-        }
+        } */
 
         /// <summary>
         /// Checks whether the card this is attached to can move to (x, y) as a normal action
@@ -160,7 +160,7 @@ namespace KompasCore.Effects
         /// If this is true, ignores "Destination Can Move Here" restriction, because otherwise you would have infinite recursion.</param>
         /// <returns><see langword="true"/> if the card can move to (x, y); <see langword="false"/> otherwise.</returns>
         public bool EvaluateNormalMove(Space space, bool isSwapTarget = false)
-            => space.Valid && normalRestrictions.All(r => RestrictionValidWithDebug(r, space, isSwapTarget, false));
+            => space.Valid && normalRestrictions.All(r => RestrictionValid(r, space, isSwapTarget: isSwapTarget, byEffect: false));
 
         /// <summary>
         /// Checks whether the card this is attached to can move to (x, y) as part of an effect
@@ -171,6 +171,6 @@ namespace KompasCore.Effects
         /// If this is true, ignores "Destination Can Move Here" restriction, because otherwise you would have infinite recursion.</param>
         /// <returns><see langword="true"/> if the card can move to (x, y); <see langword="false"/> otherwise.</returns>
         public bool EvaluateEffectMove(Space space, bool isSwapTarget = false)
-            => space.Valid && effectRestrictions.All(r => RestrictionValidWithDebug(r, space, isSwapTarget: false, byEffect: true));
+            => space.Valid && effectRestrictions.All(r => RestrictionValid(r, space, isSwapTarget: isSwapTarget, byEffect: true));
     }
 }
