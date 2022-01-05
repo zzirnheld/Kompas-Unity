@@ -177,6 +177,7 @@ linewalkers/White Linewalker
 linewalkers/Yellow Linewalker
 linewalkers/Leygrapple
 linewalkers/Golden Linewalker
+mech_golems/QU4RG3
 mech_pilots/Standard Pilot
 music/Soaring Chorus
 music/Surging Verse
