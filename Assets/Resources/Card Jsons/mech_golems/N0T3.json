@@ -1,0 +1,54 @@
+{
+	"cardType":67,
+	"cardName":"N0T3",
+	"effText":"Golem.\nWhen I attack a character, delay until I fight them again. Give them -3 E.",
+	"effects":[
+		{
+			"blurb":"Charge up",
+			"triggerData":
+			{
+				"triggerCondition":"Attack",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetDefenderSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"indexToResume":2,
+					"endCondition":"Defend",
+                    "triggerRestriction":{
+                        "triggerRestrictions":["Triggerer is Secondary Context Target","This Card is Secondary Triggerer"]
+                    },
+                    "clearWhenResume":true,
+                    "targetIndex":0
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod":-3
+				}
+			]
+		}
+	],
+	"MovementRestriction":{
+		"normalRestrictionsFromJson":[
+			"Default",
+			"Activated"
+		]
+	},
+	"AttackRestriction":{
+		"attackRestrictionsArray":[
+			"Default",
+			"This is Activated"
+		]
+	},
+	"n":3,
+	"e":9,
+	"s":7,
+	"w":2,
+	"subtypes":["Mech","Golem"],
+	"subtypeText":"Mech Golem"
+}

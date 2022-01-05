@@ -11,40 +11,41 @@ namespace KompasCore.Effects
         public Game Game { get; private set; }
 
         #region trigger restrictions
-        public const string ThisCardTriggered = "This Card Triggered"; //0,
+        private const string ThisCardTriggered = "This Card Triggered"; //0,
+        private const string ThisCardIsSecondaryTriggerer = "This Card is Secondary Triggerer";
 
         //todo deprecate this card in play to this card fits restriction
-        public const string ThisCardInPlay = "This Card in Play"; //1,
-        public const string AugmentedCardTriggered = "Augmented Card Triggered"; //10,
+        private const string ThisCardInPlay = "This Card in Play"; //1,
+        private const string AugmentedCardTriggered = "Augmented Card Triggered"; //10,
 
-        public const string ThisCardFitsRestriction = "This Card Fits Restriction"; //100,
-        public const string TriggererFitsRestriction = "Triggerer Fits Restriction"; //101,
-        public const string TriggererNowFitsRestirction = "Triggerer Now Fits Restriction";
-        public const string TriggerersAugmentedCardFitsRestriction = "Triggerer's Augmented Card Fits Restriction";
-        public const string CardExists = "Card Exists";
-        public const string TriggererIsSecondaryContextTarget = "Triggerer is Secondary Context Target";
+        private const string ThisCardFitsRestriction = "This Card Fits Restriction"; //100,
+        private const string TriggererFitsRestriction = "Triggerer Fits Restriction"; //101,
+        private const string TriggererNowFitsRestirction = "Triggerer Now Fits Restriction";
+        private const string TriggerersAugmentedCardFitsRestriction = "Triggerer's Augmented Card Fits Restriction";
+        private const string CardExists = "Card Exists";
+        private const string TriggererIsSecondaryContextTarget = "Triggerer is Secondary Context Target";
 
-        public const string CardNowFurtherFromSourceThanItWas = "Card is now Further from Source than it Was";
+        private const string CardNowFurtherFromSourceThanItWas = "Card is now Further from Source than it Was";
 
-        public const string AdjacentToRestriction = "Adjacent to Restriction";
-        public const string TargetAdjacentToRestriction = "Target is Adjacent to Restriction";
-        public const string CoordsFitRestriction = "Coords Fit Restriction"; //120,
-        public const string XFitsRestriction = "X Fits Restriction"; //130,
-        public const string StackableSourceFitsRestriction = "Stackable Source Fits Restriction";
-        public const string EffectSourceIsThisCard = "Stackable Source is This Card"; //140,
-        public const string EffectSourceIsTriggerer = "Stackable Source is Triggerer"; //149,
-        public const string StackableSourceNotThisEffect = "Stackable Source isn't This Effect";
-        public const string NoStackable = "No Stackable";
+        private const string AdjacentToRestriction = "Adjacent to Restriction";
+        private const string TargetAdjacentToRestriction = "Target is Adjacent to Restriction";
+        private const string CoordsFitRestriction = "Coords Fit Restriction"; //120,
+        private const string XFitsRestriction = "X Fits Restriction"; //130,
+        private const string StackableSourceFitsRestriction = "Stackable Source Fits Restriction";
+        private const string EffectSourceIsThisCard = "Stackable Source is This Card"; //140,
+        private const string EffectSourceIsTriggerer = "Stackable Source is Triggerer"; //149,
+        private const string StackableSourceNotThisEffect = "Stackable Source isn't This Effect";
+        private const string NoStackable = "No Stackable";
 
-        public const string NumberOfCardsFittingRestrictionFitsXRestriction = "Number of Cards Fitting Restriction Fits X Restriction";
+        private const string NumberOfCardsFittingRestrictionFitsXRestriction = "Number of Cards Fitting Restriction Fits X Restriction";
 
-        public const string ContextsStackablesMatch = "Contexts Stackables Match";
-        public const string StackableIsThisEffect = "Stackable is This Effect";
+        private const string ContextsStackablesMatch = "Contexts Stackables Match";
+        private const string StackableIsThisEffect = "Stackable is This Effect";
 
-        public const string DistanceTriggererToSpaceConstant = "Distance from Triggerer to Space == Constant";
+        private const string DistanceTriggererToSpaceConstant = "Distance from Triggerer to Space == Constant";
 
-        public const string ControllerTriggered = "Controller Triggered"; //200,
-        public const string EnemyTriggered = "Enemy Triggered"; //201,
+        private const string ControllerTriggered = "Controller Triggered"; //200,
+        private const string EnemyTriggered = "Enemy Triggered"; //201,
 
         /* note: turns are the exception to the rule in that they are the only triggers where the triggering event
         * (in their case, the turn passing)
@@ -53,19 +54,21 @@ namespace KompasCore.Effects
         * in short, note that the turn will pass, then the trigger for turn start is called.
         * this means that checking for friendly/enemy turn will check whose turn the current (just-changed-to) turn is. *
         */
-        public const string FriendlyTurn = "Friendly Turn"; //300,
-        public const string EnemyTurn = "Enemy Turn"; //301,
+        private const string FriendlyTurn = "Friendly Turn"; //300,
+        private const string EnemyTurn = "Enemy Turn"; //301,
 
-        public const string FromField = "From Field"; //400,
-        public const string FromDeck = "From Deck"; //401,
+        private const string FromField = "From Field"; //400,
+        private const string FromDeck = "From Deck"; //401,
 
-        public const string MaxPerTurn = "Max Per Turn"; //500,
-        public const string NotFromEffect = "Not From Effect"; //501,
-        public const string MaxPerRound = "Max Per Round"; //502
-        public const string MaxPerStack = "Max Per Stack";
+        private const string MaxPerTurn = "Max Per Turn"; //500,
+        private const string NotFromEffect = "Not From Effect"; //501,
+        private const string MaxPerRound = "Max Per Round"; //502
+        private const string MaxPerStack = "Max Per Stack";
         #endregion trigger conditions
 
-        public static readonly string[] ReevalationRestrictions = { MaxPerTurn, MaxPerRound, MaxPerStack };
+        private static readonly string[] ReevalationRestrictions = { MaxPerTurn, MaxPerRound, MaxPerStack };
+
+        public static readonly string[] DefaultFallOffRestrictions = { ThisCardTriggered, ThisCardInPlay };
 
         public string[] triggerRestrictions = new string[0];
         public CardRestriction cardRestriction;
@@ -127,60 +130,57 @@ namespace KompasCore.Effects
 
         private bool RestrictionValid(string restriction, ActivationContext context, ActivationContext secondary = default)
         {
-            switch (restriction)
+            return restriction switch
             {
                 //card triggering stuff
-                case ThisCardTriggered:        return context.mainCardInfoBefore.Card == ThisCard;
-                case ThisCardInPlay:           return ThisCard.Location == CardLocation.Field;
-                case AugmentedCardTriggered:   return context.mainCardInfoBefore.Augments.Contains(ThisCard);
-                case CardExists:               return ThisCard.Game.Cards.Any(c => existsRestriction.Evaluate(c, context));
-                case ThisCardFitsRestriction:  return cardRestriction.Evaluate(ThisCard, context);
-                case TriggererFitsRestriction: return cardRestriction.Evaluate(context.mainCardInfoBefore, context);
-                case TriggererNowFitsRestirction: return nowRestriction.Evaluate(context.MainCardInfoAfter, context);
-                case TriggerersAugmentedCardFitsRestriction: return cardRestriction.Evaluate(context.mainCardInfoBefore.AugmentedCard, context);
-                case StackableSourceFitsRestriction: return sourceRestriction.Evaluate(context.stackable?.Source, context);
-                case TriggererIsSecondaryContextTarget: return secondary?.Targets?.Any(c => c == context.mainCardInfoBefore?.Card) ?? false;
-                case StackableSourceNotThisEffect: return context.stackable != SourceEffect;
+                ThisCardTriggered            => context.mainCardInfoBefore.Card == ThisCard,
+                ThisCardIsSecondaryTriggerer => context.secondaryCardInfoBefore.Card == ThisCard,
+                AugmentedCardTriggered       => context.mainCardInfoBefore.Augments.Contains(ThisCard),
 
-                case CardNowFurtherFromSourceThanItWas:
-                    return ThisCard.DistanceTo(context.mainCardInfoBefore.Card.Position) > ThisCard.DistanceTo(context.mainCardInfoBefore.Position); 
+                ThisCardInPlay => ThisCard.Location == CardLocation.Field,
+                CardExists     => ThisCard.Game.Cards.Any(c => existsRestriction.Evaluate(c, context)),
 
-                case ContextsStackablesMatch:
-                    Debug.Log($"Primary stackable: {context.stackable}");
-                    Debug.Log($"Secondary stackable: {secondary?.stackable}");
-                    Debug.Log($"Equal? {context.stackable == secondary?.stackable}");
-                    return context.stackable == secondary?.stackable;
+                ThisCardFitsRestriction => cardRestriction.Evaluate(ThisCard, context),
 
-                case StackableIsThisEffect: return context.stackable == SourceEffect;
+                TriggererFitsRestriction    => cardRestriction.Evaluate(context.mainCardInfoBefore, context),
+                TriggererNowFitsRestirction => nowRestriction.Evaluate(context.MainCardInfoAfter, context),
+                TriggerersAugmentedCardFitsRestriction  => cardRestriction.Evaluate(context.mainCardInfoBefore.AugmentedCard, context),
+                TriggererIsSecondaryContextTarget       => secondary?.Targets?.Any(c => c == context.mainCardInfoBefore?.Card) ?? false,
 
-                case NoStackable: return context.stackable == null;
+                StackableSourceFitsRestriction  => sourceRestriction.Evaluate(context.stackable?.Source, context),
+                StackableSourceNotThisEffect    => context.stackable != SourceEffect,
+                ContextsStackablesMatch         => context.stackable == secondary?.stackable,
+                StackableIsThisEffect           => context.stackable == SourceEffect,
+                NoStackable                     => context.stackable == null,
 
+                CardNowFurtherFromSourceThanItWas => ThisCard.DistanceTo(context.mainCardInfoBefore.Card.Position) > ThisCard.DistanceTo(context.mainCardInfoBefore.Position),
+                
                 //other non-card triggering things
-                case CoordsFitRestriction:    return context.space != null && spaceRestriction.Evaluate(context.space, context);
-                case XFitsRestriction:        return context.x != null && xRestriction.Evaluate(context.x.Value);
-                case EffectSourceIsTriggerer: return context.stackable is Effect eff && eff.Source == context.mainCardInfoBefore.Card;
-                case AdjacentToRestriction:
-                    Debug.Log($"Card {ThisCard?.CardName} with adjacent cards {ThisCard?.AdjacentCards}");
-                    return ThisCard.AdjacentCards.Any(c => cardRestriction.Evaluate(c, context));
+                CoordsFitRestriction  => context.space != null && spaceRestriction.Evaluate(context.space, context),
+                AdjacentToRestriction => ThisCard.AdjacentCards.Any(c => cardRestriction.Evaluate(c, context)),
+
+                XFitsRestriction        => context.x != null && xRestriction.Evaluate(context.x.Value),
+                EffectSourceIsTriggerer => context.stackable is Effect eff && eff.Source == context.mainCardInfoBefore.Card,
+
                 //TODO make these into just something to do with triggered card fitting restriction
-                case ControllerTriggered:     return context.player == ThisCard.Controller;
-                case EnemyTriggered:          return context.player != ThisCard.Controller;
+                ControllerTriggered => context.player == ThisCard.Controller,
+                EnemyTriggered      => context.player != ThisCard.Controller,
 
                 //gamestate
-                case FriendlyTurn:  return Game.TurnPlayer == ThisCard.Controller;
-                case EnemyTurn:     return Game.TurnPlayer != ThisCard.Controller;
-                case FromField:     return context.mainCardInfoBefore.Location == CardLocation.Field;
-                case FromDeck:      return context.mainCardInfoBefore.Location == CardLocation.Deck;
-                case NotFromEffect: return context.stackable is Effect;
+                FriendlyTurn    => Game.TurnPlayer == ThisCard.Controller,
+                EnemyTurn       => Game.TurnPlayer != ThisCard.Controller,
+                FromField       => context.mainCardInfoBefore.Location == CardLocation.Field,
+                FromDeck        => context.mainCardInfoBefore.Location == CardLocation.Deck,
+                NotFromEffect   => context.stackable is Effect,
 
                 //max
-                case MaxPerRound: return ThisTrigger.Effect.TimesUsedThisRound < maxPerRound;
-                case MaxPerTurn:  return ThisTrigger.Effect.TimesUsedThisTurn < maxTimesPerTurn;
-                case MaxPerStack: return ThisTrigger.Effect.TimesUsedThisStack < maxPerStack;
+                MaxPerRound => ThisTrigger.Effect.TimesUsedThisRound < maxPerRound,
+                MaxPerTurn  => ThisTrigger.Effect.TimesUsedThisTurn < maxTimesPerTurn,
+                MaxPerStack => ThisTrigger.Effect.TimesUsedThisStack < maxPerStack,
 
                 //misc
-                default: throw new ArgumentException($"Invalid trigger restriction {restriction}");
-            }
+                _ => throw new ArgumentException($"Invalid trigger restriction {restriction}"),
+            };
         }
 
         

@@ -12,11 +12,7 @@ namespace KompasServer.Effects
         public virtual bool ContinueResolution => true;
 
         public string fallOffCondition = Trigger.Remove;
-        public string[] fallOffRestrictions =
-        {
-            TriggerRestriction.ThisCardTriggered,
-            TriggerRestriction.ThisCardInPlay,
-        };
+        public string[] fallOffRestrictions = TriggerRestriction.DefaultFallOffRestrictions;
 
         protected TriggerRestriction CreateFallOffRestriction(GameCard card)
         {
