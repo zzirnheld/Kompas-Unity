@@ -1,0 +1,85 @@
+{
+	"cardType":67,
+	"cardName":"B0U550L3",
+	"effText":"Golem.\nWhile activated, once each turn, you can move me across an adjacent card, then you can give it -3 E.",
+	"effects":[
+		{
+			"blurb":"C0MP455",
+			"activationRestriction":{
+				"activationRestrictionArray":[
+					"Max Times Per Turn",
+					"This Card Fits Restriction",
+					"Default"
+				],
+                "cardRestriction":
+                {
+                    "cardRestrictions":["Activated"]
+                }
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetThisSpaceSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"to grapple across",
+						"cardRestrictions":["Board","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Adjacent to Source"],
+							"mustBeEmpty":false
+						}
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+				},
+                {
+                    "$type":"KompasServer.Effects.TargetDirectionSubeffect, Assembly-CSharp"
+                },
+                {
+                    "$type":"KompasServer.Effects.AutoSpaceTargetSubeffect, Assembly-CSharp",
+                    "spaceRestriction":
+                    {
+                        "spaceRestrictions":["Source to Target Same Direction as Coords","Distance to Target Fits X Restriction"],
+                        "distanceXRestriction":{
+                            "xRestrictions":["=X"]
+                        }
+                    },
+                    "xModifier":1
+                },
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+                {
+                    "$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+                },
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod":-3,
+                    "targetIndex":-2
+				}
+			]
+		}
+	],
+	"MovementRestriction":{
+		"normalRestrictionsFromJson":[
+			"Default",
+			"Activated"
+		]
+	},
+	"AttackRestriction":{
+		"attackRestrictionsArray":[
+			"Default",
+			"This is Activated"
+		]
+	},
+	"n":1,
+	"e":7,
+	"s":7,
+	"w":7,
+	"subtypes":["Mech","Golem"],
+	"subtypeText":"Mech Golem"
+}

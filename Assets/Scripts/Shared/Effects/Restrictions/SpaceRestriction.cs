@@ -40,6 +40,7 @@ namespace KompasCore.Effects
 
         public const string SourceDisplacementToSpaceMatchesCoords = "Source Displacement to Space Matches Coords";
         public const string SourceToSpaceSameDirectionAsCoords = "Source to Space Same Direction as Coords";
+        public const string SourceToTargetSameDirectionAsCoords = "Source to Target Same Direction as Coords";
         public const string SubjectiveDisplacementFromSource = "Subjective Displacement from Source";
         public const string BehindSource = "Behind Source";
 
@@ -173,6 +174,7 @@ namespace KompasCore.Effects
 
                 SourceDisplacementToSpaceMatchesCoords => Source.Position.DisplacementTo(space) == Subeffect.SpaceTarget,
                 SourceToSpaceSameDirectionAsCoords => Source.Position.DirectionFromThisTo(space) == Subeffect.SpaceTarget,
+                SourceToTargetSameDirectionAsCoords => target.Position.DirectionFromThisTo(space) == Subeffect.SpaceTarget,
                 SubjectiveDisplacementFromSource 
                     => Controller.SubjectiveCoords(Source.Position).DisplacementTo(Controller.SubjectiveCoords(space)) == (displacementX, displacementY),
                 BehindSource => Source.SpaceBehind(space),
