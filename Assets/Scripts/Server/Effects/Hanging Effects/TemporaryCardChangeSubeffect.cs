@@ -2,6 +2,7 @@
 using KompasCore.Effects;
 using KompasCore.Cards;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace KompasServer.Effects
 {
@@ -27,6 +28,7 @@ namespace KompasServer.Effects
             base.Initialize(eff, subeffIndex);
             triggerRestriction ??= new TriggerRestriction();
             triggerRestriction.Initialize(Game, ThisCard, thisTrigger: null, effect: Effect, subeff: this);
+            Debug.LogWarning($"Are jump indices null? {jumpIndices == null}");
         }
 
         public override Task<ResolutionInfo> Resolve()
@@ -37,9 +39,7 @@ namespace KompasServer.Effects
             //each of the effects needs to be registered, and registered for how it could fall off
             foreach (var eff in effectsApplied)
             {
-                ServerGame.EffectsController.RegisterHangingEffect(endCondition, eff);
-                if(!string.IsNullOrEmpty(fallOffCondition))
-                    ServerGame.EffectsController.RegisterHangingEffectFallOff(fallOffCondition, eff);
+                ServerGame.EffectsController.RegisterHangingEffect(endCondition, eff, fallOffCondition);
             }
 
             //after all that's done, make it do the next subeffect

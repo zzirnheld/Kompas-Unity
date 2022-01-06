@@ -351,16 +351,18 @@ namespace KompasServer.Effects
             triggerMap[condition].Add(trigger);
         }
 
-        public void RegisterHangingEffect(string condition, HangingEffect hangingEff)
+        public void RegisterHangingEffect(string condition, HangingEffect hangingEff, string fallOffCondition = default)
         {
             Debug.Log($"Registering a new hanging effect to condition {condition}");
             if (!hangingEffectMap.ContainsKey(condition))
                 hangingEffectMap.Add(condition, new List<HangingEffect>());
 
             hangingEffectMap[condition].Add(hangingEff);
+
+            if (fallOffCondition != default) RegisterHangingEffectFallOff(fallOffCondition, hangingEff);
         }
 
-        public void RegisterHangingEffectFallOff(string condition, HangingEffect hangingEff)
+        private void RegisterHangingEffectFallOff(string condition, HangingEffect hangingEff)
         {
             Debug.Log($"Registering a new hanging effect to condition {condition}");
             if (!hangingEffectFallOffMap.ContainsKey(condition))

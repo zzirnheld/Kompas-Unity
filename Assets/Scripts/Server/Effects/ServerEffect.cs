@@ -68,6 +68,26 @@ namespace KompasServer.Effects
         {
             if (newSubeffects == null) throw new System.ArgumentNullException("Can't insert null subeffects");
 
+            //First, update the subeffect jump indices
+            //Of the subeffects to be inserted
+            foreach (var s in newSubeffects)
+            {
+                if (s.jumpIndices == null) continue;
+                for (int i = 0; i < s.jumpIndices.Length; i++)
+                {
+                    s.jumpIndices[i] += startingAtIndex;
+                }
+            }
+            //And of any extant subeffects whose indices would be after the insertion point
+            foreach (var s in subeffects)
+            {
+                if (s.jumpIndices == null) continue;
+                for (int i = 0; i < s.jumpIndices.Length; i++)
+                {
+                    if (s.jumpIndices[i] >= startingAtIndex) s.jumpIndices[i] += startingAtIndex;
+                }
+            }
+
             ServerSubeffect[] combinedSubeffects = new ServerSubeffect[subeffects.Length + newSubeffects.Length];
             int oldIndex;
             int combinedIndex;
@@ -87,17 +107,6 @@ namespace KompasServer.Effects
                 combinedSubeffects[combinedIndex] = subeffects[oldIndex];
             }
             subeffects = combinedSubeffects;
-
-            //after that's done, update any subeffect indices in the subeffects thereafter to account for the newly inserted subeffects
-            int newSubeffectsCount = newSubeffects.Length;
-            for (int i = startingAtIndex; i < subeffects.Length; i++)
-            {
-                if (subeffects[i].jumpIndices == null) continue;
-                for (int j = 0; j < subeffects[i].jumpIndices.Length; j++)
-                {
-                    subeffects[i].jumpIndices[j] += newSubeffectsCount;
-                }
-            }
         }
 
         public override bool CanBeActivatedBy(Player controller)

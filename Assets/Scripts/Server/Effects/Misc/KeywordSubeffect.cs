@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace KompasServer.Effects
 {
@@ -14,6 +15,10 @@ namespace KompasServer.Effects
         {
             base.Initialize(eff, subeffIndex);
             var subeffects = Game.cardRepo.InstantiateServerPartialKeyword(keyword);
+            foreach (var s in subeffects)
+            {
+                Debug.Log($"Loaded subeff with jump indices {s.jumpIndices}");
+            }
             ServerEffect.InsertSubeffects(subeffIndex + 1, subeffects);
             //The subeffects will then be initialized by the calling Effect
         }

@@ -1,6 +1,7 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Exceptions;
 using KompasCore.GameCore;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects
 {
