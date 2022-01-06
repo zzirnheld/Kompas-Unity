@@ -1,8 +1,8 @@
 {
-	"blurb":"Recoverable",
+	"blurb":"Pass Back",
 	"triggerData":
 	{
-		"blurb":"Recoverable",
+		"blurb":"Pass Back",
 		"triggerCondition":"Defend",
 		"triggerRestriction":{
 			"triggerRestrictions":["Augmented Card Triggered"]

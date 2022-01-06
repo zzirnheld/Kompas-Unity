@@ -192,6 +192,7 @@ mech_pilots/Gunn R Mann
 mech_pilots/Rayla, Head Mann
 mech_pilots/Gvala, Improvisor-Pilot
 mechs/Powered Landing
+mechs/Mech-Blaster
 music/Soaring Chorus
 music/Surging Verse
 music/Ringing Bridge
