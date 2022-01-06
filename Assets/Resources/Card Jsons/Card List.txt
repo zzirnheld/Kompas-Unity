@@ -195,6 +195,7 @@ mechs/Powered Landing
 mechs/Mech-Blaster
 mechs/Buffer Shield
 mechs/Iterative Analyzer
+mechs/Recruitment Drive
 music/Soaring Chorus
 music/Surging Verse
 music/Ringing Bridge

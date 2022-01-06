@@ -36,7 +36,8 @@
 					},
 					"listRestriction":{
 						"listRestrictions":["Min Can Choose: X","Max Can Choose: X"]
-					}
+					},
+					"xMultiplier":1
 				},
 				{
 					"$type":"KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
