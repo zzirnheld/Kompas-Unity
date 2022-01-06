@@ -196,6 +196,8 @@ mechs/Mech-Blaster
 mechs/Buffer Shield
 mechs/Iterative Analyzer
 mechs/Recruitment Drive
+mechs/Collective Mechanization
+mechs/One Step Ahead
 music/Soaring Chorus
 music/Surging Verse
 music/Ringing Bridge

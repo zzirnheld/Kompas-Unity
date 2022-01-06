@@ -1,0 +1,74 @@
+{
+	"cardType":83,
+	"cardName":"Collaborative Mechanization",
+	"effText":"Given X as the total S of Mech Pilots here, deck->hand Mech Golem(s) with total S <= X.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount":"Total Card Value of Cards Fitting Restriction",
+					"cardValue":{
+						"value":"S"
+					},
+					"cardRestriction":
+					{
+						"cardRestrictions":["Subtypes Include","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["In AOE"],
+							"mustBeEmpty":false
+						},
+						"subtypesInclude":["Mech","Pilot"]
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Mech Golem to collab on",
+						"cardRestrictions":["Is Character","Deck","Subtypes Include","Card Value Fits X Restriction"],
+						"subtypesInclude":["Mech","Golem"],
+						"cardValue":{
+							"value":"S"
+						},
+						"xRestriction":{
+							"xRestrictions":["<=X"]
+						}
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"S"
+					},
+					"change":true,
+					"xMultiplier":-1
+				},
+				{
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"condition":"X >= Constant",
+					"constant":1,
+					"jumpIndices":[1]
+				}
+			]
+		}
+	],
+	"c":1,
+	"spellTypes":["Simple","Radial"],
+	"subtypes":["Simple","Radial"],
+	"subtypeText":"Radius 1 Simple",
+	"radius":1
+}
