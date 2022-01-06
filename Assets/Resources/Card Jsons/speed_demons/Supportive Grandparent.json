@@ -27,7 +27,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
-					"indexToResume":2,
+					"jumpIndices:":[2],
 					"endCondition":"Move",
                     "triggerRestriction":{
                         "triggerRestrictions":["Triggerer is Secondary Context Target"]

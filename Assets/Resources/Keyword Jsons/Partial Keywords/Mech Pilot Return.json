@@ -2,7 +2,7 @@
     {
         "$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
         "numTimesToDelay":0,
-        "indexToResume":1,
+        "jumpIndices:":[1],
         "fallOffCondition":"",
         "endCondition":"Discard",
         "triggerRestriction":{

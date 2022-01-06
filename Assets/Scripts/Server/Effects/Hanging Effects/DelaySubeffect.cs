@@ -8,14 +8,13 @@ namespace KompasServer.Effects
     public class DelaySubeffect : TemporaryCardChangeSubeffect
     {
         public int numTimesToDelay = 0;
-        public int indexToResume;
         public bool clearWhenResume = true;
         public override bool ContinueResolution => false;
 
         protected override IEnumerable<HangingEffect> CreateHangingEffects()
         {
             Debug.Log($"Is context null? {Context == null}");
-            Context?.SetResumeInfo(indexToResume, Effect.Targets, Effect.Coords);
+            Context?.SetResumeInfo(JumpIndex, Effect.Targets, Effect.Coords);
             Context?.Targets?.Clear();
             Context?.Targets?.AddRange(Effect.Targets);
             var delay = new DelayedHangingEffect(game: ServerGame,
@@ -27,7 +26,7 @@ namespace KompasServer.Effects
                                                  currentContext: Context,
                                                  numTimesToDelay: numTimesToDelay,
                                                  toResume: ServerEffect,
-                                                 indexToResumeResolution: indexToResume,
+                                                 indexToResumeResolution: JumpIndex,
                                                  controller: EffectController,
                                                  targets: new List<GameCard>(Effect.Targets),
                                                  spaces: new List<Space>(Effect.Coords),
