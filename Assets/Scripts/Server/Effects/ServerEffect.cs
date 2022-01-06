@@ -84,7 +84,7 @@ namespace KompasServer.Effects
                 if (s.jumpIndices == null) continue;
                 for (int i = 0; i < s.jumpIndices.Length; i++)
                 {
-                    if (s.jumpIndices[i] >= startingAtIndex) s.jumpIndices[i] += startingAtIndex;
+                    if (s.jumpIndices[i] >= startingAtIndex) s.jumpIndices[i] += newSubeffects.Length;
                 }
             }
 

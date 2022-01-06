@@ -184,6 +184,13 @@ mech_golems/PL4T00N
 mech_golems/N0T3
 mech_golems/S3G4SC4NTUR14N 00
 mech_pilots/Standard Pilot
+mech_pilots/Runn R Mann
+mech_pilots/Heel R Mann
+mech_pilots/Bind R Mann
+mech_pilots/Gunn R Mann
+mech_pilots/Rayla, Head Mann
+mech_pilots/Gvala, Improvisor-Pilot
+mechs/Powered Landing
 music/Soaring Chorus
 music/Surging Verse
 music/Ringing Bridge
