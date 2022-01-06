@@ -14,6 +14,7 @@ namespace KompasServer.Effects
         protected override IEnumerable<HangingEffect> CreateHangingEffects()
         {
             Debug.Log($"Is context null? {Context == null}");
+            Debug.Log($"Are jump indices null? {jumpIndices == null}");
             Context?.SetResumeInfo(JumpIndex, Effect.Targets, Effect.Coords);
             Context?.Targets?.Clear();
             Context?.Targets?.AddRange(Effect.Targets);
