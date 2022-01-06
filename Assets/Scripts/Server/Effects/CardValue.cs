@@ -1,4 +1,5 @@
 ﻿using KompasCore.Cards;
+using KompasCore.Exceptions;
 using System;
 using System.Linq;
 
@@ -33,7 +34,7 @@ namespace KompasCore.Effects
 
         public int GetValueOf(GameCardBase card)
         {
-            if (card == null) throw new ArgumentException("Cannot get value of null card", "card");
+            if (card == null) throw new NullCardException("Cannot get value of null card");
 
             return value switch
             {

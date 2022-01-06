@@ -4,7 +4,7 @@
 	"effText":"During your turn, I can Pilot a Mech.",
 	"effects":[
 		{
-			"blurb":"The Tide Shifts",
+			"blurb":"Standard Piloting",
 			"activationRestriction":{
 				"activationRestrictionArray":[
 					"Friendly Turn",

@@ -27,13 +27,13 @@ namespace KompasCore.Effects
         //Targets
         protected readonly List<GameCard> cardTargets = new List<GameCard>();
         protected readonly List<Space> spaceTargets = new List<Space>();
-        protected readonly List<GameCardInfo> cardInfoTargets = new List<GameCardInfo>();
+        //we don't care about informing players of the contents of these. yet. but we might later
+        public readonly List<GameCardInfo> cardInfoTargets = new List<GameCardInfo>();
         public readonly List<Player> playerTargets = new List<Player>();
         public readonly List<GameCard> rest = new List<GameCard>();
 
         public IEnumerable<GameCard> CardTargets => cardTargets;
         public IEnumerable<Space> SpaceTargets => spaceTargets;
-        public IEnumerable<GameCardInfo> CardInfoTargets => cardInfoTargets;
 
         /// <summary>
         /// X value for card effect text (not coordinates)

@@ -120,7 +120,7 @@ namespace KompasCore.Effects
 
         public GameCard CardTarget => Effect.GetTarget(targetIndex);
         public Space SpaceTarget => Effect.GetSpace(spaceIndex);
-        public GameCardInfo CardInfoTarget => Effect.GetItem(Effect.CardInfoTargets, cardInfoIndex);
+        public GameCardInfo CardInfoTarget => Effect.GetItem(Effect.cardInfoTargets, cardInfoIndex);
         public Player PlayerTarget => Effect.GetPlayer(playerIndex);
         public int JumpIndex => Effect.GetItem(jumpIndices, jumpIndicesIndex);
 
