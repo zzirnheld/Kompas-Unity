@@ -123,6 +123,10 @@
 		{
 			"keyword":"Pilot a Mech",
 			"reminder":"Annihilate me. Hand->summon a Mech where I was and activate it, but when it dies, summon me where it was. If it's removed without dying, I stay annihilated forever."
+		},
+		{
+			"keyword":"Nimble",
+			"reminder":"Can move through cards."
 		}
 	]
 }

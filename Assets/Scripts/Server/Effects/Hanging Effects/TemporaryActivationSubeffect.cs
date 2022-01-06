@@ -2,7 +2,7 @@
 
 namespace KompasServer.Effects
 {
-    public class TemporaryActivationSubeffect : TemporaryCardChangeSubeffect
+    public class TemporaryActivationSubeffect : HangingEffectSubeffect
     {
         protected override IEnumerable<HangingEffect> CreateHangingEffects()
         {

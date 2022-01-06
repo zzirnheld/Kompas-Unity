@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace KompasServer.Effects
 {
-    public class TemporaryNESWBuffSubeffect : TemporaryCardChangeSubeffect
+    public class TemporaryNESWBuffSubeffect : HangingEffectSubeffect
     {
         public int nModifier = 0;
         public int eModifier = 0;

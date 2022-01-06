@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"S4MUR41",
-	"effText":"Ephemeral Speedemon Golem.",
+	"effText":"Nimble Speedemon Golem.",
 	"effects":[],
 	"MovementRestriction":{
 		"normalRestrictionsFromJson":[

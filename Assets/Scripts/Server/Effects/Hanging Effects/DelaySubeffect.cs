@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace KompasServer.Effects
 {
-    public class DelaySubeffect : TemporaryCardChangeSubeffect
+    public class DelaySubeffect : HangingEffectSubeffect
     {
         public int numTimesToDelay = 0;
         public bool clearWhenResume = true;

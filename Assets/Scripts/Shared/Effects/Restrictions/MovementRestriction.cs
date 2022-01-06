@@ -111,7 +111,7 @@ namespace KompasCore.Effects
 
         private bool CanMoveThroughEmptyOrRestrictedSpacesTo(Space destination)
         {
-            bool predicate(Space s) => Card.Game.boardCtrl.GetCardAt(destination) == null
+            bool predicate(Space s) => Card.Game.boardCtrl.GetCardAt(s) == null
                                     || throughSpacesRestriction.Evaluate(s, default);
             return Card.SpacesCanMove >= Card.Game.boardCtrl.ShortestPath(Card.Position, destination, predicate);
         }

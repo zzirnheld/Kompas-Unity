@@ -193,6 +193,8 @@ mech_pilots/Rayla, Head Mann
 mech_pilots/Gvala, Improvisor-Pilot
 mechs/Powered Landing
 mechs/Mech-Blaster
+mechs/Buffer Shield
+mechs/Iterative Analyzer
 music/Soaring Chorus
 music/Surging Verse
 music/Ringing Bridge

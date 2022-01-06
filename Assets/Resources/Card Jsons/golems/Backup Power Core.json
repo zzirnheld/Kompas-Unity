@@ -43,7 +43,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition":"Target Fits Restriction",
+					"condition":"Target Violates Restriction",
 					"cardRestriction":
 					{
 						"cardRestrictions":["Discard"]
@@ -57,7 +57,7 @@
                 },
 				{
 					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition":"Target Fits Restriction",
+					"condition":"Target Violates Restriction",
 					"cardRestriction":
 					{
 						"cardRestrictions":["Discard"]

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace KompasServer.Effects
 {
-    public abstract class TemporaryCardChangeSubeffect : ServerSubeffect
+    public abstract class HangingEffectSubeffect : ServerSubeffect
     {
         public TriggerRestriction triggerRestriction;
         public string endCondition;

@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace KompasServer.Effects
 {
-    public class TemporaryNESWBuffAllSubeffect : TemporaryCardChangeSubeffect
+    public class TemporaryNESWBuffAllSubeffect : HangingEffectSubeffect
     {
         public int nModifier = 0;
         public int eModifier = 0;
