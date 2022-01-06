@@ -118,6 +118,11 @@ namespace KompasClient.UI
             SetCurrState(GameStarting);
         }
 
+        public void ApplySettings(ClientSettings clientSettings)
+        {
+            ipInputField.text = clientSettings.defaultIP;
+        }
+
         public override void Refresh()
         {
             base.Refresh();

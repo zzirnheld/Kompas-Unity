@@ -58,7 +58,7 @@ namespace KompasServer.Effects
         {
             //if we've already ended this hanging effect, we shouldn't end it again.
             if (ended) return false;
-            Debug.Log($"Checking whether {this} should end");
+            Debug.Log($"Checking whether {this} should end for context {context}, with saved context {savedContext}");
             return triggerRestriction.Evaluate(context, secondary: savedContext);
         }
 

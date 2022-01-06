@@ -7,15 +7,15 @@ namespace KompasCore.Cards
 {
     public abstract class GameCardBase : CardBase
     {
-        public abstract GameCard Card { get; }
+        public abstract GameCard Card { get; protected set; }
         public abstract CardLocation Location { get; protected set; }
-        public abstract int IndexInList { get; }
+        public abstract int IndexInList { get; protected set; }
         public abstract Player Controller { get; set; }
-        public abstract Player Owner { get; }
-        public abstract bool Summoned { get; }
-        public abstract bool IsAvatar { get; }
+        public abstract Player Owner { get; protected set; }
+        public abstract bool Summoned { get; protected set; }
+        public abstract bool IsAvatar { get; protected set; }
         public abstract GameCard AugmentedCard { get; protected set; }
-        public abstract IEnumerable<GameCard> Augments { get; }
+        public abstract IEnumerable<GameCard> Augments { get; protected set; }
         /// <summary>
         /// Represents whether this card is currently known to the enemy of this player.
         /// TODO: make this also be accurate on client, remembering what thigns have been revealed
@@ -23,13 +23,13 @@ namespace KompasCore.Cards
         public abstract bool KnownToEnemy { get; set; }
 
         public abstract PlayRestriction PlayRestriction { get; protected set; }
-        public abstract int BaseE { get; }
+        public abstract int BaseE { get; protected set; }
 
         public abstract bool Activated { get; protected set; }
         public abstract bool Negated { get; protected set; }
-        public abstract int SpacesMoved { get; }
-        public abstract int SpacesCanMove { get; }
-        public abstract IEnumerable<GameCard> AdjacentCards { get; }
+        public abstract int SpacesMoved { get; protected set; }
+        public abstract int SpacesCanMove { get; protected set; }
+        public abstract IEnumerable<GameCard> AdjacentCards { get; protected set; }
 
         public abstract Space Position { get; set; }
 
@@ -43,15 +43,16 @@ namespace KompasCore.Cards
                         string effText,
                         string subtypeText,
                         string[] augSubtypes)
-            : base(n, e, s, w, c, a,
-                   subtext, spellTypes,
-                   fast, unique,
-                   radius, duration,
-                   cardType, cardName,
-                   effText,
-                   subtypeText,
-                   augSubtypes)
-        { }
+        {
+            SetInfo(n, e, s, w, c, a,
+                    subtext, spellTypes,
+                    fast, unique,
+                    radius, duration,
+                    cardType, cardName,
+                    effText,
+                    subtypeText,
+                    augSubtypes);
+        }
 
         public bool Hurt => CardType == 'C' && Location == CardLocation.Field && E < BaseE;
 
@@ -154,26 +155,26 @@ namespace KompasCore.Cards
     /// </summary>
     public class GameCardInfo : GameCardBase
     {
-        public override GameCard Card { get; }
+        public override GameCard Card { get; protected set; }
 
         public override CardLocation Location { get; protected set; }
-        public override int IndexInList { get; }
+        public override int IndexInList { get; protected set; }
         public override Player Controller { get; set; }
-        public override Player Owner { get; }
-        public override bool Summoned { get; }
-        public override bool IsAvatar { get; }
+        public override Player Owner { get; protected set; }
+        public override bool Summoned { get; protected set; }
+        public override bool IsAvatar { get; protected set; }
         public override GameCard AugmentedCard { get; protected set; }
-        public override IEnumerable<GameCard> Augments { get; }
+        public override IEnumerable<GameCard> Augments { get; protected set; }
         public override bool KnownToEnemy { get; set; }
 
         public override PlayRestriction PlayRestriction { get; protected set; }
-        public override int BaseE { get; }
+        public override int BaseE { get; protected set; }
 
         public override bool Activated { get; protected set; }
         public override bool Negated { get; protected set; }
-        public override int SpacesMoved { get; }
-        public override int SpacesCanMove { get; }
-        public override IEnumerable<GameCard> AdjacentCards { get; }
+        public override int SpacesMoved { get; protected set; }
+        public override int SpacesCanMove { get; protected set; }
+        public override IEnumerable<GameCard> AdjacentCards { get; protected set; }
 
         public override Space Position { get; set; }
 
@@ -184,18 +185,24 @@ namespace KompasCore.Cards
         /// <returns>A <see cref="GameCardInfo"/> whose information matches the current state of <paramref name="card"/>, 
         /// or null if <paramref name="card"/> is <see langword="null"/></returns>
         public static GameCardInfo CardInfoOf(GameCard card)
-            => card == null ? null : new GameCardInfo(card);
-
-        private GameCardInfo(GameCard card)
-            : base(card.N, card.E, card.S, card.W, card.C, card.A,
-                   card.Subtext, card.SpellSubtypes,
-                   card.Fast, card.Unique,
-                   card.Radius, card.Duration,
-                   card.CardType, card.CardName,
-                   card.EffText,
-                   card.SubtypeText,
-                   card.AugmentSubtypes)
         {
+            if (card == null) return null;
+
+            var cardInfo = card.gameObject.AddComponent<GameCardInfo>();
+            cardInfo.SetInfo(card);
+            return cardInfo;
+        }
+
+        protected void SetInfo(GameCard card)
+        {
+            SetInfo(card.N, card.E, card.S, card.W, card.C, card.A,
+                        card.Subtext, card.SpellSubtypes,
+                        card.Fast, card.Unique,
+                        card.Radius, card.Duration,
+                        card.CardType, card.CardName,
+                        card.EffText,
+                        card.SubtypeText,
+                        card.AugmentSubtypes);
             Card = card;
             Location = card.Location;
             IndexInList = card.IndexInList;

@@ -22,7 +22,14 @@ namespace KompasCore.Cards
         public abstract Game Game { get; }
         public int ID { get; private set; }
         public CardController cardCtrl;
-        public override GameCard Card => this;
+        public override GameCard Card
+        {
+            get => this;
+            protected set
+            {
+                throw new NotImplementedException("What are you smoking?");
+            }
+        }
 
         private SerializableCard serializedCard;
 
@@ -30,7 +37,14 @@ namespace KompasCore.Cards
 
         #region stats
         public int BaseN => serializedCard.n;
-        public override int BaseE => serializedCard.e;
+        public override int BaseE
+        {
+            get => serializedCard.e;
+            protected set
+            {
+                throw new NotImplementedException($"Tried to set base e of actual GameCard {this}");
+            }
+        }
         public int BaseS => serializedCard.s;
         public int BaseW => serializedCard.w;
         public int BaseC => serializedCard.c;
@@ -90,7 +104,14 @@ namespace KompasCore.Cards
             }
         }
 
-        public override bool Summoned => CardType != 'C' || Location == CardLocation.Field;
+        public override bool Summoned
+        {
+            get => CardType != 'C' || Location == CardLocation.Field;
+            protected set
+            {
+                throw new NotImplementedException($"Tried to set summoned on list of actual GameCard {this}");
+            }
+        }
         public virtual bool CanRemove => true;
         public virtual int CombatDamage => W;
         public (int n, int e, int s, int w) CharStats => (N, E, S, W);
@@ -112,10 +133,24 @@ namespace KompasCore.Cards
             }
         }
 
-        public override int IndexInList => GameLocation?.IndexOf(this) ?? -1;
+        public override int IndexInList
+        {
+            get => GameLocation?.IndexOf(this) ?? -1;
+            protected set
+            {
+                throw new NotImplementedException($"Tried to set index in list of actual GameCard {this}");
+            }
+        }
         public bool InHiddenLocation => Game.IsHiddenLocation(Location);
 
-        public override IEnumerable<GameCard> AdjacentCards => Game.boardCtrl.CardsAdjacentTo(Position);
+        public override IEnumerable<GameCard> AdjacentCards
+        {
+            get => Game.boardCtrl.CardsAdjacentTo(Position);
+            protected set
+            {
+                throw new NotImplementedException($"Tried to set adjacent cards of actual GameCard {this}");
+            }
+        }
 
         public bool AlreadyCopyOnBoard => Game.BoardHasCopyOf(this);
 
@@ -124,7 +159,15 @@ namespace KompasCore.Cards
 
         #region Augments
         private readonly List<GameCard> augmentsList = new List<GameCard>();
-        public override IEnumerable<GameCard> Augments => augmentsList;
+        public override IEnumerable<GameCard> Augments
+        {
+            get => augmentsList;
+            protected set
+            {
+                augmentsList.Clear();
+                augmentsList.AddRange(value);
+            }
+        }
 
         private GameCard augmentedCard;
         public override GameCard AugmentedCard
@@ -158,9 +201,12 @@ namespace KompasCore.Cards
         #endregion effects
 
         //movement
-        private int spacesMoved = 0;
-        public override int SpacesMoved => spacesMoved;
-        public override int SpacesCanMove => N - SpacesMoved;
+        public override int SpacesMoved { get; protected set; } = 0;
+        public override int SpacesCanMove
+        {
+            get => N - SpacesMoved;
+            protected set => SpacesMoved = N - value;
+        }
 
         public int attacksThisTurn = 0;
         public int AttacksThisTurn => attacksThisTurn;
@@ -383,11 +429,11 @@ namespace KompasCore.Cards
         public virtual void SetActivated(bool activated, IStackable stackSrc = null) => Activated = activated;
 
         public virtual void SetSpacesMoved(int spacesMoved, bool fromReset = false)
-            => this.spacesMoved = spacesMoved;
+            => SpacesMoved = spacesMoved;
         public virtual void SetAttacksThisTurn(int attacksThisTurn, bool fromReset = false)
             => this.attacksThisTurn = attacksThisTurn;
         public virtual void SetTurnsOnBoard(int turnsOnBoard, IStackable stackSrc = null, bool fromReset = false)
-            => this.TurnsOnBoard = turnsOnBoard;
+            => TurnsOnBoard = turnsOnBoard;
         #endregion statfuncs
 
         #region moveCard

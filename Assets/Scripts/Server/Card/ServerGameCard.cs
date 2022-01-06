@@ -38,12 +38,23 @@ namespace KompasServer.Cards
         }
 
         public ServerPlayer ServerOwner { get; private set; }
-        public override Player Owner => ServerController;
+        public override Player Owner
+        {
+            get => ServerOwner;
+            protected set => ServerOwner = value as ServerPlayer;
+        }
 
         public ServerEffect[] ServerEffects { get; private set; }
         public override IEnumerable<Effect> Effects => ServerEffects;
 
-        public override bool IsAvatar => false;
+        public override bool IsAvatar
+        {
+            get => false;
+            protected set
+            {
+                throw new System.NotImplementedException($"Tried to set isAvatar actual GameCard {this}");
+            }
+        }
 
         public override CardLocation Location
         {

@@ -181,6 +181,7 @@ mech_golems/QU4RG3
 mech_golems/S1NG3
 mech_golems/S4MUR41
 mech_golems/PL4T00N
+mech_golems/N0T3
 mech_pilots/Standard Pilot
 music/Soaring Chorus
 music/Surging Verse

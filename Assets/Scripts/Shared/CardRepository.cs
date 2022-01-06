@@ -83,8 +83,17 @@ public class CardRepository : MonoBehaviour
             json = json.Replace("\r", "");
             json = json.Replace("\t", "");
             //load the cleaned json to get the card's name according to itself
-            var card = JsonConvert.DeserializeObject<SerializableCard>(json,
-                new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
+            SerializableCard card = null;
+            try
+            {
+                card = JsonConvert.DeserializeObject<SerializableCard>(json,
+                    new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
+            }
+            catch (JsonReaderException e)
+            {
+                Debug.LogError($"Failed to load {json}. Error\n{e}");
+                continue;
+            }
             string cardName = card.cardName;
 
             //add the cleaned json to the dictionary
@@ -136,7 +145,7 @@ public class CardRepository : MonoBehaviour
     {
         if (!partialKeywordJsons.ContainsKey(keyword)) return new ServerSubeffect[0];
 
-        return JsonConvert.DeserializeObject<ServerSubeffect[]>(partialKeywordJsons[name], cardLoadingSettings);
+        return JsonConvert.DeserializeObject<ServerSubeffect[]>(partialKeywordJsons[keyword], cardLoadingSettings);
     }
 
     #region Create Cards

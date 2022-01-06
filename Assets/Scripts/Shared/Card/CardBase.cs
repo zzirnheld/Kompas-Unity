@@ -115,35 +115,14 @@ namespace KompasCore.Cards
 
         public Sprite simpleSprite;
 
-        public CardBase() { }
-
-        public CardBase(int n, int e, int s, int w, int c, int a,
-                        string subtext, string[] spellTypes,
-                        bool fast, bool unique,
-                        int radius, int duration,
-                        char cardType, string cardName,
-                        string effText,
-                        string subtypeText,
-                        string[] augSubtypes)
-        {
-            SetInfo(n, e, s, w, c, a,
-                    subtext, spellTypes,
-                    fast, unique,
-                    radius, duration,
-                    cardType, cardName,
-                    effText,
-                    subtypeText,
-                    augSubtypes);
-        }
-
-        private void SetInfo(int n, int e, int s, int w, int c, int a,
-                             string subtext, string[] spellTypes,
-                             bool fast, bool unique,
-                             int radius, int duration,
-                             char cardType, string cardName,
-                             string effText,
-                             string subtypeText,
-                             string[] augSubtypes)
+        protected void SetInfo(int n, int e, int s, int w, int c, int a,
+                                       string subtext, string[] spellTypes,
+                                       bool fast, bool unique,
+                                       int radius, int duration,
+                                       char cardType, string cardName,
+                                       string effText,
+                                       string subtypeText,
+                                       string[] augSubtypes)
         {
             N = n;
             E = e;

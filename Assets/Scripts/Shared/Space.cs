@@ -114,7 +114,7 @@ public class Space
 
     public static bool operator ==(Space a, Space b)
     {
-        Debug.Log($"Comparing {a} to {b}");
+        //Debug.Log($"Comparing {a} to {b}");
         if (a is null) return b is null;
         else if (b is null) return false;
         else return a.x == b.x && a.y == b.y;

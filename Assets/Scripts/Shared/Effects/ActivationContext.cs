@@ -6,8 +6,8 @@ namespace KompasCore.Effects
     public class ActivationContext
     {
         // Information about the relevant triggering situation
-        public readonly GameCardBase mainCardInfoBefore;
-        public readonly GameCardBase secondaryCardInfoBefore;
+        public readonly GameCardInfo mainCardInfoBefore;
+        public readonly GameCardInfo secondaryCardInfoBefore;
         public readonly IStackable stackable;
         public readonly Player player;
         public readonly int? x;
@@ -24,16 +24,16 @@ namespace KompasCore.Effects
         /// <summary>
         /// The information for the main triggering card immediately after the triggering event occurred.
         /// </summary>
-        public GameCardBase MainCardInfoAfter { get; private set; }
+        public GameCardInfo MainCardInfoAfter { get; private set; }
 
         /// <summary>
         /// The information for the secondary triggering card immediately after the triggering event occurred.
         /// The secondary card could be the defender in an attacks trigger, etc.
         /// </summary>
-        public GameCardBase SecondaryCardInfoAfter { get; private set; }
+        public GameCardInfo SecondaryCardInfoAfter { get; private set; }
 
-        private ActivationContext(GameCardBase mainCardInfoBefore,
-                                  GameCardBase secondaryCardInfoBefore,
+        private ActivationContext(GameCardInfo mainCardInfoBefore,
+                                  GameCardInfo secondaryCardInfoBefore,
                                   IStackable stackable,
                                   Player player,
                                   int? x,
@@ -61,17 +61,26 @@ namespace KompasCore.Effects
                    space?.Copy)
         { }
 
+        ~ActivationContext()
+        {
+            if (mainCardInfoBefore != null) UnityEngine.Object.Destroy(mainCardInfoBefore);
+            if (MainCardInfoAfter != null) UnityEngine.Object.Destroy(mainCardInfoBefore);
+
+            if (secondaryCardInfoBefore != null) UnityEngine.Object.Destroy(mainCardInfoBefore);
+            if (SecondaryCardInfoAfter != null) UnityEngine.Object.Destroy(mainCardInfoBefore);
+        }
+
         /// <summary>
         /// Set any information relevant to resuming an effect's resolution
         /// </summary>
         /// <param name="startIndex">The index at which to start resolving the effect (again)</param>
         /// <param name="targets">The targets to resume with, if any</param>
         /// <param name="spaces">The spaces to resume with, if any</param>
-        public void SetResumeInfo(int startIndex, List<GameCard> targets, List<Space> spaces)
+        public void SetResumeInfo(int startIndex, IEnumerable<GameCard> targets, IEnumerable<Space> spaces)
         {
             StartIndex = startIndex;
-            Targets = targets;
-            Spaces = spaces;
+            Targets = new List<GameCard>(targets);
+            Spaces = new List<Space>(spaces);
         }
 
         /// <summary>

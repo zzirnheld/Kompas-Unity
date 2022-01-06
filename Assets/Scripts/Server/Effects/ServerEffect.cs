@@ -92,6 +92,7 @@ namespace KompasServer.Effects
             int newSubeffectsCount = newSubeffects.Length;
             for (int i = startingAtIndex; i < subeffects.Length; i++)
             {
+                if (subeffects[i].jumpIndices == null) continue;
                 for (int j = 0; j < subeffects[i].jumpIndices.Length; j++)
                 {
                     subeffects[i].jumpIndices[j] += newSubeffectsCount;

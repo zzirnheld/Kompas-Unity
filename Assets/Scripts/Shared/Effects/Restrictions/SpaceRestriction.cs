@@ -233,6 +233,7 @@ namespace KompasCore.Effects
             return spaceRestrictions.All(r => RestrictionValidWithDebug(r, space, theoreticalTarget, context));
         }
 
-        public override string ToString() => JsonConvert.SerializeObject(this);
+        public override string ToString() 
+            => $"Space restriction of card {Source} on subeff {Subeffect}, restrictions {string.Join(",", spaceRestrictions)}";
     }
 }

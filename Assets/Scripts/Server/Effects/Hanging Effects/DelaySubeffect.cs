@@ -15,6 +15,7 @@ namespace KompasServer.Effects
         protected override IEnumerable<HangingEffect> CreateHangingEffects()
         {
             Debug.Log($"Is context null? {Context == null}");
+            Context?.SetResumeInfo(indexToResume, Effect.Targets, Effect.Coords);
             Context?.Targets?.Clear();
             Context?.Targets?.AddRange(Effect.Targets);
             var delay = new DelayedHangingEffect(game: ServerGame,
