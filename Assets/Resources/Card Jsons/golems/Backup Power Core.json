@@ -1,0 +1,96 @@
+{
+	"cardType":65,
+	"cardName":"Backup Power Core",
+	"effText":"While equipped, activate this Golem.\nWhen this Golem dies, revive them where they were and discard->attach me to them, but annihilate us the next time they die.",
+	"effects":[
+		{
+            "blurb":"Activate Golem",
+			"triggerData":
+			{
+				"triggerCondition":"Augment Attached",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TemporaryActivationSubeffect, Assembly-CSharp",
+					"endCondition":"Augment Detached",
+					"triggerRestriction":{
+						"triggerRestrictions":["This Card Triggered"]
+					}
+				}
+			]
+		},
+        {
+            "blurb":"Backup Power",
+            "triggerData":
+            {
+                "triggerCondition":"Discard",
+                "triggerRestriction":{
+                    "triggerRestrictions":["Augmented Card Triggered"]
+                }
+            },
+            "subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition":"Target Fits Restriction",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Discard"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				},
+                {
+                    "$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+                },
+				{
+					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition":"Target Fits Restriction",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Discard"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"attachmentTarget":-2,
+					"targetIndex":-1
+				},
+				{
+					"$type":"KompasServer.Effects.HangingAnnihilationSubeffect, Assembly-CSharp",
+					"endCondition":"Discard",
+                    "triggerRestriction":{
+                        "triggerRestrictions":["Triggerer is Secondary Context Target","From Field"]
+                    },
+					"targetIndex":-1
+				},
+				{
+					"$type":"KompasServer.Effects.HangingAnnihilationSubeffect, Assembly-CSharp",
+					"endCondition":"Discard",
+                    "triggerRestriction":{
+                        "triggerRestrictions":["Triggerer is Secondary Context Target","From Field"]
+                    },
+					"targetIndex":-2
+				}
+            ]
+        }
+	],
+	"PlayRestriction":{
+		"normalRestrictions":["Augment Normal Restrictions"],
+		"effectRestrictions":["Augment Effect Restrictions"]
+	},
+	"a":3,
+	"subtypeText":"Golem Core"
+}

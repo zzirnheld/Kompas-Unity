@@ -6,7 +6,7 @@
         "fallOffCondition":"",
         "endCondition":"Discard",
         "triggerRestriction":{
-            "triggerRestrictions":["Triggerer is Secondary Context Target"]
+            "triggerRestrictions":["Triggerer is Secondary Context Target","From Field"]
         }
     },
     {
