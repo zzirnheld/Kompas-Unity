@@ -25,13 +25,15 @@ namespace KompasCore.Effects
         public int SubeffectIndex { get; protected set; }
 
         //Targets
-        protected readonly List<GameCard> targetsList = new List<GameCard>();
-        protected readonly List<Space> coords = new List<Space>();
-        public readonly List<Player> players = new List<Player>();
+        protected readonly List<GameCard> cardTargets = new List<GameCard>();
+        protected readonly List<Space> spaceTargets = new List<Space>();
+        protected readonly List<GameCardInfo> cardInfoTargets = new List<GameCardInfo>();
+        public readonly List<Player> playerTargets = new List<Player>();
         public readonly List<GameCard> rest = new List<GameCard>();
 
-        public IEnumerable<GameCard> Targets => targetsList;
-        public IEnumerable<Space> Coords => coords;
+        public IEnumerable<GameCard> CardTargets => cardTargets;
+        public IEnumerable<Space> SpaceTargets => spaceTargets;
+        public IEnumerable<GameCardInfo> CardInfoTargets => cardInfoTargets;
 
         /// <summary>
         /// X value for card effect text (not coordinates)
@@ -56,7 +58,7 @@ namespace KompasCore.Effects
 
         protected void SetInfo(GameCard source, int effIndex, Player owner)
         {
-            Source = source != null ? source : throw new ArgumentNullException("source", "Effect cannot be attached to null card");
+            Source = source ?? throw new ArgumentNullException("source", "Effect cannot be attached to null card");
             EffectIndex = effIndex;
             Controller = owner;
 
@@ -77,8 +79,8 @@ namespace KompasCore.Effects
             TimesUsedThisTurn = 0;
         }
 
-        public virtual void AddTarget(GameCard card) => targetsList.Add(card);
-        public virtual void RemoveTarget(GameCard card) => targetsList.Remove(card);
+        public virtual void AddTarget(GameCard card) => cardTargets.Add(card);
+        public virtual void RemoveTarget(GameCard card) => cardTargets.Remove(card);
 
         public virtual bool CanBeActivatedBy(Player controller)
             => Trigger == null && activationRestriction != null && activationRestriction.Evaluate(controller);
@@ -93,13 +95,13 @@ namespace KompasCore.Effects
             return enumerable.ElementAt(trueIndex);
         }
 
-        public GameCard GetTarget(int num) => GetItem(targetsList, num);
+        public GameCard GetTarget(int num) => GetItem(cardTargets, num);
 
-        public Space GetSpace(int num) => GetItem(coords, num);
+        public Space GetSpace(int num) => GetItem(spaceTargets, num);
 
-        public Player GetPlayer(int num) => GetItem(players, num);
+        public Player GetPlayer(int num) => GetItem(playerTargets, num);
 
-        public void AddSpace(Space space) => coords.Add(space.Copy);
+        public void AddSpace(Space space) => spaceTargets.Add(space.Copy);
 
         public override string ToString() => $"Effect of {(Source == null ? "Nothing???" : Source.CardName)}";
     }

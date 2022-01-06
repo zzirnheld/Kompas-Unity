@@ -8,21 +8,21 @@ namespace KompasServer.Effects
     {
         public int SecondTargetIndex = -2;
         public GameCard SecondTarget => Effect.GetTarget(SecondTargetIndex);
-        public override bool IsImpossible() => Target == null || SecondTarget == null;
+        public override bool IsImpossible() => CardTarget == null || SecondTarget == null;
 
         public override Task<ResolutionInfo> Resolve()
         {
-            if (Target == null)
+            if (CardTarget == null)
                 throw new NullCardException(TargetWasNull);
-            else if (forbidNotBoard && Target.Location != CardLocation.Field)
-                throw new InvalidLocationException(Target.Location, Target, MovedCardOffBoard);
+            else if (forbidNotBoard && CardTarget.Location != CardLocation.Field)
+                throw new InvalidLocationException(CardTarget.Location, CardTarget, MovedCardOffBoard);
 
             if (SecondTarget == null)
                 throw new NullCardException(TargetWasNull);
             else if (forbidNotBoard && SecondTarget.Location != CardLocation.Field)
                 throw new InvalidLocationException(SecondTarget.Location, SecondTarget, MovedCardOffBoard);
 
-            Target.Move(SecondTarget.Position, false, ServerEffect);
+            CardTarget.Move(SecondTarget.Position, false, ServerEffect);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

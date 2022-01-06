@@ -5,13 +5,13 @@ namespace KompasServer.Effects
 {
     public class AnnihilateSubeffect : CardChangeStateSubeffect
     {
-        public override bool IsImpossible() => Target == null || Target.Location == CardLocation.Annihilation;
+        public override bool IsImpossible() => CardTarget == null || CardTarget.Location == CardLocation.Annihilation;
 
         public override Task<ResolutionInfo> Resolve()
         {
-            if (Target == null) throw new NullCardException(TargetWasNull);
+            if (CardTarget == null) throw new NullCardException(TargetWasNull);
 
-            Target.Owner.annihilationCtrl.Annihilate(Target, Effect);
+            CardTarget.Owner.annihilationCtrl.Annihilate(CardTarget, Effect);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

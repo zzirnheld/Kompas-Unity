@@ -16,7 +16,7 @@ namespace KompasServer.Effects
             else if (!cardInfo.Position.Valid) throw new InvalidSpaceException(cardInfo.Position, NoValidSpaceTarget);
 
             ServerEffect.AddSpace(cardInfo.Position.Copy);
-            Debug.Log($"Just added {Space} from {cardInfo}");
+            Debug.Log($"Just added {SpaceTarget} from {cardInfo}");
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

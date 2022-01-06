@@ -5,13 +5,13 @@ namespace KompasServer.Effects
 {
     public class RehandSubeffect : CardChangeStateSubeffect
     {
-        public override bool IsImpossible() => Target == null;
+        public override bool IsImpossible() => CardTarget == null;
 
         public override Task<ResolutionInfo> Resolve()
         {
-            if (Target == null) throw new NullCardException(TargetWasNull);
+            if (CardTarget == null) throw new NullCardException(TargetWasNull);
 
-            Target.Rehand(Target.Owner, Effect);
+            CardTarget.Rehand(CardTarget.Owner, Effect);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

@@ -20,8 +20,8 @@ namespace KompasServer.Effects
         }
 
         public IEnumerable<Space> ValidSpaces => Space.Spaces
-                .Where(s => spaceRestriction.Evaluate(s, Context, theoreticalTarget: Target))
-                .Select(s => Player.SubjectiveCoords(s));
+                .Where(s => spaceRestriction.Evaluate(s, Context, theoreticalTarget: CardTarget))
+                .Select(s => PlayerTarget.SubjectiveCoords(s));
 
         public override bool IsImpossible() => ValidSpaces.Count() == 0;
 
@@ -50,7 +50,7 @@ namespace KompasServer.Effects
             var spaces = ValidSpaces.Select(s => (s.x, s.y)).ToArray();
             var recommendedSpaces 
                 = ForPlay 
-                ? spaces.Where(s => Target.PlayRestriction.RecommendedPlay(s, Player, Context, normal: false)).ToArray() 
+                ? spaces.Where(s => CardTarget.PlayRestriction.RecommendedPlay(s, PlayerTarget, Context, normal: false)).ToArray() 
                 : spaces;
             if (spaces.Length > 0)
             {

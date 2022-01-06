@@ -200,20 +200,20 @@ namespace KompasCore.Effects
             return restriction switch
             {
                 //targets
-                AlreadyTarget       => Effect.Targets.Contains(potentialTarget),
-                NotAlreadyTarget    => !Effect.Targets.Contains(potentialTarget),
+                AlreadyTarget       => Effect.CardTargets.Contains(potentialTarget),
+                NotAlreadyTarget    => !Effect.CardTargets.Contains(potentialTarget),
 
                 //names
                 NameIs                  => potentialTarget?.CardName == nameIs,
-                SameName                => Subeffect.Target.CardName == potentialTarget?.CardName,
+                SameName                => Subeffect.CardTarget.CardName == potentialTarget?.CardName,
                 SameNameAsSource        => potentialTarget?.CardName == Source.CardName,
-                DistinctNameFromTargets => Effect.Targets.All(card => card.CardName != potentialTarget?.CardName),
+                DistinctNameFromTargets => Effect.CardTargets.All(card => card.CardName != potentialTarget?.CardName),
                 DistinctNameFromSource  => Source.CardName != potentialTarget?.CardName,
 
                 //different
                 DifferentFromSource         => potentialTarget?.Card != Source,
-                DifferentFromTarget         => potentialTarget?.Card != Subeffect.Target,
-                DifferentFromOtherTargets   => Subeffect.Effect.Targets.All(c => !c.Equals(potentialTarget)),
+                DifferentFromTarget         => potentialTarget?.Card != Subeffect.CardTarget,
+                DifferentFromOtherTargets   => Subeffect.Effect.CardTargets.All(c => !c.Equals(potentialTarget)),
                 DifferentFromAugmentedCard  => potentialTarget?.Card != Source.AugmentedCard,
 
                 //card types
@@ -230,9 +230,9 @@ namespace KompasCore.Effects
                 SameOwner           => potentialTarget?.Owner == Controller,
                 TurnPlayerControls  => potentialTarget?.Controller == Subeffect.Game.TurnPlayer,
 
-                ControllerMatchesTarget         => potentialTarget?.Controller == Subeffect.Target.Controller,
-                ControllerMatchesPlayerTarget   => potentialTarget?.Controller == Subeffect.Player,
-                ControllerIsntPlayerTarget      => potentialTarget?.Controller != Subeffect.Player,
+                ControllerMatchesTarget         => potentialTarget?.Controller == Subeffect.CardTarget.Controller,
+                ControllerMatchesPlayerTarget   => potentialTarget?.Controller == Subeffect.PlayerTarget,
+                ControllerIsntPlayerTarget      => potentialTarget?.Controller != Subeffect.PlayerTarget,
 
                 //summoned
                 Summoned    => potentialTarget?.Summoned ?? false,
@@ -246,10 +246,10 @@ namespace KompasCore.Effects
                 //is
                 IsSource        => potentialTarget?.Card == Source,
                 NotSource       => potentialTarget?.Card != Source,
-                IsTarget        => potentialTarget?.Card == Subeffect.Target,
+                IsTarget        => potentialTarget?.Card == Subeffect.CardTarget,
                 NotContextCard  => potentialTarget?.Card != context?.mainCardInfoBefore?.Card,
 
-                AugmentsTarget      => potentialTarget?.AugmentedCard == Subeffect.Target,
+                AugmentsTarget      => potentialTarget?.AugmentedCard == Subeffect.CardTarget,
                 AugmentedBySource   => potentialTarget?.Augments.Contains(Source) ?? false,
 
                 AugmentsCardRestriction => augmentRestriction.Evaluate(potentialTarget?.AugmentedCard, x, context),
@@ -297,9 +297,9 @@ namespace KompasCore.Effects
                 CanBePlayed 
                     => Subeffect.Game.ExistsEffectPlaySpace(potentialTarget?.PlayRestriction, Effect),
                 CanPlayToTargetSpace 
-                    => potentialTarget?.PlayRestriction.EvaluateEffectPlay(Subeffect.Space, Effect, Subeffect.Player, context) ?? false,
+                    => potentialTarget?.PlayRestriction.EvaluateEffectPlay(Subeffect.SpaceTarget, Effect, Subeffect.PlayerTarget, context) ?? false,
                 CanPlayTargetToThisCharactersSpace
-                    => Subeffect.Target.PlayRestriction.EvaluateEffectPlay(potentialTarget?.Position ?? default, Effect, Subeffect.Player, context),
+                    => Subeffect.CardTarget.PlayRestriction.EvaluateEffectPlay(potentialTarget?.Position ?? default, Effect, Subeffect.PlayerTarget, context),
 
                 EffectControllerCanPayCost => Subeffect.Effect.Controller.Pips >= potentialTarget?.Cost * costMultiplier / costDivisor,
                 EffectIsOnTheStack => Source.Game.StackEntries.Any(e => e is Effect eff && eff.Source == potentialTarget?.Card),

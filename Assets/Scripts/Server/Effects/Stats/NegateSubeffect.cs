@@ -6,7 +6,7 @@ namespace KompasServer.Effects
     {
         public override Task<ResolutionInfo> Resolve()
         {
-            Target.SetNegated(true, ServerEffect);
+            CardTarget.SetNegated(true, ServerEffect);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

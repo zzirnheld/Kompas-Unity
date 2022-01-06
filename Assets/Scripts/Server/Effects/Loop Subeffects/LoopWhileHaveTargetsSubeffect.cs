@@ -13,9 +13,9 @@ namespace KompasServer.Effects
             get
             {
                 //if we're deleting and there's something to delete, delete it.
-                if (delete && ServerEffect.Targets.Any()) RemoveTarget();
+                if (delete && ServerEffect.CardTargets.Any()) RemoveTarget();
                 //after any delete that might have happened, check if there's still targets
-                return ServerEffect.Targets.Count() > remainingTargets;
+                return ServerEffect.CardTargets.Count() > remainingTargets;
             }
         }
     }

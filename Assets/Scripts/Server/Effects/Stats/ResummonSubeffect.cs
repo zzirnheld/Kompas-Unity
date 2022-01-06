@@ -8,13 +8,13 @@ namespace KompasServer.Effects
     {
         public override Task<ResolutionInfo> Resolve()
         {
-            if (Target == null)
+            if (CardTarget == null)
                 throw new NullCardException(TargetWasNull);
-            else if (forbidNotBoard && Target.Location != CardLocation.Field)
-                throw new InvalidLocationException(Target.Location, Target, "Target not on board :(");
+            else if (forbidNotBoard && CardTarget.Location != CardLocation.Field)
+                throw new InvalidLocationException(CardTarget.Location, CardTarget, "Target not on board :(");
 
-            var ctxt = new ActivationContext(mainCardBefore: Target, stackable: Effect, player: EffectController, space: Target.Position);
-            ctxt.CacheCardInfoAfter(Target);
+            var ctxt = new ActivationContext(mainCardBefore: CardTarget, stackable: Effect, player: EffectController, space: CardTarget.Position);
+            ctxt.CacheCardInfoAfter(CardTarget);
             ServerEffect.EffectsController.TriggerForCondition(Trigger.Play, ctxt);
             ServerEffect.EffectsController.TriggerForCondition(Trigger.Arrive, ctxt);
             return Task.FromResult(ResolutionInfo.Next);

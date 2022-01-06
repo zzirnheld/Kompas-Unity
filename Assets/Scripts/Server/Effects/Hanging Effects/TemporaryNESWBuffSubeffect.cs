@@ -22,20 +22,20 @@ namespace KompasServer.Effects
 
         protected override IEnumerable<HangingEffect> CreateHangingEffects()
         {
-            if (Target == null)
+            if (CardTarget == null)
                 throw new NullCardException(TargetWasNull);
-            else if (forbidNotBoard && Target.Location != CardLocation.Field)
-                throw new InvalidLocationException(Target.Location, Target, ChangedStatsOfCardOffBoard);
+            else if (forbidNotBoard && CardTarget.Location != CardLocation.Field)
+                throw new InvalidLocationException(CardTarget.Location, CardTarget, ChangedStatsOfCardOffBoard);
 
             Debug.Log($"Creating temp NESW buff effect during context {Context}");
             var temp = new TemporaryNESWBuff(game: ServerGame,
                                              triggerRestriction: triggerRestriction,
                                              endCondition: endCondition,
                                              fallOffCondition: fallOffCondition,
-                                             fallOffRestriction: CreateFallOffRestriction(Target),
+                                             fallOffRestriction: CreateFallOffRestriction(CardTarget),
                                              sourceEff: Effect,
                                              currentContext: Context,
-                                             buffRecipient: Target,
+                                             buffRecipient: CardTarget,
                                              nBuff: nModifier + Effect.X * nMultiplier,
                                              eBuff: eModifier + Effect.X * eMultiplier,
                                              sBuff: sModifier + Effect.X * sMultiplier,

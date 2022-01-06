@@ -10,10 +10,10 @@ namespace KompasServer.Effects
                                                              triggerRestriction: triggerRestriction,
                                                              endCondition: endCondition,
                                                              fallOffCondition: fallOffCondition,
-                                                             fallOffRestriction: CreateFallOffRestriction(Target),
+                                                             fallOffRestriction: CreateFallOffRestriction(CardTarget),
                                                              sourceEff: Effect,
                                                              currentContext: Context,
-                                                             target: Target,
+                                                             target: CardTarget,
                                                              source: this);
             return new List<HangingEffect>() { tempActivation };
         }

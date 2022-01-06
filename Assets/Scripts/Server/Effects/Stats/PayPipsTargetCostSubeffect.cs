@@ -6,13 +6,13 @@ namespace KompasServer.Effects
 {
     public class PayPipsTargetCostSubeffect : ServerSubeffect
     {
-        public int ToPay => Target.Cost * xMultiplier / xDivisor + xModifier;
+        public int ToPay => CardTarget.Cost * xMultiplier / xDivisor + xModifier;
 
-        public override bool IsImpossible() => Target == null || ServerPlayer.Pips < ToPay;
+        public override bool IsImpossible() => CardTarget == null || ServerPlayer.Pips < ToPay;
 
         public override Task<ResolutionInfo> Resolve()
         {
-            if (Target == null) throw new NullCardException(TargetWasNull);
+            if (CardTarget == null) throw new NullCardException(TargetWasNull);
 
             if (ServerPlayer.Pips < ToPay) return Task.FromResult(ResolutionInfo.Impossible(CantAffordPips));
             else

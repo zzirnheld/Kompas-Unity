@@ -18,8 +18,8 @@ namespace KompasServer.Effects
             spaceRestriction.Initialize(this);
         }
         public IEnumerable<Space> ValidSpaces => Space.Spaces
-                .Where(s => spaceRestriction.Evaluate(s, Context, theoreticalTarget: Target))
-                .Select(s => Player.SubjectiveCoords(s));
+                .Where(s => spaceRestriction.Evaluate(s, Context, theoreticalTarget: CardTarget))
+                .Select(s => PlayerTarget.SubjectiveCoords(s));
 
         public override Task<ResolutionInfo> Resolve()
         {

@@ -36,12 +36,12 @@ namespace KompasServer.Effects
 
         public override Task<ResolutionInfo> Resolve()
         {
-            if (Target == null)
+            if (CardTarget == null)
                 throw new NullCardException(TargetWasNull);
-            else if (forbidNotBoard && Target.Location != CardLocation.Field)
-                throw new InvalidLocationException(Target.Location, Target, ChangedStatsOfCardOffBoard);
+            else if (forbidNotBoard && CardTarget.Location != CardLocation.Field)
+                throw new InvalidLocationException(CardTarget.Location, CardTarget, ChangedStatsOfCardOffBoard);
 
-            Target.AddToStats(StatValues, Effect);
+            CardTarget.AddToStats(StatValues, Effect);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

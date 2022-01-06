@@ -134,14 +134,14 @@ namespace KompasServer.Effects
             CurrActivationContext = context;
             X = context.x ?? 0;
 
-            targetsList.Clear();
-            if (context.Targets != null) targetsList.AddRange(context.Targets);
-            if (context.Spaces != null) coords.AddRange(context.Spaces);
+            cardTargets.Clear();
+            if (context.Targets != null) cardTargets.AddRange(context.Targets);
+            if (context.Spaces != null) spaceTargets.AddRange(context.Spaces);
 
-            coords.Clear();
+            spaceTargets.Clear();
             
-            players.Clear();
-            players.Add(Controller);
+            playerTargets.Clear();
+            playerTargets.Add(Controller);
 
             //notify relevant to this effect starting
             ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
@@ -217,7 +217,7 @@ namespace KompasServer.Effects
         {
             SubeffectIndex = 0;
             X = 0;
-            targetsList.Clear();
+            cardTargets.Clear();
             rest.Clear();
             OnImpossible = null;
             ServerController.ServerNotifier.NotifyBothPutBack();

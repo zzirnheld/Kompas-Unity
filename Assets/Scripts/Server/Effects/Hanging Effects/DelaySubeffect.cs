@@ -15,9 +15,9 @@ namespace KompasServer.Effects
         {
             Debug.Log($"Is context null? {Context == null}");
             Debug.Log($"Are jump indices null? {jumpIndices == null}");
-            Context?.SetResumeInfo(JumpIndex, Effect.Targets, Effect.Coords);
+            Context?.SetResumeInfo(JumpIndex, Effect.CardTargets, Effect.SpaceTargets);
             Context?.Targets?.Clear();
-            Context?.Targets?.AddRange(Effect.Targets);
+            Context?.Targets?.AddRange(Effect.CardTargets);
             var delay = new DelayedHangingEffect(game: ServerGame,
                                                  triggerRestriction: triggerRestriction,
                                                  endCondition: endCondition,
@@ -29,8 +29,8 @@ namespace KompasServer.Effects
                                                  toResume: ServerEffect,
                                                  indexToResumeResolution: JumpIndex,
                                                  controller: EffectController,
-                                                 targets: new List<GameCard>(Effect.Targets),
-                                                 spaces: new List<Space>(Effect.Coords),
+                                                 targets: new List<GameCard>(Effect.CardTargets),
+                                                 spaces: new List<Space>(Effect.SpaceTargets),
                                                  clearIfResolve: clearWhenResume);
             return new List<HangingEffect>() { delay };
         }

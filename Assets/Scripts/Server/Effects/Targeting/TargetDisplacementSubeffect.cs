@@ -13,11 +13,11 @@ namespace KompasServer.Effects
         {
             var secondarySpace = Effect.GetSpace(secondarySpaceIndex);
 
-            if (Space == null || secondarySpace == null) 
+            if (SpaceTarget == null || secondarySpace == null) 
                 return Task.FromResult(ResolutionInfo.Impossible(NoValidSpaceTarget));
 
-            var displacement = secondarySpace.DisplacementTo(Space);
-            Debug.Log($"Displacement from {secondarySpace} to {Space} is {displacement}");
+            var displacement = secondarySpace.DisplacementTo(SpaceTarget);
+            Debug.Log($"Displacement from {secondarySpace} to {SpaceTarget} is {displacement}");
 
             Effect.AddSpace(displacement);
             return Task.FromResult(ResolutionInfo.Next);

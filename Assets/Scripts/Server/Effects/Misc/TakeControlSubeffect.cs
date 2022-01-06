@@ -11,7 +11,7 @@ namespace KompasServer.Effects
 
         public override Task<ResolutionInfo> Resolve()
         {
-            Target.Controller = NewController;
+            CardTarget.Controller = NewController;
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

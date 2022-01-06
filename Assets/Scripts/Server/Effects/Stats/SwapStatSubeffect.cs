@@ -20,20 +20,20 @@ namespace KompasServer.Effects
         public override Task<ResolutionInfo> Resolve()
         {
             var secondTarget = Effect.GetTarget(secondTargetIndex);
-            if (Target == null)
+            if (CardTarget == null)
                 throw new NullCardException(TargetWasNull);
-            else if (forbidNotBoard && Target.Location != CardLocation.Field)
-                throw new InvalidLocationException(Target.Location, Target, ChangedStatsOfCardOffBoard);
+            else if (forbidNotBoard && CardTarget.Location != CardLocation.Field)
+                throw new InvalidLocationException(CardTarget.Location, CardTarget, ChangedStatsOfCardOffBoard);
 
             if (secondTarget == null)
                 throw new NullCardException(TargetWasNull);
-            else if (forbidNotBoard && Target.Location != CardLocation.Field)
+            else if (forbidNotBoard && CardTarget.Location != CardLocation.Field)
                 throw new InvalidLocationException(secondTarget.Location, secondTarget, ChangedStatsOfCardOffBoard);
 
-            var firstStat = firstTargetStat.GetValueOf(Target);
+            var firstStat = firstTargetStat.GetValueOf(CardTarget);
             var secondStat = firstTargetStat.GetValueOf(secondTarget);
             firstTargetStat.SetValueOf(secondTarget, firstStat, Effect);
-            secondTargetStat.SetValueOf(Target, secondStat, Effect);
+            secondTargetStat.SetValueOf(CardTarget, secondStat, Effect);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

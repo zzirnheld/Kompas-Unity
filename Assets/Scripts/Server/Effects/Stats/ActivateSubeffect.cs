@@ -8,7 +8,7 @@ namespace KompasServer.Effects
 
         public override Task<ResolutionInfo> Resolve()
         {
-            Target.SetActivated(activate, Effect);
+            CardTarget.SetActivated(activate, Effect);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

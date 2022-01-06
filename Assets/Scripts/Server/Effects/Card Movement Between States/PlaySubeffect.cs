@@ -5,13 +5,13 @@ namespace KompasServer.Effects
 {
     public class PlaySubeffect : CardChangeStateSubeffect
     {
-        public override bool IsImpossible() => Target == null || Target.Location == CardLocation.Field;
+        public override bool IsImpossible() => CardTarget == null || CardTarget.Location == CardLocation.Field;
 
         public override Task<ResolutionInfo> Resolve()
         {
-            if (Target == null) throw new NullCardException(TargetWasNull);
+            if (CardTarget == null) throw new NullCardException(TargetWasNull);
 
-            Target.Play(Space, Player, Effect);
+            CardTarget.Play(SpaceTarget, PlayerTarget, Effect);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

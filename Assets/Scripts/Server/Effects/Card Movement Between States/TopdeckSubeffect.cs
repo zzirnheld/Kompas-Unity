@@ -5,13 +5,13 @@ namespace KompasServer.Effects
 {
     public class TopdeckSubeffect : CardChangeStateSubeffect
     {
-        public override bool IsImpossible() => Target == null;
+        public override bool IsImpossible() => CardTarget == null;
 
         public override Task<ResolutionInfo> Resolve()
         {
-            if (Target == null) throw new NullCardException(TargetWasNull);
+            if (CardTarget == null) throw new NullCardException(TargetWasNull);
 
-            Target.Topdeck(Target.Owner, Effect);
+            CardTarget.Topdeck(CardTarget.Owner, Effect);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

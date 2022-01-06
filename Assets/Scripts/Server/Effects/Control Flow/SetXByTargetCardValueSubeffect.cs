@@ -12,6 +12,6 @@ namespace KompasServer.Effects
             cardValue?.Initialize(eff.Source);
         }
 
-        public override int BaseCount => cardValue.GetValueOf(Target);
+        public override int BaseCount => cardValue.GetValueOf(CardTarget);
     }
 }

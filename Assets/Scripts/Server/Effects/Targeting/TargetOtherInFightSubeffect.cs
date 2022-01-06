@@ -11,8 +11,8 @@ namespace KompasServer.Effects
             if (Context.stackable is Attack attack)
             {
                 GameCard newTarget = null;
-                if (attack.attacker == Target) newTarget = attack.defender;
-                else if (attack.defender == Target) newTarget = attack.attacker;
+                if (attack.attacker == CardTarget) newTarget = attack.defender;
+                else if (attack.defender == CardTarget) newTarget = attack.attacker;
 
                 if (newTarget != null)
                 {

@@ -46,11 +46,11 @@ namespace KompasServer.Effects
                     AnyFitRestriction           => ServerGame.Cards.Any(c => cardRestriction.Evaluate(c, Context)),
                     MustBeFriendlyTurn          => ServerGame.TurnPlayer != Effect.Controller,
                     MustBeEnemyTurn             => ServerGame.TurnPlayer == Effect.Controller,
-                    TargetViolatesRestriction   => !cardRestriction.Evaluate(Target, Context),
-                    TargetFitsRestriction       => cardRestriction.Evaluate(Target, Context),
+                    TargetViolatesRestriction   => !cardRestriction.Evaluate(CardTarget, Context),
+                    TargetFitsRestriction       => cardRestriction.Evaluate(CardTarget, Context),
                     SourceViolatesRestriction   => !cardRestriction.Evaluate(Source, Context),
-                    NumTargetsLTEConstant       => Effect.Targets.Count() <= constant,
-                    HandFull                    => Player.handCtrl.HandSize >= Controller.HandSizeLimit,
+                    NumTargetsLTEConstant       => Effect.CardTargets.Count() <= constant,
+                    HandFull                    => PlayerTarget.handCtrl.HandSize >= Controller.HandSizeLimit,
                     _ => throw new System.ArgumentException($"Condition {condition} invalid for conditional end subeffect"),
                 };
             }

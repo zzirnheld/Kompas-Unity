@@ -7,14 +7,14 @@ namespace KompasServer.Effects
     {
         public override Task<ResolutionInfo> Resolve()
         {
-            if (Target == null)
+            if (CardTarget == null)
                 throw new NullCardException(TargetWasNull);
-            else if (forbidNotBoard && Target.Location != CardLocation.Field)
-                throw new InvalidLocationException(Target.Location, Target, ChangedStatsOfCardOffBoard);
-            else if (Target.E >= Target.BaseE) 
-                throw new InvalidCardException(Target, TooMuchEForHeal);
+            else if (forbidNotBoard && CardTarget.Location != CardLocation.Field)
+                throw new InvalidLocationException(CardTarget.Location, CardTarget, ChangedStatsOfCardOffBoard);
+            else if (CardTarget.E >= CardTarget.BaseE) 
+                throw new InvalidCardException(CardTarget, TooMuchEForHeal);
 
-            Target.SetE(Target.BaseE, stackSrc: ServerEffect);
+            CardTarget.SetE(CardTarget.BaseE, stackSrc: ServerEffect);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

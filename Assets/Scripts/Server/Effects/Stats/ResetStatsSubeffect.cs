@@ -13,12 +13,12 @@ namespace KompasServer.Effects
 
         public override Task<ResolutionInfo> Resolve()
         {
-            if (resetN) Target.SetN(Target.BaseN, Effect);
-            if (resetE) Target.SetE(Target.BaseE, Effect);
-            if (resetS) Target.SetS(Target.BaseS, Effect);
-            if (resetW) Target.SetW(Target.BaseW, Effect);
-            if (resetC) Target.SetC(Target.BaseC, Effect);
-            if (resetA) Target.SetA(Target.BaseA, Effect);
+            if (resetN) CardTarget.SetN(CardTarget.BaseN, Effect);
+            if (resetE) CardTarget.SetE(CardTarget.BaseE, Effect);
+            if (resetS) CardTarget.SetS(CardTarget.BaseS, Effect);
+            if (resetW) CardTarget.SetW(CardTarget.BaseW, Effect);
+            if (resetC) CardTarget.SetC(CardTarget.BaseC, Effect);
+            if (resetA) CardTarget.SetA(CardTarget.BaseA, Effect);
 
             return Task.FromResult(ResolutionInfo.Next);
         }

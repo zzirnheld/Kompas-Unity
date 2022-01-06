@@ -7,9 +7,9 @@ namespace KompasServer.Effects
     {
         public override Task<ResolutionInfo> Resolve()
         {
-            if (Target == null) throw new NullCardException(TargetWasNull);
+            if (CardTarget == null) throw new NullCardException(TargetWasNull);
 
-            Target.Bottomdeck(Target.Owner, Effect);
+            CardTarget.Bottomdeck(CardTarget.Owner, Effect);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

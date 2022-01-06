@@ -18,7 +18,7 @@ namespace KompasServer.Effects
         public ServerPlayer EffectController => ServerEffect.ServerController;
         public GameCard ThisCard => ServerEffect.Source;
 
-        public ServerPlayer ServerPlayer => Player as ServerPlayer;
+        public ServerPlayer ServerPlayer => PlayerTarget as ServerPlayer;
 
         /// <summary>
         /// Sets up the subeffect with whatever necessary values.

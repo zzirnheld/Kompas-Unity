@@ -142,14 +142,14 @@ namespace KompasCore.Effects
         private bool RestrictionValid(string restriction, Space space, GameCard theoreticalTarget, ActivationContext context)
         {
             //would use ?? but GameCard inherits from monobehavior which overrides comparison with null
-            var target = theoreticalTarget != null ? theoreticalTarget : Subeffect?.Target;
+            var target = theoreticalTarget != null ? theoreticalTarget : Subeffect?.CardTarget;
 
             return restriction switch
             {
                 //adjacency
                 AdjacentToSource => Source.IsAdjacentTo(space),
                 AdjacentToTarget => target?.IsAdjacentTo(space) ?? false,
-                AdjacentToCoords => space.AdjacentTo(Subeffect.Space),
+                AdjacentToCoords => space.AdjacentTo(Subeffect.SpaceTarget),
                 AdjacentToCardRestriction => Game.boardCtrl.CardsAdjacentTo(space).Any(c => adjacencyRestriction.Evaluate(c, context)),
 
                 ConnectedToSourceBy => Game.boardCtrl.ShortestPath(Subeffect.Source, space, connectednessRestriction, context) < 50,
@@ -171,8 +171,8 @@ namespace KompasCore.Effects
                                                                         .Count() <= adjacencyLimit,
                 InAOESourceAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.CardInAOE(Source)),
 
-                SourceDisplacementToSpaceMatchesCoords => Source.Position.DisplacementTo(space) == Subeffect.Space,
-                SourceToSpaceSameDirectionAsCoords => Source.Position.DirectionFromThisTo(space) == Subeffect.Space,
+                SourceDisplacementToSpaceMatchesCoords => Source.Position.DisplacementTo(space) == Subeffect.SpaceTarget,
+                SourceToSpaceSameDirectionAsCoords => Source.Position.DirectionFromThisTo(space) == Subeffect.SpaceTarget,
                 SubjectiveDisplacementFromSource 
                     => Controller.SubjectiveCoords(Source.Position).DisplacementTo(Controller.SubjectiveCoords(space)) == (displacementX, displacementY),
                 BehindSource => Source.SpaceBehind(space),
@@ -180,10 +180,10 @@ namespace KompasCore.Effects
                 //distance
                 DistanceToSourceFitsXRestriction => distanceXRestriction.Evaluate(Source.DistanceTo(space)),
                 DistanceToTargetFitsXRestriction => distanceXRestriction.Evaluate(target.DistanceTo(space)),
-                DistanceToCoordsFitsXRestriction => distanceXRestriction.Evaluate(Subeffect.Space.DistanceTo(space)),
+                DistanceToCoordsFitsXRestriction => distanceXRestriction.Evaluate(Subeffect.SpaceTarget.DistanceTo(space)),
 
                 FurtherFromSourceThanTarget => Source.DistanceTo(space) > Source.DistanceTo(target),
-                FurtherFromSourceThanCoords => Source.DistanceTo(space) > Source.DistanceTo(Subeffect.Space),
+                FurtherFromSourceThanCoords => Source.DistanceTo(space) > Source.DistanceTo(Subeffect.SpaceTarget),
 
                 TowardsSourceFromTarget => Source.DistanceTo(space) < Source.DistanceTo(target),
                 TowardsTargetFromSource => target.DistanceTo(space) < target.DistanceTo(Source),
@@ -191,7 +191,7 @@ namespace KompasCore.Effects
                 DirectlyAwayFromTarget => target.SpaceDirectlyAwayFrom(space, Source),
 
                 //misc
-                CanPlayTarget => target.PlayRestriction.EvaluateEffectPlay(space, Subeffect.Effect, Subeffect.Player, context, ignoring: playRestrictionsToIgnore),
+                CanPlayTarget => target.PlayRestriction.EvaluateEffectPlay(space, Subeffect.Effect, Subeffect.PlayerTarget, context, ignoring: playRestrictionsToIgnore),
                 CanMoveTarget => target.MovementRestriction.EvaluateEffectMove(space),
                 CanMoveSource => Source.MovementRestriction.EvaluateEffectMove(space),
 
@@ -201,13 +201,13 @@ namespace KompasCore.Effects
 
                 OnSourcesDiagonal => Source.SameDiagonal(space),
                 OnTargetsDiagonal => target.SameDiagonal(space),
-                OnAxisOfLastTwoSpaces => space.SameAxis(Subeffect.Space, Subeffect.Effect.GetSpace(-2)),
+                OnAxisOfLastTwoSpaces => space.SameAxis(Subeffect.SpaceTarget, Subeffect.Effect.GetSpace(-2)),
 
                 OnEdge => space.IsEdge,
                 Corner => space.IsCorner,
-                SameDirectionFromTargetAsSpace => target.Position.DirectionFromThisTo(space) == Subeffect.Space.DirectionFromThisTo(Source.Position),
-                OppositeDirectionFromTargetThanSpace => Source.Position.DirectionFromThisTo(space) * -1 == Source.Position.DirectionFromThisTo(Subeffect.Space),
-                DirectionFromSource => Source.Position.DirectionFromThisTo(space) == Subeffect.Space,
+                SameDirectionFromTargetAsSpace => target.Position.DirectionFromThisTo(space) == Subeffect.SpaceTarget.DirectionFromThisTo(Source.Position),
+                OppositeDirectionFromTargetThanSpace => Source.Position.DirectionFromThisTo(space) * -1 == Source.Position.DirectionFromThisTo(Subeffect.SpaceTarget),
+                DirectionFromSource => Source.Position.DirectionFromThisTo(space) == Subeffect.SpaceTarget,
 
                 _ => throw new ArgumentException($"Invalid space restriction {restriction}", "restriction"),
             };
