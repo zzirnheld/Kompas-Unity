@@ -83,10 +83,10 @@ namespace KompasCore.Effects
         public virtual void RemoveTarget(GameCard card) => cardTargets.Remove(card);
 
         public virtual bool CanBeActivatedBy(Player controller)
-            => Trigger == null && activationRestriction != null && activationRestriction.Evaluate(controller);
+            => Trigger == null && activationRestriction != null && activationRestriction.IsValidActivation(controller);
 
         public virtual bool CanBeActivatedAtAllBy(Player activator)
-            => Trigger == null && activationRestriction != null && activationRestriction.EvaluateAtAll(activator);
+            => Trigger == null && activationRestriction != null && activationRestriction.IsPotentiallyValidActivation(activator);
 
         public T GetItem<T>(IEnumerable<T> enumerable, int index)
         {

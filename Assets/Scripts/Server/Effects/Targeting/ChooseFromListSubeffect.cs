@@ -54,7 +54,7 @@ namespace KompasServer.Effects
 
         private IEnumerable<GameCard> GetPossibleTargets()
         {
-            var possibleTargets = ServerGame.Cards.Where(c => cardRestriction.Evaluate(c, Context));
+            var possibleTargets = ServerGame.Cards.Where(c => cardRestriction.IsValidCard(c, Context));
             if (!possibleTargets.Any()) return new GameCard[0];
 
             switch (orderBy)
@@ -100,7 +100,7 @@ namespace KompasServer.Effects
         {
             Debug.Log($"Potentially adding list {string.Join(",", choices ?? new List<GameCard>())}");
 
-            if (!listRestriction.Evaluate(choices, potentialTargets)) return false;
+            if (!listRestriction.IsValidCardList(choices, potentialTargets)) return false;
 
             //add all cards in the chosen list to targets
             AddList(choices);

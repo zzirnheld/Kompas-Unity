@@ -97,49 +97,46 @@ namespace KompasCore.Effects
             if (effectRestrictionsFromJson.Contains(Default))
                 effectRestrictions.AddRange(defaultEffectMovementRestrictions);
 
-            throughSpacesRestriction?.Initialize(card, card.Controller, default);
+            throughSpacesRestriction?.Initialize(card, card.Controller, effect: default, subeffect: default);
         }
 
         private bool CardAtDestinationCanMoveHere(Space space, bool byEffect)
         {
             var atDest = Card.Game.boardCtrl.GetCardAt(space);
             if (atDest == null) return true;
-            if (byEffect) return atDest.MovementRestriction.EvaluateEffectMove(Card.Position, isSwapTarget: true);
+            if (byEffect) return atDest.MovementRestriction.IsValidEffectMove(Card.Position, isSwapTarget: true);
             else if (atDest.Controller != Card.Controller) return false; //TODO later allow for cards that *can* swap with enemies
-            else return atDest.MovementRestriction.EvaluateNormalMove(Card.Position, isSwapTarget: true);
+            else return atDest.MovementRestriction.IsValidNormalMove(Card.Position, isSwapTarget: true);
         }
 
         private bool CanMoveThroughEmptyOrRestrictedSpacesTo(Space destination)
         {
-            bool predicate(Space s) => Card.Game.boardCtrl.GetCardAt(s) == null
-                                    || throughSpacesRestriction.Evaluate(s, default);
+            bool predicate(Space s) => Card.Game.boardCtrl.IsEmpty(s)
+                                    || throughSpacesRestriction.IsValidSpace(s, default);
             return Card.SpacesCanMove >= Card.Game.boardCtrl.ShortestPath(Card.Position, destination, predicate);
         }
 
-        private bool RestrictionValid(string restriction, Space destination, bool isSwapTarget, bool byEffect)
+        private bool IsRestrictionValid(string restriction, Space destination, bool isSwapTarget, bool byEffect) => restriction switch
         {
-            return restriction switch
-            {
-                Default => true,
+            Default => true,
 
-                //normal restrictions
-                InPlay => Card.Location == CardLocation.Field,
-                DistinctSpace => !Card.Position.Equals(destination),
-                IsCharacter => Card.CardType == 'C',
-                CanMoveEnoughSpaces => Card.SpacesCanMove >= Card.Game.boardCtrl.ShortestEmptyPath(Card, destination),
-                StandardSpellMoveRestiction => Card.Game.ValidSpellSpaceFor(Card, destination),
-                NothingHappening => Card.Game.NothingHappening,
-                IsFriendlyTurn => Card.Game.TurnPlayer == Card.Controller,
-                DestinationCanMoveHere => isSwapTarget || CardAtDestinationCanMoveHere(destination, byEffect),
+            //normal restrictions
+            InPlay => Card.Location == CardLocation.Field,
+            DistinctSpace => !Card.Position.Equals(destination),
+            IsCharacter => Card.CardType == 'C',
+            CanMoveEnoughSpaces => Card.SpacesCanMove >= Card.Game.boardCtrl.ShortestEmptyPath(Card, destination),
+            StandardSpellMoveRestiction => Card.Game.ValidSpellSpaceFor(Card, destination),
+            NothingHappening => Card.Game.NothingHappening,
+            IsFriendlyTurn => Card.Game.TurnPlayer == Card.Controller,
+            DestinationCanMoveHere => isSwapTarget || CardAtDestinationCanMoveHere(destination, byEffect),
 
-                //special effect restrictions
-                IsActive => Card.Activated,
-                CanMoveEnoughThroughEmptyOrRestrictedSpaces => CanMoveThroughEmptyOrRestrictedSpacesTo(destination),
-                NotNormally => !byEffect,
+            //special effect restrictions
+            IsActive => Card.Activated,
+            CanMoveEnoughThroughEmptyOrRestrictedSpaces => CanMoveThroughEmptyOrRestrictedSpacesTo(destination),
+            NotNormally => !byEffect,
 
-                _ => throw new System.ArgumentException($"Could not understand movement restriction {restriction}"),
-            };
-        }
+            _ => throw new System.ArgumentException($"Could not understand movement restriction {restriction}"),
+        };
 
         /* This exists to debug a card's movement restriction,
          * but should not be usually used because it prints a ton whenever
@@ -159,8 +156,8 @@ namespace KompasCore.Effects
         /// <param name="isSwapTarget">Whether this card is the target of a swap. <br></br>
         /// If this is true, ignores "Destination Can Move Here" restriction, because otherwise you would have infinite recursion.</param>
         /// <returns><see langword="true"/> if the card can move to (x, y); <see langword="false"/> otherwise.</returns>
-        public bool EvaluateNormalMove(Space space, bool isSwapTarget = false)
-            => space.Valid && normalRestrictions.All(r => RestrictionValid(r, space, isSwapTarget: isSwapTarget, byEffect: false));
+        public bool IsValidNormalMove(Space space, bool isSwapTarget = false)
+            => space.IsValid && normalRestrictions.All(r => IsRestrictionValid(r, space, isSwapTarget: isSwapTarget, byEffect: false));
 
         /// <summary>
         /// Checks whether the card this is attached to can move to (x, y) as part of an effect
@@ -170,7 +167,7 @@ namespace KompasCore.Effects
         /// <param name="isSwapTarget">Whether this card is the target of a swap. <br></br>
         /// If this is true, ignores "Destination Can Move Here" restriction, because otherwise you would have infinite recursion.</param>
         /// <returns><see langword="true"/> if the card can move to (x, y); <see langword="false"/> otherwise.</returns>
-        public bool EvaluateEffectMove(Space space, bool isSwapTarget = false)
-            => space.Valid && effectRestrictions.All(r => RestrictionValid(r, space, isSwapTarget: isSwapTarget, byEffect: true));
+        public bool IsValidEffectMove(Space space, bool isSwapTarget = false)
+            => space.IsValid && effectRestrictions.All(r => IsRestrictionValid(r, space, isSwapTarget: isSwapTarget, byEffect: true));
     }
 }

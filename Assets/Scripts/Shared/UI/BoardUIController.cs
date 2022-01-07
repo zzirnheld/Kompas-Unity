@@ -43,11 +43,11 @@ namespace KompasCore.UI
                 {
                     var cue = spaceCueControllers[i, j];
 
-                    if (card.MovementRestriction.EvaluateNormalMove((i, j)))
+                    if (card.MovementRestriction.IsValidNormalMove((i, j)))
                         cue.ShowCanMove();
-                    else if (card.AttackRestriction.Evaluate(boardCtrl.GetCardAt((i, j)), stackSrc: null))
+                    else if (card.AttackRestriction.IsValidAttack(boardCtrl.GetCardAt((i, j)), stackSrc: null))
                         cue.ShowCanAttack();
-                    else if (card.PlayRestriction.RecommendedNormalPlay((i, j), card.Controller, checkCanAffordCost: true))
+                    else if (card.PlayRestriction.IsRecommendedNormalPlay((i, j), card.Controller, checkCanAffordCost: true))
                         cue.ShowCanPlay();
                     else
                         cue.ShowCanNone();

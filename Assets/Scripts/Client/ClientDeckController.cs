@@ -22,7 +22,7 @@ namespace KompasClient.GameCore
         public void OnMouseDown()
         {
             //request a draw
-            if (ClientGame.friendlyDeckCtrl == this) ClientGame.clientNotifier.RequestDraw();
+            if (ClientGame.Players[0].deckCtrl == this) ClientGame.clientNotifier.RequestDraw();
         }
 
         /*private void UpdateDeckCount() => DeckCount = Deck.Count;

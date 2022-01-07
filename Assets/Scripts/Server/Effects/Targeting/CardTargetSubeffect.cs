@@ -20,10 +20,10 @@ namespace KompasServer.Effects
             cardRestriction.Initialize(this);
         }
 
-        public override bool IsImpossible() => !Game.Cards.Any(c => cardRestriction.Evaluate(c, Context));
+        public override bool IsImpossible() => !Game.Cards.Any(c => cardRestriction.IsValidCard(c, Context));
 
         protected virtual int[] PotentialTargetIds
-            => Game.Cards.Where(c => cardRestriction.Evaluate(c, Context)).Select(c => c.ID).ToArray();
+            => Game.Cards.Where(c => cardRestriction.IsValidCard(c, Context)).Select(c => c.ID).ToArray();
 
         protected virtual async Task<GameCard> GetTargets(int[] potentialTargetIds)
         {
@@ -60,7 +60,7 @@ namespace KompasServer.Effects
         public virtual bool AddTargetIfLegal(GameCard card)
         {
             //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
-            if (cardRestriction.Evaluate(card, Context))
+            if (cardRestriction.IsValidCard(card, Context))
             {
                 ServerEffect.AddTarget(card);
                 ServerPlayer.ServerNotifier.AcceptTarget();

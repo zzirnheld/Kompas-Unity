@@ -39,32 +39,29 @@ namespace KompasCore.Effects
             avatarCardValue?.Initialize(Source);
         }
 
-        private bool RestrictionValid(string r, int x)
+        private bool IsRestrictionValid(string r, int x) => r switch
         {
-            return r switch
-            {
-                Positive => x > 0,
-                Negative => x < 0,
-                Nonnegative => x >= 0,
+            Positive => x > 0,
+            Negative => x < 0,
+            Nonnegative => x >= 0,
 
-                AtLeastConstant     => x >= constant,
-                NoMoreThanConstant  => x <= constant,
-                EqualsConstant      => x == constant,
+            AtLeastConstant => x >= constant,
+            NoMoreThanConstant => x <= constant,
+            EqualsConstant => x == constant,
 
-                LessThanEffectX      => x < Subeffect.Count,
-                GreaterThanEffectX   => x > Subeffect.Count,
-                EqualsEffectX        => x == Subeffect.Count,
-                LessThanEqualEffectX => x <= Subeffect.Count,
+            LessThanEffectX => x < Subeffect.Count,
+            GreaterThanEffectX => x > Subeffect.Count,
+            EqualsEffectX => x == Subeffect.Count,
+            LessThanEqualEffectX => x <= Subeffect.Count,
 
-                LessThanEffectArg   => x < Subeffect.Effect.arg,
+            LessThanEffectArg => x < Subeffect.Effect.arg,
 
-                LessThanAvatarCardValue    => x < avatarCardValue.GetValueOf(Source.Controller.Avatar),
-                GreaterThanAvatarCardValue => x > avatarCardValue.GetValueOf(Source.Controller.Avatar),
+            LessThanAvatarCardValue => x < avatarCardValue.GetValueOf(Source.Controller.Avatar),
+            GreaterThanAvatarCardValue => x > avatarCardValue.GetValueOf(Source.Controller.Avatar),
 
-                _ => throw new System.ArgumentException($"Invalid X restriction {r} in X Restriction."),
-            };
-        }
+            _ => throw new System.ArgumentException($"Invalid X restriction {r} in X Restriction."),
+        };
 
-        public bool Evaluate(int x) => xRestrictions.All(r => RestrictionValid(r, x));
+        public bool IsValidNumber(int x) => xRestrictions.All(r => IsRestrictionValid(r, x));
     }
 }

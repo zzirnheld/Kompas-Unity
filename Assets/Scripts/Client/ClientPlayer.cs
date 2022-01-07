@@ -9,6 +9,9 @@ namespace KompasClient.GameCore
 
         public ClientPipsUIController pipsUICtrl;
 
+        public ClientDeckController clientDeckCtrl;
+        public ClientHandController clientHandCtrl;
+
         public override Player Enemy => ClientEnemy;
         public override bool Friendly => index == 0;
 

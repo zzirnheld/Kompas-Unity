@@ -50,50 +50,40 @@ namespace KompasCore.Effects
                 if (activationRestrictionArray.Contains("Default"))
                     ActivationRestrictions.AddRange(DefaultRestrictions);
 
-                existsRestriction?.Initialize(eff.Source, eff);
-                thisCardRestriction?.Initialize(eff.Source, eff);
+                existsRestriction?.Initialize(eff.Source, eff, subeffect: default);
+                thisCardRestriction?.Initialize(eff.Source, eff, subeffect: default);
 
                 Debug.Log($"Initializing activation restriction for {Card.CardName} " +
                     $"with restrictions: {string.Join(", ", ActivationRestrictions)}");
             }
         }
 
-        private bool RestrictionValid(string r, Player activator)
+        private bool IsRestrictionValid(string r, Player activator) => r switch
         {
-            if(Card == null || Card.Game == null)
-            {
-                //stuff is still getting set up
-                Debug.LogWarning($"checked actvation restriction while card or card's game is null");
-                return false;
-            }
+            Never => false,
+            Default => true,
 
-            return r switch
-            {
-                Never => false,
-                Default => true,
+            TimesPerTurn => Effect.TimesUsedThisTurn < maxTimes,
+            TimesPerRound => Effect.TimesUsedThisRound < maxTimes,
 
-                TimesPerTurn            => Effect.TimesUsedThisTurn < maxTimes,
-                TimesPerRound           => Effect.TimesUsedThisRound < maxTimes,
+            FriendlyTurn => Effect.Game.TurnPlayer == activator,
+            EnemyTurn => Effect.Game.TurnPlayer != activator,
 
-                FriendlyTurn            => Effect.Game.TurnPlayer == activator,
-                EnemyTurn               => Effect.Game.TurnPlayer != activator,
+            InPlay => Effect.Source.Location == CardLocation.Field,
+            Location => Effect.Source.Location == (CardLocation)location,
 
-                InPlay                  => Effect.Source.Location == CardLocation.Field,
-                Location                => Effect.Source.Location == (CardLocation)location,
+            ControllerActivates => activator == Card.Controller,
 
-                ControllerActivates     => activator == Card.Controller,
+            NotNegated => !Effect.Negated,
 
-                NotNegated              => !Effect.Negated,
+            CardExists => Effect.Game.Cards.Any(c => existsRestriction.IsValidCard(c, Effect?.CurrActivationContext)),
+            ThisFitsRestriction => thisCardRestriction.IsValidCard(Card, Effect?.CurrActivationContext),
 
-                CardExists              => Effect.Game.Cards.Any(c => existsRestriction.Evaluate(c, Effect?.CurrActivationContext)),
-                ThisFitsRestriction     => thisCardRestriction.Evaluate(Card, Effect?.CurrActivationContext),
+            NotCurrentlyActivated => !Effect.Game.StackEntries.Any(e => e == Effect),
+            NothingHappening => Effect.Game.NothingHappening,
 
-                NotCurrentlyActivated   => !Effect.Game.StackEntries.Any(e => e == Effect),
-                NothingHappening        => Effect.Game.NothingHappening,
-
-                _ => throw new System.ArgumentException($"Invalid activation restriction {r}")
-            };
-        }
+            _ => throw new System.ArgumentException($"Invalid activation restriction {r}")
+        };
 
         /* This exists to debug a card's activation restriction,
          * but should not be usually used because it prints a ton whenever
@@ -106,10 +96,12 @@ namespace KompasCore.Effects
             return valid;
         } */
 
-        public bool Evaluate(Player activator)
-            => ActivationRestrictions.All(r => RestrictionValid(r, activator));
+        private bool IsGameSetUp() => Card != null && Card.Game != null;
 
-        public bool EvaluateAtAll(Player activator)
-            => ActivationRestrictions.Intersect(AtAllRestrictions).All(r => RestrictionValid(r, activator));
+        public bool IsValidActivation(Player activator)
+            => IsGameSetUp() && ActivationRestrictions.All(r => IsRestrictionValid(r, activator));
+
+        public bool IsPotentiallyValidActivation(Player activator)
+            => IsGameSetUp() && ActivationRestrictions.Intersect(AtAllRestrictions).All(r => IsRestrictionValid(r, activator));
     }
 }

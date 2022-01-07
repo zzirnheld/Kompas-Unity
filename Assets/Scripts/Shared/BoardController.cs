@@ -9,6 +9,7 @@ using KompasCore.Exceptions;
 
 namespace KompasCore.GameCore
 {
+    //Not abstract because Client uses this base class
     public class BoardController : MonoBehaviour, IGameLocation
     {
         public const int SpacesInGrid = 7;
@@ -64,12 +65,14 @@ namespace KompasCore.GameCore
             return true;
         }
 
-        public bool Surrounded(Space s) => s.AdjacentSpaces.All(s => GetCardAt(s) != null);
+        public bool Surrounded(Space s) => s.AdjacentSpaces.All(s => !IsEmpty(s));
 
         //get game data
+        public bool IsEmpty(Space s) => s.IsValid && GetCardAt(s) == null;
+
         public GameCard GetCardAt(Space s)
         {
-            if (s.Valid)
+            if (s.IsValid)
             {
                 var (x, y) = s;
                 return Board[x, y];
@@ -168,11 +171,11 @@ namespace KompasCore.GameCore
             => ShortestPath(source, end, s => throughPredicate(GetCardAt(s)));
 
         public int ShortestPath(GameCard source, Space space, CardRestriction restriction, Effects.ActivationContext context)
-            => ShortestPath(source.Position, space, c => restriction.Evaluate(c, context));
+            => ShortestPath(source.Position, space, c => restriction.IsValidCard(c, context));
 
         private IEnumerable<Space> AdjacentEmptySpacesTo(Space space)
         {
-            return space.AdjacentSpaces.Where(s => GetCardAt(s) == null);
+            return space.AdjacentSpaces.Where(IsEmpty);
         }
 
         public int ShortestEmptyPath(GameCard src, Space destination)
@@ -264,7 +267,7 @@ namespace KompasCore.GameCore
             //otherwise, put a card to the requested space
             else
             {
-                if (GetCardAt(to) != null) throw new AlreadyHereException(CardLocation, "Card already in space to be played to");
+                if (!IsEmpty(to)) throw new AlreadyHereException(CardLocation, "Card already in space to be played to");
                 toPlay.Remove(stackSrc);
                 var (toX, toY) = to;
                 Board[toX, toY] = toPlay;
@@ -280,7 +283,7 @@ namespace KompasCore.GameCore
         {
             Debug.Log($"Swapping {card?.CardName} to {to}");
 
-            if (!to.Valid) throw new InvalidSpaceException(to);
+            if (!to.IsValid) throw new InvalidSpaceException(to);
             if (card == null) throw new NullCardException("Card to be swapped must not be null");
             if (card.Attached) throw new NotImplementedException();
             if (card.Location != CardLocation.Field || card != GetCardAt(card.Position)) 
@@ -315,9 +318,9 @@ namespace KompasCore.GameCore
         {
             if (card.Attached)
             {
-                if (!to.Valid) throw new InvalidSpaceException(to, $"Can't move {card} to invalid space");
+                if (!to.IsValid) throw new InvalidSpaceException(to, $"Can't move {card} to invalid space");
                 var (toX, toY) = to;
-                if (GetCardAt(to) == null) throw new NullCardException($"Null card to attach {card} to at {to}");
+                if (IsEmpty(to)) throw new NullCardException($"Null card to attach {card} to at {to}");
                 card.Remove(stackSrc);
                 Board[toX, toY].AddAugment(card, stackSrc);
             }

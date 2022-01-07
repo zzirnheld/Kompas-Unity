@@ -98,30 +98,18 @@ namespace KompasCore.Effects
         // so I need to make sure manually that I've bothered to set up relevant arguments.
         private bool initialized = false;
 
-        public void Initialize(Game game, GameCard thisCard, Trigger thisTrigger, Effect effect, Subeffect subeff = default)
+        public void Initialize(Game game, GameCard thisCard, Trigger thisTrigger, Effect effect, Subeffect subeffect = default)
         {
             Game = game;
             ThisCard = thisCard;
             ThisTrigger = thisTrigger;
             SourceEffect = effect;
 
-            if (subeff == default)
-            {
-                cardRestriction?.Initialize(thisCard, effect);
-                existsRestriction?.Initialize(thisCard, effect);
-                nowRestriction?.Initialize(thisCard, effect);
-                spaceRestriction?.Initialize(thisCard, thisCard.Controller, effect);
-                sourceRestriction?.Initialize(thisCard, effect);
-            }
-            else
-            {
-                Subeffect = subeff;
-                cardRestriction?.Initialize(subeff);
-                existsRestriction?.Initialize(subeff);
-                nowRestriction?.Initialize(subeff);
-                spaceRestriction?.Initialize(subeff);
-                sourceRestriction?.Initialize(subeff);
-            }
+            cardRestriction?.Initialize(thisCard, effect, subeffect);
+            existsRestriction?.Initialize(thisCard, effect, subeffect);
+            nowRestriction?.Initialize(thisCard, effect, subeffect);
+            spaceRestriction?.Initialize(thisCard, thisCard.Controller, effect, subeffect);
+            sourceRestriction?.Initialize(thisCard, effect, subeffect);
             xRestriction?.Initialize(thisCard);
 
             initialized = true;
@@ -129,70 +117,66 @@ namespace KompasCore.Effects
         }
 
 
-        private bool RestrictionValid(string restriction, ActivationContext context, ActivationContext secondary = default)
+        private bool IsRestrictionValid(string restriction, ActivationContext context, ActivationContext secondary = default) => restriction switch
         {
-            return restriction switch
-            {
-                //card triggering stuff
-                ThisCardTriggered            => context.mainCardInfoBefore.Card == ThisCard,
-                ThisCardIsSecondaryTriggerer => context.secondaryCardInfoBefore.Card == ThisCard,
-                AugmentedCardTriggered       => context.mainCardInfoBefore.Augments.Contains(ThisCard),
+            //card triggering stuff
+            ThisCardTriggered => context.mainCardInfoBefore.Card == ThisCard,
+            ThisCardIsSecondaryTriggerer => context.secondaryCardInfoBefore.Card == ThisCard,
+            AugmentedCardTriggered => context.mainCardInfoBefore.Augments.Contains(ThisCard),
 
-                ThisCardInPlay => ThisCard.Location == CardLocation.Field,
-                CardExists     => ThisCard.Game.Cards.Any(c => existsRestriction.Evaluate(c, context)),
+            ThisCardInPlay => ThisCard.Location == CardLocation.Field,
+            CardExists => ThisCard.Game.Cards.Any(c => existsRestriction.IsValidCard(c, context)),
 
-                ThisCardFitsRestriction => cardRestriction.Evaluate(ThisCard, context),
+            ThisCardFitsRestriction => cardRestriction.IsValidCard(ThisCard, context),
 
-                TriggererFitsRestriction    => cardRestriction.Evaluate(context.mainCardInfoBefore, context),
-                SecondaryCardFitsRestriction => cardRestriction.Evaluate(context.secondaryCardInfoBefore, context),
-                TriggererNowFitsRestirction => nowRestriction.Evaluate(context.MainCardInfoAfter, context),
-                TriggerersAugmentedCardFitsRestriction  => cardRestriction.Evaluate(context.mainCardInfoBefore.AugmentedCard, context),
-                TriggererIsSecondaryContextTarget       => secondary?.Targets?.Any(c => c == context.mainCardInfoBefore?.Card) ?? false,
+            TriggererFitsRestriction => cardRestriction.IsValidCard(context.mainCardInfoBefore, context),
+            SecondaryCardFitsRestriction => cardRestriction.IsValidCard(context.secondaryCardInfoBefore, context),
+            TriggererNowFitsRestirction => nowRestriction.IsValidCard(context.MainCardInfoAfter, context),
+            TriggerersAugmentedCardFitsRestriction => cardRestriction.IsValidCard(context.mainCardInfoBefore.AugmentedCard, context),
+            TriggererIsSecondaryContextTarget => secondary?.Targets?.Any(c => c == context.mainCardInfoBefore?.Card) ?? false,
 
-                StackableSourceFitsRestriction  => sourceRestriction.Evaluate(context.stackable?.Source, context),
-                EffectSourceIsThisCard => context.stackable?.Source == ThisCard,
-                StackableSourceNotThisEffect    => context.stackable != SourceEffect,
-                ContextsStackablesMatch         => context.stackable == secondary?.stackable,
-                StackableIsThisEffect           => context.stackable == SourceEffect,
-                NoStackable                     => context.stackable == null,
+            StackableSourceFitsRestriction => sourceRestriction.IsValidCard(context.stackable?.Source, context),
+            EffectSourceIsThisCard => context.stackable?.Source == ThisCard,
+            StackableSourceNotThisEffect => context.stackable != SourceEffect,
+            ContextsStackablesMatch => context.stackable == secondary?.stackable,
+            StackableIsThisEffect => context.stackable == SourceEffect,
+            NoStackable => context.stackable == null,
 
-                CardNowFurtherFromSourceThanItWas => ThisCard.DistanceTo(context.mainCardInfoBefore.Card.Position) > ThisCard.DistanceTo(context.mainCardInfoBefore.Position),
-                
-                //other non-card triggering things
-                CoordsFitRestriction  => context.space != null && spaceRestriction.Evaluate(context.space, context),
-                AdjacentToRestriction => ThisCard.AdjacentCards.Any(c => cardRestriction.Evaluate(c, context)),
+            CardNowFurtherFromSourceThanItWas => ThisCard.DistanceTo(context.mainCardInfoBefore.Card.Position) > ThisCard.DistanceTo(context.mainCardInfoBefore.Position),
 
-                XFitsRestriction        => context.x != null && xRestriction.Evaluate(context.x.Value),
-                EffectSourceIsTriggerer => context.stackable is Effect eff && eff.Source == context.mainCardInfoBefore.Card,
+            //other non-card triggering things
+            CoordsFitRestriction => context.space != null && spaceRestriction.IsValidSpace(context.space, context),
+            AdjacentToRestriction => ThisCard.AdjacentCards.Any(c => cardRestriction.IsValidCard(c, context)),
 
-                //TODO make these into just something to do with triggered card fitting restriction
-                ControllerTriggered => context.player == ThisCard.Controller,
-                EnemyTriggered      => context.player != ThisCard.Controller,
+            XFitsRestriction => context.x != null && xRestriction.IsValidNumber(context.x.Value),
+            EffectSourceIsTriggerer => context.stackable is Effect eff && eff.Source == context.mainCardInfoBefore.Card,
 
-                //gamestate
-                FriendlyTurn    => Game.TurnPlayer == ThisCard.Controller,
-                EnemyTurn       => Game.TurnPlayer != ThisCard.Controller,
-                FromField       => context.mainCardInfoBefore.Location == CardLocation.Field,
-                FromDeck        => context.mainCardInfoBefore.Location == CardLocation.Deck,
-                NotFromEffect   => context.stackable is Effect,
+            ControllerTriggered => context.player == ThisCard.Controller,
+            EnemyTriggered => context.player != ThisCard.Controller,
 
-                //max
-                MaxPerRound => ThisTrigger.Effect.TimesUsedThisRound < maxPerRound,
-                MaxPerTurn  => ThisTrigger.Effect.TimesUsedThisTurn < maxTimesPerTurn,
-                MaxPerStack => ThisTrigger.Effect.TimesUsedThisStack < maxPerStack,
+            //gamestate
+            FriendlyTurn => Game.TurnPlayer == ThisCard.Controller,
+            EnemyTurn => Game.TurnPlayer != ThisCard.Controller,
+            FromField => context.mainCardInfoBefore.Location == CardLocation.Field,
+            FromDeck => context.mainCardInfoBefore.Location == CardLocation.Deck,
+            NotFromEffect => context.stackable is Effect,
 
-                //misc
-                _ => throw new ArgumentException($"Invalid trigger restriction {restriction}"),
-            };
-        }
+            //max
+            MaxPerRound => ThisTrigger.Effect.TimesUsedThisRound < maxPerRound,
+            MaxPerTurn => ThisTrigger.Effect.TimesUsedThisTurn < maxTimesPerTurn,
+            MaxPerStack => ThisTrigger.Effect.TimesUsedThisStack < maxPerStack,
 
-        
+            //misc
+            _ => throw new ArgumentException($"Invalid trigger restriction {restriction}"),
+        };
+
+        /*
         private bool RestrictionValidDebug(string r, ActivationContext ctxt, ActivationContext secondary)
         {
             var success = RestrictionValid(r, ctxt, secondary);
             if (!success) Debug.Log($"Trigger for {ThisCard.CardName} invalid at restriction {r} for {ctxt}");
             return success;
-        }
+        }*/
 
         /// <summary>
         /// Checks whether this trigger restriction is valid for the given context where the trigger occurred.
@@ -201,13 +185,13 @@ namespace KompasCore.Effects
         /// <param name="context">The activation context to evaluate this trigger restriction for</param>
         /// <param name="secondary">A secondary piece of context, like what the activation context was when a hanging effect was applied.</param>
         /// <returns></returns>
-        public bool Evaluate(ActivationContext context, ActivationContext secondary = default)
+        public bool IsValidTriggeringContext(ActivationContext context, ActivationContext secondary = default)
         {
             if (!initialized) throw new ArgumentException("Trigger restriction not initialized!");
 
             try
             {
-                return triggerRestrictions.All(r => RestrictionValidDebug(r, context, secondary: secondary));
+                return triggerRestrictions.All(r => IsRestrictionValid(r, context, secondary: secondary));
             }
             catch (NullReferenceException nullref)
             {
@@ -228,7 +212,7 @@ namespace KompasCore.Effects
         /// and it being ordered on the stack, are still true.
         /// </summary>
         /// <returns></returns>
-        public bool Reevaluate(ActivationContext context)
-            => triggerRestrictions.Intersect(ReevalationRestrictions).All(r => RestrictionValid(r, context));
+        public bool IsStillValidTriggeringContext(ActivationContext context)
+            => triggerRestrictions.Intersect(ReevalationRestrictions).All(r => IsRestrictionValid(r, context));
     }
 }

@@ -52,14 +52,14 @@ namespace KompasServer.Effects
             return ended;
         }
 
-        public virtual bool ShouldBeCanceled(ActivationContext context) => fallOffRestriction.Evaluate(context);
+        public virtual bool ShouldBeCanceled(ActivationContext context) => fallOffRestriction.IsValidTriggeringContext(context);
 
         protected virtual bool ShouldResolve(ActivationContext context)
         {
             //if we've already ended this hanging effect, we shouldn't end it again.
             if (ended) return false;
             Debug.Log($"Checking whether {this} should end for context {context}, with saved context {savedContext}");
-            return triggerRestriction.Evaluate(context, secondary: savedContext);
+            return triggerRestriction.IsValidTriggeringContext(context, secondary: savedContext);
         }
 
         /// <summary>

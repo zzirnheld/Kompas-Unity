@@ -43,7 +43,7 @@ namespace KompasServer.Effects
             var effs = new List<HangingEffect>();
 
             IEnumerable<GameCard> cards 
-                = ServerGame.Cards.Where(c => cardRestriction.Evaluate(c, Context));
+                = ServerGame.Cards.Where(c => cardRestriction.IsValidCard(c, Context));
 
             //First make sure are allowed to set their stats. 
             //Testing here so later changes can maybe be allowed to allow this to occur,

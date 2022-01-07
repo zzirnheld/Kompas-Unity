@@ -42,34 +42,24 @@ namespace KompasCore.Effects
             Debug.Log($"Finished initializing attack restriction for {Card.CardName} with restrictions: {string.Join(", ", attackRestrictions)}");
         }
 
-        private bool RestrictionValid(string restriction, GameCard defender, IStackable stackSrc)
+        private bool RestrictionValid(string restriction, GameCard defender, IStackable stackSrc) => restriction switch
         {
-            if (Card == null || Card.Game == null)
-            {
-                //stuff is still getting set up
-                Debug.LogWarning($"checked attack restriction while card or card's game is null");
-                return false;
-            }
+            Default => true,
 
-            return restriction switch
-            {
-                Default => true,
+            ThisIsCharacter => Card.CardType == 'C',
+            DefenderIsCharacter => defender.CardType == 'C',
+            DefenderIsAdjacent => Card.IsAdjacentTo(defender),
+            DefenderIsEnemy => Card.Controller != defender.Controller,
+            FriendlyTurn => Card.Controller == Card.Game.TurnPlayer,
+            MaxPerTurn => Card.AttacksThisTurn < maxAttacks,
+            NothingHappening => Card.Game.NothingHappening,
 
-                ThisIsCharacter     => Card.CardType == 'C',
-                DefenderIsCharacter => defender.CardType == 'C',
-                DefenderIsAdjacent  => Card.IsAdjacentTo(defender),
-                DefenderIsEnemy     => Card.Controller != defender.Controller,
-                FriendlyTurn        => Card.Controller == Card.Game.TurnPlayer,
-                MaxPerTurn          => Card.AttacksThisTurn < maxAttacks,
-                NothingHappening    => Card.Game.NothingHappening,
+            ThisIsActive => Card.Activated,
+            InPlay => Card.Location == CardLocation.Field,
+            NotNormally => stackSrc != null,
 
-                ThisIsActive        => Card.Activated,
-                InPlay              => Card.Location == CardLocation.Field,
-                NotNormally         => stackSrc != null,
-
-                _ => throw new System.ArgumentException($"Could not understand attack restriction {restriction}"),
-            };
-        }
+            _ => throw new System.ArgumentException($"Could not understand attack restriction {restriction}"),
+        };
 
         /* This exists to debug a card's attack restriction,
          * but should not be usually used because it prints a ton whenever
@@ -81,11 +71,10 @@ namespace KompasCore.Effects
             return valid;
         } */
 
-        public bool Evaluate(GameCard defender, IStackable stackSrc)
-        {
-            if (defender == null) return false;
-            return attackRestrictions.All(r => RestrictionValid(r, defender, stackSrc));
-        }
+        private bool IsGameSetUp() => Card != null && Card.Game != null;
+
+        public bool IsValidAttack(GameCard defender, IStackable stackSrc) 
+            => IsGameSetUp() && defender != null && attackRestrictions.All(r => RestrictionValid(r, defender, stackSrc));
 
         /// <summary>
         /// Checks to see if this card could attack, if there were to ever be a valid attack target.
@@ -93,15 +82,15 @@ namespace KompasCore.Effects
         /// </summary>
         /// <returns><see langword="true"/> If this character can attack at all, 
         /// <see langword="false"/> otherwise.</returns>
-        public bool EvaluateAtAll(IStackable stackSrc)
-            => attackRestrictions.Intersect(AtAllRestrictions).All(r => RestrictionValid(r, null, stackSrc));
+        public bool CouldAttackValidTarget(IStackable stackSrc)
+            => IsGameSetUp() && attackRestrictions.Intersect(AtAllRestrictions).All(r => RestrictionValid(r, null, stackSrc));
 
         /// <summary>
         /// Checks to see if this card can currently attack (any card).
         /// </summary>
         /// <returns><see langword="true"/> If any card in the game fits this card's atack restriction, 
         /// <see langword="false"/> otherwise.</returns>
-        public bool EvaluateAny(IStackable stackSrc) 
-            => Card.Game.boardCtrl.ExistsCardOnBoard(c => Evaluate(c, stackSrc));
+        public bool CanAttackAnyCard(IStackable stackSrc)
+            => IsGameSetUp() && Card.Game.boardCtrl.ExistsCardOnBoard(c => IsValidAttack(c, stackSrc));
     }
 }

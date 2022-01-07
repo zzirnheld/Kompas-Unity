@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace KompasCore.GameCore
 {
+    //Not abstract because Client uses this base class
     public class AnnihilationController : MonoBehaviour, IGameLocation
     {
         public Game game;

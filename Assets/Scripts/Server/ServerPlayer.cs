@@ -1,5 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
+using KompasCore.Exceptions;
 using KompasServer.Effects;
 using KompasServer.Networking;
 using System.Net.Sockets;
@@ -65,12 +66,16 @@ namespace KompasServer.GameCore
 
         public async Task TryPlay(GameCard card, Space space)
         {
-            if (serverGame.ValidBoardPlay(card, space, this))
+            try
             {
+                serverGame.IsValidPlay(card, space, this);
                 card.Play(space, this, payCost: true);
-                await serverGame.EffectsController.CheckForResponse();
             }
-            else ServerNotifier.NotifyPutBack();
+            catch (KompasException)
+            {
+                ServerNotifier.NotifyPutBack();
+            }
+            await serverGame.EffectsController.CheckForResponse();
         }
 
         public async Task TryMove(GameCard toMove, Space space)

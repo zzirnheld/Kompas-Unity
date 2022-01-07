@@ -32,7 +32,7 @@ namespace KompasServer.Effects
             awaitingChoices = true;
 
             int[] cardIds = serverGame.Cards
-                .Where(c => HandSizeCardRestriction.Evaluate(c, new ActivationContext()))
+                .Where(c => HandSizeCardRestriction.IsValidCard(c, new ActivationContext()))
                 .Select(c => c.ID)
                 .ToArray();
 
@@ -67,9 +67,9 @@ namespace KompasServer.Effects
                 .ToArray();
 
             int count = cards.Count();
-            int correctCount = serverGame.Cards.Count(c => HandSizeCardRestriction.Evaluate(c, new ActivationContext())) - Controller.HandSizeLimit;
+            int correctCount = serverGame.Cards.Count(c => HandSizeCardRestriction.IsValidCard(c, new ActivationContext())) - Controller.HandSizeLimit;
 
-            if (count != correctCount || cards.Any(c => !HandSizeCardRestriction.Evaluate(c, new ActivationContext()))) return false;
+            if (count != correctCount || cards.Any(c => !HandSizeCardRestriction.IsValidCard(c, new ActivationContext()))) return false;
 
             foreach (var card in cards) card.Reshuffle();
             awaitingChoices = false;

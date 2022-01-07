@@ -18,14 +18,14 @@ namespace KompasServer.Effects
             spaceRestriction.Initialize(this);
         }
         public IEnumerable<Space> ValidSpaces => Space.Spaces
-                .Where(s => spaceRestriction.Evaluate(s, Context, theoreticalTarget: CardTarget))
+                .Where(s => spaceRestriction.IsValidSpace(s, Context, theoreticalTarget: CardTarget))
                 .Select(s => PlayerTarget.SubjectiveCoords(s));
 
         public override Task<ResolutionInfo> Resolve()
         {
             try
             {
-                Space potentialTarget = Space.Spaces.Single(s => spaceRestriction.Evaluate(s, Context));
+                Space potentialTarget = Space.Spaces.Single(s => spaceRestriction.IsValidSpace(s, Context));
                 ServerEffect.AddSpace(potentialTarget);
                 return Task.FromResult(ResolutionInfo.Next);
             }

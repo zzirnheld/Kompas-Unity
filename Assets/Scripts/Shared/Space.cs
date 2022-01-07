@@ -45,7 +45,7 @@ public class Space
     public static Space Nowhere => new Space(-69, -420);
     public static Space AvatarCornerFor(int index) => index == 0 ? NearCorner : FarCorner;
 
-    public bool Valid => x >= 0 && y >= 0 && x < BoardLen && y < BoardLen;
+    public bool IsValid => x >= 0 && y >= 0 && x < BoardLen && y < BoardLen;
     public bool IsCorner => (x == 0 || x == MaxIndex) && (y == 0 || y == MaxIndex);
     public bool IsEdge => x == 0 || x == MaxIndex || y == 0 || y == MaxIndex;
 
@@ -71,12 +71,12 @@ public class Space
             foreach (var xCoord in xs)
             {
                 Space s = (xCoord, y);
-                if (s.Valid) list.Add(s);
+                if (s.IsValid) list.Add(s);
             }
             foreach (var yCoord in ys)
             {
                 Space s = (x, yCoord);
-                if (s.Valid) list.Add(s);
+                if (s.IsValid) list.Add(s);
             }
             //Debug.Log($"Spaces adjacent to {this} are {string.Join(", ", list.Select(s => s.ToString()))}");
             return list;

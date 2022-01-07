@@ -28,8 +28,7 @@ namespace KompasClient.Networking
     {
         public void Execute(ClientGame clientGame)
         {
-            if (playerIndex == 0) clientGame.friendlyDeckCtrl.DeckCount = count;
-            else clientGame.enemyDeckCtrl.DeckCount = count;
+            clientGame.ClientPlayers[playerIndex].clientDeckCtrl.DeckCount = count;
         }
     }
 }

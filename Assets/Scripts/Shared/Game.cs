@@ -64,7 +64,7 @@ namespace KompasCore.GameCore
 
         private bool IsFriendlyAdjacentToCoords(Space space, GameCard potentialFriendly, Player friendly)
         {
-            return boardCtrl.GetCardAt(space) == null
+            return boardCtrl.IsEmpty(space)
                 && potentialFriendly != null && potentialFriendly.IsAdjacentTo(space)
                 && potentialFriendly.Controller == friendly;
         }
@@ -91,7 +91,7 @@ namespace KompasCore.GameCore
         }
 
         public bool ExistsEffectPlaySpace(PlayRestriction restriction, Effect eff)
-            => Space.Spaces.Any(s => restriction.EvaluateEffectPlay(s, eff, eff.Controller, eff.CurrActivationContext));
+            => Space.Spaces.Any(s => restriction.IsValidEffectPlay(s, eff, eff.Controller, eff.CurrActivationContext));
 
 
         protected void ResetCardsForTurn()
