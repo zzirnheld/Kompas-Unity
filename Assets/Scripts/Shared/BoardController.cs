@@ -17,6 +17,7 @@ namespace KompasCore.GameCore
         public const float LenOneSpace = 2f;
         public const float SpaceOffset = LenOneSpace / 2f;
         public const float CardHeight = 0.15f;
+        public const int NoPathExists = 50;
 
         public Game game;
 
@@ -116,93 +117,73 @@ namespace KompasCore.GameCore
             return list;
         }
 
-        /// <summary>
-        /// A really bad Dijkstra's because this is a fun side project and I'm not feeling smart today
-        /// </summary>
-        /// <param name="src">The card to start looking from</param>
-        /// <param name="x">The x coordinate you want a distance to</param>
-        /// <param name="y">The y coordinate you want a distance to</param>
-        /// <param name="throughPredicate">What all cards you go through must fit</param>
-        /// <returns></returns>
-        public int ShortestPath(Space src, Space space, Func<Space, bool> throughPredicate)
-        {
-            //record shortest distances to cards
-            var dist = new Dictionary<Space, int>();
-            //and if you've seen them
-            var seen = new HashSet<Space>();
-            //the queue of nodes to process next. things should only go on here once, the first time they're seen
-            var queue = new Queue<Space>();
+        public bool AreConnectedBySpaces(Space source, Space destination, CardRestriction restriction, Effects.ActivationContext context)
+            => AreConnectedBySpaces(source, destination, s => restriction.IsValidCard(GetCardAt(s), context));
 
-            //set up the structures with the source node
-            queue.Enqueue(src);
-            dist.Add(src, 0);
-            seen.Add(src);
+        public bool AreConnectedBySpaces(Space source, Space destination, Func<GameCard, bool> throughPredicate)
+            => AreConnectedBySpaces(source, destination, s => throughPredicate(GetCardAt(s)));
 
-            //iterate until the queue is empty, in which case you'll have seen all connected cards that fit the restriction.
-            while (queue.Any())
-            {
-                //consider the next node's adjacent cards
-                var next = queue.Dequeue();
-                foreach (var card in space.AdjacentSpaces.Where(throughPredicate))
-                {
-                    //if that adjacent card is never seen before, initialize its distance and add it to the structures
-                    if (!seen.Contains(card))
-                    {
-                        seen.Add(card);
-                        queue.Enqueue(card);
-                        dist[card] = dist[next] + 1;
-                    }
-                    //otherwise, relax its distance if appropriate
-                    else if (dist[next] + 1 < dist[card]) dist[card] = dist[next] + 1;
-                }
-            }
+        public bool AreConnectedBySpaces(Space source, Space destination, SpaceRestriction restriction, Effects.ActivationContext context)
+            => AreConnectedBySpaces(source, destination, s => restriction.IsValidSpace(s, context));
 
-            //then, go through the list of cards adjacent to our target location
-            //choose the card that's closest to our source
-            int min = 50;
-            foreach (var s in space.AdjacentSpaces)
-            {
-                if (dist.ContainsKey(s) && dist[s] < min) min = dist[s];
-            }
-            return min;
-        }
+        public bool AreConnectedBySpaces(Space source, Space destination, Func<Space, bool> predicate)
+            => destination.AdjacentSpaces.Any(destAdj => ShortestPath(source, destAdj, predicate) < NoPathExists);
 
-        public int ShortestPath(Space source, Space end, Func<GameCard, bool> throughPredicate)
-            => ShortestPath(source, end, s => throughPredicate(GetCardAt(s)));
+        public bool AreConnectedBySpacesFittingPredicate(Space source, Space destination, Func<Space, bool> predicate, Func<int, bool> distancePredicate)
+            => destination.AdjacentSpaces.Any(destAdj => distancePredicate(ShortestPath(source, destAdj, predicate)));
+
+        public int ShortestEmptyPath(GameCard src, Space destination)
+            => Board[destination.x, destination.y] == null ? ShortestPath(src.Position, destination, IsEmpty) : NoPathExists;
 
         public int ShortestPath(GameCard source, Space space, CardRestriction restriction, Effects.ActivationContext context)
             => ShortestPath(source.Position, space, c => restriction.IsValidCard(c, context));
 
-        private IEnumerable<Space> AdjacentEmptySpacesTo(Space space)
-        {
-            return space.AdjacentSpaces.Where(IsEmpty);
-        }
+        public int ShortestPath(Space source, Space end, Func<GameCard, bool> throughPredicate)
+            => ShortestPath(source, end, s => throughPredicate(GetCardAt(s)));
 
-        public int ShortestEmptyPath(GameCard src, Space destination)
+        /// <summary>
+        /// A really bad Dijkstra's because this is a fun side project and I'm not feeling smart today
+        /// </summary>
+        /// <param name="start">The card to start looking from</param>
+        /// <param name="x">The x coordinate you want a distance to</param>
+        /// <param name="y">The y coordinate you want a distance to</param>
+        /// <param name="throughPredicate">What all cards you go through must fit</param>
+        /// <returns></returns>
+        public int ShortestPath(Space start, Space destination, Func<Space, bool> throughPredicate)
         {
-            if (Board[destination.x, destination.y] != null) return 50;
+            if (start == destination) return 0;
 
             int[,] dist = new int[7, 7];
             bool[,] seen = new bool[7, 7];
 
             var queue = new Queue<Space>();
 
-            queue.Enqueue(src.Position);
-            dist[src.Position.x, src.Position.y] = 0;
-            seen[src.Position.x, src.Position.y] = true;
+            queue.Enqueue(start);
+            dist[start.x, start.y] = 0;
+            seen[start.x, start.y] = true;
 
+            //set up the structures with the source node
+            queue.Enqueue(start);
+
+            //iterate until the queue is empty, in which case you'll have seen all connected cards that fit the restriction.
             while (queue.Any())
             {
-                var next = queue.Dequeue();
-                foreach(Space s in AdjacentEmptySpacesTo(next))
+                //consider the adjacent cards to the next node in the queue
+                var curr = queue.Dequeue();
+                var (currX, currY) = curr;
+                foreach (var next in curr.AdjacentSpaces.Where(throughPredicate))
                 {
-                    if(!seen[s.x, s.y])
+                    var (nextX, nextY) = next;
+                    //if that adjacent card is never seen before, initialize its distance and add it to the structures
+                    if (!seen[nextX, nextY])
                     {
-                        seen[s.x, s.y] = true;
-                        queue.Enqueue(s);
-                        dist[s.x, s.y] = dist[next.x, next.y] + 1;
+                        seen[nextX, nextY] = true;
+                        queue.Enqueue(next);
+                        dist[nextX, nextY] = dist[currX, currY] + 1;
                     }
-                    else if (dist[next.x, next.y] + 1 < dist[s.x, s.y]) dist[s.x, s.y] = dist[next.x, next.y] + 1;
+                    //otherwise, relax its distance if appropriate
+                    else if (dist[currX, currY] + 1 < dist[nextX, nextY])
+                        dist[nextX, nextY] = dist[currX, currY] + 1;
                 }
             }
 

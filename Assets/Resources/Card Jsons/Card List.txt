@@ -179,11 +179,11 @@ linewalkers/Yellow Linewalker
 linewalkers/Leygrapple
 linewalkers/Golden Linewalker
 mech_golems/QU4RG3
-mech_golems/S1NG3
-mech_golems/S4MUR41
+mech_golems/51NG3
+mech_golems/54MUR41
 mech_golems/PL4T00N
 mech_golems/N0T3
-mech_golems/S3G4SC4NTUR14N 00
+mech_golems/53G45C4NTUR14N 00
 mech_golems/C3RR13R
 mech_pilots/Standard Pilot
 mech_pilots/Runn R Mann

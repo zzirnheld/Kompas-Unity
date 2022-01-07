@@ -145,23 +145,29 @@ namespace KompasCore.Effects
                 AdjacentToCoords => space.AdjacentTo(Subeffect.SpaceTarget),
                 AdjacentToCardRestriction => Game.boardCtrl.CardsAdjacentTo(space).Any(c => adjacencyRestriction.IsValidCard(c, context)),
 
-                ConnectedToSourceBy => Game.boardCtrl.ShortestPath(Subeffect.Source, space, connectednessRestriction, context) < 50,
-                ConnectedToSourceBySpaces => Game.boardCtrl.ShortestPath(Subeffect.Source.Position, space, s => spaceConnectednessRestriction.IsValidSpace(s, context)) < 50,
-                ConnectedToTargetBy => Game.boardCtrl.ShortestPath(target, space, connectednessRestriction, context) < 50,
-                ConnectedToTargetBySpaces => Game.boardCtrl.ShortestPath(target.Position, space, s => spaceConnectednessRestriction.IsValidSpace(s, context)) < 50,
-                ConnectedToTargetByXSpaces => connectedSpacesXRestriction.IsValidNumber(Game.boardCtrl.ShortestPath(target.Position, space,
-                                                s => spaceConnectednessRestriction.IsValidSpace(s, context))),
-                ConnectedToAvatarBy => Game.boardCtrl.ShortestPath(Source.Controller.Avatar, space, connectednessRestriction, context) < 50,
+                ConnectedToSourceBy => Game.boardCtrl.AreConnectedBySpaces(Subeffect.Source.Position, space, connectednessRestriction, context),
+                ConnectedToSourceBySpaces 
+                    => Game.boardCtrl.AreConnectedBySpaces(Subeffect.Source.Position, space, 
+                            s => spaceConnectednessRestriction.IsValidSpace(s, context)),
+                ConnectedToTargetBy => Game.boardCtrl.AreConnectedBySpaces(target.Position, space, connectednessRestriction, context),
+                ConnectedToTargetBySpaces => Game.boardCtrl.AreConnectedBySpaces(target.Position, space, spaceConnectednessRestriction, context),
+                ConnectedToTargetByXSpaces 
+                    => Game.boardCtrl.AreConnectedBySpacesFittingPredicate(target.Position, space, 
+                            s => spaceConnectednessRestriction.IsValidSpace(s, context),
+                            connectedSpacesXRestriction.IsValidNumber),
+                ConnectedToAvatarBy => Game.boardCtrl.AreConnectedBySpaces(Source.Controller.Avatar.Position, space, connectednessRestriction, context),
 
                 InAOE => Source.SpaceInAOE(space),
                 NotInAOE => !Source.SpaceInAOE(space),
                 InTargetsAOE => target.SpaceInAOE(space),
                 InAOEOf => Game.Cards.Any(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context)),
                 NotInAOEOf => !Game.Cards.Any(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context)),
-                InAOEOfNumberFittingRestriction => numberOfCardsInAOEOfRestriction.IsValidNumber(Game.Cards.Count(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context))),
-                LimitAdjacentCardsFittingRestriction => Game.boardCtrl.CardsAdjacentTo(space)
-                                                                        .Where(c => limitAdjacencyRestriction.IsValidCard(c, context))
-                                                                        .Count() <= adjacencyLimit,
+                InAOEOfNumberFittingRestriction 
+                    => numberOfCardsInAOEOfRestriction.IsValidNumber(Game.Cards.Count(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context))),
+                LimitAdjacentCardsFittingRestriction 
+                    => Game.boardCtrl.CardsAdjacentTo(space)
+                            .Where(c => limitAdjacencyRestriction.IsValidCard(c, context))
+                            .Count() <= adjacencyLimit,
                 InAOESourceAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.CardInAOE(Source)),
 
                 SourceDisplacementToSpaceMatchesCoords => Source.Position.DisplacementTo(space) == Subeffect.SpaceTarget,
@@ -185,7 +191,8 @@ namespace KompasCore.Effects
                 DirectlyAwayFromTarget => target.SpaceDirectlyAwayFrom(space, Source),
 
                 //misc
-                CanPlayTarget => target.PlayRestriction.IsValidEffectPlay(space, Subeffect.Effect, Subeffect.PlayerTarget, context, ignoring: playRestrictionsToIgnore),
+                CanPlayTarget => target.PlayRestriction.IsValidEffectPlay(space, Subeffect.Effect, Subeffect.PlayerTarget, context, 
+                    ignoring: playRestrictionsToIgnore),
                 CanMoveTarget => target.MovementRestriction.IsValidEffectMove(space),
                 CanMoveSource => Source.MovementRestriction.IsValidEffectMove(space),
 
