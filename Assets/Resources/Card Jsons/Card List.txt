@@ -198,6 +198,7 @@ mechs/Iterative Analyzer
 mechs/Recruitment Drive
 mechs/Collaborative Mechanization
 mechs/One Step Ahead
+mechs/Repair Hub
 music/Soaring Chorus
 music/Surging Verse
 music/Ringing Bridge

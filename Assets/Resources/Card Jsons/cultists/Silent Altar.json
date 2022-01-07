@@ -6,13 +6,17 @@
 		{
 			"triggerData":
 			{
-				"blurb":"Reshuffle",
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
-					"triggerRestrictions":["Triggerer Fits Restriction","From Field"],
+					"triggerRestrictions":["Triggerer Fits Restriction","Coords Fit Restriction","This Card in Play"],
+					"spaceRestriction":
+					{
+						"spaceRestrictions":["In AOE"],
+						"mustBeEmpty":false
+					},
 					"cardRestriction":
 					{
-						"cardRestrictions":["Subtypes Include","Board","Friendly"],
+						"cardRestrictions":["Subtypes Include","Board"],
 						"subtypesInclude":["Cultist"]
 					}
 				}
