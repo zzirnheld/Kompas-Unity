@@ -17,5 +17,12 @@
     },
     {
         "$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+    },
+    {
+        "$type":"KompasServer.Effects.TemporaryNegateSubeffect, Assembly-CSharp",
+        "endCondition":"Turn Start",
+        "triggerRestriction":{
+            "triggerRestrictions":[]
+        }
     }
 ]

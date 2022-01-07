@@ -39,7 +39,7 @@
 						"cardRestriction":
 						{
 							"cardRestrictions":["Subtypes Include","Board","Friendly"],
-							"subtypesInclude":["Cultist"]
+							"subtypesInclude":["Mech"]
 						}
 					}
 				},

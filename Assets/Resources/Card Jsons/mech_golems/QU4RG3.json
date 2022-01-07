@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"QU4RG3",
-	"effText":"Golem.\nWhen I kill a character, double my W. If it's now >= 4, I attack another character on my diagonal.",
+	"effText":"Golem.\nWhen I kill a character, double my W. If it's now >= 4, I attack a character on my diagonal.",
 	"effects":[
 		{
 			"blurb":"Charge up",

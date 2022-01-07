@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Collaborative Mechanization",
-	"effText":"Given X as the total S of Mech Pilots here, deck->hand Mech Golem(s) with total S <= X.",
+	"effText":"Hand->discard X Mech Pilots. Deck->hand X Mech Golems. Annihilate me. Gain X pips.",
 	"effects":[
 		{
 			"triggerData":
@@ -13,62 +13,62 @@
 			},
 			"subeffects":[
 				{
-					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
-					"whatToCount":"Total Card Value of Cards Fitting Restriction",
-					"cardValue":{
-						"value":"S"
-					},
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Subtypes Include","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["In AOE"],
-							"mustBeEmpty":false
-						},
+						"blurb":"for Collaborative Mechanization to discard",
+						"cardRestrictions":["Friendly","Hand","Subtypes Include"],
 						"subtypesInclude":["Mech","Pilot"]
-					},
-					"xMultiplier":1
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
+					"canDecline":true,
+					"jumpIndices":[0]
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"jumpIndices":[3]
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"Mech Golem to collab on",
-						"cardRestrictions":["Is Character","Deck","Subtypes Include","Card Value Fits X Restriction"],
-						"subtypesInclude":["Mech","Golem"],
-						"cardValue":{
-							"value":"S"
-						},
-						"xRestriction":{
-							"xRestrictions":["<=X"]
-						}
+						"blurb":"Sign up here, future Pilots!",
+						"cardRestrictions":["Friendly","Deck","Subtypes Include"],
+						"subtypesInclude":["Mech","Golem"]
+					},
+					"listRestriction":{
+						"listRestrictions":["Min Can Choose: X","Max Can Choose: X"]
 					},
 					"xMultiplier":1
-				},
-				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"S"
-					},
-					"change":true,
-					"xMultiplier":-1
 				},
 				{
 					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
-					"condition":"X >= Constant",
-					"constant":1,
-					"jumpIndices":[1]
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"jumpIndices":[5]
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xMultiplier":1
 				}
-			]
+			]	
 		}
 	],
 	"c":1,
-	"spellTypes":["Simple","Radial"],
-	"subtypes":["Simple","Radial"],
-	"subtypeText":"Radius 1 Simple",
-	"radius":1
+	"spellTypes":["Simple"],
+	"subtypeText":"Simple"
 }

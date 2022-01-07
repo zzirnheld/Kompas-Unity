@@ -64,11 +64,11 @@
 						"value":"W"
 					},
                     "cardInfo":true,
-					"wMultiplier":1
+					"xMultiplier":1
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"nMult":1
+					"wMult":1
 				},
 				{
 					"$type":"KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",

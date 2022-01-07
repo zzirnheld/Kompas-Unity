@@ -18,7 +18,7 @@
 					{
 						"blurb":"for Starbirth to discard",
 						"cardRestrictions":["Friendly","Hand","Subtypes Include"],
-						"subtypesInclude":["Pulsar"]
+						"subtypesInclude":["Mech","Golem"]
 					}
 				},
 				{

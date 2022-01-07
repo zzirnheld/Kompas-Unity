@@ -122,7 +122,7 @@
 		},
 		{
 			"keyword":"Pilot a Mech",
-			"reminder":"Annihilate me. Hand->summon a Mech Golem where I was and activate it, but when it dies, summon me where it was. If it's removed without dying, I stay annihilated forever."
+			"reminder":"Annihilate me. Hand->summon a Mech Golem where I was and activate it, but when it dies, summon me where it was, and negate me for the turn. If it's removed without dying, I stay annihilated forever."
 		},
 		{
 			"keyword":"Nimble",

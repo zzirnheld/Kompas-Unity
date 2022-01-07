@@ -68,10 +68,10 @@
 				{
 					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
 					"cardValue":{
-						"value":"S"
+						"value":"S",
+                        "multiplier":-1
 					},
-					"change":true,
-					"xMultiplier":-1
+					"change":true
 				},
 				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
