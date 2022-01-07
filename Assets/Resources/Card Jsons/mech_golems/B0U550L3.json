@@ -79,7 +79,7 @@
 	"n":1,
 	"e":5,
 	"s":7,
-	"w":5,
+	"w":7,
 	"subtypes":["Mech","Golem"],
 	"subtypeText":"Mech Golem"
 }

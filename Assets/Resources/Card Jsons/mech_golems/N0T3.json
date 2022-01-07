@@ -46,9 +46,9 @@
 		]
 	},
 	"n":2,
-	"e":7,
+	"e":8,
 	"s":7,
-	"w":2,
+	"w":4,
 	"subtypes":["Mech","Golem"],
 	"subtypeText":"Mech Golem"
 }

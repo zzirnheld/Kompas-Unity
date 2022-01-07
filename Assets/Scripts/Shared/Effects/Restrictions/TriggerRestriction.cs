@@ -150,6 +150,7 @@ namespace KompasCore.Effects
                 TriggererIsSecondaryContextTarget       => secondary?.Targets?.Any(c => c == context.mainCardInfoBefore?.Card) ?? false,
 
                 StackableSourceFitsRestriction  => sourceRestriction.Evaluate(context.stackable?.Source, context),
+                EffectSourceIsThisCard => context.stackable?.Source == ThisCard,
                 StackableSourceNotThisEffect    => context.stackable != SourceEffect,
                 ContextsStackablesMatch         => context.stackable == secondary?.stackable,
                 StackableIsThisEffect           => context.stackable == SourceEffect,

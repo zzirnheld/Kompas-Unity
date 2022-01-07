@@ -14,7 +14,7 @@
         {
             "blurb":"Mech to Pilot",
             "cardRestrictions":["Friendly","Subtypes Include","Is Character","Hand","Can Be Played"],
-            "subtypesInclude":["Mech"]
+            "subtypesInclude":["Mech","Golem"]
         }
     },
     {

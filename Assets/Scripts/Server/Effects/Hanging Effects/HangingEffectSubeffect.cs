@@ -28,7 +28,7 @@ namespace KompasServer.Effects
             base.Initialize(eff, subeffIndex);
             triggerRestriction ??= new TriggerRestriction();
             triggerRestriction.Initialize(Game, ThisCard, thisTrigger: null, effect: Effect, subeff: this);
-            Debug.LogWarning($"Are jump indices null? {jumpIndices == null}");
+            //Debug.LogWarning($"Are jump indices null? {jumpIndices == null}");
         }
 
         public override Task<ResolutionInfo> Resolve()
