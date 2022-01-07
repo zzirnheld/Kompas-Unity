@@ -1,7 +1,7 @@
 {
 	"cardType":65,
 	"cardName":"Backup Power Core",
-	"effText":"While equipped, activate this Golem.\nWhen this Golem dies, revive them where they were and discard->attach me to them, but annihilate us the next time they die.",
+	"effText":"While equipped, activate this Golem.\nWhen this Golem dies, revive them 1 space from where they were and discard->attach me to them, but annihilate us the next time they die.",
 	"effects":[
 		{
             "blurb":"Activate Golem",
@@ -36,9 +36,6 @@
             },
             "subeffects":[
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
-				},
-				{
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
@@ -47,6 +44,17 @@
 					"cardRestriction":
 					{
 						"cardRestrictions":["Discard"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction":
+					{
+						"blurb":"where backup to power up",
+						"spaceRestrictions":["Can Play Target to This Space","Adjacent to Coords"]
 					}
 				},
 				{

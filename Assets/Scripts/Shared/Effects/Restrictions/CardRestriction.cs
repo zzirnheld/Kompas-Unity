@@ -41,6 +41,7 @@ namespace KompasCore.Effects
         //control
         public const string Friendly = "Friendly";
         public const string Enemy = "Enemy";
+        public const string FriendlyToCardTarget = "Friendly to Card Target";
         public const string SameOwner = "Same Owner as Source";
         public const string TurnPlayerControls = "Turn Player Controls";
         public const string AdjacentToEnemy = "Adjacent to Enemy";
@@ -225,10 +226,11 @@ namespace KompasCore.Effects
                 SpellSubtypes   => potentialTarget?.SpellSubtypes.Intersect(spellSubtypes).Any() ?? false,
 
                 //control
-                Friendly            => potentialTarget?.Controller == Controller,
-                Enemy               => potentialTarget?.Controller != Controller,
-                SameOwner           => potentialTarget?.Owner == Controller,
-                TurnPlayerControls  => potentialTarget?.Controller == Subeffect.Game.TurnPlayer,
+                Friendly             => potentialTarget?.Controller == Controller,
+                Enemy                => potentialTarget?.Controller != Controller,
+                FriendlyToCardTarget => potentialTarget?.Controller == Subeffect.CardTarget,
+                SameOwner            => potentialTarget?.Owner == Controller,
+                TurnPlayerControls   => potentialTarget?.Controller == Subeffect.Game.TurnPlayer,
 
                 ControllerMatchesTarget         => potentialTarget?.Controller == Subeffect.CardTarget.Controller,
                 ControllerMatchesPlayerTarget   => potentialTarget?.Controller == Subeffect.PlayerTarget,
