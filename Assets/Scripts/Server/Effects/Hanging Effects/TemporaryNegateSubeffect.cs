@@ -4,6 +4,8 @@ namespace KompasServer.Effects
 {
     public class TemporaryNegateSubeffect : HangingEffectSubeffect
     {
+        public bool negated = true;
+
         protected override IEnumerable<HangingEffect> CreateHangingEffects()
         {
             var tempNegation = new HangingNegationEffect(serverGame: ServerGame,
@@ -13,7 +15,8 @@ namespace KompasServer.Effects
                                                          fallOffRestriction: CreateFallOffRestriction(CardTarget),
                                                          currentContext: Context,
                                                          target: CardTarget,
-                                                         source: this);
+                                                         source: this,
+                                                         negated: negated);
             return new List<HangingEffect>() { tempNegation };
         }
     }

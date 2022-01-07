@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Gvala, Improvisor-Pilot",
-	"effText":"When I'm summoned, I Pilot a Mech.",
+	"effText":"When I'm summoned, I Pilot a Mech, and when I return, unnegate me for the turn.",
 	"effects":[
 		{
 			"blurb":"Improvised Piloting",
@@ -20,6 +20,14 @@
 				{
 					"$type":"KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
                     "keyword":"Mech Pilot Return"
+				},
+				{
+					"$type":"KompasServer.Effects.TemporaryNegateSubeffect, Assembly-CSharp",
+					"endCondition":"Turn Start",
+					"negated":false,
+					"triggerRestriction":{
+						"triggerRestrictions":[]
+					}
 				}
 			]
 		}
