@@ -217,6 +217,7 @@ public class CardRepository : MonoBehaviour
             for (int i = 0; i < cardInfo.keywords.Length; i++)
             {
                 var s = cardInfo.keywords[i];
+                Debug.Log($"Trying to add keyword {s}");
                 var keywordJson = keywordJsons[s];
                 var eff = JsonConvert.DeserializeObject<ServerEffect>(keywordJson, cardLoadingSettings);
                 eff.arg = cardInfo.keywordArgs.Length > i ? cardInfo.keywordArgs[i] : 0;

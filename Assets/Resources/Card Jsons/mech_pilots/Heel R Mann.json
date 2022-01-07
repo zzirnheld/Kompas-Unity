@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Heel R Mann",
-	"effText":"During your turn, I can Pilot a Mech, and give it +3 E.",
+	"effText":"During your turn, I can Pilot a Mech, and give it +2 E.",
 	"effects":[
 		{
 			"blurb":"Hearty Piloting",
@@ -18,7 +18,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":3
+					"eMod":2
 				},
 				{
 					"$type":"KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
@@ -29,8 +29,8 @@
 	],
     "unique":true,
 	"n":0,
-	"e":7,
-	"s":5,
+	"e":4,
+	"s":6,
 	"w":0,
 	"subtypeText":"Mech Pilot Person"
 }

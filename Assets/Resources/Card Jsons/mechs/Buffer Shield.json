@@ -9,7 +9,7 @@
 			{
 				"triggerCondition":"Augment Attached",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered","Triggerer's Augmented Card Fits Restriction"],
+					"triggerRestrictions":["This Card Triggered","Secondary Card Fits Restriction"],
 					"cardRestriction":
 					{
 						"cardRestrictions":["Subtypes Include"],

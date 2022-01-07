@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Rayla, Head Mann",
-	"effText":"During your turn, I can Pilot a Mech, and give it +2 NESW.",
+	"effText":"During your turn, I can Pilot a Mech, and give it +1 NESW.",
 	"effects":[
 		{
 			"blurb":"Leading Piloting",
@@ -18,10 +18,10 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"nMod":2,
-					"eMod":2,
-					"sMod":2,
-					"wMod":2
+					"nMod":1,
+					"eMod":1,
+					"sMod":1,
+					"wMod":1
 				},
 				{
 					"$type":"KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
@@ -32,8 +32,8 @@
 	],
     "unique":true,
 	"n":1,
-	"e":5,
-	"s":6,
-	"w":5,
+	"e":3,
+	"s":7,
+	"w":3,
 	"subtypeText":"Mech Pilot Person"
 }

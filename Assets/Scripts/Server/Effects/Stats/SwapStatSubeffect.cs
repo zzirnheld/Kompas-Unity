@@ -31,9 +31,9 @@ namespace KompasServer.Effects
                 throw new InvalidLocationException(secondTarget.Location, secondTarget, ChangedStatsOfCardOffBoard);
 
             var firstStat = firstTargetStat.GetValueOf(CardTarget);
-            var secondStat = firstTargetStat.GetValueOf(secondTarget);
-            firstTargetStat.SetValueOf(secondTarget, firstStat, Effect);
-            secondTargetStat.SetValueOf(CardTarget, secondStat, Effect);
+            var secondStat = secondTargetStat.GetValueOf(secondTarget);
+            firstTargetStat.SetValueOf(CardTarget, secondStat, Effect);
+            secondTargetStat.SetValueOf(secondTarget, firstStat, Effect);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

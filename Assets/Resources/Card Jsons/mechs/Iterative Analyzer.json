@@ -9,7 +9,7 @@
 			{
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
-					"triggerRestrictions":["Augmented Card Triggered","Triggerer's Augmented Card Fits Restriction"],
+					"triggerRestrictions":["Augmented Card Triggered","Secondary Card Fits Restriction"],
 					"cardRestriction":
 					{
 						"cardRestrictions":["Subtypes Include"],

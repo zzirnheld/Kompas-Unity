@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Runn R Mann",
-	"effText":"During your turn, I can Pilot a Mech, and give it +3 N.",
+	"effText":"During your turn, I can Pilot a Mech, and give it +2 N.",
 	"effects":[
 		{
 			"blurb":"Fast Piloting",
@@ -18,7 +18,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"nMod":3
+					"nMod":2
 				},
 				{
 					"$type":"KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
@@ -29,8 +29,8 @@
 	],
     "unique":true,
 	"n":2,
-	"e":4,
-	"s":5,
-	"w":2,
+	"e":2,
+	"s":6,
+	"w":0,
 	"subtypeText":"Mech Pilot Person"
 }

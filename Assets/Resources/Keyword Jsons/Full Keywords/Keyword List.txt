@@ -20,3 +20,4 @@ Speedemon
 Instrument
 Pass Back
 Attended
+Collectible

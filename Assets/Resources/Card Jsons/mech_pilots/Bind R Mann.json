@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Bind R Mann",
-	"effText":"During your turn, I can Pilot a Mech, and give it +3 S.",
+	"effText":"During your turn, I can Pilot a Mech, and give it +2 S.",
 	"effects":[
 		{
 			"blurb":"Careful Piloting",
@@ -18,7 +18,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"sMod":3
+					"sMod":2
 				},
 				{
 					"$type":"KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
@@ -29,8 +29,8 @@
 	],
     "unique":true,
 	"n":2,
-	"e":5,
-	"s":5,
-	"w":5,
+	"e":4,
+	"s":6,
+	"w":4,
 	"subtypeText":"Mech Pilot Person"
 }

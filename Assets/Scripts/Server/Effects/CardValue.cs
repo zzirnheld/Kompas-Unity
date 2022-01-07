@@ -1,5 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Exceptions;
+using Newtonsoft.Json;
 using System;
 using System.Linq;
 

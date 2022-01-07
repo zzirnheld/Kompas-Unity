@@ -20,6 +20,7 @@ namespace KompasCore.Effects
 
         private const string ThisCardFitsRestriction = "This Card Fits Restriction"; //100,
         private const string TriggererFitsRestriction = "Triggerer Fits Restriction"; //101,
+        private const string SecondaryCardFitsRestriction = "Secondary Card Fits Restriction";
         private const string TriggererNowFitsRestirction = "Triggerer Now Fits Restriction";
         private const string TriggerersAugmentedCardFitsRestriction = "Triggerer's Augmented Card Fits Restriction";
         private const string CardExists = "Card Exists";
@@ -143,6 +144,7 @@ namespace KompasCore.Effects
                 ThisCardFitsRestriction => cardRestriction.Evaluate(ThisCard, context),
 
                 TriggererFitsRestriction    => cardRestriction.Evaluate(context.mainCardInfoBefore, context),
+                SecondaryCardFitsRestriction => cardRestriction.Evaluate(context.secondaryCardInfoBefore, context),
                 TriggererNowFitsRestirction => nowRestriction.Evaluate(context.MainCardInfoAfter, context),
                 TriggerersAugmentedCardFitsRestriction  => cardRestriction.Evaluate(context.mainCardInfoBefore.AugmentedCard, context),
                 TriggererIsSecondaryContextTarget       => secondary?.Targets?.Any(c => c == context.mainCardInfoBefore?.Card) ?? false,

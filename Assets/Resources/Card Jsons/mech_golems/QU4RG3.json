@@ -78,8 +78,8 @@
 			"This is Activated"
 		]
 	},
-	"n":4,
-	"e":8,
+	"n":2,
+	"e":6,
 	"s":7,
 	"w":1,
 	"subtypes":["Mech","Golem"],

@@ -9,6 +9,7 @@ namespace KompasCore.Effects
 {
     public class ListRestriction
     {
+        [JsonIgnore]
         public Subeffect Subeffect { get; private set; }
 
         //if i end up living towards the heat death of the universe,
