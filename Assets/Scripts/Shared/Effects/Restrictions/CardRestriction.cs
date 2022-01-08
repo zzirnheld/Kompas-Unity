@@ -226,7 +226,7 @@ namespace KompasCore.Effects
             //control
             Friendly => potentialTarget?.Controller == Controller,
             Enemy => potentialTarget?.Controller != Controller,
-            FriendlyToCardTarget => potentialTarget?.Controller == Subeffect.CardTarget,
+            FriendlyToCardTarget => potentialTarget?.Controller == Subeffect.CardTarget.Controller,
             SameOwner => potentialTarget?.Owner == Controller,
             TurnPlayerControls => potentialTarget?.Controller == Subeffect.Game.TurnPlayer,
 
