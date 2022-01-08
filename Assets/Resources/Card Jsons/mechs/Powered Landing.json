@@ -7,6 +7,7 @@
             "blurb":"Landing Blast",
 			"triggerData":{
 				"optional":true,
+				"blurb":"Landing Blast?",
 				"triggerCondition":"Play",
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],

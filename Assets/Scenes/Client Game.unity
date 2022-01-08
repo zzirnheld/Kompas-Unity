@@ -8590,18 +8590,6 @@ MonoBehaviour:
   ClientPlayers:
   - {fileID: 1829834588}
   - {fileID: 1841194802}
-  friendlyHandCtrl: {fileID: 1921547573}
-  friendlyDeckCtrl: {fileID: 2534840227050861151}
-  friendlyDiscardCtrl: {fileID: 540378492}
-  friendlyHandObj: {fileID: 1921547572}
-  friendlyDeckObj: {fileID: 2534840227050861150}
-  friendlyDiscardObj: {fileID: 540378487}
-  enemyHandCtrl: {fileID: 60475903}
-  enemyDeckCtrl: {fileID: 733957028}
-  enemyDiscardCtrl: {fileID: 116530641}
-  enemyHandObj: {fileID: 60475902}
-  enemyDeckObj: {fileID: 733957026}
-  enemyDiscardObj: {fileID: 116530640}
   clientNetworkCtrl: {fileID: 2001968206}
   clientNotifier: {fileID: 2001968207}
   clientUICtrl: {fileID: 1615817260}
@@ -26647,6 +26635,8 @@ MonoBehaviour:
   ClientEnemy: {fileID: 1841194802}
   clientGame: {fileID: 492080563}
   pipsUICtrl: {fileID: 561498308}
+  clientDeckCtrl: {fileID: 2534840227050861151}
+  clientHandCtrl: {fileID: 1921547573}
 --- !u!1 &1830602624
 GameObject:
   m_ObjectHideFlags: 0
@@ -27035,6 +27025,8 @@ MonoBehaviour:
   ClientEnemy: {fileID: 1829834588}
   clientGame: {fileID: 492080563}
   pipsUICtrl: {fileID: 1879040559}
+  clientDeckCtrl: {fileID: 733957028}
+  clientHandCtrl: {fileID: 60475903}
 --- !u!1 &1843617004
 GameObject:
   m_ObjectHideFlags: 0

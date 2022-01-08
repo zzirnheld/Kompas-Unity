@@ -320,6 +320,8 @@ namespace KompasServer.Effects
 
         public void TriggerForCondition(string condition, ActivationContext context)
         {
+            if (!ServerGame.GameHasStarted) return;
+
             Debug.Log($"Triggering for condition {condition}, context {context}");
             //first resolve any hanging effects
             ResolveHangingEffects(condition, context);

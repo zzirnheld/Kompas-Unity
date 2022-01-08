@@ -72,7 +72,7 @@ namespace KompasServer.Effects
         public bool SetTargetIfValid(int x, int y)
         {
             //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
-            if (spaceRestriction.IsValidSpace((x, y), Context))
+            if (Space.IsValidSpace(x, y) && spaceRestriction.IsValidSpace((x, y), Context))
             {
                 Debug.Log($"Adding {x}, {y} as coords");
                 ServerEffect.AddSpace((x, y));

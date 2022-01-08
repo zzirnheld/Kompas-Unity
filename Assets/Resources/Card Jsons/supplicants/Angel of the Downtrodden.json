@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Angel of the Downtrodden",
-	"effText":"Once each turn, you can set X to the number of adjacent Supplicants, then deck-cast a C <= X Plea.",
+	"effText":"Once each friendly turn, you can set X to the number of adjacent Supplicants, then deck-cast a C <= X Plea.",
 	"effects":[
 		{
 			"activationRestriction":{

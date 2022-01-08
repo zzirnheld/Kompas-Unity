@@ -52,6 +52,8 @@ public class Space
     public int Index => BoardLen * x + y;
     public Space Inverse => new Space(MaxIndex - x, MaxIndex - y);
 
+    public static bool IsValidSpace(int x, int y) => new Space(x, y).IsValid;
+
     public int TaxicabDistanceTo(Space other) => Math.Abs(x - other.x) + Math.Abs(y - other.y);
     public int RadialDistanceTo(Space other) => Math.Max(Math.Abs(x - other.x), Math.Abs(y - other.y));
     public int DistanceTo(Space other) => TaxicabDistanceTo(other);

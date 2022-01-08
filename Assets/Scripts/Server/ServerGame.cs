@@ -40,6 +40,8 @@ namespace KompasServer.GameCore
         public int cardCount = 0;
         private int currPlayerCount = 0; //current number of players. shouldn't exceed 2
 
+        public bool GameHasStarted { get; private set; } = false;
+
         public ServerEffect CurrEffect { get; set; }
         public override IStackable CurrStackEntry => EffectsController.CurrStackEntry;
         public override IEnumerable<IStackable> StackEntries => EffectsController.StackEntries;
@@ -194,8 +196,10 @@ namespace KompasServer.GameCore
                 p.Avatar.SetE(p.Avatar.E + AvatarEBonus);
                 p.Avatar.SetW(p.Avatar.W - AvatarWPenalty);
                 //p.Avatar.SetShield(AvatarShield);
-                DrawX(p.index, 5);
+                DrawX(p.index, 5, stackSrc: null);
             }
+
+            GameHasStarted = true;
 
             await TurnStartOperations(notFirstTurn: false);
         }
