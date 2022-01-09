@@ -32,11 +32,14 @@ namespace KompasCore.Effects
         public GameCard Source { get; private set; }
         public Subeffect Subeffect { get; private set; }
 
+        private bool initialized = false;
+
         public void Initialize(GameCard source, Subeffect subeffect = null)
         {
             Source = source;
             Subeffect = subeffect;
             avatarCardValue?.Initialize(Source);
+            initialized = true;
         }
 
         private bool IsRestrictionValid(string r, int x) => r switch
@@ -62,6 +65,10 @@ namespace KompasCore.Effects
             _ => throw new System.ArgumentException($"Invalid X restriction {r} in X Restriction."),
         };
 
-        public bool IsValidNumber(int x) => xRestrictions.All(r => IsRestrictionValid(r, x));
+        public bool IsValidNumber(int x)
+        {
+            if (!initialized) throw new System.ArgumentException("X restriction not initialized!");
+            return xRestrictions.All(r => IsRestrictionValid(r, x));
+        }
     }
 }

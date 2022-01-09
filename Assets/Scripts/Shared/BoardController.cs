@@ -204,11 +204,15 @@ namespace KompasCore.GameCore
         public virtual void Remove(GameCard toRemove)
         {
             if (toRemove.Location != CardLocation.Field) 
-                throw new CardNotHereException(CardLocation, $"Tried to remove {toRemove} not on board");
-            if (toRemove.Position == null) throw new InvalidSpaceException(toRemove.Position, "Can't remove a card from a null space");
+                throw new CardNotHereException(CardLocation, toRemove, $"Tried to remove {toRemove} not on board");
+            if (toRemove.Position == null) 
+                throw new InvalidSpaceException(toRemove.Position, "Can't remove a card from a null space");
+
             var (x, y) = toRemove.Position;
-            if(Board[x, y] == toRemove) RemoveFromBoard(toRemove.Position);
-            else throw new CardNotHereException(CardLocation, $"Card thinks it's at {toRemove.Position}, but {Board[x, y]} is there");
+            if(Board[x, y] == toRemove) 
+                RemoveFromBoard(toRemove.Position);
+            else 
+                throw new CardNotHereException(CardLocation, toRemove, $"Card thinks it's at {toRemove.Position}, but {Board[x, y]} is there");
         }
 
         private void RemoveFromBoard(Space space)
@@ -268,7 +272,7 @@ namespace KompasCore.GameCore
             if (card == null) throw new NullCardException("Card to be swapped must not be null");
             if (card.Attached) throw new NotImplementedException();
             if (card.Location != CardLocation.Field || card != GetCardAt(card.Position)) 
-                throw new CardNotHereException(CardLocation.Field, 
+                throw new CardNotHereException(CardLocation.Field, card,
                     $"{card} not at {card.Position}, {GetCardAt(card.Position)} is there instead");
 
             var (tempX, tempY) = card.Position;

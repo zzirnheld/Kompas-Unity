@@ -28,7 +28,7 @@ namespace KompasCore.GameCore
 
         public virtual void Remove(GameCard card)
         {
-            if (!Discard.Contains(card)) throw new CardNotHereException(CardLocation.Discard);
+            if (!Discard.Contains(card)) throw new CardNotHereException(CardLocation.Discard, card);
 
             Discard.Remove(card);
             SpreadOutCards();

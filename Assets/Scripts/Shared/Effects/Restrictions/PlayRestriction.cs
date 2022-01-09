@@ -102,7 +102,7 @@ namespace KompasCore.Effects
             FromHand => Card.Location == CardLocation.Hand,
             StandardPlayRestriction => Card.Game.ValidStandardPlaySpace(space, Card.Controller),
             StandardSpellRestriction => Card.Game.ValidSpellSpaceFor(Card, space),
-            HasCostInPips => Card.Controller.Pips >= Card.Cost,
+            HasCostInPips => PlayerCanAffordCost(true, Card.Controller),
 
             EmptySpace => Card.Game.boardCtrl.IsEmpty(space),
             OnBoardCardFriendlyOrAdjacent => IsValidAugSpace(space, player),
@@ -133,7 +133,7 @@ namespace KompasCore.Effects
                 && PlayerCanAffordCost(checkCanAffordCost, player)
                 && normalRestrictions
                     .Except(ignoring ?? new string[0])
-                    .All(r => IsRestrictionValid(r, to, player, new ActivationContext(), true));
+                    .All(r => IsRestrictionValid(r, to, player, default, true));
 
         public bool IsValidEffectPlay(Space to, Effect effect, Player controller, ActivationContext context, string[] ignoring = default) 
             => IsValidPlay(to)
@@ -150,6 +150,6 @@ namespace KompasCore.Effects
 
         public bool IsRecommendedNormalPlay(Space space, Player player, bool checkCanAffordCost = false)
             => IsValidNormalPlay(space, player, checkCanAffordCost)
-            && IsRecommendedPlay(space, player, context: new ActivationContext(), normal: true);
+            && IsRecommendedPlay(space, player, context: default, normal: true);
     }
 }

@@ -119,6 +119,7 @@ namespace KompasCore.Effects
             hereFitsRestriction?.Initialize(source, effect, subeffect);
             inAOEOfRestriction?.Initialize(source, effect, subeffect);
             distanceXRestriction?.Initialize(source, subeffect);
+            connectedSpacesXRestriction?.Initialize(source, subeffect);
             numberOfCardsInAOEOfRestriction?.Initialize(source, subeffect);
 
             initialized = true;

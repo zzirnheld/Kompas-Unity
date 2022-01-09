@@ -34,7 +34,7 @@ namespace KompasCore.GameCore
 
         public virtual void Remove(GameCard card)
         {
-            if (!hand.Contains(card)) throw new CardNotHereException(CardLocation, 
+            if (!hand.Contains(card)) throw new CardNotHereException(CardLocation, card,
                 $"Hand of \n{string.Join(", ", hand.Select(c => c.CardName))}\n doesn't contain {card}, can't remove it!");
 
             hand.Remove(card);

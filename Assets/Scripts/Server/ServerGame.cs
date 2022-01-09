@@ -282,7 +282,7 @@ namespace KompasServer.GameCore
         }
 
         #region check validity
-        public bool IsValidPlay(GameCard card, Space to, ServerPlayer player)
+        public bool IsValidNormalPlay(GameCard card, Space to, ServerPlayer player)
         {
             if (card == null) return false;
             if (uiCtrl.DebugMode)
@@ -292,10 +292,10 @@ namespace KompasServer.GameCore
             }
 
             //Debug.Log($"Checking validity of playing {card.CardName} to {to}");
-            return card.PlayRestriction.IsValidNormalPlay(to, player);
+            return card.PlayRestriction.IsValidNormalPlay(to, player, checkCanAffordCost: true);
         }
 
-        public bool ValidAugment(GameCard card, Space to, ServerPlayer player)
+        public bool IsValidNormalAttach(GameCard card, Space to, ServerPlayer player)
         {
             if (uiCtrl.DebugMode)
             {
@@ -306,10 +306,10 @@ namespace KompasServer.GameCore
             Debug.Log($"Checking validity augment of {card.CardName} to {to}, on {boardCtrl.GetCardAt(to)}");
             return card != null && card.CardType == 'A' && to.IsValid
                 && !boardCtrl.IsEmpty(to)
-                && card.PlayRestriction.IsValidNormalPlay(to, player);
+                && card.PlayRestriction.IsValidNormalPlay(to, player, checkCanAffordCost: true);
         }
 
-        public bool ValidMove(GameCard toMove, Space to, Player by)
+        public bool IsValidNormalMove(GameCard toMove, Space to, Player by)
         {
             if (uiCtrl.DebugMode)
             {

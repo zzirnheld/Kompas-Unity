@@ -163,7 +163,7 @@ namespace KompasServer.Effects
                 }
             }
             //Remove effect from hanging/delayed
-            foreach(var triggerCondition in Trigger.TriggerConditions)
+            foreach(var triggerCondition in Trigger.TriggerConditions.Where(hangingEffectMap.ContainsKey))
             {
                 foreach(var hangingEff in hangingEffectMap[triggerCondition].ToArray())
                 {

@@ -4,6 +4,7 @@
 	"effText":"The first time each turn you hand->discard, discard->hand any friendly card.",
 	"effects":[
 		{
+			"blurb":"Lemme grabbit",
 			"triggerData":
 			{
 				"triggerCondition":"Discard",

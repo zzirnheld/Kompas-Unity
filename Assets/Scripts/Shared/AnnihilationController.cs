@@ -28,7 +28,8 @@ namespace KompasCore.GameCore
 
         public virtual void Remove(GameCard card)
         {
-            if (!Cards.Contains(card)) throw new CardNotHereException(CardLocation.Annihilation);
+            if (!Cards.Contains(card)) 
+                throw new CardNotHereException(CardLocation.Annihilation, card, "Card was not in annihilation, couldn't be removed");
 
             Cards.Remove(card);
             SpreadOutCards();
