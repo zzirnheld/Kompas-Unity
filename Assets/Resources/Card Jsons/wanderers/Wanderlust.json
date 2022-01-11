@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Wanderlust",
-	"effText":"Choose a friendly Summoned character. Repeat the following any number of times:\nReshuffle the last chosen S X character. Hand->summon an S <= X + 1 character.\n(This triggers any on-summon effects of each of those characters.)",
+	"effText":"Choose a friendly Summoned character. Repeat the following any number of times:\nReshuffle the last chosen S X character. Hand->summon an S <= X + 1 character.",
 	"effects":[
 		{
 			"triggerData":
