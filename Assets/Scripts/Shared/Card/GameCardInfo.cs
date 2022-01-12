@@ -72,16 +72,24 @@ namespace KompasCore.Cards
             && card.Location == CardLocation.Field && Position.AdjacentTo(card.Position);
         public bool IsAdjacentTo(Space space) => Location == CardLocation.Field && Position.AdjacentTo(space);
 
-        public bool SpaceInAOE(Space space)
+        /// <summary>
+        /// Whether <paramref name="space"/> is in this card's AOE if this card is at <paramref name="mySpace"/>
+        /// </summary>
+        public bool SpaceInAOE(Space space, Space mySpace)
             => SpellSubtypes != null && SpellSubtypes.Any(s => s switch
             {
-                RadialSubtype => DistanceTo(space) <= Radius,
+                RadialSubtype => mySpace.DistanceTo(space) <= Radius,
                 _ => false
             });
+        public bool SpaceInAOE(Space space) => SpaceInAOE(space, Position);
+        /// <summary>
+        /// Whether <paramref name="c"/> is in this card's AOE if this card is at <paramref name="mySpace"/>
+        /// </summary>
+        public bool CardInAOE(GameCardBase c, Space mySpace) => SpaceInAOE(c.Position, mySpace);
         /// <summary>
         /// Whether <paramref name="c"/> is in the aoe of <see cref="this"/> card.
         /// </summary>
-        public bool CardInAOE(GameCardBase c) => SpaceInAOE(c.Position);
+        public bool CardInAOE(GameCardBase c) => CardInAOE(c, Position);
 
         public bool SameColumn(Space space) => Location == CardLocation.Field && Position.SameColumn(space);
         public bool SameColumn(GameCardBase c) => c.Location == CardLocation.Field && SameColumn(c.Position);

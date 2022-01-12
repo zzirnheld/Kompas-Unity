@@ -166,11 +166,10 @@ namespace KompasServer.Cards
             //proc the trigger before actually removing anything
             var player = stackSrc?.Controller ?? Controller;
             var context = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: player);
-            var cardsThisLeft = new List<GameCard>();
-            if (Location == CardLocation.Field)
-            {
-                cardsThisLeft.AddRange(Game.boardCtrl.CardsAndAugsWhere(c => c.CardInAOE(this)));
-            }
+
+            var cardsThisLeft = Location == CardLocation.Field ?
+                Game.boardCtrl.CardsAndAugsWhere(c => c.CardInAOE(this)).ToList() :
+                new List<GameCard>();
             var leaveContexts = cardsThisLeft.Select(c => 
                 new ActivationContext(mainCardBefore: this, secondaryCardBefore: c, stackable: stackSrc, player: player));
 

@@ -264,7 +264,7 @@ namespace KompasCore.GameCore
         }
 
         //movement
-        public virtual void Swap(GameCard card, Space to, bool playerInitiated, IStackable stackSrc = null)
+        protected virtual void Swap(GameCard card, Space to, bool playerInitiated, IStackable stackSrc = null)
         {
             Debug.Log($"Swapping {card?.CardName} to {to}");
 

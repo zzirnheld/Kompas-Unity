@@ -26,48 +26,76 @@ namespace KompasServer.GameCore
             if (!toPlay.IsAvatar) ServerNotifierByIndex(toPlay.ControllerIndex).NotifyPlay(toPlay, to, wasKnown);
         }
 
-        public override void Swap(GameCard card, Space to, bool playerInitiated, IStackable stackSrc = null)
+        private (IEnumerable<ActivationContext> moveContexts, IEnumerable<ActivationContext> leaveContexts)
+            GetContextsForMove(GameCard card, Space from, Space to, Player player, IStackable stackSrc)
         {
-            //calculate distance before doing the swap
-            int distance = card.DistanceTo(to);
-            var at = GetCardAt(to);
+            int distance = from.DistanceTo(to);
 
-            //then trigger appropriate triggers. list of contexts:
-            List<ActivationContext> ctxts = new List<ActivationContext>();
-            //trigger for first card
-            ctxts.Add(new ActivationContext(mainCardBefore: card, stackable: stackSrc, space: to,
-                player: playerInitiated ? card.Controller : stackSrc?.Controller, x: distance));
+            var moveContexts = new List<ActivationContext>();
+            var leaveContexts = new List<ActivationContext>();
+            //Cards that from card is no longer in the AOE of
+            var cardsMoverLeft = CardsAndAugsWhere(c => c.CardInAOE(card) && !c.SpaceInAOE(to));
+            //Cards that from card no longer has in its aoe
+            var cardsMoverLeftBehind = CardsAndAugsWhere(c => card.CardInAOE(c) && !card.CardInAOE(c, to));
+
+            //Add contexts for 
+            moveContexts.Add(new ActivationContext(mainCardBefore: card, stackable: stackSrc, space: to,
+                player: player, x: distance));
+            //Cards that from card is no longer in the AOE of
+            leaveContexts.AddRange(cardsMoverLeft.Select(c =>
+                new ActivationContext(mainCardBefore: card, secondaryCardBefore: c, stackable: stackSrc, player: player)));
+            //Cards that from card no longer has in its aoe
+            leaveContexts.AddRange(cardsMoverLeftBehind.Select(c =>
+                new ActivationContext(mainCardBefore: c, secondaryCardBefore: card, stackable: stackSrc, player: player)));
             //trigger for first card's augments
             foreach (var aug in card.Augments)
             {
-                ctxts.Add(new ActivationContext(mainCardBefore: aug, stackable: null, space: to,
-                    player: playerInitiated ? aug.Controller : stackSrc?.Controller, x: distance));
+                //Add contexts for 
+                moveContexts.Add(new ActivationContext(mainCardBefore: aug, stackable: stackSrc, space: to,
+                    player: player, x: distance));
+                //Cards that from aug is no longer in the AOE of
+                leaveContexts.AddRange(cardsMoverLeft.Select(c =>
+                    new ActivationContext(mainCardBefore: aug, secondaryCardBefore: c, stackable: stackSrc, player: player)));
+                //Cards that from aug no longer has in its aoe
+                leaveContexts.AddRange(cardsMoverLeftBehind.Select(c =>
+                    new ActivationContext(mainCardBefore: c, secondaryCardBefore: aug, stackable: stackSrc, player: player)));
             }
+            return (moveContexts, leaveContexts);
+        }
+
+        protected override void Swap(GameCard card, Space to, bool playerInitiated, IStackable stackSrc = null)
+        {
+            //calculate distance before doing the swap
+            var from = card.Position.Copy;
+            var at = GetCardAt(to);
+            var player = playerInitiated ? card.Controller : stackSrc?.Controller;
+
+            //then trigger appropriate triggers. list of contexts:
+            var moveContexts = new List<ActivationContext>();
+            var leaveContexts = new List<ActivationContext>();
+
+            var (fromCardMoveContexts, fromCardLeaveContexts) = GetContextsForMove(card, from, to, player, stackSrc);
+            moveContexts.AddRange(fromCardMoveContexts);
+            leaveContexts.AddRange(fromCardLeaveContexts);
 
             if (at != null)
             {
-                //then trigger this card's triggers
-                ctxts.Add(new ActivationContext(mainCardBefore: at, stackable: stackSrc, space: to,
-                    player: playerInitiated ? card.Controller : stackSrc?.Controller, x: distance));
-
-                //trigger for first card's augments
-                foreach (var aug in at.Augments)
-                {
-                    ctxts.Add(new ActivationContext(mainCardBefore: aug, stackable: null, space: to,
-                        player: playerInitiated ? aug.Controller : stackSrc?.Controller, x: distance));
-                }
+                var (atCardMoveContexts, atCardLeaveContexts) = GetContextsForMove(at, to, from, player, stackSrc);
+                moveContexts.AddRange(atCardMoveContexts);
+                leaveContexts.AddRange(atCardLeaveContexts);
             }
 
             //actually perform the swap
             base.Swap(card, to, playerInitiated);
 
-            foreach(var ctxt in ctxts)
+            foreach(var ctxt in moveContexts)
             {
                 ctxt.CacheCardInfoAfter();
             }
 
-            EffectsController.TriggerForCondition(Trigger.Move, ctxts.ToArray());
-            EffectsController.TriggerForCondition(Trigger.Arrive, ctxts.ToArray());
+            EffectsController.TriggerForCondition(Trigger.Move, moveContexts.ToArray());
+            EffectsController.TriggerForCondition(Trigger.Arrive, moveContexts.ToArray());
+            EffectsController.TriggerForCondition(Trigger.LeaveAOE, leaveContexts.ToArray());
 
             //notify the players
             ServerNotifierByIndex(card.ControllerIndex).NotifyMove(card, to);
