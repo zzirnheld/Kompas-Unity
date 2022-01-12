@@ -1,0 +1,40 @@
+{
+	"cardType":83,
+	"cardName":"Peltrain",
+	"effText":"Weather.\nWhen an NX character arrives here, give them -X N until they leave or I'm removed.",
+	"effects":[
+		{
+			"blurb":"Rain depression",
+			"triggerData":
+			{
+				"triggerCondition":"Arrive",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Is Character"]
+					},
+					"spaceRestriction":
+					{
+						"mustBeEmpty":false,
+						"spaceRestrictions":["In AOE"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wMod":-4
+				}
+			]	
+		}
+	],
+	"keywords":["Weather"],
+	"unique":true,
+	"c":2,
+	"spellTypes":["Radial"],
+	"subtypeText":"Radial Water Weather",
+	"radius":3
+}

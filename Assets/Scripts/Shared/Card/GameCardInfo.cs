@@ -75,9 +75,12 @@ namespace KompasCore.Cards
         public bool SpaceInAOE(Space space)
             => SpellSubtypes != null && SpellSubtypes.Any(s => s switch
             {
-                CardBase.RadialSubtype => DistanceTo(space) <= Radius,
+                RadialSubtype => DistanceTo(space) <= Radius,
                 _ => false
             });
+        /// <summary>
+        /// Whether <paramref name="c"/> is in the aoe of <see cref="this"/> card.
+        /// </summary>
         public bool CardInAOE(GameCardBase c) => SpaceInAOE(c.Position);
 
         public bool SameColumn(Space space) => Location == CardLocation.Field && Position.SameColumn(space);

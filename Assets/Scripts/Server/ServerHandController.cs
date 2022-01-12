@@ -18,7 +18,7 @@ namespace KompasServer.GameCore
             var context = new ActivationContext(mainCardBefore: card, stackable: stackSrc, player: Owner);
             bool wasKnown = card.KnownToEnemy;
             base.Add(card, stackSrc);
-            context.CacheCardInfoAfter(card);
+            context.CacheCardInfoAfter();
             EffectsController.TriggerForCondition(Trigger.Rehand, context);
             ServerNotifier.NotifyRehand(card, wasKnown);
         }

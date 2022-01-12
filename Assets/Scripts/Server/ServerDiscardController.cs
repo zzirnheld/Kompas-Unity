@@ -21,13 +21,15 @@ namespace KompasServer.GameCore
             {
                 if (atk.attacker == card) cause = atk.defender;
                 else if (atk.defender == card) cause = atk.attacker;
-                /*else throw new System.ArgumentException($"Why is {card} neither the attacker nor defender in the attack {atk} " +
-                    $"that caused it to be discarded?");*/
+                else if (atk.attacker == card.AugmentedCard) cause = atk.defender;
+                else if (atk.defender == card.AugmentedCard) cause = atk.attacker;
+                else throw new System.ArgumentException($"Why is {card} neither the attacker nor defender, nor augmenting them, " +
+                    $"in the attack {atk} that caused it to be discarded?");
             }
             var context = new ActivationContext(mainCardBefore: card, secondaryCardBefore: cause, stackable: stackSrc, player: Owner);
             bool wasKnown = card.KnownToEnemy;
             base.Add(card, stackSrc);
-            context.CacheCardInfoAfter(card, cause);
+            context.CacheCardInfoAfter();
             EffectsController.TriggerForCondition(Trigger.Discard, context);
             ServerNotifier.NotifyDiscard(card, wasKnown);
         }

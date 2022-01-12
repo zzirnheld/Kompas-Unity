@@ -89,7 +89,7 @@ namespace KompasCore.Effects
         /// <param name="mainCard">The main card whose information to cache</param>
         /// <param name="secondaryCard">The secondary card whose information to cache, if any 
         /// (like the attacker on a defends proc)</param>
-        public void CacheCardInfoAfter(GameCard mainCard, GameCard secondaryCard = null)
+        private void CacheCardInfoAfter(GameCard mainCard, GameCard secondaryCard = null)
         {
             if (MainCardInfoAfter != null) 
                 throw new System.ArgumentException("Already initialized MainCardInfoAfter on this context");
@@ -108,6 +108,8 @@ namespace KompasCore.Effects
                     SecondaryCardInfoAfter = GameCardInfo.CardInfoOf(mainCard);
             }
         }
+
+        public void CacheCardInfoAfter() => CacheCardInfoAfter(mainCardInfoBefore.Card, secondaryCardInfoBefore?.Card);
 
         public override string ToString()
         {

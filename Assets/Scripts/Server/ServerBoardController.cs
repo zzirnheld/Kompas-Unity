@@ -20,7 +20,7 @@ namespace KompasServer.GameCore
             var context = new ActivationContext(mainCardBefore: toPlay, stackable: stackSrc, player: controller, space: to);
             bool wasKnown = toPlay.KnownToEnemy;
             base.Play(toPlay, to, controller);
-            context.CacheCardInfoAfter(toPlay);
+            context.CacheCardInfoAfter();
             EffectsController.TriggerForCondition(Trigger.Play, context);
             EffectsController.TriggerForCondition(Trigger.Arrive, context);
             if (!toPlay.IsAvatar) ServerNotifierByIndex(toPlay.ControllerIndex).NotifyPlay(toPlay, to, wasKnown);
@@ -63,7 +63,7 @@ namespace KompasServer.GameCore
 
             foreach(var ctxt in ctxts)
             {
-                ctxt.CacheCardInfoAfter(ctxt.mainCardInfoBefore.Card);
+                ctxt.CacheCardInfoAfter();
             }
 
             EffectsController.TriggerForCondition(Trigger.Move, ctxts.ToArray());

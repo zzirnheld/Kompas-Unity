@@ -14,7 +14,7 @@ namespace KompasServer.Effects
                 throw new InvalidLocationException(CardTarget.Location, CardTarget, "Target not on board :(");
 
             var ctxt = new ActivationContext(mainCardBefore: CardTarget, stackable: Effect, player: EffectController, space: CardTarget.Position);
-            ctxt.CacheCardInfoAfter(CardTarget);
+            ctxt.CacheCardInfoAfter();
             ServerEffect.EffectsController.TriggerForCondition(Trigger.Play, ctxt);
             ServerEffect.EffectsController.TriggerForCondition(Trigger.Arrive, ctxt);
             return Task.FromResult(ResolutionInfo.Next);

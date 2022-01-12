@@ -20,7 +20,7 @@ namespace KompasServer.GameCore
         {
             var context = new ActivationContext(mainCardBefore: card, stackable: stackSrc, player: Owner);
             base.AddCard(card);
-            context.CacheCardInfoAfter(card);
+            context.CacheCardInfoAfter();
             EffectsController.TriggerForCondition(Trigger.ToDeck, context);
             owner.ServerNotifier.NotifyDeckCount(Deck.Count);
         }
@@ -30,7 +30,7 @@ namespace KompasServer.GameCore
             var context = new ActivationContext(mainCardBefore: card, stackable: stackSrc, player: Owner);
             bool wasKnown = card.KnownToEnemy;
             base.PushBottomdeck(card, stackSrc);
-            context.CacheCardInfoAfter(card);
+            context.CacheCardInfoAfter();
             EffectsController.TriggerForCondition(Trigger.Bottomdeck, context);
             ServerNotifier.NotifyBottomdeck(card, wasKnown);
         }
@@ -40,7 +40,7 @@ namespace KompasServer.GameCore
             var context = new ActivationContext(mainCardBefore: card, stackable: stackSrc, player: Owner);
             bool wasKnown = card.KnownToEnemy;
             base.PushTopdeck(card, stackSrc);
-            context.CacheCardInfoAfter(card);
+            context.CacheCardInfoAfter();
             EffectsController.TriggerForCondition(Trigger.Topdeck, context);
             ServerNotifier.NotifyTopdeck(card, wasKnown);
         }
@@ -50,7 +50,7 @@ namespace KompasServer.GameCore
             var context = new ActivationContext(mainCardBefore: card, stackable: stackSrc, player: Owner);
             bool wasKnown = card.KnownToEnemy;
             base.ShuffleIn(card, stackSrc);
-            context.CacheCardInfoAfter(card);
+            context.CacheCardInfoAfter();
             EffectsController.TriggerForCondition(Trigger.Reshuffle, context);
             ServerNotifier.NotifyReshuffle(card, wasKnown);
         }

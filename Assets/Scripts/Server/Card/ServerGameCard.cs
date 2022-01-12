@@ -130,7 +130,7 @@ namespace KompasServer.Cards
         {
             ActivationContext context = new ActivationContext(mainCardBefore: this);
             base.Vanish();
-            context.CacheCardInfoAfter(this);
+            context.CacheCardInfoAfter();
             EffectsController.TriggerForCondition(Trigger.Vanish, context);
         }
 
@@ -142,8 +142,8 @@ namespace KompasServer.Cards
                 space: Position, stackable: stackSrc, player: Controller);
             bool wasKnown = augment.KnownToEnemy;
             base.AddAugment(augment, stackSrc);
-            attachedContext.CacheCardInfoAfter(augment, secondaryCard: this);
-            augmentedContext.CacheCardInfoAfter(this, secondaryCard: augment);
+            attachedContext.CacheCardInfoAfter();
+            augmentedContext.CacheCardInfoAfter();
             EffectsController.TriggerForCondition(Trigger.AugmentAttached, attachedContext);
             EffectsController.TriggerForCondition(Trigger.Augmented, augmentedContext);
             ServerGame.ServerPlayers[augment.ControllerIndex].ServerNotifier.NotifyAttach(augment, Position, wasKnown);
@@ -155,7 +155,7 @@ namespace KompasServer.Cards
             var context = new ActivationContext(mainCardBefore: this, secondaryCardBefore: formerlyAugmentedCard,
                 stackable: stackSrc, player: stackSrc?.Controller ?? Controller);
             base.Detach(stackSrc);
-            context.CacheCardInfoAfter(this, secondaryCard: formerlyAugmentedCard);
+            context.CacheCardInfoAfter();
             EffectsController.TriggerForCondition(Trigger.AugmentDetached, context);
         }
 
@@ -164,12 +164,25 @@ namespace KompasServer.Cards
             Debug.Log($"Trying to remove {CardName} from {Location}");
 
             //proc the trigger before actually removing anything
-            var context = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: stackSrc?.Controller ?? Controller);
+            var player = stackSrc?.Controller ?? Controller;
+            var context = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: player);
+            var cardsThisLeft = new List<GameCard>();
+            if (Location == CardLocation.Field)
+            {
+                cardsThisLeft.AddRange(Game.boardCtrl.CardsAndAugsWhere(c => c.CardInAOE(this)));
+            }
+            var leaveContexts = cardsThisLeft.Select(c => 
+                new ActivationContext(mainCardBefore: this, secondaryCardBefore: c, stackable: stackSrc, player: player));
 
             base.Remove(stackSrc);
 
-            context.CacheCardInfoAfter(this);
+            context.CacheCardInfoAfter();
+            foreach(var lc in leaveContexts)
+            {
+                lc.CacheCardInfoAfter();
+            }
             EffectsController.TriggerForCondition(Trigger.Remove, context);
+            EffectsController.TriggerForCondition(Trigger.LeaveAOE, leaveContexts.ToArray());
             //copy the colleciton  so that you can edit the original
             var augments = Augments.ToArray();
             foreach (var aug in augments) aug.Discard(stackSrc);
@@ -179,7 +192,7 @@ namespace KompasServer.Cards
         {
             var context = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: stackSrc?.Controller);
             base.Reveal(stackSrc);
-            context.CacheCardInfoAfter(this);
+            context.CacheCardInfoAfter();
             EffectsController.TriggerForCondition(Trigger.Revealed, context);
             //logic for actually revealing to client has to happen server-side.
             KnownToEnemy = true;
@@ -195,8 +208,8 @@ namespace KompasServer.Cards
             var setContext = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: stackSrc?.Controller, x: n);
             EffectsController.TriggerForCondition(Trigger.NSet, setContext);
             base.SetN(n, stackSrc);
-            context.CacheCardInfoAfter(this);
-            setContext.CacheCardInfoAfter(this);
+            context.CacheCardInfoAfter();
+            setContext.CacheCardInfoAfter();
 
             if (notify) ServerNotifier.NotifyStats(this);
         }
@@ -209,8 +222,8 @@ namespace KompasServer.Cards
             var setContext = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: stackSrc?.Controller, x: e);
             EffectsController.TriggerForCondition(Trigger.ESet, setContext);
             base.SetE(e, stackSrc);
-            context.CacheCardInfoAfter(this);
-            setContext.CacheCardInfoAfter(this);
+            context.CacheCardInfoAfter();
+            setContext.CacheCardInfoAfter();
 
             if (notify) ServerNotifier.NotifyStats(this);
 
@@ -230,8 +243,8 @@ namespace KompasServer.Cards
             var setContext = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: stackSrc?.Controller, x: s);
             EffectsController.TriggerForCondition(Trigger.SSet, setContext);
             base.SetS(s, stackSrc);
-            context.CacheCardInfoAfter(this);
-            setContext.CacheCardInfoAfter(this);
+            context.CacheCardInfoAfter();
+            setContext.CacheCardInfoAfter();
 
             if (notify) ServerNotifier.NotifyStats(this);
         }
@@ -244,8 +257,8 @@ namespace KompasServer.Cards
             var setContext = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: stackSrc?.Controller, x: w);
             EffectsController.TriggerForCondition(Trigger.WSet, setContext);
             base.SetW(w, stackSrc);
-            context.CacheCardInfoAfter(this);
-            setContext.CacheCardInfoAfter(this);
+            context.CacheCardInfoAfter();
+            setContext.CacheCardInfoAfter();
 
             if (notify) ServerNotifier.NotifyStats(this);
         }
@@ -258,8 +271,8 @@ namespace KompasServer.Cards
             var setContext = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: stackSrc?.Controller, x: c);
             EffectsController.TriggerForCondition(Trigger.CSet, setContext);
             base.SetC(c, stackSrc);
-            context.CacheCardInfoAfter(this);
-            setContext.CacheCardInfoAfter(this);
+            context.CacheCardInfoAfter();
+            setContext.CacheCardInfoAfter();
 
             if (notify) ServerNotifier.NotifyStats(this);
         }
@@ -272,8 +285,8 @@ namespace KompasServer.Cards
             var setContext = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: stackSrc?.Controller, x: a);
             EffectsController.TriggerForCondition(Trigger.ASet, setContext);
             base.SetA(a, stackSrc);
-            context.CacheCardInfoAfter(this);
-            setContext.CacheCardInfoAfter(this);
+            context.CacheCardInfoAfter();
+            setContext.CacheCardInfoAfter();
 
             if (notify) ServerNotifier.NotifyStats(this);
         }
@@ -302,7 +315,7 @@ namespace KompasServer.Cards
             {
                 ServerNotifier.NotifySetNegated(this, negated);
                 var context = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: stackSrc?.Controller);
-                context.CacheCardInfoAfter(this);
+                context.CacheCardInfoAfter();
                 if (negated) EffectsController.TriggerForCondition(Trigger.Negate, context);
             }
             base.SetNegated(negated, stackSrc);
@@ -314,7 +327,7 @@ namespace KompasServer.Cards
             if (Activated != activated)
             {
                 ServerNotifier.NotifyActivate(this, activated);
-                context.CacheCardInfoAfter(this);
+                context.CacheCardInfoAfter();
                 if (activated) EffectsController.TriggerForCondition(Trigger.Activate, context);
                 else EffectsController.TriggerForCondition(Trigger.Deactivate, context);
             }

@@ -51,6 +51,7 @@ namespace KompasCore.Effects
         public const string Move = "Move";
         public const string Annhilate = "Annihilate";
         public const string Remove = "Remove";
+        public const string LeaveAOE = "Leave AOE";
 
         public const string AugmentAttached = "Augment Attached"; //when an augment becomes applied to a card.
         public const string AugmentDetached = "Augment Detached";
@@ -65,7 +66,7 @@ namespace KompasCore.Effects
             NChange, EChange, SChange, WChange, CChange, AChange,
             NSet, ESet, SSet, WSet, CSet, ASet,
             Defends, Attacks, TakeCombatDamage, DealCombatDamage, Battles, BattleEnds, 
-            EachDraw, DrawX, Arrive, Play, Discard, Rehand, Reshuffle, Topdeck, Bottomdeck, ToDeck, Move, Annhilate, Remove, 
+            EachDraw, DrawX, Arrive, Play, Discard, Rehand, Reshuffle, Topdeck, Bottomdeck, ToDeck, Move, Annhilate, Remove, LeaveAOE,
             AugmentAttached, AugmentDetached, Augmented, 
             Revealed, Vanish
         };

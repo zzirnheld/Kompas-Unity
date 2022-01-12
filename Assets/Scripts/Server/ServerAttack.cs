@@ -34,8 +34,8 @@ namespace KompasServer.Effects
 
             var attackerContext = new ActivationContext(mainCardBefore: attacker, secondaryCardBefore: defender, stackable: this, player: Controller);
             var defenderContext = new ActivationContext(mainCardBefore: defender, secondaryCardBefore: attacker, stackable: this, player: Controller);
-            attackerContext.CacheCardInfoAfter(attacker, secondaryCard: defender);
-            defenderContext.CacheCardInfoAfter(defender, secondaryCard: attacker);
+            attackerContext.CacheCardInfoAfter();
+            defenderContext.CacheCardInfoAfter();
             EffCtrl.TriggerForCondition(Trigger.Attacks, attackerContext);
             EffCtrl.TriggerForCondition(Trigger.Defends, defenderContext);
             EffCtrl.TriggerForCondition(Trigger.Battles, attackerContext, defenderContext);
@@ -58,8 +58,8 @@ namespace KompasServer.Effects
             {
                 //deal the damage
                 DealDamage();
-                attackerContext.CacheCardInfoAfter(attacker);
-                defenderContext.CacheCardInfoAfter(defender);
+                attackerContext.CacheCardInfoAfter();
+                defenderContext.CacheCardInfoAfter();
             }
             EffCtrl.TriggerForCondition(Trigger.BattleEnds, attackerContext, defenderContext);
             //then finish the resolution by just returning that completed the task. (don't need to call anything)
@@ -82,10 +82,10 @@ namespace KompasServer.Effects
             //deal the damage
             defender.TakeDamage(attackerDmg, stackSrc: this);
             attacker.TakeDamage(defenderDmg, stackSrc: this);
-            attackerDealContext.CacheCardInfoAfter(attacker, secondaryCard: defender);
-            defenderDealContext.CacheCardInfoAfter(defender, secondaryCard: attacker);
-            attackerTakeContext.CacheCardInfoAfter(attacker, secondaryCard: defender);
-            defenderTakeContext.CacheCardInfoAfter(defender, secondaryCard: attacker);
+            attackerDealContext.CacheCardInfoAfter();
+            defenderDealContext.CacheCardInfoAfter();
+            attackerTakeContext.CacheCardInfoAfter();
+            defenderTakeContext.CacheCardInfoAfter();
             //trigger effects based on combat damage
             EffCtrl.TriggerForCondition(Trigger.TakeCombatDamage, attackerTakeContext, defenderTakeContext);
             EffCtrl.TriggerForCondition(Trigger.DealCombatDamage, attackerDealContext, defenderDealContext);

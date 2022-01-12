@@ -20,7 +20,7 @@ namespace KompasServer.Effects
             foreach (var c in Game.boardCtrl.CardsWhere(c => cardRestriction.IsValidCard(c, Context)))
             {
                 var ctxt = new ActivationContext(mainCardBefore: c, stackable: Effect, player: EffectController, space: c.Position);
-                ctxt.CacheCardInfoAfter(c);
+                ctxt.CacheCardInfoAfter();
                 ServerEffect.EffectsController.TriggerForCondition(Trigger.Play, ctxt);
                 ServerEffect.EffectsController.TriggerForCondition(Trigger.Arrive, ctxt);
             }
