@@ -51,6 +51,8 @@ namespace KompasCore.Effects
         public const string Move = "Move";
         public const string Annhilate = "Annihilate";
         public const string Remove = "Remove";
+
+        //Primary card is the card that left the aoe, secondary is the card whose aoe it left
         public const string LeaveAOE = "Leave AOE";
 
         public const string AugmentAttached = "Augment Attached"; //when an augment becomes applied to a card.

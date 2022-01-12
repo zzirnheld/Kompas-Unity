@@ -470,7 +470,9 @@ weather/Flashflood
 weather/Peltrain
 weather/Muggyclouds
 weather/Thunderstorm
-weather/Thinkfog
+weather/Blizzard
+weather/Fog
+weather/Brainstorm
 weather/Thundersun
 weather/Iriaid, Who Rides the Skies
 weather/Emezene, Who Reads the Breeze
