@@ -37,7 +37,7 @@ namespace KompasCore.Effects
         {
             if (card == null) throw new NullCardException("Cannot get value of null card");
 
-            return value switch
+            int intermediateValue = value switch
             {
                 Nimbleness       => card.N,
                 Endurance        => card.E,
@@ -51,31 +51,33 @@ namespace KompasCore.Effects
                 DistanceToSource => card.DistanceTo(Source),
                 _ => throw new ArgumentException($"Invalid value string {value}", "value"),
             };
+            return intermediateValue * multiplier / divisor + modifier;
         }
 
         public void SetValueOf(GameCard card, int num, IStackable stackSrc = null)
         {
             if (card == null) throw new ArgumentException("Cannot set value of null card", "card");
 
+            int intermediateValue = num * multiplier / divisor + modifier;
             switch (value)
             {
                 case Nimbleness: 
-                    card.SetN(num, stackSrc: stackSrc);
+                    card.SetN(intermediateValue, stackSrc: stackSrc);
                     break;
                 case Endurance:
-                    card.SetE(num, stackSrc: stackSrc);
+                    card.SetE(intermediateValue, stackSrc: stackSrc);
                     break;
                 case SummoningCost:
-                    card.SetS(num, stackSrc: stackSrc);
+                    card.SetS(intermediateValue, stackSrc: stackSrc);
                     break;
                 case Wounding:
-                    card.SetW(num, stackSrc: stackSrc);
+                    card.SetW(intermediateValue, stackSrc: stackSrc);
                     break;
                 case CastingCost:
-                    card.SetC(num, stackSrc: stackSrc);
+                    card.SetC(intermediateValue, stackSrc: stackSrc);
                     break;
                 case AugmentCost:
-                    card.SetA(num, stackSrc: stackSrc);
+                    card.SetA(intermediateValue, stackSrc: stackSrc);
                     break;
                 default:
                     throw new ArgumentException($"Can't set {value} of a card!");

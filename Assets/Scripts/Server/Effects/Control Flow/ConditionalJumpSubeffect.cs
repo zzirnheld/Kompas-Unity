@@ -14,7 +14,6 @@ namespace KompasServer.Effects
         public const string XFitsRestriction = "X Fits Restriction";
 
         public string condition;
-        public int jumpIndex;
 
         public CardRestriction cardRestriction = new CardRestriction();
         public XRestriction xRestriction = new XRestriction();
@@ -46,7 +45,7 @@ namespace KompasServer.Effects
 
         public override Task<ResolutionInfo> Resolve()
         {
-            if (ShouldJump) return Task.FromResult(ResolutionInfo.Index(jumpIndex));
+            if (ShouldJump) return Task.FromResult(ResolutionInfo.Index(JumpIndex));
             else return Task.FromResult(ResolutionInfo.Next);
         }
     }

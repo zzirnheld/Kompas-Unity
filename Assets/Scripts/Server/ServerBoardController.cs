@@ -34,9 +34,9 @@ namespace KompasServer.GameCore
             var moveContexts = new List<ActivationContext>();
             var leaveContexts = new List<ActivationContext>();
             //Cards that from card is no longer in the AOE of
-            var cardsMoverLeft = CardsAndAugsWhere(c => c.CardInAOE(card) && !c.SpaceInAOE(to));
+            var cardsMoverLeft = CardsAndAugsWhere(c => c != null && c.CardInAOE(card) && !c.SpaceInAOE(to));
             //Cards that from card no longer has in its aoe
-            var cardsMoverLeftBehind = CardsAndAugsWhere(c => card.CardInAOE(c) && !card.CardInAOE(c, to));
+            var cardsMoverLeftBehind = CardsAndAugsWhere(c => c != null && card.CardInAOE(c) && !card.CardInAOE(c, to));
 
             //Add contexts for 
             moveContexts.Add(new ActivationContext(mainCardBefore: card, stackable: stackSrc, space: to,

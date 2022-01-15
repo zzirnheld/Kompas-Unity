@@ -98,7 +98,7 @@
 		},
 		{
 			"keyword":"Speedemon",
-			"reminder":"After I move by something other than my own effect, move me 1 space in the same direction."
+			"reminder":"After I move by something other than this effect, move me 1 space in the same direction."
 		},
 		{
 			"keyword":"Instrument",
