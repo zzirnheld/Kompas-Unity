@@ -7,7 +7,7 @@ namespace KompasServer.Effects
     {
         public override Task<ResolutionInfo> Resolve()
         {
-            if (Context.Stackable is Attack attack)
+            if (Context.stackable is Attack attack)
             {
                 ServerEffect.AddTarget(attack.defender);
                 return Task.FromResult(ResolutionInfo.Next);

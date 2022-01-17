@@ -71,15 +71,15 @@ namespace KompasServer.Effects
             sb.AppendLine(CurrStackEntry.ToString());
             if(CurrStackEntry is ServerEffect se)
             {
-                if (se.Targets.Any())
+                if (se.CardTargets.Any())
                 {
                     sb.Append("Targets: ");
-                    sb.AppendLine(string.Join(", ", se.Targets.Select(c => c.ToString())));
+                    sb.AppendLine(string.Join(", ", se.CardTargets.Select(c => c.ToString())));
                 }
-                if (se.AnyCoords())
+                if (se.SpaceTargets.Any())
                 {
                     sb.Append("Coords: ");
-                    sb.AppendLine(string.Join(", ", se.SelectCoords(c => $"({c.x}, {c.y})")));
+                    sb.AppendLine(string.Join(", ", se.SpaceTargets.Select(c => c.ToString())));
                 }
                 sb.AppendLine($"X: {se.X}");
                 sb.AppendLine($"Controller: {se.Controller.index}");
@@ -163,7 +163,7 @@ namespace KompasServer.Effects
                 }
             }
             //Remove effect from hanging/delayed
-            foreach(var triggerCondition in Trigger.TriggerConditions)
+            foreach(var triggerCondition in Trigger.TriggerConditions.Where(hangingEffectMap.ContainsKey))
             {
                 foreach(var hangingEff in hangingEffectMap[triggerCondition].ToArray())
                 {
@@ -202,7 +202,7 @@ namespace KompasServer.Effects
             //this is saved so that we know what trigger to okay or not if it's responded
             foreach(var t in stillValid)
             {
-                if (!t.Responded) await t.Ask(triggered.context.X ?? 0);
+                if (!t.Responded) await t.Ask(triggered.context.x ?? 0);
             }
 
             //now that all optional triggers have been answered, time to deal with ordering.
@@ -320,6 +320,8 @@ namespace KompasServer.Effects
 
         public void TriggerForCondition(string condition, ActivationContext context)
         {
+            if (!ServerGame.GameHasStarted) return;
+
             Debug.Log($"Triggering for condition {condition}, context {context}");
             //first resolve any hanging effects
             ResolveHangingEffects(condition, context);
@@ -351,16 +353,18 @@ namespace KompasServer.Effects
             triggerMap[condition].Add(trigger);
         }
 
-        public void RegisterHangingEffect(string condition, HangingEffect hangingEff)
+        public void RegisterHangingEffect(string condition, HangingEffect hangingEff, string fallOffCondition = default)
         {
             Debug.Log($"Registering a new hanging effect to condition {condition}");
             if (!hangingEffectMap.ContainsKey(condition))
                 hangingEffectMap.Add(condition, new List<HangingEffect>());
 
             hangingEffectMap[condition].Add(hangingEff);
+
+            if (fallOffCondition != default) RegisterHangingEffectFallOff(fallOffCondition, hangingEff);
         }
 
-        public void RegisterHangingEffectFallOff(string condition, HangingEffect hangingEff)
+        private void RegisterHangingEffectFallOff(string condition, HangingEffect hangingEff)
         {
             Debug.Log($"Registering a new hanging effect to condition {condition}");
             if (!hangingEffectFallOffMap.ContainsKey(condition))

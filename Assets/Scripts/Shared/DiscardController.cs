@@ -26,20 +26,20 @@ namespace KompasCore.GameCore
             card.Position = null;
         }
 
-        public int IndexOf(GameCard card)
-        {
-            return Discard.IndexOf(card);
-        }
-
         public virtual void Remove(GameCard card)
         {
-            if (!Discard.Contains(card)) throw new CardNotHereException(CardLocation.Discard);
+            if (!Discard.Contains(card)) throw new CardNotHereException(CardLocation.Discard, card);
 
             Discard.Remove(card);
             SpreadOutCards();
         }
 
-        public List<GameCard> CardsThatFit(Func<IGameCardInfo, bool> cardRestriction)
+        public int IndexOf(GameCard card)
+        {
+            return Discard.IndexOf(card);
+        }
+
+        public List<GameCard> CardsThatFit(Func<GameCardBase, bool> cardRestriction)
         {
             List<GameCard> cards = new List<GameCard>();
 

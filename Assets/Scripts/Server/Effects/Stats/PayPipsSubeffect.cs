@@ -7,16 +7,16 @@ namespace KompasServer.Effects
     {
         public override bool IsImpossible() 
         {
-            Debug.Log($"Checking if player index {Player.index} can afford {Count} with {Player.Pips} pips");
-            return Player.Pips < Count;
+            Debug.Log($"Checking if player index {PlayerTarget.index} can afford {Count} with {PlayerTarget.Pips} pips");
+            return PlayerTarget.Pips < Count;
         }
 
         public override Task<ResolutionInfo> Resolve()
         {
             int toPay = Count;
-            if (Player.Pips < toPay) return Task.FromResult(ResolutionInfo.Impossible(CantAffordPips));
+            if (PlayerTarget.Pips < toPay) return Task.FromResult(ResolutionInfo.Impossible(CantAffordPips));
 
-            Player.Pips -= toPay;
+            PlayerTarget.Pips -= toPay;
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

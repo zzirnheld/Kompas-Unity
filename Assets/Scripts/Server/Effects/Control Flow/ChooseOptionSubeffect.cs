@@ -4,24 +4,29 @@ namespace KompasServer.Effects
 {
     public class ChooseOptionSubeffect : ServerSubeffect
     {
-        public string ChoiceBlurb;
-        public string[] OptionBlurbs;
-        public int[] OptionJumpIndices;
+        public string choiceBlurb;
+        public string[] optionBlurbs;
         public bool hasDefault = true;
         public bool showX = false;
 
         private async Task<int> AskForOptionChoice()
-            => await ServerPlayer.serverAwaiter.GetEffectOption(Source.CardName, ChoiceBlurb, OptionBlurbs, hasDefault, showX, Effect.X);
+            => await ServerPlayer.serverAwaiter
+                .GetEffectOption(cardName: Source.CardName,
+                                 choiceBlurb: choiceBlurb,
+                                 optionBlurbs: optionBlurbs,
+                                 hasDefault: hasDefault,
+                                 showX: showX,
+                                 x: Effect.X);
 
         public override async Task<ResolutionInfo> Resolve()
         {
             int choice = -1;
-            while(choice < 0 || choice >= OptionJumpIndices.Length)
+            while(choice < 0 || choice >= jumpIndices.Length)
             {
                 choice = await AskForOptionChoice();
             }
 
-            return ResolutionInfo.Index(OptionJumpIndices[choice]);
+            return ResolutionInfo.Index(jumpIndices[choice]);
         }
     }
 }

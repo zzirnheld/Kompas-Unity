@@ -4,9 +4,11 @@ namespace KompasServer.Effects
 {
     public class NegateSubeffect : ServerSubeffect
     {
+        public bool negated = true;
+
         public override Task<ResolutionInfo> Resolve()
         {
-            Target.SetNegated(true, ServerEffect);
+            CardTarget.SetNegated(negated, ServerEffect);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

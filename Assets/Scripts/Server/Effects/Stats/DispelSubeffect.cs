@@ -6,7 +6,7 @@ namespace KompasServer.Effects
     {
         public override Task<ResolutionInfo> Resolve()
         {
-            Target.Dispel(Effect);
+            CardTarget.Dispel(Effect);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

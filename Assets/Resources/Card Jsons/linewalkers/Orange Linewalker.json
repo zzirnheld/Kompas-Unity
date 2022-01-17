@@ -20,15 +20,15 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Reshuffle your hand and draw X?",
-					"OptionBlurbs":["Yes","No"],
-					"OptionJumpIndices":[2,7],
+					"choiceBlurb":"Reshuffle your hand and draw X?",
+					"optionBlurbs":["Yes","No"],
+					"jumpIndices":[2,7],
 					"showX":true,
 					"xMultiplier":1
 				},
 				{
 					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
-					"jumpTo":7
+					"jumpIndices":[7]
 				},
 				{
 					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
@@ -43,7 +43,7 @@
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
 					"delete":true,
-					"jumpTo":4
+					"jumpIndices":[4]
 				},
 				{
 					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
@@ -61,9 +61,9 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Reshuffle your hand and draw X?",
-					"OptionBlurbs":["Yes","No"],
-					"OptionJumpIndices":[11,100],
+					"choiceBlurb":"Reshuffle your hand and draw X?",
+					"optionBlurbs":["Yes","No"],
+					"jumpIndices":[11,100],
 					"showX":true,
 					"xMultiplier":1
 				},
@@ -80,7 +80,7 @@
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
 					"delete":true,
-					"jumpTo":12
+					"jumpIndices":[12]
 				},
 				{
 					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",

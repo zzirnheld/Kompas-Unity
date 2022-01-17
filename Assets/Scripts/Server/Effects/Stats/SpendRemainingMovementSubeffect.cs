@@ -10,11 +10,11 @@ namespace KompasServer.Effects
 
         public override Task<ResolutionInfo> Resolve()
         {
-            int toSpend = (Target.SpacesCanMove * mult / div) + mod;
-            if (toSpend <= 0 || Target.SpacesCanMove < toSpend) return Task.FromResult(ResolutionInfo.Impossible(CantAffordStats));
+            int toSpend = (CardTarget.SpacesCanMove * mult / div) + mod;
+            if (toSpend <= 0 || CardTarget.SpacesCanMove < toSpend) return Task.FromResult(ResolutionInfo.Impossible(CantAffordStats));
 
-            int toSet = Target.SpacesMoved + toSpend;
-            Target.SetSpacesMoved(toSet);
+            int toSet = CardTarget.SpacesMoved + toSpend;
+            CardTarget.SetSpacesMoved(toSet);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

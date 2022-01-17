@@ -20,22 +20,22 @@ namespace KompasServer.Effects
         public int S => sMult * Effect.X + sMod;
         public int W => wMult * Effect.X + wMod;
 
-        public override bool IsImpossible() => Target == null || Target.N < N || Target.E < E || Target.S < S || Target.W < W;
+        public override bool IsImpossible() => CardTarget == null || CardTarget.N < N || CardTarget.E < E || CardTarget.S < S || CardTarget.W < W;
 
         public override Task<ResolutionInfo> Resolve()
         {
-            if (Target == null)
+            if (CardTarget == null)
                 throw new NullCardException(TargetWasNull);
-            else if (forbidNotBoard && Target.Location != CardLocation.Field)
-                throw new InvalidLocationException(Target.Location, Target, ChangedStatsOfCardOffBoard);
+            else if (forbidNotBoard && CardTarget.Location != CardLocation.Field)
+                throw new InvalidLocationException(CardTarget.Location, CardTarget, ChangedStatsOfCardOffBoard);
 
-            if (Target.N < N ||
-                Target.E < E ||
-                Target.S < S ||
-                Target.W < W)
+            if (CardTarget.N < N ||
+                CardTarget.E < E ||
+                CardTarget.S < S ||
+                CardTarget.W < W)
                 return Task.FromResult(ResolutionInfo.Impossible(CantAffordStats));
 
-            Target.AddToCharStats(-1 * N, -1 * E, -1 * S, -1 * W, Effect);
+            CardTarget.AddToCharStats(-1 * N, -1 * E, -1 * S, -1 * W, Effect);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

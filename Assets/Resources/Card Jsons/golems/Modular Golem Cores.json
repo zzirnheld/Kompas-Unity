@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Modular Golem Cores",
-	"effText":"The first time each turn a card arrives adjacent to a Golem, choose a Golem character adjacent to them. Destroy all X Augments on the Golem. Deck->augment them with X Golem Cores.",
+	"effText":"The first time each turn a card arrives adjacent to an augmented Golem, hand all X of one such Golem's augments. Hand->attach up to X Golem Cores to that Golem.",
 	"effects":[
 		{
 			"blurb":"Swap Out Modules",
@@ -18,7 +18,7 @@
 							"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
 							"adjacencyRestriction":
 							{
-								"cardRestrictions":["Subtypes Include"],
+								"cardRestrictions":["Augmented","Subtypes Include"],
 								"subtypesInclude":["Golem"]
 							},
 							"mustBeEmpty":false
@@ -35,13 +35,13 @@
 					"cardRestriction":
 					{
 						"blurb":"Golem to swap out modules",
-						"cardRestrictions":["Is Character","Board","Subtypes Include","Space Fits Restriction"],
+						"cardRestrictions":["Is Character","Board","Augmented","Subtypes Include","Space Fits Restriction"],
+						"subtypesInclude":["Golem"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["Adjacent to Target"],
 							"mustBeEmpty":false
-						},
-						"subtypesInclude":["Golem"]
+						}
 					}
 				},
 				{
@@ -55,20 +55,20 @@
 					"$type":"KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
 					"delete":true,
 					"remainingTargets":2,
-					"jumpTo":4
+					"jumpIndices":[4]
 				},
 				{
-					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"blurb":"Golem core for Modular Golem Cores to search",
-						"cardRestrictions":["Is Augment","Deck","Subtypes Include"],
+						"blurb":"Golem core for Modular Golem Cores to attach",
+						"cardRestrictions":["Is Augment","Hand","Subtypes Include"],
 						"subtypesInclude":["Golem", "Core"]
 					}
 				},
@@ -79,7 +79,8 @@
 				},
 				{
 					"$type":"KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",
-					"jumpTo":6
+					"jumpIndices":[6],
+					"canDecline":true
 				}
 			]
 		}

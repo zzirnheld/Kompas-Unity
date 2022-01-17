@@ -44,11 +44,22 @@ namespace KompasClient.Cards
         }
 
         public ClientPlayer ClientOwner { get; private set; }
-        public override Player Owner => ClientOwner;
+        public override Player Owner
+        {
+            get => ClientOwner;
+            protected set => ClientOwner = value as ClientPlayer;
+        }
 
         public ClientEffect[] ClientEffects { get; private set; }
         public override IEnumerable<Effect> Effects => ClientEffects;
-        public override bool IsAvatar => false;
+        public override bool IsAvatar
+        {
+            get => false;
+            protected set
+            {
+                throw new System.NotImplementedException($"Tried to set isAvatar actual GameCard {this}");
+            }
+        }
         public ClientCardMouseController mouseCtrl;
         public ClientCardController clientCardCtrl;
 

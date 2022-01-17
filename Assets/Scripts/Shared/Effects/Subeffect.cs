@@ -1,13 +1,13 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Exceptions;
 using KompasCore.GameCore;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects
 {
     /// <summary>
     /// Not abstract because it's instantiated as part of loading subeffects
     /// </summary>
-    [System.Serializable]
     public class Subeffect
     {
         #region reasons for impossible
@@ -59,23 +59,41 @@ namespace KompasCore.Effects
 
         #region targeting indices
         /// <summary>
-        /// The index in the Effect.targets array for which target this effect uses.
+        /// The index in the card targets list for which target this effect uses.
         /// If positive, just an index.
         /// If negative, it's Effect.targets.Count + targetIndex (aka that many back from the end)
         /// </summary>
         public int targetIndex = -1;
 
         /// <summary>
-        /// The index in the coords list that this subeffect uses.
+        /// The index in the space targets list that this subeffect uses.
         /// If positive, just an index.
         /// If negative, it's Count + targetIndex (aka that many back)
         /// </summary>
         public int spaceIndex = -1;
 
         /// <summary>
+        /// The index in the card info targets list for which target this effect uses.
+        /// If positive, just an index.
+        /// If negative, it's Effect.targets.Count + targetIndex (aka that many back from the end)
+        /// </summary>
+        public int cardInfoIndex = -1;
+
+        /// <summary>
         /// The index of player. If 0, this, if 1, enemy. 
         /// </summary>
         public int playerIndex = -1;
+
+        /// <summary>
+        /// Index for the subeffect to jump to, if it's not going to the next one for some reason
+        /// </summary>
+        public int[] jumpIndices;
+
+        /// <summary>
+        /// Which of the jump indices to jump to.
+        /// Same +- rules as the target/space indices
+        /// </summary>
+        public int jumpIndicesIndex = -1;
         #endregion targeting indices
 
         #region effect x
@@ -100,15 +118,17 @@ namespace KompasCore.Effects
         public int Count => (Effect.X * xMultiplier / xDivisor) + xModifier;
         #endregion effect x
 
-        public GameCard Target => Effect.GetTarget(targetIndex);
-        public Space Space => Effect.GetSpace(spaceIndex);
-        public Player Player => Effect.GetPlayer(playerIndex);
+        public GameCard CardTarget => Effect.GetTarget(targetIndex);
+        public Space SpaceTarget => Effect.GetSpace(spaceIndex);
+        public GameCardInfo CardInfoTarget => Effect.GetItem(Effect.cardInfoTargets, cardInfoIndex);
+        public Player PlayerTarget => Effect.GetPlayer(playerIndex);
+        public int JumpIndex => Effect.GetItem(jumpIndices, jumpIndicesIndex);
 
         public void RemoveTarget()
         {
-            if (Target == null) throw new NullCardException(TargetWasNull);
+            if (CardTarget == null) throw new NullCardException(TargetWasNull);
 
-            Effect.RemoveTarget(Target);
+            Effect.RemoveTarget(CardTarget);
         }
     }
 }

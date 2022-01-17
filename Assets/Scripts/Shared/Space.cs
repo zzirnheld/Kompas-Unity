@@ -45,12 +45,14 @@ public class Space
     public static Space Nowhere => new Space(-69, -420);
     public static Space AvatarCornerFor(int index) => index == 0 ? NearCorner : FarCorner;
 
-    public bool Valid => x >= 0 && y >= 0 && x < BoardLen && y < BoardLen;
+    public bool IsValid => x >= 0 && y >= 0 && x < BoardLen && y < BoardLen;
     public bool IsCorner => (x == 0 || x == MaxIndex) && (y == 0 || y == MaxIndex);
     public bool IsEdge => x == 0 || x == MaxIndex || y == 0 || y == MaxIndex;
 
     public int Index => BoardLen * x + y;
     public Space Inverse => new Space(MaxIndex - x, MaxIndex - y);
+
+    public static bool IsValidSpace(int x, int y) => new Space(x, y).IsValid;
 
     public int TaxicabDistanceTo(Space other) => Math.Abs(x - other.x) + Math.Abs(y - other.y);
     public int RadialDistanceTo(Space other) => Math.Max(Math.Abs(x - other.x), Math.Abs(y - other.y));
@@ -71,12 +73,12 @@ public class Space
             foreach (var xCoord in xs)
             {
                 Space s = (xCoord, y);
-                if (s.Valid) list.Add(s);
+                if (s.IsValid) list.Add(s);
             }
             foreach (var yCoord in ys)
             {
                 Space s = (x, yCoord);
-                if (s.Valid) list.Add(s);
+                if (s.IsValid) list.Add(s);
             }
             //Debug.Log($"Spaces adjacent to {this} are {string.Join(", ", list.Select(s => s.ToString()))}");
             return list;
@@ -114,7 +116,7 @@ public class Space
 
     public static bool operator ==(Space a, Space b)
     {
-        Debug.Log($"Comparing {a} to {b}");
+        //Debug.Log($"Comparing {a} to {b}");
         if (a is null) return b is null;
         else if (b is null) return false;
         else return a.x == b.x && a.y == b.y;

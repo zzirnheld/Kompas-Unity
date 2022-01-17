@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Clay Golem",
-	"effText":"Golem.\nWhen I'm activated, tribute me and deck-summon a Golem.",
+	"effText":"Golem.\nWhen I'm activated, tribute me and deck->summon where I was a Golem with less S than your Avatar.",
 	"effects":[
 		{
 			"blurb":"Golemorph",
@@ -14,6 +14,9 @@
 			},
 			"subeffects":[
 				{
+					"$type":"KompasServer.Effects.TargetThisSpaceSubeffect, Assembly-CSharp"
+				},
+				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
@@ -24,16 +27,17 @@
 					"cardRestriction":
 					{
 						"blurb":"for Clay Golem to summon",
-						"cardRestrictions":["Subtypes Include","Is Character","Deck"],
+						"cardRestrictions":["Subtypes Include","Is Character","Deck","Card Value Fits X Restriction"],
+						"cardValue":{
+							"value":"S"
+						},
+						"xRestriction":{
+							"xRestrictions":["<Avatar"],
+							"avatarCardValue":{
+								"value":"S"
+							}
+						},
 						"subtypesInclude":["Golem"]
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"to play the card you chose",
-						"spaceRestrictions":["Can Play Target to This Space"]
 					}
 				},
 				{

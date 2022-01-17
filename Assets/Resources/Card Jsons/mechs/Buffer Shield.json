@@ -1,0 +1,41 @@
+{
+	"cardType":65,
+	"cardName":"Buffer Shield",
+	"effText":"While equipped, give this Mech +6 E.",
+	"effects":[
+		{
+			"blurb":"Buffer",
+			"triggerData":
+			{
+				"triggerCondition":"Augment Attached",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered","Secondary Card Fits Restriction"],
+					"cardRestriction":
+					{
+						"cardRestrictions":["Subtypes Include"],
+						"subtypesInclude":["Mech"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
+					"eModifier":6,
+					"endCondition":"Augment Detached",
+					"triggerRestriction":{
+						"triggerRestrictions":["This Card Triggered"]
+					}
+				}
+			]
+		}
+	],
+	"PlayRestriction":{
+		"normalRestrictions":["Augment Normal Restrictions"],
+		"effectRestrictions":["Augment Effect Restrictions"]
+	},
+	"a":1,
+	"subtypeText":""
+}

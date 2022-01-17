@@ -6,11 +6,17 @@ namespace KompasServer.Effects
 {
     public class TargetTriggeringCardSubeffect : ServerSubeffect
     {
+        public bool secondary = false;
+        public bool info = false;
+
         public override Task<ResolutionInfo> Resolve()
         {
-            if (Context.BeforeCardInfo == null) throw new NullCardException(NoValidCardTarget);
+            var cardInfoToTarget = secondary ? Context.secondaryCardInfoBefore : Context.mainCardInfoBefore;
+            if (cardInfoToTarget == null) throw new NullCardException(NoValidCardTarget);
 
-            ServerEffect.AddTarget(Context.BeforeCardInfo.Card);
+            if (info) ServerEffect.cardInfoTargets.Add(cardInfoToTarget);
+            else ServerEffect.AddTarget(cardInfoToTarget.Card);
+
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

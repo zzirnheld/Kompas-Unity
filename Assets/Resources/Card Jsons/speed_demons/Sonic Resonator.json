@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Sonic Resonator",
-	"effText":"When a character moves, give me +1 C, but set my turn count to -1.\nWhen I vanish having C X, deck->summon Speedemons with total S < X. Move each 1 space.",
+	"effText":"When a character moves, give me +1 C, but set my turn count to -1.\nWhen I vanish having C X, deck->summon distinct Speedemons with total S < X. Move each 1 space.",
 	"effects":[
 		{
 			"blurb":"Sonic +C",
@@ -54,7 +54,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Speedemon to resonate",
-						"cardRestrictions":["Is Character","Deck","Subtypes Include","Card Value Fits X Restriction"],
+						"cardRestrictions":["Is Character","Deck","Subtypes Include","Card Value Fits X Restriction","Distinct Name from Other Targets"],
 						"subtypesInclude":["Speedemon"],
 						"cardValue":{
 							"value":"S"
@@ -68,10 +68,10 @@
 				{
 					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
 					"cardValue":{
-						"value":"S"
+						"value":"S",
+                        "multiplier":-1
 					},
-					"change":true,
-					"xMultiplier":-1
+					"change":true
 				},
 				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
@@ -88,7 +88,7 @@
 					"$type":"KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
 					"condition":"X >= Constant",
 					"constant":1,
-					"jumpIndex":2
+					"jumpIndices":[2]
 				}
 			]
 		}

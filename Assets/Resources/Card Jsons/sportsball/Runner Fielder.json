@@ -45,7 +45,7 @@
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
 					"delete":true,
 					"remainingTargets":1,
-					"jumpTo":4
+					"jumpIndices":[4]
 				}
 			]
 		}

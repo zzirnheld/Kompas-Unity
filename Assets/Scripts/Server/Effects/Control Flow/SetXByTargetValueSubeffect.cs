@@ -21,14 +21,14 @@
             {
                 return whatToCount switch
                 {
-                    Cost => Target.Cost,
-                    N => Target.N,
-                    E => Target.E,
-                    S => Target.S,
-                    W => Target.W,
-                    C => Target.C,
-                    DistanceToTarget => Source.DistanceTo(Target),
-                    DistanceBetweenTargetAndCoords => Target.DistanceTo(Space),
+                    Cost => CardTarget.Cost,
+                    N => CardTarget.N,
+                    E => CardTarget.E,
+                    S => CardTarget.S,
+                    W => CardTarget.W,
+                    C => CardTarget.C,
+                    DistanceToTarget => Source.DistanceTo(CardTarget),
+                    DistanceBetweenTargetAndCoords => CardTarget.DistanceTo(SpaceTarget),
                     _ => throw new System.ArgumentException($"Invalid 'what to count' string {whatToCount} in x by gamestate value subeffect"),
                 };
             }

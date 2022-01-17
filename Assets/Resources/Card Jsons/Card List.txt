@@ -151,6 +151,7 @@ golems/Woolen Golem
 golems/Gold Golem
 golems/Core Scrambling
 golems/Scrap Golem
+golems/Backup Power Core
 Haemopoten
 instruments/Assaulting Batterie
 instruments/Gratuitous Sax
@@ -177,6 +178,28 @@ linewalkers/White Linewalker
 linewalkers/Yellow Linewalker
 linewalkers/Leygrapple
 linewalkers/Golden Linewalker
+mech_golems/QU4RG3
+mech_golems/51NG3
+mech_golems/54MUR41
+mech_golems/PL4T00N
+mech_golems/N0T3
+mech_golems/53G45C4NTUR14N 00
+mech_golems/C4RR13R
+mech_golems/B0U550L3
+mech_pilots/Standard Pilot
+mech_pilots/Runn R Mann
+mech_pilots/Heel R Mann
+mech_pilots/Bind R Mann
+mech_pilots/Gunn R Mann
+mech_pilots/Rayla, Head Mann
+mech_pilots/Gvala, Improvisor-Pilot
+mechs/Powered Landing
+mechs/Mech-Blaster
+mechs/Iterative Analyzer
+mechs/Recruitment Drive
+mechs/Collaborative Mechanization
+mechs/One Step Ahead
+mechs/Repair Hub
 music/Soaring Chorus
 music/Surging Verse
 music/Ringing Bridge
@@ -448,7 +471,9 @@ weather/Flashflood
 weather/Peltrain
 weather/Muggyclouds
 weather/Thunderstorm
-weather/Thinkfog
+weather/Blizzard
+weather/Fog
+weather/Brainstorm
 weather/Thundersun
 weather/Iriaid, Who Rides the Skies
 weather/Emezene, Who Reads the Breeze

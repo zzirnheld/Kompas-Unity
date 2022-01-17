@@ -27,7 +27,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
-					"jumpTo":4
+					"jumpIndices":[4]
 				},
 				{
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
@@ -45,7 +45,7 @@
 				{
 					"$type":"KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
 					"canDecline":true,
-					"jumpTo":2
+					"jumpIndices":[2]
 				},
 				{
 					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
@@ -56,7 +56,7 @@
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
 					"delete":true,
-					"jumpTo":5
+					"jumpIndices":[5]
 				}
 			]
 		}

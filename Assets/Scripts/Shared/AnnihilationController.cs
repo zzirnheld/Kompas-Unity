@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace KompasCore.GameCore
 {
+    //Not abstract because Client uses this base class
     public class AnnihilationController : MonoBehaviour, IGameLocation
     {
         public Game game;
@@ -16,7 +17,7 @@ namespace KompasCore.GameCore
 
         public virtual void Annihilate(GameCard card, IStackable stackSrc = null)
         {
-            if (card.GameLocation == this) throw new AlreadyHereException(CardLocation.Annihilation);
+            if (card.GameLocation.Equals(this)) throw new AlreadyHereException(CardLocation.Annihilation);
 
             card.Remove(stackSrc);
             Cards.Add(card);
@@ -27,7 +28,8 @@ namespace KompasCore.GameCore
 
         public virtual void Remove(GameCard card)
         {
-            if (!Cards.Contains(card)) throw new CardNotHereException(CardLocation.Annihilation);
+            if (!Cards.Contains(card)) 
+                throw new CardNotHereException(CardLocation.Annihilation, card, "Card was not in annihilation, couldn't be removed");
 
             Cards.Remove(card);
             SpreadOutCards();

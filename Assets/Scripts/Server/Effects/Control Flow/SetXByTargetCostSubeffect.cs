@@ -2,6 +2,6 @@
 {
     public class SetXByTargetCostSubeffect : SetXSubeffect
     {
-        public override int BaseCount => Target?.Cost ?? 0;
+        public override int BaseCount => CardTarget?.Cost ?? 0;
     }
 }

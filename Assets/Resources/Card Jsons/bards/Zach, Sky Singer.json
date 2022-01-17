@@ -21,7 +21,7 @@
 						"cardRestrictions":["Friendly","Board","Subtypes Include"],
                         "subtypesInclude":["Weather"]
 					},
-					"jumpIndex":9
+					"jumpIndices":[9]
 				},
 				{
 					"$type":"KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
@@ -31,13 +31,13 @@
 						"cardRestrictions":["Friendly","Board","Subtypes Include"],
                         "subtypesInclude":["Music"]
 					},
-					"jumpIndex":3
+					"jumpIndices":[3]
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Swap Weather into Music or Music into Weather?",
-					"OptionBlurbs":["M -> W","W -> M"],
-					"OptionJumpIndices":[9,3],
+					"choiceBlurb":"Swap Weather into Music or Music into Weather?",
+					"optionBlurbs":["M -> W","W -> M"],
+					"jumpIndices":[9,3],
 					"hasDefault":false
 				},
 				{

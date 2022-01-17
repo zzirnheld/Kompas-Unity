@@ -7,9 +7,9 @@ namespace KompasServer.Effects
     {
         public override Task<ResolutionInfo> Resolve()
         {
-            if (Context.Stackable == null) throw new KompasException("Null stackable", string.Empty);
+            if (Context.stackable == null) throw new KompasException("Null stackable", string.Empty);
 
-            ServerEffect.AddTarget(Context.Stackable.Source);
+            ServerEffect.AddTarget(Context.stackable.Source);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

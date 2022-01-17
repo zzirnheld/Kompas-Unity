@@ -5,16 +5,16 @@ namespace KompasServer.Effects
 {
     public class SpendMovementSubeffect : ServerSubeffect
     {
-        public override bool IsImpossible() => Target == null || Target.SpacesCanMove < Count;
+        public override bool IsImpossible() => CardTarget == null || CardTarget.SpacesCanMove < Count;
 
         public override Task<ResolutionInfo> Resolve()
         {
-            if (Target == null)
+            if (CardTarget == null)
                 throw new NullCardException(TargetWasNull);
-            else if (Target.SpacesCanMove < Count)
+            else if (CardTarget.SpacesCanMove < Count)
                 return Task.FromResult(ResolutionInfo.Impossible(CantAffordStats));
 
-            Target.SetSpacesMoved(Target.SpacesMoved + Count);
+            CardTarget.SetSpacesMoved(CardTarget.SpacesMoved + Count);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

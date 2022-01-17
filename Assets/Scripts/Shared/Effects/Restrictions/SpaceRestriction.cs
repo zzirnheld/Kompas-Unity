@@ -1,5 +1,7 @@
 ﻿using KompasCore.Cards;
+using KompasCore.Exceptions;
 using KompasCore.GameCore;
+using Newtonsoft.Json;
 using System;
 using System.Linq;
 using UnityEngine;
@@ -39,6 +41,7 @@ namespace KompasCore.Effects
 
         public const string SourceDisplacementToSpaceMatchesCoords = "Source Displacement to Space Matches Coords";
         public const string SourceToSpaceSameDirectionAsCoords = "Source to Space Same Direction as Coords";
+        public const string SourceToTargetSameDirectionAsCoords = "Source to Target Same Direction as Coords";
         public const string SubjectiveDisplacementFromSource = "Subjective Displacement from Source";
         public const string BehindSource = "Behind Source";
 
@@ -101,33 +104,25 @@ namespace KompasCore.Effects
         // so I need to make sure manually that I've bothered to set up relevant arguments.
         private bool initialized = false;
 
-        public void Initialize(GameCard source, Player controller, Effect effect)
+        public void Initialize(Subeffect subeffect) => Initialize(subeffect.Source, subeffect.Controller, subeffect.Effect, subeffect);
+
+        public void Initialize(GameCard source, Player controller, Effect effect, Subeffect subeffect)
         {
+            Subeffect = subeffect;
             Source = source;
             Effect = effect;
 
-            adjacencyRestriction?.Initialize(source, effect);
-            connectednessRestriction?.Initialize(source, effect);
-            spaceConnectednessRestriction?.Initialize(source, controller, effect);
-            limitAdjacencyRestriction?.Initialize(source, effect);
-            hereFitsRestriction?.Initialize(source, effect);
-            inAOEOfRestriction?.Initialize(source, effect);
-            distanceXRestriction?.Initialize(source);
-            numberOfCardsInAOEOfRestriction?.Initialize(source);
+            adjacencyRestriction?.Initialize(source, effect, subeffect);
+            connectednessRestriction?.Initialize(source, effect, subeffect);
+            spaceConnectednessRestriction?.Initialize(source, controller, effect, subeffect);
+            limitAdjacencyRestriction?.Initialize(source, effect, subeffect);
+            hereFitsRestriction?.Initialize(source, effect, subeffect);
+            inAOEOfRestriction?.Initialize(source, effect, subeffect);
+            distanceXRestriction?.Initialize(source, subeffect);
+            connectedSpacesXRestriction?.Initialize(source, subeffect);
+            numberOfCardsInAOEOfRestriction?.Initialize(source, subeffect);
 
             initialized = true;
-        }
-
-        public void Initialize(Subeffect subeffect)
-        {
-            Initialize(subeffect.Source, subeffect.Controller, subeffect.Effect);
-            Subeffect = subeffect;
-            adjacencyRestriction?.Initialize(subeffect);
-            connectednessRestriction?.Initialize(subeffect);
-            spaceConnectednessRestriction?.Initialize(subeffect);
-            limitAdjacencyRestriction?.Initialize(subeffect);
-            hereFitsRestriction?.Initialize(subeffect);
-            distanceXRestriction?.Initialize(subeffect.Source, subeffect);
         }
 
         /// <summary>
@@ -138,51 +133,58 @@ namespace KompasCore.Effects
         /// <param name="y">The y coordinate of the space</param>
         /// <param name="theoreticalTarget">If this space restriction is being considered with a theoretical additional target, this is it</param>
         /// <returns></returns>
-        private bool RestrictionValid(string restriction, Space space, GameCard theoreticalTarget, ActivationContext context)
+        private bool IsRestrictionValid(string restriction, Space space, GameCard theoreticalTarget, ActivationContext context)
         {
             //would use ?? but GameCard inherits from monobehavior which overrides comparison with null
-            var target = theoreticalTarget != null ? theoreticalTarget : Subeffect?.Target;
+            var target = theoreticalTarget != null ? theoreticalTarget : Subeffect?.CardTarget;
 
             return restriction switch
             {
                 //adjacency
                 AdjacentToSource => Source.IsAdjacentTo(space),
                 AdjacentToTarget => target?.IsAdjacentTo(space) ?? false,
-                AdjacentToCoords => space.AdjacentTo(Subeffect.Space),
-                AdjacentToCardRestriction => Game.boardCtrl.CardsAdjacentTo(space).Any(c => adjacencyRestriction.Evaluate(c, context)),
+                AdjacentToCoords => space.AdjacentTo(Subeffect.SpaceTarget),
+                AdjacentToCardRestriction => Game.boardCtrl.CardsAdjacentTo(space).Any(c => adjacencyRestriction.IsValidCard(c, context)),
 
-                ConnectedToSourceBy => Game.boardCtrl.ShortestPath(Subeffect.Source, space, connectednessRestriction, context) < 50,
-                ConnectedToSourceBySpaces => Game.boardCtrl.ShortestPath(Subeffect.Source.Position, space, s => spaceConnectednessRestriction.Evaluate(s, context)) < 50,
-                ConnectedToTargetBy => Game.boardCtrl.ShortestPath(target, space, connectednessRestriction, context) < 50,
-                ConnectedToTargetBySpaces => Game.boardCtrl.ShortestPath(target.Position, space, s => spaceConnectednessRestriction.Evaluate(s, context)) < 50,
-                ConnectedToTargetByXSpaces => connectedSpacesXRestriction.Evaluate(Game.boardCtrl.ShortestPath(target.Position, space,
-                                                s => spaceConnectednessRestriction.Evaluate(s, context))),
-                ConnectedToAvatarBy => Game.boardCtrl.ShortestPath(Source.Controller.Avatar, space, connectednessRestriction, context) < 50,
+                ConnectedToSourceBy => Game.boardCtrl.AreConnectedBySpaces(Subeffect.Source.Position, space, connectednessRestriction, context),
+                ConnectedToSourceBySpaces 
+                    => Game.boardCtrl.AreConnectedBySpaces(Subeffect.Source.Position, space, 
+                            s => spaceConnectednessRestriction.IsValidSpace(s, context)),
+                ConnectedToTargetBy => Game.boardCtrl.AreConnectedBySpaces(target.Position, space, connectednessRestriction, context),
+                ConnectedToTargetBySpaces => Game.boardCtrl.AreConnectedBySpaces(target.Position, space, spaceConnectednessRestriction, context),
+                ConnectedToTargetByXSpaces 
+                    => Game.boardCtrl.AreConnectedByNumberOfSpacesFittingPredicate(target.Position, space, 
+                            s => spaceConnectednessRestriction.IsValidSpace(s, context),
+                            connectedSpacesXRestriction.IsValidNumber),
+                ConnectedToAvatarBy => Game.boardCtrl.AreConnectedBySpaces(Source.Controller.Avatar.Position, space, connectednessRestriction, context),
 
                 InAOE => Source.SpaceInAOE(space),
                 NotInAOE => !Source.SpaceInAOE(space),
                 InTargetsAOE => target.SpaceInAOE(space),
-                InAOEOf => Game.Cards.Any(c => c.SpaceInAOE(space) && inAOEOfRestriction.Evaluate(c, context)),
-                NotInAOEOf => !Game.Cards.Any(c => c.SpaceInAOE(space) && inAOEOfRestriction.Evaluate(c, context)),
-                InAOEOfNumberFittingRestriction => numberOfCardsInAOEOfRestriction.Evaluate(Game.Cards.Count(c => c.SpaceInAOE(space) && inAOEOfRestriction.Evaluate(c, context))),
-                LimitAdjacentCardsFittingRestriction => Game.boardCtrl.CardsAdjacentTo(space)
-                                                                        .Where(c => limitAdjacencyRestriction.Evaluate(c, context))
-                                                                        .Count() <= adjacencyLimit,
+                InAOEOf => Game.Cards.Any(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context)),
+                NotInAOEOf => !Game.Cards.Any(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context)),
+                InAOEOfNumberFittingRestriction 
+                    => numberOfCardsInAOEOfRestriction.IsValidNumber(Game.Cards.Count(c => c.SpaceInAOE(space) && inAOEOfRestriction.IsValidCard(c, context))),
+                LimitAdjacentCardsFittingRestriction 
+                    => Game.boardCtrl.CardsAdjacentTo(space)
+                            .Where(c => limitAdjacencyRestriction.IsValidCard(c, context))
+                            .Count() <= adjacencyLimit,
                 InAOESourceAlsoIn => Game.Cards.Any(c => c.SpaceInAOE(space) && c.CardInAOE(Source)),
 
-                SourceDisplacementToSpaceMatchesCoords => Source.Position.DisplacementTo(space) == Subeffect.Space,
-                SourceToSpaceSameDirectionAsCoords => Source.Position.DirectionFromThisTo(space) == Subeffect.Space,
+                SourceDisplacementToSpaceMatchesCoords => Source.Position.DisplacementTo(space) == Subeffect.SpaceTarget,
+                SourceToSpaceSameDirectionAsCoords => Source.Position.DirectionFromThisTo(space) == Subeffect.SpaceTarget,
+                SourceToTargetSameDirectionAsCoords => target.Position.DirectionFromThisTo(space) == Subeffect.SpaceTarget,
                 SubjectiveDisplacementFromSource 
                     => Controller.SubjectiveCoords(Source.Position).DisplacementTo(Controller.SubjectiveCoords(space)) == (displacementX, displacementY),
                 BehindSource => Source.SpaceBehind(space),
 
                 //distance
-                DistanceToSourceFitsXRestriction => distanceXRestriction.Evaluate(Source.DistanceTo(space)),
-                DistanceToTargetFitsXRestriction => distanceXRestriction.Evaluate(target.DistanceTo(space)),
-                DistanceToCoordsFitsXRestriction => distanceXRestriction.Evaluate(Subeffect.Space.DistanceTo(space)),
+                DistanceToSourceFitsXRestriction => distanceXRestriction.IsValidNumber(Source.DistanceTo(space)),
+                DistanceToTargetFitsXRestriction => distanceXRestriction.IsValidNumber(target.DistanceTo(space)),
+                DistanceToCoordsFitsXRestriction => distanceXRestriction.IsValidNumber(Subeffect.SpaceTarget.DistanceTo(space)),
 
                 FurtherFromSourceThanTarget => Source.DistanceTo(space) > Source.DistanceTo(target),
-                FurtherFromSourceThanCoords => Source.DistanceTo(space) > Source.DistanceTo(Subeffect.Space),
+                FurtherFromSourceThanCoords => Source.DistanceTo(space) > Source.DistanceTo(Subeffect.SpaceTarget),
 
                 TowardsSourceFromTarget => Source.DistanceTo(space) < Source.DistanceTo(target),
                 TowardsTargetFromSource => target.DistanceTo(space) < target.DistanceTo(Source),
@@ -190,48 +192,50 @@ namespace KompasCore.Effects
                 DirectlyAwayFromTarget => target.SpaceDirectlyAwayFrom(space, Source),
 
                 //misc
-                CanPlayTarget => target.PlayRestriction.EvaluateEffectPlay(space, Subeffect.Effect, Subeffect.Player, context, ignoring: playRestrictionsToIgnore),
-                CanMoveTarget => target.MovementRestriction.EvaluateEffectMove(space),
-                CanMoveSource => Source.MovementRestriction.EvaluateEffectMove(space),
+                CanPlayTarget => target.PlayRestriction.IsValidEffectPlay(space, Subeffect.Effect, Subeffect.PlayerTarget, context, 
+                    ignoring: playRestrictionsToIgnore),
+                CanMoveTarget => target.MovementRestriction.IsValidEffectMove(space),
+                CanMoveSource => Source.MovementRestriction.IsValidEffectMove(space),
 
-                Empty => Game.boardCtrl.GetCardAt(space) == null,
+                Empty => Game.boardCtrl.IsEmpty(space),
                 Surrounded => Game.boardCtrl.Surrounded(space),
-                CardHereFitsRestriction => hereFitsRestriction.Evaluate(Game.boardCtrl.GetCardAt(space), context),
+                CardHereFitsRestriction => hereFitsRestriction.IsValidCard(Game.boardCtrl.GetCardAt(space), context),
 
                 OnSourcesDiagonal => Source.SameDiagonal(space),
                 OnTargetsDiagonal => target.SameDiagonal(space),
-                OnAxisOfLastTwoSpaces => space.SameAxis(Subeffect.Space, Subeffect.Effect.GetSpace(-2)),
+                OnAxisOfLastTwoSpaces => space.SameAxis(Subeffect.SpaceTarget, Subeffect.Effect.GetSpace(-2)),
 
                 OnEdge => space.IsEdge,
                 Corner => space.IsCorner,
-                SameDirectionFromTargetAsSpace => target.Position.DirectionFromThisTo(space) == Subeffect.Space.DirectionFromThisTo(Source.Position),
-                OppositeDirectionFromTargetThanSpace => Source.Position.DirectionFromThisTo(space) * -1 == Source.Position.DirectionFromThisTo(Subeffect.Space),
-                DirectionFromSource => Source.Position.DirectionFromThisTo(space) == Subeffect.Space,
+                SameDirectionFromTargetAsSpace => target.Position.DirectionFromThisTo(space) == Subeffect.SpaceTarget.DirectionFromThisTo(Source.Position),
+                OppositeDirectionFromTargetThanSpace => Source.Position.DirectionFromThisTo(space) * -1 == Source.Position.DirectionFromThisTo(Subeffect.SpaceTarget),
+                DirectionFromSource => Source.Position.DirectionFromThisTo(space) == Subeffect.SpaceTarget,
 
                 _ => throw new ArgumentException($"Invalid space restriction {restriction}", "restriction"),
             };
         }
 
-        private bool RestrictionValidWithDebug(string r, Space space, GameCard theoreticalTarget, ActivationContext context)
+        private bool IsRestrictionValidWithDebug(string r, Space space, GameCard theoreticalTarget, ActivationContext context)
         {
-            bool success = RestrictionValid(r, space, theoreticalTarget, context);
+            bool success = IsRestrictionValid(r, space, theoreticalTarget, context);
             if (!success) Debug.Log($"Space resetriction {r} was flouted by {space}");
             return success;
         }
 
-        public bool Evaluate(Space space, ActivationContext context, GameCard theoreticalTarget = null)
+        public bool IsValidSpace(Space space, ActivationContext context, GameCard theoreticalTarget = null)
         {
             if (!initialized) throw new ArgumentException("Space restriction not initialized!");
-            if (!space.Valid) return false;
-            if (mustBeEmpty && Game.boardCtrl.GetCardAt(space) != null)
+            if (!space.IsValid) throw new InvalidSpaceException(space, "Invalid space to consider for restriction!");
+            if (mustBeEmpty && !Game.boardCtrl.IsEmpty(space))
             {
                 //Debug.Log($"Space for {Source.CardName} needed to be empty and wasn't.");
                 return false;
             }
 
-            return spaceRestrictions.All(r => RestrictionValidWithDebug(r, space, theoreticalTarget, context));
+            return spaceRestrictions.All(r => IsRestrictionValidWithDebug(r, space, theoreticalTarget, context));
         }
 
-        public override string ToString() => JsonUtility.ToJson(this);
+        public override string ToString() 
+            => $"Space restriction of card {Source} on subeff {Subeffect}, restrictions {string.Join(",", spaceRestrictions)}";
     }
 }

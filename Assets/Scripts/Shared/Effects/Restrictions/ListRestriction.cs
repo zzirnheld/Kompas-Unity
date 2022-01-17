@@ -3,12 +3,13 @@ using UnityEngine;
 using KompasCore.Cards;
 using System.Linq;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace KompasCore.Effects
 {
-    [System.Serializable]
     public class ListRestriction
     {
+        [JsonIgnore]
         public Subeffect Subeffect { get; private set; }
 
         //if i end up living towards the heat death of the universe,
@@ -19,7 +20,7 @@ namespace KompasCore.Effects
         public const string MinCanChoose = "Min Can Choose";
         public const string MaxCanChoose = "Max Can Choose";
 
-        public const string CanPayCost = "Can Pay Cost"; // 1 //effect's controller is able to pay the cost of all of them together
+        public const string ControllerCanPayCost = "Can Pay Cost"; //effect's controller is able to pay the cost of all of them together
         public const string DistinctCosts = "Distinct Costs";
 
         public const string MinOfX = "Min Can Choose: X";
@@ -76,7 +77,7 @@ namespace KompasCore.Effects
         /// Default ListRestriction Json. <br></br>
         /// A json representation of <see cref="Default"/>
         /// </summary>
-        public static readonly string DefaultJson = JsonUtility.ToJson(Default);
+        public static readonly string DefaultJson = JsonConvert.SerializeObject(Default);
 
         /// <summary>
         /// You can read, you know what this does.
@@ -102,31 +103,28 @@ namespace KompasCore.Effects
             if (listRestrictions.Contains(MaxOfX)) maxCanChoose = x;
         }
 
-        private bool EvaluateRestriction(string restriction, IEnumerable<GameCard> cards)
+        private bool IsRestrictionValid(string restriction, IEnumerable<GameCard> cards) => restriction switch
         {
-            switch (restriction)
-            {
-                case MinCanChoose: return cards.Count() >= minCanChoose;
-                case MaxCanChoose: return cards.Count() <= maxCanChoose;
-                case CanPayCost:
-                    int totalCost = 0;
-                    foreach (var card in cards) totalCost += card.Cost;
-                    return Subeffect.Controller.Pips >= totalCost;
-                case DistinctCosts:
-                    return cards.Select(c => c.Cost).Distinct().Count() == cards.Count();
-                case MinOfX: return cards.Count() <= Subeffect.Effect.X;
-                case MaxOfX: return cards.Count() <= Subeffect.Effect.X;
-                default: throw new System.ArgumentException($"Invalid list restriction {restriction}", "restriction");
-            }
-        }
+            MinCanChoose => cards.Count() >= minCanChoose,
+            MaxCanChoose => cards.Count() <= maxCanChoose,
 
+            ControllerCanPayCost => Subeffect.Controller.Pips >= cards.Sum(c => c.Cost),
+            DistinctCosts => cards.Select(c => c.Cost).Distinct().Count() == cards.Count(),
+
+            MinOfX => cards.Count() <= Subeffect.Effect.X,
+            MaxOfX => cards.Count() <= Subeffect.Effect.X,
+            _ => throw new System.ArgumentException($"Invalid list restriction {restriction}", "restriction"),
+        };
+
+        /*
+        //TODO use #ifdef to be able to turn on debug with a compile flag or something
         private bool EvaluateRestrictionWithDebug(string restriction, IEnumerable<GameCard> cards)
         {
             bool valid = EvaluateRestriction(restriction, cards);
             if (!valid) Debug.Log($"Invalid list of cards {string.Join(", ", cards.Select(c => c.CardName))} " +
                 $"flouts list restriction {restriction}");
             return valid;
-        }
+        }*/
 
         /// <summary>
         /// Checks the list of cards passed into see if they collectively fit a restriction.
@@ -134,47 +132,41 @@ namespace KompasCore.Effects
         /// <param name="choices">The list of cards to collectively evaluate.</param>
         /// <returns><see langword="true"/> if the cards fit all the required restrictions collectively, 
         /// <see langword="false"/> otherwise</returns>
-        public bool Evaluate(IEnumerable<GameCard> choices, IEnumerable<GameCard> potentialTargets)
-        {
-            if (choices == null) return false;
+        public bool IsValidCardList(IEnumerable<GameCard> choices, IEnumerable<GameCard> potentialTargets) 
+            => choices != null
+                && !choices.Except(potentialTargets).Any() //Are there any choices that aren't potential targets?
+                && listRestrictions.All(r => IsRestrictionValid(r, choices));
 
-            if (choices.Except(potentialTargets).Any())
+        private bool CanPayCost(IEnumerable<GameCard> potentialTargets)
+        {
+            int costAccumulation = 0;
+            int i = 1;
+            foreach (var card in potentialTargets.OrderBy(c => c.Cost))
             {
-                Debug.Log($"Some cards in list of choices {string.Join(",", choices.Select(c => c.CardName))}" +
-                    $" don't appear in the list of potential targets {string.Join(",", potentialTargets.Select(c => c.CardName))}.");
-                return false;
+                if (i > minCanChoose) break;
+                costAccumulation += card.Cost;
+                i++;
             }
-            
-            return listRestrictions.All(r => EvaluateRestrictionWithDebug(r, choices));
+            if (i < minCanChoose) return false;
+            return costAccumulation <= Subeffect.Controller.Pips;
         }
 
-        private bool RestrictionAllowsValidChoice(string restriction, IEnumerable<GameCard> potentialTargets)
+        private bool DoesRestrictionAllowValidChoice(string restriction, IEnumerable<GameCard> potentialTargets) => restriction switch
         {
-            switch (restriction)
-            {
-                case CanPayCost:
-                    int costAccumulation = 0;
-                    int i = 1;
-                    foreach(var card in potentialTargets.OrderBy(c => c.Cost))
-                    {
-                        if (i > minCanChoose) break;
-                        costAccumulation += card.Cost;
-                        i++;
-                    }
-                    if(i < minCanChoose) return false;
-                    return costAccumulation <= Subeffect.Controller.Pips;
-                case MinOfX: return potentialTargets.Count() >= Subeffect.Effect.X;
-                case MinCanChoose: return potentialTargets.Count() >= minCanChoose;
-                case DistinctCosts: return potentialTargets.Select(c => c.Cost).Distinct().Count() > (HasMin ? 0 : minCanChoose);
-                case MaxOfX:
-                case MaxCanChoose: 
-                    return true;
-                default: throw new System.ArgumentException($"Invalid list restriction {restriction}", "restriction");
-            }
-        }
+            MinOfX => potentialTargets.Count() >= Subeffect.Effect.X,
+            MinCanChoose => potentialTargets.Count() >= minCanChoose,
+
+            ControllerCanPayCost => CanPayCost(potentialTargets),
+            DistinctCosts => potentialTargets.Select(c => c.Cost).Distinct().Count() > (HasMin ? 0 : minCanChoose),
+
+            MaxOfX => true,
+            MaxCanChoose => true,
+
+            _ => throw new System.ArgumentException($"Invalid list restriction {restriction}", "restriction"),
+        };
 
         public bool ExistsValidChoice(IEnumerable<GameCard> potentialTargets) 
-            => listRestrictions.All(r => RestrictionAllowsValidChoice(r, potentialTargets));
+            => listRestrictions.All(r => DoesRestrictionAllowValidChoice(r, potentialTargets));
 
         public override string ToString()
         {

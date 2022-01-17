@@ -1,0 +1,28 @@
+[
+    {
+        "$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+        "numTimesToDelay":0,
+        "jumpIndices":[1],
+        "fallOffCondition":"",
+        "endCondition":"Discard",
+        "triggerRestriction":{
+            "triggerRestrictions":["Triggerer is Secondary Context Target","From Field"]
+        }
+    },
+    {
+        "$type":"KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
+    },
+    {
+        "$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+    },
+    {
+        "$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+    },
+    {
+        "$type":"KompasServer.Effects.TemporaryNegateSubeffect, Assembly-CSharp",
+        "endCondition":"Turn Start",
+        "triggerRestriction":{
+            "triggerRestrictions":[]
+        }
+    }
+]

@@ -1,6 +1,5 @@
 ﻿using KompasCore.Effects;
 
-[System.Serializable]
 public class TriggerData
 {
     public string triggerCondition;

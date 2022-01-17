@@ -7,7 +7,6 @@ using UnityEngine;
 
 namespace KompasServer.Effects
 {
-    [System.Serializable]
     public abstract class ServerSubeffect : Subeffect
     {
         public override Player Controller => EffectController;
@@ -19,7 +18,7 @@ namespace KompasServer.Effects
         public ServerPlayer EffectController => ServerEffect.ServerController;
         public GameCard ThisCard => ServerEffect.Source;
 
-        public ServerPlayer ServerPlayer => Player as ServerPlayer;
+        public ServerPlayer ServerPlayer => PlayerTarget as ServerPlayer;
 
         /// <summary>
         /// Sets up the subeffect with whatever necessary values.
@@ -54,7 +53,6 @@ namespace KompasServer.Effects
         /// </summary>
         public virtual Task<ResolutionInfo> OnImpossible(string why)
         {
-            Debug.Log($"Base On Impossible called for {GetType()}");
             ServerEffect.OnImpossible = null;
             return Task.FromResult(ResolutionInfo.Impossible(why));
         }

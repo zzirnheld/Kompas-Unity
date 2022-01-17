@@ -6,7 +6,7 @@ namespace KompasServer.Effects
     {
         public override Task<ResolutionInfo> Resolve()
         {
-            Player.Pips += Count;
+            PlayerTarget.Pips += Count;
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

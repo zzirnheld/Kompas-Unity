@@ -22,14 +22,14 @@ namespace KompasServer.Effects
             tiebreakerValue?.Initialize(eff.Source);
         }
 
-        public override bool IsImpossible() => !Game.Cards.Any(c => cardRestriction.Evaluate(c, Context));
+        public override bool IsImpossible() => !Game.Cards.Any(c => cardRestriction.IsValidCard(c, Context));
 
         public override Task<ResolutionInfo> Resolve()
         {
             GameCard potentialTarget = null;
             try
             {
-                var potentialTargets = Game.Cards.Where(c => cardRestriction.Evaluate(c, Context));
+                var potentialTargets = Game.Cards.Where(c => cardRestriction.IsValidCard(c, Context));
                 potentialTarget = tiebreakerDirection switch
                 {
                     Maximum => potentialTargets.OrderByDescending(c => tiebreakerValue.GetValueOf(c)).First(),

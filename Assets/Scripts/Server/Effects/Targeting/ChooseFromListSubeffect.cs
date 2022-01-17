@@ -3,11 +3,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using KompasCore.Cards;
 using KompasCore.Effects;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace KompasServer.Effects
 {
-    [System.Serializable]
     public class ChooseFromListSubeffect : ServerSubeffect
     {
         public const string NoOrder = "No Order";
@@ -49,12 +49,12 @@ namespace KompasServer.Effects
             int[] targetIds = potentialTargets.Select(c => c.ID).ToArray();
             listRestriction.PrepareForSending(Effect.X);
             Debug.Log($"Potential targets {string.Join(", ", targetIds)}");
-            return await ServerPlayer.serverAwaiter.GetCardListTargets(name, blurb, targetIds, JsonUtility.ToJson(listRestriction));
+            return await ServerPlayer.serverAwaiter.GetCardListTargets(name, blurb, targetIds, JsonConvert.SerializeObject(listRestriction));
         }
 
         private IEnumerable<GameCard> GetPossibleTargets()
         {
-            var possibleTargets = ServerGame.Cards.Where(c => cardRestriction.Evaluate(c, Context));
+            var possibleTargets = ServerGame.Cards.Where(c => cardRestriction.IsValidCard(c, Context));
             if (!possibleTargets.Any()) return new GameCard[0];
 
             switch (orderBy)
@@ -100,7 +100,7 @@ namespace KompasServer.Effects
         {
             Debug.Log($"Potentially adding list {string.Join(",", choices ?? new List<GameCard>())}");
 
-            if (!listRestriction.Evaluate(choices, potentialTargets)) return false;
+            if (!listRestriction.IsValidCardList(choices, potentialTargets)) return false;
 
             //add all cards in the chosen list to targets
             AddList(choices);

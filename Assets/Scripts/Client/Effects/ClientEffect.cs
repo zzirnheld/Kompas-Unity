@@ -6,7 +6,6 @@ using KompasCore.GameCore;
 
 namespace KompasClient.Effects
 {
-    [System.Serializable]
     public class ClientEffect : Effect, IClientStackable
     {
         public ClientPlayer ClientController;
@@ -65,7 +64,7 @@ namespace KompasClient.Effects
         public void StartResolution(ActivationContext context)
         {
             ClientGame.clientUICtrl.SetCurrState($"Resolving Effect of {Source.CardName}", $"{blurb}");
-            targetsList.Clear();
+            cardTargets.Clear();
 
             //in case any cards are still showing targets from the last effect, which they will if this happens after another effect in the stack.
             //TODO move this behavior to a "effect end" packet and stuff?

@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Fast Talker",
-	"effText":"When you draw X, ask your opponent to reveal X cards. If they don’t, give me +X ESW.",
+	"effText":"When you draw X, ask your opponent to reveal X cards. If they don't, give me +X/2 ESW.",
 	"effects":[
 		{
 			"triggerData":
@@ -22,9 +22,9 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Reveal X cards?",
-					"OptionBlurbs":["Yes","No"],
-					"OptionJumpIndices":[3,7],
+					"choiceBlurb":"Reveal X cards?",
+					"optionBlurbs":["Yes","No"],
+					"jumpIndices":[3,7],
 					"showX":true
 				},
 				{
@@ -36,7 +36,8 @@
 					},
 					"listRestriction":{
 						"listRestrictions":["Min Can Choose: X","Max Can Choose: X"]
-					}
+					},
+					"xMultiplier":1
 				},
 				{
 					"$type":"KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
@@ -44,7 +45,7 @@
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
 					"delete":true,
-					"jumpTo":4
+					"jumpIndices":[4]
 				},
 				{
 					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
@@ -55,8 +56,9 @@
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
 					"eMult":1,
-					"sMult":1,
-					"wMult":1
+					"eDiv":2,
+					"wMult":1,
+					"wDiv":2
 				}
 			]	
 		}

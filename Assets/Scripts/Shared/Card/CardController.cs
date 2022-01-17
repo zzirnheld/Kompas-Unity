@@ -128,7 +128,7 @@ namespace KompasCore.Cards
             aoeController.Hide();
 
             //is the card augmenting something?
-            if(card.AugmentedCard != null)
+            if(card.Attached)
             {
                 gameObject.SetActive(true);
                 card.AugmentedCard.cardCtrl.SpreadOutAugs();
@@ -185,10 +185,10 @@ namespace KompasCore.Cards
 
         public void SpreadOutAugs()
         {
-            var augCount = card.AugmentsList.Count;
+            var augCount = card.Augments.Count();
             float scale = 0.4f; // / ((float)((augCount + 3) / 4));
             int i = 0;
-            foreach(var aug in card.AugmentsList)
+            foreach(var aug in card.Augments)
             {
                 aug.transform.parent = card.transform;
                 aug.transform.localScale = new Vector3(scale, scale, scale);
@@ -287,9 +287,9 @@ namespace KompasCore.Cards
             if (card.Location == CardLocation.Field)
             {
                 //if you can attack at all, enable the attack indicator
-                if (card.AttackRestriction.EvaluateAtAll(null))
+                if (card.AttackRestriction.CouldAttackValidTarget(null))
                     //oscillate the attack indicator if can attack a card right now
-                    attackOscillator.Enable(card.AttackRestriction.EvaluateAny(null));
+                    attackOscillator.Enable(card.AttackRestriction.CanAttackAnyCard(null));
                 else attackOscillator.Disable();
 
                 //if you can activate any effect, enable the attack indicator

@@ -1,0 +1,24 @@
+{
+	"blurb":"Collectible",
+	"triggerData":
+	{
+		"triggerCondition":"Discard",
+		"triggerRestriction":{
+			"triggerRestrictions":["Augmented Card Triggered"]
+		}
+	},
+	"subeffects":[
+        {
+            "$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp",
+            "secondary":true
+        },
+		{
+			"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+		},
+        {
+            "$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+            "attachmentTarget":-2,
+            "targetIndex":-1
+        }
+	]
+}

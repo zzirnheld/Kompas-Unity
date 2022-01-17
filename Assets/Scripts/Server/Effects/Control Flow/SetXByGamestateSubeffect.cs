@@ -39,21 +39,21 @@ namespace KompasServer.Effects
             {
                 return whatToCount switch
                 {
-                    HandSize                => Player.handCtrl.HandSize,
-                    HandSizeLimit           => Player.HandSizeLimit,
-                    DistanceToCoordsThrough => Game.boardCtrl.ShortestPath(Source, Space, throughRestriction, Context),
-                    DistanceBetweenTargetAndCoords => Target.DistanceTo(Space),
-                    DistanceFromSourceToTarget     => Source.DistanceTo(Target),
+                    HandSize                => PlayerTarget.handCtrl.HandSize,
+                    HandSizeLimit           => PlayerTarget.HandSizeLimit,
+                    DistanceToCoordsThrough => Game.boardCtrl.ShortestPath(Source, SpaceTarget, throughRestriction, Context),
+                    DistanceBetweenTargetAndCoords => CardTarget.DistanceTo(SpaceTarget),
+                    DistanceFromSourceToTarget     => Source.DistanceTo(CardTarget),
 
                     CardsFittingRestriction 
-                        => Game.Cards.Where(c => cardRestriction.Evaluate(c, Context)).Count(),
+                        => Game.Cards.Where(c => cardRestriction.IsValidCard(c, Context)).Count(),
                     TotalCardValueOfCardsFittingRestriction 
-                        => Game.Cards.Where(c => cardRestriction.Evaluate(c, Context)).Sum(cardValue.GetValueOf),
+                        => Game.Cards.Where(c => cardRestriction.IsValidCard(c, Context)).Sum(cardValue.GetValueOf),
                     MaxCardValueOfCardsFittingRestriction 
-                        => Game.Cards.Where(c => cardRestriction.Evaluate(c, Context)).Max(cardValue.GetValueOf),
+                        => Game.Cards.Where(c => cardRestriction.IsValidCard(c, Context)).Max(cardValue.GetValueOf),
 
                     EffectUsesThisTurn  => Effect.TimesUsedThisTurn,
-                    NumberOfTargets     => Effect.Targets.Count(),
+                    NumberOfTargets     => Effect.CardTargets.Count(),
 
                     _ => throw new System.ArgumentException($"Invalid 'what to count' string {whatToCount} in x by gamestate value subeffect"),
                 };

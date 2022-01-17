@@ -2,7 +2,7 @@
 
 namespace KompasServer.Effects
 {
-    public class HangingAnnihilationSubeffect : TemporaryCardChangeSubeffect
+    public class HangingAnnihilationSubeffect : HangingEffectSubeffect
     {
         protected override IEnumerable<HangingEffect> CreateHangingEffects()
         {
@@ -10,10 +10,10 @@ namespace KompasServer.Effects
                                                     triggerRestriction: triggerRestriction,
                                                     endCondition: endCondition,
                                                     fallOffCondition: fallOffCondition,
-                                                    fallOffRestriction: CreateFallOffRestriction(Target),
+                                                    fallOffRestriction: CreateFallOffRestriction(CardTarget),
                                                     sourceEff: Effect,
                                                     currentContext: Context,
-                                                    target: Target);
+                                                    target: CardTarget);
             return new List<HangingEffect>() { eff };
         }
     }

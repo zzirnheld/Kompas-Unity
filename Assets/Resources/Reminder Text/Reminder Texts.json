@@ -98,7 +98,7 @@
 		},
 		{
 			"keyword":"Speedemon",
-			"reminder":"After I move by something other than my own effect, move me 1 space in the same direction."
+			"reminder":"After I move by something other than this effect, move me 1 space in the same direction."
 		},
 		{
 			"keyword":"Instrument",
@@ -110,11 +110,23 @@
 		},
 		{
 			"keyword":"Attended",
-			"reminder":"When nothing is happening and I’m adjacent to fewer than that many friendly characters, I die."
+			"reminder":"When nothing is happening and I'm adjacent to fewer than that many friendly characters, I die."
 		},
 		{
 			"keyword":"secondary heading",
 			"reminder":"Northeast, northwest, southeast, or southwest."
+		},
+		{
+			"keyword":"Collectible",
+			"reminder":"When a character kills this character, attach me to the killer."
+		},
+		{
+			"keyword":"Pilot a Mech",
+			"reminder":"Annihilate me. Hand->summon a Mech Golem where I was and activate it, but when it dies, summon me where it was, and negate me for the turn. If it's removed without dying, I stay annihilated forever."
+		},
+		{
+			"keyword":"Nimble",
+			"reminder":"Can move through cards."
 		}
 	]
 }

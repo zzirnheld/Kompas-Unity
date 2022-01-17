@@ -7,8 +7,6 @@ namespace KompasServer.Effects
     /// </summary>
     public class SkipToEffectOnImpossibleSubeffect : ServerSubeffect
     {
-        public int jumpTo;
-
         public override Task<ResolutionInfo> Resolve()
         {
             ServerEffect.OnImpossible = this;
@@ -19,7 +17,7 @@ namespace KompasServer.Effects
         {
             //forget about this effect on impossible, and jump to a new one
             ServerEffect.OnImpossible = null;
-            return Task.FromResult(ResolutionInfo.Index(jumpTo));
+            return Task.FromResult(ResolutionInfo.Index(JumpIndex));
         }
     }
 }

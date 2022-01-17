@@ -1,6 +1,5 @@
 ﻿namespace KompasCore.Effects
 {
-    [System.Serializable]
     public class SerializableEffect
     {
         //array of strings that will get deserialized

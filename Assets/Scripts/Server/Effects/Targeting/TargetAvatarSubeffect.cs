@@ -6,7 +6,7 @@ namespace KompasServer.Effects
     {
         public override Task<ResolutionInfo> Resolve()
         {
-            Effect.AddTarget(Player.Avatar);
+            Effect.AddTarget(PlayerTarget.Avatar);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

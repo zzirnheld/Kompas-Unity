@@ -10,7 +10,7 @@ namespace KompasServer.Effects
         public override Task<ResolutionInfo> Resolve()
         {
             var attacker = Effect.GetTarget(attackerIndex);
-            var defender = Target;
+            var defender = CardTarget;
             if (attacker == null)
                 throw new NullCardException("Attacker was null");
             else if (defender == null)

@@ -14,7 +14,6 @@ namespace KompasServer.Effects
         public const string XFitsRestriction = "X Fits Restriction";
 
         public string condition;
-        public int jumpIndex;
 
         public CardRestriction cardRestriction = new CardRestriction();
         public XRestriction xRestriction = new XRestriction();
@@ -33,12 +32,12 @@ namespace KompasServer.Effects
             {
                 return condition switch
                 {
-                    CardFitsRestriction         => Game.Cards.Any(c => cardRestriction.Evaluate(c, Context)),
-                    NoCardFitsRestriction       => !Game.Cards.Any(c => cardRestriction.Evaluate(c, Context)),
-                    TargetFitsRestriction       => cardRestriction.Evaluate(Target, Context),
-                    TargetViolatesRestriction   => !cardRestriction.Evaluate(Target, Context),
+                    CardFitsRestriction         => Game.Cards.Any(c => cardRestriction.IsValidCard(c, Context)),
+                    NoCardFitsRestriction       => !Game.Cards.Any(c => cardRestriction.IsValidCard(c, Context)),
+                    TargetFitsRestriction       => cardRestriction.IsValidCard(CardTarget, Context),
+                    TargetViolatesRestriction   => !cardRestriction.IsValidCard(CardTarget, Context),
                     XGreaterEqualConstant       => Effect.X >= constant,
-                    XFitsRestriction            => xRestriction.Evaluate(Effect.X),
+                    XFitsRestriction            => xRestriction.IsValidNumber(Effect.X),
                     _ => throw new System.ArgumentException($"Invalid conditional jump condition {condition}"),
                 };
             }
@@ -46,7 +45,7 @@ namespace KompasServer.Effects
 
         public override Task<ResolutionInfo> Resolve()
         {
-            if (ShouldJump) return Task.FromResult(ResolutionInfo.Index(jumpIndex));
+            if (ShouldJump) return Task.FromResult(ResolutionInfo.Index(JumpIndex));
             else return Task.FromResult(ResolutionInfo.Next);
         }
     }

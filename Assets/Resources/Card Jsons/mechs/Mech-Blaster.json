@@ -1,0 +1,60 @@
+{
+	"cardType":65,
+	"cardName":"Mech-Blaster",
+	"effText":"Collectible.\nAttach me normally only to a Mech.\nWhen this W X character attacks, give a character on their diagonal -X E. ",
+	"effects":[
+        {
+            "blurb":"Mechablast",
+            "triggerData":
+            {
+                "triggerCondition":"Attack",
+                "triggerRestriction":{
+                    "triggerRestrictions":["Augmented Card Triggered"]
+                }
+            },
+            "subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue":{
+						"value":"W"
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"who to Mechblast",
+						"cardRestrictions":["Board","Is Character","Subtypes Include","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["On Target's Diagonal"],
+							"mustBeEmpty":false
+						}
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMult":-1
+				}
+            ]
+        }
+	],
+	"keywords":["Collectible"],
+	"PlayRestriction":{
+		"normalRestrictions":["Augment Normal Restrictions","On Card that Fits Restriction"],
+		"effectRestrictions":["Augment Effect Restrictions"],
+		"onCardRestriction":{
+			"cardRestrictions":["Subtypes Include"],
+			"subtypesInclude":["Mech"]
+		}
+	},
+	"a":3,
+	"subtypeText":"Bdaster"
+}

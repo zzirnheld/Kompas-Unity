@@ -40,9 +40,9 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Reveal two cards?",
-					"OptionBlurbs":["Yes","No"],
-					"OptionJumpIndices":[3,7],
+					"choiceBlurb":"Reveal two cards?",
+					"optionBlurbs":["Yes","No"],
+					"jumpIndices":[3,7],
 					"showX":true
 				},
 				{

@@ -20,7 +20,7 @@
 						"cardRestrictions":["Discard","Name Is"],
                         "nameIs":"Ready"
 					},
-					"jumpIndex":6,
+					"jumpIndices":[6],
 					"xMultiplier":1
 				},
 				{

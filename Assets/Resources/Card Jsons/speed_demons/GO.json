@@ -20,7 +20,7 @@
 						"cardRestrictions":["Discard","Friendly","Name Is"],
                         "nameIs":"Ready"
 					},
-					"jumpIndex":6,
+					"jumpIndices":[6],
 					"xMultiplier":1
 				},
 				{
@@ -55,7 +55,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
-					"jumpTo":10
+					"jumpIndices":[10]
 				},
 				{
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
@@ -78,7 +78,7 @@
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
 					"delete":true,
-					"jumpTo":7
+					"jumpIndices":[7]
 				}
 			]
 		}

@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Earblaster, Tuba Master",
-	"effText":"When an enemy card arrives adjacent to me, dispel each adjacent spell. Deck->cast Music where each dispelled Music was.",
+	"effText":"When an enemy card arrives adjacent to me, dispel each friendly spell. Deck->cast Music where each dispelled Music was.",
 	"effects":[
 		{
 			"blurb":"DOOBT DOOBT DOOBT DOOBT",
@@ -26,7 +26,7 @@
 					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Board","Is Spell","Adjacent to Source"]
+						"cardRestrictions":["Board","Is Spell","Friendly"]
 					}
 				},
 				{
@@ -43,7 +43,7 @@
 						"cardRestrictions":["Subtypes Include"],
                         "subtypesInclude":["Music"]
 					},
-					"jumpIndex":7
+					"jumpIndices":[7]
 				},
 				{
 					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
@@ -63,7 +63,7 @@
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
 					"delete":true,
-					"jumpTo":1
+					"jumpIndices":[1]
 				}
 			]	
 		}

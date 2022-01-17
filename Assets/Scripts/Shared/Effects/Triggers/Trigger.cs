@@ -14,14 +14,14 @@ namespace KompasCore.Effects
         public const string Activate = "Activate";
         public const string Deactivate = "Deactivate";
         public const string Negate = "Negate";
-
+        //X will be equal to the change in the stat
         public const string NChange = "N Change";
         public const string EChange = "E Change";
         public const string SChange = "S Change";
         public const string WChange = "W Change";
         public const string CChange = "C Change";
         public const string AChange = "A Change";
-
+        //X will be equal to the stat's new value
         public const string NSet = "N Set";
         public const string ESet = "E Set";
         public const string SSet = "S Set";
@@ -51,19 +51,26 @@ namespace KompasCore.Effects
         public const string Move = "Move";
         public const string Annhilate = "Annihilate";
         public const string Remove = "Remove";
+
+        //Primary card is the card that left the aoe, secondary is the card whose aoe it left
+        public const string LeaveAOE = "Leave AOE";
+
         public const string AugmentAttached = "Augment Attached"; //when an augment becomes applied to a card.
         public const string AugmentDetached = "Augment Detached";
         public const string Augmented = "Augmented"; //when a card has an augment applied to it
+
         public const string Revealed = "Revealed";
         public const string Vanish = "Vanish";
 
         public static readonly string[] TriggerConditions = {
-            TurnStart, StackEnd,
-            NESWChange, Activate, Deactivate, NChange, EChange, SChange, WChange, CChange, AChange,
+            TurnStart, StackEnd, EffectPushedToStack,
+            NESWChange, Activate, Deactivate, Negate,
+            NChange, EChange, SChange, WChange, CChange, AChange,
             NSet, ESet, SSet, WSet, CSet, ASet,
-            Defends, Attacks, TakeCombatDamage, DealCombatDamage, Battles, BattleEnds, Negate,
-            EachDraw, DrawX, Arrive, Play, Discard, Rehand, Reshuffle, Topdeck, Bottomdeck, ToDeck, Move, Annhilate, Remove, 
-            AugmentAttached, AugmentDetached, Augmented, Revealed, Vanish
+            Defends, Attacks, TakeCombatDamage, DealCombatDamage, Battles, BattleEnds, 
+            EachDraw, DrawX, Arrive, Play, Discard, Rehand, Reshuffle, Topdeck, Bottomdeck, ToDeck, Move, Annhilate, Remove, LeaveAOE,
+            AugmentAttached, AugmentDetached, Augmented, 
+            Revealed, Vanish
         };
 
         public TriggerData TriggerData { get; }

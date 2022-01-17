@@ -1,5 +1,6 @@
 ﻿using KompasCore.Cards;
 using KompasCore.Effects;
+using KompasCore.Exceptions;
 using KompasServer.Effects;
 using KompasServer.Networking;
 using System.Net.Sockets;
@@ -55,33 +56,48 @@ namespace KompasServer.GameCore
         /// <param name="y"></param>
         public async Task TryAugment(GameCard aug, Space space)
         {
-            if (serverGame.ValidAugment(aug, space, this))
+            try
             {
-                aug.Play(space, this, payCost: true);
-                await serverGame.EffectsController.CheckForResponse();
+                if (serverGame.IsValidNormalAttach(aug, space, this)) aug.Play(space, this, payCost: true);
+                else ServerNotifier.NotifyPutBack();
             }
-            else ServerNotifier.NotifyPutBack();
+            catch (KompasException ke)
+            {
+                Debug.LogError(ke);
+                ServerNotifier.NotifyPutBack();
+            }
+            await serverGame.EffectsController.CheckForResponse();
         }
 
         public async Task TryPlay(GameCard card, Space space)
         {
-            if (serverGame.ValidBoardPlay(card, space, this))
+            try
             {
-                card.Play(space, this, payCost: true);
-                await serverGame.EffectsController.CheckForResponse();
+                if (serverGame.IsValidNormalPlay(card, space, this)) card.Play(space, this, payCost: true);
+                else ServerNotifier.NotifyPutBack();
             }
-            else ServerNotifier.NotifyPutBack();
+            catch (KompasException ke)
+            {
+                Debug.LogError(ke);
+                ServerNotifier.NotifyPutBack();
+            }
+            await serverGame.EffectsController.CheckForResponse();
         }
 
         public async Task TryMove(GameCard toMove, Space space)
         {
             //if it's not a valid place to do, put the cards back
-            if (serverGame.ValidMove(toMove, space, this))
+            try
             {
-                toMove.Move(space, true);
-                await serverGame.EffectsController.CheckForResponse();
+                if (serverGame.IsValidNormalMove(toMove, space, this)) toMove.Move(space, true);
+                else ServerNotifier.NotifyPutBack();
             }
-            else ServerNotifier.NotifyPutBack();
+            catch (KompasException ke)
+            {
+                Debug.LogError(ke);
+                ServerNotifier.NotifyPutBack();
+            }
+            await serverGame.EffectsController.CheckForResponse();
         }
 
         /// <summary>

@@ -26,8 +26,7 @@
 					"cardValue":{
 						"value":"Cost"
 					},
-					"change":true,
-					"xMultiplier":1
+					"change":true
 				},
 				{
 					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
@@ -35,7 +34,7 @@
 				{
 					"$type":"KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
 					"canDecline":true,
-					"jumpTo":0
+					"jumpIndices":[0]
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",

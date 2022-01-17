@@ -115,36 +115,53 @@ namespace KompasCore.Cards
 
         public Sprite simpleSprite;
 
-        protected void SetInfo(SerializableCard card)
+        protected void SetInfo(int n, int e, int s, int w, int c, int a,
+                                       string subtext, string[] spellTypes,
+                                       bool fast, bool unique,
+                                       int radius, int duration,
+                                       char cardType, string cardName,
+                                       string effText,
+                                       string subtypeText,
+                                       string[] augSubtypes)
         {
-            N = card.n;
-            E = card.e;
-            S = card.s;
-            W = card.w;
-            C = card.c;
-            A = card.a;
+            N = n;
+            E = e;
+            S = s;
+            W = w;
+            C = c;
+            A = a;
 
             //set sprites if they aren't already set correctly 
             //(check this by card name. cards should never have a pic that doesn't match their name)
-            if (card.cardName != CardName)
+            if (cardName != CardName)
             {
                 //Debug.Log($"Names are different, changing card pics to match name {card.cardName}");
-                simpleSprite = Resources.Load<Sprite>("Simple Sprites/" + card.cardName);
+                simpleSprite = Resources.Load<Sprite>($"Simple Sprites/{cardName}");
             }
             //else Debug.Log("Names match. Set Info not updating pics.");
 
-            Subtext = card.subtext;
-            SpellSubtypes = card.spellTypes;
-            Fast = card.fast;
-            Unique = card.unique;
-            Radius = card.radius;
-            Duration = card.duration;
-            CardType = card.cardType;
-            CardName = card.cardName;
-            EffText = card.effText;
-            SubtypeText = card.subtypeText;
-            AugmentSubtypes = card.augSubtypes;
+            Subtext = subtext;
+            SpellSubtypes = spellTypes;
+            Fast = fast;
+            Unique = unique;
+            Radius = radius;
+            Duration = duration;
+            CardType = cardType;
+            CardName = cardName;
+            EffText = effText;
+            SubtypeText = subtypeText;
+            AugmentSubtypes = augSubtypes;
         }
+
+        protected void SetInfo(SerializableCard card) 
+            => SetInfo(card.n, card.e, card.s, card.w, card.c, card.a,
+                       card.subtext, card.spellTypes,
+                       card.fast, card.unique,
+                       card.radius, card.duration,
+                       card.cardType, card.cardName,
+                       card.effText, 
+                       card.subtypeText,
+                       card.augSubtypes);
 
         public override string ToString()
         {

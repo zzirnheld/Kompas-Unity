@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Starheart",
-	"effText":"When a card moves to be adjacent to (another) Pulsar, give me +1 S.\nWhen a card that was adjacent to (another) Pulsar moves, give me -1 S.",
+	"effText":"When a card moves to be adjacent to Pulsar, give me +1 S.\nWhen a card that was adjacent to Pulsar moves, give me -1 S.",
 	"effects":[
 		{
 			"blurb":"Surge",
@@ -70,5 +70,5 @@
 	"e":5,
 	"s":5,
 	"w":5,
-	"subtypeText":""
+	"subtypeText":"Pulsar"
 }

@@ -49,12 +49,12 @@
 				},
 				{
 					"$type":"KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",
-					"jumpTo":6
+					"jumpIndices":[6]
 				},
 				{
 					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
 					"numTimesToDelay":0,
-					"indexToResume":8,
+					"jumpIndices":[8],
 					"fallOffCondition":"",
 					"endCondition":"Turn Start"
 				},
@@ -64,7 +64,7 @@
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
 					"delete":true,
-					"jumpTo":8
+					"jumpIndices":[8]
 				}
 			]
 		}

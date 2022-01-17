@@ -40,6 +40,8 @@ namespace KompasServer.GameCore
         public int cardCount = 0;
         private int currPlayerCount = 0; //current number of players. shouldn't exceed 2
 
+        public bool GameHasStarted { get; private set; } = false;
+
         public ServerEffect CurrEffect { get; set; }
         public override IStackable CurrStackEntry => EffectsController.CurrStackEntry;
         public override IEnumerable<IStackable> StackEntries => EffectsController.StackEntries;
@@ -103,7 +105,7 @@ namespace KompasServer.GameCore
             if (uiCtrl.DebugMode) return true;
             if (deck.Count < MinDeckSize) return false;
             //first name should be that of the Avatar
-            if (cardRepo.GetCardFromName(deck[0]).cardType != 'C') return false;
+            if (!cardRepo.CardNameIsCharacter(deck[0])) return false;
 
             return true;
         }
@@ -194,8 +196,10 @@ namespace KompasServer.GameCore
                 p.Avatar.SetE(p.Avatar.E + AvatarEBonus);
                 p.Avatar.SetW(p.Avatar.W - AvatarWPenalty);
                 //p.Avatar.SetShield(AvatarShield);
-                DrawX(p.index, 5);
+                DrawX(p.index, 5, stackSrc: null);
             }
+
+            GameHasStarted = true;
 
             await TurnStartOperations(notFirstTurn: false);
         }
@@ -220,7 +224,7 @@ namespace KompasServer.GameCore
             EffectsController.PushToStack(new ServerHandSizeStackable(this, TurnServerPlayer), default);
 
             //trigger turn start effects
-            var context = new ActivationContext(triggerer: TurnServerPlayer);
+            var context = new ActivationContext(player: TurnServerPlayer);
             EffectsController.TriggerForCondition(Trigger.TurnStart, context);
 
             await EffectsController.CheckForResponse();
@@ -245,13 +249,13 @@ namespace KompasServer.GameCore
             {
                 var toDraw = controller.deckCtrl.Topdeck;
                 if (toDraw == null) break;
-                var eachDrawContext = new ActivationContext(beforeCard: toDraw, stackable: stackSrc, triggerer: controller);
+                var eachDrawContext = new ActivationContext(mainCardBefore: toDraw, stackable: stackSrc, player: controller);
                 toDraw.Rehand(controller, stackSrc);
-                eachDrawContext.SetAfterCardInfo(toDraw);
+                eachDrawContext.CacheCardInfoAfter();
                 EffectsController.TriggerForCondition(Trigger.EachDraw, eachDrawContext);
                 drawn.Add(toDraw);
             }
-            var context = new ActivationContext(stackable: stackSrc, triggerer: controller, x: i);
+            var context = new ActivationContext(stackable: stackSrc, player: controller, x: i);
             EffectsController.TriggerForCondition(Trigger.DrawX, context);
             return drawn;
         }
@@ -278,21 +282,20 @@ namespace KompasServer.GameCore
         }
 
         #region check validity
-        public bool ValidBoardPlay(GameCard card, Space to, ServerPlayer player)
+        public bool IsValidNormalPlay(GameCard card, Space to, ServerPlayer player)
         {
+            if (card == null) return false;
             if (uiCtrl.DebugMode)
             {
                 Debug.LogWarning("Debug mode, always return true for valid play");
                 return true;
             }
 
-            Debug.Log($"Checking validity of playing {card.CardName} to {to}");
-            return card != null && to.Valid
-                && boardCtrl.GetCardAt(to) == null
-                && card.PlayRestriction.EvaluateNormalPlay(to, player);
+            //Debug.Log($"Checking validity of playing {card.CardName} to {to}");
+            return card.PlayRestriction.IsValidNormalPlay(to, player, checkCanAffordCost: true);
         }
 
-        public bool ValidAugment(GameCard card, Space to, ServerPlayer player)
+        public bool IsValidNormalAttach(GameCard card, Space to, ServerPlayer player)
         {
             if (uiCtrl.DebugMode)
             {
@@ -301,12 +304,12 @@ namespace KompasServer.GameCore
             }
 
             Debug.Log($"Checking validity augment of {card.CardName} to {to}, on {boardCtrl.GetCardAt(to)}");
-            return card != null && card.CardType == 'A' && to.Valid
-                && boardCtrl.GetCardAt(to) != null
-                && card.PlayRestriction.EvaluateNormalPlay(to, player);
+            return card != null && card.CardType == 'A' && to.IsValid
+                && !boardCtrl.IsEmpty(to)
+                && card.PlayRestriction.IsValidNormalPlay(to, player, checkCanAffordCost: true);
         }
 
-        public bool ValidMove(GameCard toMove, Space to, Player by)
+        public bool IsValidNormalMove(GameCard toMove, Space to, Player by)
         {
             if (uiCtrl.DebugMode)
             {
@@ -316,7 +319,7 @@ namespace KompasServer.GameCore
 
             Debug.Log($"Checking validity of moving {toMove.CardName} to {to}");
             if (toMove.Position == to) return false;
-            else return toMove.MovementRestriction.EvaluateNormalMove(to);
+            else return toMove.MovementRestriction.IsValidNormalMove(to);
         }
 
         public bool ValidAttack(GameCard attacker, GameCard defender, ServerPlayer instigator)
@@ -328,7 +331,7 @@ namespace KompasServer.GameCore
             }
 
             Debug.Log($"Checking validity of attack of {attacker.CardName} on {defender} by {instigator.index}");
-            return attacker.AttackRestriction.Evaluate(defender, stackSrc: null);
+            return attacker.AttackRestriction.IsValidAttack(defender, stackSrc: null);
         }
         #endregion
 

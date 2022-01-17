@@ -24,8 +24,8 @@ namespace KompasClient.Networking
     {
         public void Execute(ClientGame clientGame)
         {
-            for (int i = 0; i < num; i++) clientGame.enemyHandCtrl.IncrementHand();
-            for (int i = 0; i > num; i--) clientGame.enemyHandCtrl.DecrementHand();
+            for (int i = 0; i < num; i++) clientGame.ClientPlayers[1].clientHandCtrl.IncrementHand();
+            for (int i = 0; i > num; i--) clientGame.ClientPlayers[1].clientHandCtrl.DecrementHand();
         }
     }
 }

@@ -37,7 +37,7 @@
 				{
 					"$type":"KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
 					"canDecline":true,
-					"jumpTo":1
+					"jumpIndices":[1]
 				},
 				{
 					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"

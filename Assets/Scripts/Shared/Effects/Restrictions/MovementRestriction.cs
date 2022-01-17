@@ -1,11 +1,11 @@
 ﻿using KompasCore.Cards;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace KompasCore.Effects
 {
-    [System.Serializable]
     public class MovementRestriction
     {
         private const string Default = "Default";
@@ -30,6 +30,8 @@ namespace KompasCore.Effects
 
         //Whether the character has been activated (for Golems)
         private const string IsActive = "Activated";
+        //Whether the shortest distance, including moving through valid non-empty spaces, is fewer than the number of spaces
+        private const string CanMoveEnoughThroughEmptyOrRestrictedSpaces = "Can Move Enough Through Empty or Restricted Spaces";
 
         private const string NotNormally = "Not Normally";
 
@@ -72,6 +74,8 @@ namespace KompasCore.Effects
         /// </summary>
         public readonly List<string> effectRestrictions = new List<string>();
 
+        public SpaceRestriction throughSpacesRestriction;
+
         public GameCard Card { get; private set; }
 
         /// <summary>
@@ -92,45 +96,57 @@ namespace KompasCore.Effects
             effectRestrictions.AddRange(effectRestrictionsFromJson);
             if (effectRestrictionsFromJson.Contains(Default))
                 effectRestrictions.AddRange(defaultEffectMovementRestrictions);
+
+            throughSpacesRestriction?.Initialize(card, card.Controller, effect: default, subeffect: default);
         }
 
-        private bool RestrictionValid(string restriction, Space space, bool isSwapTarget, bool byEffect)
+        private bool CardAtDestinationCanMoveHere(Space space, bool byEffect)
         {
-            switch (restriction)
-            {
-                case Default: return true;
-                //normal restrictions
-                case InPlay: return Card.Location == CardLocation.Field;
-                case DistinctSpace: return !Card.Position.Equals(space);
-                case IsCharacter: return Card.CardType == 'C';
-                case CanMoveEnoughSpaces: return Card.SpacesCanMove >= Card.Game.boardCtrl.ShortestEmptyPath(Card, space);
-                case StandardSpellMoveRestiction: return Card.Game.ValidSpellSpaceFor(Card, space);
-                case NothingHappening: return Card.Game.NothingHappening;
-                case IsFriendlyTurn: return Card.Game.TurnPlayer == Card.Controller;
-                case DestinationCanMoveHere:
-                    if (isSwapTarget) return true;
-                    var atDest = Card.Game.boardCtrl.GetCardAt(space);
-                    if (atDest == null) return true;
-                    if (byEffect) return atDest.MovementRestriction.EvaluateEffectMove(Card.Position, isSwapTarget: true);
-                    else if (atDest.Controller != Card.Controller) return false; //TODO later allow for cards that *can* swap with enemies
-                    else return atDest.MovementRestriction.EvaluateNormalMove(Card.Position, isSwapTarget: true);
-
-                //special effect restrictions
-                case IsActive: return Card.Activated;
-                case NotNormally: return !byEffect;
-                default: throw new System.ArgumentException($"Could not understand movement restriction {restriction}");
-            }
+            var atDest = Card.Game.boardCtrl.GetCardAt(space);
+            if (atDest == null) return true;
+            if (byEffect) return atDest.MovementRestriction.IsValidEffectMove(Card.Position, isSwapTarget: true);
+            else if (atDest.Controller != Card.Controller) return false; //TODO later allow for cards that *can* swap with enemies
+            else return atDest.MovementRestriction.IsValidNormalMove(Card.Position, isSwapTarget: true);
         }
+
+        private bool CanMoveThroughEmptyOrRestrictedSpacesTo(Space destination)
+        {
+            bool predicate(Space s) => Card.Game.boardCtrl.IsEmpty(s)
+                                    || throughSpacesRestriction.IsValidSpace(s, default);
+            return Card.SpacesCanMove >= Card.Game.boardCtrl.ShortestPath(Card.Position, destination, predicate);
+        }
+
+        private bool IsRestrictionValid(string restriction, Space destination, bool isSwapTarget, bool byEffect) => restriction switch
+        {
+            Default => true,
+
+            //normal restrictions
+            InPlay => Card.Location == CardLocation.Field,
+            DistinctSpace => !Card.Position.Equals(destination),
+            IsCharacter => Card.CardType == 'C',
+            CanMoveEnoughSpaces => Card.SpacesCanMove >= Card.Game.boardCtrl.ShortestEmptyPath(Card, destination),
+            StandardSpellMoveRestiction => Card.Game.ValidSpellSpaceFor(Card, destination),
+            NothingHappening => Card.Game.NothingHappening,
+            IsFriendlyTurn => Card.Game.TurnPlayer == Card.Controller,
+            DestinationCanMoveHere => isSwapTarget || CardAtDestinationCanMoveHere(destination, byEffect),
+
+            //special effect restrictions
+            IsActive => Card.Activated,
+            CanMoveEnoughThroughEmptyOrRestrictedSpaces => CanMoveThroughEmptyOrRestrictedSpacesTo(destination),
+            NotNormally => !byEffect,
+
+            _ => throw new System.ArgumentException($"Could not understand movement restriction {restriction}"),
+        };
 
         /* This exists to debug a card's movement restriction,
          * but should not be usually used because it prints a ton whenever
-         * the game checks to see if a person has a response.*/
+         * the game checks to see if a person has a response.
         private bool RestrictionValidWithDebug(string restriction, Space space, bool isSwapTarget, bool byEffect)
         {
             bool valid = RestrictionValid(restriction, space, isSwapTarget, byEffect);
             //if (!valid) Debug.LogWarning($"{Card.CardName} cannot move to {space} because it flouts the movement restriction {restriction}");
             return valid;
-        }
+        } */
 
         /// <summary>
         /// Checks whether the card this is attached to can move to (x, y) as a normal action
@@ -140,8 +156,8 @@ namespace KompasCore.Effects
         /// <param name="isSwapTarget">Whether this card is the target of a swap. <br></br>
         /// If this is true, ignores "Destination Can Move Here" restriction, because otherwise you would have infinite recursion.</param>
         /// <returns><see langword="true"/> if the card can move to (x, y); <see langword="false"/> otherwise.</returns>
-        public bool EvaluateNormalMove(Space space, bool isSwapTarget = false)
-            => space.Valid && normalRestrictions.All(r => RestrictionValidWithDebug(r, space, isSwapTarget, false));
+        public bool IsValidNormalMove(Space space, bool isSwapTarget = false)
+            => space.IsValid && normalRestrictions.All(r => IsRestrictionValid(r, space, isSwapTarget: isSwapTarget, byEffect: false));
 
         /// <summary>
         /// Checks whether the card this is attached to can move to (x, y) as part of an effect
@@ -151,7 +167,7 @@ namespace KompasCore.Effects
         /// <param name="isSwapTarget">Whether this card is the target of a swap. <br></br>
         /// If this is true, ignores "Destination Can Move Here" restriction, because otherwise you would have infinite recursion.</param>
         /// <returns><see langword="true"/> if the card can move to (x, y); <see langword="false"/> otherwise.</returns>
-        public bool EvaluateEffectMove(Space space, bool isSwapTarget = false)
-            => space.Valid && effectRestrictions.All(r => RestrictionValidWithDebug(r, space, isSwapTarget: false, byEffect: true));
+        public bool IsValidEffectMove(Space space, bool isSwapTarget = false)
+            => space.IsValid && effectRestrictions.All(r => IsRestrictionValid(r, space, isSwapTarget: isSwapTarget, byEffect: true));
     }
 }

@@ -3,7 +3,6 @@ using System.Linq;
 
 namespace KompasCore.Effects
 {
-    [System.Serializable]
     public class XRestriction
     {
         public const string Positive = ">0";
@@ -33,39 +32,43 @@ namespace KompasCore.Effects
         public GameCard Source { get; private set; }
         public Subeffect Subeffect { get; private set; }
 
+        private bool initialized = false;
+
         public void Initialize(GameCard source, Subeffect subeffect = null)
         {
             Source = source;
             Subeffect = subeffect;
             avatarCardValue?.Initialize(Source);
+            initialized = true;
         }
 
-        private bool RestrictionValid(string r, int x)
+        private bool IsRestrictionValid(string r, int x) => r switch
         {
-            return r switch
-            {
-                Positive => x > 0,
-                Negative => x < 0,
-                Nonnegative => x >= 0,
+            Positive => x > 0,
+            Negative => x < 0,
+            Nonnegative => x >= 0,
 
-                AtLeastConstant     => x >= constant,
-                NoMoreThanConstant  => x <= constant,
-                EqualsConstant      => x == constant,
+            AtLeastConstant => x >= constant,
+            NoMoreThanConstant => x <= constant,
+            EqualsConstant => x == constant,
 
-                LessThanEffectX      => x < Subeffect.Count,
-                GreaterThanEffectX   => x > Subeffect.Count,
-                EqualsEffectX        => x == Subeffect.Count,
-                LessThanEqualEffectX => x <= Subeffect.Count,
+            LessThanEffectX => x < Subeffect.Count,
+            GreaterThanEffectX => x > Subeffect.Count,
+            EqualsEffectX => x == Subeffect.Count,
+            LessThanEqualEffectX => x <= Subeffect.Count,
 
-                LessThanEffectArg   => x < Subeffect.Effect.arg,
+            LessThanEffectArg => x < Subeffect.Effect.arg,
 
-                LessThanAvatarCardValue    => x < avatarCardValue.GetValueOf(Source.Controller.Avatar),
-                GreaterThanAvatarCardValue => x > avatarCardValue.GetValueOf(Source.Controller.Avatar),
+            LessThanAvatarCardValue => x < avatarCardValue.GetValueOf(Source.Controller.Avatar),
+            GreaterThanAvatarCardValue => x > avatarCardValue.GetValueOf(Source.Controller.Avatar),
 
-                _ => throw new System.ArgumentException($"Invalid X restriction {r} in X Restriction."),
-            };
+            _ => throw new System.ArgumentException($"Invalid X restriction {r} in X Restriction."),
+        };
+
+        public bool IsValidNumber(int x)
+        {
+            if (!initialized) throw new System.ArgumentException("X restriction not initialized!");
+            return xRestrictions.All(r => IsRestrictionValid(r, x));
         }
-
-        public bool Evaluate(int x) => xRestrictions.All(r => RestrictionValid(r, x));
     }
 }

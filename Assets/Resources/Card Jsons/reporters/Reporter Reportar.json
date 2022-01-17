@@ -41,9 +41,9 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Reveal an SX character?",
-					"OptionBlurbs":["Yes","No"],
-					"OptionJumpIndices":[6,9],
+					"choiceBlurb":"Reveal an SX character?",
+					"optionBlurbs":["Yes","No"],
+					"jumpIndices":[6,9],
 					"showX":true
 				},
 				{

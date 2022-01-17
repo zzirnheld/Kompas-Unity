@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"XVIII - The Moon",
-	"effText":"When you draw, swap a Summoned character's W with a Summoned character's E. (It can be the same character.)",
+	"effText":"When you draw, you can swap the W of a Summoned character with the E of a Summoned character within 2 spaces of the first.",
 	"effects":[
 		{
 			"blurb":"Swap EW",
@@ -27,7 +27,16 @@
 					"cardRestriction":
 					{
 						"blurb":"character whose E to swap",
-						"cardRestrictions":["Is Character","Board","Summoned"]
+						"cardRestrictions":["Is Character","Board","Summoned","Space Fits Restriction"],
+						"spaceRestriction":
+						{
+							"spaceRestrictions":["Distance to Target Fits X Restriction"],
+							"distanceXRestriction":{
+								"xRestrictions":["<=Constant"],
+								"constant":2
+							},
+							"mustBeEmpty":false
+						}
 					}
 				},
 				{

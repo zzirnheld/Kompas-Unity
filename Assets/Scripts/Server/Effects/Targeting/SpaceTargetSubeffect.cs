@@ -20,8 +20,8 @@ namespace KompasServer.Effects
         }
 
         public IEnumerable<Space> ValidSpaces => Space.Spaces
-                .Where(s => spaceRestriction.Evaluate(s, Context, theoreticalTarget: Target))
-                .Select(s => Player.SubjectiveCoords(s));
+                .Where(s => spaceRestriction.IsValidSpace(s, Context, theoreticalTarget: CardTarget))
+                .Select(s => PlayerTarget.SubjectiveCoords(s));
 
         public override bool IsImpossible() => ValidSpaces.Count() == 0;
 
@@ -38,7 +38,7 @@ namespace KompasServer.Effects
             {
                 for(int y = 0; y < 7; y++)
                 {
-                    if (spaceRestriction.Evaluate((x, y), Context, theoreticalTarget)) return true;
+                    if (spaceRestriction.IsValidSpace((x, y), Context, theoreticalTarget)) return true;
                 }
             }
 
@@ -50,7 +50,7 @@ namespace KompasServer.Effects
             var spaces = ValidSpaces.Select(s => (s.x, s.y)).ToArray();
             var recommendedSpaces 
                 = ForPlay 
-                ? spaces.Where(s => Target.PlayRestriction.RecommendedPlay(s, Player, Context, normal: false)).ToArray() 
+                ? spaces.Where(s => CardTarget.PlayRestriction.IsRecommendedPlay(s, PlayerTarget, Context, normal: false)).ToArray() 
                 : spaces;
             if (spaces.Length > 0)
             {
@@ -72,7 +72,7 @@ namespace KompasServer.Effects
         public bool SetTargetIfValid(int x, int y)
         {
             //evaluate the target. if it's valid, confirm it as the target (that's what the true is for)
-            if (spaceRestriction.Evaluate((x, y), Context))
+            if (Space.IsValidSpace(x, y) && spaceRestriction.IsValidSpace((x, y), Context))
             {
                 Debug.Log($"Adding {x}, {y} as coords");
                 ServerEffect.AddSpace((x, y));

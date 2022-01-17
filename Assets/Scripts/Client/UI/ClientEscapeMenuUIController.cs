@@ -11,7 +11,7 @@ namespace KompasClient.UI
             if (Input.GetKeyDown(KeyCode.Escape)) Cancel();
         }
 
-        public ClientUISettingsController settingsCtrl;
+        public ClientSettingsUIController settingsCtrl;
 
         public void Enable() => gameObject.SetActive(true);
 

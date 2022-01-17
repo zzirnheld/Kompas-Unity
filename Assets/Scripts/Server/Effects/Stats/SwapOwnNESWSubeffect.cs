@@ -13,14 +13,14 @@ namespace KompasServer.Effects
 
         public override Task<ResolutionInfo> Resolve()
         {
-            if (Target == null)
+            if (CardTarget == null)
                 throw new NullCardException(TargetWasNull);
-            else if (forbidNotBoard && Target.Location != CardLocation.Field)
-                throw new InvalidLocationException(Target.Location, Target, ChangedStatsOfCardOffBoard);
+            else if (forbidNotBoard && CardTarget.Location != CardLocation.Field)
+                throw new InvalidLocationException(CardTarget.Location, CardTarget, ChangedStatsOfCardOffBoard);
 
-            int[] newStats = { Target.N, Target.E, Target.S, Target.W };
+            int[] newStats = { CardTarget.N, CardTarget.E, CardTarget.S, CardTarget.W };
             (newStats[Stat1], newStats[Stat2]) = (newStats[Stat2], newStats[Stat1]);
-            Target.SetCharStats(newStats[0], newStats[1], newStats[2], newStats[3]);
+            CardTarget.SetCharStats(newStats[0], newStats[1], newStats[2], newStats[3]);
 
             return Task.FromResult(ResolutionInfo.Next);
         }

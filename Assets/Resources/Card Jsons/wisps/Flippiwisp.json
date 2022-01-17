@@ -19,13 +19,13 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Pay 1 pip, discard 1, and draw 1?",
-					"OptionBlurbs":["Yes","No"],
-					"OptionJumpIndices":[2,7]
+					"choiceBlurb":"Pay 1 pip, discard 1, and draw 1?",
+					"optionBlurbs":["Yes","No"],
+					"jumpIndices":[2,7]
 				},
 				{
 					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
-					"jumpTo":7
+					"jumpIndices":[7]
 				},
 				{
 					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",
@@ -56,9 +56,9 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Pay 1 pip, discard 1, and draw 1?",
-					"OptionBlurbs":["Yes","No"],
-					"OptionJumpIndices":[11,100]
+					"choiceBlurb":"Pay 1 pip, discard 1, and draw 1?",
+					"optionBlurbs":["Yes","No"],
+					"jumpIndices":[11,100]
 				},
 				{
 					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",

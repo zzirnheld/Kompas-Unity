@@ -22,27 +22,13 @@ namespace KompasClient.GameCore
         public IEnumerable<ClientGameCard> ClientCards => cardsByID.Values;
         public override IEnumerable<GameCard> Cards => ClientCards;
 
-        public ClientHandController friendlyHandCtrl;
-        public ClientDeckController friendlyDeckCtrl;
-        public ClientDiscardController friendlyDiscardCtrl;
-
-        public GameObject friendlyHandObj;
-        public GameObject friendlyDeckObj;
-        public GameObject friendlyDiscardObj;
-
-        public ClientDummyHandController enemyHandCtrl;
-        public ClientDeckController enemyDeckCtrl;
-        public ClientDiscardController enemyDiscardCtrl;
-
-        public GameObject enemyHandObj;
-        public GameObject enemyDeckObj;
-        public GameObject enemyDiscardObj;
-
         public ClientNetworkController clientNetworkCtrl;
         public ClientNotifier clientNotifier;
         public ClientUIController clientUICtrl;
-        public ClientUISettingsController clientUISettingsCtrl;
+        public ClientSettingsUIController clientUISettingsCtrl;
         public ClientEffectsController clientEffectsCtrl;
+
+        public ClientSettings ClientSettings => clientUISettingsCtrl.ClientSettings;
 
         //turn players?
         public bool FriendlyTurn => TurnPlayerIndex == 0;
@@ -79,7 +65,7 @@ namespace KompasClient.GameCore
         public override IEnumerable<IStackable> StackEntries => clientEffectsCtrl.StackEntries;
 
         public bool canZoom = false;
-        public ClientUISettings ClientUISettings => clientUISettingsCtrl.ClientUISettings;
+        public ClientSettings ClientUISettings => clientUISettingsCtrl.ClientSettings;
 
         //dirty card set
         private readonly HashSet<GameCard> dirtyCardList = new HashSet<GameCard>();
@@ -198,9 +184,9 @@ namespace KompasClient.GameCore
 
         public void ApplySettings()
         {
-            var uiSettings = clientUISettingsCtrl.ClientUISettings;
-            ClientCameraController.ZoomThreshold = uiSettings.zoomThreshold;
-            foreach (var card in ClientCards) card.clientCardCtrl.ApplySettings(uiSettings);
+            ClientCameraController.ZoomThreshold = ClientSettings.zoomThreshold;
+            clientUICtrl.ApplySettings(ClientSettings);
+            foreach (var card in ClientCards) card.clientCardCtrl.ApplySettings(ClientSettings);
         }
 
         #region targeting

@@ -13,7 +13,7 @@ public class ClientDummyHandController : ClientHandController
 
     private readonly List<GameCard> dummyHand = new List<GameCard>();
 
-    public void IncrementHand()
+    public override void IncrementHand()
     {
         var card = GameObject.Instantiate(dummyCardPrefab, parent: gameObject.transform).GetComponent<DummyClientGameCard>();
         card.SetClientGame(clientGame);
@@ -21,7 +21,7 @@ public class ClientDummyHandController : ClientHandController
         Add(card);
     }
 
-    public void DecrementHand() => Remove(dummyHand.LastOrDefault());
+    public override void DecrementHand() => Remove(dummyHand.LastOrDefault());
 
     public override void Remove(GameCard card)
     {

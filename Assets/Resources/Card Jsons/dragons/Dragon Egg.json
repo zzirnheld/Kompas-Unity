@@ -1,7 +1,7 @@
 {
 	"cardType":67,
 	"cardName":"Dragon Egg",
-	"effText":"After I’m summoned, delay 2 turns, then tribute me and deck-summon a Dragon where I was.",
+	"effText":"After I'm summoned, delay 2 turns, then tribute me and deck-summon a Dragon where I was.",
 	"effects":[
 		{
 			"triggerData":
@@ -15,7 +15,7 @@
 				{
 					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
 					"numTimesToDelay":1,
-					"indexToResume":1,
+					"jumpIndices":[1],
 					"endCondition":"Turn Start"
 				},
 				{

@@ -59,8 +59,8 @@ namespace KompasCore.GameCore
         /// </summary>
         public virtual void Remove(GameCard card)
         {
-            if (!Deck.Contains(card)) throw new CardNotHereException(CardLocation,
-                $"Couldn't remove {card.CardName} from deck, it wasn't in deck!");
+            if (!Deck.Contains(card)) 
+                throw new CardNotHereException(CardLocation, card, $"Couldn't remove {card.CardName} from deck, it wasn't in deck!");
 
             Deck.Remove(card);
         }
@@ -84,7 +84,7 @@ namespace KompasCore.GameCore
             List<GameCard> cards = new List<GameCard>();
             foreach (GameCard c in Deck)
             {
-                if (c != null && cardRestriction.Evaluate(c, context))
+                if (c != null && cardRestriction.IsValidCard(c, context))
                     cards.Add(c);
             }
             return cards;

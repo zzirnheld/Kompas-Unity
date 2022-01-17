@@ -23,9 +23,9 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Give +1 EW or -1 EW?",
-					"OptionBlurbs":["+1 EW","-1 EW"],
-					"OptionJumpIndices":[2,4],
+					"choiceBlurb":"Give +1 EW or -1 EW?",
+					"optionBlurbs":["+1 EW","-1 EW"],
+					"jumpIndices":[2,4],
 					"hasDefault":false
 				},
 				{

@@ -1,0 +1,35 @@
+{
+    "blurb":"Instrument Dispel",
+    "triggerData":
+    {
+        "triggerCondition":"Play",
+        "triggerRestriction":{
+            "triggerRestrictions":["This Card in Play","Coords Fit Restriction"],
+            "spaceRestriction":
+            {
+                "spaceRestrictions":["Adjacent to Source","Card Here Fits Restriction"],
+                "hereFitsRestriction":
+                {
+                    "cardRestrictions":["Friendly","Subtypes Include"],
+                    "subtypesInclude":["Music"]
+                },
+                "mustBeEmpty":false
+            }
+        }
+    },
+	"subeffects":[
+        {
+            "$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+        },
+        {
+            "$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+            "numTimesToDelay":0,
+            "jumpIndices":[2],
+            "fallOffCondition":"",
+            "endCondition":"Stack End"
+        },
+        {
+            "$type":"KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+        }
+	]	
+}

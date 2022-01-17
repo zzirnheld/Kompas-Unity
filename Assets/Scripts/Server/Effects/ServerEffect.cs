@@ -9,7 +9,6 @@ using UnityEngine;
 
 namespace KompasServer.Effects
 {
-    [System.Serializable]
     public class ServerEffect : Effect, IServerStackable
     {
         public const string EffectWasNegated = "Effect was negated";
@@ -52,8 +51,62 @@ namespace KompasServer.Effects
             if (triggerData != null && !string.IsNullOrEmpty(triggerData.triggerCondition))
                 ServerTrigger = new ServerTrigger(triggerData, this);
 
-            int i = 0;
-            foreach (var subeff in subeffects) subeff.Initialize(this, i++);
+            for (int i = 0; i < subeffects.Length; i++)
+            {
+                subeffects[i].Initialize(this, i);
+            }
+        }
+
+        /// <summary>
+        /// Inserts the given array of subeffects into this effect's <see cref="subeffects"/> array.
+        /// The first subeffect (index 0) of <paramref name="newSubeffects"/> 
+        /// will be at <paramref name="startingAtIndex"/> in the new array.
+        /// </summary>
+        /// <param name="startingAtIndex"></param>
+        /// <param name="newSubeffects"></param>
+        public void InsertSubeffects(int startingAtIndex, params ServerSubeffect[] newSubeffects)
+        {
+            if (newSubeffects == null) throw new System.ArgumentNullException("Can't insert null subeffects");
+
+            //First, update the subeffect jump indices
+            //Of the subeffects to be inserted
+            foreach (var s in newSubeffects)
+            {
+                if (s.jumpIndices == null) continue;
+                for (int i = 0; i < s.jumpIndices.Length; i++)
+                {
+                    s.jumpIndices[i] += startingAtIndex;
+                }
+            }
+            //And of any extant subeffects whose indices would be after the insertion point
+            foreach (var s in subeffects)
+            {
+                if (s.jumpIndices == null) continue;
+                for (int i = 0; i < s.jumpIndices.Length; i++)
+                {
+                    if (s.jumpIndices[i] >= startingAtIndex) s.jumpIndices[i] += newSubeffects.Length;
+                }
+            }
+
+            ServerSubeffect[] combinedSubeffects = new ServerSubeffect[subeffects.Length + newSubeffects.Length];
+            int oldIndex;
+            int combinedIndex;
+            //Add old subeffects to combined array, until you get to the index where you want to insert the new ones
+            for (oldIndex = 0, combinedIndex = 0; combinedIndex < startingAtIndex; oldIndex++, combinedIndex++)
+            {
+                combinedSubeffects[combinedIndex] = subeffects[oldIndex];
+            }
+            //Add all the new subeffects to the combined array
+            for (int newIndex = 0; newIndex < newSubeffects.Length; newIndex++, combinedIndex++)
+            {
+                combinedSubeffects[combinedIndex] = newSubeffects[newIndex];
+            }
+            //Add the remaining old subeffects to the array
+            for (; oldIndex < subeffects.Length; oldIndex++, combinedIndex++)
+            {
+                combinedSubeffects[combinedIndex] = subeffects[oldIndex];
+            }
+            subeffects = combinedSubeffects;
         }
 
         public override bool CanBeActivatedBy(Player controller)
@@ -79,16 +132,16 @@ namespace KompasServer.Effects
 
             //set context parameters
             CurrActivationContext = context;
-            X = context.X ?? 0;
+            X = context.x ?? 0;
 
-            targetsList.Clear();
-            if (context.Targets != null) targetsList.AddRange(context.Targets);
-            if (context.Spaces != null) coords.AddRange(context.Spaces);
+            cardTargets.Clear();
+            if (context.Targets != null) cardTargets.AddRange(context.Targets);
+            if (context.Spaces != null) spaceTargets.AddRange(context.Spaces);
 
-            coords.Clear();
+            spaceTargets.Clear();
             
-            players.Clear();
-            players.Add(Controller);
+            playerTargets.Clear();
+            playerTargets.Add(Controller);
 
             //notify relevant to this effect starting
             ServerController.ServerNotifier.NotifyEffectX(Source, EffectIndex, X);
@@ -164,7 +217,7 @@ namespace KompasServer.Effects
         {
             SubeffectIndex = 0;
             X = 0;
-            targetsList.Clear();
+            cardTargets.Clear();
             rest.Clear();
             OnImpossible = null;
             ServerController.ServerNotifier.NotifyBothPutBack();

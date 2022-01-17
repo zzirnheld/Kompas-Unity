@@ -52,7 +52,7 @@
                             "xRestrictions":["=X"]
                         }
 					},
-					"xModifier":1
+					"xModifier":3
 				},
 				{
 					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"

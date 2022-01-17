@@ -33,9 +33,9 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Pay 1 pip to draw?",
-					"OptionBlurbs":["Yes","No"],
-					"OptionJumpIndices":[4,100]
+					"choiceBlurb":"Pay 1 pip to draw?",
+					"optionBlurbs":["Yes","No"],
+					"jumpIndices":[4,100]
 				},
 				{
 					"$type":"KompasServer.Effects.PayPipsSubeffect, Assembly-CSharp",

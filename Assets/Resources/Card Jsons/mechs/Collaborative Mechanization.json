@@ -1,0 +1,74 @@
+{
+	"cardType":83,
+	"cardName":"Collaborative Mechanization",
+	"effText":"Hand->discard X Mech Pilots. Deck->hand X Mech Golems. Annihilate me. Gain X pips.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Play",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"for Collaborative Mechanization to discard",
+						"cardRestrictions":["Friendly","Hand","Subtypes Include"],
+						"subtypesInclude":["Mech","Pilot"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
+					"canDecline":true,
+					"jumpIndices":[0]
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"jumpIndices":[3]
+				},
+				{
+					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Sign up here, future Pilots!",
+						"cardRestrictions":["Friendly","Deck","Subtypes Include"],
+						"subtypesInclude":["Mech","Golem"]
+					},
+					"listRestriction":{
+						"listRestrictions":["Min Can Choose: X","Max Can Choose: X"]
+					},
+					"xMultiplier":1
+				},
+				{
+					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete":true,
+					"jumpIndices":[5]
+				},
+				{
+					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xMultiplier":1
+				}
+			]	
+		}
+	],
+	"c":1,
+	"spellTypes":["Simple"],
+	"subtypeText":"Simple"
+}

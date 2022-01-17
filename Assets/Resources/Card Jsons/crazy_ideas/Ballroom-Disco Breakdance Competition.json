@@ -7,7 +7,7 @@
 			"triggerData":
 			{
 				"blurb":"LET'S BREAKDANCE",
-				"triggerCondition":"Move",
+				"triggerCondition":"Arrive",
 				"triggerRestriction":{
 					"triggerRestrictions":["Coords Fit Restriction","This Card in Play"],
 					"spaceRestriction":

@@ -19,25 +19,33 @@ namespace KompasCore.Effects
 
         //subeffects
         public abstract Subeffect[] Subeffects { get; }
-        //current subeffect that's resolving
+        /// <summary>
+        /// Current subeffect that's resolving
+        /// </summary>
         public int SubeffectIndex { get; protected set; }
-        public Subeffect CurrSubeffect => Subeffects[SubeffectIndex];
 
         //Targets
-        protected readonly List<GameCard> targetsList = new List<GameCard>();
-        public IEnumerable<GameCard> Targets => targetsList;
-        protected readonly List<Space> coords = new List<Space>();
-        public readonly List<Player> players = new List<Player>();
+        protected readonly List<GameCard> cardTargets = new List<GameCard>();
+        protected readonly List<Space> spaceTargets = new List<Space>();
+        //we don't care about informing players of the contents of these. yet. but we might later
+        public readonly List<GameCardInfo> cardInfoTargets = new List<GameCardInfo>();
+        public readonly List<Player> playerTargets = new List<Player>();
         public readonly List<GameCard> rest = new List<GameCard>();
+
+        public IEnumerable<GameCard> CardTargets => cardTargets;
+        public IEnumerable<Space> SpaceTargets => spaceTargets;
+
         /// <summary>
         /// X value for card effect text (not coordinates)
         /// </summary>
         public int X = 0;
 
         //Triggering and Activating
-        public TriggerData triggerData;
         public abstract Trigger Trigger { get; }
+        public TriggerData triggerData;
         public ActivationRestriction activationRestriction;
+
+        //Misc effect info
         public string blurb;
         public int arg; //used for keyword arguments, and such
 
@@ -50,7 +58,7 @@ namespace KompasCore.Effects
 
         protected void SetInfo(GameCard source, int effIndex, Player owner)
         {
-            Source = source != null ? source : throw new ArgumentNullException("source", "Effect cannot be attached to null card");
+            Source = source ?? throw new ArgumentNullException("source", "Effect cannot be attached to null card");
             EffectIndex = effIndex;
             Controller = owner;
 
@@ -71,40 +79,30 @@ namespace KompasCore.Effects
             TimesUsedThisTurn = 0;
         }
 
-        public virtual void AddTarget(GameCard card) => targetsList.Add(card);
-        public virtual void RemoveTarget(GameCard card) => targetsList.Remove(card);
+        public virtual void AddTarget(GameCard card) => cardTargets.Add(card);
+        public virtual void RemoveTarget(GameCard card) => cardTargets.Remove(card);
 
         public virtual bool CanBeActivatedBy(Player controller)
-            => Trigger == null && activationRestriction != null && activationRestriction.Evaluate(controller);
+            => Trigger == null && activationRestriction != null && activationRestriction.IsValidActivation(controller);
 
         public virtual bool CanBeActivatedAtAllBy(Player activator)
-            => Trigger == null && activationRestriction != null && activationRestriction.EvaluateAtAll(activator);
+            => Trigger == null && activationRestriction != null && activationRestriction.IsPotentiallyValidActivation(activator);
 
-        public GameCard GetTarget(int num)
+        public T GetItem<T>(IEnumerable<T> enumerable, int index)
         {
-            int trueIndex = num < 0 ? num + targetsList.Count() : num;
-            return trueIndex < 0 ? null : targetsList[trueIndex];
+            int trueIndex = index < 0 ? index + enumerable.Count() : index;
+            if (trueIndex < 0) return default;
+            return enumerable.ElementAt(trueIndex);
         }
 
-        public Space GetSpace(int num)
-        {
-            var trueIndex = num < 0 ? num + coords.Count() : num;
-            return trueIndex < 0 ? null : coords[trueIndex];
-        }
+        public GameCard GetTarget(int num) => GetItem(cardTargets, num);
 
-        public Player GetPlayer(int num)
-        {
-            int trueIndex = num < 0 ? num + players.Count() : num;
-            return trueIndex < 0 ? null : players[trueIndex];
-        }
+        public Space GetSpace(int num) => GetItem(spaceTargets, num);
 
-        public void AddSpace(Space space)
-        {
-            coords.Add(space.Copy);
-        }
+        public Player GetPlayer(int num) => GetItem(playerTargets, num);
 
-        public bool AnyCoords() => coords.Any();
+        public void AddSpace(Space space) => spaceTargets.Add(space.Copy);
 
-        public IEnumerable<T> SelectCoords<T>(Func<Space, T> lambda) => coords.Select(lambda);
+        public override string ToString() => $"Effect of {(Source == null ? "Nothing???" : Source.CardName)}";
     }
 }

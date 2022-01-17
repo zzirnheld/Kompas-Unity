@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"Wanderlust",
-	"effText":"Choose a friendly Summoned character. Repeat the following any number of times:\nReshuffle the last chosen S X character. Hand->summon an S <= X + 1 character.\n(This triggers any on-summon effects of each of those characters.)",
+	"effText":"Choose a friendly Summoned character. Repeat the following any number of times:\nReshuffle the last chosen S X character. Hand->summon an S <= X + 1 character.",
 	"effects":[
 		{
 			"triggerData":
@@ -59,9 +59,9 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Reshuffle to summon again?",
-					"OptionBlurbs":["Yes","No"],
-					"OptionJumpIndices":[1,100]
+					"choiceBlurb":"Reshuffle to summon again?",
+					"optionBlurbs":["Yes","No"],
+					"jumpIndices":[1,100]
 				}
 			]	
 		}

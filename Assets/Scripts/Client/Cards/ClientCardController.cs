@@ -53,7 +53,7 @@ public class ClientCardController : CardController
         unzoomedHazeImage.sprite = card.CardType == 'C' ? unzoomedCharHaze : unzoomedNonCharHaze;
     }
 
-    public void ApplySettings(ClientUISettings settings)
+    public void ApplySettings(ClientSettings settings)
     {
         switch (settings.statHighlight)
         {

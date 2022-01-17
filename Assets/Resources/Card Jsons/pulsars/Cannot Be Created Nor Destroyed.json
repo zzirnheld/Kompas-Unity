@@ -30,16 +30,16 @@
 				{
 					"$type":"KompasServer.Effects.CountXLoopSubeffect, Assembly-CSharp",
 					"canDecline":false,
-					"jumpTo":1
+					"jumpIndices":[1]
 				},
 				{
 					"$type":"KompasServer.Effects.TargetAvatarSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"ChoiceBlurb":"Give +X S or -X S?",
-					"OptionBlurbs":["+X S","-X S"],
-					"OptionJumpIndices":[6,8],
+					"choiceBlurb":"Give +X S or -X S?",
+					"optionBlurbs":["+X S","-X S"],
+					"jumpIndices":[6,8],
 					"hasDefault":false
 				},
 				{
@@ -48,7 +48,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.JumpSubeffect, Assembly-CSharp",
-					"indexToJumpTo":9
+					"jumpIndices":[9]
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",

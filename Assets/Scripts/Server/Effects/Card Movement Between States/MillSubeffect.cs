@@ -8,7 +8,7 @@ namespace KompasServer.Effects
         {
             for (int i = 0; i < Count; i++)
             {
-                var card = Player.deckCtrl.Topdeck;
+                var card = PlayerTarget.deckCtrl.Topdeck;
                 if (card == null) return Task.FromResult(ResolutionInfo.Impossible(CouldntMillAllX));
                 ServerEffect.AddTarget(card);
                 card.Discard(ServerEffect);

@@ -14,7 +14,7 @@
 			"subeffects":[
 				{
 					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
-					"jumpTo":6
+					"jumpIndices":[6]
 				},
 				{
 					"$type":"KompasServer.Effects.ChooseFromListSaveRestSubeffect, Assembly-CSharp",
@@ -53,7 +53,7 @@
 				{
 					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
 					"delete":true,
-					"jumpTo":2
+					"jumpIndices":[2]
 				},
 				{
 					"$type":"KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"

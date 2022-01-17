@@ -1,0 +1,26 @@
+[
+    {
+        "$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+    },
+    {
+        "$type":"KompasServer.Effects.TargetThisSpaceSubeffect, Assembly-CSharp"
+    },
+    {
+        "$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+    },
+    {
+        "$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+        "cardRestriction":
+        {
+            "blurb":"Mech to Pilot",
+            "cardRestrictions":["Friendly","Subtypes Include","Is Character","Hand","Can Be Played"],
+            "subtypesInclude":["Mech","Golem"]
+        }
+    },
+    {
+        "$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+    },
+    {
+        "$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+    }
+]

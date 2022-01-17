@@ -118,6 +118,11 @@ namespace KompasClient.UI
             SetCurrState(GameStarting);
         }
 
+        public void ApplySettings(ClientSettings clientSettings)
+        {
+            ipInputField.text = clientSettings.defaultIP;
+        }
+
         public override void Refresh()
         {
             base.Refresh();
@@ -146,8 +151,16 @@ namespace KompasClient.UI
         public void Connect(bool acceptEmpty)
         {
             string ip = ipInputField.text;
-            if (string.IsNullOrEmpty(ip) && acceptEmpty) ip = "127.0.0.1";
-            if (!IPAddress.TryParse(ip, out _)) return;
+            if (string.IsNullOrEmpty(ip))
+            {
+                if (acceptEmpty) ip = "127.0.0.1";
+                else return;
+            }
+            else if (!IPAddress.TryParse(ip, out _)) return;
+
+            //Stash ip
+            clientGame.ClientUISettings.defaultIP = ip;
+            clientGame.clientUISettingsCtrl.SaveSettings();
 
             HideConnectUI();
             clientGame.clientNetworkCtrl.Connect(ip);

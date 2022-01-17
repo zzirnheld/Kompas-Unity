@@ -6,7 +6,7 @@ namespace KompasServer.Effects
     {
         public override Task<ResolutionInfo> Resolve()
         {
-            Player.deckCtrl.Shuffle();
+            PlayerTarget.deckCtrl.Shuffle();
             return Task.FromResult(ResolutionInfo.Next);
         }
     }
