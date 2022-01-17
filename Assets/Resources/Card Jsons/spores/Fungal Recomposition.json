@@ -1,0 +1,41 @@
+{
+	"cardType":83,
+	"cardName":"Fungal Recomposition",
+	"effText":"The first time each turn a Fungus dies, deck->discard a distinct Fungus. Draw 1 card.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Discard",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Subtypes Include","Is Character"],
+						"subtypesInclude":["Fungus"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"Fungus to deconstitute",
+						"cardRestrictions":["Friendly","Deck","Subtypes Include","Distinct Name from Other Targets"],
+						"subtypesInclude":["Fungus"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+				}
+			]	
+		}
+	],
+	"c":1,
+	"unique":true,
+	"spellTypes":["Enchant"],
+	"subtypeText":"Enchant"
+}

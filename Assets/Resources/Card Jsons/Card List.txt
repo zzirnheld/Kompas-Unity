@@ -364,6 +364,10 @@ spores/Mobile Mycelim
 spores/Toxic Mycelium
 spores/Energizing Lichen
 spores/Stimulating Moss
+spores/Fungal Networking
+spores/Nutrient Drip
+spores/Fungal Mutation
+spores/Fungal Recomposition
 sportsball/Arbiterary
 sportsball/Forward Dunker
 sportsball/Inside Goalie Defender

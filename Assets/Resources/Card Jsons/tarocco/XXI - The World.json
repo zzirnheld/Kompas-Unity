@@ -1,10 +1,10 @@
 {
 	"cardType":67,
 	"cardName":"XXI - The World",
-	"effText":"When a character dies, discard->reshuffle them. Draw 1 card. Give characters adjacent to where they died +1 EW.",
+	"effText":"When a character dies, draw 1 card. Give characters adjacent to where they died +1 EW.",
 	"effects":[
 		{
-			"blurb":"Reshuffle, buff, draw",
+			"blurb":"The World Goes On",
 			"triggerData":
 			{
                 "orderPriority":5,
@@ -19,17 +19,6 @@
 			"subeffects":[
 				{
 					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition":"Target Violates Restriction",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Discard"]
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
