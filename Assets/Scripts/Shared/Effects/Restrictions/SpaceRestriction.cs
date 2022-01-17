@@ -153,7 +153,7 @@ namespace KompasCore.Effects
                 ConnectedToTargetBy => Game.boardCtrl.AreConnectedBySpaces(target.Position, space, connectednessRestriction, context),
                 ConnectedToTargetBySpaces => Game.boardCtrl.AreConnectedBySpaces(target.Position, space, spaceConnectednessRestriction, context),
                 ConnectedToTargetByXSpaces 
-                    => Game.boardCtrl.AreConnectedBySpacesFittingPredicate(target.Position, space, 
+                    => Game.boardCtrl.AreConnectedByNumberOfSpacesFittingPredicate(target.Position, space, 
                             s => spaceConnectednessRestriction.IsValidSpace(s, context),
                             connectedSpacesXRestriction.IsValidNumber),
                 ConnectedToAvatarBy => Game.boardCtrl.AreConnectedBySpaces(Source.Controller.Avatar.Position, space, connectednessRestriction, context),
