@@ -1,0 +1,42 @@
+{
+	"cardType":67,
+	"cardName":"Energizing Lichen",
+	"effText":"Spores.\nWhen I'm activated, reshuffle a dead Fungus. Gain 1 pip.",
+	"effects":[
+		{
+			"blurb":"Energize",
+			"triggerData":
+			{
+				"triggerCondition":"Activate",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card Triggered"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"blurb":"dead Fungus",
+						"cardRestrictions":["Subtypes Include","Is Character","Discard"],
+						"subtypesInclude":["Fungus"]
+					}
+				},
+				{
+					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier":1
+				}
+			]
+		}
+	],
+    "keywords":["Spores"],
+	"n":1,
+	"e":5,
+	"s":7,
+	"w":5,
+	"subtypes":["Fruiting","Fungus"],
+	"subtypeText":"Fruiting Fungus"
+}

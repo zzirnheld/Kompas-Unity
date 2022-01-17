@@ -358,6 +358,12 @@ spores/Delirious Sparkbloom
 spores/Lax Toadstool
 spores/Calming Puffcap
 spores/Soothing Roundcap
+spores/Startled Stinkhorn
+spores/Watchful Widecap
+spores/Mobile Mycelim
+spores/Toxic Mycelium
+spores/Energizing Lichen
+spores/Stimulating Moss
 sportsball/Arbiterary
 sportsball/Forward Dunker
 sportsball/Inside Goalie Defender
