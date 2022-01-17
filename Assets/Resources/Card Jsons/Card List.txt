@@ -353,6 +353,7 @@ spirits/Overwhelming Anger
 spirits/Spiritual Advice
 spirits/Unfocusing Annoyance
 spirits/Whirlwind of Emotions
+spores/Putrid Stinkbloom
 sportsball/Arbiterary
 sportsball/Forward Dunker
 sportsball/Inside Goalie Defender
