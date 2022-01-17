@@ -1,0 +1,41 @@
+{
+	"cardType":67,
+	"cardName":"Calming Puffcap",
+	"effText":"Spores.\nWhen a W X non-Fungus character is activated, give them -X W until they move.",
+	"effects":[
+		{
+			"blurb":"Delirium",
+			"triggerData":
+			{
+				"triggerCondition":"Activate",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Is Character","Subtypes Exclude"],
+                        "subtypesExclude":["Fungus"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
+					"wMultiplier":-1,
+					"endCondition":"Move",
+					"triggerRestriction":{
+						"triggerRestrictions":["Triggerer is Secondary Context Target"]
+					}
+				}
+			]
+		}
+	],
+    "keywords":["Spores"],
+	"n":1,
+	"e":4,
+	"s":5,
+	"w":4,
+	"subtypes":["Fruiting","Fungus"],
+	"subtypeText":"Fruiting Fungus"
+}

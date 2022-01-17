@@ -1,0 +1,40 @@
+{
+	"cardType":67,
+	"cardName":"Lax Toadstool",
+	"effText":"Spores.\nWhen a non-Fungus character is activated, negate them until they attack.",
+	"effects":[
+		{
+			"blurb":"Delirium",
+			"triggerData":
+			{
+				"triggerCondition":"Activate",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"cardRestriction":{
+						"cardRestrictions":["Is Character","Subtypes Exclude"],
+                        "subtypesExclude":["Fungus"]
+					}
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type":"KompasServer.Effects.TemporaryNegateSubeffect, Assembly-CSharp",
+                    "triggerCondition":"Attack",
+                    "triggerRestriction":{
+                        "triggerRestrictions":["Triggerer is Secondary Context Target"]
+                    }
+				}
+			]
+		}
+	],
+    "keywords":["Spores"],
+	"n":1,
+	"e":4,
+	"s":5,
+	"w":4,
+	"subtypes":["Fruiting","Fungus"],
+	"subtypeText":"Fruiting Fungus"
+}

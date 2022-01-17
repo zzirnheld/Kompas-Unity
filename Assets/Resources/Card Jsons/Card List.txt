@@ -354,6 +354,10 @@ spirits/Spiritual Advice
 spirits/Unfocusing Annoyance
 spirits/Whirlwind of Emotions
 spores/Putrid Stinkbloom
+spores/Delirious Sparkbloom
+spores/Lax Toadstool
+spores/Calming Puffcap
+spores/Soothing Roundcap
 sportsball/Arbiterary
 sportsball/Forward Dunker
 sportsball/Inside Goalie Defender
