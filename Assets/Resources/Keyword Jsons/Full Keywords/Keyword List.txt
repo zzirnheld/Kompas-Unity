@@ -21,3 +21,4 @@ Instrument
 Pass Back
 Attended
 Collectible
+Spores

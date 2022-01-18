@@ -1,7 +1,7 @@
 {
 	"cardType":67,
-	"cardName":"Putrid Stinkbloom",
-	"effText":"Spores.\nWhen a Fungus is activated, give them +1 E.",
+	"cardName":"Mockish Rotbloom",
+	"effText":"Spores.\nWhen a non-Fungus is activated, give them -1 E.",
 	"effects":[
 		{
 			"blurb":"Putrition",
@@ -12,7 +12,7 @@
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":
 					{
-						"cardRestrictions":["Subtypes Include"],
+						"cardRestrictions":["Subtypes Exclude"],
 						"subtypesInclude":["Fungus"]
 					}
 				}
@@ -23,7 +23,7 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":1
+					"eMod":-1
 				}
 			]
 		}

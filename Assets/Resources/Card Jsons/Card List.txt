@@ -354,6 +354,7 @@ spirits/Spiritual Advice
 spirits/Unfocusing Annoyance
 spirits/Whirlwind of Emotions
 spores/Putrid Stinkbloom
+spores/Mockish Rotbloom
 spores/Delirious Sparkbloom
 spores/Lax Toadstool
 spores/Calming Puffcap

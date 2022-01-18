@@ -78,7 +78,7 @@ namespace KompasCore.Cards
         public bool SpaceInAOE(Space space, Space mySpace)
             => SpellSubtypes != null && SpellSubtypes.Any(s => s switch
             {
-                RadialSubtype => mySpace.DistanceTo(space) <= Radius,
+                RadialSubtype => (mySpace?.DistanceTo(space) ?? 50) <= Radius,
                 _ => false
             });
         public bool SpaceInAOE(Space space) => SpaceInAOE(space, Position);
