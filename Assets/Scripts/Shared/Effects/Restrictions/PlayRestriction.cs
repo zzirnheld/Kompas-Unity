@@ -91,7 +91,7 @@ namespace KompasCore.Effects
                 && (cardThere.Controller == player || cardThere.AdjacentCards.Any(c => c.Controller == player));
         }
 
-        private bool IsRestrictionValid(string r, Space space, Player player, ActivationContext context, bool normal) => r switch
+        private bool IsRestrictionValid(string r, Space space, Player player, ActivationContext context, bool normal) => r!= null && r switch
         {
             DefaultNormal => true,
             DefaultEffect => true,

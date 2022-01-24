@@ -78,7 +78,7 @@
 	"PlayRestriction":{
 		"normalRestrictions":["Augment Normal Restrictions","On Card that Flouts Restriction"],
 		"effectRestrictions":["Augment Effect Restrictions","On Card that Flouts Restriction"],
-		"onCardRestriction":{
+		"onCardFloutedRestriction":{
 			"cardRestrictions":["Wields Augment Fitting Restriction"],
 			"augmentRestriction":{
                 "cardRestrictions":["Subtypes Include"],
