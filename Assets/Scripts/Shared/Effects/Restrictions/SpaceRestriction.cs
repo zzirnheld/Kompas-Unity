@@ -90,9 +90,9 @@ namespace KompasCore.Effects
         public CardRestriction hereFitsRestriction;
         public CardRestriction inAOEOfRestriction;
 
-        public XRestriction distanceXRestriction;
-        public XRestriction connectedSpacesXRestriction;
-        public XRestriction numberOfCardsInAOEOfRestriction;
+        public NumberRestriction distanceXRestriction;
+        public NumberRestriction connectedSpacesXRestriction;
+        public NumberRestriction numberOfCardsInAOEOfRestriction;
 
         public string[] playRestrictionsToIgnore = new string[0];
 

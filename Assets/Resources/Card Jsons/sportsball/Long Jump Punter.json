@@ -30,7 +30,7 @@
 								"Distance to Source Fits X Restriction"
 							],
 							"distanceXRestriction": {
-								"xRestrictions": [
+								"numberRestrictions": [
 									"<=Constant"
 								],
 								"constant": 4

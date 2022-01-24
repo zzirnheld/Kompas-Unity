@@ -25,7 +25,7 @@
 							"Character",
 							"Friendly",
 							"Hand",
-							"Card Value Fits X Restriction",
+							"Card Value Fits Number Restriction",
 							"Subtypes Include",
 							"Can be Played to Target Space"
 						],
@@ -35,8 +35,8 @@
 						"cardValue": {
 							"value": "S"
 						},
-						"xRestriction": {
-							"xRestrictions": [
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
 								"=X"
 							]
 						}

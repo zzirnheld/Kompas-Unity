@@ -35,13 +35,13 @@
 							"Subtypes Include",
 							"Character",
 							"Deck",
-							"Card Value Fits X Restriction"
+							"Card Value Fits Number Restriction"
 						],
 						"cardValue": {
 							"value": "S"
 						},
-						"xRestriction": {
-							"xRestrictions": [
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
 								"<=X"
 							]
 						},

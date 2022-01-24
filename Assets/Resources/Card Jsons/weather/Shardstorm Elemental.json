@@ -59,7 +59,7 @@
 				]
 			},
 			"numberOfCardsInAOEOfRestriction": {
-				"xRestrictions": [
+				"numberRestrictions": [
 					">=Constant"
 				],
 				"constant": 2

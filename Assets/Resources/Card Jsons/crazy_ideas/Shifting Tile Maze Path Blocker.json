@@ -47,12 +47,12 @@
 							]
 						},
 						"connectedSpacesXRestriction": {
-							"xRestrictions": [
+							"numberRestrictions": [
 								"=X"
 							]
 						},
 						"distanceXRestriction": {
-							"xRestrictions": [
+							"numberRestrictions": [
 								"=X"
 							]
 						},

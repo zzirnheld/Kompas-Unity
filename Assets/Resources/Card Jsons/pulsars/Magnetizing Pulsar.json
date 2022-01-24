@@ -15,7 +15,7 @@
 						"Max Per Stack"
 					],
 					"xRestriction": {
-						"xRestrictions": [
+						"numberRestrictions": [
 							">0"
 						]
 					},
@@ -50,7 +50,7 @@
 							"Empty"
 						],
 						"distanceXRestriction": {
-							"xRestrictions": [
+							"numberRestrictions": [
 								"=X"
 							]
 						}
@@ -74,7 +74,7 @@
 						"Max Per Stack"
 					],
 					"xRestriction": {
-						"xRestrictions": [
+						"numberRestrictions": [
 							"<0"
 						]
 					},
@@ -109,7 +109,7 @@
 							"Empty"
 						],
 						"distanceXRestriction": {
-							"xRestrictions": [
+							"numberRestrictions": [
 								"=X"
 							]
 						}

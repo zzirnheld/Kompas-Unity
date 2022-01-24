@@ -70,12 +70,12 @@ namespace KompasCore.Effects
         public CardRestriction nowRestriction;
         public CardRestriction adjacencyRestriction;
         public CardRestriction existsRestriction;
-        public XRestriction xRestriction;
+        public NumberRestriction xRestriction;
         public SpaceRestriction spaceRestriction;
         public CardRestriction sourceRestriction;
 
         public CardRestriction cardsFittingCardRestriction;
-        public XRestriction cardsFittingXRestriction;
+        public NumberRestriction cardsFittingXRestriction;
 
         public int maxTimesPerTurn = 1;
         public int maxPerRound = 1;

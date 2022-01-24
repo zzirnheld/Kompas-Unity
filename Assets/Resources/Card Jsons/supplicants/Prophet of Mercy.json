@@ -42,13 +42,13 @@
 							"Deck",
 							"Spell",
 							"Subtypes Include",
-							"Card Value Fits X Restriction"
+							"Card Value Fits Number Restriction"
 						],
 						"cardValue": {
 							"value": "C"
 						},
-						"xRestriction": {
-							"xRestrictions": [
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
 								"<=X"
 							]
 						},

@@ -17,7 +17,7 @@
                 }
             },
             "cardsFittingXRestriction":{
-                "xRestrictions":["<Arg"]
+                "numberRestrictions":["<Arg"]
             }
 		}
 	},

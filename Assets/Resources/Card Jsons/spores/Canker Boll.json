@@ -33,8 +33,8 @@
 						"X Fits Restriction",
 						"This Card is Main Card"
 					],
-					"xRestriction": {
-						"xRestrictions": [
+					"cardValueNumberRestriction": {
+						"numberRestrictions": [
 							">0"
 						]
 					}

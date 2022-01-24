@@ -29,7 +29,7 @@
 				"blurb":"where Dragon to move its target",
 				"spaceRestrictions":["Can Move Card Target to This Space","Distance to Card Target Fits X Restriction"],
 				"distanceXRestriction":{
-					"xRestrictions":["=X"]
+					"numberRestrictions":["=X"]
 				}
 			},
 			"xModifier":1

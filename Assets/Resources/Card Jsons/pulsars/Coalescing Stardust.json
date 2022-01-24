@@ -73,13 +73,13 @@
 							"Friendly",
 							"Deck",
 							"Character",
-							"Card Value Fits X Restriction"
+							"Card Value Fits Number Restriction"
 						],
 						"cardValue": {
 							"value": "S"
 						},
 						"xRestriction": {
-							"xRestrictions": [
+							"numberRestrictions": [
 								"<=X"
 							]
 						},

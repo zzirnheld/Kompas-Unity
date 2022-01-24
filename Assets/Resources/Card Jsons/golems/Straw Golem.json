@@ -34,7 +34,7 @@
 							"Distance to Card Target Fits X Restriction"
 						],
 						"distanceXRestriction": {
-							"xRestrictions": [
+							"numberRestrictions": [
 								"=X"
 							]
 						}
@@ -65,7 +65,7 @@
 							"Distance to Card Target Fits X Restriction"
 						],
 						"distanceXRestriction": {
-							"xRestrictions": [
+							"numberRestrictions": [
 								"=X"
 							]
 						}

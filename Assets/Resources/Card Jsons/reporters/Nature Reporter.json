@@ -14,7 +14,7 @@
 						"Max Per Turn"
 					],
 					"xRestriction": {
-						"xRestrictions": [
+						"numberRestrictions": [
 							">0"
 						]
 					},
@@ -59,15 +59,15 @@
 						"cardRestrictions": [
 							"Controller Matches Player Target",
 							"Hand",
-							"Card Value Fits X Restriction",
+							"Card Value Fits Number Restriction",
 							"Hidden",
 							"Character"
 						],
 						"cardValue": {
 							"value": "E"
 						},
-						"xRestriction": {
-							"xRestrictions": [
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
 								">X"
 							]
 						}

@@ -66,13 +66,13 @@
 							"Character",
 							"Index<X",
 							"Subtypes Include",
-							"Card Value Fits X Restriction"
+							"Card Value Fits Number Restriction"
 						],
 						"cardValue": {
 							"value": "S"
 						},
-						"xRestriction": {
-							"xRestrictions": [
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
 								"<=X"
 							]
 						},
@@ -119,7 +119,7 @@
 							"Distance to Card Target Fits X Restriction"
 						],
 						"distanceXRestriction": {
-							"xRestrictions": [
+							"numberRestrictions": [
 								"=X"
 							]
 						}

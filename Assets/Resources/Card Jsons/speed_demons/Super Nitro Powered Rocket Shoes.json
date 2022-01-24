@@ -26,7 +26,7 @@
                         "blurb":"where for speed victim to move",
                         "spaceRestrictions":["Opposite Direction from Source to Space as Source to Space Target","Distance to Card Target Fits X Restriction"],
                         "distanceXRestriction":{
-                            "xRestrictions":["=X"]
+                            "numberRestrictions":["=X"]
                         }
 					},
 					"xModifier":1

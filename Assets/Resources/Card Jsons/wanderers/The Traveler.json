@@ -42,13 +42,13 @@
 							"Friendly",
 							"Hand",
 							"Distinct Name from Other Targets",
-							"Card Value Fits X Restriction"
+							"Card Value Fits Number Restriction"
 						],
 						"cardValue": {
 							"value": "S"
 						},
-						"xRestriction": {
-							"xRestrictions": [
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
 								"<=X"
 							]
 						}

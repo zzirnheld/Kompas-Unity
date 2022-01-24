@@ -5,7 +5,7 @@ namespace KompasServer.Effects
 {
     public class PlayerChooseXSubeffect : ServerSubeffect
     {
-        public XRestriction XRest;
+        public NumberRestriction XRest;
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {

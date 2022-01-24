@@ -20,7 +20,7 @@
 					},
 					"xRestriction":
 					{
-						"xRestrictions":[">=Constant"],
+						"numberRestrictions":[">=Constant"],
 						"constant":2
 					}
 				}

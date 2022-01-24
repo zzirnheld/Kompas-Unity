@@ -37,7 +37,7 @@
 							"Can Move Card Target to This Space"
 						],
 						"distanceXRestriction": {
-							"xRestrictions": [
+							"numberRestrictions": [
 								"<=X"
 							]
 						}

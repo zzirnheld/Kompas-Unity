@@ -19,7 +19,7 @@
 				"blurb":"where Wisp to move",
 				"spaceRestrictions":["Can Move Card Target to This Space","Distance to Card Target Fits X Restriction"],
 				"distanceXRestriction":{
-					"xRestrictions":["=X"]
+					"numberRestrictions":["=X"]
 				}
 			},
 			"xModifier":1

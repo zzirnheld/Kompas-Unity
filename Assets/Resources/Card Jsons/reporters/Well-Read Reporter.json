@@ -60,13 +60,13 @@
 							"Hand",
 							"Hidden",
 							"Spell",
-							"Card Value Fits X Restriction"
+							"Card Value Fits Number Restriction"
 						],
 						"cardValue": {
 							"value": "C"
 						},
-						"xRestriction": {
-							"xRestrictions": [
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
 								">X"
 							]
 						}

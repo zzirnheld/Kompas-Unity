@@ -14,7 +14,7 @@
 						"Main Card Fits Restriction Before"
 					],
 					"xRestriction": {
-						"xRestrictions": [
+						"numberRestrictions": [
 							">0"
 						]
 					},
@@ -57,7 +57,7 @@
 						"Main Card Fits Restriction Before"
 					],
 					"xRestriction": {
-						"xRestrictions": [
+						"numberRestrictions": [
 							"<0"
 						]
 					},

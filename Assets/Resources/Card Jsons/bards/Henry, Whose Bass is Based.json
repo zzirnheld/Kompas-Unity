@@ -40,7 +40,7 @@
 							"Friendly",
 							"Deck",
 							"Subtypes Include",
-							"Card Value Fits X Restriction"
+							"Card Value Fits Number Restriction"
 						],
 						"subtypesInclude": [
 							"Music"
@@ -48,8 +48,8 @@
 						"cardValue": {
 							"value": "C"
 						},
-						"xRestriction": {
-							"xRestrictions": [
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
 								"<X"
 							]
 						}

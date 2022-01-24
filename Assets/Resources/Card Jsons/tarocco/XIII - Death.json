@@ -48,7 +48,7 @@
 						"cardRestrictions": [
 							"Character",
 							"Board",
-							"Card Value Fits X Restriction",
+							"Card Value Fits Number Restriction",
 							"Space Fits Restriction"
 						],
 						"spaceRestriction": {
@@ -59,8 +59,8 @@
 						"cardValue": {
 							"value": "S"
 						},
-						"xRestriction": {
-							"xRestrictions": [
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
 								"<=X"
 							]
 						}

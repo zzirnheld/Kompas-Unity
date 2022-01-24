@@ -13,7 +13,7 @@
 						"This Card is Main Card"
 					],
 					"xRestriction": {
-						"xRestrictions": [
+						"numberRestrictions": [
 							">0"
 						]
 					}

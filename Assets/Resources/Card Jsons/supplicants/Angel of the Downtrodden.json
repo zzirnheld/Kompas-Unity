@@ -31,12 +31,12 @@
 					"cardRestriction":
 					{
 						"blurb":"Supplicants' Plea",
-						"cardRestrictions":["Friendly","Deck","Spell","Subtypes Include","Card Value Fits X Restriction"],
+						"cardRestrictions":["Friendly","Deck","Spell","Subtypes Include","Card Value Fits Number Restriction"],
 						"cardValue":{
 							"value":"C"
 						},
-						"xRestriction":{
-							"xRestrictions":["<=X"]
+						"cardValueNumberRestriction":{
+							"numberRestrictions":["<=X"]
 						},
 						"subtypesInclude":["Plea"]
 					},

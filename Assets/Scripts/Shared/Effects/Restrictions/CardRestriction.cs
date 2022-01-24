@@ -81,7 +81,7 @@ namespace KompasCore.Effects
         public const string Hidden = "Hidden";
 
         //stats
-        public const string CardValueFitsXRestriction = "Card Value Fits X Restriction";
+        public const string CardValueFitsNumberRestriction = "Card Value Fits Number Restriction";
 
         //misc statlike
         public const string Hurt = "Hurt";
@@ -130,7 +130,7 @@ namespace KompasCore.Effects
         public int spaceRestrictionIndex;
 
         public CardValue cardValue;
-        public XRestriction xRestriction;
+        public NumberRestriction cardValueNumberRestriction;
 
         public CardRestriction secondaryRestriction;
 
@@ -175,7 +175,7 @@ namespace KompasCore.Effects
             attackedCardRestriction?.Initialize(source, effect, subeffect);
             inAOEOfRestriction?.Initialize(source, effect, subeffect);
 
-            xRestriction?.Initialize(source, subeffect);
+            cardValueNumberRestriction?.Initialize(source, subeffect);
 
             cardValue?.Initialize(source);
 
@@ -269,7 +269,7 @@ namespace KompasCore.Effects
             Hidden => !potentialTarget?.KnownToEnemy ?? false,
 
             //stats
-            CardValueFitsXRestriction => xRestriction.IsValidNumber(cardValue.GetValueOf(potentialTarget)),
+            CardValueFitsNumberRestriction => cardValueNumberRestriction.IsValidNumber(cardValue.GetValueOf(potentialTarget)),
             Hurt => potentialTarget?.Hurt ?? false,
             Activated => potentialTarget?.Activated ?? false,
             Negated => potentialTarget?.Negated ?? false,

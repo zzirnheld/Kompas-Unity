@@ -59,7 +59,7 @@
 							"Character",
 							"Deck",
 							"Subtypes Include",
-							"Card Value Fits X Restriction",
+							"Card Value Fits Number Restriction",
 							"Distinct Name from Other Targets"
 						],
 						"subtypesInclude": [
@@ -68,8 +68,8 @@
 						"cardValue": {
 							"value": "S"
 						},
-						"xRestriction": {
-							"xRestrictions": [
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
 								"<=X"
 							]
 						}

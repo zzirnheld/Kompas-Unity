@@ -15,7 +15,7 @@
 						"Max Per Turn"
 					],
 					"xRestriction": {
-						"xRestrictions": [
+						"numberRestrictions": [
 							">0"
 						]
 					},
@@ -60,7 +60,7 @@
 						"Max Per Turn"
 					],
 					"xRestriction": {
-						"xRestrictions": [
+						"numberRestrictions": [
 							"<0"
 						]
 					},

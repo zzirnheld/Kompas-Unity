@@ -44,13 +44,13 @@
 							"Controller Matches Player Target",
 							"Hand",
 							"Hidden",
-							"Card Value Fits X Restriction"
+							"Card Value Fits Number Restriction"
 						],
 						"cardValue": {
 							"value": "Cost"
 						},
-						"xRestriction": {
-							"xRestrictions": [
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
 								"==Constant"
 							],
 							"constant": 1

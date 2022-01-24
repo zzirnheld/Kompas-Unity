@@ -38,13 +38,13 @@
 					"condition": "Target Fits Restriction",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Card Value Fits X Restriction"
+							"Card Value Fits Number Restriction"
 						],
 						"cardValue": {
 							"value": "W"
 						},
-						"xRestriction": {
-							"xRestrictions": [
+						"cardValueNumberRestriction": {
+							"numberRestrictions": [
 								"<X"
 							]
 						}

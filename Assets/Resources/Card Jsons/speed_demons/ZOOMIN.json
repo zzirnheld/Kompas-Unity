@@ -33,7 +33,7 @@
 							"Empty"
 						],
 						"distanceXRestriction": {
-							"xRestrictions": [
+							"numberRestrictions": [
 								"=X"
 							]
 						}
@@ -63,7 +63,7 @@
 							"Empty"
 						],
 						"distanceXRestriction": {
-							"xRestrictions": [
+							"numberRestrictions": [
 								"=X"
 							]
 						}
@@ -93,7 +93,7 @@
 							"Empty"
 						],
 						"distanceXRestriction": {
-							"xRestrictions": [
+							"numberRestrictions": [
 								"=X"
 							]
 						}

@@ -42,7 +42,7 @@
 							"Empty"
 						],
 						"distanceXRestriction": {
-							"xRestrictions": [
+							"numberRestrictions": [
 								"=X"
 							]
 						}
