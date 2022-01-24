@@ -34,7 +34,7 @@
 						"blurb": "to Linewalk to",
 						"spaceRestrictions": [
 							"Empty",
-							"On Target's Diagonal",
+							"On Card Target's Diagonal",
 							"Can Move Card Target to This Space",
 							"Connected to Card Target by Spaces Fitting Restriction"
 						],

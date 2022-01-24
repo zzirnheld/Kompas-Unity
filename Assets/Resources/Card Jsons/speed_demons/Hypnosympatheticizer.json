@@ -33,7 +33,7 @@
 					"spaceRestriction": {
 						"blurb": "where for speed victim to move",
 						"spaceRestrictions": [
-							"Same Direction From Target As Source From Space",
+							"Same Direction from Space to Card Target as Space Target to Source",
 							"Distance to Card Target Fits X Restriction",
 							"Empty"
 						],

@@ -67,16 +67,18 @@ namespace KompasCore.Effects
         public const string CardHereFitsRestriction = "Card Here Fits Restriction";
 
         public const string OnSourcesDiagonal = "On Source's Diagonal";
-        public const string OnTargetsDiagonal = "On Target's Diagonal";
+        public const string OnCardTargetsDiagonal = "On Card Target's Diagonal";
         public const string OnAxisOfLastTwoSpaces = "On Axis of Last Two Spaces";
 
         public const string OnEdge = "On Edge of Board";
         public const string Corner = "Corner";
         //TODO: eventually make a "targetdirection" subeffect that appends the direction as a Space to the list of coords,
         // then replace these with something comparing directions
-        public const string SameDirectionFromTargetAsSpace = "Same Direction From Target As Source From Space";
-        public const string OppositeDirectionFromTargetThanSpace = "Opposite Direction From Target Than Space";
-        public const string DirectionFromSource = "Direction From Source"; //In the direction of Subeffect.Space from source
+        public const string SameDirectionFromSpaceToCardTargetAsSpaceTargetToSource 
+            = "Same Direction from Space to Card Target as Space Target to Source";
+        public const string OppositeDirectionFromSourceToSpaceAsSourceToSpaceTarget 
+            = "Opposite Direction from Source to Space as Source to Space Target";
+        public const string DirectionFromSourceIsSpaceTarget = "Direction from Source is Space Target"; //In the direction of Subeffect.Space from source
         #endregion space restrictions
 
         public string[] spaceRestrictions;
@@ -208,14 +210,16 @@ namespace KompasCore.Effects
                 CardHereFitsRestriction => hereFitsRestriction.IsValidCard(Game.boardCtrl.GetCardAt(space), context),
 
                 OnSourcesDiagonal => Source.SameDiagonal(space),
-                OnTargetsDiagonal => target.SameDiagonal(space),
+                OnCardTargetsDiagonal => target.SameDiagonal(space),
                 OnAxisOfLastTwoSpaces => space.SameAxis(Subeffect.SpaceTarget, Subeffect.Effect.GetSpace(-2)),
 
                 OnEdge => space.IsEdge,
                 Corner => space.IsCorner,
-                SameDirectionFromTargetAsSpace => target.Position.DirectionFromThisTo(space) == Subeffect.SpaceTarget.DirectionFromThisTo(Source.Position),
-                OppositeDirectionFromTargetThanSpace => Source.Position.DirectionFromThisTo(space) * -1 == Source.Position.DirectionFromThisTo(Subeffect.SpaceTarget),
-                DirectionFromSource => Source.Position.DirectionFromThisTo(space) == Subeffect.SpaceTarget,
+                SameDirectionFromSpaceToCardTargetAsSpaceTargetToSource 
+                    => target.Position.DirectionFromThisTo(space) == Subeffect.SpaceTarget.DirectionFromThisTo(Source.Position),
+                OppositeDirectionFromSourceToSpaceAsSourceToSpaceTarget 
+                    => Source.Position.DirectionFromThisTo(space) * -1 == Source.Position.DirectionFromThisTo(Subeffect.SpaceTarget),
+                DirectionFromSourceIsSpaceTarget => Source.Position.DirectionFromThisTo(space) == Subeffect.SpaceTarget,
 
                 _ => throw new ArgumentException($"Invalid space restriction {restriction}", "restriction"),
             };
