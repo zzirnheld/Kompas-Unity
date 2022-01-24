@@ -76,9 +76,9 @@ namespace KompasCore.Effects
         /// <param name="startIndex">The index at which to start resolving the effect (again)</param>
         /// <param name="targets">The targets to resume with, if any</param>
         /// <param name="spaces">The spaces to resume with, if any</param>
-        public void SetResumeInfo(int startIndex, IEnumerable<GameCard> targets, IEnumerable<Space> spaces)
+        public void SetResumeInfo(IEnumerable<GameCard> targets, IEnumerable<Space> spaces, int? startIndex = null)
         {
-            StartIndex = startIndex;
+            if (startIndex.HasValue) StartIndex = startIndex.Value;
             Targets = new List<GameCard>(targets);
             Spaces = new List<Space>(spaces);
         }

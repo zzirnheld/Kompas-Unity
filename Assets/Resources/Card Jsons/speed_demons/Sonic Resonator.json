@@ -71,6 +71,7 @@
 						"value":"S",
                         "multiplier":-1
 					},
+					"xMultiplier":1,
 					"change":true
 				},
 				{

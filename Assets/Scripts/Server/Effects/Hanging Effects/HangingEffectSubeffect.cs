@@ -34,6 +34,7 @@ namespace KompasServer.Effects
         public override Task<ResolutionInfo> Resolve()
         {
             //create the hanging effects, of which there can be multiple
+            Context.SetResumeInfo(Effect.CardTargets, Effect.SpaceTargets);
             var effectsApplied = CreateHangingEffects();
 
             //each of the effects needs to be registered, and registered for how it could fall off
