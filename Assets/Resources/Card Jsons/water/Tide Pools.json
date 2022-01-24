@@ -10,7 +10,7 @@
 				"triggerCondition": "Turn Start",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card Fits Restriction"
+						"This Card Fits Restriction Now"
 					],
 					"cardRestriction": {
 						"cardRestrictions": [

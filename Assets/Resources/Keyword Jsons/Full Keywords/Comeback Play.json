@@ -5,7 +5,7 @@
 		"blurb":"Comeback Play",
 		"triggerCondition":"Turn Start",
 		"triggerRestriction":{
-			"triggerRestrictions":["Friendly Turn","This Card Fits Restriction","Card Exists"],
+			"triggerRestrictions":["Friendly Turn","This Card Fits Restriction Now","Card Exists Now"],
 			"cardRestriction":{
 				"cardRestrictions":["Discard"]
 			},

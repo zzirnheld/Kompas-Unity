@@ -9,7 +9,7 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Coords Fit Restriction"
+						"Space Fits Restriction"
 					],
 					"spaceRestriction": {
 						"mustBeEmpty": false,
@@ -43,7 +43,7 @@
 					"endCondition": "Vanish",
 					"triggerRestriction": {
 						"triggerRestrictions": [
-							"This Card Triggered"
+							"This Card is Main Card"
 						]
 					}
 				},

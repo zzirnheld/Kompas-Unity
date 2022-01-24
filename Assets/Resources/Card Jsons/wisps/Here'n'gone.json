@@ -8,7 +8,7 @@
 				"triggerCondition": "Play",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card Triggered"
+						"This Card is Main Card"
 					]
 				}
 			},
@@ -53,7 +53,7 @@
 					"endCondition": "Remove",
 					"triggerRestriction": {
 						"triggerRestrictions": [
-							"This Card Triggered"
+							"This Card is Main Card"
 						]
 					}
 				},
@@ -97,7 +97,7 @@
 					"endCondition": "Remove",
 					"triggerRestriction": {
 						"triggerRestrictions": [
-							"This Card Triggered"
+							"This Card is Main Card"
 						]
 					}
 				},
@@ -141,7 +141,7 @@
 					"endCondition": "Remove",
 					"triggerRestriction": {
 						"triggerRestrictions": [
-							"This Card Triggered"
+							"This Card is Main Card"
 						]
 					}
 				}

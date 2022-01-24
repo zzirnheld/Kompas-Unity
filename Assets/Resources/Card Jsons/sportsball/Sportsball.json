@@ -9,7 +9,7 @@
 				"triggerCondition": "Move",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"Augmented Card Triggered",
+						"Augmented Card is Main Card",
 						"Max Per Turn"
 					],
 					"maxTimesPerTurn": 2

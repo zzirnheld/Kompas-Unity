@@ -10,8 +10,8 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Stackable Source Fits Restriction",
-						"Coords Fit Restriction"
+						"Stackable Source Fits Restriction Now",
+						"Space Fits Restriction"
 					],
 					"sourceRestriction": {
 						"cardRestrictions": [

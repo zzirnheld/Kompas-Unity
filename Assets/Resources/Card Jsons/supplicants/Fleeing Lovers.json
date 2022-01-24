@@ -28,7 +28,7 @@
 				"blurb":"Lovers fleeing together",
 				"triggerCondition":"Play",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered","Triggerer Fits Restriction"],
+					"triggerRestrictions":["This Card is Main Card","Main Card Fits Restriction Before"],
 					"cardRestriction":{
 						"cardRestrictions":["Hand"]
 					}

@@ -8,8 +8,8 @@
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"Triggerer Fits Restriction",
-						"Coords Fit Restriction",
+						"Main Card Fits Restriction Before",
+						"Space Fits Restriction",
 						"This Card in Play"
 					],
 					"spaceRestriction": {

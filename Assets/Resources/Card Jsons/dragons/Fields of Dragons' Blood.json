@@ -8,7 +8,7 @@
 			{
 				"triggerCondition":"NESW Change",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Stackable Source is Triggerer"],
+					"triggerRestrictions":["This Card in Play","Main Card Fits Restriction Before","Stackable Source is Main Card"],
 					"cardRestriction":{
 						"cardRestrictions":["Subtypes Include","Board","Space Fits Restriction"],
 						"spaceRestriction":

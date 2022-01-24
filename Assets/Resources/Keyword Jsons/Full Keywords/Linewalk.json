@@ -3,7 +3,7 @@
 	"activationRestriction":{
 		"activationRestrictionArray":[
 			"Friendly Turn",
-			"This Card Fits Restriction",
+			"This Card Fits Restriction Now",
 			"Default"
 		],
 		"thisCardRestriction":

@@ -9,7 +9,7 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"Controller Triggered",
-						"Triggerer Fits Restriction",
+						"Main Card Fits Restriction Before",
 						"This Card in Play"
 					],
 					"cardRestriction": {
@@ -47,7 +47,7 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"Controller Triggered",
-						"Triggerer Fits Restriction",
+						"Main Card Fits Restriction Before",
 						"This Card in Play"
 					],
 					"cardRestriction": {

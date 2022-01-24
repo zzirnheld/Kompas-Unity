@@ -9,7 +9,7 @@
 				"blurb":"Grant Hope",
 				"triggerCondition":"Negate",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+					"triggerRestrictions":["This Card is Main Card"]
 				}
 			},
 			"subeffects":[

@@ -9,7 +9,7 @@
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"Coords Fit Restriction",
+						"Space Fits Restriction",
 						"This Card in Play"
 					],
 					"spaceRestriction": {

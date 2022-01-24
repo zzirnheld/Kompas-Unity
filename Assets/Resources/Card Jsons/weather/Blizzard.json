@@ -10,8 +10,8 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Coords Fit Restriction",
-						"Triggerer Fits Restriction"
+						"Space Fits Restriction",
+						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
@@ -36,8 +36,8 @@
 					"endCondition": "Leave AOE",
 					"triggerRestriction": {
 						"triggerRestrictions": [
-							"Triggerer is Secondary Context Target",
-							"Secondary Card Fits Restriction"
+							"Main Card is a Secondary Context Card Target",
+							"Secondary Card Fits Restriction Before"
 						],
 						"cardRestriction": {
 							"cardRestrictions": [

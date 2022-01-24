@@ -9,8 +9,8 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Card is now Further from Source than it Was",
-						"Triggerer Now Fits Restriction"
+						"Main Card After is Further from Source than Before",
+						"Main Card Fits Restriction After"
 					],
 					"nowRestriction": {
 						"cardRestrictions": [

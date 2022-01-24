@@ -8,7 +8,7 @@
 				"triggerCondition": "Play",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card Triggered"
+						"This Card is Main Card"
 					]
 				}
 			},
@@ -37,7 +37,7 @@
 					"endCondition": "Move",
 					"triggerRestriction": {
 						"triggerRestrictions": [
-							"Triggerer is Secondary Context Target"
+							"Main Card is a Secondary Context Card Target"
 						]
 					},
 					"clearWhenResume": false

@@ -9,7 +9,7 @@
 				"triggerCondition": "Move",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card Triggered"
+						"This Card is Main Card"
 					]
 				}
 			},
@@ -29,7 +29,7 @@
 				"triggerCondition": "Battle End",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card Triggered"
+						"This Card is Main Card"
 					]
 				}
 			},

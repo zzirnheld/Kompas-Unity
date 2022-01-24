@@ -9,8 +9,8 @@
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"Augmented Card Triggered",
-						"Triggerer Fits Restriction"
+						"Augmented Card is Main Card",
+						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
 						"cardRestrictions": [

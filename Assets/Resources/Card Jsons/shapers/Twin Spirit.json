@@ -8,8 +8,8 @@
 				"triggerCondition": "Play",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card Triggered",
-						"Triggerer Fits Restriction"
+						"This Card is Main Card",
+						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
 						"cardRestrictions": [

@@ -4,7 +4,7 @@
 		"blurb":"Annihilate",
 		"triggerCondition":"Discard",
 		"triggerRestriction":{
-			"triggerRestrictions":["This Card Triggered","From Field"]
+			"triggerRestrictions":["This Card is Main Card","From Field"]
 		}
 	},
 	"subeffects":[

@@ -8,7 +8,7 @@
 				"triggerCondition": "Attack",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"Augmented Card Triggered",
+						"Augmented Card is Main Card",
 						"Max Per Round"
 					]
 				}

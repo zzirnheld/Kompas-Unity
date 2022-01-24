@@ -10,7 +10,7 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"Max Per Stack",
-						"This Card Triggered"
+						"This Card is Main Card"
 					]
 				}
 			},

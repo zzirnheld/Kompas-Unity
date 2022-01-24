@@ -3,7 +3,7 @@
 	"triggerData":{
 		"triggerCondition":"Activate",
 		"triggerRestriction":{
-			"triggerRestrictions":["This Card Triggered","Max Per Stack"]
+			"triggerRestrictions":["This Card is Main Card","Max Per Stack"]
 		}
 	},
 	"subeffects":[

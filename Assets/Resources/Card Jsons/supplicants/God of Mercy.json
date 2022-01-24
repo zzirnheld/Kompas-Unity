@@ -9,8 +9,8 @@
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card Triggered",
-						"Coords Fit Restriction"
+						"This Card is Main Card",
+						"Space Fits Restriction"
 					],
 					"spaceRestriction": {
 						"spaceRestrictions": [
@@ -50,7 +50,7 @@
 					"endCondition": "Remove",
 					"triggerRestriction": {
 						"triggerRestrictions": [
-							"This Card Triggered"
+							"This Card is Main Card"
 						]
 					}
 				},

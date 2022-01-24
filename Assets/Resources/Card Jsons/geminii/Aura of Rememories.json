@@ -8,7 +8,7 @@
 			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Controller Triggered","Triggerer Fits Restriction"],
+					"triggerRestrictions":["This Card in Play","Controller Triggered","Main Card Fits Restriction Before"],
 					"cardRestriction":
 					{
 						"cardRestrictions":["Character","Board","Space Fits Restriction"],

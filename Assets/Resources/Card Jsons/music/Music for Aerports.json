@@ -8,7 +8,7 @@
 			"triggerRestriction": {
 				"triggerRestrictions": [
 					"This Card in Play",
-					"Triggerer Fits Restriction"
+					"Main Card Fits Restriction Before"
 				],
 				"cardRestriction": {
 					"cardRestrictions": [
@@ -27,7 +27,7 @@
 					"endCondition": "Vanish",
 					"triggerRestriction": {
 						"triggerRestrictions": [
-							"This Card Triggered"
+							"This Card is Main Card"
 						]
 					}
 				}

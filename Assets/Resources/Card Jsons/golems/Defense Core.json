@@ -10,7 +10,7 @@
 				"triggerCondition": "Augment Attached",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card Triggered"
+						"This Card is Main Card"
 					]
 				}
 			},
@@ -23,7 +23,7 @@
 					"endCondition": "Augment Detached",
 					"triggerRestriction": {
 						"triggerRestrictions": [
-							"This Card Triggered"
+							"This Card is Main Card"
 						]
 					}
 				}
@@ -37,7 +37,7 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Augmented Card Triggered"
+						"Augmented Card is Main Card"
 					]
 				}
 			},

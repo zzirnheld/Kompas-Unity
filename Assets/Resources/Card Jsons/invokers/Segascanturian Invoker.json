@@ -10,7 +10,7 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Coords Fit Restriction",
+						"Space Fits Restriction",
 						"Enemy Triggered"
 					],
 					"spaceRestriction": {

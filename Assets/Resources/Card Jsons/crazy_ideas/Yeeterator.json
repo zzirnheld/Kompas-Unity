@@ -10,9 +10,9 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Coords Fit Restriction",
+						"Space Fits Restriction",
 						"Max Per Stack",
-						"Triggerer Fits Restriction"
+						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
 						"cardRestrictions": [

@@ -9,7 +9,7 @@
 			{
 				"triggerCondition":"Move",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction","X Fits Restriction"],
+					"triggerRestrictions":["This Card in Play","Space Fits Restriction","Main Card Fits Restriction Before","X Fits Restriction"],
 					"cardRestriction":{
 						"cardRestrictions":["Character"]
 					},

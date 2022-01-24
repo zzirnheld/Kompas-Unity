@@ -9,7 +9,7 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Stackable Source Fits Restriction"
+						"Stackable Source Fits Restriction Now"
 					],
 					"sourceRestriction": {
 						"cardRestrictions": [

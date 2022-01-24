@@ -10,9 +10,9 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Triggerer Fits Restriction",
+						"Main Card Fits Restriction Before",
 						"Controller Triggered",
-						"Triggerer Now Fits Restriction"
+						"Main Card Fits Restriction After"
 					],
 					"cardRestriction": {
 						"cardRestrictions": [

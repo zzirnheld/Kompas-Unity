@@ -11,7 +11,7 @@
 					"triggerRestrictions": [
 						"This Card in Play",
 						"X Fits Restriction",
-						"Triggerer Fits Restriction",
+						"Main Card Fits Restriction Before",
 						"Max Per Stack"
 					],
 					"xRestriction": {
@@ -46,7 +46,7 @@
 					"triggerRestrictions": [
 						"This Card in Play",
 						"X Fits Restriction",
-						"Triggerer Fits Restriction",
+						"Main Card Fits Restriction Before",
 						"Max Per Stack"
 					],
 					"xRestriction": {

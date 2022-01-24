@@ -10,7 +10,7 @@
 					"triggerRestrictions": [
 						"This Card in Play",
 						"X Fits Restriction",
-						"This Card Triggered"
+						"This Card is Main Card"
 					],
 					"xRestriction": {
 						"xRestrictions": [

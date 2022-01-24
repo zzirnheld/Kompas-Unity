@@ -8,7 +8,7 @@
 				"triggerCondition": "Play",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card Triggered"
+						"This Card is Main Card"
 					]
 				}
 			},
@@ -33,7 +33,7 @@
 					"endCondition": "Discard",
 					"triggerRestriction": {
 						"triggerRestrictions": [
-							"This Card Triggered",
+							"This Card is Main Card",
 							"From Field"
 						]
 					}

@@ -7,7 +7,7 @@
             "blurb":"Speed Shoes",
             "triggerCondition":"Move",
             "triggerRestriction":{
-                "triggerRestrictions":["This Card Triggered","Stackable Source Fits Restriction"],
+                "triggerRestrictions":["This Card is Main Card","Stackable Source Fits Restriction Now"],
                 "sourceRestriction":{
                     "cardRestrictions":["Not Source","Source Doesn't Augment"]
                 }

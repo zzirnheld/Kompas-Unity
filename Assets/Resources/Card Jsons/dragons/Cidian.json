@@ -10,7 +10,7 @@
 				"triggerCondition": "Take Combat Damage",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"Triggerer Fits Restriction"
+						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
 						"cardRestrictions": [

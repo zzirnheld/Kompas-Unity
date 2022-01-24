@@ -9,7 +9,7 @@
 				"blurb":"Fog",
 				"triggerCondition":"Arrive",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Coords Fit Restriction"],
+					"triggerRestrictions":["This Card in Play","Main Card Fits Restriction Before","Space Fits Restriction"],
 					"cardRestriction":{
 						"cardRestrictions":["Character"]
 					},

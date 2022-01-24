@@ -9,8 +9,8 @@
 				"triggerCondition": "Arrive",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"Coords Fit Restriction",
-						"Triggerer Fits Restriction"
+						"Space Fits Restriction",
+						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
 						"cardRestrictions": [

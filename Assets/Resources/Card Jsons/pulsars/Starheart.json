@@ -10,7 +10,7 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Coords Fit Restriction"
+						"Space Fits Restriction"
 					],
 					"spaceRestriction": {
 						"spaceRestrictions": [
@@ -46,7 +46,7 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Triggerer Fits Restriction"
+						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
 						"cardRestrictions": [

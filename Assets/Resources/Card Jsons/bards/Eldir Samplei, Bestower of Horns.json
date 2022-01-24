@@ -11,8 +11,8 @@
 					"triggerRestrictions": [
 						"This Card in Play",
 						"Controller Triggered",
-						"Triggerer Fits Restriction",
-						"Coords Fit Restriction"
+						"Main Card Fits Restriction Before",
+						"Space Fits Restriction"
 					],
 					"cardRestriction": {
 						"cardRestrictions": [

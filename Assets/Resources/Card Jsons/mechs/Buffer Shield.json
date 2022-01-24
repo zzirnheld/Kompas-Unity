@@ -9,7 +9,7 @@
 			{
 				"triggerCondition":"Augment Attached",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered","Secondary Card Fits Restriction"],
+					"triggerRestrictions":["This Card is Main Card","Secondary Card Fits Restriction Before"],
 					"cardRestriction":
 					{
 						"cardRestrictions":["Subtypes Include"],
@@ -26,7 +26,7 @@
 					"eModifier":6,
 					"endCondition":"Augment Detached",
 					"triggerRestriction":{
-						"triggerRestrictions":["This Card Triggered"]
+						"triggerRestrictions":["This Card is Main Card"]
 					}
 				}
 			]

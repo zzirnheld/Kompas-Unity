@@ -9,7 +9,7 @@
 				"triggerCondition": "Discard",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"Stackable Source Fits Restriction"
+						"Stackable Source Fits Restriction Now"
 					],
 					"sourceRestriction": {
 						"cardRestrictions": [

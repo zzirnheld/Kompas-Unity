@@ -8,10 +8,15 @@
 				"triggerCondition": "Move",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card Triggered",
+						"This Card is Main Card",
 						"Stackable Source isn't This Effect",
-						"Stackable Source is This Card"
-					]
+						"Stackable Source Fits Restriction Now"
+					],
+					"sourceRestriction": {
+						"cardRestrictions": [
+							"Is Source"
+						]
+					}
 				}
 			},
 			"subeffects": [
@@ -31,7 +36,7 @@
 				"triggerCondition": "Move",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card Triggered"
+						"This Card is Main Card"
 					]
 				}
 			},

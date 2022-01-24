@@ -8,7 +8,7 @@
 			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+					"triggerRestrictions":["This Card is Main Card"]
 				}
 			},
 			"subeffects":[
@@ -30,7 +30,7 @@
 					"fallOffCondition":"",
 					"endCondition":"Vanish",
 					"triggerRestriction":{
-						"triggerRestrictions":["This Card Triggered"]
+						"triggerRestrictions":["This Card is Main Card"]
 					}
 				},
 				{

@@ -9,7 +9,7 @@
 				"triggerCondition": "Deal Combat Damage",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card Triggered"
+						"This Card is Main Card"
 					]
 				}
 			},

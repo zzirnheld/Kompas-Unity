@@ -8,7 +8,7 @@
 			"activationRestriction": {
 				"activationRestrictionArray": [
 					"Max Times Per Turn",
-					"Card Exists",
+					"Card Exists Now",
 					"Default"
 				],
 				"existsRestriction": {

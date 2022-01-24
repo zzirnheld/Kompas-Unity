@@ -8,7 +8,7 @@
 			"activationRestriction": {
 				"activationRestrictionArray": [
 					"Max Times Per Turn",
-					"This Card Fits Restriction",
+					"This Card Fits Restriction Now",
 					"Default"
 				],
 				"cardRestriction": {

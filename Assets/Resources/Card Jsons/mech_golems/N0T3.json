@@ -9,7 +9,7 @@
 				"triggerCondition": "Attack",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card Triggered"
+						"This Card is Main Card"
 					]
 				}
 			},
@@ -25,8 +25,8 @@
 					"endCondition": "Defend",
 					"triggerRestriction": {
 						"triggerRestrictions": [
-							"Triggerer is Secondary Context Target",
-							"This Card is Secondary Triggerer"
+							"Main Card is a Secondary Context Card Target",
+							"This Card is Secondary Card"
 						]
 					},
 					"clearWhenResume": true,

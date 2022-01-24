@@ -10,7 +10,7 @@
 				"blurb":"Mulch",
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
+					"triggerRestrictions":["This Card in Play","Main Card Fits Restriction Before"],
 					"cardRestriction":
 					{
 						"cardRestrictions":["Subtypes Include","Board"],

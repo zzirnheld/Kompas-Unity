@@ -8,8 +8,8 @@
 				"triggerCondition": "Move",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card Triggered",
-						"Coords Fit Restriction"
+						"This Card is Main Card",
+						"Space Fits Restriction"
 					],
 					"spaceRestriction": {
 						"spaceRestrictions": [

@@ -10,7 +10,7 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Triggerer Fits Restriction"
+						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
 						"cardRestrictions": [
@@ -40,7 +40,7 @@
 					"endCondition": "Effect Pushed to Stack",
 					"triggerRestriction": {
 						"triggerRestrictions": [
-							"Triggerer is Secondary Context Target"
+							"Main Card is a Secondary Context Card Target"
 						]
 					}
 				}

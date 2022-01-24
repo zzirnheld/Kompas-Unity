@@ -12,7 +12,7 @@
 						"This Card in Play",
 						"No Stackable",
 						"Controller Triggered",
-						"Triggerer Fits Restriction"
+						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
 						"cardRestrictions": [

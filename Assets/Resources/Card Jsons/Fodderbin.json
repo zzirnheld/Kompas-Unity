@@ -11,7 +11,7 @@
 						"Max Per Stack",
 						"This Card in Play",
 						"Enemy Turn",
-						"Triggerer Fits Restriction"
+						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
 						"cardRestrictions": [

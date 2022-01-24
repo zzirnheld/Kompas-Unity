@@ -9,7 +9,7 @@
 				"triggerCondition": "Augment Attached",
 				"triggerRestriction": {
 					"triggerRestrictions": [
-						"This Card Triggered"
+						"This Card is Main Card"
 					]
 				}
 			},
@@ -22,7 +22,7 @@
 					"endCondition": "Augment Detached",
 					"triggerRestriction": {
 						"triggerRestrictions": [
-							"This Card Triggered"
+							"This Card is Main Card"
 						]
 					}
 				}
@@ -35,7 +35,7 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Triggerer Fits Restriction",
+						"Main Card Fits Restriction Before",
 						"Max Per Stack"
 					],
 					"cardRestriction": {

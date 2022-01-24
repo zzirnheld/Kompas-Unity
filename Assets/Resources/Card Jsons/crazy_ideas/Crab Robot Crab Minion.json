@@ -8,14 +8,13 @@
 			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Card Exists"],
+					"triggerRestrictions":["This Card in Play","Card Exists Now"],
 					"existsRestriction":
 					{
 						"cardRestrictions":["Space Fits Restriction"],
 						"spaceRestriction":
 						{
-							"spaceRestrictions":["Adjacent to Source"],
-							"mustBeEmpty":false
+							"spaceRestrictions":["Adjacent to Source"]
 						}
 					}
 				}

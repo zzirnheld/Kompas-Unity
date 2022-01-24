@@ -9,7 +9,7 @@
 				"blurb":"Grant peace",
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","From Field","Max Per Turn"],
+					"triggerRestrictions":["This Card in Play","Main Card Fits Restriction Before","From Field","Max Per Turn"],
 					"cardRestriction":
 					{
 						"cardRestrictions":["Character","Board","Friendly","Subtypes Include"],

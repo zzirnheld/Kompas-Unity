@@ -9,7 +9,7 @@
 			{
 				"triggerCondition":"Play",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Stackable Source Fits Restriction","Coords Fit Restriction"],
+					"triggerRestrictions":["This Card in Play","Stackable Source Fits Restriction Now","Space Fits Restriction"],
 					"sourceRestriction":
 					{
 						"cardRestrictions":["Distinct Name from Source","Subtypes Include"],

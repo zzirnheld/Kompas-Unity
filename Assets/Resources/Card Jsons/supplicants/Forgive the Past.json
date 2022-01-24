@@ -8,7 +8,7 @@
 			{
 				"triggerCondition":"Discard",
 				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Enemy Turn"],
+					"triggerRestrictions":["This Card in Play","Main Card Fits Restriction Before","Enemy Turn"],
 					"cardRestriction":
 					{
 						"cardRestrictions":["Board","Subtypes Include"],

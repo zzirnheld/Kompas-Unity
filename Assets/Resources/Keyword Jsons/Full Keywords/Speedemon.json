@@ -5,7 +5,7 @@
 		"blurb":"Speedemon",
 		"triggerCondition":"Move",
 		"triggerRestriction":{
-			"triggerRestrictions":["This Card Triggered","Stackable Source isn't This Effect"]
+			"triggerRestrictions":["This Card is Main Card","Stackable Source isn't This Effect"]
 		}
 	},
 	"subeffects":[

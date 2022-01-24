@@ -11,7 +11,7 @@
 					"triggerRestrictions": [
 						"This Card in Play",
 						"Max Per Turn",
-						"Triggerer Fits Restriction"
+						"Main Card Fits Restriction Before"
 					],
 					"cardRestriction": {
 						"cardRestrictions": [

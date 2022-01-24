@@ -10,14 +10,20 @@
 				"triggerRestriction": {
 					"triggerRestrictions": [
 						"This Card in Play",
-						"Adjacent to Restriction"
+						"Card Exists Now"
 					],
-					"adjacencyRestriction": {
+					"existsRestriction": {
 						"cardRestrictions": [
+							"Space Fits Restriction",
 							"Board",
 							"Avatar",
 							"Enemy"
-						]
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							]
+						}
 					}
 				}
 			},
