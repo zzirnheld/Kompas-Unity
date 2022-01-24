@@ -143,7 +143,7 @@ namespace KompasCore.Effects
         public SpaceRestriction spaceRestriction;
 
         public GameCard Source { get; private set; }
-        public Player Controller => Source?.Controller;
+        public Player Controller => Effect?.Controller ?? Source?.Controller;
         public Effect Effect { get; private set; }
 
         public string blurb = "";
