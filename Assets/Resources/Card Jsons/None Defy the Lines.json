@@ -22,7 +22,7 @@
 					"cardRestriction":
 					{
 						"blurb":"who to next be brought low by the Lines",
-						"cardRestrictions":["Is Character","Board","Not Already Target"]
+						"cardRestrictions":["Character","Board","Not Already Target"]
 					}
 				},
 				{

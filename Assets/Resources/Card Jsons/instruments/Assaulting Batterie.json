@@ -35,7 +35,7 @@
 					"cardRestriction":
 					{
 						"blurb":"BOOM",
-						"cardRestrictions":["Is Character","Board","Exactly X Spaces to Source"]
+						"cardRestrictions":["Character","Board","Exactly X Spaces to Source"]
 					},
                     "xMultiplier":0,
                     "xModifier":2

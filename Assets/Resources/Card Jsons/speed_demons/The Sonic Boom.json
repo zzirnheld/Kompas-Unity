@@ -20,7 +20,7 @@
 					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Enemy","Board","Space Fits Restriction"],
+						"cardRestrictions":["Character","Enemy","Board","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["Adjacent to Coords"],

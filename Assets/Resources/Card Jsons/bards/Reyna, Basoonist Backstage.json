@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"shishishishishishishisihshi",
-						"cardRestrictions":["Is Spell","Friendly","Discard","Can Be Played","Subtypes Include"],
+						"cardRestrictions":["Spell","Friendly","Discard","Can Be Played","Subtypes Include"],
 						"subtypesInclude":["Music"]
 					}
 				},

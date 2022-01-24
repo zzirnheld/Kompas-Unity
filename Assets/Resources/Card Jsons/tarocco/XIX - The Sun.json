@@ -18,7 +18,7 @@
 					"cardRestriction":
 					{
 						"blurb":"character for Sun to give -1 E",
-						"cardRestrictions":["Is Character","Board","Summoned"]
+						"cardRestrictions":["Character","Board","Summoned"]
 					}
 				},
 				{
@@ -30,7 +30,7 @@
 					"cardRestriction":
 					{
 						"blurb":"character for Sun to give +1 E",
-						"cardRestrictions":["Is Character","Board","Distinct Name from Other Targets"]
+						"cardRestrictions":["Character","Board","Distinct Name from Other Targets"]
 					}
 				},
 				{

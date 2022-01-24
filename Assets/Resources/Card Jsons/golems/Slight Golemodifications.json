@@ -17,7 +17,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Subtypes Include","Is Character","Friendly","Board"],
+						"cardRestrictions":["Subtypes Include","Character","Friendly","Board"],
 						"subtypesInclude":["Golem"]
 					}
 				},
@@ -48,7 +48,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Subtypes Include","Is Character","Multiple Possible Locations","Card Value Fits X Restriction","Distinct Name from Other Targets"],
+						"cardRestrictions":["Subtypes Include","Character","Multiple Possible Locations","Card Value Fits X Restriction","Distinct Name from Other Targets"],
 						"cardValue":{
 							"value":"S"
 						},
@@ -76,7 +76,7 @@
 					"condition":"Target Fits Restriction",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character"]
+						"cardRestrictions":["Character"]
 					},
 					"targetIndex":-2
 				},

@@ -11,7 +11,7 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Max Per Turn"],
 					"cardRestriction":{
-						"cardRestrictions":["Board","Friendly","Is Spell"]
+						"cardRestrictions":["Board","Friendly","Spell"]
 					}
 				}
 			},
@@ -24,7 +24,7 @@
 					"cardRestriction":
 					{
 						"blurb":"My beautiful nonsezna",
-						"cardRestrictions":["Is Spell","Friendly","Hand","Can Be Played","Subtypes Include"],
+						"cardRestrictions":["Spell","Friendly","Hand","Can Be Played","Subtypes Include"],
 						"subtypesInclude":["Music"]
 					}
 				},

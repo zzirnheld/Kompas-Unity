@@ -51,7 +51,7 @@
 					"cardRestriction":
 					{
 						"blurb":"character to reveal",
-						"cardRestrictions":["Controller Matches Player Target","Hand","Is Character","Hidden","Card Value Fits X Restriction"],
+						"cardRestrictions":["Controller Matches Player Target","Hand","Character","Hidden","Card Value Fits X Restriction"],
 						"cardValue":{
 							"value":"Cost"
 						},
@@ -75,7 +75,7 @@
 					"cardRestriction":
 					{
 						"blurb":"character to report",
-						"cardRestrictions":["Friendly","Deck","Is Character","Effect Controller can Afford Cost","Card Value Fits X Restriction"],
+						"cardRestrictions":["Friendly","Deck","Character","Effect Controller can Afford Cost","Card Value Fits X Restriction"],
 						"cardValue":{
 							"value":"S"
 						},

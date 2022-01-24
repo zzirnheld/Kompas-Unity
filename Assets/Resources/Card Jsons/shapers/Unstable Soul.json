@@ -18,7 +18,7 @@
 						"blurb":"to move Unstable Soul to",
 						"spaceRestrictions":["Connected to Source by Cards Fitting Restriction"],
 						"connectednessRestriction":{
-							"cardRestrictions":["Subtypes Include","Is Character","Board"],
+							"cardRestrictions":["Subtypes Include","Character","Board"],
 							"subtypesInclude":["Ethereal"]
 						}
 					}
@@ -34,7 +34,7 @@
 					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
 					"whatToCount":"Distance to Coords Through",
 					"throughRestriction":{
-						"cardRestrictions":["Subtypes Include","Is Character","Board"],
+						"cardRestrictions":["Subtypes Include","Character","Board"],
 						"subtypesInclude":["Ethereal"]
 					},
 					"xMultiplier":1

@@ -17,7 +17,7 @@ namespace KompasCore.Effects
 
         //names
         public const string NameIs = "Name Is";
-        public const string SameName = "Same Name as Target";
+        public const string SameNameAsTarget = "Same Name as Target";
         public const string SameNameAsSource = "Same Name as Source";
         public const string DistinctNameFromTargets = "Distinct Name from Other Targets";
         public const string DistinctNameFromSource = "Distinct Name from Source";
@@ -29,21 +29,20 @@ namespace KompasCore.Effects
         public const string DifferentFromAugmentedCard = "Different from Augmented Card";
 
         //card types
-        public const string IsCharacter = "Is Character";
-        public const string IsSpell = "Is Spell";
-        public const string IsAugment = "Is Augment";
+        public const string Character = "Character";
+        public const string Spell = "Spell";
+        public const string Augment = "Augment";
         public const string NotAugment = "Not Augment";
-        public const string Fast = "Fast";
         public const string SpellSubtypes = "Spell Subtypes";
 
         //control
         public const string Friendly = "Friendly";
         public const string Enemy = "Enemy";
-        public const string FriendlyToCardTarget = "Friendly to Card Target";
+
         public const string SameOwner = "Same Owner as Source";
         public const string TurnPlayerControls = "Turn Player Controls";
-        public const string AdjacentToEnemy = "Adjacent to Enemy";
-        public const string ControllerMatchesTarget = "Controller Matches Target's";
+
+        public const string ControllerMatchesTarget = "Controller Matches Card Target's";
         public const string ControllerMatchesPlayerTarget = "Controller Matches Player Target";
         public const string ControllerIsntPlayerTarget = "Controller Isn't Player Target";
 
@@ -61,10 +60,13 @@ namespace KompasCore.Effects
         public const string NotSource = "Not Source";
         public const string IsTarget = "Is Target";
         public const string NotContextCard = "Not Context Card";
+
+        public const string Augmented = "Augmented";
         public const string AugmentsTarget = "Augments Current Target";
         public const string AugmentedBySource = "Source Augments";
-        public const string AugmentsCardRestriction = "Augments Card Fitting Restriction";
         public const string NotAugmentedBySource = "Source Doesn't Augment";
+        public const string AugmentsCardRestriction = "Augments Card Fitting Restriction";
+
         public const string WieldsAugmentFittingRestriction = "Wields Augment Fitting Restriction";
         public const string WieldsNoAugmentFittingRestriction = "Wields No Augment Fitting Restriction";
 
@@ -80,18 +82,20 @@ namespace KompasCore.Effects
 
         //stats
         public const string CardValueFitsXRestriction = "Card Value Fits X Restriction";
+
         //misc statlike
-        public const string CanBeHealed = "Can Be Healed";
+        public const string Hurt = "Hurt";
 
         public const string Negated = "Negated";
         public const string Activated = "Activated";
+
         public const string HasMovement = "Has Movement";
         public const string OutOfMovement = "Out of Movement";
 
         //positioning
         public const string SpaceFitsRestriction = "Space Fits Restriction";
 
-        public const string SourceInThisAOE = "Source in This' AOE";
+        public const string SourceInThisAOE = "Source in This' AOE"; //whether the source card is in the potential target's aoe
 
         public const string IndexInListGTC = "Index>C";
         public const string IndexInListLTC = "Index<C";
@@ -99,15 +103,14 @@ namespace KompasCore.Effects
 
         //misc
         public const string CanBePlayed = "Can Be Played";
-        //public const string TargetCanBePlayed = "Target Can Be Played";
+        public const string CanPlayToTargetSpace = "Can be Played to Target Space";
+
         public const string EffectControllerCanPayCost = "Effect Controller can Afford Cost";
-        public const string Augmented = "Augmented";
         public const string IsDefendingFromSource = "Is Defending From Source";
         public const string CanPlayTargetToThisCharactersSpace = "Can Play Target to This Character's Space";
         public const string SpaceRestrictionValidIfThisTargetChosen = "Space Restriction Valid With This Target Chosen";
         public const string AttackingCardFittingRestriction = "Attacking Card Fitting Restriction";
         public const string EffectIsOnTheStack = "Effect is on the Stack";
-        public const string CanPlayToTargetSpace = "Can be Played to Target Space";
         #endregion restrictions
 
         //because JsonConvert will fill in all values with defaults if not present
@@ -204,7 +207,7 @@ namespace KompasCore.Effects
 
             //names
             NameIs => potentialTarget?.CardName == nameIs,
-            SameName => Subeffect.CardTarget.CardName == potentialTarget?.CardName,
+            SameNameAsTarget => Subeffect.CardTarget.CardName == potentialTarget?.CardName,
             SameNameAsSource => potentialTarget?.CardName == Source.CardName,
             DistinctNameFromTargets => Effect.CardTargets.All(card => card.CardName != potentialTarget?.CardName),
             DistinctNameFromSource => Source.CardName != potentialTarget?.CardName,
@@ -216,17 +219,15 @@ namespace KompasCore.Effects
             DifferentFromAugmentedCard => potentialTarget?.Card != Source.AugmentedCard,
 
             //card types
-            IsCharacter => potentialTarget?.CardType == 'C',
-            IsSpell => potentialTarget?.CardType == 'S',
-            IsAugment => potentialTarget?.CardType == 'A',
+            Character => potentialTarget?.CardType == 'C',
+            Spell => potentialTarget?.CardType == 'S',
+            Augment => potentialTarget?.CardType == 'A',
             NotAugment => potentialTarget?.CardType != 'A',
-            Fast => potentialTarget?.Fast ?? false,
             SpellSubtypes => potentialTarget?.SpellSubtypes.Intersect(spellSubtypes).Any() ?? false,
 
             //control
             Friendly => potentialTarget?.Controller == Controller,
             Enemy => potentialTarget?.Controller != Controller,
-            FriendlyToCardTarget => potentialTarget?.Controller == Subeffect.CardTarget.Controller,
             SameOwner => potentialTarget?.Owner == Controller,
             TurnPlayerControls => potentialTarget?.Controller == Subeffect.Game.TurnPlayer,
 
@@ -262,14 +263,14 @@ namespace KompasCore.Effects
             Hand => potentialTarget?.Location == CardLocation.Hand,
             Deck => potentialTarget?.Location == CardLocation.Deck,
             Discard => potentialTarget?.Location == CardLocation.Discard,
-            Board => potentialTarget?.Location == CardLocation.Field,
+            Board => potentialTarget?.Location == CardLocation.Board,
             Annihilated => potentialTarget?.Location == CardLocation.Annihilation,
             LocationInList => locations.Contains(potentialTarget?.Location ?? CardLocation.Nowhere),
             Hidden => !potentialTarget?.KnownToEnemy ?? false,
 
             //stats
             CardValueFitsXRestriction => xRestriction.IsValidNumber(cardValue.GetValueOf(potentialTarget)),
-            CanBeHealed => potentialTarget?.Hurt ?? false,
+            Hurt => potentialTarget?.Hurt ?? false,
             Activated => potentialTarget?.Activated ?? false,
             Negated => potentialTarget?.Negated ?? false,
             HasMovement => potentialTarget?.SpacesCanMove > 0,
@@ -330,15 +331,18 @@ namespace KompasCore.Effects
         {
             if (!initialized) throw new ArgumentException("Card restriction not initialized!");
 
-            //if (potentialTarget == null) return false;
-
             try
             {
                 return cardRestrictions.All(r => IsRestrictionValid(r, potentialTarget, x, context));
             }
-            catch (ArgumentException e)
+            catch (ArgumentException ae)
             {
-                Debug.LogError(e);
+                Debug.LogError(ae);
+                return false;
+            }
+            catch (NullReferenceException nre)
+            {
+                Debug.LogError(nre);
                 return false;
             }
         }

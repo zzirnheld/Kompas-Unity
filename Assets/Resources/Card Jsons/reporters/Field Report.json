@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"friendly Reporter to set X by S of",
-						"cardRestrictions":["Is Character","Friendly","Board","Subtypes Include","Space Fits Restriction"],
+						"cardRestrictions":["Character","Friendly","Board","Subtypes Include","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["Adjacent to Source"],
@@ -53,7 +53,7 @@
 					"cardRestriction":
 					{
 						"blurb":"character to reveal",
-						"cardRestrictions":["Controller Matches Player Target","Hand","Is Character","Hidden","Card Value Fits X Restriction"],
+						"cardRestrictions":["Controller Matches Player Target","Hand","Character","Hidden","Card Value Fits X Restriction"],
 						"cardValue":{
 							"value":"S"
 						},
@@ -78,7 +78,7 @@
 					"playerIndex":-2,
 					"cardRestriction":
 					{
-						"cardRestrictions":["Friendly","Is Character","Deck","Subtypes Include","Card Value Fits X Restriction"],
+						"cardRestrictions":["Friendly","Character","Deck","Subtypes Include","Card Value Fits X Restriction"],
 						"cardValue":{
 							"value":"S"
 						},
@@ -99,7 +99,7 @@
 		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
 		"adjacentCardRestriction":
 		{
-			"cardRestrictions":["Is Character","Subtypes Include"],
+			"cardRestrictions":["Character","Subtypes Include"],
 			"subtypesInclude":["Reporter"]
 		}
 	},

@@ -106,7 +106,7 @@ namespace KompasCore.Cards
 
         public override bool Summoned
         {
-            get => CardType != 'C' || Location == CardLocation.Field;
+            get => CardType != 'C' || Location == CardLocation.Board;
             protected set
             {
                 throw new NotImplementedException($"Tried to set summoned on list of actual GameCard {this}");
@@ -315,7 +315,7 @@ namespace KompasCore.Cards
 
             SetSpacesMoved(0, true);
             SetAttacksThisTurn(0, true);
-            if (Location == CardLocation.Field) TurnsOnBoard++;
+            if (Location == CardLocation.Board) TurnsOnBoard++;
         }
 
         public void ResetForStack()
@@ -341,8 +341,8 @@ namespace KompasCore.Cards
             //can't add a null augment
             if (augment == null) 
                 throw new NullAugmentException(stackSrc, this, "Can't add a null augment");
-            if (Location != CardLocation.Field) 
-                throw new CardNotHereException(CardLocation.Field, this, "Can't put an augment on a card not in play!");
+            if (Location != CardLocation.Board) 
+                throw new CardNotHereException(CardLocation.Board, this, "Can't put an augment on a card not in play!");
 
             augment.Remove(stackSrc);
 

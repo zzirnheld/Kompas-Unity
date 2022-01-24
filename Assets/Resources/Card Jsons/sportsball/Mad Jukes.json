@@ -12,7 +12,7 @@
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Friendly","Augmented"]
+						"cardRestrictions":["Character","Friendly","Augmented"]
 					}
 				}
 			},
@@ -44,7 +44,7 @@
 					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Space Fits Restriction"],
+						"cardRestrictions":["Character","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["Adjacent to Target"],

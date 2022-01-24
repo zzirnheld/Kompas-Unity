@@ -19,7 +19,7 @@
 					"cardRestriction":
 					{
 						"blurb":"character whose W to swap",
-						"cardRestrictions":["Is Character","Board","Summoned"]
+						"cardRestrictions":["Character","Board","Summoned"]
 					}
 				},
 				{
@@ -27,7 +27,7 @@
 					"cardRestriction":
 					{
 						"blurb":"character whose E to swap",
-						"cardRestrictions":["Is Character","Board","Summoned","Space Fits Restriction"],
+						"cardRestrictions":["Character","Board","Summoned","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["Distance to Target Fits X Restriction"],

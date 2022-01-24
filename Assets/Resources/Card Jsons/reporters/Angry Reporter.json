@@ -68,7 +68,7 @@
 					"cardRestriction":
 					{
 						"blurb":"enemy character to attack",
-						"cardRestrictions":["Is Character","Controller Isn't Player Target","Board","Space Fits Restriction"],
+						"cardRestrictions":["Character","Controller Isn't Player Target","Board","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["Adjacent to Target"],

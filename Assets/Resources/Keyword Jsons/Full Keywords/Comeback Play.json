@@ -11,7 +11,7 @@
 			},
 			"existsRestriction":
 			{
-				"cardRestrictions":["Friendly","Board","Is Augment","Subtypes Include"],
+				"cardRestrictions":["Friendly","Board","Augment","Subtypes Include"],
 				"subtypesInclude":["Sportsball"]
 			}
 		}

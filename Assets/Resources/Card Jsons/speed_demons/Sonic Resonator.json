@@ -54,7 +54,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Speedemon to resonate",
-						"cardRestrictions":["Is Character","Deck","Subtypes Include","Card Value Fits X Restriction","Distinct Name from Other Targets"],
+						"cardRestrictions":["Character","Deck","Subtypes Include","Card Value Fits X Restriction","Distinct Name from Other Targets"],
 						"subtypesInclude":["Speedemon"],
 						"cardValue":{
 							"value":"S"

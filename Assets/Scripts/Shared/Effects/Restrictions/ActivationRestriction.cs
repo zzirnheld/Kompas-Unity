@@ -32,7 +32,7 @@ namespace KompasCore.Effects
             { TimesPerTurn, TimesPerRound, FriendlyTurn, EnemyTurn, NotNegated, InPlay, Location, ThisFitsRestriction, NotCurrentlyActivated };
 
         public int maxTimes = 1;
-        public int location = (int) CardLocation.Field;
+        public int location = (int) CardLocation.Board;
         public CardRestriction existsRestriction;
         public CardRestriction thisCardRestriction;
 
@@ -69,7 +69,7 @@ namespace KompasCore.Effects
             FriendlyTurn => Effect.Game.TurnPlayer == activator,
             EnemyTurn => Effect.Game.TurnPlayer != activator,
 
-            InPlay => Effect.Source.Location == CardLocation.Field,
+            InPlay => Effect.Source.Location == CardLocation.Board,
             Location => Effect.Source.Location == (CardLocation)location,
 
             ControllerActivates => activator == Card.Controller,

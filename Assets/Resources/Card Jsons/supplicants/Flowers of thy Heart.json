@@ -11,7 +11,7 @@
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Board","Negated"]
+						"cardRestrictions":["Character","Board","Negated"]
 					}
 				}
 			},

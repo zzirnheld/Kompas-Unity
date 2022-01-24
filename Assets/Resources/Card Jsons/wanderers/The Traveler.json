@@ -16,7 +16,7 @@
 					"cardRestriction":
 					{
 						"blurb":"character to reshuffle",
-						"cardRestrictions":["Is Character","Board","Friendly","Summoned"]
+						"cardRestrictions":["Character","Board","Friendly","Summoned"]
 					}
 				},
 				{
@@ -34,7 +34,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Wanderer to inspire with music",
-						"cardRestrictions":["Is Character","Friendly","Hand","Distinct Name from Other Targets","Card Value Fits X Restriction"],
+						"cardRestrictions":["Character","Friendly","Hand","Distinct Name from Other Targets","Card Value Fits X Restriction"],
 						"cardValue":{
 							"value":"S"
 						},

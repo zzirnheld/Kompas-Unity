@@ -18,7 +18,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Silent Cult Follower to convert",
-						"cardRestrictions":["Subtypes Include","Friendly","Deck","Is Character"],
+						"cardRestrictions":["Subtypes Include","Friendly","Deck","Character"],
 						"subtypesInclude":["Cultist Follower"]
 					}
 				},

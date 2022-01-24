@@ -73,7 +73,7 @@ namespace KompasClient.Networking
             switch (location)
             {
                 case CardLocation.Nowhere: break;
-                case CardLocation.Field:
+                case CardLocation.Board:
                     if (attached) clientGame.boardCtrl.GetCardAt((x, y)).AddAugment(card);
                     else card.Play((x, y), controller);
                     break;

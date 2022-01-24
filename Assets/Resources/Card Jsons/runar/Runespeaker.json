@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Rune for Runespeaker to cast",
-						"cardRestrictions":["Subtypes Include","Is Spell","Friendly","Hand","Can Be Played","Effect Controller can Afford Cost"],
+						"cardRestrictions":["Subtypes Include","Spell","Friendly","Hand","Can Be Played","Effect Controller can Afford Cost"],
 						"subtypesInclude":["Rune"]
 					}
 				},

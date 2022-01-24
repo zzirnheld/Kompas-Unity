@@ -10,7 +10,7 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":{
-						"cardRestrictions":["Board","Is Character"]
+						"cardRestrictions":["Board","Character"]
 					}
 				}
 			},
@@ -20,7 +20,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Geminii for Reincarnation to echo",
-						"cardRestrictions":["Is Character","Board","Subtypes Include"],
+						"cardRestrictions":["Character","Board","Subtypes Include"],
 						"subtypesInclude":["Geminii"]
 					}
 				},

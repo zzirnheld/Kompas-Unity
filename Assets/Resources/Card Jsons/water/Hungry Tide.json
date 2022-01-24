@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"to feed the tide",
-						"cardRestrictions":["Is Spell","Friendly","Hand","Subtypes Include"],
+						"cardRestrictions":["Spell","Friendly","Hand","Subtypes Include"],
 						"subtypesInclude":["Water"]
 					},
 					"listRestriction":{
@@ -38,7 +38,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for the tide to belch",
-						"cardRestrictions":["Is Character","Subtypes Include","Friendly","Deck"],
+						"cardRestrictions":["Character","Subtypes Include","Friendly","Deck"],
 						"subtypesInclude":["Aquatic"]
 					}
 				},

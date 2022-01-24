@@ -17,7 +17,7 @@
                     "cardRestriction":
                     {
                         "blurb":"who to die",
-                        "cardRestrictions":["Is Character","Board"]
+                        "cardRestrictions":["Character","Board"]
                     }
                 },
 				{

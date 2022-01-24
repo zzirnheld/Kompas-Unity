@@ -30,7 +30,7 @@
 			"cardRestriction":
 			{
 				"blurb":"Wanderer to Wander into",
-				"cardRestrictions":["Is Character","Deck","Subtypes Include","Card Value Fits X Restriction"],
+				"cardRestrictions":["Character","Deck","Subtypes Include","Card Value Fits X Restriction"],
 				"subtypesInclude":["Wanderer"],
 				"cardValue":{
 					"value":"S"

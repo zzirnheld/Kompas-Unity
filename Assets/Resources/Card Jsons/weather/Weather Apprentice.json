@@ -11,7 +11,7 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":{
-						"cardRestrictions":["Is Character","Distinct Name from Source","Space Fits Restriction"],
+						"cardRestrictions":["Character","Distinct Name from Source","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["In AOE Source is Also In"],

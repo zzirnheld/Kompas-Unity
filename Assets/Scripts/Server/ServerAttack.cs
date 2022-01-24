@@ -44,8 +44,8 @@ namespace KompasServer.Effects
         //this is factored out so i can maybe eventually add some indication of whether an attack is still gonna be valid
         private bool StillValidAttack
         {
-            get => attacker.Location == CardLocation.Field 
-                && defender.Location == CardLocation.Field
+            get => attacker.Location == CardLocation.Board 
+                && defender.Location == CardLocation.Board
                 && attacker.Position == attackerInitialSpace
                 && defender.Position == defenderInitialSpace;
         }

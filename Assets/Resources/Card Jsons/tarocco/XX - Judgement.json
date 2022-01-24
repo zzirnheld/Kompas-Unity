@@ -19,7 +19,7 @@
 					"cardRestriction":
 					{
 						"blurb":"character for Judgement to kill",
-						"cardRestrictions":["Is Character","Board","Card Value Fits X Restriction"],
+						"cardRestrictions":["Character","Board","Card Value Fits X Restriction"],
 						"cardValue":{
 							"value":"S"
 						},

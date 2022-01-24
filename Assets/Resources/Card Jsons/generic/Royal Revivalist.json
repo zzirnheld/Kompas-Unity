@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Sire, who shall we revive?",
-						"cardRestrictions":["Is Character","Discard","Effect Controller can Afford Cost"]
+						"cardRestrictions":["Character","Discard","Effect Controller can Afford Cost"]
 					},
 					"xMultiplier":1
 				},

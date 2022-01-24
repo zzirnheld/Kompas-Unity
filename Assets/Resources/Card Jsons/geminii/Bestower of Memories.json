@@ -18,7 +18,7 @@
 					"cardRestriction":
 					{
 						"blurb":"character for Bestower of Memories to echo",
-						"cardRestrictions":["Is Character","Board"]
+						"cardRestrictions":["Character","Board"]
 					}
 				},
 				{
@@ -35,7 +35,7 @@
 					"triggerRestrictions":["Max Per Stack","This Card in Play","Controller Triggered","Triggerer Fits Restriction"],
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Subtypes Include"],
+						"cardRestrictions":["Character","Subtypes Include"],
 						"subtypesInclude":["Geminii"]
 					}
 				}

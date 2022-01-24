@@ -11,7 +11,7 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":{
-						"cardRestrictions":["Is Character","Subtypes Exclude"],
+						"cardRestrictions":["Character","Subtypes Exclude"],
                         "subtypesExclude":["Fungus"]
 					}
 				}

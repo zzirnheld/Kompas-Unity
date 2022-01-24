@@ -42,7 +42,7 @@
 					"cardRestriction":
 					{
 						"blurb":"to saxily sax",
-						"cardRestrictions":["Is Character","Friendly","Hand","S<=X"]
+						"cardRestrictions":["Character","Friendly","Hand","S<=X"]
 					},
 					"xMultiplier":1
 				},

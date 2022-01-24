@@ -31,7 +31,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Supplicants' Plea",
-						"cardRestrictions":["Friendly","Deck","Is Spell","Subtypes Include","Card Value Fits X Restriction"],
+						"cardRestrictions":["Friendly","Deck","Spell","Subtypes Include","Card Value Fits X Restriction"],
 						"cardValue":{
 							"value":"C"
 						},

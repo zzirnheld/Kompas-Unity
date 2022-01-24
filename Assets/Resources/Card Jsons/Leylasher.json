@@ -12,7 +12,7 @@
 					"triggerRestrictions":["This Card in Play","Max Per Turn","Triggerer Fits Restriction"],
 					"cardRestriction":
 					{
-						"cardRestrictions":["Friendly","Is Character"]
+						"cardRestrictions":["Friendly","Character"]
 					}
 				}
 			},

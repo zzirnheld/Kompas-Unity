@@ -20,7 +20,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Who to heal",
-						"cardRestrictions":["Can Be Healed"]
+						"cardRestrictions":["Hurt"]
 					}
 				},
 				{

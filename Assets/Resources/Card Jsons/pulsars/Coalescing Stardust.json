@@ -60,7 +60,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Pulsar to coalesce",
-						"cardRestrictions":["Subtypes Include","Friendly","Deck","Is Character","Card Value Fits X Restriction"],
+						"cardRestrictions":["Subtypes Include","Friendly","Deck","Character","Card Value Fits X Restriction"],
 						"cardValue":{
 							"value":"S"
 						},

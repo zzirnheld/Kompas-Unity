@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Shifting tide",
-						"cardRestrictions":["Board","Friendly","Is Spell","Subtypes Include"],
+						"cardRestrictions":["Board","Friendly","Spell","Subtypes Include"],
 						"subtypesInclude":["Water"]
 					}
 				},
@@ -32,7 +32,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Tide that Shifts In",
-						"cardRestrictions":["Is Spell","Friendly","Hand","Can Be Played","Subtypes Include"],
+						"cardRestrictions":["Spell","Friendly","Hand","Can Be Played","Subtypes Include"],
 						"subtypesInclude":["Water"]
 					}
 				},

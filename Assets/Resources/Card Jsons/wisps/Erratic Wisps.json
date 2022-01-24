@@ -12,7 +12,7 @@
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Coords Fit Restriction","Max Per Turn"],
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Subtypes Exclude"],
+						"cardRestrictions":["Character","Subtypes Exclude"],
 						"subtypesExclude":["Wisp"]
 					},
 					"spaceRestriction":

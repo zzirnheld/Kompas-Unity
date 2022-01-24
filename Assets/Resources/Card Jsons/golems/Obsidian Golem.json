@@ -18,7 +18,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Summoned character for Obsidian Golem to give -5 E",
-						"cardRestrictions":["Is Character","Summoned","Board"]
+						"cardRestrictions":["Character","Summoned","Board"]
 					}
 				},
 				{

@@ -21,7 +21,7 @@
 					"cardRestriction":
 					{
 						"blurb":"spell for Mannaz to search (to hand)",
-						"cardRestrictions":["Is Character","Friendly","Deck","Index<C"],
+						"cardRestrictions":["Character","Friendly","Deck","Index<C"],
 						"constant":10
 					},
 					"restRestriction":

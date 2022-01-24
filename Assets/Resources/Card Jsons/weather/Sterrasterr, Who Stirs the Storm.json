@@ -11,7 +11,7 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Controller Triggered"],
 					"cardRestriction":{
-						"cardRestrictions":["Friendly","Is Spell","Subtypes Include","Spell Subtypes"],
+						"cardRestrictions":["Friendly","Spell","Subtypes Include","Spell Subtypes"],
 						"subtypesInclude":["Weather"],
                         "spellSubtypes":["Radial"]
 					}
@@ -23,7 +23,7 @@
 					"cardRestriction":
 					{
 						"blurb":"enemy character for Sterrasterr to stir into the storm",
-						"cardRestrictions":["Is Character","Enemy","Board"]
+						"cardRestrictions":["Character","Enemy","Board"]
 					}
 				},
 				{

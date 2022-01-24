@@ -19,7 +19,7 @@
 					"cardRestriction":
 					{
 						"blurb":"RAIN PLEASE",
-						"cardRestrictions":["Subtypes Include","Friendly","Deck","Is Spell","Can Be Played","Effect Controller can Afford Cost"],
+						"cardRestrictions":["Subtypes Include","Friendly","Deck","Spell","Can Be Played","Effect Controller can Afford Cost"],
 						"subtypesInclude":["Water"]
 					}
 				},

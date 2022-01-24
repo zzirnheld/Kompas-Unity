@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"friendly character that should attack",
-						"cardRestrictions":["Is Character","Friendly","Board","Space Fits Restriction"],
+						"cardRestrictions":["Character","Friendly","Board","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["Adjacent to Source"],
@@ -30,7 +30,7 @@
 					"cardRestriction":
 					{
 						"blurb":"enemy character to attack",
-						"cardRestrictions":["Is Character","Enemy","Board","Space Fits Restriction"],
+						"cardRestrictions":["Character","Enemy","Board","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["Adjacent to Target"],

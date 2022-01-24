@@ -18,7 +18,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Who to heal",
-						"cardRestrictions":["Can Be Healed","Subtypes Include"],
+						"cardRestrictions":["Hurt","Subtypes Include"],
 						"subtypesInclude":["Tree"]
 					}
 				},

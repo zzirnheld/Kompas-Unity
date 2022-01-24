@@ -16,7 +16,7 @@
 					"$type":"KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Subtypes Include","Is Character","Board"],
+						"cardRestrictions":["Subtypes Include","Character","Board"],
 						"subtypesInclude":["Warrior"]
 					},
 					"xMultiplier":1
@@ -26,7 +26,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Warrior for Swordmystic to revive",
-						"cardRestrictions":["Subtypes Include","Is Character","Discard","Card Value Fits X Restriction"],
+						"cardRestrictions":["Subtypes Include","Character","Discard","Card Value Fits X Restriction"],
 						"cardValue":{
 							"value":"S"
 						},

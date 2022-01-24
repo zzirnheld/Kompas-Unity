@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Wisp for Wispiwisp to wisp",
-						"cardRestrictions":["Subtypes Include","Is Character","Board"],
+						"cardRestrictions":["Subtypes Include","Character","Board"],
 						"subtypesInclude":["Wisp"]
 					}
 				},

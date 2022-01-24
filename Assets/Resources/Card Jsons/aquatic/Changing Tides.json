@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Changing tide",
-						"cardRestrictions":["Board","Is Spell","Subtypes Include"],
+						"cardRestrictions":["Board","Spell","Subtypes Include"],
 						"subtypesInclude":["Water"]
 					}
 				},

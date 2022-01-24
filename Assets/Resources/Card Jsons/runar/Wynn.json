@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"spell for Wynn to Dispel",
-						"cardRestrictions":["Is Spell","Board","Space Fits Restriction"],
+						"cardRestrictions":["Spell","Board","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["Adjacent to Source"],
@@ -36,7 +36,7 @@
 		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
 		"adjacentCardRestriction":
 		{
-			"cardRestrictions":["Is Character"]
+			"cardRestrictions":["Character"]
 		}
 	},
 	"c":1,

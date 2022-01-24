@@ -32,7 +32,7 @@
 					"cardRestriction":
 					{
 						"blurb":"character for Woolen Golem to give -XW",
-						"cardRestrictions":["Is Character","Board","Distinct Name from Source"]
+						"cardRestrictions":["Character","Board","Distinct Name from Source"]
 					}
 				},
 				{

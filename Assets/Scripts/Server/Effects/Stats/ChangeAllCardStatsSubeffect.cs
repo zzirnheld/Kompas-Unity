@@ -16,7 +16,7 @@ namespace KompasServer.Effects
             {
                 cardRestrictions = new string[]
                 {
-                    CardRestriction.IsCharacter,
+                    CardRestriction.Character,
                     CardRestriction.Board
                 }
             };

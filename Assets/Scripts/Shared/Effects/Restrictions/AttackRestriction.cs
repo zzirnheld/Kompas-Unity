@@ -55,7 +55,7 @@ namespace KompasCore.Effects
             NothingHappening => Card.Game.NothingHappening,
 
             ThisIsActive => Card.Activated,
-            InPlay => Card.Location == CardLocation.Field,
+            InPlay => Card.Location == CardLocation.Board,
             NotNormally => stackSrc != null,
 
             _ => throw new System.ArgumentException($"Could not understand attack restriction {restriction}"),

@@ -16,7 +16,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":{
 						"blurb":"Shaper to hand-summon",
-						"cardRestrictions":["Subtypes Include","Is Character","Friendly","Hand"],
+						"cardRestrictions":["Subtypes Include","Character","Friendly","Hand"],
 						"subtypesInclude":["Shaper"]
 					}
 				},

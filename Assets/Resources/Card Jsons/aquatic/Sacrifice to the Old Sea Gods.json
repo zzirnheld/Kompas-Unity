@@ -43,7 +43,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Tide that Shifts In",
-						"cardRestrictions":["Is Spell","Friendly","Deck","Can Be Played","Subtypes Include"],
+						"cardRestrictions":["Spell","Friendly","Deck","Can Be Played","Subtypes Include"],
 						"subtypesInclude":["Water"]
 					}
 				},

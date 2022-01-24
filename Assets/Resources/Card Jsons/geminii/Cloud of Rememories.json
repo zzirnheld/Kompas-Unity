@@ -10,7 +10,7 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Controller Triggered","Triggerer Fits Restriction","Max Per Turn","Coords Fit Restriction"],
 					"cardRestriction":{
-						"cardRestrictions":["Is Character"]
+						"cardRestrictions":["Character"]
 					},
 					"spaceRestriction":
 					{

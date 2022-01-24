@@ -12,7 +12,7 @@
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","From Field"],
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Board","Friendly"]
+						"cardRestrictions":["Character","Board","Friendly"]
 					}
 				}
 			},

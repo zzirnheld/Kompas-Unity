@@ -31,7 +31,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Leybinder to hand-summon",
-						"cardRestrictions":["Is Character","Controller Matches Player Target","Hand","Card Value Fits X Restriction"],
+						"cardRestrictions":["Character","Controller Matches Player Target","Hand","Card Value Fits X Restriction"],
 						"cardValue":{
 							"value":"S"
 						},

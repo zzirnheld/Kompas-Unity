@@ -18,7 +18,7 @@
 					"cardRestriction":
 					{
 						"blurb":"to network (1/2)",
-						"cardRestrictions":["Subtypes Include","Is Character","Deck","Can Be Played"],
+						"cardRestrictions":["Subtypes Include","Character","Deck","Can Be Played"],
 						"subtypesInclude":["Network","Fungus"]
 					}
 				},
@@ -38,7 +38,7 @@
 					"cardRestriction":
 					{
 						"blurb":"to network (2/2)",
-						"cardRestrictions":["Subtypes Include","Is Character","Deck","Can Be Played"],
+						"cardRestrictions":["Subtypes Include","Character","Deck","Can Be Played"],
 						"subtypesInclude":["Network","Fungus"]
 					}
 				},

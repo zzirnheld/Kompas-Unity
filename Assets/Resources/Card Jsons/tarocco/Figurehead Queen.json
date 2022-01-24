@@ -49,7 +49,7 @@
 					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Friendly","Is Character","Deck","Subtypes Include","Card Value Fits X Restriction"],
+						"cardRestrictions":["Friendly","Character","Deck","Subtypes Include","Card Value Fits X Restriction"],
 						"cardValue":{
 							"value":"S"
 						},

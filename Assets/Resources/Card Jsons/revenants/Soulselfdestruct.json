@@ -57,7 +57,7 @@
 		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
 		"adjacentCardRestriction":
 		{
-			"cardRestrictions":["Is Character","Subtypes Include"],
+			"cardRestrictions":["Character","Subtypes Include"],
 			"subtypesInclude":["Ethereal"]
 		}
 	},

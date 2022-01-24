@@ -28,7 +28,7 @@
 					"cardRestriction":
 					{
 						"blurb":"spell to stab with green rocks and thereby dispel",
-						"cardRestrictions":["Is Spell","Board","Space Fits Restriction"],
+						"cardRestrictions":["Spell","Board","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["Distance to Source Fits X Restriction"],

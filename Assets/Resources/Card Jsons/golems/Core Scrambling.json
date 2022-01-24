@@ -31,7 +31,7 @@
 					"cardRestriction":
 					{
 						"blurb":"CORE!!!1!",
-						"cardRestrictions":["Friendly","Discard","Is Augment","Subtypes Include"],
+						"cardRestrictions":["Friendly","Discard","Augment","Subtypes Include"],
 						"subtypesInclude":["Golem Core"]
 					}
 				},

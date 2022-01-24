@@ -18,7 +18,7 @@
 					"cardRestriction":
 					{
 						"blurb":"dead Fungus",
-						"cardRestrictions":["Subtypes Include","Is Character","Discard"],
+						"cardRestrictions":["Subtypes Include","Character","Discard"],
 						"subtypesInclude":["Fungus"]
 					}
 				},

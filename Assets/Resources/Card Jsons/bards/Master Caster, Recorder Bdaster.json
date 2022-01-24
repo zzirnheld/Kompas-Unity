@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"my recorder",
-						"cardRestrictions":["Is Spell","Friendly","Board"]
+						"cardRestrictions":["Spell","Friendly","Board"]
 					}
 				},
 				{
@@ -28,7 +28,7 @@
 					"cardRestriction":
 					{
 						"blurb":"your recorder",
-						"cardRestrictions":["Is Spell","Enemy","Board","Space Fits Restriction"],
+						"cardRestrictions":["Spell","Enemy","Board","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["Adjacent to Source"],

@@ -57,7 +57,7 @@
 					"cardRestriction":
 					{
 						"blurb":"character for PL4T00N to blast",
-						"cardRestrictions":["Is Character","Board","Enemy"]
+						"cardRestrictions":["Character","Board","Enemy"]
 					}
 				},
 				{
@@ -70,7 +70,7 @@
 					"cardRestriction":
 					{
 						"blurb":"character for PL4T00N to blast",
-						"cardRestrictions":["Is Character","Board","Enemy"]
+						"cardRestrictions":["Character","Board","Enemy"]
 					}
 				},
 				{

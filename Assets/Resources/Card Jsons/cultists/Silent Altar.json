@@ -46,7 +46,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Altar(s) to sacrifice",
-						"cardRestrictions":["Is Spell","Subtypes Include","Friendly","Hand","Not Already Target"],
+						"cardRestrictions":["Spell","Subtypes Include","Friendly","Hand","Not Already Target"],
 						"subtypesInclude":["Altar"]
 					}
 				},
@@ -84,7 +84,7 @@
 					"cardRestriction":
 					{
 						"blurb":"culmination of the Silent Altar Ritual",
-						"cardRestrictions":["Friendly","Deck","Is Character"]
+						"cardRestrictions":["Friendly","Deck","Character"]
 					}
 				},
 				{

@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Ingwaz to recast",
-						"cardRestrictions":["Subtypes Include","Is Spell","Friendly","Discard","Can Be Played","Effect Controller can Afford Cost","Distinct Name from Source"],
+						"cardRestrictions":["Subtypes Include","Spell","Friendly","Discard","Can Be Played","Effect Controller can Afford Cost","Distinct Name from Source"],
 						"subtypesInclude":["Rune"],
 						"costDivisor":2
 					}

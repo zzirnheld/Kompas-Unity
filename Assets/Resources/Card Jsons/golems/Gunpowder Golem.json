@@ -32,7 +32,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Summoned character for Gunpowder Golem to give -X E",
-						"cardRestrictions":["Is Character","Summoned","Board","Distinct Name from Source"]
+						"cardRestrictions":["Character","Summoned","Board","Distinct Name from Source"]
 					}
 				},
 				{

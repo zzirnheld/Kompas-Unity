@@ -11,7 +11,7 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Coords Fit Restriction"],
 					"cardRestriction":{
-						"cardRestrictions":["Is Character","Subtypes Include"],
+						"cardRestrictions":["Character","Subtypes Include"],
                         "subtypesInclude":["Skyknight"]
 					},
 					"spaceRestriction":
@@ -44,7 +44,7 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Coords Fit Restriction"],
 					"cardRestriction":{
-						"cardRestrictions":["Is Character","Subtypes Exclude"],
+						"cardRestrictions":["Character","Subtypes Exclude"],
                         "subtypesExclude":["Skyknight"]
 					},
 					"spaceRestriction":

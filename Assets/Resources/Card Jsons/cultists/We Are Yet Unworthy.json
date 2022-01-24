@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"unworthy Cultist",
-						"cardRestrictions":["Board","Is Character","Summoned","Friendly","Subtypes Include","Space Fits Restriction"],
+						"cardRestrictions":["Board","Character","Summoned","Friendly","Subtypes Include","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["Adjacent to Source"],
@@ -61,7 +61,7 @@
 		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
 		"adjacentCardRestriction":
 		{
-			"cardRestrictions":["Is Character","Subtypes Include"],
+			"cardRestrictions":["Character","Subtypes Include"],
 			"subtypesInclude":["Cultist"]
 		}
 	},

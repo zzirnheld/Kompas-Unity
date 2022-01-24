@@ -43,7 +43,7 @@
 					"cardRestriction":
 					{
 						"blurb":"E > X character to reveal",
-						"cardRestrictions":["Controller Matches Player Target","Hand","Card Value Fits X Restriction","Hidden","Is Character"],
+						"cardRestrictions":["Controller Matches Player Target","Hand","Card Value Fits X Restriction","Hidden","Character"],
                         "cardValue":{
                             "value":"E"
                         },
@@ -63,7 +63,7 @@
 					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Board","Friendly","Distinct Name from Source"]
+						"cardRestrictions":["Character","Board","Friendly","Distinct Name from Source"]
 					},
 					"nMod":1,
 					"eMod":1,

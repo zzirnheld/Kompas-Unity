@@ -21,7 +21,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Summoned character for Hanged Man to also give -X E",
-						"cardRestrictions":["Is Character","Board","Summoned"]
+						"cardRestrictions":["Character","Board","Summoned"]
 					}
 				},
 				{

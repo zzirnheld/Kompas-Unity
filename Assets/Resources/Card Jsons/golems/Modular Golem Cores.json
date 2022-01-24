@@ -35,7 +35,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Golem to swap out modules",
-						"cardRestrictions":["Is Character","Board","Augmented","Subtypes Include","Space Fits Restriction"],
+						"cardRestrictions":["Character","Board","Augmented","Subtypes Include","Space Fits Restriction"],
 						"subtypesInclude":["Golem"],
 						"spaceRestriction":
 						{
@@ -68,7 +68,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Golem core for Modular Golem Cores to attach",
-						"cardRestrictions":["Is Augment","Hand","Subtypes Include"],
+						"cardRestrictions":["Augment","Hand","Subtypes Include"],
 						"subtypesInclude":["Golem", "Core"]
 					}
 				},

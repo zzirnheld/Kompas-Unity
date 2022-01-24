@@ -14,7 +14,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Dragoncaller to kill",
-						"cardRestrictions":["Friendly","Board","Is Character","Summoned"]
+						"cardRestrictions":["Friendly","Board","Character","Summoned"]
 					}
 				},
 				{

@@ -17,7 +17,7 @@
                     "cardRestriction":
                     {
                         "blurb":"track to backup",
-                        "cardRestrictions":["Is Spell","Board","Distinct Name from Source","Subtypes Include"],
+                        "cardRestrictions":["Spell","Board","Distinct Name from Source","Subtypes Include"],
                         "subtypesInclude":["Music"]
                     }
                 },

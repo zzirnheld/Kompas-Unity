@@ -16,7 +16,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":{
 						"blurb":"Wisp to deck->summon",
-						"cardRestrictions":["Subtypes Include","Is Character","Friendly","Deck"],
+						"cardRestrictions":["Subtypes Include","Character","Friendly","Deck"],
 						"subtypesInclude":["Wisp"]
 					}
 				},
@@ -48,7 +48,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":{
 						"blurb":"Wisp to deck->summon",
-						"cardRestrictions":["Subtypes Include","Is Character","Friendly","Deck"],
+						"cardRestrictions":["Subtypes Include","Character","Friendly","Deck"],
 						"subtypesInclude":["Wisp"]
 					}
 				},
@@ -80,7 +80,7 @@
 					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
 					"cardRestriction":{
 						"blurb":"Wisp to deck->summon",
-						"cardRestrictions":["Subtypes Include","Is Character","Friendly","Deck"],
+						"cardRestrictions":["Subtypes Include","Character","Friendly","Deck"],
 						"subtypesInclude":["Wisp"]
 					}
 				},

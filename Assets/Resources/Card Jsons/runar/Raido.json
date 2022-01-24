@@ -43,7 +43,7 @@
 		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
 		"adjacentCardRestriction":
 		{
-			"cardRestrictions":["Is Character"]
+			"cardRestrictions":["Character"]
 		}
 	},
 	"c":4,

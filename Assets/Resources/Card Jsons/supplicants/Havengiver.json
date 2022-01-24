@@ -19,7 +19,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Supplicant to give safe haven",
-						"cardRestrictions":["Friendly","Discard","Is Character","S<=C","Subtypes Include"],
+						"cardRestrictions":["Friendly","Discard","Character","S<=C","Subtypes Include"],
 						"subtypesInclude":["Supplicant"],
 						"constant":1
 					}

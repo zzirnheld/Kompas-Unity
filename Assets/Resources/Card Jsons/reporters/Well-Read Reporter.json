@@ -11,7 +11,7 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Controller Triggered"],
 					"cardRestriction":{
-						"cardRestrictions":["Is Spell"]
+						"cardRestrictions":["Spell"]
 					}
 				}
 			},
@@ -43,7 +43,7 @@
 					"cardRestriction":
 					{
 						"blurb":"C > X spell to reveal",
-						"cardRestrictions":["Controller Matches Player Target","Hand","Hidden","Is Spell","Card Value Fits X Restriction"],
+						"cardRestrictions":["Controller Matches Player Target","Hand","Hidden","Spell","Card Value Fits X Restriction"],
 						"cardValue":{
 							"value":"C"
 						},

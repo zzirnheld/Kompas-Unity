@@ -70,7 +70,7 @@ namespace KompasServer.Cards
                 switch (Location)
                 {
                     case CardLocation.Discard:
-                    case CardLocation.Field:
+                    case CardLocation.Board:
                     case CardLocation.Annihilation:
                         KnownToEnemy = true;
                         break;
@@ -167,7 +167,7 @@ namespace KompasServer.Cards
             var player = stackSrc?.Controller ?? Controller;
             var context = new ActivationContext(mainCardBefore: this, stackable: stackSrc, player: player);
 
-            var cardsThisLeft = Location == CardLocation.Field ?
+            var cardsThisLeft = Location == CardLocation.Board ?
                 Game.boardCtrl.CardsAndAugsWhere(c => c != null && c.CardInAOE(this)).ToList() :
                 new List<GameCard>();
             var leaveContexts = cardsThisLeft.Select(c => 

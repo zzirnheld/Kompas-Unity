@@ -18,7 +18,7 @@
 					"whatToCount":"Cards Fitting Restriction",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Board"]
+						"cardRestrictions":["Character","Board"]
 					},
 					"xMultiplier":1
 				},
@@ -26,7 +26,7 @@
 					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Board"],
+						"cardRestrictions":["Character","Board"],
 						"cSpaces":1
 					},
 					"sMult":1

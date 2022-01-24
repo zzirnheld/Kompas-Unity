@@ -16,7 +16,7 @@
 					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Board","Friendly"]
+						"cardRestrictions":["Character","Board","Friendly"]
 					},
 					"wMod":1
 				}
@@ -35,7 +35,7 @@
 					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Board","Friendly"]
+						"cardRestrictions":["Character","Board","Friendly"]
 					},
 					"eMod":1
 				}

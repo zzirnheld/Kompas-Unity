@@ -15,7 +15,7 @@ namespace KompasServer.Effects
         {
             if (CardTarget == null)
                 throw new NullCardException(TargetWasNull);
-            else if (forbidNotBoard && CardTarget.Location != CardLocation.Field)
+            else if (forbidNotBoard && CardTarget.Location != CardLocation.Board)
                 throw new InvalidLocationException(CardTarget.Location, CardTarget, ChangedStatsOfCardOffBoard);
 
             int[] newStats = { CardTarget.N, CardTarget.E, CardTarget.S, CardTarget.W };

@@ -11,7 +11,7 @@
 					"triggerRestrictions":["Max Per Stack","This Card in Play","Enemy Turn","Triggerer Fits Restriction"],
 					"cardRestriction":
 					{
-						"cardRestrictions":["Friendly","Is Character","Space Fits Restriction"],
+						"cardRestrictions":["Friendly","Character","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["In AOE"],

@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Rune for Runegunner to cast",
-						"cardRestrictions":["Subtypes Include","Is Spell","Friendly","Hand","Can Be Played"],
+						"cardRestrictions":["Subtypes Include","Spell","Friendly","Hand","Can Be Played"],
 						"subtypesInclude":["Rune"]
 					}
 				},

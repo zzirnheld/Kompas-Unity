@@ -17,7 +17,7 @@
 					"whatToCount":"Cards Fitting Restriction",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Subtypes Include","Is Character","Discard","Friendly"],
+						"cardRestrictions":["Subtypes Include","Character","Discard","Friendly"],
 						"subtypesInclude":["Cultist"]
 					},
 					"xMultiplier":1
@@ -27,7 +27,7 @@
 					"cardRestriction":
 					{
 						"blurb":"character to deafen with silence",
-						"cardRestrictions":["Is Character","Board"]
+						"cardRestrictions":["Character","Board"]
 					}
 				},
 				{

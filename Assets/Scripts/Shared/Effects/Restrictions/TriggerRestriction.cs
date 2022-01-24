@@ -124,7 +124,7 @@ namespace KompasCore.Effects
             ThisCardIsSecondaryTriggerer => context.secondaryCardInfoBefore.Card == ThisCard,
             AugmentedCardTriggered => context.mainCardInfoBefore.Augments.Contains(ThisCard),
 
-            ThisCardInPlay => ThisCard.Location == CardLocation.Field,
+            ThisCardInPlay => ThisCard.Location == CardLocation.Board,
             CardExists => ThisCard.Game.Cards.Any(c => existsRestriction.IsValidCard(c, context)),
 
             ThisCardFitsRestriction => cardRestriction.IsValidCard(ThisCard, context),
@@ -157,7 +157,7 @@ namespace KompasCore.Effects
             //gamestate
             FriendlyTurn => Game.TurnPlayer == ThisCard.Controller,
             EnemyTurn => Game.TurnPlayer != ThisCard.Controller,
-            FromField => context.mainCardInfoBefore.Location == CardLocation.Field,
+            FromField => context.mainCardInfoBefore.Location == CardLocation.Board,
             FromDeck => context.mainCardInfoBefore.Location == CardLocation.Deck,
             NotFromEffect => context.stackable is Effect,
 

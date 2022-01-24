@@ -39,7 +39,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Monster here",
-						"cardRestrictions":["Is Character","Friendly","Deck","Can Be Played","Subtypes Include","Card Value Fits X Restriction"],
+						"cardRestrictions":["Character","Friendly","Deck","Can Be Played","Subtypes Include","Card Value Fits X Restriction"],
 						"subtypesInclude":["Aquatic"],
 						"cardValue":{
 							"value":"S"

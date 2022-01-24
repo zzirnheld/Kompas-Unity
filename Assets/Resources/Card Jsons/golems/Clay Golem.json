@@ -27,7 +27,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Clay Golem to summon",
-						"cardRestrictions":["Subtypes Include","Is Character","Deck","Card Value Fits X Restriction"],
+						"cardRestrictions":["Subtypes Include","Character","Deck","Card Value Fits X Restriction"],
 						"cardValue":{
 							"value":"S"
 						},

@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Friendly Shaper to move",
-						"cardRestrictions":["Subtypes Include","Is Character","Friendly","Board","Space Fits Restriction"],
+						"cardRestrictions":["Subtypes Include","Character","Friendly","Board","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["Adjacent to Source"],
@@ -31,7 +31,7 @@
 					"cardRestriction":
 					{
 						"blurb":"enemy character to move adjacent to",
-						"cardRestrictions":["Is Character","Enemy","Board"]
+						"cardRestrictions":["Character","Enemy","Board"]
 					}
 				},
 				{
@@ -58,7 +58,7 @@
 		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
 		"adjacentCardRestriction":
 		{
-			"cardRestrictions":["Is Character","Subtypes Include"],
+			"cardRestrictions":["Character","Subtypes Include"],
 			"subtypesInclude":["Shaper"]
 		}
 	},

@@ -11,7 +11,7 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Enemy Triggered"],
 					"cardRestriction":{
-						"cardRestrictions":["Is Spell"]
+						"cardRestrictions":["Spell"]
 					}
 				}
 			},
@@ -21,7 +21,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Rune for Runebinding to cast",
-						"cardRestrictions":["Subtypes Include","Is Spell","Friendly","Hand","Can Be Played"],
+						"cardRestrictions":["Subtypes Include","Spell","Friendly","Hand","Can Be Played"],
 						"subtypesInclude":["Rune"]
 					}
 				},

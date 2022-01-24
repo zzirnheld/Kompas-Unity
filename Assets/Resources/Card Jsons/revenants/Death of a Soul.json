@@ -44,7 +44,7 @@
 					"cardRestriction":
 					{
 						"blurb":"character whose soul to kill",
-						"cardRestrictions":["Board","Is Character","Card Value Fits X Restriction","Space Fits Restriction"],
+						"cardRestrictions":["Board","Character","Card Value Fits X Restriction","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["Adjacent to Source"],
@@ -70,7 +70,7 @@
 		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
 		"adjacentCardRestriction":
 		{
-			"cardRestrictions":["Is Character"]
+			"cardRestrictions":["Character"]
 		}
 	},
 	"c":2,

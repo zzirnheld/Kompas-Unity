@@ -46,7 +46,7 @@
 					"cardRestriction":
 					{
 						"blurb":"horn",
-						"cardRestrictions":["Friendly","Deck","Is Augment","Subtypes Include"],
+						"cardRestrictions":["Friendly","Deck","Augment","Subtypes Include"],
 						"subtypesInclude":["Instrument"]
 					}
 				},

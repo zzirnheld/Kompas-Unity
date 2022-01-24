@@ -17,7 +17,7 @@
 					"whatToCount":"Cards Fitting Restriction",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Multiple Possible Locations","Friendly","Subtypes Include"],
+						"cardRestrictions":["Character","Multiple Possible Locations","Friendly","Subtypes Include"],
 						"subtypesInclude":["Supplicant"],
 						"locations":[1,2]
 					},

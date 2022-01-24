@@ -22,7 +22,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Weather Reporter to hand-summon",
-						"cardRestrictions":["Is Character","Friendly","Hand","Can Be Played","Effect Controller can Afford Cost"],
+						"cardRestrictions":["Character","Friendly","Hand","Can Be Played","Effect Controller can Afford Cost"],
 						"costDivisor":2
 					}
 				},

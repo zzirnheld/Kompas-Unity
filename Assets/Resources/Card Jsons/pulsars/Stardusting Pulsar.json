@@ -25,7 +25,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Summoned character for Stardusting Pulsar to buff",
-						"cardRestrictions":["Is Character","Board","Summoned"]
+						"cardRestrictions":["Character","Board","Summoned"]
 					}
 				},
 				{
@@ -59,7 +59,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Summoned character for Stardusting Pulsar to debuff",
-						"cardRestrictions":["Is Character","Board","Summoned"]
+						"cardRestrictions":["Character","Board","Summoned"]
 					}
 				},
 				{

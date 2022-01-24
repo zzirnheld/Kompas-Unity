@@ -12,7 +12,7 @@
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","From Field","Max Per Turn"],
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Board","Friendly","Subtypes Include"],
+						"cardRestrictions":["Character","Board","Friendly","Subtypes Include"],
 						"subtypesInclude":["Supplicant"]
 					}
 				}

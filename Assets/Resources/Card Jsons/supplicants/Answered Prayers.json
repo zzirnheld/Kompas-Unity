@@ -10,7 +10,7 @@
 				"triggerRestriction":{
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":{
-						"cardRestrictions":["Is Character","Negated"]
+						"cardRestrictions":["Character","Negated"]
 					}
 				}
 			},

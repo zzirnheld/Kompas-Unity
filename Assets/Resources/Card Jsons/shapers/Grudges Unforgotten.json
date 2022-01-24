@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Ethereal for Grudges Unforgotten to annihilate and absorb",
-						"cardRestrictions":["Subtypes Include","Is Character","Board","Summoned"],
+						"cardRestrictions":["Subtypes Include","Character","Board","Summoned"],
 						"subtypesInclude":["Ethereal"]
 					}
 				},

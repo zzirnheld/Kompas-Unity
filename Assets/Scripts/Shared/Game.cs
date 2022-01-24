@@ -54,7 +54,7 @@ namespace KompasCore.GameCore
         public static bool IsHiddenLocation(CardLocation l) => HiddenLocations.Contains(l);
 
         public bool BoardHasCopyOf(GameCard card)
-            => Cards.Any(c => c != card && c.Location == CardLocation.Field && c.Controller == card.Controller && c.CardName == card.CardName);
+            => Cards.Any(c => c != card && c.Location == CardLocation.Board && c.Controller == card.Controller && c.CardName == card.CardName);
         /*{
             Debug.Log($"Checking if board has copy of {card.CardName} with controller index {card.ControllerIndex}");
             return Cards.Any(c => c != card && c.Location == CardLocation.Field && c.Controller == card.Controller && c.CardName == card.CardName);

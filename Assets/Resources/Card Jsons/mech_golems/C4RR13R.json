@@ -32,7 +32,7 @@
 					"condition":"Target Violates Restriction",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Card Value Fits X Restriction","Subtypes Include"],
+						"cardRestrictions":["Character","Card Value Fits X Restriction","Subtypes Include"],
 						"subtypesInclude":["Mech","Golem"],
 						"cardValue":{
 							"value":"S"

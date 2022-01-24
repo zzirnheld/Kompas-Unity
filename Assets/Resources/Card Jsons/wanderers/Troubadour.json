@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"character to reshuffle",
-						"cardRestrictions":["Is Character","Board","Friendly","Summoned"]
+						"cardRestrictions":["Character","Board","Friendly","Summoned"]
 					}
 				},
 				{
@@ -35,7 +35,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Wanderer to inspire with music",
-						"cardRestrictions":["Is Character","Deck","Subtypes Include","Card Value Fits X Restriction"],
+						"cardRestrictions":["Character","Deck","Subtypes Include","Card Value Fits X Restriction"],
 						"subtypesInclude":["Wanderer"],
 						"cardValue":{
 							"value":"S"

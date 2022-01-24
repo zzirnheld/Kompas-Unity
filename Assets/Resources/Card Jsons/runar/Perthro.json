@@ -21,7 +21,7 @@
 					"cardRestriction":
 					{
 						"blurb":"spell for Perthro to search (to hand)",
-						"cardRestrictions":["Is Spell","Friendly","Deck","Index<C"],
+						"cardRestrictions":["Spell","Friendly","Deck","Index<C"],
 						"constant":10
 					},
 					"restRestriction":

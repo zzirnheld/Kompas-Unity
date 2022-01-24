@@ -10,7 +10,7 @@ namespace KompasServer.Effects
         {
             if (CardTarget == null)
                 throw new NullCardException(TargetWasNull);
-            else if (forbidNotBoard && CardTarget.Location != CardLocation.Field)
+            else if (forbidNotBoard && CardTarget.Location != CardLocation.Board)
                 throw new InvalidLocationException(CardTarget.Location, CardTarget, "Target not on board :(");
 
             var ctxt = new ActivationContext(mainCardBefore: CardTarget, stackable: Effect, player: EffectController, space: CardTarget.Position);

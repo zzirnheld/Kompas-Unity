@@ -34,7 +34,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Rune for Runechanneler to cast",
-						"cardRestrictions":["Subtypes Include","Is Spell","Friendly","Hand","Can Be Played","Card Value Fits X Restriction"],
+						"cardRestrictions":["Subtypes Include","Spell","Friendly","Hand","Can Be Played","Card Value Fits X Restriction"],
 						"cardValue":{
 							"value":"C"
 						},

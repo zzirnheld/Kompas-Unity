@@ -35,7 +35,7 @@
 					"cardRestriction":
 					{
 						"blurb":"character that is also +1 W",
-						"cardRestrictions":["Is Character","Board"]
+						"cardRestrictions":["Character","Board"]
 					}
 				},
 				{

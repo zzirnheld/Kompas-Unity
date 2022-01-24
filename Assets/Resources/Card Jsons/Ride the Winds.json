@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"to ride the winds",
-						"cardRestrictions":["Is Character","Board","Subtypes Include"],
+						"cardRestrictions":["Character","Board","Subtypes Include"],
 						"subtypesInclude":["Dragon"]
 					}
 				},

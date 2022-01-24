@@ -18,7 +18,7 @@
 					"cardRestriction":
 					{
 						"blurb":"character within 2 spaces to punt Augment to",
-						"cardRestrictions":["Is Character","Board","Different from Source","Space Fits Restriction"],
+						"cardRestrictions":["Character","Board","Different from Source","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["Distance to Source Fits X Restriction"],

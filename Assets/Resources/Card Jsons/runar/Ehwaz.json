@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Ehwaz to give +2 N",
-						"cardRestrictions":["Is Character","Board","Space Fits Restriction"],
+						"cardRestrictions":["Character","Board","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["Adjacent to Source"],
@@ -37,7 +37,7 @@
 		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
 		"adjacentCardRestriction":
 		{
-			"cardRestrictions":["Is Character"]
+			"cardRestrictions":["Character"]
 		}
 	},
 	"c":1,

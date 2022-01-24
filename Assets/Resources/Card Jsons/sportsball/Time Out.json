@@ -20,7 +20,7 @@
 					"cardRestriction":
 					{
 						"blurb":"character to put in TIME OUT!",
-						"cardRestrictions":["Board","Is Character","Wields Augment Fitting Restriction","Space Fits Restriction"],
+						"cardRestrictions":["Board","Character","Wields Augment Fitting Restriction","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["Adjacent to Source"],

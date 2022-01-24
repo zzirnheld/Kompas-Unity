@@ -18,7 +18,7 @@
 					"cardRestriction":
 					{
 						"blurb":"first character for Metal Golem to set N to 0",
-						"cardRestrictions":["Is Character","Board"]
+						"cardRestrictions":["Character","Board"]
 					}
 				},
 				{
@@ -30,7 +30,7 @@
 					"cardRestriction":
 					{
 						"blurb":"second character for Metal Golem to set N to 0",
-						"cardRestrictions":["Is Character","Board","Not Already Target"]
+						"cardRestrictions":["Character","Board","Not Already Target"]
 					}
 				},
 				{

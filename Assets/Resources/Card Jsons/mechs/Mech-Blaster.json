@@ -31,7 +31,7 @@
 					"cardRestriction":
 					{
 						"blurb":"who to Mechblast",
-						"cardRestrictions":["Board","Is Character","Subtypes Include","Space Fits Restriction"],
+						"cardRestrictions":["Board","Character","Subtypes Include","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["On Target's Diagonal"],

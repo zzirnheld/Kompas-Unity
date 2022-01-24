@@ -17,7 +17,7 @@
                     "cardRestriction":
                     {
                         "blurb":"Music, inspire?",
-                        "cardRestrictions":["Is Spell","Board","Subtypes Include","Friendly"],
+                        "cardRestrictions":["Spell","Board","Subtypes Include","Friendly"],
                         "subtypesInclude":["Music"]
                     }
                 },

@@ -36,7 +36,7 @@
 					"condition":"Target Violates Restriction",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Card Value Fits X Restriction"],
+						"cardRestrictions":["Character","Card Value Fits X Restriction"],
 						"cardValue":{
 							"value":"S"
 						},

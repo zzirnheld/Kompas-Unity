@@ -54,7 +54,7 @@
 					"cardRestriction":
 					{
 						"blurb":"friendly Reporter to move",
-						"cardRestrictions":["Is Character","Friendly","Board","Subtypes Include","Space Fits Restriction"],
+						"cardRestrictions":["Character","Friendly","Board","Subtypes Include","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["Adjacent to Source"],
@@ -82,7 +82,7 @@
 		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
 		"adjacentCardRestriction":
 		{
-			"cardRestrictions":["Is Character","Subtypes Include"],
+			"cardRestrictions":["Character","Subtypes Include"],
 			"subtypesInclude":["Reporter"]
 		}
 	},

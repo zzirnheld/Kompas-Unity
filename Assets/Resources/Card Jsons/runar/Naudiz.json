@@ -16,7 +16,7 @@
 					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Enemy","Board"]
+						"cardRestrictions":["Character","Enemy","Board"]
 					},
 					"eMod":-3
 				}

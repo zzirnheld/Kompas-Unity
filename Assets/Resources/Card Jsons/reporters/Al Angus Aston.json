@@ -58,7 +58,7 @@
 					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Board","Friendly","Subtypes Include"],
+						"cardRestrictions":["Character","Board","Friendly","Subtypes Include"],
 						"subtypesInclude":["Reporter"]
 					},
 					"nMod":1,

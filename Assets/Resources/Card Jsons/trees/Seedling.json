@@ -32,7 +32,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Seedling to become",
-						"cardRestrictions":["Subtypes Include","Is Character","Deck","Can Be Played"],
+						"cardRestrictions":["Subtypes Include","Character","Deck","Can Be Played"],
 						"subtypesInclude":["Tree"]
 					}
 				},

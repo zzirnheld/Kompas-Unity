@@ -15,7 +15,7 @@
 					"$type":"KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Subtypes Include","Is Character","Board","Space Fits Restriction"],
+						"cardRestrictions":["Subtypes Include","Character","Board","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["Adjacent to Source"],
@@ -30,7 +30,7 @@
 					"cardRestriction":
 					{
 						"blurb":"dead Warrior for Bannerman to reshuffle",
-						"cardRestrictions":["Subtypes Include","Is Character","Discard"],
+						"cardRestrictions":["Subtypes Include","Character","Discard"],
 						"subtypesInclude":["Warrior"]
 					}
 				},

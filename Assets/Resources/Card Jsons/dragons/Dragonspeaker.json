@@ -14,7 +14,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Dragonspeaker to kill",
-						"cardRestrictions":["Friendly","Board","Is Character","Distinct Name from Source"]
+						"cardRestrictions":["Friendly","Board","Character","Distinct Name from Source"]
 					}
 				},
 				{

@@ -18,7 +18,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Mech plan",
-						"cardRestrictions":["Is Character","Friendly","Deck","Subtypes Include"],
+						"cardRestrictions":["Character","Friendly","Deck","Subtypes Include"],
 						"subtypesInclude":["Mech"]
 					},
 					"xMultiplier":1

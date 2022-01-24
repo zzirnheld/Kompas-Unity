@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"friendly character to wander",
-						"cardRestrictions":["Is Character","Board","Friendly","Summoned"]
+						"cardRestrictions":["Character","Board","Friendly","Summoned"]
 					}
 				},
 				{
@@ -35,7 +35,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Wanderlust to hand-summon",
-						"cardRestrictions":["Is Character","Friendly","Hand","Card Value Fits X Restriction"],
+						"cardRestrictions":["Character","Friendly","Hand","Card Value Fits X Restriction"],
 						"cardValue":{
 							"value":"S"
 						},

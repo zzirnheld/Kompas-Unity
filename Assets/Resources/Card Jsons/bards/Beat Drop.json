@@ -34,7 +34,7 @@
 					"cardRestriction":
 					{
 						"blurb":"*beat drop*",
-						"cardRestrictions":["Is Spell","Friendly","Hand","Can Be Played","Subtypes Include"],
+						"cardRestrictions":["Spell","Friendly","Hand","Can Be Played","Subtypes Include"],
 						"subtypesInclude":["Music"]
 					}
 				},

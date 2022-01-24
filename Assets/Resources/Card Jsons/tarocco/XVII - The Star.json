@@ -13,7 +13,7 @@
 					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Character","Enemy","Space Fits Restriction"],
+						"cardRestrictions":["Character","Enemy","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],

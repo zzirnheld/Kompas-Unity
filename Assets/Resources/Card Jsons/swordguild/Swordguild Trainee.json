@@ -17,7 +17,7 @@
 					"$type":"KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Subtypes Include","Is Character","Board","Space Fits Restriction"],
+						"cardRestrictions":["Subtypes Include","Character","Board","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["Adjacent to Source"],
@@ -41,7 +41,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Swordguild Warrior for Trainee to become",
-						"cardRestrictions":["Subtypes Include","Is Character","Deck","Card Value Fits X Restriction"],
+						"cardRestrictions":["Subtypes Include","Character","Deck","Card Value Fits X Restriction"],
 						"cardValue":{
 							"value":"S"
 						},

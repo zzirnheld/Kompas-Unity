@@ -19,7 +19,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Tree for the Man to Replant",
-						"cardRestrictions":["Is Character","Discard","Subtypes Include","Can Be Played","Effect Controller can Afford Cost"],
+						"cardRestrictions":["Character","Discard","Subtypes Include","Can Be Played","Effect Controller can Afford Cost"],
 						"subtypesInclude":["Tree"],
 						"costDivisor":2
 					},

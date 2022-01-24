@@ -17,7 +17,7 @@
 					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Is Augment","Friendly","Board","Subtypes Include"],
+						"cardRestrictions":["Augment","Friendly","Board","Subtypes Include"],
 						"subtypesInclude":["Sportsball"]
 					}
 				},
@@ -30,7 +30,7 @@
 					"cardRestriction":
 					{
 						"blurb":"adjacent character to attach augment to",
-						"cardRestrictions":["Is Character","Board","Space Fits Restriction"],
+						"cardRestrictions":["Character","Board","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["Adjacent to Target"],

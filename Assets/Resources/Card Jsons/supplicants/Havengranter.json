@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Empress to hand-summon",
-						"cardRestrictions":["Is Character","Friendly","Hand","S<=C"],
+						"cardRestrictions":["Character","Friendly","Hand","S<=C"],
 						"constant":1
 					}
 				},

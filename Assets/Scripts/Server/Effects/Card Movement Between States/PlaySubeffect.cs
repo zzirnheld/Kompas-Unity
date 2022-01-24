@@ -5,7 +5,7 @@ namespace KompasServer.Effects
 {
     public class PlaySubeffect : CardChangeStateSubeffect
     {
-        public override bool IsImpossible() => CardTarget == null || CardTarget.Location == CardLocation.Field;
+        public override bool IsImpossible() => CardTarget == null || CardTarget.Location == CardLocation.Board;
 
         public override Task<ResolutionInfo> Resolve()
         {

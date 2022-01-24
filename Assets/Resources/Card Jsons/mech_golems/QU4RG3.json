@@ -50,7 +50,7 @@
 					"cardRestriction":
 					{
 						"blurb":"character for QU4RG3 to blast",
-						"cardRestrictions":["Is Character","Board","Space Fits Restriction"],
+						"cardRestrictions":["Character","Board","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["On Target's Diagonal"],

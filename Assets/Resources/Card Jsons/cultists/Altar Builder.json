@@ -48,7 +48,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Altar for Altar Builder to play",
-						"cardRestrictions":["Subtypes Include","Friendly","Deck","Is Spell"],
+						"cardRestrictions":["Subtypes Include","Friendly","Deck","Spell"],
 						"subtypesInclude":["Altar","Radial"]
 					}
 				},

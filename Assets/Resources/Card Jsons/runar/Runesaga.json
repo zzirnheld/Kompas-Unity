@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Runar for Runesaga to give +25 ESW",
-						"cardRestrictions":["Subtypes Include","Is Character","Summoned","Board"],
+						"cardRestrictions":["Subtypes Include","Character","Summoned","Board"],
 						"subtypesInclude":["Runar"]
 					}
 				},
@@ -32,7 +32,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Rune for Runesaga to cast",
-						"cardRestrictions":["Is Spell","Friendly","Hand","Not Already Target","Can Be Played"]
+						"cardRestrictions":["Spell","Friendly","Hand","Not Already Target","Can Be Played"]
 					}
 				},
 				{

@@ -17,7 +17,7 @@
 					"cardRestriction":
 					{
 						"blurb":"Shifting tide",
-						"cardRestrictions":["Board","Is Spell","Subtypes Include"],
+						"cardRestrictions":["Board","Spell","Subtypes Include"],
 						"subtypesInclude":["Water"]
 					}
 				},
@@ -46,7 +46,7 @@
 					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
 					"cardRestriction":
 					{
-						"cardRestrictions":["Summoned","Is Character","Space Fits Restriction"],
+						"cardRestrictions":["Summoned","Character","Space Fits Restriction"],
 						"spaceRestriction":
 						{
 							"spaceRestrictions":["In Target's AOE"],

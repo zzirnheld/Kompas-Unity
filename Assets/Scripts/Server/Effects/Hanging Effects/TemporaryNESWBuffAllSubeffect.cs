@@ -32,7 +32,7 @@ namespace KompasServer.Effects
             {
                 cardRestrictions = new string[]
                 {
-                    CardRestriction.IsCharacter
+                    CardRestriction.Character
                 }
             };
             cardRestriction.Initialize(this);
@@ -52,7 +52,7 @@ namespace KompasServer.Effects
             {
                 if (card == null)
                     throw new NullCardException(TargetWasNull);
-                else if (forbidNotBoard && card.Location != CardLocation.Field)
+                else if (forbidNotBoard && card.Location != CardLocation.Board)
                     throw new InvalidLocationException(card.Location, card, ChangedStatsOfCardOffBoard);
             }
 

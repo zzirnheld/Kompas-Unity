@@ -22,7 +22,7 @@
 					"cardRestriction":
 					{
 						"blurb":"for Dragonseeker to reshuffle",
-						"cardRestrictions":["Friendly","Hand","Is Character","Subtypes Include"],
+						"cardRestrictions":["Friendly","Hand","Character","Subtypes Include"],
 						"subtypesInclude":["Dragon"]
 					}
 				},

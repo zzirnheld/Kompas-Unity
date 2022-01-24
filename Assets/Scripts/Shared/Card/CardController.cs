@@ -150,7 +150,7 @@ namespace KompasCore.Cards
                     card.Controller.discardCtrl.SpreadOutCards();
                     gameObject.SetActive(true);
                     break;
-                case CardLocation.Field:
+                case CardLocation.Board:
                     card.gameObject.transform.localScale = Vector3.one;
                     card.gameObject.transform.SetParent(card.Game.boardObject.transform);
                     MoveTo(card.Position);
@@ -284,7 +284,7 @@ namespace KompasCore.Cards
             //unless the card does actually have a possible attack
 
             //only check if card can attack if on field
-            if (card.Location == CardLocation.Field)
+            if (card.Location == CardLocation.Board)
             {
                 //if you can attack at all, enable the attack indicator
                 if (card.AttackRestriction.CouldAttackValidTarget(null))
