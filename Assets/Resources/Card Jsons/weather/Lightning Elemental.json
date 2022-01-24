@@ -1,65 +1,83 @@
 {
-	"cardType":67,
-	"cardName":"Lightning Elemental",
-	"effText":"Weather Event.\nWhen I’m summoned, I attack an adjacent character.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Lightning Elemental",
+	"effText": "Weather Event.\nWhen I\u00e2\u20ac\u2122m summoned, I attack an adjacent character.",
+	"effects": [
 		{
-            "blurb":"Strike Lightning",
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"blurb": "Strike Lightning",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"adjacent character for Lightning Elemental to attack",
-						"cardRestrictions":["Character","Board","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to Source"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "adjacent character for Lightning Elemental to attack",
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							]
 						}
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
-					"targetIndex":-2,
-					"attackerIndex":-1
+					"$type": "KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"targetIndex": -2,
+					"attackerIndex": -1
 				}
-			]	
+			]
 		}
 	],
-	"PlayRestriction":{
-		"normalRestrictions":["Default Normal Restrictions","Enemy Turn","Space Must Fit Restriction"],
-        "spaceRestriction":{
-            "spaceRestrictions":["In AOE of Number of Cards Fitting Restriction"],
-            "inAOEOfRestriction":
-            {
-                "cardRestrictions":["Subtypes Include"],
-                "subtypesInclude":["Weather"]
-            },
-            "numberOfCardsInAOEOfRestriction":{
-                "xRestrictions":[">=Constant"],
-				"constant":2
-            }
-        },
-		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
-		"adjacentCardRestriction":
-		{
-			"cardRestrictions":["Character"]
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Default Normal Restrictions",
+			"Enemy Turn",
+			"Space Must Fit Restriction"
+		],
+		"spaceRestriction": {
+			"spaceRestrictions": [
+				"In AOE of Number of Cards Fitting Restriction"
+			],
+			"inAOEOfRestriction": {
+				"cardRestrictions": [
+					"Subtypes Include"
+				],
+				"subtypesInclude": [
+					"Weather"
+				]
+			},
+			"numberOfCardsInAOEOfRestriction": {
+				"xRestrictions": [
+					">=Constant"
+				],
+				"constant": 2
+			}
+		},
+		"recommendationRestrictions": [
+			"Adjacent to Card Fitting Restriction"
+		],
+		"adjacentCardRestriction": {
+			"cardRestrictions": [
+				"Character"
+			]
 		}
 	},
-	"n":3,
-	"e":4,
-	"s":4,
-	"w":9,
-	"subtypeText":"Weather Event Elemental"
+	"n": 3,
+	"e": 4,
+	"s": 4,
+	"w": 9,
+	"subtypeText": "Weather Event Elemental"
 }

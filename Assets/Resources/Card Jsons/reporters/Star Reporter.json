@@ -1,46 +1,55 @@
 {
-	"cardType":67,
-	"cardName":"Star Reporter",
-	"effText":"When an enemy card is revealed, give friendly characters +1 SW and enemy characters -1 SW.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Star Reporter",
+	"effText": "When an enemy card is revealed, give friendly characters +1 SW and enemy characters -1 SW.",
+	"effects": [
 		{
-            "blurb":"Starstruck",
-			"triggerData":
-			{
-				"triggerCondition":"Revealed",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Enemy"]
+			"blurb": "Starstruck",
+			"triggerData": {
+				"triggerCondition": "Revealed",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Triggerer Fits Restriction"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Enemy"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Character","Board","Friendly"]
+					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Friendly"
+						]
 					},
-					"sMod":1,
-					"wMod":1
+					"sMod": 1,
+					"wMod": 1
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Character","Board","Enemy"]
+					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Enemy"
+						]
 					},
-					"sMod":-1,
-					"wMod":-1
+					"sMod": -1,
+					"wMod": -1
 				}
-			]	
+			]
 		}
 	],
-	"n":2,
-	"e":4,
-	"s":4,
-	"w":4,
-	"subtypeText":"Pulsar Reporter"
+	"n": 2,
+	"e": 4,
+	"s": 4,
+	"w": 4,
+	"subtypeText": "Pulsar Reporter"
 }

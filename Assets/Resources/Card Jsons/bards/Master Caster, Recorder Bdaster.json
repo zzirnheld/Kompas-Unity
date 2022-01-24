@@ -1,52 +1,61 @@
 {
-	"cardType":67,
-	"cardName":"Master Caster, Recorder Bdaster",
-	"effText":"Once each friendly turn, you can dispel 1 friendly spell, then an adjacent 1 enemy spell.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Master Caster, Recorder Bdaster",
+	"effText": "Once each friendly turn, you can dispel 1 friendly spell, then an adjacent 1 enemy spell.",
+	"effects": [
 		{
-			"blurb":"oWEEEEEEEEEEEEEEEEEEEEEEE",
-			"activationRestriction":{
-				"activationRestrictionArray":[
+			"blurb": "oWEEEEEEEEEEEEEEEEEEEEEEE",
+			"activationRestriction": {
+				"activationRestrictionArray": [
 					"Max Times Per Turn",
 					"Default"
 				]
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"my recorder",
-						"cardRestrictions":["Spell","Friendly","Board"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "my recorder",
+						"cardRestrictions": [
+							"Spell",
+							"Friendly",
+							"Board"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"your recorder",
-						"cardRestrictions":["Spell","Enemy","Board","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to Source"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "your recorder",
+						"cardRestrictions": [
+							"Spell",
+							"Enemy",
+							"Board",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							]
 						}
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-    "unique":true,
-	"n":2,
-	"e":5,
-	"s":5,
-	"w":0,
-	"subtypes":["Bard"],
-	"subtypeText":"Bard"
+	"unique": true,
+	"n": 2,
+	"e": 5,
+	"s": 5,
+	"w": 0,
+	"subtypes": [
+		"Bard"
+	],
+	"subtypeText": "Bard"
 }

@@ -1,44 +1,53 @@
 {
-	"cardType":67,
-	"cardName":"Zealous Convert",
-	"effText":"When I'm summoned, deck-summon a Cultist Follower.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Zealous Convert",
+	"effText": "When I'm summoned, deck-summon a Cultist Follower.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
-					"maxCanChoose":1,
-					"cardRestriction":
-					{
-						"blurb":"Silent Cult Follower to convert",
-						"cardRestrictions":["Subtypes Include","Friendly","Deck","Character"],
-						"subtypesInclude":["Cultist Follower"]
+					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose": 1,
+					"cardRestriction": {
+						"blurb": "Silent Cult Follower to convert",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Friendly",
+							"Deck",
+							"Character"
+						],
+						"subtypesInclude": [
+							"Cultist Follower"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where to play Zealous Convert's new convert",
-						"spaceRestrictions":["Can Play Card Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where to play Zealous Convert's new convert",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"n":4,
-	"e":1,
-	"s":3,
-	"w":1,
-	"subtypeText":"Cultist"
+	"n": 4,
+	"e": 1,
+	"s": 3,
+	"w": 1,
+	"subtypeText": "Cultist"
 }

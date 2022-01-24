@@ -1,44 +1,54 @@
 {
-	"cardType":67,
-	"cardName":"XX - Judgement",
-	"effText":"When you draw X cards, kill an S <= X character.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "XX - Judgement",
+	"effText": "When you draw X cards, kill an S <= X character.",
+	"effects": [
 		{
-			"blurb":"Judgement",
-			"triggerData":
-			{
-				"blurb":"Kill an S <= X character? (X is the number of cards you just drew)",
-				"triggerCondition":"Draw",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Controller Triggered"]
+			"blurb": "Judgement",
+			"triggerData": {
+				"blurb": "Kill an S <= X character? (X is the number of cards you just drew)",
+				"triggerCondition": "Draw",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Controller Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"character for Judgement to kill",
-						"cardRestrictions":["Character","Board","Card Value Fits X Restriction"],
-						"cardValue":{
-							"value":"S"
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "character for Judgement to kill",
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Card Value Fits X Restriction"
+						],
+						"cardValue": {
+							"value": "S"
 						},
-						"xRestriction":{
-							"xRestrictions":["<=X"]
+						"xRestriction": {
+							"xRestrictions": [
+								"<=X"
+							]
 						}
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"n":5,
-	"e":9,
-	"s":12,
-	"w":14,
-	"subtypes":["Tarocco","Mage"],
-	"subtypeText":"Tarocco Mage"
+	"n": 5,
+	"e": 9,
+	"s": 12,
+	"w": 14,
+	"subtypes": [
+		"Tarocco",
+		"Mage"
+	],
+	"subtypeText": "Tarocco Mage"
 }

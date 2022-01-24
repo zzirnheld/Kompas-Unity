@@ -1,74 +1,91 @@
 {
-	"cardType":67,
-	"cardName":"Altar Builder",
-	"effText":"When a friendly Cultist dies, I get +1 S.\nI can pay 9S to deck-cast an Altar Radial.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Altar Builder",
+	"effText": "When a friendly Cultist dies, I get +1 S.\nI can pay 9S to deck-cast an Altar Radial.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Strengthen Builder",
-				"triggerCondition":"Discard",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","From Field"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Subtypes Include","Board","Friendly"],
-						"subtypesInclude":["Cultist"]
+			"triggerData": {
+				"blurb": "Strengthen Builder",
+				"triggerCondition": "Discard",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Triggerer Fits Restriction",
+						"From Field"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Board",
+							"Friendly"
+						],
+						"subtypesInclude": [
+							"Cultist"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"sMod":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"sMod": 1
 				}
 			]
 		},
 		{
-			"blurb":"Build Altar",
-			"activationRestriction":{
-				"activationRestrictionArray":[
+			"blurb": "Build Altar",
+			"activationRestriction": {
+				"activationRestrictionArray": [
 					"Default"
 				]
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.PayStatsSubeffect, Assembly-CSharp",
-					"sMod":9
+					"$type": "KompasServer.Effects.PayStatsSubeffect, Assembly-CSharp",
+					"sMod": 9
 				},
 				{
-					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
-					"maxCanChoose":1,
-					"cardRestriction":
-					{
-						"blurb":"Altar for Altar Builder to play",
-						"cardRestrictions":["Subtypes Include","Friendly","Deck","Spell"],
-						"subtypesInclude":["Altar","Radial"]
+					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose": 1,
+					"cardRestriction": {
+						"blurb": "Altar for Altar Builder to play",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Friendly",
+							"Deck",
+							"Spell"
+						],
+						"subtypesInclude": [
+							"Altar",
+							"Radial"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where for Altar Builder to cast its target Altar",
-						"spaceRestrictions":["Can Play Card Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where for Altar Builder to cast its target Altar",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"n":1,
-	"e":4,
-	"s":4,
-	"w":4,
-	"subtypeText":"Cultist Craftsman"
+	"n": 1,
+	"e": 4,
+	"s": 4,
+	"w": 4,
+	"subtypeText": "Cultist Craftsman"
 }

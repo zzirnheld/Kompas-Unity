@@ -1,64 +1,78 @@
 {
-	"cardType":67,
-	"cardName":"Scavenging Ooze",
-	"effText":"Spores.\nWhen an adjacent character dies, discard->reshuffle them. Pulse me. Give me +1 EW.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Scavenging Ooze",
+	"effText": "Spores.\nWhen an adjacent character dies, discard->reshuffle them. Pulse me. Give me +1 EW.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Eat Heart",
-				"triggerCondition":"Discard",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","From Field"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Character","Board","Friendly","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to Source"],
-							"mustBeEmpty":false
+			"triggerData": {
+				"blurb": "Eat Heart",
+				"triggerCondition": "Discard",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Triggerer Fits Restriction",
+						"From Field"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Friendly",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							],
+							"mustBeEmpty": false
 						}
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition":"Target Violates Restriction",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Discard"]
+					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition": "Target Violates Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Discard"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
-					"activate":false
+					"$type": "KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
+					"activate": false
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":1,
-					"wMod":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod": 1,
+					"wMod": 1
 				}
 			]
 		}
 	],
-    "keywords":["Spores"],
-	"n":1,
-	"e":3,
-	"s":4,
-	"w":2,
-	"subtypes":["Sensing","Fungus"],
-	"subtypeText":"Sensing Fungus"
+	"keywords": [
+		"Spores"
+	],
+	"n": 1,
+	"e": 3,
+	"s": 4,
+	"w": 2,
+	"subtypes": [
+		"Sensing",
+		"Fungus"
+	],
+	"subtypeText": "Sensing Fungus"
 }

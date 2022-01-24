@@ -1,50 +1,56 @@
 {
-	"cardType":67,
-	"cardName":"Magma Golem",
-	"effText":"Golem.\nWhen I'm activated, I give all adjacent characters -4 E.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Magma Golem",
+	"effText": "Golem.\nWhen I'm activated, I give all adjacent characters -4 E.",
+	"effects": [
 		{
-			"blurb":"Heheh. Grenade.",
-			"triggerData":
-			{
-				"triggerCondition":"Activate",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"blurb": "Heheh. Grenade.",
+			"triggerData": {
+				"triggerCondition": "Activate",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Character","Board","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to Source"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							]
 						}
 					},
-					"eMod":-4
+					"eMod": -4
 				}
 			]
 		}
 	],
-	"MovementRestriction":{
-		"normalRestrictionsFromJson":[
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
 			"Default",
 			"Activated"
 		]
 	},
-	"AttackRestriction":{
-		"attackRestrictionsArray":[
+	"AttackRestriction": {
+		"attackRestrictionsArray": [
 			"Default",
 			"This is Activated"
 		]
 	},
-	"n":6,
-	"e":2,
-	"s":3,
-	"w":5,
-	"subtypes":["Golem"],
-	"subtypeText":"Golem"
+	"n": 6,
+	"e": 2,
+	"s": 3,
+	"w": 5,
+	"subtypes": [
+		"Golem"
+	],
+	"subtypeText": "Golem"
 }

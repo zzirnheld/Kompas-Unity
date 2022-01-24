@@ -1,36 +1,43 @@
 {
-	"cardType":65,
-	"cardName":"Nutrient Drip",
-	"effText":"When turns start, pulse this Golem (activate, then deactivate them).",
-	"effects":[
+	"cardType": 65,
+	"cardName": "Nutrient Drip",
+	"effText": "When turns start, pulse this Golem (activate, then deactivate them).",
+	"effects": [
 		{
-			"blurb":"Drip",
-			"triggerData":
-			{
-				"triggerCondition":"Turn Start",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play"]
+			"blurb": "Drip",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
-					"activate":false
+					"$type": "KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
+					"activate": false
 				}
 			]
 		}
 	],
-	"PlayRestriction":{
-		"normalRestrictions":["Augment Normal Restrictions"],
-		"effectRestrictions":["Augment Effect Restrictions"]
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions"
+		]
 	},
-	"a":1,
-	"subtypeText":"Golem Core",
-	"augSubtypes":["Golem"]
+	"a": 1,
+	"subtypeText": "Golem Core",
+	"augSubtypes": [
+		"Golem"
+	]
 }

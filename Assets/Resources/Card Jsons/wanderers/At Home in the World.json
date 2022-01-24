@@ -1,35 +1,47 @@
 {
-	"cardType":83,
-	"cardName":"At Home in the World",
-	"effText":"After you board->reshuffle a Wanderer, delay a turn, then gain a pip.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "At Home in the World",
+	"effText": "After you board->reshuffle a Wanderer, delay a turn, then gain a pip.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Reshuffle",
-				"triggerRestriction":{
-					"triggerRestrictions":["Controller Triggered","Triggerer Fits Restriction","This Card in Play"],
-					"cardRestriction":{
-						"cardRestrictions":["Board","Subtypes Include"],
-						"subtypesInclude":["Wanderer"]
+			"triggerData": {
+				"triggerCondition": "Reshuffle",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Controller Triggered",
+						"Triggerer Fits Restriction",
+						"This Card in Play"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Wanderer"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
-					"numTimesToDelay":0,
-					"jumpIndices":[1],
-					"endCondition":"Turn Start"
+					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay": 0,
+					"jumpIndices": [
+						1
+					],
+					"endCondition": "Turn Start"
 				},
 				{
-					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xModifier":1
+					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier": 1
 				}
-			]	
+			]
 		}
 	],
-	"c":4,
-	"spellTypes":["Enchant"],
-	"subtypeText":"Enchant"
+	"c": 4,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
 }

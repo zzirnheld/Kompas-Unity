@@ -1,40 +1,52 @@
 {
-	"cardType":83,
-	"cardName":"A Frayed Knot",
-	"effText":"Ificate.\nDiscard your hand. (lol)",
-	"effects":[
+	"cardType": 83,
+	"cardName": "A Frayed Knot",
+	"effText": "Ificate.\nDiscard your hand. (lol)",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"blurb":"A Frayed Knot",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"blurb": "A Frayed Knot",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"card for A Frayed Knot to discard",
-						"cardRestrictions":["Friendly","Hand"]
+					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "card for A Frayed Knot to discard",
+						"cardRestrictions": [
+							"Friendly",
+							"Hand"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
-					"delete":true,
-					"jumpIndices":[1]
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete": true,
+					"jumpIndices": [
+						1
+					]
 				}
 			]
 		}
 	],
-	"keywords":["Ificate"],
-	"c":5,
-	"spellTypes":["Simple"],
-	"subtypes":["Simple","Crazy Idea"],
-	"subtypeText":"Simple Crazy Idea Ificator"
+	"keywords": [
+		"Ificate"
+	],
+	"c": 5,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Simple",
+		"Crazy Idea"
+	],
+	"subtypeText": "Simple Crazy Idea Ificator"
 }

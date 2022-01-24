@@ -1,78 +1,96 @@
 {
-	"cardType":83,
-	"cardName":"Goal-Net Touchdown",
-	"effText":"Comeback Play.\nWhen a character moves adjacent to an enemy Avatar, apply their Augment(s) to an adjacent enemy Avatar.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Goal-Net Touchdown",
+	"effText": "Comeback Play.\nWhen a character moves adjacent to an enemy Avatar, apply their Augment(s) to an adjacent enemy Avatar.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Touchdown!",
-				"triggerCondition":"Move",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Character"]
+			"triggerData": {
+				"blurb": "Touchdown!",
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Coords Fit Restriction",
+						"Triggerer Fits Restriction"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						]
 					},
-					"spaceRestriction":
-					{
-						"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
-						"adjacencyRestriction":
-						{
-							"cardRestrictions":["Avatar","Enemy"]
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"Adjacent to a Card that Fits Restriction"
+						],
+						"adjacencyRestriction": {
+							"cardRestrictions": [
+								"Avatar",
+								"Enemy"
+							]
 						},
-						"mustBeEmpty":false
+						"mustBeEmpty": false
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition":"Target Violates Restriction",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Augmented"]
+					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition": "Target Violates Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Augmented"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":{
-						"cardRestrictions":["Avatar","Enemy","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to Card Target"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Avatar",
+							"Enemy",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Card Target"
+							]
 						}
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp",
-					"targetIndex":0
+					"$type": "KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp",
+					"targetIndex": 0
 				},
 				{
-					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition":"Number Targets <= Constant",
-					"constant":2
+					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition": "Number Targets <= Constant",
+					"constant": 2
 				},
 				{
-					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
-					"attachmentTarget":1
+					"$type": "KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"attachmentTarget": 1
 				},
 				{
-					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
-					"delete":true,
-					"remainingTargets":2,
-					"jumpIndices":[5]
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete": true,
+					"remainingTargets": 2,
+					"jumpIndices": [
+						5
+					]
 				}
 			]
 		}
 	],
-	"keywords":["Comeback Play"],
-	"c":1,
-	"spellTypes":["Vanishing"],
-	"duration":1,
-	"subtypeText":"Team Play Vanishing"
+	"keywords": [
+		"Comeback Play"
+	],
+	"c": 1,
+	"spellTypes": [
+		"Vanishing"
+	],
+	"duration": 1,
+	"subtypeText": "Team Play Vanishing"
 }

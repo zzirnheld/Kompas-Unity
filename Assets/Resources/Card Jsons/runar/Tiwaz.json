@@ -1,43 +1,60 @@
 {
-	"cardType":83,
-	"cardName":"Tiwaz",
-	"effText":"Can't be cast normally. When a friendly character here attacks, I give them +1 ESW. (This triggers and resolves before damage is dealt.)",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Tiwaz",
+	"effText": "Can't be cast normally. When a friendly character here attacks, I give them +1 ESW. (This triggers and resolves before damage is dealt.)",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Attack",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Character","Friendly","Board","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["In Source's AOE"],
-							"mustBeEmpty":false
+			"triggerData": {
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Triggerer Fits Restriction"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Friendly",
+							"Board",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In Source's AOE"
+							],
+							"mustBeEmpty": false
 						}
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":1,
-					"sMod":1,
-					"wMod":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod": 1,
+					"sMod": 1,
+					"wMod": 1
 				}
 			]
 		}
 	],
-	"PlayRestriction":{
-		"normalRestrictions":["Cannot be Played Normally"]
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Cannot be Played Normally"
+		]
 	},
-	"c":1,
-	"spellTypes":["Enchant","Radial"],
-	"subtypes":["Rune","Enchant","Radial"],
-	"subtypeText":"Radial 1 Rune Enchant",
-	"radius":1
+	"c": 1,
+	"spellTypes": [
+		"Enchant",
+		"Radial"
+	],
+	"subtypes": [
+		"Rune",
+		"Enchant",
+		"Radial"
+	],
+	"subtypeText": "Radial 1 Rune Enchant",
+	"radius": 1
 }

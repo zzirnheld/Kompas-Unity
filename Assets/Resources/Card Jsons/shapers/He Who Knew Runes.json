@@ -1,52 +1,71 @@
 {
-	"cardType":67,
-	"cardName":"He Who Knew Runes",
-	"effText":"Shape.\nWhen I move X spaces, hand->cast a C X Shaping.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "He Who Knew Runes",
+	"effText": "Shape.\nWhen I move X spaces, hand->cast a C X Shaping.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Move",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Shaping for He Who Knew Runes to cast",
-						"cardRestrictions":["Subtypes Include","Spell","Friendly","Hand","Can Be Played","Card Value Fits X Restriction"],
-						"cardValue":{
-							"value":"C"
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Shaping for He Who Knew Runes to cast",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Spell",
+							"Friendly",
+							"Hand",
+							"Can Be Played",
+							"Card Value Fits X Restriction"
+						],
+						"cardValue": {
+							"value": "C"
 						},
-						"xRestriction":{
-							"xRestrictions":["=X"]
+						"xRestriction": {
+							"xRestrictions": [
+								"=X"
+							]
 						},
-						"subtypesInclude":["Shaping"]
+						"subtypesInclude": [
+							"Shaping"
+						]
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where for He Who Knew Runes to cast its target Shaping",
-						"spaceRestrictions":["Can Play Card Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where for He Who Knew Runes to cast its target Shaping",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-	"keywords":["Shape"],
-	"n":1,
-	"e":6,
-	"s":4,
-	"w":4,
-	"subtypes":["Ethereal","Shaper","Mage"],
-	"subtypeText":"Ethereal Shaper Mage"
+	"keywords": [
+		"Shape"
+	],
+	"n": 1,
+	"e": 6,
+	"s": 4,
+	"w": 4,
+	"subtypes": [
+		"Ethereal",
+		"Shaper",
+		"Mage"
+	],
+	"subtypeText": "Ethereal Shaper Mage"
 }

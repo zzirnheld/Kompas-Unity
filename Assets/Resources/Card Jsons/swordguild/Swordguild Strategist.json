@@ -1,58 +1,71 @@
 {
-	"cardType":67,
-	"cardName":"Swordguild Strategist",
-	"effText":"Once each friendly turn, I can kill a friendly Warrior with XS, then kill a character with S ≤ X.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Swordguild Strategist",
+	"effText": "Once each friendly turn, I can kill a friendly Warrior with XS, then kill a character with S \u00e2\u2030\u00a4 X.",
+	"effects": [
 		{
-			"activationRestriction":{
-				"activationRestrictionArray":[
+			"activationRestriction": {
+				"activationRestrictionArray": [
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"Default"
 				]
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Warrior for Strategist to sacrifice",
-						"cardRestrictions":["Subtypes Include","Character","Board"],
-						"subtypesInclude":["Warrior"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Warrior for Strategist to sacrifice",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Character",
+							"Board"
+						],
+						"subtypesInclude": [
+							"Warrior"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCostSubeffect, Assembly-CSharp",
-					"xMultiplier":1
+					"$type": "KompasServer.Effects.SetXByTargetCostSubeffect, Assembly-CSharp",
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"character for Strategist to kill",
-						"cardRestrictions":["Character","Board","Card Value Fits X Restriction"],
-						"cardValue":{
-							"value":"S"
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "character for Strategist to kill",
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Card Value Fits X Restriction"
+						],
+						"cardValue": {
+							"value": "S"
 						},
-						"xRestriction":{
-							"xRestrictions":["<=X"]
+						"xRestriction": {
+							"xRestrictions": [
+								"<=X"
+							]
 						}
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"n":2,
-	"e":7,
-	"s":9,
-	"w":9,
-	"subtypes":["Swordguild","Warrior"],
-	"subtypeText":"Swordguild Warrior"
+	"n": 2,
+	"e": 7,
+	"s": 9,
+	"w": 9,
+	"subtypes": [
+		"Swordguild",
+		"Warrior"
+	],
+	"subtypeText": "Swordguild Warrior"
 }

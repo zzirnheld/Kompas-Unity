@@ -1,49 +1,64 @@
 {
-	"cardType":67,
-	"cardName":"Startled Stinkhorn",
-	"effText":"Spores.\nWhen an enemy character moves adjacent to a Fungus, pulse me.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Startled Stinkhorn",
+	"effText": "Spores.\nWhen an enemy character moves adjacent to a Fungus, pulse me.",
+	"effects": [
 		{
-			"blurb":"Startlement",
-			"triggerData":
-			{
-				"triggerCondition":"Move",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Character","Enemy"]
+			"blurb": "Startlement",
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Coords Fit Restriction",
+						"Triggerer Fits Restriction"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Enemy"
+						]
 					},
-					"spaceRestriction":
-					{
-						"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
-						"adjacencyRestriction":
-						{
-                            "cardRestrictions":["Subtypes Include"],
-                            "subtypesInclude":["Fungus"]
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"Adjacent to a Card that Fits Restriction"
+						],
+						"adjacencyRestriction": {
+							"cardRestrictions": [
+								"Subtypes Include"
+							],
+							"subtypesInclude": [
+								"Fungus"
+							]
 						},
-						"mustBeEmpty":false
+						"mustBeEmpty": false
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
-                {
-                    "$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
-                },
-                {
-                    "$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
-                    "activate":false
-                }
+				{
+					"$type": "KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
+					"activate": false
+				}
 			]
 		}
 	],
-    "keywords":["Spores"],
-	"n":1,
-	"e":3,
-	"s":4,
-	"w":3,
-	"subtypes":["Sensing","Fungus"],
-	"subtypeText":"Sensing Fungus"
+	"keywords": [
+		"Spores"
+	],
+	"n": 1,
+	"e": 3,
+	"s": 4,
+	"w": 3,
+	"subtypes": [
+		"Sensing",
+		"Fungus"
+	],
+	"subtypeText": "Sensing Fungus"
 }

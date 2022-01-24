@@ -1,43 +1,56 @@
 {
-	"cardType":67,
-	"cardName":"Soulstealer the Lossless",
-	"effText":"Revenant.\nWhen a card is annihilated, give friendly Ethereals +1 E, and if it's an enemy turn, gain a pip.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Soulstealer the Lossless",
+	"effText": "Revenant.\nWhen a card is annihilated, give friendly Ethereals +1 E, and if it's an enemy turn, gain a pip.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Annihilate",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play"]
+			"triggerData": {
+				"triggerCondition": "Annihilate",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Character","Board","Friendly","Subtypes Include"],
-						"subtypesInclude":["Ethereal"]
+					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Friendly",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Ethereal"
+						]
 					},
-					"eMod":1
+					"eMod": 1
 				},
 				{
-					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition":"Must be Enemy Turn"
+					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition": "Must be Enemy Turn"
 				},
 				{
-					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xModifier":1
+					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier": 1
 				}
-			]	
+			]
 		}
 	],
-	"keywords":["Revenant Die","Revenant Revive"],
-	"n":2,
-	"e":4,
-	"s":8,
-	"w":3,
-	"unique":true,
-	"subtypes":["Ethereal","Revenant"],
-	"subtypeText":"Ethereal Revenant"
+	"keywords": [
+		"Revenant Die",
+		"Revenant Revive"
+	],
+	"n": 2,
+	"e": 4,
+	"s": 8,
+	"w": 3,
+	"unique": true,
+	"subtypes": [
+		"Ethereal",
+		"Revenant"
+	],
+	"subtypeText": "Ethereal Revenant"
 }

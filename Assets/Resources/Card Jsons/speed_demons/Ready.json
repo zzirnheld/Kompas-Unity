@@ -1,45 +1,56 @@
 {
-	"cardType":83,
-	"cardName":"Ready",
-	"effText":"Search your deck for \"Set\". Search your deck for a Speedemon.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Ready",
+	"effText": "Search your deck for \"Set\". Search your deck for a Speedemon.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Linewalker for Leypathmaking to search",
-						"cardRestrictions":["Friendly","Deck","Name Is"],
-                        "nameIs":"Set"
+					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Linewalker for Leypathmaking to search",
+						"cardRestrictions": [
+							"Friendly",
+							"Deck",
+							"Name Is"
+						],
+						"nameIs": "Set"
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Linewalker for Leypathmaking to search",
-						"cardRestrictions":["Friendly","Deck","Subtypes Include"],
-						"subtypesInclude":["Speedemon"]
+					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Linewalker for Leypathmaking to search",
+						"cardRestrictions": [
+							"Friendly",
+							"Deck",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Speedemon"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"c":1,
-	"spellTypes":["Simple"],
-	"subtypeText":"Simple"
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
 }

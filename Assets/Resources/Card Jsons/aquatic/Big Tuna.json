@@ -1,26 +1,43 @@
 {
-	"cardType":67,
-	"cardName":"Big Tuna",
-	"effText":"Waterborn Waterdweller.",
-	"effects":[],
-	"keywords":["Waterdweller"],
-	"PlayRestriction":{
-		"normalRestrictions":["Default Normal Restrictions","Space Must Fit Restriction"],
-		"normalRestrictionsToIgnore":["Adjacent to Friendly Card"],
-		"effectRestrictions":["Default Effect Restrictions","Space Must Fit Restriction"],
-		"effectRestrictionsToIgnore":["Adjacent to Friendly Card"],
-        "spaceRestriction":{
-            "spaceRestrictions":["In AOE of Card Fitting Restriction"],
-            "inAOEOfRestriction":
-            {
-                "cardRestrictions":["Subtypes Include"],
-                "subtypesInclude":["Water"]
-            }
-        }
+	"cardType": 67,
+	"cardName": "Big Tuna",
+	"effText": "Waterborn Waterdweller.",
+	"effects": [],
+	"keywords": [
+		"Waterdweller"
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Default Normal Restrictions",
+			"Space Must Fit Restriction"
+		],
+		"normalRestrictionsToIgnore": [
+			"Adjacent to Friendly Card"
+		],
+		"effectRestrictions": [
+			"Default Effect Restrictions",
+			"Space Must Fit Restriction"
+		],
+		"effectRestrictionsToIgnore": [
+			"Adjacent to Friendly Card"
+		],
+		"spaceRestriction": {
+			"spaceRestrictions": [
+				"In AOE of Card Fitting Restriction"
+			],
+			"inAOEOfRestriction": {
+				"cardRestrictions": [
+					"Subtypes Include"
+				],
+				"subtypesInclude": [
+					"Water"
+				]
+			}
+		}
 	},
-	"n":1,
-	"e":4,
-	"s":1,
-	"w":2,
-	"subtypeText":"Aquatic Fish Monster"
+	"n": 1,
+	"e": 4,
+	"s": 1,
+	"w": 2,
+	"subtypeText": "Aquatic Fish Monster"
 }

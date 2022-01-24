@@ -1,63 +1,84 @@
 {
-	"cardType":65,
-	"cardName":"Defense Core",
-	"effText":"Recoverable.\nWhile equipped, activate this character. When they defend, give them +4 EW.",
-	"effects":[
+	"cardType": 65,
+	"cardName": "Defense Core",
+	"effText": "Recoverable.\nWhile equipped, activate this character. When they defend, give them +4 EW.",
+	"effects": [
 		{
-			"blurb":"Defense Activate!",
-			"triggerData":
-			{
-				"blurb":"Activate Golem",
-				"triggerCondition":"Augment Attached",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"blurb": "Defense Activate!",
+			"triggerData": {
+				"blurb": "Activate Golem",
+				"triggerCondition": "Augment Attached",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TemporaryActivationSubeffect, Assembly-CSharp",
-					"endCondition":"Augment Detached",
-					"triggerRestriction":{
-						"triggerRestrictions":["This Card Triggered"]
+					"$type": "KompasServer.Effects.TemporaryActivationSubeffect, Assembly-CSharp",
+					"endCondition": "Augment Detached",
+					"triggerRestriction": {
+						"triggerRestrictions": [
+							"This Card Triggered"
+						]
 					}
 				}
 			]
 		},
 		{
-			"blurb":"You Shouldn't Have Done That",
-			"triggerData":
-			{
-				"blurb":"Golem Defense",
-				"triggerCondition":"Defend",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Augmented Card Triggered"]
+			"blurb": "You Shouldn't Have Done That",
+			"triggerData": {
+				"blurb": "Golem Defense",
+				"triggerCondition": "Defend",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Augmented Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":4,
-					"wMod":4
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod": 4,
+					"wMod": 4
 				}
-			]	
+			]
 		}
 	],
-	"keywords":["Recoverable"],
-	"PlayRestriction":{
-		"normalRestrictions":["Augment Normal Restrictions","On Card that Fits Restriction"],
-		"effectRestrictions":["Augment Effect Restrictions","On Card that Fits Restriction"],
-		"onCardRestriction":{
-			"cardRestrictions":["Subtypes Include","Friendly","Board"],
-			"subtypesInclude":["Golem"]
+	"keywords": [
+		"Recoverable"
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions",
+			"On Card that Fits Restriction"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions",
+			"On Card that Fits Restriction"
+		],
+		"onCardRestriction": {
+			"cardRestrictions": [
+				"Subtypes Include",
+				"Friendly",
+				"Board"
+			],
+			"subtypesInclude": [
+				"Golem"
+			]
 		}
 	},
-	"a":3,
-	"subtypeText":"Golem Core",
-	"augSubtypes":["Golem"]
+	"a": 3,
+	"subtypeText": "Golem Core",
+	"augSubtypes": [
+		"Golem"
+	]
 }

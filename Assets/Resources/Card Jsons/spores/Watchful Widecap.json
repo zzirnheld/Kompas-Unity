@@ -1,44 +1,55 @@
 {
-	"cardType":67,
-	"cardName":"Watchful Widecap",
-	"effText":"Spores.\nWhen a character is summoned adjacent to me, pulse me.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Watchful Widecap",
+	"effText": "Spores.\nWhen a character is summoned adjacent to me, pulse me.",
+	"effects": [
 		{
-			"blurb":"Watching",
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Character"]
+			"blurb": "Watching",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Coords Fit Restriction",
+						"Triggerer Fits Restriction"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						]
 					},
-					"spaceRestriction":
-					{
-						"spaceRestrictions":["Adjacent to Source"],
-						"mustBeEmpty":false
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"Adjacent to Source"
+						],
+						"mustBeEmpty": false
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
-                {
-                    "$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
-                },
-                {
-                    "$type":"KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
-                    "activate":false
-                }
+				{
+					"$type": "KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ActivateSubeffect, Assembly-CSharp",
+					"activate": false
+				}
 			]
 		}
 	],
-    "keywords":["Spores"],
-	"n":1,
-	"e":2,
-	"s":3,
-	"w":2,
-	"subtypes":["Sensing","Fungus"],
-	"subtypeText":"Sensing Fungus"
+	"keywords": [
+		"Spores"
+	],
+	"n": 1,
+	"e": 2,
+	"s": 3,
+	"w": 2,
+	"subtypes": [
+		"Sensing",
+		"Fungus"
+	],
+	"subtypeText": "Sensing Fungus"
 }

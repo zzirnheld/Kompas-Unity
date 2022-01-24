@@ -1,40 +1,50 @@
 {
-	"cardType":67,
-	"cardName":"Dreammist",
-	"effText":"When I'm summoned adjacent to a Shaper, draw 1 card.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Dreammist",
+	"effText": "When I'm summoned adjacent to a Shaper, draw 1 card.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered","This Card Fits Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
-							"adjacencyRestriction":
-							{
-								"cardRestrictions":["Subtypes Include"],
-								"subtypesInclude":["Shaper"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered",
+						"This Card Fits Restriction"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to a Card that Fits Restriction"
+							],
+							"adjacencyRestriction": {
+								"cardRestrictions": [
+									"Subtypes Include"
+								],
+								"subtypesInclude": [
+									"Shaper"
+								]
 							},
-							"mustBeEmpty":false
+							"mustBeEmpty": false
 						}
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-	"n":0,
-	"e":1,
-	"s":1,
-	"w":0,
-	"subtypes":["Ethereal"],
-	"subtypeText":"Ethereal"
+	"n": 0,
+	"e": 1,
+	"s": 1,
+	"w": 0,
+	"subtypes": [
+		"Ethereal"
+	],
+	"subtypeText": "Ethereal"
 }

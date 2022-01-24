@@ -1,38 +1,49 @@
 {
-	"cardType":83,
-	"cardName":"Revenance",
-	"effText":"When you draw a Revenant, you can discard it and draw 1.\n(Vanishes when a turn starts.)",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Revenance",
+	"effText": "When you draw a Revenant, you can discard it and draw 1.\n(Vanishes when a turn starts.)",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Discard the drawn Revenant to draw 1?",
-				"optional":true,
-				"triggerCondition":"Each Card Drawn",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Controller Triggered","Triggerer Fits Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Subtypes Include"],
-						"subtypesInclude":["Revenant"]
+			"triggerData": {
+				"blurb": "Discard the drawn Revenant to draw 1?",
+				"optional": true,
+				"triggerCondition": "Each Card Drawn",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Controller Triggered",
+						"Triggerer Fits Restriction"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Revenant"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-	"c":3,
-	"spellTypes":["Vanishing"],
-	"subtypes":["Vanishing"],
-	"subtypeText":"Vanishing",
-	"duration":1
+	"c": 3,
+	"spellTypes": [
+		"Vanishing"
+	],
+	"subtypes": [
+		"Vanishing"
+	],
+	"subtypeText": "Vanishing",
+	"duration": 1
 }

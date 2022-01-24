@@ -1,37 +1,50 @@
 {
-	"cardType":83,
-	"cardName":"Dreamscape",
-	"effText":"The first time each turn a Shaper moves, give them +1 N and heal them.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Dreamscape",
+	"effText": "The first time each turn a Shaper moves, give them +1 N and heal them.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Dreamscape",
-				"triggerCondition":"Move",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Max Per Turn"],
-					"cardRestriction":{
-						"cardRestrictions":["Subtypes Include","Friendly"],
-						"subtypesInclude":["Shaper"]
+			"triggerData": {
+				"blurb": "Dreamscape",
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Triggerer Fits Restriction",
+						"Max Per Turn"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Friendly"
+						],
+						"subtypesInclude": [
+							"Shaper"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"nMod":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"nMod": 1
 				},
 				{
-					"$type":"KompasServer.Effects.HealSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.HealSubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-	"c":3,
-	"spellTypes":["Enchant"],
-	"subtypes":["Enchant","Shaping"],
-	"subtypeText":"Enchant Shaping"
+	"c": 3,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypes": [
+		"Enchant",
+		"Shaping"
+	],
+	"subtypeText": "Enchant Shaping"
 }

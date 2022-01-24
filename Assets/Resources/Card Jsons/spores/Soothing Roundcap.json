@@ -1,48 +1,62 @@
 {
-	"cardType":67,
-	"cardName":"Soothing Roundcap",
-	"effText":"Spores.\nWhen an N X non-Fungus character is activated, give them -X N until their effect goes on the stack.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Soothing Roundcap",
+	"effText": "Spores.\nWhen an N X non-Fungus character is activated, give them -X N until their effect goes on the stack.",
+	"effects": [
 		{
-			"blurb":"Delirium",
-			"triggerData":
-			{
-				"triggerCondition":"Activate",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Character","Subtypes Exclude"],
-                        "subtypesExclude":["Fungus"]
+			"blurb": "Delirium",
+			"triggerData": {
+				"triggerCondition": "Activate",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Triggerer Fits Restriction"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Subtypes Exclude"
+						],
+						"subtypesExclude": [
+							"Fungus"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"N"
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "N"
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
-					"nMultiplier":-1,
-					"endCondition":"Effect Pushed to Stack",
-					"triggerRestriction":{
-						"triggerRestrictions":["Triggerer is Secondary Context Target"]
+					"$type": "KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
+					"nMultiplier": -1,
+					"endCondition": "Effect Pushed to Stack",
+					"triggerRestriction": {
+						"triggerRestrictions": [
+							"Triggerer is Secondary Context Target"
+						]
 					}
 				}
 			]
 		}
 	],
-    "keywords":["Spores"],
-	"n":1,
-	"e":4,
-	"s":5,
-	"w":4,
-	"subtypes":["Fruiting","Fungus"],
-	"subtypeText":"Fruiting Fungus"
+	"keywords": [
+		"Spores"
+	],
+	"n": 1,
+	"e": 4,
+	"s": 5,
+	"w": 4,
+	"subtypes": [
+		"Fruiting",
+		"Fungus"
+	],
+	"subtypeText": "Fruiting Fungus"
 }

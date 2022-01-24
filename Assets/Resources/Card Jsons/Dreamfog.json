@@ -1,39 +1,45 @@
 {
-	"cardType":67,
-	"cardName":"Dreamfog",
-	"effText":"When a character moves, you can tribute me to gain a pip.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Dreamfog",
+	"effText": "When a character moves, you can tribute me to gain a pip.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"optional":true,
-				"blurb":"Tribute Dreamfog to gain a pip?",
-				"triggerCondition":"Move",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Character"]
+			"triggerData": {
+				"optional": true,
+				"blurb": "Tribute Dreamfog to gain a pip?",
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Triggerer Fits Restriction"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xModifier":1
+					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier": 1
 				}
-			]	
+			]
 		}
 	],
-	"n":1,
-	"e":1,
-	"s":1,
-	"w":1,
-	"subtypes":["Ethereal"],
-	"subtypeText":"Ethereal"
+	"n": 1,
+	"e": 1,
+	"s": 1,
+	"w": 1,
+	"subtypes": [
+		"Ethereal"
+	],
+	"subtypeText": "Ethereal"
 }

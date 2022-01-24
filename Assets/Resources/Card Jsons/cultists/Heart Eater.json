@@ -1,36 +1,42 @@
 {
-	"cardType":67,
-	"cardName":"Heart Eater",
-	"effText":"When a friendly character dies, I get + 1EW.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Heart Eater",
+	"effText": "When a friendly character dies, I get + 1EW.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Eat Heart",
-				"triggerCondition":"Discard",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","From Field"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Character","Board","Friendly"]
+			"triggerData": {
+				"blurb": "Eat Heart",
+				"triggerCondition": "Discard",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Triggerer Fits Restriction",
+						"From Field"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Friendly"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":1,
-					"wMod":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod": 1,
+					"wMod": 1
 				}
 			]
 		}
 	],
-	"n":4,
-	"e":2,
-	"s":3,
-	"w":2,
-	"subtypeText":"Cultist Warrior"
+	"n": 4,
+	"e": 2,
+	"s": 3,
+	"w": 2,
+	"subtypeText": "Cultist Warrior"
 }

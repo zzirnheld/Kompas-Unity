@@ -1,74 +1,89 @@
 {
-	"cardType":67,
-	"cardName":"Starheart",
-	"effText":"When a card moves to be adjacent to Pulsar, give me +1 S.\nWhen a card that was adjacent to Pulsar moves, give me -1 S.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Starheart",
+	"effText": "When a card moves to be adjacent to Pulsar, give me +1 S.\nWhen a card that was adjacent to Pulsar moves, give me -1 S.",
+	"effects": [
 		{
-			"blurb":"Surge",
-			"triggerData":
-			{
-				"triggerCondition":"Move",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Coords Fit Restriction"],
-					"spaceRestriction":
-					{
-						"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
-						"adjacencyRestriction":
-						{
-							"cardRestrictions":["Not Context Card","Subtypes Include"],
-							"subtypesInclude":["Pulsar"]
+			"blurb": "Surge",
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Coords Fit Restriction"
+					],
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"Adjacent to a Card that Fits Restriction"
+						],
+						"adjacencyRestriction": {
+							"cardRestrictions": [
+								"Not Context Card",
+								"Subtypes Include"
+							],
+							"subtypesInclude": [
+								"Pulsar"
+							]
 						},
-						"mustBeEmpty":false
+						"mustBeEmpty": false
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"sMod":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"sMod": 1
 				}
 			]
 		},
 		{
-			"blurb":"Shrink",
-			"triggerData":
-			{
-				"triggerCondition":"Move",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
-							"adjacencyRestriction":
-							{
-								"cardRestrictions":["Not Context Card","Subtypes Include"],
-								"subtypesInclude":["Pulsar"]
+			"blurb": "Shrink",
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Triggerer Fits Restriction"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to a Card that Fits Restriction"
+							],
+							"adjacencyRestriction": {
+								"cardRestrictions": [
+									"Not Context Card",
+									"Subtypes Include"
+								],
+								"subtypesInclude": [
+									"Pulsar"
+								]
 							},
-							"mustBeEmpty":false
+							"mustBeEmpty": false
 						}
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"sMod":-1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"sMod": -1
 				}
 			]
 		}
 	],
-	"n":0,
-	"e":5,
-	"s":5,
-	"w":5,
-	"subtypeText":"Pulsar"
+	"n": 0,
+	"e": 5,
+	"s": 5,
+	"w": 5,
+	"subtypeText": "Pulsar"
 }

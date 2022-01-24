@@ -1,40 +1,47 @@
 {
-	"cardType":83,
-	"cardName":"Leybinding",
-	"effText":"Give all X characters +X S.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Leybinding",
+	"effText": "Give all X characters +X S.",
+	"effects": [
 		{
-			"blurb":"Simple",
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"blurb": "Simple",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
-					"whatToCount":"Cards Fitting Restriction",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Character","Board"]
+					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount": "Cards Fitting Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board"
+						]
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Character","Board"],
-						"cSpaces":1
+					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board"
+						],
+						"cSpaces": 1
 					},
-					"sMult":1
+					"sMult": 1
 				}
 			]
 		}
 	],
-	"c":1,
-	"spellTypes":["Simple"],
-	"subtypeText":"Ley Simple"
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Ley Simple"
 }

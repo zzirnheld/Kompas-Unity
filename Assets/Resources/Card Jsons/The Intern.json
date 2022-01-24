@@ -1,26 +1,29 @@
 {
-	"cardType":67,
-	"cardName":"The Intern",
-	"effText":"Cannot be Avatar. (He’s not ready for that kind of responsibility.)\nThe first time each stack you draw, draw 1.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "The Intern",
+	"effText": "Cannot be Avatar. (He\u00e2\u20ac\u2122s not ready for that kind of responsibility.)\nThe first time each stack you draw, draw 1.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Draw",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Max Per Stack","Controller Triggered"]
+			"triggerData": {
+				"triggerCondition": "Draw",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Max Per Stack",
+						"Controller Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-	"n":1,
-	"e":1,
-	"s":11,
-	"w":1,
-	"subtypeText":""
+	"n": 1,
+	"e": 1,
+	"s": 11,
+	"w": 1,
+	"subtypeText": ""
 }

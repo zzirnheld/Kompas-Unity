@@ -1,41 +1,51 @@
 {
-	"cardType":83,
-	"cardName":"Right Into My Trap",
-	"effText":"Ificate.\nWhen a character moves adjacent to a Crazy card, give them -5 W.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Right Into My Trap",
+	"effText": "Ificate.\nWhen a character moves adjacent to a Crazy card, give them -5 W.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Right Into My Trap",
-				"triggerCondition":"Move",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Coords Fit Restriction"],
-					"spaceRestriction":
-					{
-						"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
-						"cardRestriction":
-						{
-							"cardRestrictions":["Subtypes Include"],
-							"subtypesInclude":["Crazy"]
+			"triggerData": {
+				"blurb": "Right Into My Trap",
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Coords Fit Restriction"
+					],
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"Adjacent to a Card that Fits Restriction"
+						],
+						"cardRestriction": {
+							"cardRestrictions": [
+								"Subtypes Include"
+							],
+							"subtypesInclude": [
+								"Crazy"
+							]
 						},
-						"mustBeEmpty":false
+						"mustBeEmpty": false
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wMod":-5
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wMod": -5
 				}
-			]	
+			]
 		}
 	],
-	"keywords":["Ificate"],
-	"c":5,
-	"spellTypes":["Radial"],
-	"subtypeText":"Crazy Idea Enchant Ificator",
-	"radius":1
+	"keywords": [
+		"Ificate"
+	],
+	"c": 5,
+	"spellTypes": [
+		"Radial"
+	],
+	"subtypeText": "Crazy Idea Enchant Ificator",
+	"radius": 1
 }

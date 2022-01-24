@@ -1,46 +1,54 @@
 {
-	"cardType":67,
-	"cardName":"Fyrian",
-	"effText":"Territorial.\nWhen I attack, give characters within 1 space of my target -3 E.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Fyrian",
+	"effText": "Territorial.\nWhen I attack, give characters within 1 space of my target -3 E.",
+	"effects": [
 		{
-			"blurb":"Fire Breath",
-			"triggerData":
-			{
-				"triggerCondition":"Attack",
-				"blurb":"Fire Breath",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"blurb": "Fire Breath",
+			"triggerData": {
+				"triggerCondition": "Attack",
+				"blurb": "Fire Breath",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetDefenderSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetDefenderSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Character","Board","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Distance to Card Target Fits X Restriction"],
-							"distanceXRestriction":{
-								"xRestrictions":["<=Constant"],
-								"constant":1
-							},
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Distance to Card Target Fits X Restriction"
+							],
+							"distanceXRestriction": {
+								"xRestrictions": [
+									"<=Constant"
+								],
+								"constant": 1
+							}
 						}
 					},
-					"eMod":-3
+					"eMod": -3
 				}
-			]	
+			]
 		}
 	],
-	"keywords":["Territorial"],
-	"n":5,
-	"e":11,
-	"s":12,
-	"w":12,
-	"subtypeText":"Dragon"
+	"keywords": [
+		"Territorial"
+	],
+	"n": 5,
+	"e": 11,
+	"s": 12,
+	"w": 12,
+	"subtypeText": "Dragon"
 }

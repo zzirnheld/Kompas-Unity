@@ -1,92 +1,122 @@
 {
-	"cardType":83,
-	"cardName":"Modular Golem Cores",
-	"effText":"The first time each turn a card arrives adjacent to an augmented Golem, hand all X of one such Golem's augments. Hand->attach up to X Golem Cores to that Golem.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Modular Golem Cores",
+	"effText": "The first time each turn a card arrives adjacent to an augmented Golem, hand all X of one such Golem's augments. Hand->attach up to X Golem Cores to that Golem.",
+	"effects": [
 		{
-			"blurb":"Swap Out Modules",
-			"triggerData":
-			{
-				"triggerCondition":"Arrive",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Max Per Turn","Triggerer Now Fits Restriction"],
-					"nowRestriction":
-					{
-						"cardRestrictions":["Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
-							"adjacencyRestriction":
-							{
-								"cardRestrictions":["Augmented","Subtypes Include"],
-								"subtypesInclude":["Golem"]
+			"blurb": "Swap Out Modules",
+			"triggerData": {
+				"triggerCondition": "Arrive",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Max Per Turn",
+						"Triggerer Now Fits Restriction"
+					],
+					"nowRestriction": {
+						"cardRestrictions": [
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to a Card that Fits Restriction"
+							],
+							"adjacencyRestriction": {
+								"cardRestrictions": [
+									"Augmented",
+									"Subtypes Include"
+								],
+								"subtypesInclude": [
+									"Golem"
+								]
 							},
-							"mustBeEmpty":false
+							"mustBeEmpty": false
 						}
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Golem to swap out modules",
-						"cardRestrictions":["Character","Board","Augmented","Subtypes Include","Space Fits Restriction"],
-						"subtypesInclude":["Golem"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to Card Target"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Golem to swap out modules",
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Augmented",
+							"Subtypes Include",
+							"Space Fits Restriction"
+						],
+						"subtypesInclude": [
+							"Golem"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Card Target"
+							]
 						}
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"Number of Augments"
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "Number of Augments"
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetAugmentsSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
-					"delete":true,
-					"remainingTargets":2,
-					"jumpIndices":[4]
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete": true,
+					"remainingTargets": 2,
+					"jumpIndices": [
+						4
+					]
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Golem core for Modular Golem Cores to attach",
-						"cardRestrictions":["Augment","Hand","Subtypes Include"],
-						"subtypesInclude":["Golem", "Core"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Golem core for Modular Golem Cores to attach",
+						"cardRestrictions": [
+							"Augment",
+							"Hand",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Golem",
+							"Core"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
-					"attachmentTarget":1,
-					"targetIndex":-1
+					"$type": "KompasServer.Effects.AttachSubeffect, Assembly-CSharp",
+					"attachmentTarget": 1,
+					"targetIndex": -1
 				},
 				{
-					"$type":"KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",
-					"jumpIndices":[6],
-					"canDecline":true
+					"$type": "KompasServer.Effects.XTimesSubeffect, Assembly-CSharp",
+					"jumpIndices": [
+						6
+					],
+					"canDecline": true
 				}
 			]
 		}
 	],
-	"c":1,
-	"spellTypes":["Enchant"],
-	"subtypes":["Enchant"],
-	"subtypeText":"Enchant"
+	"c": 1,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
 }

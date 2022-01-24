@@ -1,41 +1,46 @@
 {
-	"cardType":83,
-	"cardName":"Supernova",
-	"effText":"Repeat until your Avatar's S is 0:\nGive your Avatar -1 S.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Supernova",
+	"effText": "Repeat until your Avatar's S is 0:\nGive your Avatar -1 S.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetAvatarSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetAvatarSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"sMod":-1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"sMod": -1
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"S"
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "S"
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
-					"condition":"X >= Constant",
-					"constant":1,
-					"jumpIndices":[1]
+					"$type": "KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"condition": "X >= Constant",
+					"constant": 1,
+					"jumpIndices": [
+						1
+					]
 				}
-			]	
+			]
 		}
 	],
-	"c":5,
-	"spellTypes":["Simple"],
-	"subtypeText":"Simple"
+	"c": 5,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
 }

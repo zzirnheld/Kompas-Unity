@@ -1,36 +1,48 @@
 {
-	"cardType":67,
-	"cardName":"Runewritten",
-	"effText":"When you cast a Rune, I give myself +1 EW.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Runewritten",
+	"effText": "When you cast a Rune, I give myself +1 EW.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Controller Triggered"],
-					"cardRestriction":{
-						"cardRestrictions":["Subtypes Include","Spell","Friendly"],
-						"subtypesInclude":["Rune"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Triggerer Fits Restriction",
+						"Controller Triggered"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Spell",
+							"Friendly"
+						],
+						"subtypesInclude": [
+							"Rune"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":1,
-					"wMod":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod": 1,
+					"wMod": 1
 				}
-			]	
+			]
 		}
 	],
-	"n":3,
-	"e":1,
-	"s":3,
-	"w":1,
-	"subtypes":["Runar","Warrior"],
-	"subtypeText":"Runar Warrior"
+	"n": 3,
+	"e": 1,
+	"s": 3,
+	"w": 1,
+	"subtypes": [
+		"Runar",
+		"Warrior"
+	],
+	"subtypeText": "Runar Warrior"
 }

@@ -1,37 +1,51 @@
 {
-	"cardType":83,
-	"cardName":"Reincarnation",
-	"effText":"When a character dies, echo a Geminii.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Reincarnation",
+	"effText": "When a character dies, echo a Geminii.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Discard",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Board","Character"]
+			"triggerData": {
+				"triggerCondition": "Discard",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Triggerer Fits Restriction"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Character"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Geminii for Reincarnation to echo",
-						"cardRestrictions":["Character","Board","Subtypes Include"],
-						"subtypesInclude":["Geminii"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Geminii for Reincarnation to echo",
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Geminii"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-	"c":4,
-	"spellTypes":["Enchant"],
-	"subtypes":["Enchant"],
-	"subtypeText":"Enchant"
+	"c": 4,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
 }

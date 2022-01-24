@@ -1,37 +1,45 @@
 {
-	"cardType":67,
-	"cardName":"Choketree",
-	"effText":"When I gain X E, give an adjacent character -X N.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Choketree",
+	"effText": "When I gain X E, give an adjacent character -X N.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"E Change",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","X Fits Restriction","This Card Triggered"],
-					"xRestriction":{
-						"xRestrictions":[">0"]
+			"triggerData": {
+				"triggerCondition": "E Change",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"X Fits Restriction",
+						"This Card Triggered"
+					],
+					"xRestriction": {
+						"xRestrictions": [
+							">0"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Board","Character","Adjacent to Source"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Character",
+							"Adjacent to Source"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"nMult":-1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"nMult": -1
 				}
 			]
 		}
 	],
-	"n":1,
-	"e":9,
-	"s":5,
-	"w":2,
-	"subtypeText":"Tree"
+	"n": 1,
+	"e": 9,
+	"s": 5,
+	"w": 2,
+	"subtypeText": "Tree"
 }

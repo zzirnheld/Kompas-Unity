@@ -1,43 +1,52 @@
 {
-	"cardType":67,
-	"cardName":"Swordguild Quartermaster",
-	"effText":"Once each friendly turn, if I'm adjacent to at least X Warriors, you can gain X pips.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Swordguild Quartermaster",
+	"effText": "Once each friendly turn, if I'm adjacent to at least X Warriors, you can gain X pips.",
+	"effects": [
 		{
-			"activationRestriction":{
-				"activationRestrictionArray":[
+			"activationRestriction": {
+				"activationRestrictionArray": [
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"Default"
 				]
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Subtypes Include","Character","Board","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to Source"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Character",
+							"Board",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							]
 						},
-						"subtypesInclude":["Warrior"]
+						"subtypesInclude": [
+							"Warrior"
+						]
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xMultiplier":1,
-					"xModifier":0
+					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xMultiplier": 1,
+					"xModifier": 0
 				}
 			]
 		}
 	],
-	"n":2,
-	"e":7,
-	"s":9,
-	"w":9,
-	"subtypes":["Swordguild","Warrior"],
-	"subtypeText":"Swordguild Warrior"
+	"n": 2,
+	"e": 7,
+	"s": 9,
+	"w": 9,
+	"subtypes": [
+		"Swordguild",
+		"Warrior"
+	],
+	"subtypeText": "Swordguild Warrior"
 }

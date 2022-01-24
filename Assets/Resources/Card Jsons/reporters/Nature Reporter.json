@@ -1,81 +1,106 @@
 {
-	"cardType":67,
-	"cardName":"Nature Reporter",
-	"effText":"The first 3 times each turn I gain E, you can ask an enemy to reveal a character with more E than me. If they don’t, give distinct friendly characters +1 NEWS.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Nature Reporter",
+	"effText": "The first 3 times each turn I gain E, you can ask an enemy to reveal a character with more E than me. If they don\u00e2\u20ac\u2122t, give distinct friendly characters +1 NEWS.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"E Change",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","X Fits Restriction","This Card Triggered","Max Per Turn"],
-					"xRestriction":{
-						"xRestrictions":[">0"]
+			"triggerData": {
+				"triggerCondition": "E Change",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"X Fits Restriction",
+						"This Card Triggered",
+						"Max Per Turn"
+					],
+					"xRestriction": {
+						"xRestrictions": [
+							">0"
+						]
 					},
-					"maxTimesPerTurn":3
+					"maxTimesPerTurn": 3
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.SetXByTriggeringCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"E"
+					"$type": "KompasServer.Effects.SetXByTriggeringCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "E"
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
-					"subeffIndices":[4],
-					"skipIndex":7
+					"$type": "KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+					"subeffIndices": [
+						4
+					],
+					"skipIndex": 7
 				},
 				{
-					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"choiceBlurb":"Reveal an E > X character?",
-					"optionBlurbs":["Yes","No"],
-					"jumpIndices":[4,7],
-					"showX":true
+					"$type": "KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"choiceBlurb": "Reveal an E > X character?",
+					"optionBlurbs": [
+						"Yes",
+						"No"
+					],
+					"jumpIndices": [
+						4,
+						7
+					],
+					"showX": true
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"E > X character to reveal",
-						"cardRestrictions":["Controller Matches Player Target","Hand","Card Value Fits X Restriction","Hidden","Character"],
-                        "cardValue":{
-                            "value":"E"
-                        },
-                        "xRestriction":{
-                            "xRestrictions":[">X"]
-                        }
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "E > X character to reveal",
+						"cardRestrictions": [
+							"Controller Matches Player Target",
+							"Hand",
+							"Card Value Fits X Restriction",
+							"Hidden",
+							"Character"
+						],
+						"cardValue": {
+							"value": "E"
+						},
+						"xRestriction": {
+							"xRestrictions": [
+								">X"
+							]
+						}
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Character","Board","Friendly","Distinct Name from Source"]
+					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Friendly",
+							"Distinct Name from Source"
+						]
 					},
-					"nMod":1,
-					"eMod":1,
-					"sMod":1,
-					"wMod":1
+					"nMod": 1,
+					"eMod": 1,
+					"sMod": 1,
+					"wMod": 1
 				}
 			]
 		}
 	],
-	"n":1,
-	"e":3,
-	"s":4,
-	"w":3,
-	"subtypeText":"Tree Reporter"
+	"n": 1,
+	"e": 3,
+	"s": 4,
+	"w": 3,
+	"subtypeText": "Tree Reporter"
 }

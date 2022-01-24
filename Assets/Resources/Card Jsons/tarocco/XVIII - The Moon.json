@@ -1,62 +1,76 @@
 {
-	"cardType":67,
-	"cardName":"XVIII - The Moon",
-	"effText":"When you draw, you can swap the W of a Summoned character with the E of a Summoned character within 2 spaces of the first.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "XVIII - The Moon",
+	"effText": "When you draw, you can swap the W of a Summoned character with the E of a Summoned character within 2 spaces of the first.",
+	"effects": [
 		{
-			"blurb":"Swap EW",
-			"triggerData":
-			{
-				"blurb":"Swap EW",
-				"triggerCondition":"Draw",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Controller Triggered"]
+			"blurb": "Swap EW",
+			"triggerData": {
+				"blurb": "Swap EW",
+				"triggerCondition": "Draw",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Controller Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"character whose W to swap",
-						"cardRestrictions":["Character","Board","Summoned"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "character whose W to swap",
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Summoned"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"character whose E to swap",
-						"cardRestrictions":["Character","Board","Summoned","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Distance to Card Target Fits X Restriction"],
-							"distanceXRestriction":{
-								"xRestrictions":["<=Constant"],
-								"constant":2
-							},
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "character whose E to swap",
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Summoned",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Distance to Card Target Fits X Restriction"
+							],
+							"distanceXRestriction": {
+								"xRestrictions": [
+									"<=Constant"
+								],
+								"constant": 2
+							}
 						}
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SwapStatSubeffect, Assembly-CSharp",
-					"targetIndex":-2,
-					"secondTargetIndex":-1,
-					"firstTargetStat":{
-						"value":"W"
+					"$type": "KompasServer.Effects.SwapStatSubeffect, Assembly-CSharp",
+					"targetIndex": -2,
+					"secondTargetIndex": -1,
+					"firstTargetStat": {
+						"value": "W"
 					},
-					"secondTargetStat":{
-						"value":"E"
+					"secondTargetStat": {
+						"value": "E"
 					}
 				}
 			]
 		}
 	],
-	"n":3,
-	"e":9,
-	"s":9,
-	"w":0,
-	"subtypes":["Tarocco","Mage"],
-	"subtypeText":"Tarocco Mage"
+	"n": 3,
+	"e": 9,
+	"s": 9,
+	"w": 0,
+	"subtypes": [
+		"Tarocco",
+		"Mage"
+	],
+	"subtypeText": "Tarocco Mage"
 }

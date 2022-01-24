@@ -1,53 +1,66 @@
 {
-	"cardType":67,
-	"cardName":"Silent Recruiter",
-	"effText":"Once each friendly turn, if I'm adjacent to an enemy card, you can deck-summon a Cultist Follower",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Silent Recruiter",
+	"effText": "Once each friendly turn, if I'm adjacent to an enemy card, you can deck-summon a Cultist Follower",
+	"effects": [
 		{
-			"blurb":"Recruit",
-			"activationRestriction":{
-				"activationRestrictionArray":[
+			"blurb": "Recruit",
+			"activationRestriction": {
+				"activationRestrictionArray": [
 					"Max Times Per Turn",
 					"Card Exists",
 					"Default"
 				],
-				"existsRestriction":{
-					"cardRestrictions":["Enemy","Board","Space Fits Restriction"],
-					"spaceRestriction":
-					{
-						"spaceRestrictions":["Adjacent to Source"],
-						"mustBeEmpty":false
+				"existsRestriction": {
+					"cardRestrictions": [
+						"Enemy",
+						"Board",
+						"Space Fits Restriction"
+					],
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"Adjacent to Source"
+						],
+						"mustBeEmpty": false
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
-					"maxCanChoose":1,
-					"cardRestriction":
-					{
-						"blurb":"Silent Cult Follower to recruit",
-						"cardRestrictions":["Subtypes Include","Friendly","Deck","Character"],
-						"subtypesInclude":["Cultist Follower"]
+					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose": 1,
+					"cardRestriction": {
+						"blurb": "Silent Cult Follower to recruit",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Friendly",
+							"Deck",
+							"Character"
+						],
+						"subtypesInclude": [
+							"Cultist Follower"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where to play Silent Recruiter's new recruit",
-						"spaceRestrictions":["Can Play Card Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where to play Silent Recruiter's new recruit",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"n":6,
-	"e":1,
-	"s":4,
-	"w":1,
-	"subtypeText":"Cultist"
+	"n": 6,
+	"e": 1,
+	"s": 4,
+	"w": 1,
+	"subtypeText": "Cultist"
 }

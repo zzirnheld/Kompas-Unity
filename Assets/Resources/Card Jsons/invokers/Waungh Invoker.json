@@ -1,65 +1,74 @@
 {
-	"cardType":67,
-	"cardName":"Waungh Invoker",
-	"effText":"When I attack, Invoke.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Waungh Invoker",
+	"effText": "When I attack, Invoke.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Invoke",
-				"triggerCondition":"Attack",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"blurb": "Invoke",
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"S"
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "S"
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.MillSubeffect, Assembly-CSharp",
-					"xModifier":1
+					"$type": "KompasServer.Effects.MillSubeffect, Assembly-CSharp",
+					"xModifier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
-					"condition":"Target Violates Restriction",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Character","Card Value Fits X Restriction"],
-						"cardValue":{
-							"value":"S"
+					"$type": "KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"condition": "Target Violates Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Card Value Fits X Restriction"
+						],
+						"cardValue": {
+							"value": "S"
 						},
-						"xRestriction":{
-							"xRestrictions":["<X"]
+						"xRestriction": {
+							"xRestrictions": [
+								"<X"
+							]
 						}
 					},
-					"jumpIndices":[2],
-					"xMultiplier":1
+					"jumpIndices": [
+						2
+					],
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where to Invoke",
-						"spaceRestrictions":["Can Play Card Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where to Invoke",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-	"n":2,
-	"e":3,
-	"s":7,
-	"w":0,
-	"subtypeText":"Invoker Mage"
+	"n": 2,
+	"e": 3,
+	"s": 7,
+	"w": 0,
+	"subtypeText": "Invoker Mage"
 }

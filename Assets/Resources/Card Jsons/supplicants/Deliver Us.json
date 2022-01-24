@@ -1,59 +1,80 @@
 {
-	"cardType":83,
-	"cardName":"Deliver Us",
-	"effText":"If there's at least 10 friendly Supplicants dead or in play, deck-, hand-, or discard- summon a \"God of Mercy\".",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Deliver Us",
+	"effText": "If there's at least 10 friendly Supplicants dead or in play, deck-, hand-, or discard- summon a \"God of Mercy\".",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
-					"whatToCount":"Cards Fitting Restriction",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Character","Multiple Possible Locations","Friendly","Subtypes Include"],
-						"subtypesInclude":["Supplicant"],
-						"locations":[1,2]
+					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount": "Cards Fitting Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Multiple Possible Locations",
+							"Friendly",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Supplicant"
+						],
+						"locations": [
+							1,
+							2
+						]
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition":"X<C",
-					"constant":10
+					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition": "X<C",
+					"constant": 10
 				},
 				{
-					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
-					"maxCanChoose":1,
-					"cardRestriction":
-					{
-						"blurb":"God of the Supplicants",
-						"cardRestrictions":["Friendly","Name Is","Multiple Possible Locations"],
-						"nameIs":"God of Mercy",
-						"locations":[2,3,4]
+					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose": 1,
+					"cardRestriction": {
+						"blurb": "God of the Supplicants",
+						"cardRestrictions": [
+							"Friendly",
+							"Name Is",
+							"Multiple Possible Locations"
+						],
+						"nameIs": "God of Mercy",
+						"locations": [
+							2,
+							3,
+							4
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where to play God of Mercy",
-						"spaceRestrictions":["Can Play Card Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where to play God of Mercy",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"c":1,
-	"spellTypes":["Simple"],
-	"subtypeText":"Simple Plea"
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple Plea"
 }

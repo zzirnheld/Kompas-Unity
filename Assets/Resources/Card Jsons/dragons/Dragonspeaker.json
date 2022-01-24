@@ -1,48 +1,54 @@
 {
-	"cardType":67,
-	"cardName":"Dragonspeaker",
-	"effText":"You can kill a distinct friendly SX character to give me +2 * X S and draw 1.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Dragonspeaker",
+	"effText": "You can kill a distinct friendly SX character to give me +2 * X S and draw 1.",
+	"effects": [
 		{
-			"blurb":"Dragonspeak",
-			"activationRestriction":{
-				"activationRestrictionArray":["Default"]
+			"blurb": "Dragonspeak",
+			"activationRestriction": {
+				"activationRestrictionArray": [
+					"Default"
+				]
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"for Dragonspeaker to kill",
-						"cardRestrictions":["Friendly","Board","Character","Distinct Name from Source"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "for Dragonspeaker to kill",
+						"cardRestrictions": [
+							"Friendly",
+							"Board",
+							"Character",
+							"Distinct Name from Source"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"S"
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "S"
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"sMult":2
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"sMult": 2
 				},
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"n":1,
-	"e":1,
-	"s":2,
-	"w":0,
-	"subtypeText":"Draconic Mage"
+	"n": 1,
+	"e": 1,
+	"s": 2,
+	"w": 0,
+	"subtypeText": "Draconic Mage"
 }

@@ -1,66 +1,94 @@
 {
-	"cardType":83,
-	"cardName":"Shape Unbound",
-	"effText":"Annihilate an adjacent friendly Summoned Shaper. Deck->summon a Shaper.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Shape Unbound",
+	"effText": "Annihilate an adjacent friendly Summoned Shaper. Deck->summon a Shaper.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"character to ANNIHILATE",
-						"cardRestrictions":["Subtypes Include","Friendly","Summoned","Board","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to Source"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "character to ANNIHILATE",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Friendly",
+							"Summoned",
+							"Board",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							]
 						},
-						"subtypesInclude":["Shaper"]
+						"subtypesInclude": [
+							"Shaper"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":{
-						"blurb":"Shaper to decksummon",
-						"cardRestrictions":["Subtypes Include","Character","Friendly","Deck"],
-						"subtypesInclude":["Shaper"]
+					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Shaper to decksummon",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Character",
+							"Friendly",
+							"Deck"
+						],
+						"subtypesInclude": [
+							"Shaper"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where to decksummon the Shaper",
-						"spaceRestrictions":["Can Play Card Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where to decksummon the Shaper",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"PlayRestriction":{
-		"recommendationRestrictions":["Adjacent to Card Fitting Restriction"],
-		"adjacentCardRestriction":
-		{
-			"cardRestrictions":["Character","Subtypes Include"],
-			"subtypesInclude":["Shaper"]
+	"PlayRestriction": {
+		"recommendationRestrictions": [
+			"Adjacent to Card Fitting Restriction"
+		],
+		"adjacentCardRestriction": {
+			"cardRestrictions": [
+				"Character",
+				"Subtypes Include"
+			],
+			"subtypesInclude": [
+				"Shaper"
+			]
 		}
 	},
-	"c":1,
-	"spellTypes":["Simple"],
-	"subtypes":["Simple","Shaping"],
-	"subtypeText":"Simple Shaping"
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Simple",
+		"Shaping"
+	],
+	"subtypeText": "Simple Shaping"
 }

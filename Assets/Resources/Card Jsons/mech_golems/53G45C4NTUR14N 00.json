@@ -1,98 +1,101 @@
 {
-	"cardType":67,
-	"cardName":"53G45C4NTUR1RN 00",
-	"effText":"Golem.\nDuring your turn, I can Pilot a Mech, and give them what my stats were.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "53G45C4NTUR1RN 00",
+	"effText": "Golem.\nDuring your turn, I can Pilot a Mech, and give them what my stats were.",
+	"effects": [
 		{
-			"blurb":"00 BB",
-			"activationRestriction":{
-				"activationRestrictionArray":[
+			"blurb": "00 BB",
+			"activationRestriction": {
+				"activationRestrictionArray": [
 					"Friendly Turn",
 					"Default"
 				]
 			},
-			"subeffects":[
-                {
-                    "$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-                },
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.StashTargetsCardInfoSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
-                    "keyword":"Mech Pilot Summon"
+					"$type": "KompasServer.Effects.StashTargetsCardInfoSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"N"
+					"$type": "KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
+					"keyword": "Mech Pilot Summon"
+				},
+				{
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "N"
 					},
-                    "cardInfo":true,
-					"xMultiplier":1
+					"cardInfo": true,
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"nMult":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"nMult": 1
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"E"
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "E"
 					},
-                    "cardInfo":true,
-					"xMultiplier":1
+					"cardInfo": true,
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMult":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMult": 1
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"S"
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "S"
 					},
-                    "cardInfo":true,
-					"xMultiplier":1
+					"cardInfo": true,
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"sMult":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"sMult": 1
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"W"
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "W"
 					},
-                    "cardInfo":true,
-					"xMultiplier":1
+					"cardInfo": true,
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wMult":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wMult": 1
 				},
 				{
-					"$type":"KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
-                    "keyword":"Mech Pilot Return"
+					"$type": "KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",
+					"keyword": "Mech Pilot Return"
 				}
 			]
 		}
 	],
-	"MovementRestriction":{
-		"normalRestrictionsFromJson":[
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
 			"Default",
 			"Activated"
 		]
 	},
-	"AttackRestriction":{
-		"attackRestrictionsArray":[
+	"AttackRestriction": {
+		"attackRestrictionsArray": [
 			"Default",
 			"This is Activated"
 		]
 	},
-	"n":0,
-	"e":3,
-	"s":7,
-	"w":3,
-	"subtypes":["Mech","Golem"],
-	"subtypeText":"Mech Golem"
+	"n": 0,
+	"e": 3,
+	"s": 7,
+	"w": 3,
+	"subtypes": [
+		"Mech",
+		"Golem"
+	],
+	"subtypeText": "Mech Golem"
 }

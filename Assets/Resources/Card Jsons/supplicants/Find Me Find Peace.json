@@ -1,50 +1,65 @@
 {
-	"cardType":83,
-	"cardName":"Find Me Find Peace",
-	"effText":"Search your deck's top 7 cards for any number of Supplicants.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Find Me Find Peace",
+	"effText": "Search your deck's top 7 cards for any number of Supplicants.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"blurb":"Find Me, Find Peace",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"blurb": "Find Me, Find Peace",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Friendly","Deck","Index<C","Subtypes Include"],
-						"subtypesInclude":["Supplicant"],
-						"constant":7
+					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Friendly",
+							"Deck",
+							"Index<C",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Supplicant"
+						],
+						"constant": 7
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.AddRestSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Friendly","Deck","Index<C","Not Already Target"],
-						"constant":7
+					"$type": "KompasServer.Effects.AddRestSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Friendly",
+							"Deck",
+							"Index<C",
+							"Not Already Target"
+						],
+						"constant": 7
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
-					"delete":true,
-					"jumpIndices":[2]
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete": true,
+					"jumpIndices": [
+						2
+					]
 				},
 				{
-					"$type":"KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"c":1,
-	"spellTypes":["Simple"],
-	"subtypeText":"Simple Plea"
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple Plea"
 }

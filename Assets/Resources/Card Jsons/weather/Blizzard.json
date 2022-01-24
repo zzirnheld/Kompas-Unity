@@ -1,48 +1,62 @@
 {
-	"cardType":83,
-	"cardName":"Blizzard",
-	"effText":"Weather.\nWhen an NX character arrives here, give them -X N until they leave.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Blizzard",
+	"effText": "Weather.\nWhen an NX character arrives here, give them -X N until they leave.",
+	"effects": [
 		{
-			"blurb":"Out in the cold",
-			"triggerData":
-			{
-				"triggerCondition":"Arrive",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Coords Fit Restriction","Triggerer Fits Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Character"]
+			"blurb": "Out in the cold",
+			"triggerData": {
+				"triggerCondition": "Arrive",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Coords Fit Restriction",
+						"Triggerer Fits Restriction"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						]
 					},
-					"spaceRestriction":
-					{
-						"mustBeEmpty":false,
-						"spaceRestrictions":["In Source's AOE"]
+					"spaceRestriction": {
+						"mustBeEmpty": false,
+						"spaceRestrictions": [
+							"In Source's AOE"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
-					"nMultiplier":-1,
-					"endCondition":"Leave AOE",
-					"triggerRestriction":{
-						"triggerRestrictions":["Triggerer is Secondary Context Target","Secondary Card Fits Restriction"],
-                        "cardRestriction":
-                        {
-                            "cardRestrictions":["Is Source"]
-                        }
+					"$type": "KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
+					"nMultiplier": -1,
+					"endCondition": "Leave AOE",
+					"triggerRestriction": {
+						"triggerRestrictions": [
+							"Triggerer is Secondary Context Target",
+							"Secondary Card Fits Restriction"
+						],
+						"cardRestriction": {
+							"cardRestrictions": [
+								"Is Source"
+							]
+						}
 					}
 				}
-			]	
+			]
 		}
 	],
-	"keywords":["Weather"],
-	"unique":true,
-	"c":3,
-	"spellTypes":["Radial"],
-	"subtypeText":"Radial Water Weather",
-	"radius":2
+	"keywords": [
+		"Weather"
+	],
+	"unique": true,
+	"c": 3,
+	"spellTypes": [
+		"Radial"
+	],
+	"subtypeText": "Radial Water Weather",
+	"radius": 2
 }

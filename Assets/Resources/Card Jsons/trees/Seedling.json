@@ -1,50 +1,59 @@
 {
-	"cardType":67,
-	"cardName":"Seedling",
-	"effText":"After I’m summoned, delay 2 turns, then tribute me and deck->summon a Tree where I was.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Seedling",
+	"effText": "After I\u00e2\u20ac\u2122m summoned, delay 2 turns, then tribute me and deck->summon a Tree where I was.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
-					"numTimesToDelay":1,
-					"jumpIndices":[1],
-					"endCondition":"Turn Start"
+					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay": 1,
+					"jumpIndices": [
+						1
+					],
+					"endCondition": "Turn Start"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSpaceSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSpaceSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"for Seedling to become",
-						"cardRestrictions":["Subtypes Include","Character","Deck","Can Be Played"],
-						"subtypesInclude":["Tree"]
+					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "for Seedling to become",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Character",
+							"Deck",
+							"Can Be Played"
+						],
+						"subtypesInclude": [
+							"Tree"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"n":0,
-	"e":4,
-	"s":2,
-	"w":0,
-	"subtypeText":""
+	"n": 0,
+	"e": 4,
+	"s": 2,
+	"w": 0,
+	"subtypeText": ""
 }

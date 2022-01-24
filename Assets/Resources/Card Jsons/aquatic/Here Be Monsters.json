@@ -1,71 +1,92 @@
 {
-	"cardType":83,
-	"cardName":"Here Be Monsters",
-	"effText":"Set X to the total cost of Water I'm in. Annihilate me and deck->summon an S <= X Aquatic character where I was, but annihilate them when friendly turns start.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Here Be Monsters",
+	"effText": "Set X to the total cost of Water I'm in. Annihilate me and deck->summon an S <= X Aquatic character where I was, but annihilate them when friendly turns start.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
-					"whatToCount":"Total Card Value of Cards Fitting Restriction",
-					"cardValue":{
-						"value":"Cost"
+					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount": "Total Card Value of Cards Fitting Restriction",
+					"cardValue": {
+						"value": "Cost"
 					},
-					"cardRestriction":
-					{
-						"cardRestrictions":["Subtypes Include","Source in This' AOE"],
-						"subtypesInclude":["Water"]
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Source in This' AOE"
+						],
+						"subtypesInclude": [
+							"Water"
+						]
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTargetsSpaceSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Monster here",
-						"cardRestrictions":["Character","Friendly","Deck","Can Be Played","Subtypes Include","Card Value Fits X Restriction"],
-						"subtypesInclude":["Aquatic"],
-						"cardValue":{
-							"value":"S"
+					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Monster here",
+						"cardRestrictions": [
+							"Character",
+							"Friendly",
+							"Deck",
+							"Can Be Played",
+							"Subtypes Include",
+							"Card Value Fits X Restriction"
+						],
+						"subtypesInclude": [
+							"Aquatic"
+						],
+						"cardValue": {
+							"value": "S"
 						},
-						"xRestriction":{
-							"xRestrictions":["<=X"]
+						"xRestriction": {
+							"xRestrictions": [
+								"<=X"
+							]
 						}
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.HangingAnnihilationSubeffect, Assembly-CSharp",
-					"endCondition":"Turn Start",
-					"triggerRestriction":
-					{
-						"triggerRestrictions":["Friendly Turn"]
+					"$type": "KompasServer.Effects.HangingAnnihilationSubeffect, Assembly-CSharp",
+					"endCondition": "Turn Start",
+					"triggerRestriction": {
+						"triggerRestrictions": [
+							"Friendly Turn"
+						]
 					}
 				}
-			]	
+			]
 		}
 	],
-	"c":2,
-	"spellTypes":["Simple"],
-	"subtypes":["Aquatic","Simple"],
-	"subtypeText":"Aquatic Simple"
+	"c": 2,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Aquatic",
+		"Simple"
+	],
+	"subtypeText": "Aquatic Simple"
 }

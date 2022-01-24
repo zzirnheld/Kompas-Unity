@@ -1,37 +1,46 @@
 {
-	"cardType":67,
-	"cardName":"Riali, Master of Irrealities",
-	"effText":"Shape.\nWhen a friendly Shaper moves X spaces, give them +X E.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Riali, Master of Irrealities",
+	"effText": "Shape.\nWhen a friendly Shaper moves X spaces, give them +X E.",
+	"effects": [
 		{
-            "blurb":"Empower the Shaper",
-			"triggerData":
-			{
-				"triggerCondition":"Move",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Subtypes Include","Friendly"],
-						"subtypesInclude":["Shaper"]
+			"blurb": "Empower the Shaper",
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Triggerer Fits Restriction"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Friendly"
+						],
+						"subtypesInclude": [
+							"Shaper"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMult":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMult": 1
 				}
-			]	
+			]
 		}
 	],
-	"keywords":["Shape"],
-	"n":1,
-	"e":7,
-	"s":5,
-	"w":3,
-	"unique":true,
-	"subtypeText":"Ethereal Shaper Mage"
+	"keywords": [
+		"Shape"
+	],
+	"n": 1,
+	"e": 7,
+	"s": 5,
+	"w": 3,
+	"unique": true,
+	"subtypeText": "Ethereal Shaper Mage"
 }

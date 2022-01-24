@@ -1,38 +1,48 @@
 {
-	"cardType":83,
-	"cardName":"Overwhelming Ball Skills",
-	"effText":"Comeback Play.\nWhen a friendly Augment is attached to an enemy character, give them -1 N.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Overwhelming Ball Skills",
+	"effText": "Comeback Play.\nWhen a friendly Augment is attached to an enemy character, give them -1 N.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"My balls are SKILLED!",
-				"triggerCondition":"Augment Attached",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Friendly","Augments Card Fitting Restriction"],
-                        "augmentRestriction":{
-                            "cardRestrictions":["Enemy"]
-                        }
+			"triggerData": {
+				"blurb": "My balls are SKILLED!",
+				"triggerCondition": "Augment Attached",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Triggerer Fits Restriction"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Friendly",
+							"Augments Card Fitting Restriction"
+						],
+						"augmentRestriction": {
+							"cardRestrictions": [
+								"Enemy"
+							]
+						}
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"nMod":-1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"nMod": -1
 				}
 			]
 		}
 	],
-	"keywords":["Comeback Play"],
-	"c":1,
-	"spellTypes":["Vanishing"],
-	"duration":1,
-	"subtypeText":"Team Play Vanishing"
+	"keywords": [
+		"Comeback Play"
+	],
+	"c": 1,
+	"spellTypes": [
+		"Vanishing"
+	],
+	"duration": 1,
+	"subtypeText": "Team Play Vanishing"
 }

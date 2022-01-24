@@ -1,49 +1,65 @@
 {
-	"cardType":83,
-	"cardName":"Unstable Dreaming",
-	"effText":"When I’m cast, hand->summon a Shaper, but annihilate them when friendly turns start.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Unstable Dreaming",
+	"effText": "When I\u00e2\u20ac\u2122m cast, hand->summon a Shaper, but annihilate them when friendly turns start.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":{
-						"blurb":"Shaper to hand-summon",
-						"cardRestrictions":["Subtypes Include","Character","Friendly","Hand"],
-						"subtypesInclude":["Shaper"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Shaper to hand-summon",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Character",
+							"Friendly",
+							"Hand"
+						],
+						"subtypesInclude": [
+							"Shaper"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where to handsummon the Shaper",
-						"spaceRestrictions":["Can Play Card Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where to handsummon the Shaper",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.HangingAnnihilationSubeffect, Assembly-CSharp",
-					"endCondition":"Turn Start",
-					"triggerRestriction":
-					{
-						"triggerRestrictions":["Friendly Turn"]
+					"$type": "KompasServer.Effects.HangingAnnihilationSubeffect, Assembly-CSharp",
+					"endCondition": "Turn Start",
+					"triggerRestriction": {
+						"triggerRestrictions": [
+							"Friendly Turn"
+						]
 					}
 				}
 			]
 		}
 	],
-	"c":1,
-	"spellTypes":["Simple"],
-	"subtypes":["Simple","Shaping"],
-	"subtypeText":"Simple Shaping"
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Simple",
+		"Shaping"
+	],
+	"subtypeText": "Simple Shaping"
 }

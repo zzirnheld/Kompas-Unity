@@ -1,37 +1,42 @@
 {
-	"cardType":67,
-	"cardName":"Leylasher",
-	"effText":"The first time each turn a character moves X, give them +X ESW.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Leylasher",
+	"effText": "The first time each turn a character moves X, give them +X ESW.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Leybind",
-				"triggerCondition":"Move",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Max Per Turn","Triggerer Fits Restriction"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Friendly","Character"]
+			"triggerData": {
+				"blurb": "Leybind",
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Max Per Turn",
+						"Triggerer Fits Restriction"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Friendly",
+							"Character"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMult":1,
-					"sMult":1,
-					"wMult":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMult": 1,
+					"sMult": 1,
+					"wMult": 1
 				}
-			]	
+			]
 		}
 	],
-	"n":1,
-	"e":5,
-	"s":5,
-	"w":5,
-	"subtypeText":"Ley Mage"
+	"n": 1,
+	"e": 5,
+	"s": 5,
+	"w": 5,
+	"subtypeText": "Ley Mage"
 }

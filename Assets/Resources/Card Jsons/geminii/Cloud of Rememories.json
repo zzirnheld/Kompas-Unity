@@ -1,38 +1,49 @@
 {
-	"cardType":83,
-	"cardName":"Cloud of Rememories",
-	"effText":"The first time each turn you summon a character here, give them +1 EW.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Cloud of Rememories",
+	"effText": "The first time each turn you summon a character here, give them +1 EW.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Controller Triggered","Triggerer Fits Restriction","Max Per Turn","Coords Fit Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Character"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Controller Triggered",
+						"Triggerer Fits Restriction",
+						"Max Per Turn",
+						"Coords Fit Restriction"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character"
+						]
 					},
-					"spaceRestriction":
-					{
-						"mustBeEmpty":false,
-						"spaceRestrictions":["In Source's AOE"]
+					"spaceRestriction": {
+						"mustBeEmpty": false,
+						"spaceRestrictions": [
+							"In Source's AOE"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":1,
-					"wMod":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod": 1,
+					"wMod": 1
 				}
 			]
 		}
 	],
-	"c":2,
-	"spellTypes":["Enchant","Radial"],
-	"subtypeText":"Enchant Radius 1",
-	"radius":1
+	"c": 2,
+	"spellTypes": [
+		"Enchant",
+		"Radial"
+	],
+	"subtypeText": "Enchant Radius 1",
+	"radius": 1
 }

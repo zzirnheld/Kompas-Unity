@@ -1,82 +1,98 @@
 {
-	"cardType":83,
-	"cardName":"Set",
-	"effText":"If there's no friendly discarded \"Ready\", search your deck for it and reshuffle me. If there is, give an adjacent character +1 N and search your deck for \"GO\".",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Set",
+	"effText": "If there's no friendly discarded \"Ready\", search your deck for it and reshuffle me. If there is, give an adjacent character +1 N and search your deck for \"GO\".",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
-					"condition":"Card Fits Restriction",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Discard","Name Is"],
-                        "nameIs":"Ready"
+					"$type": "KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"condition": "Card Fits Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Discard",
+							"Name Is"
+						],
+						"nameIs": "Ready"
 					},
-					"jumpIndices":[6],
-					"xMultiplier":1
+					"jumpIndices": [
+						6
+					],
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Ready for Set to search",
-						"cardRestrictions":["Friendly","Deck","Name Is"],
-                        "nameIs":"Ready"
+					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Ready for Set to search",
+						"cardRestrictions": [
+							"Friendly",
+							"Deck",
+							"Name Is"
+						],
+						"nameIs": "Ready"
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"character to set",
-						"cardRestrictions":["Character","Board","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to Source"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "character to set",
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							]
 						}
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"nMod":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"nMod": 1
 				},
 				{
-					"$type":"KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"GO for Ready to search",
-						"cardRestrictions":["Friendly","Deck","Name Is"],
-                        "nameIs":"GO"
+					"$type": "KompasServer.Effects.DeckTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "GO for Ready to search",
+						"cardRestrictions": [
+							"Friendly",
+							"Deck",
+							"Name Is"
+						],
+						"nameIs": "GO"
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"c":1,
-	"spellTypes":["Simple"],
-	"subtypeText":"Simple"
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
 }

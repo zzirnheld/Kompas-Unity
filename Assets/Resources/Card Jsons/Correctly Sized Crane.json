@@ -1,37 +1,46 @@
 {
-	"cardType":83,
-	"cardName":"Correctly Sized Crane",
-	"effText":"The first time each turn you hand->discard, discard->hand any friendly card.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Correctly Sized Crane",
+	"effText": "The first time each turn you hand->discard, discard->hand any friendly card.",
+	"effects": [
 		{
-			"blurb":"Lemme grabbit",
-			"triggerData":
-			{
-				"triggerCondition":"Discard",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Max Per Turn","Controller Triggered"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Hand"]
+			"blurb": "Lemme grabbit",
+			"triggerData": {
+				"triggerCondition": "Discard",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Triggerer Fits Restriction",
+						"Max Per Turn",
+						"Controller Triggered"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Hand"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"card for Correctly Sized Crane to grab",
-						"cardRestrictions":["Friendly","Discard"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "card for Correctly Sized Crane to grab",
+						"cardRestrictions": [
+							"Friendly",
+							"Discard"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-	"c":5,
-	"spellTypes":["Enchant"],
-	"subtypeText":"Enchant"
+	"c": 5,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
 }

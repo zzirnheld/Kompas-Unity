@@ -1,62 +1,77 @@
 {
-	"cardType":67,
-	"cardName":"Soul of Speed",
-	"effText":"Speedemon.\nWhen another Speedemon moves normally, move me the same way they moved and give me +1 EW.",
-	"effects":[
-        {
-            "blurb":"Speedsoul",
-			"triggerData":
-			{
-				"triggerCondition":"Move",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","No Stackable","Triggerer Fits Restriction"],
-					"cardRestriction":{
-						"cardRestrictions":["Different from Source","Subtypes Include"],
-						"subtypesInclude":["Speedemon"]
+	"cardType": 67,
+	"cardName": "Soul of Speed",
+	"effText": "Speedemon.\nWhen another Speedemon moves normally, move me the same way they moved and give me +1 EW.",
+	"effects": [
+		{
+			"blurb": "Speedsoul",
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"No Stackable",
+						"Triggerer Fits Restriction"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Different from Source",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Speedemon"
+						]
 					}
 				}
 			},
-            "subeffects":[
-                {
-                    "$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
-                },
-                {
-                    "$type":"KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
-                },
-                {
-                    "$type":"KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp",
-                    "after":true
-                },
-                {
-                    "$type":"KompasServer.Effects.TargetDirectionSubeffect, Assembly-CSharp"
-                },
-                {
-                    "$type":"KompasServer.Effects.AutoSpaceTargetSubeffect, Assembly-CSharp",
-                    "spaceRestriction":
-                    {
-                        "blurb":"speeeeeeeeeeeeeeeed",
-                        "spaceRestrictions":["Source Displacement to Space Same Direction as Space Target","Distance to Source Fits X Restriction"],
-                        "distanceXRestriction":{
-                            "xRestrictions":["=X"]
-                        }
-                    },
-                    "xModifier":1
-                },
-                {
-                    "$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
-                },
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":1,
-					"wMod":1
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp",
+					"after": true
+				},
+				{
+					"$type": "KompasServer.Effects.TargetDirectionSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.AutoSpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "speeeeeeeeeeeeeeeed",
+						"spaceRestrictions": [
+							"Source Displacement to Space Same Direction as Space Target",
+							"Distance to Source Fits X Restriction",
+							"Empty"
+						],
+						"distanceXRestriction": {
+							"xRestrictions": [
+								"=X"
+							]
+						}
+					},
+					"xModifier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod": 1,
+					"wMod": 1
 				}
-            ]	
-        }
+			]
+		}
 	],
-	"keywords":["Speedemon"],
-	"n":0,
-	"e":1,
-	"s":9,
-	"w":1,
-	"subtypeText":"Speedemon"
+	"keywords": [
+		"Speedemon"
+	],
+	"n": 0,
+	"e": 1,
+	"s": 9,
+	"w": 1,
+	"subtypeText": "Speedemon"
 }

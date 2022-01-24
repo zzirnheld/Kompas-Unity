@@ -1,33 +1,39 @@
 {
-	"cardType":67,
-	"cardName":"Lithetree",
-	"effText":"The first time each turn I gain X E, give me +X N.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Lithetree",
+	"effText": "The first time each turn I gain X E, give me +X N.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"E Change",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","X Fits Restriction","This Card Triggered","Max Per Turn"],
-					"xRestriction":{
-						"xRestrictions":[">0"]
+			"triggerData": {
+				"triggerCondition": "E Change",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"X Fits Restriction",
+						"This Card Triggered",
+						"Max Per Turn"
+					],
+					"xRestriction": {
+						"xRestrictions": [
+							">0"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"nMult":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"nMult": 1
 				}
 			]
 		}
 	],
-	"n":0,
-	"e":4,
-	"s":1,
-	"w":0,
-	"subtypeText":"Tree"
+	"n": 0,
+	"e": 4,
+	"s": 1,
+	"w": 0,
+	"subtypeText": "Tree"
 }

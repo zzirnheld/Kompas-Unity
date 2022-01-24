@@ -1,46 +1,54 @@
 {
-	"cardType":67,
-	"cardName":"XII - The Hanged Man",
-	"effText":"When you draw X cards, give me and a Summoned character -X E.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "XII - The Hanged Man",
+	"effText": "When you draw X cards, give me and a Summoned character -X E.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Give me and a Summoned character -X E? (X is the number of cards you just drew)",
-				"triggerCondition":"Draw",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Controller Triggered"]
+			"triggerData": {
+				"blurb": "Give me and a Summoned character -X E? (X is the number of cards you just drew)",
+				"triggerCondition": "Draw",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Controller Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Summoned character for Hanged Man to also give -X E",
-						"cardRestrictions":["Character","Board","Summoned"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Summoned character for Hanged Man to also give -X E",
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Summoned"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMult":-1,
-					"targetIndex":0
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMult": -1,
+					"targetIndex": 0
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMult":-1,
-					"targetIndex":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMult": -1,
+					"targetIndex": 1
 				}
 			]
 		}
 	],
-	"n":0,
-	"e":4,
-	"s":3,
-	"w":2,
-	"subtypes":["Tarocco","Mage"],
-	"subtypeText":"Tarocco Mage"
+	"n": 0,
+	"e": 4,
+	"s": 3,
+	"w": 2,
+	"subtypes": [
+		"Tarocco",
+		"Mage"
+	],
+	"subtypeText": "Tarocco Mage"
 }

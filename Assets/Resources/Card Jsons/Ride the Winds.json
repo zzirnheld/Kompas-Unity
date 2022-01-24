@@ -1,45 +1,57 @@
 {
-	"cardType":83,
-	"cardName":"Ride the Winds",
-	"effText":"Once each friendly turn, you can move a Flying character 1 space.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Ride the Winds",
+	"effText": "Once each friendly turn, you can move a Flying character 1 space.",
+	"effects": [
 		{
-			"blurb":"Ride the Winds",
-			"activationRestriction":{
-				"activationRestrictionArray":[
+			"blurb": "Ride the Winds",
+			"activationRestriction": {
+				"activationRestrictionArray": [
 					"Max Times Per Turn",
 					"Default"
 				]
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"to ride the winds",
-						"cardRestrictions":["Character","Board","Subtypes Include"],
-						"subtypesInclude":["Dragon"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "to ride the winds",
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Dragon"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where to ride",
-						"spaceRestrictions":["Empty","Can Move Card Target to This Space","Distance to Card Target Fits X Restriction"],
-                        "distanceXRestriction":{
-                            "xRestrictions":["=X"]
-                        }
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where to ride",
+						"spaceRestrictions": [
+							"Empty",
+							"Can Move Card Target to This Space",
+							"Distance to Card Target Fits X Restriction"
+						],
+						"distanceXRestriction": {
+							"xRestrictions": [
+								"=X"
+							]
+						}
 					},
-					"xModifier":1
+					"xModifier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-	"c":2,
-	"spellTypes":["Enchant"],
-	"subtypeText":"Enchant"
+	"c": 2,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
 }

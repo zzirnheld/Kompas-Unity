@@ -1,34 +1,42 @@
 {
-	"cardType":83,
-	"cardName":"Regrowth",
-	"effText":"When friendly turns start, heal a Tree.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Regrowth",
+	"effText": "When friendly turns start, heal a Tree.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Regrowth",
-				"triggerCondition":"Turn Start",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Friendly Turn"]
+			"triggerData": {
+				"blurb": "Regrowth",
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Friendly Turn"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Who to heal",
-						"cardRestrictions":["Hurt","Subtypes Include"],
-						"subtypesInclude":["Tree"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Who to heal",
+						"cardRestrictions": [
+							"Hurt",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Tree"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.HealSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.HealSubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-	"c":1,
-	"spellTypes":["Enchant"],
-	"subtypeText":"Enchant"
+	"c": 1,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
 }

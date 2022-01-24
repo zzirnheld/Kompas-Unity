@@ -1,60 +1,83 @@
 {
-	"cardType":67,
-	"cardName":"Unexpected Shark",
-	"effText":"Waterborn Waterdweller.\nWhen I attack, dispel adjacent spells. ",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Unexpected Shark",
+	"effText": "Waterborn Waterdweller.\nWhen I attack, dispel adjacent spells. ",
+	"effects": [
 		{
-			"blurb":"Unexpected",
-			"triggerData":
-			{
-				"blurb":"Unexpected",
-				"triggerCondition":"Attack",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"blurb": "Unexpected",
+			"triggerData": {
+				"blurb": "Unexpected",
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Board","Spell","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to Source"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Spell",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							]
 						}
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DispelSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
-					"delete":true,
-					"jumpIndices":[1]
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete": true,
+					"jumpIndices": [
+						1
+					]
 				}
-			]	
+			]
 		}
 	],
-	"keywords":["Waterdweller"],
-	"PlayRestriction":{
-		"normalRestrictions":["Default Normal Restrictions","Space Must Fit Restriction"],
-		"normalRestrictionsToIgnore":["Adjacent to Friendly Card"],
-		"effectRestrictions":["Default Effect Restrictions","Space Must Fit Restriction"],
-		"effectRestrictionsToIgnore":["Adjacent to Friendly Card"],
-        "spaceRestriction":{
-            "spaceRestrictions":["In AOE of Card Fitting Restriction"],
-            "inAOEOfRestriction":
-            {
-                "cardRestrictions":["Subtypes Include"],
-                "subtypesInclude":["Water"]
-            }
-        }
+	"keywords": [
+		"Waterdweller"
+	],
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Default Normal Restrictions",
+			"Space Must Fit Restriction"
+		],
+		"normalRestrictionsToIgnore": [
+			"Adjacent to Friendly Card"
+		],
+		"effectRestrictions": [
+			"Default Effect Restrictions",
+			"Space Must Fit Restriction"
+		],
+		"effectRestrictionsToIgnore": [
+			"Adjacent to Friendly Card"
+		],
+		"spaceRestriction": {
+			"spaceRestrictions": [
+				"In AOE of Card Fitting Restriction"
+			],
+			"inAOEOfRestriction": {
+				"cardRestrictions": [
+					"Subtypes Include"
+				],
+				"subtypesInclude": [
+					"Water"
+				]
+			}
+		}
 	},
-	"n":5,
-	"e":4,
-	"s":4,
-	"w":8,
-	"subtypeText":"Aquatic Fish Monster"
+	"n": 5,
+	"e": 4,
+	"s": 4,
+	"w": 8,
+	"subtypeText": "Aquatic Fish Monster"
 }

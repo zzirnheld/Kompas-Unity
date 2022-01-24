@@ -1,71 +1,94 @@
 {
-	"cardType":83,
-	"cardName":"Stormfront",
-	"effText":"Annihilate a friendly adjacent Weather encompassing X Skyknights. Choose an empty space up to X spaces from me. Deck->cast a copy of that Weather there",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Stormfront",
+	"effText": "Annihilate a friendly adjacent Weather encompassing X Skyknights. Choose an empty space up to X spaces from me. Deck->cast a copy of that Weather there",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"adjacent Weather to annihilate",
-						"cardRestrictions":["Friendly","Board","Adjacent to Source","Subtypes Include"],
-                        "subtypesInclude":["Weather"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "adjacent Weather to annihilate",
+						"cardRestrictions": [
+							"Friendly",
+							"Board",
+							"Adjacent to Source",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Weather"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
-					"whatToCount":"Cards Fitting Restriction",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Board","Subtypes Include","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["In Card Target's AOE"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount": "Cards Fitting Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Subtypes Include",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In Card Target's AOE"
+							]
 						},
-						"subtypesInclude":["Skyknight"]
+						"subtypesInclude": [
+							"Skyknight"
+						]
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
 				},
-                {
-                    "$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
-                    "cardRestriction":{
-                        "blurb":"Weather to deck-cast",
-                        "cardRestrictions":["Friendly","Deck","Same Name as Target"]
-                    },
-                    "maxCanChoose":1
-                },
-                {
-                    "$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-                    "spaceRestriction":
-                    {
-                        "blurb":"where to cast the Weather",
-                        "spaceRestrictions":["Can Play Card Target to This Space","Distance to Source Fits X Restriction"],
-                        "distanceXRestriction":{
-                            "xRestrictions":["<=X"]
-                        }
-                    },
-					"xMultiplier":1
-                },
-                {
-                    "$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
-                }
+				{
+					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Weather to deck-cast",
+						"cardRestrictions": [
+							"Friendly",
+							"Deck",
+							"Same Name as Target"
+						]
+					},
+					"maxCanChoose": 1
+				},
+				{
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where to cast the Weather",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Distance to Source Fits X Restriction",
+							"Empty"
+						],
+						"distanceXRestriction": {
+							"xRestrictions": [
+								"<=X"
+							]
+						}
+					},
+					"xMultiplier": 1
+				},
+				{
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+				}
 			]
 		}
 	],
-	"c":1,
-	"spellTypes":["Simple"],
-	"subtypeText":"Simple"
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
 }

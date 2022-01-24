@@ -1,40 +1,51 @@
 {
-	"cardType":83,
-	"cardName":"Hagall",
-	"effText":"Runic.\nWhen turns start, I give all characters here -1 NE.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Hagall",
+	"effText": "Runic.\nWhen turns start, I give all characters here -1 NE.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Turn Start",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play"]
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Character","Board","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["In Source's AOE"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In Source's AOE"
+							]
 						}
 					},
-					"nMod":-1,
-					"eMod":-1
+					"nMod": -1,
+					"eMod": -1
 				}
-			]	
+			]
 		}
 	],
-	"PlayRestriction":{
-		"normalRestrictions":["Cannot be Played Normally"]
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Cannot be Played Normally"
+		]
 	},
-	"c":1,
-	"spellTypes":["Radial"],
-	"subtypes":["Rune","Radial"],
-	"subtypeText":"Rune Radial",
-	"radius":1
+	"c": 1,
+	"spellTypes": [
+		"Radial"
+	],
+	"subtypes": [
+		"Rune",
+		"Radial"
+	],
+	"subtypeText": "Rune Radial",
+	"radius": 1
 }

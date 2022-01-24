@@ -1,54 +1,65 @@
 {
-	"cardType":83,
-	"cardName":"Starstuff",
-	"effText":"Double or halve your Avatar’s S. (Round up.) Draw 1 card.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Starstuff",
+	"effText": "Double or halve your Avatar\u00e2\u20ac\u2122s S. (Round up.) Draw 1 card.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetAvatarSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetAvatarSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"S"
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "S"
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"choiceBlurb":"Double or halve?",
-					"optionBlurbs":["Double","Halve"],
-					"jumpIndices":[3,5],
-					"hasDefault":false
+					"$type": "KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"choiceBlurb": "Double or halve?",
+					"optionBlurbs": [
+						"Double",
+						"Halve"
+					],
+					"jumpIndices": [
+						3,
+						5
+					],
+					"hasDefault": false
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"sMult":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"sMult": 1
 				},
 				{
-					"$type":"KompasServer.Effects.JumpSubeffect, Assembly-CSharp",
-					"jumpIndices":[6]
+					"$type": "KompasServer.Effects.JumpSubeffect, Assembly-CSharp",
+					"jumpIndices": [
+						6
+					]
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"sMult":-1,
-					"sDiv":2
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"sMult": -1,
+					"sDiv": 2
 				},
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-	"c":1,
-	"spellTypes":["Simple"],
-	"subtypeText":"Simple"
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
 }

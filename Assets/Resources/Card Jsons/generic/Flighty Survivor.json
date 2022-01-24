@@ -1,34 +1,39 @@
 {
-	"cardType":67,
-	"cardName":"Flighty Survivor",
-	"effText":"Attended 1.\nWhen turns start, give me +1 EW.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Flighty Survivor",
+	"effText": "Attended 1.\nWhen turns start, give me +1 EW.",
+	"effects": [
 		{
-            "blurb":"Survive",
-			"triggerData":
-			{
-				"triggerCondition":"Turn Start",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play"]
+			"blurb": "Survive",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":1,
-                    "wMod":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod": 1,
+					"wMod": 1
 				}
 			]
 		}
 	],
-	"keywords":["Attended"],
-    "keywordArgs":[1],
-	"n":5,
-	"e":1,
-	"s":2,
-	"w":1,
-	"subtypeText":"Person"
+	"keywords": [
+		"Attended"
+	],
+	"keywordArgs": [
+		1
+	],
+	"n": 5,
+	"e": 1,
+	"s": 2,
+	"w": 1,
+	"subtypeText": "Person"
 }

@@ -1,66 +1,88 @@
 {
-	"cardType":83,
-	"cardName":"Fires of Creation",
-	"effText":"When you summon a Pulsar with more S than your Avatar, gain a pip.\nWhen you summon a Pulsar with less S than your Avatar, draw 1 card.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Fires of Creation",
+	"effText": "When you summon a Pulsar with more S than your Avatar, gain a pip.\nWhen you summon a Pulsar with less S than your Avatar, draw 1 card.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["Controller Triggered","Triggerer Fits Restriction","This Card in Play"],
-					"cardRestriction":{
-						"cardRestrictions":["Subtypes Include","Card Value Fits X Restriction"],
-						"cardValue":{
-							"value":"S"
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Controller Triggered",
+						"Triggerer Fits Restriction",
+						"This Card in Play"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Card Value Fits X Restriction"
+						],
+						"cardValue": {
+							"value": "S"
 						},
-						"xRestriction":{
-							"xRestrictions":[">Avatar"],
-							"avatarCardValue":{
-								"value":"S"
+						"xRestriction": {
+							"xRestrictions": [
+								">Avatar"
+							],
+							"avatarCardValue": {
+								"value": "S"
 							}
 						},
-						"subtypesInclude":["Pulsar"]
+						"subtypesInclude": [
+							"Pulsar"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xModifier":1
+					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier": 1
 				}
-			]	
+			]
 		},
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["Controller Triggered","Triggerer Fits Restriction","This Card in Play"],
-					"cardRestriction":{
-						"cardRestrictions":["Subtypes Include","Card Value Fits X Restriction"],
-						"cardValue":{
-							"value":"S"
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Controller Triggered",
+						"Triggerer Fits Restriction",
+						"This Card in Play"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Card Value Fits X Restriction"
+						],
+						"cardValue": {
+							"value": "S"
 						},
-						"xRestriction":{
-							"xRestrictions":["<Avatar"],
-							"avatarCardValue":{
-								"value":"S"
+						"xRestriction": {
+							"xRestrictions": [
+								"<Avatar"
+							],
+							"avatarCardValue": {
+								"value": "S"
 							}
 						},
-						"subtypesInclude":["Pulsar"]
+						"subtypesInclude": [
+							"Pulsar"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-	"c":3,
-	"unique":true,
-	"spellTypes":["Enchant"],
-	"subtypeText":"Enchant"
+	"c": 3,
+	"unique": true,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
 }

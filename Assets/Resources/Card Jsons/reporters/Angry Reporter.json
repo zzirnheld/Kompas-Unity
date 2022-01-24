@@ -1,94 +1,114 @@
 {
-	"cardType":67,
-	"cardName":"Angry Reporter",
-	"effText":"Once each friendly turn, you can choose a friendly W X character and ask an opponent to reveal a cost > X card. If they don’t, the chosen character attacks.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Angry Reporter",
+	"effText": "Once each friendly turn, you can choose a friendly W X character and ask an opponent to reveal a cost > X card. If they don\u00e2\u20ac\u2122t, the chosen character attacks.",
+	"effects": [
 		{
-			"activationRestriction":{
-				"activationRestrictionArray":[
+			"activationRestriction": {
+				"activationRestrictionArray": [
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"Default"
 				]
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"angry WX character that might attack",
-						"cardRestrictions":["Controller Matches Player Target","Board"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "angry WX character that might attack",
+						"cardRestrictions": [
+							"Controller Matches Player Target",
+							"Board"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"W"
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "W"
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
-					"subeffIndices":[5],
-					"skipIndex":8
+					"$type": "KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+					"subeffIndices": [
+						5
+					],
+					"skipIndex": 8
 				},
 				{
-					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"choiceBlurb":"Reveal an cost > X card?",
-					"optionBlurbs":["Yes","No"],
-					"jumpIndices":[5,8],
-					"showX":true
+					"$type": "KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"choiceBlurb": "Reveal an cost > X card?",
+					"optionBlurbs": [
+						"Yes",
+						"No"
+					],
+					"jumpIndices": [
+						5,
+						8
+					],
+					"showX": true
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"cost > X card to reveal",
-						"cardRestrictions":["Controller Matches Player Target","Hand","Hidden","Card Value Fits X Restriction"],
-						"cardValue":{
-							"value":"Cost"
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "cost > X card to reveal",
+						"cardRestrictions": [
+							"Controller Matches Player Target",
+							"Hand",
+							"Hidden",
+							"Card Value Fits X Restriction"
+						],
+						"cardValue": {
+							"value": "Cost"
 						},
-						"xRestriction":{
-							"xRestrictions":[">X"]
+						"xRestriction": {
+							"xRestrictions": [
+								">X"
+							]
 						}
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"enemy character to attack",
-						"cardRestrictions":["Character","Controller Isn't Player Target","Board","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to Card Target"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "enemy character to attack",
+						"cardRestrictions": [
+							"Character",
+							"Controller Isn't Player Target",
+							"Board",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Card Target"
+							]
 						}
 					},
-					"playerIndex":-2
+					"playerIndex": -2
 				},
 				{
-					"$type":"KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
-					"playerIndex":-2,
-					"targetIndex":-1,
-					"attackerIndex":-2
+					"$type": "KompasServer.Effects.AttackSubeffect, Assembly-CSharp",
+					"playerIndex": -2,
+					"targetIndex": -1,
+					"attackerIndex": -2
 				}
-			]	
+			]
 		}
 	],
-	"n":6,
-	"e":2,
-	"s":4,
-	"w":5,
-	"subtypeText":"Ethereal Reporter Spirit"
+	"n": 6,
+	"e": 2,
+	"s": 4,
+	"w": 5,
+	"subtypeText": "Ethereal Reporter Spirit"
 }

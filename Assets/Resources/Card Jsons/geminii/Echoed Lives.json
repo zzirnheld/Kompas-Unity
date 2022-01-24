@@ -1,35 +1,43 @@
 {
-	"cardType":83,
-	"cardName":"Echoed Lives",
-	"effText":"When turns start, echo characters here.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Echoed Lives",
+	"effText": "When turns start, echo characters here.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Turn Start",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play"]
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.ResummonAllSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Character","Board","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["In Source's AOE"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.ResummonAllSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"In Source's AOE"
+							]
 						}
 					}
 				}
-			]	
+			]
 		}
 	],
-	"c":1,
-	"spellTypes":["Radial"],
-	"subtypes":["Radial"],
-	"subtypeText":"Radial",
-	"radius":1
+	"c": 1,
+	"spellTypes": [
+		"Radial"
+	],
+	"subtypes": [
+		"Radial"
+	],
+	"subtypeText": "Radial",
+	"radius": 1
 }

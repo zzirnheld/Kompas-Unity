@@ -1,49 +1,66 @@
 {
-	"cardType":83,
-	"cardName":"Figurehead Knight",
-	"effText":"When you draw, give each friendly character:\nDuring friendly turns: +1 W.\nDuring enemy turns: +1 E.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Figurehead Knight",
+	"effText": "When you draw, give each friendly character:\nDuring friendly turns: +1 W.\nDuring enemy turns: +1 E.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Draw",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Friendly Turn","Controller Triggered"]
+			"triggerData": {
+				"triggerCondition": "Draw",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Friendly Turn",
+						"Controller Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Character","Board","Friendly"]
+					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Friendly"
+						]
 					},
-					"wMod":1
+					"wMod": 1
 				}
 			]
 		},
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Draw",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Enemy Turn","Controller Triggered"]
+			"triggerData": {
+				"triggerCondition": "Draw",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Enemy Turn",
+						"Controller Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Character","Board","Friendly"]
+					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Friendly"
+						]
 					},
-					"eMod":1
+					"eMod": 1
 				}
 			]
 		}
 	],
-	"c":4,
-	"spellTypes":["Enchant"],
-	"subtypes":["Tarocco","Enchant"],
-	"subtypeText":"Tarocco Enchant"
+	"c": 4,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypes": [
+		"Tarocco",
+		"Enchant"
+	],
+	"subtypeText": "Tarocco Enchant"
 }

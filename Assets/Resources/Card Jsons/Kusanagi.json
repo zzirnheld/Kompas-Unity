@@ -1,49 +1,66 @@
 {
-	"cardType":65,
-	"cardName":"Kusanagi",
-	"effText":"The first time each round this character attacks, if their target is behind them, swap their places and give the defender -5 W.",
-	"effects":[
+	"cardType": 65,
+	"cardName": "Kusanagi",
+	"effText": "The first time each round this character attacks, if their target is behind them, swap their places and give the defender -5 W.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Attack",
-				"triggerRestriction":{
-					"triggerRestrictions":["Augmented Card Triggered","Max Per Round"]
+			"triggerData": {
+				"triggerCondition": "Attack",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Augmented Card Triggered",
+						"Max Per Round"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetDefenderSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetDefenderSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
-					"condition":"Target Violates Restriction",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Behind Source"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
+					"condition": "Target Violates Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Behind Source"
+							]
 						}
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wMod":-5
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wMod": -5
 				}
 			]
 		}
 	],
-	"PlayRestriction":{
-		"normalRestrictions":["Augment Normal Restrictions","On Card that Fits Restriction"],
-		"effectRestrictions":["Augment Effect Restrictions","On Card that Fits Restriction"],
-		"onCardRestriction":{
-			"cardRestrictions":["Subtypes Include","Friendly","Board"],
-			"subtypesInclude":["Warrior"]
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Augment Normal Restrictions",
+			"On Card that Fits Restriction"
+		],
+		"effectRestrictions": [
+			"Augment Effect Restrictions",
+			"On Card that Fits Restriction"
+		],
+		"onCardRestriction": {
+			"cardRestrictions": [
+				"Subtypes Include",
+				"Friendly",
+				"Board"
+			],
+			"subtypesInclude": [
+				"Warrior"
+			]
 		}
 	},
-	"a":3,
-	"subtypeText":"Sword",
-	"augSubtypes":["Warrior"]
+	"a": 3,
+	"subtypeText": "Sword",
+	"augSubtypes": [
+		"Warrior"
+	]
 }

@@ -1,36 +1,44 @@
 {
-	"cardType":83,
-	"cardName":"Resummon",
-	"effText":"Echo a Geminii. Draw 1 card.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Resummon",
+	"effText": "Echo a Geminii. Draw 1 card.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"character to echo",
-						"cardRestrictions":["Board","Character","Subtypes Include"],
-						"subtypesInclude":["Geminii"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "character to echo",
+						"cardRestrictions": [
+							"Board",
+							"Character",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Geminii"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.ResummonSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-	"c":1,
-	"spellTypes":["Simple"],
-	"subtypeText":"Geminii Simple"
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypeText": "Geminii Simple"
 }

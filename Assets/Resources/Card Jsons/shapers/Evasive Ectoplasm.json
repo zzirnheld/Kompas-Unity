@@ -1,46 +1,55 @@
 {
-	"cardType":67,
-	"cardName":"Evasive Ectoplasm",
-	"effText":"Shape.\nThe first time each round I fight a W X character, give them -X W for that fight.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Evasive Ectoplasm",
+	"effText": "Shape.\nThe first time each round I fight a W X character, give them -X W for that fight.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Battle Start",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered","Max Per Round"]
+			"triggerData": {
+				"triggerCondition": "Battle Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered",
+						"Max Per Round"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetOtherInFightSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetOtherInFightSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"W"
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "W"
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
-					"wMultiplier":-1,
-					"endCondition":"Battle End",
-					"triggerRestriction":{
-						"triggerRestrictions":["Contexts Stackables Match"]
+					"$type": "KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
+					"wMultiplier": -1,
+					"endCondition": "Battle End",
+					"triggerRestriction": {
+						"triggerRestrictions": [
+							"Contexts Stackables Match"
+						]
 					}
 				}
-			]	
+			]
 		}
 	],
-	"keywords":["Shape"],
-	"n":1,
-	"e":2,
-	"s":3,
-	"w":3,
-	"subtypes":["Ethereal","Shaper"],
-	"subtypeText":"Ethereal Shaper"
+	"keywords": [
+		"Shape"
+	],
+	"n": 1,
+	"e": 2,
+	"s": 3,
+	"w": 3,
+	"subtypes": [
+		"Ethereal",
+		"Shaper"
+	],
+	"subtypeText": "Ethereal Shaper"
 }

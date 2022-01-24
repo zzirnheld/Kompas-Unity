@@ -1,48 +1,61 @@
 {
-	"cardType":67,
-	"cardName":"Runecaller",
-	"effText":"Once each friendly turn, you can pip hand-cast a Rune.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Runecaller",
+	"effText": "Once each friendly turn, you can pip hand-cast a Rune.",
+	"effects": [
 		{
-			"activationRestriction":{
-				"activationRestrictionArray":[
+			"activationRestriction": {
+				"activationRestrictionArray": [
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"Default"
 				]
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Rune for Runecaller to cast",
-						"cardRestrictions":["Subtypes Include","Spell","Friendly","Hand","Can Be Played","Effect Controller can Afford Cost"],
-						"subtypesInclude":["Rune"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Rune for Runecaller to cast",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Spell",
+							"Friendly",
+							"Hand",
+							"Can Be Played",
+							"Effect Controller can Afford Cost"
+						],
+						"subtypesInclude": [
+							"Rune"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where for Runecaller to cast its target Rune",
-						"spaceRestrictions":["Can Play Card Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where for Runecaller to cast its target Rune",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
-					"xMultiplier":1
+					"$type": "KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"n":0,
-	"e":1,
-	"s":1,
-	"w":1,
-	"subtypes":["Runar","Mage"],
-	"subtypeText":"Runar Mage"
+	"n": 0,
+	"e": 1,
+	"s": 1,
+	"w": 1,
+	"subtypes": [
+		"Runar",
+		"Mage"
+	],
+	"subtypeText": "Runar Mage"
 }

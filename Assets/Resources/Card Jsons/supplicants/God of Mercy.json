@@ -1,59 +1,72 @@
 {
-	"cardType":67,
-	"cardName":"God of Mercy",
-	"effText":"When I arrive adjacent to a Supplicant, negate adjacent characters until I'm removed.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "God of Mercy",
+	"effText": "When I arrive adjacent to a Supplicant, negate adjacent characters until I'm removed.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Mercy",
-				"triggerCondition":"Arrive",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered","Coords Fit Restriction"],
-					"spaceRestriction":
-					{
-						"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
-						"adjacencyRestriction":
-						{
-							"cardRestrictions":["Subtypes Include"],
-							"subtypesInclude":["Supplicant"]
+			"triggerData": {
+				"blurb": "Mercy",
+				"triggerCondition": "Arrive",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered",
+						"Coords Fit Restriction"
+					],
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"Adjacent to a Card that Fits Restriction"
+						],
+						"adjacencyRestriction": {
+							"cardRestrictions": [
+								"Subtypes Include"
+							],
+							"subtypesInclude": [
+								"Supplicant"
+							]
 						},
-						"mustBeEmpty":false
+						"mustBeEmpty": false
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Supplicant to give safe haven",
-						"cardRestrictions":["Board","Character","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to Source"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.TargetAllSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Supplicant to give safe haven",
+						"cardRestrictions": [
+							"Board",
+							"Character",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Source"
+							]
 						}
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.TemporaryNegateSubeffect, Assembly-CSharp",
-					"endCondition":"Remove",
-					"triggerRestriction":{
-						"triggerRestrictions":["This Card Triggered"]
+					"$type": "KompasServer.Effects.TemporaryNegateSubeffect, Assembly-CSharp",
+					"endCondition": "Remove",
+					"triggerRestriction": {
+						"triggerRestrictions": [
+							"This Card Triggered"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
-					"delete":true,
-					"jumpIndices":[1]
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"delete": true,
+					"jumpIndices": [
+						1
+					]
 				}
 			]
 		}
 	],
-	"n":7,
-	"e":17,
-	"s":17,
-	"w":0,
-	"subtypeText":"God"
+	"n": 7,
+	"e": 17,
+	"s": 17,
+	"w": 0,
+	"subtypeText": "God"
 }

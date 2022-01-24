@@ -1,70 +1,85 @@
 {
-	"cardType":67,
-	"cardName":"Mr Power Vacuum",
-	"effText":"Speedemon.\nWhen I move to a space adjacent to another Speedemon, annihilate a card that costs less than me, adjacent to the space I left.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Mr Power Vacuum",
+	"effText": "Speedemon.\nWhen I move to a space adjacent to another Speedemon, annihilate a card that costs less than me, adjacent to the space I left.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Move",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered","Coords Fit Restriction"],
-					"spaceRestriction":
-					{
-						"spaceRestrictions":["Adjacent to a Card that Fits Restriction"],
-						"adjacencyRestriction":
-						{
-							"cardRestrictions":["Different from Source","Subtypes Include"],
-							"subtypesInclude":["Speedemon"]
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered",
+						"Coords Fit Restriction"
+					],
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"Adjacent to a Card that Fits Restriction"
+						],
+						"adjacencyRestriction": {
+							"cardRestrictions": [
+								"Different from Source",
+								"Subtypes Include"
+							],
+							"subtypesInclude": [
+								"Speedemon"
+							]
 						},
-						"mustBeEmpty":false
+						"mustBeEmpty": false
 					}
 				}
 			},
-			"subeffects":[
-                {
-                    "$type":"KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
-                },
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardsCoordsSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"S"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "S"
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"blurb":"card to vakoom",
-					"cardRestriction":{
-						"cardRestrictions":["Board","Card Value Fits X Restriction","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to Space Target"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"blurb": "card to vakoom",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Card Value Fits X Restriction",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Space Target"
+							]
 						},
-						"cardValue":{
-							"value":"Cost"
+						"cardValue": {
+							"value": "Cost"
 						},
-						"xRestriction":{
-							"xRestrictions":["<=X"]
+						"xRestriction": {
+							"xRestrictions": [
+								"<=X"
+							]
 						}
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"keywords":["Speedemon"],
-	"n":1,
-	"e":2,
-	"s":5,
-	"w":1,
-	"unique":true,
-	"subtypeText":"Speedemon"
+	"keywords": [
+		"Speedemon"
+	],
+	"n": 1,
+	"e": 2,
+	"s": 5,
+	"w": 1,
+	"unique": true,
+	"subtypeText": "Speedemon"
 }

@@ -1,52 +1,66 @@
 {
-	"cardType":67,
-	"cardName":"Dispeller by Sword",
-	"effText":"Once each friendly turn, if I'm adjacent to X Warriors, you can dispel a C <= X spell.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Dispeller by Sword",
+	"effText": "Once each friendly turn, if I'm adjacent to X Warriors, you can dispel a C <= X spell.",
+	"effects": [
 		{
-			"activationRestriction":{
-				"activationRestrictionArray":[
+			"activationRestriction": {
+				"activationRestrictionArray": [
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"Default"
 				]
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"spell for Dispeller by Sword to dispel, Assembly-CSharp",
-						"cardRestrictions":["Subtypes Include","Character","Board","Adjacent to Source"],
-						"subtypesInclude":["Warrior"]
+					"$type": "KompasServer.Effects.SetXBoardRestrictionSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "spell for Dispeller by Sword to dispel, Assembly-CSharp",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Character",
+							"Board",
+							"Adjacent to Source"
+						],
+						"subtypesInclude": [
+							"Warrior"
+						]
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Spell","Card Value Fits X Restriction"],
-						"cardValue":{
-							"value":"C"
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Spell",
+							"Card Value Fits X Restriction"
+						],
+						"cardValue": {
+							"value": "C"
 						},
-						"xRestriction":{
-							"xRestrictions":["<=X"]
+						"xRestriction": {
+							"xRestrictions": [
+								"<=X"
+							]
 						}
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.DispelSubeffect, Assembly-CSharp",
-					"targetIndex":-1
+					"$type": "KompasServer.Effects.DispelSubeffect, Assembly-CSharp",
+					"targetIndex": -1
 				}
 			]
 		}
 	],
-	"n":3,
-	"e":5,
-	"s":6,
-	"w":6,
-	"subtypes":["Swordguild","Warrior","Mage"],
-	"subtypeText":"Swordguild Warrior Mage"
+	"n": 3,
+	"e": 5,
+	"s": 6,
+	"w": 6,
+	"subtypes": [
+		"Swordguild",
+		"Warrior",
+		"Mage"
+	],
+	"subtypeText": "Swordguild Warrior Mage"
 }

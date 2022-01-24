@@ -1,54 +1,72 @@
 {
-	"cardType":83,
-	"cardName":"None Defy the Lines",
-	"effText":"Move each character that you can to a space on its diagonal, on the edge of the board.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "None Defy the Lines",
+	"effText": "Move each character that you can to a space on its diagonal, on the edge of the board.",
+	"effects": [
 		{
-			"blurb":"Simple Effect",
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"blurb": "Simple Effect",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
-					"jumpIndices":[10]
+					"$type": "KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"jumpIndices": [
+						10
+					]
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"who to next be brought low by the Lines",
-						"cardRestrictions":["Character","Board","Not Already Target"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "who to next be brought low by the Lines",
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Not Already Target"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
-					"jumpIndices":[5]
+					"$type": "KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"jumpIndices": [
+						5
+					]
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where on the Lines to bring them",
-						"spaceRestrictions":["Empty","On Target's Diagonal","On Edge of Board","Can Move Card Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where on the Lines to bring them",
+						"spaceRestrictions": [
+							"Empty",
+							"On Target's Diagonal",
+							"On Edge of Board",
+							"Can Move Card Target to This Space"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
-					"jumpIndices":[0]
+					"$type": "KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
+					"jumpIndices": [
+						0
+					]
 				}
-			]	
+			]
 		}
 	],
-	"c":4,
-	"spellTypes":["Simple"],
-	"subtypes":["Simple"],
-	"subtypeText":"Simple"
+	"c": 4,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Simple"
+	],
+	"subtypeText": "Simple"
 }

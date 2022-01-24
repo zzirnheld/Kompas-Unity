@@ -1,56 +1,69 @@
 {
-	"cardType":67,
-	"cardName":"Frontline Reporter",
-	"effText":"When I'm summoned, your opponent can reveal a spell. If they don't, draw 2.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Frontline Reporter",
+	"effText": "When I'm summoned, your opponent can reveal a spell. If they don't, draw 2.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
-					"subeffIndices":[3],
-					"skipIndex":6
+					"$type": "KompasServer.Effects.CanResolveSubeffect, Assembly-CSharp",
+					"subeffIndices": [
+						3
+					],
+					"skipIndex": 6
 				},
 				{
-					"$type":"KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
-					"choiceBlurb":"Reveal a spell?",
-					"optionBlurbs":["Yes","No"],
-					"jumpIndices":[3,6]
+					"$type": "KompasServer.Effects.ChooseOptionSubeffect, Assembly-CSharp",
+					"choiceBlurb": "Reveal a spell?",
+					"optionBlurbs": [
+						"Yes",
+						"No"
+					],
+					"jumpIndices": [
+						3,
+						6
+					]
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"spell to reveal",
-						"cardRestrictions":["Controller Matches Player Target","Hand","Spell","Hidden"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "spell to reveal",
+						"cardRestrictions": [
+							"Controller Matches Player Target",
+							"Hand",
+							"Spell",
+							"Hidden"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.RevealSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
-					"playerIndex":-2,
-					"xModifier":2
+					"$type": "KompasServer.Effects.DrawXSubeffect, Assembly-CSharp",
+					"playerIndex": -2,
+					"xModifier": 2
 				}
-			]	
+			]
 		}
 	],
-	"n":3,
-	"e":2,
-	"s":2,
-	"w":2,
-	"subtypeText":"Reporter Person"
+	"n": 3,
+	"e": 2,
+	"s": 2,
+	"w": 2,
+	"subtypeText": "Reporter Person"
 }

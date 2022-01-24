@@ -1,40 +1,47 @@
 {
-	"cardType":83,
-	"cardName":"Play Them Leylines Like a Banjo",
-	"effText":"When I'm cast, gain 1 pips, but lose 2 pips when I vanish. (If you have <= 0 pips, you can't pay pips for anything.)",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Play Them Leylines Like a Banjo",
+	"effText": "When I'm cast, gain 1 pips, but lose 2 pips when I vanish. (If you have <= 0 pips, you can't pay pips for anything.)",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xModifier":1
+					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
-					"numTimesToDelay":0,
-					"jumpIndices":[2],
-					"fallOffCondition":"",
-					"endCondition":"Vanish",
-					"triggerRestriction":{
-						"triggerRestrictions":["This Card Triggered"]
+					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay": 0,
+					"jumpIndices": [
+						2
+					],
+					"fallOffCondition": "",
+					"endCondition": "Vanish",
+					"triggerRestriction": {
+						"triggerRestrictions": [
+							"This Card Triggered"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xModifier":-2
+					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xModifier": -2
 				}
 			]
 		}
 	],
-	"c":1,
-	"spellTypes":["Vanishing"],
-	"duration":2,
-	"subtypeText":"Vanishing 2 Music"
+	"c": 1,
+	"spellTypes": [
+		"Vanishing"
+	],
+	"duration": 2,
+	"subtypeText": "Vanishing 2 Music"
 }

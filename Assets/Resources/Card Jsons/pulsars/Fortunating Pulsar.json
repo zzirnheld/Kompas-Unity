@@ -1,78 +1,99 @@
 {
-	"cardType":67,
-	"cardName":"Fortunating Pulsar",
-	"effText":"The first three times each turn your Avatar's S changes, each:\n+S: hand->discard 1 card, then draw 1 card.\n-S: give both players a pip.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Fortunating Pulsar",
+	"effText": "The first three times each turn your Avatar's S changes, each:\n+S: hand->discard 1 card, then draw 1 card.\n-S: give both players a pip.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Fortune-card",
-				"triggerCondition":"S Change",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction","Max Per Turn"],
-					"xRestriction":{
-						"xRestrictions":[">0"]
+			"triggerData": {
+				"blurb": "Fortune-card",
+				"triggerCondition": "S Change",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"X Fits Restriction",
+						"Triggerer Fits Restriction",
+						"Max Per Turn"
+					],
+					"xRestriction": {
+						"xRestrictions": [
+							">0"
+						]
 					},
-					"cardRestriction":
-					{
-						"cardRestrictions":["Board","Avatar","Friendly"]
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Avatar",
+							"Friendly"
+						]
 					},
-					"maxTimesPerTurn":3
+					"maxTimesPerTurn": 3
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":{
-						"blurb":"how fortunate, we have to discard something",
-						"cardRestrictions":["Friendly","Hand"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "how fortunate, we have to discard something",
+						"cardRestrictions": [
+							"Friendly",
+							"Hand"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		},
 		{
-			"triggerData":
-			{
-				"blurb":"Fortune-pip",
-				"triggerCondition":"S Change",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","X Fits Restriction","Triggerer Fits Restriction","Max Per Turn"],
-					"xRestriction":{
-						"xRestrictions":["<0"]
+			"triggerData": {
+				"blurb": "Fortune-pip",
+				"triggerCondition": "S Change",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"X Fits Restriction",
+						"Triggerer Fits Restriction",
+						"Max Per Turn"
+					],
+					"xRestriction": {
+						"xRestrictions": [
+							"<0"
+						]
 					},
-					"cardRestriction":
-					{
-						"cardRestrictions":["Board","Avatar","Friendly"]
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Board",
+							"Avatar",
+							"Friendly"
+						]
 					},
-					"maxTimesPerTurn":3
+					"maxTimesPerTurn": 3
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xMultiplier":0,
-					"xModifier":1
+					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xMultiplier": 0,
+					"xModifier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetEnemySubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xMultiplier":0,
-					"xModifier":1
+					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xMultiplier": 0,
+					"xModifier": 1
 				}
-			]	
+			]
 		}
 	],
-	"n":2,
-	"e":4,
-	"s":5,
-	"w":4,
-	"subtypeText":"Pulsar"
+	"n": 2,
+	"e": 4,
+	"s": 5,
+	"w": 4,
+	"subtypeText": "Pulsar"
 }

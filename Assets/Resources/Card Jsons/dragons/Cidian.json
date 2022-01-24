@@ -1,55 +1,63 @@
 {
-	"cardType":67,
-	"cardName":"Cidian",
-	"effText":"Territorial.\nWhen I deal X more combat damage than my defender's E while attacking, give other characters adjacent to them, -X EW.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Cidian",
+	"effText": "Territorial.\nWhen I deal X more combat damage than my defender's E while attacking, give other characters adjacent to them, -X EW.",
+	"effects": [
 		{
-			"blurb":"Acid Breath",
-			"triggerData":
-			{
-				"blurb":"Acid Breath",
-				"triggerCondition":"Take Combat Damage",
-				"triggerRestriction":{
-					"triggerRestrictions":["Triggerer Fits Restriction"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Is Defending From Source"]
+			"blurb": "Acid Breath",
+			"triggerData": {
+				"blurb": "Acid Breath",
+				"triggerCondition": "Take Combat Damage",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Triggerer Fits Restriction"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Is Defending From Source"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.SetXByTriggeringCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"E"
+					"$type": "KompasServer.Effects.SetXByTriggeringCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "E"
 					},
-					"change":true,
-					"xMultiplier":-1
+					"change": true,
+					"xMultiplier": -1
 				},
 				{
-					"$type":"KompasServer.Effects.TargetDefenderSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetDefenderSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Character","Board","Different from Source","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Adjacent to Card Target"],
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Different from Source",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Adjacent to Card Target"
+							]
 						}
 					},
-					"eMult":-1,
-					"wMult":-1
+					"eMult": -1,
+					"wMult": -1
 				}
-			]	
+			]
 		}
 	],
-	"keywords":["Territorial"],
-	"n":5,
-	"e":14,
-	"s":15,
-	"w":15,
-	"subtypeText":"Dragon"
+	"keywords": [
+		"Territorial"
+	],
+	"n": 5,
+	"e": 14,
+	"s": 15,
+	"w": 15,
+	"subtypeText": "Dragon"
 }

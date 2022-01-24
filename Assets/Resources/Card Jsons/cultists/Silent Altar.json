@@ -1,108 +1,136 @@
 {
-	"cardType":83,
-	"cardName":"Silent Altar",
-	"effText":"When a Cultist here dies, I get +1C.\nYou can tribute Altars with total C 31 to hand- or deck-summon any character.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Silent Altar",
+	"effText": "When a Cultist here dies, I get +1C.\nYou can tribute Altars with total C 31 to hand- or deck-summon any character.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Discard",
-				"triggerRestriction":{
-					"triggerRestrictions":["Triggerer Fits Restriction","Coords Fit Restriction","This Card in Play"],
-					"spaceRestriction":
-					{
-						"spaceRestrictions":["In Source's AOE"],
-						"mustBeEmpty":false
+			"triggerData": {
+				"triggerCondition": "Discard",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"Triggerer Fits Restriction",
+						"Coords Fit Restriction",
+						"This Card in Play"
+					],
+					"spaceRestriction": {
+						"spaceRestrictions": [
+							"In Source's AOE"
+						],
+						"mustBeEmpty": false
 					},
-					"cardRestriction":
-					{
-						"cardRestrictions":["Subtypes Include","Board"],
-						"subtypesInclude":["Cultist"]
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Board"
+						],
+						"subtypesInclude": [
+							"Cultist"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"cMod":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"cMod": 1
 				}
 			]
 		},
 		{
-			"activationRestriction":{
-				"activationRestrictionArray":[
+			"activationRestriction": {
+				"activationRestrictionArray": [
 					"Default"
 				]
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.SetXSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.SetXSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Altar(s) to sacrifice",
-						"cardRestrictions":["Spell","Subtypes Include","Friendly","Hand","Not Already Target"],
-						"subtypesInclude":["Altar"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Altar(s) to sacrifice",
+						"cardRestrictions": [
+							"Spell",
+							"Subtypes Include",
+							"Friendly",
+							"Hand",
+							"Not Already Target"
+						],
+						"subtypesInclude": [
+							"Altar"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"Cost"
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "Cost"
 					},
-					"change":true,
-					"xMultiplier":1
+					"change": true,
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
-					"condition":"X >= Constant",
-					"constant":31,
-					"jumpIndices":[5]
+					"$type": "KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"condition": "X >= Constant",
+					"constant": 31,
+					"jumpIndices": [
+						5
+					]
 				},
 				{
-					"$type":"KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
-					"jumpIndices":[1]
+					"$type": "KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
+					"jumpIndices": [
+						1
+					]
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
-					"jumpIndices":[5]
+					"$type": "KompasServer.Effects.LoopWhileHaveTargetsSubeffect, Assembly-CSharp",
+					"jumpIndices": [
+						5
+					]
 				},
 				{
-					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
-					"maxCanChoose":1,
-					"cardRestriction":
-					{
-						"blurb":"culmination of the Silent Altar Ritual",
-						"cardRestrictions":["Friendly","Deck","Character"]
+					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose": 1,
+					"cardRestriction": {
+						"blurb": "culmination of the Silent Altar Ritual",
+						"cardRestrictions": [
+							"Friendly",
+							"Deck",
+							"Character"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where to play the result Silent Altar Ritual",
-						"spaceRestrictions":["Can Play Card Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where to play the result Silent Altar Ritual",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"c":5,
-	"spellTypes":["Radial"],
-	"subtypeText":"Altar Radial",
-	"radius":1
+	"c": 5,
+	"spellTypes": [
+		"Radial"
+	],
+	"subtypeText": "Altar Radial",
+	"radius": 1
 }

@@ -1,54 +1,75 @@
 {
-	"cardType":67,
-	"cardName":"Outaroud, Who Scouts the Clouds",
-	"effText":"When you cast Radial Weather, move a friendly Skyknight to a space in it.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Outaroud, Who Scouts the Clouds",
+	"effText": "When you cast Radial Weather, move a friendly Skyknight to a space in it.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Watch for Truth",
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Controller Triggered"],
-					"cardRestriction":{
-						"cardRestrictions":["Friendly","Spell","Subtypes Include","Spell Subtypes"],
-						"subtypesInclude":["Weather"],
-                        "spellSubtypes":["Radial"]
+			"triggerData": {
+				"blurb": "Watch for Truth",
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Triggerer Fits Restriction",
+						"Controller Triggered"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Friendly",
+							"Spell",
+							"Subtypes Include",
+							"Spell Subtypes"
+						],
+						"subtypesInclude": [
+							"Weather"
+						],
+						"spellSubtypes": [
+							"Radial"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"friendly character for Outaroud to bring scouting",
-						"cardRestrictions":["Character","Friendly","Board","Subtypes Include"],
-						"subtypesInclude":["Skyknight"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "friendly character for Outaroud to bring scouting",
+						"cardRestrictions": [
+							"Character",
+							"Friendly",
+							"Board",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Skyknight"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where for Outaroud to bring friendly character scouting",
-						"spaceRestrictions":["In Card Target's AOE","Can Move Card Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where for Outaroud to bring friendly character scouting",
+						"spaceRestrictions": [
+							"In Card Target's AOE",
+							"Can Move Card Target to This Space",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.MoveSubeffect, Assembly-CSharp",
-					"targetIndex":-2
+					"$type": "KompasServer.Effects.MoveSubeffect, Assembly-CSharp",
+					"targetIndex": -2
 				}
 			]
 		}
 	],
-	"n":3,
-	"e":3,
-	"s":6,
-	"w":4,
-	"unique":true,
-	"subtypeText":"Skyknight Warrior"
+	"n": 3,
+	"e": 3,
+	"s": 6,
+	"w": 4,
+	"unique": true,
+	"subtypeText": "Skyknight Warrior"
 }

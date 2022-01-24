@@ -1,41 +1,52 @@
 {
-	"cardType":67,
-	"cardName":"Stimulating Moss",
-	"effText":"Spores.\nWhen I'm activated, reshuffle a dead Fungus. Draw 1 card.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Stimulating Moss",
+	"effText": "Spores.\nWhen I'm activated, reshuffle a dead Fungus. Draw 1 card.",
+	"effects": [
 		{
-			"blurb":"Stimulate",
-			"triggerData":
-			{
-				"triggerCondition":"Activate",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"blurb": "Stimulate",
+			"triggerData": {
+				"triggerCondition": "Activate",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"dead Fungus",
-						"cardRestrictions":["Subtypes Include","Character","Discard"],
-						"subtypesInclude":["Fungus"]
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "dead Fungus",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Character",
+							"Discard"
+						],
+						"subtypesInclude": [
+							"Fungus"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-    "keywords":["Spores"],
-	"n":1,
-	"e":2,
-	"s":5,
-	"w":2,
-	"subtypes":["Fruiting","Fungus"],
-	"subtypeText":"Fruiting Fungus"
+	"keywords": [
+		"Spores"
+	],
+	"n": 1,
+	"e": 2,
+	"s": 5,
+	"w": 2,
+	"subtypes": [
+		"Fruiting",
+		"Fungus"
+	],
+	"subtypeText": "Fruiting Fungus"
 }

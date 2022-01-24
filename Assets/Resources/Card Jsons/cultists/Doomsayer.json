@@ -1,37 +1,42 @@
 {
-	"cardType":67,
-	"cardName":"Doomsayer",
-	"effText":"Once each friendly turn, you can search your deck for a Cultist.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Doomsayer",
+	"effText": "Once each friendly turn, you can search your deck for a Cultist.",
+	"effects": [
 		{
-			"blurb":"DOOM",
-			"activationRestriction":{
-				"activationRestrictionArray":[
+			"blurb": "DOOM",
+			"activationRestriction": {
+				"activationRestrictionArray": [
 					"Max Times Per Turn",
 					"Friendly Turn",
 					"Default"
 				]
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
-					"maxCanChoose":1,
-					"cardRestriction":
-					{
-						"blurb":"Cultist for Doomsayer to search",
-						"cardRestrictions":["Subtypes Include","Friendly","Deck"],
-						"subtypesInclude":["Cultist"]
+					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"maxCanChoose": 1,
+					"cardRestriction": {
+						"blurb": "Cultist for Doomsayer to search",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Friendly",
+							"Deck"
+						],
+						"subtypesInclude": [
+							"Cultist"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"n":3,
-	"e":2,
-	"s":3,
-	"w":1,
-	"subtypeText":"Cultist"
+	"n": 3,
+	"e": 2,
+	"s": 3,
+	"w": 1,
+	"subtypeText": "Cultist"
 }

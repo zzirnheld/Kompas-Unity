@@ -1,44 +1,49 @@
 {
-	"cardType":67,
-	"cardName":"Choo Choo Brain",
-	"effText":"Speedemon.\nWhen I move, hand->reshuffle a card. (Yes, you have to.) Give me +2 ESW. ",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Choo Choo Brain",
+	"effText": "Speedemon.\nWhen I move, hand->reshuffle a card. (Yes, you have to.) Give me +2 ESW. ",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Move",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Move",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"fuel for the Choo Choo Brain",
-						"cardRestrictions":["Friendly","Hand"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "fuel for the Choo Choo Brain",
+						"cardRestrictions": [
+							"Friendly",
+							"Hand"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.ReshuffleSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":2,
-					"sMod":2,
-					"wMod":2
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod": 2,
+					"sMod": 2,
+					"wMod": 2
 				}
 			]
 		}
 	],
-	"keywords":["Speedemon"],
-	"n":2,
-	"e":1,
-	"s":4,
-	"w":1,
-	"subtypeText":"Speedemon"
+	"keywords": [
+		"Speedemon"
+	],
+	"n": 2,
+	"e": 1,
+	"s": 4,
+	"w": 1,
+	"subtypeText": "Speedemon"
 }

@@ -1,45 +1,47 @@
 {
-	"cardType":67,
-	"cardName":"Trapped Offering",
-	"effText":"When I die having X S, annihilate me, gain X/2 pips, and draw 1.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Trapped Offering",
+	"effText": "When I die having X S, annihilate me, gain X/2 pips, and draw 1.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"blurb":"Annihilate",
-				"triggerCondition":"Discard",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered","From Field"]
+			"triggerData": {
+				"blurb": "Annihilate",
+				"triggerCondition": "Discard",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered",
+						"From Field"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTriggeringCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"S"
+					"$type": "KompasServer.Effects.SetXByTriggeringCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "S"
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xMultiplier":1,
-					"xDivisor":2
+					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xMultiplier": 1,
+					"xDivisor": 2
 				},
 				{
-					"$type":"KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"n":0,
-	"e":3,
-	"s":3,
-	"w":0,
-	"subtypeText":"Offering"
+	"n": 0,
+	"e": 3,
+	"s": 3,
+	"w": 0,
+	"subtypeText": "Offering"
 }

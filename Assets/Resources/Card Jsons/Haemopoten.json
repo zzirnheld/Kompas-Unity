@@ -1,56 +1,61 @@
 {
-	"cardType":67,
-	"cardName":"Haemopoten",
-	"effText":"During friendly turns, you can set X to the number of uses of this effect this turn. Give me -X E. Annihilate your topdeck. Delay 1. Rehand it.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Haemopoten",
+	"effText": "During friendly turns, you can set X to the number of uses of this effect this turn. Give me -X E. Annihilate your topdeck. Delay 1. Rehand it.",
+	"effects": [
 		{
-			"activationRestriction":{
-				"activationRestrictionArray":[
+			"activationRestriction": {
+				"activationRestrictionArray": [
 					"Friendly Turn",
 					"Default"
 				]
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
-					"whatToCount":"Effect Uses This Turn",
-					"xMultiplier":1
+					"$type": "KompasServer.Effects.SetXByGamestateSubeffect, Assembly-CSharp",
+					"whatToCount": "Effect Uses This Turn",
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMult":-1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMult": -1
 				},
 				{
-					"$type":"KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"for Haemopoten to draw",
-						"cardRestrictions":["Friendly","Deck","Index<C"],
-						"constant":1
+					"$type": "KompasServer.Effects.AutoTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "for Haemopoten to draw",
+						"cardRestrictions": [
+							"Friendly",
+							"Deck",
+							"Index<C"
+						],
+						"constant": 1
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.AnnihilateSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
-					"numTimesToDelay":0,
-					"jumpIndices":[6],
-					"fallOffCondition":"",
-					"endCondition":"Turn Start"
+					"$type": "KompasServer.Effects.DelaySubeffect, Assembly-CSharp",
+					"numTimesToDelay": 0,
+					"jumpIndices": [
+						6
+					],
+					"fallOffCondition": "",
+					"endCondition": "Turn Start"
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"n":1,
-	"e":11,
-	"s":10,
-	"w":9,
-	"subtypeText":"Flying Dragon"
+	"n": 1,
+	"e": 11,
+	"s": 10,
+	"w": 9,
+	"subtypeText": "Flying Dragon"
 }

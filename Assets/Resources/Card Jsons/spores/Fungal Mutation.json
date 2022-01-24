@@ -1,61 +1,82 @@
 {
-	"cardType":83,
-	"cardName":"Fungal Mutation",
-	"effText":"When turns start, discard 1 Fungus. Search your deck's top 5 cards for a Fungus.",
-	"effects":[
-        {
-            "blurb":"Mutate",
-            "triggerData":
-            {
-                "triggerCondition":"Turn Start",
-                "triggerRestriction":{
-                    "triggerRestrictions":["This Card in Play"]
-                }
-            },
-            "subeffects":[
-				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":{
-						"blurb":"Fungus to mutate",
-						"cardRestrictions":["Friendly","Hand","Subtypes Include"],
-						"subtypesInclude":["Fungus"]
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
-					"jumpIndices":[6]
-				},
-				{
-					"$type":"KompasServer.Effects.ChooseFromListSaveRestSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"spell for Mannaz to search (to hand)",
-						"cardRestrictions":["Friendly","Deck","Index<C","Subtypes Include"],
-						"subtypesInclude":["Fungus"],
-						"constant":5
-					},
-					"restRestriction":
-					{
-						"cardRestrictions":["Friendly","Deck","Index<C","Not Already Target"],
-						"constant":5
-					}
-				},
-				{
-					"$type":"KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
-				},
-				{
-					"$type":"KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
+	"cardType": 83,
+	"cardName": "Fungal Mutation",
+	"effText": "When turns start, discard 1 Fungus. Search your deck's top 5 cards for a Fungus.",
+	"effects": [
+		{
+			"blurb": "Mutate",
+			"triggerData": {
+				"triggerCondition": "Turn Start",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
 				}
-            ]
-        }
+			},
+			"subeffects": [
+				{
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Fungus to mutate",
+						"cardRestrictions": [
+							"Friendly",
+							"Hand",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Fungus"
+						]
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.SkipToEffectOnImpossibleSubeffect, Assembly-CSharp",
+					"jumpIndices": [
+						6
+					]
+				},
+				{
+					"$type": "KompasServer.Effects.ChooseFromListSaveRestSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "spell for Mannaz to search (to hand)",
+						"cardRestrictions": [
+							"Friendly",
+							"Deck",
+							"Index<C",
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Fungus"
+						],
+						"constant": 5
+					},
+					"restRestriction": {
+						"cardRestrictions": [
+							"Friendly",
+							"Deck",
+							"Index<C",
+							"Not Already Target"
+						],
+						"constant": 5
+					}
+				},
+				{
+					"$type": "KompasServer.Effects.ClearOnImpossibleSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+				},
+				{
+					"$type": "KompasServer.Effects.BottomdeckRestSubeffect, Assembly-CSharp"
+				}
+			]
+		}
 	],
-	"c":1,
-	"spellTypes":["Enchant"],
-	"subtypeText":"Enchant"
+	"c": 1,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Enchant"
 }

@@ -1,41 +1,50 @@
 {
-	"cardType":67,
-	"cardName":"Squire",
-	"effText":"When you summon a Warrior, you can tribute me to gain a pip.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Squire",
+	"effText": "When you summon a Warrior, you can tribute me to gain a pip.",
+	"effects": [
 		{
-			"triggerData":{
-				"optional":true,
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Subtypes Include"],
-						"subtypesInclude":["Warrior"]
+			"triggerData": {
+				"optional": true,
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Triggerer Fits Restriction"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Warrior"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
-					"xMultiplier":0,
-					"xDivisor":1,
-					"xModifier":1
+					"$type": "KompasServer.Effects.AddPipsSubeffect, Assembly-CSharp",
+					"xMultiplier": 0,
+					"xDivisor": 1,
+					"xModifier": 1
 				}
-			]	
+			]
 		}
 	],
-	"n":1,
-	"e":1,
-	"s":1,
-	"w":1,
-	"subtypes":["Swordguild","Warrior"],
-	"subtypeText":"Swordguild Warrior"
+	"n": 1,
+	"e": 1,
+	"s": 1,
+	"w": 1,
+	"subtypes": [
+		"Swordguild",
+		"Warrior"
+	],
+	"subtypeText": "Swordguild Warrior"
 }

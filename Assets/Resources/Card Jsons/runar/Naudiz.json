@@ -1,33 +1,44 @@
 {
-	"cardType":83,
-	"cardName":"Naudiz",
-	"effText":"Runic.\nGive all enemy characters -3 E.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Naudiz",
+	"effText": "Runic.\nGive all enemy characters -3 E.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Character","Enemy","Board"]
+					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Character",
+							"Enemy",
+							"Board"
+						]
 					},
-					"eMod":-3
+					"eMod": -3
 				}
-			]	
+			]
 		}
 	],
-	"PlayRestriction":{
-		"normalRestrictions":["Cannot be Played Normally"]
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Cannot be Played Normally"
+		]
 	},
-	"c":5,
-	"spellTypes":["Simple"],
-	"subtypes":["Rune","Simple"],
-	"subtypeText":"Rune Simple"
+	"c": 5,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Rune",
+		"Simple"
+	],
+	"subtypeText": "Rune Simple"
 }

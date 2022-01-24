@@ -1,72 +1,82 @@
 {
-	"cardType":67,
-	"cardName":"Ice Golem",
-	"effText":"Golem.\nWhen I'm activated, set X to my N. Negate a character within X spaces of me until your next turn.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Ice Golem",
+	"effText": "Golem.\nWhen I'm activated, set X to my N. Negate a character within X spaces of me until your next turn.",
+	"effects": [
 		{
-			"blurb":"Fun Not Allowed",
-			"triggerData":
-			{
-				"triggerCondition":"Activate",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"blurb": "Fun Not Allowed",
+			"triggerData": {
+				"triggerCondition": "Activate",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"N"
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "N"
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"for Ice Golem to temporarily negate",
-						"cardRestrictions":["Character","Board","Space Fits Restriction"],
-						"spaceRestriction":
-						{
-							"spaceRestrictions":["Distance to Source Fits X Restriction"],
-							"distanceXRestriction":{
-								"xRestrictions":["<=X"],
-								"constant":1
-							},
-							"mustBeEmpty":false
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "for Ice Golem to temporarily negate",
+						"cardRestrictions": [
+							"Character",
+							"Board",
+							"Space Fits Restriction"
+						],
+						"spaceRestriction": {
+							"spaceRestrictions": [
+								"Distance to Source Fits X Restriction"
+							],
+							"distanceXRestriction": {
+								"xRestrictions": [
+									"<=X"
+								],
+								"constant": 1
+							}
 						}
 					},
-					"xMultiplier":1
+					"xMultiplier": 1
 				},
 				{
-					"$type":"KompasServer.Effects.TemporaryNegateSubeffect, Assembly-CSharp",
-					"endCondition":"Turn Start",
-					"triggerRestriction":{
-						"triggerRestrictions":["Friendly Turn"]
+					"$type": "KompasServer.Effects.TemporaryNegateSubeffect, Assembly-CSharp",
+					"endCondition": "Turn Start",
+					"triggerRestriction": {
+						"triggerRestrictions": [
+							"Friendly Turn"
+						]
 					}
 				}
 			]
 		}
 	],
-	"MovementRestriction":{
-		"normalRestrictionsFromJson":[
+	"MovementRestriction": {
+		"normalRestrictionsFromJson": [
 			"Default",
 			"Activated"
 		]
 	},
-	"AttackRestriction":{
-		"attackRestrictionsArray":[
+	"AttackRestriction": {
+		"attackRestrictionsArray": [
 			"Default",
 			"This is Activated"
 		]
 	},
-	"n":2,
-	"e":1,
-	"s":1,
-	"w":3,
-	"subtypes":["Golem"],
-	"subtypeText":"Golem"
+	"n": 2,
+	"e": 1,
+	"s": 1,
+	"w": 3,
+	"subtypes": [
+		"Golem"
+	],
+	"subtypeText": "Golem"
 }

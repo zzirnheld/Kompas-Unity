@@ -1,37 +1,43 @@
 {
-	"cardType":67,
-	"cardName":"Sharetree",
-	"effText":"When I gain E, heal a character.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Sharetree",
+	"effText": "When I gain E, heal a character.",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"E Change",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","X Fits Restriction","This Card Triggered"],
-					"xRestriction":{
-						"xRestrictions":[">0"]
+			"triggerData": {
+				"triggerCondition": "E Change",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"X Fits Restriction",
+						"This Card Triggered"
+					],
+					"xRestriction": {
+						"xRestrictions": [
+							">0"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Who to heal",
-						"cardRestrictions":["Hurt"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Who to heal",
+						"cardRestrictions": [
+							"Hurt"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.HealSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.HealSubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"n":1,
-	"e":7,
-	"s":4,
-	"w":1,
-	"subtypeText":"Tree"
+	"n": 1,
+	"e": 7,
+	"s": 4,
+	"w": 1,
+	"subtypeText": "Tree"
 }

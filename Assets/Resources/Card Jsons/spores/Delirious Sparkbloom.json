@@ -1,50 +1,61 @@
 {
-	"cardType":67,
-	"cardName":"Delirious Sparkbloom",
-	"effText":"Spores.\nWhen a character is activated, give them +1 W if they're a Fungus, but -1 W if not.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Delirious Sparkbloom",
+	"effText": "Spores.\nWhen a character is activated, give them +1 W if they're a Fungus, but -1 W if not.",
+	"effects": [
 		{
-			"blurb":"Delirium",
-			"triggerData":
-			{
-				"triggerCondition":"Activate",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play"]
+			"blurb": "Delirium",
+			"triggerData": {
+				"triggerCondition": "Activate",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
-					"condition":"Target Violates Restriction",
-					"cardRestriction":
-					{
-						"cardRestrictions":["Subtypes Include"],
-                        "subtypesInclude":["Fungus"]
+					"$type": "KompasServer.Effects.ConditionalJumpSubeffect, Assembly-CSharp",
+					"condition": "Target Violates Restriction",
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Include"
+						],
+						"subtypesInclude": [
+							"Fungus"
+						]
 					},
-					"jumpIndices":[4]
+					"jumpIndices": [
+						4
+					]
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wMod":1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wMod": 1
 				},
 				{
-					"$type":"KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wMod":-1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"wMod": -1
 				}
 			]
 		}
 	],
-    "keywords":["Spores"],
-	"n":1,
-	"e":2,
-	"s":4,
-	"w":4,
-	"subtypes":["Fruiting","Fungus"],
-	"subtypeText":"Fruiting Fungus"
+	"keywords": [
+		"Spores"
+	],
+	"n": 1,
+	"e": 2,
+	"s": 4,
+	"w": 4,
+	"subtypes": [
+		"Fruiting",
+		"Fungus"
+	],
+	"subtypeText": "Fruiting Fungus"
 }

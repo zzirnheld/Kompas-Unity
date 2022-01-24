@@ -1,38 +1,48 @@
 {
-	"cardType":67,
-	"cardName":"Mockish Rotbloom",
-	"effText":"Spores.\nWhen a non-Fungus is activated, give them -1 E.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Mockish Rotbloom",
+	"effText": "Spores.\nWhen a non-Fungus is activated, give them -1 E.",
+	"effects": [
 		{
-			"blurb":"Putrition",
-			"triggerData":
-			{
-				"triggerCondition":"Activate",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction"],
-					"cardRestriction":
-					{
-						"cardRestrictions":["Subtypes Exclude"],
-						"subtypesInclude":["Fungus"]
+			"blurb": "Putrition",
+			"triggerData": {
+				"triggerCondition": "Activate",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Triggerer Fits Restriction"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Subtypes Exclude"
+						],
+						"subtypesInclude": [
+							"Fungus"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":-1
+					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
+					"eMod": -1
 				}
 			]
 		}
 	],
-    "keywords":["Spores"],
-	"n":1,
-	"e":1,
-	"s":6,
-	"w":1,
-	"subtypes":["Fruiting","Fungus"],
-	"subtypeText":"Fruiting Fungus"
+	"keywords": [
+		"Spores"
+	],
+	"n": 1,
+	"e": 1,
+	"s": 6,
+	"w": 1,
+	"subtypes": [
+		"Fruiting",
+		"Fungus"
+	],
+	"subtypeText": "Fruiting Fungus"
 }

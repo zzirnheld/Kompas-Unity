@@ -1,68 +1,87 @@
 {
-	"cardType":67,
-	"cardName":"Animancer",
-	"effText":"During friendly turns, you can discard Golems with total cost X. Search your deck for a cost < X Golem.",
-	"effects":[
+	"cardType": 67,
+	"cardName": "Animancer",
+	"effText": "During friendly turns, you can discard Golems with total cost X. Search your deck for a cost < X Golem.",
+	"effects": [
 		{
-			"blurb":"It's In Here Somewhere",
-			"activationRestriction":{
-				"activationRestrictionArray":[
+			"blurb": "It's In Here Somewhere",
+			"activationRestriction": {
+				"activationRestrictionArray": [
 					"Friendly Turn",
 					"Default"
 				]
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"for Animancer to discard",
-						"cardRestrictions":["Subtypes Include","Friendly","Hand","Not Already Target"],
-						"subtypesInclude":["Golem"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "for Animancer to discard",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Friendly",
+							"Hand",
+							"Not Already Target"
+						],
+						"subtypesInclude": [
+							"Golem"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
-					"cardValue":{
-						"value":"Cost"
+					"$type": "KompasServer.Effects.SetXByTargetCardValueSubeffect, Assembly-CSharp",
+					"cardValue": {
+						"value": "Cost"
 					},
-					"change":true
+					"change": true
 				},
 				{
-					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
-					"canDecline":true,
-					"jumpIndices":[0]
+					"$type": "KompasServer.Effects.LoopSubeffect, Assembly-CSharp",
+					"canDecline": true,
+					"jumpIndices": [
+						0
+					]
 				},
 				{
-					"$type":"KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"for Animancer to search",
-						"cardRestrictions":["Subtypes Include","Friendly","Deck","Card Value Fits X Restriction"],
-						"cardValue":{
-							"value":"Cost"
+					"$type": "KompasServer.Effects.ChooseFromListSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "for Animancer to search",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Friendly",
+							"Deck",
+							"Card Value Fits X Restriction"
+						],
+						"cardValue": {
+							"value": "Cost"
 						},
-						"xRestriction":{
-							"xRestrictions":["<=X"]
+						"xRestriction": {
+							"xRestrictions": [
+								"<=X"
+							]
 						},
-						"subtypesInclude":["Golem"]
+						"subtypesInclude": [
+							"Golem"
+						]
 					},
-					"xMultiplier":1,
-					"xModifier":-1
+					"xMultiplier": 1,
+					"xModifier": -1
 				},
 				{
-					"$type":"KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.RehandSubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"n":1,
-	"e":10,
-	"s":7,
-	"w":3,
-	"subtypes":["Mage","Craftsman"],
-	"subtypeText":"Mage Craftsman"
+	"n": 1,
+	"e": 10,
+	"s": 7,
+	"w": 3,
+	"subtypes": [
+		"Mage",
+		"Craftsman"
+	],
+	"subtypeText": "Mage Craftsman"
 }

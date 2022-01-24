@@ -1,45 +1,61 @@
 {
-	"cardType":83,
-	"cardName":"Runebinding",
-	"effText":"When an enemy casts a spell, hand->cast a Rune.",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Runebinding",
+	"effText": "When an enemy casts a spell, hand->cast a Rune.",
+	"effects": [
 		{
-			"blurb":"Bind Runes",
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card in Play","Triggerer Fits Restriction","Enemy Triggered"],
-					"cardRestriction":{
-						"cardRestrictions":["Spell"]
+			"blurb": "Bind Runes",
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card in Play",
+						"Triggerer Fits Restriction",
+						"Enemy Triggered"
+					],
+					"cardRestriction": {
+						"cardRestrictions": [
+							"Spell"
+						]
 					}
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"Rune for Runebinding to cast",
-						"cardRestrictions":["Subtypes Include","Spell","Friendly","Hand","Can Be Played"],
-						"subtypesInclude":["Rune"]
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "Rune for Runebinding to cast",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Spell",
+							"Friendly",
+							"Hand",
+							"Can Be Played"
+						],
+						"subtypesInclude": [
+							"Rune"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where for Runebinding to cast its target Rune",
-						"spaceRestrictions":["Can Play Card Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where for Runebinding to cast its target Rune",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
 			]
 		}
 	],
-	"c":4,
-	"spellTypes":["Enchant"],
-	"subtypeText":"Runar Enchant"
+	"c": 4,
+	"spellTypes": [
+		"Enchant"
+	],
+	"subtypeText": "Runar Enchant"
 }

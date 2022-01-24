@@ -1,50 +1,69 @@
 {
-	"cardType":83,
-	"cardName":"Ingwaz",
-	"effText":"Runic.\nPip recast a distinct Rune for half cost (rounding down).",
-	"effects":[
+	"cardType": 83,
+	"cardName": "Ingwaz",
+	"effText": "Runic.\nPip recast a distinct Rune for half cost (rounding down).",
+	"effects": [
 		{
-			"triggerData":
-			{
-				"triggerCondition":"Play",
-				"triggerRestriction":{
-					"triggerRestrictions":["This Card Triggered"]
+			"triggerData": {
+				"triggerCondition": "Play",
+				"triggerRestriction": {
+					"triggerRestrictions": [
+						"This Card Triggered"
+					]
 				}
 			},
-			"subeffects":[
+			"subeffects": [
 				{
-					"$type":"KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
-					"cardRestriction":
-					{
-						"blurb":"for Ingwaz to recast",
-						"cardRestrictions":["Subtypes Include","Spell","Friendly","Discard","Can Be Played","Effect Controller can Afford Cost","Distinct Name from Source"],
-						"subtypesInclude":["Rune"],
-						"costDivisor":2
+					"$type": "KompasServer.Effects.CardTargetSubeffect, Assembly-CSharp",
+					"cardRestriction": {
+						"blurb": "for Ingwaz to recast",
+						"cardRestrictions": [
+							"Subtypes Include",
+							"Spell",
+							"Friendly",
+							"Discard",
+							"Can Be Played",
+							"Effect Controller can Afford Cost",
+							"Distinct Name from Source"
+						],
+						"subtypesInclude": [
+							"Rune"
+						],
+						"costDivisor": 2
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
-					"xDivisor":2
+					"$type": "KompasServer.Effects.PayPipsTargetCostSubeffect, Assembly-CSharp",
+					"xDivisor": 2
 				},
 				{
-					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
-					"spaceRestriction":
-					{
-						"blurb":"where Ingwaz to recast",
-						"spaceRestrictions":["Can Play Card Target to This Space"]
+					"$type": "KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
+					"spaceRestriction": {
+						"blurb": "where Ingwaz to recast",
+						"spaceRestrictions": [
+							"Can Play Card Target to This Space",
+							"Empty"
+						]
 					}
 				},
 				{
-					"$type":"KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
+					"$type": "KompasServer.Effects.PlaySubeffect, Assembly-CSharp"
 				}
-			]	
+			]
 		}
 	],
-	"PlayRestriction":{
-		"normalRestrictions":["Cannot be Played Normally"]
+	"PlayRestriction": {
+		"normalRestrictions": [
+			"Cannot be Played Normally"
+		]
 	},
-	"c":1,
-	"spellTypes":["Simple"],
-	"subtypes":["Rune","Simple"],
-	"subtypeText":"Rune Simple"
+	"c": 1,
+	"spellTypes": [
+		"Simple"
+	],
+	"subtypes": [
+		"Rune",
+		"Simple"
+	],
+	"subtypeText": "Rune Simple"
 }
