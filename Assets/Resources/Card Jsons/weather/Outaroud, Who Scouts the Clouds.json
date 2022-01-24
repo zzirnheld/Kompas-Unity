@@ -35,7 +35,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"where for Outaroud to bring friendly character scouting",
-						"spaceRestrictions":["In Target's AOE","Can Move Target to This Space"]
+						"spaceRestrictions":["In Card Target's AOE","Can Move Card Target to This Space"]
 					}
 				},
 				{

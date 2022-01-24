@@ -36,7 +36,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"where Weather Reporter to hand-summon",
-						"spaceRestrictions":["Can Play Target to This Space"]
+						"spaceRestrictions":["Can Play Card Target to This Space"]
 					}
 				},
 				{

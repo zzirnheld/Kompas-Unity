@@ -34,7 +34,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"where to slightly yeet target card",
-						"spaceRestrictions":["Can Move Target to This Space","Distance to Target Fits X Restriction"],
+						"spaceRestrictions":["Can Move Card Target to This Space","Distance to Card Target Fits X Restriction"],
                         "distanceXRestriction":{
                             "xRestrictions":["=X"]
                         }

@@ -33,7 +33,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"to move Magnetizing's target to",
-						"spaceRestrictions":["Towards Source from Target","Can Move Target to This Space","Distance to Target Fits X Restriction"],
+						"spaceRestrictions":["Towards Source from Card Target","Can Move Card Target to This Space","Distance to Card Target Fits X Restriction"],
                         "distanceXRestriction":{
                             "xRestrictions":["=X"]
                         }
@@ -75,7 +75,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"to move Magnetizing's target to",
-						"spaceRestrictions":["Further from Source than Target","Can Move Target to This Space","Distance to Target Fits X Restriction"],
+						"spaceRestrictions":["Further from Source than Card Target","Can Move Card Target to This Space","Distance to Card Target Fits X Restriction"],
                         "distanceXRestriction":{
                             "xRestrictions":["=X"]
                         }

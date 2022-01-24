@@ -19,7 +19,7 @@
 						"cardRestrictions":["Character","Space Fits Restriction"],
 						"spaceRestriction":
 						{
-							"spaceRestrictions":["Subjective Displacement from Source"],
+							"spaceRestrictions":["Constant Subjective Displacement from Source"],
 							"displacementX":1,
 							"displacementY":1,
 							"mustBeEmpty":false

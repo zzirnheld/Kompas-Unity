@@ -1,7 +1,7 @@
 {
 	"cardType":83,
 	"cardName":"GO",
-	"effText":"If there’s no friendly discarded \"Set\", search your deck for \"Ready\" and reshuffle me. If there is, move each Speedemon 1 space.",
+	"effText":"If there's no friendly discarded \"Set\", search your deck for \"Ready\" and reshuffle me. If there is, move each Speedemon 1 space.",
 	"effects":[
 		{
 			"triggerData":
@@ -62,7 +62,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"ok, now GO!",
-						"spaceRestrictions":["Can Move Target to This Space","Distance to Target Fits X Restriction"],
+						"spaceRestrictions":["Can Move Card Target to This Space","Distance to Card Target Fits X Restriction"],
                         "distanceXRestriction":{
                             "xRestrictions":["=X"]
                         }

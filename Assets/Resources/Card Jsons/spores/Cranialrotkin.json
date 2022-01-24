@@ -23,7 +23,7 @@
                         "cardRestrictions":["Board","Character","Space Fits Restriction"],
                         "spaceRestriction":
                         {
-                            "spaceRestrictions":["Adjacent to Coords"],
+                            "spaceRestrictions":["Adjacent to Space Target"],
                             "mustBeEmpty":false
                         }
                     }

@@ -39,7 +39,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"where to move the Shaper",
-						"spaceRestrictions":["Adjacent to Target"]
+						"spaceRestrictions":["Adjacent to Card Target"]
 					},
 					"targetIndex":-2
 				},

@@ -15,7 +15,7 @@
 						"cardRestrictions":["Board","Space Fits Restriction"],
 						"spaceRestriction":
 						{
-							"spaceRestrictions":["In AOE Of"],
+							"spaceRestrictions":["In AOE of Card Fitting Restriction"],
 							"inAOEOfRestriction":{
 								"cardRestrictions":["Subtypes Include","Distinct Name from Source"],
 								"subtypesInclude":["Water"]

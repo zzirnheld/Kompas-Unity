@@ -38,7 +38,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"to move that Linewalker to",
-						"spaceRestrictions":["Adjacent to Target"]
+						"spaceRestrictions":["Adjacent to Card Target"]
 					},
 					"targetIndex":-2
 				},

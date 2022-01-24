@@ -71,7 +71,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"where Mother of Dragons to birth",
-						"spaceRestrictions":["Can Play Target to This Space"]
+						"spaceRestrictions":["Can Play Card Target to This Space"]
 					}
 				},
 				{
@@ -88,7 +88,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"Fly, beloved, fly!",
-						"spaceRestrictions":["Empty","Can Move Target to This Space","Distance to Target Fits X Restriction"],
+						"spaceRestrictions":["Empty","Can Move Card Target to This Space","Distance to Card Target Fits X Restriction"],
                         "distanceXRestriction":{
                             "xRestrictions":["=X"]
                         }

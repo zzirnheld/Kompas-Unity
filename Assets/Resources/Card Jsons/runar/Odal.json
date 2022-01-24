@@ -59,7 +59,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"where for Odal to deck-summon its target",
-						"spaceRestrictions":["Can Play Target to This Space"]
+						"spaceRestrictions":["Can Play Card Target to This Space"]
 					}
 				},
 				{

@@ -31,7 +31,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"where for Twin Spirit to decksummon a copy of itself",
-						"spaceRestrictions":["Can Play Target to This Space"]
+						"spaceRestrictions":["Can Play Card Target to This Space"]
 					}
 				},
 				{

@@ -34,7 +34,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"where on the Lines to bring them",
-						"spaceRestrictions":["Empty","On Target's Diagonal","On Edge of Board","Can Move Target to This Space"]
+						"spaceRestrictions":["Empty","On Target's Diagonal","On Edge of Board","Can Move Card Target to This Space"]
 					}
 				},
 				{

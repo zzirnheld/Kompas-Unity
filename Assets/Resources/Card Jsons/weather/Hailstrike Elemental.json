@@ -20,7 +20,7 @@
 						"cardRestrictions":["Character","Board","Out of Movement","Space Fits Restriction"],
 						"spaceRestriction":
 						{
-							"spaceRestrictions":["In AOE Of"],
+							"spaceRestrictions":["In AOE of Card Fitting Restriction"],
 							"inAOEOfRestriction":{
 								"cardRestrictions":["Subtypes Include"],
 								"subtypesInclude":["Weather"]

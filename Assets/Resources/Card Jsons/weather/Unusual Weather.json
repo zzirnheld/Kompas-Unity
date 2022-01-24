@@ -17,7 +17,7 @@
 					"spaceRestriction":
 					{
 						"mustBeEmpty":false,
-						"spaceRestrictions":["In AOE Of"],
+						"spaceRestrictions":["In AOE of Card Fitting Restriction"],
                         "inAOEOfRestriction":{
                             "cardRestrictions":["Subtypes Include"],
                             "subtypesInclude":["Weather"]
@@ -50,7 +50,7 @@
 					"spaceRestriction":
 					{
 						"mustBeEmpty":false,
-						"spaceRestrictions":["In AOE Of"],
+						"spaceRestrictions":["In AOE of Card Fitting Restriction"],
                         "inAOEOfRestriction":{
                             "cardRestrictions":["Subtypes Include"],
                             "subtypesInclude":["Weather"]

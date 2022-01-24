@@ -49,7 +49,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"where to Invoke",
-						"spaceRestrictions":["Can Play Target to This Space"]
+						"spaceRestrictions":["Can Play Card Target to This Space"]
 					}
 				},
 				{

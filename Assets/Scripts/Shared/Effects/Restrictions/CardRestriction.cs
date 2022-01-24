@@ -113,7 +113,6 @@ namespace KompasCore.Effects
         public const string EffectIsOnTheStack = "Effect is on the Stack";
         #endregion restrictions
 
-        //because JsonConvert will fill in all values with defaults if not present
         public string[] cardRestrictions = new string[0];
 
         public string nameIs;
@@ -144,13 +143,11 @@ namespace KompasCore.Effects
         public SpaceRestriction spaceRestriction;
 
         public GameCard Source { get; private set; }
-        public Player Controller => Source == null ? null : Source.Controller;
+        public Player Controller => Source?.Controller;
         public Effect Effect { get; private set; }
 
         public string blurb = "";
 
-        // Necessary because json doesn't let you have nice things, like constructors with arguments,
-        // so I need to make sure manually that I've bothered to set up relevant arguments.
         private bool initialized = false;
 
         /// <summary>
@@ -199,7 +196,8 @@ namespace KompasCore.Effects
         /// <param name="x">The value of x for which to consider the restriction</param>
         /// <param name="context">The activation context relevant here - the context for the Effect or for this triggering event</param>
         /// <returns><see langword="true"/> if the card fits the restriction for the given value of x, <see langword="false"/> otherwise.</returns>
-        private bool IsRestrictionValid(string restriction, GameCardBase potentialTarget, int x, ActivationContext context) => restriction switch
+        private bool IsRestrictionValid(string restriction, GameCardBase potentialTarget, int x, ActivationContext context) 
+            => restriction != null && restriction switch
         {
             //targets
             AlreadyTarget => Effect.CardTargets.Contains(potentialTarget),
@@ -219,26 +217,27 @@ namespace KompasCore.Effects
             DifferentFromAugmentedCard => potentialTarget?.Card != Source.AugmentedCard,
 
             //card types
-            Character => potentialTarget?.CardType == 'C',
-            Spell => potentialTarget?.CardType == 'S',
-            Augment => potentialTarget?.CardType == 'A',
+            Character   => potentialTarget?.CardType == 'C',
+            Spell       => potentialTarget?.CardType == 'S',
+            Augment     => potentialTarget?.CardType == 'A',
+
             NotAugment => potentialTarget?.CardType != 'A',
             SpellSubtypes => potentialTarget?.SpellSubtypes.Intersect(spellSubtypes).Any() ?? false,
 
             //control
-            Friendly => potentialTarget?.Controller == Controller,
-            Enemy => potentialTarget?.Controller != Controller,
-            SameOwner => potentialTarget?.Owner == Controller,
-            TurnPlayerControls => potentialTarget?.Controller == Subeffect.Game.TurnPlayer,
+            Friendly    => potentialTarget?.Controller == Controller,
+            Enemy       => potentialTarget?.Controller != Controller,
+            SameOwner   => potentialTarget?.Owner == Controller,
+            TurnPlayerControls  => potentialTarget?.Controller == Subeffect.Game.TurnPlayer,
 
-            ControllerMatchesTarget => potentialTarget?.Controller == Subeffect.CardTarget.Controller,
-            ControllerMatchesPlayerTarget => potentialTarget?.Controller == Subeffect.PlayerTarget,
-            ControllerIsntPlayerTarget => potentialTarget?.Controller != Subeffect.PlayerTarget,
+            ControllerMatchesTarget         => potentialTarget?.Controller == Subeffect.CardTarget.Controller,
+            ControllerMatchesPlayerTarget   => potentialTarget?.Controller == Subeffect.PlayerTarget,
+            ControllerIsntPlayerTarget      => potentialTarget?.Controller != Subeffect.PlayerTarget,
 
             //summoned
-            Summoned => potentialTarget?.Summoned ?? false,
-            Avatar => potentialTarget?.IsAvatar ?? false,
-            NotAvatar => !potentialTarget?.IsAvatar ?? false,
+            Summoned    => potentialTarget?.Summoned ?? false,
+            Avatar      => potentialTarget?.IsAvatar ?? false,
+            NotAvatar   => !potentialTarget?.IsAvatar ?? false,
 
             //subtypes
             SubtypesInclude => subtypesInclude.All(s => potentialTarget?.SubtypeText.Contains(s) ?? false),
@@ -252,9 +251,10 @@ namespace KompasCore.Effects
 
             AugmentsTarget => potentialTarget?.AugmentedCard == Subeffect.CardTarget,
             AugmentedBySource => potentialTarget?.Augments.Contains(Source) ?? false,
+            //If the potential target is null, then it's not augmented by Source
+            NotAugmentedBySource => !(potentialTarget?.Augments.Contains(Source) ?? true),
 
             AugmentsCardRestriction => augmentRestriction.IsValidCard(potentialTarget?.AugmentedCard, x, context),
-            NotAugmentedBySource => !(potentialTarget?.Augments.Contains(Source) ?? true),
 
             WieldsAugmentFittingRestriction => potentialTarget?.Augments.Any(c => augmentRestriction.IsValidCard(c, context)) ?? false,
             WieldsNoAugmentFittingRestriction => !(potentialTarget?.Augments.Any(c => augmentRestriction.IsValidCard(c, context)) ?? false),

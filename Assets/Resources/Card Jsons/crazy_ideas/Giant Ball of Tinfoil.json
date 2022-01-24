@@ -24,7 +24,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"rollinnnnnnnn",
-						"spaceRestrictions":["Adjacent to Source","Can Move Target to This Space"]
+						"spaceRestrictions":["Adjacent to Source","Can Move Card Target to This Space"]
 					}
 				},
 				{
@@ -39,7 +39,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"rollinnnnnnnn",
-						"spaceRestrictions":["Adjacent to Source","Can Move Target to This Space","On Axis of Last Two Spaces"]
+						"spaceRestrictions":["Adjacent to Source","Can Move Card Target to This Space","On Axis of Last Two Spaces"]
 					}
 				},
 				{

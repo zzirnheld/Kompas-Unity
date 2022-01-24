@@ -21,7 +21,7 @@
 						"cardRestrictions":["Board","Space Fits Restriction"],
 						"spaceRestriction":
 						{
-							"spaceRestrictions":["In AOE Of"],
+							"spaceRestrictions":["In AOE of Card Fitting Restriction"],
 							"inAOEOfRestriction":{
 								"cardRestrictions":["Subtypes Include"],
 								"subtypesInclude":["Water"]
@@ -35,10 +35,10 @@
 					"spaceRestriction":
 					{
 						"blurb":"where to sail them to",
-						"spaceRestrictions":["Can Move Target to This Space","Connected to Target by Spaces Fitting Restriction"],
+						"spaceRestrictions":["Can Move Card Target to This Space","Connected to Card Target by Spaces Fitting Restriction"],
                         "spaceConnectednessRestriction":
                         {
-                            "spaceRestrictions":["In AOE Of"],
+                            "spaceRestrictions":["In AOE of Card Fitting Restriction"],
                             "inAOEOfRestriction":{
                                 "cardRestrictions":["Subtypes Include"],
                                 "subtypesInclude":["Water"]
@@ -58,7 +58,7 @@
 		"effectRestrictions":["Default Effect Restrictions","Space Must Fit Restriction"],
 		"effectRestrictionsToIgnore":["Adjacent to Friendly Card"],
         "spaceRestriction":{
-            "spaceRestrictions":["In AOE Of"],
+            "spaceRestrictions":["In AOE of Card Fitting Restriction"],
             "inAOEOfRestriction":
             {
                 "cardRestrictions":["Subtypes Include"],

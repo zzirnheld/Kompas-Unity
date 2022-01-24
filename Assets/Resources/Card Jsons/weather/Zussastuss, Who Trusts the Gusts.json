@@ -32,7 +32,7 @@
 						"cardRestrictions":["Board","Subtypes Include","Space Fits Restriction"],
 						"spaceRestriction":
 						{
-							"spaceRestrictions":["In Target's AOE"],
+							"spaceRestrictions":["In Card Target's AOE"],
 							"mustBeEmpty":false
 						},
 						"subtypesInclude":["Skyknight"]
@@ -46,7 +46,7 @@
 						"cardRestrictions":["Board","Space Fits Restriction"],
 						"spaceRestriction":
 						{
-							"spaceRestrictions":["In Target's AOE"],
+							"spaceRestrictions":["In Card Target's AOE"],
 							"mustBeEmpty":false
 						}
 					},

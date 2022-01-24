@@ -26,7 +26,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"where Havengranter to hand-summon",
-						"spaceRestrictions":["Adjacent to Source","Can Play Target to This Space"]
+						"spaceRestrictions":["Adjacent to Source","Can Play Card Target to This Space"]
 					}
 				},
 				{

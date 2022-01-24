@@ -24,7 +24,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"where to move the Shaper",
-						"spaceRestrictions":["Adjacent to Source","Can Move Target to This Space"]
+						"spaceRestrictions":["Adjacent to Source","Can Move Card Target to This Space"]
 					}
 				},
 				{

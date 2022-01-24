@@ -37,7 +37,7 @@
 						"cardRestrictions":["Friendly","Board","Subtypes Include","Space Fits Restriction"],
 						"spaceRestriction":
 						{
-							"spaceRestrictions":["Adjacent to Target"],
+							"spaceRestrictions":["Adjacent to Card Target"],
 							"mustBeEmpty":false
 						},
 						"subtypesInclude":["Wisp"]
@@ -48,7 +48,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"where for Erratic Wisps to move a Wisp",
-						"spaceRestrictions":["Can Move Target to This Space","Distance to Target Fits X Restriction"],
+						"spaceRestrictions":["Can Move Card Target to This Space","Distance to Card Target Fits X Restriction"],
                         "distanceXRestriction":{
                             "xRestrictions":["=X"]
                         }

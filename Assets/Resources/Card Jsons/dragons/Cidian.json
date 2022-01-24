@@ -36,7 +36,7 @@
 						"cardRestrictions":["Character","Board","Different from Source","Space Fits Restriction"],
 						"spaceRestriction":
 						{
-							"spaceRestrictions":["Adjacent to Target"],
+							"spaceRestrictions":["Adjacent to Card Target"],
 							"mustBeEmpty":false
 						}
 					},

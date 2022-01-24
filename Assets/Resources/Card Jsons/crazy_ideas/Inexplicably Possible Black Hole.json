@@ -24,7 +24,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"e n t e r t h e h o l e",
-						"spaceRestrictions":["Adjacent to Target","Towards Source from Target","Can Move Target to This Space"]
+						"spaceRestrictions":["Adjacent to Card Target","Towards Source from Card Target","Can Move Card Target to This Space"]
 					}
 				},
 				{

@@ -16,7 +16,7 @@
 						"cardRestrictions":["Wields Augment Fitting Restriction","Space Fits Restriction"],
 						"spaceRestriction":
 						{
-							"spaceRestrictions":["In AOE"],
+							"spaceRestrictions":["In Source's AOE"],
 							"mustBeEmpty":false
 						},
 						"augmentRestriction":

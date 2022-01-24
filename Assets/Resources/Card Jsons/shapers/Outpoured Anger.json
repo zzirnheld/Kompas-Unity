@@ -27,7 +27,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"to move Outpoured Anger to",
-						"spaceRestrictions":["Adjacent to Target"]
+						"spaceRestrictions":["Adjacent to Card Target"]
 					},
 					"targetIndex":-2
 				},

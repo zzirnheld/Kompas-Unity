@@ -12,7 +12,7 @@
 					"triggerRestrictions":["Coords Fit Restriction","This Card in Play"],
 					"spaceRestriction":
 					{
-						"spaceRestrictions":["In AOE"],
+						"spaceRestrictions":["In Source's AOE"],
 						"mustBeEmpty":false
 					}
 				}

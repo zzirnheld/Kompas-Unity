@@ -11,7 +11,7 @@ namespace KompasServer.Effects
     {
         public SpaceRestriction spaceRestriction;
 
-        private bool ForPlay => spaceRestriction.spaceRestrictions.Contains(SpaceRestriction.CanPlayTarget);
+        private bool ForPlay => spaceRestriction.spaceRestrictions.Contains(SpaceRestriction.CanPlayCardTarget);
 
         public override void Initialize(ServerEffect eff, int subeffIndex)
         {

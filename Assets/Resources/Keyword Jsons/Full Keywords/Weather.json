@@ -32,7 +32,7 @@
 			"spaceRestriction":
 			{
 				"blurb":"where to cast the Weather",
-				"spaceRestrictions":["Can Play Target to This Space","Adjacent to Coords"],
+				"spaceRestrictions":["Can Play Card Target to This Space","Adjacent to Space Target"],
 				"playRestrictionsToIgnore":["Adjacent to Friendly Card"]
 			}
 		},

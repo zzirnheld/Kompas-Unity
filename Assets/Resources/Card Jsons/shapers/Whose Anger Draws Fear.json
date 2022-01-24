@@ -24,7 +24,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"to move Whose Anger Draws Fear's attack target to",
-						"spaceRestrictions":["Directly Away from Target","Distance to Target Fits X Restriction"],
+						"spaceRestrictions":["Directly Away from Card Target","Distance to Card Target Fits X Restriction"],
                         "distanceXRestriction":{
                             "xRestrictions":["=X"]
                         }

@@ -48,7 +48,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"where to summon the other Fleeing Lover",
-						"spaceRestrictions":["Can Play Target to This Space","Adjacent to Source"]
+						"spaceRestrictions":["Can Play Card Target to This Space","Adjacent to Source"]
 					}
 				},
 				{

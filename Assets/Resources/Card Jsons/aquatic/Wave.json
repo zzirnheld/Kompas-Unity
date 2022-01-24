@@ -26,11 +26,11 @@
 					"spaceRestriction":
 					{
 						"blurb":"where will the wave crash",
-						"spaceRestrictions":["Can Move Target to This Space","Connected to Target by Spaces Fitting Restriction"],
+						"spaceRestrictions":["Can Move Card Target to This Space","Connected to Card Target by Spaces Fitting Restriction"],
                         "spaceConnectednessRestriction":
                         {
 							"mustBeEmpty":true,
-                            "spaceRestrictions":["In AOE Of"],
+                            "spaceRestrictions":["In AOE of Card Fitting Restriction"],
                             "inAOEOfRestriction":{
                                 "cardRestrictions":["Subtypes Include"],
                                 "subtypesInclude":["Water"]
@@ -49,7 +49,7 @@
 						"cardRestrictions":["Summoned","Character","Space Fits Restriction"],
 						"spaceRestriction":
 						{
-							"spaceRestrictions":["In Target's AOE"],
+							"spaceRestrictions":["In Card Target's AOE"],
 							"mustBeEmpty":false
 						}
 					}
@@ -65,7 +65,7 @@
 					"$type":"KompasServer.Effects.SpaceTargetSubeffect, Assembly-CSharp",
 					"spaceRestriction":
 					{
-						"spaceRestrictions":["In Target's AOE"]
+						"spaceRestrictions":["In Card Target's AOE"]
 					},
                     "targetIndex":0
 				},

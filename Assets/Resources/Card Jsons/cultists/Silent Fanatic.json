@@ -28,7 +28,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"where to play Bloodcurser's new bloodcurse (1/2)",
-						"spaceRestrictions":["Can Play Target to This Space"]
+						"spaceRestrictions":["Can Play Card Target to This Space"]
 					}
 				},
 				{
@@ -49,7 +49,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"where to play Bloodcurser's new bloodcurse (2/2)",
-						"spaceRestrictions":["Can Play Target to This Space"]
+						"spaceRestrictions":["Can Play Card Target to This Space"]
 					}
 				},
 				{

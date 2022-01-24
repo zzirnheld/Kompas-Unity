@@ -26,7 +26,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"where to ride",
-						"spaceRestrictions":["Empty","Can Move Target to This Space","Distance to Target Fits X Restriction"],
+						"spaceRestrictions":["Empty","Can Move Card Target to This Space","Distance to Card Target Fits X Restriction"],
                         "distanceXRestriction":{
                             "xRestrictions":["=X"]
                         }

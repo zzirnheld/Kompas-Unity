@@ -16,7 +16,7 @@
 					"spaceRestriction":
 					{
 						"mustBeEmpty":false,
-						"spaceRestrictions":["In AOE"]
+						"spaceRestrictions":["In Source's AOE"]
 					}
 				}
 			},

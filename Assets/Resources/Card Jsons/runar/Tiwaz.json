@@ -13,7 +13,7 @@
 						"cardRestrictions":["Character","Friendly","Board","Space Fits Restriction"],
 						"spaceRestriction":
 						{
-							"spaceRestrictions":["In AOE"],
+							"spaceRestrictions":["In Source's AOE"],
 							"mustBeEmpty":false
 						}
 					}

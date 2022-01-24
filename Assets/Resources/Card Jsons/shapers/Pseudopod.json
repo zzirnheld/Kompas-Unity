@@ -34,7 +34,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"where to move the enemy character",
-						"spaceRestrictions":["Adjacent to Target"]
+						"spaceRestrictions":["Adjacent to Card Target"]
 					},
 					"targetIndex":-2
 				},

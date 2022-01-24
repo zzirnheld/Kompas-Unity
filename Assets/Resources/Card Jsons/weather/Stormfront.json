@@ -29,7 +29,7 @@
 						"cardRestrictions":["Board","Subtypes Include","Space Fits Restriction"],
 						"spaceRestriction":
 						{
-							"spaceRestrictions":["In Target's AOE"],
+							"spaceRestrictions":["In Card Target's AOE"],
 							"mustBeEmpty":false
 						},
 						"subtypesInclude":["Skyknight"]
@@ -52,7 +52,7 @@
                     "spaceRestriction":
                     {
                         "blurb":"where to cast the Weather",
-                        "spaceRestrictions":["Can Play Target to This Space","Distance to Source Fits X Restriction"],
+                        "spaceRestrictions":["Can Play Card Target to This Space","Distance to Source Fits X Restriction"],
                         "distanceXRestriction":{
                             "xRestrictions":["<=X"]
                         }

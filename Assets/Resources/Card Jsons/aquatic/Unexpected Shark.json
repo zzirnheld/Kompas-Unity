@@ -44,7 +44,7 @@
 		"effectRestrictions":["Default Effect Restrictions","Space Must Fit Restriction"],
 		"effectRestrictionsToIgnore":["Adjacent to Friendly Card"],
         "spaceRestriction":{
-            "spaceRestrictions":["In AOE Of"],
+            "spaceRestrictions":["In AOE of Card Fitting Restriction"],
             "inAOEOfRestriction":
             {
                 "cardRestrictions":["Subtypes Include"],

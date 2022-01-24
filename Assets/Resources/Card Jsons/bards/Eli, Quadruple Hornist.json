@@ -45,7 +45,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"where to cast that Music",
-						"spaceRestrictions":["Adjacent to Target","Can Play Target to This Space"]
+						"spaceRestrictions":["Adjacent to Card Target","Can Play Card Target to This Space"]
 					}
 				},
                 {

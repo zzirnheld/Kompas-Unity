@@ -24,7 +24,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"where to move the revived Revenant",
-						"spaceRestrictions":["Distance to Target Fits X Restriction"],
+						"spaceRestrictions":["Distance to Card Target Fits X Restriction"],
                         "distanceXRestriction":{
                             "xRestrictions":["=X"]
                         }

@@ -24,7 +24,7 @@
 						"cardRestrictions":["Character","Board","Space Fits Restriction"],
 						"spaceRestriction":
 						{
-							"spaceRestrictions":["Distance to Target Fits X Restriction"],
+							"spaceRestrictions":["Distance to Card Target Fits X Restriction"],
 							"distanceXRestriction":{
 								"xRestrictions":["<=Constant"],
 								"constant":1

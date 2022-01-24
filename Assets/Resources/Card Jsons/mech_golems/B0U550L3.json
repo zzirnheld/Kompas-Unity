@@ -43,7 +43,7 @@
                     "$type":"KompasServer.Effects.AutoSpaceTargetSubeffect, Assembly-CSharp",
                     "spaceRestriction":
                     {
-                        "spaceRestrictions":["Source to Target Same Direction as Coords","Distance to Target Fits X Restriction"],
+                        "spaceRestrictions":["Source Displacement to Card Target Same Direction as Space Target","Distance to Card Target Fits X Restriction"],
                         "distanceXRestriction":{
                             "xRestrictions":["=X"]
                         }

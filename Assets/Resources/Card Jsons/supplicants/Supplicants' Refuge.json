@@ -20,7 +20,7 @@
 						"cardRestrictions":["Character","Board","Subtypes Include","Space Fits Restriction"],
 						"spaceRestriction":
 						{
-							"spaceRestrictions":["In AOE"],
+							"spaceRestrictions":["In Source's AOE"],
 							"mustBeEmpty":false
 						},
 						"subtypesInclude":["Supplicant"]

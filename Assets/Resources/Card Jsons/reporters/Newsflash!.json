@@ -68,7 +68,7 @@
 					"playerIndex":-2,
 					"spaceRestriction":{
 						"blurb":"where for Newsflash! to move it starget",
-						"spaceRestrictions":["Empty","Can Move Target to This Space"]
+						"spaceRestrictions":["Empty","Can Move Card Target to This Space"]
 					}
 				},
 				{

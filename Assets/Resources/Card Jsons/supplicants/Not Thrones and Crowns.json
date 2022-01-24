@@ -34,7 +34,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"where to move the supplicant's attacker",
-						"spaceRestrictions":["Can Move Target to This Space"]
+						"spaceRestrictions":["Can Move Card Target to This Space"]
 					}
 				},
 				{

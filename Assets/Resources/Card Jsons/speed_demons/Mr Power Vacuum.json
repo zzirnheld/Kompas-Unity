@@ -42,7 +42,7 @@
 						"cardRestrictions":["Board","Card Value Fits X Restriction","Space Fits Restriction"],
 						"spaceRestriction":
 						{
-							"spaceRestrictions":["Adjacent to Coords"],
+							"spaceRestrictions":["Adjacent to Space Target"],
 							"mustBeEmpty":false
 						},
 						"cardValue":{

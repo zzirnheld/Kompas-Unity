@@ -41,7 +41,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"to move Fanatic Follower to",
-						"spaceRestrictions":["Adjacent to Target","Can Move Source to This Space"]
+						"spaceRestrictions":["Adjacent to Card Target","Can Move Source to This Space"]
 					}
 				},
 				{

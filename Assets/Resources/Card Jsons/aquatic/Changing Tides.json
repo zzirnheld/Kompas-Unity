@@ -26,7 +26,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"The tide moves",
-						"spaceRestrictions":["Empty","Distance to Source Fits X Restriction","Can Move Target to This Space"],
+						"spaceRestrictions":["Empty","Distance to Source Fits X Restriction","Can Move Card Target to This Space"],
                         "distanceXRestriction":{
                             "xRestrictions":["<=X"]
                         }

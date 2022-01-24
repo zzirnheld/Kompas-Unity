@@ -11,7 +11,7 @@
 					"triggerRestrictions":["Triggerer Fits Restriction","Coords Fit Restriction","This Card in Play"],
 					"spaceRestriction":
 					{
-						"spaceRestrictions":["In AOE"],
+						"spaceRestrictions":["In Source's AOE"],
 						"mustBeEmpty":false
 					},
 					"cardRestriction":
@@ -92,7 +92,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"where to play the result Silent Altar Ritual",
-						"spaceRestrictions":["Can Play Target to This Space"]
+						"spaceRestrictions":["Can Play Card Target to This Space"]
 					}
 				},
 				{

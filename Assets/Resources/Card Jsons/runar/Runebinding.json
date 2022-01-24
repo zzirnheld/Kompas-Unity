@@ -30,7 +30,7 @@
 					"spaceRestriction":
 					{
 						"blurb":"where for Runebinding to cast its target Rune",
-						"spaceRestrictions":["Can Play Target to This Space"]
+						"spaceRestrictions":["Can Play Card Target to This Space"]
 					}
 				},
 				{
