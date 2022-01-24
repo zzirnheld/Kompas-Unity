@@ -5,6 +5,7 @@ generic/Flighty Survivor
 generic/Volatile Autocannon
 generic/Spellbombsetter
 generic/Lifetide
+generic/Warlock
 aquatic/Big Tuna
 aquatic/Changing Tides
 aquatic/Fishing
