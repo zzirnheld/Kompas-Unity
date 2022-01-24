@@ -1,0 +1,50 @@
+{
+	"cardType":83,
+	"cardName":"Lifetide",
+	"effText":"When enemy turns start, give characters +1 E.\nWhen friendly turns start, give characters -1 E.",
+	"effects":[
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Enemy Turn"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character","Board"]
+					},
+					"eMod":1
+				}
+			]	
+		},
+		{
+			"triggerData":
+			{
+				"triggerCondition":"Turn Start",
+				"triggerRestriction":{
+					"triggerRestrictions":["This Card in Play","Friendly Turn"]
+				}
+			},
+			"subeffects":[
+				{
+					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
+					"cardRestriction":
+					{
+						"cardRestrictions":["Is Character","Board"]
+					},
+					"eMod":-1
+				}
+			]	
+		}
+	],
+	"c":1,
+	"spellTypes":["Enchant"],
+	"subtypes":["Enchant"],
+	"subtypeText":"Enchant",
+	"radius":1
+}

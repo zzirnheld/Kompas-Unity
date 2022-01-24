@@ -4,6 +4,7 @@ generic/Lonely Titan
 generic/Flighty Survivor
 generic/Volatile Autocannon
 generic/Spellbombsetter
+generic/Lifetide
 aquatic/Big Tuna
 aquatic/Changing Tides
 aquatic/Fishing
@@ -353,7 +354,6 @@ spirits/Overwhelming Anger
 spirits/Spiritual Advice
 spirits/Unfocusing Annoyance
 spirits/Whirlwind of Emotions
-spores/Putrid Stinkbloom
 spores/Mockish Rotbloom
 spores/Delirious Sparkbloom
 spores/Lax Toadstool
@@ -369,6 +369,9 @@ spores/Fungal Networking
 spores/Nutrient Drip
 spores/Fungal Mutation
 spores/Fungal Recomposition
+spores/Scavenging Ooze
+spores/Canker Boll
+spores/Cranialrotkin
 sportsball/Arbiterary
 sportsball/Forward Dunker
 sportsball/Inside Goalie Defender
