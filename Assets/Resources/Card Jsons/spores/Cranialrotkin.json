@@ -43,9 +43,10 @@
 			]
 		}
 	],
+    "keywords":["Spores"],
 	"n":1,
 	"e":1,
-	"s":1,
+	"s":2,
 	"w":1,
 	"subtypeText":"Cultist Follower"
 }
