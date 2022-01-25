@@ -42,7 +42,7 @@ namespace KompasCore.Effects
         public const string SameOwner = "Same Owner as Source";
         public const string TurnPlayerControls = "Turn Player Controls";
 
-        public const string ControllerMatchesTarget = "Controller Matches Card Target's";
+        public const string ControllerMatchesCardTarget = "Controller Matches Card Target's";
         public const string ControllerMatchesPlayerTarget = "Controller Matches Player Target";
         public const string ControllerIsntPlayerTarget = "Controller Isn't Player Target";
 
@@ -58,7 +58,7 @@ namespace KompasCore.Effects
         //is
         public const string IsSource = "Is Source";
         public const string NotSource = "Not Source";
-        public const string IsTarget = "Is Target";
+        public const string IsCardTarget = "Is Card Target";
         public const string NotContextCard = "Not Context Card";
 
         public const string Augmented = "Augmented";
@@ -230,7 +230,7 @@ namespace KompasCore.Effects
             SameOwner   => potentialTarget?.Owner == Controller,
             TurnPlayerControls  => potentialTarget?.Controller == Subeffect.Game.TurnPlayer,
 
-            ControllerMatchesTarget         => potentialTarget?.Controller == Subeffect.CardTarget.Controller,
+            ControllerMatchesCardTarget         => potentialTarget?.Controller == Subeffect.CardTarget.Controller,
             ControllerMatchesPlayerTarget   => potentialTarget?.Controller == Subeffect.PlayerTarget,
             ControllerIsntPlayerTarget      => potentialTarget?.Controller != Subeffect.PlayerTarget,
 
@@ -246,7 +246,7 @@ namespace KompasCore.Effects
             //is
             IsSource => potentialTarget?.Card == Source,
             NotSource => potentialTarget?.Card != Source,
-            IsTarget => potentialTarget?.Card == Subeffect.CardTarget,
+            IsCardTarget => potentialTarget?.Card == Subeffect.CardTarget,
             NotContextCard => potentialTarget?.Card != context?.mainCardInfoBefore?.Card,
 
             AugmentsTarget => potentialTarget?.AugmentedCard == Subeffect.CardTarget,

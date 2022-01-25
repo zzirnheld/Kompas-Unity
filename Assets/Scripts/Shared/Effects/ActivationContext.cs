@@ -18,8 +18,15 @@ namespace KompasCore.Effects
         public List<GameCard> Targets { get; private set; }
         public List<Space> Spaces { get; private set; }
 
-        public ActivationContext Copy 
-            => new ActivationContext(mainCardInfoBefore, MainCardInfoAfter, stackable, player, x, space);
+        public ActivationContext Copy
+        {
+            get
+            {
+                var copy = new ActivationContext(mainCardInfoBefore, MainCardInfoAfter, stackable, player, x, space);
+                copy.SetResumeInfo(Targets, Spaces, StartIndex);
+                return copy;
+            }
+        }
 
         /// <summary>
         /// The information for the main triggering card immediately after the triggering event occurred.
