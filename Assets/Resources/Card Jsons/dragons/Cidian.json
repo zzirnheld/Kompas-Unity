@@ -46,8 +46,8 @@
 							]
 						}
 					},
-					"eMult": -1,
-					"wMult": -1
+					"eMultiplier": -1,
+					"wMultiplier": -1
 				}
 			]
 		}

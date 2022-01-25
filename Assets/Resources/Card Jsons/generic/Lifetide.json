@@ -22,7 +22,7 @@
 							"Board"
 						]
 					},
-					"eMod": 1
+					"eModifier": 1
 				}
 			]
 		},
@@ -45,7 +45,7 @@
 							"Board"
 						]
 					},
-					"eMod": -1
+					"eModifier": -1
 				}
 			]
 		}

@@ -72,10 +72,10 @@
 							]
 						}
 					},
-					"nMult": 1,
-					"eMult": 1,
-					"sMult": 1,
-					"wMult": 1
+					"nMultiplier": 1,
+					"eMultiplier": 1,
+					"sMultiplier": 1,
+					"wMultiplier": 1
 				}
 			]
 		}

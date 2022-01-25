@@ -18,10 +18,10 @@
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"nMod": 1,
-					"eMod": 1,
-					"sMod": 1,
-					"wMod": 1
+					"nModifier": 1,
+					"eModifier": 1,
+					"sModifier": 1,
+					"wModifier": 1
 				},
 				{
 					"$type": "KompasServer.Effects.KeywordSubeffect, Assembly-CSharp",

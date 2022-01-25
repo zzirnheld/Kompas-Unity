@@ -302,7 +302,7 @@ namespace KompasServer.Cards
             ServerNotifier.NotifyStats(this);
         }
 
-        public override void SetStats((int n, int e, int s, int w, int c, int a) stats, IStackable stackSrc = null)
+        public override void SetStats(CardStats stats, IStackable stackSrc = null)
         {
             base.SetStats(stats, stackSrc);
             ServerNotifier.NotifyStats(this);

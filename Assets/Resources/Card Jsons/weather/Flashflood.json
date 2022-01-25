@@ -32,7 +32,7 @@
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"nMod": -1
+					"nModifier": -1
 				}
 			]
 		}

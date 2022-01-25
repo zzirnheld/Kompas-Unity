@@ -51,16 +51,16 @@
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMult": 2,
-					"sMult": 2
+					"eMultiplier": 2,
+					"sMultiplier": 2
 				},
 				{
 					"$type": "KompasServer.Effects.EndResolutionSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"sMult": 2,
-					"wMult": 2
+					"sMultiplier": 2,
+					"wMultiplier": 2
 				}
 			]
 		}

@@ -16,7 +16,7 @@ namespace KompasCore.Networking
 
         public ChangeCardNumericStatsPacket() : base(UpdateCardNumericStats) { }
 
-        public ChangeCardNumericStatsPacket(int cardId, (int n, int e, int s, int w, int c, int a) stats, int spacesMoved) : this()
+        public ChangeCardNumericStatsPacket(int cardId, CardStats stats, int spacesMoved) : this()
         {
             this.cardId = cardId;
             (n, e, s, w, c, a) =  stats;

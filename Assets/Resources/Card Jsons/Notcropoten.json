@@ -34,7 +34,7 @@
 				},
 				{
 					"$type": "KompasServer.Effects.PayStatsSubeffect, Assembly-CSharp",
-					"eMult": 1
+					"eMultiplier": 1
 				},
 				{
 					"$type": "KompasServer.Effects.DeleteTargetSubeffect, Assembly-CSharp"

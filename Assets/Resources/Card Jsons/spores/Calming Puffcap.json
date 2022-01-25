@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Calming Puffcap",
-	"effText": "Spores.\nWhen a W X non-Fungus character is activated, give them -X W until they move.",
+	"effText": "Spores.\nWhen a W X non-Fungus character is activated, give them -X / 2 W until they move.",
 	"effects": [
 		{
 			"blurb": "Delirium",
@@ -37,6 +37,7 @@
 				{
 					"$type": "KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
 					"wMultiplier": -1,
+					"wDivisor":2,
 					"endCondition": "Move",
 					"triggerRestriction": {
 						"triggerRestrictions": [

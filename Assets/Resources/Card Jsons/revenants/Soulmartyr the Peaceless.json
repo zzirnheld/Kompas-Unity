@@ -26,7 +26,7 @@
 							"Ethereal"
 						]
 					},
-					"wMod": 1
+					"wModifier": 1
 				},
 				{
 					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",

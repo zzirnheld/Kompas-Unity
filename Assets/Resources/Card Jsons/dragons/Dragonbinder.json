@@ -34,14 +34,14 @@
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMult": 2
+					"eMultiplier": 2
 				},
 				{
 					"$type": "KompasServer.Effects.TargetThisSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"sMult": 1
+					"sMultiplier": 1
 				}
 			]
 		}

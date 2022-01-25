@@ -26,8 +26,8 @@
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"eMod":1,
-					"wMod":1
+					"eModifier":1,
+					"wModifier":1
 				}
 			]
 		}

@@ -5,34 +5,38 @@ namespace KompasServer.Effects
 {
     public class ChangeCardStatsSubeffect : ServerSubeffect
     {
-        public int nMult = 0;
-        public int eMult = 0;
-        public int sMult = 0;
-        public int wMult = 0;
-        public int cMult = 0;
-        public int aMult = 0;
+        public int nModifier = 0;
+        public int eModifier = 0;
+        public int sModifier = 0;
+        public int wModifier = 0;
+        public int cModifier = 0;
+        public int aModifier = 0;
 
-        public int nDiv = 1;
-        public int eDiv = 1;
-        public int sDiv = 1;
-        public int wDiv = 1;
-        public int cDiv = 1;
-        public int aDiv = 1;
+        public int nDivisor = 0;
+        public int eDivisor = 0;
+        public int sDivisor = 0;
+        public int wDivisor = 0;
+        public int cDivisor = 0;
+        public int aDivisor = 0;
 
-        public int nMod = 0;
-        public int eMod = 0;
-        public int sMod = 0;
-        public int wMod = 0;
-        public int cMod = 0;
-        public int aMod = 0;
+        public int nMultiplier = 0;
+        public int eMultiplier = 0;
+        public int sMultiplier = 0;
+        public int wMultiplier = 0;
+        public int cMultiplier = 0;
+        public int aMultiplier = 0;
 
-        public int NVal => ServerEffect.X * nMult / nDiv  + nMod;
-        public int EVal => ServerEffect.X * eMult / eDiv + eMod;
-        public int SVal => ServerEffect.X * sMult / sDiv + sMod;
-        public int WVal => ServerEffect.X * wMult / wDiv + wMod;
-        public int CVal => ServerEffect.X * cMult / cDiv + cMod;
-        public int AVal => ServerEffect.X * aMult / aDiv + aMod;
-        public (int, int, int, int, int, int) StatValues => (NVal, EVal, SVal, WVal, CVal, AVal);
+        protected CardStats Buff
+        {
+            get
+            {
+                CardStats buff = (nMultiplier, eMultiplier, sMultiplier, wMultiplier, cMultiplier, aMultiplier);
+                buff *= Effect.X;
+                buff += (nModifier, eModifier, sModifier, wModifier, cModifier, aModifier);
+                buff /= (nDivisor, eDivisor, sDivisor, wDivisor, cDivisor, aDivisor);
+                return buff;
+            }
+        }
 
         public override Task<ResolutionInfo> Resolve()
         {
@@ -41,7 +45,7 @@ namespace KompasServer.Effects
             else if (forbidNotBoard && CardTarget.Location != CardLocation.Board)
                 throw new InvalidLocationException(CardTarget.Location, CardTarget, ChangedStatsOfCardOffBoard);
 
-            CardTarget.AddToStats(StatValues, Effect);
+            CardTarget.AddToStats(Buff, Effect);
             return Task.FromResult(ResolutionInfo.Next);
         }
     }

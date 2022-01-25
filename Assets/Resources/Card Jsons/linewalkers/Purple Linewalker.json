@@ -34,7 +34,7 @@
 							}
 						}
 					},
-					"eMult": -1
+					"eMultiplier": -1
 				}
 			]
 		}

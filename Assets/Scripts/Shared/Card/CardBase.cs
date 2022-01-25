@@ -50,6 +50,8 @@ namespace KompasCore.Cards
             protected set => a = value;
         }
 
+        public CardStats Stats => (N, E, S, W, C, A);
+
         public bool Fast { get; private set; }
         public bool Unique { get; private set; }
 
@@ -115,7 +117,7 @@ namespace KompasCore.Cards
 
         public Sprite simpleSprite;
 
-        protected void SetInfo(int n, int e, int s, int w, int c, int a,
+        protected void SetInfo(CardStats stats,
                                        string subtext, string[] spellTypes,
                                        bool fast, bool unique,
                                        int radius, int duration,
@@ -124,12 +126,7 @@ namespace KompasCore.Cards
                                        string subtypeText,
                                        string[] augSubtypes)
         {
-            N = n;
-            E = e;
-            S = s;
-            W = w;
-            C = c;
-            A = a;
+            (N, E, S, W, C, A) = stats;
 
             //set sprites if they aren't already set correctly 
             //(check this by card name. cards should never have a pic that doesn't match their name)
@@ -154,7 +151,7 @@ namespace KompasCore.Cards
         }
 
         protected void SetInfo(SerializableCard card) 
-            => SetInfo(card.n, card.e, card.s, card.w, card.c, card.a,
+            => SetInfo((card.n, card.e, card.s, card.w, card.c, card.a),
                        card.subtext, card.spellTypes,
                        card.fast, card.unique,
                        card.radius, card.duration,

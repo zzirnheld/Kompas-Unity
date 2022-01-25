@@ -42,7 +42,7 @@
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"sMult": 1
+					"sMultiplier": 1
 				}
 			]
 		}
