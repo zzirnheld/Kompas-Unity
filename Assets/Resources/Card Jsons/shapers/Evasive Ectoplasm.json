@@ -28,7 +28,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
+					"$type": "KompasServer.Effects.TemporaryCardStatChangeSubeffect, Assembly-CSharp",
 					"wMultiplier": -1,
 					"endCondition": "Battle End",
 					"triggerRestriction": {

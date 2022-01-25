@@ -35,7 +35,7 @@
 					"xMultiplier": 1
 				},
 				{
-					"$type": "KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
+					"$type": "KompasServer.Effects.TemporaryCardStatChangeSubeffect, Assembly-CSharp",
 					"wMultiplier": -1,
 					"wDivisor":2,
 					"endCondition": "Move",

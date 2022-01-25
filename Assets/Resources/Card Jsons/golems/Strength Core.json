@@ -27,7 +27,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
+					"$type": "KompasServer.Effects.TemporaryCardStatChangeSubeffect, Assembly-CSharp",
 					"wModifier": 4,
 					"endCondition": "Augment Detached",
 					"triggerRestriction": {

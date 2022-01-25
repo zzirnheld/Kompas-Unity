@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace KompasServer.Effects
 {
-    public class TemporaryNESWBuffSubeffect : HangingEffectSubeffect
+    public class TemporaryCardStatChangeSubeffect : HangingEffectSubeffect
     {
         public int nModifier = 0;
         public int eModifier = 0;
@@ -48,7 +48,7 @@ namespace KompasServer.Effects
 
             Debug.Log($"Creating temp NESW buff effect during context {Context}");
 
-            var temp = new TemporaryNESWBuff(game: ServerGame,
+            var temp = new TemporaryCardStatChange(game: ServerGame,
                                              triggerRestriction: triggerRestriction,
                                              endCondition: endCondition,
                                              fallOffCondition: fallOffCondition,

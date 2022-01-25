@@ -4,17 +4,17 @@ using KompasServer.GameCore;
 
 namespace KompasServer.Effects
 {
-    public class TemporaryNESWBuff : HangingEffect
+    public class TemporaryCardStatChange : HangingEffect
     {
         private readonly GameCard buffRecipient;
         private readonly CardStats buff;
 
-        public TemporaryNESWBuff(ServerGame game, TriggerRestriction triggerRestriction, string endCondition, 
+        public TemporaryCardStatChange(ServerGame game, TriggerRestriction triggerRestriction, string endCondition, 
             string fallOffCondition, TriggerRestriction fallOffRestriction, Effect sourceEff,
             ActivationContext currentContext, GameCard buffRecipient, CardStats buff)
             : base(game, triggerRestriction, endCondition, fallOffCondition, fallOffRestriction, sourceEff, currentContext, removeIfEnd: true)
         {
-            this.buffRecipient = buffRecipient != null ? buffRecipient : throw new System.ArgumentNullException("buffRecipient", "Null characcter card in temporary nesw buff");
+            this.buffRecipient = buffRecipient ?? throw new System.ArgumentNullException("buffRecipient", "Null characcter card in temporary nesw buff");
             this.buff = buff;
 
             buffRecipient.AddToStats(buff, stackSrc: sourceEff);

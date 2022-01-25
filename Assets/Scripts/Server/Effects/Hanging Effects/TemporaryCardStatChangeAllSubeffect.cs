@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace KompasServer.Effects
 {
-    public class TemporaryNESWBuffAllSubeffect : TemporaryNESWBuffSubeffect
+    public class TemporaryCardStatChangeAllSubeffect : TemporaryCardStatChangeSubeffect
     {
         //default to making sure things are characters before changing their stats
         public CardRestriction cardRestriction;
@@ -45,7 +45,7 @@ namespace KompasServer.Effects
 
             foreach (var card in cards)
             {
-                var temp = new TemporaryNESWBuff(game: ServerGame,
+                var temp = new TemporaryCardStatChange(game: ServerGame,
                                                  triggerRestriction: triggerRestriction,
                                                  endCondition: endCondition,
                                                  fallOffCondition: fallOffCondition,
