@@ -20,7 +20,7 @@
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"cMod": 1
+					"cModifier": 1
 				},
 				{
 					"$type": "KompasServer.Effects.SetTurnsOnBoardSubeffect, Assembly-CSharp",

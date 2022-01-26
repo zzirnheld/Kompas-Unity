@@ -22,7 +22,7 @@
 					"$type":"KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type":"KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
+					"$type":"KompasServer.Effects.TemporaryCardStatChangeSubeffect, Assembly-CSharp",
 					"eModifier":6,
 					"endCondition":"Augment Detached",
 					"triggerRestriction":{

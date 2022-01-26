@@ -25,7 +25,7 @@
 						},
 						"subtypesInclude":["Supplicant"]
 					},
-					"eMod":1
+					"eModifier":1
 				}
 			]	
 		},

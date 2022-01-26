@@ -36,7 +36,7 @@
 					}
 				},
 				{
-					"$type": "KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
+					"$type": "KompasServer.Effects.TemporaryCardStatChangeSubeffect, Assembly-CSharp",
 					"eModifier": 1,
 					"sModifier": 1,
 					"wModifier": 1,

@@ -21,7 +21,7 @@
 					"$type": "KompasServer.Effects.TargetTriggeringCardSubeffect, Assembly-CSharp"
 				},
 				{
-					"$type": "KompasServer.Effects.TemporaryNESWBuffSubeffect, Assembly-CSharp",
+					"$type": "KompasServer.Effects.TemporaryCardStatChangeSubeffect, Assembly-CSharp",
 					"eModifier": 1,
 					"wModifier": 1,
 					"endCondition": "Vanish",

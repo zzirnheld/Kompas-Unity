@@ -45,8 +45,8 @@
 							]
 						}
 					},
-					"eMod": 1,
-					"wMod": 1
+					"eModifier": 1,
+					"wModifier": 1
 				}
 			]
 		}

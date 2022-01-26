@@ -10,7 +10,7 @@ namespace KompasCore.Effects
         public const string EffectPushedToStack = "Effect Pushed to Stack";
 
         //change card stats
-        public const string NESWChange = "NESW Change";
+        public const string StatNumberChange = "Stat Number Change";
         public const string Activate = "Activate";
         public const string Deactivate = "Deactivate";
         public const string Negate = "Negate";
@@ -64,7 +64,7 @@ namespace KompasCore.Effects
 
         public static readonly string[] TriggerConditions = {
             TurnStart, StackEnd, EffectPushedToStack,
-            NESWChange, Activate, Deactivate, Negate,
+            StatNumberChange, Activate, Deactivate, Negate,
             NChange, EChange, SChange, WChange, CChange, AChange,
             NSet, ESet, SSet, WSet, CSet, ASet,
             Defends, Attacks, TakeCombatDamage, DealCombatDamage, Battles, BattleEnds, 

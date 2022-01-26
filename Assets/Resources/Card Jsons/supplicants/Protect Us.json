@@ -29,7 +29,7 @@
 						"cardRestrictions":["Character","Board","Subtypes Include"],
 						"subtypesInclude":["Supplicant"]
 					},
-					"eMult":1
+					"eMultiplier":1
 				},
 				{
 					"$type":"KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
@@ -38,7 +38,7 @@
 						"cardRestrictions":["Character","Board","Friendly","Negated","Subtypes Include"],
 						"subtypesInclude":["Supplicant"]
 					},
-					"wMult":3
+					"wMultiplier":3
 				}
 			]
 		}

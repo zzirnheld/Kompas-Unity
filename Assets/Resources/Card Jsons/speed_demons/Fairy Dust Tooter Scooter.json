@@ -31,8 +31,8 @@
 							]
 						}
 					},
-					"sMod": 1,
-					"wMod": 1
+					"sModifier": 1,
+					"wModifier": 1
 				}
 			]
 		}

@@ -32,7 +32,7 @@
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"wMod": -7
+					"wModifier": -7
 				},
 				{
 					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
@@ -48,7 +48,7 @@
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeCardStatsSubeffect, Assembly-CSharp",
-					"nMod": 5
+					"nModifier": 5
 				}
 			]
 		}

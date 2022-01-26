@@ -29,8 +29,8 @@
 							"Friendly"
 						]
 					},
-					"sMod": 1,
-					"wMod": 1
+					"sModifier": 1,
+					"wModifier": 1
 				},
 				{
 					"$type": "KompasServer.Effects.ChangeAllCardStatsSubeffect, Assembly-CSharp",
@@ -41,8 +41,8 @@
 							"Enemy"
 						]
 					},
-					"sMod": -1,
-					"wMod": -1
+					"sModifier": -1,
+					"wModifier": -1
 				}
 			]
 		}

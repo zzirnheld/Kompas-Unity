@@ -35,7 +35,7 @@ namespace KompasCore.Cards
 
         public GameCardBase() : base() { }
 
-        public GameCardBase(int n, int e, int s, int w, int c, int a,
+        public GameCardBase(CardStats stats,
                         string subtext, string[] spellTypes,
                         bool fast, bool unique,
                         int radius, int duration,
@@ -44,7 +44,7 @@ namespace KompasCore.Cards
                         string subtypeText,
                         string[] augSubtypes)
         {
-            SetInfo(n, e, s, w, c, a,
+            SetInfo(stats,
                     subtext, spellTypes,
                     fast, unique,
                     radius, duration,
@@ -206,7 +206,7 @@ namespace KompasCore.Cards
 
         protected void SetInfo(GameCard card)
         {
-            SetInfo(card.N, card.E, card.S, card.W, card.C, card.A,
+            SetInfo(card.Stats,
                         card.Subtext, card.SpellSubtypes,
                         card.Fast, card.Unique,
                         card.Radius, card.Duration,
