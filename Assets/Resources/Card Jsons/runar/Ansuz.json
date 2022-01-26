@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Ansuz",
-	"effText": "Runic.\nSet an adjacent character\u00e2\u20ac\u2122s N to 1 and ESW to 10.",
+	"effText": "Runic.\nSet an adjacent character's N to 1 and ESW to 10.",
 	"effects": [
 		{
 			"triggerData": {

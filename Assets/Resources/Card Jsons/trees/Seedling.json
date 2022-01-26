@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Seedling",
-	"effText": "After I\u00e2\u20ac\u2122m summoned, delay 2 turns, then tribute me and deck->summon a Tree where I was.",
+	"effText": "After I'm summoned, delay 2 turns, then tribute me and deck->summon a Tree where I was.",
 	"effects": [
 		{
 			"triggerData": {

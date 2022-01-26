@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Weather Apprentice",
-	"effText": "When a distinct character moves to Weather I\u00e2\u20ac\u2122m also in, echo them.",
+	"effText": "When a distinct character moves to Weather I'm also in, echo them.",
 	"effects": [
 		{
 			"blurb": "Learn the Weather",

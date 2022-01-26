@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Lightning Elemental",
-	"effText": "Weather Event.\nWhen I\u00e2\u20ac\u2122m summoned, I attack an adjacent character.",
+	"effText": "Weather Event.\nWhen I'm summoned, I attack an adjacent character.",
 	"effects": [
 		{
 			"blurb": "Strike Lightning",

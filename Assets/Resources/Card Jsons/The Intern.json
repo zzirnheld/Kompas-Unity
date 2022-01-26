@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "The Intern",
-	"effText": "Cannot be Avatar. (He\u00e2\u20ac\u2122s not ready for that kind of responsibility.)\nThe first time each stack you draw, draw 1.",
+	"effText": "Cannot be Avatar. (He's not ready for that kind of responsibility.)\nThe first time each stack you draw, draw 1.",
 	"effects": [
 		{
 			"triggerData": {

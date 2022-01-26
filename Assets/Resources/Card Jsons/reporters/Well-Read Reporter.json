@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Well-Read Reporter",
-	"effText": "When you cast a CX spell, ask an enemy to reveal a C > X spell. If they don\u00e2\u20ac\u2122t, give me +2 NEWS.",
+	"effText": "When you cast a CX spell, ask an enemy to reveal a C > X spell. If they don't, give me +2 NEWS.",
 	"effects": [
 		{
 			"blurb": "Reveal a spell?",

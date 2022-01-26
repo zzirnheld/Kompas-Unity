@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Obscurian",
-	"effText": "Territorial.\nWhen while attacking I deal X more combat damage than my defender's E, give their controller\u00e2\u20ac\u2122s Avatar -X E.",
+	"effText": "Territorial.\nWhen while attacking I deal X more combat damage than my defender's E, give their controller's Avatar -X E.",
 	"effects": [
 		{
 			"blurb": "Dark Breath",

@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Something Cannon",
-	"effText": "When I\u00e2\u20ac\u2122m summoned, I attack a character.",
+	"effText": "When I'm summoned, I attack a character.",
 	"effects": [
 		{
 			"triggerData": {

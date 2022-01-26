@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Sangrian",
-	"effText": "Territorial.\nWhen an SX character I\u00e2\u20ac\u2122m attacking dies, give a character +X ESW.",
+	"effText": "Territorial.\nWhen an SX character I'm attacking dies, give a character +X ESW.",
 	"effects": [
 		{
 			"blurb": "Bloody Breath",

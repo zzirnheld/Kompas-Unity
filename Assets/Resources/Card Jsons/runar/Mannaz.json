@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Mannaz",
-	"effText": "Runic.\nSearch your deck\u00e2\u20ac\u2122s top 10 cards for a character.",
+	"effText": "Runic.\nSearch your deck's top 10 cards for a character.",
 	"effects": [
 		{
 			"triggerData": {

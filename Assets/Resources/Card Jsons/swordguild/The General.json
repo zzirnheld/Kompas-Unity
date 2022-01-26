@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "The General",
-	"effText": "Once each friendly turn, you can pip decksummon any number of Warriors from your deck\u00e2\u20ac\u2122s top 5 cards. Bottomdeck the rest.",
+	"effText": "Once each friendly turn, you can pip decksummon any number of Warriors from your deck's top 5 cards. Bottomdeck the rest.",
 	"effects": [
 		{
 			"activationRestriction": {

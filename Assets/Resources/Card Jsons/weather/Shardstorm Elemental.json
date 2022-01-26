@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Shardstorm Elemental",
-	"effText": "Weather Event.\nWhen I\u00e2\u20ac\u2122m summoned, counter an adjacent character whose effect is on the stack.",
+	"effText": "Weather Event.\nWhen I'm summoned, counter an adjacent character whose effect is on the stack.",
 	"effects": [
 		{
 			"blurb": "Shardstrike",

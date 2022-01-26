@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "4 33",
-	"effText": "When I\u00e2\u20ac\u2122m cast, give an adjacent N X character -X N until I vanish.",
+	"effText": "When I'm cast, give an adjacent N X character -X N until I vanish.",
 	"effects": [
 		{
 			"triggerData": {

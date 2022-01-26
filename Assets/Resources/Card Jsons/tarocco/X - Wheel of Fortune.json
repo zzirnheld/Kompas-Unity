@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "X - Wheel of Fortune",
-	"effText": "When you draw, swap two characters\u00e2\u20ac\u2122 N.",
+	"effText": "When you draw, swap two characters' N.",
 	"effects": [
 		{
 			"triggerData": {
