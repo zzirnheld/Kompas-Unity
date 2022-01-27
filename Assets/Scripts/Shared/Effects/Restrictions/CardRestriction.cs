@@ -313,13 +313,13 @@ namespace KompasCore.Effects
         };
 
         /* This exists to debug a card restriction,
-         * but should not be usually used because it prints a ton
-        public bool RestrictionValidDebug(string restriction, GameCardBase potentialTarget, int x, ActivationContext context)
+         * but should not be usually used because it prints a ton*/
+        public bool IsRestrictionValidDebug(string restriction, GameCardBase potentialTarget, int x, ActivationContext context)
         {
-            bool answer = RestrictionValid(restriction, potentialTarget, x, context);
+            bool answer = IsRestrictionValid(restriction, potentialTarget, x, context);
             if (!answer) Debug.Log($"{potentialTarget?.CardName} flouts {restriction}");
             return answer;
-        }*/
+        }
 
         /// <summary>
         /// Checks whether the card in question fits the relevant retrictions, for the given value of X
@@ -333,7 +333,7 @@ namespace KompasCore.Effects
 
             try
             {
-                return cardRestrictions.All(r => IsRestrictionValid(r, potentialTarget, x, context));
+                return cardRestrictions.All(r => IsRestrictionValidDebug(r, potentialTarget, x, context));
             }
             catch (ArgumentException ae)
             {

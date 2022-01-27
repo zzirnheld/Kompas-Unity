@@ -32,7 +32,8 @@
 					"cardValue": {
 						"value": "Cost"
 					},
-					"change": true
+					"change": true,
+					"xMultiplier": 1
 				},
 				{
 					"$type": "KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"

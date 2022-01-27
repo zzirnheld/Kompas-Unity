@@ -13,12 +13,12 @@ namespace KompasServer.Effects
         public int cModifier = 0;
         public int aModifier = 0;
 
-        public int nDivisor = 0;
-        public int eDivisor = 0;
-        public int sDivisor = 0;
-        public int wDivisor = 0;
-        public int cDivisor = 0;
-        public int aDivisor = 0;
+        public int nDivisor = 1;
+        public int eDivisor = 1;
+        public int sDivisor = 1;
+        public int wDivisor = 1;
+        public int cDivisor = 1;
+        public int aDivisor = 1;
 
         public int nMultiplier = 0;
         public int eMultiplier = 0;

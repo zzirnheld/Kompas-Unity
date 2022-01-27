@@ -16,6 +16,9 @@
 			},
 			"subeffects": [
 				{
+					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
+				},
+				{
 					"$type": "KompasServer.Effects.ConditionalEndSubeffect, Assembly-CSharp",
 					"condition": "Target Violates Restriction",
 					"cardRestriction": {
@@ -26,9 +29,6 @@
 							"Golem"
 						]
 					}
-				},
-				{
-					"$type": "KompasServer.Effects.TargetAugmentedCardSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type": "KompasServer.Effects.ActivateSubeffect, Assembly-CSharp"
