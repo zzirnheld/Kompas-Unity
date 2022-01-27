@@ -16,7 +16,7 @@ namespace KompasCore.Networking
         public bool attached;
         public bool known;
 
-        private CardLocation Location => (CardLocation)location;
+        protected CardLocation Location => (CardLocation)location;
 
         public AddCardPacket() : base(AddCard) { }
 
