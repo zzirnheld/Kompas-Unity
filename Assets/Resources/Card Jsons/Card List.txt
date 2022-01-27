@@ -374,6 +374,7 @@ spores/Scavenging Ooze
 spores/Canker Boll
 spores/Cranialrotkin
 spores/Ecstatizing Sporeslip
+spores/Fungibility
 sportsball/Arbiterary
 sportsball/Forward Dunker
 sportsball/Inside Goalie Defender
