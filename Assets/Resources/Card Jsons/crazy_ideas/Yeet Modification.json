@@ -1,7 +1,7 @@
 {
 	"cardType": 83,
 	"cardName": "Yeet Modification",
-	"effText": "Ificate.\nOnce each friendly turn, you can move a friendly card 1 space.",
+	"effText": "Ificate.\nOnce each friendly turn, you can move a card 1 space.",
 	"effects": [
 		{
 			"activationRestriction": {
@@ -17,8 +17,7 @@
 					"blurb": "card to slightly yeet",
 					"cardRestriction": {
 						"cardRestrictions": [
-							"Board",
-							"Friendly"
+							"Board"
 						]
 					}
 				},

@@ -57,7 +57,7 @@
 	"n": 1,
 	"e": 2,
 	"s": 4,
-	"w": 2,
+	"w": 0,
 	"subtypes": [
 		"Tree",
 		"Fungus",

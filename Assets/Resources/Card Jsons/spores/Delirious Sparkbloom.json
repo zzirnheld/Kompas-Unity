@@ -1,7 +1,7 @@
 {
 	"cardType": 67,
 	"cardName": "Delirious Sparkbloom",
-	"effText": "Spores.\nWhen a character is activated, give them +1 W if they're a Fungus, but -1 W if not.",
+	"effText": "Spores.\nWhen a character is activated, give them +1 W if they're a Fungus, or -1 W if not.",
 	"effects": [
 		{
 			"blurb": "Delirium",
@@ -50,8 +50,8 @@
 		"Spores"
 	],
 	"n": 1,
-	"e": 5,
-	"s": 4,
+	"e": 4,
+	"s": 3,
 	"w": 0,
 	"subtypes": [
 		"Fruiting",
