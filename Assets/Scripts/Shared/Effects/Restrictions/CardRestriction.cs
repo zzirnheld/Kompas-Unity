@@ -333,7 +333,7 @@ namespace KompasCore.Effects
 
             try
             {
-                return cardRestrictions.All(r => IsRestrictionValidDebug(r, potentialTarget, x, context));
+                return cardRestrictions.All(r => IsRestrictionValid(r, potentialTarget, x, context));
             }
             catch (ArgumentException ae)
             {

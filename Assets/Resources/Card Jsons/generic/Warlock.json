@@ -10,17 +10,17 @@
                 "triggerRestriction":{
                     "triggerRestrictions":["This Card in Play",
                                            "Controller Triggered",
-                                           "Triggerer Fits Restriction",
+                                           "Main Card Fits Restriction Before",
                                            "Max Per Turn",
                                            "No Stackable"],
                     "cardRestriction":
                     {
-                        "cardRestrictions":["Card Value Fits X Restriction"],
+                        "cardRestrictions":["Card Value Fits Number Restriction"],
                         "cardValue":{
                             "value":"Cost"
                         },
-                        "xRestriction":{
-                            "xRestrictions":["==Constant"],
+                        "cardValueNumberRestriction":{
+                            "numberRestrictions":["==Constant"],
                             "constant":1
                         }
                     },

@@ -51,9 +51,9 @@
 		"Spores"
 	],
 	"n": 1,
-	"e": 4,
+	"e": 5,
 	"s": 5,
-	"w": 4,
+	"w": 0,
 	"subtypes": [
 		"Fruiting",
 		"Fungus"

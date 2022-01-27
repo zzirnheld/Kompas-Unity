@@ -14,6 +14,7 @@
 					"cardRestriction": {
 						"cardRestrictions": [
 							"Subtypes Include",
+							"Board",
 							"Character"
 						],
 						"subtypesInclude": [
@@ -40,6 +41,9 @@
 							"Fungus"
 						]
 					}
+				},
+				{
+					"$type":"KompasServer.Effects.DiscardSubeffect, Assembly-CSharp"
 				},
 				{
 					"$type": "KompasServer.Effects.DrawSubeffect, Assembly-CSharp"

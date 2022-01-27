@@ -40,7 +40,7 @@
 				{
 					"$type": "KompasServer.Effects.ChooseFromListSaveRestSubeffect, Assembly-CSharp",
 					"cardRestriction": {
-						"blurb": "spell for Mannaz to search (to hand)",
+						"blurb": "the result of mutation",
 						"cardRestrictions": [
 							"Friendly",
 							"Deck",
